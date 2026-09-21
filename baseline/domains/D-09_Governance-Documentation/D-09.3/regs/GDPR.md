@@ -1,0 +1,15 @@
+# D-09.3 — GDPR module
+
+> Regulation-specific layer: applies when `GDPR` is in scope
+> (activation: `if GDPR in applicable_regs`). Independent of any other
+> regulation; cross-regulation material is demoted to the trailing
+> 'Cross-references (informational)' section and to [../cross/](../).
+
+| Regulation | Canonical SO | 1-line summary | Scope/angle |
+|---|---|---|---|
+| GDPR | (out-of-scope as strict mandate) | RoPA focus on processing purposes, data categories, recipients, safeguards — not information assets. No standalone SO for D-09.3 from GDPR. | RoPA is a related-but-distinct artefact (see D-09.4). |
+
+_(no GDPR Sub-SO or requirements in this sub-domain)_
+
+<!-- aegis:purity: own_reg=GDPR; demoted=0; core_cross_mentions=0 -->
+

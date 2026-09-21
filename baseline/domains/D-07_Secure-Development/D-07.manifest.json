@@ -476,5 +476,253 @@
     "sub_requirements_total": 12,
     "applicable_nist_controls_total": 18
   },
-  "generated_at": "2026-08-04T17:27:46Z"
+  "generated_at": "2026-08-04T17:27:46Z",
+  "modular_layout": {
+    "D-07.1": {
+      "files": [
+        "_index.md",
+        "cross/AI_Act-CRA.md",
+        "cross/AI_Act-DORA.md",
+        "cross/AI_Act-GDPR.md",
+        "cross/AI_Act-NIS2.md",
+        "cross/CRA-DORA.md",
+        "cross/CRA-GDPR.md",
+        "cross/CRA-NIS2.md",
+        "cross/DORA-GDPR.md",
+        "cross/DORA-NIS2.md",
+        "cross/GDPR-NIS2.md",
+        "cross/_interactions.md",
+        "objective.md",
+        "regs/AI_Act.ambiguity.md",
+        "regs/AI_Act.md",
+        "regs/CRA.ambiguity.md",
+        "regs/CRA.md",
+        "regs/DORA.ambiguity.md",
+        "regs/DORA.md",
+        "regs/GDPR.ambiguity.md",
+        "regs/GDPR.md",
+        "regs/NIS2.ambiguity.md",
+        "regs/NIS2.md"
+      ],
+      "regs": {
+        "GDPR": {
+          "subso": 1,
+          "reqs": 1,
+          "verbatim": 3,
+          "ambiguity": true
+        },
+        "CRA": {
+          "subso": 1,
+          "reqs": 1,
+          "verbatim": 3,
+          "ambiguity": true
+        },
+        "NIS2": {
+          "subso": 1,
+          "reqs": 1,
+          "verbatim": 3,
+          "ambiguity": true
+        },
+        "DORA": {
+          "subso": 1,
+          "reqs": 1,
+          "verbatim": 4,
+          "ambiguity": true
+        },
+        "AI_Act": {
+          "subso": 1,
+          "reqs": 1,
+          "verbatim": 3,
+          "ambiguity": true
+        }
+      },
+      "cross_pairs": [
+        "AI_Act-CRA",
+        "AI_Act-DORA",
+        "AI_Act-GDPR",
+        "AI_Act-NIS2",
+        "CRA-DORA",
+        "CRA-GDPR",
+        "CRA-NIS2",
+        "DORA-GDPR",
+        "DORA-NIS2",
+        "GDPR-NIS2"
+      ],
+      "demoted_units": 52,
+      "dedup_lines": 372,
+      "balanced": true
+    },
+    "D-07.2": {
+      "files": [
+        "_index.md",
+        "cross/AI_Act-CRA.md",
+        "cross/AI_Act-DORA.md",
+        "cross/CRA-DORA.md",
+        "cross/_interactions.md",
+        "objective.md",
+        "regs/AI_Act.ambiguity.md",
+        "regs/AI_Act.md",
+        "regs/CRA.ambiguity.md",
+        "regs/CRA.md",
+        "regs/DORA.ambiguity.md",
+        "regs/DORA.md",
+        "regs/GDPR.ambiguity.md",
+        "regs/GDPR.md",
+        "regs/NIS2.ambiguity.md",
+        "regs/NIS2.md"
+      ],
+      "regs": {
+        "GDPR": {
+          "subso": 0,
+          "reqs": 0,
+          "verbatim": 0,
+          "ambiguity": true
+        },
+        "CRA": {
+          "subso": 1,
+          "reqs": 1,
+          "verbatim": 2,
+          "ambiguity": true
+        },
+        "NIS2": {
+          "subso": 0,
+          "reqs": 0,
+          "verbatim": 0,
+          "ambiguity": true
+        },
+        "DORA": {
+          "subso": 1,
+          "reqs": 1,
+          "verbatim": 2,
+          "ambiguity": true
+        },
+        "AI_Act": {
+          "subso": 1,
+          "reqs": 1,
+          "verbatim": 2,
+          "ambiguity": true
+        }
+      },
+      "cross_pairs": [
+        "AI_Act-CRA",
+        "AI_Act-DORA",
+        "CRA-DORA"
+      ],
+      "demoted_units": 14,
+      "dedup_lines": 82,
+      "balanced": true
+    },
+    "D-07.3": {
+      "files": [
+        "_index.md",
+        "cross/CRA-NIS2.md",
+        "cross/_interactions.md",
+        "objective.md",
+        "regs/AI_Act.ambiguity.md",
+        "regs/AI_Act.md",
+        "regs/CRA.ambiguity.md",
+        "regs/CRA.md",
+        "regs/DORA.ambiguity.md",
+        "regs/DORA.md",
+        "regs/GDPR.ambiguity.md",
+        "regs/GDPR.md",
+        "regs/NIS2.ambiguity.md",
+        "regs/NIS2.md"
+      ],
+      "regs": {
+        "GDPR": {
+          "subso": 0,
+          "reqs": 0,
+          "verbatim": 0,
+          "ambiguity": true
+        },
+        "CRA": {
+          "subso": 1,
+          "reqs": 1,
+          "verbatim": 1,
+          "ambiguity": true
+        },
+        "NIS2": {
+          "subso": 1,
+          "reqs": 1,
+          "verbatim": 1,
+          "ambiguity": true
+        },
+        "DORA": {
+          "subso": 0,
+          "reqs": 0,
+          "verbatim": 0,
+          "ambiguity": true
+        },
+        "AI_Act": {
+          "subso": 0,
+          "reqs": 0,
+          "verbatim": 0,
+          "ambiguity": true
+        }
+      },
+      "cross_pairs": [
+        "CRA-NIS2"
+      ],
+      "demoted_units": 4,
+      "dedup_lines": 0,
+      "balanced": true
+    },
+    "D-07.4": {
+      "files": [
+        "_index.md",
+        "cross/CRA-DORA.md",
+        "cross/_interactions.md",
+        "objective.md",
+        "regs/AI_Act.ambiguity.md",
+        "regs/AI_Act.md",
+        "regs/CRA.ambiguity.md",
+        "regs/CRA.md",
+        "regs/DORA.ambiguity.md",
+        "regs/DORA.md",
+        "regs/GDPR.ambiguity.md",
+        "regs/GDPR.md",
+        "regs/NIS2.ambiguity.md",
+        "regs/NIS2.md"
+      ],
+      "regs": {
+        "GDPR": {
+          "subso": 0,
+          "reqs": 0,
+          "verbatim": 0,
+          "ambiguity": true
+        },
+        "CRA": {
+          "subso": 1,
+          "reqs": 1,
+          "verbatim": 1,
+          "ambiguity": true
+        },
+        "NIS2": {
+          "subso": 0,
+          "reqs": 0,
+          "verbatim": 0,
+          "ambiguity": true
+        },
+        "DORA": {
+          "subso": 1,
+          "reqs": 1,
+          "verbatim": 1,
+          "ambiguity": true
+        },
+        "AI_Act": {
+          "subso": 0,
+          "reqs": 0,
+          "verbatim": 0,
+          "ambiguity": true
+        }
+      },
+      "cross_pairs": [
+        "CRA-DORA"
+      ],
+      "demoted_units": 15,
+      "dedup_lines": 41,
+      "balanced": true
+    }
+  }
 }

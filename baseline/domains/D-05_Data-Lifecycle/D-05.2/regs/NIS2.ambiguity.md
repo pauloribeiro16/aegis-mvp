@@ -1,0 +1,10 @@
+# D-05.2 — Relevant Ambiguity (NIS 2)
+
+> Part 4 ambiguity analysis for NIS 2, verbatim from the merged
+> file. Cross-regulation analogies are demoted to the trailing section.
+
+## NIS2
+_No applicable NIS2 ambiguity._
+
+<!-- aegis:purity: own_reg=NIS2; demoted=0; core_cross_mentions=0 -->
+

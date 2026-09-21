@@ -1,0 +1,19 @@
+# D-08.1 — High-level Security Objective (regulation-neutral)
+
+> Common objective of the sub-domain; activates when ≥2 applicable regulations'
+> scopes overlap on the same artefact (`applies_to: auto`). Per-regulation
+> perspectives live in [regs/](regs/); aggregation reasoning in
+> [cross/_interactions.md](cross/_interactions.md).
+
+#### D-08.1.0 — High-level SecurityObjective
+```yaml
+id: SO-D-08.1.HL
+subdomain: D-08.1
+applies_to: auto  # activates when ≥2 applicable regs have ≥1 pair with Y scope overlap on the same party AND ≥1 sub-SO activates; for D-08.1 the 3 Y pairs (GDPR↔NIS2, GDPR↔DORA, NIS2↔DORA) all have Y scope overlap in baseline; the 3 N (typically) pairs (GDPR↔CRA, NIS2↔CRA, CRA↔DORA) are substantively scope-disjoint and do not engage the high-level SO. Once ≥2 regs are applicable the high-level SO engages on the joint-condition operator on the Y-pairs integrated stack.
+status: static
+derivation_source: ../../CrossRegulation/DeepAnalysis/D-08_Human-Factors/D-08.1.md §D-08.1
+verified_relationship_basis: CRDA-deep verified (6 pairs: 3 SAME — COMPLEMENTARY + 1 SAME — EQUAL + 3 SAME — DIFFERENT-PERSPECTIVE — no CORRECTED, no CONTRADICTORY, 3 pairs substantively scope-disjoint on different audiences — 4×4 matrix complete; the 4 participating regulators (GDPR + NIS2 + CRA + DORA) target distinct target audiences (DPO-catalysed processing staff / entity-wide hygiene baseline workforce / manufacturer-shipped end-user with product / financial-entity compulsory-modules-led staff) at distinct triggers (DPO activity per Art. 39(1)(b) / entity-wide hygiene baseline per Art. 21(2)(g) / manufacturer places product on market with Annex II §8 instructions / financial entity establishes training schemes with Art. 13(6) compulsory modules) and the high-level SO surfaces the common general-awareness duty — documented training programme + population-wide coverage + audience-routing + governance hooks — while preserving the per-reg target audience, trigger, anchor, threshold, evidence template, recipient; **NOTE — AI Act full absence**: AI Act is fully absent from D-08.1 per CRDA-deep §D-08.1 line 27; AI Act Art. 4 (AI literacy) + SR-AIACT-012 (human-oversight training for high-risk AI) are mapped to D-08.2 (role-specific competence), not D-08.1; **NOTE — CRA partial coverage**: CRA participation at D-08.1 is partial — Annex II §8(a)–(f) is user-facing instructions shipped with the product, not workforce awareness; AEGIS taxonomy §4.1 marks NIS 2 / DORA / GDPR as the authorities for full staff awareness; the 3 CRA-involving pairs (GDPR↔CRA, NIS2↔CRA, CRA↔DORA) are SAME — DIFFERENT-PERSPECTIVE substantively scope-disjoint on the different-audiences dimension; **NOTE — NIS2↔DORA SAME — EQUAL**: the NIS2↔DORA pair is the only SAME — EQUAL pair on workforce awareness at entity level — DORA's `compulsory modules` is more prescriptive than NIS 2's `basic cyber hygiene`; for DORA financial entities the DORA programme is dominant authority; for non-financial NSIEs the NIS 2 programme is the authority)
+emergent_tensions: 0  # strictly: 0 CONTRADICTORY or CORRECTED reclassifications on the general-awareness duty itself — the 6 verified pairs are all SAME (3 SAME — COMPLEMENTARY + 1 SAME — EQUAL + 3 SAME — DIFFERENT-PERSPECTIVE substantively scope-disjoint); the 3 substantively scope-disjoint pairs are SAME — DIFFERENT-PERSPECTIVE per CRDA-deep verified classifications — no reclassification is required, but the parallel tracks coexist on different audiences; no Phase 1C tension resolution is required for D-08.1
+```
+**Objective.** General security awareness is established through a documented training programme with population-wide coverage, audience-routing, and governance hooks.
+

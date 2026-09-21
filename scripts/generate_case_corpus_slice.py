@@ -2,408 +2,277 @@
 """
 generate_case_corpus_slice.py
 =============================
-Generates a strictly filtered, verbatim slice of the AEGIS baseline corpus for a specific company case.
+Generates the case corpus slice for a specific company case by COMPOSING
+per-regulation modules from the modular baseline (see modularize_domains.py).
 
 Principles:
-1. Deterministic filter: ONLY in-scope regulations and triggered sub-domains are included.
-2. NO SUMMARIES: All retained content (HSO, active Sub-SOs, applicable articles, pair text) is verbatim.
-3. Surgical drop:
-   - Drops out-of-scope article files from articles/.
-   - Drops inactive sub-domain directories (e.g. D-08.3 when NIS2/DORA are not active).
-   - Drops table rows referencing inactive regulations in Participants and Axis tables.
-   - Drops inactive Pair sections in Part 1 (##### Pair: ...) and Part 2 (<!-- pair: ... --> ... <!-- /pair -->).
-   - Drops inactive Sub-SO blocks (#### D-XX.Y.N — Sub-SO for ...).
-   - Drops inactive Volere requirements.
-   - Drops inactive Ambiguity chapters in Part 4 (## NIS2, ## DORA, ## AI_Act).
-4. Generates an index.md for the filtered case slice.
+1. Regulation-pure by construction: for the active regulations the script
+   copies the already-independent modules verbatim — no deletion filtering of
+   mixed prose is needed (the baseline modules are separated at source).
+2. NO SUMMARIES: every retained byte is verbatim from the modular baseline.
+3. Composition rule per sub-domain D-XX.Y:
+   - _index.md            adapted (module table filtered to active layers)
+   - objective.md         copied (neutral high-level objective)
+   - regs/<R>.md          copied for each ACTIVE regulation R
+   - regs/<R>.ambiguity.md copied for each ACTIVE regulation R
+   - cross/<R1>-<R2>.md   copied when BOTH regulations are active
+   - cross/_interactions.md copied only when >=2 regs active (scope-overlap
+                          matrix tables filtered to active regs + scope banner)
+   - articles/<R>_*.md    copied for active regulations only
+   - Sub-domains with no active-reg module and no in-scope article are skipped.
+4. Purity audit: per composed file, counts mentions of INACTIVE regulations
+   outside the demarcated zones ('Cross-references (informational)' sections,
+   YAML cards, tables). Target for regs/ modules: 0.
+5. Writes cases/<case>/filtered_corpus/index.md with the composition table.
 
 Usage:
   python scripts/generate_case_corpus_slice.py --case Case_01_TinyTask_SaaS --regs GDPR CRA
 """
 
 import os
-import sys
+import re
 import shutil
 import argparse
-import re
-
-REG_SYNONYMS = {
-    'GDPR': ['GDPR', 'General Data Protection Regulation'],
-    'CRA': ['CRA', 'Cyber Resilience Act'],
-    'NIS2': ['NIS2', 'NIS 2', 'Network and Information Systems'],
-    'DORA': ['DORA', 'Digital Operational Resilience Act'],
-    'AI_Act': ['AI_Act', 'AI Act', 'Artificial Intelligence Act', 'AIA']
-}
+from pathlib import Path
 
 ALL_REGS = ['GDPR', 'CRA', 'NIS2', 'DORA', 'AI_Act']
+RE_REG = re.compile(r'\b(GDPR|NIS2|CRA|DORA|AI_Act)\b')
+RE_MATRIX = re.compile(r'^\|\s*\|')  # tables whose first cell is empty (matrices)
+
 
 def normalize_reg(token):
     token = token.strip()
     norm = token.replace(' ', '').replace('_', '').replace('-', '').upper()
-    if 'GDPR' in norm: return 'GDPR'
-    if 'CRA' in norm: return 'CRA'
-    if 'NIS' in norm: return 'NIS2'
-    if 'DORA' in norm: return 'DORA'
-    if 'AI' in norm or 'AIA' in norm: return 'AI_Act'
+    if 'GDPR' in norm:
+        return 'GDPR'
+    if 'CRA' in norm:
+        return 'CRA'
+    if 'NIS' in norm:
+        return 'NIS2'
+    if 'DORA' in norm:
+        return 'DORA'
+    if 'AI' in norm or 'AIA' in norm:
+        return 'AI_Act'
     return token
 
-def is_reg_in_scope(reg_token, active_regs):
-    norm = reg_token.replace(' ', '').replace('_', '').replace('-', '').upper()
-    for active in active_regs:
-        active_norm = active.replace(' ', '').replace('_', '').replace('-', '').upper()
-        if active_norm == norm or active_norm in norm or norm in active_norm:
-            return True
-    return False
 
-def filter_articles(src_articles_dir, dst_articles_dir, active_regs):
-    if not os.path.exists(src_articles_dir):
-        return []
-    os.makedirs(dst_articles_dir, exist_ok=True)
-    retained_articles = []
-    for f in os.listdir(src_articles_dir):
-        if not f.endswith('.md'):
-            continue
-        reg_prefix = f.split('_')[0]
-        if any(is_reg_in_scope(reg_prefix, active_regs) for active in active_regs):
-            src_file = os.path.join(src_articles_dir, f)
-            dst_file = os.path.join(dst_articles_dir, f)
-            shutil.copy2(src_file, dst_file)
-            retained_articles.append(f)
-    return retained_articles
+def norm_text(t):
+    return t.replace('NIS 2', 'NIS2').replace('AI Act', 'AI_Act')
 
-def filter_matrix_table(lines, start_idx, active_regs):
-    """
-    Filters a 2D cross-regulation matrix table like:
-    | | GDPR | NIS 2 | CRA | DORA |
-    |---|---|---|---|---|
-    | **GDPR** | ... |
-    Keeps only columns and rows belonging to active_regs (and the index column).
-    """
-    header_line = lines[start_idx]
-    header_cells = [c.strip() for c in header_line.split('|')]
-    # Typically header_cells looks like ['', '', 'GDPR', 'NIS 2', 'CRA', 'DORA', '']
-    # Let's identify the index of columns to keep: column 0/1 (the leading empty / row label column)
-    # plus any column whose name matches active_regs
-    cols_to_keep = []
-    for idx, c in enumerate(header_cells):
-        if idx == 0 or idx == len(header_cells) - 1:
-            continue
-        # If it's the first data column (which is blank for top-left cell)
-        if c == '':
-            cols_to_keep.append(idx)
-        else:
-            # Check if this cell represents a regulation
-            is_reg = False
-            for r in ALL_REGS:
-                if is_reg_in_scope(c, [r]):
-                    is_reg = True
-                    if is_reg_in_scope(c, active_regs):
-                        cols_to_keep.append(idx)
-                    break
-            if not is_reg:
-                cols_to_keep.append(idx)
 
-    new_table_lines = []
-    i = start_idx
-    n = len(lines)
-    while i < n and lines[i].strip().startswith('|'):
-        curr_line = lines[i]
-        curr_cells = [c.strip() for c in curr_line.split('|')]
-        
-        # Check if this is a row for an inactive regulation
-        drop_row = False
-        if len(curr_cells) > 1:
-            first_label = curr_cells[1].replace('*', '').strip()
-            for r in ALL_REGS:
-                if is_reg_in_scope(first_label, [r]):
-                    if not is_reg_in_scope(first_label, active_regs):
-                        drop_row = True
-                    break
-        if drop_row:
-            i += 1
-            continue
-        
-        # Build filtered cells for this row
-        filtered_cells = []
-        for col_idx in cols_to_keep:
-            if col_idx < len(curr_cells):
-                filtered_cells.append(curr_cells[col_idx])
-            else:
-                filtered_cells.append('')
-        
-        new_line = "| " + " | ".join(filtered_cells) + " |"
-        new_table_lines.append(new_line)
-        i += 1
+def mentions_inactive(text, active):
+    return set(RE_REG.findall(norm_text(text))) - set(active)
 
-    return new_table_lines, i
 
-def is_inactive_table_row(line, active_regs):
-    # Matches table rows where cell 1 or cell 2 specifies a regulation or a pair
-    cells = [c.strip() for c in line.split('|')]
-    if len(cells) > 2:
-        for idx in [1, 2]:
-            if idx >= len(cells):
-                continue
-            cell_val = cells[idx].replace('*', '').strip()
-            
-            # Check for Pair in cell, e.g. "GDPR ↔ AI_Act" or "GDPR ↔ CRA"
-            if '↔' in cell_val or '<->' in cell_val:
-                pair_parts = re.split(r'[↔<->]+', cell_val)
-                if len(pair_parts) == 2:
-                    p1, p2 = pair_parts[0].strip(), pair_parts[1].strip()
-                    # If this cell describes a pair of regulations, check if both are in scope
-                    is_p1_reg = any(is_reg_in_scope(p1, [r]) for r in ALL_REGS)
-                    is_p2_reg = any(is_reg_in_scope(p2, [r]) for r in ALL_REGS)
-                    if is_p1_reg and is_p2_reg:
-                        if not (is_reg_in_scope(p1, active_regs) and is_reg_in_scope(p2, active_regs)):
-                            return True
-                        continue
-
-            # Check for standalone regulation in cell
-            for reg in ALL_REGS:
-                if is_reg_in_scope(cell_val, [reg]):
-                    if not is_reg_in_scope(cell_val, active_regs):
-                        return True
-                    break
-    return False
-
-def filter_subdomain_markdown(content, active_regs, subdomain_id, retained_articles):
-    lines = content.splitlines()
+def filter_matrix_tables(lines, active):
+    """In matrix tables (first header cell empty), drop inactive rows and
+    blank out inactive regulation columns. Other tables pass through."""
     out = []
-    
-    # Prepend slice header and index
-    out.append(f"# {subdomain_id} — Case Filtered View")
-    out.append("")
-    out.append(f"> **Case Corpus Slice:** Retaining ONLY verbatim sections for active regulations: `{', '.join(active_regs)}`.")
-    out.append("> All out-of-scope regulations, inactive Sub-SOs, inactive requirement blocks, and out-of-scope table rows have been stripped.")
-    out.append("> No text has been summarized or altered.")
-    out.append("")
-    out.append("### In-Scope Articles in this Sub-Domain:")
-    if retained_articles:
-        for art in sorted(retained_articles):
-            out.append(f"- [{art}](articles/{art})")
-    else:
-        out.append("- *(No specific single-article copies; covered via merged text)*")
-    out.append("")
-    out.append("---")
-    out.append("")
-
-    i = 0
-    n = len(lines)
-    
+    i, n = 0, len(lines)
     while i < n:
-        line = lines[i]
-
-        # 0. Check if this is the start of a 2D cross-regulation matrix table (e.g. '| | GDPR | NIS 2 |')
-        if line.strip().startswith('| |') or line.strip().startswith('|  |'):
-            filtered_tbl, next_i = filter_matrix_table(lines, i, active_regs)
-            out.extend(filtered_tbl)
-            i = next_i
-            continue
-
-        # Filter Table Rows for Inactive Regulations
-        if is_inactive_table_row(line, active_regs):
+        if RE_MATRIX.match(lines[i]) and i + 1 < n and set(lines[i + 1]) <= set('|-: '):
+            # matrix: header + separator + rows until non-table line
+            j = i
+            block = []
+            while j < n and lines[j].strip().startswith('|'):
+                block.append(lines[j])
+                j += 1
+            out.extend(_filter_matrix_block(block, active))
+            i = j
+        else:
+            out.append(lines[i])
             i += 1
+    return out
+
+
+def _filter_matrix_block(block, active):
+    header_cells = [c.strip() for c in block[0].strip().strip('|').split('|')]
+    keep_cols = [0]
+    for k, cell in enumerate(header_cells[1:], start=1):
+        regs = set(RE_REG.findall(norm_text(cell)))
+        if not regs or (regs & set(active)):
+            keep_cols.append(k)
+    out = []
+    for ln in block:
+        cells = ln.strip().strip('|').split('|')
+        if len(cells) == len(header_cells) and set(RE_REG.findall(norm_text(cells[0]))) - set(active):
+            continue  # row of an inactive regulation
+        if len(cells) == len(header_cells):
+            ln = '| ' + ' | '.join(cells[k] for k in keep_cols if k < len(cells)) + ' |'
+        out.append(ln)
+    return out
+
+
+def purity_count(path, active):
+    """Mentions of inactive regs outside demarcated zones. Returns
+    (violations_prose, informational_total)."""
+    text = path.read_text(encoding='utf-8')
+    idx = text.find('## Cross-references (informational)')
+    body = text[:idx] if idx >= 0 else text
+    viol = info = 0
+    fence = False
+    for ln in body.splitlines():
+        s = ln.strip()
+        if s.startswith('```'):
+            fence = not fence
             continue
-
-        # 1. Check Standardized AEGIS Block Boundaries
-        # Format: <!-- aegis:pair:REG1,REG2 -->
-        if '<!-- aegis:pair:' in line:
-            m = re.search(r'<!--\s*aegis:pair:\s*([^>]+)-->', line)
-            if m:
-                regs = [r.strip() for r in m.group(1).split(',')]
-                in_scope = all(is_reg_in_scope(r, active_regs) for r in regs)
-                if not in_scope:
-                    i += 1
-                    while i < n and '<!-- /aegis:pair -->' not in lines[i]:
-                        i += 1
-                    if i < n and '<!-- /aegis:pair -->' in lines[i]:
-                        i += 1
-                    continue
-
-        # Format: <!-- aegis:subso:REG -->
-        if '<!-- aegis:subso:' in line:
-            m = re.search(r'<!--\s*aegis:subso:\s*([^>]+)-->', line)
-            if m:
-                reg = m.group(1).strip()
-                if not is_reg_in_scope(reg, active_regs):
-                    i += 1
-                    while i < n and '<!-- /aegis:subso -->' not in lines[i]:
-                        i += 1
-                    if i < n and '<!-- /aegis:subso -->' in lines[i]:
-                        i += 1
-                    continue
-
-        # Format: <!-- aegis:req:REG1,REG2 -->
-        if '<!-- aegis:req:' in line:
-            m = re.search(r'<!--\s*aegis:req:\s*([^>]+)-->', line)
-            if m:
-                regs = [r.strip() for r in m.group(1).split(',')]
-                in_scope = any(is_reg_in_scope(r, active_regs) for r in regs)
-                if not in_scope:
-                    i += 1
-                    while i < n and '<!-- /aegis:req -->' not in lines[i]:
-                        i += 1
-                    if i < n and '<!-- /aegis:req -->' in lines[i]:
-                        i += 1
-                    continue
-
-        # Format: <!-- aegis:ambiguity:REG -->
-        if '<!-- aegis:ambiguity:' in line:
-            m = re.search(r'<!--\s*aegis:ambiguity:\s*([^>]+)-->', line)
-            if m:
-                reg = m.group(1).strip()
-                if not is_reg_in_scope(reg, active_regs):
-                    i += 1
-                    while i < n and '<!-- /aegis:ambiguity -->' not in lines[i]:
-                        i += 1
-                    if i < n and '<!-- /aegis:ambiguity -->' in lines[i]:
-                        i += 1
-                    continue
-
-        # Fallback for any unannotated Pair / Sub-SO / Ambiguity patterns
-        if line.strip().startswith('##### Pair:'):
-            pair_match = re.search(r'#####\s+Pair:\s*([A-Za-z0-9_\s]+)\s*[↔<->xX-]+\s*([A-Za-z0-9_\s]+)', line)
-            if pair_match:
-                reg1, reg2 = pair_match.group(1).strip(), pair_match.group(2).strip()
-                if not (is_reg_in_scope(reg1, active_regs) and is_reg_in_scope(reg2, active_regs)):
-                    i += 1
-                    while i < n and not re.match(r'^(#####|####|###|##|#)\s+', lines[i]):
-                        i += 1
-                    continue
-
-        out.append(line)
-        i += 1
-
-    return "\n".join(out)
-
-def process_case_slice(case_name, active_regs, baseline_dir, cases_dir, output_dir=None):
-    # Normalize input regulations
-    normalized_active_regs = [normalize_reg(r) for r in active_regs]
-    # Remove duplicates while preserving order
-    seen = set()
-    clean_regs = []
-    for r in normalized_active_regs:
-        if r not in seen:
-            seen.add(r)
-            clean_regs.append(r)
-    active_regs = clean_regs
-
-    if output_dir:
-        target_slice_dir = output_dir
-    else:
-        case_path = os.path.join(cases_dir, case_name)
-        os.makedirs(case_path, exist_ok=True)
-        target_slice_dir = os.path.join(case_path, "filtered_corpus")
-
-    if os.path.exists(target_slice_dir):
-        shutil.rmtree(target_slice_dir)
-    os.makedirs(target_slice_dir, exist_ok=True)
-
-    domains_src = os.path.join(baseline_dir, "domains")
-    if not os.path.exists(domains_src):
-        print(f"Error: Baseline domains directory {domains_src} does not exist.")
-        sys.exit(1)
-
-    index_entries = []
-    total_articles = 0
-
-    for domain_folder in sorted(os.listdir(domains_src)):
-        domain_src_path = os.path.join(domains_src, domain_folder)
-        if not os.path.isdir(domain_src_path) or not domain_folder.startswith("D-"):
+        if ln.startswith('<!-- aegis:purity'):
             continue
+        if not mentions_inactive(ln, active):
+            continue
+        info += 1
+        if not fence and not s.startswith('|') and not s.startswith('#'):
+            viol += 1
+    return viol, info
 
-        domain_dst_path = os.path.join(target_slice_dir, domain_folder)
 
-        for subdomain in sorted(os.listdir(domain_src_path)):
-            subdomain_src_path = os.path.join(domain_src_path, subdomain)
-            if not os.path.isdir(subdomain_src_path) or not (subdomain.startswith("D-") and "." in subdomain):
-                continue
+def adapt_subdomain_index(src: Path, active) -> str:
+    """Copy _index.md keeping only active layers in the Modules table."""
+    lines = src.read_text(encoding='utf-8').splitlines()
+    out = []
+    in_modules = False
+    for ln in lines:
+        if ln.startswith('| Layer | File |'):
+            in_modules = True
+            out.append(ln)
+            continue
+        if in_modules and ln.startswith('|'):
+            regs = set(RE_REG.findall(norm_text(ln)))
+            if regs and not (regs & set(active)) and 'Pair' not in ln:
+                continue  # inactive reg module row
+            if 'Pair' in ln:
+                pair_regs = set(RE_REG.findall(norm_text(ln.split('|')[1] + ' ' + ln.split('|')[2])))
+                if not pair_regs <= set(active):
+                    continue  # pair with an inactive regulation
+            if 'Interactions' in ln and len(active) < 2:
+                continue  # interactions only for multi-reg cases
+            out.append(ln)
+            continue
+        if in_modules and not ln.startswith('|'):
+            in_modules = False
+        out.append(ln)
+    return '\n'.join(out) + '\n'
 
-            src_md = os.path.join(subdomain_src_path, f"{subdomain}.md")
-            if not os.path.exists(src_md):
-                continue
 
-            with open(src_md, "r", encoding="utf-8") as f:
-                content = f.read()
+def compose_case_slice(baseline_root: Path, out_root: Path, case: str, active_regs):
+    domains_dir = baseline_root / 'domains'
+    rows = []
+    total_viol = 0
+    for domain_dir in sorted(p for p in domains_dir.iterdir() if p.is_dir() and p.name.startswith('D-')):
+        for sub_dir in sorted(p for p in domain_dir.iterdir()
+                              if p.is_dir() and re.fullmatch(r'D-\d+\.\d+', p.name)):
+            reg_modules = [r for r in active_regs if (sub_dir / 'regs' / f'{r}.md').exists()]
+            art_dir = sub_dir / 'articles'
+            in_scope_articles = []
+            if art_dir.exists():
+                in_scope_articles = [f for f in sorted(art_dir.glob('*.md'))
+                                     if normalize_reg(f.name.split('_')[0]) in active_regs]
+            if not reg_modules and not in_scope_articles:
+                continue  # sub-domain not triggered by any active regulation
 
-            src_articles = os.path.join(subdomain_src_path, "articles")
+            dst = out_root / domain_dir.name / sub_dir.name
+            dst.mkdir(parents=True, exist_ok=True)
 
-            # Check if any active regulation participates in this subdomain
-            has_active_participation = False
-            for reg in active_regs:
-                if (f"<!-- aegis:subso:{reg} -->" in content or
-                    f"Sub-SO for {reg}" in content or
-                    f"SO-D-{subdomain[2:]}.{reg}" in content or
-                    f"applies_to: [{reg}]" in content or
-                    f"applies_to: [*{reg}*]" in content):
-                    has_active_participation = True
-                    break
+            # neutral + per-regulation modules (verbatim)
+            if (sub_dir / 'objective.md').exists():
+                shutil.copy2(sub_dir / 'objective.md', dst / 'objective.md')
+            if (sub_dir / '_index.md').exists():
+                (dst / '_index.md').write_text(
+                    adapt_subdomain_index(sub_dir / '_index.md', active_regs),
+                    encoding='utf-8', newline='\n')
+            pair_files = []
+            for r in reg_modules:
+                (dst / 'regs').mkdir(exist_ok=True)
+                shutil.copy2(sub_dir / 'regs' / f'{r}.md', dst / 'regs' / f'{r}.md')
+                amb = sub_dir / 'regs' / f'{r}.ambiguity.md'
+                if amb.exists():
+                    shutil.copy2(amb, dst / 'regs' / f'{r}.ambiguity.md')
+                viol, _info = purity_count(dst / 'regs' / f'{r}.md', active_regs)
+                total_viol += viol
+            for pair in sorted((sub_dir / 'cross').glob('*.md')) if (sub_dir / 'cross').exists() else []:
+                if pair.name == '_interactions.md':
+                    continue
+                regs = set(RE_REG.findall(norm_text(pair.stem.replace('-', ' '))))
+                if regs and regs <= set(active_regs):
+                    (dst / 'cross').mkdir(exist_ok=True)
+                    shutil.copy2(pair, dst / 'cross' / pair.name)
+                    pair_files.append(pair.stem)
+            if len(active_regs) >= 2 and (sub_dir / 'cross' / '_interactions.md').exists():
+                (dst / 'cross').mkdir(exist_ok=True)
+                src = (sub_dir / 'cross' / '_interactions.md').read_text(encoding='utf-8')
+                lines = src.splitlines()
+                banner = [f'<!-- aegis:case-scope: {", ".join(active_regs)} — matrix tables filtered '
+                          f'to active regulations; other tables retained verbatim -->']
+                filtered = filter_matrix_tables(lines, active_regs)
+                (dst / 'cross' / '_interactions.md').write_text(
+                    '\n'.join(banner + filtered) + '\n', encoding='utf-8', newline='\n')
+            if in_scope_articles:
+                (dst / 'articles').mkdir(exist_ok=True)
+                for f in in_scope_articles:
+                    shutil.copy2(f, dst / 'articles' / f.name)
 
-            # Filter articles in memory first
-            applicable_article_files = []
-            if os.path.exists(src_articles):
-                for f in os.listdir(src_articles):
-                    if f.endswith('.md'):
-                        pfx = f.split('_')[0]
-                        if any(is_reg_in_scope(pfx, active_regs) for active in active_regs):
-                            applicable_article_files.append(f)
-
-            # Strict exclusion of inactive subdomains for this combination of regulations
-            if not applicable_article_files and not has_active_participation:
-                continue
-
-            subdomain_dst_path = os.path.join(domain_dst_path, subdomain)
-            dst_articles = os.path.join(subdomain_dst_path, "articles")
-
-            # Copy verbatim in-scope articles
-            retained_articles = filter_articles(src_articles, dst_articles, active_regs)
-            total_articles += len(retained_articles)
-
-            os.makedirs(subdomain_dst_path, exist_ok=True)
-            filtered_md = filter_subdomain_markdown(content, active_regs, subdomain, retained_articles)
-            dst_md = os.path.join(subdomain_dst_path, f"{subdomain}.md")
-            with open(dst_md, "w", encoding="utf-8") as f:
-                f.write(filtered_md)
-
-            index_entries.append({
-                "domain": domain_folder,
-                "subdomain": subdomain,
-                "path": f"{domain_folder}/{subdomain}/{subdomain}.md",
-                "articles_count": len(retained_articles)
+            rows.append({
+                'domain': domain_dir.name,
+                'sub': sub_dir.name,
+                'regs': reg_modules,
+                'pairs': pair_files,
+                'articles': len(in_scope_articles),
+                'interactions': len(active_regs) >= 2 and (sub_dir / 'cross' / '_interactions.md').exists(),
             })
+    return rows, total_viol
 
-    # Build index.md
-    display_title = case_name if case_name else "Generic Regulatory Slice"
-    index_md_path = os.path.join(target_slice_dir, "index.md")
-    with open(index_md_path, "w", encoding="utf-8") as f:
-        f.write(f"# Filtered Corpus Slice — {display_title}\n\n")
-        f.write(f"**Applicable Regulations in Scope:** `{', '.join(active_regs)}`\n\n")
-        f.write("> **Deterministic Slice (Zero Summaries):**\n")
-        f.write("> This folder contains the verbatim baseline corpus filtered strictly for the regulations above.\n")
-        f.write("> All non-applicable regulations, unselected sub-domains, inactive table rows, and inactive articles have been eliminated.\n\n")
-        f.write("## In-Scope Sub-Domains\n\n")
-        f.write("| Domain | Sub-Domain | Filtered Specification | In-Scope Articles |\n")
-        f.write("|---|---|---|---|\n")
-        for entry in index_entries:
-            f.write(f"| `{entry['domain']}` | **{entry['subdomain']}** | [{entry['subdomain']}.md]({entry['path']}) | {entry['articles_count']} articles |\n")
 
-    print(f"Slice generated successfully for {display_title}:")
-    print(f"  - Active regulations: {', '.join(active_regs)}")
-    print(f"  - Sub-domains in scope: {len(index_entries)}")
-    print(f"  - Total verbatim articles retained: {total_articles}")
-    print(f"  - Slice location: {target_slice_dir}")
+def main():
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument('--case', required=True, help='Case name (cases/<case>/filtered_corpus)')
+    ap.add_argument('--regs', nargs='+', required=True, help='Active regulations (GDPR CRA NIS2 DORA AI_Act)')
+    ap.add_argument('--baseline', default='baseline', help='Baseline root (default: baseline)')
+    ap.add_argument('--output-dir', default=None, help='Override output directory')
+    args = ap.parse_args()
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Generate filtered case corpus slice for any arbitrary regulation subset")
-    parser.add_argument("--case", default=None, help="Case folder name under cases/ (e.g. Case_01_TinyTask_SaaS, Case_02_Fintech)")
-    parser.add_argument("--output-dir", default=None, help="Custom output directory path for the filtered slice")
-    parser.add_argument("--regs", nargs="+", required=True, help="Applicable regulations (e.g. GDPR, or CRA, or GDPR CRA NIS2, or NIS2 DORA)")
-    parser.add_argument("--baseline", default="baseline", help="Path to baseline directory")
-    parser.add_argument("--cases-dir", default="cases", help="Path to cases directory")
-    args = parser.parse_args()
+    active = []
+    for r in args.regs:
+        nr = normalize_reg(r)
+        if nr not in ALL_REGS:
+            print(f"unknown regulation '{r}'", os.sys.stderr)
+            raise SystemExit(2)
+        if nr not in active:
+            active.append(nr)
 
-    if not args.case and not args.output_dir:
-        parser.error("Either --case <CaseName> or --output-dir <Path> must be provided.")
+    baseline_root = Path(args.baseline)
+    out_root = Path(args.output_dir) if args.output_dir else Path('cases') / args.case / 'filtered_corpus'
+    if out_root.exists():
+        shutil.rmtree(out_root)
+    out_root.mkdir(parents=True)
 
-    process_case_slice(args.case, args.regs, args.baseline, args.cases_dir, args.output_dir)
+    rows, total_viol = compose_case_slice(baseline_root, out_root, args.case, active)
+
+    idx = [f'# Case corpus slice — {args.case}', '']
+    idx.append(f'- Scope regulations: {", ".join(active)}')
+    idx.append('- Composition mode: MODULAR (per-regulation modules selected verbatim from')
+    idx.append('  baseline/domains; no deletion filtering — regulation purity holds by construction)')
+    idx.append(f'- Sub-domains in slice: {len(rows)}')
+    idx.append(f'- Purity audit — inactive-reg mentions outside demarcated zones: {total_viol} (target 0)')
+    idx.append('')
+    idx.append('| Domain | Sub-domain | Reg modules | Cross pairs | Interactions | Articles |')
+    idx.append('|---|---|---|---|---|---|')
+    for r in rows:
+        idx.append(f"| {r['domain']} | {r['sub']} | {', '.join(r['regs']) or '—'} | "
+                   f"{', '.join(r['pairs']) or '—'} | {'yes' if r['interactions'] else '—'} | {r['articles']} |")
+    idx.append('')
+    idx.append('> Per-regulation modules may carry a trailing `Cross-references (informational)`')
+    idx.append('> section (mechanically demoted cross-regulation notes, marked as such) and')
+    idx.append('> in-module tables citing other regulations (participation/clause-map rows);')
+    idx.append('> these are informational and never impose obligations from inactive regulations.')
+    idx.append('')
+    (out_root / 'index.md').write_text('\n'.join(idx) + '\n', encoding='utf-8', newline='\n')
+
+    print('\n'.join(idx[:8]))
+    print(f'... {len(rows)} sub-domains; purity violations: {total_viol}')
+    if total_viol:
+        raise SystemExit(1)
+
+
+if __name__ == '__main__':
+    main()

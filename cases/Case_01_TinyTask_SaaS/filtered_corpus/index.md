@@ -1,49 +1,54 @@
-# Filtered Corpus Slice — Generic Regulatory Slice
+# Case corpus slice — Case_01_TinyTask_SaaS
 
-**Applicable Regulations in Scope:** `GDPR, CRA`
+- Scope regulations: GDPR, CRA
+- Composition mode: MODULAR (per-regulation modules selected verbatim from
+  baseline/domains; no deletion filtering — regulation purity holds by construction)
+- Sub-domains in slice: 38
+- Purity audit — inactive-reg mentions outside demarcated zones: 0 (target 0)
 
-> **Deterministic Slice (Zero Summaries):**
-> This folder contains the verbatim baseline corpus filtered strictly for the regulations above.
-> All non-applicable regulations, unselected sub-domains, inactive table rows, and inactive articles have been eliminated.
+| Domain | Sub-domain | Reg modules | Cross pairs | Interactions | Articles |
+|---|---|---|---|---|---|
+| D-01_Data-Protection | D-01.1 | GDPR, CRA | CRA-GDPR | yes | 13 |
+| D-01_Data-Protection | D-01.2 | GDPR, CRA | CRA-GDPR | yes | 6 |
+| D-01_Data-Protection | D-01.3 | GDPR, CRA | CRA-GDPR | yes | 7 |
+| D-01_Data-Protection | D-01.4 | GDPR, CRA | CRA-GDPR | yes | 11 |
+| D-02_Vulnerability-Management | D-02.1 | GDPR, CRA | CRA-GDPR | yes | 8 |
+| D-02_Vulnerability-Management | D-02.2 | GDPR, CRA | — | yes | 10 |
+| D-02_Vulnerability-Management | D-02.3 | GDPR, CRA | — | yes | 5 |
+| D-02_Vulnerability-Management | D-02.4 | GDPR, CRA | — | yes | 1 |
+| D-03_Access-Control | D-03.1 | GDPR, CRA | CRA-GDPR | yes | 15 |
+| D-03_Access-Control | D-03.2 | GDPR, CRA | CRA-GDPR | yes | 0 |
+| D-03_Access-Control | D-03.3 | GDPR, CRA | CRA-GDPR | yes | 7 |
+| D-03_Access-Control | D-03.4 | GDPR, CRA | CRA-GDPR | yes | 9 |
+| D-04_Incident-Response | D-04.1 | GDPR, CRA | CRA-GDPR | yes | 7 |
+| D-04_Incident-Response | D-04.2 | GDPR, CRA | CRA-GDPR | yes | 10 |
+| D-04_Incident-Response | D-04.3 | GDPR, CRA | CRA-GDPR | yes | 32 |
+| D-04_Incident-Response | D-04.4 | GDPR, CRA | CRA-GDPR | yes | 4 |
+| D-05_Data-Lifecycle | D-05.1 | GDPR, CRA | CRA-GDPR | yes | 15 |
+| D-05_Data-Lifecycle | D-05.2 | GDPR, CRA | CRA-GDPR | yes | 5 |
+| D-05_Data-Lifecycle | D-05.3 | GDPR, CRA | CRA-GDPR | yes | 10 |
+| D-05_Data-Lifecycle | D-05.4 | GDPR, CRA | — | yes | 3 |
+| D-06_Supply-Chain | D-06.1 | GDPR, CRA | CRA-GDPR | yes | 5 |
+| D-06_Supply-Chain | D-06.2 | GDPR, CRA | — | yes | 2 |
+| D-06_Supply-Chain | D-06.3 | GDPR, CRA | CRA-GDPR | yes | 19 |
+| D-06_Supply-Chain | D-06.4 | GDPR, CRA | CRA-GDPR | yes | 11 |
+| D-07_Secure-Development | D-07.1 | GDPR, CRA | CRA-GDPR | yes | 7 |
+| D-07_Secure-Development | D-07.2 | GDPR, CRA | — | yes | 0 |
+| D-07_Secure-Development | D-07.3 | GDPR, CRA | — | yes | 0 |
+| D-07_Secure-Development | D-07.4 | GDPR, CRA | — | yes | 4 |
+| D-08_Human-Factors | D-08.1 | GDPR, CRA | CRA-GDPR | yes | 8 |
+| D-08_Human-Factors | D-08.2 | GDPR, CRA | CRA-GDPR | yes | 2 |
+| D-08_Human-Factors | D-08.3 | GDPR, CRA | — | yes | 0 |
+| D-09_Governance-Documentation | D-09.1 | GDPR, CRA | CRA-GDPR | yes | 34 |
+| D-09_Governance-Documentation | D-09.2 | GDPR, CRA | CRA-GDPR | yes | 14 |
+| D-09_Governance-Documentation | D-09.3 | GDPR, CRA | — | yes | 0 |
+| D-09_Governance-Documentation | D-09.4 | GDPR, CRA | CRA-GDPR | yes | 25 |
+| D-10_Monitoring-Audit | D-10.1 | GDPR, CRA | CRA-GDPR | yes | 8 |
+| D-10_Monitoring-Audit | D-10.2 | GDPR, CRA | CRA-GDPR | yes | 10 |
+| D-10_Monitoring-Audit | D-10.3 | GDPR, CRA | CRA-GDPR | yes | 8 |
 
-## In-Scope Sub-Domains
+> Per-regulation modules may carry a trailing `Cross-references (informational)`
+> section (mechanically demoted cross-regulation notes, marked as such) and
+> in-module tables citing other regulations (participation/clause-map rows);
+> these are informational and never impose obligations from inactive regulations.
 
-| Domain | Sub-Domain | Filtered Specification | In-Scope Articles |
-|---|---|---|---|
-| `D-01_Data-Protection` | **D-01.1** | [D-01.1.md](D-01_Data-Protection/D-01.1/D-01.1.md) | 13 articles |
-| `D-01_Data-Protection` | **D-01.2** | [D-01.2.md](D-01_Data-Protection/D-01.2/D-01.2.md) | 6 articles |
-| `D-01_Data-Protection` | **D-01.3** | [D-01.3.md](D-01_Data-Protection/D-01.3/D-01.3.md) | 7 articles |
-| `D-01_Data-Protection` | **D-01.4** | [D-01.4.md](D-01_Data-Protection/D-01.4/D-01.4.md) | 11 articles |
-| `D-02_Vulnerability-Management` | **D-02.1** | [D-02.1.md](D-02_Vulnerability-Management/D-02.1/D-02.1.md) | 8 articles |
-| `D-02_Vulnerability-Management` | **D-02.2** | [D-02.2.md](D-02_Vulnerability-Management/D-02.2/D-02.2.md) | 10 articles |
-| `D-02_Vulnerability-Management` | **D-02.3** | [D-02.3.md](D-02_Vulnerability-Management/D-02.3/D-02.3.md) | 5 articles |
-| `D-02_Vulnerability-Management` | **D-02.4** | [D-02.4.md](D-02_Vulnerability-Management/D-02.4/D-02.4.md) | 1 articles |
-| `D-03_Access-Control` | **D-03.1** | [D-03.1.md](D-03_Access-Control/D-03.1/D-03.1.md) | 15 articles |
-| `D-03_Access-Control` | **D-03.2** | [D-03.2.md](D-03_Access-Control/D-03.2/D-03.2.md) | 0 articles |
-| `D-03_Access-Control` | **D-03.3** | [D-03.3.md](D-03_Access-Control/D-03.3/D-03.3.md) | 7 articles |
-| `D-03_Access-Control` | **D-03.4** | [D-03.4.md](D-03_Access-Control/D-03.4/D-03.4.md) | 9 articles |
-| `D-04_Incident-Response` | **D-04.1** | [D-04.1.md](D-04_Incident-Response/D-04.1/D-04.1.md) | 7 articles |
-| `D-04_Incident-Response` | **D-04.2** | [D-04.2.md](D-04_Incident-Response/D-04.2/D-04.2.md) | 10 articles |
-| `D-04_Incident-Response` | **D-04.3** | [D-04.3.md](D-04_Incident-Response/D-04.3/D-04.3.md) | 32 articles |
-| `D-04_Incident-Response` | **D-04.4** | [D-04.4.md](D-04_Incident-Response/D-04.4/D-04.4.md) | 4 articles |
-| `D-05_Data-Lifecycle` | **D-05.1** | [D-05.1.md](D-05_Data-Lifecycle/D-05.1/D-05.1.md) | 15 articles |
-| `D-05_Data-Lifecycle` | **D-05.2** | [D-05.2.md](D-05_Data-Lifecycle/D-05.2/D-05.2.md) | 5 articles |
-| `D-05_Data-Lifecycle` | **D-05.3** | [D-05.3.md](D-05_Data-Lifecycle/D-05.3/D-05.3.md) | 10 articles |
-| `D-05_Data-Lifecycle` | **D-05.4** | [D-05.4.md](D-05_Data-Lifecycle/D-05.4/D-05.4.md) | 3 articles |
-| `D-06_Supply-Chain` | **D-06.1** | [D-06.1.md](D-06_Supply-Chain/D-06.1/D-06.1.md) | 5 articles |
-| `D-06_Supply-Chain` | **D-06.2** | [D-06.2.md](D-06_Supply-Chain/D-06.2/D-06.2.md) | 2 articles |
-| `D-06_Supply-Chain` | **D-06.3** | [D-06.3.md](D-06_Supply-Chain/D-06.3/D-06.3.md) | 19 articles |
-| `D-06_Supply-Chain` | **D-06.4** | [D-06.4.md](D-06_Supply-Chain/D-06.4/D-06.4.md) | 11 articles |
-| `D-07_Secure-Development` | **D-07.1** | [D-07.1.md](D-07_Secure-Development/D-07.1/D-07.1.md) | 7 articles |
-| `D-07_Secure-Development` | **D-07.2** | [D-07.2.md](D-07_Secure-Development/D-07.2/D-07.2.md) | 0 articles |
-| `D-07_Secure-Development` | **D-07.3** | [D-07.3.md](D-07_Secure-Development/D-07.3/D-07.3.md) | 0 articles |
-| `D-07_Secure-Development` | **D-07.4** | [D-07.4.md](D-07_Secure-Development/D-07.4/D-07.4.md) | 4 articles |
-| `D-08_Human-Factors` | **D-08.1** | [D-08.1.md](D-08_Human-Factors/D-08.1/D-08.1.md) | 8 articles |
-| `D-08_Human-Factors` | **D-08.2** | [D-08.2.md](D-08_Human-Factors/D-08.2/D-08.2.md) | 2 articles |
-| `D-09_Governance-Documentation` | **D-09.1** | [D-09.1.md](D-09_Governance-Documentation/D-09.1/D-09.1.md) | 34 articles |
-| `D-09_Governance-Documentation` | **D-09.2** | [D-09.2.md](D-09_Governance-Documentation/D-09.2/D-09.2.md) | 14 articles |
-| `D-09_Governance-Documentation` | **D-09.3** | [D-09.3.md](D-09_Governance-Documentation/D-09.3/D-09.3.md) | 0 articles |
-| `D-09_Governance-Documentation` | **D-09.4** | [D-09.4.md](D-09_Governance-Documentation/D-09.4/D-09.4.md) | 25 articles |
-| `D-10_Monitoring-Audit` | **D-10.1** | [D-10.1.md](D-10_Monitoring-Audit/D-10.1/D-10.1.md) | 8 articles |
-| `D-10_Monitoring-Audit` | **D-10.2** | [D-10.2.md](D-10_Monitoring-Audit/D-10.2/D-10.2.md) | 10 articles |
-| `D-10_Monitoring-Audit` | **D-10.3** | [D-10.3.md](D-10_Monitoring-Audit/D-10.3/D-10.3.md) | 8 articles |

@@ -44,3 +44,22 @@ resolution followed (closed-list reading of the four Art. 32(1) measures).
 3. The corpus's per-regulation Sub-SOs encode honest scope nuance (D-03.2:
    "no explicit MFA mandate" under GDPR) — objectives inherit that nuance
    instead of overclaiming.
+
+## Post-modularization note (2026-09-21, after M1/M2)
+
+This run predates the modular corpus (`baseline/domains/` per-regulation
+layout, commits M1–M2). Reading notes for re-runs under the modular layout:
+
+- Checklist item 5 (R2a verbatim arm): D-03.2's Art. 28(3)(b) + Art. 29 quote
+  now lives in `D-03.2/regs/GDPR.md` → "Verbatim regulatory basis (GDPR)"
+  (extracted verbatim from the former GDPR↔NIS2 pair section). A single-reg
+  run no longer needs any cross-regulation pair file for anchoring.
+- Checklist item 6 / anchor choice: `PR.AA-03` (AG-D-03.2-001) was sourced
+  from the **NIS 2** Sub-SO card of the merged file — under the modular
+  corpus a GDPR-only run reads `D-03.2/regs/GDPR.md`, whose own CSF anchors
+  are `PR.AA-05, PR.AA-06, PR.AT-02`; a GDPR-only re-run would anchor there
+  (regulation discipline R8 is enforced by construction). The historical
+  output above is left as-run.
+- "Read Part 1 HSO/Sub-SO" in the procedure description maps to:
+  `objective.md` + `regs/<REG>.md` per confirmed regulation
+  (SPEC §5 P4, AGENTS.md §4).

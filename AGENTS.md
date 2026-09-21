@@ -29,6 +29,27 @@ aegis-mvp/
 │   ├── 00_Taxonomy_Reference.md
 │   ├── 01_Ambiguity_Registry.md
 │   └── 02_Regulatory_Mapping_and_Generic_Objectives.md
+├── baseline/               # Phase 0 Baseline (frozen taxonomy, ambiguity registry, generic objectives)
+│   ├── 00_Taxonomy_Reference.md
+│   ├── 01_Ambiguity_Registry.md
+│   ├── 02_Regulatory_Mapping_and_Generic_Objectives.md
+│   └── domains/            # MODULAR per-regulation corpus (38 sub-domains)
+│       ├── index.md        # Corpus index (modular layout)
+│       ├── _migration_report.md  # Modularization audit trail (line accounting)
+│       └── D-XX_Name/      # Per domain:
+│           ├── D-XX.manifest.json  # Per-regulation inverted index + modular_layout
+│           ├── _index.md
+│           └── D-XX.Y/     # Per sub-domain — fully modular:
+│               ├── _index.md                # identity card + module map
+│               ├── objective.md             # SO-D-XX.Y.HL (regulation-neutral common objective)
+│               ├── regs/<REG>.md            # INDEPENDENT per-regulation module:
+│               │                            #   participant row + Sub-SO + requirements
+│               │                            #   + verbatim regulatory basis + demoted
+│               │                            #   'Cross-references (informational)' section
+│               ├── regs/<REG>.ambiguity.md  # Part 4 ambiguity analysis, per regulation
+│               ├── cross/<R1>-<R2>.md       # canonical pair analysis (consult if BOTH regs apply)
+│               ├── cross/_interactions.md   # matrices, tensions, aggregation logic
+│               └── articles/                # verbatim article copies (per regulation)
 ├── templates/              # Blank templates for execution
 │   ├── company_input.md    # 5-section plain prose input template
 │   └── phase1_output.md    # 6-section output template
@@ -40,7 +61,8 @@ aegis-mvp/
 │       └── filtered_corpus/    # Case-specific deterministic corpus slice (NO summaries, verbatim in-scope only)
 │           └── index.md        # Slice index of in-scope sub-domains and articles
 ├── scripts/
-│   └── generate_case_corpus_slice.py # Deterministic filter utility (removes out-of-scope regs/articles)
+│   ├── modularize_domains.py          # Deterministic splitter: merged Parts 1-4 → modular per-regulation layout
+│   └── generate_case_corpus_slice.py  # Deterministic composer: case slice from modular modules (no deletion filtering)
 └── example/                # Golden reference run (VetCare Connect, GDPR-only)
 ```
 
@@ -75,7 +97,7 @@ flowchart TD
 2. **P2 — Confirm Regulations:** Evaluate the 5 candidate regulations (`GDPR`, `CRA`, `NIS2`, `DORA`, `AI_Act`). State whether each applies or does not apply with a 1-line rationale.
 3. **P3 — Select Sub-domain Subset:** Determine which of the 38 sub-domains are triggered by the applicable regulations and the company's operational profile (typical small company: 4–10 sub-domains).
 4. **P4 — Derive Adjusted Objectives:**
-   - For each active sub-domain, read the corpus High-level Security Objective (HSO) and applicable Sub-SOs.
+   - For each active sub-domain, read `objective.md` (the regulation-neutral HSO) and, **for each regulation confirmed in P2**, the independent module `regs/<REG>.md` (Sub-SO card + security requirements + verbatim regulatory basis). When ≥2 confirmed regulations apply, consult `cross/<R1>-<R2>.md` and `cross/_interactions.md` for aggregation.
    - Restate the objective to fit the company's scale and operational reality (**proportionality**).
    - Assign canonical IDs (`AG-D-XX.Y-NNN`).
    - Cite regulatory articles and control anchors (NIST CSF / OWASP) strictly from the baseline corpus.
@@ -88,7 +110,7 @@ flowchart TD
 
 - **R1 — Canonical Sub-domain Axis:** Always use canonical IDs `D-XX.Y` (`D-01.1` to `D-10.3`). Never merge or invent sub-domains.
 - **R2 — Anchor Integrity:**
-  - Every regulatory citation must exist in the sub-domain's `articles/` directory or in its merged corpus file.
+  - Every regulatory citation must exist in the sub-domain's `articles/` directory or be quotable verbatim from `regs/<REG>.md` ("Verbatim regulatory basis" section).
   - Every control anchor must exist in the `CONTROLS/` referential (e.g. NIST CSF 2.0).
   - **No invented anchors.** If an anchor cannot be verified, omit or re-derive the objective.
 - **R3 — Proportionality:** Adjust wording to company size/maturity (e.g., an 8-person company gets managed-cloud encryption, not a dedicated PKI governance board).
@@ -99,10 +121,10 @@ flowchart TD
 - **R6 — No Fact Invention:** Every statement about the company must trace back to `company_input.md`. Any unavoidable assumption must be prefixed with `> ASSUMPTION:`.
 - **R7 — Ambiguity Deference:** If an obligation references an ambiguity card in the registry, link to the card rather than inventing a novel legal interpretation.
 - **R8 — Regulatory Scope Discipline:** Only derive obligations from regulations confirmed as *applies* in P2.
-- **R9 — Case-Level Filtered Slice (Zero Summaries):**
-  - When exploring sub-domains and baseline requirements for a case, agents should reference the case's `filtered_corpus/` (generated via [`scripts/generate_case_corpus_slice.py`](file:///c:/Users/paulo.ribeiro/OneDrive%20-%20Instituto%20CCG%20ZGDV/Ambiente%20de%20Trabalho/Projetos_PhD/aegis-mvp/scripts/generate_case_corpus_slice.py)) rather than the monolithic multi-regulation baseline.
-  - The slice retains **only** in-scope regulation pairs, active Sub-SOs, and verbatim applicable article copies, eliminating out-of-scope noise completely with zero text summaries.
-  - Baseline domain documents in `baseline/domains/` are standardized with universal semantic boundary tags (`<!-- aegis:pair:REG1,REG2 -->`, `<!-- aegis:subso:REG -->`, `<!-- aegis:req:REG... -->`, `<!-- aegis:ambiguity:REG -->`), guaranteeing deterministic, surgical parsing by any automated script.
+- **R9 — Case-Level Composed Slice (Zero Summaries):**
+  - When exploring sub-domains and baseline requirements for a case, agents should reference the case's `filtered_corpus/` (generated via [`scripts/generate_case_corpus_slice.py`](file:///c:/Users/paulo.ribeiro/OneDrive%20-%20Instituto%20CCG%20ZGDV/Ambiente%20de%20Trabalho/Projetos_PhD/aegis-mvp/scripts/generate_case_corpus_slice.py)) rather than the full baseline.
+  - The slice is **composed, not filtered**: for the active regulations it copies the already-independent per-regulation modules verbatim (`objective.md`, `regs/<REG>.md` + `regs/<REG>.ambiguity.md`, `cross/` pairs where BOTH regulations are active, in-scope `articles/`). Regulation purity holds by construction — zero text summaries, zero deletion filtering of mixed prose.
+  - The baseline itself is modular: `baseline/domains/D-XX.Y/` separates the regulation-neutral objective, the independent `regs/<REG>.md` modules (with cross-regulation notes demarcated in trailing `Cross-references (informational)` sections), and the cross-regulation layer (`cross/`). The layout was produced deterministically by `scripts/modularize_domains.py`; audit trail in `baseline/domains/_migration_report.md`.
 - **R10 — Physical Inspection & Anti-Circular Testing:**
   - Automated tests and scratch scripts are necessary but **never sufficient on their own**. Agents must avoid circular validation traps (i.e. writing a test that merely confirms the assumptions of the code just written).
   - Whenever generating, filtering, or modifying documentation and baseline corpora, agents **must perform direct physical inspections** of the generated Markdown files (reading actual line ranges, verifying table columns/rows, validating section boundaries, checking markdown syntax rendering).

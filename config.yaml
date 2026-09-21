@@ -1,23 +1,26 @@
 # aegis-mvp configuration
 #
-# All corpus locations are REFERENCES into the frozen AEGIS baseline inside
-# Methodology_compact (read-only; never copy, never write). Paths are relative
-# to this repository root. Override in a local config.local.yaml if the
-# methodology repo lives elsewhere.
+# Working corpus: the in-repo MODULAR baseline under baseline/ (independent
+# per-regulation modules), derived deterministically from the frozen AEGIS
+# methodology baseline inside Methodology_compact by the chain
+# reorg_by_domain_md.py -> annotate_baseline_domains.py -> modularize_domains.py
+# (audit trail: baseline/domains/_migration_report.md).
+# Methodology_compact remains the read-only provenance source — never write to
+# it (SPEC.md §10).
 
 corpus:
-  # Frozen baseline corpus root (38 sub-domains D-XX.Y + article copies + NIST/OWASP referentials)
-  root: "../Methodology_compact/00_METHODOLOGY/PREPROCESSING_by_domain"
-  # Sub-domain corpus: domains/D-0X_Name/D-XX.Y/D-XX.Y.md (merged Parts 1-4) + articles/
-  domains: "../Methodology_compact/00_METHODOLOGY/PREPROCESSING_by_domain/domains"
+  # Working corpus root (38 sub-domains D-XX.Y in modular layout + referentials)
+  root: "baseline"
+  # Sub-domain corpus: domains/D-0X_Name/D-XX.Y/{_index.md, objective.md, regs/, cross/, articles/}
+  domains: "baseline/domains"
   # Control referentials: NIST_CSF_2.0, NIST_PF, NIST_AI_RMF, NIST_80053R5, NIST_SSDF, OWASP_ASVS, OWASP_SAMM
-  controls: "../Methodology_compact/00_METHODOLOGY/PREPROCESSING_by_domain/CONTROLS"
-  # Domain index (10 domains, 38 sub-domains)
-  domains_index: "../Methodology_compact/00_METHODOLOGY/PREPROCESSING_by_domain/domains/index.md"
+  controls: "baseline/CONTROLS"
+  # Domain index (10 domains, 38 sub-domains, modular layout)
+  domains_index: "baseline/domains/index.md"
 
 ambiguity_registry:
   # Canonical cross-case ambiguity baseline (49 clause cards); per-clause citations
-  # must point here, not be re-derived
+  # must point here, not be re-derived. Provenance: Methodology_compact AMBIGUITY_REGISTRY.
   path: "../Methodology_compact/00_METHODOLOGY/AMBIGUITY_REGISTRY/registry.md"
 
 pipeline:

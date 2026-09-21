@@ -59,7 +59,9 @@ logins on the app admin console; the console has no MFA today.
 
 *Anchor note (rule R2a, second arm): D-03.2's `articles/` directory holds no
 GDPR copies; Art. 28(3)(b) and Art. 29 are quoted verbatim inside the
-sub-domain's merged file (GDPR↔NIS2 pair section), which satisfies R2a.*
+sub-domain's merged file (GDPR↔NIS2 pair section), which satisfies R2a.
+[Post-modularization: the same quote now lives in
+`D-03.2/regs/GDPR.md` → "Verbatim regulatory basis (GDPR)".]*
 
 ### D-05.3 — Right to Erasure
 

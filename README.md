@@ -15,7 +15,7 @@ repo (`Methodology_compact`).
 
 | Nature | What it covers | Where it lives |
 |---|---|---|
-| **Inherited (free)** | 38 sub-domains `D-XX.Y` (10 domains), verbatim regulation article copies, 7 NIST/OWASP control referentials, ambiguity baseline | `Methodology_compact/00_METHODOLOGY/PREPROCESSING_by_domain/` + `00_METHODOLOGY/AMBIGUITY_REGISTRY/` — referenced via `config.yaml`, never copied |
+| **Inherited (free)** | 38 sub-domains `D-XX.Y` (10 domains) in **modular per-regulation layout**, verbatim regulation article copies, 7 NIST/OWASP control referentials, ambiguity baseline | `baseline/` (working modular corpus, derived from `Methodology_compact`; see `baseline/domains/_migration_report.md`) |
 | **Company input** | 1 prose file, 5 short sections (profile, product, data, systems, regulations) | `input/<company>/company_input.md` |
 | **Generated** | 1 all-in-one output document | `output/<company>/phase1_output.md` |
 
@@ -33,28 +33,48 @@ A complete worked example (fictional company, real corpus anchors) lives in `exa
 
 ```
 aegis-mvp/
+├── AGENTS.md            operational contract & guidelines for agents
 ├── README.md            this file
-├── config.yaml          corpus paths (reference, not copy)
 ├── SPEC.md              the contract: input schema, procedure, output schema, rules
+├── config.yaml          corpus paths (reference, not copy)
+├── baseline/            Phase 0 Baseline (frozen taxonomy, ambiguity registry, generic objectives)
+│   ├── 00_Taxonomy_Reference.md
+│   ├── 01_Ambiguity_Registry.md
+│   ├── 02_Regulatory_Mapping_and_Generic_Objectives.md
+│   └── domains/         canonical 38 sub-domains, MODULAR per-regulation layout:
+│                         D-XX.Y/{_index.md, objective.md, regs/<REG>.md,
+│                         regs/<REG>.ambiguity.md, cross/<R1>-<R2>.md,
+│                         cross/_interactions.md, articles/}
 ├── templates/
 │   ├── company_input.md     blank input template + filling instructions
 │   └── phase1_output.md     blank output skeleton
 ├── input/<company>/     one directory per company run
 ├── output/<company>/    one output per company run
+├── cases/               benchmark reference cases from Methodology_compact
+│   └── Case_01_TinyTask_SaaS/
+│       ├── 01_PHASE1_CONTEXT/  Phase 1 contextual deliverables (Doc01 to Doc06)
+│       └── filtered_corpus/    deterministic composed case slice (active-reg modules verbatim, zero summaries)
 ├── example/             golden example: fictional company, real anchors
-└── scripts/             (empty in Inc.0 — procedure is LLM-assisted, no code)
+└── scripts/             automation utilities
+    ├── modularize_domains.py          merged Parts 1-4 → modular per-regulation layout (deterministic)
+    └── generate_case_corpus_slice.py  deterministic slice composer for company cases
 ```
 
 ## Relation to `Methodology_compact`
 
-- **Read-only by reference.** This repo never writes into the methodology corpus and
-  never duplicates it. Paths are configured in `config.yaml`.
+- **Provenance, read-only.** This repo never writes into the methodology corpus.
+  `baseline/` is the working modular copy, derived deterministically from
+  `Methodology_compact` (`reorg_by_domain_md.py` → `annotate_baseline_domains.py`
+  → `modularize_domains.py`; audit: `baseline/domains/_migration_report.md`).
+  Each `regs/<REG>.md` is independent of every other regulation — applying any
+  single regulation never requires loading the others; cross-regulation analysis
+  lives in `cross/`.
 - **ID-compatible.** Adjusted objectives reuse the AEGIS `AG-D-XX.Y-NNN` scheme and
   sub-domain codes (`D-01.1` … `D-10.3`) so later increments can absorb outputs into
   the canonical document chain (Doc08/Doc10/Doc11/Doc12/Doc13) without rework.
-- **Corpus is frozen.** Interpretation work (cross-regulation analysis, hierarchical
-  objectives, ambiguity resolutions) is already done in the baseline; this pipeline
-  *applies* it to a company, it does not re-derive it.
+- **Interpretation is frozen.** Cross-regulation analysis, hierarchical objectives
+  and ambiguity resolutions are already done in the baseline; this pipeline
+  *applies* them to a company, it does not re-derive them.
 
 ## Status — Increment 0 (MVP)
 

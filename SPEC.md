@@ -41,7 +41,7 @@ graph/ontology/dashboard infrastructure. See §9.
 
 | Nature | Content | Obligation of the executor |
 |---|---|---|
-| **Inherited** | Sub-domain corpus (`D-01.1` … `D-10.3`, merged Parts 1–4 with hierarchical objectives and per-regulation Sub-SOs), verbatim article copies (`articles/`), control referentials (`CONTROLS/`), ambiguity baseline (`AMBIGUITY_REGISTRY/`) | **Read by reference** via `config.yaml`. Never modify, never copy into this repo, never re-derive interpretations the corpus already contains. |
+| **Inherited** | Modular sub-domain corpus (`D-01.1` … `D-10.3`, each `D-XX.Y/` providing a regulation-neutral `objective.md`, independent per-regulation modules `regs/<REG>.md` + `regs/<REG>.ambiguity.md`, cross-regulation analyses `cross/<R1>-<R2>.md` + `cross/_interactions.md`), verbatim article copies (`articles/`), control referentials (`CONTROLS/`), ambiguity baseline (`AMBIGUITY_REGISTRY/`) | **Read by reference** via `config.yaml`. Never modify, never copy into this repo, never re-derive interpretations the corpus already contains. |
 | **Company input** | Company profile, product, data handled, systems, regulations assumed | **Provided once** as `company_input.md` (§4). This is the *only* thing a new project must supply. |
 | **Generated** | Applicability reasoning + adjusted objectives with anchors | **Produced by the procedure** (§5) into `phase1_output.md` (§6). |
 
@@ -50,12 +50,21 @@ regulatory interpretation are frozen Phase-0 baseline shared by all cases; a new
 project inherits them at zero cost. "Objectives" are an *output* of Phase 1, not
 an input — only business goals enter through the input file.
 
+Corpus layout note: the per-regulation modular layout was produced
+deterministically from the former merged files (Parts 1–4) by
+`scripts/modularize_domains.py`; the full audit trail is
+`baseline/domains/_migration_report.md`. Each `regs/<REG>.md` is independent of
+every other regulation: cross-regulation material is either demarcated in a
+trailing `Cross-references (informational)` section (never normative) or lives
+in `cross/`.
+
 ## 3. Configuration
 
 All paths live in `config.yaml` (see that file). The executor must resolve:
 
 - `corpus.domains` — sub-domain corpus root (10 domain directories, each with
-  `D-XX.Y/` sub-directories containing `D-XX.Y.md` + `articles/`).
+  `D-XX.Y/` sub-directories containing `_index.md`, `objective.md`, `regs/`,
+  `cross/` and `articles/`).
 - `corpus.controls` — control referentials (`NIST_CSF_2.0/CSF_2.0.json`,
   `NIST_PF/`, `NIST_AI_RMF/`, `NIST_80053R5/`, `NIST_SSDF/`, `OWASP_ASVS/`,
   `OWASP_SAMM/`).
@@ -99,18 +108,23 @@ derivation; P5 renders and validates.
   Output §2 records each as *applies / does not apply* with a one-line rationale.
   A regulation the company listed but that fails the scope check is **flagged,
   not silently dropped**.
-- **P3 — Select the sub-domain subset.** Scan the 38 sub-domains (names in each
-  `D-0X_*/_index.md`; definitions in Part 1 of each `D-XX.Y.md`). A sub-domain is
-  **in scope** when an applicable regulation imposes obligations whose subject
-  matter matches the sub-domain *and* the company's facts trigger them (e.g. a
-  company storing client personal data in a cloud DB → `D-01.1 Data at Rest
-  Encryption` is in scope via GDPR Art. 32). Record each selected sub-domain with
-  a one-line trigger rationale in output §3. Target size: as small as the facts
-  allow (typical small company: 4–10 sub-domains).
+- **P3 — Select the sub-domain subset.** Scan the 38 sub-domains (names and
+  module lists in each `D-0X_*/_index.md` and `D-XX.Y/_index.md`; the neutral
+  objective in `D-XX.Y/objective.md`). A sub-domain is **in scope** when an
+  applicable regulation imposes obligations whose subject matter matches the
+  sub-domain *and* the company's facts trigger them (e.g. a company storing
+  client personal data in a cloud DB → `D-01.1 Data at Rest Encryption` is in
+  scope via GDPR Art. 32). Record each selected sub-domain with a one-line
+  trigger rationale in output §3. Target size: as small as the facts allow
+  (typical small company: 4–10 sub-domains).
 - **P4 — Derive adjusted objectives.** For each in-scope sub-domain:
-  1. Read `D-XX.Y.md` **Part 1** — the High-level Security Objective and the
-     Sub-SO of each participating regulation; the security requirements section.
-  2. Keep only the Sub-SOs / requirements of regulations confirmed in P2.
+  1. Read `D-XX.Y/objective.md` (the regulation-neutral High-level Security
+     Objective) and, for **each regulation confirmed in P2**, the independent
+     module `D-XX.Y/regs/<REG>.md` (Sub-SO card + security requirements +
+     verbatim regulatory basis). When ≥2 confirmed regulations apply, consult
+     `D-XX.Y/cross/<R1>-<R2>.md` and `cross/_interactions.md` for aggregation.
+  2. Keep only the Sub-SOs / requirements of regulations confirmed in P2
+     (the modules already enforce this per regulation).
   3. Restate each as a company-proportional objective (rule R3) with ID
      `AG-D-XX.Y-NNN` (rule R4).
   4. Anchor it: cite regulation article(s) that **exist as copies** in the
@@ -149,8 +163,8 @@ the `company_input.md` used), `corpus` (the `corpus.root` value from config).
 - **R2 — Anchor integrity (the golden rule).**
   - *R2a:* Every regulatory citation must exist as an article copy in the cited
     sub-domain's `articles/` directory (e.g. `D-01.1/articles/GDPR_Art_32.md`) or
-    be quotable verbatim from that sub-domain's merged file. Cite as
-    `REG Art. N` exactly as the file names it.
+    be quotable verbatim from that sub-domain's `regs/<REG>.md` ("Verbatim
+    regulatory basis" section). Cite as `REG Art. N` exactly as the file names it.
   - *R2b:* Every control anchor must exist in the cited referential file under
     `CONTROLS/` (grep-verifiable ID). Maximum 2 anchors per objective; omit the
     column content (`—`) rather than stretch a match.
@@ -173,8 +187,10 @@ the `company_input.md` used), `corpus` (the `corpus.root` value from config).
   the ambiguity registry, cite the card (registry ID) in §5 and follow its canonical
   resolution; do not re-litigate the ambiguity in the output.
 - **R8 — Regulation discipline.** Obligations are derived only from regulations
-  confirmed applicable in P2. If an in-scope sub-domain's corpus material references
-  other regulations, ignore those parts for this run.
+  confirmed applicable in P2. The modular corpus enforces this by construction:
+  read only `regs/<REG>.md` for confirmed regulations; the demarcated
+  `Cross-references (informational)` sections and `cross/` files are context,
+  never obligation sources for a non-confirmed regulation.
 
 ## 8. Run validation checklist
 

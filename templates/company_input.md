@@ -33,11 +33,13 @@ applicability.>
 employees, patients...); anything specially sensitive (health, payment,
 minors); rough scale.>
 
-## §4 Systems & Cloud
+## §4 Operational & Service Model
 
-<Main systems/applications; hosting (own servers / cloud provider);
-authentication model; third-party services with a role (hosting, payments,
-email...). 5-10 lines.>
+<Operational context: whether services are hosted in-house or via managed cloud;
+high-level access/authentication pattern (e.g. centralized access control, role-based);
+main third-party data processing flows (e.g. external payment handling, outsourced messaging).
+Note: Specify functional roles and operational model; specific vendor products or software tools
+are not required and will be addressed in Phase 2. 5-10 lines.>
 
 ## §5 Regulations Assumed
 

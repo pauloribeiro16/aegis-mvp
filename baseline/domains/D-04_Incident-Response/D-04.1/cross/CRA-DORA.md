@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **different-perspective** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-027, Annex I Part I (2)(l)) | On-device activity monitoring with user opt-out |  |

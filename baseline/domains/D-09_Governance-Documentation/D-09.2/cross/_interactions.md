@@ -6,6 +6,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -404,6 +408,14 @@ GDPR, NIS 2, CRA, DORA, AI Act (ALL 5 — no scope-disjoint pair at 9.2, hence t
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -441,6 +453,43 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (5 regulations)
 <!-- emergent: GDPR,NIS2,CRA,DORA,AI_Act -->
 - **CRITICAL: Five overlapping risk/impact assessments with only one consolidation rule**: GDPR DPIA (Art. 35), NIS 2 risk analysis (Art. 21(2)(a) + Art. 22), CRA cybersecurity risk assessment (Art. 13(3) + Annex VII §3), DORA ICT risk framework (Art. 6/7), AI Act FRIA-equivalent (Art. 9) — five separate assessment regimes that may all apply to the same entity-product combination. The ONLY OJ-level consolidation rule is CRA Art. 13(4) sentence 2 (AI Act Art. 9 risk management substitutes for CRA risk assessment). No other cross-regulation consolidation exists. Phase 1 entities must maintain five separate risk registers with no OJ-level cross-referencing. **Recommend Layer 1 cross-cutting analysis** to map the five assessment objects (data-subject rights, entity operational risk, product cybersecurity risk, ICT operational risk, AI-system risk) to a unified register.
@@ -453,6 +502,10 @@ All 5 regulations map D-09.2 to the NIST CSF 2.0 Subcategory **ID.RA-05** (Threa
 D-09.2 is the most heavily-overlapped sub-domain. Phase 1 entities must implement five distinct assessment artefacts with no OJ-level consolidation. The Layer 1 cross-cutting analysis is required to map the five assessment objects. For DORA financial entities deploying high-risk AI products processing personal data, all five assessments apply simultaneously. The CRA Art. 13(4) sentence 2 AI-Act-substitution rule is the only OJ-level consolidation available.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -480,4 +533,8 @@ status: DRAFT
 <!-- participants: GDPR, NIS2, CRA, DORA, AI_Act -->
 **Participants (from CRDA):** GDPR, NIS2, CRA, DORA, AI_Act
 **Critical note (CRDA flag):** D-09.2 is the most heavily-overlapped sub-domain. All 5 regulations overlap with distinct risk/impact assessment regimes from different angles: GDPR DPIA (Art. 35), NIS 2 risk analysis (Art. 21(2)(a) + Art. 22), CRA cybersecurity risk assessment (Art. 13(3) + Annex VII §3), DORA ICT risk framework (Art. 6/7), AI Act FRIA (Art. 9). The assessments are NOT cross-referenced at the OJ level — each is a separate artefact with distinct triggers, content, and review cadences. The ONLY OJ-level consolidation rule is CRA Art. 13(4) sentence 2 (AI Act Art. 9 risk management substitutes for CRA risk assessment).
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

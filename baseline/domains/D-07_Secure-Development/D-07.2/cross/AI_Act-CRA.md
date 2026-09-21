@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,AI_Act -->
 | CRA ↔ AI_Act | **complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-067, Annex I Part I (2)(j); SR-CRA-068, Annex I Part I (2)(k)) | Attack-surface reduction + exploitation mitigation at the outcome level. | |

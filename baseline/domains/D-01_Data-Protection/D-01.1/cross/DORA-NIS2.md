@@ -45,6 +45,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,DORA -->
 | NIS2 ↔ DORA | **Equal** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-001, Art. 21(2)(h)) | Cryptography policy + "where appropriate" encryption | Entity-level; "where appropriate" hedge + appropriate-and-proportionate |

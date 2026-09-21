@@ -49,6 +49,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,CRA -->
 | NIS2 ↔ CRA | **Complementary** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-001, Art. 21(2)(h)) | Cryptography policy; encryption "where appropriate" | Entity-level (essential/important); "where appropriate" hedge; appropriate-and-proportionate |

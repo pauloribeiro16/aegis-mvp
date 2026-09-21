@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis [VERBATIM]
@@ -465,6 +469,14 @@ GDPR, CRA, AI Act (3 of 5 regs — NIS 2 and DORA are out-of-scope per AEGIS tax
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -502,6 +514,15 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (3+ regulations)
 <!-- emergent: GDPR,CRA,AI_Act -->
 - **Three-direction retention/obligation interaction.** GDPR says *upper limit*; AI Act says *lower floor for AI logs*; CRA says *lower floor for update artefacts*. The pairwise readings (GDPR↔CRA, GDPR↔AI_Act, CRA↔AI_Act) each handle two of the three directions, but the *non-pairwise observation* is that a single data stream (e.g., update logs from a CRA-classified high-risk AI) may need to satisfy all three simultaneously. Phase 2 must produce a retention-policy template that: (1) sets the AI Act 6-month floor as a hard minimum for AI logs; (2) caps retention at the GDPR "necessary" boundary; (3) ensures CRA update artefact availability is decoupled from personal-data retention via separation architecture.
@@ -512,6 +533,10 @@ NIST CSF 2.0 anchoring is dominated by **PR.DS-12** (Data disposal managed) and 
 Phase 2 obligation derivation must produce a 3-axis retention policy: (1) GDPR ceiling (upper limit, Art. 5(1)(e)), (2) AI Act floor (≥6 months for high-risk AI logs), (3) CRA availability tail (10 years for security updates). For high-risk AI products that are CRA-classified and process personal data, all three apply; the policy must explicitly decouple CRA update artefact availability from personal-data retention. Phase 3 case generation must validate the separation architecture in case companies.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -539,4 +564,8 @@ status: DRAFT
 <!-- participants: GDPR, CRA, AI_Act -->
 **Participants (from CRDA):** GDPR, CRA, AI_Act
 **Sole-authority note:** NIS2 and DORA are out-of-scope for D-05.2 per AEGIS taxonomy §4.1 — DORA Art. 12(1) backup policies specify scope and frequency but do not impose retention / archiving obligations as such. GDPR is the dedicated authority for retention; CRA addresses the distinct update-availability tail; AI Act addresses the distinct AI-log minimum floor.
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

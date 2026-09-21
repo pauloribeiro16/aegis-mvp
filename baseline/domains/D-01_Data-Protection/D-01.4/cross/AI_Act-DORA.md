@@ -45,6 +45,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: DORA,AI_Act -->
 | DORA ↔ AI_Act | **Different perspective** | Tension/difference |
 |---|---|---|
 | **DORA** (SR-DORA-001, Art. 9(2)) | Integrity is one of the 4×3 CIA+A cells | Financial entity; CIA+A 4×3 matrix |

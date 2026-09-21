@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **Complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-016, Annex I Part I (2)(d) — partial) | "Appropriate control mechanisms, may include authentication" | Product-level; "may include" + 3-way OR; PR.AA-05 + PR.AA-06 + DE.CM-09 |

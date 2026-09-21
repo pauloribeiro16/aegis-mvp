@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,DORA -->
 | NIS2 ↔ DORA | **equal** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-032, Art. 20(1); SR-NIS2-035, Art. 21(2)(a); SR-NIS2-037, Art. 21(2)(f)) | Management body approve/oversee/liable; risk-analysis + IS-security + effectiveness-assessment policies. | |

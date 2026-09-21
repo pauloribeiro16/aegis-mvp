@@ -6,6 +6,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -296,6 +300,14 @@ GDPR, CRA, DORA (3 of 5 regs; NIS 2 partial via `SR-NIS2-001` cryptography polic
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -332,6 +344,15 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (3+ regulations)
 <!-- emergent: GDPR,CRA,DORA -->
 - All three regulations anchor key management to a **separation property** (custodian ≠ consumer), but the operational depth differs materially: GDPR (de-attribution test, PR.DS-01 + PR.IR-03); CRA (functional RBAC separation, PR.DS-01 + PR.AA-05 + GV.OV-01); DORA (HSM-anchored custodianship + split-knowledge + classification-driven cipher strength + quorum-based recovery, PR.DS-01 + PR.AA-03 + PR.AA-04 + GV.RM-04). A small SaaS company (CRA scope + GDPR scope) typically meets the floor; a DORA financial entity (all three) must operate a substantially deeper architecture. Proportionality (P2) is the relevant design lever.
@@ -342,6 +363,10 @@ All three regulations share PR.DS-01 as a common CSF anchor; DORA additionally a
 For Phase 1C Doc 07, D-01.3 is the **deepest-stack** sub-domain within D-01: the DORA-classified key-management architecture is materially more expensive than the GDPR/CRA floor. Proportionality is decisive: a small SaaS (no DORA scope) meets the floor with HSM-anchored custodianship + documented rotation; a DORA financial entity requires the full split-knowledge + quorum-recovery stack.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -368,4 +393,8 @@ status: DRAFT
 #### D-01.3 Cryptographic Key Management
 <!-- participants: GDPR, CRA, DORA; NIS2 partial; AI_Act absent -->
 **Participants (from CRDA):** GDPR, CRA, DORA (NIS2 partial via SR-NIS2-001 cryptography policy; AI_Act absent per AEGIS taxonomy §4.1; CRA has a T2-vs-text gap on explicit key-management — the SR-CRA-004 reading imports Annex I (2)(d) access-control + (2)(e) "other technical means" to anchor the separation).
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

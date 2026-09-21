@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: DORA,AI_Act -->
 | DORA ↔ AI_Act | **complementary** | Tension/difference |
 |---|---|---|
 | **DORA** (SR-DORA-025, Art. 13(6) `commensurate to the remit`) | Compulsory training proportionate to staff function complexity. | |

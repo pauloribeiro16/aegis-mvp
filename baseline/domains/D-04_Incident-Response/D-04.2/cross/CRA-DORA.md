@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-043 + SR-CRA-044, Annex I Part I (2)(h)/(i)) | Product-level post-incident availability + cross-product impact containment |  |

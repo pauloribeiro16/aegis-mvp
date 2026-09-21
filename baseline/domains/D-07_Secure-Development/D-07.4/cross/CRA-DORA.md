@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-069, Art. 13(14) series-production; SR-CRA-070, Art. 21-22 substantial modification) | Series-production conformity + substantial-modification = manufacturer trigger; third-party substantial mod = manufacturer (Art. 22). | |

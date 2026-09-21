@@ -51,6 +51,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-043, Art. 24(1)+(2)) | Appropriate technical and organisational measures; data-protection policies. | |

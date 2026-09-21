@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,NIS2 -->
 | GDPR ↔ NIS2 | **Complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-011, Art. 29 + Art. 32(4) + Art. 28(3)(a)/(b)) | Instruction-bound processing under least-privilege authorisation; chain of authority controller → processor → authorised persons | Controller/processor; personal-data scope; PR.AA-05 + PR.AA-06 |

@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -355,6 +359,14 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs — AI Act out-of-scope per AEGIS taxonomy �
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -391,6 +403,27 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (3+ regulations)
 <!-- emergent: GDPR,NIS2,CRA,DORA -->
 - All four regulations impose an identity-management obligation, but the **identity subject** differs: GDPR (data subjects, external), NIS 2 (workforce, internal), CRA (product users + services + integrated components, product-side), DORA (staff + service-to-service identities, financial-entity-side). The four operate at different identity boundaries and are **not contradictory** because they target different identity objects. A company across all four must operate a multi-boundary identity architecture, with the boundaries clearly documented. Layer 2/3 should specify the hand-off protocols at the boundary surfaces (e.g. data subject → staff via rights-exercise; staff → service identity via authentication; service identity → product user via integration).
@@ -402,6 +435,10 @@ CSF mappings are diverse: GDPR maps to PR.AA-03 + PR.AA-02 + PR.DS-12; NIS 2 to 
 For Phase 1C Doc 07, D-03.1 is a **multi-boundary identity architecture** sub-domain: a company across multiple regulators must document each identity boundary separately. Proportionality: a small SaaS (no DORA, no NIS 2) may operate a unified identity service for product users and staff; a DORA financial entity must operate separate identity architectures for staff, services, and data subjects, with documented boundary hand-offs.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -427,4 +464,8 @@ status: DRAFT
 > **Domain analysis:** [D-03.1 Identity Lifecycle Management](../../DomainAnalysis/D-03_Access-Control/D-03.1.md)
 #### D-03.1 Identity Lifecycle Management
 **Participants (from CRDA):** GDPR, NIS2, CRA, DORA
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **different-perspective** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-045, Art. 35(1)-(4); SR-GDPR-046, Art. 35(7)) | DPIA with four Art. 35(7) content items. | |

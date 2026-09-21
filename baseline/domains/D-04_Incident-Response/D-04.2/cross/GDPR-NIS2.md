@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,NIS2 -->
 | GDPR ↔ NIS2 | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-015, Art. 33(3)(d) + Art. 34(3)(a)/(b)) | Post-breach containment, mitigation, and remediation runbooks — including cryptographic unintelligibility carve-out |  |

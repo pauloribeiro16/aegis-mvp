@@ -6,6 +6,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -394,6 +398,14 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs — AI Act out-of-scope per AEGIS taxonomy �
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -430,6 +442,27 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (3+ regulations)
 <!-- emergent: GDPR,NIS2,CRA,DORA -->
 - The four regulations have **different MFA explicitness** in the OJ text: GDPR (no explicit MFA — staff-side via instructions + confidentiality, data-subject-side via verification); NIS 2 (explicit MFA or continuous authentication "where appropriate"); CRA ("appropriate control mechanisms, may include authentication" — no explicit MFA); DORA ("strong authentication mechanisms" — T4-vs-text gap, dominant EBA reading is MFA). A company across all four must reconcile four different textual anchors. The **practical floor** is: NIS 2's "where appropriate" is the most explicit, DORA's "strong authentication" (interpreted as MFA via EBA Guidelines) is the most demanding, CRA's "may include" is the most permissive, and GDPR's silence is the least demanding. A DORA financial entity with NIS 2 + CRA scope typically meets the most demanding floor (DORA strong-authentication ≈ MFA via EBA reading) and satisfies the other three.
@@ -441,6 +474,10 @@ CSF mappings converge on PR.AA-03 (users, services, and hardware authenticated) 
 For Phase 1C Doc 07, D-03.2 is a **layered authentication** sub-domain: a DORA financial entity with NIS 2 + CRA + GDPR scope operates a multi-layer authentication architecture where DORA's strong-authentication is the floor, NIS 2's MFA/continuous authentication is the explicit mechanism, CRA's "may include" is the product-side choice, and GDPR's staff-side instructions + confidentiality surround the authentication. Proportionality: a small SaaS (no DORA, no NIS 2) operates at the CRA + GDPR floor with discretion on the mechanism; a DORA financial entity must meet the strong-authentication floor with documented risk-tiered factor strength.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -466,4 +503,8 @@ status: DRAFT
 > **Domain analysis:** [D-03.2 Multi-Factor Authentication](../../DomainAnalysis/D-03_Access-Control/D-03.2.md)
 #### D-03.2 Multi-Factor Authentication
 **Participants (from CRDA):** GDPR, NIS2, CRA, DORA
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

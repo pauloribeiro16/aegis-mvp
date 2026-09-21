@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,NIS2 -->
 | GDPR ↔ NIS2 | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-042, Art. 39(1)(b) role-specific layer) | DPO-driven role-specific training for processing staff. | |

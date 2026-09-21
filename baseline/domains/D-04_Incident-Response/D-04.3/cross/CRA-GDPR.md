@@ -50,6 +50,7 @@ The P0 concern is still relevant: many GDPR-CRA cases are actor-disjoint. A serv
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-016, Art. 33(1)) | 72h SA notification |  |

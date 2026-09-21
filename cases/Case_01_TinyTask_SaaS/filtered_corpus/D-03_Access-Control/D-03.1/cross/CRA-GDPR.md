@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **Different perspective** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-009 + SR-GDPR-010, Art. 12(6) + Art. 11(2)) | Proportionate identity verification for data subjects | Controller; data-subject-side; PR.AA-03 + PR.AA-02 |

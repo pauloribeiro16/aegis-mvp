@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **Complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-017 + SR-CRA-024, Annex I Part I (2)(d) + (2)(j)) | Access limited to authenticated + authorised users/services/hardware; attack-surface limitation | Product-level; PR.AA-05 + PR.AA-06 + DE.CM-09 |

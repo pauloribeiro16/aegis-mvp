@@ -45,6 +45,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **Complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-001 + SR-CRA-002, Annex I Part I (1)+(2)(e)) | State-of-the-art encryption of stored data; "personal or other" | Product-level; state-of-the-art baseline; harmonised-standards anchor |

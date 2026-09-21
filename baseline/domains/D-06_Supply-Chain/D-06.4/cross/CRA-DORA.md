@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **different-perspective** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-063, Art. 23(1)/(2)) | Economic-operator identification + 10-year retention |  |

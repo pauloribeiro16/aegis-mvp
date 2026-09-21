@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis [VERBATIM]
@@ -453,6 +457,14 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs — AI Act out-of-scope per AEGIS taxonomy �
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -490,6 +502,27 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (3+ regulations)
 None. The four regulations look at supply chain from four distinct perspectives (processor / supplier / component / ICT third-party) and are layered, not contradictory.
 ##### SR cross-validation
@@ -498,6 +531,10 @@ NIST CSF 2.0 anchoring is dominated by **GV.SC-02** (Suppliers prioritised by cr
 Phase 2 obligation derivation must produce a 4-tier supplier/vendor risk assessment: (1) GDPR processor due diligence, (2) NIS2 direct supplier security, (3) CRA third-party component due diligence, (4) DORA ICT third-party risk under proportionality. For a financial entity deploying CRA-compliant products processing personal data, all four apply in sequence: DORA gates the selection (four-factor proportionality), NIS2 specifies the direct-supplier scope, CRA certifies the product (manufacturer already did component due diligence), GDPR requires processor-guarantees documentation. Phase 3 case generation must validate the 4-tier assessment chain.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -525,4 +562,8 @@ status: DRAFT
 <!-- participants: GDPR, NIS2, CRA, DORA -->
 **Participants (from CRDA):** GDPR, NIS2, CRA, DORA
 **Sole-authority note:** AI Act is out-of-scope for D-06.1 per AEGIS taxonomy §4.1 — AI Act value-chain obligations (Art. 25) are cross-relationship, not in the 29-clause cybersecurity set. DORA/NIS2 are sole authorities for entity-level third-party risk; CRA Art. 13(5) is sole authority for product-level supplier obligations.
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

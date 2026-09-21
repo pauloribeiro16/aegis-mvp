@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **different-perspective** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-071, Annex II §8 — partial) | User-facing detailed instructions for product secure use. | |

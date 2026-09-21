@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **different-perspective** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-054 + SR-CRA-057, Art. 19 + Art. 20) | Importer pre-market verification + distributor due-care |  |

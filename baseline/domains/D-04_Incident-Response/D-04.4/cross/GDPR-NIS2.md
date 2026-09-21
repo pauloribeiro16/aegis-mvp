@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,NIS2 -->
 | GDPR ↔ NIS2 | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-024, Art. 32(1)(b)/(c) + Art. 5(1)(f)) | Timely availability restoration after physical/technical incident |  |

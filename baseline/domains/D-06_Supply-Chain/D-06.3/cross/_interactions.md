@@ -6,6 +6,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis [VERBATIM]
@@ -160,6 +164,14 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs — AI Act out-of-scope per AEGIS taxonomy �
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -197,6 +209,27 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (3+ regulations)
 <!-- emergent: GDPR,NIS2,CRA,DORA -->
 - **4-track contract architecture with overlapping but non-identical clause lists.** GDPR Art. 28(3) = 8 elements; DORA Art. 30(2) = 9 elements; NIS2 Art. 21(3) = 3-prong supplier assessment; CRA Art. 19/20 = importer/distributor pre-market verification. The pairwise readings surface specific overlaps (GDPR↔DORA clause-list overlap, GDPR↔NIS2 processor-vs-supplier distinction), but the *non-pairwise observation* is that a single supplier relationship (e.g., a CRA-compliant product supplied to a financial entity that processes personal data) must satisfy all four tracks simultaneously. Phase 2 must produce a consolidated supplier-contract template that operationalises the union of all four clause sets.
@@ -207,6 +240,10 @@ NIST CSF 2.0 anchoring is dominated by **GV.SC-03** (Contracts with suppliers an
 Phase 2 obligation derivation must produce a consolidated contract-clause matrix. The intersection of GDPR Art. 28(3) and DORA Art. 30(2) is the operational hinge: financial entities that process personal data via ICT third-party providers must satisfy both clause sets. Phase 3 case generation must validate that supplier contracts in case companies include all required elements per the consolidated matrix.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -234,4 +271,8 @@ status: DRAFT
 <!-- participants: GDPR, NIS2, CRA, DORA -->
 **Participants (from CRDA):** GDPR, NIS2, CRA, DORA
 **Sole-authority note:** AI Act is out-of-scope for D-06.3 per AEGIS taxonomy §4.1. DORA is the sole authority for ICT-services contractual-security architecture (Art. 30 minimum elements + audit rights).
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-043, Annex I Part I (2)(h)) | Product-level resilience + DoS-resistance |  |

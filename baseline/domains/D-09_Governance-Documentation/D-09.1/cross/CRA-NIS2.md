@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,CRA -->
 | NIS2 ↔ CRA | **complementary** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-035, Art. 21(2)(a); SR-NIS2-036, Art. 21(2)(a); SR-NIS2-037, Art. 21(2)(f)) | Risk-analysis policy + IS-security policy + effectiveness-assessment policy. | |

@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,AI_Act -->
 | GDPR ↔ AI_Act | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-039, Art. 25(1)) | Privacy-by-design integrated at means-determination. | |

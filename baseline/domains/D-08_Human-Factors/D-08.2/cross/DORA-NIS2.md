@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,DORA -->
 | NIS2 ↔ DORA | **equal** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-030, Art. 20(2) sentence 2) | Employees offered similar training on a regular basis (encouraged). | |

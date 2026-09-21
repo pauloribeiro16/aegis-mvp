@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,AI_Act -->
 | NIS2 ↔ AI_Act | **complementary** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-027, Art. 21(2)(e) development) | Security in NIS development (OJ literal — T3-vs-text gap per synthesis §8). | |

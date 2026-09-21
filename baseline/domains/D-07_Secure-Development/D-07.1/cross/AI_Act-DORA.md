@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: DORA,AI_Act -->
 | DORA ↔ AI_Act | **complementary** | Tension/difference |
 |---|---|---|
 | **DORA** (SR-DORA-004, Art. 9(4)(b)+(f) — partial) | Network/infrastructure mgmt; secure-by-design implicit. | |

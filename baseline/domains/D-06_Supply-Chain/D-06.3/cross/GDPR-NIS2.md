@@ -49,6 +49,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,NIS2 -->
 | GDPR ↔ NIS2 | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-034 + SR-GDPR-036, Art. 28(3)(a)–(h) + Art. 28(2)) | Eight-element processor contract with audit and instruction clauses + sub-processor authorisation with controller change-notification |  |

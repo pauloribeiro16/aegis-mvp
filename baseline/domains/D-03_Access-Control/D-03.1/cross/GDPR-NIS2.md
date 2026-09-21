@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,NIS2 -->
 | GDPR ↔ NIS2 | **Different perspective** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-009 + SR-GDPR-010, Art. 12(6) + Art. 11(2) + Art. 5(1)(c)) | Proportionate identity verification for rights requests; minimised collection of identity verification data | Controller; data-subject-side; PR.AA-03 + PR.AA-02 + PR.DS-12 |

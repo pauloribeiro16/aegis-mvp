@@ -50,6 +50,7 @@ But the scopes are not automatically coextensive. A high-risk AI serious inciden
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,AI_Act -->
 | GDPR ↔ AI_Act | **contradictory** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-016, Art. 33(1)) | 72h SA notification |  |

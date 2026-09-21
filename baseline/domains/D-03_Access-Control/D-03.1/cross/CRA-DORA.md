@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **Complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-023, Annex I Part I (2)(d) + Art. 13(15)) | Authentication identity + unique product identification | Product-level; PR.AA-01 + ID.AM-01 |

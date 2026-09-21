@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -380,6 +384,14 @@ GDPR, NIS 2, CRA (partial), DORA, AI Act (5 of 5 regs — all 5 participate at 8
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -416,6 +428,23 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (5 regulations)
 <!-- emergent: GDPR,NIS2,CRA,DORA,AI_Act -->
 - **The five regulations impose role-specific competence on five different audiences**: GDPR DPO-driven processing staff; NIS 2 employees (encouraged); CRA integrators (B2B); DORA staff with `commensurate to the remit`; AI Act high-risk AI human overseers. The audiences overlap in practice (a single person may be both DORA-trained staff and AI-Act overseer), but the regulation-specific content (data-protection vs. hygiene vs. AI-oversight) does not substitute. The "commensurate to the remit" anchor in DORA is the broadest and absorbs the others in principle, but the OJ literal text in DORA is silent on AI competence.
@@ -427,6 +456,10 @@ All 5 regulations map D-08.2 to the NIST CSF 2.0 Subcategories **PR.AT-02** (All
 Phase 1 entities must implement audience-routing role-specific training. A DORA financial entity deploying high-risk AI processing personal data must satisfy five role-specific obligations in parallel. The training-records documentation should be audience-tagged for audit traceability.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -454,4 +487,8 @@ status: DRAFT
 <!-- participants: GDPR, NIS2, CRA, DORA, AI_Act -->
 **Participants (from CRDA):** GDPR, NIS2, CRA, DORA, AI_Act
 **Sole-authority / partial-coverage notes:** CRA's role-specific dimension is integrator-facing (Annex II §8(f)) — B2B audience, not workforce. The asymmetry (workforce training for NIS 2 / DORA / GDPR vs. product-integrator training for CRA) is unique to D-08.2.
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

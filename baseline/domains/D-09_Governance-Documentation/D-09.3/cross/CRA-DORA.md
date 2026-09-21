@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-087, Annex VII §1-§2 — partial coverage) | General description + architecture documentation. | |

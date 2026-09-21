@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,DORA -->
 | GDPR ↔ DORA | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-024, Art. 32(1)(c)) | Timely availability restoration |  |

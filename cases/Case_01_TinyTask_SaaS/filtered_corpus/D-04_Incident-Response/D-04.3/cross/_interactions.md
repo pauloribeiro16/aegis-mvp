@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -320,6 +324,14 @@ GDPR, NIS 2, CRA, DORA, AI Act (5 of 5 regs — the only fully-covered 5-track s
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -364,6 +376,43 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (3+ regulations)
 <!-- emergent: GDPR,NIS2,CRA,DORA,AI_Act -->
 - **5-track timeline divergence with no operationalisation principle specified.** GDPR (72h `where feasible`), NIS2 (24h/72h/1m), CRA (24h/72h/14d AEV + 24h/72h/1m SI), DORA (`without undue delay`), AI Act (15d/10d/2d). The pairwise contradictions surface 4 separate timeline conflicts (GDPR↔NIS2, GDPR↔DORA, NIS2↔DORA, NIS2↔AI_Act, CRA↔DORA, CRA↔AI_Act, DORA↔AI_Act), but the *operational consequence* is non-additive: an entity subject to all 5 must maintain a 5-recipient notification pipeline with up to 6 distinct deadlines (24h/2d/72h/14d/15d/1m), and no regulation specifies the binding-procedure principle for resolving simultaneous triggers. Phase 2 must define a binding-procedure rule: the strictest timeline binds per recipient, but parallel recipients (CSIRT vs DPA vs MSA vs AI Office vs CA) each get their own deadline.
@@ -375,6 +424,10 @@ NIST CSF 2.0 mapping is dominated by **RS.CO-04** (Incident information shared w
 Phase 2 obligation derivation for D-04.3 is the single most complex orchestration problem in the methodology. The output must include: (1) a notification-deadline matrix per regulation, (2) a recipient-routing rule for simultaneous triggers, (3) a binding-procedure principle for conflicting timelines, (4) a per-tier content-requirement schedule (24h early warning content ≠ 72h incident content ≠ 1m final report content). Phase 3 case generation must validate that case companies in the financial-entity / NIS2-essential / high-risk-AI-deployer intersection produce a single unified notification playbook that satisfies all 5 regulations. The 14d CRA AEV final tier (CRA-specific) is a tightening that does not appear in any other regulation; case companies must surface this independently.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -400,4 +453,8 @@ status: DRAFT
 > **Domain analysis:** [D-04.3 Regulatory Notification](../../DomainAnalysis/D-04_Incident-Response/D-04.3.md)
 #### D-04.3 Regulatory Notification
 **Participants (from CRDA):** GDPR, NIS2, CRA, DORA, AI_Act
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

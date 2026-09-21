@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,DORA -->
 | GDPR ↔ DORA | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-039, Art. 25(1); SR-GDPR-040, Art. 25(1)+32(1)(a)) | Privacy-by-design + pseudonymisation-by-design. | |

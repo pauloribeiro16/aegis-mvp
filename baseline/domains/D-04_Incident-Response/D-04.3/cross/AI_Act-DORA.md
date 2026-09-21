@@ -50,6 +50,7 @@ If overlap exists, the DORA without-undue-delay route and AI Act 15/10/2-day rou
 
 ## Summary (Domain Analysis)
 
+<!-- pair: DORA,AI_Act -->
 | DORA ↔ AI_Act | **contradictory** | Tension/difference |
 |---|---|---|
 | **DORA** (SR-DORA-017, Art. 19(1) + Art. 19(3)) | `without undue delay` + client notification |  |

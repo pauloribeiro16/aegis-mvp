@@ -50,6 +50,7 @@ The same underlying incident chain may produce separate obligations at different
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **contradictory** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-029–033, Art. 14(2)–(4)) | AEV: 24h/72h/14d; SI: 24h/72h/1m |  |

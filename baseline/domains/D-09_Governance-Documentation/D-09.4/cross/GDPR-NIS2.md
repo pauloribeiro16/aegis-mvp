@@ -49,6 +49,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,NIS2 -->
 | GDPR ↔ NIS2 | **different-perspective** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-048, Art. 30(1)-(4); SR-GDPR-050, Art. 30(3) integrity; SR-GDPR-065-068, Art. 12-14 transparency) | RoPA + supervisory-authority access + transparent privacy notices + data-subject rights. | |

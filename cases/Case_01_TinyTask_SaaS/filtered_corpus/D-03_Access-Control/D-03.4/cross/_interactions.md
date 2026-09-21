@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -445,6 +449,14 @@ GDPR, CRA (2 of 5 regs — NIS 2 contributes only partial coverage via SO-NIS2-0
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -481,6 +493,7 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
 ##### Emergent tensions (3+ regulations)
 - None. Only two regulators (GDPR + CRA) have substantive secure-defaults mandates; NIS 2 contributes only a partial coverage via SO-NIS2-003 (Art. 21(2)(i) — asset-management dimension); DORA and AI Act are out-of-scope.
 ##### SR cross-validation
@@ -524,6 +537,10 @@ For Phase 1C Doc 07, D-03.4 is a **two-layer default** sub-domain: a controller 
 ### D-04 Incident Response
 ---
 
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
+
 ## Part 3 — context
 
 ---
@@ -553,4 +570,8 @@ status: DRAFT
 
 ### D-04 Incident Response
 ---
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -408,6 +412,14 @@ GDPR, NIS 2, CRA, DORA, AI Act (ALL 5 participate on the documentation object). 
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -444,6 +456,23 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (4 regulations)
 <!-- emergent: GDPR,NIS2,CRA,AI_Act -->
 - **Four documentation regimes with overlapping but non-substitutable artefacts**: GDPR RoPA, NIS 2 certification-driven records (Art. 24), CRA Annex VII 8-item technical documentation + 10-year retention, AI Act Annex IV + Art. 17 QMS. All four apply to a DORA-excluded entity that processes personal data and ships AI-enabled CRA-regulated products and is an NSIE. No OJ-level consolidation rule exists (the CRA Art. 13(4) sentence 2 consolidation applies only to risk assessment, not documentation). Phase 1 entities must maintain four parallel documentation regimes.
@@ -456,6 +485,10 @@ Phase 1 entities must implement four parallel documentation regimes. The retenti
 ---
 ### D-10 Monitoring & Audit
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -488,4 +521,8 @@ status: DRAFT
 
 ### D-10 Monitoring & Audit
 ---
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

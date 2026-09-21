@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,CRA -->
 | NIS2 ↔ CRA | **complementary** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-023 + SR-NIS2-024, Art. 21(3)) | Supplier product quality + secure-development procedures assessed per criticality |  |

@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-077, Art. 27(1)/(2)/(5)) | Presumption of conformity via harmonised standards / common specs. | |

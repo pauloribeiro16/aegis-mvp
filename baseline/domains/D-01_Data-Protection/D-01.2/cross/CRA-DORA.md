@@ -41,6 +41,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **Complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-003, Annex I Part I (2)(e)+(j)) | State-of-the-art in-transit encryption at the product level | Product-level; PR.DS-02 + PR.IR-01 |

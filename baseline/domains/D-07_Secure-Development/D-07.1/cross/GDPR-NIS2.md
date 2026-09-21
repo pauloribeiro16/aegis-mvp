@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,NIS2 -->
 | GDPR ↔ NIS2 | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-039, Art. 25(1); SR-GDPR-040, Art. 25(1)+32(1)(a); SR-GDPR-041, Art. 25(2)) | Privacy-by-design embedded at means-determination; pseudonymisation + minimisation as the canonical techniques. | |

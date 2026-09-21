@@ -51,6 +51,7 @@ The verified relationship is complementary: NIS2 provides the generic entity BC/
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,DORA -->
 | NIS2 ↔ DORA | **equal** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-019, Art. 21(2)(c)) | BC + backup + DR + CM triad |  |

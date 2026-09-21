@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -336,6 +340,14 @@ NIS 2, CRA, DORA (**3 of 5 regulations**; **GDPR + AI Act explicitly out-of-scop
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -372,6 +384,15 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (3 regulations)
 <!-- emergent: NIS2,CRA,DORA -->
 - **DORA sole-authority taxonomy assignment is OJ-supported**: AEGIS taxonomy §4.1 marks DORA as sole authority for D-09.3. Unlike D-07.2 (where the sole-authority assignment is OJ-text-unsupported), D-09.3's sole-authority is OJ-literal (Art. 7(1) explicit `identify, classify, adequately document` mandate on the `3-way AND` of ICT supported business functions + information assets + ICT assets). NIS 2 and CRA provide partial coverage only.
@@ -383,6 +404,10 @@ The 3 applicable regulations map D-09.3 to the NIST CSF 2.0 Subcategory **ID.AM-
 Phase 1 entities must maintain a DORA-compliant asset register (Art. 7(1)) with NIS 2 partial-coverage access-control-asset linkages and CRA Annex VII §1-§2 product-architecture documentation as inputs. The DORA register is the entity-level master record.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -410,6 +435,10 @@ status: DRAFT
 <!-- participants: NIS2, CRA, DORA -->
 **Participants (from CRDA):** NIS2, CRA, DORA
 **Sole-authority note (CRDA flag):** DORA Art. 7(1) is the dedicated authority — explicit `identify, classify, adequately document` mandate on the `3-way AND` of ICT supported business functions + information assets + ICT assets. NIS 2 and CRA provide partial coverage only.
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 
 ## Residual pair content (AI_Act, deep)
 

@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,CRA -->
 | NIS2 ↔ CRA | **complementary** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-028, Art. 21(2)(e) maintenance — partial coverage) | Maintenance-phase security including vulnerability handling and disclosure; partial coverage of CI/CD via maintenance dimension. | |

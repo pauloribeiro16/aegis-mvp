@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,AI_Act -->
 | CRA ↔ AI_Act | **complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-064, Art. 13(2); SR-CRA-066, Art. 13(3)) | Cybersecurity risk assessment documented + updated. | |

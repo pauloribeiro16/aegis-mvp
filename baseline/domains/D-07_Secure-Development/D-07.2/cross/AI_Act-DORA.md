@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: DORA,AI_Act -->
 | DORA ↔ AI_Act | **complementary** | Tension/difference |
 |---|---|---|
 | **DORA** (no OJ-mandated D-07.2 SR; partial via SR-DORA-023 Art. 9(4)(e)) | No dedicated secure-coding mandate; AEGIS taxonomy §4.1 marks DORA as sole authority but OJ-literal text is silent. | |

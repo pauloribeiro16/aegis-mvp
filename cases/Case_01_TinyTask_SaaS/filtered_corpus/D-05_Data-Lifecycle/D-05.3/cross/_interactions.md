@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis [VERBATIM]
@@ -410,6 +414,14 @@ GDPR, CRA (2 of 5 regs — NIS 2, DORA, AI Act are out-of-scope per AEGIS taxono
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -447,6 +459,7 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
 ##### Emergent tensions (3+ regulations)
 None. Only 2 regulations participate; no 3-way interaction surface.
 ##### SR cross-validation
@@ -455,6 +468,10 @@ NIST CSF 2.0 anchoring is dominated by **PR.DS-10** (Data-in-use protected) and 
 Phase 2 obligation derivation is straightforward: two participants, complementary. The product must support the data-subject right by design (CRA Annex I Part I (2)(m) is the design-level hook; GDPR Art. 17 is the rights-level hook). Phase 3 case generation must verify that CRA-compliant products in case companies expose a deletion API aligned with GDPR Art. 17 obligations.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -482,4 +499,8 @@ status: DRAFT
 <!-- participants: GDPR, CRA -->
 **Participants (from CRDA):** GDPR, CRA
 **Sole-authority note:** NIS2, DORA, and AI Act are out-of-scope for D-05.3 per AEGIS taxonomy §4.1. GDPR Art. 17 is the dedicated authority for personal-data erasure. CRA Annex I Part I (2)(m) addresses product-data removal which may include personal data but is not framed as a data-subject right.
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

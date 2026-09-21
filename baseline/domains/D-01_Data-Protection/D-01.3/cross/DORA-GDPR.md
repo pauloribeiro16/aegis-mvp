@@ -45,6 +45,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,DORA -->
 | GDPR ↔ DORA | **Complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-003 + SR-GDPR-004, Art. 4(5) + Art. 32(1)(a)) | Key separation; de-attribution; unintelligibility carve-out | Personal-data scope; PR.DS-01 + PR.IR-03 (resilience) |

@@ -49,6 +49,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,DORA -->
 | GDPR ↔ DORA | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-043, Art. 24(1)+(2)) | Appropriate data-protection policies. | |

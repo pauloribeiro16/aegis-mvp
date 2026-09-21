@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **different-perspective** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-050, Art. 13(5)) | Third-party component due diligence |  |

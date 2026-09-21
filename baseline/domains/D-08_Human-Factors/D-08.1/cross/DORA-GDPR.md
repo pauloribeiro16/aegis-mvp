@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,DORA -->
 | GDPR ↔ DORA | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-042, Art. 39(1)(a)+(b)) | DPO-driven GDPR awareness. | |

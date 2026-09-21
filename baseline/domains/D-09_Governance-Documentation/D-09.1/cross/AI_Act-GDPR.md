@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,AI_Act -->
 | GDPR ↔ AI_Act | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-043, Art. 24(1)+(2)) | Appropriate data-protection policies. | |

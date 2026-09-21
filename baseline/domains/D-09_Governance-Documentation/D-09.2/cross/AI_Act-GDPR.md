@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,AI_Act -->
 | GDPR ↔ AI_Act | **different-perspective** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-045, Art. 35(1)-(4)) | DPIA pre-launch. | |

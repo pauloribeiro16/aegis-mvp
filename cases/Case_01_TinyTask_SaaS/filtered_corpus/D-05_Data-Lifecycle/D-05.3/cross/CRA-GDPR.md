@@ -51,6 +51,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-030 + SR-GDPR-031, Art. 17 + Art. 5(1)(c)/(e) + Art. 28(3)(g)) | Right-to-erasure with cryptographic key-destruction deletion path + processor erasure/return on contract end |  |

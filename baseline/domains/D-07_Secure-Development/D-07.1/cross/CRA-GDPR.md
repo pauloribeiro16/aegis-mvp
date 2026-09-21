@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-039, Art. 25(1)) | Privacy-by-design at controller means-determination. | |

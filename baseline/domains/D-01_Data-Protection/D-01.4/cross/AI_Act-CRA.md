@@ -45,6 +45,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,AI_Act -->
 | CRA ↔ AI_Act | **Complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-005, Annex I Part I (2)(f)+(l)) | Integrity of data + commands + programs + configuration; corruption reported | Product-level; PR.DS-01 + PR.DS-10 + PR.PS-04 |

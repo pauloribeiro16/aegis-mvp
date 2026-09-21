@@ -49,6 +49,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,AI_Act -->
 | GDPR ↔ AI_Act | **Different perspective** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-005 + SR-GDPR-006, Art. 5(1)(d) + Art. 16) | Accuracy of stored personal data; rectification with cascade | Personal-data scope; semantic accuracy + storage integrity |

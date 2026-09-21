@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,DORA -->
 | NIS2 ↔ DORA | **equal** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-035, Art. 21(2)(a)) | Risk-analysis policy. | |

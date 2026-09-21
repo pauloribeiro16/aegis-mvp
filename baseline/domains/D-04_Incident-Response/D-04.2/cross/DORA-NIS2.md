@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,DORA -->
 | NIS2 ↔ DORA | **complementary** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-008, Art. 21(2)(b)) | Six-action incident-handling — `contain` phase |  |

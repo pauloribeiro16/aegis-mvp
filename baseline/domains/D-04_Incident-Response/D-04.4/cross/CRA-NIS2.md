@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,CRA -->
 | NIS2 ↔ CRA | **complementary** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-019, Art. 21(2)(c)) | BC + backup + DR + CM triad |  |

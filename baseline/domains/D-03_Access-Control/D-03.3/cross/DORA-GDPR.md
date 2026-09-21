@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,DORA -->
 | GDPR ↔ DORA | **Complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-011, Art. 29 + Art. 32(4)) | Instruction-bound processing under least-privilege authorisation | Controller/processor; personal-data scope; PR.AA-05 + PR.AA-06 |

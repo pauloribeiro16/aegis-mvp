@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,CRA -->
 | NIS2 ↔ CRA | **Complementary** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-003, Art. 21(2)(i) — access-control dimension) | Access control policies + HR security + asset management; model-agnostic | Entity-level; PR.AA-01 + PR.AA-05 |

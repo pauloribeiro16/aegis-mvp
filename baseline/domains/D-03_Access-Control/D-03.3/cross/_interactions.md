@@ -6,6 +6,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -497,6 +501,14 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs — AI Act out-of-scope per AEGIS taxonomy �
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -533,6 +545,27 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (3+ regulations)
 <!-- emergent: GDPR,NIS2,CRA,DORA -->
 - All four regulations impose an access-control obligation, but the **textual anchor** differs: GDPR `chain of authority controller → processor → authorised persons` (Art. 29 + Art. 32(4) + Art. 28(3)(a)/(b)); NIS 2 `access control policies` model-agnostic (Art. 21(2)(i) — T3-vs-text gap, T3 imposes RBAC + need-to-know + least privilege not in OJ); CRA `limited to authenticated and authorised users, services, and hardware` (Annex I Part I (2)(d)); DORA `legitimate and approved functions and activities only` (Art. 9(4)(c) — T4-vs-text gap, T4 imposes `need-to-know and least privilege` not in OJ literal). The two **T-vs-text gaps** on NIS 2 and DORA are methodologically significant: T3/T4 import best-practice vocabulary not in the OJ text, and the Executor preserves OJ-literal language in the SRs. Layer 2/3 should adjudicate whether the T-imposed best practice survives as interpretive continuation or whether the OJ-literal reading prevails. P1 consequence: the differences in textual anchor produce different operational control architectures; a company across all four must reconcile the four anchors.
@@ -544,6 +577,10 @@ CSF mappings converge on PR.AA-05 (access permissions managed per least privileg
 For Phase 1C Doc 07, D-03.3 is a **layered access-control** sub-domain: a DORA financial entity with NIS 2 + CRA + GDPR scope operates a multi-layer access-control architecture with the DORA "only" qualifier as the most demanding floor. Proportionality: a small SaaS (no DORA, no NIS 2) meets the GDPR + CRA floor with documented instructions; a DORA financial entity must demonstrate the "only" qualifier with documented legitimate-and-approved function mappings for each access grant.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -569,4 +606,8 @@ status: DRAFT
 > **Domain analysis:** [D-03.3 Authorisation & Least Privilege](../../DomainAnalysis/D-03_Access-Control/D-03.3.md)
 #### D-03.3 Authorisation & Least Privilege
 **Participants (from CRDA):** GDPR, NIS2, CRA, DORA
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

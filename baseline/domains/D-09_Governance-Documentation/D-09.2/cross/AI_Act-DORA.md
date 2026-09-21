@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: DORA,AI_Act -->
 | DORA ↔ AI_Act | **complementary** | Tension/difference |
 |---|---|---|
 | **DORA** (SR-DORA-028, Art. 6(4)) | Three-lines-of-defence + asset identification. | |

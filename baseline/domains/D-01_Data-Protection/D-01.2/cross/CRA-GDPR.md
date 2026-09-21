@@ -49,6 +49,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **Complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-002, Art. 32(1)(b) + Art. 32(2)) | In-transit confidentiality across networks and inter-service channels | Risk-anchored; personal-data scope; 5-event Art. 32(2) risk enumeration |

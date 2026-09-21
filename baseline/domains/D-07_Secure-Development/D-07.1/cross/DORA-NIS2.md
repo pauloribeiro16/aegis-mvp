@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,DORA -->
 | NIS2 ↔ DORA | **complementary** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-026, Art. 21(2)(e) acquisition; SR-NIS2-027, Art. 21(2)(e) development; SR-NIS2-028, Art. 21(2)(e) maintenance) | Entity-level lifecycle security. | |

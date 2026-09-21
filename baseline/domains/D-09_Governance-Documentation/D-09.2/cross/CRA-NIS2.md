@@ -49,6 +49,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,CRA -->
 | NIS2 ↔ CRA | **complementary** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-035, Art. 21(2)(a); SR-NIS2-025, Art. 21(3) sentence 2 take into account Art. 22 results) | Risk-analysis policy + take-into-account Art. 22 coordinated supply-chain assessments. | |

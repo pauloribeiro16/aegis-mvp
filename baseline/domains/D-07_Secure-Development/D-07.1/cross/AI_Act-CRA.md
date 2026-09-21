@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,AI_Act -->
 | CRA ↔ AI_Act | **complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-064, Art. 13(1); SR-CRA-065, Art. 13(2)) | Product-level design/development/production per Annex I Part I. | |

@@ -50,6 +50,7 @@ If both tracks apply to the same financial entity and incident, the NIS2 hard 24
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,DORA -->
 | NIS2 ↔ DORA | **contradictory** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-010–013, Art. 23(4)(a)–(e)) | 24h/72h/1m tiered notification structure |  |

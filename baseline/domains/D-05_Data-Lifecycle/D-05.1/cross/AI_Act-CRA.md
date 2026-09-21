@@ -49,6 +49,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,AI_Act -->
 | CRA ↔ AI_Act | **complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-046, Annex I Part I (2)(g)) | Product-design data minimisation |  |

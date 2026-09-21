@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -410,6 +414,14 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs — AI Act out-of-scope per AEGIS taxonomy �
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -447,6 +459,27 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (3+ regulations)
 None. The containment architecture is consistently layered: product → entity → personal-data-specific runbook. No 3-way contradiction; no non-pairwise-surfacing effect.
 ##### SR cross-validation
@@ -455,6 +488,10 @@ NIST CSF 2.0 anchoring is consistent: PR.IR-03 (Network resources prioritised ba
 Phase 2 obligation derivation must treat containment as a 3-layer construct: (1) product design (CRA), (2) entity-level plans (NIS2/DORA), (3) breach-specific content (GDPR Art. 33(3)(d) unintelligibility render). Phase 3 case generation must verify that case companies operating across all three layers produce a single integrated containment playbook.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -481,4 +518,8 @@ status: DRAFT
 #### D-04.2 Containment & Mitigation
 **Participants (from CRDA):** GDPR, NIS2, CRA, DORA
 **Sole-authority note:** AI Act is out-of-scope for D-04.2; containment is operationalised via CRA's Annex I (2)(h)/(i)/(k) at the product level and via NIS2/DORA's response-plan architecture at the entity level.
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

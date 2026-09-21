@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **different-perspective** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-015, Art. 33(3)(d)) | Post-breach containment via TOMs rendering data unintelligible |  |

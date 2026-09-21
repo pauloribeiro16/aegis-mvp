@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: DORA,AI_Act -->
 | DORA ↔ AI_Act | **complementary** | Tension/difference |
 |---|---|---|
 | **DORA** (SR-DORA-026, Art. 5(2); SR-DORA-027, Art. 6(1); SR-DORA-028, Art. 6(4)) | ICT risk management framework + three-lines-of-defence + asset identification. | |

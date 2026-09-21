@@ -6,6 +6,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -259,6 +263,14 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs; AI Act is out-of-scope per AEGIS taxonomy �
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -295,6 +307,27 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (3+ regulations)
 <!-- emergent: GDPR,NIS2,CRA,DORA -->
 - All four regulations impose an at-rest confidentiality obligation, but the **threshold anchor** diverges: GDPR `appropriate` (risk-based), NIS 2 `where appropriate` (with appropriate-and-proportionate), CRA `state of the art` (harmonised-standards floor), DORA `high standards` (OJ-literal, no measurement criterion pending ESAs RTS). A DORA financial entity that is a NIS 2 essential entity AND processes personal data AND uses CRA-regulated products must reconcile four parallel thresholds; a Layer 2/3 analysis should establish whether the CRA state-of-the-art floor is automatically sufficient for the other three (likely yes for the at-rest dimension).
@@ -306,6 +339,10 @@ CSF mappings converge on PR.DS-01 (Data-at-rest protected) for all four regulati
 For Phase 1C Doc 07 (cross-regulation consolidation in the company profile), D-01.1 is a **stack-merge** sub-domain: a single at-rest control (e.g. disk encryption with key custody) typically satisfies all four regulators when documentation links each one. Proportionality: a 5-FTE SaaS may default to the CRA state-of-the-art floor as the highest common denominator; a 500-FTE financial entity must additionally document the DORA classification-driven cipher strength overlay.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -332,4 +369,8 @@ status: DRAFT
 #### D-01.1 Data at Rest Encryption
 <!-- participants: GDPR, NIS2, CRA, DORA; AI_Act absent -->
 **Participants (from CRDA):** GDPR, NIS2, CRA, DORA (AI_Act is not present; AI Act §D-01.1 marks CRA Annex I (2)(e) as sole authority per taxonomy §4.1).
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

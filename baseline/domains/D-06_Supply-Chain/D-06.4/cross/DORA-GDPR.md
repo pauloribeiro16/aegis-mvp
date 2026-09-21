@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,DORA -->
 | GDPR ↔ DORA | **different-perspective** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-038, Art. 27) | EU representative for non-EU controllers/processors |  |

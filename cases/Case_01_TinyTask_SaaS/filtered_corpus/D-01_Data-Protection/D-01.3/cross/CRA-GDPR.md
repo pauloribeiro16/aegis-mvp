@@ -49,6 +49,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **Complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-003 + SR-GDPR-004, Art. 4(5) + Art. 32(1)(a) + Art. 34(3)(a)) | Pseudonymisation/encryption with key separation; Art. 4(5) de-attribution test; unintelligibility as Art. 34(3)(a) carve-out from data-subject notification | Controller/processor; personal-data scope; key separation is the carve-out anchor; PR.DS-01 |

@@ -6,6 +6,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis [VERBATIM]
@@ -478,6 +482,14 @@ GDPR SOLE AUTHORITY (1 of 5 regs — NIS 2, CRA, DORA, AI Act are out-of-scope p
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -523,6 +535,10 @@ Phase 2 obligation derivation produces a single-track portability rule. Phase 3 
 ### D-06 Supply Chain
 ---
 
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
+
 ## Part 3 — context
 
 ---
@@ -555,4 +571,8 @@ status: DRAFT
 ---
 ### D-06 Supply Chain
 ---
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

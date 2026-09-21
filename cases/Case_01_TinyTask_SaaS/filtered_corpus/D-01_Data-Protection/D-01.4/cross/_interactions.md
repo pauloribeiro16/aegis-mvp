@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -321,6 +325,14 @@ GDPR, CRA, DORA, AI_Act (4 of 5 regs; NIS 2 absent per AEGIS taxonomy §4.1 — 
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -357,6 +369,27 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (3+ regulations)
 <!-- emergent: GDPR,CRA,DORA,AI_Act -->
 - The four regulations have **different primary objects for integrity**: GDPR (personal data semantic accuracy), CRA (data + commands + programs + configuration technical integrity), DORA (ICT system CIA+A integrity), AI Act (AI system resilience to errors/faults/inconsistencies). The objects are nested: CRA integrity sits inside DORA CIA+A, which sits inside GDPR personal-data accuracy, which is a sub-property of AI Act's system resilience. A harmonised compliance system must document each object separately rather than collapsing the four into a single "integrity" claim.
@@ -369,6 +402,10 @@ For Phase 1C Doc 07, D-01.4 is a **layered object** sub-domain: the company prof
 ---
 ### D-02 Vulnerability Management
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -400,4 +437,8 @@ status: DRAFT
 
 ### D-02 Vulnerability Management
 ---
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

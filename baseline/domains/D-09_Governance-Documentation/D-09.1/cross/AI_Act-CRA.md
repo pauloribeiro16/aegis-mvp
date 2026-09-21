@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,AI_Act -->
 | CRA ↔ AI_Act | **complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-077, Art. 27; SR-CRA-078, Art. 27(8)/(9)) | Presumption of conformity via harmonised standards + CSA certification. | |

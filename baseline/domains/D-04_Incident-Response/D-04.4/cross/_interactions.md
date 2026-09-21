@@ -6,6 +6,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -520,6 +524,14 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs — AI Act is out-of-scope per AEGIS taxonom
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -557,6 +569,27 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (3+ regulations)
 None. The recovery architecture is consistently layered: product → entity → personal-data-specific outcome. No 3-way contradiction; no non-pairwise-surfacing effect. DORA's specificity on backup scoping (criticality/confidentiality) is the only structural sharpening, and it operates within the NIS2 BC framework rather than against it.
 ##### SR cross-validation
@@ -566,6 +599,10 @@ Phase 2 obligation derivation for D-04.4 must distinguish the `timely` GDPR anch
 ---
 ### D-05 Data Lifecycle
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -669,4 +706,8 @@ This file is part of the CRDA-deep pilot chain:
 ---
 ### D-05 Data Lifecycle
 ---
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

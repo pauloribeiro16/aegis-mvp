@@ -49,6 +49,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,NIS2 -->
 | GDPR ↔ NIS2 | **different-perspective** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-045, Art. 35(1)-(4); SR-GDPR-046, Art. 35(7); SR-GDPR-047, Art. 35(11)) | DPIA with four Art. 35(7) content items; reviewed on change of risk. | |

@@ -6,6 +6,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -230,6 +234,14 @@ GDPR, CRA, DORA (3 of 5 regs; NIS 2 out-of-scope per T3-vs-text gap; AI Act out-
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -266,6 +278,15 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (3+ regulations)
 <!-- emergent: GDPR,CRA,DORA -->
 - All three regulations converge on PR.DS-02 as the operational anchor for in-transit confidentiality, but the **scope-determiner** diverges: GDPR (personal data), CRA (personal or other, product-stored/transmitted), DORA (ICT-supported data, financial-entity scope). A CRA-regulated product transmitting mixed personal + telemetry data to a DORA financial entity host running a GDPR-scoped controller processing the personal-data subset creates a three-way layered obligation with no clean joint-decision-rule; the Layer 1/2 synthesis should establish whether the CRA state-of-the-art in-transit primitive is automatically sufficient for the other two (likely yes for confidentiality; the integrity + authenticity layers of DORA require entity-level additional controls).
@@ -276,6 +297,10 @@ All three regulations map to PR.DS-02 (Data-in-transit protected) + PR.IR-01 (Ne
 For Phase 1C Doc 07, D-01.2 is a **single-control** sub-domain: a mutual-TLS + network-segmentation design typically satisfies all three regulators for an in-scope company. Proportionality: in-transit is universally the cheapest of the three encryption sub-domains; a 5-FTE SaaS with modern TLS configurations will satisfy all three without dedicated additional investment.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -302,4 +327,8 @@ status: DRAFT
 #### D-01.2 Data in Transit Encryption
 <!-- participants: GDPR, CRA, DORA; NIS2 partial via SR-NIS2-007; AI_Act absent -->
 **Participants (from CRDA):** GDPR, CRA, DORA (NIS2 partially present via SR-NIS2-007 on secured voice/video/text communications — flagged as "out-of-scope for D-01.2 standalone" by the CRDA taxonomy; AI_Act not present per AEGIS taxonomy §4.1).
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

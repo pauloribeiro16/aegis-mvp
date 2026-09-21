@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-067, Annex I Part I (2)(j) attack-surface; SR-CRA-068, Annex I Part I (2)(k) exploitation mitigation) | Outcome-level: limit attack surfaces, deploy exploitation mitigation. | |

@@ -49,6 +49,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,DORA -->
 | GDPR ↔ DORA | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-033, Art. 28(1)) | Processor due diligence |  |

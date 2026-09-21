@@ -49,6 +49,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,NIS2 -->
 | GDPR ↔ NIS2 | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-033, Art. 28(1) + Art. 28(2) + Art. 4(7)/(8)) | Processor due diligence with documented sufficient guarantees |  |

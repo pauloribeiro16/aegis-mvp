@@ -50,6 +50,7 @@ When both apply, NIS2's 24-hour early warning is earlier than the AI Act's defau
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,AI_Act -->
 | NIS2 ↔ AI_Act | **contradictory** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-010–013, Art. 23(4)(a)–(e)) | 24h/72h/1m tiered notification |  |

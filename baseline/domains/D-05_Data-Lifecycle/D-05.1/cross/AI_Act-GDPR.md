@@ -51,6 +51,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,AI_Act -->
 | GDPR ↔ AI_Act | **contradictory** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-025, Art. 5(1)(c) + Art. 6(4)) | Purpose-bound data minimisation + Art. 6(4) compatibility |  |

@@ -49,6 +49,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,NIS2 -->
 | GDPR ↔ NIS2 | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-043, Art. 24(1)+(2); SR-GDPR-044, Art. 5(2); SR-GDPR-062/063/064, Art. 37-39) | Appropriate technical and organisational measures; demonstrable compliance; DPO designation and independence. | |

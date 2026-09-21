@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **different-perspective** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-042, Art. 39(1)(a)+(b)) | DPO-driven GDPR awareness and training. | |

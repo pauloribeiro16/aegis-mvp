@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -346,6 +350,14 @@ GDPR, NIS 2, CRA, DORA, AI Act (ALL 5 — the most heavily-overlapped sub-domain
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -382,6 +394,43 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (5 regulations)
 <!-- emergent: GDPR,NIS2,CRA,DORA,AI_Act -->
 - **Five-policy-stack with no OJ-level consolidation rule**: D-09.1 is the most heavily-overlapped sub-domain. GDPR (data-protection policy + DPO), NIS 2 (governance + 3 policies), CRA (manufacturer policies + presumption of conformity), DORA (ICT risk management framework + three-lines-of-defence), AI Act (QMS + transparency). All five apply simultaneously to a DORA financial entity that processes personal data and ships AI-enabled CRA-regulated products. There is no OJ-level consolidation rule. Phase 1 entities must build a governance-architecture mapping that nests all five policies without overlap. Recommend Layer 1 cross-cutting analysis.
@@ -394,6 +443,10 @@ All 5 regulations map D-09.1 to the NIST CSF 2.0 Subcategory **GV.PO-01** (Organ
 Phase 1 entities must implement five policy artefacts (or a consolidated policy that nests all five). The Layer 1 governance-architecture mapping is required. The DPO role (GDPR) and the management body (NIS 2 / DORA) must be reconciled in the corporate-governance charter. AI Act QMS becomes a sub-policy. CRA presumption of conformity is the upstream gate for CRA-conformant products but does not discharge cross-regulation obligations.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -421,4 +474,8 @@ status: DRAFT
 <!-- participants: GDPR, NIS2, CRA, DORA, AI_Act -->
 **Participants (from CRDA):** GDPR, NIS2, CRA, DORA, AI_Act
 **Critical note (CRDA flag):** D-09.1 is the most heavily-overlapped sub-domain. All 5 regulations overlap with distinct policy artefacts and no OJ-level consolidation rule.
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

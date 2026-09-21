@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **different-perspective** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-048, Art. 30(1)-(4)) | RoPA with 250-employee carve-out. | |

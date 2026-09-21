@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,DORA -->
 | NIS2 ↔ DORA | **different-perspective** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-009, Art. 21(2) chapeau + (b)) | All-hazards monitoring to surface adverse events |  |

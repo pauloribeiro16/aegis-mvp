@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,AI_Act -->
 | NIS2 ↔ AI_Act | **complementary** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-032, Art. 20(1); SR-NIS2-035, Art. 21(2)(a)) | Management body approval + risk-analysis policy. | |

@@ -50,6 +50,7 @@ When the same entity is both controller and NIS2 entity, and one incident satisf
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,NIS2 -->
 | GDPR ↔ NIS2 | **contradictory** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-016, Art. 33(1)) | 72-hour breach notification to the supervisory authority — `where feasible` qualifier |  |

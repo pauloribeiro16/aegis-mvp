@@ -50,6 +50,7 @@ The correct reading is complementary with partial alignment. For severe incident
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,CRA -->
 | NIS2 ↔ CRA | **equal** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-010–013, Art. 23(4)(a)–(e)) | 24h early warning + 72h incident + 1m final + ongoing progress + closing final |  |

@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **different-perspective** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-024, Art. 32(1)(c)) | Timely availability restoration |  |

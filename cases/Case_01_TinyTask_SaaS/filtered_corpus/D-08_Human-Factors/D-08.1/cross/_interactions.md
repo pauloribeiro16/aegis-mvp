@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -328,6 +332,14 @@ GDPR, NIS 2, CRA (partial), DORA (4 of 5 regs — AI Act out-of-scope per AEGIS 
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -364,6 +376,27 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (4 regulations)
 <!-- emergent: GDPR,NIS2,CRA,DORA -->
 - **Audience fragmentation**: GDPR (DPO-driven staff), NIS 2 (entity-wide hygiene), CRA (external users with product), DORA (compulsory staff modules) each target a different population and content scope. A DORA financial entity that processes personal data and ships CRA-regulated products must operate four parallel training programmes that do not cross-substitute. The AEGIS Cross-Cutting Layer 1 reconciliation may consolidate the GDPR / DORA staff modules but cannot substitute for CRA's user-facing instructions or NIS 2's hygiene baseline.
@@ -375,6 +408,10 @@ The 4 applicable regulations map D-08.1 to the NIST CSF 2.0 Subcategories **PR.A
 Phase 1 entities must implement audience-fragmented training programmes. A consolidated training-management system can carry the four programmes (GDPR + NIS 2 + CRA user-instructions + DORA) with audience-routing logic. The training-records retention is per regulation (GDPR indefinite until processing ceases; DORA per Art. 5(2) accountability; CRA per Annex II §8 lifetime; NIS 2 per Recital 56 proportionality).
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -402,6 +439,10 @@ status: DRAFT
 <!-- participants: GDPR, NIS2, CRA, DORA -->
 **Participants (from CRDA):** GDPR, NIS2, CRA, DORA
 **Sole-authority / partial-coverage notes:** AI Act is fully absent from D-08.1 per CRDA (no general-security-awareness mandate); AI Act Art. 4 (AI literacy) and SR-AIACT-012 (human-oversight training for high-risk AI) cover role-specific AI competence in D-08.2. CRA is "partial coverage" (Annex II §8 user-instructions only — not workforce awareness).
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 
 ## Residual pair content (AI_Act, deep)
 

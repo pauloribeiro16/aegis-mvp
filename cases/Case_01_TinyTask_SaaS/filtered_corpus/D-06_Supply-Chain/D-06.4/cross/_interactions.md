@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis [VERBATIM]
@@ -280,6 +284,14 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs — AI Act out-of-scope per AEGIS taxonomy �
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -317,6 +329,27 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (3+ regulations)
 <!-- emergent: GDPR,NIS2,CRA,DORA -->
 - **Four-party boundary architecture with cross-cutting substantial-modification trigger.** GDPR Art. 27 representative + CRA Art. 18 AR + NIS2 `direct` scope-limiter + DORA audit rights — each imposes a different mechanism for boundary management. The pairwise readings surface specific actor-level overlaps (GDPR↔CRA both require EU-side representatives, but for different objects), but the *non-pairwise observation* is that a single non-EU entity subject to multiple regulations (e.g., a non-EU manufacturer of CRA-classified products that processes EU personal data and supplies critical ICT to financial entities) must maintain multiple representative relationships (GDPR Art. 27 representative + CRA Art. 18 AR), satisfy NIS2's `direct` scope-limiter if the entity supplies NIS2-essential entities, and accept DORA audit rights if the entity is a critical provider. Phase 2 must produce a representative/rights matrix that allocates obligations across these four tracks.
@@ -366,9 +399,14 @@ D-04.3 (Regulatory Notification) is the single most complex orchestration proble
 >
 > **Relationship taxonomy.** `equal` (same scope/angle), `complementary` (different scope/angle, additive), `contradictory` (mutually exclusive requirements), `different-perspective` (same object, distinct framing).
 >
+> **Conventions.** Regulation names: `GDPR`, `NIS2`, `CRA`, `DORA`, `AI_Act`. SRs referenced by `SR-{REG}-{NNN}` (1-line summary); full rationale at `00_METHODOLOGY/PREPROCESSING/Regulation/{REG}/02_SecurityRules_NIST.md`. SOs referenced by `SO-{REG}-{NNN}`. Articles cited by short form (e.g. `Art. 25(1)`). Tags `<!-- pair: REG1,REG2 -->` and `<!-- emergent: REG1,REG2,REG3 -->` are machine-readable boundaries.
 ---
 ### D-07 Secure Development
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -704,6 +742,10 @@ This file is part of the CRDA-deep pilot chain:
 ---
 ### D-07 Secure Development
 ---
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 
 ## Part 4 — context
 

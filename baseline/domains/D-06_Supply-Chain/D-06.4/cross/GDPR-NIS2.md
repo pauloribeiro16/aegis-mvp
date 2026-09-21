@@ -51,6 +51,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,NIS2 -->
 | GDPR ↔ NIS2 | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-038, Art. 27(1)/(2)) | Written EU representative for non-EU controllers/processors |  |

@@ -49,6 +49,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,AI_Act -->
 | CRA ↔ AI_Act | **different-perspective** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-016 + SR-CRA-047, Art. 13(9) + Annex I Part II (7)/(8)) | 10-year update-availability tail |  |

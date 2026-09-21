@@ -516,6 +516,9 @@ class Router:
         n = len(seg.lines)
 
         if seg.kind == "structure":
+            # part banners are preserved verbatim in cross/_interactions.md
+            # (no-loss guarantee) while still accounted as structural lines
+            self.cross("Structural banners (merged Parts)", seg.lines)
             self.counts["structure"] += n
             return
 
@@ -550,7 +553,9 @@ class Router:
             elif seg.sub and seg.sub.lower().startswith("participating regulations"):
                 self.cross("Participating regulations (§3)", seg.lines)
             elif seg.sub and seg.sub.lower().startswith("sub-requirements"):
-                pass  # heading only; each regs/<R>.md carries its own section header
+                # heading itself is preserved in interactions (no-loss guarantee);
+                # each regs/<R>.md carries its own section header
+                self.cross("Sub-requirements section heading", seg.lines)
             else:
                 self.cross("Part 1 §3 — context", seg.lines)
             self.counts["routed"] += n

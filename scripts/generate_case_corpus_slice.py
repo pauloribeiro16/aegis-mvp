@@ -35,6 +35,25 @@ import shutil
 import argparse
 from pathlib import Path
 
+import time
+import subprocess
+
+
+def robust_rmtree(path, retries=4, delay=1.0):
+    """rmtree that survives OneDrive/dir-handle locks (Windows)."""
+    path = Path(path)
+    if not path.exists():
+        return
+    for k in range(retries):
+        try:
+            shutil.rmtree(path)
+            return
+        except PermissionError:
+            time.sleep(delay)
+    subprocess.run(["cmd", "/c", "rd", "/s", "/q", str(path)], check=False)
+    if path.exists():
+        raise PermissionError(f"could not remove {path}")
+
 ALL_REGS = ['GDPR', 'CRA', 'NIS2', 'DORA', 'AI_Act']
 RE_REG = re.compile(r'\b(GDPR|NIS2|CRA|DORA|AI_Act)\b')
 RE_MATRIX = re.compile(r'^\|\s*\|')  # tables whose first cell is empty (matrices)
@@ -243,7 +262,7 @@ def main():
     baseline_root = Path(args.baseline)
     out_root = Path(args.output_dir) if args.output_dir else Path('cases') / args.case / 'filtered_corpus'
     if out_root.exists():
-        shutil.rmtree(out_root)
+        robust_rmtree(out_root)
     out_root.mkdir(parents=True)
 
     rows, total_viol = compose_case_slice(baseline_root, out_root, args.case, active)

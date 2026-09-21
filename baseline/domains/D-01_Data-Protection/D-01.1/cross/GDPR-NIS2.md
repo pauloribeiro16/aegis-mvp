@@ -52,6 +52,7 @@ The OJ texts impose the same substantive obligation (encryption of data at rest 
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,NIS2 -->
 | GDPR ↔ NIS2 | **Complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-001, Art. 32(1)(a)/(b)) | Personal data confidentiality at rest with risk-anchored baseline; pseudonymisation renders data unintelligible on breach | Art. 5(1)(f) CIA; Art. 32 risk-based; data subject to GDPR scope (personal data) |

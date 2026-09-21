@@ -55,6 +55,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **contradictory** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-029, Art. 5(1)(e) + Art. 30(1)(f)) | Documented retention limits with erasure at purpose end |  |

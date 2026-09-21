@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,DORA -->
 | NIS2 ↔ DORA | **Complementary** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-003, Art. 21(2)(i) — access-control + HR-security dimension) | Workforce identity lifecycle + access-control policies | Entity-level; PR.AA-01 + PR.AA-05 + PR.AT-02 |

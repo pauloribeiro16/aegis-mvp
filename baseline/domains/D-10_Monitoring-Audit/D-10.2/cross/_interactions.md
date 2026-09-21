@@ -6,6 +6,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -196,15 +200,31 @@ GDPR, CRA, DORA, AI Act (4 of 5 participate — **NIS 2 is fully out-of-scope** 
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 _Domain Analysis source not found._
 ---
 
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
+
 ## Part 3 — context
 
 _Deep Analysis source not found._
 ---
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 
 ## Residual pair content (NIS2, deep)
 

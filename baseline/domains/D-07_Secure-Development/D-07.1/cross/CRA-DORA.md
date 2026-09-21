@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-064, Art. 13(1); SR-CRA-065, Art. 13(2)) | Product-level three-phase design/development/production with risk assessment. | |

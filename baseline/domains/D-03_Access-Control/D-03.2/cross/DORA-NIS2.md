@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,DORA -->
 | NIS2 ↔ DORA | **Complementary** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-006, Art. 21(2)(j)) | MFA or continuous authentication "where appropriate" | Entity-level; OR; PR.AA-03 + PR.AA-05 |

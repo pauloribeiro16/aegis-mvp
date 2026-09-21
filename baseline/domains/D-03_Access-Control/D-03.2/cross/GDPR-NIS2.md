@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,NIS2 -->
 | GDPR ↔ NIS2 | **Complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-011 + SR-GDPR-012, Art. 28(3)(b) + Art. 29) | No explicit MFA; instructions + confidentiality for staff; verification for data subjects | Controller/processor; staff-side via confidentiality obligation; data-subject-side via verification; PR.AA-05 + PR.AA-06 + PR.AT-02 |

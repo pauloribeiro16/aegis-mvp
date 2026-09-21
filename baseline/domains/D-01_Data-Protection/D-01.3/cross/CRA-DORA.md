@@ -41,6 +41,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,DORA -->
 | CRA ↔ DORA | **Complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-004, Annex I Part I (2)(d)+(e)) | Cryptographic key separation from operational environment | Product-level; functional RBAC separation |

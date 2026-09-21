@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -364,6 +368,14 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs — AI Act out-of-scope per AEGIS taxonomy �
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -401,6 +413,27 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (3+ regulations)
 None. The pairwise readings above are additive — no 3-way contradiction or non-pairwise-surfacing observation. The 4-way detection layer (entity / product / personal-data / financial-entity) is layered, not contradictory.
 ##### SR cross-validation
@@ -409,6 +442,10 @@ NIST CSF 2.0 coverage is anchored on **DE.CM-01** (Networks monitored) and **DE.
 Phase 2 obligation derivation must distinguish detection-architecture obligations (DORA Art. 10, NIS2 Art. 21(2)(b)) from detection-trigger obligations (GDPR Art. 33(1) `becoming aware`). The methodology must ensure a financial entity implementing both DORA and GDPR produces a single integrated detection pipeline that satisfies both; the SO-GDPR-008 "becoming aware" anchor must be re-interpreted as the moment a DORA-detected event crosses the personal-data threshold.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -435,4 +472,8 @@ status: DRAFT
 #### D-04.1 Incident Detection & Triage
 **Participants (from CRDA):** GDPR, NIS2, CRA, DORA
 **Sole-authority note:** AI Act is out-of-scope for D-04.1 per AEGIS taxonomy §4.1; AI Act detection obligations are coupled to the Art. 73/55 reporting triggers (D-04.3) and not standalone.
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

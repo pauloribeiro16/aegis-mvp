@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis
@@ -368,6 +372,14 @@ NIS 2, DORA (2 of 5 — GDPR, CRA, AI Act fully absent per CRDA-deep §8.3 line 
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -404,6 +416,7 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
 ##### Emergent tensions (2 regulations)
 - Only 2 regulations have non-zero coverage. No 3-regulation emergent tension exists. Note: AI Act Art. 4 (AI literacy) creates a parallel-but-unmapped obligation that may extend management-body competence to AI risk literacy, but the AI Act does not impose a training mandate on the management body per se. The interplay between AI Act Art. 4 and DORA Art. 5(4) / NIS 2 Art. 20(2) sentence 1 for management bodies deploying high-risk AI is unresolved.
 ##### SR cross-validation
@@ -413,6 +426,10 @@ Phase 1 entities must implement management-body training programmes that satisfy
 ---
 ### D-09 Governance & Documentation
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -445,6 +462,10 @@ status: DRAFT
 
 ### D-09 Governance & Documentation
 ---
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 
 ## Residual pair content (AI_Act, deep)
 

@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,DORA -->
 | NIS2 ↔ DORA | **equal** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-031, Art. 20(2) sentence 1) | Management body follows cybersecurity training (Member-State-imposed; literacy prerequisite for approve/oversee/liable under Art. 20(1)). | |

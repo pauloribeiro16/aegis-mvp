@@ -6,6 +6,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis [VERBATIM]
@@ -420,6 +424,14 @@ GDPR, CRA, AI Act (3 of 5 regs — NIS 2 and DORA are out-of-scope per AEGIS tax
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -457,6 +469,15 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (3+ regulations)
 <!-- emergent: GDPR,CRA,AI_Act -->
 - **Special-category-data exception creates a 3-way interaction.** GDPR Art. 9(1) prohibits, AI Act Art. 10(5) creates the exception, CRA Annex I Part I (2)(g) addresses only adequacy/relevance/necessity (silent on special-category). The pairwise readings (GDPR↔CRA, GDPR↔AI_Act, CRA↔AI_Act) each capture part of the interaction, but the *non-pairwise observation* is that AI Act's exception enables a processing class that neither GDPR nor CRA explicitly contemplates. Phase 2 must codify the AI Act exception as a gateway clause: it is *permitted* by AI Act, *limited* by GDPR Art. 9(2) residual constraints, and *unspecified* by CRA (CRA defers to whichever regulation governs the personal-data status of the data).
@@ -467,6 +488,10 @@ NIST CSF 2.0 anchoring is dominated by **PR.DS-12** (Data disposal managed) and 
 Phase 2 obligation derivation must produce a 3-track minimisation matrix: (1) runtime minimisation (CRA Annex I Part I (2)(g)), (2) personal-data minimisation (GDPR Art. 5(1)(c) + Art. 6(4)), (3) training-data quality (AI Act Art. 10(1)–(5)). For high-risk AI products processing personal data, all three apply simultaneously. Phase 3 case generation must surface the AI Act Art. 10(5) special-category exception explicitly, because it is the only point where data minimisation is *relaxed* by one of the three regulations.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -494,4 +519,8 @@ status: DRAFT
 <!-- participants: GDPR, CRA, AI_Act -->
 **Participants (from CRDA):** GDPR, CRA, AI_Act
 **Sole-authority note:** NIS2 and DORA are out-of-scope for D-05.1 per AEGIS taxonomy §4.1 — both are operational-resilience / incident-reporting focused, not data-lifecycle. GDPR is the dedicated authority; CRA addresses product-level (which can include non-personal data); AI Act addresses training-data-quality specifically.
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

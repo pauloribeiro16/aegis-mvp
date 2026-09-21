@@ -41,6 +41,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,DORA -->
 | GDPR ↔ DORA | **Complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-005 + SR-GDPR-006, Art. 5(1)(d) + Art. 16) | Accuracy of stored personal data; rectification workflow with cascade propagation | Personal-data scope; PR.DS-01 + PR.DS-10 + PR.DS-12 |

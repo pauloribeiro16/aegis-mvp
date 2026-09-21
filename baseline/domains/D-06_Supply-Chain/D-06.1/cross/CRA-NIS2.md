@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,CRA -->
 | NIS2 ↔ CRA | **different-perspective** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-020, Art. 21(2)(d)) | Direct supplier and service-provider security |  |

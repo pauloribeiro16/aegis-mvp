@@ -51,6 +51,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **Complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-001, Art. 32(1)(a)/(b)) | Personal data confidentiality at rest with risk-anchored baseline | Controller/processor; personal data scope; risk-based + state-of-the-art |

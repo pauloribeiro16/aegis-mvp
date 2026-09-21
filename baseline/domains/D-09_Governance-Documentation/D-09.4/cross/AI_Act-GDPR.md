@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,AI_Act -->
 | GDPR ↔ AI_Act | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-048, Art. 30(1)-(4)) | RoPA mandate. | |

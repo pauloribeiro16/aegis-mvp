@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis [VERBATIM]
@@ -307,6 +311,14 @@ CRA, DORA (partial), AI Act (partial) — 3 of 5 regs. **GDPR and NIS 2 are expl
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -343,6 +355,15 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (3 regulations)
 <!-- emergent: CRA,DORA,AI_Act -->
 - **The taxonomy's "sole authority" assignment for DORA is OJ-text-unsupported**: AEGIS taxonomy §4.1 marks DORA as the sole authority for D-07.2 Secure Coding Practices. The OJ Art. 9(4)(e) text is on change-management; Art. 9(4)(f) is on patches and updates. No OJ clause prescribes coding standards. The taxonomy assignment has no textual anchor in DORA. Recommend Layer 2 review: either (a) revise the taxonomy to remove the DORA sole-authority assignment, or (b) identify the OJ clause that supports it.
@@ -354,6 +375,10 @@ The 3 applicable regulations map D-07.2 to the NIST CSF 2.0 Subcategory **PR.PS-
 The taxonomy gap (DORA sole-authority with no OJ-text anchor) is a Layer 2 review item. Phase 1 entities should not treat DORA as a coding-standard authority absent OJ-text evidence. The three regimes do not produce a coordinated coding-standards baseline — the entity must build the coding-standards baseline from industry frameworks (NIST SSDF, OWASP SAMM, ISO 27034) and demonstrate compliance against each regulation's outcome or process requirement.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -381,4 +406,8 @@ status: DRAFT
 <!-- participants: CRA, DORA, AI_Act -->
 **Participants (from CRDA):** CRA, DORA, AI_Act
 **Sole-authority note (CRDA flag):** AEGIS taxonomy §4.1 marks DORA as sole authority for D-07.2 Secure Coding Practices. The OJ Art. 9(4)(f) text is on `patches and updates` (patch-management policy) — not coding standards. Per SR-DORA-007 v0.2 audit, this pilot finds no OJ-text support for the DORA sole-authority assignment and recommends Layer 2 review (see P0 disagreement report).
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

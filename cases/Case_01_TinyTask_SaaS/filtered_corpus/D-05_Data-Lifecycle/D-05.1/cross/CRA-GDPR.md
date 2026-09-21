@@ -51,6 +51,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-025, Art. 5(1)(c) + Art. 6(4)) | Purpose-bound data minimisation with Art. 6(4) compatibility assessment |  |

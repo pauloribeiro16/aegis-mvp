@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis [VERBATIM]
@@ -325,6 +329,14 @@ NIS2 and CRA (2 of 5 regs). See the HSO provenance file for out-of-scope finding
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -361,6 +373,7 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
 ##### Emergent tensions (2 regulations)
 - Only 2 regulations have non-zero coverage. No 3-regulation emergent tension exists.
 ##### SR cross-validation
@@ -369,6 +382,10 @@ Both applicable regulations map D-07.3 to **PR.PS-06** (Secure software developm
 The CI/CD pipeline security sub-domain has no dedicated OJ mandate in any of the 5 regulations. Phase 1 entities must construct the CI/CD baseline from industry frameworks (NIST SP 800-204, OWASP CI/CD Top 10, SLSA) and demonstrate compliance against NIS 2's partial-coverage maintenance dimension and CRA's partial-coverage update-distribution pathway. The pipeline-architecture controls (signed artefacts, build-agent integrity, ephemeral build environments) are industry-best-practice, not regulatory mandate.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -396,4 +413,8 @@ status: DRAFT
 <!-- participants: NIS2, CRA -->
 **Participants (from CRDA):** NIS2, CRA
 **Sole-authority note:** AEGIS taxonomy §4.1 marks NIS 2 as sole authority for D-07.3 CI/CD Pipeline Security (T3-vs-text gap: OJ Art. 21(2)(e) does not mention `pipeline`, `CI`, or `CD`). NIS 2 provides only partial coverage via the maintenance dimension. CRA Annex I Part II (7)+(8) covers update distribution (delivery path), not CI/CD build-time controls.
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

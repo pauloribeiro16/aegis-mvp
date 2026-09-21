@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,AI_Act -->
 | CRA ↔ AI_Act | **complementary** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-087, Annex VII §1-§2; SR-CRA-088, Annex VII §5-§8) | Technical documentation with 8-item content list. | |

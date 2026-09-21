@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **Different perspective** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-013, Art. 25(2)) | Data-protection by default: only personal data necessary for each specific purpose processed — across amount, extent, period, accessibility | Controller; personal-data scope; "by default" across 4 dimensions; PR.DS-12 + GV.PO-01 (data-management + policy) |

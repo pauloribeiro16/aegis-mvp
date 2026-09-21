@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,AI_Act -->
 | GDPR ↔ AI_Act | **different-perspective** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-042, Art. 39(1)(b)) | DPO-driven role-specific training for processing staff. | |

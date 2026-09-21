@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **Complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-011 + SR-GDPR-012, Art. 28(3)(b) + Art. 29) | No explicit MFA; staff instructions + confidentiality | Controller/processor; staff-side; PR.AA-05 + PR.AA-06 + PR.AT-02 |

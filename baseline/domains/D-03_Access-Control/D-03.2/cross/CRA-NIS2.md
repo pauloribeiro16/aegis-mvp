@@ -48,6 +48,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,CRA -->
 | NIS2 ↔ CRA | **Complementary** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-006, Art. 21(2)(j) first clause) | MFA or continuous authentication "where appropriate" | Entity-level; OR of MFA and continuous; PR.AA-03 + PR.AA-05 |

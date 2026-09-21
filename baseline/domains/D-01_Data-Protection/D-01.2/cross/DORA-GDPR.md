@@ -49,6 +49,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,DORA -->
 | GDPR ↔ DORA | **Complementary** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-002, Art. 32(1)(b)) | In-transit confidentiality with Art. 32(2) risk events | Personal-data scope; PR.DS-02 + PR.IR-01 |

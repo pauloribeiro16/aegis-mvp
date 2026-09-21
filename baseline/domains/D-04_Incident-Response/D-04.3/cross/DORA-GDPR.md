@@ -51,6 +51,7 @@ Where one event is both a personal-data breach and a major ICT-related incident 
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,DORA -->
 | GDPR ↔ DORA | **contradictory** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-016, Art. 33(1)) | 72h SA notification |  |

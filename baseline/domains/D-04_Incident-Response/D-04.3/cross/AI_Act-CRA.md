@@ -50,6 +50,7 @@ When the same party is both CRA manufacturer and AI Act provider/deployer for th
 
 ## Summary (Domain Analysis)
 
+<!-- pair: CRA,AI_Act -->
 | CRA ↔ AI_Act | **contradictory** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-031–033, Art. 14(3)–(4)) | SI: 24h/72h/1m |  |

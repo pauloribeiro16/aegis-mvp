@@ -6,6 +6,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis [VERBATIM]
@@ -393,6 +397,14 @@ GDPR, NIS 2, CRA, DORA, AI Act (5 of 5 regs — all participate per AEGIS taxono
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -429,6 +441,43 @@ status: DRAFT
 
 ## Part 2 — Domain Analysis (summary layer)
 
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
+
+## Part 2 — Domain Analysis (summary layer)
+
+<!-- /pair -->
 ##### Emergent tensions (5 regulations)
 <!-- emergent: GDPR,NIS2,CRA,DORA,AI_Act -->
 - **No by-design mandate in DORA creates a supplier-conformance gap**: All other 4 regulations impose a by-design obligation (GDPR via Art. 25; NIS 2 via Art. 21(2)(e); CRA via Art. 13(1)/(2); AI Act via Art. 17(1)). DORA's coverage is implicit (operationalised through change-management). A DORA-only entity has no OJ-mandated by-design baseline, and DORA entities procuring CRA-regulated products must demonstrate that the upstream CRA design discipline substitutes for the absent DORA by-design obligation.
@@ -440,6 +489,10 @@ The 5 regulations map D-07.1 by-design to the NIST CSF 2.0 Subcategories **PR.PS
 A Phase 1 entity must implement at minimum one by-design obligation from each applicable regulation — the regimes stack, not substitute. The CRA-conformant product design serves as the upstream gate for NIS 2 / DORA / AI Act deployment decisions. GDPR by-design outputs (pseudonymisation, minimisation) become a CRA Annex I input only when the product processes personal data — the cross-regulation propagation is conditional on data-classification overlap.
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
 
 ## Part 3 — context
 
@@ -467,4 +520,8 @@ status: DRAFT
 <!-- participants: GDPR, NIS2, CRA, DORA, AI_Act -->
 **Participants (from CRDA):** GDPR, NIS2, CRA, DORA, AI_Act
 **Sole-authority / partial-coverage notes:** DORA is "partial" coverage — the OJ Art. 9(4)(b) text addresses network/infrastructure management structure, not a dedicated by-design mandate. Secure-by-design is operationalised through DORA's change-management and testing-programme architecture (Art. 9(4)(e), Art. 24). This is reflected in the SR-DORA-004 SR mapping (Art. 7(2) + Art. 8(2)) and SR-DORA-006 (Art. 9(4)(b)).
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

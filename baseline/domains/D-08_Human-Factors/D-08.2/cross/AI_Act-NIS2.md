@@ -47,6 +47,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: NIS2,AI_Act -->
 | NIS2 ↔ AI_Act | **complementary** | Tension/difference |
 |---|---|---|
 | **NIS2** (SR-NIS2-030, Art. 20(2) sentence 2) | Employee training on risk identification and assessment. | |

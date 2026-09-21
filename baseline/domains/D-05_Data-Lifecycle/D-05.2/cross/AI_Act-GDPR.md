@@ -49,6 +49,7 @@
 
 ## Summary (Domain Analysis)
 
+<!-- pair: GDPR,AI_Act -->
 | GDPR ↔ AI_Act | **contradictory** | Tension/difference |
 |---|---|---|
 | **GDPR** (SR-GDPR-029, Art. 5(1)(e)) | Documented retention limits |  |

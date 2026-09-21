@@ -7,6 +7,10 @@
 > Consult only when ≥2 regulations are applicable. No per-regulation
 > obligation lives here.
 
+## Structural banners (merged Parts)
+
+# Part 1 — Sub-domain definition
+
 ## Part 1 §1 — Cross-Regulation Analysis context
 
 ### 1. Cross-Regulation Analysis [VERBATIM]
@@ -478,6 +482,14 @@ CRA only (1 of 5 regs — **CRA is SOLE AUTHORITY per AEGIS taxonomy §4.1**). 0
 ```
 ---
 
+## Sub-requirements section heading
+
+### Sub-requirements
+
+## Structural banners (merged Parts)
+
+# Part 2 — Domain Analysis (cross-regulation)
+
 ## Part 2 — Domain Analysis (summary layer)
 
 ---
@@ -522,6 +534,10 @@ Phase 2 obligation derivation produces a single-track SBOM obligation per CRA. P
 ---
 ---
 
+## Structural banners (merged Parts)
+
+# Part 3 — Deep Analysis (per-pair)
+
 ## Part 3 — context
 
 ---
@@ -553,4 +569,8 @@ status: DRAFT
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation produces a single-track SBOM obligation per CRA. Phase 3 case generation must validate that CRA-classified case companies produce and maintain an SBOM covering top-level dependencies in a commonly used machine-readable format (e.g., SPDX or CycloneDX). The Annex VII §8 MSA-disclosure obligation is an institutional hook, not an operational requirement; case companies do not need to provide the SBOM to users by default (Annex II §9 is optional).
 ---
 ---
+
+## Structural banners (merged Parts)
+
+# Part 4 — Relevant Ambiguity (by regulation)
 

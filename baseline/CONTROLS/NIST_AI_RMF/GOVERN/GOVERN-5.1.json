@@ -1,0 +1,35 @@
+{
+  "control_id": "GOVERN-5.1",
+  "framework": "NIST AI RMF 1.0",
+  "function": "GOVERN",
+  "category": "Third-Party AI Systems and Resources",
+  "subcategory_id": "GOVERN-5.1",
+  "subcategory_text": "Organizational policies and practices are in place to collect, consider, prioritize, and integrate external feedback regarding potential individual and societal impacts related to AI risks",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "ISO, “Ergonomics of human-system interaction — Part 210: Human-centered design for interactive systems,” ISO 9241-210:2019 (2nd ed.), July 2019. [URL](https://www.iso.org/standard/77520.html)",
+    "Rumman Chowdhury and Jutta Williams, \"Introducing Twitter’s first algorithmic bias bounty challenge,\" [URL](https://blog.twitter.com/engineering/en_us/topics/insights/2021/algorithmic-bias-bounty-challenge)",
+    "Leonard Haas and Sebastian Gießler, “In the realm of paper tigers – exploring the failings of AI ethics guidelines,” AlgorithmWatch, 2020. [URL](https://algorithmwatch.org/en/ai-ethics-guidelines-inventory-upgrade-2020/)"
+  ],
+  "implementation_examples": [
+    "Establish AI risk management policies that explicitly address mechanisms for collecting, evaluating, and incorporating stakeholder and user feedback that could include:",
+    "Recourse mechanisms for faulty AI system outputs.",
+    "Bug bounties.",
+    "Human-centered design.",
+    "User-interaction and experience research.",
+    "Participatory stakeholder engagement with individuals and communities that may experience negative impacts.",
+    "Verify that stakeholder feedback is considered and addressed, including environmental concerns, and across the entire population of intended users, including historically excluded populations, people with disabilities, older people, and those with limited access to the internet and other basic technologies.",
+    "Clarify the organization’s principles as they apply to AI systems – considering those which have been proposed publicly – to inform external stakeholders of the organization’s values. Consider publishing or adopting AI principles."
+  ],
+  "assessment_objectives": [
+    "What type of information is accessible on the design, operations, and limitations of the AI system to external stakeholders, including end users, consumers, regulators, and individuals impacted by use of the AI system?",
+    "To what extent has the entity clarified the roles, responsibilities, and delegated authorities to relevant stakeholders?",
+    "How easily accessible and current is the information available to external stakeholders?",
+    "What was done to mitigate or reduce the potential for harm?"
+  ],
+  "related_controls": [
+    "GOVERN-5.2 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

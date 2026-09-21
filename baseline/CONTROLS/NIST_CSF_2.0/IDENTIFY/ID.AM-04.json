@@ -1,0 +1,37 @@
+{
+  "control_id": "ID.AM-04",
+  "framework": "NIST CSF 2.0",
+  "function": "IDENTIFY",
+  "category": "Asset Management (ID.AM)",
+  "subcategory_id": "ID.AM-04",
+  "subcategory_text": "Inventories of services provided by suppliers are maintained",
+  "informative_references": [
+    "NIST CSF 2.0 Core: ID.AM-04",
+    "NIST SP 800-53 Rev. 5: AC-20, SA-09, SR-02",
+    "ISO/IEC 27001:2022: Annex A.5.22",
+    "CSF v1.1: ID.AM-4",
+    "CIS Controls v8: 15.1",
+    "PCI DSS: 12.8.1, 12.8.3, 12.8.4, 12.8.5",
+    "CRI Profile v2.0: ID.AM-04, ID.AM-04.01"
+  ],
+  "implementation_examples": [
+    "Inventory all external services used by the organization, including third-party infrastructure-as-a-service (IaaS), platform-as-a-service (PaaS), and software-as-a-service (SaaS) offerings; APIs; and other externally hosted application services",
+    "Update the inventory when a new external service is going to be utilized to ensure adequate cybersecurity risk management monitoring of the organization's use of that service"
+  ],
+  "assessment_objectives": [
+    "Determine whether inventories of services provided by suppliers are maintained.",
+    "Determine whether mechanisms ensure that inventory all external services used by the organization, including third-party infrastructure-as-a-service (IaaS), platform-as-a-service (PaaS), and software-as-a-service (SaaS) offerings; APIs; and other externally hosted application services.",
+    "Determine whether activities are conducted to update the inventory when a new external service is going to be utilized to ensure adequate cybersecurity risk management monitoring of the organization's use of that service.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "ID.AM-01 (NIST CSF 2.0 — same category)",
+    "ID.AM-02 (NIST CSF 2.0 — same category)",
+    "ID.AM-03 (NIST CSF 2.0 — same category)",
+    "ID.AM-05 (NIST CSF 2.0 — same category)",
+    "ID.AM-07 (NIST CSF 2.0 — same category)",
+    "ID.AM-08 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

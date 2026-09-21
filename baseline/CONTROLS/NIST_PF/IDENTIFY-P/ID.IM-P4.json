@@ -1,0 +1,33 @@
+{
+  "control_id": "ID.IM-P4",
+  "framework": "NIST PF 1.0",
+  "function": "IDENTIFY-P",
+  "category": "Inventory and Mapping (ID.IM-P)",
+  "subcategory_id": "ID.IM-P4",
+  "subcategory_text": "Data actions of the systems/products/services are inventoried.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: AC-3 (Access Enforcement); NIST SP 800-122",
+    "NIST PF 1.0 Core (January 2020): ID.IM-P4 (verified row 7)",
+    "ISO/IEC 27001:2022 Annex A.5.10 (Acceptable use of information)",
+    "GDPR Art. 5(1)(b) (Purpose limitation), Art. 30 (Records of processing activities)",
+    "Aligned with NIST CSF 2.0 ID.AM-03 (data flow mapping) and PV.AE-02 (privacy risk context)"
+  ],
+  "implementation_examples": [
+    "Catalogue the data actions performed on personal data (e.g., collection, recording, structuring, storage, adaptation, retrieval, consultation, use, disclosure, alignment, restriction, erasure, destruction)",
+    "Map each data action to the lifecycle stage in which it occurs and to the data elements it touches",
+    "Record the technical and organisational measures applied to each action for downstream risk evaluation"
+  ],
+  "assessment_objectives": [
+    "Determine whether the full set of data actions is enumerated for each processing activity",
+    "Determine whether data actions are mapped to the data lifecycle and to data elements",
+    "Determine whether the controls supporting each action are documented",
+    "Determine whether data-action inventory is reviewed as part of change management"
+  ],
+  "related_controls": [
+    "ID.IM-P5 (purposes inventoried)",
+    "ID.IM-P6 (data elements inventoried)",
+    "CT.PO-P1 (authorisation of data processing)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

@@ -1,0 +1,35 @@
+{
+  "control_id": "GOVERN-6.1",
+  "framework": "NIST AI RMF 1.0",
+  "function": "GOVERN",
+  "category": "Continuous Monitoring and Improvement",
+  "subcategory_id": "GOVERN-6.1",
+  "subcategory_text": "Policies and procedures address AI risks associated with third-party entities, including risks of infringement of a third party’s intellectual property or other rights",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Bd. Governors Fed. Rsrv. Sys., Supervisory Guidance on Model Risk Management, SR Letter 11-7 (Apr. 4, 2011)",
+    "“Proposed Interagency Guidance on Third-Party Relationships: Risk Management,” 2021. [URL](https://www.occ.gov/news-issuances/news-releases/2021/nr-occ-2021-74a.pdf)",
+    "Off. Comptroller Currency, Comptroller’s Handbook: Model Risk Management (Aug. 2021). [URL](https://www.occ.gov/publications-and-resources/publications/comptrollers-handbook/files/model-risk-management/index-model-risk-management.html)"
+  ],
+  "implementation_examples": [
+    "Collaboratively establish policies that address third-party AI systems and data.",
+    "Establish policies related to:",
+    "Transparency into third-party system functions, including knowledge about training data, training and inference algorithms, and assumptions and limitations.",
+    "Thorough testing of third-party AI systems. (See MEASURE for more detail)",
+    "Requirements for clear and complete instructions for third-party system usage.",
+    "Evaluate policies for third-party technology.",
+    "Establish policies that address supply chain, full product lifecycle and associated processes, including legal, ethical, and other issues concerning procurement and use of third-party software or hardware systems and data."
+  ],
+  "assessment_objectives": [
+    "Did you establish mechanisms that facilitate the AI system’s auditability (e.g. traceability of the development process, the sourcing of training data and the logging of the AI system’s processes, outcomes, positive and negative impact)?",
+    "If a third party created the AI, how will you ensure a level of explainability or interpretability?",
+    "Did you ensure that the AI system can be audited by independent third parties?",
+    "Did you establish a process for third parties (e.g. suppliers, end users, subjects, distributors/vendors or workers) to report potential vulnerabilities, risks or biases in the AI system?",
+    "To what extent does the plan specifically address risks associated with acquisition, procurement of packaged software from vendors, cybersecurity controls, computational infrastructure, data, data science, deployment mechanics, and system failure?"
+  ],
+  "related_controls": [
+    "GOVERN-6.2 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

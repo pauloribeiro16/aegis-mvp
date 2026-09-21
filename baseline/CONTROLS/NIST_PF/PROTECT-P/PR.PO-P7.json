@@ -1,0 +1,31 @@
+{
+  "control_id": "PR.PO-P7",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Data Protection Policies, Processes, and Procedures (PR.PO-P)",
+  "subcategory_id": "PR.PO-P7",
+  "subcategory_text": "Response plans (Incident Response and Business Continuity) and recovery plans (Incident Recovery and Disaster Recovery) are established, in place, and managed.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: CP-2 (Contingency Plan), IR-8 (Incident Response Plan)",
+    "NIST PF 1.0 Core (January 2020): PR.PO-P7 (verified row 80)",
+    "ISO/IEC 27001:2022 Annex A.5.24 (Information security incident management planning), A.5.29 (Information security during disruption)",
+    "GDPR Art. 32(1)(b) (Security of processing — Resilience), Art. 33 (Breach notification timing)"
+  ],
+  "implementation_examples": [
+    "Establish and maintain response plans (incident response, business continuity) and recovery plans (incident recovery, disaster recovery) covering privacy-relevant scenarios (data loss, breach, unauthorised disclosure)",
+    "Assign roles, define triggers, capture critical assets, and document decision criteria",
+    "Maintain plan currency with respect to changes in data, systems, or regulation"
+  ],
+  "assessment_objectives": [
+    "Determine whether response and recovery plans exist and cover privacy scenarios",
+    "Determine whether the plans define roles, triggers, and decision criteria",
+    "Determine whether the plans are reviewed and refreshed on change",
+    "Determine whether the plans are accessible to responders"
+  ],
+  "related_controls": [
+    "PR.PO-P8 (plan testing)",
+    "RS.PO-P1 (incident response plan)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

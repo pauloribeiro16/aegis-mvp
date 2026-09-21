@@ -1,0 +1,39 @@
+{
+  "control_id": "ID.AM-03",
+  "framework": "NIST CSF 2.0",
+  "function": "IDENTIFY",
+  "category": "Asset Management (ID.AM)",
+  "subcategory_id": "ID.AM-03",
+  "subcategory_text": "Representations of the organization's authorized network communication and internal and external network data flows are maintained",
+  "informative_references": [
+    "NIST CSF 2.0 Core: ID.AM-03",
+    "NIST SP 800-53 Rev. 5: AC-04, CA-03, CA-09, PL-02, PL-08, PM-07",
+    "ISO/IEC 27001:2022: Annex A.5.14, Annex A.8.20, Annex A.8.21, Annex A.8.22",
+    "CSF v1.1: DE.AE-1, ID.AM-3",
+    "CIS Controls v8: 3.8",
+    "PCI DSS: 1.2.3, 1.2.4, 12.5.2",
+    "CRI Profile v2.0: ID.AM-03, ID.AM-03.01"
+  ],
+  "implementation_examples": [
+    "Maintain baselines of communication and data flows within the organization's wired and wireless networks",
+    "Maintain baselines of communication and data flows between the organization and third parties",
+    "Maintain baselines of communication and data flows for the organization's infrastructure-as-a-service (IaaS) usage",
+    "Maintain documentation of expected network ports, protocols, and services that are typically used among authorized systems"
+  ],
+  "assessment_objectives": [
+    "Determine whether representations of the organization's authorized network communication and internal and external network data flows are maintained.",
+    "Determine whether activities are conducted to maintain baselines of communication and data flows within the organization's wired and wireless networks.",
+    "Determine whether activities are conducted to maintain baselines of communication and data flows between the organization and third parties.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "ID.AM-01 (NIST CSF 2.0 — same category)",
+    "ID.AM-02 (NIST CSF 2.0 — same category)",
+    "ID.AM-04 (NIST CSF 2.0 — same category)",
+    "ID.AM-05 (NIST CSF 2.0 — same category)",
+    "ID.AM-07 (NIST CSF 2.0 — same category)",
+    "ID.AM-08 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

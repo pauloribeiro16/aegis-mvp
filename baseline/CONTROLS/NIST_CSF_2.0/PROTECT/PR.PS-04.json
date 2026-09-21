@@ -1,0 +1,38 @@
+{
+  "control_id": "PR.PS-04",
+  "framework": "NIST CSF 2.0",
+  "function": "PROTECT",
+  "category": "Platform Security (PR.PS)",
+  "subcategory_id": "PR.PS-04",
+  "subcategory_text": "Log records are generated and made available for continuous monitoring",
+  "informative_references": [
+    "NIST CSF 2.0 Core: PR.PS-04",
+    "NIST SP 800-53 Rev. 5: AU-02, AU-03, AU-06, AU-07, AU-11, AU-12, SA-15(13)",
+    "ISO/IEC 27001:2022: Annex A.8.15, Annex A.8.17",
+    "CSF v1.1: PR.PT-1",
+    "CIS Controls v8: 8.2",
+    "PCI DSS: 10.2.1, 10.3.1, 10.3.2, 10.3.3, 10.3.4, 10.4.2.1 (+2 more)",
+    "NIST SP 800-218 (SSDF): PO.3.3",
+    "CRI Profile v2.0: PR.PS-04, PR.PS-04.01, PR.PS-04.02, PR.PS-04.03"
+  ],
+  "implementation_examples": [
+    "Configure all operating systems, applications, and services (including cloud-based services) to generate log records",
+    "Configure log generators to securely share their logs with the organization's logging infrastructure systems and services",
+    "Configure log generators to record the data needed by zero-trust architectures"
+  ],
+  "assessment_objectives": [
+    "Determine whether log records are generated and made available for continuous monitoring.",
+    "Determine whether activities are conducted to configure all operating systems, applications, and services (including cloud-based services) to generate log records.",
+    "Determine whether activities are conducted to configure log generators to securely share their logs with the organization's logging infrastructure systems and services.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "PR.PS-01 (NIST CSF 2.0 — same category)",
+    "PR.PS-02 (NIST CSF 2.0 — same category)",
+    "PR.PS-03 (NIST CSF 2.0 — same category)",
+    "PR.PS-05 (NIST CSF 2.0 — same category)",
+    "PR.PS-06 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

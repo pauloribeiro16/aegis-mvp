@@ -1,0 +1,38 @@
+{
+  "control_id": "DE.CM-09",
+  "framework": "NIST CSF 2.0",
+  "function": "DETECT",
+  "category": "Continuous Monitoring (DE.CM)",
+  "subcategory_id": "DE.CM-09",
+  "subcategory_text": "Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events",
+  "informative_references": [
+    "NIST CSF 2.0 Core: DE.CM-09",
+    "NIST SP 800-53 Rev. 5: AC-04, AC-09, AU-12, CA-07, CM-03, CM-06, CM-10, CM-11 (+4 more)",
+    "ISO/IEC 27001:2022: Annex A.8.16",
+    "CSF v1.1: DE.CM-4, DE.CM-5, DE.CM-7, PR.DS-6, PR.DS-8",
+    "CIS Controls v8: 10.1",
+    "PCI DSS: 10.3.4, 11.3.1, 11.3.2, 5.2.1, 5.2.2, 5.3.2 (+1 more)",
+    "CRI Profile v2.0: DE.CM-09, DE.CM-09.01, DE.CM-09.02, DE.CM-09.03"
+  ],
+  "implementation_examples": [
+    "Monitor email, web, file sharing, collaboration services, and other common attack vectors to detect malware, phishing, data leaks and exfiltration, and other adverse events",
+    "Monitor authentication attempts to identify attacks against credentials and unauthorized credential reuse",
+    "Monitor software configurations for deviations from security baselines",
+    "Monitor hardware and software for signs of tampering",
+    "Use technologies with a presence on endpoints to detect cyber health issues (e.g., missing patches, malware infections, unauthorized software), and redirect the endpoints to a remediation environment before access is authorized"
+  ],
+  "assessment_objectives": [
+    "Determine whether computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events.",
+    "Determine whether activities are conducted to monitor email, web, file sharing, collaboration services, and other common attack vectors to detect malware, phishing, data leaks and exfiltration, and other adverse events.",
+    "Determine whether activities are conducted to monitor authentication attempts to identify attacks against credentials and unauthorized credential reuse.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "DE.CM-01 (NIST CSF 2.0 — same category)",
+    "DE.CM-02 (NIST CSF 2.0 — same category)",
+    "DE.CM-03 (NIST CSF 2.0 — same category)",
+    "DE.CM-06 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

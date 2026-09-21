@@ -1,0 +1,33 @@
+{
+  "control_id": "RS.CO-02",
+  "framework": "NIST CSF 2.0",
+  "function": "RESPOND",
+  "category": "Incident Response Reporting and Communication (RS.CO)",
+  "subcategory_id": "RS.CO-02",
+  "subcategory_text": "Internal and external stakeholders are notified of incidents",
+  "informative_references": [
+    "NIST CSF 2.0 Core: RS.CO-02",
+    "NIST SP 800-53 Rev. 5: IR-04, IR-06, IR-07, SR-03, SR-08",
+    "ISO/IEC 27001:2022: Clause 7.4, Annex A.5.26",
+    "CSF v1.1: RS.CO-2, RS.CO-3",
+    "CIS Controls v8: 17.2",
+    "PCI DSS: 12.10.1, 12.10.3, 12.8.2, 12.8.5",
+    "CRI Profile v2.0: RS.CO-02, RS.CO-02.01, RS.CO-02.02, RS.CO-02.03"
+  ],
+  "implementation_examples": [
+    "Follow the organization's breach notification procedures after discovering a data breach incident, including notifying affected customers",
+    "Notify business partners and customers of incidents in accordance with contractual requirements",
+    "Notify law enforcement agencies and regulatory bodies of incidents based on criteria in the incident response plan and management approval"
+  ],
+  "assessment_objectives": [
+    "Determine whether internal and external stakeholders are notified of incidents.",
+    "Determine whether mechanisms ensure that follow the organization's breach notification procedures after discovering a data breach incident, including notifying affected customers.",
+    "Determine whether activities are conducted to notify business partners and customers of incidents in accordance with contractual requirements.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "RS.CO-03 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

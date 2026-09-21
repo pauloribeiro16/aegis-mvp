@@ -1,0 +1,41 @@
+{
+  "control_id": "MANAGE-2.2",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MANAGE",
+  "category": "Risk Responses",
+  "subcategory_id": "MANAGE-2.2",
+  "subcategory_text": "Mechanisms are in place and applied to sustain the value of deployed AI systems",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "AI Incident Database. 2022. AI Incident Database. [URL](https://incidentdatabase.ai/)",
+    "AIAAIC Repository. 2022. AI, algorithmic and automation incidents collected, dissected, examined, and divulged. [URL](https://www.aiaaic.org/aiaaic-repository)",
+    "Alexander D'Amour, Katherine Heller, Dan Moldovan, et al. 2020. Underspecification Presents Challenges for Credibility in Modern Machine Learning. arXiv:2011.03395. [URL](https://arxiv.org/abs/2011.03395)"
+  ],
+  "implementation_examples": [
+    "Establish risk controls considering trustworthiness characteristics, including:",
+    "Data management, quality, and privacy (e.g. minimization, rectification or deletion requests) controls as part of organizational data governance policies.",
+    "Machine learning and end-point security countermeasures (e.g., robust models, differential privacy, authentication, throttling).",
+    "Business rules that augment, limit or restrict AI system outputs within certain contexts",
+    "Utilizing domain expertise related to deployment context for continuous improvement and TEVV across the AI lifecycle.",
+    "Development and regular tracking of human-AI teaming configurations.",
+    "Model assessment and test, evaluation, validation and verification (TEVV) protocols.",
+    "Use of standardized documentation and transparency mechanisms.",
+    "Software quality assurance practices across AI lifecycle.",
+    "Mechanisms to explore system limitations and avoid past failed designs or deployments.",
+    "Establish mechanisms to capture feedback from system end users and potentially impacted groups while system is in deployment.",
+    "Review insurance policies, warranties, or contracts for legal or oversight requirements for risk transfer procedures.",
+    "Document risk tolerance decisions and risk acceptance procedures."
+  ],
+  "assessment_objectives": [
+    "To what extent can users or parties affected by the outputs of the AI system test the AI system and provide feedback?",
+    "Could the AI system expose people to harm or negative impacts? What was done to mitigate or reduce the potential for harm?",
+    "How will the accountable human(s) address changes in accuracy and precision due to either an adversary’s attempts to disrupt the AI or unrelated changes in the operational or business environment?"
+  ],
+  "related_controls": [
+    "MANAGE-2.1 (NIST AI RMF — same category)",
+    "MANAGE-2.3 (NIST AI RMF — same category)",
+    "MANAGE-2.4 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

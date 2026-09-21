@@ -1,0 +1,32 @@
+{
+  "control_id": "PR.IR-04",
+  "framework": "NIST CSF 2.0",
+  "function": "PROTECT",
+  "category": "Technology Infrastructure Resilience (PR.IR)",
+  "subcategory_id": "PR.IR-04",
+  "subcategory_text": "Adequate resource capacity to ensure availability is maintained",
+  "informative_references": [
+    "NIST CSF 2.0 Core: PR.IR-04",
+    "NIST SP 800-53 Rev. 5: CP-06, CP-07, CP-08, PM-03, PM-09",
+    "ISO/IEC 27001:2022: Annex A.8.6",
+    "CSF v1.1: PR.DS-4",
+    "CRI Profile v2.0: PR.IR-04, PR.IR-04.01, PR.IR-04.02"
+  ],
+  "implementation_examples": [
+    "Monitor usage of storage, power, compute, network bandwidth, and other resources",
+    "Forecast future needs, and scale resources accordingly"
+  ],
+  "assessment_objectives": [
+    "Determine whether adequate resource capacity to ensure availability is maintained.",
+    "Determine whether activities are conducted to monitor usage of storage, power, compute, network bandwidth, and other resources.",
+    "Determine whether mechanisms ensure that forecast future needs, and scale resources accordingly.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "PR.IR-01 (NIST CSF 2.0 — same category)",
+    "PR.IR-02 (NIST CSF 2.0 — same category)",
+    "PR.IR-03 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

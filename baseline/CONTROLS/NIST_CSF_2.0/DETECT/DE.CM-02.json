@@ -1,0 +1,36 @@
+{
+  "control_id": "DE.CM-02",
+  "framework": "NIST CSF 2.0",
+  "function": "DETECT",
+  "category": "Continuous Monitoring (DE.CM)",
+  "subcategory_id": "DE.CM-02",
+  "subcategory_text": "The physical environment is monitored to find potentially adverse events",
+  "informative_references": [
+    "NIST CSF 2.0 Core: DE.CM-02",
+    "NIST SP 800-53 Rev. 5: CA-07, PE-03, PE-06, PE-20",
+    "ISO/IEC 27001:2022: Annex A.7.4",
+    "CSF v1.1: DE.CM-2",
+    "PCI DSS: 9.3.1.1, 9.4.1.2, 9.5.1.2",
+    "CRI Profile v2.0: DE.CM-02, DE.CM-02.01"
+  ],
+  "implementation_examples": [
+    "Monitor logs from physical access control systems (e.g., badge readers) to find unusual access patterns (e.g., deviations from the norm) and failed access attempts",
+    "Review and monitor physical access records (e.g., from visitor registration, sign-in sheets)",
+    "Monitor physical access controls (e.g., locks, latches, hinge pins, alarms) for signs of tampering",
+    "Monitor the physical environment using alarm systems, cameras, and security guards"
+  ],
+  "assessment_objectives": [
+    "Determine whether the physical environment is monitored to find potentially adverse events.",
+    "Determine whether activities are conducted to monitor logs from physical access control systems (e.g., badge readers) to find unusual access patterns (e.g., deviations from the norm) and failed access attempts.",
+    "Determine whether activities are conducted to review and monitor physical access records (e.g., from visitor registration, sign-in sheets).",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "DE.CM-01 (NIST CSF 2.0 — same category)",
+    "DE.CM-03 (NIST CSF 2.0 — same category)",
+    "DE.CM-06 (NIST CSF 2.0 — same category)",
+    "DE.CM-09 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

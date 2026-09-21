@@ -1,0 +1,43 @@
+{
+  "control_id": "GV.SC-09",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Cybersecurity Supply Chain Risk Management (GV.SC)",
+  "subcategory_id": "GV.SC-09",
+  "subcategory_text": "Supply chain security practices are integrated into cybersecurity and enterprise risk management programs, and their performance is monitored throughout the technology product and service life cycle",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.SC-09",
+    "NIST SP 800-53 Rev. 5: PM-09, PM-19, PM-28, PM-30, PM-31, RA-03, RA-07, SA-04 (+5 more)",
+    "ISO/IEC 27001:2022: Clause 6.1.1, Clause 6.1.2, Annex A.5.19, Annex A.5.20, Annex A.5.21, Annex A.5.22",
+    "CSF v1.1: ID.SC-1",
+    "CIS Controls v8: 15.6",
+    "PCI DSS: 11.6.1, 12.3.4, 12.8.1, 12.8.4, 12.8.5, 6.2.3 (+7 more)",
+    "CRI Profile v2.0: GV.SC-09, GV.SC-09.01"
+  ],
+  "implementation_examples": [
+    "Policies and procedures require provenance records for all acquired technology products and services",
+    "Periodically provide risk reporting to leaders about how acquired components are proven to be untampered and authentic",
+    "Communicate regularly among cybersecurity risk managers and operations personnel about the need to acquire software patches, updates, and upgrades only from authenticated and trustworthy software providers",
+    "Review policies to ensure that they require approved supplier personnel to perform maintenance on supplier products",
+    "Policies and procedure require checking upgrades to critical hardware for unauthorized changes"
+  ],
+  "assessment_objectives": [
+    "Determine whether supply chain security practices are integrated into cybersecurity and enterprise risk management programs, and their performance is monitored throughout the technology product and service life cycle.",
+    "Determine whether mechanisms ensure that policies and procedures require provenance records for all acquired technology products and services.",
+    "Determine whether mechanisms ensure that periodically provide risk reporting to leaders about how acquired components are proven to be untampered and authentic.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.SC-01 (NIST CSF 2.0 — same category)",
+    "GV.SC-02 (NIST CSF 2.0 — same category)",
+    "GV.SC-03 (NIST CSF 2.0 — same category)",
+    "GV.SC-04 (NIST CSF 2.0 — same category)",
+    "GV.SC-05 (NIST CSF 2.0 — same category)",
+    "GV.SC-06 (NIST CSF 2.0 — same category)",
+    "GV.SC-07 (NIST CSF 2.0 — same category)",
+    "GV.SC-08 (NIST CSF 2.0 — same category)",
+    "GV.SC-10 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

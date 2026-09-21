@@ -1,0 +1,44 @@
+{
+  "control_id": "MEASURE-2.4",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MEASURE",
+  "category": "AI System Characteristics are Evaluated",
+  "subcategory_id": "MEASURE-2.4",
+  "subcategory_text": "Functionality and behavior of the AI system and its components are monitored when in production",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Luca Piano, Fabio Garcea, Valentina Gatteschi, Fabrizio Lamberti, and Lia Morra. “Detecting Drift in Deep Learning: A Methodology Primer.” IT Professional 24, no. 5 (2022): 53–60. [URL](https://doi.org/10.1109/mitp.2022.3191318)",
+    "Larysa Visengeriyeva, et al. “Awesome MLOps.“ GitHub. [URL](https://github.com/visenger/awesome-mlops)"
+  ],
+  "implementation_examples": [
+    "Monitor and document how metrics and performance indicators observed in production differ from the same metrics collected during pre-deployment testing. When differences are observed, consider error propagation and feedback loop risks.",
+    "Utilize hypothesis testing or human domain expertise to measure monitored distribution differences in new input or output data relative to test environments",
+    "Monitor for anomalies using approaches such as control limits, confidence intervals, integrity constraints and ML algorithms. When anomalies are observed, consider error propagation and feedback loop risks.",
+    "Verify alerts are in place for when distributions in new input data or generated predictions observed in production differ from pre-deployment test outcomes, or when anomalies are detected.",
+    "Assess the accuracy and quality of generated outputs against new collected ground-truth information as it becomes available.",
+    "Utilize human review to track processing of unexpected data and reliability of generated outputs; warn system users when outputs may be unreliable. Verify that human overseers responsible for these processes have clearly defined responsibilities and training for specified tasks.",
+    "Collect uses cases from the operational environment for system testing and monitoring activities in accordance with organizational policies and regulatory or disciplinary requirements (e.g. informed consent, institutional review board approval, human research protections),"
+  ],
+  "assessment_objectives": [
+    "To what extent is the output of each component appropriate for the operational context?",
+    "What justifications, if any, has the entity provided for the assumptions, boundaries, and limitations of the AI system?",
+    "How will the appropriate performance metrics, such as accuracy, of the AI be monitored after the AI is deployed?",
+    "As time passes and conditions change, is the training data still representative of the operational environment?"
+  ],
+  "related_controls": [
+    "MEASURE-2.1 (NIST AI RMF — same category)",
+    "MEASURE-2.10 (NIST AI RMF — same category)",
+    "MEASURE-2.11 (NIST AI RMF — same category)",
+    "MEASURE-2.12 (NIST AI RMF — same category)",
+    "MEASURE-2.13 (NIST AI RMF — same category)",
+    "MEASURE-2.2 (NIST AI RMF — same category)",
+    "MEASURE-2.3 (NIST AI RMF — same category)",
+    "MEASURE-2.5 (NIST AI RMF — same category)",
+    "MEASURE-2.6 (NIST AI RMF — same category)",
+    "MEASURE-2.7 (NIST AI RMF — same category)",
+    "MEASURE-2.8 (NIST AI RMF — same category)",
+    "MEASURE-2.9 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

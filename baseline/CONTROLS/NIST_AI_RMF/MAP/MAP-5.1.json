@@ -1,0 +1,30 @@
+{
+  "control_id": "MAP-5.1",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MAP",
+  "category": "Risk Treatment Decisions",
+  "subcategory_id": "MAP-5.1",
+  "subcategory_text": "Likelihood and magnitude of each identified impact -- based on expected use, past uses in similar contexts, public incident reports, external feedback -- are identified and documented.",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Emilio Gómez-González and Emilia Gómez. 2020. Artificial intelligence in medicine and healthcare. Joint Research Centre (European Commission). [URL](https://op.europa.eu/en/publication-detail/-/publication/b4b5db47-94c0-11ea-aac4-01aa75ed71a1/language-en)",
+    "Artificial Intelligence Incident Database. 2022. [URL](https://incidentdatabase.ai/?lang=en)",
+    "Anthony M. Barrett, Dan Hendrycks, Jessica Newman and Brandie Nonnecke. “Actionable Guidance for High-Consequence AI Risk Management: Towards Standards Addressing AI Catastrophic Risks\". ArXiv abs/2206.08966 (2022) [URL](https://arxiv.org/abs/2206.08966)"
+  ],
+  "implementation_examples": [
+    "Establish assessment scales for measuring AI systems’ impact. Scales may be qualitative, such as red-amber-green (RAG), or may entail simulations or econometric approaches. Document and apply scales uniformly across the organization’s AI portfolio.",
+    "Apply TEVV regularly at key stages in the AI lifecycle, connected to system impacts and frequency of system updates.",
+    "Identify and document  likelihood and magnitude of system benefits and negative impacts in relation to trustworthiness characteristics.",
+    "Establish processes for red teaming to identify and connect system limitations to AI lifecycle stage(s) and potential downstream impacts"
+  ],
+  "assessment_objectives": [
+    "Which population(s) does the AI system impact?",
+    "What assessments has the entity conducted on trustworthiness characteristics for example data security and privacy impacts associated with the AI system?",
+    "Can the AI system be tested by independent third parties?"
+  ],
+  "related_controls": [
+    "MAP-5.2 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

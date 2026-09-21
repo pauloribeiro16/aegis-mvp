@@ -1,0 +1,38 @@
+{
+  "control_id": "PR.PS-03",
+  "framework": "NIST CSF 2.0",
+  "function": "PROTECT",
+  "category": "Platform Security (PR.PS)",
+  "subcategory_id": "PR.PS-03",
+  "subcategory_text": "Hardware is maintained, replaced, and removed commensurate with risk",
+  "informative_references": [
+    "NIST CSF 2.0 Core: PR.PS-03",
+    "NIST SP 800-53 Rev. 5: CM-07(09), SA-10(03), SC-03(01), SC-39(01), SC-49, SC-51",
+    "ISO/IEC 27001:2022: Annex A.5.9",
+    "CSF v1.1: PR.DS-3, PR.MA-1",
+    "CIS Controls v8: 1.2",
+    "PCI DSS: 12.3.4, 9.4.7, 9.5.1.1",
+    "NIST SP 800-218 (SSDF): PO.5.2",
+    "CRI Profile v2.0: PR.PS-03, PR.PS-03.01"
+  ],
+  "implementation_examples": [
+    "Replace hardware when it lacks needed security capabilities or when it cannot support software with needed security capabilities",
+    "Define and implement plans for hardware end-of-life maintenance support and obsolescence",
+    "Perform hardware disposal in a secure, responsible, and auditable manner"
+  ],
+  "assessment_objectives": [
+    "Determine whether hardware is maintained, replaced, and removed commensurate with risk.",
+    "Determine whether mechanisms ensure that replace hardware when it lacks needed security capabilities or when it cannot support software with needed security capabilities.",
+    "Determine whether activities are conducted to define and implement plans for hardware end-of-life maintenance support and obsolescence.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "PR.PS-01 (NIST CSF 2.0 — same category)",
+    "PR.PS-02 (NIST CSF 2.0 — same category)",
+    "PR.PS-04 (NIST CSF 2.0 — same category)",
+    "PR.PS-05 (NIST CSF 2.0 — same category)",
+    "PR.PS-06 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

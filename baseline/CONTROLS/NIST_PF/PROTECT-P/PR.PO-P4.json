@@ -1,0 +1,31 @@
+{
+  "control_id": "PR.PO-P4",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Data Protection Policies, Processes, and Procedures (PR.PO-P)",
+  "subcategory_id": "PR.PO-P4",
+  "subcategory_text": "Policy and regulations regarding the physical operating environment for organizational assets are met.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PE-1 (Physical and Environmental Protection Policy), PE-3 (Physical Access Control)",
+    "NIST PF 1.0 Core (January 2020): PR.PO-P4 (verified row 77)",
+    "ISO/IEC 27001:2022 Annex A.7.1 (Physical security perimeters), A.7.5 (Securing physical premises)",
+    "GDPR Art. 5(1)(f), Art. 32"
+  ],
+  "implementation_examples": [
+    "Define and enforce physical-operating-environment requirements (e.g., server room access, environmental monitoring, location-of-data policy) consistent with the sensitivity of the data and applicable regulation",
+    "Audit physical protection at the same cadence as other controls",
+    "Include third-party data centres in the scope where applicable"
+  ],
+  "assessment_objectives": [
+    "Determine whether physical operating-environment requirements are documented",
+    "Determine whether the requirements reflect data sensitivity and regulation",
+    "Determine whether compliance is audited on a cadence",
+    "Determine whether third-party facilities are covered"
+  ],
+  "related_controls": [
+    "PR.AC-P2 (physical access)",
+    "PR.PT-P3 (network protection)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

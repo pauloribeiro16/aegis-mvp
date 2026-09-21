@@ -1,0 +1,38 @@
+{
+  "control_id": "ID.RA-09",
+  "framework": "NIST CSF 2.0",
+  "function": "IDENTIFY",
+  "category": "Risk Assessment (ID.RA)",
+  "subcategory_id": "ID.RA-09",
+  "subcategory_text": "The authenticity and integrity of hardware and software are assessed prior to acquisition and use",
+  "informative_references": [
+    "NIST CSF 2.0 Core: ID.RA-09",
+    "NIST SP 800-53 Rev. 5: SA-04, SA-05, SA-10, SA-11, SA-15, SA-17, SI-07, SR-05 (+3 more)",
+    "ISO/IEC 27001:2022: Annex A.5.19, Annex A.5.20, Annex A.5.22",
+    "CSF v1.1: PR.DS-8",
+    "PCI DSS: 6.4.3, 9.5.1.1",
+    "NIST SP 800-218 (SSDF): PO.5.2",
+    "CRI Profile v2.0: EX.DD-04, EX.DD-04.01, EX.DD-04.02"
+  ],
+  "implementation_examples": [
+    "Assess the authenticity and cybersecurity of critical technology products and services prior to acquisition and use"
+  ],
+  "assessment_objectives": [
+    "Determine whether the authenticity and integrity of hardware and software are assessed prior to acquisition and use.",
+    "Determine whether activities are conducted to assess the authenticity and cybersecurity of critical technology products and services prior to acquisition and use.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "ID.RA-01 (NIST CSF 2.0 — same category)",
+    "ID.RA-02 (NIST CSF 2.0 — same category)",
+    "ID.RA-03 (NIST CSF 2.0 — same category)",
+    "ID.RA-04 (NIST CSF 2.0 — same category)",
+    "ID.RA-05 (NIST CSF 2.0 — same category)",
+    "ID.RA-06 (NIST CSF 2.0 — same category)",
+    "ID.RA-07 (NIST CSF 2.0 — same category)",
+    "ID.RA-08 (NIST CSF 2.0 — same category)",
+    "ID.RA-10 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

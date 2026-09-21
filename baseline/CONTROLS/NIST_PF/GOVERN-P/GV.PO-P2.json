@@ -1,0 +1,32 @@
+{
+  "control_id": "GV.PO-P2",
+  "framework": "NIST PF 1.0",
+  "function": "GOVERN-P",
+  "category": "Governance Policies, Processes, and Procedures (GV.PO-P)",
+  "subcategory_id": "GV.PO-P2",
+  "subcategory_text": "Processes to instill organizational privacy values within system/product/service development and operations are established and in place.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PM-1, SA-15 (Development Process, Standards, and Tools)",
+    "NIST PF 1.0 Core (January 2020): GV.PO-P2 (verified row 26)",
+    "ISO/IEC 27001:2022 Annex A.8.27 (Secure system architecture and engineering principles)",
+    "GDPR Art. 25 (Data protection by design and by default)",
+    "Aligned with NIST CSF 2.0 GV.PO-02 (privacy roles and responsibilities)"
+  ],
+  "implementation_examples": [
+    "Define processes to instil organisational privacy values into system/product/service development (e.g., design-stage reviews) and into operations (e.g., change management)",
+    "Embed privacy-design checkpoints in the SDLC so that privacy is considered before architecture, not only before release",
+    "Track instillation outcomes in project close-out artefacts"
+  ],
+  "assessment_objectives": [
+    "Determine whether processes are in place to instil privacy values in development",
+    "Determine whether privacy-design checkpoints exist in the SDLC",
+    "Determine whether operations (change management, incident response) embody the privacy values",
+    "Determine whether instillation outcomes are measured"
+  ],
+  "related_controls": [
+    "GV.PO-P1 (privacy values documented)",
+    "GV.PO-P4 (third-party coordination)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

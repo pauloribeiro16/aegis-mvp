@@ -1,0 +1,32 @@
+{
+  "control_id": "CT.DM-P10",
+  "framework": "NIST PF 1.0",
+  "function": "CONTROL-P",
+  "category": "Data Processing Management (CT.DM-P)",
+  "subcategory_id": "CT.DM-P10",
+  "subcategory_text": "Stakeholder privacy preferences are included in algorithmic design objectives and outputs are evaluated against these preferences.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SI-7, AU-6",
+    "NIST PF 1.0 Core (January 2020): CT.DM-P10 (verified row 58)",
+    "ISO/IEC 27001:2022 Annex A.5.34, A.8.27",
+    "GDPR Art. 35 (DPIA)",
+    "Aligned with NIST AI RMF MEASURE 2.11 (bias evaluated)"
+  ],
+  "implementation_examples": [
+    "Include stakeholder privacy preferences as objectives in the design of algorithmic systems, and evaluate the produced outputs against those preferences",
+    "Document the preferences and their weighting, and the evaluation method",
+    "Re-examine when preferences, populations, or use contexts change"
+  ],
+  "assessment_objectives": [
+    "Determine whether stakeholder privacy preferences are documented as design objectives",
+    "Determine whether algorithmic outputs are evaluated against the preferences",
+    "Determine whether the evaluation is repeated when preferences, data, or context change",
+    "Determine whether results feed into model governance"
+  ],
+  "related_controls": [
+    "ID.RA-P2 (analytic bias)",
+    "CT.DP-P3 (inference limits)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

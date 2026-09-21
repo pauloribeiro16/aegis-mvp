@@ -1,0 +1,32 @@
+{
+  "control_id": "ID.DE-P4",
+  "framework": "NIST PF 1.0",
+  "function": "IDENTIFY-P",
+  "category": "Data Processing Ecosystem Risk Management (ID.DE-P)",
+  "subcategory_id": "ID.DE-P4",
+  "subcategory_text": "Interoperability frameworks or similar multi-party approaches are used to manage data processing ecosystem privacy risks.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SR-8 (Notification Agreements)",
+    "NIST PF 1.0 Core (January 2020): ID.DE-P4 (verified row 23)",
+    "ISO/IEC 27001:2022 Annex A.5.20",
+    "GDPR Art. 26 (Joint controllers), Art. 22 (Joint controllership arrangements)",
+    "Aligned with NIST CSF 2.0 GV.SC-09 (supply chain risks identified and prioritised)"
+  ],
+  "implementation_examples": [
+    "Adopt or join an interoperability framework (e.g., sectoral codes of conduct, multi-party risk registers) where direct bilateral contracts are insufficient",
+    "Document the interoperability framework, scope, parties, and obligations",
+    "Contribute to multi-party exercises to validate shared privacy-risk assumptions"
+  ],
+  "assessment_objectives": [
+    "Determine whether interoperability frameworks are adopted when bilateral controls are insufficient",
+    "Determine whether framework scope, parties, and obligations are documented",
+    "Determine whether multi-party exercises test the framework periodically",
+    "Determine whether the framework covers incident coordination, dispute resolution, and shared learning"
+  ],
+  "related_controls": [
+    "ID.DE-P3 (contracts used)",
+    "GV.SC-07 (NIST CSF 2.0 — inter-organisational dependencies)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

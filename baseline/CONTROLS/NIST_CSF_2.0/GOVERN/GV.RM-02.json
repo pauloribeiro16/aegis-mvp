@@ -1,0 +1,36 @@
+{
+  "control_id": "GV.RM-02",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Risk Management Strategy (GV.RM)",
+  "subcategory_id": "GV.RM-02",
+  "subcategory_text": "Risk appetite and risk tolerance statements are established, communicated, and maintained",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.RM-02",
+    "NIST SP 800-53 Rev. 5: PM-09",
+    "ISO/IEC 27001:2022: Clause 6.1.2, Annex A.5.1",
+    "CSF v1.1: ID.RM-2, ID.RM-3",
+    "CRI Profile v2.0: GV.RM-02, GV.RM-02.01, GV.RM-02.02, GV.RM-02.03"
+  ],
+  "implementation_examples": [
+    "Determine and communicate risk appetite statements that convey expectations about the appropriate level of risk for the organization",
+    "Translate risk appetite statements into specific, measurable, and broadly understandable risk tolerance statements",
+    "Refine organizational objectives and risk appetite periodically based on known risk exposure and residual risk"
+  ],
+  "assessment_objectives": [
+    "Determine whether risk appetite and risk tolerance statements are established, communicated, and maintained.",
+    "Determine whether mechanisms ensure that determine and communicate risk appetite statements that convey expectations about the appropriate level of risk for the organization.",
+    "Determine whether mechanisms ensure that translate risk appetite statements into specific, measurable, and broadly understandable risk tolerance statements.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.RM-01 (NIST CSF 2.0 — same category)",
+    "GV.RM-03 (NIST CSF 2.0 — same category)",
+    "GV.RM-04 (NIST CSF 2.0 — same category)",
+    "GV.RM-05 (NIST CSF 2.0 — same category)",
+    "GV.RM-06 (NIST CSF 2.0 — same category)",
+    "GV.RM-07 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

@@ -1,0 +1,31 @@
+{
+  "control_id": "PR.PO-P3",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Data Protection Policies, Processes, and Procedures (PR.PO-P)",
+  "subcategory_id": "PR.PO-P3",
+  "subcategory_text": "Backups of information are conducted, maintained, and tested.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: CP-9 (System Backup), CP-4 (Contingency Plan Testing)",
+    "NIST PF 1.0 Core (January 2020): PR.PO-P3 (verified row 76)",
+    "ISO/IEC 27001:2022 Annex A.8.13 (Information backup)",
+    "GDPR Art. 5(1)(f) (Integrity and confidentiality), Art. 32"
+  ],
+  "implementation_examples": [
+    "Conduct, maintain, and test backups of personal-data systems on a defined cadence",
+    "Align backup retention with the documented data retention policy",
+    "Capture restorability evidence (test restores) and corrective actions as needed"
+  ],
+  "assessment_objectives": [
+    "Determine whether backups are performed on a defined cadence",
+    "Determine whether restorability is tested and evidenced",
+    "Determine whether backup retention aligns with data retention policy",
+    "Determine whether backup storage is secured against unauthorised access"
+  ],
+  "related_controls": [
+    "PR.PO-P1 (baseline configuration)",
+    "CT.DM-P5 (destruction)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

@@ -1,0 +1,42 @@
+{
+  "control_id": "GV.SC-06",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Cybersecurity Supply Chain Risk Management (GV.SC)",
+  "subcategory_id": "GV.SC-06",
+  "subcategory_text": "Planning and due diligence are performed to reduce risks before entering into formal supplier or other third-party relationships",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.SC-06",
+    "NIST SP 800-53 Rev. 5: SA-04, SA-09, SR-05, SR-06",
+    "ISO/IEC 27001:2022: Clause 4.2 (a), Annex A.5.19, Annex A.5.20, Annex A.5.31",
+    "CSF v1.1: ID.SC-1",
+    "CIS Controls v8: 15.5",
+    "PCI DSS: 1.2.3, 1.2.4, 12.5.2, 12.8.1, 12.8.2, 12.8.3 (+1 more)",
+    "CRI Profile v2.0: EX.DD, EX.DD-01, EX.DD-01.01, EX.DD-01.02, EX.DD-01.03, EX.DD-02, EX.DD-02.01, EX.DD-02.02, EX.DD-02.03, EX.DD-02.04"
+  ],
+  "implementation_examples": [
+    "Perform thorough due diligence on prospective suppliers that is consistent with procurement planning and commensurate with the level of risk, criticality, and complexity of each supplier relationship",
+    "Assess the suitability of the technology and cybersecurity capabilities and the risk management practices of prospective suppliers",
+    "Conduct supplier risk assessments against business and applicable cybersecurity requirements",
+    "Assess the authenticity, integrity, and security of critical products prior to acquisition and use"
+  ],
+  "assessment_objectives": [
+    "Determine whether planning and due diligence are performed to reduce risks before entering into formal supplier or other third-party relationships.",
+    "Determine whether activities are conducted to perform thorough due diligence on prospective suppliers that is consistent with procurement planning and commensurate with the level of risk, criticality, and complexity of each supplier relationship.",
+    "Determine whether activities are conducted to assess the suitability of the technology and cybersecurity capabilities and the risk management practices of prospective suppliers.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.SC-01 (NIST CSF 2.0 — same category)",
+    "GV.SC-02 (NIST CSF 2.0 — same category)",
+    "GV.SC-03 (NIST CSF 2.0 — same category)",
+    "GV.SC-04 (NIST CSF 2.0 — same category)",
+    "GV.SC-05 (NIST CSF 2.0 — same category)",
+    "GV.SC-07 (NIST CSF 2.0 — same category)",
+    "GV.SC-08 (NIST CSF 2.0 — same category)",
+    "GV.SC-09 (NIST CSF 2.0 — same category)",
+    "GV.SC-10 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

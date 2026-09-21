@@ -1,0 +1,41 @@
+{
+  "control_id": "MAP-3.4",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MAP",
+  "category": "Potential Risks and Benefits",
+  "subcategory_id": "MAP-3.4",
+  "subcategory_text": "Processes for operator and practitioner proficiency with AI system performance and trustworthiness – and relevant technical standards and certifications – are defined, assessed and documented",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "National Academies of Sciences, Engineering, and Medicine. 2022. Human-AI Teaming:",
+    "State-of-the-Art and Research Needs. Washington, DC: The National Academies Press. [URL](https://doi.org/10.17226/26355)",
+    "Human Readiness Level Scale in the System Development Process, American National Standards Institute and Human Factors and Ergonomics Society, ANSI/HFES 400-2021."
+  ],
+  "implementation_examples": [
+    "Identify and declare AI system features and capabilities that may affect downstream AI actors’ decision-making in deployment and operational settings for example how system features and capabilities may activate known risks in various human-AI configurations, such as selective adherence.",
+    "Identify skills and proficiency requirements for operators, practitioners and other domain experts that interact with AI systems,Develop AI system operational documentation for AI actors in deployed and operational environments, including information about known risks, mitigation criteria, and trustworthy characteristics enumerated in Map-1.",
+    "Define and develop training materials for proposed end users, practitioners and operators about AI system use and known limitations.",
+    "Define and develop certification procedures for operating AI systems within defined contexts of use, and information about what exceeds operational boundaries.",
+    "Include operators, practitioners and end users in AI system prototyping and testing activities to help inform operational boundaries and acceptable performance. Conduct testing activities under scenarios similar to deployment conditions.",
+    "Verify model output provided to AI system operators, practitioners and end users is  interactive, and specified to context and user requirements defined in MAP-1.",
+    "Verify AI system output is interpretable and unambiguous for downstream decision making tasks.",
+    "Design AI system explanation complexity to match the level of problem and context complexity.",
+    "Verify that design principles are in place for safe operation by AI actors in decision-making environments.",
+    "Develop approaches to track human-AI configurations, operator, and practitioner outcomes for integration into continual improvement."
+  ],
+  "assessment_objectives": [
+    "What policies has the entity developed to ensure the use of the AI system is consistent with its stated values and principles?",
+    "How will the accountable human(s) address changes in accuracy and precision due to either an adversary’s attempts to disrupt the AI or unrelated changes in operational/business environment, which may impact the accuracy of the AI?",
+    "How does the entity assess whether personnel have the necessary skills, training, resources, and domain knowledge to fulfill their assigned responsibilities?",
+    "Are the relevant staff dealing with AI systems properly trained to interpret AI model output and decisions as well as to detect and manage bias in data?",
+    "What metrics has the entity developed to measure performance of various components?"
+  ],
+  "related_controls": [
+    "MAP-3.1 (NIST AI RMF — same category)",
+    "MAP-3.2 (NIST AI RMF — same category)",
+    "MAP-3.3 (NIST AI RMF — same category)",
+    "MAP-3.5 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

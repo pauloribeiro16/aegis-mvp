@@ -1,0 +1,34 @@
+{
+  "control_id": "ID.IM-03",
+  "framework": "NIST CSF 2.0",
+  "function": "IDENTIFY",
+  "category": "Improvement (ID.IM)",
+  "subcategory_id": "ID.IM-03",
+  "subcategory_text": "Improvements are identified from execution of operational processes, procedures, and activities",
+  "informative_references": [
+    "NIST CSF 2.0 Core: ID.IM-03",
+    "NIST SP 800-53 Rev. 5: AC-01, AT-01, AU-01, CA-01, CA-02, CA-05, CA-07, CA-08 (+31 more)",
+    "ISO/IEC 27001:2022: Clause 9.1, Annex A.5.27",
+    "CSF v1.1: DE.DP-5, PR.IP-7, PR.IP-8, RC.IM-1, RC.IM-2, RS.IM-1, RS.IM-2",
+    "PCI DSS: 10.7.1, 10.7.2, 11.3.1, 11.3.2, 6.3.3",
+    "CRI Profile v2.0: ID.IM-03, ID.IM-03.01, ID.IM-03.02"
+  ],
+  "implementation_examples": [
+    "Conduct collaborative lessons learned sessions with suppliers",
+    "Annually review cybersecurity policies, processes, and procedures to take lessons learned into account",
+    "Use metrics to assess operational cybersecurity performance over time"
+  ],
+  "assessment_objectives": [
+    "Determine whether improvements are identified from execution of operational processes, procedures, and activities.",
+    "Determine whether activities are conducted to conduct collaborative lessons learned sessions with suppliers.",
+    "Determine whether mechanisms ensure that annually review cybersecurity policies, processes, and procedures to take lessons learned into account.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "ID.IM-01 (NIST CSF 2.0 — same category)",
+    "ID.IM-02 (NIST CSF 2.0 — same category)",
+    "ID.IM-04 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

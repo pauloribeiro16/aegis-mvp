@@ -1,0 +1,38 @@
+{
+  "control_id": "DE.CM-01",
+  "framework": "NIST CSF 2.0",
+  "function": "DETECT",
+  "category": "Continuous Monitoring (DE.CM)",
+  "subcategory_id": "DE.CM-01",
+  "subcategory_text": "Networks and network services are monitored to find potentially adverse events",
+  "informative_references": [
+    "NIST CSF 2.0 Core: DE.CM-01",
+    "NIST SP 800-53 Rev. 5: AC-02, AU-12, CA-07, CM-03, SC-05, SC-07, SI-04",
+    "ISO/IEC 27001:2022: Annex A.8.16",
+    "CSF v1.1: DE.CM-1, DE.CM-4, DE.CM-5, DE.CM-7",
+    "CIS Controls v8: 13.1",
+    "PCI DSS: 1.2.4, 10.2.1, 10.4.1, 11.2.1",
+    "CRI Profile v2.0: DE.CM-01, DE.CM-01.01, DE.CM-01.02, DE.CM-01.03, DE.CM-01.04, DE.CM-01.05, DE.CM-01.06"
+  ],
+  "implementation_examples": [
+    "Monitor DNS, BGP, and other network services for adverse events",
+    "Monitor wired and wireless networks for connections from unauthorized endpoints",
+    "Monitor facilities for unauthorized or rogue wireless networks",
+    "Compare actual network flows against baselines to detect deviations",
+    "Monitor network communications to identify changes in security postures for zero trust purposes"
+  ],
+  "assessment_objectives": [
+    "Determine whether networks and network services are monitored to find potentially adverse events.",
+    "Determine whether activities are conducted to monitor DNS, BGP, and other network services for adverse events.",
+    "Determine whether activities are conducted to monitor wired and wireless networks for connections from unauthorized endpoints.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "DE.CM-02 (NIST CSF 2.0 — same category)",
+    "DE.CM-03 (NIST CSF 2.0 — same category)",
+    "DE.CM-06 (NIST CSF 2.0 — same category)",
+    "DE.CM-09 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

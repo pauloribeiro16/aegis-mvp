@@ -1,0 +1,37 @@
+{
+  "control_id": "MANAGE-2.4",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MANAGE",
+  "category": "Risk Responses",
+  "subcategory_id": "MANAGE-2.4",
+  "subcategory_text": "Mechanisms are in place and applied, responsibilities are assigned and understood to supersede, disengage, or deactivate AI systems that demonstrate performance or outcomes inconsistent with intended use",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Decommissioning Template. Application Lifecycle And Supporting Docs. Cloud and Infrastructure Community of Practice. [URL](https://www.cio.gov/policies-and-priorities/application-lifecycle/)",
+    "Develop a Decommission Plan. M3 Playbook. Office of Shared Services and Solutions and Performance Improvement. General Services Administration. [URL](https://ussm.gsa.gov/2.8/)"
+  ],
+  "implementation_examples": [
+    "Regularly review established procedures for AI system bypass actions, including plans for redundant or backup systems to ensure continuity of operational and/or business functionality.",
+    "Regularly review Identify system incident thresholds for activating bypass or deactivation responses.",
+    "Apply change management processes to understand the upstream and downstream consequences of bypassing or deactivating an AI system or AI system components.",
+    "Apply protocols, resources and metrics for decisions to supersede, bypass or deactivate AI systems or AI system components.",
+    "Preserve materials for forensic, regulatory, and legal review.",
+    "Conduct internal root cause analysis and process reviews of bypass or deactivation events.",
+    "Decommission and preserve system components that cannot be updated to meet criteria for redeployment.",
+    "Establish criteria for redeploying updated system components, in consideration of trustworthy characteristics"
+  ],
+  "assessment_objectives": [
+    "What are the roles, responsibilities, and delegation of authorities of personnel involved in the design, development, deployment, assessment and monitoring of the AI system?",
+    "Did your organization implement a risk management system to address risks involved in deploying the identified AI solution (e.g. personnel risk or changes to commercial objectives)?",
+    "What testing, if any, has the entity conducted on the AI system to identify errors and limitations (i.e. adversarial or stress testing)?",
+    "To what extent does the entity have established procedures for retiring the AI system, if it is no longer needed?",
+    "How did the entity use assessments and/or evaluations to determine if the system can be scaled up, continue, or be decommissioned?"
+  ],
+  "related_controls": [
+    "MANAGE-2.1 (NIST AI RMF — same category)",
+    "MANAGE-2.2 (NIST AI RMF — same category)",
+    "MANAGE-2.3 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

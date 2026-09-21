@@ -1,0 +1,31 @@
+{
+  "control_id": "CT.DM-P3",
+  "framework": "NIST PF 1.0",
+  "function": "CONTROL-P",
+  "category": "Data Processing Management (CT.DM-P)",
+  "subcategory_id": "CT.DM-P3",
+  "subcategory_text": "Data elements can be accessed for alteration.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SI-7 (Software, Firmware, and Information Integrity), AC-3 (Access Enforcement)",
+    "NIST PF 1.0 Core (January 2020): CT.DM-P3 (verified row 51)",
+    "ISO/IEC 27001:2022 Annex A.8.32 (Change management)",
+    "GDPR Art. 5(1)(d) (Accuracy), Art. 16 (Right to rectification)"
+  ],
+  "implementation_examples": [
+    "Provide authorised requestors with a documented path to alter data elements under recorded change-control",
+    "Capture before/after versions, author, timestamp, and reason for the change",
+    "Align alteration with downstream consumers of the data so updates propagate consistently"
+  ],
+  "assessment_objectives": [
+    "Determine whether data elements can be altered on request",
+    "Determine whether changes are recorded with before/after values, author, timestamp, and reason",
+    "Determine whether alteration flows through downstream consumers",
+    "Determine whether change-control approval is proportionate to the sensitivity of the change"
+  ],
+  "related_controls": [
+    "CT.DM-P2 (transmission/disclosure)",
+    "CT.DM-P4 (deletion)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

@@ -1,0 +1,31 @@
+{
+  "control_id": "CM.PO-P2",
+  "framework": "NIST PF 1.0",
+  "function": "COMMUNICATE-P",
+  "category": "Communication Policies, Processes, and Procedures (CM.PO-P)",
+  "subcategory_id": "CM.PO-P2",
+  "subcategory_text": "Roles and responsibilities (e.g., public relations) for communicating data processing purposes, practices, and associated privacy risks are established.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PM-2 (Information Security Program Leadership), AT-3",
+    "NIST PF 1.0 Core (January 2020): CM.PO-P2 (verified row 65)",
+    "ISO/IEC 27001:2022 Annex A.5.2 (Information security roles and responsibilities)",
+    "GDPR Art. 37-39 (DPO designation)"
+  ],
+  "implementation_examples": [
+    "Define roles and responsibilities for communicating data-processing purposes, practices, and associated privacy risks — including spokesperson authority, regulatory liaison, and crisis communications",
+    "Embed the roles in the operating model with backup coverage",
+    "Drill the communication response for high-stakes events (regulator requests, media)"
+  ],
+  "assessment_objectives": [
+    "Determine whether communication roles and responsibilities are documented",
+    "Determine whether spokesperson authority is clear",
+    "Determine whether backup coverage exists",
+    "Determine whether communication drills are held"
+  ],
+  "related_controls": [
+    "CM.PO-P1 (transparency policies)",
+    "CM.AW-P7 (breach notice)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

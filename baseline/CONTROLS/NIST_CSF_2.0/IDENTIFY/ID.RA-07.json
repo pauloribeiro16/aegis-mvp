@@ -1,0 +1,42 @@
+{
+  "control_id": "ID.RA-07",
+  "framework": "NIST CSF 2.0",
+  "function": "IDENTIFY",
+  "category": "Risk Assessment (ID.RA)",
+  "subcategory_id": "ID.RA-07",
+  "subcategory_text": "Changes and exceptions are managed, assessed for risk impact, recorded, and tracked",
+  "informative_references": [
+    "NIST CSF 2.0 Core: ID.RA-07",
+    "NIST SP 800-53 Rev. 5: CA-07, CM-03, CM-04",
+    "ISO/IEC 27001:2022: Clause 6.1.3, Annex A.8.32",
+    "CSF v1.1: PR.IP-3",
+    "PCI DSS: 10.4.2.1, 12.3.1, 12.3.2, 8.6.3, 9.5.1.2.1",
+    "NIST SP 800-218 (SSDF): PO.5.2",
+    "CRI Profile v2.0: ID.RA-07, ID.RA-07.01, ID.RA-07.02, ID.RA-07.03, ID.RA-07.04, ID.RA-07.05"
+  ],
+  "implementation_examples": [
+    "Implement and follow procedures for the formal documentation, review, testing, and approval of proposed changes and requested exceptions",
+    "Document the possible risks of making or not making each proposed change, and provide guidance on rolling back changes",
+    "Document the risks related to each requested exception and the plan for responding to those risks",
+    "Periodically review risks that were accepted based upon planned future actions or milestones"
+  ],
+  "assessment_objectives": [
+    "Determine whether changes and exceptions are managed, assessed for risk impact, recorded, and tracked.",
+    "Determine whether activities are conducted to implement and follow procedures for the formal documentation, review, testing, and approval of proposed changes and requested exceptions.",
+    "Determine whether activities are conducted to document the possible risks of making or not making each proposed change, and provide guidance on rolling back changes.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "ID.RA-01 (NIST CSF 2.0 — same category)",
+    "ID.RA-02 (NIST CSF 2.0 — same category)",
+    "ID.RA-03 (NIST CSF 2.0 — same category)",
+    "ID.RA-04 (NIST CSF 2.0 — same category)",
+    "ID.RA-05 (NIST CSF 2.0 — same category)",
+    "ID.RA-06 (NIST CSF 2.0 — same category)",
+    "ID.RA-08 (NIST CSF 2.0 — same category)",
+    "ID.RA-09 (NIST CSF 2.0 — same category)",
+    "ID.RA-10 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

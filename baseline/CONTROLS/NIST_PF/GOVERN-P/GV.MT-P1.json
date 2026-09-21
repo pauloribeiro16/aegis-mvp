@@ -1,0 +1,35 @@
+{
+  "control_id": "GV.MT-P1",
+  "framework": "NIST PF 1.0",
+  "function": "GOVERN-P",
+  "category": "Monitoring and Review (GV.MT-P)",
+  "subcategory_id": "GV.MT-P1",
+  "subcategory_text": "Privacy risk is re-evaluated on an ongoing basis and as key factors, including the organization's business environment (e.g., introduction of new technologies), governance (e.g., legal obligations, risk tolerance), data processing, and systems/products/services change",
+  "informative_references": [
+    "NIST SP 800-39: Managing Information Security Risk (continuous monitoring framing)",
+    "NIST SP 800-137: Information Security Continuous Monitoring (ISCM) for Federal Information Systems and Organizations",
+    "NIST PF 1.0 Core (January 2020): GV.MT-P1 (verified in NIST-Privacy-Framework-V1.0-Core.xlsx row 38)",
+    "GDPR Art. 35 (Data protection impact assessment), Art. 36 (Prior consultation)",
+    "ISO/IEC 27001:2022 Annex A.5.7 (Threat intelligence), A.5.30 (ICT readiness for business continuity)",
+    "Aligned with NIST CSF 2.0 ID.RA-05 (inherent risk re-evaluation)"
+  ],
+  "implementation_examples": [
+    "Schedule periodic privacy-risk re-evaluations at defined intervals",
+    "Trigger privacy-risk re-evaluation when key factors change: new technologies adopted, governance changes (legal/risk tolerance), new data-processing activities, or new systems/products/services deployed",
+    "Document the re-evaluation output as input to enterprise risk management processes"
+  ],
+  "assessment_objectives": [
+    "Determine whether a defined cadence exists for privacy-risk re-evaluation",
+    "Determine whether triggers for ad-hoc re-evaluation are documented and operationalised",
+    "Determine whether re-evaluation outputs feed back into enterprise risk management",
+    "Determine whether changes to the key-factor set (business, governance, processing, systems) are detected and acted upon"
+  ],
+  "related_controls": [
+    "GV.RM-03 (NIST CSF 2.0 — risk in ERM)",
+    "ID.RA-05 (NIST CSF 2.0 — risk re-evaluation)",
+    "GV.MT-P2 (NIST PF 1.0 — policy review)",
+    "GV.MT-P6 (NIST PF 1.0 — lessons learned)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

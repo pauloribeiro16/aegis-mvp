@@ -1,0 +1,37 @@
+{
+  "control_id": "PR.AA-06",
+  "framework": "NIST CSF 2.0",
+  "function": "PROTECT",
+  "category": "Identity Management, Authentication, and Access Control (PR.AA)",
+  "subcategory_id": "PR.AA-06",
+  "subcategory_text": "Physical access to assets is managed, monitored, and enforced commensurate with risk",
+  "informative_references": [
+    "NIST CSF 2.0 Core: PR.AA-06",
+    "NIST SP 800-53 Rev. 5: PE-02, PE-03, PE-04, PE-05, PE-06, PE-08, PE-18, PE-19 (+1 more)",
+    "ISO/IEC 27001:2022: Annex A.7.1, Annex A.7.2, Annex A.7.3, Annex A.7.4, Annex A.7.12",
+    "CSF v1.1: PR.AC-2, PR.PT-4",
+    "PCI DSS: 9.2.3, 9.2.4, 9.3.1.1, 9.5.1.2",
+    "NIST SP 800-218 (SSDF): PO.5.2",
+    "CRI Profile v2.0: PR.AA-06, PR.AA-06.01, PR.AA-06.02"
+  ],
+  "implementation_examples": [
+    "Use security guards, security cameras, locked entrances, alarm systems, and other physical controls to monitor facilities and restrict access",
+    "Employ additional physical security controls for areas that contain high-risk assets",
+    "Escort guests, vendors, and other third parties within areas that contain business-critical assets"
+  ],
+  "assessment_objectives": [
+    "Determine whether physical access to assets is managed, monitored, and enforced commensurate with risk.",
+    "Determine whether activities are conducted to use security guards, security cameras, locked entrances, alarm systems, and other physical controls to monitor facilities and restrict access.",
+    "Determine whether mechanisms ensure that employ additional physical security controls for areas that contain high-risk assets.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "PR.AA-01 (NIST CSF 2.0 — same category)",
+    "PR.AA-02 (NIST CSF 2.0 — same category)",
+    "PR.AA-03 (NIST CSF 2.0 — same category)",
+    "PR.AA-04 (NIST CSF 2.0 — same category)",
+    "PR.AA-05 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

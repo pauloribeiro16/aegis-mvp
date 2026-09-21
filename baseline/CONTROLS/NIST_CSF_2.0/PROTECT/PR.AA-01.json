@@ -1,0 +1,38 @@
+{
+  "control_id": "PR.AA-01",
+  "framework": "NIST CSF 2.0",
+  "function": "PROTECT",
+  "category": "Identity Management, Authentication, and Access Control (PR.AA)",
+  "subcategory_id": "PR.AA-01",
+  "subcategory_text": "Identities and credentials for authorized users, services, and hardware are managed by the organization",
+  "informative_references": [
+    "NIST CSF 2.0 Core: PR.AA-01",
+    "NIST SP 800-53 Rev. 5: AC-01, AC-02, AC-14, IA-01, IA-02, IA-03, IA-04, IA-05 (+6 more)",
+    "ISO/IEC 27001:2022: Annex A.5.15, Annex A.5.18, Annex A.8.2, Annex A.8.5",
+    "CSF v1.1: PR.AC-1",
+    "CIS Controls v8: 5.1, 5.6, 6.7",
+    "PCI DSS: 12.5.1, 3.6.1, 3.6.1.1, 3.6.1.2, 3.6.1.3, 3.6.1.4 (+4 more)",
+    "CRI Profile v2.0: PR.AA-01, PR.AA-01.01, PR.AA-01.02"
+  ],
+  "implementation_examples": [
+    "Initiate requests for new access or additional access for employees, contractors, and others, and track, review, and fulfill the requests, with permission from system or data owners when needed",
+    "Issue, manage, and revoke cryptographic certificates and identity tokens, cryptographic keys (i.e., key management), and other credentials",
+    "Select a unique identifier for each device from immutable hardware characteristics or an identifier securely provisioned to the device",
+    "Physically label authorized hardware with an identifier for inventory and servicing purposes"
+  ],
+  "assessment_objectives": [
+    "Determine whether identities and credentials for authorized users, services, and hardware are managed by the organization.",
+    "Determine whether activities are conducted to initiate requests for new access or additional access for employees, contractors, and others, and track, review, and fulfill the requests, with permission from system or data owners when needed.",
+    "Determine whether mechanisms ensure that issue, manage, and revoke cryptographic certificates and identity tokens, cryptographic keys (i.e., key management), and other credentials.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "PR.AA-02 (NIST CSF 2.0 — same category)",
+    "PR.AA-03 (NIST CSF 2.0 — same category)",
+    "PR.AA-04 (NIST CSF 2.0 — same category)",
+    "PR.AA-05 (NIST CSF 2.0 — same category)",
+    "PR.AA-06 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

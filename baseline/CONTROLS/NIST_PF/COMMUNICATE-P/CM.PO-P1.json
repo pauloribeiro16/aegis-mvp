@@ -1,0 +1,32 @@
+{
+  "control_id": "CM.PO-P1",
+  "framework": "NIST PF 1.0",
+  "function": "COMMUNICATE-P",
+  "category": "Communication Policies, Processes, and Procedures (CM.PO-P)",
+  "subcategory_id": "CM.PO-P1",
+  "subcategory_text": "Transparency policies, processes, and procedures for communicating data processing purposes, practices, and associated privacy risks are established and in place.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PM-22 (Personally Identifiable Information Quality Management); SI-18",
+    "NIST PF 1.0 Core (January 2020): CM.PO-P1 (verified row 64)",
+    "ISO/IEC 27001:2022 Annex A.5.34, A.5.36 (Compliance with policies and standards for information security)",
+    "GDPR Art. 12 (Transparent information), Art. 13-14 (Information to be provided to data subjects)",
+    "Aligned with NIST CSF 2.0 GV.OC-04 (transparent communication)"
+  ],
+  "implementation_examples": [
+    "Document and maintain policies, processes, and procedures for transparency about data-processing purposes, practices, and associated privacy risks",
+    "Align transparency content with regulator expectations and with internal breach-reporting obligations",
+    "Version and publish notices (privacy notices, employee notices, processor notices) consistently"
+  ],
+  "assessment_objectives": [
+    "Determine whether transparency policies and processes are documented",
+    "Determine whether the policies cover purposes, practices, and associated risks",
+    "Determine whether notices are aligned with regulator expectations",
+    "Determine whether the policies are reviewed on a defined cadence"
+  ],
+  "related_controls": [
+    "CM.PO-P2 (communication roles)",
+    "CM.AW-P1 (notice mechanisms)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

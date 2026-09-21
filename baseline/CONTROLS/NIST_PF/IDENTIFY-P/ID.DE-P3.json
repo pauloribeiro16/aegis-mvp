@@ -1,0 +1,32 @@
+{
+  "control_id": "ID.DE-P3",
+  "framework": "NIST PF 1.0",
+  "function": "IDENTIFY-P",
+  "category": "Data Processing Ecosystem Risk Management (ID.DE-P)",
+  "subcategory_id": "ID.DE-P3",
+  "subcategory_text": "Contracts with data processing ecosystem parties are used to implement appropriate measures designed to meet the objectives of an organization’s privacy program.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SR-3 (Supply Chain Controls and Processes), SR-4 (Provenance)",
+    "NIST PF 1.0 Core (January 2020): ID.DE-P3 (verified row 22)",
+    "ISO/IEC 27001:2022 Annex A.5.20 (Addressing information security within supplier agreements), A.5.23 (Information security for use of cloud services)",
+    "GDPR Art. 28(3) (Mandatory processor clauses)",
+    "Aligned with NIST CSF 2.0 GV.SC-08 (supplier agreements prioritise cybersecurity)"
+  ],
+  "implementation_examples": [
+    "Use written contracts (DPAs, SCCs, BAAs) with ecosystem parties to implement the measures designed to meet the privacy-programme objectives",
+    "Ensure contracts cover processing scope, security and privacy controls, breach notification, audit rights, sub-processor approval, return/deletion of data on termination, and applicable transfer mechanisms",
+    "Monitor contract performance through KPIs and review clauses on renewal"
+  ],
+  "assessment_objectives": [
+    "Determine whether contracts exist with data processing ecosystem parties",
+    "Determine whether contracts implement privacy-programme objectives (purpose, controls, audit, deletion)",
+    "Determine whether transfer mechanisms are addressed where applicable",
+    "Determine whether contract performance is monitored and reviewed"
+  ],
+  "related_controls": [
+    "ID.DE-P2 (parties assessed)",
+    "GV.SC-08 (NIST CSF 2.0 — supplier agreements)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

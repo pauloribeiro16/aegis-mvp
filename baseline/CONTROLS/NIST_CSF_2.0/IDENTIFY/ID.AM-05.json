@@ -1,0 +1,38 @@
+{
+  "control_id": "ID.AM-05",
+  "framework": "NIST CSF 2.0",
+  "function": "IDENTIFY",
+  "category": "Asset Management (ID.AM)",
+  "subcategory_id": "ID.AM-05",
+  "subcategory_text": "Assets are prioritized based on classification, criticality, resources, and impact on the mission",
+  "informative_references": [
+    "NIST CSF 2.0 Core: ID.AM-05",
+    "NIST SP 800-53 Rev. 5: RA-02, RA-03, RA-09",
+    "ISO/IEC 27001:2022: Annex A.5.9, Annex A.5.12, Annex A.5.13",
+    "CSF v1.1: ID.AM-5",
+    "CIS Controls v8: 3.7",
+    "PCI DSS: 10.4.2.1, 11.6.1, 12.3.1, 6.3.1, 9.5.1.2.1",
+    "CRI Profile v2.0: ID.AM-05, ID.AM-05.01, ID.AM-05.02"
+  ],
+  "implementation_examples": [
+    "Define criteria for prioritizing each class of assets",
+    "Apply the prioritization criteria to assets",
+    "Track the asset priorities and update them periodically or when significant changes to the organization occur"
+  ],
+  "assessment_objectives": [
+    "Determine whether assets are prioritized based on classification, criticality, resources, and impact on the mission.",
+    "Determine whether activities are conducted to define criteria for prioritizing each class of assets.",
+    "Determine whether activities are conducted to apply the prioritization criteria to assets.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "ID.AM-01 (NIST CSF 2.0 — same category)",
+    "ID.AM-02 (NIST CSF 2.0 — same category)",
+    "ID.AM-03 (NIST CSF 2.0 — same category)",
+    "ID.AM-04 (NIST CSF 2.0 — same category)",
+    "ID.AM-07 (NIST CSF 2.0 — same category)",
+    "ID.AM-08 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

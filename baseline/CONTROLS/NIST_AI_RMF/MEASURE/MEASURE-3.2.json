@@ -1,0 +1,41 @@
+{
+  "control_id": "MEASURE-3.2",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MEASURE",
+  "category": "Performance and Monitoring",
+  "subcategory_id": "MEASURE-3.2",
+  "subcategory_text": "Risk tracking approaches are considered for settings where AI risks are difficult to assess using currently available measurement techniques",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "ISO. \"ISO 9241-210:2019 Ergonomics of human-system interaction — Part 210: Human-centred design for interactive systems.\" 2nd ed. ISO Standards, July 2019. [URL](https://www.iso.org/standard/77520.html)",
+    "Mark C. Paulk, Bill Curtis, Mary Beth Chrissis, and Charles V. Weber. “Capability Maturity Model, Version 1.1.” IEEE Software 10, no. 4 (1993): 18–27. [URL](https://doi.org/10.1109/52.219617. Note: Copy available via the University of Arizona at https://uweb.engr.arizona.edu/~ece473/readings/22-Capability%20MAturity%20Model.pdf)",
+    "Jeff Patton, Peter Economy, Martin Fowler, Alan Cooper, and Marty Cagan. User Story Mapping: Discover the Whole Story, Build the Right Product. O'Reilly, 2014. [URL](https://www.oreilly.com/library/view/user-story-mapping/9781491904893/)"
+  ],
+  "implementation_examples": [
+    "Establish processes for tracking emergent risks that may not be measurable with current approaches. Some processes may include:",
+    "Recourse mechanisms for faulty AI system outputs.",
+    "Bug bounties.",
+    "Human-centered design approaches.",
+    "User-interaction and experience research.",
+    "Participatory stakeholder engagement with affected or potentially impacted individuals and communities.",
+    "Identify AI actors responsible for tracking emergent risks and inventory methods.",
+    "Determine and document the rate of occurrence and severity level for complex or difficult-to-measure risks when:",
+    "Prioritizing new measurement approaches for deployment tasks.",
+    "Allocating AI system risk management resources.",
+    "Evaluating AI system improvements.",
+    "Making go/no-go decisions for subsequent system iterations."
+  ],
+  "assessment_objectives": [
+    "Who is ultimately responsible for the decisions of the AI and is this person aware of the intended uses and limitations of the analytic?",
+    "Who will be responsible for maintaining, re-verifying, monitoring, and updating this AI once deployed?",
+    "To what extent does the entity communicate its AI strategic goals and objectives to the community of stakeholders?",
+    "Given the purpose of this AI, what is an appropriate interval for checking whether it is still accurate, unbiased, explainable, etc.? What are the checks for this model?",
+    "If anyone believes that the AI no longer meets this ethical framework, who will be responsible for receiving the concern and as appropriate investigating and remediating the issue? Do they have authority to modify, limit, or stop the use of the AI?"
+  ],
+  "related_controls": [
+    "MEASURE-3.1 (NIST AI RMF — same category)",
+    "MEASURE-3.3 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

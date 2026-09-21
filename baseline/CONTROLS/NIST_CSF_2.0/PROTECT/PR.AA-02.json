@@ -1,0 +1,35 @@
+{
+  "control_id": "PR.AA-02",
+  "framework": "NIST CSF 2.0",
+  "function": "PROTECT",
+  "category": "Identity Management, Authentication, and Access Control (PR.AA)",
+  "subcategory_id": "PR.AA-02",
+  "subcategory_text": "Identities are proofed and bound to credentials based on the context of interactions",
+  "informative_references": [
+    "NIST CSF 2.0 Core: PR.AA-02",
+    "NIST SP 800-53 Rev. 5: IA-12",
+    "ISO/IEC 27001:2022: Annex A.8.2, Annex A.8.3, Annex A.8.5",
+    "CSF v1.1: PR.AC-6",
+    "PCI DSS: 12.7.1, 8.2.1, 8.2.2, 8.3.5",
+    "CRI Profile v2.0: PR.AA-02, PR.AA-02.01"
+  ],
+  "implementation_examples": [
+    "Verify a person's claimed identity at enrollment time using government-issued identity credentials (e.g., passport, visa, driver's license)",
+    "Issue a different credential for each person (i.e., no credential sharing)"
+  ],
+  "assessment_objectives": [
+    "Determine whether identities are proofed and bound to credentials based on the context of interactions.",
+    "Determine whether activities are conducted to verify a person's claimed identity at enrollment time using government-issued identity credentials (e.g., passport, visa, driver's license).",
+    "Determine whether mechanisms ensure that issue a different credential for each person (i.e., no credential sharing).",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "PR.AA-01 (NIST CSF 2.0 — same category)",
+    "PR.AA-03 (NIST CSF 2.0 — same category)",
+    "PR.AA-04 (NIST CSF 2.0 — same category)",
+    "PR.AA-05 (NIST CSF 2.0 — same category)",
+    "PR.AA-06 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

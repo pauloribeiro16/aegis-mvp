@@ -1,0 +1,31 @@
+{
+  "control_id": "PR.PO-P8",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Data Protection Policies, Processes, and Procedures (PR.PO-P)",
+  "subcategory_id": "PR.PO-P8",
+  "subcategory_text": "Response and recovery plans are tested.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: CP-4 (Contingency Plan Testing), IR-3 (Incident Response Testing)",
+    "NIST PF 1.0 Core (January 2020): PR.PO-P8 (verified row 81)",
+    "ISO/IEC 27001:2022 Annex A.5.24, A.5.29",
+    "GDPR Art. 5(1)(f), Art. 32"
+  ],
+  "implementation_examples": [
+    "Test response and recovery plans on a defined cadence, covering privacy-relevant scenarios (data deletion incident, breach with notification trigger)",
+    "Capture lessons and refresh plans accordingly",
+    "Hold joint exercises with third parties where recovery depends on them"
+  ],
+  "assessment_objectives": [
+    "Determine whether response and recovery plans are tested on cadence",
+    "Determine whether tests cover privacy-relevant scenarios",
+    "Determine whether lessons are captured and plans refreshed",
+    "Determine whether third-party dependencies are exercised"
+  ],
+  "related_controls": [
+    "PR.PO-P7 (plan establishment)",
+    "RS.MI-P1 (incident containment)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

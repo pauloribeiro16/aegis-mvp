@@ -1,0 +1,32 @@
+{
+  "control_id": "RS.AN-08",
+  "framework": "NIST CSF 2.0",
+  "function": "RESPOND",
+  "category": "Incident Analysis (RS.AN)",
+  "subcategory_id": "RS.AN-08",
+  "subcategory_text": "An incident's magnitude is estimated and validated",
+  "informative_references": [
+    "NIST CSF 2.0 Core: RS.AN-08",
+    "NIST SP 800-53 Rev. 5: IR-04, IR-08, RA-03, RA-07",
+    "ISO/IEC 27001:2022: Annex A.5.25",
+    "PCI DSS: 1.2.3, 1.2.4, 10.4.1, 12.5.1",
+    "CRI Profile v2.0: RS.AN-08, RS.AN-08.01"
+  ],
+  "implementation_examples": [
+    "Review other potential targets of the incident to search for indicators of compromise and evidence of persistence",
+    "Automatically run tools on targets to look for indicators of compromise and evidence of persistence"
+  ],
+  "assessment_objectives": [
+    "Determine whether an incident's magnitude is estimated and validated.",
+    "Determine whether activities are conducted to review other potential targets of the incident to search for indicators of compromise and evidence of persistence.",
+    "Determine whether mechanisms ensure that automatically run tools on targets to look for indicators of compromise and evidence of persistence.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "RS.AN-03 (NIST CSF 2.0 — same category)",
+    "RS.AN-06 (NIST CSF 2.0 — same category)",
+    "RS.AN-07 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

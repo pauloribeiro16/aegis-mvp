@@ -1,0 +1,31 @@
+{
+  "control_id": "GV.OV-01",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Oversight (GV.OV)",
+  "subcategory_id": "GV.OV-01",
+  "subcategory_text": "Cybersecurity risk management strategy outcomes are reviewed to inform and adjust strategy and direction",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.OV-01",
+    "NIST SP 800-53 Rev. 5: AC-01, AT-01, AU-01, CA-01, CM-01, CP-01, IA-01, IR-01 (+18 more)",
+    "ISO/IEC 27001:2022: Clause 9.1, Annex A.5.1, Annex A.5.19",
+    "PCI DSS: 10.7.1, 10.7.2, 12.10.2, 12.10.6, 12.3.1, 12.4.2 (+1 more)",
+    "CRI Profile v2.0: GV.OV-01, GV.OV-01.01, GV.OV-01.02, GV.OV-01.03"
+  ],
+  "implementation_examples": [
+    "Measure how well the risk management strategy and risk results have helped leaders make decisions and achieve organizational objectives",
+    "Examine whether cybersecurity risk strategies that impede operations or innovation should be adjusted"
+  ],
+  "assessment_objectives": [
+    "Determine whether cybersecurity risk management strategy outcomes are reviewed to inform and adjust strategy and direction.",
+    "Determine whether activities are conducted to measure how well the risk management strategy and risk results have helped leaders make decisions and achieve organizational objectives.",
+    "Determine whether mechanisms ensure that examine whether cybersecurity risk strategies that impede operations or innovation should be adjusted.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.OV-02 (NIST CSF 2.0 — same category)",
+    "GV.OV-03 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

@@ -1,0 +1,39 @@
+{
+  "control_id": "ID.RA-08",
+  "framework": "NIST CSF 2.0",
+  "function": "IDENTIFY",
+  "category": "Risk Assessment (ID.RA)",
+  "subcategory_id": "ID.RA-08",
+  "subcategory_text": "Processes for receiving, analyzing, and responding to vulnerability disclosures are established",
+  "informative_references": [
+    "NIST CSF 2.0 Core: ID.RA-08",
+    "NIST SP 800-53 Rev. 5: RA-05",
+    "ISO/IEC 27001:2022: Clause 6.1.2, Annex A.None",
+    "CSF v1.1: RS.AN-5",
+    "CIS Controls v8: 7.2",
+    "CRI Profile v2.0: ID.RA-08, ID.RA-08.01, ID.RA-08.02"
+  ],
+  "implementation_examples": [
+    "Conduct vulnerability information sharing between the organization and its suppliers following the rules and protocols defined in contracts",
+    "Assign responsibilities and verify the execution of procedures for processing, analyzing the impact of, and responding to cybersecurity threat, vulnerability, or incident disclosures by suppliers, customers, partners, and government cybersecurity organizations"
+  ],
+  "assessment_objectives": [
+    "Determine whether processes for receiving, analyzing, and responding to vulnerability disclosures are established.",
+    "Determine whether activities are conducted to conduct vulnerability information sharing between the organization and its suppliers following the rules and protocols defined in contracts.",
+    "Determine whether mechanisms ensure that assign responsibilities and verify the execution of procedures for processing, analyzing the impact of, and responding to cybersecurity threat, vulnerability, or incident disclosures by suppliers, customers, partners, and government cybersecurity organizations.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "ID.RA-01 (NIST CSF 2.0 — same category)",
+    "ID.RA-02 (NIST CSF 2.0 — same category)",
+    "ID.RA-03 (NIST CSF 2.0 — same category)",
+    "ID.RA-04 (NIST CSF 2.0 — same category)",
+    "ID.RA-05 (NIST CSF 2.0 — same category)",
+    "ID.RA-06 (NIST CSF 2.0 — same category)",
+    "ID.RA-07 (NIST CSF 2.0 — same category)",
+    "ID.RA-09 (NIST CSF 2.0 — same category)",
+    "ID.RA-10 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

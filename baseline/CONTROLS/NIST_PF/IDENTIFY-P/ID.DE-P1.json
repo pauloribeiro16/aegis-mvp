@@ -1,0 +1,32 @@
+{
+  "control_id": "ID.DE-P1",
+  "framework": "NIST PF 1.0",
+  "function": "IDENTIFY-P",
+  "category": "Data Processing Ecosystem Risk Management (ID.DE-P)",
+  "subcategory_id": "ID.DE-P1",
+  "subcategory_text": "Data processing ecosystem risk management policies, processes, and procedures are identified, established, assessed, managed, and agreed to by organizational stakeholders.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SR-1 (Supply Chain Risk Management Policy and Procedures)",
+    "NIST PF 1.0 Core (January 2020): ID.DE-P1 (verified row 20)",
+    "ISO/IEC 27001:2022 Annex A.5.19 (Information security in supplier relationships)",
+    "GDPR Art. 28 (Processor), Art. 32 (Security of processing)",
+    "Aligned with NIST CSF 2.0 GV.SC-01 (cyber supply chain risk management strategy)"
+  ],
+  "implementation_examples": [
+    "Document the policies, processes, and procedures used to manage privacy risk across the data processing ecosystem, covering stakeholders (legal, IT, privacy, security, procurement, business)",
+    "Obtain stakeholder agreement on the documented approach, refresh periodically, and embed it into vendor onboarding",
+    "Adopt recognised supply-chain risk frameworks (e.g., NIST SP 800-161r1) where appropriate"
+  ],
+  "assessment_objectives": [
+    "Determine whether ecosystem-wide privacy-risk policies and processes are documented",
+    "Determine whether the documented approach has stakeholder agreement",
+    "Determine whether the approach is embedded into vendor lifecycle processes",
+    "Determine whether the approach is reviewed and refreshed periodically"
+  ],
+  "related_controls": [
+    "ID.DE-P2 (ecosystem parties assessed)",
+    "GV.SC-01 (NIST CSF 2.0 — supply chain strategy)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

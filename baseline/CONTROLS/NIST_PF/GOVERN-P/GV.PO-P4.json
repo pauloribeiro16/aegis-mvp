@@ -1,0 +1,32 @@
+{
+  "control_id": "GV.PO-P4",
+  "framework": "NIST PF 1.0",
+  "function": "GOVERN-P",
+  "category": "Governance Policies, Processes, and Procedures (GV.PO-P)",
+  "subcategory_id": "GV.PO-P4",
+  "subcategory_text": "Privacy roles and responsibilities are coordinated and aligned with third-party stakeholders (e.g., service providers, customers, partners).",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PS-7 (External Personnel Security), SR-5 (Acquisition Strategies)",
+    "NIST PF 1.0 Core (January 2020): GV.PO-P4 (verified row 28)",
+    "ISO/IEC 27001:2022 Annex A.5.19, A.5.20",
+    "GDPR Art. 26 (Joint controllers), Art. 28 (Processor)",
+    "Aligned with NIST CSF 2.0 GV.SC-04 (supplier criticality assessed)"
+  ],
+  "implementation_examples": [
+    "Coordinate privacy roles and responsibilities with third-party stakeholders (service providers, customers, partners) through contracts, SLAs, and joint operating procedures",
+    "Document third-party point of contact and back-up for each privacy role",
+    "Re-examine coordination when relationships are added or terminated"
+  ],
+  "assessment_objectives": [
+    "Determine whether third-party stakeholders are mapped to corresponding privacy roles",
+    "Determine whether coordination mechanisms (contracts, SLAs, joint procedures) exist",
+    "Determine whether single points of failure are mitigated through back-up coverage",
+    "Determine whether coordination is refreshed on relationship changes"
+  ],
+  "related_controls": [
+    "GV.PO-P3 (workforce roles)",
+    "ID.DE-P3 (contracts used)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

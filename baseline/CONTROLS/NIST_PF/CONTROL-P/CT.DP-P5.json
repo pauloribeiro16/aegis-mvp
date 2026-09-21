@@ -1,0 +1,31 @@
+{
+  "control_id": "CT.DP-P5",
+  "framework": "NIST PF 1.0",
+  "function": "CONTROL-P",
+  "category": "Disassociated Processing (CT.DP-P)",
+  "subcategory_id": "CT.DP-P5",
+  "subcategory_text": "Attribute references are substituted for attribute values.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: AC-4, SI-12",
+    "NIST PF 1.0 Core (January 2020): CT.DP-P5 (verified row 63)",
+    "ISO/IEC 27001:2022 Annex A.8.24",
+    "GDPR Art. 25, Recital 28 (Use of pseudonyms)"
+  ],
+  "implementation_examples": [
+    "Substitute attribute references for attribute values (e.g., tokens for identifiers, hash references for sensitive attributes) so that the raw attribute is not exposed in downstream processing",
+    "Document the substitution mapping, its inverse procedure, and the controls on the inverse procedure",
+    "Audit substitution completeness across data flows"
+  ],
+  "assessment_objectives": [
+    "Determine whether attribute references substitute for attribute values",
+    "Determine whether the substitution mapping is documented and reversible only under documented controls",
+    "Determine whether substitution completeness is audited",
+    "Determine whether the substitution pattern supports data integrity"
+  ],
+  "related_controls": [
+    "CT.DP-P2 (identification limits)",
+    "CT.DM-P7 (transmitted permissions)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

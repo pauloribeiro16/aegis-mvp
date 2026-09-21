@@ -1,0 +1,40 @@
+{
+  "control_id": "MEASURE-1.1",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MEASURE",
+  "category": "Appropriate Methods and Metrics",
+  "subcategory_id": "MEASURE-1.1",
+  "subcategory_text": "Approaches and metrics for measurement of AI risks are selected for implementation starting with the most significant AI risks",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Sara R. Jordan. “Designing Artificial Intelligence Review Boards: Creating Risk Metrics for Review of AI.” 2019 IEEE International Symposium on Technology and Society (ISTAS), 2019. [URL](https://doi.org/10.1109/istas48451.2019.8937942)",
+    "IEEE. “IEEE-1012-2016: IEEE Standard for System, Software, and Hardware Verification and Validation.” IEEE Standards Association. [URL](https://standards.ieee.org/ieee/1012/5609/)",
+    "ACM Technology Policy Council. “Statement on Principles for Responsible Algorithmic Systems.” Association for Computing Machinery (ACM), October 26, 2022. [URL](https://www.acm.org/binaries/content/assets/public-policy/final-joint-ai-statement-update.pdf)"
+  ],
+  "implementation_examples": [
+    "Establish approaches for detecting, tracking and measuring known risks, errors, incidents or negative impacts.",
+    "Identify testing procedures and metrics to demonstrate whether or not the system is fit for purpose and functioning as claimed.",
+    "Identify testing procedures and metrics to demonstrate AI system trustworthiness",
+    "Define acceptable limits for system performance (e.g. distribution of errors), and include course correction suggestions if/when the system performs beyond acceptable limits.",
+    "Define metrics for, and regularly assess, AI actor competency for effective system operation,",
+    "Identify transparency metrics to assess whether stakeholders have access to necessary information about system design, development, deployment, use, and evaluation.",
+    "Utilize accountability metrics to determine whether AI designers, developers, and deployers maintain clear and transparent lines of responsibility and are open to inquiries.",
+    "Document metric selection criteria and include considered but unused metrics.",
+    "Monitor AI system external inputs including training data, models developed for other contexts, system components reused from other contexts, and third-party tools and resources.",
+    "Report metrics to inform assessments of system generalizability and reliability.",
+    "Assess and  document pre- vs post-deployment system performance. Include existing and emergent  risks.",
+    "Document risks or trustworthiness characteristics identified in the Map function that will not be measured, including justification for non- measurement."
+  ],
+  "assessment_objectives": [
+    "How will the appropriate performance metrics, such as accuracy, of the AI be monitored after the AI is deployed?",
+    "What corrective actions has the entity taken to enhance the quality, accuracy, reliability, and representativeness of the data?",
+    "Did your organization address usability problems and test whether user interfaces served their intended purposes?",
+    "What testing, if any, has the entity conducted on the AI system to identify errors and limitations (i.e. manual vs automated, adversarial and stress testing)?"
+  ],
+  "related_controls": [
+    "MEASURE-1.2 (NIST AI RMF — same category)",
+    "MEASURE-1.3 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

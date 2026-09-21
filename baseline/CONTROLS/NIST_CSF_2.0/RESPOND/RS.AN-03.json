@@ -1,0 +1,36 @@
+{
+  "control_id": "RS.AN-03",
+  "framework": "NIST CSF 2.0",
+  "function": "RESPOND",
+  "category": "Incident Analysis (RS.AN)",
+  "subcategory_id": "RS.AN-03",
+  "subcategory_text": "Analysis is performed to establish what has taken place during an incident and the root cause of the incident",
+  "informative_references": [
+    "NIST CSF 2.0 Core: RS.AN-03",
+    "NIST SP 800-53 Rev. 5: AU-07, IR-04, SI-02(07)",
+    "ISO/IEC 27001:2022: Annex A.5.25, Annex A.5.27",
+    "CSF v1.1: RS.AN-3",
+    "CIS Controls v8: 17.8",
+    "PCI DSS: 10.2.1, 10.2.2, 10.4.1, 6.3.1",
+    "CRI Profile v2.0: RS.AN-03, RS.AN-03.01"
+  ],
+  "implementation_examples": [
+    "Determine the sequence of events that occurred during the incident and which assets and resources were involved in each event",
+    "Attempt to determine what vulnerabilities, threats, and threat actors were directly or indirectly involved in the incident",
+    "Analyze the incident to find the underlying, systemic root causes",
+    "Check any cyber deception technology for additional information on attacker behavior"
+  ],
+  "assessment_objectives": [
+    "Determine whether analysis is performed to establish what has taken place during an incident and the root cause of the incident.",
+    "Determine whether mechanisms ensure that determine the sequence of events that occurred during the incident and which assets and resources were involved in each event.",
+    "Determine whether mechanisms ensure that attempt to determine what vulnerabilities, threats, and threat actors were directly or indirectly involved in the incident.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "RS.AN-06 (NIST CSF 2.0 — same category)",
+    "RS.AN-07 (NIST CSF 2.0 — same category)",
+    "RS.AN-08 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

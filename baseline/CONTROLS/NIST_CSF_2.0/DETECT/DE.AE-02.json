@@ -1,0 +1,38 @@
+{
+  "control_id": "DE.AE-02",
+  "framework": "NIST CSF 2.0",
+  "function": "DETECT",
+  "category": "Adverse Event Analysis (DE.AE)",
+  "subcategory_id": "DE.AE-02",
+  "subcategory_text": "Potentially adverse events are analyzed to better understand associated activities",
+  "informative_references": [
+    "NIST CSF 2.0 Core: DE.AE-02",
+    "NIST SP 800-53 Rev. 5: AU-06, CA-07, IR-04, SI-04",
+    "ISO/IEC 27001:2022: Annex A.5.24, Annex A.5.25",
+    "CSF v1.1: DE.AE-2",
+    "CIS Controls v8: 8.11",
+    "PCI DSS: 10.2.1, 10.3.3, 10.3.4, 10.4.1, 10.4.2.1, 6.3.1",
+    "CRI Profile v2.0: DE.AE-02, DE.AE-02.01, DE.AE-02.02"
+  ],
+  "implementation_examples": [
+    "Use security information and event management (SIEM) or other tools to continuously monitor log events for known malicious and suspicious activity",
+    "Utilize up-to-date cyber threat intelligence in log analysis tools to improve detection accuracy and characterize threat actors, their methods, and indicators of compromise",
+    "Regularly conduct manual reviews of log events for technologies that cannot be sufficiently monitored through automation",
+    "Use log analysis tools to generate reports on their findings"
+  ],
+  "assessment_objectives": [
+    "Determine whether potentially adverse events are analyzed to better understand associated activities.",
+    "Determine whether activities are conducted to use security information and event management (SIEM) or other tools to continuously monitor log events for known malicious and suspicious activity.",
+    "Determine whether mechanisms ensure that utilize up-to-date cyber threat intelligence in log analysis tools to improve detection accuracy and characterize threat actors, their methods, and indicators of compromise.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "DE.AE-03 (NIST CSF 2.0 — same category)",
+    "DE.AE-04 (NIST CSF 2.0 — same category)",
+    "DE.AE-06 (NIST CSF 2.0 — same category)",
+    "DE.AE-07 (NIST CSF 2.0 — same category)",
+    "DE.AE-08 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

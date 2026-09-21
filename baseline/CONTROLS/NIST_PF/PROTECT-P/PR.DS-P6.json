@@ -1,0 +1,31 @@
+{
+  "control_id": "PR.DS-P6",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Data Security (PR.DS-P)",
+  "subcategory_id": "PR.DS-P6",
+  "subcategory_text": "Integrity checking mechanisms are used to verify software, firmware, and information integrity.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SI-7 (Software, Firmware, and Information Integrity), SI-7(1) (Integrity Checks)",
+    "NIST PF 1.0 Core (January 2020): PR.DS-P6 (verified row 95)",
+    "ISO/IEC 27001:2022 Annex A.8.28 (Secure coding), A.8.29 (Security testing)",
+    "GDPR Art. 5(1)(d) (Accuracy), Art. 32"
+  ],
+  "implementation_examples": [
+    "Use integrity-checking mechanisms (digital signatures, hashes, attested boot) to verify software, firmware, and information integrity",
+    "Document the integrity policies and validation cadence",
+    "React to integrity failures as security incidents"
+  ],
+  "assessment_objectives": [
+    "Determine whether integrity-checking mechanisms are used for software, firmware, and information",
+    "Determine whether the mechanisms are documented and tested",
+    "Determine whether integrity failures are handled as security incidents",
+    "Determine whether integrity checks cover third-party components"
+  ],
+  "related_controls": [
+    "PR.DS-P1 (data-at-rest)",
+    "PR.DS-P8 (hardware integrity)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

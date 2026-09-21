@@ -1,0 +1,37 @@
+{
+  "control_id": "PR.DS-11",
+  "framework": "NIST CSF 2.0",
+  "function": "PROTECT",
+  "category": "Data Security (PR.DS)",
+  "subcategory_id": "PR.DS-11",
+  "subcategory_text": "Backups of data are created, protected, maintained, and tested",
+  "informative_references": [
+    "NIST CSF 2.0 Core: PR.DS-11",
+    "NIST SP 800-53 Rev. 5: CP-06, CP-09",
+    "ISO/IEC 27001:2022: Annex A.8.13",
+    "CSF v1.1: PR.IP-4",
+    "CIS Controls v8: 11.2, 11.3, 11.5",
+    "PCI DSS: 12.10.1, 9.3.1.1, 9.4.1.1, 9.4.1.2, 9.4.7",
+    "NIST SP 800-218 (SSDF): PS.3.1",
+    "CRI Profile v2.0: PR.DS-11, PR.DS-11.01"
+  ],
+  "implementation_examples": [
+    "Continuously back up critical data in near-real-time, and back up other data frequently at agreed-upon schedules",
+    "Test backups and restores for all types of data sources at least annually",
+    "Securely store some backups offline and offsite so that an incident or disaster will not damage them",
+    "Enforce geographic separation and geolocation restrictions for data backup storage"
+  ],
+  "assessment_objectives": [
+    "Determine whether backups of data are created, protected, maintained, and tested.",
+    "Determine whether mechanisms ensure that continuously back up critical data in near-real-time, and back up other data frequently at agreed-upon schedules.",
+    "Determine whether activities are conducted to test backups and restores for all types of data sources at least annually.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "PR.DS-01 (NIST CSF 2.0 — same category)",
+    "PR.DS-02 (NIST CSF 2.0 — same category)",
+    "PR.DS-10 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

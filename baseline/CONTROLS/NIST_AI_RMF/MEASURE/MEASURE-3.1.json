@@ -1,0 +1,38 @@
+{
+  "control_id": "MEASURE-3.1",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MEASURE",
+  "category": "Performance and Monitoring",
+  "subcategory_id": "MEASURE-3.1",
+  "subcategory_text": "Approaches, personnel, and documentation are in place to regularly identify and track existing, unanticipated, and emergent AI risks",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "ISO. \"ISO 9241-210:2019 Ergonomics of human-system interaction — Part 210: Human-centred design for interactive systems.\" 2nd ed. ISO Standards, July 2019. [URL](https://www.iso.org/standard/77520.html)",
+    "Larysa Visengeriyeva, et al. “Awesome MLOps.“ GitHub. [URL](https://github.com/visenger/awesome-mlops)"
+  ],
+  "implementation_examples": [
+    "Compare AI system risks with:",
+    "simpler or traditional models",
+    "human baseline performance",
+    "other manual performance benchmarks",
+    "Compare end user and community feedback about deployed AI systems to internal measures of system performance.",
+    "Assess effectiveness of metrics for identifying and measuring emergent risks.",
+    "Measure error response times and track response quality.",
+    "Elicit and track feedback from AI actors in user support roles about the type of metrics, explanations and other system information required for fulsome resolution of system issues. Consider:",
+    "Instances where explanations are insufficient for investigating possible error sources or identifying responses.",
+    "System metrics, including system logs and explanations, for identifying and diagnosing sources of system error.",
+    "Elicit and track feedback from AI actors in incident response and support roles about the adequacy of staffing and resources to perform their duties in an effective and timely manner."
+  ],
+  "assessment_objectives": [
+    "Did your organization implement a risk management system to address risks involved in deploying the identified AI solution (e.g. personnel risk or changes to commercial objectives)?",
+    "To what extent can users or parties affected by the outputs of the AI system test the AI system and provide feedback?",
+    "What metrics has the entity developed to measure performance of the AI system, including error logging?",
+    "To what extent do the metrics provide accurate and useful measure of performance?"
+  ],
+  "related_controls": [
+    "MEASURE-3.2 (NIST AI RMF — same category)",
+    "MEASURE-3.3 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

@@ -1,0 +1,34 @@
+{
+  "control_id": "PR.IR-03",
+  "framework": "NIST CSF 2.0",
+  "function": "PROTECT",
+  "category": "Technology Infrastructure Resilience (PR.IR)",
+  "subcategory_id": "PR.IR-03",
+  "subcategory_text": "Mechanisms are implemented to achieve resilience requirements in normal and adverse situations",
+  "informative_references": [
+    "NIST CSF 2.0 Core: PR.IR-03",
+    "NIST SP 800-53 Rev. 5: CP, IR, SA-08, SA-24, SC-06, SC-24, SC-36, SC-39 (+1 more)",
+    "ISO/IEC 27001:2022: Clause 4.2(b), Clause 6.1.1, Annex A.5.29, Annex A.8.14",
+    "CSF v1.1: PR.PT-5",
+    "PCI DSS: 12.10.1, 12.10.2, 12.10.6",
+    "CRI Profile v2.0: PR.IR-03, PR.IR-03.01"
+  ],
+  "implementation_examples": [
+    "Avoid single points of failure in systems and infrastructure",
+    "Use load balancing to increase capacity and improve reliability",
+    "Use high-availability components like redundant storage and power supplies to improve system reliability"
+  ],
+  "assessment_objectives": [
+    "Determine whether mechanisms are implemented to achieve resilience requirements in normal and adverse situations.",
+    "Determine whether mechanisms ensure that avoid single points of failure in systems and infrastructure.",
+    "Determine whether activities are conducted to use load balancing to increase capacity and improve reliability.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "PR.IR-01 (NIST CSF 2.0 — same category)",
+    "PR.IR-02 (NIST CSF 2.0 — same category)",
+    "PR.IR-04 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

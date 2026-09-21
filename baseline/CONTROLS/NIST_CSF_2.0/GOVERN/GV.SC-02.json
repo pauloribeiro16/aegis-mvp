@@ -1,0 +1,47 @@
+{
+  "control_id": "GV.SC-02",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Cybersecurity Supply Chain Risk Management (GV.SC)",
+  "subcategory_id": "GV.SC-02",
+  "subcategory_text": "Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.SC-02",
+    "NIST SP 800-53 Rev. 5: SR-02, SR-03, SR-05",
+    "ISO/IEC 27001:2022: Clause 5.3, Annex A.5.2, Annex A.5.4",
+    "CSF v1.1: ID.AM-6",
+    "CIS Controls v8: 15.4",
+    "PCI DSS: 12.1.4, 12.10.1, 12.8.3, 12.8.4",
+    "NIST SP 800-218 (SSDF): PO.2.1",
+    "CRI Profile v2.0: GV.SC-02, GV.SC-02.01"
+  ],
+  "implementation_examples": [
+    "Identify one or more specific roles or positions that will be responsible and accountable for planning, resourcing, and executing cybersecurity supply chain risk management activities",
+    "Document cybersecurity supply chain risk management roles and responsibilities in policy",
+    "Create responsibility matrixes to document who will be responsible and accountable for cybersecurity supply chain risk management activities and how those teams and individuals will be consulted and informed",
+    "Include cybersecurity supply chain risk management responsibilities and performance requirements in personnel descriptions to ensure clarity and improve accountability",
+    "Document performance goals for personnel with cybersecurity risk management-specific responsibilities, and periodically measure them to demonstrate and improve performance",
+    "Develop roles and responsibilities for suppliers, customers, and business partners to address shared responsibilities for applicable cybersecurity risks, and integrate them into organizational policies and applicable third-party agreements",
+    "Internally communicate cybersecurity supply chain risk management roles and responsibilities for third parties",
+    "Establish rules and protocols for information sharing and reporting processes between the organization and its suppliers"
+  ],
+  "assessment_objectives": [
+    "Determine whether cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally.",
+    "Determine whether activities are conducted to identify one or more specific roles or positions that will be responsible and accountable for planning, resourcing, and executing cybersecurity supply chain risk management activities.",
+    "Determine whether activities are conducted to document cybersecurity supply chain risk management roles and responsibilities in policy.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.SC-01 (NIST CSF 2.0 — same category)",
+    "GV.SC-03 (NIST CSF 2.0 — same category)",
+    "GV.SC-04 (NIST CSF 2.0 — same category)",
+    "GV.SC-05 (NIST CSF 2.0 — same category)",
+    "GV.SC-06 (NIST CSF 2.0 — same category)",
+    "GV.SC-07 (NIST CSF 2.0 — same category)",
+    "GV.SC-08 (NIST CSF 2.0 — same category)",
+    "GV.SC-09 (NIST CSF 2.0 — same category)",
+    "GV.SC-10 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

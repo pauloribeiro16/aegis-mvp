@@ -1,0 +1,31 @@
+{
+  "control_id": "PR.PT-P1",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Protective Technology (PR.PT-P)",
+  "subcategory_id": "PR.PT-P1",
+  "subcategory_text": "Removable media is protected and its use restricted according to policy.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: MP-2 (Media Access), MP-4 (Media Storage), MP-7 (Media Use)",
+    "NIST PF 1.0 Core (January 2020): PR.PT-P1 (verified row 100)",
+    "ISO/IEC 27001:2022 Annex A.8.10, A.7.10 (Storage media handling)",
+    "GDPR Art. 5(1)(f), Art. 32"
+  ],
+  "implementation_examples": [
+    "Protect removable media and restrict its use to authorised purposes (e.g., encrypted USB only, no personal devices, automatic media scanning)",
+    "Track media issuance and return",
+    "Capture disposal events for media containing personal data"
+  ],
+  "assessment_objectives": [
+    "Determine whether removable-media controls exist (encryption, scan, tracking)",
+    "Determine whether media use is restricted to authorised purposes",
+    "Determine whether media issuance and return are tracked",
+    "Determine whether disposal is documented"
+  ],
+  "related_controls": [
+    "PR.DS-P3 (formal disposal)",
+    "PR.DS-P1 (data-at-rest)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

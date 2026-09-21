@@ -1,0 +1,37 @@
+{
+  "control_id": "PR.PS-05",
+  "framework": "NIST CSF 2.0",
+  "function": "PROTECT",
+  "category": "Platform Security (PR.PS)",
+  "subcategory_id": "PR.PS-05",
+  "subcategory_text": "Installation and execution of unauthorized software are prevented",
+  "informative_references": [
+    "NIST CSF 2.0 Core: PR.PS-05",
+    "NIST SP 800-53 Rev. 5: CM-07(02), CM-07(04), CM-07(05), SC-34",
+    "ISO/IEC 27001:2022: Annex A.8.19",
+    "CIS Controls v8: 2.5",
+    "PCI DSS: 2.2.1, 5.3.2, 6.4.3",
+    "CRI Profile v2.0: PR.PS-05, PR.PS-05.01, PR.PS-05.02, PR.PS-05.03"
+  ],
+  "implementation_examples": [
+    "When risk warrants it, restrict software execution to permitted products only or deny the execution of prohibited and unauthorized software",
+    "Verify the source of new software and the software's integrity before installing it",
+    "Configure platforms to use only approved DNS services that block access to known malicious domains",
+    "Configure platforms to allow the installation of organization-approved software only"
+  ],
+  "assessment_objectives": [
+    "Determine whether installation and execution of unauthorized software are prevented.",
+    "Determine whether mechanisms ensure that when risk warrants it, restrict software execution to permitted products only or deny the execution of prohibited and unauthorized software.",
+    "Determine whether activities are conducted to verify the source of new software and the software's integrity before installing it.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "PR.PS-01 (NIST CSF 2.0 — same category)",
+    "PR.PS-02 (NIST CSF 2.0 — same category)",
+    "PR.PS-03 (NIST CSF 2.0 — same category)",
+    "PR.PS-04 (NIST CSF 2.0 — same category)",
+    "PR.PS-06 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

@@ -1,0 +1,35 @@
+{
+  "control_id": "GV.RM-07",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Risk Management Strategy (GV.RM)",
+  "subcategory_id": "GV.RM-07",
+  "subcategory_text": "Strategic opportunities (i.e., positive risks) are characterized and are included in organizational cybersecurity risk discussions",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.RM-07",
+    "NIST SP 800-53 Rev. 5: PM-09, PM-18, PM-28, PM-30, RA-03",
+    "ISO/IEC 27001:2022: Clause 6.11, Annex A.None",
+    "CRI Profile v2.0: GV.RM-07, GV.RM-07.01"
+  ],
+  "implementation_examples": [
+    "Define and communicate guidance and methods for identifying opportunities and including them in risk discussions (e.g., strengths, weaknesses, opportunities, and threats [SWOT] analysis)",
+    "Identify stretch goals and document them",
+    "Calculate, document, and prioritize positive risks alongside negative risks"
+  ],
+  "assessment_objectives": [
+    "Determine whether strategic opportunities (i.e., positive risks) are characterized and are included in organizational cybersecurity risk discussions.",
+    "Determine whether activities are conducted to define and communicate guidance and methods for identifying opportunities and including them in risk discussions (e.g., strengths, weaknesses, opportunities, and threats [SWOT] analysis).",
+    "Determine whether activities are conducted to identify stretch goals and document them.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.RM-01 (NIST CSF 2.0 — same category)",
+    "GV.RM-02 (NIST CSF 2.0 — same category)",
+    "GV.RM-03 (NIST CSF 2.0 — same category)",
+    "GV.RM-04 (NIST CSF 2.0 — same category)",
+    "GV.RM-05 (NIST CSF 2.0 — same category)",
+    "GV.RM-06 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

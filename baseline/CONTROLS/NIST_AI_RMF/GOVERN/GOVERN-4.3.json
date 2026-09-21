@@ -1,0 +1,31 @@
+{
+  "control_id": "GOVERN-4.3",
+  "framework": "NIST AI RMF 1.0",
+  "function": "GOVERN",
+  "category": "Pre-Design and Specification Decisions",
+  "subcategory_id": "GOVERN-4.3",
+  "subcategory_text": "Organizational practices are in place to enable AI testing, identification of incidents, and information sharing",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Sean McGregor, “Preventing Repeated Real World AI Failures by Cataloging Incidents: The AI Incident Database,” arXiv:2011.08512 [cs], Nov. 2020, arXiv:2011.08512. [URL](http://arxiv.org/abs/2011.08512)",
+    "Christopher Johnson, Mark Badger, David Waltermire, Julie Snyder, and Clem Skorupka,  “Guide to cyber threat information sharing,” National Institute of Standards and Technology, NIST Special Publication 800-150, Nov 2016. [URL](https://doi.org/10.6028/NIST.SP.800-150)",
+    "Mengyi Wei, Zhixuan Zhou (2022). AI Ethics Issues in Real World: Evidence from AI Incident Database. ArXiv, abs/2206.07635. [URL](https://arxiv.org/pdf/2206.07635.pdf)"
+  ],
+  "implementation_examples": [
+    "Establish policies and procedures to facilitate and equip AI system testing.",
+    "Establish organizational commitment to identifying AI system limitations and sharing of insights about limitations within appropriate AI actor groups.",
+    "Establish policies for reporting and documenting incident response.",
+    "Establish policies and processes regarding public disclosure of incidents and information sharing.",
+    "Establish guidelines for incident handling related to AI system risks and performance."
+  ],
+  "assessment_objectives": [
+    "Did your organization implement a risk management system to address risks involved in deploying the identified AI solution (e.g. personnel risk or changes to commercial objectives)?",
+    "To what extent can users or parties affected by the outputs of the AI system test the AI system and provide feedback?"
+  ],
+  "related_controls": [
+    "GOVERN-4.1 (NIST AI RMF — same category)",
+    "GOVERN-4.2 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

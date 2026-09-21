@@ -1,0 +1,43 @@
+{
+  "control_id": "GV.SC-08",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Cybersecurity Supply Chain Risk Management (GV.SC)",
+  "subcategory_id": "GV.SC-08",
+  "subcategory_text": "Relevant suppliers and other third parties are included in incident planning, response, and recovery activities",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.SC-08",
+    "NIST SP 800-53 Rev. 5: CP-01, IR-01, SA-04, SA-09, SR-02, SR-03, SR-08",
+    "ISO/IEC 27001:2022: Annex A.5.26",
+    "CSF v1.1: ID.SC-5",
+    "CIS Controls v8: 15.4",
+    "PCI DSS: 1.2.3, 1.2.4, 12.10.1, 12.10.2, 12.10.5, 12.10.6 (+4 more)",
+    "CRI Profile v2.0: GV.SC-08, GV.SC-08.01"
+  ],
+  "implementation_examples": [
+    "Define and use rules and protocols for reporting incident response and recovery activities and the status between the organization and its suppliers",
+    "Identify and document the roles and responsibilities of the organization and its suppliers for incident response",
+    "Include critical suppliers in incident response exercises and simulations",
+    "Define and coordinate crisis communication methods and protocols between the organization and its critical suppliers",
+    "Conduct collaborative lessons learned sessions with critical suppliers"
+  ],
+  "assessment_objectives": [
+    "Determine whether relevant suppliers and other third parties are included in incident planning, response, and recovery activities.",
+    "Determine whether activities are conducted to define and use rules and protocols for reporting incident response and recovery activities and the status between the organization and its suppliers.",
+    "Determine whether activities are conducted to identify and document the roles and responsibilities of the organization and its suppliers for incident response.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.SC-01 (NIST CSF 2.0 — same category)",
+    "GV.SC-02 (NIST CSF 2.0 — same category)",
+    "GV.SC-03 (NIST CSF 2.0 — same category)",
+    "GV.SC-04 (NIST CSF 2.0 — same category)",
+    "GV.SC-05 (NIST CSF 2.0 — same category)",
+    "GV.SC-06 (NIST CSF 2.0 — same category)",
+    "GV.SC-07 (NIST CSF 2.0 — same category)",
+    "GV.SC-09 (NIST CSF 2.0 — same category)",
+    "GV.SC-10 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

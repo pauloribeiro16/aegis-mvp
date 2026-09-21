@@ -1,0 +1,31 @@
+{
+  "control_id": "CT.DM-P6",
+  "framework": "NIST PF 1.0",
+  "function": "CONTROL-P",
+  "category": "Data Processing Management (CT.DM-P)",
+  "subcategory_id": "CT.DM-P6",
+  "subcategory_text": "Data are transmitted using standardized formats.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SC-16 (Transmission of Security and Privacy Attributes)",
+    "NIST PF 1.0 Core (January 2020): CT.DM-P6 (verified row 54)",
+    "ISO/IEC 27001:2022 Annex A.8.27",
+    "GDPR Art. 20 (Right to data portability)"
+  ],
+  "implementation_examples": [
+    "Transmit data using standardised, documented formats (e.g., JSON, XML, CSV) and machine-readable interfaces (e.g., web APIs) so that consumers can ingest the data reliably",
+    "Document the format standards in a published schema catalogue",
+    "Ensure portability for individual rights requests under GDPR Art. 20"
+  ],
+  "assessment_objectives": [
+    "Determine whether standard data formats are used for transmissions",
+    "Determine whether the standard formats are documented and versioned",
+    "Determine whether consumers can ingest the formats reliably",
+    "Determine whether portability under individual rights requests is supported"
+  ],
+  "related_controls": [
+    "CT.DM-P2 (transmission)",
+    "CT.DM-P7 (transmitted permissions)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

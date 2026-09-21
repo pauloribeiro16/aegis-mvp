@@ -1,0 +1,32 @@
+{
+  "control_id": "MAP-5.2",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MAP",
+  "category": "Risk Treatment Decisions",
+  "subcategory_id": "MAP-5.2",
+  "subcategory_text": "Practices and personnel for supporting regular engagement with relevant AI actors and integrating feedback on impacts are in place and documented",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Susanne Vernim, Harald Bauer, Erwin Rauch, et al. 2022. A value sensitive design approach for designing AI-based worker assistance systems in manufacturing. Procedia Comput. Sci. 200, C (2022), 505–516. [URL](https://doi.org/10.1016/j.procs.2022.01.248)",
+    "Harini Suresh and John V. Guttag. 2020. A Framework for Understanding Sources of Harm throughout the Machine Learning Life Cycle. arXiv:1901.10002. Retrieved from [URL](https://arxiv.org/abs/1901.10002)",
+    "Margarita Boyarskaya, Alexandra Olteanu, and Kate Crawford. 2020. Overcoming Failures of Imagination in AI Infused System Development and Deployment. arXiv:2011.13416. [URL](https://arxiv.org/abs/2011.13416)"
+  ],
+  "implementation_examples": [
+    "Establish and document stakeholder engagement processes at the earliest stages of system formulation to identify potential impacts from the AI system on individuals, groups, communities, organizations, and society.",
+    "Employ methods such as value sensitive design (VSD) to identify misalignments between organizational and societal values, and system implementation and impact.",
+    "Identify approaches to engage, capture, and incorporate input from system end users and other key stakeholders to assist with continuous monitoring for potential impacts and emergent risks.",
+    "Incorporate quantitative, qualitative, and mixed methods in the assessment and documentation of potential impacts to individuals, groups, communities, organizations, and society.",
+    "Identify a team (internal or external) that is independent of AI design and development functions to assess AI system benefits, positive and negative impacts and their likelihood and magnitude.",
+    "Evaluate and document stakeholder feedback to assess potential impacts for actionable insights regarding trustworthiness characteristics and changes in design approaches and principles.",
+    "Develop TEVV procedures that incorporate socio-technical elements and methods and plan to normalize across organizational culture. Regularly review and refine TEVV processes."
+  ],
+  "assessment_objectives": [
+    "If the AI system relates to people, does it unfairly advantage or disadvantage a particular social group? In what ways? How was this managed?",
+    "If the AI system relates to people, could this dataset expose people to harm or legal action? (e.g., financial social or otherwise) What was done to mitigate or reduce the potential for harm?"
+  ],
+  "related_controls": [
+    "MAP-5.1 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

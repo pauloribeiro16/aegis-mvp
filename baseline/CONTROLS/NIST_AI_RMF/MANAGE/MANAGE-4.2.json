@@ -1,0 +1,32 @@
+{
+  "control_id": "MANAGE-4.2",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MANAGE",
+  "category": "Risk Treatment and Documentation",
+  "subcategory_id": "MANAGE-4.2",
+  "subcategory_text": "Decommissioning processes and procedures are developed and implemented",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Yen, Po-Yin, et al. \"Development and Evaluation of Socio-Technical Metrics to Inform HIT Adaptation.\" [URL](https://digital.ahrq.gov/sites/default/files/docs/citation/r21hs024767-yen-final-report-2019.pdf)",
+    "Carayon, Pascale, and Megan E. Salwei. \"Moving toward a sociotechnical systems approach to continuous health information technology design: the path forward for improving electronic health record usability and reducing clinician burnout.\" Journal of the American Medical Informatics Association 28.5 (2021): 1026-1028. [URL](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8068435/pdf/ocab002.pdf)",
+    "Mishra, Deepa, et al. \"Organizational capabilities that enable big data and predictive analytics diffusion and organizational performance: A resource-based perspective.\" Management Decision (2018)."
+  ],
+  "implementation_examples": [
+    "Integrate trustworthiness characteristics into protocols and metrics used for continual improvement.",
+    "Establish processes for evaluating and integrating feedback into AI system improvements.",
+    "Assess and evaluate alignment of proposed improvements with relevant regulatory and legal frameworks",
+    "Assess and evaluate alignment of proposed improvements connected to the values and norms within the context of use.",
+    "Document the basis for decisions made relative to tradeoffs between trustworthy characteristics, system risks, and system opportunities"
+  ],
+  "assessment_objectives": [
+    "How will user and other forms of stakeholder engagement be integrated into the model development process and regular performance review once deployed?",
+    "To what extent can users or parties affected by the outputs of the AI system test the AI system and provide feedback?",
+    "To what extent has the entity defined and documented the regulatory environment—including minimum requirements in laws and regulations?"
+  ],
+  "related_controls": [
+    "MANAGE-4.1 (NIST AI RMF — same category)",
+    "MANAGE-4.3 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

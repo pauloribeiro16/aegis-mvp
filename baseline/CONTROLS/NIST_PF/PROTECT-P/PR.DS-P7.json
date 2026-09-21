@@ -1,0 +1,31 @@
+{
+  "control_id": "PR.DS-P7",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Data Security (PR.DS-P)",
+  "subcategory_id": "PR.DS-P7",
+  "subcategory_text": "The development and testing environment(s) are separate from the production environment.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SA-15 (Development Process, Standards, and Tools), SC-7 (Boundary Protection)",
+    "NIST PF 1.0 Core (January 2020): PR.DS-P7 (verified row 96)",
+    "ISO/IEC 27001:2022 Annex A.8.31 (Separation of development, test and production environments)",
+    "GDPR Art. 5(1)(f), Art. 25"
+  ],
+  "implementation_examples": [
+    "Separate the development and testing environments from production to prevent leakage of personal data through non-production systems",
+    "Use sanitised data in non-production; if real data is essential, apply the same controls as production",
+    "Restrict production access from non-production identities"
+  ],
+  "assessment_objectives": [
+    "Determine whether development and testing environments are separated from production",
+    "Determine whether production data is sanitised or equally protected in non-production",
+    "Determine whether access controls enforce the separation",
+    "Determine whether boundary exceptions are reviewed"
+  ],
+  "related_controls": [
+    "PR.DS-P1 (data-at-rest)",
+    "PR.AC-P3 (remote access)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

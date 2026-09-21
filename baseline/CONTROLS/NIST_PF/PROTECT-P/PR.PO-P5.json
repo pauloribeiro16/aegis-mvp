@@ -1,0 +1,31 @@
+{
+  "control_id": "PR.PO-P5",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Data Protection Policies, Processes, and Procedures (PR.PO-P)",
+  "subcategory_id": "PR.PO-P5",
+  "subcategory_text": "Protection processes are improved.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PM-1 (Information Security and Privacy Program Plan), CA-2(2) (Specialized Assessments)",
+    "NIST PF 1.0 Core (January 2020): PR.PO-P5 (verified row 78)",
+    "ISO/IEC 27001:2022 Clause 10.1 (Continual improvement), Annex A.5.30",
+    "GDPR Art. 24"
+  ],
+  "implementation_examples": [
+    "Improve protection processes through root-cause analysis of incidents, control-assessment findings, and external-research inputs",
+    "Use a defined improvement methodology (e.g., plan-do-check-act) with measurable outcomes",
+    "Report improvement outcomes to leadership"
+  ],
+  "assessment_objectives": [
+    "Determine whether protection processes are improved through root-cause analysis",
+    "Determine whether a documented improvement methodology is used",
+    "Determine whether improvement outcomes are measurable",
+    "Determine whether improvements are reported to leadership"
+  ],
+  "related_controls": [
+    "PR.PO-P6 (effectiveness shared)",
+    "GV.MT-P6 (lessons learned)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

@@ -1,0 +1,33 @@
+{
+  "control_id": "GV.PO-02",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Policy (GV.PO)",
+  "subcategory_id": "GV.PO-02",
+  "subcategory_text": "Policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organizational mission",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.PO-02",
+    "NIST SP 800-53 Rev. 5: AC-01, AT-01, AU-01, CA-01, CM-01, CP-01, IA-01, IR-01 (+12 more)",
+    "ISO/IEC 27001:2022: Clause 5.2, Annex A.5.1",
+    "CSF v1.1: ID.GV-1",
+    "PCI DSS: 1.1.1, 10.1.1, 11.1.1, 12.1.2, 2.1.1, 3.1.1 (+6 more)",
+    "CRI Profile v2.0: GV.PO-02, GV.PO-02.01"
+  ],
+  "implementation_examples": [
+    "Update policy based on periodic reviews of cybersecurity risk management results to ensure that policy and supporting processes and procedures adequately maintain risk at an acceptable level",
+    "Provide a timeline for reviewing changes to the organization's risk environment (e.g., changes in risk or in the organization's mission objectives), and communicate recommended policy updates",
+    "Update policy to reflect changes in legal and regulatory requirements",
+    "Update policy to reflect changes in technology (e.g., adoption of artificial intelligence) and changes to the business (e.g., acquisition of a new business, new contract requirements)"
+  ],
+  "assessment_objectives": [
+    "Determine whether policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organizational mission.",
+    "Determine whether activities are conducted to update policy based on periodic reviews of cybersecurity risk management results to ensure that policy and supporting processes and procedures adequately maintain risk at an acceptable level.",
+    "Determine whether mechanisms ensure that provide a timeline for reviewing changes to the organization's risk environment (e.g., changes in risk or in the organization's mission objectives), and communicate recommended policy updates.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.PO-01 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

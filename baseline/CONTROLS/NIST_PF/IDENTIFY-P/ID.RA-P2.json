@@ -1,0 +1,32 @@
+{
+  "control_id": "ID.RA-P2",
+  "framework": "NIST PF 1.0",
+  "function": "IDENTIFY-P",
+  "category": "Risk Assessment (ID.RA-P)",
+  "subcategory_id": "ID.RA-P2",
+  "subcategory_text": "Data analytic inputs and outputs are identified and evaluated for bias.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: RA-3, AC-2(1) (Automated Account Management)",
+    "NIST PF 1.0 Core (January 2020): ID.RA-P2 (verified row 16)",
+    "ISO/IEC 27001:2022 Annex A.5.34 (Privacy and protection of personally identifiable information)",
+    "GDPR Art. 22 (Automated decision-making), Recital 71",
+    "Aligned with NIST CSF 2.0 ID.RA-02 (cyber threat intelligence) and AI RMF MEASURE 2.11 (bias evaluated)"
+  ],
+  "implementation_examples": [
+    "Identify the inputs and outputs of any analytics (including machine-learning models and rules engines) that process personal data",
+    "Evaluate inputs and outputs for bias across demographic dimensions relevant to the data subjects",
+    "Document the bias evaluation, its results, and the mitigations applied as part of the privacy-risk record"
+  ],
+  "assessment_objectives": [
+    "Determine whether analytic inputs and outputs are identified",
+    "Determine whether bias evaluation covers demographic dimensions relevant to data subjects",
+    "Determine whether bias results are recorded and used to inform risk prioritisation",
+    "Determine whether mitigations are documented for identified bias"
+  ],
+  "related_controls": [
+    "ID.RA-P3 (problematic data actions)",
+    "MEASURE 2.11 (NIST AI RMF — bias evaluated)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

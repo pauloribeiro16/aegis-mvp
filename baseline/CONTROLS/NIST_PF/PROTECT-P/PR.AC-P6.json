@@ -1,0 +1,31 @@
+{
+  "control_id": "PR.AC-P6",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Identity Management, Authentication, and Access Control (PR.AC-P)",
+  "subcategory_id": "PR.AC-P6",
+  "subcategory_text": "Individuals and devices are proofed and bound to credentials, and authenticated commensurate with the risk of the transaction (e.g., individuals’ security and privacy risks and other organizational risks).",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: IA-2(1) (Multi-Factor Authentication), IA-5 (Authenticator Management)",
+    "NIST PF 1.0 Core (January 2020): PR.AC-P6 (verified row 89)",
+    "ISO/IEC 27001:2022 Annex A.5.17",
+    "GDPR Art. 5(1)(f), Art. 32"
+  ],
+  "implementation_examples": [
+    "Proof individuals and devices, bind them to credentials, and authenticate commensurate with the risk (e.g., sensitive data access requires stronger authentication than public information access)",
+    "Capture authentication events and integrate with anomaly detection",
+    "Maintain recovery procedures for credential loss"
+  ],
+  "assessment_objectives": [
+    "Determine whether individuals and devices are proofed and bound to credentials",
+    "Determine whether authentication strength is risk-proportionate",
+    "Determine whether authentication events are logged and integrated with monitoring",
+    "Determine whether credential recovery procedures are secure"
+  ],
+  "related_controls": [
+    "PR.AC-P1 (identity management)",
+    "CT.PO-P3 (preferences/requests)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

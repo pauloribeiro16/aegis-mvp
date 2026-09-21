@@ -1,0 +1,32 @@
+{
+  "control_id": "GV.OC-01",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Organizational Context (GV.OC)",
+  "subcategory_id": "GV.OC-01",
+  "subcategory_text": "The organizational mission is understood and informs cybersecurity risk management",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.OC-01",
+    "NIST SP 800-53 Rev. 5: PM-11",
+    "ISO/IEC 27001:2022: Clause  4.1, Clause  6.1, Clause 8.1, Clause 8.2, Clause 8.3, Annex A Controls:",
+    "CSF v1.1: ID.BE-2, ID.BE-3",
+    "PCI DSS: 12.1.1",
+    "CRI Profile v2.0: GV.OC-01, GV.OC-01.01"
+  ],
+  "implementation_examples": [
+    "Share the organization's mission (e.g., through vision and mission statements, marketing, and service strategies) to provide a basis for identifying risks that may impede that mission"
+  ],
+  "assessment_objectives": [
+    "Determine whether the organizational mission is understood and informs cybersecurity risk management.",
+    "Determine whether activities are conducted to share the organization's mission (e.g., through vision and mission statements, marketing, and service strategies) to provide a basis for identifying risks that may impede that mission.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.OC-02 (NIST CSF 2.0 — same category)",
+    "GV.OC-03 (NIST CSF 2.0 — same category)",
+    "GV.OC-04 (NIST CSF 2.0 — same category)",
+    "GV.OC-05 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

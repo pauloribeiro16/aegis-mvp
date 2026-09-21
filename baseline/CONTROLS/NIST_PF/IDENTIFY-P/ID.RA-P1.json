@@ -1,0 +1,32 @@
+{
+  "control_id": "ID.RA-P1",
+  "framework": "NIST PF 1.0",
+  "function": "IDENTIFY-P",
+  "category": "Risk Assessment (ID.RA-P)",
+  "subcategory_id": "ID.RA-P1",
+  "subcategory_text": "Contextual factors related to the systems/products/services and the data actions are identified (e.g., individuals’ demographics and privacy interests or perceptions, data sensitivity and/or types, visibility of data processing to individuals and third parties).",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: RA-3 (Risk Assessment), SI-12 (Information Management and Retention)",
+    "NIST PF 1.0 Core (January 2020): ID.RA-P1 (verified row 15)",
+    "ISO/IEC 27001:2022 Annex A.5.7 (Threat intelligence)",
+    "GDPR Art. 35(7)(a) (DPIA — context of processing)",
+    "Aligned with NIST CSF 2.0 ID.RA-01 (asset vulnerabilities identified) and PV.AE-02 (privacy risk context)"
+  ],
+  "implementation_examples": [
+    "Identify the contextual factors that shape privacy risk for each processing activity: individuals' demographics and privacy interests, data sensitivity and types, visibility of processing to individuals and third parties, and regulatory environment",
+    "Document the factors in the DPIA so that downstream likelihood and impact decisions are explicit",
+    "Refresh the factors when the data subject community, data set, or processing pattern changes"
+  ],
+  "assessment_objectives": [
+    "Determine whether contextual factors are identified per processing activity",
+    "Determine whether contextual factors are documented and referenced in risk decisions",
+    "Determine whether contextual factors are refreshed on relevant change",
+    "Determine whether the set of factors covers individual, data, and processing-ecosystem dimensions"
+  ],
+  "related_controls": [
+    "ID.RA-P2 (analytic bias evaluated)",
+    "PV.AE-02 (NIST AI RMF — privacy risk context)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

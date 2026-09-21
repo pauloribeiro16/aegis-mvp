@@ -1,0 +1,31 @@
+{
+  "control_id": "PR.MA-P1",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Maintenance (PR.MA-P)",
+  "subcategory_id": "PR.MA-P1",
+  "subcategory_text": "Maintenance and repair of organizational assets are performed and logged, with approved and controlled tools.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: MA-2 (Controlled Maintenance), MA-3 (Maintenance Tools)",
+    "NIST PF 1.0 Core (January 2020): PR.MA-P1 (verified row 98)",
+    "ISO/IEC 27001:2022 Annex A.7.13 (Equipment maintenance), A.8.9 (Configuration management)",
+    "GDPR Art. 5(1)(f), Art. 32"
+  ],
+  "implementation_examples": [
+    "Perform and log maintenance and repair of organisational assets with approved and controlled tools, with personal-data access minimised during maintenance",
+    "Verify that maintenance personnel are cleared for the data they may encounter",
+    "Capture evidence of maintenance activities for accountability"
+  ],
+  "assessment_objectives": [
+    "Determine whether maintenance is logged with assets, personnel, tools, and time",
+    "Determine whether maintenance tools are approved and controlled",
+    "Determine whether the data exposure during maintenance is minimised",
+    "Determine whether unauthorised maintenance is detected"
+  ],
+  "related_controls": [
+    "PR.PO-P10 (vulnerability management)",
+    "PR.DS-P1 (data-at-rest)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

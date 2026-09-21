@@ -1,0 +1,31 @@
+{
+  "control_id": "CT.DM-P5",
+  "framework": "NIST PF 1.0",
+  "function": "CONTROL-P",
+  "category": "Data Processing Management (CT.DM-P)",
+  "subcategory_id": "CT.DM-P5",
+  "subcategory_text": "Data are destroyed according to policy.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: MP-6 (Media Sanitization), SR-12 (Component Disposal)",
+    "NIST PF 1.0 Core (January 2020): CT.DM-P5 (verified row 53)",
+    "ISO/IEC 27001:2022 Annex A.8.10 (Information deletion)",
+    "GDPR Art. 5(1)(e), Art. 17 (Right to erasure)"
+  ],
+  "implementation_examples": [
+    "Destroy data according to documented policy, with destruction methods commensurate to data sensitivity (logical erasure, cryptographic erasure, physical destruction of media)",
+    "Maintain destruction records (asset, method, date, technician, witness) for accountability",
+    "Include backups and off-site media in the scope of destruction"
+  ],
+  "assessment_objectives": [
+    "Determine whether data destruction follows documented policy",
+    "Determine whether the destruction method is commensurate with data sensitivity",
+    "Determine whether destruction records are maintained",
+    "Determine whether destruction covers backups and off-site media"
+  ],
+  "related_controls": [
+    "CT.DM-P4 (deletion)",
+    "PR.DS-P3 (formal disposal)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

@@ -1,0 +1,35 @@
+{
+  "control_id": "DE.AE-04",
+  "framework": "NIST CSF 2.0",
+  "function": "DETECT",
+  "category": "Adverse Event Analysis (DE.AE)",
+  "subcategory_id": "DE.AE-04",
+  "subcategory_text": "The estimated impact and scope of adverse events are understood",
+  "informative_references": [
+    "NIST CSF 2.0 Core: DE.AE-04",
+    "NIST SP 800-53 Rev. 5: PM-09, PM-11, PM-18, PM-28, PM-30",
+    "ISO/IEC 27001:2022: Annex A.5.25",
+    "CSF v1.1: DE.AE-4",
+    "PCI DSS: 1.2.3, 1.2.4, 10.2.1, 10.4.1, 12.5.1",
+    "CRI Profile v2.0: DE.AE-04, DE.AE-04.01"
+  ],
+  "implementation_examples": [
+    "Use SIEMs or other tools to estimate impact and scope, and review and refine the estimates",
+    "A person creates their own estimates of impact and scope"
+  ],
+  "assessment_objectives": [
+    "Determine whether the estimated impact and scope of adverse events are understood.",
+    "Determine whether activities are conducted to use SIEMs or other tools to estimate impact and scope, and review and refine the estimates.",
+    "Determine whether mechanisms ensure that a person creates their own estimates of impact and scope.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "DE.AE-02 (NIST CSF 2.0 — same category)",
+    "DE.AE-03 (NIST CSF 2.0 — same category)",
+    "DE.AE-06 (NIST CSF 2.0 — same category)",
+    "DE.AE-07 (NIST CSF 2.0 — same category)",
+    "DE.AE-08 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

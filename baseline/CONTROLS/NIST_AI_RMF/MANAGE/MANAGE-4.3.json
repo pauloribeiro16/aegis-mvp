@@ -1,0 +1,32 @@
+{
+  "control_id": "MANAGE-4.3",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MANAGE",
+  "category": "Risk Treatment and Documentation",
+  "subcategory_id": "MANAGE-4.3",
+  "subcategory_text": "Incidents and errors are communicated to relevant AI actors including affected communities",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Wei, M., & Zhou, Z. (2022). AI Ethics Issues in Real World: Evidence from AI Incident Database. ArXiv, abs/2206.07635. [URL](https://arxiv.org/pdf/2206.07635.pdf)",
+    "McGregor, Sean. \"Preventing repeated real world AI failures by cataloging incidents: The AI incident database.\" Proceedings of the AAAI Conference on Artificial Intelligence. Vol. 35. No. 17. 2021. [URL](https://arxiv.org/pdf/2011.08512.pdf)",
+    "Macrae, Carl. \"Learning from the failure of autonomous and intelligent systems: Accidents, safety, and sociotechnical sources of risk.\" Risk analysis 42.9 (2022): 1999-2025. [URL](https://onlinelibrary.wiley.com/doi/epdf/10.1111/risa.13850)"
+  ],
+  "implementation_examples": [
+    "Establish procedures to regularly share information about errors, incidents and negative impacts with relevant stakeholders, operators, practitioners and users, and impacted parties.",
+    "Maintain a database of reported errors, near-misses, incidents and negative impacts including date reported, number of reports, assessment of impact and severity, and responses.",
+    "Maintain a database of system changes, reason for change, and details of how the change was made, tested and deployed.",
+    "Maintain version history information and metadata to enable continuous improvement processes.",
+    "Verify that relevant AI actors responsible for identifying complex or emergent risks are properly resourced and empowered."
+  ],
+  "assessment_objectives": [
+    "What corrective actions has the entity taken to enhance the quality, accuracy, reliability, and representativeness of the data?",
+    "To what extent does the entity communicate its AI strategic goals and objectives to the community of stakeholders? How easily accessible and current is the information available to external stakeholders?",
+    "What type of information is accessible on the design, operations, and limitations of the AI system to external stakeholders, including end users, consumers, regulators, and individuals impacted by use of the AI system?"
+  ],
+  "related_controls": [
+    "MANAGE-4.1 (NIST AI RMF — same category)",
+    "MANAGE-4.2 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

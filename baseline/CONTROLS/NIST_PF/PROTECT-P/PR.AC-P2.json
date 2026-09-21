@@ -1,0 +1,31 @@
+{
+  "control_id": "PR.AC-P2",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Identity Management, Authentication, and Access Control (PR.AC-P)",
+  "subcategory_id": "PR.AC-P2",
+  "subcategory_text": "Physical access to data and devices is managed.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PE-2 (Physical Access Authorizations), PE-3 (Physical Access Control), PE-6 (Monitoring Physical Access)",
+    "NIST PF 1.0 Core (January 2020): PR.AC-P2 (verified row 85)",
+    "ISO/IEC 27001:2022 Annex A.7.2 (Physical entry), A.7.4 (Physical security monitoring)",
+    "GDPR Art. 5(1)(f), Art. 32"
+  ],
+  "implementation_examples": [
+    "Manage physical access to data and devices through layered controls: perimeter, building, room, cabinet, device",
+    "Maintain lists of authorised persons and review on cadence",
+    "Audit physical access logs for anomalies"
+  ],
+  "assessment_objectives": [
+    "Determine whether physical access is managed with layered controls",
+    "Determine whether authorised-person lists are current",
+    "Determine whether access is logged and reviewed for anomalies",
+    "Determine whether physical controls are tested against attempts to bypass"
+  ],
+  "related_controls": [
+    "PR.PO-P4 (physical environment)",
+    "PR.AC-P5 (network integrity)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

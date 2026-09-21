@@ -1,0 +1,36 @@
+{
+  "control_id": "DE.CM-03",
+  "framework": "NIST CSF 2.0",
+  "function": "DETECT",
+  "category": "Continuous Monitoring (DE.CM)",
+  "subcategory_id": "DE.CM-03",
+  "subcategory_text": "Personnel activity and technology usage are monitored to find potentially adverse events",
+  "informative_references": [
+    "NIST CSF 2.0 Core: DE.CM-03",
+    "NIST SP 800-53 Rev. 5: AC-02, AU-12, AU-13, CA-07, CM-10, CM-11",
+    "ISO/IEC 27001:2022: Clause 9.1, Annex A.7.4, Annex A.8.16",
+    "CSF v1.1: DE.CM-3, DE.CM-7",
+    "CIS Controls v8: 10.7",
+    "PCI DSS: 10.2.1, 10.4.1, 10.6.1, 8.2.2",
+    "CRI Profile v2.0: DE.CM-03, DE.CM-03.01, DE.CM-03.02, DE.CM-03.03"
+  ],
+  "implementation_examples": [
+    "Use behavior analytics software to detect anomalous user activity to mitigate insider threats",
+    "Monitor logs from logical access control systems to find unusual access patterns and failed access attempts",
+    "Continuously monitor deception technology, including user accounts, for any usage"
+  ],
+  "assessment_objectives": [
+    "Determine whether personnel activity and technology usage are monitored to find potentially adverse events.",
+    "Determine whether activities are conducted to use behavior analytics software to detect anomalous user activity to mitigate insider threats.",
+    "Determine whether activities are conducted to monitor logs from logical access control systems to find unusual access patterns and failed access attempts.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "DE.CM-01 (NIST CSF 2.0 — same category)",
+    "DE.CM-02 (NIST CSF 2.0 — same category)",
+    "DE.CM-06 (NIST CSF 2.0 — same category)",
+    "DE.CM-09 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

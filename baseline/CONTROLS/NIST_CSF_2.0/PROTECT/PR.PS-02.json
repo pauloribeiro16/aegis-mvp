@@ -1,0 +1,41 @@
+{
+  "control_id": "PR.PS-02",
+  "framework": "NIST CSF 2.0",
+  "function": "PROTECT",
+  "category": "Platform Security (PR.PS)",
+  "subcategory_id": "PR.PS-02",
+  "subcategory_text": "Software is maintained, replaced, and removed commensurate with risk",
+  "informative_references": [
+    "NIST CSF 2.0 Core: PR.PS-02",
+    "NIST SP 800-53 Rev. 5: CM-11, MA-03(06), SA-10(01), SI-02, SI-07",
+    "ISO/IEC 27001:2022: Annex A.5.9",
+    "CSF v1.1: PR.IP-12, PR.MA-2",
+    "CIS Controls v8: 2.2, 2.3",
+    "PCI DSS: 12.3.4, 6.3.1, 6.3.2, 6.3.3",
+    "NIST SP 800-218 (SSDF): PO.5.2",
+    "CRI Profile v2.0: PR.PS-02, PR.PS-02.01, PR.PS-02.02, PR.PS-02.03"
+  ],
+  "implementation_examples": [
+    "Perform routine and emergency patching within the timeframes specified in the vulnerability management plan",
+    "Update container images, and deploy new container instances to replace rather than update existing instances",
+    "Replace end-of-life software and service versions with supported, maintained versions",
+    "Uninstall and remove unauthorized software and services that pose undue risks",
+    "Uninstall and remove any unnecessary software components (e.g., operating system utilities) that attackers might misuse",
+    "Define and implement plans for software and service end-of-life maintenance support and obsolescence"
+  ],
+  "assessment_objectives": [
+    "Determine whether software is maintained, replaced, and removed commensurate with risk.",
+    "Determine whether activities are conducted to perform routine and emergency patching within the timeframes specified in the vulnerability management plan.",
+    "Determine whether activities are conducted to update container images, and deploy new container instances to replace rather than update existing instances.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "PR.PS-01 (NIST CSF 2.0 — same category)",
+    "PR.PS-03 (NIST CSF 2.0 — same category)",
+    "PR.PS-04 (NIST CSF 2.0 — same category)",
+    "PR.PS-05 (NIST CSF 2.0 — same category)",
+    "PR.PS-06 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

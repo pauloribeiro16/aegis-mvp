@@ -1,0 +1,422 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_type": "domain_aggregate",
+  "domain_id": "D-08",
+  "domain_name": "D-08 Human Factors",
+  "subdomains": [
+    "D-08.1",
+    "D-08.2",
+    "D-08.3"
+  ],
+  "subdomain_summaries": [
+    {
+      "id": "D-08.1",
+      "name": "General Security Awareness",
+      "participants": [
+        "GDPR",
+        "NIS2",
+        "CRA",
+        "DORA"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "CRA",
+        "CRA (partial)",
+        "DORA",
+        "GDPR",
+        "NIS2"
+      ],
+      "total_cards": 39,
+      "applicable_articles": 25,
+      "applicable_clauses": 37,
+      "sub_objectives": 4,
+      "sub_requirements": 4,
+      "applicable_nist_controls": 8
+    },
+    {
+      "id": "D-08.2",
+      "name": "Role-Specific Competence",
+      "participants": [
+        "GDPR",
+        "NIS2",
+        "CRA",
+        "DORA",
+        "AI_Act"
+      ],
+      "ai_act": "present",
+      "applicable_regs": [
+        "AI_Act",
+        "CRA",
+        "CRA (partial)",
+        "DORA",
+        "GDPR",
+        "NIS2"
+      ],
+      "total_cards": 33,
+      "applicable_articles": 19,
+      "applicable_clauses": 31,
+      "sub_objectives": 5,
+      "sub_requirements": 5,
+      "applicable_nist_controls": 16
+    },
+    {
+      "id": "D-08.3",
+      "name": "Management Board Training",
+      "participants": [
+        "NIS2",
+        "DORA"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "DORA",
+        "NIS2"
+      ],
+      "total_cards": 7,
+      "applicable_articles": 3,
+      "applicable_clauses": 4,
+      "sub_objectives": 2,
+      "sub_requirements": 2,
+      "applicable_nist_controls": 4
+    }
+  ],
+  "applicable_articles_by_regulation": {
+    "AI_Act": [],
+    "CRA": [],
+    "CRA (partial)": [],
+    "DORA": [
+      "Art. 20",
+      "Art. 21(1)+(2)",
+      "Art. 26(2)",
+      "Art. 28 chapeau + (1) + (2)",
+      "Art. 28(3)",
+      "Art. 29(1)",
+      "Art. 29(2)"
+    ],
+    "GDPR": [
+      "Art. 21(1)",
+      "Art. 28(3)",
+      "Art. 29",
+      "Art. 32(1)",
+      "Art. 39(1)(b)"
+    ],
+    "NIS2": [
+      "Art. 20 chapeau",
+      "Art. 20(2) sentence 1",
+      "Art. 20(2) sentence 2",
+      "Art. 21(1) sentence 1",
+      "Art. 21(2)(a)",
+      "Art. 21(2)(b)",
+      "Art. 21(2)(c)",
+      "Art. 21(2)(d)",
+      "Art. 21(2)(e)",
+      "Art. 21(2)(f)",
+      "Art. 21(2)(g)",
+      "Art. 21(2)(h)",
+      "Art. 21(2)(i)",
+      "Art. 21(2)(j)"
+    ]
+  },
+  "applicable_clauses_by_regulation": {
+    "AI_Act": [],
+    "CRA": [],
+    "CRA (partial)": [],
+    "DORA": [
+      "CL20-1",
+      "CL21-1",
+      "CL26-2",
+      "CL28-1",
+      "CL28-2",
+      "CL29-1",
+      "CL29-2"
+    ],
+    "GDPR": [
+      "GDPR-CP09",
+      "GDPR-CP11",
+      "GDPR-CP15",
+      "GDPR-CP28",
+      "GDPR-RT16"
+    ],
+    "NIS2": [
+      "NIS2-C03",
+      "NIS2-C04",
+      "NIS2-C05",
+      "NIS2-C06",
+      "NIS2-C07",
+      "NIS2-C08",
+      "NIS2-C09",
+      "NIS2-C10",
+      "NIS2-C11",
+      "NIS2-C12",
+      "NIS2-C13",
+      "NIS2-C14",
+      "NIS2-C15",
+      "NIS2-C16",
+      "NIS2-C17",
+      "NIS2-C18",
+      "NIS2-C19",
+      "NIS2-C20",
+      "NIS2-C21",
+      "NIS2-C22",
+      "NIS2-C29",
+      "NIS2-CL03",
+      "NIS2-CL04",
+      "NIS2-CL05",
+      "NIS2-CL06",
+      "NIS2-CL07",
+      "NIS2-CL16",
+      "NIS2-CL18"
+    ]
+  },
+  "sub_objectives_by_regulation": {
+    "AI_Act": [
+      {
+        "id": "SO-D-08.2.AIACT",
+        "csf_anchors": [
+          "PR.AT-02",
+          "PR.AT-01",
+          "GV.RR-02"
+        ]
+      }
+    ],
+    "CRA": [],
+    "CRA (partial)": [
+      {
+        "id": "SO-D-08.1.CRA",
+        "csf_anchors": [
+          "PR.AT-01 (with UNMAPPED_CSF on the user-side)"
+        ]
+      },
+      {
+        "id": "SO-D-08.2.CRA",
+        "csf_anchors": [
+          "PR.AT-04",
+          "GV.SC-03"
+        ]
+      }
+    ],
+    "DORA": [
+      {
+        "id": "SO-D-08.1.DORA",
+        "csf_anchors": [
+          "PR.AT-01",
+          "PR.AT-02"
+        ]
+      },
+      {
+        "id": "SO-D-08.2.DORA",
+        "csf_anchors": [
+          "PR.AT-01",
+          "PR.AT-02"
+        ]
+      },
+      {
+        "id": "SO-D-08.3.DORA",
+        "csf_anchors": [
+          "PR.AT-03",
+          "GV.RR-01"
+        ]
+      }
+    ],
+    "GDPR": [
+      {
+        "id": "SO-D-08.1.GDPR",
+        "csf_anchors": [
+          "PR.AT-01",
+          "PR.AT-02"
+        ]
+      },
+      {
+        "id": "SO-D-08.2.GDPR",
+        "csf_anchors": [
+          "PR.AT-01",
+          "PR.AT-02"
+        ]
+      }
+    ],
+    "NIS2": [
+      {
+        "id": "SO-D-08.1.NIS2",
+        "csf_anchors": [
+          "PR.AT-01",
+          "PR.PS-01"
+        ]
+      },
+      {
+        "id": "SO-D-08.2.NIS2",
+        "csf_anchors": [
+          "PR.AT-01",
+          "PR.AT-02"
+        ]
+      },
+      {
+        "id": "SO-D-08.3.NIS2",
+        "csf_anchors": [
+          "PR.AT-03",
+          "GV.RR-01"
+        ]
+      }
+    ]
+  },
+  "sub_requirements_by_regulation": {
+    "AI_Act": [
+      {
+        "req_id": "8.2.5",
+        "title": "High-risk AI system human overseers enabled with the 5 cumulative oversight abilities (provider) and assigned with competence, training, authority, and support (deployer)",
+        "nist_csf": [
+          "PR.AT-02",
+          "PR.AT-01",
+          "GV.RR-02",
+          "GV.RR-04",
+          "PR.AT-03",
+          "GV.RR-01"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "CRA": [
+      {
+        "req_id": "8.1.3",
+        "title": "Product with digital elements accompanied by detailed user-facing secure-use instructions covering the lifetime of the product",
+        "nist_csf": [
+          "PR.AT-01"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "8.2.3",
+        "title": "Where the product is intended for integration, information necessary for the integrator to comply with Annex I cybersecurity requirements and Annex VII documentation requirements is delivered",
+        "nist_csf": [
+          "PR.AT-04",
+          "GV.SC-03"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "CRA (partial)": [],
+    "DORA": [
+      {
+        "req_id": "8.1.4",
+        "title": "ICT security awareness programmes and digital operational resilience training as compulsory modules in financial-entity staff training schemes",
+        "nist_csf": [
+          "PR.AT-01",
+          "PR.AT-02"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "8.2.4",
+        "title": "Financial-entity staff training modules with level of complexity commensurate to the remit of staff functions",
+        "nist_csf": [
+          "PR.AT-01",
+          "PR.AT-02"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "8.3.2",
+        "title": "Members of the management body of financial entities actively keep up to date with sufficient knowledge and skills to understand and assess ICT risk, commensurate to the ICT risk being managed",
+        "nist_csf": [
+          "PR.AT-03",
+          "GV.RR-01"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "GDPR": [
+      {
+        "req_id": "8.1.1",
+        "title": "Personnel authorised to process personal data receive DPO-catalysed awareness-raising and training on GDPR obligations applicable to their role",
+        "nist_csf": [
+          "PR.AT-01",
+          "PR.AT-02"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "8.2.1",
+        "title": "Role-specific training for processing staff with data-subject-facing, access-management, breach-response or DPO-deputy responsibilities",
+        "nist_csf": [
+          "PR.AT-02",
+          "PR.AT-01"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "NIS2": [
+      {
+        "req_id": "8.1.2",
+        "title": "Entity-wide basic cyber-hygiene practices with workforce hygiene substrate and proportionate calibration",
+        "nist_csf": [
+          "PR.AT-01",
+          "PR.PS-01"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "8.2.2",
+        "title": "Employees gain sufficient knowledge and skills to identify risks and assess cybersecurity risk-management practices (Member-State-encouraged, entity-side on adoption)",
+        "nist_csf": [
+          "PR.AT-01",
+          "PR.AT-02"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "8.3.1",
+        "title": "Members of management bodies of essential and important entities follow cybersecurity training to gain sufficient knowledge and skills to identify risks and assess cybersecurity risk-management practices",
+        "nist_csf": [
+          "PR.AT-03",
+          "GV.RR-01"
+        ],
+        "scope_overlap": "N"
+      }
+    ]
+  },
+  "applicable_nist_controls_by_regulation": {
+    "AI_Act": [
+      "GV.RR-01",
+      "GV.RR-02",
+      "GV.RR-04",
+      "PR.AT-01",
+      "PR.AT-02",
+      "PR.AT-03"
+    ],
+    "CRA": [
+      "GV.SC-03",
+      "PR.AT-01",
+      "PR.AT-04"
+    ],
+    "CRA (partial)": [
+      "GV.SC-03",
+      "PR.AT-01 (with UNMAPPED_CSF on the user-side)",
+      "PR.AT-04"
+    ],
+    "DORA": [
+      "GV.RR-01",
+      "PR.AT-01",
+      "PR.AT-02",
+      "PR.AT-03"
+    ],
+    "GDPR": [
+      "PR.AT-01",
+      "PR.AT-02"
+    ],
+    "NIS2": [
+      "GV.RR-01",
+      "PR.AT-01",
+      "PR.AT-02",
+      "PR.AT-03",
+      "PR.PS-01"
+    ]
+  },
+  "counts": {
+    "subdomains": 3,
+    "total_cards": 79,
+    "applicable_articles_total": 26,
+    "applicable_clauses_total": 40,
+    "sub_objectives_total": 11,
+    "sub_requirements_total": 11,
+    "applicable_nist_controls_total": 23
+  },
+  "generated_at": "2026-08-04T17:32:06Z"
+}

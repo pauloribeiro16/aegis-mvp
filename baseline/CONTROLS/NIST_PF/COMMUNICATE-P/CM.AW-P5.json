@@ -1,0 +1,31 @@
+{
+  "control_id": "CM.AW-P5",
+  "framework": "NIST PF 1.0",
+  "function": "COMMUNICATE-P",
+  "category": "Data Processing Awareness (CM.AW-P)",
+  "subcategory_id": "CM.AW-P5",
+  "subcategory_text": "Data corrections or deletions can be communicated to individuals or organizations (e.g., data sources) in the data processing ecosystem.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SI-18 (Information Quality), PM-22",
+    "NIST PF 1.0 Core (January 2020): CM.AW-P5 (verified row 70)",
+    "ISO/IEC 27001:2022 Annex A.5.34",
+    "GDPR Art. 16 (Right to rectification), Art. 19 (Notification of rectification/erasure)"
+  ],
+  "implementation_examples": [
+    "When data is corrected or deleted, notify the individuals and the organisations (data sources, joint controllers, processors) that received it, where notification is required or useful",
+    "Track notifications to closure and capture evidence",
+    "Provide a clear, single point for downstream recipients to action the correction"
+  ],
+  "assessment_objectives": [
+    "Determine whether data corrections or deletions are notified to individuals and source organisations",
+    "Determine whether notifications are tracked to closure",
+    "Determine whether evidence of notifications is captured",
+    "Determine whether downstream recipients can action the correction consistently"
+  ],
+  "related_controls": [
+    "CT.DM-P3 (data alteration)",
+    "CT.DM-P4 (deletion)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

@@ -1,0 +1,34 @@
+{
+  "control_id": "RS.MA-04",
+  "framework": "NIST CSF 2.0",
+  "function": "RESPOND",
+  "category": "Incident Management (RS.MA)",
+  "subcategory_id": "RS.MA-04",
+  "subcategory_text": "Incidents are escalated or elevated as needed",
+  "informative_references": [
+    "NIST CSF 2.0 Core: RS.MA-04",
+    "NIST SP 800-53 Rev. 5: IR-04, IR-05, IR-06, IR-07",
+    "ISO/IEC 27001:2022: Annex A.5.26",
+    "CSF v1.1: RS.AN-2, RS.CO-4",
+    "PCI DSS: 12.10.1, 12.10.2, 12.10.3",
+    "CRI Profile v2.0: RS.MA-04, RS.MA-04.01"
+  ],
+  "implementation_examples": [
+    "Track and validate the status of all ongoing incidents",
+    "Coordinate incident escalation or elevation with designated internal and external stakeholders"
+  ],
+  "assessment_objectives": [
+    "Determine whether incidents are escalated or elevated as needed.",
+    "Determine whether activities are conducted to track and validate the status of all ongoing incidents.",
+    "Determine whether activities are conducted to coordinate incident escalation or elevation with designated internal and external stakeholders.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "RS.MA-01 (NIST CSF 2.0 — same category)",
+    "RS.MA-02 (NIST CSF 2.0 — same category)",
+    "RS.MA-03 (NIST CSF 2.0 — same category)",
+    "RS.MA-05 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

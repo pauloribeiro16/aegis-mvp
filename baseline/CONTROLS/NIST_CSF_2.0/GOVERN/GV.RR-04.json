@@ -1,0 +1,36 @@
+{
+  "control_id": "GV.RR-04",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Roles, Responsibilities, and Authorities (GV.RR)",
+  "subcategory_id": "GV.RR-04",
+  "subcategory_text": "Cybersecurity is included in human resources practices",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.RR-04",
+    "NIST SP 800-53 Rev. 5: PM-13, PS-01, PS-07, PS-09",
+    "ISO/IEC 27001:2022: Clause 7.3, Annex A.6.1, Annex A.6.2, Annex A.6.3, Annex A.6.4, Annex A.6.5, Annex A.6.6, Annex A.6.7 (+1 more)",
+    "CSF v1.1: PR.IP-11",
+    "CIS Controls v8: 6.1, 6.2",
+    "PCI DSS: 12.6.3, 12.7.1, 7.2.2, 8.2.5, 9.3.1.1",
+    "CRI Profile v2.0: GV.RR-04, GV.RR-04.01, GV.RR-04.02, GV.RR-04.03"
+  ],
+  "implementation_examples": [
+    "Integrate cybersecurity risk management considerations into human resources processes (e.g., personnel screening, onboarding, change notification, offboarding)",
+    "Consider cybersecurity knowledge to be a positive factor in hiring, training, and retention decisions",
+    "Conduct background checks prior to onboarding new personnel for sensitive roles, and periodically repeat background checks for personnel with such roles",
+    "Define and enforce obligations for personnel to be aware of, adhere to, and uphold security policies as they relate to their roles"
+  ],
+  "assessment_objectives": [
+    "Determine whether cybersecurity is included in human resources practices.",
+    "Determine whether activities are conducted to integrate cybersecurity risk management considerations into human resources processes (e.g., personnel screening, onboarding, change notification, offboarding).",
+    "Determine whether mechanisms ensure that consider cybersecurity knowledge to be a positive factor in hiring, training, and retention decisions.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.RR-01 (NIST CSF 2.0 — same category)",
+    "GV.RR-02 (NIST CSF 2.0 — same category)",
+    "GV.RR-03 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

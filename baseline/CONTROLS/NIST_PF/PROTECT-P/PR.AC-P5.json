@@ -1,0 +1,31 @@
+{
+  "control_id": "PR.AC-P5",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Identity Management, Authentication, and Access Control (PR.AC-P)",
+  "subcategory_id": "PR.AC-P5",
+  "subcategory_text": "Network integrity is protected (e.g., network segregation, network segmentation).",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SC-7 (Boundary Protection), SC-32 (System Partitioning)",
+    "NIST PF 1.0 Core (January 2020): PR.AC-P5 (verified row 88)",
+    "ISO/IEC 27001:2022 Annex A.8.22 (Segregation in networks)",
+    "GDPR Art. 5(1)(f), Art. 32"
+  ],
+  "implementation_examples": [
+    "Protect network integrity through segmentation, segregation, and control of east-west and north-south flows",
+    "Use deny-by-default rules and document exceptions",
+    "Test the segmentation periodically"
+  ],
+  "assessment_objectives": [
+    "Determine whether network segmentation and segregation are in place",
+    "Determine whether deny-by-default rules are enforced",
+    "Determine whether segmentation is tested on cadence",
+    "Determine whether exceptions are documented and time-bounded"
+  ],
+  "related_controls": [
+    "PR.PT-P3 (communications and control networks)",
+    "PR.AC-P3 (remote access)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

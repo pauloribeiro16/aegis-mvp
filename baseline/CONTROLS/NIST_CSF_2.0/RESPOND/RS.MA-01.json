@@ -1,0 +1,37 @@
+{
+  "control_id": "RS.MA-01",
+  "framework": "NIST CSF 2.0",
+  "function": "RESPOND",
+  "category": "Incident Management (RS.MA)",
+  "subcategory_id": "RS.MA-01",
+  "subcategory_text": "The incident response plan is executed in coordination with relevant third parties once an incident is declared",
+  "informative_references": [
+    "NIST CSF 2.0 Core: RS.MA-01",
+    "NIST SP 800-53 Rev. 5: IR-06, IR-07, IR-08, SR-03, SR-08",
+    "ISO/IEC 27001:2022: Annex A.5.26, Annex A.5.27, Annex A.5.28",
+    "CSF v1.1: RS.CO-4, RS.RP-1",
+    "CIS Controls v8: 17.4",
+    "PCI DSS: 12.10.1, 12.10.2, 12.10.3, 12.8.2",
+    "CRI Profile v2.0: RS.MA-01, RS.MA-01.01"
+  ],
+  "implementation_examples": [
+    "Detection technologies automatically report confirmed incidents",
+    "Request incident response assistance from the organization's incident response outsourcer",
+    "Designate an incident lead for each incident",
+    "Initiate execution of additional cybersecurity plans as needed to support incident response (for example, business continuity and disaster recovery)"
+  ],
+  "assessment_objectives": [
+    "Determine whether the incident response plan is executed in coordination with relevant third parties once an incident is declared.",
+    "Determine whether mechanisms ensure that detection technologies automatically report confirmed incidents.",
+    "Determine whether activities are conducted to request incident response assistance from the organization's incident response outsourcer.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "RS.MA-02 (NIST CSF 2.0 — same category)",
+    "RS.MA-03 (NIST CSF 2.0 — same category)",
+    "RS.MA-04 (NIST CSF 2.0 — same category)",
+    "RS.MA-05 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

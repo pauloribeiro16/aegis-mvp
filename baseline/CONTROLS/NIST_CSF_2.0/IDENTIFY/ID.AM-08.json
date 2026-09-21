@@ -1,0 +1,45 @@
+{
+  "control_id": "ID.AM-08",
+  "framework": "NIST CSF 2.0",
+  "function": "IDENTIFY",
+  "category": "Asset Management (ID.AM)",
+  "subcategory_id": "ID.AM-08",
+  "subcategory_text": "Systems, hardware, software, services, and data are managed throughout their life cycles",
+  "informative_references": [
+    "NIST CSF 2.0 Core: ID.AM-08",
+    "NIST SP 800-53 Rev. 5: CM-09, CM-13, MA-02, MA-06, PL-02, PM-22, PM-23, SA-03 (+7 more)",
+    "ISO/IEC 27001:2022: Annex A.5.8, Annex A.5.9, Annex A.5.12, Annex A.5.13, Annex A.5.19, Annex A.5.22, Annex A.7.10, Annex A.7.13 (+1 more)",
+    "CSF v1.1: PR.DS, PR.DS-3, PR.IP-2, PR.IP-6, PR.MA-1, PR.MA-2",
+    "CIS Controls v8: 1.1, 3.5",
+    "PCI DSS: 11.6.1, 12.3.4, 6.2.1, 6.2.2, 6.2.3, 6.2.3.1 (+3 more)",
+    "NIST SP 800-218 (SSDF): PW.4.1, PW.4.4",
+    "CRI Profile v2.0: ID.AM-08, ID.AM-08.01, ID.AM-08.02, ID.AM-08.03, ID.AM-08.04, ID.AM-08.05, ID.AM-08.06"
+  ],
+  "implementation_examples": [
+    "Integrate cybersecurity considerations throughout the life cycles of systems, hardware, software, and services",
+    "Integrate cybersecurity considerations into product life cycles",
+    "Identify unofficial uses of technology to meet mission objectives (i.e., shadow IT)",
+    "Periodically identify redundant systems, hardware, software, and services that unnecessarily increase the organization's attack surface",
+    "Properly configure and secure systems, hardware, software, and services prior to their deployment in production",
+    "Update inventories when systems, hardware, software, and services are moved or transferred within the organization",
+    "Securely destroy stored data based on the organization's data retention policy using the prescribed destruction method, and keep and manage a record of the destructions",
+    "Securely sanitize data storage when hardware is being retired, decommissioned, reassigned, or sent for repairs or replacement",
+    "Offer methods for destroying paper, storage media, and other physical forms of data storage"
+  ],
+  "assessment_objectives": [
+    "Determine whether systems, hardware, software, services, and data are managed throughout their life cycles.",
+    "Determine whether activities are conducted to integrate cybersecurity considerations throughout the life cycles of systems, hardware, software, and services.",
+    "Determine whether activities are conducted to integrate cybersecurity considerations into product life cycles.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "ID.AM-01 (NIST CSF 2.0 — same category)",
+    "ID.AM-02 (NIST CSF 2.0 — same category)",
+    "ID.AM-03 (NIST CSF 2.0 — same category)",
+    "ID.AM-04 (NIST CSF 2.0 — same category)",
+    "ID.AM-05 (NIST CSF 2.0 — same category)",
+    "ID.AM-07 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

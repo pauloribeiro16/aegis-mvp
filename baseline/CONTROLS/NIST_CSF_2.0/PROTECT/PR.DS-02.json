@@ -1,0 +1,36 @@
+{
+  "control_id": "PR.DS-02",
+  "framework": "NIST CSF 2.0",
+  "function": "PROTECT",
+  "category": "Data Security (PR.DS)",
+  "subcategory_id": "PR.DS-02",
+  "subcategory_text": "The confidentiality, integrity, and availability of data-in-transit are protected",
+  "informative_references": [
+    "NIST CSF 2.0 Core: PR.DS-02",
+    "NIST SP 800-53 Rev. 5: AU-16, CA-03, SC-04, SC-07, SC-08, SC-11, SC-12, SC-13 (+6 more)",
+    "ISO/IEC 27001:2022: Clause 4.2(b), Clause 5.2, Annex A.5.3, Annex A.5.10, Annex A.5.13, Annex A.5.14, Annex A.5.15, Annex A.6.1 (+9 more)",
+    "CSF v1.1: PR.DS-2, PR.DS-5",
+    "CIS Controls v8: 3.10",
+    "PCI DSS: 12.3.3, 2.3.1, 4.2.1",
+    "CRI Profile v2.0: PR.DS-02, PR.DS-02.01"
+  ],
+  "implementation_examples": [
+    "Use encryption, digital signatures, and cryptographic hashes to protect the confidentiality and integrity of network communications",
+    "Automatically encrypt or block outbound emails and other communications that contain sensitive data, depending on the data classification",
+    "Block access to personal email, file sharing, file storage services, and other personal communications applications and services from organizational systems and networks",
+    "Prevent reuse of sensitive data from production environments (e.g., customer records) in development, testing, and other non-production environments"
+  ],
+  "assessment_objectives": [
+    "Determine whether the confidentiality, integrity, and availability of data-in-transit are protected.",
+    "Determine whether activities are conducted to use encryption, digital signatures, and cryptographic hashes to protect the confidentiality and integrity of network communications.",
+    "Determine whether mechanisms ensure that automatically encrypt or block outbound emails and other communications that contain sensitive data, depending on the data classification.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "PR.DS-01 (NIST CSF 2.0 — same category)",
+    "PR.DS-10 (NIST CSF 2.0 — same category)",
+    "PR.DS-11 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

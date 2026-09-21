@@ -1,0 +1,39 @@
+{
+  "control_id": "ID.RA-02",
+  "framework": "NIST CSF 2.0",
+  "function": "IDENTIFY",
+  "category": "Risk Assessment (ID.RA)",
+  "subcategory_id": "ID.RA-02",
+  "subcategory_text": "Cyber threat intelligence is received from information sharing forums and sources",
+  "informative_references": [
+    "NIST CSF 2.0 Core: ID.RA-02",
+    "NIST SP 800-53 Rev. 5: PM-15, PM-16, SI-05",
+    "ISO/IEC 27001:2022: Annex A.5.7, Annex A.5.22, Annex A.8.16",
+    "CSF v1.1: ID.RA-2",
+    "CRI Profile v2.0: ID.RA-02, ID.RA-02.01, ID.RA-02.02"
+  ],
+  "implementation_examples": [
+    "Configure cybersecurity tools and technologies with detection or response capabilities to securely ingest cyber threat intelligence feeds",
+    "Receive and review advisories from reputable third parties on current threat actors and their tactics, techniques, and procedures (TTPs)",
+    "Monitor sources of cyber threat intelligence for information on the types of vulnerabilities that emerging technologies may have"
+  ],
+  "assessment_objectives": [
+    "Determine whether cyber threat intelligence is received from information sharing forums and sources.",
+    "Determine whether activities are conducted to configure cybersecurity tools and technologies with detection or response capabilities to securely ingest cyber threat intelligence feeds.",
+    "Determine whether mechanisms ensure that receive and review advisories from reputable third parties on current threat actors and their tactics, techniques, and procedures (TTPs).",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "ID.RA-01 (NIST CSF 2.0 — same category)",
+    "ID.RA-03 (NIST CSF 2.0 — same category)",
+    "ID.RA-04 (NIST CSF 2.0 — same category)",
+    "ID.RA-05 (NIST CSF 2.0 — same category)",
+    "ID.RA-06 (NIST CSF 2.0 — same category)",
+    "ID.RA-07 (NIST CSF 2.0 — same category)",
+    "ID.RA-08 (NIST CSF 2.0 — same category)",
+    "ID.RA-09 (NIST CSF 2.0 — same category)",
+    "ID.RA-10 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

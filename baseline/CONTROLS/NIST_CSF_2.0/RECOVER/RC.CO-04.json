@@ -1,0 +1,32 @@
+{
+  "control_id": "RC.CO-04",
+  "framework": "NIST CSF 2.0",
+  "function": "RECOVER",
+  "category": "Incident Recovery Communication (RC.CO)",
+  "subcategory_id": "RC.CO-04",
+  "subcategory_text": "Public updates on incident recovery are shared using approved methods and messaging",
+  "informative_references": [
+    "NIST CSF 2.0 Core: RC.CO-04",
+    "NIST SP 800-53 Rev. 5: CP-02, IR-04",
+    "ISO/IEC 27001:2022: Clause 7.4, Annex A.None",
+    "CSF v1.1: RC.CO-1, RS.CO-2",
+    "CIS Controls v8: 17.2, 17.6",
+    "PCI DSS: 12.10.1, 12.10.3",
+    "CRI Profile v2.0: RC.CO-04, RC.CO-04.01"
+  ],
+  "implementation_examples": [
+    "Follow the organization's breach notification procedures for recovering from a data breach incident",
+    "Explain the steps being taken to recover from the incident and to prevent a recurrence"
+  ],
+  "assessment_objectives": [
+    "Determine whether public updates on incident recovery are shared using approved methods and messaging.",
+    "Determine whether mechanisms ensure that follow the organization's breach notification procedures for recovering from a data breach incident.",
+    "Determine whether mechanisms ensure that explain the steps being taken to recover from the incident and to prevent a recurrence.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "RC.CO-03 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

@@ -1,0 +1,35 @@
+{
+  "control_id": "MEASURE-4.2",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MEASURE",
+  "category": "Feedback Gathered and Used",
+  "subcategory_id": "MEASURE-4.2",
+  "subcategory_text": "Measurement results regarding AI system trustworthiness in deployment context(s) and across AI lifecycle are documented and informed by input from domain experts and other relevant AI actors to validate whether the system is performing consistently as intended",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Batya Friedman, and David G. Hendry. Value Sensitive Design: Shaping Technology with Moral Imagination. Cambridge, MA: The MIT Press, 2019. [URL](https://mitpress.mit.edu/9780262039536/value-sensitive-design/)",
+    "Batya Friedman, David G. Hendry, and Alan Borning. “A Survey of Value Sensitive Design Methods.” Foundations and Trends in Human-Computer Interaction 11, no. 2 (November 22, 2017): 63–125. [URL](https://doi.org/10.1561/1100000015)",
+    "Steven Umbrello, and Ibo van de Poel. “Mapping Value Sensitive Design onto AI for Social Good Principles.” AI and Ethics 1, no. 3 (February 1, 2021): 283–96. [URL](https://doi.org/10.1007/s43681-021-00038-3)"
+  ],
+  "implementation_examples": [
+    "Integrate feedback from end users, operators, and affected individuals and communities from Map function as inputs to assess AI system trustworthiness characteristics. Ensure both positive and negative feedback is being assessed.",
+    "Evaluate feedback in connection with AI system trustworthiness characteristics from Measure 2.5 to 2.11.",
+    "Evaluate feedback regarding end user satisfaction with, and confidence in, AI system performance including whether output is considered valid and reliable, and explainable and interpretable.",
+    "Identify mechanisms to confirm/support AI system output (e.g. recommendations), and end user perspectives about that output.",
+    "Measure frequency of AI systems’ override decisions, evaluate and document results, and feed insights back into continual improvement processes.",
+    "Consult AI actors in impact assessment, human factors and socio-technical tasks to assist with analysis and interpretation of results."
+  ],
+  "assessment_objectives": [
+    "To what extent does the system/entity consistently measure progress towards stated goals and objectives?",
+    "What policies has the entity developed to ensure the use of the AI system is consistent with its stated values and principles?",
+    "To what extent are the model outputs consistent with the entity’s values and principles to foster public trust and equity?",
+    "Given the purpose of the AI, what level of explainability or interpretability is required for how the AI made its determination?",
+    "To what extent can users or parties affected by the outputs of the AI system test the AI system and provide feedback?"
+  ],
+  "related_controls": [
+    "MEASURE-4.1 (NIST AI RMF — same category)",
+    "MEASURE-4.3 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

@@ -1,0 +1,36 @@
+{
+  "control_id": "GV.RM-05",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Risk Management Strategy (GV.RM)",
+  "subcategory_id": "GV.RM-05",
+  "subcategory_text": "Lines of communication across the organization are established for cybersecurity risks, including risks from suppliers and other third parties",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.RM-05",
+    "NIST SP 800-53 Rev. 5: PM-09, PM-30",
+    "ISO/IEC 27001:2022: Clause 6.1.1, Clause 6.1.3, Annex A.5.1, Annex A.5.19",
+    "CSF v1.1: ID.SC-1",
+    "PCI DSS: 10.7.1, 10.7.2, 12.10.1, 12.5.3, 12.8.2, 12.8.4 (+3 more)",
+    "CRI Profile v2.0: GV.RM-05, GV.RM-05.01, GV.RM-05.02"
+  ],
+  "implementation_examples": [
+    "Determine how to update senior executives, directors, and management on the organization's cybersecurity posture at agreed-upon intervals",
+    "Identify how all departments across the organization - such as management, operations, internal auditors, legal, acquisition, physical security, and HR - will communicate with each other about cybersecurity risks"
+  ],
+  "assessment_objectives": [
+    "Determine whether lines of communication across the organization are established for cybersecurity risks, including risks from suppliers and other third parties.",
+    "Determine whether mechanisms ensure that determine how to update senior executives, directors, and management on the organization's cybersecurity posture at agreed-upon intervals.",
+    "Determine whether activities are conducted to identify how all departments across the organization - such as management, operations, internal auditors, legal, acquisition, physical security, and HR - will communicate with each other about cybersecurity risks.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.RM-01 (NIST CSF 2.0 — same category)",
+    "GV.RM-02 (NIST CSF 2.0 — same category)",
+    "GV.RM-03 (NIST CSF 2.0 — same category)",
+    "GV.RM-04 (NIST CSF 2.0 — same category)",
+    "GV.RM-06 (NIST CSF 2.0 — same category)",
+    "GV.RM-07 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

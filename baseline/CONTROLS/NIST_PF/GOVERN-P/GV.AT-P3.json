@@ -1,0 +1,31 @@
+{
+  "control_id": "GV.AT-P3",
+  "framework": "NIST PF 1.0",
+  "function": "GOVERN-P",
+  "category": "Awareness and Training (GV.AT-P)",
+  "subcategory_id": "GV.AT-P3",
+  "subcategory_text": "Privacy personnel understand their roles and responsibilities.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: AT-3, AT-3(1)",
+    "NIST PF 1.0 Core (January 2020): GV.AT-P3 (verified row 36)",
+    "ISO/IEC 27001:2022 Annex A.5.2, A.6.3",
+    "GDPR Art. 38(2), Art. 39 (DPO tasks)"
+  ],
+  "implementation_examples": [
+    "Provide specialised training to privacy personnel (DPO, privacy engineers, privacy lawyers, privacy architects) covering the technical, legal, and operational dimensions they need",
+    "Recognise professional certification and continuing education as evidence of competency",
+    "Run case-study based exercises to test competency in ambiguous scenarios"
+  ],
+  "assessment_objectives": [
+    "Determine whether privacy personnel understand their roles and responsibilities",
+    "Determine whether specialised training is provided",
+    "Determine whether competency is periodically assessed",
+    "Determine whether competency gaps are remediated"
+  ],
+  "related_controls": [
+    "GV.AT-P1 (workforce trained)",
+    "GV.PO-P3 (workforce roles defined)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

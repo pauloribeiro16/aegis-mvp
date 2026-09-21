@@ -1,0 +1,37 @@
+{
+  "control_id": "GOVERN-2.2",
+  "framework": "NIST AI RMF 1.0",
+  "function": "GOVERN",
+  "category": "Accountability Structures",
+  "subcategory_id": "GOVERN-2.2",
+  "subcategory_text": "Risk management training for organizational personnel and partners to perform duties consistent with related policies, procedures, and agreements",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Off. Comptroller Currency, Comptroller’s Handbook: Model Risk Management (Aug. 2021). [URL](https://www.occ.gov/publications-and-resources/publications/comptrollers-handbook/files/model-risk-management/index-model-risk-management.html)",
+    "“Developing Staff Trainings for Equitable AI,” Partnership on Employment & Accessible Technology (PEAT, peatworks.org). [URL](https://www.peatworks.org/ai-disability-inclusion-toolkit/ai-disability-inclusion-resources/developing-staff-trainings-for-equitable-ai/)"
+  ],
+  "implementation_examples": [
+    "Establish policies for personnel addressing ongoing education about:",
+    "Applicable laws and regulations for AI systems.",
+    "Potential negative impacts that may arise from AI systems.",
+    "Organizational AI policies.",
+    "Trustworthy AI characteristics.",
+    "Ensure that trainings are suitable across AI actor sub-groups - for AI actors carrying out technical tasks (e.g., developers, operators, etc.) as compared to AI actors in oversight roles (e.g., legal, compliance, audit,  etc.).",
+    "Ensure that trainings comprehensively address technical and socio-technical aspects of AI risk management.",
+    "Verify that organizational AI policies include mechanisms for internal AI personnel to acknowledge and commit to their roles and responsibilities.",
+    "Verify that organizational policies address change management and include mechanisms to communicate and acknowledge substantial AI system changes.",
+    "Define paths along internal and external chains of accountability to escalate risk concerns."
+  ],
+  "assessment_objectives": [
+    "Are the relevant staff dealing with AI systems properly trained to interpret AI model output and decisions as well as to detect and manage bias in data?",
+    "How does the entity determine the necessary skills and experience needed to design, develop, deploy, assess, and monitor the AI system?",
+    "How does the entity assess whether personnel have the necessary skills, training, resources, and domain knowledge to fulfill their assigned responsibilities?",
+    "What efforts has the entity undertaken to recruit, develop, and retain a workforce with backgrounds, experience, and perspectives that reflect the community impacted by the AI system?"
+  ],
+  "related_controls": [
+    "GOVERN-2.1 (NIST AI RMF — same category)",
+    "GOVERN-2.3 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

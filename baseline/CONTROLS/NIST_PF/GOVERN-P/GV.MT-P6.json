@@ -1,0 +1,31 @@
+{
+  "control_id": "GV.MT-P6",
+  "framework": "NIST PF 1.0",
+  "function": "GOVERN-P",
+  "category": "Monitoring and Review (GV.MT-P)",
+  "subcategory_id": "GV.MT-P6",
+  "subcategory_text": "Policies, processes, and procedures incorporate lessons learned from problematic data actions.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PM-1, SI-4 (System Monitoring)",
+    "NIST PF 1.0 Core (January 2020): GV.MT-P6 (verified row 43)",
+    "ISO/IEC 27001:2022 Annex A.10.1 (Continual improvement), Clause 10.2 (Nonconformity and corrective action)",
+    "GDPR Art. 24 (Responsibility of the controller)"
+  ],
+  "implementation_examples": [
+    "Capture lessons learned from problematic data actions (incidents, complaints, DPIA findings, audit findings) and feed them into policy, process, and training updates",
+    "Close the loop by confirming that the policy/process/training change has been deployed and observed",
+    "Track lessons-learned closure and evidence"
+  ],
+  "assessment_objectives": [
+    "Determine whether lessons learned are captured from incidents, complaints, audits, and DPIAs",
+    "Determine whether lessons are translated into policy/process/training updates",
+    "Determine whether updates are deployed and observed in practice",
+    "Determine whether lesson closure and evidence are tracked"
+  ],
+  "related_controls": [
+    "GV.MT-P5 (problematic action disclosures)",
+    "RS.AN-P1 (response lessons learned)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

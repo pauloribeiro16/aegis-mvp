@@ -1,0 +1,31 @@
+{
+  "control_id": "CT.DM-P2",
+  "framework": "NIST PF 1.0",
+  "function": "CONTROL-P",
+  "category": "Data Processing Management (CT.DM-P)",
+  "subcategory_id": "CT.DM-P2",
+  "subcategory_text": "Data elements can be accessed for transmission or disclosure.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SC-8 (Transmission Confidentiality and Integrity), AU-6 (Audit Review)",
+    "NIST PF 1.0 Core (January 2020): CT.DM-P2 (verified row 50)",
+    "ISO/IEC 27001:2022 Annex A.8.24 (Use of cryptography)",
+    "GDPR Art. 15 (Right of access), Art. 20 (Right to data portability)"
+  ],
+  "implementation_examples": [
+    "Provide authorised recipients (internal compliance functions, data subjects where applicable, supervisory authorities) with a documented path to transmit/disclose data elements with appropriate integrity and confidentiality protections",
+    "Maintain an auditable record of transmissions and disclosures",
+    "Capture the provenance metadata alongside the transmitted data"
+  ],
+  "assessment_objectives": [
+    "Determine whether data elements can be transmitted or disclosed on request",
+    "Determine whether transmission paths support integrity and confidentiality requirements",
+    "Determine whether transmission records are auditable",
+    "Determine whether provenance metadata accompanies the transmission"
+  ],
+  "related_controls": [
+    "CT.DM-P1 (data review)",
+    "CT.DM-P3 (data alteration)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

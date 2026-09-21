@@ -1,0 +1,408 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_type": "domain_aggregate",
+  "domain_id": "D-05",
+  "domain_name": "D-05 Data Lifecycle",
+  "subdomains": [
+    "D-05.1",
+    "D-05.2",
+    "D-05.3",
+    "D-05.4"
+  ],
+  "subdomain_summaries": [
+    {
+      "id": "D-05.1",
+      "name": "Data Minimisation",
+      "participants": [
+        "GDPR",
+        "CRA",
+        "AI_Act"
+      ],
+      "ai_act": "present",
+      "applicable_regs": [
+        "AI_ACT",
+        "AI_Act",
+        "CRA",
+        "GDPR"
+      ],
+      "total_cards": 38,
+      "applicable_articles": 27,
+      "applicable_clauses": 25,
+      "sub_objectives": 3,
+      "sub_requirements": 3,
+      "applicable_nist_controls": 16
+    },
+    {
+      "id": "D-05.2",
+      "name": "Retention & Archiving",
+      "participants": [
+        "GDPR",
+        "CRA",
+        "AI_Act"
+      ],
+      "ai_act": "present",
+      "applicable_regs": [
+        "AI_ACT",
+        "AI_Act",
+        "CRA",
+        "GDPR"
+      ],
+      "total_cards": 14,
+      "applicable_articles": 7,
+      "applicable_clauses": 7,
+      "sub_objectives": 3,
+      "sub_requirements": 3,
+      "applicable_nist_controls": 9
+    },
+    {
+      "id": "D-05.3",
+      "name": "Right to Erasure",
+      "participants": [
+        "GDPR",
+        "CRA"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "CRA",
+        "GDPR"
+      ],
+      "total_cards": 20,
+      "applicable_articles": 11,
+      "applicable_clauses": 8,
+      "sub_objectives": 2,
+      "sub_requirements": 2,
+      "applicable_nist_controls": 6
+    },
+    {
+      "id": "D-05.4",
+      "name": "Data Portability",
+      "participants": [
+        "GDPR"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "GDPR"
+      ],
+      "total_cards": 6,
+      "applicable_articles": 2,
+      "applicable_clauses": 2,
+      "sub_objectives": 1,
+      "sub_requirements": 1,
+      "applicable_nist_controls": 2
+    }
+  ],
+  "applicable_articles_by_regulation": {
+    "AI_ACT": [],
+    "AI_Act": [],
+    "CRA": [
+      "Art. 13(3) sentence 2",
+      "Art. 13(9)",
+      "Art. 14(5)(a)",
+      "Art. 6 chapeau + (a)"
+    ],
+    "GDPR": [
+      "Art. 10",
+      "Art. 11(1)",
+      "Art. 12(6)",
+      "Art. 15(1)",
+      "Art. 15(3)",
+      "Art. 15(4)",
+      "Art. 16",
+      "Art. 19",
+      "Art. 21(3)",
+      "Art. 25(1)",
+      "Art. 25(2)",
+      "Art. 28(3)",
+      "Art. 28(3)(g)",
+      "Art. 30(1)+(2)",
+      "Art. 32(1)",
+      "Art. 5(1)(a)",
+      "Art. 5(1)(b)",
+      "Art. 5(1)(c)",
+      "Art. 5(1)(d)",
+      "Art. 5(1)(e)",
+      "Art. 5(1)(f)",
+      "Art. 6(1)(a)",
+      "Art. 6(1)(b)",
+      "Art. 6(1)(c)",
+      "Art. 6(1)(d)",
+      "Art. 6(1)(e)",
+      "Art. 6(1)(f)",
+      "Art. 6(4)",
+      "Art. 9(1)",
+      "Art. 9(2)(a)",
+      "Art. 9(2)(g)",
+      "Art. 9(2)(j)",
+      "Article 17",
+      "Article 20",
+      "Article 29"
+    ]
+  },
+  "applicable_clauses_by_regulation": {
+    "AI_ACT": [],
+    "AI_Act": [],
+    "CRA": [
+      "CRA-CL01",
+      "CRA-CL19",
+      "CRA-CL33",
+      "CRA-CL61"
+    ],
+    "GDPR": [
+      "GDPR-CL01",
+      "GDPR-CL02",
+      "GDPR-CL03",
+      "GDPR-CL04",
+      "GDPR-CL05",
+      "GDPR-CL06",
+      "GDPR-CL08",
+      "GDPR-CL09",
+      "GDPR-CL10",
+      "GDPR-CL11",
+      "GDPR-CL12",
+      "GDPR-CL13",
+      "GDPR-CL14",
+      "GDPR-CL21",
+      "GDPR-CL22",
+      "GDPR-CL23",
+      "GDPR-CL24",
+      "GDPR-CL25",
+      "GDPR-CL26",
+      "GDPR-CP02",
+      "GDPR-CP03",
+      "GDPR-CP09",
+      "GDPR-CP10",
+      "GDPR-CP12",
+      "GDPR-CP15",
+      "GDPR-RT04",
+      "GDPR-RT09",
+      "GDPR-RT10",
+      "GDPR-RT11",
+      "GDPR-RT12",
+      "GDPR-RT15",
+      "GDPR-RT17"
+    ]
+  },
+  "sub_objectives_by_regulation": {
+    "AI_ACT": [],
+    "AI_Act": [
+      {
+        "id": "SO-D-05.1.AIACT",
+        "csf_anchors": [
+          "ID.AM-03",
+          "PR.DS-12",
+          "PR.PS-06",
+          "PR.DS-01",
+          "GV.OC-03"
+        ]
+      },
+      {
+        "id": "SO-D-05.2.AIACT",
+        "csf_anchors": [
+          "PR.PS-04",
+          "GV.PO-02"
+        ]
+      }
+    ],
+    "CRA": [
+      {
+        "id": "SO-D-05.1.CRA",
+        "csf_anchors": [
+          "PR.DS-12",
+          "ID.AM-03"
+        ]
+      },
+      {
+        "id": "SO-D-05.2.CRA",
+        "csf_anchors": [
+          "PR.PS-02",
+          "GV.OV-02",
+          "GV.OC-04"
+        ]
+      },
+      {
+        "id": "SO-D-05.3.CRA",
+        "csf_anchors": [
+          "PR.DS-10",
+          "PR.DS-12 (+ PR.DS-02 for the second limb)"
+        ]
+      }
+    ],
+    "GDPR": [
+      {
+        "id": "SO-D-05.1.GDPR",
+        "csf_anchors": [
+          "PR.DS-12",
+          "ID.AM-03",
+          "GV.OC-03",
+          "GV.PO-01"
+        ]
+      },
+      {
+        "id": "SO-D-05.2.GDPR",
+        "csf_anchors": [
+          "PR.DS-12",
+          "ID.AM-03"
+        ]
+      },
+      {
+        "id": "SO-D-05.3.GDPR",
+        "csf_anchors": [
+          "PR.DS-10",
+          "PR.DS-12",
+          "GV.SC-04"
+        ]
+      },
+      {
+        "id": "SO-D-05.4.GDPR",
+        "csf_anchors": [
+          "PR.DS-10",
+          "PR.DS-12"
+        ]
+      }
+    ]
+  },
+  "sub_requirements_by_regulation": {
+    "AI_ACT": [
+      {
+        "req_id": "5.1.3",
+        "title": "High-risk AI training/validation/testing datasets meet Art. 10(3) quality criteria and Art. 10(2) 8-element data-governance practice; Art. 10(5) special-category 6-cumulative-condition gateway documented when applicable",
+        "nist_csf": [
+          "ID.AM-03",
+          "PR.DS-12",
+          "PR.PS-06",
+          "PR.DS-01",
+          "GV.OC-03"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "5.2.3",
+        "title": "High-risk AI system logs retained ≥6 months per Art. 19(1); upward adjustment justified by intended purpose; floor-within-ceiling layering with GDPR when logs contain personal data",
+        "nist_csf": [
+          "PR.PS-04",
+          "GV.PO-02"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "AI_Act": [],
+    "CRA": [
+      {
+        "req_id": "5.1.2",
+        "title": "Product data limited to what is adequate, relevant, and necessary in relation to the intended purpose of the product, with risk-assessment proportionality calibration",
+        "nist_csf": [
+          "PR.DS-12",
+          "ID.AM-03"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "5.2.2",
+        "title": "Security updates available across support period and the 10-year-or-remainder tail; Annex II information accessible for ≥10 years from placing on market; support-period end-date communicated at purchase",
+        "nist_csf": [
+          "PR.PS-02",
+          "GV.OV-02",
+          "GV.OC-04"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "5.3.2",
+        "title": "User of a product with digital elements can securely and easily remove, on a permanent basis, all data and settings of the product via a discoverable user-interface affordance, with Annex II §8(d) decommissioning instructions",
+        "nist_csf": [
+          "PR.DS-10",
+          "PR.DS-12"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "GDPR": [
+      {
+        "req_id": "5.1.1",
+        "title": "Personal data limited to what is adequate, relevant, and necessary for the processing purpose, with Art. 6(4) compatibility assessment on change of purpose and Art. 9(1) special-category prohibition honoured",
+        "nist_csf": [
+          "PR.DS-12",
+          "ID.AM-03",
+          "GV.OC-03",
+          "GV.PO-01"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "5.2.1",
+        "title": "Personal data retained no longer than necessary for the processing purpose; longer retention only where lawful and subject to Art. 89(1) safeguards; Art. 30(1)(f) RoPA time-limits documented per category",
+        "nist_csf": [
+          "PR.DS-12",
+          "ID.AM-03"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "5.3.1",
+        "title": "Personal data erased without undue delay on the data subject's Art. 17(1) request where one of the 6 grounds applies; processor deletes or returns all personal data on contract end per Art. 28(3)(g); cryptographic key destruction as deletion path",
+        "nist_csf": [
+          "PR.DS-10",
+          "PR.DS-12",
+          "GV.SC-04"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "5.4.1",
+        "title": "Data subject receives personal data in a structured, commonly used, machine-readable format (Art. 20(1) + Art. 15(3) companion copy), supplied by the controller without undue delay (Art. 12(3) ≤1 month, ≤2 months complex) and free of charge (Art. 12(5)); cross-controller direct transmission provided where technically feasible",
+        "nist_csf": [
+          "PR.DS-10",
+          "PR.DS-12"
+        ],
+        "scope_overlap": "N"
+      }
+    ]
+  },
+  "applicable_nist_controls_by_regulation": {
+    "AI_ACT": [
+      "GV.OC-03",
+      "GV.PO-02",
+      "ID.AM-03",
+      "PR.DS-01",
+      "PR.DS-12",
+      "PR.PS-04",
+      "PR.PS-06"
+    ],
+    "AI_Act": [
+      "GV.OC-03",
+      "GV.PO-02",
+      "ID.AM-03",
+      "PR.DS-01",
+      "PR.DS-12",
+      "PR.PS-04",
+      "PR.PS-06"
+    ],
+    "CRA": [
+      "GV.OC-04",
+      "GV.OV-02",
+      "ID.AM-03",
+      "PR.DS-10",
+      "PR.DS-12",
+      "PR.DS-12 (+ PR.DS-02 for the second limb)",
+      "PR.PS-02"
+    ],
+    "GDPR": [
+      "GV.OC-03",
+      "GV.PO-01",
+      "GV.SC-04",
+      "ID.AM-03",
+      "PR.DS-10",
+      "PR.DS-12"
+    ]
+  },
+  "counts": {
+    "subdomains": 4,
+    "total_cards": 78,
+    "applicable_articles_total": 39,
+    "applicable_clauses_total": 36,
+    "sub_objectives_total": 9,
+    "sub_requirements_total": 9,
+    "applicable_nist_controls_total": 27
+  },
+  "generated_at": "2026-08-04T17:16:28Z"
+}

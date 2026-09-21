@@ -1,0 +1,31 @@
+{
+  "control_id": "CT.DP-P4",
+  "framework": "NIST PF 1.0",
+  "function": "CONTROL-P",
+  "category": "Disassociated Processing (CT.DP-P)",
+  "subcategory_id": "CT.DP-P4",
+  "subcategory_text": "System or device configurations permit selective collection or disclosure of data elements.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: CM-7 (Least Functionality), AC-3",
+    "NIST PF 1.0 Core (January 2020): CT.DP-P4 (verified row 62)",
+    "ISO/IEC 27001:2022 Annex A.8.10, A.5.34",
+    "GDPR Art. 25 (Data protection by design)"
+  ],
+  "implementation_examples": [
+    "Design system or device configurations to permit selective collection or disclosure of data elements (e.g., granular privacy controls, opt-in/opt-out granularity)",
+    "Expose configuration affordances to users at the same level of granularity as the data model",
+    "Document the configuration surface and validate that it operates as designed"
+  ],
+  "assessment_objectives": [
+    "Determine whether configurations permit selective collection or disclosure",
+    "Determine whether the configuration surface matches the data-model granularity",
+    "Determine whether configuration changes are observable to the user",
+    "Determine whether defaults preserve privacy"
+  ],
+  "related_controls": [
+    "CT.PO-P1 (authorisation)",
+    "CT.DP-P2 (identification limits)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

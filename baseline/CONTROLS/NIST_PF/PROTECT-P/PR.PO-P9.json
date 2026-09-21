@@ -1,0 +1,31 @@
+{
+  "control_id": "PR.PO-P9",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Data Protection Policies, Processes, and Procedures (PR.PO-P)",
+  "subcategory_id": "PR.PO-P9",
+  "subcategory_text": "Privacy procedures are included in human resources practices (e.g., deprovisioning, personnel screening).",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PS-3 (Personnel Screening), PS-4 (Personnel Termination), PS-5 (Personnel Transfer)",
+    "NIST PF 1.0 Core (January 2020): PR.PO-P9 (verified row 82)",
+    "ISO/IEC 27001:2022 Annex A.6.1 (Screening), A.6.5 (Termination or change of employment responsibilities)",
+    "GDPR Art. 5(1)(f), Art. 28 (Processor reliability)"
+  ],
+  "implementation_examples": [
+    "Integrate privacy procedures into HR practices: pre-hire screening, onboarding acknowledgement of privacy roles, in-role refresher training, off-boarding deprovisioning (access revocation, asset return)",
+    "Coordinate with line managers and system owners to action the lifecycle",
+    "Capture evidence of completion for accountability"
+  ],
+  "assessment_objectives": [
+    "Determine whether privacy procedures are integrated into HR lifecycle practices",
+    "Determine whether access revocation is timely on termination",
+    "Determine whether acknowledgements and training records are captured",
+    "Determine whether HR and IT coordinate on the privacy lifecycle"
+  ],
+  "related_controls": [
+    "PR.AC-P1 (identity management)",
+    "GV.PO-P3 (workforce roles)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

@@ -1,0 +1,35 @@
+{
+  "control_id": "GOVERN-1.1",
+  "framework": "NIST AI RMF 1.0",
+  "function": "GOVERN",
+  "category": "Policies, Processes, Procedures and Practices",
+  "subcategory_id": "GOVERN-1.1",
+  "subcategory_text": "Legal and regulatory requirements",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Andrew Smith, \"Using Artificial Intelligence and Algorithms,\" FTC Business Blog (2020). [URL](https://www.ftc.gov/business-guidance/blog/2020/04/using-artificial-intelligence-and-algorithms)",
+    "Rebecca Kelly Slaughter, \"Algorithms and Economic Justice,\" ISP Digital Future Whitepaper & YJoLT Special Publication (2021). [URL](https://law.yale.edu/sites/default/files/area/center/isp/documents/algorithms_and_economic_justice_master_final.pdf)",
+    "Patrick Hall, Benjamin Cox, Steven Dickerson, Arjun Ravi Kannan, Raghu Kulkarni, and Nicholas Schmidt, \"A United States fair lending perspective on machine learning,\" Frontiers in Artificial Intelligence 4 (2021). [URL](https://www.frontiersin.org/articles/10.3389/frai.2021.695301/full)"
+  ],
+  "implementation_examples": [
+    "Maintain awareness of the applicable legal and regulatory considerations and requirements specific to industry, sector, and business purpose, as well as the application context of the deployed AI system.",
+    "Align risk management efforts with applicable legal standards.",
+    "Maintain policies for training (and re-training) organizational staff about necessary legal or regulatory considerations that may impact AI-related design, development and deployment activities."
+  ],
+  "assessment_objectives": [
+    "To what extent has the entity defined and documented the regulatory environment—including minimum requirements in laws and regulations?",
+    "Has the system been reviewed for its compliance to applicable laws, regulations, standards, and guidance?",
+    "To what extent has the entity defined and documented the regulatory environment—including applicable requirements in laws and regulations?",
+    "Has the system been reviewed for its compliance to relevant applicable laws, regulations, standards, and guidance?"
+  ],
+  "related_controls": [
+    "GOVERN-1.2 (NIST AI RMF — same category)",
+    "GOVERN-1.3 (NIST AI RMF — same category)",
+    "GOVERN-1.4 (NIST AI RMF — same category)",
+    "GOVERN-1.5 (NIST AI RMF — same category)",
+    "GOVERN-1.6 (NIST AI RMF — same category)",
+    "GOVERN-1.7 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

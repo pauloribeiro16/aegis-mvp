@@ -1,0 +1,35 @@
+{
+  "control_id": "PR.AA-04",
+  "framework": "NIST CSF 2.0",
+  "function": "PROTECT",
+  "category": "Identity Management, Authentication, and Access Control (PR.AA)",
+  "subcategory_id": "PR.AA-04",
+  "subcategory_text": "Identity assertions are protected, conveyed, and verified",
+  "informative_references": [
+    "NIST CSF 2.0 Core: PR.AA-04",
+    "NIST SP 800-53 Rev. 5: IA-13",
+    "ISO/IEC 27001:2022: Annex A.5.16",
+    "PCI DSS: 12.3.3, 3.6.1, 3.6.1.1, 3.6.1.2, 3.6.1.3, 3.6.1.4 (+1 more)",
+    "CRI Profile v2.0: PR.AA-04, PR.AA-04.01"
+  ],
+  "implementation_examples": [
+    "Protect identity assertions that are used to convey authentication and user information through single sign-on systems",
+    "Protect identity assertions that are used to convey authentication and user information between federated systems",
+    "Implement standards-based approaches for identity assertions in all contexts, and follow all guidance for the generation (e.g., data models, metadata), protection (e.g., digital signing, encryption), and verification (e.g., signature validation) of identity assertions"
+  ],
+  "assessment_objectives": [
+    "Determine whether identity assertions are protected, conveyed, and verified.",
+    "Determine whether activities are conducted to protect identity assertions that are used to convey authentication and user information through single sign-on systems.",
+    "Determine whether activities are conducted to protect identity assertions that are used to convey authentication and user information between federated systems.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "PR.AA-01 (NIST CSF 2.0 — same category)",
+    "PR.AA-02 (NIST CSF 2.0 — same category)",
+    "PR.AA-03 (NIST CSF 2.0 — same category)",
+    "PR.AA-05 (NIST CSF 2.0 — same category)",
+    "PR.AA-06 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

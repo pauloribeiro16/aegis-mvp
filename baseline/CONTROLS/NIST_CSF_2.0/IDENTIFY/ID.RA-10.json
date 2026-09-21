@@ -1,0 +1,37 @@
+{
+  "control_id": "ID.RA-10",
+  "framework": "NIST CSF 2.0",
+  "function": "IDENTIFY",
+  "category": "Risk Assessment (ID.RA)",
+  "subcategory_id": "ID.RA-10",
+  "subcategory_text": "Critical suppliers are assessed prior to acquisition",
+  "informative_references": [
+    "NIST CSF 2.0 Core: ID.RA-10",
+    "NIST SP 800-53 Rev. 5: SR-06",
+    "ISO/IEC 27001:2022: Annex A.5.19, Annex A.5.20, Annex A.5.22",
+    "CSF v1.1: ID.SC-2, ID.SC-4",
+    "PCI DSS: 12.8.1, 12.8.2, 12.8.3",
+    "CRI Profile v2.0: EX.DD-03, EX.DD-03.01, EX.DD-03.02, EX.DD-03.03"
+  ],
+  "implementation_examples": [
+    "Conduct supplier risk assessments against business and applicable cybersecurity requirements, including the supply chain"
+  ],
+  "assessment_objectives": [
+    "Determine whether critical suppliers are assessed prior to acquisition.",
+    "Determine whether activities are conducted to conduct supplier risk assessments against business and applicable cybersecurity requirements, including the supply chain.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "ID.RA-01 (NIST CSF 2.0 — same category)",
+    "ID.RA-02 (NIST CSF 2.0 — same category)",
+    "ID.RA-03 (NIST CSF 2.0 — same category)",
+    "ID.RA-04 (NIST CSF 2.0 — same category)",
+    "ID.RA-05 (NIST CSF 2.0 — same category)",
+    "ID.RA-06 (NIST CSF 2.0 — same category)",
+    "ID.RA-07 (NIST CSF 2.0 — same category)",
+    "ID.RA-08 (NIST CSF 2.0 — same category)",
+    "ID.RA-09 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

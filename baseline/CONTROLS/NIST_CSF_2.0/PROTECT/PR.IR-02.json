@@ -1,0 +1,33 @@
+{
+  "control_id": "PR.IR-02",
+  "framework": "NIST CSF 2.0",
+  "function": "PROTECT",
+  "category": "Technology Infrastructure Resilience (PR.IR)",
+  "subcategory_id": "PR.IR-02",
+  "subcategory_text": "The organization's technology assets are protected from environmental threats",
+  "informative_references": [
+    "NIST CSF 2.0 Core: PR.IR-02",
+    "NIST SP 800-53 Rev. 5: CP-02, PE-09, PE-10, PE-11, PE-12, PE-13, PE-14, PE-15 (+2 more)",
+    "ISO/IEC 27001:2022: Annex A.7.5",
+    "CSF v1.1: PR.IP-5",
+    "PCI DSS: 12.10.1, 9.1.1, 9.1.2",
+    "CRI Profile v2.0: PR.IR-02, PR.IR-02.01"
+  ],
+  "implementation_examples": [
+    "Protect organizational equipment from known environmental threats, such as flooding, fire, wind, and excessive heat and humidity",
+    "Include protection from environmental threats and provisions for adequate operating infrastructure in requirements for service providers that operate systems on the organization's behalf"
+  ],
+  "assessment_objectives": [
+    "Determine whether the organization's technology assets are protected from environmental threats.",
+    "Determine whether activities are conducted to protect organizational equipment from known environmental threats, such as flooding, fire, wind, and excessive heat and humidity.",
+    "Determine whether mechanisms ensure that include protection from environmental threats and provisions for adequate operating infrastructure in requirements for service providers that operate systems on the organization's behalf.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "PR.IR-01 (NIST CSF 2.0 — same category)",
+    "PR.IR-03 (NIST CSF 2.0 — same category)",
+    "PR.IR-04 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

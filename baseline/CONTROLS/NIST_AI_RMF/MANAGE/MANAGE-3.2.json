@@ -1,0 +1,30 @@
+{
+  "control_id": "MANAGE-3.2",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MANAGE",
+  "category": "Third-Party Risks",
+  "subcategory_id": "MANAGE-3.2",
+  "subcategory_text": "Pre-trained models used for development are monitored as part of AI system regular monitoring and maintenance.",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Larysa Visengeriyeva et al. “Awesome MLOps,“ GitHub. Accessed January 9, 2023. [URL](https://github.com/visenger)"
+  ],
+  "implementation_examples": [
+    "Identify pre-trained models within AI system inventory for risk tracking.",
+    "Establish processes to independently and continually monitor performance and trustworthiness  of pre-trained models, and as part of third-party risk tracking.",
+    "Monitor performance and trustworthiness of AI system components connected to pre-trained models, and as part of third-party risk tracking.",
+    "Identify, document and remediate risks arising from AI system components and pre-trained models per organizational risk management procedures, and as part of third-party risk tracking.",
+    "Decommission AI system components and pre-trained models which exceed risk tolerances, and as part of third-party risk tracking."
+  ],
+  "assessment_objectives": [
+    "How has the entity documented the AI system’s data provenance, including sources, origins, transformations, augmentations, labels, dependencies, constraints, and metadata?",
+    "Does this dataset collection/processing procedure achieve the motivation for creating the dataset stated in the first section of this datasheet?",
+    "How does the entity ensure that the data collected are adequate, relevant, and not excessive in relation to the intended purpose?",
+    "If the dataset becomes obsolete how will this be communicated?"
+  ],
+  "related_controls": [
+    "MANAGE-3.1 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

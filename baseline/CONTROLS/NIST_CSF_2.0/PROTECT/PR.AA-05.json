@@ -1,0 +1,39 @@
+{
+  "control_id": "PR.AA-05",
+  "framework": "NIST CSF 2.0",
+  "function": "PROTECT",
+  "category": "Identity Management, Authentication, and Access Control (PR.AA)",
+  "subcategory_id": "PR.AA-05",
+  "subcategory_text": "Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties",
+  "informative_references": [
+    "NIST CSF 2.0 Core: PR.AA-05",
+    "NIST SP 800-53 Rev. 5: AC-01, AC-02, AC-03, AC-05, AC-06, AC-10, AC-16, AC-17 (+4 more)",
+    "ISO/IEC 27001:2022: Annex A.5.1, Annex A.5.3, Annex A.5.14, Annex A.5.15, Annex A.5.16, Annex A.5.17, Annex A.5.18, Annex A.8.2 (+3 more)",
+    "CSF v1.1: PR.AC-1, PR.AC-3, PR.AC-4",
+    "CIS Controls v8: 3.3, 5.1, 6.8",
+    "PCI DSS: 12.1.3, 7.1.1, 7.2.1, 7.2.2, 7.2.4, 7.2.5.1 (+2 more)",
+    "NIST SP 800-218 (SSDF): PO.5.2, PS.1.1",
+    "CRI Profile v2.0: PR.AA-05, PR.AA-05.01, PR.AA-05.02, PR.AA-05.03, PR.AA-05.04"
+  ],
+  "implementation_examples": [
+    "Review logical and physical access privileges periodically and whenever someone changes roles or leaves the organization, and promptly rescind privileges that are no longer needed",
+    "Take attributes of the requester and the requested resource into account for authorization decisions (e.g., geolocation, day/time, requester endpoint's cyber health)",
+    "Restrict access and privileges to the minimum necessary (e.g., zero trust architecture)",
+    "Periodically review the privileges associated with critical business functions to confirm proper separation of duties"
+  ],
+  "assessment_objectives": [
+    "Determine whether access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties.",
+    "Determine whether activities are conducted to review logical and physical access privileges periodically and whenever someone changes roles or leaves the organization, and promptly rescind privileges that are no longer needed.",
+    "Determine whether mechanisms ensure that take attributes of the requester and the requested resource into account for authorization decisions (e.g., geolocation, day/time, requester endpoint's cyber health).",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "PR.AA-01 (NIST CSF 2.0 — same category)",
+    "PR.AA-02 (NIST CSF 2.0 — same category)",
+    "PR.AA-03 (NIST CSF 2.0 — same category)",
+    "PR.AA-04 (NIST CSF 2.0 — same category)",
+    "PR.AA-06 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

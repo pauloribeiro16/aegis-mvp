@@ -1,0 +1,31 @@
+{
+  "control_id": "CM.AW-P1",
+  "framework": "NIST PF 1.0",
+  "function": "COMMUNICATE-P",
+  "category": "Data Processing Awareness (CM.AW-P)",
+  "subcategory_id": "CM.AW-P1",
+  "subcategory_text": "Mechanisms (e.g., notices, internal or public reports) for communicating data processing purposes, practices, associated privacy risks, and options for enabling individuals’ data processing preferences and requests are established and in place.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: AC-8, IP-3 (Individual Participation)",
+    "NIST PF 1.0 Core (January 2020): CM.AW-P1 (verified row 66)",
+    "ISO/IEC 27001:2022 Annex A.5.34",
+    "GDPR Art. 13-14 (Privacy notices)"
+  ],
+  "implementation_examples": [
+    "Provide accessible mechanisms (notices in product, on web, on device, on paper) to communicate purposes, practices, risks, and options for individuals to exercise data-processing preferences",
+    "Localise and translate notices for the user populations served",
+    "Capture acknowledgement records where required by law"
+  ],
+  "assessment_objectives": [
+    "Determine whether notices exist for data-processing purposes, practices, risks, and preferences",
+    "Determine whether the notices are accessible to the populations served",
+    "Determine whether the notices reflect current practices",
+    "Determine whether acknowledgements are captured where required"
+  ],
+  "related_controls": [
+    "CM.AW-P2 (feedback mechanisms)",
+    "CM.PO-P1 (transparency policies)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

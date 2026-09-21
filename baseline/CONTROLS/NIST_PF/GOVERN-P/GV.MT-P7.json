@@ -1,0 +1,31 @@
+{
+  "control_id": "GV.MT-P7",
+  "framework": "NIST PF 1.0",
+  "function": "GOVERN-P",
+  "category": "Monitoring and Review (GV.MT-P)",
+  "subcategory_id": "GV.MT-P7",
+  "subcategory_text": "Policies, processes, and procedures for receiving, tracking, and responding to complaints, concerns, and questions from individuals about organizational privacy practices are established and in place.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: IP-3 (Individual Participation in the Information Security Program — privacy analogue)",
+    "NIST PF 1.0 Core (January 2020): GV.MT-P7 (verified row 44)",
+    "ISO/IEC 27001:2022 Annex A.5.2 (responsibilities for receiving complaints)",
+    "GDPR Art. 12-22 (Rights of the data subject), Art. 77 (Right to lodge complaint with supervisory authority)"
+  ],
+  "implementation_examples": [
+    "Establish intake, tracking, and response procedures for complaints, concerns, and questions from individuals about organisational privacy practices",
+    "Provide convenient channels (intake form, email, phone, postal) consistent with accessibility requirements",
+    "Respond within the timeframes set by applicable law (e.g., one month under GDPR Art. 12(3))"
+  ],
+  "assessment_objectives": [
+    "Determine whether intake channels exist for individual complaints",
+    "Determine whether complaints are tracked individually through to closure",
+    "Determine whether responses are issued within legal timeframes",
+    "Determine whether repeat topics drive policy/process improvements"
+  ],
+  "related_controls": [
+    "CM.AW-P2 (feedback mechanisms)",
+    "CT.PO-P3 (preferences and requests handling)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

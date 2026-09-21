@@ -1,0 +1,32 @@
+{
+  "control_id": "ID.BE-P2",
+  "framework": "NIST PF 1.0",
+  "function": "IDENTIFY-P",
+  "category": "Business Environment (ID.BE-P)",
+  "subcategory_id": "ID.BE-P2",
+  "subcategory_text": "Priorities for organizational mission, objectives, and activities are established and communicated.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PM-3 (Information Security and Privacy Resources), PM-8 (Critical Infrastructure System Inventory)",
+    "NIST PF 1.0 Core (January 2020): ID.BE-P2 (verified row 13)",
+    "ISO/IEC 27001:2022 Annex A.5.2 (Information security roles and responsibilities)",
+    "GDPR Art. 24 (Responsibility of the controller)",
+    "Aligned with NIST CSF 2.0 GV.OC-02 (organisational priorities understood)"
+  ],
+  "implementation_examples": [
+    "Establish and document the organisation's priorities for mission, objectives, and activities, with explicit privacy dimensions included where data processing supports them",
+    "Communicate priorities to the workforce and to relevant third parties so risk-allocation decisions are anchored to mission criticality",
+    "Re-prioritise when mission drivers shift (regulator action, market disruption, board strategic review)"
+  ],
+  "assessment_objectives": [
+    "Determine whether organisational priorities are documented and include privacy dimensions where relevant",
+    "Determine whether priorities are communicated to the workforce and to third parties",
+    "Determine whether priorities are reviewed at a defined cadence",
+    "Determine whether privacy-risk decisions reference the priority hierarchy"
+  ],
+  "related_controls": [
+    "ID.BE-P1 (role identified)",
+    "GV.OC-01 (NIST CSF 2.0 — mission)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

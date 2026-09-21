@@ -1,0 +1,32 @@
+{
+  "control_id": "ID.IM-P3",
+  "framework": "NIST PF 1.0",
+  "function": "IDENTIFY-P",
+  "category": "Inventory and Mapping (ID.IM-P)",
+  "subcategory_id": "ID.IM-P3",
+  "subcategory_text": "Categories of individuals (e.g., customers, employees or prospective employees, consumers) whose data are being processed are inventoried.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PM-8 (Critical Infrastructure System Inventory); NIST SP 800-122 (Guide to Protecting the Confidentiality of PII)",
+    "NIST PF 1.0 Core (January 2020): ID.IM-P3 (verified row 6)",
+    "ISO/IEC 27001:2022 Annex A.5.12 (Classification of information)",
+    "GDPR Art. 9 (Special categories of personal data), Art. 10 (criminal convictions)",
+    "Aligned with NIST CSF 2.0 ID.AM-06 (data categories inventoried)"
+  ],
+  "implementation_examples": [
+    "Maintain a current list of the categories of individuals (e.g., customers, employees, prospective employees, consumers, patients) whose data is processed across the estate",
+    "Tag each category with the corresponding sensitivity class (standard, special category, criminal) and the lawful basis relied on",
+    "Use the categories list when conducting privacy-risk assessment to scope impact to the relevant data subjects"
+  ],
+  "assessment_objectives": [
+    "Determine whether a complete list of categories of data subjects is maintained",
+    "Determine whether sensitivity classes and lawful bases are recorded per category",
+    "Determine whether the categories list is used as input to privacy-risk assessment",
+    "Determine whether the categories list is reviewed for completeness on a defined cadence"
+  ],
+  "related_controls": [
+    "ID.IM-P4 (data actions inventoried)",
+    "ID.AM-06 (NIST CSF 2.0 — data categories)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

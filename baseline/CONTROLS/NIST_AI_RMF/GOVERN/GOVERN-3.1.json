@@ -1,0 +1,30 @@
+{
+  "control_id": "GOVERN-3.1",
+  "framework": "NIST AI RMF 1.0",
+  "function": "GOVERN",
+  "category": "Workforce",
+  "subcategory_id": "GOVERN-3.1",
+  "subcategory_text": "Decision-making on risk across the lifecycle is informed by a diverse team",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Dylan Walsh, “How can human-centered AI fight bias in machines and people?” MIT Sloan Mgmt. Rev., 2021. [URL](https://mitsloan.mit.edu/ideas-made-to-matter/how-can-human-centered-ai-fight-bias-machines-and-people)",
+    "Michael Li, “To Build Less-Biased AI, Hire a More Diverse Team,” Harvard Bus. Rev., 2020. [URL](https://hbr.org/2020/10/to-build-less-biased-ai-hire-a-more-diverse-team)",
+    "Bo Cowgill et al., “Biased Programmers? Or Biased Data? A Field Experiment in Operationalizing AI Ethics,” 2020. [URL](https://arxiv.org/pdf/2012.02394.pdf)"
+  ],
+  "implementation_examples": [
+    "Define policies and hiring practices at the outset that promote interdisciplinary roles, competencies, skills, and capacity for AI efforts.",
+    "Define policies and hiring practices that lead to demographic and domain expertise diversity; empower staff with necessary resources and support, and facilitate the contribution of staff feedback and concerns without fear of reprisal.",
+    "Establish policies that facilitate inclusivity and the integration of new insights into existing practice.",
+    "Seek external expertise to supplement organizational diversity, equity, inclusion, and accessibility where internal expertise is lacking.",
+    "Establish policies that incentivize AI actors to collaborate with existing nondiscrimination, accessibility and accommodation, and human resource functions, employee resource group (ERGs), and diversity, equity, inclusion, and accessibility (DEIA) initiatives."
+  ],
+  "assessment_objectives": [
+    "Are the relevant staff dealing with AI systems properly trained to interpret AI model output and decisions as well as to detect and manage bias in data?",
+    "To what extent are the established procedures effective in mitigating bias, inequity, and other concerns resulting from the system?"
+  ],
+  "related_controls": [
+    "GOVERN-3.2 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

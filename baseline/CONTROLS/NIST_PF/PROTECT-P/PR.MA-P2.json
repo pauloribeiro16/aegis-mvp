@@ -1,0 +1,31 @@
+{
+  "control_id": "PR.MA-P2",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Maintenance (PR.MA-P)",
+  "subcategory_id": "PR.MA-P2",
+  "subcategory_text": "Remote maintenance of organizational assets is approved, logged, and performed in a manner that prevents unauthorized access.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: MA-4 (Nonlocal Maintenance), MA-2",
+    "NIST PF 1.0 Core (January 2020): PR.MA-P2 (verified row 99)",
+    "ISO/IEC 27001:2022 Annex A.6.7 (Remote working), A.8.9",
+    "GDPR Art. 5(1)(f), Art. 28 (Processor reliability)"
+  ],
+  "implementation_examples": [
+    "Approve, log, and perform remote maintenance with controls that prevent unauthorised access (e.g., out-of-band approvals, session recording, time-bound credentials)",
+    "Treat remote maintenance connections as privileged access",
+    "Refresh access credentials on completion"
+  ],
+  "assessment_objectives": [
+    "Determine whether remote maintenance is approved and logged",
+    "Determine whether the session uses controls to prevent unauthorised access",
+    "Determine whether maintenance is treated as privileged access",
+    "Determine whether credentials are refreshed on completion"
+  ],
+  "related_controls": [
+    "PR.MA-P1 (maintenance)",
+    "PR.AC-P3 (remote access)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

@@ -1,0 +1,31 @@
+{
+  "control_id": "PR.DS-P4",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Data Security (PR.DS-P)",
+  "subcategory_id": "PR.DS-P4",
+  "subcategory_text": "Adequate capacity to ensure availability is maintained.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: CP-2 (Contingency Plan), AU-4 (Audit Storage Capacity), SC-5 (Denial of Service Protection)",
+    "NIST PF 1.0 Core (January 2020): PR.DS-P4 (verified row 93)",
+    "ISO/IEC 27001:2022 Annex A.8.6 (Capacity management)",
+    "GDPR Art. 5(1)(f), Art. 32(1)(b) (Resilience)"
+  ],
+  "implementation_examples": [
+    "Maintain adequate capacity for personal-data systems to ensure availability within defined targets, with monitoring and capacity-planning processes",
+    "Use telemetry and SLOs to detect capacity pressure",
+    "Refresh capacity plans on changes in data volume or service adoption"
+  ],
+  "assessment_objectives": [
+    "Determine whether capacity is monitored against availability targets",
+    "Determine whether capacity planning is documented and refreshed on change",
+    "Determine whether capacity exhausts are detected and acted on",
+    "Determine whether contingency capacity exists for adverse conditions"
+  ],
+  "related_controls": [
+    "PR.PO-P3 (backups)",
+    "PR.PT-P4 (resilience mechanisms)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

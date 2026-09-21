@@ -1,0 +1,32 @@
+{
+  "control_id": "GV.RM-P1",
+  "framework": "NIST PF 1.0",
+  "function": "GOVERN-P",
+  "category": "Risk Management Strategy (GV.RM-P)",
+  "subcategory_id": "GV.RM-P1",
+  "subcategory_text": "Risk management processes are established, managed, and agreed to by organizational stakeholders.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PM-9, RA-1 (Risk Assessment Policy and Procedures)",
+    "NIST PF 1.0 Core (January 2020): GV.RM-P1 (verified row 31)",
+    "ISO/IEC 27001:2022 Annex A.5.7, Clause 6.1 (Actions to address risks)",
+    "GDPR Art. 35 (DPIA), Art. 36 (Prior consultation)",
+    "Aligned with NIST CSF 2.0 GV.RM-01 (risk management objectives)"
+  ],
+  "implementation_examples": [
+    "Establish, manage, and obtain organisational stakeholder agreement on the privacy risk management process",
+    "Define process inputs, roles, decision criteria, and outputs",
+    "Reassess the process when the threat landscape or business environment shifts"
+  ],
+  "assessment_objectives": [
+    "Determine whether a privacy risk management process is established and documented",
+    "Determine whether stakeholder agreement is obtained",
+    "Determine whether inputs, roles, criteria, and outputs are clearly defined",
+    "Determine whether the process is reviewed at a defined cadence"
+  ],
+  "related_controls": [
+    "GV.PO-P6 (governance integrates privacy)",
+    "GV.RM-P2 (risk tolerance expressed)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

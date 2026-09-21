@@ -1,0 +1,31 @@
+{
+  "control_id": "ID.IM-P2",
+  "framework": "NIST PF 1.0",
+  "function": "IDENTIFY-P",
+  "category": "Inventory and Mapping (ID.IM-P)",
+  "subcategory_id": "ID.IM-P2",
+  "subcategory_text": "Owners or operators (e.g., the organization or third parties such as service providers, partners, customers, and developers) and their roles with respect to the systems/products/services and components (e.g., internal or external) that process data are inventoried.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: CM-8(4) (Accountability in System Component Inventory)",
+    "NIST PF 1.0 Core (January 2020): ID.IM-P2 (verified row 5)",
+    "ISO/IEC 27001:2022 Annex A.5.19 (Information security in supplier relationships)",
+    "Aligned with NIST CSF 2.0 ID.AM-04 (asset owners identified)"
+  ],
+  "implementation_examples": [
+    "Identify and document the owners and operators of each system or component that processes personal data, whether internal (e.g., business unit) or external (e.g., service provider, partner)",
+    "Capture the contractual relationship, role (controller, processor, sub-processor), and the responsibilities each party has for the data they handle",
+    "Reconcile owners/operators against the data inventory and the third-party register to detect gaps"
+  ],
+  "assessment_objectives": [
+    "Determine whether owners/operators are identified for each inventory item",
+    "Determine whether the role (controller/processor) and contractual basis are recorded",
+    "Determine whether external parties are mapped to their respective inventory items",
+    "Determine whether ownership changes are reflected in the inventory on a defined cadence"
+  ],
+  "related_controls": [
+    "ID.IM-P1 (inventory of systems)",
+    "ID.DE-P2 (ecosystem parties assessed)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

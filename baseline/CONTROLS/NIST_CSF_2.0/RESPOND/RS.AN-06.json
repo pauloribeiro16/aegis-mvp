@@ -1,0 +1,33 @@
+{
+  "control_id": "RS.AN-06",
+  "framework": "NIST CSF 2.0",
+  "function": "RESPOND",
+  "category": "Incident Analysis (RS.AN)",
+  "subcategory_id": "RS.AN-06",
+  "subcategory_text": "Actions performed during an investigation are recorded, and the records' integrity and provenance are preserved",
+  "informative_references": [
+    "NIST CSF 2.0 Core: RS.AN-06",
+    "NIST SP 800-53 Rev. 5: AU-07, IR-04, IR-06",
+    "ISO/IEC 27001:2022: Annex A.5.28",
+    "CSF v1.1: RS.AN-3",
+    "PCI DSS: 10.3.1, 10.3.2, 10.3.3, 10.3.4, 10.5.1, 10.6.1",
+    "CRI Profile v2.0: RS.AN-06, RS.AN-06.01"
+  ],
+  "implementation_examples": [
+    "Require each incident responder and others (e.g., system administrators, cybersecurity engineers) who perform incident response tasks to record their actions and make the record immutable",
+    "Require the incident lead to document the incident in detail and be responsible for preserving the integrity of the documentation and the sources of all information being reported"
+  ],
+  "assessment_objectives": [
+    "Determine whether actions performed during an investigation are recorded, and the records' integrity and provenance are preserved.",
+    "Determine whether activities are conducted to require each incident responder and others (e.g., system administrators, cybersecurity engineers) who perform incident response tasks to record their actions and make the record immutable.",
+    "Determine whether activities are conducted to require the incident lead to document the incident in detail and be responsible for preserving the integrity of the documentation and the sources of all information being reported.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "RS.AN-03 (NIST CSF 2.0 — same category)",
+    "RS.AN-07 (NIST CSF 2.0 — same category)",
+    "RS.AN-08 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

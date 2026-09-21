@@ -1,0 +1,31 @@
+{
+  "control_id": "PR.DS-P3",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Data Security (PR.DS-P)",
+  "subcategory_id": "PR.DS-P3",
+  "subcategory_text": "Systems/products/services and associated data are formally managed throughout removal, transfers, and disposition.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: MP-6 (Media Sanitization), SR-12 (Component Disposal), CM-3 (Configuration Change Control)",
+    "NIST PF 1.0 Core (January 2020): PR.DS-P3 (verified row 92)",
+    "ISO/IEC 27001:2022 Annex A.8.10 (Information deletion), A.8.11 (Data masking)",
+    "GDPR Art. 5(1)(e) (Storage limitation), Art. 17"
+  ],
+  "implementation_examples": [
+    "Formally manage personal-data systems through removal, transfers, and disposition, with documented procedures and approval gates",
+    "Capture chain of custody during transfers and disposition",
+    "Issue disposition certificates where appropriate"
+  ],
+  "assessment_objectives": [
+    "Determine whether removal, transfers, and disposition are formally managed",
+    "Determine whether procedures cover hardware, software, and data assets",
+    "Determine whether chain-of-custody evidence is captured",
+    "Determine whether third-party assets are covered"
+  ],
+  "related_controls": [
+    "CT.DM-P5 (destruction)",
+    "PR.DS-P1 (data-at-rest)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

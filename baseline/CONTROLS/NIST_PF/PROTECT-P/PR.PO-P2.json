@@ -1,0 +1,32 @@
+{
+  "control_id": "PR.PO-P2",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Data Protection Policies, Processes, and Procedures (PR.PO-P)",
+  "subcategory_id": "PR.PO-P2",
+  "subcategory_text": "Configuration change control processes are established and in place.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: CM-3 (Configuration Change Control), CM-4 (Security and Privacy Impact Analyses)",
+    "NIST PF 1.0 Core (January 2020): PR.PO-P2 (verified row 75)",
+    "ISO/IEC 27001:2022 Annex A.8.32 (Change management)",
+    "GDPR Art. 25 (Data protection by design)",
+    "Aligned with NIST CSF 2.0 PR.PS-02 (change management)"
+  ],
+  "implementation_examples": [
+    "Define and operate a change-control process that evaluates privacy impact before applying changes to systems or services that process personal data",
+    "Track change requests, approvals, tests, and post-implementation review",
+    "Ensure emergency changes are retroactively reviewed against the same criteria"
+  ],
+  "assessment_objectives": [
+    "Determine whether change-control processes exist for personal-data processing systems",
+    "Determine whether the process evaluates privacy impact before change approval",
+    "Determine whether emergency changes are subjected to the same review after-the-fact",
+    "Determine whether post-implementation reviews capture privacy outcomes"
+  ],
+  "related_controls": [
+    "PR.PO-P1 (baseline configuration)",
+    "GV.PO-P6 (governance integrates privacy)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

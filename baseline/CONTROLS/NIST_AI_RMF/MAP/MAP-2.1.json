@@ -1,0 +1,29 @@
+{
+  "control_id": "MAP-2.1",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MAP",
+  "category": "AI System and Context are Characterized",
+  "subcategory_id": "MAP-2.1",
+  "subcategory_text": "The specific task, and methods used to implement the task, that the AI system will support is defined.",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Leong, Brenda (2020). The Spectrum of Artificial Intelligence - An Infographic Tool. Future of Privacy Forum. [URL](https://fpf.org/blog/the-spectrum-of-artificial-intelligence-an-infographic-tool/)",
+    "Brownlee, Jason (2020). A Tour of Machine Learning Algorithms. Machine Learning Mastery. [URL](https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/)"
+  ],
+  "implementation_examples": [
+    "Define and document AI system’s existing and potential learning task(s) along with known assumptions and limitations."
+  ],
+  "assessment_objectives": [
+    "To what extent has the entity clearly defined technical specifications and requirements for the AI system?",
+    "To what extent has the entity documented the AI system’s development, testing methodology, metrics, and performance outcomes?",
+    "How do the technical specifications and requirements align with the AI system’s goals and objectives?",
+    "Did your organization implement accountability-based practices in data management and protection (e.g. the PDPA and OECD Privacy Principles)?",
+    "How are outputs marked to clearly show that they came from an AI?"
+  ],
+  "related_controls": [
+    "MAP-2.2 (NIST AI RMF — same category)",
+    "MAP-2.3 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

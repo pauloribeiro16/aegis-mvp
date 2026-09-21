@@ -1,0 +1,32 @@
+{
+  "control_id": "PR.DS-P2",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Data Security (PR.DS-P)",
+  "subcategory_id": "PR.DS-P2",
+  "subcategory_text": "Data-in-transit are protected.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SC-8 (Transmission Confidentiality and Integrity), SC-8(1) (Cryptographic Protection)",
+    "NIST PF 1.0 Core (January 2020): PR.DS-P2 (verified row 91)",
+    "ISO/IEC 27001:2022 Annex A.8.24 (Use of cryptography)",
+    "GDPR Art. 5(1)(f), Art. 32(1)(a)",
+    "Aligned with NIST CSF 2.0 PR.DS-02 (data-in-transit protected)"
+  ],
+  "implementation_examples": [
+    "Protect data-in-transit using cryptographic protocols commensurate with data sensitivity, applied to inter-service traffic, user-to-service traffic, and data exchange with third parties",
+    "Validate certificates and algorithm strength at the receiver",
+    "Apply the same protections to third-party data flows"
+  ],
+  "assessment_objectives": [
+    "Determine whether data-in-transit is protected cryptographically",
+    "Determine whether the cryptographic strength is commensurate with sensitivity",
+    "Determine whether certificate validation is enforced",
+    "Determine whether third-party flows are protected"
+  ],
+  "related_controls": [
+    "PR.DS-P1 (data-at-rest)",
+    "PR.PT-P3 (network protection)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

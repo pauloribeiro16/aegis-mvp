@@ -1,0 +1,37 @@
+{
+  "control_id": "GV.RM-01",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Risk Management Strategy (GV.RM)",
+  "subcategory_id": "GV.RM-01",
+  "subcategory_text": "Risk management objectives are established and agreed to by organizational stakeholders",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.RM-01",
+    "NIST SP 800-53 Rev. 5: PM-09, RA-07, SR-02",
+    "ISO/IEC 27001:2022: Clause 6.1.1, Clause 6.1.2, Annex A.5.1",
+    "CSF v1.1: ID.RM-1",
+    "PCI DSS: 12.1.1, 12.1.2, 12.1.4",
+    "CRI Profile v2.0: GV.RM-01, GV.RM-01.01, GV.RM-01.02, GV.RM-01.03, GV.RM-01.04, GV.RM-01.05"
+  ],
+  "implementation_examples": [
+    "Update near-term and long-term cybersecurity risk management objectives as part of annual strategic planning and when major changes occur",
+    "Establish measurable objectives for cybersecurity risk management (e.g., manage the quality of user training, ensure adequate risk protection for industrial control systems)",
+    "Senior leaders agree about cybersecurity objectives and use them for measuring and managing risk and performance"
+  ],
+  "assessment_objectives": [
+    "Determine whether risk management objectives are established and agreed to by organizational stakeholders.",
+    "Determine whether activities are conducted to update near-term and long-term cybersecurity risk management objectives as part of annual strategic planning and when major changes occur.",
+    "Determine whether activities are conducted to establish measurable objectives for cybersecurity risk management (e.g., manage the quality of user training, ensure adequate risk protection for industrial control systems).",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.RM-02 (NIST CSF 2.0 — same category)",
+    "GV.RM-03 (NIST CSF 2.0 — same category)",
+    "GV.RM-04 (NIST CSF 2.0 — same category)",
+    "GV.RM-05 (NIST CSF 2.0 — same category)",
+    "GV.RM-06 (NIST CSF 2.0 — same category)",
+    "GV.RM-07 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

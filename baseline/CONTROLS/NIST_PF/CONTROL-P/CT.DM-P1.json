@@ -1,0 +1,36 @@
+{
+  "control_id": "CT.DM-P1",
+  "framework": "NIST PF 1.0",
+  "function": "CONTROL-P",
+  "category": "Data Processing Management (CT.DM-P)",
+  "subcategory_id": "CT.DM-P1",
+  "subcategory_text": "Data elements can be accessed for review",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SI-7 (Software, Firmware, and Information Integrity), AU-6 (Audit Review)",
+    "NIST PF 1.0 Core (January 2020): CT.DM-P1 (verified in NIST-Privacy-Framework-V1.0-Core.xlsx row 49)",
+    "GDPR Art. 15 (Right of access by the data subject)",
+    "GDPR Art. 5(1)(d) (Accuracy)",
+    "Aligned with NIST CSF 2.0 ID.AM-07 (data and metadata inventory)",
+    "ISO/IEC 27001:2022 Annex A.8.10 (Information deletion)"
+  ],
+  "implementation_examples": [
+    "Provide authorised reviewers (internal compliance, DPO, data subject) with a documented access path to data elements held by the organisation",
+    "Maintain an index of data stores sufficient to locate data elements for review on request",
+    "Capture the provenance and processing history of data elements to support review"
+  ],
+  "assessment_objectives": [
+    "Determine whether data elements can be located and retrieved for review",
+    "Determine whether access paths exist for authorised internal and external reviewers",
+    "Determine whether retrieval is performed within documented timeframes",
+    "Determine whether data-provenance metadata is available to support review"
+  ],
+  "related_controls": [
+    "CT.DM-P2 (data transmission/disclosure for review)",
+    "CT.DM-P3 (data alteration)",
+    "CT.DM-P4 (data deletion)",
+    "ID.AM-07 (NIST CSF 2.0 — data inventory)",
+    "PR.DS-P1 (NIST PF 1.0 — data-at-rest protected)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

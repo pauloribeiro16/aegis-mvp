@@ -1,0 +1,44 @@
+{
+  "control_id": "GV.SC-07",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Cybersecurity Supply Chain Risk Management (GV.SC)",
+  "subcategory_id": "GV.SC-07",
+  "subcategory_text": "The risks posed by a supplier, their products and services, and other third parties are understood, recorded, prioritized, assessed, responded to, and monitored over the course of the relationship",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.SC-07",
+    "NIST SP 800-53 Rev. 5: RA-09, SA-04, SA-09, SR-03, SR-06",
+    "ISO/IEC 27001:2022: Clause 6.1.1, Clause 6.1.2, Clause 6.1.3, Annex A.5.19, Annex A.5.20, Annex A.5.31",
+    "CSF v1.1: ID.SC-2, ID.SC-4",
+    "CIS Controls v8: 15.6",
+    "PCI DSS: 1.2.4, 11.6.1, 12.5.2, 12.8.1, 12.8.2, 12.8.3 (+7 more)",
+    "NIST SP 800-218 (SSDF): PW.4.1, PW.4.4",
+    "CRI Profile v2.0: EX.MM, EX.MM-01, EX.MM-01.01, EX.MM-01.02, EX.MM-01.03, EX.MM-01.04, EX.MM-01.05, EX.MM-01.06, EX.MM-02, EX.MM-02.01, EX.MM-02.02, EX.MM-02.03"
+  ],
+  "implementation_examples": [
+    "Adjust assessment formats and frequencies based on the third party's reputation and the criticality of the products or services they provide",
+    "Evaluate third parties' evidence of compliance with contractual cybersecurity requirements, such as self-attestations, warranties, certifications, and other artifacts",
+    "Monitor critical suppliers to ensure that they are fulfilling their security obligations throughout the supplier relationship lifecycle using a variety of methods and techniques, such as inspections, audits, tests, or other forms of evaluation",
+    "Monitor critical suppliers, services, and products for changes to their risk profiles, and reevaluate supplier criticality and risk impact accordingly",
+    "Plan for unexpected supplier and supply chain-related interruptions to ensure business continuity"
+  ],
+  "assessment_objectives": [
+    "Determine whether the risks posed by a supplier, their products and services, and other third parties are understood, recorded, prioritized, assessed, responded to, and monitored over the course of the relationship.",
+    "Determine whether mechanisms ensure that adjust assessment formats and frequencies based on the third party's reputation and the criticality of the products or services they provide.",
+    "Determine whether activities are conducted to evaluate third parties' evidence of compliance with contractual cybersecurity requirements, such as self-attestations, warranties, certifications, and other artifacts.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.SC-01 (NIST CSF 2.0 — same category)",
+    "GV.SC-02 (NIST CSF 2.0 — same category)",
+    "GV.SC-03 (NIST CSF 2.0 — same category)",
+    "GV.SC-04 (NIST CSF 2.0 — same category)",
+    "GV.SC-05 (NIST CSF 2.0 — same category)",
+    "GV.SC-06 (NIST CSF 2.0 — same category)",
+    "GV.SC-08 (NIST CSF 2.0 — same category)",
+    "GV.SC-09 (NIST CSF 2.0 — same category)",
+    "GV.SC-10 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

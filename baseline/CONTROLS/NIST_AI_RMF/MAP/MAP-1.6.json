@@ -1,0 +1,39 @@
+{
+  "control_id": "MAP-1.6",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MAP",
+  "category": "Context is Established and Understood",
+  "subcategory_id": "MAP-1.6",
+  "subcategory_text": "System requirements are elicited from and understood by relevant AI actors",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "National Academies of Sciences, Engineering, and Medicine 2022. Fostering Responsible Computing Research: Foundations and Practices. Washington, DC: The National Academies Press. [URL](https://doi.org/10.17226/26507)",
+    "Abeba Birhane,  William S. Isaac, Vinodkumar Prabhakaran, Mark Diaz, Madeleine Clare Elish, Iason Gabriel and Shakir Mohamed. “Power to the People? Opportunities and Challenges for Participatory AI.” Equity and Access in Algorithms, Mechanisms, and Optimization (2022). [URL](https://arxiv.org/pdf/2209.07572.pdf)",
+    "Amit K. Chopra, Fabiano Dalpiaz, F. Başak Aydemir, et al. 2014. Protos: Foundations for engineering innovative sociotechnical systems. In 2014 IEEE 22nd International Requirements Engineering Conference (RE) (2014), 53-62. [URL](https://doi.org/10.1109/RE.2014.6912247)"
+  ],
+  "implementation_examples": [
+    "Proactively incorporate trustworthy characteristics into system requirements.",
+    "Establish mechanisms for regular communication and feedback between relevant AI actors and internal or external stakeholders related to system design or deployment decisions.",
+    "Develop and standardize practices to assess potential impacts at all stages of the AI lifecycle, and in collaboration with interdisciplinary experts, actors external to the team that developed or deployed the AI system, and potentially impacted communities .",
+    "Include potentially impacted groups, communities and external entities (e.g. civil society organizations, research institutes, local community groups, and trade associations) in the formulation of priorities, definitions and outcomes during impact assessment activities.",
+    "Conduct qualitative interviews with end user(s) to regularly evaluate expectations and design plans related to Human-AI configurations and tasks.",
+    "Analyze dependencies between contextual factors and system requirements. List potential impacts that may arise from not fully considering the importance of trustworthiness characteristics in any decision making.",
+    "Follow responsible design techniques in tasks such as software engineering, product management, and participatory engagement. Some examples for eliciting and documenting stakeholder requirements include product requirement documents (PRDs), user stories, user interaction/user experience (UI/UX) research, systems engineering, ethnography and related field methods.",
+    "Conduct user research to understand individuals, groups and communities that will be impacted by the AI, their values & context, and the role of systemic and historical biases. Integrate learnings into decisions about data selection and representation."
+  ],
+  "assessment_objectives": [
+    "What type of information is accessible on the design, operations, and limitations of the AI system to external stakeholders, including end users, consumers, regulators, and individuals impacted by use of the AI system?",
+    "How will the relevant AI actor(s) address changes in accuracy and precision due to either an adversary’s attempts to disrupt the AI system or unrelated changes in the operational/business environment, which may impact the accuracy of the AI system?",
+    "What metrics has the entity developed to measure performance of the AI system?",
+    "What justifications, if any, has the entity provided for the assumptions, boundaries, and limitations of the AI system?"
+  ],
+  "related_controls": [
+    "MAP-1.1 (NIST AI RMF — same category)",
+    "MAP-1.2 (NIST AI RMF — same category)",
+    "MAP-1.3 (NIST AI RMF — same category)",
+    "MAP-1.4 (NIST AI RMF — same category)",
+    "MAP-1.5 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

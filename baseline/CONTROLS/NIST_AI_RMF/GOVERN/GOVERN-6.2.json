@@ -1,0 +1,28 @@
+{
+  "control_id": "GOVERN-6.2",
+  "framework": "NIST AI RMF 1.0",
+  "function": "GOVERN",
+  "category": "Continuous Monitoring and Improvement",
+  "subcategory_id": "GOVERN-6.2",
+  "subcategory_text": "Contingency processes to handle failures or incidents in third-party data or AI systems deemed high-risk",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Bd. Governors Fed. Rsrv. Sys., Supervisory Guidance on Model Risk Management, SR Letter 11-7 (Apr. 4, 2011)",
+    "“Proposed Interagency Guidance on Third-Party Relationships: Risk Management,” 2021. [URL](https://www.occ.gov/news-issuances/news-releases/2021/nr-occ-2021-74a.pdf)",
+    "Off. Comptroller Currency, Comptroller’s Handbook: Model Risk Management (Aug. 2021). [URL](https://www.occ.gov/publications-and-resources/publications/comptrollers-handbook/files/model-risk-management/index-model-risk-management.html)"
+  ],
+  "implementation_examples": [
+    "Establish policies for handling third-party system failures to include consideration of redundancy mechanisms for vital third-party AI systems.",
+    "Verify that incident response plans address third-party AI systems."
+  ],
+  "assessment_objectives": [
+    "To what extent does the plan specifically address risks associated with acquisition, procurement of packaged software from vendors, cybersecurity controls, computational infrastructure, data, data science, deployment mechanics, and system failure?",
+    "Did you establish a process for third parties (e.g. suppliers, end users, subjects, distributors/vendors or workers) to report potential vulnerabilities, risks or biases in the AI system?",
+    "If your organization obtained datasets from a third party, did your organization assess and manage the risks of using such datasets?"
+  ],
+  "related_controls": [
+    "GOVERN-6.1 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

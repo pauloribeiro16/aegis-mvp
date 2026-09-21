@@ -1,0 +1,612 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_type": "domain_aggregate",
+  "domain_id": "D-03",
+  "domain_name": "D-03 Access Control",
+  "subdomains": [
+    "D-03.1",
+    "D-03.2",
+    "D-03.3",
+    "D-03.4"
+  ],
+  "subdomain_summaries": [
+    {
+      "id": "D-03.1",
+      "name": "Identity Lifecycle Management",
+      "participants": [
+        "GDPR",
+        "NIS2",
+        "CRA",
+        "DORA"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "CRA",
+        "DORA",
+        "GDPR",
+        "NIS2"
+      ],
+      "total_cards": 75,
+      "applicable_articles": 62,
+      "applicable_clauses": 74,
+      "sub_objectives": 4,
+      "sub_requirements": 4,
+      "applicable_nist_controls": 13
+    },
+    {
+      "id": "D-03.2",
+      "name": "Multi-Factor Authentication",
+      "participants": [
+        "GDPR",
+        "NIS2",
+        "CRA",
+        "DORA"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "CRA",
+        "DORA",
+        "GDPR",
+        "NIS2"
+      ],
+      "total_cards": 27,
+      "applicable_articles": 13,
+      "applicable_clauses": 25,
+      "sub_objectives": 4,
+      "sub_requirements": 4,
+      "applicable_nist_controls": 14
+    },
+    {
+      "id": "D-03.3",
+      "name": "Authorisation & Least Privilege",
+      "participants": [
+        "GDPR",
+        "NIS2",
+        "CRA",
+        "DORA"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "CRA",
+        "DORA",
+        "GDPR",
+        "NIS2"
+      ],
+      "total_cards": 35,
+      "applicable_articles": 22,
+      "applicable_clauses": 34,
+      "sub_objectives": 4,
+      "sub_requirements": 4,
+      "applicable_nist_controls": 17
+    },
+    {
+      "id": "D-03.4",
+      "name": "Secure System Defaults",
+      "participants": [
+        "GDPR",
+        "CRA"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "CRA",
+        "GDPR"
+      ],
+      "total_cards": 12,
+      "applicable_articles": 6,
+      "applicable_clauses": 5,
+      "sub_objectives": 2,
+      "sub_requirements": 2,
+      "applicable_nist_controls": 6
+    }
+  ],
+  "applicable_articles_by_regulation": {
+    "CRA": [
+      "Art. 6 chapeau + (a)",
+      "Art. 6(a) proviso",
+      "Art. 7(1) sentence 1",
+      "Art. 7(1) sentence 2",
+      "Art. 7(2)(a)",
+      "Art. 7(2)(b)",
+      "Art. 7(3)–(4)",
+      "Art. 8(1) sentence 3 (fallback)",
+      "Art. 8(2)",
+      "Art. 8(2)(a)–(b)"
+    ],
+    "DORA": [
+      "Art. 10(1)",
+      "Art. 10(2)+(3)",
+      "Art. 10(4)",
+      "Art. 11(1)+(2) chapeau + (a)–(e)",
+      "Art. 11(10)+(11)",
+      "Art. 11(3)+(4)+(5)",
+      "Art. 11(6)+(7)+(8)+(9)",
+      "Art. 12(1)+(2)",
+      "Art. 12(3)+(4)",
+      "Art. 12(5)",
+      "Art. 12(6)+(7)",
+      "Art. 13(1)+(2)+(3)",
+      "Art. 13(4)+(5)+(6)+(7)",
+      "Art. 14(1)",
+      "Art. 14(2)+(3)",
+      "Art. 15 chapeau + sub-points (a)–(g)",
+      "Art. 16(1) first sub-paragraph + (2)",
+      "Art. 16(1) second sub-paragraph (a)–(h) + (3)",
+      "Art. 21(1)+(2)",
+      "Art. 28 chapeau + (1) + (2)",
+      "Art. 28(3)",
+      "Art. 29(1)",
+      "Art. 29(2)",
+      "Art. 4(1)",
+      "Art. 5(1)",
+      "Art. 6(1) chapeau",
+      "Art. 7 chapeau + (a)–(d)",
+      "Art. 8(1)+(2)",
+      "Art. 8(3)+(7)",
+      "Art. 8(4)+(5)+(6)",
+      "Art. 9(1)",
+      "Art. 9(2)",
+      "Art. 9(3)(a)–(d)",
+      "Art. 9(4)(a)–(f)"
+    ],
+    "GDPR": [
+      "Art. 11(1)",
+      "Art. 12(6)",
+      "Art. 21(1)",
+      "Art. 25(1)",
+      "Art. 25(2)",
+      "Art. 28(3)",
+      "Art. 29",
+      "Art. 32(1)",
+      "Art. 49(1)(a)",
+      "Art. 5(1)(c)",
+      "Art. 6(1)(a)",
+      "Art. 7(1)",
+      "Art. 7(2)",
+      "Art. 7(3)",
+      "Art. 7(4)",
+      "Art. 8(1)",
+      "Art. 8(2)",
+      "Article 26"
+    ],
+    "NIS2": [
+      "Art. 21(1) sentence 1",
+      "Art. 21(2)(a)",
+      "Art. 21(2)(b)",
+      "Art. 21(2)(c)",
+      "Art. 21(2)(d)",
+      "Art. 21(2)(e)",
+      "Art. 21(2)(f)",
+      "Art. 21(2)(g)",
+      "Art. 21(2)(h)",
+      "Art. 21(2)(i)",
+      "Art. 21(2)(j)"
+    ]
+  },
+  "applicable_clauses_by_regulation": {
+    "CRA": [
+      "CRA-CL01",
+      "CRA-CL02",
+      "CRA-CL04",
+      "CRA-CL05",
+      "CRA-CL06",
+      "CRA-CL07",
+      "CRA-CL08–CL09",
+      "CRA-CL11",
+      "CRA-CL12",
+      "CRA-CL13"
+    ],
+    "DORA": [
+      "CL10-1",
+      "CL10-2",
+      "CL10-3",
+      "CL11-1",
+      "CL11-2",
+      "CL11-3",
+      "CL11-4",
+      "CL12-1",
+      "CL12-2",
+      "CL12-3",
+      "CL12-4",
+      "CL13-1",
+      "CL13-2",
+      "CL14-1",
+      "CL14-2",
+      "CL15-1",
+      "CL16-1",
+      "CL16-2",
+      "CL21-1",
+      "CL28-1",
+      "CL28-2",
+      "CL29-1",
+      "CL29-2",
+      "CL4-1",
+      "CL5-1",
+      "CL6-1",
+      "CL7-1",
+      "CL8-1",
+      "CL8-2",
+      "CL8-3",
+      "CL9-1",
+      "CL9-2",
+      "CL9-3",
+      "CL9-4"
+    ],
+    "GDPR": [
+      "GDPR-CL03",
+      "GDPR-CL08",
+      "GDPR-CL15",
+      "GDPR-CL16",
+      "GDPR-CL17",
+      "GDPR-CL18",
+      "GDPR-CL19",
+      "GDPR-CL20",
+      "GDPR-CL26",
+      "GDPR-CP02",
+      "GDPR-CP03",
+      "GDPR-CP09",
+      "GDPR-CP11",
+      "GDPR-CP15",
+      "GDPR-RT04",
+      "GDPR-RT16",
+      "GDPR-TR08"
+    ],
+    "NIS2": [
+      "NIS2-C03",
+      "NIS2-C04",
+      "NIS2-C05",
+      "NIS2-C06",
+      "NIS2-C07",
+      "NIS2-C08",
+      "NIS2-C09",
+      "NIS2-C10",
+      "NIS2-C11",
+      "NIS2-C12",
+      "NIS2-C13",
+      "NIS2-C14",
+      "NIS2-C15",
+      "NIS2-C16",
+      "NIS2-C17",
+      "NIS2-C18",
+      "NIS2-C19",
+      "NIS2-C20",
+      "NIS2-C21",
+      "NIS2-C22",
+      "NIS2-C29",
+      "NIS2-CL07",
+      "NIS2-CL18",
+      "NIS2-CL19"
+    ]
+  },
+  "sub_objectives_by_regulation": {
+    "CRA": [
+      {
+        "id": "SO-D-03.1.CRA",
+        "csf_anchors": [
+          "PR.AA-01",
+          "ID.AM-01",
+          "PR.AA-05",
+          "PR.AA-06",
+          "DE.CM-09"
+        ]
+      },
+      {
+        "id": "SO-D-03.2.CRA",
+        "csf_anchors": [
+          "PR.AA-01",
+          "PR.AA-05",
+          "PR.AA-06",
+          "ID.AM-01",
+          "DE.CM-09"
+        ]
+      },
+      {
+        "id": "SO-D-03.3.CRA",
+        "csf_anchors": [
+          "PR.AA-05",
+          "PR.AA-06",
+          "DE.CM-09"
+        ]
+      },
+      {
+        "id": "SO-D-03.4.CRA",
+        "csf_anchors": [
+          "PR.PS-01",
+          "PR.DS-12",
+          "GV.SC-03"
+        ]
+      }
+    ],
+    "DORA": [
+      {
+        "id": "SO-D-03.1.DORA",
+        "csf_anchors": [
+          "PR.AA-03",
+          "PR.AA-04"
+        ]
+      },
+      {
+        "id": "SO-D-03.2.DORA",
+        "csf_anchors": [
+          "PR.AA-03",
+          "PR.AA-04"
+        ]
+      },
+      {
+        "id": "SO-D-03.3.DORA",
+        "csf_anchors": [
+          "PR.AA-05",
+          "PR.AA-06"
+        ]
+      }
+    ],
+    "GDPR": [
+      {
+        "id": "SO-D-03.1.GDPR",
+        "csf_anchors": [
+          "PR.AA-03",
+          "PR.AA-02",
+          "PR.DS-12"
+        ]
+      },
+      {
+        "id": "SO-D-03.2.GDPR",
+        "csf_anchors": [
+          "PR.AA-05",
+          "PR.AA-06",
+          "PR.AT-02"
+        ]
+      },
+      {
+        "id": "SO-D-03.3.GDPR",
+        "csf_anchors": [
+          "PR.AA-05",
+          "PR.AA-06",
+          "PR.AT-02"
+        ]
+      },
+      {
+        "id": "SO-D-03.4.GDPR",
+        "csf_anchors": [
+          "PR.PS-01",
+          "PR.DS-12",
+          "GV.PO-01"
+        ]
+      }
+    ],
+    "NIS2": [
+      {
+        "id": "SO-D-03.1.NIS2",
+        "csf_anchors": [
+          "PR.AA-01",
+          "PR.AA-05",
+          "PR.AT-02"
+        ]
+      },
+      {
+        "id": "SO-D-03.2.NIS2",
+        "csf_anchors": [
+          "PR.AA-03",
+          "PR.AA-05",
+          "PR.DS-02",
+          "PR.IR-03"
+        ]
+      },
+      {
+        "id": "SO-D-03.3.NIS2",
+        "csf_anchors": [
+          "PR.AA-01",
+          "PR.AA-05",
+          "ID.AM-01",
+          "ID.AM-02"
+        ]
+      }
+    ]
+  },
+  "sub_requirements_by_regulation": {
+    "CRA": [
+      {
+        "req_id": "3.1.3",
+        "title": "Product users, services, and integrated components identities managed in verifiable manner throughout operational lifetime",
+        "nist_csf": [
+          "PR.AA-01",
+          "PR.AA-05",
+          "PR.AA-06",
+          "ID.AM-01",
+          "DE.CM-09"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "3.2.3",
+        "title": "Appropriate control mechanisms for protection from unauthorised access, which may include authentication",
+        "nist_csf": [
+          "PR.AA-01",
+          "PR.AA-05",
+          "PR.AA-06",
+          "ID.AM-01",
+          "DE.CM-09"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "3.3.3",
+        "title": "Access to product with digital elements limited to authenticated and authorised users, services, and hardware; possible unauthorised access reported; attack surfaces including external interfaces limited (multi-leg product-side authorisation framework)",
+        "nist_csf": [
+          "PR.AA-01",
+          "PR.AA-05",
+          "PR.AA-06",
+          "PR.PS-04",
+          "ID.AM-01",
+          "DE.CM-09"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "3.4.2",
+        "title": "Products with digital elements made available with secure-by-default configuration + reset-to-original-state capability + auto-update default + opt-out + postponement (Annex I Part I (2)(b) + (2)(c) multi-leg product default)",
+        "nist_csf": [
+          "PR.PS-01",
+          "PR.DS-12",
+          "GV.SC-03"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "DORA": [
+      {
+        "req_id": "3.1.4",
+        "title": "Staff + service identities managed with assertion-conveyance integrity under strong-authentication discipline",
+        "nist_csf": [
+          "PR.AA-03",
+          "PR.AA-04"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "3.2.4",
+        "title": "Strong authentication mechanisms based on relevant standards (Art. 9(4)(d); dominant EBA MFA reading)",
+        "nist_csf": [
+          "PR.AA-03",
+          "PR.AA-04"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "3.3.4",
+        "title": "Financial-entity ICT security policies limit physical or logical access to information assets and ICT assets to what is required for legitimate and approved functions and activities only (literal `only` qualifier)",
+        "nist_csf": [
+          "PR.AA-03",
+          "PR.AA-04",
+          "PR.AA-05",
+          "PR.AA-06"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "GDPR": [
+      {
+        "req_id": "3.1.1",
+        "title": "Data-subject identity verified using reasonable means proportionate to risk (rights-exercise endpoint)",
+        "nist_csf": [
+          "PR.AA-02",
+          "PR.AA-03",
+          "PR.DS-12"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "3.2.1",
+        "title": "Authentication governed by instructions + confidentiality + minimisation (no OJ authentication-strength threshold)",
+        "nist_csf": [
+          "PR.AA-05",
+          "PR.AA-06",
+          "PR.AT-02"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "3.3.1",
+        "title": "Authorisation in personal-data scope operates through documented instructions and confidentiality undertakings (chain of authority controller → processor → authorised persons)",
+        "nist_csf": [
+          "PR.AA-05",
+          "PR.AA-06",
+          "PR.AT-02"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "3.4.1",
+        "title": "Personal-data processing systems implement by-default measures across amount, extent, period, and accessibility (Art. 25(2) four-dimension AND)",
+        "nist_csf": [
+          "PR.PS-01",
+          "PR.DS-12",
+          "GV.PO-01"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "NIS2": [
+      {
+        "req_id": "3.1.2",
+        "title": "Workforce identities managed throughout the employment lifecycle (joiner-mover-leaver)",
+        "nist_csf": [
+          "PR.AA-01",
+          "PR.AA-05",
+          "PR.AT-02"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "3.2.2",
+        "title": "Multi-factor or continuous authentication `where appropriate` (Art. 21(2)(j) first clause)",
+        "nist_csf": [
+          "PR.AA-03",
+          "PR.AA-05",
+          "PR.DS-02",
+          "PR.IR-03"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "3.3.2",
+        "title": "Entity-side access-control policy established and applied to network and information systems on a model-agnostic least-privilege basis (Art. 21(2)(i) literal AND of AC + HR-security + asset-management)",
+        "nist_csf": [
+          "PR.AA-01",
+          "PR.AA-05",
+          "ID.AM-01",
+          "ID.AM-02"
+        ],
+        "scope_overlap": "N"
+      }
+    ]
+  },
+  "applicable_nist_controls_by_regulation": {
+    "CRA": [
+      "DE.CM-09",
+      "GV.SC-03",
+      "ID.AM-01",
+      "PR.AA-01",
+      "PR.AA-05",
+      "PR.AA-06",
+      "PR.DS-12",
+      "PR.PS-01",
+      "PR.PS-04"
+    ],
+    "DORA": [
+      "PR.AA-03",
+      "PR.AA-04",
+      "PR.AA-05",
+      "PR.AA-06"
+    ],
+    "GDPR": [
+      "GV.PO-01",
+      "PR.AA-02",
+      "PR.AA-03",
+      "PR.AA-05",
+      "PR.AA-06",
+      "PR.AT-02",
+      "PR.DS-12",
+      "PR.PS-01"
+    ],
+    "NIS2": [
+      "ID.AM-01",
+      "ID.AM-02",
+      "PR.AA-01",
+      "PR.AA-03",
+      "PR.AA-05",
+      "PR.AT-02",
+      "PR.DS-02",
+      "PR.IR-03"
+    ]
+  },
+  "counts": {
+    "subdomains": 4,
+    "total_cards": 149,
+    "applicable_articles_total": 73,
+    "applicable_clauses_total": 85,
+    "sub_objectives_total": 14,
+    "sub_requirements_total": 14,
+    "applicable_nist_controls_total": 29
+  },
+  "generated_at": "2026-08-04T16:38:44Z"
+}

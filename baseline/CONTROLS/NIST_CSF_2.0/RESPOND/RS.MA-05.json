@@ -1,0 +1,34 @@
+{
+  "control_id": "RS.MA-05",
+  "framework": "NIST CSF 2.0",
+  "function": "RESPOND",
+  "category": "Incident Management (RS.MA)",
+  "subcategory_id": "RS.MA-05",
+  "subcategory_text": "The criteria for initiating incident recovery are applied",
+  "informative_references": [
+    "NIST CSF 2.0 Core: RS.MA-05",
+    "NIST SP 800-53 Rev. 5: IR-04, IR-08",
+    "ISO/IEC 27001:2022: Annex A.5.25",
+    "CIS Controls v8: 17.9",
+    "PCI DSS: 12.10.1, 12.10.2, 12.10.6",
+    "CRI Profile v2.0: RS.MA-05, RS.MA-05.01"
+  ],
+  "implementation_examples": [
+    "Apply incident recovery criteria to known and assumed characteristics of the incident to determine whether incident recovery processes should be initiated",
+    "Take the possible operational disruption of incident recovery activities into account"
+  ],
+  "assessment_objectives": [
+    "Determine whether the criteria for initiating incident recovery are applied.",
+    "Determine whether activities are conducted to apply incident recovery criteria to known and assumed characteristics of the incident to determine whether incident recovery processes should be initiated.",
+    "Determine whether mechanisms ensure that take the possible operational disruption of incident recovery activities into account.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "RS.MA-01 (NIST CSF 2.0 — same category)",
+    "RS.MA-02 (NIST CSF 2.0 — same category)",
+    "RS.MA-03 (NIST CSF 2.0 — same category)",
+    "RS.MA-04 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

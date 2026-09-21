@@ -1,0 +1,35 @@
+{
+  "control_id": "MANAGE-2.3",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MANAGE",
+  "category": "Risk Responses",
+  "subcategory_id": "MANAGE-2.3",
+  "subcategory_text": "Procedures are followed to respond to and recover from a previously unknown risk when it is identified",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "AI Incident Database. 2022. AI Incident Database. [URL](https://incidentdatabase.ai/)",
+    "AIAAIC Repository. 2022. AI, algorithmic and automation incidents collected, dissected, examined, and divulged. [URL](https://www.aiaaic.org/aiaaic-repository)",
+    "Andrew Burt and Patrick Hall. 2018. What to Do When AI Fails. O’Reilly Media, Inc. (May 18, 2020). Retrieved October 17, 2022. [URL](https://www.oreilly.com/radar/what-to-do-when-ai-fails/)"
+  ],
+  "implementation_examples": [
+    "Protocols, resources, and metrics  are in place for continual monitoring of AI systems’ performance, trustworthiness, and alignment with contextual norms and values",
+    "Establish and regularly review treatment and response plans for incidents, negative impacts, or outcomes.",
+    "Establish and maintain procedures to regularly monitor system components for drift, decontextualization, or other AI system behavior factors,",
+    "Establish and maintain procedures for capturing feedback about negative impacts.",
+    "Verify contingency processes to handle any negative impacts associated with mission-critical AI systems, and to deactivate systems.",
+    "Enable preventive and post-hoc exploration of AI system limitations by relevant AI actor groups.",
+    "Decommission systems that exceed risk tolerances."
+  ],
+  "assessment_objectives": [
+    "Who will be responsible for maintaining, re-verifying, monitoring, and updating this AI once deployed?",
+    "What processes exist for data generation, acquisition/collection, ingestion, staging/storage, transformations, security, maintenance, and dissemination?",
+    "How will the appropriate performance metrics, such as accuracy, of the AI be monitored after the AI is deployed?"
+  ],
+  "related_controls": [
+    "MANAGE-2.1 (NIST AI RMF — same category)",
+    "MANAGE-2.2 (NIST AI RMF — same category)",
+    "MANAGE-2.4 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

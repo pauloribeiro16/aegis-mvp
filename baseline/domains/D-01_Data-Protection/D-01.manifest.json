@@ -1,0 +1,608 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_type": "domain_aggregate",
+  "domain_id": "D-01",
+  "domain_name": "D-01 Data Protection & Encryption",
+  "subdomains": [
+    "D-01.1",
+    "D-01.2",
+    "D-01.3",
+    "D-01.4"
+  ],
+  "subdomain_summaries": [
+    {
+      "id": "D-01.1",
+      "name": "Data at Rest Encryption",
+      "participants": [
+        "GDPR",
+        "NIS2",
+        "CRA",
+        "DORA"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "CRA",
+        "DORA",
+        "GDPR",
+        "NIS2"
+      ],
+      "total_cards": 46,
+      "applicable_articles": 33,
+      "applicable_clauses": 44,
+      "sub_objectives": 4,
+      "sub_requirements": 4,
+      "applicable_nist_controls": 10
+    },
+    {
+      "id": "D-01.2",
+      "name": "Data in Transit Encryption",
+      "participants": [
+        "GDPR",
+        "CRA",
+        "DORA",
+        "NIS2"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "CRA",
+        "DORA",
+        "GDPR",
+        "NIS2"
+      ],
+      "total_cards": 33,
+      "applicable_articles": 20,
+      "applicable_clauses": 31,
+      "sub_objectives": 3,
+      "sub_requirements": 3,
+      "applicable_nist_controls": 8
+    },
+    {
+      "id": "D-01.3",
+      "name": "Cryptographic Key Management",
+      "participants": [
+        "GDPR",
+        "CRA",
+        "DORA",
+        "NIS2"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "CRA",
+        "DORA",
+        "GDPR",
+        "NIS2"
+      ],
+      "total_cards": 11,
+      "applicable_articles": 10,
+      "applicable_clauses": 9,
+      "sub_objectives": 3,
+      "sub_requirements": 3,
+      "applicable_nist_controls": 9
+    },
+    {
+      "id": "D-01.4",
+      "name": "Data Integrity Mechanisms",
+      "participants": [
+        "GDPR",
+        "CRA",
+        "DORA"
+      ],
+      "ai_act": "partial",
+      "applicable_regs": [
+        "AI_Act",
+        "CRA",
+        "DORA",
+        "GDPR"
+      ],
+      "total_cards": 18,
+      "applicable_articles": 15,
+      "applicable_clauses": 13,
+      "sub_objectives": 4,
+      "sub_requirements": 4,
+      "applicable_nist_controls": 13
+    }
+  ],
+  "applicable_articles_by_regulation": {
+    "AI_Act": [],
+    "CRA": [
+      "Art. 13(1)",
+      "Art. 6 chapeau + (a)",
+      "Art. 6(a) proviso"
+    ],
+    "DORA": [
+      "Art. 19(4)",
+      "Art. 19(7)",
+      "Art. 19(8)",
+      "Art. 21(1)+(2)",
+      "Art. 25(1)",
+      "Art. 25(2)",
+      "Art. 4(1)",
+      "Art. 5(1)",
+      "Art. 6(1) chapeau",
+      "Art. 6(2)+(3)"
+    ],
+    "GDPR": [
+      "Art. 16",
+      "Art. 19",
+      "Art. 21(1)",
+      "Art. 25(1)",
+      "Art. 25(2)",
+      "Art. 32(1)",
+      "Art. 32(2)",
+      "Art. 34(1)",
+      "Art. 34(3)",
+      "Art. 5(1)(c)",
+      "Art. 5(1)(d)",
+      "Art. 5(1)(f)",
+      "Art. 9(2)(g)",
+      "Art. 9(2)(j)",
+      "Article 17",
+      "Article 20",
+      "Article 33",
+      "Article 35"
+    ],
+    "NIS2": [
+      "Art. 21(1) sentence 1",
+      "Art. 21(1) sentence 2",
+      "Art. 21(2)(a)",
+      "Art. 21(2)(b)",
+      "Art. 21(2)(c)",
+      "Art. 21(2)(d)",
+      "Art. 21(2)(e)",
+      "Art. 21(2)(f)",
+      "Art. 21(2)(g)",
+      "Art. 21(2)(h)",
+      "Art. 21(2)(i)",
+      "Art. 21(2)(j)",
+      "Art. 25(1)",
+      "Art. 25(2)"
+    ]
+  },
+  "applicable_clauses_by_regulation": {
+    "AI_Act": [],
+    "CRA": [
+      "CRA-CL01",
+      "CRA-CL02",
+      "CRA-CL14"
+    ],
+    "DORA": [
+      "CL19-4",
+      "CL19-7",
+      "CL19-8",
+      "CL21-1",
+      "CL25-1",
+      "CL25-2",
+      "CL4-1",
+      "CL5-1",
+      "CL6-1",
+      "CL6-2"
+    ],
+    "GDPR": [
+      "GDPR-CL03",
+      "GDPR-CL04",
+      "GDPR-CL06",
+      "GDPR-CL23",
+      "GDPR-CL24",
+      "GDPR-CP02",
+      "GDPR-CP03",
+      "GDPR-CP15",
+      "GDPR-CP16",
+      "GDPR-CP19",
+      "GDPR-CP20",
+      "GDPR-RT12",
+      "GDPR-RT15",
+      "GDPR-RT16"
+    ],
+    "NIS2": [
+      "NIS2-C03",
+      "NIS2-C04",
+      "NIS2-C05",
+      "NIS2-C06",
+      "NIS2-C07",
+      "NIS2-C08",
+      "NIS2-C09",
+      "NIS2-C10",
+      "NIS2-C11",
+      "NIS2-C12",
+      "NIS2-C13",
+      "NIS2-C14",
+      "NIS2-C15",
+      "NIS2-C16",
+      "NIS2-C17",
+      "NIS2-C18",
+      "NIS2-C19",
+      "NIS2-C20",
+      "NIS2-C21",
+      "NIS2-C22",
+      "NIS2-C29",
+      "NIS2-CL07",
+      "NIS2-CL08",
+      "NIS2-CL17",
+      "NIS2-CL19",
+      "NIS2-CL52",
+      "NIS2-CL53"
+    ]
+  },
+  "sub_objectives_by_regulation": {
+    "AI_Act": [
+      {
+        "id": "SO-D-01.4.AI_Act",
+        "csf_anchors": [
+          "PR.IR-03",
+          "PR.IR-04",
+          "PR.DS-11"
+        ]
+      }
+    ],
+    "CRA": [
+      {
+        "id": "SO-D-01.1.CRA",
+        "csf_anchors": [
+          "PR.DS-01"
+        ]
+      },
+      {
+        "id": "SO-D-01.2.CRA",
+        "csf_anchors": [
+          "PR.DS-02",
+          "PR.IR-01"
+        ]
+      },
+      {
+        "id": "SO-D-01.3.CRA",
+        "csf_anchors": [
+          "PR.DS-01",
+          "PR.AA-05",
+          "GV.OV-01"
+        ]
+      },
+      {
+        "id": "SO-D-01.4.CRA",
+        "csf_anchors": [
+          "PR.DS-01",
+          "PR.DS-10",
+          "PR.PS-04"
+        ]
+      }
+    ],
+    "DORA": [
+      {
+        "id": "SO-D-01.1.DORA",
+        "csf_anchors": [
+          "PR.DS-01",
+          "PR.DS-02",
+          "PR.DS-10",
+          "PR.DS-12"
+        ]
+      },
+      {
+        "id": "SO-D-01.2.DORA",
+        "csf_anchors": [
+          "PR.DS-01",
+          "PR.DS-02",
+          "PR.DS-10",
+          "PR.DS-12"
+        ]
+      },
+      {
+        "id": "SO-D-01.3.DORA",
+        "csf_anchors": [
+          "PR.AA-03",
+          "PR.AA-04",
+          "PR.DS-01",
+          "GV.RM-04"
+        ]
+      },
+      {
+        "id": "SO-D-01.4.DORA",
+        "csf_anchors": [
+          "PR.DS-01",
+          "PR.DS-02",
+          "PR.DS-10",
+          "PR.DS-12"
+        ]
+      }
+    ],
+    "GDPR": [
+      {
+        "id": "SO-D-01.1.GDPR",
+        "csf_anchors": [
+          "PR.DS-01",
+          "PR.DS-10"
+        ]
+      },
+      {
+        "id": "SO-D-01.2.GDPR",
+        "csf_anchors": [
+          "PR.DS-02",
+          "PR.IR-01"
+        ]
+      },
+      {
+        "id": "SO-D-01.3.GDPR",
+        "csf_anchors": [
+          "PR.DS-01",
+          "PR.IR-03"
+        ]
+      },
+      {
+        "id": "SO-D-01.4.GDPR",
+        "csf_anchors": [
+          "PR.DS-01",
+          "PR.DS-12",
+          "PR.DS-10"
+        ]
+      }
+    ],
+    "NIS2": [
+      {
+        "id": "SO-D-01.1.NIS2",
+        "csf_anchors": [
+          "PR.DS-01",
+          "PR.DS-02",
+          "GV.RM-04"
+        ]
+      }
+    ]
+  },
+  "sub_requirements_by_regulation": {
+    "AI_Act": [
+      {
+        "req_id": "1.4.4",
+        "title": "High-risk AI system resilient to errors, faults, or inconsistencies via technical redundancy",
+        "nist_csf": [
+          "PR.IR-03",
+          "PR.IR-04",
+          "PR.DS-11"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "CRA": [
+      {
+        "req_id": "1.1.3",
+        "title": "Product-stored data is encrypted using state-of-the-art mechanisms",
+        "nist_csf": [
+          "PR.DS-01"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "1.2.2",
+        "title": "Product-transmitted data is encrypted with state-of-the-art mechanisms and exposed interfaces are minimised",
+        "nist_csf": [
+          "PR.DS-02",
+          "PR.IR-01"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "1.3.2",
+        "title": "Cryptographic keys of product with digital elements separated from operational environment",
+        "nist_csf": [
+          "PR.DS-01",
+          "PR.AA-05",
+          "GV.OV-01"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "1.4.2",
+        "title": "Integrity of stored/transmitted/processed data + commands + programs + configuration protected against unauthorised manipulation",
+        "nist_csf": [
+          "PR.DS-01",
+          "PR.DS-10",
+          "PR.PS-04"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "DORA": [
+      {
+        "req_id": "1.1.4",
+        "title": "ICT-supported data of financial entity maintained at high standards of CIA at rest",
+        "nist_csf": [
+          "PR.DS-01"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "1.2.3",
+        "title": "ICT-supported data of financial entity maintained at high standards of CIA in transit",
+        "nist_csf": [
+          "PR.DS-02"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "1.3.3",
+        "title": "Financial-entity cryptographic keys protected with classification-driven cipher strength and depth",
+        "nist_csf": [
+          "PR.AA-03",
+          "PR.AA-04",
+          "PR.DS-01",
+          "GV.RM-04"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "1.4.3",
+        "title": "ICT-system data integrity maintained at high standards across all data states",
+        "nist_csf": [
+          "PR.DS-01",
+          "PR.DS-02",
+          "PR.DS-10",
+          "PR.DS-12"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "GDPR": [
+      {
+        "req_id": "1.1.1",
+        "title": "Personal data at rest is protected by appropriate technical measures",
+        "nist_csf": [
+          "PR.DS-01",
+          "PR.DS-10"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "1.2.1",
+        "title": "Personal data in transit remains confidential and unaltered",
+        "nist_csf": [
+          "PR.DS-02",
+          "PR.IR-01"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "1.3.1",
+        "title": "Personal-data key material kept separately to prevent re-attribution (de-attribution test)",
+        "nist_csf": [
+          "PR.DS-01",
+          "PR.IR-03"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "1.4.1",
+        "title": "Personal data accurate, up to date, and protected against unauthorised modification",
+        "nist_csf": [
+          "PR.DS-01",
+          "PR.DS-10",
+          "PR.DS-12"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "NIS2": [
+      {
+        "req_id": "1.1.2",
+        "title": "Cryptography policies cover CIA of stored NIS data",
+        "nist_csf": [
+          "PR.DS-01",
+          "PR.DS-02",
+          "GV.RM-04"
+        ],
+        "scope_overlap": "N"
+      }
+    ]
+  },
+  "applicable_nist_controls_by_regulation": {
+    "AI_Act": [
+      "PR.DS-11",
+      "PR.IR-03",
+      "PR.IR-04"
+    ],
+    "CRA": [
+      "GV.OV-01",
+      "PR.AA-05",
+      "PR.DS-01",
+      "PR.DS-02",
+      "PR.DS-10",
+      "PR.IR-01",
+      "PR.PS-04"
+    ],
+    "DORA": [
+      "GV.RM-04",
+      "PR.AA-03",
+      "PR.AA-04",
+      "PR.DS-01",
+      "PR.DS-02",
+      "PR.DS-10",
+      "PR.DS-12"
+    ],
+    "GDPR": [
+      "PR.DS-01",
+      "PR.DS-02",
+      "PR.DS-10",
+      "PR.DS-12",
+      "PR.IR-01",
+      "PR.IR-03"
+    ],
+    "NIS2": [
+      "GV.RM-04",
+      "PR.DS-01",
+      "PR.DS-02"
+    ]
+  },
+  "counts": {
+    "subdomains": 4,
+    "total_cards": 108,
+    "applicable_articles_total": 45,
+    "applicable_clauses_total": 54,
+    "sub_objectives_total": 14,
+    "sub_requirements_total": 14,
+    "applicable_nist_controls_total": 26
+  },
+  "generated_at": "2026-08-04T16:33:59Z",
+  "modular_layout": {
+    "D-01.1": {
+      "files": [
+        "_index.md",
+        "cross/CRA-DORA.md",
+        "cross/CRA-GDPR.md",
+        "cross/CRA-NIS2.md",
+        "cross/DORA-GDPR.md",
+        "cross/DORA-NIS2.md",
+        "cross/GDPR-NIS2.md",
+        "cross/_interactions.md",
+        "objective.md",
+        "regs/AI_Act.ambiguity.md",
+        "regs/AI_Act.md",
+        "regs/CRA.ambiguity.md",
+        "regs/CRA.md",
+        "regs/DORA.ambiguity.md",
+        "regs/DORA.md",
+        "regs/GDPR.ambiguity.md",
+        "regs/GDPR.md",
+        "regs/NIS2.ambiguity.md",
+        "regs/NIS2.md"
+      ],
+      "regs": {
+        "GDPR": {
+          "subso": 1,
+          "reqs": 1,
+          "verbatim": 3,
+          "ambiguity": true
+        },
+        "CRA": {
+          "subso": 1,
+          "reqs": 1,
+          "verbatim": 2,
+          "ambiguity": true
+        },
+        "NIS2": {
+          "subso": 1,
+          "reqs": 1,
+          "verbatim": 2,
+          "ambiguity": true
+        },
+        "DORA": {
+          "subso": 1,
+          "reqs": 1,
+          "verbatim": 3,
+          "ambiguity": true
+        },
+        "AI_Act": {
+          "subso": 0,
+          "reqs": 0,
+          "verbatim": 0,
+          "ambiguity": true
+        }
+      },
+      "cross_pairs": [
+        "CRA-DORA",
+        "CRA-GDPR",
+        "CRA-NIS2",
+        "DORA-GDPR",
+        "DORA-NIS2",
+        "GDPR-NIS2"
+      ],
+      "demoted_units": 42,
+      "dedup_lines": 216,
+      "balanced": true
+    }
+  }
+}

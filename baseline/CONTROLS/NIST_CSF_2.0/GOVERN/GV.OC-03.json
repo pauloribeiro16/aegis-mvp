@@ -1,0 +1,36 @@
+{
+  "control_id": "GV.OC-03",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Organizational Context (GV.OC)",
+  "subcategory_id": "GV.OC-03",
+  "subcategory_text": "Legal, regulatory, and contractual requirements regarding cybersecurity - including privacy and civil liberties obligations - are understood and managed",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.OC-03",
+    "NIST SP 800-53 Rev. 5: AC-01, AT-01, AU-01, CA-01, CM-01, CP-01, IA-01, IR-01 (+14 more)",
+    "ISO/IEC 27001:2022: Clause 4.2(a), Clause 4.2(b), Annex A.5.20, Annex A.5.31",
+    "CSF v1.1: ID.GV-3",
+    "PCI DSS: 12.8.1, 12.8.2, 12.8.4, 12.8.5, 12.9.1, 12.9.2 (+3 more)",
+    "NIST SP 800-218 (SSDF): PO.1.1, PO.1.2",
+    "CRI Profile v2.0: GV.OC-03, GV.OC-03.01, GV.OC-03.02"
+  ],
+  "implementation_examples": [
+    "Determine a process to track and manage legal and regulatory requirements regarding protection of individuals' information (e.g., Health Insurance Portability and Accountability Act, California Consumer Privacy Act, General Data Protection Regulation)",
+    "Determine a process to track and manage contractual requirements for cybersecurity management of supplier, customer, and partner information",
+    "Align the organization's cybersecurity strategy with legal, regulatory, and contractual requirements"
+  ],
+  "assessment_objectives": [
+    "Determine whether legal, regulatory, and contractual requirements regarding cybersecurity - including privacy and civil liberties obligations - are understood and managed.",
+    "Determine whether mechanisms ensure that determine a process to track and manage legal and regulatory requirements regarding protection of individuals' information (e.g., Health Insurance Portability and Accountability Act, California Consumer Privacy Act, General Data Protection Regulation).",
+    "Determine whether mechanisms ensure that determine a process to track and manage contractual requirements for cybersecurity management of supplier, customer, and partner information.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.OC-01 (NIST CSF 2.0 — same category)",
+    "GV.OC-02 (NIST CSF 2.0 — same category)",
+    "GV.OC-04 (NIST CSF 2.0 — same category)",
+    "GV.OC-05 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

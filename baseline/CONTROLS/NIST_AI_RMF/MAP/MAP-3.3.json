@@ -1,0 +1,35 @@
+{
+  "control_id": "MAP-3.3",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MAP",
+  "category": "Potential Risks and Benefits",
+  "subcategory_id": "MAP-3.3",
+  "subcategory_text": "Targeted application scope is specified and documented based on a system's capability, organization, and established context",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Mark J. Van der Laan and Sherri Rose (2018). Targeted Learning in Data Science. Cham: Springer International Publishing, 2018.",
+    "Alice Zheng. 2015. Evaluating Machine Learning Models (2015). O'Reilly. [URL](https://www.oreilly.com/library/view/evaluating-machine-learning/9781492048756/)",
+    "Brenda Leong and Patrick Hall (2021). 5 things lawyers should know about artificial intelligence. ABA Journal. [URL](https://www.abajournal.com/columns/article/5-things-lawyers-should-know-about-artificial-intelligence)"
+  ],
+  "implementation_examples": [
+    "Consider narrowing contexts for system deployment, including factors related to:",
+    "How outcomes may directly or indirectly affect users, groups, communities and the environment.",
+    "Length of time the system is deployed in between re-trainings.",
+    "Geographical regions in which the system operates.",
+    "Dynamics related to community standards or likelihood of system misuse or abuses (either purposeful or unanticipated).",
+    "How AI system features and capabilities can be utilized within other applications, or in place of other existing processes.",
+    "Engage AI actors from legal and procurement functions when specifying target application scope."
+  ],
+  "assessment_objectives": [
+    "To what extent has the entity clearly defined technical specifications and requirements for the AI system?",
+    "How do the technical specifications and requirements align with the AI system’s goals and objectives?"
+  ],
+  "related_controls": [
+    "MAP-3.1 (NIST AI RMF — same category)",
+    "MAP-3.2 (NIST AI RMF — same category)",
+    "MAP-3.4 (NIST AI RMF — same category)",
+    "MAP-3.5 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

@@ -1,0 +1,32 @@
+{
+  "control_id": "CT.DP-P3",
+  "framework": "NIST PF 1.0",
+  "function": "CONTROL-P",
+  "category": "Disassociated Processing (CT.DP-P)",
+  "subcategory_id": "CT.DP-P3",
+  "subcategory_text": "Data are processed to limit the formulation of inferences about individuals’ behavior or activities (e.g., data processing is decentralized, distributed architectures).",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SC-7 (Boundary Protection), AC-4 (Information Flow Enforcement)",
+    "NIST PF 1.0 Core (January 2020): CT.DP-P3 (verified row 61)",
+    "ISO/IEC 27001:2022 Annex A.5.14 (Information transfer), A.8.27",
+    "GDPR Art. 25, Art. 32",
+    "Aligned with NIST AI RMF MANAGE 4.1 (AI risks identified)"
+  ],
+  "implementation_examples": [
+    "Process data in decentralised or distributed architectures to limit the formulation of inferences about individuals' behaviour or activities",
+    "Document the architectural split and the privacy properties it provides",
+    "Use centralised monitoring only where the privacy properties are preserved"
+  ],
+  "assessment_objectives": [
+    "Determine whether processing architectures limit inference aggregation",
+    "Determine whether the architectural split is documented",
+    "Determine whether centralised monitoring preserves the privacy properties",
+    "Determine whether the architecture is tested for inference leakage"
+  ],
+  "related_controls": [
+    "CT.DP-P1 (observability limits)",
+    "CT.DP-P2 (identification limits)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

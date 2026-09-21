@@ -1,0 +1,36 @@
+{
+  "control_id": "RS.CO-03",
+  "framework": "NIST CSF 2.0",
+  "function": "RESPOND",
+  "category": "Incident Response Reporting and Communication (RS.CO)",
+  "subcategory_id": "RS.CO-03",
+  "subcategory_text": "Information is shared with designated internal and external stakeholders",
+  "informative_references": [
+    "NIST CSF 2.0 Core: RS.CO-03",
+    "NIST SP 800-53 Rev. 5: IR-04, IR-06, IR-07, SR-03, SR-08",
+    "ISO/IEC 27001:2022: Clause 7.4, Annex A.5.26",
+    "CSF v1.1: RS.CO-3, RS.CO-5",
+    "CIS Controls v8: 17.2",
+    "PCI DSS: 12.10.1, 12.10.6, 12.8.2, 12.8.4",
+    "CRI Profile v2.0: RS.CO-03, RS.CO-03.01, RS.CO-03.02"
+  ],
+  "implementation_examples": [
+    "Securely share information consistent with response plans and information sharing agreements",
+    "Voluntarily share information about an attacker's observed TTPs, with all sensitive data removed, with an Information Sharing and Analysis Center (ISAC)",
+    "Notify HR when malicious insider activity occurs",
+    "Regularly update senior leadership on the status of major incidents",
+    "Follow the rules and protocols defined in contracts for incident information sharing between the organization and its suppliers",
+    "Coordinate crisis communication methods between the organization and its critical suppliers"
+  ],
+  "assessment_objectives": [
+    "Determine whether information is shared with designated internal and external stakeholders.",
+    "Determine whether mechanisms ensure that securely share information consistent with response plans and information sharing agreements.",
+    "Determine whether mechanisms ensure that voluntarily share information about an attacker's observed TTPs, with all sensitive data removed, with an Information Sharing and Analysis Center (ISAC).",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "RS.CO-02 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

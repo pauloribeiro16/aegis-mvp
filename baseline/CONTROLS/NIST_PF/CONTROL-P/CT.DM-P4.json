@@ -1,0 +1,31 @@
+{
+  "control_id": "CT.DM-P4",
+  "framework": "NIST PF 1.0",
+  "function": "CONTROL-P",
+  "category": "Data Processing Management (CT.DM-P)",
+  "subcategory_id": "CT.DM-P4",
+  "subcategory_text": "Data elements can be accessed for deletion.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SI-12 (Information Management and Retention), MP-6 (Media Sanitization)",
+    "NIST PF 1.0 Core (January 2020): CT.DM-P4 (verified row 52)",
+    "ISO/IEC 27001:2022 Annex A.8.10 (Information deletion)",
+    "GDPR Art. 17 (Right to erasure), Art. 5(1)(e)"
+  ],
+  "implementation_examples": [
+    "Provide authorised requestors with a documented path to delete data elements across the systems that hold them, including backups and derivatives",
+    "Apply retention rules so deletion is the default at end of retention period without requiring a request",
+    "Propagate deletion to backups and downstream consumers within their respective lifecycles"
+  ],
+  "assessment_objectives": [
+    "Determine whether data elements can be deleted on request",
+    "Determine whether backup and derivative deletion is included in the deletion path",
+    "Determine whether retention rules drive automatic deletion at end of retention",
+    "Determine whether deletion is propagated to downstream consumers"
+  ],
+  "related_controls": [
+    "CT.DM-P3 (alteration)",
+    "CT.DM-P5 (data destruction)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

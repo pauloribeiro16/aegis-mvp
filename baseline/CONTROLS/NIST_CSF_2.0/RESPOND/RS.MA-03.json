@@ -1,0 +1,35 @@
+{
+  "control_id": "RS.MA-03",
+  "framework": "NIST CSF 2.0",
+  "function": "RESPOND",
+  "category": "Incident Management (RS.MA)",
+  "subcategory_id": "RS.MA-03",
+  "subcategory_text": "Incidents are categorized and prioritized",
+  "informative_references": [
+    "NIST CSF 2.0 Core: RS.MA-03",
+    "NIST SP 800-53 Rev. 5: IR-04, IR-05, IR-06",
+    "ISO/IEC 27001:2022: Annex A.5.25",
+    "CSF v1.1: RS.AN-2, RS.AN-4",
+    "PCI DSS: 10.4.1, 12.10.1, 12.10.2, 12.10.6",
+    "CRI Profile v2.0: RS.MA-03, RS.MA-03.01"
+  ],
+  "implementation_examples": [
+    "Further review and categorize incidents based on the type of incident (e.g., data breach, ransomware, DDoS, account compromise)",
+    "Prioritize incidents based on their scope, likely impact, and time-critical nature",
+    "Select incident response strategies for active incidents by balancing the need to quickly recover from an incident with the need to observe the attacker or conduct a more thorough investigation"
+  ],
+  "assessment_objectives": [
+    "Determine whether incidents are categorized and prioritized.",
+    "Determine whether mechanisms ensure that further review and categorize incidents based on the type of incident (e.g., data breach, ransomware, DDoS, account compromise).",
+    "Determine whether activities are conducted to prioritize incidents based on their scope, likely impact, and time-critical nature.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "RS.MA-01 (NIST CSF 2.0 — same category)",
+    "RS.MA-02 (NIST CSF 2.0 — same category)",
+    "RS.MA-04 (NIST CSF 2.0 — same category)",
+    "RS.MA-05 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

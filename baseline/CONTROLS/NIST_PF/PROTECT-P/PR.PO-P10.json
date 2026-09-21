@@ -1,0 +1,32 @@
+{
+  "control_id": "PR.PO-P10",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Data Protection Policies, Processes, and Procedures (PR.PO-P)",
+  "subcategory_id": "PR.PO-P10",
+  "subcategory_text": "A vulnerability management plan is developed and implemented.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: RA-5 (Vulnerability Monitoring and Scanning), RA-5(2) (Update Vulnerabilities), SI-2 (Flaw Remediation)",
+    "NIST PF 1.0 Core (January 2020): PR.PO-P10 (verified row 83)",
+    "ISO/IEC 27001:2022 Annex A.8.8 (Management of technical vulnerabilities)",
+    "GDPR Art. 5(1)(f), Art. 32",
+    "Aligned with NIST CSF 2.0 ID.RA-08 (vulnerability status monitored)"
+  ],
+  "implementation_examples": [
+    "Develop and implement a vulnerability-management plan covering identification (intelligence sources, scanning), prioritisation (risk-based), remediation (patch/configure), and confirmation (re-scan)",
+    "Track vulnerabilities through closure and report key metrics (MTTR) to leadership",
+    "Include third-party components in scope"
+  ],
+  "assessment_objectives": [
+    "Determine whether a vulnerability-management plan exists",
+    "Determine whether identification, prioritisation, remediation, and confirmation steps are executed",
+    "Determine whether third-party components are in scope",
+    "Determine whether metrics are tracked and reported"
+  ],
+  "related_controls": [
+    "PR.PO-P2 (change control)",
+    "ID.RA-P1 (contextual factors)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

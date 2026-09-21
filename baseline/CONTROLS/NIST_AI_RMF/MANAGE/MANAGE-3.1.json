@@ -1,0 +1,35 @@
+{
+  "control_id": "MANAGE-3.1",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MANAGE",
+  "category": "Third-Party Risks",
+  "subcategory_id": "MANAGE-3.1",
+  "subcategory_text": "AI risks and benefits from third-party resources are regularly monitored, and risk controls are applied and documented",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Office of the Comptroller of the Currency. 2021. Proposed Interagency Guidance on Third-Party Relationships: Risk Management. July 12, 2021. [URL](https://www.occ.gov/news-issuances/news-releases/2021/nr-occ-2021-74a.pdf)"
+  ],
+  "implementation_examples": [
+    "Have legal requirements been addressed?",
+    "Apply organizational risk tolerance to third-party AI systems.",
+    "Apply and document organizational risk management plans and practices to third-party AI technology, personnel, or other resources.",
+    "Identify and maintain documentation for third-party AI systems and components.",
+    "Establish testing, evaluation, validation and verification processes for third-party AI systems which address the needs for transparency without exposing proprietary algorithms .",
+    "Establish processes to identify beneficial use and risk indicators in third-party systems or components, such as inconsistent software release schedule, sparse documentation, and incomplete software change management (e.g., lack of forward or backward compatibility).",
+    "Organizations can establish processes for third parties to report known and potential vulnerabilities, risks or biases in supplied resources.",
+    "Verify contingency processes for handling negative impacts associated with mission-critical third-party AI systems.",
+    "Monitor third-party AI systems for potential negative impacts and risks associated with trustworthiness characteristics.",
+    "Decommission third-party systems that exceed risk tolerances."
+  ],
+  "assessment_objectives": [
+    "If a third party created the AI system or some of its components, how will you ensure a level of explainability or interpretability? Is there documentation?",
+    "If your organization obtained datasets from a third party, did your organization assess and manage the risks of using such datasets?",
+    "Did you establish a process for third parties (e.g. suppliers, end users, subjects, distributors/vendors or workers) to report potential vulnerabilities, risks or biases in the AI system?",
+    "Have legal requirements been addressed?"
+  ],
+  "related_controls": [
+    "MANAGE-3.2 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

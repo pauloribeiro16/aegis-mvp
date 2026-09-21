@@ -1,0 +1,33 @@
+{
+  "control_id": "RC.RP-03",
+  "framework": "NIST CSF 2.0",
+  "function": "RECOVER",
+  "category": "Incident Recovery Plan Execution (RC.RP)",
+  "subcategory_id": "RC.RP-03",
+  "subcategory_text": "The integrity of backups and other restoration assets is verified before using them for restoration",
+  "informative_references": [
+    "NIST CSF 2.0 Core: RC.RP-03",
+    "NIST SP 800-53 Rev. 5: CP-02, CP-04, CP-09",
+    "ISO/IEC 27001:2022: Annex A.8.13",
+    "CIS Controls v8: 11.5",
+    "PCI DSS: 12.10.1, 5.3.2, 9.4.1.1, 9.4.1.2",
+    "CRI Profile v2.0: RC.RP-03, RC.RP-03.01"
+  ],
+  "implementation_examples": [
+    "Check restoration assets for indicators of compromise, file corruption, and other integrity issues before use"
+  ],
+  "assessment_objectives": [
+    "Determine whether the integrity of backups and other restoration assets is verified before using them for restoration.",
+    "Determine whether mechanisms ensure that check restoration assets for indicators of compromise, file corruption, and other integrity issues before use.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "RC.RP-01 (NIST CSF 2.0 — same category)",
+    "RC.RP-02 (NIST CSF 2.0 — same category)",
+    "RC.RP-04 (NIST CSF 2.0 — same category)",
+    "RC.RP-05 (NIST CSF 2.0 — same category)",
+    "RC.RP-06 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

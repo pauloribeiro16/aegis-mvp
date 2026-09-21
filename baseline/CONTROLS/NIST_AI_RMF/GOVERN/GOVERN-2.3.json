@@ -1,0 +1,34 @@
+{
+  "control_id": "GOVERN-2.3",
+  "framework": "NIST AI RMF 1.0",
+  "function": "GOVERN",
+  "category": "Accountability Structures",
+  "subcategory_id": "GOVERN-2.3",
+  "subcategory_text": "Executive leadership takes responsibility for decisions about risks associated with development and deployment",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Bd. Governors Fed. Rsrv. Sys., Supervisory Guidance on Model Risk Management, SR Letter 11-7 (Apr. 4, 2011)",
+    "Off. Superintendent Fin. Inst. Canada, Enterprise-Wide Model Risk Management for Deposit-Taking Institutions, E-23 (Sept. 2017)."
+  ],
+  "implementation_examples": [
+    "Organizational management can:",
+    "Declare risk tolerances for developing or using AI systems.",
+    "Support AI risk management efforts, and play an active role in such efforts.",
+    "Integrate a risk and harm prevention mindset throughout the AI lifecycle as part of organizational culture",
+    "Support competent risk management executives.",
+    "Delegate the power, resources, and authorization to perform risk management to each appropriate level throughout the management chain.",
+    "Organizations can establish board committees for AI risk management and oversight functions and integrate those functions within the organization’s broader enterprise risk management approaches."
+  ],
+  "assessment_objectives": [
+    "Did your organization’s board and/or senior management sponsor, support and participate in your organization’s AI governance?",
+    "What are the roles, responsibilities, and delegation of authorities of personnel involved in the design, development, deployment, assessment and monitoring of the AI system?",
+    "Do AI solutions provide sufficient information to assist the personnel to make an informed decision and take actions accordingly?",
+    "To what extent has the entity clarified the roles, responsibilities, and delegated authorities to relevant stakeholders?"
+  ],
+  "related_controls": [
+    "GOVERN-2.1 (NIST AI RMF — same category)",
+    "GOVERN-2.2 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

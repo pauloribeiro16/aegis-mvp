@@ -1,0 +1,32 @@
+{
+  "control_id": "ID.RA-P4",
+  "framework": "NIST PF 1.0",
+  "function": "IDENTIFY-P",
+  "category": "Risk Assessment (ID.RA-P)",
+  "subcategory_id": "ID.RA-P4",
+  "subcategory_text": "Problematic data actions, likelihoods, and impacts are used to determine and prioritize risk.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: RA-3, PM-16 (Threat Awareness Program)",
+    "NIST PF 1.0 Core (January 2020): ID.RA-P4 (verified row 18)",
+    "ISO/IEC 27001:2022 Annex A.8.2 (Privileged access rights)",
+    "GDPR Art. 35(7)(c-d) (DPIA — risks and likelihood)",
+    "Aligned with NIST CSF 2.0 ID.RA-05 (asset risk prioritised)"
+  ],
+  "implementation_examples": [
+    "Combine the catalogue of problematic data actions with likelihood and impact assessments to produce a prioritised privacy-risk register",
+    "Use a documented risk-rating method (e.g., qualitative or semi-quantitative) so the prioritisation is reproducible and auditable",
+    "Link each prioritised risk to the data actions, data elements, and categories of individuals it touches"
+  ],
+  "assessment_objectives": [
+    "Determine whether a documented risk-rating method is used",
+    "Determine whether likelihood and impact are estimated for each problematic action",
+    "Determine whether the prioritised register links risks to the underlying data actions and elements",
+    "Determine whether the rating method supports comparison across risks and across processing activities"
+  ],
+  "related_controls": [
+    "ID.RA-P3 (problematic actions identified)",
+    "ID.RA-P5 (risk responses)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

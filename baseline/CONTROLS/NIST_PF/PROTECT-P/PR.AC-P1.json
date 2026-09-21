@@ -1,0 +1,32 @@
+{
+  "control_id": "PR.AC-P1",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Identity Management, Authentication, and Access Control (PR.AC-P)",
+  "subcategory_id": "PR.AC-P1",
+  "subcategory_text": "Identities and credentials are issued, managed, verified, revoked, and audited for authorized individuals, processes, and devices.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: IA-2 (Identification and Authentication), IA-4 (Identifier Management), AC-2 (Account Management)",
+    "NIST PF 1.0 Core (January 2020): PR.AC-P1 (verified row 84)",
+    "ISO/IEC 27001:2022 Annex A.5.16 (Identity management), A.5.17 (Authentication information)",
+    "GDPR Art. 5(1)(f), Art. 32",
+    "Aligned with NIST CSF 2.0 PR.AA-01 (identities provisioned)"
+  ],
+  "implementation_examples": [
+    "Issue, manage, verify, revoke, and audit identities and credentials for authorised individuals, processes, and devices that process personal data",
+    "Bind credentials to strong authentication mechanisms",
+    "Automate provisioning/deprovisioning and capture audit logs"
+  ],
+  "assessment_objectives": [
+    "Determine whether identities and credentials are issued, managed, and verified for authorised entities",
+    "Determine whether credentials are revoked on status change",
+    "Determine whether issuance, verification, and revocation events are auditable",
+    "Determine whether the credential strength is proportionate to the risk"
+  ],
+  "related_controls": [
+    "PR.AC-P6 (credential binding)",
+    "PR.PO-P9 (HR lifecycle)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

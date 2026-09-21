@@ -1,0 +1,42 @@
+{
+  "control_id": "GV.SC-03",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Cybersecurity Supply Chain Risk Management (GV.SC)",
+  "subcategory_id": "GV.SC-03",
+  "subcategory_text": "Cybersecurity supply chain risk management is integrated into cybersecurity and enterprise risk management, risk assessment, and improvement processes",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.SC-03",
+    "NIST SP 800-53 Rev. 5: AC-01, AT-01, AU-01, CA-01, CM-01, CP-01, IA-01, IR-01 (+20 more)",
+    "ISO/IEC 27001:2022: Clause 8.1, Annex A.5.1, Annex A.5.19, Annex A.5.20, Annex A.5.21",
+    "CSF v1.1: ID.SC-2",
+    "PCI DSS: 11.6.1, 12.3.4, 12.8.3, 6.2.3, 6.3.1, 6.3.2 (+1 more)",
+    "NIST SP 800-218 (SSDF): PW.4.1",
+    "CRI Profile v2.0: GV.SC-03, GV.SC-03.01"
+  ],
+  "implementation_examples": [
+    "Identify areas of alignment and overlap with cybersecurity and enterprise risk management",
+    "Establish integrated control sets for cybersecurity risk management and cybersecurity supply chain risk management",
+    "Integrate cybersecurity supply chain risk management into improvement processes",
+    "Escalate material cybersecurity risks in supply chains to senior management, and address them at the enterprise risk management level"
+  ],
+  "assessment_objectives": [
+    "Determine whether cybersecurity supply chain risk management is integrated into cybersecurity and enterprise risk management, risk assessment, and improvement processes.",
+    "Determine whether activities are conducted to identify areas of alignment and overlap with cybersecurity and enterprise risk management.",
+    "Determine whether activities are conducted to establish integrated control sets for cybersecurity risk management and cybersecurity supply chain risk management.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.SC-01 (NIST CSF 2.0 — same category)",
+    "GV.SC-02 (NIST CSF 2.0 — same category)",
+    "GV.SC-04 (NIST CSF 2.0 — same category)",
+    "GV.SC-05 (NIST CSF 2.0 — same category)",
+    "GV.SC-06 (NIST CSF 2.0 — same category)",
+    "GV.SC-07 (NIST CSF 2.0 — same category)",
+    "GV.SC-08 (NIST CSF 2.0 — same category)",
+    "GV.SC-09 (NIST CSF 2.0 — same category)",
+    "GV.SC-10 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

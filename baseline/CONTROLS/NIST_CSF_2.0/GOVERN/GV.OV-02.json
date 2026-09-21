@@ -1,0 +1,32 @@
+{
+  "control_id": "GV.OV-02",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Oversight (GV.OV)",
+  "subcategory_id": "GV.OV-02",
+  "subcategory_text": "The cybersecurity risk management strategy is reviewed and adjusted to ensure coverage of organizational requirements and risks",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.OV-02",
+    "NIST SP 800-53 Rev. 5: PM-09, PM-19, PM-30, PM-31, RA-07, SR-06",
+    "ISO/IEC 27001:2022: Clause 9.1, Annex A.5.1, Annex A.5.19",
+    "PCI DSS: 10.7.1, 10.7.2, 11.4.4, 12.10.2, 12.10.6, 12.3.4 (+5 more)",
+    "CRI Profile v2.0: GV.OV-02, GV.OV-02.01, GV.OV-02.02"
+  ],
+  "implementation_examples": [
+    "Review audit findings to confirm whether the existing cybersecurity strategy has ensured compliance with internal and external requirements",
+    "Review the performance oversight of those in cybersecurity-related roles to determine whether policy changes are necessary",
+    "Review strategy in light of cybersecurity incidents"
+  ],
+  "assessment_objectives": [
+    "Determine whether the cybersecurity risk management strategy is reviewed and adjusted to ensure coverage of organizational requirements and risks.",
+    "Determine whether activities are conducted to review audit findings to confirm whether the existing cybersecurity strategy has ensured compliance with internal and external requirements.",
+    "Determine whether activities are conducted to review the performance oversight of those in cybersecurity-related roles to determine whether policy changes are necessary.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.OV-01 (NIST CSF 2.0 — same category)",
+    "GV.OV-03 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

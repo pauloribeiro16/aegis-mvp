@@ -1,0 +1,31 @@
+{
+  "control_id": "CT.DM-P7",
+  "framework": "NIST PF 1.0",
+  "function": "CONTROL-P",
+  "category": "Data Processing Management (CT.DM-P)",
+  "subcategory_id": "CT.DM-P7",
+  "subcategory_text": "Mechanisms for transmitting processing permissions and related data values with data elements are established and in place.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SC-16 (Transmission of Security and Privacy Attributes), AC-4 (Information Flow Enforcement)",
+    "NIST PF 1.0 Core (January 2020): CT.DM-P7 (verified row 55)",
+    "ISO/IEC 27001:2022 Annex A.5.34 (Privacy and PII)",
+    "GDPR Art. 7 (Consent), Art. 6 (Lawfulness)"
+  ],
+  "implementation_examples": [
+    "Define and propagate processing permissions and related data values (consent, lawful basis, retention class) with the data elements themselves so that downstream systems honour origin authorisations",
+    "Use policy-stamp or attribute-based controls where architectural support is available",
+    "Audit propagation completeness on a sample basis"
+  ],
+  "assessment_objectives": [
+    "Determine whether processing permissions travel with the data",
+    "Determine whether the propagation mechanism is documented",
+    "Determine whether downstream systems honour the transmitted permissions",
+    "Determine whether propagation completeness is audited"
+  ],
+  "related_controls": [
+    "CT.PO-P1 (authorisation)",
+    "CM.PO-P1 (transparency)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

@@ -1,0 +1,37 @@
+{
+  "control_id": "GOVERN-5.2",
+  "framework": "NIST AI RMF 1.0",
+  "function": "GOVERN",
+  "category": "Third-Party AI Systems and Resources",
+  "subcategory_id": "GOVERN-5.2",
+  "subcategory_text": "Mechanisms enable AI actors to regularly incorporate feedback from relevant AI actors",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Bd. Governors Fed. Rsrv. Sys., Supervisory Guidance on Model Risk Management, SR Letter 11-7 (Apr. 4, 2011)",
+    "Off. Comptroller Currency, Comptroller’s Handbook: Model Risk Management (Aug. 2021). [URL](https://www.occ.gov/publications-and-resources/publications/comptrollers-handbook/files/model-risk-management/index-model-risk-management.html)",
+    "The Office of the Comptroller of the Currency. Enterprise Risk Appetite Statement. (Nov. 20, 2019). Retrieved on July 12, 2022. [URL](https://www.occ.treas.gov/publications-and-resources/publications/banker-education/files/pub-risk-appetite-statement.pdf)"
+  ],
+  "implementation_examples": [
+    "Explicitly acknowledge that AI systems, and the use of AI, present inherent costs and risks along with potential benefits.",
+    "Define reasonable risk tolerances for AI systems informed by laws, regulation, best practices, or industry standards.",
+    "Establish policies that ensure all relevant AI actors are provided with meaningful opportunities to provide feedback on system design and implementation.",
+    "Establish policies that define how to assign AI systems to established risk tolerance levels by combining system impact assessments with the likelihood that an impact occurs. Such assessment often entails some combination of:",
+    "Econometric evaluations of impacts and impact likelihoods to assess AI system risk.",
+    "Red-amber-green (RAG) scales for impact severity and likelihood to assess AI system risk.",
+    "Establishment of policies for allocating risk management resources along established risk tolerance levels, with higher-risk systems receiving more risk management resources and oversight.",
+    "Establishment of policies for approval, conditional approval, and disapproval of the design, implementation, and deployment of AI systems.",
+    "Establish policies facilitating the early decommissioning of AI systems that surpass an organization’s ability to reasonably mitigate risks."
+  ],
+  "assessment_objectives": [
+    "Who is ultimately responsible for the decisions of the AI and is this person aware of the intended uses and limitations of the analytic?",
+    "Who will be responsible for maintaining, re-verifying, monitoring, and updating this AI once deployed?",
+    "Who is accountable for the ethical considerations during all stages of the AI lifecycle?",
+    "To what extent are the established procedures effective in mitigating bias, inequity, and other concerns resulting from the system?",
+    "Does the AI solution provide sufficient information to assist the personnel to make an informed decision and take actions accordingly?"
+  ],
+  "related_controls": [
+    "GOVERN-5.1 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

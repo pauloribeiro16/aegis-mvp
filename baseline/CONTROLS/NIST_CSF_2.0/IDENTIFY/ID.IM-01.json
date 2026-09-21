@@ -1,0 +1,33 @@
+{
+  "control_id": "ID.IM-01",
+  "framework": "NIST CSF 2.0",
+  "function": "IDENTIFY",
+  "category": "Improvement (ID.IM)",
+  "subcategory_id": "ID.IM-01",
+  "subcategory_text": "Improvements are identified from evaluations",
+  "informative_references": [
+    "NIST CSF 2.0 Core: ID.IM-01",
+    "NIST SP 800-53 Rev. 5: AC-01, AT-01, AU-01, CA-01, CA-02, CA-05, CA-07, CA-08 (+29 more)",
+    "ISO/IEC 27001:2022: Clause 9.2, Clause 10.1, Clause 10.2, Annex A.5.35",
+    "PCI DSS: 12.3.1, 12.3.4, 12.4.2, 12.4.2.1",
+    "CRI Profile v2.0: ID.IM-01, ID.IM-01.01, ID.IM-01.02, ID.IM-01.03, ID.IM-01.04, ID.IM-01.05"
+  ],
+  "implementation_examples": [
+    "Perform self-assessments of critical services that take current threats and TTPs into consideration",
+    "Invest in third-party assessments or independent audits of the effectiveness of the organization's cybersecurity program to identify areas that need improvement",
+    "Constantly evaluate compliance with selected cybersecurity requirements through automated means"
+  ],
+  "assessment_objectives": [
+    "Determine whether improvements are identified from evaluations.",
+    "Determine whether activities are conducted to perform self-assessments of critical services that take current threats and TTPs into consideration.",
+    "Determine whether mechanisms ensure that invest in third-party assessments or independent audits of the effectiveness of the organization's cybersecurity program to identify areas that need improvement.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "ID.IM-02 (NIST CSF 2.0 — same category)",
+    "ID.IM-03 (NIST CSF 2.0 — same category)",
+    "ID.IM-04 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

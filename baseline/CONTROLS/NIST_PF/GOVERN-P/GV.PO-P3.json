@@ -1,0 +1,32 @@
+{
+  "control_id": "GV.PO-P3",
+  "framework": "NIST PF 1.0",
+  "function": "GOVERN-P",
+  "category": "Governance Policies, Processes, and Procedures (GV.PO-P)",
+  "subcategory_id": "GV.PO-P3",
+  "subcategory_text": "Roles and responsibilities for the workforce are established with respect to privacy.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PM-2 (Information Security Program Leadership), PS-7 (External Personnel Security)",
+    "NIST PF 1.0 Core (January 2020): GV.PO-P3 (verified row 27)",
+    "ISO/IEC 27001:2022 Annex A.5.2 (Information security roles and responsibilities)",
+    "GDPR Art. 38(3) (DPO responsibilities), Art. 39 (DPO tasks)",
+    "Aligned with NIST CSF 2.0 GV.RR-02 (roles and responsibilities defined)"
+  ],
+  "implementation_examples": [
+    "Document the workforce roles and responsibilities for privacy (e.g., data owner, privacy engineer, DPO, business unit accountable executive)",
+    "Embed role assignments in the HR system and include privacy responsibilities in role descriptions",
+    "Review and re-assign on organisational change"
+  ],
+  "assessment_objectives": [
+    "Determine whether privacy roles and responsibilities for the workforce are documented",
+    "Determine whether responsibilities are integrated into role descriptions and onboarding",
+    "Determine whether assignments are tracked in HR/IT systems",
+    "Determine whether role coverage gaps are detected and remediated"
+  ],
+  "related_controls": [
+    "GV.AT-P1 (workforce trained on roles)",
+    "GV.AT-P2 (executives understand their roles)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

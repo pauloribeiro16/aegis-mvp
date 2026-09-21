@@ -1,0 +1,35 @@
+{
+  "control_id": "MAP-3.1",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MAP",
+  "category": "Potential Risks and Benefits",
+  "subcategory_id": "MAP-3.1",
+  "subcategory_text": "Potential benefits of intended functionality and performance are examined and documented.",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Roel Dobbe, Thomas Krendl Gilbert, and Yonatan Mintz. 2021. Hard choices in artificial intelligence. Artificial Intelligence 300 (14 July 2021), 103555, ISSN 0004-3702. [URL](https://doi.org/10.1016/j.artint.2021.103555)",
+    "Samir Passi and Solon Barocas. 2019. Problem Formulation and Fairness. In Proceedings of the Conference on Fairness, Accountability, and Transparency (FAT* '19). Association for Computing Machinery, New York, NY, USA, 39–48. [URL](https://doi.org/10.1145/3287560.3287567)",
+    "Vincent T. Covello. 2021. Stakeholder Engagement and Empowerment. In Communicating in Risk, Crisis, and High Stress Situations (Vincent T. Covello, ed.), 87-109. [URL](https://ieeexplore.ieee.org/document/9648995)"
+  ],
+  "implementation_examples": [
+    "Utilize participatory approaches and engage with system end users to understand and document  AI systems’ potential benefits,  efficacy and interpretability of AI task output.",
+    "Maintain awareness and documentation of the individuals, groups, or communities who make up the system’s internal and external stakeholders.",
+    "Verify that appropriate skills and practices are available in-house for carrying out participatory activities such as eliciting, capturing, and synthesizing user, operator and external feedback, and translating it for AI design and development functions.",
+    "Establish mechanisms for regular communication and feedback between relevant AI actors and internal or external stakeholders related to system design or deployment decisions.",
+    "Consider performance to human baseline metrics or other standard benchmarks.",
+    "Incorporate feedback from end users, and potentially impacted individuals and communities about perceived system benefits ."
+  ],
+  "assessment_objectives": [
+    "Have the benefits of the AI system been communicated to end users?",
+    "Have the appropriate training material and disclaimers about how to adequately use the AI system been provided to end users?",
+    "Has your organization implemented a risk management system to address risks involved in deploying the identified AI system (e.g. personnel risk or changes to commercial objectives)?"
+  ],
+  "related_controls": [
+    "MAP-3.2 (NIST AI RMF — same category)",
+    "MAP-3.3 (NIST AI RMF — same category)",
+    "MAP-3.4 (NIST AI RMF — same category)",
+    "MAP-3.5 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

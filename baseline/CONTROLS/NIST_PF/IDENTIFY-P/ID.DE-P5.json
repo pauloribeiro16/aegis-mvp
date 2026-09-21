@@ -1,0 +1,32 @@
+{
+  "control_id": "ID.DE-P5",
+  "framework": "NIST PF 1.0",
+  "function": "IDENTIFY-P",
+  "category": "Data Processing Ecosystem Risk Management (ID.DE-P)",
+  "subcategory_id": "ID.DE-P5",
+  "subcategory_text": "Data processing ecosystem parties are routinely assessed using audits, test results, or other forms of evaluations to confirm they are meeting their contractual, interoperability framework, or other obligations.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SR-6 (Supplier Assessments and Reviews), CA-2 (Control Assessments)",
+    "NIST PF 1.0 Core (January 2020): ID.DE-P5 (verified row 24)",
+    "ISO/IEC 27001:2022 Annex A.5.19, A.5.21 (Managing information security in the ICT supply chain)",
+    "GDPR Art. 28(3)(h) (Audit rights)",
+    "Aligned with NIST CSF 2.0 ID.SC-04 (suppliers prioritised) and GV.SC-08"
+  ],
+  "implementation_examples": [
+    "Run periodic and event-driven assessments (audits, third-party assessments, certifications) of ecosystem parties to confirm contractual and interoperability obligations are met",
+    "Track assessment findings to closure and re-test the affected obligations",
+    "Make assessment outcomes available to the parties' accountability functions"
+  ],
+  "assessment_objectives": [
+    "Determine whether ecosystem parties are assessed on a recurring basis",
+    "Determine whether assessments use audits, test results, or other forms of evaluation",
+    "Determine whether findings are tracked to closure",
+    "Determine whether assessment outcomes inform re-prioritisation and re-contracting"
+  ],
+  "related_controls": [
+    "ID.DE-P2 (parties prioritised)",
+    "ID.DE-P3 (contracts used)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

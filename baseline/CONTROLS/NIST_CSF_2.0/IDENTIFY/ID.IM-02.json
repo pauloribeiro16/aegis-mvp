@@ -1,0 +1,38 @@
+{
+  "control_id": "ID.IM-02",
+  "framework": "NIST CSF 2.0",
+  "function": "IDENTIFY",
+  "category": "Improvement (ID.IM)",
+  "subcategory_id": "ID.IM-02",
+  "subcategory_text": "Improvements are identified from security tests and exercises, including those done in coordination with suppliers and relevant third parties",
+  "informative_references": [
+    "NIST CSF 2.0 Core: ID.IM-02",
+    "NIST SP 800-53 Rev. 5: AC-01, AT-01, AU-01, CA-01, CA-02, CA-05, CA-07, CA-08 (+32 more)",
+    "ISO/IEC 27001:2022: Clause 9.2, Clause 9.3, Clause 10.1, Clause 10.2, Annex A.5.19, Annex A.5.35",
+    "CSF v1.1: DE.DP-3, ID.SC-5, PR.IP-10",
+    "CIS Controls v8: 17.7",
+    "PCI DSS: 11.4.4, 12.10.2, 12.10.6, 12.8.4",
+    "CRI Profile v2.0: ID.IM-02, ID.IM-02.01, ID.IM-02.02, ID.IM-02.03, ID.IM-02.04, ID.IM-02.05, ID.IM-02.06, ID.IM-02.07, ID.IM-02.08, ID.IM-02.09"
+  ],
+  "implementation_examples": [
+    "Identify improvements for future incident response activities based on findings from incident response assessments (e.g., tabletop exercises and simulations, tests, internal reviews, independent audits)",
+    "Identify improvements for future business continuity, disaster recovery, and incident response activities based on exercises performed in coordination with critical service providers and product suppliers",
+    "Involve internal stakeholders (e.g., senior executives, legal department, HR) in security tests and exercises as appropriate",
+    "Perform penetration testing to identify opportunities to improve the security posture of selected high-risk systems as approved by leadership",
+    "Exercise contingency plans for responding to and recovering from the discovery that products or services did not originate with the contracted supplier or partner or were altered before receipt",
+    "Collect and analyze performance metrics using security tools and services to inform improvements to the cybersecurity program"
+  ],
+  "assessment_objectives": [
+    "Determine whether improvements are identified from security tests and exercises, including those done in coordination with suppliers and relevant third parties.",
+    "Determine whether activities are conducted to identify improvements for future incident response activities based on findings from incident response assessments (e.g., tabletop exercises and simulations, tests, internal reviews, independent audits).",
+    "Determine whether activities are conducted to identify improvements for future business continuity, disaster recovery, and incident response activities based on exercises performed in coordination with critical service providers and product suppliers.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "ID.IM-01 (NIST CSF 2.0 — same category)",
+    "ID.IM-03 (NIST CSF 2.0 — same category)",
+    "ID.IM-04 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

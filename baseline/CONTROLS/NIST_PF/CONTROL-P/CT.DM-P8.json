@@ -1,0 +1,31 @@
+{
+  "control_id": "CT.DM-P8",
+  "framework": "NIST PF 1.0",
+  "function": "CONTROL-P",
+  "category": "Data Processing Management (CT.DM-P)",
+  "subcategory_id": "CT.DM-P8",
+  "subcategory_text": "Audit/log records are determined, documented, implemented, and reviewed in accordance with policy and incorporating the principle of data minimization.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: AU-2 (Auditable Events), AU-6 (Audit Review, Reporting, and Support)",
+    "NIST PF 1.0 Core (January 2020): CT.DM-P8 (verified row 56)",
+    "ISO/IEC 27001:2022 Annex A.8.15 (Logging), A.5.34",
+    "GDPR Art. 5(1)(c) (Data minimisation), Art. 30 (Records of processing)"
+  ],
+  "implementation_examples": [
+    "Determine, document, implement, and review audit/log records for data-processing activities consistent with policy and data-minimisation principles (least detail, shortest retention needed for the purpose)",
+    "Define event coverage, log protection, retention, and review responsibilities",
+    "Schedule periodic review by an independent function"
+  ],
+  "assessment_objectives": [
+    "Determine whether audit/log records for data processing are determined and documented",
+    "Determine whether log records implement data-minimisation principles",
+    "Determine whether reviews are scheduled and executed",
+    "Determine whether logs are protected from tampering"
+  ],
+  "related_controls": [
+    "CT.PO-P2 (review/transfer/alteration/deletion processes)",
+    "PR.PT-P1 (logging standards)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

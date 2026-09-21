@@ -1,0 +1,36 @@
+{
+  "control_id": "DE.AE-07",
+  "framework": "NIST CSF 2.0",
+  "function": "DETECT",
+  "category": "Adverse Event Analysis (DE.AE)",
+  "subcategory_id": "DE.AE-07",
+  "subcategory_text": "Cyber threat intelligence and other contextual information are integrated into the analysis",
+  "informative_references": [
+    "NIST CSF 2.0 Core: DE.AE-07",
+    "NIST SP 800-53 Rev. 5: PM-16, RA-03, RA-10",
+    "ISO/IEC 27001:2022: Annex A.5.7",
+    "CSF v1.1: DE.AE-3",
+    "PCI DSS: 12.3.4, 12.5.1, 6.3.1, 6.4.3",
+    "CRI Profile v2.0: DE.AE-07, DE.AE-07.01, DE.AE-07.02"
+  ],
+  "implementation_examples": [
+    "Securely provide cyber threat intelligence feeds to detection technologies, processes, and personnel",
+    "Securely provide information from asset inventories to detection technologies, processes, and personnel",
+    "Rapidly acquire and analyze vulnerability disclosures for the organization's technologies from suppliers, vendors, and third-party security advisories"
+  ],
+  "assessment_objectives": [
+    "Determine whether cyber threat intelligence and other contextual information are integrated into the analysis.",
+    "Determine whether mechanisms ensure that securely provide cyber threat intelligence feeds to detection technologies, processes, and personnel.",
+    "Determine whether mechanisms ensure that securely provide information from asset inventories to detection technologies, processes, and personnel.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "DE.AE-02 (NIST CSF 2.0 — same category)",
+    "DE.AE-03 (NIST CSF 2.0 — same category)",
+    "DE.AE-04 (NIST CSF 2.0 — same category)",
+    "DE.AE-06 (NIST CSF 2.0 — same category)",
+    "DE.AE-08 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

@@ -1,0 +1,43 @@
+{
+  "control_id": "MEASURE-2.13",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MEASURE",
+  "category": "AI System Characteristics are Evaluated",
+  "subcategory_id": "MEASURE-2.13",
+  "subcategory_text": "Effectiveness of the employed TEVV metrics and processes are evaluated and documented",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Arvind Narayanan. \"The limits of the quantitative approach to discrimination.\" 2022 James Baldwin lecture, Princeton University, October 11, 2022. [URL](https://www.cs.princeton.edu/~arvindn/talks/baldwin-discrimination/baldwin-discrimination-transcript.pdf)",
+    "Devansh Saxena, Karla Badillo-Urquiola, Pamela J. Wisniewski, and Shion Guha. “A Human-Centered Review of Algorithms Used within the U.S. Child Welfare System.” CHI ‘20: Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems, April 23, 2020, 1–15. [URL](https://doi.org/10.1145/3313831.3376229)",
+    "Rachel Thomas and David Uminsky. “Reliance on Metrics Is a Fundamental Challenge for AI.” Patterns 3, no. 5 (May 13, 2022): 100476. [URL](https://doi.org/10.1016/j.patter.2022.100476)"
+  ],
+  "implementation_examples": [
+    "Review selected system metrics and associated TEVV processes to determine if they are able to sustain system improvements, including the identification and removal of errors.",
+    "Regularly evaluate system metrics for utility, and consider descriptive approaches in place of overly complex methods.",
+    "Review selected system metrics for acceptability within the end user and impacted community of interest.",
+    "Assess effectiveness of metrics for identifying and measuring risks."
+  ],
+  "assessment_objectives": [
+    "To what extent does the system/entity consistently measure progress towards stated goals and objectives?",
+    "Given the purpose of this AI, what is an appropriate interval for checking whether it is still accurate, unbiased, explainable, etc.? What are the checks for this model?",
+    "What corrective actions has the entity taken to enhance the quality, accuracy, reliability, and representativeness of the data?",
+    "To what extent are the model outputs consistent with the entity’s values and principles to foster public trust and equity?",
+    "How will the accuracy or appropriate performance metrics be assessed?"
+  ],
+  "related_controls": [
+    "MEASURE-2.1 (NIST AI RMF — same category)",
+    "MEASURE-2.10 (NIST AI RMF — same category)",
+    "MEASURE-2.11 (NIST AI RMF — same category)",
+    "MEASURE-2.12 (NIST AI RMF — same category)",
+    "MEASURE-2.2 (NIST AI RMF — same category)",
+    "MEASURE-2.3 (NIST AI RMF — same category)",
+    "MEASURE-2.4 (NIST AI RMF — same category)",
+    "MEASURE-2.5 (NIST AI RMF — same category)",
+    "MEASURE-2.6 (NIST AI RMF — same category)",
+    "MEASURE-2.7 (NIST AI RMF — same category)",
+    "MEASURE-2.8 (NIST AI RMF — same category)",
+    "MEASURE-2.9 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

@@ -1,0 +1,32 @@
+{
+  "control_id": "ID.IM-P8",
+  "framework": "NIST PF 1.0",
+  "function": "IDENTIFY-P",
+  "category": "Inventory and Mapping (ID.IM-P)",
+  "subcategory_id": "ID.IM-P8",
+  "subcategory_text": "Data processing is mapped, illustrating the data actions and associated data elements for systems/products/services, including components; roles of the component owners/operators; and interactions of individuals or third parties with the systems/products/services.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PM-12 (Plan of Action and Milestones Process); NIST SP 800-122 §3.1 (PII Inventory)",
+    "NIST PF 1.0 Core (January 2020): ID.IM-P8 (verified row 11)",
+    "ISO/IEC 27001:2022 Annex A.5.10 (Acceptable use of information)",
+    "GDPR Art. 30 (Records of processing activities), Art. 35 (DPIA)",
+    "Aligned with NIST CSF 2.0 ID.AM-03 (data flow mapping)"
+  ],
+  "implementation_examples": [
+    "Build and maintain data-flow diagrams that link data actions, data elements, system components, roles, and individual/third-party interactions for each processing activity",
+    "Use the data-flow map as the authoritative input for DPIA and privacy-risk assessment",
+    "Reconcile the data-flow map against the inventory to identify undocumented flows (shadow processing)"
+  ],
+  "assessment_objectives": [
+    "Determine whether data-flow maps exist for each processing activity",
+    "Determine whether maps link data actions to data elements to roles to interactions",
+    "Determine whether data-flow maps are inputs to privacy-impact assessments",
+    "Determine whether unmapped/shadow flows are detected through reconciliation"
+  ],
+  "related_controls": [
+    "ID.IM-P1 to ID.IM-P7 (inventory baselines)",
+    "GV.RA-P1 (privacy risk assessment)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

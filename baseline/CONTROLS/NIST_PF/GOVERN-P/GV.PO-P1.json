@@ -1,0 +1,32 @@
+{
+  "control_id": "GV.PO-P1",
+  "framework": "NIST PF 1.0",
+  "function": "GOVERN-P",
+  "category": "Governance Policies, Processes, and Procedures (GV.PO-P)",
+  "subcategory_id": "GV.PO-P1",
+  "subcategory_text": "Organizational privacy values and policies (e.g., conditions on data processing such as data uses or retention periods, individuals’ prerogatives with respect to data processing) are established and communicated.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PM-1 (Information Security and Privacy Program Plan)",
+    "NIST PF 1.0 Core (January 2020): GV.PO-P1 (verified row 25)",
+    "ISO/IEC 27001:2022 Annex A.5.1 (Policies for information security), A.5.34 (Privacy and PII protection)",
+    "GDPR Art. 5 (Principles), Art. 24 (Controller responsibility)",
+    "Aligned with NIST CSF 2.0 GV.PO-01 (organisational privacy policy)"
+  ],
+  "implementation_examples": [
+    "Document and promulgate organisational privacy values and policies that set conditions on data processing (data uses, retention, individual prerogatives)",
+    "Ensure the values and policies are visible to internal stakeholders and, where appropriate, to external stakeholders (e.g., posted on the public web)",
+    "Maintain translation and version control of the values and policies"
+  ],
+  "assessment_objectives": [
+    "Determine whether organisational privacy values and policies are documented",
+    "Determine whether the policies are communicated to internal and external stakeholders",
+    "Determine whether the policies cover conditions on data uses, retention, and individual prerogatives",
+    "Determine whether the policies are version-controlled and reviewed on a defined cadence"
+  ],
+  "related_controls": [
+    "GV.PO-P2 (values instillation process)",
+    "GV.PO-P5 (legal/regulatory managed)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

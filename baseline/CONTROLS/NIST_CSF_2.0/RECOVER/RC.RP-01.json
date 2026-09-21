@@ -1,0 +1,35 @@
+{
+  "control_id": "RC.RP-01",
+  "framework": "NIST CSF 2.0",
+  "function": "RECOVER",
+  "category": "Incident Recovery Plan Execution (RC.RP)",
+  "subcategory_id": "RC.RP-01",
+  "subcategory_text": "The recovery portion of the incident response plan is executed once initiated from the incident response process",
+  "informative_references": [
+    "NIST CSF 2.0 Core: RC.RP-01",
+    "NIST SP 800-53 Rev. 5: CP-10, IR-04, IR-08",
+    "ISO/IEC 27001:2022: Annex A.5.26",
+    "CSF v1.1: RC.RP-1",
+    "PCI DSS: 12.10.1, 12.10.2, 12.10.3",
+    "CRI Profile v2.0: RC.RP-01, RC.RP-01.01"
+  ],
+  "implementation_examples": [
+    "Begin recovery procedures during or after incident response processes",
+    "Make all individuals with recovery responsibilities aware of the plans for recovery and the authorizations required to implement each aspect of the plans"
+  ],
+  "assessment_objectives": [
+    "Determine whether the recovery portion of the incident response plan is executed once initiated from the incident response process.",
+    "Determine whether mechanisms ensure that begin recovery procedures during or after incident response processes.",
+    "Determine whether mechanisms ensure that make all individuals with recovery responsibilities aware of the plans for recovery and the authorizations required to implement each aspect of the plans.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "RC.RP-02 (NIST CSF 2.0 — same category)",
+    "RC.RP-03 (NIST CSF 2.0 — same category)",
+    "RC.RP-04 (NIST CSF 2.0 — same category)",
+    "RC.RP-05 (NIST CSF 2.0 — same category)",
+    "RC.RP-06 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

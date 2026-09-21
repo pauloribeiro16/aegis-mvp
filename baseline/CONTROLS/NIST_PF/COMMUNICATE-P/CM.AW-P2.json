@@ -1,0 +1,31 @@
+{
+  "control_id": "CM.AW-P2",
+  "framework": "NIST PF 1.0",
+  "function": "COMMUNICATE-P",
+  "category": "Data Processing Awareness (CM.AW-P)",
+  "subcategory_id": "CM.AW-P2",
+  "subcategory_text": "Mechanisms for obtaining feedback from individuals (e.g., surveys or focus groups) about data processing and associated privacy risks are established and in place.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PM-22, SI-18",
+    "NIST PF 1.0 Core (January 2020): CM.AW-P2 (verified row 67)",
+    "ISO/IEC 27001:2022 Annex A.5.34",
+    "GDPR Art. 12, Recital 39 (Transparency on risk)"
+  ],
+  "implementation_examples": [
+    "Establish feedback channels (e.g., in-product survey panels, focus groups, customer interviews) to gather individual views on data processing and associated privacy risks",
+    "Triage and act on feedback, and close the loop with the participants where feasible",
+    "Capture feedback trends to inform transparency-policy updates"
+  ],
+  "assessment_objectives": [
+    "Determine whether feedback channels exist",
+    "Determine whether feedback is triaged and acted on",
+    "Determine whether feedback trends inform transparency updates",
+    "Determine whether feedback handling records are maintained"
+  ],
+  "related_controls": [
+    "CM.AW-P1 (notice mechanisms)",
+    "GV.MT-P7 (complaints)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

@@ -1,0 +1,30 @@
+{
+  "control_id": "RS.AN-07",
+  "framework": "NIST CSF 2.0",
+  "function": "RESPOND",
+  "category": "Incident Analysis (RS.AN)",
+  "subcategory_id": "RS.AN-07",
+  "subcategory_text": "Incident data and metadata are collected, and their integrity and provenance are preserved",
+  "informative_references": [
+    "NIST CSF 2.0 Core: RS.AN-07",
+    "NIST SP 800-53 Rev. 5: AU-07, IR-04, IR-06",
+    "ISO/IEC 27001:2022: Annex A.5.28",
+    "PCI DSS: 10.2.1, 10.2.2, 10.3.2, 10.3.3, 10.6.1",
+    "CRI Profile v2.0: RS.AN-07, RS.AN-07.01"
+  ],
+  "implementation_examples": [
+    "Collect, preserve, and safeguard the integrity of all pertinent incident data and metadata (e.g., data source, date/time of collection) based on evidence preservation and chain-of-custody procedures"
+  ],
+  "assessment_objectives": [
+    "Determine whether incident data and metadata are collected, and their integrity and provenance are preserved.",
+    "Determine whether mechanisms ensure that collect, preserve, and safeguard the integrity of all pertinent incident data and metadata (e.g., data source, date/time of collection) based on evidence preservation and chain-of-custody procedures.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "RS.AN-03 (NIST CSF 2.0 — same category)",
+    "RS.AN-06 (NIST CSF 2.0 — same category)",
+    "RS.AN-08 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

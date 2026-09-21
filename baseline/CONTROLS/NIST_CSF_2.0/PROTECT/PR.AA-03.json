@@ -1,0 +1,38 @@
+{
+  "control_id": "PR.AA-03",
+  "framework": "NIST CSF 2.0",
+  "function": "PROTECT",
+  "category": "Identity Management, Authentication, and Access Control (PR.AA)",
+  "subcategory_id": "PR.AA-03",
+  "subcategory_text": "Users, services, and hardware are authenticated",
+  "informative_references": [
+    "NIST CSF 2.0 Core: PR.AA-03",
+    "NIST SP 800-53 Rev. 5: AC-07, AC-12, IA-02, IA-03, IA-05, IA-07, IA-08, IA-09 (+2 more)",
+    "ISO/IEC 27001:2022: Annex A.5.15, Annex A.5.16, Annex A.5.17, Annex A.5.18, Annex A.8.5",
+    "CSF v1.1: PR.AC-3, PR.AC-7",
+    "PCI DSS: 2.2.2, 2.3.1, 3.5.1.3, 8.2.8, 8.3.1, 8.3.10 (+6 more)",
+    "NIST SP 800-218 (SSDF): PO.5.2",
+    "CRI Profile v2.0: PR.AA-03, PR.AA-03.01, PR.AA-03.02, PR.AA-03.03"
+  ],
+  "implementation_examples": [
+    "Require multifactor authentication",
+    "Enforce policies for the minimum strength of passwords, PINs, and similar authenticators",
+    "Periodically reauthenticate users, services, and hardware based on risk (e.g., in zero trust architectures)",
+    "Ensure that authorized personnel can access accounts essential for protecting safety under emergency conditions"
+  ],
+  "assessment_objectives": [
+    "Determine whether users, services, and hardware are authenticated.",
+    "Determine whether activities are conducted to require multifactor authentication.",
+    "Determine whether activities are conducted to enforce policies for the minimum strength of passwords, PINs, and similar authenticators.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "PR.AA-01 (NIST CSF 2.0 — same category)",
+    "PR.AA-02 (NIST CSF 2.0 — same category)",
+    "PR.AA-04 (NIST CSF 2.0 — same category)",
+    "PR.AA-05 (NIST CSF 2.0 — same category)",
+    "PR.AA-06 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

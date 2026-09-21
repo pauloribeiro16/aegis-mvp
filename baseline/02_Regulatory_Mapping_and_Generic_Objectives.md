@@ -1,0 +1,60 @@
+# Baseline — Security Control Taxonomy & Generic Objectives
+
+> **Phase 0 (Baseline / Common):** Purely regulatory and conceptual. Completely independent of any company context, system architecture, or specific technology.
+> **Sources:** Methodology baseline `Methodology_compact/00_METHODOLOGY/PREPROCESSING_by_domain/domains/`.
+
+---
+
+## 1. Scope & Purpose
+
+This baseline defines the canonical 10 domains and 38 sub-domains (`D-01.1` to `D-10.3`) and their **frozen High-level Security Objectives (HSO)** and **regulatory Sub-SOs**.
+In the AEGIS methodology:
+- Regulations enter Phase 0.
+- Ambiguities are analyzed and resolved in Phase 0 (see [01_Ambiguity_Registry.md](01_Ambiguity_Registry.md)).
+- The output of Phase 0 is this **frozen regulatory baseline** — the floor of generic security objectives for each participating EU regulation (`GDPR`, `CRA`, `NIS2`, `DORA`, `AI_Act`).
+- **No company context and no vendor or technology exists in Phase 0.**
+
+---
+
+## 2. Canonical 10×38 Generic Objectives Baseline
+
+| Sub-Domain ID | Sub-Domain Name | High-Level Security Objective (HSO, Frozen) | GDPR Sub-SO | CRA Sub-SO | Corpus Path |
+|---|---|---|---|---|---|
+| **D-01.1** | Data at Rest Encryption | Data held at rest in storage is protected against unauthorised access through appropriate technical measures — primarily encryption with appropriate key custody — calibrated to risk and state of the art. | SO-D-01.1.GDPR (Art. 5(1)(f), Art. 32(1)(b)) | SO-D-01.1.CRA (Annex I Part I (2)(e)) | `D-01_Data-Protection/D-01.1` |
+| **D-01.2** | Data in Transit Encryption | Data in transit across network paths, inter-service calls, and external interfaces is protected against unauthorised disclosure and alteration through cryptographic confidentiality and integrity controls. | SO-D-01.2.GDPR (Art. 32(1)(b), Art. 32(2)) | SO-D-01.2.CRA (Annex I Part I (2)(e), (2)(j)) | `D-01_Data-Protection/D-01.2` |
+| **D-01.3** | Cryptographic Key Management | Cryptographic keys and related authentication material are managed with separation of roles, so that possession of key material is not bundled with operational environment access. | SO-D-01.3.GDPR (Art. 4(5), Art. 32(1)(a)) | SO-D-01.3.CRA (Annex I Part I (2)(d), (2)(e)) | `D-01_Data-Protection/D-01.3` |
+| **D-01.4** | Data Integrity Mechanisms | Data integrity is preserved against unauthorised modification across the lifecycle (at rest, in transit, in use), with corruption detected, logged, and reported. | SO-D-01.4.GDPR (Art. 5(1)(d), Art. 16) | SO-D-01.4.CRA (Annex I Part I (2)(f), (2)(l)) | `D-01_Data-Protection/D-01.4` |
+| **D-02.1** | Vulnerability Identification | Vulnerabilities are identified on a continuing basis across products and operated systems, feeding testing, remediation, and notification cascades. | SO-D-02.1.GDPR (Art. 32(1)(d), Art. 35(11)) | SO-D-02.1.CRA (Annex I Part I (2)(a), Part II (1)) | `D-02_Vulnerability-Management/D-02.1` |
+| **D-02.2** | Patch Management | Vulnerabilities identified are addressed and remediated through security updates distributed via secure channels under defined severity deployment windows. | — | SO-D-02.2.CRA (Annex I Part II (2), (7), (8), Art. 13) | `D-02_Vulnerability-Management/D-02.2` |
+| **D-02.3** | Coordinated Vulnerability Disclosure | A coordinated vulnerability disclosure (CVD) ecosystem is maintained, covering policy, intake, triage, publication, and a public contact address. | — | SO-D-02.3.CRA (Annex I Part II (4), (5), (6), Art. 13(17)) | `D-02_Vulnerability-Management/D-02.3` |
+| **D-02.4** | Threat-Led Penetration Testing | The security of assets and digital products is evaluated through testing and verification commensurate with the entity criticality and threat environment. | — | SO-D-02.4.CRA (Annex I Part II (3)) | `D-02_Vulnerability-Management/D-02.4` |
+| **D-03.1** | Identity Lifecycle | Identities of principals interacting with systems and products are managed in a verifiable, lifecycle-aware manner with explicit boundaries. | SO-D-03.1.GDPR (Art. 12(6), Art. 11(2)) | SO-D-03.1.CRA (Annex I Part I (2)(d), Art. 13(15)) | `D-03_Access-Control/D-03.1` |
+| **D-03.2** | Authentication Strength | Authentication of users and services operates through mechanisms of sufficient strength for the risk, enforcing verified identity before access. | SO-D-03.2.GDPR (Art. 28(3)(b), Art. 29, Art. 32) | SO-D-03.2.CRA (Annex I Part I (2)(d)) | `D-03_Access-Control/D-03.2` |
+| **D-03.3** | Authorisation & Least Privilege | Entitlement to perform actions is managed per least privilege, with explicit authorisation models, documented permissions, and attack surface limitation. | SO-D-03.3.GDPR (Art. 29, Art. 32(4)) | SO-D-03.3.CRA (Annex I Part I (2)(d), (2)(j)) | `D-03_Access-Control/D-03.3` |
+| **D-03.4** | Secure System Defaults | The default disposition of processing systems and product configuration is the minimum-necessary, secure baseline state. | SO-D-03.4.GDPR (Art. 25(1), Art. 25(2)) | SO-D-03.4.CRA (Annex I Part I (2)(b), (2)(c)) | `D-03_Access-Control/D-03.4` |
+| **D-04.1** | Incident Detection & Triage | Security-relevant events are detected and triaged with documented trigger moments that anchor downstream response and notification clocks. | SO-D-04.1.GDPR (Art. 33(1), Art. 4(12)) | SO-D-04.1.CRA (Annex I Part I (2)(l)) | `D-04_Incident-Response/D-04.1` |
+| **D-04.2** | Containment & Mitigation | Security incidents are contained and mitigated through appropriate measures addressing impact and reducing recurrence risk. | SO-D-04.2.GDPR (Art. 34(3), Art. 33(3)(d)) | SO-D-04.2.CRA (Annex I Part I (2)(h), (2)(i), (2)(k)) | `D-04_Incident-Response/D-04.2` |
+| **D-04.3** | Regulatory Notification | Incidents and actively exploited vulnerabilities are notified to competent authorities and affected recipients within regulatory timelines. | SO-D-04.3.GDPR (Art. 33(1)) | SO-D-04.3.CRA (Art. 14(2)) | `D-04_Incident-Response/D-04.3` |
+| **D-04.4** | Restoration & Recovery | Systems, services, and data are restored and recovered with documented recovery evidence and resilience verification. | SO-D-04.4.GDPR (Art. 32(1)(b), (c)) | SO-D-04.4.CRA (Annex I Part I (2)(h), (2)(k), Art. 13(21)) | `D-04_Incident-Response/D-04.4` |
+| **D-05.1** | Data Minimisation | Data collected or acquired is strictly limited to what is adequate, relevant, and necessary for declared purposes. | SO-D-05.1.GDPR (Art. 5(1)(c), Art. 6(4), Art. 25) | SO-D-05.1.CRA (Annex I Part I (2)(g), Art. 3(23)) | `D-05_Data-Lifecycle/D-05.1` |
+| **D-05.2** | Retention & Archiving | Data is retained only for the period required to satisfy declared purposes, with documented deletion/anonymisation criteria. | SO-D-05.2.GDPR (Art. 5(1)(e), Art. 30(1)(f)) | SO-D-05.2.CRA (Art. 13(8), Art. 13(9)) | `D-05_Data-Lifecycle/D-05.2` |
+| **D-05.3** | Right to Erasure | Data held about an individual is rendered inaccessible/deleted upon legitimate request or end of processing ground without undue delay. | SO-D-05.3.GDPR (Art. 17(1), Art. 28(3)(g)) | SO-D-05.3.CRA (Annex I Part I (2)(m)) | `D-05_Data-Lifecycle/D-05.3` |
+| **D-05.4** | Data Portability | Personal data is exportable in structured, commonly used, machine-readable formats to allow transmission without hindrance. | SO-D-05.4.GDPR (Art. 20) | — | `D-05_Data-Lifecycle/D-05.4` |
+| **D-06.1** | Vendor Risk Assessment | Suppliers, components, and third-party services undergo risk-anchored due diligence and ongoing review prior to integration. | SO-D-06.1.GDPR (Art. 28(1), (2)) | SO-D-06.1.CRA (Art. 13(5), Art. 13(6)) | `D-06_Supply-Chain/D-06.1` |
+| **D-06.2** | Software Bill of Materials (SBOM) | A software bill of materials covering components and dependencies is drawn up and maintained in machine-readable format. | — | SO-D-06.2.CRA (Annex I Part II (1)) | `D-06_Supply-Chain/D-06.2` |
+| **D-06.3** | Contractual Security Obligations | Third-party security obligations, audit rights, and breach liabilities are made legally enforceable through binding agreements. | SO-D-06.3.GDPR (Art. 28(3), Art. 46) | SO-D-06.3.CRA (Art. 19, Art. 20) | `D-06_Supply-Chain/D-06.3` |
+| **D-06.4** | Third-Party Boundary Management | Boundary responsibilities (importers, distributors, authorised representatives) are explicitly allocated and documented. | SO-D-06.4.GDPR (Art. 27) | SO-D-06.4.CRA (Art. 18, Art. 19, Art. 20) | `D-06_Supply-Chain/D-06.4` |
+| **D-07.1** | Secure-by-Design Principles | Security and privacy are integrated into the acquisition, design, development, and maintenance of systems and products from inception. | SO-D-07.1.GDPR (Art. 25(1)) | SO-D-07.1.CRA (Art. 13(1), (2)) | `D-07_Secure-Development/D-07.1` |
+| **D-07.2** | Secure Coding Practices | Coding practices enforce attack-surface limitation, input validation, and exploitation mitigation across development lifecycles. | — | SO-D-07.2.CRA (Annex I Part I (2)(j), (k)) | `D-07_Secure-Development/D-07.2` |
+| **D-07.3** | Build & Release Pipeline Security | Build and release pipelines enforce artifact integrity, provenance verification, and secure distribution channels. | — | SO-D-07.3.CRA (Annex I Part II (7), (8)) | `D-07_Secure-Development/D-07.3` |
+| **D-07.4** | Change Management | Modifications undergo documented risk assessment, controlled deployment, and evaluation of regulatory substantial modification. | — | SO-D-07.4.CRA (Art. 13(14)) | `D-07_Secure-Development/D-07.4` |
+| **D-08.1** | General Security Awareness | Security and data protection awareness is established through periodic training programs covering all personnel. | SO-D-08.1.GDPR (Art. 39(1)(b)) | SO-D-08.1.CRA (Annex II §8) | `D-08_Human-Factors/D-08.1` |
+| **D-08.2** | Role-Specific Competence | Personnel in critical or operational roles receive specialized training commensurate with their responsibilities. | SO-D-08.2.GDPR (Art. 39(1)(b)) | SO-D-08.2.CRA (Annex II §8(f)) | `D-08_Human-Factors/D-08.2` |
+| **D-08.3** | Management Board Governance | Governance bodies maintain oversight and verified knowledge of cybersecurity and regulatory risk management. | — | — | `D-08_Human-Factors/D-08.3` |
+| **D-09.1** | Information Security Policies | A documented policy framework with clear accountability and review cycles anchors the entity's security posture. | SO-D-09.1.GDPR (Art. 24(1), Art. 5(2)) | SO-D-09.1.CRA (Art. 13(8), Art. 24(1)) | `D-09_Governance-Documentation/D-09.1` |
+| **D-09.2** | Impact & Risk Assessments | Systematic risk and impact assessments are conducted prior to high-risk processing or product release and periodically reviewed. | SO-D-09.2.GDPR (Art. 35) | SO-D-09.2.CRA (Art. 13(2), (3), Annex VII §3) | `D-09_Governance-Documentation/D-09.2` |
+| **D-09.3** | Asset Inventories | Critical information assets, systems, and product dependencies are documented in an authoritative inventory. | — | SO-D-09.3.CRA (Art. 31(2), Annex VII §1, §2) | `D-09_Governance-Documentation/D-09.3` |
+| **D-09.4** | Records of Processing | Records of processing activities, technical product documentation, and regulatory compliance evidence are systematically maintained. | SO-D-09.4.GDPR (Art. 30) | SO-D-09.4.CRA (Art. 13(12), (13)) | `D-09_Governance-Documentation/D-09.4` |
+| **D-10.1** | Continuous Security Monitoring | Layered monitoring and event detection are maintained to identify anomalous activity and trigger incident handling. | SO-D-10.1.GDPR (Art. 32(1)(b), (d)) | SO-D-10.1.CRA (Annex I Part I (2)(l), Part II (6)) | `D-10_Monitoring-Audit/D-10.1` |
+| **D-10.2** | Audit Logging & Traceability | Audit records with integrity protection are generated and preserved to enable accountability and forensic investigation. | SO-D-10.2.GDPR (Art. 5(2), Art. 30(3)) | SO-D-10.2.CRA (Annex VII §5–§8, Art. 13(22)) | `D-10_Monitoring-Audit/D-10.2` |
+| **D-10.3** | Compliance & Effectiveness Testing | Security measures and technical controls are regularly tested, evaluated, and assessed for continuing operational effectiveness. | SO-D-10.3.GDPR (Art. 32(1)(d)) | SO-D-10.3.CRA (Annex I Part II (3), Annex VII §6) | `D-10_Monitoring-Audit/D-10.3` |

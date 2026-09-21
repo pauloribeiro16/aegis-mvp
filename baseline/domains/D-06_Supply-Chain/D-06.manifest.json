@@ -1,0 +1,653 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_type": "domain_aggregate",
+  "domain_id": "D-06",
+  "domain_name": "D-06 Supply Chain",
+  "subdomains": [
+    "D-06.1",
+    "D-06.2",
+    "D-06.3",
+    "D-06.4"
+  ],
+  "subdomain_summaries": [
+    {
+      "id": "D-06.1",
+      "name": "Vendor Risk Assessment",
+      "participants": [
+        "GDPR",
+        "NIS2",
+        "CRA",
+        "DORA"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "CRA",
+        "DORA",
+        "GDPR",
+        "NIS2"
+      ],
+      "total_cards": 31,
+      "applicable_articles": 18,
+      "applicable_clauses": 30,
+      "sub_objectives": 4,
+      "sub_requirements": 4,
+      "applicable_nist_controls": 18
+    },
+    {
+      "id": "D-06.2",
+      "name": "Software Bill of Materials (SBOM)",
+      "participants": [
+        "CRA"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "CRA"
+      ],
+      "total_cards": 5,
+      "applicable_articles": 0,
+      "applicable_clauses": 0,
+      "sub_objectives": 1,
+      "sub_requirements": 1,
+      "applicable_nist_controls": 3
+    },
+    {
+      "id": "D-06.3",
+      "name": "Contractual Security Obligations",
+      "participants": [
+        "GDPR",
+        "NIS2",
+        "CRA",
+        "DORA"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "CRA",
+        "DORA",
+        "GDPR",
+        "NIS2"
+      ],
+      "total_cards": 76,
+      "applicable_articles": 61,
+      "applicable_clauses": 75,
+      "sub_objectives": 4,
+      "sub_requirements": 4,
+      "applicable_nist_controls": 22
+    },
+    {
+      "id": "D-06.4",
+      "name": "Third-Party Boundary Management",
+      "participants": [
+        "GDPR",
+        "NIS2",
+        "CRA",
+        "DORA"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "CRA",
+        "DORA",
+        "GDPR",
+        "NIS2"
+      ],
+      "total_cards": 36,
+      "applicable_articles": 34,
+      "applicable_clauses": 34,
+      "sub_objectives": 4,
+      "sub_requirements": 4,
+      "applicable_nist_controls": 15
+    }
+  ],
+  "applicable_articles_by_regulation": {
+    "CRA": [
+      "Art. 13(5)",
+      "Art. 13(6) sentence 1",
+      "Art. 20(1)",
+      "Art. 21",
+      "Art. 22(1)"
+    ],
+    "DORA": [
+      "Art. 18(1)(a)",
+      "Art. 18(1)(b)",
+      "Art. 18(1)(c)",
+      "Art. 18(1)(d)",
+      "Art. 18(1)(e)",
+      "Art. 18(1)(f)",
+      "Art. 18(2)",
+      "Art. 18(3)",
+      "Art. 19(1)",
+      "Art. 19(2)",
+      "Art. 19(3)",
+      "Art. 19(5)",
+      "Art. 19(6)",
+      "Art. 20",
+      "Art. 21(1)+(2)",
+      "Art. 21(3)",
+      "Art. 22(1)",
+      "Art. 22(2)",
+      "Art. 23",
+      "Art. 26(1)",
+      "Art. 27(1)(a)–(e)",
+      "Art. 27(2)(a)–(c)",
+      "Art. 28 chapeau + (1) + (2)",
+      "Art. 28(3)",
+      "Art. 28(5) + (6)",
+      "Art. 30(1)",
+      "Art. 30(3)(a)",
+      "Art. 30(3)(b)",
+      "Art. 30(3)(c)",
+      "Art. 30(3)(d)",
+      "Art. 30(3)(e) + (f)",
+      "Art. 5(1)"
+    ],
+    "GDPR": [
+      "Art. 18(1)",
+      "Art. 18(2)",
+      "Art. 21(1)",
+      "Art. 21(3)",
+      "Art. 22(1)",
+      "Art. 23(1)",
+      "Art. 26(1)",
+      "Art. 27(2)(a)",
+      "Art. 28(1)",
+      "Art. 28(2)",
+      "Art. 28(3)",
+      "Art. 28(3)(g)",
+      "Art. 32(1)",
+      "Art. 33(1)",
+      "Art. 44",
+      "Art. 45(1)",
+      "Art. 45(3)",
+      "Art. 46(1)",
+      "Art. 46(2)",
+      "Art. 47(2)(f)",
+      "Art. 48",
+      "Art. 49(1)(a)",
+      "Art. 49(1)(d)",
+      "Art. 49(1)(second subparagraph)",
+      "Art. 5(1)(c)",
+      "Art. 5(1)(e)",
+      "Article 28"
+    ],
+    "NIS2": [
+      "Art. 20 chapeau",
+      "Art. 20(1)",
+      "Art. 20(2)",
+      "Art. 21(1) sentence 1",
+      "Art. 21(1) sentence 2",
+      "Art. 21(2)(a)",
+      "Art. 21(2)(b)",
+      "Art. 21(2)(c)",
+      "Art. 21(2)(d)",
+      "Art. 21(2)(e)",
+      "Art. 21(2)(f)",
+      "Art. 21(2)(g)",
+      "Art. 21(2)(h)",
+      "Art. 21(2)(i)",
+      "Art. 21(2)(j)",
+      "Art. 21(3)",
+      "Art. 21(3) sentence 1",
+      "Art. 21(3) sentence 2",
+      "Art. 22(1) sentence 1",
+      "Art. 22(1) sentence 2",
+      "Art. 22(2)",
+      "Art. 23(1) ¶1",
+      "Art. 23(1) ¶3",
+      "Art. 23(6)",
+      "Art. 23(8)",
+      "Art. 24(1) sentence 1",
+      "Art. 24(1) sentence 2",
+      "Art. 24(2)"
+    ]
+  },
+  "applicable_clauses_by_regulation": {
+    "CRA": [
+      "CRA-CL23a",
+      "CRA-CL24",
+      "CRA-CL92",
+      "CRA-CL96",
+      "CRA-CL97"
+    ],
+    "DORA": [
+      "CL18-1",
+      "CL18-2",
+      "CL18-3",
+      "CL18-4",
+      "CL18-5",
+      "CL18-6",
+      "CL18-7",
+      "CL18-8",
+      "CL19-1",
+      "CL19-2",
+      "CL19-3",
+      "CL19-5",
+      "CL19-6",
+      "CL20-1",
+      "CL21-1",
+      "CL21-2",
+      "CL22-1",
+      "CL22-2",
+      "CL23-1",
+      "CL26-1",
+      "CL27-1",
+      "CL27-2",
+      "CL28-1",
+      "CL28-2",
+      "CL28-4",
+      "CL30-1",
+      "CL30-11",
+      "CL30-12",
+      "CL30-13",
+      "CL30-14",
+      "CL30-15",
+      "CL5-1"
+    ],
+    "GDPR": [
+      "GDPR-CL03",
+      "GDPR-CL05",
+      "GDPR-CP04",
+      "GDPR-CP06",
+      "GDPR-CP07",
+      "GDPR-CP08",
+      "GDPR-CP09",
+      "GDPR-CP10",
+      "GDPR-CP15",
+      "GDPR-CP17",
+      "GDPR-RT13",
+      "GDPR-RT14",
+      "GDPR-RT16",
+      "GDPR-RT17",
+      "GDPR-RT18",
+      "GDPR-RT20",
+      "GDPR-TR01",
+      "GDPR-TR02",
+      "GDPR-TR03",
+      "GDPR-TR04",
+      "GDPR-TR05",
+      "GDPR-TR06",
+      "GDPR-TR07",
+      "GDPR-TR08",
+      "GDPR-TR09",
+      "GDPR-TR10"
+    ],
+    "NIS2": [
+      "NIS2-C01",
+      "NIS2-C02",
+      "NIS2-C03",
+      "NIS2-C04",
+      "NIS2-C05",
+      "NIS2-C06",
+      "NIS2-C07",
+      "NIS2-C08",
+      "NIS2-C09",
+      "NIS2-C10",
+      "NIS2-C11",
+      "NIS2-C12",
+      "NIS2-C13",
+      "NIS2-C14",
+      "NIS2-C15",
+      "NIS2-C16",
+      "NIS2-C17",
+      "NIS2-C18",
+      "NIS2-C19",
+      "NIS2-C20",
+      "NIS2-C21",
+      "NIS2-C22",
+      "NIS2-C23",
+      "NIS2-C24",
+      "NIS2-C29",
+      "NIS2-CL06",
+      "NIS2-CL07",
+      "NIS2-CL08",
+      "NIS2-CL13",
+      "NIS2-CL14",
+      "NIS2-CL20",
+      "NIS2-CL21",
+      "NIS2-CL23",
+      "NIS2-CL24",
+      "NIS2-CL25",
+      "NIS2-CL28",
+      "NIS2-CL31",
+      "NIS2-CL42",
+      "NIS2-CL44",
+      "NIS2-CL48",
+      "NIS2-CL49",
+      "NIS2-CL50"
+    ]
+  },
+  "sub_objectives_by_regulation": {
+    "CRA": [
+      {
+        "id": "SO-D-06.1.CRA",
+        "csf_anchors": [
+          "GV.SC-01",
+          "GV.SC-02",
+          "ID.RA-02"
+        ]
+      },
+      {
+        "id": "SO-D-06.2.CRA",
+        "csf_anchors": [
+          "ID.AM-02",
+          "GV.SC-02",
+          "GV.SC-03"
+        ]
+      },
+      {
+        "id": "SO-D-06.3.CRA",
+        "csf_anchors": [
+          "GV.SC-02",
+          "GV.SC-04",
+          "RS.MI-01",
+          "RS.CO-04"
+        ]
+      },
+      {
+        "id": "SO-D-06.4.CRA",
+        "csf_anchors": [
+          "GV.RR-02",
+          "GV.SC-03",
+          "GV.SC-04",
+          "GV.OC-03",
+          "GV.SC-02"
+        ]
+      }
+    ],
+    "DORA": [
+      {
+        "id": "SO-D-06.1.DORA",
+        "csf_anchors": [
+          "GV.SC-02",
+          "ID.AM-04"
+        ]
+      },
+      {
+        "id": "SO-D-06.3.DORA",
+        "csf_anchors": [
+          "GV.SC-01",
+          "GV.SC-02",
+          "GV.SC-03",
+          "GV.SC-04",
+          "ID.AM-04",
+          "DE.CM-06"
+        ]
+      },
+      {
+        "id": "SO-D-06.4.DORA",
+        "csf_anchors": [
+          "GV.SC-03",
+          "DE.CM-06"
+        ]
+      }
+    ],
+    "GDPR": [
+      {
+        "id": "SO-D-06.1.GDPR",
+        "csf_anchors": [
+          "GV.SC-02",
+          "GV.SC-04",
+          "ID.AM-04"
+        ]
+      },
+      {
+        "id": "SO-D-06.3.GDPR",
+        "csf_anchors": [
+          "GV.SC-03",
+          "GV.SC-04",
+          "GV.SC-02",
+          "GV.OC-03",
+          "PR.DS-12"
+        ]
+      },
+      {
+        "id": "SO-D-06.4.GDPR",
+        "csf_anchors": [
+          "GV.OC-02",
+          "GV.RR-02"
+        ]
+      }
+    ],
+    "NIS2": [
+      {
+        "id": "SO-D-06.1.NIS2",
+        "csf_anchors": [
+          "GV.SC-02",
+          "ID.AM-04",
+          "GV.OC-03"
+        ]
+      },
+      {
+        "id": "SO-D-06.3.NIS2",
+        "csf_anchors": [
+          "GV.SC-02",
+          "GV.SC-03",
+          "GV.SC-04",
+          "ID.AM-04",
+          "ID.RA-01",
+          "ID.RA-02",
+          "PR.PS-06"
+        ]
+      },
+      {
+        "id": "SO-D-06.4.NIS2",
+        "csf_anchors": [
+          "RS.CO-04",
+          "GV.SC-05",
+          "GV.SC-02",
+          "GV.SC-03",
+          "ID.RA-02"
+        ]
+      }
+    ]
+  },
+  "sub_requirements_by_regulation": {
+    "CRA": [
+      {
+        "req_id": "6.1.3",
+        "title": "Third-party-component due diligence procedural + substantive including non-commercial OSS per Art. 3(48), with Art. 13(6) vulnerability reporting and Annex VII §2 technical-documentation record",
+        "nist_csf": [
+          "GV.SC-01",
+          "GV.SC-02",
+          "ID.RA-02"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "6.2.1",
+        "title": "Three-anchored SBOM architecture: machine-readable format covering at least top-level dependencies authored at release + retained in technical documentation under Annex VII §2(b) + disclosed to MSAs on reasoned request under Annex VII §8 + optional user access under Annex II §9",
+        "nist_csf": [
+          "ID.AM-02",
+          "GV.SC-02",
+          "GV.SC-03"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "6.3.3",
+        "title": "Importer pre-market verification (Art. 19) + distributor due-care + non-conformity escalation (Art. 20) + component-vulnerability reporting (Art. 13(6)) — regulatory economic-operator duties, NOT DPA-style contracts",
+        "nist_csf": [
+          "GV.SC-02",
+          "GV.SC-04",
+          "RS.MI-01",
+          "RS.CO-04"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "6.4.3",
+        "title": "Art. 18 written authorised representative mandate + Art. 21 own-name/trademark manufacturer-equivalent + Art. 22 third-party substantial-modification manufacturer-status + Art. 23 10-year upstream/downstream economic-operator identification log",
+        "nist_csf": [
+          "GV.RR-02",
+          "GV.SC-03",
+          "GV.SC-04",
+          "GV.OC-03",
+          "GV.SC-02"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "DORA": [
+      {
+        "req_id": "6.1.4",
+        "title": "ICT-third-party-as-financial-entity-counterparty risk under Art. 28(1) four-factor proportionality (nature, scale, complexity, importance) with Art. 28(5) CIF escalator",
+        "nist_csf": [
+          "GV.SC-01",
+          "GV.SC-02",
+          "GV.SC-03",
+          "ID.AM-04"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "6.3.4",
+        "title": "Art. 30(1)+(2) 9-element ICT-contract closed-list + Art. 28(5) standards record + Art. 30(3) CIF-only clauses (audit/access/exit) — clause-list union with GDPR Art. 28(3) when same ICT provider is processor",
+        "nist_csf": [
+          "GV.SC-01",
+          "GV.SC-02",
+          "GV.SC-03",
+          "GV.SC-04",
+          "ID.AM-04",
+          "DE.CM-06"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "6.4.4",
+        "title": "Art. 30(3)(e)(i)/(ii) unrestricted access / inspection / audit rights (including on-site documentation copy right) for financial entity / appointed third party / competent authority over CIF-supporting ICT third-party providers, with narrowly bounded alternative-assurance exception only where other clients' rights are affected",
+        "nist_csf": [
+          "GV.SC-03",
+          "DE.CM-06"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "GDPR": [
+      {
+        "req_id": "6.1.1",
+        "title": "Processor-as-legal-entity due diligence with documented `sufficient guarantees` and Art. 28(3) DPA closed-list clauses",
+        "nist_csf": [
+          "GV.SC-02",
+          "GV.SC-03",
+          "ID.AM-04"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "6.3.1",
+        "title": "Art. 28(3)(a)–(h) 8-element DPA closed-list contracts + Art. 46 transfer safeguards + Art. 48 international-agreement filter for third-country legal-process exposure",
+        "nist_csf": [
+          "GV.SC-02",
+          "GV.SC-03",
+          "GV.SC-04",
+          "GV.OC-03",
+          "PR.DS-12"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "6.4.1",
+        "title": "Art. 27(1) written Union representative designation for non-EU controllers/processors under Art. 3(2), subject to Art. 27(2) occasional / low-risk / public-authority exceptions",
+        "nist_csf": [
+          "GV.OC-02",
+          "GV.RR-02"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "NIS2": [
+      {
+        "req_id": "6.1.2",
+        "title": "Direct-supplier-as-relationship security with Art. 21(2)(d) `direct` scope-limiter, Art. 21(1) `appropriate and proportionate` chapeau, and Art. 21(3) three-prong supplier assessment",
+        "nist_csf": [
+          "GV.SC-02",
+          "GV.SC-03",
+          "GV.SC-04",
+          "ID.AM-04",
+          "ID.RA-01",
+          "ID.RA-02"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "6.3.2",
+        "title": "Art. 21(2)(d) direct-supplier contractual-security embedding + Art. 21(3) three-prong assessment evidence + Art. 22 coordinated-assessment ingestion",
+        "nist_csf": [
+          "GV.SC-02",
+          "GV.SC-03",
+          "GV.SC-04",
+          "ID.AM-04",
+          "ID.RA-01",
+          "ID.RA-02",
+          "PR.PS-06"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "6.4.2",
+        "title": "Art. 23(6)/(8) cross-MS SPOC / CSIRT / ENISA notification routing + Art. 21(2)(d) `direct` supplier/service-provider scope register + Art. 22 coordinated supply-chain risk-assessment ingestion",
+        "nist_csf": [
+          "RS.CO-04",
+          "GV.SC-05",
+          "GV.SC-02",
+          "GV.SC-03",
+          "ID.AM-04",
+          "ID.RA-02"
+        ],
+        "scope_overlap": "N"
+      }
+    ]
+  },
+  "applicable_nist_controls_by_regulation": {
+    "CRA": [
+      "GV.OC-03",
+      "GV.RR-02",
+      "GV.SC-01",
+      "GV.SC-02",
+      "GV.SC-03",
+      "GV.SC-04",
+      "ID.AM-02",
+      "ID.RA-02",
+      "RS.CO-04",
+      "RS.MI-01"
+    ],
+    "DORA": [
+      "DE.CM-06",
+      "GV.SC-01",
+      "GV.SC-02",
+      "GV.SC-03",
+      "GV.SC-04",
+      "ID.AM-04"
+    ],
+    "GDPR": [
+      "GV.OC-02",
+      "GV.OC-03",
+      "GV.RR-02",
+      "GV.SC-02",
+      "GV.SC-03",
+      "GV.SC-04",
+      "ID.AM-04",
+      "PR.DS-12"
+    ],
+    "NIS2": [
+      "GV.OC-03",
+      "GV.SC-02",
+      "GV.SC-03",
+      "GV.SC-04",
+      "GV.SC-05",
+      "ID.AM-04",
+      "ID.RA-01",
+      "ID.RA-02",
+      "PR.PS-06",
+      "RS.CO-04"
+    ]
+  },
+  "counts": {
+    "subdomains": 4,
+    "total_cards": 148,
+    "applicable_articles_total": 92,
+    "applicable_clauses_total": 105,
+    "sub_objectives_total": 13,
+    "sub_requirements_total": 13,
+    "applicable_nist_controls_total": 34
+  },
+  "generated_at": "2026-08-04T17:25:07Z"
+}

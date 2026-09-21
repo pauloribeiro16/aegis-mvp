@@ -1,0 +1,33 @@
+{
+  "control_id": "RS.MI-01",
+  "framework": "NIST CSF 2.0",
+  "function": "RESPOND",
+  "category": "Incident Mitigation (RS.MI)",
+  "subcategory_id": "RS.MI-01",
+  "subcategory_text": "Incidents are contained",
+  "informative_references": [
+    "NIST CSF 2.0 Core: RS.MI-01",
+    "NIST SP 800-53 Rev. 5: IR-04",
+    "ISO/IEC 27001:2022: Annex A.5.26",
+    "CSF v1.1: RS.MI-1",
+    "PCI DSS: 12.10.1, 5.2.1, 5.2.2, 5.3.2",
+    "CRI Profile v2.0: RS.MI-01, RS.MI-01.01"
+  ],
+  "implementation_examples": [
+    "Cybersecurity technologies (e.g., antivirus software) and cybersecurity features of other technologies (e.g., operating systems, network infrastructure devices) automatically perform containment actions",
+    "Allow incident responders to manually select and perform containment actions",
+    "Allow a third party (e.g., internet service provider, managed security service provider) to perform containment actions on behalf of the organization",
+    "Automatically transfer compromised endpoints to a remediation virtual local area network (VLAN)"
+  ],
+  "assessment_objectives": [
+    "Determine whether incidents are contained.",
+    "Determine whether mechanisms ensure that cybersecurity technologies (e.g., antivirus software) and cybersecurity features of other technologies (e.g., operating systems, network infrastructure devices) automatically perform containment actions.",
+    "Determine whether mechanisms ensure that allow incident responders to manually select and perform containment actions.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "RS.MI-02 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

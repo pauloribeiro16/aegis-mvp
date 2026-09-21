@@ -1,0 +1,33 @@
+{
+  "control_id": "MANAGE-4.1",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MANAGE",
+  "category": "Risk Treatment and Documentation",
+  "subcategory_id": "MANAGE-4.1",
+  "subcategory_text": "Post-deployment AI system monitoring plans are implemented",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Navdeep Gill, Patrick Hall, Kim Montgomery, and Nicholas Schmidt. \"A Responsible Machine Learning Workflow with Focus on Interpretable Models, Post-hoc Explanation, and Discrimination Testing.\" Information 11, no. 3 (2020): 137. [URL](https://www.mdpi.com/2078-2489/11/3/137)"
+  ],
+  "implementation_examples": [
+    "Establish and maintain procedures to monitor AI system performance for risks and negative and positive impacts associated with trustworthiness characteristics.",
+    "Perform post-deployment TEVV tasks to evaluate AI system validity and reliability, bias and fairness, privacy, and security and resilience.",
+    "Evaluate AI system trustworthiness in conditions similar to deployment context of use, and prior to deployment.",
+    "Establish and implement red-teaming exercises at a prescribed cadence, and evaluate their efficacy.",
+    "Establish procedures for tracking dataset modifications such as data deletion or rectification requests.",
+    "Establish mechanisms for regular communication and feedback between relevant AI actors and internal or external stakeholders to capture information about system performance, trustworthiness and impact.",
+    "Share information about errors, near-misses, and attack patterns with incident databases, other organizations with similar systems, and system users and stakeholders.",
+    "Respond to and document detected or reported negative impacts or issues in AI system performance and trustworthiness.",
+    "Decommission systems that exceed establish risk tolerances."
+  ],
+  "assessment_objectives": [
+    "To what extent has the entity documented the post-deployment AI system’s testing methodology, metrics, and performance outcomes?",
+    "How easily accessible and current is the information available to external stakeholders?"
+  ],
+  "related_controls": [
+    "MANAGE-4.2 (NIST AI RMF — same category)",
+    "MANAGE-4.3 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

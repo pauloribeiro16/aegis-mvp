@@ -1,0 +1,35 @@
+{
+  "control_id": "MAP-3.2",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MAP",
+  "category": "Potential Risks and Benefits",
+  "subcategory_id": "MAP-3.2",
+  "subcategory_text": "Potential costs, including non-monetary costs, from expected or realized AI errors or system functionality and trustworthiness are examined and documented",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Abagayle Lee Blank. 2019. Computer vision machine learning and future-oriented ethics. Honors Project. Seattle Pacific University (SPU), Seattle, WA. [URL](https://digitalcommons.spu.edu/cgi/viewcontent.cgi?article=1100&context=honorsprojects)",
+    "Margarita Boyarskaya, Alexandra Olteanu, and Kate Crawford. 2020. Overcoming Failures of Imagination in AI Infused System Development and Deployment. arXiv:2011.13416. [URL](https://arxiv.org/abs/2011.13416)",
+    "Jeff Patton. 2014. User Story Mapping. O'Reilly, Sebastopol, CA. [URL](https://www.jpattonassociates.com/story-mapping/)"
+  ],
+  "implementation_examples": [
+    "Perform context analysis to map potential negative impacts arising from not integrating trustworthiness characteristics. When negative impacts are not direct or obvious, AI actors can engage with stakeholders external to the team that developed or deployed the AI system, and potentially impacted communities, to examine and document:",
+    "Who could be harmed?",
+    "What could be harmed?",
+    "When could harm arise?",
+    "How could harm arise?",
+    "Identify and implement procedures for regularly evaluating the qualitative and quantitative costs of internal and external AI system failures. Develop actions to prevent, detect, and/or correct potential risks and related impacts. Regularly evaluate failure costs to inform go/no-go deployment decisions throughout the AI system lifecycle."
+  ],
+  "assessment_objectives": [
+    "To what extent does the system/entity consistently measure progress towards stated goals and objectives?",
+    "To what extent can users or parties affected by the outputs of the AI system test the AI system and provide feedback?",
+    "Have you documented and explained that machine errors may differ from human errors?"
+  ],
+  "related_controls": [
+    "MAP-3.1 (NIST AI RMF — same category)",
+    "MAP-3.3 (NIST AI RMF — same category)",
+    "MAP-3.4 (NIST AI RMF — same category)",
+    "MAP-3.5 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

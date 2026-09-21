@@ -1,0 +1,32 @@
+{
+  "control_id": "PR.DS-P1",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Data Security (PR.DS-P)",
+  "subcategory_id": "PR.DS-P1",
+  "subcategory_text": "Data-at-rest are protected",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SC-28 (Protection of Information at Rest)",
+    "NIST PF 1.0 Core (January 2020): PR.DS-P1 (verified in NIST-Privacy-Framework-V1.0-Core.xlsx row 90)",
+    "ISO/IEC 27001:2022 Annex A.8.24 (Use of cryptography)",
+    "Aligned with NIST CSF 2.0 PR.DS-01 (privacy-tailored text)"
+  ],
+  "implementation_examples": [
+    "Apply encryption, access controls, and integrity protections to stored personal data per the organisation's risk strategy",
+    "Apply cryptographic protections to backup copies of personal data",
+    "Restrict access to personal-data stores to authorised personnel and processes"
+  ],
+  "assessment_objectives": [
+    "Determine whether stored personal data is identified and classified",
+    "Determine whether cryptographic protections (confidentiality, integrity) are applied commensurate with classification",
+    "Determine whether access to data-at-rest stores is logged and reviewed"
+  ],
+  "related_controls": [
+    "PR.DS-01 (NIST CSF 2.0)",
+    "PR.DS-P2 (NIST PF 1.0 — data-in-transit)",
+    "CT.DM-P1 (NIST PF 1.0 — data review)",
+    "CT.DP-P1 (NIST PF 1.0 — disassociated processing)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

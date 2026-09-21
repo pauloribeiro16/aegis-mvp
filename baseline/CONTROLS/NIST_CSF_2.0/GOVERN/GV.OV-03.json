@@ -1,0 +1,32 @@
+{
+  "control_id": "GV.OV-03",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Oversight (GV.OV)",
+  "subcategory_id": "GV.OV-03",
+  "subcategory_text": "Organizational cybersecurity risk management performance is evaluated and reviewed for adjustments needed",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.OV-03",
+    "NIST SP 800-53 Rev. 5: PM-04, PM-06, RA-07, SR-06",
+    "ISO/IEC 27001:2022: Clause 9.1, Annex A.5.1, Annex A.5.19, Annex A.5.20",
+    "PCI DSS: 10.7.2, 11.3.1, 11.3.2, 11.4.4, 12.3.1, 12.3.4 (+2 more)",
+    "CRI Profile v2.0: GV.OV-03, GV.OV-03.01, GV.OV-03.02"
+  ],
+  "implementation_examples": [
+    "Review key performance indicators (KPIs) to ensure that organization-wide policies and procedures achieve objectives",
+    "Review key risk indicators (KRIs) to identify risks the organization faces, including likelihood and potential impact",
+    "Collect and communicate metrics on cybersecurity risk management with senior leadership"
+  ],
+  "assessment_objectives": [
+    "Determine whether organizational cybersecurity risk management performance is evaluated and reviewed for adjustments needed.",
+    "Determine whether activities are conducted to review key performance indicators (KPIs) to ensure that organization-wide policies and procedures achieve objectives.",
+    "Determine whether activities are conducted to review key risk indicators (KRIs) to identify risks the organization faces, including likelihood and potential impact.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.OV-01 (NIST CSF 2.0 — same category)",
+    "GV.OV-02 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

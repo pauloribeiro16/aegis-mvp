@@ -1,0 +1,32 @@
+{
+  "control_id": "ID.RA-P5",
+  "framework": "NIST PF 1.0",
+  "function": "IDENTIFY-P",
+  "category": "Risk Assessment (ID.RA-P)",
+  "subcategory_id": "ID.RA-P5",
+  "subcategory_text": "Risk responses are identified, prioritized, and implemented.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: RA-5 (Vulnerability Monitoring and Scanning), RA-3(1) (System-Facing Risk Assessment)",
+    "NIST PF 1.0 Core (January 2020): ID.RA-P5 (verified row 19)",
+    "ISO/IEC 27001:2022 Annex A.8.8 (Management of technical vulnerabilities)",
+    "GDPR Art. 32 (Security of processing), Art. 35(7)(d) (Mitigations)",
+    "Aligned with NIST CSF 2.0 ID.RA-06 (risk responses identified)"
+  ],
+  "implementation_examples": [
+    "For each prioritised privacy risk, identify the set of candidate risk responses (mitigate, accept, transfer, avoid) and the specific measures to be applied",
+    "Document the rationale for the chosen response and the residual risk after treatment",
+    "Track responses to completion and review residual risk on a defined cadence"
+  ],
+  "assessment_objectives": [
+    "Determine whether candidate risk responses are identified for each prioritised risk",
+    "Determine whether the chosen response and its rationale are documented",
+    "Determine whether residual risk is estimated and tracked",
+    "Determine whether risk-response status is reviewed on a defined cadence"
+  ],
+  "related_controls": [
+    "ID.RA-P4 (likelihood and impact)",
+    "GV.MT-P3 (compliance assessment)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

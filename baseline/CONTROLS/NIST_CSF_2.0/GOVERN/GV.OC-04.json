@@ -1,0 +1,35 @@
+{
+  "control_id": "GV.OC-04",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Organizational Context (GV.OC)",
+  "subcategory_id": "GV.OC-04",
+  "subcategory_text": "Critical objectives, capabilities, and services that external stakeholders depend on or expect from the organization are understood and communicated",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.OC-04",
+    "NIST SP 800-53 Rev. 5: CP-02(08), PM-08, PM-11, PM-30(01), RA-09",
+    "ISO/IEC 27001:2022: Clause 4.2(a), Clause 4.2(b), Annex A.5.20, Annex A.5.31",
+    "CSF v1.1: ID.BE-4, ID.BE-5",
+    "PCI DSS: 12.10.1, 12.5.1, 12.5.2",
+    "CRI Profile v2.0: GV.OC-04, GV.OC-04.01, GV.OC-04.02, GV.OC-04.03, GV.OC-04.04"
+  ],
+  "implementation_examples": [
+    "Establish criteria for determining the criticality of capabilities and services as viewed by internal and external stakeholders",
+    "Determine (e.g., from a business impact analysis) assets and business operations that are vital to achieving mission objectives and the potential impact of a loss (or partial loss) of such operations",
+    "Establish and communicate resilience objectives (e.g., recovery time objectives) for delivering critical capabilities and services in various operating states (e.g., under attack, during recovery, normal operation)"
+  ],
+  "assessment_objectives": [
+    "Determine whether critical objectives, capabilities, and services that external stakeholders depend on or expect from the organization are understood and communicated.",
+    "Determine whether activities are conducted to establish criteria for determining the criticality of capabilities and services as viewed by internal and external stakeholders.",
+    "Determine whether mechanisms ensure that determine (e.g., from a business impact analysis) assets and business operations that are vital to achieving mission objectives and the potential impact of a loss (or partial loss) of such operations.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.OC-01 (NIST CSF 2.0 — same category)",
+    "GV.OC-02 (NIST CSF 2.0 — same category)",
+    "GV.OC-03 (NIST CSF 2.0 — same category)",
+    "GV.OC-05 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

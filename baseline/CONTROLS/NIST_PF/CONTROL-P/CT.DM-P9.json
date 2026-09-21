@@ -1,0 +1,31 @@
+{
+  "control_id": "CT.DM-P9",
+  "framework": "NIST PF 1.0",
+  "function": "CONTROL-P",
+  "category": "Data Processing Management (CT.DM-P)",
+  "subcategory_id": "CT.DM-P9",
+  "subcategory_text": "Technical measures implemented to manage data processing are tested and assessed.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: CA-2 (Control Assessments), SI-6 (Software and Information Integrity)",
+    "NIST PF 1.0 Core (January 2020): CT.DM-P9 (verified row 57)",
+    "ISO/IEC 27001:2022 Annex A.8.8 (Technical vulnerability management), A.8.29 (Security testing in development and acceptance)",
+    "GDPR Art. 32 (Security of processing)"
+  ],
+  "implementation_examples": [
+    "Test and assess the technical measures that manage data processing against their intended behaviour and privacy objectives",
+    "Document the testing methodology, scope, frequency, and acceptance criteria",
+    "Use independent reviewers where appropriate"
+  ],
+  "assessment_objectives": [
+    "Determine whether technical data-processing measures are tested against requirements",
+    "Determine whether testing scope, frequency, and criteria are documented",
+    "Determine whether test results feed into improvement actions",
+    "Determine whether independence of the tester is adequate to the risk"
+  ],
+  "related_controls": [
+    "CT.DM-P8 (audit records)",
+    "PR.PT-P2 (resilience testing)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

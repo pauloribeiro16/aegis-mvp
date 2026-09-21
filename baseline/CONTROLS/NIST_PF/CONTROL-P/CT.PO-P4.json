@@ -1,0 +1,31 @@
+{
+  "control_id": "CT.PO-P4",
+  "framework": "NIST PF 1.0",
+  "function": "CONTROL-P",
+  "category": "Data Processing Policies, Processes, and Procedures (CT.PO-P)",
+  "subcategory_id": "CT.PO-P4",
+  "subcategory_text": "A data life cycle to manage data is aligned and implemented with the system development life cycle to manage systems.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SA-3 (System Development Life Cycle), PM-7 (Enterprise Architecture)",
+    "NIST PF 1.0 Core (January 2020): CT.PO-P4 (verified row 48)",
+    "ISO/IEC 27001:2022 Annex A.8.27 (Secure system architecture and engineering principles)",
+    "GDPR Art. 25 (Data protection by design and by default)"
+  ],
+  "implementation_examples": [
+    "Align the data lifecycle (purpose, collection, use, retention, sharing, deletion) with the system development lifecycle so that data-handling capabilities and decommissioning are addressed at the same architectural touchpoints as security",
+    "Document the lifecycle-to-SDLC mapping and reuse it across projects",
+    "Re-examine alignment when data classes or system platforms change"
+  ],
+  "assessment_objectives": [
+    "Determine whether the data lifecycle is aligned with the system development lifecycle",
+    "Determine whether the mapping is documented and reused",
+    "Determine whether decommissioning and deletion are explicit lifecycle phases",
+    "Determine whether alignment is refreshed on platform or data-class change"
+  ],
+  "related_controls": [
+    "CT.PO-P1 (authorisation)",
+    "PR.PO-P1 (baseline configuration)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

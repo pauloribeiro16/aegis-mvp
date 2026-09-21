@@ -1,0 +1,32 @@
+{
+  "control_id": "ID.BE-P1",
+  "framework": "NIST PF 1.0",
+  "function": "IDENTIFY-P",
+  "category": "Business Environment (ID.BE-P)",
+  "subcategory_id": "ID.BE-P1",
+  "subcategory_text": "The organization’s role(s) in the data processing ecosystem are identified and communicated.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PM-2 (Information Security Program Leadership), PM-11 (Information Security Governance)",
+    "NIST PF 1.0 Core (January 2020): ID.BE-P1 (verified row 12)",
+    "ISO/IEC 27001:2022 Annex A.5.1 (Policies for information security)",
+    "GDPR Art. 26 (Joint controllers), Art. 28 (Processor)",
+    "Aligned with NIST CSF 2.0 GV.OC-01 (organisational mission understood)"
+  ],
+  "implementation_examples": [
+    "Identify and document the organisation's role(s) in the data processing ecosystem (e.g., controller, processor, joint controller, sub-processor)",
+    "Communicate the role(s) internally and externally so that contractual, technical, and organisational measures align with the role",
+    "Re-validate the assigned role when processing relationships change (acquisition, divestiture, new product line)"
+  ],
+  "assessment_objectives": [
+    "Determine whether the organisation's role(s) in the data processing ecosystem are identified",
+    "Determine whether the assigned roles are communicated to internal and external stakeholders",
+    "Determine whether role changes trigger a documented review",
+    "Determine whether contractual measures reflect the organisation's role"
+  ],
+  "related_controls": [
+    "ID.BE-P2 (priorities communicated)",
+    "GV.PO-P4 (third-party privacy alignment)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

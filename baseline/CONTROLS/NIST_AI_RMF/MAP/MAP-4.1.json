@@ -1,0 +1,30 @@
+{
+  "control_id": "MAP-4.1",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MAP",
+  "category": "Third-Party Risk",
+  "subcategory_id": "MAP-4.1",
+  "subcategory_text": "Approaches for mapping AI technology and legal risks of its components – including the use of third-party data or software – are in place, followed, and documented",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Emily M. Bender, Timnit Gebru, Angelina McMillan-Major, and Shmargaret Shmitchell. 2021. On the Dangers of Stochastic Parrots: Can Language Models Be Too Big? 🦜. In Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency (FAccT '21). Association for Computing Machinery, New York, NY, USA, 610–623. [URL](https://doi.org/10.1145/3442188.3445922)",
+    "Julia Kreutzer, Isaac Caswell, Lisa Wang, et al. 2022. Quality at a Glance: An Audit of Web-Crawled Multilingual Datasets. Transactions of the Association for Computational Linguistics 10 (2022), 50–72.  [URL](https://doi.org/10.1162/tacl_a_00447)",
+    "Laura Weidinger, Jonathan Uesato, Maribeth Rauh, et al. 2022. Taxonomy of Risks posed by Language Models. In 2022 ACM Conference on Fairness, Accountability, and Transparency (FAccT '22). Association for Computing Machinery, New York, NY, USA, 214–229. [URL](https://doi.org/10.1145/3531146.3533088)"
+  ],
+  "implementation_examples": [
+    "Review audit reports, testing results, product roadmaps, warranties, terms of service, end user license agreements, contracts, and other documentation related to third-party entities to assist in value assessment and risk management activities.",
+    "Review third-party software release schedules and software change management plans (hotfixes, patches, updates, forward- and backward- compatibility guarantees) for irregularities that may contribute to AI system risks.",
+    "Inventory third-party material (hardware, open-source software, foundation models, open source data, proprietary software, proprietary data, etc.) required for system implementation and maintenance.",
+    "Review redundancies related to third-party technology and personnel to assess potential risks due to lack of adequate support."
+  ],
+  "assessment_objectives": [
+    "Did you establish a process for third parties (e.g. suppliers, end users, subjects, distributors/vendors or workers) to report potential vulnerabilities, risks or biases in the AI system?",
+    "If your organization obtained datasets from a third party, did your organization assess and manage the risks of using such datasets?",
+    "How will the results be independently verified?"
+  ],
+  "related_controls": [
+    "MAP-4.2 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

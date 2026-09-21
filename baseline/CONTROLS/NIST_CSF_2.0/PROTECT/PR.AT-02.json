@@ -1,0 +1,35 @@
+{
+  "control_id": "PR.AT-02",
+  "framework": "NIST CSF 2.0",
+  "function": "PROTECT",
+  "category": "Awareness and Training (PR.AT)",
+  "subcategory_id": "PR.AT-02",
+  "subcategory_text": "Individuals in specialized roles are provided with awareness and training so that they possess the knowledge and skills to perform relevant tasks with cybersecurity risks in mind",
+  "informative_references": [
+    "NIST CSF 2.0 Core: PR.AT-02",
+    "NIST SP 800-53 Rev. 5: AT-03",
+    "ISO/IEC 27001:2022: Clause 7.3, Annex A.5.2, Annex A.6.3",
+    "CSF v1.1: PR.AT-2, PR.AT-3, PR.AT-4, PR.AT-5",
+    "CIS Controls v8: 14.9",
+    "PCI DSS: 12.10.4, 12.10.4.1, 6.2.2",
+    "NIST SP 800-218 (SSDF): PO.2.2",
+    "CRI Profile v2.0: PR.AT-02, PR.AT-02.01, PR.AT-02.02, PR.AT-02.03, PR.AT-02.04, PR.AT-02.05, PR.AT-02.06, PR.AT-02.07, PR.AT-02.08"
+  ],
+  "implementation_examples": [
+    "Identify the specialized roles within the organization that require additional cybersecurity training, such as physical and cybersecurity personnel, finance personnel, senior leadership, and anyone with access to business-critical data",
+    "Provide role-based cybersecurity awareness and training to all those in specialized roles, including contractors, partners, suppliers, and other third parties",
+    "Periodically assess or test users on their understanding of cybersecurity practices for their specialized roles",
+    "Require annual refreshers to reinforce existing practices and introduce new practices"
+  ],
+  "assessment_objectives": [
+    "Determine whether individuals in specialized roles are provided with awareness and training so that they possess the knowledge and skills to perform relevant tasks with cybersecurity risks in mind.",
+    "Determine whether activities are conducted to identify the specialized roles within the organization that require additional cybersecurity training, such as physical and cybersecurity personnel, finance personnel, senior leadership, and anyone with access to business-critical data.",
+    "Determine whether mechanisms ensure that provide role-based cybersecurity awareness and training to all those in specialized roles, including contractors, partners, suppliers, and other third parties.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "PR.AT-01 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

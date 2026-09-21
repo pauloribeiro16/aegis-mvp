@@ -1,0 +1,31 @@
+{
+  "control_id": "CT.DP-P2",
+  "framework": "NIST PF 1.0",
+  "function": "CONTROL-P",
+  "category": "Disassociated Processing (CT.DP-P)",
+  "subcategory_id": "CT.DP-P2",
+  "subcategory_text": "Data are processed to limit the identification of individuals (e.g., de-identification privacy techniques, tokenization).",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SC-28, SI-12",
+    "NIST PF 1.0 Core (January 2020): CT.DP-P2 (verified row 60)",
+    "ISO/IEC 27001:2022 Annex A.8.10 (Information deletion), A.8.24",
+    "GDPR Art. 4(5) (Anonymisation definitions), Recital 26"
+  ],
+  "implementation_examples": [
+    "Apply de-identification techniques (pseudonymisation, tokenisation, k-anonymity, differential privacy) to limit the identification of individuals",
+    "Document the de-identification method, its parameters, and the residual re-identification risk",
+    "Re-evaluate the residual risk when the threat landscape or the data changes"
+  ],
+  "assessment_objectives": [
+    "Determine whether de-identification techniques are applied",
+    "Determine whether the technique is documented with parameters",
+    "Determine whether residual re-identification risk is estimated",
+    "Determine whether the technique is re-evaluated on relevant change"
+  ],
+  "related_controls": [
+    "CT.DP-P1 (observability limits)",
+    "CT.DP-P3 (inference limits)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

@@ -1,0 +1,32 @@
+{
+  "control_id": "RS.MI-02",
+  "framework": "NIST CSF 2.0",
+  "function": "RESPOND",
+  "category": "Incident Mitigation (RS.MI)",
+  "subcategory_id": "RS.MI-02",
+  "subcategory_text": "Incidents are eradicated",
+  "informative_references": [
+    "NIST CSF 2.0 Core: RS.MI-02",
+    "NIST SP 800-53 Rev. 5: IR-04",
+    "ISO/IEC 27001:2022: Annex A.5.26",
+    "CSF v1.1: RS.MI-2",
+    "PCI DSS: 12.10.1, 2.2.1, 5.2.2, 6.2.3, 6.3.3",
+    "CRI Profile v2.0: RS.MI-02, RS.MI-02.01"
+  ],
+  "implementation_examples": [
+    "Cybersecurity technologies and cybersecurity features of other technologies (e.g., operating systems, network infrastructure devices) automatically perform eradication actions",
+    "Allow incident responders to manually select and perform eradication actions",
+    "Allow a third party (e.g., managed security service provider) to perform eradication actions on behalf of the organization"
+  ],
+  "assessment_objectives": [
+    "Determine whether incidents are eradicated.",
+    "Determine whether mechanisms ensure that cybersecurity technologies and cybersecurity features of other technologies (e.g., operating systems, network infrastructure devices) automatically perform eradication actions.",
+    "Determine whether mechanisms ensure that allow incident responders to manually select and perform eradication actions.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "RS.MI-01 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

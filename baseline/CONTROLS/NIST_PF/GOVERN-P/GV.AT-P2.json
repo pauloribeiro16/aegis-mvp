@@ -1,0 +1,31 @@
+{
+  "control_id": "GV.AT-P2",
+  "framework": "NIST PF 1.0",
+  "function": "GOVERN-P",
+  "category": "Awareness and Training (GV.AT-P)",
+  "subcategory_id": "GV.AT-P2",
+  "subcategory_text": "Senior executives understand their roles and responsibilities.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: AT-3(1) (Senior Executive Information Security and Privacy Training)",
+    "NIST PF 1.0 Core (January 2020): GV.AT-P2 (verified row 35)",
+    "ISO/IEC 27001:2022 Annex A.5.2, A.6.3",
+    "GDPR Art. 38(3) (DPO accountable to management)"
+  ],
+  "implementation_examples": [
+    "Ensure senior executives understand their privacy roles and responsibilities through onboarding briefings, periodic privacy-risk briefings, and tabletop exercises",
+    "Surface privacy-risk trends to executives in their preferred reporting format",
+    "Use board-level discussion of privacy incidents to reinforce accountability"
+  ],
+  "assessment_objectives": [
+    "Determine whether senior executives understand their privacy roles and responsibilities",
+    "Determine whether executives receive periodic privacy-risk briefings",
+    "Determine whether accountability is exercised through governance routines (committees, audits)",
+    "Determine whether executives can articulate the privacy-risk posture"
+  ],
+  "related_controls": [
+    "GV.AT-P1 (workforce trained)",
+    "GV.PO-P3 (workforce roles defined)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

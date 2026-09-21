@@ -1,0 +1,31 @@
+{
+  "control_id": "GV.MT-P3",
+  "framework": "NIST PF 1.0",
+  "function": "GOVERN-P",
+  "category": "Monitoring and Review (GV.MT-P)",
+  "subcategory_id": "GV.MT-P3",
+  "subcategory_text": "Policies, processes, and procedures for assessing compliance with legal requirements and privacy policies are established and in place.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: CA-2 (Control Assessments), PM-6 (Measures of Performance)",
+    "NIST PF 1.0 Core (January 2020): GV.MT-P3 (verified row 40)",
+    "ISO/IEC 27001:2022 Annex A.5.35 (Independent review), Clause 9.2 (Internal audit)",
+    "GDPR Art. 28(3)(h) (Audit), Art. 58 (Supervisory authority powers)"
+  ],
+  "implementation_examples": [
+    "Establish and maintain policies, processes, and procedures for assessing compliance with legal requirements and internal privacy policies",
+    "Schedule recurring internal compliance reviews, and consider independent external assurance where appropriate",
+    "Track compliance findings and remediation actions to closure"
+  ],
+  "assessment_objectives": [
+    "Determine whether compliance-assessment processes exist",
+    "Determine whether internal and/or external audits are scheduled and executed",
+    "Determine whether compliance findings are tracked to closure",
+    "Determine whether compliance posture is reported to leadership"
+  ],
+  "related_controls": [
+    "GV.PO-P5 (legal/regulatory managed)",
+    "GV.MT-P4 (progress communication process)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

@@ -1,0 +1,31 @@
+{
+  "control_id": "GV.MT-P2",
+  "framework": "NIST PF 1.0",
+  "function": "GOVERN-P",
+  "category": "Monitoring and Review (GV.MT-P)",
+  "subcategory_id": "GV.MT-P2",
+  "subcategory_text": "Privacy values, policies, and training are reviewed and any updates are communicated.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PM-1 (Information Security Program Plan), AT-2 (Awareness Training)",
+    "NIST PF 1.0 Core (January 2020): GV.MT-P2 (verified row 39)",
+    "ISO/IEC 27001:2022 Annex A.5.1, A.5.35 (Independent review of information security)",
+    "GDPR Art. 24 (Controller responsibility)"
+  ],
+  "implementation_examples": [
+    "Review privacy values, policies, and training for continued appropriateness and update them in response to changes (regulatory, business, technical)",
+    "Communicate updates through the same channels as the original publication (intranet, public web, training)",
+    "Track version changes and acknowledgements where required"
+  ],
+  "assessment_objectives": [
+    "Determine whether privacy values, policies, and training are reviewed periodically",
+    "Determine whether updates are communicated to stakeholders",
+    "Determine whether the review covers regulatory, business, and technical change drivers",
+    "Determine whether version history is preserved"
+  ],
+  "related_controls": [
+    "GV.MT-P1 (ongoing re-evaluation)",
+    "GV.PO-P1 (privacy values documented)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

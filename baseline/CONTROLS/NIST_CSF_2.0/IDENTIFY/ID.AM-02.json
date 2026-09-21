@@ -1,0 +1,38 @@
+{
+  "control_id": "ID.AM-02",
+  "framework": "NIST CSF 2.0",
+  "function": "IDENTIFY",
+  "category": "Asset Management (ID.AM)",
+  "subcategory_id": "ID.AM-02",
+  "subcategory_text": "Inventories of software, services, and systems managed by the organization are maintained",
+  "informative_references": [
+    "NIST CSF 2.0 Core: ID.AM-02",
+    "NIST SP 800-53 Rev. 5: AC-20, CM-08, PM-05, SA-05, SA-09",
+    "ISO/IEC 27001:2022: Annex A.5.9",
+    "CSF v1.1: ID.AM-2",
+    "CIS Controls v8: 2.1",
+    "PCI DSS: 12.5.1, 12.8.1, 6.3.2, 6.4.3",
+    "CRI Profile v2.0: ID.AM-02, ID.AM-02.01"
+  ],
+  "implementation_examples": [
+    "Maintain inventories for all types of software and services, including commercial-off-the-shelf, open-source, custom applications, API services, and cloud-based applications and services",
+    "Constantly monitor all platforms, including containers and virtual machines, for software and service inventory changes",
+    "Maintain an inventory of the organization's systems"
+  ],
+  "assessment_objectives": [
+    "Determine whether inventories of software, services, and systems managed by the organization are maintained.",
+    "Determine whether activities are conducted to maintain inventories for all types of software and services, including commercial-off-the-shelf, open-source, custom applications, API services, and cloud-based applications and services.",
+    "Determine whether mechanisms ensure that constantly monitor all platforms, including containers and virtual machines, for software and service inventory changes.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "ID.AM-01 (NIST CSF 2.0 — same category)",
+    "ID.AM-03 (NIST CSF 2.0 — same category)",
+    "ID.AM-04 (NIST CSF 2.0 — same category)",
+    "ID.AM-05 (NIST CSF 2.0 — same category)",
+    "ID.AM-07 (NIST CSF 2.0 — same category)",
+    "ID.AM-08 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

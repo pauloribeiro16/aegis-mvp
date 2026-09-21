@@ -1,0 +1,31 @@
+{
+  "control_id": "GV.AT-P4",
+  "framework": "NIST PF 1.0",
+  "function": "GOVERN-P",
+  "category": "Awareness and Training (GV.AT-P)",
+  "subcategory_id": "GV.AT-P4",
+  "subcategory_text": "Third parties (e.g., service providers, customers, partners) understand their roles and responsibilities.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SR-5 (Acquisition Strategies), SR-6 (Supplier Assessments and Reviews)",
+    "NIST PF 1.0 Core (January 2020): GV.AT-P4 (verified row 37)",
+    "ISO/IEC 27001:2022 Annex A.5.19, A.5.20, A.6.3",
+    "GDPR Art. 28(3) (Processor obligations)"
+  ],
+  "implementation_examples": [
+    "Provide third parties (service providers, customers, partners) with the privacy awareness they need to meet their contractual obligations",
+    "Include privacy-awareness obligations in onboarding and refresh training expectations on a defined cadence",
+    "Use tabletop exercises to validate third-party readiness"
+  ],
+  "assessment_objectives": [
+    "Determine whether third parties are informed of their privacy roles and responsibilities",
+    "Determine whether awareness obligations are embedded in contracts",
+    "Determine whether third-party awareness is refreshed on a cadence",
+    "Determine whether third-party awareness is tested"
+  ],
+  "related_controls": [
+    "ID.DE-P3 (contracts used)",
+    "GV.PO-P4 (third-party coordination)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

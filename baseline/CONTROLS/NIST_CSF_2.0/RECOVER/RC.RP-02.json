@@ -1,0 +1,35 @@
+{
+  "control_id": "RC.RP-02",
+  "framework": "NIST CSF 2.0",
+  "function": "RECOVER",
+  "category": "Incident Recovery Plan Execution (RC.RP)",
+  "subcategory_id": "RC.RP-02",
+  "subcategory_text": "Recovery actions are selected, scoped, prioritized, and performed",
+  "informative_references": [
+    "NIST CSF 2.0 Core: RC.RP-02",
+    "NIST SP 800-53 Rev. 5: CP-10, IR-04, IR-08",
+    "ISO/IEC 27001:2022: Annex A.5.26",
+    "CSF v1.1: RC.RP-1",
+    "PCI DSS: 1.2.3, 1.2.4, 12.10.1, 12.10.2, 12.10.6",
+    "CRI Profile v2.0: RC.RP-02, RC.RP-02.01, RC.RP-02.02"
+  ],
+  "implementation_examples": [
+    "Select recovery actions based on the criteria defined in the incident response plan and available resources",
+    "Change planned recovery actions based on a reassessment of organizational needs and resources"
+  ],
+  "assessment_objectives": [
+    "Determine whether recovery actions are selected, scoped, prioritized, and performed.",
+    "Determine whether mechanisms ensure that select recovery actions based on the criteria defined in the incident response plan and available resources.",
+    "Determine whether mechanisms ensure that change planned recovery actions based on a reassessment of organizational needs and resources.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "RC.RP-01 (NIST CSF 2.0 — same category)",
+    "RC.RP-03 (NIST CSF 2.0 — same category)",
+    "RC.RP-04 (NIST CSF 2.0 — same category)",
+    "RC.RP-05 (NIST CSF 2.0 — same category)",
+    "RC.RP-06 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

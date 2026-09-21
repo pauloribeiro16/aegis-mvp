@@ -1,0 +1,34 @@
+{
+  "control_id": "MAP-1.2",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MAP",
+  "category": "Context is Established and Understood",
+  "subcategory_id": "MAP-1.2",
+  "subcategory_text": "Interdisciplinary AI actors, competencies, skills and capacities for establishing context reflect demographic diversity and broad domain and user experience expertise, and participation is documented",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Sina Fazelpour and Maria De-Arteaga. 2022. Diversity in sociotechnical machine learning systems. Big Data & Society 9, 1 (Jan. 2022). [URL](https://doi.org/10.1177%2F20539517221082027)",
+    "Microsoft Community Jury , Azure Application Architecture Guide. [URL](https://docs.microsoft.com/en-us/azure/architecture/guide/responsible-innovation/community-jury/)",
+    "Fernando Delgado, Stephen Yang, Michael Madaio, Qian Yang. (2021). Stakeholder Participation in AI: Beyond \"Add Diverse Stakeholders and Stir\". [URL](https://deepai.org/publication/stakeholder-participation-in-ai-beyond-add-diverse-stakeholders-and-stir)"
+  ],
+  "implementation_examples": [
+    "Establish interdisciplinary teams to reflect a wide range of skills, competencies, and capabilities for AI efforts. Verify that team membership includes demographic diversity, broad domain expertise, and lived experiences. Document team composition.",
+    "Create and empower interdisciplinary expert teams to capture, learn, and engage the interdependencies of deployed AI systems and related terminologies and concepts from disciplines outside of AI practice such as law, sociology, psychology, anthropology, public policy, systems design, and engineering."
+  ],
+  "assessment_objectives": [
+    "To what extent do the teams responsible for developing and maintaining the AI system reflect diverse opinions, backgrounds, experiences, and perspectives?",
+    "Did the entity document the demographics of those involved in the design and development of the AI system to capture and communicate potential biases inherent to the development process, according to forum participants?",
+    "What specific perspectives did stakeholders share, and how were they integrated across the design, development, deployment, assessment, and monitoring of the AI system?",
+    "To what extent has the entity addressed stakeholder perspectives on the potential negative impacts of the AI system on end users and impacted populations?",
+    "What type of information is accessible on the design, operations, and limitations of the AI system to external stakeholders, including end users, consumers, regulators, and individuals impacted by use of the AI system?"
+  ],
+  "related_controls": [
+    "MAP-1.1 (NIST AI RMF — same category)",
+    "MAP-1.3 (NIST AI RMF — same category)",
+    "MAP-1.4 (NIST AI RMF — same category)",
+    "MAP-1.5 (NIST AI RMF — same category)",
+    "MAP-1.6 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

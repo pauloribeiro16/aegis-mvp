@@ -1,0 +1,11 @@
+{
+  "referential": "NIST CSF 2.0",
+  "version": "2.0 (2024-02-26)",
+  "source_urls": [
+    "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf"
+  ],
+  "fetched_date": "2026-09-05",
+  "subcategories": 106,
+  "expected_total": 106,
+  "unverified_entries": []
+}

@@ -1,0 +1,36 @@
+{
+  "control_id": "ID.IM-04",
+  "framework": "NIST CSF 2.0",
+  "function": "IDENTIFY",
+  "category": "Improvement (ID.IM)",
+  "subcategory_id": "ID.IM-04",
+  "subcategory_text": "Incident response plans and other cybersecurity plans that affect operations are established, communicated, maintained, and improved",
+  "informative_references": [
+    "NIST CSF 2.0 Core: ID.IM-04",
+    "NIST SP 800-53 Rev. 5: CP-02, IR-08, PL-02, SR-02",
+    "ISO/IEC 27001:2022: Clause 9.1, Annex A.5.24, Annex A.5.26, Annex A.5.27",
+    "CSF v1.1: PR.IP-10, PR.IP-9, RC.IM-1, RS.IM-1",
+    "PCI DSS: 12.10.1, 12.10.2, 12.10.3, 12.10.6",
+    "CRI Profile v2.0: ID.IM-04, ID.IM-04.01, ID.IM-04.02, ID.IM-04.03, ID.IM-04.04, ID.IM-04.05, ID.IM-04.06, ID.IM-04.07, ID.IM-04.08"
+  ],
+  "implementation_examples": [
+    "Establish contingency plans (e.g., incident response, business continuity, disaster recovery) for responding to and recovering from adverse events that can interfere with operations, expose confidential information, or otherwise endanger the organization's mission and viability",
+    "Include contact and communication information, processes for handling common scenarios, and criteria for prioritization, escalation, and elevation in all contingency plans",
+    "Create a vulnerability management plan to identify and assess all types of vulnerabilities and to prioritize, test, and implement risk responses",
+    "Communicate cybersecurity plans (including updates) to those responsible for carrying them out and to affected parties",
+    "Review and update all cybersecurity plans annually or when a need for significant improvements is identified"
+  ],
+  "assessment_objectives": [
+    "Determine whether incident response plans and other cybersecurity plans that affect operations are established, communicated, maintained, and improved.",
+    "Determine whether activities are conducted to establish contingency plans (e.g., incident response, business continuity, disaster recovery) for responding to and recovering from adverse events that can interfere with operations, expose confidential information, or otherwise endanger the organization's mission and viability.",
+    "Determine whether mechanisms ensure that include contact and communication information, processes for handling common scenarios, and criteria for prioritization, escalation, and elevation in all contingency plans.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "ID.IM-01 (NIST CSF 2.0 — same category)",
+    "ID.IM-02 (NIST CSF 2.0 — same category)",
+    "ID.IM-03 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

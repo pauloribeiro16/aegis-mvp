@@ -1,0 +1,31 @@
+{
+  "control_id": "PR.PT-P2",
+  "framework": "NIST PF 1.0",
+  "function": "PROTECT-P",
+  "category": "Protective Technology (PR.PT-P)",
+  "subcategory_id": "PR.PT-P2",
+  "subcategory_text": "The principle of least functionality is incorporated by configuring systems to provide only essential capabilities.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: CM-7 (Least Functionality), CM-8 (System Component Inventory)",
+    "NIST PF 1.0 Core (January 2020): PR.PT-P2 (verified row 101)",
+    "ISO/IEC 27001:2022 Annex A.8.9, A.8.19 (Installation of systems on networks)",
+    "GDPR Art. 5(1)(c) (Data minimisation), Art. 25"
+  ],
+  "implementation_examples": [
+    "Configure systems to provide only essential capabilities, disabling non-essential services, ports, and protocols",
+    "Manage exceptions through documented approval and time-bound review",
+    "Track the least-functionality surface in system baselines"
+  ],
+  "assessment_objectives": [
+    "Determine whether systems are configured for least functionality",
+    "Determine whether non-essential capabilities are disabled by default",
+    "Determine whether exceptions are documented, approved, and reviewed",
+    "Determine whether the configuration surface is tracked"
+  ],
+  "related_controls": [
+    "PR.PO-P1 (baseline configuration)",
+    "PR.AC-P5 (network integrity)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

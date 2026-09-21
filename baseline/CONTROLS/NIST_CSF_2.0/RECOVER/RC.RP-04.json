@@ -1,0 +1,35 @@
+{
+  "control_id": "RC.RP-04",
+  "framework": "NIST CSF 2.0",
+  "function": "RECOVER",
+  "category": "Incident Recovery Plan Execution (RC.RP)",
+  "subcategory_id": "RC.RP-04",
+  "subcategory_text": "Critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms",
+  "informative_references": [
+    "NIST CSF 2.0 Core: RC.RP-04",
+    "NIST SP 800-53 Rev. 5: IR-01, IR-08, PM-08, PM-09, PM-11",
+    "ISO/IEC 27001:2022: Clause 8.1, Annex A.None",
+    "PCI DSS: 1.2.3, 1.2.4, 10.2.1, 12.10.1, 12.5.1",
+    "CRI Profile v2.0: RC.RP-04, RC.RP-04.01"
+  ],
+  "implementation_examples": [
+    "Use business impact and system categorization records (including service delivery objectives) to validate that essential services are restored in the appropriate order",
+    "Work with system owners to confirm the successful restoration of systems and the return to normal operations",
+    "Monitor the performance of restored systems to verify the adequacy of the restoration"
+  ],
+  "assessment_objectives": [
+    "Determine whether critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms.",
+    "Determine whether activities are conducted to use business impact and system categorization records (including service delivery objectives) to validate that essential services are restored in the appropriate order.",
+    "Determine whether mechanisms ensure that work with system owners to confirm the successful restoration of systems and the return to normal operations.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "RC.RP-01 (NIST CSF 2.0 — same category)",
+    "RC.RP-02 (NIST CSF 2.0 — same category)",
+    "RC.RP-03 (NIST CSF 2.0 — same category)",
+    "RC.RP-05 (NIST CSF 2.0 — same category)",
+    "RC.RP-06 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

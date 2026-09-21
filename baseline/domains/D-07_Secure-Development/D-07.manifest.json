@@ -1,0 +1,480 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_type": "domain_aggregate",
+  "domain_id": "D-07",
+  "domain_name": "D-07 Secure Development",
+  "subdomains": [
+    "D-07.1",
+    "D-07.2",
+    "D-07.3",
+    "D-07.4"
+  ],
+  "subdomain_summaries": [
+    {
+      "id": "D-07.1",
+      "name": "Secure-by-Design Principles",
+      "participants": [
+        "GDPR",
+        "NIS2",
+        "CRA",
+        "DORA",
+        "AI_Act"
+      ],
+      "ai_act": "present",
+      "applicable_regs": [
+        "AI_Act",
+        "CRA",
+        "DORA",
+        "GDPR",
+        "NIS2"
+      ],
+      "total_cards": 53,
+      "applicable_articles": 37,
+      "applicable_clauses": 51,
+      "sub_objectives": 5,
+      "sub_requirements": 5,
+      "applicable_nist_controls": 9
+    },
+    {
+      "id": "D-07.2",
+      "name": "Secure Coding Practices",
+      "participants": [
+        "CRA",
+        "DORA",
+        "AI_Act"
+      ],
+      "ai_act": "present",
+      "applicable_regs": [
+        "AI_Act",
+        "CRA",
+        "DORA"
+      ],
+      "total_cards": 5,
+      "applicable_articles": 0,
+      "applicable_clauses": 0,
+      "sub_objectives": 3,
+      "sub_requirements": 3,
+      "applicable_nist_controls": 5
+    },
+    {
+      "id": "D-07.3",
+      "name": "CI/CD Pipeline Security",
+      "participants": [
+        "NIS2",
+        "CRA"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "CRA",
+        "NIS2"
+      ],
+      "total_cards": 5,
+      "applicable_articles": 0,
+      "applicable_clauses": 0,
+      "sub_objectives": 2,
+      "sub_requirements": 2,
+      "applicable_nist_controls": 4
+    },
+    {
+      "id": "D-07.4",
+      "name": "Change Management",
+      "participants": [
+        "CRA",
+        "DORA"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "CRA",
+        "DORA"
+      ],
+      "total_cards": 12,
+      "applicable_articles": 6,
+      "applicable_clauses": 6,
+      "sub_objectives": 2,
+      "sub_requirements": 2,
+      "applicable_nist_controls": 9
+    }
+  ],
+  "applicable_articles_by_regulation": {
+    "AI_Act": [],
+    "CRA": [
+      "Art. 13(1)",
+      "Art. 13(2) sentence 1",
+      "Art. 13(2) sentence 2",
+      "Art. 13(21)",
+      "Art. 13(3) sentence 1",
+      "Art. 13(3) sentence 2",
+      "Art. 13(3) sentence 3",
+      "Art. 13(5)",
+      "Art. 21",
+      "Art. 22(1)"
+    ],
+    "DORA": [
+      "Art. 17(1)",
+      "Art. 21(1)+(2)",
+      "Art. 21(3)",
+      "Art. 22(1)",
+      "Art. 22(2)",
+      "Art. 25(1)",
+      "Art. 25(2)",
+      "Art. 5(1)"
+    ],
+    "GDPR": [
+      "Art. 13(2)(f)",
+      "Art. 21(1)",
+      "Art. 21(3)",
+      "Art. 25(1)",
+      "Art. 25(2)",
+      "Art. 32(1)",
+      "Art. 34(3)",
+      "Art. 5(1)(f)",
+      "Article 35"
+    ],
+    "NIS2": [
+      "Art. 21(1) sentence 1",
+      "Art. 21(2)(a)",
+      "Art. 21(2)(b)",
+      "Art. 21(2)(c)",
+      "Art. 21(2)(d)",
+      "Art. 21(2)(e)",
+      "Art. 21(2)(f)",
+      "Art. 21(2)(g)",
+      "Art. 21(2)(h)",
+      "Art. 21(2)(i)",
+      "Art. 21(2)(j)",
+      "Art. 21(3)",
+      "Art. 21(3) sentence 1",
+      "Art. 25(1)",
+      "Art. 25(2)"
+    ]
+  },
+  "applicable_clauses_by_regulation": {
+    "AI_Act": [],
+    "CRA": [
+      "CRA-CL14",
+      "CRA-CL15",
+      "CRA-CL16",
+      "CRA-CL17",
+      "CRA-CL18",
+      "CRA-CL19",
+      "CRA-CL20",
+      "CRA-CL23a",
+      "CRA-CL46",
+      "CRA-CL96",
+      "CRA-CL97"
+    ],
+    "DORA": [
+      "CL17-1",
+      "CL21-1",
+      "CL21-2",
+      "CL22-1",
+      "CL22-2",
+      "CL25-1",
+      "CL25-2",
+      "CL5-1"
+    ],
+    "GDPR": [
+      "GDPR-CL06",
+      "GDPR-CP02",
+      "GDPR-CP03",
+      "GDPR-CP15",
+      "GDPR-CP20",
+      "GDPR-RT06",
+      "GDPR-RT16",
+      "GDPR-RT17"
+    ],
+    "NIS2": [
+      "NIS2-C03",
+      "NIS2-C04",
+      "NIS2-C05",
+      "NIS2-C06",
+      "NIS2-C07",
+      "NIS2-C08",
+      "NIS2-C09",
+      "NIS2-C10",
+      "NIS2-C11",
+      "NIS2-C12",
+      "NIS2-C13",
+      "NIS2-C14",
+      "NIS2-C15",
+      "NIS2-C16",
+      "NIS2-C17",
+      "NIS2-C18",
+      "NIS2-C19",
+      "NIS2-C20",
+      "NIS2-C21",
+      "NIS2-C22",
+      "NIS2-C23",
+      "NIS2-C24",
+      "NIS2-C29",
+      "NIS2-CL07",
+      "NIS2-CL13",
+      "NIS2-CL14",
+      "NIS2-CL20",
+      "NIS2-CL52",
+      "NIS2-CL53"
+    ]
+  },
+  "sub_objectives_by_regulation": {
+    "AI_Act": [
+      {
+        "id": "SO-D-07.1.AIACT",
+        "csf_anchors": [
+          "PR.PS-06",
+          "ID.RA-01"
+        ]
+      },
+      {
+        "id": "SO-D-07.2.AIACT",
+        "csf_anchors": [
+          "PR.PS-06",
+          "ID.RA-01"
+        ]
+      }
+    ],
+    "CRA": [
+      {
+        "id": "SO-D-07.1.CRA",
+        "csf_anchors": [
+          "PR.PS-06",
+          "PR.PS-01"
+        ]
+      },
+      {
+        "id": "SO-D-07.2.CRA",
+        "csf_anchors": [
+          "PR.PS-06",
+          "PR.PS-02"
+        ]
+      },
+      {
+        "id": "SO-D-07.3.CRA",
+        "csf_anchors": [
+          "PR.PS-06",
+          "PR.PS-02"
+        ]
+      },
+      {
+        "id": "SO-D-07.4.CRA",
+        "csf_anchors": [
+          "GV.OV-01",
+          "GV.PO-02",
+          "PR.PS-02",
+          "GV.SC-04",
+          "GV.OV-02",
+          "ID.IM-04"
+        ]
+      }
+    ],
+    "DORA": [
+      {
+        "id": "SO-D-07.1.DORA",
+        "csf_anchors": [
+          "PR.PS-06"
+        ]
+      },
+      {
+        "id": "SO-D-07.2.DORA",
+        "csf_anchors": [
+          "PR.PS-06"
+        ]
+      },
+      {
+        "id": "SO-D-07.4.DORA",
+        "csf_anchors": [
+          "PR.PS-01",
+          "PR.PS-02",
+          "PR.PS-06"
+        ]
+      }
+    ],
+    "GDPR": [
+      {
+        "id": "SO-D-07.1.GDPR",
+        "csf_anchors": [
+          "PR.PS-06",
+          "PR.DS-12"
+        ]
+      }
+    ],
+    "NIS2": [
+      {
+        "id": "SO-D-07.1.NIS2",
+        "csf_anchors": [
+          "PR.PS-06",
+          "PR.PS-02"
+        ]
+      },
+      {
+        "id": "SO-D-07.3.NIS2",
+        "csf_anchors": [
+          "PR.PS-02",
+          "ID.RA-01"
+        ]
+      }
+    ]
+  },
+  "sub_requirements_by_regulation": {
+    "AI_Act": [
+      {
+        "req_id": "7.1.5",
+        "title": "High-risk AI systems designed and developed to achieve appropriate level of accuracy, robustness, and cybersecurity, performing consistently throughout their lifecycle, with QMS covering design/design-control/design-verification",
+        "nist_csf": [
+          "PR.PS-06",
+          "ID.RA-01"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "7.2.3",
+        "title": "High-risk AI systems designed and developed to effectively resist, as appropriate to purpose and conditions of use, attempts at training-data poisoning, model poisoning, adversarial examples, model evasion, confidentiality attacks or model flaws",
+        "nist_csf": [
+          "PR.PS-06",
+          "ID.RA-01"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "CRA": [
+      {
+        "req_id": "7.1.3",
+        "title": "Product with digital elements designed, developed and produced in accordance with Annex I Part I essential cybersecurity requirements with risk assessment propagated across planning, design, development, production, delivery and maintenance",
+        "nist_csf": [
+          "PR.PS-06",
+          "PR.PS-01"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "7.2.1",
+        "title": "Product with digital elements designed, developed and produced to limit attack surfaces (including external interfaces) and to reduce incident impact via exploitation-mitigation mechanisms and techniques",
+        "nist_csf": [
+          "PR.PS-06",
+          "PR.PS-02"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "7.3.2",
+        "title": "Product-side secure-update delivery evidence for CRA-regulated products",
+        "nist_csf": [
+          "PR.PS-06",
+          "PR.PS-02"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "7.4.1",
+        "title": "Product-side change records preserve series-production conformity and substantial-modification decisions",
+        "nist_csf": [
+          "GV.OV-01",
+          "GV.PO-02",
+          "PR.PS-02",
+          "GV.SC-04",
+          "GV.OV-02",
+          "ID.IM-04"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "DORA": [
+      {
+        "req_id": "7.1.4",
+        "title": "Sound network and infrastructure management structure with appropriate techniques/methods/protocols, patch and update policies, and secure-by-design operationalised via change-management six-step + testing programme (DORA partial — no OJ dedicated by-design mandate)",
+        "nist_csf": [
+          "PR.PS-06"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "7.2.2",
+        "title": "ICT change-management six-step (recorded/tested/assessed/approved/implemented/verified) with implicit coding-dimension inference through tested/assessed legs and Art. 25 testing modalities (DORA partial — no OJ-mandated secure-coding-standards prescription; SR-DORA-023 partial at D-07.2 by inference only, D-07.4 primary)",
+        "nist_csf": [
+          "PR.PS-06"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "7.4.2",
+        "title": "Entity-side ICT change records demonstrate controlled, risk-based change execution",
+        "nist_csf": [
+          "PR.PS-01",
+          "PR.PS-02",
+          "PR.PS-06"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "GDPR": [
+      {
+        "req_id": "7.1.1",
+        "title": "Personal-data processing implements data-protection principles via appropriate technical and organisational measures designed into the means of processing, with by-default limits on amount, extent, storage period and accessibility",
+        "nist_csf": [
+          "PR.PS-06",
+          "PR.DS-12"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "NIS2": [
+      {
+        "req_id": "7.1.2",
+        "title": "Security integrated into the acquisition, development and maintenance of network and information systems across the 3-phase coordinated lifecycle with vulnerability handling and disclosure",
+        "nist_csf": [
+          "PR.PS-06",
+          "PR.PS-02"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "7.3.1",
+        "title": "Entity-side deployment and maintenance pipeline evidence for network and information systems",
+        "nist_csf": [
+          "PR.PS-02",
+          "ID.RA-01"
+        ],
+        "scope_overlap": "N"
+      }
+    ]
+  },
+  "applicable_nist_controls_by_regulation": {
+    "AI_Act": [
+      "ID.RA-01",
+      "PR.PS-06"
+    ],
+    "CRA": [
+      "GV.OV-01",
+      "GV.OV-02",
+      "GV.PO-02",
+      "GV.SC-04",
+      "ID.IM-04",
+      "PR.PS-01",
+      "PR.PS-02",
+      "PR.PS-06"
+    ],
+    "DORA": [
+      "PR.PS-01",
+      "PR.PS-02",
+      "PR.PS-06"
+    ],
+    "GDPR": [
+      "PR.DS-12",
+      "PR.PS-06"
+    ],
+    "NIS2": [
+      "ID.RA-01",
+      "PR.PS-02",
+      "PR.PS-06"
+    ]
+  },
+  "counts": {
+    "subdomains": 4,
+    "total_cards": 75,
+    "applicable_articles_total": 42,
+    "applicable_clauses_total": 56,
+    "sub_objectives_total": 12,
+    "sub_requirements_total": 12,
+    "applicable_nist_controls_total": 18
+  },
+  "generated_at": "2026-08-04T17:27:46Z"
+}

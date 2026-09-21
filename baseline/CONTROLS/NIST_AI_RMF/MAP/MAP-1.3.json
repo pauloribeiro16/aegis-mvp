@@ -1,0 +1,35 @@
+{
+  "control_id": "MAP-1.3",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MAP",
+  "category": "Context is Established and Understood",
+  "subcategory_id": "MAP-1.3",
+  "subcategory_text": "Organizational mission and relevant goals for AI technology are understood and documented",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "M.S. Ackerman (2000). The Intellectual Challenge of CSCW: The Gap Between Social Requirements and Technical Feasibility. Human–Computer Interaction, 15, 179 - 203. [URL](https://socialworldsresearch.org/sites/default/files/hci.final_.pdf)",
+    "McKane Andrus, Sarah Dean, Thomas Gilbert,  Nathan Lambert, Tom Zick (2021). AI Development for the Public Interest: From Abstraction Traps to Sociotechnical Risks. [URL](https://arxiv.org/pdf/2102.04255.pdf)",
+    "Abeba Birhane, Pratyusha Kalluri, Dallas Card, et al. 2022. The Values Encoded in Machine Learning Research. arXiv:2106.15590. [URL](https://arxiv.org/abs/2106.15590)"
+  ],
+  "implementation_examples": [
+    "Build transparent practices into AI system development processes.",
+    "Review the documented system purpose from a socio-technical perspective and in consideration of societal values.",
+    "Determine possible misalignment between societal values and stated organizational principles and code of ethics.",
+    "Flag latent incentives that may contribute to negative impacts.",
+    "Evaluate AI system purpose in consideration of potential risks, societal values, and stated organizational principles."
+  ],
+  "assessment_objectives": [
+    "How does the AI system help the entity meet its goals and objectives?",
+    "How do the technical specifications and requirements align with the AI system’s goals and objectives?",
+    "To what extent is the output appropriate for the operational context?"
+  ],
+  "related_controls": [
+    "MAP-1.1 (NIST AI RMF — same category)",
+    "MAP-1.2 (NIST AI RMF — same category)",
+    "MAP-1.4 (NIST AI RMF — same category)",
+    "MAP-1.5 (NIST AI RMF — same category)",
+    "MAP-1.6 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

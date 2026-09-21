@@ -1,0 +1,32 @@
+{
+  "control_id": "GV.RM-P3",
+  "framework": "NIST PF 1.0",
+  "function": "GOVERN-P",
+  "category": "Risk Management Strategy (GV.RM-P)",
+  "subcategory_id": "GV.RM-P3",
+  "subcategory_text": "The organization’s determination of risk tolerance is informed by its role(s) in the data processing ecosystem.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: PM-15 (Security and Privacy Groups and Associations)",
+    "NIST PF 1.0 Core (January 2020): GV.RM-P3 (verified row 33)",
+    "ISO/IEC 27001:2022 Annex A.5.19, A.5.20",
+    "GDPR Art. 26, Art. 28",
+    "Aligned with NIST CSF 2.0 GV.SC-04 and ID.BE-P1 (role in data processing ecosystem)"
+  ],
+  "implementation_examples": [
+    "Factor the organisation's role(s) in the data processing ecosystem (controller, processor, joint controller) into the risk-tolerance statement",
+    "Document obligations that arise from the role (e.g., processor-only sub-processing review for processors, controller accountabilities for controllers)",
+    "Re-evaluate when the organisation's role changes"
+  ],
+  "assessment_objectives": [
+    "Determine whether role(s) in the data processing ecosystem are factored into risk tolerance",
+    "Determine whether role-driven obligations are documented",
+    "Determine whether risk tolerance accommodates shared-versus-single-party obligations",
+    "Determine whether role changes trigger a documented re-evaluation"
+  ],
+  "related_controls": [
+    "ID.BE-P1 (role identified)",
+    "GV.RM-P2 (risk tolerance expressed)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

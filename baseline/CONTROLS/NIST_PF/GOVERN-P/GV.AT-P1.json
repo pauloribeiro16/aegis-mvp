@@ -1,0 +1,32 @@
+{
+  "control_id": "GV.AT-P1",
+  "framework": "NIST PF 1.0",
+  "function": "GOVERN-P",
+  "category": "Awareness and Training (GV.AT-P)",
+  "subcategory_id": "GV.AT-P1",
+  "subcategory_text": "The workforce is informed and trained on its roles and responsibilities.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: AT-2 (Awareness Training), AT-3 (Role-Based Training)",
+    "NIST PF 1.0 Core (January 2020): GV.AT-P1 (verified row 34)",
+    "ISO/IEC 27001:2022 Annex A.6.3 (Information security awareness, education and training)",
+    "GDPR Art. 39(1)(b) (DPO awareness-raising)",
+    "Aligned with NIST CSF 2.0 GV.AT-01 (workforce awareness)"
+  ],
+  "implementation_examples": [
+    "Deliver privacy-awareness training to the workforce on their roles, responsibilities, and the organisational privacy values",
+    "Confirm completion of training at onboarding and at defined cadence (typically annually)",
+    "Tailor role-based training for those with elevated privacy responsibilities (engineers, marketers, HR, support)"
+  ],
+  "assessment_objectives": [
+    "Determine whether the workforce is informed and trained on privacy roles and responsibilities",
+    "Determine whether completion is verified at onboarding and on cadence",
+    "Determine whether role-based training is provided to elevated roles",
+    "Determine whether training materials reflect current policies and recent incidents"
+  ],
+  "related_controls": [
+    "GV.PO-P3 (workforce roles defined)",
+    "GV.AT-P2 (executives understand their roles)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

@@ -1,0 +1,41 @@
+{
+  "control_id": "GOVERN-1.7",
+  "framework": "NIST AI RMF 1.0",
+  "function": "GOVERN",
+  "category": "Policies, Processes, Procedures and Practices",
+  "subcategory_id": "GOVERN-1.7",
+  "subcategory_text": "Processes and procedures for decommissioning and phasing out AI systems",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Michelle De Mooy, Joseph Jerome and Vijay Kasschau, “Should It Stay or Should It Go? The Legal, Policy and Technical Landscape Around Data Deletion,” Center for Democracy and Technology, 2017. [URL](https://cdt.org/wp-content/uploads/2017/02/2017-02-23-Data-Deletion-FNL2.pdf)",
+    "Burcu Baykurt, \"Algorithmic accountability in US cities: Transparency, impact, and political economy.\" Big Data & Society 9, no. 2 (2022): 20539517221115426. [URL](https://journals.sagepub.com/doi/full/10.1177/20539517221115426)",
+    "Upol Ehsan, Ranjit Singh, Jacob Metcalf and Mark O. Riedl. “The Algorithmic Imprint.” Proceedings of the 2022 ACM Conference on Fairness, Accountability, and Transparency (2022). [URL] (https://arxiv.org/pdf/2206.03275v1)"
+  ],
+  "implementation_examples": [
+    "Establish policies for decommissioning AI systems. Such policies typically address:",
+    "User and community concerns, and reputational risks.",
+    "Business continuity and financial risks.",
+    "Up and downstream system dependencies.",
+    "Regulatory requirements (e.g., data retention).",
+    "Potential future legal, regulatory, security or forensic investigations.",
+    "Migration to the replacement system, if appropriate.",
+    "Establish policies that delineate where and for how long decommissioned systems, models and related artifacts are stored.",
+    "Establish practices to track accountability and consider how decommission and other adaptations or changes in system deployment contribute to downstream impacts for individuals, groups and communities.",
+    "Establish policies that address ancillary data or artifacts that must be preserved for fulsome understanding or execution of the decommissioned AI system, e.g., predictions, explanations, intermediate input feature representations, usernames and passwords, etc."
+  ],
+  "assessment_objectives": [
+    "What processes exist for data generation, acquisition/collection, ingestion, staging/storage, transformations, security, maintenance, and dissemination?",
+    "To what extent do these policies foster public trust and confidence in the use of the AI system?",
+    "If anyone believes that the AI no longer meets this ethical framework, who will be responsible for receiving the concern and as appropriate investigating and remediating the issue? Do they have authority to modify, limit, or stop the use of the AI?"
+  ],
+  "related_controls": [
+    "GOVERN-1.1 (NIST AI RMF — same category)",
+    "GOVERN-1.2 (NIST AI RMF — same category)",
+    "GOVERN-1.3 (NIST AI RMF — same category)",
+    "GOVERN-1.4 (NIST AI RMF — same category)",
+    "GOVERN-1.5 (NIST AI RMF — same category)",
+    "GOVERN-1.6 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

@@ -1,0 +1,49 @@
+{
+  "control_id": "MAP-2.3",
+  "framework": "NIST AI RMF 1.0",
+  "function": "MAP",
+  "category": "AI System and Context are Characterized",
+  "subcategory_id": "MAP-2.3",
+  "subcategory_text": "Scientific integrity and TEVV considerations are identified and documented",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Alexandra Olteanu, Carlos Castillo, Fernando Diaz, and Emre Kiciman. 2019. Social Data: Biases, Methodological Pitfalls, and Ethical Boundaries. Front. Big Data 2, 13 (11 July 2019). [URL](https://doi.org/10.3389/fdata.2019.00013)",
+    "Amandalynne Paullada, Inioluwa Deborah Raji, Emily M. Bender, et al. 2020. Data and its (dis)contents: A survey of dataset development and use in machine learning research. arXiv:2012.05345. [URL](https://arxiv.org/abs/2012.05345)",
+    "Catherine D'Ignazio and Lauren F. Klein. 2020. Data Feminism. The MIT Press, Cambridge, MA. [URL](https://data-feminism.mitpress.mit.edu/)"
+  ],
+  "implementation_examples": [
+    "Identify and document experiment design and statistical techniques that are valid for testing complex socio-technical systems like AI, which involve human factors, emergent properties, and dynamic context(s) of use.",
+    "Develop and apply TEVV protocols for models, system and its subcomponents, deployment, and operation.",
+    "Demonstrate and document that AI system performance and validation metrics are interpretable and unambiguous for downstream decision making tasks, and take socio-technical factors such as context of use into consideration.",
+    "Identify and document assumptions,  techniques, and metrics used for testing and evaluation throughout the AI lifecycle including experimental design techniques for data collection, selection, and management practices in accordance with data governance policies established in GOVERN.",
+    "Identify testing modules that can be incorporated throughout the AI lifecycle, and verify that processes enable corroboration by independent evaluators.",
+    "Establish mechanisms for regular communication and feedback among relevant AI actors and internal or external stakeholders related to the validity of design and deployment assumptions.",
+    "Establish mechanisms for regular communication and feedback between relevant AI actors and internal or external stakeholders related to the development of TEVV approaches throughout the lifecycle to detect and assess potentially harmful impacts",
+    "Document assumptions made and techniques used in data selection, curation, preparation and analysis, including:",
+    "identification of constructs and proxy targets,",
+    "development of  indices – especially those operationalizing concepts that are inherently unobservable (e.g. “hireability,” “criminality.” “lendability”).",
+    "Map adherence to policies that address data and construct validity, bias, privacy and security for AI systems and verify documentation, oversight, and processes.",
+    "Identify and document transparent methods (e.g. causal discovery methods) for inferring causal relationships between constructs being modeled and dataset attributes or proxies.",
+    "Identify and document processes to understand and trace test and training data lineage and its metadata resources for mapping risks.",
+    "Document known limitations, risk mitigation efforts associated with, and methods used for, training data collection, selection, labeling, cleaning, and analysis (e.g. treatment of missing, spurious, or outlier data; biased estimators).",
+    "Establish and document practices to check for capabilities that are in excess of those that are planned for, such as emergent properties, and to revisit prior risk management steps in light of any new capabilities.",
+    "Establish processes to test and verify that design assumptions about the set of deployment contexts continue to be accurate and sufficiently complete.",
+    "Work with domain experts and other external AI actors to:",
+    "Gain and maintain contextual awareness and knowledge about how human behavior, organizational factors and dynamics, and society influence, and are represented in, datasets, processes, models, and system output.",
+    "Identify participatory approaches for responsible Human-AI configurations and oversight tasks, taking into account sources of cognitive bias.",
+    "Identify techniques to manage and mitigate sources of bias (systemic, computational, human- cognitive) in computational models and systems, and the assumptions and decisions in their development..",
+    "Investigate and document potential negative impacts due related to the full product lifecycle and associated processes that may conflict with organizational values and principles."
+  ],
+  "assessment_objectives": [
+    "Are there any known errors, sources of noise, or redundancies in the data?",
+    "What is the variable selection and evaluation process?",
+    "As time passes and conditions change, is the training data still representative of the operational environment?",
+    "How does the entity ensure that the data collected are adequate, relevant, and not excessive in relation to the intended purpose?"
+  ],
+  "related_controls": [
+    "MAP-2.1 (NIST AI RMF — same category)",
+    "MAP-2.2 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

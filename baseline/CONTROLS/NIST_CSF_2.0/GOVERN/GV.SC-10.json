@@ -1,0 +1,45 @@
+{
+  "control_id": "GV.SC-10",
+  "framework": "NIST CSF 2.0",
+  "function": "GOVERN",
+  "category": "Cybersecurity Supply Chain Risk Management (GV.SC)",
+  "subcategory_id": "GV.SC-10",
+  "subcategory_text": "Cybersecurity supply chain risk management plans include provisions for activities that occur after the conclusion of a partnership or service agreement",
+  "informative_references": [
+    "NIST CSF 2.0 Core: GV.SC-10",
+    "NIST SP 800-53 Rev. 5: PM-31, RA-03, RA-05, RA-07, SA-04, SA-09, SR-02, SR-03 (+2 more)",
+    "ISO/IEC 27001:2022: Clause 6.1.1, Clause 6.1.2, Clause 6.1.3, Annex A.5.19, Annex A.5.20, Annex A.5.21, Annex A.5.22",
+    "CSF v1.1: ID.SC-1",
+    "CIS Controls v8: 15.7",
+    "PCI DSS: 1.2.3, 1.2.4, 12.10.1, 12.3.4, 12.5.2, 12.8.2 (+8 more)",
+    "CRI Profile v2.0: EX.TR, EX.TR-01, EX.TR-01.01, EX.TR-01.02, EX.TR-01.03, EX.TR-02, EX.TR-02.01"
+  ],
+  "implementation_examples": [
+    "Establish processes for terminating critical relationships under both normal and adverse circumstances",
+    "Define and implement plans for component end-of-life maintenance support and obsolescence",
+    "Verify that supplier access to organization resources is deactivated promptly when it is no longer needed",
+    "Verify that assets containing the organization's data are returned or properly disposed of in a timely, controlled, and safe manner",
+    "Develop and execute a plan for terminating or transitioning supplier relationships that takes supply chain security risk and resiliency into account",
+    "Mitigate risks to data and systems created by supplier termination",
+    "Manage data leakage risks associated with supplier termination"
+  ],
+  "assessment_objectives": [
+    "Determine whether cybersecurity supply chain risk management plans include provisions for activities that occur after the conclusion of a partnership or service agreement.",
+    "Determine whether activities are conducted to establish processes for terminating critical relationships under both normal and adverse circumstances.",
+    "Determine whether activities are conducted to define and implement plans for component end-of-life maintenance support and obsolescence.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "GV.SC-01 (NIST CSF 2.0 — same category)",
+    "GV.SC-02 (NIST CSF 2.0 — same category)",
+    "GV.SC-03 (NIST CSF 2.0 — same category)",
+    "GV.SC-04 (NIST CSF 2.0 — same category)",
+    "GV.SC-05 (NIST CSF 2.0 — same category)",
+    "GV.SC-06 (NIST CSF 2.0 — same category)",
+    "GV.SC-07 (NIST CSF 2.0 — same category)",
+    "GV.SC-08 (NIST CSF 2.0 — same category)",
+    "GV.SC-09 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

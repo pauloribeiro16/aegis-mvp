@@ -1,0 +1,36 @@
+{
+  "control_id": "GOVERN-3.2",
+  "framework": "NIST AI RMF 1.0",
+  "function": "GOVERN",
+  "category": "Workforce",
+  "subcategory_id": "GOVERN-3.2",
+  "subcategory_text": "Policies and procedures to define and differentiate roles and responsibilities for human-AI configurations and oversight",
+  "informative_references": [
+    "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0, January 26, 2023)",
+    "Madeleine Clare Elish, \"Moral Crumple Zones: Cautionary tales in human-robot interaction,\" Engaging Science, Technology, and Society, Vol. 5, 2019. [URL](https://estsjournal.org/index.php/ests/article/view/260)",
+    "“Human-AI Teaming: State-Of-The-Art and Research Needs,” National Academies of Sciences, Engineering, and Medicine, 2022. [URL](https://doi.org/10.17226/26355)",
+    "Ben Green, \"The Flaws Of Policies Requiring Human Oversight Of Government Algorithms,\" Computer Law & Security Review 45 (2022). [URL](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3921216)"
+  ],
+  "implementation_examples": [
+    "Establish policies and procedures that define and differentiate the various human roles and responsibilities when using, interacting with, or monitoring AI systems.",
+    "Establish procedures for capturing and tracking risk information related to human-AI configurations and associated outcomes.",
+    "Establish policies for the development of proficiency standards for AI actors carrying out system operation tasks and system oversight tasks.",
+    "Establish specified risk management training protocols for AI actors carrying out system operation tasks and system oversight tasks.",
+    "Establish policies and procedures regarding AI actor roles, and responsibilities for human oversight of deployed systems.",
+    "Establish policies and procedures defining  human-AI configurations (configurations where AI systems are explicitly designated and treated as team members in primarily human teams) in relation to organizational risk tolerances, and associated documentation.",
+    "Establish policies to enhance the explanation, interpretation, and overall transparency of AI systems.",
+    "Establish policies for managing risks regarding known difficulties in human-AI configurations, human-AI teaming, and AI system user experience and user interactions (UI/UX)."
+  ],
+  "assessment_objectives": [
+    "What type of information is accessible on the design, operations, and limitations of the AI system to external stakeholders, including end users, consumers, regulators, and individuals impacted by use of the AI system?",
+    "To what extent has the entity documented the appropriate level of human involvement in AI-augmented decision-making?",
+    "How will the accountable human(s) address changes in accuracy and precision due to either an adversary’s attempts to disrupt the AI or unrelated changes in operational/business environment, which may impact the accuracy of the AI?",
+    "To what extent has the entity clarified the roles, responsibilities, and delegated authorities to relevant stakeholders?",
+    "How does the entity assess whether personnel have the necessary skills, training, resources, and domain knowledge to fulfill their assigned responsibilities?"
+  ],
+  "related_controls": [
+    "GOVERN-3.1 (NIST AI RMF — same category)"
+  ],
+  "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+  "source_version": "NIST AI RMF 1.0 (2023-01-26)"
+}

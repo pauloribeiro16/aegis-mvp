@@ -1,0 +1,34 @@
+{
+  "control_id": "RC.RP-05",
+  "framework": "NIST CSF 2.0",
+  "function": "RECOVER",
+  "category": "Incident Recovery Plan Execution (RC.RP)",
+  "subcategory_id": "RC.RP-05",
+  "subcategory_text": "The integrity of restored assets is verified, systems and services are restored, and normal operating status is confirmed",
+  "informative_references": [
+    "NIST CSF 2.0 Core: RC.RP-05",
+    "NIST SP 800-53 Rev. 5: CP-10",
+    "ISO/IEC 27001:2022: Annex A.5.26",
+    "PCI DSS: 10.4.1, 11.4.4, 6.2.3",
+    "CRI Profile v2.0: RC.RP-05, RC.RP-05.01, RC.RP-05.02"
+  ],
+  "implementation_examples": [
+    "Check restored assets for indicators of compromise and remediation of root causes of the incident before production use",
+    "Verify the correctness and adequacy of the restoration actions taken before putting a restored system online"
+  ],
+  "assessment_objectives": [
+    "Determine whether the integrity of restored assets is verified, systems and services are restored, and normal operating status is confirmed.",
+    "Determine whether mechanisms ensure that check restored assets for indicators of compromise and remediation of root causes of the incident before production use.",
+    "Determine whether activities are conducted to verify the correctness and adequacy of the restoration actions taken before putting a restored system online.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "RC.RP-01 (NIST CSF 2.0 — same category)",
+    "RC.RP-02 (NIST CSF 2.0 — same category)",
+    "RC.RP-03 (NIST CSF 2.0 — same category)",
+    "RC.RP-04 (NIST CSF 2.0 — same category)",
+    "RC.RP-06 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

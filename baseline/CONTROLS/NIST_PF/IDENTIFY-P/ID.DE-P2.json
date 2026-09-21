@@ -1,0 +1,32 @@
+{
+  "control_id": "ID.DE-P2",
+  "framework": "NIST PF 1.0",
+  "function": "IDENTIFY-P",
+  "category": "Data Processing Ecosystem Risk Management (ID.DE-P)",
+  "subcategory_id": "ID.DE-P2",
+  "subcategory_text": "Data processing ecosystem parties (e.g., service providers, customers, partners, product manufacturers, application developers) are identified, prioritized, and assessed using a privacy risk assessment process.",
+  "informative_references": [
+    "NIST SP 800-53 Rev. 5: SR-6 (Supplier Assessments and Reviews)",
+    "NIST PF 1.0 Core (January 2020): ID.DE-P2 (verified row 21)",
+    "ISO/IEC 27001:2022 Annex A.5.19, A.5.20 (Addressing information security within supplier agreements)",
+    "GDPR Art. 28 (Processor obligations), Art. 35 (DPIA when processing on behalf)",
+    "Aligned with NIST CSF 2.0 GV.SC-04 (suppliers identified and prioritised) and ID.SC-02 (suppliers prioritised)"
+  ],
+  "implementation_examples": [
+    "Identify and document third parties involved in processing personal data (service providers, customers, partners, product manufacturers, application developers)",
+    "Prioritise these parties by virtue of the sensitivity of the data they handle and the criticality of the service they provide",
+    "Apply a privacy-risk assessment process to each prioritised party and record the assessment outcome"
+  ],
+  "assessment_objectives": [
+    "Determine whether third parties in the data processing ecosystem are identified",
+    "Determine whether parties are prioritised by sensitivity and criticality",
+    "Determine whether a privacy-risk assessment process is applied to prioritised parties",
+    "Determine whether assessment outcomes are recorded and tracked"
+  ],
+  "related_controls": [
+    "ID.DE-P1 (ecosystem risk management process)",
+    "GV.SC-04 (NIST CSF 2.0 — suppliers prioritised)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.01162020.pdf",
+  "source_version": "NIST Privacy Framework 1.0 (January 16, 2020)"
+}

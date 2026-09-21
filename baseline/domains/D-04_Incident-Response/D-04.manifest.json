@@ -1,0 +1,806 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_type": "domain_aggregate",
+  "domain_id": "D-04",
+  "domain_name": "D-04 Incident Response",
+  "subdomains": [
+    "D-04.1",
+    "D-04.2",
+    "D-04.3",
+    "D-04.4"
+  ],
+  "subdomain_summaries": [
+    {
+      "id": "D-04.1",
+      "name": "Incident Detection & Triage",
+      "participants": [
+        "GDPR",
+        "NIS2",
+        "CRA",
+        "DORA"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "CRA",
+        "DORA",
+        "GDPR",
+        "NIS2"
+      ],
+      "total_cards": 34,
+      "applicable_articles": 21,
+      "applicable_clauses": 33,
+      "sub_objectives": 4,
+      "sub_requirements": 4,
+      "applicable_nist_controls": 19
+    },
+    {
+      "id": "D-04.2",
+      "name": "Incident Containment & Response",
+      "participants": [
+        "GDPR",
+        "NIS2",
+        "CRA",
+        "DORA"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "CRA",
+        "DORA",
+        "GDPR",
+        "NIS2"
+      ],
+      "total_cards": 43,
+      "applicable_articles": 29,
+      "applicable_clauses": 41,
+      "sub_objectives": 4,
+      "sub_requirements": 4,
+      "applicable_nist_controls": 20
+    },
+    {
+      "id": "D-04.3",
+      "name": "Incident Notification & Reporting",
+      "participants": [
+        "GDPR",
+        "NIS2",
+        "CRA",
+        "DORA",
+        "AI_Act"
+      ],
+      "ai_act": "present",
+      "applicable_regs": [
+        "AI_Act",
+        "CRA",
+        "DORA",
+        "GDPR",
+        "NIS2"
+      ],
+      "total_cards": 94,
+      "applicable_articles": 87,
+      "applicable_clauses": 91,
+      "sub_objectives": 5,
+      "sub_requirements": 5,
+      "applicable_nist_controls": 17
+    },
+    {
+      "id": "D-04.4",
+      "name": "Incident Recovery & Lessons Learned",
+      "participants": [
+        "GDPR",
+        "NIS2",
+        "CRA",
+        "DORA"
+      ],
+      "ai_act": "absent",
+      "applicable_regs": [
+        "CRA",
+        "DORA",
+        "GDPR",
+        "NIS2"
+      ],
+      "total_cards": 41,
+      "applicable_articles": 25,
+      "applicable_clauses": 39,
+      "sub_objectives": 4,
+      "sub_requirements": 4,
+      "applicable_nist_controls": 13
+    }
+  ],
+  "applicable_articles_by_regulation": {
+    "AI_Act": [],
+    "CRA": [
+      "Art. 13(1)",
+      "Art. 13(17)",
+      "Art. 13(21)",
+      "Art. 13(8) sentence 1",
+      "Art. 14(1) sentence 1",
+      "Art. 14(2)(a)",
+      "Art. 14(2)(b)",
+      "Art. 14(2)(c)",
+      "Art. 14(3) sentence 1",
+      "Art. 14(4)(a)",
+      "Art. 14(5)(a)",
+      "Art. 14(5)(b)",
+      "Art. 14(8) sentence 1",
+      "Art. 16(2)",
+      "Art. 17(2)",
+      "Art. 17(4)",
+      "Art. 21",
+      "Art. 24(3)",
+      "Art. 6 chapeau + (a)"
+    ],
+    "DORA": [
+      "Art. 10(1)",
+      "Art. 10(2)+(3)",
+      "Art. 10(4)",
+      "Art. 11(1)+(2) chapeau + (a)–(e)",
+      "Art. 11(10)+(11)",
+      "Art. 11(3)+(4)+(5)",
+      "Art. 11(6)+(7)+(8)+(9)",
+      "Art. 12(1)+(2)",
+      "Art. 12(3)+(4)",
+      "Art. 12(5)",
+      "Art. 12(6)+(7)",
+      "Art. 13(1)+(2)+(3)",
+      "Art. 13(4)+(5)+(6)+(7)",
+      "Art. 14(1)",
+      "Art. 14(2)+(3)",
+      "Art. 15 chapeau + sub-points (a)–(g)",
+      "Art. 16(1) first sub-paragraph + (2)",
+      "Art. 16(1) second sub-paragraph (a)–(h) + (3)",
+      "Art. 17(1)",
+      "Art. 17(2)",
+      "Art. 19(1)",
+      "Art. 19(3)",
+      "Art. 19(4)",
+      "Art. 19(5)",
+      "Art. 19(7)",
+      "Art. 19(8)",
+      "Art. 20",
+      "Art. 21(1)+(2)",
+      "Art. 21(3)",
+      "Art. 23",
+      "Art. 24(3)",
+      "Art. 5(1)",
+      "Art. 6(2)+(3)",
+      "Art. 6(8)+(9)+(10)",
+      "Art. 7 chapeau + (a)–(d)",
+      "Art. 8(1)+(2)",
+      "Art. 8(3)+(7)",
+      "Art. 8(4)+(5)+(6)",
+      "Art. 9(1)",
+      "Art. 9(2)",
+      "Art. 9(3)(a)–(d)",
+      "Art. 9(4)(a)–(f)"
+    ],
+    "GDPR": [
+      "Art. 10",
+      "Art. 11(1)",
+      "Art. 14(5)(b)",
+      "Art. 15(4)",
+      "Art. 16",
+      "Art. 19",
+      "Art. 21(1)",
+      "Art. 21(3)",
+      "Art. 23(1)",
+      "Art. 32(1)",
+      "Art. 32(2)",
+      "Art. 33(1)",
+      "Art. 33(3)",
+      "Art. 34(1)",
+      "Art. 34(3)",
+      "Art. 35(1)",
+      "Art. 35(7)",
+      "Art. 36(1)",
+      "Art. 5(1)(c)",
+      "Art. 5(1)(d)",
+      "Art. 5(1)(f)",
+      "Article 17",
+      "Article 20",
+      "Article 33",
+      "Article 35"
+    ],
+    "NIS2": [
+      "Art. 20 chapeau",
+      "Art. 21(1) sentence 1",
+      "Art. 21(2) chapeau",
+      "Art. 21(2)(a)",
+      "Art. 21(2)(b)",
+      "Art. 21(2)(c)",
+      "Art. 21(2)(d)",
+      "Art. 21(2)(e)",
+      "Art. 21(2)(f)",
+      "Art. 21(2)(g)",
+      "Art. 21(2)(h)",
+      "Art. 21(2)(i)",
+      "Art. 21(2)(j)",
+      "Art. 21(3)",
+      "Art. 23(1) ¶1",
+      "Art. 23(1) ¶2",
+      "Art. 23(1) ¶3",
+      "Art. 23(2)",
+      "Art. 23(3)",
+      "Art. 23(3)(a)",
+      "Art. 23(3)(b)",
+      "Art. 23(4) ¶2",
+      "Art. 23(4)(a)",
+      "Art. 23(4)(b)",
+      "Art. 23(4)(c)",
+      "Art. 23(4)(d)",
+      "Art. 23(4)(e)",
+      "Art. 23(6)",
+      "Art. 23(8)",
+      "Art. 24(3)"
+    ]
+  },
+  "applicable_clauses_by_regulation": {
+    "AI_Act": [],
+    "CRA": [
+      "CRA-CL01",
+      "CRA-CL103",
+      "CRA-CL14",
+      "CRA-CL27",
+      "CRA-CL42",
+      "CRA-CL46",
+      "CRA-CL51",
+      "CRA-CL53",
+      "CRA-CL54",
+      "CRA-CL55",
+      "CRA-CL56",
+      "CRA-CL58",
+      "CRA-CL61",
+      "CRA-CL62",
+      "CRA-CL65",
+      "CRA-CL75",
+      "CRA-CL79",
+      "CRA-CL81",
+      "CRA-CL96"
+    ],
+    "DORA": [
+      "CL10-1",
+      "CL10-2",
+      "CL10-3",
+      "CL11-1",
+      "CL11-2",
+      "CL11-3",
+      "CL11-4",
+      "CL12-1",
+      "CL12-2",
+      "CL12-3",
+      "CL12-4",
+      "CL13-1",
+      "CL13-2",
+      "CL14-1",
+      "CL14-2",
+      "CL15-1",
+      "CL16-1",
+      "CL16-2",
+      "CL17-1",
+      "CL17-2",
+      "CL19-1",
+      "CL19-3",
+      "CL19-4",
+      "CL19-5",
+      "CL19-7",
+      "CL19-8",
+      "CL20-1",
+      "CL21-1",
+      "CL21-2",
+      "CL23-1",
+      "CL24-2",
+      "CL5-1",
+      "CL6-2",
+      "CL6-5",
+      "CL7-1",
+      "CL8-1",
+      "CL8-2",
+      "CL8-3",
+      "CL9-1",
+      "CL9-2",
+      "CL9-3",
+      "CL9-4"
+    ],
+    "GDPR": [
+      "GDPR-CL03",
+      "GDPR-CL04",
+      "GDPR-CL06",
+      "GDPR-CL25",
+      "GDPR-CL26",
+      "GDPR-CP15",
+      "GDPR-CP16",
+      "GDPR-CP17",
+      "GDPR-CP18",
+      "GDPR-CP19",
+      "GDPR-CP20",
+      "GDPR-CP21",
+      "GDPR-CP22",
+      "GDPR-CP23",
+      "GDPR-RT08",
+      "GDPR-RT11",
+      "GDPR-RT12",
+      "GDPR-RT15",
+      "GDPR-RT16",
+      "GDPR-RT17",
+      "GDPR-RT20"
+    ],
+    "NIS2": [
+      "NIS2-C03",
+      "NIS2-C04",
+      "NIS2-C05",
+      "NIS2-C06",
+      "NIS2-C07",
+      "NIS2-C08",
+      "NIS2-C09",
+      "NIS2-C10",
+      "NIS2-C11",
+      "NIS2-C12",
+      "NIS2-C13",
+      "NIS2-C14",
+      "NIS2-C15",
+      "NIS2-C16",
+      "NIS2-C17",
+      "NIS2-C18",
+      "NIS2-C19",
+      "NIS2-C20",
+      "NIS2-C21",
+      "NIS2-C22",
+      "NIS2-C23",
+      "NIS2-C24",
+      "NIS2-C25",
+      "NIS2-C26",
+      "NIS2-C27",
+      "NIS2-C28",
+      "NIS2-C29",
+      "NIS2-CL06",
+      "NIS2-CL07",
+      "NIS2-CL09",
+      "NIS2-CL11",
+      "NIS2-CL12",
+      "NIS2-CL26",
+      "NIS2-CL27",
+      "NIS2-CL28",
+      "NIS2-CL29",
+      "NIS2-CL30",
+      "NIS2-CL31",
+      "NIS2-CL32",
+      "NIS2-CL33",
+      "NIS2-CL34",
+      "NIS2-CL35",
+      "NIS2-CL36",
+      "NIS2-CL37",
+      "NIS2-CL38",
+      "NIS2-CL39",
+      "NIS2-CL40",
+      "NIS2-CL42",
+      "NIS2-CL44",
+      "NIS2-CL51"
+    ]
+  },
+  "sub_objectives_by_regulation": {
+    "AI_Act": [
+      {
+        "id": "SO-D-04.3.AI_Act",
+        "csf_anchors": [
+          "RS.CO-02",
+          "RS.CO-04",
+          "RS.MA-03",
+          "RS.MA-01"
+        ]
+      }
+    ],
+    "CRA": [
+      {
+        "id": "SO-D-04.1.CRA",
+        "csf_anchors": [
+          "DE.CM-09",
+          "PR.PS-04",
+          "RS.MA-02"
+        ]
+      },
+      {
+        "id": "SO-D-04.2.CRA",
+        "csf_anchors": [
+          "PR.IR-04",
+          "PR.IR-03",
+          "DE.CM-09"
+        ]
+      },
+      {
+        "id": "SO-D-04.3.CRA",
+        "csf_anchors": [
+          "RS.MA-02",
+          "RS.CO-02"
+        ]
+      },
+      {
+        "id": "SO-D-04.4.CRA",
+        "csf_anchors": [
+          "PR.IR-03",
+          "PR.DS-12"
+        ]
+      }
+    ],
+    "DORA": [
+      {
+        "id": "SO-D-04.1.DORA",
+        "csf_anchors": [
+          "DE.CM-01",
+          "DE.CM-09",
+          "DE.AE-02",
+          "RS.MA-01"
+        ]
+      },
+      {
+        "id": "SO-D-04.2.DORA",
+        "csf_anchors": [
+          "RC.RP-01",
+          "RC.RP-04",
+          "PR.IR-04",
+          "PR.IR-03"
+        ]
+      },
+      {
+        "id": "SO-D-04.3.DORA",
+        "csf_anchors": [
+          "RS.CO-02",
+          "RS.CO-04"
+        ]
+      },
+      {
+        "id": "SO-D-04.4.DORA",
+        "csf_anchors": [
+          "RC.RP-01",
+          "PR.IR-03",
+          "RC.RP-04",
+          "PR.IR-04",
+          "PR.DS-11",
+          "RC.RP-03"
+        ]
+      }
+    ],
+    "GDPR": [
+      {
+        "id": "SO-D-04.1.GDPR",
+        "csf_anchors": [
+          "DE.AE-02",
+          "PR.PS-04",
+          "DE.CM-01"
+        ]
+      },
+      {
+        "id": "SO-D-04.2.GDPR",
+        "csf_anchors": [
+          "PR.DS-12",
+          "PR.IR-04",
+          "RC.RP-04"
+        ]
+      },
+      {
+        "id": "SO-D-04.3.GDPR",
+        "csf_anchors": [
+          "RS.CO-02",
+          "RS.CO-04",
+          "RS.MA-03"
+        ]
+      },
+      {
+        "id": "SO-D-04.4.GDPR",
+        "csf_anchors": [
+          "PR.IR-04",
+          "PR.DS-11",
+          "RC.RP-04"
+        ]
+      }
+    ],
+    "NIS2": [
+      {
+        "id": "SO-D-04.1.NIS2",
+        "csf_anchors": [
+          "DE.CM-01",
+          "DE.AE-02",
+          "PR.PS-04"
+        ]
+      },
+      {
+        "id": "SO-D-04.2.NIS2",
+        "csf_anchors": [
+          "PR.IR-03",
+          "PR.IR-04",
+          "RC.RP-01"
+        ]
+      },
+      {
+        "id": "SO-D-04.3.NIS2",
+        "csf_anchors": [
+          "RS.CO-04",
+          "RS.MA-02"
+        ]
+      },
+      {
+        "id": "SO-D-04.4.NIS2",
+        "csf_anchors": [
+          "RC.RP-04",
+          "PR.DS-11"
+        ]
+      }
+    ]
+  },
+  "sub_requirements_by_regulation": {
+    "AI_Act": [
+      {
+        "req_id": "4.3.5",
+        "title": "Serious incident involving high-risk AI reported to market surveillance authorities under 4-trigger × 4-timeline matrix (15d default / 10d death / 2d widespread / 15d causal-link-anchor); GPAI systemic-risk report separately to AI Office under Art. 55",
+        "nist_csf": [
+          "RS.CO-02",
+          "RS.CO-04",
+          "RS.MA-03",
+          "RS.MA-01"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "CRA": [
+      {
+        "req_id": "4.1.3",
+        "title": "Product-internal activity recorded and monitored with user opt-out where appropriate; corruption / unauthorised modification reported",
+        "nist_csf": [
+          "DE.CM-09",
+          "PR.PS-04",
+          "RS.MA-02"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "4.2.3",
+        "title": "Product availability preserved after incident via resilience + DoS resistance + cross-product impact minimisation + exploitation mitigation; Art. 13(21) corrective measures on non-conformity",
+        "nist_csf": [
+          "PR.IR-03",
+          "PR.IR-04",
+          "DE.CM-09"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "4.3.3",
+        "title": "Actively-exploited vulnerability notified on three-tier pattern — 24h early warning + 72h vulnerability notification + 14d final report — to CSIRT + ENISA, with severe-incident (SI) parallel pathway at 24h/72h/1m",
+        "nist_csf": [
+          "RS.MA-02",
+          "RS.CO-02",
+          "RS.AN-03",
+          "RS.AN-07"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "4.4.3",
+        "title": "Product with digital elements preserves essential and basic functions `also after an incident` through resilience and exploitation-mitigation architecture (intra-product recovery, layered not substituted)",
+        "nist_csf": [
+          "PR.IR-03",
+          "PR.DS-12"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "DORA": [
+      {
+        "req_id": "4.1.4",
+        "title": "Multi-class anomalous-activity detection with SPOF identification, alert thresholds, automatic escalation, and Art. 17(1) `detect` leg of incident management process",
+        "nist_csf": [
+          "DE.CM-01",
+          "DE.CM-09",
+          "DE.AE-02",
+          "RS.MA-01",
+          "RS.MA-02",
+          "RS.MA-03"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "4.2.4",
+        "title": "Financial-entity BC arrangements: dedicated, appropriate and documented response/recovery plans + backup policies + restoration procedures; independent internal audit for non-microenterprises",
+        "nist_csf": [
+          "RC.RP-01",
+          "RC.RP-04",
+          "PR.IR-04",
+          "PR.IR-03",
+          "PR.DS-11",
+          "RC.RP-03"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "4.3.4",
+        "title": "Major ICT-related incident reported to competent authority `without undue delay`; affected clients informed `without undue delay` as soon as financial entity becomes aware — pending EBA/ESMA/EIOPA RTS (4h pending)",
+        "nist_csf": [
+          "RS.CO-02",
+          "RS.CO-04",
+          "RS.MA-03"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "4.4.4",
+        "title": "Comprehensive ICT BC policy with dedicated appropriate documented arrangements + response/recovery plans + backup-scoping on criticality/confidentiality + restoration procedures; OJ-corrected Art. 11(2)(a)–(e) BC-policy objectives preserved verbatim",
+        "nist_csf": [
+          "RC.RP-01",
+          "RC.RP-03",
+          "RC.RP-04",
+          "PR.IR-03",
+          "PR.IR-04",
+          "PR.DS-11"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "GDPR": [
+      {
+        "req_id": "4.1.1",
+        "title": "Personal-data breaches detected at the controller data-flow boundary with documented `becoming aware` moment anchoring the 72h clock",
+        "nist_csf": [
+          "DE.CM-01",
+          "DE.CM-09",
+          "DE.AE-02",
+          "PR.PS-04",
+          "RS.MA-02"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "4.2.1",
+        "title": "Personal-data breaches contained and mitigated through TOMs incl. unintelligibility rendering; Art. 33(3)(d) measures description in supervisory-authority notification",
+        "nist_csf": [
+          "RS.MI-01",
+          "RS.MI-02",
+          "PR.DS-01",
+          "PR.DS-12",
+          "PR.IR-04",
+          "RC.RP-04"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "4.3.1",
+        "title": "Personal-data breach notified to supervisory authority within 72 hours `where feasible` of becoming aware, with `unlikely risk` carve-out documented",
+        "nist_csf": [
+          "RS.CO-02",
+          "RS.CO-04",
+          "RS.MA-03"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "4.4.1",
+        "title": "Personal data availability and access restored in `timely manner` after physical or technical incident, with tested recovery-exercise evidence discharging Art. 5(2) accountability",
+        "nist_csf": [
+          "PR.IR-04",
+          "PR.DS-11",
+          "RC.RP-04"
+        ],
+        "scope_overlap": "N"
+      }
+    ],
+    "NIS2": [
+      {
+        "req_id": "4.1.2",
+        "title": "Entity-level all-hazards detection operating the Art. 6(8) six-action `detect` leg of incident handling",
+        "nist_csf": [
+          "DE.CM-01",
+          "DE.CM-09",
+          "DE.AE-02",
+          "PR.PS-04",
+          "RS.MA-01"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "4.2.2",
+        "title": "Entity-level `contain` action within the Art. 6(8) six-action incident-handling lifecycle; entity response plan as procedural wrapper",
+        "nist_csf": [
+          "RS.MI-01",
+          "RS.MI-02",
+          "PR.IR-03",
+          "PR.IR-04",
+          "RC.RP-01"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "4.3.2",
+        "title": "Significant incident notified via twin-trigger pattern — 24h early warning + 72h incident notification + 1m final report — to CSIRT or competent authority",
+        "nist_csf": [
+          "RS.CO-04",
+          "RS.MA-02",
+          "RS.MA-03"
+        ],
+        "scope_overlap": "N"
+      },
+      {
+        "req_id": "4.4.2",
+        "title": "Entity-level business continuity, backup management, disaster recovery, and crisis management triad maintained with all-hazards scope and risk-tiered depth",
+        "nist_csf": [
+          "RC.RP-04",
+          "PR.DS-11"
+        ],
+        "scope_overlap": "N"
+      }
+    ]
+  },
+  "applicable_nist_controls_by_regulation": {
+    "AI_Act": [
+      "RS.CO-02",
+      "RS.CO-04",
+      "RS.MA-01",
+      "RS.MA-03"
+    ],
+    "CRA": [
+      "DE.CM-09",
+      "PR.DS-12",
+      "PR.IR-03",
+      "PR.IR-04",
+      "PR.PS-04",
+      "RS.AN-03",
+      "RS.AN-07",
+      "RS.CO-02",
+      "RS.MA-02"
+    ],
+    "DORA": [
+      "DE.AE-02",
+      "DE.CM-01",
+      "DE.CM-09",
+      "PR.DS-11",
+      "PR.IR-03",
+      "PR.IR-04",
+      "RC.RP-01",
+      "RC.RP-03",
+      "RC.RP-04",
+      "RS.CO-02",
+      "RS.CO-04",
+      "RS.MA-01",
+      "RS.MA-02",
+      "RS.MA-03"
+    ],
+    "GDPR": [
+      "DE.AE-02",
+      "DE.CM-01",
+      "DE.CM-09",
+      "PR.DS-01",
+      "PR.DS-11",
+      "PR.DS-12",
+      "PR.IR-04",
+      "PR.PS-04",
+      "RC.RP-04",
+      "RS.CO-02",
+      "RS.CO-04",
+      "RS.MA-02",
+      "RS.MA-03",
+      "RS.MI-01",
+      "RS.MI-02"
+    ],
+    "NIS2": [
+      "DE.AE-02",
+      "DE.CM-01",
+      "DE.CM-09",
+      "PR.DS-11",
+      "PR.IR-03",
+      "PR.IR-04",
+      "PR.PS-04",
+      "RC.RP-01",
+      "RC.RP-04",
+      "RS.CO-04",
+      "RS.MA-01",
+      "RS.MA-02",
+      "RS.MA-03",
+      "RS.MI-01",
+      "RS.MI-02"
+    ]
+  },
+  "counts": {
+    "subdomains": 4,
+    "total_cards": 212,
+    "applicable_articles_total": 116,
+    "applicable_clauses_total": 132,
+    "sub_objectives_total": 17,
+    "sub_requirements_total": 17,
+    "applicable_nist_controls_total": 57
+  },
+  "generated_at": "2026-08-04T17:10:32Z"
+}

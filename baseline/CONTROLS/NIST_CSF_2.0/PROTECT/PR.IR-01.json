@@ -1,0 +1,37 @@
+{
+  "control_id": "PR.IR-01",
+  "framework": "NIST CSF 2.0",
+  "function": "PROTECT",
+  "category": "Technology Infrastructure Resilience (PR.IR)",
+  "subcategory_id": "PR.IR-01",
+  "subcategory_text": "Networks and environments are protected from unauthorized logical access and usage",
+  "informative_references": [
+    "NIST CSF 2.0 Core: PR.IR-01",
+    "NIST SP 800-53 Rev. 5: AC-03, AC-04, SC-04, SC-05, SC-07",
+    "ISO/IEC 27001:2022: Annex A.8.20, Annex A.8.21, Annex A.8.22",
+    "CSF v1.1: PR.AC-3, PR.AC-5, PR.DS-7, PR.PT-4",
+    "CIS Controls v8: 12.2, 3.12",
+    "PCI DSS: 1.2.3, 1.2.4, 10.2.1, 11.2.1, 5.2.1, 5.2.2 (+2 more)",
+    "NIST SP 800-218 (SSDF): PO.5.1",
+    "CRI Profile v2.0: PR.IR-01, PR.IR-01.01, PR.IR-01.02, PR.IR-01.03, PR.IR-01.04, PR.IR-01.05, PR.IR-01.06, PR.IR-01.07, PR.IR-01.08"
+  ],
+  "implementation_examples": [
+    "Logically segment organization networks and cloud-based platforms according to trust boundaries and platform types (e.g., IT, IoT, OT, mobile, guests), and permit required communications only between segments",
+    "Logically segment organization networks from external networks, and permit only necessary communications to enter the organization's networks from the external networks",
+    "Implement zero trust architectures to restrict network access to each resource to the minimum necessary",
+    "Check the cyber health of endpoints before allowing them to access and use production resources"
+  ],
+  "assessment_objectives": [
+    "Determine whether networks and environments are protected from unauthorized logical access and usage.",
+    "Determine whether mechanisms ensure that logically segment organization networks and cloud-based platforms according to trust boundaries and platform types (e.g., IT, IoT, OT, mobile, guests), and permit required communications only between segments.",
+    "Determine whether mechanisms ensure that logically segment organization networks from external networks, and permit only necessary communications to enter the organization's networks from the external networks.",
+    "Determine whether implementation outcomes are monitored, evaluated, and documented."
+  ],
+  "related_controls": [
+    "PR.IR-02 (NIST CSF 2.0 — same category)",
+    "PR.IR-03 (NIST CSF 2.0 — same category)",
+    "PR.IR-04 (NIST CSF 2.0 — same category)"
+  ],
+  "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf",
+  "source_version": "NIST CSF 2.0 (February 26, 2024)"
+}

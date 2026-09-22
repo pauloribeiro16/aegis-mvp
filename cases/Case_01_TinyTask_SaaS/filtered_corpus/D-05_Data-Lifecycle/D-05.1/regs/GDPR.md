@@ -89,7 +89,8 @@ provides the supervisory-authority evidence path.)*
   verification_method: TEST
   dependencies: [5.1.2 (when CRA-classified product processes personal data at runtime — verbatim-language match binds both regimes on the same dataset with the stricter operational interpretation; the Art. 6(4) compatibility test remains the residual GDPR-only requirement), 5.1.3 (when high-risk AI provider processes special-category personal data for bias correction — Art. 10(5) 6-cumulative-condition gateway operates as a permission; outside that window, Art. 9(1) prohibition binds)]
 
-  nist_csf: [ID.AM-08, ID.AM-03, GV.OC-03, GV.PO-01]
+  nist_csf: [ID.AM-08, ID.AM-03]
+  nist_pf: [CT.PO-P4, CT.DP-P4, ID.RA-P3]
 
   applicable_if:
     regs: [GDPR]

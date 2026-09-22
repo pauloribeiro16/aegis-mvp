@@ -6,6 +6,7 @@
 ## GDPR
 ##### Art. 5(1)(a) — Lawfulness, fairness, transparency
 **Clause: GDPR-CL01** | type: principle | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: GV.OC-03, GV.PO-01, GV.PO-02, PR.AA-02 · PF 1.1: GV.PO-P5, CM.PO-P1, GV.PO-P1, CM.AW-P1, CM.AW-P3 · AI RMF: — · from `SR-GDPR-026`, `SR-GDPR-065` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.5 (vagueness), §5.1 (lists `lawful`, `fair`).
 **Instance 1 — VAG / S3 / `lawful`, `fair`, `transparent`**
 Three conjunctive vague adjectives. Each is inquiry-resistant:
@@ -22,6 +23,7 @@ R1 vs R2 yield materially distinct compliance obligations (R1 requires substanti
 ---
 ##### Art. 5(2) — Accountability
 **Clause: GDPR-CL07** | type: principle (controller-specific) | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: GV.PO-01, GV.PO-02, GV.RM-04, GV.OV-03, PR.PS-04, DE.AE-03, RS.AN-07 · PF 1.1: GV.PO-P1, GV.PO-P6, GV.MT-P3, GV.PO-P5, CT.DM-P9, ID.IM-P8 · AI RMF: — · from `SR-GDPR-043`, `SR-GDPR-044`, `SR-GDPR-050` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`responsible`, `able to demonstrate`).
 **Instance 1 — VAG / S3 / `able to demonstrate compliance`**
 The accountability principle is the foundational obligation of GDPR. The standard for `demonstrating` is undefined.
@@ -66,6 +68,7 @@ R1 vs R2 yield materially distinct compliance obligations (R1 requires documente
 #### Clause breakdown
 ##### Art. 12(1) — Transparency modalities
 **Clause: GDPR-RT01** | type: data-subject-facing | obligatedParty: CONTROLLER | obligationType: PER-INTERACTION
+**Control anchors:** CSF: GV.PO-02, PR.AA-02 · PF 1.1: CM.PO-P1, CM.AW-P1, CM.AW-P3 · AI RMF: — · from `SR-GDPR-065` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`appropriate`, `concise`, `transparent`, `intelligible`, `easily accessible`, `clear and plain`).
 **Instance 1 — VAG / S3 / six adjectives on information form**
 `appropriate measures` AND `concise, transparent, intelligible and easily accessible form` AND `clear and plain language` — six inquiry-resistant modifiers. EDPB Guidelines on transparency 03/2018 attempt to fix but the bar varies by data-subject category (child vs expert; vulnerable vs general).
@@ -79,6 +82,7 @@ R1 vs R2 yield materially distinct UI/UX requirements.
 ---
 ##### Art. 12(3) — Response time and extension
 **Clause: GDPR-RT02** | type: data-subject-facing | obligatedParty: CONTROLLER | obligationType: PER-REQUEST
+**Control anchors:** CSF: RS.MA-02, RS.CO-02 · PF 1.1: CT.DM-P1, CT.DM-P2, CM.AW-P5 · AI RMF: — · from `SR-GDPR-066` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`without undue delay`, `where necessary`).
 **Instance 1 — VAG / S3 / `without undue delay and in any event within one month` + `two further months where necessary`**
 Twin temporal operators (Berry §5.1, §5.7). The 1-month anchor reduces temporal ambiguity; the extension to 3 months via `where necessary` reopens it.
@@ -93,6 +97,7 @@ The controller must inform within one month AND include reasons. Berry §5.4.7: 
 ---
 ##### Art. 12(5) — Manifestly unfounded or excessive requests
 **Clause: GDPR-RT03** | type: data-subject-facing (anti-abuse) | obligatedParty: CONTROLLER | obligationType: PER-REQUEST
+**Control anchors:** CSF: GV.PO-02 · PF 1.1: GV.PO-P1, CM.PO-P1 · AI RMF: — · from `SR-GDPR-067` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`manifestly unfounded or excessive`, `reasonable fee`).
 **Instance 1 — VAG / S3 / `manifestly unfounded or excessive`**
 The standard is undefined; the `in particular because of their repetitive character` example is illustrative. EDPB Guidelines 5/2019 attempt to fix but `manifestly unfounded` has high disagreement threshold.
@@ -105,6 +110,7 @@ R1 vs R2 yield materially distinct request-handling workflows (R1 allows automat
 ---
 ##### Art. 12(6) — Identity verification for requests
 **Clause: GDPR-RT04** | type: data-subject-facing | obligatedParty: CONTROLLER | obligationType: PER-REQUEST
+**Control anchors:** CSF: PR.AA-03, PR.AA-02, ID.AM-08, GV.PO-02 · PF 1.1: PR.AC-P6, PR.AC-P3, CT.DP-P4, GV.PO-P1, CM.PO-P1 · AI RMF: — · from `SR-GDPR-009`, `SR-GDPR-010`, `SR-GDPR-067` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`reasonable doubts`, `additional information`).
 **Instance 1 — VAG / S3 / `reasonable doubts`, `additional information`**
 `reasonable doubts` is the recurring vague phrase; `additional information` is undefined. Art. 12(6) permits asking for more info but does not bound the scope. Combined with the controller's data-minimisation duty (Art. 5(1)(c)), the controller should ask minimally.
@@ -140,12 +146,14 @@ R1 vs R3 yield materially distinct identity-verification systems.
 #### Clause breakdown
 ##### Art. 13(1) — Initial information on collection
 **Clause: GDPR-RT05** | type: information duty (collection-time) | obligatedParty: CONTROLLER | obligationType: PER-COLLECTION
+**Control anchors:** CSF: ID.AM-03, ID.AM-08 · PF 1.1: ID.IM-P4, ID.IM-P5, ID.IM-P6, CM.AW-P1 · AI RMF: — · from `SR-GDPR-068` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.4.7 (6-element closed AND-list (a)–(f)).
 **Instance 1 — COORD / S2 / `(a) AND (b) AND (c) AND (d) AND (e) AND (f)`**
 The 6-element list is closed (and). Each must be present. S2 because all 6 requirements converge on the same privacy-notice template.
 ---
 ##### Art. 14(1)–(2) — Third-party-source information
 **Clause: GDPR-RT07** | type: information duty (third-party-source) | obligatedParty: CONTROLLER | obligationType: PER-COLLECTION
+**Control anchors:** CSF: ID.AM-03, ID.AM-08 · PF 1.1: ID.IM-P4, ID.IM-P5, ID.IM-P6, CM.AW-P1 · AI RMF: — · from `SR-GDPR-068` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`reasonable period`, `within one month`).
 **Instance 1 — VAG / S3 / `within a reasonable period after obtaining the personal data, but at the latest within one month`**
 Twin temporal operators (Berry §5.7) where `reasonable period` is soft and `within one month` is hard — interaction undefined.
@@ -167,6 +175,7 @@ R1 vs R2 yield materially distinct due-diligence documentation requirements.
 ---
 ##### Art. 21(1) — Objection grounds and overriding
 **Clause: GDPR-RT16** | type: data subject right (object) | obligatedParty: CONTROLLER | obligationType: PER-OBJECTION
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`compelling legitimate grounds`).
 **Instance 1 — VAG / S3 / `compelling legitimate grounds`**
 `compelling` is stronger than Art. 6(1)(f) `legitimate interests`. The `overriding` test for compelling grounds is undefined.
@@ -179,6 +188,7 @@ R1 vs R2 yield materially distinct balance-tests in objection handling.
 ---
 ##### Art. 21(3) — Absolute bar on direct-marketing after objection
 **Clause: GDPR-RT17** | type: data subject right (absolute) | obligatedParty: CONTROLLER | obligationType: PER-OBJECTION
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** none — Art. 21(3) is a clear absolute obligation.
 **Instance 1 — none** — the clause is unambiguous: once the data subject objects to direct-marketing processing, the processing must cease. No variant readings.
 ---
@@ -197,6 +207,7 @@ R1 vs R2 yield materially distinct balance-tests in objection handling.
 #### Clause breakdown
 ##### Art. 23(1) — Permissible restriction grounds
 **Clause: GDPR-RT20** | type: principle (restrictions scope) | obligatedParty: MEMBER STATE | obligationType: PER-RESTRICTION
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`essence of the fundamental rights and freedoms`, `necessary and proportionate`), §5.4.7 (10-element OR-list).
 **Instance 1 — VAG / S3 / `essence of the fundamental rights and freedoms`**
 `Essence` is Charter Art. 52(1) terminology. CJEU case law (Schrems I/II, Digital Rights Ireland) uses `essence` as a hard-test threshold but does not specify the operational test. S3 because Member State restrictions on Charter rights depend on the essence-test being met.
@@ -232,12 +243,14 @@ R1 vs R2 yield materially distinct restriction-scrutiny standards.
 - Chapter V transfer mechanisms do not create new Chapter III rights but the Art. 15(2) right to be informed of transfer safeguards cross-references Chapter V.
 ##### Art. 30(1)+(2) — Records content
 **Clause: GDPR-CP12** | type: documentation | obligatedParty: CONTROLLER + PROCESSOR | obligationType: CONTINUOUS
+**Control anchors:** CSF: ID.AM-08, ID.AM-03, GV.PO-02, GV.OV-03, PR.PS-04, DE.AE-03, RS.AN-07 · PF 1.1: CT.PO-P4, CT.DM-P5, GV.MT-P3, GV.PO-P5, ID.IM-P1, ID.IM-P4, ID.IM-P6, ID.IM-P8, CT.DM-P9 · AI RMF: — · from `SR-GDPR-029`, `SR-GDPR-044`, `SR-GDPR-048`, +1 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`where possible` × 2), §5.4.7 (closed AND-list).
 **Instance 1 — VAG / S2 / `where possible` × 2**
 Soft hedge on retention-period documentation and security-measure documentation. `Where possible` defers to controller judgement. S2 because the same documentation practice applies.
 ---
 ##### Art. 30(5) — 250-employee exception
 **Clause: GDPR-CP13** | type: documentation exception | obligatedParty: CONTROLLER + PROCESSOR (<250 persons) | obligationType: CONTINUOUS
+**Control anchors:** CSF: ID.AM-03, GV.PO-02 · PF 1.1: ID.IM-P1, ID.IM-P4, ID.IM-P6, ID.IM-P8 · AI RMF: — · from `SR-GDPR-048` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`likely`, `occasional`), §3.3.1 (`risk` polysemy).
 **Instance 1 — VAG / S3 / `likely to result in a risk`, `occasional`**
 Two qualifying exceptions. `Likely` is qualitative; `occasional` inherits Art. 27(2)(a) ambiguity. The exception requires the 3 conditions to ALL fail (risk OR not-occasional OR special categories).
@@ -257,6 +270,7 @@ R1 vs R2 yield materially distinct risk-thresholds for small-organisation docume
 #### Clause breakdown
 ##### Art. 31 — Cooperation duty
 **Clause: GDPR-CP14** | type: supervisory cooperation | obligatedParty: CONTROLLER + PROCESSOR | obligationType: PER-REQUEST
+**Control anchors:** CSF: PR.PS-04, DE.AE-03, RS.AN-07 · PF 1.1: CT.DM-P9, ID.IM-P8 · AI RMF: — · from `SR-GDPR-050` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** none — clause is unambiguous. Cooperation on request.
 ---
 ### Article 32 — Security of processing
@@ -275,6 +289,7 @@ R1 vs R2 yield materially distinct risk-thresholds for small-organisation docume
 #### Clause breakdown
 ##### Art. 33(1) — 72-hour notification
 **Clause: GDPR-CP17** | type: breach notification | obligatedParty: CONTROLLER | obligationType: TRIGGERED (per breach)
+**Control anchors:** CSF: DE.CM-01, DE.CM-09, RS.MA-02, RS.CO-02, RS.MA-04, RS.MA-03, RS.AN-03, RS.AN-07, DE.CM-03, DE.AE-02 · PF 1.1: GV.MT-P5, GV.MT-P3, CM.AW-P7, CM.PO-P2, ID.DE-P3, CM.PO-P1, ID.RA-P3 · AI RMF: — · from `SR-GDPR-014`, `SR-GDPR-016`, `SR-GDPR-017`, +2 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`without undue delay`, `where feasible`, `unlikely`), §5.7 (temporal operators), §3.3.1 (`becoming aware` polysemy).
 **Instance 1 — VAG / S3 / `without undue delay and, where feasible, not later than 72 hours`**
 Twin temporal operators (Berry §5.1, §5.7) — `without undue delay` is soft, `72 hours` is hard, `where feasible` softens the hard. Interaction undefined.
@@ -314,3 +329,4 @@ R1 vs R2 yield materially distinct breach-response workflows.
 The awareness trigger is polysemous (cf. CRA C25, NIS 2 C25 — same pattern across regulations).
 
 <!-- aegis:purity: own_reg=GDPR; demoted=3; core_cross_mentions=0 -->
+<!-- aegis:control-anchors: generated by scripts/uniformize_control_anchors.py from baseline/MAPPINGS/sr_control_mappings; not part of the verbatim Part 4 body -->

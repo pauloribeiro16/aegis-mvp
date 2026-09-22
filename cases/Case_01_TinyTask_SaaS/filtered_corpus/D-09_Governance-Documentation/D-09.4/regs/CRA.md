@@ -30,7 +30,7 @@ phase_1A_role: 3_of_5
 **Objective.** The manufacturer **draws up before placing a product with digital elements on the market the technical documentation referred to in Art. 31** (Art. 13(12) sentence 1 CRA), carries out the conformity assessment procedure referred to in Art. 32, draws up the EU declaration of conformity under Art. 28, and affixes the CE marking under Art. 30 (Art. 13(12) sentence 2); the manufacturer keeps the technical documentation and the EU declaration of conformity at the disposal of market surveillance authorities for at least 10 years or the support period, whichever is longer (Art. 13(13) CRA).
 
 **CSF anchors (from `SR-CRA-085` + `SR-CRA-087` + `SR-CRA-088` + `SR-CRA-078` v0.3 security_rationale):**
-ID.AM-08 (primary), ID.AM-08, ID.RA-05.
+GV.PO-02, GV.OC-03, ID.AM-02, ID.RA-04, GV.SC-04.
 
 ---
 
@@ -63,7 +63,7 @@ ID.AM-08 (primary), ID.AM-08, ID.RA-05.
   verification_method: TEST
   dependencies: [9.4.1 (when controller-manufacturer — RoPA + Annex VII 8-item technical documentation on distinct artefacts; substantively scope-disjoint per CRDA `N (typically)`; CRDA `different-perspective` is a taxonomy artifact), 9.4.2 (when NSIE procures CSA-certified CRA products — CRA Art. 27(8)/(9) CSA-certification presumption-of-conformity machinery is the upstream gate for NIS 2 procurements; certification boundary), 9.4.4 (when DORA entity procures CRA-conformant products — CRA Annex VII 8-item technical documentation + DORA Art. 9(4)(a) IS-policy documentation on distinct artefacts; CRDA-recommended COMPLEMENTARY), 9.4.5 (when CRA-regulated product is also high-risk AI system — CRA Annex VII + AI Act Annex IV + AI Act Art. 17(1) QMS on three parallel artefacts; no OJ-level consolidation rule for documentation at 9.4)]
 
-  nist_csf: [ID.AM-08, ID.RA-05]
+  nist_csf: [GV.PO-02, GV.OC-03]
 
   applicable_if:
     regs: [CRA]

@@ -30,7 +30,7 @@ phase_1A_role: 1_of_5
 **Objective.** An open-source software steward **puts in place and documents in a verifiable manner a cybersecurity policy** (Art. 24(1) CRA) covering vulnerability documentation, remediation, and information-sharing within the open-source community; a manufacturer **establishes policies, processes and procedures necessary to implement its CRA cybersecurity obligations** (Art. 13(8) CRA) including CVD policy, secure-update distribution, support-period determination, and cessation-of-operations communication.
 
 **CSF anchors (from `SR-CRA-072` + `SR-CRA-075` + `SR-CRA-077` v0.3 security_rationale):**
-GV.PO-01 (primary), GV.PO-02.
+GV.PO-01 (primary), GV.SC-01, GV.PO-02, GV.OC-03.
 
 ---
 
@@ -63,7 +63,7 @@ GV.PO-01 (primary), GV.PO-02.
   verification_method: TEST
   dependencies: [9.1.1 (when controller-manufacturer — manufacturer-side CRA policies coexist with controller-side GDPR data-protection policies on different artefacts; policies stacked, not collapsed), 9.1.2 (when entity procures CRA-conformant — CRA presumption substitutes for parts of NIS 2 supplier-assessment evidence but not NIS 2 entity-level policy architecture), 9.1.4 (when DORA entity procures CRA-conformant — CRA presumption discharges parts of DORA supplier-assessment evidence but not DORA framework obligation), 9.1.5 (when product is both CRA-regulated and AI-Act high-risk — CRA Annex I conformity + AI Act QMS stack; no OJ-level consolidation rule at 9.1)]
 
-  nist_csf: [GV.PO-01, GV.PO-02, GV.SC-01, GV.SC-04, GV.OC-03]
+  nist_csf: [GV.PO-01, GV.SC-01]
 
   applicable_if:
     regs: [CRA]

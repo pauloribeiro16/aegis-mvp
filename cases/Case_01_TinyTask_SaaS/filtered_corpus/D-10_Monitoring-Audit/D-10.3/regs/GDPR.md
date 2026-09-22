@@ -30,7 +30,9 @@ phase_1A_role: 1_of_5
 **Objective.** The controller and processor implement appropriate technical and organisational measures including **a process for regularly testing, assessing and evaluating the effectiveness of technical and organisational measures for ensuring the security of the processing** (Art. 32(1)(d) GDPR); the DPIA is **reviewed at least when there is a change of the risk represented by processing operations** (Art. 35(11) GDPR).
 
 **CSF anchors (from `SR-GDPR-019` + `SR-GDPR-021` + `SR-GDPR-022` v0.3 security_rationale):**
-ID.IM-03 (primary), ID.RA-05, DE.AE-02, GV.OV-03.
+RS.CO-03, RS.MA-04, RS.CO-02, ID.AM-08.
+**PF 1.1 anchors (from `SR-GDPR-019`, `SR-GDPR-021`, `SR-GDPR-022` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+CM.AW-P7, CM.AW-P8, CM.PO-P1, CM.AW-P5, CT.DM-P3.
 *(ID.IM-03 — Configuration change control processes are in place — anchors the GDPR Art. 32(1)(d) `regularly testing, assessing and evaluating the effectiveness of technical and organisational measures` mapped to NIST CSF 2.0 ID.IM-03; ID.RA-05 — Threats, vulnerabilities, likelihoods, and impacts are used to establish risk tolerances — anchors the Art. 35(11) DPIA review on risk change dimension; DE.AE-02 — Adverse events are analyzed to identify or determine the scope of an incident — anchors the effectiveness-evaluation input to the incident-handling chain; GV.OV-03 — Cybersecurity risk management strategy outcomes are reviewed and inform changes — anchors the Art. 35(11) DPIA review feedback loop into the risk-management strategy. The four subcategories together enable the controller or processor to demonstrate ex post, against the Art. 5(2) accountability burden, that the Art. 32(1)(d) effectiveness-evaluation was operational with `regularly testing` cadence + Art. 35(11) DPIA review on risk change trigger.)*
 
 ---
@@ -64,7 +66,8 @@ ID.IM-03 (primary), ID.RA-05, DE.AE-02, GV.OV-03.
   verification_method: TEST
   dependencies: [10.3.2 (Y — when controller = NSIE; GDPR Art. 32(1)(d) effectiveness-evaluation of security measures + NIS 2 Art. 21(2)(f) effectiveness-assessment of risk-management measures; different scopes but same effectiveness objective; partial trigger alignment; entity-discretionary cadence alignment), 10.3.3 (Conditional — Y when controller deploys CRA-regulated products; GDPR Art. 32(1)(d) effectiveness-evaluation of security measures + CRA Annex I Part II (3) effective/regular tests of the product + Annex VIII modules; entity-level vs. product-level; different testing purposes stack without consolidation — **NO OJ-level consolidation rule for testing**), 10.3.4 (Conditional — Y when DORA financial entity is a controller; DORA-led stack with GDPR Art. 32(1)(d) effectiveness-evaluation as sub-component; DORA Art. 24(1) testing programme discharges the financial entity's testing obligation and the GDPR effectiveness-evaluation becomes a sub-component within the DORA-led stack), 10.3.5 (Conditional — Y when high-risk AI system processes personal data; GDPR Art. 32(1)(d) effectiveness-evaluation + AI Act Art. 9(6) testing for risk management + Art. 9(7) real-world-conditions testing + Art. 15(1) baseline testing; entity-level regular testing vs. AI-system-level testing; partial trigger alignment; the two regimes stack without consolidation)]
 
-  nist_csf: [ID.IM-03, ID.RA-05, DE.AE-02, GV.OV-03]
+  nist_csf: [RS.CO-03, RS.MA-04]
+  nist_pf: [CM.AW-P7, CM.AW-P8]
 
   applicable_if:
     regs: [GDPR]

@@ -6,6 +6,7 @@
 ## GDPR
 ##### Art. 10 — Processing of criminal convictions
 **Clause: GDPR-CL25** | type: principle (criminal data) | obligatedParty: CONTROLLER (official authority only for comprehensive registers) | obligationType: PER-RECORD
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`appropriate safeguards`, `comprehensive register`).
 **Instance 1 — VAG / S3 / `comprehensive register`**
 `comprehensive register` is undefined; the term encompasses national criminal-record databases but the boundary with sectoral registers (e.g. fraud registers, sanctions lists, AML/KYC databases) is contested.
@@ -26,6 +27,7 @@ R1 vs R3 yield materially distinct scope of `official authority` control.
 #### Clause breakdown
 ##### Art. 21(1) — Objection grounds and overriding
 **Clause: GDPR-RT16** | type: data subject right (object) | obligatedParty: CONTROLLER | obligationType: PER-OBJECTION
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`compelling legitimate grounds`).
 **Instance 1 — VAG / S3 / `compelling legitimate grounds`**
 `compelling` is stronger than Art. 6(1)(f) `legitimate interests`. The `overriding` test for compelling grounds is undefined.
@@ -38,12 +40,14 @@ R1 vs R2 yield materially distinct balance-tests in objection handling.
 ---
 ##### Art. 28(3) — Processor contract content (8 mandatory clauses)
 **Clause: GDPR-CP09** | type: processor-side obligation | obligatedParty: PROCESSOR | obligationType: PER-CONTRACT
+**Control anchors:** CSF: PR.AA-05, PR.AA-06, PR.AT-02, GV.SC-03, GV.SC-04, DE.CM-06, GV.SC-02, ID.AM-08 · PF 1.1: PR.AC-P1, PR.AC-P2, CT.PO-P1, GV.AT-P2, ID.DE-P3, ID.DE-P5, CT.DM-P9, ID.DE-P4, CT.DM-P5 · AI RMF: — · from `SR-GDPR-011`, `SR-GDPR-012`, `SR-GDPR-034`, +3 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.4.7 (8-element closed AND-list (a)–(h)).
 **Instance 1 — COORD / S2 / 8-element AND-list**
 Each sub-clause is mandatory. S2 because all 8 sub-clauses are substantive obligations with the same compliance practice.
 ---
 ##### Art. 32(1) — Security measures (open list)
 **Clause: GDPR-CP15** | type: security | obligatedParty: CONTROLLER + PROCESSOR | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.DS-01, PR.DS-10, PR.DS-02, PR.IR-01, PR.IR-03, ID.RA-01, PR.PS-02, ID.RA-05, ID.IM-02, PR.AA-05, PR.AA-06, PR.AT-02, DE.CM-01, DE.CM-09, RS.MA-02, RS.MI-01, RS.MI-02, PR.IR-04, PR.DS-11, RC.RP-04, GV.SC-03, GV.SC-04, DE.CM-06, PR.PS-06, ID.AM-08 · PF 1.1: PR.DS-P1, PR.PO-P3, PR.DS-P2, PR.AC-P5, CT.DP-P2, GV.MT-P3, CT.DM-P10, ID.RA-P3, ID.RA-P5, PR.AC-P1, PR.AC-P2, CT.PO-P1, GV.AT-P2, GV.MT-P5, CM.AW-P7, PR.PO-P7, ID.DE-P5, CT.DM-P9, GV.PO-P2, CT.PO-P4 · AI RMF: — · from `SR-GDPR-001`, `SR-GDPR-002`, `SR-GDPR-003`, +11 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`state of the art`, `appropriate`, `as appropriate`), §5.4.7 (4-element list), §3.3.1 (CIA+R polysemy).
 **Instance 1 — VAG / S3 / `state of the art`**
 Cross-clause propagation — same as Art. 25(1). S3 because security-engineering scope is material to compliance.
@@ -60,6 +64,7 @@ R1 vs R2 yield materially distinct BCP/DRP engineering scope.
 ---
 ##### Art. 32(2) — Risk-enumeration for security assessment
 **Clause: GDPR-CP16** | type: security risk assessment | obligatedParty: CONTROLLER + PROCESSOR | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.DS-02, PR.IR-01, RS.CO-02, RS.MA-04, RS.MA-03, RS.CO-03, PR.IR-04, PR.DS-11, RC.RP-04, DE.CM-01, DE.CM-03, DE.AE-02 · PF 1.1: PR.DS-P2, PR.AC-P5, CM.AW-P7, CM.PO-P2, CM.AW-P8, PR.PO-P3, ID.RA-P3, GV.MT-P3 · AI RMF: — · from `SR-GDPR-002`, `SR-GDPR-016`, `SR-GDPR-019`, +2 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.4.7 (`accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to` — 5-way OR chain).
 **Instance 1 — COORD / S3 / 5-way OR**
 The 5-event enumeration (Berry §5.4.7 menu-card pattern). Each OR is inclusive; the OR-chain admits ≥5 distinct threat-model scopes.
@@ -85,6 +90,7 @@ R1 vs R2 yield materially distinct threat-modelling scope.
 #### Clause breakdown
 ##### Art. 33(1) — 72-hour notification
 **Clause: GDPR-CP17** | type: breach notification | obligatedParty: CONTROLLER | obligationType: TRIGGERED (per breach)
+**Control anchors:** CSF: DE.CM-01, DE.CM-09, RS.MA-02, RS.CO-02, RS.MA-04, RS.MA-03, RS.AN-03, RS.AN-07, DE.CM-03, DE.AE-02 · PF 1.1: GV.MT-P5, GV.MT-P3, CM.AW-P7, CM.PO-P2, ID.DE-P3, CM.PO-P1, ID.RA-P3 · AI RMF: — · from `SR-GDPR-014`, `SR-GDPR-016`, `SR-GDPR-017`, +2 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`without undue delay`, `where feasible`, `unlikely`), §5.7 (temporal operators), §3.3.1 (`becoming aware` polysemy).
 **Instance 1 — VAG / S3 / `without undue delay and, where feasible, not later than 72 hours`**
 Twin temporal operators (Berry §5.1, §5.7) — `without undue delay` is soft, `72 hours` is hard, `where feasible` softens the hard. Interaction undefined.
@@ -111,3 +117,4 @@ R1 vs R2 yield materially distinct breach-response workflows.
 The awareness trigger is polysemous (cf. CRA C25, NIS 2 C25 — same pattern across regulations).
 
 <!-- aegis:purity: own_reg=GDPR; demoted=1; core_cross_mentions=0 -->
+<!-- aegis:control-anchors: generated by scripts/uniformize_control_anchors.py from baseline/MAPPINGS/sr_control_mappings; not part of the verbatim Part 4 body -->

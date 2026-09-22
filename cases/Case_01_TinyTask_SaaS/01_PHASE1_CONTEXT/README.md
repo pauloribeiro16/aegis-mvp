@@ -35,7 +35,7 @@ reading_order_added: 2026-09-14
 | 4 | `Doc03b_Ambiguity_Register_Case_Filter.md` | Filtered case-level ambiguity cards (CITES `00_COMMON/04_Ambiguity_Registry.md`) | Doc09 |
 | 5 | `Doc04_Clause_Mapping_Matrix.md` | Which clauses map to which sub-domains? | Doc10 |
 | 6 | `Doc05_Proportionality_Profile.md` | How heavy should compliance be for this company's tier? (Track B) | Doc12 |
-| 7 | `Doc06_Adjusted_Objectives.md` | The adjusted objectives per sub-domain — primary handoff artefact to Phase 2 | Doc13 |
+| 7 | `Doc06_Adjusted_Goals.md` | The adjusted goals per sub-domain — primary handoff artefact to Phase 2 | Doc13 |
 
 > **Note on Baseline Ambiguity Analysis:** The authoritative baseline ambiguity registry has been moved to `00_COMMON/04_Ambiguity_Registry.md` (Fase 0 baseline). Phase 1 (`Doc03b`) merely filters and cites those canonical interpretations for this specific company.
 
@@ -60,7 +60,7 @@ The Rich folder is a **sibling, NOT a replacement** of the legacy folder. Both f
 | 1 — Reconciliation | COMPLETE | 11 docs copied + 6 inconsistencies fixed (I-01, I-02, I-05/06, I-07, I-10, I-13) + lint 31W→10W |
 | 2 — Corpus Enrichment | COMPLETE | 4 docs enriched (135 cells) + 2 NEW docs filled (417 ambiguity cards + 18 citations) + 4 status flips to CORPUS_ENRICHED |
 | 3 — Final Validation | COMPLETE | 3 new docs (RICH_VS_LEGACY, PROJECT_STATE, VALIDATOR_SPRINT3) + README v1.0 + 07b §11 cross-check (10/10 PASS) + SPRINT3_REPORT |
-| 4 — Adjusted Objectives | COMPLETE | NEW Doc 07c (74 adjusted objectives = 37 PG + 37 SG) + Doc 07b §12-§14 (decision table + tensions + corpus provenance) + Doc 04 BG cross-refs (5 BGs linked) + 4 tensions resolved with max-SLA routing |
+| 4 — Adjusted Goals | COMPLETE | NEW Doc 07c (74 adjusted goals = 37 PG + 37 SG) + Doc 07b §12-§14 (decision table + tensions + corpus provenance) + Doc 04 BG cross-refs (5 BGs linked) + 4 tensions resolved with max-SLA routing |
 
 **Overall:** Rich folder is **READY** (6/6 Phase 1 lints pass, 0 errors, 44 warnings — all in legacy meta-docs not introduced by Fase de Especificação 2 enrichment). Validator verdict: **PASS** (see `validation/VALIDATOR_SPRINT3.md`).
 

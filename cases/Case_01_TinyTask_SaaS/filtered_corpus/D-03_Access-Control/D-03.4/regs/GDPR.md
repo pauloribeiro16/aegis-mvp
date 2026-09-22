@@ -44,7 +44,9 @@ minimisation underlying principle).
 - The downstream notification cascade (Art. 33 personal-data-breach notification) is part of D-04.3, not D-03.4.
 
 **CSF anchors (from `SR-GDPR-013` v0.3 security_rationale):**
-PR.PS-01, ID.AM-08, GV.PO-01.
+PR.PS-01, ID.AM-08.
+**PF 1.1 anchors (from `SR-GDPR-013` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+CT.DP-P4, CT.PO-P4.
 *(`SR-GDPR-013` covers the Art. 25(2) + Art. 25(1) + Art. 5(1)(c)
 privacy-by-default obligation anchored to PR.PS-01 (configuration
 management practices established and applied) + ID.AM-08 (data
@@ -92,7 +94,8 @@ governance-side anchor.
   verification_method: TEST
   dependencies: [3.1.1 (data-subject identity verification feeds the opt-in-gate evidence on the accessibility dimension)]
 
-  nist_csf: [PR.PS-01, ID.AM-08, GV.PO-01]
+  nist_csf: [PR.PS-01, ID.AM-08]
+  nist_pf: [CT.DP-P4, CT.PO-P4]
 
   applicable_if:
     regs: [GDPR]

@@ -15,7 +15,7 @@ inputs: [Doc03_Company_Context_Assessment.md]
 outputs: [Doc10_Clause_Mapping_Matrix.md]
 traceability: AEGIS Class Model → ComplianceContext, RegulatoryClause classes
 related_documents: 00_Taxonomy_Reference.md, 04_Company_Context_Assessment.md
-ao_id_migration_note: Each row's `Operational check per Doc 07c Appendix A §A.1.1/D-XX.X` references the sub-domain (not a specific PG/SG ID). The 74 detail cards in Doc 07c Appendix A retain their legacy PG/SG headings for Phase 2 traceability; see `07c_Adjusted_Goals.md` Appendix A §A.0 alias table for the corr-008 AO ID equivalents.
+ag_id_migration_note: Each row's `Operational check per Doc 07c Appendix A §A.1.1/D-XX.X` references the sub-domain (not a specific PG/SG ID). The 74 detail cards in Doc 07c Appendix A retain their legacy PG/SG headings for Phase 2 traceability; see `07c_Adjusted_Goals.md` Appendix A §A.0 alias table for the corr-008 AG ID equivalents.
 ---
 
 <!-- Note: 02_Regulatory_Mapping_Master.md is DEPRECATED as of Phase 1 v1.2 (2026-07-13). Use 00_METHODOLOGY/PREPROCESSING_by_domain/domains/ corpus or 00_Taxonomy_Reference.md instead. -->

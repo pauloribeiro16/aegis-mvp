@@ -43,6 +43,8 @@ of mis-identification (Art. 12(6) + Art. 11(2)).
 
 **CSF anchors (from `SR-GDPR-011` + `SR-GDPR-012` v0.3 security_rationale):**
 PR.AA-05, PR.AA-06, PR.AT-02.
+**PF 1.1 anchors (from `SR-GDPR-011`, `SR-GDPR-012` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+PR.AC-P1, PR.AC-P2, CT.PO-P1, GV.AT-P2.
 
 ---
 
@@ -75,7 +77,8 @@ PR.AA-05, PR.AA-06, PR.AT-02.
   verification_method: TEST
   dependencies: [3.1.1 (data-subject verification outcome feeds the rights-exercise authentication event)]
 
-  nist_csf: [PR.AA-05, PR.AA-06, PR.AT-02]
+  nist_csf: [PR.AA-05, PR.AA-06]
+  nist_pf: [PR.AC-P1, PR.AC-P2, CT.PO-P1]
 
   applicable_if:
     regs: [GDPR]

@@ -30,7 +30,7 @@ phase_1A_role: 2_of_4
 **Objective.** The manufacturer **maintains the technical documentation** (Annex VII §5-§8 CRA — harmonised standards applied, test reports, copy of the EU declaration of conformity, SBOM on MSA reasoned request), **preserves the cybersecurity risk-assessment documentation** (Annex VII §3 + Art. 13(4) sentence 1) during the support period (10 years or support period, whichever longer) with updates as appropriate, and ensures **test reports demonstrating verification of conformity with Annex I Part I and Part II** are part of the technical documentation and available on reasoned request from market surveillance authorities (Annex VII §6 + Annex I Part II (3) + Art. 13(22) CRA).
 
 **CSF anchors (from `SR-CRA-088` + `SR-CRA-080` + `SR-CRA-069` + `SR-CRA-070` + `SR-CRA-102` v0.3 security_rationale):**
-PR.DS-11 (primary), ID.AM-08, GV.PO-02, ID.RA-04.
+GV.OC-03, ID.RA-04, GV.SC-04, ID.RA-05, GV.OV-01, GV.PO-02, PR.PS-02.
 *(PR.DS-11 — Data are destroyed according to policy — anchors the CRA Annex VII §5–§8 technical documentation integrity mapped to NIST CSF 2.0 PR.DS-11; ID.AM-08 — Data are securely deleted or destroyed — anchors the support-period retention + updates-as-appropriate per DomainAnalysis cross-validation; GV.PO-02 — Information security policy is established, communicated, and maintained — anchors the Art. 13(8) manufacturer policies/processes/procedures + Annex VII §2(b) CVD policy; ID.RA-04 — Potential impacts and likelihoods of threats are identified — anchors the Annex VII §3 risk-assessment documentation + Art. 13(2) cybersecurity risk assessment per Art. 13(4) sentence 1. The four subcategories together enable the manufacturer to demonstrate ex post, against the MSA, that the Annex VII §5–§8 technical documentation + Annex VII §3 risk-assessment documentation + Annex I Part II (3) effective/regular tests were maintained with integrity + traceability during the support period and available on MSA reasoned request.)*
 
 ---
@@ -64,7 +64,7 @@ PR.DS-11 (primary), ID.AM-08, GV.PO-02, ID.RA-04.
   verification_method: TEST
   dependencies: [10.2.1 (N (typically) — substantively scope-disjoint by record-type distinctness; CRA product documentation vs. GDPR compliance records; no joint condition on this pair alone; engages only via DORA or AI Act third-regulator joint-condition), 10.2.3 (Conditional — Y when DORA entity procures CRA-conformant products; CRA product documentation + DORA CIA+A information security policy stack; CRA product documentation feeds the DORA entity-level audit-records stack), 10.2.4 (Conditional — Y when CRA-regulated product is also high-risk AI; CRA Annex VII §5–§8 product documentation + Annex I Part II (3) effective/regular tests + AI Act Art. 12(1)+(2) automatic event logging + Art. 19(1) provider log retention stack; product documentation traceability feeds AI Act automatic event logging chain)]
 
-  nist_csf: [PR.DS-11, ID.AM-08, GV.PO-02, ID.RA-04]
+  nist_csf: [GV.OC-03, ID.RA-04, GV.SC-04]
 
   applicable_if:
     regs: [CRA]

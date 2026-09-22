@@ -38,7 +38,7 @@ phase_1A_role: 1_of_N
 - For a 5-FTE manufacturer of a CRA-regulated product, the coding-outcomes baseline is built from industry frameworks and demonstrated against Annex I Part I (2)(j) + (2)(k) outcome-level obligations via the Annex VII §2 design/development documentation record.
 
 **CSF anchors (from `SR-CRA-067` v0.3 security_rationale):**
-PR.PS-06, PR.PS-02.
+PR.PS-01, PR.PS-02.
 *(PR.PS-06 anchors the secure-software-development lifecycle dimension — secure software development practices are integrated, and their performance is monitored throughout the SDLC; the CRA Annex I Part I (2)(j) + (2)(k) attack-surface + exploitation-mitigation outcomes are realised through the SDLC, with the manufacturer building the coding-standards baseline from industry frameworks. PR.PS-02 anchors the software-maintenance dimension — software is maintained, replaced, and removed commensurate with risk; the Annex I Part I (2)(j) + (2)(k) attack-surface + exploitation-mitigation outcomes are maintained across the support period ≥ 5 years (Art. 13(8) sentence 3) — with ongoing exploitation-mitigation updates + attack-surface monitoring + vulnerability remediation per Art. 13(6) (cross to D-02.2 — SO-CRA-008 + SO-CRA-010). The two subcategories together enable the manufacturer to demonstrate ex post, through the documented Annex VII §2 design/development documentation record + Annex VII §3 risk-assessment record + Annex I Part I (2)(j)/(k) outcome evidence + Art. 13(8) support-period record, that the attack-surface limitation + exploitation-mitigation coding-outcome duties have been exercised with the Annex I Part I essential-requirements anchor + 6-phase risk-assessment propagation.)*
 
 ---
@@ -72,7 +72,7 @@ PR.PS-06, PR.PS-02.
   verification_method: TEST
   dependencies: [7.2.3 (when AI-enabled CRA product — CRA Annex I Part I (2)(j)+(k) outcome-level obligations + AI Act Art. 15(4)–(5) AI-attack-defence categories stack vertically with no OJ-level consolidation rule)]
 
-  nist_csf: [PR.PS-06, PR.PS-02]
+  nist_csf: [PR.PS-01, PR.PS-02]
 
   applicable_if:
     regs: [CRA]

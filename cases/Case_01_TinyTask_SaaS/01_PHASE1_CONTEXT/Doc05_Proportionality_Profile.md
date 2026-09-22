@@ -11,7 +11,7 @@ status_history:
   - { date: 2026-08-06, status: DRAFT, sprint: 0, by: 'Fase de Especificação 0 skeleton' }
   - { date: 2026-08-06, status: RECONCILED, sprint: 1, by: 'Fase de Especificação 1 reconciliation' }
   - { date: 2026-08-06, status: CORPUS_ENRICHED, sprint: 2, by: 'Fase de Especificação 2 corpus enrichment' }
-  - { date: 2026-08-06, status: ADJUSTED_OBJECTIVES, sprint: 4, by: 'Fase de Especificação 4 adjusted objectives' }
+  - { date: 2026-08-06, status: ADJUSTED_GOALS, sprint: 4, by: 'Fase de Especificação 4 adjusted goals' }
   - { date: 2026-08-06, status: DEEP_ENRICHED, sprint: 5, by: 'Fase de Especificação 5 DEEP enrichment' }
 deep_enrichment_date: 2026-08-06
 cols_added_to_section_4: 3

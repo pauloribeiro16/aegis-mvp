@@ -35,7 +35,7 @@ phase_1A_role: 1_of_N
 - Annex VII §3 risk-assessment record + Annex VII §2 design/development documentation form the technical-documentation evidence base (cross to D-09.4).
 - Support period ≥ 5 years (Art. 13(8) sentence 3); 10-year Annex II information accessibility (Art. 13(18)).
 **CSF anchors (from `SR-CRA-064` v0.3 security_rationale):**
-PR.PS-06, PR.PS-01.
+PR.PS-06, GV.PO-02.
 *(PR.PS-06 anchors the secure-software-development lifecycle dimension — secure software development practices are integrated, and their performance is monitored throughout the SDLC; the CRA Art. 13(2) 6-phase coordinated risk-assessment-propagation architecture maps to PR.PS-06 directly. PR.PS-01 anchors the configuration-management dimension — configuration management practices are established, documented, and applied; the CRA Annex I Part I (2) sub-points (a)–(k) including attack-surface limitation (j) + exploitation mitigation (k) + automatic security updates (c) + integrity protection (f) + recording-and-monitoring (l) + secure-by-default (b) form the configuration-management baseline of the product by-design. The two subcategories together enable the manufacturer to demonstrate ex post, through the documented Annex VII §3 risk-assessment record + Annex VII §2 design/development documentation + Annex I Part I (2) sub-point evidence + Art. 13(3) sentence 1 update-on-change-of-risk record + Art. 13(7) documentation record, that the Art. 13(1)+(2) by-design + 6-phase-risk-assessment-propagation duty has been exercised with the Annex I Part I essential-requirements anchor.)*
 
 ---
@@ -69,7 +69,7 @@ PR.PS-06, PR.PS-01.
   verification_method: TEST
   dependencies: [7.1.1 (when integrated manufacturer-controller — CRA Annex I Part I engineering substrate + GDPR Art. 25(1) personal-data overlay), 7.1.2 (when NIS 2 entity deploys / manufactures CRA product — supplier-customer boundary; NIS 2 supplier-assessment references CRA Annex VII technical documentation), 7.1.4 (when DORA FE deploys CRA product — DORA design-procurement baseline satisfied by CRA-conformant-product selection; CRA Annex VII §3 risk-assessment record feeds DORA Art. 6(1) ICT risk-management framework), 7.1.5 (when AI-enabled CRA product — CRA Art. 13(4) sentence 2 explicit AI-Act-substitution for risk assessment unifies Art. 9 + Art. 13 risk-assessment documentation)]
 
-  nist_csf: [PR.PS-06, PR.PS-01]
+  nist_csf: [PR.PS-06, GV.PO-02]
 
   applicable_if:
     regs: [CRA]

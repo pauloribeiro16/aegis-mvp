@@ -31,6 +31,8 @@ phase_1A_role: 1_of_N
 
 **CSF anchors (from `SR-GDPR-029` v0.3 security_rationale):**
 ID.AM-08, ID.AM-03.
+**PF 1.1 anchors (from `SR-GDPR-029` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+CT.PO-P4, CT.DM-P5.
 *(ID.AM-08 captures the per-dataset risk-and-purpose binding — the
 controller defines and documents a retention period for each category,
 resets the clock when the underlying purpose changes, and pairs
@@ -79,6 +81,7 @@ for its declared purpose on the day of any supervisory inspection.)*
   dependencies: [5.2.2 (when CRA update-distribution log contains personal data — separation architecture is the layering rule; GDPR Art. 5(1)(e) `necessary` boundary remains the operative cap on the personal-data subset, CRA-side availability tail applies to the artefact portion), 5.2.3 (when AI log contains personal data — floor-within-ceiling relationship; operative range is [6 months, "necessary"] with AI Act setting the floor and GDPR setting the cap)]
 
   nist_csf: [ID.AM-08, ID.AM-03]
+  nist_pf: [CT.PO-P4, CT.DM-P5]
 
   applicable_if:
     regs: [GDPR]

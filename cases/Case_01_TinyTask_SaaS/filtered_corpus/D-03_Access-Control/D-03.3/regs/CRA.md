@@ -85,7 +85,7 @@ reading is the strictest visibility floor across the four regulators.)*
   verification_method: TEST
   dependencies: [3.1.3 (product-side identity substrate feeds the authenticated-and-authorised boundary), 3.3.3 cross-ref to 10.1 / 10.2 (monitoring substrate under SR-CRA-027 feeds the (2)(d) reporting leg)]
 
-  nist_csf: [PR.AA-01, PR.AA-05, PR.AA-06, PR.PS-04, ID.AM-01, DE.CM-09]
+  nist_csf: [PR.AA-05, PR.AA-06, DE.CM-09]
 
   applicable_if:
     regs: [CRA]

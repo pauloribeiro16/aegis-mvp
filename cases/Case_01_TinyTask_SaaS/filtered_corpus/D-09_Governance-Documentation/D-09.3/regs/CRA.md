@@ -30,7 +30,7 @@ phase_1A_role: 2_of_3
 **Objective.** Manufacturers of products with digital elements draw up **technical documentation** containing at least a **general description** of the product (Annex VII §1) and a **description of the design, development, production and vulnerability-handling processes** including the system architecture description (Annex VII §2); the technical documentation is drawn up before placing on the market and updated during the support period (Art. 31(2) CRA), and kept at the disposal of market surveillance authorities for at least 10 years or the support period, whichever is longer (Art. 13(13) CRA).
 
 **CSF anchors (from `SR-CRA-087` + `SR-CRA-088` v0.3 security_rationale):**
-ID.AM-01, ID.AM-02.
+GV.PO-02, ID.AM-02, GV.OC-03, ID.RA-04, GV.SC-04.
 
 ---
 
@@ -63,7 +63,7 @@ ID.AM-01, ID.AM-02.
   verification_method: TEST
   dependencies: [9.1.3 (Art. 13(8) manufacturer policies/processes/procedures as upstream governance hook), 9.3.3 (when DORA entity procures CRA-conformant — DORA-led stack with CRA Annex VII §1-§2 as upstream product-level sub-register feeding the DORA entity-level master record; COMPLEMENTARY, Conditional-Y scope overlap), 9.3.1 (when entity is not manufacturer — substantively scope-disjoint per CRDA `N (typically)` on the NIS 2 ↔ CRA pair; different objects — entity asset register vs. product architecture documentation — meeting at supplier-customer interface only)]
 
-  nist_csf: [ID.AM-01, ID.AM-02]
+  nist_csf: [GV.PO-02, ID.AM-02]
 
   applicable_if:
     regs: [CRA]

@@ -6,6 +6,7 @@
 ## GDPR
 ##### Art. 5(1)(c) — Data minimisation
 **Clause: GDPR-CL03** | type: principle | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.DS-10, ID.AM-08, PR.AA-02, PR.PS-01, ID.AM-03, GV.SC-04 · PF 1.1: CT.DM-P3, CM.AW-P5, PR.AC-P6, CT.DP-P4, CT.PO-P4, ID.RA-P3, CT.DM-P5, CT.DM-P4, ID.DE-P3 · AI RMF: — · from `SR-GDPR-006`, `SR-GDPR-010`, `SR-GDPR-013`, +4 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.5 (vagueness), §5.1 (`adequate`, `relevant`, `necessary`).
 **Instance 1 — VAG / S3 / `adequate`, `relevant`, `necessary`**
 Three inquiry-resistant adjectives; no measurement criterion. Art. 5(2) accountability shifts burden of demonstration to controller; Art. 35(7)(b) DPIA requires necessity assessment.
@@ -21,6 +22,7 @@ R1 vs R3 yield materially distinct compliance obligations (R1 permits default co
 ---
 ##### Art. 5(1)(e) — Storage limitation
 **Clause: GDPR-CL05** | type: principle | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: ID.AM-08, ID.AM-03, PR.DS-10, GV.SC-04 · PF 1.1: CT.PO-P4, CT.DM-P5, CT.DM-P4, ID.DE-P3 · AI RMF: — · from `SR-GDPR-029`, `SR-GDPR-030`, `SR-GDPR-031`, +1 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`necessary`, `appropriate`), §3.3.1 (polysemy of `form which permits identification`).
 **Instance 1 — VAG / S3 / `no longer than is necessary`**
 Temporal vague phrase with no upper bound; same pattern as `without undue delay` (Berry §5.1). Art. 5(1)(e) further conditions on `appropriate technical and organisational measures required by this Regulation` — the cross-reference is itself ambiguous.
@@ -35,6 +37,7 @@ The `identification` threshold is the same Art. 4(1) `identifiable` question. Ps
 ---
 ##### Art. 11(1) — No identification obligation
 **Clause: GDPR-CL26** | type: principle (identification exemption) | obligatedParty: CONTROLLER | obligationType: PER-REQUEST
+**Control anchors:** CSF: PR.AA-03, PR.AA-02, RS.CO-02, ID.AM-08 · PF 1.1: PR.AC-P6, PR.AC-P3, CM.AW-P5, CT.DM-P3 · AI RMF: — · from `SR-GDPR-009`, `SR-GDPR-022` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.1 (`additional information` polysemy), §5.1.
 **Instance 1 — POLY / S2 / `additional information`**
 `additional information` is used in two senses within the same article: (i) information the controller would need to *maintain or acquire* for identification; (ii) information the data subject would need to *provide* for exercising rights. The two senses overlap but are not identical. S2 because both readings converge on the controller's identification-exemption decision.
@@ -70,6 +73,7 @@ The `identification` threshold is the same Art. 4(1) `identifiable` question. Ps
 - Chapter V (Transfers, Art. 44–49) inherits Art. 4(1) `identifiable`, Art. 5(1)(f) `appropriate security`, Art. 9 special categories. Transfer mechanisms reference Art. 6 lawfulness bases.
 ##### Art. 15(4) — Third-party rights
 **Clause: GDPR-RT11** | type: data subject right (scope limitation) | obligatedParty: CONTROLLER | obligationType: PER-REQUEST
+**Control anchors:** CSF: RS.CO-02, ID.AM-08 · PF 1.1: CM.AW-P5, CT.DM-P3 · AI RMF: — · from `SR-GDPR-022` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`rights and freedoms of others`).
 **Instance 1 — VAG / S3 / `shall not adversely affect the rights and freedoms of others`**
 Whose `rights and freedoms`? Other data subjects (whose data appears in shared records), the controller, third parties (employees, partners)? The clause does not differentiate.
@@ -89,6 +93,7 @@ R1 vs R2 yield materially distinct redaction workflows.
 #### Clause breakdown
 ##### Art. 16 — Rectification right
 **Clause: GDPR-RT12** | type: data subject right (rectification) | obligatedParty: CONTROLLER | obligationType: PER-REQUEST
+**Control anchors:** CSF: PR.DS-10, ID.AM-08, RS.CO-02 · PF 1.1: CT.DM-P3, CM.AW-P5 · AI RMF: — · from `SR-GDPR-006`, `SR-GDPR-022` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`without undue delay`, `inaccurate`, `incomplete`).
 **Instance 1 — VAG / S2 / `inaccurate`, `incomplete`**
 Inherits the Art. 5(1)(d) `accuracy` ambiguity (Clause CL04). S2 because the implementation test is the same as Art. 5(1)(d).
@@ -119,6 +124,7 @@ R1 vs R2 yield materially distinct rectification workflows.
 #### Clause breakdown
 ##### Art. 19 — Recipient notification
 **Clause: GDPR-RT15** | type: data subject right (cascade notification) | obligatedParty: CONTROLLER | obligationType: PER-ACTION
+**Control anchors:** CSF: PR.DS-10, ID.AM-08, RS.CO-02 · PF 1.1: CT.DM-P3, CM.AW-P5 · AI RMF: — · from `SR-GDPR-006`, `SR-GDPR-022` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`impossible`, `disproportionate effort`).
 **Instance 1 — VAG / S3 / `impossible` or `disproportionate effort`**
 Two escape clauses (Berry §5.1). `impossible` is binary; `disproportionate effort` is qualitative.
@@ -146,12 +152,14 @@ R1 vs R2 yield materially distinct cascade-notification policies.
 #### Clause breakdown
 ##### Art. 28(3) — Processor contract content (8 mandatory clauses)
 **Clause: GDPR-CP09** | type: processor-side obligation | obligatedParty: PROCESSOR | obligationType: PER-CONTRACT
+**Control anchors:** CSF: PR.AA-05, PR.AA-06, PR.AT-02, GV.SC-03, GV.SC-04, DE.CM-06, GV.SC-02, ID.AM-08 · PF 1.1: PR.AC-P1, PR.AC-P2, CT.PO-P1, GV.AT-P2, ID.DE-P3, ID.DE-P5, CT.DM-P9, ID.DE-P4, CT.DM-P5 · AI RMF: — · from `SR-GDPR-011`, `SR-GDPR-012`, `SR-GDPR-034`, +3 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.4.7 (8-element closed AND-list (a)–(h)).
 **Instance 1 — COORD / S2 / 8-element AND-list**
 Each sub-clause is mandatory. S2 because all 8 sub-clauses are substantive obligations with the same compliance practice.
 ---
 ##### Art. 28(3)(g) — Data return or deletion
 **Clause: GDPR-CP10** | type: processor-side obligation | obligatedParty: PROCESSOR | obligationType: PER-CONTRACT-END
+**Control anchors:** CSF: PR.DS-10, ID.AM-08, GV.SC-04 · PF 1.1: CT.DM-P4, CT.DM-P5, ID.DE-P3 · AI RMF: — · from `SR-GDPR-030`, `SR-GDPR-031` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.1 (`deletes` polysemy — cf. Art. 17), §5.4.7 (`deletes or returns ... and deletes existing copies`).
 **Instance 1 — POLY / S3 / `deletes`**
 `deletes` has three operational senses: physical destruction, logical deletion (recoverable), cryptographic erasure. GDPR does not specify which.
@@ -174,3 +182,4 @@ R1 vs R3 yield materially distinct deletion-engineering requirements.
 #### Clause breakdown
 
 <!-- aegis:purity: own_reg=GDPR; demoted=0; core_cross_mentions=0 -->
+<!-- aegis:control-anchors: generated by scripts/uniformize_control_anchors.py from baseline/MAPPINGS/sr_control_mappings; not part of the verbatim Part 4 body -->

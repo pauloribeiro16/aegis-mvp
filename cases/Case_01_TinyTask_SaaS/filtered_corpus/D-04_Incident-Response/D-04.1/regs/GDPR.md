@@ -34,7 +34,9 @@ phase_1A_role: 1_of_N
 - The downstream notification cascade (Art. 33 supervisory-authority notification + Art. 34 data-subject communication) is part of D-04.3, not D-04.1.
 
 **CSF anchors (from `SR-GDPR-014` v0.3 security_rationale):**
-DE.AE-02, PR.PS-04, DE.CM-01.
+DE.CM-01, DE.CM-09, RS.MA-02.
+**PF 1.1 anchors (from `SR-GDPR-014` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+GV.MT-P5, GV.MT-P3, CM.AW-P7.
 *(DE.AE-02 anchors the adverse-event analysis leg; PR.PS-04 anchors
 the software-logs-recorded leg (relevant for the data-flow detection
 evidence); DE.CM-01 anchors the networks-monitored leg for the
@@ -71,7 +73,8 @@ data-flow boundary.)*
   verification_method: TEST
   dependencies: [4.1.2 (when controller is also NSIE — data-flow detection feeds entity detection), 4.1.3 (when integrated manufacturer-controller — CRA product-internal recording feeds data-flow awareness for personal-data subset)]
 
-  nist_csf: [DE.CM-01, DE.CM-09, DE.AE-02, PR.PS-04, RS.MA-02]
+  nist_csf: [DE.CM-01, DE.CM-09, RS.MA-02]
+  nist_pf: [GV.MT-P5, GV.MT-P3, CM.AW-P7]
 
   applicable_if:
     regs: [GDPR]

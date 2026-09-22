@@ -31,6 +31,8 @@ phase_1A_role: 1_of_N  # if GDPR-only, high-level SO is redundant; sub-SO used d
 
 **CSF anchors (from `SR-GDPR-016` v0.3 security_rationale):**
 RS.CO-02, RS.MA-04, RS.MA-03.
+**PF 1.1 anchors (from `SR-GDPR-016` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+CM.AW-P7, CM.PO-P2.
 
 ---
 
@@ -64,6 +66,7 @@ RS.CO-02, RS.MA-04, RS.MA-03.
   dependencies: [4.1.1 (notification requires prior `becoming aware` moment; 72h clock binds to 4.1 GDPR trigger anchor), 4.2.1 (notification content requires prior containment classification feeding Art. 33(3)(d) Measures-taken section)]
 
   nist_csf: [RS.CO-02, RS.MA-04, RS.MA-03]
+  nist_pf: [CM.AW-P7, CM.PO-P2]
 
   applicable_if:
     regs: [GDPR]

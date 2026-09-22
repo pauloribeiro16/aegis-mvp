@@ -36,6 +36,8 @@ to, personal data transmitted) (Art. 32(1)(b) + Art. 32(2)).
 
 **CSF anchors (from `SR-GDPR-002` v0.3 security_rationale):**
 PR.DS-02, PR.IR-01.
+**PF 1.1 anchors (from `SR-GDPR-002` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+PR.DS-P2, PR.AC-P5.
 
 ---
 
@@ -69,6 +71,7 @@ PR.DS-02, PR.IR-01.
   dependencies: ["1.3 (Key/Certificate Management — pending generation)", "3.x (Mutual Authentication — pending generation)"]
 
   nist_csf: [PR.DS-02, PR.IR-01]
+  nist_pf: [PR.DS-P2, PR.AC-P5]
 
   applicable_if:
     regs: [GDPR]

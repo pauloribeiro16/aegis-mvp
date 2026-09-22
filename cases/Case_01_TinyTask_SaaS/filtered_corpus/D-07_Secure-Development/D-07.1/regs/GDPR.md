@@ -37,6 +37,8 @@ phase_1A_role: 1_of_N
 
 **CSF anchors (from `SR-GDPR-039` v0.3 security_rationale):**
 PR.PS-06, ID.AM-08.
+**PF 1.1 anchors (from `SR-GDPR-039` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+GV.PO-P2, CT.PO-P4.
 *(PR.PS-06 anchors the secure-software-development lifecycle dimension — secure software development practices are integrated, and their performance is monitored throughout the SDLC; the GDPR Art. 25(1) by-design at the time of means-determination + processing-time by-default forms the SDLC anchor on the controller side. ID.AM-08 anchors the data-management-consistent-with-risk-strategy dimension — data are managed consistent with the risk strategy; the GDPR Art. 25(1) `data-protection principles such as data minimisation` + Art. 25(2) by-default on amount/extent/period/access maps to ID.AM-08 directly. The two subcategories together enable the controller to demonstrate ex post, through documented Art. 25(1) by-design necessity assessment + Art. 25(2) by-default operational implementation + Art. 5(2) accountability record + Art. 30 RoPA on processing purposes and safeguards + Art. 35(7) DPIA content items, that the Art. 25(1)+(2) by-design + by-default duty has been exercised with the 4-factor qualitative proportionality calibration.)*
 
 ---
@@ -71,6 +73,7 @@ PR.PS-06, ID.AM-08.
   dependencies: [7.1.2 (when controller is also NSIE — GDPR by-design outputs realised through NIS 2 acquisition + development gates per SR-NIS2-026/027), 7.1.3 (when integrated manufacturer-controller — CRA Annex I Part I engineering substrate + GDPR Art. 25(1) personal-data overlay stack vertically), 7.1.4 (when DORA financial entity is also controller — GDPR overlay on DORA change-mgmt six-step + testing), 7.1.5 (when high-risk AI system processes personal data — Recital 78 preservation, GDPR by-design overlay on AI Act by-design + QMS)]
 
   nist_csf: [PR.PS-06, ID.AM-08]
+  nist_pf: [GV.PO-P2, CT.PO-P4]
 
   applicable_if:
     regs: [GDPR]

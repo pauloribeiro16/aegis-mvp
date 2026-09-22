@@ -6,6 +6,7 @@
 ## GDPR
 ##### Art. 5(1)(c) — Data minimisation
 **Clause: GDPR-CL03** | type: principle | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.DS-10, ID.AM-08, PR.AA-02, PR.PS-01, ID.AM-03, GV.SC-04 · PF 1.1: CT.DM-P3, CM.AW-P5, PR.AC-P6, CT.DP-P4, CT.PO-P4, ID.RA-P3, CT.DM-P5, CT.DM-P4, ID.DE-P3 · AI RMF: — · from `SR-GDPR-006`, `SR-GDPR-010`, `SR-GDPR-013`, +4 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.5 (vagueness), §5.1 (`adequate`, `relevant`, `necessary`).
 **Instance 1 — VAG / S3 / `adequate`, `relevant`, `necessary`**
 Three inquiry-resistant adjectives; no measurement criterion. Art. 5(2) accountability shifts burden of demonstration to controller; Art. 35(7)(b) DPIA requires necessity assessment.
@@ -21,6 +22,7 @@ R1 vs R3 yield materially distinct compliance obligations (R1 permits default co
 ---
 ##### Art. 5(1)(d) — Accuracy
 **Clause: GDPR-CL04** | type: principle | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.DS-01, ID.AM-08, PR.DS-10 · PF 1.1: CT.DM-P1, CT.DM-P3, CM.AW-P5 · AI RMF: — · from `SR-GDPR-005`, `SR-GDPR-006` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.5 (vagueness), §5.1 (`reasonable`, `accurate`, `necessary`).
 **Instance 1 — VAG / S3 / `accurate`, `reasonable step`, `necessary`**
 `accurate` has no defined threshold; `reasonable step` is open-ended; `where necessary` and `without delay` are inquiry-resistant. Art. 16 (right to rectification) provides partial anchoring but does not define accuracy standard.
@@ -35,6 +37,7 @@ Whether data is `inaccurate` admits borderline cases (e.g. stale data, contested
 ---
 ##### Art. 11(1) — No identification obligation
 **Clause: GDPR-CL26** | type: principle (identification exemption) | obligatedParty: CONTROLLER | obligationType: PER-REQUEST
+**Control anchors:** CSF: PR.AA-03, PR.AA-02, RS.CO-02, ID.AM-08 · PF 1.1: PR.AC-P6, PR.AC-P3, CM.AW-P5, CT.DM-P3 · AI RMF: — · from `SR-GDPR-009`, `SR-GDPR-022` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.1 (`additional information` polysemy), §5.1.
 **Instance 1 — POLY / S2 / `additional information`**
 `additional information` is used in two senses within the same article: (i) information the controller would need to *maintain or acquire* for identification; (ii) information the data subject would need to *provide* for exercising rights. The two senses overlap but are not identical. S2 because both readings converge on the controller's identification-exemption decision.
@@ -70,6 +73,7 @@ Whether data is `inaccurate` admits borderline cases (e.g. stale data, contested
 - Chapter V (Transfers, Art. 44–49) inherits Art. 4(1) `identifiable`, Art. 5(1)(f) `appropriate security`, Art. 9 special categories. Transfer mechanisms reference Art. 6 lawfulness bases.
 ##### Art. 14(5)(b) — Disproportionate effort exception
 **Clause: GDPR-RT08** | type: information duty (exception) | obligatedParty: CONTROLLER | obligationType: PER-CASE
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`disproportionate effort`).
 **Instance 1 — VAG / S3 / `proves impossible or would involve a disproportionate effort`**
 `disproportionate effort` is the recurring vague phrase. Recital 62 attempts to fix as cost-vs-risk assessment. S3 because the exception is widely used to skip Article 14 notification in practice (e.g. large-scale behavioural advertising).
@@ -100,6 +104,7 @@ R1 vs R2 yield materially distinct notification workflows in research/archiving 
 #### Clause breakdown
 ##### Art. 15(4) — Third-party rights
 **Clause: GDPR-RT11** | type: data subject right (scope limitation) | obligatedParty: CONTROLLER | obligationType: PER-REQUEST
+**Control anchors:** CSF: RS.CO-02, ID.AM-08 · PF 1.1: CM.AW-P5, CT.DM-P3 · AI RMF: — · from `SR-GDPR-022` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`rights and freedoms of others`).
 **Instance 1 — VAG / S3 / `shall not adversely affect the rights and freedoms of others`**
 Whose `rights and freedoms`? Other data subjects (whose data appears in shared records), the controller, third parties (employees, partners)? The clause does not differentiate.
@@ -119,6 +124,7 @@ R1 vs R2 yield materially distinct redaction workflows.
 #### Clause breakdown
 ##### Art. 16 — Rectification right
 **Clause: GDPR-RT12** | type: data subject right (rectification) | obligatedParty: CONTROLLER | obligationType: PER-REQUEST
+**Control anchors:** CSF: PR.DS-10, ID.AM-08, RS.CO-02 · PF 1.1: CT.DM-P3, CM.AW-P5 · AI RMF: — · from `SR-GDPR-006`, `SR-GDPR-022` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`without undue delay`, `inaccurate`, `incomplete`).
 **Instance 1 — VAG / S2 / `inaccurate`, `incomplete`**
 Inherits the Art. 5(1)(d) `accuracy` ambiguity (Clause CL04). S2 because the implementation test is the same as Art. 5(1)(d).
@@ -149,6 +155,7 @@ R1 vs R2 yield materially distinct rectification workflows.
 #### Clause breakdown
 ##### Art. 19 — Recipient notification
 **Clause: GDPR-RT15** | type: data subject right (cascade notification) | obligatedParty: CONTROLLER | obligationType: PER-ACTION
+**Control anchors:** CSF: PR.DS-10, ID.AM-08, RS.CO-02 · PF 1.1: CT.DM-P3, CM.AW-P5 · AI RMF: — · from `SR-GDPR-006`, `SR-GDPR-022` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`impossible`, `disproportionate effort`).
 **Instance 1 — VAG / S3 / `impossible` or `disproportionate effort`**
 Two escape clauses (Berry §5.1). `impossible` is binary; `disproportionate effort` is qualitative.
@@ -176,6 +183,7 @@ R1 vs R2 yield materially distinct cascade-notification policies.
 #### Clause breakdown
 ##### Art. 23(1) — Permissible restriction grounds
 **Clause: GDPR-RT20** | type: principle (restrictions scope) | obligatedParty: MEMBER STATE | obligationType: PER-RESTRICTION
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`essence of the fundamental rights and freedoms`, `necessary and proportionate`), §5.4.7 (10-element OR-list).
 **Instance 1 — VAG / S3 / `essence of the fundamental rights and freedoms`**
 `Essence` is Charter Art. 52(1) terminology. CJEU case law (Schrems I/II, Digital Rights Ireland) uses `essence` as a hard-test threshold but does not specify the operational test. S3 because Member State restrictions on Charter rights depend on the essence-test being met.
@@ -211,6 +219,7 @@ R1 vs R2 yield materially distinct restriction-scrutiny standards.
 - Chapter V transfer mechanisms do not create new Chapter III rights but the Art. 15(2) right to be informed of transfer safeguards cross-references Chapter V.
 ##### Art. 32(1) — Security measures (open list)
 **Clause: GDPR-CP15** | type: security | obligatedParty: CONTROLLER + PROCESSOR | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.DS-01, PR.DS-10, PR.DS-02, PR.IR-01, PR.IR-03, ID.RA-01, PR.PS-02, ID.RA-05, ID.IM-02, PR.AA-05, PR.AA-06, PR.AT-02, DE.CM-01, DE.CM-09, RS.MA-02, RS.MI-01, RS.MI-02, PR.IR-04, PR.DS-11, RC.RP-04, GV.SC-03, GV.SC-04, DE.CM-06, PR.PS-06, ID.AM-08 · PF 1.1: PR.DS-P1, PR.PO-P3, PR.DS-P2, PR.AC-P5, CT.DP-P2, GV.MT-P3, CT.DM-P10, ID.RA-P3, ID.RA-P5, PR.AC-P1, PR.AC-P2, CT.PO-P1, GV.AT-P2, GV.MT-P5, CM.AW-P7, PR.PO-P7, ID.DE-P5, CT.DM-P9, GV.PO-P2, CT.PO-P4 · AI RMF: — · from `SR-GDPR-001`, `SR-GDPR-002`, `SR-GDPR-003`, +11 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`state of the art`, `appropriate`, `as appropriate`), §5.4.7 (4-element list), §3.3.1 (CIA+R polysemy).
 **Instance 1 — VAG / S3 / `state of the art`**
 Cross-clause propagation — same as Art. 25(1). S3 because security-engineering scope is material to compliance.
@@ -227,6 +236,7 @@ R1 vs R2 yield materially distinct BCP/DRP engineering scope.
 ---
 ##### Art. 32(2) — Risk-enumeration for security assessment
 **Clause: GDPR-CP16** | type: security risk assessment | obligatedParty: CONTROLLER + PROCESSOR | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.DS-02, PR.IR-01, RS.CO-02, RS.MA-04, RS.MA-03, RS.CO-03, PR.IR-04, PR.DS-11, RC.RP-04, DE.CM-01, DE.CM-03, DE.AE-02 · PF 1.1: PR.DS-P2, PR.AC-P5, CM.AW-P7, CM.PO-P2, CM.AW-P8, PR.PO-P3, ID.RA-P3, GV.MT-P3 · AI RMF: — · from `SR-GDPR-002`, `SR-GDPR-016`, `SR-GDPR-019`, +2 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.4.7 (`accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to` — 5-way OR chain).
 **Instance 1 — COORD / S3 / 5-way OR**
 The 5-event enumeration (Berry §5.4.7 menu-card pattern). Each OR is inclusive; the OR-chain admits ≥5 distinct threat-model scopes.
@@ -252,6 +262,7 @@ R1 vs R2 yield materially distinct threat-modelling scope.
 #### Clause breakdown
 ##### Art. 33(1) — 72-hour notification
 **Clause: GDPR-CP17** | type: breach notification | obligatedParty: CONTROLLER | obligationType: TRIGGERED (per breach)
+**Control anchors:** CSF: DE.CM-01, DE.CM-09, RS.MA-02, RS.CO-02, RS.MA-04, RS.MA-03, RS.AN-03, RS.AN-07, DE.CM-03, DE.AE-02 · PF 1.1: GV.MT-P5, GV.MT-P3, CM.AW-P7, CM.PO-P2, ID.DE-P3, CM.PO-P1, ID.RA-P3 · AI RMF: — · from `SR-GDPR-014`, `SR-GDPR-016`, `SR-GDPR-017`, +2 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`without undue delay`, `where feasible`, `unlikely`), §5.7 (temporal operators), §3.3.1 (`becoming aware` polysemy).
 **Instance 1 — VAG / S3 / `without undue delay and, where feasible, not later than 72 hours`**
 Twin temporal operators (Berry §5.1, §5.7) — `without undue delay` is soft, `72 hours` is hard, `where feasible` softens the hard. Interaction undefined.
@@ -267,6 +278,7 @@ R1 vs R2 yield materially distinct breach-response workflows.
 ---
 ##### Art. 34(1) — High-risk threshold
 **Clause: GDPR-CP19** | type: breach communication | obligatedParty: CONTROLLER | obligationType: TRIGGERED (per high-risk breach)
+**Control anchors:** CSF: RS.CO-03, RS.MA-04, PR.DS-01, PR.IR-03 · PF 1.1: CM.AW-P7, CM.AW-P8, PR.DS-P1, CT.DP-P2, CM.PO-P1 · AI RMF: — · from `SR-GDPR-019`, `SR-GDPR-020`, `SR-GDPR-021` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.1 (`high risk` polysemy — vs Art. 33 `risk` vs Art. 35 `high risk`).
 **Instance 1 — POLY+VAG / S3 / `likely to result in a high risk`**
 Three undefined qualifiers. The cross-clause threshold distinction (`risk` Art. 33 vs `high risk` Arts. 34, 35) is the central notification-litigation question.
@@ -279,6 +291,7 @@ R1 vs R2 yield materially distinct breach-classification systems.
 ---
 ##### Art. 34(3) — Exceptions to data-subject communication
 **Clause: GDPR-CP20** | type: breach communication exception | obligatedParty: CONTROLLER | obligationType: PER-BREACH
+**Control anchors:** CSF: PR.DS-01, PR.IR-03, RS.MI-01, RS.MI-02, RS.CO-03, PR.PS-06 · PF 1.1: PR.DS-P1, CT.DP-P2, PR.PO-P7, CT.DM-P10, CM.AW-P7, CM.PO-P1 · AI RMF: — · from `SR-GDPR-004`, `SR-GDPR-015`, `SR-GDPR-020`, +2 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`appropriate`, `unintelligible`, `disproportionate effort`), §5.4.7 (`OR (a) OR (b) OR (c)`).
 **Instance 1 — VAG / S3 / `render the personal data unintelligible`**
 `Unintelligible` (typically achieved via encryption) inherits the encryption-key-management question. If keys are lost, data is unintelligible in one sense but inaccessible to legitimate users too.
@@ -311,6 +324,7 @@ Same Berry-flagged phrase as Art. 14(5)(b). S3 because the exception triggers in
 #### Clause breakdown
 ##### Art. 35(1) — DPIA trigger
 **Clause: GDPR-CP21** | type: impact assessment | obligatedParty: CONTROLLER | obligationType: PER-PROCESSING (pre-launch)
+**Control anchors:** CSF: GV.OC-03, ID.RA-06, ID.RA-01, ID.RA-05, ID.IM-04 · PF 1.1: ID.RA-P5, GV.PO-P3, ID.RA-P3, ID.RA-P4, GV.MT-P2 · AI RMF: — · from `SR-GDPR-023`, `SR-GDPR-045`, `SR-GDPR-047` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`new technologies`, `likely`, `high risk`), §3.3.1 (`new` polysemy).
 **Instance 1 — POLY+VAG / S3 / `new technologies` + `high risk`**
 `New technologies` is the recurring time-dependent vague phrase (cf. Art. 25 `state of the art`). Was cloud `new` in 2018? Is generative AI `new` in 2026? EDPB Guidelines 4/2019 attempt to fix but `new` is inherently time-relative.
@@ -323,6 +337,7 @@ R1 vs R2 yield materially distinct DPIA-trigger classification.
 ---
 ##### Art. 35(7) — DPIA content
 **Clause: GDPR-CP22** | type: impact assessment content | obligatedParty: CONTROLLER | obligationType: PER-DPIA
+**Control anchors:** CSF: ID.RA-05, ID.IM-02, GV.OC-03, ID.RA-06, ID.RA-01, RS.AN-03, ID.IM-04 · PF 1.1: ID.RA-P3, ID.RA-P5, GV.PO-P3, ID.RA-P4, GV.MT-P2 · AI RMF: — · from `SR-GDPR-008`, `SR-GDPR-023`, `SR-GDPR-045`, +2 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`systematic description`, `necessity and proportionality`).
 **Instance 1 — POLY / S2 / `necessity and proportionality`**
 Three different `necessity` senses across GDPR (5(1)(c) data-minimisation, 6(1)(b) contract, 35(7)(b) DPIA) — same term, different operationalisation. S2 because Art. 35(7)(b) is internally anchored.
@@ -337,6 +352,7 @@ Three different `necessity` senses across GDPR (5(1)(c) data-minimisation, 6(1)(
 #### Clause breakdown
 ##### Art. 36(1) — Prior consultation trigger
 **Clause: GDPR-CP23** | type: supervisory consultation | obligatedParty: CONTROLLER | obligationType: PER-PROCESSING (pre-launch)
+**Control anchors:** CSF: GV.OC-03, ID.RA-06, ID.RA-01, ID.RA-05 · PF 1.1: ID.RA-P5, GV.PO-P3, ID.RA-P3, ID.RA-P4 · AI RMF: — · from `SR-GDPR-023`, `SR-GDPR-045` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.1 (`high risk` — Art. 35 inheritance).
 **Instance 1 — POLY+VAG / S2 / `high risk in the absence of measures`**
 Inherits Art. 35(1) `high risk` threshold. S2 because the trigger is the same DPIA outcome.
@@ -367,3 +383,4 @@ Inherits Art. 35(1) `high risk` threshold. S2 because the trigger is the same DP
 The awareness trigger is polysemous (cf. CRA C25, NIS 2 C25 — same pattern across regulations).
 
 <!-- aegis:purity: own_reg=GDPR; demoted=3; core_cross_mentions=0 -->
+<!-- aegis:control-anchors: generated by scripts/uniformize_control_anchors.py from baseline/MAPPINGS/sr_control_mappings; not part of the verbatim Part 4 body -->

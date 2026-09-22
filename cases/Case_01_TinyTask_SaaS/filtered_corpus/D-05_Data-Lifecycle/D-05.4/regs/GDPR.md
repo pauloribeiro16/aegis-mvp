@@ -31,6 +31,8 @@ phase_1A_role: 1_of_N (sole sub-SO; sub-domain is single-regulator)
 
 **CSF anchors (from `SR-GDPR-032` v0.3 security_rationale):**
 PR.DS-10, ID.AM-08.
+**PF 1.1 anchors (from `SR-GDPR-032` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+CT.DM-P1, CT.DM-P6.
 
 ---
 
@@ -64,6 +66,7 @@ PR.DS-10, ID.AM-08.
   dependencies: []
 
   nist_csf: [PR.DS-10, ID.AM-08]
+  nist_pf: [CT.DM-P1, CT.DM-P6]
 
   applicable_if:
     regs: [GDPR]

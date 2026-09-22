@@ -6,6 +6,7 @@
 ## GDPR
 ##### Art. 9(2)(g) — Substantial public interest
 **Clause: GDPR-CL23** | type: lawfulness base (special category) | obligatedParty: CONTROLLER | obligationType: PER-MEMBER-STATE-LAW
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`substantial public interest`, `proportionate`, `essence of the right to data protection`, `suitable and specific measures`).
 **Instance 1 — VAG / S3 / `substantial public interest`**
 `substantial public interest` inherits the Art. 6(1)(e) `public interest` ambiguity plus the `substantial` qualifier. The clause cross-references Charter Art. 52(1) via `essence of the right`.
@@ -13,6 +14,7 @@ S3 — same family of ambiguity as Art. 6(1)(e), but more severe because `substa
 ---
 ##### Art. 9(2)(j) — Research/statistics/archiving (with Art. 89(1) safeguards)
 **Clause: GDPR-CL24** | type: lawfulness base (special category, research) | obligatedParty: CONTROLLER | obligationType: PER-MEMBER-STATE-LAW
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`archiving purposes in the public interest`, `proportionate`, `essence`).
 The clause cross-references Art. 89(1) for the substantive safeguards (pseudonymisation, no decisions about data subjects, etc.). The Art. 89(1) reference provides partial anchoring but does not define `archiving`.
 ---
@@ -24,6 +26,7 @@ The clause cross-references Art. 89(1) for the substantive safeguards (pseudonym
 #### Clause breakdown
 ##### Art. 13(2)(f) — Automated decision-making information
 **Clause: GDPR-RT06** | type: information duty (ADM-specific) | obligatedParty: CONTROLLER | obligationType: PER-COLLECTION
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`meaningful information`).
 **Instance 1 — VAG / S3 / `meaningful information about the logic involved, as well as the significance and the envisaged consequences`**
 **Variant readings:**
@@ -67,6 +70,7 @@ R1 vs R3 yield materially distinct explainability engineering scope.
 #### Clause breakdown
 ##### Art. 21(1) — Objection grounds and overriding
 **Clause: GDPR-RT16** | type: data subject right (object) | obligatedParty: CONTROLLER | obligationType: PER-OBJECTION
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`compelling legitimate grounds`).
 **Instance 1 — VAG / S3 / `compelling legitimate grounds`**
 `compelling` is stronger than Art. 6(1)(f) `legitimate interests`. The `overriding` test for compelling grounds is undefined.
@@ -79,6 +83,7 @@ R1 vs R2 yield materially distinct balance-tests in objection handling.
 ---
 ##### Art. 21(3) — Absolute bar on direct-marketing after objection
 **Clause: GDPR-RT17** | type: data subject right (absolute) | obligatedParty: CONTROLLER | obligationType: PER-OBJECTION
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** none — Art. 21(3) is a clear absolute obligation.
 **Instance 1 — none** — the clause is unambiguous: once the data subject objects to direct-marketing processing, the processing must cease. No variant readings.
 ---
@@ -97,6 +102,7 @@ R1 vs R2 yield materially distinct balance-tests in objection handling.
 #### Clause breakdown
 ##### Art. 22(1) — General prohibition on solely-automated decisions
 **Clause: GDPR-RT18** | type: data subject right (ADM protection) | obligatedParty: CONTROLLER | obligationType: PER-DECISION
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §3.3.1 (`solely`, `significantly`).
 **Instance 1 — POLY / S3 / `solely`, `similarly significantly affects`**
 `Solely` excludes hybrid decisions (human review with AI recommendation) but the boundary (when does human review break the `solely` qualifier?) is undefined. `Similarly significantly affects` is undefined — what level of significance crosses the threshold?
@@ -116,6 +122,7 @@ R1 vs R2 yield materially distinct decision-classification systems.
 ---
 ##### Art. 26(1) — Joint-controller determination
 **Clause: GDPR-CP04** | type: multi-controller | obligatedParty: CONTROLLER (joint) | obligationType: CONTINUOUS
+**Control anchors:** CSF: GV.RR-02, GV.SC-03, GV.PO-01, GV.OV-03 · PF 1.1: GV.PO-P3, ID.DE-P3, CM.PO-P1, GV.MT-P3 · AI RMF: — · from `SR-GDPR-060`, `SR-GDPR-061` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.1 (`jointly determine` — see Art. 4(7) ambiguity), §5.1 (`transparent`).
 **Instance 1 — POLY / S3 / `jointly determine`**
 Inherits Art. 4(7) `alone or jointly with others` ambiguity. The CJEU IAB Europe case (C-604/22, 2024) held that joint controllership can exist even when one party lacks direct influence on processing purposes — extending the scope of `jointly determine` beyond the original EDPB reading.
@@ -128,6 +135,7 @@ R1 vs R2 yield materially distinct joint-controller assignment.
 ---
 ##### Art. 26(2) — Joint-controller arrangement essentials
 **Clause: GDPR-CP05** | type: multi-controller transparency | obligatedParty: CONTROLLER (joint) | obligationType: CONTINUOUS
+**Control anchors:** CSF: GV.PO-01, GV.OV-03 · PF 1.1: CM.PO-P1, GV.MT-P3 · AI RMF: — · from `SR-GDPR-061` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`duly reflect`, `essence`).
 **Instance 1 — VAG / S2 / `duly reflect`**
 `duly` is the recurring vague adverb. S2 because the substantive obligation (reflect roles in arrangement) is unambiguous.
@@ -144,6 +152,7 @@ R1 vs R2 yield materially distinct joint-controller assignment.
 #### Clause breakdown
 ##### Art. 32(1) — Security measures (open list)
 **Clause: GDPR-CP15** | type: security | obligatedParty: CONTROLLER + PROCESSOR | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.DS-01, PR.DS-10, PR.DS-02, PR.IR-01, PR.IR-03, ID.RA-01, PR.PS-02, ID.RA-05, ID.IM-02, PR.AA-05, PR.AA-06, PR.AT-02, DE.CM-01, DE.CM-09, RS.MA-02, RS.MI-01, RS.MI-02, PR.IR-04, PR.DS-11, RC.RP-04, GV.SC-03, GV.SC-04, DE.CM-06, PR.PS-06, ID.AM-08 · PF 1.1: PR.DS-P1, PR.PO-P3, PR.DS-P2, PR.AC-P5, CT.DP-P2, GV.MT-P3, CT.DM-P10, ID.RA-P3, ID.RA-P5, PR.AC-P1, PR.AC-P2, CT.PO-P1, GV.AT-P2, GV.MT-P5, CM.AW-P7, PR.PO-P7, ID.DE-P5, CT.DM-P9, GV.PO-P2, CT.PO-P4 · AI RMF: — · from `SR-GDPR-001`, `SR-GDPR-002`, `SR-GDPR-003`, +11 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`state of the art`, `appropriate`, `as appropriate`), §5.4.7 (4-element list), §3.3.1 (CIA+R polysemy).
 **Instance 1 — VAG / S3 / `state of the art`**
 Cross-clause propagation — same as Art. 25(1). S3 because security-engineering scope is material to compliance.
@@ -160,6 +169,7 @@ R1 vs R2 yield materially distinct BCP/DRP engineering scope.
 ---
 ##### Art. 35(1) — DPIA trigger
 **Clause: GDPR-CP21** | type: impact assessment | obligatedParty: CONTROLLER | obligationType: PER-PROCESSING (pre-launch)
+**Control anchors:** CSF: GV.OC-03, ID.RA-06, ID.RA-01, ID.RA-05, ID.IM-04 · PF 1.1: ID.RA-P5, GV.PO-P3, ID.RA-P3, ID.RA-P4, GV.MT-P2 · AI RMF: — · from `SR-GDPR-023`, `SR-GDPR-045`, `SR-GDPR-047` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`new technologies`, `likely`, `high risk`), §3.3.1 (`new` polysemy).
 **Instance 1 — POLY+VAG / S3 / `new technologies` + `high risk`**
 `New technologies` is the recurring time-dependent vague phrase (cf. Art. 25 `state of the art`). Was cloud `new` in 2018? Is generative AI `new` in 2026? EDPB Guidelines 4/2019 attempt to fix but `new` is inherently time-relative.
@@ -172,6 +182,7 @@ R1 vs R2 yield materially distinct DPIA-trigger classification.
 ---
 ##### Art. 35(7) — DPIA content
 **Clause: GDPR-CP22** | type: impact assessment content | obligatedParty: CONTROLLER | obligationType: PER-DPIA
+**Control anchors:** CSF: ID.RA-05, ID.IM-02, GV.OC-03, ID.RA-06, ID.RA-01, RS.AN-03, ID.IM-04 · PF 1.1: ID.RA-P3, ID.RA-P5, GV.PO-P3, ID.RA-P4, GV.MT-P2 · AI RMF: — · from `SR-GDPR-008`, `SR-GDPR-023`, `SR-GDPR-045`, +2 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`systematic description`, `necessity and proportionality`).
 **Instance 1 — POLY / S2 / `necessity and proportionality`**
 Three different `necessity` senses across GDPR (5(1)(c) data-minimisation, 6(1)(b) contract, 35(7)(b) DPIA) — same term, different operationalisation. S2 because Art. 35(7)(b) is internally anchored.
@@ -186,12 +197,14 @@ Three different `necessity` senses across GDPR (5(1)(c) data-minimisation, 6(1)(
 #### Clause breakdown
 ##### Art. 36(1) — Prior consultation trigger
 **Clause: GDPR-CP23** | type: supervisory consultation | obligatedParty: CONTROLLER | obligationType: PER-PROCESSING (pre-launch)
+**Control anchors:** CSF: GV.OC-03, ID.RA-06, ID.RA-01, ID.RA-05 · PF 1.1: ID.RA-P5, GV.PO-P3, ID.RA-P3, ID.RA-P4 · AI RMF: — · from `SR-GDPR-023`, `SR-GDPR-045` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.1 (`high risk` — Art. 35 inheritance).
 **Instance 1 — POLY+VAG / S2 / `high risk in the absence of measures`**
 Inherits Art. 35(1) `high risk` threshold. S2 because the trigger is the same DPIA outcome.
 ---
 ##### Art. 37(1)(b) — DPO designation (monitoring threshold)
 **Clause: GDPR-CP25** | type: DPO designation | obligatedParty: CONTROLLER + PROCESSOR | obligationType: CONTINUOUS
+**Control anchors:** CSF: GV.RR-02, GV.SC-02 · PF 1.1: GV.PO-P3 · AI RMF: — · from `SR-GDPR-062` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`core activities`, `regular and systematic`, `large scale`).
 **Instance 1 — VAG / S3 / `core activities`**
 `Core activities` is the Berry-flagged term. EDPB Guidelines 3/2018 attempt to fix as primary business activities (vs ancillary/supporting).
@@ -218,6 +231,7 @@ R1 vs R2 yield materially distinct DPO-designation policies.
 #### Clause breakdown
 ##### Art. 39(1)(b) — DPO monitoring and training
 **Clause: GDPR-CP28** | type: DPO tasks | obligatedParty: DPO | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.AT-01, PR.AT-02, GV.OV-03, ID.IM-02 · PF 1.1: GV.AT-P1, GV.AT-P2, GV.MT-P3, ID.IM-P2 · AI RMF: — · from `SR-GDPR-042`, `SR-GDPR-064` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`awareness-raising`, `training`).
 **Instance 1 — POLY+VAG / S2 / `awareness-raising and training`**
 Inherits the GDPR/T1 `training` polysemy. S2 because the same training-practice applies.
@@ -262,3 +276,4 @@ Inherits the GDPR/T1 `training` polysemy. S2 because the same training-practice 
 `meaningful information` + `the logic involved` are partially self-contradictory: full logic disclosure would expose trade secrets; meaningful-but-not-full disclosure has no threshold. This is the central automated-decision-making transparency question (cf. AI Act Art. 13, Art. 14 cross-over).
 
 <!-- aegis:purity: own_reg=GDPR; demoted=1; core_cross_mentions=0 -->
+<!-- aegis:control-anchors: generated by scripts/uniformize_control_anchors.py from baseline/MAPPINGS/sr_control_mappings; not part of the verbatim Part 4 body -->

@@ -30,7 +30,9 @@ phase_1A_role: 1_of_5
 **Objective.** Prior to processing that is likely to result in a high risk to the rights and freedoms of natural persons, the controller carries out a **data-protection impact assessment** covering the four Art. 35(7) content items and reviewed on change of risk per Art. 35(11) (Art. 35(1) + Art. 35(7) GDPR).
 
 **CSF anchors (from `SR-GDPR-045` + `SR-GDPR-046` + `SR-GDPR-047` v0.3 security_rationale):**
-ID.RA-05 (primary), ID.RA-04.
+ID.RA-01, ID.RA-05 (primary), ID.RA-06, RS.AN-03, ID.IM-04.
+**PF 1.1 anchors (from `SR-GDPR-045`, `SR-GDPR-046`, `SR-GDPR-047` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+ID.RA-P3, ID.RA-P4, ID.RA-P5, GV.MT-P2.
 
 ---
 
@@ -63,7 +65,8 @@ ID.RA-05 (primary), ID.RA-04.
   verification_method: TEST
   dependencies: [9.2.3 (when controller-manufacturer — DPIA on data-subject rights + CRA risk-assessment on product cybersecurity risk; DIFFERENT-PERSPECTIVE, distinct artefacts, no OJ-level consolidation), 9.2.4 (when DORA-controller — DPIA pre-launch + DORA continuous + yearly; DIFFERENT-PERSPECTIVE, distinct artefacts), 9.2.5 (when AI-system processes personal data — DPIA pre-launch + AI Act Art. 9 continuous iterative; DIFFERENT-PERSPECTIVE; AI Act Recital 78 explicit GDPR preservation), 9.2.2 (when controller-NSIE — DPIA pre-launch on-change + NIS 2 continuous operational; DIFFERENT-PERSPECTIVE, conditional-Y scope overlap when DPIA conducted for NSIE's processing)]
 
-  nist_csf: [ID.RA-04, ID.RA-05]
+  nist_csf: [ID.RA-01, ID.RA-05, ID.RA-06]
+  nist_pf: [ID.RA-P3, ID.RA-P4, ID.RA-P5]
 
   applicable_if:
     regs: [GDPR]

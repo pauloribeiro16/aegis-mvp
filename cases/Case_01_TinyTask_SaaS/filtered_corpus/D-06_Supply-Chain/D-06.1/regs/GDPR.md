@@ -32,7 +32,9 @@ phase_1A_role: 1_of_N
 **Considerations.**
 - The EDPB Guidelines 07/2020 4-factor reading (knowledge + reliability of resources + compliance track-record + financial stability) operationalises the `sufficient guarantees` qualitative threshold.
 **CSF anchors (from `SR-GDPR-033` v0.3 security_rationale):**
-GV.SC-02, GV.SC-04, ID.AM-04.
+GV.SC-02, GV.SC-03.
+**PF 1.1 anchors (from `SR-GDPR-033` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+ID.DE-P5, ID.IM-P2.
 *(GV.SC-02 anchors the supplier-prioritisation dimension — suppliers
 (here: processors) are prioritised by criticality, with the
 criticality anchored on the processor's data-class and volume
@@ -85,7 +87,8 @@ documented and attested to by the processor.)*
   verification_method: TEST
   dependencies: [6.1.2 (when controller is also essential/important entity — processor-tier assessment feeds supplier-tier assessment), 6.1.3 (when controller deploys/manufactures CRA product — component-tier feeds processor-tier for personal-data subset), 6.1.4 (when controller is also financial entity — DORA four-factor satisfies GDPR `sufficient guarantees` with GDPR-specific Art. 28(3) clauses appended on controller side)]
 
-  nist_csf: [GV.SC-02, GV.SC-03, ID.AM-04]
+  nist_csf: [GV.SC-02, GV.SC-03]
+  nist_pf: [ID.DE-P5, ID.IM-P2]
 
   applicable_if:
     regs: [GDPR]

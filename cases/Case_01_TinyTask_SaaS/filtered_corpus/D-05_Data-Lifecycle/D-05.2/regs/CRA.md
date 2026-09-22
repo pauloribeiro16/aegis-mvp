@@ -93,7 +93,7 @@ least 10 years from placing on market.)*
   verification_method: INSPECT
   dependencies: [5.2.1 (when CRA update-distribution log contains personal data — separation-architecture layering rule applies; CRA tail applies to artefact portion; GDPR Art. 5(1)(e) `necessary` boundary applies to personal-data subset independently)]
 
-  nist_csf: [PR.PS-02, GV.OV-02, GV.OC-04]
+  nist_csf: [PR.PS-02, GV.OV-02]
 
   applicable_if:
     regs: [CRA]

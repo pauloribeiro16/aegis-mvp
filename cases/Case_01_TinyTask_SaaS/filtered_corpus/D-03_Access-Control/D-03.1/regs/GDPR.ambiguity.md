@@ -6,6 +6,7 @@
 ## GDPR
 ##### Art. 5(1)(c) — Data minimisation
 **Clause: GDPR-CL03** | type: principle | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.DS-10, ID.AM-08, PR.AA-02, PR.PS-01, ID.AM-03, GV.SC-04 · PF 1.1: CT.DM-P3, CM.AW-P5, PR.AC-P6, CT.DP-P4, CT.PO-P4, ID.RA-P3, CT.DM-P5, CT.DM-P4, ID.DE-P3 · AI RMF: — · from `SR-GDPR-006`, `SR-GDPR-010`, `SR-GDPR-013`, +4 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.5 (vagueness), §5.1 (`adequate`, `relevant`, `necessary`).
 **Instance 1 — VAG / S3 / `adequate`, `relevant`, `necessary`**
 Three inquiry-resistant adjectives; no measurement criterion. Art. 5(2) accountability shifts burden of demonstration to controller; Art. 35(7)(b) DPIA requires necessity assessment.
@@ -21,6 +22,7 @@ R1 vs R3 yield materially distinct compliance obligations (R1 permits default co
 ---
 ##### Art. 6(1)(a) — Consent
 **Clause: GDPR-CL08** | type: lawfulness base | obligatedParty: CONTROLLER | obligationType: PER-PURPOSE (continuous)
+**Control anchors:** CSF: GV.OC-03, GV.PO-01, PR.AA-02 · PF 1.1: GV.PO-P5, CM.PO-P1, GV.PO-P1, CT.PO-P3, CM.AW-P2 · AI RMF: — · from `SR-GDPR-026`, `SR-GDPR-051` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.1 (polysemy of `consent` — see Art. 4(11) reference); §5.4.7 (coordination `for one or more specific purposes`).
 **Instance 1 — POLY / S3 / `consent`**
 `consent` inherits all Art. 4(11) ambiguities (freely given + specific + informed + unambiguous). Additionally, `consent to the processing of his or her personal data for one or more specific purposes` couples consent with purpose-binding — the `one or more specific purposes` wording has the Berry §5.4.7 menu-card ambiguity (does a single-purpose consent bind the controller? does a multi-purpose consent require fresh consent for any new purpose?).
@@ -34,12 +36,14 @@ R1 vs R3 yield materially distinct consent-collection UI requirements.
 ---
 ##### Art. 7(1) — Demonstrability of consent
 **Clause: GDPR-CL15** | type: consent-specific | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.AA-02, GV.OC-03 · PF 1.1: CT.PO-P3, CM.AW-P2 · AI RMF: — · from `SR-GDPR-051` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`able to demonstrate`).
 **Instance 1 — VAG / S2 / `able to demonstrate`**
 The standard for `demonstrating` is undefined; Art. 5(2) accountability and Art. 30 records-of-processing provide partial anchors. S2 because both reading converge on record-keeping.
 ---
 ##### Art. 7(2) — Bundled consent
 **Clause: GDPR-CL16** | type: consent-specific | obligatedParty: CONTROLLER | obligationType: PER-CONSENT-COLLECTION
+**Control anchors:** CSF: GV.PO-02, PR.AA-02 · PF 1.1: CT.PO-P3, GV.PO-P1 · AI RMF: — · from `SR-GDPR-052` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`clearly`, `intelligible`, `easily accessible`, `clear and plain`).
 **Instance 1 — VAG / S3 / `clearly distinguishable`, `intelligible and easily accessible form`, `clear and plain language`**
 Four conjunctive vague modifiers on consent-presentation form. EDPB Guidelines 05/2020 §3.6 fix `clearly distinguishable` as requiring separate tick-boxes for separate purposes, but `intelligible and easily accessible form` and `clear and plain language` remain inquiry-resistant.
@@ -55,12 +59,14 @@ The cascading-invalidation rule: if part of the declaration infringes GDPR, only
 ---
 ##### Art. 7(3) — Withdrawal of consent
 **Clause: GDPR-CL17** | type: consent-specific (data-subject right) | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.AA-02, GV.OC-03 · PF 1.1: CT.PO-P3, CM.AW-P2 · AI RMF: — · from `SR-GDPR-051` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`at any time`, `as easy to withdraw as to give`).
 **Instance 1 — VAG / S2 / `as easy to withdraw as to give`**
 The standard `as easy` is undefined. EDPB Guidelines 05/2020 §3.7 fix it as: at most 2-3 clicks to reach withdrawal UI. S2 because the EDPB guideline is de facto binding on supervisory authorities.
 ---
 ##### Art. 7(4) — Conditional consent and contract
 **Clause: GDPR-CL18** | type: consent-specific (anti-coupling) | obligatedParty: CONTROLLER | obligationType: PER-CONSENT-COLLECTION
+**Control anchors:** CSF: GV.PO-02, PR.AA-02 · PF 1.1: CT.PO-P3, GV.PO-P1 · AI RMF: — · from `SR-GDPR-052` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`utmost account`, `not necessary`).
 **Instance 1 — VAG / S3 / `utmost account`, `not necessary for the performance of that contract`**
 `utmost account` is the standard (Berry §5.1: `utmost` appears in similar formulations). `not necessary for the performance of that contract` couples with Art. 6(1)(b) — but the boundary of `necessary for contract performance` was already ambiguous (Clause-CL09). The two clauses together create a recursive ambiguity.
@@ -85,6 +91,7 @@ R1 vs R2 yield materially distinct consent-collection UI requirements.
 #### Clause breakdown
 ##### Art. 8(1) — Age threshold for consent
 **Clause: GDPR-CL19** | type: consent-specific (children) | obligatedParty: CONTROLLER (information-society services to children) | obligationType: PER-OFFERING
+**Control anchors:** CSF: PR.AA-02, GV.OC-03 · PF 1.1: CT.PO-P3, GV.PO-P5 · AI RMF: — · from `SR-GDPR-054` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.1 (`parental responsibility` polysemy), §5.2.1 (Member State age override).
 **Instance 1 — POLY / S3 / `parental responsibility`**
 `parental responsibility` is a legal term of art imported from family law; the GDPR does not define it. Recital 38 hints at it. Different Member State legal systems define it differently (sole vs joint custody; unmarried parents; same-sex parents; surrogacy). The data controller must determine responsibility for each user but has no general-purpose source of truth.
@@ -100,6 +107,7 @@ Member States may lower the age threshold to no less than 13 — multi-jurisdict
 ---
 ##### Art. 8(2) — Reasonable verification efforts
 **Clause: GDPR-CL20** | type: consent-specific (children) | obligatedParty: CONTROLLER | obligationType: PER-CHILD-ACCESS
+**Control anchors:** CSF: PR.AA-02, GV.OC-03 · PF 1.1: CT.PO-P3, GV.PO-P5 · AI RMF: — · from `SR-GDPR-054` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`reasonable efforts`).
 **Instance 1 — VAG / S3 / `reasonable efforts ... taking into consideration available technology`**
 `reasonable efforts` is the recurring vague phrase. The `available technology` qualifier shifts the standard over time (2024 technology vs 2026 vs 2028). EDPB Guidelines on children's consent provide factors but not a closed list.
@@ -133,6 +141,7 @@ R1 vs R3 yield materially distinct age-verification infrastructure requirements.
 #### Clause breakdown
 ##### Art. 11(1) — No identification obligation
 **Clause: GDPR-CL26** | type: principle (identification exemption) | obligatedParty: CONTROLLER | obligationType: PER-REQUEST
+**Control anchors:** CSF: PR.AA-03, PR.AA-02, RS.CO-02, ID.AM-08 · PF 1.1: PR.AC-P6, PR.AC-P3, CM.AW-P5, CT.DM-P3 · AI RMF: — · from `SR-GDPR-009`, `SR-GDPR-022` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.1 (`additional information` polysemy), §5.1.
 **Instance 1 — POLY / S2 / `additional information`**
 `additional information` is used in two senses within the same article: (i) information the controller would need to *maintain or acquire* for identification; (ii) information the data subject would need to *provide* for exercising rights. The two senses overlap but are not identical. S2 because both readings converge on the controller's identification-exemption decision.
@@ -168,6 +177,7 @@ R1 vs R3 yield materially distinct age-verification infrastructure requirements.
 - Chapter V (Transfers, Art. 44–49) inherits Art. 4(1) `identifiable`, Art. 5(1)(f) `appropriate security`, Art. 9 special categories. Transfer mechanisms reference Art. 6 lawfulness bases.
 ##### Art. 12(6) — Identity verification for requests
 **Clause: GDPR-RT04** | type: data-subject-facing | obligatedParty: CONTROLLER | obligationType: PER-REQUEST
+**Control anchors:** CSF: PR.AA-03, PR.AA-02, ID.AM-08, GV.PO-02 · PF 1.1: PR.AC-P6, PR.AC-P3, CT.DP-P4, GV.PO-P1, CM.PO-P1 · AI RMF: — · from `SR-GDPR-009`, `SR-GDPR-010`, `SR-GDPR-067` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`reasonable doubts`, `additional information`).
 **Instance 1 — VAG / S3 / `reasonable doubts`, `additional information`**
 `reasonable doubts` is the recurring vague phrase; `additional information` is undefined. Art. 12(6) permits asking for more info but does not bound the scope. Combined with the controller's data-minimisation duty (Art. 5(1)(c)), the controller should ask minimally.
@@ -203,6 +213,7 @@ R1 vs R3 yield materially distinct identity-verification systems.
 #### Clause breakdown
 ##### Art. 21(1) — Objection grounds and overriding
 **Clause: GDPR-RT16** | type: data subject right (object) | obligatedParty: CONTROLLER | obligationType: PER-OBJECTION
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`compelling legitimate grounds`).
 **Instance 1 — VAG / S3 / `compelling legitimate grounds`**
 `compelling` is stronger than Art. 6(1)(f) `legitimate interests`. The `overriding` test for compelling grounds is undefined.
@@ -215,6 +226,7 @@ R1 vs R2 yield materially distinct balance-tests in objection handling.
 ---
 ##### Art. 49(1)(a) — Explicit consent for transfer
 **Clause: GDPR-TR08** | type: derogation (consent) | obligatedParty: CONTROLLER + PROCESSOR | obligationType: PER-TRANSFER (no adequacy + no safeguards)
+**Control anchors:** CSF: PR.AA-02, GV.OC-03 · PF 1.1: CT.PO-P3, GV.PO-P5, ID.DE-P3 · AI RMF: — · from `SR-GDPR-054`, `SR-GDPR-057` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.1 (`explicitly consented` polysemy — vs Art. 4(11) `specific` and Art. 9(2)(a) `explicit`).
 **Instance 1 — POLY / S3 / `explicitly consented ... after having been informed of the possible risks`**
 The clause requires explicit consent AND informed-of-risks. The `explicitly` qualifier's relationship to Art. 4(11) `unambiguous` and Art. 9(2)(a) `explicit` is unclear — three different qualifiers across three articles for transfer consent.
@@ -227,3 +239,4 @@ R1 vs R2 yield materially distinct consent-collection UI for transfers.
 ---
 
 <!-- aegis:purity: own_reg=GDPR; demoted=0; core_cross_mentions=0 -->
+<!-- aegis:control-anchors: generated by scripts/uniformize_control_anchors.py from baseline/MAPPINGS/sr_control_mappings; not part of the verbatim Part 4 body -->

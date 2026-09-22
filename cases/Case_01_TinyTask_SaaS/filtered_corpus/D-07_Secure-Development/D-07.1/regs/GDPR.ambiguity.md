@@ -6,6 +6,7 @@
 ## GDPR
 ##### Art. 5(1)(f) — Integrity and confidentiality
 **Clause: GDPR-CL06** | type: principle | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.DS-01, PR.DS-10, ID.AM-08, ID.RA-01, PR.PS-02, PR.IR-04, PR.DS-11, RC.RP-04, PR.PS-06 · PF 1.1: PR.DS-P1, PR.PO-P3, CT.DM-P1, CT.DM-P3, GV.MT-P3, CT.DM-P10, GV.PO-P2, CT.PO-P4 · AI RMF: — · from `SR-GDPR-001`, `SR-GDPR-005`, `SR-GDPR-007`, +2 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`appropriate`), §5.4.7 (`or` coordination).
 **Instance 1 — VAG / S3 / `appropriate security`, `appropriate technical or organisational measures`**
 `appropriate` is the recurring Berry-flagged term. `appropriate technical or organisational measures` uses OR whose inclusivity is unspecified. Art. 32 (security of processing) anchors `appropriate` to a risk-based test but does not resolve the OR.
@@ -27,6 +28,7 @@ R1 vs R2 yield materially distinct compliance obligations on breach response.
 ---
 ##### Art. 13(2)(f) — Automated decision-making information
 **Clause: GDPR-RT06** | type: information duty (ADM-specific) | obligatedParty: CONTROLLER | obligationType: PER-COLLECTION
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`meaningful information`).
 **Instance 1 — VAG / S3 / `meaningful information about the logic involved, as well as the significance and the envisaged consequences`**
 **Variant readings:**
@@ -70,6 +72,7 @@ R1 vs R3 yield materially distinct explainability engineering scope.
 #### Clause breakdown
 ##### Art. 21(1) — Objection grounds and overriding
 **Clause: GDPR-RT16** | type: data subject right (object) | obligatedParty: CONTROLLER | obligationType: PER-OBJECTION
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`compelling legitimate grounds`).
 **Instance 1 — VAG / S3 / `compelling legitimate grounds`**
 `compelling` is stronger than Art. 6(1)(f) `legitimate interests`. The `overriding` test for compelling grounds is undefined.
@@ -82,6 +85,7 @@ R1 vs R2 yield materially distinct balance-tests in objection handling.
 ---
 ##### Art. 21(3) — Absolute bar on direct-marketing after objection
 **Clause: GDPR-RT17** | type: data subject right (absolute) | obligatedParty: CONTROLLER | obligationType: PER-OBJECTION
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** none — Art. 21(3) is a clear absolute obligation.
 **Instance 1 — none** — the clause is unambiguous: once the data subject objects to direct-marketing processing, the processing must cease. No variant readings.
 ---
@@ -100,6 +104,7 @@ R1 vs R2 yield materially distinct balance-tests in objection handling.
 #### Clause breakdown
 ##### Art. 25(1) — Privacy by design
 **Clause: GDPR-CP02** | type: design obligation | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.PS-01, ID.AM-08, PR.PS-06, PR.DS-01 · PF 1.1: CT.DP-P4, CT.PO-P4, GV.PO-P2, CT.DP-P2 · AI RMF: — · from `SR-GDPR-013`, `SR-GDPR-039`, `SR-GDPR-040`, +1 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`state of the art`, `appropriate`, `effective`, `necessary`).
 **Instance 1 — VAG / S3 / `state of the art`**
 `state of the art` is the canonical Berry-flagged vague term (Berry §5.1). Time-dependent (2024 vs 2026 vs 2028), jurisdiction-dependent, sector-dependent. No objective anchor in the OJ text.
@@ -115,6 +120,7 @@ R1 vs R3 yield materially distinct by-design engineering scope.
 ---
 ##### Art. 25(2) — Privacy by default
 **Clause: GDPR-CP03** | type: default-setting obligation | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.PS-01, ID.AM-08, PR.PS-06 · PF 1.1: CT.DP-P4, CT.PO-P4, GV.PO-P2 · AI RMF: — · from `SR-GDPR-013`, `SR-GDPR-039`, `SR-GDPR-041` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`appropriate`, `necessary`), §5.4.7 (`amount AND extent AND period AND accessibility`).
 **Instance 1 — VAG+COORD / S3 / `necessary for each specific purpose` + 4 coordinated dimensions**
 `Necessary` propagates; `each specific purpose` requires per-purpose default-setting; the 4 dimensions (amount/extent/period/accessibility) are AND-coordinated.
@@ -136,6 +142,7 @@ R1 vs R2 yield materially distinct default-setting engineering.
 #### Clause breakdown
 ##### Art. 32(1) — Security measures (open list)
 **Clause: GDPR-CP15** | type: security | obligatedParty: CONTROLLER + PROCESSOR | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.DS-01, PR.DS-10, PR.DS-02, PR.IR-01, PR.IR-03, ID.RA-01, PR.PS-02, ID.RA-05, ID.IM-02, PR.AA-05, PR.AA-06, PR.AT-02, DE.CM-01, DE.CM-09, RS.MA-02, RS.MI-01, RS.MI-02, PR.IR-04, PR.DS-11, RC.RP-04, GV.SC-03, GV.SC-04, DE.CM-06, PR.PS-06, ID.AM-08 · PF 1.1: PR.DS-P1, PR.PO-P3, PR.DS-P2, PR.AC-P5, CT.DP-P2, GV.MT-P3, CT.DM-P10, ID.RA-P3, ID.RA-P5, PR.AC-P1, PR.AC-P2, CT.PO-P1, GV.AT-P2, GV.MT-P5, CM.AW-P7, PR.PO-P7, ID.DE-P5, CT.DM-P9, GV.PO-P2, CT.PO-P4 · AI RMF: — · from `SR-GDPR-001`, `SR-GDPR-002`, `SR-GDPR-003`, +11 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`state of the art`, `appropriate`, `as appropriate`), §5.4.7 (4-element list), §3.3.1 (CIA+R polysemy).
 **Instance 1 — VAG / S3 / `state of the art`**
 Cross-clause propagation — same as Art. 25(1). S3 because security-engineering scope is material to compliance.
@@ -152,6 +159,7 @@ R1 vs R2 yield materially distinct BCP/DRP engineering scope.
 ---
 ##### Art. 34(3) — Exceptions to data-subject communication
 **Clause: GDPR-CP20** | type: breach communication exception | obligatedParty: CONTROLLER | obligationType: PER-BREACH
+**Control anchors:** CSF: PR.DS-01, PR.IR-03, RS.MI-01, RS.MI-02, RS.CO-03, PR.PS-06 · PF 1.1: PR.DS-P1, CT.DP-P2, PR.PO-P7, CT.DM-P10, CM.AW-P7, CM.PO-P1 · AI RMF: — · from `SR-GDPR-004`, `SR-GDPR-015`, `SR-GDPR-020`, +2 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`appropriate`, `unintelligible`, `disproportionate effort`), §5.4.7 (`OR (a) OR (b) OR (c)`).
 **Instance 1 — VAG / S3 / `render the personal data unintelligible`**
 `Unintelligible` (typically achieved via encryption) inherits the encryption-key-management question. If keys are lost, data is unintelligible in one sense but inaccessible to legitimate users too.
@@ -195,3 +203,4 @@ Same Berry-flagged phrase as Art. 14(5)(b). S3 because the exception triggers in
 `meaningful information` + `the logic involved` are partially self-contradictory: full logic disclosure would expose trade secrets; meaningful-but-not-full disclosure has no threshold. This is the central automated-decision-making transparency question (cf. AI Act Art. 13, Art. 14 cross-over).
 
 <!-- aegis:purity: own_reg=GDPR; demoted=1; core_cross_mentions=0 -->
+<!-- aegis:control-anchors: generated by scripts/uniformize_control_anchors.py from baseline/MAPPINGS/sr_control_mappings; not part of the verbatim Part 4 body -->

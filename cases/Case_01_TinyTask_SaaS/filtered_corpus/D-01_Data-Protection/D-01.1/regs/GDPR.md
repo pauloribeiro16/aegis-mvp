@@ -39,6 +39,8 @@ scope, context, purposes, risks).
 
 **CSF anchors (from `SR-GDPR-001` v0.3 security_rationale):**
 PR.DS-01, PR.DS-10.
+**PF 1.1 anchors (from `SR-GDPR-001` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+PR.DS-P1, PR.PO-P3.
 
 ---
 
@@ -72,6 +74,7 @@ PR.DS-01, PR.DS-10.
   dependencies: ["1.3 (Key Management — pending generation)"]
 
   nist_csf: [PR.DS-01, PR.DS-10]
+  nist_pf: [PR.DS-P1, PR.PO-P3]
 
   applicable_if:
     regs: [GDPR]

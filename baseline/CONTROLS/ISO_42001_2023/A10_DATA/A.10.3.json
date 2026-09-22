@@ -1,0 +1,27 @@
+{
+  "control_id": "A.10.3",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A10",
+  "category": "Data for AI (A)",
+  "subcategory_id": "A.10.3",
+  "subcategory_text": "Apply data privacy and protection controls (consent, lawful basis, minimisation) to AI datasets.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.10.3",
+    "GDPR Art. 6, 9",
+    "ISO/IEC 27701:2019"
+  ],
+  "implementation_examples": [
+    "Consent capture",
+    "Minimisation"
+  ],
+  "assessment_objectives": [
+    "Determine whether privacy is applied to AI data."
+  ],
+  "related_controls": [
+    "A.10.1 (ISO/IEC 42001:2023 — same family)",
+    "A.10.2 (ISO/IEC 42001:2023 — same family)",
+    "A.10.4 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

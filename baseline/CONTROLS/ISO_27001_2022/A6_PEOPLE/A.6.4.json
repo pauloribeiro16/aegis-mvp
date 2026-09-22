@@ -1,0 +1,29 @@
+{
+  "control_id": "A.6.4",
+  "framework": "ISO/IEC 27001:2022",
+  "function": "A6",
+  "category": "People Controls (A)",
+  "subcategory_id": "A.6.4",
+  "subcategory_text": "Establish and enforce a disciplinary process for information security violations.",
+  "informative_references": [
+    "ISO/IEC 27001:2022 Annex A.6.4",
+    "NIST SP 800-53 Rev 5: PS-08"
+  ],
+  "implementation_examples": [
+    "Disciplinary procedure"
+  ],
+  "assessment_objectives": [
+    "Determine whether a disciplinary process exists."
+  ],
+  "related_controls": [
+    "A.6.1 (ISO/IEC 27001:2022 — same family)",
+    "A.6.2 (ISO/IEC 27001:2022 — same family)",
+    "A.6.3 (ISO/IEC 27001:2022 — same family)",
+    "A.6.5 (ISO/IEC 27001:2022 — same family)",
+    "A.6.6 (ISO/IEC 27001:2022 — same family)",
+    "A.6.7 (ISO/IEC 27001:2022 — same family)",
+    "A.6.8 (ISO/IEC 27001:2022 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/27001",
+  "source_version": "2022 (Annex A)"
+}

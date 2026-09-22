@@ -1,0 +1,25 @@
+{
+  "control_id": "A.10.1",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A10",
+  "category": "Data for AI (A)",
+  "subcategory_id": "A.10.1",
+  "subcategory_text": "Define and enforce data quality requirements appropriate to the AI use case (accuracy, completeness, timeliness).",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.10.1",
+    "NIST AI RMF 1.0: MAP-2.1"
+  ],
+  "implementation_examples": [
+    "Data quality SLAs"
+  ],
+  "assessment_objectives": [
+    "Determine whether data quality requirements exist."
+  ],
+  "related_controls": [
+    "A.10.2 (ISO/IEC 42001:2023 — same family)",
+    "A.10.3 (ISO/IEC 42001:2023 — same family)",
+    "A.10.4 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

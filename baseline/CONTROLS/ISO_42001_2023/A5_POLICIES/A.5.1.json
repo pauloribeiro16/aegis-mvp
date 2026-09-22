@@ -1,0 +1,26 @@
+{
+  "control_id": "A.5.1",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A5",
+  "category": "Policies for AI (A)",
+  "subcategory_id": "A.5.1",
+  "subcategory_text": "Define an AI policy aligned with the organisation's purpose and applicable laws, and approve at the appropriate level.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.5.1",
+    "NIST AI RMF 1.0: GOVERN-1.1"
+  ],
+  "implementation_examples": [
+    "Documented AI policy"
+  ],
+  "assessment_objectives": [
+    "Determine whether an AI policy exists."
+  ],
+  "related_controls": [
+    "A.5.2 (ISO/IEC 42001:2023 — same family)",
+    "A.5.3 (ISO/IEC 42001:2023 — same family)",
+    "A.5.4 (ISO/IEC 42001:2023 — same family)",
+    "A.5.5 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

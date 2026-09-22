@@ -1,0 +1,26 @@
+{
+  "control_id": "A.8.2",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A8",
+  "category": "Impact Assessment (A)",
+  "subcategory_id": "A.8.2",
+  "subcategory_text": "Assess AI impacts on data subjects' rights and freedoms, including privacy and non-discrimination.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.8.2",
+    "GDPR Art. 35"
+  ],
+  "implementation_examples": [
+    "Fundamental rights impact assessment"
+  ],
+  "assessment_objectives": [
+    "Determine whether data-subject impact is assessed."
+  ],
+  "related_controls": [
+    "A.8.1 (ISO/IEC 42001:2023 — same family)",
+    "A.8.3 (ISO/IEC 42001:2023 — same family)",
+    "A.8.4 (ISO/IEC 42001:2023 — same family)",
+    "A.8.5 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

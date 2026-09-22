@@ -1,0 +1,35 @@
+{
+  "control_id": "A.7.10",
+  "framework": "ISO/IEC 27001:2022",
+  "function": "A7",
+  "category": "Physical Controls (A)",
+  "subcategory_id": "A.7.10",
+  "subcategory_text": "Apply storage media handling, usage, and disposal controls.",
+  "informative_references": [
+    "ISO/IEC 27001:2022 Annex A.7.10",
+    "NIST SP 800-53 Rev 5: MP-04"
+  ],
+  "implementation_examples": [
+    "Media handling rules"
+  ],
+  "assessment_objectives": [
+    "Determine whether media is handled securely."
+  ],
+  "related_controls": [
+    "A.7.1 (ISO/IEC 27001:2022 — same family)",
+    "A.7.2 (ISO/IEC 27001:2022 — same family)",
+    "A.7.3 (ISO/IEC 27001:2022 — same family)",
+    "A.7.4 (ISO/IEC 27001:2022 — same family)",
+    "A.7.5 (ISO/IEC 27001:2022 — same family)",
+    "A.7.6 (ISO/IEC 27001:2022 — same family)",
+    "A.7.7 (ISO/IEC 27001:2022 — same family)",
+    "A.7.8 (ISO/IEC 27001:2022 — same family)",
+    "A.7.9 (ISO/IEC 27001:2022 — same family)",
+    "A.7.11 (ISO/IEC 27001:2022 — same family)",
+    "A.7.12 (ISO/IEC 27001:2022 — same family)",
+    "A.7.13 (ISO/IEC 27001:2022 — same family)",
+    "A.7.14 (ISO/IEC 27001:2022 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/27001",
+  "source_version": "2022 (Annex A)"
+}

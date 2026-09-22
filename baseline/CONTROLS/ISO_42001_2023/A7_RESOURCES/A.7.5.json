@@ -1,0 +1,26 @@
+{
+  "control_id": "A.7.5",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A7",
+  "category": "Resources for AI (A)",
+  "subcategory_id": "A.7.5",
+  "subcategory_text": "Apply AI-specific configuration management to model artefacts and pipelines.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.7.5",
+    "NIST AI SSDF: PW.AI.5"
+  ],
+  "implementation_examples": [
+    "Model registry"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI configurations are managed."
+  ],
+  "related_controls": [
+    "A.7.1 (ISO/IEC 42001:2023 — same family)",
+    "A.7.2 (ISO/IEC 42001:2023 — same family)",
+    "A.7.3 (ISO/IEC 42001:2023 — same family)",
+    "A.7.4 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

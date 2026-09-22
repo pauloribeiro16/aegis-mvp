@@ -1,0 +1,26 @@
+{
+  "control_id": "A.5.3",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A5",
+  "category": "Policies for AI (A)",
+  "subcategory_id": "A.5.3",
+  "subcategory_text": "Define AI-specific roles, responsibilities, and authorities (incl. AI ethics committee).",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.5.3",
+    "NIST AI RMF 1.0: GOVERN-2.1"
+  ],
+  "implementation_examples": [
+    "Roles per AI system"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI-specific roles exist."
+  ],
+  "related_controls": [
+    "A.5.1 (ISO/IEC 42001:2023 — same family)",
+    "A.5.2 (ISO/IEC 42001:2023 — same family)",
+    "A.5.4 (ISO/IEC 42001:2023 — same family)",
+    "A.5.5 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

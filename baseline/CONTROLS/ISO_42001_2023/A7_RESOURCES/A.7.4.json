@@ -1,0 +1,27 @@
+{
+  "control_id": "A.7.4",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A7",
+  "category": "Resources for AI (A)",
+  "subcategory_id": "A.7.4",
+  "subcategory_text": "Maintain documentation for AI models including architecture, lineage, and dependencies.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.7.4",
+    "NIST AI RMF 1.0: MAP-4.1"
+  ],
+  "implementation_examples": [
+    "Model card",
+    "Lineage tracking"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI model documentation is maintained."
+  ],
+  "related_controls": [
+    "A.7.1 (ISO/IEC 42001:2023 — same family)",
+    "A.7.2 (ISO/IEC 42001:2023 — same family)",
+    "A.7.3 (ISO/IEC 42001:2023 — same family)",
+    "A.7.5 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

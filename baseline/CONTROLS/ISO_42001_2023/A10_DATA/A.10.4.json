@@ -1,0 +1,25 @@
+{
+  "control_id": "A.10.4",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A10",
+  "category": "Data for AI (A)",
+  "subcategory_id": "A.10.4",
+  "subcategory_text": "Apply data security controls (encryption, access controls, integrity) to AI datasets and artefacts.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.10.4",
+    "NIST SP 800-53 Rev 5: SC-28"
+  ],
+  "implementation_examples": [
+    "Dataset encryption"
+  ],
+  "assessment_objectives": [
+    "Determine whether data security is applied to AI data."
+  ],
+  "related_controls": [
+    "A.10.1 (ISO/IEC 42001:2023 — same family)",
+    "A.10.2 (ISO/IEC 42001:2023 — same family)",
+    "A.10.3 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

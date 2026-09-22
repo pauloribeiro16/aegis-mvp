@@ -1,0 +1,25 @@
+{
+  "control_id": "A.10.2",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A10",
+  "category": "Data for AI (A)",
+  "subcategory_id": "A.10.2",
+  "subcategory_text": "Document data origin, provenance, and lineage for training, validation, and inference datasets.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.10.2",
+    "NIST AI SSDF: PS.AI.2"
+  ],
+  "implementation_examples": [
+    "Data lineage graph"
+  ],
+  "assessment_objectives": [
+    "Determine whether data lineage is documented."
+  ],
+  "related_controls": [
+    "A.10.1 (ISO/IEC 42001:2023 — same family)",
+    "A.10.3 (ISO/IEC 42001:2023 — same family)",
+    "A.10.4 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

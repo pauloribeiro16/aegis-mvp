@@ -1,0 +1,27 @@
+{
+  "control_id": "A.6.3",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A6",
+  "category": "Internal Organization for AI (A)",
+  "subcategory_id": "A.6.3",
+  "subcategory_text": "Establish an AI risk-management process including identification, assessment, treatment, and monitoring.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.6.3",
+    "NIST AI RMF 1.0: GOVERN-4.1"
+  ],
+  "implementation_examples": [
+    "AI risk register"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI risks are managed."
+  ],
+  "related_controls": [
+    "A.6.1 (ISO/IEC 42001:2023 — same family)",
+    "A.6.2 (ISO/IEC 42001:2023 — same family)",
+    "A.6.4 (ISO/IEC 42001:2023 — same family)",
+    "A.6.5 (ISO/IEC 42001:2023 — same family)",
+    "A.6.6 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

@@ -1,0 +1,26 @@
+{
+  "control_id": "A.8.1",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A8",
+  "category": "Impact Assessment (A)",
+  "subcategory_id": "A.8.1",
+  "subcategory_text": "Conduct AI impact assessments before deployment, including individual, societal, and environmental impacts.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.8.1",
+    "NIST AI RMF 1.0: MAP-5.1"
+  ],
+  "implementation_examples": [
+    "AIA reports"
+  ],
+  "assessment_objectives": [
+    "Determine whether impact assessments are performed."
+  ],
+  "related_controls": [
+    "A.8.2 (ISO/IEC 42001:2023 — same family)",
+    "A.8.3 (ISO/IEC 42001:2023 — same family)",
+    "A.8.4 (ISO/IEC 42001:2023 — same family)",
+    "A.8.5 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

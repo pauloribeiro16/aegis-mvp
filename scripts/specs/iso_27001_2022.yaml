@@ -1,0 +1,501 @@
+# ISO/IEC 27001:2022 Annex A — advisory referential spec
+# Source: ISO/IEC 27001:2022 Annex A controls (4 themes, 93 controls).
+# https://www.iso.org/standard/27001
+# Each control is given a concise statement + crosswalk to NIST CSF 2.0 and SP 800-53 Rev 5.
+
+framework: "ISO/IEC 27001:2022"
+framework_short: "ISO_27001_2022"
+directory: "ISO_27001_2022"
+version: "2022 (Annex A)"
+source_url: "https://www.iso.org/standard/27001"
+fetched_date: "2026-09-22"
+
+families:
+  # ---- A.5 Organizational (37 controls) ----
+  - function: "A5"
+    function_dir: "A5_ORGANIZATIONAL"
+    category_name: "Organizational Controls"
+    practices:
+      - id: "A.5.1"
+        text: "Define and apply rules for information security policies, including purpose, scope, responsibilities, and review."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.1", "NIST SP 800-53 Rev 5: PM-01"]
+        examples: ["Document ISMS policies", "Annual review"]
+        objectives: ["Determine whether IS policies are defined.", "Determine whether policies are reviewed."]
+      - id: "A.5.2"
+        text: "Assign and acknowledge information security roles and responsibilities."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.2", "NIST SP 800-53 Rev 5: PM-02"]
+        examples: ["Role definitions", "Acknowledgement"]
+        objectives: ["Determine whether roles are assigned."]
+      - id: "A.5.3"
+        text: "Enforce separation of duties where required to prevent fraud, error, and conflict of interest."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.3", "NIST SP 800-53 Rev 5: AC-05"]
+        examples: ["SoD matrix"]
+        objectives: ["Determine whether SoD is enforced."]
+      - id: "A.5.4"
+        text: "Plan and document information security objectives across the organisation."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.4", "NIST CSF 2.0: GV.PO-01"]
+        examples: ["Documented security objectives"]
+        objectives: ["Determine whether objectives are documented."]
+      - id: "A.5.5"
+        text: "Maintain contact with relevant authorities on information security matters."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.5"]
+        examples: ["Maintain regulator contact list"]
+        objectives: ["Determine whether authority contacts are maintained."]
+      - id: "A.5.6"
+        text: "Maintain contact with special interest groups, security forums, and associations."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.6"]
+        examples: ["Join ISAC", "Forum participation"]
+        objectives: ["Determine whether the organisation participates in security communities."]
+      - id: "A.5.7"
+        text: "Collect and analyse information about threats to inform the ISMS."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.7", "NIST CSF 2.0: ID.RA-02"]
+        examples: ["Threat-intel feeds"]
+        objectives: ["Determine whether threat intelligence informs the ISMS."]
+      - id: "A.5.8"
+        text: "Manage information security risks within the project management framework."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.8", "NIST CSF 2.0: ID.RA-04"]
+        examples: ["Project security plans"]
+        objectives: ["Determine whether security risks are addressed in projects."]
+      - id: "A.5.9"
+        text: "Maintain an inventory of information and associated owners."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.9", "NIST CSF 2.0: ID.AM-01"]
+        examples: ["Asset inventory"]
+        objectives: ["Determine whether information assets are inventoried."]
+      - id: "A.5.10"
+        text: "Define and apply rules for the acceptable use of information and assets."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.10", "NIST SP 800-53 Rev 5: AC-08"]
+        examples: ["AUP", "Sign-on banner"]
+        objectives: ["Determine whether acceptable-use rules exist."]
+      - id: "A.5.11"
+        text: "Maintain an inventory of users and their access rights."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.11", "NIST CSF 2.0: ID.AM-01"]
+        examples: ["User access register"]
+        objectives: ["Determine whether user access is inventoried."]
+      - id: "A.5.12"
+        text: "Classify information according to its value, sensitivity, and legal requirements."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.12", "NIST CSF 2.0: ID.AM-05"]
+        examples: ["Classification scheme"]
+        objectives: ["Determine whether information is classified."]
+      - id: "A.5.13"
+        text: "Apply information classification rules to information that is shared, transferred, or processed."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.13", "NIST CSF 2.0: PR.DS-01"]
+        examples: ["Label shared artefacts"]
+        objectives: ["Determine whether classification applies to shared data."]
+      - id: "A.5.14"
+        text: "Establish information transfer rules, agreements, and controls between parties."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.14", "NIST SP 800-53 Rev 5: AC-21"]
+        examples: ["Data-transfer agreements"]
+        objectives: ["Determine whether information transfer is governed."]
+      - id: "A.5.15"
+        text: "Define and apply access control rules based on business and security requirements."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.15", "NIST SP 800-53 Rev 5: AC-03"]
+        examples: ["Access-control policy"]
+        objectives: ["Determine whether access-control rules are defined."]
+      - id: "A.5.16"
+        text: "Manage the full lifecycle of user identities and credentials."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.16", "NIST SP 800-53 Rev 5: IA-04"]
+        examples: ["Identity lifecycle"]
+        objectives: ["Determine whether identity lifecycle is managed."]
+      - id: "A.5.17"
+        text: "Manage authentication information (passwords, keys, tokens) securely through its lifecycle."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.17", "NIST SP 800-53 Rev 5: IA-05"]
+        examples: ["Password manager", "Key vault"]
+        objectives: ["Determine whether authentication information is managed."]
+      - id: "A.5.18"
+        text: "Define and enforce access rights for users and groups based on need-to-know and least privilege."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.18", "NIST SP 800-53 Rev 5: AC-06"]
+        examples: ["Least-privilege provisioning"]
+        objectives: ["Determine whether access rights are need-based."]
+      - id: "A.5.19"
+        text: "Define and enforce rules for supplier relationships, including security requirements and incident handling."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.19", "NIST CSF 2.0: GV.SC-07"]
+        examples: ["Supplier security clauses"]
+        objectives: ["Determine whether supplier security is governed."]
+      - id: "A.5.20"
+        text: "Address information security in supplier agreements and require compliance."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.20", "NIST SP 800-53 Rev 5: SR-05"]
+        examples: ["Security exhibit in contracts"]
+        objectives: ["Determine whether supplier agreements include security."]
+      - id: "A.5.21"
+        text: "Manage information security risks in the ICT supply chain including components and services."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.21", "NIST SP 800-53 Rev 5: SR-03"]
+        examples: ["ICT supply-chain risk register"]
+        objectives: ["Determine whether ICT supply-chain risks are managed."]
+      - id: "A.5.22"
+        text: "Monitor and review supplier service delivery and compliance with security requirements."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.22", "NIST SP 800-53 Rev 5: SR-08"]
+        examples: ["Supplier reviews"]
+        objectives: ["Determine whether supplier compliance is monitored."]
+      - id: "A.5.23"
+        text: "Manage changes in supplier services, including new vendors, transitions, and exit."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.23", "NIST SP 800-53 Rev 5: SR-12"]
+        examples: ["Supplier change management"]
+        objectives: ["Determine whether supplier-service changes are managed."]
+      - id: "A.5.24"
+        text: "Plan and manage information security incident management across the lifecycle."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.24", "NIST SP 800-53 Rev 5: IR-02"]
+        examples: ["Incident management plan"]
+        objectives: ["Determine whether incident management is planned."]
+      - id: "A.5.25"
+        text: "Assess and decide on information security events, and respond per the incident management plan."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.25", "NIST SP 800-53 Rev 5: IR-04"]
+        examples: ["Triage and response procedures"]
+        objectives: ["Determine whether events are assessed and responded to."]
+      - id: "A.5.26"
+        text: "Respond to information security incidents per documented procedures."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.26", "NIST SP 800-53 Rev 5: IR-04"]
+        examples: ["Response playbooks"]
+        objectives: ["Determine whether incidents are responded to."]
+      - id: "A.5.27"
+        text: "Collect and preserve evidence related to information security incidents."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.27", "NIST SP 800-53 Rev 5: AU-10"]
+        examples: ["Forensic preservation"]
+        objectives: ["Determine whether evidence is collected."]
+      - id: "A.5.28"
+        text: "Apply lessons learned from information security incidents to improve controls."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.28", "NIST SP 800-53 Rev 5: IR-09"]
+        examples: ["Post-incident review"]
+        objectives: ["Determine whether lessons learned are applied."]
+      - id: "A.5.29"
+        text: "Plan and prepare for information security incidents by maintaining readiness."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.29", "NIST SP 800-53 Rev 5: IR-03"]
+        examples: ["Tabletop exercises"]
+        objectives: ["Determine whether incident readiness is maintained."]
+      - id: "A.5.30"
+        text: "Prepare and maintain business continuity for information security."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.30", "NIST CSF 2.0: RC.RP-01"]
+        examples: ["BCP for security controls"]
+        objectives: ["Determine whether BCP covers security."]
+      - id: "A.5.31"
+        text: "Address information security in the legal, statutory, regulatory, and contractual requirements."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.31", "NIST CSF 2.0: GV.OC-01"]
+        examples: ["Legal register"]
+        objectives: ["Determine whether legal/security requirements are tracked."]
+      - id: "A.5.32"
+        text: "Apply intellectual property rights to information assets and software."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.32"]
+        examples: ["IP register"]
+        objectives: ["Determine whether IP is managed."]
+      - id: "A.5.33"
+        text: "Protect records from unauthorised modification, loss, or disclosure."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.33", "NIST SP 800-53 Rev 5: AU-09"]
+        examples: ["Records retention schedule"]
+        objectives: ["Determine whether records are protected."]
+      - id: "A.5.34"
+        text: "Protect privacy and personal data of identifiable persons in accordance with applicable law."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.34", "GDPR Art. 5", "NIST SP 800-53 Rev 5: PM-25"]
+        examples: ["Privacy impact assessment"]
+        objectives: ["Determine whether PII is protected."]
+      - id: "A.5.35"
+        text: "Independently review the ISMS at planned intervals and report results."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.35", "NIST SP 800-53 Rev 5: CA-02"]
+        examples: ["Annual ISMS audit"]
+        objectives: ["Determine whether the ISMS is independently reviewed."]
+      - id: "A.5.36"
+        text: "Verify that information security requirements are met in policies, standards, and procedures."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.36", "NIST SP 800-53 Rev 5: CA-02"]
+        examples: ["Compliance review"]
+        objectives: ["Determine whether compliance is verified."]
+      - id: "A.5.37"
+        text: "Document and operate operating procedures for information security controls."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.5.37"]
+        examples: ["Documented runbooks"]
+        objectives: ["Determine whether operating procedures exist."]
+
+  # ---- A.6 People (8 controls) ----
+  - function: "A6"
+    function_dir: "A6_PEOPLE"
+    category_name: "People Controls"
+    practices:
+      - id: "A.6.1"
+        text: "Screen candidates for employment to ensure suitability for the role and information security."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.6.1", "NIST SP 800-53 Rev 5: PS-03"]
+        examples: ["Background checks"]
+        objectives: ["Determine whether pre-employment screening is performed."]
+      - id: "A.6.2"
+        text: "Document and agree on information security responsibilities in employment terms."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.6.2", "NIST SP 800-53 Rev 5: PS-06"]
+        examples: ["Employment terms"]
+        objectives: ["Determine whether security responsibilities are in employment terms."]
+      - id: "A.6.3"
+        text: "Provide information security awareness, education, and training."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.6.3", "NIST SP 800-53 Rev 5: AT-02"]
+        examples: ["Annual awareness training"]
+        objectives: ["Determine whether awareness/training is provided."]
+      - id: "A.6.4"
+        text: "Establish and enforce a disciplinary process for information security violations."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.6.4", "NIST SP 800-53 Rev 5: PS-08"]
+        examples: ["Disciplinary procedure"]
+        objectives: ["Determine whether a disciplinary process exists."]
+      - id: "A.6.5"
+        text: "Ensure that personnel leave the organisation in a secure manner (return assets, revoke access)."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.6.5", "NIST SP 800-53 Rev 5: PS-04"]
+        examples: ["Exit checklist"]
+        objectives: ["Determine whether exit procedures exist."]
+      - id: "A.6.6"
+        text: "Define and enforce confidentiality and NDAs for personnel and contractors."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.6.6", "NIST SP 800-53 Rev 5: PS-06"]
+        examples: ["NDA process"]
+        objectives: ["Determine whether confidentiality agreements exist."]
+      - id: "A.6.7"
+        text: "Allow personnel to work remotely in a secure manner."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.6.7", "NIST SP 800-53 Rev 5: AC-17"]
+        examples: ["Remote-work policy"]
+        objectives: ["Determine whether remote work is governed."]
+      - id: "A.6.8"
+        text: "Report information security events and weaknesses promptly to the responsible parties."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.6.8", "NIST SP 800-53 Rev 5: IR-06"]
+        examples: ["Reporting process"]
+        objectives: ["Determine whether reporting processes exist."]
+
+  # ---- A.7 Physical (14 controls) ----
+  - function: "A7"
+    function_dir: "A7_PHYSICAL"
+    category_name: "Physical Controls"
+    practices:
+      - id: "A.7.1"
+        text: "Define and enforce physical security perimeters and controls."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.7.1", "NIST SP 800-53 Rev 5: PE-02"]
+        examples: ["Perimeter controls"]
+        objectives: ["Determine whether physical perimeters are defined."]
+      - id: "A.7.2"
+        text: "Control physical entry to secure areas."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.7.2", "NIST SP 800-53 Rev 5: PE-02"]
+        examples: ["Access control"]
+        objectives: ["Determine whether physical entry is controlled."]
+      - id: "A.7.3"
+        text: "Secure offices, rooms, and facilities against physical and environmental threats."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.7.3", "NIST SP 800-53 Rev 5: PE-03"]
+        examples: ["Locking, monitoring"]
+        objectives: ["Determine whether offices are secured."]
+      - id: "A.7.4"
+        text: "Apply physical security monitoring to detect and respond to unauthorised access."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.7.4", "NIST SP 800-53 Rev 5: PE-06"]
+        examples: ["CCTV, alarms"]
+        objectives: ["Determine whether physical monitoring is in place."]
+      - id: "A.7.5"
+        text: "Protect against physical and environmental threats (fire, flood, temperature)."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.7.5", "NIST SP 800-53 Rev 5: PE-09"]
+        examples: ["Fire suppression, HVAC"]
+        objectives: ["Determine whether environmental threats are mitigated."]
+      - id: "A.7.6"
+        text: "Control access to areas handling sensitive information."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.7.6", "NIST SP 800-53 Rev 5: PE-02"]
+        examples: ["Clean desk policy", "Secure printing"]
+        objectives: ["Determine whether sensitive areas are access-controlled."]
+      - id: "A.7.7"
+        text: "Apply clear desk and clear screen rules."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.7.7"]
+        examples: ["Clear desk policy"]
+        objectives: ["Determine whether clear desk/screen rules exist."]
+      - id: "A.7.8"
+        text: "Locate and protect equipment from environmental and physical threats."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.7.8", "NIST SP 800-53 Rev 5: PE-18"]
+        examples: ["Equipment placement policy"]
+        objectives: ["Determine whether equipment is physically protected."]
+      - id: "A.7.9"
+        text: "Protect equipment off-premises against theft, loss, and unauthorised access."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.7.9", "NIST SP 800-53 Rev 5: AC-19"]
+        examples: ["Asset tracking", "Encryption"]
+        objectives: ["Determine whether off-premises equipment is protected."]
+      - id: "A.7.10"
+        text: "Apply storage media handling, usage, and disposal controls."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.7.10", "NIST SP 800-53 Rev 5: MP-04"]
+        examples: ["Media handling rules"]
+        objectives: ["Determine whether media is handled securely."]
+      - id: "A.7.11"
+        text: "Apply supporting utilities (power, HVAC) controls."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.7.11", "NIST SP 800-53 Rev 5: PE-10"]
+        examples: ["UPS, generator"]
+        objectives: ["Determine whether supporting utilities are controlled."]
+      - id: "A.7.12"
+        text: "Apply cabling security to protect power and telecom cables."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.7.12", "NIST SP 800-53 Rev 5: PE-04"]
+        examples: ["Cable protection"]
+        objectives: ["Determine whether cabling is protected."]
+      - id: "A.7.13"
+        text: "Maintain equipment to ensure availability and integrity."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.7.13", "NIST SP 800-53 Rev 5: MA-02"]
+        examples: ["Maintenance schedule"]
+        objectives: ["Determine whether equipment is maintained."]
+      - id: "A.7.14"
+        text: "Securely dispose of or reuse equipment."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.7.14", "NIST SP 800-53 Rev 5: MP-06"]
+        examples: ["Sanitisation before disposal"]
+        objectives: ["Determine whether disposal is secure."]
+
+  # ---- A.8 Technological (34 controls) ----
+  - function: "A8"
+    function_dir: "A8_TECHNOLOGICAL"
+    category_name: "Technological Controls"
+    practices:
+      - id: "A.8.1"
+        text: "Use endpoint devices securely and restrict the installation of unapproved software."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.1", "NIST SP 800-53 Rev 5: CM-07"]
+        examples: ["Endpoint management", "Application allowlist"]
+        objectives: ["Determine whether endpoints are securely managed."]
+      - id: "A.8.2"
+        text: "Define and enforce access control on information, systems, and applications, including privileged access."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.2", "NIST SP 800-53 Rev 5: AC-06"]
+        examples: ["Privileged access management"]
+        objectives: ["Determine whether privileged access is enforced."]
+      - id: "A.8.3"
+        text: "Restrict and manage access to information and source code via access control lists."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.3", "NIST SP 800-53 Rev 5: AC-03"]
+        examples: ["Source code access controls"]
+        objectives: ["Determine whether information access is restricted."]
+      - id: "A.8.4"
+        text: "Prevent access to source code and associated items by unauthorised persons."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.4", "NIST SP 800-53 Rev 5: AC-03"]
+        examples: ["Repository access controls"]
+        objectives: ["Determine whether source code is access-controlled."]
+      - id: "A.8.5"
+        text: "Use secure authentication mechanisms that are appropriate to the access risk."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.5", "NIST SP 800-53 Rev 5: IA-02"]
+        examples: ["MFA for sensitive systems"]
+        objectives: ["Determine whether secure authentication is used."]
+      - id: "A.8.6"
+        text: "Define capacity and performance requirements and monitor compliance."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.6", "NIST SP 800-53 Rev 5: SI-13"]
+        examples: ["Capacity monitoring"]
+        objectives: ["Determine whether capacity is monitored."]
+      - id: "A.8.7"
+        text: "Protect against malware through detection, prevention, and recovery capabilities."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.7", "NIST SP 800-53 Rev 5: SI-03"]
+        examples: ["EDR", "AV"]
+        objectives: ["Determine whether malware protection is in place."]
+      - id: "A.8.8"
+        text: "Manage vulnerabilities in systems, applications, and infrastructure."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.8", "NIST SSDF v1.1: RV.2.1"]
+        examples: ["Vulnerability management"]
+        objectives: ["Determine whether vulnerabilities are managed."]
+      - id: "A.8.9"
+        text: "Define and document configuration management processes and apply baselines."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.9", "NIST SP 800-53 Rev 5: CM-02"]
+        examples: ["Configuration baselines"]
+        objectives: ["Determine whether configuration is managed."]
+      - id: "A.8.10"
+        text: "Delete, return, or destroy information when no longer needed per retention rules."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.10", "NIST SP 800-53 Rev 5: MP-06"]
+        examples: ["Retention enforcement"]
+        objectives: ["Determine whether information is deleted per retention."]
+      - id: "A.8.11"
+        text: "Mask, redact, or anonymise data to limit exposure (e.g., test data)."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.11", "NIST SP 800-53 Rev 5: PM-29"]
+        examples: ["Test data anonymisation"]
+        objectives: ["Determine whether data masking is applied."]
+      - id: "A.8.12"
+        text: "Prevent data leakage through DLP and similar controls."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.12", "NIST SP 800-53 Rev 5: AC-23"]
+        examples: ["DLP", "Egress controls"]
+        objectives: ["Determine whether DLP is implemented."]
+      - id: "A.8.13"
+        text: "Maintain backups of information and test restoration at the defined frequency."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.13", "NIST SP 800-53 Rev 5: CP-09"]
+        examples: ["Backup testing"]
+        objectives: ["Determine whether backups are tested."]
+      - id: "A.8.14"
+        text: "Protect storage media from unauthorised access, tampering, or theft."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.14", "NIST SP 800-53 Rev 5: MP-02"]
+        examples: ["Media encryption"]
+        objectives: ["Determine whether media is protected."]
+      - id: "A.8.15"
+        text: "Log and monitor user activities, exceptions, and information security events."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.15", "NIST SP 800-53 Rev 5: AU-02"]
+        examples: ["Centralised logging"]
+        objectives: ["Determine whether logs are collected."]
+      - id: "A.8.16"
+        text: "Monitor systems and services for anomalies and take action on detection."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.16", "NIST SP 800-53 Rev 5: SI-04"]
+        examples: ["Anomaly detection"]
+        objectives: ["Determine whether systems are monitored."]
+      - id: "A.8.17"
+        text: "Synchronise system clocks to a trusted time source."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.17", "NIST SP 800-53 Rev 5: AU-08"]
+        examples: ["NTP"]
+        objectives: ["Determine whether clocks are synchronised."]
+      - id: "A.8.18"
+        text: "Manage privileged access rights with strong authentication and audit."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.18", "NIST SP 800-53 Rev 5: AC-06"]
+        examples: ["PAM solution"]
+        objectives: ["Determine whether privileged access is managed."]
+      - id: "A.8.19"
+        text: "Manage software installation on operational systems via an allowlist or controlled process."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.19", "NIST SP 800-53 Rev 5: CM-11"]
+        examples: ["Software allowlist"]
+        objectives: ["Determine whether software installation is controlled."]
+      - id: "A.8.20"
+        text: "Maintain network security through segmentation, filtering, and monitoring."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.20", "NIST SP 800-53 Rev 5: SC-07"]
+        examples: ["Network segmentation"]
+        objectives: ["Determine whether network security is maintained."]
+      - id: "A.8.21"
+        text: "Secure network services with controls appropriate to their risk."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.21", "NIST SP 800-53 Rev 5: SC-08"]
+        examples: ["Service security review"]
+        objectives: ["Determine whether network services are secured."]
+      - id: "A.8.22"
+        text: "Segregate networks based on trust, function, or risk."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.22", "NIST SP 800-53 Rev 5: SC-32"]
+        examples: ["VLANs", "DMZ"]
+        objectives: ["Determine whether networks are segregated."]
+      - id: "A.8.23"
+        text: "Implement web filtering to prevent access to malicious or unauthorised web content."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.23", "NIST SP 800-53 Rev 5: SI-08"]
+        examples: ["Web proxy"]
+        objectives: ["Determine whether web filtering is implemented."]
+      - id: "A.8.24"
+        text: "Use cryptography to protect the confidentiality, integrity, and authenticity of information."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.24", "NIST SP 800-53 Rev 5: SC-13"]
+        examples: ["Cryptography standard"]
+        objectives: ["Determine whether cryptography is applied."]
+      - id: "A.8.25"
+        text: "Manage cryptographic keys through their full lifecycle."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.25", "NIST SP 800-53 Rev 5: SC-12"]
+        examples: ["Key management lifecycle"]
+        objectives: ["Determine whether keys are managed."]
+      - id: "A.8.26"
+        text: "Apply secure development principles and review code for security defects."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.26", "NIST SSDF v1.1: PW.2.1"]
+        examples: ["Secure SDLC"]
+        objectives: ["Determine whether secure development is applied."]
+      - id: "A.8.27"
+        text: "Apply secure system engineering principles during architecture and design."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.27", "NIST SP 800-53 Rev 5: SA-08"]
+        examples: ["Secure design patterns"]
+        objectives: ["Determine whether secure engineering is applied."]
+      - id: "A.8.28"
+        text: "Apply secure coding principles including input validation and output encoding."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.28", "NIST SP 800-53 Rev 5: SI-10"]
+        examples: ["Secure coding standard"]
+        objectives: ["Determine whether secure coding is applied."]
+      - id: "A.8.29"
+        text: "Test security in development and acceptance before deployment."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.29", "NIST SSDF v1.1: PW.3.1"]
+        examples: ["Security testing in CI"]
+        objectives: ["Determine whether security testing occurs pre-deployment."]
+      - id: "A.8.30"
+        text: "Manage outsourced system development with security requirements and oversight."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.30", "NIST SP 800-53 Rev 5: SA-09"]
+        examples: ["Outsourced dev security clauses"]
+        objectives: ["Determine whether outsourced dev is governed."]
+      - id: "A.8.31"
+        text: "Separate development, test, and production environments."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.31", "NIST SP 800-53 Rev 5: SC-02"]
+        examples: ["Environment separation"]
+        objectives: ["Determine whether dev/test/prod are separated."]
+      - id: "A.8.32"
+        text: "Manage changes to systems through a formal change control process."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.32", "NIST SP 800-53 Rev 5: CM-03"]
+        examples: ["Change management"]
+        objectives: ["Determine whether changes go through formal change control."]
+      - id: "A.8.33"
+        text: "Test changes in a representative environment before production deployment."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.33", "NIST SP 800-53 Rev 5: CM-04"]
+        examples: ["Test environment"]
+        objectives: ["Determine whether changes are tested before prod."]
+      - id: "A.8.34"
+        text: "Audit and protect information and systems during technical acceptance testing."
+        informative_references: ["ISO/IEC 27001:2022 Annex A.8.34", "NIST SP 800-53 Rev 5: CA-02"]
+        examples: ["Acceptance testing"]
+        objectives: ["Determine whether acceptance testing is audited."]

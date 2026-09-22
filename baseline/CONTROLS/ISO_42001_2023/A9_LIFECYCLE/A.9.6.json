@@ -1,0 +1,29 @@
+{
+  "control_id": "A.9.6",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A9",
+  "category": "System Lifecycle for AI (A)",
+  "subcategory_id": "A.9.6",
+  "subcategory_text": "Operate and monitor AI systems in production with KPIs, drift detection, and incident handling.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.9.6",
+    "NIST AI RMF 1.0: MANAGE-2.4"
+  ],
+  "implementation_examples": [
+    "Model monitoring"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI operations include monitoring."
+  ],
+  "related_controls": [
+    "A.9.1 (ISO/IEC 42001:2023 — same family)",
+    "A.9.2 (ISO/IEC 42001:2023 — same family)",
+    "A.9.3 (ISO/IEC 42001:2023 — same family)",
+    "A.9.4 (ISO/IEC 42001:2023 — same family)",
+    "A.9.5 (ISO/IEC 42001:2023 — same family)",
+    "A.9.7 (ISO/IEC 42001:2023 — same family)",
+    "A.9.8 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

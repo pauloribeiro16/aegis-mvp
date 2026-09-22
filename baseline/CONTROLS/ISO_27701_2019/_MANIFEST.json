@@ -1,0 +1,13 @@
+{
+  "referential": "ISO/IEC 27701:2019",
+  "version": "2019 (Annex A PIMS controls)",
+  "source_urls": [
+    "https://www.iso.org/standard/71670.html"
+  ],
+  "fetched_date": "2026-09-22",
+  "subcategories": 35,
+  "expected_total": 35,
+  "unverified_entries": [],
+  "advisory": true,
+  "enforced_by_verify_no_loss": false
+}

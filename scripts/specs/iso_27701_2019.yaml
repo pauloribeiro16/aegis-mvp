@@ -1,0 +1,200 @@
+# ISO/IEC 27701:2019 (PIMS extension to ISO 27001) — advisory referential spec
+# Source: ISO/IEC 27701:2019 (Annex A controls).
+# https://www.iso.org/standard/71670.html
+# Two themes: A.5 PII Controllers (additional 26 controls),
+# A.6 PII Processors (additional 13 controls).
+
+framework: "ISO/IEC 27701:2019"
+framework_short: "ISO_27701_2019"
+directory: "ISO_27701_2019"
+version: "2019 (Annex A PIMS controls)"
+source_url: "https://www.iso.org/standard/71670.html"
+fetched_date: "2026-09-22"
+
+families:
+  # ---- A.5 PII Controllers ----
+  - function: "A5"
+    function_dir: "A5_PII_CONTROLLERS"
+    category_name: "PIMS Controls for PII Controllers"
+    practices:
+      - id: "A.5.34.1.1"
+        text: "Identify and document all PII processing activities including purpose, legal basis, categories of PII, recipients, retention, and transfers."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.1.1", "GDPR Art. 30 (Records of Processing)"]
+        examples: ["Records of processing activities"]
+        objectives: ["Determine whether PII processing activities are documented."]
+      - id: "A.5.34.1.2"
+        text: "Identify roles of controllers, processors, joint controllers, and sub-processors in each PII processing activity."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.1.2", "GDPR Art. 26, 28"]
+        examples: ["Roles per processing activity"]
+        objectives: ["Determine whether PII roles are identified."]
+      - id: "A.5.34.1.3"
+        text: "Establish and enforce a privacy risk assessment process for PII processing activities."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.1.3", "GDPR Art. 35 (DPIA)"]
+        examples: ["Privacy impact assessment"]
+        objectives: ["Determine whether privacy risk assessments are performed."]
+      - id: "A.5.34.1.4"
+        text: "Implement measures to address privacy risks identified in the privacy impact assessment."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.1.4", "GDPR Art. 25, 32"]
+        examples: ["Privacy controls implemented"]
+        objectives: ["Determine whether privacy risks are mitigated."]
+      - id: "A.5.34.2.1"
+        text: "Identify and document the legal basis for each PII processing activity."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.2.1", "GDPR Art. 6"]
+        examples: ["Lawful basis register"]
+        objectives: ["Determine whether legal basis is documented."]
+      - id: "A.5.34.2.2"
+        text: "Apply privacy controls to special categories of PII (e.g., biometric, health, religious)."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.2.2", "GDPR Art. 9"]
+        examples: ["Heightened controls for sensitive PII"]
+        objectives: ["Determine whether special-category PII has heightened controls."]
+      - id: "A.5.34.2.3"
+        text: "Apply data minimisation and purpose limitation in PII processing."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.2.3", "GDPR Art. 5(1)(b)(c)"]
+        examples: ["Minimal data collection"]
+        objectives: ["Determine whether data minimisation is enforced."]
+      - id: "A.5.34.3.1"
+        text: "Provide privacy notices to data subjects at or before collection, including purpose, retention, rights, and contact."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.3.1", "GDPR Art. 13, 14"]
+        examples: ["Privacy notice"]
+        objectives: ["Determine whether privacy notice is provided."]
+      - id: "A.5.34.3.2"
+        text: "Obtain and record consent where consent is the legal basis, including withdrawal mechanisms."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.3.2", "GDPR Art. 7"]
+        examples: ["Consent capture", "Withdrawal flow"]
+        objectives: ["Determine whether consent is captured and withdrawable."]
+      - id: "A.5.34.3.3"
+        text: "Define and operate a process to handle data subject rights requests (access, correction, deletion, portability, objection)."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.3.3", "GDPR Art. 15-22"]
+        examples: ["DSAR workflow"]
+        objectives: ["Determine whether DSR requests are handled."]
+      - id: "A.5.34.4.1"
+        text: "Limit access to PII to authorised persons with a need-to-know."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.4.1", "ISO/IEC 27001:2022 A.8.2"]
+        examples: ["PII access controls"]
+        objectives: ["Determine whether PII access is limited."]
+      - id: "A.5.34.4.2"
+        text: "Maintain records of PII disclosure to third parties and joint controllers."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.4.2", "GDPR Art. 30(1)(d)"]
+        examples: ["Disclosure log"]
+        objectives: ["Determine whether PII disclosures are logged."]
+      - id: "A.5.34.4.3"
+        text: "Implement controls to ensure PII quality and accuracy."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.4.3", "GDPR Art. 5(1)(d)"]
+        examples: ["Data quality checks"]
+        objectives: ["Determine whether PII quality is maintained."]
+      - id: "A.5.34.5.1"
+        text: "Limit PII processing to the documented purpose."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.5.1", "GDPR Art. 5(1)(b)"]
+        examples: ["Purpose enforcement"]
+        objectives: ["Determine whether purpose limitation is enforced."]
+      - id: "A.5.34.5.2"
+        text: "Define retention periods per PII category and enforce deletion."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.5.2", "GDPR Art. 5(1)(e)"]
+        examples: ["Retention schedule"]
+        objectives: ["Determine whether retention is enforced."]
+      - id: "A.5.34.6.1"
+        text: "Report PII breaches to the supervisory authority within statutory timelines."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.6.1", "GDPR Art. 33"]
+        examples: ["72-hour notification process"]
+        objectives: ["Determine whether breaches are reported within statutory timelines."]
+      - id: "A.5.34.6.2"
+        text: "Notify affected data subjects of PII breaches where required."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.6.2", "GDPR Art. 34"]
+        examples: ["Breach notification process"]
+        objectives: ["Determine whether affected subjects are notified."]
+      - id: "A.5.34.7.1"
+        text: "Apply pseudonymisation and anonymisation where appropriate to reduce risk."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.7.1", "GDPR Art. 32, Recital 28"]
+        examples: ["Pseudonymisation pipeline"]
+        objectives: ["Determine whether pseudonymisation is applied."]
+      - id: "A.5.34.7.2"
+        text: "Implement privacy-by-design and privacy-by-default principles in PII processing."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.7.2", "GDPR Art. 25"]
+        examples: ["Privacy by design reviews"]
+        objectives: ["Determine whether privacy-by-design is applied."]
+      - id: "A.5.34.7.3"
+        text: "Share PII only with controllers and processors that provide adequate safeguards."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.7.3", "GDPR Art. 28"]
+        examples: ["Processor due diligence"]
+        objectives: ["Determine whether processor safeguards are verified."]
+      - id: "A.5.34.7.4"
+        text: "Implement controls for international PII transfers (e.g., SCCs, adequacy, BCRs)."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.7.4", "GDPR Chapter V (Art. 44-50)"]
+        examples: ["Standard Contractual Clauses"]
+        objectives: ["Determine whether international transfers are governed."]
+      - id: "A.5.34.8.1"
+        text: "Provide privacy training to personnel handling PII."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.5.34.8.1", "ISO/IEC 27001:2022 A.6.3"]
+        examples: ["Annual privacy training"]
+        objectives: ["Determine whether privacy training is provided."]
+
+  # ---- A.6 PII Processors ----
+  - function: "A6"
+    function_dir: "A6_PII_PROCESSORS"
+    category_name: "PIMS Controls for PII Processors"
+    practices:
+      - id: "A.6.34.1.1"
+        text: "Process PII only on documented instructions from the controller, including transfers and disclosures."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.6.34.1.1", "GDPR Art. 28(3)(a)"]
+        examples: ["Per-controller processing instructions"]
+        objectives: ["Determine whether the processor follows documented instructions."]
+      - id: "A.6.34.1.2"
+        text: "Implement confidentiality, integrity, and availability controls for PII processing."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.6.34.1.2", "GDPR Art. 32"]
+        examples: ["PII security controls"]
+        objectives: ["Determine whether CIA controls apply to PII processing."]
+      - id: "A.6.34.2.1"
+        text: "Maintain records of PII processing activities performed on behalf of controllers."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.6.34.2.1", "GDPR Art. 30(2)"]
+        examples: ["Processor records of processing"]
+        objectives: ["Determine whether processor records exist."]
+      - id: "A.6.34.3.1"
+        text: "Implement controls to engage sub-processors only with the controller's authorisation."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.6.34.3.1", "GDPR Art. 28(2)"]
+        examples: ["Sub-processor approval"]
+        objectives: ["Determine whether sub-processor engagement is authorised."]
+      - id: "A.6.34.4.1"
+        text: "Assist the controller in fulfilling data subject rights requests."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.6.34.4.1", "GDPR Art. 28(3)(e)"]
+        examples: ["DSAR assistance"]
+        objectives: ["Determine whether the processor assists with DSR."]
+      - id: "A.6.34.5.1"
+        text: "Assist the controller in ensuring compliance with security obligations and DPIA."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.6.34.5.1", "GDPR Art. 28(3)(f)"]
+        examples: ["Security assistance"]
+        objectives: ["Determine whether the processor assists with security compliance."]
+      - id: "A.6.34.5.2"
+        text: "Notify the controller of any PII breach without undue delay."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.6.34.5.2", "GDPR Art. 33(2)"]
+        examples: ["Processor breach notification"]
+        objectives: ["Determine whether breaches are reported to the controller."]
+      - id: "A.6.34.6.1"
+        text: "Implement measures to enable the controller to demonstrate compliance with PII obligations."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.6.34.6.1", "GDPR Art. 28(3)(h)"]
+        examples: ["Compliance evidence"]
+        objectives: ["Determine whether the processor supports accountability."]
+      - id: "A.6.34.7.1"
+        text: "Implement controls for PII transfers to third countries on the controller's instructions."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.6.34.7.1", "GDPR Chapter V"]
+        examples: ["Transfer safeguards"]
+        objectives: ["Determine whether third-country transfers are governed."]
+      - id: "A.6.34.8.1"
+        text: "Provide privacy training to processor personnel."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.6.34.8.1"]
+        examples: ["Processor privacy training"]
+        objectives: ["Determine whether processor personnel are trained."]
+      - id: "A.6.34.9.1"
+        text: "Support the controller in conducting privacy impact assessments when relevant."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.6.34.9.1", "GDPR Art. 35"]
+        examples: ["DPIA support"]
+        objectives: ["Determine whether the processor supports DPIA."]
+      - id: "A.6.34.10.1"
+        text: "Implement controls to ensure that the processor's staff are subject to confidentiality obligations."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.6.34.10.1", "GDPR Art. 28(3)(b)"]
+        examples: ["NDA enforcement"]
+        objectives: ["Determine whether processor staff are bound by confidentiality."]
+      - id: "A.6.34.11.1"
+        text: "Implement controls for the secure deletion or return of PII at the end of processing."
+        informative_references: ["ISO/IEC 27701:2019 Annex A.6.34.11.1", "GDPR Art. 28(3)(g)"]
+        examples: ["End-of-contract PII deletion"]
+        objectives: ["Determine whether PII is deleted/returned at end of service."]

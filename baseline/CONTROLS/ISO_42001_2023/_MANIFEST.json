@@ -1,0 +1,13 @@
+{
+  "referential": "ISO/IEC 42001:2023",
+  "version": "2023 (Annex A AIMS controls)",
+  "source_urls": [
+    "https://www.iso.org/standard/81230.html"
+  ],
+  "fetched_date": "2026-09-22",
+  "subcategories": 33,
+  "expected_total": 33,
+  "unverified_entries": [],
+  "advisory": true,
+  "enforced_by_verify_no_loss": false
+}

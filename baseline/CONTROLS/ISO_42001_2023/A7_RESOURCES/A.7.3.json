@@ -1,0 +1,26 @@
+{
+  "control_id": "A.7.3",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A7",
+  "category": "Resources for AI (A)",
+  "subcategory_id": "A.7.3",
+  "subcategory_text": "Plan and provision computing and data resources for AI systems.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.7.3",
+    "NIST SP 800-53 Rev 5: SA-02"
+  ],
+  "implementation_examples": [
+    "Compute planning"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI resources are planned."
+  ],
+  "related_controls": [
+    "A.7.1 (ISO/IEC 42001:2023 — same family)",
+    "A.7.2 (ISO/IEC 42001:2023 — same family)",
+    "A.7.4 (ISO/IEC 42001:2023 — same family)",
+    "A.7.5 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

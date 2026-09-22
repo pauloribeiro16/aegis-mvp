@@ -1,0 +1,13 @@
+{
+  "referential": "ISO/IEC 27001:2022",
+  "version": "2022 (Annex A)",
+  "source_urls": [
+    "https://www.iso.org/standard/27001"
+  ],
+  "fetched_date": "2026-09-22",
+  "subcategories": 93,
+  "expected_total": 93,
+  "unverified_entries": [],
+  "advisory": true,
+  "enforced_by_verify_no_loss": false
+}

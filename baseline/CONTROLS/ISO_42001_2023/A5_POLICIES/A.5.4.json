@@ -1,0 +1,25 @@
+{
+  "control_id": "A.5.4",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A5",
+  "category": "Policies for AI (A)",
+  "subcategory_id": "A.5.4",
+  "subcategory_text": "Allocate resources and budget for the AI management system.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.5.4"
+  ],
+  "implementation_examples": [
+    "AIMS budget"
+  ],
+  "assessment_objectives": [
+    "Determine whether the AIMS is resourced."
+  ],
+  "related_controls": [
+    "A.5.1 (ISO/IEC 42001:2023 — same family)",
+    "A.5.2 (ISO/IEC 42001:2023 — same family)",
+    "A.5.3 (ISO/IEC 42001:2023 — same family)",
+    "A.5.5 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

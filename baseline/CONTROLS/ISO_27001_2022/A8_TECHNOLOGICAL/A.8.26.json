@@ -1,0 +1,55 @@
+{
+  "control_id": "A.8.26",
+  "framework": "ISO/IEC 27001:2022",
+  "function": "A8",
+  "category": "Technological Controls (A)",
+  "subcategory_id": "A.8.26",
+  "subcategory_text": "Apply secure development principles and review code for security defects.",
+  "informative_references": [
+    "ISO/IEC 27001:2022 Annex A.8.26",
+    "NIST SSDF v1.1: PW.2.1"
+  ],
+  "implementation_examples": [
+    "Secure SDLC"
+  ],
+  "assessment_objectives": [
+    "Determine whether secure development is applied."
+  ],
+  "related_controls": [
+    "A.8.1 (ISO/IEC 27001:2022 — same family)",
+    "A.8.2 (ISO/IEC 27001:2022 — same family)",
+    "A.8.3 (ISO/IEC 27001:2022 — same family)",
+    "A.8.4 (ISO/IEC 27001:2022 — same family)",
+    "A.8.5 (ISO/IEC 27001:2022 — same family)",
+    "A.8.6 (ISO/IEC 27001:2022 — same family)",
+    "A.8.7 (ISO/IEC 27001:2022 — same family)",
+    "A.8.8 (ISO/IEC 27001:2022 — same family)",
+    "A.8.9 (ISO/IEC 27001:2022 — same family)",
+    "A.8.10 (ISO/IEC 27001:2022 — same family)",
+    "A.8.11 (ISO/IEC 27001:2022 — same family)",
+    "A.8.12 (ISO/IEC 27001:2022 — same family)",
+    "A.8.13 (ISO/IEC 27001:2022 — same family)",
+    "A.8.14 (ISO/IEC 27001:2022 — same family)",
+    "A.8.15 (ISO/IEC 27001:2022 — same family)",
+    "A.8.16 (ISO/IEC 27001:2022 — same family)",
+    "A.8.17 (ISO/IEC 27001:2022 — same family)",
+    "A.8.18 (ISO/IEC 27001:2022 — same family)",
+    "A.8.19 (ISO/IEC 27001:2022 — same family)",
+    "A.8.20 (ISO/IEC 27001:2022 — same family)",
+    "A.8.21 (ISO/IEC 27001:2022 — same family)",
+    "A.8.22 (ISO/IEC 27001:2022 — same family)",
+    "A.8.23 (ISO/IEC 27001:2022 — same family)",
+    "A.8.24 (ISO/IEC 27001:2022 — same family)",
+    "A.8.25 (ISO/IEC 27001:2022 — same family)",
+    "A.8.27 (ISO/IEC 27001:2022 — same family)",
+    "A.8.28 (ISO/IEC 27001:2022 — same family)",
+    "A.8.29 (ISO/IEC 27001:2022 — same family)",
+    "A.8.30 (ISO/IEC 27001:2022 — same family)",
+    "A.8.31 (ISO/IEC 27001:2022 — same family)",
+    "A.8.32 (ISO/IEC 27001:2022 — same family)",
+    "A.8.33 (ISO/IEC 27001:2022 — same family)",
+    "A.8.34 (ISO/IEC 27001:2022 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/27001",
+  "source_version": "2022 (Annex A)"
+}

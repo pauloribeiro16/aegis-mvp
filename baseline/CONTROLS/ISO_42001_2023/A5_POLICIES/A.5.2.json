@@ -1,0 +1,26 @@
+{
+  "control_id": "A.5.2",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A5",
+  "category": "Policies for AI (A)",
+  "subcategory_id": "A.5.2",
+  "subcategory_text": "Define AI principles (fairness, transparency, accountability, safety) that guide AI development and use.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.5.2",
+    "NIST AI RMF 1.0: GOVERN-1.2"
+  ],
+  "implementation_examples": [
+    "AI principles charter"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI principles are defined."
+  ],
+  "related_controls": [
+    "A.5.1 (ISO/IEC 42001:2023 — same family)",
+    "A.5.3 (ISO/IEC 42001:2023 — same family)",
+    "A.5.4 (ISO/IEC 42001:2023 — same family)",
+    "A.5.5 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

@@ -1,0 +1,213 @@
+# ISO/IEC 42001:2023 (AIMS — AI Management System) Annex A — advisory referential spec
+# Source: ISO/IEC 42001:2023 Annex A controls.
+# https://www.iso.org/standard/81230.html
+# Six themes (A.5–A.10), ~33 controls (representative subset).
+
+framework: "ISO/IEC 42001:2023"
+framework_short: "ISO_42001_2023"
+directory: "ISO_42001_2023"
+version: "2023 (Annex A AIMS controls)"
+source_url: "https://www.iso.org/standard/81230.html"
+fetched_date: "2026-09-22"
+
+families:
+  # ---- A.5 Policies for AI ----
+  - function: "A5"
+    function_dir: "A5_POLICIES"
+    category_name: "Policies for AI"
+    practices:
+      - id: "A.5.1"
+        text: "Define an AI policy aligned with the organisation's purpose and applicable laws, and approve at the appropriate level."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.5.1", "NIST AI RMF 1.0: GOVERN-1.1"]
+        examples: ["Documented AI policy"]
+        objectives: ["Determine whether an AI policy exists."]
+      - id: "A.5.2"
+        text: "Define AI principles (fairness, transparency, accountability, safety) that guide AI development and use."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.5.2", "NIST AI RMF 1.0: GOVERN-1.2"]
+        examples: ["AI principles charter"]
+        objectives: ["Determine whether AI principles are defined."]
+      - id: "A.5.3"
+        text: "Define AI-specific roles, responsibilities, and authorities (incl. AI ethics committee)."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.5.3", "NIST AI RMF 1.0: GOVERN-2.1"]
+        examples: ["Roles per AI system"]
+        objectives: ["Determine whether AI-specific roles exist."]
+      - id: "A.5.4"
+        text: "Allocate resources and budget for the AI management system."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.5.4"]
+        examples: ["AIMS budget"]
+        objectives: ["Determine whether the AIMS is resourced."]
+      - id: "A.5.5"
+        text: "Maintain oversight of the AIMS by top management (review, decisions, accountability)."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.5.5", "NIST AI RMF 1.0: GOVERN-2.2"]
+        examples: ["AIMS management review"]
+        objectives: ["Determine whether top management oversees the AIMS."]
+
+  # ---- A.6 Internal organisation ----
+  - function: "A6"
+    function_dir: "A6_INTERNAL_ORG"
+    category_name: "Internal Organization for AI"
+    practices:
+      - id: "A.6.1"
+        text: "Segregate AI development from business functions where appropriate to manage conflicts of interest."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.6.1"]
+        examples: ["Independent review"]
+        objectives: ["Determine whether AI dev is appropriately segregated."]
+      - id: "A.6.2"
+        text: "Document the AI system's intended purpose, scope, and stakeholders before development."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.6.2", "NIST AI RMF 1.0: MAP-1.1"]
+        examples: ["AI system statement of purpose"]
+        objectives: ["Determine whether the AI system's purpose is documented."]
+      - id: "A.6.3"
+        text: "Establish an AI risk-management process including identification, assessment, treatment, and monitoring."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.6.3", "NIST AI RMF 1.0: GOVERN-4.1"]
+        examples: ["AI risk register"]
+        objectives: ["Determine whether AI risks are managed."]
+      - id: "A.6.4"
+        text: "Define a process for AI ethics review including bias, fairness, and societal impact."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.6.4", "NIST AI RMF 1.0: GOVERN-4.2"]
+        examples: ["Ethics review board"]
+        objectives: ["Determine whether AI ethics review exists."]
+      - id: "A.6.5"
+        text: "Document and apply AI-specific operational procedures and playbooks."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.6.5"]
+        examples: ["AI operational procedures"]
+        objectives: ["Determine whether AI operating procedures exist."]
+      - id: "A.6.6"
+        text: "Apply secure-by-design principles to AI systems (model and pipeline security)."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.6.6", "NIST AI SSDF: PS.AI.4"]
+        examples: ["Secure-AI design reviews"]
+        objectives: ["Determine whether secure-by-design is applied to AI."]
+
+  # ---- A.7 Resources ----
+  - function: "A7"
+    function_dir: "A7_RESOURCES"
+    category_name: "Resources for AI"
+    practices:
+      - id: "A.7.1"
+        text: "Define competence requirements for personnel involved in AI development and deployment."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.7.1", "NIST AI RMF 1.0: GOVERN-2.3"]
+        examples: ["AI competence matrix"]
+        objectives: ["Determine whether AI competence requirements exist."]
+      - id: "A.7.2"
+        text: "Provide AI-specific training and awareness to relevant personnel."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.7.2", "NIST AI RMF 1.0: GOVERN-2.3"]
+        examples: ["AI training programme"]
+        objectives: ["Determine whether AI training is provided."]
+      - id: "A.7.3"
+        text: "Plan and provision computing and data resources for AI systems."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.7.3", "NIST SP 800-53 Rev 5: SA-02"]
+        examples: ["Compute planning"]
+        objectives: ["Determine whether AI resources are planned."]
+      - id: "A.7.4"
+        text: "Maintain documentation for AI models including architecture, lineage, and dependencies."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.7.4", "NIST AI RMF 1.0: MAP-4.1"]
+        examples: ["Model card", "Lineage tracking"]
+        objectives: ["Determine whether AI model documentation is maintained."]
+      - id: "A.7.5"
+        text: "Apply AI-specific configuration management to model artefacts and pipelines."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.7.5", "NIST AI SSDF: PW.AI.5"]
+        examples: ["Model registry"]
+        objectives: ["Determine whether AI configurations are managed."]
+
+  # ---- A.8 Impact assessment ----
+  - function: "A8"
+    function_dir: "A8_IMPACT"
+    category_name: "Impact Assessment"
+    practices:
+      - id: "A.8.1"
+        text: "Conduct AI impact assessments before deployment, including individual, societal, and environmental impacts."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.8.1", "NIST AI RMF 1.0: MAP-5.1"]
+        examples: ["AIA reports"]
+        objectives: ["Determine whether impact assessments are performed."]
+      - id: "A.8.2"
+        text: "Assess AI impacts on data subjects' rights and freedoms, including privacy and non-discrimination."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.8.2", "GDPR Art. 35"]
+        examples: ["Fundamental rights impact assessment"]
+        objectives: ["Determine whether data-subject impact is assessed."]
+      - id: "A.8.3"
+        text: "Document the AI system's accountability chain and human-in/on-the-loop design."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.8.3", "NIST AI RMF 1.0: GOVERN-4.3"]
+        examples: ["Accountability documentation"]
+        objectives: ["Determine whether the accountability chain is documented."]
+      - id: "A.8.4"
+        text: "Define and apply transparency and explainability controls appropriate to the use case."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.8.4", "NIST AI RMF 1.0: MEASURE-2.8"]
+        examples: ["Model cards", "User disclosures"]
+        objectives: ["Determine whether transparency controls are applied."]
+      - id: "A.8.5"
+        text: "Apply controls to address identified AI risks per the risk treatment plan."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.8.5", "NIST AI RMF 1.0: GOVERN-4.3"]
+        examples: ["Risk treatment"]
+        objectives: ["Determine whether AI risks are treated."]
+
+  # ---- A.9 System lifecycle ----
+  - function: "A9"
+    function_dir: "A9_LIFECYCLE"
+    category_name: "System Lifecycle for AI"
+    practices:
+      - id: "A.9.1"
+        text: "Manage AI system requirements including functional, performance, ethical, and regulatory requirements."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.9.1", "NIST AI SSDF: PO.AI.1"]
+        examples: ["AI requirements specification"]
+        objectives: ["Determine whether AI requirements are managed."]
+      - id: "A.9.2"
+        text: "Validate AI system design with respect to requirements, fairness, robustness, and safety."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.9.2", "NIST AI SSDF: PW.AI.1"]
+        examples: ["Design validation"]
+        objectives: ["Determine whether AI design is validated."]
+      - id: "A.9.3"
+        text: "Manage AI training and development including data preparation, model training, and validation."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.9.3", "NIST AI SSDF: PW.AI.4"]
+        examples: ["Training runbook"]
+        objectives: ["Determine whether AI training is managed."]
+      - id: "A.9.4"
+        text: "Test AI systems for accuracy, robustness, bias, and adversarial resistance before deployment."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.9.4", "NIST AI SSDF: PW.AI.3"]
+        examples: ["Pre-deployment test suite"]
+        objectives: ["Determine whether AI systems are tested pre-deployment."]
+      - id: "A.9.5"
+        text: "Deploy AI systems with appropriate change management, release controls, and rollback plans."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.9.5", "NIST SSDF v1.1: PS.3.1"]
+        examples: ["AI deployment runbook"]
+        objectives: ["Determine whether AI deployment is controlled."]
+      - id: "A.9.6"
+        text: "Operate and monitor AI systems in production with KPIs, drift detection, and incident handling."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.9.6", "NIST AI RMF 1.0: MANAGE-2.4"]
+        examples: ["Model monitoring"]
+        objectives: ["Determine whether AI operations include monitoring."]
+      - id: "A.9.7"
+        text: "Manage AI model retirement, replacement, and end-of-life securely and ethically."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.9.7", "NIST AI SSDF: RV.AI.3"]
+        examples: ["Model retirement process"]
+        objectives: ["Determine whether AI retirement is managed."]
+      - id: "A.9.8"
+        text: "Apply AI-specific version control and change management for models, data, and configurations."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.9.8", "NIST SSDF v1.1: PS.1.1"]
+        examples: ["Model version control"]
+        objectives: ["Determine whether AI version control is applied."]
+
+  # ---- A.10 Data for AI ----
+  - function: "A10"
+    function_dir: "A10_DATA"
+    category_name: "Data for AI"
+    practices:
+      - id: "A.10.1"
+        text: "Define and enforce data quality requirements appropriate to the AI use case (accuracy, completeness, timeliness)."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.10.1", "NIST AI RMF 1.0: MAP-2.1"]
+        examples: ["Data quality SLAs"]
+        objectives: ["Determine whether data quality requirements exist."]
+      - id: "A.10.2"
+        text: "Document data origin, provenance, and lineage for training, validation, and inference datasets."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.10.2", "NIST AI SSDF: PS.AI.2"]
+        examples: ["Data lineage graph"]
+        objectives: ["Determine whether data lineage is documented."]
+      - id: "A.10.3"
+        text: "Apply data privacy and protection controls (consent, lawful basis, minimisation) to AI datasets."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.10.3", "GDPR Art. 6, 9", "ISO/IEC 27701:2019"]
+        examples: ["Consent capture", "Minimisation"]
+        objectives: ["Determine whether privacy is applied to AI data."]
+      - id: "A.10.4"
+        text: "Apply data security controls (encryption, access controls, integrity) to AI datasets and artefacts."
+        informative_references: ["ISO/IEC 42001:2023 Annex A.10.4", "NIST SP 800-53 Rev 5: SC-28"]
+        examples: ["Dataset encryption"]
+        objectives: ["Determine whether data security is applied to AI data."]

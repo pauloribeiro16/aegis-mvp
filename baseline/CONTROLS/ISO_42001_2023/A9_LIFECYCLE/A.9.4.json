@@ -1,0 +1,29 @@
+{
+  "control_id": "A.9.4",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A9",
+  "category": "System Lifecycle for AI (A)",
+  "subcategory_id": "A.9.4",
+  "subcategory_text": "Test AI systems for accuracy, robustness, bias, and adversarial resistance before deployment.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.9.4",
+    "NIST AI SSDF: PW.AI.3"
+  ],
+  "implementation_examples": [
+    "Pre-deployment test suite"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI systems are tested pre-deployment."
+  ],
+  "related_controls": [
+    "A.9.1 (ISO/IEC 42001:2023 — same family)",
+    "A.9.2 (ISO/IEC 42001:2023 — same family)",
+    "A.9.3 (ISO/IEC 42001:2023 — same family)",
+    "A.9.5 (ISO/IEC 42001:2023 — same family)",
+    "A.9.6 (ISO/IEC 42001:2023 — same family)",
+    "A.9.7 (ISO/IEC 42001:2023 — same family)",
+    "A.9.8 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

@@ -1,0 +1,27 @@
+{
+  "control_id": "A.6.2",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A6",
+  "category": "Internal Organization for AI (A)",
+  "subcategory_id": "A.6.2",
+  "subcategory_text": "Document the AI system's intended purpose, scope, and stakeholders before development.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.6.2",
+    "NIST AI RMF 1.0: MAP-1.1"
+  ],
+  "implementation_examples": [
+    "AI system statement of purpose"
+  ],
+  "assessment_objectives": [
+    "Determine whether the AI system's purpose is documented."
+  ],
+  "related_controls": [
+    "A.6.1 (ISO/IEC 42001:2023 — same family)",
+    "A.6.3 (ISO/IEC 42001:2023 — same family)",
+    "A.6.4 (ISO/IEC 42001:2023 — same family)",
+    "A.6.5 (ISO/IEC 42001:2023 — same family)",
+    "A.6.6 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

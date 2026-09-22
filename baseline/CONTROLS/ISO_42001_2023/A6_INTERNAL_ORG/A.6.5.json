@@ -1,0 +1,26 @@
+{
+  "control_id": "A.6.5",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A6",
+  "category": "Internal Organization for AI (A)",
+  "subcategory_id": "A.6.5",
+  "subcategory_text": "Document and apply AI-specific operational procedures and playbooks.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.6.5"
+  ],
+  "implementation_examples": [
+    "AI operational procedures"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI operating procedures exist."
+  ],
+  "related_controls": [
+    "A.6.1 (ISO/IEC 42001:2023 — same family)",
+    "A.6.2 (ISO/IEC 42001:2023 — same family)",
+    "A.6.3 (ISO/IEC 42001:2023 — same family)",
+    "A.6.4 (ISO/IEC 42001:2023 — same family)",
+    "A.6.6 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

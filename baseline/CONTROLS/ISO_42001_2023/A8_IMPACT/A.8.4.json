@@ -1,0 +1,27 @@
+{
+  "control_id": "A.8.4",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A8",
+  "category": "Impact Assessment (A)",
+  "subcategory_id": "A.8.4",
+  "subcategory_text": "Define and apply transparency and explainability controls appropriate to the use case.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.8.4",
+    "NIST AI RMF 1.0: MEASURE-2.8"
+  ],
+  "implementation_examples": [
+    "Model cards",
+    "User disclosures"
+  ],
+  "assessment_objectives": [
+    "Determine whether transparency controls are applied."
+  ],
+  "related_controls": [
+    "A.8.1 (ISO/IEC 42001:2023 — same family)",
+    "A.8.2 (ISO/IEC 42001:2023 — same family)",
+    "A.8.3 (ISO/IEC 42001:2023 — same family)",
+    "A.8.5 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A AIMS controls)"
+}

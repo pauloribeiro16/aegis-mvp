@@ -269,6 +269,10 @@ A run is **valid** when all of the following hold:
 9. Every §4 goal carries a valid pattern (`achieve/cease/maintain/avoid/optimize`),
    a valid property (`C/I/A/privacy-right/accountability`), its parent goal id
    (`SO-D-XX.Y.HL`), and a non-empty Adjustment record (ADR-003 D1).
+10. Document hygiene: `python scripts/doc_lint.py --strict` reports zero findings
+    over `cases/`, `templates/`, `example/`, `output/` (rules R11/R12 — no
+    unresolved placeholders, no editorial meta-commentary, all cited control
+    paths resolve).
 
 ## 9. Absorption roadmap (increments)
 

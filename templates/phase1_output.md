@@ -60,10 +60,9 @@ No fact may appear here that is not in the input (rule R6).>
      I = integrity, A = availability, privacy-right = data-subject right,
      accountability = answerability duty.
      Parent goal = the sub-domain's frozen **Baseline Goal** id from
-     D-XX.Y/objective.md (SO-D-XX.Y.HL; legacy expansion "High-Level
-     Security Objective" — ADR-004 D2).
+     D-XX.Y/objective.md (`SO-D-XX.Y.HL`).
      Adjustment (rule R3, auditable): one line on what was restated against
-     the corpus Baseline Goal (HL / per-regulation, legacy "Sub-SO") — scope
+     the corpus Baseline Goal (high-level or per-regulation) — scope
      narrowed, mechanism named, tier adapted. Scale/hosting generics belong
      in the Framing block, not per row.
      Goals carry no owner/verification fields: verification belongs to the

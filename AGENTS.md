@@ -141,10 +141,13 @@ flowchart TD
   - Automated tests and scratch scripts are necessary but **never sufficient on their own**. Agents must avoid circular validation traps (i.e. writing a test that merely confirms the assumptions of the code just written).
   - Whenever generating, filtering, or modifying documentation and baseline corpora, agents **must perform direct physical inspections** of the generated Markdown files (reading actual line ranges, verifying table columns/rows, validating section boundaries, checking markdown syntax rendering).
   - No task or implementation can be declared complete without physical evidence from the target files confirming that the output is visually and structurally sound.
+  - For documents, physical inspection includes running `python scripts/doc_lint.py` over the touched scope (R11/R12 integrity) — reading ranges alone is not sufficient.
 - **R11 — No Editorial Meta-Commentary in Documents:** Case, example and output documents carry **content and functional cross-references only**.
   - Correction, migration, supersession and designation history — e.g. `corr-NNN` references, `formerly_known_as` notes, "deprecated"/"retired" remarks, migration or reconciliation notes — **never appears in document bodies, headings, blockquotes or frontmatter**. It belongs in the document's Version History / CHANGELOG section, in git history, or in agent memory.
   - Alias/mapping tables that resolve legacy IDs to current IDs are functional data and stay; the narrative around them does not.
   - When a cleanup removes such a note, record the fact once in the document's own changelog (or the commit message), never inline in the body.
+  - Pointers to corpus or governance material are **bare functional references** (IDs + paths only): explanatory glosses, legacy-name expansions, floor/justification paragraphs and "full chain" narratives live in governance documents (AGENTS/SPEC/ADRs) or the document's own changelog — never in case/example/output bodies.
+- **R12 — Placeholder & Anchor Integrity in Documents:** No document under `cases/`, `templates/`, `example/`, `output/` may contain unresolved placeholders — `?` table cells, `?` segments inside paths (e.g. `NIST_CSF/?/X.json`), `TODO`/`FIXME` markers, or unfilled `<>` slots outside `templates/`. Every cited control-referential path must resolve under `baseline/CONTROLS/` (e.g. `NIST_CSF/<FUNCTION>/<ID>.json`); a row whose anchor cannot be resolved is **dropped** (or its cell filled with `—`), never marked with `?`. Verified mechanically: `python scripts/doc_lint.py --strict` (SPEC §8).
 
 ---
 

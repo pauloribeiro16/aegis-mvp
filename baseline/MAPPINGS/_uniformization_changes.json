@@ -1257,6 +1257,166 @@
       "new_line": "DE.CM-01, DE.CM-09, PR.PS-04, DE.AE-02, RS.MA-01, ID.RA-01, ID.RA-03, PR.PS-02.",
       "sr": "SR-DORA-030+011+012+004",
       "surface": "dora_reanchor_m10"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc05_Proportionality_Profile.md",
+      "subdomain": "—",
+      "old_line": "| Stack                | AWS (eu-west-1), Firebase Auth, Stripe | Doc 04 §7 / Doc 05 §5.2          |",
+      "new_line": "| Capability surface   | Managed cloud platform (hosting, auth, payments) | Doc 04 §7 / Doc 05 §5.2          |",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc05_Proportionality_Profile.md",
+      "subdomain": "—",
+      "old_line": "Managed-service config documented + annual review; no dedicated in-house program",
+      "new_line": "Capability inherited from managed service; documented attestation + annual review (no in-house programme)",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc05_Proportionality_Profile.md",
+      "subdomain": "—",
+      "old_line": "Managed-service config documented + annual review",
+      "new_line": "Capability inherited from managed service; documented attestation + annual review",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc05_Proportionality_Profile.md",
+      "subdomain": "—",
+      "old_line": "Supplier attestation on file (SOC 2 / ISO 27001) + 1-page internal statement",
+      "new_line": "Supplier attestation on file (recognised third-party security certification) + 1-page internal statement",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc05_Proportionality_Profile.md",
+      "subdomain": "—",
+      "old_line": "INHERIT (Firebase Auth IO-04)",
+      "new_line": "INHERIT (supplier-managed identity service)",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc05_Proportionality_Profile.md",
+      "subdomain": "—",
+      "old_line": "INHERIT (AWS/Stripe/Firebase)",
+      "new_line": "INHERIT (supplier-managed service boundary)",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc05_Proportionality_Profile.md",
+      "subdomain": "—",
+      "old_line": "CloudTrail + tamper-evident S3 log bucket",
+      "new_line": "Tamper-evident log retention (provider-managed)",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc05_Proportionality_Profile.md",
+      "subdomain": "—",
+      "old_line": "AWS Backup; RTO 24h (per Critical Analysis §4)",
+      "new_line": "Backup capability (provider-managed); RTO 24h (per Critical Analysis §4)",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc05_Proportionality_Profile.md",
+      "subdomain": "—",
+      "old_line": "AWS S3 / DynamoDB SSE-KMS enabled (AES-256 default)",
+      "new_line": "Provider at-rest encryption enabled (AES-256 family); default key custody",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc05_Proportionality_Profile.md",
+      "subdomain": "—",
+      "old_line": "Firebase Auth baseline; Firebase security documentation",
+      "new_line": "Supplier-managed identity service baseline; supplier security documentation",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc05_Proportionality_Profile.md",
+      "subdomain": "—",
+      "old_line": "- **Encryption baseline (D-01.x):** AWS S3/DynamoDB SSE-KMS AES-256 + AWS ACM TLS 1.3.",
+      "new_line": "- **Encryption baseline (D-01.x):** provider-managed at-rest encryption (AES-256 family) + provider-managed transport encryption (TLS 1.3 family).",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc05_Proportionality_Profile.md",
+      "subdomain": "—",
+      "old_line": "- **Identity (D-03.1, D-03.2):** Inherited from Firebase Auth baseline; MFA and lifecycle handled by the supplier.",
+      "new_line": "- **Identity (D-03.1, D-03.2):** Inherited from a supplier-managed identity service; MFA and lifecycle handled by the supplier.",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc05_Proportionality_Profile.md",
+      "subdomain": "—",
+      "old_line": "- **Supply chain (D-06.x):** DPA validation, SBOM per release, supplier security clauses, AWS/Stripe/Firebase boundary inherited.",
+      "new_line": "- **Supply chain (D-06.x):** DPA validation, SBOM per release, supplier security clauses, supplier-service boundary inherited.",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc05_Proportionality_Profile.md",
+      "subdomain": "—",
+      "old_line": "AWS ",
+      "new_line": "provider ",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc05_Proportionality_Profile.md",
+      "subdomain": "—",
+      "old_line": "Firebase",
+      "new_line": "supplier-managed identity service",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc05_Proportionality_Profile.md",
+      "subdomain": "—",
+      "old_line": "Stripe",
+      "new_line": "payment provider",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc06_Adjusted_Goals.md",
+      "subdomain": "—",
+      "old_line": "| Inherited capabilities | Managed hosting layer: at-rest encryption capability and key custody are inherited from the hosting layer rather than operated in-house (D-01.1, D-01.3). |",
+      "new_line": "| Inherited capabilities | Supplier-managed hosting: at-rest encryption capability and key custody are inherited from a supplier-managed layer rather than operated in-house (D-01.1, D-01.3). |",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc06_Adjusted_Goals.md",
+      "subdomain": "—",
+      "old_line": "| AG ID | Goal | Pattern | Property | Parent goal | Reg | Artigos | Anchors | Adjustment |",
+      "new_line": "| AG ID | Goal | Pattern | Property | Baseline goal id (corpus) | Reg | Artigos | Anchors | Adjustment |",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc06_Adjusted_Goals.md",
+      "subdomain": "—",
+      "old_line": "- **`00_METHODOLOGY/PREPROCESSING_by_domain/domains/D-XX.Y/`**: Corpus source for the HSO + Sub-SOs in §1 and for the restated goals in §2-§4.",
+      "new_line": "- **`00_METHODOLOGY/PREPROCESSING_by_domain/domains/D-XX.Y/`**: Corpus source for the Baseline Goals (`SO-D-XX.Y.HL` + `SO-D-XX.Y.<REG>` — legacy \"HSO\" + \"Sub-SO\") in §1 and for the restated goals in §3.",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc06_Adjusted_Goals.md",
+      "subdomain": "—",
+      "old_line": "- **§1 is preserved verbatim** and contains 2 corpus-frozen quasi-technical terms (`CI/CD` in the D-07.3 HSO, `SBOM` in the D-06.2 HSO), retained per the `proportionality_model.md §1` invariant.",
+      "new_line": "- **§1 inherited from the corpus unchanged.** Any technology tokens (`CI/CD`, `SBOM`, and similar) that appear in §1 come from the frozen Phase 0 Baseline Goal prose and are retained as inherited corpus wording (ADR-004 D2 — frozen artifact content). Technology-neutrality applies to the Adjusted Goals layer (§3), not to the inherited Baseline Goal wording.",
+      "sr": "—",
+      "surface": "tech_neutrality_m12"
     }
   ]
 }

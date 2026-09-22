@@ -1,0 +1,209 @@
+# OWASP SAMM v2.0 — advisory referential spec
+# Source: OWASP Software Assurance Maturity Model v2.0
+# https://owasp.org/www-project-samm/
+# 5 Business Functions × 3 Security Practices = 15 practices.
+# Each practice is structured around maturity streams (L1/L2/L3) summarised in
+# implementation_examples.
+
+framework: "OWASP SAMM v2.0"
+framework_short: "OWASP_SAMM"
+directory: "OWASP_SAMM"
+version: "2.0 (2020-02)"
+source_url: "https://owasp.org/www-project-samm/"
+fetched_date: "2026-09-22"
+
+families:
+  # ---- Governance ----
+  - function: "G"
+    function_dir: "GOVERNANCE"
+    category_name: "Governance"
+    practices:
+      - id: "G.SR.1"
+        category: "Strategy & Metrics"
+        text: "Establish a unified application-security strategy aligned with the organisation's business objectives, with measurable goals and risk-based prioritisation."
+        informative_references: ["OWASP SAMM v2.0: G.SR.1", "NIST CSF 2.0: GV.PO-01, GV.PO-02"]
+        examples:
+          - "L1: Document application-security goals and link them to business risks"
+          - "L2: Define measurable AppSec KPIs and publish a dashboard"
+          - "L3: Re-align strategy annually based on threat-landscape and KPI trends"
+        objectives:
+          - "Determine whether an AppSec strategy exists and is approved."
+          - "Determine whether the strategy has measurable goals."
+      - id: "G.PC.1"
+        category: "Policy & Compliance"
+        text: "Maintain application-security policies, standards, and compliance mappings that are current, accessible, and enforceable."
+        informative_references: ["OWASP SAMM v2.0: G.PC.1", "NIST SP 800-53 Rev 5: PM-01", "ISO/IEC 27001:2022: A.5.1"]
+        examples:
+          - "L1: Document AppSec policies and publish them to engineering teams"
+          - "L2: Maintain compliance mappings (e.g., GDPR, PCI) tied to controls"
+          - "L3: Automate evidence collection and audit support"
+        objectives:
+          - "Determine whether AppSec policies are documented and current."
+          - "Determine whether compliance mappings are maintained."
+      - id: "G.EG.1"
+        category: "Education & Guidance"
+        text: "Provide role-appropriate security education, training, and guidance to all stakeholders involved in the software lifecycle."
+        informative_references: ["OWASP SAMM v2.0: G.EG.1", "NIST SP 800-53 Rev 5: AT-02, AT-03"]
+        examples:
+          - "L1: Provide baseline secure-development training to all engineers"
+          - "L2: Provide role-based training (e.g., architects, devops, QA) with refreshers"
+          - "L3: Track training effectiveness via assessments and behaviour change"
+        objectives:
+          - "Determine whether role-based security training is provided."
+          - "Determine whether training effectiveness is measured."
+
+  # ---- Design ----
+  - function: "D"
+    function_dir: "DESIGN"
+    category_name: "Design"
+    practices:
+      - id: "D.TM.1"
+        category: "Threat Assessment"
+        text: "Identify and evaluate application-security threats during design and architecture stages, and incorporate mitigations into the design."
+        informative_references: ["OWASP SAMM v2.0: D.TM.1", "NIST SSDF v1.1: PW.1.1"]
+        examples:
+          - "L1: Perform ad-hoc threat modelling for new features"
+          - "L2: Standardise threat modelling with templates and reuse per feature"
+          - "L3: Use attacker-centric modelling and abuse cases at design time"
+        objectives:
+          - "Determine whether threat modelling is performed at design."
+          - "Determine whether mitigations are tracked to threats."
+      - id: "D.SR.1"
+        category: "Security Requirements"
+        text: "Derive explicit, testable security requirements from business goals, compliance obligations, and threat analysis."
+        informative_references: ["OWASP SAMM v2.0: D.SR.1", "NIST SSDF v1.1: PO.1.1"]
+        examples:
+          - "L1: Add security requirements to user stories"
+          - "L2: Maintain a security-requirements catalogue and link to compliance"
+          - "L3: Cover abuse cases and misuse cases in requirements"
+        objectives:
+          - "Determine whether security requirements are explicit and testable."
+          - "Determine whether requirements are linked to threats and compliance."
+      - id: "D.SA.1"
+        category: "Security Architecture"
+        text: "Design the application with security-relevant architectural decisions, reference architectures, and platform hardening."
+        informative_references: ["OWASP SAMM v2.0: D.SA.1", "NIST SP 800-53 Rev 5: SA-08", "NIST SSDF v1.1: PW.1.3"]
+        examples:
+          - "L1: Apply common design patterns (e.g., least privilege, defence in depth)"
+          - "L2: Maintain a reference architecture and reuse approved components"
+          - "L3: Document threat-aware architectures per product and review changes"
+        objectives:
+          - "Determine whether secure-design principles are applied."
+          - "Determine whether a reference architecture exists."
+
+  # ---- Implementation ----
+  - function: "I"
+    function_dir: "IMPLEMENTATION"
+    category_name: "Implementation"
+    practices:
+      - id: "I.SB.1"
+        category: "Secure Build"
+        text: "Apply secure-build tooling (compiler flags, linkers, packaging) and protect the build infrastructure against tampering."
+        informative_references: ["OWASP SAMM v2.0: I.SB.1", "NIST SSDF v1.1: PW.4.1, PW.4.2"]
+        examples:
+          - "L1: Apply compiler hardening flags and standard tooling"
+          - "L2: Sign and verify build artefacts; reproducible builds"
+          - "L3: Hardware-rooted build integrity (e.g., HSM signing)"
+        objectives:
+          - "Determine whether the build is hardened."
+          - "Determine whether build artefacts are integrity-protected."
+      - id: "I.SD.1"
+        category: "Secure Deployment"
+        text: "Ensure that deployments are reproducible, signed, and apply security baselines consistently across environments."
+        informative_references: ["OWASP SAMM v2.0: I.SD.1", "NIST SSDF v1.1: PS.3.1"]
+        examples:
+          - "L1: Automate deployments and use configuration management"
+          - "L2: Enforce signed artefacts and configuration baselines"
+          - "L3: Continuous verification of deployed state against desired state"
+        objectives:
+          - "Determine whether deployments are automated and signed."
+          - "Determine whether baselines are enforced in production."
+      - id: "I.DM.1"
+        category: "Defect Management"
+        text: "Collect, triage, and remediate security defects consistently across the portfolio with risk-based SLAs."
+        informative_references: ["OWASP SAMM v2.0: I.DM.1", "NIST SSDF v1.1: RV.2.1, RV.2.2"]
+        examples:
+          - "L1: Triage security findings per release"
+          - "L2: Apply SLAs by severity, with dashboard and ownership"
+          - "L3: Root-cause analysis and portfolio-level trends"
+        objectives:
+          - "Determine whether defects are triaged by risk."
+          - "Determine whether SLAs are enforced."
+
+  # ---- Verification ----
+  - function: "V"
+    function_dir: "VERIFICATION"
+    category_name: "Verification"
+    practices:
+      - id: "V.AR.1"
+        category: "Architecture Assessment"
+        text: "Review the architecture periodically against the security requirements, threat models, and reference architecture."
+        informative_references: ["OWASP SAMM v2.0: V.AR.1", "NIST SP 800-53 Rev 5: SA-08"]
+        examples:
+          - "L1: Ad-hoc architecture review by AppSec team"
+          - "L2: Scheduled review with documented checklists"
+          - "L3: Architecture delta reviews per change, with cross-team sign-off"
+        objectives:
+          - "Determine whether architecture reviews occur on a defined cadence."
+          - "Determine whether findings feed back into design improvements."
+      - id: "V.ST.1"
+        category: "Standards Compliance"
+        text: "Verify that applications comply with internal security standards and applicable regulatory baselines."
+        informative_references: ["OWASP SAMM v2.0: V.ST.1", "ISO/IEC 27001:2022: A.5.1"]
+        examples:
+          - "L1: Compliance checklist per release"
+          - "L2: Automated checks for standards compliance in CI"
+          - "L3: Independent attestation per product line"
+        objectives:
+          - "Determine whether standards compliance is verified."
+          - "Determine whether compliance is automated where possible."
+      - id: "V.TE.1"
+        category: "Testing"
+        text: "Run security tests (SAST, DAST, SCA, IAST, pentest) across the lifecycle and integrate results with defect management."
+        informative_references: ["OWASP SAMM v2.0: V.TE.1", "NIST SSDF v1.1: PW.3.1, PW.3.2"]
+        examples:
+          - "L1: SAST and SCA in CI"
+          - "L2: DAST and targeted pentest on staging"
+          - "L3: Continuous testing with risk-based depth"
+        objectives:
+          - "Determine whether automated security tests run in CI."
+          - "Determine whether pen tests occur at defined milestones."
+
+  # ---- Operations ----
+  - function: "O"
+    function_dir: "OPERATIONS"
+    category_name: "Operations"
+    practices:
+      - id: "O.IS.1"
+        category: "Incident Management"
+        text: "Detect, triage, respond to, and learn from security incidents in production with defined roles and SLAs."
+        informative_references: ["OWASP SAMM v2.0: O.IS.1", "NIST SP 800-53 Rev 5: IR-04, IR-09"]
+        examples:
+          - "L1: Documented IR process and on-call rota"
+          - "L2: Defined SLAs and playbook library"
+          - "L3: Coordinated exercises with external parties and regulator reporting"
+        objectives:
+          - "Determine whether an incident response process exists."
+          - "Determine whether lessons learned feed back into improvements."
+      - id: "O.MM.1"
+        category: "Monitoring & Metrics"
+        text: "Monitor production systems for security-relevant events and feed metrics into the AppSec programme."
+        informative_references: ["OWASP SAMM v2.0: O.MM.1", "NIST SP 800-53 Rev 5: SI-04, AU-06"]
+        examples:
+          - "L1: Centralised logging and basic alerting"
+          - "L2: Anomaly detection and security KPIs"
+          - "L3: Threat-informed detection engineering"
+        objectives:
+          - "Determine whether production is monitored for security events."
+          - "Determine whether metrics inform the AppSec programme."
+      - id: "O.OE.1"
+        category: "Operational Enablement"
+        text: "Provide operations teams with secure configuration baselines, playbooks, and tool access to maintain security posture."
+        informative_references: ["OWASP SAMM v2.0: O.OE.1", "NIST SP 800-53 Rev 5: CM-06"]
+        examples:
+          - "L1: Standard operating procedures and config baselines"
+          - "L2: Hardened images and infrastructure-as-code with tests"
+          - "L3: Continuous posture management with drift detection"
+        objectives:
+          - "Determine whether ops teams have secure baselines."
+          - "Determine whether drift is detected and remediated."

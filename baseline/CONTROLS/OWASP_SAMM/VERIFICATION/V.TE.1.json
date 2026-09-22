@@ -1,0 +1,27 @@
+{
+  "control_id": "V.TE.1",
+  "framework": "OWASP SAMM v2.0",
+  "function": "V",
+  "category": "Testing (V)",
+  "subcategory_id": "V.TE.1",
+  "subcategory_text": "Run security tests (SAST, DAST, SCA, IAST, pentest) across the lifecycle and integrate results with defect management.",
+  "informative_references": [
+    "OWASP SAMM v2.0: V.TE.1",
+    "NIST SSDF v1.1: PW.3.1, PW.3.2"
+  ],
+  "implementation_examples": [
+    "L1: SAST and SCA in CI",
+    "L2: DAST and targeted pentest on staging",
+    "L3: Continuous testing with risk-based depth"
+  ],
+  "assessment_objectives": [
+    "Determine whether automated security tests run in CI.",
+    "Determine whether pen tests occur at defined milestones."
+  ],
+  "related_controls": [
+    "V.AR.1 (OWASP SAMM v2.0 — same family)",
+    "V.ST.1 (OWASP SAMM v2.0 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-samm/",
+  "source_version": "2.0 (2020-02)"
+}

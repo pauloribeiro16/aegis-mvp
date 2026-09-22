@@ -1,0 +1,22 @@
+{
+  "framework": "OWASP SAMM v2.0",
+  "version": "2.0 (2020-02)",
+  "note": "advisory referential; ids authoritative; not enforced by scripts/verify_no_loss.py",
+  "subcategories": [
+    "D.SA.1",
+    "D.SR.1",
+    "D.TM.1",
+    "G.EG.1",
+    "G.PC.1",
+    "G.SR.1",
+    "I.DM.1",
+    "I.SB.1",
+    "I.SD.1",
+    "O.IS.1",
+    "O.MM.1",
+    "O.OE.1",
+    "V.AR.1",
+    "V.ST.1",
+    "V.TE.1"
+  ]
+}

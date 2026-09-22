@@ -1,0 +1,27 @@
+{
+  "control_id": "G.SR.1",
+  "framework": "OWASP SAMM v2.0",
+  "function": "G",
+  "category": "Strategy & Metrics (G)",
+  "subcategory_id": "G.SR.1",
+  "subcategory_text": "Establish a unified application-security strategy aligned with the organisation's business objectives, with measurable goals and risk-based prioritisation.",
+  "informative_references": [
+    "OWASP SAMM v2.0: G.SR.1",
+    "NIST CSF 2.0: GV.PO-01, GV.PO-02"
+  ],
+  "implementation_examples": [
+    "L1: Document application-security goals and link them to business risks",
+    "L2: Define measurable AppSec KPIs and publish a dashboard",
+    "L3: Re-align strategy annually based on threat-landscape and KPI trends"
+  ],
+  "assessment_objectives": [
+    "Determine whether an AppSec strategy exists and is approved.",
+    "Determine whether the strategy has measurable goals."
+  ],
+  "related_controls": [
+    "G.PC.1 (OWASP SAMM v2.0 — same family)",
+    "G.EG.1 (OWASP SAMM v2.0 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-samm/",
+  "source_version": "2.0 (2020-02)"
+}

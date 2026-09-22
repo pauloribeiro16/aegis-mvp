@@ -1,0 +1,27 @@
+{
+  "control_id": "V.AR.1",
+  "framework": "OWASP SAMM v2.0",
+  "function": "V",
+  "category": "Architecture Assessment (V)",
+  "subcategory_id": "V.AR.1",
+  "subcategory_text": "Review the architecture periodically against the security requirements, threat models, and reference architecture.",
+  "informative_references": [
+    "OWASP SAMM v2.0: V.AR.1",
+    "NIST SP 800-53 Rev 5: SA-08"
+  ],
+  "implementation_examples": [
+    "L1: Ad-hoc architecture review by AppSec team",
+    "L2: Scheduled review with documented checklists",
+    "L3: Architecture delta reviews per change, with cross-team sign-off"
+  ],
+  "assessment_objectives": [
+    "Determine whether architecture reviews occur on a defined cadence.",
+    "Determine whether findings feed back into design improvements."
+  ],
+  "related_controls": [
+    "V.ST.1 (OWASP SAMM v2.0 — same family)",
+    "V.TE.1 (OWASP SAMM v2.0 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-samm/",
+  "source_version": "2.0 (2020-02)"
+}

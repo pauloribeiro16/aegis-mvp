@@ -1,0 +1,27 @@
+{
+  "control_id": "D.SR.1",
+  "framework": "OWASP SAMM v2.0",
+  "function": "D",
+  "category": "Security Requirements (D)",
+  "subcategory_id": "D.SR.1",
+  "subcategory_text": "Derive explicit, testable security requirements from business goals, compliance obligations, and threat analysis.",
+  "informative_references": [
+    "OWASP SAMM v2.0: D.SR.1",
+    "NIST SSDF v1.1: PO.1.1"
+  ],
+  "implementation_examples": [
+    "L1: Add security requirements to user stories",
+    "L2: Maintain a security-requirements catalogue and link to compliance",
+    "L3: Cover abuse cases and misuse cases in requirements"
+  ],
+  "assessment_objectives": [
+    "Determine whether security requirements are explicit and testable.",
+    "Determine whether requirements are linked to threats and compliance."
+  ],
+  "related_controls": [
+    "D.TM.1 (OWASP SAMM v2.0 — same family)",
+    "D.SA.1 (OWASP SAMM v2.0 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-samm/",
+  "source_version": "2.0 (2020-02)"
+}

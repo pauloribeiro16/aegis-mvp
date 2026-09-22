@@ -1,0 +1,27 @@
+{
+  "control_id": "D.TM.1",
+  "framework": "OWASP SAMM v2.0",
+  "function": "D",
+  "category": "Threat Assessment (D)",
+  "subcategory_id": "D.TM.1",
+  "subcategory_text": "Identify and evaluate application-security threats during design and architecture stages, and incorporate mitigations into the design.",
+  "informative_references": [
+    "OWASP SAMM v2.0: D.TM.1",
+    "NIST SSDF v1.1: PW.1.1"
+  ],
+  "implementation_examples": [
+    "L1: Perform ad-hoc threat modelling for new features",
+    "L2: Standardise threat modelling with templates and reuse per feature",
+    "L3: Use attacker-centric modelling and abuse cases at design time"
+  ],
+  "assessment_objectives": [
+    "Determine whether threat modelling is performed at design.",
+    "Determine whether mitigations are tracked to threats."
+  ],
+  "related_controls": [
+    "D.SR.1 (OWASP SAMM v2.0 — same family)",
+    "D.SA.1 (OWASP SAMM v2.0 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-samm/",
+  "source_version": "2.0 (2020-02)"
+}

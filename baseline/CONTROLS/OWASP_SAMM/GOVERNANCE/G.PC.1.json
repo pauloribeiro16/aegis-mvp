@@ -1,0 +1,28 @@
+{
+  "control_id": "G.PC.1",
+  "framework": "OWASP SAMM v2.0",
+  "function": "G",
+  "category": "Policy & Compliance (G)",
+  "subcategory_id": "G.PC.1",
+  "subcategory_text": "Maintain application-security policies, standards, and compliance mappings that are current, accessible, and enforceable.",
+  "informative_references": [
+    "OWASP SAMM v2.0: G.PC.1",
+    "NIST SP 800-53 Rev 5: PM-01",
+    "ISO/IEC 27001:2022: A.5.1"
+  ],
+  "implementation_examples": [
+    "L1: Document AppSec policies and publish them to engineering teams",
+    "L2: Maintain compliance mappings (e.g., GDPR, PCI) tied to controls",
+    "L3: Automate evidence collection and audit support"
+  ],
+  "assessment_objectives": [
+    "Determine whether AppSec policies are documented and current.",
+    "Determine whether compliance mappings are maintained."
+  ],
+  "related_controls": [
+    "G.SR.1 (OWASP SAMM v2.0 — same family)",
+    "G.EG.1 (OWASP SAMM v2.0 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-samm/",
+  "source_version": "2.0 (2020-02)"
+}

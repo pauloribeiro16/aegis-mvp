@@ -1,0 +1,27 @@
+{
+  "control_id": "G.EG.1",
+  "framework": "OWASP SAMM v2.0",
+  "function": "G",
+  "category": "Education & Guidance (G)",
+  "subcategory_id": "G.EG.1",
+  "subcategory_text": "Provide role-appropriate security education, training, and guidance to all stakeholders involved in the software lifecycle.",
+  "informative_references": [
+    "OWASP SAMM v2.0: G.EG.1",
+    "NIST SP 800-53 Rev 5: AT-02, AT-03"
+  ],
+  "implementation_examples": [
+    "L1: Provide baseline secure-development training to all engineers",
+    "L2: Provide role-based training (e.g., architects, devops, QA) with refreshers",
+    "L3: Track training effectiveness via assessments and behaviour change"
+  ],
+  "assessment_objectives": [
+    "Determine whether role-based security training is provided.",
+    "Determine whether training effectiveness is measured."
+  ],
+  "related_controls": [
+    "G.SR.1 (OWASP SAMM v2.0 — same family)",
+    "G.PC.1 (OWASP SAMM v2.0 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-samm/",
+  "source_version": "2.0 (2020-02)"
+}

@@ -1,0 +1,27 @@
+{
+  "control_id": "O.OE.1",
+  "framework": "OWASP SAMM v2.0",
+  "function": "O",
+  "category": "Operational Enablement (O)",
+  "subcategory_id": "O.OE.1",
+  "subcategory_text": "Provide operations teams with secure configuration baselines, playbooks, and tool access to maintain security posture.",
+  "informative_references": [
+    "OWASP SAMM v2.0: O.OE.1",
+    "NIST SP 800-53 Rev 5: CM-06"
+  ],
+  "implementation_examples": [
+    "L1: Standard operating procedures and config baselines",
+    "L2: Hardened images and infrastructure-as-code with tests",
+    "L3: Continuous posture management with drift detection"
+  ],
+  "assessment_objectives": [
+    "Determine whether ops teams have secure baselines.",
+    "Determine whether drift is detected and remediated."
+  ],
+  "related_controls": [
+    "O.IS.1 (OWASP SAMM v2.0 — same family)",
+    "O.MM.1 (OWASP SAMM v2.0 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-samm/",
+  "source_version": "2.0 (2020-02)"
+}

@@ -1,0 +1,27 @@
+{
+  "control_id": "I.SB.1",
+  "framework": "OWASP SAMM v2.0",
+  "function": "I",
+  "category": "Secure Build (I)",
+  "subcategory_id": "I.SB.1",
+  "subcategory_text": "Apply secure-build tooling (compiler flags, linkers, packaging) and protect the build infrastructure against tampering.",
+  "informative_references": [
+    "OWASP SAMM v2.0: I.SB.1",
+    "NIST SSDF v1.1: PW.4.1, PW.4.2"
+  ],
+  "implementation_examples": [
+    "L1: Apply compiler hardening flags and standard tooling",
+    "L2: Sign and verify build artefacts; reproducible builds",
+    "L3: Hardware-rooted build integrity (e.g., HSM signing)"
+  ],
+  "assessment_objectives": [
+    "Determine whether the build is hardened.",
+    "Determine whether build artefacts are integrity-protected."
+  ],
+  "related_controls": [
+    "I.SD.1 (OWASP SAMM v2.0 — same family)",
+    "I.DM.1 (OWASP SAMM v2.0 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-samm/",
+  "source_version": "2.0 (2020-02)"
+}

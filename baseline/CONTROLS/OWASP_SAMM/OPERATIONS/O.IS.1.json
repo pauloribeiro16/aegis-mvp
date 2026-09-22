@@ -1,0 +1,27 @@
+{
+  "control_id": "O.IS.1",
+  "framework": "OWASP SAMM v2.0",
+  "function": "O",
+  "category": "Incident Management (O)",
+  "subcategory_id": "O.IS.1",
+  "subcategory_text": "Detect, triage, respond to, and learn from security incidents in production with defined roles and SLAs.",
+  "informative_references": [
+    "OWASP SAMM v2.0: O.IS.1",
+    "NIST SP 800-53 Rev 5: IR-04, IR-09"
+  ],
+  "implementation_examples": [
+    "L1: Documented IR process and on-call rota",
+    "L2: Defined SLAs and playbook library",
+    "L3: Coordinated exercises with external parties and regulator reporting"
+  ],
+  "assessment_objectives": [
+    "Determine whether an incident response process exists.",
+    "Determine whether lessons learned feed back into improvements."
+  ],
+  "related_controls": [
+    "O.MM.1 (OWASP SAMM v2.0 — same family)",
+    "O.OE.1 (OWASP SAMM v2.0 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-samm/",
+  "source_version": "2.0 (2020-02)"
+}

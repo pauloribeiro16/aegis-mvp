@@ -1,0 +1,27 @@
+{
+  "control_id": "I.DM.1",
+  "framework": "OWASP SAMM v2.0",
+  "function": "I",
+  "category": "Defect Management (I)",
+  "subcategory_id": "I.DM.1",
+  "subcategory_text": "Collect, triage, and remediate security defects consistently across the portfolio with risk-based SLAs.",
+  "informative_references": [
+    "OWASP SAMM v2.0: I.DM.1",
+    "NIST SSDF v1.1: RV.2.1, RV.2.2"
+  ],
+  "implementation_examples": [
+    "L1: Triage security findings per release",
+    "L2: Apply SLAs by severity, with dashboard and ownership",
+    "L3: Root-cause analysis and portfolio-level trends"
+  ],
+  "assessment_objectives": [
+    "Determine whether defects are triaged by risk.",
+    "Determine whether SLAs are enforced."
+  ],
+  "related_controls": [
+    "I.SB.1 (OWASP SAMM v2.0 — same family)",
+    "I.SD.1 (OWASP SAMM v2.0 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-samm/",
+  "source_version": "2.0 (2020-02)"
+}

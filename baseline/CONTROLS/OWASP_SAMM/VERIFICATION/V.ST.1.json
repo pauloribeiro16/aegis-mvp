@@ -1,0 +1,27 @@
+{
+  "control_id": "V.ST.1",
+  "framework": "OWASP SAMM v2.0",
+  "function": "V",
+  "category": "Standards Compliance (V)",
+  "subcategory_id": "V.ST.1",
+  "subcategory_text": "Verify that applications comply with internal security standards and applicable regulatory baselines.",
+  "informative_references": [
+    "OWASP SAMM v2.0: V.ST.1",
+    "ISO/IEC 27001:2022: A.5.1"
+  ],
+  "implementation_examples": [
+    "L1: Compliance checklist per release",
+    "L2: Automated checks for standards compliance in CI",
+    "L3: Independent attestation per product line"
+  ],
+  "assessment_objectives": [
+    "Determine whether standards compliance is verified.",
+    "Determine whether compliance is automated where possible."
+  ],
+  "related_controls": [
+    "V.AR.1 (OWASP SAMM v2.0 — same family)",
+    "V.TE.1 (OWASP SAMM v2.0 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-samm/",
+  "source_version": "2.0 (2020-02)"
+}

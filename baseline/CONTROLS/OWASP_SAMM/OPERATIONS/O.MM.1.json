@@ -1,0 +1,27 @@
+{
+  "control_id": "O.MM.1",
+  "framework": "OWASP SAMM v2.0",
+  "function": "O",
+  "category": "Monitoring & Metrics (O)",
+  "subcategory_id": "O.MM.1",
+  "subcategory_text": "Monitor production systems for security-relevant events and feed metrics into the AppSec programme.",
+  "informative_references": [
+    "OWASP SAMM v2.0: O.MM.1",
+    "NIST SP 800-53 Rev 5: SI-04, AU-06"
+  ],
+  "implementation_examples": [
+    "L1: Centralised logging and basic alerting",
+    "L2: Anomaly detection and security KPIs",
+    "L3: Threat-informed detection engineering"
+  ],
+  "assessment_objectives": [
+    "Determine whether production is monitored for security events.",
+    "Determine whether metrics inform the AppSec programme."
+  ],
+  "related_controls": [
+    "O.IS.1 (OWASP SAMM v2.0 — same family)",
+    "O.OE.1 (OWASP SAMM v2.0 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-samm/",
+  "source_version": "2.0 (2020-02)"
+}

@@ -1,0 +1,27 @@
+{
+  "control_id": "I.SD.1",
+  "framework": "OWASP SAMM v2.0",
+  "function": "I",
+  "category": "Secure Deployment (I)",
+  "subcategory_id": "I.SD.1",
+  "subcategory_text": "Ensure that deployments are reproducible, signed, and apply security baselines consistently across environments.",
+  "informative_references": [
+    "OWASP SAMM v2.0: I.SD.1",
+    "NIST SSDF v1.1: PS.3.1"
+  ],
+  "implementation_examples": [
+    "L1: Automate deployments and use configuration management",
+    "L2: Enforce signed artefacts and configuration baselines",
+    "L3: Continuous verification of deployed state against desired state"
+  ],
+  "assessment_objectives": [
+    "Determine whether deployments are automated and signed.",
+    "Determine whether baselines are enforced in production."
+  ],
+  "related_controls": [
+    "I.SB.1 (OWASP SAMM v2.0 — same family)",
+    "I.DM.1 (OWASP SAMM v2.0 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-samm/",
+  "source_version": "2.0 (2020-02)"
+}

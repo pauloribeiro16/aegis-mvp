@@ -4,3 +4,4 @@ __pycache__/
 
 # ZCode session artifacts
 .zcode/
+_audit_input.jsonl

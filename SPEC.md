@@ -28,7 +28,7 @@ a run. There is no code to deploy in Increment 0.
 
 - One input file, five short prose sections (§4).
 - One output file: company profile echo + applicable regulations + applicable
-  sub-domain subset + adjusted objectives with regulatory and NIST anchors (§6).
+  sub-domain subset + adjusted goals with regulatory and NIST anchors (§6).
 - The sub-domain axis is a **subset of the 38 AEGIS sub-domains** `D-XX.Y` —
   only those that apply to the company (§7, rule R1).
 
@@ -43,11 +43,11 @@ graph/ontology/dashboard infrastructure. See §9.
 |---|---|---|
 | **Inherited** | Modular sub-domain corpus (`D-01.1` … `D-10.3`, each `D-XX.Y/` providing a regulation-neutral `objective.md`, independent per-regulation modules `regs/<REG>.md` + `regs/<REG>.ambiguity.md`, cross-regulation analyses `cross/<R1>-<R2>.md` + `cross/_interactions.md`), verbatim article copies (`articles/`), control referentials (`CONTROLS/`), ambiguity baseline (`AMBIGUITY_REGISTRY/`), SR↔control mapping store (`MAPPINGS/sr_control_mappings/` — complete per-regulation NIST CSF 2.0 / PF 1.1 / AI RMF mappings extracted from the frozen dashboards) | **Read by reference** via `config.yaml`. Never modify, never copy into this repo, never re-derive interpretations the corpus already contains. |
 | **Company input** | Company profile, product, data handled, systems, regulations assumed | **Provided once** as `company_input.md` (§4). This is the *only* thing a new project must supply. |
-| **Generated** | Applicability reasoning + adjusted objectives with anchors | **Produced by the procedure** (§5) into `phase1_output.md` (§6). |
+| **Generated** | Applicability reasoning + adjusted goals with anchors | **Produced by the procedure** (§5) into `phase1_output.md` (§6). |
 
 Rationale: in the full methodology, "controls" (NIST/OWASP referentials) and
 regulatory interpretation are frozen Phase-0 baseline shared by all cases; a new
-project inherits them at zero cost. "Objectives" are an *output* of Phase 1, not
+project inherits them at zero cost. "Goals" are an *output* of Phase 1, not
 an input — only business goals enter through the input file.
 
 Corpus layout note: the per-regulation modular layout was produced
@@ -81,7 +81,7 @@ All paths live in `config.yaml` (see that file). The executor must resolve:
 - `corpus.traceability` — generated baseline traceability chain
   (`traceability/<REG>.md` + `traceability.csv` + `index.md`): regulation ->
   article -> ambiguity clause -> HSO -> SO-<REG> -> Sub-SO -> requirement ->
-  CSF/PF/AI-RMF controls. Read it to place an objective in the full chain;
+  CSF/PF/AI-RMF controls. Read it to place a goal in the full chain;
   regenerate with `scripts/build_traceability.py`.
 - `ambiguity_registry.path` — canonical ambiguity baseline (`registry.md`).
 - `pipeline.output_language` — output language (default `en`).
@@ -132,7 +132,7 @@ derivation; P5 renders and validates.
   scope via GDPR Art. 32). Record each selected sub-domain with a one-line
   trigger rationale in output §3. Target size: as small as the facts allow
   (typical small company: 4–10 sub-domains).
-- **P4 — Derive adjusted objectives.** For each in-scope sub-domain:
+- **P4 — Derive adjusted goals.** For each in-scope sub-domain:
   1. Read `D-XX.Y/objective.md` (the regulation-neutral High-level Security
      Objective) and, for **each regulation confirmed in P2**, the independent
      module `D-XX.Y/regs/<REG>.md` (Sub-SO card + security requirements +
@@ -140,7 +140,7 @@ derivation; P5 renders and validates.
      `D-XX.Y/cross/<R1>-<R2>.md` and `cross/_interactions.md` for aggregation.
   2. Keep only the Sub-SOs / requirements of regulations confirmed in P2
      (the modules already enforce this per regulation).
-  3. Restate each as a company-proportional objective (rule R3) with ID
+  3. Restate each as a company-proportional goal (rule R3) with ID
      `AG-D-XX.Y-NNN` (rule R4).
   4. Anchor it: cite regulation article(s) that **exist as copies** in the
      sub-domain's `articles/` directory (rule R2a) and optionally 1–2 control
@@ -172,11 +172,11 @@ One Markdown file with light AEGIS-style frontmatter and six sections. Skeleton:
 §1  Company Profile Echo        (≤15 lines, verbatim-faithful condensation of input §1–§4)
 §2  Applicable Regulations      (table: Regulation | Verdict | Rationale)
 §3  Applicable Sub-domain Subset (table: Sub-domain | Name | Trigger rationale)
-§4  Adjusted Objectives         (one table per sub-domain:
-                                 | ID | Adjusted objective | Regulatory source | Control anchor |
+§4  Adjusted Goals               (one table per sub-domain:
+                                 | ID | Adjusted goal | Regulatory source | Control anchor |
                                  IDs: AG-D-XX.Y-NNN)
 §4.1 Control Anchor Mapping     (table: ID | Regulation | CSF 2.0 | NIST PF 1.1 |
-                                 NIST AI RMF | Source — one row per (objective,
+                                 NIST AI RMF | Source — one row per (goal,
                                  confirmed regulation) pair; values copied from the
                                  active modules / mapping store; R8 discipline)
 §5  Ambiguities & Open Questions (registry card refs + company-specific doubts)
@@ -206,24 +206,26 @@ the `company_input.md` used), `corpus` (the `corpus.root` value from config).
     ISO/IEC 27001:2022 (`ISO_27001_2022/`), ISO/IEC 27701:2019
     (`ISO_27701_2019/`), ISO/IEC 42001:2023 (`ISO_42001_2023/`), CIS Controls
     v8 (`CIS_CONTROLS_V8/`), BSI IT-Grundschutz (`BSI_GRUNDSCHUTZ/`), ENISA
-    (`ENISA/`). Maximum 2 anchors per objective; omit the column content
+    (`ENISA/`). Maximum 2 anchors per goal; omit the column content
     (`—`) rather than stretch a match.
-  - **No invented anchors, ever.** If no anchor can be found, the objective is
+  - **No invented anchors, ever.** If no anchor can be found, the goal is
     suspect — re-derive or drop it.
-- **R3 — Proportionality.** Objectives are restated to company size: a 15-employee
+- **R3 — Proportionality.** Goals are restated to company size: a 15-employee
   clinic chain gets "encrypt the client database at rest", not an enterprise
   key-management programme. No tier scores in Increment 0 — proportionality lives
   in the phrasing only.
 - **R4 — IDs.** `AG-D-XX.Y-NNN`, zero-padded three digits, sequential per
-  sub-domain within the run (`AG-D-01.1-001`, `AG-D-01.1-002`, …). This matches
-  the AEGIS adjusted-goal scheme so later absorption into Doc13-like documents is
-  mechanical.
+  sub-domain within the run (`AG-D-01.1-001`, `AG-D-01.1-002`, …). `AG` =
+  **Adjusted Goal** — designation convention of the methodology: **Phase 1
+  produces Goals**, Phase 2 produces Objectives, Phase 3 produces Requirements.
+  This matches the AEGIS adjusted-goal scheme so later absorption into
+  Doc13-like documents is mechanical.
 - **R5 — Language.** Output in `pipeline.output_language` (default English).
   Input may be any language; the output §1 echo preserves proper nouns as-is.
 - **R6 — No invention of company facts.** Every statement about the company in
   §1, §2 and §3 must trace to input text or be marked as an explicit assumption
   (`> ASSUMPTION:` blockquote) in §5.
-- **R7 — Ambiguity deference.** When a clause cited for an objective has a card in
+- **R7 — Ambiguity deference.** When a clause cited for a goal has a card in
   the ambiguity registry, cite the card (registry ID) in §5 and follow its canonical
   resolution; do not re-litigate the ambiguity in the output.
 - **R8 — Regulation discipline.** Obligations are derived only from regulations
@@ -258,7 +260,7 @@ Each increment adds one slice of the full methodology, in absorption order:
 | Inc. | Adds | Absorbs from `Methodology_compact` |
 |---|---|---|
 | **0 (this)** | 1 input → 1 output, subset axis, real anchors | corpus by reference (already wired) |
-| 1 | Split the output into two documents: applicability report (Doc08-like) + adjusted objectives (Doc13-like) | `01_PHASE1_CONTEXT_RICH/Doc08`, `Doc13` structure |
+| 1 | Split the output into two documents: applicability report (Doc08-like) + adjusted goals (Doc13-like) | `01_PHASE1_CONTEXT_RICH/Doc08`, `Doc13` structure |
 | 2 | Architecture & data inventory + third-party landscape as inputs | `Doc04`, `Doc06` sections |
 | 3 | Clause mapping matrix, compliance matrix, proportionality tier + gate | `Doc10`, `Doc11`, `Doc12`; gate thresholds (LOW ≥60% / MEDIUM ≥75% / HIGH ≥80%) |
 | 4 | Full intake (decision trees, conditional blocks, readiness, RACI, posture) | `Doc02_INTAKE_FORM` §1–§11 |

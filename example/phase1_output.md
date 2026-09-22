@@ -39,21 +39,21 @@ logins on the app admin console; the console has no MFA today.
 | Sub-domain | Name | Trigger rationale |
 |---|---|---|
 | D-01.1 | Data at Rest Encryption | Client personal data is stored at rest in the platform database and backups → GDPR storage-limitation/integrity + security-of-processing duties. |
-| D-03.2 | Multi-Factor Authentication | Staff and admin-console access governs who processes client personal data → GDPR authorised-persons and confidentiality duties (note: GDPR itself imposes no explicit MFA mandate; the objective follows the corpus Sub-SO). |
+| D-03.2 | Multi-Factor Authentication | Staff and admin-console access governs who processes client personal data → GDPR authorised-persons and confidentiality duties (note: GDPR itself imposes no explicit MFA mandate; the goal follows the corpus Sub-SO). |
 | D-05.3 | Right to Erasure | Clients can request deletion of their account and appointment/clinical-adjacent data → GDPR Art. 17 data-subject right. |
 | D-09.4 | Records of Processing | As controller, VetCare must document its processing activities, including the software house as processor → GDPR Art. 30. |
 
-## §4 Adjusted Objectives
+## §4 Adjusted Goals
 
 ### D-01.1 — Data at Rest Encryption
 
-| ID | Adjusted objective | Regulatory source | Control anchor |
+| ID | Adjusted goal | Regulatory source | Control anchor |
 |---|---|---|---|
 | AG-D-01.1-001 | Client personal data at rest in the appointment platform database and its backups is protected by appropriate technical measures — encrypted to the current state of the art. | GDPR Art. 32; GDPR Art. 5 | CSF 2.0 PR.DS-01 |
 
 ### D-03.2 — Multi-Factor Authentication
 
-| ID | Adjusted objective | Regulatory source | Control anchor |
+| ID | Adjusted goal | Regulatory source | Control anchor |
 |---|---|---|---|
 | AG-D-03.2-001 | Only staff acting on documented instructions, each bound by confidentiality and with an individual login, process client personal data; the admin console enforces multi-factor authentication as the technical protection measure. | GDPR Art. 28; GDPR Art. 29 | CSF 2.0 PR.AA-03 |
 
@@ -65,14 +65,14 @@ sub-domain's merged file (GDPR↔NIS2 pair section), which satisfies R2a.
 
 ### D-05.3 — Right to Erasure
 
-| ID | Adjusted objective | Regulatory source | Control anchor |
+| ID | Adjusted goal | Regulatory source | Control anchor |
 |---|---|---|---|
 | AG-D-05.3-001 | Erasure requests from clients are honoured without undue delay where an Art. 17(1) ground applies (e.g. consent withdrawn, data no longer necessary for the appointment service); consent withdrawal is made as easy as consent itself. | GDPR Art. 17; GDPR Art. 7 | CSF 2.0 PR.DS-10 |
 | AG-D-05.3-002 | The app provides clients a way to request account/data deletion, and the software-house contract requires deletion or return of all personal data, including existing copies, at contract end. | GDPR Art. 17; GDPR Art. 28 | CSF 2.0 PR.DS-10 |
 
 ### D-09.4 — Records of Processing
 
-| ID | Adjusted objective | Regulatory source | Control anchor |
+| ID | Adjusted goal | Regulatory source | Control anchor |
 |---|---|---|---|
 | AG-D-09.4-001 | A Record of Processing Activities is maintained covering clinic and app processing, identifying the software house as processor and the PSP as a recipient. | GDPR Art. 30 | CSF 2.0 GV.PO-02; ID.AM-08 |
 
@@ -95,8 +95,8 @@ sub-domain's merged file (GDPR↔NIS2 pair section), which satisfies R2a.
 ## §6 Handoff Notes to Phase 2
 
 VetCare Connect is a GDPR-only controller (1 regulation, LOW complexity).
-Scope: 4 sub-domains, 6 adjusted objectives (AG-D-01.1-001 … AG-D-09.4-001).
-Phase 2 should derive rules/requirements from these objectives, prioritising:
+Scope: 4 sub-domains, 6 adjusted goals (AG-D-01.1-001 … AG-D-09.4-001).
+Phase 2 should derive rules/requirements from these goals, prioritising:
 (1) vendor-contract review vs Art. 28(3) — blocking for AG-D-05.3-002;
 (2) MFA rollout on the admin console — AG-D-03.2-001;
 (3) encryption-at-rest confirmation with the software house — AG-D-01.1-001

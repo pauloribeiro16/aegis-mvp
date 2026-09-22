@@ -8,7 +8,7 @@ repo (`Methodology_compact`).
 ## The idea in one line
 
 > One company input file → one Phase 1 output file (profile + applicable regulations
-> + adjusted objectives per applicable sub-domain), with regulatory and control
+> + adjusted goals per applicable sub-domain), with regulatory and control
 > knowledge **inherited by reference** from the frozen AEGIS baseline corpus.
 
 ## The three natures of Phase 1 information
@@ -73,7 +73,7 @@ aegis-mvp/
   Each `regs/<REG>.md` is independent of every other regulation — applying any
   single regulation never requires loading the others; cross-regulation analysis
   lives in `cross/`.
-- **ID-compatible.** Adjusted objectives reuse the AEGIS `AG-D-XX.Y-NNN` scheme and
+- **ID-compatible.** Adjusted goals reuse the AEGIS `AG-D-XX.Y-NNN` scheme and
   sub-domain codes (`D-01.1` … `D-10.3`) so later increments can absorb outputs into
   the canonical document chain (Doc08/Doc10/Doc11/Doc12/Doc13) without rework.
 - **Interpretation is frozen.** Cross-regulation analysis, hierarchical objectives

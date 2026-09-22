@@ -27,7 +27,7 @@ Outputs:
     (sub-domain, regulation, requirement) with semicolon-joined articles/clauses
   - baseline/MAPPINGS/traceability/index.md   how-to-read + coverage counts
 
-Baseline-only by design: per-company adjusted objectives (AG-D-XX.Y-NNN) are
+Baseline-only by design: per-company adjusted goals (AG-D-XX.Y-NNN) are
 recorded in each Phase 1 run (templates/phase1_output.md §4.1), never here.
 
 Usage:
@@ -133,7 +133,7 @@ def main():
     index_lines.append("- Chain per row: regulation -> article(s) -> ambiguity clause(s) -> "
                        "HSO `SO-D-XX.Y.HL` -> `SO-<REG>-NNN` -> Sub-SO `SO-D-XX.Y.<REG>` -> "
                        "requirement (`req_id` + `SR`) -> CSF 2.0 | PF 1.1 | AI RMF.")
-    index_lines.append("- Baseline-only: per-company adjusted objectives (`AG-D-XX.Y-NNN`) are "
+    index_lines.append("- Baseline-only: per-company adjusted goals (`AG-D-XX.Y-NNN`) are "
                        "recorded in each Phase 1 output (`templates/phase1_output.md` §4.1).")
     index_lines.append("- Control values are the module YAML sets, guaranteed equal to the "
                        "dashboard crosswalk (check H of `scripts/verify_no_loss.py`).")

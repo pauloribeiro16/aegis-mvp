@@ -37,11 +37,11 @@ No fact may appear here that is not in the input (rule R6).>
 |---|---|---|
 | D-XX.Y | <canonical name from corpus> | <one line: regulation + company fact> |
 
-## §4 Adjusted Objectives
+## §4 Adjusted Goals
 
 ### D-XX.Y — <canonical name>
 
-| ID | Adjusted objective | Regulatory source | Control anchor |
+| ID | Adjusted goal | Regulatory source | Control anchor |
 |---|---|---|---|
 | AG-D-XX.Y-001 | <company-proportional restatement> | <REG Art. N> | <referential ID> or — |
 
@@ -55,7 +55,7 @@ No fact may appear here that is not in the input (rule R6).>
 |---|---|---|---|---|---|
 | AG-D-XX.Y-001 | <REG confirmed in §2> | <ids or —> | <ids or —> | <ids or —> | `SR-<REG>-NNN` |
 
-<!-- One row per (objective, confirmed regulation) pair. Copy the values from the
+<!-- One row per (goal, confirmed regulation) pair. Copy the values from the
      active module regs/<REG>.md (Sub-SO anchor blocks / requirement YAML
      nist_csf / nist_pf / nist_airmf, including the generated `**Control anchors:**`
      lines on the ambiguity cards) or from

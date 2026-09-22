@@ -40,9 +40,9 @@ resolution followed (closed-list reading of the four Art. 32(1) measures).
    sub-domain file's mention alone (rule R2b exists for this).
 2. Sub-domains without GDPR `articles/` copies (D-03.2) still support R2a via
    the merged file's verbatim pair sections — check both arms before dropping
-   an objective.
+   a goal.
 3. The corpus's per-regulation Sub-SOs encode honest scope nuance (D-03.2:
-   "no explicit MFA mandate" under GDPR) — objectives inherit that nuance
+   "no explicit MFA mandate" under GDPR) — goals inherit that nuance
    instead of overclaiming.
 
 ## Post-modularization note (2026-09-21, after M1/M2)

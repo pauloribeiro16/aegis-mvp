@@ -40,5 +40,6 @@ ambiguity_registry:
 pipeline:
   # Output language for generated documents
   output_language: "en"
-  # Objective ID scheme: AG-D-XX.Y-NNN (sequential per sub-domain within a run)
-  objective_id_prefix: "AG"
+  # Goal ID scheme (Phase 1 = Goals; AG = Adjusted Goal): AG-D-XX.Y-NNN
+  # (sequential per sub-domain within a run)
+  goal_id_prefix: "AG"

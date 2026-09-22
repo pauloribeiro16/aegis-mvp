@@ -11,7 +11,7 @@
 Its primary mission is to bootstrap a **new** company/project with the absolute minimum information possible, producing:
 1. An assessment of **applicable regulations** (binary predicates).
 2. A selection of the **applicable sub-domain subset** (from the 38 canonical sub-domains `D-01.1` to `D-10.3`).
-3. **Adjusted Objectives** (`AG-D-XX.Y-NNN`) tailored proportionally to the company's profile, **without technology or vendor lock-in**.
+3. **Adjusted Goals** (`AG-D-XX.Y-NNN`) tailored proportionally to the company's profile, **without technology or vendor lock-in**.
 
 All deep regulatory knowledge, article texts, and baseline control taxonomies are **inherited by reference** from the frozen AEGIS methodology baseline (`Methodology_compact`).
 
@@ -84,7 +84,7 @@ aegis-mvp/
 |---|---|---|
 | **Inherited (Free)** | 38 Sub-domains `D-XX.Y`, verbatim articles (`articles/`), control referentials under `CONTROLS/` — enforced by `scripts/verify_no_loss.py` are NIST CSF 2.0, NIST PF 1.1, NIST AI RMF; **advisory** (per-control JSONs available for citation, **not** enforced by `verify_no_loss.py`) are NIST SP 800-53 Rev 5, NIST SSDF (SP 800-218), NIST AI SSDF (SP 800-218A), OWASP ASVS, OWASP SAMM, ISO/IEC 27001:2022, ISO/IEC 27701:2019, ISO/IEC 42001:2023, CIS Critical Security Controls v8, BSI IT-Grundschutz, and ENISA — ambiguity baseline (`AMBIGUITY_REGISTRY/`), SR↔control mapping store (`MAPPINGS/sr_control_mappings/`) and full traceability chain (`MAPPINGS/traceability/`: regulation → article → clause → HSO → SO-REG → Sub-SO → requirement → controls), both dashboard-extracted and uniformized with the modules. | **Read-only by reference** via `config.yaml`. Never modify, copy, or re-derive interpretations already established. |
 | **Company Input** | Profile, products/services, data handled, infrastructure, assumed regulations. | **Provided once** in `input/<company>/company_input.md` (5 sections, plain prose). Never fabricate facts (Rule R6). |
-| **Generated Output** | Applicability rationale, sub-domain triggers, company-adjusted objectives (`AG-D-XX.Y-NNN`). | **Produced by the agent** into `output/<company>/phase1_output.md` following `SPEC.md`. |
+| **Generated Output** | Applicability rationale, sub-domain triggers, company-adjusted goals (`AG-D-XX.Y-NNN`). | **Produced by the agent** into `output/<company>/phase1_output.md` following `SPEC.md`. |
 
 ---
 
@@ -97,7 +97,7 @@ flowchart TD
     In["Company Input<br>(input/&lt;company&gt;/company_input.md)"] --> P1["P1. Extract Facts<br>(Sector, size, jurisdiction, data categories, tech)"]
     P1 --> P2["P2. Confirm Applicable Regulations<br>(Scope checks for GDPR, CRA, NIS2, DORA, AI Act)"]
     P2 --> P3["P3. Select Sub-Domain Subset<br>(Trigger match against D-01.1 .. D-10.3)"]
-    P3 --> P4["P4. Derive Adjusted Objectives<br>(HSO/Sub-SO restated proportionally; IDs: AG-D-XX.Y-NNN)"]
+    P3 --> P4["P4. Derive Adjusted Goals<br>(HSO/Sub-SO restated proportionally; IDs: AG-D-XX.Y-NNN)"]
     P4 --> P5["P5. Render & Validate<br>(Render output & pass SPEC.md §8 checklist)"]
     P5 --> Out["Phase 1 Output<br>(output/&lt;company&gt;/phase1_output.md)"]
 ```
@@ -106,9 +106,9 @@ flowchart TD
 1. **P1 — Extract Facts:** Read `company_input.md` (§1–§4). Build the fact sheet without making unstated inferences.
 2. **P2 — Confirm Regulations:** Evaluate the 5 candidate regulations (`GDPR`, `CRA`, `NIS2`, `DORA`, `AI_Act`). State whether each applies or does not apply with a 1-line rationale.
 3. **P3 — Select Sub-domain Subset:** Determine which of the 38 sub-domains are triggered by the applicable regulations and the company's operational profile (typical small company: 4–10 sub-domains).
-4. **P4 — Derive Adjusted Objectives:**
+4. **P4 — Derive Adjusted Goals:**
    - For each active sub-domain, read `objective.md` (the regulation-neutral HSO) and, **for each regulation confirmed in P2**, the independent module `regs/<REG>.md` (Sub-SO card + security requirements + verbatim regulatory basis). When ≥2 confirmed regulations apply, consult `cross/<R1>-<R2>.md` and `cross/_interactions.md` for aggregation.
-   - Restate the objective to fit the company's scale and operational reality (**proportionality**).
+   - Restate the objective as a company-proportional **goal** to fit the company's scale and operational reality (**proportionality**).
    - Assign canonical IDs (`AG-D-XX.Y-NNN`).
    - Cite regulatory articles and control anchors strictly from the baseline corpus: the module anchor surfaces (`regs/<REG>.md` Sub-SO anchor blocks + requirement YAML `nist_csf`/`nist_pf`/`nist_airmf`, the `**Control anchors:**` lines on the ambiguity cards) and the mapping store (`MAPPINGS/sr_control_mappings/<REG>.json`) are pre-verified — copy from them, never re-derive.
    - Respect ambiguity cards from `AMBIGUITY_REGISTRY/` if applicable.
@@ -122,7 +122,7 @@ flowchart TD
 - **R2 — Anchor Integrity:**
   - Every regulatory citation must exist in the sub-domain's `articles/` directory or be quotable verbatim from `regs/<REG>.md` ("Verbatim regulatory basis" section).
   - Every control anchor must exist in the `CONTROLS/` referential (NIST CSF 2.0, NIST PF 1.1 in `NIST_PF/`, NIST AI RMF in `NIST_AI_RMF/`). PF 1.1 anchors only accompany GDPR-derived obligations and AI RMF anchors only AI_Act-derived obligations (dashboard-published axes; rule R8).
-  - **No invented anchors.** If an anchor cannot be verified, omit or re-derive the objective.
+  - **No invented anchors.** If an anchor cannot be verified, omit or re-derive the goal.
 - **R2b (advisory referentials).** Additional control referentials are available under `CONTROLS/` for citation at the agent's discretion:
   NIST SP 800-53 Rev 5 (`NIST_SP_800_53R5/`), NIST SSDF v1.1 (`NIST_SSDF/`), NIST AI SSDF Profile (`NIST_AI_SSDF/`), OWASP ASVS (`OWASP_ASVS/`), OWASP SAMM (`OWASP_SAMM/`), ISO/IEC 27001:2022 Annex A (`ISO_27001_2022/`), ISO/IEC 27701:2019 Annex A (`ISO_27701_2019/`), ISO/IEC 42001:2023 Annex A (`ISO_42001_2023/`), CIS Critical Security Controls v8 (`CIS_CONTROLS_V8/`), BSI IT-Grundschutz (`BSI_GRUNDSCHUTZ/`), and ENISA advisory guidance (`ENISA/`). These referentials are **not enforced** by `scripts/verify_no_loss.py` and do not appear in `MAPPINGS/sr_control_mappings/<REG>.json`. When cited, the cited ID must exist as a JSON file in the corresponding `CONTROLS/<FW>/` subtree; agent discretion applies.
 - **R3 — Proportionality:** Adjust wording to company size/maturity (e.g., an 8-person company gets managed-cloud encryption, not a dedicated PKI governance board).
@@ -148,7 +148,10 @@ flowchart TD
 
 | Feature | Phase 1 (This MVP) | Phase 2 (Downstream) |
 |---|---|---|
-| **Primary Goal** | Context, Regulatory Scope, Adjusted Objectives | Concrete Rules, Controls, Mitigations |
-| **Output Unit** | `AG-D-XX.Y-NNN` (Adjusted Objective) | `R-D-XX.Y-NNN` (Rules Catalog), Controls mapping |
+| **Primary Goal** | Context, Regulatory Scope, Adjusted Goals | Concrete Rules, Controls, Mitigations |
+| **Output Unit** | `AG-D-XX.Y-NNN` (Adjusted Goal) | `R-D-XX.Y-NNN` (Rules Catalog), Controls mapping |
 | **Level of Abstraction** | Technology-neutral (what requirements bind us) | Architecture & implementation specific (how we comply) |
 | **Verification** | Regulatory and baseline control anchors | Verification tests, audit evidence, metrics |
+
+Designation convention (methodology-wide): **Phase 1 = Goals** (`AG-D-XX.Y-NNN`,
+Adjusted Goals), **Phase 2 = Objectives**, **Phase 3 = Requirements**.

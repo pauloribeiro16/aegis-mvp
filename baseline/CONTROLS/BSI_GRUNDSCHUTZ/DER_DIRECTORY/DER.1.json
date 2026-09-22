@@ -1,0 +1,25 @@
+{
+  "control_id": "DER.1",
+  "framework": "BSI IT-Grundschutz",
+  "function": "DER",
+  "category": "Directory Service (DER) (DER)",
+  "subcategory_id": "DER.1",
+  "subcategory_text": "Operate the Active Directory / identity directory with hardened configuration and monitoring.",
+  "informative_references": [
+    "BSI IT-Grundschutz DER.1",
+    "NIST SP 800-53 Rev 5: AC-02, IA-02"
+  ],
+  "implementation_examples": [
+    "AD tiering",
+    "Privileged Access Workstations"
+  ],
+  "assessment_objectives": [
+    "Determine whether the directory service is hardened."
+  ],
+  "related_controls": [
+    "DER.2 (BSI IT-Grundschutz — same family)",
+    "DER.3 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

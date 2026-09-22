@@ -1,0 +1,28 @@
+{
+  "control_id": "APP.6",
+  "framework": "BSI IT-Grundschutz",
+  "function": "APP",
+  "category": "Applications (APP) (APP)",
+  "subcategory_id": "APP.6",
+  "subcategory_text": "Operate mobile applications securely with secure coding and runtime protections.",
+  "informative_references": [
+    "BSI IT-Grundschutz APP.6",
+    "OWASP MASVS"
+  ],
+  "implementation_examples": [
+    "Mobile app shielding"
+  ],
+  "assessment_objectives": [
+    "Determine whether mobile apps are secured."
+  ],
+  "related_controls": [
+    "APP.1 (BSI IT-Grundschutz — same family)",
+    "APP.2 (BSI IT-Grundschutz — same family)",
+    "APP.3 (BSI IT-Grundschutz — same family)",
+    "APP.4 (BSI IT-Grundschutz — same family)",
+    "APP.5 (BSI IT-Grundschutz — same family)",
+    "APP.7 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

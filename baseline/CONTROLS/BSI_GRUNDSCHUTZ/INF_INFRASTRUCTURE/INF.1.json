@@ -1,0 +1,27 @@
+{
+  "control_id": "INF.1",
+  "framework": "BSI IT-Grundschutz",
+  "function": "INF",
+  "category": "Infrastructure (INF) (INF)",
+  "subcategory_id": "INF.1",
+  "subcategory_text": "Plan and operate infrastructure components (data centres, technical rooms) with adequate physical security, environmental controls, and fire protection.",
+  "informative_references": [
+    "BSI IT-Grundschutz INF.1",
+    "NIST SP 800-53 Rev 5: PE-01, PE-09"
+  ],
+  "implementation_examples": [
+    "Datacentre access controls",
+    "Fire suppression"
+  ],
+  "assessment_objectives": [
+    "Determine whether infrastructure physical security exists."
+  ],
+  "related_controls": [
+    "INF.2 (BSI IT-Grundschutz — same family)",
+    "INF.3 (BSI IT-Grundschutz — same family)",
+    "INF.4 (BSI IT-Grundschutz — same family)",
+    "INF.5 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

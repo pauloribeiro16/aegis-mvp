@@ -1,0 +1,29 @@
+{
+  "control_id": "APP.3",
+  "framework": "BSI IT-Grundschutz",
+  "function": "APP",
+  "category": "Applications (APP) (APP)",
+  "subcategory_id": "APP.3",
+  "subcategory_text": "Operate databases securely with access controls, encryption, and audit logging.",
+  "informative_references": [
+    "BSI IT-Grundschutz APP.3",
+    "NIST SP 800-53 Rev 5: AC-03, AU-02"
+  ],
+  "implementation_examples": [
+    "DB hardening",
+    "Query audit"
+  ],
+  "assessment_objectives": [
+    "Determine whether databases are secured."
+  ],
+  "related_controls": [
+    "APP.1 (BSI IT-Grundschutz — same family)",
+    "APP.2 (BSI IT-Grundschutz — same family)",
+    "APP.4 (BSI IT-Grundschutz — same family)",
+    "APP.5 (BSI IT-Grundschutz — same family)",
+    "APP.6 (BSI IT-Grundschutz — same family)",
+    "APP.7 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

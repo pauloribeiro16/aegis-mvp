@@ -1,0 +1,24 @@
+{
+  "control_id": "CON-3",
+  "framework": "BSI IT-Grundschutz",
+  "function": "CON",
+  "category": "Containerisation (CON) (CON-3)",
+  "subcategory_id": "CON-3",
+  "subcategory_text": "Operate service mesh with mutual authentication and policy enforcement.",
+  "informative_references": [
+    "BSI IT-Grundschutz CON.3",
+    "NIST SP 800-53 Rev 5: IA-09"
+  ],
+  "implementation_examples": [
+    "mTLS via mesh"
+  ],
+  "assessment_objectives": [
+    "Determine whether service-to-service auth is enforced."
+  ],
+  "related_controls": [
+    "CON-1 (BSI IT-Grundschutz — same family)",
+    "CON-2 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

@@ -1,0 +1,24 @@
+{
+  "control_id": "DER.3",
+  "framework": "BSI IT-Grundschutz",
+  "function": "DER",
+  "category": "Directory Service (DER) (DER)",
+  "subcategory_id": "DER.3",
+  "subcategory_text": "Operate federation (SAML, OIDC) with strong assertions and lifecycle management.",
+  "informative_references": [
+    "BSI IT-Grundschutz DER.3",
+    "NIST SP 800-53 Rev 5: IA-08"
+  ],
+  "implementation_examples": [
+    "SAML/OIDC federation"
+  ],
+  "assessment_objectives": [
+    "Determine whether federation is secure."
+  ],
+  "related_controls": [
+    "DER.1 (BSI IT-Grundschutz — same family)",
+    "DER.2 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

@@ -1,0 +1,27 @@
+{
+  "control_id": "INF.5",
+  "framework": "BSI IT-Grundschutz",
+  "function": "INF",
+  "category": "Infrastructure (INF) (INF)",
+  "subcategory_id": "INF.5",
+  "subcategory_text": "Operate buildings and physical premises with appropriate access controls.",
+  "informative_references": [
+    "BSI IT-Grundschutz INF.5",
+    "NIST SP 800-53 Rev 5: PE-02"
+  ],
+  "implementation_examples": [
+    "Badge access",
+    "Visitor logs"
+  ],
+  "assessment_objectives": [
+    "Determine whether premises access is managed."
+  ],
+  "related_controls": [
+    "INF.1 (BSI IT-Grundschutz — same family)",
+    "INF.2 (BSI IT-Grundschutz — same family)",
+    "INF.3 (BSI IT-Grundschutz — same family)",
+    "INF.4 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

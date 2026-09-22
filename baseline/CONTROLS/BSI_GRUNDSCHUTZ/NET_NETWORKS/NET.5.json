@@ -1,0 +1,27 @@
+{
+  "control_id": "NET.5",
+  "framework": "BSI IT-Grundschutz",
+  "function": "NET",
+  "category": "Networks (NET) (NET)",
+  "subcategory_id": "NET.5",
+  "subcategory_text": "Operate VoIP and unified communications securely.",
+  "informative_references": [
+    "BSI IT-Grundschutz NET.5",
+    "NIST SP 800-53 Rev 5: SC-08"
+  ],
+  "implementation_examples": [
+    "SRTP",
+    "VoIP segmentation"
+  ],
+  "assessment_objectives": [
+    "Determine whether VoIP is secured."
+  ],
+  "related_controls": [
+    "NET.1 (BSI IT-Grundschutz — same family)",
+    "NET.2 (BSI IT-Grundschutz — same family)",
+    "NET.3 (BSI IT-Grundschutz — same family)",
+    "NET.4 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

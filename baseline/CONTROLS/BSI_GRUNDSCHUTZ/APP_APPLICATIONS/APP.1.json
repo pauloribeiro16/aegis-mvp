@@ -1,0 +1,28 @@
+{
+  "control_id": "APP.1",
+  "framework": "BSI IT-Grundschutz",
+  "function": "APP",
+  "category": "Applications (APP) (APP)",
+  "subcategory_id": "APP.1",
+  "subcategory_text": "Operate general-purpose applications (email, office, browser) with security configuration.",
+  "informative_references": [
+    "BSI IT-Grundschutz APP.1",
+    "NIST SP 800-53 Rev 5: CM-06"
+  ],
+  "implementation_examples": [
+    "Office suite hardening"
+  ],
+  "assessment_objectives": [
+    "Determine whether general-purpose applications are hardened."
+  ],
+  "related_controls": [
+    "APP.2 (BSI IT-Grundschutz — same family)",
+    "APP.3 (BSI IT-Grundschutz — same family)",
+    "APP.4 (BSI IT-Grundschutz — same family)",
+    "APP.5 (BSI IT-Grundschutz — same family)",
+    "APP.6 (BSI IT-Grundschutz — same family)",
+    "APP.7 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

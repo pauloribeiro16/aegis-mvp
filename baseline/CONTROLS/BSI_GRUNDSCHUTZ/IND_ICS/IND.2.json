@@ -1,0 +1,24 @@
+{
+  "control_id": "IND.2",
+  "framework": "BSI IT-Grundschutz",
+  "function": "IND",
+  "category": "Industrial Control Systems (IND) (IND)",
+  "subcategory_id": "IND.2",
+  "subcategory_text": "Operate industrial IoT devices with secure configuration and patching.",
+  "informative_references": [
+    "BSI IT-Grundschutz IND.2",
+    "NIST SP 800-53 Rev 5: SI-02"
+  ],
+  "implementation_examples": [
+    "IIoT asset inventory",
+    "Patch cadence"
+  ],
+  "assessment_objectives": [
+    "Determine whether IIoT is managed."
+  ],
+  "related_controls": [
+    "IND.1 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

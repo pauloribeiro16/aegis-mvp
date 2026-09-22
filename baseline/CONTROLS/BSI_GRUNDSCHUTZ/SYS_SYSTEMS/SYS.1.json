@@ -1,0 +1,28 @@
+{
+  "control_id": "SYS.1",
+  "framework": "BSI IT-Grundschutz",
+  "function": "SYS",
+  "category": "IT Systems (SYS) (SYS)",
+  "subcategory_id": "SYS.1",
+  "subcategory_text": "Operate general-purpose servers with hardened configurations, patch management, and monitoring.",
+  "informative_references": [
+    "BSI IT-Grundschutz SYS.1",
+    "NIST SP 800-53 Rev 5: CM-06, SI-02"
+  ],
+  "implementation_examples": [
+    "Hardened baseline",
+    "Patch cadence"
+  ],
+  "assessment_objectives": [
+    "Determine whether servers are hardened and patched."
+  ],
+  "related_controls": [
+    "SYS.2 (BSI IT-Grundschutz — same family)",
+    "SYS.3 (BSI IT-Grundschutz — same family)",
+    "SYS.4 (BSI IT-Grundschutz — same family)",
+    "SYS.5 (BSI IT-Grundschutz — same family)",
+    "SYS.6 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

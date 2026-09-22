@@ -1,0 +1,26 @@
+{
+  "control_id": "OPS.2",
+  "framework": "BSI IT-Grundschutz",
+  "function": "OPS",
+  "category": "Operations (OPS) (OPS)",
+  "subcategory_id": "OPS.2",
+  "subcategory_text": "Operate an organisation-wide patch and vulnerability management process.",
+  "informative_references": [
+    "BSI IT-Grundschutz OPS.2",
+    "NIST SSDF v1.1: RV.2.1"
+  ],
+  "implementation_examples": [
+    "Patch SLA",
+    "Vulnerability dashboard"
+  ],
+  "assessment_objectives": [
+    "Determine whether patching is performed."
+  ],
+  "related_controls": [
+    "OPS.1 (BSI IT-Grundschutz — same family)",
+    "OPS.3 (BSI IT-Grundschutz — same family)",
+    "OPS.4 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

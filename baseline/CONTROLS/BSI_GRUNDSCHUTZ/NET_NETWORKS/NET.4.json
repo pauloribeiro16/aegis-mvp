@@ -1,0 +1,26 @@
+{
+  "control_id": "NET.4",
+  "framework": "BSI IT-Grundschutz",
+  "function": "NET",
+  "category": "Networks (NET) (NET)",
+  "subcategory_id": "NET.4",
+  "subcategory_text": "Operate WLAN securely with strong authentication and segmentation.",
+  "informative_references": [
+    "BSI IT-Grundschutz NET.4",
+    "NIST SP 800-53 Rev 5: AC-18"
+  ],
+  "implementation_examples": [
+    "WPA3 enterprise"
+  ],
+  "assessment_objectives": [
+    "Determine whether WLAN is secured."
+  ],
+  "related_controls": [
+    "NET.1 (BSI IT-Grundschutz — same family)",
+    "NET.2 (BSI IT-Grundschutz — same family)",
+    "NET.3 (BSI IT-Grundschutz — same family)",
+    "NET.5 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

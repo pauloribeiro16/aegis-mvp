@@ -1,0 +1,29 @@
+{
+  "control_id": "APP.2",
+  "framework": "BSI IT-Grundschutz",
+  "function": "APP",
+  "category": "Applications (APP) (APP)",
+  "subcategory_id": "APP.2",
+  "subcategory_text": "Operate web applications with secure development and runtime controls.",
+  "informative_references": [
+    "BSI IT-Grundschutz APP.2",
+    "OWASP ASVS v4.0.3"
+  ],
+  "implementation_examples": [
+    "WAF",
+    "SAST in CI"
+  ],
+  "assessment_objectives": [
+    "Determine whether web applications are secured."
+  ],
+  "related_controls": [
+    "APP.1 (BSI IT-Grundschutz — same family)",
+    "APP.3 (BSI IT-Grundschutz — same family)",
+    "APP.4 (BSI IT-Grundschutz — same family)",
+    "APP.5 (BSI IT-Grundschutz — same family)",
+    "APP.6 (BSI IT-Grundschutz — same family)",
+    "APP.7 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

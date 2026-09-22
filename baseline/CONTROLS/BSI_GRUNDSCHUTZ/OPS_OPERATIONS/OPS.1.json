@@ -1,0 +1,26 @@
+{
+  "control_id": "OPS.1",
+  "framework": "BSI IT-Grundschutz",
+  "function": "OPS",
+  "category": "Operations (OPS) (OPS)",
+  "subcategory_id": "OPS.1",
+  "subcategory_text": "Operate an information security management system (ISMS) aligned with BSI Grundschutz methodology.",
+  "informative_references": [
+    "BSI IT-Grundschutz OPS.1",
+    "ISO/IEC 27001:2022 A.5.1"
+  ],
+  "implementation_examples": [
+    "ISMS documentation",
+    "Risk assessment"
+  ],
+  "assessment_objectives": [
+    "Determine whether an ISMS is operated."
+  ],
+  "related_controls": [
+    "OPS.2 (BSI IT-Grundschutz — same family)",
+    "OPS.3 (BSI IT-Grundschutz — same family)",
+    "OPS.4 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

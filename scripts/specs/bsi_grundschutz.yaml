@@ -1,0 +1,235 @@
+# BSI IT-Grundschutz — advisory referential spec
+# Source: BSI IT-Grundschutz (2023 Compendium).
+# https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html
+# Bausteine grouped by layer (INF/SYS/NET/APP/IND/CON). Representative subset of ~30 modules.
+
+framework: "BSI IT-Grundschutz"
+framework_short: "BSI_GRUNDSCHUTZ"
+directory: "BSI_GRUNDSCHUTZ"
+version: "2023 Compendium Edition"
+source_url: "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html"
+fetched_date: "2026-09-22"
+
+families:
+  # ---- INF: Infrastructure ----
+  - function: "INF"
+    function_dir: "INF_INFRASTRUCTURE"
+    category_name: "Infrastructure (INF)"
+    practices:
+      - id: "INF.1"
+        text: "Plan and operate infrastructure components (data centres, technical rooms) with adequate physical security, environmental controls, and fire protection."
+        informative_references: ["BSI IT-Grundschutz INF.1", "NIST SP 800-53 Rev 5: PE-01, PE-09"]
+        examples: ["Datacentre access controls", "Fire suppression"]
+        objectives: ["Determine whether infrastructure physical security exists."]
+      - id: "INF.2"
+        text: "Operate data centres with appropriate power, cooling, monitoring, and disaster-resilience."
+        informative_references: ["BSI IT-Grundschutz INF.2", "NIST SP 800-53 Rev 5: PE-10, PE-14"]
+        examples: ["UPS/generator", "HVAC"]
+        objectives: ["Determine whether datacentre operations meet resilience criteria."]
+      - id: "INF.3"
+        text: "Plan and operate office infrastructure (workplaces, meeting rooms) with appropriate security controls."
+        informative_references: ["BSI IT-Grundschutz INF.3"]
+        examples: ["Office access policy"]
+        objectives: ["Determine whether office infrastructure is secured."]
+      - id: "INF.4"
+        text: "Operate mobile workstations and home-office infrastructure securely."
+        informative_references: ["BSI IT-Grundschutz INF.4", "NIST SP 800-53 Rev 5: AC-19"]
+        examples: ["MDM", "Home-office security guidelines"]
+        objectives: ["Determine whether mobile and home-office are secured."]
+      - id: "INF.5"
+        text: "Operate buildings and physical premises with appropriate access controls."
+        informative_references: ["BSI IT-Grundschutz INF.5", "NIST SP 800-53 Rev 5: PE-02"]
+        examples: ["Badge access", "Visitor logs"]
+        objectives: ["Determine whether premises access is managed."]
+
+  # ---- NET: Networks and Communication ----
+  - function: "NET"
+    function_dir: "NET_NETWORKS"
+    category_name: "Networks (NET)"
+    practices:
+      - id: "NET.1"
+        text: "Plan and operate network architecture with segmentation, documentation, and change control."
+        informative_references: ["BSI IT-Grundschutz NET.1", "NIST SP 800-53 Rev 5: SC-32"]
+        examples: ["Network diagrams", "Segmentation"]
+        objectives: ["Determine whether network architecture is planned and segmented."]
+      - id: "NET.2"
+        text: "Operate network components (switches, routers) securely with configuration management."
+        informative_references: ["BSI IT-Grundschutz NET.2", "NIST SP 800-53 Rev 5: CM-06"]
+        examples: ["Router hardening", "VLANs"]
+        objectives: ["Determine whether network components are hardened."]
+      - id: "NET.3"
+        text: "Operate firewalls and perimeter controls with deny-by-default and reviewed rulesets."
+        informative_references: ["BSI IT-Grundschutz NET.3", "NIST SP 800-53 Rev 5: SC-07"]
+        examples: ["Stateful firewall", "Rule reviews"]
+        objectives: ["Determine whether firewalls are configured with deny-by-default."]
+      - id: "NET.4"
+        text: "Operate WLAN securely with strong authentication and segmentation."
+        informative_references: ["BSI IT-Grundschutz NET.4", "NIST SP 800-53 Rev 5: AC-18"]
+        examples: ["WPA3 enterprise"]
+        objectives: ["Determine whether WLAN is secured."]
+      - id: "NET.5"
+        text: "Operate VoIP and unified communications securely."
+        informative_references: ["BSI IT-Grundschutz NET.5", "NIST SP 800-53 Rev 5: SC-08"]
+        examples: ["SRTP", "VoIP segmentation"]
+        objectives: ["Determine whether VoIP is secured."]
+
+  # ---- SYS: IT Systems ----
+  - function: "SYS"
+    function_dir: "SYS_SYSTEMS"
+    category_name: "IT Systems (SYS)"
+    practices:
+      - id: "SYS.1"
+        text: "Operate general-purpose servers with hardened configurations, patch management, and monitoring."
+        informative_references: ["BSI IT-Grundschutz SYS.1", "NIST SP 800-53 Rev 5: CM-06, SI-02"]
+        examples: ["Hardened baseline", "Patch cadence"]
+        objectives: ["Determine whether servers are hardened and patched."]
+      - id: "SYS.2"
+        text: "Operate client systems (Windows, macOS, Linux) with secure configuration and EDR."
+        informative_references: ["BSI IT-Grundschutz SYS.2", "NIST SP 800-53 Rev 5: CM-06"]
+        examples: ["MDM policy", "EDR"]
+        objectives: ["Determine whether clients are hardened."]
+      - id: "SYS.3"
+        text: "Operate mobile devices with MDM, encryption, and remote-wipe capability."
+        informative_references: ["BSI IT-Grundschutz SYS.3", "NIST SP 800-53 Rev 5: AC-19"]
+        examples: ["MDM enrolment", "Remote wipe"]
+        objectives: ["Determine whether mobile devices are managed."]
+      - id: "SYS.4"
+        text: "Operate virtualisation infrastructure (hypervisors, virtual machines) securely."
+        informative_references: ["BSI IT-Grundschutz SYS.4", "NIST SP 800-53 Rev 5: SC-39"]
+        examples: ["Hypervisor hardening", "VM isolation"]
+        objectives: ["Determine whether virtualisation is secured."]
+      - id: "SYS.5"
+        text: "Operate container and orchestrator infrastructure securely."
+        informative_references: ["BSI IT-Grundschutz SYS.5", "NIST SP 800-53 Rev 5: SC-39"]
+        examples: ["Container hardening", "Image scanning"]
+        objectives: ["Determine whether container infrastructure is secured."]
+      - id: "SYS.6"
+        text: "Operate storage systems (SAN, NAS) with access controls and encryption."
+        informative_references: ["BSI IT-Grundschutz SYS.6", "NIST SP 800-53 Rev 5: SC-28"]
+        examples: ["Storage access control", "Encryption at rest"]
+        objectives: ["Determine whether storage is secured."]
+
+  # ---- APP: Applications ----
+  - function: "APP"
+    function_dir: "APP_APPLICATIONS"
+    category_name: "Applications (APP)"
+    practices:
+      - id: "APP.1"
+        text: "Operate general-purpose applications (email, office, browser) with security configuration."
+        informative_references: ["BSI IT-Grundschutz APP.1", "NIST SP 800-53 Rev 5: CM-06"]
+        examples: ["Office suite hardening"]
+        objectives: ["Determine whether general-purpose applications are hardened."]
+      - id: "APP.2"
+        text: "Operate web applications with secure development and runtime controls."
+        informative_references: ["BSI IT-Grundschutz APP.2", "OWASP ASVS v4.0.3"]
+        examples: ["WAF", "SAST in CI"]
+        objectives: ["Determine whether web applications are secured."]
+      - id: "APP.3"
+        text: "Operate databases securely with access controls, encryption, and audit logging."
+        informative_references: ["BSI IT-Grundschutz APP.3", "NIST SP 800-53 Rev 5: AC-03, AU-02"]
+        examples: ["DB hardening", "Query audit"]
+        objectives: ["Determine whether databases are secured."]
+      - id: "APP.4"
+        text: "Operate ERP systems with appropriate role and access management."
+        informative_references: ["BSI IT-Grundschutz APP.4", "NIST SP 800-53 Rev 5: AC-03"]
+        examples: ["ERP RBAC"]
+        objectives: ["Determine whether ERP access is governed."]
+      - id: "APP.5"
+        text: "Operate Microsoft 365 / cloud productivity suites securely."
+        informative_references: ["BSI IT-Grundschutz APP.5", "NIST SP 800-53 Rev 5: AC-03"]
+        examples: ["M365 conditional access"]
+        objectives: ["Determine whether cloud productivity suites are secured."]
+      - id: "APP.6"
+        text: "Operate mobile applications securely with secure coding and runtime protections."
+        informative_references: ["BSI IT-Grundschutz APP.6", "OWASP MASVS"]
+        examples: ["Mobile app shielding"]
+        objectives: ["Determine whether mobile apps are secured."]
+      - id: "APP.7"
+        text: "Operate collaboration tools (Teams, Zoom, Slack) securely."
+        informative_references: ["BSI IT-Grundschutz APP.7", "NIST SP 800-53 Rev 5: AC-17"]
+        examples: ["External sharing controls"]
+        objectives: ["Determine whether collaboration tools are secured."]
+
+  # ---- IND: Industrial Control Systems ----
+  - function: "IND"
+    function_dir: "IND_ICS"
+    category_name: "Industrial Control Systems (IND)"
+    practices:
+      - id: "IND.1"
+        text: "Operate process control and SCADA systems with appropriate segmentation and monitoring."
+        informative_references: ["BSI IT-Grundschutz IND.1", "IEC 62443", "NIST SP 800-53 Rev 5: SC-39"]
+        examples: ["Purdue model segmentation", "OT monitoring"]
+        objectives: ["Determine whether ICS are segregated and monitored."]
+      - id: "IND.2"
+        text: "Operate industrial IoT devices with secure configuration and patching."
+        informative_references: ["BSI IT-Grundschutz IND.2", "NIST SP 800-53 Rev 5: SI-02"]
+        examples: ["IIoT asset inventory", "Patch cadence"]
+        objectives: ["Determine whether IIoT is managed."]
+
+  # ---- CON: Containerisation & Orchestration ----
+  - function: "CON"
+    function_dir: "CON_CONTAINERS"
+    category_name: "Containerisation (CON)"
+    practices:
+      - id: "CON-1"
+        text: "Operate Kubernetes and container orchestrators securely with CIS benchmarks."
+        informative_references: ["BSI IT-Grundschutz CON.1", "CIS Kubernetes Benchmark", "NIST SP 800-53 Rev 5: CM-06"]
+        examples: ["RBAC, network policies, Pod Security Standards"]
+        objectives: ["Determine whether orchestrators follow hardened benchmarks."]
+      - id: "CON-2"
+        text: "Operate container registries and supply chain securely with image scanning and signing."
+        informative_references: ["BSI IT-Grundschutz CON.2", "NIST SSDF v1.1: PS.1.2", "NIST SP 800-53 Rev 5: SR-04"]
+        examples: ["Image signing", "Admission control"]
+        objectives: ["Determine whether the container supply chain is secured."]
+      - id: "CON-3"
+        text: "Operate service mesh with mutual authentication and policy enforcement."
+        informative_references: ["BSI IT-Grundschutz CON.3", "NIST SP 800-53 Rev 5: IA-09"]
+        examples: ["mTLS via mesh"]
+        objectives: ["Determine whether service-to-service auth is enforced."]
+
+  # ---- DER: Identity & Identity Federation ----
+  - function: "DER"
+    function_dir: "DER_DIRECTORY"
+    category_name: "Directory Service (DER)"
+    practices:
+      - id: "DER.1"
+        text: "Operate the Active Directory / identity directory with hardened configuration and monitoring."
+        informative_references: ["BSI IT-Grundschutz DER.1", "NIST SP 800-53 Rev 5: AC-02, IA-02"]
+        examples: ["AD tiering", "Privileged Access Workstations"]
+        objectives: ["Determine whether the directory service is hardened."]
+      - id: "DER.2"
+        text: "Operate Public Key Infrastructure (PKI) with secure key management and certificate lifecycle."
+        informative_references: ["BSI IT-Grundschutz DER.2", "NIST SP 800-53 Rev 5: SC-12, SC-17"]
+        examples: ["CA hierarchies", "OCSP"]
+        objectives: ["Determine whether PKI is managed."]
+      - id: "DER.3"
+        text: "Operate federation (SAML, OIDC) with strong assertions and lifecycle management."
+        informative_references: ["BSI IT-Grundschutz DER.3", "NIST SP 800-53 Rev 5: IA-08"]
+        examples: ["SAML/OIDC federation"]
+        objectives: ["Determine whether federation is secure."]
+
+  # ---- OPS: Operations ----
+  - function: "OPS"
+    function_dir: "OPS_OPERATIONS"
+    category_name: "Operations (OPS)"
+    practices:
+      - id: "OPS.1"
+        text: "Operate an information security management system (ISMS) aligned with BSI Grundschutz methodology."
+        informative_references: ["BSI IT-Grundschutz OPS.1", "ISO/IEC 27001:2022 A.5.1"]
+        examples: ["ISMS documentation", "Risk assessment"]
+        objectives: ["Determine whether an ISMS is operated."]
+      - id: "OPS.2"
+        text: "Operate an organisation-wide patch and vulnerability management process."
+        informative_references: ["BSI IT-Grundschutz OPS.2", "NIST SSDF v1.1: RV.2.1"]
+        examples: ["Patch SLA", "Vulnerability dashboard"]
+        objectives: ["Determine whether patching is performed."]
+      - id: "OPS.3"
+        text: "Operate backup and recovery processes with tested restoration."
+        informative_references: ["BSI IT-Grundschutz OPS.3", "NIST SP 800-53 Rev 5: CP-09"]
+        examples: ["Backup testing", "DR exercises"]
+        objectives: ["Determine whether backups are tested."]
+      - id: "OPS.4"
+        text: "Operate an incident response capability and lessons-learned process."
+        informative_references: ["BSI IT-Grundschutz OPS.4", "NIST SP 800-53 Rev 5: IR-04"]
+        examples: ["IR plan", "Tabletop exercises"]
+        objectives: ["Determine whether incident response is in place."]

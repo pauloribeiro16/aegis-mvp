@@ -1,0 +1,27 @@
+{
+  "control_id": "INF.4",
+  "framework": "BSI IT-Grundschutz",
+  "function": "INF",
+  "category": "Infrastructure (INF) (INF)",
+  "subcategory_id": "INF.4",
+  "subcategory_text": "Operate mobile workstations and home-office infrastructure securely.",
+  "informative_references": [
+    "BSI IT-Grundschutz INF.4",
+    "NIST SP 800-53 Rev 5: AC-19"
+  ],
+  "implementation_examples": [
+    "MDM",
+    "Home-office security guidelines"
+  ],
+  "assessment_objectives": [
+    "Determine whether mobile and home-office are secured."
+  ],
+  "related_controls": [
+    "INF.1 (BSI IT-Grundschutz — same family)",
+    "INF.2 (BSI IT-Grundschutz — same family)",
+    "INF.3 (BSI IT-Grundschutz — same family)",
+    "INF.5 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

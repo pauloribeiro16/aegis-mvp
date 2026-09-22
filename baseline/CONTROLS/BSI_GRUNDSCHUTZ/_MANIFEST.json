@@ -1,0 +1,13 @@
+{
+  "referential": "BSI IT-Grundschutz",
+  "version": "2023 Compendium Edition",
+  "source_urls": [
+    "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html"
+  ],
+  "fetched_date": "2026-09-22",
+  "subcategories": 35,
+  "expected_total": 35,
+  "unverified_entries": [],
+  "advisory": true,
+  "enforced_by_verify_no_loss": false
+}

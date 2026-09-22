@@ -1,0 +1,26 @@
+{
+  "control_id": "CON-2",
+  "framework": "BSI IT-Grundschutz",
+  "function": "CON",
+  "category": "Containerisation (CON) (CON-2)",
+  "subcategory_id": "CON-2",
+  "subcategory_text": "Operate container registries and supply chain securely with image scanning and signing.",
+  "informative_references": [
+    "BSI IT-Grundschutz CON.2",
+    "NIST SSDF v1.1: PS.1.2",
+    "NIST SP 800-53 Rev 5: SR-04"
+  ],
+  "implementation_examples": [
+    "Image signing",
+    "Admission control"
+  ],
+  "assessment_objectives": [
+    "Determine whether the container supply chain is secured."
+  ],
+  "related_controls": [
+    "CON-1 (BSI IT-Grundschutz — same family)",
+    "CON-3 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

@@ -1,0 +1,28 @@
+{
+  "control_id": "APP.7",
+  "framework": "BSI IT-Grundschutz",
+  "function": "APP",
+  "category": "Applications (APP) (APP)",
+  "subcategory_id": "APP.7",
+  "subcategory_text": "Operate collaboration tools (Teams, Zoom, Slack) securely.",
+  "informative_references": [
+    "BSI IT-Grundschutz APP.7",
+    "NIST SP 800-53 Rev 5: AC-17"
+  ],
+  "implementation_examples": [
+    "External sharing controls"
+  ],
+  "assessment_objectives": [
+    "Determine whether collaboration tools are secured."
+  ],
+  "related_controls": [
+    "APP.1 (BSI IT-Grundschutz — same family)",
+    "APP.2 (BSI IT-Grundschutz — same family)",
+    "APP.3 (BSI IT-Grundschutz — same family)",
+    "APP.4 (BSI IT-Grundschutz — same family)",
+    "APP.5 (BSI IT-Grundschutz — same family)",
+    "APP.6 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

@@ -1,0 +1,28 @@
+{
+  "control_id": "SYS.6",
+  "framework": "BSI IT-Grundschutz",
+  "function": "SYS",
+  "category": "IT Systems (SYS) (SYS)",
+  "subcategory_id": "SYS.6",
+  "subcategory_text": "Operate storage systems (SAN, NAS) with access controls and encryption.",
+  "informative_references": [
+    "BSI IT-Grundschutz SYS.6",
+    "NIST SP 800-53 Rev 5: SC-28"
+  ],
+  "implementation_examples": [
+    "Storage access control",
+    "Encryption at rest"
+  ],
+  "assessment_objectives": [
+    "Determine whether storage is secured."
+  ],
+  "related_controls": [
+    "SYS.1 (BSI IT-Grundschutz — same family)",
+    "SYS.2 (BSI IT-Grundschutz — same family)",
+    "SYS.3 (BSI IT-Grundschutz — same family)",
+    "SYS.4 (BSI IT-Grundschutz — same family)",
+    "SYS.5 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

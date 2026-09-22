@@ -1,0 +1,26 @@
+{
+  "control_id": "OPS.4",
+  "framework": "BSI IT-Grundschutz",
+  "function": "OPS",
+  "category": "Operations (OPS) (OPS)",
+  "subcategory_id": "OPS.4",
+  "subcategory_text": "Operate an incident response capability and lessons-learned process.",
+  "informative_references": [
+    "BSI IT-Grundschutz OPS.4",
+    "NIST SP 800-53 Rev 5: IR-04"
+  ],
+  "implementation_examples": [
+    "IR plan",
+    "Tabletop exercises"
+  ],
+  "assessment_objectives": [
+    "Determine whether incident response is in place."
+  ],
+  "related_controls": [
+    "OPS.1 (BSI IT-Grundschutz — same family)",
+    "OPS.2 (BSI IT-Grundschutz — same family)",
+    "OPS.3 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

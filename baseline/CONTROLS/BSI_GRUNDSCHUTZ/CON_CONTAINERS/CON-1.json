@@ -1,0 +1,25 @@
+{
+  "control_id": "CON-1",
+  "framework": "BSI IT-Grundschutz",
+  "function": "CON",
+  "category": "Containerisation (CON) (CON-1)",
+  "subcategory_id": "CON-1",
+  "subcategory_text": "Operate Kubernetes and container orchestrators securely with CIS benchmarks.",
+  "informative_references": [
+    "BSI IT-Grundschutz CON.1",
+    "CIS Kubernetes Benchmark",
+    "NIST SP 800-53 Rev 5: CM-06"
+  ],
+  "implementation_examples": [
+    "RBAC, network policies, Pod Security Standards"
+  ],
+  "assessment_objectives": [
+    "Determine whether orchestrators follow hardened benchmarks."
+  ],
+  "related_controls": [
+    "CON-2 (BSI IT-Grundschutz — same family)",
+    "CON-3 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

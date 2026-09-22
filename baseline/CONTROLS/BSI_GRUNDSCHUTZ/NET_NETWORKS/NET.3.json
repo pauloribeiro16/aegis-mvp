@@ -1,0 +1,27 @@
+{
+  "control_id": "NET.3",
+  "framework": "BSI IT-Grundschutz",
+  "function": "NET",
+  "category": "Networks (NET) (NET)",
+  "subcategory_id": "NET.3",
+  "subcategory_text": "Operate firewalls and perimeter controls with deny-by-default and reviewed rulesets.",
+  "informative_references": [
+    "BSI IT-Grundschutz NET.3",
+    "NIST SP 800-53 Rev 5: SC-07"
+  ],
+  "implementation_examples": [
+    "Stateful firewall",
+    "Rule reviews"
+  ],
+  "assessment_objectives": [
+    "Determine whether firewalls are configured with deny-by-default."
+  ],
+  "related_controls": [
+    "NET.1 (BSI IT-Grundschutz — same family)",
+    "NET.2 (BSI IT-Grundschutz — same family)",
+    "NET.4 (BSI IT-Grundschutz — same family)",
+    "NET.5 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition"
+}

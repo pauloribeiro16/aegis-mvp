@@ -13,7 +13,12 @@ corpus:
   root: "baseline"
   # Sub-domain corpus: domains/D-0X_Name/D-XX.Y/{_index.md, objective.md, regs/, cross/, articles/}
   domains: "baseline/domains"
-  # Control referentials: NIST_CSF_2.0, NIST_PF, NIST_AI_RMF, NIST_80053R5, NIST_SSDF, OWASP_ASVS, OWASP_SAMM
+  # Control referentials:
+  #   Enforced (R2b-checked by scripts/verify_no_loss.py): NIST_CSF_2.0, NIST_PF, NIST_AI_RMF.
+  #   Advisory (per-control JSONs available for citation, not enforced by verify_no_loss.py):
+  #     NIST_SP_800_53R5, NIST_SSDF, NIST_AI_SSDF, OWASP_ASVS, OWASP_SAMM,
+  #     ISO_27001_2022, ISO_27701_2019, ISO_42001_2023, CIS_CONTROLS_V8,
+  #     BSI_GRUNDSCHUTZ, ENISA.
   controls: "baseline/CONTROLS"
   # Domain index (10 domains, 38 sub-domains, modular layout)
   domains_index: "baseline/domains/index.md"

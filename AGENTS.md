@@ -33,7 +33,13 @@ aegis-mvp/
 │   ├── 00_Taxonomy_Reference.md
 │   ├── 01_Ambiguity_Registry.md
 │   ├── 02_Regulatory_Mapping_and_Generic_Objectives.md
-│   ├── CONTROLS/           # Control referentials (NIST_CSF_2.0, NIST_PF, NIST_AI_RMF, …)
+│   ├── CONTROLS/           # Control referentials
+│   │                       #   Enforced: NIST_CSF_2.0/, NIST_PF/, NIST_AI_RMF/
+│   │                       #   Advisory (not enforced by scripts/verify_no_loss.py):
+│   │                       #     NIST_SP_800_53R5/, NIST_SSDF/, NIST_AI_SSDF/,
+│   │                       #     OWASP_ASVS/, OWASP_SAMM/, ISO_27001_2022/,
+│   │                       #     ISO_27701_2019/, ISO_42001_2023/, CIS_CONTROLS_V8/,
+│   │                       #     BSI_GRUNDSCHUTZ/, ENISA/
 │   ├── MAPPINGS/           # OVERLAYS + sr_control_mappings/<REG>.json (complete SR↔CSF/PF/AI-RMF
 │   │                       #   store extracted from the frozen dashboards; traceability/ chain
 │   │                       #   reg -> article -> objective -> requirement -> control; ledgers)
@@ -76,7 +82,7 @@ aegis-mvp/
 
 | Nature | Content | Agent Obligation |
 |---|---|---|
-| **Inherited (Free)** | 38 Sub-domains `D-XX.Y`, verbatim articles (`articles/`), control referentials (`CONTROLS/`: NIST CSF 2.0, NIST PF 1.1, NIST AI RMF), ambiguity baseline (`AMBIGUITY_REGISTRY/`), SR↔control mapping store (`MAPPINGS/sr_control_mappings/`) and full traceability chain (`MAPPINGS/traceability/`: regulation → article → clause → HSO → SO-REG → Sub-SO → requirement → controls), both dashboard-extracted and uniformized with the modules. | **Read-only by reference** via `config.yaml`. Never modify, copy, or re-derive interpretations already established. |
+| **Inherited (Free)** | 38 Sub-domains `D-XX.Y`, verbatim articles (`articles/`), control referentials under `CONTROLS/` — enforced by `scripts/verify_no_loss.py` are NIST CSF 2.0, NIST PF 1.1, NIST AI RMF; **advisory** (per-control JSONs available for citation, **not** enforced by `verify_no_loss.py`) are NIST SP 800-53 Rev 5, NIST SSDF (SP 800-218), NIST AI SSDF (SP 800-218A), OWASP ASVS, OWASP SAMM, ISO/IEC 27001:2022, ISO/IEC 27701:2019, ISO/IEC 42001:2023, CIS Critical Security Controls v8, BSI IT-Grundschutz, and ENISA — ambiguity baseline (`AMBIGUITY_REGISTRY/`), SR↔control mapping store (`MAPPINGS/sr_control_mappings/`) and full traceability chain (`MAPPINGS/traceability/`: regulation → article → clause → HSO → SO-REG → Sub-SO → requirement → controls), both dashboard-extracted and uniformized with the modules. | **Read-only by reference** via `config.yaml`. Never modify, copy, or re-derive interpretations already established. |
 | **Company Input** | Profile, products/services, data handled, infrastructure, assumed regulations. | **Provided once** in `input/<company>/company_input.md` (5 sections, plain prose). Never fabricate facts (Rule R6). |
 | **Generated Output** | Applicability rationale, sub-domain triggers, company-adjusted objectives (`AG-D-XX.Y-NNN`). | **Produced by the agent** into `output/<company>/phase1_output.md` following `SPEC.md`. |
 
@@ -117,6 +123,8 @@ flowchart TD
   - Every regulatory citation must exist in the sub-domain's `articles/` directory or be quotable verbatim from `regs/<REG>.md` ("Verbatim regulatory basis" section).
   - Every control anchor must exist in the `CONTROLS/` referential (NIST CSF 2.0, NIST PF 1.1 in `NIST_PF/`, NIST AI RMF in `NIST_AI_RMF/`). PF 1.1 anchors only accompany GDPR-derived obligations and AI RMF anchors only AI_Act-derived obligations (dashboard-published axes; rule R8).
   - **No invented anchors.** If an anchor cannot be verified, omit or re-derive the objective.
+- **R2b (advisory referentials).** Additional control referentials are available under `CONTROLS/` for citation at the agent's discretion:
+  NIST SP 800-53 Rev 5 (`NIST_SP_800_53R5/`), NIST SSDF v1.1 (`NIST_SSDF/`), NIST AI SSDF Profile (`NIST_AI_SSDF/`), OWASP ASVS (`OWASP_ASVS/`), OWASP SAMM (`OWASP_SAMM/`), ISO/IEC 27001:2022 Annex A (`ISO_27001_2022/`), ISO/IEC 27701:2019 Annex A (`ISO_27701_2019/`), ISO/IEC 42001:2023 Annex A (`ISO_42001_2023/`), CIS Critical Security Controls v8 (`CIS_CONTROLS_V8/`), BSI IT-Grundschutz (`BSI_GRUNDSCHUTZ/`), and ENISA advisory guidance (`ENISA/`). These referentials are **not enforced** by `scripts/verify_no_loss.py` and do not appear in `MAPPINGS/sr_control_mappings/<REG>.json`. When cited, the cited ID must exist as a JSON file in the corresponding `CONTROLS/<FW>/` subtree; agent discretion applies.
 - **R3 — Proportionality:** Adjust wording to company size/maturity (e.g., an 8-person company gets managed-cloud encryption, not a dedicated PKI governance board).
 - **R4 — Standardized IDs:** Always use `AG-D-XX.Y-NNN` (e.g., `AG-D-01.1-001`).
 - **R5 — Strict Technology Neutrality in Phase 0 & Phase 1:** 

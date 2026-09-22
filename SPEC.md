@@ -65,9 +65,13 @@ All paths live in `config.yaml` (see that file). The executor must resolve:
 - `corpus.domains` — sub-domain corpus root (10 domain directories, each with
   `D-XX.Y/` sub-directories containing `_index.md`, `objective.md`, `regs/`,
   `cross/` and `articles/`).
-- `corpus.controls` — control referentials (`NIST_CSF_2.0/CSF_2.0.json`,
-  `NIST_PF/`, `NIST_AI_RMF/`, `NIST_80053R5/`, `NIST_SSDF/`, `OWASP_ASVS/`,
-  `OWASP_SAMM/`).
+- `corpus.controls` — control referentials:
+  - **Enforced** by `scripts/verify_no_loss.py`:
+    `NIST_CSF_2.0/CSF_2.0.json`, `NIST_PF/`, `NIST_AI_RMF/`.
+  - **Advisory** (per-control JSONs available for citation, **not** enforced):
+    `NIST_SP_800_53R5/`, `NIST_SSDF/`, `NIST_AI_SSDF/`, `OWASP_ASVS/`,
+    `OWASP_SAMM/`, `ISO_27001_2022/`, `ISO_27701_2019/`, `ISO_42001_2023/`,
+    `CIS_CONTROLS_V8/`, `BSI_GRUNDSCHUTZ/`, `ENISA/`.
 - `corpus.sr_control_mappings` — complete SR↔control mapping store, one JSON per
   regulation (`GDPR.json`, `CRA.json`, `NIS2.json`, `DORA.json`, `AI_Act.json`)
   plus a readable `index.md`. Each SR record carries its `source_clauses`
@@ -193,9 +197,17 @@ the `company_input.md` used), `corpus` (the `corpus.root` value from config).
     be quotable verbatim from that sub-domain's `regs/<REG>.md` ("Verbatim
     regulatory basis" section). Cite as `REG Art. N` exactly as the file names it.
   - *R2b:* Every control anchor must exist in the cited referential file under
-    `CONTROLS/` (grep-verifiable ID) — NIST CSF 2.0 (`NIST_CSF_2.0/`), NIST PF 1.1
-    (`NIST_PF/`) and NIST AI RMF (`NIST_AI_RMF/`) alike. Maximum 2 anchors per
-    objective; omit the column content (`—`) rather than stretch a match.
+    `CONTROLS/` (grep-verifiable ID). **Enforced** referentials:
+    NIST CSF 2.0 (`NIST_CSF_2.0/`), NIST PF 1.1 (`NIST_PF/`), NIST AI RMF
+    (`NIST_AI_RMF/`). **Advisory** referentials (per-control JSONs available for
+    citation, **not** enforced by `verify_no_loss.py`): NIST SP 800-53 Rev 5
+    (`NIST_SP_800_53R5/`), NIST SSDF (`NIST_SSDF/`), NIST AI SSDF
+    (`NIST_AI_SSDF/`), OWASP ASVS (`OWASP_ASVS/`), OWASP SAMM (`OWASP_SAMM/`),
+    ISO/IEC 27001:2022 (`ISO_27001_2022/`), ISO/IEC 27701:2019
+    (`ISO_27701_2019/`), ISO/IEC 42001:2023 (`ISO_42001_2023/`), CIS Controls
+    v8 (`CIS_CONTROLS_V8/`), BSI IT-Grundschutz (`BSI_GRUNDSCHUTZ/`), ENISA
+    (`ENISA/`). Maximum 2 anchors per objective; omit the column content
+    (`—`) rather than stretch a match.
   - **No invented anchors, ever.** If no anchor can be found, the objective is
     suspect — re-derive or drop it.
 - **R3 — Proportionality.** Objectives are restated to company size: a 15-employee

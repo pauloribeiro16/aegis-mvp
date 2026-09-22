@@ -30,7 +30,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-014
@@ -38,7 +38,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
   source_clauses:
     - { clause_id: DORA-C23, article_ref: "Art. 11(2) — `implement the ICT business continuity policy through dedicated, appropriate and documented arrangements, plans, procedures and mechanisms aiming to (a)–(e)`" }
     - { clause_id: DORA-C24, article_ref: "Art. 11(3) — `associated ICT response and recovery plans … shall be subject to independent internal audit reviews` (non-microenterprises)" }
-  linked_objectives: [SO-DORA-010]
+  linked_objectives: [SG-DORA-010]
   sub_domain: [D-04.2, D-04.4]
   nist_csf_mapping:
     - { id: RC.RP-04, title: "Critical mission functions and services are restored through the implementation of the recovery plan" }
@@ -114,14 +114,14 @@ _No standalone SO row cites this article directly (covered via the rules below).
     audit function with documented independence.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-020
   title: "Information-security standards compliance for ICT third-party contracts"
   source_clauses:
     - { clause_id: DORA-C36, article_ref: "Art. 28(5) — `financial entities may only enter into contractual arrangements with ICT third-party service providers that comply with appropriate information security standards. When those contractual arrangements concern critical or important functions, financial entities shall … take due consideration of the use, by ICT third-party service providers, of the most up-to-date and highest quality information security standards`" }
-  linked_objectives: [SO-DORA-011]
+  linked_objectives: [SG-DORA-011]
   sub_domain: [D-06.3]
   nist_csf_mapping:
     - { id: GV.SC-01, title: "A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders" }

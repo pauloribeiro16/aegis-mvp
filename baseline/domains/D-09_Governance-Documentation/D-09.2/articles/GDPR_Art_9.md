@@ -40,16 +40,16 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-016 | Personal data are processed lawfully, fairly, and in a transparent manner, on the basis of one of the six Art. 6(1) lawfulness bases (or one of the Art. 9(2) bases for special categories). | `GDPR-CL01` (Art. 5(1)(a)/(b)); `GDPR-CL08–CL13` (Art. 6(1)(a)–(f)); `GDPR-CL21` (Art. 9(1) prohibition + exceptions) | D-05.1, D-09.1 |
-| SO-GDPR-016 | D-05.1, D-09.1 | Art. 5(1)(a)/(b), Art. 6(1)(a)–(f), Art. 9(1) | Lawfulness, fairness, transparency; legal-basis selection |
-| SO-GDPR-028 | Prior to processing that is likely to result in a high risk to the rights and freedoms of natural persons, the controller carries out a data-protection impact assessment covering the four Art. 35(7) content items (systematic description, necessity & proportionality, risks, mitigation measures); the assessment is reviewed on change of risk. | `GDPR-CP21` (Art. 35(1)–(4)); `GDPR-CP22` (Art. 35(7)/(11)); `GDPR-C23` (Art. 9(2)(g)); `GDPR-CP23` (Art. 36(1)) | D-09.2 |
-| SO-GDPR-028 | D-09.2 | Art. 35(1)–(4)/(7), Art. 9(2)(g), Art. 36(1) | Pre-launch DPIA for high-risk processing |
-| SO-GDPR-032 | Consent to personal-data processing is freely given, specific, informed, and unambiguous; the controller demonstrates the data subject's consent on request; withdrawal of consent is as easy as giving; bundled consent requests are presented in a clearly distinguishable form; conditional consent (bundled with contract) is presumed non-compliant unless processing is strictly necessary for contract performance; special-category consent is at the higher `explicit` standard; child consent (information-society services) is gated by Art. 8 age thresholds and parental-responsibility verification; transfer consent (Art. 49(1)(a)) is `explicit` and risk-informed. | `GDPR-C05` (Art. 4(11) — consent definition); `GDPR-CL08` (Art. 6(1)(a)); `GDPR-CL15` (Art. 7(1)); `GDPR-CL16` (Art. 7(2)); `GDPR-CL17` (Art. 7(3)); `GDPR-CL18` (Art. 7(4)); `GDPR-CL19` (Art. 8(1) — age threshold); `GDPR-CL20` (Art. 8(2) — reasonable verification); `GDPR-CL22` (Art. 9(2)(a) — explicit consent for special categories); `GDPR-TR08` (Art. 49(1)(a) — explicit transfer consent) | D-09.1, D-03.1 |
-| SO-GDPR-032 | D-09.1, D-03.1 | Art. 4(11), Art. 6(1)(a), Art. 7, Art. 8, Art. 9(2)(a), Art. 49(1)(a) | Consent lifecyle: specific, informed, demonstrable, withdrawable |
+| SG-GDPR-016 | Personal data are processed lawfully, fairly, and in a transparent manner, on the basis of one of the six Art. 6(1) lawfulness bases (or one of the Art. 9(2) bases for special categories). | `GDPR-CL01` (Art. 5(1)(a)/(b)); `GDPR-CL08–CL13` (Art. 6(1)(a)–(f)); `GDPR-CL21` (Art. 9(1) prohibition + exceptions) | D-05.1, D-09.1 |
+| SG-GDPR-016 | D-05.1, D-09.1 | Art. 5(1)(a)/(b), Art. 6(1)(a)–(f), Art. 9(1) | Lawfulness, fairness, transparency; legal-basis selection |
+| SG-GDPR-028 | Prior to processing that is likely to result in a high risk to the rights and freedoms of natural persons, the controller carries out a data-protection impact assessment covering the four Art. 35(7) content items (systematic description, necessity & proportionality, risks, mitigation measures); the assessment is reviewed on change of risk. | `GDPR-CP21` (Art. 35(1)–(4)); `GDPR-CP22` (Art. 35(7)/(11)); `GDPR-C23` (Art. 9(2)(g)); `GDPR-CP23` (Art. 36(1)) | D-09.2 |
+| SG-GDPR-028 | D-09.2 | Art. 35(1)–(4)/(7), Art. 9(2)(g), Art. 36(1) | Pre-launch DPIA for high-risk processing |
+| SG-GDPR-032 | Consent to personal-data processing is freely given, specific, informed, and unambiguous; the controller demonstrates the data subject's consent on request; withdrawal of consent is as easy as giving; bundled consent requests are presented in a clearly distinguishable form; conditional consent (bundled with contract) is presumed non-compliant unless processing is strictly necessary for contract performance; special-category consent is at the higher `explicit` standard; child consent (information-society services) is gated by Art. 8 age thresholds and parental-responsibility verification; transfer consent (Art. 49(1)(a)) is `explicit` and risk-informed. | `GDPR-C05` (Art. 4(11) — consent definition); `GDPR-CL08` (Art. 6(1)(a)); `GDPR-CL15` (Art. 7(1)); `GDPR-CL16` (Art. 7(2)); `GDPR-CL17` (Art. 7(3)); `GDPR-CL18` (Art. 7(4)); `GDPR-CL19` (Art. 8(1) — age threshold); `GDPR-CL20` (Art. 8(2) — reasonable verification); `GDPR-CL22` (Art. 9(2)(a) — explicit consent for special categories); `GDPR-TR08` (Art. 49(1)(a) — explicit transfer consent) | D-09.1, D-03.1 |
+| SG-GDPR-032 | D-09.1, D-03.1 | Art. 4(11), Art. 6(1)(a), Art. 7, Art. 8, Art. 9(2)(a), Art. 49(1)(a) | Consent lifecyle: specific, informed, demonstrable, withdrawable |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-008
@@ -57,7 +57,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP22, article_ref: "Art. 35(11) — DPIA review" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(d)" }
-  linked_objectives: [SO-GDPR-004, SO-GDPR-028]
+  linked_objectives: [SG-GDPR-004, SG-GDPR-028]
   sub_domain: [D-09.2, D-10.3, D-02.1]
   nist_csf_mapping:
     - { id: ID.RA-05, title: "Inherent risk understood via threats/vulnerabilities/likelihood/impact" }
@@ -76,7 +76,7 @@ status: DRAFT
     GDPR-CP22 (Art. 35(11)) carries no S3 ambiguity in the operative clause. `where necessary` and `change of the risk represented` are acknowledged Berry VAG; both readings converge on the obligation to reassess when the risk profile changes. The triggering "change" is documented in the controller's change-management policy and includes: change in processing purpose (Art. 6(4) compatibility), change in data categories (especially Art. 9 special categories), change in data-subject population (volume or vulnerability), change in technical context (new processor, new third country), and change in regulatory expectation (new EDPB guidance). EDPB Guidelines 4/2019 on DPIA provide non-binding factors for materiality but do not bind the controller.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-010
@@ -84,7 +84,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-RT04, article_ref: "Art. 12(6)" }
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation (cross)" }
-  linked_objectives: [SO-GDPR-005]
+  linked_objectives: [SG-GDPR-005]
   sub_domain: [D-03.1, D-05.1]
   nist_csf_mapping:
     - { id: PR.AA-02, title: "Identities proofed and bound to credentials" }
@@ -103,7 +103,7 @@ status: DRAFT
     `necessary` inherits VAG-S3 ambiguity from Art. 5(1)(c). Reading chosen: proportionate to purpose, demonstrable ex ante via Art. 5(2) accountability and Art. 35 DPIA necessity assessment. The rule preserves the proportionate-necessary interpretation. An alternative reading treats necessity as satisfied when serving the designed purpose, with necessity presumed by default; this is rejected because it inverts the accountability burden. A third reading requiring the least-intrusive among equivalent means under Charter Art. 52(1) is the most restrictive position and is the one adopted by some national DPAs (notably the CNIL) for sensitive-data contexts. The Art. 5(1)(c) necessary threshold varies with data sensitivity and breach impact; for Art. 9 special-category data, the controller may need stronger verification than for ordinary personal data. Remain open: whether automated identity-verification services (e.g. Jumio, Onfido) are themselves in scope as joint controllers under Art. 26, pending CJEU and EDPB guidance on AI-driven verification.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-019
@@ -112,7 +112,7 @@ status: DRAFT
     - { clause_id: GDPR-CP19, article_ref: "Art. 34(1) — high-risk breach communication to data subject" }
     - { clause_id: GDPR-CP19, article_ref: "Art. 34(2) — content of communication" }
     - { clause_id: GDPR-CP16, article_ref: "Art. 32(2) — risk enumeration (cross)" }
-  linked_objectives: [SO-GDPR-011]
+  linked_objectives: [SG-GDPR-011]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information shared with designated stakeholders per information-sharing rules" }
@@ -131,7 +131,7 @@ status: DRAFT
     `likely to result in a high risk` carries POLY+VAG-S3 (the three-tier `risk`/`high risk`/`high risk` architecture across Arts. 33, 34, 35). Reading chosen: the Art. 34 threshold is higher than the Art. 33 threshold — objectively elevated above ordinary processing risk, per EDPB Guidelines 9/2022. An alternative reading treating the threshold as severe impact on data subject's rights, per CNIL guidance, is operationally similar but framing-different. The chosen reading treats the threshold as risk-of-significant-harm, not merely risk-of-any-harm; the controller documents the risk assessment with reference to the data categories (Art. 9 special categories raise the threshold), the data-subject population (vulnerable populations raise the threshold), and the breach characteristics (encrypted vs plaintext, contained vs ongoing). Remain open: (a) whether `clear and plain language` requires a CEFR B1 reading-age standard or whether national DPA guidance is acceptable, pending EDPB harmonisation; and (b) whether the Art. 34 communication can be combined with Art. 33 notification to the supervisory authority, or must be a separate communication, pending EDPB Guidelines 9/2022 clarification.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-027
@@ -142,7 +142,7 @@ status: DRAFT
     - { clause_id: GDPR-CL11, article_ref: "Art. 6(1)(d) — vital interests" }
     - { clause_id: GDPR-CL12, article_ref: "Art. 6(1)(e) — public interest" }
     - { clause_id: GDPR-CL13, article_ref: "Art. 6(1)(f) — legitimate interests" }
-  linked_objectives: [SO-GDPR-016]
+  linked_objectives: [SG-GDPR-016]
   sub_domain: [D-09.1, D-05.1]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal/regulatory/contractual requirements understood and managed" }
@@ -195,7 +195,7 @@ status: DRAFT
     horizontal law.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-028
@@ -204,7 +204,7 @@ status: DRAFT
     - { clause_id: GDPR-CL21, article_ref: "Art. 9(1) — special-category prohibition" }
     - { clause_id: GDPR-CL22, article_ref: "Art. 9(2)(a) — explicit consent" }
     - { clause_id: GDPR-C23, article_ref: "Art. 9(2)(g) — substantial public interest (cross)" }
-  linked_objectives: [SO-GDPR-016]
+  linked_objectives: [SG-GDPR-016]
   sub_domain: [D-09.1, D-05.1]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal/regulatory/contractual requirements understood and managed" }
@@ -259,7 +259,7 @@ status: DRAFT
     collection.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-038
@@ -267,7 +267,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP06, article_ref: "Art. 27(1) — designate in writing" }
     - { clause_id: GDPR-CP06, article_ref: "Art. 27(2)(a) — occasional exception" }
-  linked_objectives: [SO-GDPR-023]
+  linked_objectives: [SG-GDPR-023]
   sub_domain: [D-06.4, D-09.1]
   nist_csf_mapping:
     - { id: GV.OC-02, title: "Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risks are understood and considered" }
@@ -318,7 +318,7 @@ status: DRAFT
     Art. 27 irrespective of the exception's `risk` prong.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-053
@@ -327,7 +327,7 @@ status: DRAFT
     - { clause_id: GDPR-CL22, article_ref: "Art. 9(2)(a) — explicit consent for special categories" }
     - { clause_id: GDPR-CL21, article_ref: "Art. 9(1) — special-category prohibition (cross)" }
     - { clause_id: GDPR-C05, article_ref: "Art. 4(11) — consent definition (cross)" }
-  linked_objectives: [SO-GDPR-032]
+  linked_objectives: [SG-GDPR-032]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: PR.AA-02, title: "Identities proofed and bound to credentials" }
@@ -369,7 +369,7 @@ status: DRAFT
     broader reference. Marked UNMAPPED_CSF.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-054
@@ -378,7 +378,7 @@ status: DRAFT
     - { clause_id: GDPR-CL19, article_ref: "Art. 8(1) — age threshold" }
     - { clause_id: GDPR-CL20, article_ref: "Art. 8(2) — reasonable verification efforts" }
     - { clause_id: GDPR-TR08, article_ref: "Art. 49(1)(a) — explicit transfer consent" }
-  linked_objectives: [SO-GDPR-032]
+  linked_objectives: [SG-GDPR-032]
   sub_domain: [D-09.1, D-03.1]
   nist_csf_mapping:
     - { id: PR.AA-02, title: "Identities proofed and bound to credentials" }
@@ -415,7 +415,7 @@ status: DRAFT
     Art. 8(1) parental-responsibility carries POLY-S3 because Member State legal definitions diverge (some treat only biological parents as holders of parental responsibility, others include guardians and educational institutions). Art. 8(2) reasonable efforts carries VAG-S3 because the available-technology standard is a rolling benchmark and no supervisory authority has published a hard test. Art. 49(1)(a) explicitly consented carries POLY-S3 against the Art. 4(11) unambiguous standard and the Art. 9(2)(a) explicit standard. The rule preserves the EDPB Guidelines 05/2020 reading that the derogation consent must be explicit, specific to the transfer, and documented as risk-informed, so the controller cannot rely on the same consent artefact used for the underlying Art. 6(1)(a) basis. An alternative reading confines Art. 8(2) reasonable efforts to a one-time check at the moment of consent collection; this reading is rejected because EDPB Guidelines on Art. 8(2) treat the obligation as continuing for as long as the child uses the service. A second alternative reading treats the Art. 49(1)(a) explicit consent as a one-time event that survives subsequent changes in the destination regime; this reading is rejected because the risk-informed nature of the consent requires re-confirmation when the destination regime materially changes. Remain open: (a) whether reasonable efforts under Art. 8(2) includes reliance on the data subject's self-declaration of age or whether a positive verification step (credit-card verification, ID upload, knowledge-based authentication) is required; (b) whether Art. 49(1)(a) explicit consent can be combined with Art. 6(1)(a) consent in a single transaction or must be collected through a separate user journey that highlights the transfer-risk information.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-057
@@ -424,7 +424,7 @@ status: DRAFT
     - { clause_id: GDPR-TR08, article_ref: "Art. 49(1)(a) — explicit consent" }
     - { clause_id: GDPR-TR09, article_ref: "Art. 49(1)(d) — important public interest" }
     - { clause_id: GDPR-TR10, article_ref: "Art. 49(1) second subparagraph — catch-all" }
-  linked_objectives: [SO-GDPR-033]
+  linked_objectives: [SG-GDPR-033]
   sub_domain: [D-06.3, D-09.1]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal/regulatory/contractual requirements understood and managed" }
@@ -466,14 +466,14 @@ status: DRAFT
     Subcategory. The closest mapping GV.OC-03 is a poor fit.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-062
   title: "DPO designation triggered by processing profile"
   source_clauses:
     - { clause_id: GDPR-CP25, article_ref: "Art. 37(1)(a)/(b)/(c) — DPO designation triggers" }
-  linked_objectives: [SO-GDPR-037]
+  linked_objectives: [SG-GDPR-037]
   sub_domain: [D-09.1, D-09.2]
   nist_csf_mapping:
     - { id: GV.RR-02, title: "Roles/responsibilities/accountabilities established and communicated" }

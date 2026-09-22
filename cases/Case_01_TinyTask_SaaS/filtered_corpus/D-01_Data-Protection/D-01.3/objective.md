@@ -7,7 +7,7 @@
 
 #### D-01.3.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-01.3.HL
+id: SG-D-01.3.HL
 subdomain: D-01.3
 applies_to: auto  # activates when ≥2 applicable regs overlap on same key material
 status: static

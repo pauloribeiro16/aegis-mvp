@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-020 + SO-CRA-068 | Relevant internal activity of the product with digital elements — including access to or modification of data, services, or functions — is recorded and monitored, with a user-visible opt-out mechanism where appropriate; manufacturer enables continuous security-relevant internal-activity monitoring such that security-relevant events are observable by the manufacturer and (where appropriate) reportable to the user (Annex I Part I (2)(l) + Annex I Part II (6)). | Product-level on-device internal-activity monitoring with **user opt-out** + vulnerability-reporting mechanism; manufacturer-side observability. |
+| CRA | SG-CRA-020 + SG-CRA-068 | Relevant internal activity of the product with digital elements — including access to or modification of data, services, or functions — is recorded and monitored, with a user-visible opt-out mechanism where appropriate; manufacturer enables continuous security-relevant internal-activity monitoring such that security-relevant events are observable by the manufacturer and (where appropriate) reportable to the user (Annex I Part I (2)(l) + Annex I Part II (6)). | Product-level on-device internal-activity monitoring with **user opt-out** + vulnerability-reporting mechanism; manufacturer-side observability. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-10.1.3 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-10.1.CRA
+id: SG-D-10.1.CRA
 subdomain: D-10.1
 applies_to: [CRA]
-inherits_from: SO-CRA-020 + SO-CRA-068
+inherits_from: SG-CRA-020 + SG-CRA-068
 source_SR: SR-CRA-100 + SR-CRA-101
 activation: if CRA in applicable_regs
 phase_1A_role: 3_of_5
@@ -48,7 +48,7 @@ DE.CM-09, DE.CM-01 (primary), ID.RA-04, GV.OV-01.
 
   derives_from:
     hso_sub_so: SO-10.1.CRA
-    per_reg_so: SO-CRA-020 + SO-CRA-068
+    per_reg_so: SG-CRA-020 + SG-CRA-068
     source_sr: SR-CRA-100 + SR-CRA-101
     hso_file: ../../HierarchicalSecurityObjectives/D-10_Monitoring-Audit/10.1.md
     objective_ref_section: "### 10.1.3"

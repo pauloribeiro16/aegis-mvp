@@ -26,19 +26,19 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-DORA-008 | An ICT-related incident management process is defined, established and implemented to detect, manage and notify ICT-related incidents; major ICT-related incidents are reported to the relevant competent authority, and clients are informed about the major ICT-related incident without undue delay as soon as the financial entity becomes aware of it. | `DORA-C30` (Art. 17(1) incident management process — twin 3-way verb coordination: define/establish/implement + detect/manage/notify); `DORA-C31` (Art. 19(1)+(3) major incident reporting to CA + client notification — twin temporal trigger `without undue delay AS SOON AS they become aware`) | D-04.1, D-04.3 |
-| SO-DORA-008 | D-04.1, D-04.3 | Art. 17(1) + Art. 19(1)+(3) | Incident management process + major incident reporting |
+| SG-DORA-008 | An ICT-related incident management process is defined, established and implemented to detect, manage and notify ICT-related incidents; major ICT-related incidents are reported to the relevant competent authority, and clients are informed about the major ICT-related incident without undue delay as soon as the financial entity becomes aware of it. | `DORA-C30` (Art. 17(1) incident management process — twin 3-way verb coordination: define/establish/implement + detect/manage/notify); `DORA-C31` (Art. 19(1)+(3) major incident reporting to CA + client notification — twin temporal trigger `without undue delay AS SOON AS they become aware`) | D-04.1, D-04.3 |
+| SG-DORA-008 | D-04.1, D-04.3 | Art. 17(1) + Art. 19(1)+(3) | Incident management process + major incident reporting |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-016
   title: "End-to-end ICT-related incident management process with root-cause analysis"
   source_clauses:
     - { clause_id: DORA-C30, article_ref: "Art. 17(1) — `define, establish and implement an ICT-related incident management process to detect, manage and notify ICT-related incidents`" }
-  linked_objectives: [SO-DORA-008]
+  linked_objectives: [SG-DORA-008]
   sub_domain: [D-04.1, D-04.3]
   nist_csf_mapping:
     - { id: RS.MA-01, title: "The incident management plan is executed in coordination with relevant third parties once an incident is declared" }
@@ -111,7 +111,7 @@ status: DRAFT
     characterisation remains unsettled in OJ text).
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-017
@@ -119,7 +119,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: DORA-C31, article_ref: "Art. 19(1) — `Financial entities shall report major ICT-related incidents to the relevant competent authority`" }
     - { clause_id: DORA-C31, article_ref: "Art. 19(3) — `financial entities shall, without undue delay as soon as they become aware of it, inform their clients about the major ICT-related incident`" }
-  linked_objectives: [SO-DORA-008]
+  linked_objectives: [SG-DORA-008]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents are reported internally to the appropriate stakeholders, including executive leadership and legal counsel" }
@@ -187,14 +187,14 @@ status: DRAFT
     pending EBA Guidelines on operational or security payment-related incidents.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-018
   title: "Standing crisis communication plans for major ICT incidents"
   source_clauses:
     - { clause_id: DORA-C29, article_ref: "Art. 14(1) — `crisis communication plans enabling a responsible disclosure of, at least, major ICT-related incidents or vulnerabilities to clients and counterparts as well as to the public, as appropriate`" }
-  linked_objectives: [SO-DORA-009]
+  linked_objectives: [SG-DORA-009]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information is shared with designated internal and external stakeholders consistent with the established information-sharing rules" }

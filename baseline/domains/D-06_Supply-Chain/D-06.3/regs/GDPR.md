@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-022; SO-GDPR-033; SO-GDPR-035 | Processor contracts contain the eight Art. 28(3)(a)–(h) mandatory clauses; third-country transfers use Art. 46 safeguards where no adequacy decision exists; third-country court or administrative requests are recognised only through an international-agreement basis | Controller/processor personal-data contract; transfer-safeguard contractual layer; DPA-facing accountability |
+| GDPR | SG-GDPR-022; SG-GDPR-033; SG-GDPR-035 | Processor contracts contain the eight Art. 28(3)(a)–(h) mandatory clauses; third-country transfers use Art. 46 safeguards where no adequacy decision exists; third-country court or administrative requests are recognised only through an international-agreement basis | Controller/processor personal-data contract; transfer-safeguard contractual layer; DPA-facing accountability |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-06.3.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-06.3.GDPR
+id: SG-D-06.3.GDPR
 subdomain: D-06.3
 applies_to: [GDPR]
-inherits_from: [SO-GDPR-022, SO-GDPR-033, SO-GDPR-035]
+inherits_from: [SG-GDPR-022, SG-GDPR-033, SG-GDPR-035]
 source_SR: [SR-GDPR-034, SR-GDPR-035, SR-GDPR-036, SR-GDPR-037, SR-GDPR-056, SR-GDPR-059]
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N
@@ -46,8 +46,8 @@ phase_1A_role: 1_of_N
   title: "Art. 28(3)(a)–(h) 8-element DPA closed-list contracts + Art. 46 transfer safeguards + Art. 48 international-agreement filter for third-country legal-process exposure"
 
   derives_from:
-    hso_sub_so: SO-D-06.3.GDPR
-    per_reg_so: SO-GDPR-022, SO-GDPR-033, SO-GDPR-035
+    hso_sub_so: SG-D-06.3.GDPR
+    per_reg_so: SG-GDPR-022, SG-GDPR-033, SG-GDPR-035
     source_sr: SR-GDPR-034, SR-GDPR-035, SR-GDPR-036, SR-GDPR-037, SR-GDPR-056, SR-GDPR-059
     hso_file: ../../HierarchicalSecurityObjectives/D-06_Supply-Chain/D-06.3.md
     objective_ref_section: "### D-06.3.1"

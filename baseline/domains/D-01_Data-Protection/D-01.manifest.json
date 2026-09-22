@@ -226,7 +226,7 @@
   "sub_objectives_by_regulation": {
     "AI_Act": [
       {
-        "id": "SO-D-01.4.AI_Act",
+        "id": "SG-D-01.4.AI_Act",
         "csf_anchors": [
           "PR.IR-03",
           "PR.IR-04",
@@ -241,20 +241,20 @@
     ],
     "CRA": [
       {
-        "id": "SO-D-01.1.CRA",
+        "id": "SG-D-01.1.CRA",
         "csf_anchors": [
           "PR.DS-01"
         ]
       },
       {
-        "id": "SO-D-01.2.CRA",
+        "id": "SG-D-01.2.CRA",
         "csf_anchors": [
           "PR.DS-02",
           "PR.IR-01"
         ]
       },
       {
-        "id": "SO-D-01.3.CRA",
+        "id": "SG-D-01.3.CRA",
         "csf_anchors": [
           "PR.DS-01",
           "PR.AA-05",
@@ -262,7 +262,7 @@
         ]
       },
       {
-        "id": "SO-D-01.4.CRA",
+        "id": "SG-D-01.4.CRA",
         "csf_anchors": [
           "PR.DS-01",
           "PR.DS-10",
@@ -272,7 +272,7 @@
     ],
     "DORA": [
       {
-        "id": "SO-D-01.1.DORA",
+        "id": "SG-D-01.1.DORA",
         "csf_anchors": [
           "PR.DS-01",
           "PR.DS-02",
@@ -281,7 +281,7 @@
         ]
       },
       {
-        "id": "SO-D-01.2.DORA",
+        "id": "SG-D-01.2.DORA",
         "csf_anchors": [
           "PR.DS-01",
           "PR.DS-02",
@@ -290,7 +290,7 @@
         ]
       },
       {
-        "id": "SO-D-01.3.DORA",
+        "id": "SG-D-01.3.DORA",
         "csf_anchors": [
           "PR.AA-03",
           "PR.AA-04",
@@ -299,7 +299,7 @@
         ]
       },
       {
-        "id": "SO-D-01.4.DORA",
+        "id": "SG-D-01.4.DORA",
         "csf_anchors": [
           "PR.DS-01",
           "PR.DS-02",
@@ -310,7 +310,7 @@
     ],
     "GDPR": [
       {
-        "id": "SO-D-01.1.GDPR",
+        "id": "SG-D-01.1.GDPR",
         "csf_anchors": [
           "PR.DS-01",
           "PR.DS-10"
@@ -321,7 +321,7 @@
         ]
       },
       {
-        "id": "SO-D-01.2.GDPR",
+        "id": "SG-D-01.2.GDPR",
         "csf_anchors": [
           "PR.DS-02",
           "PR.IR-01"
@@ -332,7 +332,7 @@
         ]
       },
       {
-        "id": "SO-D-01.3.GDPR",
+        "id": "SG-D-01.3.GDPR",
         "csf_anchors": [
           "PR.DS-01",
           "PR.IR-03"
@@ -343,7 +343,7 @@
         ]
       },
       {
-        "id": "SO-D-01.4.GDPR",
+        "id": "SG-D-01.4.GDPR",
         "csf_anchors": [
           "PR.DS-01",
           "ID.AM-08",
@@ -358,7 +358,7 @@
     ],
     "NIS2": [
       {
-        "id": "SO-D-01.1.NIS2",
+        "id": "SG-D-01.1.NIS2",
         "csf_anchors": [
           "PR.DS-01",
           "PR.DS-02",

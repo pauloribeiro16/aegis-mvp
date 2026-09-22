@@ -7,7 +7,7 @@
 
 #### D-05.1.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-05.1.HL
+id: SG-D-05.1.HL
 subdomain: D-05.1
 applies_to: auto  # activates when ≥2 applicable regs target overlapping data classes on the same party AND the Art. 10(5) carve-out does not dissolve the engagement
 status: static

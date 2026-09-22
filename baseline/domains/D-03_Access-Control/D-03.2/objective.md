@@ -7,7 +7,7 @@
 
 #### D-03.2.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-03.2.HL
+id: SG-D-03.2.HL
 subdomain: D-03.2
 applies_to: auto  # activates when ≥2 applicable regs overlap on the same authentication event
 status: static

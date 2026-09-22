@@ -26,14 +26,14 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-024
   title: "GPAI serious incident reporting to the AI Office"
   source_clauses:
     - { clause_id: AIA-C29, article_ref: "Art. 55(1)(c) — `keep track of, document, and report, without undue delay, to the AI Office and, as appropriate, to national competent authorities, relevant information about serious incidents and possible corrective measures to address them`" }
-  linked_objectives: [SO-AIACT-014]
+  linked_objectives: [SG-AIACT-014]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents are reported internally to the appropriate stakeholders, including executive leadership and legal counsel" }

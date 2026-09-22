@@ -7,7 +7,7 @@
 
 #### D-09.4.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-09.4.HL
+id: SG-D-09.4.HL
 subdomain: D-09.4
 applies_to: auto  # activates when ≥2 applicable regs have ≥1 pair with Y or Conditional-Y-on-same-party scope overlap AND ≥1 sub-SO activates; for D-09.4 the matrix above shows **3 same-row pairs with N (typically)** (GDPR↔NIS 2, GDPR↔CRA, GDPR↔DORA-recommended — substantively scope-disjoint per CRDA) and **7 pairs with Y or Conditional-Y activation on the joint-condition operator** (GDPR↔AI_Act = Conditional-Y; NIS2↔CRA = Conditional-Y; NIS2↔DORA = Conditional-Y; NIS2↔AI_Act = Conditional-Y; CRA↔DORA = Conditional-Y; CRA↔AI_Act = Y; DORA↔AI_Act = Conditional-Y). The high-level SO engages on the 7 same-event activation pairs — not on the 3 substantively scope-disjoint pairs. The high-level SO does NOT collapse the 5 documentation regimes into a single artefact; it surfaces the **common documentation-regime duty** (records of processing activities + technical documentation + certification records + IS-policy documentation + QMS documentation) on parallel artefacts serving distinct audit purposes.
 status: static

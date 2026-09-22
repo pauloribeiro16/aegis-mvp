@@ -30,14 +30,14 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-DORA-003 | Sources of ICT risk — including cyber threats and ICT vulnerabilities relevant to ICT supported business functions, information assets and ICT assets — are identified on a continuous basis; risk scenarios impacting the entity are reviewed on a regular basis, at least yearly. | `DORA-C06` (Art. 7(2) continuous basis + regular basis + yearly review); `DORA-C08` (Art. 8(2) `all sources of ICT risk` + risk exposure to/from other financial entities) | D-02.1, D-10.1 |
-| SO-DORA-003 | D-02.1, D-10.1 | Art. 7(2) + Art. 8(2) | Continuous ICT risk identification + yearly review of risk scenarios |
-| SO-DORA-018 | ICT systems and tools are continuously monitored and controlled for security and functioning, and the impact of ICT risk is minimised through the deployment of appropriate ICT security tools, policies and procedures; an information security policy defines rules to protect the availability, authenticity, integrity and confidentiality of data, information assets and ICT assets, including those of customers where applicable. | `DORA-C07` (Art. 8(1) `continuously monitor and control` + `security and functioning` AND + `tools, policies and procedures` 3-way AND); `DORA-C12` (Art. 9(4)(a) information security policy + nested AND of CIA+A 4-way of data/information assets/ICT assets 3-way) | D-10.1, D-10.2 |
-| SO-DORA-018 | D-10.1, D-10.2 | Art. 8(1) + Art. 9(4)(a) | Continuous monitoring + information security policy |
+| SG-DORA-003 | Sources of ICT risk — including cyber threats and ICT vulnerabilities relevant to ICT supported business functions, information assets and ICT assets — are identified on a continuous basis; risk scenarios impacting the entity are reviewed on a regular basis, at least yearly. | `DORA-C06` (Art. 7(2) continuous basis + regular basis + yearly review); `DORA-C08` (Art. 8(2) `all sources of ICT risk` + risk exposure to/from other financial entities) | D-02.1, D-10.1 |
+| SG-DORA-003 | D-02.1, D-10.1 | Art. 7(2) + Art. 8(2) | Continuous ICT risk identification + yearly review of risk scenarios |
+| SG-DORA-018 | ICT systems and tools are continuously monitored and controlled for security and functioning, and the impact of ICT risk is minimised through the deployment of appropriate ICT security tools, policies and procedures; an information security policy defines rules to protect the availability, authenticity, integrity and confidentiality of data, information assets and ICT assets, including those of customers where applicable. | `DORA-C07` (Art. 8(1) `continuously monitor and control` + `security and functioning` AND + `tools, policies and procedures` 3-way AND); `DORA-C12` (Art. 9(4)(a) information security policy + nested AND of CIA+A 4-way of data/information assets/ICT assets 3-way) | D-10.1, D-10.2 |
+| SG-DORA-018 | D-10.1, D-10.2 | Art. 8(1) + Art. 9(4)(a) | Continuous monitoring + information security policy |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-004
@@ -45,7 +45,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: DORA-C06, article_ref: "Art. 7(2) — `on a continuous basis, identify all sources of ICT risk`" }
     - { clause_id: DORA-C08, article_ref: "Art. 8(2) — `identify all sources of ICT risk … and assess cyber threats and ICT vulnerabilities relevant to their ICT supported business functions`" }
-  linked_objectives: [SO-DORA-003]
+  linked_objectives: [SG-DORA-003]
   sub_domain: [D-02.1, D-10.1]
   nist_csf_mapping:
     - { id: ID.RA-01, title: "Vulnerabilities in assets are identified, validated, and recorded" }
@@ -118,14 +118,14 @@ status: DRAFT
     recognised mechanism but do not yet have OJ-delegated form.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-005
   title: "Annual risk-scenario register refresh with strategic recalibration"
   source_clauses:
     - { clause_id: DORA-C06, article_ref: "Art. 7(2) sentence 2 — `Financial entities shall review on a regular basis, and at least yearly, the risk scenarios impacting them`" }
-  linked_objectives: [SO-DORA-003]
+  linked_objectives: [SG-DORA-003]
   sub_domain: [D-02.1, D-09.2]
   nist_csf_mapping:
     - { id: ID.RA-05, title: "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response decisions" }
@@ -199,14 +199,14 @@ status: DRAFT
     taxonomy across the three ESAs.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-029
   title: "Inventory and classification of ICT-supported business assets"
   source_clauses:
     - { clause_id: DORA-C05, article_ref: "Art. 7(1) — `identify, classify and adequately document all ICT supported business functions, roles and responsibilities, the information assets and ICT assets supporting those functions, and their roles and dependencies in relation to ICT risk`" }
-  linked_objectives: [SO-DORA-017]
+  linked_objectives: [SG-DORA-017]
   sub_domain: [D-09.3]
   nist_csf_mapping:
     - { id: ID.AM-01, title: "Inventories of hardware managed by the organization are maintained" }
@@ -273,14 +273,14 @@ status: DRAFT
     supervisory practice providing convergence signals.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-030
   title: "Continuous monitoring and control of ICT-system security and functioning"
   source_clauses:
     - { clause_id: DORA-C07, article_ref: "Art. 8(1) — `continuously monitor and control the security and functioning of ICT systems and tools and shall minimise the impact of ICT risk on ICT systems through the deployment of appropriate ICT security tools, policies and procedures`" }
-  linked_objectives: [SO-DORA-018]
+  linked_objectives: [SG-DORA-018]
   sub_domain: [D-10.1]
   nist_csf_mapping:
     - { id: DE.CM-01, title: "Networks and network services are monitored to find potentially adverse events" }

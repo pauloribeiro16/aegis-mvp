@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| AI_Act | SO-AIACT-006 | High-risk AI system logs retained for ≥6 months aligned with intended purpose, unless Union/national law provides otherwise (Art. 19(1); T5 mapping error on Art. 12(4) per `SR-AIACT-008` `ambiguity_notes`) | AI logs; minimum floor; provider obligation; Art. 19(1) 6-month floor + `under their control` POLY + GDPR escape clause; PR.PS-04 + GV.PO-02 |
+| AI_Act | SG-AIACT-006 | High-risk AI system logs retained for ≥6 months aligned with intended purpose, unless Union/national law provides otherwise (Art. 19(1); T5 mapping error on Art. 12(4) per `SR-AIACT-008` `ambiguity_notes`) | AI logs; minimum floor; provider obligation; Art. 19(1) 6-month floor + `under their control` POLY + GDPR escape clause; PR.PS-04 + GV.PO-02 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-05.2.3 — Sub-SO for AI_Act
 
 ```yaml
-id: SO-D-05.2.AIACT
+id: SG-D-05.2.AIACT
 subdomain: D-05.2
 applies_to: [AI_ACT]
-inherits_from: SO-AIACT-006
+inherits_from: SG-AIACT-006
 source_SR: SR-AIACT-008
 activation: if AI_ACT in applicable_regs
 phase_1A_role: 1_of_N
@@ -51,8 +51,8 @@ MEASURE-2.4, MEASURE-4.2, GOVERN-1.4.
   title: "High-risk AI system logs retained ≥6 months per Art. 19(1); upward adjustment justified by intended purpose; floor-within-ceiling layering with GDPR when logs contain personal data"
 
   derives_from:
-    hso_sub_so: SO-D-05.2.AIACT
-    per_reg_so: SO-AIACT-006
+    hso_sub_so: SG-D-05.2.AIACT
+    per_reg_so: SG-AIACT-006
     source_sr: SR-AIACT-008
     hso_file: ../../HierarchicalSecurityObjectives/D-05_Data-Lifecycle/D-05.2.md
     objective_ref_section: "### D-05.2.3"

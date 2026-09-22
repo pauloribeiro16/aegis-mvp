@@ -28,7 +28,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-001
@@ -39,7 +39,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     - { clause_id: NIS2-CL08, article_ref: "Art. 21(1) sentence 2 — state-of-the-art + standards + cost" }
     - { clause_id: NIS2-D01, article_ref: "Art. 6(1) — network and information system (cross)" }
     - { clause_id: NIS2-D02, article_ref: "Art. 6(2) — security of network and information systems" }
-  linked_objectives: [SO-NIS2-001]
+  linked_objectives: [SG-NIS2-001]
   sub_domain: [D-01.1]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }
@@ -55,7 +55,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     Article 21(2)(h) carries two compounding S3 ambiguities that drive materially different compliance obligations. First, the `cryptography and, where appropriate, encryption` conjunction is a hierarchical AND-with-hedge: cryptography is always required (a policy must address cryptographic mechanisms as a discipline) but encryption is additionally required only where the entity's risk assessment indicates it; the alternative reading that cryptography and encryption are synonyms is rejected by the literal text and by the CRA parallel (CRA Art. 13(2) on default passwords, Art. 14(2) on vulnerability remediation, treat cryptography and encryption as distinct concepts). Second, `state of the art` in Article 21(1) sentence 2 admits three readings — current best practice (qualitative), published standards (e.g. ISO/IEC 27001:2022, NIST CSF 2.0), or cutting-edge frontier research — of which the third is rejected by Recital 56 (cost of implementation implies off-the-shelf); the chosen reading accepts both R1 best practice and R2 published standards as operative, with ENISA's 2022 baseline guidance as the practical floor. Member State transposition divergence may apply on `state of the art`: the German BSI standardises the term through BSI TR-02102; French ANSSI requires an independent assessment by a qualified body; Italian ACN publishes annual guidance. The substantive software-compliance consequence is that a 5-FTE SaaS entity and a 500-FTE operator may both satisfy Article 21(2)(h) with materially different documentation depth, provided each documents the proportionality decision. Remain open: (a) whether the European Commission implementing acts under Article 21(5) will specify a baseline cryptography standard or only methodological requirements (the 17 October 2024 deadline has slipped to mid-2025 without publication as of the current reference date); (b) whether Member State national transposition will impose sector-specific cryptography mandates beyond the Directive... (line truncated to 2000 chars)
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-027
@@ -63,7 +63,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
   source_clauses:
     - { clause_id: NIS2-CL14, article_ref: "Art. 21(2)(e) — security in development" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
-  linked_objectives: [SO-NIS2-017]
+  linked_objectives: [SG-NIS2-017]
   sub_domain: [D-07.1]
   nist_csf_mapping:
     - { id: PR.PS-06, title: "Secure software development practices are integrated, and their performance is monitored throughout the SDLC" }

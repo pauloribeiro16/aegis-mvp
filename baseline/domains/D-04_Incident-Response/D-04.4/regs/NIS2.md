@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| NIS 2 | SO-NIS2-013 | Business-continuity triad (BC + backup + DR + crisis management) ensuring the ability to restore availability and integrity of network and information systems and manage crises arising from significant incidents | Entity ICT systems; all-hazards approach (Art. 21(2) chapeau + Recital 56); Art. 21(2)(c); RC.RP-04 + PR.DS-11 |
+| NIS 2 | SG-NIS2-013 | Business-continuity triad (BC + backup + DR + crisis management) ensuring the ability to restore availability and integrity of network and information systems and manage crises arising from significant incidents | Entity ICT systems; all-hazards approach (Art. 21(2) chapeau + Recital 56); Art. 21(2)(c); RC.RP-04 + PR.DS-11 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-04.4.2 — Sub-SO for NIS 2
 
 ```yaml
-id: SO-D-04.4.NIS2
+id: SG-D-04.4.NIS2
 subdomain: D-04.4
 applies_to: [NIS2]
-inherits_from: SO-NIS2-013
+inherits_from: SG-NIS2-013
 source_SR: SR-NIS2-019
 activation: if NIS2 in applicable_regs
 phase_1A_role: 1_of_N
@@ -63,7 +63,7 @@ methodological anchors cross-referenced in the SR's `regulatory_rationale`.)*
 
   derives_from:
     hso_sub_so: SO-4.4.NIS2
-    per_reg_so: SO-NIS2-013
+    per_reg_so: SG-NIS2-013
     source_sr: SR-NIS2-019
     hso_file: ../../HierarchicalSecurityObjectives/D-04_Incident-Response/4.4.md
     objective_ref_section: "### 4.4.2"

@@ -36,14 +36,14 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-CRA-042 | An importer or distributor who places a product with digital elements on the market under its own name or trademark, or who carries out a substantial modification of a product with digital elements already placed on the market, is considered to be the manufacturer for the purposes of the Regulation and assumes the manufacturer's obligations under Arts. 13 and 14. | `CRA-CL96` (Art. 21 — manufacturer-equivalent trigger); `CRA-CL30` (Art. 3(30) — substantial modification definition) | D-06.4, D-07.4 |
-| SO-CRA-042 | D-06.4, D-07.4 | Art. 21 + Art. 3(30) | Manufacturer-equivalent trigger (own name/trademark or substantial mod) |
-| SO-CRA-047 | Procedures are in place for products with digital elements that are part of a series of production to remain in conformity with this Regulation; changes to the product are assessed against the conformity assessment, and where a change is a substantial modification under Art. 3(30), the entity making the modification is treated as the manufacturer with the attendant obligations. | `CRA-CL39` (Art. 13(14) — series-of-production conformity); `CRA-CL96` (Art. 21 — manufacturer-equivalent trigger); `CRA-CL97` (Art. 22(1) — third-party substantial modification = manufacturer); `CRA-CL30` (Art. 3(30) — substantial modification definition); `CRA-CL34` (Art. 13(10) — substantial modification compliance for the last-placed version) | D-07.4, D-06.4 |
-| SO-CRA-047 | D-07.4, D-06.4 | Art. 13(14) + Art. 21 + Art. 22(1) + Art. 3(30) + Art. 13(10) | Series-production conformity + substantial-modification consequences |
+| SG-CRA-042 | An importer or distributor who places a product with digital elements on the market under its own name or trademark, or who carries out a substantial modification of a product with digital elements already placed on the market, is considered to be the manufacturer for the purposes of the Regulation and assumes the manufacturer's obligations under Arts. 13 and 14. | `CRA-CL96` (Art. 21 — manufacturer-equivalent trigger); `CRA-CL30` (Art. 3(30) — substantial modification definition) | D-06.4, D-07.4 |
+| SG-CRA-042 | D-06.4, D-07.4 | Art. 21 + Art. 3(30) | Manufacturer-equivalent trigger (own name/trademark or substantial mod) |
+| SG-CRA-047 | Procedures are in place for products with digital elements that are part of a series of production to remain in conformity with this Regulation; changes to the product are assessed against the conformity assessment, and where a change is a substantial modification under Art. 3(30), the entity making the modification is treated as the manufacturer with the attendant obligations. | `CRA-CL39` (Art. 13(14) — series-of-production conformity); `CRA-CL96` (Art. 21 — manufacturer-equivalent trigger); `CRA-CL97` (Art. 22(1) — third-party substantial modification = manufacturer); `CRA-CL30` (Art. 3(30) — substantial modification definition); `CRA-CL34` (Art. 13(10) — substantial modification compliance for the last-placed version) | D-07.4, D-06.4 |
+| SG-CRA-047 | D-07.4, D-06.4 | Art. 13(14) + Art. 21 + Art. 22(1) + Art. 3(30) + Art. 13(10) | Series-production conformity + substantial-modification consequences |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-018
@@ -51,7 +51,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL132, article_ref: "Annex I Part I (2)(c) — automatic security updates + opt-out + postponement" }
     - { clause_id: CRA-CL158, article_ref: "Annex II §8(e) — how the automatic-update default setting can be turned off" }
-  linked_objectives: [SO-CRA-019, SO-CRA-009]
+  linked_objectives: [SG-CRA-019, SG-CRA-009]
   sub_domain: [D-03.4, D-02.2]
   nist_csf_mapping:
     - { id: PR.PS-01, title: "Configuration management practices are established, documented, and applied to assets" }
@@ -66,7 +66,7 @@ status: DRAFT
     The phrase "within an appropriate timeframe" in Annex I Part I (2)(c) is VAG-S3 in the Berry-classic "appropriate" sense (cf. GDPR Art. 32, NIS 2 Art. 21). Reading chosen: R2, anchoring the timeframe to the severity of the addressed vulnerability and the user's operational environment, modulated by the Art. 13(2) risk assessment. Alternative readings: R1 (a single quantitative ceiling for all vulnerabilities) is rejected because severity modulation is the operative sanity check; R3 (manufacturer discretion) is rejected as failing the inquiry-resistant test. The "clear and easy-to-use" qualifier is VAG-S2 with R1 (UI discoverable + single-click) as the literal reading, anchored in harmonised standards and Art. 7(4) Commission implementing acts. An additional reading, R5, would tie the timeframe to harmonised-standards baselines that specify a category-specific deployment window (industrial control, medical device, consumer IoT); R5 is admitted as the long-run consensus direction but is rejected for current OJ reading because Annex I Part I (2)(c) leaves the timeframe to the manufacturer's risk assessment, pending Art. 7(4) implementing acts that may specify defaults. Remain open: (a) does the opt-out obligation require that disabling auto-update also disable any active update channel that could silently re-enable, or merely that the toggle be respected once flipped; (b) when updates are bundled (security + functionality), must Annex I Part II (2)'s "where technically feasible" separation route the entire bundle through opt-in for the functionality part.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-061
@@ -74,7 +74,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL96, article_ref: "Art. 21 — manufacturer-equivalent trigger (own name/trademark or substantial modification)" }
     - { clause_id: CRA-CL30, article_ref: "Art. 3(30) — substantial modification" }
-  linked_objectives: [SO-CRA-042, SO-CRA-047]
+  linked_objectives: [SG-CRA-042, SG-CRA-047]
   sub_domain: [D-06.4, D-07.4]
   nist_csf_mapping:
     - { id: GV.SC-02, title: "Suppliers and other third parties are known, prioritized, and assessed using a cybersecurity supply chain risk management process" }
@@ -89,7 +89,7 @@ status: DRAFT
     `Under its name or trademark` carries VAG+POLY-S3: R3 (either — white-label, co-brand, or repackaged under a distinct trademark). R1 (strictly under one's own trademark) is rejected as narrower than the literal; R2 (only when both name and trademark diverge) is rejected as cumulatively restrictive. `Substantial modification` inherits Article 3(30) D30 — VAG+POLY+COORD-S3 (cf. SR-CRA-061/R-CRA-015 for the full reading). Reading chosen for this SR: R1 + R3 (Article 3(30) disjunctive `affects compliance OR modifies intended purpose` — literal). The interaction with Article 22 (SR-CRA-062) is significant: where the modifier is neither manufacturer nor importer nor distributor, Article 22 applies the manufacturer-equivalent status to that other person — closing a critical loophole. Remain open: (a) the operational demarcation between `intended-purpose modification` (Article 3(30) limb b) and intended-purpose-preserving configuration changes — i.e. whether adding optional features that do not affect Annex I compliance is `substantial`; (b) whether the harmonised standards under Article 27 will specify a baseline technical-modification catalogue for the most common product categories.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-070
@@ -99,7 +99,7 @@ status: DRAFT
     - { clause_id: CRA-CL96, article_ref: "Art. 21 — manufacturer-equivalent trigger" }
     - { clause_id: CRA-CL97, article_ref: "Art. 22(1) — third-party substantial modification" }
     - { clause_id: CRA-CL30, article_ref: "Art. 3(30) — substantial modification definition" }
-  linked_objectives: [SO-CRA-047, SO-CRA-060]
+  linked_objectives: [SG-CRA-047, SG-CRA-060]
   sub_domain: [D-07.4, D-06.4]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed commensurate with risk" }
@@ -114,7 +114,7 @@ status: DRAFT
     `Substantial modification` inherits Article 3(30) D30 — VAG+POLY+COORD-S3. See SR-CRA-061/R-CRA-015 for the full reading across this threshold. R1 (any non-compliance change) + R3 (intended-purpose modification) admitted as the disjunctive literal reading. The Article 13(10) carve-out — allowing Annex I Part II (2) compliance for the last-placed version subject to user-migration — is POLY-S2 — R1 (the carve-out is conditional on user choice; the manufacturer cannot unilaterally apply it). Remain open: (a) the operational demarcation between security updates (which rarely meet the substantial-modification threshold) and security features whose modification would meet the substantial-modification threshold — pending harmonised practice; (b) whether the substantial-modification test must be re-run at every release (formal), or only at material risk-relevant changes (substantive) — the BERs harmonised standards under Article 27 will likely converge on the latter.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-090
@@ -123,7 +123,7 @@ status: DRAFT
     - { clause_id: CRA-CL44, article_ref: "Art. 13(19) — support-period end-date display" }
     - { clause_id: CRA-CL157, article_ref: "Annex II §7 — support-period type + end-date in user info" }
     - { clause_id: CRA-CL61, article_ref: "Art. 21 — manufacturer-equivalent inherits obligation" }
-  linked_objectives: [SO-CRA-061]
+  linked_objectives: [SG-CRA-061]
   sub_domain: [D-09.4, D-05.2]
   nist_csf_mapping:
     - { id: GV.OC-04, title: "Critical objectives, capabilities, and services that stakeholders depend on or expect from the organization are understood and communicated" }
@@ -163,7 +163,7 @@ status: DRAFT
     archives-discoverability baseline.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-092
@@ -171,7 +171,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL46, article_ref: "Art. 13(21) — corrective measures on non-conformity + withdrawal + recall" }
     - { clause_id: CRA-CL96, article_ref: "Art. 21 — manufacturer-equivalent trigger (cross-ref)" }
-  linked_objectives: [SO-CRA-063]
+  linked_objectives: [SG-CRA-063]
   sub_domain: [D-09.4, D-04.2, D-07.4]
   nist_csf_mapping:
     - { id: RS.MI-01, title: "Incidents are contained" }

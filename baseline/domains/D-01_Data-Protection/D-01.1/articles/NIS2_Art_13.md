@@ -26,7 +26,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-001
@@ -37,7 +37,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     - { clause_id: NIS2-CL08, article_ref: "Art. 21(1) sentence 2 — state-of-the-art + standards + cost" }
     - { clause_id: NIS2-D01, article_ref: "Art. 6(1) — network and information system (cross)" }
     - { clause_id: NIS2-D02, article_ref: "Art. 6(2) — security of network and information systems" }
-  linked_objectives: [SO-NIS2-001]
+  linked_objectives: [SG-NIS2-001]
   sub_domain: [D-01.1]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }

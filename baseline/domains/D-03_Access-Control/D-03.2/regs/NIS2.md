@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| NIS 2 | SO-NIS2-004 | MFA or continuous authentication solutions "where appropriate" + secured voice/video/text + secured emergency | Essential/important entity; Art. 21(2)(j) first clause; "where appropriate" hedge; OR of MFA and continuous authentication (not redundant); PR.AA-03 + PR.AA-05 |
+| NIS 2 | SG-NIS2-004 | MFA or continuous authentication solutions "where appropriate" + secured voice/video/text + secured emergency | Essential/important entity; Art. 21(2)(j) first clause; "where appropriate" hedge; OR of MFA and continuous authentication (not redundant); PR.AA-03 + PR.AA-05 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-03.2.2 — Sub-SO for NIS 2
 
 ```yaml
-id: SO-D-03.2.NIS2
+id: SG-D-03.2.NIS2
 subdomain: D-03.2
 applies_to: [NIS2]
-inherits_from: SO-NIS2-004
+inherits_from: SG-NIS2-004
 source_SR: SR-NIS2-006, SR-NIS2-007
 activation: if NIS2 in applicable_regs
 phase_1A_role: 1_of_N
@@ -70,8 +70,8 @@ secured-communications second/third clauses of Art. 21(2)(j).)*
   title: "Multi-factor or continuous authentication `where appropriate` (Art. 21(2)(j) first clause)"
 
   derives_from:
-    hso_sub_so: SO-D-03.2.NIS2
-    per_reg_so: SO-NIS2-004
+    hso_sub_so: SG-D-03.2.NIS2
+    per_reg_so: SG-NIS2-004
     source_sr: SR-NIS2-006, SR-NIS2-007
     hso_file: ../../HierarchicalSecurityObjectives/D-03_Access-Control/D-03.2.md
     objective_ref_section: "### D-03.2.2"

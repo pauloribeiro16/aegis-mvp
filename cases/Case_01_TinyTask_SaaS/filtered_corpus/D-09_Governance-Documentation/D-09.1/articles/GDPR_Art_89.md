@@ -30,11 +30,11 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-017 | Personal data are kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed; longer retention is permitted only where lawful and subject to the appropriate Art. 89(1) safeguards. | `GDPR-CL05` (Art. 5(1)(e)); `GDPR-CP12` (Art. 30(1)(f)) | D-05.2 |
+| SG-GDPR-017 | Personal data are kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed; longer retention is permitted only where lawful and subject to the appropriate Art. 89(1) safeguards. | `GDPR-CL05` (Art. 5(1)(e)); `GDPR-CP12` (Art. 30(1)(f)) | D-05.2 |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-028
@@ -43,7 +43,7 @@ status: DRAFT
     - { clause_id: GDPR-CL21, article_ref: "Art. 9(1) — special-category prohibition" }
     - { clause_id: GDPR-CL22, article_ref: "Art. 9(2)(a) — explicit consent" }
     - { clause_id: GDPR-C23, article_ref: "Art. 9(2)(g) — substantial public interest (cross)" }
-  linked_objectives: [SO-GDPR-016]
+  linked_objectives: [SG-GDPR-016]
   sub_domain: [D-09.1, D-05.1]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal/regulatory/contractual requirements understood and managed" }
@@ -98,7 +98,7 @@ status: DRAFT
     collection.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-029
@@ -107,7 +107,7 @@ status: DRAFT
     - { clause_id: GDPR-CL05, article_ref: "Art. 5(1)(e) — storage limitation" }
     - { clause_id: GDPR-CP12, article_ref: "Art. 30(1)(f) — retention time limits" }
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation (cross)" }
-  linked_objectives: [SO-GDPR-017]
+  linked_objectives: [SG-GDPR-017]
   sub_domain: [D-05.2, D-10.2]
   nist_csf_mapping:
     - { id: PR.DS-12, title: "Data managed consistent with risk strategy" }

@@ -7,7 +7,7 @@
 
 #### D-07.3.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-07.3.HL
+id: SG-D-07.3.HL
 subdomain: D-07.3
 applies_to: auto  # activates when ≥2 applicable regs have a Y or Conditional Y scope overlap on the same party AND ≥1 sub-SO activates; for D-07.3 the only 1 pair is NIS2↔CRA = Conditional Y (only when an NIS 2 entity procures a CRA-conformant product) AND N (typically) — so the high-level SO engages ONLY on the Conditional-Y integrated stack (NIS 2 entity procuring CRA-conformant product). For a 5-FTE SaaS startup with NIS 2 applicability only (no CRA applicability), the high-level SO is NOT activated. For a CRA-regulated manufacturer that is not an NIS 2 entity, the high-level SO is NOT activated either.
 status: static

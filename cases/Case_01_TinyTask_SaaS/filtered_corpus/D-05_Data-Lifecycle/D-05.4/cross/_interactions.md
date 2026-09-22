@@ -50,7 +50,7 @@
 #### Participants (from CRDA-deep §D-05.4)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-020 | Data subject receives personal data in a structured, commonly used, machine-readable format and can transmit those data to another controller without hindrance; the Art. 15(3) `commonly used electronic form` copy is the operational companion obligation supplying the read-only copy at the data subject's request, and Art. 20 supplies the portability right to transmit to another controller | Personal data; data-subject right; Art. 20(1)/(2)/(3)/(4) + Art. 15(3) companion copy; PR.DS-10 + ID.AM-08 |
+| GDPR | SG-GDPR-020 | Data subject receives personal data in a structured, commonly used, machine-readable format and can transmit those data to another controller without hindrance; the Art. 15(3) `commonly used electronic form` copy is the operational companion obligation supplying the read-only copy at the data subject's request, and Art. 20 supplies the portability right to transmit to another controller | Personal data; data-subject right; Art. 20(1)/(2)/(3)/(4) + Art. 15(3) companion copy; PR.DS-10 + ID.AM-08 |
 **Sole-authority framing.** The CRDA-deep source-of-truth explicitly
 notes that **CRA, NIS 2, DORA, and AI Act are all out-of-scope for
 D-05.4** per AEGIS taxonomy §4.1. GDPR Art. 20 is the **SOLE
@@ -188,7 +188,7 @@ Legend: **N/A** = no scope question for the self-pair (single-participant sub-do
 ## Scope-overlap principle (operational). The high-level SO
 
 #### Scope-overlap principle (operational). The high-level SO
-(`SO-D-05.4.HL`) engages on a given party **only when GDPR is in
+(`SG-D-05.4.HL`) engages on a given party **only when GDPR is in
 `applicable_regs`** (and the data subject exercises the Art. 20
 right). Because only 1 regulator participates on D-05.4, the
 high-level SO does **not** aggregate cross-regulation surface; it
@@ -375,7 +375,7 @@ eligible personal data (i.e. data processed on the basis of consent
 or contract + by automated means) — operates a **portability export
 pipeline** with the following structural elements documented
 verbatim from the CRDA-deep verified classifications. The high-level
-SO (`SO-D-05.4.HL`) describes the common portability duty (data
+SO (`SG-D-05.4.HL`) describes the common portability duty (data
 subject receives personal data in a structured, commonly used,
 machine-readable format and can transmit to another controller
 without hindrance, with the CRA architectural anchor noted in the
@@ -461,7 +461,7 @@ GDPR SOLE AUTHORITY (1 of 5 regs — NIS 2, CRA, DORA, AI Act are out-of-scope p
   volere_subtype: privacy
   title: "Data subject receives personal data in a structured, commonly used, machine-readable format and can transmit to another controller without hindrance, with the CRA architectural anchor as a complementary technical support layer when applicable"
   derives_from:
-    hso_sub_so: SO-D-05.4.HL
+    hso_sub_so: SG-D-05.4.HL
     hso_file: ../../HierarchicalSecurityObjectives/D-05_Data-Lifecycle/D-05.4.md
     objective_ref_section: "### D-05.4.0"
   description: |
@@ -518,7 +518,7 @@ status: DRAFT
 ##### Participants
 | Regulation | SO ID | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-020 | Data subject receives personal data in structured, commonly used, machine-readable format and can transmit to another controller (Art. 20 + Art. 15(3)) | Personal data; data-subject right |
+| GDPR | SG-GDPR-020 | Data subject receives personal data in structured, commonly used, machine-readable format and can transmit to another controller (Art. 20 + Art. 15(3)) | Personal data; data-subject right |
 | NIS2 | — | Out-of-scope (sole authority: GDPR) | n/a |
 | CRA | — | Out-of-scope (sole authority: GDPR) | n/a |
 | DORA | — | Out-of-scope (sole authority: GDPR) | n/a |

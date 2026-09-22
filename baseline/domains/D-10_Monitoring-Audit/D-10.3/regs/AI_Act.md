@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| AI_Act | SO-AIACT-007 + SO-AIACT-008 | High-risk AI systems are tested for the purpose of identifying the most appropriate and targeted risk management measures, ensuring consistent performance for their intended purpose; testing procedures may include testing in real-world conditions in accordance with Article 60; high-risk AI systems achieve an appropriate level of accuracy, robustness and cybersecurity and perform consistently throughout their lifecycle (Art. 9(6) + Art. 9(7) + Art. 15(1) AI Act per `SR-AIACT-003`/`SR-AIACT-014`). | AI-system-level testing for risk management + real-world-conditions testing per Art. 60 + accuracy/robustness/cybersecurity baseline testing throughout AI-system lifecycle; `perform consistently ... throughout their lifecycle` lifecycle anchor. |
+| AI_Act | SG-AIACT-007 + SG-AIACT-008 | High-risk AI systems are tested for the purpose of identifying the most appropriate and targeted risk management measures, ensuring consistent performance for their intended purpose; testing procedures may include testing in real-world conditions in accordance with Article 60; high-risk AI systems achieve an appropriate level of accuracy, robustness and cybersecurity and perform consistently throughout their lifecycle (Art. 9(6) + Art. 9(7) + Art. 15(1) AI Act per `SR-AIACT-003`/`SR-AIACT-014`). | AI-system-level testing for risk management + real-world-conditions testing per Art. 60 + accuracy/robustness/cybersecurity baseline testing throughout AI-system lifecycle; `perform consistently ... throughout their lifecycle` lifecycle anchor. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-10.3.5 — Sub-SO for AI Act
 
 ```yaml
-id: SO-D-10.3.AI_Act
+id: SG-D-10.3.AI_Act
 subdomain: D-10.3
 applies_to: [AI_Act]
-inherits_from: SO-AIACT-007 + SO-AIACT-008
+inherits_from: SG-AIACT-007 + SG-AIACT-008
 source_SR: SR-AIACT-003 + SR-AIACT-014
 activation: if AI_Act in applicable_regs
 phase_1A_role: 5_of_5
@@ -50,8 +50,8 @@ MEASURE-1.1, MEASURE-2.1, MEASURE-2.3, MAP-3.3, MEASURE-2.5, MEASURE-2.6, MEASUR
   title: "Provider ensures high-risk AI system is tested for the purpose of identifying risk management measures, performs consistently for intended purpose, may be tested in real-world conditions per Article 60, and achieves appropriate accuracy/robustness/cybersecurity throughout the AI-system lifecycle"
 
   derives_from:
-    hso_sub_so: SO-D-10.3.AI_Act
-    per_reg_so: SO-AIACT-007 + SO-AIACT-008
+    hso_sub_so: SG-D-10.3.AI_Act
+    per_reg_so: SG-AIACT-007 + SG-AIACT-008
     source_sr: SR-AIACT-003 + SR-AIACT-014
     hso_file: ../../HierarchicalSecurityObjectives/D-10_Monitoring-Audit/D-10.3.md
     objective_ref_section: "### D-10.3.5"

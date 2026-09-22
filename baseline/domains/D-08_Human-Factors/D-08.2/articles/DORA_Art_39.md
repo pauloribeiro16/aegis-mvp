@@ -28,7 +28,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-025
@@ -37,7 +37,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     - { clause_id: DORA-C27, article_ref: "Art. 13(6) — `ICT security awareness programmes and digital operational resilience training as compulsory modules in their staff training schemes`" }
     - { clause_id: DORA-C28, article_ref: "Art. 13(6) same locus — `level of complexity commensurate to the remit of their functions`" }
     - { clause_id: DORA-C26, article_ref: "Art. 13(6) same locus — T4 mapping mismatch per `../Regulation/DORA/Ambiguity/05_DORA.md` §2.26" }
-  linked_objectives: [SO-DORA-015]
+  linked_objectives: [SG-DORA-015]
   sub_domain: [D-08.1, D-08.2]
   nist_csf_mapping:
     - { id: PR.AT-01, title: "All users are informed and trained on cybersecurity topics (e.g., recognition of phishing, social engineering, and other relevant risks)" }

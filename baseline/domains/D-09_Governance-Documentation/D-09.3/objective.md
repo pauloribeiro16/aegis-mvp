@@ -7,7 +7,7 @@
 
 #### D-09.3.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-09.3.HL
+id: SG-D-09.3.HL
 subdomain: D-09.3
 applies_to: auto  # activates when ≥2 applicable regs have ≥1 pair with Y or Conditional-Y-on-same-party scope overlap AND ≥1 sub-SO activates; for D-09.3 the matrix above shows 2 pairs with Y or Conditional-Y activation on the joint-condition operator (NIS2↔DORA = Y; CRA↔DORA = Conditional-Y when DORA entity procures CRA-conformant products). The NIS2↔CRA pair is **substantively scope-disjoint per CRDA `N (typically)`** so it does **NOT** engage the high-level SO on its own — the high-level SO engages on the NIS2↔DORA EQUAL pair (DORA-dominant stack) and/or the CRA↔DORA COMPLEMENTARY pair (DORA-led stack with CRA Annex VII §1-§2 as upstream product sub-register). The high-level SO does NOT collapse any per-reg asset-inventory artefact; it surfaces the common entity-level asset-inventory duty with DORA Art. 7(1) as the dedicated authority for DORA financial entities and NIS 2 Art. 21(2)(i) + CRA Annex VII §1-§2 as partial-coverage inputs.
 status: static

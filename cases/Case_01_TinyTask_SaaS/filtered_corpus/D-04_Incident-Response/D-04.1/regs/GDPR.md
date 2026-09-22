@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-008 | Personal-data breach detection and triaging with documented "becoming aware" moment anchoring the 72h clock | Personal data; controller/processor; Art. 32(1)(b) + Art. 33(1) `becoming aware` + Art. 4(12) breach definition; PR.PS-04 + DE.AE-02 |
+| GDPR | SG-GDPR-008 | Personal-data breach detection and triaging with documented "becoming aware" moment anchoring the 72h clock | Personal data; controller/processor; Art. 32(1)(b) + Art. 33(1) `becoming aware` + Art. 4(12) breach definition; PR.PS-04 + DE.AE-02 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-04.1.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-04.1.GDPR
+id: SG-D-04.1.GDPR
 subdomain: D-04.1
 applies_to: [GDPR]
-inherits_from: SO-GDPR-008
+inherits_from: SG-GDPR-008
 source_SR: SR-GDPR-014
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N
@@ -58,7 +58,7 @@ data-flow boundary.)*
 
   derives_from:
     hso_sub_so: SO-4.1.GDPR
-    per_reg_so: SO-GDPR-008
+    per_reg_so: SG-GDPR-008
     source_sr: SR-GDPR-014
     hso_file: ../../HierarchicalSecurityObjectives/D-04_Incident-Response/4.1.md
     objective_ref_section: "### 4.1.1"

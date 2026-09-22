@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-053 + SO-CRA-054 | Cybersecurity risk assessment documented + updated during support period (Art. 13(3) sentence 1); covers intended purpose + reasonably foreseeable use including operational environment and assets to be protected (Art. 13(3) sentence 2); maps Annex I Part I (2) applicability and indicates how those requirements are implemented as informed by the risk assessment (Art. 13(3) sentence 3); documented in Annex VII §3 risk-assessment record; reviewed on material change of risk (Art. 13(3) sentence 1 `updated as appropriate`). | Product-level pre-market + support-period cybersecurity risk assessment; supports Annex I Part I (2) applicability mapping; **subject to CRA Art. 13(4) sentence 2 consolidation rule** with AI Act Art. 9 risk management. |
+| CRA | SG-CRA-053 + SG-CRA-054 | Cybersecurity risk assessment documented + updated during support period (Art. 13(3) sentence 1); covers intended purpose + reasonably foreseeable use including operational environment and assets to be protected (Art. 13(3) sentence 2); maps Annex I Part I (2) applicability and indicates how those requirements are implemented as informed by the risk assessment (Art. 13(3) sentence 3); documented in Annex VII §3 risk-assessment record; reviewed on material change of risk (Art. 13(3) sentence 1 `updated as appropriate`). | Product-level pre-market + support-period cybersecurity risk assessment; supports Annex I Part I (2) applicability mapping; **subject to CRA Art. 13(4) sentence 2 consolidation rule** with AI Act Art. 9 risk management. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-09.2.3 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-09.2.CRA
+id: SG-D-09.2.CRA
 subdomain: D-09.2
 applies_to: [CRA]
-inherits_from: SO-CRA-053 + SO-CRA-054
+inherits_from: SG-CRA-053 + SG-CRA-054
 source_SR: SR-CRA-064 + SR-CRA-065 + SR-CRA-066 + SR-CRA-079 + SR-CRA-080 + SR-CRA-081
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_5
@@ -48,7 +48,7 @@ PR.PS-06, GV.PO-02, ID.RA-05 (primary), GV.OV-02.
 
   derives_from:
     hso_sub_so: SO-9.2.CRA
-    per_reg_so: SO-CRA-053 + SO-CRA-054
+    per_reg_so: SG-CRA-053 + SG-CRA-054
     source_sr: SR-CRA-064 + SR-CRA-065 + SR-CRA-066 + SR-CRA-079 + SR-CRA-080 + SR-CRA-081
     hso_file: ../../HierarchicalSecurityObjectives/D-09_Governance-Documentation/9.2.md
     objective_ref_section: "### 9.2.3"

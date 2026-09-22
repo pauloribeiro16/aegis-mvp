@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| AI Act | SO-AIACT-009 (partial) | High-risk AI systems resilient as possible regarding errors, faults, inconsistencies — technical redundancy (backup or fail-safe plans) | Provider; Art. 15(3); AI-system-level; resilience-not-integrity framing; AI-system-level property bundled with accuracy and robustness |
+| AI Act | SG-AIACT-009 (partial) | High-risk AI systems resilient as possible regarding errors, faults, inconsistencies — technical redundancy (backup or fail-safe plans) | Provider; Art. 15(3); AI-system-level; resilience-not-integrity framing; AI-system-level property bundled with accuracy and robustness |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-01.4.4 — Sub-SO for AI Act
 
 ```yaml
-id: SO-D-01.4.AI_Act
+id: SG-D-01.4.AI_Act
 subdomain: D-01.4
 applies_to: [AI_Act]
-inherits_from: SO-AIACT-009
+inherits_from: SG-AIACT-009
 source_SR: SR-AIACT-015
 activation: if AI_Act in applicable_regs
 phase_1A_role: 1_of_N
@@ -68,8 +68,8 @@ protected, maintained, and tested.)*
   title: "High-risk AI system resilient to errors, faults, or inconsistencies via technical redundancy"
 
   derives_from:
-    hso_sub_so: SO-D-01.4.AI_Act
-    per_reg_so: SO-AIACT-009
+    hso_sub_so: SG-D-01.4.AI_Act
+    per_reg_so: SG-AIACT-009
     source_sr: SR-AIACT-015
     hso_file: ../../HierarchicalSecurityObjectives/D-01_Data-Protection/D-01.4.md
     objective_ref_section: "### D-01.4.4"

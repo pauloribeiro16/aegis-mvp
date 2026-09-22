@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-005 | Identity of data subjects making rights-exercise requests verified using reasonable means proportionate to risk | Controller; Art. 12(6) + Art. 11(2); data-subject-side (external) identity verification; PR.AA-03 + PR.AA-02 |
+| GDPR | SG-GDPR-005 | Identity of data subjects making rights-exercise requests verified using reasonable means proportionate to risk | Controller; Art. 12(6) + Art. 11(2); data-subject-side (external) identity verification; PR.AA-03 + PR.AA-02 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-03.1.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-03.1.GDPR
+id: SG-D-03.1.GDPR
 subdomain: D-03.1
 applies_to: [GDPR]
-inherits_from: SO-GDPR-005
+inherits_from: SG-GDPR-005
 source_SR: SR-GDPR-009, SR-GDPR-010
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N
@@ -65,8 +65,8 @@ PR.AA-02 + ID.AM-08 (data managed consistent with risk strategy).)*
   title: "Data-subject identity verified using reasonable means proportionate to risk (rights-exercise endpoint)"
 
   derives_from:
-    hso_sub_so: SO-D-03.1.GDPR
-    per_reg_so: SO-GDPR-005
+    hso_sub_so: SG-D-03.1.GDPR
+    per_reg_so: SG-GDPR-005
     source_sr: SR-GDPR-009, SR-GDPR-010
     hso_file: ../../HierarchicalSecurityObjectives/D-03_Access-Control/D-03.1.md
     objective_ref_section: "### D-03.1.1"

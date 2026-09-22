@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-017 | Personal data kept no longer than necessary; longer only where lawful and Art. 89(1) safeguards in place (Art. 5(1)(e) storage limitation + Art. 30(1)(f) RoPA retention time-limits) | Personal data; storage limitation; controller/processor; Art. 5(1)(e) + Art. 30(1)(f) + Art. 89(1); ID.AM-08 + ID.AM-03 |
+| GDPR | SG-GDPR-017 | Personal data kept no longer than necessary; longer only where lawful and Art. 89(1) safeguards in place (Art. 5(1)(e) storage limitation + Art. 30(1)(f) RoPA retention time-limits) | Personal data; storage limitation; controller/processor; Art. 5(1)(e) + Art. 30(1)(f) + Art. 89(1); ID.AM-08 + ID.AM-03 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-05.2.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-05.2.GDPR
+id: SG-D-05.2.GDPR
 subdomain: D-05.2
 applies_to: [GDPR]
-inherits_from: SO-GDPR-017
+inherits_from: SG-GDPR-017
 source_SR: SR-GDPR-029
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N
@@ -64,8 +64,8 @@ for its declared purpose on the day of any supervisory inspection.)*
   title: "Personal data retained no longer than necessary for the processing purpose; longer retention only where lawful and subject to Art. 89(1) safeguards; Art. 30(1)(f) RoPA time-limits documented per category"
 
   derives_from:
-    hso_sub_so: SO-D-05.2.GDPR
-    per_reg_so: SO-GDPR-017
+    hso_sub_so: SG-D-05.2.GDPR
+    per_reg_so: SG-GDPR-017
     source_sr: SR-GDPR-029
     hso_file: ../../HierarchicalSecurityObjectives/D-05_Data-Lifecycle/D-05.2.md
     objective_ref_section: "### D-05.2.1"

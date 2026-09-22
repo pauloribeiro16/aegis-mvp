@@ -24,12 +24,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-CRA-058 | The manufacturer draws up, before placing a product with digital elements on the market, the technical documentation referred to in Art. 31; carries out (or has carried out) the chosen conformity assessment procedure referred to in Art. 32; and — where compliance with the applicable cybersecurity requirements has been demonstrated — draws up the EU declaration of conformity in accordance with Art. 28 and affixes the CE marking in accordance with Art. 30. | `CRA-CL36` (Art. 13(12) sentence 1 — tech docs + conformity assessment before placing); `CRA-CL37` (Art. 13(12) sentence 2 — EU declaration + CE marking); `CRA-CL120` (Art. 31(1) — tech docs contain Annex I compliance evidence); `CRA-CL121` (Art. 31(2) — tech docs drawn up before placing and updated during support); `CRA-CL113` (Art. 28(1) — EU declaration content); `CRA-CL114` (Art. 28(2) — declaration format per Annex V/VI); `CRA-CL116` (Art. 28(4) — manufacturer's responsibility); `CRA-CL117` (Art. 30(1) — CE marking affixing); `CRA-CL118` (Art. 30(3) — CE marking before placing) | D-09.4 |
-| SO-CRA-058 | D-09.4 | Art. 13(12) + Art. 31(1)/(2) + Art. 28(1)/(2)/(4) + Art. 30(1)/(3) | Pre-market technical documentation + EU declaration + CE marking |
+| SG-CRA-058 | The manufacturer draws up, before placing a product with digital elements on the market, the technical documentation referred to in Art. 31; carries out (or has carried out) the chosen conformity assessment procedure referred to in Art. 32; and — where compliance with the applicable cybersecurity requirements has been demonstrated — draws up the EU declaration of conformity in accordance with Art. 28 and affixes the CE marking in accordance with Art. 30. | `CRA-CL36` (Art. 13(12) sentence 1 — tech docs + conformity assessment before placing); `CRA-CL37` (Art. 13(12) sentence 2 — EU declaration + CE marking); `CRA-CL120` (Art. 31(1) — tech docs contain Annex I compliance evidence); `CRA-CL121` (Art. 31(2) — tech docs drawn up before placing and updated during support); `CRA-CL113` (Art. 28(1) — EU declaration content); `CRA-CL114` (Art. 28(2) — declaration format per Annex V/VI); `CRA-CL116` (Art. 28(4) — manufacturer's responsibility); `CRA-CL117` (Art. 30(1) — CE marking affixing); `CRA-CL118` (Art. 30(3) — CE marking before placing) | D-09.4 |
+| SG-CRA-058 | D-09.4 | Art. 13(12) + Art. 31(1)/(2) + Art. 28(1)/(2)/(4) + Art. 30(1)/(3) | Pre-market technical documentation + EU declaration + CE marking |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-085
@@ -40,7 +40,7 @@ status: DRAFT
     - { clause_id: CRA-CL113, article_ref: "Art. 28(1) — EU declaration content" }
     - { clause_id: CRA-CL114, article_ref: "Art. 28(2) — declaration format per Annex V/VI" }
     - { clause_id: CRA-CL116, article_ref: "Art. 28(4) — manufacturer responsibility" }
-  linked_objectives: [SO-CRA-058, SO-CRA-063]
+  linked_objectives: [SG-CRA-058, SG-CRA-063]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: GV.PO-02, title: "Cybersecurity processes and procedures for implementing the cybersecurity policy are established, communicated, and enforced" }

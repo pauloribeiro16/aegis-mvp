@@ -33,7 +33,7 @@
         "D-01.1"
       ],
       "linked_objectives": [
-        "SO-NIS2-001"
+        "SG-NIS2-001"
       ],
       "source_clauses": [
         {
@@ -93,7 +93,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-001"
+          "SG-NIS2-001"
         ],
         "sub_domain": [
           "D-01.1"
@@ -132,7 +132,7 @@
         "D-02.3"
       ],
       "linked_objectives": [
-        "SO-NIS2-002"
+        "SG-NIS2-002"
       ],
       "source_clauses": [
         {
@@ -167,7 +167,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-002"
+          "SG-NIS2-002"
         ],
         "sub_domain": [
           "D-02.1",
@@ -203,7 +203,7 @@
         "D-03.3"
       ],
       "linked_objectives": [
-        "SO-NIS2-003"
+        "SG-NIS2-003"
       ],
       "source_clauses": [
         {
@@ -238,7 +238,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-003"
+          "SG-NIS2-003"
         ],
         "sub_domain": [
           "D-03.1",
@@ -274,7 +274,7 @@
         "D-03.1"
       ],
       "linked_objectives": [
-        "SO-NIS2-003"
+        "SG-NIS2-003"
       ],
       "source_clauses": [
         {
@@ -309,7 +309,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-003"
+          "SG-NIS2-003"
         ],
         "sub_domain": [
           "D-08.2",
@@ -345,7 +345,7 @@
         "D-03.3"
       ],
       "linked_objectives": [
-        "SO-NIS2-003"
+        "SG-NIS2-003"
       ],
       "source_clauses": [
         {
@@ -380,7 +380,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-003"
+          "SG-NIS2-003"
         ],
         "sub_domain": [
           "D-09.3",
@@ -415,7 +415,7 @@
         "D-03.2"
       ],
       "linked_objectives": [
-        "SO-NIS2-004"
+        "SG-NIS2-004"
       ],
       "source_clauses": [
         {
@@ -450,7 +450,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-004"
+          "SG-NIS2-004"
         ],
         "sub_domain": [
           "D-03.2"
@@ -485,7 +485,7 @@
         "D-01.2"
       ],
       "linked_objectives": [
-        "SO-NIS2-004"
+        "SG-NIS2-004"
       ],
       "source_clauses": [
         {
@@ -520,7 +520,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-004"
+          "SG-NIS2-004"
         ],
         "sub_domain": [
           "D-03.2",
@@ -557,8 +557,8 @@
         "D-04.4"
       ],
       "linked_objectives": [
-        "SO-NIS2-005",
-        "SO-NIS2-013"
+        "SG-NIS2-005",
+        "SG-NIS2-013"
       ],
       "source_clauses": [
         {
@@ -601,8 +601,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-005",
-          "SO-NIS2-013"
+          "SG-NIS2-005",
+          "SG-NIS2-013"
         ],
         "sub_domain": [
           "D-04.1",
@@ -640,7 +640,7 @@
         "D-04.1"
       ],
       "linked_objectives": [
-        "SO-NIS2-005"
+        "SG-NIS2-005"
       ],
       "source_clauses": [
         {
@@ -683,7 +683,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-005"
+          "SG-NIS2-005"
         ],
         "sub_domain": [
           "D-10.1",
@@ -718,7 +718,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-NIS2-006"
+        "SG-NIS2-006"
       ],
       "source_clauses": [
         {
@@ -771,7 +771,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-006"
+          "SG-NIS2-006"
         ],
         "sub_domain": [
           "D-04.3"
@@ -805,7 +805,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-NIS2-006"
+        "SG-NIS2-006"
       ],
       "source_clauses": [
         {
@@ -858,7 +858,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-006"
+          "SG-NIS2-006"
         ],
         "sub_domain": [
           "D-04.3"
@@ -893,7 +893,7 @@
         "D-04.4"
       ],
       "linked_objectives": [
-        "SO-NIS2-007"
+        "SG-NIS2-007"
       ],
       "source_clauses": [
         {
@@ -930,7 +930,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-007"
+          "SG-NIS2-007"
         ],
         "sub_domain": [
           "D-04.3",
@@ -966,7 +966,7 @@
         "D-04.4"
       ],
       "linked_objectives": [
-        "SO-NIS2-008"
+        "SG-NIS2-008"
       ],
       "source_clauses": [
         {
@@ -995,7 +995,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-008"
+          "SG-NIS2-008"
         ],
         "sub_domain": [
           "D-04.3",
@@ -1030,7 +1030,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-NIS2-009"
+        "SG-NIS2-009"
       ],
       "source_clauses": [
         {
@@ -1067,7 +1067,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-009"
+          "SG-NIS2-009"
         ],
         "sub_domain": [
           "D-04.3"
@@ -1100,7 +1100,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-NIS2-010"
+        "SG-NIS2-010"
       ],
       "source_clauses": [
         {
@@ -1129,7 +1129,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-010"
+          "SG-NIS2-010"
         ],
         "sub_domain": [
           "D-04.3"
@@ -1163,7 +1163,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-NIS2-011"
+        "SG-NIS2-011"
       ],
       "source_clauses": [
         {
@@ -1200,7 +1200,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-011"
+          "SG-NIS2-011"
         ],
         "sub_domain": [
           "D-04.3"
@@ -1234,7 +1234,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-NIS2-011"
+        "SG-NIS2-011"
       ],
       "source_clauses": [
         {
@@ -1261,7 +1261,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-011"
+          "SG-NIS2-011"
         ],
         "sub_domain": [
           "D-04.3"
@@ -1296,7 +1296,7 @@
         "D-06.4"
       ],
       "linked_objectives": [
-        "SO-NIS2-012"
+        "SG-NIS2-012"
       ],
       "source_clauses": [
         {
@@ -1341,7 +1341,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-012"
+          "SG-NIS2-012"
         ],
         "sub_domain": [
           "D-04.3",
@@ -1378,7 +1378,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-NIS2-013"
+        "SG-NIS2-013"
       ],
       "source_clauses": [
         {
@@ -1413,7 +1413,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-013"
+          "SG-NIS2-013"
         ],
         "sub_domain": [
           "D-04.4",
@@ -1450,7 +1450,7 @@
         "D-06.3"
       ],
       "linked_objectives": [
-        "SO-NIS2-014"
+        "SG-NIS2-014"
       ],
       "source_clauses": [
         {
@@ -1493,7 +1493,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-014"
+          "SG-NIS2-014"
         ],
         "sub_domain": [
           "D-06.1",
@@ -1528,7 +1528,7 @@
         "D-06.3"
       ],
       "linked_objectives": [
-        "SO-NIS2-014"
+        "SG-NIS2-014"
       ],
       "source_clauses": [
         {
@@ -1563,7 +1563,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-014"
+          "SG-NIS2-014"
         ],
         "sub_domain": [
           "D-06.3"
@@ -1598,7 +1598,7 @@
         "D-02.1"
       ],
       "linked_objectives": [
-        "SO-NIS2-015"
+        "SG-NIS2-015"
       ],
       "source_clauses": [
         {
@@ -1634,7 +1634,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-015"
+          "SG-NIS2-015"
         ],
         "sub_domain": [
           "D-06.3",
@@ -1673,7 +1673,7 @@
         "D-06.3"
       ],
       "linked_objectives": [
-        "SO-NIS2-015"
+        "SG-NIS2-015"
       ],
       "source_clauses": [
         {
@@ -1708,7 +1708,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-015"
+          "SG-NIS2-015"
         ],
         "sub_domain": [
           "D-06.3"
@@ -1743,7 +1743,7 @@
         "D-07.1"
       ],
       "linked_objectives": [
-        "SO-NIS2-015"
+        "SG-NIS2-015"
       ],
       "source_clauses": [
         {
@@ -1786,7 +1786,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-015"
+          "SG-NIS2-015"
         ],
         "sub_domain": [
           "D-06.3",
@@ -1822,7 +1822,7 @@
         "D-09.2"
       ],
       "linked_objectives": [
-        "SO-NIS2-016"
+        "SG-NIS2-016"
       ],
       "source_clauses": [
         {
@@ -1865,7 +1865,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-016"
+          "SG-NIS2-016"
         ],
         "sub_domain": [
           "D-06.3",
@@ -1900,7 +1900,7 @@
         "D-07.1"
       ],
       "linked_objectives": [
-        "SO-NIS2-017"
+        "SG-NIS2-017"
       ],
       "source_clauses": [
         {
@@ -1935,7 +1935,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-017"
+          "SG-NIS2-017"
         ],
         "sub_domain": [
           "D-07.1"
@@ -1969,7 +1969,7 @@
         "D-07.1"
       ],
       "linked_objectives": [
-        "SO-NIS2-017"
+        "SG-NIS2-017"
       ],
       "source_clauses": [
         {
@@ -2004,7 +2004,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-017"
+          "SG-NIS2-017"
         ],
         "sub_domain": [
           "D-07.1"
@@ -2039,8 +2039,8 @@
         "D-02.1"
       ],
       "linked_objectives": [
-        "SO-NIS2-017",
-        "SO-NIS2-002"
+        "SG-NIS2-017",
+        "SG-NIS2-002"
       ],
       "source_clauses": [
         {
@@ -2075,8 +2075,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-017",
-          "SO-NIS2-002"
+          "SG-NIS2-017",
+          "SG-NIS2-002"
         ],
         "sub_domain": [
           "D-07.1",
@@ -2111,7 +2111,7 @@
         "D-08.1"
       ],
       "linked_objectives": [
-        "SO-NIS2-018"
+        "SG-NIS2-018"
       ],
       "source_clauses": [
         {
@@ -2146,7 +2146,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-018"
+          "SG-NIS2-018"
         ],
         "sub_domain": [
           "D-08.1"
@@ -2181,7 +2181,7 @@
         "D-08.2"
       ],
       "linked_objectives": [
-        "SO-NIS2-019"
+        "SG-NIS2-019"
       ],
       "source_clauses": [
         {
@@ -2216,7 +2216,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-019"
+          "SG-NIS2-019"
         ],
         "sub_domain": [
           "D-08.1",
@@ -2253,7 +2253,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-NIS2-020"
+        "SG-NIS2-020"
       ],
       "source_clauses": [
         {
@@ -2290,7 +2290,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-020"
+          "SG-NIS2-020"
         ],
         "sub_domain": [
           "D-08.3",
@@ -2325,7 +2325,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-NIS2-021"
+        "SG-NIS2-021"
       ],
       "source_clauses": [
         {
@@ -2360,7 +2360,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-021"
+          "SG-NIS2-021"
         ],
         "sub_domain": [
           "D-09.1"
@@ -2394,7 +2394,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-NIS2-021"
+        "SG-NIS2-021"
       ],
       "source_clauses": [
         {
@@ -2421,7 +2421,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-021"
+          "SG-NIS2-021"
         ],
         "sub_domain": [
           "D-09.1"
@@ -2456,7 +2456,7 @@
         "D-09.3"
       ],
       "linked_objectives": [
-        "SO-NIS2-021"
+        "SG-NIS2-021"
       ],
       "source_clauses": [
         {
@@ -2491,7 +2491,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-021"
+          "SG-NIS2-021"
         ],
         "sub_domain": [
           "D-09.1",
@@ -2527,7 +2527,7 @@
         "D-09.2"
       ],
       "linked_objectives": [
-        "SO-NIS2-022"
+        "SG-NIS2-022"
       ],
       "source_clauses": [
         {
@@ -2562,7 +2562,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-022"
+          "SG-NIS2-022"
         ],
         "sub_domain": [
           "D-09.1",
@@ -2597,7 +2597,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-NIS2-022"
+        "SG-NIS2-022"
       ],
       "source_clauses": [
         {
@@ -2632,7 +2632,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-022"
+          "SG-NIS2-022"
         ],
         "sub_domain": [
           "D-09.1"
@@ -2668,7 +2668,7 @@
         "D-10.3"
       ],
       "linked_objectives": [
-        "SO-NIS2-023"
+        "SG-NIS2-023"
       ],
       "source_clauses": [
         {
@@ -2712,7 +2712,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-023"
+          "SG-NIS2-023"
         ],
         "sub_domain": [
           "D-09.1",
@@ -2754,7 +2754,7 @@
         "D-10.3"
       ],
       "linked_objectives": [
-        "SO-NIS2-023"
+        "SG-NIS2-023"
       ],
       "source_clauses": [
         {
@@ -2789,7 +2789,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-023"
+          "SG-NIS2-023"
         ],
         "sub_domain": [
           "D-09.3",
@@ -2825,8 +2825,8 @@
         "D-09.2"
       ],
       "linked_objectives": [
-        "SO-NIS2-021",
-        "SO-NIS2-022"
+        "SG-NIS2-021",
+        "SG-NIS2-022"
       ],
       "source_clauses": [
         {
@@ -2861,8 +2861,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-021",
-          "SO-NIS2-022"
+          "SG-NIS2-021",
+          "SG-NIS2-022"
         ],
         "sub_domain": [
           "D-09.1",
@@ -2898,7 +2898,7 @@
         "D-09.2"
       ],
       "linked_objectives": [
-        "SO-NIS2-022"
+        "SG-NIS2-022"
       ],
       "source_clauses": [
         {
@@ -2933,7 +2933,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-022"
+          "SG-NIS2-022"
         ],
         "sub_domain": [
           "D-09.1",
@@ -2968,7 +2968,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-NIS2-022"
+        "SG-NIS2-022"
       ],
       "source_clauses": [
         {
@@ -2994,7 +2994,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-022"
+          "SG-NIS2-022"
         ],
         "sub_domain": [
           "D-09.1"
@@ -3025,7 +3025,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-NIS2-023"
+        "SG-NIS2-023"
       ],
       "source_clauses": [
         {
@@ -3061,7 +3061,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-023"
+          "SG-NIS2-023"
         ],
         "sub_domain": [
           "D-09.3",
@@ -3101,7 +3101,7 @@
         "D-06.3"
       ],
       "linked_objectives": [
-        "SO-NIS2-024"
+        "SG-NIS2-024"
       ],
       "source_clauses": [
         {
@@ -3144,7 +3144,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-024"
+          "SG-NIS2-024"
         ],
         "sub_domain": [
           "D-09.4",
@@ -3180,7 +3180,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-NIS2-006"
+        "SG-NIS2-006"
       ],
       "source_clauses": [
         {
@@ -3217,7 +3217,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-006"
+          "SG-NIS2-006"
         ],
         "sub_domain": [
           "D-04.3"
@@ -3252,7 +3252,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-NIS2-006"
+        "SG-NIS2-006"
       ],
       "source_clauses": [
         {
@@ -3278,7 +3278,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-NIS2-006"
+          "SG-NIS2-006"
         ],
         "sub_domain": [
           "D-04.3",

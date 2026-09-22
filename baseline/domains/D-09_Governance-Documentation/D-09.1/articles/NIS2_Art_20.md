@@ -32,16 +32,16 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-NIS2-019 | Employees are offered similar cybersecurity training on a regular basis, enabling them to identify risks and assess cybersecurity risk-management practices and their impact on the services provided by the entity. | `NIS2-CL05` (Art. 20(2) sentence 2 — employee training encouraged); `NIS2-CL04` (Art. 20(2) sentence 1 — purpose clause: `sufficient knowledge and skills` to `identify risks and assess`) | D-08.1, D-08.2 |
-| SO-NIS2-019 | D-08.1, D-08.2 | Art. 20(2) sentence 2 | Employees offered similar training on a regular basis |
-| SO-NIS2-020 | Members of the management bodies of essential and important entities follow cybersecurity training, gaining sufficient knowledge and skills to identify risks and assess cybersecurity risk-management practices and their impact on the services provided by the entity. | `NIS2-CL03` (Art. 20(2) sentence 1 — management-body training mandatory); `NIS2-CL04` (Art. 20(2) sentence 1 — purpose clause: `sufficient knowledge and skills`) | D-08.3, D-09.1 |
-| SO-NIS2-020 | D-08.3, D-09.1 | Art. 20(2) sentence 1 | Management body members follow cybersecurity training |
-| SO-NIS2-021 | The management body of essential and important entities approves the cybersecurity risk-management measures taken to comply with Art. 21, oversees their implementation, and can be held liable for infringements of that Article by the entity. | `NIS2-CL01` (Art. 20(1) sentence 1 — approve + oversee + held liable); `NIS2-CL02` (Art. 20(1) sentence 2 — public-institution carve-out); `NIS2-CL06` (Art. 20 chapeau — proportionality hook via Art. 3 classification) | D-09.1, D-09.3 |
-| SO-NIS2-021 | D-09.1, D-09.3 | Art. 20(1) | Management body approves + oversees + bears liability for Art. 21 measures |
+| SG-NIS2-019 | Employees are offered similar cybersecurity training on a regular basis, enabling them to identify risks and assess cybersecurity risk-management practices and their impact on the services provided by the entity. | `NIS2-CL05` (Art. 20(2) sentence 2 — employee training encouraged); `NIS2-CL04` (Art. 20(2) sentence 1 — purpose clause: `sufficient knowledge and skills` to `identify risks and assess`) | D-08.1, D-08.2 |
+| SG-NIS2-019 | D-08.1, D-08.2 | Art. 20(2) sentence 2 | Employees offered similar training on a regular basis |
+| SG-NIS2-020 | Members of the management bodies of essential and important entities follow cybersecurity training, gaining sufficient knowledge and skills to identify risks and assess cybersecurity risk-management practices and their impact on the services provided by the entity. | `NIS2-CL03` (Art. 20(2) sentence 1 — management-body training mandatory); `NIS2-CL04` (Art. 20(2) sentence 1 — purpose clause: `sufficient knowledge and skills`) | D-08.3, D-09.1 |
+| SG-NIS2-020 | D-08.3, D-09.1 | Art. 20(2) sentence 1 | Management body members follow cybersecurity training |
+| SG-NIS2-021 | The management body of essential and important entities approves the cybersecurity risk-management measures taken to comply with Art. 21, oversees their implementation, and can be held liable for infringements of that Article by the entity. | `NIS2-CL01` (Art. 20(1) sentence 1 — approve + oversee + held liable); `NIS2-CL02` (Art. 20(1) sentence 2 — public-institution carve-out); `NIS2-CL06` (Art. 20 chapeau — proportionality hook via Art. 3 classification) | D-09.1, D-09.3 |
+| SG-NIS2-021 | D-09.1, D-09.3 | Art. 20(1) | Management body approves + oversees + bears liability for Art. 21 measures |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-030
@@ -49,7 +49,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL05, article_ref: "Art. 20(2) sentence 2 — employee training encouraged, similar training on a regular basis" }
     - { clause_id: NIS2-CL04, article_ref: "Art. 20(2) sentence 1 — purpose clause (cross)" }
-  linked_objectives: [SO-NIS2-019]
+  linked_objectives: [SG-NIS2-019]
   sub_domain: [D-08.1, D-08.2]
   nist_csf_mapping:
     - { id: PR.AT-01, title: "All users are informed and trained on cybersecurity topics" }
@@ -64,7 +64,7 @@ status: DRAFT
     The verb `shall encourage` admits four readings (national policy, financial incentives, sectoral guidance, or all) with the chosen reading being the cumulative reading since the OJ is silent on the encouragement mechanism. The compound `similar training` admits a parallel-to-management-training reading or a peer-entity-comparability reading; the literal reading is parallel-to-management-training because the OJ coordinates sentence 2 with sentence 1 within the same paragraph. The temporal anchor `on a regular basis` admits annual, biannual, or ad-hoc cadences; the chosen reading is entity-discretionary under Recital 56. The Orchestrator-recommended treatment is that the entity-side SR applies to entities that adopt the encouragement, since the Article 20(2) sentence 2 binding force is on the Member State rather than directly on the entity. Remain open: whether Member State supervisory authorities will codify a minimum training-hours-per-year threshold that converts the encouragement into a measurable expectation, as Germany BSI has signalled in its national transposition.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-031
@@ -72,7 +72,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL03, article_ref: "Art. 20(2) sentence 1 — management body training mandatory" }
     - { clause_id: NIS2-CL04, article_ref: "Art. 20(2) sentence 1 — purpose clause: sufficient knowledge and skills to identify risks and assess cybersecurity risk-management practices" }
-  linked_objectives: [SO-NIS2-020]
+  linked_objectives: [SG-NIS2-020]
   sub_domain: [D-08.3, D-09.1]
   nist_csf_mapping:
     - { id: PR.AT-03, title: "All senior executives understand their roles and responsibilities in achieving the organization's cybersecurity objectives" }
@@ -87,7 +87,7 @@ status: DRAFT
     The construction `are required to follow training` carries an S3 ambiguity on the binding-force locus: a statutory reading (training is required by national statute), an entity-internal reading (the entity itself requires the training), or a both reading (statute mandates, entity operationalises), with the chosen reading being the both reading since the OJ's literal `are required to follow` is compatible with either locus and the standard MS-implementation pattern combines them. The compound `training` admits three operative readings (formal certified programme, awareness briefing, or tabletop exercise), with the chosen reading being entity-discretionary, with formal certified training preferred where the entity seeks documented compliance evidence. The scope `members of the management bodies` admits three readings (every member individually, the body collectively, or a designated subset), with the literal reading being every member individually because the OJ does not provide a designation carve-out; the definition of `management body` is Member-State-determined under Article 6 (recital 75). The qualifier `sufficient knowledge and skills` admits a general-management or cybersecurity-specific reading, with the cybersecurity-specific reading being dominant because the OJ coordinates it with `cybersecurity risk-management practices`. Member State transposition divergence is highest on the `members of the management bodies` definition, with some Member States anchoring on the company-law board concept and others extending to executive committees. Remain open: (a) whether Member State supervisory authorities will publish a minimum-content syllabus or competency framework for management-body training under Article 4 implementing acts; (b) whether the cybersecurity-specific reading of `sufficient knowledge and skills` extends to AI-system risk literacy, which would couple this SR with AI Act Article 4 literacy obligations for entities that deploy AI in NIS-critical functions.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-032
@@ -95,7 +95,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL01, article_ref: "Art. 20(1) sentence 1 — management body approves" }
     - { clause_id: NIS2-CL02, article_ref: "Art. 20(1) sentence 2 — public-institution carve-out (cross)" }
-  linked_objectives: [SO-NIS2-021]
+  linked_objectives: [SG-NIS2-021]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.RR-02, title: "Roles, responsibilities, authorities, and accountabilities related to cybersecurity risk management are established, communicated, understood, and enforced" }
@@ -110,14 +110,14 @@ status: DRAFT
     The compound `cybersecurity risk-management measures` carries an S3 ambiguity on the approval object: an Article 21(2)(a)–(j) sub-point list reading, an Article 21(1) chapeau-and-Article 21(5) implementing-act reading, or a free-standing entity-cybersecurity-strategy reading, with the chosen reading being the literal-and-broad interpretation that `measures` covers both the Article 21(2) sub-points and any entity-discretionary measures adopted under Article 21(1). The qualifier `in order to comply with Article 21` carries an indicative-versus-restrictive ambiguity on whether the approval is for Article 21 measures specifically or for any measures that contribute to compliance, with the indicative reading being dominant since the OJ uses the qualifier to anchor the approval object rather than to constrain it. The `public institutions` carve-out (Article 20(1) sentence 2) carries a SCOPE-Q ambiguity on whether `public` tracks the Article 6(35) public-administration definition, the broader State-controlled entity definition, or only constitutional bodies, with the chosen reading being the Article 6(35) anchor because that is the OJ's defined-term anchor. Member State transposition divergence may apply on the public-institution carve-out implementation. Remain open: (a) whether the documented approval minute must enumerate each Article 21(2)(a)–(j) sub-point individually or whether a single omnibus-approval minute suffices, with national supervisory practice likely to diverge; (b) whether the Article 20(1) sentence 1 first-clause approval extends to NIS2-derived implementing acts adopted under Article 21(5), which would convert approval from a one-off minute into a recurring governance burden.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-033
   title: "Management body continuously oversees Article 21 implementation"
   source_clauses:
     - { clause_id: NIS2-CL01, article_ref: "Art. 20(1) sentence 1 — management body oversees" }
-  linked_objectives: [SO-NIS2-021]
+  linked_objectives: [SG-NIS2-021]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.OV-01, title: "Cybersecurity risk management strategy outcomes are reviewed and adjusted to ensure they adequately address organizational risks" }
@@ -132,7 +132,7 @@ status: DRAFT
     The three-verb coordination carries an S3 COORD ambiguity: three-distinct-obligations reading, one-composite-obligation reading, or two-distinct-plus-liability-consequence reading, with the chosen reading being the three-distinct reading because the OJ coordinates three verbs with commas and the conjunction `and`, and Recital 75 frames them as three substantive obligations rather than one. The `oversees` obligation is continuous by construction (no terminal-event qualifier), so the management body reviews implementation status and adjusts as needed on an entity-discretionary cadence. The oversight-object ambiguity (whether oversight covers implementation status only, or also threat-landscape evolution and risk-register currency) is resolved by Recital 75 toward the broader reading, since the recital positions management-body engagement as a strategic discipline rather than a procedural checkpoint. Member State transposition divergence may apply on the documentation expected to evidence oversight (board minutes, dashboard reviews, exception registers). Remain open: (a) whether Member State supervisory authorities will define a minimum oversight cadence (quarterly, semi-annual, annual) under Article 4 implementing acts; (b) whether the oversight obligation extends to the AI-system risk dimension under AI Act Article 4 for entities that deploy AI in NIS-critical functions, since AI risk literacy may be a gap in management-body cybersecurity training under SR-NIS2-031.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-034
@@ -140,7 +140,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL01, article_ref: "Art. 20(1) sentence 1 — management body can be held liable for infringements" }
     - { clause_id: NIS2-CL02, article_ref: "Art. 20(1) sentence 2 — public-institution carve-out" }
-  linked_objectives: [SO-NIS2-021]
+  linked_objectives: [SG-NIS2-021]
   sub_domain: [D-09.1, D-09.3]
   nist_csf_mapping:
     - { id: GV.RR-01, title: "Organizational leadership is responsible and accountable for cybersecurity risk and promotes a risk-aware ethical culture" }

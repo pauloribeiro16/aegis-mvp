@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-049 + SO-CRA-050 + SO-CRA-051 + SO-CRA-052 | OSS-steward cybersecurity policy fostering the development of a secure product with digital elements and effective vulnerability handling (Art. 24(1)); OSS-steward cooperation with market surveillance authorities (Art. 24(2)); manufacturer policies/processes/procedures for CRA cybersecurity obligations including CVD policy + secure-update distribution + support-period factors + cessation-of-operations procedure (Art. 13(8) + Annex I Part II §5 + Art. 13(23)); presumption of conformity via harmonised standards / common specifications / CSA certification (Art. 27(1)/(2)/(5)/(8)/(9)). | Product-level policy framework + standards-presumption machinery + OSS-steward cybersecurity policy. |
+| CRA | SG-CRA-049 + SG-CRA-050 + SG-CRA-051 + SG-CRA-052 | OSS-steward cybersecurity policy fostering the development of a secure product with digital elements and effective vulnerability handling (Art. 24(1)); OSS-steward cooperation with market surveillance authorities (Art. 24(2)); manufacturer policies/processes/procedures for CRA cybersecurity obligations including CVD policy + secure-update distribution + support-period factors + cessation-of-operations procedure (Art. 13(8) + Annex I Part II §5 + Art. 13(23)); presumption of conformity via harmonised standards / common specifications / CSA certification (Art. 27(1)/(2)/(5)/(8)/(9)). | Product-level policy framework + standards-presumption machinery + OSS-steward cybersecurity policy. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-09.1.3 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-09.1.CRA
+id: SG-D-09.1.CRA
 subdomain: D-09.1
 applies_to: [CRA]
-inherits_from: SO-CRA-049 + SO-CRA-050 + SO-CRA-051 + SO-CRA-052
+inherits_from: SG-CRA-049 + SG-CRA-050 + SG-CRA-051 + SG-CRA-052
 source_SR: SR-CRA-072 + SR-CRA-073 + SR-CRA-075 + SR-CRA-077 + SR-CRA-078
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_5
@@ -48,7 +48,7 @@ GV.PO-01 (primary), GV.SC-01, GV.PO-02, GV.OC-03.
 
   derives_from:
     hso_sub_so: SO-9.1.CRA
-    per_reg_so: SO-CRA-049 + SO-CRA-050 + SO-CRA-051 + SO-CRA-052
+    per_reg_so: SG-CRA-049 + SG-CRA-050 + SG-CRA-051 + SG-CRA-052
     source_sr: SR-CRA-072 + SR-CRA-073 + SR-CRA-075 + SR-CRA-077
     hso_file: ../../HierarchicalSecurityObjectives/D-09_Governance-Documentation/9.1.md
     objective_ref_section: "### 9.1.3"

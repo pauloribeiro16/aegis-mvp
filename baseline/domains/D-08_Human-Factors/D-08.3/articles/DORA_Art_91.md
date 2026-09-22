@@ -26,14 +26,14 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-024
   title: "Management-body ICT-risk literacy maintained through regular training"
   source_clauses:
     - { clause_id: DORA-C02, article_ref: "Art. 5(4) — `Members of the management body … shall actively keep up to date with sufficient knowledge and skills … including by following specific training on a regular basis, commensurate to the ICT risk being managed`" }
-  linked_objectives: [SO-DORA-014]
+  linked_objectives: [SG-DORA-014]
   sub_domain: [D-08.3]
   nist_csf_mapping:
     - { id: PR.AT-03, title: "All senior executives understand their roles and responsibilities in achieving the organization's cybersecurity objectives" }

@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| NIS2 | SO-NIS2-020 | Members of the management bodies of essential and important entities follow cybersecurity training, gaining sufficient knowledge and skills to identify risks and assess cybersecurity risk-management practices and their impact on the services provided by entity (Art. 20(2) sentence 1). | Management-body training mandatory (Member-State-imposed — the binding force is on the MS, with the entity-side SR applying only where the MS has transposed); literacy prerequisite for Art. 20(1) approve+oversee+liable governance duties. |
+| NIS2 | SG-NIS2-020 | Members of the management bodies of essential and important entities follow cybersecurity training, gaining sufficient knowledge and skills to identify risks and assess cybersecurity risk-management practices and their impact on the services provided by entity (Art. 20(2) sentence 1). | Management-body training mandatory (Member-State-imposed — the binding force is on the MS, with the entity-side SR applying only where the MS has transposed); literacy prerequisite for Art. 20(1) approve+oversee+liable governance duties. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-08.3.1 — Sub-SO for NIS 2
 
 ```yaml
-id: SO-D-08.3.NIS2
+id: SG-D-08.3.NIS2
 subdomain: D-08.3
 applies_to: [NIS2]
-inherits_from: SO-NIS2-020
+inherits_from: SG-NIS2-020
 source_SR: SR-NIS2-031
 activation: if NIS2 in applicable_regs  # entity-side SR applies to entities that have an MS-transposed Member-State obligation under Art. 20(2) sentence 1; the standard MS-implementation pattern is the both reading (statute mandates, entity operationalises), per SR-NIS2-031 ambiguity_notes
 phase_1A_role: 1_of_N
@@ -60,7 +60,7 @@ PR.AT-02, GV.RR-01.
 
   derives_from:
     hso_sub_so: SO-8.3.NIS2
-    per_reg_so: SO-NIS2-020
+    per_reg_so: SG-NIS2-020
     source_sr: SR-NIS2-031
     hso_file: ../../HierarchicalSecurityObjectives/D-08_Human-Factors/8.3.md
     objective_ref_section: "### 8.3.1"

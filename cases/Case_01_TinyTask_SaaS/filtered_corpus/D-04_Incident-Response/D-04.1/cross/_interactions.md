@@ -35,10 +35,10 @@
 #### Participants (from CRDA-deep §D-04.1)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-008 | Personal-data breach detection and triaging with documented "becoming aware" moment anchoring the 72h clock | Personal data; controller/processor; Art. 32(1)(b) + Art. 33(1) `becoming aware` + Art. 4(12) breach definition; PR.PS-04 + DE.AE-02 |
-| NIS 2 | SO-NIS2-005 | Six-action incident-handling capability (prevent, detect, analyse, contain, respond, recover) per Art. 21(2)(b) + Art. 6(8) definition | Entity-level ICT systems; all-hazards approach (Art. 21(2) chapeau); PR.PS-04 + DE.CM-01 + DE.AE-02 |
-| CRA | SO-CRA-020 + SO-CRA-068 | Recording and monitoring of product internal activity with user opt-out, corruption reporting | Product with digital elements; manufacturer perspective; Annex I Part I (2)(l); DE.CM-09 + PR.PS-04 |
-| DORA | SO-DORA-007 + SO-DORA-008 | Multi-class anomalous-activity detection with SPOF identification (Art. 10) + ICT-related incident management process (Art. 17(1)) | Financial-entity ICT; performance + incidents + SPOFs; DE.CM-01 + DE.CM-09 + RS.MA-01 |
+| GDPR | SG-GDPR-008 | Personal-data breach detection and triaging with documented "becoming aware" moment anchoring the 72h clock | Personal data; controller/processor; Art. 32(1)(b) + Art. 33(1) `becoming aware` + Art. 4(12) breach definition; PR.PS-04 + DE.AE-02 |
+| NIS 2 | SG-NIS2-005 | Six-action incident-handling capability (prevent, detect, analyse, contain, respond, recover) per Art. 21(2)(b) + Art. 6(8) definition | Entity-level ICT systems; all-hazards approach (Art. 21(2) chapeau); PR.PS-04 + DE.CM-01 + DE.AE-02 |
+| CRA | SG-CRA-020 + SG-CRA-068 | Recording and monitoring of product internal activity with user opt-out, corruption reporting | Product with digital elements; manufacturer perspective; Annex I Part I (2)(l); DE.CM-09 + PR.PS-04 |
+| DORA | SG-DORA-007 + SG-DORA-008 | Multi-class anomalous-activity detection with SPOF identification (Art. 10) + ICT-related incident management process (Art. 17(1)) | Financial-entity ICT; performance + incidents + SPOFs; DE.CM-01 + DE.CM-09 + RS.MA-01 |
 
 ## Validated relationships (from CRDA-deep §D-04.1)
 
@@ -135,7 +135,7 @@ depend on which layer the detection event falls into.
 ## Scope-overlap principle (operational). The high-level SO
 
 #### Scope-overlap principle (operational). The high-level SO
-(`SO-D-04.1.HL`) engages on a given party **if and only if ≥2 applicable
+(`SG-D-04.1.HL`) engages on a given party **if and only if ≥2 applicable
 regulations' detection-layer scope-determiners overlap on the same
 party** (e.g. a controller that is also a NIS 2 essential entity
 operating CRA-regulated products and running a DORA-class financial ICT
@@ -293,7 +293,7 @@ the per-recipient evidence packs.
 A company with ≥2 applicable regulations in scope of D-04.1 — with
 overlapping detection-layer scope-determiners on the same party —
 operates a **multi-layer detection architecture** with explicit layer
-hand-offs. The high-level SO (`SO-D-04.1.HL`) describes the common
+hand-offs. The high-level SO (`SG-D-04.1.HL`) describes the common
 detection-and-triage duty (detect, document the trigger moment,
 triage, route to the downstream response / notification pipeline); the
 per-reg perspective is preserved in the four sub-SOs (detection layer,
@@ -403,10 +403,10 @@ status: DRAFT
 ##### Participants
 | Regulation | SO ID | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-008 | Personal-data breach detection and triaging with documented "becoming aware" moment anchoring the 72h clock | Personal data; controller/processor perspective |
-| NIS2 | SO-NIS2-005 | Six-action incident-handling capability (prevent, detect, analyse, contain, respond, recover) per Art. 21(2)(b) | Entity-level ICT systems; all-hazards approach |
-| CRA | SO-CRA-020 | Recording and monitoring of product internal activity with user opt-out, corruption reporting | Product with digital elements; manufacturer perspective |
-| DORA | SO-DORA-007 | Multi-class anomalous-activity detection with SPOF identification per Art. 10(1)–(2) | Financial-entity ICT; performance + incidents + SPOFs |
+| GDPR | SG-GDPR-008 | Personal-data breach detection and triaging with documented "becoming aware" moment anchoring the 72h clock | Personal data; controller/processor perspective |
+| NIS2 | SG-NIS2-005 | Six-action incident-handling capability (prevent, detect, analyse, contain, respond, recover) per Art. 21(2)(b) | Entity-level ICT systems; all-hazards approach |
+| CRA | SG-CRA-020 | Recording and monitoring of product internal activity with user opt-out, corruption reporting | Product with digital elements; manufacturer perspective |
+| DORA | SG-DORA-007 | Multi-class anomalous-activity detection with SPOF identification per Art. 10(1)–(2) | Financial-entity ICT; performance + incidents + SPOFs |
 | AI_Act | — | Out-of-scope (sole authorities: NIS2/DORA) | n/a |
 **Sole-authority note:** AI Act is out-of-scope for D-04.1 per AEGIS taxonomy §4.1 — AI Act detection obligations are coupled to the Art. 73/55 reporting triggers (D-04.3) and not standalone. NIS2/DORA are the dedicated authorities for detection-and-triage architecture.
 ##### Pairwise matrix
@@ -439,7 +439,7 @@ None. The pairwise readings above are additive — no 3-way contradiction or non
 ##### SR cross-validation
 NIST CSF 2.0 coverage is anchored on **DE.CM-01** (Networks monitored) and **DE.CM-09** (Computing hardware monitored) by GDPR, NIS2, and DORA; CRA anchors on **PR.PS-04** (Software logs recorded) and **DE.AE-08** (Vulnerabilities identified). The two anchor families are complementary: DE.CM-* covers the network/hardware perimeter (entity level) and PR.PS-04/DE.AE-08 covers the product-internal surface. No DE.CM or DE.AE conflict; mapping is consistent across regulations. RS.MA-* (Incident management executed) appears only in CRA (SR-CRA-027's secondary mapping) and DORA, reflecting the difference between detection-only and detection+response-triggering obligations.
 ##### Downstream implication
-Phase 2 obligation derivation must distinguish detection-architecture obligations (DORA Art. 10, NIS2 Art. 21(2)(b)) from detection-trigger obligations (GDPR Art. 33(1) `becoming aware`). The methodology must ensure a financial entity implementing both DORA and GDPR produces a single integrated detection pipeline that satisfies both; the SO-GDPR-008 "becoming aware" anchor must be re-interpreted as the moment a DORA-detected event crosses the personal-data threshold.
+Phase 2 obligation derivation must distinguish detection-architecture obligations (DORA Art. 10, NIS2 Art. 21(2)(b)) from detection-trigger obligations (GDPR Art. 33(1) `becoming aware`). The methodology must ensure a financial entity implementing both DORA and GDPR produces a single integrated detection pipeline that satisfies both; the SG-GDPR-008 "becoming aware" anchor must be re-interpreted as the moment a DORA-detected event crosses the personal-data threshold.
 ---
 ---
 

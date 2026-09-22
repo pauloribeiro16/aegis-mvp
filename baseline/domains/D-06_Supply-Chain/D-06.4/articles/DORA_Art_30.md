@@ -30,19 +30,19 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-DORA-012 | Rights and obligations in ICT third-party contractual arrangements are clearly allocated and set out in writing, including the minimum elements (a)–(i) of Art. 30(2); the financial entity (or an appointed third party) and the competent authority have unrestricted rights of access, inspection and audit, including the right to take copies of relevant documentation on-site if critical to the operations of the ICT third-party service provider, the effective exercise of which is not impeded or limited by other contractual arrangements or implementation policies, with the possibility to agree on alternative assurance levels if other clients' rights are affected. | `DORA-C37` (Art. 30(1)+(2) `clearly allocated` + closed list of 9 minimum elements (a)–(i)); `DORA-C38` (Art. 30(3)(e)(i)+(ii) `unrestricted` universal + `if other clients' rights are affected` qualification + `alternative assurance levels`) | D-06.3, D-06.4 |
-| SO-DORA-012 | D-06.3, D-06.4 | Art. 30(1)–(3) | Contracts (minimum elements) + audit rights |
+| SG-DORA-012 | Rights and obligations in ICT third-party contractual arrangements are clearly allocated and set out in writing, including the minimum elements (a)–(i) of Art. 30(2); the financial entity (or an appointed third party) and the competent authority have unrestricted rights of access, inspection and audit, including the right to take copies of relevant documentation on-site if critical to the operations of the ICT third-party service provider, the effective exercise of which is not impeded or limited by other contractual arrangements or implementation policies, with the possibility to agree on alternative assurance levels if other clients' rights are affected. | `DORA-C37` (Art. 30(1)+(2) `clearly allocated` + closed list of 9 minimum elements (a)–(i)); `DORA-C38` (Art. 30(3)(e)(i)+(ii) `unrestricted` universal + `if other clients' rights are affected` qualification + `alternative assurance levels`) | D-06.3, D-06.4 |
+| SG-DORA-012 | D-06.3, D-06.4 | Art. 30(1)–(3) | Contracts (minimum elements) + audit rights |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-019
   title: "ICT third-party risk managed under four-factor proportionality"
   source_clauses:
     - { clause_id: DORA-C35, article_ref: "Art. 28(1) — `manage ICT third-party risk … taking into account: (i) the nature, scale, complexity and importance of ICT-related dependencies; (ii) the risks arising from contractual arrangements on the use of ICT services … taking into account the criticality or importance of the respective service, process or function`" }
-  linked_objectives: [SO-DORA-011]
+  linked_objectives: [SG-DORA-011]
   sub_domain: [D-06.1, D-06.3]
   nist_csf_mapping:
     - { id: GV.SC-02, title: "Suppliers and other third parties are known, prioritized, and assessed using a cybersecurity supply chain risk management process" }
@@ -95,14 +95,14 @@ status: DRAFT
     entity-policy matter awaiting EBA RTS clarity.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-020
   title: "Information-security standards compliance for ICT third-party contracts"
   source_clauses:
     - { clause_id: DORA-C36, article_ref: "Art. 28(5) — `financial entities may only enter into contractual arrangements with ICT third-party service providers that comply with appropriate information security standards. When those contractual arrangements concern critical or important functions, financial entities shall … take due consideration of the use, by ICT third-party service providers, of the most up-to-date and highest quality information security standards`" }
-  linked_objectives: [SO-DORA-011]
+  linked_objectives: [SG-DORA-011]
   sub_domain: [D-06.3]
   nist_csf_mapping:
     - { id: GV.SC-01, title: "A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders" }
@@ -167,14 +167,14 @@ status: DRAFT
     Art. 28(9) and to the Joint Committee oversight of CTPPs at Ch. V Sec. 2.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-021
   title: "Minimum contractual elements for ICT third-party arrangements"
   source_clauses:
     - { clause_id: DORA-C37, article_ref: "Art. 30(1)+(2) — `rights and obligations … shall be clearly allocated and set out in writing … shall include at least the following elements (a)–(i)`" }
-  linked_objectives: [SO-DORA-012]
+  linked_objectives: [SG-DORA-012]
   sub_domain: [D-06.3]
   nist_csf_mapping:
     - { id: GV.SC-03, title: "Contracts with suppliers and other third parties are used to implement appropriate measures designed to meet the objectives of an organization's cybersecurity program" }
@@ -233,14 +233,14 @@ status: DRAFT
     transparency).
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-022
   title: "Unrestricted audit rights over critical ICT third-party providers"
   source_clauses:
     - { clause_id: DORA-C38, article_ref: "Art. 30(3)(e)(i)+(ii) — `unrestricted rights of access, inspection and audit by the financial entity, or an appointed third party, and by the competent authority … the right to take copies of relevant documentation on-site … the right to agree on alternative assurance levels if other clients' rights are affected`" }
-  linked_objectives: [SO-DORA-012]
+  linked_objectives: [SG-DORA-012]
   sub_domain: [D-06.4]
   nist_csf_mapping:
     - { id: GV.SC-03, title: "Contracts with suppliers and other third parties are used to implement appropriate measures" }
@@ -301,14 +301,14 @@ status: DRAFT
     negotiations until a market convention crystallises.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-029
   title: "Inventory and classification of ICT-supported business assets"
   source_clauses:
     - { clause_id: DORA-C05, article_ref: "Art. 7(1) — `identify, classify and adequately document all ICT supported business functions, roles and responsibilities, the information assets and ICT assets supporting those functions, and their roles and dependencies in relation to ICT risk`" }
-  linked_objectives: [SO-DORA-017]
+  linked_objectives: [SG-DORA-017]
   sub_domain: [D-09.3]
   nist_csf_mapping:
     - { id: ID.AM-01, title: "Inventories of hardware managed by the organization are maintained" }

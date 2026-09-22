@@ -34,8 +34,8 @@
         "D-01.2"
       ],
       "linked_objectives": [
-        "SO-CRA-001",
-        "SO-CRA-045"
+        "SG-CRA-001",
+        "SG-CRA-045"
       ],
       "source_clauses": [
         {
@@ -76,8 +76,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-001",
-          "SO-CRA-045"
+          "SG-CRA-001",
+          "SG-CRA-045"
         ],
         "sub_domain": [
           "D-01.1",
@@ -114,8 +114,8 @@
         "D-01.1"
       ],
       "linked_objectives": [
-        "SO-CRA-002",
-        "SO-CRA-001"
+        "SG-CRA-002",
+        "SG-CRA-001"
       ],
       "source_clauses": [
         {
@@ -147,8 +147,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-002",
-          "SO-CRA-001"
+          "SG-CRA-002",
+          "SG-CRA-001"
         ],
         "sub_domain": [
           "D-01.1"
@@ -180,8 +180,8 @@
         "D-01.2"
       ],
       "linked_objectives": [
-        "SO-CRA-003",
-        "SO-CRA-001"
+        "SG-CRA-003",
+        "SG-CRA-001"
       ],
       "source_clauses": [
         {
@@ -214,8 +214,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-003",
-          "SO-CRA-001"
+          "SG-CRA-003",
+          "SG-CRA-001"
         ],
         "sub_domain": [
           "D-01.2"
@@ -253,7 +253,7 @@
         "D-03.3"
       ],
       "linked_objectives": [
-        "SO-CRA-004"
+        "SG-CRA-004"
       ],
       "source_clauses": [
         {
@@ -295,7 +295,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-004"
+          "SG-CRA-004"
         ],
         "sub_domain": [
           "D-01.3",
@@ -338,7 +338,7 @@
         "D-10.2"
       ],
       "linked_objectives": [
-        "SO-CRA-005"
+        "SG-CRA-005"
       ],
       "source_clauses": [
         {
@@ -372,7 +372,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-005"
+          "SG-CRA-005"
         ],
         "sub_domain": [
           "D-01.4",
@@ -414,8 +414,8 @@
         "D-02.2"
       ],
       "linked_objectives": [
-        "SO-CRA-006",
-        "SO-CRA-008"
+        "SG-CRA-006",
+        "SG-CRA-008"
       ],
       "source_clauses": [
         {
@@ -448,8 +448,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-006",
-          "SO-CRA-008"
+          "SG-CRA-006",
+          "SG-CRA-008"
         ],
         "sub_domain": [
           "D-02.1",
@@ -487,8 +487,8 @@
         "D-02.1"
       ],
       "linked_objectives": [
-        "SO-CRA-006",
-        "SO-CRA-007"
+        "SG-CRA-006",
+        "SG-CRA-007"
       ],
       "source_clauses": [
         {
@@ -529,8 +529,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-006",
-          "SO-CRA-007"
+          "SG-CRA-006",
+          "SG-CRA-007"
         ],
         "sub_domain": [
           "D-02.1"
@@ -567,8 +567,8 @@
         "D-02.1"
       ],
       "linked_objectives": [
-        "SO-CRA-007",
-        "SO-CRA-038"
+        "SG-CRA-007",
+        "SG-CRA-038"
       ],
       "source_clauses": [
         {
@@ -601,8 +601,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-007",
-          "SO-CRA-038"
+          "SG-CRA-007",
+          "SG-CRA-038"
         ],
         "sub_domain": [
           "D-06.2",
@@ -641,8 +641,8 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-007",
-        "SO-CRA-038"
+        "SG-CRA-007",
+        "SG-CRA-038"
       ],
       "source_clauses": [
         {
@@ -683,8 +683,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-007",
-          "SO-CRA-038"
+          "SG-CRA-007",
+          "SG-CRA-038"
         ],
         "sub_domain": [
           "D-06.2",
@@ -723,7 +723,7 @@
         "D-02.2"
       ],
       "linked_objectives": [
-        "SO-CRA-008"
+        "SG-CRA-008"
       ],
       "source_clauses": [
         {
@@ -764,7 +764,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-008"
+          "SG-CRA-008"
         ],
         "sub_domain": [
           "D-02.2"
@@ -800,8 +800,8 @@
         "D-02.2"
       ],
       "linked_objectives": [
-        "SO-CRA-008",
-        "SO-CRA-009"
+        "SG-CRA-008",
+        "SG-CRA-009"
       ],
       "source_clauses": [
         {
@@ -834,8 +834,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-008",
-          "SO-CRA-009"
+          "SG-CRA-008",
+          "SG-CRA-009"
         ],
         "sub_domain": [
           "D-02.2"
@@ -872,7 +872,7 @@
         "D-04.2"
       ],
       "linked_objectives": [
-        "SO-CRA-010"
+        "SG-CRA-010"
       ],
       "source_clauses": [
         {
@@ -905,7 +905,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-010"
+          "SG-CRA-010"
         ],
         "sub_domain": [
           "D-02.2",
@@ -943,8 +943,8 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-010",
-        "SO-CRA-061"
+        "SG-CRA-010",
+        "SG-CRA-061"
       ],
       "source_clauses": [
         {
@@ -985,8 +985,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-010",
-          "SO-CRA-061"
+          "SG-CRA-010",
+          "SG-CRA-061"
         ],
         "sub_domain": [
           "D-02.2",
@@ -1023,8 +1023,8 @@
         "D-02.2"
       ],
       "linked_objectives": [
-        "SO-CRA-010",
-        "SO-CRA-061"
+        "SG-CRA-010",
+        "SG-CRA-061"
       ],
       "source_clauses": [
         {
@@ -1065,8 +1065,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-010",
-          "SO-CRA-061"
+          "SG-CRA-010",
+          "SG-CRA-061"
         ],
         "sub_domain": [
           "D-02.2"
@@ -1104,8 +1104,8 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-060",
-        "SO-CRA-047"
+        "SG-CRA-060",
+        "SG-CRA-047"
       ],
       "source_clauses": [
         {
@@ -1138,8 +1138,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-060",
-          "SO-CRA-047"
+          "SG-CRA-060",
+          "SG-CRA-047"
         ],
         "sub_domain": [
           "D-02.2",
@@ -1178,7 +1178,7 @@
         "D-05.2"
       ],
       "linked_objectives": [
-        "SO-CRA-011"
+        "SG-CRA-011"
       ],
       "source_clauses": [
         {
@@ -1203,7 +1203,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-011"
+          "SG-CRA-011"
         ],
         "sub_domain": [
           "D-02.2",
@@ -1241,7 +1241,7 @@
         "D-02.2"
       ],
       "linked_objectives": [
-        "SO-CRA-009"
+        "SG-CRA-009"
       ],
       "source_clauses": [
         {
@@ -1274,7 +1274,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-009"
+          "SG-CRA-009"
         ],
         "sub_domain": [
           "D-02.2"
@@ -1311,8 +1311,8 @@
         "D-02.2"
       ],
       "linked_objectives": [
-        "SO-CRA-019",
-        "SO-CRA-009"
+        "SG-CRA-019",
+        "SG-CRA-009"
       ],
       "source_clauses": [
         {
@@ -1347,8 +1347,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-019",
-          "SO-CRA-009"
+          "SG-CRA-019",
+          "SG-CRA-009"
         ],
         "sub_domain": [
           "D-03.4",
@@ -1386,8 +1386,8 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-CRA-012",
-        "SO-CRA-049"
+        "SG-CRA-012",
+        "SG-CRA-049"
       ],
       "source_clauses": [
         {
@@ -1428,8 +1428,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-012",
-          "SO-CRA-049"
+          "SG-CRA-012",
+          "SG-CRA-049"
         ],
         "sub_domain": [
           "D-02.3",
@@ -1466,7 +1466,7 @@
         "D-02.3"
       ],
       "linked_objectives": [
-        "SO-CRA-012"
+        "SG-CRA-012"
       ],
       "source_clauses": [
         {
@@ -1507,7 +1507,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-012"
+          "SG-CRA-012"
         ],
         "sub_domain": [
           "D-02.3"
@@ -1545,7 +1545,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-013"
+        "SG-CRA-013"
       ],
       "source_clauses": [
         {
@@ -1586,7 +1586,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-013"
+          "SG-CRA-013"
         ],
         "sub_domain": [
           "D-02.3",
@@ -1626,8 +1626,8 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-014",
-        "SO-CRA-069"
+        "SG-CRA-014",
+        "SG-CRA-069"
       ],
       "source_clauses": [
         {
@@ -1669,8 +1669,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-014",
-          "SO-CRA-069"
+          "SG-CRA-014",
+          "SG-CRA-069"
         ],
         "sub_domain": [
           "D-02.4",
@@ -1715,8 +1715,8 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-015",
-        "SO-CRA-056"
+        "SG-CRA-015",
+        "SG-CRA-056"
       ],
       "source_clauses": [
         {
@@ -1757,8 +1757,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-015",
-          "SO-CRA-056"
+          "SG-CRA-015",
+          "SG-CRA-056"
         ],
         "sub_domain": [
           "D-03.1",
@@ -1798,7 +1798,7 @@
         "D-03.1"
       ],
       "linked_objectives": [
-        "SO-CRA-017"
+        "SG-CRA-017"
       ],
       "source_clauses": [
         {
@@ -1832,7 +1832,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-017"
+          "SG-CRA-017"
         ],
         "sub_domain": [
           "D-03.3",
@@ -1873,8 +1873,8 @@
         "D-03.4"
       ],
       "linked_objectives": [
-        "SO-CRA-018",
-        "SO-CRA-045"
+        "SG-CRA-018",
+        "SG-CRA-045"
       ],
       "source_clauses": [
         {
@@ -1917,8 +1917,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-018",
-          "SO-CRA-045"
+          "SG-CRA-018",
+          "SG-CRA-045"
         ],
         "sub_domain": [
           "D-03.4"
@@ -1955,7 +1955,7 @@
         "D-03.4"
       ],
       "linked_objectives": [
-        "SO-CRA-018"
+        "SG-CRA-018"
       ],
       "source_clauses": [
         {
@@ -1980,7 +1980,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-018"
+          "SG-CRA-018"
         ],
         "sub_domain": [
           "D-03.4"
@@ -2017,8 +2017,8 @@
         "D-04.1"
       ],
       "linked_objectives": [
-        "SO-CRA-020",
-        "SO-CRA-068"
+        "SG-CRA-020",
+        "SG-CRA-068"
       ],
       "source_clauses": [
         {
@@ -2051,8 +2051,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-020",
-          "SO-CRA-068"
+          "SG-CRA-020",
+          "SG-CRA-068"
         ],
         "sub_domain": [
           "D-10.1",
@@ -2089,7 +2089,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-CRA-023"
+        "SG-CRA-023"
       ],
       "source_clauses": [
         {
@@ -2148,7 +2148,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-023"
+          "SG-CRA-023"
         ],
         "sub_domain": [
           "D-04.3"
@@ -2184,7 +2184,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-CRA-024"
+        "SG-CRA-024"
       ],
       "source_clauses": [
         {
@@ -2217,7 +2217,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-024"
+          "SG-CRA-024"
         ],
         "sub_domain": [
           "D-04.3"
@@ -2254,7 +2254,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-024"
+        "SG-CRA-024"
       ],
       "source_clauses": [
         {
@@ -2288,7 +2288,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-024"
+          "SG-CRA-024"
         ],
         "sub_domain": [
           "D-04.3",
@@ -2329,8 +2329,8 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-CRA-025",
-        "SO-CRA-027"
+        "SG-CRA-025",
+        "SG-CRA-027"
       ],
       "source_clauses": [
         {
@@ -2387,8 +2387,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-025",
-          "SO-CRA-027"
+          "SG-CRA-025",
+          "SG-CRA-027"
         ],
         "sub_domain": [
           "D-04.3"
@@ -2424,7 +2424,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-CRA-026"
+        "SG-CRA-026"
       ],
       "source_clauses": [
         {
@@ -2457,7 +2457,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-026"
+          "SG-CRA-026"
         ],
         "sub_domain": [
           "D-04.3"
@@ -2494,7 +2494,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-026"
+        "SG-CRA-026"
       ],
       "source_clauses": [
         {
@@ -2519,7 +2519,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-026"
+          "SG-CRA-026"
         ],
         "sub_domain": [
           "D-04.3",
@@ -2556,7 +2556,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-CRA-027"
+        "SG-CRA-027"
       ],
       "source_clauses": [
         {
@@ -2589,7 +2589,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-027"
+          "SG-CRA-027"
         ],
         "sub_domain": [
           "D-04.3"
@@ -2625,7 +2625,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-CRA-027"
+        "SG-CRA-027"
       ],
       "source_clauses": [
         {
@@ -2650,7 +2650,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-027"
+          "SG-CRA-027"
         ],
         "sub_domain": [
           "D-04.3"
@@ -2687,7 +2687,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-028"
+        "SG-CRA-028"
       ],
       "source_clauses": [
         {
@@ -2719,7 +2719,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-028"
+          "SG-CRA-028"
         ],
         "sub_domain": [
           "D-04.3",
@@ -2752,7 +2752,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-CRA-029"
+        "SG-CRA-029"
       ],
       "source_clauses": [
         {
@@ -2779,7 +2779,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-029"
+          "SG-CRA-029"
         ],
         "sub_domain": [
           "D-04.3"
@@ -2815,7 +2815,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-CRA-030"
+        "SG-CRA-030"
       ],
       "source_clauses": [
         {
@@ -2864,7 +2864,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-030"
+          "SG-CRA-030"
         ],
         "sub_domain": [
           "D-04.3"
@@ -2901,7 +2901,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-CRA-031"
+        "SG-CRA-031"
       ],
       "source_clauses": [
         {
@@ -2934,7 +2934,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-031"
+          "SG-CRA-031"
         ],
         "sub_domain": [
           "D-04.3",
@@ -2969,7 +2969,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-CRA-032"
+        "SG-CRA-032"
       ],
       "source_clauses": [
         {
@@ -3004,7 +3004,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-032"
+          "SG-CRA-032"
         ],
         "sub_domain": [
           "D-04.3"
@@ -3040,7 +3040,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-CRA-033"
+        "SG-CRA-033"
       ],
       "source_clauses": [
         {
@@ -3073,7 +3073,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-033"
+          "SG-CRA-033"
         ],
         "sub_domain": [
           "D-04.3"
@@ -3110,8 +3110,8 @@
         "D-10.2"
       ],
       "linked_objectives": [
-        "SO-CRA-020",
-        "SO-CRA-068"
+        "SG-CRA-020",
+        "SG-CRA-068"
       ],
       "source_clauses": [
         {
@@ -3137,8 +3137,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-020",
-          "SO-CRA-068"
+          "SG-CRA-020",
+          "SG-CRA-068"
         ],
         "sub_domain": [
           "D-10.1",
@@ -3181,8 +3181,8 @@
         "D-07.1"
       ],
       "linked_objectives": [
-        "SO-CRA-021",
-        "SO-CRA-046"
+        "SG-CRA-021",
+        "SG-CRA-046"
       ],
       "source_clauses": [
         {
@@ -3217,8 +3217,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-021",
-          "SO-CRA-046"
+          "SG-CRA-021",
+          "SG-CRA-046"
         ],
         "sub_domain": [
           "D-04.2",
@@ -3257,8 +3257,8 @@
         "D-07.1"
       ],
       "linked_objectives": [
-        "SO-CRA-022",
-        "SO-CRA-045"
+        "SG-CRA-022",
+        "SG-CRA-045"
       ],
       "source_clauses": [
         {
@@ -3283,8 +3283,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-022",
-          "SO-CRA-045"
+          "SG-CRA-022",
+          "SG-CRA-045"
         ],
         "sub_domain": [
           "D-04.2",
@@ -3323,7 +3323,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-063"
+        "SG-CRA-063"
       ],
       "source_clauses": [
         {
@@ -3357,7 +3357,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-063"
+          "SG-CRA-063"
         ],
         "sub_domain": [
           "D-04.2",
@@ -3400,8 +3400,8 @@
         "D-07.1"
       ],
       "linked_objectives": [
-        "SO-CRA-034",
-        "SO-CRA-072"
+        "SG-CRA-034",
+        "SG-CRA-072"
       ],
       "source_clauses": [
         {
@@ -3444,8 +3444,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-034",
-          "SO-CRA-072"
+          "SG-CRA-034",
+          "SG-CRA-072"
         ],
         "sub_domain": [
           "D-05.1",
@@ -3483,8 +3483,8 @@
         "D-02.2"
       ],
       "linked_objectives": [
-        "SO-CRA-035",
-        "SO-CRA-009"
+        "SG-CRA-035",
+        "SG-CRA-009"
       ],
       "source_clauses": [
         {
@@ -3525,8 +3525,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-035",
-          "SO-CRA-009"
+          "SG-CRA-035",
+          "SG-CRA-009"
         ],
         "sub_domain": [
           "D-05.2",
@@ -3564,7 +3564,7 @@
         "D-05.3"
       ],
       "linked_objectives": [
-        "SO-CRA-036"
+        "SG-CRA-036"
       ],
       "source_clauses": [
         {
@@ -3599,7 +3599,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-036"
+          "SG-CRA-036"
         ],
         "sub_domain": [
           "D-05.3"
@@ -3637,7 +3637,7 @@
         "D-03.3"
       ],
       "linked_objectives": [
-        "SO-CRA-036"
+        "SG-CRA-036"
       ],
       "source_clauses": [
         {
@@ -3664,7 +3664,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-036"
+          "SG-CRA-036"
         ],
         "sub_domain": [
           "D-05.3",
@@ -3702,7 +3702,7 @@
         "D-07.1"
       ],
       "linked_objectives": [
-        "SO-CRA-037"
+        "SG-CRA-037"
       ],
       "source_clauses": [
         {
@@ -3736,7 +3736,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-037"
+          "SG-CRA-037"
         ],
         "sub_domain": [
           "D-06.1",
@@ -3778,7 +3778,7 @@
         "D-02.2"
       ],
       "linked_objectives": [
-        "SO-CRA-037"
+        "SG-CRA-037"
       ],
       "source_clauses": [
         {
@@ -3811,7 +3811,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-037"
+          "SG-CRA-037"
         ],
         "sub_domain": [
           "D-06.3",
@@ -3848,7 +3848,7 @@
         "D-06.2"
       ],
       "linked_objectives": [
-        "SO-CRA-038"
+        "SG-CRA-038"
       ],
       "source_clauses": [
         {
@@ -3880,7 +3880,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-038"
+          "SG-CRA-038"
         ],
         "sub_domain": [
           "D-06.2"
@@ -3913,8 +3913,8 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-038",
-        "SO-CRA-072"
+        "SG-CRA-038",
+        "SG-CRA-072"
       ],
       "source_clauses": [
         {
@@ -3947,8 +3947,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-038",
-          "SO-CRA-072"
+          "SG-CRA-038",
+          "SG-CRA-072"
         ],
         "sub_domain": [
           "D-06.2",
@@ -3986,7 +3986,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-039"
+        "SG-CRA-039"
       ],
       "source_clauses": [
         {
@@ -4019,7 +4019,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-039"
+          "SG-CRA-039"
         ],
         "sub_domain": [
           "D-06.3",
@@ -4058,7 +4058,7 @@
         "D-04.2"
       ],
       "linked_objectives": [
-        "SO-CRA-039"
+        "SG-CRA-039"
       ],
       "source_clauses": [
         {
@@ -4093,7 +4093,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-039"
+          "SG-CRA-039"
         ],
         "sub_domain": [
           "D-06.3",
@@ -4131,8 +4131,8 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-039",
-        "SO-CRA-057"
+        "SG-CRA-039",
+        "SG-CRA-057"
       ],
       "source_clauses": [
         {
@@ -4157,8 +4157,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-039",
-          "SO-CRA-057"
+          "SG-CRA-039",
+          "SG-CRA-057"
         ],
         "sub_domain": [
           "D-06.3",
@@ -4195,7 +4195,7 @@
         "D-06.3"
       ],
       "linked_objectives": [
-        "SO-CRA-040"
+        "SG-CRA-040"
       ],
       "source_clauses": [
         {
@@ -4227,7 +4227,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-040"
+          "SG-CRA-040"
         ],
         "sub_domain": [
           "D-06.3"
@@ -4260,7 +4260,7 @@
         "D-04.2"
       ],
       "linked_objectives": [
-        "SO-CRA-040"
+        "SG-CRA-040"
       ],
       "source_clauses": [
         {
@@ -4295,7 +4295,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-040"
+          "SG-CRA-040"
         ],
         "sub_domain": [
           "D-06.3",
@@ -4332,7 +4332,7 @@
         "D-06.4"
       ],
       "linked_objectives": [
-        "SO-CRA-041"
+        "SG-CRA-041"
       ],
       "source_clauses": [
         {
@@ -4365,7 +4365,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-041"
+          "SG-CRA-041"
         ],
         "sub_domain": [
           "D-06.4"
@@ -4402,7 +4402,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-041"
+        "SG-CRA-041"
       ],
       "source_clauses": [
         {
@@ -4427,7 +4427,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-041"
+          "SG-CRA-041"
         ],
         "sub_domain": [
           "D-06.4",
@@ -4466,8 +4466,8 @@
         "D-07.4"
       ],
       "linked_objectives": [
-        "SO-CRA-042",
-        "SO-CRA-047"
+        "SG-CRA-042",
+        "SG-CRA-047"
       ],
       "source_clauses": [
         {
@@ -4500,8 +4500,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-042",
-          "SO-CRA-047"
+          "SG-CRA-042",
+          "SG-CRA-047"
         ],
         "sub_domain": [
           "D-06.4",
@@ -4540,8 +4540,8 @@
         "D-07.4"
       ],
       "linked_objectives": [
-        "SO-CRA-043",
-        "SO-CRA-047"
+        "SG-CRA-043",
+        "SG-CRA-047"
       ],
       "source_clauses": [
         {
@@ -4574,8 +4574,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-043",
-          "SO-CRA-047"
+          "SG-CRA-043",
+          "SG-CRA-047"
         ],
         "sub_domain": [
           "D-06.4",
@@ -4613,7 +4613,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-044"
+        "SG-CRA-044"
       ],
       "source_clauses": [
         {
@@ -4646,7 +4646,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-044"
+          "SG-CRA-044"
         ],
         "sub_domain": [
           "D-06.4",
@@ -4688,7 +4688,7 @@
         "D-09.2"
       ],
       "linked_objectives": [
-        "SO-CRA-045"
+        "SG-CRA-045"
       ],
       "source_clauses": [
         {
@@ -4721,7 +4721,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-045"
+          "SG-CRA-045"
         ],
         "sub_domain": [
           "D-07.1",
@@ -4759,8 +4759,8 @@
         "D-09.2"
       ],
       "linked_objectives": [
-        "SO-CRA-045",
-        "SO-CRA-053"
+        "SG-CRA-045",
+        "SG-CRA-053"
       ],
       "source_clauses": [
         {
@@ -4801,8 +4801,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-045",
-          "SO-CRA-053"
+          "SG-CRA-045",
+          "SG-CRA-053"
         ],
         "sub_domain": [
           "D-07.1",
@@ -4842,8 +4842,8 @@
         "D-07.1"
       ],
       "linked_objectives": [
-        "SO-CRA-053",
-        "SO-CRA-054"
+        "SG-CRA-053",
+        "SG-CRA-054"
       ],
       "source_clauses": [
         {
@@ -4893,8 +4893,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-053",
-          "SO-CRA-054"
+          "SG-CRA-053",
+          "SG-CRA-054"
         ],
         "sub_domain": [
           "D-09.2",
@@ -4938,8 +4938,8 @@
         "D-07.1"
       ],
       "linked_objectives": [
-        "SO-CRA-046",
-        "SO-CRA-022"
+        "SG-CRA-046",
+        "SG-CRA-022"
       ],
       "source_clauses": [
         {
@@ -4964,8 +4964,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-046",
-          "SO-CRA-022"
+          "SG-CRA-046",
+          "SG-CRA-022"
         ],
         "sub_domain": [
           "D-07.2",
@@ -5003,8 +5003,8 @@
         "D-07.1"
       ],
       "linked_objectives": [
-        "SO-CRA-046",
-        "SO-CRA-043"
+        "SG-CRA-046",
+        "SG-CRA-043"
       ],
       "source_clauses": [
         {
@@ -5029,8 +5029,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-046",
-          "SO-CRA-043"
+          "SG-CRA-046",
+          "SG-CRA-043"
         ],
         "sub_domain": [
           "D-07.2",
@@ -5068,7 +5068,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-047"
+        "SG-CRA-047"
       ],
       "source_clauses": [
         {
@@ -5093,7 +5093,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-047"
+          "SG-CRA-047"
         ],
         "sub_domain": [
           "D-07.4",
@@ -5131,8 +5131,8 @@
         "D-06.4"
       ],
       "linked_objectives": [
-        "SO-CRA-047",
-        "SO-CRA-060"
+        "SG-CRA-047",
+        "SG-CRA-060"
       ],
       "source_clauses": [
         {
@@ -5181,8 +5181,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-047",
-          "SO-CRA-060"
+          "SG-CRA-047",
+          "SG-CRA-060"
         ],
         "sub_domain": [
           "D-07.4",
@@ -5222,7 +5222,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-048"
+        "SG-CRA-048"
       ],
       "source_clauses": [
         {
@@ -5254,7 +5254,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-048"
+          "SG-CRA-048"
         ],
         "sub_domain": [
           "D-08.1",
@@ -5288,7 +5288,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-CRA-049"
+        "SG-CRA-049"
       ],
       "source_clauses": [
         {
@@ -5329,7 +5329,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-049"
+          "SG-CRA-049"
         ],
         "sub_domain": [
           "D-09.1"
@@ -5363,7 +5363,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-CRA-050"
+        "SG-CRA-050"
       ],
       "source_clauses": [
         {
@@ -5388,7 +5388,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-050"
+          "SG-CRA-050"
         ],
         "sub_domain": [
           "D-09.1"
@@ -5423,7 +5423,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-CRA-031"
+        "SG-CRA-031"
       ],
       "source_clauses": [
         {
@@ -5466,7 +5466,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-031"
+          "SG-CRA-031"
         ],
         "sub_domain": [
           "D-09.1",
@@ -5502,7 +5502,7 @@
         "D-02.3"
       ],
       "linked_objectives": [
-        "SO-CRA-051"
+        "SG-CRA-051"
       ],
       "source_clauses": [
         {
@@ -5543,7 +5543,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-051"
+          "SG-CRA-051"
         ],
         "sub_domain": [
           "D-09.1",
@@ -5580,8 +5580,8 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-065",
-        "SO-CRA-051"
+        "SG-CRA-065",
+        "SG-CRA-051"
       ],
       "source_clauses": [
         {
@@ -5606,8 +5606,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-065",
-          "SO-CRA-051"
+          "SG-CRA-065",
+          "SG-CRA-051"
         ],
         "sub_domain": [
           "D-09.4"
@@ -5643,7 +5643,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-CRA-052"
+        "SG-CRA-052"
       ],
       "source_clauses": [
         {
@@ -5684,7 +5684,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-052"
+          "SG-CRA-052"
         ],
         "sub_domain": [
           "D-09.1"
@@ -5720,7 +5720,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-CRA-052"
+        "SG-CRA-052"
       ],
       "source_clauses": [
         {
@@ -5761,7 +5761,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-052"
+          "SG-CRA-052"
         ],
         "sub_domain": [
           "D-09.1"
@@ -5799,7 +5799,7 @@
         "D-09.2"
       ],
       "linked_objectives": [
-        "SO-CRA-053"
+        "SG-CRA-053"
       ],
       "source_clauses": [
         {
@@ -5832,7 +5832,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-053"
+          "SG-CRA-053"
         ],
         "sub_domain": [
           "D-09.4",
@@ -5870,8 +5870,8 @@
         "D-09.2"
       ],
       "linked_objectives": [
-        "SO-CRA-053",
-        "SO-CRA-069"
+        "SG-CRA-053",
+        "SG-CRA-069"
       ],
       "source_clauses": [
         {
@@ -5895,8 +5895,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-053",
-          "SO-CRA-069"
+          "SG-CRA-053",
+          "SG-CRA-069"
         ],
         "sub_domain": [
           "D-09.4",
@@ -5930,7 +5930,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-054"
+        "SG-CRA-054"
       ],
       "source_clauses": [
         {
@@ -5963,7 +5963,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-054"
+          "SG-CRA-054"
         ],
         "sub_domain": [
           "D-09.2",
@@ -6001,7 +6001,7 @@
         "D-02.3"
       ],
       "linked_objectives": [
-        "SO-CRA-055"
+        "SG-CRA-055"
       ],
       "source_clauses": [
         {
@@ -6034,7 +6034,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-055"
+          "SG-CRA-055"
         ],
         "sub_domain": [
           "D-09.4",
@@ -6071,7 +6071,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-056"
+        "SG-CRA-056"
       ],
       "source_clauses": [
         {
@@ -6120,7 +6120,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-056"
+          "SG-CRA-056"
         ],
         "sub_domain": [
           "D-09.4"
@@ -6157,7 +6157,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-057"
+        "SG-CRA-057"
       ],
       "source_clauses": [
         {
@@ -6198,7 +6198,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-057"
+          "SG-CRA-057"
         ],
         "sub_domain": [
           "D-09.4"
@@ -6236,8 +6236,8 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-058",
-        "SO-CRA-063"
+        "SG-CRA-058",
+        "SG-CRA-063"
       ],
       "source_clauses": [
         {
@@ -6294,8 +6294,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-058",
-          "SO-CRA-063"
+          "SG-CRA-058",
+          "SG-CRA-063"
         ],
         "sub_domain": [
           "D-09.4"
@@ -6331,8 +6331,8 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-058",
-        "SO-CRA-062"
+        "SG-CRA-058",
+        "SG-CRA-062"
       ],
       "source_clauses": [
         {
@@ -6380,8 +6380,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-058",
-          "SO-CRA-062"
+          "SG-CRA-058",
+          "SG-CRA-062"
         ],
         "sub_domain": [
           "D-09.4"
@@ -6414,8 +6414,8 @@
         "D-09.2"
       ],
       "linked_objectives": [
-        "SO-CRA-059",
-        "SO-CRA-053"
+        "SG-CRA-059",
+        "SG-CRA-053"
       ],
       "source_clauses": [
         {
@@ -6464,8 +6464,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-059",
-          "SO-CRA-053"
+          "SG-CRA-059",
+          "SG-CRA-053"
         ],
         "sub_domain": [
           "D-09.4",
@@ -6504,7 +6504,7 @@
         "D-10.3"
       ],
       "linked_objectives": [
-        "SO-CRA-059"
+        "SG-CRA-059"
       ],
       "source_clauses": [
         {
@@ -6554,7 +6554,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-059"
+          "SG-CRA-059"
         ],
         "sub_domain": [
           "D-09.4",
@@ -6599,8 +6599,8 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-060",
-        "SO-CRA-035"
+        "SG-CRA-060",
+        "SG-CRA-035"
       ],
       "source_clauses": [
         {
@@ -6633,8 +6633,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-060",
-          "SO-CRA-035"
+          "SG-CRA-060",
+          "SG-CRA-035"
         ],
         "sub_domain": [
           "D-02.2",
@@ -6673,7 +6673,7 @@
         "D-05.2"
       ],
       "linked_objectives": [
-        "SO-CRA-061"
+        "SG-CRA-061"
       ],
       "source_clauses": [
         {
@@ -6714,7 +6714,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-061"
+          "SG-CRA-061"
         ],
         "sub_domain": [
           "D-09.4",
@@ -6751,7 +6751,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-062"
+        "SG-CRA-062"
       ],
       "source_clauses": [
         {
@@ -6783,7 +6783,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-062"
+          "SG-CRA-062"
         ],
         "sub_domain": [
           "D-09.4"
@@ -6817,7 +6817,7 @@
         "D-07.4"
       ],
       "linked_objectives": [
-        "SO-CRA-063"
+        "SG-CRA-063"
       ],
       "source_clauses": [
         {
@@ -6851,7 +6851,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-063"
+          "SG-CRA-063"
         ],
         "sub_domain": [
           "D-09.4",
@@ -6895,7 +6895,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-064"
+        "SG-CRA-064"
       ],
       "source_clauses": [
         {
@@ -6922,7 +6922,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-064"
+          "SG-CRA-064"
         ],
         "sub_domain": [
           "D-09.4"
@@ -6959,7 +6959,7 @@
         "D-09.2"
       ],
       "linked_objectives": [
-        "SO-CRA-064"
+        "SG-CRA-064"
       ],
       "source_clauses": [
         {
@@ -6984,7 +6984,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-064"
+          "SG-CRA-064"
         ],
         "sub_domain": [
           "D-09.4",
@@ -7022,7 +7022,7 @@
         "D-10.3"
       ],
       "linked_objectives": [
-        "SO-CRA-066"
+        "SG-CRA-066"
       ],
       "source_clauses": [
         {
@@ -7055,7 +7055,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-066"
+          "SG-CRA-066"
         ],
         "sub_domain": [
           "D-09.4",
@@ -7093,7 +7093,7 @@
         "D-10.3"
       ],
       "linked_objectives": [
-        "SO-CRA-066"
+        "SG-CRA-066"
       ],
       "source_clauses": [
         {
@@ -7142,7 +7142,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-066"
+          "SG-CRA-066"
         ],
         "sub_domain": [
           "D-09.4",
@@ -7180,7 +7180,7 @@
         "D-10.3"
       ],
       "linked_objectives": [
-        "SO-CRA-066"
+        "SG-CRA-066"
       ],
       "source_clauses": [
         {
@@ -7204,7 +7204,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-066"
+          "SG-CRA-066"
         ],
         "sub_domain": [
           "D-09.4",
@@ -7238,7 +7238,7 @@
         "D-10.3"
       ],
       "linked_objectives": [
-        "SO-CRA-066"
+        "SG-CRA-066"
       ],
       "source_clauses": [
         {
@@ -7270,7 +7270,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-066"
+          "SG-CRA-066"
         ],
         "sub_domain": [
           "D-09.4",
@@ -7303,8 +7303,8 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-067",
-        "SO-CRA-070"
+        "SG-CRA-067",
+        "SG-CRA-070"
       ],
       "source_clauses": [
         {
@@ -7377,8 +7377,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-067",
-          "SO-CRA-070"
+          "SG-CRA-067",
+          "SG-CRA-070"
         ],
         "sub_domain": [
           "D-09.4"
@@ -7416,7 +7416,7 @@
         "D-10.2"
       ],
       "linked_objectives": [
-        "SO-CRA-068"
+        "SG-CRA-068"
       ],
       "source_clauses": [
         {
@@ -7449,7 +7449,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-068"
+          "SG-CRA-068"
         ],
         "sub_domain": [
           "D-10.1",
@@ -7489,8 +7489,8 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-069",
-        "SO-CRA-014"
+        "SG-CRA-069",
+        "SG-CRA-014"
       ],
       "source_clauses": [
         {
@@ -7523,8 +7523,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-069",
-          "SO-CRA-014"
+          "SG-CRA-069",
+          "SG-CRA-014"
         ],
         "sub_domain": [
           "D-10.2",
@@ -7564,8 +7564,8 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-070",
-        "SO-CRA-053"
+        "SG-CRA-070",
+        "SG-CRA-053"
       ],
       "source_clauses": [
         {
@@ -7606,8 +7606,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-070",
-          "SO-CRA-053"
+          "SG-CRA-070",
+          "SG-CRA-053"
         ],
         "sub_domain": [
           "D-10.2",
@@ -7646,8 +7646,8 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-071",
-        "SO-CRA-095"
+        "SG-CRA-071",
+        "SG-CRA-095"
       ],
       "source_clauses": [
         {
@@ -7680,8 +7680,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-071",
-          "SO-CRA-095"
+          "SG-CRA-071",
+          "SG-CRA-095"
         ],
         "sub_domain": [
           "D-10.3",
@@ -7719,8 +7719,8 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-071",
-        "SO-CRA-066"
+        "SG-CRA-071",
+        "SG-CRA-066"
       ],
       "source_clauses": [
         {
@@ -7777,8 +7777,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-071",
-          "SO-CRA-066"
+          "SG-CRA-071",
+          "SG-CRA-066"
         ],
         "sub_domain": [
           "D-10.3",
@@ -7817,7 +7817,7 @@
         "D-07.1"
       ],
       "linked_objectives": [
-        "SO-CRA-072"
+        "SG-CRA-072"
       ],
       "source_clauses": [
         {
@@ -7844,7 +7844,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-072"
+          "SG-CRA-072"
         ],
         "sub_domain": [
           "D-09.4",
@@ -7882,7 +7882,7 @@
         "D-09.2"
       ],
       "linked_objectives": [
-        "SO-CRA-072"
+        "SG-CRA-072"
       ],
       "source_clauses": [
         {
@@ -7906,7 +7906,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-072"
+          "SG-CRA-072"
         ],
         "sub_domain": [
           "D-09.4",
@@ -7940,7 +7940,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-048"
+        "SG-CRA-048"
       ],
       "source_clauses": [
         {
@@ -7972,7 +7972,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-048"
+          "SG-CRA-048"
         ],
         "sub_domain": [
           "D-08.1",
@@ -8008,7 +8008,7 @@
         "D-06.4"
       ],
       "linked_objectives": [
-        "SO-CRA-048"
+        "SG-CRA-048"
       ],
       "source_clauses": [
         {
@@ -8035,7 +8035,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-048"
+          "SG-CRA-048"
         ],
         "sub_domain": [
           "D-08.2",
@@ -8075,7 +8075,7 @@
         "D-06.2"
       ],
       "linked_objectives": [
-        "SO-CRA-072"
+        "SG-CRA-072"
       ],
       "source_clauses": [
         {
@@ -8099,7 +8099,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-072"
+          "SG-CRA-072"
         ],
         "sub_domain": [
           "D-09.4",
@@ -8134,8 +8134,8 @@
         "D-03.4"
       ],
       "linked_objectives": [
-        "SO-CRA-048",
-        "SO-CRA-019"
+        "SG-CRA-048",
+        "SG-CRA-019"
       ],
       "source_clauses": [
         {
@@ -8159,8 +8159,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-048",
-          "SO-CRA-019"
+          "SG-CRA-048",
+          "SG-CRA-019"
         ],
         "sub_domain": [
           "D-08.1",
@@ -8195,8 +8195,8 @@
         "D-05.3"
       ],
       "linked_objectives": [
-        "SO-CRA-048",
-        "SO-CRA-036"
+        "SG-CRA-048",
+        "SG-CRA-036"
       ],
       "source_clauses": [
         {
@@ -8220,8 +8220,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-048",
-          "SO-CRA-036"
+          "SG-CRA-048",
+          "SG-CRA-036"
         ],
         "sub_domain": [
           "D-08.1",
@@ -8254,7 +8254,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-073"
+        "SG-CRA-073"
       ],
       "source_clauses": [
         {
@@ -8287,7 +8287,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-073"
+          "SG-CRA-073"
         ],
         "sub_domain": [
           "D-09.4"
@@ -8323,7 +8323,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-CRA-073"
+        "SG-CRA-073"
       ],
       "source_clauses": [
         {
@@ -8349,7 +8349,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-073"
+          "SG-CRA-073"
         ],
         "sub_domain": [
           "D-04.3"
@@ -8381,8 +8381,8 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-CRA-073",
-        "SO-CRA-074"
+        "SG-CRA-073",
+        "SG-CRA-074"
       ],
       "source_clauses": [
         {
@@ -8433,8 +8433,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-CRA-073",
-          "SO-CRA-074"
+          "SG-CRA-073",
+          "SG-CRA-074"
         ],
         "sub_domain": [
           "D-09.4"

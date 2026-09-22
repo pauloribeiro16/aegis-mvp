@@ -7,7 +7,7 @@
 
 #### D-01.1.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-01.1.HL
+id: SG-D-01.1.HL
 subdomain: D-01.1
 applies_to: auto  # activates when ≥2 applicable regs overlap on same datastore
 status: static

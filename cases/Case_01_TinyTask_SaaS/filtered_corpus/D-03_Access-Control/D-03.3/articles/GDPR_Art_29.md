@@ -26,12 +26,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-006 | Persons authorised to process personal data act only on documented instructions from the controller (or processor) and are bound by confidentiality or an appropriate statutory obligation of confidentiality. | `GDPR-CP11` (Art. 29); `GDPR-CP09` (Art. 28(3)(a)/(b)); `GDPR-CP15` (Art. 32(4)) | D-03.3 |
-| SO-GDPR-006 | D-03.3 | Art. 28(3)(a)/(b), Art. 29, Art. 32(4) | Authorised persons act on instructions + confidentiality |
+| SG-GDPR-006 | Persons authorised to process personal data act only on documented instructions from the controller (or processor) and are bound by confidentiality or an appropriate statutory obligation of confidentiality. | `GDPR-CP11` (Art. 29); `GDPR-CP09` (Art. 28(3)(a)/(b)); `GDPR-CP15` (Art. 32(4)) | D-03.3 |
+| SG-GDPR-006 | D-03.3 | Art. 28(3)(a)/(b), Art. 29, Art. 32(4) | Authorised persons act on instructions + confidentiality |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-011
@@ -41,7 +41,7 @@ status: DRAFT
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(4)" }
     - { clause_id: GDPR-CP09, article_ref: "Art. 28(3)(a)/(b)" }
     - { clause_id: GDPR-C03, article_ref: "Art. 4(7)/(8) — controller/processor definitions" }
-  linked_objectives: [SO-GDPR-006]
+  linked_objectives: [SG-GDPR-006]
   sub_domain: [D-03.3]
   nist_csf_mapping:
     - { id: PR.AA-05, title: "Access permissions managed per least privilege" }
@@ -60,7 +60,7 @@ status: DRAFT
     `instructions` is POLY-S2 (formal written vs verbal vs workflow-implied). Reading chosen: instructions must be documented in a form sufficient for audit and supervisory-authority inspection, at minimum the documented instruction in the Art. 28(3)(a) processor contract and any operational instructions issued under it. An alternative reading allowing verbal instructions (provided they are recorded contemporaneously) is acceptable but operationally weaker. A third reading permitting workflow-implied instructions (e.g. processing required by the controller's API) is rejected: workflows are evidence of processing but not a substitute for the documented instruction; controllers must translate workflow-level processing into documented instructions for Art. 28(3)(a) compliance. The Union or Member State law carve-out is narrow and typically arises in law-enforcement, tax, and social-security contexts.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-012
@@ -69,7 +69,7 @@ status: DRAFT
     - { clause_id: GDPR-CP09, article_ref: "Art. 28(3)(b) — confidentiality obligation" }
     - { clause_id: GDPR-CP11, article_ref: "Art. 29" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(4)" }
-  linked_objectives: [SO-GDPR-006]
+  linked_objectives: [SG-GDPR-006]
   sub_domain: [D-03.3, D-08.1]
   nist_csf_mapping:
     - { id: PR.AA-05, title: "Access permissions managed per least privilege" }

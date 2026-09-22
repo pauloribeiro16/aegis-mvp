@@ -34,10 +34,10 @@
 #### Participants (from CRDA-deep §D-01.4)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-003 | Personal data accurate and, where necessary, kept up to date; every reasonable step to ensure erasure/rectification without delay | Controller/processor; Art. 5(1)(d) accuracy + Art. 16 rectification + Art. 5(1)(f) integrity; personal-data scope; semantic accuracy (workflow leg) + storage integrity |
-| CRA | SO-CRA-005 | Integrity of stored/transmitted/processed data + commands/programs/configuration protected against any manipulation not authorised by the user; corruption reported | Manufacturer; Annex I Part I (2)(f) integrity + (2)(l) logging; product-level; "personal or other"; technical integrity (universal-quantifier "any manipulation") |
-| DORA | SO-DORA-001 (cross-ref) | Integrity is one dimension of the 4×3 CIA+A matrix (at rest, in use, in transit) | Financial entity; Art. 9(2) CIA+A 4-way AND + 3-way OR of data states; ICT-system-level; `high standards`; OJ-explicit integrity dimension |
-| AI Act | SO-AIACT-009 (partial) | High-risk AI systems resilient as possible regarding errors, faults, inconsistencies — technical redundancy (backup or fail-safe plans) | Provider; Art. 15(3); AI-system-level; resilience-not-integrity framing; AI-system-level property bundled with accuracy and robustness |
+| GDPR | SG-GDPR-003 | Personal data accurate and, where necessary, kept up to date; every reasonable step to ensure erasure/rectification without delay | Controller/processor; Art. 5(1)(d) accuracy + Art. 16 rectification + Art. 5(1)(f) integrity; personal-data scope; semantic accuracy (workflow leg) + storage integrity |
+| CRA | SG-CRA-005 | Integrity of stored/transmitted/processed data + commands/programs/configuration protected against any manipulation not authorised by the user; corruption reported | Manufacturer; Annex I Part I (2)(f) integrity + (2)(l) logging; product-level; "personal or other"; technical integrity (universal-quantifier "any manipulation") |
+| DORA | SG-DORA-001 (cross-ref) | Integrity is one dimension of the 4×3 CIA+A matrix (at rest, in use, in transit) | Financial entity; Art. 9(2) CIA+A 4-way AND + 3-way OR of data states; ICT-system-level; `high standards`; OJ-explicit integrity dimension |
+| AI Act | SG-AIACT-009 (partial) | High-risk AI systems resilient as possible regarding errors, faults, inconsistencies — technical redundancy (backup or fail-safe plans) | Provider; Art. 15(3); AI-system-level; resilience-not-integrity framing; AI-system-level property bundled with accuracy and robustness |
 
 ## Validated relationships (from CRDA-deep §D-01.4)
 
@@ -141,7 +141,7 @@ and the legal anchor all depend on which object the asset falls into.
 ## Scope-overlap principle (operational). The high-level SO
 
 #### Scope-overlap principle (operational). The high-level SO
-(`SO-D-01.4.HL`) engages on a given data asset **if and only if ≥2
+(`SG-D-01.4.HL`) engages on a given data asset **if and only if ≥2
 applicable regulations' primary-object scopes overlap on the same data
 asset** (e.g. personal data stored on a CRA-regulated product deployed by
 a DORA financial entity running a high-risk AI workload that processes
@@ -241,7 +241,7 @@ A company with ≥2 applicable regulations in scope of D-01.4 — with
 overlapping scopes on the same data asset — operates a **single integrity
 stack (PR.DS-01 + PR.DS-10 + PR.PS-04) + documented rectification workflow
 (Art. 16 + Art. 19)** that discharges all obligations on the layered objects.
-The high-level SO (`SO-D-01.4.HL`) describes the common obligation (data
+The high-level SO (`SG-D-01.4.HL`) describes the common obligation (data
 integrity against unauthorised modification, with corruption detected/logged/reported);
 the per-reg perspective is preserved in the four sub-SOs (primary object,
 scope qualifier, recipient, content template). **No conflict-resolution is
@@ -288,7 +288,7 @@ GDPR, CRA, DORA, AI_Act (4 of 5 regs; NIS 2 absent per AEGIS taxonomy §4.1 — 
   volere_subtype: integrity
   title: "Data integrity preserved against unauthorised modification across the data lifecycle (multi-reg aggregation)"
   derives_from:
-    hso_sub_so: SO-D-01.4.HL
+    hso_sub_so: SG-D-01.4.HL
     hso_file: ../../HierarchicalSecurityObjectives/D-01_Data-Protection/D-01.4.md
     objective_ref_section: "### D-01.4.0"
   description: |
@@ -360,10 +360,10 @@ status: DRAFT
 ##### Participants
 | Regulation | SO ID | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-003 / SO-GDPR-014 | Personal data accurate and up to date; availability and access restored in a timely manner | Controller/processor; Art. 5(1)(d) accuracy + Art. 16 rectification + Art. 32(1)(b)/(c) resilience |
-| CRA | SO-CRA-005 | Integrity of stored/transmitted/processed data + commands/programs/configuration protected against unauthorised manipulation, with corruption reported | Manufacturer; Annex I Part I (2)(f)+(l); product-level; "personal or other" |
-| DORA | SO-DORA-001 (cross-ref) | Integrity is one dimension of the 4×3 CIA+A matrix | Financial entity; Art. 9(2); ICT-system scope; OJ-explicit integrity dimension |
-| AI_Act | SO-AIACT-009 (partial) | High-risk AI systems as resilient as possible regarding errors, faults or inconsistencies — technical redundancy (backup, fail-safe) | Provider; Art. 15(3); AI-system-level; resilience-not-integrity framing |
+| GDPR | SG-GDPR-003 / SG-GDPR-014 | Personal data accurate and up to date; availability and access restored in a timely manner | Controller/processor; Art. 5(1)(d) accuracy + Art. 16 rectification + Art. 32(1)(b)/(c) resilience |
+| CRA | SG-CRA-005 | Integrity of stored/transmitted/processed data + commands/programs/configuration protected against unauthorised manipulation, with corruption reported | Manufacturer; Annex I Part I (2)(f)+(l); product-level; "personal or other" |
+| DORA | SG-DORA-001 (cross-ref) | Integrity is one dimension of the 4×3 CIA+A matrix | Financial entity; Art. 9(2); ICT-system scope; OJ-explicit integrity dimension |
+| AI_Act | SG-AIACT-009 (partial) | High-risk AI systems as resilient as possible regarding errors, faults or inconsistencies — technical redundancy (backup, fail-safe) | Provider; Art. 15(3); AI-system-level; resilience-not-integrity framing |
 | NIS2 | — | Out-of-scope for D-01.4 (NIS 2 does not impose integrity controls as a standalone obligation; CRA + DORA are dedicated authorities) | n/a |
 ##### Pairwise matrix
 

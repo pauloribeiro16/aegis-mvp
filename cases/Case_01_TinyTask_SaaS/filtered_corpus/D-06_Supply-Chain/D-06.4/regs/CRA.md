@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-041; SO-CRA-042; SO-CRA-043; SO-CRA-044 | Non-EU manufacturer authorised representative; importer/distributor manufacturer-equivalent trigger; third-party substantial-modification trigger; economic-operator identification and 10-year retention | Product-compliance boundary; MSA-facing authorised representative and supply-chain traceability |
+| CRA | SG-CRA-041; SG-CRA-042; SG-CRA-043; SG-CRA-044 | Non-EU manufacturer authorised representative; importer/distributor manufacturer-equivalent trigger; third-party substantial-modification trigger; economic-operator identification and 10-year retention | Product-compliance boundary; MSA-facing authorised representative and supply-chain traceability |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-06.4.3 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-06.4.CRA
+id: SG-D-06.4.CRA
 subdomain: D-06.4
 applies_to: [CRA]
-inherits_from: [SO-CRA-041, SO-CRA-042, SO-CRA-043, SO-CRA-044]
+inherits_from: [SG-CRA-041, SG-CRA-042, SG-CRA-043, SG-CRA-044]
 source_SR: [SR-CRA-059, SR-CRA-060, SR-CRA-061, SR-CRA-062, SR-CRA-063]
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -46,8 +46,8 @@ phase_1A_role: 1_of_N
   title: "Art. 18 written authorised representative mandate + Art. 21 own-name/trademark manufacturer-equivalent + Art. 22 third-party substantial-modification manufacturer-status + Art. 23 10-year upstream/downstream economic-operator identification log"
 
   derives_from:
-    hso_sub_so: SO-D-06.4.CRA
-    per_reg_so: SO-CRA-041, SO-CRA-042, SO-CRA-043, SO-CRA-044
+    hso_sub_so: SG-D-06.4.CRA
+    per_reg_so: SG-CRA-041, SG-CRA-042, SG-CRA-043, SG-CRA-044
     source_sr: SR-CRA-059, SR-CRA-060, SR-CRA-061, SR-CRA-062, SR-CRA-063
     hso_file: ../../HierarchicalSecurityObjectives/D-06_Supply-Chain/D-06.4.md
     objective_ref_section: "### D-06.4.3"

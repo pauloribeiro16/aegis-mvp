@@ -28,7 +28,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-022
@@ -38,7 +38,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     - { clause_id: GDPR-RT12, article_ref: "Art. 16 — rectification" }
     - { clause_id: GDPR-RT11, article_ref: "Art. 15(4) — third-party-rights limit" }
     - { clause_id: GDPR-CL26, article_ref: "Art. 11(2) — identification-exemption (cross)" }
-  linked_objectives: [SO-GDPR-012]
+  linked_objectives: [SG-GDPR-012]
   sub_domain: [D-04.3, D-05.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents reported internally to appropriate stakeholders" }

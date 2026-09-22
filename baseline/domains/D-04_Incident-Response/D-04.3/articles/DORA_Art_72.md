@@ -26,7 +26,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-017
@@ -34,7 +34,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
   source_clauses:
     - { clause_id: DORA-C31, article_ref: "Art. 19(1) — `Financial entities shall report major ICT-related incidents to the relevant competent authority`" }
     - { clause_id: DORA-C31, article_ref: "Art. 19(3) — `financial entities shall, without undue delay as soon as they become aware of it, inform their clients about the major ICT-related incident`" }
-  linked_objectives: [SO-DORA-008]
+  linked_objectives: [SG-DORA-008]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents are reported internally to the appropriate stakeholders, including executive leadership and legal counsel" }

@@ -7,7 +7,7 @@
 
 #### D-07.1.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-07.1.HL
+id: SG-D-07.1.HL
 subdomain: D-07.1
 applies_to: auto  # activates when ≥2 applicable regs have ≥1 pair with Y scope overlap on the same party AND ≥1 sub-SO activates; for D-07.1 all 10 pairs have Y scope overlap on a single party at the same event, so once ≥2 regs are applicable the high-level SO engages
 status: static

@@ -29,7 +29,7 @@
 > **CRDA-deep provenance.** This section was generated from
 > [`../../CrossRegulation/DeepAnalysis/D-03_Access-Control/D-03.4.md`](../../CrossRegulation/DeepAnalysis/D-03_Access-Control/D-03.4.md)
 > (1 pair verified against OJ text — **the two participating regulations
-> are GDPR, CRA; NIS 2 contributes only partial coverage via SO-NIS2-003
+> are GDPR, CRA; NIS 2 contributes only partial coverage via SG-NIS2-003
 > Art. 21(2)(i) asset-management dimension; DORA and AI Act are
 > out-of-scope** per AEGIS taxonomy §4; the single pairwise analysis is
 > GDPR ↔ CRA, verified as SAME DIFFERENT-PERSPECTIVE).
@@ -53,9 +53,9 @@
 #### Participants (from CRDA-deep §D-03.4)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-007 | Personal-data processing systems implement appropriate technical and organisational measures ensuring that, by default, only personal data which are necessary for each specific purpose are processed — across amount, extent, period, and accessibility | Controller; Art. 25(2); data-protection by default; scope = personal data; "by default" across 4 dimensions (amount, extent, period, accessibility); PR.PS-01 + ID.AM-08 + GV.PO-01 |
-| CRA | SO-CRA-018 + SO-CRA-019 | Product made available with secure-by-default configuration + reset to original state + automatic security updates default + opt-out + postponement | Manufacturer; Annex I Part I (2)(b) + (2)(c); product-level; "tailor-made" carve-out for business users; reset capability; auto-update default; PR.PS-01 + ID.AM-08 + GV.SC-03 |
-| NIS 2 | SO-NIS2-003 (partial) | Partial coverage via SO-NIS2-003 (access control policies + HR security + asset management); NIS 2 does not impose a dedicated default-disposition SO | n/a — partial coverage; Art. 21(2)(i) asset-management dimension touches configuration-management but does not impose a secure-defaults mandate |
+| GDPR | SG-GDPR-007 | Personal-data processing systems implement appropriate technical and organisational measures ensuring that, by default, only personal data which are necessary for each specific purpose are processed — across amount, extent, period, and accessibility | Controller; Art. 25(2); data-protection by default; scope = personal data; "by default" across 4 dimensions (amount, extent, period, accessibility); PR.PS-01 + ID.AM-08 + GV.PO-01 |
+| CRA | SG-CRA-018 + SG-CRA-019 | Product made available with secure-by-default configuration + reset to original state + automatic security updates default + opt-out + postponement | Manufacturer; Annex I Part I (2)(b) + (2)(c); product-level; "tailor-made" carve-out for business users; reset capability; auto-update default; PR.PS-01 + ID.AM-08 + GV.SC-03 |
+| NIS 2 | SG-NIS2-003 (partial) | Partial coverage via SG-NIS2-003 (access control policies + HR security + asset management); NIS 2 does not impose a dedicated default-disposition SO | n/a — partial coverage; Art. 21(2)(i) asset-management dimension touches configuration-management but does not impose a secure-defaults mandate |
 | DORA | — | Out-of-scope (DORA does not impose a default-disposition mandate; CRA Annex I §2(b) sole authority per taxonomy §4) | n/a |
 | AI_Act | — | Out-of-scope (no default-disposition mandate; CRA sole authority per taxonomy §4) | n/a |
 
@@ -193,7 +193,7 @@ layers overlap on the same party** with documented boundary hand-offs.)
 ## Scope-overlap principle (operational). The high-level SO
 
 #### Scope-overlap principle (operational). The high-level SO
-(`SO-D-03.4.HL`) engages on a given party **if and only if both GDPR
+(`SG-D-03.4.HL`) engages on a given party **if and only if both GDPR
 and CRA are applicable AND the same product processes personal data**
 (e.g. a controller that deploys a CRA-regulated product that
 processes personal data; the four-dimension by-default on the data
@@ -222,7 +222,7 @@ or evidence templates.
 
 #### Aggregation logic (from CRDA-deep verified classifications)
 - 2 of 5 regulations participate (GDPR, CRA; NIS 2 contributes only
-  partial coverage via SO-NIS2-003 Art. 21(2)(i) asset-management
+  partial coverage via SG-NIS2-003 Art. 21(2)(i) asset-management
   dimension but does not impose a dedicated default-disposition
   mandate; DORA and AI Act are out-of-scope per AEGIS taxonomy §4 —
   no DORA / AI Act clause imposes a default-disposition mandate; CRA
@@ -374,7 +374,7 @@ sub-SOs and the per-recipient evidence packs.
 A company with both GDPR and CRA applicable in scope of D-03.4 — and
 operating a CRA-regulated product that processes personal data —
 operates a **two-layer default posture** with explicit layer hand-
-offs. The high-level SO (`SO-D-03.4.HL`) describes the common
+offs. The high-level SO (`SG-D-03.4.HL`) describes the common
 default-disposition duty (baseline minimum-necessary / secure posture
 requiring affirmative intervention to relax); the per-reg perspective
 is preserved in the two sub-SOs (default object, textual anchor,
@@ -415,7 +415,7 @@ high-level SO does not engage.
 ## Participating regulations (§3)
 
 ### Participating regulations
-GDPR, CRA (2 of 5 regs — NIS 2 contributes only partial coverage via SO-NIS2-003 Art. 21(2)(i) asset-management dimension and does not impose a dedicated default-disposition mandate; DORA and AI Act out-of-scope per AEGIS taxonomy §4 — no DORA / AI Act clause imposes a default-disposition mandate; CRA Annex I §2(b) is sole authority per taxonomy §4 for the product-side). CRDA-deep verified the single pair (GDPR ↔ CRA) as **SAME DIFFERENT-PERSPECTIVE** with no corrective notes. The two regulators target **different default-object layers** at distinct boundaries: GDPR data-by-default (Art. 25(2) four AND-coordinated dimensions — amount, extent, period, accessibility) and CRA product secure-by-default (Annex I Part I (2)(b) configuration + reset + tailor-made carve-out + Annex I Part I (2)(c) auto-update default + opt-out + postponement); the high-level SO surfaces the common default-disposition duty (baseline minimum-necessary / secure posture requiring affirmative intervention to relax) while preserving the per-reg default-object layer — the two layers are layered, not collapsed.
+GDPR, CRA (2 of 5 regs — NIS 2 contributes only partial coverage via SG-NIS2-003 Art. 21(2)(i) asset-management dimension and does not impose a dedicated default-disposition mandate; DORA and AI Act out-of-scope per AEGIS taxonomy §4 — no DORA / AI Act clause imposes a default-disposition mandate; CRA Annex I §2(b) is sole authority per taxonomy §4 for the product-side). CRDA-deep verified the single pair (GDPR ↔ CRA) as **SAME DIFFERENT-PERSPECTIVE** with no corrective notes. The two regulators target **different default-object layers** at distinct boundaries: GDPR data-by-default (Art. 25(2) four AND-coordinated dimensions — amount, extent, period, accessibility) and CRA product secure-by-default (Annex I Part I (2)(b) configuration + reset + tailor-made carve-out + Annex I Part I (2)(c) auto-update default + opt-out + postponement); the high-level SO surfaces the common default-disposition duty (baseline minimum-necessary / secure posture requiring affirmative intervention to relax) while preserving the per-reg default-object layer — the two layers are layered, not collapsed.
 ---
 
 ## High-level requirement (multi-reg aggregation)
@@ -427,7 +427,7 @@ GDPR, CRA (2 of 5 regs — NIS 2 contributes only partial coverage via SO-NIS2-0
   volere_subtype: access
   title: "Default disposition of data-centric processing systems and product-centric configurations managed so that the baseline state is the minimum-necessary / secure configuration (two-layer default posture with explicit layer hand-offs)"
   derives_from:
-    hso_sub_so: SO-D-03.4.HL
+    hso_sub_so: SG-D-03.4.HL
     hso_file: ../../HierarchicalSecurityObjectives/D-03_Access-Control/D-03.4.md
     objective_ref_section: "### D-03.4.0"
   description: |
@@ -484,9 +484,9 @@ status: DRAFT
 ##### Participants
 | Regulation | SO ID | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-007 | Personal-data processing systems implement appropriate technical and organisational measures ensuring that, by default, only personal data which are necessary for each specific purpose are processed — across amount, extent, period, accessibility | Controller; Art. 25(2); data-protection by default; scope = personal data; "by default" across 4 dimensions (amount, extent, period, accessibility) |
-| CRA | SO-CRA-018 / SO-CRA-019 / SO-CRA-025 / SO-CRA-026 | Product made available with secure-by-default configuration + reset to original state + automatic security updates default + opt-out + postponement | Manufacturer; Annex I Part I (2)(b) + (2)(c); product-level; "tailor-made" carve-out; reset capability |
-| NIS2 | — | Partial coverage via SO-NIS2-003 (Art. 21(2)(i) — asset-management dimension covers configuration); no dedicated secure-defaults SO | n/a |
+| GDPR | SG-GDPR-007 | Personal-data processing systems implement appropriate technical and organisational measures ensuring that, by default, only personal data which are necessary for each specific purpose are processed — across amount, extent, period, accessibility | Controller; Art. 25(2); data-protection by default; scope = personal data; "by default" across 4 dimensions (amount, extent, period, accessibility) |
+| CRA | SG-CRA-018 / SG-CRA-019 / SG-CRA-025 / SG-CRA-026 | Product made available with secure-by-default configuration + reset to original state + automatic security updates default + opt-out + postponement | Manufacturer; Annex I Part I (2)(b) + (2)(c); product-level; "tailor-made" carve-out; reset capability |
+| NIS2 | — | Partial coverage via SG-NIS2-003 (Art. 21(2)(i) — asset-management dimension covers configuration); no dedicated secure-defaults SO | n/a |
 | DORA | — | Out-of-scope (no secure-defaults mandate; CRA Annex I §2(b) sole authority per taxonomy §4) | n/a |
 | AI_Act | — | Out-of-scope (no secure-defaults mandate; CRA sole authority per taxonomy §4) | n/a |
 ##### Pairwise matrix
@@ -495,7 +495,7 @@ status: DRAFT
 
 <!-- /pair -->
 ##### Emergent tensions (3+ regulations)
-- None. Only two regulators (GDPR + CRA) have substantive secure-defaults mandates; NIS 2 contributes only a partial coverage via SO-NIS2-003 (Art. 21(2)(i) — asset-management dimension); DORA and AI Act are out-of-scope.
+- None. Only two regulators (GDPR + CRA) have substantive secure-defaults mandates; NIS 2 contributes only a partial coverage via SG-NIS2-003 (Art. 21(2)(i) — asset-management dimension); DORA and AI Act are out-of-scope.
 ##### SR cross-validation
 GDPR maps to ID.AM-08 (data managed consistent with risk strategy) + GV.PO-01 (organisational cybersecurity policy); CRA maps to PR.PS-01 (configuration management) + ID.AM-08 + GV.SC-03 (contractual supply-chain). The shared ID.AM-08 anchor is the operational pivot; the divergent anchors (GV.PO-01 vs PR.PS-01) reflect the data-centric vs product-centric perspective split. No contradictory mappings.
 ##### Downstream implication
@@ -503,7 +503,7 @@ For Phase 1C Doc 07, D-03.4 is a **two-layer default** sub-domain: a controller 
 ---
 ### Summary of cross-regulation observations
 #### Cross-cutting observations (informative for Phase 1C Doc 07)
-1. **Sole-authority sub-domains** (per AEGIS taxonomy §4): D-02.3 CVD (CRA sole); D-03.4 — partial (CRA sole for product-side, GDPR for data-side; NIS 2 partial via SO-NIS2-003 asset-management); D-07.x (out of Part A range); D-08.3 Management Board Training (DORA + NIS 2 sole; out of Part A range). Within Part A: D-02.2 has CRA + DORA as substantive authorities; D-02.3 has CRA as sole substantive authority; D-03.4 has GDPR (data-side) + CRA (product-side) as the two substantive authorities.
+1. **Sole-authority sub-domains** (per AEGIS taxonomy §4): D-02.3 CVD (CRA sole); D-03.4 — partial (CRA sole for product-side, GDPR for data-side; NIS 2 partial via SG-NIS2-003 asset-management); D-07.x (out of Part A range); D-08.3 Management Board Training (DORA + NIS 2 sole; out of Part A range). Within Part A: D-02.2 has CRA + DORA as substantive authorities; D-02.3 has CRA as sole substantive authority; D-03.4 has GDPR (data-side) + CRA (product-side) as the two substantive authorities.
 2. **Common CSF pivots**: PR.DS-01 (D-01.1), PR.DS-02 (D-01.2), PR.AA-05 (D-03.3), PR.AA-03 (D-03.2), ID.RA-01 (D-02.1), PR.PS-02 (D-02.2). These six CSF subcategories are the operational substrate for the 12 sub-domains and form the natural Layer 2/3 reconciliation anchors.
 3. **T-vs-text gaps (Layer 2 review candidates)**: NIS 2 Art. 21(2)(i) (T3 imposed RBAC + need-to-know + least privilege not in OJ) and DORA Art. 9(4)(c) (T4 imposed `need-to-know and least privilege` not in OJ literal) and DORA Art. 9(4)(d) (T4 imposed MFA not in OJ literal `strong authentication`) and AI Act AIA-C11 (T5 cited Art. 12(4) which does not exist in OJ). These are material reading-choice divergences that propagate to the pairwise matrix and emergent-tension cells.
 4. **State-of-the-art and "appropriate" polysemy** (cross-cutting Berry-classic): GDPR `appropriate` (Art. 5(1)(f), Art. 25, Art. 32), NIS 2 `appropriate and proportionate` (Art. 21(1)), CRA `state of the art` (Annex I (2)(e)), DORA `high standards` (Art. 9(2)). The four anchors differ in operational depth and P1 risk: CRA's state-of-the-art is the strictest (harmonised-standards floor), DORA's "high standards" is the least specified (pending ESAs RTS), GDPR's "appropriate" is risk-anchored, and NIS 2's "appropriate and proportionate" is multi-factor (state of the art + cost + exposure + size + likelihood/severity).

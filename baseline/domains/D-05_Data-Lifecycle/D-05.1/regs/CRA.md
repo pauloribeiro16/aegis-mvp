@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-034 | Product data (personal or other) limited to adequate/relevant/necessary for intended purpose | Product data; manufacturer design; Annex I Part I (2)(g) + Art. 13(3) sentence 2 + Art. 3(23) `intended purpose`; ID.AM-08 + ID.AM-03 |
+| CRA | SG-CRA-034 | Product data (personal or other) limited to adequate/relevant/necessary for intended purpose | Product data; manufacturer design; Annex I Part I (2)(g) + Art. 13(3) sentence 2 + Art. 3(23) `intended purpose`; ID.AM-08 + ID.AM-03 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-05.1.2 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-05.1.CRA
+id: SG-D-05.1.CRA
 subdomain: D-05.1
 applies_to: [CRA]
-inherits_from: SO-CRA-034
+inherits_from: SG-CRA-034
 source_SR: SR-CRA-046
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -62,8 +62,8 @@ than its intended purpose requires.)*
   title: "Product data limited to what is adequate, relevant, and necessary in relation to the intended purpose of the product, with risk-assessment proportionality calibration"
 
   derives_from:
-    hso_sub_so: SO-D-05.1.CRA
-    per_reg_so: SO-CRA-034
+    hso_sub_so: SG-D-05.1.CRA
+    per_reg_so: SG-CRA-034
     source_sr: SR-CRA-046
     hso_file: ../../HierarchicalSecurityObjectives/D-05_Data-Lifecycle/D-05.1.md
     objective_ref_section: "### D-05.1.2"

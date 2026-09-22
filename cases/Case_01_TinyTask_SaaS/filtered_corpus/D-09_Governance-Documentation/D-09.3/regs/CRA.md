@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-061 (partial) | Annex VII §1 `general description` (intended purpose + software versions affecting compliance) + Annex VII §2 `design, development, production and vulnerability-handling processes` (system architecture description documenting how software components build on or feed into each other). | Documentation-centric, not a formal asset register in the DORA sense; **partial coverage only**; **substantively scope-disjoint from NIS 2** per CRDA `N (typically)` (per CRDA-deep `§D-09.3 line 66`). |
+| CRA | SG-CRA-061 (partial) | Annex VII §1 `general description` (intended purpose + software versions affecting compliance) + Annex VII §2 `design, development, production and vulnerability-handling processes` (system architecture description documenting how software components build on or feed into each other). | Documentation-centric, not a formal asset register in the DORA sense; **partial coverage only**; **substantively scope-disjoint from NIS 2** per CRDA `N (typically)` (per CRDA-deep `§D-09.3 line 66`). |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-09.3.2 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-09.3.CRA
+id: SG-D-09.3.CRA
 subdomain: D-09.3
 applies_to: [CRA]
-inherits_from: SO-CRA-061
+inherits_from: SG-CRA-061
 source_SR: SR-CRA-087 + SR-CRA-088
 activation: if CRA in applicable_regs
 phase_1A_role: 2_of_3
@@ -48,7 +48,7 @@ GV.PO-02, ID.AM-02, GV.OC-03, ID.RA-04, GV.SC-04.
 
   derives_from:
     hso_sub_so: SO-9.3.CRA
-    per_reg_so: SO-CRA-061
+    per_reg_so: SG-CRA-061
     source_sr: SR-CRA-087 + SR-CRA-088
     hso_file: ../../HierarchicalSecurityObjectives/D-09_Governance-Documentation/9.3.md
     objective_ref_section: "### 9.3.2"

@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-011 | ICT third-party risk is managed taking into account the nature, scale, complexity and importance of ICT-related dependencies and the risks arising from contractual arrangements on the use of ICT services (Art. 28(1) four-factor AND); contractual arrangements comply with appropriate information security standards; for critical or important functions (CIF), the most up-to-date and highest quality information security standards are used (Art. 28(5) escalator) | Financial entity ICT third-party; multi-factor proportionality; `critical or important functions` undefined distinction (POLY-S2 across 18 clauses); continuous risk-management; GV.SC-02 + ID.AM-04 |
+| DORA | SG-DORA-011 | ICT third-party risk is managed taking into account the nature, scale, complexity and importance of ICT-related dependencies and the risks arising from contractual arrangements on the use of ICT services (Art. 28(1) four-factor AND); contractual arrangements comply with appropriate information security standards; for critical or important functions (CIF), the most up-to-date and highest quality information security standards are used (Art. 28(5) escalator) | Financial entity ICT third-party; multi-factor proportionality; `critical or important functions` undefined distinction (POLY-S2 across 18 clauses); continuous risk-management; GV.SC-02 + ID.AM-04 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-06.1.4 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-06.1.DORA
+id: SG-D-06.1.DORA
 subdomain: D-06.1
 applies_to: [DORA]
-inherits_from: SO-DORA-011
+inherits_from: SG-DORA-011
 source_SR: SR-DORA-019
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_N
@@ -66,7 +66,7 @@ importance of the ICT-related dependencies.)*
 
   derives_from:
     hso_sub_so: SO-6.1.DORA
-    per_reg_so: SO-DORA-011
+    per_reg_so: SG-DORA-011
     source_sr: SR-DORA-019, SR-DORA-020
     hso_file: ../../HierarchicalSecurityObjectives/D-06_Supply-Chain/6.1.md
     objective_ref_section: "### 6.1.4"

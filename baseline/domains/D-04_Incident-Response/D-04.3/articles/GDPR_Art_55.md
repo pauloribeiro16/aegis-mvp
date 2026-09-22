@@ -26,7 +26,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-016
@@ -36,7 +36,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     - { clause_id: GDPR-C06, article_ref: "Art. 4(12) — personal data breach" }
     - { clause_id: GDPR-CP16, article_ref: "Art. 32(2) — risk enumeration" }
     - { clause_id: GDPR-C09, article_ref: "Art. 4(22) — supervisory authority concerned" }
-  linked_objectives: [SO-GDPR-010]
+  linked_objectives: [SG-GDPR-010]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents reported internally to appropriate stakeholders" }

@@ -26,13 +26,13 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-033 | Cross-border transfers of personal data to third countries or international organisations maintain the GDPR's level of protection and rely on the Art. 46 appropriate-safeguards mechanism (including SCCs, BCRs, codes of conduct, or certification), where no Art. 45 adequacy decision applies. | `GDPR-TR04` (Art. 46(1)); `GDPR-TR05` (Art. 46(2)); `GDPR-TR01` (Art. 44) | D-06.3, D-05.1 |
-| SO-GDPR-033 | Cross-border transfer of personal data takes place only where the conditions laid down in Chapter V are complied with (Art. 44); where no Commission adequacy decision exists (Art. 45), appropriate safeguards (Art. 46) are in place; absent both, derogations under Art. 49 are used only as narrowly-defined conditions, with the catch-all applying only when transfers are not repetitive, concern a limited number of data subjects, are necessary for compelling legitimate interests, and are accompanied by suitable safeguards. | `GDPR-TR01` (Art. 44); `GDPR-TR02` (Art. 45(1)); `GDPR-TR03` (Art. 45(3) — periodic review); `GDPR-TR04` (Art. 46(1)); `GDPR-TR05` (Art. 46(2)); `GDPR-TR08`–`GDPR-TR10` (Art. 49(1)(a)/(d) and catch-all); `GDPR-C07` (Art. 4(16) — main establishment) | D-06.3, D-09.1, D-05.1 |
-| SO-GDPR-033 | D-06.3, D-09.1, D-05.1 | Art. 44, Art. 45, Art. 46, Art. 49, Art. 4(16) | Cross-border transfers maintain GDPR protection level |
+| SG-GDPR-033 | Cross-border transfers of personal data to third countries or international organisations maintain the GDPR's level of protection and rely on the Art. 46 appropriate-safeguards mechanism (including SCCs, BCRs, codes of conduct, or certification), where no Art. 45 adequacy decision applies. | `GDPR-TR04` (Art. 46(1)); `GDPR-TR05` (Art. 46(2)); `GDPR-TR01` (Art. 44) | D-06.3, D-05.1 |
+| SG-GDPR-033 | Cross-border transfer of personal data takes place only where the conditions laid down in Chapter V are complied with (Art. 44); where no Commission adequacy decision exists (Art. 45), appropriate safeguards (Art. 46) are in place; absent both, derogations under Art. 49 are used only as narrowly-defined conditions, with the catch-all applying only when transfers are not repetitive, concern a limited number of data subjects, are necessary for compelling legitimate interests, and are accompanied by suitable safeguards. | `GDPR-TR01` (Art. 44); `GDPR-TR02` (Art. 45(1)); `GDPR-TR03` (Art. 45(3) — periodic review); `GDPR-TR04` (Art. 46(1)); `GDPR-TR05` (Art. 46(2)); `GDPR-TR08`–`GDPR-TR10` (Art. 49(1)(a)/(d) and catch-all); `GDPR-C07` (Art. 4(16) — main establishment) | D-06.3, D-09.1, D-05.1 |
+| SG-GDPR-033 | D-06.3, D-09.1, D-05.1 | Art. 44, Art. 45, Art. 46, Art. 49, Art. 4(16) | Cross-border transfers maintain GDPR protection level |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-056
@@ -40,7 +40,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-TR04, article_ref: "Art. 46(1)" }
     - { clause_id: GDPR-TR05, article_ref: "Art. 46(2)(a)–(f) — six mechanism types" }
-  linked_objectives: [SO-GDPR-033]
+  linked_objectives: [SG-GDPR-033]
   sub_domain: [D-06.3]
   nist_csf_mapping:
     - { id: GV.SC-03, title: "Contracts used to implement SCRM" }
@@ -78,7 +78,7 @@ status: DRAFT
     Appropriate safeguards and effective legal remedies carry VAG-S3 because the OJ text does not fix quantitative thresholds and the substantive adequacy of any safeguard is contingent on the destination regime. Reading chosen: the safeguards must produce essential equivalence with EU protection, per Schrems II (C-311/18 §96), operationalised through any of the six Art. 46(2) mechanisms and supported by supplementary measures where the destination regime is deficient in a specific respect (EDPB Recommendations 01/2020). The selection among the six mechanisms is OR (COORD-S3): the controller chooses one mechanism per transfer, not a combination, and the choice must be documented and reassessed when circumstances change. An alternative reading would allow combining several Art. 46(2) mechanisms to achieve a layered defence; this reading is inconsistent with the textual structure of Art. 46(2), which presents the six mechanisms as alternatives, and is rejected by EDPB Recommendations 01/2020. A second alternative reading confines the supplementary-measures framework to destinations where the public-authority access regime is materially deficient, allowing the controller to skip supplementary measures where the destination regime is broadly adequate; this narrower reading is consistent with Schrems II §134 but requires the controller to make a documented destination-risk assessment. Remain open: (a) whether BCRs approved before the GDPR entry into force remain valid without re-approval under the GDPR consistency mechanism, given the absence of explicit grandfathering in Art. 46(2)(b); (b) whether Art. 46(2)(c) Commission SCCs adopted before Schrems II (the 2001/915/EC and 2004/915/EC decisions) remain valid or require supplementary measures to cure Schrems II deficiencies.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-057
@@ -87,7 +87,7 @@ status: DRAFT
     - { clause_id: GDPR-TR08, article_ref: "Art. 49(1)(a) — explicit consent" }
     - { clause_id: GDPR-TR09, article_ref: "Art. 49(1)(d) — important public interest" }
     - { clause_id: GDPR-TR10, article_ref: "Art. 49(1) second subparagraph — catch-all" }
-  linked_objectives: [SO-GDPR-033]
+  linked_objectives: [SG-GDPR-033]
   sub_domain: [D-06.3, D-09.1]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal/regulatory/contractual requirements understood and managed" }
@@ -129,14 +129,14 @@ status: DRAFT
     Subcategory. The closest mapping GV.OC-03 is a poor fit.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-059
   title: "Third-country legal-request recognition filter via international agreements"
   source_clauses:
     - { clause_id: GDPR-TR07, article_ref: "Art. 48 — third-country legal-request filter" }
-  linked_objectives: [SO-GDPR-035]
+  linked_objectives: [SG-GDPR-035]
   sub_domain: [D-06.3]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal/regulatory/contractual requirements understood and managed" }

@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-032 + SO-GDPR-009 | A process for regularly testing, assessing and evaluating the effectiveness of technical and organisational measures is established, with DPIA review on any change of the risk represented by processing operations (Art. 32(1)(d) + Art. 35(11) GDPR). | Entity-level effectiveness-evaluation of technical and organisational measures + DPIA review on risk change; cadence entity-discretionary under Art. 32(1)(d) `regularly testing`; Art. 35(11) `at least when there is a change of the risk` anchor. |
+| GDPR | SG-GDPR-032 + SG-GDPR-009 | A process for regularly testing, assessing and evaluating the effectiveness of technical and organisational measures is established, with DPIA review on any change of the risk represented by processing operations (Art. 32(1)(d) + Art. 35(11) GDPR). | Entity-level effectiveness-evaluation of technical and organisational measures + DPIA review on risk change; cadence entity-discretionary under Art. 32(1)(d) `regularly testing`; Art. 35(11) `at least when there is a change of the risk` anchor. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-10.3.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-10.3.GDPR
+id: SG-D-10.3.GDPR
 subdomain: D-10.3
 applies_to: [GDPR]
-inherits_from: SO-GDPR-032 + SO-GDPR-009
+inherits_from: SG-GDPR-032 + SG-GDPR-009
 source_SR: SR-GDPR-019 + SR-GDPR-021 + SR-GDPR-022
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_5
@@ -50,8 +50,8 @@ CM.AW-P7, CM.AW-P8, CM.PO-P1, CM.AW-P5, CT.DM-P3.
   title: "Controller and processor establish a process for regularly testing, assessing and evaluating the effectiveness of technical and organisational measures, with DPIA review at least when there is a change of the risk"
 
   derives_from:
-    hso_sub_so: SO-D-10.3.GDPR
-    per_reg_so: SO-GDPR-032 + SO-GDPR-009
+    hso_sub_so: SG-D-10.3.GDPR
+    per_reg_so: SG-GDPR-032 + SG-GDPR-009
     source_sr: SR-GDPR-019 + SR-GDPR-021 + SR-GDPR-022
     hso_file: ../../HierarchicalSecurityObjectives/D-10_Monitoring-Audit/D-10.3.md
     objective_ref_section: "### D-10.3.1"

@@ -40,12 +40,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-DORA-015 | ICT security awareness programmes and digital operational resilience training are developed as compulsory modules in staff training schemes, with a level of complexity commensurate to the remit of staff functions. | `DORA-C27` (Art. 13(6) `compulsory modules` + awareness programmes + digital operational resilience training); `DORA-C28` (Art. 13(6) same locus — `commensurate to the remit` T4 reads as role-specific); `DORA-C26` (Art. 13(6) — T4 mapping mismatch per `../Regulation/DORA/Ambiguity/05_DORA.md` §2.26: T4 maps to `D-02.2 Patch Management & Updates` but OJ Art. 13(6) is about training programmes, not patching. SO preserves OJ-literal locus at D-08.1/D-08.2) | D-08.1, D-08.2 |
-| SO-DORA-015 | D-08.1, D-08.2 | Art. 13(6) | ICT security awareness + digital operational resilience training |
+| SG-DORA-015 | ICT security awareness programmes and digital operational resilience training are developed as compulsory modules in staff training schemes, with a level of complexity commensurate to the remit of staff functions. | `DORA-C27` (Art. 13(6) `compulsory modules` + awareness programmes + digital operational resilience training); `DORA-C28` (Art. 13(6) same locus — `commensurate to the remit` T4 reads as role-specific); `DORA-C26` (Art. 13(6) — T4 mapping mismatch per `../Regulation/DORA/Ambiguity/05_DORA.md` §2.26: T4 maps to `D-02.2 Patch Management & Updates` but OJ Art. 13(6) is about training programmes, not patching. SO preserves OJ-literal locus at D-08.1/D-08.2) | D-08.1, D-08.2 |
+| SG-DORA-015 | D-08.1, D-08.2 | Art. 13(6) | ICT security awareness + digital operational resilience training |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-004
@@ -53,7 +53,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: DORA-C06, article_ref: "Art. 7(2) — `on a continuous basis, identify all sources of ICT risk`" }
     - { clause_id: DORA-C08, article_ref: "Art. 8(2) — `identify all sources of ICT risk … and assess cyber threats and ICT vulnerabilities relevant to their ICT supported business functions`" }
-  linked_objectives: [SO-DORA-003]
+  linked_objectives: [SG-DORA-003]
   sub_domain: [D-02.1, D-10.1]
   nist_csf_mapping:
     - { id: ID.RA-01, title: "Vulnerabilities in assets are identified, validated, and recorded" }
@@ -126,14 +126,14 @@ status: DRAFT
     recognised mechanism but do not yet have OJ-delegated form.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-007
   title: "Documented patch and update governance covering full asset estate"
   source_clauses:
     - { clause_id: DORA-C19, article_ref: "Art. 9(4)(f) — `have appropriate and comprehensive documented policies for patches and updates`" }
-  linked_objectives: [SO-DORA-004]
+  linked_objectives: [SG-DORA-004]
   sub_domain: [D-02.2]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed commensurate with risk" }
@@ -198,14 +198,14 @@ status: DRAFT
     the OJ text itself does not specify.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-013
   title: "Integrated ICT business continuity policy framework"
   source_clauses:
     - { clause_id: DORA-C22, article_ref: "Art. 11(1) — `comprehensive ICT business continuity policy, which may be adopted as a dedicated specific policy, forming an integral part of the overall business continuity policy of the financial entity`" }
-  linked_objectives: [SO-DORA-010]
+  linked_objectives: [SG-DORA-010]
   sub_domain: [D-04.2, D-04.4]
   nist_csf_mapping:
     - { id: RC.RP-01, title: "The recovery portion of the incident response plan is executed once the incident response plan has been performed to acceptable criteria" }
@@ -271,14 +271,14 @@ status: DRAFT
     restricted to in-entity ICT.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-015
   title: "Risk-calibrated backup with verified restoration capability"
   source_clauses:
     - { clause_id: DORA-C25, article_ref: "Art. 12(1) — `develop and document: (a) backup policies and procedures specifying the scope of the data that is subject to the backup and the minimum frequency of the backup, based on the criticality of information or the confidentiality level of the data; (b) restoration and recovery procedures and methods`" }
-  linked_objectives: [SO-DORA-010]
+  linked_objectives: [SG-DORA-010]
   sub_domain: [D-04.4]
   nist_csf_mapping:
     - { id: PR.DS-11, title: "Backups of data are created, protected, maintained, and tested" }
@@ -355,14 +355,14 @@ status: DRAFT
     redundancy.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-023
   title: "ICT change management under six-step risk-based process"
   source_clauses:
     - { clause_id: DORA-C18, article_ref: "Art. 9(4)(e) — `implement documented policies, procedures and controls for ICT change management, including changes to software, hardware, firmware components, systems or security parameters … that are based on a risk assessment approach … in order to ensure that all changes to ICT systems are recorded, tested, assessed, approved, implemented and verified in a controlled manner`" }
-  linked_objectives: [SO-DORA-013]
+  linked_objectives: [SG-DORA-013]
   sub_domain: [D-07.4]
   nist_csf_mapping:
     - { id: PR.PS-01, title: "Configuration management practices are established, documented, and applied to assets" }
@@ -425,7 +425,7 @@ status: DRAFT
     practice.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-025
@@ -434,7 +434,7 @@ status: DRAFT
     - { clause_id: DORA-C27, article_ref: "Art. 13(6) — `ICT security awareness programmes and digital operational resilience training as compulsory modules in their staff training schemes`" }
     - { clause_id: DORA-C28, article_ref: "Art. 13(6) same locus — `level of complexity commensurate to the remit of their functions`" }
     - { clause_id: DORA-C26, article_ref: "Art. 13(6) same locus — T4 mapping mismatch per `../Regulation/DORA/Ambiguity/05_DORA.md` §2.26" }
-  linked_objectives: [SO-DORA-015]
+  linked_objectives: [SG-DORA-015]
   sub_domain: [D-08.1, D-08.2]
   nist_csf_mapping:
     - { id: PR.AT-01, title: "All users are informed and trained on cybersecurity topics (e.g., recognition of phishing, social engineering, and other relevant risks)" }
@@ -499,14 +499,14 @@ status: DRAFT
     matter awaiting industry convergence.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-029
   title: "Inventory and classification of ICT-supported business assets"
   source_clauses:
     - { clause_id: DORA-C05, article_ref: "Art. 7(1) — `identify, classify and adequately document all ICT supported business functions, roles and responsibilities, the information assets and ICT assets supporting those functions, and their roles and dependencies in relation to ICT risk`" }
-  linked_objectives: [SO-DORA-017]
+  linked_objectives: [SG-DORA-017]
   sub_domain: [D-09.3]
   nist_csf_mapping:
     - { id: ID.AM-01, title: "Inventories of hardware managed by the organization are maintained" }

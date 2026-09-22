@@ -18,10 +18,10 @@
 #### D-09.4.4 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-09.4.DORA
+id: SG-D-09.4.DORA
 subdomain: D-09.4
 applies_to: [DORA]
-inherits_from: (out-of-scope as RoPA-equivalent — partial via DORA Art. 9(4)(a) SO-DORA-018 cross)
+inherits_from: (out-of-scope as RoPA-equivalent — partial via DORA Art. 9(4)(a) SG-DORA-018 cross)
 source_SR: SR-DORA-031
 activation: if DORA in applicable_regs
 phase_1A_role: 4_of_5
@@ -48,7 +48,7 @@ GV.PO-01, ID.AM-08 (primary), GV.OC-03.
 
   derives_from:
     hso_sub_so: SO-9.4.DORA
-    per_reg_so: SO-DORA-018 (cross to 9.1 DORA sub-SO)
+    per_reg_so: SG-DORA-018 (cross to 9.1 DORA sub-SO)
     source_sr: SR-DORA-031
     hso_file: ../../HierarchicalSecurityObjectives/D-09_Governance-Documentation/9.4.md
     objective_ref_section: "### 9.4.4"

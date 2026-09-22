@@ -26,12 +26,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-CRA-040 | A distributor acts with due care in relation to the requirements of this Regulation when making a product with digital elements available on the market, and — before making the product available — verifies the CE marking and that the manufacturer / importer have complied with their respective obligations; the distributor takes corrective measures on non-conformity and informs the manufacturer and the market surveillance authority where the product presents a significant risk or vulnerability. | `CRA-CL92` (Art. 20(1) — distributor due care); `CRA-CL93` (Art. 20(2) — distributor pre-market checks); `CRA-CL94` (Art. 20(3) — distributor non-conformity); `CRA-CL95` (Art. 20(4) — distributor corrective measures) | D-06.3, D-09.4 |
-| SO-CRA-040 | D-06.3, D-09.4 | Art. 20(1)/(2)/(3)/(4) | Distributor due care, pre-market checks, non-conformity, corrective measures |
+| SG-CRA-040 | A distributor acts with due care in relation to the requirements of this Regulation when making a product with digital elements available on the market, and — before making the product available — verifies the CE marking and that the manufacturer / importer have complied with their respective obligations; the distributor takes corrective measures on non-conformity and informs the manufacturer and the market surveillance authority where the product presents a significant risk or vulnerability. | `CRA-CL92` (Art. 20(1) — distributor due care); `CRA-CL93` (Art. 20(2) — distributor pre-market checks); `CRA-CL94` (Art. 20(3) — distributor non-conformity); `CRA-CL95` (Art. 20(4) — distributor corrective measures) | D-06.3, D-09.4 |
+| SG-CRA-040 | D-06.3, D-09.4 | Art. 20(1)/(2)/(3)/(4) | Distributor due care, pre-market checks, non-conformity, corrective measures |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-057
@@ -39,7 +39,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL92, article_ref: "Art. 20(1) — distributor due care" }
     - { clause_id: CRA-CL93, article_ref: "Art. 20(2) — distributor pre-market checks" }
-  linked_objectives: [SO-CRA-040]
+  linked_objectives: [SG-CRA-040]
   sub_domain: [D-06.3]
   nist_csf_mapping:
     - { id: GV.SC-04, title: "Suppliers and other third parties are routinely assessed using audits, test results, or other forms of evaluation to confirm they are meeting their contractual obligations" }
@@ -53,7 +53,7 @@ status: DRAFT
     `Due care` is VAG+POLY-S3 — case-law-laden; cf. CRA-C24 in v0.1 §3.2 and SR-CRA-050 due diligence. Reading chosen: R3 (procedural + substantive). The Berry-VAG signature of `due care` parallels `due diligence` (SR-CRA-050) but with a proportionality knob: distributor due care is procedurally lighter than Article 13(5) due diligence. The substantive content is supplied by Annex VII §2 and the Annex II information that the distributor verifies under Article 20(2). Remain open: (a) the operational threshold between distributor `due care` and distributor `non-conformity duty` under Article 20(3) — i.e. whether the verification under Article 20(2) is sufficient or whether the distributor must independently investigate suspicious indicators before Article 20(3) fires; (b) the demarcation between distributor and online marketplace provider under the CRA's liability framework — pending implementing-acts guidance on e-commerce platform obligations.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-058
@@ -61,7 +61,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL94, article_ref: "Art. 20(3) — distributor non-conformity" }
     - { clause_id: CRA-CL95, article_ref: "Art. 20(4) — distributor corrective measures + inform manufacturer" }
-  linked_objectives: [SO-CRA-040]
+  linked_objectives: [SG-CRA-040]
   sub_domain: [D-06.3, D-04.2]
   nist_csf_mapping:
     - { id: RS.MI-01, title: "Incidents are contained" }

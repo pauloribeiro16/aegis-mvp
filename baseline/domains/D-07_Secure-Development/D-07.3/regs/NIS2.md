@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| NIS2 | SO-NIS2-017 (partial via maintenance dimension — SO-NIS2-017 routes via Art. 21(2)(e) third clause) | Security in maintenance of network and information systems, including vulnerability handling and disclosure (Art. 21(2)(e) third clause) — partial coverage of CI/CD via the maintenance dimension. T3-vs-text gap per `04_NIS2.md` line 29: OJ Art. 21(2)(e) does not mention `pipeline`, `CI`, or `CD`. | **Entity-level partial coverage** via the maintenance dimension; AEGIS taxonomy §4.1 marks NIS 2 as sole authority. The partial coverage is realised through the maintenance phase of the 3-phase coordinated lifecycle (acquisition/development/maintenance — `SR-NIS2-028` on the basis of Art. 21(2)(e) third clause); the CI/CD build-time control surface (signed artefacts, build-agent integrity, ephemeral build environments) is **industry best-practice, not regulatory mandate**. |
+| NIS2 | SG-NIS2-017 (partial via maintenance dimension — SG-NIS2-017 routes via Art. 21(2)(e) third clause) | Security in maintenance of network and information systems, including vulnerability handling and disclosure (Art. 21(2)(e) third clause) — partial coverage of CI/CD via the maintenance dimension. T3-vs-text gap per `04_NIS2.md` line 29: OJ Art. 21(2)(e) does not mention `pipeline`, `CI`, or `CD`. | **Entity-level partial coverage** via the maintenance dimension; AEGIS taxonomy §4.1 marks NIS 2 as sole authority. The partial coverage is realised through the maintenance phase of the 3-phase coordinated lifecycle (acquisition/development/maintenance — `SR-NIS2-028` on the basis of Art. 21(2)(e) third clause); the CI/CD build-time control surface (signed artefacts, build-agent integrity, ephemeral build environments) is **industry best-practice, not regulatory mandate**. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-07.3.1 — Sub-SO for NIS 2
 
 ```yaml
-id: SO-D-07.3.NIS2
+id: SG-D-07.3.NIS2
 subdomain: D-07.3
 applies_to: [NIS2]
-inherits_from: SO-NIS2-017 (partial via the maintenance dimension — `SO-NIS2-017` routes to D-07.3 via Art. 21(2)(e) third clause)
+inherits_from: SG-NIS2-017 (partial via the maintenance dimension — `SG-NIS2-017` routes to D-07.3 via Art. 21(2)(e) third clause)
 source_SR: SR-NIS2-028
 activation: if NIS2 in applicable_regs
 phase_1A_role: 1_of_N
@@ -55,8 +55,8 @@ PR.PS-02, ID.RA-01.
   title: "Entity-side deployment and maintenance pipeline evidence for network and information systems"
 
   derives_from:
-    hso_sub_so: SO-D-07.3.NIS2
-    per_reg_so: SO-NIS2-017
+    hso_sub_so: SG-D-07.3.NIS2
+    per_reg_so: SG-NIS2-017
     source_sr: SR-NIS2-028
     hso_file: ../../HierarchicalSecurityObjectives/D-07_Secure-Development/D-07.3.md
     objective_ref_section: "### D-07.3.1"
@@ -109,6 +109,6 @@ verified_relationship: COMPLEMENTARY (SAME) with substantial scope-disjoint qual
 
 ### from regs/NIS2.md body
 
-- The vulnerability-handling-and-disclosure leg (Art. 21(2)(e) fourth clause) is one of three coordinated legs — its operational implementation is the entity's coordinated vulnerability-handling capability (cross to D-02.3 — CRA is sole authority for the CVD-architecture, NIS 2 partial coverage per SO-NIS2-002).
+- The vulnerability-handling-and-disclosure leg (Art. 21(2)(e) fourth clause) is one of three coordinated legs — its operational implementation is the entity's coordinated vulnerability-handling capability (cross to D-02.3 — CRA is sole authority for the CVD-architecture, NIS 2 partial coverage per SG-NIS2-002).
 
 <!-- aegis:purity: own_reg=NIS2; demoted=2; core_cross_mentions=0 -->

@@ -28,7 +28,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-017
@@ -36,7 +36,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
   source_clauses:
     - { clause_id: AIA-C20, article_ref: "Art. 17(1) — `Providers of high-risk AI systems shall put a quality management system in place that ensures compliance with this Regulation. That system shall be documented in a systematic and orderly manner in the form of written policies, procedures and instructions, and shall include at least the following aspects: (a) … (m)`" }
     - { clause_id: AIA-C22, article_ref: "Art. 17(1)(g) — `the risk management system referred to in Article 9`" }
-  linked_objectives: [SO-AIACT-010]
+  linked_objectives: [SG-AIACT-010]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -115,14 +115,14 @@ _No standalone SO row cites this article directly (covered via the rules below).
     system.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-018
   title: "Secure design control and verification integrated into SDLC"
   source_clauses:
     - { clause_id: AIA-C21, article_ref: "Art. 17(1)(c) — `techniques, procedures and systematic actions to be used for the design, design control and design verification of the high-risk AI system`" }
-  linked_objectives: [SO-AIACT-010]
+  linked_objectives: [SG-AIACT-010]
   sub_domain: [D-07.1]
   nist_csf_mapping:
     - { id: PR.PS-06, title: "Secure software development practices are integrated, and their performance is monitored throughout the SDLC" }

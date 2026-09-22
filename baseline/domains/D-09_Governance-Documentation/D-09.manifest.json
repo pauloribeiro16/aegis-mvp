@@ -501,7 +501,7 @@
   "sub_objectives_by_regulation": {
     "AI_Act": [
       {
-        "id": "SO-D-09.1.AI_Act",
+        "id": "SG-D-09.1.AI_Act",
         "csf_anchors": [
           "GV.PO-01",
           "GV.OC-03",
@@ -520,7 +520,7 @@
         ]
       },
       {
-        "id": "SO-D-09.2.AI_Act",
+        "id": "SG-D-09.2.AI_Act",
         "csf_anchors": [
           "GV.RM-01",
           "GV.RM-06",
@@ -539,7 +539,7 @@
         ]
       },
       {
-        "id": "SO-D-09.4.AI_Act",
+        "id": "SG-D-09.4.AI_Act",
         "csf_anchors": [
           "PR.PS-04",
           "GV.PO-02",
@@ -566,7 +566,7 @@
     ],
     "CRA": [
       {
-        "id": "SO-D-09.1.CRA",
+        "id": "SG-D-09.1.CRA",
         "csf_anchors": [
           "GV.PO-01",
           "GV.SC-01",
@@ -575,7 +575,7 @@
         ]
       },
       {
-        "id": "SO-D-09.2.CRA",
+        "id": "SG-D-09.2.CRA",
         "csf_anchors": [
           "PR.PS-06",
           "GV.PO-02",
@@ -584,7 +584,7 @@
         ]
       },
       {
-        "id": "SO-D-09.3.CRA",
+        "id": "SG-D-09.3.CRA",
         "csf_anchors": [
           "GV.PO-02",
           "ID.AM-02",
@@ -594,7 +594,7 @@
         ]
       },
       {
-        "id": "SO-D-09.4.CRA",
+        "id": "SG-D-09.4.CRA",
         "csf_anchors": [
           "GV.PO-02",
           "GV.OC-03",
@@ -606,7 +606,7 @@
     ],
     "DORA": [
       {
-        "id": "SO-D-09.1.DORA",
+        "id": "SG-D-09.1.DORA",
         "csf_anchors": [
           "GV.RR-01",
           "GV.RR-02",
@@ -617,7 +617,7 @@
         ]
       },
       {
-        "id": "SO-D-09.2.DORA",
+        "id": "SG-D-09.2.DORA",
         "csf_anchors": [
           "GV.RR-02",
           "GV.RM-02",
@@ -629,7 +629,7 @@
         ]
       },
       {
-        "id": "SO-D-09.3.DORA",
+        "id": "SG-D-09.3.DORA",
         "csf_anchors": [
           "ID.AM-01",
           "ID.AM-02",
@@ -638,7 +638,7 @@
         ]
       },
       {
-        "id": "SO-D-09.4.DORA",
+        "id": "SG-D-09.4.DORA",
         "csf_anchors": [
           "GV.PO-01",
           "ID.AM-08",
@@ -648,7 +648,7 @@
     ],
     "GDPR": [
       {
-        "id": "SO-D-09.1.GDPR",
+        "id": "SG-D-09.1.GDPR",
         "csf_anchors": [
           "GV.PO-01",
           "GV.PO-02",
@@ -663,7 +663,7 @@
         ]
       },
       {
-        "id": "SO-D-09.2.GDPR",
+        "id": "SG-D-09.2.GDPR",
         "csf_anchors": [
           "ID.RA-01",
           "ID.RA-05",
@@ -679,7 +679,7 @@
         ]
       },
       {
-        "id": "SO-D-09.4.GDPR",
+        "id": "SG-D-09.4.GDPR",
         "csf_anchors": [
           "ID.AM-03",
           "GV.PO-02",
@@ -702,7 +702,7 @@
     ],
     "NIS2": [
       {
-        "id": "SO-D-09.1.NIS2",
+        "id": "SG-D-09.1.NIS2",
         "csf_anchors": [
           "ID.RA-05",
           "GV.PO-01",
@@ -712,7 +712,7 @@
         ]
       },
       {
-        "id": "SO-D-09.2.NIS2",
+        "id": "SG-D-09.2.NIS2",
         "csf_anchors": [
           "ID.RA-05",
           "GV.PO-01",
@@ -722,14 +722,14 @@
         ]
       },
       {
-        "id": "SO-D-09.3.NIS2",
+        "id": "SG-D-09.3.NIS2",
         "csf_anchors": [
           "ID.AM-01",
           "ID.AM-02"
         ]
       },
       {
-        "id": "SO-D-09.4.NIS2",
+        "id": "SG-D-09.4.NIS2",
         "csf_anchors": [
           "GV.SC-04",
           "GV.OC-03"

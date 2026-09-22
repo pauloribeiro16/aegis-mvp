@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-006 | Persons authorised to process personal data act only on documented instructions from the controller (or processor) and are bound by confidentiality | Controller/processor; Art. 29 + Art. 32(4) + Art. 28(3)(a)/(b); personal-data-scope chain of authority controller → processor → authorised persons; PR.AA-05 + PR.AA-06 + PR.AT-02 |
+| GDPR | SG-GDPR-006 | Persons authorised to process personal data act only on documented instructions from the controller (or processor) and are bound by confidentiality | Controller/processor; Art. 29 + Art. 32(4) + Art. 28(3)(a)/(b); personal-data-scope chain of authority controller → processor → authorised persons; PR.AA-05 + PR.AA-06 + PR.AT-02 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-03.3.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-03.3.GDPR
+id: SG-D-03.3.GDPR
 subdomain: D-03.3
 applies_to: [GDPR]
-inherits_from: SO-GDPR-006
+inherits_from: SG-GDPR-006
 source_SR: SR-GDPR-011, SR-GDPR-012
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N
@@ -74,8 +74,8 @@ lever with the technical-enforcement lever.)*
   title: "Authorisation in personal-data scope operates through documented instructions and confidentiality undertakings (chain of authority controller → processor → authorised persons)"
 
   derives_from:
-    hso_sub_so: SO-D-03.3.GDPR
-    per_reg_so: SO-GDPR-006
+    hso_sub_so: SG-D-03.3.GDPR
+    per_reg_so: SG-GDPR-006
     source_sr: SR-GDPR-011, SR-GDPR-012
     hso_file: ../../HierarchicalSecurityObjectives/D-03_Access-Control/D-03.3.md
     objective_ref_section: "### D-03.3.1"

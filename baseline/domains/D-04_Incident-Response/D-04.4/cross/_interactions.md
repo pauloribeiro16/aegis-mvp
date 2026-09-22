@@ -112,10 +112,10 @@ This file is part of the CRDA-deep pilot chain:
 #### Participants (from CRDA-deep §D-04.4)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-014 | Timely restoration of availability and access to personal data after physical or technical incident (with continuing confidentiality, integrity and resilience of processing systems) | Personal-data availability; controller/processor; Art. 32(1)(b)+(c) + Art. 5(1)(f) (cross) + Art. 32(2) risk-enumeration (cross); PR.IR-04 + PR.DS-11 + RC.RP-04 |
-| NIS 2 | SO-NIS2-013 | Business-continuity triad (BC + backup + DR + crisis management) ensuring the ability to restore availability and integrity of network and information systems and manage crises arising from significant incidents | Entity ICT systems; all-hazards approach (Art. 21(2) chapeau + Recital 56); Art. 21(2)(c); RC.RP-04 + PR.DS-11 |
-| CRA | SO-CRA-021 (cross-ref) | Preservation of availability of essential and basic functions of a product with digital elements *also after an incident*, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks, and reduced incident impact via exploitation-mitigation mechanisms | Product with digital elements; manufacturer perspective; Annex I Part I (2)(h) + (2)(k) + (2)(i) + Art. 13(21); PR.IR-03 + ID.AM-08 |
-| DORA | SO-DORA-010 | Comprehensive ICT BC policy with dedicated arrangements/plans/procedures/mechanisms including ICT response and recovery plans (independent internal audit for non-microenterprises), backup policies with criticality/confidentiality-graded scope and minimum frequency, and restoration and recovery procedures and methods | Financial entity; BC framework + backup architecture + audit-verified arrangements; Art. 11(1)–(3) + Art. 12(1); RC.RP-01 + PR.IR-03 + RC.RP-04 + PR.IR-04 + PR.DS-11 + RC.RP-03 |
+| GDPR | SG-GDPR-014 | Timely restoration of availability and access to personal data after physical or technical incident (with continuing confidentiality, integrity and resilience of processing systems) | Personal-data availability; controller/processor; Art. 32(1)(b)+(c) + Art. 5(1)(f) (cross) + Art. 32(2) risk-enumeration (cross); PR.IR-04 + PR.DS-11 + RC.RP-04 |
+| NIS 2 | SG-NIS2-013 | Business-continuity triad (BC + backup + DR + crisis management) ensuring the ability to restore availability and integrity of network and information systems and manage crises arising from significant incidents | Entity ICT systems; all-hazards approach (Art. 21(2) chapeau + Recital 56); Art. 21(2)(c); RC.RP-04 + PR.DS-11 |
+| CRA | SG-CRA-021 (cross-ref) | Preservation of availability of essential and basic functions of a product with digital elements *also after an incident*, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks, and reduced incident impact via exploitation-mitigation mechanisms | Product with digital elements; manufacturer perspective; Annex I Part I (2)(h) + (2)(k) + (2)(i) + Art. 13(21); PR.IR-03 + ID.AM-08 |
+| DORA | SG-DORA-010 | Comprehensive ICT BC policy with dedicated arrangements/plans/procedures/mechanisms including ICT response and recovery plans (independent internal audit for non-microenterprises), backup policies with criticality/confidentiality-graded scope and minimum frequency, and restoration and recovery procedures and methods | Financial entity; BC framework + backup architecture + audit-verified arrangements; Art. 11(1)–(3) + Art. 12(1); RC.RP-01 + PR.IR-03 + RC.RP-04 + PR.IR-04 + PR.DS-11 + RC.RP-03 |
 
 ## Validated relationships (from CRDA-deep §D-04.4)
 
@@ -199,7 +199,7 @@ layer the recovery event falls into.
 ## Scope-overlap principle (operational). The high-level SO
 
 #### Scope-overlap principle (operational). The high-level SO
-(`SO-D-04.4.HL`) engages on a given party **if and only if ≥2 applicable
+(`SG-D-04.4.HL`) engages on a given party **if and only if ≥2 applicable
 regulations' recovery-layer scope-determiners overlap on the same
 party** (e.g. a controller that is also a NIS 2 essential entity
 manufacturing CRA-regulated products and running a DORA-class financial
@@ -429,7 +429,7 @@ sub-SOs and the per-recipient evidence packs.
 A company with ≥2 applicable regulations in scope of D-04.4 — with
 overlapping recovery-layer scope-determiners on the same party —
 operates a **multi-layer recovery architecture** with explicit layer
-hand-offs. The high-level SO (`SO-D-04.4.HL`) describes the common
+hand-offs. The high-level SO (`SG-D-04.4.HL`) describes the common
 restoration duty (restore availability, integrity and resilience of
 systems, products, services, components and data; document the
 recovery architecture; test the recovery capability; deliver the
@@ -559,10 +559,10 @@ status: DRAFT
 ##### Participants
 | Regulation | SO ID | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-014 | Timely availability restoration after physical/technical incident (Art. 32(1)(b)/(c)) | Personal-data availability; controller/processor |
-| NIS2 | SO-NIS2-013 | Business continuity, backup management, disaster recovery, and crisis management (Art. 21(2)(c)) | Entity ICT; BC triad |
-| CRA | SO-CRA-021 (cross-ref) | Product availability preserved after incident via resilience and DoS-resistance (Annex I Part I (2)(h)) | Product with digital elements; resilience design |
-| DORA | SO-DORA-010 | Comprehensive ICT BC policy with response/recovery plans, backup policies, restoration procedures (Art. 11(1)–(3) + Art. 12(1)) | Financial entity; BC framework + backup architecture |
+| GDPR | SG-GDPR-014 | Timely availability restoration after physical/technical incident (Art. 32(1)(b)/(c)) | Personal-data availability; controller/processor |
+| NIS2 | SG-NIS2-013 | Business continuity, backup management, disaster recovery, and crisis management (Art. 21(2)(c)) | Entity ICT; BC triad |
+| CRA | SG-CRA-021 (cross-ref) | Product availability preserved after incident via resilience and DoS-resistance (Annex I Part I (2)(h)) | Product with digital elements; resilience design |
+| DORA | SG-DORA-010 | Comprehensive ICT BC policy with response/recovery plans, backup policies, restoration procedures (Art. 11(1)–(3) + Art. 12(1)) | Financial entity; BC framework + backup architecture |
 | AI_Act | — | Out-of-scope (sole authorities: NIS2/DORA/CRA) | n/a |
 **Sole-authority note:** AI Act is out-of-scope for D-04.4 per AEGIS taxonomy §4.1 — AI Act Art. 15(3) backup/fail-safe plans are technical-redundancy solutions covered under D-01.4/D-02.1, not entity-level recovery. NIS2/DORA/CRA are the dedicated authorities.
 ##### Pairwise matrix

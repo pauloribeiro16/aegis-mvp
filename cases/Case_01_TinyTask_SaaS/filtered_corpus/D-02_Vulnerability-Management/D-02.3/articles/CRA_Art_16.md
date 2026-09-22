@@ -28,18 +28,18 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-CRA-012 | The manufacturer puts in place, documents and enforces a policy on coordinated vulnerability disclosure for its products with digital elements, and — once a security update has been made available — shares and publicly discloses information about fixed vulnerabilities, including description, affected-product identification, impacts, severity, and remediation guidance, subject to a duly-justified delay exception where security risks of publication outweigh security benefits. | `CRA-CL147` (Annex I Part II (5) — CVD policy); `CRA-CL146` (Annex I Part II (4) — public disclosure of fixed vulnerabilities); `CRA-CL75` (Art. 16(2) — CSIRT dissemination with delay grounds); `CRA-CL31` (Art. 13(8) sentence 5 — documentation of support period factors); `CRA-CL32` (Art. 13(8) sentence 6 — CVD policy) | D-02.3, D-09.1 |
-| SO-CRA-012 | D-02.3, D-09.1 | Annex I Part II (4)/(5) + Art. 13(8) sentence 6 + Art. 16(2) | CVD policy + public disclosure with duly-justified delay exception |
-| SO-CRA-023 | An actively exploited vulnerability contained in a product with digital elements that the manufacturer becomes aware of is notified simultaneously to the CSIRT designated as coordinator of the Member State of the manufacturer's main establishment and to ENISA, via the single reporting platform established under Art. 16. | `CRA-CL51` (Art. 14(1) sentence 1 — AEV notification to CSIRT + ENISA); `CRA-CL52` (Art. 14(1) sentence 2 — single reporting platform); `CRA-CL64` (Art. 14(7) — main-establishment routing) | D-04.3, D-09.4 |
-| SO-CRA-025 | A severe incident having an impact on the security of a product with digital elements that the manufacturer becomes aware of is notified simultaneously to the CSIRT designated as coordinator of the Member State of the manufacturer's main establishment and to ENISA, via the single reporting platform established under Art. 16. | `CRA-CL56` (Art. 14(3) sentence 1 — SI notification to CSIRT + ENISA); `CRA-CL57` (Art. 14(3) sentence 2 — single reporting platform); `CRA-CL64` (Art. 14(7) — main-establishment routing) | D-04.3 |
-| SO-CRA-032 | Notifications received by a CSIRT designated as coordinator are disseminated via the single reporting platform to the CSIRTs designated as coordinators of the Member States in which the manufacturer has indicated the product has been made available; in exceptional circumstances, on cybersecurity-related grounds, dissemination may be delayed strictly as necessary (including where a vulnerability is subject to a coordinated vulnerability disclosure procedure). | `CRA-CL75` (Art. 16(2) — CSIRT dissemination + delay grounds); `CRA-CL74` (Art. 16(1) — ENISA single reporting platform); `CRA-CL76` (Art. 16(3) — market-surveillance sharing) | D-04.3 |
-| SO-CRA-032 | D-04.3 | Art. 16(2)/(3) | CSIRT dissemination via single platform + delay grounds |
-| SO-CRA-073 | ENISA establishes and maintains the single reporting platform via which the notifications of Arts. 14 and 15 are submitted, and takes appropriate and proportionate measures to secure the platform; the platform supports electronic notification end-points of CSIRTs designated as coordinators and ENISA, and is accessible simultaneously to ENISA when notification is submitted via a CSIRT end-point. | `CRA-CL74` (Art. 16(1) — ENISA single reporting platform); `CRA-CL77` (Art. 16(4) — platform security); `CRA-CL82` (Art. 17(5) — EU vulnerability database integration with NIS 2 Art. 12(2)); `CRA-CL78` (Art. 17(1) — EU-CyCLONe submission); `CRA-CL80` (Art. 17(3) — ENISA biennial report on cybersecurity risks) | D-09.4 |
-| SO-CRA-073 | D-09.4 | Art. 16(1)/(4) + Art. 17(1)/(3)/(5) | ENISA single reporting platform security + EU-CyCLONe submission + biennial report |
+| SG-CRA-012 | The manufacturer puts in place, documents and enforces a policy on coordinated vulnerability disclosure for its products with digital elements, and — once a security update has been made available — shares and publicly discloses information about fixed vulnerabilities, including description, affected-product identification, impacts, severity, and remediation guidance, subject to a duly-justified delay exception where security risks of publication outweigh security benefits. | `CRA-CL147` (Annex I Part II (5) — CVD policy); `CRA-CL146` (Annex I Part II (4) — public disclosure of fixed vulnerabilities); `CRA-CL75` (Art. 16(2) — CSIRT dissemination with delay grounds); `CRA-CL31` (Art. 13(8) sentence 5 — documentation of support period factors); `CRA-CL32` (Art. 13(8) sentence 6 — CVD policy) | D-02.3, D-09.1 |
+| SG-CRA-012 | D-02.3, D-09.1 | Annex I Part II (4)/(5) + Art. 13(8) sentence 6 + Art. 16(2) | CVD policy + public disclosure with duly-justified delay exception |
+| SG-CRA-023 | An actively exploited vulnerability contained in a product with digital elements that the manufacturer becomes aware of is notified simultaneously to the CSIRT designated as coordinator of the Member State of the manufacturer's main establishment and to ENISA, via the single reporting platform established under Art. 16. | `CRA-CL51` (Art. 14(1) sentence 1 — AEV notification to CSIRT + ENISA); `CRA-CL52` (Art. 14(1) sentence 2 — single reporting platform); `CRA-CL64` (Art. 14(7) — main-establishment routing) | D-04.3, D-09.4 |
+| SG-CRA-025 | A severe incident having an impact on the security of a product with digital elements that the manufacturer becomes aware of is notified simultaneously to the CSIRT designated as coordinator of the Member State of the manufacturer's main establishment and to ENISA, via the single reporting platform established under Art. 16. | `CRA-CL56` (Art. 14(3) sentence 1 — SI notification to CSIRT + ENISA); `CRA-CL57` (Art. 14(3) sentence 2 — single reporting platform); `CRA-CL64` (Art. 14(7) — main-establishment routing) | D-04.3 |
+| SG-CRA-032 | Notifications received by a CSIRT designated as coordinator are disseminated via the single reporting platform to the CSIRTs designated as coordinators of the Member States in which the manufacturer has indicated the product has been made available; in exceptional circumstances, on cybersecurity-related grounds, dissemination may be delayed strictly as necessary (including where a vulnerability is subject to a coordinated vulnerability disclosure procedure). | `CRA-CL75` (Art. 16(2) — CSIRT dissemination + delay grounds); `CRA-CL74` (Art. 16(1) — ENISA single reporting platform); `CRA-CL76` (Art. 16(3) — market-surveillance sharing) | D-04.3 |
+| SG-CRA-032 | D-04.3 | Art. 16(2)/(3) | CSIRT dissemination via single platform + delay grounds |
+| SG-CRA-073 | ENISA establishes and maintains the single reporting platform via which the notifications of Arts. 14 and 15 are submitted, and takes appropriate and proportionate measures to secure the platform; the platform supports electronic notification end-points of CSIRTs designated as coordinators and ENISA, and is accessible simultaneously to ENISA when notification is submitted via a CSIRT end-point. | `CRA-CL74` (Art. 16(1) — ENISA single reporting platform); `CRA-CL77` (Art. 16(4) — platform security); `CRA-CL82` (Art. 17(5) — EU vulnerability database integration with NIS 2 Art. 12(2)); `CRA-CL78` (Art. 17(1) — EU-CyCLONe submission); `CRA-CL80` (Art. 17(3) — ENISA biennial report on cybersecurity risks) | D-09.4 |
+| SG-CRA-073 | D-09.4 | Art. 16(1)/(4) + Art. 17(1)/(3)/(5) | ENISA single reporting platform security + EU-CyCLONe submission + biennial report |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-020
@@ -48,7 +48,7 @@ status: DRAFT
     - { clause_id: CRA-CL146, article_ref: "Annex I Part II (4) — public vulnerability disclosure with delay exception" }
     - { clause_id: CRA-CL75, article_ref: "Art. 16(2) — CSIRT dissemination with delay grounds" }
     - { clause_id: CRA-CL67, article_ref: "Art. 14(9) — delegated acts on delay grounds" }
-  linked_objectives: [SO-CRA-012]
+  linked_objectives: [SG-CRA-012]
   sub_domain: [D-02.3]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information is shared with designated internal and external stakeholders consistent with the established information-sharing rules" }
@@ -63,7 +63,7 @@ status: DRAFT
     The phrase "duly justified cases, where manufacturers consider the security risks of publication to outweigh the security benefits" is VAG+SCOPE-Q S3 because the manufacturer is the sole judge of the balancing test, and no objective threshold is provided in the OJ text. Reading chosen: R2, treating CVD-in-progress per Art. 16(2) as the dominant illustrative example, with R1 (active exploitation) and R3 (national security grounds) following from the Art. 14(9) delegated-acts category set. Alternative reading: R4 (a vague "the risks are too high") is rejected as not a "duly justified" case because the word "duly" imports a documentary-evidence threshold that the manufacturer must meet. An additional reading, R5, would treat "duly justified" as requiring third-party validation (CSIRT or peer-manufacturer attestation) before the delay can be invoked, effectively institutionalising the balancing test rather than leaving it to manufacturer judgement; R5 is rejected because Annex I Part II (4) places the duty on the manufacturer and the harmonised-standards interpretation would have to operationalise validation — but R5 would be the natural next step if harmonised standards choose to specify it. Remain open: (a) does the manufacturer have to share the disclosure-after-delay basis with the CSIRT or keep it internal, and what audit trails apply; (b) how does the public-disclosure duty under Annex I Part II (4) interact with a coordinated disclosure timeline that the researcher agreed to, when the agreed window has lapsed but the patch is still in QA.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-028
@@ -74,7 +74,7 @@ status: DRAFT
     - { clause_id: CRA-CL52, article_ref: "Art. 14(1) sentence 2 — single reporting platform" }
     - { clause_id: CRA-CL44, article_ref: "Art. 3(44) — incident definition (imported from Art. 6(6) NIS 2 + CRA add-on)" }
     - { clause_id: CRA-CL42, article_ref: "Art. 3(42) — actively exploited vulnerability" }
-  linked_objectives: [SO-CRA-023]
+  linked_objectives: [SG-CRA-023]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.MA-01, title: "The incident management plan is executed in coordination with relevant third parties once an incident is declared" }
@@ -89,7 +89,7 @@ status: DRAFT
     The phrase "simultaneously" is VAG-S3 because temporal precision is left to interpretation. Reading chosen: R1, treating "simultaneously" as same-timestamp on the single platform under Art. 16, because the platform enforces simultaneity architecturally. R2 (same day) and R3 (short window) are rejected as failing the simultaneity requirement. The "becomes aware of" trigger inherits the GDPR Art. 33 / NIS 2 Art. 23 ambiguity (cf. CJEU IAB Baltic C-394/21 on reasonable certainty of harm), with R1 (actual knowledge) literal and R2 (constructive knowledge through due diligence) admissible. The "actively exploited vulnerability" definition under Art. 3(42) admits R3/R4 (publicly available exploit / researcher-published PoC) as the dominant readings. An additional reading, R3-as-window, would treat "simultaneously" as occurring within a tightly bounded time window (a few hours) rather than at the literal same timestamp, accommodating the practical realities of single-platform queueing; R3-as-window is rejected because the single platform architecture under Art. 16 enforces same-timestamp submission architecturally, making the literal reading the operational reality. Remain open: (a) does a published PoC alone (without observed exploitation) qualify as an AEV, or does the manufacturer require evidence of exploitation in the wild; (b) does constructive knowledge extend to threats described in confidential channels (vendor-to-vendor vulnerability programmes) that the manufacturer has not joined.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-031
@@ -100,7 +100,7 @@ status: DRAFT
     - { clause_id: CRA-CL57, article_ref: "Art. 14(3) sentence 2 — single platform" }
     - { clause_id: CRA-CL61, article_ref: "Art. 14(5)(a) — SI test A: CIA of sensitive/important" }
     - { clause_id: CRA-CL62, article_ref: "Art. 14(5)(b) — SI test B: malicious code" }
-  linked_objectives: [SO-CRA-025, SO-CRA-027]
+  linked_objectives: [SG-CRA-025, SG-CRA-027]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.MA-01, title: "The incident management plan is executed in coordination with relevant third parties once an incident is declared" }
@@ -115,7 +115,7 @@ status: DRAFT
     The phrase "severe incident having an impact on the security of the product" is VAG+SCOPE-Q S2 (severity threshold inherited from Art. 14(5)) nested with VAG+POLY+COORD S3 (the disjunctive tests under Art. 14(5)(a) and (b)). Reading chosen: R3, applying the Art. 14(5)(a) and (b) literal disjunctive tests — either test triggers severity. The "simultaneously" qualifier inherits the SR-CRA-028 reading. The "becomes aware of" trigger inherits the SR-CRA-028 trigger ambiguity (CJEU IAB Baltic C-394/21 reasonable-certainty framing). An additional reading, R4-aggregated, would aggregate the Art. 14(5)(a) and (b) tests into a single composite trigger that requires both CIA impact AND malicious-code consequences to qualify as severe, raising the threshold substantially; R4 is rejected because the OJ literal "or" makes the tests disjunctive and the higher threshold would defeat the upstream Art. 14(3) duty to report on severe incidents as defined. Remain open: (a) does the "capable of affecting" gate in Art. 14(5)(a) require the manufacturer to forecast rather than observe, and where is the evidential threshold for the capability claim; (b) does the malicious-code test under Art. 14(5)(b) include legitimate but unauthorised code modifications (e.g., supply-chain backdoors not classified as malware) or strictly code with malicious intent.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-040
@@ -123,7 +123,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL75, article_ref: "Art. 16(2) — CSIRT dissemination + delay grounds" }
     - { clause_id: CRA-CL74, article_ref: "Art. 16(1) — ENISA single reporting platform" }
-  linked_objectives: [SO-CRA-032]
+  linked_objectives: [SG-CRA-032]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-04, title: "Coordination with stakeholders occurs consistent with applicable rules and regulations" }
@@ -138,7 +138,7 @@ status: DRAFT
     `Justified cybersecurity-related grounds` carries VAG-S3 ambiguity — the phrase is Berry-classic vague with no OJ-literal definition. The illustration in Article 16(2) itself (CVD-in-progress under NIS 2 Article 12(1)) is operative: R2 (CVD-in-progress is the literal illustration but is illustrative — the grounds are not exhaustively enumerated). R1 (only CVD-in-progress) is rejected as over-narrow; R3 (any cybersecurity ground the CSIRT considers sufficient) is rejected as over-broad. The chosen reading is R2 supplemented by an analogue extrapolation to other in-confidence disclosure contexts (active exploitation where premature detail would aid the attacker, or coordinated patch-rollout windows). `Strictly necessary` is VAG-S2: R1 — minimum time required to address the cybersecurity ground. Remain open: (a) whether the platform operator (ENISA, per Article 16(1)) will issue procedural guidance limiting the categories of accepted cybersecurity grounds, in light of CSIRT heterogeneity across Member States; (b) whether the delay carve-out is asymmetric — i.e. whether the initially-receiving CSIRT's ground suffices, or whether all destination CSIRTs must concur — pending harmonised practice.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-112
@@ -146,7 +146,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL74, article_ref: "Art. 16(1) — ENISA single reporting platform" }
     - { clause_id: CRA-CL77, article_ref: "Art. 16(4) — ENISA platform security measures" }
-  linked_objectives: [SO-CRA-073]
+  linked_objectives: [SG-CRA-073]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: PR.IR-01, title: "Networks and environments are protected from unauthorized logical access and usage" }
@@ -181,7 +181,7 @@ status: DRAFT
     the platform's threat model rather than an abstract ceiling.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-114
@@ -191,7 +191,7 @@ status: DRAFT
     - { clause_id: CRA-CL80, article_ref: "Art. 17(3) — ENISA biennial report on cybersecurity risks in products" }
     - { clause_id: CRA-CL82, article_ref: "Art. 17(5) — EU vulnerability database (writes back to NIS 2 Art. 12(2))" }
     - { clause_id: CRA-CL83, article_ref: "Art. 17(6) — CSIRT helpdesk for manufacturers on reporting obligations" }
-  linked_objectives: [SO-CRA-073, SO-CRA-074]
+  linked_objectives: [SG-CRA-073, SG-CRA-074]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: RS.CO-04, title: "Coordination with stakeholders occurs consistent with applicable rules and regulations" }

@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| NIS2 | SO-NIS2-015; SO-NIS2-016 | Direct suppliers and service providers are assessed on supplier-specific vulnerabilities, product/service quality, cybersecurity practices, secure-development procedures, and EU-level coordinated supply-chain risk-assessment outputs | Entity-side direct-supplier contractual and assessment layer; Member-State-transposition-sensitive `direct` scope-limiter |
+| NIS2 | SG-NIS2-015; SG-NIS2-016 | Direct suppliers and service providers are assessed on supplier-specific vulnerabilities, product/service quality, cybersecurity practices, secure-development procedures, and EU-level coordinated supply-chain risk-assessment outputs | Entity-side direct-supplier contractual and assessment layer; Member-State-transposition-sensitive `direct` scope-limiter |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-06.3.2 — Sub-SO for NIS 2
 
 ```yaml
-id: SO-D-06.3.NIS2
+id: SG-D-06.3.NIS2
 subdomain: D-06.3
 applies_to: [NIS2]
-inherits_from: [SO-NIS2-015, SO-NIS2-016]
+inherits_from: [SG-NIS2-015, SG-NIS2-016]
 source_SR: [SR-NIS2-020, SR-NIS2-021, SR-NIS2-022, SR-NIS2-023, SR-NIS2-024, SR-NIS2-025]
 activation: if NIS2 in applicable_regs
 phase_1A_role: 1_of_N
@@ -46,8 +46,8 @@ phase_1A_role: 1_of_N
   title: "Art. 21(2)(d) direct-supplier contractual-security embedding + Art. 21(3) three-prong assessment evidence + Art. 22 coordinated-assessment ingestion"
 
   derives_from:
-    hso_sub_so: SO-D-06.3.NIS2
-    per_reg_so: SO-NIS2-015, SO-NIS2-016
+    hso_sub_so: SG-D-06.3.NIS2
+    per_reg_so: SG-NIS2-015, SG-NIS2-016
     source_sr: SR-NIS2-020, SR-NIS2-021, SR-NIS2-022, SR-NIS2-023, SR-NIS2-024, SR-NIS2-025
     hso_file: ../../HierarchicalSecurityObjectives/D-06_Supply-Chain/D-06.3.md
     objective_ref_section: "### D-06.3.2"

@@ -30,18 +30,18 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-CRA-030 | Any natural or legal person may voluntarily notify vulnerabilities or incidents (including near misses) of products with digital elements to the CSIRT designated as coordinator or to ENISA, and a CSIRT initially receiving a notification that does not originate from the manufacturer informs the manufacturer; the mere act of notification does not subject the notifying natural or legal person to increased liability. | `CRA-CL69` (Art. 15(1) — voluntary AEV reporting); `CRA-CL70` (Art. 15(2) — voluntary SI / near-miss reporting); `CRA-CL72` (Art. 15(4) — third-party notification + CSIRT-informs-manufacturer); `CRA-CL81` (Art. 17(4) — liability shield) | D-04.3, D-09.4 |
-| SO-CRA-030 | D-04.3, D-09.4 | Art. 15(1)/(2)/(4) + Art. 17(4) | Voluntary vulnerability/incident/near-miss reporting + liability shield |
-| SO-CRA-033 | Public awareness necessary to prevent or mitigate a severe incident, or where disclosure is otherwise in the public interest, may be served by the CSIRT designated as coordinator (after consulting the manufacturer concerned and, where appropriate, in cooperation with ENISA) informing the public about the incident or requiring the manufacturer to do so. | `CRA-CL79` (Art. 17(2) — public disclosure option) | D-04.3, D-09.1 |
-| SO-CRA-033 | D-04.3, D-09.1 | Art. 17(2) | Public disclosure option by CSIRT |
-| SO-CRA-073 | ENISA establishes and maintains the single reporting platform via which the notifications of Arts. 14 and 15 are submitted, and takes appropriate and proportionate measures to secure the platform; the platform supports electronic notification end-points of CSIRTs designated as coordinators and ENISA, and is accessible simultaneously to ENISA when notification is submitted via a CSIRT end-point. | `CRA-CL74` (Art. 16(1) — ENISA single reporting platform); `CRA-CL77` (Art. 16(4) — platform security); `CRA-CL82` (Art. 17(5) — EU vulnerability database integration with NIS 2 Art. 12(2)); `CRA-CL78` (Art. 17(1) — EU-CyCLONe submission); `CRA-CL80` (Art. 17(3) — ENISA biennial report on cybersecurity risks) | D-09.4 |
-| SO-CRA-073 | D-09.4 | Art. 16(1)/(4) + Art. 17(1)/(3)/(5) | ENISA single reporting platform security + EU-CyCLONe submission + biennial report |
-| SO-CRA-074 | ENISA prepares a biennial report on cybersecurity risks in products with digital elements and maintains the EU vulnerability database (Art. 12(2) NIS 2); CSIRTs designated as coordinators provide helpdesk support to manufacturers on the reporting obligations. | `CRA-CL80` (Art. 17(3) — ENISA biennial report); `CRA-CL82` (Art. 17(5) — EU vulnerability database — writes back to NIS 2 Art. 12(2)); `CRA-CL83` (Art. 17(6) — CSIRT helpdesk for manufacturers) | D-09.4 |
-| SO-CRA-074 | D-09.4 | Art. 17(3)/(5)/(6) | ENISA biennial report + EU vuln DB + CSIRT helpdesk |
+| SG-CRA-030 | Any natural or legal person may voluntarily notify vulnerabilities or incidents (including near misses) of products with digital elements to the CSIRT designated as coordinator or to ENISA, and a CSIRT initially receiving a notification that does not originate from the manufacturer informs the manufacturer; the mere act of notification does not subject the notifying natural or legal person to increased liability. | `CRA-CL69` (Art. 15(1) — voluntary AEV reporting); `CRA-CL70` (Art. 15(2) — voluntary SI / near-miss reporting); `CRA-CL72` (Art. 15(4) — third-party notification + CSIRT-informs-manufacturer); `CRA-CL81` (Art. 17(4) — liability shield) | D-04.3, D-09.4 |
+| SG-CRA-030 | D-04.3, D-09.4 | Art. 15(1)/(2)/(4) + Art. 17(4) | Voluntary vulnerability/incident/near-miss reporting + liability shield |
+| SG-CRA-033 | Public awareness necessary to prevent or mitigate a severe incident, or where disclosure is otherwise in the public interest, may be served by the CSIRT designated as coordinator (after consulting the manufacturer concerned and, where appropriate, in cooperation with ENISA) informing the public about the incident or requiring the manufacturer to do so. | `CRA-CL79` (Art. 17(2) — public disclosure option) | D-04.3, D-09.1 |
+| SG-CRA-033 | D-04.3, D-09.1 | Art. 17(2) | Public disclosure option by CSIRT |
+| SG-CRA-073 | ENISA establishes and maintains the single reporting platform via which the notifications of Arts. 14 and 15 are submitted, and takes appropriate and proportionate measures to secure the platform; the platform supports electronic notification end-points of CSIRTs designated as coordinators and ENISA, and is accessible simultaneously to ENISA when notification is submitted via a CSIRT end-point. | `CRA-CL74` (Art. 16(1) — ENISA single reporting platform); `CRA-CL77` (Art. 16(4) — platform security); `CRA-CL82` (Art. 17(5) — EU vulnerability database integration with NIS 2 Art. 12(2)); `CRA-CL78` (Art. 17(1) — EU-CyCLONe submission); `CRA-CL80` (Art. 17(3) — ENISA biennial report on cybersecurity risks) | D-09.4 |
+| SG-CRA-073 | D-09.4 | Art. 16(1)/(4) + Art. 17(1)/(3)/(5) | ENISA single reporting platform security + EU-CyCLONe submission + biennial report |
+| SG-CRA-074 | ENISA prepares a biennial report on cybersecurity risks in products with digital elements and maintains the EU vulnerability database (Art. 12(2) NIS 2); CSIRTs designated as coordinators provide helpdesk support to manufacturers on the reporting obligations. | `CRA-CL80` (Art. 17(3) — ENISA biennial report); `CRA-CL82` (Art. 17(5) — EU vulnerability database — writes back to NIS 2 Art. 12(2)); `CRA-CL83` (Art. 17(6) — CSIRT helpdesk for manufacturers) | D-09.4 |
+| SG-CRA-074 | D-09.4 | Art. 17(3)/(5)/(6) | ENISA biennial report + EU vuln DB + CSIRT helpdesk |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-019
@@ -50,7 +50,7 @@ status: DRAFT
     - { clause_id: CRA-CL147, article_ref: "Annex I Part II (5) — CVD policy" }
     - { clause_id: CRA-CL32, article_ref: "Art. 13(8) sentence 6 — CVD policy" }
     - { clause_id: CRA-CL103, article_ref: "Art. 24(3) — OSS steward Art. 14 extension cross-ref to CVD" }
-  linked_objectives: [SO-CRA-012, SO-CRA-049]
+  linked_objectives: [SG-CRA-012, SG-CRA-049]
   sub_domain: [D-02.3, D-09.1]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -65,7 +65,7 @@ status: DRAFT
     The phrase "policy on coordinated vulnerability disclosure" is POLY-S2 because three materially distinct policy architectures are admissible. Reading chosen: R3, a structured receive + triage + publish + post-disclosure verification pipeline, anchored in the implementing acts under Art. 14(9) and in Art. 17(5) EU vulnerability database integration. Alternative readings: R1 (ISO 29147 + ISO 30111-style structured policy, which is admissible) is a non-strict equivalent to R3; R2 (lighter disclosure-statement policy) is rejected because it fails the "enforce" element by omitting the triage and verification phases. The downstream contact-address expectation is developed separately in SR-CRA-021.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-020
@@ -74,7 +74,7 @@ status: DRAFT
     - { clause_id: CRA-CL146, article_ref: "Annex I Part II (4) — public vulnerability disclosure with delay exception" }
     - { clause_id: CRA-CL75, article_ref: "Art. 16(2) — CSIRT dissemination with delay grounds" }
     - { clause_id: CRA-CL67, article_ref: "Art. 14(9) — delegated acts on delay grounds" }
-  linked_objectives: [SO-CRA-012]
+  linked_objectives: [SG-CRA-012]
   sub_domain: [D-02.3]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information is shared with designated internal and external stakeholders consistent with the established information-sharing rules" }
@@ -89,7 +89,7 @@ status: DRAFT
     The phrase "duly justified cases, where manufacturers consider the security risks of publication to outweigh the security benefits" is VAG+SCOPE-Q S3 because the manufacturer is the sole judge of the balancing test, and no objective threshold is provided in the OJ text. Reading chosen: R2, treating CVD-in-progress per Art. 16(2) as the dominant illustrative example, with R1 (active exploitation) and R3 (national security grounds) following from the Art. 14(9) delegated-acts category set. Alternative reading: R4 (a vague "the risks are too high") is rejected as not a "duly justified" case because the word "duly" imports a documentary-evidence threshold that the manufacturer must meet. An additional reading, R5, would treat "duly justified" as requiring third-party validation (CSIRT or peer-manufacturer attestation) before the delay can be invoked, effectively institutionalising the balancing test rather than leaving it to manufacturer judgement; R5 is rejected because Annex I Part II (4) places the duty on the manufacturer and the harmonised-standards interpretation would have to operationalise validation — but R5 would be the natural next step if harmonised standards choose to specify it. Remain open: (a) does the manufacturer have to share the disclosure-after-delay basis with the CSIRT or keep it internal, and what audit trails apply; (b) how does the public-disclosure duty under Annex I Part II (4) interact with a coordinated disclosure timeline that the researcher agreed to, when the agreed window has lapsed but the patch is still in QA.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-038
@@ -99,7 +99,7 @@ status: DRAFT
     - { clause_id: CRA-CL70, article_ref: "Art. 15(2) — voluntary SI / near-miss reporting by any person" }
     - { clause_id: CRA-CL72, article_ref: "Art. 15(4) — third-party notification + CSIRT informs manufacturer" }
     - { clause_id: CRA-CL81, article_ref: "Art. 17(4) — no increased liability for mere notification" }
-  linked_objectives: [SO-CRA-030]
+  linked_objectives: [SG-CRA-030]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information is shared with designated internal and external stakeholders consistent with the established information-sharing rules" }
@@ -114,7 +114,7 @@ status: DRAFT
     The phrase "any natural or legal person" is SCOPE-Q S2 with R1 (anyone who has information, including researchers, journalists, concerned users) as the literal reading. The phrase "near miss" inherits the Art. 3(45) definition, which in turn imports from NIS 2 Art. 6(5) — POLY+S2 with R1 (event that could have caused harm), R2 (event that caused no harm), and R3 (partial-success event) as the three admissible readings; the Annex level reading does not pick one and lets the harmonised-standards layer modulate.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-041
@@ -122,7 +122,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL79, article_ref: "Art. 17(2) — public disclosure option by CSIRT" }
     - { clause_id: CRA-CL82, article_ref: "Art. 17(5) — EU vulnerability database" }
-  linked_objectives: [SO-CRA-033]
+  linked_objectives: [SG-CRA-033]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information is shared with designated internal and external stakeholders consistent with the established information-sharing rules" }
@@ -137,14 +137,14 @@ status: DRAFT
     `Where public awareness is necessary` carries VAG-S2 ambiguity — the threshold is qualitative judgment by the CSIRT, anchored in the prevention or mitigation purpose. R1 (necessary per CSIRT assessment, after consulting the manufacturer — the literal procedural frame) is the chosen reading. `In cooperation with ENISA` is POLY-S2 — the practical division is that the CSIRT leads the disclosure decision and ENISA's role is supportive (cross-border coordination, language coverage, EU-level framing); the chosen reading is R1 (CSIRT-led with ENISA in a cooperative support capacity). Remain open: (a) whether ENISA's database population will be near-real-time or batched, and whether CSIRTs retain discretion to delay population beyond the manufacturer's consultation horizon; (b) whether the public-disclosure lever will be used sparingly (preserving manufacturer primacy) or as a routine backstop, and how Recital 50's proportionality framing will be operationalised in practice.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-113
   title: "ENISA-EU-CyCLONe large-scale incident hand-off"
   source_clauses:
     - { clause_id: CRA-CL78, article_ref: "Art. 17(1) — ENISA submits to EU-CyCLONe for large-scale incident management" }
-  linked_objectives: [SO-CRA-073]
+  linked_objectives: [SG-CRA-073]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-04, title: "Coordination with stakeholders occurs consistent with applicable rules and regulations" }
@@ -179,7 +179,7 @@ status: DRAFT
     cross-border or cross-sector reach of the incident.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-114
@@ -189,7 +189,7 @@ status: DRAFT
     - { clause_id: CRA-CL80, article_ref: "Art. 17(3) — ENISA biennial report on cybersecurity risks in products" }
     - { clause_id: CRA-CL82, article_ref: "Art. 17(5) — EU vulnerability database (writes back to NIS 2 Art. 12(2))" }
     - { clause_id: CRA-CL83, article_ref: "Art. 17(6) — CSIRT helpdesk for manufacturers on reporting obligations" }
-  linked_objectives: [SO-CRA-073, SO-CRA-074]
+  linked_objectives: [SG-CRA-073, SG-CRA-074]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: RS.CO-04, title: "Coordination with stakeholders occurs consistent with applicable rules and regulations" }

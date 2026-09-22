@@ -28,16 +28,16 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-CRA-031 | An open-source software steward shall — to the extent the steward is involved in the development of the products with digital elements — notify actively exploited vulnerabilities of such products to the CSIRT designated as coordinator and to ENISA via the single reporting platform; and — to the extent severe incidents affect network and information systems provided by the steward for the development of such products — apply the severe-incident and user-notification obligations of Art. 14(3)/(8). | `CRA-CL103` (Art. 24(3) — OSS steward Art. 14(1)/(3)/(8) extension); `CRA-CL44` (Art. 3(44) — incident definition) | D-04.3, D-09.1 |
-| SO-CRA-031 | D-04.3, D-09.1 | Art. 24(3) | OSS steward Art. 14 notification extension (with involvement threshold) |
-| SO-CRA-049 | An open-source software steward puts in place and documents in a verifiable manner a cybersecurity policy fostering the secure development of products with digital elements and the effective handling of vulnerabilities by the developers of those products, including aspects related to documenting, addressing, and remediating vulnerabilities, and the sharing of information concerning discovered vulnerabilities within the open-source community; the policy takes into account the specific nature of the open-source software steward and the legal and organisational arrangements to which it is subject. | `CRA-CL101` (Art. 24(1) — OSS steward policy); `CRA-CL14` (Art. 3(14) — open-source software steward definition); `CRA-CL48` (Art. 3(48) — free and open-source software definition) | D-09.1 |
-| SO-CRA-049 | D-09.1 | Art. 24(1) + Art. 3(14)/(48) | OSS steward cybersecurity policy (verifiable) |
-| SO-CRA-050 | An open-source software steward cooperates with market surveillance authorities and provides documentation on request. | `CRA-CL102` (Art. 24(2) — OSS steward cooperation with MSAs) | D-09.1 |
-| SO-CRA-050 | D-09.1 | Art. 24(2) | OSS steward cooperation with MSAs |
+| SG-CRA-031 | An open-source software steward shall — to the extent the steward is involved in the development of the products with digital elements — notify actively exploited vulnerabilities of such products to the CSIRT designated as coordinator and to ENISA via the single reporting platform; and — to the extent severe incidents affect network and information systems provided by the steward for the development of such products — apply the severe-incident and user-notification obligations of Art. 14(3)/(8). | `CRA-CL103` (Art. 24(3) — OSS steward Art. 14(1)/(3)/(8) extension); `CRA-CL44` (Art. 3(44) — incident definition) | D-04.3, D-09.1 |
+| SG-CRA-031 | D-04.3, D-09.1 | Art. 24(3) | OSS steward Art. 14 notification extension (with involvement threshold) |
+| SG-CRA-049 | An open-source software steward puts in place and documents in a verifiable manner a cybersecurity policy fostering the secure development of products with digital elements and the effective handling of vulnerabilities by the developers of those products, including aspects related to documenting, addressing, and remediating vulnerabilities, and the sharing of information concerning discovered vulnerabilities within the open-source community; the policy takes into account the specific nature of the open-source software steward and the legal and organisational arrangements to which it is subject. | `CRA-CL101` (Art. 24(1) — OSS steward policy); `CRA-CL14` (Art. 3(14) — open-source software steward definition); `CRA-CL48` (Art. 3(48) — free and open-source software definition) | D-09.1 |
+| SG-CRA-049 | D-09.1 | Art. 24(1) + Art. 3(14)/(48) | OSS steward cybersecurity policy (verifiable) |
+| SG-CRA-050 | An open-source software steward cooperates with market surveillance authorities and provides documentation on request. | `CRA-CL102` (Art. 24(2) — OSS steward cooperation with MSAs) | D-09.1 |
+| SG-CRA-050 | D-09.1 | Art. 24(2) | OSS steward cooperation with MSAs |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-019
@@ -46,7 +46,7 @@ status: DRAFT
     - { clause_id: CRA-CL147, article_ref: "Annex I Part II (5) — CVD policy" }
     - { clause_id: CRA-CL32, article_ref: "Art. 13(8) sentence 6 — CVD policy" }
     - { clause_id: CRA-CL103, article_ref: "Art. 24(3) — OSS steward Art. 14 extension cross-ref to CVD" }
-  linked_objectives: [SO-CRA-012, SO-CRA-049]
+  linked_objectives: [SG-CRA-012, SG-CRA-049]
   sub_domain: [D-02.3, D-09.1]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -61,7 +61,7 @@ status: DRAFT
     The phrase "policy on coordinated vulnerability disclosure" is POLY-S2 because three materially distinct policy architectures are admissible. Reading chosen: R3, a structured receive + triage + publish + post-disclosure verification pipeline, anchored in the implementing acts under Art. 14(9) and in Art. 17(5) EU vulnerability database integration. Alternative readings: R1 (ISO 29147 + ISO 30111-style structured policy, which is admissible) is a non-strict equivalent to R3; R2 (lighter disclosure-statement policy) is rejected because it fails the "enforce" element by omitting the triage and verification phases. The downstream contact-address expectation is developed separately in SR-CRA-021.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-039
@@ -69,7 +69,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL103, article_ref: "Art. 24(3) — OSS steward Art. 14(1) extension (with involvement threshold)" }
     - { clause_id: CRA-CL14, article_ref: "Art. 3(14) — open-source software steward definition" }
-  linked_objectives: [SO-CRA-031]
+  linked_objectives: [SG-CRA-031]
   sub_domain: [D-04.3, D-09.1]
   nist_csf_mapping:
     - { id: RS.MA-01, title: "The incident management plan is executed in coordination with relevant third parties once an incident is declared" }
@@ -85,7 +85,7 @@ status: DRAFT
     The phrase `to the extent that they are involved in the development of the products with digital elements` carries VAG-S3 ambiguity and exposes three live readings: R1 (commit access to a relevant repository — a strict operational threshold), R2 (maintainer or co-maintainer role in the project — an organisational role threshold), R3 (advisory or review contribution without commit rights — a contribution-volume threshold), and R4 (any involvement in the product's software supply chain — the broad literal reading captured by the words `involved` and `development`). The reading chosen is R4 — the literal text `involved` carries the broadest reasonable construction consistent with the OJ-literal purpose of catching supply-chain-attributable incidents at the upstream end. The qualifier `steward's NIS for the development of such products` is SCOPE-Q-S2: R1 (the steward's own network and information systems only — literal scope). The Article 3(14) `systematically providing support on a sustained basis` threshold, inherited from the steward definition, carries a Berry-classic POLY+COORD signature and is treated in SR-CRA-072's record. Remain open: (a) whether the European Commission's forthcoming guidance on Article 24 (signalled in Recital 18) will supply a narrower reading of `involved in the development` than the R4 literal; (b) whether stewards that monetise upstream components via SaaS, dual-licensing, or sponsored-development arrangements are exposed to dual classification — both as stewards under Article 3(14) and as de facto manufacturers under Article 3(13) — and which obligation set governs.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-072
@@ -94,7 +94,7 @@ status: DRAFT
     - { clause_id: CRA-CL101, article_ref: "Art. 24(1) — OSS steward cybersecurity policy" }
     - { clause_id: CRA-CL14, article_ref: "Art. 3(14) — open-source software steward definition" }
     - { clause_id: CRA-CL48, article_ref: "Art. 3(48) — free and open-source software definition" }
-  linked_objectives: [SO-CRA-049]
+  linked_objectives: [SG-CRA-049]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -110,14 +110,14 @@ status: DRAFT
     `Documented in a verifiable manner` carries VAG-S3 ambiguity — the operational threshold is supplied by Article 24(2) (cf. SR-CRA-073): R1 (self-verification — the steward can demonstrate the policy on request), R2 (third-party-attested), R3 (MSA-verified on demand). Reading chosen: R1 (literal — `verifiable manner` = the steward can demonstrate the policy on request, with Article 24(2) MSA cooperation providing external verification on demand). R2 (third-party attestation) is rejected as over-prescriptive for OSS stewards; R3 (MSA-verified) is rejected as over-restrictive, since Article 24(2) only triggers on reasoned request. `Foster` (VAG+POLY-S3): R1 (encourage — literal). `Systematically providing support on a sustained basis` inherits Article 3(14) D14 — R3 (both — regular + ongoing). Remain open: (a) whether the voluntary-reporting enablement under (i) requires a published CVD coordinator email / signed PGP key / security.txt — analogous to RFC 9116 — or whether softer enablement suffices; (b) the operational handling of `verifiable` at enforcement — i.e. whether MSAs will accept a steward's self-attestation or will look for an external anchor.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-073
   title: "OSS steward cooperation with market surveillance authorities"
   source_clauses:
     - { clause_id: CRA-CL102, article_ref: "Art. 24(2) — OSS steward cooperation with MSAs" }
-  linked_objectives: [SO-CRA-050]
+  linked_objectives: [SG-CRA-050]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.SC-04, title: "Suppliers and other third parties are routinely assessed using audits, test results, or other forms of evaluation to confirm they are meeting their contractual obligations" }
@@ -133,7 +133,7 @@ status: DRAFT
     No major S2/S3. POLY-S2 on `upon reasoned request`: R1 (literal — request with specific operational cause, mirroring the Article 23(1) reading for economic operators). Remain open: (a) the operational interface between Article 24(2) (steward cooperation) and Article 24(3) (steward severe-incident reporting) — i.e. whether a steward's Article 24(2) cooperation on a reported incident triggers any parallel Article 24(3) duty; (b) the procedural details of the `relevant security aspects of the products they steward` — i.e. whether MSAs may request vulnerability-handling records, CVD statistics, or maintainer-supplier relationships.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-074
@@ -142,7 +142,7 @@ status: DRAFT
     - { clause_id: CRA-CL103, article_ref: "Art. 24(3) — OSS steward Art. 14(3)/(8) extension (NIS threshold)" }
     - { clause_id: CRA-CL58, article_ref: "Art. 14(4)(a) — SI early warning 24h" }
     - { clause_id: CRA-CL65, article_ref: "Art. 14(8) sentence 1 — user notification" }
-  linked_objectives: [SO-CRA-031]
+  linked_objectives: [SG-CRA-031]
   sub_domain: [D-09.1, D-04.3]
   nist_csf_mapping:
     - { id: RS.MA-01, title: "The incident management plan is executed in coordination with relevant third parties once an incident is declared" }

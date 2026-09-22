@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-021 + SO-CRA-022 | Product availability preserved post-incident via resilience and DoS-resistance + cascading-impact minimisation + exploitation mitigation | Product with digital elements; manufacturer design; Annex I Part I (2)(h)/(i)/(k); PR.IR-04 + PR.IR-03 + DE.CM-09 |
+| CRA | SG-CRA-021 + SG-CRA-022 | Product availability preserved post-incident via resilience and DoS-resistance + cascading-impact minimisation + exploitation mitigation | Product with digital elements; manufacturer design; Annex I Part I (2)(h)/(i)/(k); PR.IR-04 + PR.IR-03 + DE.CM-09 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-04.2.3 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-04.2.CRA
+id: SG-D-04.2.CRA
 subdomain: D-04.2
 applies_to: [CRA]
-inherits_from: SO-CRA-021
+inherits_from: SG-CRA-021
 source_SR: SR-CRA-043, SR-CRA-044
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -57,7 +57,7 @@ mechanism effectiveness.)*
 
   derives_from:
     hso_sub_so: SO-4.2.CRA
-    per_reg_so: SO-CRA-021
+    per_reg_so: SG-CRA-021
     source_sr: SR-CRA-043, SR-CRA-044
     hso_file: ../../HierarchicalSecurityObjectives/D-04_Incident-Response/4.2.md
     objective_ref_section: "### 4.2.3"

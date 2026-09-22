@@ -55,84 +55,84 @@ The auditor's M7 pass flagged 78 entries as `excessive`. A targeted re-read (ind
 
 ## Literal duplicates (none in this corpus)
 
-- ### D-01.1 · DORA · subso SO-D-01.1.DORA: {'PR.DS-01': 2, 'PR.DS-02': 2, 'PR.DS-10': 2}
-- ### D-01.2 · DORA · subso SO-D-01.2.DORA: {'PR.DS-01': 2, 'PR.DS-02': 2, 'PR.DS-10': 2}
-- ### D-01.3 · CRA · subso SO-D-01.3.CRA: {'PR.DS-01': 2, 'PR.AA-05': 2, 'GV.OV-01': 2}
-- ### D-01.3 · DORA · subso SO-D-01.3.DORA: {'PR.AA-03': 4, 'PR.AA-04': 2, 'PR.DS-01': 4, 'GV.RM-04': 2}
-- ### D-01.3 · GDPR · subso SO-D-01.3.GDPR: {'PR.DS-01': 6, 'PR.IR-03': 2}
-- ### D-01.4 · AI_Act · subso SO-D-01.4.AI_Act: {'PR.IR-03': 2, 'PR.IR-04': 4, 'PR.DS-11': 2}
-- ### D-01.4 · CRA · subso SO-D-01.4.CRA: {'PR.DS-01': 2, 'PR.DS-10': 2, 'PR.PS-04': 2}
-- ### D-01.4 · DORA · subso SO-D-01.4.DORA: {'PR.DS-01': 3, 'PR.DS-02': 3, 'PR.DS-10': 3, 'ID.AM-05': 2}
-- ### D-01.4 · GDPR · subso SO-D-01.4.GDPR: {'PR.DS-01': 2, 'ID.AM-08': 3, 'PR.DS-10': 2}
-- ### D-02.1 · CRA · subso SO-D-02.1.CRA: {'ID.RA-01': 2, 'ID.AM-02': 3, 'PR.PS-02': 2}
-- ### D-02.1 · DORA · subso SO-D-02.1.DORA: {'ID.RA-01': 2, 'ID.RA-03': 2, 'GV.OV-02': 2}
-- ### D-02.1 · GDPR · subso SO-D-02.1.GDPR: {'ID.RA-01': 2, 'PR.PS-02': 2, 'ID.RA-05': 2, 'ID.IM-02': 2}
-- ### D-02.1 · NIS2 · subso SO-D-02.1.NIS2: {'ID.RA-01': 2, 'GV.SC-04': 2}
-- ### D-02.3 · NIS2 · subso SO-D-02.3.NIS2: {'ID.RA-01': 2, 'GV.SC-04': 2}
-- ### D-02.4 · AI_Act · subso SO-D-02.4.AI_Act: {'ID.RA-01': 3, 'ID.RA-04': 6, 'PR.PS-06': 3, 'GV.SC-04': 3}
-- ### D-02.4 · CRA · subso SO-D-02.4.CRA: {'ID.RA-01': 6, 'PR.PS-06': 3, 'DE.CM-09': 3}
-- ### D-03.1 · CRA · subso SO-D-03.1.CRA: {'PR.AA-01': 2, 'ID.AM-01': 2, 'PR.AA-05': 2, 'PR.AA-06': 2, 'DE.CM-09': 2}
-- ### D-03.1 · DORA · subso SO-D-03.1.DORA: {'PR.AA-03': 4, 'PR.AA-04': 2}
-- ### D-03.1 · GDPR · subso SO-D-03.1.GDPR: {'PR.AA-03': 2, 'PR.AA-02': 3, 'ID.AM-08': 2}
-- ### D-03.1 · NIS2 · subso SO-D-03.1.NIS2: {'PR.AA-01': 3, 'PR.AA-05': 4, 'PR.AT-02': 2}
-- ### D-03.2 · CRA · subso SO-D-03.2.CRA: {'PR.AA-01': 4, 'PR.AA-05': 4, 'PR.AA-06': 4, 'ID.AM-01': 2, 'DE.CM-09': 2}
-- ### D-03.2 · DORA · subso SO-D-03.2.DORA: {'PR.AA-03': 4, 'PR.AA-04': 2}
-- ### D-03.2 · NIS2 · subso SO-D-03.2.NIS2: {'PR.AA-03': 4, 'PR.AA-05': 2, 'PR.DS-02': 2, 'PR.IR-03': 2}
-- ### D-03.3 · CRA · subso SO-D-03.3.CRA: {'PR.AA-05': 4, 'PR.AA-06': 4, 'DE.CM-09': 2}
-- ### D-03.3 · DORA · subso SO-D-03.3.DORA: {'PR.AA-05': 3, 'PR.AA-06': 3}
-- ### D-03.3 · GDPR · subso SO-D-03.3.GDPR: {'PR.AA-05': 6, 'PR.AA-06': 4, 'PR.AT-02': 2}
-- ### D-03.3 · NIS2 · subso SO-D-03.3.NIS2: {'PR.AA-01': 2, 'PR.AA-05': 4, 'ID.AM-01': 4, 'ID.AM-02': 2}
-- ### D-03.4 · CRA · subso SO-D-03.4.CRA: {'PR.PS-01': 3, 'ID.AM-08': 2, 'GV.SC-03': 2}
-- ### D-03.4 · GDPR · subso SO-D-03.4.GDPR: {'PR.PS-01': 3, 'ID.AM-08': 3}
-- ### D-04.1 · CRA · subso SO-D-04.1.CRA: {'PR.PS-04': 2, 'DE.CM-09': 2}
-- ### D-04.1 · DORA · subso SO-D-04.1.DORA: {'DE.CM-01': 2, 'DE.CM-09': 2, 'DE.AE-02': 4, 'RS.MA-01': 2}
-- ### D-04.1 · GDPR · subso SO-D-04.1.GDPR: {'DE.CM-01': 2}
-- ### D-04.1 · NIS2 · subso SO-D-04.1.NIS2: {'DE.CM-01': 2}
-- ### D-04.2 · CRA · subso SO-D-04.2.CRA: {'PR.IR-03': 2, 'PR.IR-04': 2}
-- ### D-04.2 · DORA · subso SO-D-04.2.DORA: {'RC.RP-01': 2, 'PR.IR-03': 2, 'RC.RP-04': 2, 'PR.IR-04': 4}
-- ### D-04.4 · CRA · subso SO-D-04.4.CRA: {'PR.IR-03': 2, 'ID.AM-08': 2}
-- ### D-04.4 · GDPR · subso SO-D-04.4.GDPR: {'PR.IR-04': 4, 'PR.DS-11': 2, 'RC.RP-04': 2}
-- ### D-04.4 · NIS2 · subso SO-D-04.4.NIS2: {'RC.RP-04': 2, 'PR.DS-11': 2}
-- ### D-05.1 · CRA · subso SO-D-05.1.CRA: {'ID.AM-08': 2, 'ID.AM-03': 2}
-- ### D-05.2 · GDPR · subso SO-D-05.2.GDPR: {'ID.AM-08': 2, 'ID.AM-03': 2}
-- ### D-05.3 · CRA · subso SO-D-05.3.CRA: {'PR.DS-10': 3, 'ID.AM-08': 4, 'PR.DS-02': 3}
-- ### D-06.1 · CRA · subso SO-D-06.1.CRA: {'GV.SC-01': 6, 'GV.SC-02': 2, 'ID.RA-02': 3}
-- ### D-06.1 · DORA · subso SO-D-06.1.DORA: {'GV.SC-02': 4, 'ID.AM-04': 3}
-- ### D-06.1 · GDPR · subso SO-D-06.1.GDPR: {'GV.SC-02': 3, 'GV.SC-04': 2}
-- ### D-06.1 · NIS2 · subso SO-D-06.1.NIS2: {'GV.SC-02': 2}
-- ### D-07.1 · AI_Act · subso SO-D-07.1.AIACT: {'PR.PS-06': 3, 'ID.RA-04': 2, 'ID.RA-01': 2}
-- ### D-07.1 · CRA · subso SO-D-07.1.CRA: {'PR.PS-06': 3}
-- ### D-07.1 · GDPR · subso SO-D-07.1.GDPR: {'PR.PS-06': 2, 'ID.AM-08': 3}
-- ### D-07.1 · NIS2 · subso SO-D-07.1.NIS2: {'PR.PS-06': 3, 'PR.PS-02': 2}
-- ### D-07.2 · AI_Act · subso SO-D-07.2.AIACT: {'ID.RA-04': 2, 'PR.PS-06': 2, 'ID.RA-01': 2}
-- ### D-07.2 · CRA · subso SO-D-07.2.CRA: {'PR.PS-02': 2}
-- ### D-07.2 · DORA · subso SO-D-07.2.DORA: {'PR.PS-06': 5}
-- ### D-07.3 · NIS2 · subso SO-D-07.3.NIS2: {'PR.PS-02': 3, 'ID.RA-01': 6}
-- ### D-07.4 · DORA · subso SO-D-07.4.DORA: {'PR.PS-01': 4, 'PR.PS-02': 5, 'PR.PS-06': 4}
-- ### D-08.1 · CRA · subso SO-D-08.1.CRA: {'PR.AT-01': 4}
-- ### D-08.1 · DORA · subso SO-D-08.1.DORA: {'PR.AT-01': 3, 'PR.AT-02': 3}
-- ### D-08.1 · GDPR · subso SO-D-08.1.GDPR: {'PR.AT-01': 3, 'PR.AT-02': 2}
-- ### D-08.1 · NIS2 · subso SO-D-08.1.NIS2: {'PR.AT-01': 3, 'PR.PS-01': 3}
-- ### D-08.2 · AI_Act · subso SO-D-08.2.AIACT: {'PR.AT-02': 4, 'PR.AT-01': 3, 'GV.RR-02': 4, 'GV.RR-04': 2}
-- ### D-08.2 · CRA · subso SO-D-08.2.CRA: {'PR.AT-02': 3, 'GV.SC-03': 3}
-- ### D-08.2 · DORA · subso SO-D-08.2.DORA: {'PR.AT-01': 3, 'PR.AT-02': 3}
-- ### D-08.2 · GDPR · subso SO-D-08.2.GDPR: {'PR.AT-01': 3, 'PR.AT-02': 2}
-- ### D-08.2 · NIS2 · subso SO-D-08.2.NIS2: {'PR.AT-01': 3, 'PR.AT-02': 3}
-- ### D-08.3 · DORA · subso SO-D-08.3.DORA: {'PR.AT-02': 3, 'GV.RR-01': 3}
-- ### D-09.1 · GDPR · subso SO-D-09.1.GDPR: {'GV.PO-01': 6, 'GV.RM-04': 2}
-- ### D-09.1 · NIS2 · subso SO-D-09.1.NIS2: {'GV.PO-01': 6}
-- ### D-09.2 · NIS2 · subso SO-D-09.2.NIS2: {'ID.RA-05': 3, 'GV.PO-01': 2}
-- ### D-09.3 · NIS2 · subso SO-D-09.3.NIS2: {'ID.AM-01': 4, 'ID.AM-02': 2, 'PR.PS-01': 2}
-- ### D-10.1 · AI_Act · subso SO-D-10.1.AI_Act: {'DE.CM-09': 3, 'ID.IM-04': 2, 'GV.OV-03': 2}
-- ### D-10.1 · GDPR · subso SO-D-10.1.GDPR: {'DE.CM-01': 2}
-- ### D-10.2 · CRA · subso SO-D-10.2.CRA: {'ID.RA-04': 4, 'GV.PO-02': 2, 'PR.PS-02': 2, 'PR.DS-11': 2}
-- ### D-10.2 · DORA · subso SO-D-10.2.DORA: {'GV.PO-01': 3, 'ID.AM-08': 2, 'GV.OC-03': 2}
-- ### D-10.2 · GDPR · subso SO-D-10.2.GDPR: {'GV.PO-02': 2, 'PR.PS-04': 2, 'PR.DS-11': 2}
-- ### D-10.3 · AI_Act · subso SO-D-10.3.AI_Act: {'ID.RA-04': 2, 'ID.IM-03': 2}
-- ### D-10.3 · CRA · subso SO-D-10.3.CRA: {'ID.RA-04': 2, 'ID.RA-01': 2, 'ID.IM-03': 2}
-- ### D-10.3 · DORA · subso SO-D-10.3.DORA: {'ID.RA-04': 2, 'ID.IM-03': 2, 'DE.AE-02': 2}
-- ### D-10.3 · GDPR · subso SO-D-10.3.GDPR: {'ID.IM-03': 2}
-- ### D-10.3 · NIS2 · subso SO-D-10.3.NIS2: {'GV.PO-01': 2, 'GV.OV-03': 2, 'ID.IM-03': 2}
+- ### D-01.1 · DORA · subso SG-D-01.1.DORA: {'PR.DS-01': 2, 'PR.DS-02': 2, 'PR.DS-10': 2}
+- ### D-01.2 · DORA · subso SG-D-01.2.DORA: {'PR.DS-01': 2, 'PR.DS-02': 2, 'PR.DS-10': 2}
+- ### D-01.3 · CRA · subso SG-D-01.3.CRA: {'PR.DS-01': 2, 'PR.AA-05': 2, 'GV.OV-01': 2}
+- ### D-01.3 · DORA · subso SG-D-01.3.DORA: {'PR.AA-03': 4, 'PR.AA-04': 2, 'PR.DS-01': 4, 'GV.RM-04': 2}
+- ### D-01.3 · GDPR · subso SG-D-01.3.GDPR: {'PR.DS-01': 6, 'PR.IR-03': 2}
+- ### D-01.4 · AI_Act · subso SG-D-01.4.AI_Act: {'PR.IR-03': 2, 'PR.IR-04': 4, 'PR.DS-11': 2}
+- ### D-01.4 · CRA · subso SG-D-01.4.CRA: {'PR.DS-01': 2, 'PR.DS-10': 2, 'PR.PS-04': 2}
+- ### D-01.4 · DORA · subso SG-D-01.4.DORA: {'PR.DS-01': 3, 'PR.DS-02': 3, 'PR.DS-10': 3, 'ID.AM-05': 2}
+- ### D-01.4 · GDPR · subso SG-D-01.4.GDPR: {'PR.DS-01': 2, 'ID.AM-08': 3, 'PR.DS-10': 2}
+- ### D-02.1 · CRA · subso SG-D-02.1.CRA: {'ID.RA-01': 2, 'ID.AM-02': 3, 'PR.PS-02': 2}
+- ### D-02.1 · DORA · subso SG-D-02.1.DORA: {'ID.RA-01': 2, 'ID.RA-03': 2, 'GV.OV-02': 2}
+- ### D-02.1 · GDPR · subso SG-D-02.1.GDPR: {'ID.RA-01': 2, 'PR.PS-02': 2, 'ID.RA-05': 2, 'ID.IM-02': 2}
+- ### D-02.1 · NIS2 · subso SG-D-02.1.NIS2: {'ID.RA-01': 2, 'GV.SC-04': 2}
+- ### D-02.3 · NIS2 · subso SG-D-02.3.NIS2: {'ID.RA-01': 2, 'GV.SC-04': 2}
+- ### D-02.4 · AI_Act · subso SG-D-02.4.AI_Act: {'ID.RA-01': 3, 'ID.RA-04': 6, 'PR.PS-06': 3, 'GV.SC-04': 3}
+- ### D-02.4 · CRA · subso SG-D-02.4.CRA: {'ID.RA-01': 6, 'PR.PS-06': 3, 'DE.CM-09': 3}
+- ### D-03.1 · CRA · subso SG-D-03.1.CRA: {'PR.AA-01': 2, 'ID.AM-01': 2, 'PR.AA-05': 2, 'PR.AA-06': 2, 'DE.CM-09': 2}
+- ### D-03.1 · DORA · subso SG-D-03.1.DORA: {'PR.AA-03': 4, 'PR.AA-04': 2}
+- ### D-03.1 · GDPR · subso SG-D-03.1.GDPR: {'PR.AA-03': 2, 'PR.AA-02': 3, 'ID.AM-08': 2}
+- ### D-03.1 · NIS2 · subso SG-D-03.1.NIS2: {'PR.AA-01': 3, 'PR.AA-05': 4, 'PR.AT-02': 2}
+- ### D-03.2 · CRA · subso SG-D-03.2.CRA: {'PR.AA-01': 4, 'PR.AA-05': 4, 'PR.AA-06': 4, 'ID.AM-01': 2, 'DE.CM-09': 2}
+- ### D-03.2 · DORA · subso SG-D-03.2.DORA: {'PR.AA-03': 4, 'PR.AA-04': 2}
+- ### D-03.2 · NIS2 · subso SG-D-03.2.NIS2: {'PR.AA-03': 4, 'PR.AA-05': 2, 'PR.DS-02': 2, 'PR.IR-03': 2}
+- ### D-03.3 · CRA · subso SG-D-03.3.CRA: {'PR.AA-05': 4, 'PR.AA-06': 4, 'DE.CM-09': 2}
+- ### D-03.3 · DORA · subso SG-D-03.3.DORA: {'PR.AA-05': 3, 'PR.AA-06': 3}
+- ### D-03.3 · GDPR · subso SG-D-03.3.GDPR: {'PR.AA-05': 6, 'PR.AA-06': 4, 'PR.AT-02': 2}
+- ### D-03.3 · NIS2 · subso SG-D-03.3.NIS2: {'PR.AA-01': 2, 'PR.AA-05': 4, 'ID.AM-01': 4, 'ID.AM-02': 2}
+- ### D-03.4 · CRA · subso SG-D-03.4.CRA: {'PR.PS-01': 3, 'ID.AM-08': 2, 'GV.SC-03': 2}
+- ### D-03.4 · GDPR · subso SG-D-03.4.GDPR: {'PR.PS-01': 3, 'ID.AM-08': 3}
+- ### D-04.1 · CRA · subso SG-D-04.1.CRA: {'PR.PS-04': 2, 'DE.CM-09': 2}
+- ### D-04.1 · DORA · subso SG-D-04.1.DORA: {'DE.CM-01': 2, 'DE.CM-09': 2, 'DE.AE-02': 4, 'RS.MA-01': 2}
+- ### D-04.1 · GDPR · subso SG-D-04.1.GDPR: {'DE.CM-01': 2}
+- ### D-04.1 · NIS2 · subso SG-D-04.1.NIS2: {'DE.CM-01': 2}
+- ### D-04.2 · CRA · subso SG-D-04.2.CRA: {'PR.IR-03': 2, 'PR.IR-04': 2}
+- ### D-04.2 · DORA · subso SG-D-04.2.DORA: {'RC.RP-01': 2, 'PR.IR-03': 2, 'RC.RP-04': 2, 'PR.IR-04': 4}
+- ### D-04.4 · CRA · subso SG-D-04.4.CRA: {'PR.IR-03': 2, 'ID.AM-08': 2}
+- ### D-04.4 · GDPR · subso SG-D-04.4.GDPR: {'PR.IR-04': 4, 'PR.DS-11': 2, 'RC.RP-04': 2}
+- ### D-04.4 · NIS2 · subso SG-D-04.4.NIS2: {'RC.RP-04': 2, 'PR.DS-11': 2}
+- ### D-05.1 · CRA · subso SG-D-05.1.CRA: {'ID.AM-08': 2, 'ID.AM-03': 2}
+- ### D-05.2 · GDPR · subso SG-D-05.2.GDPR: {'ID.AM-08': 2, 'ID.AM-03': 2}
+- ### D-05.3 · CRA · subso SG-D-05.3.CRA: {'PR.DS-10': 3, 'ID.AM-08': 4, 'PR.DS-02': 3}
+- ### D-06.1 · CRA · subso SG-D-06.1.CRA: {'GV.SC-01': 6, 'GV.SC-02': 2, 'ID.RA-02': 3}
+- ### D-06.1 · DORA · subso SG-D-06.1.DORA: {'GV.SC-02': 4, 'ID.AM-04': 3}
+- ### D-06.1 · GDPR · subso SG-D-06.1.GDPR: {'GV.SC-02': 3, 'GV.SC-04': 2}
+- ### D-06.1 · NIS2 · subso SG-D-06.1.NIS2: {'GV.SC-02': 2}
+- ### D-07.1 · AI_Act · subso SG-D-07.1.AIACT: {'PR.PS-06': 3, 'ID.RA-04': 2, 'ID.RA-01': 2}
+- ### D-07.1 · CRA · subso SG-D-07.1.CRA: {'PR.PS-06': 3}
+- ### D-07.1 · GDPR · subso SG-D-07.1.GDPR: {'PR.PS-06': 2, 'ID.AM-08': 3}
+- ### D-07.1 · NIS2 · subso SG-D-07.1.NIS2: {'PR.PS-06': 3, 'PR.PS-02': 2}
+- ### D-07.2 · AI_Act · subso SG-D-07.2.AIACT: {'ID.RA-04': 2, 'PR.PS-06': 2, 'ID.RA-01': 2}
+- ### D-07.2 · CRA · subso SG-D-07.2.CRA: {'PR.PS-02': 2}
+- ### D-07.2 · DORA · subso SG-D-07.2.DORA: {'PR.PS-06': 5}
+- ### D-07.3 · NIS2 · subso SG-D-07.3.NIS2: {'PR.PS-02': 3, 'ID.RA-01': 6}
+- ### D-07.4 · DORA · subso SG-D-07.4.DORA: {'PR.PS-01': 4, 'PR.PS-02': 5, 'PR.PS-06': 4}
+- ### D-08.1 · CRA · subso SG-D-08.1.CRA: {'PR.AT-01': 4}
+- ### D-08.1 · DORA · subso SG-D-08.1.DORA: {'PR.AT-01': 3, 'PR.AT-02': 3}
+- ### D-08.1 · GDPR · subso SG-D-08.1.GDPR: {'PR.AT-01': 3, 'PR.AT-02': 2}
+- ### D-08.1 · NIS2 · subso SG-D-08.1.NIS2: {'PR.AT-01': 3, 'PR.PS-01': 3}
+- ### D-08.2 · AI_Act · subso SG-D-08.2.AIACT: {'PR.AT-02': 4, 'PR.AT-01': 3, 'GV.RR-02': 4, 'GV.RR-04': 2}
+- ### D-08.2 · CRA · subso SG-D-08.2.CRA: {'PR.AT-02': 3, 'GV.SC-03': 3}
+- ### D-08.2 · DORA · subso SG-D-08.2.DORA: {'PR.AT-01': 3, 'PR.AT-02': 3}
+- ### D-08.2 · GDPR · subso SG-D-08.2.GDPR: {'PR.AT-01': 3, 'PR.AT-02': 2}
+- ### D-08.2 · NIS2 · subso SG-D-08.2.NIS2: {'PR.AT-01': 3, 'PR.AT-02': 3}
+- ### D-08.3 · DORA · subso SG-D-08.3.DORA: {'PR.AT-02': 3, 'GV.RR-01': 3}
+- ### D-09.1 · GDPR · subso SG-D-09.1.GDPR: {'GV.PO-01': 6, 'GV.RM-04': 2}
+- ### D-09.1 · NIS2 · subso SG-D-09.1.NIS2: {'GV.PO-01': 6}
+- ### D-09.2 · NIS2 · subso SG-D-09.2.NIS2: {'ID.RA-05': 3, 'GV.PO-01': 2}
+- ### D-09.3 · NIS2 · subso SG-D-09.3.NIS2: {'ID.AM-01': 4, 'ID.AM-02': 2, 'PR.PS-01': 2}
+- ### D-10.1 · AI_Act · subso SG-D-10.1.AI_Act: {'DE.CM-09': 3, 'ID.IM-04': 2, 'GV.OV-03': 2}
+- ### D-10.1 · GDPR · subso SG-D-10.1.GDPR: {'DE.CM-01': 2}
+- ### D-10.2 · CRA · subso SG-D-10.2.CRA: {'ID.RA-04': 4, 'GV.PO-02': 2, 'PR.PS-02': 2, 'PR.DS-11': 2}
+- ### D-10.2 · DORA · subso SG-D-10.2.DORA: {'GV.PO-01': 3, 'ID.AM-08': 2, 'GV.OC-03': 2}
+- ### D-10.2 · GDPR · subso SG-D-10.2.GDPR: {'GV.PO-02': 2, 'PR.PS-04': 2, 'PR.DS-11': 2}
+- ### D-10.3 · AI_Act · subso SG-D-10.3.AI_Act: {'ID.RA-04': 2, 'ID.IM-03': 2}
+- ### D-10.3 · CRA · subso SG-D-10.3.CRA: {'ID.RA-04': 2, 'ID.RA-01': 2, 'ID.IM-03': 2}
+- ### D-10.3 · DORA · subso SG-D-10.3.DORA: {'ID.RA-04': 2, 'ID.IM-03': 2, 'DE.AE-02': 2}
+- ### D-10.3 · GDPR · subso SG-D-10.3.GDPR: {'ID.IM-03': 2}
+- ### D-10.3 · NIS2 · subso SG-D-10.3.NIS2: {'GV.PO-01': 2, 'GV.OV-03': 2, 'ID.IM-03': 2}
 
 ## Cross-block overlaps (representative sample, 10 of 0)
 
@@ -184,7 +184,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | Where a product with digital elements stores data — personal or other — the confidentia... | CRA | sufficient | - | high |
 
-### D-01.1 · CRA · subso SO-D-01.1.CRA
+### D-01.1 · CRA · subso SG-D-01.1.CRA
 - **Objective**: Where a product with digital elements stores data — personal or other — the confidentiality of that data is protected by encrypting relevant data at rest using state-of-the-art mechanisms (Annex I Part I (2)(e)).
 - **Regulatory basis**: `domains/D-01_Data-Protection/D-01.1/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -211,7 +211,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Data confidentiality, integrity, authenticity and availability are maintained at high s... | DORA | excessive | - | high |
 
-### D-01.1 · DORA · subso SO-D-01.1.DORA
+### D-01.1 · DORA · subso SG-D-01.1.DORA
 - **Objective**: Data confidentiality, integrity, authenticity and availability are maintained at high standards across all data states, including at rest, through ICT security policies, procedures, protocols and tools designed to ensure ICT-system resilience, continuity and availability (Art. 9(2)).
 - **Regulatory basis**: `domains/D-01_Data-Protection/D-01.1/articles/DORA_Art_15.md` (Art. 15) — paraphrased action
 - **Anchors listed**:
@@ -244,7 +244,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Personal data at rest is processed in a manner that ensures appropriate security — incl... | GDPR | sufficient | - | high |
 
-### D-01.1 · GDPR · subso SO-D-01.1.GDPR
+### D-01.1 · GDPR · subso SG-D-01.1.GDPR
 - **Objective**: Personal data at rest is processed in a manner that ensures appropriate security — including protection against unauthorised or unlawful processing and against accidental loss, destruction or damage — using appropriate technical or organisational measures, with the ability to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems and services (Art. 5(1)(f) + Art. 32(1)(b); the `appropriate` threshold is anchored by the five Art. 32(1) preamble factors — state of the art, costs of implementation, nature, scope, context, purposes, risks).
 - **Regulatory basis**: `domains/D-01_Data-Protection/D-01.1/articles/GDPR_Art_11.md` (Art. 11) — paraphrased action
 - **Anchors listed**:
@@ -272,7 +272,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Essential and important entities establish policies and procedures regarding the use of... | NIS2 | sufficient | - | high |
 
-### D-01.1 · NIS2 · subso SO-D-01.1.NIS2
+### D-01.1 · NIS2 · subso SG-D-01.1.NIS2
 - **Objective**: Essential and important entities establish policies and procedures regarding the use of cryptography and, where appropriate, encryption, covering the confidentiality, integrity, and authenticity of data stored, transmitted, and processed by network and information systems (Art. 21(2)(h)).
 - **Regulatory basis**: `domains/D-01_Data-Protection/D-01.1/articles/NIS2_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -306,7 +306,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | Where data is transmitted by a product with digital elements — personal or other — the ... | CRA | sufficient | - | high |
 
-### D-01.2 · CRA · subso SO-D-01.2.CRA
+### D-01.2 · CRA · subso SG-D-01.2.CRA
 - **Objective**: Where data is transmitted by a product with digital elements — personal or other — the confidentiality of the data in transit is protected by encrypting relevant data using state-of-the-art mechanisms, with the Annex I (2)(j) attack-surface-limitation leg constraining the exposed interfaces through which the data could otherwise leak (Annex I Part I (2)(e) + (2)(j)).
 - **Regulatory basis**: `domains/D-01_Data-Protection/D-01.2/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -334,7 +334,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Data confidentiality, integrity, authenticity and availability are maintained at high s... | DORA | excessive | - | high |
 
-### D-01.2 · DORA · subso SO-D-01.2.DORA
+### D-01.2 · DORA · subso SG-D-01.2.DORA
 - **Objective**: Data confidentiality, integrity, authenticity and availability are maintained at high standards across all data states, including in transit, through ICT security policies, procedures, protocols and tools (Art. 9(2)).
 - **Regulatory basis**: `domains/D-01_Data-Protection/D-01.2/articles/DORA_Art_15.md` (Art. 15) — paraphrased action
 - **Anchors listed**:
@@ -367,7 +367,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Personal data transmitted across networks, inter-service channels, and third-party infr... | GDPR | sufficient | - | high |
 
-### D-01.2 · GDPR · subso SO-D-01.2.GDPR
+### D-01.2 · GDPR · subso SG-D-01.2.GDPR
 - **Objective**: Personal data transmitted across networks, inter-service channels, and third-party infrastructure remains confidential and unaltered in transit, with the in-transit protection anchored to the five-event Art. 32(2) risk enumeration (accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data transmitted) (Art. 32(1)(b) + Art. 32(2)).
 - **Regulatory basis**: `domains/D-01_Data-Protection/D-01.2/articles/GDPR_Art_32.md` (Art. 32) — paraphrased action
 - **Anchors listed**:
@@ -399,7 +399,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | Cryptographic keys and related authentication material used to protect the confidential... | CRA | excessive | - | high |
 
-### D-01.3 · CRA · subso SO-D-01.3.CRA
+### D-01.3 · CRA · subso SG-D-01.3.CRA
 - **Objective**: Cryptographic keys and related authentication material used to protect the confidentiality and integrity of stored, transmitted or otherwise processed data by a product with digital elements — personal or other — are managed with separation of roles such that possession of the key material is not bundled with possession of the operational environment that uses it (Annex I Part I (2)(d) access-control + (2)(e) "other technical means" reading per `SR-CRA-004` ambiguity_notes; the Annex I text does not mention key management explicitly — the synthesis catalogue `99_CRA_Synthesis.md` §4 flags this as a T2-vs-text gap — so the key-separation reading rests on the combination of Annex I (2)(d) access-control duty with the Annex I (2)(e) "other technical means" residual).
 - **Regulatory basis**: `domains/D-01_Data-Protection/D-01.3/articles/CRA_Art_6.md` (Art. 6) — paraphrased action
 - **Anchors listed**:
@@ -432,7 +432,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Strong authentication mechanisms, cryptographic-key protection measures, and data encry... | DORA | excessive | - | high |
 
-### D-01.3 · DORA · subso SO-D-01.3.DORA
+### D-01.3 · DORA · subso SG-D-01.3.DORA
 - **Objective**: Strong authentication mechanisms, cryptographic-key protection measures, and data encryption are implemented through coordinated policies and protocols, with the cryptographic-key protection leg tied to approved data classification and ICT risk assessment processes (Art. 9(4)(d) 3-control AND of strong authentication + key protection + encryption).
 - **Regulatory basis**: `domains/D-01_Data-Protection/D-01.3/articles/DORA_Art_15.md` (Art. 15) — paraphrased action
 - **Anchors listed**:
@@ -468,7 +468,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Where pseudonymisation or encryption is applied to personal data, the additional inform... | GDPR | excessive | - | high |
 
-### D-01.3 · GDPR · subso SO-D-01.3.GDPR
+### D-01.3 · GDPR · subso SG-D-01.3.GDPR
 - **Objective**: Where pseudonymisation or encryption is applied to personal data, the additional information required to re-identify the data subject (the cryptographic key, the mapping table, or the tokenisation seed) is kept separately and is subject to appropriate technical and organisational measures that prevent attribution (Art. 4(5) de-attribution test + Art. 34(3)(a) unintelligibility carve-out + Art. 32(1)(a) pseudonymisation/ encryption anchor).
 - **Regulatory basis**: `domains/D-01_Data-Protection/D-01.3/articles/GDPR_Art_25.md` (Art. 25) — paraphrased action
 - **Anchors listed**:
@@ -503,7 +503,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | High-risk AI systems are as resilient as possible regarding errors, faults, or inconsis... | AI_Act | excessive | - | high |
 
-### D-01.4 · AI_Act · subso SO-D-01.4.AI_Act
+### D-01.4 · AI_Act · subso SG-D-01.4.AI_Act
 - **Objective**: High-risk AI systems are as resilient as possible regarding errors, faults, or inconsistencies that may occur within the system or the environment (Art. 15(3)); the robustness of high-risk AI systems may be achieved through technical redundancy solutions, which may include backup or fail-safe plans.
 - **Regulatory basis**: `domains/D-01_Data-Protection/D-01.4/articles/AI_Act_Art_15.md` (Art. 15) — paraphrased action
 - **Anchors listed**:
@@ -536,7 +536,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | The integrity of stored, transmitted, or otherwise processed data — personal or other —... | CRA | excessive | - | high |
 
-### D-01.4 · CRA · subso SO-D-01.4.CRA
+### D-01.4 · CRA · subso SG-D-01.4.CRA
 - **Objective**: The integrity of stored, transmitted, or otherwise processed data — personal or other — as well as the integrity of commands, programs, and configuration, is protected against any manipulation or modification not authorised by the user (Annex I Part I (2)(f) — the universal-quantifier `any` makes the integrity protection unconditional); corruption is reported to the user / administering party (Annex I Part I (2)(f) `report on corruptions` + (2)(l) logging + monitoring).
 - **Regulatory basis**: `domains/D-01_Data-Protection/D-01.4/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -569,7 +569,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Data confidentiality, integrity, authenticity and availability are maintained at high s... | DORA | excessive | - | high |
 
-### D-01.4 · DORA · subso SO-D-01.4.DORA
+### D-01.4 · DORA · subso SG-D-01.4.DORA
 - **Objective**: Data confidentiality, integrity, authenticity and availability are maintained at high standards across all data states — at rest, in use, or in transit — through ICT security policies, procedures, protocols and tools designed to ensure ICT-system resilience, continuity and availability (Art. 9(2)).
 - **Regulatory basis**: `domains/D-01_Data-Protection/D-01.4/articles/DORA_Art_15.md` (Art. 15) — paraphrased action
 - **Anchors listed**:
@@ -609,7 +609,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Personal data are accurate and, where necessary, kept up to date; every reasonable step... | GDPR | excessive | - | low |
 
-### D-01.4 · GDPR · subso SO-D-01.4.GDPR
+### D-01.4 · GDPR · subso SG-D-01.4.GDPR
 - **Objective**: Personal data are accurate and, where necessary, kept up to date; every reasonable step is taken to ensure that personal data that are inaccurate are erased or rectified without delay (Art. 5(1)(d) accuracy principle), with the integrity property anchored to two further legs — storage integrity (Art. 5(1)(f)) and the Art. 16 rectification cascade with Art. 19 recipient-cascade duty.
 - **Regulatory basis**: `domains/D-01_Data-Protection/D-01.4/articles/AI_Act_Art_72.md` (Art. 72) — paraphrased action
 - **Anchors listed**:
@@ -647,7 +647,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | A risk-management system is established, implemented, documented, and maintained for hi... | AI_Act | sufficient | - | high |
 
-### D-02.1 · AI_Act · subso SO-D-02.1.AI_Act
+### D-02.1 · AI_Act · subso SG-D-02.1.AI_Act
 - **Objective**: A risk-management system is established, implemented, documented, and maintained for high-risk AI systems throughout their lifecycle, comprising a continuous iterative process of (a) identification and analysis of known and reasonably foreseeable risks, (b) estimation and evaluation of risks emerging from use under conditions of reasonably foreseeable misuse, (c) evaluation of other risks arising from analysis of post-market monitoring data, and (d) adoption of appropriate and targeted risk-management measures (Art. 9(2)); the high-risk AI system is designed and developed to achieve an appropriate level of accuracy, robustness, and cybersecurity, and is resilient against errors, faults, or inconsistencies that may occur within the system or the environment, with appropriate technical and organisational measures to prevent, detect, respond to, resolve, and control for attacks trying to manipulate the training data set (data poisoning), pre-trained components used in training (model poisoning), inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality attacks, or model flaws (Art. 15(1)/(4)–(5)).
 - **Regulatory basis**: `domains/D-02_Vulnerability-Management/D-02.1/articles/AI_Act_Art_10.md` (Art. 10) — paraphrased action
 - **Anchors listed**:
@@ -680,7 +680,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | A product with digital elements is made available on the market without known exploitab... | CRA | excessive | - | high |
 
-### D-02.1 · CRA · subso SO-D-02.1.CRA
+### D-02.1 · CRA · subso SG-D-02.1.CRA
 - **Objective**: A product with digital elements is made available on the market without known exploitable vulnerabilities (Annex I Part I (2)(a)), and vulnerabilities contained in the product — including the components listed in an SBOM — are identified and documented on a continuing basis throughout the support period (Annex I Part II (1) + Art. 13(3) + Art. 13(7)).
 - **Regulatory basis**: `domains/D-02_Vulnerability-Management/D-02.1/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -714,7 +714,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Sources of ICT risk — including cyber threats and ICT vulnerabilities relevant to ICT-s... | DORA | excessive | - | high |
 
-### D-02.1 · DORA · subso SO-D-02.1.DORA
+### D-02.1 · DORA · subso SG-D-02.1.DORA
 - **Objective**: Sources of ICT risk — including cyber threats and ICT vulnerabilities relevant to ICT-supported business functions, information assets, and ICT assets — are identified on a continuous basis, and the risk scenarios impacting the entity are reviewed on a regular basis, at least yearly (Art. 7(2) + Art. 8(2)).
 - **Regulatory basis**: `domains/D-02_Vulnerability-Management/D-02.1/articles/DORA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -753,7 +753,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | A controller or processor operates a process for regularly testing, assessing, and eval... | GDPR | excessive | - | high |
 
-### D-02.1 · GDPR · subso SO-D-02.1.GDPR
+### D-02.1 · GDPR · subso SG-D-02.1.GDPR
 - **Objective**: A controller or processor operates a process for regularly testing, assessing, and evaluating the effectiveness of the technical and organisational measures for ensuring the security of the processing (Art. 32(1)(d)); the data-protection impact assessment under Art. 35 is reviewed when there is a change of the risk represented by processing operations (Art. 35(11)).
 - **Regulatory basis**: `domains/D-02_Vulnerability-Management/D-02.1/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -789,7 +789,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Vulnerabilities in network and information systems are identified, handled, and disclos... | NIS2 | excessive | - | high |
 
-### D-02.1 · NIS2 · subso SO-D-02.1.NIS2
+### D-02.1 · NIS2 · subso SG-D-02.1.NIS2
 - **Objective**: Vulnerabilities in network and information systems are identified, handled, and disclosed through a coordinated vulnerability handling and disclosure process integrated into the system acquisition, development, and maintenance lifecycle (Art. 21(2)(e)).
 - **Regulatory basis**: `domains/D-02_Vulnerability-Management/D-02.1/articles/NIS2_Art_21.md` (Art. 21) — paraphrased action
 - **Anchors listed**:
@@ -823,7 +823,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | Vulnerabilities of a product with digital elements are addressed and remediated through... | CRA | sufficient | PR.PS-02 | high |
 
-### D-02.2 · CRA · subso SO-D-02.2.CRA
+### D-02.2 · CRA · subso SG-D-02.2.CRA
 - **Objective**: Vulnerabilities of a product with digital elements are addressed and remediated through security updates without delay, including — where technically feasible — through security updates provided separately from functionality updates (Annex I Part II (2) + Annex I Part I (2)(c)); security updates are disseminated without delay to users via mechanisms that ensure the secure distribution of updates, accompanied by advisory messages describing the action users can take (Annex I Part II (7) + (8)); vulnerabilities — including those of integrated components — are handled effectively and in accordance with the Annex I Part II vulnerability-handling requirements throughout the support period determined by the manufacturer (minimum 5 years, or the expected use time if shorter — Art. 13(8)); each security update made available during the support period remains available after it has been issued for at least 10 years or for the remainder of the support period, whichever is longer (Art. 13(9)).
 - **Regulatory basis**: `domains/D-02_Vulnerability-Management/D-02.2/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -854,7 +854,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | A sound network and infrastructure management structure is established, using appropria... | DORA | sufficient | PR.PS-02 | high |
 
-### D-02.2 · DORA · subso SO-D-02.2.DORA
+### D-02.2 · DORA · subso SG-D-02.2.DORA
 - **Objective**: A sound network and infrastructure management structure is established, using appropriate techniques, methods and protocols — which may include automated mechanisms to isolate affected information assets in the event of cyber-attacks (Art. 9(4)(b)) — and appropriate and comprehensive documented policies for patches and updates are maintained (Art. 9(4)(f)).
 - **Regulatory basis**: `domains/D-02_Vulnerability-Management/D-02.2/articles/DORA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -888,7 +888,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | The manufacturer puts in place, documents and enforces a policy on coordinated vulnerab... | CRA | sufficient | - | high |
 
-### D-02.3 · CRA · subso SO-D-02.3.CRA
+### D-02.3 · CRA · subso SG-D-02.3.CRA
 - **Objective**: The manufacturer puts in place, documents and enforces a policy on coordinated vulnerability disclosure for its products with digital elements (Annex I Part II (5) + Art. 13(8) sentence 6); once a security update has been made available, the manufacturer shares and publicly discloses information about the fixed vulnerabilities, including a description of the vulnerability, the affected products, the impacts, the severity, and the remediation guidance — subject to a duly justified delay exception where security risks of publication outweigh security benefits (Annex I Part II (4)); the manufacturer facilitates the sharing of information about potential vulnerabilities in its products and in third-party components contained therein, including by providing a publicly identifiable contact address for the reporting of vulnerabilities (Annex I Part II (6)); the manufacturer designates a single point of contact to enable users — including security researchers — to communicate directly and rapidly with the manufacturer (Art. 13(17) + Annex II §2).
 - **Regulatory basis**: `domains/D-02_Vulnerability-Management/D-02.3/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -916,7 +916,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Vulnerabilities in network and information systems are identified, handled, and disclos... | NIS2 | excessive | - | high |
 
-### D-02.3 · NIS2 · subso SO-D-02.3.NIS2
+### D-02.3 · NIS2 · subso SG-D-02.3.NIS2
 - **Objective**: Vulnerabilities in network and information systems are identified, handled, and disclosed through a coordinated vulnerability handling and disclosure process integrated into the system acquisition, development, and maintenance lifecycle (Art. 21(2)(e)).
 - **Regulatory basis**: `domains/D-02_Vulnerability-Management/D-02.3/articles/NIS2_Art_21.md` (Art. 21) — paraphrased action
 - **Anchors listed**:
@@ -950,7 +950,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | High-risk AI systems are tested to ensure that they perform consistently for their inte... | AI_Act | excessive | - | high |
 
-### D-02.4 · AI_Act · subso SO-D-02.4.AI_Act
+### D-02.4 · AI_Act · subso SG-D-02.4.AI_Act
 - **Objective**: High-risk AI systems are tested to ensure that they perform consistently for their intended purpose (Art. 9(6)) and tested in real-world conditions in accordance with the detailed rules of Art. 60 (Art. 9(7)).
 - **Regulatory basis**: `domains/D-02_Vulnerability-Management/D-02.4/articles/AI_Act_Art_9.md` (Art. 9) — paraphrased action
 - **Anchors listed**:
@@ -990,7 +990,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Effective and regular tests and reviews of the security of a product with digital eleme... | CRA | excessive | - | high |
 
-### D-02.4 · CRA · subso SO-D-02.4.CRA
+### D-02.4 · CRA · subso SG-D-02.4.CRA
 - **Objective**: Effective and regular tests and reviews of the security of a product with digital elements are applied on a continuing basis throughout the support period, with the tests and reviews producing evidence of conformity with the Annex I Part I cybersecurity requirements (Annex I Part II (3) + Annex VII §6); reports of the tests carried out to verify conformity are part of the technical documentation (Annex VII §6); the testing programme itself is audited under Module B periodic audits of the vulnerability-handling processes (Annex VIII Part II (8)).
 - **Regulatory basis**: `domains/D-02_Vulnerability-Management/D-02.4/articles/CRA_Art_27.md` (Art. 27) — paraphrased action
 - **Anchors listed**:
@@ -1026,7 +1026,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | A sound and comprehensive digital operational resilience testing programme is establish... | DORA | sufficient | - | high |
 
-### D-02.4 · DORA · subso SO-D-02.4.DORA
+### D-02.4 · DORA · subso SG-D-02.4.DORA
 - **Objective**: A sound and comprehensive digital operational resilience testing programme is established, maintained and reviewed as an integral part of the ICT risk-management framework (Art. 24(1)), drawing on a portfolio of testing modalities — vulnerability assessments, scans, open source analyses, network security assessments, gap analyses, physical security reviews, questionnaires and scanning software solutions, source code reviews where feasible, scenario-based tests, compatibility testing, performance testing, end-to-end testing and penetration testing (Art. 25(1)); the testing programme includes advanced testing by means of TLPT at least every three years, with frequency adjustments at the competent authority's request (Art. 26(1)).
 - **Regulatory basis**: `domains/D-02_Vulnerability-Management/D-02.4/articles/DORA_Art_21.md` (Art. 21) — paraphrased action
 - **Anchors listed**:
@@ -1059,7 +1059,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | Identities, credentials, and access entitlements for users, services, and integrated co... | CRA | excessive | - | high |
 
-### D-03.1 · CRA · subso SO-D-03.1.CRA
+### D-03.1 · CRA · subso SG-D-03.1.CRA
 - **Objective**: Identities, credentials, and access entitlements for users, services, and integrated components of the product with digital elements are managed in a verifiable manner throughout the operational lifetime of the product (Annex I Part I (2)(d) + Art. 13(15) type/batch/serial unique identification + Art. 13(17) single point of contact; backed by Annex II §3 unique-identification user information).
 - **Regulatory basis**: `domains/D-03_Access-Control/D-03.1/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -1098,7 +1098,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Identity assertions for financial-entity staff and service-to-service identities are ma... | DORA | excessive | - | high |
 
-### D-03.1 · DORA · subso SO-D-03.1.DORA
+### D-03.1 · DORA · subso SG-D-03.1.DORA
 - **Objective**: Identity assertions for financial-entity staff and service-to-service identities are managed, protected, and conveyed in a manner that verifies authenticity, as one dimension of the strong-authentication + cryptographic-key-protection + risk-based encryption 3-control AND in Art. 9(4)(d).
 - **Regulatory basis**: `domains/D-03_Access-Control/D-03.1/articles/DORA_Art_15.md` (Art. 15) — paraphrased action
 - **Anchors listed**:
@@ -1128,7 +1128,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | The identity of a natural person making a rights-exercise request under Art. 15–22 is v... | GDPR | excessive | - | high |
 
-### D-03.1 · GDPR · subso SO-D-03.1.GDPR
+### D-03.1 · GDPR · subso SG-D-03.1.GDPR
 - **Objective**: The identity of a natural person making a rights-exercise request under Art. 15–22 is verified using reasonable means proportionate to the risk of mis-identification, before action is taken; the controller may request additional information necessary to confirm the identity, and the data subject must supply enough information to enable identification if they wish to exercise the rights (Art. 12(6) + Art. 11(2); the verification scope is constrained by Art. 5(1)(c) data minimisation).
 - **Regulatory basis**: `domains/D-03_Access-Control/D-03.1/articles/DORA_Art_15.md` (Art. 15) — paraphrased action
 - **Anchors listed**:
@@ -1162,7 +1162,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Identities of the workforce — employees, contractors and other authorised personnel wit... | NIS2 | excessive | - | low |
 
-### D-03.1 · NIS2 · subso SO-D-03.1.NIS2
+### D-03.1 · NIS2 · subso SG-D-03.1.NIS2
 - **Objective**: Identities of the workforce — employees, contractors and other authorised personnel with access to network and information systems — are managed throughout the employment lifecycle, with provisioning on induction, entitlement review on role change, and revocation on separation, integrated into the entity's access-control policy and asset-management discipline (Art. 21(2)(i) HR-security dimension, coordinated by the literal AND with access-control policies and asset management).
 - **Regulatory basis**: `domains/D-03_Access-Control/D-03.1/articles/DORA_Art_15.md` (Art. 15) — paraphrased action
 - **Anchors listed**:
@@ -1200,7 +1200,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | Protection from unauthorised access uses appropriate control mechanisms, which may incl... | CRA | excessive | - | low |
 
-### D-03.2 · CRA · subso SO-D-03.2.CRA
+### D-03.2 · CRA · subso SG-D-03.2.CRA
 - **Objective**: Protection from unauthorised access uses appropriate control mechanisms, which may include authentication, identity, or access-management systems, appropriate to the identified cybersecurity risk of the product (Annex I Part I (2)(d) — "including but not limited to" + 3-way OR).
 - **Anchors listed**:
   - PR.AA-01 — Identities and credentials for authorized users, services, and hardware are managed by the organization — **CORE** — Action keyword ('identity') in objective maps to PR.AA-01
@@ -1237,7 +1237,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Strong authentication mechanisms (based on relevant standards and dedicated control sys... | DORA | excessive | - | high |
 
-### D-03.2 · DORA · subso SO-D-03.2.DORA
+### D-03.2 · DORA · subso SG-D-03.2.DORA
 - **Objective**: Strong authentication mechanisms (based on relevant standards and dedicated control systems) are implemented as one of three coordinated controls in Art. 9(4)(d), together with cryptographic-key protection measures and risk-based data encryption.
 - **Regulatory basis**: `domains/D-03_Access-Control/D-03.2/articles/DORA_Art_15.md` (Art. 15) — paraphrased action
 - **Anchors listed**:
@@ -1267,7 +1267,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Persons authorised to process personal data act only on documented instructions from th... | GDPR | sufficient | - | low |
 
-### D-03.2 · GDPR · subso SO-D-03.2.GDPR
+### D-03.2 · GDPR · subso SG-D-03.2.GDPR
 - **Objective**: Persons authorised to process personal data act only on documented instructions from the controller (or processor) and are bound by confidentiality or an appropriate statutory obligation of confidentiality (Art. 28(3)(b) + Art. 29 + Art. 32(4) instruction-only processing); the identity of data subjects making rights-exercise requests is verified using reasonable means proportionate to the risk of mis-identification (Art. 12(6) + Art. 11(2)).
 - **Regulatory basis**: `domains/D-03_Access-Control/D-03.2/articles/DORA_Art_5.md` (Art. 5) — paraphrased action
 - **Anchors listed**:
@@ -1297,7 +1297,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Multi-factor authentication or continuous authentication solutions are used where appro... | NIS2 | excessive | - | high |
 
-### D-03.2 · NIS2 · subso SO-D-03.2.NIS2
+### D-03.2 · NIS2 · subso SG-D-03.2.NIS2
 - **Objective**: Multi-factor authentication or continuous authentication solutions are used where appropriate, and secured voice, video and text communications as well as secured emergency communication systems are deployed within the entity (Art. 21(2)(j)).
 - **Regulatory basis**: `domains/D-03_Access-Control/D-03.2/articles/DORA_Art_15.md` (Art. 15) — paraphrased action
 - **Anchors listed**:
@@ -1337,7 +1337,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | Access to the product with digital elements, its data, services, and functions is limit... | CRA | excessive | - | low |
 
-### D-03.3 · CRA · subso SO-D-03.3.CRA
+### D-03.3 · CRA · subso SG-D-03.3.CRA
 - **Objective**: Access to the product with digital elements, its data, services, and functions is limited to authenticated and authorised users, services, and hardware, with possible unauthorised access reported (Annex I Part I (2)(d) `protection from unauthorised access through appropriate control mechanisms` + `possible unauthorised access reported` — R1 inclusive reading on `possible`) and attack surfaces including external interfaces limited (Annex I Part I (2)(j)).
 - **Anchors listed**:
   - PR.AA-05 — Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties — **CORE** — Action keyword ('authoris') in objective maps to PR.AA-05
@@ -1372,7 +1372,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | ICT security policies limit physical or logical access to information assets and ICT as... | DORA | excessive | - | high |
 
-### D-03.3 · DORA · subso SO-D-03.3.DORA
+### D-03.3 · DORA · subso SG-D-03.3.DORA
 - **Objective**: ICT security policies limit physical or logical access to information assets and ICT assets to what is required for legitimate and approved functions and activities only, with the literal `only` qualifier (Berry §5.3.1 — correctly placed before the limiting phrase) closing off any access that is not strictly tied to a legitimate and approved function (Art. 9(4)(c) physical or logical access + `legitimate AND approved` AND-coordinated + `only` qualifier).
 - **Regulatory basis**: `domains/D-03_Access-Control/D-03.3/articles/DORA_Art_21.md` (Art. 21) — paraphrased action
 - **Anchors listed**:
@@ -1406,7 +1406,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Persons authorised to process personal data act only on documented instructions from th... | GDPR | excessive | - | high |
 
-### D-03.3 · GDPR · subso SO-D-03.3.GDPR
+### D-03.3 · GDPR · subso SG-D-03.3.GDPR
 - **Objective**: Persons authorised to process personal data act only on documented instructions from the controller (or processor), and are bound by confidentiality or an appropriate statutory obligation of confidentiality, with documented instructions binding the controller → processor → authorised-persons chain of authority under Art. 29 + Art. 32(4) + Art. 28(3)(a)/(b) and Art. 4(7) + Art. 4(8) anchoring controller and processor definitions.
 - **Regulatory basis**: `domains/D-03_Access-Control/D-03.3/articles/GDPR_Art_28.md` (Art. 28) — paraphrased action
 - **Anchors listed**:
@@ -1440,7 +1440,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Access-control policies are established and applied at the entity level for the entity'... | NIS2 | excessive | - | low |
 
-### D-03.3 · NIS2 · subso SO-D-03.3.NIS2
+### D-03.3 · NIS2 · subso SG-D-03.3.NIS2
 - **Objective**: Access-control policies are established and applied at the entity level for the entity's network and information systems, covering access limited to authorised users, services, and hardware on a least-privilege basis, with the literal AND binding access-control + HR-security + asset-management together (Art. 21(2)(i)).
 - **Regulatory basis**: `domains/D-03_Access-Control/D-03.3/articles/DORA_Art_21.md` (Art. 21) — paraphrased action
 - **Anchors listed**:
@@ -1480,7 +1480,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | Products with digital elements are made available on the market with a secure-by-defaul... | CRA | excessive | - | low |
 
-### D-03.4 · CRA · subso SO-D-03.4.CRA
+### D-03.4 · CRA · subso SG-D-03.4.CRA
 - **Objective**: Products with digital elements are made available on the market with a secure-by-default configuration — including the possibility for the user to reset the product to its original state — unless otherwise agreed between manufacturer and business user in relation to a tailor-made product with digital elements (Annex I Part I (2)(b)), and the secure-by-default configuration ensures that vulnerabilities can be addressed through security updates — automatic security updates installed within an appropriate timeframe, enabled by default, with a clear and easy-to-use opt-out mechanism, through notification of available updates to users, and with the option to temporarily postpone them (Annex I Part I (2)(c)).
 - **Anchors listed**:
   - PR.PS-01 — Configuration management practices are established and applied — **CORE** — CSF title literally matches action keyword ('configuration')
@@ -1513,7 +1513,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Personal-data processing systems implement appropriate technical and organisational mea... | GDPR | excessive | - | high |
 
-### D-03.4 · GDPR · subso SO-D-03.4.GDPR
+### D-03.4 · GDPR · subso SG-D-03.4.GDPR
 - **Objective**: Personal-data processing systems implement appropriate technical and organisational measures ensuring that, by default, only personal data which are necessary for each specific purpose of the processing are processed — across the four AND-coordinated dimensions of amount of data collected, extent of their processing, period of their storage, and their accessibility — with the additional constraint that personal data are not made accessible without the individual's intervention to an indefinite number of natural persons (Art. 25(2) + Art. 25(1) privacy-by-design cross-anchor + Art. 5(1)(c) data minimisation underlying principle).
 - **Regulatory basis**: `domains/D-03_Access-Control/D-03.4/articles/GDPR_Art_25.md` (Art. 25) — paraphrased action
 - **Anchors listed**:
@@ -1551,7 +1551,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | Relevant internal activity of the product with digital elements — including access to o... | CRA | excessive | - | low |
 
-### D-04.1 · CRA · subso SO-D-04.1.CRA
+### D-04.1 · CRA · subso SG-D-04.1.CRA
 - **Objective**: Relevant internal activity of the product with digital elements — including access to or modification of data, services, or functions — is recorded and monitored, with a user-visible opt-out mechanism where appropriate, and any corruption or unauthorised modification is reported (Annex I Part I (2)(l)).
 - **Anchors listed**:
   - PR.PS-04 — Log records are generated and made available for continuous monitoring — **UTILITY** — CSF title shares 1 token ('and') with objective; reinforces but is not the direct action
@@ -1584,7 +1584,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Anomalous activities — including ICT network performance issues and ICT-related inciden... | DORA | excessive | - | high |
 
-### D-04.1 · DORA · subso SO-D-04.1.DORA
+### D-04.1 · DORA · subso SG-D-04.1.DORA
 - **Objective**: Anomalous activities — including ICT network performance issues and ICT-related incidents — are promptly detected through detection mechanisms that enable multiple layers of control, define alert thresholds and criteria, trigger and initiate ICT-related incident response processes, and identify potential material single points of failure (Art. 10(1) + Art. 10(2)). An ICT-related incident management process is defined, established and implemented to detect, manage and notify ICT-related incidents (Art. 17(1)).
 - **Regulatory basis**: `domains/D-04_Incident-Response/D-04.1/articles/DORA_Art_10.md` (Art. 10) — paraphrased action
 - **Anchors listed**:
@@ -1622,7 +1622,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Personal-data breaches are detected and triaged, and the moment of "becoming aware" is ... | GDPR | excessive | - | high |
 
-### D-04.1 · GDPR · subso SO-D-04.1.GDPR
+### D-04.1 · GDPR · subso SG-D-04.1.GDPR
 - **Objective**: Personal-data breaches are detected and triaged, and the moment of "becoming aware" is documented to anchor the 72-hour notification clock (Art. 33(1) + Art. 4(12) breach definition).
 - **Regulatory basis**: `domains/D-04_Incident-Response/D-04.1/articles/GDPR_Art_32.md` (Art. 32) — paraphrased action
 - **Anchors listed**:
@@ -1657,7 +1657,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | An incident-handling capability is established, covering the prevention, detection, ana... | NIS2 | excessive | - | low |
 
-### D-04.1 · NIS2 · subso SO-D-04.1.NIS2
+### D-04.1 · NIS2 · subso SG-D-04.1.NIS2
 - **Objective**: An incident-handling capability is established, covering the prevention, detection, analysis, containment, response, and recovery of incidents (Art. 21(2)(b) + Art. 6(8) six-action `incident handling` definition), with the detection dimension operationalised as all-hazards entity-level monitoring that surfaces adverse events affecting service continuity (Art. 21(2) chapeau + Recital 56).
 - **Regulatory basis**: `domains/D-04_Incident-Response/D-04.1/articles/DORA_Art_14.md` (Art. 14) — paraphrased action
 - **Anchors listed**:
@@ -1697,7 +1697,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | The availability of essential and basic functions of a product with digital elements is... | CRA | excessive | - | low |
 
-### D-04.2 · CRA · subso SO-D-04.2.CRA
+### D-04.2 · CRA · subso SG-D-04.2.CRA
 - **Objective**: The availability of essential and basic functions of a product with digital elements is protected also after an incident, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks (Annex I Part I (2)(h)); the manufacturer minimises the negative impact by the product itself or connected devices on the availability of services provided by other devices or networks (Annex I Part I (2)(i)); the manufacturer reduces the impact of an incident using appropriate exploitation-mitigation mechanisms and techniques (Annex I Part I (2)(k)). Where the manufacturer knows or has reason to believe that the product or processes are not in conformity with the Annex I cybersecurity requirements, the manufacturer takes the corrective measures necessary to bring the product into conformity, or to withdraw or recall the product (Art. 13(21)).
 - **Regulatory basis**: `domains/D-04_Incident-Response/D-04.2/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -1730,7 +1730,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | A comprehensive ICT business continuity policy is operationalised through dedicated, ap... | DORA | excessive | - | high |
 
-### D-04.2 · DORA · subso SO-D-04.2.DORA
+### D-04.2 · DORA · subso SG-D-04.2.DORA
 - **Objective**: A comprehensive ICT business continuity policy is operationalised through dedicated, appropriate and documented arrangements, plans, procedures and mechanisms — including ICT response and recovery plans (subject to independent internal audit for non-microenterprises), backup policies and procedures specifying the scope of data subject to backup and the minimum frequency of backup based on criticality or confidentiality, and restoration and recovery procedures and methods (Art. 11(1) + Art. 11(2) + Art. 11(3) + Art. 12(1)).
 - **Regulatory basis**: `domains/D-04_Incident-Response/D-04.2/articles/DORA_Art_11.md` (Art. 11) — paraphrased action
 - **Anchors listed**:
@@ -1770,7 +1770,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Personal-data breaches are contained and mitigated through appropriate technical and or... | GDPR | sufficient | - | high |
 
-### D-04.2 · GDPR · subso SO-D-04.2.GDPR
+### D-04.2 · GDPR · subso SG-D-04.2.GDPR
 - **Objective**: Personal-data breaches are contained and mitigated through appropriate technical and organisational measures, including — where applicable — measures rendering the personal data unintelligible to any person who is not authorised to access the data (Art. 34(3)(a)) and subsequent measures that ensure the high risk no longer materialises (Art. 34(3)(b)); the controller describes the measures taken or proposed in the Art. 33(3)(d) supervisory-authority notification.
 - **Regulatory basis**: `domains/D-04_Incident-Response/D-04.2/articles/GDPR_Art_32.md` (Art. 32) — paraphrased action
 - **Anchors listed**:
@@ -1806,7 +1806,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | The entity operates the incident-handling capability across all six actions of the Art.... | NIS2 | sufficient | - | high |
 
-### D-04.2 · NIS2 · subso SO-D-04.2.NIS2
+### D-04.2 · NIS2 · subso SG-D-04.2.NIS2
 - **Objective**: The entity operates the incident-handling capability across all six actions of the Art. 6(8) `incident handling` lifecycle (prevent, detect, analyse, contain, respond, recover), with the `contain` action documented in the entity-level response plan as the lifecycle phase that isolates affected systems and prevents further damage (Art. 21(2)(b)).
 - **Regulatory basis**: `domains/D-04_Incident-Response/D-04.2/articles/NIS2_Art_21.md` (Art. 21) — paraphrased action
 - **Anchors listed**:
@@ -1844,7 +1844,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | A serious incident involving a high-risk AI system is reported to the market surveillan... | AI_Act | sufficient | - | high |
 
-### D-04.3 · AI_Act · subso SO-D-04.3.AI_Act
+### D-04.3 · AI_Act · subso SG-D-04.3.AI_Act
 - **Objective**: A serious incident involving a high-risk AI system is reported to the market surveillance authorities of the Member States where the incident occurred under a differentiated 4-timeline × 4-trigger matrix (Art. 73(1)–(4)): 15 days after the provider becomes aware (default); 10 days if the incident results in death; 2 days for widespread infringement; 15 days from reasonable likelihood of causal link (whichever is later with the awareness trigger, per Art. 73(2)).
 - **Regulatory basis**: `domains/D-04_Incident-Response/D-04.3/articles/AI_Act_Art_14.md` (Art. 14) — paraphrased action
 - **Anchors listed**:
@@ -1861,7 +1861,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 ### D-04.3 · AI_Act · req 4.3.5
 - **Title**: "Serious incident involving high-risk AI reported to market surveillance authorities under 4-trigger × 4-timeline matrix (15d default / 10d death / 2d widespread / 15d causal-link-anchor); GPAI systemic-risk report separately to AI Office under Art. 55"
-- **Description**: The product shall report any serious incident — per the Art. 3(49) three-sub-category definition ((a) death; (b) serious harm to health; (c) serious infringement of fundamental rights) — involving a high-risk AI system to the market surveillance authorities of the Member States where the incident occurred under the differentiated 4-timeline × 4-trigger matrix of Art. 73(1)–(4): 15 days after the provider becomes aware (default, Art. 73(1)/(4)); 10 days if the incident results in death (Art. 73(2)); 2 days for widespread infringement (Art. 73(3)); 15 days from reasonable likelihood of causal link, whichever is later with the awareness trigger (Art. 73(2) causal-link-anchor); additionally, GPAI providers of systemic-risk models separately report under Art. 55 (GPAI Article 55) / `SR-AIACT-024` / `SO-AIACT-014` to the AI Office without undue delay — distinct recipient, separate clock, two recipient classes in total (MSA for high-risk AI serious incidents; AI Office for GPAI systemic-risk incidents) (AI Act Art. 3(49) sub-categories (a)/(b)/(c) + Art. 73(1)–(4) 4-trigger × 4-timeline matrix + Art. 55 GPAI).
+- **Description**: The product shall report any serious incident — per the Art. 3(49) three-sub-category definition ((a) death; (b) serious harm to health; (c) serious infringement of fundamental rights) — involving a high-risk AI system to the market surveillance authorities of the Member States where the incident occurred under the differentiated 4-timeline × 4-trigger matrix of Art. 73(1)–(4): 15 days after the provider becomes aware (default, Art. 73(1)/(4)); 10 days if the incident results in death (Art. 73(2)); 2 days for widespread infringement (Art. 73(3)); 15 days from reasonable likelihood of causal link, whichever is later with the awareness trigger (Art. 73(2) causal-link-anchor); additionally, GPAI providers of systemic-risk models separately report under Art. 55 (GPAI Article 55) / `SR-AIACT-024` / `SG-AIACT-014` to the AI Office without undue delay — distinct recipient, separate clock, two recipient classes in total (MSA for high-risk AI serious incidents; AI Office for GPAI systemic-risk incidents) (AI Act Art. 3(49) sub-categories (a)/(b)/(c) + Art. 73(1)–(4) 4-trigger × 4-timeline matrix + Art. 55 GPAI).
 - **Fit criterion (prose)**: An MSA-notification pipeline is operated with 4-trigger × 4-timeline matrix discipline: the default 15d timeline fires upon provider awareness (per Art. 73(1)/(4) — `15 days after the date on which the provider becomes aware`); the 10d timeline fires when the serious incident results in death (per Art. 73(2)); the 2d timeline fires when the serious incident constitutes widespread infringement (per Art. 73(3)); the causal-link-anchor 15d fires from the reasonable likelihood of causal link, whichever is later with the awareness trigger (per Art. 73(2) literal); the provider classifies the incident against the Art. 3(49) three-sub-category definition ((a) death; (b) serious harm to health; (c) serious infringement of fundamental rights) before the timeline is selected; the MSAs of the Member States where the incident occurred receive the report via the MS-determined routing channel; the report contains at minimum: a description of the incident; the category of serious incident (death / serious harm / fundamental rights infringement); the impact and consequences; the AI system's identification; the corrective measures taken; the planned follow-up; for GPAI systemic-risk models, a separate Art. 55 report to the AI Office fires without undue delay; for events overlapping with GDPR (personal data breach) / NIS 2 (significant incident) / CRA (AEV) / DORA (major ICT incident) on a single underlying event, parallel clocks run — e.g. 2d AI Act widespread + 10d AI Act death + 15d AI Act default + 24h NIS 2 early warning + 72h GDPR/NIS 2/CRA + 14d CRA AEV + 1m NIS 2 final — up to 6 distinct deadlines; the binding-procedure principle (shortest clock binds per recipient, but parallel recipients each get their own deadline) is documented in the notification playbook (Doc 07 downstream); the Art. 73 obligation is the most temporally complex notification clause in the AEGIS corpus; verified by MSA-notification logs review + Art. 3(49) sub-category classification records inspection + 4-trigger × 4-timeline matrix coverage audit + MSA-of-where-occurred routing documentation + parallel-clock binding-principle records inspection (on multi-reg overlap) + AI Office (GPAI Art. 55) notification logs review (when GPAI in scope) + AI Office + MSA inspection-ready evidence pack on request.
 - **Regulatory basis**: `domains/D-04_Incident-Response/D-04.3/articles/AI_Act_Art_14.md` (Art. 14) — paraphrased action
 - **Anchors listed**:
@@ -1876,7 +1876,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | An actively-exploited vulnerability contained in a product with digital elements that t... | CRA | sufficient | - | high |
 
-### D-04.3 · CRA · subso SO-D-04.3.CRA
+### D-04.3 · CRA · subso SG-D-04.3.CRA
 - **Objective**: An actively-exploited vulnerability contained in a product with digital elements that the manufacturer becomes aware of is notified on a three-tier temporal pattern: early warning within 24 hours (Art. 14(2)(a), `SR-CRA-029`); vulnerability notification within 72 hours with general information, nature of exploit, mitigations, and user actions (Art. 14(2)(b), `SR-CRA-030`); final report within 14 days of a corrective or mitigating measure being available (Art. 14(2)(c), `SR-CRA-030`).
 - **Regulatory basis**: `domains/D-04_Incident-Response/D-04.3/articles/CRA_Art_14.md` (Art. 14) — paraphrased action
 - **Anchors listed**:
@@ -1908,7 +1908,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | A major ICT-related incident is reported to the relevant competent authority without un... | DORA | sufficient | - | high |
 
-### D-04.3 · DORA · subso SO-D-04.3.DORA
+### D-04.3 · DORA · subso SG-D-04.3.DORA
 - **Objective**: A major ICT-related incident is reported to the relevant competent authority without undue delay (Art. 19(1)); affected clients are separately informed without undue delay as soon as the financial entity becomes aware of the major ICT-related incident (Art. 19(3)).
 - **Regulatory basis**: `domains/D-04_Incident-Response/D-04.3/articles/DORA_Art_17.md` (Art. 17) — paraphrased action
 - **Anchors listed**:
@@ -1937,7 +1937,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | A personal data breach is notified to the competent supervisory authority without undue... | GDPR | sufficient | - | high |
 
-### D-04.3 · GDPR · subso SO-D-04.3.GDPR
+### D-04.3 · GDPR · subso SG-D-04.3.GDPR
 - **Objective**: A personal data breach is notified to the competent supervisory authority without undue delay and, where feasible, no later than 72 hours after the controller becomes aware of the breach — unless the breach is unlikely to result in a risk to data subjects' rights and freedoms (Art. 33(1)).
 - **Regulatory basis**: `domains/D-04_Incident-Response/D-04.3/articles/GDPR_Art_32.md` (Art. 32) — paraphrased action
 - **Anchors listed**:
@@ -1967,7 +1967,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | A significant incident is notified to the CSIRT or, where applicable, the competent aut... | NIS2 | sufficient | - | high |
 
-### D-04.3 · NIS2 · subso SO-D-04.3.NIS2
+### D-04.3 · NIS2 · subso SG-D-04.3.NIS2
 - **Objective**: A significant incident is notified to the CSIRT or, where applicable, the competent authority via a twin-trigger pattern — an early warning within 24 hours of awareness (Art. 23(4)(a), `SR-NIS2-010`) followed by an incident notification within 72 hours with severity, impact, and (where available) indicators of compromise (Art. 23(4)(b), `SR-NIS2-011`).
 - **Regulatory basis**: `domains/D-04_Incident-Response/D-04.3/articles/NIS2_Art_23.md` (Art. 23) — paraphrased action
 - **Anchors listed**:
@@ -2001,7 +2001,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | The availability of essential and basic functions of a product with digital elements is... | CRA | excessive | - | low |
 
-### D-04.4 · CRA · subso SO-D-04.4.CRA
+### D-04.4 · CRA · subso SG-D-04.4.CRA
 - **Objective**: The availability of essential and basic functions of a product with digital elements is protected *also after an incident*, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks, and the manufacturer reduces the impact of an incident using appropriate exploitation-mitigation mechanisms and techniques and minimises the negative impact on services of other devices and networks (Annex I Part I (2)(h) + (2)(k) + (2)(i) + Art. 13(21) corrective measures).
 - **Anchors listed**:
   - PR.IR-03 — Mechanisms are implemented to achieve resilience requirements in normal and adverse situations — **CORE** — CSF title literally matches action keyword ('resilien')
@@ -2030,7 +2030,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | A comprehensive ICT business continuity policy is operationalised through dedicated, ap... | DORA | sufficient | PR.IR-04 | high |
 
-### D-04.4 · DORA · subso SO-D-04.4.DORA
+### D-04.4 · DORA · subso SG-D-04.4.DORA
 - **Objective**: A comprehensive ICT business continuity policy is operationalised through dedicated, appropriate and documented arrangements, plans, procedures and mechanisms, including ICT response and recovery plans (subject to independent internal audit review for non-microenterprises, Art. 11(3)), backup policies and procedures specifying the scope of the data subject to backup and the minimum frequency of the backup, based on the criticality of information or the confidentiality level of the data (Art. 12(1)(a)), and restoration and recovery procedures and methods (Art. 12(1)(b)).
 - **Regulatory basis**: `domains/D-04_Incident-Response/D-04.4/articles/DORA_Art_11.md` (Art. 11) — paraphrased action
 - **Anchors listed**:
@@ -2061,7 +2061,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | The ability to ensure the ongoing confidentiality, integrity, availability and resilien... | GDPR | excessive | - | high |
 
-### D-04.4 · GDPR · subso SO-D-04.4.GDPR
+### D-04.4 · GDPR · subso SG-D-04.4.GDPR
 - **Objective**: The ability to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems and services is maintained, and to restore the availability and access to personal data in a timely manner in the event of a physical or technical incident (Art. 32(1)(b) + Art. 32(1)(c); Art. 5(1)(f) integrity/confidentiality cross-reference; Art. 32(2) five-event risk-enumeration cross).
 - **Regulatory basis**: `domains/D-04_Incident-Response/D-04.4/articles/GDPR_Art_11.md` (Art. 11) — paraphrased action
 - **Anchors listed**:
@@ -2094,7 +2094,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Business continuity, backup management, disaster recovery, and crisis management capabi... | NIS2 | excessive | - | high |
 
-### D-04.4 · NIS2 · subso SO-D-04.4.NIS2
+### D-04.4 · NIS2 · subso SG-D-04.4.NIS2
 - **Objective**: Business continuity, backup management, disaster recovery, and crisis management capabilities are maintained, ensuring the ability to restore the availability and integrity of network and information systems and to manage crises arising from significant incidents (Art. 21(2)(c); the `business continuity, such as backup management and disaster recovery, and crisis management` structure imposes an AND chain across the BC + backup + DR + CM triad).
 - **Regulatory basis**: `domains/D-04_Incident-Response/D-04.4/articles/NIS2_Art_21.md` (Art. 21) — paraphrased action
 - **Anchors listed**:
@@ -2128,7 +2128,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | High-risk AI systems which make use of techniques involving the training of AI models w... | AI_Act | sufficient | - | high |
 
-### D-05.1 · AI_Act · subso SO-D-05.1.AIACT
+### D-05.1 · AI_Act · subso SG-D-05.1.AIACT
 - **Objective**: High-risk AI systems which make use of techniques involving the training of AI models with data are developed on the basis of training, validation and testing data sets that meet the quality criteria — relevant, sufficiently representative, and to the best extent possible, free of errors and complete in view of the intended purpose (Art. 10(3)) — supported by data governance practices that detect, prevent and mitigate possible biases (Art. 10(1) + Art. 10(2) 8-element closed list (a)–(h)).
 - **Regulatory basis**: `domains/D-05_Data-Lifecycle/D-05.1/articles/AI_Act_Art_10.md` (Art. 10) — paraphrased action
 - **Anchors listed**:
@@ -2158,7 +2158,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Data processed by a product with digital elements — personal or other — is limited to w... | CRA | excessive | - | high |
 
-### D-05.1 · CRA · subso SO-D-05.1.CRA
+### D-05.1 · CRA · subso SG-D-05.1.CRA
 - **Objective**: Data processed by a product with digital elements — personal or other — is limited to what is adequate, relevant, and necessary in relation to the intended purpose of the product (Art. 3(23) `intended purpose` definition), with the risk assessment per Art. 13(2) and the intended purpose + reasonably foreseeable use per Art. 13(3) sentence 2 supplying the proportionality calibration (Annex I Part I (2)(g)).
 - **Regulatory basis**: `domains/D-05_Data-Lifecycle/D-05.1/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -2188,7 +2188,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Personal data collected and processed are limited to what is adequate, relevant, and ne... | GDPR | sufficient | - | high |
 
-### D-05.1 · GDPR · subso SO-D-05.1.GDPR
+### D-05.1 · GDPR · subso SG-D-05.1.GDPR
 - **Objective**: Personal data collected and processed are limited to what is adequate, relevant, and necessary in relation to the purposes for which they are processed (Art. 5(1)(c)); further processing is compatible with the original purposes per the Art. 6(4) compatibility test (5 factors); special-category processing requires an Art. 9(2) basis subject to the Art. 9(1) prohibition; by-design and by-default minimisation is applied per Art. 25(1)/(2); a DPIA under Art. 35 is performed for high-risk processing.
 - **Regulatory basis**: `domains/D-05_Data-Lifecycle/D-05.1/articles/GDPR_Art_12.md` (Art. 12) — paraphrased action
 - **Anchors listed**:
@@ -2221,7 +2221,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | Providers of high-risk AI systems keep the logs referred to in Art. 12(1) — automatical... | AI_Act | sufficient | - | high |
 
-### D-05.2 · AI_Act · subso SO-D-05.2.AIACT
+### D-05.2 · AI_Act · subso SG-D-05.2.AIACT
 - **Objective**: Providers of high-risk AI systems keep the logs referred to in Art. 12(1) — automatically generated by their high-risk AI systems and to the extent such logs are under their control — for a period appropriate to the intended purpose, of at least six months, unless provided otherwise in the applicable Union or national law, in particular Union law on the protection of personal data (Art. 19(1)).
 - **Regulatory basis**: `domains/D-05_Data-Lifecycle/D-05.2/articles/AI_Act_Art_12.md` (Art. 12) — paraphrased action
 - **Anchors listed**:
@@ -2249,7 +2249,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Security updates and supporting advisory messages remain available to users across the ... | CRA | sufficient | PR.PS-02 | high |
 
-### D-05.2 · CRA · subso SO-D-05.2.CRA
+### D-05.2 · CRA · subso SG-D-05.2.CRA
 - **Objective**: Security updates and supporting advisory messages remain available to users across the support period and the 10-year (or remainder-of-support-period) update-availability tail (Art. 13(9) 10-year update-availability tail + Art. 13(8) 5-year support-period floor + Art. 13(18) 10-year Annex II information accessibility + Annex I Part II (7) secure update distribution + Annex I Part II (8) dissemination without delay, free of charge, with advisory messages); the manufacturer provides the support-period end-date clearly and understandably at the time of purchase (Art. 13(19) + Annex II §7).
 - **Regulatory basis**: `domains/D-05_Data-Lifecycle/D-05.2/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -2277,7 +2277,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Personal data are kept in a form which permits identification of data subjects for no l... | GDPR | excessive | - | high |
 
-### D-05.2 · GDPR · subso SO-D-05.2.GDPR
+### D-05.2 · GDPR · subso SG-D-05.2.GDPR
 - **Objective**: Personal data are kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed (Art. 5(1)(e)); longer retention is permitted only where lawful and subject to Art. 89(1) safeguards (pseudonymisation, aggregation, access limitation) for archiving purposes in the public interest, scientific or historical research, or statistical purposes; the RoPA documents the envisaged time limits for erasure of the different categories of data (Art. 30(1)(f)).
 - **Regulatory basis**: `domains/D-05_Data-Lifecycle/D-05.2/articles/GDPR_Art_30.md` (Art. 30) — paraphrased action
 - **Anchors listed**:
@@ -2311,7 +2311,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | The user of a product with digital elements can securely and easily remove, on a perman... | CRA | excessive | - | low |
 
-### D-05.3 · CRA · subso SO-D-05.3.CRA
+### D-05.3 · CRA · subso SG-D-05.3.CRA
 - **Objective**: The user of a product with digital elements can securely and easily remove, on a permanent basis, all data and settings of the product; where such data can be transferred to other products or systems, the transfer is done in a secure manner (Annex I Part I (2)(m) first limb — terminal deletion on user election — and second limb — secure cross-product transfer).
 - **Anchors listed**:
   - PR.DS-10 — The confidentiality, integrity, and availability of data-in-use are protected — **CORE** — CSF title shares 2 action tokens with objective
@@ -2346,7 +2346,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Personal data are erased without undue delay on the data subject's Art. 17(1) request w... | GDPR | sufficient | - | high |
 
-### D-05.3 · GDPR · subso SO-D-05.3.GDPR
+### D-05.3 · GDPR · subso SG-D-05.3.GDPR
 - **Objective**: Personal data are erased without undue delay on the data subject's Art. 17(1) request where one of the six Art. 17(1) grounds (a)–(f) applies: (a) no longer necessary for original purposes; (b) consent withdrawn (no other Art. 6(1) basis applies); (c) Art. 21(1) objection (no overriding compelling legitimate ground) or Art. 21(2) direct-marketing objection; (d) unlawful processing; (e) legal-obligation erasure; (f) information-society-service offers to a child (Art. 8(1)). On processor contract end, the processor deletes or returns all personal data and existing copies per Art. 28(3)(g).
 - **Regulatory basis**: `domains/D-05_Data-Lifecycle/D-05.3/articles/GDPR_Art_11.md` (Art. 11) — paraphrased action
 - **Anchors listed**:
@@ -2361,7 +2361,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 ### D-05.3 · GDPR · req 5.3.1
 - **Title**: "Personal data erased without undue delay on the data subject's Art. 17(1) request where one of the 6 grounds applies; processor deletes or returns all personal data on contract end per Art. 28(3)(g); cryptographic key destruction as deletion path"
 - **Description**: The product shall erase personal data without undue delay on the data subject's Art. 17(1) request where one of the six grounds (a)–(f) applies: (a) no longer necessary for original purposes; (b) consent withdrawn; (c) Art. 21 objection; (d) unlawful processing; (e) legal-obligation erasure; (f) information-society-service offers to a child; on processor contract end, the processor deletes or returns all personal data and deletes existing copies per Art. 28(3)(g), operationalised through cryptographic key destruction where the controller holds the key outside the data substrate (per SR-GDPR-030 POLY-S3 → cryptographic-erasure reading).
-- **Fit criterion (prose)**: A controller-side erasure architecture is operated under PR.DS-10 in-use key-custody discipline (the runtime-protection prerequisite that erasure must extend through — active replicas, query caches, processing pipelines) + ID.AM-08 documented deletion procedure keyed to the Art. 17 trigger conditions and Art. 5(1)(e) purpose-end moment (the lifecycle-management substrate); cryptographic key destruction is the operational realisation of `deletes` per SR-GDPR-030 POLY-S3 → cryptographic-erasure reading — key held outside the data substrate, key destruction scales across backups and replicas without per-copy destruction, aligned with EDPB Guidelines 5/2020; backup copies are in scope per SR-GDPR-031 SCOPE-Q R1 unless protected by a separate Union/Member State law storage obligation; audit logs are out of scope to the extent needed for legal-accountability purposes (SR-GDPR-031 R1); the 6 Art. 17(1) grounds (a)–(f) are evaluated on every request; the Art. 17(3) carve-outs (freedom of expression, legal obligation, public-interest public-health, archiving per Art. 89(1), establishment-exercise-defence of legal claims) are honoured as exception structure without relaxing the erasure duty beyond what they permit; Art. 17(2) confirmation of action is delivered to the data subject; Art. 12(1) transparency on the right is provided; the Art. 19 cascade to downstream recipients (rectification/erasure/restriction notification) is executed (handled structurally in D-04.3 SO-GDPR-012 — not duplicated here); Art. 30(1)(f) RoPA envisages-time-limits-for-erasure are documented per category; Art. 5(2) accountability evidence is inspection-ready; for a processor, the Art. 28(3)(g) contract-end deletion-or-return obligation is documented with GV.SC-04 evidentiary confirmation (audit, test result, or independent inspection so the controller can demonstrate, against Art. 5(2), that on the day any supervisory inspection occurs the personal data under the processor's custody no longer ex... (line truncated to 2000 chars)
+- **Fit criterion (prose)**: A controller-side erasure architecture is operated under PR.DS-10 in-use key-custody discipline (the runtime-protection prerequisite that erasure must extend through — active replicas, query caches, processing pipelines) + ID.AM-08 documented deletion procedure keyed to the Art. 17 trigger conditions and Art. 5(1)(e) purpose-end moment (the lifecycle-management substrate); cryptographic key destruction is the operational realisation of `deletes` per SR-GDPR-030 POLY-S3 → cryptographic-erasure reading — key held outside the data substrate, key destruction scales across backups and replicas without per-copy destruction, aligned with EDPB Guidelines 5/2020; backup copies are in scope per SR-GDPR-031 SCOPE-Q R1 unless protected by a separate Union/Member State law storage obligation; audit logs are out of scope to the extent needed for legal-accountability purposes (SR-GDPR-031 R1); the 6 Art. 17(1) grounds (a)–(f) are evaluated on every request; the Art. 17(3) carve-outs (freedom of expression, legal obligation, public-interest public-health, archiving per Art. 89(1), establishment-exercise-defence of legal claims) are honoured as exception structure without relaxing the erasure duty beyond what they permit; Art. 17(2) confirmation of action is delivered to the data subject; Art. 12(1) transparency on the right is provided; the Art. 19 cascade to downstream recipients (rectification/erasure/restriction notification) is executed (handled structurally in D-04.3 SG-GDPR-012 — not duplicated here); Art. 30(1)(f) RoPA envisages-time-limits-for-erasure are documented per category; Art. 5(2) accountability evidence is inspection-ready; for a processor, the Art. 28(3)(g) contract-end deletion-or-return obligation is documented with GV.SC-04 evidentiary confirmation (audit, test result, or independent inspection so the controller can demonstrate, against Art. 5(2), that on the day any supervisory inspection occurs the personal data under the processor's custody no longer ex... (line truncated to 2000 chars)
 - **Regulatory basis**: `domains/D-05_Data-Lifecycle/D-05.3/articles/GDPR_Art_11.md` (Art. 11) — paraphrased action
 - **Anchors listed**:
   - GV.SC-04 — Suppliers are known and prioritized by criticality — **CORE** — CSF title shares 2 action tokens with objective
@@ -2378,7 +2378,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | The data subject receives personal data in a structured, commonly used, machine-readabl... | GDPR | sufficient | - | high |
 
-### D-05.4 · GDPR · subso SO-D-05.4.GDPR
+### D-05.4 · GDPR · subso SG-D-05.4.GDPR
 - **Objective**: The data subject receives personal data in a structured, commonly used, machine-readable format (Art. 20(1) + Art. 15(3) companion copy), supplied by the controller without undue delay (Art. 12(3) ≤1 month, extendable to ≤2 months for complex requests) and free of charge (Art. 12(5)). The data subject can transmit those data to another controller without hindrance (Art. 20(1)); where technically feasible, the originating controller transmits directly to the receiving controller (Art. 20(2) sentence 2). The right applies where processing is based on consent (Art. 6(1)(a)) or contract (Art. 6(1)(b)) AND processing is carried out by automated means (Art. 20(3)); the right does NOT apply to public-interest-task or legitimate-interest processing (Art. 20(4)), and the controller may refuse an export where it would adversely affect third-party rights.
 - **Regulatory basis**: `domains/D-05_Data-Lifecycle/D-05.4/articles/GDPR_Art_15.md` (Art. 15) — paraphrased action
 - **Anchors listed**:
@@ -2410,7 +2410,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | The manufacturer exercises due diligence when integrating components sourced from third... | CRA | excessive | - | high |
 
-### D-06.1 · CRA · subso SO-D-06.1.CRA
+### D-06.1 · CRA · subso SG-D-06.1.CRA
 - **Objective**: The manufacturer exercises due diligence when integrating components sourced from third parties — including components of free and open-source software not made available on the market in the course of a commercial activity (Art. 3(48) FOSS definition) — so that those components do not compromise the cybersecurity of the product with digital elements (Art. 13(5) sentence 1); on becoming aware of a component vulnerability (Art. 13(6) sentence 1), the manufacturer addresses and remediates it without delay and shares relevant information with the component supplier (Art. 13(6) sentence 2).
 - **Regulatory basis**: `domains/D-06_Supply-Chain/D-06.1/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -2445,7 +2445,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Financial entities manage ICT third-party risk taking into account four-factor proporti... | DORA | excessive | - | high |
 
-### D-06.1 · DORA · subso SO-D-06.1.DORA
+### D-06.1 · DORA · subso SG-D-06.1.DORA
 - **Objective**: Financial entities manage ICT third-party risk taking into account four-factor proportionality — nature, scale, complexity and importance of ICT-related dependencies (Art. 28(1) four-way AND) — and the risks arising from contractual arrangements on the use of ICT services; the Art. 28(5) CIF escalator ("most up-to-date and highest quality information security standards") applies to contractual arrangements concerning critical or important functions.
 - **Regulatory basis**: `domains/D-06_Supply-Chain/D-06.1/articles/DORA_Art_21.md` (Art. 21) — paraphrased action
 - **Anchors listed**:
@@ -2478,7 +2478,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | The controller engages only processors providing sufficient guarantees to implement app... | GDPR | excessive | - | high |
 
-### D-06.1 · GDPR · subso SO-D-06.1.GDPR
+### D-06.1 · GDPR · subso SG-D-06.1.GDPR
 - **Objective**: The controller engages only processors providing sufficient guarantees to implement appropriate technical and organisational measures in such a manner that processing meets the requirements of GDPR and protects data-subject rights (Art. 28(1)); the Art. 28(3) DPA closed-list clauses (a)–(h) are documented and the sub-processor authorisation chain (Art. 28(2)) is material to the due diligence.
 - **Regulatory basis**: `domains/D-06_Supply-Chain/D-06.1/articles/GDPR_Art_28.md` (Art. 28) — paraphrased action
 - **Anchors listed**:
@@ -2512,7 +2512,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Essential and important entities take appropriate and proportionate technical, operatio... | NIS2 | excessive | - | high |
 
-### D-06.1 · NIS2 · subso SO-D-06.1.NIS2
+### D-06.1 · NIS2 · subso SG-D-06.1.NIS2
 - **Objective**: Essential and important entities take appropriate and proportionate technical, operational and organisational measures across direct supplier and service-provider relationships, including security-related aspects of those relationships (Art. 21(2)(d)), taking into account state of the art (Art. 21(1) sentence 2) and the risks posed to the security of network and information systems; the Art. 21(3) sentence 1 three-prong supplier assessment (supplier-specific vulnerabilities + overall quality of products and cybersecurity practices + supplier secure-development procedures) is performed per direct supplier, with EU-level coordinated risk-propagation inputs (Art. 21(3) sentence 2 → Art. 22) taken into account where available.
 - **Regulatory basis**: `domains/D-06_Supply-Chain/D-06.1/articles/NIS2_Art_21.md` (Art. 21) — paraphrased action
 - **Anchors listed**:
@@ -2551,7 +2551,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | The manufacturer draws up and maintains an SBOM covering the components and dependencie... | CRA | sufficient | - | high |
 
-### D-06.2 · CRA · subso SO-D-06.2.CRA
+### D-06.2 · CRA · subso SG-D-06.2.CRA
 - **Objective**: The manufacturer draws up and maintains an SBOM covering the components and dependencies contained in the product with digital elements in a commonly used and machine-readable format that includes, at minimum, the top-level dependencies (Annex I Part II (1)).
 - **Anchors listed**:
   - (none listed)
@@ -2582,7 +2582,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | CRA contractual-security coverage is expressed through economic-operator duties rather ... | CRA | sufficient | - | low |
 
-### D-06.3 · CRA · subso SO-D-06.3.CRA
+### D-06.3 · CRA · subso SG-D-06.3.CRA
 - **Objective**: CRA contractual-security coverage is expressed through economic-operator duties rather than a single negotiated contract: importers place products with digital elements on the Union market only after verifying conformity assessment, technical documentation, CE marking, and manufacturer identification, and escalate significant risk or vulnerabilities to the manufacturer and MSA while taking corrective measures; distributors act with due care, verify CE marking and required documentation, confirm manufacturer/importer compliance, and escalate non-conformity or vulnerabilities.
 - **Anchors listed**:
   - GV.SC-02 — Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally — **UTILITY** — CSF title shares 1 token ('and') with objective; reinforces but is not the direct action
@@ -2613,7 +2613,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Financial entities structure ICT third-party contractual arrangements so that rights an... | DORA | sufficient | - | high |
 
-### D-06.3 · DORA · subso SO-D-06.3.DORA
+### D-06.3 · DORA · subso SG-D-06.3.DORA
 - **Objective**: Financial entities structure ICT third-party contractual arrangements so that rights and obligations are clearly allocated and set out in writing, the Art. 30(2)(a)–(i) minimum elements are present, Art. 28(5) information-security standards are contractually evidenced, and contractual arrangements supporting critical or important functions include the additional CIF clauses required under Art. 30(3) (including unrestricted access/inspection/audit rights where applicable).
 - **Regulatory basis**: `domains/D-06_Supply-Chain/D-06.3/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -2649,7 +2649,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Controller/processor contracts and related transfer instruments include the GDPR-specif... | GDPR | sufficient | - | low |
 
-### D-06.3 · GDPR · subso SO-D-06.3.GDPR
+### D-06.3 · GDPR · subso SG-D-06.3.GDPR
 - **Objective**: Controller/processor contracts and related transfer instruments include the GDPR-specific contractual security obligations required for personal-data processing: the Art. 28(3)(a)–(h) eight-element DPA floor, sub-processor authorisation and change-notification, processor Art. 32 security-measure commitments, audit/inspection access, and contract-end return/deletion; the Art. 46 appropriate-safeguards mechanism and the Art. 48 international-agreement filter apply where personal data leaves the EEA or is exposed to third-country legal-process pressure.
 - **Regulatory basis**: `domains/D-06_Supply-Chain/D-06.3/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -2683,7 +2683,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Essential and important entities manage contractual security for direct supplier and se... | NIS2 | sufficient | - | high |
 
-### D-06.3 · NIS2 · subso SO-D-06.3.NIS2
+### D-06.3 · NIS2 · subso SG-D-06.3.NIS2
 - **Objective**: Essential and important entities manage contractual security for direct supplier and service-provider relationships by documenting the supplier universe under the `direct` scope-limiter, embedding security-related contractual aspects into supplier relationships, and assessing each direct supplier against the Art. 21(3) three-prong supplier-assessment structure (supplier-specific vulnerabilities + overall quality of products/services and cybersecurity practices + supplier secure-development procedures); Art. 22 coordinated supply-chain risk assessments are taken into account where available.
 - **Regulatory basis**: `domains/D-06_Supply-Chain/D-06.3/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -2725,7 +2725,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | CRA third-party boundary management preserves product-compliance accountability across ... | CRA | sufficient | - | low |
 
-### D-06.4 · CRA · subso SO-D-06.4.CRA
+### D-06.4 · CRA · subso SG-D-06.4.CRA
 - **Objective**: CRA third-party boundary management preserves product-compliance accountability across EU/non-EU and supply-chain actor boundaries: a non-EU manufacturer may appoint an authorised representative by written mandate, but core manufacturer obligations remain non-delegable; an importer or distributor that places a product under its own name/trademark or substantially modifies it becomes manufacturer-equivalent; a third party that substantially modifies a product becomes the manufacturer for the affected part (or the entire product if the modification affects the whole product's cybersecurity); economic operators maintain upstream/downstream identification records and provide them to MSAs on reasoned request, retaining the supply-chain information for 10 years.
 - **Anchors listed**:
   - GV.RR-02 — Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced — **CORE** — CSF title shares 3 action tokens with objective
@@ -2758,7 +2758,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Contractual arrangements concerning critical or important functions grant the financial... | DORA | sufficient | - | high |
 
-### D-06.4 · DORA · subso SO-D-06.4.DORA
+### D-06.4 · DORA · subso SG-D-06.4.DORA
 - **Objective**: Contractual arrangements concerning critical or important functions grant the financial entity, an appointed third party, and the competent authority unrestricted rights of access, inspection, and audit over the ICT third-party service provider, including on-site copying of relevant documentation where critical to provider operations; those rights must not be impeded or limited by other contractual arrangements or implementation policies, and alternative assurance levels may be agreed only where other clients' rights are affected.
 - **Regulatory basis**: `domains/D-06_Supply-Chain/D-06.4/articles/DORA_Art_17.md` (Art. 17) — paraphrased action
 - **Anchors listed**:
@@ -2786,7 +2786,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Non-EU controllers and processors falling under GDPR Art. 3(2) designate a representati... | GDPR | sufficient | - | high |
 
-### D-06.4 · GDPR · subso SO-D-06.4.GDPR
+### D-06.4 · GDPR · subso SG-D-06.4.GDPR
 - **Objective**: Non-EU controllers and processors falling under GDPR Art. 3(2) designate a representative in writing in the Union unless the Art. 27(2) exception applies; the representative is the legal-address and accountability anchor for supervisory-authority and data-subject contact.
 - **Regulatory basis**: `domains/D-06_Supply-Chain/D-06.4/articles/GDPR_Art_10.md` (Art. 10) — paraphrased action
 - **Anchors listed**:
@@ -2814,7 +2814,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | NIS 2 boundary management is split across cross-border notification routing and entity-... | NIS2 | sufficient | - | low |
 
-### D-06.4 · NIS2 · subso SO-D-06.4.NIS2
+### D-06.4 · NIS2 · subso SG-D-06.4.NIS2
 - **Objective**: NIS 2 boundary management is split across cross-border notification routing and entity-side supplier-scope control: for incidents affecting two or more Member States, CSIRTs, competent authorities, and SPOCs route information to other affected Member States and ENISA; for supply-chain boundaries, the Art. 21(2)(d) `direct` supplier/service-provider scope-limiter defines which third parties sit inside the entity's NIS 2 supplier-security perimeter, and Art. 22 coordinated supply-chain risk-assessment outputs feed into supplier decisions where available.
 - **Regulatory basis**: `domains/D-06_Supply-Chain/D-06.4/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -2853,7 +2853,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | High-risk AI systems are designed and developed in such a way that they achieve an appr... | AI_Act | excessive | - | high |
 
-### D-07.1 · AI_Act · subso SO-D-07.1.AIACT
+### D-07.1 · AI_Act · subso SG-D-07.1.AIACT
 - **Objective**: High-risk AI systems are designed and developed in such a way that they achieve an appropriate level of accuracy, robustness, and cybersecurity, and that they perform consistently in those respects throughout their lifecycle (Art. 15(1) AI Act).
 - **Regulatory basis**: `domains/D-07_Secure-Development/D-07.1/articles/AI_Act_Art_10.md` (Art. 10) — paraphrased action
 - **Anchors listed**:
@@ -2886,7 +2886,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | When placing a product with digital elements on the market, the manufacturer ensures th... | CRA | excessive | - | high |
 
-### D-07.1 · CRA · subso SO-D-07.1.CRA
+### D-07.1 · CRA · subso SG-D-07.1.CRA
 - **Objective**: When placing a product with digital elements on the market, the manufacturer ensures that it has been designed, developed and produced in accordance with the essential cybersecurity requirements set out in Part I of Annex I (Art. 13(1) CRA), with the cybersecurity risk assessment propagated across the 6 lifecycle phases (planning, design, development, production, delivery, maintenance) per Art. 13(2) chapeau + sentence 1, with a view to minimising cybersecurity risks, preventing incidents, and minimising their impact (Art. 13(2) sentence 2).
 - **Regulatory basis**: `domains/D-07_Secure-Development/D-07.1/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -2917,7 +2917,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Financial entities establish a sound network and infrastructure management structure us... | DORA | sufficient | - | high |
 
-### D-07.1 · DORA · subso SO-D-07.1.DORA
+### D-07.1 · DORA · subso SG-D-07.1.DORA
 - **Objective**: Financial entities establish a sound network and infrastructure management structure using appropriate techniques, methods and protocols (Art. 9(4)(b) DORA) with appropriate and comprehensive documented policies for patches and updates maintained (Art. 9(4)(f)).
 - **Regulatory basis**: `domains/D-07_Secure-Development/D-07.1/articles/DORA_Art_21.md` (Art. 21) — paraphrased action
 - **Anchors listed**:
@@ -2944,7 +2944,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | The controller implements appropriate technical and organisational measures — such as p... | GDPR | excessive | - | high |
 
-### D-07.1 · GDPR · subso SO-D-07.1.GDPR
+### D-07.1 · GDPR · subso SG-D-07.1.GDPR
 - **Objective**: The controller implements appropriate technical and organisational measures — such as pseudonymisation — which are designed to implement data-protection principles, such as data minimisation, in an effective manner and to integrate the necessary safeguards into the processing (Art. 25(1) GDPR), and ensures that by default only personal data which are necessary for each specific purpose are processed (Art. 25(2) GDPR).
 - **Regulatory basis**: `domains/D-07_Secure-Development/D-07.1/articles/GDPR_Art_25.md` (Art. 25) — paraphrased action
 - **Anchors listed**:
@@ -2975,7 +2975,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Essential and important entities take appropriate and proportionate technical, operatio... | NIS2 | excessive | - | high |
 
-### D-07.1 · NIS2 · subso SO-D-07.1.NIS2
+### D-07.1 · NIS2 · subso SG-D-07.1.NIS2
 - **Objective**: Essential and important entities take appropriate and proportionate technical, operational and organisational measures to ensure security in acquisition, development and maintenance of network and information systems, including vulnerability handling and disclosure (Art. 21(2)(e) NIS 2).
 - **Regulatory basis**: `domains/D-07_Secure-Development/D-07.1/articles/NIS2_Art_14.md` (Art. 14) — paraphrased action
 - **Anchors listed**:
@@ -3011,7 +3011,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | High-risk AI systems are designed and developed with appropriate technical and organisa... | AI_Act | excessive | - | high |
 
-### D-07.2 · AI_Act · subso SO-D-07.2.AIACT
+### D-07.2 · AI_Act · subso SG-D-07.2.AIACT
 - **Objective**: High-risk AI systems are designed and developed with appropriate technical and organisational measures to enable the AI systems to effectively resist, as appropriate to the AI system's purpose and conditions of use, attempts to manipulate the training data set (data poisoning) or pre-trained components used in training (model poisoning), inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality attacks or model flaws (Art. 15(4)–(5) AI Act).
 - **Regulatory basis**: `domains/D-07_Secure-Development/D-07.2/articles/AI_Act_Art_15.md` (Art. 15) — paraphrased action
 - **Anchors listed**:
@@ -3032,7 +3032,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 ### D-07.2 · AI_Act · req 7.2.3
 - **Title**: "High-risk AI systems designed and developed to effectively resist, as appropriate to purpose and conditions of use, attempts at training-data poisoning, model poisoning, adversarial examples, model evasion, confidentiality attacks or model flaws"
 - **Description**: The product shall ensure that high-risk AI systems are designed and developed with appropriate technical and organisational measures to enable the AI systems to effectively resist, as appropriate to the AI system's purpose and conditions of use, attempts to manipulate the training data set (data poisoning) or pre-trained components used in training (model poisoning), inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality attacks or model flaws (AI Act Art. 15(4)–(5)).
-- **Fit criterion (prose)**: A documented Art. 15(4) attack-defence baseline is maintained for the 6 AI/ML-specific attack categories: (1) **data poisoning** — defence against manipulation of the training data set, including input-validation + data-provenance checks + training-data sanitisation + anomaly-detection on training-set distribution; (2) **model poisoning** — defence against manipulation of pre-trained components, including supply-chain integrity for pre-trained components + signed-model checksums + pre-training-component provenance verification; (3) **adversarial examples** — defence against inputs designed to cause the AI model to make a mistake, including adversarial-input detection + input-preprocessing hardening + adversarial-robustness training; (4) **model evasion** — defence against adversarial-example-induced evasion, including evasion-aware model-update cadence + detection-of-evasion-attempt signals; (5) **confidentiality attacks** — defence against attacks on confidentiality of training data, parameters, or outputs, including differential-privacy training + model-parameter access controls + output-redaction discipline + membership-inference resistance; (6) **model flaws** — defence against vulnerabilities or weaknesses inherent in model architecture or training process, including architecture-review discipline + known-flaw catalogue + flaw-driven model-update cadence; the baseline is calibrated to `appropriate to the AI system's purpose and conditions of use` (Art. 15(4) proportionality qualifier) — informed by intended purpose (cross to D-09.2 — SO-AIACT-001 Art. 9 risk-management-system) and conditions of use (operational environment + reasonably foreseeable use); the Art. 15(4)–(5) AI-attack-defence categories are AI/ML-specific and do NOT map to conventional secure-coding mandates (no general coding-standards prescription in AI Act — the AI Act addresses AI-attack-defence, not conventional coding practices); the AI-attack-defence coding-practices baseline is built from AI/ML-specific frameworks (NIST AI RMF, ISO/IEC 23894, MITRE ATLAS) and demonstrated against the 6 Art. 15(4)–(5) attack-defence categories via the QMS + Annex IV documentation; AI-Act-Recital 78 GDPR preservation operates at the AI-system side for high-risk AI systems processing personal data — the AI-Act-side AI-attack-defence does NOT substitute for the GDPR Art. 25(1) data-protection by-design; the GDPR-side by-design is layered on top via the controller-means-determination + processing-time by-default; for AI-enabled CRA products (CRA-regulated product that embeds a high-risk AI system), AI Act Art. 15(4)–(5) AI-attack-defence stacks with CRA Annex I Part I (2)(j) attack-surface + (2)(k) exploitation-mitigation — the two regimes DO NOT substitute (AI Act defence categories do not substitute for CRA's outcome-level obligations, and vice versa); **no OJ-level consolidation rule exists** for the coding-practices dimension (unlike CRA Art. 13(4) sentence 2 unified-risk-assessment carve-out for AI Act Art. 9 risk assessment, which does NOT extend to coding practices); verified by Art. 15(4) 6-category AI-attack-defence measures record review + Art. 15(4) proportionality calibration records (purpose + conditions of use) + QMS design-control record (Art. 17(1)(c) — design/design-control/design-verification) + Annex IV technical-documentation audit + Art. 9 risk-management-system documentation cross-reference + provider + MSA + AI Office inspection-ready evidence pack on request.
+- **Fit criterion (prose)**: A documented Art. 15(4) attack-defence baseline is maintained for the 6 AI/ML-specific attack categories: (1) **data poisoning** — defence against manipulation of the training data set, including input-validation + data-provenance checks + training-data sanitisation + anomaly-detection on training-set distribution; (2) **model poisoning** — defence against manipulation of pre-trained components, including supply-chain integrity for pre-trained components + signed-model checksums + pre-training-component provenance verification; (3) **adversarial examples** — defence against inputs designed to cause the AI model to make a mistake, including adversarial-input detection + input-preprocessing hardening + adversarial-robustness training; (4) **model evasion** — defence against adversarial-example-induced evasion, including evasion-aware model-update cadence + detection-of-evasion-attempt signals; (5) **confidentiality attacks** — defence against attacks on confidentiality of training data, parameters, or outputs, including differential-privacy training + model-parameter access controls + output-redaction discipline + membership-inference resistance; (6) **model flaws** — defence against vulnerabilities or weaknesses inherent in model architecture or training process, including architecture-review discipline + known-flaw catalogue + flaw-driven model-update cadence; the baseline is calibrated to `appropriate to the AI system's purpose and conditions of use` (Art. 15(4) proportionality qualifier) — informed by intended purpose (cross to D-09.2 — SG-AIACT-001 Art. 9 risk-management-system) and conditions of use (operational environment + reasonably foreseeable use); the Art. 15(4)–(5) AI-attack-defence categories are AI/ML-specific and do NOT map to conventional secure-coding mandates (no general coding-standards prescription in AI Act — the AI Act addresses AI-attack-defence, not conventional coding practices); the AI-attack-defence coding-practices baseline is built from AI/ML-specific frameworks (NIST AI RMF, ISO/IEC 23894, MITRE ATLAS) and demonstrated against the 6 Art. 15(4)–(5) attack-defence categories via the QMS + Annex IV documentation; AI-Act-Recital 78 GDPR preservation operates at the AI-system side for high-risk AI systems processing personal data — the AI-Act-side AI-attack-defence does NOT substitute for the GDPR Art. 25(1) data-protection by-design; the GDPR-side by-design is layered on top via the controller-means-determination + processing-time by-default; for AI-enabled CRA products (CRA-regulated product that embeds a high-risk AI system), AI Act Art. 15(4)–(5) AI-attack-defence stacks with CRA Annex I Part I (2)(j) attack-surface + (2)(k) exploitation-mitigation — the two regimes DO NOT substitute (AI Act defence categories do not substitute for CRA's outcome-level obligations, and vice versa); **no OJ-level consolidation rule exists** for the coding-practices dimension (unlike CRA Art. 13(4) sentence 2 unified-risk-assessment carve-out for AI Act Art. 9 risk assessment, which does NOT extend to coding practices); verified by Art. 15(4) 6-category AI-attack-defence measures record review + Art. 15(4) proportionality calibration records (purpose + conditions of use) + QMS design-control record (Art. 17(1)(c) — design/design-control/design-verification) + Annex IV technical-documentation audit + Art. 9 risk-management-system documentation cross-reference + provider + MSA + AI Office inspection-ready evidence pack on request.
 - **Regulatory basis**: `domains/D-07_Secure-Development/D-07.2/articles/AI_Act_Art_15.md` (Art. 15) — paraphrased action
 - **Anchors listed**:
   - ID.RA-01 — Vulnerabilities in assets are identified, validated, and recorded — **CORE** — CSF title literally matches action keyword ('vulnerabilities')
@@ -3044,7 +3044,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | The manufacturer designs, develops, and produces the product with digital elements to l... | CRA | excessive | - | low |
 
-### D-07.2 · CRA · subso SO-D-07.2.CRA
+### D-07.2 · CRA · subso SG-D-07.2.CRA
 - **Objective**: The manufacturer designs, develops, and produces the product with digital elements to limit its attack surfaces, including attack surfaces of external interfaces (Annex I Part I (2)(j) CRA), and to reduce the impact of an incident using appropriate exploitation-mitigation mechanisms and techniques (Annex I Part I (2)(k) CRA).
 - **Anchors listed**:
   - PR.PS-01 — Configuration management practices are established and applied — **UTILITY** — CSF title shares 1 token ('and') with objective; reinforces but is not the direct action
@@ -3073,7 +3073,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Financial entities implement documented policies, procedures and controls for ICT chang... | DORA | excessive | - | low |
 
-### D-07.2 · DORA · subso SO-D-07.2.DORA
+### D-07.2 · DORA · subso SG-D-07.2.DORA
 - **Objective**: Financial entities implement documented policies, procedures and controls for ICT change management, including changes to software, hardware, firmware components, systems or security parameters, that are based on a risk assessment approach, in order to ensure that all changes to ICT systems are recorded, tested, assessed, approved, implemented and verified in a controlled manner (Art. 9(4)(e) DORA — 6-step change-management process).
 - **Anchors listed**:
   - PR.PS-01 — Configuration management practices are established and applied — **CORE** — CSF title shares 3 action tokens with objective
@@ -3107,7 +3107,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | The manufacturer of a product with digital elements shall securely distribute updates f... | CRA | sufficient | - | low |
 
-### D-07.3 · CRA · subso SO-D-07.3.CRA
+### D-07.3 · CRA · subso SG-D-07.3.CRA
 - **Objective**: The manufacturer of a product with digital elements shall securely distribute updates for the product with digital elements in a timely manner, including, where appropriate, through automatic updates (Annex I Part II (7) CRA), and ensure that updates are disseminated free of charge, are clearly described, contain information on the security improvements and on the actions the user should take (Annex I Part II (8) CRA).
 - **Anchors listed**:
   - ID.AM-02 — Inventories of software, services, and systems managed by the organization are maintained — **CORE** — CSF title shares 3 action tokens with objective
@@ -3135,7 +3135,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Essential and important entities take appropriate and proportionate technical, operatio... | NIS2 | excessive | - | low |
 
-### D-07.3 · NIS2 · subso SO-D-07.3.NIS2
+### D-07.3 · NIS2 · subso SG-D-07.3.NIS2
 - **Objective**: Essential and important entities take appropriate and proportionate technical, operational and organisational measures to ensure security in the maintenance of network and information systems, including vulnerability handling and disclosure (Art. 21(2)(e) third clause NIS 2).
 - **Anchors listed**:
   - PR.PS-02 — Software is maintained, replaced, and removed commensurate with risk — **UTILITY** — CSF title shares 1 token ('and') with objective; reinforces but is not the direct action
@@ -3169,7 +3169,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | The manufacturer of a product with digital elements that is part of a series of product... | CRA | sufficient | - | low |
 
-### D-07.4 · CRA · subso SO-D-07.4.CRA
+### D-07.4 · CRA · subso SG-D-07.4.CRA
 - **Objective**: The manufacturer of a product with digital elements that is part of a series of production ensures that procedures are in place for products with digital elements that are part of a series of production to remain in conformity with this Regulation (Art. 13(14) CRA).
 - **Regulatory basis**: `domains/D-07_Secure-Development/D-07.4/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -3204,7 +3204,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Financial entities implement documented policies, procedures and controls for ICT chang... | DORA | excessive | - | high |
 
-### D-07.4 · DORA · subso SO-D-07.4.DORA
+### D-07.4 · DORA · subso SG-D-07.4.DORA
 - **Objective**: Financial entities implement documented policies, procedures and controls for ICT change management, including changes to software, hardware, firmware components, systems or security parameters … based on a risk assessment approach … in order to ensure that all changes to ICT systems are recorded, tested, assessed, approved, implemented and verified in a controlled manner (Art. 9(4)(e) DORA — 5-way OR change-targets + 6-way AND change-management steps + `controlled manner` mandate).
 - **Regulatory basis**: `domains/D-07_Secure-Development/D-07.4/articles/DORA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -3248,7 +3248,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | A product with digital elements is accompanied by detailed instructions — or an interne... | CRA | excessive | - | high |
 
-### D-08.1 · CRA · subso SO-D-08.1.CRA
+### D-08.1 · CRA · subso SG-D-08.1.CRA
 - **Objective**: A product with digital elements is accompanied by detailed instructions — or an internet address referring to such detailed instructions — covering the necessary measures during initial commissioning and throughout the lifetime of the product to ensure its secure use (Annex II §8(a)–(e) CRA), and — where the product is intended for integration into other products — the information necessary for the integrator to comply with the essential cybersecurity requirements set out in Part I of Annex I and the documentation requirements set out in Annex VII (Annex II §8(f) CRA).
 - **Regulatory basis**: `domains/D-08_Human-Factors/D-08.1/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -3277,7 +3277,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Financial entities develop ICT security awareness programmes and digital operational re... | DORA | excessive | - | high |
 
-### D-08.1 · DORA · subso SO-D-08.1.DORA
+### D-08.1 · DORA · subso SG-D-08.1.DORA
 - **Objective**: Financial entities develop ICT security awareness programmes and digital operational resilience training as compulsory modules in their staff training schemes, with a level of complexity commensurate to the remit of their functions (Art. 13(6) DORA).
 - **Regulatory basis**: `domains/D-08_Human-Factors/D-08.1/articles/DORA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -3309,7 +3309,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | The data protection officer informs and advises the controller or the processor and the... | GDPR | excessive | - | high |
 
-### D-08.1 · GDPR · subso SO-D-08.1.GDPR
+### D-08.1 · GDPR · subso SG-D-08.1.GDPR
 - **Objective**: The data protection officer informs and advises the controller or the processor and the employees who carry out processing of their obligations pursuant to this Regulation and to other Union or Member State data protection provisions (Art. 39(1)(a) GDPR), and monitors compliance with this Regulation, including the assignment of responsibilities, awareness-raising and training of staff involved in processing operations (Art. 39(1)(b) GDPR).
 - **Regulatory basis**: `domains/D-08_Human-Factors/D-08.1/articles/GDPR_Art_39.md` (Art. 39) — paraphrased action
 - **Anchors listed**:
@@ -3340,7 +3340,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Essential and important entities take appropriate and proportionate technical, operatio... | NIS2 | excessive | - | high |
 
-### D-08.1 · NIS2 · subso SO-D-08.1.NIS2
+### D-08.1 · NIS2 · subso SG-D-08.1.NIS2
 - **Objective**: Essential and important entities take appropriate and proportionate technical, operational and organisational measures to ensure basic cyber hygiene practices and cybersecurity training (Art. 21(2)(g) first clause NIS 2).
 - **Regulatory basis**: `domains/D-08_Human-Factors/D-08.1/articles/NIS2_Art_21.md` (Art. 21) — paraphrased action
 - **Anchors listed**:
@@ -3378,7 +3378,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | High-risk AI systems are designed and developed in such a way, including with appropria... | AI_Act | excessive | - | low |
 
-### D-08.2 · AI_Act · subso SO-D-08.2.AIACT
+### D-08.2 · AI_Act · subso SG-D-08.2.AIACT
 - **Objective**: High-risk AI systems are designed and developed in such a way, including with appropriate human-machine interface tools, that they can be effectively overseen by natural persons during the period in which they are in use (Art. 14(1) AI Act) — the provider-side design obligation for the human-oversight capability.
 - **Regulatory basis**: `domains/D-08_Human-Factors/D-08.2/articles/AI_Act_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -3420,7 +3420,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Where the product with digital elements is intended for integration into other products... | CRA | excessive | - | low |
 
-### D-08.2 · CRA · subso SO-D-08.2.CRA
+### D-08.2 · CRA · subso SG-D-08.2.CRA
 - **Objective**: Where the product with digital elements is intended for integration into other products with digital elements, the manufacturer provides the information necessary for the integrator to comply with the essential cybersecurity requirements set out in Part I of Annex I and the documentation requirements set out in Annex VII (Annex II §8(f) CRA).
 - **Anchors listed**:
   - PR.AT-02 — Individuals in specialized roles are provided with awareness and training so that they possess the knowledge and skills to perform relevant tasks with cybersecurity risks in mind — **CORE** — CSF title shares 4 action tokens with objective
@@ -3451,7 +3451,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Financial entities develop ICT security awareness programmes and digital operational re... | DORA | excessive | - | high |
 
-### D-08.2 · DORA · subso SO-D-08.2.DORA
+### D-08.2 · DORA · subso SG-D-08.2.DORA
 - **Objective**: Financial entities develop ICT security awareness programmes and digital operational resilience training as compulsory modules in their staff training schemes, with a level of complexity commensurate to the remit of their functions (Art. 13(6) DORA).
 - **Regulatory basis**: `domains/D-08_Human-Factors/D-08.2/articles/DORA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -3483,7 +3483,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | The data protection officer monitors compliance with this Regulation, including the ass... | GDPR | excessive | - | high |
 
-### D-08.2 · GDPR · subso SO-D-08.2.GDPR
+### D-08.2 · GDPR · subso SG-D-08.2.GDPR
 - **Objective**: The data protection officer monitors compliance with this Regulation, including the assignment of responsibilities, awareness-raising and training of staff involved in processing operations (Art. 39(1)(b) GDPR) — the role-specific layer of the DPO-catalysed awareness function.
 - **Regulatory basis**: `domains/D-08_Human-Factors/D-08.2/articles/GDPR_Art_39.md` (Art. 39) — paraphrased action
 - **Anchors listed**:
@@ -3514,7 +3514,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Member States shall encourage essential and important entities to offer similar trainin... | NIS2 | excessive | - | high |
 
-### D-08.2 · NIS2 · subso SO-D-08.2.NIS2
+### D-08.2 · NIS2 · subso SG-D-08.2.NIS2
 - **Objective**: Member States shall encourage essential and important entities to offer similar training to their employees on a regular basis, in order that they gain sufficient knowledge and skills to identify risks and assess cybersecurity risk-management practices (Art. 20(2) sentence 2 NIS 2).
 - **Regulatory basis**: `domains/D-08_Human-Factors/D-08.2/articles/NIS2_Art_20.md` (Art. 20) — paraphrased action
 - **Anchors listed**:
@@ -3550,7 +3550,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | Members of the management body shall actively keep up to date with sufficient knowledge... | DORA | excessive | - | high |
 
-### D-08.3 · DORA · subso SO-D-08.3.DORA
+### D-08.3 · DORA · subso SG-D-08.3.DORA
 - **Objective**: Members of the management body shall actively keep up to date with sufficient knowledge and skills to enable them to understand and assess ICT risk and its impact on the operations of the financial entity, including by following specific training on a regular basis, commensurate to the ICT risk being managed (Art. 5(4) DORA).
 - **Regulatory basis**: `domains/D-08_Human-Factors/D-08.3/articles/DORA_Art_4.md` (Art. 4) — paraphrased action
 - **Anchors listed**:
@@ -3582,7 +3582,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Member States shall ensure that members of the management bodies of essential and impor... | NIS2 | sufficient | - | high |
 
-### D-08.3 · NIS2 · subso SO-D-08.3.NIS2
+### D-08.3 · NIS2 · subso SG-D-08.3.NIS2
 - **Objective**: Member States shall ensure that members of the management bodies of essential and important entities are required to follow training, in order that they gain sufficient knowledge and skills to identify risks and assess cybersecurity risk-management practices and their impact on the services provided by the entity (Art. 20(2) sentence 1 NIS 2).
 - **Regulatory basis**: `domains/D-08_Human-Factors/D-08.3/articles/NIS2_Art_20.md` (Art. 20) — paraphrased action
 - **Anchors listed**:
@@ -3614,7 +3614,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | High-risk AI systems are **designed and developed to ensure that their operation is suf... | AI_Act | sufficient | - | low |
 
-### D-09.1 · AI_Act · subso SO-D-09.1.AI_Act
+### D-09.1 · AI_Act · subso SG-D-09.1.AI_Act
 - **Objective**: High-risk AI systems are **designed and developed to ensure that their operation is sufficiently transparent to enable deployers to interpret a system's output and use it appropriately** (Art. 13(1) AI Act), accompanied by **concise, complete, correct and clear instructions for use** (Art. 13(3) AI Act); a provider **puts a quality management system in place** documented in written policies, procedures and instructions covering at least the 13 enumerated aspects (a)-(m) (Art. 17(1) AI Act).
 - **Regulatory basis**: `domains/D-09_Governance-Documentation/D-09.1/articles/AI_Act_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -3649,7 +3649,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | An open-source software steward **puts in place and documents in a verifiable manner a ... | CRA | sufficient | - | low |
 
-### D-09.1 · CRA · subso SO-D-09.1.CRA
+### D-09.1 · CRA · subso SG-D-09.1.CRA
 - **Objective**: An open-source software steward **puts in place and documents in a verifiable manner a cybersecurity policy** (Art. 24(1) CRA) covering vulnerability documentation, remediation, and information-sharing within the open-source community; a manufacturer **establishes policies, processes and procedures necessary to implement its CRA cybersecurity obligations** (Art. 13(8) CRA) including CVD policy, secure-update distribution, support-period determination, and cessation-of-operations communication.
 - **Regulatory basis**: `domains/D-09_Governance-Documentation/D-09.1/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -3682,7 +3682,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | The management body of the financial entity **defines, approves, oversees and is respon... | DORA | sufficient | - | low |
 
-### D-09.1 · DORA · subso SO-D-09.1.DORA
+### D-09.1 · DORA · subso SG-D-09.1.DORA
 - **Objective**: The management body of the financial entity **defines, approves, oversees and is responsible for the implementation of all arrangements related to the ICT risk management framework** (Art. 5(2) DORA), supported by a **sound, comprehensive and well-documented ICT risk management framework** (Art. 6(1)) with a three-lines-of-defence model (Art. 6(4)).
 - **Regulatory basis**: `domains/D-09_Governance-Documentation/D-09.1/articles/DORA_Art_17.md` (Art. 17) — paraphrased action
 - **Anchors listed**:
@@ -3720,7 +3720,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | The controller implements **appropriate technical and organisational measures, such as ... | GDPR | excessive | - | low |
 
-### D-09.1 · GDPR · subso SO-D-09.1.GDPR
+### D-09.1 · GDPR · subso SG-D-09.1.GDPR
 - **Objective**: The controller implements **appropriate technical and organisational measures, such as policies … which are designed to implement data-protection principles … in an effective manner** (Art. 24(1) GDPR), with the Art. 5(2) accountability burden and the DPO as the governance anchor (Art. 37-39).
 - **Regulatory basis**: `domains/D-09_Governance-Documentation/D-09.1/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -3759,7 +3759,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | The management body of essential and important entities **approves the cybersecurity ri... | NIS2 | excessive | - | low |
 
-### D-09.1 · NIS2 · subso SO-D-09.1.NIS2
+### D-09.1 · NIS2 · subso SG-D-09.1.NIS2
 - **Objective**: The management body of essential and important entities **approves the cybersecurity risk-management measures, oversees their implementation, and can be held liable for infringements** (Art. 20(1) sentence 1 NIS 2); the entity adopts **policies on risk analysis and information system security** (Art. 21(2)(a)) and **policies and procedures to assess the effectiveness of cybersecurity risk-management measures** (Art. 21(2)(f)).
 - **Regulatory basis**: `domains/D-09_Governance-Documentation/D-09.1/articles/DORA_Art_17.md` (Art. 17) — paraphrased action
 - **Anchors listed**:
@@ -3799,7 +3799,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | A risk management system is **established, implemented, documented and maintained** in ... | AI_Act | sufficient | - | low |
 
-### D-09.2 · AI_Act · subso SO-D-09.2.AI_Act
+### D-09.2 · AI_Act · subso SG-D-09.2.AI_Act
 - **Objective**: A risk management system is **established, implemented, documented and maintained** in relation to high-risk AI systems (Art. 9(1) AI Act), comprising the four Art. 9(2)(a)-(d) steps: identify and analyse known and reasonably foreseeable risks; estimate and evaluate reasonably-foreseeable-misuse risks; evaluate post-market-monitoring-data risks; and adopt appropriate and targeted risk-management measures.
 - **Regulatory basis**: `domains/D-09_Governance-Documentation/D-09.2/articles/AI_Act_Art_9.md` (Art. 9) — paraphrased action
 - **Anchors listed**:
@@ -3830,7 +3830,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | The manufacturer documents the **cybersecurity risk assessment referred to in Art. 13(2... | CRA | sufficient | - | low |
 
-### D-09.2 · CRA · subso SO-D-09.2.CRA
+### D-09.2 · CRA · subso SG-D-09.2.CRA
 - **Objective**: The manufacturer documents the **cybersecurity risk assessment referred to in Art. 13(2)** and updates it as appropriate during the support period, with the assessment covering intended purpose and reasonably foreseeable use (Art. 13(3) sentence 2) and indicating Annex I Part I (2) applicability (Art. 13(3) sentence 3) — documented in the **Annex VII §3 risk-assessment record** (Art. 13(4) sentence 1 + Annex VII §3 CRA).
 - **Regulatory basis**: `domains/D-09_Governance-Documentation/D-09.2/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -3860,7 +3860,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Financial entities shall, on a continuous basis, **identify all sources of ICT risk** i... | DORA | sufficient | - | low |
 
-### D-09.2 · DORA · subso SO-D-09.2.DORA
+### D-09.2 · DORA · subso SG-D-09.2.DORA
 - **Objective**: Financial entities shall, on a continuous basis, **identify all sources of ICT risk** including risk exposure to and from other financial entities, and **assess cyber threats and ICT vulnerabilities relevant to ICT supported business functions, information assets and ICT assets** (Art. 7(2) sentence 1 DORA); risk scenarios are reviewed on a regular basis, and at least yearly (Art. 7(2) sentence 2), under a three-lines-of-defence model (Art. 6(4) DORA).
 - **Regulatory basis**: `domains/D-09_Governance-Documentation/D-09.2/articles/DORA_Art_21.md` (Art. 21) — paraphrased action
 - **Anchors listed**:
@@ -3893,7 +3893,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Prior to processing that is likely to result in a high risk to the rights and freedoms ... | GDPR | sufficient | - | low |
 
-### D-09.2 · GDPR · subso SO-D-09.2.GDPR
+### D-09.2 · GDPR · subso SG-D-09.2.GDPR
 - **Objective**: Prior to processing that is likely to result in a high risk to the rights and freedoms of natural persons, the controller carries out a **data-protection impact assessment** covering the four Art. 35(7) content items and reviewed on change of risk per Art. 35(11) (Art. 35(1) + Art. 35(7) GDPR).
 - **Regulatory basis**: `domains/D-09_Governance-Documentation/D-09.2/articles/GDPR_Art_27.md` (Art. 27) — paraphrased action
 - **Anchors listed**:
@@ -3924,7 +3924,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Essential and important entities establish **policies on risk analysis and information ... | NIS2 | excessive | - | low |
 
-### D-09.2 · NIS2 · subso SO-D-09.2.NIS2
+### D-09.2 · NIS2 · subso SG-D-09.2.NIS2
 - **Objective**: Essential and important entities establish **policies on risk analysis and information system security** (Art. 21(2)(a) NIS 2) on a continuous basis, taking into account the proportionality factors (degree of exposure, likelihood of incidents, severity, state of the art, costs of implementation per Recital 56); the Cooperation Group may carry out coordinated supply-chain risk assessments under Art. 22(1) NIS 2 that NSIEs take into account per Art. 21(3) sentence 2.
 - **Regulatory basis**: `domains/D-09_Governance-Documentation/D-09.2/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -3961,7 +3961,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | Manufacturers of products with digital elements draw up **technical documentation** con... | CRA | sufficient | - | low |
 
-### D-09.3 · CRA · subso SO-D-09.3.CRA
+### D-09.3 · CRA · subso SG-D-09.3.CRA
 - **Objective**: Manufacturers of products with digital elements draw up **technical documentation** containing at least a **general description** of the product (Annex VII §1) and a **description of the design, development, production and vulnerability-handling processes** including the system architecture description (Annex VII §2); the technical documentation is drawn up before placing on the market and updated during the support period (Art. 31(2) CRA), and kept at the disposal of market surveillance authorities for at least 10 years or the support period, whichever is longer (Art. 13(13) CRA).
 - **Anchors listed**:
   - GV.PO-02 — Policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organizational mission — **CORE** — CSF title shares 3 action tokens with objective
@@ -3991,7 +3991,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Financial entities **identify, classify and adequately document all ICT supported busin... | DORA | sufficient | - | high |
 
-### D-09.3 · DORA · subso SO-D-09.3.DORA
+### D-09.3 · DORA · subso SG-D-09.3.DORA
 - **Objective**: Financial entities **identify, classify and adequately document all ICT supported business functions, the roles and responsibilities supporting those functions, the information assets and ICT assets supporting those functions, and their roles and dependencies in relation to ICT risk** (Art. 7(1) DORA — the dedicated authority with explicit OJ-literal `3-way AND`); responsibility for managing and overseeing ICT risk is assigned to a control function with appropriate independence per the three lines of defence model (Art. 6(4) DORA).
 - **Regulatory basis**: `domains/D-09_Governance-Documentation/D-09.3/articles/DORA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -4022,7 +4022,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Essential and important entities adopt **access control policies coordinated with human... | NIS2 | excessive | - | high |
 
-### D-09.3 · NIS2 · subso SO-D-09.3.NIS2
+### D-09.3 · NIS2 · subso SG-D-09.3.NIS2
 - **Objective**: Essential and important entities adopt **access control policies coordinated with human resources security and asset management** (Art. 21(2)(i) NIS 2), with the management body approving, overseeing, and being liable for the cybersecurity risk-management measures (Art. 20(1) sentence 1 NIS 2).
 - **Regulatory basis**: `domains/D-09_Governance-Documentation/D-09.3/articles/NIS2_Art_21.md` (Art. 21) — paraphrased action
 - **Anchors listed**:
@@ -4059,7 +4059,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | Providers of high-risk AI systems **draw up and keep up-to-date the technical documenta... | AI_Act | sufficient | - | low |
 
-### D-09.4 · AI_Act · subso SO-D-09.4.AI_Act
+### D-09.4 · AI_Act · subso SG-D-09.4.AI_Act
 - **Objective**: Providers of high-risk AI systems **draw up and keep up-to-date the technical documentation of the high-risk AI system in accordance with Annex IV before that system is placed on the market or put into service** (Art. 11(1) AI Act), **keep the logs automatically recorded by the high-risk AI system to the extent under their control** (Art. 19(1) AI Act), and document the **quality management system** in written policies, procedures, and instructions covering at least the 13 enumerated aspects (a)-(m) (Art. 17(1) AI Act).
 - **Regulatory basis**: `domains/D-09_Governance-Documentation/D-09.4/articles/CRA_Art_12.md` (Art. 12) — paraphrased action
 - **Anchors listed**:
@@ -4093,7 +4093,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | The manufacturer **draws up before placing a product with digital elements on the marke... | CRA | sufficient | - | low |
 
-### D-09.4 · CRA · subso SO-D-09.4.CRA
+### D-09.4 · CRA · subso SG-D-09.4.CRA
 - **Objective**: The manufacturer **draws up before placing a product with digital elements on the market the technical documentation referred to in Art. 31** (Art. 13(12) sentence 1 CRA), carries out the conformity assessment procedure referred to in Art. 32, draws up the EU declaration of conformity under Art. 28, and affixes the CE marking under Art. 30 (Art. 13(12) sentence 2); the manufacturer keeps the technical documentation and the EU declaration of conformity at the disposal of market surveillance authorities for at least 10 years or the support period, whichever is longer (Art. 13(13) CRA).
 - **Regulatory basis**: `domains/D-09_Governance-Documentation/D-09.4/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -4124,7 +4124,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Financial entities **develop and document an information security policy defining rules... | DORA | sufficient | - | low |
 
-### D-09.4 · DORA · subso SO-D-09.4.DORA
+### D-09.4 · DORA · subso SG-D-09.4.DORA
 - **Objective**: Financial entities **develop and document an information security policy defining rules to protect the availability, authenticity, integrity and confidentiality of data, information assets and ICT assets, including those of their customers, where applicable** (Art. 9(4)(a) DORA); this is entity-level IS-policy documentation serving NCA audit purposes and is a **different record type from the GDPR RoPA**.
 - **Anchors listed**:
   - GV.PO-01 — Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities and is communicated and enforced — **CORE** — CSF title literally matches action keyword ('policy')
@@ -4152,7 +4152,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Each controller and processor **maintains a record of processing activities under its r... | GDPR | sufficient | - | low |
 
-### D-09.4 · GDPR · subso SO-D-09.4.GDPR
+### D-09.4 · GDPR · subso SG-D-09.4.GDPR
 - **Objective**: Each controller and processor **maintains a record of processing activities under its responsibility** (Art. 30(1) GDPR), in writing or electronic form (Art. 30(3) GDPR), containing the Art. 30(1) 7-item content list; the processor maintains a parallel record under Art. 30(2) GDPR; records are made available to the supervisory authority on request (Art. 30(4) GDPR), subject to the Art. 30(5) 250-employee exception.
 - **Regulatory basis**: `domains/D-09_Governance-Documentation/D-09.4/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -4184,7 +4184,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Member States shall **encourage the use of European or internationally accepted standar... | NIS2 | sufficient | - | high |
 
-### D-09.4 · NIS2 · subso SO-D-09.4.NIS2
+### D-09.4 · NIS2 · subso SG-D-09.4.NIS2
 - **Objective**: Member States shall **encourage the use of European or internationally accepted standards and specifications relevant to the security of network and information systems** (Art. 24(1) sentence 1 NIS 2) and of qualified trust services (Art. 24(1) sentence 2); the Commission may adopt delegated acts specifying entities that must use certified ICT products, services and processes (Art. 24(2) NIS 2), and ENISA may be requested to prepare a candidate European cybersecurity certification scheme (Art. 24(3) NIS 2).
 - **Regulatory basis**: `domains/D-09_Governance-Documentation/D-09.4/articles/NIS2_Art_24.md` (Art. 24) — paraphrased action
 - **Anchors listed**:
@@ -4215,7 +4215,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | Providers of high-risk AI systems **establish and document a post-market monitoring sys... | AI_Act | excessive | - | low |
 
-### D-10.1 · AI_Act · subso SO-D-10.1.AI_Act
+### D-10.1 · AI_Act · subso SG-D-10.1.AI_Act
 - **Objective**: Providers of high-risk AI systems **establish and document a post-market monitoring system in a manner that is proportionate to the nature of the AI technologies and the risks of the high-risk AI system** (Art. 72(1) AI Act), with the system **actively and systematically collecting, documenting and analysing relevant data** (Art. 72(2) AI Act); market-surveillance cooperation under Regulation (EU) 2019/1020 applies (Art. 74(1) AI Act).
 - **Regulatory basis**: `domains/D-10_Monitoring-Audit/D-10.1/articles/AI_Act_Art_15.md` (Art. 15) — paraphrased action
 - **Anchors listed**:
@@ -4253,7 +4253,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | A product with digital elements **provides security-related information by recording an... | CRA | sufficient | - | low |
 
-### D-10.1 · CRA · subso SO-D-10.1.CRA
+### D-10.1 · CRA · subso SG-D-10.1.CRA
 - **Objective**: A product with digital elements **provides security-related information by recording and monitoring relevant internal activity, including access to or modification of data, services or functions, and provides an opt-out mechanism for the user** (Annex I Part I (2)(l) CRA); the manufacturer **facilitates the sharing of information about potential vulnerabilities** through a single contact address (Annex I Part II (6) CRA).
 - **Anchors listed**:
   - DE.CM-09 — Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events — **CORE** — CSF title literally matches action keyword ('monitor')
@@ -4283,7 +4283,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Financial entities **continuously monitor and control the security and functioning of I... | DORA | sufficient | - | low |
 
-### D-10.1 · DORA · subso SO-D-10.1.DORA
+### D-10.1 · DORA · subso SG-D-10.1.DORA
 - **Objective**: Financial entities **continuously monitor and control the security and functioning of ICT systems and tools** and **minimise the impact of ICT risk on ICT systems** (Art. 8(1) DORA per SR-DORA-030; OJ-literal locus Art. 9(1)); **anomalous activities are promptly detected** through multi-layered controls, alert thresholds, incident response triggers, and identification of single points of failure (Art. 10(1)+(2) DORA), with sources of ICT risk **identified on a continuous basis** and risk scenarios reviewed on a regular basis, at least yearly (Art. 7(2) DORA).
 - **Regulatory basis**: `domains/D-10_Monitoring-Audit/D-10.1/articles/AI_Act_Art_9.md` (Art. 9) — paraphrased action
 - **Anchors listed**:
@@ -4320,7 +4320,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | The controller and processor implement appropriate technical and organisational measure... | GDPR | excessive | - | low |
 
-### D-10.1 · GDPR · subso SO-D-10.1.GDPR
+### D-10.1 · GDPR · subso SG-D-10.1.GDPR
 - **Objective**: The controller and processor implement appropriate technical and organisational measures to ensure the **ongoing confidentiality, integrity, availability and resilience of processing systems and services** (Art. 32(1)(b) GDPR) and **regularly test, assess and evaluate their effectiveness** (Art. 32(1)(d) GDPR); personal-data processing systems and services are monitored for the five Art. 32(2) risk types, with a clear definition of the moment of `becoming aware of` a breach to anchor the Art. 33(1) 72-hour notification clock.
 - **Regulatory basis**: `domains/D-10_Monitoring-Audit/D-10.1/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -4357,7 +4357,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Essential and important entities establish an **incident-handling capability** covering... | NIS2 | sufficient | - | low |
 
-### D-10.1 · NIS2 · subso SO-D-10.1.NIS2
+### D-10.1 · NIS2 · subso SG-D-10.1.NIS2
 - **Objective**: Essential and important entities establish an **incident-handling capability** covering prevention, detection, analysis, containment, response, and recovery of incidents (Art. 21(2)(b) NIS 2); the detection dimension is the partial-coverage dimension of D-10.1, operating on an all-hazards basis and feeding the Art. 23(1) significant-incident notification chain.
 - **Regulatory basis**: `domains/D-10_Monitoring-Audit/D-10.1/articles/DORA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -4375,7 +4375,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 ### D-10.1 · NIS2 · req 10.1.2
 - **Title**: "Essential and important entities establish an incident-handling capability with 6-action lifecycle (prevent, detect, analyse, contain, respond, recover) covering detection of all-hazards incidents"
 - **Description**: The product shall establish an incident-handling capability covering prevention, detection, analysis, containment, response, and recovery of incidents (per NIS 2 Art. 21(2)(b) `incident handling`), including those with significant impact on the provision of services, with the detection dimension operating on an all-hazards basis and feeding the Art. 23(1) significant-incident notification chain; the Art. 21(2)(b) detection capability is the **partial-coverage dimension** of 10.1 — NIS 2 does not impose a dedicated continuous-monitoring mandate beyond the detection dimension of incident handling.
-- **Fit criterion (prose)**: An incident-handling capability is established per Art. 21(2)(b) `incident handling` (SR-NIS2-009 + SR-NIS2-014) with the 6-action lifecycle (prevent, detect, analyse, contain, respond, recover — per SR-NIS2-008) verified by DE.CM-01 primary (Networks and network services are monitored to find potentially adverse events — anchors the NIS 2 Art. 21(2)(b) incident-handling detection capability mapped to NIST CSF 2.0 DE.CM-01) + DE.CM-09 (Computing hardware and software, runtime environments, and their data are monitored — anchors the all-hazards network and information systems monitoring per DomainAnalysis cross-validation) + DE.AE-02 (Adverse events are analyzed to identify or determine the scope of an incident — anchors the Art. 23(1) significant-incident detection trigger) + ID.IM-04 (Adequate resource capacity — anchors the prevention+detection+response feedback loop); the detection dimension operates on an all-hazards basis (all sources of ICT risk + cyber threats + ICT vulnerabilities — Art. 21(1) chapeau `Member States shall ensure that essential and important entities take appropriate and proportionate technical, operational and organisational measures to manage the risks posed to the security of network and information systems … which those entities use for their activities or the provision of their services, and to prevent or minimise the impact of incidents on the recipients of their services`); the all-hazards detection capability feeds the Art. 23(1) significant-incident notification chain (cross to 4.3 Regulatory Notification) when an incident has a significant impact on the continuity of essential services; the recipient is the **management body + competent authority (CSIRT — Computer Security Incident Response Team or national competent authority)** on the Art. 21(2)(b) detection capability + incident-handling 6-action lifecycle; verified by CSIRT audit pack (incident-handling 6-action lifecycle evidence, Art. 21(2)(b) all-hazards detection capability, Art. 23(1) significant-incident notification chain). **IMPORTANT — NIS 2 partial coverage at 10.1**: NIS 2 does NOT impose a dedicated continuous-monitoring mandate beyond the detection dimension of incident handling (Art. 21(2)(b)); the 10.1 coverage on the NIS 2 side is partial via the SO-NIS2-005 incident-handling detection capability. For DORA financial entities under DORA's direct scope, the **DORA Art. 8(1) per SR-DORA-030 OJ-literal locus Art. 9(1) continuous monitoring is the dominant authority** and discharges both DORA's dedicated monitoring obligation and NIS 2's Art. 21(2)(b) partial-coverage detection dimension for DORA financial entities that are also NSIEs — **NIS 2 ↔ DORA EQUAL on continuous-monitoring dimension, DORA-dominant for financial entities**; for non-financial NSIEs, NIS 2 Art. 21(2)(b) detection capability operates on the all-hazards basis without a dedicated continuous-monitoring mandate.
+- **Fit criterion (prose)**: An incident-handling capability is established per Art. 21(2)(b) `incident handling` (SR-NIS2-009 + SR-NIS2-014) with the 6-action lifecycle (prevent, detect, analyse, contain, respond, recover — per SR-NIS2-008) verified by DE.CM-01 primary (Networks and network services are monitored to find potentially adverse events — anchors the NIS 2 Art. 21(2)(b) incident-handling detection capability mapped to NIST CSF 2.0 DE.CM-01) + DE.CM-09 (Computing hardware and software, runtime environments, and their data are monitored — anchors the all-hazards network and information systems monitoring per DomainAnalysis cross-validation) + DE.AE-02 (Adverse events are analyzed to identify or determine the scope of an incident — anchors the Art. 23(1) significant-incident detection trigger) + ID.IM-04 (Adequate resource capacity — anchors the prevention+detection+response feedback loop); the detection dimension operates on an all-hazards basis (all sources of ICT risk + cyber threats + ICT vulnerabilities — Art. 21(1) chapeau `Member States shall ensure that essential and important entities take appropriate and proportionate technical, operational and organisational measures to manage the risks posed to the security of network and information systems … which those entities use for their activities or the provision of their services, and to prevent or minimise the impact of incidents on the recipients of their services`); the all-hazards detection capability feeds the Art. 23(1) significant-incident notification chain (cross to 4.3 Regulatory Notification) when an incident has a significant impact on the continuity of essential services; the recipient is the **management body + competent authority (CSIRT — Computer Security Incident Response Team or national competent authority)** on the Art. 21(2)(b) detection capability + incident-handling 6-action lifecycle; verified by CSIRT audit pack (incident-handling 6-action lifecycle evidence, Art. 21(2)(b) all-hazards detection capability, Art. 23(1) significant-incident notification chain). **IMPORTANT — NIS 2 partial coverage at 10.1**: NIS 2 does NOT impose a dedicated continuous-monitoring mandate beyond the detection dimension of incident handling (Art. 21(2)(b)); the 10.1 coverage on the NIS 2 side is partial via the SG-NIS2-005 incident-handling detection capability. For DORA financial entities under DORA's direct scope, the **DORA Art. 8(1) per SR-DORA-030 OJ-literal locus Art. 9(1) continuous monitoring is the dominant authority** and discharges both DORA's dedicated monitoring obligation and NIS 2's Art. 21(2)(b) partial-coverage detection dimension for DORA financial entities that are also NSIEs — **NIS 2 ↔ DORA EQUAL on continuous-monitoring dimension, DORA-dominant for financial entities**; for non-financial NSIEs, NIS 2 Art. 21(2)(b) detection capability operates on the all-hazards basis without a dedicated continuous-monitoring mandate.
 - **Regulatory basis**: `domains/D-10_Monitoring-Audit/D-10.1/articles/AI_Act_Art_9.md` (Art. 9) — paraphrased action
 - **Anchors listed**:
   - DE.AE-02 — Potentially adverse events are analyzed to better understand associated activities — **CORE** — CSF title literally matches action keyword ('adverse event')
@@ -4393,7 +4393,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | Providers of high-risk AI systems ensure the systems **technically allow for the automa... | AI_Act | sufficient | - | low |
 
-### D-10.2 · AI_Act · subso SO-D-10.2.AI_Act
+### D-10.2 · AI_Act · subso SG-D-10.2.AI_Act
 - **Objective**: Providers of high-risk AI systems ensure the systems **technically allow for the automatic recording of events (logs) over the lifetime of the system** (Art. 12(1) AI Act) with logging capabilities ensuring a level of traceability of the functioning **appropriate to the intended purpose** (Art. 12(2) AI Act); providers **keep the logs** automatically generated by the high-risk AI system, to the extent under their control, for a period **appropriate to the intended purpose and of at least six months** unless provided otherwise in the applicable Union or national law (Art. 19(1) AI Act).
 - **Regulatory basis**: `domains/D-10_Monitoring-Audit/D-10.2/articles/AI_Act_Art_12.md` (Art. 12) — paraphrased action
 - **Anchors listed**:
@@ -4426,7 +4426,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | The manufacturer **maintains the technical documentation** (Annex VII §5-§8 CRA — harmo... | CRA | excessive | - | low |
 
-### D-10.2 · CRA · subso SO-D-10.2.CRA
+### D-10.2 · CRA · subso SG-D-10.2.CRA
 - **Objective**: The manufacturer **maintains the technical documentation** (Annex VII §5-§8 CRA — harmonised standards applied, test reports, copy of the EU declaration of conformity, SBOM on MSA reasoned request), **preserves the cybersecurity risk-assessment documentation** (Annex VII §3 + Art. 13(4) sentence 1) during the support period (10 years or support period, whichever longer) with updates as appropriate, and ensures **test reports demonstrating verification of conformity with Annex I Part I and Part II** are part of the technical documentation and available on reasoned request from market surveillance authorities (Annex VII §6 + Annex I Part II (3) + Art. 13(22) CRA).
 - **Regulatory basis**: `domains/D-10_Monitoring-Audit/D-10.2/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -4466,7 +4466,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Financial entities **develop and document an information security policy defining rules... | DORA | excessive | - | high |
 
-### D-10.2 · DORA · subso SO-D-10.2.DORA
+### D-10.2 · DORA · subso SG-D-10.2.DORA
 - **Objective**: Financial entities **develop and document an information security policy defining rules to protect the availability, authenticity, integrity and confidentiality of data, information assets and ICT assets, including those of their customers, where applicable** (Art. 9(4)(a) DORA); logging is **implicit in the CIA+A monitoring** under the Art. 8(1) continuous-monitoring mandate, not a standalone audit-logging obligation at D-10.2.
 - **Regulatory basis**: `domains/D-10_Monitoring-Audit/D-10.2/articles/DORA_Art_21.md` (Art. 21) — paraphrased action
 - **Anchors listed**:
@@ -4500,7 +4500,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | The controller and processor **maintain compliance records in writing or in electronic ... | GDPR | excessive | - | low |
 
-### D-10.2 · GDPR · subso SO-D-10.2.GDPR
+### D-10.2 · GDPR · subso SG-D-10.2.GDPR
 - **Objective**: The controller and processor **maintain compliance records in writing or in electronic form with integrity and traceability sufficient to demonstrate compliance and to support supervisory-authority inspections** (Art. 30(3) + Art. 5(2) + Art. 31 GDPR), including records of processing activities, consent records, processor contract records, breach notification records, and DPIA records — made available to the supervisory authority on request (Art. 30(3)).
 - **Regulatory basis**: `domains/D-10_Monitoring-Audit/D-10.2/articles/CRA_Art_13.md` (Art. 13) — paraphrased action
 - **Anchors listed**:
@@ -4543,7 +4543,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 |---|---|---|---|---|
 | Providers of high-risk AI systems ensure the systems are **tested for the purpose of id... | AI_Act | excessive | - | low |
 
-### D-10.3 · AI_Act · subso SO-D-10.3.AI_Act
+### D-10.3 · AI_Act · subso SG-D-10.3.AI_Act
 - **Objective**: Providers of high-risk AI systems ensure the systems are **tested for the purpose of identifying the most appropriate and targeted risk management measures**, and **testing shall ensure that high-risk AI systems perform consistently for their intended purpose** (Art. 9(6) AI Act); testing procedures may include **testing in real-world conditions in accordance with Article 60** (Art. 9(7) AI Act); high-risk AI systems are **designed and developed to achieve an appropriate level of accuracy, robustness, and cybersecurity, and to perform consistently in those respects throughout their lifecycle** (Art. 15(1) AI Act).
 - **Regulatory basis**: `domains/D-10_Monitoring-Audit/D-10.3/articles/AI_Act_Art_9.md` (Art. 9) — paraphrased action
 - **Anchors listed**:
@@ -4581,7 +4581,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Manufacturers of products with digital elements **carry out effective and regular tests... | CRA | excessive | - | low |
 
-### D-10.3 · CRA · subso SO-D-10.3.CRA
+### D-10.3 · CRA · subso SG-D-10.3.CRA
 - **Objective**: Manufacturers of products with digital elements **carry out effective and regular tests and reviews of the product** (Annex I Part II (3) CRA), and the technical documentation shall contain **the reports of the tests carried out to verify the conformity of the product with digital elements and of the vulnerability-handling processes with the essential cybersecurity requirements set out in Part I and Part II of Annex I** (Annex VII §6 CRA); conformity is demonstrated via the Annex VIII Part I (Module A internal production control) or Part II (Module B+C and H notified-body EU-type examination) conformity-assessment modules depending on product classification (Class I / Class II / critical per Art. 6 + Annex III).
 - **Regulatory basis**: `domains/D-10_Monitoring-Audit/D-10.3/articles/AI_Act_Art_9.md` (Art. 9) — paraphrased action
 - **Anchors listed**:
@@ -4620,7 +4620,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Financial entities **establish, maintain and review a sound and comprehensive digital o... | DORA | excessive | - | low |
 
-### D-10.3 · DORA · subso SO-D-10.3.DORA
+### D-10.3 · DORA · subso SG-D-10.3.DORA
 - **Objective**: Financial entities **establish, maintain and review a sound and comprehensive digital operational resilience testing programme as an integral part of the ICT risk-management framework** (Art. 24(1) DORA), using a 12-way portfolio of testing methodologies (Art. 25(1) DORA); **significant financial entities carry out advanced testing of their ICT systems using threat-led penetration testing (TLPT) on a regular basis** (Art. 26(1) DORA per the Regulatory Technical Standards under Art. 26(8)).
 - **Regulatory basis**: `domains/D-10_Monitoring-Audit/D-10.3/articles/DORA_Art_21.md` (Art. 21) — paraphrased action
 - **Anchors listed**:
@@ -4661,7 +4661,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | The controller and processor implement appropriate technical and organisational measure... | GDPR | excessive | - | low |
 
-### D-10.3 · GDPR · subso SO-D-10.3.GDPR
+### D-10.3 · GDPR · subso SG-D-10.3.GDPR
 - **Objective**: The controller and processor implement appropriate technical and organisational measures including **a process for regularly testing, assessing and evaluating the effectiveness of technical and organisational measures for ensuring the security of the processing** (Art. 32(1)(d) GDPR); the DPIA is **reviewed at least when there is a change of the risk represented by processing operations** (Art. 35(11) GDPR).
 - **Regulatory basis**: `domains/D-10_Monitoring-Audit/D-10.3/articles/CRA_Art_27.md` (Art. 27) — paraphrased action
 - **Anchors listed**:
@@ -4698,7 +4698,7 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 | Essential and important entities establish **policies and procedures to assess the effe... | NIS2 | excessive | - | low |
 
-### D-10.3 · NIS2 · subso SO-D-10.3.NIS2
+### D-10.3 · NIS2 · subso SG-D-10.3.NIS2
 - **Objective**: Essential and important entities establish **policies and procedures to assess the effectiveness of cybersecurity risk-management measures** (Art. 21(2)(f) NIS 2) as part of the all-hazards risk-management framework; the cadence is entity-discretionary under Recital 56 (no quantitative threshold in the OJ).
 - **Regulatory basis**: `domains/D-10_Monitoring-Audit/D-10.3/articles/DORA_Art_21.md` (Art. 21) — paraphrased action
 - **Anchors listed**:
@@ -4784,108 +4784,108 @@ Single-pass audit of all 268 objective records (Sub-SO cards and Volere requirem
 
 ### Low-confidence entries
 
-- `D-01.4` `SO-D-01.4.GDPR` — no nist_csf_mapping found in candidate articles
+- `D-01.4` `SG-D-01.4.GDPR` — no nist_csf_mapping found in candidate articles
 - `D-01.4` `1.4.1` — no nist_csf_mapping found in candidate articles
 - `D-02.1` `2.1.1` — no nist_csf_mapping found in candidate articles
-- `D-03.1` `SO-D-03.1.NIS2` — no nist_csf_mapping found in candidate articles
+- `D-03.1` `SG-D-03.1.NIS2` — no nist_csf_mapping found in candidate articles
 - `D-03.1` `3.1.2` — no nist_csf_mapping found in candidate articles
-- `D-03.2` `SO-D-03.2.CRA` — no candidate_articles listed; cannot cross-check article mappings
+- `D-03.2` `SG-D-03.2.CRA` — no candidate_articles listed; cannot cross-check article mappings
 - `D-03.2` `3.2.3` — no candidate_articles listed; cannot cross-check article mappings
-- `D-03.2` `SO-D-03.2.GDPR` — no nist_csf_mapping found in candidate articles
+- `D-03.2` `SG-D-03.2.GDPR` — no nist_csf_mapping found in candidate articles
 - `D-03.2` `3.2.1` — no nist_csf_mapping found in candidate articles
-- `D-03.3` `SO-D-03.3.CRA` — no candidate_articles listed; cannot cross-check article mappings
+- `D-03.3` `SG-D-03.3.CRA` — no candidate_articles listed; cannot cross-check article mappings
 - `D-03.3` `3.3.3` — no nist_csf_mapping found in candidate articles
-- `D-03.3` `SO-D-03.3.NIS2` — no nist_csf_mapping found in candidate articles
+- `D-03.3` `SG-D-03.3.NIS2` — no nist_csf_mapping found in candidate articles
 - `D-03.3` `3.3.2` — no nist_csf_mapping found in candidate articles
-- `D-03.4` `SO-D-03.4.CRA` — no candidate_articles listed; cannot cross-check article mappings
-- `D-04.1` `SO-D-04.1.CRA` — no candidate_articles listed; cannot cross-check article mappings
-- `D-04.1` `SO-D-04.1.NIS2` — no nist_csf_mapping found in candidate articles
+- `D-03.4` `SG-D-03.4.CRA` — no candidate_articles listed; cannot cross-check article mappings
+- `D-04.1` `SG-D-04.1.CRA` — no candidate_articles listed; cannot cross-check article mappings
+- `D-04.1` `SG-D-04.1.NIS2` — no nist_csf_mapping found in candidate articles
 - `D-04.1` `4.1.2` — no nist_csf_mapping found in candidate articles
-- `D-04.2` `SO-D-04.2.CRA` — no nist_csf_mapping found in candidate articles
+- `D-04.2` `SG-D-04.2.CRA` — no nist_csf_mapping found in candidate articles
 - `D-04.2` `4.2.3` — no nist_csf_mapping found in candidate articles
 - `D-04.3` `4.3.3` — no nist_csf_mapping found in candidate articles
-- `D-04.4` `SO-D-04.4.CRA` — no candidate_articles listed; cannot cross-check article mappings
+- `D-04.4` `SG-D-04.4.CRA` — no candidate_articles listed; cannot cross-check article mappings
 - `D-04.4` `4.4.3` — no nist_csf_mapping found in candidate articles
 - `D-05.1` `5.1.1` — no nist_csf_mapping found in candidate articles
-- `D-05.3` `SO-D-05.3.CRA` — no candidate_articles listed; cannot cross-check article mappings
+- `D-05.3` `SG-D-05.3.CRA` — no candidate_articles listed; cannot cross-check article mappings
 - `D-05.3` `5.3.2` — no nist_csf_mapping found in candidate articles
 - `D-06.1` `6.1.2` — no nist_csf_mapping found in candidate articles
-- `D-06.3` `SO-D-06.3.CRA` — no candidate_articles listed; cannot cross-check article mappings
-- `D-06.3` `SO-D-06.3.GDPR` — no nist_csf_mapping found in candidate articles
+- `D-06.3` `SG-D-06.3.CRA` — no candidate_articles listed; cannot cross-check article mappings
+- `D-06.3` `SG-D-06.3.GDPR` — no nist_csf_mapping found in candidate articles
 - `D-06.3` `6.3.1` — no nist_csf_mapping found in candidate articles
 - `D-06.3` `6.3.2` — no nist_csf_mapping found in candidate articles
-- `D-06.4` `SO-D-06.4.CRA` — no candidate_articles listed; cannot cross-check article mappings
-- `D-06.4` `SO-D-06.4.NIS2` — no nist_csf_mapping found in candidate articles
+- `D-06.4` `SG-D-06.4.CRA` — no candidate_articles listed; cannot cross-check article mappings
+- `D-06.4` `SG-D-06.4.NIS2` — no nist_csf_mapping found in candidate articles
 - `D-06.4` `6.4.2` — no nist_csf_mapping found in candidate articles
 - `D-07.1` `7.1.3` — no nist_csf_mapping found in candidate articles
 - `D-07.1` `7.1.2` — no nist_csf_mapping found in candidate articles
-- `D-07.2` `SO-D-07.2.CRA` — no candidate_articles listed; cannot cross-check article mappings
+- `D-07.2` `SG-D-07.2.CRA` — no candidate_articles listed; cannot cross-check article mappings
 - `D-07.2` `7.2.1` — no nist_csf_mapping found in candidate articles
-- `D-07.2` `SO-D-07.2.DORA` — no candidate_articles listed; cannot cross-check article mappings
+- `D-07.2` `SG-D-07.2.DORA` — no candidate_articles listed; cannot cross-check article mappings
 - `D-07.2` `7.2.2` — no candidate_articles listed; cannot cross-check article mappings
-- `D-07.3` `SO-D-07.3.CRA` — no candidate_articles listed; cannot cross-check article mappings
+- `D-07.3` `SG-D-07.3.CRA` — no candidate_articles listed; cannot cross-check article mappings
 - `D-07.3` `7.3.2` — no candidate_articles listed; cannot cross-check article mappings
-- `D-07.3` `SO-D-07.3.NIS2` — no candidate_articles listed; cannot cross-check article mappings
+- `D-07.3` `SG-D-07.3.NIS2` — no candidate_articles listed; cannot cross-check article mappings
 - `D-07.3` `7.3.1` — no candidate_articles listed; cannot cross-check article mappings
-- `D-07.4` `SO-D-07.4.CRA` — no nist_csf_mapping found in candidate articles
+- `D-07.4` `SG-D-07.4.CRA` — no nist_csf_mapping found in candidate articles
 - `D-07.4` `7.4.1` — no candidate_articles listed; cannot cross-check article mappings
-- `D-08.2` `SO-D-08.2.AIACT` — no nist_csf_mapping found in candidate articles
+- `D-08.2` `SG-D-08.2.AIACT` — no nist_csf_mapping found in candidate articles
 - `D-08.2` `8.2.5` — no nist_csf_mapping found in candidate articles
-- `D-08.2` `SO-D-08.2.CRA` — no candidate_articles listed; cannot cross-check article mappings
+- `D-08.2` `SG-D-08.2.CRA` — no candidate_articles listed; cannot cross-check article mappings
 - `D-08.2` `8.2.3` — no nist_csf_mapping found in candidate articles
-- `D-09.1` `SO-D-09.1.AI_Act` — no nist_csf_mapping found in candidate articles
+- `D-09.1` `SG-D-09.1.AI_Act` — no nist_csf_mapping found in candidate articles
 - `D-09.1` `9.1.5` — no nist_csf_mapping found in candidate articles
-- `D-09.1` `SO-D-09.1.CRA` — no nist_csf_mapping found in candidate articles
+- `D-09.1` `SG-D-09.1.CRA` — no nist_csf_mapping found in candidate articles
 - `D-09.1` `9.1.3` — no nist_csf_mapping found in candidate articles
-- `D-09.1` `SO-D-09.1.DORA` — no nist_csf_mapping found in candidate articles
+- `D-09.1` `SG-D-09.1.DORA` — no nist_csf_mapping found in candidate articles
 - `D-09.1` `9.1.4` — no nist_csf_mapping found in candidate articles
-- `D-09.1` `SO-D-09.1.GDPR` — no nist_csf_mapping found in candidate articles
+- `D-09.1` `SG-D-09.1.GDPR` — no nist_csf_mapping found in candidate articles
 - `D-09.1` `9.1.1` — no nist_csf_mapping found in candidate articles
-- `D-09.1` `SO-D-09.1.NIS2` — no nist_csf_mapping found in candidate articles
+- `D-09.1` `SG-D-09.1.NIS2` — no nist_csf_mapping found in candidate articles
 - `D-09.1` `9.1.2` — no nist_csf_mapping found in candidate articles
-- `D-09.2` `SO-D-09.2.AI_Act` — no nist_csf_mapping found in candidate articles
+- `D-09.2` `SG-D-09.2.AI_Act` — no nist_csf_mapping found in candidate articles
 - `D-09.2` `9.2.5` — no nist_csf_mapping found in candidate articles
-- `D-09.2` `SO-D-09.2.CRA` — no nist_csf_mapping found in candidate articles
+- `D-09.2` `SG-D-09.2.CRA` — no nist_csf_mapping found in candidate articles
 - `D-09.2` `9.2.3` — no nist_csf_mapping found in candidate articles
-- `D-09.2` `SO-D-09.2.DORA` — no nist_csf_mapping found in candidate articles
+- `D-09.2` `SG-D-09.2.DORA` — no nist_csf_mapping found in candidate articles
 - `D-09.2` `9.2.4` — no nist_csf_mapping found in candidate articles
-- `D-09.2` `SO-D-09.2.GDPR` — no nist_csf_mapping found in candidate articles
+- `D-09.2` `SG-D-09.2.GDPR` — no nist_csf_mapping found in candidate articles
 - `D-09.2` `9.2.1` — no nist_csf_mapping found in candidate articles
-- `D-09.2` `SO-D-09.2.NIS2` — no nist_csf_mapping found in candidate articles
+- `D-09.2` `SG-D-09.2.NIS2` — no nist_csf_mapping found in candidate articles
 - `D-09.2` `9.2.2` — no nist_csf_mapping found in candidate articles
-- `D-09.3` `SO-D-09.3.CRA` — no candidate_articles listed; cannot cross-check article mappings
+- `D-09.3` `SG-D-09.3.CRA` — no candidate_articles listed; cannot cross-check article mappings
 - `D-09.3` `9.3.2` — no nist_csf_mapping found in candidate articles
-- `D-09.4` `SO-D-09.4.AI_Act` — no nist_csf_mapping found in candidate articles
+- `D-09.4` `SG-D-09.4.AI_Act` — no nist_csf_mapping found in candidate articles
 - `D-09.4` `9.4.5` — no nist_csf_mapping found in candidate articles
-- `D-09.4` `SO-D-09.4.CRA` — no nist_csf_mapping found in candidate articles
+- `D-09.4` `SG-D-09.4.CRA` — no nist_csf_mapping found in candidate articles
 - `D-09.4` `9.4.3` — no nist_csf_mapping found in candidate articles
-- `D-09.4` `SO-D-09.4.DORA` — no candidate_articles listed; cannot cross-check article mappings
+- `D-09.4` `SG-D-09.4.DORA` — no candidate_articles listed; cannot cross-check article mappings
 - `D-09.4` `9.4.4` — no nist_csf_mapping found in candidate articles
-- `D-09.4` `SO-D-09.4.GDPR` — no nist_csf_mapping found in candidate articles
+- `D-09.4` `SG-D-09.4.GDPR` — no nist_csf_mapping found in candidate articles
 - `D-09.4` `9.4.1` — no nist_csf_mapping found in candidate articles
-- `D-10.1` `SO-D-10.1.AI_Act` — no nist_csf_mapping found in candidate articles
+- `D-10.1` `SG-D-10.1.AI_Act` — no nist_csf_mapping found in candidate articles
 - `D-10.1` `10.1.5` — no nist_csf_mapping found in candidate articles
-- `D-10.1` `SO-D-10.1.CRA` — no candidate_articles listed; cannot cross-check article mappings
+- `D-10.1` `SG-D-10.1.CRA` — no candidate_articles listed; cannot cross-check article mappings
 - `D-10.1` `10.1.3` — no nist_csf_mapping found in candidate articles
-- `D-10.1` `SO-D-10.1.DORA` — no nist_csf_mapping found in candidate articles
+- `D-10.1` `SG-D-10.1.DORA` — no nist_csf_mapping found in candidate articles
 - `D-10.1` `10.1.4` — no nist_csf_mapping found in candidate articles
-- `D-10.1` `SO-D-10.1.GDPR` — no nist_csf_mapping found in candidate articles
+- `D-10.1` `SG-D-10.1.GDPR` — no nist_csf_mapping found in candidate articles
 - `D-10.1` `10.1.1` — no nist_csf_mapping found in candidate articles
-- `D-10.1` `SO-D-10.1.NIS2` — no nist_csf_mapping found in candidate articles
+- `D-10.1` `SG-D-10.1.NIS2` — no nist_csf_mapping found in candidate articles
 - `D-10.1` `10.1.2` — no nist_csf_mapping found in candidate articles
-- `D-10.2` `SO-D-10.2.AI_Act` — no nist_csf_mapping found in candidate articles
+- `D-10.2` `SG-D-10.2.AI_Act` — no nist_csf_mapping found in candidate articles
 - `D-10.2` `10.2.4` — no nist_csf_mapping found in candidate articles
-- `D-10.2` `SO-D-10.2.CRA` — no nist_csf_mapping found in candidate articles
+- `D-10.2` `SG-D-10.2.CRA` — no nist_csf_mapping found in candidate articles
 - `D-10.2` `10.2.2` — no nist_csf_mapping found in candidate articles
-- `D-10.2` `SO-D-10.2.GDPR` — no nist_csf_mapping found in candidate articles
+- `D-10.2` `SG-D-10.2.GDPR` — no nist_csf_mapping found in candidate articles
 - `D-10.2` `10.2.1` — no nist_csf_mapping found in candidate articles
-- `D-10.3` `SO-D-10.3.AI_Act` — no nist_csf_mapping found in candidate articles
+- `D-10.3` `SG-D-10.3.AI_Act` — no nist_csf_mapping found in candidate articles
 - `D-10.3` `10.3.5` — no nist_csf_mapping found in candidate articles
-- `D-10.3` `SO-D-10.3.CRA` — no nist_csf_mapping found in candidate articles
+- `D-10.3` `SG-D-10.3.CRA` — no nist_csf_mapping found in candidate articles
 - `D-10.3` `10.3.3` — no nist_csf_mapping found in candidate articles
-- `D-10.3` `SO-D-10.3.DORA` — no nist_csf_mapping found in candidate articles
+- `D-10.3` `SG-D-10.3.DORA` — no nist_csf_mapping found in candidate articles
 - `D-10.3` `10.3.4` — no nist_csf_mapping found in candidate articles
-- `D-10.3` `SO-D-10.3.GDPR` — no nist_csf_mapping found in candidate articles
+- `D-10.3` `SG-D-10.3.GDPR` — no nist_csf_mapping found in candidate articles
 - `D-10.3` `10.3.1` — no nist_csf_mapping found in candidate articles
-- `D-10.3` `SO-D-10.3.NIS2` — no nist_csf_mapping found in candidate articles
+- `D-10.3` `SG-D-10.3.NIS2` — no nist_csf_mapping found in candidate articles
 - `D-10.3` `10.3.2` — no nist_csf_mapping found in candidate articles

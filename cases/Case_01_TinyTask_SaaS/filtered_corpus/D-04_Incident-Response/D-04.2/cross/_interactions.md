@@ -36,10 +36,10 @@
 #### Participants (from CRDA-deep §D-04.2)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-009 | Personal-data breaches contained and mitigated via Art. 33(3)(d) measures (incl. rendering data unintelligible) + Art. 34(3)(a)/(b) unintelligibility carve-out | Personal data; post-detection containment, mitigation and remediation runbooks; ID.AM-08 + PR.IR-04 |
-| NIS 2 | SO-NIS2-005 | Six-action incident-handling capability (prevent, detect, analyse, contain, respond, recover) per Art. 21(2)(b) + Art. 6(8) `contain` action | Entity-level ICT systems; lifecycle-phase content; RC.RP-01 + RC.RP-04 + PR.IR-03 |
-| CRA | SO-CRA-021 + SO-CRA-022 | Product availability preserved post-incident via resilience and DoS-resistance + cascading-impact minimisation + exploitation mitigation | Product with digital elements; manufacturer design; Annex I Part I (2)(h)/(i)/(k); PR.IR-04 + PR.IR-03 + DE.CM-09 |
-| DORA | SO-DORA-010 | Comprehensive ICT business continuity policy operationalised through dedicated, appropriate and documented arrangements, plans, procedures and mechanisms (incl. response and recovery plans subject to independent internal audit for non-microenterprises; backup policies; restoration and recovery procedures) | Financial entity; BC arrangements under Art. 11 + Art. 12; RC.RP-01 + RC.RP-04 + PR.IR-04 |
+| GDPR | SG-GDPR-009 | Personal-data breaches contained and mitigated via Art. 33(3)(d) measures (incl. rendering data unintelligible) + Art. 34(3)(a)/(b) unintelligibility carve-out | Personal data; post-detection containment, mitigation and remediation runbooks; ID.AM-08 + PR.IR-04 |
+| NIS 2 | SG-NIS2-005 | Six-action incident-handling capability (prevent, detect, analyse, contain, respond, recover) per Art. 21(2)(b) + Art. 6(8) `contain` action | Entity-level ICT systems; lifecycle-phase content; RC.RP-01 + RC.RP-04 + PR.IR-03 |
+| CRA | SG-CRA-021 + SG-CRA-022 | Product availability preserved post-incident via resilience and DoS-resistance + cascading-impact minimisation + exploitation mitigation | Product with digital elements; manufacturer design; Annex I Part I (2)(h)/(i)/(k); PR.IR-04 + PR.IR-03 + DE.CM-09 |
+| DORA | SG-DORA-010 | Comprehensive ICT business continuity policy operationalised through dedicated, appropriate and documented arrangements, plans, procedures and mechanisms (incl. response and recovery plans subject to independent internal audit for non-microenterprises; backup policies; restoration and recovery procedures) | Financial entity; BC arrangements under Art. 11 + Art. 12; RC.RP-01 + RC.RP-04 + PR.IR-04 |
 
 ## Validated relationships (from CRDA-deep §D-04.2)
 
@@ -149,7 +149,7 @@ depend on which layer the containment action falls into.
 ## Scope-overlap principle (operational). The high-level SO
 
 #### Scope-overlap principle (operational). The high-level SO
-(`SO-D-04.2.HL`) engages on a given party **if and only if ≥2 applicable
+(`SG-D-04.2.HL`) engages on a given party **if and only if ≥2 applicable
 regulations' containment-layer scope-determiners overlap on the same
 party** (e.g. a controller that is also a NIS 2 essential entity
 operating CRA-regulated products and running a DORA-class financial ICT
@@ -332,7 +332,7 @@ separately in the four sub-SOs and the per-recipient evidence packs.
 A company with ≥2 applicable regulations in scope of D-04.2 — with
 overlapping containment-layer scope-determiners on the same party —
 operates a **multi-layer containment architecture** with explicit
-layer hand-offs. The high-level SO (`SO-D-04.2.HL`) describes the common
+layer hand-offs. The high-level SO (`SG-D-04.2.HL`) describes the common
 containment-and-mitigation duty (contain the incident's impact,
 mitigate further damage, take measures to address the breach /
 incident, route to the downstream recovery / notification pipeline);
@@ -449,10 +449,10 @@ status: DRAFT
 ##### Participants
 | Regulation | SO ID | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-009 | Personal-data breaches contained and mitigated via Art. 33(3)(d) measures (incl. rendering data unintelligible) | Personal data; post-detection containment |
-| NIS2 | SO-NIS2-005 | Six-action incident-handling lifecycle covering `contain` and `respond` (Art. 6(8) definition) | Entity ICT; lifecycle phase |
-| CRA | SO-CRA-021, SO-CRA-022 | Product availability preserved post-incident via resilience and DoS-resistance + cascading-impact minimisation | Product with digital elements; manufacturer design |
-| DORA | SO-DORA-008, SO-DORA-010 | ICT incident management process (Art. 17(1) `detect/manage/notify`) + BC policy with response/recovery plans (Art. 11(3)) | Financial entity; response-plan architecture |
+| GDPR | SG-GDPR-009 | Personal-data breaches contained and mitigated via Art. 33(3)(d) measures (incl. rendering data unintelligible) | Personal data; post-detection containment |
+| NIS2 | SG-NIS2-005 | Six-action incident-handling lifecycle covering `contain` and `respond` (Art. 6(8) definition) | Entity ICT; lifecycle phase |
+| CRA | SG-CRA-021, SG-CRA-022 | Product availability preserved post-incident via resilience and DoS-resistance + cascading-impact minimisation | Product with digital elements; manufacturer design |
+| DORA | SG-DORA-008, SG-DORA-010 | ICT incident management process (Art. 17(1) `detect/manage/notify`) + BC policy with response/recovery plans (Art. 11(3)) | Financial entity; response-plan architecture |
 | AI_Act | — | Out-of-scope (sole authorities: NIS2/DORA/CRA) | n/a |
 **Sole-authority note:** AI Act is out-of-scope for D-04.2 per AEGIS taxonomy §4.1 — AI Act does not impose a containment mandate. Containment is operationalised via CRA's Annex I (2)(h)/(i)/(k) resilience/availability architecture at the product level and via NIS2/DORA's response-plan architecture at the entity level.
 ##### Pairwise matrix

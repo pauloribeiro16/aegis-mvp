@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-010 | Comprehensive ICT business continuity policy operationalised through dedicated, appropriate and documented arrangements, plans, procedures and mechanisms (incl. response and recovery plans subject to independent internal audit for non-microenterprises; backup policies; restoration and recovery procedures) | Financial entity; BC arrangements under Art. 11 + Art. 12; RC.RP-01 + RC.RP-04 + PR.IR-04 |
+| DORA | SG-DORA-010 | Comprehensive ICT business continuity policy operationalised through dedicated, appropriate and documented arrangements, plans, procedures and mechanisms (incl. response and recovery plans subject to independent internal audit for non-microenterprises; backup policies; restoration and recovery procedures) | Financial entity; BC arrangements under Art. 11 + Art. 12; RC.RP-01 + RC.RP-04 + PR.IR-04 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-04.2.4 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-04.2.DORA
+id: SG-D-04.2.DORA
 subdomain: D-04.2
 applies_to: [DORA]
-inherits_from: SO-DORA-010
+inherits_from: SG-DORA-010
 source_SR: SR-DORA-013, SR-DORA-014, SR-DORA-016
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_N
@@ -58,7 +58,7 @@ prioritised leg for criticality-based backup scope.)*
 
   derives_from:
     hso_sub_so: SO-4.2.DORA
-    per_reg_so: SO-DORA-010
+    per_reg_so: SG-DORA-010
     source_sr: SR-DORA-013, SR-DORA-014, SR-DORA-016
     hso_file: ../../HierarchicalSecurityObjectives/D-04_Incident-Response/4.2.md
     objective_ref_section: "### 4.2.4"

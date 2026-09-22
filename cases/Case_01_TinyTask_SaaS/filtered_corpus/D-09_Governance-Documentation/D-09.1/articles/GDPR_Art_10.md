@@ -30,7 +30,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-038
@@ -38,7 +38,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
   source_clauses:
     - { clause_id: GDPR-CP06, article_ref: "Art. 27(1) — designate in writing" }
     - { clause_id: GDPR-CP06, article_ref: "Art. 27(2)(a) — occasional exception" }
-  linked_objectives: [SO-GDPR-023]
+  linked_objectives: [SG-GDPR-023]
   sub_domain: [D-06.4, D-09.1]
   nist_csf_mapping:
     - { id: GV.OC-02, title: "Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risks are understood and considered" }
@@ -89,7 +89,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     Art. 27 irrespective of the exception's `risk` prong.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-053
@@ -98,7 +98,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     - { clause_id: GDPR-CL22, article_ref: "Art. 9(2)(a) — explicit consent for special categories" }
     - { clause_id: GDPR-CL21, article_ref: "Art. 9(1) — special-category prohibition (cross)" }
     - { clause_id: GDPR-C05, article_ref: "Art. 4(11) — consent definition (cross)" }
-  linked_objectives: [SO-GDPR-032]
+  linked_objectives: [SG-GDPR-032]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: PR.AA-02, title: "Identities proofed and bound to credentials" }
@@ -140,14 +140,14 @@ _No standalone SO row cites this article directly (covered via the rules below).
     broader reference. Marked UNMAPPED_CSF.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-062
   title: "DPO designation triggered by processing profile"
   source_clauses:
     - { clause_id: GDPR-CP25, article_ref: "Art. 37(1)(a)/(b)/(c) — DPO designation triggers" }
-  linked_objectives: [SO-GDPR-037]
+  linked_objectives: [SG-GDPR-037]
   sub_domain: [D-09.1, D-09.2]
   nist_csf_mapping:
     - { id: GV.RR-02, title: "Roles/responsibilities/accountabilities established and communicated" }

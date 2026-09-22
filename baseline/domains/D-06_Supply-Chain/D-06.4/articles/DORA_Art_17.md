@@ -34,19 +34,19 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-DORA-008 | An ICT-related incident management process is defined, established and implemented to detect, manage and notify ICT-related incidents; major ICT-related incidents are reported to the relevant competent authority, and clients are informed about the major ICT-related incident without undue delay as soon as the financial entity becomes aware of it. | `DORA-C30` (Art. 17(1) incident management process — twin 3-way verb coordination: define/establish/implement + detect/manage/notify); `DORA-C31` (Art. 19(1)+(3) major incident reporting to CA + client notification — twin temporal trigger `without undue delay AS SOON AS they become aware`) | D-04.1, D-04.3 |
-| SO-DORA-008 | D-04.1, D-04.3 | Art. 17(1) + Art. 19(1)+(3) | Incident management process + major incident reporting |
+| SG-DORA-008 | An ICT-related incident management process is defined, established and implemented to detect, manage and notify ICT-related incidents; major ICT-related incidents are reported to the relevant competent authority, and clients are informed about the major ICT-related incident without undue delay as soon as the financial entity becomes aware of it. | `DORA-C30` (Art. 17(1) incident management process — twin 3-way verb coordination: define/establish/implement + detect/manage/notify); `DORA-C31` (Art. 19(1)+(3) major incident reporting to CA + client notification — twin temporal trigger `without undue delay AS SOON AS they become aware`) | D-04.1, D-04.3 |
+| SG-DORA-008 | D-04.1, D-04.3 | Art. 17(1) + Art. 19(1)+(3) | Incident management process + major incident reporting |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-011
   title: "Multi-class anomalous activity detection with SPOF identification"
   source_clauses:
     - { clause_id: DORA-C20, article_ref: "Art. 10(1) — `mechanisms to promptly detect anomalous activities … including ICT network performance issues and ICT-related incidents, and to identify potential material single points of failure`" }
-  linked_objectives: [SO-DORA-007]
+  linked_objectives: [SG-DORA-007]
   sub_domain: [D-04.1, D-10.1]
   nist_csf_mapping:
     - { id: DE.CM-01, title: "Networks and network services are monitored to find potentially adverse events" }
@@ -113,14 +113,14 @@ status: DRAFT
     this reading is rejected because the qualifier is in OJ text.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-016
   title: "End-to-end ICT-related incident management process with root-cause analysis"
   source_clauses:
     - { clause_id: DORA-C30, article_ref: "Art. 17(1) — `define, establish and implement an ICT-related incident management process to detect, manage and notify ICT-related incidents`" }
-  linked_objectives: [SO-DORA-008]
+  linked_objectives: [SG-DORA-008]
   sub_domain: [D-04.1, D-04.3]
   nist_csf_mapping:
     - { id: RS.MA-01, title: "The incident management plan is executed in coordination with relevant third parties once an incident is declared" }
@@ -193,7 +193,7 @@ status: DRAFT
     characterisation remains unsettled in OJ text).
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-017
@@ -201,7 +201,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: DORA-C31, article_ref: "Art. 19(1) — `Financial entities shall report major ICT-related incidents to the relevant competent authority`" }
     - { clause_id: DORA-C31, article_ref: "Art. 19(3) — `financial entities shall, without undue delay as soon as they become aware of it, inform their clients about the major ICT-related incident`" }
-  linked_objectives: [SO-DORA-008]
+  linked_objectives: [SG-DORA-008]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents are reported internally to the appropriate stakeholders, including executive leadership and legal counsel" }
@@ -269,14 +269,14 @@ status: DRAFT
     pending EBA Guidelines on operational or security payment-related incidents.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-018
   title: "Standing crisis communication plans for major ICT incidents"
   source_clauses:
     - { clause_id: DORA-C29, article_ref: "Art. 14(1) — `crisis communication plans enabling a responsible disclosure of, at least, major ICT-related incidents or vulnerabilities to clients and counterparts as well as to the public, as appropriate`" }
-  linked_objectives: [SO-DORA-009]
+  linked_objectives: [SG-DORA-009]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information is shared with designated internal and external stakeholders consistent with the established information-sharing rules" }
@@ -334,14 +334,14 @@ status: DRAFT
     policy pending implementing-acts clarity.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-022
   title: "Unrestricted audit rights over critical ICT third-party providers"
   source_clauses:
     - { clause_id: DORA-C38, article_ref: "Art. 30(3)(e)(i)+(ii) — `unrestricted rights of access, inspection and audit by the financial entity, or an appointed third party, and by the competent authority … the right to take copies of relevant documentation on-site … the right to agree on alternative assurance levels if other clients' rights are affected`" }
-  linked_objectives: [SO-DORA-012]
+  linked_objectives: [SG-DORA-012]
   sub_domain: [D-06.4]
   nist_csf_mapping:
     - { id: GV.SC-03, title: "Contracts with suppliers and other third parties are used to implement appropriate measures" }
@@ -402,14 +402,14 @@ status: DRAFT
     negotiations until a market convention crystallises.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-027
   title: "Sound and comprehensive ICT risk management framework documented"
   source_clauses:
     - { clause_id: DORA-C03, article_ref: "Art. 6(1) — `Financial entities shall have a sound, comprehensive and well-documented ICT risk management framework … which enables them to address ICT risk quickly, efficiently and comprehensively`" }
-  linked_objectives: [SO-DORA-016]
+  linked_objectives: [SG-DORA-016]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -467,14 +467,14 @@ status: DRAFT
     approval-trails, archival) is an entity-policy matter.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-029
   title: "Inventory and classification of ICT-supported business assets"
   source_clauses:
     - { clause_id: DORA-C05, article_ref: "Art. 7(1) — `identify, classify and adequately document all ICT supported business functions, roles and responsibilities, the information assets and ICT assets supporting those functions, and their roles and dependencies in relation to ICT risk`" }
-  linked_objectives: [SO-DORA-017]
+  linked_objectives: [SG-DORA-017]
   sub_domain: [D-09.3]
   nist_csf_mapping:
     - { id: ID.AM-01, title: "Inventories of hardware managed by the organization are maintained" }
@@ -541,14 +541,14 @@ status: DRAFT
     supervisory practice providing convergence signals.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-030
   title: "Continuous monitoring and control of ICT-system security and functioning"
   source_clauses:
     - { clause_id: DORA-C07, article_ref: "Art. 8(1) — `continuously monitor and control the security and functioning of ICT systems and tools and shall minimise the impact of ICT risk on ICT systems through the deployment of appropriate ICT security tools, policies and procedures`" }
-  linked_objectives: [SO-DORA-018]
+  linked_objectives: [SG-DORA-018]
   sub_domain: [D-10.1]
   nist_csf_mapping:
     - { id: DE.CM-01, title: "Networks and network services are monitored to find potentially adverse events" }

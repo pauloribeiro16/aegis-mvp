@@ -28,11 +28,11 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-CRA-052 | A product with digital elements is presumed to be in conformity with the essential cybersecurity requirements set out in Annex I where the product and the manufacturer's processes conform to harmonised standards, common specifications, or European cybersecurity certification schemes adopted pursuant to Regulation (EU) 2019/881 at the assurance level specified by Art. 8(1) or Art. 32(2)/(3). | `CRA-CL108` (Art. 27(1) — presumption of conformity (harmonised standards)); `CRA-CL109` (Art. 27(2) — common specifications); `CRA-CL110` (Art. 27(5) — common-specs presumption); `CRA-CL111` (Art. 27(8) — CSA-certification presumption); `CRA-CL112` (Art. 27(9) — delegated acts specifying CSA schemes) | D-09.1 |
+| SG-CRA-052 | A product with digital elements is presumed to be in conformity with the essential cybersecurity requirements set out in Annex I where the product and the manufacturer's processes conform to harmonised standards, common specifications, or European cybersecurity certification schemes adopted pursuant to Regulation (EU) 2019/881 at the assurance level specified by Art. 8(1) or Art. 32(2)/(3). | `CRA-CL108` (Art. 27(1) — presumption of conformity (harmonised standards)); `CRA-CL109` (Art. 27(2) — common specifications); `CRA-CL110` (Art. 27(5) — common-specs presumption); `CRA-CL111` (Art. 27(8) — CSA-certification presumption); `CRA-CL112` (Art. 27(9) — delegated acts specifying CSA schemes) | D-09.1 |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-078
@@ -41,7 +41,7 @@ status: DRAFT
     - { clause_id: CRA-CL111, article_ref: "Art. 27(8) — CSA-certification presumption" }
     - { clause_id: CRA-CL112, article_ref: "Art. 27(9) — delegated acts specifying CSA schemes" }
     - { clause_id: CRA-CL10, article_ref: "Art. 8(1) — assurance level at least `substantial`" }
-  linked_objectives: [SO-CRA-052]
+  linked_objectives: [SG-CRA-052]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed" }
@@ -92,7 +92,7 @@ status: DRAFT
     Article 27(9) materially shape the certification landscape.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-098
@@ -100,7 +100,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL126, article_ref: "Art. 32(4) — critical products: certification or B+C/H fallback" }
     - { clause_id: CRA-CL127, article_ref: "Art. 32(5) — FOSS simplified CA (Module A when tech docs are public)" }
-  linked_objectives: [SO-CRA-066]
+  linked_objectives: [SG-CRA-066]
   sub_domain: [D-09.4, D-10.3]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed" }

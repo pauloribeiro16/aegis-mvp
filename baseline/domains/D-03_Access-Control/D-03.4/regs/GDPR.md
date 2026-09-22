@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-007 | Personal-data processing systems implement appropriate technical and organisational measures ensuring that, by default, only personal data which are necessary for each specific purpose are processed — across amount, extent, period, and accessibility | Controller; Art. 25(2); data-protection by default; scope = personal data; "by default" across 4 dimensions (amount, extent, period, accessibility); PR.PS-01 + ID.AM-08 + GV.PO-01 |
+| GDPR | SG-GDPR-007 | Personal-data processing systems implement appropriate technical and organisational measures ensuring that, by default, only personal data which are necessary for each specific purpose are processed — across amount, extent, period, and accessibility | Controller; Art. 25(2); data-protection by default; scope = personal data; "by default" across 4 dimensions (amount, extent, period, accessibility); PR.PS-01 + ID.AM-08 + GV.PO-01 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-03.4.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-03.4.GDPR
+id: SG-D-03.4.GDPR
 subdomain: D-03.4
 applies_to: [GDPR]
-inherits_from: SO-GDPR-007
+inherits_from: SG-GDPR-007
 source_SR: SR-GDPR-013
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N
@@ -78,8 +78,8 @@ governance-side anchor.
   title: "Personal-data processing systems implement by-default measures across amount, extent, period, and accessibility (Art. 25(2) four-dimension AND)"
 
   derives_from:
-    hso_sub_so: SO-D-03.4.GDPR
-    per_reg_so: SO-GDPR-007
+    hso_sub_so: SG-D-03.4.GDPR
+    per_reg_so: SG-GDPR-007
     source_sr: SR-GDPR-013
     hso_file: ../../HierarchicalSecurityObjectives/D-03_Access-Control/D-03.4.md
     objective_ref_section: "### D-03.4.1"

@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-071 + SO-CRA-072 | Products with digital elements undergo effective and regular tests and reviews; conformity is demonstrated via the conformity-assessment modules (Module A internal production control; Module B+C and H notified-body EU-type examination); test reports are part of the technical documentation (Annex I Part II (3) + Annex VII §6 + Annex VIII Part I + Annex VIII Part II per `SR-CRA-101`/`SR-CRA-103`/`SR-CRA-104`). | Product-level conformity-assessment via OJ-codified modules (Module A self-assessment / Module B+C and H notified body) + Annex I Part II (3) effective/regular tests; OJ-literal cadence `effective and regular`; Annex VII §6 test reports as evidence. |
+| CRA | SG-CRA-071 + SG-CRA-072 | Products with digital elements undergo effective and regular tests and reviews; conformity is demonstrated via the conformity-assessment modules (Module A internal production control; Module B+C and H notified-body EU-type examination); test reports are part of the technical documentation (Annex I Part II (3) + Annex VII §6 + Annex VIII Part I + Annex VIII Part II per `SR-CRA-101`/`SR-CRA-103`/`SR-CRA-104`). | Product-level conformity-assessment via OJ-codified modules (Module A self-assessment / Module B+C and H notified body) + Annex I Part II (3) effective/regular tests; OJ-literal cadence `effective and regular`; Annex VII §6 test reports as evidence. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-10.3.3 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-10.3.CRA
+id: SG-D-10.3.CRA
 subdomain: D-10.3
 applies_to: [CRA]
-inherits_from: SO-CRA-071 + SO-CRA-072
+inherits_from: SG-CRA-071 + SG-CRA-072
 source_SR: SR-CRA-101 + SR-CRA-103 + SR-CRA-104
 activation: if CRA in applicable_regs
 phase_1A_role: 3_of_5
@@ -48,8 +48,8 @@ ID.RA-04, GV.OV-01, GV.PO-02, ID.RA-01, GV.OC-03, GV.SC-04.
   title: "Manufacturer carries out effective and regular tests of the product, demonstrates conformity via OJ-codified modules (Module A or Module B+C and H), and includes test reports in technical documentation"
 
   derives_from:
-    hso_sub_so: SO-D-10.3.CRA
-    per_reg_so: SO-CRA-071 + SO-CRA-072
+    hso_sub_so: SG-D-10.3.CRA
+    per_reg_so: SG-CRA-071 + SG-CRA-072
     source_sr: SR-CRA-101 + SR-CRA-103 + SR-CRA-104
     hso_file: ../../HierarchicalSecurityObjectives/D-10_Monitoring-Audit/D-10.3.md
     objective_ref_section: "### D-10.3.3"

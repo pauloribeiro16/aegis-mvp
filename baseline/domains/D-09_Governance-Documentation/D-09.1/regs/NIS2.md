@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| NIS2 | SO-NIS2-021 + SO-NIS2-022 + SO-NIS2-023 | Management body of essential/important entities approves the cybersecurity risk-management measures, oversees their implementation, and can be held liable (Art. 20(1)); policies on risk analysis + IS security (Art. 21(2)(a)) and policies/procedures to assess effectiveness of cybersecurity risk-management measures (Art. 21(2)(f)). | Governance-first with policy artefact; management-body approve/oversee/liable architecture on top of three policy artefacts. |
+| NIS2 | SG-NIS2-021 + SG-NIS2-022 + SG-NIS2-023 | Management body of essential/important entities approves the cybersecurity risk-management measures, oversees their implementation, and can be held liable (Art. 20(1)); policies on risk analysis + IS security (Art. 21(2)(a)) and policies/procedures to assess effectiveness of cybersecurity risk-management measures (Art. 21(2)(f)). | Governance-first with policy artefact; management-body approve/oversee/liable architecture on top of three policy artefacts. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-09.1.2 — Sub-SO for NIS 2
 
 ```yaml
-id: SO-D-09.1.NIS2
+id: SG-D-09.1.NIS2
 subdomain: D-09.1
 applies_to: [NIS2]
-inherits_from: SO-NIS2-021 + SO-NIS2-022 + SO-NIS2-023
+inherits_from: SG-NIS2-021 + SG-NIS2-022 + SG-NIS2-023
 source_SR: SR-NIS2-032 + SR-NIS2-033 + SR-NIS2-034 + SR-NIS2-035 + SR-NIS2-036 + SR-NIS2-037
 activation: if NIS2 in applicable_regs
 phase_1A_role: 1_of_5
@@ -50,7 +50,7 @@ ID.RA-05, GV.PO-01 (primary), PR.PS-01, ID.IM-01, GV.OV-03.
 
   derives_from:
     hso_sub_so: SO-9.1.NIS2
-    per_reg_so: SO-NIS2-021 + SO-NIS2-022 + SO-NIS2-023
+    per_reg_so: SG-NIS2-021 + SG-NIS2-022 + SG-NIS2-023
     source_sr: SR-NIS2-032 + SR-NIS2-035 + SR-NIS2-036
     hso_file: ../../HierarchicalSecurityObjectives/D-09_Governance-Documentation/9.1.md
     objective_ref_section: "### 9.1.2"

@@ -26,7 +26,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-002
@@ -34,7 +34,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
   source_clauses:
     - { clause_id: CRA-CL134, article_ref: "Annex I Part I (2)(e) — at-rest encryption" }
     - { clause_id: CRA-CL129, article_ref: "Annex I Part I (1) — chapeau" }
-  linked_objectives: [SO-CRA-002, SO-CRA-001]
+  linked_objectives: [SG-CRA-002, SG-CRA-001]
   sub_domain: [D-01.1]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "The confidentiality, integrity, and availability of data-at-rest are protected" }

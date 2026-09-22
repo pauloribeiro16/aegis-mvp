@@ -24,12 +24,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-038 | The controller provides transparent, concise, intelligible, easily accessible information in clear and plain language to data subjects on processing operations (Art. 13/14 collection notices), supports the exercise of data-subject rights (Art. 15–22), verifies identity on reasonable doubt, responds to rights requests within one month (extendable by two further months where necessary), and acts free of charge except in defined exception cases. | `GDPR-RT01` (Art. 12(1)); `GDPR-RT02` (Art. 12(3)); `GDPR-RT03` (Art. 12(5)); `GDPR-RT04` (Art. 12(6)); `GDPR-RT05` (Art. 13(1)); `GDPR-RT06` (Art. 13(2)(f)); `GDPR-RT07` (Art. 14(1)/(2)); `GDPR-RT08` (Art. 14(5)(b)) | D-09.4, D-05.4 |
-| SO-GDPR-038 | D-09.4, D-05.4 | Art. 12, Art. 13, Art. 14 | Information duties and rights-exercise support |
+| SG-GDPR-038 | The controller provides transparent, concise, intelligible, easily accessible information in clear and plain language to data subjects on processing operations (Art. 13/14 collection notices), supports the exercise of data-subject rights (Art. 15–22), verifies identity on reasonable doubt, responds to rights requests within one month (extendable by two further months where necessary), and acts free of charge except in defined exception cases. | `GDPR-RT01` (Art. 12(1)); `GDPR-RT02` (Art. 12(3)); `GDPR-RT03` (Art. 12(5)); `GDPR-RT04` (Art. 12(6)); `GDPR-RT05` (Art. 13(1)); `GDPR-RT06` (Art. 13(2)(f)); `GDPR-RT07` (Art. 14(1)/(2)); `GDPR-RT08` (Art. 14(5)(b)) | D-09.4, D-05.4 |
+| SG-GDPR-038 | D-09.4, D-05.4 | Art. 12, Art. 13, Art. 14 | Information duties and rights-exercise support |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-068
@@ -37,7 +37,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-RT05, article_ref: "Art. 13(1) — collection-time information" }
     - { clause_id: GDPR-RT07, article_ref: "Art. 14(1)/(2) — third-party-source information" }
-  linked_objectives: [SO-GDPR-038]
+  linked_objectives: [SG-GDPR-038]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: ID.AM-03, title: "Inventories of data and metadata for designated data types" }

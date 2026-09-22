@@ -24,12 +24,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-CRA-030 | Any natural or legal person may voluntarily notify vulnerabilities or incidents (including near misses) of products with digital elements to the CSIRT designated as coordinator or to ENISA, and a CSIRT initially receiving a notification that does not originate from the manufacturer informs the manufacturer; the mere act of notification does not subject the notifying natural or legal person to increased liability. | `CRA-CL69` (Art. 15(1) — voluntary AEV reporting); `CRA-CL70` (Art. 15(2) — voluntary SI / near-miss reporting); `CRA-CL72` (Art. 15(4) — third-party notification + CSIRT-informs-manufacturer); `CRA-CL81` (Art. 17(4) — liability shield) | D-04.3, D-09.4 |
-| SO-CRA-030 | D-04.3, D-09.4 | Art. 15(1)/(2)/(4) + Art. 17(4) | Voluntary vulnerability/incident/near-miss reporting + liability shield |
+| SG-CRA-030 | Any natural or legal person may voluntarily notify vulnerabilities or incidents (including near misses) of products with digital elements to the CSIRT designated as coordinator or to ENISA, and a CSIRT initially receiving a notification that does not originate from the manufacturer informs the manufacturer; the mere act of notification does not subject the notifying natural or legal person to increased liability. | `CRA-CL69` (Art. 15(1) — voluntary AEV reporting); `CRA-CL70` (Art. 15(2) — voluntary SI / near-miss reporting); `CRA-CL72` (Art. 15(4) — third-party notification + CSIRT-informs-manufacturer); `CRA-CL81` (Art. 17(4) — liability shield) | D-04.3, D-09.4 |
+| SG-CRA-030 | D-04.3, D-09.4 | Art. 15(1)/(2)/(4) + Art. 17(4) | Voluntary vulnerability/incident/near-miss reporting + liability shield |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-038
@@ -39,7 +39,7 @@ status: DRAFT
     - { clause_id: CRA-CL70, article_ref: "Art. 15(2) — voluntary SI / near-miss reporting by any person" }
     - { clause_id: CRA-CL72, article_ref: "Art. 15(4) — third-party notification + CSIRT informs manufacturer" }
     - { clause_id: CRA-CL81, article_ref: "Art. 17(4) — no increased liability for mere notification" }
-  linked_objectives: [SO-CRA-030]
+  linked_objectives: [SG-CRA-030]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information is shared with designated internal and external stakeholders consistent with the established information-sharing rules" }

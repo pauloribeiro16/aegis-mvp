@@ -31,10 +31,10 @@
 #### Participants (from CRDA-deep §D-03.1)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-005 | Identity of data subjects making rights-exercise requests verified using reasonable means proportionate to risk | Controller; Art. 12(6) + Art. 11(2); data-subject-side (external) identity verification; PR.AA-03 + PR.AA-02 |
-| NIS 2 | SO-NIS2-003 (partial) | Access control policies + HR security + asset management (3 coordinated sub-domains) | Essential/important entity; Art. 21(2)(i); workforce-side (internal) joiner-mover-leaver; PR.AA-01 + PR.AA-05 + PR.AT-02 |
-| CRA | SO-CRA-015 | Identities, credentials, and access entitlements for users, services, and integrated components managed in a verifiable manner | Manufacturer; Annex I Part I (2)(d) + Art. 13(15); product-side (user / service / integrated-component identities); PR.AA-01 + ID.AM-01 |
-| DORA | SO-DORA-002 (partial) | Strong authentication + key protection (Art. 9(4)(d) 3-control AND); identity-lifecycle is one dimension | Financial entity; Art. 9(4)(d); staff + service-to-service identities (financial-entity-side); PR.AA-03 + PR.AA-04 |
+| GDPR | SG-GDPR-005 | Identity of data subjects making rights-exercise requests verified using reasonable means proportionate to risk | Controller; Art. 12(6) + Art. 11(2); data-subject-side (external) identity verification; PR.AA-03 + PR.AA-02 |
+| NIS 2 | SG-NIS2-003 (partial) | Access control policies + HR security + asset management (3 coordinated sub-domains) | Essential/important entity; Art. 21(2)(i); workforce-side (internal) joiner-mover-leaver; PR.AA-01 + PR.AA-05 + PR.AT-02 |
+| CRA | SG-CRA-015 | Identities, credentials, and access entitlements for users, services, and integrated components managed in a verifiable manner | Manufacturer; Annex I Part I (2)(d) + Art. 13(15); product-side (user / service / integrated-component identities); PR.AA-01 + ID.AM-01 |
+| DORA | SG-DORA-002 (partial) | Strong authentication + key protection (Art. 9(4)(d) 3-control AND); identity-lifecycle is one dimension | Financial entity; Art. 9(4)(d); staff + service-to-service identities (financial-entity-side); PR.AA-03 + PR.AA-04 |
 
 ## Validated relationships (from CRDA-deep §D-03.1)
 
@@ -148,7 +148,7 @@ the legal anchor all depend on which boundary the identity falls into.
 ## Scope-overlap principle (operational). The high-level SO
 
 #### Scope-overlap principle (operational). The high-level SO
-(`SO-D-03.1.HL`) engages on a given party **if and only if ≥2 applicable
+(`SG-D-03.1.HL`) engages on a given party **if and only if ≥2 applicable
 regulations' identity-boundary scope-determiners overlap on the same
 party** (e.g. a controller that is also a NIS 2 essential entity
 operating CRA-regulated products and running a DORA-class financial ICT
@@ -289,7 +289,7 @@ the per-recipient evidence packs.
 A company with ≥2 applicable regulations in scope of D-03.1 — with
 overlapping identity-boundary scope-determiners on the same party —
 operates a **multi-boundary identity architecture** with explicit
-boundary hand-offs. The high-level SO (`SO-D-03.1.HL`) describes the
+boundary hand-offs. The high-level SO (`SG-D-03.1.HL`) describes the
 common identity-management duty (verifiable, lifecycle-aware,
 boundary-disciplined); the per-reg perspective is preserved in the four
 sub-SOs (identity subject, threshold anchor, evidence template,
@@ -338,7 +338,7 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs — AI Act out-of-scope per AEGIS taxonomy �
   volere_subtype: access
   title: "Identities of principals managed verifiably across the lifecycle with documented boundaries between identity types (multi-boundary identity architecture)"
   derives_from:
-    hso_sub_so: SO-D-03.1.HL
+    hso_sub_so: SG-D-03.1.HL
     hso_file: ../../HierarchicalSecurityObjectives/D-03_Access-Control/D-03.1.md
     objective_ref_section: "### D-03.1.0"
   description: |
@@ -395,10 +395,10 @@ status: DRAFT
 ##### Participants
 | Regulation | SO ID | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-005 | Identity of data subjects making rights-exercise requests verified using reasonable means proportionate to risk | Controller; Art. 12(6) + Art. 11(2); data-subject-side identity verification; PR.AA-03 + PR.AA-02 |
-| NIS2 | SO-NIS2-003 (partial) | Access control policies + HR security + asset management (3 coordinated sub-domains) | Essential/important entity; Art. 21(2)(i); HR-security dimension covers joiner-mover-leaver; PR.AA-01 + PR.AA-05 + PR.AT-02 |
-| CRA | SO-CRA-015 | Identities, credentials, and access entitlements for users, services, and integrated components managed in a verifiable manner | Manufacturer; Annex I Part I (2)(d) + Art. 13(15); product-level; "verifiable manner" (VAG) + Annex II §3 user-facing unique identification |
-| DORA | SO-DORA-002 (partial) | Strong authentication + key protection (Art. 9(4)(d) 3-control AND) | Financial entity; Art. 9(4)(d); identity-lifecycle is one dimension of the strong-authentication obligation; PR.AA-03 + PR.AA-04 |
+| GDPR | SG-GDPR-005 | Identity of data subjects making rights-exercise requests verified using reasonable means proportionate to risk | Controller; Art. 12(6) + Art. 11(2); data-subject-side identity verification; PR.AA-03 + PR.AA-02 |
+| NIS2 | SG-NIS2-003 (partial) | Access control policies + HR security + asset management (3 coordinated sub-domains) | Essential/important entity; Art. 21(2)(i); HR-security dimension covers joiner-mover-leaver; PR.AA-01 + PR.AA-05 + PR.AT-02 |
+| CRA | SG-CRA-015 | Identities, credentials, and access entitlements for users, services, and integrated components managed in a verifiable manner | Manufacturer; Annex I Part I (2)(d) + Art. 13(15); product-level; "verifiable manner" (VAG) + Annex II §3 user-facing unique identification |
+| DORA | SG-DORA-002 (partial) | Strong authentication + key protection (Art. 9(4)(d) 3-control AND) | Financial entity; Art. 9(4)(d); identity-lifecycle is one dimension of the strong-authentication obligation; PR.AA-03 + PR.AA-04 |
 | AI_Act | — | Out-of-scope (no identity-lifecycle mandate; CRA Art. 13(11) sole authority per taxonomy §4) | n/a |
 ##### Pairwise matrix
 

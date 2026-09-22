@@ -33,7 +33,7 @@
         "D-09.2"
       ],
       "linked_objectives": [
-        "SO-AIACT-001"
+        "SG-AIACT-001"
       ],
       "source_clauses": [
         {
@@ -65,7 +65,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-001"
+          "SG-AIACT-001"
         ],
         "sub_domain": [
           "D-09.2"
@@ -118,7 +118,7 @@
         "D-02.1"
       ],
       "linked_objectives": [
-        "SO-AIACT-001"
+        "SG-AIACT-001"
       ],
       "source_clauses": [
         {
@@ -152,7 +152,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-001"
+          "SG-AIACT-001"
         ],
         "sub_domain": [
           "D-09.2",
@@ -215,7 +215,7 @@
         "D-02.4"
       ],
       "linked_objectives": [
-        "SO-AIACT-002"
+        "SG-AIACT-002"
       ],
       "source_clauses": [
         {
@@ -257,7 +257,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-002"
+          "SG-AIACT-002"
         ],
         "sub_domain": [
           "D-02.1",
@@ -321,7 +321,7 @@
         "D-05.2"
       ],
       "linked_objectives": [
-        "SO-AIACT-003"
+        "SG-AIACT-003"
       ],
       "source_clauses": [
         {
@@ -363,7 +363,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-003"
+          "SG-AIACT-003"
         ],
         "sub_domain": [
           "D-05.1",
@@ -418,7 +418,7 @@
         "D-05.2"
       ],
       "linked_objectives": [
-        "SO-AIACT-003"
+        "SG-AIACT-003"
       ],
       "source_clauses": [
         {
@@ -451,7 +451,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-003"
+          "SG-AIACT-003"
         ],
         "sub_domain": [
           "D-05.1",
@@ -501,7 +501,7 @@
         "D-05.1"
       ],
       "linked_objectives": [
-        "SO-AIACT-004"
+        "SG-AIACT-004"
       ],
       "source_clauses": [
         {
@@ -535,7 +535,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-004"
+          "SG-AIACT-004"
         ],
         "sub_domain": [
           "D-05.1"
@@ -587,7 +587,7 @@
         "D-10.2"
       ],
       "linked_objectives": [
-        "SO-AIACT-005"
+        "SG-AIACT-005"
       ],
       "source_clauses": [
         {
@@ -627,7 +627,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-005"
+          "SG-AIACT-005"
         ],
         "sub_domain": [
           "D-10.2"
@@ -681,7 +681,7 @@
         "D-05.2"
       ],
       "linked_objectives": [
-        "SO-AIACT-006"
+        "SG-AIACT-006"
       ],
       "source_clauses": [
         {
@@ -720,7 +720,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-006"
+          "SG-AIACT-006"
         ],
         "sub_domain": [
           "D-10.2",
@@ -769,7 +769,7 @@
         "D-10.2"
       ],
       "linked_objectives": [
-        "SO-AIACT-006"
+        "SG-AIACT-006"
       ],
       "source_clauses": [
         {
@@ -808,7 +808,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-006"
+          "SG-AIACT-006"
         ],
         "sub_domain": [
           "D-10.2"
@@ -856,7 +856,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-AIACT-007"
+        "SG-AIACT-007"
       ],
       "source_clauses": [
         {
@@ -889,7 +889,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-007"
+          "SG-AIACT-007"
         ],
         "sub_domain": [
           "D-09.1"
@@ -946,7 +946,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-AIACT-007"
+        "SG-AIACT-007"
       ],
       "source_clauses": [
         {
@@ -977,7 +977,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-007"
+          "SG-AIACT-007"
         ],
         "sub_domain": [
           "D-09.1"
@@ -1026,7 +1026,7 @@
         "D-07.1"
       ],
       "linked_objectives": [
-        "SO-AIACT-008"
+        "SG-AIACT-008"
       ],
       "source_clauses": [
         {
@@ -1058,7 +1058,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-008"
+          "SG-AIACT-008"
         ],
         "sub_domain": [
           "D-08.2",
@@ -1112,7 +1112,7 @@
         "D-08.2"
       ],
       "linked_objectives": [
-        "SO-AIACT-008"
+        "SG-AIACT-008"
       ],
       "source_clauses": [
         {
@@ -1144,7 +1144,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-008"
+          "SG-AIACT-008"
         ],
         "sub_domain": [
           "D-08.2"
@@ -1197,7 +1197,7 @@
         "D-02.1"
       ],
       "linked_objectives": [
-        "SO-AIACT-009"
+        "SG-AIACT-009"
       ],
       "source_clauses": [
         {
@@ -1230,7 +1230,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-009"
+          "SG-AIACT-009"
         ],
         "sub_domain": [
           "D-07.1",
@@ -1288,7 +1288,7 @@
         "D-02.1"
       ],
       "linked_objectives": [
-        "SO-AIACT-009"
+        "SG-AIACT-009"
       ],
       "source_clauses": [
         {
@@ -1320,7 +1320,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-009"
+          "SG-AIACT-009"
         ],
         "sub_domain": [
           "D-01.4",
@@ -1374,7 +1374,7 @@
         "D-07.2"
       ],
       "linked_objectives": [
-        "SO-AIACT-009"
+        "SG-AIACT-009"
       ],
       "source_clauses": [
         {
@@ -1407,7 +1407,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-009"
+          "SG-AIACT-009"
         ],
         "sub_domain": [
           "D-02.1",
@@ -1465,7 +1465,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-AIACT-010"
+        "SG-AIACT-010"
       ],
       "source_clauses": [
         {
@@ -1506,7 +1506,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-010"
+          "SG-AIACT-010"
         ],
         "sub_domain": [
           "D-09.1"
@@ -1562,7 +1562,7 @@
         "D-07.1"
       ],
       "linked_objectives": [
-        "SO-AIACT-010"
+        "SG-AIACT-010"
       ],
       "source_clauses": [
         {
@@ -1593,7 +1593,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-010"
+          "SG-AIACT-010"
         ],
         "sub_domain": [
           "D-07.1"
@@ -1641,7 +1641,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-AIACT-011"
+        "SG-AIACT-011"
       ],
       "source_clauses": [
         {
@@ -1673,7 +1673,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-011"
+          "SG-AIACT-011"
         ],
         "sub_domain": [
           "D-09.1"
@@ -1726,7 +1726,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-AIACT-011"
+        "SG-AIACT-011"
       ],
       "source_clauses": [
         {
@@ -1758,7 +1758,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-011"
+          "SG-AIACT-011"
         ],
         "sub_domain": [
           "D-08.2",
@@ -1811,7 +1811,7 @@
         "D-10.1"
       ],
       "linked_objectives": [
-        "SO-AIACT-012"
+        "SG-AIACT-012"
       ],
       "source_clauses": [
         {
@@ -1852,7 +1852,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-012"
+          "SG-AIACT-012"
         ],
         "sub_domain": [
           "D-10.1"
@@ -1909,7 +1909,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-AIACT-013"
+        "SG-AIACT-013"
       ],
       "source_clauses": [
         {
@@ -1944,7 +1944,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-013"
+          "SG-AIACT-013"
         ],
         "sub_domain": [
           "D-04.3"
@@ -2002,7 +2002,7 @@
         "D-02.1"
       ],
       "linked_objectives": [
-        "SO-AIACT-014"
+        "SG-AIACT-014"
       ],
       "source_clauses": [
         {
@@ -2035,7 +2035,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-014"
+          "SG-AIACT-014"
         ],
         "sub_domain": [
           "D-07.3",
@@ -2092,7 +2092,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-AIACT-014"
+        "SG-AIACT-014"
       ],
       "source_clauses": [
         {
@@ -2124,7 +2124,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-AIACT-014"
+          "SG-AIACT-014"
         ],
         "sub_domain": [
           "D-04.3"

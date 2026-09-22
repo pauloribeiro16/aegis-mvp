@@ -26,11 +26,11 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-023 | Non-EU controllers and processors falling under Art. 3(2) designate a representative in writing in the Union, with limited exceptions for occasional, low-risk, small-scale processing and for public authorities. | `GDPR-CP06` (Art. 27(1)/(2)) | D-06.4, D-09.1 |
+| SG-GDPR-023 | Non-EU controllers and processors falling under Art. 3(2) designate a representative in writing in the Union, with limited exceptions for occasional, low-risk, small-scale processing and for public authorities. | `GDPR-CP06` (Art. 27(1)/(2)) | D-06.4, D-09.1 |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-038
@@ -38,7 +38,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP06, article_ref: "Art. 27(1) — designate in writing" }
     - { clause_id: GDPR-CP06, article_ref: "Art. 27(2)(a) — occasional exception" }
-  linked_objectives: [SO-GDPR-023]
+  linked_objectives: [SG-GDPR-023]
   sub_domain: [D-06.4, D-09.1]
   nist_csf_mapping:
     - { id: GV.OC-02, title: "Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risks are understood and considered" }

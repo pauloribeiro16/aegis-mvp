@@ -42,28 +42,28 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-CRA-023 | An actively exploited vulnerability contained in a product with digital elements that the manufacturer becomes aware of is notified simultaneously to the CSIRT designated as coordinator of the Member State of the manufacturer's main establishment and to ENISA, via the single reporting platform established under Art. 16. | `CRA-CL51` (Art. 14(1) sentence 1 — AEV notification to CSIRT + ENISA); `CRA-CL52` (Art. 14(1) sentence 2 — single reporting platform); `CRA-CL64` (Art. 14(7) — main-establishment routing) | D-04.3, D-09.4 |
-| SO-CRA-023 | D-04.3, D-09.4 | Art. 14(1) + (7) | AEV notification simultaneously to CSIRT + ENISA |
-| SO-CRA-024 | The Art. 14(1) AEV notification follows a three-tier temporal pattern — an early warning within 24 hours of the manufacturer becoming aware, a vulnerability notification within 72 hours, and a final report within 14 days of a corrective or mitigating measure being available — each reporting tier providing progressively richer content about the affected product, the vulnerability, and the corrective or mitigating measures available to users. | `CRA-CL53` (Art. 14(2)(a) — 24h early warning); `CRA-CL54` (Art. 14(2)(b) — 72h vulnerability notification); `CRA-CL55` (Art. 14(2)(c) — 14-day final report) | D-04.3, D-09.4 |
-| SO-CRA-024 | D-04.3, D-09.4 | Art. 14(2)(a)/(b)/(c) | AEV notification 24h/72h/14d three-tier pattern |
-| SO-CRA-025 | A severe incident having an impact on the security of a product with digital elements that the manufacturer becomes aware of is notified simultaneously to the CSIRT designated as coordinator of the Member State of the manufacturer's main establishment and to ENISA, via the single reporting platform established under Art. 16. | `CRA-CL56` (Art. 14(3) sentence 1 — SI notification to CSIRT + ENISA); `CRA-CL57` (Art. 14(3) sentence 2 — single reporting platform); `CRA-CL64` (Art. 14(7) — main-establishment routing) | D-04.3 |
-| SO-CRA-025 | D-04.3 | Art. 14(3) + (7) | Severe-incident notification to CSIRT + ENISA |
-| SO-CRA-026 | The Art. 14(3) severe-incident notification follows a three-tier temporal pattern — an early warning within 24 hours of the manufacturer becoming aware, an incident notification within 72 hours, and a final report within one month of the submission of the 72-hour incident notification — each tier providing progressively richer content including severity, root-cause type, and ongoing mitigation measures. | `CRA-CL58` (Art. 14(4)(a) — 24h early warning (SI)); `CRA-CL59` (Art. 14(4)(b) — 72h incident notification); `CRA-CL60` (Art. 14(4)(c) — 1-month final report (SI)) | D-04.3 |
-| SO-CRA-026 | D-04.3 | Art. 14(4)(a)/(b)/(c) | Severe-incident notification 24h/72h/1m three-tier pattern |
-| SO-CRA-027 | An incident having an impact on the security of a product with digital elements is considered severe where it negatively affects (or is capable of negatively affecting) the ability of the product to protect the availability, authenticity, integrity, or confidentiality of sensitive or important data or functions; OR where it has led (or is capable of leading) to the introduction or execution of malicious code in the product or in the network and information systems of a user of the product. | `CRA-CL61` (Art. 14(5)(a) — SI test A: CIA of sensitive/important data/functions); `CRA-CL62` (Art. 14(5)(b) — SI test B: malicious code); `CRA-CL44` (Art. 3(44) — incident definition) | D-04.3 |
-| SO-CRA-027 | D-04.3 | Art. 14(5)(a)/(b) | Severe-incident definition: CIA of sensitive/important OR malicious code |
-| SO-CRA-028 | After becoming aware of an actively exploited vulnerability or a severe incident, the manufacturer informs the impacted users — and where appropriate all users — of the vulnerability or incident and of any risk-mitigation and corrective measures that the users can deploy, where appropriate in a structured, machine-readable and easily-automatically-processable format; where the manufacturer fails to inform users in a timely manner, the CSIRTs designated as coordinators may provide such information. | `CRA-CL65` (Art. 14(8) sentence 1 — user notification + machine-readable format); `CRA-CL66` (Art. 14(8) sentence 2 — CSIRT fallback) | D-04.3, D-09.4 |
-| SO-CRA-028 | D-04.3, D-09.4 | Art. 14(8) | User notification + machine-readable format + CSIRT fallback |
-| SO-CRA-029 | Upon CSIRT request, the manufacturer provides an intermediate report on relevant status updates about the actively exploited vulnerability or severe incident. | `CRA-CL63` (Art. 14(6) — intermediate report on CSIRT request) | D-04.3 |
-| SO-CRA-029 | D-04.3 | Art. 14(6) | Intermediate report on CSIRT request |
-| SO-CRA-031 | An open-source software steward shall — to the extent the steward is involved in the development of the products with digital elements — notify actively exploited vulnerabilities of such products to the CSIRT designated as coordinator and to ENISA via the single reporting platform; and — to the extent severe incidents affect network and information systems provided by the steward for the development of such products — apply the severe-incident and user-notification obligations of Art. 14(3)/(8). | `CRA-CL103` (Art. 24(3) — OSS steward Art. 14(1)/(3)/(8) extension); `CRA-CL44` (Art. 3(44) — incident definition) | D-04.3, D-09.1 |
-| SO-CRA-031 | D-04.3, D-09.1 | Art. 24(3) | OSS steward Art. 14 notification extension (with involvement threshold) |
-| SO-CRA-067 | The Commission may adopt implementing acts specifying the format and elements of the software bill of materials referred to in Annex I Part II (1); ADCO may conduct a Union-wide dependency assessment on the Union's dependence on software components (in particular FOSS components) for specific categories of products with digital elements. | `CRA-CL49` (Art. 13(24) — SBOM implementing acts); `CRA-CL50` (Art. 13(25) — Union-wide dependency assessment by ADCO); `CRA-CL67` (Art. 14(9) — delegated acts on delay-dissemination grounds); `CRA-CL68` (Art. 14(10) — implementing acts on notification format/procedures); `CRA-CL8` (Art. 7(3) — delegated acts amending Annex III); `CRA-CL9` (Art. 7(4) — implementing acts specifying technical descriptions); `CRA-CL119` (Art. 30(6) — implementing acts on labels/pictograms) | D-09.4 |
-| SO-CRA-067 | D-09.4 | Art. 13(24)/(25) + Art. 14(9)/(10) + Art. 7(3)/(4) + Art. 30(6) | Commission implementing / delegated acts (SBOM, delay grounds, labels, technical descriptions) |
+| SG-CRA-023 | An actively exploited vulnerability contained in a product with digital elements that the manufacturer becomes aware of is notified simultaneously to the CSIRT designated as coordinator of the Member State of the manufacturer's main establishment and to ENISA, via the single reporting platform established under Art. 16. | `CRA-CL51` (Art. 14(1) sentence 1 — AEV notification to CSIRT + ENISA); `CRA-CL52` (Art. 14(1) sentence 2 — single reporting platform); `CRA-CL64` (Art. 14(7) — main-establishment routing) | D-04.3, D-09.4 |
+| SG-CRA-023 | D-04.3, D-09.4 | Art. 14(1) + (7) | AEV notification simultaneously to CSIRT + ENISA |
+| SG-CRA-024 | The Art. 14(1) AEV notification follows a three-tier temporal pattern — an early warning within 24 hours of the manufacturer becoming aware, a vulnerability notification within 72 hours, and a final report within 14 days of a corrective or mitigating measure being available — each reporting tier providing progressively richer content about the affected product, the vulnerability, and the corrective or mitigating measures available to users. | `CRA-CL53` (Art. 14(2)(a) — 24h early warning); `CRA-CL54` (Art. 14(2)(b) — 72h vulnerability notification); `CRA-CL55` (Art. 14(2)(c) — 14-day final report) | D-04.3, D-09.4 |
+| SG-CRA-024 | D-04.3, D-09.4 | Art. 14(2)(a)/(b)/(c) | AEV notification 24h/72h/14d three-tier pattern |
+| SG-CRA-025 | A severe incident having an impact on the security of a product with digital elements that the manufacturer becomes aware of is notified simultaneously to the CSIRT designated as coordinator of the Member State of the manufacturer's main establishment and to ENISA, via the single reporting platform established under Art. 16. | `CRA-CL56` (Art. 14(3) sentence 1 — SI notification to CSIRT + ENISA); `CRA-CL57` (Art. 14(3) sentence 2 — single reporting platform); `CRA-CL64` (Art. 14(7) — main-establishment routing) | D-04.3 |
+| SG-CRA-025 | D-04.3 | Art. 14(3) + (7) | Severe-incident notification to CSIRT + ENISA |
+| SG-CRA-026 | The Art. 14(3) severe-incident notification follows a three-tier temporal pattern — an early warning within 24 hours of the manufacturer becoming aware, an incident notification within 72 hours, and a final report within one month of the submission of the 72-hour incident notification — each tier providing progressively richer content including severity, root-cause type, and ongoing mitigation measures. | `CRA-CL58` (Art. 14(4)(a) — 24h early warning (SI)); `CRA-CL59` (Art. 14(4)(b) — 72h incident notification); `CRA-CL60` (Art. 14(4)(c) — 1-month final report (SI)) | D-04.3 |
+| SG-CRA-026 | D-04.3 | Art. 14(4)(a)/(b)/(c) | Severe-incident notification 24h/72h/1m three-tier pattern |
+| SG-CRA-027 | An incident having an impact on the security of a product with digital elements is considered severe where it negatively affects (or is capable of negatively affecting) the ability of the product to protect the availability, authenticity, integrity, or confidentiality of sensitive or important data or functions; OR where it has led (or is capable of leading) to the introduction or execution of malicious code in the product or in the network and information systems of a user of the product. | `CRA-CL61` (Art. 14(5)(a) — SI test A: CIA of sensitive/important data/functions); `CRA-CL62` (Art. 14(5)(b) — SI test B: malicious code); `CRA-CL44` (Art. 3(44) — incident definition) | D-04.3 |
+| SG-CRA-027 | D-04.3 | Art. 14(5)(a)/(b) | Severe-incident definition: CIA of sensitive/important OR malicious code |
+| SG-CRA-028 | After becoming aware of an actively exploited vulnerability or a severe incident, the manufacturer informs the impacted users — and where appropriate all users — of the vulnerability or incident and of any risk-mitigation and corrective measures that the users can deploy, where appropriate in a structured, machine-readable and easily-automatically-processable format; where the manufacturer fails to inform users in a timely manner, the CSIRTs designated as coordinators may provide such information. | `CRA-CL65` (Art. 14(8) sentence 1 — user notification + machine-readable format); `CRA-CL66` (Art. 14(8) sentence 2 — CSIRT fallback) | D-04.3, D-09.4 |
+| SG-CRA-028 | D-04.3, D-09.4 | Art. 14(8) | User notification + machine-readable format + CSIRT fallback |
+| SG-CRA-029 | Upon CSIRT request, the manufacturer provides an intermediate report on relevant status updates about the actively exploited vulnerability or severe incident. | `CRA-CL63` (Art. 14(6) — intermediate report on CSIRT request) | D-04.3 |
+| SG-CRA-029 | D-04.3 | Art. 14(6) | Intermediate report on CSIRT request |
+| SG-CRA-031 | An open-source software steward shall — to the extent the steward is involved in the development of the products with digital elements — notify actively exploited vulnerabilities of such products to the CSIRT designated as coordinator and to ENISA via the single reporting platform; and — to the extent severe incidents affect network and information systems provided by the steward for the development of such products — apply the severe-incident and user-notification obligations of Art. 14(3)/(8). | `CRA-CL103` (Art. 24(3) — OSS steward Art. 14(1)/(3)/(8) extension); `CRA-CL44` (Art. 3(44) — incident definition) | D-04.3, D-09.1 |
+| SG-CRA-031 | D-04.3, D-09.1 | Art. 24(3) | OSS steward Art. 14 notification extension (with involvement threshold) |
+| SG-CRA-067 | The Commission may adopt implementing acts specifying the format and elements of the software bill of materials referred to in Annex I Part II (1); ADCO may conduct a Union-wide dependency assessment on the Union's dependence on software components (in particular FOSS components) for specific categories of products with digital elements. | `CRA-CL49` (Art. 13(24) — SBOM implementing acts); `CRA-CL50` (Art. 13(25) — Union-wide dependency assessment by ADCO); `CRA-CL67` (Art. 14(9) — delegated acts on delay-dissemination grounds); `CRA-CL68` (Art. 14(10) — implementing acts on notification format/procedures); `CRA-CL8` (Art. 7(3) — delegated acts amending Annex III); `CRA-CL9` (Art. 7(4) — implementing acts specifying technical descriptions); `CRA-CL119` (Art. 30(6) — implementing acts on labels/pictograms) | D-09.4 |
+| SG-CRA-067 | D-09.4 | Art. 13(24)/(25) + Art. 14(9)/(10) + Art. 7(3)/(4) + Art. 30(6) | Commission implementing / delegated acts (SBOM, delay grounds, labels, technical descriptions) |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-005
@@ -71,7 +71,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL135, article_ref: "Annex I Part I (2)(f) — integrity + report on corruptions" }
     - { clause_id: CRA-CL141, article_ref: "Annex I Part I (2)(l) — logging + monitoring" }
-  linked_objectives: [SO-CRA-005]
+  linked_objectives: [SG-CRA-005]
   sub_domain: [D-01.4, D-10.2]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "The confidentiality, integrity, and availability of data-at-rest are protected" }
@@ -87,7 +87,7 @@ status: DRAFT
     The compound "data, personal or other, commands, programs and configuration" is COORD-S2 — a four-element list with nested OR/AND — and admits materially distinct protection scopes; Reading chosen: R1, treating the conjunction as inclusive of all four classes, in line with the OJ-literal listing. The "report on corruptions" phrase is VAG-S2; Reading chosen: R1, where the report goes to the device user or administering party in a manner proportionate to severity, rather than to an external authority (the integrity-breach case differs from the actively-exploited-vulnerability case under Art. 14). The phrase "any manipulation or modification not authorised by the user" is POLY-S2 with the "any" universal-quantifier meaning, and the literal reading is preserved — integrity protection is unconditional.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-007
@@ -96,7 +96,7 @@ status: DRAFT
     - { clause_id: CRA-CL143, article_ref: "Annex I Part II (1) — identify and document vulnerabilities and components + SBOM" }
     - { clause_id: CRA-CL26, article_ref: "Art. 13(7) — systematically document relevant cybersecurity aspects" }
     - { clause_id: CRA-CL18, article_ref: "Art. 13(3) sentence 1 — risk assessment documented and updated" }
-  linked_objectives: [SO-CRA-006, SO-CRA-007]
+  linked_objectives: [SG-CRA-006, SG-CRA-007]
   sub_domain: [D-02.1]
   nist_csf_mapping:
     - { id: ID.RA-01, title: "Vulnerabilities in assets are identified, validated, and recorded" }
@@ -111,7 +111,7 @@ status: DRAFT
     The phrase "top-level dependencies" in Annex I Part II (1) is POLY-S2, because depth admits at least three materially distinct readings. Reading chosen: R1, where "top-level" maps to first-level direct dependencies with depth-1 look-through; this honours the OJ literal "at the very least the top-level dependencies" without forbidding deeper SBOMs at the manufacturer's discretion. Alternative readings: R2 (full transitive closure) is operationally heavier and not strictly required by the OJ text, though some sector profiles (medical devices, automotive) may exceed this baseline; R3 (critical-path-only) would let vendors omit categories that may matter under coordinated vulnerability disclosure timelines. The "commonly used and machine-readable" VAG+POLY S3 ambiguity is carried up into SR-CRA-008.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-017
@@ -119,7 +119,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL150, article_ref: "Annex I Part II (8) — disseminate without delay, free of charge" }
     - { clause_id: CRA-CL132, article_ref: "Annex I Part I (2)(c) — notification of available updates" }
-  linked_objectives: [SO-CRA-009]
+  linked_objectives: [SG-CRA-009]
   sub_domain: [D-02.2]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed commensurate with risk" }
@@ -134,7 +134,7 @@ status: DRAFT
     The phrase "without delay" inherits the S3 ambiguity addressed in SR-CRA-010 and is treated identically — action commences immediately on awareness, with the ceiling set by the technical pipeline. The "unless otherwise agreed" carve-out in Annex I Part II (8) is POLY-S2 because "agreed" admits at least two materially distinct populations: Reading chosen: R1, the literal tailor-made product business-user agreement is the dominant reading, and consumer-product updates cannot be subject to charge under the carve-out. An additional reading, R3, would treat "without delay" as beginning at the moment the security update is technically ready, independent of any corporate release-cycle cadence — a stricter reading that effectively bans bundling security updates with feature releases; R3 is rejected where Annex I Part II (2) explicitly permits bundling under the "where technically feasible" qualifier, but the literal "without delay" from awareness remains the operative anchor. Remain open: (a) does "tailor-made" map onto the same Art. 6(a) proviso population used in SR-CRA-026, or is Annex I Part II (8) carving out a wider product class that lets enterprises negotiate subscription-based security-update access; (b) does Annex I Part II (8) require the advisory message to mention the option to file an Art. 14(8) user notification independently of the manufacturer's dissemination.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-019
@@ -143,7 +143,7 @@ status: DRAFT
     - { clause_id: CRA-CL147, article_ref: "Annex I Part II (5) — CVD policy" }
     - { clause_id: CRA-CL32, article_ref: "Art. 13(8) sentence 6 — CVD policy" }
     - { clause_id: CRA-CL103, article_ref: "Art. 24(3) — OSS steward Art. 14 extension cross-ref to CVD" }
-  linked_objectives: [SO-CRA-012, SO-CRA-049]
+  linked_objectives: [SG-CRA-012, SG-CRA-049]
   sub_domain: [D-02.3, D-09.1]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -158,7 +158,7 @@ status: DRAFT
     The phrase "policy on coordinated vulnerability disclosure" is POLY-S2 because three materially distinct policy architectures are admissible. Reading chosen: R3, a structured receive + triage + publish + post-disclosure verification pipeline, anchored in the implementing acts under Art. 14(9) and in Art. 17(5) EU vulnerability database integration. Alternative readings: R1 (ISO 29147 + ISO 30111-style structured policy, which is admissible) is a non-strict equivalent to R3; R2 (lighter disclosure-statement policy) is rejected because it fails the "enforce" element by omitting the triage and verification phases. The downstream contact-address expectation is developed separately in SR-CRA-021.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-020
@@ -167,7 +167,7 @@ status: DRAFT
     - { clause_id: CRA-CL146, article_ref: "Annex I Part II (4) — public vulnerability disclosure with delay exception" }
     - { clause_id: CRA-CL75, article_ref: "Art. 16(2) — CSIRT dissemination with delay grounds" }
     - { clause_id: CRA-CL67, article_ref: "Art. 14(9) — delegated acts on delay grounds" }
-  linked_objectives: [SO-CRA-012]
+  linked_objectives: [SG-CRA-012]
   sub_domain: [D-02.3]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information is shared with designated internal and external stakeholders consistent with the established information-sharing rules" }
@@ -182,7 +182,7 @@ status: DRAFT
     The phrase "duly justified cases, where manufacturers consider the security risks of publication to outweigh the security benefits" is VAG+SCOPE-Q S3 because the manufacturer is the sole judge of the balancing test, and no objective threshold is provided in the OJ text. Reading chosen: R2, treating CVD-in-progress per Art. 16(2) as the dominant illustrative example, with R1 (active exploitation) and R3 (national security grounds) following from the Art. 14(9) delegated-acts category set. Alternative reading: R4 (a vague "the risks are too high") is rejected as not a "duly justified" case because the word "duly" imports a documentary-evidence threshold that the manufacturer must meet. An additional reading, R5, would treat "duly justified" as requiring third-party validation (CSIRT or peer-manufacturer attestation) before the delay can be invoked, effectively institutionalising the balancing test rather than leaving it to manufacturer judgement; R5 is rejected because Annex I Part II (4) places the duty on the manufacturer and the harmonised-standards interpretation would have to operationalise validation — but R5 would be the natural next step if harmonised standards choose to specify it. Remain open: (a) does the manufacturer have to share the disclosure-after-delay basis with the CSIRT or keep it internal, and what audit trails apply; (b) how does the public-disclosure duty under Annex I Part II (4) interact with a coordinated disclosure timeline that the researcher agreed to, when the agreed window has lapsed but the patch is still in QA.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-027
@@ -190,7 +190,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL141, article_ref: "Annex I Part I (2)(l) — recording + monitoring + user opt-out" }
     - { clause_id: CRA-CL158, article_ref: "Annex II §8 — detailed instructions" }
-  linked_objectives: [SO-CRA-020, SO-CRA-068]
+  linked_objectives: [SG-CRA-020, SG-CRA-068]
   sub_domain: [D-10.1, D-04.1]
   nist_csf_mapping:
     - { id: PR.PS-04, title: "Log records are generated and made available for continuous monitoring and analysis" }
@@ -205,7 +205,7 @@ status: DRAFT
     The phrase "opt-out mechanism for the user" in Annex I Part I (2)(l) is VAG-S2 because "opt-out" admits at least three materially distinct operational readings. Reading chosen: R1 (the user can disable logging entirely), preserving the literal OJ text. The opt-out creates a privacy-by-design tension: GDPR Art. 25 emphasises by-default-on privacy controls under certain readings, but the OJ CRA text on this clause is opt-out; rule preserves the OJ-literal opt-out interpretation rather than importing non-CRA framings. No S3 instance is introduced on this rule.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-028
@@ -216,7 +216,7 @@ status: DRAFT
     - { clause_id: CRA-CL52, article_ref: "Art. 14(1) sentence 2 — single reporting platform" }
     - { clause_id: CRA-CL44, article_ref: "Art. 3(44) — incident definition (imported from Art. 6(6) NIS 2 + CRA add-on)" }
     - { clause_id: CRA-CL42, article_ref: "Art. 3(42) — actively exploited vulnerability" }
-  linked_objectives: [SO-CRA-023]
+  linked_objectives: [SG-CRA-023]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.MA-01, title: "The incident management plan is executed in coordination with relevant third parties once an incident is declared" }
@@ -231,7 +231,7 @@ status: DRAFT
     The phrase "simultaneously" is VAG-S3 because temporal precision is left to interpretation. Reading chosen: R1, treating "simultaneously" as same-timestamp on the single platform under Art. 16, because the platform enforces simultaneity architecturally. R2 (same day) and R3 (short window) are rejected as failing the simultaneity requirement. The "becomes aware of" trigger inherits the GDPR Art. 33 / NIS 2 Art. 23 ambiguity (cf. CJEU IAB Baltic C-394/21 on reasonable certainty of harm), with R1 (actual knowledge) literal and R2 (constructive knowledge through due diligence) admissible. The "actively exploited vulnerability" definition under Art. 3(42) admits R3/R4 (publicly available exploit / researcher-published PoC) as the dominant readings. An additional reading, R3-as-window, would treat "simultaneously" as occurring within a tightly bounded time window (a few hours) rather than at the literal same timestamp, accommodating the practical realities of single-platform queueing; R3-as-window is rejected because the single platform architecture under Art. 16 enforces same-timestamp submission architecturally, making the literal reading the operational reality. Remain open: (a) does a published PoC alone (without observed exploitation) qualify as an AEV, or does the manufacturer require evidence of exploitation in the wild; (b) does constructive knowledge extend to threats described in confidential channels (vendor-to-vendor vulnerability programmes) that the manufacturer has not joined.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-029
@@ -239,7 +239,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL53, article_ref: "Art. 14(2)(a) — AEV early warning 24h" }
     - { clause_id: CRA-CL51, article_ref: "Art. 14(1) sentence 1 — awareness trigger" }
-  linked_objectives: [SO-CRA-024]
+  linked_objectives: [SG-CRA-024]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.MA-02, title: "Incident reports are triaged and validated" }
@@ -254,7 +254,7 @@ status: DRAFT
     The phrase "without undue delay AND in any event within 24 hours" creates an S3 twin-trigger pattern requiring both elements to be satisfied. Reading chosen: R1, treating the 24-hour ceiling as the hard outer boundary and "without undue delay" as the duty to commence action immediately upon awareness, with the literal textual conjunction "in any event" reinforcing the ceiling. An additional alternative reading, R3, would treat the dual-trigger pattern as setting a 24-hour floor with the "without undue delay" clause permitting later submission only when full information is not yet available, with partial reports filed at the ceiling; R3 is rejected because the OJ literal "in any event within 24 hours" does not authorise partial-only filings at the ceiling; the early-warning tier is the partial-information mechanism. Remain open: (a) what constitutes "becoming aware" when the awareness surfaces through a third-party researcher disclosure (Annex I Part II (6)) — is the clock running from the researcher's report or from the manufacturer's triage-validated confirmation; (b) does "in any event" preserve any technical-feasibility carve-out for staged reporting where the territorial-scope indicator cannot be populated in 24 hours, or is the indicator permitted to be partial.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-030
@@ -262,7 +262,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL54, article_ref: "Art. 14(2)(b) — AEV vulnerability notification 72h" }
     - { clause_id: CRA-CL55, article_ref: "Art. 14(2)(c) — AEV final report 14d + content (i)(ii)(iii)" }
-  linked_objectives: [SO-CRA-024]
+  linked_objectives: [SG-CRA-024]
   sub_domain: [D-04.3, D-09.4]
   nist_csf_mapping:
     - { id: RS.AN-03, title: "Analysis is performed to determine what has occurred during an event and the root cause of the event" }
@@ -278,7 +278,7 @@ status: DRAFT
     The phrase "14 days after a corrective or mitigating measure is available" is VAG-S2 because "available" admits materially different anchor points. Reading chosen: R1, treating "available" as "released / published" — the moment the manufacturer can demonstrably claim the remediation is ready for deployment. The "unless the relevant information has already been provided" qualifier in Art. 14(2)(b) is VAG-S2 with R1 (technical duplicate of an earlier submission) as the literal reading, and R2 (sufficient-information overlap) as the broader Layer-1 reading.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-031
@@ -289,7 +289,7 @@ status: DRAFT
     - { clause_id: CRA-CL57, article_ref: "Art. 14(3) sentence 2 — single platform" }
     - { clause_id: CRA-CL61, article_ref: "Art. 14(5)(a) — SI test A: CIA of sensitive/important" }
     - { clause_id: CRA-CL62, article_ref: "Art. 14(5)(b) — SI test B: malicious code" }
-  linked_objectives: [SO-CRA-025, SO-CRA-027]
+  linked_objectives: [SG-CRA-025, SG-CRA-027]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.MA-01, title: "The incident management plan is executed in coordination with relevant third parties once an incident is declared" }
@@ -304,7 +304,7 @@ status: DRAFT
     The phrase "severe incident having an impact on the security of the product" is VAG+SCOPE-Q S2 (severity threshold inherited from Art. 14(5)) nested with VAG+POLY+COORD S3 (the disjunctive tests under Art. 14(5)(a) and (b)). Reading chosen: R3, applying the Art. 14(5)(a) and (b) literal disjunctive tests — either test triggers severity. The "simultaneously" qualifier inherits the SR-CRA-028 reading. The "becomes aware of" trigger inherits the SR-CRA-028 trigger ambiguity (CJEU IAB Baltic C-394/21 reasonable-certainty framing). An additional reading, R4-aggregated, would aggregate the Art. 14(5)(a) and (b) tests into a single composite trigger that requires both CIA impact AND malicious-code consequences to qualify as severe, raising the threshold substantially; R4 is rejected because the OJ literal "or" makes the tests disjunctive and the higher threshold would defeat the upstream Art. 14(3) duty to report on severe incidents as defined. Remain open: (a) does the "capable of affecting" gate in Art. 14(5)(a) require the manufacturer to forecast rather than observe, and where is the evidential threshold for the capability claim; (b) does the malicious-code test under Art. 14(5)(b) include legitimate but unauthorised code modifications (e.g., supply-chain backdoors not classified as malware) or strictly code with malicious intent.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-032
@@ -312,7 +312,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL58, article_ref: "Art. 14(4)(a) — SI early warning 24h" }
     - { clause_id: CRA-CL59, article_ref: "Art. 14(4)(b) — SI incident notification 72h" }
-  linked_objectives: [SO-CRA-026]
+  linked_objectives: [SG-CRA-026]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.MA-02, title: "Incident reports are triaged and validated" }
@@ -327,14 +327,14 @@ status: DRAFT
     The phrase "unlawful OR malicious acts" in Art. 14(4)(a) is COORD-S2 with two terms bound by OR. Reading chosen: R2, treating the terms as distinct — unlawful referring to illegal acts generally and malicious referring to acts with adversarial intent — so that both categories are reported independently. The 24h/72h twin-trigger ambiguity is identical to the AEV chain (see SR-CRA-029) and is not duplicated here.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-033
   title: "One-month severe-incident final report"
   source_clauses:
     - { clause_id: CRA-CL60, article_ref: "Art. 14(4)(c) — SI final report 1 month" }
-  linked_objectives: [SO-CRA-026]
+  linked_objectives: [SG-CRA-026]
   sub_domain: [D-04.3, D-09.4]
   nist_csf_mapping:
     - { id: RS.AN-06, title: "Actions performed during an investigation are recorded, and the records' integrity and provenance are preserved" }
@@ -349,7 +349,7 @@ status: DRAFT
     The phrase "one month" is VAG-S2 as a hard temporal — Reading chosen: R1, treating the literal "within one month after the submission of the incident notification under point (b)" as a calendar month measured from the 72-hour-notification submission date. The "applied and ongoing mitigation measures" enumeration is POLY+S2 with R1 (formal applied measures plus still-being-applied measures) as the literal reading, preserving the distinction between completed and in-progress mitigations.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-034
@@ -357,7 +357,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL61, article_ref: "Art. 14(5)(a) — severe-incident test A: CIA of sensitive/important data/functions" }
     - { clause_id: CRA-CL45, article_ref: "Art. 6(2) of NIS 2 (cross-ref via CRA Art. 3(43) `incident`) — availability, authenticity, integrity, confidentiality" }
-  linked_objectives: [SO-CRA-027]
+  linked_objectives: [SG-CRA-027]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: ID.RA-04, title: "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified, validated, and recorded" }
@@ -373,14 +373,14 @@ status: DRAFT
     The phrase "negatively affects OR is capable of negatively affecting" is VAG+POLY S3 with R3 (literal inclusive OR) as the chosen reading, so capability is sufficient without materialisation. The phrase "sensitive OR important data or functions" is POLY+COORD S3 with materially distinct populations across the OR chain; Reading chosen: R5, treating the qualifier as broadly inclusive (any data or function significant to user operations), anchored in the harmonised-standards layer under Art. 27. An additional alternative reading, R4-closed, would limit "sensitive or important" to a closed list enumerated in the Annex or implementing acts, restoring a positive enumeration that the current OJ leaves open; R4-closed is admitted as the long-run consensus direction through harmonised standards and ADCO guidance and is rejected for current OJ reading because Annex I plus Art. 14(5) do not provide the enumeration, leaving the determination to the risk assessment until the standardisation layer matures. Remain open: (a) what evidential threshold converts "capable of affecting" into a categorisable severity claim when no harm has materialised; (b) does "sensitive" align with sector-specific legal definitions (GDPR special-category data, NIS 2 essential-services data) or is it CRA-autonomous.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-035
   title: "Severe-incident malicious-code-introduction categorisation test"
   source_clauses:
     - { clause_id: CRA-CL62, article_ref: "Art. 14(5)(b) — severe-incident test B: malicious code" }
-  linked_objectives: [SO-CRA-027]
+  linked_objectives: [SG-CRA-027]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.MA-03, title: "Incidents are categorized, prioritized, and scoped" }
@@ -395,7 +395,7 @@ status: DRAFT
     The phrase "introduction OR execution" is POLY-S2 with R3 (either — presence or activity) as the chosen reading. The phrase "malicious code" is POLY-S2 with R4 (any code with malicious intent — malware / exploit / backdoor / packaged payload) as the chosen reading. The phrase "in a product … OR in the network and information systems of a user" is SCOPE-Q S2 with R3 (literal inclusive OR) as the chosen reading. No S3 instance is introduced on this rule.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-036
@@ -403,7 +403,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL65, article_ref: "Art. 14(8) sentence 1 — user notification + machine-readable format" }
     - { clause_id: CRA-CL66, article_ref: "Art. 14(8) sentence 2 — CSIRT fallback" }
-  linked_objectives: [SO-CRA-028]
+  linked_objectives: [SG-CRA-028]
   sub_domain: [D-04.3, D-09.4]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information is shared with designated internal and external stakeholders consistent with the established information-sharing rules" }
@@ -418,14 +418,14 @@ status: DRAFT
     The phrase "structured, machine-readable format that is easily automatically processable" is VAG+POLY S3 with format families as the operative divergence. Reading chosen: R4 (any format that automated tooling can ingest), pending Art. 14(10) implementing acts. The phrase "impacted users" is SCOPE-Q S3 with materially distinct populations: R1 (users of the affected product version — literal) and R2 (all users of the product — broader) are both admissible. An additional reading, R3-CSAF, would specify CSAF or a similarly structured sector profile as the implementation, treating "machine-readable" as a binding format reference rather than a format family; R3-CSAF is rejected pending Art. 14(10) implementing acts but the admission may converge with whatever format the acts ultimately specify, given that CSAF-type profiles are the de facto EU baseline in adjacent cybersecurity reporting frameworks. Remain open: (a) when the implementing acts specify a single format, do they bind retroactively across previously-published advisories or only prospectively; (b) does the CSIRT fallback under sentence 2 require the CSIRT to repeat the manufacturer-side reporting chain as well as the user notification, or only the user-side output.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-037
   title: "Intermediate status report on CSIRT request"
   source_clauses:
     - { clause_id: CRA-CL63, article_ref: "Art. 14(6) — intermediate report on CSIRT request" }
-  linked_objectives: [SO-CRA-029]
+  linked_objectives: [SG-CRA-029]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-04, title: "Coordination with stakeholders occurs consistent with applicable rules and regulations" }
@@ -440,7 +440,7 @@ status: DRAFT
     The phrase "where necessary" is VAG-S2 with R1 (necessary per CSIRT determination) as the literal reading, since the CSIRT is the party that assesses necessity. The phrase "relevant status updates" is VAG-S2 with R1 (status relevant to the incident's evolution — anchored in the CSIRT's investigation progress) as the literal reading.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-039
@@ -448,7 +448,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL103, article_ref: "Art. 24(3) — OSS steward Art. 14(1) extension (with involvement threshold)" }
     - { clause_id: CRA-CL14, article_ref: "Art. 3(14) — open-source software steward definition" }
-  linked_objectives: [SO-CRA-031]
+  linked_objectives: [SG-CRA-031]
   sub_domain: [D-04.3, D-09.1]
   nist_csf_mapping:
     - { id: RS.MA-01, title: "The incident management plan is executed in coordination with relevant third parties once an incident is declared" }
@@ -464,7 +464,7 @@ status: DRAFT
     The phrase `to the extent that they are involved in the development of the products with digital elements` carries VAG-S3 ambiguity and exposes three live readings: R1 (commit access to a relevant repository — a strict operational threshold), R2 (maintainer or co-maintainer role in the project — an organisational role threshold), R3 (advisory or review contribution without commit rights — a contribution-volume threshold), and R4 (any involvement in the product's software supply chain — the broad literal reading captured by the words `involved` and `development`). The reading chosen is R4 — the literal text `involved` carries the broadest reasonable construction consistent with the OJ-literal purpose of catching supply-chain-attributable incidents at the upstream end. The qualifier `steward's NIS for the development of such products` is SCOPE-Q-S2: R1 (the steward's own network and information systems only — literal scope). The Article 3(14) `systematically providing support on a sustained basis` threshold, inherited from the steward definition, carries a Berry-classic POLY+COORD signature and is treated in SR-CRA-072's record. Remain open: (a) whether the European Commission's forthcoming guidance on Article 24 (signalled in Recital 18) will supply a narrower reading of `involved in the development` than the R4 literal; (b) whether stewards that monetise upstream components via SaaS, dual-licensing, or sponsored-development arrangements are exposed to dual classification — both as stewards under Article 3(14) and as de facto manufacturers under Article 3(13) — and which obligation set governs.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-074
@@ -473,7 +473,7 @@ status: DRAFT
     - { clause_id: CRA-CL103, article_ref: "Art. 24(3) — OSS steward Art. 14(3)/(8) extension (NIS threshold)" }
     - { clause_id: CRA-CL58, article_ref: "Art. 14(4)(a) — SI early warning 24h" }
     - { clause_id: CRA-CL65, article_ref: "Art. 14(8) sentence 1 — user notification" }
-  linked_objectives: [SO-CRA-031]
+  linked_objectives: [SG-CRA-031]
   sub_domain: [D-09.1, D-04.3]
   nist_csf_mapping:
     - { id: RS.MA-01, title: "The incident management plan is executed in coordination with relevant third parties once an incident is declared" }
@@ -489,7 +489,7 @@ status: DRAFT
     `Affect network and information systems provided by the open-source software stewards for the development of such products` is SCOPE-Q-S2: R1 (the steward's own NIS only — literal scope). The interplay with Article 14(5)'s severe-incident definition (cf. CL61/CL62) is inherited — `severe incident` is a Berry-classic definitional regress, and the same reading applies here as in the manufacturer's Article 14(3) obligation. No major S3 in this SR beyond the inherited severe-incident ambiguity. Remain open: (a) the operational interface with the reporting tiers in Article 14(4) — i.e. whether the steward follows the same 24h / 72h / 14d / 1m ladder as the manufacturer, or whether a single notification to the steward's `home` CSIRT suffices; (b) the operational status of `provided by the open-source software stewards for the development of such products` — whether this covers build-system infrastructure, hosting infrastructure, or both.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-083
@@ -499,7 +499,7 @@ status: DRAFT
     - { clause_id: CRA-CL41, article_ref: "Art. 13(16) — manufacturer contact info on product" }
     - { clause_id: CRA-CL151, article_ref: "Annex II §1 — manufacturer contact info" }
     - { clause_id: CRA-CL153, article_ref: "Annex II §3 — product unique identification" }
-  linked_objectives: [SO-CRA-056]
+  linked_objectives: [SG-CRA-056]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: PR.AA-01, title: "Identities and credentials for authorized users, services, and hardware are managed by the organization" }
@@ -542,7 +542,7 @@ status: DRAFT
     three as the legal-identity anchor; the rest are optional supplements.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-099
@@ -555,7 +555,7 @@ status: DRAFT
     - { clause_id: CRA-CL9, article_ref: "Art. 7(4) — implementing acts on technical descriptions" }
     - { clause_id: CRA-CL119, article_ref: "Art. 30(6) — implementing acts on labels/pictograms" }
     - { clause_id: CRA-CL50, article_ref: "Art. 13(25) — Union-wide dependency assessment by ADCO" }
-  linked_objectives: [SO-CRA-067, SO-CRA-070]
+  linked_objectives: [SG-CRA-067, SG-CRA-070]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: GV.PO-02, title: "Cybersecurity processes and procedures for implementing the cybersecurity policy are established, communicated, and enforced" }
@@ -607,7 +607,7 @@ status: DRAFT
     publication.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-112
@@ -615,7 +615,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL74, article_ref: "Art. 16(1) — ENISA single reporting platform" }
     - { clause_id: CRA-CL77, article_ref: "Art. 16(4) — ENISA platform security measures" }
-  linked_objectives: [SO-CRA-073]
+  linked_objectives: [SG-CRA-073]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: PR.IR-01, title: "Networks and environments are protected from unauthorized logical access and usage" }

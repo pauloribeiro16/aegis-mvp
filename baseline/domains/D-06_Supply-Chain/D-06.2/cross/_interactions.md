@@ -42,7 +42,7 @@
 #### Participants (from CRDA-deep §D-06.2)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-038 | Manufacturer draws up and maintains an SBOM covering the components and dependencies contained in the product with digital elements in a commonly used and machine-readable format that includes, at minimum, the top-level dependencies; on a reasoned request from a market surveillance authority, the SBOM is provided where necessary for the authority to check compliance with the Annex I cybersecurity requirements | Product with digital elements; manufacturer SBOM; Art. 3(39) SBOM definition + Annex I Part II (1) SBOM + Art. 13(24) Commission implementing acts on SBOM format + Annex II §9 SBOM optional user access + Annex VII §2(b) SBOM in technical documentation + Annex VII §8 SBOM on MSA reasoned request; ID.AM-02 + GV.SC-02 + GV.SC-03 |
+| CRA | SG-CRA-038 | Manufacturer draws up and maintains an SBOM covering the components and dependencies contained in the product with digital elements in a commonly used and machine-readable format that includes, at minimum, the top-level dependencies; on a reasoned request from a market surveillance authority, the SBOM is provided where necessary for the authority to check compliance with the Annex I cybersecurity requirements | Product with digital elements; manufacturer SBOM; Art. 3(39) SBOM definition + Annex I Part II (1) SBOM + Art. 13(24) Commission implementing acts on SBOM format + Annex II §9 SBOM optional user access + Annex VII §2(b) SBOM in technical documentation + Annex VII §8 SBOM on MSA reasoned request; ID.AM-02 + GV.SC-02 + GV.SC-03 |
 | GDPR | — (out-of-scope) | No SBOM mandate in GDPR; CRA sole authority per AEGIS taxonomy §4.1 | n/a |
 | NIS2 | — (out-of-scope) | No SBOM mandate in NIS 2; CRA sole authority per AEGIS taxonomy §4.1 | n/a |
 | DORA | — (out-of-scope) | No SBOM mandate in DORA Art. 28; DORA's Art. 24(4) SBOM cross-ref applies to digital operational resilience testing, not to the Annex I Part II (1) SBOM; CRA is the sole authority | n/a |
@@ -180,7 +180,7 @@ Legend: **N/A** = no scope question for the self-pair (single-participant sub-do
 ## Scope-overlap principle (operational). The high-level SO
 
 #### Scope-overlap principle (operational). The high-level SO
-(`SO-D-06.2.HL`) engages on a given party **only when CRA is in
+(`SG-D-06.2.HL`) engages on a given party **only when CRA is in
 `applicable_regs`** (i.e., the party is a CRA-bound manufacturer of
 products with digital elements placed on the Union market). Because
 only 1 regulator participates on D-06.2, the high-level SO does
@@ -384,7 +384,7 @@ manufacturer of products with digital elements placed on the Union
 market) operates the **three-anchored + optional fourth SBOM
 architecture** with explicit operational anchors (authoring,
 retention, regulatory disclosure, optional user access). The high-
-level SO (`SO-D-06.2.HL`) describes the common SBOM duty (the
+level SO (`SG-D-06.2.HL`) describes the common SBOM duty (the
 manufacturer draws up and maintains an SBOM in a commonly used and
 machine-readable format covering at least the top-level
 dependencies, with format flexibility pending the Commission
@@ -459,7 +459,7 @@ CRA only (1 of 5 regs — **CRA is SOLE AUTHORITY per AEGIS taxonomy §4.1**). 0
   volere_subtype: audit
   title: "Manufacturer draws up and maintains a software bill of materials (SBOM) covering components and dependencies in a commonly used and machine-readable format with at minimum the top-level dependencies (three-anchored SBOM architecture: authoring + retention + regulatory disclosure + optional user access)"
   derives_from:
-    hso_sub_so: SO-D-06.2.HL
+    hso_sub_so: SG-D-06.2.HL
     hso_file: ../../HierarchicalSecurityObjectives/D-06_Supply-Chain/D-06.2.md
     objective_ref_section: "### D-06.2.0"
   description: |
@@ -518,7 +518,7 @@ status: DRAFT
 |---|---|---|---|
 | GDPR | — | Out-of-scope (sole authority: CRA) | n/a |
 | NIS2 | — | Out-of-scope (sole authority: CRA) | n/a |
-| CRA | SO-CRA-038 | Manufacturer draws up and maintains SBOM in commonly used, machine-readable format covering at least top-level dependencies; provided to MSA on reasoned request (Annex I Part II (1) + Art. 13(24) + Annex VII §2(b) + Annex VII §8) | Product with digital elements; manufacturer SBOM |
+| CRA | SG-CRA-038 | Manufacturer draws up and maintains SBOM in commonly used, machine-readable format covering at least top-level dependencies; provided to MSA on reasoned request (Annex I Part II (1) + Art. 13(24) + Annex VII §2(b) + Annex VII §8) | Product with digital elements; manufacturer SBOM |
 | DORA | — | Out-of-scope (sole authority: CRA) | n/a |
 | AI_Act | — | Out-of-scope (sole authority: CRA) | n/a |
 **Sole-authority note:** GDPR, NIS2, DORA, and AI Act are all out-of-scope for D-06.2 per AEGIS taxonomy §4.1. CRA Annex I Part II (1) is the SOLE AUTHORITY for SBOM. This is the only sub-domain in Part B where CRA is the sole authority across all 5 regulations.

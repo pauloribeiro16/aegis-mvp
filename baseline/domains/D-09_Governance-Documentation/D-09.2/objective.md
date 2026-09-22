@@ -7,7 +7,7 @@
 
 #### D-09.2.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-09.2.HL
+id: SG-D-09.2.HL
 subdomain: D-09.2
 applies_to: auto  # activates when ≥2 applicable regs have ≥1 pair with Y or Conditional-Y scope overlap on the same party AND ≥1 sub-SO activates; for D-09.2 the matrix above shows every pair has Y or Conditional-Y activation on the joint-condition operator (no N (typically) scope-disjoint pairs); the 4 SAME — DIFFERENT-PERSPECTIVE pairs (all 4 GDPR pairs) reflect the structural pre-launch DPIA vs continuous / iterative assessment asymmetry; the 5 SAME — COMPLEMENTARY pairs stack on distinct assessment *objects* with no consolidation rule (except the CRA↔AI_Act pair which has the CRA Art. 13(4) sentence 2 OJ-level consolidation rule permitting substitution); the 1 SAME — EQUAL pair (NIS 2 ↔ DORA) discharges both obligations on the DORA-dominant stack for financial entities. The high-level SO does NOT collapse any per-reg assessment regime; it surfaces the common documented-assessment duty with the per-reg assessment object, trigger, content template, threshold, recipient, and review cadence preserved verbatim in the 5 sub-SOs. **The single OJ-level cross-regulation consolidation rule** is CRA Art. 13(4) sentence 2: a unified AI Act Art. 9 risk-management system substitutes for the CRA Art. 13(3) cybersecurity risk assessment when both apply to the same product.
 status: static

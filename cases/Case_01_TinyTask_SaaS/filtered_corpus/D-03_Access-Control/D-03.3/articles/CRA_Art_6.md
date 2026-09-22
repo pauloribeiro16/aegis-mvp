@@ -34,12 +34,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-CRA-018 | A product with digital elements is made available on the market with a secure-by-default configuration — including the possibility for the user to reset the product to its original state — unless otherwise agreed between manufacturer and business user in relation to a tailor-made product with digital elements. | `CRA-CL131` (Annex I Part I (2)(b) — secure by default + tailor-made exception + reset to original); `CRA-CL2` (Art. 6(a) proviso — properly installed, intended purpose, reasonably foreseeable use, necessary security updates installed) | D-03.4 (CRA sole authority per taxonomy §4.1) |
-| SO-CRA-018 | D-03.4 (CRA sole authority) | Annex I Part I (2)(b) + Art. 6(a) proviso | Secure-by-default configuration + tailor-made exception + reset |
+| SG-CRA-018 | A product with digital elements is made available on the market with a secure-by-default configuration — including the possibility for the user to reset the product to its original state — unless otherwise agreed between manufacturer and business user in relation to a tailor-made product with digital elements. | `CRA-CL131` (Annex I Part I (2)(b) — secure by default + tailor-made exception + reset to original); `CRA-CL2` (Art. 6(a) proviso — properly installed, intended purpose, reasonably foreseeable use, necessary security updates installed) | D-03.4 (CRA sole authority per taxonomy §4.1) |
+| SG-CRA-018 | D-03.4 (CRA sole authority) | Annex I Part I (2)(b) + Art. 6(a) proviso | Secure-by-default configuration + tailor-made exception + reset |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-004
@@ -48,7 +48,7 @@ status: DRAFT
     - { clause_id: CRA-CL134, article_ref: "Annex I Part I (2)(e) — `and by using other technical means`" }
     - { clause_id: CRA-CL133, article_ref: "Annex I Part I (2)(d) — access control" }
     - { clause_id: CRA-CL2, article_ref: "Art. 6(a) proviso — installation/conditions" }
-  linked_objectives: [SO-CRA-004]
+  linked_objectives: [SG-CRA-004]
   sub_domain: [D-01.3, D-01.1, D-03.3]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "The confidentiality, integrity, and availability of data-at-rest are protected" }
@@ -64,7 +64,7 @@ status: DRAFT
     The Annex I text does not mention key management explicitly — the synthesis catalogue (99_CRA_Synthesis.md §4) flags this as a T2-vs-text gap — so the key-separation reading rests on the combination of Annex I (2)(d) access-control duty with the Annex I (2)(e) "other technical means" residual. Reading chosen: R2, anchoring separation in functional role-based access control rather than in physical separation, so that the key-material custodian and the operational-environment custodian are distinct roles with distinct credentials. No S3 instance is introduced directly on this rule; the S2 ambiguity on "relevant data" is inherited from SR-CRA-002 and applies in the same way.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-017
@@ -72,7 +72,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL150, article_ref: "Annex I Part II (8) — disseminate without delay, free of charge" }
     - { clause_id: CRA-CL132, article_ref: "Annex I Part I (2)(c) — notification of available updates" }
-  linked_objectives: [SO-CRA-009]
+  linked_objectives: [SG-CRA-009]
   sub_domain: [D-02.2]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed commensurate with risk" }
@@ -87,7 +87,7 @@ status: DRAFT
     The phrase "without delay" inherits the S3 ambiguity addressed in SR-CRA-010 and is treated identically — action commences immediately on awareness, with the ceiling set by the technical pipeline. The "unless otherwise agreed" carve-out in Annex I Part II (8) is POLY-S2 because "agreed" admits at least two materially distinct populations: Reading chosen: R1, the literal tailor-made product business-user agreement is the dominant reading, and consumer-product updates cannot be subject to charge under the carve-out. An additional reading, R3, would treat "without delay" as beginning at the moment the security update is technically ready, independent of any corporate release-cycle cadence — a stricter reading that effectively bans bundling security updates with feature releases; R3 is rejected where Annex I Part II (2) explicitly permits bundling under the "where technically feasible" qualifier, but the literal "without delay" from awareness remains the operative anchor. Remain open: (a) does "tailor-made" map onto the same Art. 6(a) proviso population used in SR-CRA-026, or is Annex I Part II (8) carving out a wider product class that lets enterprises negotiate subscription-based security-update access; (b) does Annex I Part II (8) require the advisory message to mention the option to file an Art. 14(8) user notification independently of the manufacturer's dissemination.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-025
@@ -96,7 +96,7 @@ status: DRAFT
     - { clause_id: CRA-CL131, article_ref: "Annex I Part I (2)(b) — secure by default configuration" }
     - { clause_id: CRA-CL2, article_ref: "Art. 6(a) proviso — properly installed, intended purpose, reasonably foreseeable" }
     - { clause_id: CRA-CL3, article_ref: "Art. 3(23) — intended purpose" }
-  linked_objectives: [SO-CRA-018, SO-CRA-045]
+  linked_objectives: [SG-CRA-018, SG-CRA-045]
   sub_domain: [D-03.4]
   nist_csf_mapping:
     - { id: PR.PS-01, title: "Configuration management practices are established, documented, and applied to assets" }
@@ -111,7 +111,7 @@ status: DRAFT
     The phrase "secure by default configuration" is VAG-S3 because three materially distinct configurations produce materially different compliance populations. Reading chosen: R2 — the security features (authentication, access control, audit logging, network segmentation, secure-update mechanism) are enabled by default at first power-up. Alternative readings: R1 (deny-all initial state, with the user explicitly enabling required services) and R3 (zero-config security, the product works securely without any user configuration) are operationally convergent with R2: all three require security features on at delivery, and only the configuration-management user-experience differs. An additional reading, R4, would extend the "secure by default" floor to the post-deployment configuration surface: any change the user makes from the default is documented and reversible through the reset mechanism; R4 is admitted as a strengthening of the chosen R2 reading and is rejected where it would conflict with the tailor-made carve-out, which permits negotiated non-default configurations in business-user settings. Remain open: (a) when a user explicitly changes a setting from the secure default and a subsequent vulnerability surfaces, does the manufacturer retain responsibility for the as-configured state or does the configuration shift break the Art. 13(2) risk-assessment chain; (b) does the "reset to original state" obligation require preserving user data through the reset (R3) or wiping it (R1/R2).
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-028
@@ -122,7 +122,7 @@ status: DRAFT
     - { clause_id: CRA-CL52, article_ref: "Art. 14(1) sentence 2 — single reporting platform" }
     - { clause_id: CRA-CL44, article_ref: "Art. 3(44) — incident definition (imported from Art. 6(6) NIS 2 + CRA add-on)" }
     - { clause_id: CRA-CL42, article_ref: "Art. 3(42) — actively exploited vulnerability" }
-  linked_objectives: [SO-CRA-023]
+  linked_objectives: [SG-CRA-023]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.MA-01, title: "The incident management plan is executed in coordination with relevant third parties once an incident is declared" }
@@ -137,7 +137,7 @@ status: DRAFT
     The phrase "simultaneously" is VAG-S3 because temporal precision is left to interpretation. Reading chosen: R1, treating "simultaneously" as same-timestamp on the single platform under Art. 16, because the platform enforces simultaneity architecturally. R2 (same day) and R3 (short window) are rejected as failing the simultaneity requirement. The "becomes aware of" trigger inherits the GDPR Art. 33 / NIS 2 Art. 23 ambiguity (cf. CJEU IAB Baltic C-394/21 on reasonable certainty of harm), with R1 (actual knowledge) literal and R2 (constructive knowledge through due diligence) admissible. The "actively exploited vulnerability" definition under Art. 3(42) admits R3/R4 (publicly available exploit / researcher-published PoC) as the dominant readings. An additional reading, R3-as-window, would treat "simultaneously" as occurring within a tightly bounded time window (a few hours) rather than at the literal same timestamp, accommodating the practical realities of single-platform queueing; R3-as-window is rejected because the single platform architecture under Art. 16 enforces same-timestamp submission architecturally, making the literal reading the operational reality. Remain open: (a) does a published PoC alone (without observed exploitation) qualify as an AEV, or does the manufacturer require evidence of exploitation in the wild; (b) does constructive knowledge extend to threats described in confidential channels (vendor-to-vendor vulnerability programmes) that the manufacturer has not joined.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-034
@@ -145,7 +145,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL61, article_ref: "Art. 14(5)(a) — severe-incident test A: CIA of sensitive/important data/functions" }
     - { clause_id: CRA-CL45, article_ref: "Art. 6(2) of NIS 2 (cross-ref via CRA Art. 3(43) `incident`) — availability, authenticity, integrity, confidentiality" }
-  linked_objectives: [SO-CRA-027]
+  linked_objectives: [SG-CRA-027]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: ID.RA-04, title: "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified, validated, and recorded" }
@@ -161,7 +161,7 @@ status: DRAFT
     The phrase "negatively affects OR is capable of negatively affecting" is VAG+POLY S3 with R3 (literal inclusive OR) as the chosen reading, so capability is sufficient without materialisation. The phrase "sensitive OR important data or functions" is POLY+COORD S3 with materially distinct populations across the OR chain; Reading chosen: R5, treating the qualifier as broadly inclusive (any data or function significant to user operations), anchored in the harmonised-standards layer under Art. 27. An additional alternative reading, R4-closed, would limit "sensitive or important" to a closed list enumerated in the Annex or implementing acts, restoring a positive enumeration that the current OJ leaves open; R4-closed is admitted as the long-run consensus direction through harmonised standards and ADCO guidance and is rejected for current OJ reading because Annex I plus Art. 14(5) do not provide the enumeration, leaving the determination to the risk assessment until the standardisation layer matures. Remain open: (a) what evidential threshold converts "capable of affecting" into a categorisable severity claim when no harm has materialised; (b) does "sensitive" align with sector-specific legal definitions (GDPR special-category data, NIS 2 essential-services data) or is it CRA-autonomous.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-038
@@ -171,7 +171,7 @@ status: DRAFT
     - { clause_id: CRA-CL70, article_ref: "Art. 15(2) — voluntary SI / near-miss reporting by any person" }
     - { clause_id: CRA-CL72, article_ref: "Art. 15(4) — third-party notification + CSIRT informs manufacturer" }
     - { clause_id: CRA-CL81, article_ref: "Art. 17(4) — no increased liability for mere notification" }
-  linked_objectives: [SO-CRA-030]
+  linked_objectives: [SG-CRA-030]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information is shared with designated internal and external stakeholders consistent with the established information-sharing rules" }

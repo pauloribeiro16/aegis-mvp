@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-055 to SO-CRA-067 (many — D-09.4 is the densest CRA sub-domain) | Single point of contact (Art. 13(17)) + product identification (Art. 13(15)/(16) + Annex II §1/§3) + 10-year technical-documentation retention (Art. 13(13) + Art. 19(6) + Art. 23(2)) + EU declaration + CE marking (Art. 13(12) + Art. 28 + Art. 30) + Annex VII 8-item technical documentation + support-period determination (Art. 13(8) sentence 2 + Art. 13(19) + Annex II §7) + EU declaration provision (Art. 13(20) + Annex II §6) + immediate corrective measures (Art. 13(21)) + MSA cooperation (Art. 13(22) + Art. 13(4) sentence 2) + cessation of operations notification (Art. 13(23)) + conformity-assessment procedure selection (Art. 32) + Commission implementing/delegated acts (Art. 13(24)/(25) + Art. 14(9)/(10) + Art. 7(3)/(4) + Art. 30(6)). | Product-level technical documentation regime; Annex VII 8-item content list; 10-year retention or support period (whichever longer); substantively scope-disjoint from GDPR per CRDA `N (typically)` (different record types, different triggers). |
+| CRA | SG-CRA-055 to SG-CRA-067 (many — D-09.4 is the densest CRA sub-domain) | Single point of contact (Art. 13(17)) + product identification (Art. 13(15)/(16) + Annex II §1/§3) + 10-year technical-documentation retention (Art. 13(13) + Art. 19(6) + Art. 23(2)) + EU declaration + CE marking (Art. 13(12) + Art. 28 + Art. 30) + Annex VII 8-item technical documentation + support-period determination (Art. 13(8) sentence 2 + Art. 13(19) + Annex II §7) + EU declaration provision (Art. 13(20) + Annex II §6) + immediate corrective measures (Art. 13(21)) + MSA cooperation (Art. 13(22) + Art. 13(4) sentence 2) + cessation of operations notification (Art. 13(23)) + conformity-assessment procedure selection (Art. 32) + Commission implementing/delegated acts (Art. 13(24)/(25) + Art. 14(9)/(10) + Art. 7(3)/(4) + Art. 30(6)). | Product-level technical documentation regime; Annex VII 8-item content list; 10-year retention or support period (whichever longer); substantively scope-disjoint from GDPR per CRDA `N (typically)` (different record types, different triggers). |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-09.4.3 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-09.4.CRA
+id: SG-D-09.4.CRA
 subdomain: D-09.4
 applies_to: [CRA]
-inherits_from: SO-CRA-055 + SO-CRA-056 + SO-CRA-057 + SO-CRA-058 + SO-CRA-059 + SO-CRA-061 + SO-CRA-062 + SO-CRA-063 + SO-CRA-064 + SO-CRA-065 + SO-CRA-066 + SO-CRA-067
+inherits_from: SG-CRA-055 + SG-CRA-056 + SG-CRA-057 + SG-CRA-058 + SG-CRA-059 + SG-CRA-061 + SG-CRA-062 + SG-CRA-063 + SG-CRA-064 + SG-CRA-065 + SG-CRA-066 + SG-CRA-067
 source_SR: SR-CRA-085 + SR-CRA-087 + SR-CRA-088 + SR-CRA-078
 activation: if CRA in applicable_regs
 phase_1A_role: 3_of_5
@@ -48,7 +48,7 @@ GV.PO-02, GV.OC-03, ID.AM-02, ID.RA-04, GV.SC-04.
 
   derives_from:
     hso_sub_so: SO-9.4.CRA
-    per_reg_so: SO-CRA-055 + SO-CRA-056 + SO-CRA-057 + SO-CRA-058 + SO-CRA-059 + SO-CRA-061 + SO-CRA-062 + SO-CRA-063 + SO-CRA-064 + SO-CRA-065 + SO-CRA-066 + SO-CRA-067
+    per_reg_so: SG-CRA-055 + SG-CRA-056 + SG-CRA-057 + SG-CRA-058 + SG-CRA-059 + SG-CRA-061 + SG-CRA-062 + SG-CRA-063 + SG-CRA-064 + SG-CRA-065 + SG-CRA-066 + SG-CRA-067
     source_sr: SR-CRA-085 + SR-CRA-087 + SR-CRA-088 + SR-CRA-078
     hso_file: ../../HierarchicalSecurityObjectives/D-09_Governance-Documentation/9.4.md
     objective_ref_section: "### 9.4.3"

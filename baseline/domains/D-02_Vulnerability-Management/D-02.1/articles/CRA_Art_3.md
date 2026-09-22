@@ -50,24 +50,24 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-CRA-027 | An incident having an impact on the security of a product with digital elements is considered severe where it negatively affects (or is capable of negatively affecting) the ability of the product to protect the availability, authenticity, integrity, or confidentiality of sensitive or important data or functions; OR where it has led (or is capable of leading) to the introduction or execution of malicious code in the product or in the network and information systems of a user of the product. | `CRA-CL61` (Art. 14(5)(a) — SI test A: CIA of sensitive/important data/functions); `CRA-CL62` (Art. 14(5)(b) — SI test B: malicious code); `CRA-CL44` (Art. 3(44) — incident definition) | D-04.3 |
-| SO-CRA-031 | An open-source software steward shall — to the extent the steward is involved in the development of the products with digital elements — notify actively exploited vulnerabilities of such products to the CSIRT designated as coordinator and to ENISA via the single reporting platform; and — to the extent severe incidents affect network and information systems provided by the steward for the development of such products — apply the severe-incident and user-notification obligations of Art. 14(3)/(8). | `CRA-CL103` (Art. 24(3) — OSS steward Art. 14(1)/(3)/(8) extension); `CRA-CL44` (Art. 3(44) — incident definition) | D-04.3, D-09.1 |
-| SO-CRA-034 | Data processed by a product with digital elements — personal or other — is limited to what is adequate, relevant, and necessary in relation to the intended purpose of the product (data minimisation). | `CRA-CL136` (Annex I Part I (2)(g) — adequate, relevant, necessary); `CRA-CL19` (Art. 13(3) sentence 2 — intended purpose + reasonably foreseeable use); `CRA-CL3` (Art. 3(23) — intended purpose definition) | D-05.1 |
-| SO-CRA-034 | D-05.1 | Annex I Part I (2)(g) + Art. 13(3) sentence 2 + Art. 3(23) | Data minimisation: adequate, relevant, necessary for intended purpose |
-| SO-CRA-038 | The manufacturer draws up and maintains a software bill of materials (SBOM) covering the components and dependencies contained in the product with digital elements in a commonly used and machine-readable format that includes, at minimum, the top-level dependencies; on a reasoned request from a market surveillance authority, the SBOM is provided where necessary for the authority to check compliance with the Annex I cybersecurity requirements. | `CRA-CL39` (Art. 3(39) — SBOM definition); `CRA-CL143` (Annex I Part II (1) — SBOM); `CRA-CL49` (Art. 13(24) — SBOM implementing acts); `CRA-CL159` (Annex II §9 — SBOM location for user); `CRA-CL161` (Annex VII §2(b) — SBOM in technical documentation); `CRA-CL167` (Annex VII §8 — SBOM on MSA request) | D-06.2 (CRA sole authority per taxonomy §4.1), D-02.1 |
-| SO-CRA-038 | D-06.2 (CRA sole authority), D-02.1 | Art. 3(39) + Annex I Part II (1) + Annex II §9 + Art. 13(24) + Annex VII §2(b)/§8 | SBOM content + format + on-request |
-| SO-CRA-041 | A manufacturer established outside the Union may appoint an authorised representative established in the Union by written mandate to perform specified tasks on behalf of the manufacturer; the manufacturer's obligations under Art. 13(1)–(11), Art. 13(12) first subparagraph, and Art. 13(14) are not delegable to the authorised representative, who retains the technical documentation and cooperates with market surveillance authorities. | `CRA-CL84` (Art. 18(1) — AR appointment); `CRA-CL85` (Art. 18(2) — AR carve-out of non-delegable obligations); `CRA-CL86` (Art. 18(3) — AR tasks); `CRA-CL13` (Art. 3(13) — manufacturer definition) | D-06.4, D-09.4 |
-| SO-CRA-041 | D-06.4, D-09.4 | Art. 18(1)/(2)/(3) + Art. 3(13) | Authorised representative appointment + non-delegable obligations |
-| SO-CRA-042 | An importer or distributor who places a product with digital elements on the market under its own name or trademark, or who carries out a substantial modification of a product with digital elements already placed on the market, is considered to be the manufacturer for the purposes of the Regulation and assumes the manufacturer's obligations under Arts. 13 and 14. | `CRA-CL96` (Art. 21 — manufacturer-equivalent trigger); `CRA-CL30` (Art. 3(30) — substantial modification definition) | D-06.4, D-07.4 |
-| SO-CRA-042 | D-06.4, D-07.4 | Art. 21 + Art. 3(30) | Manufacturer-equivalent trigger (own name/trademark or substantial mod) |
-| SO-CRA-047 | Procedures are in place for products with digital elements that are part of a series of production to remain in conformity with this Regulation; changes to the product are assessed against the conformity assessment, and where a change is a substantial modification under Art. 3(30), the entity making the modification is treated as the manufacturer with the attendant obligations. | `CRA-CL39` (Art. 13(14) — series-of-production conformity); `CRA-CL96` (Art. 21 — manufacturer-equivalent trigger); `CRA-CL97` (Art. 22(1) — third-party substantial modification = manufacturer); `CRA-CL30` (Art. 3(30) — substantial modification definition); `CRA-CL34` (Art. 13(10) — substantial modification compliance for the last-placed version) | D-07.4, D-06.4 |
-| SO-CRA-047 | D-07.4, D-06.4 | Art. 13(14) + Art. 21 + Art. 22(1) + Art. 3(30) + Art. 13(10) | Series-production conformity + substantial-modification consequences |
-| SO-CRA-049 | An open-source software steward puts in place and documents in a verifiable manner a cybersecurity policy fostering the secure development of products with digital elements and the effective handling of vulnerabilities by the developers of those products, including aspects related to documenting, addressing, and remediating vulnerabilities, and the sharing of information concerning discovered vulnerabilities within the open-source community; the policy takes into account the specific nature of the open-source software steward and the legal and organisational arrangements to which it is subject. | `CRA-CL101` (Art. 24(1) — OSS steward policy); `CRA-CL14` (Art. 3(14) — open-source software steward definition); `CRA-CL48` (Art. 3(48) — free and open-source software definition) | D-09.1 |
-| SO-CRA-049 | D-09.1 | Art. 24(1) + Art. 3(14)/(48) | OSS steward cybersecurity policy (verifiable) |
+| SG-CRA-027 | An incident having an impact on the security of a product with digital elements is considered severe where it negatively affects (or is capable of negatively affecting) the ability of the product to protect the availability, authenticity, integrity, or confidentiality of sensitive or important data or functions; OR where it has led (or is capable of leading) to the introduction or execution of malicious code in the product or in the network and information systems of a user of the product. | `CRA-CL61` (Art. 14(5)(a) — SI test A: CIA of sensitive/important data/functions); `CRA-CL62` (Art. 14(5)(b) — SI test B: malicious code); `CRA-CL44` (Art. 3(44) — incident definition) | D-04.3 |
+| SG-CRA-031 | An open-source software steward shall — to the extent the steward is involved in the development of the products with digital elements — notify actively exploited vulnerabilities of such products to the CSIRT designated as coordinator and to ENISA via the single reporting platform; and — to the extent severe incidents affect network and information systems provided by the steward for the development of such products — apply the severe-incident and user-notification obligations of Art. 14(3)/(8). | `CRA-CL103` (Art. 24(3) — OSS steward Art. 14(1)/(3)/(8) extension); `CRA-CL44` (Art. 3(44) — incident definition) | D-04.3, D-09.1 |
+| SG-CRA-034 | Data processed by a product with digital elements — personal or other — is limited to what is adequate, relevant, and necessary in relation to the intended purpose of the product (data minimisation). | `CRA-CL136` (Annex I Part I (2)(g) — adequate, relevant, necessary); `CRA-CL19` (Art. 13(3) sentence 2 — intended purpose + reasonably foreseeable use); `CRA-CL3` (Art. 3(23) — intended purpose definition) | D-05.1 |
+| SG-CRA-034 | D-05.1 | Annex I Part I (2)(g) + Art. 13(3) sentence 2 + Art. 3(23) | Data minimisation: adequate, relevant, necessary for intended purpose |
+| SG-CRA-038 | The manufacturer draws up and maintains a software bill of materials (SBOM) covering the components and dependencies contained in the product with digital elements in a commonly used and machine-readable format that includes, at minimum, the top-level dependencies; on a reasoned request from a market surveillance authority, the SBOM is provided where necessary for the authority to check compliance with the Annex I cybersecurity requirements. | `CRA-CL39` (Art. 3(39) — SBOM definition); `CRA-CL143` (Annex I Part II (1) — SBOM); `CRA-CL49` (Art. 13(24) — SBOM implementing acts); `CRA-CL159` (Annex II §9 — SBOM location for user); `CRA-CL161` (Annex VII §2(b) — SBOM in technical documentation); `CRA-CL167` (Annex VII §8 — SBOM on MSA request) | D-06.2 (CRA sole authority per taxonomy §4.1), D-02.1 |
+| SG-CRA-038 | D-06.2 (CRA sole authority), D-02.1 | Art. 3(39) + Annex I Part II (1) + Annex II §9 + Art. 13(24) + Annex VII §2(b)/§8 | SBOM content + format + on-request |
+| SG-CRA-041 | A manufacturer established outside the Union may appoint an authorised representative established in the Union by written mandate to perform specified tasks on behalf of the manufacturer; the manufacturer's obligations under Art. 13(1)–(11), Art. 13(12) first subparagraph, and Art. 13(14) are not delegable to the authorised representative, who retains the technical documentation and cooperates with market surveillance authorities. | `CRA-CL84` (Art. 18(1) — AR appointment); `CRA-CL85` (Art. 18(2) — AR carve-out of non-delegable obligations); `CRA-CL86` (Art. 18(3) — AR tasks); `CRA-CL13` (Art. 3(13) — manufacturer definition) | D-06.4, D-09.4 |
+| SG-CRA-041 | D-06.4, D-09.4 | Art. 18(1)/(2)/(3) + Art. 3(13) | Authorised representative appointment + non-delegable obligations |
+| SG-CRA-042 | An importer or distributor who places a product with digital elements on the market under its own name or trademark, or who carries out a substantial modification of a product with digital elements already placed on the market, is considered to be the manufacturer for the purposes of the Regulation and assumes the manufacturer's obligations under Arts. 13 and 14. | `CRA-CL96` (Art. 21 — manufacturer-equivalent trigger); `CRA-CL30` (Art. 3(30) — substantial modification definition) | D-06.4, D-07.4 |
+| SG-CRA-042 | D-06.4, D-07.4 | Art. 21 + Art. 3(30) | Manufacturer-equivalent trigger (own name/trademark or substantial mod) |
+| SG-CRA-047 | Procedures are in place for products with digital elements that are part of a series of production to remain in conformity with this Regulation; changes to the product are assessed against the conformity assessment, and where a change is a substantial modification under Art. 3(30), the entity making the modification is treated as the manufacturer with the attendant obligations. | `CRA-CL39` (Art. 13(14) — series-of-production conformity); `CRA-CL96` (Art. 21 — manufacturer-equivalent trigger); `CRA-CL97` (Art. 22(1) — third-party substantial modification = manufacturer); `CRA-CL30` (Art. 3(30) — substantial modification definition); `CRA-CL34` (Art. 13(10) — substantial modification compliance for the last-placed version) | D-07.4, D-06.4 |
+| SG-CRA-047 | D-07.4, D-06.4 | Art. 13(14) + Art. 21 + Art. 22(1) + Art. 3(30) + Art. 13(10) | Series-production conformity + substantial-modification consequences |
+| SG-CRA-049 | An open-source software steward puts in place and documents in a verifiable manner a cybersecurity policy fostering the secure development of products with digital elements and the effective handling of vulnerabilities by the developers of those products, including aspects related to documenting, addressing, and remediating vulnerabilities, and the sharing of information concerning discovered vulnerabilities within the open-source community; the policy takes into account the specific nature of the open-source software steward and the legal and organisational arrangements to which it is subject. | `CRA-CL101` (Art. 24(1) — OSS steward policy); `CRA-CL14` (Art. 3(14) — open-source software steward definition); `CRA-CL48` (Art. 3(48) — free and open-source software definition) | D-09.1 |
+| SG-CRA-049 | D-09.1 | Art. 24(1) + Art. 3(14)/(48) | OSS steward cybersecurity policy (verifiable) |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-002
@@ -75,7 +75,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL134, article_ref: "Annex I Part I (2)(e) — at-rest encryption" }
     - { clause_id: CRA-CL129, article_ref: "Annex I Part I (1) — chapeau" }
-  linked_objectives: [SO-CRA-002, SO-CRA-001]
+  linked_objectives: [SG-CRA-002, SG-CRA-001]
   sub_domain: [D-01.1]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "The confidentiality, integrity, and availability of data-at-rest are protected" }
@@ -90,7 +90,7 @@ status: DRAFT
     The phrase relevant data in the literal Annex I Part I (2)(e) text — "encrypting relevant data at rest or in transit" — is POLY-S2 because "relevant to what?" admits at least two materially distinct populations. Reading chosen: R2, where "relevant" means data tied to the product's intended purpose plus any data classified by the manufacturer as in-scope under the cybersecurity risk assessment conducted under Art. 13(2). Alternative reading: R1 would limit relevance strictly to data declared in the intended-purpose statement, leaving residual classes (telemetry, logs, derived metadata) outside the obligation and creating an enforcement gap. The state-of-the-art S3 ambiguity on the encryption primitive itself is carried by the umbrella SR-CRA-001 and not duplicated here.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-008
@@ -98,7 +98,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL143, article_ref: "Annex I Part II (1) — SBOM format" }
     - { clause_id: CRA-CL39, article_ref: "Art. 3(39) — SBOM definition (details and supply chain relationships)" }
-  linked_objectives: [SO-CRA-007, SO-CRA-038]
+  linked_objectives: [SG-CRA-007, SG-CRA-038]
   sub_domain: [D-06.2, D-02.1]
   nist_csf_mapping:
     - { id: ID.AM-02, title: "Inventories of software, services, and systems managed by the organization are maintained" }
@@ -113,7 +113,7 @@ status: DRAFT
     The phrase "commonly used and machine-readable format" is POLY+VAG S3 and admits three materially distinct readings tied to format families. Reading chosen: R3, treating the obligation as "any commonly-used machine-readable format that supports automated component identification," pending the Commission implementing acts under Art. 13(24). Alternative readings: R1 (a specific sector format such as SPDX or CycloneDX) and R2 (a different specific sector format) are both currently common in the market but neither is OJ-mandated at present; the executing-acts-dependent choice lets manufacturers pick what interoperates best with their tooling while preparing for the eventual binding specification. An additional reading, R5, would set the format floor to a domain-agnostic cryptographic manifest that any SBOM-aware toolchain can ingest regardless of origin sector, achieving interoperability through shared primitives rather than shared schemas; R5 is admitted as the long-run consensus direction but rejected for current OJ reading because Annex I does not specify such a manifest, leaving the implementing-acts route to harmonise rather than the SR body to import. Format names are intentionally not introduced into the SR body to honour the V12 tech-stack denylist. Remain open: (a) when the implementing acts specify a single binding format, does the choice bind retroactively across previously-published SBOMs or only prospectively for new releases; (b) does Annex I Part II (1) require that the SBOM be human-readable in addition to machine-readable, or is the format-agnostic floor purely automated.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-015
@@ -121,7 +121,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL34, article_ref: "Art. 13(10) — substantial-modification compliance scope (last version)" }
     - { clause_id: CRA-CL30, article_ref: "Art. 3(30) — substantial modification" }
-  linked_objectives: [SO-CRA-060, SO-CRA-047]
+  linked_objectives: [SG-CRA-060, SG-CRA-047]
   sub_domain: [D-02.2, D-07.4, D-09.4]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed commensurate with risk" }
@@ -136,7 +136,7 @@ status: DRAFT
     The phrase "substantial modification" inherits the Art. 3(30) definition, which is VAG+POLY S3 with three materially distinct readings. Reading chosen: R1 combined with R3, treating the Art. 3(30) literal disjunctive "affects compliance OR modifies intended purpose" as the operative test, so any change that crosses either threshold is substantial. Alternative readings: R1 alone (compliance impact only) would miss the intended-purpose dimension, where R3 alone (intended-purpose only) would miss the compliance dimension. An additional reading, R5, would apply "substantial modification" only at the boundary where compliance verification triggers anew under Annex VIII, importing the conformity-assessment notion into the modification definition; R5 reads the Art. 3(30) disjunction through a conformity lens and is admitted as a non-strict equivalent to R1+R3 when the implementation of substantial-modification checks already runs through conformity re-verification. The "free of charge" qualifier is POLY-S2 with R1 (no monetary cost) as the literal reading, which the SR preserves without imported carve-outs. Remain open: (a) how ADCO and the Commission interpret "additional costs to adjust the hardware and software environment" when a migration imposes modest operational friction that is hard to monetise; (b) whether the free-migration access must be perpetual or only for the residual support period of the original version.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-025
@@ -145,7 +145,7 @@ status: DRAFT
     - { clause_id: CRA-CL131, article_ref: "Annex I Part I (2)(b) — secure by default configuration" }
     - { clause_id: CRA-CL2, article_ref: "Art. 6(a) proviso — properly installed, intended purpose, reasonably foreseeable" }
     - { clause_id: CRA-CL3, article_ref: "Art. 3(23) — intended purpose" }
-  linked_objectives: [SO-CRA-018, SO-CRA-045]
+  linked_objectives: [SG-CRA-018, SG-CRA-045]
   sub_domain: [D-03.4]
   nist_csf_mapping:
     - { id: PR.PS-01, title: "Configuration management practices are established, documented, and applied to assets" }
@@ -160,7 +160,7 @@ status: DRAFT
     The phrase "secure by default configuration" is VAG-S3 because three materially distinct configurations produce materially different compliance populations. Reading chosen: R2 — the security features (authentication, access control, audit logging, network segmentation, secure-update mechanism) are enabled by default at first power-up. Alternative readings: R1 (deny-all initial state, with the user explicitly enabling required services) and R3 (zero-config security, the product works securely without any user configuration) are operationally convergent with R2: all three require security features on at delivery, and only the configuration-management user-experience differs. An additional reading, R4, would extend the "secure by default" floor to the post-deployment configuration surface: any change the user makes from the default is documented and reversible through the reset mechanism; R4 is admitted as a strengthening of the chosen R2 reading and is rejected where it would conflict with the tailor-made carve-out, which permits negotiated non-default configurations in business-user settings. Remain open: (a) when a user explicitly changes a setting from the secure default and a subsequent vulnerability surfaces, does the manufacturer retain responsibility for the as-configured state or does the configuration shift break the Art. 13(2) risk-assessment chain; (b) does the "reset to original state" obligation require preserving user data through the reset (R3) or wiping it (R1/R2).
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-028
@@ -171,7 +171,7 @@ status: DRAFT
     - { clause_id: CRA-CL52, article_ref: "Art. 14(1) sentence 2 — single reporting platform" }
     - { clause_id: CRA-CL44, article_ref: "Art. 3(44) — incident definition (imported from Art. 6(6) NIS 2 + CRA add-on)" }
     - { clause_id: CRA-CL42, article_ref: "Art. 3(42) — actively exploited vulnerability" }
-  linked_objectives: [SO-CRA-023]
+  linked_objectives: [SG-CRA-023]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.MA-01, title: "The incident management plan is executed in coordination with relevant third parties once an incident is declared" }
@@ -186,7 +186,7 @@ status: DRAFT
     The phrase "simultaneously" is VAG-S3 because temporal precision is left to interpretation. Reading chosen: R1, treating "simultaneously" as same-timestamp on the single platform under Art. 16, because the platform enforces simultaneity architecturally. R2 (same day) and R3 (short window) are rejected as failing the simultaneity requirement. The "becomes aware of" trigger inherits the GDPR Art. 33 / NIS 2 Art. 23 ambiguity (cf. CJEU IAB Baltic C-394/21 on reasonable certainty of harm), with R1 (actual knowledge) literal and R2 (constructive knowledge through due diligence) admissible. The "actively exploited vulnerability" definition under Art. 3(42) admits R3/R4 (publicly available exploit / researcher-published PoC) as the dominant readings. An additional reading, R3-as-window, would treat "simultaneously" as occurring within a tightly bounded time window (a few hours) rather than at the literal same timestamp, accommodating the practical realities of single-platform queueing; R3-as-window is rejected because the single platform architecture under Art. 16 enforces same-timestamp submission architecturally, making the literal reading the operational reality. Remain open: (a) does a published PoC alone (without observed exploitation) qualify as an AEV, or does the manufacturer require evidence of exploitation in the wild; (b) does constructive knowledge extend to threats described in confidential channels (vendor-to-vendor vulnerability programmes) that the manufacturer has not joined.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-034
@@ -194,7 +194,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL61, article_ref: "Art. 14(5)(a) — severe-incident test A: CIA of sensitive/important data/functions" }
     - { clause_id: CRA-CL45, article_ref: "Art. 6(2) of NIS 2 (cross-ref via CRA Art. 3(43) `incident`) — availability, authenticity, integrity, confidentiality" }
-  linked_objectives: [SO-CRA-027]
+  linked_objectives: [SG-CRA-027]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: ID.RA-04, title: "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified, validated, and recorded" }
@@ -210,7 +210,7 @@ status: DRAFT
     The phrase "negatively affects OR is capable of negatively affecting" is VAG+POLY S3 with R3 (literal inclusive OR) as the chosen reading, so capability is sufficient without materialisation. The phrase "sensitive OR important data or functions" is POLY+COORD S3 with materially distinct populations across the OR chain; Reading chosen: R5, treating the qualifier as broadly inclusive (any data or function significant to user operations), anchored in the harmonised-standards layer under Art. 27. An additional alternative reading, R4-closed, would limit "sensitive or important" to a closed list enumerated in the Annex or implementing acts, restoring a positive enumeration that the current OJ leaves open; R4-closed is admitted as the long-run consensus direction through harmonised standards and ADCO guidance and is rejected for current OJ reading because Annex I plus Art. 14(5) do not provide the enumeration, leaving the determination to the risk assessment until the standardisation layer matures. Remain open: (a) what evidential threshold converts "capable of affecting" into a categorisable severity claim when no harm has materialised; (b) does "sensitive" align with sector-specific legal definitions (GDPR special-category data, NIS 2 essential-services data) or is it CRA-autonomous.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-038
@@ -220,7 +220,7 @@ status: DRAFT
     - { clause_id: CRA-CL70, article_ref: "Art. 15(2) — voluntary SI / near-miss reporting by any person" }
     - { clause_id: CRA-CL72, article_ref: "Art. 15(4) — third-party notification + CSIRT informs manufacturer" }
     - { clause_id: CRA-CL81, article_ref: "Art. 17(4) — no increased liability for mere notification" }
-  linked_objectives: [SO-CRA-030]
+  linked_objectives: [SG-CRA-030]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information is shared with designated internal and external stakeholders consistent with the established information-sharing rules" }
@@ -235,7 +235,7 @@ status: DRAFT
     The phrase "any natural or legal person" is SCOPE-Q S2 with R1 (anyone who has information, including researchers, journalists, concerned users) as the literal reading. The phrase "near miss" inherits the Art. 3(45) definition, which in turn imports from NIS 2 Art. 6(5) — POLY+S2 with R1 (event that could have caused harm), R2 (event that caused no harm), and R3 (partial-success event) as the three admissible readings; the Annex level reading does not pick one and lets the harmonised-standards layer modulate.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-039
@@ -243,7 +243,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL103, article_ref: "Art. 24(3) — OSS steward Art. 14(1) extension (with involvement threshold)" }
     - { clause_id: CRA-CL14, article_ref: "Art. 3(14) — open-source software steward definition" }
-  linked_objectives: [SO-CRA-031]
+  linked_objectives: [SG-CRA-031]
   sub_domain: [D-04.3, D-09.1]
   nist_csf_mapping:
     - { id: RS.MA-01, title: "The incident management plan is executed in coordination with relevant third parties once an incident is declared" }
@@ -259,7 +259,7 @@ status: DRAFT
     The phrase `to the extent that they are involved in the development of the products with digital elements` carries VAG-S3 ambiguity and exposes three live readings: R1 (commit access to a relevant repository — a strict operational threshold), R2 (maintainer or co-maintainer role in the project — an organisational role threshold), R3 (advisory or review contribution without commit rights — a contribution-volume threshold), and R4 (any involvement in the product's software supply chain — the broad literal reading captured by the words `involved` and `development`). The reading chosen is R4 — the literal text `involved` carries the broadest reasonable construction consistent with the OJ-literal purpose of catching supply-chain-attributable incidents at the upstream end. The qualifier `steward's NIS for the development of such products` is SCOPE-Q-S2: R1 (the steward's own network and information systems only — literal scope). The Article 3(14) `systematically providing support on a sustained basis` threshold, inherited from the steward definition, carries a Berry-classic POLY+COORD signature and is treated in SR-CRA-072's record. Remain open: (a) whether the European Commission's forthcoming guidance on Article 24 (signalled in Recital 18) will supply a narrower reading of `involved in the development` than the R4 literal; (b) whether stewards that monetise upstream components via SaaS, dual-licensing, or sponsored-development arrangements are exposed to dual classification — both as stewards under Article 3(14) and as de facto manufacturers under Article 3(13) — and which obligation set governs.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-045
@@ -267,7 +267,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL46, article_ref: "Art. 13(21) — corrective measures on non-conformity" }
     - { clause_id: CRA-CL30, article_ref: "Art. 3(30) — substantial modification (cross-ref for trigger)" }
-  linked_objectives: [SO-CRA-063]
+  linked_objectives: [SG-CRA-063]
   sub_domain: [D-04.2, D-07.4, D-09.4]
   nist_csf_mapping:
     - { id: RS.MI-01, title: "Incidents are contained" }
@@ -283,7 +283,7 @@ status: DRAFT
     `Immediately take the corrective measures necessary` is VAG+POLY-S2 — R1 (`immediately` = upon knowledge of non-conformity, in line with Article 14 awareness trigger; `corrective measures necessary` = the minimum set needed to restore conformity). `Withdraw or recall` is POLY-S2 — R1 (literal OR — either is admissible; the choice is the manufacturer's, governed by proportionality). The cross-reference to Article 3(30) substantial modification is significant: if the corrective measure requires a substantial modification, the Art. 22(1) third-party-modifier trigger may engage as well, transferring liability downstream. Remain open: (a) what regulatory practice crystallises around `have reason to believe` — i.e. whether constructive knowledge attaches upon receipt of an upstream-CVD report from a component supplier (per Article 13(6) in SR-CRA-051) or only upon internal verification of the non-conformity; (b) whether withdrawal versus recall is itself a proportionality determination that must be evidenced ex ante in the technical documentation under Annex VII.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-046
@@ -292,7 +292,7 @@ status: DRAFT
     - { clause_id: CRA-CL136, article_ref: "Annex I Part I (2)(g) — adequate, relevant, necessary = data minimisation" }
     - { clause_id: CRA-CL19, article_ref: "Art. 13(3) sentence 2 — intended purpose + reasonably foreseeable use" }
     - { clause_id: CRA-CL3, article_ref: "Art. 3(23) — intended purpose" }
-  linked_objectives: [SO-CRA-034, SO-CRA-072]
+  linked_objectives: [SG-CRA-034, SG-CRA-072]
   sub_domain: [D-05.1, D-07.1]
   nist_csf_mapping:
     - { id: PR.DS-12, title: "Data is managed consistent with the organization's risk strategy to protect the confidentiality, integrity, and availability of data" }
@@ -307,7 +307,7 @@ status: DRAFT
     The three coordinated adjectives — `adequate, relevant and limited to what is necessary` — carry VAG+POLY+COORD-S3 ambiguity. Reading chosen: R2 (proportionate to purpose, demonstrable ex ante via the Annex VII §3 risk-assessment record). R1 (literal reading of each adjective as an independent gate) and R3 (any single reading satisfies all three) are the alternative readings. The `intended purpose` term inherits the Article 3(23) D23 POLY-S2 classification — the intended purpose is a product-class-relative determination that the manufacturer documents in the technical documentation (Annex VII §3). Remain open: (a) whether the EDPB's forthcoming guidance on the CRA's intersection with GDPR Article 25 (data protection by design and by default) will supply a harmonised reading of `necessary in relation to intended purpose`; (b) the operational handling of minimisation when downstream integrators extend the intended purpose (e.g. via third-party plugins or configuration) — i.e. whether the manufacturer's documented minimisation suffices, or whether the integrator inherits a re-evaluation duty.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-050
@@ -315,7 +315,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL23a, article_ref: "Art. 13(5) — due diligence on third-party components" }
     - { clause_id: CRA-CL48, article_ref: "Art. 3(48) — free and open-source software definition" }
-  linked_objectives: [SO-CRA-037]
+  linked_objectives: [SG-CRA-037]
   sub_domain: [D-06.1, D-07.1]
   nist_csf_mapping:
     - { id: GV.SC-01, title: "A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders" }
@@ -331,7 +331,7 @@ status: DRAFT
     `Due diligence` carries VAG+POLY-S3 ambiguity. The reading chosen is R3 — both procedural (a documented vetting process, evidenced in Annex VII §2) and substantive (positive verification of supplier / component security posture). R1 (procedural only — paper-based) is rejected as insufficient; R2 (substantive only, without documentation) is rejected as falling short of the conformity-assessment evidentiary requirements. The Article 7 reference to OSS in Article 3(48) — and the Article 24 steward provisions (SR-CRA-072 to SR-CRA-074) — together draw the perimeter at which due-diligence gives way to the steward-policy interface. Remain open: (a) whether the implementing acts under Article 13(24) (cf. SR-CRA-052) will specify minimum due-diligence evidentiary content — e.g. signed attestations of CVE-monitoring posture, vulnerability-handling SLA disclosure — beyond what is recorded in Annex VII §2 today; (b) the operational status of `due diligence` for indirect dependencies (transitive depth beyond the SBOM top-level floor) where the manufacturer has no visibility — pending implementing-acts guidance.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-061
@@ -339,7 +339,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL96, article_ref: "Art. 21 — manufacturer-equivalent trigger (own name/trademark or substantial modification)" }
     - { clause_id: CRA-CL30, article_ref: "Art. 3(30) — substantial modification" }
-  linked_objectives: [SO-CRA-042, SO-CRA-047]
+  linked_objectives: [SG-CRA-042, SG-CRA-047]
   sub_domain: [D-06.4, D-07.4]
   nist_csf_mapping:
     - { id: GV.SC-02, title: "Suppliers and other third parties are known, prioritized, and assessed using a cybersecurity supply chain risk management process" }
@@ -354,7 +354,7 @@ status: DRAFT
     `Under its name or trademark` carries VAG+POLY-S3: R3 (either — white-label, co-brand, or repackaged under a distinct trademark). R1 (strictly under one's own trademark) is rejected as narrower than the literal; R2 (only when both name and trademark diverge) is rejected as cumulatively restrictive. `Substantial modification` inherits Article 3(30) D30 — VAG+POLY+COORD-S3 (cf. SR-CRA-061/R-CRA-015 for the full reading). Reading chosen for this SR: R1 + R3 (Article 3(30) disjunctive `affects compliance OR modifies intended purpose` — literal). The interaction with Article 22 (SR-CRA-062) is significant: where the modifier is neither manufacturer nor importer nor distributor, Article 22 applies the manufacturer-equivalent status to that other person — closing a critical loophole. Remain open: (a) the operational demarcation between `intended-purpose modification` (Article 3(30) limb b) and intended-purpose-preserving configuration changes — i.e. whether adding optional features that do not affect Annex I compliance is `substantial`; (b) whether the harmonised standards under Article 27 will specify a baseline technical-modification catalogue for the most common product categories.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-070
@@ -364,7 +364,7 @@ status: DRAFT
     - { clause_id: CRA-CL96, article_ref: "Art. 21 — manufacturer-equivalent trigger" }
     - { clause_id: CRA-CL97, article_ref: "Art. 22(1) — third-party substantial modification" }
     - { clause_id: CRA-CL30, article_ref: "Art. 3(30) — substantial modification definition" }
-  linked_objectives: [SO-CRA-047, SO-CRA-060]
+  linked_objectives: [SG-CRA-047, SG-CRA-060]
   sub_domain: [D-07.4, D-06.4]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed commensurate with risk" }
@@ -379,7 +379,7 @@ status: DRAFT
     `Substantial modification` inherits Article 3(30) D30 — VAG+POLY+COORD-S3. See SR-CRA-061/R-CRA-015 for the full reading across this threshold. R1 (any non-compliance change) + R3 (intended-purpose modification) admitted as the disjunctive literal reading. The Article 13(10) carve-out — allowing Annex I Part II (2) compliance for the last-placed version subject to user-migration — is POLY-S2 — R1 (the carve-out is conditional on user choice; the manufacturer cannot unilaterally apply it). Remain open: (a) the operational demarcation between security updates (which rarely meet the substantial-modification threshold) and security features whose modification would meet the substantial-modification threshold — pending harmonised practice; (b) whether the substantial-modification test must be re-run at every release (formal), or only at material risk-relevant changes (substantive) — the BERs harmonised standards under Article 27 will likely converge on the latter.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-072
@@ -388,7 +388,7 @@ status: DRAFT
     - { clause_id: CRA-CL101, article_ref: "Art. 24(1) — OSS steward cybersecurity policy" }
     - { clause_id: CRA-CL14, article_ref: "Art. 3(14) — open-source software steward definition" }
     - { clause_id: CRA-CL48, article_ref: "Art. 3(48) — free and open-source software definition" }
-  linked_objectives: [SO-CRA-049]
+  linked_objectives: [SG-CRA-049]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }

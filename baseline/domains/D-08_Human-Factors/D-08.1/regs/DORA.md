@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-015 | ICT security awareness programmes and digital operational resilience training as compulsory modules in staff training schemes, with complexity commensurate to the remit of staff functions (Art. 13(6)). | Entity-level compulsory training; awareness + digital operational resilience training combined. |
+| DORA | SG-DORA-015 | ICT security awareness programmes and digital operational resilience training as compulsory modules in staff training schemes, with complexity commensurate to the remit of staff functions (Art. 13(6)). | Entity-level compulsory training; awareness + digital operational resilience training combined. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-08.1.4 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-08.1.DORA
+id: SG-D-08.1.DORA
 subdomain: D-08.1
 applies_to: [DORA]
-inherits_from: SO-DORA-015
+inherits_from: SG-DORA-015
 source_SR: SR-DORA-025
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_N
@@ -54,7 +54,7 @@ PR.AT-01, PR.AT-02.
 
   derives_from:
     hso_sub_so: SO-8.1.DORA
-    per_reg_so: SO-DORA-015
+    per_reg_so: SG-DORA-015
     source_sr: SR-DORA-025
     hso_file: ../../HierarchicalSecurityObjectives/D-08_Human-Factors/8.1.md
     objective_ref_section: "### 8.1.4"

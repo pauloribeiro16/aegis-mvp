@@ -26,13 +26,13 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-033 | Cross-border transfers of personal data to third countries or international organisations maintain the GDPR's level of protection and rely on the Art. 46 appropriate-safeguards mechanism (including SCCs, BCRs, codes of conduct, or certification), where no Art. 45 adequacy decision applies. | `GDPR-TR04` (Art. 46(1)); `GDPR-TR05` (Art. 46(2)); `GDPR-TR01` (Art. 44) | D-06.3, D-05.1 |
-| SO-GDPR-033 | Cross-border transfer of personal data takes place only where the conditions laid down in Chapter V are complied with (Art. 44); where no Commission adequacy decision exists (Art. 45), appropriate safeguards (Art. 46) are in place; absent both, derogations under Art. 49 are used only as narrowly-defined conditions, with the catch-all applying only when transfers are not repetitive, concern a limited number of data subjects, are necessary for compelling legitimate interests, and are accompanied by suitable safeguards. | `GDPR-TR01` (Art. 44); `GDPR-TR02` (Art. 45(1)); `GDPR-TR03` (Art. 45(3) — periodic review); `GDPR-TR04` (Art. 46(1)); `GDPR-TR05` (Art. 46(2)); `GDPR-TR08`–`GDPR-TR10` (Art. 49(1)(a)/(d) and catch-all); `GDPR-C07` (Art. 4(16) — main establishment) | D-06.3, D-09.1, D-05.1 |
-| SO-GDPR-033 | D-06.3, D-09.1, D-05.1 | Art. 44, Art. 45, Art. 46, Art. 49, Art. 4(16) | Cross-border transfers maintain GDPR protection level |
+| SG-GDPR-033 | Cross-border transfers of personal data to third countries or international organisations maintain the GDPR's level of protection and rely on the Art. 46 appropriate-safeguards mechanism (including SCCs, BCRs, codes of conduct, or certification), where no Art. 45 adequacy decision applies. | `GDPR-TR04` (Art. 46(1)); `GDPR-TR05` (Art. 46(2)); `GDPR-TR01` (Art. 44) | D-06.3, D-05.1 |
+| SG-GDPR-033 | Cross-border transfer of personal data takes place only where the conditions laid down in Chapter V are complied with (Art. 44); where no Commission adequacy decision exists (Art. 45), appropriate safeguards (Art. 46) are in place; absent both, derogations under Art. 49 are used only as narrowly-defined conditions, with the catch-all applying only when transfers are not repetitive, concern a limited number of data subjects, are necessary for compelling legitimate interests, and are accompanied by suitable safeguards. | `GDPR-TR01` (Art. 44); `GDPR-TR02` (Art. 45(1)); `GDPR-TR03` (Art. 45(3) — periodic review); `GDPR-TR04` (Art. 46(1)); `GDPR-TR05` (Art. 46(2)); `GDPR-TR08`–`GDPR-TR10` (Art. 49(1)(a)/(d) and catch-all); `GDPR-C07` (Art. 4(16) — main establishment) | D-06.3, D-09.1, D-05.1 |
+| SG-GDPR-033 | D-06.3, D-09.1, D-05.1 | Art. 44, Art. 45, Art. 46, Art. 49, Art. 4(16) | Cross-border transfers maintain GDPR protection level |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-055
@@ -42,7 +42,7 @@ status: DRAFT
     - { clause_id: GDPR-TR02, article_ref: "Art. 45(1) — adequacy-based transfer" }
     - { clause_id: GDPR-TR03, article_ref: "Art. 45(3) — periodic review of adequacy" }
     - { clause_id: GDPR-C07, article_ref: "Art. 4(16) — main establishment (cross)" }
-  linked_objectives: [SO-GDPR-033]
+  linked_objectives: [SG-GDPR-033]
   sub_domain: [D-06.3, D-09.1]
   nist_csf_mapping:
     - { id: GV.SC-02, title: "Suppliers prioritized and assessed using SCRM processes" }

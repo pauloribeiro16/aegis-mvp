@@ -32,14 +32,14 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-005 | The identity of data subjects making rights-exercise requests is verified using reasonable means proportionate to the risk of mis-identification, before action is taken. | `GDPR-RT04` (Art. 12(6)); `GDPR-CL26` (Art. 11(2)) | D-03.1, D-09.4 |
-| SO-GDPR-005 | D-03.1, D-09.4 | Art. 12(6), Art. 11(2) | Reasonable identity verification for rights requests |
-| SO-GDPR-038 | The controller provides transparent, concise, intelligible, easily accessible information in clear and plain language to data subjects on processing operations (Art. 13/14 collection notices), supports the exercise of data-subject rights (Art. 15–22), verifies identity on reasonable doubt, responds to rights requests within one month (extendable by two further months where necessary), and acts free of charge except in defined exception cases. | `GDPR-RT01` (Art. 12(1)); `GDPR-RT02` (Art. 12(3)); `GDPR-RT03` (Art. 12(5)); `GDPR-RT04` (Art. 12(6)); `GDPR-RT05` (Art. 13(1)); `GDPR-RT06` (Art. 13(2)(f)); `GDPR-RT07` (Art. 14(1)/(2)); `GDPR-RT08` (Art. 14(5)(b)) | D-09.4, D-05.4 |
-| SO-GDPR-038 | D-09.4, D-05.4 | Art. 12, Art. 13, Art. 14 | Information duties and rights-exercise support |
+| SG-GDPR-005 | The identity of data subjects making rights-exercise requests is verified using reasonable means proportionate to the risk of mis-identification, before action is taken. | `GDPR-RT04` (Art. 12(6)); `GDPR-CL26` (Art. 11(2)) | D-03.1, D-09.4 |
+| SG-GDPR-005 | D-03.1, D-09.4 | Art. 12(6), Art. 11(2) | Reasonable identity verification for rights requests |
+| SG-GDPR-038 | The controller provides transparent, concise, intelligible, easily accessible information in clear and plain language to data subjects on processing operations (Art. 13/14 collection notices), supports the exercise of data-subject rights (Art. 15–22), verifies identity on reasonable doubt, responds to rights requests within one month (extendable by two further months where necessary), and acts free of charge except in defined exception cases. | `GDPR-RT01` (Art. 12(1)); `GDPR-RT02` (Art. 12(3)); `GDPR-RT03` (Art. 12(5)); `GDPR-RT04` (Art. 12(6)); `GDPR-RT05` (Art. 13(1)); `GDPR-RT06` (Art. 13(2)(f)); `GDPR-RT07` (Art. 14(1)/(2)); `GDPR-RT08` (Art. 14(5)(b)) | D-09.4, D-05.4 |
+| SG-GDPR-038 | D-09.4, D-05.4 | Art. 12, Art. 13, Art. 14 | Information duties and rights-exercise support |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-006
@@ -49,7 +49,7 @@ status: DRAFT
     - { clause_id: GDPR-CL04, article_ref: "Art. 5(1)(d)" }
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation (cross)" }
     - { clause_id: GDPR-RT15, article_ref: "Art. 19 — cascade notification (cross)" }
-  linked_objectives: [SO-GDPR-003, SO-GDPR-012]
+  linked_objectives: [SG-GDPR-003, SG-GDPR-012]
   sub_domain: [D-01.4, D-04.3, D-05.1]
   nist_csf_mapping:
     - { id: PR.DS-10, title: "Data-in-use protected" }
@@ -68,7 +68,7 @@ status: DRAFT
     GDPR-RT12 (Art. 16) carries POLY-S3 ambiguity on `supplementary statement`. The rule covers both reading branches. Reading chosen: the controller either rectifies or attaches a supplementary statement, depending on whether the contested fact is verifiable as inaccurate, with the choice exercised under Art. 12(6) reasonable-doubts discipline. An alternative reading holds that the statement must be attached whenever the data subject requests it, even if the controller disputes accuracy; this is supported by some DPAs but creates record-bloat, and the chosen reading treats the statement as a fallback when verification is inconclusive. An alternative reading treats the statement as merely informational and waivable by the controller; this is rejected because it would make the right illusory. On Art. 19 cascade, the OR in the OJ text "impossible or involves disproportionate effort" is inclusive, so either escape clause suffices (see SR-GDPR-022). Remain open: (a) whether rectification applies to derived data (model weights trained on inaccurate inputs), pending EDPB AI Act interaction guidance; and (b) the operational definition of "without undue delay" for rectification (24 hours vs 7 days vs 30 days), pending EDPB Guidelines 5/2019 revision.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-009
@@ -77,7 +77,7 @@ status: DRAFT
     - { clause_id: GDPR-RT04, article_ref: "Art. 12(6) — identity verification" }
     - { clause_id: GDPR-CL26, article_ref: "Art. 11(2) — identification exemption" }
     - { clause_id: GDPR-C01, article_ref: "Art. 4(1) — personal data (cross)" }
-  linked_objectives: [SO-GDPR-005]
+  linked_objectives: [SG-GDPR-005]
   sub_domain: [D-03.1]
   nist_csf_mapping:
     - { id: PR.AA-03, title: "Users, services, and hardware authenticated" }
@@ -96,7 +96,7 @@ status: DRAFT
     Source clause GDPR-RT04 (Art. 12(6)) carries S3 VAG on `reasonable doubts` and `additional information`. Reading chosen: the controller may request minimal identity verification proportionate to the risk of misidentification, not arbitrary additional documents. This reading is anchored to Art. 5(1)(c) data minimisation (no over-collection) and to EDPB Guidelines on Art. 12 transparency. An alternative reading requiring full ID-document collection on any doubt is rejected: it creates a new attack surface (the collected ID documents themselves) and is disproportionate under Art. 5(1)(c). A third reading that mandates accepting self-declaration on any doubt is also rejected: it exposes the data-subject rights endpoint to social-engineering attacks and breaches the controller's Art. 32(1)(b) confidentiality obligation. On Art. 11(2), the `additional information` polysemy (information the controller must NOT maintain vs information the data subject must supply) is resolved by treating the data-subject-supply sense as the operative one for rights-exercise workflows. Remain open: (a) whether knowledge-based authentication (KBA) questions over personal-data history are acceptable as `additional information`, pending EDPB guidance post-Schrems II; and (b) how the verification obligation scales with self-service authentication (e.g. OAuth from a verified identity provider), pending alignment with eIDAS 2.0.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-010
@@ -104,7 +104,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-RT04, article_ref: "Art. 12(6)" }
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation (cross)" }
-  linked_objectives: [SO-GDPR-005]
+  linked_objectives: [SG-GDPR-005]
   sub_domain: [D-03.1, D-05.1]
   nist_csf_mapping:
     - { id: PR.AA-02, title: "Identities proofed and bound to credentials" }
@@ -123,7 +123,7 @@ status: DRAFT
     `necessary` inherits VAG-S3 ambiguity from Art. 5(1)(c). Reading chosen: proportionate to purpose, demonstrable ex ante via Art. 5(2) accountability and Art. 35 DPIA necessity assessment. The rule preserves the proportionate-necessary interpretation. An alternative reading treats necessity as satisfied when serving the designed purpose, with necessity presumed by default; this is rejected because it inverts the accountability burden. A third reading requiring the least-intrusive among equivalent means under Charter Art. 52(1) is the most restrictive position and is the one adopted by some national DPAs (notably the CNIL) for sensitive-data contexts. The Art. 5(1)(c) necessary threshold varies with data sensitivity and breach impact; for Art. 9 special-category data, the controller may need stronger verification than for ordinary personal data. Remain open: whether automated identity-verification services (e.g. Jumio, Onfido) are themselves in scope as joint controllers under Art. 26, pending CJEU and EDPB guidance on AI-driven verification.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-065
@@ -131,7 +131,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-RT01, article_ref: "Art. 12(1) — transparency modalities" }
     - { clause_id: GDPR-CL01, article_ref: "Art. 5(1)(a) — transparency (cross)" }
-  linked_objectives: [SO-GDPR-038]
+  linked_objectives: [SG-GDPR-038]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: GV.PO-02, title: "Cybersecurity processes and procedures established and enforced" }
@@ -168,14 +168,14 @@ status: DRAFT
     The six conjunctive qualifiers on information form — concise, transparent, intelligible, easily accessible, clear, plain — are all open-textured and the article does not quantify any of them. Reading chosen: layered notices meeting accessibility standards (WCAG 2.1 AA or equivalent), in line with EDPB Guidelines on transparency. No explicit Berry severity tag in the source analysis; treated here as light (S1/none) because the operational practice has converged on layered-notice templates and the residual ambiguity is presentation-tier rather than substantive.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-066
   title: "One-month SLA on data-subject rights requests"
   source_clauses:
     - { clause_id: GDPR-RT02, article_ref: "Art. 12(3) — 1-month response" }
-  linked_objectives: [SO-GDPR-038]
+  linked_objectives: [SG-GDPR-038]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: RS.MA-02, title: "Incident reports triaged and validated" }
@@ -210,7 +210,7 @@ status: DRAFT
     Without undue delay and where necessary (extension) carry VAG-S3 because the OJ text does not fix quantitative thresholds for either. Reading chosen: 1 month is the hard ceiling and the extension to 3 months requires demonstrated complexity (multiple data subjects, multi-source data, third-party coordination), with notification of the extension to be issued within the original 1-month window. An alternative reading would treat without undue delay as an independent shorter-than-1-month trigger that applies alongside the 1-month ceiling; this alternative is rejected by EDPB Guidelines on Art. 12, which treat the 1-month ceiling as the binding deadline and undue delay as a directional qualifier rather than a separate deadline. A second alternative reading treats the 2-month extension as available for any reason, with where necessary interpreted as a permissive trigger; this reading is rejected because the Article ties the extension to complexity and number of requests. Remain open: (a) whether the extension notification must be issued at the time of extension decision or at the latest at the 1-month mark, and which supervisory authority practice applies where the two diverge; (b) whether the controller's failure to act under Art. 12(3) triggers separate Art. 12(4) reasoning obligations with their own 1-month deadline running in parallel.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-067
@@ -218,7 +218,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-RT03, article_ref: "Art. 12(5) — manifestly unfounded or excessive" }
     - { clause_id: GDPR-RT04, article_ref: "Art. 12(6) — identity verification (cross-ref)" }
-  linked_objectives: [SO-GDPR-038]
+  linked_objectives: [SG-GDPR-038]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: GV.PO-02, title: "Cybersecurity processes and procedures established and enforced" }

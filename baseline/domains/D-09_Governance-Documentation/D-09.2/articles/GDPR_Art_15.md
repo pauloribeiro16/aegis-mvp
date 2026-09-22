@@ -32,13 +32,13 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-020 | Where processing is based on consent (Art. 6(1)(a)) or on a contract (Art. 6(1)(b)) and carried out by automated means, the data subject receives the personal data concerning him or her in a structured, commonly used, machine-readable format and can transmit those data to another controller. | `GDPR-RT10` (Art. 15(3) — copy); `GDPR-CP09` (Art. 28(3)(g) — return/deletion); informed by Art. 20 (cross-chapter inheritance) | D-05.4 |
-| SO-GDPR-020 | D-05.4 | Art. 20, Art. 15(3) | Portable data in commonly used machine-readable form |
-| SO-GDPR-038 | The controller provides transparent, concise, intelligible, easily accessible information in clear and plain language to data subjects on processing operations (Art. 13/14 collection notices), supports the exercise of data-subject rights (Art. 15–22), verifies identity on reasonable doubt, responds to rights requests within one month (extendable by two further months where necessary), and acts free of charge except in defined exception cases. | `GDPR-RT01` (Art. 12(1)); `GDPR-RT02` (Art. 12(3)); `GDPR-RT03` (Art. 12(5)); `GDPR-RT04` (Art. 12(6)); `GDPR-RT05` (Art. 13(1)); `GDPR-RT06` (Art. 13(2)(f)); `GDPR-RT07` (Art. 14(1)/(2)); `GDPR-RT08` (Art. 14(5)(b)) | D-09.4, D-05.4 |
+| SG-GDPR-020 | Where processing is based on consent (Art. 6(1)(a)) or on a contract (Art. 6(1)(b)) and carried out by automated means, the data subject receives the personal data concerning him or her in a structured, commonly used, machine-readable format and can transmit those data to another controller. | `GDPR-RT10` (Art. 15(3) — copy); `GDPR-CP09` (Art. 28(3)(g) — return/deletion); informed by Art. 20 (cross-chapter inheritance) | D-05.4 |
+| SG-GDPR-020 | D-05.4 | Art. 20, Art. 15(3) | Portable data in commonly used machine-readable form |
+| SG-GDPR-038 | The controller provides transparent, concise, intelligible, easily accessible information in clear and plain language to data subjects on processing operations (Art. 13/14 collection notices), supports the exercise of data-subject rights (Art. 15–22), verifies identity on reasonable doubt, responds to rights requests within one month (extendable by two further months where necessary), and acts free of charge except in defined exception cases. | `GDPR-RT01` (Art. 12(1)); `GDPR-RT02` (Art. 12(3)); `GDPR-RT03` (Art. 12(5)); `GDPR-RT04` (Art. 12(6)); `GDPR-RT05` (Art. 13(1)); `GDPR-RT06` (Art. 13(2)(f)); `GDPR-RT07` (Art. 14(1)/(2)); `GDPR-RT08` (Art. 14(5)(b)) | D-09.4, D-05.4 |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-009
@@ -47,7 +47,7 @@ status: DRAFT
     - { clause_id: GDPR-RT04, article_ref: "Art. 12(6) — identity verification" }
     - { clause_id: GDPR-CL26, article_ref: "Art. 11(2) — identification exemption" }
     - { clause_id: GDPR-C01, article_ref: "Art. 4(1) — personal data (cross)" }
-  linked_objectives: [SO-GDPR-005]
+  linked_objectives: [SG-GDPR-005]
   sub_domain: [D-03.1]
   nist_csf_mapping:
     - { id: PR.AA-03, title: "Users, services, and hardware authenticated" }
@@ -66,7 +66,7 @@ status: DRAFT
     Source clause GDPR-RT04 (Art. 12(6)) carries S3 VAG on `reasonable doubts` and `additional information`. Reading chosen: the controller may request minimal identity verification proportionate to the risk of misidentification, not arbitrary additional documents. This reading is anchored to Art. 5(1)(c) data minimisation (no over-collection) and to EDPB Guidelines on Art. 12 transparency. An alternative reading requiring full ID-document collection on any doubt is rejected: it creates a new attack surface (the collected ID documents themselves) and is disproportionate under Art. 5(1)(c). A third reading that mandates accepting self-declaration on any doubt is also rejected: it exposes the data-subject rights endpoint to social-engineering attacks and breaches the controller's Art. 32(1)(b) confidentiality obligation. On Art. 11(2), the `additional information` polysemy (information the controller must NOT maintain vs information the data subject must supply) is resolved by treating the data-subject-supply sense as the operative one for rights-exercise workflows. Remain open: (a) whether knowledge-based authentication (KBA) questions over personal-data history are acceptable as `additional information`, pending EDPB guidance post-Schrems II; and (b) how the verification obligation scales with self-service authentication (e.g. OAuth from a verified identity provider), pending alignment with eIDAS 2.0.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-022
@@ -76,7 +76,7 @@ status: DRAFT
     - { clause_id: GDPR-RT12, article_ref: "Art. 16 — rectification" }
     - { clause_id: GDPR-RT11, article_ref: "Art. 15(4) — third-party-rights limit" }
     - { clause_id: GDPR-CL26, article_ref: "Art. 11(2) — identification-exemption (cross)" }
-  linked_objectives: [SO-GDPR-012]
+  linked_objectives: [SG-GDPR-012]
   sub_domain: [D-04.3, D-05.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents reported internally to appropriate stakeholders" }
@@ -95,7 +95,7 @@ status: DRAFT
     `impossible` OR `disproportionate effort` (Art. 19) carries COORD-S3. Reading chosen: either escape clause suffices, as a logical inclusive OR. An alternative reading requiring both to hold is rejected: the stricter reading would impose undue compliance burden without policy justification. The OJ text uses `or`, the English-language UN-style drafting convention for an inclusive disjunction; EDPB Guidelines treat this consistently. On the Art. 15(4) cap (third-party-rights limit), the disclosure to the data subject about recipients is bounded to recipients known to the controller; the controller is not required to investigate recipients beyond its own records. Remain open: (a) whether the `recipient` definition includes processors (under Art. 28) and joint controllers (under Art. 26) or only independent third-party controllers, pending EDPB Guidelines 5/2019 revision; and (b) how the recipient-list request interacts with confidentiality obligations (e.g. trade-secret-protected recipients), pending alignment with Charter Art. 7 and CJEU jurisprudence on commercial confidentiality.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-032
@@ -103,7 +103,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-RT09, article_ref: "Art. 15(1)/(3) — copy provision and format" }
     - { clause_id: GDPR-RT10, article_ref: "Art. 15(3) — commonly used electronic form" }
-  linked_objectives: [SO-GDPR-020]
+  linked_objectives: [SG-GDPR-020]
   sub_domain: [D-05.4]
   nist_csf_mapping:
     - { id: PR.DS-10, title: "Data-in-use protected" }
@@ -146,7 +146,7 @@ status: DRAFT
     data the data subject explicitly provided.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-061
@@ -154,7 +154,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP05, article_ref: "Art. 26(2) — arrangement essentials" }
     - { clause_id: GDPR-CP04, article_ref: "Art. 26(1) (cross)" }
-  linked_objectives: [SO-GDPR-036]
+  linked_objectives: [SG-GDPR-036]
   sub_domain: [D-09.2]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy established, communicated, enforced" }

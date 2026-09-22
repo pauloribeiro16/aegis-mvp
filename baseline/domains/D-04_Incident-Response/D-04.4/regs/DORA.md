@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-010 | Comprehensive ICT BC policy with dedicated arrangements/plans/procedures/mechanisms including ICT response and recovery plans (independent internal audit for non-microenterprises), backup policies with criticality/confidentiality-graded scope and minimum frequency, and restoration and recovery procedures and methods | Financial entity; BC framework + backup architecture + audit-verified arrangements; Art. 11(1)–(3) + Art. 12(1); RC.RP-01 + PR.IR-03 + RC.RP-04 + PR.IR-04 + PR.DS-11 + RC.RP-03 |
+| DORA | SG-DORA-010 | Comprehensive ICT BC policy with dedicated arrangements/plans/procedures/mechanisms including ICT response and recovery plans (independent internal audit for non-microenterprises), backup policies with criticality/confidentiality-graded scope and minimum frequency, and restoration and recovery procedures and methods | Financial entity; BC framework + backup architecture + audit-verified arrangements; Art. 11(1)–(3) + Art. 12(1); RC.RP-01 + PR.IR-03 + RC.RP-04 + PR.IR-04 + PR.DS-11 + RC.RP-03 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-04.4.4 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-04.4.DORA
+id: SG-D-04.4.DORA
 subdomain: D-04.4
 applies_to: [DORA]
-inherits_from: SO-DORA-010
+inherits_from: SG-DORA-010
 source_SR: SR-DORA-013, SR-DORA-014, SR-DORA-015
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_N
@@ -78,7 +78,7 @@ data at standard cadence.)*
 
   derives_from:
     hso_sub_so: SO-4.4.DORA
-    per_reg_so: SO-DORA-010
+    per_reg_so: SG-DORA-010
     source_sr: SR-DORA-013, SR-DORA-014, SR-DORA-015
     hso_file: ../../HierarchicalSecurityObjectives/D-04_Incident-Response/4.4.md
     objective_ref_section: "### 4.4.4"

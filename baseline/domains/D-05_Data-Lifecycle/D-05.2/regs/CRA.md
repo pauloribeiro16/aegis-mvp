@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-035 + SO-CRA-061 (cross-ref) | Security updates and supporting advisory messages remain available across support period + Art. 13(18) 10-year Annex II information accessibility | Update artefacts (firmware, patches, advisories) + Annex II information; manufacturer obligation; Annex I Part II (7)/(8) + Art. 13(9) 10-year tail + Art. 13(18) 10-year information accessibility + Art. 13(8) 5-year support-period floor; PR.PS-02 + GV.OC-04 (10-year tail SR) + PR.PS-02 + GV.OV-02 |
+| CRA | SG-CRA-035 + SG-CRA-061 (cross-ref) | Security updates and supporting advisory messages remain available across support period + Art. 13(18) 10-year Annex II information accessibility | Update artefacts (firmware, patches, advisories) + Annex II information; manufacturer obligation; Annex I Part II (7)/(8) + Art. 13(9) 10-year tail + Art. 13(18) 10-year information accessibility + Art. 13(8) 5-year support-period floor; PR.PS-02 + GV.OC-04 (10-year tail SR) + PR.PS-02 + GV.OV-02 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-05.2.2 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-05.2.CRA
+id: SG-D-05.2.CRA
 subdomain: D-05.2
 applies_to: [CRA]
-inherits_from: SO-CRA-035, SO-CRA-061 (cross-ref)
+inherits_from: SG-CRA-035, SG-CRA-061 (cross-ref)
 source_SR: SR-CRA-016, SR-CRA-047
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -77,8 +77,8 @@ least 10 years from placing on market.)*
   title: "Security updates available across support period and the 10-year-or-remainder tail; Annex II information accessible for ≥10 years from placing on market; support-period end-date communicated at purchase"
 
   derives_from:
-    hso_sub_so: SO-D-05.2.CRA
-    per_reg_so: SO-CRA-035, SO-CRA-061 (cross-ref)
+    hso_sub_so: SG-D-05.2.CRA
+    per_reg_so: SG-CRA-035, SG-CRA-061 (cross-ref)
     source_sr: SR-CRA-016, SR-CRA-047
     hso_file: ../../HierarchicalSecurityObjectives/D-05_Data-Lifecycle/D-05.2.md
     objective_ref_section: "### D-05.2.2"

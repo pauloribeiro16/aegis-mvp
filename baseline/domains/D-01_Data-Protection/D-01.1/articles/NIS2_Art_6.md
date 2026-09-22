@@ -34,7 +34,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-001
@@ -45,7 +45,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     - { clause_id: NIS2-CL08, article_ref: "Art. 21(1) sentence 2 — state-of-the-art + standards + cost" }
     - { clause_id: NIS2-D01, article_ref: "Art. 6(1) — network and information system (cross)" }
     - { clause_id: NIS2-D02, article_ref: "Art. 6(2) — security of network and information systems" }
-  linked_objectives: [SO-NIS2-001]
+  linked_objectives: [SG-NIS2-001]
   sub_domain: [D-01.1]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }
@@ -61,7 +61,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     Article 21(2)(h) carries two compounding S3 ambiguities that drive materially different compliance obligations. First, the `cryptography and, where appropriate, encryption` conjunction is a hierarchical AND-with-hedge: cryptography is always required (a policy must address cryptographic mechanisms as a discipline) but encryption is additionally required only where the entity's risk assessment indicates it; the alternative reading that cryptography and encryption are synonyms is rejected by the literal text and by the CRA parallel (CRA Art. 13(2) on default passwords, Art. 14(2) on vulnerability remediation, treat cryptography and encryption as distinct concepts). Second, `state of the art` in Article 21(1) sentence 2 admits three readings — current best practice (qualitative), published standards (e.g. ISO/IEC 27001:2022, NIST CSF 2.0), or cutting-edge frontier research — of which the third is rejected by Recital 56 (cost of implementation implies off-the-shelf); the chosen reading accepts both R1 best practice and R2 published standards as operative, with ENISA's 2022 baseline guidance as the practical floor. Member State transposition divergence may apply on `state of the art`: the German BSI standardises the term through BSI TR-02102; French ANSSI requires an independent assessment by a qualified body; Italian ACN publishes annual guidance. The substantive software-compliance consequence is that a 5-FTE SaaS entity and a 500-FTE operator may both satisfy Article 21(2)(h) with materially different documentation depth, provided each documents the proportionality decision. Remain open: (a) whether the European Commission implementing acts under Article 21(5) will specify a baseline cryptography standard or only methodological requirements (the 17 October 2024 deadline has slipped to mid-2025 without publication as of the current reference date); (b) whether Member State national transposition will impose sector-specific cryptography mandates beyond the Directive... (line truncated to 2000 chars)
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-008
@@ -70,7 +70,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     - { clause_id: NIS2-CL11, article_ref: "Art. 21(2)(b) — incident handling" }
     - { clause_id: NIS2-D06, article_ref: "Art. 6(8) — incident handling definition (6-action list: prevent, detect, analyse, contain, respond, recover)" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
-  linked_objectives: [SO-NIS2-005, SO-NIS2-013]
+  linked_objectives: [SG-NIS2-005, SG-NIS2-013]
   sub_domain: [D-04.1, D-04.2, D-04.4]
   nist_csf_mapping:
     - { id: RS.MA-01, title: "Incident management plan executed in coordination with relevant third parties once an incident is declared" }
@@ -86,7 +86,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     `Incident handling` admits process/team/capability/programme readings; the chosen reading is process (R1) per the Article 6(8) `actions and procedures` anchor. The `aiming at, where appropriate` qualifier is read as illustrative (the six actions form a floor; the entity may add more — e.g. eradication, post-incident activity) rather than exhaustive. T3-vs-text gap awareness: T3 imports NIST SP 800-61 vocabulary not in the OJ text; the SR preserves the OJ six-action language. The handling capability is operationally triggered (process executed on incident declaration) and continuous (the capability is maintained). Member State transposition divergence may apply on incident-handling scope (whether the capability must operate 24/7; whether it must be staffed by named CSIRT-equivalent personnel or by a function that may include outsourced MSSPs); the Article 21(1) appropriate-and-proportionate qualifier is the basis for national variation. Remain open: whether the Commission's Article 21(5) implementing acts will specify a minimum 24/7 availability requirement for the incident-handling capability of essential entities in critical sectors (energy, transport, health, finance) — the Directive is silent on staffing continuity.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-014
@@ -94,7 +94,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
   source_clauses:
     - { clause_id: NIS2-CL40, article_ref: "Art. 23(4) ¶2 — TSP 24h derogation" }
     - { clause_id: NIS2-D02, article_ref: "Art. 6(24) — trust service (eIDAS cross-reference)" }
-  linked_objectives: [SO-NIS2-009]
+  linked_objectives: [SG-NIS2-009]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-04, title: "Coordination with stakeholders occurs consistent with applicable rules and regulations" }

@@ -40,9 +40,9 @@
 #### Participants (from CRDA-deep §D-05.1)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-015 + SO-GDPR-016 (cross-ref) | Personal data limited to adequate/relevant/necessary + Art. 6(4) compatibility test + Art. 6(1)(a)–(f) lawfulness bases + Art. 9(1) prohibition with Art. 9(2) exceptions | Personal data; controller-driven; Art. 5(1)(c) + Art. 6(4) + Art. 5(1)(a)/(b) + Art. 6(1) + Art. 9(1) prohibition; ID.AM-08 + ID.AM-03 |
-| CRA | SO-CRA-034 | Product data (personal or other) limited to adequate/relevant/necessary for intended purpose | Product data; manufacturer design; Annex I Part I (2)(g) + Art. 13(3) sentence 2 + Art. 3(23) `intended purpose`; ID.AM-08 + ID.AM-03 |
-| AI_Act | SO-AIACT-003 + SO-AIACT-004 | High-risk AI training/validation/testing datasets meet quality criteria (relevant/representative/free of errors/complete) + bias-detection data governance (8-element list) + exceptional special-category processing for bias correction (6 cumulative conditions (a)–(f)) | Training data; provider-driven; Art. 10(1)/(2)/(3)/(5); ID.AM-03 + ID.AM-08 + PR.PS-06 + PR.DS-01 + GV.OC-03 |
+| GDPR | SG-GDPR-015 + SG-GDPR-016 (cross-ref) | Personal data limited to adequate/relevant/necessary + Art. 6(4) compatibility test + Art. 6(1)(a)–(f) lawfulness bases + Art. 9(1) prohibition with Art. 9(2) exceptions | Personal data; controller-driven; Art. 5(1)(c) + Art. 6(4) + Art. 5(1)(a)/(b) + Art. 6(1) + Art. 9(1) prohibition; ID.AM-08 + ID.AM-03 |
+| CRA | SG-CRA-034 | Product data (personal or other) limited to adequate/relevant/necessary for intended purpose | Product data; manufacturer design; Annex I Part I (2)(g) + Art. 13(3) sentence 2 + Art. 3(23) `intended purpose`; ID.AM-08 + ID.AM-03 |
+| AI_Act | SG-AIACT-003 + SG-AIACT-004 | High-risk AI training/validation/testing datasets meet quality criteria (relevant/representative/free of errors/complete) + bias-detection data governance (8-element list) + exceptional special-category processing for bias correction (6 cumulative conditions (a)–(f)) | Training data; provider-driven; Art. 10(1)/(2)/(3)/(5); ID.AM-03 + ID.AM-08 + PR.PS-06 + PR.DS-01 + GV.OC-03 |
 
 ## Validated relationships (from CRDA-deep §D-05.1)
 
@@ -92,7 +92,7 @@ The 3 participating regulations each define D-05.1 over a distinct **data class*
 ## Scope-overlap principle (operational). The high-level SO
 
 #### Scope-overlap principle (operational). The high-level SO
-(`SO-D-05.1.HL`) engages on a given party **if and only if ≥2 applicable
+(`SG-D-05.1.HL`) engages on a given party **if and only if ≥2 applicable
 regulations' data-class scope-determiners overlap on the same party**
 (e.g. a GDPR controller that also manufactures CRA-regulated products
 that process personal data and operates a high-risk AI system trained
@@ -327,7 +327,7 @@ separately in the three sub-SOs and the per-recipient evidence packs.
 A company with ≥2 applicable regulations in scope of D-05.1 — with
 overlapping data-class scope-determiners on the same party — operates
 a **multi-class data-minimisation architecture** with explicit
-class-segregated hand-offs. The high-level SO (`SO-D-05.1.HL`)
+class-segregated hand-offs. The high-level SO (`SG-D-05.1.HL`)
 describes the common data-minimisation duty (limit data to what is
 adequate/relevant/necessary for the declared purpose; document the
 necessity assessment; apply the Art. 6(4) compatibility test on any
@@ -402,7 +402,7 @@ GDPR, CRA, AI Act (3 of 5 regs — NIS 2 and DORA are out-of-scope per AEGIS tax
   volere_subtype: privacy
   title: "Data collected or otherwise acquired is limited to what is adequate, relevant, and necessary for the declared purpose — multi-class data-minimisation architecture with class-segregated hand-offs"
   derives_from:
-    hso_sub_so: SO-D-05.1.HL
+    hso_sub_so: SG-D-05.1.HL
     hso_file: ../../HierarchicalSecurityObjectives/D-05_Data-Lifecycle/D-05.1.md
     objective_ref_section: "### D-05.1.0"
   description: |
@@ -459,11 +459,11 @@ status: DRAFT
 ##### Participants
 | Regulation | SO ID | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-015, SO-GDPR-016 | Personal data limited to adequate/relevant/necessary + Art. 6(4) compatibility test + Art. 6(1)(a)–(f) lawfulness bases | Personal data; controller-driven |
+| GDPR | SG-GDPR-015, SG-GDPR-016 | Personal data limited to adequate/relevant/necessary + Art. 6(4) compatibility test + Art. 6(1)(a)–(f) lawfulness bases | Personal data; controller-driven |
 | NIS2 | — | Out-of-scope (sole authority: GDPR) | n/a |
-| CRA | SO-CRA-034 | Product data (personal or other) limited to adequate/relevant/necessary for intended purpose | Product data; manufacturer design |
+| CRA | SG-CRA-034 | Product data (personal or other) limited to adequate/relevant/necessary for intended purpose | Product data; manufacturer design |
 | DORA | — | Out-of-scope (sole authority: GDPR) | n/a |
-| AI_Act | SO-AIACT-003, SO-AIACT-004, SO-AIACT-005, SO-AIACT-006 | High-risk AI training/validation/testing datasets meet quality criteria + bias-detection data governance + exceptional special-category processing for bias correction | Training data; provider-driven |
+| AI_Act | SG-AIACT-003, SG-AIACT-004, SG-AIACT-005, SG-AIACT-006 | High-risk AI training/validation/testing datasets meet quality criteria + bias-detection data governance + exceptional special-category processing for bias correction | Training data; provider-driven |
 **Sole-authority note:** NIS2 and DORA are out-of-scope for D-05.1 per AEGIS taxonomy §4.1 — both are operational-resilience/incident-reporting focused, not data-lifecycle. GDPR is the dedicated authority; CRA addresses product-level (which can include non-personal data); AI Act addresses training-data-quality specifically.
 ##### Pairwise matrix
 

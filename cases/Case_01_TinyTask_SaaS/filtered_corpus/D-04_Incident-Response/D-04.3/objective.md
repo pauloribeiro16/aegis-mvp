@@ -7,7 +7,7 @@
 
 #### D-04.3.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-04.3.HL
+id: SG-D-04.3.HL
 subdomain: D-04.3
 applies_to: auto  # activates when ≥2 applicable regs overlap on same event
 status: static    # pre-computed; not generated at Phase 1A

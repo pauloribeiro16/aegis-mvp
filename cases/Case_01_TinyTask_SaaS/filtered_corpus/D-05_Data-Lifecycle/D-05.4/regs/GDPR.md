@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-020 | Data subject receives personal data in a structured, commonly used, machine-readable format and can transmit those data to another controller without hindrance; the Art. 15(3) `commonly used electronic form` copy is the operational companion obligation supplying the read-only copy at the data subject's request, and Art. 20 supplies the portability right to transmit to another controller | Personal data; data-subject right; Art. 20(1)/(2)/(3)/(4) + Art. 15(3) companion copy; PR.DS-10 + ID.AM-08 |
+| GDPR | SG-GDPR-020 | Data subject receives personal data in a structured, commonly used, machine-readable format and can transmit those data to another controller without hindrance; the Art. 15(3) `commonly used electronic form` copy is the operational companion obligation supplying the read-only copy at the data subject's request, and Art. 20 supplies the portability right to transmit to another controller | Personal data; data-subject right; Art. 20(1)/(2)/(3)/(4) + Art. 15(3) companion copy; PR.DS-10 + ID.AM-08 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-05.4.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-05.4.GDPR
+id: SG-D-05.4.GDPR
 subdomain: D-05.4
 applies_to: [GDPR]
-inherits_from: SO-GDPR-020
+inherits_from: SG-GDPR-020
 source_SR: SR-GDPR-032
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N (sole sub-SO; sub-domain is single-regulator)
@@ -49,8 +49,8 @@ CT.DM-P1, CT.DM-P6.
   title: "Data subject receives personal data in a structured, commonly used, machine-readable format (Art. 20(1) + Art. 15(3) companion copy), supplied by the controller without undue delay (Art. 12(3) ≤1 month, ≤2 months complex) and free of charge (Art. 12(5)); cross-controller direct transmission provided where technically feasible"
 
   derives_from:
-    hso_sub_so: SO-D-05.4.GDPR
-    per_reg_so: SO-GDPR-020
+    hso_sub_so: SG-D-05.4.GDPR
+    per_reg_so: SG-GDPR-020
     source_sr: SR-GDPR-032
     hso_file: ../../HierarchicalSecurityObjectives/D-05_Data-Lifecycle/D-05.4.md
     objective_ref_section: "### D-05.4.1"

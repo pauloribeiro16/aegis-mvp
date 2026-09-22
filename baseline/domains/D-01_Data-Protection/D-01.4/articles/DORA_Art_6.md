@@ -44,14 +44,14 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-DORA-016 | The management body defines, approves, oversees and is responsible for the implementation of all arrangements related to the ICT risk management framework, supported by a sound, comprehensive and well-documented framework that enables the entity to address ICT risk quickly, efficiently and comprehensively. | `DORA-C01` (Art. 5(2) four-verb coordination: define/approve/oversee/be responsible + `all arrangements`); `DORA-C03` (Art. 6(1) `sound, comprehensive and well-documented` + `quickly, efficiently and comprehensively`) | D-09.1, D-09.3 |
-| SO-DORA-016 | D-09.1, D-09.3 | Art. 5(2) + Art. 6(1) | Management body responsibility + ICT risk management framework |
-| SO-DORA-017 | Responsibility for managing and overseeing ICT risk is assigned to a control function with an appropriate level of independence according to the three lines of defence model (or an internal risk management and control model); ICT supported business functions, roles and responsibilities, the information assets and ICT assets supporting those functions, and their roles and dependencies in relation to ICT risk are identified, classified and adequately documented. | `DORA-C04` (Art. 6(4) `appropriate level of independence` + `three lines of defence model`); `DORA-C05` (Art. 7(1) `identify, classify and adequately document` 3-verb + long AND chain of asset classes) | D-09.1, D-09.2, D-09.3 |
-| SO-DORA-017 | D-09.1, D-09.2, D-09.3 | Art. 6(4) + Art. 7(1) | Three lines of defence + asset identification/classification |
+| SG-DORA-016 | The management body defines, approves, oversees and is responsible for the implementation of all arrangements related to the ICT risk management framework, supported by a sound, comprehensive and well-documented framework that enables the entity to address ICT risk quickly, efficiently and comprehensively. | `DORA-C01` (Art. 5(2) four-verb coordination: define/approve/oversee/be responsible + `all arrangements`); `DORA-C03` (Art. 6(1) `sound, comprehensive and well-documented` + `quickly, efficiently and comprehensively`) | D-09.1, D-09.3 |
+| SG-DORA-016 | D-09.1, D-09.3 | Art. 5(2) + Art. 6(1) | Management body responsibility + ICT risk management framework |
+| SG-DORA-017 | Responsibility for managing and overseeing ICT risk is assigned to a control function with an appropriate level of independence according to the three lines of defence model (or an internal risk management and control model); ICT supported business functions, roles and responsibilities, the information assets and ICT assets supporting those functions, and their roles and dependencies in relation to ICT risk are identified, classified and adequately documented. | `DORA-C04` (Art. 6(4) `appropriate level of independence` + `three lines of defence model`); `DORA-C05` (Art. 7(1) `identify, classify and adequately document` 3-verb + long AND chain of asset classes) | D-09.1, D-09.2, D-09.3 |
+| SG-DORA-017 | D-09.1, D-09.2, D-09.3 | Art. 6(4) + Art. 7(1) | Three lines of defence + asset identification/classification |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-001
@@ -60,7 +60,7 @@ status: DRAFT
     - { clause_id: DORA-C09, article_ref: "Art. 9(2) — CIA+A 4-way AND + at-rest/in-use/in-transit 3-way OR" }
     - { clause_id: DORA-C10, article_ref: "Art. 9(2) — in-transit dimension (same locus, explicit in OJ)" }
     - { clause_id: DORA-C11, article_ref: "Art. 9(2) — integrity dimension (same locus, explicit in OJ)" }
-  linked_objectives: [SO-DORA-001]
+  linked_objectives: [SG-DORA-001]
   sub_domain: [D-01.1, D-01.2, D-01.4]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }
@@ -150,7 +150,7 @@ status: DRAFT
     securities) and the EBA's prior preference for ISO/IEC alignment.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-002
@@ -159,7 +159,7 @@ status: DRAFT
     - { clause_id: DORA-C15, article_ref: "Art. 9(4)(d) — strong authentication mechanisms based on relevant standards and dedicated control systems" }
     - { clause_id: DORA-C16, article_ref: "Art. 9(4)(d) same locus — T4 reads `Multi-Factor Authentication`; OJ says `strong authentication mechanisms`" }
     - { clause_id: DORA-C17, article_ref: "Art. 9(4)(d) same locus — `protection measures of cryptographic keys`" }
-  linked_objectives: [SO-DORA-002]
+  linked_objectives: [SG-DORA-002]
   sub_domain: [D-01.3, D-03.1, D-03.2]
   nist_csf_mapping:
     - { id: PR.AA-03, title: "Users, services, and hardware are authenticated" }
@@ -250,7 +250,7 @@ status: DRAFT
     or be carved out as a separate sub-regime.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-003
@@ -258,7 +258,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: DORA-C15, article_ref: "Art. 9(4)(d) — `protection measures of cryptographic keys whereby data is encrypted based on results of approved data classification and ICT risk assessment processes`" }
     - { clause_id: DORA-C17, article_ref: "Art. 9(4)(d) same locus — key-management sub-phrase" }
-  linked_objectives: [SO-DORA-002]
+  linked_objectives: [SG-DORA-002]
   sub_domain: [D-01.3]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }
@@ -329,7 +329,7 @@ status: DRAFT
     was discarded. Remain open: (a) the operational threshold for `approved` governance approval — whether a documented policy suffices or a board-level resolution is required — pending EBA Guidelines clarification; (b) the relationship between the Art. 9(4)(d) classification scheme and any sectoral scheme the entity already operates, pending Art. 15 RTS.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-004
@@ -337,7 +337,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: DORA-C06, article_ref: "Art. 7(2) — `on a continuous basis, identify all sources of ICT risk`" }
     - { clause_id: DORA-C08, article_ref: "Art. 8(2) — `identify all sources of ICT risk … and assess cyber threats and ICT vulnerabilities relevant to their ICT supported business functions`" }
-  linked_objectives: [SO-DORA-003]
+  linked_objectives: [SG-DORA-003]
   sub_domain: [D-02.1, D-10.1]
   nist_csf_mapping:
     - { id: ID.RA-01, title: "Vulnerabilities in assets are identified, validated, and recorded" }
@@ -410,14 +410,14 @@ status: DRAFT
     recognised mechanism but do not yet have OJ-delegated form.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-005
   title: "Annual risk-scenario register refresh with strategic recalibration"
   source_clauses:
     - { clause_id: DORA-C06, article_ref: "Art. 7(2) sentence 2 — `Financial entities shall review on a regular basis, and at least yearly, the risk scenarios impacting them`" }
-  linked_objectives: [SO-DORA-003]
+  linked_objectives: [SG-DORA-003]
   sub_domain: [D-02.1, D-09.2]
   nist_csf_mapping:
     - { id: ID.RA-05, title: "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response decisions" }
@@ -491,14 +491,14 @@ status: DRAFT
     taxonomy across the three ESAs.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-027
   title: "Sound and comprehensive ICT risk management framework documented"
   source_clauses:
     - { clause_id: DORA-C03, article_ref: "Art. 6(1) — `Financial entities shall have a sound, comprehensive and well-documented ICT risk management framework … which enables them to address ICT risk quickly, efficiently and comprehensively`" }
-  linked_objectives: [SO-DORA-016]
+  linked_objectives: [SG-DORA-016]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -556,14 +556,14 @@ status: DRAFT
     approval-trails, archival) is an entity-policy matter.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-028
   title: "Independence of ICT risk oversight via three-lines-of-defence model"
   source_clauses:
     - { clause_id: DORA-C04, article_ref: "Art. 6(4) — `assign the responsibility for managing and overseeing ICT risk to a control function and ensure an appropriate level of independence … according to the three lines of defence model, or an internal risk management and control model`" }
-  linked_objectives: [SO-DORA-017]
+  linked_objectives: [SG-DORA-017]
   sub_domain: [D-09.1, D-09.2]
   nist_csf_mapping:
     - { id: GV.RR-02, title: "Roles, responsibilities, authorities, and accountabilities related to cybersecurity risk management are established, communicated, understood, and enforced" }
@@ -621,14 +621,14 @@ status: DRAFT
     matter.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-031
   title: "Information security policy covering CIA+A across data and ICT assets"
   source_clauses:
     - { clause_id: DORA-C12, article_ref: "Art. 9(4)(a) — `develop and document an information security policy defining rules to protect the availability, authenticity, integrity and confidentiality of data, information assets and ICT assets, including those of their customers, where applicable`" }
-  linked_objectives: [SO-DORA-018]
+  linked_objectives: [SG-DORA-018]
   sub_domain: [D-10.2]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }

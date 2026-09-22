@@ -24,18 +24,18 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-AIACT-013 | Providers and deployers of high-risk AI systems report any serious incident to the market surveillance authorities of the Member States where the incident occurred, in accordance with the differentiated timelines and triggers (awareness / causal link / death / widespread infringement) of Art. 73(1)–(4). | `AIA-C26` (Art. 73(1)–(4) — 4 differentiated timelines × 4 distinct triggers; `serious incident` defined in Art. 3(49) via three sub-categories (a)/(b)/(c); 28 instances of S3 ambiguity across VAG+SCOPE-Q+POLY+COORD) | D-04.3 |
+| SG-AIACT-013 | Providers and deployers of high-risk AI systems report any serious incident to the market surveillance authorities of the Member States where the incident occurred, in accordance with the differentiated timelines and triggers (awareness / causal link / death / widespread infringement) of Art. 73(1)–(4). | `AIA-C26` (Art. 73(1)–(4) — 4 differentiated timelines × 4 distinct triggers; `serious incident` defined in Art. 3(49) via three sub-categories (a)/(b)/(c); 28 instances of S3 ambiguity across VAG+SCOPE-Q+POLY+COORD) | D-04.3 |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-022
   title: "Tiered serious incident reporting with differentiated timelines"
   source_clauses:
     - { clause_id: AIA-C26, article_ref: "Art. 73(1)–(4) — `report any serious incident`; `not later than 15 days after … becomes aware`; `not later than two days` (widespread infringement); `not later than 10 days` (death)" }
-  linked_objectives: [SO-AIACT-013]
+  linked_objectives: [SG-AIACT-013]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents are reported internally to the appropriate stakeholders, including executive leadership and legal counsel" }

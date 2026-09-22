@@ -24,12 +24,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-020 | Where processing is based on consent (Art. 6(1)(a)) or on a contract (Art. 6(1)(b)) and carried out by automated means, the data subject receives the personal data concerning him or her in a structured, commonly used, machine-readable format and can transmit those data to another controller. | `GDPR-RT10` (Art. 15(3) — copy); `GDPR-CP09` (Art. 28(3)(g) — return/deletion); informed by Art. 20 (cross-chapter inheritance) | D-05.4 |
-| SO-GDPR-020 | D-05.4 | Art. 20, Art. 15(3) | Portable data in commonly used machine-readable form |
+| SG-GDPR-020 | Where processing is based on consent (Art. 6(1)(a)) or on a contract (Art. 6(1)(b)) and carried out by automated means, the data subject receives the personal data concerning him or her in a structured, commonly used, machine-readable format and can transmit those data to another controller. | `GDPR-RT10` (Art. 15(3) — copy); `GDPR-CP09` (Art. 28(3)(g) — return/deletion); informed by Art. 20 (cross-chapter inheritance) | D-05.4 |
+| SG-GDPR-020 | D-05.4 | Art. 20, Art. 15(3) | Portable data in commonly used machine-readable form |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-032
@@ -37,7 +37,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-RT09, article_ref: "Art. 15(1)/(3) — copy provision and format" }
     - { clause_id: GDPR-RT10, article_ref: "Art. 15(3) — commonly used electronic form" }
-  linked_objectives: [SO-GDPR-020]
+  linked_objectives: [SG-GDPR-020]
   sub_domain: [D-05.4]
   nist_csf_mapping:
     - { id: PR.DS-10, title: "Data-in-use protected" }

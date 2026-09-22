@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| AI_Act | SO-AIACT-012 | A post-market monitoring system is established and documented in a manner that is proportionate to the nature of the AI technologies and the risks of the high-risk AI system, actively and systematically collecting, documenting and analysing relevant data to evaluate continued compliance; market-surveillance cooperation under Regulation (EU) 2019/1020 applies (Art. 72(1)–(2) + Art. 74(1)). | AI-system post-market monitoring (lifecycle monitoring of high-risk AI); `proportionate to the nature of the AI technologies and the risks` (qualitative); `actively and systematically collect, document and analyse` (3-way verb AND). |
+| AI_Act | SG-AIACT-012 | A post-market monitoring system is established and documented in a manner that is proportionate to the nature of the AI technologies and the risks of the high-risk AI system, actively and systematically collecting, documenting and analysing relevant data to evaluate continued compliance; market-surveillance cooperation under Regulation (EU) 2019/1020 applies (Art. 72(1)–(2) + Art. 74(1)). | AI-system post-market monitoring (lifecycle monitoring of high-risk AI); `proportionate to the nature of the AI technologies and the risks` (qualitative); `actively and systematically collect, document and analyse` (3-way verb AND). |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-10.1.5 — Sub-SO for AI Act
 
 ```yaml
-id: SO-D-10.1.AI_Act
+id: SG-D-10.1.AI_Act
 subdomain: D-10.1
 applies_to: [AI_Act]
-inherits_from: SO-AIACT-012
+inherits_from: SG-AIACT-012
 source_SR: SR-AIACT-021 + SR-AIACT-022
 activation: if AI_Act in applicable_regs
 phase_1A_role: 5_of_5
@@ -51,7 +51,7 @@ MANAGE-4.1, MEASURE-3.1, MEASURE-4.1, GOVERN-1.5, MANAGE-2.3, MANAGE-4.3, GOVERN
 
   derives_from:
     hso_sub_so: SO-10.1.AI_Act
-    per_reg_so: SO-AIACT-012
+    per_reg_so: SG-AIACT-012
     source_sr: SR-AIACT-021 + SR-AIACT-022
     hso_file: ../../HierarchicalSecurityObjectives/D-10_Monitoring-Audit/10.1.md
     objective_ref_section: "### 10.1.5"

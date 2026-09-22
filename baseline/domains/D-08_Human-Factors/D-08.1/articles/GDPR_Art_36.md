@@ -30,14 +30,14 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-013 | Where a data-protection impact assessment indicates that the intended processing would result in a high risk in the absence of mitigation measures, the controller consults the supervisory authority prior to processing. | `GDPR-CP23` (Art. 36(1)); `GDPR-CP24` (Art. 36(2)) | D-04.3, D-09.2 |
-| SO-GDPR-013 | D-04.3, D-09.2 | Art. 36(1)/(2) | Prior consultation with supervisory authority |
-| SO-GDPR-028 | Prior to processing that is likely to result in a high risk to the rights and freedoms of natural persons, the controller carries out a data-protection impact assessment covering the four Art. 35(7) content items (systematic description, necessity & proportionality, risks, mitigation measures); the assessment is reviewed on change of risk. | `GDPR-CP21` (Art. 35(1)–(4)); `GDPR-CP22` (Art. 35(7)/(11)); `GDPR-C23` (Art. 9(2)(g)); `GDPR-CP23` (Art. 36(1)) | D-09.2 |
-| SO-GDPR-028 | D-09.2 | Art. 35(1)–(4)/(7), Art. 9(2)(g), Art. 36(1) | Pre-launch DPIA for high-risk processing |
+| SG-GDPR-013 | Where a data-protection impact assessment indicates that the intended processing would result in a high risk in the absence of mitigation measures, the controller consults the supervisory authority prior to processing. | `GDPR-CP23` (Art. 36(1)); `GDPR-CP24` (Art. 36(2)) | D-04.3, D-09.2 |
+| SG-GDPR-013 | D-04.3, D-09.2 | Art. 36(1)/(2) | Prior consultation with supervisory authority |
+| SG-GDPR-028 | Prior to processing that is likely to result in a high risk to the rights and freedoms of natural persons, the controller carries out a data-protection impact assessment covering the four Art. 35(7) content items (systematic description, necessity & proportionality, risks, mitigation measures); the assessment is reviewed on change of risk. | `GDPR-CP21` (Art. 35(1)–(4)); `GDPR-CP22` (Art. 35(7)/(11)); `GDPR-C23` (Art. 9(2)(g)); `GDPR-CP23` (Art. 36(1)) | D-09.2 |
+| SG-GDPR-028 | D-09.2 | Art. 35(1)–(4)/(7), Art. 9(2)(g), Art. 36(1) | Pre-launch DPIA for high-risk processing |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-023
@@ -46,7 +46,7 @@ status: DRAFT
     - { clause_id: GDPR-CP23, article_ref: "Art. 36(1) — prior consultation" }
     - { clause_id: GDPR-CP21, article_ref: "Art. 35(1) — high-risk DPIA" }
     - { clause_id: GDPR-CP22, article_ref: "Art. 35(7) — DPIA content" }
-  linked_objectives: [SO-GDPR-013, SO-GDPR-028]
+  linked_objectives: [SG-GDPR-013, SG-GDPR-028]
   sub_domain: [D-04.3, D-09.2]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal/regulatory/contractual requirements understood and managed" }
@@ -65,7 +65,7 @@ status: DRAFT
     `high risk in the absence of measures` is the same `high risk` POLY family as Arts. 34 and 35. Readings converge via the Art. 35(1) threshold inheritance. The `prior to processing` wording is read strictly: the controller must consult before launching, not after, and the supervisory authority's 8-week window under Art. 36(2) must be accommodated in the launch timeline. EDPB Guidelines 4/2019 on DPIA provide factors for high-risk classification but do not bind the controller. Remain open: (a) whether iterative processing activities (e.g. machine-learning model updates) trigger fresh Art. 36(1) consultations on each iteration or whether a single consultation covers the iterative cycle, pending EDPB AI Act interaction guidance; and (b) how the consultation interacts with the Art. 27 representative designation for non-EU controllers, pending alignment with international supervisory cooperation.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-045
@@ -75,7 +75,7 @@ status: DRAFT
     - { clause_id: GDPR-CP22, article_ref: "Art. 35(7) — DPIA content" }
     - { clause_id: GDPR-CP23, article_ref: "Art. 36(1) — prior consultation (cross)" }
     - { clause_id: GDPR-C01, article_ref: "Art. 4(1) — personal data" }
-  linked_objectives: [SO-GDPR-028]
+  linked_objectives: [SG-GDPR-028]
   sub_domain: [D-09.2]
   nist_csf_mapping:
     - { id: ID.RA-01, title: "Vulnerabilities in assets are identified, validated, and recorded" }
@@ -131,7 +131,7 @@ status: DRAFT
     joint-controllership arrangement.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-064
@@ -139,7 +139,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP28, article_ref: "Art. 39(1)(a)–(e) — DPO tasks" }
     - { clause_id: GDPR-CP28, article_ref: "Art. 39(2) — risk-associated processing" }
-  linked_objectives: [SO-GDPR-037, SO-GDPR-025]
+  linked_objectives: [SG-GDPR-037, SG-GDPR-025]
   sub_domain: [D-09.1, D-09.2, D-08.1]
   nist_csf_mapping:
     - { id: GV.OV-03, title: "Organizational cybersecurity performance evaluated and reviewed" }

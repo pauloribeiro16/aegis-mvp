@@ -30,12 +30,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-012 | Rectification, erasure, or restriction of processing is cascaded to each recipient to whom the personal data have been disclosed, unless impossible or involving disproportionate effort; the data subject is informed of those recipients on request. | `GDPR-RT15` (Art. 19) | D-04.3 |
-| SO-GDPR-012 | D-04.3 | Art. 19 | Cascade rectification/erasure/restriction notification |
+| SG-GDPR-012 | Rectification, erasure, or restriction of processing is cascaded to each recipient to whom the personal data have been disclosed, unless impossible or involving disproportionate effort; the data subject is informed of those recipients on request. | `GDPR-RT15` (Art. 19) | D-04.3 |
+| SG-GDPR-012 | D-04.3 | Art. 19 | Cascade rectification/erasure/restriction notification |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-006
@@ -45,7 +45,7 @@ status: DRAFT
     - { clause_id: GDPR-CL04, article_ref: "Art. 5(1)(d)" }
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation (cross)" }
     - { clause_id: GDPR-RT15, article_ref: "Art. 19 — cascade notification (cross)" }
-  linked_objectives: [SO-GDPR-003, SO-GDPR-012]
+  linked_objectives: [SG-GDPR-003, SG-GDPR-012]
   sub_domain: [D-01.4, D-04.3, D-05.1]
   nist_csf_mapping:
     - { id: PR.DS-10, title: "Data-in-use protected" }
@@ -64,7 +64,7 @@ status: DRAFT
     GDPR-RT12 (Art. 16) carries POLY-S3 ambiguity on `supplementary statement`. The rule covers both reading branches. Reading chosen: the controller either rectifies or attaches a supplementary statement, depending on whether the contested fact is verifiable as inaccurate, with the choice exercised under Art. 12(6) reasonable-doubts discipline. An alternative reading holds that the statement must be attached whenever the data subject requests it, even if the controller disputes accuracy; this is supported by some DPAs but creates record-bloat, and the chosen reading treats the statement as a fallback when verification is inconclusive. An alternative reading treats the statement as merely informational and waivable by the controller; this is rejected because it would make the right illusory. On Art. 19 cascade, the OR in the OJ text "impossible or involves disproportionate effort" is inclusive, so either escape clause suffices (see SR-GDPR-022). Remain open: (a) whether rectification applies to derived data (model weights trained on inaccurate inputs), pending EDPB AI Act interaction guidance; and (b) the operational definition of "without undue delay" for rectification (24 hours vs 7 days vs 30 days), pending EDPB Guidelines 5/2019 revision.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-022
@@ -74,7 +74,7 @@ status: DRAFT
     - { clause_id: GDPR-RT12, article_ref: "Art. 16 — rectification" }
     - { clause_id: GDPR-RT11, article_ref: "Art. 15(4) — third-party-rights limit" }
     - { clause_id: GDPR-CL26, article_ref: "Art. 11(2) — identification-exemption (cross)" }
-  linked_objectives: [SO-GDPR-012]
+  linked_objectives: [SG-GDPR-012]
   sub_domain: [D-04.3, D-05.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents reported internally to appropriate stakeholders" }

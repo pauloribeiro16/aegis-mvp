@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-017 + SO-DORA-003 | Three-lines-of-defence model + ICT supported business functions / information assets / ICT assets identification, classification, documentation (Art. 6(4) + Art. 7(1) — cross to D-09.3); ICT risk identification register on a continuous basis with at-least-yearly risk-scenario review (Art. 7(2) sentence 1 + sentence 2). | Financial-entity operational ICT risk framework; continuous + yearly review; no pre-launch DPIA-equivalent. |
+| DORA | SG-DORA-017 + SG-DORA-003 | Three-lines-of-defence model + ICT supported business functions / information assets / ICT assets identification, classification, documentation (Art. 6(4) + Art. 7(1) — cross to D-09.3); ICT risk identification register on a continuous basis with at-least-yearly risk-scenario review (Art. 7(2) sentence 1 + sentence 2). | Financial-entity operational ICT risk framework; continuous + yearly review; no pre-launch DPIA-equivalent. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-09.2.4 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-09.2.DORA
+id: SG-D-09.2.DORA
 subdomain: D-09.2
 applies_to: [DORA]
-inherits_from: SO-DORA-017 + SO-DORA-003
+inherits_from: SG-DORA-017 + SG-DORA-003
 source_SR: SR-DORA-028 + SR-DORA-004 + SR-DORA-005
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_5
@@ -48,7 +48,7 @@ GV.RR-02, GV.RM-02, ID.RA-01, ID.RA-03, ID.RA-05, ID.IM-04, GV.OV-02, PR.PS-02.
 
   derives_from:
     hso_sub_so: SO-9.2.DORA
-    per_reg_so: SO-DORA-017 + SO-DORA-003
+    per_reg_so: SG-DORA-017 + SG-DORA-003
     source_sr: SR-DORA-028 + SR-DORA-004 + SR-DORA-005
     hso_file: ../../HierarchicalSecurityObjectives/D-09_Governance-Documentation/9.2.md
     objective_ref_section: "### 9.2.4"

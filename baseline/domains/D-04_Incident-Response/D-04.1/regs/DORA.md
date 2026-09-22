@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-007 + SO-DORA-008 | Multi-class anomalous-activity detection with SPOF identification (Art. 10) + ICT-related incident management process (Art. 17(1)) | Financial-entity ICT; performance + incidents + SPOFs; DE.CM-01 + DE.CM-09 + RS.MA-01 |
+| DORA | SG-DORA-007 + SG-DORA-008 | Multi-class anomalous-activity detection with SPOF identification (Art. 10) + ICT-related incident management process (Art. 17(1)) | Financial-entity ICT; performance + incidents + SPOFs; DE.CM-01 + DE.CM-09 + RS.MA-01 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-04.1.4 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-04.1.DORA
+id: SG-D-04.1.DORA
 subdomain: D-04.1
 applies_to: [DORA]
-inherits_from: SO-DORA-007
+inherits_from: SG-DORA-007
 source_SR: SR-DORA-011, SR-DORA-012
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_N
@@ -57,7 +57,7 @@ from Art. 17(1) `detect/manage/notify` 3-way.)*
 
   derives_from:
     hso_sub_so: SO-4.1.DORA
-    per_reg_so: SO-DORA-007
+    per_reg_so: SG-DORA-007
     source_sr: SR-DORA-011, SR-DORA-012
     hso_file: ../../HierarchicalSecurityObjectives/D-04_Incident-Response/4.1.md
     objective_ref_section: "### 4.1.4"

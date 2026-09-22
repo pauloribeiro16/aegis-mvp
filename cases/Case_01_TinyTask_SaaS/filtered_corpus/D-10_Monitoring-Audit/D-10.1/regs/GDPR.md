@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-030 + SO-GDPR-008 | Personal-data processing systems and services are monitored for adverse events covering the five Art. 32(2) risk types (accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to personal data), with a clear definition of the moment of "becoming aware of" a breach to anchor the Art. 33(1) 72-hour notification clock. | Entity-level monitoring of personal-data processing systems; 5-risk-type trigger (Art. 32(2) chapeau `a process for regularly testing, assessing and evaluating`); `becoming-aware` clock for breach notification. |
+| GDPR | SG-GDPR-030 + SG-GDPR-008 | Personal-data processing systems and services are monitored for adverse events covering the five Art. 32(2) risk types (accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to personal data), with a clear definition of the moment of "becoming aware of" a breach to anchor the Art. 33(1) 72-hour notification clock. | Entity-level monitoring of personal-data processing systems; 5-risk-type trigger (Art. 32(2) chapeau `a process for regularly testing, assessing and evaluating`); `becoming-aware` clock for breach notification. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-10.1.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-10.1.GDPR
+id: SG-D-10.1.GDPR
 subdomain: D-10.1
 applies_to: [GDPR]
-inherits_from: SO-GDPR-030 + SO-GDPR-008
+inherits_from: SG-GDPR-030 + SG-GDPR-008
 source_SR: SR-GDPR-019 + SR-GDPR-020 + SR-GDPR-021
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_5
@@ -51,7 +51,7 @@ CM.AW-P7, CM.AW-P8, PR.DS-P1, CT.DP-P2.
 
   derives_from:
     hso_sub_so: SO-10.1.GDPR
-    per_reg_so: SO-GDPR-030 + SO-GDPR-008
+    per_reg_so: SG-GDPR-030 + SG-GDPR-008
     source_sr: SR-GDPR-019 + SR-GDPR-020 + SR-GDPR-021
     hso_file: ../../HierarchicalSecurityObjectives/D-10_Monitoring-Audit/10.1.md
     objective_ref_section: "### 10.1.1"

@@ -26,12 +26,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-NIS2-024 | Where required by a Member State in accordance with Art. 24(1), or by a Commission delegated act under Art. 24(2), essential and important entities use particular ICT products, ICT services, and ICT processes that are certified under European cybersecurity certification schemes adopted pursuant to Art. 49 of Regulation (EU) 2019/881 (Cybersecurity Act). | `NIS2-CL48` (Art. 24(1) sentence 1 — Member States `may require` certified ICT products/services/processes); `NIS2-CL49` (Art. 24(1) sentence 2 — qualified trust services encouragement); `NIS2-CL50` (Art. 24(2) — Commission delegated acts specifying categories of entities that must use certified products); `NIS2-CL51` (Art. 24(3) — ENISA candidate scheme request) | D-09.4, D-06.3 |
-| SO-NIS2-024 | D-09.4, D-06.3 | Art. 24(1)/(2)/(3) | Use of certified ICT products/services/processes where required by MS or delegated act |
+| SG-NIS2-024 | Where required by a Member State in accordance with Art. 24(1), or by a Commission delegated act under Art. 24(2), essential and important entities use particular ICT products, ICT services, and ICT processes that are certified under European cybersecurity certification schemes adopted pursuant to Art. 49 of Regulation (EU) 2019/881 (Cybersecurity Act). | `NIS2-CL48` (Art. 24(1) sentence 1 — Member States `may require` certified ICT products/services/processes); `NIS2-CL49` (Art. 24(1) sentence 2 — qualified trust services encouragement); `NIS2-CL50` (Art. 24(2) — Commission delegated acts specifying categories of entities that must use certified products); `NIS2-CL51` (Art. 24(3) — ENISA candidate scheme request) | D-09.4, D-06.3 |
+| SG-NIS2-024 | D-09.4, D-06.3 | Art. 24(1)/(2)/(3) | Use of certified ICT products/services/processes where required by MS or delegated act |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-043
@@ -40,7 +40,7 @@ status: DRAFT
     - { clause_id: NIS2-CL48, article_ref: "Art. 24(1) sentence 1 — Member States `may require` certified ICT products/services/processes" }
     - { clause_id: NIS2-CL50, article_ref: "Art. 24(2) — Commission delegated acts (cross)" }
     - { clause_id: NIS2-CL49, article_ref: "Art. 24(1) sentence 2 — qualified trust services encouragement (cross)" }
-  linked_objectives: [SO-NIS2-024]
+  linked_objectives: [SG-NIS2-024]
   sub_domain: [D-09.4, D-06.3]
   nist_csf_mapping:
     - { id: GV.SC-04, title: "Suppliers and other third parties are routinely assessed using audits, test results, or other forms of evaluation" }

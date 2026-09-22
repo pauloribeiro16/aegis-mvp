@@ -28,12 +28,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-DORA-005 | A sound and comprehensive digital operational resilience testing programme is established, maintained and reviewed as an integral part of the ICT risk-management framework, drawing on a portfolio of testing modalities (vulnerability assessments, scans, open source analyses, network security assessments, gap analyses, physical security reviews, questionnaires, source code reviews where feasible, scenario-based tests, compatibility testing, performance testing, end-to-end testing and penetration testing) and including advanced testing by means of TLPT at least every three years, with frequency adjustments at the competent authority's request. | `DORA-C32` (Art. 24(1) testing programme as integral part of framework); `DORA-C33` (Art. 25(1) portfolio of testing modalities — 12-way open list); `DORA-C34` (Art. 26(1) TLPT — 3-year anchor + CA frequency adjustment) | D-02.4, D-10.3 |
-| SO-DORA-005 | D-02.4, D-10.3 | Art. 24 + Art. 25 + Art. 26 | Testing programme + testing modalities + TLPT |
+| SG-DORA-005 | A sound and comprehensive digital operational resilience testing programme is established, maintained and reviewed as an integral part of the ICT risk-management framework, drawing on a portfolio of testing modalities (vulnerability assessments, scans, open source analyses, network security assessments, gap analyses, physical security reviews, questionnaires, source code reviews where feasible, scenario-based tests, compatibility testing, performance testing, end-to-end testing and penetration testing) and including advanced testing by means of TLPT at least every three years, with frequency adjustments at the competent authority's request. | `DORA-C32` (Art. 24(1) testing programme as integral part of framework); `DORA-C33` (Art. 25(1) portfolio of testing modalities — 12-way open list); `DORA-C34` (Art. 26(1) TLPT — 3-year anchor + CA frequency adjustment) | D-02.4, D-10.3 |
+| SG-DORA-005 | D-02.4, D-10.3 | Art. 24 + Art. 25 + Art. 26 | Testing programme + testing modalities + TLPT |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-008
@@ -41,7 +41,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: DORA-C32, article_ref: "Art. 24(1) — `establish, maintain and review a sound and comprehensive digital operational resilience testing programme as an integral part of the ICT risk-management framework`" }
     - { clause_id: DORA-C33, article_ref: "Art. 25(1) — testing modalities portfolio (12-way open list)" }
-  linked_objectives: [SO-DORA-005]
+  linked_objectives: [SG-DORA-005]
   sub_domain: [D-10.3, D-02.4]
   nist_csf_mapping:
     - { id: GV.OV-02, title: "The organizational cybersecurity risk management strategy is reviewed and adjusted to address changes in the organization's risk landscape" }
@@ -132,14 +132,14 @@ status: DRAFT
     closed-source third-party components.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-020
   title: "Information-security standards compliance for ICT third-party contracts"
   source_clauses:
     - { clause_id: DORA-C36, article_ref: "Art. 28(5) — `financial entities may only enter into contractual arrangements with ICT third-party service providers that comply with appropriate information security standards. When those contractual arrangements concern critical or important functions, financial entities shall … take due consideration of the use, by ICT third-party service providers, of the most up-to-date and highest quality information security standards`" }
-  linked_objectives: [SO-DORA-011]
+  linked_objectives: [SG-DORA-011]
   sub_domain: [D-06.3]
   nist_csf_mapping:
     - { id: GV.SC-01, title: "A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders" }

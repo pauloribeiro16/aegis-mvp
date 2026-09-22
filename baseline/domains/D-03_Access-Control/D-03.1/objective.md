@@ -7,7 +7,7 @@
 
 #### D-03.1.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-03.1.HL
+id: SG-D-03.1.HL
 subdomain: D-03.1
 applies_to: auto  # activates when ≥2 applicable regs target overlapping identity boundaries on the same party
 status: static

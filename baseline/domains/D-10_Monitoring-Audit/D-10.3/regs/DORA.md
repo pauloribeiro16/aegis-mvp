@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-019 + SO-DORA-020 + SO-DORA-021 | Financial entities establish, maintain and review a sound and comprehensive digital operational resilience testing programme as an integral part of the ICT risk-management framework; the testing programme uses a 12-way portfolio of testing methodologies; significant financial entities carry out advanced testing of their ICT systems using threat-led penetration testing on a regular basis (Art. 24(1) + Art. 25(1) + Art. 26(1) DORA per `SR-DORA-008`). | Financial-entity testing programme with 12-way testing modalities portfolio (Art. 25(1) enumerative list) + TLPT (Art. 26(1)) for significant entities; OJ-literal cadence `on a regular basis` for TLPT; programme is integral part of ICT risk-management framework. |
+| DORA | SG-DORA-019 + SG-DORA-020 + SG-DORA-021 | Financial entities establish, maintain and review a sound and comprehensive digital operational resilience testing programme as an integral part of the ICT risk-management framework; the testing programme uses a 12-way portfolio of testing methodologies; significant financial entities carry out advanced testing of their ICT systems using threat-led penetration testing on a regular basis (Art. 24(1) + Art. 25(1) + Art. 26(1) DORA per `SR-DORA-008`). | Financial-entity testing programme with 12-way testing modalities portfolio (Art. 25(1) enumerative list) + TLPT (Art. 26(1)) for significant entities; OJ-literal cadence `on a regular basis` for TLPT; programme is integral part of ICT risk-management framework. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-10.3.4 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-10.3.DORA
+id: SG-D-10.3.DORA
 subdomain: D-10.3
 applies_to: [DORA]
-inherits_from: SO-DORA-019 + SO-DORA-020 + SO-DORA-021
+inherits_from: SG-DORA-019 + SG-DORA-020 + SG-DORA-021
 source_SR: SR-DORA-008 + SR-DORA-009 + SR-DORA-010
 activation: if DORA in applicable_regs
 phase_1A_role: 4_of_5
@@ -48,8 +48,8 @@ GV.OV-02, ID.RA-01, PR.PS-06, ID.RA-04, PR.AA-05, PR.AA-06.
   title: "Financial entity establishes, maintains and reviews a sound and comprehensive digital operational resilience testing programme with a 12-way testing modalities portfolio and TLPT for significant entities on a regular basis"
 
   derives_from:
-    hso_sub_so: SO-D-10.3.DORA
-    per_reg_so: SO-DORA-019 + SO-DORA-020 + SO-DORA-021
+    hso_sub_so: SG-D-10.3.DORA
+    per_reg_so: SG-DORA-019 + SG-DORA-020 + SG-DORA-021
     source_sr: SR-DORA-008 + SR-DORA-009 + SR-DORA-010
     hso_file: ../../HierarchicalSecurityObjectives/D-10_Monitoring-Audit/D-10.3.md
     objective_ref_section: "### D-10.3.4"

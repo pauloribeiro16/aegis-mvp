@@ -30,7 +30,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-008
@@ -38,7 +38,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
   source_clauses:
     - { clause_id: AIA-C11, article_ref: "Art. 12(4) per T5 — **T5 mapping error**: Art. 12 has only paragraphs 1, 2, 3 in the OJ; the substance is in Art. 19(1)" }
     - { clause_id: AIA-C19, article_ref: "Art. 19(1) — `the logs shall be kept for a period appropriate to the intended purpose of the high-risk AI system, of at least six months, unless provided otherwise in the applicable Union or national law`" }
-  linked_objectives: [SO-AIACT-006]
+  linked_objectives: [SG-AIACT-006]
   sub_domain: [D-10.2, D-05.2]
   nist_csf_mapping:
     - { id: PR.PS-04, title: "Log records are generated and made available for continuous monitoring and analysis" }
@@ -110,14 +110,14 @@ _No standalone SO row cites this article directly (covered via the rules below).
     into AIA-C19 or remove AIA-C11 entirely.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-019
   title: "Deployer measures aligned with provider instructions for use"
   source_clauses:
     - { clause_id: AIA-C23, article_ref: "Art. 26(1) — `Deployers of high-risk AI systems shall take appropriate technical and organisational measures to ensure they use such systems in accordance with the instructions for use`" }
-  linked_objectives: [SO-AIACT-011]
+  linked_objectives: [SG-AIACT-011]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }

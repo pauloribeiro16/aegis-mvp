@@ -34,7 +34,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-001
@@ -43,7 +43,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     - { clause_id: GDPR-CL06, article_ref: "Art. 5(1)(f)" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(b)" }
     - { clause_id: GDPR-C01, article_ref: "Art. 4(1) — personal data definition" }
-  linked_objectives: [SO-GDPR-001]
+  linked_objectives: [SG-GDPR-001]
   sub_domain: [D-01.1, D-01.4]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }
@@ -61,7 +61,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     Art. 5(1)(f) and Art. 4(1) carry S3 ambiguity. On "appropriate" (VAG), the chosen reading anchors the term to the Art. 32(1) risk-based test: the controller documents the chosen security level against the five risk factors in the Art. 32(1) preamble and refreshes this assessment when material change occurs. An alternative reading, supported by industry practice under ISO 27001 and SOC 2 frameworks, treats "appropriate technical and organisational measures" as requiring both control families in parallel, regardless of risk; this is the more conservative reading and is the de facto baseline for any organisation holding formal certification. A third, looser reading treats "appropriate" as whatever the controller self-declares, which does not survive supervisory inspection but is sometimes observed in pre-DPO controllers. The chosen reading here is the inclusive risk-anchored reading, which is consistent with EDPB Guidelines on accountability 07/2019. On "personal data" (POLY/SCOPE-Q per Art. 4(1)), the scope of "identifiable" is read in line with CJEU Breyer C-582/14 §45, which adopts a "means likely reasonably to be used" test. This reading brings pseudonymous data into scope where re-identification is operationally feasible, but leaves genuinely anonymous data outside. EDPB Guidelines 05/2020 on consent §3.4 reinforce this position. A broader reading, extending to inferred and derived data subject to algorithmic singling-out, has been gaining traction post-IAB Europe C-604/22 but is not yet definitively settled. On the "technical or organisational" disjunction (COORD), the chosen reading treats the OR as inclusive, in line with the dominant grammatical reading and consistent with EDPB Guidelines on Art. 32; controllers following the strict reading are equally compliant. Remain open: (a) whether forward-looking cryptographic-agility (quantum-readiness) is required by "state of the art" under Art. 32(1), pending EDPB clarification and ENISA post-quantum guidance; and (b) how the resilience dimension of Art. 32(1)(b) interacts with separate BCDR obligations, pending cross-regulation alignment with DORA Art. 11–12 and NIS 2 Art. 21(2)(c).
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-024
@@ -70,7 +70,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(c) — timely restore" }
     - { clause_id: GDPR-CL06, article_ref: "Art. 5(1)(f) — integrity & confidentiality (cross)" }
     - { clause_id: GDPR-CP16, article_ref: "Art. 32(2) — risk enumeration" }
-  linked_objectives: [SO-GDPR-014]
+  linked_objectives: [SG-GDPR-014]
   sub_domain: [D-04.4]
   nist_csf_mapping:
     - { id: PR.IR-04, title: "Adequate resource capacity to ensure availability maintained" }
@@ -90,7 +90,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     `in a timely manner` (Art. 32(1)(c)) carries POLY+VAG-S3. Operational reading chosen: RTO defined per processing activity, as an objective measure documented in the controller's business continuity policy. An alternative reading treating timely as as-soon-as-practicable for the specific incident is operationally similar but framing-different; the chosen reading ties timeliness to a documented and testable metric. Recital 49 (non-binding) attempts to fix `timely manner` as "as soon as possible", which is directionally useful but does not bind the controller. EDPB Guidelines 7/2019 on certification treat tested backups and recovery plans as evidence of Art. 32(1)(c) compliance. Remain open: (a) whether the Art. 32(1)(c) `timely manner` threshold differs across processing contexts (e.g. real-time processing vs batch processing), pending EDPB clarification; and (b) how the recovery obligation interacts with separate BCDR obligations under DORA Art. 11–12 and NIS 2 Art. 21(2)(c), pending cross-regulation alignment.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-057
@@ -99,7 +99,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     - { clause_id: GDPR-TR08, article_ref: "Art. 49(1)(a) — explicit consent" }
     - { clause_id: GDPR-TR09, article_ref: "Art. 49(1)(d) — important public interest" }
     - { clause_id: GDPR-TR10, article_ref: "Art. 49(1) second subparagraph — catch-all" }
-  linked_objectives: [SO-GDPR-033]
+  linked_objectives: [SG-GDPR-033]
   sub_domain: [D-06.3, D-09.1]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal/regulatory/contractual requirements understood and managed" }

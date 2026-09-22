@@ -26,14 +26,14 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-025 | Personnel authorised to process personal data are informed and trained on GDPR obligations and on the controller's or processor's data-protection policies applicable to their role. | `GDPR-CP28` (Art. 39(1)(b) — DPO tasks on awareness/training); `GDPR-CP28` (Art. 39(1)(a)); `GDPR-CP12` (Art. 30 — awareness of staff); `GDPR-TR06` (Art. 47(2)(n) — BCR training) | D-08.1, D-08.2 |
-| SO-GDPR-025 | D-08.1, D-08.2 | Art. 39(1)(a)/(b), Art. 30(4), Art. 47(2)(n) | Staff informed and trained on data-protection obligations |
-| SO-GDPR-034 | Binding corporate rules for intra-group transfers (Art. 47) are approved by the competent supervisory authority via the consistency mechanism, confer enforceable rights on data subjects, and contain the 14 Art. 47(2) content items — including acceptance of liability by the EU controller/processor for breaches by non-EU members (subject to the `proves not responsible` rebuttal standard). | `GDPR-C08` (Art. 4(20) — BCR definition); `GDPR-TR06` (Art. 47(2)(f) and full 14-item list) | D-09.1, D-06.3 |
-| SO-GDPR-034 | D-09.1, D-06.3 | Art. 4(20), Art. 47(1)/(2) | Binding corporate rules with Art. 47(2) content |
+| SG-GDPR-025 | Personnel authorised to process personal data are informed and trained on GDPR obligations and on the controller's or processor's data-protection policies applicable to their role. | `GDPR-CP28` (Art. 39(1)(b) — DPO tasks on awareness/training); `GDPR-CP28` (Art. 39(1)(a)); `GDPR-CP12` (Art. 30 — awareness of staff); `GDPR-TR06` (Art. 47(2)(n) — BCR training) | D-08.1, D-08.2 |
+| SG-GDPR-025 | D-08.1, D-08.2 | Art. 39(1)(a)/(b), Art. 30(4), Art. 47(2)(n) | Staff informed and trained on data-protection obligations |
+| SG-GDPR-034 | Binding corporate rules for intra-group transfers (Art. 47) are approved by the competent supervisory authority via the consistency mechanism, confer enforceable rights on data subjects, and contain the 14 Art. 47(2) content items — including acceptance of liability by the EU controller/processor for breaches by non-EU members (subject to the `proves not responsible` rebuttal standard). | `GDPR-C08` (Art. 4(20) — BCR definition); `GDPR-TR06` (Art. 47(2)(f) and full 14-item list) | D-09.1, D-06.3 |
+| SG-GDPR-034 | D-09.1, D-06.3 | Art. 4(20), Art. 47(1)/(2) | Binding corporate rules with Art. 47(2) content |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-056
@@ -41,7 +41,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-TR04, article_ref: "Art. 46(1)" }
     - { clause_id: GDPR-TR05, article_ref: "Art. 46(2)(a)–(f) — six mechanism types" }
-  linked_objectives: [SO-GDPR-033]
+  linked_objectives: [SG-GDPR-033]
   sub_domain: [D-06.3]
   nist_csf_mapping:
     - { id: GV.SC-03, title: "Contracts used to implement SCRM" }
@@ -79,7 +79,7 @@ status: DRAFT
     Appropriate safeguards and effective legal remedies carry VAG-S3 because the OJ text does not fix quantitative thresholds and the substantive adequacy of any safeguard is contingent on the destination regime. Reading chosen: the safeguards must produce essential equivalence with EU protection, per Schrems II (C-311/18 §96), operationalised through any of the six Art. 46(2) mechanisms and supported by supplementary measures where the destination regime is deficient in a specific respect (EDPB Recommendations 01/2020). The selection among the six mechanisms is OR (COORD-S3): the controller chooses one mechanism per transfer, not a combination, and the choice must be documented and reassessed when circumstances change. An alternative reading would allow combining several Art. 46(2) mechanisms to achieve a layered defence; this reading is inconsistent with the textual structure of Art. 46(2), which presents the six mechanisms as alternatives, and is rejected by EDPB Recommendations 01/2020. A second alternative reading confines the supplementary-measures framework to destinations where the public-authority access regime is materially deficient, allowing the controller to skip supplementary measures where the destination regime is broadly adequate; this narrower reading is consistent with Schrems II §134 but requires the controller to make a documented destination-risk assessment. Remain open: (a) whether BCRs approved before the GDPR entry into force remain valid without re-approval under the GDPR consistency mechanism, given the absence of explicit grandfathering in Art. 46(2)(b); (b) whether Art. 46(2)(c) Commission SCCs adopted before Schrems II (the 2001/915/EC and 2004/915/EC decisions) remain valid or require supplementary measures to cure Schrems II deficiencies.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-058
@@ -87,7 +87,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-C08, article_ref: "Art. 4(20) — BCR definition" }
     - { clause_id: GDPR-TR06, article_ref: "Art. 47(2)(a)–(n) — 14 content items" }
-  linked_objectives: [SO-GDPR-034]
+  linked_objectives: [SG-GDPR-034]
   sub_domain: [D-06.3, D-09.1]
   nist_csf_mapping:
     - { id: GV.SC-01, title: "Cybersecurity supply chain risk management program/strategy established" }

@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| NIS2 | SO-NIS2-017 | Security integrated into acquisition, development and maintenance of network and information systems, including vulnerability handling and disclosure, across the system lifecycle (Art. 21(2)(e)). | Entity-level lifecycle discipline; three coordinated phases (acquisition, development, maintenance); `appropriate and proportionate` chapeau + state-of-the-art floor + cost factor (Art. 21(1)); vulnerability handling+disclosure leg is one of three coordinated legs. |
+| NIS2 | SG-NIS2-017 | Security integrated into acquisition, development and maintenance of network and information systems, including vulnerability handling and disclosure, across the system lifecycle (Art. 21(2)(e)). | Entity-level lifecycle discipline; three coordinated phases (acquisition, development, maintenance); `appropriate and proportionate` chapeau + state-of-the-art floor + cost factor (Art. 21(1)); vulnerability handling+disclosure leg is one of three coordinated legs. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-07.1.2 — Sub-SO for NIS 2
 
 ```yaml
-id: SO-D-07.1.NIS2
+id: SG-D-07.1.NIS2
 subdomain: D-07.1
 applies_to: [NIS2]
-inherits_from: SO-NIS2-017
+inherits_from: SG-NIS2-017
 source_SR: SR-NIS2-026
 activation: if NIS2 in applicable_regs
 phase_1A_role: 1_of_N
@@ -52,8 +52,8 @@ PR.PS-06, GV.SC-02.
   title: "Security integrated into the acquisition, development and maintenance of network and information systems across the 3-phase coordinated lifecycle with vulnerability handling and disclosure"
 
   derives_from:
-    hso_sub_so: SO-D-07.1.NIS2
-    per_reg_so: SO-NIS2-017
+    hso_sub_so: SG-D-07.1.NIS2
+    per_reg_so: SG-NIS2-017
     source_sr: SR-NIS2-026, SR-NIS2-027, SR-NIS2-028
     hso_file: ../../HierarchicalSecurityObjectives/D-07_Secure-Development/D-07.1.md
     objective_ref_section: "### D-07.1.2"

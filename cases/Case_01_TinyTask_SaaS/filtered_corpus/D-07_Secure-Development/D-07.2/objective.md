@@ -7,7 +7,7 @@
 
 #### D-07.2.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-07.2.HL
+id: SG-D-07.2.HL
 subdomain: D-07.2
 applies_to: auto  # activates when ≥2 applicable regs have ≥1 pair with Y/Conditional Y scope overlap on the same party AND ≥1 sub-SO activates; for D-07.2 only 1 of 3 pairs (CRA↔AI_Act) has Conditional Y scope overlap on the AI-enabled CRA product integrated stack; the other 2 pairs (CRA↔DORA + DORA↔AI_Act) are N in baseline — so the high-level SO engages ONLY on the Conditional Y integrated stack (AI-enabled CRA product deployed by a DORA financial entity or similar integrated stack). For a 5-FTE SaaS startup with CRA applicability only, the high-level SO is NOT activated.
 status: static

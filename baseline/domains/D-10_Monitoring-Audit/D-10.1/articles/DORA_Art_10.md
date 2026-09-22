@@ -26,19 +26,19 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-DORA-007 | Anomalous activities — including ICT network performance issues and ICT-related incidents — are promptly detected through detection mechanisms that enable multiple layers of control, define alert thresholds and criteria, trigger and initiate ICT-related incident response processes, and identify potential material single points of failure. | `DORA-C20` (Art. 10(1) prompt detection + SPOF identification + `anomalous` POLY); `DORA-C21` (Art. 10(2) multiple layers + alert thresholds + auto-alert to relevant staff) | D-04.1, D-10.1 |
-| SO-DORA-007 | D-04.1, D-10.1 | Art. 10(1) + Art. 10(2) | Anomalous activity detection with multi-layered controls |
+| SG-DORA-007 | Anomalous activities — including ICT network performance issues and ICT-related incidents — are promptly detected through detection mechanisms that enable multiple layers of control, define alert thresholds and criteria, trigger and initiate ICT-related incident response processes, and identify potential material single points of failure. | `DORA-C20` (Art. 10(1) prompt detection + SPOF identification + `anomalous` POLY); `DORA-C21` (Art. 10(2) multiple layers + alert thresholds + auto-alert to relevant staff) | D-04.1, D-10.1 |
+| SG-DORA-007 | D-04.1, D-10.1 | Art. 10(1) + Art. 10(2) | Anomalous activity detection with multi-layered controls |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-011
   title: "Multi-class anomalous activity detection with SPOF identification"
   source_clauses:
     - { clause_id: DORA-C20, article_ref: "Art. 10(1) — `mechanisms to promptly detect anomalous activities … including ICT network performance issues and ICT-related incidents, and to identify potential material single points of failure`" }
-  linked_objectives: [SO-DORA-007]
+  linked_objectives: [SG-DORA-007]
   sub_domain: [D-04.1, D-10.1]
   nist_csf_mapping:
     - { id: DE.CM-01, title: "Networks and network services are monitored to find potentially adverse events" }
@@ -105,14 +105,14 @@ status: DRAFT
     this reading is rejected because the qualifier is in OJ text.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-012
   title: "Multi-layer detection with threshold-driven response triggering"
   source_clauses:
     - { clause_id: DORA-C21, article_ref: "Art. 10(2) — `detection mechanisms … shall enable multiple layers of control, define alert thresholds and criteria to trigger and initiate ICT-related incident response processes, including automatic alert mechanisms for relevant staff in charge of ICT-related incident response`" }
-  linked_objectives: [SO-DORA-007]
+  linked_objectives: [SG-DORA-007]
   sub_domain: [D-04.1, D-10.1]
   nist_csf_mapping:
     - { id: DE.CM-01, title: "Networks and network services are monitored to find potentially adverse events" }

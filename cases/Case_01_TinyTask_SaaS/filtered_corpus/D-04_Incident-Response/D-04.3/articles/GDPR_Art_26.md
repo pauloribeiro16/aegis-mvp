@@ -34,12 +34,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-036 | Where two or more controllers jointly determine purposes and means of processing, they determine their respective responsibilities for GDPR compliance in a transparent manner by means of an arrangement reflecting the roles of the joint controllers, made available to data subjects; data subjects may exercise their rights against each controller irrespective of the arrangement. | `GDPR-CP04` (Art. 26(1)); `GDPR-CP05` (Art. 26(2)); `GDPR-C03` (Art. 4(7) — controller/joint controllers) | D-09.2, D-06.3 |
-| SO-GDPR-036 | D-09.2, D-06.3 | Art. 26(1)/(2), Art. 4(7) | Joint-controller arrangement transparency |
+| SG-GDPR-036 | Where two or more controllers jointly determine purposes and means of processing, they determine their respective responsibilities for GDPR compliance in a transparent manner by means of an arrangement reflecting the roles of the joint controllers, made available to data subjects; data subjects may exercise their rights against each controller irrespective of the arrangement. | `GDPR-CP04` (Art. 26(1)); `GDPR-CP05` (Art. 26(2)); `GDPR-C03` (Art. 4(7) — controller/joint controllers) | D-09.2, D-06.3 |
+| SG-GDPR-036 | D-09.2, D-06.3 | Art. 26(1)/(2), Art. 4(7) | Joint-controller arrangement transparency |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-010
@@ -47,7 +47,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-RT04, article_ref: "Art. 12(6)" }
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation (cross)" }
-  linked_objectives: [SO-GDPR-005]
+  linked_objectives: [SG-GDPR-005]
   sub_domain: [D-03.1, D-05.1]
   nist_csf_mapping:
     - { id: PR.AA-02, title: "Identities proofed and bound to credentials" }
@@ -66,7 +66,7 @@ status: DRAFT
     `necessary` inherits VAG-S3 ambiguity from Art. 5(1)(c). Reading chosen: proportionate to purpose, demonstrable ex ante via Art. 5(2) accountability and Art. 35 DPIA necessity assessment. The rule preserves the proportionate-necessary interpretation. An alternative reading treats necessity as satisfied when serving the designed purpose, with necessity presumed by default; this is rejected because it inverts the accountability burden. A third reading requiring the least-intrusive among equivalent means under Charter Art. 52(1) is the most restrictive position and is the one adopted by some national DPAs (notably the CNIL) for sensitive-data contexts. The Art. 5(1)(c) necessary threshold varies with data sensitivity and breach impact; for Art. 9 special-category data, the controller may need stronger verification than for ordinary personal data. Remain open: whether automated identity-verification services (e.g. Jumio, Onfido) are themselves in scope as joint controllers under Art. 26, pending CJEU and EDPB guidance on AI-driven verification.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-022
@@ -76,7 +76,7 @@ status: DRAFT
     - { clause_id: GDPR-RT12, article_ref: "Art. 16 — rectification" }
     - { clause_id: GDPR-RT11, article_ref: "Art. 15(4) — third-party-rights limit" }
     - { clause_id: GDPR-CL26, article_ref: "Art. 11(2) — identification-exemption (cross)" }
-  linked_objectives: [SO-GDPR-012]
+  linked_objectives: [SG-GDPR-012]
   sub_domain: [D-04.3, D-05.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents reported internally to appropriate stakeholders" }
@@ -95,7 +95,7 @@ status: DRAFT
     `impossible` OR `disproportionate effort` (Art. 19) carries COORD-S3. Reading chosen: either escape clause suffices, as a logical inclusive OR. An alternative reading requiring both to hold is rejected: the stricter reading would impose undue compliance burden without policy justification. The OJ text uses `or`, the English-language UN-style drafting convention for an inclusive disjunction; EDPB Guidelines treat this consistently. On the Art. 15(4) cap (third-party-rights limit), the disclosure to the data subject about recipients is bounded to recipients known to the controller; the controller is not required to investigate recipients beyond its own records. Remain open: (a) whether the `recipient` definition includes processors (under Art. 28) and joint controllers (under Art. 26) or only independent third-party controllers, pending EDPB Guidelines 5/2019 revision; and (b) how the recipient-list request interacts with confidentiality obligations (e.g. trade-secret-protected recipients), pending alignment with Charter Art. 7 and CJEU jurisprudence on commercial confidentiality.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-060
@@ -103,7 +103,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP04, article_ref: "Art. 26(1) — joint-controller determination" }
     - { clause_id: GDPR-C03, article_ref: "Art. 4(7) — controller definition" }
-  linked_objectives: [SO-GDPR-036]
+  linked_objectives: [SG-GDPR-036]
   sub_domain: [D-09.2, D-06.3]
   nist_csf_mapping:
     - { id: GV.RR-02, title: "Roles/responsibilities/accountabilities established and communicated" }
@@ -141,7 +141,7 @@ status: DRAFT
     Jointly determine in Art. 4(7) and Art. 26(1) carries POLY-S3 because the OJ text does not fix the threshold at which influence on purposes or means becomes joint determination. Reading chosen: the CJEU IAB Europe ruling (C-604/22), under which a party with determinative influence on purposes and means qualifies as a joint controller even where that party does not itself process the data, on the basis that the TCF (Transparency and Consent Framework) gave IAB Europe decisive influence over the consent collection mechanism. An alternative reading confines joint controllership to parties that share actual decision-making on processing operations, excluding parties whose influence is limited to the consent-mechanism layer; this narrower reading is rejected post-IAB Europe. A second alternative reading treats joint controllership as requiring converging rather than identical purposes, so that parties with diverging but complementary purposes remain separate controllers; this reading is consistent with the Wirtschaftsakademie ruling (C-210/16) but creates a fact-intensive boundary that is hard to operationalise. Remain open: (a) whether a processor that designs processing operations on behalf of a controller can become a joint controller by virtue of the design influence, or whether the processor-controller distinction is preserved; (b) whether joint-controller status attaches per processing operation or per overall data flow, on the question of whether one joint controller for consent collection implies joint-controller status for downstream processing.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-061
@@ -149,7 +149,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP05, article_ref: "Art. 26(2) — arrangement essentials" }
     - { clause_id: GDPR-CP04, article_ref: "Art. 26(1) (cross)" }
-  linked_objectives: [SO-GDPR-036]
+  linked_objectives: [SG-GDPR-036]
   sub_domain: [D-09.2]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy established, communicated, enforced" }

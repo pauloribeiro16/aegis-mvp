@@ -218,7 +218,7 @@
   "sub_objectives_by_regulation": {
     "AI_Act": [
       {
-        "id": "SO-D-07.1.AIACT",
+        "id": "SG-D-07.1.AIACT",
         "csf_anchors": [
           "PR.PS-06",
           "PR.IR-03",
@@ -232,7 +232,7 @@
         ]
       },
       {
-        "id": "SO-D-07.2.AIACT",
+        "id": "SG-D-07.2.AIACT",
         "csf_anchors": [
           "ID.RA-04",
           "PR.PS-06",
@@ -248,28 +248,28 @@
     ],
     "CRA": [
       {
-        "id": "SO-D-07.1.CRA",
+        "id": "SG-D-07.1.CRA",
         "csf_anchors": [
           "PR.PS-06",
           "GV.PO-02"
         ]
       },
       {
-        "id": "SO-D-07.2.CRA",
+        "id": "SG-D-07.2.CRA",
         "csf_anchors": [
           "PR.PS-01",
           "PR.PS-02"
         ]
       },
       {
-        "id": "SO-D-07.3.CRA",
+        "id": "SG-D-07.3.CRA",
         "csf_anchors": [
           "ID.AM-02",
           "GV.SC-03"
         ]
       },
       {
-        "id": "SO-D-07.4.CRA",
+        "id": "SG-D-07.4.CRA",
         "csf_anchors": [
           "GV.OV-01",
           "GV.PO-02",
@@ -282,14 +282,14 @@
     ],
     "DORA": [
       {
-        "id": "SO-D-07.1.DORA",
+        "id": "SG-D-07.1.DORA",
         "csf_anchors": [
           "ID.RA-01",
           "ID.RA-03"
         ]
       },
       {
-        "id": "SO-D-07.2.DORA",
+        "id": "SG-D-07.2.DORA",
         "csf_anchors": [
           "PR.PS-01",
           "PR.PS-02",
@@ -297,7 +297,7 @@
         ]
       },
       {
-        "id": "SO-D-07.4.DORA",
+        "id": "SG-D-07.4.DORA",
         "csf_anchors": [
           "PR.PS-01",
           "PR.PS-02",
@@ -307,7 +307,7 @@
     ],
     "GDPR": [
       {
-        "id": "SO-D-07.1.GDPR",
+        "id": "SG-D-07.1.GDPR",
         "csf_anchors": [
           "PR.PS-06",
           "ID.AM-08"
@@ -320,14 +320,14 @@
     ],
     "NIS2": [
       {
-        "id": "SO-D-07.1.NIS2",
+        "id": "SG-D-07.1.NIS2",
         "csf_anchors": [
           "PR.PS-06",
           "GV.SC-02"
         ]
       },
       {
-        "id": "SO-D-07.3.NIS2",
+        "id": "SG-D-07.3.NIS2",
         "csf_anchors": [
           "PR.PS-02",
           "ID.RA-01"

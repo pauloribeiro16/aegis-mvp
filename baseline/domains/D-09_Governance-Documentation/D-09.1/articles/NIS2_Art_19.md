@@ -28,14 +28,14 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-045
   title: "Good-faith incident notification shielded from increased liability exposure"
   source_clauses:
     - { clause_id: NIS2-CL29, article_ref: "Art. 23(1) ¶1 — mere act of notification shall not subject the notifying entity to increased liability" }
-  linked_objectives: [SO-NIS2-006]
+  linked_objectives: [SG-NIS2-006]
   sub_domain: [D-04.3, D-09.1]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed" }

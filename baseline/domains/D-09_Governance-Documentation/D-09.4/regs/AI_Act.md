@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| AI_Act | SO-AIACT-009 (partial, primary) + SO-AIACT-010 (cross) + SO-AIACT-008 (logs) | Technical documentation (Annex IV via Art. 11/12) per Art. 19(1) `Providers of high-risk AI systems shall keep the logs referred to in Article 12(1) … to the extent that such logs are under their control` + QMS documentation of 13 enumerated aspects (Art. 17(1) `systematic and orderly manner in the form of written policies, procedures and instructions`). | AI-system-specific technical documentation mandate (Annex IV) + QMS documentation + provider logs; partial coverage; GDPR Art. 30 is the dedicated authority for RoPA. |
+| AI_Act | SG-AIACT-009 (partial, primary) + SG-AIACT-010 (cross) + SG-AIACT-008 (logs) | Technical documentation (Annex IV via Art. 11/12) per Art. 19(1) `Providers of high-risk AI systems shall keep the logs referred to in Article 12(1) … to the extent that such logs are under their control` + QMS documentation of 13 enumerated aspects (Art. 17(1) `systematic and orderly manner in the form of written policies, procedures and instructions`). | AI-system-specific technical documentation mandate (Annex IV) + QMS documentation + provider logs; partial coverage; GDPR Art. 30 is the dedicated authority for RoPA. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-09.4.5 — Sub-SO for AI Act
 
 ```yaml
-id: SO-D-09.4.AI_Act
+id: SG-D-09.4.AI_Act
 subdomain: D-09.4
 applies_to: [AI_Act]
-inherits_from: SO-AIACT-009 + SO-AIACT-010 + SO-AIACT-008 (logs)
+inherits_from: SG-AIACT-009 + SG-AIACT-010 + SG-AIACT-008 (logs)
 source_SR: SR-AIACT-008 + SR-AIACT-009 + SR-AIACT-010 + SR-AIACT-017
 activation: if AI_Act in applicable_regs
 phase_1A_role: 5_of_5
@@ -50,7 +50,7 @@ MEASURE-2.4, MEASURE-4.2, GOVERN-1.4, GOVERN-2.1, MAP-1.1, MEASURE-2.8, MEASURE-
 
   derives_from:
     hso_sub_so: SO-9.4.AI_Act
-    per_reg_so: SO-AIACT-009 + SO-AIACT-010 + SO-AIACT-008
+    per_reg_so: SG-AIACT-009 + SG-AIACT-010 + SG-AIACT-008
     source_sr: SR-AIACT-008 + SR-AIACT-009 + SR-AIACT-010 + SR-AIACT-017
     hso_file: ../../HierarchicalSecurityObjectives/D-09_Governance-Documentation/9.4.md
     objective_ref_section: "### 9.4.5"

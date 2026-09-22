@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-039; SO-CRA-040 | Importers perform pre-market checks and escalation; distributors act with due care, verify CE/documentation/manufacturer/importer compliance, and escalate non-conformity or vulnerabilities | Product market-access layer; importer/distributor obligations to manufacturer and market surveillance authority (MSA), imposed by regulation rather than negotiated as a DPA |
+| CRA | SG-CRA-039; SG-CRA-040 | Importers perform pre-market checks and escalation; distributors act with due care, verify CE/documentation/manufacturer/importer compliance, and escalate non-conformity or vulnerabilities | Product market-access layer; importer/distributor obligations to manufacturer and market surveillance authority (MSA), imposed by regulation rather than negotiated as a DPA |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-06.3.3 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-06.3.CRA
+id: SG-D-06.3.CRA
 subdomain: D-06.3
 applies_to: [CRA]
-inherits_from: [SO-CRA-039, SO-CRA-040]
+inherits_from: [SG-CRA-039, SG-CRA-040]
 source_SR: [SR-CRA-051, SR-CRA-054, SR-CRA-055, SR-CRA-057, SR-CRA-058]
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -46,8 +46,8 @@ phase_1A_role: 1_of_N
   title: "Importer pre-market verification (Art. 19) + distributor due-care + non-conformity escalation (Art. 20) + component-vulnerability reporting (Art. 13(6)) — regulatory economic-operator duties, NOT DPA-style contracts"
 
   derives_from:
-    hso_sub_so: SO-D-06.3.CRA
-    per_reg_so: SO-CRA-039, SO-CRA-040
+    hso_sub_so: SG-D-06.3.CRA
+    per_reg_so: SG-CRA-039, SG-CRA-040
     source_sr: SR-CRA-051, SR-CRA-054, SR-CRA-055, SR-CRA-057, SR-CRA-058
     hso_file: ../../HierarchicalSecurityObjectives/D-06_Supply-Chain/D-06.3.md
     objective_ref_section: "### D-06.3.3"

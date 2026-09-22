@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-038 | Manufacturer draws up and maintains an SBOM covering the components and dependencies contained in the product with digital elements in a commonly used and machine-readable format that includes, at minimum, the top-level dependencies; on a reasoned request from a market surveillance authority, the SBOM is provided where necessary for the authority to check compliance with the Annex I cybersecurity requirements | Product with digital elements; manufacturer SBOM; Art. 3(39) SBOM definition + Annex I Part II (1) SBOM + Art. 13(24) Commission implementing acts on SBOM format + Annex II §9 SBOM optional user access + Annex VII §2(b) SBOM in technical documentation + Annex VII §8 SBOM on MSA reasoned request; ID.AM-02 + GV.SC-02 + GV.SC-03 |
+| CRA | SG-CRA-038 | Manufacturer draws up and maintains an SBOM covering the components and dependencies contained in the product with digital elements in a commonly used and machine-readable format that includes, at minimum, the top-level dependencies; on a reasoned request from a market surveillance authority, the SBOM is provided where necessary for the authority to check compliance with the Annex I cybersecurity requirements | Product with digital elements; manufacturer SBOM; Art. 3(39) SBOM definition + Annex I Part II (1) SBOM + Art. 13(24) Commission implementing acts on SBOM format + Annex II §9 SBOM optional user access + Annex VII §2(b) SBOM in technical documentation + Annex VII §8 SBOM on MSA reasoned request; ID.AM-02 + GV.SC-02 + GV.SC-03 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-06.2.1 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-06.2.CRA
+id: SG-D-06.2.CRA
 subdomain: D-06.2
 applies_to: [CRA]
-inherits_from: SO-CRA-038
+inherits_from: SG-CRA-038
 source_SR: SR-CRA-008, SR-CRA-052, SR-CRA-053
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -87,8 +87,8 @@ the support period and through the 10-year tail.)*
   title: "Three-anchored SBOM architecture: machine-readable format covering at least top-level dependencies authored at release + retained in technical documentation under Annex VII §2(b) + disclosed to MSAs on reasoned request under Annex VII §8 + optional user access under Annex II §9"
 
   derives_from:
-    hso_sub_so: SO-D-06.2.CRA
-    per_reg_so: SO-CRA-038
+    hso_sub_so: SG-D-06.2.CRA
+    per_reg_so: SG-CRA-038
     source_sr: SR-CRA-008, SR-CRA-052, SR-CRA-053
     hso_file: ../../HierarchicalSecurityObjectives/D-06_Supply-Chain/D-06.2.md
     objective_ref_section: "### D-06.2.1"

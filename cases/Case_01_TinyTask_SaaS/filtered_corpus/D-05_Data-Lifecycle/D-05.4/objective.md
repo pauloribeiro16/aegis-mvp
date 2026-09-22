@@ -7,7 +7,7 @@
 
 #### D-05.4.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-05.4.HL
+id: SG-D-05.4.HL
 subdomain: D-05.4
 applies_to: auto  # single-regulator sub-domain — activates when GDPR in applicable_regs AND the sub-SO activates; the high-level SO is redundant in this single-regulator case but is still emitted for traceability per the activation model in ../../index.md lines 32-42
 status: static

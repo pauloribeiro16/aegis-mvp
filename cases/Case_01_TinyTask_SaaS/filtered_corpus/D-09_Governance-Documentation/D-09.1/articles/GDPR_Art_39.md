@@ -30,15 +30,15 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-025 | Personnel authorised to process personal data are informed and trained on GDPR obligations and on the controller's or processor's data-protection policies applicable to their role. | `GDPR-CP28` (Art. 39(1)(b) — DPO tasks on awareness/training); `GDPR-CP28` (Art. 39(1)(a)); `GDPR-CP12` (Art. 30 — awareness of staff); `GDPR-TR06` (Art. 47(2)(n) — BCR training) | D-08.1, D-08.2 |
-| SO-GDPR-025 (cross-ref) | The data-protection officer monitors the assignment of responsibilities, awareness-raising and training of staff involved in processing operations. | `GDPR-CP28` (Art. 39(1)(b)) | D-08.2 |
-| SO-GDPR-025 | D-08.1, D-08.2 | Art. 39(1)(a)/(b), Art. 30(4), Art. 47(2)(n) | Staff informed and trained on data-protection obligations |
-| SO-GDPR-037 | A data protection officer is designated where any of the three Art. 37(1) triggers apply (public authority; core activities of regular/systematic monitoring on large scale; core activities of large-scale special-category or criminal-conviction processing); the DPO performs the Art. 39(1) tasks with adequate independence, resources, and expert knowledge. | `GDPR-CP25` (Art. 37(1)(a)/(b)/(c)); `GDPR-CP26` (Art. 38); `GDPR-CP28` (Art. 39); `GDPR-CP27` (Art. 38(6) — conflict of interests) | D-09.1, D-09.2 |
-| SO-GDPR-037 | D-09.1, D-09.2 | Art. 37, Art. 38, Art. 39 | DPO designation and tasks |
+| SG-GDPR-025 | Personnel authorised to process personal data are informed and trained on GDPR obligations and on the controller's or processor's data-protection policies applicable to their role. | `GDPR-CP28` (Art. 39(1)(b) — DPO tasks on awareness/training); `GDPR-CP28` (Art. 39(1)(a)); `GDPR-CP12` (Art. 30 — awareness of staff); `GDPR-TR06` (Art. 47(2)(n) — BCR training) | D-08.1, D-08.2 |
+| SG-GDPR-025 (cross-ref) | The data-protection officer monitors the assignment of responsibilities, awareness-raising and training of staff involved in processing operations. | `GDPR-CP28` (Art. 39(1)(b)) | D-08.2 |
+| SG-GDPR-025 | D-08.1, D-08.2 | Art. 39(1)(a)/(b), Art. 30(4), Art. 47(2)(n) | Staff informed and trained on data-protection obligations |
+| SG-GDPR-037 | A data protection officer is designated where any of the three Art. 37(1) triggers apply (public authority; core activities of regular/systematic monitoring on large scale; core activities of large-scale special-category or criminal-conviction processing); the DPO performs the Art. 39(1) tasks with adequate independence, resources, and expert knowledge. | `GDPR-CP25` (Art. 37(1)(a)/(b)/(c)); `GDPR-CP26` (Art. 38); `GDPR-CP28` (Art. 39); `GDPR-CP27` (Art. 38(6) — conflict of interests) | D-09.1, D-09.2 |
+| SG-GDPR-037 | D-09.1, D-09.2 | Art. 37, Art. 38, Art. 39 | DPO designation and tasks |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-042
@@ -46,7 +46,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP28, article_ref: "Art. 39(1)(b) — awareness and training" }
     - { clause_id: GDPR-CP28, article_ref: "Art. 39(1)(a) — inform and advise" }
-  linked_objectives: [SO-GDPR-025]
+  linked_objectives: [SG-GDPR-025]
   sub_domain: [D-08.1, D-08.2]
   nist_csf_mapping:
     - { id: PR.AT-01, title: "All users are informed and trained on cybersecurity topics" }
@@ -83,7 +83,7 @@ status: DRAFT
     management in the awareness scope, or only operational personnel.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-063
@@ -91,7 +91,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP26, article_ref: "Art. 38 — DPO position" }
     - { clause_id: GDPR-CP27, article_ref: "Art. 38(6) — conflict of interests" }
-  linked_objectives: [SO-GDPR-037]
+  linked_objectives: [SG-GDPR-037]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.RR-01, title: "Organizational leadership responsible and accountable for cybersecurity risk" }
@@ -128,7 +128,7 @@ status: DRAFT
     Properly and in a timely manner, resources necessary, and conflict of interests carry VAG-S2. Reading chosen: EDPB Guidelines 3/2018 §6, under which the DPO cannot also hold roles with direct data-processing decision authority (such as head of marketing, head of IT operations, or chief information security officer where that role includes decisions about processing purposes or means), because such roles produce a conflict of interests incompatible with Art. 38(6). An alternative reading treats conflict of interests as confined to personal financial conflicts, excluding organisational conflicts; this reading is rejected by EDPB §6 and is not consistent with the supervisory practice. Remain open: whether a DPO may simultaneously serve as the data-protection officer for multiple affiliated legal entities within a group, on the condition that all entities are bound by group-level policies and the DPO's operational reporting line is unambiguous.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-064
@@ -136,7 +136,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP28, article_ref: "Art. 39(1)(a)–(e) — DPO tasks" }
     - { clause_id: GDPR-CP28, article_ref: "Art. 39(2) — risk-associated processing" }
-  linked_objectives: [SO-GDPR-037, SO-GDPR-025]
+  linked_objectives: [SG-GDPR-037, SG-GDPR-025]
   sub_domain: [D-09.1, D-09.2, D-08.1]
   nist_csf_mapping:
     - { id: GV.OV-03, title: "Organizational cybersecurity performance evaluated and reviewed" }

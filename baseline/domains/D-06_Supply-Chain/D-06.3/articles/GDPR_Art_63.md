@@ -28,7 +28,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-058
@@ -36,7 +36,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
   source_clauses:
     - { clause_id: GDPR-C08, article_ref: "Art. 4(20) — BCR definition" }
     - { clause_id: GDPR-TR06, article_ref: "Art. 47(2)(a)–(n) — 14 content items" }
-  linked_objectives: [SO-GDPR-034]
+  linked_objectives: [SG-GDPR-034]
   sub_domain: [D-06.3, D-09.1]
   nist_csf_mapping:
     - { id: GV.SC-01, title: "Cybersecurity supply chain risk management program/strategy established" }

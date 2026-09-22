@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-001 (cross-ref) / SO-CRA-003 | Confidentiality of data in transit via state-of-the-art encryption + attack-surface limitation | Manufacturer; Annex I Part I (2)(e) + (2)(j); product-level; state-of-the-art baseline + attack-surface-limitation |
+| CRA | SG-CRA-001 (cross-ref) / SG-CRA-003 | Confidentiality of data in transit via state-of-the-art encryption + attack-surface limitation | Manufacturer; Annex I Part I (2)(e) + (2)(j); product-level; state-of-the-art baseline + attack-surface-limitation |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-01.2.2 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-01.2.CRA
+id: SG-D-01.2.CRA
 subdomain: D-01.2
 applies_to: [CRA]
-inherits_from: SO-CRA-003
+inherits_from: SG-CRA-003
 source_SR: SR-CRA-003
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -56,8 +56,8 @@ PR.DS-02, PR.IR-01.
   title: "Product-transmitted data is encrypted with state-of-the-art mechanisms and exposed interfaces are minimised"
 
   derives_from:
-    hso_sub_so: SO-D-01.2.CRA
-    per_reg_so: SO-CRA-003
+    hso_sub_so: SG-D-01.2.CRA
+    per_reg_so: SG-CRA-003
     source_sr: SR-CRA-003
     hso_file: ../../HierarchicalSecurityObjectives/D-01_Data-Protection/D-01.2.md
     objective_ref_section: "### D-01.2.2"

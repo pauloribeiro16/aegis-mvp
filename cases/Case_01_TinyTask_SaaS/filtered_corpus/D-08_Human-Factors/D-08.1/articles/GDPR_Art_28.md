@@ -38,20 +38,20 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-006 | Persons authorised to process personal data act only on documented instructions from the controller (or processor) and are bound by confidentiality or an appropriate statutory obligation of confidentiality. | `GDPR-CP11` (Art. 29); `GDPR-CP09` (Art. 28(3)(a)/(b)); `GDPR-CP15` (Art. 32(4)) | D-03.3 |
-| SO-GDPR-006 | D-03.3 | Art. 28(3)(a)/(b), Art. 29, Art. 32(4) | Authorised persons act on instructions + confidentiality |
-| SO-GDPR-018 | Personal data are erased without undue delay on the data subject's request where one of the six Art. 17(1) grounds applies; erasure is operationally defined as making the data inaccessible to the controller for normal processing paths. | `GDPR-C06` (Art. 4(12) breach-related — operational deletion overlap); `GDPR-CL03` (Art. 5(1)(c) — data-minimisation, downstream of erasure); `GDPR-CL05` (Art. 5(1)(e) — storage limitation), `GDPR-CP10` (Art. 28(3)(g) — deletion polysemy) | D-05.3 |
-| SO-GDPR-019 | On end of the provision of processor services, the processor deletes or returns all personal data to the controller (at the controller's choice) and deletes existing copies, unless Union or Member State law requires storage. | `GDPR-CP10` (Art. 28(3)(g)) | D-05.3, D-06.3 |
-| SO-GDPR-019 | D-05.3, D-06.3 | Art. 28(3)(g) | Processor data return / deletion on contract end |
-| SO-GDPR-020 | Where processing is based on consent (Art. 6(1)(a)) or on a contract (Art. 6(1)(b)) and carried out by automated means, the data subject receives the personal data concerning him or her in a structured, commonly used, machine-readable format and can transmit those data to another controller. | `GDPR-RT10` (Art. 15(3) — copy); `GDPR-CP09` (Art. 28(3)(g) — return/deletion); informed by Art. 20 (cross-chapter inheritance) | D-05.4 |
-| SO-GDPR-021 | The controller engages only processors providing sufficient guarantees to implement appropriate technical and organisational measures in such a manner that processing meets the requirements of GDPR and protects data-subject rights. | `GDPR-CP07` (Art. 28(1)); `GDPR-CP08` (Art. 28(2)); `GDPR-C03` (Art. 4(7)/(8) — controller/processor) | D-06.1 |
-| SO-GDPR-021 | D-06.1 | Art. 28(1)/(2), Art. 4(7)/(8) | Sufficient guarantees from processors |
-| SO-GDPR-022 | Contracts (or other legal acts) between controller and processor contain the eight Art. 28(3) mandatory clauses covering subject-matter, type of data, obligations, rights, deletion/return, audit, sub-processor conditions, and confidentiality. | `GDPR-CP09` (Art. 28(3)(a)–(h)); `GDPR-CP08` (Art. 28(2) — sub-processor authorisation) | D-06.3 |
-| SO-GDPR-022 | D-06.3 | Art. 28(3)(a)–(h), Art. 28(2) | DPA mandatory clauses; sub-processor authorisation |
+| SG-GDPR-006 | Persons authorised to process personal data act only on documented instructions from the controller (or processor) and are bound by confidentiality or an appropriate statutory obligation of confidentiality. | `GDPR-CP11` (Art. 29); `GDPR-CP09` (Art. 28(3)(a)/(b)); `GDPR-CP15` (Art. 32(4)) | D-03.3 |
+| SG-GDPR-006 | D-03.3 | Art. 28(3)(a)/(b), Art. 29, Art. 32(4) | Authorised persons act on instructions + confidentiality |
+| SG-GDPR-018 | Personal data are erased without undue delay on the data subject's request where one of the six Art. 17(1) grounds applies; erasure is operationally defined as making the data inaccessible to the controller for normal processing paths. | `GDPR-C06` (Art. 4(12) breach-related — operational deletion overlap); `GDPR-CL03` (Art. 5(1)(c) — data-minimisation, downstream of erasure); `GDPR-CL05` (Art. 5(1)(e) — storage limitation), `GDPR-CP10` (Art. 28(3)(g) — deletion polysemy) | D-05.3 |
+| SG-GDPR-019 | On end of the provision of processor services, the processor deletes or returns all personal data to the controller (at the controller's choice) and deletes existing copies, unless Union or Member State law requires storage. | `GDPR-CP10` (Art. 28(3)(g)) | D-05.3, D-06.3 |
+| SG-GDPR-019 | D-05.3, D-06.3 | Art. 28(3)(g) | Processor data return / deletion on contract end |
+| SG-GDPR-020 | Where processing is based on consent (Art. 6(1)(a)) or on a contract (Art. 6(1)(b)) and carried out by automated means, the data subject receives the personal data concerning him or her in a structured, commonly used, machine-readable format and can transmit those data to another controller. | `GDPR-RT10` (Art. 15(3) — copy); `GDPR-CP09` (Art. 28(3)(g) — return/deletion); informed by Art. 20 (cross-chapter inheritance) | D-05.4 |
+| SG-GDPR-021 | The controller engages only processors providing sufficient guarantees to implement appropriate technical and organisational measures in such a manner that processing meets the requirements of GDPR and protects data-subject rights. | `GDPR-CP07` (Art. 28(1)); `GDPR-CP08` (Art. 28(2)); `GDPR-C03` (Art. 4(7)/(8) — controller/processor) | D-06.1 |
+| SG-GDPR-021 | D-06.1 | Art. 28(1)/(2), Art. 4(7)/(8) | Sufficient guarantees from processors |
+| SG-GDPR-022 | Contracts (or other legal acts) between controller and processor contain the eight Art. 28(3) mandatory clauses covering subject-matter, type of data, obligations, rights, deletion/return, audit, sub-processor conditions, and confidentiality. | `GDPR-CP09` (Art. 28(3)(a)–(h)); `GDPR-CP08` (Art. 28(2) — sub-processor authorisation) | D-06.3 |
+| SG-GDPR-022 | D-06.3 | Art. 28(3)(a)–(h), Art. 28(2) | DPA mandatory clauses; sub-processor authorisation |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-011
@@ -61,7 +61,7 @@ status: DRAFT
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(4)" }
     - { clause_id: GDPR-CP09, article_ref: "Art. 28(3)(a)/(b)" }
     - { clause_id: GDPR-C03, article_ref: "Art. 4(7)/(8) — controller/processor definitions" }
-  linked_objectives: [SO-GDPR-006]
+  linked_objectives: [SG-GDPR-006]
   sub_domain: [D-03.3]
   nist_csf_mapping:
     - { id: PR.AA-05, title: "Access permissions managed per least privilege" }
@@ -80,7 +80,7 @@ status: DRAFT
     `instructions` is POLY-S2 (formal written vs verbal vs workflow-implied). Reading chosen: instructions must be documented in a form sufficient for audit and supervisory-authority inspection, at minimum the documented instruction in the Art. 28(3)(a) processor contract and any operational instructions issued under it. An alternative reading allowing verbal instructions (provided they are recorded contemporaneously) is acceptable but operationally weaker. A third reading permitting workflow-implied instructions (e.g. processing required by the controller's API) is rejected: workflows are evidence of processing but not a substitute for the documented instruction; controllers must translate workflow-level processing into documented instructions for Art. 28(3)(a) compliance. The Union or Member State law carve-out is narrow and typically arises in law-enforcement, tax, and social-security contexts.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-012
@@ -89,7 +89,7 @@ status: DRAFT
     - { clause_id: GDPR-CP09, article_ref: "Art. 28(3)(b) — confidentiality obligation" }
     - { clause_id: GDPR-CP11, article_ref: "Art. 29" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(4)" }
-  linked_objectives: [SO-GDPR-006]
+  linked_objectives: [SG-GDPR-006]
   sub_domain: [D-03.3, D-08.1]
   nist_csf_mapping:
     - { id: PR.AA-05, title: "Access permissions managed per least privilege" }
@@ -108,7 +108,7 @@ status: DRAFT
     `appropriate statutory obligation of confidentiality` is VAG-S2. Reading chosen: an obligation equivalent in scope to a contractual NDA covering the personal data scope. An alternative reading accepting any pre-existing statutory professional-secrecy obligation (e.g. medical or legal privilege) is acceptable where the person actually operates under such an obligation. A third reading that no obligation is required where the person is a public-sector employee with existing secrecy duties under Member State law is acceptable in narrow contexts. The "appropriate" qualifier is calibrated to the data sensitivity and the role's exposure.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-017
@@ -116,7 +116,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP17, article_ref: "Art. 33(2) — processor-to-controller notification" }
     - { clause_id: GDPR-C06, article_ref: "Art. 4(12) — personal data breach" }
-  linked_objectives: [SO-GDPR-010]
+  linked_objectives: [SG-GDPR-010]
   sub_domain: [D-04.3, D-06.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents reported internally to appropriate stakeholders" }
@@ -135,7 +135,7 @@ status: DRAFT
     `without undue delay` inherits S3 VAG ambiguity (Berry §5.1). Reading chosen: action on the same operational shift or business day, with hard escalation channels documented in the Art. 28(3) processor contract. An alternative reading fixing the window at 24 hours is acceptable but operationally narrower. A third reading extending the window to 72 hours (mirroring the controller's clock) is rejected because it would compress the controller's own window to zero in practice. The chosen reading aligns with EDPB Guidelines 9/2022 §3.4 and ISO 27001 A.16.1.2 reporting expectations. Remain open: whether AI-driven detection by the processor that flags a probable breach without confirmation triggers the `without undue delay` clock, or whether confirmation is required, pending EDPB guidance on probabilistic detection.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-022
@@ -145,7 +145,7 @@ status: DRAFT
     - { clause_id: GDPR-RT12, article_ref: "Art. 16 — rectification" }
     - { clause_id: GDPR-RT11, article_ref: "Art. 15(4) — third-party-rights limit" }
     - { clause_id: GDPR-CL26, article_ref: "Art. 11(2) — identification-exemption (cross)" }
-  linked_objectives: [SO-GDPR-012]
+  linked_objectives: [SG-GDPR-012]
   sub_domain: [D-04.3, D-05.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents reported internally to appropriate stakeholders" }
@@ -164,7 +164,7 @@ status: DRAFT
     `impossible` OR `disproportionate effort` (Art. 19) carries COORD-S3. Reading chosen: either escape clause suffices, as a logical inclusive OR. An alternative reading requiring both to hold is rejected: the stricter reading would impose undue compliance burden without policy justification. The OJ text uses `or`, the English-language UN-style drafting convention for an inclusive disjunction; EDPB Guidelines treat this consistently. On the Art. 15(4) cap (third-party-rights limit), the disclosure to the data subject about recipients is bounded to recipients known to the controller; the controller is not required to investigate recipients beyond its own records. Remain open: (a) whether the `recipient` definition includes processors (under Art. 28) and joint controllers (under Art. 26) or only independent third-party controllers, pending EDPB Guidelines 5/2019 revision; and (b) how the recipient-list request interacts with confidentiality obligations (e.g. trade-secret-protected recipients), pending alignment with Charter Art. 7 and CJEU jurisprudence on commercial confidentiality.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-030
@@ -173,7 +173,7 @@ status: DRAFT
     - { clause_id: GDPR-CL05, article_ref: "Art. 5(1)(e) — storage limitation (cross)" }
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation (cross)" }
     - { clause_id: GDPR-CP10, article_ref: "Art. 28(3)(g) — delete polysemy" }
-  linked_objectives: [SO-GDPR-018, SO-GDPR-019]
+  linked_objectives: [SG-GDPR-018, SG-GDPR-019]
   sub_domain: [D-05.3]
   nist_csf_mapping:
     - { id: PR.DS-10, title: "Data-in-use protected" }
@@ -222,7 +222,7 @@ status: DRAFT
     when full tape overwrite has not occurred.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-031
@@ -231,7 +231,7 @@ status: DRAFT
     - { clause_id: GDPR-CP10, article_ref: "Art. 28(3)(g)" }
     - { clause_id: GDPR-CL05, article_ref: "Art. 5(1)(e) — storage limitation (cross)" }
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation (cross)" }
-  linked_objectives: [SO-GDPR-019]
+  linked_objectives: [SG-GDPR-019]
   sub_domain: [D-05.3, D-06.3]
   nist_csf_mapping:
     - { id: PR.DS-10, title: "Data-in-use protected" }
@@ -277,7 +277,7 @@ status: DRAFT
     personal data` when the underlying records are pseudonymised.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-033
@@ -286,7 +286,7 @@ status: DRAFT
     - { clause_id: GDPR-CP07, article_ref: "Art. 28(1) — processor selection" }
     - { clause_id: GDPR-CP08, article_ref: "Art. 28(2) — sub-processor authorisation" }
     - { clause_id: GDPR-C03, article_ref: "Art. 4(7)/(8) — controller/processor" }
-  linked_objectives: [SO-GDPR-021]
+  linked_objectives: [SG-GDPR-021]
   sub_domain: [D-06.1]
   nist_csf_mapping:
     - { id: GV.SC-02, title: "Suppliers prioritized and assessed using SCRM processes" }
@@ -322,14 +322,14 @@ status: DRAFT
     whether the controller must layer additional assessment.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-034
   title: "Eight-element processor contract with audit and instruction clauses"
   source_clauses:
     - { clause_id: GDPR-CP09, article_ref: "Art. 28(3)(a)–(h) — 8 mandatory clauses" }
-  linked_objectives: [SO-GDPR-022]
+  linked_objectives: [SG-GDPR-022]
   sub_domain: [D-06.3]
   nist_csf_mapping:
     - { id: GV.SC-03, title: "Contracts used to implement SCRM" }
@@ -367,7 +367,7 @@ status: DRAFT
     sub-clause must still appear somewhere in the chain.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-035
@@ -376,7 +376,7 @@ status: DRAFT
     - { clause_id: GDPR-CP09, article_ref: "Art. 28(3)(c) — Article 32 measures" }
     - { clause_id: GDPR-CP09, article_ref: "Art. 28(3)(h) — audits and inspections" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1) cross-reference" }
-  linked_objectives: [SO-GDPR-022, SO-GDPR-021]
+  linked_objectives: [SG-GDPR-022, SG-GDPR-021]
   sub_domain: [D-06.3, D-10.1]
   nist_csf_mapping:
     - { id: GV.SC-03, title: "Contracts used to implement SCRM" }
@@ -428,7 +428,7 @@ status: DRAFT
     shadow-controller.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-036
@@ -436,7 +436,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP08, article_ref: "Art. 28(2) — sub-processor authorisation" }
     - { clause_id: GDPR-CP09, article_ref: "Art. 28(3)(d) — sub-processor conditions (cross)" }
-  linked_objectives: [SO-GDPR-022]
+  linked_objectives: [SG-GDPR-022]
   sub_domain: [D-06.3]
   nist_csf_mapping:
     - { id: GV.SC-02, title: "Suppliers prioritized and assessed using SCRM processes" }
@@ -472,7 +472,7 @@ status: DRAFT
     30 days) or whether silent acquiescence suffices.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-037
@@ -480,7 +480,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP09, article_ref: "Art. 28(3)(g) — return or deletion" }
     - { clause_id: GDPR-CL05, article_ref: "Art. 5(1)(e) — storage limitation" }
-  linked_objectives: [SO-GDPR-022, SO-GDPR-019]
+  linked_objectives: [SG-GDPR-022, SG-GDPR-019]
   sub_domain: [D-06.3, D-05.3]
   nist_csf_mapping:
     - { id: PR.DS-12, title: "Data managed consistent with risk strategy" }
@@ -526,7 +526,7 @@ status: DRAFT
     contract end and the processor's actual deletion confirmation.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-055
@@ -536,7 +536,7 @@ status: DRAFT
     - { clause_id: GDPR-TR02, article_ref: "Art. 45(1) — adequacy-based transfer" }
     - { clause_id: GDPR-TR03, article_ref: "Art. 45(3) — periodic review of adequacy" }
     - { clause_id: GDPR-C07, article_ref: "Art. 4(16) — main establishment (cross)" }
-  linked_objectives: [SO-GDPR-033]
+  linked_objectives: [SG-GDPR-033]
   sub_domain: [D-06.3, D-09.1]
   nist_csf_mapping:
     - { id: GV.SC-02, title: "Suppliers prioritized and assessed using SCRM processes" }

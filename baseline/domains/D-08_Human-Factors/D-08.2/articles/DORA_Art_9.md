@@ -56,22 +56,22 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-DORA-001 | Data confidentiality, integrity, authenticity and availability are maintained at high standards across all data states — at rest, in use, or in transit — through ICT security policies, procedures, protocols and tools designed to ensure ICT-system resilience, continuity and availability. | `DORA-C09` (Art. 9(2) CIA+A 4-way AND + 3-way OR of data states); `DORA-C10` (Art. 9(2) in-transit, same locus); `DORA-C11` (Art. 9(2) integrity, same locus) | D-01.1, D-01.2, D-01.4 |
-| SO-DORA-001 | D-01.1, D-01.2, D-01.4 | Art. 9(2) | CIA + A maintained across data states (at rest, in use, in transit) |
-| SO-DORA-002 | Strong authentication mechanisms (based on relevant standards and dedicated control systems), cryptographic-key protection measures, and data encryption based on approved data classification and ICT risk assessment processes are implemented through coordinated policies and protocols. | `DORA-C15` (Art. 9(4)(d) 3-control AND: strong auth + key protection + encryption); `DORA-C16` (Art. 9(4)(d) same locus — `strong authentication` dominant reading is MFA per EBA guidelines); `DORA-C17` (Art. 9(4)(d) same locus — key management sub-phrase) | D-01.3, D-03.1, D-03.2 |
-| SO-DORA-002 | D-01.3, D-03.1, D-03.2 | Art. 9(4)(d) | Strong auth + crypto key protection + risk-based encryption |
-| SO-DORA-004 | A sound network and infrastructure management structure using appropriate techniques, methods and protocols is established, with appropriate and comprehensive documented policies for patches and updates maintained. | `DORA-C13` (Art. 9(4)(b) — T4 maps to D-02.2 patch management but OJ text is network/infrastructure management; **T4 mapping mismatch** per `../Regulation/DORA/Ambiguity/05_DORA.md` §2.13 — SO follows OJ-literal locus); `DORA-C19` (Art. 9(4)(f) patches and updates) | D-02.2, D-07.1 |
-| SO-DORA-004 | D-02.2, D-07.1 | Art. 9(4)(b) + Art. 9(4)(f) | Network/infrastructure mgmt structure + patch policies |
-| SO-DORA-006 | ICT security policies limit physical or logical access to information assets and ICT assets to what is required for legitimate and approved functions and activities only. | `DORA-C14` (Art. 9(4)(c) physical/logical access + `legitimate and approved` AND + `only` qualifier) | D-03.3 |
-| SO-DORA-006 | D-03.3 | Art. 9(4)(c) | Least-privilege access policies (physical or logical) |
-| SO-DORA-013 | Documented policies, procedures and controls for ICT change management — covering changes to software, hardware, firmware components, systems or security parameters — ensure that all changes are recorded, tested, assessed, approved, implemented and verified in a controlled manner, based on a risk assessment approach. | `DORA-C18` (Art. 9(4)(e) 5-way OR of change-targets + 6-way AND of change-management steps: recorded/tested/assessed/approved/implemented/verified + `controlled manner`) | D-07.4, D-07.2 (partial) |
-| SO-DORA-013 | D-07.4, D-07.2 (partial) | Art. 9(4)(e) | ICT change management policies, procedures and controls |
-| SO-DORA-018 | ICT systems and tools are continuously monitored and controlled for security and functioning, and the impact of ICT risk is minimised through the deployment of appropriate ICT security tools, policies and procedures; an information security policy defines rules to protect the availability, authenticity, integrity and confidentiality of data, information assets and ICT assets, including those of customers where applicable. | `DORA-C07` (Art. 8(1) `continuously monitor and control` + `security and functioning` AND + `tools, policies and procedures` 3-way AND); `DORA-C12` (Art. 9(4)(a) information security policy + nested AND of CIA+A 4-way of data/information assets/ICT assets 3-way) | D-10.1, D-10.2 |
-| SO-DORA-018 | D-10.1, D-10.2 | Art. 8(1) + Art. 9(4)(a) | Continuous monitoring + information security policy |
+| SG-DORA-001 | Data confidentiality, integrity, authenticity and availability are maintained at high standards across all data states — at rest, in use, or in transit — through ICT security policies, procedures, protocols and tools designed to ensure ICT-system resilience, continuity and availability. | `DORA-C09` (Art. 9(2) CIA+A 4-way AND + 3-way OR of data states); `DORA-C10` (Art. 9(2) in-transit, same locus); `DORA-C11` (Art. 9(2) integrity, same locus) | D-01.1, D-01.2, D-01.4 |
+| SG-DORA-001 | D-01.1, D-01.2, D-01.4 | Art. 9(2) | CIA + A maintained across data states (at rest, in use, in transit) |
+| SG-DORA-002 | Strong authentication mechanisms (based on relevant standards and dedicated control systems), cryptographic-key protection measures, and data encryption based on approved data classification and ICT risk assessment processes are implemented through coordinated policies and protocols. | `DORA-C15` (Art. 9(4)(d) 3-control AND: strong auth + key protection + encryption); `DORA-C16` (Art. 9(4)(d) same locus — `strong authentication` dominant reading is MFA per EBA guidelines); `DORA-C17` (Art. 9(4)(d) same locus — key management sub-phrase) | D-01.3, D-03.1, D-03.2 |
+| SG-DORA-002 | D-01.3, D-03.1, D-03.2 | Art. 9(4)(d) | Strong auth + crypto key protection + risk-based encryption |
+| SG-DORA-004 | A sound network and infrastructure management structure using appropriate techniques, methods and protocols is established, with appropriate and comprehensive documented policies for patches and updates maintained. | `DORA-C13` (Art. 9(4)(b) — T4 maps to D-02.2 patch management but OJ text is network/infrastructure management; **T4 mapping mismatch** per `../Regulation/DORA/Ambiguity/05_DORA.md` §2.13 — SO follows OJ-literal locus); `DORA-C19` (Art. 9(4)(f) patches and updates) | D-02.2, D-07.1 |
+| SG-DORA-004 | D-02.2, D-07.1 | Art. 9(4)(b) + Art. 9(4)(f) | Network/infrastructure mgmt structure + patch policies |
+| SG-DORA-006 | ICT security policies limit physical or logical access to information assets and ICT assets to what is required for legitimate and approved functions and activities only. | `DORA-C14` (Art. 9(4)(c) physical/logical access + `legitimate and approved` AND + `only` qualifier) | D-03.3 |
+| SG-DORA-006 | D-03.3 | Art. 9(4)(c) | Least-privilege access policies (physical or logical) |
+| SG-DORA-013 | Documented policies, procedures and controls for ICT change management — covering changes to software, hardware, firmware components, systems or security parameters — ensure that all changes are recorded, tested, assessed, approved, implemented and verified in a controlled manner, based on a risk assessment approach. | `DORA-C18` (Art. 9(4)(e) 5-way OR of change-targets + 6-way AND of change-management steps: recorded/tested/assessed/approved/implemented/verified + `controlled manner`) | D-07.4, D-07.2 (partial) |
+| SG-DORA-013 | D-07.4, D-07.2 (partial) | Art. 9(4)(e) | ICT change management policies, procedures and controls |
+| SG-DORA-018 | ICT systems and tools are continuously monitored and controlled for security and functioning, and the impact of ICT risk is minimised through the deployment of appropriate ICT security tools, policies and procedures; an information security policy defines rules to protect the availability, authenticity, integrity and confidentiality of data, information assets and ICT assets, including those of customers where applicable. | `DORA-C07` (Art. 8(1) `continuously monitor and control` + `security and functioning` AND + `tools, policies and procedures` 3-way AND); `DORA-C12` (Art. 9(4)(a) information security policy + nested AND of CIA+A 4-way of data/information assets/ICT assets 3-way) | D-10.1, D-10.2 |
+| SG-DORA-018 | D-10.1, D-10.2 | Art. 8(1) + Art. 9(4)(a) | Continuous monitoring + information security policy |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-001
@@ -80,7 +80,7 @@ status: DRAFT
     - { clause_id: DORA-C09, article_ref: "Art. 9(2) — CIA+A 4-way AND + at-rest/in-use/in-transit 3-way OR" }
     - { clause_id: DORA-C10, article_ref: "Art. 9(2) — in-transit dimension (same locus, explicit in OJ)" }
     - { clause_id: DORA-C11, article_ref: "Art. 9(2) — integrity dimension (same locus, explicit in OJ)" }
-  linked_objectives: [SO-DORA-001]
+  linked_objectives: [SG-DORA-001]
   sub_domain: [D-01.1, D-01.2, D-01.4]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }
@@ -170,7 +170,7 @@ status: DRAFT
     securities) and the EBA's prior preference for ISO/IEC alignment.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-002
@@ -179,7 +179,7 @@ status: DRAFT
     - { clause_id: DORA-C15, article_ref: "Art. 9(4)(d) — strong authentication mechanisms based on relevant standards and dedicated control systems" }
     - { clause_id: DORA-C16, article_ref: "Art. 9(4)(d) same locus — T4 reads `Multi-Factor Authentication`; OJ says `strong authentication mechanisms`" }
     - { clause_id: DORA-C17, article_ref: "Art. 9(4)(d) same locus — `protection measures of cryptographic keys`" }
-  linked_objectives: [SO-DORA-002]
+  linked_objectives: [SG-DORA-002]
   sub_domain: [D-01.3, D-03.1, D-03.2]
   nist_csf_mapping:
     - { id: PR.AA-03, title: "Users, services, and hardware are authenticated" }
@@ -270,7 +270,7 @@ status: DRAFT
     or be carved out as a separate sub-regime.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-003
@@ -278,7 +278,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: DORA-C15, article_ref: "Art. 9(4)(d) — `protection measures of cryptographic keys whereby data is encrypted based on results of approved data classification and ICT risk assessment processes`" }
     - { clause_id: DORA-C17, article_ref: "Art. 9(4)(d) same locus — key-management sub-phrase" }
-  linked_objectives: [SO-DORA-002]
+  linked_objectives: [SG-DORA-002]
   sub_domain: [D-01.3]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }
@@ -349,14 +349,14 @@ status: DRAFT
     was discarded. Remain open: (a) the operational threshold for `approved` governance approval — whether a documented policy suffices or a board-level resolution is required — pending EBA Guidelines clarification; (b) the relationship between the Art. 9(4)(d) classification scheme and any sectoral scheme the entity already operates, pending Art. 15 RTS.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-006
   title: "Network and infrastructure management with automated blast-radius isolation"
   source_clauses:
     - { clause_id: DORA-C13, article_ref: "Art. 9(4)(b) — `sound network and infrastructure management structure using appropriate techniques, methods and protocols that may include implementing automated mechanisms to isolate affected information assets in the event of cyber-attacks`" }
-  linked_objectives: [SO-DORA-004]
+  linked_objectives: [SG-DORA-004]
   sub_domain: [D-02.2, D-07.1]
   nist_csf_mapping:
     - { id: PR.PS-01, title: "Configuration management practices are established, documented, and applied to assets" }
@@ -429,14 +429,14 @@ status: DRAFT
     segmentation expectation, de facto converting it from R1 to R2.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-007
   title: "Documented patch and update governance covering full asset estate"
   source_clauses:
     - { clause_id: DORA-C19, article_ref: "Art. 9(4)(f) — `have appropriate and comprehensive documented policies for patches and updates`" }
-  linked_objectives: [SO-DORA-004]
+  linked_objectives: [SG-DORA-004]
   sub_domain: [D-02.2]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed commensurate with risk" }
@@ -501,14 +501,14 @@ status: DRAFT
     the OJ text itself does not specify.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-010
   title: "Least-privilege physical and logical access governance"
   source_clauses:
     - { clause_id: DORA-C14, article_ref: "Art. 9(4)(c) — `implement policies that limit the physical or logical access to information assets and ICT assets to what is required for legitimate and approved functions and activities only`" }
-  linked_objectives: [SO-DORA-006]
+  linked_objectives: [SG-DORA-006]
   sub_domain: [D-03.3]
   nist_csf_mapping:
     - { id: PR.AA-05, title: "Access permissions, entitlements, and authorizations are defined and managed in accordance with the principle of least privilege" }
@@ -581,14 +581,14 @@ status: DRAFT
     registries.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-023
   title: "ICT change management under six-step risk-based process"
   source_clauses:
     - { clause_id: DORA-C18, article_ref: "Art. 9(4)(e) — `implement documented policies, procedures and controls for ICT change management, including changes to software, hardware, firmware components, systems or security parameters … that are based on a risk assessment approach … in order to ensure that all changes to ICT systems are recorded, tested, assessed, approved, implemented and verified in a controlled manner`" }
-  linked_objectives: [SO-DORA-013]
+  linked_objectives: [SG-DORA-013]
   sub_domain: [D-07.4]
   nist_csf_mapping:
     - { id: PR.PS-01, title: "Configuration management practices are established, documented, and applied to assets" }
@@ -651,7 +651,7 @@ status: DRAFT
     practice.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-025
@@ -660,7 +660,7 @@ status: DRAFT
     - { clause_id: DORA-C27, article_ref: "Art. 13(6) — `ICT security awareness programmes and digital operational resilience training as compulsory modules in their staff training schemes`" }
     - { clause_id: DORA-C28, article_ref: "Art. 13(6) same locus — `level of complexity commensurate to the remit of their functions`" }
     - { clause_id: DORA-C26, article_ref: "Art. 13(6) same locus — T4 mapping mismatch per `../Regulation/DORA/Ambiguity/05_DORA.md` §2.26" }
-  linked_objectives: [SO-DORA-015]
+  linked_objectives: [SG-DORA-015]
   sub_domain: [D-08.1, D-08.2]
   nist_csf_mapping:
     - { id: PR.AT-01, title: "All users are informed and trained on cybersecurity topics (e.g., recognition of phishing, social engineering, and other relevant risks)" }
@@ -725,14 +725,14 @@ status: DRAFT
     matter awaiting industry convergence.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-027
   title: "Sound and comprehensive ICT risk management framework documented"
   source_clauses:
     - { clause_id: DORA-C03, article_ref: "Art. 6(1) — `Financial entities shall have a sound, comprehensive and well-documented ICT risk management framework … which enables them to address ICT risk quickly, efficiently and comprehensively`" }
-  linked_objectives: [SO-DORA-016]
+  linked_objectives: [SG-DORA-016]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -790,14 +790,14 @@ status: DRAFT
     approval-trails, archival) is an entity-policy matter.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-028
   title: "Independence of ICT risk oversight via three-lines-of-defence model"
   source_clauses:
     - { clause_id: DORA-C04, article_ref: "Art. 6(4) — `assign the responsibility for managing and overseeing ICT risk to a control function and ensure an appropriate level of independence … according to the three lines of defence model, or an internal risk management and control model`" }
-  linked_objectives: [SO-DORA-017]
+  linked_objectives: [SG-DORA-017]
   sub_domain: [D-09.1, D-09.2]
   nist_csf_mapping:
     - { id: GV.RR-02, title: "Roles, responsibilities, authorities, and accountabilities related to cybersecurity risk management are established, communicated, understood, and enforced" }
@@ -855,14 +855,14 @@ status: DRAFT
     matter.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-029
   title: "Inventory and classification of ICT-supported business assets"
   source_clauses:
     - { clause_id: DORA-C05, article_ref: "Art. 7(1) — `identify, classify and adequately document all ICT supported business functions, roles and responsibilities, the information assets and ICT assets supporting those functions, and their roles and dependencies in relation to ICT risk`" }
-  linked_objectives: [SO-DORA-017]
+  linked_objectives: [SG-DORA-017]
   sub_domain: [D-09.3]
   nist_csf_mapping:
     - { id: ID.AM-01, title: "Inventories of hardware managed by the organization are maintained" }
@@ -929,14 +929,14 @@ status: DRAFT
     supervisory practice providing convergence signals.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-030
   title: "Continuous monitoring and control of ICT-system security and functioning"
   source_clauses:
     - { clause_id: DORA-C07, article_ref: "Art. 8(1) — `continuously monitor and control the security and functioning of ICT systems and tools and shall minimise the impact of ICT risk on ICT systems through the deployment of appropriate ICT security tools, policies and procedures`" }
-  linked_objectives: [SO-DORA-018]
+  linked_objectives: [SG-DORA-018]
   sub_domain: [D-10.1]
   nist_csf_mapping:
     - { id: DE.CM-01, title: "Networks and network services are monitored to find potentially adverse events" }
@@ -997,14 +997,14 @@ status: DRAFT
     practice; documented and evidence-backed cadences are recommended.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-031
   title: "Information security policy covering CIA+A across data and ICT assets"
   source_clauses:
     - { clause_id: DORA-C12, article_ref: "Art. 9(4)(a) — `develop and document an information security policy defining rules to protect the availability, authenticity, integrity and confidentiality of data, information assets and ICT assets, including those of their customers, where applicable`" }
-  linked_objectives: [SO-DORA-018]
+  linked_objectives: [SG-DORA-018]
   sub_domain: [D-10.2]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }

@@ -30,9 +30,9 @@
 #### Participants (from CRDA-deep §D-01.2)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-001 (cross-ref) | Confidentiality, integrity, resilience of processing systems — covers in-transit via Art. 32(2) "transmitted" | Controller/processor; Art. 32(1)(b) + Art. 32(2); personal-data scope; risk-anchored; PR.DS-02 + PR.IR-01 substrate |
-| CRA | SO-CRA-001 (cross-ref) / SO-CRA-003 | Confidentiality of data in transit via state-of-the-art encryption + attack-surface limitation | Manufacturer; Annex I Part I (2)(e) + (2)(j); product-level; state-of-the-art baseline + attack-surface-limitation |
-| DORA | SO-DORA-001 | CIA+A maintained across data states, including in transit (4×3 matrix) | Financial entity; Art. 9(2); ICT-system-level; `high standards`; OJ-explicit `in transit` dimension |
+| GDPR | SG-GDPR-001 (cross-ref) | Confidentiality, integrity, resilience of processing systems — covers in-transit via Art. 32(2) "transmitted" | Controller/processor; Art. 32(1)(b) + Art. 32(2); personal-data scope; risk-anchored; PR.DS-02 + PR.IR-01 substrate |
+| CRA | SG-CRA-001 (cross-ref) / SG-CRA-003 | Confidentiality of data in transit via state-of-the-art encryption + attack-surface limitation | Manufacturer; Annex I Part I (2)(e) + (2)(j); product-level; state-of-the-art baseline + attack-surface-limitation |
+| DORA | SG-DORA-001 | CIA+A maintained across data states, including in transit (4×3 matrix) | Financial entity; Art. 9(2); ICT-system-level; `high standards`; OJ-explicit `in transit` dimension |
 
 ## Validated relationships (from CRDA-deep §D-01.2)
 
@@ -105,7 +105,7 @@ the data-protection area.
 ## Scope-overlap principle (operational). The high-level SO
 
 #### Scope-overlap principle (operational). The high-level SO
-(`SO-D-01.2.HL`) engages on a given channel **if and only if ≥2
+(`SG-D-01.2.HL`) engages on a given channel **if and only if ≥2
 applicable regulations' scopes overlap on the same channel** (e.g. a
 mutual-TLS connection between a GDPR controller's service and a
 CRA-regulated product backend deployed by a DORA financial entity —
@@ -170,7 +170,7 @@ A company with ≥2 applicable regulations in scope of D-01.2 — with
 overlapping scopes on the same channel — operates a **single in-transit
 design (mutual TLS + network segmentation + attack-surface
 discipline)** that discharges all obligations. The high-level SO
-(`SO-D-01.2.HL`) describes the common obligation; the per-reg
+(`SG-D-01.2.HL`) describes the common obligation; the per-reg
 perspective is preserved in the sub-SOs. **No conflict-resolution is
 required on D-01.2 because CRDA-deep verified all 3 pairs as SAME.**
 Phase 1C Doc 07 documents the **single-control strategy** — typically
@@ -199,7 +199,7 @@ GDPR, CRA, DORA (3 of 5 regs; NIS 2 out-of-scope per T3-vs-text gap; AI Act out-
   volere_subtype: integrity
   title: "Data in transit is protected by cryptographic confidentiality and integrity (multi-reg aggregation)"
   derives_from:
-    hso_sub_so: SO-D-01.2.HL
+    hso_sub_so: SG-D-01.2.HL
     hso_file: ../../HierarchicalSecurityObjectives/D-01_Data-Protection/D-01.2.md
     objective_ref_section: "### D-01.2.0"
   description: |
@@ -269,9 +269,9 @@ status: DRAFT
 ##### Participants
 | Regulation | SO ID | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-001 (cross-ref) | Confidentiality, integrity, resilience of processing systems/services — implicitly covers data in transit via "processing systems" | Controller/processor; Art. 32(1)(b); risk-anchored |
-| CRA | SO-CRA-001 (cross-ref) / SO-CRA-003 | Confidentiality of data in transit across network paths via state-of-the-art encryption | Manufacturer; Annex I Part I (2)(e); product-level; both internal east-west and external-boundary |
-| DORA | SO-DORA-001 | CIA+A maintained across data states, including in transit | Financial entity; Art. 9(2); OJ-explicit in-transit dimension |
+| GDPR | SG-GDPR-001 (cross-ref) | Confidentiality, integrity, resilience of processing systems/services — implicitly covers data in transit via "processing systems" | Controller/processor; Art. 32(1)(b); risk-anchored |
+| CRA | SG-CRA-001 (cross-ref) / SG-CRA-003 | Confidentiality of data in transit across network paths via state-of-the-art encryption | Manufacturer; Annex I Part I (2)(e); product-level; both internal east-west and external-boundary |
+| DORA | SG-DORA-001 | CIA+A maintained across data states, including in transit | Financial entity; Art. 9(2); OJ-explicit in-transit dimension |
 | AI_Act | — | Out-of-scope (no in-transit mandate; CRA/NIS 2/DORA sole authorities) | n/a |
 | NIS2 | — | Out-of-scope for D-01.2 standalone (T3-vs-text gap per `99_NIS2_Synthesis.md` §8; in-transit covered by SR-NIS2-001 cryptography policy + SR-NIS2-007 secured communications) | n/a |
 ##### Pairwise matrix

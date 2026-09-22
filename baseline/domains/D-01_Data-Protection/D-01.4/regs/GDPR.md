@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-003 | Personal data accurate and, where necessary, kept up to date; every reasonable step to ensure erasure/rectification without delay | Controller/processor; Art. 5(1)(d) accuracy + Art. 16 rectification + Art. 5(1)(f) integrity; personal-data scope; semantic accuracy (workflow leg) + storage integrity |
+| GDPR | SG-GDPR-003 | Personal data accurate and, where necessary, kept up to date; every reasonable step to ensure erasure/rectification without delay | Controller/processor; Art. 5(1)(d) accuracy + Art. 16 rectification + Art. 5(1)(f) integrity; personal-data scope; semantic accuracy (workflow leg) + storage integrity |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-01.4.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-01.4.GDPR
+id: SG-D-01.4.GDPR
 subdomain: D-01.4
 applies_to: [GDPR]
-inherits_from: SO-GDPR-003
+inherits_from: SG-GDPR-003
 source_SR: SR-GDPR-005, SR-GDPR-006
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N
@@ -62,8 +62,8 @@ propagation procedure).)*
   title: "Personal data accurate, up to date, and protected against unauthorised modification"
 
   derives_from:
-    hso_sub_so: SO-D-01.4.GDPR
-    per_reg_so: SO-GDPR-003
+    hso_sub_so: SG-D-01.4.GDPR
+    per_reg_so: SG-GDPR-003
     source_sr: SR-GDPR-005, SR-GDPR-006
     hso_file: ../../HierarchicalSecurityObjectives/D-01_Data-Protection/D-01.4.md
     objective_ref_section: "### D-01.4.1"

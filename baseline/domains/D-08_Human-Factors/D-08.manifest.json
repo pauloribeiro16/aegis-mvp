@@ -170,7 +170,7 @@
   "sub_objectives_by_regulation": {
     "AI_Act": [
       {
-        "id": "SO-D-08.2.AIACT",
+        "id": "SG-D-08.2.AIACT",
         "csf_anchors": [
           "PR.AT-02",
           "PR.AT-01",
@@ -188,13 +188,13 @@
     "CRA": [],
     "CRA (partial)": [
       {
-        "id": "SO-D-08.1.CRA",
+        "id": "SG-D-08.1.CRA",
         "csf_anchors": [
           "PR.AT-01 (with UNMAPPED_CSF on the user-side)"
         ]
       },
       {
-        "id": "SO-D-08.2.CRA",
+        "id": "SG-D-08.2.CRA",
         "csf_anchors": [
           "PR.AT-02",
           "GV.SC-03"
@@ -203,21 +203,21 @@
     ],
     "DORA": [
       {
-        "id": "SO-D-08.1.DORA",
+        "id": "SG-D-08.1.DORA",
         "csf_anchors": [
           "PR.AT-01",
           "PR.AT-02"
         ]
       },
       {
-        "id": "SO-D-08.2.DORA",
+        "id": "SG-D-08.2.DORA",
         "csf_anchors": [
           "PR.AT-01",
           "PR.AT-02"
         ]
       },
       {
-        "id": "SO-D-08.3.DORA",
+        "id": "SG-D-08.3.DORA",
         "csf_anchors": [
           "PR.AT-02",
           "GV.RR-01"
@@ -226,7 +226,7 @@
     ],
     "GDPR": [
       {
-        "id": "SO-D-08.1.GDPR",
+        "id": "SG-D-08.1.GDPR",
         "csf_anchors": [
           "PR.AT-01",
           "PR.AT-02"
@@ -237,7 +237,7 @@
         ]
       },
       {
-        "id": "SO-D-08.2.GDPR",
+        "id": "SG-D-08.2.GDPR",
         "csf_anchors": [
           "PR.AT-01",
           "PR.AT-02"
@@ -250,21 +250,21 @@
     ],
     "NIS2": [
       {
-        "id": "SO-D-08.1.NIS2",
+        "id": "SG-D-08.1.NIS2",
         "csf_anchors": [
           "PR.AT-01",
           "PR.PS-01"
         ]
       },
       {
-        "id": "SO-D-08.2.NIS2",
+        "id": "SG-D-08.2.NIS2",
         "csf_anchors": [
           "PR.AT-01",
           "PR.AT-02"
         ]
       },
       {
-        "id": "SO-D-08.3.NIS2",
+        "id": "SG-D-08.3.NIS2",
         "csf_anchors": [
           "PR.AT-02",
           "GV.RR-01"

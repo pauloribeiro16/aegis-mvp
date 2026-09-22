@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| NIS2 | SO-NIS2-006 | Policies and procedures are established to assess the effectiveness of cybersecurity risk-management measures, as part of the all-hazards risk-management framework (Art. 21(2)(f) NIS 2 per `SR-NIS2-037`/`SR-NIS2-038`). | Entity-level effectiveness-assessment of cybersecurity risk-management measures; cadence entity-discretionary under Recital 56; feeds the Art. 21(2)(a)–(j) risk-management cycle. |
+| NIS2 | SG-NIS2-006 | Policies and procedures are established to assess the effectiveness of cybersecurity risk-management measures, as part of the all-hazards risk-management framework (Art. 21(2)(f) NIS 2 per `SR-NIS2-037`/`SR-NIS2-038`). | Entity-level effectiveness-assessment of cybersecurity risk-management measures; cadence entity-discretionary under Recital 56; feeds the Art. 21(2)(a)–(j) risk-management cycle. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-10.3.2 — Sub-SO for NIS 2
 
 ```yaml
-id: SO-D-10.3.NIS2
+id: SG-D-10.3.NIS2
 subdomain: D-10.3
 applies_to: [NIS2]
-inherits_from: SO-NIS2-006
+inherits_from: SG-NIS2-006
 source_SR: SR-NIS2-037 + SR-NIS2-038
 activation: if NIS2 in applicable_regs
 phase_1A_role: 2_of_5
@@ -48,8 +48,8 @@ GV.PO-01, ID.IM-01, GV.OV-03, GV.PO-02.
   title: "Essential and important entities establish policies and procedures to assess the effectiveness of cybersecurity risk-management measures as part of the all-hazards risk-management framework"
 
   derives_from:
-    hso_sub_so: SO-D-10.3.NIS2
-    per_reg_so: SO-NIS2-006
+    hso_sub_so: SG-D-10.3.NIS2
+    per_reg_so: SG-NIS2-006
     source_sr: SR-NIS2-037 + SR-NIS2-038
     hso_file: ../../HierarchicalSecurityObjectives/D-10_Monitoring-Audit/D-10.3.md
     objective_ref_section: "### D-10.3.2"

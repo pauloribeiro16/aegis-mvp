@@ -24,11 +24,11 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-AIACT-012 | A post-market monitoring system is established and documented in a manner that is proportionate to the nature of the AI technologies and the risks of the high-risk AI system, actively and systematically collecting, documenting and analysing relevant data to evaluate the AI system's continued compliance; market-surveillance cooperation under Regulation (EU) 2019/1020 applies to AI systems covered by the AI Act. | `AIA-C25` (Art. 72(1)–(2) — `proportionate to the nature` + `actively and systematically collect, document and analyse` 3-way verb AND + `post-market monitoring system` POLY borrows from MDR Art. 83); `AIA-C27` (Art. 74(1) — borrows the entire Regulation (EU) 2019/1020 market-surveillance framework; POLY cross-regulation borrow) | D-10.1 |
+| SG-AIACT-012 | A post-market monitoring system is established and documented in a manner that is proportionate to the nature of the AI technologies and the risks of the high-risk AI system, actively and systematically collecting, documenting and analysing relevant data to evaluate the AI system's continued compliance; market-surveillance cooperation under Regulation (EU) 2019/1020 applies to AI systems covered by the AI Act. | `AIA-C25` (Art. 72(1)–(2) — `proportionate to the nature` + `actively and systematically collect, document and analyse` 3-way verb AND + `post-market monitoring system` POLY borrows from MDR Art. 83); `AIA-C27` (Art. 74(1) — borrows the entire Regulation (EU) 2019/1020 market-surveillance framework; POLY cross-regulation borrow) | D-10.1 |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-021
@@ -36,7 +36,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: AIA-C25, article_ref: "Art. 72(1)–(2) — `Providers shall establish and document a post-market monitoring system in a manner that is proportionate to the nature of the AI technologies and the risks of the high-risk AI system. The post-market monitoring system shall actively and systematically collect, document and analyse relevant data`" }
     - { clause_id: AIA-C27, article_ref: "Art. 74(1) — `Regulation (EU) 2019/1020 shall apply to AI systems covered by this Regulation`" }
-  linked_objectives: [SO-AIACT-012]
+  linked_objectives: [SG-AIACT-012]
   sub_domain: [D-10.1]
   nist_csf_mapping:
     - { id: DE.CM-09, title: "Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events" }

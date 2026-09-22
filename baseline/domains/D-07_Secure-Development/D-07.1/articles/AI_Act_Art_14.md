@@ -30,19 +30,19 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-AIACT-008 | High-risk AI systems are designed and developed to be effectively overseen by natural persons during the period in which they are in use, including with appropriate human-machine interface tools; the natural persons assigned to human oversight have the necessary competence, training and authority, as well as the necessary support, to (a) properly understand, (b) remain aware of automation bias, (c) correctly interpret, (d) decide, and (e) intervene on the AI system's operation. | `AIA-C14` (Art. 14(1) — `effectively overseen` POLY + `appropriate human-machine interface tools`); `AIA-C15` (Art. 14(4) — `as appropriate and proportionate` + 5-element closed list (a)–(e) of oversight abilities + `automation bias` POLY) | D-08.2 (primary), D-07.1 (cross) |
-| SO-AIACT-008 | D-08.2, D-07.1 | Art. 14(1)+(4) | Human oversight design + 5-element oversight capability list |
+| SG-AIACT-008 | High-risk AI systems are designed and developed to be effectively overseen by natural persons during the period in which they are in use, including with appropriate human-machine interface tools; the natural persons assigned to human oversight have the necessary competence, training and authority, as well as the necessary support, to (a) properly understand, (b) remain aware of automation bias, (c) correctly interpret, (d) decide, and (e) intervene on the AI system's operation. | `AIA-C14` (Art. 14(1) — `effectively overseen` POLY + `appropriate human-machine interface tools`); `AIA-C15` (Art. 14(4) — `as appropriate and proportionate` + 5-element closed list (a)–(e) of oversight abilities + `automation bias` POLY) | D-08.2 (primary), D-07.1 (cross) |
+| SG-AIACT-008 | D-08.2, D-07.1 | Art. 14(1)+(4) | Human oversight design + 5-element oversight capability list |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-012
   title: "Built-in effective human-oversight capability by design"
   source_clauses:
     - { clause_id: AIA-C14, article_ref: "Art. 14(1) — `High-risk AI systems shall be designed and developed in such a way, including with appropriate human-machine interface tools, that they can be effectively overseen by natural persons during the period in which they are in use`" }
-  linked_objectives: [SO-AIACT-008]
+  linked_objectives: [SG-AIACT-008]
   sub_domain: [D-08.2, D-07.1]
   nist_csf_mapping:
     - { id: PR.AT-02, title: "All members of the organization's workforce understand their roles and responsibilities in achieving the organization's cybersecurity objectives" }
@@ -119,14 +119,14 @@ status: DRAFT
     Article 13(3).
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-013
   title: "Five cumulative human-oversight abilities enabled as appropriate"
   source_clauses:
     - { clause_id: AIA-C15, article_ref: "Art. 14(4) — `natural persons to whom human oversight is assigned are enabled, as appropriate and proportionate: (a) to properly understand … (b) to remain aware … (c) to correctly interpret … (d) to decide … (e) to intervene …`" }
-  linked_objectives: [SO-AIACT-008]
+  linked_objectives: [SG-AIACT-008]
   sub_domain: [D-08.2]
   nist_csf_mapping:
     - { id: PR.AT-02, title: "All members of the organization's workforce understand their roles and responsibilities in achieving the organization's cybersecurity objectives" }
@@ -198,14 +198,14 @@ status: DRAFT
     is impossible at biometric-decision latency.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-020
   title: "Competent human overseers assigned with training and authority"
   source_clauses:
     - { clause_id: AIA-C24, article_ref: "Art. 26(2) — `Deployers shall assign human oversight to natural persons who have the necessary competence, training and authority, as well as the necessary support`" }
-  linked_objectives: [SO-AIACT-011]
+  linked_objectives: [SG-AIACT-011]
   sub_domain: [D-08.2, D-09.1]
   nist_csf_mapping:
     - { id: PR.AT-02, title: "All members of the organization's workforce understand their roles and responsibilities in achieving the organization's cybersecurity objectives" }
@@ -285,14 +285,14 @@ status: DRAFT
     per-system is required.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-022
   title: "Tiered serious incident reporting with differentiated timelines"
   source_clauses:
     - { clause_id: AIA-C26, article_ref: "Art. 73(1)–(4) — `report any serious incident`; `not later than 15 days after … becomes aware`; `not later than two days` (widespread infringement); `not later than 10 days` (death)" }
-  linked_objectives: [SO-AIACT-013]
+  linked_objectives: [SG-AIACT-013]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents are reported internally to the appropriate stakeholders, including executive leadership and legal counsel" }

@@ -72,70 +72,70 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-CRA-006 | A product with digital elements is made available on the market without known exploitable vulnerabilities, and vulnerabilities contained in the product are identified and documented on a continuing basis throughout the support period. | `CRA-CL130` (Annex I Part I (2)(a) — known exploitable); `CRA-CL143` (Annex I Part II (1) — identify and document); `CRA-CL18` (Art. 13(3) sentence 1 — documented and updated); `CRA-CL26` (Art. 13(7) — systematically document) | D-02.1, D-02.2 |
-| SO-CRA-010 | Vulnerabilities of a product with digital elements, including those of integrated components, are handled effectively and in accordance with the Annex I Part II vulnerability-handling requirements throughout the support period determined by the manufacturer (minimum 5 years, or the expected use time if shorter). | `CRA-CL27` (Art. 13(8) sentence 1 — handle vulnerabilities during support); `CRA-CL28` (Art. 13(8) sentence 2 — factors); `CRA-CL29` (Art. 13(8) sentence 3 — 5-year floor) | D-02.2, D-04.2 |
-| SO-CRA-010 | D-02.2, D-04.2 | Art. 13(8) sentence 1–3 | Effective vulnerability handling during support period (min 5 years) |
-| SO-CRA-011 | Each security update made available to users during the support period remains available after it has been issued for at least 10 years or for the remainder of the support period, whichever is longer. | `CRA-CL33` (Art. 13(9) — 10-year update availability) | D-02.2 |
-| SO-CRA-011 | D-02.2 | Art. 13(9) | 10-year update availability after support period |
-| SO-CRA-012 | The manufacturer puts in place, documents and enforces a policy on coordinated vulnerability disclosure for its products with digital elements, and — once a security update has been made available — shares and publicly discloses information about fixed vulnerabilities, including description, affected-product identification, impacts, severity, and remediation guidance, subject to a duly-justified delay exception where security risks of publication outweigh security benefits. | `CRA-CL147` (Annex I Part II (5) — CVD policy); `CRA-CL146` (Annex I Part II (4) — public disclosure of fixed vulnerabilities); `CRA-CL75` (Art. 16(2) — CSIRT dissemination with delay grounds); `CRA-CL31` (Art. 13(8) sentence 5 — documentation of support period factors); `CRA-CL32` (Art. 13(8) sentence 6 — CVD policy) | D-02.3, D-09.1 |
-| SO-CRA-012 | D-02.3, D-09.1 | Annex I Part II (4)/(5) + Art. 13(8) sentence 6 + Art. 16(2) | CVD policy + public disclosure with duly-justified delay exception |
-| SO-CRA-013 | The manufacturer facilitates the sharing of information about potential vulnerabilities in its products with digital elements and in third-party components contained therein, including by providing a publicly identifiable contact address for the reporting of vulnerabilities. | `CRA-CL148` (Annex I Part II (6) — sharing + contact address); `CRA-CL42` (Art. 13(17) — single point of contact) | D-02.3, D-09.1 |
-| SO-CRA-013 | D-02.3, D-09.1 | Annex I Part II (6) + Art. 13(17) | Vulnerability-sharing + contact address |
-| SO-CRA-014 | Effective and regular tests and reviews of the security of a product with digital elements are applied on a continuing basis throughout the support period, with the tests and reviews producing evidence of conformity with the Annex I Part I cybersecurity requirements. | `CRA-CL145` (Annex I Part II (3) — effective and regular tests and reviews); `CRA-CL165` (Annex VII §6 — test reports); `CRA-CL27` (Art. 13(8) sentence 1 — handle effectively); `CRA-CL26` (Art. 13(7) — systematically document) | D-02.4, D-10.3, D-09.4 |
-| SO-CRA-014 | D-02.4, D-10.3, D-09.4 | Annex I Part II (3) + Annex VII §6 + Art. 13(7)/(8) | Effective and regular tests and reviews of security |
-| SO-CRA-015 | Identities, credentials and access entitlements for users, services, and integrated components of the product with digital elements are managed in a verifiable manner throughout the operational lifetime of the product. | `CRA-CL133` (Annex I Part I (2)(d) — appropriate control mechanisms, including authentication, identity or access management); `CRA-CL40` (Art. 13(15) — identification: type, batch, serial); `CRA-CL42` (Art. 13(17) — single point of contact) | D-03.1, D-03.3, D-09.4 |
-| SO-CRA-015 | D-03.1, D-03.3, D-09.4 | Annex I Part I (2)(d) + Art. 13(15)/(17) | Identity/credential management in verifiable manner |
-| SO-CRA-021 | The availability of essential functions of a product with digital elements is protected also after an incident, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks, and the manufacturer reduces the impact of an incident using appropriate exploitation-mitigation mechanisms and techniques. | `CRA-CL137` (Annex I Part I (2)(h) — availability + resilience + DoS); `CRA-CL140` (Annex I Part I (2)(k) — reduce impact via exploitation mitigation); `CRA-CL138` (Annex I Part I (2)(i) — minimise cascading impact on other devices / networks); `CRA-CL46` (Art. 13(21) — corrective measures on non-conformity) | D-04.2, D-04.4, D-07.1 |
-| SO-CRA-021 | D-04.2, D-04.4, D-07.1 | Annex I Part I (2)(h) + (2)(i) + (2)(k) + Art. 13(21) | Availability after incident + DoS resilience + exploitation mitigation |
-| SO-CRA-034 | Data processed by a product with digital elements — personal or other — is limited to what is adequate, relevant, and necessary in relation to the intended purpose of the product (data minimisation). | `CRA-CL136` (Annex I Part I (2)(g) — adequate, relevant, necessary); `CRA-CL19` (Art. 13(3) sentence 2 — intended purpose + reasonably foreseeable use); `CRA-CL3` (Art. 3(23) — intended purpose definition) | D-05.1 |
-| SO-CRA-034 | D-05.1 | Annex I Part I (2)(g) + Art. 13(3) sentence 2 + Art. 3(23) | Data minimisation: adequate, relevant, necessary for intended purpose |
-| SO-CRA-035 | Security updates and supporting advisory messages remain available to users across the support period and the 10-year (or remainder-of-support-period) update-availability tail, ensuring continuity of protective capability beyond the support period. | `CRA-CL149` (Annex I Part II (7) — secure update distribution); `CRA-CL150` (Annex I Part II (8) — dissemination without delay, free of charge); `CRA-CL33` (Art. 13(9) — 10-year update availability) | D-05.2, D-02.2 |
-| SO-CRA-035 | D-05.2, D-02.2 | Annex I Part II (7)/(8) + Art. 13(9) | Update availability across support period + 10-year tail |
-| SO-CRA-037 | The manufacturer exercises due diligence when integrating components sourced from third parties — including components of free and open-source software not made available on the market in the course of a commercial activity — so that those components do not compromise the cybersecurity of the product with digital elements. | `CRA-CL23a` (Art. 13(5) — due diligence on third-party components); `CRA-CL24` (Art. 13(6) sentence 1 — component vulnerability reporting + address & remediate); `CRA-CL25` (Art. 13(6) sentence 2 — sharing with component supplier) | D-06.1, D-02.2 |
-| SO-CRA-037 | D-06.1, D-02.2 | Art. 13(5)/(6) | Due diligence on third-party components (incl. FOSS) + component vuln reporting |
-| SO-CRA-038 | The manufacturer draws up and maintains a software bill of materials (SBOM) covering the components and dependencies contained in the product with digital elements in a commonly used and machine-readable format that includes, at minimum, the top-level dependencies; on a reasoned request from a market surveillance authority, the SBOM is provided where necessary for the authority to check compliance with the Annex I cybersecurity requirements. | `CRA-CL39` (Art. 3(39) — SBOM definition); `CRA-CL143` (Annex I Part II (1) — SBOM); `CRA-CL49` (Art. 13(24) — SBOM implementing acts); `CRA-CL159` (Annex II §9 — SBOM location for user); `CRA-CL161` (Annex VII §2(b) — SBOM in technical documentation); `CRA-CL167` (Annex VII §8 — SBOM on MSA request) | D-06.2 (CRA sole authority per taxonomy §4.1), D-02.1 |
-| SO-CRA-038 | D-06.2 (CRA sole authority), D-02.1 | Art. 3(39) + Annex I Part II (1) + Annex II §9 + Art. 13(24) + Annex VII §2(b)/§8 | SBOM content + format + on-request |
-| SO-CRA-041 | A manufacturer established outside the Union may appoint an authorised representative established in the Union by written mandate to perform specified tasks on behalf of the manufacturer; the manufacturer's obligations under Art. 13(1)–(11), Art. 13(12) first subparagraph, and Art. 13(14) are not delegable to the authorised representative, who retains the technical documentation and cooperates with market surveillance authorities. | `CRA-CL84` (Art. 18(1) — AR appointment); `CRA-CL85` (Art. 18(2) — AR carve-out of non-delegable obligations); `CRA-CL86` (Art. 18(3) — AR tasks); `CRA-CL13` (Art. 3(13) — manufacturer definition) | D-06.4, D-09.4 |
-| SO-CRA-045 | A product with digital elements is designed, developed, and produced in accordance with the essential cybersecurity requirements set out in Annex I Part I, with the cybersecurity risk assessment taken into account across the planning, design, development, production, delivery, and maintenance phases of the product — with a view to minimising cybersecurity risks, preventing incidents, and minimising their impact including in relation to the health and safety of users. | `CRA-CL14` (Art. 13(1) — design, develop, produce per Annex I Part I); `CRA-CL15` (Art. 13(2) sentence 1 — risk assessment); `CRA-CL16` (Art. 13(2) sentence 1 — 6-phase propagation); `CRA-CL17` (Art. 13(2) sentence 2 — health + safety of users); `CRA-CL129` (Annex I Part I (1) — chapeau) | D-07.1, D-09.2 |
-| SO-CRA-045 | D-07.1, D-09.2 | Art. 13(1)/(2) + Annex I Part I (1) | Design/development/production per Annex I across 6 lifecycle phases |
-| SO-CRA-047 | Procedures are in place for products with digital elements that are part of a series of production to remain in conformity with this Regulation; changes to the product are assessed against the conformity assessment, and where a change is a substantial modification under Art. 3(30), the entity making the modification is treated as the manufacturer with the attendant obligations. | `CRA-CL39` (Art. 13(14) — series-of-production conformity); `CRA-CL96` (Art. 21 — manufacturer-equivalent trigger); `CRA-CL97` (Art. 22(1) — third-party substantial modification = manufacturer); `CRA-CL30` (Art. 3(30) — substantial modification definition); `CRA-CL34` (Art. 13(10) — substantial modification compliance for the last-placed version) | D-07.4, D-06.4 |
-| SO-CRA-047 | D-07.4, D-06.4 | Art. 13(14) + Art. 21 + Art. 22(1) + Art. 3(30) + Art. 13(10) | Series-production conformity + substantial-modification consequences |
-| SO-CRA-048 | A product with digital elements is accompanied by detailed instructions — or an internet address referring to such detailed instructions — covering the necessary measures during initial commissioning and throughout the lifetime of the product to ensure its secure use; how changes to the product can affect the security of data; how security-relevant updates can be installed; the secure decommissioning of the product including how user data can be securely removed; how the default setting enabling automatic installation of security updates may be turned off; and — for products intended for integration into other products with digital elements — the information necessary for the integrator to comply with the Annex I cybersecurity requirements and the Annex VII documentation requirements. | `CRA-CL158` (Annex II §8(a)–(f) — detailed instructions); `CRA-CL43` (Art. 13(18) — accompany with Annex II info + accessibility for 10 years) | D-08.1, D-09.4 |
-| SO-CRA-048 | D-08.1, D-09.4 | Annex II §8(a)–(f) + Art. 13(18) | Detailed user-facing instructions for secure use over product lifetime |
-| SO-CRA-051 | The manufacturer establishes policies, processes and procedures necessary to implement its CRA cybersecurity obligations, including — but not limited to — the coordinated vulnerability disclosure policy (Annex I Part II §5 + Art. 13(8) sentence 6), the secure update distribution mechanism (Annex I Part II §7), the support-period determination methodology (Art. 13(8) sentence 2), and the cessation-of-operations communication procedure (Art. 13(23)). | `CRA-CL32` (Art. 13(8) sentence 6 — CVD policy); `CRA-CL147` (Annex I Part II (5) — CVD policy); `CRA-CL28` (Art. 13(8) sentence 2 — support-period factors); `CRA-CL48` (Art. 13(23) — cessation of operations) | D-09.1, D-02.3 |
-| SO-CRA-051 | D-09.1, D-02.3 | Art. 13(8) sentence 6 + Annex I Part II (5) + Art. 13(8) sentence 2 + Art. 13(23) | Manufacturer policies, processes, procedures for CRA obligations |
-| SO-CRA-053 | The manufacturer documents the cybersecurity risk assessment referred to in Art. 13(2) and updates it as appropriate during a support period determined in accordance with Art. 13(8); the risk assessment comprises at least an analysis of cybersecurity risks based on the intended purpose and reasonably foreseeable use (including operational environment and assets to be protected) and indicates whether and in what manner the Annex I Part I (2) requirements apply to the relevant product and how those requirements are implemented as informed by the risk assessment. | `CRA-CL18` (Art. 13(3) sentence 1 — documented and updated); `CRA-CL19` (Art. 13(3) sentence 2 — intended purpose + reasonably foreseeable use); `CRA-CL20` (Art. 13(3) sentence 3 — Annex I Part I (2) applicability mapping); `CRA-CL21` (Art. 13(4) sentence 1 — include risk assessment in technical documentation); `CRA-CL162` (Annex VII §3 — risk-assessment documentation) | D-09.2, D-09.4, D-07.1 |
-| SO-CRA-053 | D-09.2, D-09.4, D-07.1 | Art. 13(3) sentence 1–3 + Art. 13(4) + Annex VII §3 | Cybersecurity risk assessment documentation + Annex I Part I (2) applicability |
-| SO-CRA-054 | The cybersecurity risk assessment is reviewed and updated as appropriate when there is a change of the risk represented by the product with digital elements (e.g. material change in product, material change in threat landscape, or upon becoming aware of a previously unidentified vulnerability). | `CRA-CL18` (Art. 13(3) sentence 1 — `updated as appropriate`); `CRA-CL26` (Art. 13(7) — update on becoming aware of vulnerability); `CRA-CL14` (Art. 13(8) — ADCO guidance and harmonised-standards changes) | D-09.2, ID.IM-04 |
-| SO-CRA-054 | D-09.2, ID.IM-04 | Art. 13(3) sentence 1 + Art. 13(7)/(8) + Art. 13(14) | Risk-assessment review/update on material change |
-| SO-CRA-055 | A manufacturer designates a single point of contact to enable users — including security researchers — to communicate directly and rapidly with the manufacturer, including to facilitate reporting on vulnerabilities of the product with digital elements; the single point of contact allows users to choose their preferred means of communication and does not limit such means to automated tools. | `CRA-CL42` (Art. 13(17) — single point of contact); `CRA-CL152` (Annex II §2 — SPOC for vulnerability reporting) | D-09.4, D-02.3 |
-| SO-CRA-055 | D-09.4, D-02.3 | Art. 13(17) + Annex II §2 | Single point of contact (with non-automated option) |
-| SO-CRA-056 | A product with digital elements bears a type, batch, or serial number, or other element allowing identification of the product and its version; the manufacturer's name, registered trade name or registered trademark, and postal address, email address or other digital contact details (and, where applicable, website) are indicated on the product. | `CRA-CL40` (Art. 13(15) — product identification: type/batch/serial); `CRA-CL41` (Art. 13(16) — manufacturer contact info on product); `CRA-CL151` (Annex II §1 — manufacturer contact on product); `CRA-CL153` (Annex II §3 — product unique identification) | D-09.4 |
-| SO-CRA-056 | D-09.4 | Art. 13(15)/(16) + Annex II §1/§3 | Product identification + manufacturer contact info |
-| SO-CRA-057 | The manufacturer keeps the technical documentation and the EU declaration of conformity at the disposal of the market surveillance authorities for at least 10 years after the product has been placed on the market, or for the support period, whichever is longer. | `CRA-CL38` (Art. 13(13) — 10-year documentation retention); `CRA-CL91` (Art. 19(6) — importer 10-year retention); `CRA-CL100` (Art. 23(2) — supply-chain 10-year retention) | D-09.4 |
-| SO-CRA-057 | D-09.4 | Art. 13(13) + Art. 19(6) + Art. 23(2) | 10-year technical documentation + EU declaration retention |
-| SO-CRA-058 | The manufacturer draws up, before placing a product with digital elements on the market, the technical documentation referred to in Art. 31; carries out (or has carried out) the chosen conformity assessment procedure referred to in Art. 32; and — where compliance with the applicable cybersecurity requirements has been demonstrated — draws up the EU declaration of conformity in accordance with Art. 28 and affixes the CE marking in accordance with Art. 30. | `CRA-CL36` (Art. 13(12) sentence 1 — tech docs + conformity assessment before placing); `CRA-CL37` (Art. 13(12) sentence 2 — EU declaration + CE marking); `CRA-CL120` (Art. 31(1) — tech docs contain Annex I compliance evidence); `CRA-CL121` (Art. 31(2) — tech docs drawn up before placing and updated during support); `CRA-CL113` (Art. 28(1) — EU declaration content); `CRA-CL114` (Art. 28(2) — declaration format per Annex V/VI); `CRA-CL116` (Art. 28(4) — manufacturer's responsibility); `CRA-CL117` (Art. 30(1) — CE marking affixing); `CRA-CL118` (Art. 30(3) — CE marking before placing) | D-09.4 |
-| SO-CRA-058 | D-09.4 | Art. 13(12) + Art. 31(1)/(2) + Art. 28(1)/(2)/(4) + Art. 30(1)/(3) | Pre-market technical documentation + EU declaration + CE marking |
-| SO-CRA-060 | Where the manufacturer has placed subsequent substantially modified versions of a software product on the market, the manufacturer may ensure compliance with Annex I Part II (2) (vulnerability remediation) only for the version last placed on the market, provided that the users of previously placed versions have access to the last-placed version free of charge and do not incur additional costs to adjust the hardware and software environment in which they use the original version. | `CRA-CL34` (Art. 13(10) — substantial-modification compliance scope) | D-09.4, D-07.4, D-02.2 |
-| SO-CRA-060 | D-09.4, D-07.4, D-02.2 | Art. 13(10) | Substantial-modification compliance scope (last-placed version) |
-| SO-CRA-061 | The manufacturer provides the end date of the support period — including at least the month and the year — clearly and understandably at the time of purchase of the product; the support period end-date information is also referenced in Annex II §7 (type of technical security support + end-date) and the technical documentation (Annex VII §4). | `CRA-CL44` (Art. 13(19) — support-period end-date display); `CRA-CL157` (Annex II §7 — support-period type + end-date) | D-09.4, D-05.2 |
-| SO-CRA-061 | D-09.4, D-05.2 | Art. 13(19) + Annex II §7 | Support-period end-date communication |
-| SO-CRA-062 | The manufacturer either provides a copy of the EU declaration of conformity or a simplified EU declaration of conformity with the product with digital elements. | `CRA-CL45` (Art. 13(20) — full or simplified EU declaration with product); `CRA-CL156` (Annex II §6 — internet address for EU declaration) | D-09.4 |
-| SO-CRA-062 | D-09.4 | Art. 13(20) + Annex II §6 | EU declaration provision (full or simplified) with product |
-| SO-CRA-063 | Where the manufacturer knows or has reason to believe that the product with digital elements or the processes put in place by the manufacturer are not in conformity with the Annex I cybersecurity requirements, the manufacturer — from placing on the market and for the support period — immediately takes the corrective measures necessary to bring the product or processes into conformity, or to withdraw or recall the product, as appropriate. | `CRA-CL46` (Art. 13(21) — immediate corrective measures + withdrawal + recall) | D-09.4, D-04.2, D-07.4 |
-| SO-CRA-063 | D-09.4, D-04.2, D-07.4 | Art. 13(21) | Immediate corrective measures on non-conformity + withdrawal/recall |
-| SO-CRA-064 | Upon a reasoned request from a market surveillance authority, the manufacturer provides that authority — in a language easily understood by the authority — with all information and documentation, in paper or electronic form, necessary to demonstrate the conformity of the product and the manufacturer's processes with the Regulation. | `CRA-CL47` (Art. 13(22) — MSA cooperation); `CRA-CL22` (Art. 13(4) sentence 2 — AI Act carve-out for unified risk assessment) | D-09.4 |
-| SO-CRA-064 | D-09.4 | Art. 13(22) + Art. 13(4) sentence 2 | Cooperation with MSAs + AI Act carve-out |
-| SO-CRA-065 | Where a manufacturer ceases its operations and — as a result — is not able to comply with this Regulation, the manufacturer informs, before the cessation takes effect, the relevant market surveillance authorities, and — by any means available and to the extent possible — the users of the relevant products with digital elements placed on the market, of the impending cessation of operations. | `CRA-CL48` (Art. 13(23) — cessation of operations notification) | D-09.4 |
-| SO-CRA-065 | D-09.4 | Art. 13(23) | Cessation of operations notification (MSAs + users) |
-| SO-CRA-067 | The Commission may adopt implementing acts specifying the format and elements of the software bill of materials referred to in Annex I Part II (1); ADCO may conduct a Union-wide dependency assessment on the Union's dependence on software components (in particular FOSS components) for specific categories of products with digital elements. | `CRA-CL49` (Art. 13(24) — SBOM implementing acts); `CRA-CL50` (Art. 13(25) — Union-wide dependency assessment by ADCO); `CRA-CL67` (Art. 14(9) — delegated acts on delay-dissemination grounds); `CRA-CL68` (Art. 14(10) — implementing acts on notification format/procedures); `CRA-CL8` (Art. 7(3) — delegated acts amending Annex III); `CRA-CL9` (Art. 7(4) — implementing acts specifying technical descriptions); `CRA-CL119` (Art. 30(6) — implementing acts on labels/pictograms) | D-09.4 |
-| SO-CRA-067 | D-09.4 | Art. 13(24)/(25) + Art. 14(9)/(10) + Art. 7(3)/(4) + Art. 30(6) | Commission implementing / delegated acts (SBOM, delay grounds, labels, technical descriptions) |
-| SO-CRA-070 | The cybersecurity risk-assessment documentation is preserved, updated as appropriate during the support period, and made available — together with the technical documentation as a whole — to market surveillance authorities on reasoned request (Art. 13(4) sentence 1 + Annex VII §3). | `CRA-CL21` (Art. 13(4) sentence 1 — include risk assessment in technical documentation); `CRA-CL162` (Annex VII §3 — risk-assessment documentation); `CRA-CL47` (Art. 13(22) — MSA cooperation) | D-10.2, D-09.4 |
-| SO-CRA-070 | D-10.2, D-09.4 | Art. 13(4) sentence 1 + Annex VII §3 + Art. 13(22) | Risk-assessment documentation preservation + availability to MSAs |
+| SG-CRA-006 | A product with digital elements is made available on the market without known exploitable vulnerabilities, and vulnerabilities contained in the product are identified and documented on a continuing basis throughout the support period. | `CRA-CL130` (Annex I Part I (2)(a) — known exploitable); `CRA-CL143` (Annex I Part II (1) — identify and document); `CRA-CL18` (Art. 13(3) sentence 1 — documented and updated); `CRA-CL26` (Art. 13(7) — systematically document) | D-02.1, D-02.2 |
+| SG-CRA-010 | Vulnerabilities of a product with digital elements, including those of integrated components, are handled effectively and in accordance with the Annex I Part II vulnerability-handling requirements throughout the support period determined by the manufacturer (minimum 5 years, or the expected use time if shorter). | `CRA-CL27` (Art. 13(8) sentence 1 — handle vulnerabilities during support); `CRA-CL28` (Art. 13(8) sentence 2 — factors); `CRA-CL29` (Art. 13(8) sentence 3 — 5-year floor) | D-02.2, D-04.2 |
+| SG-CRA-010 | D-02.2, D-04.2 | Art. 13(8) sentence 1–3 | Effective vulnerability handling during support period (min 5 years) |
+| SG-CRA-011 | Each security update made available to users during the support period remains available after it has been issued for at least 10 years or for the remainder of the support period, whichever is longer. | `CRA-CL33` (Art. 13(9) — 10-year update availability) | D-02.2 |
+| SG-CRA-011 | D-02.2 | Art. 13(9) | 10-year update availability after support period |
+| SG-CRA-012 | The manufacturer puts in place, documents and enforces a policy on coordinated vulnerability disclosure for its products with digital elements, and — once a security update has been made available — shares and publicly discloses information about fixed vulnerabilities, including description, affected-product identification, impacts, severity, and remediation guidance, subject to a duly-justified delay exception where security risks of publication outweigh security benefits. | `CRA-CL147` (Annex I Part II (5) — CVD policy); `CRA-CL146` (Annex I Part II (4) — public disclosure of fixed vulnerabilities); `CRA-CL75` (Art. 16(2) — CSIRT dissemination with delay grounds); `CRA-CL31` (Art. 13(8) sentence 5 — documentation of support period factors); `CRA-CL32` (Art. 13(8) sentence 6 — CVD policy) | D-02.3, D-09.1 |
+| SG-CRA-012 | D-02.3, D-09.1 | Annex I Part II (4)/(5) + Art. 13(8) sentence 6 + Art. 16(2) | CVD policy + public disclosure with duly-justified delay exception |
+| SG-CRA-013 | The manufacturer facilitates the sharing of information about potential vulnerabilities in its products with digital elements and in third-party components contained therein, including by providing a publicly identifiable contact address for the reporting of vulnerabilities. | `CRA-CL148` (Annex I Part II (6) — sharing + contact address); `CRA-CL42` (Art. 13(17) — single point of contact) | D-02.3, D-09.1 |
+| SG-CRA-013 | D-02.3, D-09.1 | Annex I Part II (6) + Art. 13(17) | Vulnerability-sharing + contact address |
+| SG-CRA-014 | Effective and regular tests and reviews of the security of a product with digital elements are applied on a continuing basis throughout the support period, with the tests and reviews producing evidence of conformity with the Annex I Part I cybersecurity requirements. | `CRA-CL145` (Annex I Part II (3) — effective and regular tests and reviews); `CRA-CL165` (Annex VII §6 — test reports); `CRA-CL27` (Art. 13(8) sentence 1 — handle effectively); `CRA-CL26` (Art. 13(7) — systematically document) | D-02.4, D-10.3, D-09.4 |
+| SG-CRA-014 | D-02.4, D-10.3, D-09.4 | Annex I Part II (3) + Annex VII §6 + Art. 13(7)/(8) | Effective and regular tests and reviews of security |
+| SG-CRA-015 | Identities, credentials and access entitlements for users, services, and integrated components of the product with digital elements are managed in a verifiable manner throughout the operational lifetime of the product. | `CRA-CL133` (Annex I Part I (2)(d) — appropriate control mechanisms, including authentication, identity or access management); `CRA-CL40` (Art. 13(15) — identification: type, batch, serial); `CRA-CL42` (Art. 13(17) — single point of contact) | D-03.1, D-03.3, D-09.4 |
+| SG-CRA-015 | D-03.1, D-03.3, D-09.4 | Annex I Part I (2)(d) + Art. 13(15)/(17) | Identity/credential management in verifiable manner |
+| SG-CRA-021 | The availability of essential functions of a product with digital elements is protected also after an incident, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks, and the manufacturer reduces the impact of an incident using appropriate exploitation-mitigation mechanisms and techniques. | `CRA-CL137` (Annex I Part I (2)(h) — availability + resilience + DoS); `CRA-CL140` (Annex I Part I (2)(k) — reduce impact via exploitation mitigation); `CRA-CL138` (Annex I Part I (2)(i) — minimise cascading impact on other devices / networks); `CRA-CL46` (Art. 13(21) — corrective measures on non-conformity) | D-04.2, D-04.4, D-07.1 |
+| SG-CRA-021 | D-04.2, D-04.4, D-07.1 | Annex I Part I (2)(h) + (2)(i) + (2)(k) + Art. 13(21) | Availability after incident + DoS resilience + exploitation mitigation |
+| SG-CRA-034 | Data processed by a product with digital elements — personal or other — is limited to what is adequate, relevant, and necessary in relation to the intended purpose of the product (data minimisation). | `CRA-CL136` (Annex I Part I (2)(g) — adequate, relevant, necessary); `CRA-CL19` (Art. 13(3) sentence 2 — intended purpose + reasonably foreseeable use); `CRA-CL3` (Art. 3(23) — intended purpose definition) | D-05.1 |
+| SG-CRA-034 | D-05.1 | Annex I Part I (2)(g) + Art. 13(3) sentence 2 + Art. 3(23) | Data minimisation: adequate, relevant, necessary for intended purpose |
+| SG-CRA-035 | Security updates and supporting advisory messages remain available to users across the support period and the 10-year (or remainder-of-support-period) update-availability tail, ensuring continuity of protective capability beyond the support period. | `CRA-CL149` (Annex I Part II (7) — secure update distribution); `CRA-CL150` (Annex I Part II (8) — dissemination without delay, free of charge); `CRA-CL33` (Art. 13(9) — 10-year update availability) | D-05.2, D-02.2 |
+| SG-CRA-035 | D-05.2, D-02.2 | Annex I Part II (7)/(8) + Art. 13(9) | Update availability across support period + 10-year tail |
+| SG-CRA-037 | The manufacturer exercises due diligence when integrating components sourced from third parties — including components of free and open-source software not made available on the market in the course of a commercial activity — so that those components do not compromise the cybersecurity of the product with digital elements. | `CRA-CL23a` (Art. 13(5) — due diligence on third-party components); `CRA-CL24` (Art. 13(6) sentence 1 — component vulnerability reporting + address & remediate); `CRA-CL25` (Art. 13(6) sentence 2 — sharing with component supplier) | D-06.1, D-02.2 |
+| SG-CRA-037 | D-06.1, D-02.2 | Art. 13(5)/(6) | Due diligence on third-party components (incl. FOSS) + component vuln reporting |
+| SG-CRA-038 | The manufacturer draws up and maintains a software bill of materials (SBOM) covering the components and dependencies contained in the product with digital elements in a commonly used and machine-readable format that includes, at minimum, the top-level dependencies; on a reasoned request from a market surveillance authority, the SBOM is provided where necessary for the authority to check compliance with the Annex I cybersecurity requirements. | `CRA-CL39` (Art. 3(39) — SBOM definition); `CRA-CL143` (Annex I Part II (1) — SBOM); `CRA-CL49` (Art. 13(24) — SBOM implementing acts); `CRA-CL159` (Annex II §9 — SBOM location for user); `CRA-CL161` (Annex VII §2(b) — SBOM in technical documentation); `CRA-CL167` (Annex VII §8 — SBOM on MSA request) | D-06.2 (CRA sole authority per taxonomy §4.1), D-02.1 |
+| SG-CRA-038 | D-06.2 (CRA sole authority), D-02.1 | Art. 3(39) + Annex I Part II (1) + Annex II §9 + Art. 13(24) + Annex VII §2(b)/§8 | SBOM content + format + on-request |
+| SG-CRA-041 | A manufacturer established outside the Union may appoint an authorised representative established in the Union by written mandate to perform specified tasks on behalf of the manufacturer; the manufacturer's obligations under Art. 13(1)–(11), Art. 13(12) first subparagraph, and Art. 13(14) are not delegable to the authorised representative, who retains the technical documentation and cooperates with market surveillance authorities. | `CRA-CL84` (Art. 18(1) — AR appointment); `CRA-CL85` (Art. 18(2) — AR carve-out of non-delegable obligations); `CRA-CL86` (Art. 18(3) — AR tasks); `CRA-CL13` (Art. 3(13) — manufacturer definition) | D-06.4, D-09.4 |
+| SG-CRA-045 | A product with digital elements is designed, developed, and produced in accordance with the essential cybersecurity requirements set out in Annex I Part I, with the cybersecurity risk assessment taken into account across the planning, design, development, production, delivery, and maintenance phases of the product — with a view to minimising cybersecurity risks, preventing incidents, and minimising their impact including in relation to the health and safety of users. | `CRA-CL14` (Art. 13(1) — design, develop, produce per Annex I Part I); `CRA-CL15` (Art. 13(2) sentence 1 — risk assessment); `CRA-CL16` (Art. 13(2) sentence 1 — 6-phase propagation); `CRA-CL17` (Art. 13(2) sentence 2 — health + safety of users); `CRA-CL129` (Annex I Part I (1) — chapeau) | D-07.1, D-09.2 |
+| SG-CRA-045 | D-07.1, D-09.2 | Art. 13(1)/(2) + Annex I Part I (1) | Design/development/production per Annex I across 6 lifecycle phases |
+| SG-CRA-047 | Procedures are in place for products with digital elements that are part of a series of production to remain in conformity with this Regulation; changes to the product are assessed against the conformity assessment, and where a change is a substantial modification under Art. 3(30), the entity making the modification is treated as the manufacturer with the attendant obligations. | `CRA-CL39` (Art. 13(14) — series-of-production conformity); `CRA-CL96` (Art. 21 — manufacturer-equivalent trigger); `CRA-CL97` (Art. 22(1) — third-party substantial modification = manufacturer); `CRA-CL30` (Art. 3(30) — substantial modification definition); `CRA-CL34` (Art. 13(10) — substantial modification compliance for the last-placed version) | D-07.4, D-06.4 |
+| SG-CRA-047 | D-07.4, D-06.4 | Art. 13(14) + Art. 21 + Art. 22(1) + Art. 3(30) + Art. 13(10) | Series-production conformity + substantial-modification consequences |
+| SG-CRA-048 | A product with digital elements is accompanied by detailed instructions — or an internet address referring to such detailed instructions — covering the necessary measures during initial commissioning and throughout the lifetime of the product to ensure its secure use; how changes to the product can affect the security of data; how security-relevant updates can be installed; the secure decommissioning of the product including how user data can be securely removed; how the default setting enabling automatic installation of security updates may be turned off; and — for products intended for integration into other products with digital elements — the information necessary for the integrator to comply with the Annex I cybersecurity requirements and the Annex VII documentation requirements. | `CRA-CL158` (Annex II §8(a)–(f) — detailed instructions); `CRA-CL43` (Art. 13(18) — accompany with Annex II info + accessibility for 10 years) | D-08.1, D-09.4 |
+| SG-CRA-048 | D-08.1, D-09.4 | Annex II §8(a)–(f) + Art. 13(18) | Detailed user-facing instructions for secure use over product lifetime |
+| SG-CRA-051 | The manufacturer establishes policies, processes and procedures necessary to implement its CRA cybersecurity obligations, including — but not limited to — the coordinated vulnerability disclosure policy (Annex I Part II §5 + Art. 13(8) sentence 6), the secure update distribution mechanism (Annex I Part II §7), the support-period determination methodology (Art. 13(8) sentence 2), and the cessation-of-operations communication procedure (Art. 13(23)). | `CRA-CL32` (Art. 13(8) sentence 6 — CVD policy); `CRA-CL147` (Annex I Part II (5) — CVD policy); `CRA-CL28` (Art. 13(8) sentence 2 — support-period factors); `CRA-CL48` (Art. 13(23) — cessation of operations) | D-09.1, D-02.3 |
+| SG-CRA-051 | D-09.1, D-02.3 | Art. 13(8) sentence 6 + Annex I Part II (5) + Art. 13(8) sentence 2 + Art. 13(23) | Manufacturer policies, processes, procedures for CRA obligations |
+| SG-CRA-053 | The manufacturer documents the cybersecurity risk assessment referred to in Art. 13(2) and updates it as appropriate during a support period determined in accordance with Art. 13(8); the risk assessment comprises at least an analysis of cybersecurity risks based on the intended purpose and reasonably foreseeable use (including operational environment and assets to be protected) and indicates whether and in what manner the Annex I Part I (2) requirements apply to the relevant product and how those requirements are implemented as informed by the risk assessment. | `CRA-CL18` (Art. 13(3) sentence 1 — documented and updated); `CRA-CL19` (Art. 13(3) sentence 2 — intended purpose + reasonably foreseeable use); `CRA-CL20` (Art. 13(3) sentence 3 — Annex I Part I (2) applicability mapping); `CRA-CL21` (Art. 13(4) sentence 1 — include risk assessment in technical documentation); `CRA-CL162` (Annex VII §3 — risk-assessment documentation) | D-09.2, D-09.4, D-07.1 |
+| SG-CRA-053 | D-09.2, D-09.4, D-07.1 | Art. 13(3) sentence 1–3 + Art. 13(4) + Annex VII §3 | Cybersecurity risk assessment documentation + Annex I Part I (2) applicability |
+| SG-CRA-054 | The cybersecurity risk assessment is reviewed and updated as appropriate when there is a change of the risk represented by the product with digital elements (e.g. material change in product, material change in threat landscape, or upon becoming aware of a previously unidentified vulnerability). | `CRA-CL18` (Art. 13(3) sentence 1 — `updated as appropriate`); `CRA-CL26` (Art. 13(7) — update on becoming aware of vulnerability); `CRA-CL14` (Art. 13(8) — ADCO guidance and harmonised-standards changes) | D-09.2, ID.IM-04 |
+| SG-CRA-054 | D-09.2, ID.IM-04 | Art. 13(3) sentence 1 + Art. 13(7)/(8) + Art. 13(14) | Risk-assessment review/update on material change |
+| SG-CRA-055 | A manufacturer designates a single point of contact to enable users — including security researchers — to communicate directly and rapidly with the manufacturer, including to facilitate reporting on vulnerabilities of the product with digital elements; the single point of contact allows users to choose their preferred means of communication and does not limit such means to automated tools. | `CRA-CL42` (Art. 13(17) — single point of contact); `CRA-CL152` (Annex II §2 — SPOC for vulnerability reporting) | D-09.4, D-02.3 |
+| SG-CRA-055 | D-09.4, D-02.3 | Art. 13(17) + Annex II §2 | Single point of contact (with non-automated option) |
+| SG-CRA-056 | A product with digital elements bears a type, batch, or serial number, or other element allowing identification of the product and its version; the manufacturer's name, registered trade name or registered trademark, and postal address, email address or other digital contact details (and, where applicable, website) are indicated on the product. | `CRA-CL40` (Art. 13(15) — product identification: type/batch/serial); `CRA-CL41` (Art. 13(16) — manufacturer contact info on product); `CRA-CL151` (Annex II §1 — manufacturer contact on product); `CRA-CL153` (Annex II §3 — product unique identification) | D-09.4 |
+| SG-CRA-056 | D-09.4 | Art. 13(15)/(16) + Annex II §1/§3 | Product identification + manufacturer contact info |
+| SG-CRA-057 | The manufacturer keeps the technical documentation and the EU declaration of conformity at the disposal of the market surveillance authorities for at least 10 years after the product has been placed on the market, or for the support period, whichever is longer. | `CRA-CL38` (Art. 13(13) — 10-year documentation retention); `CRA-CL91` (Art. 19(6) — importer 10-year retention); `CRA-CL100` (Art. 23(2) — supply-chain 10-year retention) | D-09.4 |
+| SG-CRA-057 | D-09.4 | Art. 13(13) + Art. 19(6) + Art. 23(2) | 10-year technical documentation + EU declaration retention |
+| SG-CRA-058 | The manufacturer draws up, before placing a product with digital elements on the market, the technical documentation referred to in Art. 31; carries out (or has carried out) the chosen conformity assessment procedure referred to in Art. 32; and — where compliance with the applicable cybersecurity requirements has been demonstrated — draws up the EU declaration of conformity in accordance with Art. 28 and affixes the CE marking in accordance with Art. 30. | `CRA-CL36` (Art. 13(12) sentence 1 — tech docs + conformity assessment before placing); `CRA-CL37` (Art. 13(12) sentence 2 — EU declaration + CE marking); `CRA-CL120` (Art. 31(1) — tech docs contain Annex I compliance evidence); `CRA-CL121` (Art. 31(2) — tech docs drawn up before placing and updated during support); `CRA-CL113` (Art. 28(1) — EU declaration content); `CRA-CL114` (Art. 28(2) — declaration format per Annex V/VI); `CRA-CL116` (Art. 28(4) — manufacturer's responsibility); `CRA-CL117` (Art. 30(1) — CE marking affixing); `CRA-CL118` (Art. 30(3) — CE marking before placing) | D-09.4 |
+| SG-CRA-058 | D-09.4 | Art. 13(12) + Art. 31(1)/(2) + Art. 28(1)/(2)/(4) + Art. 30(1)/(3) | Pre-market technical documentation + EU declaration + CE marking |
+| SG-CRA-060 | Where the manufacturer has placed subsequent substantially modified versions of a software product on the market, the manufacturer may ensure compliance with Annex I Part II (2) (vulnerability remediation) only for the version last placed on the market, provided that the users of previously placed versions have access to the last-placed version free of charge and do not incur additional costs to adjust the hardware and software environment in which they use the original version. | `CRA-CL34` (Art. 13(10) — substantial-modification compliance scope) | D-09.4, D-07.4, D-02.2 |
+| SG-CRA-060 | D-09.4, D-07.4, D-02.2 | Art. 13(10) | Substantial-modification compliance scope (last-placed version) |
+| SG-CRA-061 | The manufacturer provides the end date of the support period — including at least the month and the year — clearly and understandably at the time of purchase of the product; the support period end-date information is also referenced in Annex II §7 (type of technical security support + end-date) and the technical documentation (Annex VII §4). | `CRA-CL44` (Art. 13(19) — support-period end-date display); `CRA-CL157` (Annex II §7 — support-period type + end-date) | D-09.4, D-05.2 |
+| SG-CRA-061 | D-09.4, D-05.2 | Art. 13(19) + Annex II §7 | Support-period end-date communication |
+| SG-CRA-062 | The manufacturer either provides a copy of the EU declaration of conformity or a simplified EU declaration of conformity with the product with digital elements. | `CRA-CL45` (Art. 13(20) — full or simplified EU declaration with product); `CRA-CL156` (Annex II §6 — internet address for EU declaration) | D-09.4 |
+| SG-CRA-062 | D-09.4 | Art. 13(20) + Annex II §6 | EU declaration provision (full or simplified) with product |
+| SG-CRA-063 | Where the manufacturer knows or has reason to believe that the product with digital elements or the processes put in place by the manufacturer are not in conformity with the Annex I cybersecurity requirements, the manufacturer — from placing on the market and for the support period — immediately takes the corrective measures necessary to bring the product or processes into conformity, or to withdraw or recall the product, as appropriate. | `CRA-CL46` (Art. 13(21) — immediate corrective measures + withdrawal + recall) | D-09.4, D-04.2, D-07.4 |
+| SG-CRA-063 | D-09.4, D-04.2, D-07.4 | Art. 13(21) | Immediate corrective measures on non-conformity + withdrawal/recall |
+| SG-CRA-064 | Upon a reasoned request from a market surveillance authority, the manufacturer provides that authority — in a language easily understood by the authority — with all information and documentation, in paper or electronic form, necessary to demonstrate the conformity of the product and the manufacturer's processes with the Regulation. | `CRA-CL47` (Art. 13(22) — MSA cooperation); `CRA-CL22` (Art. 13(4) sentence 2 — AI Act carve-out for unified risk assessment) | D-09.4 |
+| SG-CRA-064 | D-09.4 | Art. 13(22) + Art. 13(4) sentence 2 | Cooperation with MSAs + AI Act carve-out |
+| SG-CRA-065 | Where a manufacturer ceases its operations and — as a result — is not able to comply with this Regulation, the manufacturer informs, before the cessation takes effect, the relevant market surveillance authorities, and — by any means available and to the extent possible — the users of the relevant products with digital elements placed on the market, of the impending cessation of operations. | `CRA-CL48` (Art. 13(23) — cessation of operations notification) | D-09.4 |
+| SG-CRA-065 | D-09.4 | Art. 13(23) | Cessation of operations notification (MSAs + users) |
+| SG-CRA-067 | The Commission may adopt implementing acts specifying the format and elements of the software bill of materials referred to in Annex I Part II (1); ADCO may conduct a Union-wide dependency assessment on the Union's dependence on software components (in particular FOSS components) for specific categories of products with digital elements. | `CRA-CL49` (Art. 13(24) — SBOM implementing acts); `CRA-CL50` (Art. 13(25) — Union-wide dependency assessment by ADCO); `CRA-CL67` (Art. 14(9) — delegated acts on delay-dissemination grounds); `CRA-CL68` (Art. 14(10) — implementing acts on notification format/procedures); `CRA-CL8` (Art. 7(3) — delegated acts amending Annex III); `CRA-CL9` (Art. 7(4) — implementing acts specifying technical descriptions); `CRA-CL119` (Art. 30(6) — implementing acts on labels/pictograms) | D-09.4 |
+| SG-CRA-067 | D-09.4 | Art. 13(24)/(25) + Art. 14(9)/(10) + Art. 7(3)/(4) + Art. 30(6) | Commission implementing / delegated acts (SBOM, delay grounds, labels, technical descriptions) |
+| SG-CRA-070 | The cybersecurity risk-assessment documentation is preserved, updated as appropriate during the support period, and made available — together with the technical documentation as a whole — to market surveillance authorities on reasoned request (Art. 13(4) sentence 1 + Annex VII §3). | `CRA-CL21` (Art. 13(4) sentence 1 — include risk assessment in technical documentation); `CRA-CL162` (Annex VII §3 — risk-assessment documentation); `CRA-CL47` (Art. 13(22) — MSA cooperation) | D-10.2, D-09.4 |
+| SG-CRA-070 | D-10.2, D-09.4 | Art. 13(4) sentence 1 + Annex VII §3 + Art. 13(22) | Risk-assessment documentation preservation + availability to MSAs |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-001
@@ -144,7 +144,7 @@ status: DRAFT
     - { clause_id: CRA-CL129, article_ref: "Annex I Part I (1) — chapeau" }
     - { clause_id: CRA-CL134, article_ref: "Annex I Part I (2)(e) — confidentiality + encryption" }
     - { clause_id: CRA-CL14, article_ref: "Art. 13(1) — design/development/production duty" }
-  linked_objectives: [SO-CRA-001, SO-CRA-045]
+  linked_objectives: [SG-CRA-001, SG-CRA-045]
   sub_domain: [D-01.1, D-01.2]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "The confidentiality, integrity, and availability of data-at-rest are protected" }
@@ -159,7 +159,7 @@ status: DRAFT
     The source clause carries two distinct ambiguity stacks. First, the term state of the art is VAG-S3 in the Berry-classic sense — temporal and benchmark-relative, much like "state of the art" in GDPR Art. 32(1). Reading chosen: R2, anchoring the benchmark to harmonised standards adopted under Art. 27 (when present) and, in their absence, to industry-standard cryptographic mechanisms as of the product's support-period commencement date. Alternative readings: R1 would require continuous R&D reassessment on a literal "instant of evaluation" basis, generating unbounded compliance churn and effectively compelling a never-finished redesign cycle; R3 (any mechanism chosen by the manufacturer) would dilute the floor to "any algorithm that compiles," breaking the cross-Member-State level playing field that Annex I is designed to deliver. An additional reading, R0, would treat state-of-the-art as a forward-looking duty that anticipates the next regulatory or standards step beyond support-period commencement, structurally similar to R2 but materially more demanding; R0 is rejected on the literal bench-anchored reading preserved by Annex I. Second, the phrase at rest or in transit is POLY-S2 because the boundary between persistent storage, transient caches, and inter-process transfers is technical rather than legal; Reading chosen: R3 — both contexts are protected, with the Art. 13(2) risk assessment selecting the appropriate primitive for each technical layer. Remain open: (a) when harmonised cryptography standards under Art. 27 are slow to be adopted, can a manufacturer rely on industry-led profiles (NIST SP 800-131A, BSI TR-02102) without violating the "state of the art" baseline; (b) does post-quantum migration obligation attach to legacy products within their support period, or only to newly placed-on-the-market versions after a determined cut-over date?
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-002
@@ -167,7 +167,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL134, article_ref: "Annex I Part I (2)(e) — at-rest encryption" }
     - { clause_id: CRA-CL129, article_ref: "Annex I Part I (1) — chapeau" }
-  linked_objectives: [SO-CRA-002, SO-CRA-001]
+  linked_objectives: [SG-CRA-002, SG-CRA-001]
   sub_domain: [D-01.1]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "The confidentiality, integrity, and availability of data-at-rest are protected" }
@@ -182,7 +182,7 @@ status: DRAFT
     The phrase relevant data in the literal Annex I Part I (2)(e) text — "encrypting relevant data at rest or in transit" — is POLY-S2 because "relevant to what?" admits at least two materially distinct populations. Reading chosen: R2, where "relevant" means data tied to the product's intended purpose plus any data classified by the manufacturer as in-scope under the cybersecurity risk assessment conducted under Art. 13(2). Alternative reading: R1 would limit relevance strictly to data declared in the intended-purpose statement, leaving residual classes (telemetry, logs, derived metadata) outside the obligation and creating an enforcement gap. The state-of-the-art S3 ambiguity on the encryption primitive itself is carried by the umbrella SR-CRA-001 and not duplicated here.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-003
@@ -190,7 +190,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL134, article_ref: "Annex I Part I (2)(e) — in-transit encryption" }
     - { clause_id: CRA-CL139, article_ref: "Annex I Part I (2)(j) — limit attack surfaces incl. external interfaces" }
-  linked_objectives: [SO-CRA-003, SO-CRA-001]
+  linked_objectives: [SG-CRA-003, SG-CRA-001]
   sub_domain: [D-01.2]
   nist_csf_mapping:
     - { id: PR.DS-02, title: "The confidentiality, integrity, and availability of data-in-transit are protected" }
@@ -205,7 +205,7 @@ status: DRAFT
     The Annex I (2)(e) "at rest or in transit" POLY-S2 is shared with SR-CRA-001 and SR-CRA-002; this rule isolates the in-transit branch and applies the same R3 chosen reading (both contexts protected, risk-assessment-driven selection of primitive). The transmitted stratum is captured separately from stored to honour the OJ-literal conjunction. No new S3 instance is introduced on this branch, but the relationship with (j) introduces a SCOPE-Q-S2 question on whether in-transit protection covers purely internal east-west traffic or only the externally-exposed transport edges; the compliance-officer-friendly answer is both, with the risk assessment modulating primitive strength per segment.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-005
@@ -213,7 +213,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL135, article_ref: "Annex I Part I (2)(f) — integrity + report on corruptions" }
     - { clause_id: CRA-CL141, article_ref: "Annex I Part I (2)(l) — logging + monitoring" }
-  linked_objectives: [SO-CRA-005]
+  linked_objectives: [SG-CRA-005]
   sub_domain: [D-01.4, D-10.2]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "The confidentiality, integrity, and availability of data-at-rest are protected" }
@@ -229,7 +229,7 @@ status: DRAFT
     The compound "data, personal or other, commands, programs and configuration" is COORD-S2 — a four-element list with nested OR/AND — and admits materially distinct protection scopes; Reading chosen: R1, treating the conjunction as inclusive of all four classes, in line with the OJ-literal listing. The "report on corruptions" phrase is VAG-S2; Reading chosen: R1, where the report goes to the device user or administering party in a manner proportionate to severity, rather than to an external authority (the integrity-breach case differs from the actively-exploited-vulnerability case under Art. 14). The phrase "any manipulation or modification not authorised by the user" is POLY-S2 with the "any" universal-quantifier meaning, and the literal reading is preserved — integrity protection is unconditional.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-006
@@ -237,7 +237,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL130, article_ref: "Annex I Part I (2)(a) — no known exploitable vulnerabilities" }
     - { clause_id: CRA-CL129, article_ref: "Annex I Part I (1) — chapeau" }
-  linked_objectives: [SO-CRA-006, SO-CRA-008]
+  linked_objectives: [SG-CRA-006, SG-CRA-008]
   sub_domain: [D-02.1, D-02.2]
   nist_csf_mapping:
     - { id: ID.RA-01, title: "Vulnerabilities in assets are identified, validated, and recorded" }
@@ -252,7 +252,7 @@ status: DRAFT
     The term known exploitable vulnerabilities is VAG+POLY S3 because "known" is inquiry-resistant (known to whom: the manufacturer, the public CVE database, the adversary community?), and "exploitable" admits both public-exploit and theoretical-exploit readings. Reading chosen: R2, where "known" means known to the manufacturer exercising the due diligence of the Annex VII §3 risk assessment, which is what the harmonised-standards interpretations typically anchor. Alternative readings: R1 (knowledge relative to the public CVE database) is the conservative-easy-compliance reading and would let manufacturers off the hook for non-CVE-listed weaknesses; R3 (subjective manufacturer-only) is rejected as failing the inquiry-resistant test. An additional reading, R4, would extend the inquiry-resistant baseline to threat-intelligence feeds beyond CVE databases — including vendor advisories, ISACs, and CERT-EU alerts — turning the obligation into a continuous monitoring duty; R4 is more demanding than R2 and is rejected on the literal "known" qualifier, but it deserves recording because harmonised-standards interpretations may converge toward it in critical-infrastructure sectors. The result is a "constructive knowledge" baseline: knowledge that a reasonable manufacturer exercising Annex VII §3 due diligence should have, regardless of whether the CVE has been published. Remain open: (a) does the constructive-knowledge baseline extend to vulnerabilities disclosed in confidential peer-manufacturer channels that the manufacturer has not joined; (b) when "exploitable" admits a public-PoC reading without observed-in-the-wild exploitation, is the day-zero remediated-or-disclosed duty triggered at PoC publication or at observed exploitation.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-007
@@ -261,7 +261,7 @@ status: DRAFT
     - { clause_id: CRA-CL143, article_ref: "Annex I Part II (1) — identify and document vulnerabilities and components + SBOM" }
     - { clause_id: CRA-CL26, article_ref: "Art. 13(7) — systematically document relevant cybersecurity aspects" }
     - { clause_id: CRA-CL18, article_ref: "Art. 13(3) sentence 1 — risk assessment documented and updated" }
-  linked_objectives: [SO-CRA-006, SO-CRA-007]
+  linked_objectives: [SG-CRA-006, SG-CRA-007]
   sub_domain: [D-02.1]
   nist_csf_mapping:
     - { id: ID.RA-01, title: "Vulnerabilities in assets are identified, validated, and recorded" }
@@ -276,7 +276,7 @@ status: DRAFT
     The phrase "top-level dependencies" in Annex I Part II (1) is POLY-S2, because depth admits at least three materially distinct readings. Reading chosen: R1, where "top-level" maps to first-level direct dependencies with depth-1 look-through; this honours the OJ literal "at the very least the top-level dependencies" without forbidding deeper SBOMs at the manufacturer's discretion. Alternative readings: R2 (full transitive closure) is operationally heavier and not strictly required by the OJ text, though some sector profiles (medical devices, automotive) may exceed this baseline; R3 (critical-path-only) would let vendors omit categories that may matter under coordinated vulnerability disclosure timelines. The "commonly used and machine-readable" VAG+POLY S3 ambiguity is carried up into SR-CRA-008.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-008
@@ -284,7 +284,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL143, article_ref: "Annex I Part II (1) — SBOM format" }
     - { clause_id: CRA-CL39, article_ref: "Art. 3(39) — SBOM definition (details and supply chain relationships)" }
-  linked_objectives: [SO-CRA-007, SO-CRA-038]
+  linked_objectives: [SG-CRA-007, SG-CRA-038]
   sub_domain: [D-06.2, D-02.1]
   nist_csf_mapping:
     - { id: ID.AM-02, title: "Inventories of software, services, and systems managed by the organization are maintained" }
@@ -299,7 +299,7 @@ status: DRAFT
     The phrase "commonly used and machine-readable format" is POLY+VAG S3 and admits three materially distinct readings tied to format families. Reading chosen: R3, treating the obligation as "any commonly-used machine-readable format that supports automated component identification," pending the Commission implementing acts under Art. 13(24). Alternative readings: R1 (a specific sector format such as SPDX or CycloneDX) and R2 (a different specific sector format) are both currently common in the market but neither is OJ-mandated at present; the executing-acts-dependent choice lets manufacturers pick what interoperates best with their tooling while preparing for the eventual binding specification. An additional reading, R5, would set the format floor to a domain-agnostic cryptographic manifest that any SBOM-aware toolchain can ingest regardless of origin sector, achieving interoperability through shared primitives rather than shared schemas; R5 is admitted as the long-run consensus direction but rejected for current OJ reading because Annex I does not specify such a manifest, leaving the implementing-acts route to harmonise rather than the SR body to import. Format names are intentionally not introduced into the SR body to honour the V12 tech-stack denylist. Remain open: (a) when the implementing acts specify a single binding format, does the choice bind retroactively across previously-published SBOMs or only prospectively for new releases; (b) does Annex I Part II (1) require that the SBOM be human-readable in addition to machine-readable, or is the format-agnostic floor purely automated.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-009
@@ -308,7 +308,7 @@ status: DRAFT
     - { clause_id: CRA-CL143, article_ref: "Annex I Part II (1) — SBOM contents" }
     - { clause_id: CRA-CL161, article_ref: "Annex VII §2(b) — SBOM in technical documentation" }
     - { clause_id: CRA-CL167, article_ref: "Annex VII §8 — SBOM on MSA request" }
-  linked_objectives: [SO-CRA-007, SO-CRA-038]
+  linked_objectives: [SG-CRA-007, SG-CRA-038]
   sub_domain: [D-06.2, D-02.1, D-09.4]
   nist_csf_mapping:
     - { id: ID.AM-02, title: "Inventories of software, services, and systems managed by the organization are maintained" }
@@ -323,7 +323,7 @@ status: DRAFT
     The Annex VII §8 phrase "where necessary in order for that authority to be able to check compliance" is VAG-S2 — necessary to what scope? Reading chosen: R1, where "necessary" is the subset of the SBOM directly relevant to the compliance question under investigation, not a comprehensive dump of every component. Alternative reading: R2 (full SBOM disclosure without scope filter) would over-disclose proprietary supply-chain relationships unrelated to the question and create an IP tension that Annex VII §8 does not require. The remaining S2/S3 ambiguities from SR-CRA-007 and SR-CRA-008 (top-level depth, format selection) carry up unchanged.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-010
@@ -332,7 +332,7 @@ status: DRAFT
     - { clause_id: CRA-CL144, article_ref: "Annex I Part II (2) — address and remediate without delay" }
     - { clause_id: CRA-CL132, article_ref: "Annex I Part I (2)(c) — vulnerabilities addressed through security updates" }
     - { clause_id: CRA-CL24, article_ref: "Art. 13(6) sentence 1 — component vulnerability address + remediate" }
-  linked_objectives: [SO-CRA-008]
+  linked_objectives: [SG-CRA-008]
   sub_domain: [D-02.2]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed commensurate with risk" }
@@ -347,7 +347,7 @@ status: DRAFT
     The phrase "without delay" is VAG-S3 in the Berry-classic sense, structurally identical to "without undue delay" in GDPR Art. 33 and NIS 2 Art. 23(4)(a). Reading chosen: R1, where remediation action commences immediately on awareness and the ceiling is determined by the duration of the technical remediation pipeline, with record-keeping and advisory messages to users accompanying each remediation step. Alternative readings: R2 (delay permitted up to a calendar ceiling of N days regardless of pipeline duration) would risk creating a licence to delay beneath the headline obligation; R3 (subjective manufacturer discretion) is rejected as failing the inquiry-resistant test. An additional reading, R4, would characterise "without delay" as beginning at the moment of developer handoff rather than the moment of awareness, shifting the clock upstream to internal triage; R4 is rejected because the OJ text anchors the trigger at the manufacturer's knowledge rather than at developer assignment, but the operational consequence is identical where the manufacturer's process is tightly coupled. The COORD-S2 "address and remediate" conjunction is treated literally as both required, with "address" denoting the acknowledgement, triage, and communication step and "remediate" denoting the patch or mitigation. Remain open: (a) does the awareness clock pause while the manufacturer awaits confirmation from the reporter (CVD step), or does it run continuously from initial receipt; (b) when remediation requires changes that exceed a single release cycle (schema migration, dependency removal), does the literal "without delay" require partial mitigations to be deployed in the interim.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-012
@@ -355,7 +355,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL27, article_ref: "Art. 13(8) sentence 1 — handle vulnerabilities during support period" }
     - { clause_id: CRA-CL143, article_ref: "Annex I Part II (1) — identify + document" }
-  linked_objectives: [SO-CRA-010]
+  linked_objectives: [SG-CRA-010]
   sub_domain: [D-02.2, D-04.2]
   nist_csf_mapping:
     - { id: ID.RA-06, title: "Risk responses are chosen, prioritized, planned, tracked, and communicated" }
@@ -370,7 +370,7 @@ status: DRAFT
     The phrase "handled effectively" is VAG-S3 because the criterion of effectiveness is not defined in the OJ text and admits materially different operational interpretations (R1 remediation always, R2 mitigation acceptable, R3 either). Reading chosen: R3, where the manufacturer selects the appropriate response (patch or workaround mitigation) and documents the choice in the risk-assessment update under Art. 13(7) and (14). Alternative readings: R1 (remediation-only) would prohibit interim mitigations that are often the only safe-path response in critical-infrastructure settings; R2 (mitigation-only) would let vendors skip patching indefinitely. An additional reading, R4, would treat "handled effectively" as a single composite — the manufacturer decides for each vulnerability whether patching or mitigation is the operative response, and the choice itself counts as handling; R4 is materially equivalent to R3 and is rejected as introducing no distinct compliance population beyond R3. The SCOPE-Q-S2 "including its components" is read under R2 (transitive dependency) as the dominant reading, anchored in Annex I Part II (1) SBOM inventory scope. Remain open: (a) does "handled effectively" require measurable service-level objectives (e.g., patch-deployment cadence, mitigation-effectiveness verification) or is procedural compliance with the risk-assessment update sufficient; (b) when a component goes end-of-life upstream during the product's support period, does the manufacturer inherit a duty to vendor-fix or migrate.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-013
@@ -379,7 +379,7 @@ status: DRAFT
     - { clause_id: CRA-CL28, article_ref: "Art. 13(8) sentence 2 — support-period determination factors" }
     - { clause_id: CRA-CL29, article_ref: "Art. 13(8) sentence 3 — 5-year minimum" }
     - { clause_id: CRA-CL163, article_ref: "Annex VII §4 — support-period determination info" }
-  linked_objectives: [SO-CRA-010, SO-CRA-061]
+  linked_objectives: [SG-CRA-010, SG-CRA-061]
   sub_domain: [D-02.2, D-09.4]
   nist_csf_mapping:
     - { id: ID.IM-02, title: "Improvement processes for cybersecurity risk management are implemented across organizational tiers" }
@@ -394,7 +394,7 @@ status: DRAFT
     The phrase "reasonable user expectations" is VAG-S3 because the criterion is case-law-laden and Berry-classic (cf. CRA-C28 in the v0.1 ambiguity catalogue, §3.2). Reading chosen: R2, anchoring expectations to what a reasonable user in the same product sector would expect, with the harmonised-standards layer and ADCO guidance as the structural benchmark. Alternative readings: R1 (subjective to the specific user) is rejected because it makes the obligation unenforceable; R3 (industry-standard) is materially equivalent to R2 and is admitted as a non-strict alternative under the same OJ literal. An additional reading, R4, would anchor expectations to the consumer-warranty norms of the relevant Member State, importing consumer-protection vocabulary into a cybersecurity obligation; R4 is rejected because consumer-warranty law varies across the Union and would compromise the level playing field that Annex I plus the support-period minimum is designed to deliver; harmonised standards and ADCO guidance remain the structurally sound anchor. Remain open: (a) where Art. 27 harmonised standards specify a category-specific support-period baseline (e.g., a 7-year default for industrial control), does the manufacturer's shorter determination bind or does the standard override; (b) does the support-period determination need to be re-justified at each substantial-modification event under Art. 13(10), or is the initial determination sufficient for the product family.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-014
@@ -403,7 +403,7 @@ status: DRAFT
     - { clause_id: CRA-CL29, article_ref: "Art. 13(8) sentence 3 — at least five years" }
     - { clause_id: CRA-CL44, article_ref: "Art. 13(19) — end date at time of purchase" }
     - { clause_id: CRA-CL157, article_ref: "Annex II §7 — type of technical support + end-date" }
-  linked_objectives: [SO-CRA-010, SO-CRA-061]
+  linked_objectives: [SG-CRA-010, SG-CRA-061]
   sub_domain: [D-02.2]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -418,7 +418,7 @@ status: DRAFT
     The phrase "at least five years" in Art. 13(8) sentence 3 is VAG-S2: literal "at least" anchors the floor but does not cap it. Reading chosen: R2, where the duration is 5+ years depending on the Art. 13(8) sentence 2 factors, with the literal "at least" preserving a manufacturer choice to extend beyond the floor. R1 (exactly 5 years) is rejected on the literal "at least," and the "expected use time" carve-out for shorter-lived products is anchored in the manufacturer's risk-assessment-documentation record under Art. 13(3) + Annex VII §3/§4 — the carve-out does not lower the bar so much as it acknowledges a class of products where the support period is determined by usage rather than by the regulatory floor.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-015
@@ -426,7 +426,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL34, article_ref: "Art. 13(10) — substantial-modification compliance scope (last version)" }
     - { clause_id: CRA-CL30, article_ref: "Art. 3(30) — substantial modification" }
-  linked_objectives: [SO-CRA-060, SO-CRA-047]
+  linked_objectives: [SG-CRA-060, SG-CRA-047]
   sub_domain: [D-02.2, D-07.4, D-09.4]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed commensurate with risk" }
@@ -441,14 +441,14 @@ status: DRAFT
     The phrase "substantial modification" inherits the Art. 3(30) definition, which is VAG+POLY S3 with three materially distinct readings. Reading chosen: R1 combined with R3, treating the Art. 3(30) literal disjunctive "affects compliance OR modifies intended purpose" as the operative test, so any change that crosses either threshold is substantial. Alternative readings: R1 alone (compliance impact only) would miss the intended-purpose dimension, where R3 alone (intended-purpose only) would miss the compliance dimension. An additional reading, R5, would apply "substantial modification" only at the boundary where compliance verification triggers anew under Annex VIII, importing the conformity-assessment notion into the modification definition; R5 reads the Art. 3(30) disjunction through a conformity lens and is admitted as a non-strict equivalent to R1+R3 when the implementation of substantial-modification checks already runs through conformity re-verification. The "free of charge" qualifier is POLY-S2 with R1 (no monetary cost) as the literal reading, which the SR preserves without imported carve-outs. Remain open: (a) how ADCO and the Commission interpret "additional costs to adjust the hardware and software environment" when a migration imposes modest operational friction that is hard to monetise; (b) whether the free-migration access must be perpetual or only for the residual support period of the original version.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-016
   title: "Ten-year update-availability tail beyond support period"
   source_clauses:
     - { clause_id: CRA-CL33, article_ref: "Art. 13(9) — 10-year update availability" }
-  linked_objectives: [SO-CRA-011]
+  linked_objectives: [SG-CRA-011]
   sub_domain: [D-02.2, D-05.2]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed commensurate with risk" }
@@ -463,7 +463,7 @@ status: DRAFT
     The phrase "whichever is longer" creates a twin-anchor (VAG-S2) pattern where the 10-year floor and the support-period remainder are compared, and the longer of the two applies in each case. Reading chosen: R2, where the calculation is performed case-by-case on a per-update basis — a long-support product may have many updates subject to the support-period remainder rather than the fixed 10-year floor. R1 (always 10 years) is rejected because it ignores the "whichever is longer" qualifier; the alternative R3 (always the support-period remainder) is similarly rejected because it ignores the 10-year floor when the support period is shorter than 10 years.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-017
@@ -471,7 +471,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL150, article_ref: "Annex I Part II (8) — disseminate without delay, free of charge" }
     - { clause_id: CRA-CL132, article_ref: "Annex I Part I (2)(c) — notification of available updates" }
-  linked_objectives: [SO-CRA-009]
+  linked_objectives: [SG-CRA-009]
   sub_domain: [D-02.2]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed commensurate with risk" }
@@ -486,7 +486,7 @@ status: DRAFT
     The phrase "without delay" inherits the S3 ambiguity addressed in SR-CRA-010 and is treated identically — action commences immediately on awareness, with the ceiling set by the technical pipeline. The "unless otherwise agreed" carve-out in Annex I Part II (8) is POLY-S2 because "agreed" admits at least two materially distinct populations: Reading chosen: R1, the literal tailor-made product business-user agreement is the dominant reading, and consumer-product updates cannot be subject to charge under the carve-out. An additional reading, R3, would treat "without delay" as beginning at the moment the security update is technically ready, independent of any corporate release-cycle cadence — a stricter reading that effectively bans bundling security updates with feature releases; R3 is rejected where Annex I Part II (2) explicitly permits bundling under the "where technically feasible" qualifier, but the literal "without delay" from awareness remains the operative anchor. Remain open: (a) does "tailor-made" map onto the same Art. 6(a) proviso population used in SR-CRA-026, or is Annex I Part II (8) carving out a wider product class that lets enterprises negotiate subscription-based security-update access; (b) does Annex I Part II (8) require the advisory message to mention the option to file an Art. 14(8) user notification independently of the manufacturer's dissemination.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-018
@@ -494,7 +494,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL132, article_ref: "Annex I Part I (2)(c) — automatic security updates + opt-out + postponement" }
     - { clause_id: CRA-CL158, article_ref: "Annex II §8(e) — how the automatic-update default setting can be turned off" }
-  linked_objectives: [SO-CRA-019, SO-CRA-009]
+  linked_objectives: [SG-CRA-019, SG-CRA-009]
   sub_domain: [D-03.4, D-02.2]
   nist_csf_mapping:
     - { id: PR.PS-01, title: "Configuration management practices are established, documented, and applied to assets" }
@@ -509,7 +509,7 @@ status: DRAFT
     The phrase "within an appropriate timeframe" in Annex I Part I (2)(c) is VAG-S3 in the Berry-classic "appropriate" sense (cf. GDPR Art. 32, NIS 2 Art. 21). Reading chosen: R2, anchoring the timeframe to the severity of the addressed vulnerability and the user's operational environment, modulated by the Art. 13(2) risk assessment. Alternative readings: R1 (a single quantitative ceiling for all vulnerabilities) is rejected because severity modulation is the operative sanity check; R3 (manufacturer discretion) is rejected as failing the inquiry-resistant test. The "clear and easy-to-use" qualifier is VAG-S2 with R1 (UI discoverable + single-click) as the literal reading, anchored in harmonised standards and Art. 7(4) Commission implementing acts. An additional reading, R5, would tie the timeframe to harmonised-standards baselines that specify a category-specific deployment window (industrial control, medical device, consumer IoT); R5 is admitted as the long-run consensus direction but is rejected for current OJ reading because Annex I Part I (2)(c) leaves the timeframe to the manufacturer's risk assessment, pending Art. 7(4) implementing acts that may specify defaults. Remain open: (a) does the opt-out obligation require that disabling auto-update also disable any active update channel that could silently re-enable, or merely that the toggle be respected once flipped; (b) when updates are bundled (security + functionality), must Annex I Part II (2)'s "where technically feasible" separation route the entire bundle through opt-in for the functionality part.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-019
@@ -518,7 +518,7 @@ status: DRAFT
     - { clause_id: CRA-CL147, article_ref: "Annex I Part II (5) — CVD policy" }
     - { clause_id: CRA-CL32, article_ref: "Art. 13(8) sentence 6 — CVD policy" }
     - { clause_id: CRA-CL103, article_ref: "Art. 24(3) — OSS steward Art. 14 extension cross-ref to CVD" }
-  linked_objectives: [SO-CRA-012, SO-CRA-049]
+  linked_objectives: [SG-CRA-012, SG-CRA-049]
   sub_domain: [D-02.3, D-09.1]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -533,7 +533,7 @@ status: DRAFT
     The phrase "policy on coordinated vulnerability disclosure" is POLY-S2 because three materially distinct policy architectures are admissible. Reading chosen: R3, a structured receive + triage + publish + post-disclosure verification pipeline, anchored in the implementing acts under Art. 14(9) and in Art. 17(5) EU vulnerability database integration. Alternative readings: R1 (ISO 29147 + ISO 30111-style structured policy, which is admissible) is a non-strict equivalent to R3; R2 (lighter disclosure-statement policy) is rejected because it fails the "enforce" element by omitting the triage and verification phases. The downstream contact-address expectation is developed separately in SR-CRA-021.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-021
@@ -542,7 +542,7 @@ status: DRAFT
     - { clause_id: CRA-CL148, article_ref: "Annex I Part II (6) — vulnerability sharing + contact address" }
     - { clause_id: CRA-CL42, article_ref: "Art. 13(17) — single point of contact (manufacturer)" }
     - { clause_id: CRA-CL152, article_ref: "Annex II §2 — SPOC for vulnerability reporting" }
-  linked_objectives: [SO-CRA-013]
+  linked_objectives: [SG-CRA-013]
   sub_domain: [D-02.3, D-09.1, D-09.4]
   nist_csf_mapping:
     - { id: GV.SC-04, title: "Suppliers and other third parties are routinely assessed using audits, test results, or other forms of evaluation to confirm they are meeting their contractual obligations" }
@@ -557,7 +557,7 @@ status: DRAFT
     The phrase "contact address for the reporting of vulnerabilities" is POLY-S2 because three materially distinct channel types are admissible. Reading chosen: R3, requiring at minimum an email address published in a machine-discoverable location (security.txt or the well-known URI), with the freedom to expand into a secure web form or PGP-key-protected drop. Alternative readings: R1 (email only) is admitted as the floor; R2 (web form only without an email alternative) is rejected because it impairs automated researcher-tooling compatibility.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-023
@@ -566,7 +566,7 @@ status: DRAFT
     - { clause_id: CRA-CL133, article_ref: "Annex I Part I (2)(d) — appropriate control mechanisms incl. authentication, identity or access management" }
     - { clause_id: CRA-CL40, article_ref: "Art. 13(15) — type/batch/serial number or other element" }
     - { clause_id: CRA-CL153, article_ref: "Annex II §3 — name and type and unique identification" }
-  linked_objectives: [SO-CRA-015, SO-CRA-056]
+  linked_objectives: [SG-CRA-015, SG-CRA-056]
   sub_domain: [D-03.1, D-03.3, D-09.4]
   nist_csf_mapping:
     - { id: PR.AA-01, title: "Identities and credentials for authorized users, services, and hardware are managed by the organization" }
@@ -581,7 +581,7 @@ status: DRAFT
     The phrase "authentication, identity or access management systems" in Annex I Part I (2)(d) is COORD-S2, with three terms bound by OR. Reading chosen: R3, treating the three terms as distinct concepts rather than as synonyms (industry usage tends to collapse identity and access management into a single IAM discipline, but the OJ text preserves the distinction). R1 (closed list — only these three) is rejected on the literal "including but not limited to." No S3 instance is introduced on this rule; the SCOPE-Q question of whether "authentication" includes MFA-typical mechanisms or merely single-factor is a downstream issue that the harmonised-standards layer will eventually resolve without being a literal misquote in the SR.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-025
@@ -590,7 +590,7 @@ status: DRAFT
     - { clause_id: CRA-CL131, article_ref: "Annex I Part I (2)(b) — secure by default configuration" }
     - { clause_id: CRA-CL2, article_ref: "Art. 6(a) proviso — properly installed, intended purpose, reasonably foreseeable" }
     - { clause_id: CRA-CL3, article_ref: "Art. 3(23) — intended purpose" }
-  linked_objectives: [SO-CRA-018, SO-CRA-045]
+  linked_objectives: [SG-CRA-018, SG-CRA-045]
   sub_domain: [D-03.4]
   nist_csf_mapping:
     - { id: PR.PS-01, title: "Configuration management practices are established, documented, and applied to assets" }
@@ -605,7 +605,7 @@ status: DRAFT
     The phrase "secure by default configuration" is VAG-S3 because three materially distinct configurations produce materially different compliance populations. Reading chosen: R2 — the security features (authentication, access control, audit logging, network segmentation, secure-update mechanism) are enabled by default at first power-up. Alternative readings: R1 (deny-all initial state, with the user explicitly enabling required services) and R3 (zero-config security, the product works securely without any user configuration) are operationally convergent with R2: all three require security features on at delivery, and only the configuration-management user-experience differs. An additional reading, R4, would extend the "secure by default" floor to the post-deployment configuration surface: any change the user makes from the default is documented and reversible through the reset mechanism; R4 is admitted as a strengthening of the chosen R2 reading and is rejected where it would conflict with the tailor-made carve-out, which permits negotiated non-default configurations in business-user settings. Remain open: (a) when a user explicitly changes a setting from the secure default and a subsequent vulnerability surfaces, does the manufacturer retain responsibility for the as-configured state or does the configuration shift break the Art. 13(2) risk-assessment chain; (b) does the "reset to original state" obligation require preserving user data through the reset (R3) or wiping it (R1/R2).
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-027
@@ -613,7 +613,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL141, article_ref: "Annex I Part I (2)(l) — recording + monitoring + user opt-out" }
     - { clause_id: CRA-CL158, article_ref: "Annex II §8 — detailed instructions" }
-  linked_objectives: [SO-CRA-020, SO-CRA-068]
+  linked_objectives: [SG-CRA-020, SG-CRA-068]
   sub_domain: [D-10.1, D-04.1]
   nist_csf_mapping:
     - { id: PR.PS-04, title: "Log records are generated and made available for continuous monitoring and analysis" }
@@ -628,7 +628,7 @@ status: DRAFT
     The phrase "opt-out mechanism for the user" in Annex I Part I (2)(l) is VAG-S2 because "opt-out" admits at least three materially distinct operational readings. Reading chosen: R1 (the user can disable logging entirely), preserving the literal OJ text. The opt-out creates a privacy-by-design tension: GDPR Art. 25 emphasises by-default-on privacy controls under certain readings, but the OJ CRA text on this clause is opt-out; rule preserves the OJ-literal opt-out interpretation rather than importing non-CRA framings. No S3 instance is introduced on this rule.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-045
@@ -636,7 +636,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL46, article_ref: "Art. 13(21) — corrective measures on non-conformity" }
     - { clause_id: CRA-CL30, article_ref: "Art. 3(30) — substantial modification (cross-ref for trigger)" }
-  linked_objectives: [SO-CRA-063]
+  linked_objectives: [SG-CRA-063]
   sub_domain: [D-04.2, D-07.4, D-09.4]
   nist_csf_mapping:
     - { id: RS.MI-01, title: "Incidents are contained" }
@@ -652,7 +652,7 @@ status: DRAFT
     `Immediately take the corrective measures necessary` is VAG+POLY-S2 — R1 (`immediately` = upon knowledge of non-conformity, in line with Article 14 awareness trigger; `corrective measures necessary` = the minimum set needed to restore conformity). `Withdraw or recall` is POLY-S2 — R1 (literal OR — either is admissible; the choice is the manufacturer's, governed by proportionality). The cross-reference to Article 3(30) substantial modification is significant: if the corrective measure requires a substantial modification, the Art. 22(1) third-party-modifier trigger may engage as well, transferring liability downstream. Remain open: (a) what regulatory practice crystallises around `have reason to believe` — i.e. whether constructive knowledge attaches upon receipt of an upstream-CVD report from a component supplier (per Article 13(6) in SR-CRA-051) or only upon internal verification of the non-conformity; (b) whether withdrawal versus recall is itself a proportionality determination that must be evidenced ex ante in the technical documentation under Annex VII.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-046
@@ -661,7 +661,7 @@ status: DRAFT
     - { clause_id: CRA-CL136, article_ref: "Annex I Part I (2)(g) — adequate, relevant, necessary = data minimisation" }
     - { clause_id: CRA-CL19, article_ref: "Art. 13(3) sentence 2 — intended purpose + reasonably foreseeable use" }
     - { clause_id: CRA-CL3, article_ref: "Art. 3(23) — intended purpose" }
-  linked_objectives: [SO-CRA-034, SO-CRA-072]
+  linked_objectives: [SG-CRA-034, SG-CRA-072]
   sub_domain: [D-05.1, D-07.1]
   nist_csf_mapping:
     - { id: PR.DS-12, title: "Data is managed consistent with the organization's risk strategy to protect the confidentiality, integrity, and availability of data" }
@@ -676,7 +676,7 @@ status: DRAFT
     The three coordinated adjectives — `adequate, relevant and limited to what is necessary` — carry VAG+POLY+COORD-S3 ambiguity. Reading chosen: R2 (proportionate to purpose, demonstrable ex ante via the Annex VII §3 risk-assessment record). R1 (literal reading of each adjective as an independent gate) and R3 (any single reading satisfies all three) are the alternative readings. The `intended purpose` term inherits the Article 3(23) D23 POLY-S2 classification — the intended purpose is a product-class-relative determination that the manufacturer documents in the technical documentation (Annex VII §3). Remain open: (a) whether the EDPB's forthcoming guidance on the CRA's intersection with GDPR Article 25 (data protection by design and by default) will supply a harmonised reading of `necessary in relation to intended purpose`; (b) the operational handling of minimisation when downstream integrators extend the intended purpose (e.g. via third-party plugins or configuration) — i.e. whether the manufacturer's documented minimisation suffices, or whether the integrator inherits a re-evaluation duty.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-047
@@ -685,7 +685,7 @@ status: DRAFT
     - { clause_id: CRA-CL149, article_ref: "Annex I Part II (7) — secure update distribution" }
     - { clause_id: CRA-CL150, article_ref: "Annex I Part II (8) — dissemination without delay, free of charge" }
     - { clause_id: CRA-CL43, article_ref: "Art. 13(18) — accompany with Annex II info, accessible for 10 years" }
-  linked_objectives: [SO-CRA-035, SO-CRA-009]
+  linked_objectives: [SG-CRA-035, SG-CRA-009]
   sub_domain: [D-05.2, D-02.2]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed commensurate with risk" }
@@ -700,7 +700,7 @@ status: DRAFT
     `Accessible for 10 years` is POLY-S2: R1 — the literal text of Article 13(18) reads `accessible for the support period + at least 10 years`, and the chosen reading preserves the conjunction (the longer of the two periods governs). R2 (10 years from the placing-on-market date, full stop) is rejected as narrower than the literal. The `without delay` qualifier from (8) is VAG+POLY-S3 — see SR-CRA-010 for the analysis; it carries forward consistently here. The `duly justified and agreed` (paid-update exception) is POLY-S2 — R1 (justification + bilateral agreement + commercial-relationship context — all three required). Remain open: (a) what facts constitute `duly justified` — whether harmonised criteria under Article 27 will constrain the use of the paid-update exception, particularly for critical-product categories covered by Annex III; (b) the operationalisation of `accompanied by advisory messages` — whether the minimum content is machine-readable CVSS vector, plain-language summary, or both, pending Commission implementing acts.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-050
@@ -708,7 +708,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL23a, article_ref: "Art. 13(5) — due diligence on third-party components" }
     - { clause_id: CRA-CL48, article_ref: "Art. 3(48) — free and open-source software definition" }
-  linked_objectives: [SO-CRA-037]
+  linked_objectives: [SG-CRA-037]
   sub_domain: [D-06.1, D-07.1]
   nist_csf_mapping:
     - { id: GV.SC-01, title: "A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders" }
@@ -724,7 +724,7 @@ status: DRAFT
     `Due diligence` carries VAG+POLY-S3 ambiguity. The reading chosen is R3 — both procedural (a documented vetting process, evidenced in Annex VII §2) and substantive (positive verification of supplier / component security posture). R1 (procedural only — paper-based) is rejected as insufficient; R2 (substantive only, without documentation) is rejected as falling short of the conformity-assessment evidentiary requirements. The Article 7 reference to OSS in Article 3(48) — and the Article 24 steward provisions (SR-CRA-072 to SR-CRA-074) — together draw the perimeter at which due-diligence gives way to the steward-policy interface. Remain open: (a) whether the implementing acts under Article 13(24) (cf. SR-CRA-052) will specify minimum due-diligence evidentiary content — e.g. signed attestations of CVE-monitoring posture, vulnerability-handling SLA disclosure — beyond what is recorded in Annex VII §2 today; (b) the operational status of `due diligence` for indirect dependencies (transitive depth beyond the SBOM top-level floor) where the manufacturer has no visibility — pending implementing-acts guidance.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-051
@@ -732,7 +732,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL24, article_ref: "Art. 13(6) sentence 1 — report + address + remediate component vulnerabilities" }
     - { clause_id: CRA-CL25, article_ref: "Art. 13(6) sentence 2 — share with component supplier" }
-  linked_objectives: [SO-CRA-037]
+  linked_objectives: [SG-CRA-037]
   sub_domain: [D-06.3, D-02.2]
   nist_csf_mapping:
     - { id: GV.SC-04, title: "Suppliers and other third parties are routinely assessed using audits, test results, or other forms of evaluation to confirm they are meeting their contractual obligations" }
@@ -747,7 +747,7 @@ status: DRAFT
     `Address AND remediate` is COORD-S2: R1 (both — distinct actions; `address` encompasses risk evaluation and the planned response, `remediate` is the deployment of the fix). `In an open-source component` is POLY-S2 — R1 (broad — any open-source component integrated into the product, regardless of licensing model). The relationship between Article 13(6) and Article 14 reporting is residual-and-not-reported: an isolated component vulnerability is the Article 13(6) duty; a vulnerability that becomes an actively-exploited vulnerability or a severe incident in the manufacturer's own product is the Article 14 reporting duty. Remain open: (a) the practical interplay with Article 14 where the upstream component vulnerability materialises into an incident affecting the manufacturer's product — whether two separate notification streams are required, or whether a single incident-report discharges both; (b) the treatment of legally-protected vulnerability disclosures (e.g. third-party bug-bounty findings) under sentence 2's cooperative-sharing limb — i.e. whether the manufacturer can withhold code-level diagnostic information without breaching the duty.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-052
@@ -755,7 +755,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL143, article_ref: "Annex I Part II (1) — SBOM covering at least top-level dependencies" }
     - { clause_id: CRA-CL49, article_ref: "Art. 13(24) — Commission implementing acts on SBOM format" }
-  linked_objectives: [SO-CRA-038]
+  linked_objectives: [SG-CRA-038]
   sub_domain: [D-06.2]
   nist_csf_mapping:
     - { id: ID.AM-02, title: "Inventories of software, services, and systems managed by the organization are maintained" }
@@ -769,7 +769,7 @@ status: DRAFT
     `Top-level dependencies` is POLY-S2 — R1 (depth-1 — the immediate dependencies of the product, not transitive chains). R2 (transitive to N levels) is rejected as exceeding the literal `top-level` text. R3 (risk-based depth) is preserved as the rationale behind future implementing-acts expansion. Article 13(24) implementing acts will expand the floor to deeper depths for specific product categories — noted in the SR record but not asserted here. The `commonly used and machine-readable format` qualifier is POLY-S2 — R1 (formats accepted by the day-to-day tooling ecosystem; SPDX/CycloneDX/SWID satisfy this). Remain open: (a) whether the implementing acts will mandate a single format or accept the existing multi-format ecosystem, and whether backward-compatibility requirements will govern format migration; (b) the operational threshold for `top-level` in products with non-trivial dynamic-linking or runtime-fetched modules — i.e. whether `top-level` extends to dynamic dependencies resolved at install time, or only to statically declared direct dependencies.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-064
@@ -777,7 +777,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL14, article_ref: "Art. 13(1) — design/development/production per Annex I Part I" }
     - { clause_id: CRA-CL129, article_ref: "Annex I Part I (1) — chapeau" }
-  linked_objectives: [SO-CRA-045]
+  linked_objectives: [SG-CRA-045]
   sub_domain: [D-07.1, D-09.2]
   nist_csf_mapping:
     - { id: PR.PS-06, title: "Secure software development practices are integrated, and their performance is monitored throughout the SDLC" }
@@ -792,7 +792,7 @@ status: DRAFT
     `Designed, developed and produced` is COORD-S2 — three coordinated verbs. Reading chosen: R1 (three distinct phases — each must comply with Annex I Part I). R2 (composite description of a single integrated activity) is rejected as vulnerable to a partial-compliance reading — a manufacturer who only addressed the design phase and not the production phase could invoke the composite reading. The Article 13(2) risk assessment (SR-CRA-065) is the operational anchor for the proportionality of the level implemented. Remain open: (a) whether ongoing production-process drift (cf. Article 13(14), SR-CRA-069) re-fires the Article 13(1) requirement, or whether Article 13(14) is a separate continuous-conformity anchor — pending harmonised practice; (b) the demarcation between `produced` (the manufacturer's own production) and the supply-chain-incorporation of third-party components, which is treated separately in Article 13(5) (SR-CRA-050).
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-065
@@ -801,7 +801,7 @@ status: DRAFT
     - { clause_id: CRA-CL15, article_ref: "Art. 13(2) sentence 1 — cybersecurity risk assessment" }
     - { clause_id: CRA-CL16, article_ref: "Art. 13(2) sentence 1 — 6-phase lifecycle propagation" }
     - { clause_id: CRA-CL17, article_ref: "Art. 13(2) sentence 2 — health + safety of users" }
-  linked_objectives: [SO-CRA-045, SO-CRA-053]
+  linked_objectives: [SG-CRA-045, SG-CRA-053]
   sub_domain: [D-07.1, D-09.2]
   nist_csf_mapping:
     - { id: ID.RA-05, title: "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response decisions" }
@@ -816,7 +816,7 @@ status: DRAFT
     `Planning, design, development, production, delivery and maintenance` is COORD-S3 — six coordinated phases. Reading chosen: R1 (all six required). R3 (`take into account` preserves partial compliance — some phases may not require full integration) is rejected in favour of the Annex I literal — each phase must take the assessment outcome into account. `Health and safety` is POLY-S2: R3 (both — physical + psychological harm arising from a compromised product). `Users` is SCOPE-Q-S2: R3 (natural + legal persons). The relationship to the GDPR DPIA (Article 35) is illustrative — the CRA risk assessment is broader in scope (product-cybersecurity) but narrower in audience (users of the product) than the GDPR DPIA. Remain open: (a) whether the Commission's implementing-acts guidance will crystallise what counts as `taking into account` at each phase — i.e. a minimum evidentiary step per phase; (b) the operational interaction with the GDPR DPIA when the product processes personal data — whether the CRA risk assessment can substitute for the GDPR DPIA's data-protection-specific subset, or whether both must be conducted.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-066
@@ -826,7 +826,7 @@ status: DRAFT
     - { clause_id: CRA-CL19, article_ref: "Art. 13(3) sentence 2 — intended purpose + reasonably foreseeable use" }
     - { clause_id: CRA-CL20, article_ref: "Art. 13(3) sentence 3 — Annex I Part I (2) applicability" }
     - { clause_id: CRA-CL162, article_ref: "Annex VII §3 — risk-assessment documentation in technical documentation" }
-  linked_objectives: [SO-CRA-053, SO-CRA-054]
+  linked_objectives: [SG-CRA-053, SG-CRA-054]
   sub_domain: [D-09.2, D-09.4, D-07.1]
   nist_csf_mapping:
     - { id: ID.RA-05, title: "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response decisions" }
@@ -842,14 +842,14 @@ status: DRAFT
     `Documented and updated as appropriate during a support period` carries VAG-S2: R4 (material change in product / threat landscape / on becoming aware of vulnerability — Article 13(14) update anchor). R1 (fixed-period update — annual review) is rejected as over-prescriptive; R2 (`as appropriate` only at the manufacturer's initiative) is rejected as failing to operationalise the duty; R3 (any material change as the manufacturer determines) is rejected as under-prescriptive. `Intended purpose AND reasonably foreseeable use` (COOR-S3): R1 (both required — cumulative). `Whether and, if so in what manner` is POLY-S2: R1 (selective applicability of Annex I Part I (2) requirements — not all 13 sub-points apply to every product class, and the assessment must show the selection rationale). Remain open: (a) the operational frequency of `as appropriate` — i.e. whether harmonised practice will specify minimum review triggers beyond material change; (b) the relationship to the manufacturer's information-society obligations under NIS 2 (entity-level risk assessment) — whether the CRA product-side assessment supplies evidence that can be carried into the NIS 2 entity-level assessment.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-069
   title: "Series-of-production conformity and harmonised-standards monitoring"
   source_clauses:
     - { clause_id: CRA-CL39, article_ref: "Art. 13(14) — series-of-production conformity" }
-  linked_objectives: [SO-CRA-047]
+  linked_objectives: [SG-CRA-047]
   sub_domain: [D-07.4, D-09.4]
   nist_csf_mapping:
     - { id: GV.OV-01, title: "Cybersecurity risk management strategy outcomes are reviewed and adjusted to ensure they adequately address organizational risks" }
@@ -864,7 +864,7 @@ status: DRAFT
     `Series of production` is POLY-S2: R1 (lot / batch — narrow) or R2 (continuous production — broad). Reading chosen: R2 (continuous production — captures modern software-as-a-service delivery where every release is a new production event). R1 is rejected as too narrow for the software product context that the CRA explicitly includes. `Remain in conformity` is VAG-S2: R1 (conformity preserved via a documented process — i.e. process discipline, not per-unit re-examination). Remain open: (a) the operational threshold for `relevant changes in harmonised standards` — i.e. whether the manufacturer must inform of every OJ publication or only those that alter the presumption of conformity for the product class; (b) the operational interface with the substantial-modification trigger (Article 13(10), SR-CRA-070) — i.e. when does a series-of-production improvement become `substantial`.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-070
@@ -874,7 +874,7 @@ status: DRAFT
     - { clause_id: CRA-CL96, article_ref: "Art. 21 — manufacturer-equivalent trigger" }
     - { clause_id: CRA-CL97, article_ref: "Art. 22(1) — third-party substantial modification" }
     - { clause_id: CRA-CL30, article_ref: "Art. 3(30) — substantial modification definition" }
-  linked_objectives: [SO-CRA-047, SO-CRA-060]
+  linked_objectives: [SG-CRA-047, SG-CRA-060]
   sub_domain: [D-07.4, D-06.4]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed commensurate with risk" }
@@ -889,7 +889,7 @@ status: DRAFT
     `Substantial modification` inherits Article 3(30) D30 — VAG+POLY+COORD-S3. See SR-CRA-061/R-CRA-015 for the full reading across this threshold. R1 (any non-compliance change) + R3 (intended-purpose modification) admitted as the disjunctive literal reading. The Article 13(10) carve-out — allowing Annex I Part II (2) compliance for the last-placed version subject to user-migration — is POLY-S2 — R1 (the carve-out is conditional on user choice; the manufacturer cannot unilaterally apply it). Remain open: (a) the operational demarcation between security updates (which rarely meet the substantial-modification threshold) and security features whose modification would meet the substantial-modification threshold — pending harmonised practice; (b) whether the substantial-modification test must be re-run at every release (formal), or only at material risk-relevant changes (substantive) — the BERs harmonised standards under Article 27 will likely converge on the latter.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-071
@@ -897,7 +897,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL158, article_ref: "Annex II §8(a)–(f) — detailed instructions" }
     - { clause_id: CRA-CL43, article_ref: "Art. 13(18) — accompany with Annex II info" }
-  linked_objectives: [SO-CRA-048]
+  linked_objectives: [SG-CRA-048]
   sub_domain: [D-08.1, D-09.4]
   nist_csf_mapping:
     - { id: PR.AT-01, title: "All users are informed and trained on cybersecurity topics (e.g. recognition of phishing, social engineering, and other relevant risks)" }
@@ -913,7 +913,7 @@ status: DRAFT
     Annex II §8 instructions address the USER (a product's end-user), not the WORKFORCE (the manufacturer's or operator's employees). NIST CSF 2.0 PR.AT-01 trains the workforce; there is no direct CSF 2.0 Subcategory for end-user instructions on secure product use. The closest analogue is PR.AT-01 (workforce awareness) — the security rationale holds but the scope is workforce, not customer. Marking SR-CRA-071 as UNMAPPED_CSF for the user-facing side while retaining the workforce-side mapping would be a more honest interpretation. The SR retains the PR.AT-01 mapping for the integrator-side (f) of Annex II §8 (which addresses workforce integrators).
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-075
@@ -922,7 +922,7 @@ status: DRAFT
     - { clause_id: CRA-CL32, article_ref: "Art. 13(8) sentence 6 — appropriate policies including CVD" }
     - { clause_id: CRA-CL147, article_ref: "Annex I Part II (5) — CVD policy" }
     - { clause_id: CRA-CL28, article_ref: "Art. 13(8) sentence 2 — support-period factors" }
-  linked_objectives: [SO-CRA-051]
+  linked_objectives: [SG-CRA-051]
   sub_domain: [D-09.1, D-02.3]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -937,14 +937,14 @@ status: DRAFT
     `Policies` is POLY-S2: R1 (the CVD + support-period-determination policies, plus any other policies the manufacturer chooses to document — minimum is the CVD and support-period). No S3 in this SR. The interplay with Article 24(1) OSS-steward policy (SR-CRA-072) is residual — the steward's policy and the manufacturer's policy are distinct instruments with distinct evidentiary purposes. Remain open: (a) the operational threshold for `appropriate` CVD policies — i.e. whether harmonised standards under Article 27 will specify minimum CVD-policy elements (e.g. security.txt, SLA for acknowledgement, time-to-triage target), analogous to ISO/IEC 29147 / 30111; (b) the relationship between this SR's CVD policy and Article 14 reporting — i.e. whether the CVD policy is the upstream funnel whose output feeds the Article 14 reporting tiers.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-076
   title: "Cessation-of-operations notification to MSAs and users"
   source_clauses:
     - { clause_id: CRA-CL48, article_ref: "Art. 13(23) — cessation of operations notification" }
-  linked_objectives: [SO-CRA-065, SO-CRA-051]
+  linked_objectives: [SG-CRA-065, SG-CRA-051]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: GV.OC-04, title: "Critical objectives, capabilities, and services that stakeholders depend on or expect from the organization are understood and communicated" }
@@ -959,7 +959,7 @@ status: DRAFT
     `Before the cessation takes effect` is POLY-S2: R1 (no fixed temporal anchor — literal `before` + `as appropriate`). R2 (e.g. 30 days before) is rejected as introducing an unstated numerical floor; the literal phrasing preserves flexibility. The `to the extent possible` qualifier (user notification) is POLY-S2 — R1 (the manufacturer uses the means reasonably available; the duty does not require a heroic outreach effort). Remain open: (a) the operational handling when the manufacturer has ceased operations before the notification could be made — i.e. whether the insolvency practitioner / liquidator inherits the duty; (b) the interface with Article 23(1) economic-operator identification (SR-CRA-063) — i.e. whether the manufacturer must identify to the MSA the next-in-line economic operator (importer, AR) responsible for ongoing supply-chain information, enabling continued MSA contact.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-079
@@ -967,7 +967,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL18, article_ref: "Art. 13(3) sentence 1 — documented and updated" }
     - { clause_id: CRA-CL21, article_ref: "Art. 13(4) sentence 1 — include risk assessment in technical documentation" }
-  linked_objectives: [SO-CRA-053]
+  linked_objectives: [SG-CRA-053]
   sub_domain: [D-09.4, D-09.2]
   nist_csf_mapping:
     - { id: GV.PO-02, title: "Cybersecurity processes and procedures for implementing the cybersecurity policy are established, communicated, and enforced" }
@@ -1011,7 +1011,7 @@ status: DRAFT
     the same phrase.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-081
@@ -1019,7 +1019,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL26, article_ref: "Art. 13(7) — systematic documentation of cybersecurity aspects" }
     - { clause_id: CRA-CL14, article_ref: "Art. 13(14) — series-of-production changes in harmonised standards" }
-  linked_objectives: [SO-CRA-054]
+  linked_objectives: [SG-CRA-054]
   sub_domain: [D-09.2, D-09.4]
   nist_csf_mapping:
     - { id: GV.OV-02, title: "The organizational cybersecurity risk management strategy is reviewed and adjusted to address changes in the organization's risk landscape (e.g., the threat environment, technology, regulations, standards)" }
@@ -1063,7 +1063,7 @@ status: DRAFT
     (CVD) reports received through the single point of contact.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-082
@@ -1071,7 +1071,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL42, article_ref: "Art. 13(17) — single point of contact" }
     - { clause_id: CRA-CL152, article_ref: "Annex II §2 — SPOC for vulnerability reporting" }
-  linked_objectives: [SO-CRA-055]
+  linked_objectives: [SG-CRA-055]
   sub_domain: [D-09.4, D-02.3]
   nist_csf_mapping:
     - { id: GV.SC-04, title: "Suppliers and other third parties are routinely assessed using audits, test results, or other forms of evaluation to confirm they are meeting their contractual obligations" }
@@ -1116,7 +1116,7 @@ status: DRAFT
     the OJ-literal text and the recital's emphasis on user choice.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-083
@@ -1126,7 +1126,7 @@ status: DRAFT
     - { clause_id: CRA-CL41, article_ref: "Art. 13(16) — manufacturer contact info on product" }
     - { clause_id: CRA-CL151, article_ref: "Annex II §1 — manufacturer contact info" }
     - { clause_id: CRA-CL153, article_ref: "Annex II §3 — product unique identification" }
-  linked_objectives: [SO-CRA-056]
+  linked_objectives: [SG-CRA-056]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: PR.AA-01, title: "Identities and credentials for authorized users, services, and hardware are managed by the organization" }
@@ -1169,7 +1169,7 @@ status: DRAFT
     three as the legal-identity anchor; the rest are optional supplements.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-084
@@ -1178,7 +1178,7 @@ status: DRAFT
     - { clause_id: CRA-CL38, article_ref: "Art. 13(13) — 10-year documentation retention" }
     - { clause_id: CRA-CL91, article_ref: "Art. 19(6) — importer 10-year retention" }
     - { clause_id: CRA-CL100, article_ref: "Art. 23(2) — economic-operator 10-year retention" }
-  linked_objectives: [SO-CRA-057]
+  linked_objectives: [SG-CRA-057]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed" }
@@ -1223,7 +1223,7 @@ status: DRAFT
     identification record (different artefact, same 10-year floor).
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-085
@@ -1234,7 +1234,7 @@ status: DRAFT
     - { clause_id: CRA-CL113, article_ref: "Art. 28(1) — EU declaration content" }
     - { clause_id: CRA-CL114, article_ref: "Art. 28(2) — declaration format per Annex V/VI" }
     - { clause_id: CRA-CL116, article_ref: "Art. 28(4) — manufacturer responsibility" }
-  linked_objectives: [SO-CRA-058, SO-CRA-063]
+  linked_objectives: [SG-CRA-058, SG-CRA-063]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: GV.PO-02, title: "Cybersecurity processes and procedures for implementing the cybersecurity policy are established, communicated, and enforced" }
@@ -1278,7 +1278,7 @@ status: DRAFT
     chain remains with the manufacturer [Art. 13(12) literal].
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-086
@@ -1288,7 +1288,7 @@ status: DRAFT
     - { clause_id: CRA-CL118, article_ref: "Art. 30(3) — CE marking before placing on market" }
     - { clause_id: CRA-CL119, article_ref: "Art. 30(6) — implementing acts for labels/pictograms" }
     - { clause_id: CRA-CL45, article_ref: "Art. 13(20) — full or simplified EU declaration with product" }
-  linked_objectives: [SO-CRA-058, SO-CRA-062]
+  linked_objectives: [SG-CRA-058, SG-CRA-062]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed" }
@@ -1328,7 +1328,7 @@ status: DRAFT
     declaration would be disproportionate.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-089
@@ -1336,7 +1336,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL35, article_ref: "Art. 13(11) — public software archives + user risk communication" }
     - { clause_id: CRA-CL34, article_ref: "Art. 13(10) — substantial-modification last-version compliance" }
-  linked_objectives: [SO-CRA-060, SO-CRA-035]
+  linked_objectives: [SG-CRA-060, SG-CRA-035]
   sub_domain: [D-02.2, D-07.4, D-09.4]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed commensurate with risk" }
@@ -1380,7 +1380,7 @@ status: DRAFT
     inside an EULA.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-090
@@ -1389,7 +1389,7 @@ status: DRAFT
     - { clause_id: CRA-CL44, article_ref: "Art. 13(19) — support-period end-date display" }
     - { clause_id: CRA-CL157, article_ref: "Annex II §7 — support-period type + end-date in user info" }
     - { clause_id: CRA-CL61, article_ref: "Art. 21 — manufacturer-equivalent inherits obligation" }
-  linked_objectives: [SO-CRA-061]
+  linked_objectives: [SG-CRA-061]
   sub_domain: [D-09.4, D-05.2]
   nist_csf_mapping:
     - { id: GV.OC-04, title: "Critical objectives, capabilities, and services that stakeholders depend on or expect from the organization are understood and communicated" }
@@ -1429,7 +1429,7 @@ status: DRAFT
     archives-discoverability baseline.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-091
@@ -1437,7 +1437,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL45, article_ref: "Art. 13(20) — full or simplified EU declaration with product" }
     - { clause_id: CRA-CL156, article_ref: "Annex II §6 — internet address for EU declaration" }
-  linked_objectives: [SO-CRA-062]
+  linked_objectives: [SG-CRA-062]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed" }
@@ -1473,7 +1473,7 @@ status: DRAFT
     period.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-092
@@ -1481,7 +1481,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL46, article_ref: "Art. 13(21) — corrective measures on non-conformity + withdrawal + recall" }
     - { clause_id: CRA-CL96, article_ref: "Art. 21 — manufacturer-equivalent trigger (cross-ref)" }
-  linked_objectives: [SO-CRA-063]
+  linked_objectives: [SG-CRA-063]
   sub_domain: [D-09.4, D-04.2, D-07.4]
   nist_csf_mapping:
     - { id: RS.MI-01, title: "Incidents are contained" }
@@ -1524,14 +1524,14 @@ status: DRAFT
     organisationally feasible, not by what is commercially convenient.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-093
   title: "MSA cooperation on reasoned request for conformity evidence"
   source_clauses:
     - { clause_id: CRA-CL47, article_ref: "Art. 13(22) — manufacturer cooperation with MSAs" }
-  linked_objectives: [SO-CRA-064]
+  linked_objectives: [SG-CRA-064]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed" }
@@ -1570,14 +1570,14 @@ status: DRAFT
     has agreed to accept.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-094
   title: "Cross-regulation risk-assessment consolidation permitted"
   source_clauses:
     - { clause_id: CRA-CL22, article_ref: "Art. 13(4) sentence 2 — AI Act carve-out for unified risk assessment" }
-  linked_objectives: [SO-CRA-064]
+  linked_objectives: [SG-CRA-064]
   sub_domain: [D-09.4, D-09.2]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed" }
@@ -1616,7 +1616,7 @@ status: DRAFT
     the relevant form, which is evaluated regime-by-regime.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-099
@@ -1629,7 +1629,7 @@ status: DRAFT
     - { clause_id: CRA-CL9, article_ref: "Art. 7(4) — implementing acts on technical descriptions" }
     - { clause_id: CRA-CL119, article_ref: "Art. 30(6) — implementing acts on labels/pictograms" }
     - { clause_id: CRA-CL50, article_ref: "Art. 13(25) — Union-wide dependency assessment by ADCO" }
-  linked_objectives: [SO-CRA-067, SO-CRA-070]
+  linked_objectives: [SG-CRA-067, SG-CRA-070]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: GV.PO-02, title: "Cybersecurity processes and procedures for implementing the cybersecurity policy are established, communicated, and enforced" }
@@ -1681,7 +1681,7 @@ status: DRAFT
     publication.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-102
@@ -1690,7 +1690,7 @@ status: DRAFT
     - { clause_id: CRA-CL21, article_ref: "Art. 13(4) sentence 1 — risk assessment in technical documentation" }
     - { clause_id: CRA-CL162, article_ref: "Annex VII §3 — risk-assessment documentation" }
     - { clause_id: CRA-CL47, article_ref: "Art. 13(22) — MSA cooperation" }
-  linked_objectives: [SO-CRA-070, SO-CRA-053]
+  linked_objectives: [SG-CRA-070, SG-CRA-053]
   sub_domain: [D-10.2, D-09.4]
   nist_csf_mapping:
     - { id: ID.RA-05, title: "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response decisions" }
@@ -1724,7 +1724,7 @@ status: DRAFT
     §3 documentation).
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-107
@@ -1732,7 +1732,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL158, article_ref: "Annex II §8(a)–(f) — detailed instructions over product lifetime" }
     - { clause_id: CRA-CL43, article_ref: "Art. 13(18) — accompany product with Annex II information" }
-  linked_objectives: [SO-CRA-048]
+  linked_objectives: [SG-CRA-048]
   sub_domain: [D-08.1, D-09.4]
   nist_csf_mapping:
     - { id: PR.AT-01, title: "All users are informed and trained on cybersecurity topics (e.g. recognition of phishing, social engineering, and other relevant risks)" }
@@ -1786,7 +1786,7 @@ status: DRAFT
     (a)–(e) remain a partial fit.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-114
@@ -1796,7 +1796,7 @@ status: DRAFT
     - { clause_id: CRA-CL80, article_ref: "Art. 17(3) — ENISA biennial report on cybersecurity risks in products" }
     - { clause_id: CRA-CL82, article_ref: "Art. 17(5) — EU vulnerability database (writes back to NIS 2 Art. 12(2))" }
     - { clause_id: CRA-CL83, article_ref: "Art. 17(6) — CSIRT helpdesk for manufacturers on reporting obligations" }
-  linked_objectives: [SO-CRA-073, SO-CRA-074]
+  linked_objectives: [SG-CRA-073, SG-CRA-074]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: RS.CO-04, title: "Coordination with stakeholders occurs consistent with applicable rules and regulations" }

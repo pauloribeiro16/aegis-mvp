@@ -38,12 +38,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-CRA-052 | A product with digital elements is presumed to be in conformity with the essential cybersecurity requirements set out in Annex I where the product and the manufacturer's processes conform to harmonised standards, common specifications, or European cybersecurity certification schemes adopted pursuant to Regulation (EU) 2019/881 at the assurance level specified by Art. 8(1) or Art. 32(2)/(3). | `CRA-CL108` (Art. 27(1) — presumption of conformity (harmonised standards)); `CRA-CL109` (Art. 27(2) — common specifications); `CRA-CL110` (Art. 27(5) — common-specs presumption); `CRA-CL111` (Art. 27(8) — CSA-certification presumption); `CRA-CL112` (Art. 27(9) — delegated acts specifying CSA schemes) | D-09.1 |
-| SO-CRA-052 | D-09.1 | Art. 27(1)/(2)/(5)/(8)/(9) | Presumption of conformity (harmonised standards / common specs / CSA certification) |
+| SG-CRA-052 | A product with digital elements is presumed to be in conformity with the essential cybersecurity requirements set out in Annex I where the product and the manufacturer's processes conform to harmonised standards, common specifications, or European cybersecurity certification schemes adopted pursuant to Regulation (EU) 2019/881 at the assurance level specified by Art. 8(1) or Art. 32(2)/(3). | `CRA-CL108` (Art. 27(1) — presumption of conformity (harmonised standards)); `CRA-CL109` (Art. 27(2) — common specifications); `CRA-CL110` (Art. 27(5) — common-specs presumption); `CRA-CL111` (Art. 27(8) — CSA-certification presumption); `CRA-CL112` (Art. 27(9) — delegated acts specifying CSA schemes) | D-09.1 |
+| SG-CRA-052 | D-09.1 | Art. 27(1)/(2)/(5)/(8)/(9) | Presumption of conformity (harmonised standards / common specs / CSA certification) |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-001
@@ -52,7 +52,7 @@ status: DRAFT
     - { clause_id: CRA-CL129, article_ref: "Annex I Part I (1) — chapeau" }
     - { clause_id: CRA-CL134, article_ref: "Annex I Part I (2)(e) — confidentiality + encryption" }
     - { clause_id: CRA-CL14, article_ref: "Art. 13(1) — design/development/production duty" }
-  linked_objectives: [SO-CRA-001, SO-CRA-045]
+  linked_objectives: [SG-CRA-001, SG-CRA-045]
   sub_domain: [D-01.1, D-01.2]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "The confidentiality, integrity, and availability of data-at-rest are protected" }
@@ -67,7 +67,7 @@ status: DRAFT
     The source clause carries two distinct ambiguity stacks. First, the term state of the art is VAG-S3 in the Berry-classic sense — temporal and benchmark-relative, much like "state of the art" in GDPR Art. 32(1). Reading chosen: R2, anchoring the benchmark to harmonised standards adopted under Art. 27 (when present) and, in their absence, to industry-standard cryptographic mechanisms as of the product's support-period commencement date. Alternative readings: R1 would require continuous R&D reassessment on a literal "instant of evaluation" basis, generating unbounded compliance churn and effectively compelling a never-finished redesign cycle; R3 (any mechanism chosen by the manufacturer) would dilute the floor to "any algorithm that compiles," breaking the cross-Member-State level playing field that Annex I is designed to deliver. An additional reading, R0, would treat state-of-the-art as a forward-looking duty that anticipates the next regulatory or standards step beyond support-period commencement, structurally similar to R2 but materially more demanding; R0 is rejected on the literal bench-anchored reading preserved by Annex I. Second, the phrase at rest or in transit is POLY-S2 because the boundary between persistent storage, transient caches, and inter-process transfers is technical rather than legal; Reading chosen: R3 — both contexts are protected, with the Art. 13(2) risk assessment selecting the appropriate primitive for each technical layer. Remain open: (a) when harmonised cryptography standards under Art. 27 are slow to be adopted, can a manufacturer rely on industry-led profiles (NIST SP 800-131A, BSI TR-02102) without violating the "state of the art" baseline; (b) does post-quantum migration obligation attach to legacy products within their support period, or only to newly placed-on-the-market versions after a determined cut-over date?
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-013
@@ -76,7 +76,7 @@ status: DRAFT
     - { clause_id: CRA-CL28, article_ref: "Art. 13(8) sentence 2 — support-period determination factors" }
     - { clause_id: CRA-CL29, article_ref: "Art. 13(8) sentence 3 — 5-year minimum" }
     - { clause_id: CRA-CL163, article_ref: "Annex VII §4 — support-period determination info" }
-  linked_objectives: [SO-CRA-010, SO-CRA-061]
+  linked_objectives: [SG-CRA-010, SG-CRA-061]
   sub_domain: [D-02.2, D-09.4]
   nist_csf_mapping:
     - { id: ID.IM-02, title: "Improvement processes for cybersecurity risk management are implemented across organizational tiers" }
@@ -91,7 +91,7 @@ status: DRAFT
     The phrase "reasonable user expectations" is VAG-S3 because the criterion is case-law-laden and Berry-classic (cf. CRA-C28 in the v0.1 ambiguity catalogue, §3.2). Reading chosen: R2, anchoring expectations to what a reasonable user in the same product sector would expect, with the harmonised-standards layer and ADCO guidance as the structural benchmark. Alternative readings: R1 (subjective to the specific user) is rejected because it makes the obligation unenforceable; R3 (industry-standard) is materially equivalent to R2 and is admitted as a non-strict alternative under the same OJ literal. An additional reading, R4, would anchor expectations to the consumer-warranty norms of the relevant Member State, importing consumer-protection vocabulary into a cybersecurity obligation; R4 is rejected because consumer-warranty law varies across the Union and would compromise the level playing field that Annex I plus the support-period minimum is designed to deliver; harmonised standards and ADCO guidance remain the structurally sound anchor. Remain open: (a) where Art. 27 harmonised standards specify a category-specific support-period baseline (e.g., a 7-year default for industrial control), does the manufacturer's shorter determination bind or does the standard override; (b) does the support-period determination need to be re-justified at each substantial-modification event under Art. 13(10), or is the initial determination sufficient for the product family.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-022
@@ -100,7 +100,7 @@ status: DRAFT
     - { clause_id: CRA-CL145, article_ref: "Annex I Part II (3) — effective and regular tests and reviews" }
     - { clause_id: CRA-CL165, article_ref: "Annex VII §6 — test reports in technical documentation" }
     - { clause_id: CRA-CL174, article_ref: "Annex VIII Part II (8) — Module B periodic audits of vuln handling" }
-  linked_objectives: [SO-CRA-014, SO-CRA-069]
+  linked_objectives: [SG-CRA-014, SG-CRA-069]
   sub_domain: [D-02.4, D-10.3, D-09.4]
   nist_csf_mapping:
     - { id: ID.RA-01, title: "Vulnerabilities in assets are identified, validated, and recorded" }
@@ -116,7 +116,7 @@ status: DRAFT
     The phrase "effective and regular tests and reviews" is VAG+COORD S3 with two stacked ambiguities. Reading chosen: R1 + R1, where "effective" means a test that detects real vulnerabilities with documented coverage and acceptable false-positive rates, and "regular" means a periodic cadence with the record under Annex VII §6. Alternative readings: R2 (comprehensive across all attack surfaces plus ad-hoc in response to specific threats) is admitted as a non-strict alternative under the same OJ literal; R3 (test-once-before-release only) is rejected as failing both the "regular" and the periodic-audit anchor under Annex VIII Part II (8). An additional reading, R3-as-composite, would interpret "effective and regular" as a single integrated quality criterion — tests are evaluated on the combined effect of cadence plus coverage — rather than two separate gates; this reading is admitted as a non-strict equivalent and rejected only where the Annex VIII Part II (8) Module B periodic audits require separate evidence of each dimension, which keeps the two-criterion reading operative in practice. Remain open: (a) when harmonised standards under Art. 27 specify a category-specific testing baseline, does that baseline set the floor or merely a default that manufacturers can replace with documented equivalents; (b) how does Annex VII §6 interact with the Module B periodic audit — is the test report the audit's input, or does the audit produce an independent verification.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-034
@@ -124,7 +124,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL61, article_ref: "Art. 14(5)(a) — severe-incident test A: CIA of sensitive/important data/functions" }
     - { clause_id: CRA-CL45, article_ref: "Art. 6(2) of NIS 2 (cross-ref via CRA Art. 3(43) `incident`) — availability, authenticity, integrity, confidentiality" }
-  linked_objectives: [SO-CRA-027]
+  linked_objectives: [SG-CRA-027]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: ID.RA-04, title: "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified, validated, and recorded" }
@@ -140,7 +140,7 @@ status: DRAFT
     The phrase "negatively affects OR is capable of negatively affecting" is VAG+POLY S3 with R3 (literal inclusive OR) as the chosen reading, so capability is sufficient without materialisation. The phrase "sensitive OR important data or functions" is POLY+COORD S3 with materially distinct populations across the OR chain; Reading chosen: R5, treating the qualifier as broadly inclusive (any data or function significant to user operations), anchored in the harmonised-standards layer under Art. 27. An additional alternative reading, R4-closed, would limit "sensitive or important" to a closed list enumerated in the Annex or implementing acts, restoring a positive enumeration that the current OJ leaves open; R4-closed is admitted as the long-run consensus direction through harmonised standards and ADCO guidance and is rejected for current OJ reading because Annex I plus Art. 14(5) do not provide the enumeration, leaving the determination to the risk assessment until the standardisation layer matures. Remain open: (a) what evidential threshold converts "capable of affecting" into a categorisable severity claim when no harm has materialised; (b) does "sensitive" align with sector-specific legal definitions (GDPR special-category data, NIS 2 essential-services data) or is it CRA-autonomous.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-077
@@ -149,7 +149,7 @@ status: DRAFT
     - { clause_id: CRA-CL108, article_ref: "Art. 27(1) — presumption of conformity via harmonised standards" }
     - { clause_id: CRA-CL109, article_ref: "Art. 27(2) — common specifications via implementing acts" }
     - { clause_id: CRA-CL110, article_ref: "Art. 27(5) — presumption via common specifications" }
-  linked_objectives: [SO-CRA-052]
+  linked_objectives: [SG-CRA-052]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed" }
@@ -198,7 +198,7 @@ status: DRAFT
     un-addressed elements.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-078
@@ -207,7 +207,7 @@ status: DRAFT
     - { clause_id: CRA-CL111, article_ref: "Art. 27(8) — CSA-certification presumption" }
     - { clause_id: CRA-CL112, article_ref: "Art. 27(9) — delegated acts specifying CSA schemes" }
     - { clause_id: CRA-CL10, article_ref: "Art. 8(1) — assurance level at least `substantial`" }
-  linked_objectives: [SO-CRA-052]
+  linked_objectives: [SG-CRA-052]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed" }
@@ -258,14 +258,14 @@ status: DRAFT
     Article 27(9) materially shape the certification landscape.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-097
   title: "Class II conformity routes including CSA certification"
   source_clauses:
     - { clause_id: CRA-CL125, article_ref: "Art. 32(3) — Class II important products: B+C / H / certification at substantial" }
-  linked_objectives: [SO-CRA-066]
+  linked_objectives: [SG-CRA-066]
   sub_domain: [D-09.4, D-10.3]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed" }

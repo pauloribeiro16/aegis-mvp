@@ -28,14 +28,14 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-019
   title: "Deployer measures aligned with provider instructions for use"
   source_clauses:
     - { clause_id: AIA-C23, article_ref: "Art. 26(1) — `Deployers of high-risk AI systems shall take appropriate technical and organisational measures to ensure they use such systems in accordance with the instructions for use`" }
-  linked_objectives: [SO-AIACT-011]
+  linked_objectives: [SG-AIACT-011]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -112,14 +112,14 @@ _No standalone SO row cites this article directly (covered via the rules below).
     inherits the provider's `appropriate` ceiling.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-020
   title: "Competent human overseers assigned with training and authority"
   source_clauses:
     - { clause_id: AIA-C24, article_ref: "Art. 26(2) — `Deployers shall assign human oversight to natural persons who have the necessary competence, training and authority, as well as the necessary support`" }
-  linked_objectives: [SO-AIACT-011]
+  linked_objectives: [SG-AIACT-011]
   sub_domain: [D-08.2, D-09.1]
   nist_csf_mapping:
     - { id: PR.AT-02, title: "All members of the organization's workforce understand their roles and responsibilities in achieving the organization's cybersecurity objectives" }

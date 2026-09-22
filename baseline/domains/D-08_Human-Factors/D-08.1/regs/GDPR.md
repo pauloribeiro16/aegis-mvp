@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-025 | Personnel authorised to process personal data are informed and trained on GDPR obligations and on the controller's or processor's data-protection policies applicable to their role (Art. 39(1)(a)+(b)). | DPO-driven; workforce awareness on data-protection obligations specific to processing role. |
+| GDPR | SG-GDPR-025 | Personnel authorised to process personal data are informed and trained on GDPR obligations and on the controller's or processor's data-protection policies applicable to their role (Art. 39(1)(a)+(b)). | DPO-driven; workforce awareness on data-protection obligations specific to processing role. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-08.1.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-08.1.GDPR
+id: SG-D-08.1.GDPR
 subdomain: D-08.1
 applies_to: [GDPR]
-inherits_from: SO-GDPR-025
+inherits_from: SG-GDPR-025
 source_SR: SR-GDPR-042
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N
@@ -57,7 +57,7 @@ GV.AT-P1, GV.AT-P2.
 
   derives_from:
     hso_sub_so: SO-8.1.GDPR
-    per_reg_so: SO-GDPR-025
+    per_reg_so: SG-GDPR-025
     source_sr: SR-GDPR-042
     hso_file: ../../HierarchicalSecurityObjectives/D-08_Human-Factors/8.1.md
     objective_ref_section: "### 8.1.1"

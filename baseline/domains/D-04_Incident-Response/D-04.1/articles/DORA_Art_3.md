@@ -30,14 +30,14 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-016
   title: "End-to-end ICT-related incident management process with root-cause analysis"
   source_clauses:
     - { clause_id: DORA-C30, article_ref: "Art. 17(1) — `define, establish and implement an ICT-related incident management process to detect, manage and notify ICT-related incidents`" }
-  linked_objectives: [SO-DORA-008]
+  linked_objectives: [SG-DORA-008]
   sub_domain: [D-04.1, D-04.3]
   nist_csf_mapping:
     - { id: RS.MA-01, title: "The incident management plan is executed in coordination with relevant third parties once an incident is declared" }
@@ -110,14 +110,14 @@ _No standalone SO row cites this article directly (covered via the rules below).
     characterisation remains unsettled in OJ text).
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-026
   title: "Management body owns full lifecycle of ICT risk management framework"
   source_clauses:
     - { clause_id: DORA-C01, article_ref: "Art. 5(2) — `the management body of the financial entity shall define, approve, oversee and be responsible for the implementation of all arrangements related to the ICT risk management framework`" }
-  linked_objectives: [SO-DORA-016]
+  linked_objectives: [SG-DORA-016]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.RR-01, title: "Organizational leadership is responsible and accountable for cybersecurity risk and promotes a risk-aware ethical culture" }

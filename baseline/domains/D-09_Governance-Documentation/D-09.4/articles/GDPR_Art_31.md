@@ -26,12 +26,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-031 | Compliance records (records of processing, consent records, processor contract records, breach notification records, DPIA records) are maintained in writing or in electronic form with integrity and traceability sufficient to demonstrate compliance and to support supervisory-authority inspections. | `GDPR-CP12` (Art. 30(3)); `GDPR-CL07` (Art. 5(2) — accountability / demonstrability); `GDPR-CP14` (Art. 31 — SA cooperation) | D-10.2, D-09.4 |
-| SO-GDPR-031 | D-10.2, D-09.4 | Art. 30(3), Art. 5(2), Art. 31 | Audit-grade records integrity and traceability |
+| SG-GDPR-031 | Compliance records (records of processing, consent records, processor contract records, breach notification records, DPIA records) are maintained in writing or in electronic form with integrity and traceability sufficient to demonstrate compliance and to support supervisory-authority inspections. | `GDPR-CP12` (Art. 30(3)); `GDPR-CL07` (Art. 5(2) — accountability / demonstrability); `GDPR-CP14` (Art. 31 — SA cooperation) | D-10.2, D-09.4 |
+| SG-GDPR-031 | D-10.2, D-09.4 | Art. 30(3), Art. 5(2), Art. 31 | Audit-grade records integrity and traceability |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-050
@@ -40,7 +40,7 @@ status: DRAFT
     - { clause_id: GDPR-CP12, article_ref: "Art. 30(3) — in writing/electronic form" }
     - { clause_id: GDPR-CL07, article_ref: "Art. 5(2) — accountability (cross)" }
     - { clause_id: GDPR-CP14, article_ref: "Art. 31 — supervisory authority cooperation" }
-  linked_objectives: [SO-GDPR-031]
+  linked_objectives: [SG-GDPR-031]
   sub_domain: [D-10.2, D-09.4]
   nist_csf_mapping:
     - { id: PR.PS-04, title: "Log records are generated and made available for continuous monitoring and analysis" }

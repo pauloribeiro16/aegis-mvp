@@ -34,18 +34,18 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-AIACT-009 | D-07.1, D-02.1, D-01.4 | Art. 15(1)+(3)+(4)–(5) | Accuracy, robustness, cybersecurity + resilience + AI-attack defence |
+| SG-AIACT-009 | D-07.1, D-02.1, D-01.4 | Art. 15(1)+(3)+(4)–(5) | Accuracy, robustness, cybersecurity + resilience + AI-attack defence |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-014
   title: "Accuracy robustness and cybersecurity baseline across AI lifecycle"
   source_clauses:
     - { clause_id: AIA-C16, article_ref: "Art. 15(1) — `High-risk AI systems shall be designed and developed in such a way that they achieve an appropriate level of accuracy, robustness, and cybersecurity, and that they perform consistently in those respects throughout their lifecycle`" }
-  linked_objectives: [SO-AIACT-009]
+  linked_objectives: [SG-AIACT-009]
   sub_domain: [D-07.1, D-02.1]
   nist_csf_mapping:
     - { id: PR.PS-06, title: "Secure software development practices are integrated, and their performance is monitored throughout the SDLC" }
@@ -139,14 +139,14 @@ status: DRAFT
     properties) is ever tolerated in conformity-assessment practice.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-015
   title: "Resilience against errors faults and environmental drift"
   source_clauses:
     - { clause_id: AIA-C17, article_ref: "Art. 15(3) — `High-risk AI systems shall be as resilient as possible regarding errors, faults or inconsistencies that may occur within the system or the environment … The robustness of high-risk AI systems may be achieved through technical redundancy solutions, which may include backup or fail-safe plans`" }
-  linked_objectives: [SO-AIACT-009]
+  linked_objectives: [SG-AIACT-009]
   sub_domain: [D-01.4, D-02.1]
   nist_csf_mapping:
     - { id: PR.IR-03, title: "Mechanisms are put in place to achieve resilience requirements in normal and adverse situations" }
@@ -221,14 +221,14 @@ status: DRAFT
     state behaviour or merely a documented fallback plan.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-016
   title: "AI-specific attack vector mitigation across training and inference"
   source_clauses:
     - { clause_id: AIA-C18, article_ref: "Art. 15(4)–(5) — `measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the training data set (data poisoning), or pre-trained components used in training (model poisoning), inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality attacks or model flaws`" }
-  linked_objectives: [SO-AIACT-009]
+  linked_objectives: [SG-AIACT-009]
   sub_domain: [D-02.1, D-07.2]
   nist_csf_mapping:
     - { id: ID.RA-04, title: "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified, recorded, and prioritized" }
@@ -315,14 +315,14 @@ status: DRAFT
     sense used in some CRA readings.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-018
   title: "Secure design control and verification integrated into SDLC"
   source_clauses:
     - { clause_id: AIA-C21, article_ref: "Art. 17(1)(c) — `techniques, procedures and systematic actions to be used for the design, design control and design verification of the high-risk AI system`" }
-  linked_objectives: [SO-AIACT-010]
+  linked_objectives: [SG-AIACT-010]
   sub_domain: [D-07.1]
   nist_csf_mapping:
     - { id: PR.PS-06, title: "Secure software development practices are integrated, and their performance is monitored throughout the SDLC" }
@@ -393,7 +393,7 @@ status: DRAFT
     verification or only pre-market verification.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-021
@@ -401,7 +401,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: AIA-C25, article_ref: "Art. 72(1)–(2) — `Providers shall establish and document a post-market monitoring system in a manner that is proportionate to the nature of the AI technologies and the risks of the high-risk AI system. The post-market monitoring system shall actively and systematically collect, document and analyse relevant data`" }
     - { clause_id: AIA-C27, article_ref: "Art. 74(1) — `Regulation (EU) 2019/1020 shall apply to AI systems covered by this Regulation`" }
-  linked_objectives: [SO-AIACT-012]
+  linked_objectives: [SG-AIACT-012]
   sub_domain: [D-10.1]
   nist_csf_mapping:
     - { id: DE.CM-09, title: "Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events" }
@@ -487,14 +487,14 @@ status: DRAFT
     contributions are mandatory or optional.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-023
   title: "Adversarial evaluation of GPAI models for systemic risk mitigation"
   source_clauses:
     - { clause_id: AIA-C28, article_ref: "Art. 55(1)(a) — `perform model evaluation in accordance with standardised protocols and tools reflecting the state of the art, including conducting and documenting adversarial testing of the model with a view to identifying and mitigating systemic risks`" }
-  linked_objectives: [SO-AIACT-014]
+  linked_objectives: [SG-AIACT-014]
   sub_domain: [D-07.3, D-02.1]
   nist_csf_mapping:
     - { id: GV.RM-06, title: "A standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated" }

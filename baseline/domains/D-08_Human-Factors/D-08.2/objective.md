@@ -7,7 +7,7 @@
 
 #### D-08.2.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-08.2.HL
+id: SG-D-08.2.HL
 subdomain: D-08.2
 applies_to: auto  # activates when ≥2 applicable regs have ≥1 pair with Y scope overlap on the same party AND ≥1 sub-SO activates; for D-08.2 the 5 Y-pairs (GDPR↔NIS2 conditional, GDPR↔DORA recommended, GDPR↔AI_Act conditional, NIS2↔DORA, NIS2↔AI_Act, DORA↔AI_Act) cover all 5 participating regulators; the 4 N-pairs (GDPR↔CRA, NIS2↔CRA, CRA↔DORA, CRA↔AI_Act) are substantively scope-disjoint on different audiences; once ≥2 regs are applicable the high-level SO engages on the joint-condition operator on the Y-pairs integrated stack
 status: static

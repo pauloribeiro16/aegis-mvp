@@ -24,12 +24,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-038 | The controller provides transparent, concise, intelligible, easily accessible information in clear and plain language to data subjects on processing operations (Art. 13/14 collection notices), supports the exercise of data-subject rights (Art. 15–22), verifies identity on reasonable doubt, responds to rights requests within one month (extendable by two further months where necessary), and acts free of charge except in defined exception cases. | `GDPR-RT01` (Art. 12(1)); `GDPR-RT02` (Art. 12(3)); `GDPR-RT03` (Art. 12(5)); `GDPR-RT04` (Art. 12(6)); `GDPR-RT05` (Art. 13(1)); `GDPR-RT06` (Art. 13(2)(f)); `GDPR-RT07` (Art. 14(1)/(2)); `GDPR-RT08` (Art. 14(5)(b)) | D-09.4, D-05.4 |
-| SO-GDPR-038 | D-09.4, D-05.4 | Art. 12, Art. 13, Art. 14 | Information duties and rights-exercise support |
+| SG-GDPR-038 | The controller provides transparent, concise, intelligible, easily accessible information in clear and plain language to data subjects on processing operations (Art. 13/14 collection notices), supports the exercise of data-subject rights (Art. 15–22), verifies identity on reasonable doubt, responds to rights requests within one month (extendable by two further months where necessary), and acts free of charge except in defined exception cases. | `GDPR-RT01` (Art. 12(1)); `GDPR-RT02` (Art. 12(3)); `GDPR-RT03` (Art. 12(5)); `GDPR-RT04` (Art. 12(6)); `GDPR-RT05` (Art. 13(1)); `GDPR-RT06` (Art. 13(2)(f)); `GDPR-RT07` (Art. 14(1)/(2)); `GDPR-RT08` (Art. 14(5)(b)) | D-09.4, D-05.4 |
+| SG-GDPR-038 | D-09.4, D-05.4 | Art. 12, Art. 13, Art. 14 | Information duties and rights-exercise support |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-065
@@ -37,7 +37,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-RT01, article_ref: "Art. 12(1) — transparency modalities" }
     - { clause_id: GDPR-CL01, article_ref: "Art. 5(1)(a) — transparency (cross)" }
-  linked_objectives: [SO-GDPR-038]
+  linked_objectives: [SG-GDPR-038]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: GV.PO-02, title: "Cybersecurity processes and procedures established and enforced" }
@@ -74,7 +74,7 @@ status: DRAFT
     The six conjunctive qualifiers on information form — concise, transparent, intelligible, easily accessible, clear, plain — are all open-textured and the article does not quantify any of them. Reading chosen: layered notices meeting accessibility standards (WCAG 2.1 AA or equivalent), in line with EDPB Guidelines on transparency. No explicit Berry severity tag in the source analysis; treated here as light (S1/none) because the operational practice has converged on layered-notice templates and the residual ambiguity is presentation-tier rather than substantive.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-067
@@ -82,7 +82,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-RT03, article_ref: "Art. 12(5) — manifestly unfounded or excessive" }
     - { clause_id: GDPR-RT04, article_ref: "Art. 12(6) — identity verification (cross-ref)" }
-  linked_objectives: [SO-GDPR-038]
+  linked_objectives: [SG-GDPR-038]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: GV.PO-02, title: "Cybersecurity processes and procedures established and enforced" }
@@ -118,7 +118,7 @@ status: DRAFT
     Manifestly unfounded or excessive carries VAG-S3 because the OJ text does not fix a quantitative threshold. Reading chosen: clearly frivolous on the face of the request, such that automated rejection on the basis of documented criteria is acceptable; the controller bears the burden of demonstrating the request is manifestly unfounded or excessive, per the second sentence of Art. 12(5), and the demonstrative burden is not satisfied by the controller's general suspicion. An alternative reading would allow refusal whenever the controller has any doubt about the request's purpose; this reading is rejected as incompatible with the demonstrative burden and with Art. 12(6) which addresses identity verification as a separate channel rather than as a refusal ground. A second alternative reading confines manifestly unfounded to requests the controller considers pointless and excludes repetitive-but-not-frivolous requests from the refusal grounds; this reading is consistent with the OJ text but operationally narrows the controller's protective scope. Remain open: (a) whether repetitive character requires a pattern of requests from the same data subject or includes patterns of requests across data subjects coordinated against the same controller; (b) whether the Art. 12(6) additional-information request is itself subject to the Art. 12(3) 1-month response window or whether the clock pauses until identity is confirmed.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-068
@@ -126,7 +126,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-RT05, article_ref: "Art. 13(1) — collection-time information" }
     - { clause_id: GDPR-RT07, article_ref: "Art. 14(1)/(2) — third-party-source information" }
-  linked_objectives: [SO-GDPR-038]
+  linked_objectives: [SG-GDPR-038]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: ID.AM-03, title: "Inventories of data and metadata for designated data types" }

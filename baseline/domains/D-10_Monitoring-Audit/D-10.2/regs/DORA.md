@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-031 (partial via Art. 9(4)(a)) | An information security policy is developed and documented defining rules to protect the availability, authenticity, integrity and confidentiality of data, information assets and ICT assets, including those of their customers, where applicable; logging is implicit in the CIA+A monitoring, not standalone. | Financial-entity information security policy with CIA+A rules; **partial coverage only** — no dedicated audit-logging mandate (no analogue to NIS 2 Art. 21(2)(j) per CRDA D-10.2 §CRA ↔ DORA pair); CRA Art. 13(11) is the dedicated authority for product-level logging requirements. |
+| DORA | SG-DORA-031 (partial via Art. 9(4)(a)) | An information security policy is developed and documented defining rules to protect the availability, authenticity, integrity and confidentiality of data, information assets and ICT assets, including those of their customers, where applicable; logging is implicit in the CIA+A monitoring, not standalone. | Financial-entity information security policy with CIA+A rules; **partial coverage only** — no dedicated audit-logging mandate (no analogue to NIS 2 Art. 21(2)(j) per CRDA D-10.2 §CRA ↔ DORA pair); CRA Art. 13(11) is the dedicated authority for product-level logging requirements. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-10.2.3 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-10.2.DORA
+id: SG-D-10.2.DORA
 subdomain: D-10.2
 applies_to: [DORA]
-inherits_from: SO-DORA-031 (partial)
+inherits_from: SG-DORA-031 (partial)
 source_SR: SR-DORA-031
 activation: if DORA in applicable_regs
 phase_1A_role: 3_of_4
@@ -49,7 +49,7 @@ GV.PO-01 (primary), ID.AM-08, GV.OC-03.
 
   derives_from:
     hso_sub_so: SO-10.2.DORA
-    per_reg_so: SO-DORA-031 (partial)
+    per_reg_so: SG-DORA-031 (partial)
     source_sr: SR-DORA-031
     hso_file: ../../HierarchicalSecurityObjectives/D-10_Monitoring-Audit/10.2.md
     objective_ref_section: "### 10.2.3"

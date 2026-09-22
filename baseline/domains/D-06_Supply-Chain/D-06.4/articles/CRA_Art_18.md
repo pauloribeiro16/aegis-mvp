@@ -26,12 +26,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-CRA-041 | A manufacturer established outside the Union may appoint an authorised representative established in the Union by written mandate to perform specified tasks on behalf of the manufacturer; the manufacturer's obligations under Art. 13(1)–(11), Art. 13(12) first subparagraph, and Art. 13(14) are not delegable to the authorised representative, who retains the technical documentation and cooperates with market surveillance authorities. | `CRA-CL84` (Art. 18(1) — AR appointment); `CRA-CL85` (Art. 18(2) — AR carve-out of non-delegable obligations); `CRA-CL86` (Art. 18(3) — AR tasks); `CRA-CL13` (Art. 3(13) — manufacturer definition) | D-06.4, D-09.4 |
-| SO-CRA-041 | D-06.4, D-09.4 | Art. 18(1)/(2)/(3) + Art. 3(13) | Authorised representative appointment + non-delegable obligations |
+| SG-CRA-041 | A manufacturer established outside the Union may appoint an authorised representative established in the Union by written mandate to perform specified tasks on behalf of the manufacturer; the manufacturer's obligations under Art. 13(1)–(11), Art. 13(12) first subparagraph, and Art. 13(14) are not delegable to the authorised representative, who retains the technical documentation and cooperates with market surveillance authorities. | `CRA-CL84` (Art. 18(1) — AR appointment); `CRA-CL85` (Art. 18(2) — AR carve-out of non-delegable obligations); `CRA-CL86` (Art. 18(3) — AR tasks); `CRA-CL13` (Art. 3(13) — manufacturer definition) | D-06.4, D-09.4 |
+| SG-CRA-041 | D-06.4, D-09.4 | Art. 18(1)/(2)/(3) + Art. 3(13) | Authorised representative appointment + non-delegable obligations |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-059
@@ -39,7 +39,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL84, article_ref: "Art. 18(1) — AR appointment" }
     - { clause_id: CRA-CL85, article_ref: "Art. 18(2) — AR carve-out of non-delegable obligations" }
-  linked_objectives: [SO-CRA-041]
+  linked_objectives: [SG-CRA-041]
   sub_domain: [D-06.4]
   nist_csf_mapping:
     - { id: GV.RR-02, title: "Roles, responsibilities, authorities, and accountabilities related to cybersecurity risk management are established, communicated, understood, and enforced" }
@@ -54,14 +54,14 @@ status: DRAFT
     `By written mandate` is POLY-S2: R1 (a formal written mandate in writing — literal). The Article 3(15) `specified tasks` reading, inherited here, is POLY-S2 — R1 (the tasks enumerated in Article 18(3), bounded by the Article 18(2) carve-out; anything outside the carve-out is non-delegable). The carve-out's reach is the operative point: Article 13(12) first subparagraph includes the CE marking and the EU declaration of conformity under the manufacturer; Article 13(14) includes series-production conformity. Remain open: (a) whether joint AR appointments — multiple ARs per non-EU manufacturer, or shared AR pools — are permissible under Article 18; (b) the operational status of an AR's mandate termination when the manufacturer is acquired by an EU-established entity or establishes a Union subsidiary — whether the AR mandate lapses automatically or requires formal revocation.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-060
   title: "Authorised representative EU-side compliance tasks"
   source_clauses:
     - { clause_id: CRA-CL86, article_ref: "Art. 18(3) — AR tasks" }
-  linked_objectives: [SO-CRA-041]
+  linked_objectives: [SG-CRA-041]
   sub_domain: [D-06.4, D-09.4]
   nist_csf_mapping:
     - { id: GV.SC-03, title: "Contracts with suppliers and other third parties are used to implement appropriate measures designed to meet the objectives of an organization's cybersecurity program and the organization's Cybersecurity Supply Chain Risk Management Plan" }

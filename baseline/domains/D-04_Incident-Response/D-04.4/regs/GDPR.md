@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-014 | Timely restoration of availability and access to personal data after physical or technical incident (with continuing confidentiality, integrity and resilience of processing systems) | Personal-data availability; controller/processor; Art. 32(1)(b)+(c) + Art. 5(1)(f) (cross) + Art. 32(2) risk-enumeration (cross); PR.IR-04 + PR.DS-11 + RC.RP-04 |
+| GDPR | SG-GDPR-014 | Timely restoration of availability and access to personal data after physical or technical incident (with continuing confidentiality, integrity and resilience of processing systems) | Personal-data availability; controller/processor; Art. 32(1)(b)+(c) + Art. 5(1)(f) (cross) + Art. 32(2) risk-enumeration (cross); PR.IR-04 + PR.DS-11 + RC.RP-04 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-04.4.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-04.4.GDPR
+id: SG-D-04.4.GDPR
 subdomain: D-04.4
 applies_to: [GDPR]
-inherits_from: SO-GDPR-014
+inherits_from: SG-GDPR-014
 source_SR: SR-GDPR-024
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N
@@ -63,7 +63,7 @@ supervisory-authority evidence loop.)*
 
   derives_from:
     hso_sub_so: SO-4.4.GDPR
-    per_reg_so: SO-GDPR-014
+    per_reg_so: SG-GDPR-014
     source_sr: SR-GDPR-024
     hso_file: ../../HierarchicalSecurityObjectives/D-04_Incident-Response/4.4.md
     objective_ref_section: "### 4.4.1"

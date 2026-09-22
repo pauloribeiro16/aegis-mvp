@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| NIS2 | SO-NIS2-019 | Employees offered similar training on a regular basis to identify risks and assess cybersecurity risk-management practices (Art. 20(2) sentence 2). | Entity-side, encouraged-not-mandatory (Member State obligation); employee training for risk-identification and assessment capability. |
+| NIS2 | SG-NIS2-019 | Employees offered similar training on a regular basis to identify risks and assess cybersecurity risk-management practices (Art. 20(2) sentence 2). | Entity-side, encouraged-not-mandatory (Member State obligation); employee training for risk-identification and assessment capability. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-08.2.2 — Sub-SO for NIS 2
 
 ```yaml
-id: SO-D-08.2.NIS2
+id: SG-D-08.2.NIS2
 subdomain: D-08.2
 applies_to: [NIS2]
-inherits_from: SO-NIS2-019
+inherits_from: SG-NIS2-019
 source_SR: SR-NIS2-030
 activation: if NIS2 in applicable_regs  # entity-side SR applies to entities that adopt the Member-State encouragement (Orchestrator-recommended treatment per SR-NIS2-030 ambiguity_notes)
 phase_1A_role: 1_of_N
@@ -57,7 +57,7 @@ PR.AT-01, PR.AT-02.
 
   derives_from:
     hso_sub_so: SO-8.2.NIS2
-    per_reg_so: SO-NIS2-019
+    per_reg_so: SG-NIS2-019
     source_sr: SR-NIS2-030
     hso_file: ../../HierarchicalSecurityObjectives/D-08_Human-Factors/8.2.md
     objective_ref_section: "### 8.2.2"

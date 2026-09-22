@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-013 | Documented policies, procedures and controls for ICT change management — covering changes to software, hardware, firmware components, systems or security parameters — ensure that all changes are recorded, tested, assessed, approved, implemented and verified in a controlled manner, based on a risk assessment approach (Art. 9(4)(e) 5-way OR of change-targets + 6-way AND of change-management steps: recorded/tested/assessed/approved/implemented/verified + `controlled manner`). | **Entity-level change management**; **explicit OJ-mandate** under Art. 9(4)(e) (DORA is the only OJ-mandated dedicated authority for entity-level change-management-controls). The 6-step process is mandatory; the 5 change-target categories (software + hardware + firmware + systems + security parameters) are cumulative (S3 COORD). |
+| DORA | SG-DORA-013 | Documented policies, procedures and controls for ICT change management — covering changes to software, hardware, firmware components, systems or security parameters — ensure that all changes are recorded, tested, assessed, approved, implemented and verified in a controlled manner, based on a risk assessment approach (Art. 9(4)(e) 5-way OR of change-targets + 6-way AND of change-management steps: recorded/tested/assessed/approved/implemented/verified + `controlled manner`). | **Entity-level change management**; **explicit OJ-mandate** under Art. 9(4)(e) (DORA is the only OJ-mandated dedicated authority for entity-level change-management-controls). The 6-step process is mandatory; the 5 change-target categories (software + hardware + firmware + systems + security parameters) are cumulative (S3 COORD). |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-07.4.2 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-07.4.DORA
+id: SG-D-07.4.DORA
 subdomain: D-07.4
 applies_to: [DORA]
-inherits_from: SO-DORA-013
+inherits_from: SG-DORA-013
 source_SR: SR-DORA-023
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_N
@@ -57,8 +57,8 @@ PR.PS-01, PR.PS-02, PR.PS-06.
   title: "Entity-side ICT change records demonstrate controlled, risk-based change execution"
 
   derives_from:
-    hso_sub_so: SO-D-07.4.DORA
-    per_reg_so: SO-DORA-013
+    hso_sub_so: SG-D-07.4.DORA
+    per_reg_so: SG-DORA-013
     source_sr: SR-DORA-023
     hso_file: ../../HierarchicalSecurityObjectives/D-07_Secure-Development/D-07.4.md
     objective_ref_section: "### D-07.4.2"

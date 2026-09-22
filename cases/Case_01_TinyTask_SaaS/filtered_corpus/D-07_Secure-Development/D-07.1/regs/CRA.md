@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-045 | A product with digital elements is designed, developed, and produced in accordance with the essential cybersecurity requirements set out in Annex I Part I, with the cybersecurity risk assessment propagated across the planning, design, development, production, delivery, and maintenance phases (Art. 13(1)+(2)). | Product-level by-design; essential-requirement conformance with health-and-safety of users as a cross-cutting objective; risk-assessment propagation across 6 lifecycle phases per Art. 13(2); Annex VII §3 risk-assessment record. |
+| CRA | SG-CRA-045 | A product with digital elements is designed, developed, and produced in accordance with the essential cybersecurity requirements set out in Annex I Part I, with the cybersecurity risk assessment propagated across the planning, design, development, production, delivery, and maintenance phases (Art. 13(1)+(2)). | Product-level by-design; essential-requirement conformance with health-and-safety of users as a cross-cutting objective; risk-assessment propagation across 6 lifecycle phases per Art. 13(2); Annex VII §3 risk-assessment record. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-07.1.3 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-07.1.CRA
+id: SG-D-07.1.CRA
 subdomain: D-07.1
 applies_to: [CRA]
-inherits_from: SO-CRA-045
+inherits_from: SG-CRA-045
 source_SR: SR-CRA-064
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -53,8 +53,8 @@ PR.PS-06, GV.PO-02.
   title: "Product with digital elements designed, developed and produced in accordance with Annex I Part I essential cybersecurity requirements with risk assessment propagated across planning, design, development, production, delivery and maintenance"
 
   derives_from:
-    hso_sub_so: SO-D-07.1.CRA
-    per_reg_so: SO-CRA-045
+    hso_sub_so: SG-D-07.1.CRA
+    per_reg_so: SG-CRA-045
     source_sr: SR-CRA-064, SR-CRA-066
     hso_file: ../../HierarchicalSecurityObjectives/D-07_Secure-Development/D-07.1.md
     objective_ref_section: "### D-07.1.3"

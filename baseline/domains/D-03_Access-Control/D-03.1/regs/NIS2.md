@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| NIS 2 | SO-NIS2-003 (partial) | Access control policies + HR security + asset management (3 coordinated sub-domains) | Essential/important entity; Art. 21(2)(i); workforce-side (internal) joiner-mover-leaver; PR.AA-01 + PR.AA-05 + PR.AT-02 |
+| NIS 2 | SG-NIS2-003 (partial) | Access control policies + HR security + asset management (3 coordinated sub-domains) | Essential/important entity; Art. 21(2)(i); workforce-side (internal) joiner-mover-leaver; PR.AA-01 + PR.AA-05 + PR.AT-02 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-03.1.2 — Sub-SO for NIS 2
 
 ```yaml
-id: SO-D-03.1.NIS2
+id: SG-D-03.1.NIS2
 subdomain: D-03.1
 applies_to: [NIS2]
-inherits_from: SO-NIS2-003
+inherits_from: SG-NIS2-003
 source_SR: SR-NIS2-003, SR-NIS2-004
 activation: if NIS2 in applicable_regs
 phase_1A_role: 1_of_N
@@ -67,8 +67,8 @@ executes against — provisioning, role-transition review, separation).)*
   title: "Workforce identities managed throughout the employment lifecycle (joiner-mover-leaver)"
 
   derives_from:
-    hso_sub_so: SO-D-03.1.NIS2
-    per_reg_so: SO-NIS2-003
+    hso_sub_so: SG-D-03.1.NIS2
+    per_reg_so: SG-NIS2-003
     source_sr: SR-NIS2-003, SR-NIS2-004
     hso_file: ../../HierarchicalSecurityObjectives/D-03_Access-Control/D-03.1.md
     objective_ref_section: "### D-03.1.2"

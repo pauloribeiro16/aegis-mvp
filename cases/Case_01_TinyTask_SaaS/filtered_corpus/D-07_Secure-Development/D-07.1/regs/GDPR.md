@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-024 | Personal-data processing implements data-protection principles (data minimisation) in an effective manner at means-determination and processing time, integrating necessary safeguards (pseudonymisation, encryption, by-default limits) at state-of-the-art level (Art. 25(1)+(2)). | Privacy-by-design as controller obligation; minimisation/pseudonymisation/encryption as canonical by-design techniques; qualitative proportionality anchored in state-of-the-art + cost + nature/scope/context/purposes/risks. |
+| GDPR | SG-GDPR-024 | Personal-data processing implements data-protection principles (data minimisation) in an effective manner at means-determination and processing time, integrating necessary safeguards (pseudonymisation, encryption, by-default limits) at state-of-the-art level (Art. 25(1)+(2)). | Privacy-by-design as controller obligation; minimisation/pseudonymisation/encryption as canonical by-design techniques; qualitative proportionality anchored in state-of-the-art + cost + nature/scope/context/purposes/risks. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-07.1.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-07.1.GDPR
+id: SG-D-07.1.GDPR
 subdomain: D-07.1
 applies_to: [GDPR]
-inherits_from: SO-GDPR-024
+inherits_from: SG-GDPR-024
 source_SR: SR-GDPR-039
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N
@@ -56,8 +56,8 @@ GV.PO-P2, CT.PO-P4.
   title: "Personal-data processing implements data-protection principles via appropriate technical and organisational measures designed into the means of processing, with by-default limits on amount, extent, storage period and accessibility"
 
   derives_from:
-    hso_sub_so: SO-D-07.1.GDPR
-    per_reg_so: SO-GDPR-024
+    hso_sub_so: SG-D-07.1.GDPR
+    per_reg_so: SG-GDPR-024
     source_sr: SR-GDPR-039
     hso_file: ../../HierarchicalSecurityObjectives/D-07_Secure-Development/D-07.1.md
     objective_ref_section: "### D-07.1.1"

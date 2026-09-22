@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-036 | User of a product with digital elements can securely and easily remove, on a permanent basis, all data and settings of the product; where such data can be transferred to other products or systems, the transfer is done in a secure manner | Product data (personal or other) + settings; manufacturer-bound; Annex I Part I (2)(m) first limb (terminal deletion) + second limb (cross-product secure transfer) + Annex II §8(d) decommissioning instructions; PR.DS-10 + ID.AM-08 (+ PR.DS-02 for the second limb) |
+| CRA | SG-CRA-036 | User of a product with digital elements can securely and easily remove, on a permanent basis, all data and settings of the product; where such data can be transferred to other products or systems, the transfer is done in a secure manner | Product data (personal or other) + settings; manufacturer-bound; Annex I Part I (2)(m) first limb (terminal deletion) + second limb (cross-product secure transfer) + Annex II §8(d) decommissioning instructions; PR.DS-10 + ID.AM-08 (+ PR.DS-02 for the second limb) |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-05.3.2 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-05.3.CRA
+id: SG-D-05.3.CRA
 subdomain: D-05.3
 applies_to: [CRA]
-inherits_from: SO-CRA-036
+inherits_from: SG-CRA-036
 source_SR: SR-CRA-048, SR-CRA-049
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -53,8 +53,8 @@ PR.DS-10, ID.AM-08, PR.DS-02.
   title: "User of a product with digital elements can securely and easily remove, on a permanent basis, all data and settings of the product via a discoverable user-interface affordance, with Annex II §8(d) decommissioning instructions"
 
   derives_from:
-    hso_sub_so: SO-D-05.3.CRA
-    per_reg_so: SO-CRA-036
+    hso_sub_so: SG-D-05.3.CRA
+    per_reg_so: SG-CRA-036
     source_sr: SR-CRA-048
     hso_file: ../../HierarchicalSecurityObjectives/D-05_Data-Lifecycle/D-05.3.md
     objective_ref_section: "### D-05.3.2"

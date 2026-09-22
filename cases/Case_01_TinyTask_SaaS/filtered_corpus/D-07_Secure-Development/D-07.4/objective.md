@@ -7,7 +7,7 @@
 
 #### D-07.4.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-07.4.HL
+id: SG-D-07.4.HL
 subdomain: D-07.4
 applies_to: auto  # activates when ≥2 applicable regs have a Y scope overlap on the same party AND ≥1 sub-SO activates; for D-07.4 the only 1 pair (CRA↔DORA) returns Y on the substantial-modification trigger event (when a DORA financial entity customises a CRA-conformant product) + N (typically) on the simple supplier-customer boundary; the high-level SO engages on the Conditional-Y integrated stack (substantial-modification trigger event). For a CRA-regulated manufacturer that is not a DORA financial entity, the high-level SO is NOT activated. For a DORA financial entity that does not customise CRA-conformant products, the high-level SO is NOT activated either.
 status: static

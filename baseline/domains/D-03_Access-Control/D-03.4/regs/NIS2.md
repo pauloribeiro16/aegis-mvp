@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| NIS 2 | SO-NIS2-003 (partial) | Partial coverage via SO-NIS2-003 (access control policies + HR security + asset management); NIS 2 does not impose a dedicated default-disposition SO | n/a — partial coverage; Art. 21(2)(i) asset-management dimension touches configuration-management but does not impose a secure-defaults mandate |
+| NIS 2 | SG-NIS2-003 (partial) | Partial coverage via SG-NIS2-003 (access control policies + HR security + asset management); NIS 2 does not impose a dedicated default-disposition SO | n/a — partial coverage; Art. 21(2)(i) asset-management dimension touches configuration-management but does not impose a secure-defaults mandate |
 
 _(no NIS 2 Sub-SO or requirements in this sub-domain)_
 

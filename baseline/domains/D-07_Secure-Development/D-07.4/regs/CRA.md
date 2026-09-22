@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-047 | Procedures are in place for products with digital elements that are part of a series of production to remain in conformity with this Regulation; changes to the product are assessed against the conformity assessment, and where a change is a substantial modification under Art. 3(30), the entity making the modification is treated as the manufacturer with the attendant obligations (Art. 13(14) + Art. 21-22 + Art. 3(30) + Art. 13(10)). | **Product-level change management across series production** + **substantial-modification trigger with manufacturer-equivalent consequences** (Art. 22 third-party substantial-modification = manufacturer). The substantial-modification trigger (Art. 3(30) D30 — VAG+POLY+COORD-S3) fires the manufacturer-equivalent status transfer when a third party carries out a substantial modification and makes that product available on the market (Art. 22(1)) or when an importer/distributor places a product on the market under its own name/trademark or carries out a substantial modification (Art. 21). |
+| CRA | SG-CRA-047 | Procedures are in place for products with digital elements that are part of a series of production to remain in conformity with this Regulation; changes to the product are assessed against the conformity assessment, and where a change is a substantial modification under Art. 3(30), the entity making the modification is treated as the manufacturer with the attendant obligations (Art. 13(14) + Art. 21-22 + Art. 3(30) + Art. 13(10)). | **Product-level change management across series production** + **substantial-modification trigger with manufacturer-equivalent consequences** (Art. 22 third-party substantial-modification = manufacturer). The substantial-modification trigger (Art. 3(30) D30 — VAG+POLY+COORD-S3) fires the manufacturer-equivalent status transfer when a third party carries out a substantial modification and makes that product available on the market (Art. 22(1)) or when an importer/distributor places a product on the market under its own name/trademark or carries out a substantial modification (Art. 21). |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-07.4.1 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-07.4.CRA
+id: SG-D-07.4.CRA
 subdomain: D-07.4
 applies_to: [CRA]
-inherits_from: SO-CRA-047
+inherits_from: SG-CRA-047
 source_SR: SR-CRA-069 (Art. 13(14) series-production + SR-CRA-070 Art. 13(10) + 21-22 substantial-modification)
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -34,7 +34,7 @@ phase_1A_role: 1_of_N
 - A natural or legal person, other than the manufacturer, importer, or distributor, that carries out a substantial modification of a product with digital elements and makes that product available on the market, is considered to be the manufacturer for the purposes of the Regulation, with obligations attaching to the affected part or — where the substantial modification has an impact on the cybersecurity of the product as a whole — to the entire product (Art. 22(1)+(2) CRA).
 - The substantial-modification definition under Art. 3(30) (D30 — VAG+POLY+COORD-S3) is the boundary between normal-version-update and manufacturer-equivalent liability transfer.
 - Art. 13(10) substantial-modification compliance scope carve-out allows the manufacturer to ensure Annex I Part II (2) compliance for the version last placed on the market subject to user-migration conditions (user is given the choice to migrate to the modified product or retain the last-placed version, with access to the last-placed version free of charge + no additional costs to adjust the hardware/software environment).
-- Art. 13(21) immediate corrective measures duty requires the manufacturer to immediately take the corrective measures necessary to bring the product or processes into conformity, or to withdraw or recall the product (cross to D-04.2 — `SO-CRA-063`).
+- Art. 13(21) immediate corrective measures duty requires the manufacturer to immediately take the corrective measures necessary to bring the product or processes into conformity, or to withdraw or recall the product (cross to D-04.2 — `SG-CRA-063`).
 **CSF anchors (from `SR-CRA-069` v0.3 security_rationale — Art. 13(14) series-production + `SR-CRA-070` v0.3 security_rationale — Art. 13(10) + 21-22 substantial-modification + `SR-CRA-081` v0.3 security_rationale — Art. 13(7)/(14) always-current record):**
 GV.OV-01, GV.PO-02, PR.PS-02, GV.SC-04, GV.OV-02, ID.IM-04.
 
@@ -53,8 +53,8 @@ GV.OV-01, GV.PO-02, PR.PS-02, GV.SC-04, GV.OV-02, ID.IM-04.
   title: "Product-side change records preserve series-production conformity and substantial-modification decisions"
 
   derives_from:
-    hso_sub_so: SO-D-07.4.CRA
-    per_reg_so: SO-CRA-047
+    hso_sub_so: SG-D-07.4.CRA
+    per_reg_so: SG-CRA-047
     source_sr: SR-CRA-069, SR-CRA-070, SR-CRA-081
     hso_file: ../../HierarchicalSecurityObjectives/D-07_Secure-Development/D-07.4.md
     objective_ref_section: "### D-07.4.1"

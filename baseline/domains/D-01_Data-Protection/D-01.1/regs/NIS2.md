@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| NIS 2 | SO-NIS2-001 | Cryptography policies and procedures covering CIA of stored, transmitted, processed data | Essential/important entity; Art. 21(2)(h); NIS scope (broader than personal data); `where appropriate` hedge |
+| NIS 2 | SG-NIS2-001 | Cryptography policies and procedures covering CIA of stored, transmitted, processed data | Essential/important entity; Art. 21(2)(h); NIS scope (broader than personal data); `where appropriate` hedge |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-01.1.2 — Sub-SO for NIS 2
 
 ```yaml
-id: SO-D-01.1.NIS2
+id: SG-D-01.1.NIS2
 subdomain: D-01.1
 applies_to: [NIS2]
-inherits_from: SO-NIS2-001
+inherits_from: SG-NIS2-001
 source_SR: SR-NIS2-001
 activation: if NIS2 in applicable_regs
 phase_1A_role: 1_of_N
@@ -51,8 +51,8 @@ PR.DS-01, PR.DS-02, GV.RM-04.
   title: "Cryptography policies cover CIA of stored NIS data"
 
   derives_from:
-    hso_sub_so: SO-D-01.1.NIS2
-    per_reg_so: SO-NIS2-001
+    hso_sub_so: SG-D-01.1.NIS2
+    per_reg_so: SG-NIS2-001
     source_sr: SR-NIS2-001
     hso_file: ../../HierarchicalSecurityObjectives/D-01_Data-Protection/D-01.1.md
     objective_ref_section: "### D-01.1.2"

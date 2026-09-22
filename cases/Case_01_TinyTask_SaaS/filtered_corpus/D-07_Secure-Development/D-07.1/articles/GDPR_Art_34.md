@@ -30,17 +30,17 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-002 | Personal data protected by pseudonymisation or encryption remains unintelligible to any person who is not authorised to access it, including following a personal data breach. | `GDPR-CP20` (Art. 34(3)(a)); `GDPR-CP15` (Art. 32(1)(a)) | D-01.1, D-01.3 |
-| SO-GDPR-002 (cross-ref) | When pseudonymisation or encryption is applied, the additional information required to re-identify the data subject is kept separately and is subject to technical and organisational measures that prevent attribution. | `GDPR-C02` (Art. 4(5) — pseudonymisation definition); `GDPR-CP20` (Art. 34(3)(a)) | D-01.3 |
-| SO-GDPR-002 | D-01.3, D-01.1 | Art. 4(5), Art. 32(1)(a), Art. 34(3)(a) | Pseudonymisation/encrypted data unintelligible post-breach |
-| SO-GDPR-009 | Personal data breaches are contained and mitigated through appropriate technical and organisational measures (including, where applicable, measures rendering the data unintelligible to unauthorised parties, and subsequent measures that ensure the high risk no longer materialises). | `GDPR-CP18` (Art. 33(3)(d)); `GDPR-CP20` (Art. 34(3)(a)/(b)) | D-04.2 |
-| SO-GDPR-009 | D-04.2 | Art. 33(3)(d), Art. 34(3)(a)/(b) | Containment and mitigation of breaches |
-| SO-GDPR-011 | Personal data breaches likely to result in a high risk to data subjects are communicated to the affected data subjects without undue delay, in clear and plain language, unless one of the three Art. 34(3) exceptions applies. | `GDPR-CP19` (Art. 34(1)/(2)/(3)); `GDPR-CP18` (Art. 33(3)(b)/(c)/(d)) | D-04.3 |
-| SO-GDPR-011 | D-04.3 | Art. 34(1)/(2)/(3) | High-risk breach communication to data subjects |
+| SG-GDPR-002 | Personal data protected by pseudonymisation or encryption remains unintelligible to any person who is not authorised to access it, including following a personal data breach. | `GDPR-CP20` (Art. 34(3)(a)); `GDPR-CP15` (Art. 32(1)(a)) | D-01.1, D-01.3 |
+| SG-GDPR-002 (cross-ref) | When pseudonymisation or encryption is applied, the additional information required to re-identify the data subject is kept separately and is subject to technical and organisational measures that prevent attribution. | `GDPR-C02` (Art. 4(5) — pseudonymisation definition); `GDPR-CP20` (Art. 34(3)(a)) | D-01.3 |
+| SG-GDPR-002 | D-01.3, D-01.1 | Art. 4(5), Art. 32(1)(a), Art. 34(3)(a) | Pseudonymisation/encrypted data unintelligible post-breach |
+| SG-GDPR-009 | Personal data breaches are contained and mitigated through appropriate technical and organisational measures (including, where applicable, measures rendering the data unintelligible to unauthorised parties, and subsequent measures that ensure the high risk no longer materialises). | `GDPR-CP18` (Art. 33(3)(d)); `GDPR-CP20` (Art. 34(3)(a)/(b)) | D-04.2 |
+| SG-GDPR-009 | D-04.2 | Art. 33(3)(d), Art. 34(3)(a)/(b) | Containment and mitigation of breaches |
+| SG-GDPR-011 | Personal data breaches likely to result in a high risk to data subjects are communicated to the affected data subjects without undue delay, in clear and plain language, unless one of the three Art. 34(3) exceptions applies. | `GDPR-CP19` (Art. 34(1)/(2)/(3)); `GDPR-CP18` (Art. 33(3)(b)/(c)/(d)) | D-04.3 |
+| SG-GDPR-011 | D-04.3 | Art. 34(1)/(2)/(3) | High-risk breach communication to data subjects |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-004
@@ -48,7 +48,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP20, article_ref: "Art. 34(3)(a) — unintelligibility exception" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(a)" }
-  linked_objectives: [SO-GDPR-002]
+  linked_objectives: [SG-GDPR-002]
   sub_domain: [D-01.3, D-04.3]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }
@@ -67,7 +67,7 @@ status: DRAFT
     Source clause GDPR-CP20 (Art. 34(3)(a)) carries S3 VAG ambiguity on `unintelligible`. Reading chosen: unintelligibility is achieved when a competent cryptographic adversary without the relevant key cannot recover plaintext within operationally-relevant resources. This reading is anchored to Recital 49 (non-binding but directionally useful), to EDPB Guidelines 9/2022 §3.5, and to ISO 27001 A.10.1.2 key-management expectations. An alternative reading treats "unintelligible" as satisfied by any form of access control (including password-protected files), which is incompatible with the Art. 34(3)(a) "such as encryption" anchor and would not survive supervisory inspection. A third reading admits post-quantum-uncertain primitives, which is rejected: the operative standard is present-day cryptanalytic feasibility. Remain open: (a) whether controller-controlled HSMs with key-recovery held by a trustee satisfy the "not authorised to access" condition when the trustee is contractually bound to the controller, pending EDPB clarification; and (b) whether backup tapes encrypted under a long-term key that the controller retains indefinitely fall inside the carve-out or trigger notification under Art. 34(1).
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-015
@@ -76,7 +76,7 @@ status: DRAFT
     - { clause_id: GDPR-CP18, article_ref: "Art. 33(3)(d) — measures taken or proposed" }
     - { clause_id: GDPR-CP20, article_ref: "Art. 34(3)(a)/(b) — measures to render data unintelligible / subsequent measures" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(d) — testing" }
-  linked_objectives: [SO-GDPR-009]
+  linked_objectives: [SG-GDPR-009]
   sub_domain: [D-04.2]
   nist_csf_mapping:
     - { id: RS.MI-01, title: "Incidents contained" }
@@ -97,7 +97,7 @@ status: DRAFT
     Art. 34(3)(a) carries VAG-S3 on `unintelligible` (see SR-GDPR-004 for chosen reading). All readings converge on the operational containment and mitigation obligation. The `where appropriate` hedge in Art. 33(3)(d) is read as the controller's reasonable judgement on whether mitigation measures exist and are material; it is not a discretion to omit the field. Art. 34(3)(b) `subsequent measures which ensure that the high risk to the rights and freedoms of data subjects referred to in paragraph 1 is no longer likely to materialise` is the harder threshold: the controller must demonstrate that mitigation actually neutralises the high risk, not merely that mitigation was attempted. Remain open: (a) whether the controller's notification to the supervisory authority under Art. 33(3)(d) must include proposed measures when containment is still in progress, or only taken measures with a separate proposed-measures addendum, pending EDPB guidance; and (b) how the mitigation obligation applies to breaches that originate at a sub-processor, pending alignment with Art. 33(2) processor notification.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-019
@@ -106,7 +106,7 @@ status: DRAFT
     - { clause_id: GDPR-CP19, article_ref: "Art. 34(1) — high-risk breach communication to data subject" }
     - { clause_id: GDPR-CP19, article_ref: "Art. 34(2) — content of communication" }
     - { clause_id: GDPR-CP16, article_ref: "Art. 32(2) — risk enumeration (cross)" }
-  linked_objectives: [SO-GDPR-011]
+  linked_objectives: [SG-GDPR-011]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information shared with designated stakeholders per information-sharing rules" }
@@ -125,7 +125,7 @@ status: DRAFT
     `likely to result in a high risk` carries POLY+VAG-S3 (the three-tier `risk`/`high risk`/`high risk` architecture across Arts. 33, 34, 35). Reading chosen: the Art. 34 threshold is higher than the Art. 33 threshold — objectively elevated above ordinary processing risk, per EDPB Guidelines 9/2022. An alternative reading treating the threshold as severe impact on data subject's rights, per CNIL guidance, is operationally similar but framing-different. The chosen reading treats the threshold as risk-of-significant-harm, not merely risk-of-any-harm; the controller documents the risk assessment with reference to the data categories (Art. 9 special categories raise the threshold), the data-subject population (vulnerable populations raise the threshold), and the breach characteristics (encrypted vs plaintext, contained vs ongoing). Remain open: (a) whether `clear and plain language` requires a CEFR B1 reading-age standard or whether national DPA guidance is acceptable, pending EDPB harmonisation; and (b) whether the Art. 34 communication can be combined with Art. 33 notification to the supervisory authority, or must be a separate communication, pending EDPB Guidelines 9/2022 clarification.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-020
@@ -134,7 +134,7 @@ status: DRAFT
     - { clause_id: GDPR-CP20, article_ref: "Art. 34(3)(a) — encryption/unintelligibility exception" }
     - { clause_id: GDPR-CP20, article_ref: "Art. 34(3)(b) — subsequent-measures exception" }
     - { clause_id: GDPR-CP19, article_ref: "Art. 34(1) — high-risk trigger" }
-  linked_objectives: [SO-GDPR-011, SO-GDPR-002]
+  linked_objectives: [SG-GDPR-011, SG-GDPR-002]
   sub_domain: [D-04.3, D-01.3]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }
@@ -154,7 +154,7 @@ status: DRAFT
     Both exceptions carry VAG-S3 (see SR-GDPR-004 for `unintelligible` reading chosen). The `no longer likely to materialise` wording in Art. 34(3)(b) is read as a high threshold: the controller must demonstrate that the mitigation has materially reduced the risk below the Art. 34(1) threshold, not merely that mitigation was attempted. The Art. 34(3)(a) operational condition `those measures were applied to the personal data affected by the personal data breach` requires the controller to demonstrate that the encryption protected the actual affected dataset, not merely that encryption was deployed on the dataset generally. Rule preserves the cryptographic-reading exception. Remain open: (a) whether rotation of cryptographic keys after the breach (treating the old keys as compromised) satisfies the Art. 34(3)(a) carve-out when the controller retains access to old keys for legitimate purposes, pending EDPB clarification; and (b) how the Art. 34(3)(b) `subsequent measures` carve-out interacts with the Art. 33 supervisory-authority notification (which is not carved out), pending alignment with EDPB Guidelines 9/2022.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-021
@@ -162,7 +162,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP20, article_ref: "Art. 34(3)(c) — disproportionate effort exception" }
     - { clause_id: GDPR-CP19, article_ref: "Art. 34(1) — high-risk trigger" }
-  linked_objectives: [SO-GDPR-011]
+  linked_objectives: [SG-GDPR-011]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information shared with designated stakeholders per information-sharing rules" }
@@ -180,7 +180,7 @@ status: DRAFT
     `disproportionate effort` carries S3 VAG (Recital 62 non-binding anchor to cost-vs-risk assessment). Reading chosen: the exception applies narrowly, and the controller must demonstrate efforts. The chosen reading treats disproportionate effort as a high bar: the controller must show that direct notification would impose costs grossly disproportionate to the protective benefit, considering the data-subject population, the availability of contact details, and the operational disruption. An alternative reading allowing the exception whenever direct notification is operationally inconvenient is rejected: it would make the exception the rule. A third reading admitting the exception for breaches affecting only legacy data without contact details is acceptable as a special case but should be documented as such. Recital 62 enumerates cost factors (number of data subjects, contact-channel availability) but does not bind the controller. Remain open: whether the `public communication or similar measure` requires multi-language coverage for cross-border data-subject populations, pending EDPB Guidelines 9/2022 clarification.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-040
@@ -189,7 +189,7 @@ status: DRAFT
     - { clause_id: GDPR-CP02, article_ref: "Art. 25(1) — pseudonymisation reference" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(a) — pseudonymisation/encryption (cross)" }
     - { clause_id: GDPR-CP20, article_ref: "Art. 34(3)(a) — encryption exception (cross)" }
-  linked_objectives: [SO-GDPR-024, SO-GDPR-002]
+  linked_objectives: [SG-GDPR-024, SG-GDPR-002]
   sub_domain: [D-07.1, D-01.3]
   nist_csf_mapping:
     - { id: PR.PS-06, title: "Secure software development practices integrated, and their performance is monitored throughout the SDLC" }

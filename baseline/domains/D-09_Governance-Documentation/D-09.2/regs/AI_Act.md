@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| AI_Act | SO-AIACT-001 | Continuous, iterative risk-management system across AI lifecycle (Art. 9(1) `established, implemented, documented and maintained`) with 4-step process (Art. 9(2)(a) identify/analyse known + reasonably foreseeable risks; (b) estimate/evaluate reasonably-foreseeable-misuse risks; (c) evaluate post-market-monitoring-data risks; (d) adopt appropriate and targeted risk-management measures); cross-coupled with Art. 27 FRIA for certain Annex III categories. | AI-system pre-market + post-market risk-management system; Art. 9 risk management as the FRIA-equivalent; **subject to CRA Art. 13(4) sentence 2 consolidation rule** with CRA Art. 13(3) risk assessment. |
+| AI_Act | SG-AIACT-001 | Continuous, iterative risk-management system across AI lifecycle (Art. 9(1) `established, implemented, documented and maintained`) with 4-step process (Art. 9(2)(a) identify/analyse known + reasonably foreseeable risks; (b) estimate/evaluate reasonably-foreseeable-misuse risks; (c) evaluate post-market-monitoring-data risks; (d) adopt appropriate and targeted risk-management measures); cross-coupled with Art. 27 FRIA for certain Annex III categories. | AI-system pre-market + post-market risk-management system; Art. 9 risk management as the FRIA-equivalent; **subject to CRA Art. 13(4) sentence 2 consolidation rule** with CRA Art. 13(3) risk assessment. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-09.2.5 — Sub-SO for AI Act
 
 ```yaml
-id: SO-D-09.2.AI_Act
+id: SG-D-09.2.AI_Act
 subdomain: D-09.2
 applies_to: [AI_Act]
-inherits_from: SO-AIACT-001
+inherits_from: SG-AIACT-001
 source_SR: SR-AIACT-001 + SR-AIACT-002
 activation: if AI_Act in applicable_regs
 phase_1A_role: 1_of_5
@@ -50,7 +50,7 @@ GOVERN-1.1, GOVERN-1.3, GOVERN-1.5, MAP-5.1, MAP-3.1, MAP-3.2, MANAGE-1.2.
 
   derives_from:
     hso_sub_so: SO-9.2.AI_Act
-    per_reg_so: SO-AIACT-001
+    per_reg_so: SG-AIACT-001
     source_sr: SR-AIACT-001 + SR-AIACT-002
     hso_file: ../../HierarchicalSecurityObjectives/D-09_Governance-Documentation/9.2.md
     objective_ref_section: "### 9.2.5"

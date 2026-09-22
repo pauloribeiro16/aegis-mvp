@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-008 | Major ICT incident notification to CA + clients | Major ICT incident; financial entity → CA + clients |
+| DORA | SG-DORA-008 | Major ICT incident notification to CA + clients | Major ICT incident; financial entity → CA + clients |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-04.3.4 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-04.3.DORA
+id: SG-D-04.3.DORA
 subdomain: D-04.3
 applies_to: [DORA]
-inherits_from: SO-DORA-008
+inherits_from: SG-DORA-008
 source_SR: SR-DORA-017
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_N
@@ -52,7 +52,7 @@ RS.CO-02, RS.MA-04.
 
   derives_from:
     hso_sub_so: SO-4.3.DORA
-    per_reg_so: SO-DORA-008
+    per_reg_so: SG-DORA-008
     source_sr: SR-DORA-017
     hso_file: ../../HierarchicalSecurityObjectives/D-04_Incident-Response/4.3.md
     objective_ref_section: "### 4.3.4"

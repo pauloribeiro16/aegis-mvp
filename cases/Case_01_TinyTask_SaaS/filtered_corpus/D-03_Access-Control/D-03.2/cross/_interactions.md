@@ -32,10 +32,10 @@
 #### Participants (from CRDA-deep §D-03.2)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-006 (cross-ref) / SO-GDPR-005 (cross-ref) | No explicit MFA mandate; staff-side via instructions + confidentiality (Art. 28(3)(b) + Art. 29); data-subject-side via Art. 12(6) verification | Controller/processor; no explicit MFA; PR.AA-05 + PR.AA-06 + PR.AT-02 |
-| NIS 2 | SO-NIS2-004 | MFA or continuous authentication solutions "where appropriate" + secured voice/video/text + secured emergency | Essential/important entity; Art. 21(2)(j) first clause; "where appropriate" hedge; OR of MFA and continuous authentication (not redundant); PR.AA-03 + PR.AA-05 |
-| CRA | SO-CRA-016 (partial) | Protection from unauthorised access via appropriate control mechanisms, which may include authentication, identity, or access-management systems (no explicit MFA mandate) | Manufacturer; Annex I Part I (2)(d); "including but not limited to" + 3-way OR (authentication / identity / access-management); PR.AA-01 + PR.AA-05 + PR.AA-06 + DE.CM-09 |
-| DORA | SO-DORA-002 | Strong authentication mechanisms (T4 reads MFA; OJ says "strong authentication") | Financial entity; Art. 9(4)(d); dominant EBA Guidelines reading is MFA but OJ has no "multi-factor" phrase (T4-vs-text gap); PR.AA-03 + PR.AA-04 |
+| GDPR | SG-GDPR-006 (cross-ref) / SG-GDPR-005 (cross-ref) | No explicit MFA mandate; staff-side via instructions + confidentiality (Art. 28(3)(b) + Art. 29); data-subject-side via Art. 12(6) verification | Controller/processor; no explicit MFA; PR.AA-05 + PR.AA-06 + PR.AT-02 |
+| NIS 2 | SG-NIS2-004 | MFA or continuous authentication solutions "where appropriate" + secured voice/video/text + secured emergency | Essential/important entity; Art. 21(2)(j) first clause; "where appropriate" hedge; OR of MFA and continuous authentication (not redundant); PR.AA-03 + PR.AA-05 |
+| CRA | SG-CRA-016 (partial) | Protection from unauthorised access via appropriate control mechanisms, which may include authentication, identity, or access-management systems (no explicit MFA mandate) | Manufacturer; Annex I Part I (2)(d); "including but not limited to" + 3-way OR (authentication / identity / access-management); PR.AA-01 + PR.AA-05 + PR.AA-06 + DE.CM-09 |
+| DORA | SG-DORA-002 | Strong authentication mechanisms (T4 reads MFA; OJ says "strong authentication") | Financial entity; Art. 9(4)(d); dominant EBA Guidelines reading is MFA but OJ has no "multi-factor" phrase (T4-vs-text gap); PR.AA-03 + PR.AA-04 |
 
 ## Validated relationships (from CRDA-deep §D-03.2)
 
@@ -161,7 +161,7 @@ into.
 ## Scope-overlap principle (operational). The high-level SO
 
 #### Scope-overlap principle (operational). The high-level SO
-(`SO-D-03.2.HL`) engages on a given authentication event **if and only
+(`SG-D-03.2.HL`) engages on a given authentication event **if and only
 if ≥2 applicable regulations' authentication-target scope-determiners
 overlap on the same authentication event** (e.g. staff-authentication
 at a controller that is also a NIS 2 essential entity operating
@@ -315,7 +315,7 @@ A company with ≥2 applicable regulations in scope of D-03.2 — with
 overlapping authentication-target scope-determiners on the same
 authentication event — operates a **layered authentication-mechanism
 architecture** calibrated to the **strictest applicable floor**. The
-high-level SO (`SO-D-03.2.HL`) describes the common
+high-level SO (`SG-D-03.2.HL`) describes the common
 authentication-mechanism duty (sufficient strength for the risk in
 scope); the per-reg perspective is preserved in the four sub-SOs (OJ
 explicitness, threshold anchor, authentication target, evidence
@@ -375,7 +375,7 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs — AI Act out-of-scope per AEGIS taxonomy �
   volere_subtype: access
   title: "Authentication mechanism of sufficient strength for the risk in scope, calibrated by the strictest applicable floor (layered authentication architecture)"
   derives_from:
-    hso_sub_so: SO-D-03.2.HL
+    hso_sub_so: SG-D-03.2.HL
     hso_file: ../../HierarchicalSecurityObjectives/D-03_Access-Control/D-03.2.md
     objective_ref_section: "### D-03.2.0"
   description: |
@@ -432,10 +432,10 @@ status: DRAFT
 ##### Participants
 | Regulation | SO ID | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-005 (cross-ref) / SO-GDPR-006 (cross-ref) | No explicit MFA mandate; authentication of staff is captured by Art. 28(3)(b) + Art. 29 (instructions + confidentiality); authentication of data-subject requesters is captured by Art. 12(6) | Controller/processor; no explicit MFA; staff-side via Art. 28(3)(b) confidentiality obligation; data-subject-side via Art. 12(6) verification |
-| NIS2 | SO-NIS2-004 | MFA or continuous authentication solutions "where appropriate" + secured voice/video/text communications + secured emergency communication systems | Essential/important entity; Art. 21(2)(j); "where appropriate" hedge; OR of MFA and continuous authentication (not redundant) |
-| CRA | SO-CRA-016 (partial) | Protection from unauthorised access via appropriate control mechanisms, which may include authentication, identity, or access-management systems (no explicit MFA) | Manufacturer; Annex I Part I (2)(d); "including but not limited to" + 3-way OR (authentication / identity / access-management) — the "may include" creates the partial-coverage flag |
-| DORA | SO-DORA-002 | Strong authentication mechanisms (T4 reads MFA; OJ says "strong authentication") | Financial entity; Art. 9(4)(d); dominant EBA Guidelines reading is MFA but T4-vs-text gap flagged (OJ has no "multi-factor" phrase); PR.AA-03 + PR.AA-04 |
+| GDPR | SG-GDPR-005 (cross-ref) / SG-GDPR-006 (cross-ref) | No explicit MFA mandate; authentication of staff is captured by Art. 28(3)(b) + Art. 29 (instructions + confidentiality); authentication of data-subject requesters is captured by Art. 12(6) | Controller/processor; no explicit MFA; staff-side via Art. 28(3)(b) confidentiality obligation; data-subject-side via Art. 12(6) verification |
+| NIS2 | SG-NIS2-004 | MFA or continuous authentication solutions "where appropriate" + secured voice/video/text communications + secured emergency communication systems | Essential/important entity; Art. 21(2)(j); "where appropriate" hedge; OR of MFA and continuous authentication (not redundant) |
+| CRA | SG-CRA-016 (partial) | Protection from unauthorised access via appropriate control mechanisms, which may include authentication, identity, or access-management systems (no explicit MFA) | Manufacturer; Annex I Part I (2)(d); "including but not limited to" + 3-way OR (authentication / identity / access-management) — the "may include" creates the partial-coverage flag |
+| DORA | SG-DORA-002 | Strong authentication mechanisms (T4 reads MFA; OJ says "strong authentication") | Financial entity; Art. 9(4)(d); dominant EBA Guidelines reading is MFA but T4-vs-text gap flagged (OJ has no "multi-factor" phrase); PR.AA-03 + PR.AA-04 |
 | AI_Act | — | Out-of-scope (no MFA mandate; CRA / NIS 2 / DORA sole authorities) | n/a |
 ##### Pairwise matrix
 

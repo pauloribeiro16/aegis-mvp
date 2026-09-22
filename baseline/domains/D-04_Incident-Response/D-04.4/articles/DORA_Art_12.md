@@ -26,19 +26,19 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-DORA-010 | A comprehensive ICT business continuity policy is operationalised through dedicated, appropriate and documented arrangements, plans, procedures and mechanisms, including ICT response and recovery plans (subject to independent internal audit for non-microenterprises), backup policies and procedures (specifying scope of data subject to backup and minimum frequency of backup, based on criticality or confidentiality), and restoration and recovery procedures and methods. | `DORA-C22` (Art. 11(1) BC policy + integral part of overall BC policy); `DORA-C23` (Art. 11(2) `dedicated, appropriate and documented` + 4-way AND of artefacts); `DORA-C24` (Art. 11(3) response + recovery plans AND + independent internal audit for non-microenterprises); `DORA-C25` (Art. 12(1) backup policies + restoration/recovery procedures + criticality OR confidentiality basis) | D-04.2, D-04.4, D-09.4 |
-| SO-DORA-010 | D-04.2, D-04.4, D-09.4 | Art. 11(1)–(3) + Art. 12(1) | BC policy + response/recovery plans + backup + restoration |
+| SG-DORA-010 | A comprehensive ICT business continuity policy is operationalised through dedicated, appropriate and documented arrangements, plans, procedures and mechanisms, including ICT response and recovery plans (subject to independent internal audit for non-microenterprises), backup policies and procedures (specifying scope of data subject to backup and minimum frequency of backup, based on criticality or confidentiality), and restoration and recovery procedures and methods. | `DORA-C22` (Art. 11(1) BC policy + integral part of overall BC policy); `DORA-C23` (Art. 11(2) `dedicated, appropriate and documented` + 4-way AND of artefacts); `DORA-C24` (Art. 11(3) response + recovery plans AND + independent internal audit for non-microenterprises); `DORA-C25` (Art. 12(1) backup policies + restoration/recovery procedures + criticality OR confidentiality basis) | D-04.2, D-04.4, D-09.4 |
+| SG-DORA-010 | D-04.2, D-04.4, D-09.4 | Art. 11(1)–(3) + Art. 12(1) | BC policy + response/recovery plans + backup + restoration |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-013
   title: "Integrated ICT business continuity policy framework"
   source_clauses:
     - { clause_id: DORA-C22, article_ref: "Art. 11(1) — `comprehensive ICT business continuity policy, which may be adopted as a dedicated specific policy, forming an integral part of the overall business continuity policy of the financial entity`" }
-  linked_objectives: [SO-DORA-010]
+  linked_objectives: [SG-DORA-010]
   sub_domain: [D-04.2, D-04.4]
   nist_csf_mapping:
     - { id: RC.RP-01, title: "The recovery portion of the incident response plan is executed once the incident response plan has been performed to acceptable criteria" }
@@ -104,14 +104,14 @@ status: DRAFT
     restricted to in-entity ICT.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-015
   title: "Risk-calibrated backup with verified restoration capability"
   source_clauses:
     - { clause_id: DORA-C25, article_ref: "Art. 12(1) — `develop and document: (a) backup policies and procedures specifying the scope of the data that is subject to the backup and the minimum frequency of the backup, based on the criticality of information or the confidentiality level of the data; (b) restoration and recovery procedures and methods`" }
-  linked_objectives: [SO-DORA-010]
+  linked_objectives: [SG-DORA-010]
   sub_domain: [D-04.4]
   nist_csf_mapping:
     - { id: PR.DS-11, title: "Backups of data are created, protected, maintained, and tested" }

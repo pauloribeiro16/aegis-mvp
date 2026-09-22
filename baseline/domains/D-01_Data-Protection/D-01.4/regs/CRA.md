@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-005 | Integrity of stored/transmitted/processed data + commands/programs/configuration protected against any manipulation not authorised by the user; corruption reported | Manufacturer; Annex I Part I (2)(f) integrity + (2)(l) logging; product-level; "personal or other"; technical integrity (universal-quantifier "any manipulation") |
+| CRA | SG-CRA-005 | Integrity of stored/transmitted/processed data + commands/programs/configuration protected against any manipulation not authorised by the user; corruption reported | Manufacturer; Annex I Part I (2)(f) integrity + (2)(l) logging; product-level; "personal or other"; technical integrity (universal-quantifier "any manipulation") |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-01.4.2 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-01.4.CRA
+id: SG-D-01.4.CRA
 subdomain: D-01.4
 applies_to: [CRA]
-inherits_from: SO-CRA-005
+inherits_from: SG-CRA-005
 source_SR: SR-CRA-005
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -64,8 +64,8 @@ rather than silent failures.)*
   title: "Integrity of stored/transmitted/processed data + commands + programs + configuration protected against unauthorised manipulation"
 
   derives_from:
-    hso_sub_so: SO-D-01.4.CRA
-    per_reg_so: SO-CRA-005
+    hso_sub_so: SG-D-01.4.CRA
+    per_reg_so: SG-CRA-005
     source_sr: SR-CRA-005
     hso_file: ../../HierarchicalSecurityObjectives/D-01_Data-Protection/D-01.4.md
     objective_ref_section: "### D-01.4.2"

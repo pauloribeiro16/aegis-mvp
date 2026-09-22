@@ -7,7 +7,7 @@
 
 #### D-05.2.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-05.2.HL
+id: SG-D-05.2.HL
 subdomain: D-05.2
 applies_to: auto  # activates when ≥2 applicable regs target overlapping data classes on the same party AND the floor-within-ceiling or separation-architecture layering rule engages
 status: static

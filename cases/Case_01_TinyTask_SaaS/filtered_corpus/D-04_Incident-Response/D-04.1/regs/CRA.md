@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-020 + SO-CRA-068 | Recording and monitoring of product internal activity with user opt-out, corruption reporting | Product with digital elements; manufacturer perspective; Annex I Part I (2)(l); DE.CM-09 + PR.PS-04 |
+| CRA | SG-CRA-020 + SG-CRA-068 | Recording and monitoring of product internal activity with user opt-out, corruption reporting | Product with digital elements; manufacturer perspective; Annex I Part I (2)(l); DE.CM-09 + PR.PS-04 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-04.1.3 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-04.1.CRA
+id: SG-D-04.1.CRA
 subdomain: D-04.1
 applies_to: [CRA]
-inherits_from: SO-CRA-020
+inherits_from: SG-CRA-020
 source_SR: SR-CRA-027, SR-CRA-100
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -59,7 +59,7 @@ pathway.)*
 
   derives_from:
     hso_sub_so: SO-4.1.CRA
-    per_reg_so: SO-CRA-020
+    per_reg_so: SG-CRA-020
     source_sr: SR-CRA-027, SR-CRA-100
     hso_file: ../../HierarchicalSecurityObjectives/D-04_Incident-Response/4.1.md
     objective_ref_section: "### 4.1.3"

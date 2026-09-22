@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-029 (primary) + SO-GDPR-038 (data-subject transparency) | Records of processing activities per Art. 30(1)/(2); in writing or electronic form (Art. 30(3)); 250-employee exception per Art. 30(5); supervisory-authority on-request (Art. 30(4)); transparency to data subjects (Art. 12-14). | Controller/processor RoPA mandate; data-subject-rights + DPA audit purposes; substantively scope-disjoint from NIS 2 + CRA per CRDA `N (typically)` (different record types). |
+| GDPR | SG-GDPR-029 (primary) + SG-GDPR-038 (data-subject transparency) | Records of processing activities per Art. 30(1)/(2); in writing or electronic form (Art. 30(3)); 250-employee exception per Art. 30(5); supervisory-authority on-request (Art. 30(4)); transparency to data subjects (Art. 12-14). | Controller/processor RoPA mandate; data-subject-rights + DPA audit purposes; substantively scope-disjoint from NIS 2 + CRA per CRDA `N (typically)` (different record types). |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-09.4.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-09.4.GDPR
+id: SG-D-09.4.GDPR
 subdomain: D-09.4
 applies_to: [GDPR]
-inherits_from: SO-GDPR-029 + SO-GDPR-038
+inherits_from: SG-GDPR-029 + SG-GDPR-038
 source_SR: SR-GDPR-048 + SR-GDPR-050 + SR-GDPR-065 + SR-GDPR-066 + SR-GDPR-067 + SR-GDPR-068
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_5
@@ -50,7 +50,7 @@ ID.IM-P1, ID.IM-P4, ID.IM-P6, ID.IM-P8, CT.DM-P9, CM.PO-P1, CM.AW-P1, CM.AW-P3.
 
   derives_from:
     hso_sub_so: SO-9.4.GDPR
-    per_reg_so: SO-GDPR-029 + SO-GDPR-038
+    per_reg_so: SG-GDPR-029 + SG-GDPR-038
     source_sr: SR-GDPR-048 + SR-GDPR-050 + SR-GDPR-065 + SR-GDPR-066 + SR-GDPR-067 + SR-GDPR-068
     hso_file: ../../HierarchicalSecurityObjectives/D-09_Governance-Documentation/9.4.md
     objective_ref_section: "### 9.4.1"

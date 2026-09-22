@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-025 (cross-ref at D-08.2) | DPO monitors assignment of responsibilities, awareness-raising, training of staff involved in processing (Art. 39(1)(b)). | Role-specific training for staff with data-subject-facing or access-management responsibilities. |
+| GDPR | SG-GDPR-025 (cross-ref at D-08.2) | DPO monitors assignment of responsibilities, awareness-raising, training of staff involved in processing (Art. 39(1)(b)). | Role-specific training for staff with data-subject-facing or access-management responsibilities. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-08.2.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-08.2.GDPR
+id: SG-D-08.2.GDPR
 subdomain: D-08.2
 applies_to: [GDPR]
-inherits_from: SO-GDPR-025 (cross-ref at D-08.2)
+inherits_from: SG-GDPR-025 (cross-ref at D-08.2)
 source_SR: SR-GDPR-042
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N
@@ -56,7 +56,7 @@ GV.AT-P1, GV.AT-P2.
 
   derives_from:
     hso_sub_so: SO-8.2.GDPR
-    per_reg_so: SO-GDPR-025 (cross-ref)
+    per_reg_so: SG-GDPR-025 (cross-ref)
     source_sr: SR-GDPR-042
     hso_file: ../../HierarchicalSecurityObjectives/D-08_Human-Factors/8.2.md
     objective_ref_section: "### 8.2.1"

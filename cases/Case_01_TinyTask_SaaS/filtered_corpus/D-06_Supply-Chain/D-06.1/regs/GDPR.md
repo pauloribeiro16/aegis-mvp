@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-021 | Controller engages only processors providing sufficient guarantees to implement appropriate technical and organisational measures in such a manner that processing meets the requirements of GDPR and protects data-subject rights (Art. 28(1)) | Processor due diligence; controller-driven; qualitative `sufficient guarantees` + Art. 28(2) sub-processor authorisation + Art. 4(7)/(8) controller/processor definitions; GV.SC-02 + GV.SC-04 + ID.AM-04 |
+| GDPR | SG-GDPR-021 | Controller engages only processors providing sufficient guarantees to implement appropriate technical and organisational measures in such a manner that processing meets the requirements of GDPR and protects data-subject rights (Art. 28(1)) | Processor due diligence; controller-driven; qualitative `sufficient guarantees` + Art. 28(2) sub-processor authorisation + Art. 4(7)/(8) controller/processor definitions; GV.SC-02 + GV.SC-04 + ID.AM-04 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-06.1.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-06.1.GDPR
+id: SG-D-06.1.GDPR
 subdomain: D-06.1
 applies_to: [GDPR]
-inherits_from: SO-GDPR-021
+inherits_from: SG-GDPR-021
 source_SR: SR-GDPR-033
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N
@@ -72,7 +72,7 @@ documented and attested to by the processor.)*
 
   derives_from:
     hso_sub_so: SO-6.1.GDPR
-    per_reg_so: SO-GDPR-021
+    per_reg_so: SG-GDPR-021
     source_sr: SR-GDPR-033
     hso_file: ../../HierarchicalSecurityObjectives/D-06_Supply-Chain/6.1.md
     objective_ref_section: "### 6.1.1"

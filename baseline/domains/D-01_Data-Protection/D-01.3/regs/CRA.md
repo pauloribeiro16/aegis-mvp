@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-004 | Cryptographic key separation from operational environment (custodian ≠ consumer) | Manufacturer; Annex I Part I (2)(d)+(e) functional-RBAC reading (T2-vs-text gap reading per `99_CRA_Synthesis.md` §4); product-level; "personal or other"; state-of-the-art baseline |
+| CRA | SG-CRA-004 | Cryptographic key separation from operational environment (custodian ≠ consumer) | Manufacturer; Annex I Part I (2)(d)+(e) functional-RBAC reading (T2-vs-text gap reading per `99_CRA_Synthesis.md` §4); product-level; "personal or other"; state-of-the-art baseline |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-01.3.2 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-01.3.CRA
+id: SG-D-01.3.CRA
 subdomain: D-01.3
 applies_to: [CRA]
-inherits_from: SO-CRA-004
+inherits_from: SG-CRA-004
 source_SR: SR-CRA-004
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -70,8 +70,8 @@ risk-management strategy.)*
   title: "Cryptographic keys of product with digital elements separated from operational environment"
 
   derives_from:
-    hso_sub_so: SO-D-01.3.CRA
-    per_reg_so: SO-CRA-004
+    hso_sub_so: SG-D-01.3.CRA
+    per_reg_so: SG-CRA-004
     source_sr: SR-CRA-004
     hso_file: ../../HierarchicalSecurityObjectives/D-01_Data-Protection/D-01.3.md
     objective_ref_section: "### D-01.3.2"

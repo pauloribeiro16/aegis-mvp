@@ -24,19 +24,19 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-035 | Court or administrative-authority decisions of a third country requiring a controller or processor to transfer or disclose personal data are recognised or enforceable only if based on an international agreement (such as a mutual legal assistance treaty) in force between the requesting third country and the Union or a Member State. | `GDPR-TR07` (Art. 48) | D-06.3 |
-| SO-GDPR-035 | D-06.3 | Art. 48 | Third-country legal requests only on international agreement |
+| SG-GDPR-035 | Court or administrative-authority decisions of a third country requiring a controller or processor to transfer or disclose personal data are recognised or enforceable only if based on an international agreement (such as a mutual legal assistance treaty) in force between the requesting third country and the Union or a Member State. | `GDPR-TR07` (Art. 48) | D-06.3 |
+| SG-GDPR-035 | D-06.3 | Art. 48 | Third-country legal requests only on international agreement |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-059
   title: "Third-country legal-request recognition filter via international agreements"
   source_clauses:
     - { clause_id: GDPR-TR07, article_ref: "Art. 48 — third-country legal-request filter" }
-  linked_objectives: [SO-GDPR-035]
+  linked_objectives: [SG-GDPR-035]
   sub_domain: [D-06.3]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal/regulatory/contractual requirements understood and managed" }

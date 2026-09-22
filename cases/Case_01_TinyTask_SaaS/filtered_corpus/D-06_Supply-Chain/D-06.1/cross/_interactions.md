@@ -40,10 +40,10 @@
 #### Participants (from CRDA-deep §D-06.1)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-021 | Controller engages only processors providing sufficient guarantees to implement appropriate technical and organisational measures in such a manner that processing meets the requirements of GDPR and protects data-subject rights (Art. 28(1)) | Processor due diligence; controller-driven; qualitative `sufficient guarantees` + Art. 28(2) sub-processor authorisation + Art. 4(7)/(8) controller/processor definitions; GV.SC-02 + GV.SC-04 + ID.AM-04 |
-| NIS2 | SO-NIS2-014 | Supply chain security is managed across direct supplier and service-provider relationships, including security-related aspects of those relationships (Art. 21(2)(d) + Art. 21(1) chapeau) | Entity supplier relationships; `direct` scope-limiter (Tier-1 + operationally-dependent sub-tier scope is calibrated by Member State transposition); continuous risk-management; GV.SC-02 + ID.AM-04 + GV.OC-03 |
-| CRA | SO-CRA-037 | Manufacturer exercises due diligence when integrating components sourced from third parties — including components of free and open-source software not made available on the market in the course of a commercial activity — so that those components do not compromise the cybersecurity of the product with digital elements (Art. 13(5) + Art. 13(6) + Art. 3(48) FOSS definition) | Product component integration; manufacturer-driven; `due diligence` procedural + substantive (VAG+POLY-S3, R3 reading); entities up to Art. 3(40) dealer / Art. 3(11) importer responsibilities; GV.SC-01 + GV.SC-02 + ID.RA-02 |
-| DORA | SO-DORA-011 | ICT third-party risk is managed taking into account the nature, scale, complexity and importance of ICT-related dependencies and the risks arising from contractual arrangements on the use of ICT services (Art. 28(1) four-factor AND); contractual arrangements comply with appropriate information security standards; for critical or important functions (CIF), the most up-to-date and highest quality information security standards are used (Art. 28(5) escalator) | Financial entity ICT third-party; multi-factor proportionality; `critical or important functions` undefined distinction (POLY-S2 across 18 clauses); continuous risk-management; GV.SC-02 + ID.AM-04 |
+| GDPR | SG-GDPR-021 | Controller engages only processors providing sufficient guarantees to implement appropriate technical and organisational measures in such a manner that processing meets the requirements of GDPR and protects data-subject rights (Art. 28(1)) | Processor due diligence; controller-driven; qualitative `sufficient guarantees` + Art. 28(2) sub-processor authorisation + Art. 4(7)/(8) controller/processor definitions; GV.SC-02 + GV.SC-04 + ID.AM-04 |
+| NIS2 | SG-NIS2-014 | Supply chain security is managed across direct supplier and service-provider relationships, including security-related aspects of those relationships (Art. 21(2)(d) + Art. 21(1) chapeau) | Entity supplier relationships; `direct` scope-limiter (Tier-1 + operationally-dependent sub-tier scope is calibrated by Member State transposition); continuous risk-management; GV.SC-02 + ID.AM-04 + GV.OC-03 |
+| CRA | SG-CRA-037 | Manufacturer exercises due diligence when integrating components sourced from third parties — including components of free and open-source software not made available on the market in the course of a commercial activity — so that those components do not compromise the cybersecurity of the product with digital elements (Art. 13(5) + Art. 13(6) + Art. 3(48) FOSS definition) | Product component integration; manufacturer-driven; `due diligence` procedural + substantive (VAG+POLY-S3, R3 reading); entities up to Art. 3(40) dealer / Art. 3(11) importer responsibilities; GV.SC-01 + GV.SC-02 + ID.RA-02 |
+| DORA | SG-DORA-011 | ICT third-party risk is managed taking into account the nature, scale, complexity and importance of ICT-related dependencies and the risks arising from contractual arrangements on the use of ICT services (Art. 28(1) four-factor AND); contractual arrangements comply with appropriate information security standards; for critical or important functions (CIF), the most up-to-date and highest quality information security standards are used (Art. 28(5) escalator) | Financial entity ICT third-party; multi-factor proportionality; `critical or important functions` undefined distinction (POLY-S2 across 18 clauses); continuous risk-management; GV.SC-02 + ID.AM-04 |
 
 ## Validated relationships (from CRDA-deep §D-06.1)
 
@@ -96,7 +96,7 @@ The 4 participating regulations each define D-06.1 over a distinct **target obje
 ## Scope-overlap principle (operational). The high-level SO
 
 #### Scope-overlap principle (operational). The high-level SO
-(`SO-D-06.1.HL`) engages on a given party **if and only if ≥2 applicable
+(`SG-D-06.1.HL`) engages on a given party **if and only if ≥2 applicable
 regulations target overlapping target objects on the same party** (e.g.
 a financial entity that is also a NIS 2 essential entity AND
 manufactures CRA-classified products AND processes personal data — a
@@ -353,7 +353,7 @@ reconciliation that supersedes any single-regulator reading.
 A company with ≥2 applicable regulations in scope of D-06.1 — with
 overlapping target-object scope-determiners on the same party —
 operates a **4-tier supplier / vendor risk assessment chain** with
-explicit layered hand-offs. The high-level SO (`SO-D-06.1.HL`)
+explicit layered hand-offs. The high-level SO (`SG-D-06.1.HL`)
 describes the common vendor-risk-assessment duty (risk-anchored due
 diligence with proportionality documentation + ongoing monitoring +
 recipient evidence); the per-reg perspective is preserved in the four
@@ -392,7 +392,7 @@ financial-entity-specific governance substrate for CIF-classified ICT
 providers; (9) the Annex VII §2 + §3 CRA-side technical documentation
 as the evidence pack for the manufacturer-side component due-
 diligence architecture; (10) the Annex I Part II (1) SBOM (cross to
-D-06.2 — SO-CRA-038 + SR-CRA-008 / SR-CRA-052 / SR-CRA-053) as the
+D-06.2 — SG-CRA-038 + SR-CRA-008 / SR-CRA-052 / SR-CRA-053) as the
 upstream component-identification artefact that the CRA Art. 13(5)
 due diligence consumes. For proportionality (P2), a 5-FTE SaaS
 startup with GDPR + CRA applicability may default to the GDPR Art.
@@ -492,10 +492,10 @@ status: DRAFT
 ##### Participants
 | Regulation | SO ID | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-021 | Controller engages only processors providing sufficient guarantees to implement TOMs (Art. 28(1)/(2)) | Processor due diligence; controller-driven |
-| NIS2 | SO-NIS2-014 | Supply chain security managed across direct supplier/service-provider relationships (Art. 21(2)(d)) | Entity supplier relationships; `direct` scope-limiter |
-| CRA | SO-CRA-037 | Manufacturer due diligence on third-party components including non-commercial OSS (Art. 13(5)) | Product component integration; manufacturer-driven |
-| DORA | SO-DORA-011 | ICT third-party risk managed under four-factor proportionality (nature, scale, complexity, importance) (Art. 28(1)) | Financial entity ICT third-party; multi-factor proportionality |
+| GDPR | SG-GDPR-021 | Controller engages only processors providing sufficient guarantees to implement TOMs (Art. 28(1)/(2)) | Processor due diligence; controller-driven |
+| NIS2 | SG-NIS2-014 | Supply chain security managed across direct supplier/service-provider relationships (Art. 21(2)(d)) | Entity supplier relationships; `direct` scope-limiter |
+| CRA | SG-CRA-037 | Manufacturer due diligence on third-party components including non-commercial OSS (Art. 13(5)) | Product component integration; manufacturer-driven |
+| DORA | SG-DORA-011 | ICT third-party risk managed under four-factor proportionality (nature, scale, complexity, importance) (Art. 28(1)) | Financial entity ICT third-party; multi-factor proportionality |
 | AI_Act | — | Out-of-scope (sole authorities: DORA/NIS2 + CRA Art. 13–14) | n/a |
 **Sole-authority note:** AI Act is out-of-scope for D-06.1 per AEGIS taxonomy §4.1 — AI Act value-chain obligations (Art. 25) are cross-relationship, not in the 29-clause cybersecurity set. DORA/NIS2 are sole authorities for entity-level third-party risk; CRA Art. 13(5) is sole authority for product-level supplier obligations.
 ##### Pairwise matrix

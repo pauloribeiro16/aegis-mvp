@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-009 | Personal-data breaches contained and mitigated via Art. 33(3)(d) measures (incl. rendering data unintelligible) + Art. 34(3)(a)/(b) unintelligibility carve-out | Personal data; post-detection containment, mitigation and remediation runbooks; ID.AM-08 + PR.IR-04 |
+| GDPR | SG-GDPR-009 | Personal-data breaches contained and mitigated via Art. 33(3)(d) measures (incl. rendering data unintelligible) + Art. 34(3)(a)/(b) unintelligibility carve-out | Personal data; post-detection containment, mitigation and remediation runbooks; ID.AM-08 + PR.IR-04 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-04.2.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-04.2.GDPR
+id: SG-D-04.2.GDPR
 subdomain: D-04.2
 applies_to: [GDPR]
-inherits_from: SO-GDPR-009
+inherits_from: SG-GDPR-009
 source_SR: SR-GDPR-015
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N
@@ -60,7 +60,7 @@ containment-then-recovery sequence.)*
 
   derives_from:
     hso_sub_so: SO-4.2.GDPR
-    per_reg_so: SO-GDPR-009
+    per_reg_so: SG-GDPR-009
     source_sr: SR-GDPR-015
     hso_file: ../../HierarchicalSecurityObjectives/D-04_Incident-Response/4.2.md
     objective_ref_section: "### 4.2.1"

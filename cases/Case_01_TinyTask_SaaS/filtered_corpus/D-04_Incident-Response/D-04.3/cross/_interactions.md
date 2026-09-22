@@ -67,11 +67,11 @@
 #### Participants (from CRDA-deep D-04.3)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-010 | 72h SA notification | Personal-data breach; controller → DPA |
-| NIS 2 | SO-NIS2-006 | 24h early warning + 72h incident | Significant incident; entity → CSIRT / CA |
-| CRA | SO-CRA-024 | 24h/72h/14d AEV progressive disclosure | AEV in product with digital elements; manufacturer → CSIRT + ENISA |
-| DORA | SO-DORA-008 | Major ICT incident notification to CA + clients | Major ICT incident; financial entity → CA + clients |
-| AI Act | SO-AIACT-013 | 15d / 10d / 2d tiered serious incident reporting | High-risk AI serious incident; provider / deployer → MSA |
+| GDPR | SG-GDPR-010 | 72h SA notification | Personal-data breach; controller → DPA |
+| NIS 2 | SG-NIS2-006 | 24h early warning + 72h incident | Significant incident; entity → CSIRT / CA |
+| CRA | SG-CRA-024 | 24h/72h/14d AEV progressive disclosure | AEV in product with digital elements; manufacturer → CSIRT + ENISA |
+| DORA | SG-DORA-008 | Major ICT incident notification to CA + clients | Major ICT incident; financial entity → CA + clients |
+| AI Act | SG-AIACT-013 | 15d / 10d / 2d tiered serious incident reporting | High-risk AI serious incident; provider / deployer → MSA |
 
 ## Validated relationships (from CRDA-deep §D-04.3)
 
@@ -185,9 +185,9 @@ engage by the mere co-applicability of both regulations).
 - **DORA ↔ AI Act = Y**: a financial entity deploying high-risk AI triggers
   both on a serious AI incident affecting its ICT.
 
-## Scope-overlap principle (operational). The high-level SO (`SO-D-04.3.HL`)
+## Scope-overlap principle (operational). The high-level SO (`SG-D-04.3.HL`)
 
-#### Scope-overlap principle (operational). The high-level SO (`SO-D-04.3.HL`)
+#### Scope-overlap principle (operational). The high-level SO (`SG-D-04.3.HL`)
 engages on a given event **if and only if the event's material scope overlaps
 with the material scope of ≥2 applicable regulations**. Pure co-applicability
 of disjoint-scope regulations on the same entity does **not** trigger
@@ -274,7 +274,7 @@ events and do NOT engage the high-level SO.
 A company with ≥2 applicable regulations in scope of D-04.3 — with overlapping
 scopes on a single event — must operate to the **shortest clock** across all
 applicable timelines + produce **multiple content templates** for **multiple
-recipients**. The high-level SO (`SO-D-04.3.HL`) surfaces these tensions but
+recipients**. The high-level SO (`SG-D-04.3.HL`) surfaces these tensions but
 does NOT resolve them. **Resolution is at design level:** a unified
 notification pipeline that generates per-regulation submissions from a single
 underlying event record, with the binding-procedure principle (`shortest
@@ -359,11 +359,11 @@ status: DRAFT
 ##### Participants
 | Regulation | SO ID | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-010, 011, 012, 013 | 72h SA notification + high-risk subject communication + recipient cascade + prior-consultation trigger | Personal-data breach; controller→DPA→subject |
-| NIS2 | SO-NIS2-006, 007, 008, 009, 010, 011, 012 | 24h early warning + 72h notification + 1m final report + TSP derogation + intermediate + recipient + cross-MS | Significant incident; entity→CSIRT→CA→recipients |
-| CRA | SO-CRA-023–033 | Two-tier reporting: 24h/72h/14d AEV + 24h/72h/1m severe incident + intermediate + user + voluntary + cross-border | AEV / severe incident; manufacturer→CSIRT+ENISA→users |
-| DORA | SO-DORA-008, 009 | Major ICT incident notification to CA + client notification + crisis communication plans | Major ICT incident; financial entity→CA→clients→public |
-| AI_Act | SO-AIACT-013, 014 | Tiered serious incident reporting (15d/10d/2d triggers: awareness/causal-link/death/widespread) + GPAI serious incident to AI Office | High-risk AI / GPAI systemic risk; provider/deployer→MSA/AI Office |
+| GDPR | SG-GDPR-010, 011, 012, 013 | 72h SA notification + high-risk subject communication + recipient cascade + prior-consultation trigger | Personal-data breach; controller→DPA→subject |
+| NIS2 | SG-NIS2-006, 007, 008, 009, 010, 011, 012 | 24h early warning + 72h notification + 1m final report + TSP derogation + intermediate + recipient + cross-MS | Significant incident; entity→CSIRT→CA→recipients |
+| CRA | SG-CRA-023–033 | Two-tier reporting: 24h/72h/14d AEV + 24h/72h/1m severe incident + intermediate + user + voluntary + cross-border | AEV / severe incident; manufacturer→CSIRT+ENISA→users |
+| DORA | SG-DORA-008, 009 | Major ICT incident notification to CA + client notification + crisis communication plans | Major ICT incident; financial entity→CA→clients→public |
+| AI_Act | SG-AIACT-013, 014 | Tiered serious incident reporting (15d/10d/2d triggers: awareness/causal-link/death/widespread) + GPAI serious incident to AI Office | High-risk AI / GPAI systemic risk; provider/deployer→MSA/AI Office |
 **Critical — 5 regulations overlap with DIFFERENT timelines:**
 - GDPR: 72h SA + `without undue delay` subject communication
 - NIS2: 24h early warning + 72h incident + 1m final + intermediate on CSIRT request

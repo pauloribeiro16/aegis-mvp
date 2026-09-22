@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-024 | 24h/72h/14d AEV progressive disclosure | AEV in product with digital elements; manufacturer → CSIRT + ENISA |
+| CRA | SG-CRA-024 | 24h/72h/14d AEV progressive disclosure | AEV in product with digital elements; manufacturer → CSIRT + ENISA |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-04.3.3 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-04.3.CRA
+id: SG-D-04.3.CRA
 subdomain: D-04.3
 applies_to: [CRA]
-inherits_from: SO-CRA-024
+inherits_from: SG-CRA-024
 source_SR: SR-CRA-029
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -49,7 +49,7 @@ RS.MA-02, RS.CO-02.
 
   derives_from:
     hso_sub_so: SO-4.3.CRA
-    per_reg_so: SO-CRA-024
+    per_reg_so: SG-CRA-024
     source_sr: SR-CRA-029, SR-CRA-030
     hso_file: ../../HierarchicalSecurityObjectives/D-04_Incident-Response/4.3.md
     objective_ref_section: "### 4.3.3"

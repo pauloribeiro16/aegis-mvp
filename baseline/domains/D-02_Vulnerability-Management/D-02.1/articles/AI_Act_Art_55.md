@@ -28,19 +28,19 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-AIACT-014 | Providers of general-purpose AI models with systemic risk keep track of, document and report relevant information about serious incidents and possible corrective measures to the AI Office and, as appropriate, to national competent authorities, without undue delay. | `AIA-C28` (Art. 55(1)(a) — `standardised protocols` + `state of the art` + `systemic risks` POLY triple; adversarial testing mandate); `AIA-C29` (Art. 55(1)(c) — `serious incidents` POLY distinct from Art. 73 serious incidents; `without undue delay` VAG; cross-article boundary undefined) | D-04.3 |
-| SO-AIACT-014 | D-04.3 | Art. 55(1)(a)+(c) | GPAI model evaluation + serious incident reporting |
+| SG-AIACT-014 | Providers of general-purpose AI models with systemic risk keep track of, document and report relevant information about serious incidents and possible corrective measures to the AI Office and, as appropriate, to national competent authorities, without undue delay. | `AIA-C28` (Art. 55(1)(a) — `standardised protocols` + `state of the art` + `systemic risks` POLY triple; adversarial testing mandate); `AIA-C29` (Art. 55(1)(c) — `serious incidents` POLY distinct from Art. 73 serious incidents; `without undue delay` VAG; cross-article boundary undefined) | D-04.3 |
+| SG-AIACT-014 | D-04.3 | Art. 55(1)(a)+(c) | GPAI model evaluation + serious incident reporting |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-022
   title: "Tiered serious incident reporting with differentiated timelines"
   source_clauses:
     - { clause_id: AIA-C26, article_ref: "Art. 73(1)–(4) — `report any serious incident`; `not later than 15 days after … becomes aware`; `not later than two days` (widespread infringement); `not later than 10 days` (death)" }
-  linked_objectives: [SO-AIACT-013]
+  linked_objectives: [SG-AIACT-013]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents are reported internally to the appropriate stakeholders, including executive leadership and legal counsel" }
@@ -148,14 +148,14 @@ status: DRAFT
     classification.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-023
   title: "Adversarial evaluation of GPAI models for systemic risk mitigation"
   source_clauses:
     - { clause_id: AIA-C28, article_ref: "Art. 55(1)(a) — `perform model evaluation in accordance with standardised protocols and tools reflecting the state of the art, including conducting and documenting adversarial testing of the model with a view to identifying and mitigating systemic risks`" }
-  linked_objectives: [SO-AIACT-014]
+  linked_objectives: [SG-AIACT-014]
   sub_domain: [D-07.3, D-02.1]
   nist_csf_mapping:
     - { id: GV.RM-06, title: "A standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated" }
@@ -258,14 +258,14 @@ status: DRAFT
     a confidential internal report.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-024
   title: "GPAI serious incident reporting to the AI Office"
   source_clauses:
     - { clause_id: AIA-C29, article_ref: "Art. 55(1)(c) — `keep track of, document, and report, without undue delay, to the AI Office and, as appropriate, to national competent authorities, relevant information about serious incidents and possible corrective measures to address them`" }
-  linked_objectives: [SO-AIACT-014]
+  linked_objectives: [SG-AIACT-014]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents are reported internally to the appropriate stakeholders, including executive leadership and legal counsel" }

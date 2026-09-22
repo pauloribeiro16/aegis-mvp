@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-037 | Manufacturer exercises due diligence when integrating components sourced from third parties — including components of free and open-source software not made available on the market in the course of a commercial activity — so that those components do not compromise the cybersecurity of the product with digital elements (Art. 13(5) + Art. 13(6) + Art. 3(48) FOSS definition) | Product component integration; manufacturer-driven; `due diligence` procedural + substantive (VAG+POLY-S3, R3 reading); entities up to Art. 3(40) dealer / Art. 3(11) importer responsibilities; GV.SC-01 + GV.SC-02 + ID.RA-02 |
+| CRA | SG-CRA-037 | Manufacturer exercises due diligence when integrating components sourced from third parties — including components of free and open-source software not made available on the market in the course of a commercial activity — so that those components do not compromise the cybersecurity of the product with digital elements (Art. 13(5) + Art. 13(6) + Art. 3(48) FOSS definition) | Product component integration; manufacturer-driven; `due diligence` procedural + substantive (VAG+POLY-S3, R3 reading); entities up to Art. 3(40) dealer / Art. 3(11) importer responsibilities; GV.SC-01 + GV.SC-02 + ID.RA-02 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-06.1.3 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-06.1.CRA
+id: SG-D-06.1.CRA
 subdomain: D-06.1
 applies_to: [CRA]
-inherits_from: SO-CRA-037
+inherits_from: SG-CRA-037
 source_SR: SR-CRA-050
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -70,7 +70,7 @@ operationalised.)*
 
   derives_from:
     hso_sub_so: SO-6.1.CRA
-    per_reg_so: SO-CRA-037
+    per_reg_so: SG-CRA-037
     source_sr: SR-CRA-050
     hso_file: ../../HierarchicalSecurityObjectives/D-06_Supply-Chain/6.1.md
     objective_ref_section: "### 6.1.3"

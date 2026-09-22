@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| NIS2 | SO-NIS2-024 (partial) | Member States shall encourage the use of European or internationally accepted standards and specifications relevant to the security of network and information systems (Art. 24(1)); Commission delegated acts under Art. 24(2); ENISA candidate scheme request under Art. 24(3). | Certification-driven recordkeeping (Art. 24(1)/(2)/(3)), not a RoPA-equivalent; substantively scope-disjoint from GDPR per CRDA `N (typically)` (different record types, different triggers). |
+| NIS2 | SG-NIS2-024 (partial) | Member States shall encourage the use of European or internationally accepted standards and specifications relevant to the security of network and information systems (Art. 24(1)); Commission delegated acts under Art. 24(2); ENISA candidate scheme request under Art. 24(3). | Certification-driven recordkeeping (Art. 24(1)/(2)/(3)), not a RoPA-equivalent; substantively scope-disjoint from GDPR per CRDA `N (typically)` (different record types, different triggers). |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-09.4.2 — Sub-SO for NIS 2
 
 ```yaml
-id: SO-D-09.4.NIS2
+id: SG-D-09.4.NIS2
 subdomain: D-09.4
 applies_to: [NIS2]
-inherits_from: SO-NIS2-024
+inherits_from: SG-NIS2-024
 source_SR: SR-NIS2-043
 activation: if NIS2 in applicable_regs
 phase_1A_role: 2_of_5
@@ -48,7 +48,7 @@ GV.SC-04, GV.OC-03.
 
   derives_from:
     hso_sub_so: SO-9.4.NIS2
-    per_reg_so: SO-NIS2-024
+    per_reg_so: SG-NIS2-024
     source_sr: SR-NIS2-043
     hso_file: ../../HierarchicalSecurityObjectives/D-09_Governance-Documentation/9.4.md
     objective_ref_section: "### 9.4.2"

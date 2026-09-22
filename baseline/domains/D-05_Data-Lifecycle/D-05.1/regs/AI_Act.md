@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| AI_Act | SO-AIACT-003 + SO-AIACT-004 | High-risk AI training/validation/testing datasets meet quality criteria (relevant/representative/free of errors/complete) + bias-detection data governance (8-element list) + exceptional special-category processing for bias correction (6 cumulative conditions (a)–(f)) | Training data; provider-driven; Art. 10(1)/(2)/(3)/(5); ID.AM-03 + ID.AM-08 + PR.PS-06 + PR.DS-01 + GV.OC-03 |
+| AI_Act | SG-AIACT-003 + SG-AIACT-004 | High-risk AI training/validation/testing datasets meet quality criteria (relevant/representative/free of errors/complete) + bias-detection data governance (8-element list) + exceptional special-category processing for bias correction (6 cumulative conditions (a)–(f)) | Training data; provider-driven; Art. 10(1)/(2)/(3)/(5); ID.AM-03 + ID.AM-08 + PR.PS-06 + PR.DS-01 + GV.OC-03 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-05.1.3 — Sub-SO for AI_Act
 
 ```yaml
-id: SO-D-05.1.AIACT
+id: SG-D-05.1.AIACT
 subdomain: D-05.1
 applies_to: [AI_ACT]
-inherits_from: SO-AIACT-003, SO-AIACT-004
+inherits_from: SG-AIACT-003, SG-AIACT-004
 source_SR: SR-AIACT-003, SR-AIACT-004, SR-AIACT-005, SR-AIACT-006
 activation: if AI_ACT in applicable_regs
 phase_1A_role: 1_of_N
@@ -50,8 +50,8 @@ ID.AM-03, ID.AM-08, PR.PS-06, PR.DS-01, GV.OC-03.
   title: "High-risk AI training/validation/testing datasets meet Art. 10(3) quality criteria and Art. 10(2) 8-element data-governance practice; Art. 10(5) special-category 6-cumulative-condition gateway documented when applicable"
 
   derives_from:
-    hso_sub_so: SO-D-05.1.AIACT
-    per_reg_so: SO-AIACT-003, SO-AIACT-004
+    hso_sub_so: SG-D-05.1.AIACT
+    per_reg_so: SG-AIACT-003, SG-AIACT-004
     source_sr: SR-AIACT-003, SR-AIACT-004, SR-AIACT-005, SR-AIACT-006
     hso_file: ../../HierarchicalSecurityObjectives/D-05_Data-Lifecycle/D-05.1.md
     objective_ref_section: "### D-05.1.3"

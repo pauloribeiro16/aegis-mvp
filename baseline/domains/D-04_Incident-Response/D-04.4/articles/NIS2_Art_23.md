@@ -30,25 +30,25 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-NIS2-005 | An incident-handling capability is established, covering the prevention, detection, analysis, containment, response, and recovery of incidents, including those with significant impact on the provision of services. | `NIS2-CL11` (Art. 21(2)(b) — incident handling); `NIS2-CL26` (Art. 23(1) ¶1 — significant-incident notification core); `NIS2-CL09` (Art. 21(2) chapeau — all-hazards approach); `NIS2-CL12` (Art. 21(2)(c) — BC/DR/CM, for the recovery dimension) | D-04.1, D-04.2, D-04.4 |
-| SO-NIS2-006 | Significant incidents are notified to the CSIRT or, where applicable, the competent authority without undue delay, with an early warning submitted in any event within 24 hours of becoming aware of the significant incident and an incident notification submitted in any event within 72 hours of becoming aware, including severity, impact, and (where available) indicators of compromise. | `NIS2-CL26` (Art. 23(1) ¶1 — notification core); `NIS2-CL35` (Art. 23(4)(a) — 24h early warning); `NIS2-CL36` (Art. 23(4)(b) — 72h incident notification); `NIS2-CL28` (Art. 23(1) ¶1 — cross-border info); `NIS2-CL29` (Art. 23(1) ¶1 — no-increased-liability shield); `NIS2-CL30` (Art. 23(1) ¶2 — CA→CSIRT forwarding); `NIS2-CL31` (Art. 23(1) ¶3 — SPOC cross-border); `NIS2-CL45` (Art. 23(9) — ENISA quarterly, institutional — referenced for propagation) | D-04.3 |
-| SO-NIS2-006 | D-04.3 | Art. 23(1) + Art. 23(4)(a)/(b) | 24h early warning + 72h incident notification (twin-trigger) |
-| SO-NIS2-007 | A final incident report is submitted to the CSIRT or competent authority not later than one month after the incident notification, including a detailed description of the incident, the type of threat or root cause, applied and ongoing mitigation measures, and (where applicable) the cross-border impact. | `NIS2-CL38` (Art. 23(4)(d) — 1m final report) | D-04.3 |
-| SO-NIS2-007 | D-04.3 | Art. 23(4)(d) | Final report not later than 1 month after notification |
-| SO-NIS2-008 | Where an incident is ongoing at the time of the final report, a progress report is provided at that time and a closing final report is submitted within one month of the entity's handling of the incident. | `NIS2-CL39` (Art. 23(4)(e) — ongoing incident progress + closing final) | D-04.3 |
-| SO-NIS2-008 | D-04.3 | Art. 23(4)(e) | Ongoing incident progress report + closing final report within 1 month of handling |
-| SO-NIS2-009 | Trust service providers notify the CSIRT or competent authority without undue delay and in any event within 24 hours of becoming aware of a significant incident affecting the provision of their trust services (the TSP derogation, applicable regardless of the 72h/1m tier structure of the general notification flow). | `NIS2-CL40` (Art. 23(4) ¶2 — TSP 24h derogation) | D-04.3 |
-| SO-NIS2-009 | D-04.3 | Art. 23(4) ¶2 | TSP 24h notification regardless of tier (derogation) |
-| SO-NIS2-010 | An intermediate report on relevant status updates is provided on the request of a CSIRT or competent authority. | `NIS2-CL37` (Art. 23(4)(c) — intermediate report) | D-04.3 |
-| SO-NIS2-010 | D-04.3 | Art. 23(4)(c) | Intermediate report on CSIRT/CA request |
-| SO-NIS2-011 | Recipients of services that are potentially affected by a significant incident or by a significant cyber threat are notified of the incident or threat and informed of measures or remedies they can take in response. | `NIS2-CL27` (Art. 23(1) ¶1 — recipient notification of significant incidents); `NIS2-CL32` (Art. 23(2) — recipient notification of significant cyber threats + countermeasures) | D-04.3 |
-| SO-NIS2-011 | D-04.3 | Art. 23(1) ¶1 + Art. 23(2) | Recipient notification of significant incidents + significant cyber threats |
-| SO-NIS2-012 | Cross-MS notification: where a significant incident concerns two or more Member States, the CSIRT, competent authority, or single point of contact informs other affected Member States and ENISA without undue delay. | `NIS2-CL42` (Art. 23(6) — cross-MS notification); `NIS2-CL44` (Art. 23(8) — SPOC forwarding); `NIS2-CL46` (Art. 23(10) — CER cross-sharing, institutional — referenced for propagation); `NIS2-CL43` (Art. 23(7) — public disclosure if in public interest; authority-initiated) | D-04.3 |
-| SO-NIS2-012 | D-04.3 | Art. 23(6)/(8)/(10)/(7) | Cross-MS notification, SPOC forwarding, CER cross-sharing, public disclosure |
+| SG-NIS2-005 | An incident-handling capability is established, covering the prevention, detection, analysis, containment, response, and recovery of incidents, including those with significant impact on the provision of services. | `NIS2-CL11` (Art. 21(2)(b) — incident handling); `NIS2-CL26` (Art. 23(1) ¶1 — significant-incident notification core); `NIS2-CL09` (Art. 21(2) chapeau — all-hazards approach); `NIS2-CL12` (Art. 21(2)(c) — BC/DR/CM, for the recovery dimension) | D-04.1, D-04.2, D-04.4 |
+| SG-NIS2-006 | Significant incidents are notified to the CSIRT or, where applicable, the competent authority without undue delay, with an early warning submitted in any event within 24 hours of becoming aware of the significant incident and an incident notification submitted in any event within 72 hours of becoming aware, including severity, impact, and (where available) indicators of compromise. | `NIS2-CL26` (Art. 23(1) ¶1 — notification core); `NIS2-CL35` (Art. 23(4)(a) — 24h early warning); `NIS2-CL36` (Art. 23(4)(b) — 72h incident notification); `NIS2-CL28` (Art. 23(1) ¶1 — cross-border info); `NIS2-CL29` (Art. 23(1) ¶1 — no-increased-liability shield); `NIS2-CL30` (Art. 23(1) ¶2 — CA→CSIRT forwarding); `NIS2-CL31` (Art. 23(1) ¶3 — SPOC cross-border); `NIS2-CL45` (Art. 23(9) — ENISA quarterly, institutional — referenced for propagation) | D-04.3 |
+| SG-NIS2-006 | D-04.3 | Art. 23(1) + Art. 23(4)(a)/(b) | 24h early warning + 72h incident notification (twin-trigger) |
+| SG-NIS2-007 | A final incident report is submitted to the CSIRT or competent authority not later than one month after the incident notification, including a detailed description of the incident, the type of threat or root cause, applied and ongoing mitigation measures, and (where applicable) the cross-border impact. | `NIS2-CL38` (Art. 23(4)(d) — 1m final report) | D-04.3 |
+| SG-NIS2-007 | D-04.3 | Art. 23(4)(d) | Final report not later than 1 month after notification |
+| SG-NIS2-008 | Where an incident is ongoing at the time of the final report, a progress report is provided at that time and a closing final report is submitted within one month of the entity's handling of the incident. | `NIS2-CL39` (Art. 23(4)(e) — ongoing incident progress + closing final) | D-04.3 |
+| SG-NIS2-008 | D-04.3 | Art. 23(4)(e) | Ongoing incident progress report + closing final report within 1 month of handling |
+| SG-NIS2-009 | Trust service providers notify the CSIRT or competent authority without undue delay and in any event within 24 hours of becoming aware of a significant incident affecting the provision of their trust services (the TSP derogation, applicable regardless of the 72h/1m tier structure of the general notification flow). | `NIS2-CL40` (Art. 23(4) ¶2 — TSP 24h derogation) | D-04.3 |
+| SG-NIS2-009 | D-04.3 | Art. 23(4) ¶2 | TSP 24h notification regardless of tier (derogation) |
+| SG-NIS2-010 | An intermediate report on relevant status updates is provided on the request of a CSIRT or competent authority. | `NIS2-CL37` (Art. 23(4)(c) — intermediate report) | D-04.3 |
+| SG-NIS2-010 | D-04.3 | Art. 23(4)(c) | Intermediate report on CSIRT/CA request |
+| SG-NIS2-011 | Recipients of services that are potentially affected by a significant incident or by a significant cyber threat are notified of the incident or threat and informed of measures or remedies they can take in response. | `NIS2-CL27` (Art. 23(1) ¶1 — recipient notification of significant incidents); `NIS2-CL32` (Art. 23(2) — recipient notification of significant cyber threats + countermeasures) | D-04.3 |
+| SG-NIS2-011 | D-04.3 | Art. 23(1) ¶1 + Art. 23(2) | Recipient notification of significant incidents + significant cyber threats |
+| SG-NIS2-012 | Cross-MS notification: where a significant incident concerns two or more Member States, the CSIRT, competent authority, or single point of contact informs other affected Member States and ENISA without undue delay. | `NIS2-CL42` (Art. 23(6) — cross-MS notification); `NIS2-CL44` (Art. 23(8) — SPOC forwarding); `NIS2-CL46` (Art. 23(10) — CER cross-sharing, institutional — referenced for propagation); `NIS2-CL43` (Art. 23(7) — public disclosure if in public interest; authority-initiated) | D-04.3 |
+| SG-NIS2-012 | D-04.3 | Art. 23(6)/(8)/(10)/(7) | Cross-MS notification, SPOC forwarding, CER cross-sharing, public disclosure |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-010
@@ -58,7 +58,7 @@ status: DRAFT
     - { clause_id: NIS2-CL26, article_ref: "Art. 23(1) ¶1 — notification core" }
     - { clause_id: NIS2-CL33, article_ref: "Art. 23(3)(a) — significant-incident test A" }
     - { clause_id: NIS2-CL34, article_ref: "Art. 23(3)(b) — significant-incident test B" }
-  linked_objectives: [SO-NIS2-006]
+  linked_objectives: [SG-NIS2-006]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-04, title: "Coordination with stakeholders occurs consistent with applicable rules and regulations" }
@@ -73,7 +73,7 @@ status: DRAFT
     `Without undue delay and in any event within 24 hours` is an S3 twin-trigger pattern: `without undue delay` is the primary trigger (some incidents may justify earlier notification — e.g. active data exfiltration); 24 hours is the hard ceiling. The chosen reading is R1 (primary trigger with hard ceiling). `Becoming aware` is an S3 polysemy: actual awareness (R1, the literal OJ reading — the moment an employee or system records the incident), constructive awareness (R2, the dominant CJEU reading — what a properly-organised entity should have known), or either (R3). R1 is the literal OJ reading; R2 is the dominant CJEU reading and is the basis for supervisory enforcement. `Severe operational disruption` and `considerable material or non-material damage` are S3 vague terms — both `severe` and `considerable` are undefined; this is the definitional regress flagged in the synthesis §4.5 and the Commission implementing-acts mandate under Article 23(11) is the closing mechanism (currently pending). Member State transposition divergence may apply; national CSAs may pre-publish thresholds (e.g. France ANSSI's incident-classification matrix; Germany BSI's significant-incident catalogue under §8b BSIG). Remain open: (a) whether the Article 23(11) implementing acts will set quantitative thresholds for `severe` and `considerable` across the 10 digital-infrastructure categories — the directive is silent on operationalisation and the pending acts were due 17 October 2024; (b) whether Member State national transposition will tighten or relax the `becoming aware` construct (e.g. German BSI may adopt constructive-awareness for the federal sector; other MS may stay with literal OJ actual-awareness).
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-011
@@ -83,7 +83,7 @@ status: DRAFT
     - { clause_id: NIS2-CL26, article_ref: "Art. 23(1) ¶1 — notification core" }
     - { clause_id: NIS2-CL33, article_ref: "Art. 23(3)(a) — significant-incident test A" }
     - { clause_id: NIS2-CL34, article_ref: "Art. 23(3)(b) — significant-incident test B" }
-  linked_objectives: [SO-NIS2-006]
+  linked_objectives: [SG-NIS2-006]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-04, title: "Coordination with stakeholders occurs consistent with applicable rules and regulations" }
@@ -98,7 +98,7 @@ status: DRAFT
     Same S3 twin-trigger pattern as SR-NIS2-010 at 72 hours; the chosen reading is R1 (primary trigger `without undue delay`, hard ceiling 72 hours). `Becoming aware` (S3 POLY+SCOPE-Q) carries the same R1 literal / R2 dominant-CJEU readings as SR-NIS2-010. `Indicators of compromise` is an S2 polysemy (technical indicators — hashes, IPs, domains; behavioural indicators — TTPs; or any); the chosen reading is R3 (mechanism-agnostic per the OJ). `Where available` is a soft hedge on IoC inclusion — best-effort, not exhaustive. Member State transposition divergence may apply on IoC granularity and on national incident-classification matrices. Remain open: (a) whether the Article 23(11) implementing acts will specify minimum IoC-disclosure granularity for the 10 digital-infrastructure categories; (b) whether the `where available` hedge will be operationalised by national supervisory authorities as a duty to disclose when in possession of IoCs, or as a permissive allowance to withhold incomplete data — the directive is silent.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-012
@@ -106,7 +106,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL38, article_ref: "Art. 23(4)(d) — 1m final report" }
     - { clause_id: NIS2-CL36, article_ref: "Art. 23(4)(b) — 72h notification (anchor for the 1m clock)" }
-  linked_objectives: [SO-NIS2-007]
+  linked_objectives: [SG-NIS2-007]
   sub_domain: [D-04.3, D-04.4]
   nist_csf_mapping:
     - { id: RS.CO-04, title: "Coordination with stakeholders occurs consistent with applicable rules and regulations" }
@@ -122,14 +122,14 @@ status: DRAFT
     `One month` admits calendar-month (R1, literal OJ), 30-day (R2), and working-month (R3) readings; the chosen reading is R1 calendar-month per the literal OJ. `Detailed description` admits comprehensive (R1) and sufficient-for-CSIRT (R2) readings; R1 preferred because the four sub-points structure provides the minimum content. `Root cause` admits technical (R1), organisational (R2), and procedural (R3) readings; the chosen reading is mechanism-agnostic (any) per the literal OJ. Member State transposition divergence may apply on the clock interpretation (calendar vs. 30-day). Remain open: whether the Commission's Article 23(11) implementing acts will standardise the final-report format across the 10 digital-infrastructure categories.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-013
   title: "Progress and closing reports for ongoing incidents"
   source_clauses:
     - { clause_id: NIS2-CL39, article_ref: "Art. 23(4)(e) — ongoing incident progress report + closing final report" }
-  linked_objectives: [SO-NIS2-008]
+  linked_objectives: [SG-NIS2-008]
   sub_domain: [D-04.3, D-04.4]
   nist_csf_mapping:
     - { id: RS.CO-04, title: "Coordination with stakeholders occurs consistent with applicable rules and regulations" }
@@ -144,7 +144,7 @@ status: DRAFT
     `Ongoing incident` admits still-under-containment (R1), recovery-phase (R2), and either (R3) readings; the chosen reading is R3 (literal OJ — the directive does not distinguish containment from recovery as gating conditions). `Within one month of their handling of the incident` — the 1-month clock restarts on `handling`, which is an S2 polysemy inheriting the Article 6(8) process/team/capability readings; the chosen reading is process-completion per the literal `handling` anchor. Member State transposition divergence may apply on the criteria for declaring an incident `ongoing` versus `closed` — some MS require the CSIRT to acknowledge closure; others accept entity-self-determination. Remain open: whether the Commission's Article 23(11) implementing acts will specify closure criteria for ongoing incidents across the 10 digital-infrastructure categories.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-014
@@ -152,7 +152,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL40, article_ref: "Art. 23(4) ¶2 — TSP 24h derogation" }
     - { clause_id: NIS2-D02, article_ref: "Art. 6(24) — trust service (eIDAS cross-reference)" }
-  linked_objectives: [SO-NIS2-009]
+  linked_objectives: [SG-NIS2-009]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-04, title: "Coordination with stakeholders occurs consistent with applicable rules and regulations" }
@@ -167,14 +167,14 @@ status: DRAFT
     The TSP derogation applies only to trust service providers as defined in Article 6(24) (the eIDAS cross-reference). The chosen reading is that the derogation applies to QTSPs (qualified trust service providers per Annex I) and to TSPs in scope of Article 6(24) more broadly (non-qualified trust service providers may be subject to the derogation if they meet the eIDAS trust-service definition). Member State transposition divergence may apply; national supervisory authorities may publish sector-specific guidance. Remain open: whether non-qualified TSPs in Annex II (important entity classification) can opt into the 24-hour derogation by agreement with the national CSIRT, or whether the derogation is reserved to Annex I QTSPs.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-015
   title: "On-demand intermediate status reports to the CSIRT"
   source_clauses:
     - { clause_id: NIS2-CL37, article_ref: "Art. 23(4)(c) — intermediate report on CSIRT request" }
-  linked_objectives: [SO-NIS2-010]
+  linked_objectives: [SG-NIS2-010]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-04, title: "Coordination with stakeholders occurs consistent with applicable rules and regulations" }
@@ -189,7 +189,7 @@ status: DRAFT
     `Relevant status updates` admits technical (R1), impact (R2), and both (R3) readings; the chosen reading is R3 (literal OJ — `relevant` is mechanism-agnostic). `Upon the request` is on-demand with no temporal anchor; the regulator sets the cadence. Member State transposition divergence may apply on the requesting authority's discretion (some MS may publish criteria for when intermediate reports are requested). Remain open: whether the Commission's Article 23(11) implementing acts will specify a minimum cadence or trigger conditions for intermediate-report requests.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-016
@@ -197,7 +197,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL27, article_ref: "Art. 23(1) ¶1 — recipient notification of significant incidents" }
     - { clause_id: NIS2-CL26, article_ref: "Art. 23(1) ¶1 — significant-incident trigger" }
-  linked_objectives: [SO-NIS2-011]
+  linked_objectives: [SG-NIS2-011]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information shared with designated internal and external stakeholders consistent with the established information-sharing rules" }
@@ -212,14 +212,14 @@ status: DRAFT
     `Where appropriate` (S2 VAG hedge) admits system (R1), user (R2), risk (R3), and cost (R4) readings; R3 is dominant per the Article 21(1) factors propagation. `Without undue delay` (S2 VAG) admits 24h (R1) and reasonable-time (R2) readings; R2 is dominant per Recital 60 and standard EU drafting. `Likely to adversely affect` (S2 VAG) admits >50% (R1), >10% (R2), and any-non-zero-probability (R3) readings; R3 is literal. Member State transposition divergence may apply on the threshold for recipient notification. Remain open: whether the Commission's Article 23(11) implementing acts will specify a minimum recipient-notification timeline or rely on the soft `without undue delay` standard.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-017
   title: "Proactive threat and remedy communication to recipients"
   source_clauses:
     - { clause_id: NIS2-CL32, article_ref: "Art. 23(2) — recipient notification of significant cyber threats + countermeasures" }
-  linked_objectives: [SO-NIS2-011]
+  linked_objectives: [SG-NIS2-011]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information shared with designated internal and external stakeholders consistent with the established information-sharing rules" }
@@ -234,7 +234,7 @@ status: DRAFT
     `Significant cyber threat` inherits the `severe`/`considerable` definitional regress from Article 23(3); the literal OJ reading is preserved. `Measures or remedies` admits technical / corrective readings; the chosen reading is both (literal OR). `Where appropriate` for the threat-disclosure dimension is an S2 VAG hedge; the chosen reading is risk-based (R3) per Article 21(1) factors. Member State transposition divergence may apply on the criteria for proactive threat disclosure. Remain open: whether the Commission's Article 23(11) implementing acts will specify a baseline threat-disclosure framework for the 10 digital-infrastructure categories.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-018
@@ -243,7 +243,7 @@ status: DRAFT
     - { clause_id: NIS2-CL42, article_ref: "Art. 23(6) — cross-MS notification + ENISA" }
     - { clause_id: NIS2-CL44, article_ref: "Art. 23(8) — SPOC forwarding" }
     - { clause_id: NIS2-CL31, article_ref: "Art. 23(1) ¶3 — SPOC cross-border (entity-side)" }
-  linked_objectives: [SO-NIS2-012]
+  linked_objectives: [SG-NIS2-012]
   sub_domain: [D-04.3, D-06.4]
   nist_csf_mapping:
     - { id: RS.CO-04, title: "Coordination with stakeholders occurs consistent with applicable rules and regulations" }
@@ -258,14 +258,14 @@ status: DRAFT
     `In due time` (S2 VAG) admits reasonable-time (R1, literal), tighter-than-`without undue delay` (R2), and tied-to-processing (R3) readings; R1 is literal. `Two or more Member States` (S2 SCOPE-Q) admits specific pre-identified (R1) and any-combination (R2) readings; R2 is dominant per standard EU drafting practice. `Cross-border OR cross-sectoral` (S2 COORD) admits either (R3) reading; R3 is literal. Member State transposition divergence may apply on the SPOC designation and on the criteria for cross-MS escalation. Remain open: whether the Commission's Article 23(11) implementing acts will specify escalation criteria across the 10 digital-infrastructure categories for cross-MS notification.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-041
   title: "Physical-environment protection ensures NIS substrate resilience"
   source_clauses:
     - { clause_id: NIS2-CL09, article_ref: "Art. 21(2) chapeau — protection of the physical environment of those systems" }
-  linked_objectives: [SO-NIS2-022]
+  linked_objectives: [SG-NIS2-022]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.RM-06, title: "Standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated" }
@@ -279,7 +279,7 @@ status: DRAFT
     The compound `physical environment of those systems` carries a SCOPE-Q S2 ambiguity with three readings: a narrow reading (server rooms, data centres, network equipment closets), a medium reading (buildings including offices and call centres that host NIS-supporting staff), or a broad reading (surrounding critical infrastructure including power, cooling and telecoms). The narrow reading is the chosen OJ-literal reading because the qualifier `of those systems` anchors the physical environment to the NIS rather than to the entity's broader footprint. The SR is OUT-OF-SCOPE for the software-compliance track: it captures a physical-security requirement, not a software requirement, and Layer 3 (inference-trust) must adjudicate whether software-software integration controls are needed for the physical-environment dimension (e.g. environmental sensors feeding into security monitoring tooling, physical-access-control-system event correlation with identity governance). The SR maps to GV.RM-06 as a meta-methodology reference and does not generate software-security rules for downstream phases. Member State transposition divergence may apply on whether national supervisory authorities expect a documented physical-environment risk assessment as a sub-component of the all-hazards methodology. Remain open: (a) whether the narrow reading requires a separate physical-environment risk-assessment document or whether the all-hazards methodology under SR-NIS2-040 covers it implicitly; (b) whether the broad-reading interpretation applies to NIS-supporting critical infrastructure operators under the CER Directive cross-link (Art. 23(10) CER cross-sharing), which would couple this SR with the CER resilience obligation.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-044
@@ -287,7 +287,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL30, article_ref: "Art. 23(1) ¶2 — CA forwards notification to CSIRT upon receipt" }
     - { clause_id: NIS2-CL26, article_ref: "Art. 23(1) ¶1 — CSIRT or competent authority routing" }
-  linked_objectives: [SO-NIS2-006]
+  linked_objectives: [SG-NIS2-006]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-04, title: "Coordination with stakeholders occurs consistent with applicable rules and regulations" }
@@ -302,14 +302,14 @@ status: DRAFT
     The temporal anchor `upon receipt` admits three readings: an immediate-reading (within minutes or hours of receipt), a same-day reading (within 24 hours of receipt), or a within-24h reading (parallel to the Article 23(5) CSIRT-response deadline), with the chosen reading being the immediate reading because `upon receipt` is a literal temporal anchor that admits no scheduling delay. The CSIRT-CA routing is Member-State-determined (Article 23(1) ¶1 `CSIRT or, where applicable, its competent authority`), so the entity's notification routing depends on the MS-determined structure; some Member States designate the CSIRT as the single-entry-point, while others designate the competent authority with the CSIRT as the operational coordinator that receives the forwarded notification under SR-NIS2-044. The SR's `applies_to_role` is COMPETENT_AUTHORITY and CSIRT — the forwarding is an authority-side obligation; the entity-side counterpart (notifying the appropriate authority per the MS-determined routing) is captured by SR-NIS2-010/011. Member State transposition divergence may apply on the routing architecture and on the documentation expected to evidence the forwarding. Remain open: whether Member State supervisory authorities will adopt a uniform CSIRT-CA routing convention that converts the routing-discretion interpretation into a conformance baseline, or whether each Member State retains full architectural discretion and the divergence compounds over the 27 implementations.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-045
   title: "Good-faith incident notification shielded from increased liability exposure"
   source_clauses:
     - { clause_id: NIS2-CL29, article_ref: "Art. 23(1) ¶1 — mere act of notification shall not subject the notifying entity to increased liability" }
-  linked_objectives: [SO-NIS2-006]
+  linked_objectives: [SG-NIS2-006]
   sub_domain: [D-04.3, D-09.1]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed" }

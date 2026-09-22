@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-015 + SO-GDPR-016 (cross-ref) | Personal data limited to adequate/relevant/necessary + Art. 6(4) compatibility test + Art. 6(1)(a)–(f) lawfulness bases + Art. 9(1) prohibition with Art. 9(2) exceptions | Personal data; controller-driven; Art. 5(1)(c) + Art. 6(4) + Art. 5(1)(a)/(b) + Art. 6(1) + Art. 9(1) prohibition; ID.AM-08 + ID.AM-03 |
+| GDPR | SG-GDPR-015 + SG-GDPR-016 (cross-ref) | Personal data limited to adequate/relevant/necessary + Art. 6(4) compatibility test + Art. 6(1)(a)–(f) lawfulness bases + Art. 9(1) prohibition with Art. 9(2) exceptions | Personal data; controller-driven; Art. 5(1)(c) + Art. 6(4) + Art. 5(1)(a)/(b) + Art. 6(1) + Art. 9(1) prohibition; ID.AM-08 + ID.AM-03 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-05.1.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-05.1.GDPR
+id: SG-D-05.1.GDPR
 subdomain: D-05.1
 applies_to: [GDPR]
-inherits_from: SO-GDPR-015 + SO-GDPR-016 (cross-ref)
+inherits_from: SG-GDPR-015 + SG-GDPR-016 (cross-ref)
 source_SR: SR-GDPR-025, SR-GDPR-026
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N
@@ -73,8 +73,8 @@ provides the supervisory-authority evidence path.)*
   title: "Personal data limited to what is adequate, relevant, and necessary for the processing purpose, with Art. 6(4) compatibility assessment on change of purpose and Art. 9(1) special-category prohibition honoured"
 
   derives_from:
-    hso_sub_so: SO-D-05.1.GDPR
-    per_reg_so: SO-GDPR-015 + SO-GDPR-016 (cross-ref)
+    hso_sub_so: SG-D-05.1.GDPR
+    per_reg_so: SG-GDPR-015 + SG-GDPR-016 (cross-ref)
     source_sr: SR-GDPR-025, SR-GDPR-026
     hso_file: ../../HierarchicalSecurityObjectives/D-05_Data-Lifecycle/D-05.1.md
     objective_ref_section: "### D-05.1.1"

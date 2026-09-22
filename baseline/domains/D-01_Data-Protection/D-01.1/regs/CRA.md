@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-001 / SO-CRA-002 | State-of-the-art encryption of stored data (personal or other) | Manufacturer; Annex I Part I (1) + (2)(e); product-level; state-of-the-art baseline + harmonised-standards floor |
+| CRA | SG-CRA-001 / SG-CRA-002 | State-of-the-art encryption of stored data (personal or other) | Manufacturer; Annex I Part I (1) + (2)(e); product-level; state-of-the-art baseline + harmonised-standards floor |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-01.1.3 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-01.1.CRA
+id: SG-D-01.1.CRA
 subdomain: D-01.1
 applies_to: [CRA]
-inherits_from: SO-CRA-002
+inherits_from: SG-CRA-002
 source_SR: SR-CRA-002
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -36,7 +36,7 @@ encrypting relevant data at rest using state-of-the-art mechanisms
 PR.DS-01.
 *(The umbrella `SR-CRA-001` additionally maps PR.DS-02 for the in-transit
 channel of the same Annex I (2)(e) clause; that anchor is covered by
-`SO-D-01.2.CRA` in §D-01.2 below.)*
+`SG-D-01.2.CRA` in §D-01.2 below.)*
 
 ---
 
@@ -53,8 +53,8 @@ channel of the same Annex I (2)(e) clause; that anchor is covered by
   title: "Product-stored data is encrypted using state-of-the-art mechanisms"
 
   derives_from:
-    hso_sub_so: SO-D-01.1.CRA
-    per_reg_so: SO-CRA-002
+    hso_sub_so: SG-D-01.1.CRA
+    per_reg_so: SG-CRA-002
     source_sr: SR-CRA-002
     hso_file: ../../HierarchicalSecurityObjectives/D-01_Data-Protection/D-01.1.md
     objective_ref_section: "### D-01.1.3"

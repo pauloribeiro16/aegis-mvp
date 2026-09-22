@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-002 | Strong authentication mechanisms (T4 reads MFA; OJ says "strong authentication") | Financial entity; Art. 9(4)(d); dominant EBA Guidelines reading is MFA but OJ has no "multi-factor" phrase (T4-vs-text gap); PR.AA-03 + PR.AA-04 |
+| DORA | SG-DORA-002 | Strong authentication mechanisms (T4 reads MFA; OJ says "strong authentication") | Financial entity; Art. 9(4)(d); dominant EBA Guidelines reading is MFA but OJ has no "multi-factor" phrase (T4-vs-text gap); PR.AA-03 + PR.AA-04 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-03.2.4 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-03.2.DORA
+id: SG-D-03.2.DORA
 subdomain: D-03.2
 applies_to: [DORA]
-inherits_from: SO-DORA-002
+inherits_from: SG-DORA-002
 source_SR: SR-DORA-002
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_N
@@ -68,8 +68,8 @@ constitute the Art. 5(2) accountability evidence.)*
   title: "Strong authentication mechanisms based on relevant standards (Art. 9(4)(d); dominant EBA MFA reading)"
 
   derives_from:
-    hso_sub_so: SO-D-03.2.DORA
-    per_reg_so: SO-DORA-002
+    hso_sub_so: SG-D-03.2.DORA
+    per_reg_so: SG-DORA-002
     source_sr: SR-DORA-002
     hso_file: ../../HierarchicalSecurityObjectives/D-03_Access-Control/D-03.2.md
     objective_ref_section: "### D-03.2.4"

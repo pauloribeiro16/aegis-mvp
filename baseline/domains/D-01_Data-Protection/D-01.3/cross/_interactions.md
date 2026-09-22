@@ -31,9 +31,9 @@
 #### Participants (from CRDA-deep §D-01.3)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-002 | Pseudonymisation/encryption with separate-storage test for the additional information (keys) + Art. 34(3)(a) unintelligibility carve-out | Controller/processor; Art. 4(5) de-attribution test + Art. 34(3)(a) breach-context carve-out; personal-data scope; risk-anchored `appropriate` |
-| CRA | SO-CRA-004 | Cryptographic key separation from operational environment (custodian ≠ consumer) | Manufacturer; Annex I Part I (2)(d)+(e) functional-RBAC reading (T2-vs-text gap reading per `99_CRA_Synthesis.md` §4); product-level; "personal or other"; state-of-the-art baseline |
-| DORA | SO-DORA-002 | Strong authentication + cryptographic-key protection + encryption (3-control AND) with classification-driven cipher strength | Financial entity; Art. 9(4)(d) 3-control AND; ICT-system-level; entity-level HSM/split-knowledge/classification-tiered rotation; `high standards` anchor |
+| GDPR | SG-GDPR-002 | Pseudonymisation/encryption with separate-storage test for the additional information (keys) + Art. 34(3)(a) unintelligibility carve-out | Controller/processor; Art. 4(5) de-attribution test + Art. 34(3)(a) breach-context carve-out; personal-data scope; risk-anchored `appropriate` |
+| CRA | SG-CRA-004 | Cryptographic key separation from operational environment (custodian ≠ consumer) | Manufacturer; Annex I Part I (2)(d)+(e) functional-RBAC reading (T2-vs-text gap reading per `99_CRA_Synthesis.md` §4); product-level; "personal or other"; state-of-the-art baseline |
+| DORA | SG-DORA-002 | Strong authentication + cryptographic-key protection + encryption (3-control AND) with classification-driven cipher strength | Financial entity; Art. 9(4)(d) 3-control AND; ICT-system-level; entity-level HSM/split-knowledge/classification-tiered rotation; `high standards` anchor |
 
 ## Validated relationships (from CRDA-deep §D-01.3)
 
@@ -135,7 +135,7 @@ material protects.
 ## Scope-overlap principle (operational). The high-level SO
 
 #### Scope-overlap principle (operational). The high-level SO
-(`SO-D-01.3.HL`) engages on a given key-custody architecture **if and only if
+(`SG-D-01.3.HL`) engages on a given key-custody architecture **if and only if
 ≥2 applicable regulations' scopes overlap on the same key material** (e.g.
 the key material protecting personal data on a CRA-regulated product
 deployed by a DORA financial entity — a vertically-integrated
@@ -225,7 +225,7 @@ A company with ≥2 applicable regulations in scope of D-01.3 — with
 overlapping scopes on the same key material — operates a **single
 key-custody architecture (HSM-anchored custodianship + functional RBAC +
 classification-driven rotation)** that discharges all obligations. The
-high-level SO (`SO-D-01.3.HL`) describes the common obligation (key
+high-level SO (`SG-D-01.3.HL`) describes the common obligation (key
 separation); the per-reg perspective is preserved in the sub-SOs (depth
 anchor, scope qualifier, recipient for compliance demonstration). **No
 conflict-resolution is required on D-01.3 because CRDA-deep verified all 3
@@ -264,7 +264,7 @@ GDPR, CRA, DORA (3 of 5 regs; NIS 2 partial via `SR-NIS2-001` cryptography polic
   volere_subtype: access
   title: "Cryptographic keys are managed with separation between custodian and consumer (multi-reg aggregation)"
   derives_from:
-    hso_sub_so: SO-D-01.3.HL
+    hso_sub_so: SG-D-01.3.HL
     hso_file: ../../HierarchicalSecurityObjectives/D-01_Data-Protection/D-01.3.md
     objective_ref_section: "### D-01.3.0"
   description: |
@@ -335,10 +335,10 @@ status: DRAFT
 ##### Participants
 | Regulation | SO ID | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-002 (cross-ref) | When pseudonymisation or encryption applied, additional information (keys) kept separately with technical and organisational measures | Controller/processor; Art. 4(5) de-attribution test + Art. 34(3)(a) unintelligibility exception |
-| CRA | SO-CRA-004 | Cryptographic keys and related authentication material managed with separation of roles (key custodian ≠ operational environment) | Manufacturer; Annex I Part I (2)(d)+(e); product-level; separation as a T2-vs-text gap reading (CRA-CL134 + CRA-CL133 combined) |
-| DORA | SO-DORA-002 | Strong authentication mechanisms + cryptographic-key protection measures + data encryption (3-control AND) | Financial entity; Art. 9(4)(d); classification-driven cipher strength |
-| NIS2 | — | Out-of-scope for D-01.3 standalone (T3-vs-text gap per `99_NIS2_Synthesis.md` §8); keys covered implicitly by SO-NIS2-001 cryptography policy | n/a |
+| GDPR | SG-GDPR-002 (cross-ref) | When pseudonymisation or encryption applied, additional information (keys) kept separately with technical and organisational measures | Controller/processor; Art. 4(5) de-attribution test + Art. 34(3)(a) unintelligibility exception |
+| CRA | SG-CRA-004 | Cryptographic keys and related authentication material managed with separation of roles (key custodian ≠ operational environment) | Manufacturer; Annex I Part I (2)(d)+(e); product-level; separation as a T2-vs-text gap reading (CRA-CL134 + CRA-CL133 combined) |
+| DORA | SG-DORA-002 | Strong authentication mechanisms + cryptographic-key protection measures + data encryption (3-control AND) | Financial entity; Art. 9(4)(d); classification-driven cipher strength |
+| NIS2 | — | Out-of-scope for D-01.3 standalone (T3-vs-text gap per `99_NIS2_Synthesis.md` §8); keys covered implicitly by SG-NIS2-001 cryptography policy | n/a |
 | AI_Act | — | Out-of-scope (no key-management mandate) | n/a |
 ##### Pairwise matrix
 

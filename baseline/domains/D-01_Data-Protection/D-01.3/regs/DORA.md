@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-002 | Strong authentication + cryptographic-key protection + encryption (3-control AND) with classification-driven cipher strength | Financial entity; Art. 9(4)(d) 3-control AND; ICT-system-level; entity-level HSM/split-knowledge/classification-tiered rotation; `high standards` anchor |
+| DORA | SG-DORA-002 | Strong authentication + cryptographic-key protection + encryption (3-control AND) with classification-driven cipher strength | Financial entity; Art. 9(4)(d) 3-control AND; ICT-system-level; entity-level HSM/split-knowledge/classification-tiered rotation; `high standards` anchor |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-01.3.3 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-01.3.DORA
+id: SG-D-01.3.DORA
 subdomain: D-01.3
 applies_to: [DORA]
-inherits_from: SO-DORA-002
+inherits_from: SG-DORA-002
 source_SR: SR-DORA-002, SR-DORA-003
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_N
@@ -64,8 +64,8 @@ AND of Art. 9(4)(d).)*
   title: "Financial-entity cryptographic keys protected with classification-driven cipher strength and depth"
 
   derives_from:
-    hso_sub_so: SO-D-01.3.DORA
-    per_reg_so: SO-DORA-002
+    hso_sub_so: SG-D-01.3.DORA
+    per_reg_so: SG-DORA-002
     source_sr: SR-DORA-002, SR-DORA-003
     hso_file: ../../HierarchicalSecurityObjectives/D-01_Data-Protection/D-01.3.md
     objective_ref_section: "### D-01.3.3"

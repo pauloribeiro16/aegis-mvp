@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-004 (partial) | Sound network and infrastructure management structure using appropriate techniques, methods and protocols + patch and update policies (Art. 9(4)(b)+(f)) — **secure-by-design is implicit, not an OJ-mandate standalone**; operationalised through Art. 9(4)(e) change-management six-step (SR-DORA-023). | Financial-entity operational resilience; no dedicated by-design clause in OJ; the security-in-design dimension is operationalised through change-management (Art. 9(4)(e)) and the testing programme (Art. 24); SR-DORA-004 routes Art. 9(4)(b) and Art. 9(4)(f) into D-07.1 partial coverage. |
+| DORA | SG-DORA-004 (partial) | Sound network and infrastructure management structure using appropriate techniques, methods and protocols + patch and update policies (Art. 9(4)(b)+(f)) — **secure-by-design is implicit, not an OJ-mandate standalone**; operationalised through Art. 9(4)(e) change-management six-step (SR-DORA-023). | Financial-entity operational resilience; no dedicated by-design clause in OJ; the security-in-design dimension is operationalised through change-management (Art. 9(4)(e)) and the testing programme (Art. 24); SR-DORA-004 routes Art. 9(4)(b) and Art. 9(4)(f) into D-07.1 partial coverage. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-07.1.4 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-07.1.DORA
+id: SG-D-07.1.DORA
 subdomain: D-07.1
 applies_to: [DORA]
-inherits_from: SO-DORA-004
+inherits_from: SG-DORA-004
 source_SR: SR-DORA-004
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_N
@@ -53,8 +53,8 @@ ID.RA-01, ID.RA-03, PR.PS-02.
   title: "Sound network and infrastructure management structure with appropriate techniques/methods/protocols, patch and update policies, and secure-by-design operationalised via change-management six-step + testing programme (DORA partial — no OJ dedicated by-design mandate)"
 
   derives_from:
-    hso_sub_so: SO-D-07.1.DORA
-    per_reg_so: SO-DORA-004 (partial)
+    hso_sub_so: SG-D-07.1.DORA
+    per_reg_so: SG-DORA-004 (partial)
     source_sr: SR-DORA-004, SR-DORA-023
     hso_file: ../../HierarchicalSecurityObjectives/D-07_Secure-Development/D-07.1.md
     objective_ref_section: "### D-07.1.4"

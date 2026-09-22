@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-048 (partial) | Detailed user-facing instructions (Annex II §8(a)–(f)) for product secure use over lifetime. | User instructions with the product, not workforce awareness; partial-coverage. AEGIS taxonomy §4.1 marks NIS 2 / DORA / GDPR as the authorities for full staff awareness. |
+| CRA | SG-CRA-048 (partial) | Detailed user-facing instructions (Annex II §8(a)–(f)) for product secure use over lifetime. | User instructions with the product, not workforce awareness; partial-coverage. AEGIS taxonomy §4.1 marks NIS 2 / DORA / GDPR as the authorities for full staff awareness. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-08.1.3 — Sub-SO for CRA (partial)
 
 ```yaml
-id: SO-D-08.1.CRA
+id: SG-D-08.1.CRA
 subdomain: D-08.1
 applies_to: [CRA]
-inherits_from: SO-CRA-048 (partial)
+inherits_from: SG-CRA-048 (partial)
 source_SR: SR-CRA-071
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -54,7 +54,7 @@ PR.AT-01.
 
   derives_from:
     hso_sub_so: SO-8.1.CRA
-    per_reg_so: SO-CRA-048 (partial)
+    per_reg_so: SG-CRA-048 (partial)
     source_sr: SR-CRA-071
     hso_file: ../../HierarchicalSecurityObjectives/D-08_Human-Factors/8.1.md
     objective_ref_section: "### 8.1.3"

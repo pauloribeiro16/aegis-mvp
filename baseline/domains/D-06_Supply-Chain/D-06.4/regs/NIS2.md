@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| NIS2 | SO-NIS2-012; SO-NIS2-014 (partial); SO-NIS2-016 (partial) | Cross-MS notification routing through CSIRTs/competent authorities/SPOCs/ENISA; direct-supplier scope-limiter and EU-level supply-chain-risk propagation provide entity-boundary hooks | Entity-level boundary and cross-border information flow; Member-State-transposition-sensitive |
+| NIS2 | SG-NIS2-012; SG-NIS2-014 (partial); SG-NIS2-016 (partial) | Cross-MS notification routing through CSIRTs/competent authorities/SPOCs/ENISA; direct-supplier scope-limiter and EU-level supply-chain-risk propagation provide entity-boundary hooks | Entity-level boundary and cross-border information flow; Member-State-transposition-sensitive |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-06.4.2 — Sub-SO for NIS 2
 
 ```yaml
-id: SO-D-06.4.NIS2
+id: SG-D-06.4.NIS2
 subdomain: D-06.4
 applies_to: [NIS2]
-inherits_from: [SO-NIS2-012, SO-NIS2-014, SO-NIS2-016]
+inherits_from: [SG-NIS2-012, SG-NIS2-014, SG-NIS2-016]
 source_SR: [SR-NIS2-018, SR-NIS2-020, SR-NIS2-025]
 activation: if NIS2 in applicable_regs
 phase_1A_role: 1_of_N
@@ -46,8 +46,8 @@ phase_1A_role: 1_of_N
   title: "Art. 23(6)/(8) cross-MS SPOC / CSIRT / ENISA notification routing + Art. 21(2)(d) `direct` supplier/service-provider scope register + Art. 22 coordinated supply-chain risk-assessment ingestion"
 
   derives_from:
-    hso_sub_so: SO-D-06.4.NIS2
-    per_reg_so: SO-NIS2-012, SO-NIS2-014, SO-NIS2-016
+    hso_sub_so: SG-D-06.4.NIS2
+    per_reg_so: SG-NIS2-012, SG-NIS2-014, SG-NIS2-016
     source_sr: SR-NIS2-018, SR-NIS2-020, SR-NIS2-025
     hso_file: ../../HierarchicalSecurityObjectives/D-06_Supply-Chain/D-06.4.md
     objective_ref_section: "### D-06.4.2"

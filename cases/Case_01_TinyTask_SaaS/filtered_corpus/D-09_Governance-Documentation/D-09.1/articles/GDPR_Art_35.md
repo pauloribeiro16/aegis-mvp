@@ -40,15 +40,15 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-004 | A process is established for regularly testing, assessing, and evaluating the effectiveness of technical and organisational measures for ensuring security of processing. | `GDPR-CP15` (Art. 32(1)(d)); `GDPR-CP22` (Art. 35(11)) | D-02.1, D-10.3 |
-| SO-GDPR-004 (cross-ref) | Technical and organisational measures for ensuring security of processing are regularly tested, assessed, and evaluated for effectiveness (Art. 32(1)(d)); the DPIA is reviewed at least when there is a change of risk represented by processing operations (Art. 35(11)). | `GDPR-CP15` (Art. 32(1)(d)); `GDPR-CP22` (Art. 35(11)) | D-02.1, D-10.3 |
-| SO-GDPR-004 | D-02.1, D-10.3 | Art. 32(1)(d), Art. 35(11) | Regular testing/assessing/evaluating security measures |
-| SO-GDPR-028 | Prior to processing that is likely to result in a high risk to the rights and freedoms of natural persons, the controller carries out a data-protection impact assessment covering the four Art. 35(7) content items (systematic description, necessity & proportionality, risks, mitigation measures); the assessment is reviewed on change of risk. | `GDPR-CP21` (Art. 35(1)–(4)); `GDPR-CP22` (Art. 35(7)/(11)); `GDPR-C23` (Art. 9(2)(g)); `GDPR-CP23` (Art. 36(1)) | D-09.2 |
-| SO-GDPR-028 | D-09.2 | Art. 35(1)–(4)/(7), Art. 9(2)(g), Art. 36(1) | Pre-launch DPIA for high-risk processing |
+| SG-GDPR-004 | A process is established for regularly testing, assessing, and evaluating the effectiveness of technical and organisational measures for ensuring security of processing. | `GDPR-CP15` (Art. 32(1)(d)); `GDPR-CP22` (Art. 35(11)) | D-02.1, D-10.3 |
+| SG-GDPR-004 (cross-ref) | Technical and organisational measures for ensuring security of processing are regularly tested, assessed, and evaluated for effectiveness (Art. 32(1)(d)); the DPIA is reviewed at least when there is a change of risk represented by processing operations (Art. 35(11)). | `GDPR-CP15` (Art. 32(1)(d)); `GDPR-CP22` (Art. 35(11)) | D-02.1, D-10.3 |
+| SG-GDPR-004 | D-02.1, D-10.3 | Art. 32(1)(d), Art. 35(11) | Regular testing/assessing/evaluating security measures |
+| SG-GDPR-028 | Prior to processing that is likely to result in a high risk to the rights and freedoms of natural persons, the controller carries out a data-protection impact assessment covering the four Art. 35(7) content items (systematic description, necessity & proportionality, risks, mitigation measures); the assessment is reviewed on change of risk. | `GDPR-CP21` (Art. 35(1)–(4)); `GDPR-CP22` (Art. 35(7)/(11)); `GDPR-C23` (Art. 9(2)(g)); `GDPR-CP23` (Art. 36(1)) | D-09.2 |
+| SG-GDPR-028 | D-09.2 | Art. 35(1)–(4)/(7), Art. 9(2)(g), Art. 36(1) | Pre-launch DPIA for high-risk processing |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-008
@@ -56,7 +56,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP22, article_ref: "Art. 35(11) — DPIA review" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(d)" }
-  linked_objectives: [SO-GDPR-004, SO-GDPR-028]
+  linked_objectives: [SG-GDPR-004, SG-GDPR-028]
   sub_domain: [D-09.2, D-10.3, D-02.1]
   nist_csf_mapping:
     - { id: ID.RA-05, title: "Inherent risk understood via threats/vulnerabilities/likelihood/impact" }
@@ -75,7 +75,7 @@ status: DRAFT
     GDPR-CP22 (Art. 35(11)) carries no S3 ambiguity in the operative clause. `where necessary` and `change of the risk represented` are acknowledged Berry VAG; both readings converge on the obligation to reassess when the risk profile changes. The triggering "change" is documented in the controller's change-management policy and includes: change in processing purpose (Art. 6(4) compatibility), change in data categories (especially Art. 9 special categories), change in data-subject population (volume or vulnerability), change in technical context (new processor, new third country), and change in regulatory expectation (new EDPB guidance). EDPB Guidelines 4/2019 on DPIA provide non-binding factors for materiality but do not bind the controller.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-010
@@ -83,7 +83,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-RT04, article_ref: "Art. 12(6)" }
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation (cross)" }
-  linked_objectives: [SO-GDPR-005]
+  linked_objectives: [SG-GDPR-005]
   sub_domain: [D-03.1, D-05.1]
   nist_csf_mapping:
     - { id: PR.AA-02, title: "Identities proofed and bound to credentials" }
@@ -102,7 +102,7 @@ status: DRAFT
     `necessary` inherits VAG-S3 ambiguity from Art. 5(1)(c). Reading chosen: proportionate to purpose, demonstrable ex ante via Art. 5(2) accountability and Art. 35 DPIA necessity assessment. The rule preserves the proportionate-necessary interpretation. An alternative reading treats necessity as satisfied when serving the designed purpose, with necessity presumed by default; this is rejected because it inverts the accountability burden. A third reading requiring the least-intrusive among equivalent means under Charter Art. 52(1) is the most restrictive position and is the one adopted by some national DPAs (notably the CNIL) for sensitive-data contexts. The Art. 5(1)(c) necessary threshold varies with data sensitivity and breach impact; for Art. 9 special-category data, the controller may need stronger verification than for ordinary personal data. Remain open: whether automated identity-verification services (e.g. Jumio, Onfido) are themselves in scope as joint controllers under Art. 26, pending CJEU and EDPB guidance on AI-driven verification.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-013
@@ -111,7 +111,7 @@ status: DRAFT
     - { clause_id: GDPR-CP03, article_ref: "Art. 25(2) — privacy by default" }
     - { clause_id: GDPR-CP02, article_ref: "Art. 25(1) — privacy by design (cross)" }
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation (cross)" }
-  linked_objectives: [SO-GDPR-007, SO-GDPR-024]
+  linked_objectives: [SG-GDPR-007, SG-GDPR-024]
   sub_domain: [D-03.4, D-05.1]
   nist_csf_mapping:
     - { id: PR.PS-01, title: "Configuration management practices established and applied" }
@@ -130,7 +130,7 @@ status: DRAFT
     GDPR-CP03 (Art. 25(2)) carries VAG+COORD-S3 on `necessary for each specific purpose` and the four-element AND. Reading chosen: all four dimensions must individually be minimised and AND-coordinated. An alternative reading allowing some dimensions to be relaxed if others are tightened would weaken the default and is rejected. The AND reading is anchored to EDPB Guidelines 04/2019 on Article 25, which treat the four dimensions as independent minima. On "without the individual's intervention", the chosen reading treats the intervention requirement as the opt-in gate: the controller must not bypass the data subject's affirmative action to expose data. Remain open: (a) whether privacy-by-default applies to AI model defaults (e.g. opt-in vs opt-out for training-data inclusion), pending EDPB AI Act interaction guidance; and (b) whether the four-dimensional test applies per data subject or per processing activity, pending alignment with Art. 35 DPIA granularity.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-023
@@ -139,7 +139,7 @@ status: DRAFT
     - { clause_id: GDPR-CP23, article_ref: "Art. 36(1) — prior consultation" }
     - { clause_id: GDPR-CP21, article_ref: "Art. 35(1) — high-risk DPIA" }
     - { clause_id: GDPR-CP22, article_ref: "Art. 35(7) — DPIA content" }
-  linked_objectives: [SO-GDPR-013, SO-GDPR-028]
+  linked_objectives: [SG-GDPR-013, SG-GDPR-028]
   sub_domain: [D-04.3, D-09.2]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal/regulatory/contractual requirements understood and managed" }
@@ -158,7 +158,7 @@ status: DRAFT
     `high risk in the absence of measures` is the same `high risk` POLY family as Arts. 34 and 35. Readings converge via the Art. 35(1) threshold inheritance. The `prior to processing` wording is read strictly: the controller must consult before launching, not after, and the supervisory authority's 8-week window under Art. 36(2) must be accommodated in the launch timeline. EDPB Guidelines 4/2019 on DPIA provide factors for high-risk classification but do not bind the controller. Remain open: (a) whether iterative processing activities (e.g. machine-learning model updates) trigger fresh Art. 36(1) consultations on each iteration or whether a single consultation covers the iterative cycle, pending EDPB AI Act interaction guidance; and (b) how the consultation interacts with the Art. 27 representative designation for non-EU controllers, pending alignment with international supervisory cooperation.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-025
@@ -167,7 +167,7 @@ status: DRAFT
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation" }
     - { clause_id: GDPR-CL14, article_ref: "Art. 6(4) — compatibility test" }
     - { clause_id: GDPR-CL02, article_ref: "Art. 5(1)(b) — purpose limitation (cross)" }
-  linked_objectives: [SO-GDPR-015]
+  linked_objectives: [SG-GDPR-015]
   sub_domain: [D-05.1]
   nist_csf_mapping:
     - { id: PR.DS-12, title: "Data managed consistent with risk strategy" }
@@ -186,7 +186,7 @@ status: DRAFT
     `adequate, relevant, and limited to what is necessary` carries VAG-S3 (three conjunctive vague adjectives). Reading chosen: proportionate to purpose, demonstrable ex ante via Art. 5(2) accountability and Art. 35 DPIA necessity assessment. An alternative reading treats adequacy as satisfied when serving the designed purpose, with necessity presumed by default; this is rejected because it inverts the accountability burden. A third reading requiring least-intrusive among equivalent means under Charter Art. 52(1) is the most restrictive position and is the one adopted by some national DPAs for sensitive-data contexts. The Art. 6(4) compatibility test is the procedural mechanism for any change of purpose; the five factors are conjunctive in the sense that all must be considered, but the test is qualitative and the controller exercises judgement. Remain open: (a) whether machine-learning model training purposes are compatible with the original collection purpose under Art. 6(4), or require fresh consent, pending EDPB AI Act interaction guidance and CJEU jurisprudence on inferred-data compatibility; and (b) whether the data-minimisation threshold differs for secondary processing for fraud-prevention or IT-security purposes under Art. 6(1)(f), pending alignment with the legitimate-interests balancing test.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-045
@@ -196,7 +196,7 @@ status: DRAFT
     - { clause_id: GDPR-CP22, article_ref: "Art. 35(7) — DPIA content" }
     - { clause_id: GDPR-CP23, article_ref: "Art. 36(1) — prior consultation (cross)" }
     - { clause_id: GDPR-C01, article_ref: "Art. 4(1) — personal data" }
-  linked_objectives: [SO-GDPR-028]
+  linked_objectives: [SG-GDPR-028]
   sub_domain: [D-09.2]
   nist_csf_mapping:
     - { id: ID.RA-01, title: "Vulnerabilities in assets are identified, validated, and recorded" }
@@ -252,14 +252,14 @@ status: DRAFT
     joint-controllership arrangement.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-046
   title: "Four-element DPIA content with necessity and proportionality test"
   source_clauses:
     - { clause_id: GDPR-CP22, article_ref: "Art. 35(7)(a)–(d) — DPIA content" }
-  linked_objectives: [SO-GDPR-028]
+  linked_objectives: [SG-GDPR-028]
   sub_domain: [D-09.2]
   nist_csf_mapping:
     - { id: ID.RA-05, title: "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response decisions" }
@@ -299,7 +299,7 @@ status: DRAFT
     cost-benefit) or accepts qualitative judgement.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-047
@@ -307,7 +307,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP22, article_ref: "Art. 35(11) — DPIA review" }
     - { clause_id: GDPR-CP21, article_ref: "Art. 35(1) — DPIA trigger" }
-  linked_objectives: [SO-GDPR-028, SO-GDPR-004]
+  linked_objectives: [SG-GDPR-028, SG-GDPR-004]
   sub_domain: [D-09.2, D-10.3]
   nist_csf_mapping:
     - { id: ID.IM-04, title: "Cybersecurity risk management improvements are informed by awareness of related developments and context (e.g., threat intelligence, incidents, technology evolution)" }
@@ -339,7 +339,7 @@ status: DRAFT
     dimensions.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-064
@@ -347,7 +347,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP28, article_ref: "Art. 39(1)(a)–(e) — DPO tasks" }
     - { clause_id: GDPR-CP28, article_ref: "Art. 39(2) — risk-associated processing" }
-  linked_objectives: [SO-GDPR-037, SO-GDPR-025]
+  linked_objectives: [SG-GDPR-037, SG-GDPR-025]
   sub_domain: [D-09.1, D-09.2, D-08.1]
   nist_csf_mapping:
     - { id: GV.OV-03, title: "Organizational cybersecurity performance evaluated and reviewed" }

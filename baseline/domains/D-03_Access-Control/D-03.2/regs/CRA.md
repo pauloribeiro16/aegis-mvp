@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-016 (partial) | Protection from unauthorised access via appropriate control mechanisms, which may include authentication, identity, or access-management systems (no explicit MFA mandate) | Manufacturer; Annex I Part I (2)(d); "including but not limited to" + 3-way OR (authentication / identity / access-management); PR.AA-01 + PR.AA-05 + PR.AA-06 + DE.CM-09 |
+| CRA | SG-CRA-016 (partial) | Protection from unauthorised access via appropriate control mechanisms, which may include authentication, identity, or access-management systems (no explicit MFA mandate) | Manufacturer; Annex I Part I (2)(d); "including but not limited to" + 3-way OR (authentication / identity / access-management); PR.AA-01 + PR.AA-05 + PR.AA-06 + DE.CM-09 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-03.2.3 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-03.2.CRA
+id: SG-D-03.2.CRA
 subdomain: D-03.2
 applies_to: [CRA]
-inherits_from: SO-CRA-016 (partial)
+inherits_from: SG-CRA-016 (partial)
 source_SR: SR-CRA-023, SR-CRA-024
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -72,8 +72,8 @@ language without naming MFA.)*
   title: "Appropriate control mechanisms for protection from unauthorised access, which may include authentication"
 
   derives_from:
-    hso_sub_so: SO-D-03.2.CRA
-    per_reg_so: SO-CRA-016 (partial)
+    hso_sub_so: SG-D-03.2.CRA
+    per_reg_so: SG-CRA-016 (partial)
     source_sr: SR-CRA-023, SR-CRA-024
     hso_file: ../../HierarchicalSecurityObjectives/D-03_Access-Control/D-03.2.md
     objective_ref_section: "### D-03.2.3"

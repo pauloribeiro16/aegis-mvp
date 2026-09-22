@@ -317,7 +317,7 @@
   "sub_objectives_by_regulation": {
     "CRA": [
       {
-        "id": "SO-D-06.1.CRA",
+        "id": "SG-D-06.1.CRA",
         "csf_anchors": [
           "GV.SC-01",
           "GV.SC-02",
@@ -325,7 +325,7 @@
         ]
       },
       {
-        "id": "SO-D-06.2.CRA",
+        "id": "SG-D-06.2.CRA",
         "csf_anchors": [
           "ID.AM-02",
           "GV.SC-02",
@@ -333,7 +333,7 @@
         ]
       },
       {
-        "id": "SO-D-06.3.CRA",
+        "id": "SG-D-06.3.CRA",
         "csf_anchors": [
           "GV.SC-02",
           "GV.SC-04",
@@ -342,7 +342,7 @@
         ]
       },
       {
-        "id": "SO-D-06.4.CRA",
+        "id": "SG-D-06.4.CRA",
         "csf_anchors": [
           "GV.RR-02",
           "GV.SC-03",
@@ -354,14 +354,14 @@
     ],
     "DORA": [
       {
-        "id": "SO-D-06.1.DORA",
+        "id": "SG-D-06.1.DORA",
         "csf_anchors": [
           "GV.SC-02",
           "ID.AM-04"
         ]
       },
       {
-        "id": "SO-D-06.3.DORA",
+        "id": "SG-D-06.3.DORA",
         "csf_anchors": [
           "GV.SC-01",
           "GV.SC-02",
@@ -372,7 +372,7 @@
         ]
       },
       {
-        "id": "SO-D-06.4.DORA",
+        "id": "SG-D-06.4.DORA",
         "csf_anchors": [
           "GV.SC-03",
           "DE.CM-06"
@@ -381,7 +381,7 @@
     ],
     "GDPR": [
       {
-        "id": "SO-D-06.1.GDPR",
+        "id": "SG-D-06.1.GDPR",
         "csf_anchors": [
           "GV.SC-02",
           "GV.SC-03"
@@ -392,7 +392,7 @@
         ]
       },
       {
-        "id": "SO-D-06.3.GDPR",
+        "id": "SG-D-06.3.GDPR",
         "csf_anchors": [
           "GV.SC-03",
           "GV.SC-04",
@@ -402,7 +402,7 @@
         ]
       },
       {
-        "id": "SO-D-06.4.GDPR",
+        "id": "SG-D-06.4.GDPR",
         "csf_anchors": [
           "GV.OC-02",
           "GV.RR-02"
@@ -415,14 +415,14 @@
     ],
     "NIS2": [
       {
-        "id": "SO-D-06.1.NIS2",
+        "id": "SG-D-06.1.NIS2",
         "csf_anchors": [
           "GV.SC-02",
           "GV.SC-03"
         ]
       },
       {
-        "id": "SO-D-06.3.NIS2",
+        "id": "SG-D-06.3.NIS2",
         "csf_anchors": [
           "GV.SC-02",
           "GV.SC-03",
@@ -434,7 +434,7 @@
         ]
       },
       {
-        "id": "SO-D-06.4.NIS2",
+        "id": "SG-D-06.4.NIS2",
         "csf_anchors": [
           "RS.MA-04",
           "GV.SC-05",

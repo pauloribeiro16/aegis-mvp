@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-017 + SO-CRA-024 | Access to product with digital elements limited to authenticated and authorised users, services, hardware; possible unauthorised access reported; attack-surface limitation | Manufacturer; Annex I Part I (2)(d) + (2)(j); product-side access boundary + reporting + attack-surface-reduction; PR.AA-05 + PR.AA-06 + DE.CM-09 |
+| CRA | SG-CRA-017 + SG-CRA-024 | Access to product with digital elements limited to authenticated and authorised users, services, hardware; possible unauthorised access reported; attack-surface limitation | Manufacturer; Annex I Part I (2)(d) + (2)(j); product-side access boundary + reporting + attack-surface-reduction; PR.AA-05 + PR.AA-06 + DE.CM-09 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-03.3.3 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-03.3.CRA
+id: SG-D-03.3.CRA
 subdomain: D-03.3
 applies_to: [CRA]
-inherits_from: SO-CRA-017
+inherits_from: SG-CRA-017
 source_SR: SR-CRA-024, SR-CRA-017 (update dissemination cross-ref)
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -69,8 +69,8 @@ reading is the strictest visibility floor across the four regulators.)*
   title: "Access to product with digital elements limited to authenticated and authorised users, services, and hardware; possible unauthorised access reported; attack surfaces including external interfaces limited (multi-leg product-side authorisation framework)"
 
   derives_from:
-    hso_sub_so: SO-D-03.3.CRA
-    per_reg_so: SO-CRA-017
+    hso_sub_so: SG-D-03.3.CRA
+    per_reg_so: SG-CRA-017
     source_sr: SR-CRA-024, SR-CRA-023 (product identification cross-ref)
     hso_file: ../../HierarchicalSecurityObjectives/D-03_Access-Control/D-03.3.md
     objective_ref_section: "### D-03.3.3"

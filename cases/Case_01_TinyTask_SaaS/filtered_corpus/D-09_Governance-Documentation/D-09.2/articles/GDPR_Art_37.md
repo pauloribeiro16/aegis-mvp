@@ -26,19 +26,19 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-037 | A data protection officer is designated where any of the three Art. 37(1) triggers apply (public authority; core activities of regular/systematic monitoring on large scale; core activities of large-scale special-category or criminal-conviction processing); the DPO performs the Art. 39(1) tasks with adequate independence, resources, and expert knowledge. | `GDPR-CP25` (Art. 37(1)(a)/(b)/(c)); `GDPR-CP26` (Art. 38); `GDPR-CP28` (Art. 39); `GDPR-CP27` (Art. 38(6) — conflict of interests) | D-09.1, D-09.2 |
-| SO-GDPR-037 | D-09.1, D-09.2 | Art. 37, Art. 38, Art. 39 | DPO designation and tasks |
+| SG-GDPR-037 | A data protection officer is designated where any of the three Art. 37(1) triggers apply (public authority; core activities of regular/systematic monitoring on large scale; core activities of large-scale special-category or criminal-conviction processing); the DPO performs the Art. 39(1) tasks with adequate independence, resources, and expert knowledge. | `GDPR-CP25` (Art. 37(1)(a)/(b)/(c)); `GDPR-CP26` (Art. 38); `GDPR-CP28` (Art. 39); `GDPR-CP27` (Art. 38(6) — conflict of interests) | D-09.1, D-09.2 |
+| SG-GDPR-037 | D-09.1, D-09.2 | Art. 37, Art. 38, Art. 39 | DPO designation and tasks |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-062
   title: "DPO designation triggered by processing profile"
   source_clauses:
     - { clause_id: GDPR-CP25, article_ref: "Art. 37(1)(a)/(b)/(c) — DPO designation triggers" }
-  linked_objectives: [SO-GDPR-037]
+  linked_objectives: [SG-GDPR-037]
   sub_domain: [D-09.1, D-09.2]
   nist_csf_mapping:
     - { id: GV.RR-02, title: "Roles/responsibilities/accountabilities established and communicated" }

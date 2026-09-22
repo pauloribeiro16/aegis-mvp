@@ -64,38 +64,38 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-NIS2-001 | Policies and procedures are established for the use of cryptography and, where appropriate, encryption, covering confidentiality, integrity, and authenticity of data stored, transmitted, and processed by network and information systems. | `NIS2-CL17` (Art. 21(2)(h)); `NIS2-CL08` (Art. 21(1) state-of-the-art); `NIS2-CL07` (Art. 21(1) appropriate/proportionate) | D-01.1 |
-| SO-NIS2-001 | D-01.1 | Art. 21(2)(h) | Cryptography policies and procedures; encryption where appropriate |
-| SO-NIS2-002 | Vulnerabilities in network and information systems are identified, handled, and disclosed through a coordinated vulnerability handling and disclosure process integrated into the system acquisition, development, and maintenance lifecycle. | `NIS2-CL14` (Art. 21(2)(e) — security in acquisition/development/maintenance + vuln handling + disclosure); `NIS2-CL20` (Art. 21(3) sentence 1 — supplier vulnerability assessment) | D-02.1, D-02.3 |
-| SO-NIS2-002 | D-02.1, D-02.3 | Art. 21(2)(e) | Vulnerability handling and disclosure in system lifecycle |
-| SO-NIS2-003 | Access control policies are established and applied, covering human resources security and asset management, ensuring that access to network and information systems is limited to authorised users, services, and hardware on a least-privilege basis. | `NIS2-CL18` (Art. 21(2)(i) — HR security + AC + AM); `NIS2-CL07` (Art. 21(1) appropriate/proportionate — propagates) | D-03.1, D-03.2, D-03.3, D-03.4 |
-| SO-NIS2-003 | D-03.1, D-03.2, D-03.3, D-03.4 | Art. 21(2)(i) | Access control policies + HR security + asset management |
-| SO-NIS2-004 | Multi-factor authentication or continuous authentication solutions are used where appropriate, and secured voice, video, and text communications as well as secured emergency communication systems are deployed within the entity. | `NIS2-CL19` (Art. 21(2)(j) — MFA or continuous + secured comms + secured emergency + `where appropriate`) | D-03.2, D-01.2 (partial) |
-| SO-NIS2-004 | D-03.2, D-01.2 (partial) | Art. 21(2)(j) | MFA or continuous auth + secured comms + secured emergency |
-| SO-NIS2-005 | An incident-handling capability is established, covering the prevention, detection, analysis, containment, response, and recovery of incidents, including those with significant impact on the provision of services. | `NIS2-CL11` (Art. 21(2)(b) — incident handling); `NIS2-CL26` (Art. 23(1) ¶1 — significant-incident notification core); `NIS2-CL09` (Art. 21(2) chapeau — all-hazards approach); `NIS2-CL12` (Art. 21(2)(c) — BC/DR/CM, for the recovery dimension) | D-04.1, D-04.2, D-04.4 |
-| SO-NIS2-005 | D-04.1, D-04.2, D-04.4 | Art. 21(2)(b) | Incident handling capability (prevent, detect, analyse, contain, respond, recover) |
-| SO-NIS2-013 | Business continuity, backup management, disaster recovery, and crisis management capabilities are maintained, ensuring the ability to restore the availability and integrity of network and information systems and to manage crises arising from significant incidents. | `NIS2-CL12` (Art. 21(2)(c) — BC + backup + DR + CM) | D-04.4, D-09.4 |
-| SO-NIS2-013 | D-04.4, D-09.4 | Art. 21(2)(c) | BC, backup, DR, crisis management |
-| SO-NIS2-014 | Supply chain security is managed across direct supplier and service-provider relationships, including security-related aspects of those relationships. | `NIS2-CL13` (Art. 21(2)(d) — supply chain security + `direct` scope-limiter); `NIS2-CL07` (Art. 21(1) appropriate/proportionate — propagates) | D-06.1, D-06.3 |
-| SO-NIS2-014 | D-06.1, D-06.3 | Art. 21(2)(d) | Supply chain security with direct suppliers and service providers |
-| SO-NIS2-015 | Supplier-specific vulnerabilities, overall quality of products and cybersecurity practices, and supplier secure-development procedures are assessed for each direct supplier and service provider. | `NIS2-CL20` (Art. 21(3) sentence 1 — supplier assessment three-prong: vulnerabilities + quality + secure-development procedures); `NIS2-CL13` (Art. 21(2)(d) — `direct` scope-limiter) | D-06.3, D-02.1 |
-| SO-NIS2-015 | D-06.3, D-02.1 | Art. 21(3) sentence 1 | Supplier-specific vulnerabilities + product/service quality + supplier SD procedures |
-| SO-NIS2-016 | The results of EU-level coordinated security risk assessments of critical supply chains (Cooperation Group + Commission + ENISA under Art. 22(1)) are taken into account in supplier-risk decisions. | `NIS2-CL21` (Art. 21(3) sentence 2 — entity `take into account` Art. 22 results); `NIS2-CL23` (Art. 22(1) — Cooperation Group coordinated assessments); `NIS2-CL24` (Art. 22(1) — technical and, where relevant, non-technical risk factors); `NIS2-CL25` (Art. 22(2) — Commission selection) | D-06.3, D-09.2 |
-| SO-NIS2-016 | D-06.3, D-09.2 | Art. 21(3) sentence 2 + Art. 22(1) | Take into account EU-level coordinated supply-chain risk assessments |
-| SO-NIS2-017 | Security is integrated into the acquisition, development, and maintenance of network and information systems, including vulnerability handling and disclosure across the system lifecycle. | `NIS2-CL14` (Art. 21(2)(e) — security in acquisition + development + maintenance + vuln handling + disclosure) | D-07.1, D-07.3, D-02.1 |
-| SO-NIS2-017 | D-07.1, D-07.3, D-02.1 | Art. 21(2)(e) | Security in acquisition, development, maintenance of NIS |
-| SO-NIS2-018 | Basic cyber hygiene practices are established, covering all users of network and information systems with access to entity systems and services. | `NIS2-CL16` (Art. 21(2)(g) — basic cyber hygiene practices); `NIS2-CL07` (Art. 21(1) appropriate/proportionate — propagates) | D-08.1, D-08.2 |
-| SO-NIS2-018 | D-08.1, D-08.2 | Art. 21(2)(g) | Basic cyber hygiene practices |
-| SO-NIS2-021 | The management body of essential and important entities approves the cybersecurity risk-management measures taken to comply with Art. 21, oversees their implementation, and can be held liable for infringements of that Article by the entity. | `NIS2-CL01` (Art. 20(1) sentence 1 — approve + oversee + held liable); `NIS2-CL02` (Art. 20(1) sentence 2 — public-institution carve-out); `NIS2-CL06` (Art. 20 chapeau — proportionality hook via Art. 3 classification) | D-09.1, D-09.3 |
-| SO-NIS2-021 | D-09.1, D-09.3 | Art. 20(1) | Management body approves + oversees + bears liability for Art. 21 measures |
-| SO-NIS2-022 | Policies on risk analysis and information system security are established and maintained, documenting the entity's approach to identifying, assessing, and treating cybersecurity risks to network and information systems. | `NIS2-CL10` (Art. 21(2)(a) — policies on risk analysis + IS security) | D-09.1, D-09.2 |
-| SO-NIS2-022 | D-09.1, D-09.2 | Art. 21(2)(a) | Policies on risk analysis + information system security |
-| SO-NIS2-023 | Policies and procedures are established to assess the effectiveness of cybersecurity risk-management measures, with results feeding back into the risk-management cycle. | `NIS2-CL15` (Art. 21(2)(f) — policies and procedures to assess effectiveness); `NIS2-CL08` (Art. 21(1) — state-of-the-art baseline) | D-09.1, D-09.3, D-10.3 |
-| SO-NIS2-023 | D-09.1, D-09.3, D-10.3 | Art. 21(2)(f) | Policies and procedures to assess effectiveness of risk-management measures |
+| SG-NIS2-001 | Policies and procedures are established for the use of cryptography and, where appropriate, encryption, covering confidentiality, integrity, and authenticity of data stored, transmitted, and processed by network and information systems. | `NIS2-CL17` (Art. 21(2)(h)); `NIS2-CL08` (Art. 21(1) state-of-the-art); `NIS2-CL07` (Art. 21(1) appropriate/proportionate) | D-01.1 |
+| SG-NIS2-001 | D-01.1 | Art. 21(2)(h) | Cryptography policies and procedures; encryption where appropriate |
+| SG-NIS2-002 | Vulnerabilities in network and information systems are identified, handled, and disclosed through a coordinated vulnerability handling and disclosure process integrated into the system acquisition, development, and maintenance lifecycle. | `NIS2-CL14` (Art. 21(2)(e) — security in acquisition/development/maintenance + vuln handling + disclosure); `NIS2-CL20` (Art. 21(3) sentence 1 — supplier vulnerability assessment) | D-02.1, D-02.3 |
+| SG-NIS2-002 | D-02.1, D-02.3 | Art. 21(2)(e) | Vulnerability handling and disclosure in system lifecycle |
+| SG-NIS2-003 | Access control policies are established and applied, covering human resources security and asset management, ensuring that access to network and information systems is limited to authorised users, services, and hardware on a least-privilege basis. | `NIS2-CL18` (Art. 21(2)(i) — HR security + AC + AM); `NIS2-CL07` (Art. 21(1) appropriate/proportionate — propagates) | D-03.1, D-03.2, D-03.3, D-03.4 |
+| SG-NIS2-003 | D-03.1, D-03.2, D-03.3, D-03.4 | Art. 21(2)(i) | Access control policies + HR security + asset management |
+| SG-NIS2-004 | Multi-factor authentication or continuous authentication solutions are used where appropriate, and secured voice, video, and text communications as well as secured emergency communication systems are deployed within the entity. | `NIS2-CL19` (Art. 21(2)(j) — MFA or continuous + secured comms + secured emergency + `where appropriate`) | D-03.2, D-01.2 (partial) |
+| SG-NIS2-004 | D-03.2, D-01.2 (partial) | Art. 21(2)(j) | MFA or continuous auth + secured comms + secured emergency |
+| SG-NIS2-005 | An incident-handling capability is established, covering the prevention, detection, analysis, containment, response, and recovery of incidents, including those with significant impact on the provision of services. | `NIS2-CL11` (Art. 21(2)(b) — incident handling); `NIS2-CL26` (Art. 23(1) ¶1 — significant-incident notification core); `NIS2-CL09` (Art. 21(2) chapeau — all-hazards approach); `NIS2-CL12` (Art. 21(2)(c) — BC/DR/CM, for the recovery dimension) | D-04.1, D-04.2, D-04.4 |
+| SG-NIS2-005 | D-04.1, D-04.2, D-04.4 | Art. 21(2)(b) | Incident handling capability (prevent, detect, analyse, contain, respond, recover) |
+| SG-NIS2-013 | Business continuity, backup management, disaster recovery, and crisis management capabilities are maintained, ensuring the ability to restore the availability and integrity of network and information systems and to manage crises arising from significant incidents. | `NIS2-CL12` (Art. 21(2)(c) — BC + backup + DR + CM) | D-04.4, D-09.4 |
+| SG-NIS2-013 | D-04.4, D-09.4 | Art. 21(2)(c) | BC, backup, DR, crisis management |
+| SG-NIS2-014 | Supply chain security is managed across direct supplier and service-provider relationships, including security-related aspects of those relationships. | `NIS2-CL13` (Art. 21(2)(d) — supply chain security + `direct` scope-limiter); `NIS2-CL07` (Art. 21(1) appropriate/proportionate — propagates) | D-06.1, D-06.3 |
+| SG-NIS2-014 | D-06.1, D-06.3 | Art. 21(2)(d) | Supply chain security with direct suppliers and service providers |
+| SG-NIS2-015 | Supplier-specific vulnerabilities, overall quality of products and cybersecurity practices, and supplier secure-development procedures are assessed for each direct supplier and service provider. | `NIS2-CL20` (Art. 21(3) sentence 1 — supplier assessment three-prong: vulnerabilities + quality + secure-development procedures); `NIS2-CL13` (Art. 21(2)(d) — `direct` scope-limiter) | D-06.3, D-02.1 |
+| SG-NIS2-015 | D-06.3, D-02.1 | Art. 21(3) sentence 1 | Supplier-specific vulnerabilities + product/service quality + supplier SD procedures |
+| SG-NIS2-016 | The results of EU-level coordinated security risk assessments of critical supply chains (Cooperation Group + Commission + ENISA under Art. 22(1)) are taken into account in supplier-risk decisions. | `NIS2-CL21` (Art. 21(3) sentence 2 — entity `take into account` Art. 22 results); `NIS2-CL23` (Art. 22(1) — Cooperation Group coordinated assessments); `NIS2-CL24` (Art. 22(1) — technical and, where relevant, non-technical risk factors); `NIS2-CL25` (Art. 22(2) — Commission selection) | D-06.3, D-09.2 |
+| SG-NIS2-016 | D-06.3, D-09.2 | Art. 21(3) sentence 2 + Art. 22(1) | Take into account EU-level coordinated supply-chain risk assessments |
+| SG-NIS2-017 | Security is integrated into the acquisition, development, and maintenance of network and information systems, including vulnerability handling and disclosure across the system lifecycle. | `NIS2-CL14` (Art. 21(2)(e) — security in acquisition + development + maintenance + vuln handling + disclosure) | D-07.1, D-07.3, D-02.1 |
+| SG-NIS2-017 | D-07.1, D-07.3, D-02.1 | Art. 21(2)(e) | Security in acquisition, development, maintenance of NIS |
+| SG-NIS2-018 | Basic cyber hygiene practices are established, covering all users of network and information systems with access to entity systems and services. | `NIS2-CL16` (Art. 21(2)(g) — basic cyber hygiene practices); `NIS2-CL07` (Art. 21(1) appropriate/proportionate — propagates) | D-08.1, D-08.2 |
+| SG-NIS2-018 | D-08.1, D-08.2 | Art. 21(2)(g) | Basic cyber hygiene practices |
+| SG-NIS2-021 | The management body of essential and important entities approves the cybersecurity risk-management measures taken to comply with Art. 21, oversees their implementation, and can be held liable for infringements of that Article by the entity. | `NIS2-CL01` (Art. 20(1) sentence 1 — approve + oversee + held liable); `NIS2-CL02` (Art. 20(1) sentence 2 — public-institution carve-out); `NIS2-CL06` (Art. 20 chapeau — proportionality hook via Art. 3 classification) | D-09.1, D-09.3 |
+| SG-NIS2-021 | D-09.1, D-09.3 | Art. 20(1) | Management body approves + oversees + bears liability for Art. 21 measures |
+| SG-NIS2-022 | Policies on risk analysis and information system security are established and maintained, documenting the entity's approach to identifying, assessing, and treating cybersecurity risks to network and information systems. | `NIS2-CL10` (Art. 21(2)(a) — policies on risk analysis + IS security) | D-09.1, D-09.2 |
+| SG-NIS2-022 | D-09.1, D-09.2 | Art. 21(2)(a) | Policies on risk analysis + information system security |
+| SG-NIS2-023 | Policies and procedures are established to assess the effectiveness of cybersecurity risk-management measures, with results feeding back into the risk-management cycle. | `NIS2-CL15` (Art. 21(2)(f) — policies and procedures to assess effectiveness); `NIS2-CL08` (Art. 21(1) — state-of-the-art baseline) | D-09.1, D-09.3, D-10.3 |
+| SG-NIS2-023 | D-09.1, D-09.3, D-10.3 | Art. 21(2)(f) | Policies and procedures to assess effectiveness of risk-management measures |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-001
@@ -106,7 +106,7 @@ status: DRAFT
     - { clause_id: NIS2-CL08, article_ref: "Art. 21(1) sentence 2 — state-of-the-art + standards + cost" }
     - { clause_id: NIS2-D01, article_ref: "Art. 6(1) — network and information system (cross)" }
     - { clause_id: NIS2-D02, article_ref: "Art. 6(2) — security of network and information systems" }
-  linked_objectives: [SO-NIS2-001]
+  linked_objectives: [SG-NIS2-001]
   sub_domain: [D-01.1]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }
@@ -122,7 +122,7 @@ status: DRAFT
     Article 21(2)(h) carries two compounding S3 ambiguities that drive materially different compliance obligations. First, the `cryptography and, where appropriate, encryption` conjunction is a hierarchical AND-with-hedge: cryptography is always required (a policy must address cryptographic mechanisms as a discipline) but encryption is additionally required only where the entity's risk assessment indicates it; the alternative reading that cryptography and encryption are synonyms is rejected by the literal text and by the CRA parallel (CRA Art. 13(2) on default passwords, Art. 14(2) on vulnerability remediation, treat cryptography and encryption as distinct concepts). Second, `state of the art` in Article 21(1) sentence 2 admits three readings — current best practice (qualitative), published standards (e.g. ISO/IEC 27001:2022, NIST CSF 2.0), or cutting-edge frontier research — of which the third is rejected by Recital 56 (cost of implementation implies off-the-shelf); the chosen reading accepts both R1 best practice and R2 published standards as operative, with ENISA's 2022 baseline guidance as the practical floor. Member State transposition divergence may apply on `state of the art`: the German BSI standardises the term through BSI TR-02102; French ANSSI requires an independent assessment by a qualified body; Italian ACN publishes annual guidance. The substantive software-compliance consequence is that a 5-FTE SaaS entity and a 500-FTE operator may both satisfy Article 21(2)(h) with materially different documentation depth, provided each documents the proportionality decision. Remain open: (a) whether the European Commission implementing acts under Article 21(5) will specify a baseline cryptography standard or only methodological requirements (the 17 October 2024 deadline has slipped to mid-2025 without publication as of the current reference date); (b) whether Member State national transposition will impose sector-specific cryptography mandates beyond the Directive... (line truncated to 2000 chars)
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-002
@@ -130,7 +130,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL14, article_ref: "Art. 21(2)(e) — security in acquisition/development/maintenance + vuln handling + disclosure" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
-  linked_objectives: [SO-NIS2-002]
+  linked_objectives: [SG-NIS2-002]
   sub_domain: [D-02.1, D-02.3]
   nist_csf_mapping:
     - { id: ID.RA-01, title: "Vulnerabilities identified, validated, and recorded" }
@@ -145,7 +145,7 @@ status: DRAFT
     `Vulnerability handling` admits a process/team/programme triad; the chosen reading is process, on which the Article 6(8) `incident handling` parallel supports a process-only interpretation (OJ L 333, 27.12.2022, p. 113). `Handling and disclosure` is read as two distinct activities rather than one composite — the entity maintains an internal handling process AND an external disclosure pathway. T3-vs-text gap awareness (synthesis §8): T3 imports CI/CD pipeline vocabulary not present in the OJ text. Member State transposition divergence may apply on the disclosure pathway (some MS impose a national CSIRT-only channel; others accept direct researcher disclosure). Remain open: whether the Article 12(1) CSIRT-coordinator architecture will be supplemented by Commission guidelines on coordinated vulnerability disclosure under the NIS2 implementing-acts mandate.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-003
@@ -153,7 +153,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL18, article_ref: "Art. 21(2)(i) — HR security + access control + asset management" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
-  linked_objectives: [SO-NIS2-003]
+  linked_objectives: [SG-NIS2-003]
   sub_domain: [D-03.1, D-03.3]
   nist_csf_mapping:
     - { id: PR.AA-01, title: "Identities and credentials managed by the organization" }
@@ -168,7 +168,7 @@ status: DRAFT
     The Article 21(2)(i) three-domain AND carries an S3 coordination ambiguity: the literal AND requires all three domains; partial-compliance readings (two-of-three) are rejected by the literal text. The model-agnostic reading of `access control policies` is the chosen interpretation; alternatives are RBAC (ISO 27001:2022 A.5.15 anchor), ABAC (NIST SP 800-162), MAC, and DAC — each of which is operative at the implementation layer but does not constrain the policy. `Human resources security` admits four readings (staff-security, HR-driven, workforce-security, lifecycle-security) of which the chosen reading is lifecycle-security (joiner-mover-leaver) per ISO 27001:2022 A.6 anchor. `Asset management` admits hardware-only, software-only, information-only, and cumulative readings — the chosen reading is cumulative (R4) per Recital 56 proportionality. Member State transposition divergence may apply on national HR-practice compatibility (e.g. French CNIL guidance on employee monitoring; German BfDI on personnel-data proportionality for security logging). Remain open: (a) whether national supervisory authorities will publish binding minimum specifications for access-control models in critical sectors (e.g. energy, transport) under Article 4 implementing acts; (b) whether the cumulative asset-management reading requires separate inventories for ICT hardware, software and information assets, or whether a unified register with classification attributes suffices — the Directive is silent on the register structure.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-004
@@ -176,7 +176,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL18, article_ref: "Art. 21(2)(i) — HR security dimension" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
-  linked_objectives: [SO-NIS2-003]
+  linked_objectives: [SG-NIS2-003]
   sub_domain: [D-08.2, D-03.1]
   nist_csf_mapping:
     - { id: PR.AT-02, title: "Workforce understands role-specific security responsibilities" }
@@ -191,7 +191,7 @@ status: DRAFT
     `Human resources security` admits four readings (staff-security, HR-driven, workforce-security, lifecycle-security); the chosen reading is lifecycle-security (R4) per the ISO 27001:2022 A.6 anchor and the dominant transposition practice. The alternative workforce-security reading (R3) is rejected because it underweights the joiner-mover-leaver mechanics. Member State transposition divergence may apply on national HR-practice compatibility: French CNIL guidance on employee monitoring requires explicit proportionality assessments for HR-driven security logging; German BfDI on personnel-data proportionality imposes stricter controls on behavioural analytics than the Directive requires. Remain open: whether the Commission implementing acts under Article 21(5) will specify a minimum set of HR-security controls (vetting, induction, separation) or leave the operationalisation entirely to the entity.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-005
@@ -199,7 +199,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL18, article_ref: "Art. 21(2)(i) — asset management dimension" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
-  linked_objectives: [SO-NIS2-003]
+  linked_objectives: [SG-NIS2-003]
   sub_domain: [D-09.3, D-03.3]
   nist_csf_mapping:
     - { id: ID.AM-01, title: "Inventories of hardware managed by the organization are maintained" }
@@ -214,7 +214,7 @@ status: DRAFT
     `Asset management` admits four readings (hardware-only, software-only, information-only, cumulative); the chosen reading is cumulative (R4) per the literal AND of three coordinated sub-domains in Article 21(2)(i). The T3-vs-text gap awareness: T3 reads D-09.3 asset inventories from Article 21(2)(i); the OJ `asset management` is one of three coordinated sub-domains in a single sub-point, not a standalone D-09.3 mandate. Member State transposition divergence may apply on the granularity of asset inventories — French ANSSI requires classified inventories (sensitive, basic) for entities in essential sectors; German BSI recommends a single authoritative register with classification attributes. Remain open: whether the Commission's Article 21(5) implementing acts will specify minimum asset-classification categories or rely on entity-defined taxonomies (the directive is silent on classification granularity).
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-006
@@ -222,7 +222,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL19, article_ref: "Art. 21(2)(j) — MFA or continuous authentication solutions, `where appropriate`" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
-  linked_objectives: [SO-NIS2-004]
+  linked_objectives: [SG-NIS2-004]
   sub_domain: [D-03.2]
   nist_csf_mapping:
     - { id: PR.AA-03, title: "Users, services, and hardware authenticated" }
@@ -237,7 +237,7 @@ status: DRAFT
     `Where appropriate` is an S3 hedge; the chosen reading is risk-based (R3) per Article 21(1) factors. Alternative readings — system-based (R1), user-based (R2), cost-based (R4) — are rejected because they subordinate the appropriateness test to operational criteria rather than to the risk-assessment output the Directive requires. `Multi-factor authentication` is an S2 polysemy with at least five readings (SMS-OTP, TOTP authenticator apps, hardware tokens like FIDO2/YubiKey, platform-authenticated passkeys, mechanism-agnostic); the chosen reading is mechanism-agnostic (R5) per the literal OJ text, with the FIDO2 / WebAuthn posture as the dominant industry-state-of-the-art. The SMS-OTP reading (R1) is rejected for new deployments given the SS7 / SIM-swap attack surface documented by ENISA and NIST SP 800-63B §5.1.5.2. Member State transposition divergence may apply; national authorities may specify acceptable mechanisms (e.g. ANSSI's authentication-factor catalogue in France, BSI's TR-02102 in Germany). Remain open: (a) whether the Commission's Article 21(5) implementing acts will specify a minimum authentication-factor strength (e.g. prohibit SMS-OTP for administrative access in essential entities) or leave the mechanism choice to the entity; (b) whether continuous authentication will be classified by national authorities as equivalent to MFA for compliance purposes — the Directive treats them as alternative paradigms but does not equate them.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-007
@@ -245,7 +245,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL19, article_ref: "Art. 21(2)(j) — secured voice, video, text communications + secured emergency communication systems" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
-  linked_objectives: [SO-NIS2-004]
+  linked_objectives: [SG-NIS2-004]
   sub_domain: [D-03.2, D-01.2]
   nist_csf_mapping:
     - { id: PR.DS-02, title: "Data-in-transit protected" }
@@ -260,7 +260,7 @@ status: DRAFT
     `Secured` is an S2 polysemy with at least five readings (encrypted, authenticated, access-controlled, all, any); the chosen reading is mechanism-agnostic (R5) per the literal OJ text, with encryption (R1) as the dominant industry posture and ENISA's 2022 baseline treating end-to-end encryption as the default for internal voice and text. Member State transposition divergence may apply on the minimum security posture for emergency-communication systems — some Member States require dedicated infrastructure independent of commercial telecom providers (per the CER Article 12 model). Remain open: whether the Commission's Article 21(5) implementing acts will specify minimum-security baselines for secured emergency communication systems, including any redundancy requirements (the Directive is silent on infrastructure-isolation requirements).
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-008
@@ -269,7 +269,7 @@ status: DRAFT
     - { clause_id: NIS2-CL11, article_ref: "Art. 21(2)(b) — incident handling" }
     - { clause_id: NIS2-D06, article_ref: "Art. 6(8) — incident handling definition (6-action list: prevent, detect, analyse, contain, respond, recover)" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
-  linked_objectives: [SO-NIS2-005, SO-NIS2-013]
+  linked_objectives: [SG-NIS2-005, SG-NIS2-013]
   sub_domain: [D-04.1, D-04.2, D-04.4]
   nist_csf_mapping:
     - { id: RS.MA-01, title: "Incident management plan executed in coordination with relevant third parties once an incident is declared" }
@@ -285,7 +285,7 @@ status: DRAFT
     `Incident handling` admits process/team/capability/programme readings; the chosen reading is process (R1) per the Article 6(8) `actions and procedures` anchor. The `aiming at, where appropriate` qualifier is read as illustrative (the six actions form a floor; the entity may add more — e.g. eradication, post-incident activity) rather than exhaustive. T3-vs-text gap awareness: T3 imports NIST SP 800-61 vocabulary not in the OJ text; the SR preserves the OJ six-action language. The handling capability is operationally triggered (process executed on incident declaration) and continuous (the capability is maintained). Member State transposition divergence may apply on incident-handling scope (whether the capability must operate 24/7; whether it must be staffed by named CSIRT-equivalent personnel or by a function that may include outsourced MSSPs); the Article 21(1) appropriate-and-proportionate qualifier is the basis for national variation. Remain open: whether the Commission's Article 21(5) implementing acts will specify a minimum 24/7 availability requirement for the incident-handling capability of essential entities in critical sectors (energy, transport, health, finance) — the Directive is silent on staffing continuity.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-009
@@ -294,7 +294,7 @@ status: DRAFT
     - { clause_id: NIS2-CL11, article_ref: "Art. 21(2)(b) — incident handling (detection dimension)" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
     - { clause_id: NIS2-CL09, article_ref: "Art. 21(2) chapeau — all-hazards approach" }
-  linked_objectives: [SO-NIS2-005]
+  linked_objectives: [SG-NIS2-005]
   sub_domain: [D-10.1, D-04.1]
   nist_csf_mapping:
     - { id: DE.CM-01, title: "Networks and network services monitored to find potentially adverse events" }
@@ -309,7 +309,7 @@ status: DRAFT
     The all-hazards approach admits three readings (cybersecurity-only, including natural disasters, including physical security); the chosen reading is R3 (the chapeau explicitly extends to the physical environment of network and information systems). For the software-compliance track only the cybersecurity and operational dimensions are in scope; the physical-environment dimension is out-of-scope for software (flagged separately). Member State transposition divergence may apply on the scope of detection obligations across sectors — French ANSSI requires passive DNS monitoring for entities in essential sectors; German BSI requires industrial-control-system monitoring for energy operators. Remain open: whether the Commission's Article 21(5) implementing acts will specify minimum detection-coverage requirements for the 10 digital-infrastructure categories (the Directive is silent on coverage thresholds).
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-019
@@ -317,7 +317,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL12, article_ref: "Art. 21(2)(c) — business continuity, such as backup management and disaster recovery, and crisis management" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
-  linked_objectives: [SO-NIS2-013]
+  linked_objectives: [SG-NIS2-013]
   sub_domain: [D-04.4, D-09.4]
   nist_csf_mapping:
     - { id: RC.RP-04, title: "Critical mission functions and services restored through implementation of the recovery plan" }
@@ -332,7 +332,7 @@ status: DRAFT
     Article 21(2)(c) carries S3 coordination ambiguity on `business continuity, such as backup management and disaster recovery, and crisis management`. The chosen reading is R1 — all three required (literal AND with `and crisis management`); the alternative reading R3 (BC and CM are the two required; backup and DR are floor examples) is rejected because it admits partial compliance. `Business continuity` admits service-continuity (R1), data-continuity (R2), organisational-continuity (R3), and cumulative (R4) readings; the chosen reading is R4 cumulative per Recital 56 proportionality. `Crisis management` admits strategic (R1), tactical (R2), and both (R3) readings; the chosen reading is R3 per Recital 56. `Backup management` admits policy (R1), operations (R2), and recovery-testing (R3) readings; the chosen reading is R3 cumulative. `Disaster recovery` admits IT-DR (R1), site (R2), and both (R3) readings; the chosen reading is R3 cumulative. Member State transposition divergence may apply on the granularity of BC/DR/CM requirements — French ANSSI requires documented continuity plans for essential entities with annual testing; German BSI requires BSI 200-4 compliance for federal-sector entities. Remain open: (a) whether the Commission's Article 21(5) implementing acts will specify a minimum BC/DR/CM testing cadence for the 10 digital-infrastructure categories (e.g. annual tabletop exercise, semi-annual DR test); (b) whether Member State national transposition will require integration of NIS2 BC/DR/CM with CER Directive crisis-management obligations for entities identified as critical entities under both instruments — the cross-regulation harmonisation is not yet specified.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-020
@@ -341,7 +341,7 @@ status: DRAFT
     - { clause_id: NIS2-CL13, article_ref: "Art. 21(2)(d) — supply chain security, including security-related aspects concerning relationships between each entity and its direct suppliers or service providers" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
     - { clause_id: NIS2-CL08, article_ref: "Art. 21(1) sentence 2 — state-of-the-art + standards" }
-  linked_objectives: [SO-NIS2-014]
+  linked_objectives: [SG-NIS2-014]
   sub_domain: [D-06.1, D-06.3]
   nist_csf_mapping:
     - { id: GV.SC-02, title: "Suppliers and other third parties are known, prioritized, and assessed using a cybersecurity supply chain risk management process" }
@@ -356,7 +356,7 @@ status: DRAFT
     **`direct` SCOPE-Q S3 — the single most consequential scope-limiter in Chapter IV** (per synthesis §6.1). Three materially distinct readings: R1 `direct` = contractually bound (Tier-1); R2 `direct` = technically integrated (API-connected, shared infrastructure); R3 `direct` = operationally dependent (single-point-of-failure). R1 is the dominant reading in Member State transposition practice (it admits paper-based due diligence and is operationally cheaper); R2 requires technical-integration assessment; R3 requires SPOF analysis. The chosen reading is R1 (contractually bound Tier-1) as the minimum; the entity must additionally consider R2 (technically integrated) for technical-integration points and R3 (operationally dependent) for single-points-of-failure, per Recital 56. The Commission's Article 21(5) implementing acts were expected to clarify this but as of mid-2025 are not yet published. Member State transposition divergence may apply: German BSI has published guidance favouring R1 + R3; French ANSSI favours R2 + R3. `Security-related aspects` (VAG S2) admits cybersecurity-only (R1), information-security broader (R2), and any-security-implication (R3) readings; the chosen reading is R3 per the literal `security-related` adjective. `Suppliers or service providers` (POLY S2) admits hendiadys (R1) and distinct (R2) readings; R2 is literal. Remain open: (a) whether the Commission's Article 21(5) implementing acts will specify the `direct` scope across the 10 digital-infrastructure categories (the implementing acts are pending; the 17 October 2024 deadline has slipped to mid-2025); (b) whether Member State national transposition will impose n-hop (Tier-2 / Tier-3) supply-chain assessment obligations on entities in critical sectors beyond the Directive's `direct` floor — German BSI may signal this in forthcoming BSI 200-4 updates; French ANSSI's labelling schemes (SecNumCloud, visa de sécurité) may de facto impose n-hop through certification chains.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-021
@@ -364,7 +364,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL13, article_ref: "Art. 21(2)(d) — security-related aspects (cross)" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
-  linked_objectives: [SO-NIS2-014]
+  linked_objectives: [SG-NIS2-014]
   sub_domain: [D-06.3]
   nist_csf_mapping:
     - { id: GV.SC-02, title: "Suppliers and other third parties are known, prioritized, and assessed using a cybersecurity supply chain risk management process" }
@@ -379,7 +379,7 @@ status: DRAFT
     `Security-related aspects` admits cybersecurity-only (R1), information-security broader (R2), and any-security-implication (R3) readings; the chosen reading is R3 (literal `security-related` qualifier). `Direct` SCOPE-Q S3 — same propagation as SR-NIS2-020. Member State transposition divergence may apply on the contractual minimum (some MS publish minimum-clause catalogues for supplier contracts in essential sectors). Remain open: whether the Commission's Article 21(5) implementing acts will specify a minimum contractual-clause set for the 10 digital-infrastructure categories.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-022
@@ -387,7 +387,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL20, article_ref: "Art. 21(3) sentence 1 — supplier vulnerability assessment" }
     - { clause_id: NIS2-CL13, article_ref: "Art. 21(2)(d) — `direct` scope-limiter (cross)" }
-  linked_objectives: [SO-NIS2-015]
+  linked_objectives: [SG-NIS2-015]
   sub_domain: [D-06.3, D-02.1]
   nist_csf_mapping:
     - { id: ID.AM-04, title: "Inventories of suppliers and other third parties are maintained" }
@@ -403,7 +403,7 @@ status: DRAFT
     `Vulnerabilities specific to each` (POLY S2 + SCOPE-Q S2) admits each-supplier-entity (R1), each-supplier-product (R2), and each-supplier-service (R3) readings; the chosen reading is R1 (literal `each direct supplier and service provider`). `Direct` SCOPE-Q S3 — same propagation as SR-NIS2-020. `Vulnerabilities` (POLY S2) admits security (CVE-type, R1), business (SPOF, R2), and compliance (R3) readings; the chosen reading is R1 per the Article 6(15) definition. Member State transposition divergence may apply on the granularity of supplier-vulnerability intelligence (some MS may accept CVE-feed-based intelligence; others may require proprietary assessments). Remain open: whether the Commission's Article 21(5) implementing acts will specify a minimum supplier-vulnerability intelligence methodology.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-023
@@ -411,7 +411,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL20, article_ref: "Art. 21(3) sentence 1 — overall quality of products and cybersecurity practices" }
     - { clause_id: NIS2-CL13, article_ref: "Art. 21(2)(d) — `direct` scope-limiter (cross)" }
-  linked_objectives: [SO-NIS2-015]
+  linked_objectives: [SG-NIS2-015]
   sub_domain: [D-06.3]
   nist_csf_mapping:
     - { id: GV.SC-02, title: "Suppliers and other third parties are known, prioritized, and assessed using a cybersecurity supply chain risk management process" }
@@ -426,7 +426,7 @@ status: DRAFT
     `Overall quality` (VAG S2) admits product (R1), service (R2), process (R3), and composite (R4) readings; the chosen reading is R4 (literal `overall`). `Direct` SCOPE-Q S3 — same propagation as SR-NIS2-020. Member State transposition divergence may apply on the assessment evidence (some MS may accept self-attestation; others require independent third-party certification). Remain open: whether the Commission's Article 21(5) implementing acts will specify a minimum evidence baseline for `overall quality` assessment across the 10 digital-infrastructure categories — the CRA certification framework (Article 24 et seq.) is the parallel authority for product-quality assessment and may provide the methodological anchor.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-024
@@ -435,7 +435,7 @@ status: DRAFT
     - { clause_id: NIS2-CL20, article_ref: "Art. 21(3) sentence 1 — supplier secure-development procedures" }
     - { clause_id: NIS2-CL13, article_ref: "Art. 21(2)(d) — `direct` scope-limiter (cross)" }
     - { clause_id: NIS2-CL14, article_ref: "Art. 21(2)(e) — security in development (cross)" }
-  linked_objectives: [SO-NIS2-015]
+  linked_objectives: [SG-NIS2-015]
   sub_domain: [D-06.3, D-07.1]
   nist_csf_mapping:
     - { id: GV.SC-02, title: "Suppliers and other third parties are known, prioritized, and assessed using a cybersecurity supply chain risk management process" }
@@ -450,7 +450,7 @@ status: DRAFT
     The compound `secure development procedures` carries two readings: an internal-only SDLC interpretation (the supplier's own engineering practices) or an externally-assessable interpretation (procedures the entity can audit via questionnaire, contract clause or third-party attestation), with the chosen reading being the externally-assessable interpretation since the obligation is on the entity to assess rather than on the supplier to self-certify. The Article 21(2)(d) `direct` scope-limiter propagated from SR-NIS2-020 carries the same S3 SCOPE-Q ambiguity into this SR, so that not every supplier relationship falls within the Article 21(3) assessment obligation. Member State transposition divergence may apply on the assessment methodology. Remain open: whether Member State supervisory authorities will publish a minimum questionnaire template for supplier secure-development assessment under Article 4 implementing acts, or whether entities retain full methodology discretion under Recital 56.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-025
@@ -459,7 +459,7 @@ status: DRAFT
     - { clause_id: NIS2-CL21, article_ref: "Art. 21(3) sentence 2 — entity `take into account` Art. 22 results" }
     - { clause_id: NIS2-CL23, article_ref: "Art. 22(1) — Cooperation Group coordinated assessments" }
     - { clause_id: NIS2-CL24, article_ref: "Art. 22(1) — technical and, where relevant, non-technical risk factors" }
-  linked_objectives: [SO-NIS2-016]
+  linked_objectives: [SG-NIS2-016]
   sub_domain: [D-06.3, D-09.2]
   nist_csf_mapping:
     - { id: ID.RA-02, title: "Threat and vulnerability information received from internal and external sources is collected and used to support risk identification" }
@@ -474,7 +474,7 @@ status: DRAFT
     The verb `take into account` admits two operative readings: a passive-consideration reading (the entity reviews the assessment and files it) or an active-integration reading (the entity updates its supplier-risk register to reflect the assessment), with the chosen reading being the literal passive-consideration reading since Article 21(3) sentence 2 does not prescribe a specific decision mechanism. The Article 22(1) chapeau `may carry out` carries the same hybrid discretion/conditional pattern, so that the entity's obligation is triggered only when an Article 22(1) assessment actually exists for a relevant supply chain. Member State transposition divergence may apply on the documentation expected to evidence `taken into account`. Remain open: whether the Commission will publish a standardised mechanism under Article 22(2) (NIS2-CL25) for flagging specific critical ICT subject to assessment in a way that makes the entity-side `take into account` check trivially operational, or whether each entity must monitor the Cooperation Group outputs independently.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-026
@@ -482,7 +482,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL14, article_ref: "Art. 21(2)(e) — security in acquisition" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
-  linked_objectives: [SO-NIS2-017]
+  linked_objectives: [SG-NIS2-017]
   sub_domain: [D-07.1]
   nist_csf_mapping:
     - { id: PR.PS-06, title: "Secure software development practices are integrated, and their performance is monitored throughout the SDLC" }
@@ -497,7 +497,7 @@ status: DRAFT
     The compound `security in` carries a process-security versus product-security ambiguity, with the chosen reading being the broad-cumulative interpretation that the entity addresses both the procurement process (how the entity buys) and the product security (what the entity buys). The literal OJ text is silent on CI/CD pipeline vocabulary, NIST SSDF attestation, or ISO 27034 alignment; the SR maps to PR.PS-06 by meaning-alignment rather than by literal-import (T3-vs-text gap awareness per synthesis §8). Member State transposition divergence may apply on whether national law requires a minimum set of acquisition-security clauses (e.g. SBOM delivery, vulnerability-disclosure contractual channel). Remain open: whether the Commission implementing acts under Article 21(5) will specify a baseline acquisition-security clause set or leave the methodology to Recital 56 proportionality.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-027
@@ -505,7 +505,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL14, article_ref: "Art. 21(2)(e) — security in development" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
-  linked_objectives: [SO-NIS2-017]
+  linked_objectives: [SG-NIS2-017]
   sub_domain: [D-07.1]
   nist_csf_mapping:
     - { id: PR.PS-06, title: "Secure software development practices are integrated, and their performance is monitored throughout the SDLC" }
@@ -520,7 +520,7 @@ status: DRAFT
     The same `security in` ambiguity as SR-NIS2-026 applies; the chosen reading is broad-cumulative covering both process and product security in development. The T3-vs-text gap awareness import warning applies with equal force: the OJ does not mention NIST SSDF, OWASP SAMM, ISO 27034, or specific secure-coding catalogues, and the SR preserves OJ-literal `development` language while mapping to PR.PS-06 by meaning-alignment (synthesis §8 T3 NIS2-C11). Member State transposition divergence may apply on whether national law distinguishes in-house versus outsourced development for the depth of the obligation. Remain open: whether the Commission will adopt a delegated act under Article 24(2) specifying that development-tooling categories fall within the European cybersecurity certification scheme, which would convert a procedural development-security obligation into a certification-conditional one.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-028
@@ -528,7 +528,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL14, article_ref: "Art. 21(2)(e) — security in maintenance + vulnerability handling and disclosure" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
-  linked_objectives: [SO-NIS2-017, SO-NIS2-002]
+  linked_objectives: [SG-NIS2-017, SG-NIS2-002]
   sub_domain: [D-07.1, D-02.1]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed removed commensurate with risk" }
@@ -543,7 +543,7 @@ status: DRAFT
     The compound `vulnerability handling and disclosure` admits a two-distinct-activities reading or a single-composite-process reading; the chosen reading is two-distinct since the OJ coordinates them with AND, separating the internal triage cycle from the external communication channel. The same `security in` broad-cumulative reading applies as in SR-NIS2-026/027. Member State transposition divergence may apply on the disclosure-channel architecture: some Member States route disclosure exclusively through the national CSIRT, while others accept direct researcher-to-vendor disclosure under coordinated vulnerability disclosure policies. Remain open: whether national supervisory authorities will require a documented vulnerability-disclosure policy under the implementing acts that some Member States have signalled, beyond the Article 21(2)(e) generic maintenance obligation.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-029
@@ -551,7 +551,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL16, article_ref: "Art. 21(2)(g) — basic cyber hygiene practices" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
-  linked_objectives: [SO-NIS2-018]
+  linked_objectives: [SG-NIS2-018]
   sub_domain: [D-08.1]
   nist_csf_mapping:
     - { id: PR.AT-01, title: "All users are informed and trained on cybersecurity topics" }
@@ -566,7 +566,7 @@ status: DRAFT
     The undefined compound `basic cyber hygiene` admits three operative readings — a minimal-password-patch-antivirus reading, the broader ENISA baseline reading, or a sector-specific reading — with the chosen reading being the entity-discretionary interpretation under Recital 56 proportionality, since the OJ does not enumerate the hygiene practices. The compound `cyber hygiene` admits a technical versus procedural versus cultural reading; the cultural reading is dominant under Recital 50, which positions cyber hygiene as a workforce-and-process concept rather than a checklist. Member State transposition divergence may apply: some Member States publish a national hygiene baseline that entities are expected to meet or exceed. Remain open: whether Member States will align their national hygiene baselines with the European cybersecurity baseline under Article 4 implementing acts, which would convert the methodology-discretion interpretation into a conformance baseline.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-035
@@ -574,7 +574,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL10, article_ref: "Art. 21(2)(a) — policies on risk analysis" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
-  linked_objectives: [SO-NIS2-022]
+  linked_objectives: [SG-NIS2-022]
   sub_domain: [D-09.1, D-09.2]
   nist_csf_mapping:
     - { id: ID.RA-05, title: "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response decisions" }
@@ -589,7 +589,7 @@ status: DRAFT
     The compound `risk analysis` admits three operative readings: a qualitative reading, a quantitative reading, or a hybrid reading, with the chosen reading being the entity-discretionary hybrid because Recital 56 leaves methodology to the entity under the proportionality discipline and most operational risk-analysis practices combine qualitative likelihood-impact matrices with quantitative loss-expectancy calculations for material risks. The compound `policies` admits a formal-versus-informal reading; the formal reading is dominant under Recital 56 since the OJ's policy framing presumes documented, communicated, and enforceable artefacts (NIST CSF 2.0 GV.PO-01). Member State transposition divergence may apply on whether national supervisory authorities require a specific methodology (e.g. France ANSSI's EBIOS RM, Germany BSI's BSI-Standard 200-3). Remain open: whether Member States will publish a national risk-analysis methodology baseline that converts the methodology-discretion interpretation into a conformance expectation under Article 4 implementing acts.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-036
@@ -597,7 +597,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL10, article_ref: "Art. 21(2)(a) — policies on information system security" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
-  linked_objectives: [SO-NIS2-022]
+  linked_objectives: [SG-NIS2-022]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -612,7 +612,7 @@ status: DRAFT
     The compound `information system security` carries a POLY ambiguity on scope: a cyber-only reading, a cyber-plus-physical reading, or a cyber-plus-operational reading, with the chosen reading being the broader cyber-plus-operational reading because the Article 21(2) chapeau `all-hazards approach` (SR-NIS2-040) explicitly extends the Article 21(2) sub-point architecture to non-cyber hazards that compromise NIS. The AND coordination between `risk analysis` and `information system security` admits a two-distinct-policies reading or a single-composite-policy reading; the literal two-distinct-policies reading is dominant because the OJ coordinates two distinct objects with the conjunction. Member State transposition divergence may apply on whether national supervisory authorities expect the IS-security policy to enumerate specific configuration baselines (e.g. CIS Benchmarks) or to leave the baseline to entity discretion under the proportionality discipline. Remain open: whether Member State supervisory authorities will codify a national IS-security policy baseline template that converts the policy-discretion interpretation into a conformance expectation under Article 4 implementing acts.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-037
@@ -621,7 +621,7 @@ status: DRAFT
     - { clause_id: NIS2-CL15, article_ref: "Art. 21(2)(f) — policies and procedures to assess effectiveness of cybersecurity risk-management measures" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
     - { clause_id: NIS2-CL08, article_ref: "Art. 21(1) sentence 2 — state-of-the-art (cross)" }
-  linked_objectives: [SO-NIS2-023]
+  linked_objectives: [SG-NIS2-023]
   sub_domain: [D-09.1, D-09.3, D-10.3]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -637,7 +637,7 @@ status: DRAFT
     The compound `effectiveness` carries the Article 21(2)(f) POLY hotspot ambiguity with three operative readings: a control-effectiveness reading (does the control work as designed), a risk-effectiveness reading (does the control reduce risk to acceptable level), or an outcome-effectiveness reading (does the measure achieve its intended outcome), with the chosen reading being the outcome-effectiveness reading because the OJ is outcome-oriented (the assessment object is `cybersecurity risk-management measures` rather than specific controls), and Recital 56 framing supports outcome-measurement as the natural reading of `effectiveness of measures`. The AND coordination of `policies and procedures` admits a two-distinct-artefacts reading or a hendiadys (single artefact with two labels) reading, with the two-distinct reading being dominant because the OJ coordinates two governance terms that NIST CSF 2.0 treats as distinct sub-categories (GV.PO-01 policy and GV.PO-02 processes and procedures). The T3-vs-text gap awareness (synthesis §8) imports ISO 27004 measurement vocabulary not present in the OJ, and the SR preserves OJ-literal language while mapping to ID.IM-01 + GV.OV-03 (improvement + performance evaluation) by meaning-alignment rather than literal-import. Member State transposition divergence may apply on whether national supervisory authorities require specific effectiveness-assessment metrics (e.g. MTTD, MTTR, control-coverage percentage) or accept entity-discretionary metrics under the proportionality discipline. Remain open: (a) whether the Commission will adopt implementing acts under Article 21(5) that specify effectiveness-assessment metrics, which would convert the methodology-discretion interpretation into a metrics-conformance baseline; (b) whether the outcome-effectiveness reading requires the entity to demonstrate contribution-to-risk-reduction evidence under DORA Art. 18 testing parallel, or whether residual-risk-acceptance documentation suffices.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-038
@@ -645,7 +645,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL15, article_ref: "Art. 21(2)(f) — procedures (procedural dimension of effectiveness assessment, cross)" }
     - { clause_id: NIS2-CL08, article_ref: "Art. 21(1) sentence 2 — state-of-the-art (cross)" }
-  linked_objectives: [SO-NIS2-023]
+  linked_objectives: [SG-NIS2-023]
   sub_domain: [D-09.3, D-10.3]
   nist_csf_mapping:
     - { id: GV.PO-02, title: "Cybersecurity processes and procedures for implementing the cybersecurity policy are established, communicated, and enforced" }
@@ -660,7 +660,7 @@ status: DRAFT
     The same `effectiveness` POLY hotspot ambiguity as SR-NIS2-037 propagates into this SR (the procedural half inherits the substantive reading of the policy half); the chosen outcome-effectiveness reading is preserved. The same T3-vs-text gap awareness (synthesis §8) applies: the OJ does not mention ISO 27004 measurement vocabulary, and the SR maps to GV.PO-02 + GV.OV-03 by meaning-alignment. The assessment cadence is not specified by the Directive (no analogue to GDPR Article 35(11) `at least when there is a change of the risk presented by processing operations`); the cadence is entity-discretionary under Recital 56 proportionality. Member State transposition divergence may apply on whether national supervisory authorities require specific procedural artefacts (e.g. annual external audit, semi-annual internal audit, quarterly management review) that convert the cadence-discretion interpretation into a procedural baseline. Remain open: whether Member State supervisory authorities will align their national effectiveness-assessment procedural expectations with the DORA Art. 18 ICT risk-management framework testing cadence (annual for significant ICT-risk-driven entities), which would create a cross-regulation cadence alignment.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-039
@@ -668,7 +668,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) sentence 1 — appropriate and proportionate technical, operational and organisational measures" }
     - { clause_id: NIS2-CL08, article_ref: "Art. 21(1) sentence 2 — state-of-the-art + standards + cost of implementation" }
-  linked_objectives: [SO-NIS2-021, SO-NIS2-022]
+  linked_objectives: [SG-NIS2-021, SG-NIS2-022]
   sub_domain: [D-09.1, D-09.2]
   nist_csf_mapping:
     - { id: GV.RM-06, title: "Standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated" }
@@ -683,7 +683,7 @@ status: DRAFT
     The compound `appropriate and proportionate` carries the dominant Berry VAG-S3 ambiguity of the Directive with three operative readings: an independent-tests reading (the entity must satisfy both `appropriate` and `proportionate` independently), a hierarchical reading (`appropriate` modifies `proportionate` so that the proportionality is itself subject to an appropriateness qualifier), or a compound-qualifier reading (a fixed phrase that operationalises through Article 21(1) sentence 2's named factors), with the chosen reading being the compound-qualifier reading because sentence 2 explicitly operationalises the chapeau by enumerating four proportionality factors (exposure, size, likelihood and severity, societal and economic impact), which is the structural commitment to the compound interpretation (synthesis §3 marks this as the dominant Berry VAG trigger of NIS2). The compound `technical, operational and organisational` admits three distinct-categories, cumulative, or open-list readings, with the open-list reading being dominant under Recital 56. The compound `state-of-the-art` admits three readings (current best practice qualitative, published standards, or cutting-edge frontier research), with the first two operative and the third rejected by Recital 56 because cost of implementation implies off-the-shelf. The compound `cost of implementation` admits entity-level, national-economy-level, or supply-chain-level readings, with the entity-level reading being literal because the chapeau binds the entity to the cost of its own implementation. The compound `manage the risks` admits an identify-assess-mitigate reading, an ISO 27005 `treat` reading, or a continuous-monitoring reading, with the continuous-monitoring reading being dominant under the all-hazards approach of Article 21(2) chapeau (SR-NIS2-040). The compound `impact on recipients of their services and on other services` admits a single-class or two-class reading; the two-class literal AND reading is dominant. Member State transposition divergence is highest on `state of the art`: Germany BSI standardises through BSI TR-02102 (cryptography), BSI-Standard 200-2 (IT-Grundschutz methodology); France ANSSI requires an independent qualified-body assessment for first-class operators; Italy ACN publishes annual guidance and sectoral decrees. Remain open: (a) whether the Commission will adopt implementing acts under Article 21(5) that specify a baseline state-of-the-art methodology, which would convert the methodology-discretion interpretation into a conformance baseline; (b) whether the proportionality factors will be harmonised at EU level through Article 4 implementing acts, or whether each Member State retains full methodological discretion and the divergence compounds over the 27 implementations.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-040
@@ -691,7 +691,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL09, article_ref: "Art. 21(2) chapeau — all-hazards approach" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (cross)" }
-  linked_objectives: [SO-NIS2-022]
+  linked_objectives: [SG-NIS2-022]
   sub_domain: [D-09.1, D-09.2]
   nist_csf_mapping:
     - { id: GV.RM-06, title: "Standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and established" }
@@ -706,14 +706,14 @@ status: DRAFT
     The compound `all-hazards approach` admits three operative readings: a cybersecurity-only reading, an inclusive-of-natural-disasters reading, or an inclusive-of-physical-security reading, with the chosen reading being the broadest inclusive reading because the chapeau explicitly extends to `the physical environment of those systems`, which is the textual anchor that the all-hazards scope is not cybersecurity-only. The physical-environment dimension is captured by SR-NIS2-041 as a carve-out for the physical-security sub-domain (out-of-scope for the software-compliance track but in-scope for the entity's overall governance). Member State transposition divergence may apply: some Member States interpret `all-hazards` narrowly (cybersecurity-only) in their national transposition, which would convert the broadest reading into a narrower Member-State-specific obligation. Remain open: whether Member State supervisory authorities will publish a national all-hazards baseline that explicitly enumerates the non-cyber hazards in scope (natural disasters, physical intrusion, supply-chain physical compromise, environmental disruption), which would convert the methodology-discretion interpretation into a national-hazard enumeration baseline.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-041
   title: "Physical-environment protection ensures NIS substrate resilience"
   source_clauses:
     - { clause_id: NIS2-CL09, article_ref: "Art. 21(2) chapeau — protection of the physical environment of those systems" }
-  linked_objectives: [SO-NIS2-022]
+  linked_objectives: [SG-NIS2-022]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.RM-06, title: "Standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated" }
@@ -727,7 +727,7 @@ status: DRAFT
     The compound `physical environment of those systems` carries a SCOPE-Q S2 ambiguity with three readings: a narrow reading (server rooms, data centres, network equipment closets), a medium reading (buildings including offices and call centres that host NIS-supporting staff), or a broad reading (surrounding critical infrastructure including power, cooling and telecoms). The narrow reading is the chosen OJ-literal reading because the qualifier `of those systems` anchors the physical environment to the NIS rather than to the entity's broader footprint. The SR is OUT-OF-SCOPE for the software-compliance track: it captures a physical-security requirement, not a software requirement, and Layer 3 (inference-trust) must adjudicate whether software-software integration controls are needed for the physical-environment dimension (e.g. environmental sensors feeding into security monitoring tooling, physical-access-control-system event correlation with identity governance). The SR maps to GV.RM-06 as a meta-methodology reference and does not generate software-security rules for downstream phases. Member State transposition divergence may apply on whether national supervisory authorities expect a documented physical-environment risk assessment as a sub-component of the all-hazards methodology. Remain open: (a) whether the narrow reading requires a separate physical-environment risk-assessment document or whether the all-hazards methodology under SR-NIS2-040 covers it implicitly; (b) whether the broad-reading interpretation applies to NIS-supporting critical infrastructure operators under the CER Directive cross-link (Art. 23(10) CER cross-sharing), which would couple this SR with the CER resilience obligation.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-042
@@ -735,7 +735,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: NIS2-CL22, article_ref: "Art. 21(4) — without undue delay + necessary, appropriate and proportionate corrective measures" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (cross)" }
-  linked_objectives: [SO-NIS2-023]
+  linked_objectives: [SG-NIS2-023]
   sub_domain: [D-09.3, D-09.4]
   nist_csf_mapping:
     - { id: ID.IM-01, title: "Improvement processes across cybersecurity risk management are identified and used" }

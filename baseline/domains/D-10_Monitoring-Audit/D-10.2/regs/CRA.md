@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-069 + SO-CRA-070 | Test reports demonstrating verification of conformity of the product with digital elements and of the vulnerability-handling processes with the Annex I Part I and Part II cybersecurity requirements are part of the technical documentation and available on reasoned request from market surveillance authorities; the cybersecurity risk-assessment documentation is preserved, updated as appropriate during the support period, and made available — together with the technical documentation as a whole — to market surveillance authorities on reasoned request. | Product-level documentation traceability: Annex VII §6 test reports + Annex I Part II (3) effective/regular tests (SO-CRA-069) + Art. 13(4) sentence 1 + Annex VII §3 risk-assessment documentation + Art. 13(22) MSA cooperation (SO-CRA-070). |
+| CRA | SG-CRA-069 + SG-CRA-070 | Test reports demonstrating verification of conformity of the product with digital elements and of the vulnerability-handling processes with the Annex I Part I and Part II cybersecurity requirements are part of the technical documentation and available on reasoned request from market surveillance authorities; the cybersecurity risk-assessment documentation is preserved, updated as appropriate during the support period, and made available — together with the technical documentation as a whole — to market surveillance authorities on reasoned request. | Product-level documentation traceability: Annex VII §6 test reports + Annex I Part II (3) effective/regular tests (SG-CRA-069) + Art. 13(4) sentence 1 + Annex VII §3 risk-assessment documentation + Art. 13(22) MSA cooperation (SG-CRA-070). |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-10.2.2 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-10.2.CRA
+id: SG-D-10.2.CRA
 subdomain: D-10.2
 applies_to: [CRA]
-inherits_from: SO-CRA-069 + SO-CRA-070
+inherits_from: SG-CRA-069 + SG-CRA-070
 source_SR: SR-CRA-088 + SR-CRA-080 + SR-CRA-069 + SR-CRA-070 + SR-CRA-102
 activation: if CRA in applicable_regs
 phase_1A_role: 2_of_4
@@ -49,7 +49,7 @@ GV.OC-03, ID.RA-04, GV.SC-04, ID.RA-05, GV.OV-01, GV.PO-02, PR.PS-02.
 
   derives_from:
     hso_sub_so: SO-10.2.CRA
-    per_reg_so: SO-CRA-069 + SO-CRA-070
+    per_reg_so: SG-CRA-069 + SG-CRA-070
     source_sr: SR-CRA-088 + SR-CRA-080 + SR-CRA-069 + SR-CRA-070 + SR-CRA-102
     hso_file: ../../HierarchicalSecurityObjectives/D-10_Monitoring-Audit/10.2.md
     objective_ref_section: "### 10.2.2"

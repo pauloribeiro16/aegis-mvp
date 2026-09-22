@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-017 (sole authority) | Identify, classify, and adequately document ICT supported business functions + roles and responsibilities + information assets + ICT assets + their roles and dependencies in relation to ICT risk (Art. 7(1)). | Entity-level formal asset inventory; **the dedicated authority per AEGIS taxonomy §4.1** (OJ-literal Art. 7(1) 3-way AND); DORA-dominant for DORA financial entities. |
+| DORA | SG-DORA-017 (sole authority) | Identify, classify, and adequately document ICT supported business functions + roles and responsibilities + information assets + ICT assets + their roles and dependencies in relation to ICT risk (Art. 7(1)). | Entity-level formal asset inventory; **the dedicated authority per AEGIS taxonomy §4.1** (OJ-literal Art. 7(1) 3-way AND); DORA-dominant for DORA financial entities. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-09.3.3 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-09.3.DORA
+id: SG-D-09.3.DORA
 subdomain: D-09.3
 applies_to: [DORA]
-inherits_from: SO-DORA-017 (sole authority per AEGIS taxonomy §4.1)
+inherits_from: SG-DORA-017 (sole authority per AEGIS taxonomy §4.1)
 source_SR: SR-DORA-029
 activation: if DORA in applicable_regs
 phase_1A_role: 3_of_3
@@ -48,7 +48,7 @@ ID.AM-01, ID.AM-02, ID.AM-03, ID.AM-05.
 
   derives_from:
     hso_sub_so: SO-9.3.DORA
-    per_reg_so: SO-DORA-017 (sole authority per AEGIS taxonomy §4.1)
+    per_reg_so: SG-DORA-017 (sole authority per AEGIS taxonomy §4.1)
     source_sr: SR-DORA-029
     hso_file: ../../HierarchicalSecurityObjectives/D-09_Governance-Documentation/9.3.md
     objective_ref_section: "### 9.3.3"

@@ -40,7 +40,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-001
@@ -49,7 +49,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     - { clause_id: DORA-C09, article_ref: "Art. 9(2) — CIA+A 4-way AND + at-rest/in-use/in-transit 3-way OR" }
     - { clause_id: DORA-C10, article_ref: "Art. 9(2) — in-transit dimension (same locus, explicit in OJ)" }
     - { clause_id: DORA-C11, article_ref: "Art. 9(2) — integrity dimension (same locus, explicit in OJ)" }
-  linked_objectives: [SO-DORA-001]
+  linked_objectives: [SG-DORA-001]
   sub_domain: [D-01.1, D-01.2, D-01.4]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }
@@ -139,7 +139,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     securities) and the EBA's prior preference for ISO/IEC alignment.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-002
@@ -148,7 +148,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     - { clause_id: DORA-C15, article_ref: "Art. 9(4)(d) — strong authentication mechanisms based on relevant standards and dedicated control systems" }
     - { clause_id: DORA-C16, article_ref: "Art. 9(4)(d) same locus — T4 reads `Multi-Factor Authentication`; OJ says `strong authentication mechanisms`" }
     - { clause_id: DORA-C17, article_ref: "Art. 9(4)(d) same locus — `protection measures of cryptographic keys`" }
-  linked_objectives: [SO-DORA-002]
+  linked_objectives: [SG-DORA-002]
   sub_domain: [D-01.3, D-03.1, D-03.2]
   nist_csf_mapping:
     - { id: PR.AA-03, title: "Users, services, and hardware are authenticated" }
@@ -239,7 +239,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     or be carved out as a separate sub-regime.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-003
@@ -247,7 +247,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
   source_clauses:
     - { clause_id: DORA-C15, article_ref: "Art. 9(4)(d) — `protection measures of cryptographic keys whereby data is encrypted based on results of approved data classification and ICT risk assessment processes`" }
     - { clause_id: DORA-C17, article_ref: "Art. 9(4)(d) same locus — key-management sub-phrase" }
-  linked_objectives: [SO-DORA-002]
+  linked_objectives: [SG-DORA-002]
   sub_domain: [D-01.3]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }
@@ -318,14 +318,14 @@ _No standalone SO row cites this article directly (covered via the rules below).
     was discarded. Remain open: (a) the operational threshold for `approved` governance approval — whether a documented policy suffices or a board-level resolution is required — pending EBA Guidelines clarification; (b) the relationship between the Art. 9(4)(d) classification scheme and any sectoral scheme the entity already operates, pending Art. 15 RTS.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-006
   title: "Network and infrastructure management with automated blast-radius isolation"
   source_clauses:
     - { clause_id: DORA-C13, article_ref: "Art. 9(4)(b) — `sound network and infrastructure management structure using appropriate techniques, methods and protocols that may include implementing automated mechanisms to isolate affected information assets in the event of cyber-attacks`" }
-  linked_objectives: [SO-DORA-004]
+  linked_objectives: [SG-DORA-004]
   sub_domain: [D-02.2, D-07.1]
   nist_csf_mapping:
     - { id: PR.PS-01, title: "Configuration management practices are established, documented, and applied to assets" }
@@ -398,14 +398,14 @@ _No standalone SO row cites this article directly (covered via the rules below).
     segmentation expectation, de facto converting it from R1 to R2.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-007
   title: "Documented patch and update governance covering full asset estate"
   source_clauses:
     - { clause_id: DORA-C19, article_ref: "Art. 9(4)(f) — `have appropriate and comprehensive documented policies for patches and updates`" }
-  linked_objectives: [SO-DORA-004]
+  linked_objectives: [SG-DORA-004]
   sub_domain: [D-02.2]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed commensurate with risk" }

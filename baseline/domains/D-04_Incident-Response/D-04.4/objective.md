@@ -7,7 +7,7 @@
 
 #### D-04.4.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-04.4.HL
+id: SG-D-04.4.HL
 subdomain: D-04.4
 applies_to: auto  # activates when ≥2 applicable regs target overlapping recovery layers on the same party AND ≥1 sub-SO activates
 status: static

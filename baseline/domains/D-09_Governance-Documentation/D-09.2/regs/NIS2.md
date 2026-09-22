@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| NIS2 | SO-NIS2-022 + SO-NIS2-016 + SR-NIS2-028 (Art. 21(1)) | Policies on risk analysis + EU-level coordinated supply-chain risk assessments via Art. 22(1) Cooperation Group (cross to D-09.4); all-hazards methodology with appropriate-and-proportionate chapeau and state-of-the-art floor + cost factor per Recital 56 + entity-discretionary interpretation. | Entity-level operational continuous risk analysis + EU-level coordinated assessments; no pre-launch DPIA. |
+| NIS2 | SG-NIS2-022 + SG-NIS2-016 + SR-NIS2-028 (Art. 21(1)) | Policies on risk analysis + EU-level coordinated supply-chain risk assessments via Art. 22(1) Cooperation Group (cross to D-09.4); all-hazards methodology with appropriate-and-proportionate chapeau and state-of-the-art floor + cost factor per Recital 56 + entity-discretionary interpretation. | Entity-level operational continuous risk analysis + EU-level coordinated assessments; no pre-launch DPIA. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-09.2.2 — Sub-SO for NIS 2
 
 ```yaml
-id: SO-D-09.2.NIS2
+id: SG-D-09.2.NIS2
 subdomain: D-09.2
 applies_to: [NIS2]
-inherits_from: SO-NIS2-022 + SO-NIS2-016 + SR-NIS2-028 (Art. 21(1))
+inherits_from: SG-NIS2-022 + SG-NIS2-016 + SR-NIS2-028 (Art. 21(1))
 source_SR: SR-NIS2-035 + SR-NIS2-039 + SR-NIS2-040
 activation: if NIS2 in applicable_regs
 phase_1A_role: 1_of_5
@@ -50,7 +50,7 @@ ID.RA-05 (primary), GV.PO-01, GV.RM-06, ID.RA-06, PR.IR-01.
 
   derives_from:
     hso_sub_so: SO-9.2.NIS2
-    per_reg_so: SO-NIS2-022 + SO-NIS2-016
+    per_reg_so: SG-NIS2-022 + SG-NIS2-016
     source_sr: SR-NIS2-035 + SR-NIS2-039 + SR-NIS2-040
     hso_file: ../../HierarchicalSecurityObjectives/D-09_Governance-Documentation/9.2.md
     objective_ref_section: "### 9.2.2"

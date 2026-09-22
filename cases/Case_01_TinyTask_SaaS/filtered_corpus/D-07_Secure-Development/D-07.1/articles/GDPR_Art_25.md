@@ -32,14 +32,14 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-007 | Personal-data processing systems implement appropriate technical and organisational measures ensuring that, by default, only personal data which are necessary for each specific purpose are processed — across amount of data collected, extent of processing, period of storage, and accessibility. | `GDPR-CP03` (Art. 25(2)) | D-03.4 |
-| SO-GDPR-007 | D-03.4 | Art. 25(2) | Default-necessary processing across amount/extent/period/access |
-| SO-GDPR-024 | Personal-data processing implements data-protection principles (such as data minimisation) in an effective manner at the time of means-determination and at the time of processing itself, integrating necessary safeguards (including pseudonymisation, encryption, by-default limits) at state-of-the-art level. | `GDPR-CP02` (Art. 25(1)); `GDPR-CP03` (Art. 25(2)); `GDPR-CL06` (Art. 5(1)(f)) | D-07.1, D-05.1, D-01.1 |
-| SO-GDPR-024 | D-07.1, D-05.1, D-01.1 | Art. 25(1), Art. 25(2), Art. 5(1)(f) | Data protection by design and by default |
+| SG-GDPR-007 | Personal-data processing systems implement appropriate technical and organisational measures ensuring that, by default, only personal data which are necessary for each specific purpose are processed — across amount of data collected, extent of processing, period of storage, and accessibility. | `GDPR-CP03` (Art. 25(2)) | D-03.4 |
+| SG-GDPR-007 | D-03.4 | Art. 25(2) | Default-necessary processing across amount/extent/period/access |
+| SG-GDPR-024 | Personal-data processing implements data-protection principles (such as data minimisation) in an effective manner at the time of means-determination and at the time of processing itself, integrating necessary safeguards (including pseudonymisation, encryption, by-default limits) at state-of-the-art level. | `GDPR-CP02` (Art. 25(1)); `GDPR-CP03` (Art. 25(2)); `GDPR-CL06` (Art. 5(1)(f)) | D-07.1, D-05.1, D-01.1 |
+| SG-GDPR-024 | D-07.1, D-05.1, D-01.1 | Art. 25(1), Art. 25(2), Art. 5(1)(f) | Data protection by design and by default |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-013
@@ -48,7 +48,7 @@ status: DRAFT
     - { clause_id: GDPR-CP03, article_ref: "Art. 25(2) — privacy by default" }
     - { clause_id: GDPR-CP02, article_ref: "Art. 25(1) — privacy by design (cross)" }
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation (cross)" }
-  linked_objectives: [SO-GDPR-007, SO-GDPR-024]
+  linked_objectives: [SG-GDPR-007, SG-GDPR-024]
   sub_domain: [D-03.4, D-05.1]
   nist_csf_mapping:
     - { id: PR.PS-01, title: "Configuration management practices established and applied" }
@@ -67,7 +67,7 @@ status: DRAFT
     GDPR-CP03 (Art. 25(2)) carries VAG+COORD-S3 on `necessary for each specific purpose` and the four-element AND. Reading chosen: all four dimensions must individually be minimised and AND-coordinated. An alternative reading allowing some dimensions to be relaxed if others are tightened would weaken the default and is rejected. The AND reading is anchored to EDPB Guidelines 04/2019 on Article 25, which treat the four dimensions as independent minima. On "without the individual's intervention", the chosen reading treats the intervention requirement as the opt-in gate: the controller must not bypass the data subject's affirmative action to expose data. Remain open: (a) whether privacy-by-default applies to AI model defaults (e.g. opt-in vs opt-out for training-data inclusion), pending EDPB AI Act interaction guidance; and (b) whether the four-dimensional test applies per data subject or per processing activity, pending alignment with Art. 35 DPIA granularity.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-039
@@ -77,7 +77,7 @@ status: DRAFT
     - { clause_id: GDPR-CP03, article_ref: "Art. 25(2) — privacy by default (cross)" }
     - { clause_id: GDPR-CL06, article_ref: "Art. 5(1)(f) — integrity & confidentiality (cross)" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1) — security measures (cross)" }
-  linked_objectives: [SO-GDPR-024]
+  linked_objectives: [SG-GDPR-024]
   sub_domain: [D-07.1, D-01.1, D-05.1]
   nist_csf_mapping:
     - { id: PR.PS-06, title: "Secure software development practices integrated, and their performance is monitored throughout the SDLC" }
@@ -126,7 +126,7 @@ status: DRAFT
     modelling or accepts generic data-protection-by-design checklists.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-040
@@ -135,7 +135,7 @@ status: DRAFT
     - { clause_id: GDPR-CP02, article_ref: "Art. 25(1) — pseudonymisation reference" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(a) — pseudonymisation/encryption (cross)" }
     - { clause_id: GDPR-CP20, article_ref: "Art. 34(3)(a) — encryption exception (cross)" }
-  linked_objectives: [SO-GDPR-024, SO-GDPR-002]
+  linked_objectives: [SG-GDPR-024, SG-GDPR-002]
   sub_domain: [D-07.1, D-01.3]
   nist_csf_mapping:
     - { id: PR.PS-06, title: "Secure software development practices integrated, and their performance is monitored throughout the SDLC" }
@@ -163,7 +163,7 @@ status: DRAFT
     irreversible-pseudonymisation reading chain from SR-GDPR-003.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-041
@@ -171,7 +171,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP03, article_ref: "Art. 25(2) — by-default limits" }
     - { clause_id: GDPR-CP02, article_ref: "Art. 25(1) — by-design (cross)" }
-  linked_objectives: [SO-GDPR-024, SO-GDPR-007]
+  linked_objectives: [SG-GDPR-024, SG-GDPR-007]
   sub_domain: [D-07.1, D-03.4]
   nist_csf_mapping:
     - { id: PR.PS-01, title: "Configuration management practices are established, documented, and applied to assets" }

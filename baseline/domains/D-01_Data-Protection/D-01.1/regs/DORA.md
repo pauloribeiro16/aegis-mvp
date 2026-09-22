@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-001 | CIA+A maintained across data states (at-rest, in-use, in-transit) | Financial entity; Art. 9(2); ICT-system-level; `high standards` anchor |
+| DORA | SG-DORA-001 | CIA+A maintained across data states (at-rest, in-use, in-transit) | Financial entity; Art. 9(2); ICT-system-level; `high standards` anchor |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-01.1.4 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-01.1.DORA
+id: SG-D-01.1.DORA
 subdomain: D-01.1
 applies_to: [DORA]
-inherits_from: SO-DORA-001
+inherits_from: SG-DORA-001
 source_SR: SR-DORA-001
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_N
@@ -54,8 +54,8 @@ specifically by PR.DS-01.)*
   title: "ICT-supported data of financial entity maintained at high standards of CIA at rest"
 
   derives_from:
-    hso_sub_so: SO-D-01.1.DORA
-    per_reg_so: SO-DORA-001
+    hso_sub_so: SG-D-01.1.DORA
+    per_reg_so: SG-DORA-001
     source_sr: SR-DORA-001
     hso_file: ../../HierarchicalSecurityObjectives/D-01_Data-Protection/D-01.1.md
     objective_ref_section: "### D-01.1.4"

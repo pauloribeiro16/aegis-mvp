@@ -157,10 +157,10 @@ This file is part of the CRDA-deep pilot chain:
 #### Participants (from CRDA-deep §D-06.4)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-023 | Non-EU controllers/processors falling under Art. 3(2) designate a representative in writing in the Union, subject to narrow occasional/low-risk/public-authority exceptions | Legal-address anchor for non-EU personal-data actors; DPA/data-subject-facing representative |
-| NIS2 | SO-NIS2-012; SO-NIS2-014 (partial); SO-NIS2-016 (partial) | Cross-MS notification routing through CSIRTs/competent authorities/SPOCs/ENISA; direct-supplier scope-limiter and EU-level supply-chain-risk propagation provide entity-boundary hooks | Entity-level boundary and cross-border information flow; Member-State-transposition-sensitive |
-| CRA | SO-CRA-041; SO-CRA-042; SO-CRA-043; SO-CRA-044 | Non-EU manufacturer authorised representative; importer/distributor manufacturer-equivalent trigger; third-party substantial-modification trigger; economic-operator identification and 10-year retention | Product-compliance boundary; MSA-facing authorised representative and supply-chain traceability |
-| DORA | SO-DORA-012 (partial) | Financial entities and competent authorities have unrestricted access, inspection, and audit rights over critical ICT third-party providers, with narrowly bounded alternative assurance where other clients' rights are affected | Financial-entity audit-rights boundary over CIF-supporting ICT providers |
+| GDPR | SG-GDPR-023 | Non-EU controllers/processors falling under Art. 3(2) designate a representative in writing in the Union, subject to narrow occasional/low-risk/public-authority exceptions | Legal-address anchor for non-EU personal-data actors; DPA/data-subject-facing representative |
+| NIS2 | SG-NIS2-012; SG-NIS2-014 (partial); SG-NIS2-016 (partial) | Cross-MS notification routing through CSIRTs/competent authorities/SPOCs/ENISA; direct-supplier scope-limiter and EU-level supply-chain-risk propagation provide entity-boundary hooks | Entity-level boundary and cross-border information flow; Member-State-transposition-sensitive |
+| CRA | SG-CRA-041; SG-CRA-042; SG-CRA-043; SG-CRA-044 | Non-EU manufacturer authorised representative; importer/distributor manufacturer-equivalent trigger; third-party substantial-modification trigger; economic-operator identification and 10-year retention | Product-compliance boundary; MSA-facing authorised representative and supply-chain traceability |
+| DORA | SG-DORA-012 (partial) | Financial entities and competent authorities have unrestricted access, inspection, and audit rights over critical ICT third-party providers, with narrowly bounded alternative assurance where other clients' rights are affected | Financial-entity audit-rights boundary over CIF-supporting ICT providers |
 
 ## Validated relationships (from CRDA-deep §D-06.4)
 
@@ -216,7 +216,7 @@ Legend: **Y** = scope overlap on a single event at a single party. **Conditional
 ## Scope-overlap principle (operational)
 
 #### Scope-overlap principle (operational)
-The high-level SO (`SO-D-06.4.HL`) engages when ≥2 participating regulations apply to the same boundary scenario. The clearest dual-representative scenario is a non-EU manufacturer of a CRA-classified product that also controls or processes personal data of EU data subjects: GDPR Art. 27 and CRA Art. 18 both apply, but the mandates differ and must not be merged. The clearest audit-boundary scenario is a financial entity that is also a NIS 2 entity and depends on a critical ICT third-party provider: NIS 2 defines the direct-supplier boundary and DORA adds unrestricted audit/access rights over the CIF provider. CRA joins where a product is supplied through an economic-operator chain or substantially modified by a third party.
+The high-level SO (`SG-D-06.4.HL`) engages when ≥2 participating regulations apply to the same boundary scenario. The clearest dual-representative scenario is a non-EU manufacturer of a CRA-classified product that also controls or processes personal data of EU data subjects: GDPR Art. 27 and CRA Art. 18 both apply, but the mandates differ and must not be merged. The clearest audit-boundary scenario is a financial entity that is also a NIS 2 entity and depends on a critical ICT third-party provider: NIS 2 defines the direct-supplier boundary and DORA adds unrestricted audit/access rights over the CIF provider. CRA joins where a product is supplied through an economic-operator chain or substantially modified by a third party.
 
 ## Aggregation logic (from CRDA-deep verified classifications)
 
@@ -262,7 +262,7 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs — AI Act out-of-scope per AEGIS taxonomy �
   volere_subtype: audit
   title: "Third-party boundary responsibilities are explicitly allocated across EU Union representatives, NIS 2 cross-MS routing + direct-supplier scope, CRA authorised representative + manufacturer-equivalent + substantial-modification + 10-year economic-operator records, and DORA CIF audit/access rights — role-and-recipient matrix without collapsing mechanisms"
   derives_from:
-    hso_sub_so: SO-D-06.4.HL
+    hso_sub_so: SG-D-06.4.HL
     hso_file: ../../HierarchicalSecurityObjectives/D-06_Supply-Chain/D-06.4.md
     objective_ref_section: "### D-06.4.0"
   description: |
@@ -319,10 +319,10 @@ status: DRAFT
 ##### Participants
 | Regulation | SO ID | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-023 | Non-EU controllers/processors designate an EU representative in writing (Art. 27(1)/(2)) | Non-EU controller/processor; representative designation |
-| NIS2 | SO-NIS2-014 (partial) + SO-NIS2-018 | Direct supplier scope-limiter (Art. 21(2)(d)) + cross-MS notification routing (Art. 23(6)) | Entity-level boundary; direct supplier + cross-MS information flow |
-| CRA | SO-CRA-041, SO-CRA-042, SO-CRA-043, SO-CRA-044 | Authorised representative appointment + manufacturer-equivalent status on own-name placement + third-party substantial-modification triggers + economic-operator identification + 10-year retention (Art. 18 + Art. 21 + Art. 22 + Art. 23) | Non-EU manufacturer → EU AR; substantial-modification triggers; identification + 10y retention |
-| DORA | SO-DORA-012 (partial) | Unrestricted audit rights over critical ICT third-party providers (Art. 30(3)(e)) | Financial-entity audit-rights architecture over critical providers |
+| GDPR | SG-GDPR-023 | Non-EU controllers/processors designate an EU representative in writing (Art. 27(1)/(2)) | Non-EU controller/processor; representative designation |
+| NIS2 | SG-NIS2-014 (partial) + SG-NIS2-018 | Direct supplier scope-limiter (Art. 21(2)(d)) + cross-MS notification routing (Art. 23(6)) | Entity-level boundary; direct supplier + cross-MS information flow |
+| CRA | SG-CRA-041, SG-CRA-042, SG-CRA-043, SG-CRA-044 | Authorised representative appointment + manufacturer-equivalent status on own-name placement + third-party substantial-modification triggers + economic-operator identification + 10-year retention (Art. 18 + Art. 21 + Art. 22 + Art. 23) | Non-EU manufacturer → EU AR; substantial-modification triggers; identification + 10y retention |
+| DORA | SG-DORA-012 (partial) | Unrestricted audit rights over critical ICT third-party providers (Art. 30(3)(e)) | Financial-entity audit-rights architecture over critical providers |
 | AI_Act | — | Out-of-scope (sole authorities: DORA/NIS2) | n/a |
 **Sole-authority note:** AI Act is out-of-scope for D-06.4 per AEGIS taxonomy §4.1. DORA and NIS2 are sole authorities for third-party-boundary architecture.
 ##### Pairwise matrix

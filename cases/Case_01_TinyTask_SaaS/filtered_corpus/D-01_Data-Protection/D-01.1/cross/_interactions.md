@@ -31,10 +31,10 @@
 #### Participants (from CRDA-deep §D-01.1)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-001 | CIA + resilience for personal data processing | Controller/processor; Art. 5(1)(f) + Art. 32(1)(a)/(b); personal-data scope; risk-anchored `appropriate` |
-| NIS 2 | SO-NIS2-001 | Cryptography policies and procedures covering CIA of stored, transmitted, processed data | Essential/important entity; Art. 21(2)(h); NIS scope (broader than personal data); `where appropriate` hedge |
-| CRA | SO-CRA-001 / SO-CRA-002 | State-of-the-art encryption of stored data (personal or other) | Manufacturer; Annex I Part I (1) + (2)(e); product-level; state-of-the-art baseline + harmonised-standards floor |
-| DORA | SO-DORA-001 | CIA+A maintained across data states (at-rest, in-use, in-transit) | Financial entity; Art. 9(2); ICT-system-level; `high standards` anchor |
+| GDPR | SG-GDPR-001 | CIA + resilience for personal data processing | Controller/processor; Art. 5(1)(f) + Art. 32(1)(a)/(b); personal-data scope; risk-anchored `appropriate` |
+| NIS 2 | SG-NIS2-001 | Cryptography policies and procedures covering CIA of stored, transmitted, processed data | Essential/important entity; Art. 21(2)(h); NIS scope (broader than personal data); `where appropriate` hedge |
+| CRA | SG-CRA-001 / SG-CRA-002 | State-of-the-art encryption of stored data (personal or other) | Manufacturer; Annex I Part I (1) + (2)(e); product-level; state-of-the-art baseline + harmonised-standards floor |
+| DORA | SG-DORA-001 | CIA+A maintained across data states (at-rest, in-use, in-transit) | Financial entity; Art. 9(2); ICT-system-level; `high standards` anchor |
 
 ## Validated relationships (from CRDA-deep §D-01.1)
 
@@ -118,7 +118,7 @@ the data falls into.
 ## Scope-overlap principle (operational). The high-level SO
 
 #### Scope-overlap principle (operational). The high-level SO
-(`SO-D-01.1.HL`) engages on a given datastore **if and only if ≥2
+(`SG-D-01.1.HL`) engages on a given datastore **if and only if ≥2
 applicable regulations' scopes overlap on the same storage object**
 (e.g. personal data on a CRA-regulated product deployed by a NIS 2
 essential entity that is also a DORA financial entity — a
@@ -194,7 +194,7 @@ dimension for that product — the convergence is not just nominal.
 A company with ≥2 applicable regulations in scope of D-01.1 — with
 overlapping scopes on the same datastore — operates a **single at-rest
 encryption control + a joint risk-assessment artefact** that discharges
-all obligations. The high-level SO (`SO-D-01.1.HL`) describes the
+all obligations. The high-level SO (`SG-D-01.1.HL`) describes the
 common obligation; the per-reg perspective is preserved in the sub-SOs
 (threshold anchor, scope qualifier, recipient for compliance
 demonstration). **No conflict-resolution is required on D-01.1 because
@@ -229,7 +229,7 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs; AI Act is out-of-scope per AEGIS taxonomy �
   volere_subtype: integrity
   title: "Data at rest is protected by appropriate technical measures (multi-reg aggregation)"
   derives_from:
-    hso_sub_so: SO-D-01.1.HL
+    hso_sub_so: SG-D-01.1.HL
     hso_file: ../../HierarchicalSecurityObjectives/D-01_Data-Protection/D-01.1.md
     objective_ref_section: "### D-01.1.0"
   description: |
@@ -297,10 +297,10 @@ status: DRAFT
 ##### Participants
 | Regulation | SO ID | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-001 / SO-GDPR-002 | Personal data confidentiality at rest, with pseudonymisation/encryption rendering breached data unintelligible | Controller/processor; Art. 5(1)(f) + Art. 32(1)(a); risk-anchored, scope = personal data |
-| NIS2 | SO-NIS2-001 | Cryptography policies and procedures covering confidentiality, integrity, authenticity of stored, transmitted, and processed data | Essential/important entity; Art. 21(2)(h); "where appropriate" hedge, scope = network and information systems |
-| CRA | SO-CRA-001 / SO-CRA-002 | Confidentiality of stored data (personal or other) protected by state-of-the-art encryption or other technical means | Manufacturer; Annex I Part I (1)+(2)(e); product-level, scope = data stored by product with digital elements |
-| DORA | SO-DORA-001 | CIA + Authenticity maintained at high standards across at rest, in use, in transit (4×3 matrix) | Financial entity; Art. 9(2); ICT-system-level, scope = ICT-supported data |
+| GDPR | SG-GDPR-001 / SG-GDPR-002 | Personal data confidentiality at rest, with pseudonymisation/encryption rendering breached data unintelligible | Controller/processor; Art. 5(1)(f) + Art. 32(1)(a); risk-anchored, scope = personal data |
+| NIS2 | SG-NIS2-001 | Cryptography policies and procedures covering confidentiality, integrity, authenticity of stored, transmitted, and processed data | Essential/important entity; Art. 21(2)(h); "where appropriate" hedge, scope = network and information systems |
+| CRA | SG-CRA-001 / SG-CRA-002 | Confidentiality of stored data (personal or other) protected by state-of-the-art encryption or other technical means | Manufacturer; Annex I Part I (1)+(2)(e); product-level, scope = data stored by product with digital elements |
+| DORA | SG-DORA-001 | CIA + Authenticity maintained at high standards across at rest, in use, in transit (4×3 matrix) | Financial entity; Art. 9(2); ICT-system-level, scope = ICT-supported data |
 | AI_Act | — | Out-of-scope (AI Act does not impose a data-at-rest mandate; CRA Annex I §2(c) is sole authority per taxonomy §4) | n/a |
 ##### Pairwise matrix
 

@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-006 (cross-ref) / SO-GDPR-005 (cross-ref) | No explicit MFA mandate; staff-side via instructions + confidentiality (Art. 28(3)(b) + Art. 29); data-subject-side via Art. 12(6) verification | Controller/processor; no explicit MFA; PR.AA-05 + PR.AA-06 + PR.AT-02 |
+| GDPR | SG-GDPR-006 (cross-ref) / SG-GDPR-005 (cross-ref) | No explicit MFA mandate; staff-side via instructions + confidentiality (Art. 28(3)(b) + Art. 29); data-subject-side via Art. 12(6) verification | Controller/processor; no explicit MFA; PR.AA-05 + PR.AA-06 + PR.AT-02 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-03.2.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-03.2.GDPR
+id: SG-D-03.2.GDPR
 subdomain: D-03.2
 applies_to: [GDPR]
-inherits_from: SO-GDPR-006 (cross-ref), SO-GDPR-005 (cross-ref)
+inherits_from: SG-GDPR-006 (cross-ref), SG-GDPR-005 (cross-ref)
 source_SR: SR-GDPR-011, SR-GDPR-012
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N
@@ -61,8 +61,8 @@ PR.AC-P1, PR.AC-P2, CT.PO-P1, GV.AT-P2.
   title: "Authentication governed by instructions + confidentiality + minimisation (no OJ authentication-strength threshold)"
 
   derives_from:
-    hso_sub_so: SO-D-03.2.GDPR
-    per_reg_so: SO-GDPR-006 (cross-ref), SO-GDPR-005 (cross-ref)
+    hso_sub_so: SG-D-03.2.GDPR
+    per_reg_so: SG-GDPR-006 (cross-ref), SG-GDPR-005 (cross-ref)
     source_sr: SR-GDPR-011, SR-GDPR-012
     hso_file: ../../HierarchicalSecurityObjectives/D-03_Access-Control/D-03.2.md
     objective_ref_section: "### D-03.2.1"

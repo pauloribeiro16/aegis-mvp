@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| AI_Act | SO-AIACT-008 + SO-AIACT-011 | Built-in human-oversight capability (Art. 14) + deployer assignment of competent human overseers (Art. 26(2)). | AI-system-specific competence: human overseers must have competence, training, authority. |
+| AI_Act | SG-AIACT-008 + SG-AIACT-011 | Built-in human-oversight capability (Art. 14) + deployer assignment of competent human overseers (Art. 26(2)). | AI-system-specific competence: human overseers must have competence, training, authority. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-08.2.5 — Sub-SO for AI Act
 
 ```yaml
-id: SO-D-08.2.AIACT
+id: SG-D-08.2.AIACT
 subdomain: D-08.2
 applies_to: [AI_Act]
-inherits_from: SO-AIACT-008 + SO-AIACT-011
+inherits_from: SG-AIACT-008 + SG-AIACT-011
 source_SR: SR-AIACT-013 + SR-AIACT-020
 activation: if AI_Act in applicable_regs
 phase_1A_role: 1_of_N
@@ -59,7 +59,7 @@ MAP-3.5, GOVERN-2.1, GOVERN-2.2, GOVERN-3.1.
 
   derives_from:
     hso_sub_so: SO-8.2.AIACT
-    per_reg_so: SO-AIACT-008 + SO-AIACT-011
+    per_reg_so: SG-AIACT-008 + SG-AIACT-011
     source_sr: SR-AIACT-013 + SR-AIACT-020
     hso_file: ../../HierarchicalSecurityObjectives/D-08_Human-Factors/8.2.md
     objective_ref_section: "### 8.2.5"

@@ -7,7 +7,7 @@
 
 #### D-01.4.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-01.4.HL
+id: SG-D-01.4.HL
 subdomain: D-01.4
 applies_to: auto  # activates when ≥2 applicable regs overlap on same data asset
 status: static

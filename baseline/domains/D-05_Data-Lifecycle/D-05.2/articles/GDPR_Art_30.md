@@ -30,18 +30,18 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-017 | Personal data are kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed; longer retention is permitted only where lawful and subject to the appropriate Art. 89(1) safeguards. | `GDPR-CL05` (Art. 5(1)(e)); `GDPR-CP12` (Art. 30(1)(f)) | D-05.2 |
-| SO-GDPR-017 | D-05.2 | Art. 5(1)(e), Art. 30(1)(f) | Storage limitation — no longer than necessary |
-| SO-GDPR-025 | Personnel authorised to process personal data are informed and trained on GDPR obligations and on the controller's or processor's data-protection policies applicable to their role. | `GDPR-CP28` (Art. 39(1)(b) — DPO tasks on awareness/training); `GDPR-CP28` (Art. 39(1)(a)); `GDPR-CP12` (Art. 30 — awareness of staff); `GDPR-TR06` (Art. 47(2)(n) — BCR training) | D-08.1, D-08.2 |
-| SO-GDPR-025 | D-08.1, D-08.2 | Art. 39(1)(a)/(b), Art. 30(4), Art. 47(2)(n) | Staff informed and trained on data-protection obligations |
-| SO-GDPR-029 | Each controller and processor maintains records of processing activities, in writing or electronic form, containing the Art. 30(1)/(2) content items, made available to the supervisory authority on request. | `GDPR-CP12` (Art. 30(1)/(2)/(3)/(4)); `GDPR-CP13` (Art. 30(5) — 250-employee exception) | D-09.4, D-10.2 |
-| SO-GDPR-029 | D-09.4, D-10.2 | Art. 30(1)–(5) | Records of processing activities (RoPA) |
-| SO-GDPR-031 | Compliance records (records of processing, consent records, processor contract records, breach notification records, DPIA records) are maintained in writing or in electronic form with integrity and traceability sufficient to demonstrate compliance and to support supervisory-authority inspections. | `GDPR-CP12` (Art. 30(3)); `GDPR-CL07` (Art. 5(2) — accountability / demonstrability); `GDPR-CP14` (Art. 31 — SA cooperation) | D-10.2, D-09.4 |
-| SO-GDPR-031 | D-10.2, D-09.4 | Art. 30(3), Art. 5(2), Art. 31 | Audit-grade records integrity and traceability |
+| SG-GDPR-017 | Personal data are kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed; longer retention is permitted only where lawful and subject to the appropriate Art. 89(1) safeguards. | `GDPR-CL05` (Art. 5(1)(e)); `GDPR-CP12` (Art. 30(1)(f)) | D-05.2 |
+| SG-GDPR-017 | D-05.2 | Art. 5(1)(e), Art. 30(1)(f) | Storage limitation — no longer than necessary |
+| SG-GDPR-025 | Personnel authorised to process personal data are informed and trained on GDPR obligations and on the controller's or processor's data-protection policies applicable to their role. | `GDPR-CP28` (Art. 39(1)(b) — DPO tasks on awareness/training); `GDPR-CP28` (Art. 39(1)(a)); `GDPR-CP12` (Art. 30 — awareness of staff); `GDPR-TR06` (Art. 47(2)(n) — BCR training) | D-08.1, D-08.2 |
+| SG-GDPR-025 | D-08.1, D-08.2 | Art. 39(1)(a)/(b), Art. 30(4), Art. 47(2)(n) | Staff informed and trained on data-protection obligations |
+| SG-GDPR-029 | Each controller and processor maintains records of processing activities, in writing or electronic form, containing the Art. 30(1)/(2) content items, made available to the supervisory authority on request. | `GDPR-CP12` (Art. 30(1)/(2)/(3)/(4)); `GDPR-CP13` (Art. 30(5) — 250-employee exception) | D-09.4, D-10.2 |
+| SG-GDPR-029 | D-09.4, D-10.2 | Art. 30(1)–(5) | Records of processing activities (RoPA) |
+| SG-GDPR-031 | Compliance records (records of processing, consent records, processor contract records, breach notification records, DPIA records) are maintained in writing or in electronic form with integrity and traceability sufficient to demonstrate compliance and to support supervisory-authority inspections. | `GDPR-CP12` (Art. 30(3)); `GDPR-CL07` (Art. 5(2) — accountability / demonstrability); `GDPR-CP14` (Art. 31 — SA cooperation) | D-10.2, D-09.4 |
+| SG-GDPR-031 | D-10.2, D-09.4 | Art. 30(3), Art. 5(2), Art. 31 | Audit-grade records integrity and traceability |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-029
@@ -50,7 +50,7 @@ status: DRAFT
     - { clause_id: GDPR-CL05, article_ref: "Art. 5(1)(e) — storage limitation" }
     - { clause_id: GDPR-CP12, article_ref: "Art. 30(1)(f) — retention time limits" }
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation (cross)" }
-  linked_objectives: [SO-GDPR-017]
+  linked_objectives: [SG-GDPR-017]
   sub_domain: [D-05.2, D-10.2]
   nist_csf_mapping:
     - { id: PR.DS-12, title: "Data managed consistent with risk strategy" }
@@ -99,7 +99,7 @@ status: DRAFT
     resetting the clock versus the original clock being preserved.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-044
@@ -108,7 +108,7 @@ status: DRAFT
     - { clause_id: GDPR-CL07, article_ref: "Art. 5(2) — accountability" }
     - { clause_id: GDPR-CP01, article_ref: "Art. 24(1) — demonstrate compliance (cross)" }
     - { clause_id: GDPR-CP12, article_ref: "Art. 30(1) — records of processing (cross)" }
-  linked_objectives: [SO-GDPR-027]
+  linked_objectives: [SG-GDPR-027]
   sub_domain: [D-09.1, D-10.2]
   nist_csf_mapping:
     - { id: GV.PO-02, title: "Cybersecurity processes and procedures for implementing the cybersecurity policy are established, communicated, and enforced" }
@@ -153,7 +153,7 @@ status: DRAFT
     (full GDPR compliance).
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-048
@@ -162,7 +162,7 @@ status: DRAFT
     - { clause_id: GDPR-CP12, article_ref: "Art. 30(1) — RoPA content" }
     - { clause_id: GDPR-CP12, article_ref: "Art. 30(4) — supervisory authority access" }
     - { clause_id: GDPR-CP13, article_ref: "Art. 30(5) — 250-employee exception" }
-  linked_objectives: [SO-GDPR-029]
+  linked_objectives: [SG-GDPR-029]
   sub_domain: [D-09.4, D-10.2]
   nist_csf_mapping:
     - { id: ID.AM-03, title: "Inventories of data and corresponding metadata for designated data types are maintained" }
@@ -214,7 +214,7 @@ status: DRAFT
     document or accepts a federated set of records.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-050
@@ -223,7 +223,7 @@ status: DRAFT
     - { clause_id: GDPR-CP12, article_ref: "Art. 30(3) — in writing/electronic form" }
     - { clause_id: GDPR-CL07, article_ref: "Art. 5(2) — accountability (cross)" }
     - { clause_id: GDPR-CP14, article_ref: "Art. 31 — supervisory authority cooperation" }
-  linked_objectives: [SO-GDPR-031]
+  linked_objectives: [SG-GDPR-031]
   sub_domain: [D-10.2, D-09.4]
   nist_csf_mapping:
     - { id: PR.PS-04, title: "Log records are generated and made available for continuous monitoring and analysis" }
@@ -250,7 +250,7 @@ status: DRAFT
     ambiguity registered.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-068
@@ -258,7 +258,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-RT05, article_ref: "Art. 13(1) — collection-time information" }
     - { clause_id: GDPR-RT07, article_ref: "Art. 14(1)/(2) — third-party-source information" }
-  linked_objectives: [SO-GDPR-038]
+  linked_objectives: [SG-GDPR-038]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: ID.AM-03, title: "Inventories of data and metadata for designated data types" }

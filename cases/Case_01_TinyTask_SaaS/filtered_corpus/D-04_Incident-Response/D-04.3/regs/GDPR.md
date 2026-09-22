@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-010 | 72h SA notification | Personal-data breach; controller → DPA |
+| GDPR | SG-GDPR-010 | 72h SA notification | Personal-data breach; controller → DPA |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-04.3.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-04.3.GDPR
+id: SG-D-04.3.GDPR
 subdomain: D-04.3
 applies_to: [GDPR]
-inherits_from: SO-GDPR-010
+inherits_from: SG-GDPR-010
 source_SR: SR-GDPR-016
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N  # if GDPR-only, high-level SO is redundant; sub-SO used directly
@@ -50,7 +50,7 @@ CM.AW-P7, CM.PO-P2.
 
   derives_from:
     hso_sub_so: SO-4.3.GDPR
-    per_reg_so: SO-GDPR-010
+    per_reg_so: SG-GDPR-010
     source_sr: SR-GDPR-016
     hso_file: ../../HierarchicalSecurityObjectives/D-04_Incident-Response/4.3.md
     objective_ref_section: "### 4.3.1"

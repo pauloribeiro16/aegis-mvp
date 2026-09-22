@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-021 (cross-ref) | Preservation of availability of essential and basic functions of a product with digital elements *also after an incident*, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks, and reduced incident impact via exploitation-mitigation mechanisms | Product with digital elements; manufacturer perspective; Annex I Part I (2)(h) + (2)(k) + (2)(i) + Art. 13(21); PR.IR-03 + ID.AM-08 |
+| CRA | SG-CRA-021 (cross-ref) | Preservation of availability of essential and basic functions of a product with digital elements *also after an incident*, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks, and reduced incident impact via exploitation-mitigation mechanisms | Product with digital elements; manufacturer perspective; Annex I Part I (2)(h) + (2)(k) + (2)(i) + Art. 13(21); PR.IR-03 + ID.AM-08 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-04.4.3 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-04.4.CRA
+id: SG-D-04.4.CRA
 subdomain: D-04.4
 applies_to: [CRA]
-inherits_from: SO-CRA-021
+inherits_from: SG-CRA-021
 source_SR: SR-CRA-043
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -70,7 +70,7 @@ availability + exploitation-mitigation recovery-architecture aspect.)*
 
   derives_from:
     hso_sub_so: SO-4.4.CRA
-    per_reg_so: SO-CRA-021
+    per_reg_so: SG-CRA-021
     source_sr: SR-CRA-043
     hso_file: ../../HierarchicalSecurityObjectives/D-04_Incident-Response/4.4.md
     objective_ref_section: "### 4.4.3"

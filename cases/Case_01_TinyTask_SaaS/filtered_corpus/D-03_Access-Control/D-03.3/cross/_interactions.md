@@ -36,10 +36,10 @@
 #### Participants (from CRDA-deep §D-03.3)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-006 | Persons authorised to process personal data act only on documented instructions from the controller (or processor) and are bound by confidentiality | Controller/processor; Art. 29 + Art. 32(4) + Art. 28(3)(a)/(b); personal-data-scope chain of authority controller → processor → authorised persons; PR.AA-05 + PR.AA-06 + PR.AT-02 |
-| NIS 2 | SO-NIS2-003 (partial) | Access control policies + HR security + asset management (3 coordinated sub-domains) | Essential/important entity; Art. 21(2)(i) literal AND; entity-side model-agnostic access-control policy; PR.AA-01 + PR.AA-05 |
-| CRA | SO-CRA-017 + SO-CRA-024 | Access to product with digital elements limited to authenticated and authorised users, services, hardware; possible unauthorised access reported; attack-surface limitation | Manufacturer; Annex I Part I (2)(d) + (2)(j); product-side access boundary + reporting + attack-surface-reduction; PR.AA-05 + PR.AA-06 + DE.CM-09 |
-| DORA | SO-DORA-006 | ICT security policies limit physical or logical access to information assets and ICT assets to what is required for legitimate and approved functions and activities only | Financial entity; Art. 9(4)(c) `legitimate and approved` AND + `only` qualifier (T4-vs-text gap: T4 reads RBAC + need-to-know + least privilege; OJ literal preserves "legitimate and approved functions and activities only"); PR.AA-05 + PR.AA-06 |
+| GDPR | SG-GDPR-006 | Persons authorised to process personal data act only on documented instructions from the controller (or processor) and are bound by confidentiality | Controller/processor; Art. 29 + Art. 32(4) + Art. 28(3)(a)/(b); personal-data-scope chain of authority controller → processor → authorised persons; PR.AA-05 + PR.AA-06 + PR.AT-02 |
+| NIS 2 | SG-NIS2-003 (partial) | Access control policies + HR security + asset management (3 coordinated sub-domains) | Essential/important entity; Art. 21(2)(i) literal AND; entity-side model-agnostic access-control policy; PR.AA-01 + PR.AA-05 |
+| CRA | SG-CRA-017 + SG-CRA-024 | Access to product with digital elements limited to authenticated and authorised users, services, hardware; possible unauthorised access reported; attack-surface limitation | Manufacturer; Annex I Part I (2)(d) + (2)(j); product-side access boundary + reporting + attack-surface-reduction; PR.AA-05 + PR.AA-06 + DE.CM-09 |
+| DORA | SG-DORA-006 | ICT security policies limit physical or logical access to information assets and ICT assets to what is required for legitimate and approved functions and activities only | Financial entity; Art. 9(4)(c) `legitimate and approved` AND + `only` qualifier (T4-vs-text gap: T4 reads RBAC + need-to-know + least privilege; OJ literal preserves "legitimate and approved functions and activities only"); PR.AA-05 + PR.AA-06 |
 
 ## Validated relationships (from CRDA-deep §D-03.3)
 
@@ -213,7 +213,7 @@ boundary hand-offs.)
 ## Scope-overlap principle (operational). The high-level SO
 
 #### Scope-overlap principle (operational). The high-level SO
-(`SO-D-03.3.HL`) engages on a given party **if and only if ≥2 applicable
+(`SG-D-03.3.HL`) engages on a given party **if and only if ≥2 applicable
 regulations' authorisation-surface scope-determiners overlap on the
 same party** (e.g. a controller that is also a NIS 2 essential entity
 operating CRA-regulated products and running a DORA-class financial
@@ -422,7 +422,7 @@ per-recipient evidence packs.
 A company with ≥2 applicable regulations in scope of D-03.3 — with
 overlapping authorisation-surface scope-determiners on the same party
 — operates a **multi-boundary authorisation architecture** with
-explicit boundary hand-offs. The high-level SO (`SO-D-03.3.HL`)
+explicit boundary hand-offs. The high-level SO (`SG-D-03.3.HL`)
 describes the common authorisation/least-privilege duty (PR.AA-05 +
 PR.AA-06 anchors; surface-segregated evidence); the per-reg
 perspective is preserved in the four sub-SOs (authorisation surface,
@@ -478,7 +478,7 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs — AI Act out-of-scope per AEGIS taxonomy �
   volere_subtype: access
   title: "Entitlements to act on the entity's systems, products, services, components and data managed per least privilege with explicit authorisation-model choice, documented entitlements, attack-surface-limitation evidence, and boundary hand-offs between authorisation surfaces (multi-boundary authorisation architecture)"
   derives_from:
-    hso_sub_so: SO-D-03.3.HL
+    hso_sub_so: SG-D-03.3.HL
     hso_file: ../../HierarchicalSecurityObjectives/D-03_Access-Control/D-03.3.md
     objective_ref_section: "### D-03.3.0"
   description: |
@@ -535,10 +535,10 @@ status: DRAFT
 ##### Participants
 | Regulation | SO ID | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-006 / SO-GDPR-011 | Persons authorised to process personal data act only on documented instructions + confidentiality | Controller/processor; Art. 28(3)(a)/(b) + Art. 29 + Art. 32(4); staff-side; PR.AA-05 + PR.AA-06 + PR.AT-02 |
-| NIS2 | SO-NIS2-003 (partial) | Access control policies + HR security + asset management (3 coordinated sub-domains) | Essential/important entity; Art. 21(2)(i); access-control + HR-security dimensions; PR.AA-01 + PR.AA-05 |
-| CRA | SO-CRA-017 / SO-CRA-024 | Access to product with digital elements limited to authenticated and authorised users, services, hardware; possible unauthorised access reported; attack-surface limitation | Manufacturer; Annex I Part I (2)(d) + (2)(j); product-level; PR.AA-05 + PR.AA-06 + DE.CM-09 |
-| DORA | SO-DORA-006 | Physical or logical access to information assets and ICT assets limited to what is required for legitimate and approved functions and activities only | Financial entity; Art. 9(4)(c); ICT-system scope; "legitimate and approved" AND + "only" qualifier (T4-vs-text gap — T4 reads RBAC + need-to-know + least privilege; OJ says only "legitimate and approved functions and activities only") |
+| GDPR | SG-GDPR-006 / SG-GDPR-011 | Persons authorised to process personal data act only on documented instructions + confidentiality | Controller/processor; Art. 28(3)(a)/(b) + Art. 29 + Art. 32(4); staff-side; PR.AA-05 + PR.AA-06 + PR.AT-02 |
+| NIS2 | SG-NIS2-003 (partial) | Access control policies + HR security + asset management (3 coordinated sub-domains) | Essential/important entity; Art. 21(2)(i); access-control + HR-security dimensions; PR.AA-01 + PR.AA-05 |
+| CRA | SG-CRA-017 / SG-CRA-024 | Access to product with digital elements limited to authenticated and authorised users, services, hardware; possible unauthorised access reported; attack-surface limitation | Manufacturer; Annex I Part I (2)(d) + (2)(j); product-level; PR.AA-05 + PR.AA-06 + DE.CM-09 |
+| DORA | SG-DORA-006 | Physical or logical access to information assets and ICT assets limited to what is required for legitimate and approved functions and activities only | Financial entity; Art. 9(4)(c); ICT-system scope; "legitimate and approved" AND + "only" qualifier (T4-vs-text gap — T4 reads RBAC + need-to-know + least privilege; OJ says only "legitimate and approved functions and activities only") |
 | AI_Act | — | Out-of-scope (no authorisation mandate; CRA / NIS 2 / DORA sole authorities) | n/a |
 ##### Pairwise matrix
 

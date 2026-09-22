@@ -28,19 +28,19 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-AIACT-007 | High-risk AI systems are designed and developed in such a way as to ensure that their operation is sufficiently transparent to enable deployers to interpret a system's output and use it appropriately, accompanied by concise, complete, correct and clear instructions for use that include relevant, accessible and comprehensible information about the characteristics, capabilities and limitations of performance. | `AIA-C12` (Art. 13(1) — `sufficiently transparent` + `appropriate type and degree of transparency` POLY triple); `AIA-C13` (Art. 13(3) — `concise, complete, correct and clear` 4-way AND + `relevant, accessible and comprehensible` 3-way AND + `characteristics, capabilities and limitations of performance` POLY triple) | D-09.1 |
-| SO-AIACT-007 | D-09.1 | Art. 13(1)+(3) | Transparency to deployers + instructions for use |
+| SG-AIACT-007 | High-risk AI systems are designed and developed in such a way as to ensure that their operation is sufficiently transparent to enable deployers to interpret a system's output and use it appropriately, accompanied by concise, complete, correct and clear instructions for use that include relevant, accessible and comprehensible information about the characteristics, capabilities and limitations of performance. | `AIA-C12` (Art. 13(1) — `sufficiently transparent` + `appropriate type and degree of transparency` POLY triple); `AIA-C13` (Art. 13(3) — `concise, complete, correct and clear` 4-way AND + `relevant, accessible and comprehensible` 3-way AND + `characteristics, capabilities and limitations of performance` POLY triple) | D-09.1 |
+| SG-AIACT-007 | D-09.1 | Art. 13(1)+(3) | Transparency to deployers + instructions for use |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-010
   title: "Deployer-interpretable transparency enabling appropriate system use"
   source_clauses:
     - { clause_id: AIA-C12, article_ref: "Art. 13(1) — `High-risk AI systems shall be designed and developed in such a way as to ensure that their operation is sufficiently transparent to enable deployers to interpret a system's output and use it appropriately. An appropriate type and degree of transparency shall be ensured`" }
-  linked_objectives: [SO-AIACT-007]
+  linked_objectives: [SG-AIACT-007]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -133,14 +133,14 @@ status: DRAFT
     in the form of model-card disclosure suffices.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-011
   title: "Concise complete and clear deployer instructions for use"
   source_clauses:
     - { clause_id: AIA-C13, article_ref: "Art. 13(3) — `instructions for use in an appropriate digital format or otherwise that include concise, complete, correct and clear information that is relevant, accessible and comprehensible to deployers`" }
-  linked_objectives: [SO-AIACT-007]
+  linked_objectives: [SG-AIACT-007]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -216,14 +216,14 @@ status: DRAFT
     21 conformity-assessment documentation expectations.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-012
   title: "Built-in effective human-oversight capability by design"
   source_clauses:
     - { clause_id: AIA-C14, article_ref: "Art. 14(1) — `High-risk AI systems shall be designed and developed in such a way, including with appropriate human-machine interface tools, that they can be effectively overseen by natural persons during the period in which they are in use`" }
-  linked_objectives: [SO-AIACT-008]
+  linked_objectives: [SG-AIACT-008]
   sub_domain: [D-08.2, D-07.1]
   nist_csf_mapping:
     - { id: PR.AT-02, title: "All members of the organization's workforce understand their roles and responsibilities in achieving the organization's cybersecurity objectives" }

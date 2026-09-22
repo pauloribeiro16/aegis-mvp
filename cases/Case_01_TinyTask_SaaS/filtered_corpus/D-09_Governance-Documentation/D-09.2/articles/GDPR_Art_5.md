@@ -78,29 +78,29 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-001 | Personal data remains confidential while at rest, in storage, and during processing, against unauthorised or unlawful processing. | `GDPR-CL06` (Art. 5(1)(f)); `GDPR-CP15` (Art. 32(1)(a)/(b)) | D-01.1 |
-| SO-GDPR-001 | D-01.1, D-01.4 | Art. 5(1)(f), Art. 32(1)(a)/(b) | Personal data confidentiality at rest and in processing |
-| SO-GDPR-003 | Personal data are accurate and, where necessary, kept up to date; every reasonable step is taken to erase or rectify inaccurate personal data without delay. | `GDPR-CL04` (Art. 5(1)(d)); `GDPR-RT12` (Art. 16) | D-01.4, D-04.4 |
-| SO-GDPR-003 | D-01.4, D-04.4 | Art. 5(1)(d), Art. 16 | Accurate personal data; inaccurate erased/rectified without delay |
-| SO-GDPR-015 | Personal data collected and processed are limited to what is adequate, relevant, and necessary in relation to the purposes for which they are processed; further processing is compatible with the original purposes per the Art. 6(4) compatibility test. | `GDPR-CL03` (Art. 5(1)(c)); `GDPR-CL14` (Art. 6(4)) | D-05.1 |
-| SO-GDPR-015 | D-05.1 | Art. 5(1)(c), Art. 6(4) | Data minimisation — adequate, relevant, necessary |
-| SO-GDPR-016 | Personal data are processed lawfully, fairly, and in a transparent manner, on the basis of one of the six Art. 6(1) lawfulness bases (or one of the Art. 9(2) bases for special categories). | `GDPR-CL01` (Art. 5(1)(a)/(b)); `GDPR-CL08–CL13` (Art. 6(1)(a)–(f)); `GDPR-CL21` (Art. 9(1) prohibition + exceptions) | D-05.1, D-09.1 |
-| SO-GDPR-016 (cross-ref) | Personal data are processed lawfully, fairly, and in a transparent manner — relates policy content to the Art. 5(1)(a) principle. | `GDPR-CL01` (Art. 5(1)(a)) | D-09.1, D-05.1 |
-| SO-GDPR-016 | D-05.1, D-09.1 | Art. 5(1)(a)/(b), Art. 6(1)(a)–(f), Art. 9(1) | Lawfulness, fairness, transparency; legal-basis selection |
-| SO-GDPR-017 | Personal data are kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed; longer retention is permitted only where lawful and subject to the appropriate Art. 89(1) safeguards. | `GDPR-CL05` (Art. 5(1)(e)); `GDPR-CP12` (Art. 30(1)(f)) | D-05.2 |
-| SO-GDPR-017 | D-05.2 | Art. 5(1)(e), Art. 30(1)(f) | Storage limitation — no longer than necessary |
-| SO-GDPR-018 | Personal data are erased without undue delay on the data subject's request where one of the six Art. 17(1) grounds applies; erasure is operationally defined as making the data inaccessible to the controller for normal processing paths. | `GDPR-C06` (Art. 4(12) breach-related — operational deletion overlap); `GDPR-CL03` (Art. 5(1)(c) — data-minimisation, downstream of erasure); `GDPR-CL05` (Art. 5(1)(e) — storage limitation), `GDPR-CP10` (Art. 28(3)(g) — deletion polysemy) | D-05.3 |
-| SO-GDPR-018 | D-05.3 | Art. 17, Art. 5(1)(c)/(e) | Erasure without undue delay on Art. 17(1) grounds |
-| SO-GDPR-024 | Personal-data processing implements data-protection principles (such as data minimisation) in an effective manner at the time of means-determination and at the time of processing itself, integrating necessary safeguards (including pseudonymisation, encryption, by-default limits) at state-of-the-art level. | `GDPR-CP02` (Art. 25(1)); `GDPR-CP03` (Art. 25(2)); `GDPR-CL06` (Art. 5(1)(f)) | D-07.1, D-05.1, D-01.1 |
-| SO-GDPR-024 | D-07.1, D-05.1, D-01.1 | Art. 25(1), Art. 25(2), Art. 5(1)(f) | Data protection by design and by default |
-| SO-GDPR-027 | The controller is responsible for, and is able to demonstrate, compliance with the Art. 5(1) personal-data processing principles. | `GDPR-CL07` (Art. 5(2)) | D-09.1 |
-| SO-GDPR-027 | D-09.1 | Art. 5(2) | Controller responsible for, and able to demonstrate, compliance |
-| SO-GDPR-031 | Compliance records (records of processing, consent records, processor contract records, breach notification records, DPIA records) are maintained in writing or in electronic form with integrity and traceability sufficient to demonstrate compliance and to support supervisory-authority inspections. | `GDPR-CP12` (Art. 30(3)); `GDPR-CL07` (Art. 5(2) — accountability / demonstrability); `GDPR-CP14` (Art. 31 — SA cooperation) | D-10.2, D-09.4 |
-| SO-GDPR-031 | D-10.2, D-09.4 | Art. 30(3), Art. 5(2), Art. 31 | Audit-grade records integrity and traceability |
+| SG-GDPR-001 | Personal data remains confidential while at rest, in storage, and during processing, against unauthorised or unlawful processing. | `GDPR-CL06` (Art. 5(1)(f)); `GDPR-CP15` (Art. 32(1)(a)/(b)) | D-01.1 |
+| SG-GDPR-001 | D-01.1, D-01.4 | Art. 5(1)(f), Art. 32(1)(a)/(b) | Personal data confidentiality at rest and in processing |
+| SG-GDPR-003 | Personal data are accurate and, where necessary, kept up to date; every reasonable step is taken to erase or rectify inaccurate personal data without delay. | `GDPR-CL04` (Art. 5(1)(d)); `GDPR-RT12` (Art. 16) | D-01.4, D-04.4 |
+| SG-GDPR-003 | D-01.4, D-04.4 | Art. 5(1)(d), Art. 16 | Accurate personal data; inaccurate erased/rectified without delay |
+| SG-GDPR-015 | Personal data collected and processed are limited to what is adequate, relevant, and necessary in relation to the purposes for which they are processed; further processing is compatible with the original purposes per the Art. 6(4) compatibility test. | `GDPR-CL03` (Art. 5(1)(c)); `GDPR-CL14` (Art. 6(4)) | D-05.1 |
+| SG-GDPR-015 | D-05.1 | Art. 5(1)(c), Art. 6(4) | Data minimisation — adequate, relevant, necessary |
+| SG-GDPR-016 | Personal data are processed lawfully, fairly, and in a transparent manner, on the basis of one of the six Art. 6(1) lawfulness bases (or one of the Art. 9(2) bases for special categories). | `GDPR-CL01` (Art. 5(1)(a)/(b)); `GDPR-CL08–CL13` (Art. 6(1)(a)–(f)); `GDPR-CL21` (Art. 9(1) prohibition + exceptions) | D-05.1, D-09.1 |
+| SG-GDPR-016 (cross-ref) | Personal data are processed lawfully, fairly, and in a transparent manner — relates policy content to the Art. 5(1)(a) principle. | `GDPR-CL01` (Art. 5(1)(a)) | D-09.1, D-05.1 |
+| SG-GDPR-016 | D-05.1, D-09.1 | Art. 5(1)(a)/(b), Art. 6(1)(a)–(f), Art. 9(1) | Lawfulness, fairness, transparency; legal-basis selection |
+| SG-GDPR-017 | Personal data are kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed; longer retention is permitted only where lawful and subject to the appropriate Art. 89(1) safeguards. | `GDPR-CL05` (Art. 5(1)(e)); `GDPR-CP12` (Art. 30(1)(f)) | D-05.2 |
+| SG-GDPR-017 | D-05.2 | Art. 5(1)(e), Art. 30(1)(f) | Storage limitation — no longer than necessary |
+| SG-GDPR-018 | Personal data are erased without undue delay on the data subject's request where one of the six Art. 17(1) grounds applies; erasure is operationally defined as making the data inaccessible to the controller for normal processing paths. | `GDPR-C06` (Art. 4(12) breach-related — operational deletion overlap); `GDPR-CL03` (Art. 5(1)(c) — data-minimisation, downstream of erasure); `GDPR-CL05` (Art. 5(1)(e) — storage limitation), `GDPR-CP10` (Art. 28(3)(g) — deletion polysemy) | D-05.3 |
+| SG-GDPR-018 | D-05.3 | Art. 17, Art. 5(1)(c)/(e) | Erasure without undue delay on Art. 17(1) grounds |
+| SG-GDPR-024 | Personal-data processing implements data-protection principles (such as data minimisation) in an effective manner at the time of means-determination and at the time of processing itself, integrating necessary safeguards (including pseudonymisation, encryption, by-default limits) at state-of-the-art level. | `GDPR-CP02` (Art. 25(1)); `GDPR-CP03` (Art. 25(2)); `GDPR-CL06` (Art. 5(1)(f)) | D-07.1, D-05.1, D-01.1 |
+| SG-GDPR-024 | D-07.1, D-05.1, D-01.1 | Art. 25(1), Art. 25(2), Art. 5(1)(f) | Data protection by design and by default |
+| SG-GDPR-027 | The controller is responsible for, and is able to demonstrate, compliance with the Art. 5(1) personal-data processing principles. | `GDPR-CL07` (Art. 5(2)) | D-09.1 |
+| SG-GDPR-027 | D-09.1 | Art. 5(2) | Controller responsible for, and able to demonstrate, compliance |
+| SG-GDPR-031 | Compliance records (records of processing, consent records, processor contract records, breach notification records, DPIA records) are maintained in writing or in electronic form with integrity and traceability sufficient to demonstrate compliance and to support supervisory-authority inspections. | `GDPR-CP12` (Art. 30(3)); `GDPR-CL07` (Art. 5(2) — accountability / demonstrability); `GDPR-CP14` (Art. 31 — SA cooperation) | D-10.2, D-09.4 |
+| SG-GDPR-031 | D-10.2, D-09.4 | Art. 30(3), Art. 5(2), Art. 31 | Audit-grade records integrity and traceability |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-001
@@ -109,7 +109,7 @@ status: DRAFT
     - { clause_id: GDPR-CL06, article_ref: "Art. 5(1)(f)" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(b)" }
     - { clause_id: GDPR-C01, article_ref: "Art. 4(1) — personal data definition" }
-  linked_objectives: [SO-GDPR-001]
+  linked_objectives: [SG-GDPR-001]
   sub_domain: [D-01.1, D-01.4]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }
@@ -127,7 +127,7 @@ status: DRAFT
     Art. 5(1)(f) and Art. 4(1) carry S3 ambiguity. On "appropriate" (VAG), the chosen reading anchors the term to the Art. 32(1) risk-based test: the controller documents the chosen security level against the five risk factors in the Art. 32(1) preamble and refreshes this assessment when material change occurs. An alternative reading, supported by industry practice under ISO 27001 and SOC 2 frameworks, treats "appropriate technical and organisational measures" as requiring both control families in parallel, regardless of risk; this is the more conservative reading and is the de facto baseline for any organisation holding formal certification. A third, looser reading treats "appropriate" as whatever the controller self-declares, which does not survive supervisory inspection but is sometimes observed in pre-DPO controllers. The chosen reading here is the inclusive risk-anchored reading, which is consistent with EDPB Guidelines on accountability 07/2019. On "personal data" (POLY/SCOPE-Q per Art. 4(1)), the scope of "identifiable" is read in line with CJEU Breyer C-582/14 §45, which adopts a "means likely reasonably to be used" test. This reading brings pseudonymous data into scope where re-identification is operationally feasible, but leaves genuinely anonymous data outside. EDPB Guidelines 05/2020 on consent §3.4 reinforce this position. A broader reading, extending to inferred and derived data subject to algorithmic singling-out, has been gaining traction post-IAB Europe C-604/22 but is not yet definitively settled. On the "technical or organisational" disjunction (COORD), the chosen reading treats the OR as inclusive, in line with the dominant grammatical reading and consistent with EDPB Guidelines on Art. 32; controllers following the strict reading are equally compliant. Remain open: (a) whether forward-looking cryptographic-agility (quantum-readiness) is required by "state of the art" under Art. 32(1), pending EDPB clarification and ENISA post-quantum guidance; and (b) how the resilience dimension of Art. 32(1)(b) interacts with separate BCDR obligations, pending cross-regulation alignment with DORA Art. 11–12 and NIS 2 Art. 21(2)(c).
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-002
@@ -136,7 +136,7 @@ status: DRAFT
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(b)" }
     - { clause_id: GDPR-CP16, article_ref: "Art. 32(2) — risk enumeration" }
     - { clause_id: GDPR-C01, article_ref: "Art. 4(1) — personal data" }
-  linked_objectives: [SO-GDPR-001, SO-GDPR-030]
+  linked_objectives: [SG-GDPR-001, SG-GDPR-030]
   sub_domain: [D-01.1, D-01.2, D-10.1]
   nist_csf_mapping:
     - { id: PR.DS-02, title: "Data-in-transit protected" }
@@ -154,7 +154,7 @@ status: DRAFT
     GDPR-CP16 (Art. 32(2)) carries S3 COORD ambiguity on the five-way OR of risk events. Reading chosen: any of the five events triggers the security assessment and the corresponding in-transit control. An alternative reading, treating the five events as illustrative and letting the controller judge which events trigger obligations, would not change the in-transit confidentiality requirement in practice but would weaken the threat-modelling discipline. The five events (destruction, loss, alteration, unauthorised disclosure, access) overlap with but are not identical to the Art. 4(12) personal-data-breach definition, which adds "disclosure of" as a stand-alone event; controllers should map both lists to ensure no event is dropped from the threat model. On the "as appropriate" hedge in Art. 32(1) ("including inter alia as appropriate"), the chosen reading treats the four sub-letters (a)–(d) as the floor of expected measures rather than a closed list, with controllers free to add further measures proportionate to risk. Remain open: (a) whether end-to-end encryption (originator-to-destination) is required for all intra-processor flows under Art. 32(1)(b) or only link-encryption (hop-by-hop), pending EDPB clarification; and (b) how the "transmitted" wording of Art. 32(2) applies to data-in-use during query execution across microservices, pending alignment with ISO 27018 and ENISA guidance on confidential computing.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-003
@@ -163,7 +163,7 @@ status: DRAFT
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(a)" }
     - { clause_id: GDPR-C02, article_ref: "Art. 4(5) — pseudonymisation definition" }
     - { clause_id: GDPR-C01, article_ref: "Art. 4(1) — personal data" }
-  linked_objectives: [SO-GDPR-002]
+  linked_objectives: [SG-GDPR-002]
   sub_domain: [D-01.1, D-01.3]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }
@@ -181,7 +181,7 @@ status: DRAFT
     Art. 4(5) defines pseudonymisation operationally but does not specify which technical mechanisms count. Reading chosen: any mechanism meeting the Art. 4(5) additional-information-kept-separately test qualifies, including tokenisation, deterministic hashing, format-preserving encryption, and key-segregated encryption where the additional-information-equivalent (the key or mapping table) is stored under separate technical and organisational control. The definition carries S2 POLY; both readings converge on the de-identification requirement. EDPB Guidelines 05/2020 on consent §3.4 treat pseudonymised data as still personal data within scope of GDPR, which the chosen reading incorporates: pseudonymisation is a security measure, not a scope-exclusion technique. Remain open: whether one-way hashing with no realistic pre-image recovery (i.e. effectively anonymous output) falls inside the Art. 4(5) definition or constitutes anonymisation outside GDPR, pending CJEU guidance on the Single-Sign-On cookie cases (IAB Europe C-604/22) and the Breyer line.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-004
@@ -189,7 +189,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP20, article_ref: "Art. 34(3)(a) — unintelligibility exception" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(a)" }
-  linked_objectives: [SO-GDPR-002]
+  linked_objectives: [SG-GDPR-002]
   sub_domain: [D-01.3, D-04.3]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }
@@ -208,7 +208,7 @@ status: DRAFT
     Source clause GDPR-CP20 (Art. 34(3)(a)) carries S3 VAG ambiguity on `unintelligible`. Reading chosen: unintelligibility is achieved when a competent cryptographic adversary without the relevant key cannot recover plaintext within operationally-relevant resources. This reading is anchored to Recital 49 (non-binding but directionally useful), to EDPB Guidelines 9/2022 §3.5, and to ISO 27001 A.10.1.2 key-management expectations. An alternative reading treats "unintelligible" as satisfied by any form of access control (including password-protected files), which is incompatible with the Art. 34(3)(a) "such as encryption" anchor and would not survive supervisory inspection. A third reading admits post-quantum-uncertain primitives, which is rejected: the operative standard is present-day cryptanalytic feasibility. Remain open: (a) whether controller-controlled HSMs with key-recovery held by a trustee satisfy the "not authorised to access" condition when the trustee is contractually bound to the controller, pending EDPB clarification; and (b) whether backup tapes encrypted under a long-term key that the controller retains indefinitely fall inside the carve-out or trigger notification under Art. 34(1).
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-005
@@ -217,7 +217,7 @@ status: DRAFT
     - { clause_id: GDPR-CL04, article_ref: "Art. 5(1)(d) — accuracy" }
     - { clause_id: GDPR-CL06, article_ref: "Art. 5(1)(f) — integrity (cross-reference)" }
     - { clause_id: GDPR-C01, article_ref: "Art. 4(1) — personal data" }
-  linked_objectives: [SO-GDPR-003]
+  linked_objectives: [SG-GDPR-003]
   sub_domain: [D-01.4]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }
@@ -236,7 +236,7 @@ status: DRAFT
     GDPR-CL04 (Art. 5(1)(d)) carries S3 VAG ambiguity on `accurate` and `reasonable step`. Reading chosen: output-accuracy, meaning accuracy measured against the data subject's current real-world state at time of processing, because it harmonises with Art. 16 right-to-rectification: if accuracy were only input-accuracy, the rectification right would be redundant. An alternative reading treats accuracy as input-accuracy only and is supported under narrower interpretations but yields weaker downstream data quality and is the position that supervisory authorities routinely penalise. A third reading distinguishes "factually inaccurate" from "comprehensively incomplete", treating the latter as outside the accuracy principle; this is rejected because Recital 39 (non-binding) treats both under the accuracy umbrella. On "reasonable step", the chosen reading operationalises the Art. 5(2) accountability burden: the controller documents the steps (data-quality monitoring, periodic refresh, complaint-driven review) and demonstrates they are proportionate to the harm of inaccuracy for the processing purpose. Remain open: (a) whether inferred data (algorithmic scoring outputs) is subject to the accuracy principle or treated as a derivative outside scope, pending EDPB guidance on AI Act interaction; and (b) whether the "reasonable step" extends to proactive discovery of inaccuracy or only to complaint-driven correction, pending CJEU clarification.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-006
@@ -246,7 +246,7 @@ status: DRAFT
     - { clause_id: GDPR-CL04, article_ref: "Art. 5(1)(d)" }
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation (cross)" }
     - { clause_id: GDPR-RT15, article_ref: "Art. 19 — cascade notification (cross)" }
-  linked_objectives: [SO-GDPR-003, SO-GDPR-012]
+  linked_objectives: [SG-GDPR-003, SG-GDPR-012]
   sub_domain: [D-01.4, D-04.3, D-05.1]
   nist_csf_mapping:
     - { id: PR.DS-10, title: "Data-in-use protected" }
@@ -265,7 +265,7 @@ status: DRAFT
     GDPR-RT12 (Art. 16) carries POLY-S3 ambiguity on `supplementary statement`. The rule covers both reading branches. Reading chosen: the controller either rectifies or attaches a supplementary statement, depending on whether the contested fact is verifiable as inaccurate, with the choice exercised under Art. 12(6) reasonable-doubts discipline. An alternative reading holds that the statement must be attached whenever the data subject requests it, even if the controller disputes accuracy; this is supported by some DPAs but creates record-bloat, and the chosen reading treats the statement as a fallback when verification is inconclusive. An alternative reading treats the statement as merely informational and waivable by the controller; this is rejected because it would make the right illusory. On Art. 19 cascade, the OR in the OJ text "impossible or involves disproportionate effort" is inclusive, so either escape clause suffices (see SR-GDPR-022). Remain open: (a) whether rectification applies to derived data (model weights trained on inaccurate inputs), pending EDPB AI Act interaction guidance; and (b) the operational definition of "without undue delay" for rectification (24 hours vs 7 days vs 30 days), pending EDPB Guidelines 5/2019 revision.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-007
@@ -273,7 +273,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(d)" }
     - { clause_id: GDPR-CL06, article_ref: "Art. 5(1)(f) — appropriate security" }
-  linked_objectives: [SO-GDPR-004]
+  linked_objectives: [SG-GDPR-004]
   sub_domain: [D-10.3, D-02.1]
   nist_csf_mapping:
     - { id: ID.RA-01, title: "Vulnerabilities identified, validated, recorded" }
@@ -292,7 +292,7 @@ status: DRAFT
     Source clause GDPR-CP15 (Art. 32(1)(d)) carries no S3 ambiguity on `regularly` in the operative sense. The rule anchors the operational meaning to period and versioning adequacy rather than to a hard numeric interval: a controller running monthly vulnerability scans and an annual third-party penetration test against critical systems satisfies the obligation, and so does a controller running continuous testing with weekly triage, provided the cadence is documented and proportionate. Both readings (more frequent vs less frequent) converge on the obligation to test periodically. The risk-based preamble handles under- or over-testing for the controller's specific context. EDPB Guidelines 7/2019 on certification provide a non-binding framework for cadence but do not bind the controller.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-008
@@ -300,7 +300,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP22, article_ref: "Art. 35(11) — DPIA review" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(d)" }
-  linked_objectives: [SO-GDPR-004, SO-GDPR-028]
+  linked_objectives: [SG-GDPR-004, SG-GDPR-028]
   sub_domain: [D-09.2, D-10.3, D-02.1]
   nist_csf_mapping:
     - { id: ID.RA-05, title: "Inherent risk understood via threats/vulnerabilities/likelihood/impact" }
@@ -319,7 +319,7 @@ status: DRAFT
     GDPR-CP22 (Art. 35(11)) carries no S3 ambiguity in the operative clause. `where necessary` and `change of the risk represented` are acknowledged Berry VAG; both readings converge on the obligation to reassess when the risk profile changes. The triggering "change" is documented in the controller's change-management policy and includes: change in processing purpose (Art. 6(4) compatibility), change in data categories (especially Art. 9 special categories), change in data-subject population (volume or vulnerability), change in technical context (new processor, new third country), and change in regulatory expectation (new EDPB guidance). EDPB Guidelines 4/2019 on DPIA provide non-binding factors for materiality but do not bind the controller.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-009
@@ -328,7 +328,7 @@ status: DRAFT
     - { clause_id: GDPR-RT04, article_ref: "Art. 12(6) — identity verification" }
     - { clause_id: GDPR-CL26, article_ref: "Art. 11(2) — identification exemption" }
     - { clause_id: GDPR-C01, article_ref: "Art. 4(1) — personal data (cross)" }
-  linked_objectives: [SO-GDPR-005]
+  linked_objectives: [SG-GDPR-005]
   sub_domain: [D-03.1]
   nist_csf_mapping:
     - { id: PR.AA-03, title: "Users, services, and hardware authenticated" }
@@ -347,7 +347,7 @@ status: DRAFT
     Source clause GDPR-RT04 (Art. 12(6)) carries S3 VAG on `reasonable doubts` and `additional information`. Reading chosen: the controller may request minimal identity verification proportionate to the risk of misidentification, not arbitrary additional documents. This reading is anchored to Art. 5(1)(c) data minimisation (no over-collection) and to EDPB Guidelines on Art. 12 transparency. An alternative reading requiring full ID-document collection on any doubt is rejected: it creates a new attack surface (the collected ID documents themselves) and is disproportionate under Art. 5(1)(c). A third reading that mandates accepting self-declaration on any doubt is also rejected: it exposes the data-subject rights endpoint to social-engineering attacks and breaches the controller's Art. 32(1)(b) confidentiality obligation. On Art. 11(2), the `additional information` polysemy (information the controller must NOT maintain vs information the data subject must supply) is resolved by treating the data-subject-supply sense as the operative one for rights-exercise workflows. Remain open: (a) whether knowledge-based authentication (KBA) questions over personal-data history are acceptable as `additional information`, pending EDPB guidance post-Schrems II; and (b) how the verification obligation scales with self-service authentication (e.g. OAuth from a verified identity provider), pending alignment with eIDAS 2.0.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-010
@@ -355,7 +355,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-RT04, article_ref: "Art. 12(6)" }
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation (cross)" }
-  linked_objectives: [SO-GDPR-005]
+  linked_objectives: [SG-GDPR-005]
   sub_domain: [D-03.1, D-05.1]
   nist_csf_mapping:
     - { id: PR.AA-02, title: "Identities proofed and bound to credentials" }
@@ -374,7 +374,7 @@ status: DRAFT
     `necessary` inherits VAG-S3 ambiguity from Art. 5(1)(c). Reading chosen: proportionate to purpose, demonstrable ex ante via Art. 5(2) accountability and Art. 35 DPIA necessity assessment. The rule preserves the proportionate-necessary interpretation. An alternative reading treats necessity as satisfied when serving the designed purpose, with necessity presumed by default; this is rejected because it inverts the accountability burden. A third reading requiring the least-intrusive among equivalent means under Charter Art. 52(1) is the most restrictive position and is the one adopted by some national DPAs (notably the CNIL) for sensitive-data contexts. The Art. 5(1)(c) necessary threshold varies with data sensitivity and breach impact; for Art. 9 special-category data, the controller may need stronger verification than for ordinary personal data. Remain open: whether automated identity-verification services (e.g. Jumio, Onfido) are themselves in scope as joint controllers under Art. 26, pending CJEU and EDPB guidance on AI-driven verification.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-011
@@ -384,7 +384,7 @@ status: DRAFT
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(4)" }
     - { clause_id: GDPR-CP09, article_ref: "Art. 28(3)(a)/(b)" }
     - { clause_id: GDPR-C03, article_ref: "Art. 4(7)/(8) — controller/processor definitions" }
-  linked_objectives: [SO-GDPR-006]
+  linked_objectives: [SG-GDPR-006]
   sub_domain: [D-03.3]
   nist_csf_mapping:
     - { id: PR.AA-05, title: "Access permissions managed per least privilege" }
@@ -403,7 +403,7 @@ status: DRAFT
     `instructions` is POLY-S2 (formal written vs verbal vs workflow-implied). Reading chosen: instructions must be documented in a form sufficient for audit and supervisory-authority inspection, at minimum the documented instruction in the Art. 28(3)(a) processor contract and any operational instructions issued under it. An alternative reading allowing verbal instructions (provided they are recorded contemporaneously) is acceptable but operationally weaker. A third reading permitting workflow-implied instructions (e.g. processing required by the controller's API) is rejected: workflows are evidence of processing but not a substitute for the documented instruction; controllers must translate workflow-level processing into documented instructions for Art. 28(3)(a) compliance. The Union or Member State law carve-out is narrow and typically arises in law-enforcement, tax, and social-security contexts.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-012
@@ -412,7 +412,7 @@ status: DRAFT
     - { clause_id: GDPR-CP09, article_ref: "Art. 28(3)(b) — confidentiality obligation" }
     - { clause_id: GDPR-CP11, article_ref: "Art. 29" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(4)" }
-  linked_objectives: [SO-GDPR-006]
+  linked_objectives: [SG-GDPR-006]
   sub_domain: [D-03.3, D-08.1]
   nist_csf_mapping:
     - { id: PR.AA-05, title: "Access permissions managed per least privilege" }
@@ -431,7 +431,7 @@ status: DRAFT
     `appropriate statutory obligation of confidentiality` is VAG-S2. Reading chosen: an obligation equivalent in scope to a contractual NDA covering the personal data scope. An alternative reading accepting any pre-existing statutory professional-secrecy obligation (e.g. medical or legal privilege) is acceptable where the person actually operates under such an obligation. A third reading that no obligation is required where the person is a public-sector employee with existing secrecy duties under Member State law is acceptable in narrow contexts. The "appropriate" qualifier is calibrated to the data sensitivity and the role's exposure.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-013
@@ -440,7 +440,7 @@ status: DRAFT
     - { clause_id: GDPR-CP03, article_ref: "Art. 25(2) — privacy by default" }
     - { clause_id: GDPR-CP02, article_ref: "Art. 25(1) — privacy by design (cross)" }
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation (cross)" }
-  linked_objectives: [SO-GDPR-007, SO-GDPR-024]
+  linked_objectives: [SG-GDPR-007, SG-GDPR-024]
   sub_domain: [D-03.4, D-05.1]
   nist_csf_mapping:
     - { id: PR.PS-01, title: "Configuration management practices established and applied" }
@@ -459,7 +459,7 @@ status: DRAFT
     GDPR-CP03 (Art. 25(2)) carries VAG+COORD-S3 on `necessary for each specific purpose` and the four-element AND. Reading chosen: all four dimensions must individually be minimised and AND-coordinated. An alternative reading allowing some dimensions to be relaxed if others are tightened would weaken the default and is rejected. The AND reading is anchored to EDPB Guidelines 04/2019 on Article 25, which treat the four dimensions as independent minima. On "without the individual's intervention", the chosen reading treats the intervention requirement as the opt-in gate: the controller must not bypass the data subject's affirmative action to expose data. Remain open: (a) whether privacy-by-default applies to AI model defaults (e.g. opt-in vs opt-out for training-data inclusion), pending EDPB AI Act interaction guidance; and (b) whether the four-dimensional test applies per data subject or per processing activity, pending alignment with Art. 35 DPIA granularity.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-014
@@ -468,7 +468,7 @@ status: DRAFT
     - { clause_id: GDPR-CP17, article_ref: "Art. 33(1) — 72-hour notification trigger" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(b) — confidentiality of processing systems" }
     - { clause_id: GDPR-C06, article_ref: "Art. 4(12) — personal data breach definition" }
-  linked_objectives: [SO-GDPR-008]
+  linked_objectives: [SG-GDPR-008]
   sub_domain: [D-04.1, D-10.1]
   nist_csf_mapping:
     - { id: DE.CM-01, title: "Networks monitored for potentially adverse events" }
@@ -488,7 +488,7 @@ status: DRAFT
     `becoming aware` (Art. 33(1)) carries POLY-S3. Reading chosen: documented awareness by a controller employee with delegated breach-handling responsibility, the moment the breach is captured by the controller's detection capability. An alternative reading that awareness attaches whenever any employee becomes aware, including informally, is rejected because it would force an unreasonably early clock and is inconsistent with how organisations actually triage. A third reading that awareness occurs only when senior management is formally briefed is too late and creates compliance risk. The chosen reading is consistent with EDPB Guidelines 9/2022 §3.4 and aligns with the controller's documented incident-response procedure. Operationally, controllers designate a breach-handling role, document the awareness moment, and timestamp detection events to support the 72-hour clock calculation. Remain open: (a) whether AI-driven anomaly detection that flags a breach but does not escalate within the controller's documented procedure still constitutes "awareness", pending EDPB guidance on automated detection; and (b) how the awareness moment is established when the breach is detected by a sub-processor rather than the controller, pending alignment with Art. 33(2) processor notification.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-015
@@ -497,7 +497,7 @@ status: DRAFT
     - { clause_id: GDPR-CP18, article_ref: "Art. 33(3)(d) — measures taken or proposed" }
     - { clause_id: GDPR-CP20, article_ref: "Art. 34(3)(a)/(b) — measures to render data unintelligible / subsequent measures" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(d) — testing" }
-  linked_objectives: [SO-GDPR-009]
+  linked_objectives: [SG-GDPR-009]
   sub_domain: [D-04.2]
   nist_csf_mapping:
     - { id: RS.MI-01, title: "Incidents contained" }
@@ -518,7 +518,7 @@ status: DRAFT
     Art. 34(3)(a) carries VAG-S3 on `unintelligible` (see SR-GDPR-004 for chosen reading). All readings converge on the operational containment and mitigation obligation. The `where appropriate` hedge in Art. 33(3)(d) is read as the controller's reasonable judgement on whether mitigation measures exist and are material; it is not a discretion to omit the field. Art. 34(3)(b) `subsequent measures which ensure that the high risk to the rights and freedoms of data subjects referred to in paragraph 1 is no longer likely to materialise` is the harder threshold: the controller must demonstrate that mitigation actually neutralises the high risk, not merely that mitigation was attempted. Remain open: (a) whether the controller's notification to the supervisory authority under Art. 33(3)(d) must include proposed measures when containment is still in progress, or only taken measures with a separate proposed-measures addendum, pending EDPB guidance; and (b) how the mitigation obligation applies to breaches that originate at a sub-processor, pending alignment with Art. 33(2) processor notification.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-016
@@ -528,7 +528,7 @@ status: DRAFT
     - { clause_id: GDPR-C06, article_ref: "Art. 4(12) — personal data breach" }
     - { clause_id: GDPR-CP16, article_ref: "Art. 32(2) — risk enumeration" }
     - { clause_id: GDPR-C09, article_ref: "Art. 4(22) — supervisory authority concerned" }
-  linked_objectives: [SO-GDPR-010]
+  linked_objectives: [SG-GDPR-010]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents reported internally to appropriate stakeholders" }
@@ -548,7 +548,7 @@ status: DRAFT
     `without undue delay and, where feasible, not later than 72 hours` carries S3 VAG+SCOPE on the double temporal anchor. Reading chosen: 72 hours is the hard ceiling; `without undue delay` requires action immediately upon awareness; `where feasible` is a narrow, technical-feasibility exception (e.g. forensic preservation in progress, key personnel unavailable through the night). The threshold `unlikely to result in a risk` is interpreted via EDPB Guidelines 9/2022 as the precautionary principle: notification is required unless the controller can demonstrate that the breach is unlikely to result in a risk, and the demonstration burden rests with the controller. An alternative reading that controller judgement suffices with no demonstration required is rejected because it inverts the burden and is inconsistent with EDPB practice. Remain open: (a) whether the 72-hour clock resets on material new information about the same breach, or runs continuously from initial awareness, pending EDPB clarification; and (b) how the `where feasible` exception applies when the controller is in a multi-jurisdictional incident with different working hours, pending alignment with NIS 2 incident-handling timelines.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-017
@@ -556,7 +556,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP17, article_ref: "Art. 33(2) — processor-to-controller notification" }
     - { clause_id: GDPR-C06, article_ref: "Art. 4(12) — personal data breach" }
-  linked_objectives: [SO-GDPR-010]
+  linked_objectives: [SG-GDPR-010]
   sub_domain: [D-04.3, D-06.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents reported internally to appropriate stakeholders" }
@@ -575,7 +575,7 @@ status: DRAFT
     `without undue delay` inherits S3 VAG ambiguity (Berry §5.1). Reading chosen: action on the same operational shift or business day, with hard escalation channels documented in the Art. 28(3) processor contract. An alternative reading fixing the window at 24 hours is acceptable but operationally narrower. A third reading extending the window to 72 hours (mirroring the controller's clock) is rejected because it would compress the controller's own window to zero in practice. The chosen reading aligns with EDPB Guidelines 9/2022 §3.4 and ISO 27001 A.16.1.2 reporting expectations. Remain open: whether AI-driven detection by the processor that flags a probable breach without confirmation triggers the `without undue delay` clock, or whether confirmation is required, pending EDPB guidance on probabilistic detection.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-018
@@ -583,7 +583,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP17, article_ref: "Art. 33(3)(a)/(b)/(c)/(d) — notification content" }
     - { clause_id: GDPR-CP17, article_ref: "Art. 33(1) — overall 72h envelope" }
-  linked_objectives: [SO-GDPR-010]
+  linked_objectives: [SG-GDPR-010]
   sub_domain: [D-04.3, D-09.4]
   nist_csf_mapping:
     - { id: RS.AN-03, title: "Analysis performed to determine what occurred and root cause" }
@@ -604,7 +604,7 @@ status: DRAFT
     `where possible`, `approximate number`, `likely consequences` are acknowledged VAG-S2. Reading chosen: best-effort reporting at the time of notification, with subsequent updates as investigation proceeds. The Art. 33(4) phased-disclosure mechanism supports this: the controller can provide initial incomplete information and supplement as it becomes available, provided the reasons for incompleteness are documented. An alternative reading requiring precise reporting at 72 hours is rejected: the OJ text explicitly softens with `where possible` and `approximate`. Remain open: (a) whether the phased-disclosure model applies to each Art. 33(3) element independently or only to elements (a), (c), and (d), pending EDPB Guidelines 9/2022 revision; and (b) how the controller documents the boundary between initial notification and supplemental disclosure in audit defensible form, pending alignment with ISO 27035 incident-management practice.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-019
@@ -613,7 +613,7 @@ status: DRAFT
     - { clause_id: GDPR-CP19, article_ref: "Art. 34(1) — high-risk breach communication to data subject" }
     - { clause_id: GDPR-CP19, article_ref: "Art. 34(2) — content of communication" }
     - { clause_id: GDPR-CP16, article_ref: "Art. 32(2) — risk enumeration (cross)" }
-  linked_objectives: [SO-GDPR-011]
+  linked_objectives: [SG-GDPR-011]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information shared with designated stakeholders per information-sharing rules" }
@@ -632,7 +632,7 @@ status: DRAFT
     `likely to result in a high risk` carries POLY+VAG-S3 (the three-tier `risk`/`high risk`/`high risk` architecture across Arts. 33, 34, 35). Reading chosen: the Art. 34 threshold is higher than the Art. 33 threshold — objectively elevated above ordinary processing risk, per EDPB Guidelines 9/2022. An alternative reading treating the threshold as severe impact on data subject's rights, per CNIL guidance, is operationally similar but framing-different. The chosen reading treats the threshold as risk-of-significant-harm, not merely risk-of-any-harm; the controller documents the risk assessment with reference to the data categories (Art. 9 special categories raise the threshold), the data-subject population (vulnerable populations raise the threshold), and the breach characteristics (encrypted vs plaintext, contained vs ongoing). Remain open: (a) whether `clear and plain language` requires a CEFR B1 reading-age standard or whether national DPA guidance is acceptable, pending EDPB harmonisation; and (b) whether the Art. 34 communication can be combined with Art. 33 notification to the supervisory authority, or must be a separate communication, pending EDPB Guidelines 9/2022 clarification.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-020
@@ -641,7 +641,7 @@ status: DRAFT
     - { clause_id: GDPR-CP20, article_ref: "Art. 34(3)(a) — encryption/unintelligibility exception" }
     - { clause_id: GDPR-CP20, article_ref: "Art. 34(3)(b) — subsequent-measures exception" }
     - { clause_id: GDPR-CP19, article_ref: "Art. 34(1) — high-risk trigger" }
-  linked_objectives: [SO-GDPR-011, SO-GDPR-002]
+  linked_objectives: [SG-GDPR-011, SG-GDPR-002]
   sub_domain: [D-04.3, D-01.3]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }
@@ -661,7 +661,7 @@ status: DRAFT
     Both exceptions carry VAG-S3 (see SR-GDPR-004 for `unintelligible` reading chosen). The `no longer likely to materialise` wording in Art. 34(3)(b) is read as a high threshold: the controller must demonstrate that the mitigation has materially reduced the risk below the Art. 34(1) threshold, not merely that mitigation was attempted. The Art. 34(3)(a) operational condition `those measures were applied to the personal data affected by the personal data breach` requires the controller to demonstrate that the encryption protected the actual affected dataset, not merely that encryption was deployed on the dataset generally. Rule preserves the cryptographic-reading exception. Remain open: (a) whether rotation of cryptographic keys after the breach (treating the old keys as compromised) satisfies the Art. 34(3)(a) carve-out when the controller retains access to old keys for legitimate purposes, pending EDPB clarification; and (b) how the Art. 34(3)(b) `subsequent measures` carve-out interacts with the Art. 33 supervisory-authority notification (which is not carved out), pending alignment with EDPB Guidelines 9/2022.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-021
@@ -669,7 +669,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP20, article_ref: "Art. 34(3)(c) — disproportionate effort exception" }
     - { clause_id: GDPR-CP19, article_ref: "Art. 34(1) — high-risk trigger" }
-  linked_objectives: [SO-GDPR-011]
+  linked_objectives: [SG-GDPR-011]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information shared with designated stakeholders per information-sharing rules" }
@@ -687,7 +687,7 @@ status: DRAFT
     `disproportionate effort` carries S3 VAG (Recital 62 non-binding anchor to cost-vs-risk assessment). Reading chosen: the exception applies narrowly, and the controller must demonstrate efforts. The chosen reading treats disproportionate effort as a high bar: the controller must show that direct notification would impose costs grossly disproportionate to the protective benefit, considering the data-subject population, the availability of contact details, and the operational disruption. An alternative reading allowing the exception whenever direct notification is operationally inconvenient is rejected: it would make the exception the rule. A third reading admitting the exception for breaches affecting only legacy data without contact details is acceptable as a special case but should be documented as such. Recital 62 enumerates cost factors (number of data subjects, contact-channel availability) but does not bind the controller. Remain open: whether the `public communication or similar measure` requires multi-language coverage for cross-border data-subject populations, pending EDPB Guidelines 9/2022 clarification.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-022
@@ -697,7 +697,7 @@ status: DRAFT
     - { clause_id: GDPR-RT12, article_ref: "Art. 16 — rectification" }
     - { clause_id: GDPR-RT11, article_ref: "Art. 15(4) — third-party-rights limit" }
     - { clause_id: GDPR-CL26, article_ref: "Art. 11(2) — identification-exemption (cross)" }
-  linked_objectives: [SO-GDPR-012]
+  linked_objectives: [SG-GDPR-012]
   sub_domain: [D-04.3, D-05.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents reported internally to appropriate stakeholders" }
@@ -716,7 +716,7 @@ status: DRAFT
     `impossible` OR `disproportionate effort` (Art. 19) carries COORD-S3. Reading chosen: either escape clause suffices, as a logical inclusive OR. An alternative reading requiring both to hold is rejected: the stricter reading would impose undue compliance burden without policy justification. The OJ text uses `or`, the English-language UN-style drafting convention for an inclusive disjunction; EDPB Guidelines treat this consistently. On the Art. 15(4) cap (third-party-rights limit), the disclosure to the data subject about recipients is bounded to recipients known to the controller; the controller is not required to investigate recipients beyond its own records. Remain open: (a) whether the `recipient` definition includes processors (under Art. 28) and joint controllers (under Art. 26) or only independent third-party controllers, pending EDPB Guidelines 5/2019 revision; and (b) how the recipient-list request interacts with confidentiality obligations (e.g. trade-secret-protected recipients), pending alignment with Charter Art. 7 and CJEU jurisprudence on commercial confidentiality.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-023
@@ -725,7 +725,7 @@ status: DRAFT
     - { clause_id: GDPR-CP23, article_ref: "Art. 36(1) — prior consultation" }
     - { clause_id: GDPR-CP21, article_ref: "Art. 35(1) — high-risk DPIA" }
     - { clause_id: GDPR-CP22, article_ref: "Art. 35(7) — DPIA content" }
-  linked_objectives: [SO-GDPR-013, SO-GDPR-028]
+  linked_objectives: [SG-GDPR-013, SG-GDPR-028]
   sub_domain: [D-04.3, D-09.2]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal/regulatory/contractual requirements understood and managed" }
@@ -744,7 +744,7 @@ status: DRAFT
     `high risk in the absence of measures` is the same `high risk` POLY family as Arts. 34 and 35. Readings converge via the Art. 35(1) threshold inheritance. The `prior to processing` wording is read strictly: the controller must consult before launching, not after, and the supervisory authority's 8-week window under Art. 36(2) must be accommodated in the launch timeline. EDPB Guidelines 4/2019 on DPIA provide factors for high-risk classification but do not bind the controller. Remain open: (a) whether iterative processing activities (e.g. machine-learning model updates) trigger fresh Art. 36(1) consultations on each iteration or whether a single consultation covers the iterative cycle, pending EDPB AI Act interaction guidance; and (b) how the consultation interacts with the Art. 27 representative designation for non-EU controllers, pending alignment with international supervisory cooperation.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-024
@@ -753,7 +753,7 @@ status: DRAFT
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(c) — timely restore" }
     - { clause_id: GDPR-CL06, article_ref: "Art. 5(1)(f) — integrity & confidentiality (cross)" }
     - { clause_id: GDPR-CP16, article_ref: "Art. 32(2) — risk enumeration" }
-  linked_objectives: [SO-GDPR-014]
+  linked_objectives: [SG-GDPR-014]
   sub_domain: [D-04.4]
   nist_csf_mapping:
     - { id: PR.IR-04, title: "Adequate resource capacity to ensure availability maintained" }
@@ -773,7 +773,7 @@ status: DRAFT
     `in a timely manner` (Art. 32(1)(c)) carries POLY+VAG-S3. Operational reading chosen: RTO defined per processing activity, as an objective measure documented in the controller's business continuity policy. An alternative reading treating timely as as-soon-as-practicable for the specific incident is operationally similar but framing-different; the chosen reading ties timeliness to a documented and testable metric. Recital 49 (non-binding) attempts to fix `timely manner` as "as soon as possible", which is directionally useful but does not bind the controller. EDPB Guidelines 7/2019 on certification treat tested backups and recovery plans as evidence of Art. 32(1)(c) compliance. Remain open: (a) whether the Art. 32(1)(c) `timely manner` threshold differs across processing contexts (e.g. real-time processing vs batch processing), pending EDPB clarification; and (b) how the recovery obligation interacts with separate BCDR obligations under DORA Art. 11–12 and NIS 2 Art. 21(2)(c), pending cross-regulation alignment.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-025
@@ -782,7 +782,7 @@ status: DRAFT
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation" }
     - { clause_id: GDPR-CL14, article_ref: "Art. 6(4) — compatibility test" }
     - { clause_id: GDPR-CL02, article_ref: "Art. 5(1)(b) — purpose limitation (cross)" }
-  linked_objectives: [SO-GDPR-015]
+  linked_objectives: [SG-GDPR-015]
   sub_domain: [D-05.1]
   nist_csf_mapping:
     - { id: PR.DS-12, title: "Data managed consistent with risk strategy" }
@@ -801,7 +801,7 @@ status: DRAFT
     `adequate, relevant, and limited to what is necessary` carries VAG-S3 (three conjunctive vague adjectives). Reading chosen: proportionate to purpose, demonstrable ex ante via Art. 5(2) accountability and Art. 35 DPIA necessity assessment. An alternative reading treats adequacy as satisfied when serving the designed purpose, with necessity presumed by default; this is rejected because it inverts the accountability burden. A third reading requiring least-intrusive among equivalent means under Charter Art. 52(1) is the most restrictive position and is the one adopted by some national DPAs for sensitive-data contexts. The Art. 6(4) compatibility test is the procedural mechanism for any change of purpose; the five factors are conjunctive in the sense that all must be considered, but the test is qualitative and the controller exercises judgement. Remain open: (a) whether machine-learning model training purposes are compatible with the original collection purpose under Art. 6(4), or require fresh consent, pending EDPB AI Act interaction guidance and CJEU jurisprudence on inferred-data compatibility; and (b) whether the data-minimisation threshold differs for secondary processing for fraud-prevention or IT-security purposes under Art. 6(1)(f), pending alignment with the legitimate-interests balancing test.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-026
@@ -810,7 +810,7 @@ status: DRAFT
     - { clause_id: GDPR-CL01, article_ref: "Art. 5(1)(a) — lawfulness, fairness, transparency" }
     - { clause_id: GDPR-CL08, article_ref: "Art. 6(1)(a) — consent" }
     - { clause_id: GDPR-CL02, article_ref: "Art. 5(1)(b) — purpose limitation (cross)" }
-  linked_objectives: [SO-GDPR-016]
+  linked_objectives: [SG-GDPR-016]
   sub_domain: [D-09.1, D-05.1]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal/regulatory/contractual requirements understood and managed" }
@@ -864,7 +864,7 @@ status: DRAFT
     where the data subject has consented.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-027
@@ -875,7 +875,7 @@ status: DRAFT
     - { clause_id: GDPR-CL11, article_ref: "Art. 6(1)(d) — vital interests" }
     - { clause_id: GDPR-CL12, article_ref: "Art. 6(1)(e) — public interest" }
     - { clause_id: GDPR-CL13, article_ref: "Art. 6(1)(f) — legitimate interests" }
-  linked_objectives: [SO-GDPR-016]
+  linked_objectives: [SG-GDPR-016]
   sub_domain: [D-09.1, D-05.1]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal/regulatory/contractual requirements understood and managed" }
@@ -928,7 +928,7 @@ status: DRAFT
     horizontal law.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-028
@@ -937,7 +937,7 @@ status: DRAFT
     - { clause_id: GDPR-CL21, article_ref: "Art. 9(1) — special-category prohibition" }
     - { clause_id: GDPR-CL22, article_ref: "Art. 9(2)(a) — explicit consent" }
     - { clause_id: GDPR-C23, article_ref: "Art. 9(2)(g) — substantial public interest (cross)" }
-  linked_objectives: [SO-GDPR-016]
+  linked_objectives: [SG-GDPR-016]
   sub_domain: [D-09.1, D-05.1]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal/regulatory/contractual requirements understood and managed" }
@@ -992,7 +992,7 @@ status: DRAFT
     collection.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-029
@@ -1001,7 +1001,7 @@ status: DRAFT
     - { clause_id: GDPR-CL05, article_ref: "Art. 5(1)(e) — storage limitation" }
     - { clause_id: GDPR-CP12, article_ref: "Art. 30(1)(f) — retention time limits" }
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation (cross)" }
-  linked_objectives: [SO-GDPR-017]
+  linked_objectives: [SG-GDPR-017]
   sub_domain: [D-05.2, D-10.2]
   nist_csf_mapping:
     - { id: PR.DS-12, title: "Data managed consistent with risk strategy" }
@@ -1050,7 +1050,7 @@ status: DRAFT
     resetting the clock versus the original clock being preserved.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-030
@@ -1059,7 +1059,7 @@ status: DRAFT
     - { clause_id: GDPR-CL05, article_ref: "Art. 5(1)(e) — storage limitation (cross)" }
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation (cross)" }
     - { clause_id: GDPR-CP10, article_ref: "Art. 28(3)(g) — delete polysemy" }
-  linked_objectives: [SO-GDPR-018, SO-GDPR-019]
+  linked_objectives: [SG-GDPR-018, SG-GDPR-019]
   sub_domain: [D-05.3]
   nist_csf_mapping:
     - { id: PR.DS-10, title: "Data-in-use protected" }
@@ -1108,7 +1108,7 @@ status: DRAFT
     when full tape overwrite has not occurred.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-031
@@ -1117,7 +1117,7 @@ status: DRAFT
     - { clause_id: GDPR-CP10, article_ref: "Art. 28(3)(g)" }
     - { clause_id: GDPR-CL05, article_ref: "Art. 5(1)(e) — storage limitation (cross)" }
     - { clause_id: GDPR-CL03, article_ref: "Art. 5(1)(c) — data minimisation (cross)" }
-  linked_objectives: [SO-GDPR-019]
+  linked_objectives: [SG-GDPR-019]
   sub_domain: [D-05.3, D-06.3]
   nist_csf_mapping:
     - { id: PR.DS-10, title: "Data-in-use protected" }
@@ -1163,7 +1163,7 @@ status: DRAFT
     personal data` when the underlying records are pseudonymised.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-032
@@ -1171,7 +1171,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-RT09, article_ref: "Art. 15(1)/(3) — copy provision and format" }
     - { clause_id: GDPR-RT10, article_ref: "Art. 15(3) — commonly used electronic form" }
-  linked_objectives: [SO-GDPR-020]
+  linked_objectives: [SG-GDPR-020]
   sub_domain: [D-05.4]
   nist_csf_mapping:
     - { id: PR.DS-10, title: "Data-in-use protected" }
@@ -1214,7 +1214,7 @@ status: DRAFT
     data the data subject explicitly provided.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-033
@@ -1223,7 +1223,7 @@ status: DRAFT
     - { clause_id: GDPR-CP07, article_ref: "Art. 28(1) — processor selection" }
     - { clause_id: GDPR-CP08, article_ref: "Art. 28(2) — sub-processor authorisation" }
     - { clause_id: GDPR-C03, article_ref: "Art. 4(7)/(8) — controller/processor" }
-  linked_objectives: [SO-GDPR-021]
+  linked_objectives: [SG-GDPR-021]
   sub_domain: [D-06.1]
   nist_csf_mapping:
     - { id: GV.SC-02, title: "Suppliers prioritized and assessed using SCRM processes" }
@@ -1259,14 +1259,14 @@ status: DRAFT
     whether the controller must layer additional assessment.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-034
   title: "Eight-element processor contract with audit and instruction clauses"
   source_clauses:
     - { clause_id: GDPR-CP09, article_ref: "Art. 28(3)(a)–(h) — 8 mandatory clauses" }
-  linked_objectives: [SO-GDPR-022]
+  linked_objectives: [SG-GDPR-022]
   sub_domain: [D-06.3]
   nist_csf_mapping:
     - { id: GV.SC-03, title: "Contracts used to implement SCRM" }
@@ -1304,7 +1304,7 @@ status: DRAFT
     sub-clause must still appear somewhere in the chain.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-035
@@ -1313,7 +1313,7 @@ status: DRAFT
     - { clause_id: GDPR-CP09, article_ref: "Art. 28(3)(c) — Article 32 measures" }
     - { clause_id: GDPR-CP09, article_ref: "Art. 28(3)(h) — audits and inspections" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1) cross-reference" }
-  linked_objectives: [SO-GDPR-022, SO-GDPR-021]
+  linked_objectives: [SG-GDPR-022, SG-GDPR-021]
   sub_domain: [D-06.3, D-10.1]
   nist_csf_mapping:
     - { id: GV.SC-03, title: "Contracts used to implement SCRM" }
@@ -1365,7 +1365,7 @@ status: DRAFT
     shadow-controller.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-036
@@ -1373,7 +1373,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP08, article_ref: "Art. 28(2) — sub-processor authorisation" }
     - { clause_id: GDPR-CP09, article_ref: "Art. 28(3)(d) — sub-processor conditions (cross)" }
-  linked_objectives: [SO-GDPR-022]
+  linked_objectives: [SG-GDPR-022]
   sub_domain: [D-06.3]
   nist_csf_mapping:
     - { id: GV.SC-02, title: "Suppliers prioritized and assessed using SCRM processes" }
@@ -1409,7 +1409,7 @@ status: DRAFT
     30 days) or whether silent acquiescence suffices.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-037
@@ -1417,7 +1417,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP09, article_ref: "Art. 28(3)(g) — return or deletion" }
     - { clause_id: GDPR-CL05, article_ref: "Art. 5(1)(e) — storage limitation" }
-  linked_objectives: [SO-GDPR-022, SO-GDPR-019]
+  linked_objectives: [SG-GDPR-022, SG-GDPR-019]
   sub_domain: [D-06.3, D-05.3]
   nist_csf_mapping:
     - { id: PR.DS-12, title: "Data managed consistent with risk strategy" }
@@ -1463,7 +1463,7 @@ status: DRAFT
     contract end and the processor's actual deletion confirmation.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-038
@@ -1471,7 +1471,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP06, article_ref: "Art. 27(1) — designate in writing" }
     - { clause_id: GDPR-CP06, article_ref: "Art. 27(2)(a) — occasional exception" }
-  linked_objectives: [SO-GDPR-023]
+  linked_objectives: [SG-GDPR-023]
   sub_domain: [D-06.4, D-09.1]
   nist_csf_mapping:
     - { id: GV.OC-02, title: "Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risks are understood and considered" }
@@ -1522,7 +1522,7 @@ status: DRAFT
     Art. 27 irrespective of the exception's `risk` prong.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-039
@@ -1532,7 +1532,7 @@ status: DRAFT
     - { clause_id: GDPR-CP03, article_ref: "Art. 25(2) — privacy by default (cross)" }
     - { clause_id: GDPR-CL06, article_ref: "Art. 5(1)(f) — integrity & confidentiality (cross)" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1) — security measures (cross)" }
-  linked_objectives: [SO-GDPR-024]
+  linked_objectives: [SG-GDPR-024]
   sub_domain: [D-07.1, D-01.1, D-05.1]
   nist_csf_mapping:
     - { id: PR.PS-06, title: "Secure software development practices integrated, and their performance is monitored throughout the SDLC" }
@@ -1581,7 +1581,7 @@ status: DRAFT
     modelling or accepts generic data-protection-by-design checklists.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-040
@@ -1590,7 +1590,7 @@ status: DRAFT
     - { clause_id: GDPR-CP02, article_ref: "Art. 25(1) — pseudonymisation reference" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(a) — pseudonymisation/encryption (cross)" }
     - { clause_id: GDPR-CP20, article_ref: "Art. 34(3)(a) — encryption exception (cross)" }
-  linked_objectives: [SO-GDPR-024, SO-GDPR-002]
+  linked_objectives: [SG-GDPR-024, SG-GDPR-002]
   sub_domain: [D-07.1, D-01.3]
   nist_csf_mapping:
     - { id: PR.PS-06, title: "Secure software development practices integrated, and their performance is monitored throughout the SDLC" }
@@ -1618,7 +1618,7 @@ status: DRAFT
     irreversible-pseudonymisation reading chain from SR-GDPR-003.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-041
@@ -1626,7 +1626,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP03, article_ref: "Art. 25(2) — by-default limits" }
     - { clause_id: GDPR-CP02, article_ref: "Art. 25(1) — by-design (cross)" }
-  linked_objectives: [SO-GDPR-024, SO-GDPR-007]
+  linked_objectives: [SG-GDPR-024, SG-GDPR-007]
   sub_domain: [D-07.1, D-03.4]
   nist_csf_mapping:
     - { id: PR.PS-01, title: "Configuration management practices are established, documented, and applied to assets" }
@@ -1671,7 +1671,7 @@ status: DRAFT
     specified in advance.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-042
@@ -1679,7 +1679,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP28, article_ref: "Art. 39(1)(b) — awareness and training" }
     - { clause_id: GDPR-CP28, article_ref: "Art. 39(1)(a) — inform and advise" }
-  linked_objectives: [SO-GDPR-025]
+  linked_objectives: [SG-GDPR-025]
   sub_domain: [D-08.1, D-08.2]
   nist_csf_mapping:
     - { id: PR.AT-01, title: "All users are informed and trained on cybersecurity topics" }
@@ -1716,7 +1716,7 @@ status: DRAFT
     management in the awareness scope, or only operational personnel.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-043
@@ -1725,7 +1725,7 @@ status: DRAFT
     - { clause_id: GDPR-CP01, article_ref: "Art. 24(1) — appropriate measures" }
     - { clause_id: GDPR-CP01, article_ref: "Art. 24(2) — appropriate data-protection policies" }
     - { clause_id: GDPR-CL07, article_ref: "Art. 5(2) — accountability (cross)" }
-  linked_objectives: [SO-GDPR-026]
+  linked_objectives: [SG-GDPR-026]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -1774,7 +1774,7 @@ status: DRAFT
     operational policies.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-044
@@ -1783,7 +1783,7 @@ status: DRAFT
     - { clause_id: GDPR-CL07, article_ref: "Art. 5(2) — accountability" }
     - { clause_id: GDPR-CP01, article_ref: "Art. 24(1) — demonstrate compliance (cross)" }
     - { clause_id: GDPR-CP12, article_ref: "Art. 30(1) — records of processing (cross)" }
-  linked_objectives: [SO-GDPR-027]
+  linked_objectives: [SG-GDPR-027]
   sub_domain: [D-09.1, D-10.2]
   nist_csf_mapping:
     - { id: GV.PO-02, title: "Cybersecurity processes and procedures for implementing the cybersecurity policy are established, communicated, and enforced" }
@@ -1828,7 +1828,7 @@ status: DRAFT
     (full GDPR compliance).
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-045
@@ -1838,7 +1838,7 @@ status: DRAFT
     - { clause_id: GDPR-CP22, article_ref: "Art. 35(7) — DPIA content" }
     - { clause_id: GDPR-CP23, article_ref: "Art. 36(1) — prior consultation (cross)" }
     - { clause_id: GDPR-C01, article_ref: "Art. 4(1) — personal data" }
-  linked_objectives: [SO-GDPR-028]
+  linked_objectives: [SG-GDPR-028]
   sub_domain: [D-09.2]
   nist_csf_mapping:
     - { id: ID.RA-01, title: "Vulnerabilities in assets are identified, validated, and recorded" }
@@ -1894,14 +1894,14 @@ status: DRAFT
     joint-controllership arrangement.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-046
   title: "Four-element DPIA content with necessity and proportionality test"
   source_clauses:
     - { clause_id: GDPR-CP22, article_ref: "Art. 35(7)(a)–(d) — DPIA content" }
-  linked_objectives: [SO-GDPR-028]
+  linked_objectives: [SG-GDPR-028]
   sub_domain: [D-09.2]
   nist_csf_mapping:
     - { id: ID.RA-05, title: "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response decisions" }
@@ -1941,7 +1941,7 @@ status: DRAFT
     cost-benefit) or accepts qualitative judgement.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-047
@@ -1949,7 +1949,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP22, article_ref: "Art. 35(11) — DPIA review" }
     - { clause_id: GDPR-CP21, article_ref: "Art. 35(1) — DPIA trigger" }
-  linked_objectives: [SO-GDPR-028, SO-GDPR-004]
+  linked_objectives: [SG-GDPR-028, SG-GDPR-004]
   sub_domain: [D-09.2, D-10.3]
   nist_csf_mapping:
     - { id: ID.IM-04, title: "Cybersecurity risk management improvements are informed by awareness of related developments and context (e.g., threat intelligence, incidents, technology evolution)" }
@@ -1981,7 +1981,7 @@ status: DRAFT
     dimensions.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-048
@@ -1990,7 +1990,7 @@ status: DRAFT
     - { clause_id: GDPR-CP12, article_ref: "Art. 30(1) — RoPA content" }
     - { clause_id: GDPR-CP12, article_ref: "Art. 30(4) — supervisory authority access" }
     - { clause_id: GDPR-CP13, article_ref: "Art. 30(5) — 250-employee exception" }
-  linked_objectives: [SO-GDPR-029]
+  linked_objectives: [SG-GDPR-029]
   sub_domain: [D-09.4, D-10.2]
   nist_csf_mapping:
     - { id: ID.AM-03, title: "Inventories of data and corresponding metadata for designated data types are maintained" }
@@ -2042,7 +2042,7 @@ status: DRAFT
     document or accepts a federated set of records.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-049
@@ -2050,7 +2050,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP16, article_ref: "Art. 32(2) — risk enumeration" }
     - { clause_id: GDPR-CP17, article_ref: "Art. 33(1) — breach awareness (cross)" }
-  linked_objectives: [SO-GDPR-030]
+  linked_objectives: [SG-GDPR-030]
   sub_domain: [D-10.1, D-04.1]
   nist_csf_mapping:
     - { id: DE.CM-01, title: "Networks and network services are monitored to find potentially adverse events" }
@@ -2094,7 +2094,7 @@ status: DRAFT
     is debated.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-050
@@ -2103,7 +2103,7 @@ status: DRAFT
     - { clause_id: GDPR-CP12, article_ref: "Art. 30(3) — in writing/electronic form" }
     - { clause_id: GDPR-CL07, article_ref: "Art. 5(2) — accountability (cross)" }
     - { clause_id: GDPR-CP14, article_ref: "Art. 31 — supervisory authority cooperation" }
-  linked_objectives: [SO-GDPR-031]
+  linked_objectives: [SG-GDPR-031]
   sub_domain: [D-10.2, D-09.4]
   nist_csf_mapping:
     - { id: PR.PS-04, title: "Log records are generated and made available for continuous monitoring and analysis" }
@@ -2130,7 +2130,7 @@ status: DRAFT
     ambiguity registered.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-065
@@ -2138,7 +2138,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-RT01, article_ref: "Art. 12(1) — transparency modalities" }
     - { clause_id: GDPR-CL01, article_ref: "Art. 5(1)(a) — transparency (cross)" }
-  linked_objectives: [SO-GDPR-038]
+  linked_objectives: [SG-GDPR-038]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: GV.PO-02, title: "Cybersecurity processes and procedures established and enforced" }

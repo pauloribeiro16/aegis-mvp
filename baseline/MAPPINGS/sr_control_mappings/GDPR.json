@@ -34,7 +34,7 @@
         "D-01.4"
       ],
       "linked_objectives": [
-        "SO-GDPR-001"
+        "SG-GDPR-001"
       ],
       "source_clauses": [
         {
@@ -78,7 +78,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-001"
+          "SG-GDPR-001"
         ],
         "sub_domain": [
           "D-01.1",
@@ -127,8 +127,8 @@
         "D-10.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-001",
-        "SO-GDPR-030"
+        "SG-GDPR-001",
+        "SG-GDPR-030"
       ],
       "source_clauses": [
         {
@@ -172,8 +172,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-001",
-          "SO-GDPR-030"
+          "SG-GDPR-001",
+          "SG-GDPR-030"
         ],
         "sub_domain": [
           "D-01.1",
@@ -222,7 +222,7 @@
         "D-01.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-002"
+        "SG-GDPR-002"
       ],
       "source_clauses": [
         {
@@ -265,7 +265,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-002"
+          "SG-GDPR-002"
         ],
         "sub_domain": [
           "D-01.1",
@@ -309,7 +309,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-002"
+        "SG-GDPR-002"
       ],
       "source_clauses": [
         {
@@ -345,7 +345,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-002"
+          "SG-GDPR-002"
         ],
         "sub_domain": [
           "D-01.3",
@@ -392,7 +392,7 @@
         "D-01.4"
       ],
       "linked_objectives": [
-        "SO-GDPR-003"
+        "SG-GDPR-003"
       ],
       "source_clauses": [
         {
@@ -438,7 +438,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-003"
+          "SG-GDPR-003"
         ],
         "sub_domain": [
           "D-01.4"
@@ -486,8 +486,8 @@
         "D-05.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-003",
-        "SO-GDPR-012"
+        "SG-GDPR-003",
+        "SG-GDPR-012"
       ],
       "source_clauses": [
         {
@@ -541,8 +541,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-003",
-          "SO-GDPR-012"
+          "SG-GDPR-003",
+          "SG-GDPR-012"
         ],
         "sub_domain": [
           "D-01.4",
@@ -590,7 +590,7 @@
         "D-02.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-004"
+        "SG-GDPR-004"
       ],
       "source_clauses": [
         {
@@ -626,7 +626,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-004"
+          "SG-GDPR-004"
         ],
         "sub_domain": [
           "D-10.3",
@@ -675,8 +675,8 @@
         "D-02.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-004",
-        "SO-GDPR-028"
+        "SG-GDPR-004",
+        "SG-GDPR-028"
       ],
       "source_clauses": [
         {
@@ -712,8 +712,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-004",
-          "SO-GDPR-028"
+          "SG-GDPR-004",
+          "SG-GDPR-028"
         ],
         "sub_domain": [
           "D-09.2",
@@ -761,7 +761,7 @@
         "D-03.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-005"
+        "SG-GDPR-005"
       ],
       "source_clauses": [
         {
@@ -805,7 +805,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-005"
+          "SG-GDPR-005"
         ],
         "sub_domain": [
           "D-03.1"
@@ -851,7 +851,7 @@
         "D-05.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-005"
+        "SG-GDPR-005"
       ],
       "source_clauses": [
         {
@@ -889,7 +889,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-005"
+          "SG-GDPR-005"
         ],
         "sub_domain": [
           "D-03.1",
@@ -935,7 +935,7 @@
         "D-03.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-006"
+        "SG-GDPR-006"
       ],
       "source_clauses": [
         {
@@ -988,7 +988,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-006"
+          "SG-GDPR-006"
         ],
         "sub_domain": [
           "D-03.3"
@@ -1039,7 +1039,7 @@
         "D-08.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-006"
+        "SG-GDPR-006"
       ],
       "source_clauses": [
         {
@@ -1083,7 +1083,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-006"
+          "SG-GDPR-006"
         ],
         "sub_domain": [
           "D-03.3",
@@ -1131,8 +1131,8 @@
         "D-05.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-007",
-        "SO-GDPR-024"
+        "SG-GDPR-007",
+        "SG-GDPR-024"
       ],
       "source_clauses": [
         {
@@ -1178,8 +1178,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-007",
-          "SO-GDPR-024"
+          "SG-GDPR-007",
+          "SG-GDPR-024"
         ],
         "sub_domain": [
           "D-03.4",
@@ -1226,7 +1226,7 @@
         "D-10.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-008"
+        "SG-GDPR-008"
       ],
       "source_clauses": [
         {
@@ -1272,7 +1272,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-008"
+          "SG-GDPR-008"
         ],
         "sub_domain": [
           "D-04.1",
@@ -1327,7 +1327,7 @@
         "D-04.2"
       ],
       "linked_objectives": [
-        "SO-GDPR-009"
+        "SG-GDPR-009"
       ],
       "source_clauses": [
         {
@@ -1372,7 +1372,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-009"
+          "SG-GDPR-009"
         ],
         "sub_domain": [
           "D-04.2"
@@ -1422,7 +1422,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-010"
+        "SG-GDPR-010"
       ],
       "source_clauses": [
         {
@@ -1477,7 +1477,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-010"
+          "SG-GDPR-010"
         ],
         "sub_domain": [
           "D-04.3"
@@ -1527,7 +1527,7 @@
         "D-06.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-010"
+        "SG-GDPR-010"
       ],
       "source_clauses": [
         {
@@ -1563,7 +1563,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-010"
+          "SG-GDPR-010"
         ],
         "sub_domain": [
           "D-04.3",
@@ -1610,7 +1610,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-GDPR-010"
+        "SG-GDPR-010"
       ],
       "source_clauses": [
         {
@@ -1647,7 +1647,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-010"
+          "SG-GDPR-010"
         ],
         "sub_domain": [
           "D-04.3",
@@ -1697,7 +1697,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-011"
+        "SG-GDPR-011"
       ],
       "source_clauses": [
         {
@@ -1743,7 +1743,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-011"
+          "SG-GDPR-011"
         ],
         "sub_domain": [
           "D-04.3"
@@ -1789,8 +1789,8 @@
         "D-01.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-011",
-        "SO-GDPR-002"
+        "SG-GDPR-011",
+        "SG-GDPR-002"
       ],
       "source_clauses": [
         {
@@ -1834,8 +1834,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-011",
-          "SO-GDPR-002"
+          "SG-GDPR-011",
+          "SG-GDPR-002"
         ],
         "sub_domain": [
           "D-04.3",
@@ -1881,7 +1881,7 @@
         "D-04.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-011"
+        "SG-GDPR-011"
       ],
       "source_clauses": [
         {
@@ -1916,7 +1916,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-011"
+          "SG-GDPR-011"
         ],
         "sub_domain": [
           "D-04.3"
@@ -1958,7 +1958,7 @@
         "D-05.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-012"
+        "SG-GDPR-012"
       ],
       "source_clauses": [
         {
@@ -2012,7 +2012,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-012"
+          "SG-GDPR-012"
         ],
         "sub_domain": [
           "D-04.3",
@@ -2059,8 +2059,8 @@
         "D-09.2"
       ],
       "linked_objectives": [
-        "SO-GDPR-013",
-        "SO-GDPR-028"
+        "SG-GDPR-013",
+        "SG-GDPR-028"
       ],
       "source_clauses": [
         {
@@ -2104,8 +2104,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-013",
-          "SO-GDPR-028"
+          "SG-GDPR-013",
+          "SG-GDPR-028"
         ],
         "sub_domain": [
           "D-04.3",
@@ -2152,7 +2152,7 @@
         "D-04.4"
       ],
       "linked_objectives": [
-        "SO-GDPR-014"
+        "SG-GDPR-014"
       ],
       "source_clauses": [
         {
@@ -2196,7 +2196,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-014"
+          "SG-GDPR-014"
         ],
         "sub_domain": [
           "D-04.4"
@@ -2242,7 +2242,7 @@
         "D-05.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-015"
+        "SG-GDPR-015"
       ],
       "source_clauses": [
         {
@@ -2289,7 +2289,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-015"
+          "SG-GDPR-015"
         ],
         "sub_domain": [
           "D-05.1"
@@ -2339,7 +2339,7 @@
         "D-05.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-016"
+        "SG-GDPR-016"
       ],
       "source_clauses": [
         {
@@ -2384,7 +2384,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-016"
+          "SG-GDPR-016"
         ],
         "sub_domain": [
           "D-09.1",
@@ -2435,7 +2435,7 @@
         "D-05.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-016"
+        "SG-GDPR-016"
       ],
       "source_clauses": [
         {
@@ -2495,7 +2495,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-016"
+          "SG-GDPR-016"
         ],
         "sub_domain": [
           "D-09.1",
@@ -2542,7 +2542,7 @@
         "D-05.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-016"
+        "SG-GDPR-016"
       ],
       "source_clauses": [
         {
@@ -2589,7 +2589,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-016"
+          "SG-GDPR-016"
         ],
         "sub_domain": [
           "D-09.1",
@@ -2640,7 +2640,7 @@
         "D-10.2"
       ],
       "linked_objectives": [
-        "SO-GDPR-017"
+        "SG-GDPR-017"
       ],
       "source_clauses": [
         {
@@ -2686,7 +2686,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-017"
+          "SG-GDPR-017"
         ],
         "sub_domain": [
           "D-05.2",
@@ -2733,8 +2733,8 @@
         "D-05.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-018",
-        "SO-GDPR-019"
+        "SG-GDPR-018",
+        "SG-GDPR-019"
       ],
       "source_clauses": [
         {
@@ -2780,8 +2780,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-018",
-          "SO-GDPR-019"
+          "SG-GDPR-018",
+          "SG-GDPR-019"
         ],
         "sub_domain": [
           "D-05.3"
@@ -2828,7 +2828,7 @@
         "D-06.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-019"
+        "SG-GDPR-019"
       ],
       "source_clauses": [
         {
@@ -2873,7 +2873,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-019"
+          "SG-GDPR-019"
         ],
         "sub_domain": [
           "D-05.3",
@@ -2923,7 +2923,7 @@
         "D-05.4"
       ],
       "linked_objectives": [
-        "SO-GDPR-020"
+        "SG-GDPR-020"
       ],
       "source_clauses": [
         {
@@ -2961,7 +2961,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-020"
+          "SG-GDPR-020"
         ],
         "sub_domain": [
           "D-05.4"
@@ -3006,7 +3006,7 @@
         "D-06.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-021"
+        "SG-GDPR-021"
       ],
       "source_clauses": [
         {
@@ -3050,7 +3050,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-021"
+          "SG-GDPR-021"
         ],
         "sub_domain": [
           "D-06.1"
@@ -3095,7 +3095,7 @@
         "D-06.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-022"
+        "SG-GDPR-022"
       ],
       "source_clauses": [
         {
@@ -3121,7 +3121,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-022"
+          "SG-GDPR-022"
         ],
         "sub_domain": [
           "D-06.3"
@@ -3160,8 +3160,8 @@
         "D-10.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-022",
-        "SO-GDPR-021"
+        "SG-GDPR-022",
+        "SG-GDPR-021"
       ],
       "source_clauses": [
         {
@@ -3206,8 +3206,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-022",
-          "SO-GDPR-021"
+          "SG-GDPR-022",
+          "SG-GDPR-021"
         ],
         "sub_domain": [
           "D-06.3",
@@ -3257,7 +3257,7 @@
         "D-06.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-022"
+        "SG-GDPR-022"
       ],
       "source_clauses": [
         {
@@ -3293,7 +3293,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-022"
+          "SG-GDPR-022"
         ],
         "sub_domain": [
           "D-06.3"
@@ -3339,8 +3339,8 @@
         "D-05.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-022",
-        "SO-GDPR-019"
+        "SG-GDPR-022",
+        "SG-GDPR-019"
       ],
       "source_clauses": [
         {
@@ -3378,8 +3378,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-022",
-          "SO-GDPR-019"
+          "SG-GDPR-022",
+          "SG-GDPR-019"
         ],
         "sub_domain": [
           "D-06.3",
@@ -3426,7 +3426,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-023"
+        "SG-GDPR-023"
       ],
       "source_clauses": [
         {
@@ -3462,7 +3462,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-023"
+          "SG-GDPR-023"
         ],
         "sub_domain": [
           "D-06.4",
@@ -3512,7 +3512,7 @@
         "D-05.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-024"
+        "SG-GDPR-024"
       ],
       "source_clauses": [
         {
@@ -3566,7 +3566,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-024"
+          "SG-GDPR-024"
         ],
         "sub_domain": [
           "D-07.1",
@@ -3615,8 +3615,8 @@
         "D-01.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-024",
-        "SO-GDPR-002"
+        "SG-GDPR-024",
+        "SG-GDPR-002"
       ],
       "source_clauses": [
         {
@@ -3659,8 +3659,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-024",
-          "SO-GDPR-002"
+          "SG-GDPR-024",
+          "SG-GDPR-002"
         ],
         "sub_domain": [
           "D-07.1",
@@ -3704,8 +3704,8 @@
         "D-03.4"
       ],
       "linked_objectives": [
-        "SO-GDPR-024",
-        "SO-GDPR-007"
+        "SG-GDPR-024",
+        "SG-GDPR-007"
       ],
       "source_clauses": [
         {
@@ -3742,8 +3742,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-024",
-          "SO-GDPR-007"
+          "SG-GDPR-024",
+          "SG-GDPR-007"
         ],
         "sub_domain": [
           "D-07.1",
@@ -3794,7 +3794,7 @@
         "D-08.2"
       ],
       "linked_objectives": [
-        "SO-GDPR-025"
+        "SG-GDPR-025"
       ],
       "source_clauses": [
         {
@@ -3830,7 +3830,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-025"
+          "SG-GDPR-025"
         ],
         "sub_domain": [
           "D-08.1",
@@ -3879,7 +3879,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-026"
+        "SG-GDPR-026"
       ],
       "source_clauses": [
         {
@@ -3924,7 +3924,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-026"
+          "SG-GDPR-026"
         ],
         "sub_domain": [
           "D-09.1"
@@ -3975,7 +3975,7 @@
         "D-10.2"
       ],
       "linked_objectives": [
-        "SO-GDPR-027"
+        "SG-GDPR-027"
       ],
       "source_clauses": [
         {
@@ -4019,7 +4019,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-027"
+          "SG-GDPR-027"
         ],
         "sub_domain": [
           "D-09.1",
@@ -4065,7 +4065,7 @@
         "D-09.2"
       ],
       "linked_objectives": [
-        "SO-GDPR-028"
+        "SG-GDPR-028"
       ],
       "source_clauses": [
         {
@@ -4119,7 +4119,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-028"
+          "SG-GDPR-028"
         ],
         "sub_domain": [
           "D-09.2"
@@ -4173,7 +4173,7 @@
         "D-09.2"
       ],
       "linked_objectives": [
-        "SO-GDPR-028"
+        "SG-GDPR-028"
       ],
       "source_clauses": [
         {
@@ -4201,7 +4201,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-028"
+          "SG-GDPR-028"
         ],
         "sub_domain": [
           "D-09.2"
@@ -4247,8 +4247,8 @@
         "D-10.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-028",
-        "SO-GDPR-004"
+        "SG-GDPR-028",
+        "SG-GDPR-004"
       ],
       "source_clauses": [
         {
@@ -4284,8 +4284,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-028",
-          "SO-GDPR-004"
+          "SG-GDPR-028",
+          "SG-GDPR-004"
         ],
         "sub_domain": [
           "D-09.2",
@@ -4333,7 +4333,7 @@
         "D-10.2"
       ],
       "linked_objectives": [
-        "SO-GDPR-029"
+        "SG-GDPR-029"
       ],
       "source_clauses": [
         {
@@ -4379,7 +4379,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-029"
+          "SG-GDPR-029"
         ],
         "sub_domain": [
           "D-09.4",
@@ -4435,7 +4435,7 @@
         "D-04.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-030"
+        "SG-GDPR-030"
       ],
       "source_clauses": [
         {
@@ -4472,7 +4472,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-030"
+          "SG-GDPR-030"
         ],
         "sub_domain": [
           "D-10.1",
@@ -4524,7 +4524,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-GDPR-031"
+        "SG-GDPR-031"
       ],
       "source_clauses": [
         {
@@ -4569,7 +4569,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-031"
+          "SG-GDPR-031"
         ],
         "sub_domain": [
           "D-10.2",
@@ -4621,7 +4621,7 @@
         "D-03.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-032"
+        "SG-GDPR-032"
       ],
       "source_clauses": [
         {
@@ -4673,7 +4673,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-032"
+          "SG-GDPR-032"
         ],
         "sub_domain": [
           "D-09.1",
@@ -4721,7 +4721,7 @@
         "D-03.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-032"
+        "SG-GDPR-032"
       ],
       "source_clauses": [
         {
@@ -4757,7 +4757,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-032"
+          "SG-GDPR-032"
         ],
         "sub_domain": [
           "D-09.1",
@@ -4803,7 +4803,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-032"
+        "SG-GDPR-032"
       ],
       "source_clauses": [
         {
@@ -4853,7 +4853,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-032"
+          "SG-GDPR-032"
         ],
         "sub_domain": [
           "D-09.1"
@@ -4903,7 +4903,7 @@
         "D-03.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-032"
+        "SG-GDPR-032"
       ],
       "source_clauses": [
         {
@@ -4947,7 +4947,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-032"
+          "SG-GDPR-032"
         ],
         "sub_domain": [
           "D-09.1",
@@ -4995,7 +4995,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-033"
+        "SG-GDPR-033"
       ],
       "source_clauses": [
         {
@@ -5048,7 +5048,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-033"
+          "SG-GDPR-033"
         ],
         "sub_domain": [
           "D-06.3",
@@ -5099,7 +5099,7 @@
         "D-06.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-033"
+        "SG-GDPR-033"
       ],
       "source_clauses": [
         {
@@ -5134,7 +5134,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-033"
+          "SG-GDPR-033"
         ],
         "sub_domain": [
           "D-06.3"
@@ -5177,7 +5177,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-033"
+        "SG-GDPR-033"
       ],
       "source_clauses": [
         {
@@ -5226,7 +5226,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-033"
+          "SG-GDPR-033"
         ],
         "sub_domain": [
           "D-06.3",
@@ -5275,7 +5275,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-034"
+        "SG-GDPR-034"
       ],
       "source_clauses": [
         {
@@ -5311,7 +5311,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-034"
+          "SG-GDPR-034"
         ],
         "sub_domain": [
           "D-06.3",
@@ -5359,7 +5359,7 @@
         "D-06.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-035"
+        "SG-GDPR-035"
       ],
       "source_clauses": [
         {
@@ -5387,7 +5387,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-035"
+          "SG-GDPR-035"
         ],
         "sub_domain": [
           "D-06.3"
@@ -5434,7 +5434,7 @@
         "D-06.3"
       ],
       "linked_objectives": [
-        "SO-GDPR-036"
+        "SG-GDPR-036"
       ],
       "source_clauses": [
         {
@@ -5470,7 +5470,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-036"
+          "SG-GDPR-036"
         ],
         "sub_domain": [
           "D-09.2",
@@ -5517,7 +5517,7 @@
         "D-09.2"
       ],
       "linked_objectives": [
-        "SO-GDPR-036"
+        "SG-GDPR-036"
       ],
       "source_clauses": [
         {
@@ -5553,7 +5553,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-036"
+          "SG-GDPR-036"
         ],
         "sub_domain": [
           "D-09.2"
@@ -5599,7 +5599,7 @@
         "D-09.2"
       ],
       "linked_objectives": [
-        "SO-GDPR-037"
+        "SG-GDPR-037"
       ],
       "source_clauses": [
         {
@@ -5632,7 +5632,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-037"
+          "SG-GDPR-037"
         ],
         "sub_domain": [
           "D-09.1",
@@ -5679,7 +5679,7 @@
         "D-09.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-037"
+        "SG-GDPR-037"
       ],
       "source_clauses": [
         {
@@ -5720,7 +5720,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-037"
+          "SG-GDPR-037"
         ],
         "sub_domain": [
           "D-09.1"
@@ -5768,8 +5768,8 @@
         "D-08.1"
       ],
       "linked_objectives": [
-        "SO-GDPR-037",
-        "SO-GDPR-025"
+        "SG-GDPR-037",
+        "SG-GDPR-025"
       ],
       "source_clauses": [
         {
@@ -5807,8 +5807,8 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-037",
-          "SO-GDPR-025"
+          "SG-GDPR-037",
+          "SG-GDPR-025"
         ],
         "sub_domain": [
           "D-09.1",
@@ -5863,7 +5863,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-GDPR-038"
+        "SG-GDPR-038"
       ],
       "source_clauses": [
         {
@@ -5900,7 +5900,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-038"
+          "SG-GDPR-038"
         ],
         "sub_domain": [
           "D-09.4"
@@ -5949,7 +5949,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-GDPR-038"
+        "SG-GDPR-038"
       ],
       "source_clauses": [
         {
@@ -5978,7 +5978,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-038"
+          "SG-GDPR-038"
         ],
         "sub_domain": [
           "D-09.4"
@@ -6027,7 +6027,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-GDPR-038"
+        "SG-GDPR-038"
       ],
       "source_clauses": [
         {
@@ -6062,7 +6062,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-038"
+          "SG-GDPR-038"
         ],
         "sub_domain": [
           "D-09.4"
@@ -6103,7 +6103,7 @@
         "D-09.4"
       ],
       "linked_objectives": [
-        "SO-GDPR-038"
+        "SG-GDPR-038"
       ],
       "source_clauses": [
         {
@@ -6143,7 +6143,7 @@
           }
         ],
         "linked_objectives": [
-          "SO-GDPR-038"
+          "SG-GDPR-038"
         ],
         "sub_domain": [
           "D-09.4"

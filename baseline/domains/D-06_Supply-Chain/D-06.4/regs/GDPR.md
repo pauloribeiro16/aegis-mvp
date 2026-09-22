@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-023 | Non-EU controllers/processors falling under Art. 3(2) designate a representative in writing in the Union, subject to narrow occasional/low-risk/public-authority exceptions | Legal-address anchor for non-EU personal-data actors; DPA/data-subject-facing representative |
+| GDPR | SG-GDPR-023 | Non-EU controllers/processors falling under Art. 3(2) designate a representative in writing in the Union, subject to narrow occasional/low-risk/public-authority exceptions | Legal-address anchor for non-EU personal-data actors; DPA/data-subject-facing representative |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-06.4.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-06.4.GDPR
+id: SG-D-06.4.GDPR
 subdomain: D-06.4
 applies_to: [GDPR]
-inherits_from: SO-GDPR-023
+inherits_from: SG-GDPR-023
 source_SR: SR-GDPR-038
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N
@@ -48,8 +48,8 @@ GV.PO-P3, GV.PO-P4.
   title: "Art. 27(1) written Union representative designation for non-EU controllers/processors under Art. 3(2), subject to Art. 27(2) occasional / low-risk / public-authority exceptions"
 
   derives_from:
-    hso_sub_so: SO-D-06.4.GDPR
-    per_reg_so: SO-GDPR-023
+    hso_sub_so: SG-D-06.4.GDPR
+    per_reg_so: SG-GDPR-023
     source_sr: SR-GDPR-038
     hso_file: ../../HierarchicalSecurityObjectives/D-06_Supply-Chain/D-06.4.md
     objective_ref_section: "### D-06.4.1"

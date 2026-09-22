@@ -30,7 +30,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-037
@@ -39,7 +39,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     - { clause_id: NIS2-CL15, article_ref: "Art. 21(2)(f) — policies and procedures to assess effectiveness of cybersecurity risk-management measures" }
     - { clause_id: NIS2-CL07, article_ref: "Art. 21(1) — appropriate and proportionate (propagates)" }
     - { clause_id: NIS2-CL08, article_ref: "Art. 21(1) sentence 2 — state-of-the-art (cross)" }
-  linked_objectives: [SO-NIS2-023]
+  linked_objectives: [SG-NIS2-023]
   sub_domain: [D-09.1, D-09.3, D-10.3]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -55,7 +55,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     The compound `effectiveness` carries the Article 21(2)(f) POLY hotspot ambiguity with three operative readings: a control-effectiveness reading (does the control work as designed), a risk-effectiveness reading (does the control reduce risk to acceptable level), or an outcome-effectiveness reading (does the measure achieve its intended outcome), with the chosen reading being the outcome-effectiveness reading because the OJ is outcome-oriented (the assessment object is `cybersecurity risk-management measures` rather than specific controls), and Recital 56 framing supports outcome-measurement as the natural reading of `effectiveness of measures`. The AND coordination of `policies and procedures` admits a two-distinct-artefacts reading or a hendiadys (single artefact with two labels) reading, with the two-distinct reading being dominant because the OJ coordinates two governance terms that NIST CSF 2.0 treats as distinct sub-categories (GV.PO-01 policy and GV.PO-02 processes and procedures). The T3-vs-text gap awareness (synthesis §8) imports ISO 27004 measurement vocabulary not present in the OJ, and the SR preserves OJ-literal language while mapping to ID.IM-01 + GV.OV-03 (improvement + performance evaluation) by meaning-alignment rather than literal-import. Member State transposition divergence may apply on whether national supervisory authorities require specific effectiveness-assessment metrics (e.g. MTTD, MTTR, control-coverage percentage) or accept entity-discretionary metrics under the proportionality discipline. Remain open: (a) whether the Commission will adopt implementing acts under Article 21(5) that specify effectiveness-assessment metrics, which would convert the methodology-discretion interpretation into a metrics-conformance baseline; (b) whether the outcome-effectiveness reading requires the entity to demonstrate contribution-to-risk-reduction evidence under DORA Art. 18 testing parallel, or whether residual-risk-acceptance documentation suffices.
 ```
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-038
@@ -63,7 +63,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
   source_clauses:
     - { clause_id: NIS2-CL15, article_ref: "Art. 21(2)(f) — procedures (procedural dimension of effectiveness assessment, cross)" }
     - { clause_id: NIS2-CL08, article_ref: "Art. 21(1) sentence 2 — state-of-the-art (cross)" }
-  linked_objectives: [SO-NIS2-023]
+  linked_objectives: [SG-NIS2-023]
   sub_domain: [D-09.3, D-10.3]
   nist_csf_mapping:
     - { id: GV.PO-02, title: "Cybersecurity processes and procedures for implementing the cybersecurity policy are established, communicated, and enforced" }

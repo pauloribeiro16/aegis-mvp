@@ -30,14 +30,14 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-CRA-043 | A natural or legal person, other than the manufacturer, importer, or distributor, that carries out a substantial modification of a product with digital elements and makes that product available on the market is considered to be the manufacturer for the purposes of the Regulation, with obligations attaching to the affected part or — where the substantial modification has an impact on the cybersecurity of the product as a whole — to the entire product. | `CRA-CL97` (Art. 22(1) — third-party substantial modification = manufacturer); `CRA-CL98` (Art. 22(2) — scope of obligations) | D-06.4, D-07.4 |
-| SO-CRA-043 | D-06.4, D-07.4 | Art. 22(1)/(2) | Third-party substantial modification = manufacturer (part or whole) |
-| SO-CRA-047 | Procedures are in place for products with digital elements that are part of a series of production to remain in conformity with this Regulation; changes to the product are assessed against the conformity assessment, and where a change is a substantial modification under Art. 3(30), the entity making the modification is treated as the manufacturer with the attendant obligations. | `CRA-CL39` (Art. 13(14) — series-of-production conformity); `CRA-CL96` (Art. 21 — manufacturer-equivalent trigger); `CRA-CL97` (Art. 22(1) — third-party substantial modification = manufacturer); `CRA-CL30` (Art. 3(30) — substantial modification definition); `CRA-CL34` (Art. 13(10) — substantial modification compliance for the last-placed version) | D-07.4, D-06.4 |
-| SO-CRA-047 | D-07.4, D-06.4 | Art. 13(14) + Art. 21 + Art. 22(1) + Art. 3(30) + Art. 13(10) | Series-production conformity + substantial-modification consequences |
+| SG-CRA-043 | A natural or legal person, other than the manufacturer, importer, or distributor, that carries out a substantial modification of a product with digital elements and makes that product available on the market is considered to be the manufacturer for the purposes of the Regulation, with obligations attaching to the affected part or — where the substantial modification has an impact on the cybersecurity of the product as a whole — to the entire product. | `CRA-CL97` (Art. 22(1) — third-party substantial modification = manufacturer); `CRA-CL98` (Art. 22(2) — scope of obligations) | D-06.4, D-07.4 |
+| SG-CRA-043 | D-06.4, D-07.4 | Art. 22(1)/(2) | Third-party substantial modification = manufacturer (part or whole) |
+| SG-CRA-047 | Procedures are in place for products with digital elements that are part of a series of production to remain in conformity with this Regulation; changes to the product are assessed against the conformity assessment, and where a change is a substantial modification under Art. 3(30), the entity making the modification is treated as the manufacturer with the attendant obligations. | `CRA-CL39` (Art. 13(14) — series-of-production conformity); `CRA-CL96` (Art. 21 — manufacturer-equivalent trigger); `CRA-CL97` (Art. 22(1) — third-party substantial modification = manufacturer); `CRA-CL30` (Art. 3(30) — substantial modification definition); `CRA-CL34` (Art. 13(10) — substantial modification compliance for the last-placed version) | D-07.4, D-06.4 |
+| SG-CRA-047 | D-07.4, D-06.4 | Art. 13(14) + Art. 21 + Art. 22(1) + Art. 3(30) + Art. 13(10) | Series-production conformity + substantial-modification consequences |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-045
@@ -45,7 +45,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL46, article_ref: "Art. 13(21) — corrective measures on non-conformity" }
     - { clause_id: CRA-CL30, article_ref: "Art. 3(30) — substantial modification (cross-ref for trigger)" }
-  linked_objectives: [SO-CRA-063]
+  linked_objectives: [SG-CRA-063]
   sub_domain: [D-04.2, D-07.4, D-09.4]
   nist_csf_mapping:
     - { id: RS.MI-01, title: "Incidents are contained" }
@@ -61,7 +61,7 @@ status: DRAFT
     `Immediately take the corrective measures necessary` is VAG+POLY-S2 — R1 (`immediately` = upon knowledge of non-conformity, in line with Article 14 awareness trigger; `corrective measures necessary` = the minimum set needed to restore conformity). `Withdraw or recall` is POLY-S2 — R1 (literal OR — either is admissible; the choice is the manufacturer's, governed by proportionality). The cross-reference to Article 3(30) substantial modification is significant: if the corrective measure requires a substantial modification, the Art. 22(1) third-party-modifier trigger may engage as well, transferring liability downstream. Remain open: (a) what regulatory practice crystallises around `have reason to believe` — i.e. whether constructive knowledge attaches upon receipt of an upstream-CVD report from a component supplier (per Article 13(6) in SR-CRA-051) or only upon internal verification of the non-conformity; (b) whether withdrawal versus recall is itself a proportionality determination that must be evidenced ex ante in the technical documentation under Annex VII.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-062
@@ -69,7 +69,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL97, article_ref: "Art. 22(1) — third-party substantial modification = manufacturer" }
     - { clause_id: CRA-CL98, article_ref: "Art. 22(2) — scope of obligations (affected part or whole)" }
-  linked_objectives: [SO-CRA-043, SO-CRA-047]
+  linked_objectives: [SG-CRA-043, SG-CRA-047]
   sub_domain: [D-06.4, D-07.4]
   nist_csf_mapping:
     - { id: GV.SC-02, title: "Suppliers and other third parties are known, prioritized, and assessed using a cybersecurity supply chain risk management process" }
@@ -84,7 +84,7 @@ status: DRAFT
     `Other than the manufacturer, importer, or distributor` is POLY-S2: R3 (any person not already classified — third-party integrators, system integrators, vertical-specific modifiers, OEM reconfigurers). `Carries out a substantial modification` is POLY-VAG-S2: R1 (performs — literal; cf. SR-CRA-061 for the Article 3(30) substantial-modification substance). `For the part … OR for the entire product` (Article 22(2)) is COORD-S2: R1 (literal OR — scope depends on impact per Article 22(2) literal; the modifier becomes a manufacturer for the affected part or for the entire product depending on cybersecurity impact). Remain open: (a) the operational assessment of `impact on the cybersecurity of the product as a whole` — whether harmonised standards will provide a methodology or whether it remains a case-by-case modifier-side assessment; (b) the interplay between Article 22(1) and the original manufacturer's parallel liability — i.e. whether the third-party modifier fully assumes manufacturer obligations or whether the original manufacturer remains partially liable.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-070
@@ -94,7 +94,7 @@ status: DRAFT
     - { clause_id: CRA-CL96, article_ref: "Art. 21 — manufacturer-equivalent trigger" }
     - { clause_id: CRA-CL97, article_ref: "Art. 22(1) — third-party substantial modification" }
     - { clause_id: CRA-CL30, article_ref: "Art. 3(30) — substantial modification definition" }
-  linked_objectives: [SO-CRA-047, SO-CRA-060]
+  linked_objectives: [SG-CRA-047, SG-CRA-060]
   sub_domain: [D-07.4, D-06.4]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed commensurate with risk" }

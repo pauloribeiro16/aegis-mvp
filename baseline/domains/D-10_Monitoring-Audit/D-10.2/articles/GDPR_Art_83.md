@@ -28,7 +28,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-044
@@ -37,7 +37,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     - { clause_id: GDPR-CL07, article_ref: "Art. 5(2) — accountability" }
     - { clause_id: GDPR-CP01, article_ref: "Art. 24(1) — demonstrate compliance (cross)" }
     - { clause_id: GDPR-CP12, article_ref: "Art. 30(1) — records of processing (cross)" }
-  linked_objectives: [SO-GDPR-027]
+  linked_objectives: [SG-GDPR-027]
   sub_domain: [D-09.1, D-10.2]
   nist_csf_mapping:
     - { id: GV.PO-02, title: "Cybersecurity processes and procedures for implementing the cybersecurity policy are established, communicated, and enforced" }

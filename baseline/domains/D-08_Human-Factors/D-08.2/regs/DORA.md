@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-015 (partial via Art. 13(6) `commensurate to the remit`) | Compulsory training with complexity commensurate to the remit of staff functions. T4-vs-text gap: T4 reads `role-specific training` but OJ text says `commensurate to the remit`. | Entity-level role-specific training; OJ-literal locus preserved. |
+| DORA | SG-DORA-015 (partial via Art. 13(6) `commensurate to the remit`) | Compulsory training with complexity commensurate to the remit of staff functions. T4-vs-text gap: T4 reads `role-specific training` but OJ text says `commensurate to the remit`. | Entity-level role-specific training; OJ-literal locus preserved. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-08.2.4 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-08.2.DORA
+id: SG-D-08.2.DORA
 subdomain: D-08.2
 applies_to: [DORA]
-inherits_from: SO-DORA-015 (partial via Art. 13(6) `commensurate to the remit`)
+inherits_from: SG-DORA-015 (partial via Art. 13(6) `commensurate to the remit`)
 source_SR: SR-DORA-025
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_N
@@ -54,7 +54,7 @@ PR.AT-01, PR.AT-02.
 
   derives_from:
     hso_sub_so: SO-8.2.DORA
-    per_reg_so: SO-DORA-015 (partial via Art. 13(6) `commensurate to the remit`)
+    per_reg_so: SG-DORA-015 (partial via Art. 13(6) `commensurate to the remit`)
     source_sr: SR-DORA-025
     hso_file: ../../HierarchicalSecurityObjectives/D-08_Human-Factors/8.2.md
     objective_ref_section: "### 8.2.4"

@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-002 (partial) | Strong authentication + key protection (Art. 9(4)(d) 3-control AND); identity-lifecycle is one dimension | Financial entity; Art. 9(4)(d); staff + service-to-service identities (financial-entity-side); PR.AA-03 + PR.AA-04 |
+| DORA | SG-DORA-002 (partial) | Strong authentication + key protection (Art. 9(4)(d) 3-control AND); identity-lifecycle is one dimension | Financial entity; Art. 9(4)(d); staff + service-to-service identities (financial-entity-side); PR.AA-03 + PR.AA-04 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-03.1.4 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-03.1.DORA
+id: SG-D-03.1.DORA
 subdomain: D-03.1
 applies_to: [DORA]
-inherits_from: SO-DORA-002
+inherits_from: SG-DORA-002
 source_SR: SR-DORA-002
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_N
@@ -64,8 +64,8 @@ that dominates financial-entity breach statistics.)*
   title: "Staff + service identities managed with assertion-conveyance integrity under strong-authentication discipline"
 
   derives_from:
-    hso_sub_so: SO-D-03.1.DORA
-    per_reg_so: SO-DORA-002
+    hso_sub_so: SG-D-03.1.DORA
+    per_reg_so: SG-DORA-002
     source_sr: SR-DORA-002
     hso_file: ../../HierarchicalSecurityObjectives/D-03_Access-Control/D-03.1.md
     objective_ref_section: "### D-03.1.4"

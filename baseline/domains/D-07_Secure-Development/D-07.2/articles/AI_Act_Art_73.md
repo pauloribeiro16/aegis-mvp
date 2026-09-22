@@ -30,20 +30,20 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-AIACT-013 | Providers and deployers of high-risk AI systems report any serious incident to the market surveillance authorities of the Member States where the incident occurred, in accordance with the differentiated timelines and triggers (awareness / causal link / death / widespread infringement) of Art. 73(1)–(4). | `AIA-C26` (Art. 73(1)–(4) — 4 differentiated timelines × 4 distinct triggers; `serious incident` defined in Art. 3(49) via three sub-categories (a)/(b)/(c); 28 instances of S3 ambiguity across VAG+SCOPE-Q+POLY+COORD) | D-04.3 |
-| SO-AIACT-013 | D-04.3 | Art. 73(1)–(4) | Serious incident reporting with 4 differentiated timelines × 4 triggers |
-| SO-AIACT-014 | Providers of general-purpose AI models with systemic risk keep track of, document and report relevant information about serious incidents and possible corrective measures to the AI Office and, as appropriate, to national competent authorities, without undue delay. | `AIA-C28` (Art. 55(1)(a) — `standardised protocols` + `state of the art` + `systemic risks` POLY triple; adversarial testing mandate); `AIA-C29` (Art. 55(1)(c) — `serious incidents` POLY distinct from Art. 73 serious incidents; `without undue delay` VAG; cross-article boundary undefined) | D-04.3 |
+| SG-AIACT-013 | Providers and deployers of high-risk AI systems report any serious incident to the market surveillance authorities of the Member States where the incident occurred, in accordance with the differentiated timelines and triggers (awareness / causal link / death / widespread infringement) of Art. 73(1)–(4). | `AIA-C26` (Art. 73(1)–(4) — 4 differentiated timelines × 4 distinct triggers; `serious incident` defined in Art. 3(49) via three sub-categories (a)/(b)/(c); 28 instances of S3 ambiguity across VAG+SCOPE-Q+POLY+COORD) | D-04.3 |
+| SG-AIACT-013 | D-04.3 | Art. 73(1)–(4) | Serious incident reporting with 4 differentiated timelines × 4 triggers |
+| SG-AIACT-014 | Providers of general-purpose AI models with systemic risk keep track of, document and report relevant information about serious incidents and possible corrective measures to the AI Office and, as appropriate, to national competent authorities, without undue delay. | `AIA-C28` (Art. 55(1)(a) — `standardised protocols` + `state of the art` + `systemic risks` POLY triple; adversarial testing mandate); `AIA-C29` (Art. 55(1)(c) — `serious incidents` POLY distinct from Art. 73 serious incidents; `without undue delay` VAG; cross-article boundary undefined) | D-04.3 |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-016
   title: "AI-specific attack vector mitigation across training and inference"
   source_clauses:
     - { clause_id: AIA-C18, article_ref: "Art. 15(4)–(5) — `measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the training data set (data poisoning), or pre-trained components used in training (model poisoning), inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality attacks or model flaws`" }
-  linked_objectives: [SO-AIACT-009]
+  linked_objectives: [SG-AIACT-009]
   sub_domain: [D-02.1, D-07.2]
   nist_csf_mapping:
     - { id: ID.RA-04, title: "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified, recorded, and prioritized" }
@@ -130,7 +130,7 @@ status: DRAFT
     sense used in some CRA readings.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-021
@@ -138,7 +138,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: AIA-C25, article_ref: "Art. 72(1)–(2) — `Providers shall establish and document a post-market monitoring system in a manner that is proportionate to the nature of the AI technologies and the risks of the high-risk AI system. The post-market monitoring system shall actively and systematically collect, document and analyse relevant data`" }
     - { clause_id: AIA-C27, article_ref: "Art. 74(1) — `Regulation (EU) 2019/1020 shall apply to AI systems covered by this Regulation`" }
-  linked_objectives: [SO-AIACT-012]
+  linked_objectives: [SG-AIACT-012]
   sub_domain: [D-10.1]
   nist_csf_mapping:
     - { id: DE.CM-09, title: "Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events" }
@@ -224,14 +224,14 @@ status: DRAFT
     contributions are mandatory or optional.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-022
   title: "Tiered serious incident reporting with differentiated timelines"
   source_clauses:
     - { clause_id: AIA-C26, article_ref: "Art. 73(1)–(4) — `report any serious incident`; `not later than 15 days after … becomes aware`; `not later than two days` (widespread infringement); `not later than 10 days` (death)" }
-  linked_objectives: [SO-AIACT-013]
+  linked_objectives: [SG-AIACT-013]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents are reported internally to the appropriate stakeholders, including executive leadership and legal counsel" }
@@ -339,14 +339,14 @@ status: DRAFT
     classification.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-024
   title: "GPAI serious incident reporting to the AI Office"
   source_clauses:
     - { clause_id: AIA-C29, article_ref: "Art. 55(1)(c) — `keep track of, document, and report, without undue delay, to the AI Office and, as appropriate, to national competent authorities, relevant information about serious incidents and possible corrective measures to address them`" }
-  linked_objectives: [SO-AIACT-014]
+  linked_objectives: [SG-AIACT-014]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents are reported internally to the appropriate stakeholders, including executive leadership and legal counsel" }

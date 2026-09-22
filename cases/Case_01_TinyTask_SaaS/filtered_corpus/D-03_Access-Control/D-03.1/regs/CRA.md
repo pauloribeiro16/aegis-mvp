@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-015 | Identities, credentials, and access entitlements for users, services, and integrated components managed in a verifiable manner | Manufacturer; Annex I Part I (2)(d) + Art. 13(15); product-side (user / service / integrated-component identities); PR.AA-01 + ID.AM-01 |
+| CRA | SG-CRA-015 | Identities, credentials, and access entitlements for users, services, and integrated components managed in a verifiable manner | Manufacturer; Annex I Part I (2)(d) + Art. 13(15); product-side (user / service / integrated-component identities); PR.AA-01 + ID.AM-01 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-03.1.3 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-03.1.CRA
+id: SG-D-03.1.CRA
 subdomain: D-03.1
 applies_to: [CRA]
-inherits_from: SO-CRA-015
+inherits_from: SG-CRA-015
 source_SR: SR-CRA-023, SR-CRA-024
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -65,8 +65,8 @@ visibility leg that pairs with the preventive controls).)*
   title: "Product users, services, and integrated components identities managed in verifiable manner throughout operational lifetime"
 
   derives_from:
-    hso_sub_so: SO-D-03.1.CRA
-    per_reg_so: SO-CRA-015
+    hso_sub_so: SG-D-03.1.CRA
+    per_reg_so: SG-CRA-015
     source_sr: SR-CRA-023, SR-CRA-024
     hso_file: ../../HierarchicalSecurityObjectives/D-03_Access-Control/D-03.1.md
     objective_ref_section: "### D-03.1.3"

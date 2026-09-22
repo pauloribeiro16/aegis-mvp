@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-018 + SO-CRA-019 | Product made available with secure-by-default configuration + reset to original state + automatic security updates default + opt-out + postponement | Manufacturer; Annex I Part I (2)(b) + (2)(c); product-level; "tailor-made" carve-out for business users; reset capability; auto-update default; PR.PS-01 + ID.AM-08 + GV.SC-03 |
+| CRA | SG-CRA-018 + SG-CRA-019 | Product made available with secure-by-default configuration + reset to original state + automatic security updates default + opt-out + postponement | Manufacturer; Annex I Part I (2)(b) + (2)(c); product-level; "tailor-made" carve-out for business users; reset capability; auto-update default; PR.PS-01 + ID.AM-08 + GV.SC-03 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-03.4.2 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-03.4.CRA
+id: SG-D-03.4.CRA
 subdomain: D-03.4
 applies_to: [CRA]
-inherits_from: SO-CRA-018 + SO-CRA-019
+inherits_from: SG-CRA-018 + SG-CRA-019
 source_SR: SR-CRA-025, SR-CRA-026, SR-CRA-018 (auto-update cross-ref)
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -81,8 +81,8 @@ Chain Risk Management Plan). `SR-CRA-018` covers the Annex I Part I
   title: "Products with digital elements made available with secure-by-default configuration + reset-to-original-state capability + auto-update default + opt-out + postponement (Annex I Part I (2)(b) + (2)(c) multi-leg product default)"
 
   derives_from:
-    hso_sub_so: SO-D-03.4.CRA
-    per_reg_so: SO-CRA-018, SO-CRA-019
+    hso_sub_so: SG-D-03.4.CRA
+    per_reg_so: SG-CRA-018, SG-CRA-019
     source_sr: SR-CRA-025, SR-CRA-026, SR-CRA-018 (auto-update cross-ref)
     hso_file: ../../HierarchicalSecurityObjectives/D-03_Access-Control/D-03.4.md
     objective_ref_section: "### D-03.4.2"

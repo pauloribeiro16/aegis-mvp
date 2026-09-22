@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-048 (partial via SR-CRA-108 Annex II §8(f)) | Integrator-facing information delivery for compliance with Annex I + Annex VII. | Limited role-specific dimension aimed at integrators (B2B), not workforce. AEGIS taxonomy §4.1 marks NIS 2 / DORA as the authorities for full role-specific workforce competence. |
+| CRA | SG-CRA-048 (partial via SR-CRA-108 Annex II §8(f)) | Integrator-facing information delivery for compliance with Annex I + Annex VII. | Limited role-specific dimension aimed at integrators (B2B), not workforce. AEGIS taxonomy §4.1 marks NIS 2 / DORA as the authorities for full role-specific workforce competence. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-08.2.3 — Sub-SO for CRA (partial)
 
 ```yaml
-id: SO-D-08.2.CRA
+id: SG-D-08.2.CRA
 subdomain: D-08.2
 applies_to: [CRA]
-inherits_from: SO-CRA-048 (partial via SR-CRA-108 Annex II §8(f))
+inherits_from: SG-CRA-048 (partial via SR-CRA-108 Annex II §8(f))
 source_SR: SR-CRA-108
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -54,7 +54,7 @@ PR.AT-02, GV.SC-03.
 
   derives_from:
     hso_sub_so: SO-8.2.CRA
-    per_reg_so: SO-CRA-048 (partial)
+    per_reg_so: SG-CRA-048 (partial)
     source_sr: SR-CRA-108
     hso_file: ../../HierarchicalSecurityObjectives/D-08_Human-Factors/8.2.md
     objective_ref_section: "### 8.2.3"

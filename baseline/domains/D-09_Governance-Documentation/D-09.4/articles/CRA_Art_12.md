@@ -24,12 +24,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-CRA-073 | ENISA establishes and maintains the single reporting platform via which the notifications of Arts. 14 and 15 are submitted, and takes appropriate and proportionate measures to secure the platform; the platform supports electronic notification end-points of CSIRTs designated as coordinators and ENISA, and is accessible simultaneously to ENISA when notification is submitted via a CSIRT end-point. | `CRA-CL74` (Art. 16(1) — ENISA single reporting platform); `CRA-CL77` (Art. 16(4) — platform security); `CRA-CL82` (Art. 17(5) — EU vulnerability database integration with NIS 2 Art. 12(2)); `CRA-CL78` (Art. 17(1) — EU-CyCLONe submission); `CRA-CL80` (Art. 17(3) — ENISA biennial report on cybersecurity risks) | D-09.4 |
-| SO-CRA-074 | ENISA prepares a biennial report on cybersecurity risks in products with digital elements and maintains the EU vulnerability database (Art. 12(2) NIS 2); CSIRTs designated as coordinators provide helpdesk support to manufacturers on the reporting obligations. | `CRA-CL80` (Art. 17(3) — ENISA biennial report); `CRA-CL82` (Art. 17(5) — EU vulnerability database — writes back to NIS 2 Art. 12(2)); `CRA-CL83` (Art. 17(6) — CSIRT helpdesk for manufacturers) | D-09.4 |
+| SG-CRA-073 | ENISA establishes and maintains the single reporting platform via which the notifications of Arts. 14 and 15 are submitted, and takes appropriate and proportionate measures to secure the platform; the platform supports electronic notification end-points of CSIRTs designated as coordinators and ENISA, and is accessible simultaneously to ENISA when notification is submitted via a CSIRT end-point. | `CRA-CL74` (Art. 16(1) — ENISA single reporting platform); `CRA-CL77` (Art. 16(4) — platform security); `CRA-CL82` (Art. 17(5) — EU vulnerability database integration with NIS 2 Art. 12(2)); `CRA-CL78` (Art. 17(1) — EU-CyCLONe submission); `CRA-CL80` (Art. 17(3) — ENISA biennial report on cybersecurity risks) | D-09.4 |
+| SG-CRA-074 | ENISA prepares a biennial report on cybersecurity risks in products with digital elements and maintains the EU vulnerability database (Art. 12(2) NIS 2); CSIRTs designated as coordinators provide helpdesk support to manufacturers on the reporting obligations. | `CRA-CL80` (Art. 17(3) — ENISA biennial report); `CRA-CL82` (Art. 17(5) — EU vulnerability database — writes back to NIS 2 Art. 12(2)); `CRA-CL83` (Art. 17(6) — CSIRT helpdesk for manufacturers) | D-09.4 |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-114
@@ -39,7 +39,7 @@ status: DRAFT
     - { clause_id: CRA-CL80, article_ref: "Art. 17(3) — ENISA biennial report on cybersecurity risks in products" }
     - { clause_id: CRA-CL82, article_ref: "Art. 17(5) — EU vulnerability database (writes back to NIS 2 Art. 12(2))" }
     - { clause_id: CRA-CL83, article_ref: "Art. 17(6) — CSIRT helpdesk for manufacturers on reporting obligations" }
-  linked_objectives: [SO-CRA-073, SO-CRA-074]
+  linked_objectives: [SG-CRA-073, SG-CRA-074]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: RS.CO-04, title: "Coordination with stakeholders occurs consistent with applicable rules and regulations" }

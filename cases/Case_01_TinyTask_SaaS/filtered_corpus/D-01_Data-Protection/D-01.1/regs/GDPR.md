@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-001 | CIA + resilience for personal data processing | Controller/processor; Art. 5(1)(f) + Art. 32(1)(a)/(b); personal-data scope; risk-anchored `appropriate` |
+| GDPR | SG-GDPR-001 | CIA + resilience for personal data processing | Controller/processor; Art. 5(1)(f) + Art. 32(1)(a)/(b); personal-data scope; risk-anchored `appropriate` |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-01.1.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-01.1.GDPR
+id: SG-D-01.1.GDPR
 subdomain: D-01.1
 applies_to: [GDPR]
-inherits_from: SO-GDPR-001
+inherits_from: SG-GDPR-001
 source_SR: SR-GDPR-001
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N
@@ -57,8 +57,8 @@ PR.DS-P1, PR.PO-P3.
   title: "Personal data at rest is protected by appropriate technical measures"
 
   derives_from:
-    hso_sub_so: SO-D-01.1.GDPR
-    per_reg_so: SO-GDPR-001
+    hso_sub_so: SG-D-01.1.GDPR
+    per_reg_so: SG-GDPR-001
     source_sr: SR-GDPR-001
     hso_file: ../../HierarchicalSecurityObjectives/D-01_Data-Protection/D-01.1.md
     objective_ref_section: "### D-01.1.1"

@@ -7,7 +7,7 @@
 
 #### D-03.4.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-03.4.HL
+id: SG-D-03.4.HL
 subdomain: D-03.4
 applies_to: auto  # activates when both GDPR and CRA applicable and the CRA product processes personal data
 status: static

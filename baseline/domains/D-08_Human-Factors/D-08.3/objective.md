@@ -7,7 +7,7 @@
 
 #### D-08.3.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-08.3.HL
+id: SG-D-08.3.HL
 subdomain: D-08.3
 applies_to: auto  # activates when ≥2 applicable regs have ≥1 pair with Y scope overlap on the same party AND ≥1 sub-SO activates; for D-08.3 the 1 verified pair (NIS2↔DORA = SAME — EQUAL, Y scope overlap when the DORA financial entity is also an NSIE) is the only pair in the 2×2 matrix; the high-level SO engages on the joint-condition operator on the Y-pair integrated stack. For entities with only NIS 2 applicability (non-financial NSIE) or only DORA applicability (non-NSIE financial entity), the high-level SO is redundant in this case but is still emitted for traceability. For entities with neither NIS 2 nor DORA applicability, the high-level SO is NOT activated.
 status: static

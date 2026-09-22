@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| NIS2 | SO-NIS2-003 (primary, partial) + SO-NIS2-021 (cross) | Entity-level asset-management sub-domain coordinated with access control (Art. 21(2)(i) `human resources security, access control policies and asset management`) + management-body oversight of Art. 21 measures (Art. 20(1)). | Partial coverage via access-control coordination; no dedicated asset-inventory mandate; NIS 2 does not impose a dedicated asset-inventory mandate (NIS 2 participant note: "NIS 2 does not impose a dedicated asset-inventory mandate"). |
+| NIS2 | SG-NIS2-003 (primary, partial) + SG-NIS2-021 (cross) | Entity-level asset-management sub-domain coordinated with access control (Art. 21(2)(i) `human resources security, access control policies and asset management`) + management-body oversight of Art. 21 measures (Art. 20(1)). | Partial coverage via access-control coordination; no dedicated asset-inventory mandate; NIS 2 does not impose a dedicated asset-inventory mandate (NIS 2 participant note: "NIS 2 does not impose a dedicated asset-inventory mandate"). |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-09.3.1 — Sub-SO for NIS 2
 
 ```yaml
-id: SO-D-09.3.NIS2
+id: SG-D-09.3.NIS2
 subdomain: D-09.3
 applies_to: [NIS2]
-inherits_from: SO-NIS2-003 + SO-NIS2-021 (cross)
+inherits_from: SG-NIS2-003 + SG-NIS2-021 (cross)
 source_SR: SR-NIS2-005
 activation: if NIS2 in applicable_regs
 phase_1A_role: 1_of_3
@@ -50,7 +50,7 @@ ID.AM-01, ID.AM-02.
 
   derives_from:
     hso_sub_so: SO-9.3.NIS2
-    per_reg_so: SO-NIS2-003 + SO-NIS2-021 (cross)
+    per_reg_so: SG-NIS2-003 + SG-NIS2-021 (cross)
     source_sr: SR-NIS2-005
     hso_file: ../../HierarchicalSecurityObjectives/D-09_Governance-Documentation/9.3.md
     objective_ref_section: "### 9.3.1"

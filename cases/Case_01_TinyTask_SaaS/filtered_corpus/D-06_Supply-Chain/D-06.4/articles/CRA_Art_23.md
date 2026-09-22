@@ -30,14 +30,14 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-CRA-044 | Economic operators provide supplier and recipient identification information to market surveillance authorities on request, and retain supply-chain information for 10 years. | `CRA-CL99` (Art. 23(1) — identification duty); `CRA-CL100` (Art. 23(2) — 10-year retention) | D-06.4, D-09.4 |
-| SO-CRA-044 | D-06.4, D-09.4 | Art. 23(1)/(2) | Economic-operator identification + 10-year supply-chain retention |
-| SO-CRA-057 | The manufacturer keeps the technical documentation and the EU declaration of conformity at the disposal of the market surveillance authorities for at least 10 years after the product has been placed on the market, or for the support period, whichever is longer. | `CRA-CL38` (Art. 13(13) — 10-year documentation retention); `CRA-CL91` (Art. 19(6) — importer 10-year retention); `CRA-CL100` (Art. 23(2) — supply-chain 10-year retention) | D-09.4 |
-| SO-CRA-057 | D-09.4 | Art. 13(13) + Art. 19(6) + Art. 23(2) | 10-year technical documentation + EU declaration retention |
+| SG-CRA-044 | Economic operators provide supplier and recipient identification information to market surveillance authorities on request, and retain supply-chain information for 10 years. | `CRA-CL99` (Art. 23(1) — identification duty); `CRA-CL100` (Art. 23(2) — 10-year retention) | D-06.4, D-09.4 |
+| SG-CRA-044 | D-06.4, D-09.4 | Art. 23(1)/(2) | Economic-operator identification + 10-year supply-chain retention |
+| SG-CRA-057 | The manufacturer keeps the technical documentation and the EU declaration of conformity at the disposal of the market surveillance authorities for at least 10 years after the product has been placed on the market, or for the support period, whichever is longer. | `CRA-CL38` (Art. 13(13) — 10-year documentation retention); `CRA-CL91` (Art. 19(6) — importer 10-year retention); `CRA-CL100` (Art. 23(2) — supply-chain 10-year retention) | D-09.4 |
+| SG-CRA-057 | D-09.4 | Art. 13(13) + Art. 19(6) + Art. 23(2) | 10-year technical documentation + EU declaration retention |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-010
@@ -46,7 +46,7 @@ status: DRAFT
     - { clause_id: CRA-CL144, article_ref: "Annex I Part II (2) — address and remediate without delay" }
     - { clause_id: CRA-CL132, article_ref: "Annex I Part I (2)(c) — vulnerabilities addressed through security updates" }
     - { clause_id: CRA-CL24, article_ref: "Art. 13(6) sentence 1 — component vulnerability address + remediate" }
-  linked_objectives: [SO-CRA-008]
+  linked_objectives: [SG-CRA-008]
   sub_domain: [D-02.2]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed commensurate with risk" }
@@ -61,7 +61,7 @@ status: DRAFT
     The phrase "without delay" is VAG-S3 in the Berry-classic sense, structurally identical to "without undue delay" in GDPR Art. 33 and NIS 2 Art. 23(4)(a). Reading chosen: R1, where remediation action commences immediately on awareness and the ceiling is determined by the duration of the technical remediation pipeline, with record-keeping and advisory messages to users accompanying each remediation step. Alternative readings: R2 (delay permitted up to a calendar ceiling of N days regardless of pipeline duration) would risk creating a licence to delay beneath the headline obligation; R3 (subjective manufacturer discretion) is rejected as failing the inquiry-resistant test. An additional reading, R4, would characterise "without delay" as beginning at the moment of developer handoff rather than the moment of awareness, shifting the clock upstream to internal triage; R4 is rejected because the OJ text anchors the trigger at the manufacturer's knowledge rather than at developer assignment, but the operational consequence is identical where the manufacturer's process is tightly coupled. The COORD-S2 "address and remediate" conjunction is treated literally as both required, with "address" denoting the acknowledgement, triage, and communication step and "remediate" denoting the patch or mitigation. Remain open: (a) does the awareness clock pause while the manufacturer awaits confirmation from the reporter (CVD step), or does it run continuously from initial receipt; (b) when remediation requires changes that exceed a single release cycle (schema migration, dependency removal), does the literal "without delay" require partial mitigations to be deployed in the interim.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-028
@@ -72,7 +72,7 @@ status: DRAFT
     - { clause_id: CRA-CL52, article_ref: "Art. 14(1) sentence 2 — single reporting platform" }
     - { clause_id: CRA-CL44, article_ref: "Art. 3(44) — incident definition (imported from Art. 6(6) NIS 2 + CRA add-on)" }
     - { clause_id: CRA-CL42, article_ref: "Art. 3(42) — actively exploited vulnerability" }
-  linked_objectives: [SO-CRA-023]
+  linked_objectives: [SG-CRA-023]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.MA-01, title: "The incident management plan is executed in coordination with relevant third parties once an incident is declared" }
@@ -87,7 +87,7 @@ status: DRAFT
     The phrase "simultaneously" is VAG-S3 because temporal precision is left to interpretation. Reading chosen: R1, treating "simultaneously" as same-timestamp on the single platform under Art. 16, because the platform enforces simultaneity architecturally. R2 (same day) and R3 (short window) are rejected as failing the simultaneity requirement. The "becomes aware of" trigger inherits the GDPR Art. 33 / NIS 2 Art. 23 ambiguity (cf. CJEU IAB Baltic C-394/21 on reasonable certainty of harm), with R1 (actual knowledge) literal and R2 (constructive knowledge through due diligence) admissible. The "actively exploited vulnerability" definition under Art. 3(42) admits R3/R4 (publicly available exploit / researcher-published PoC) as the dominant readings. An additional reading, R3-as-window, would treat "simultaneously" as occurring within a tightly bounded time window (a few hours) rather than at the literal same timestamp, accommodating the practical realities of single-platform queueing; R3-as-window is rejected because the single platform architecture under Art. 16 enforces same-timestamp submission architecturally, making the literal reading the operational reality. Remain open: (a) does a published PoC alone (without observed exploitation) qualify as an AEV, or does the manufacturer require evidence of exploitation in the wild; (b) does constructive knowledge extend to threats described in confidential channels (vendor-to-vendor vulnerability programmes) that the manufacturer has not joined.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-063
@@ -95,7 +95,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: CRA-CL99, article_ref: "Art. 23(1) — economic operator identification duty" }
     - { clause_id: CRA-CL100, article_ref: "Art. 23(2) — 10-year retention of supply-chain information" }
-  linked_objectives: [SO-CRA-044]
+  linked_objectives: [SG-CRA-044]
   sub_domain: [D-06.4, D-09.4]
   nist_csf_mapping:
     - { id: GV.SC-04, title: "Suppliers and other third parties are routinely assessed using audits, test results, or other forms of evaluation to confirm they are meeting their contractual obligations" }
@@ -110,7 +110,7 @@ status: DRAFT
     `On reasoned request` is VAG-S2: R1 (request with specific operational cause — i.e. a request tied to a market-surveillance activity, not a fishing expedition). `10 years` is a hard anchor with no operative ambiguity. The bilateral identification duty (both upstream — `any economic operator that has supplied them` — and downstream — `any economic operator to whom they have supplied`) is literal and unambiguous. No S3 directly. Remain open: (a) the format and granularity of the retained information — whether harmonised standards under Article 27 will specify minimum data fields (transaction date, quantity, batch/serial number, contact details) that operationalise the duty; (b) the operational interface with the manufacturer's Article 13(23) cessation notification (SR-CRA-076) — i.e. whether the cessation-bound manufacturer must transfer the supply-chain records to the next-in-line economic operator or to the MSA.
 ```
 
-### SO-CRA-001 / SO-CRA-002 / SO-CRA-003 (confidentiality + state-of-the-art encryption)
+### SG-CRA-001 / SG-CRA-002 / SG-CRA-003 (confidentiality + state-of-the-art encryption)
 
 ```yaml
 - sr_id: SR-CRA-084
@@ -119,7 +119,7 @@ status: DRAFT
     - { clause_id: CRA-CL38, article_ref: "Art. 13(13) — 10-year documentation retention" }
     - { clause_id: CRA-CL91, article_ref: "Art. 19(6) — importer 10-year retention" }
     - { clause_id: CRA-CL100, article_ref: "Art. 23(2) — economic-operator 10-year retention" }
-  linked_objectives: [SO-CRA-057]
+  linked_objectives: [SG-CRA-057]
   sub_domain: [D-09.4]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed" }

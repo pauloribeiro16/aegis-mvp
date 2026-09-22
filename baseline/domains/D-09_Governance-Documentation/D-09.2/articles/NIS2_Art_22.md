@@ -26,12 +26,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-NIS2-016 | The results of EU-level coordinated security risk assessments of critical supply chains (Cooperation Group + Commission + ENISA under Art. 22(1)) are taken into account in supplier-risk decisions. | `NIS2-CL21` (Art. 21(3) sentence 2 — entity `take into account` Art. 22 results); `NIS2-CL23` (Art. 22(1) — Cooperation Group coordinated assessments); `NIS2-CL24` (Art. 22(1) — technical and, where relevant, non-technical risk factors); `NIS2-CL25` (Art. 22(2) — Commission selection) | D-06.3, D-09.2 |
-| SO-NIS2-016 | D-06.3, D-09.2 | Art. 21(3) sentence 2 + Art. 22(1) | Take into account EU-level coordinated supply-chain risk assessments |
+| SG-NIS2-016 | The results of EU-level coordinated security risk assessments of critical supply chains (Cooperation Group + Commission + ENISA under Art. 22(1)) are taken into account in supplier-risk decisions. | `NIS2-CL21` (Art. 21(3) sentence 2 — entity `take into account` Art. 22 results); `NIS2-CL23` (Art. 22(1) — Cooperation Group coordinated assessments); `NIS2-CL24` (Art. 22(1) — technical and, where relevant, non-technical risk factors); `NIS2-CL25` (Art. 22(2) — Commission selection) | D-06.3, D-09.2 |
+| SG-NIS2-016 | D-06.3, D-09.2 | Art. 21(3) sentence 2 + Art. 22(1) | Take into account EU-level coordinated supply-chain risk assessments |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-NIS2-001 (cryptography policies and procedures)
+### SG-NIS2-001 (cryptography policies and procedures)
 
 ```yaml
 - sr_id: SR-NIS2-025
@@ -40,7 +40,7 @@ status: DRAFT
     - { clause_id: NIS2-CL21, article_ref: "Art. 21(3) sentence 2 — entity `take into account` Art. 22 results" }
     - { clause_id: NIS2-CL23, article_ref: "Art. 22(1) — Cooperation Group coordinated assessments" }
     - { clause_id: NIS2-CL24, article_ref: "Art. 22(1) — technical and, where relevant, non-technical risk factors" }
-  linked_objectives: [SO-NIS2-016]
+  linked_objectives: [SG-NIS2-016]
   sub_domain: [D-06.3, D-09.2]
   nist_csf_mapping:
     - { id: ID.RA-02, title: "Threat and vulnerability information received from internal and external sources is collected and used to support risk identification" }

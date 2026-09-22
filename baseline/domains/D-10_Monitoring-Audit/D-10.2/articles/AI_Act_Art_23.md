@@ -26,7 +26,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-007
@@ -34,7 +34,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
   source_clauses:
     - { clause_id: AIA-C09, article_ref: "Art. 12(1) — `High-risk AI systems shall technically allow for the automatic recording of events (logs) over the lifetime of the system`" }
     - { clause_id: AIA-C10, article_ref: "Art. 12(2) — `In order to ensure a level of traceability of the functioning of a high-risk AI system that is appropriate to the intended purpose of the system, logging capabilities shall enable the recording of events relevant for: (a) … (b) … (c) …`" }
-  linked_objectives: [SO-AIACT-005]
+  linked_objectives: [SG-AIACT-005]
   sub_domain: [D-10.2]
   nist_csf_mapping:
     - { id: PR.PS-04, title: "Log records are generated and made available for continuous monitoring and analysis" }

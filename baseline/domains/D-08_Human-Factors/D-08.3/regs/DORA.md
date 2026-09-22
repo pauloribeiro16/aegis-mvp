@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-014 | Members of the management body actively keep up to date with sufficient knowledge and skills, including by following specific training on a regular basis, commensurate to the ICT risk being managed (Art. 5(4)). | Direct entity-side obligation; OJ-literal anchor on `sufficient knowledge and skills` + `regular basis` + `commensurate to the ICT risk`; the literacy underpinning of Art. 5(2) management-body responsibility. |
+| DORA | SG-DORA-014 | Members of the management body actively keep up to date with sufficient knowledge and skills, including by following specific training on a regular basis, commensurate to the ICT risk being managed (Art. 5(4)). | Direct entity-side obligation; OJ-literal anchor on `sufficient knowledge and skills` + `regular basis` + `commensurate to the ICT risk`; the literacy underpinning of Art. 5(2) management-body responsibility. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-08.3.2 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-08.3.DORA
+id: SG-D-08.3.DORA
 subdomain: D-08.3
 applies_to: [DORA]
-inherits_from: SO-DORA-014
+inherits_from: SG-DORA-014
 source_SR: SR-DORA-024
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_N
@@ -60,7 +60,7 @@ PR.AT-02, GV.RR-01.
 
   derives_from:
     hso_sub_so: SO-8.3.DORA
-    per_reg_so: SO-DORA-014
+    per_reg_so: SG-DORA-014
     source_sr: SR-DORA-024
     hso_file: ../../HierarchicalSecurityObjectives/D-08_Human-Factors/8.3.md
     objective_ref_section: "### 8.3.2"

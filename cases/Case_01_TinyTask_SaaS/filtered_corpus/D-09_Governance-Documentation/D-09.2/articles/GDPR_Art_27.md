@@ -30,12 +30,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-023 | Non-EU controllers and processors falling under Art. 3(2) designate a representative in writing in the Union, with limited exceptions for occasional, low-risk, small-scale processing and for public authorities. | `GDPR-CP06` (Art. 27(1)/(2)) | D-06.4, D-09.1 |
-| SO-GDPR-023 | D-06.4, D-09.1 | Art. 27(1)/(2) | Union representative for non-EU controllers/processors |
+| SG-GDPR-023 | Non-EU controllers and processors falling under Art. 3(2) designate a representative in writing in the Union, with limited exceptions for occasional, low-risk, small-scale processing and for public authorities. | `GDPR-CP06` (Art. 27(1)/(2)) | D-06.4, D-09.1 |
+| SG-GDPR-023 | D-06.4, D-09.1 | Art. 27(1)/(2) | Union representative for non-EU controllers/processors |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-023
@@ -44,7 +44,7 @@ status: DRAFT
     - { clause_id: GDPR-CP23, article_ref: "Art. 36(1) — prior consultation" }
     - { clause_id: GDPR-CP21, article_ref: "Art. 35(1) — high-risk DPIA" }
     - { clause_id: GDPR-CP22, article_ref: "Art. 35(7) — DPIA content" }
-  linked_objectives: [SO-GDPR-013, SO-GDPR-028]
+  linked_objectives: [SG-GDPR-013, SG-GDPR-028]
   sub_domain: [D-04.3, D-09.2]
   nist_csf_mapping:
     - { id: GV.OC-03, title: "Legal/regulatory/contractual requirements understood and managed" }
@@ -63,7 +63,7 @@ status: DRAFT
     `high risk in the absence of measures` is the same `high risk` POLY family as Arts. 34 and 35. Readings converge via the Art. 35(1) threshold inheritance. The `prior to processing` wording is read strictly: the controller must consult before launching, not after, and the supervisory authority's 8-week window under Art. 36(2) must be accommodated in the launch timeline. EDPB Guidelines 4/2019 on DPIA provide factors for high-risk classification but do not bind the controller. Remain open: (a) whether iterative processing activities (e.g. machine-learning model updates) trigger fresh Art. 36(1) consultations on each iteration or whether a single consultation covers the iterative cycle, pending EDPB AI Act interaction guidance; and (b) how the consultation interacts with the Art. 27 representative designation for non-EU controllers, pending alignment with international supervisory cooperation.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-038
@@ -71,7 +71,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP06, article_ref: "Art. 27(1) — designate in writing" }
     - { clause_id: GDPR-CP06, article_ref: "Art. 27(2)(a) — occasional exception" }
-  linked_objectives: [SO-GDPR-023]
+  linked_objectives: [SG-GDPR-023]
   sub_domain: [D-06.4, D-09.1]
   nist_csf_mapping:
     - { id: GV.OC-02, title: "Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risks are understood and considered" }

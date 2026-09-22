@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-012 (partial) | Financial entities and competent authorities have unrestricted access, inspection, and audit rights over critical ICT third-party providers, with narrowly bounded alternative assurance where other clients' rights are affected | Financial-entity audit-rights boundary over CIF-supporting ICT providers |
+| DORA | SG-DORA-012 (partial) | Financial entities and competent authorities have unrestricted access, inspection, and audit rights over critical ICT third-party providers, with narrowly bounded alternative assurance where other clients' rights are affected | Financial-entity audit-rights boundary over CIF-supporting ICT providers |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-06.4.4 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-06.4.DORA
+id: SG-D-06.4.DORA
 subdomain: D-06.4
 applies_to: [DORA]
-inherits_from: SO-DORA-012
+inherits_from: SG-DORA-012
 source_SR: SR-DORA-022
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_N
@@ -46,8 +46,8 @@ phase_1A_role: 1_of_N
   title: "Art. 30(3)(e)(i)/(ii) unrestricted access / inspection / audit rights (including on-site documentation copy right) for financial entity / appointed third party / competent authority over CIF-supporting ICT third-party providers, with narrowly bounded alternative-assurance exception only where other clients' rights are affected"
 
   derives_from:
-    hso_sub_so: SO-D-06.4.DORA
-    per_reg_so: SO-DORA-012
+    hso_sub_so: SG-D-06.4.DORA
+    per_reg_so: SG-DORA-012
     source_sr: SR-DORA-022
     hso_file: ../../HierarchicalSecurityObjectives/D-06_Supply-Chain/D-06.4.md
     objective_ref_section: "### D-06.4.4"

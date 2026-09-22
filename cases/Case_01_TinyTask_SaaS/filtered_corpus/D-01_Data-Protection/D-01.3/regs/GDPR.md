@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-002 | Pseudonymisation/encryption with separate-storage test for the additional information (keys) + Art. 34(3)(a) unintelligibility carve-out | Controller/processor; Art. 4(5) de-attribution test + Art. 34(3)(a) breach-context carve-out; personal-data scope; risk-anchored `appropriate` |
+| GDPR | SG-GDPR-002 | Pseudonymisation/encryption with separate-storage test for the additional information (keys) + Art. 34(3)(a) unintelligibility carve-out | Controller/processor; Art. 4(5) de-attribution test + Art. 34(3)(a) breach-context carve-out; personal-data scope; risk-anchored `appropriate` |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-01.3.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-01.3.GDPR
+id: SG-D-01.3.GDPR
 subdomain: D-01.3
 applies_to: [GDPR]
-inherits_from: SO-GDPR-002
+inherits_from: SG-GDPR-002
 source_SR: SR-GDPR-003, SR-GDPR-004
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_N
@@ -60,8 +60,8 @@ remains effective on the day of the breach.)*
   title: "Personal-data key material kept separately to prevent re-attribution (de-attribution test)"
 
   derives_from:
-    hso_sub_so: SO-D-01.3.GDPR
-    per_reg_so: SO-GDPR-002
+    hso_sub_so: SG-D-01.3.GDPR
+    per_reg_so: SG-GDPR-002
     source_sr: SR-GDPR-003, SR-GDPR-004
     hso_file: ../../HierarchicalSecurityObjectives/D-01_Data-Protection/D-01.3.md
     objective_ref_section: "### D-01.3.1"

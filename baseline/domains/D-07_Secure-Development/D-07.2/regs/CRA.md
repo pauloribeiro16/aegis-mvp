@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-046 (partial) | A product with digital elements is designed, developed, and produced to limit attack surfaces — including external interfaces — and to reduce the impact of an incident using appropriate exploitation-mitigation mechanisms and techniques (Annex I Part I (2)(j) attack-surface + (2)(k) exploitation-mitigation). | **Product-level outcome mandates** (limit attack surface, mitigate exploitation) — not coding-standard mandates. The CRA-side participation at D-07.2 is **partial** in the SR sense (outcome-level obligations routed from Annex I; no specific coding-standard mandate in OJ). |
+| CRA | SG-CRA-046 (partial) | A product with digital elements is designed, developed, and produced to limit attack surfaces — including external interfaces — and to reduce the impact of an incident using appropriate exploitation-mitigation mechanisms and techniques (Annex I Part I (2)(j) attack-surface + (2)(k) exploitation-mitigation). | **Product-level outcome mandates** (limit attack surface, mitigate exploitation) — not coding-standard mandates. The CRA-side participation at D-07.2 is **partial** in the SR sense (outcome-level obligations routed from Annex I; no specific coding-standard mandate in OJ). |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-07.2.1 — Sub-SO for CRA
 
 ```yaml
-id: SO-D-07.2.CRA
+id: SG-D-07.2.CRA
 subdomain: D-07.2
 applies_to: [CRA]
-inherits_from: SO-CRA-046
+inherits_from: SG-CRA-046
 source_SR: SR-CRA-067
 activation: if CRA in applicable_regs
 phase_1A_role: 1_of_N
@@ -33,13 +33,13 @@ phase_1A_role: 1_of_N
 - `attack-surface limitation` is the outcome-level mandate on product-side coding — minimum-necessary external interfaces, minimum-necessary attack surfaces, and minimum-necessary exploitable paths.
 - `exploitation-mitigation` is the outcome-level mandate on product-side incident-impact-reduction — appropriate mechanisms and techniques to reduce the impact of an incident (ASLR, stack-canaries, control-flow integrity, sandboxing, memory-safe language subsystems, bounds checking, least-privilege subsystems, reduced-privilege components as typical mechanisms).
 - The CRA-side participation at D-07.2 is partial in the SR sense: OJ Annex I Part I (2)(j) + (2)(k) prescribes outcome-level mandates but does NOT specify secure-coding standards (no coding-language-specific linting, no secure-coding-framework adoption, no NIST SSDF/OWASP SAMM/ISO/IEC 27034 enforcement). The manufacturer builds the coding-standards baseline from industry frameworks (NIST SSDF, OWASP SAMM, ISO/IEC 27034) and demonstrates compliance against the Annex I Part I (2)(j) + (2)(k) outcome-level obligations.
-- CRA-side coding-outcomes are demonstrated in Annex VII §2 design/development documentation + Annex VII §3 risk-assessment record (cross to D-09.4 — SO-CRA-059 + SO-CRA-053).
+- CRA-side coding-outcomes are demonstrated in Annex VII §2 design/development documentation + Annex VII §3 risk-assessment record (cross to D-09.4 — SG-CRA-059 + SG-CRA-053).
 - The Annex I Part I (2) attack-surface + exploitation-mitigation outcomes are propagated downstream from the 6-phase CRA risk-assessment-propagation at D-07.1 (planning + design + development + production + delivery + maintenance) — at the development phase, the coding-outcome decisions are realised through in-house secure-coding decisions.
 - For a 5-FTE manufacturer of a CRA-regulated product, the coding-outcomes baseline is built from industry frameworks and demonstrated against Annex I Part I (2)(j) + (2)(k) outcome-level obligations via the Annex VII §2 design/development documentation record.
 
 **CSF anchors (from `SR-CRA-067` v0.3 security_rationale):**
 PR.PS-01, PR.PS-02.
-*(PR.PS-06 anchors the secure-software-development lifecycle dimension — secure software development practices are integrated, and their performance is monitored throughout the SDLC; the CRA Annex I Part I (2)(j) + (2)(k) attack-surface + exploitation-mitigation outcomes are realised through the SDLC, with the manufacturer building the coding-standards baseline from industry frameworks. PR.PS-02 anchors the software-maintenance dimension — software is maintained, replaced, and removed commensurate with risk; the Annex I Part I (2)(j) + (2)(k) attack-surface + exploitation-mitigation outcomes are maintained across the support period ≥ 5 years (Art. 13(8) sentence 3) — with ongoing exploitation-mitigation updates + attack-surface monitoring + vulnerability remediation per Art. 13(6) (cross to D-02.2 — SO-CRA-008 + SO-CRA-010). The two subcategories together enable the manufacturer to demonstrate ex post, through the documented Annex VII §2 design/development documentation record + Annex VII §3 risk-assessment record + Annex I Part I (2)(j)/(k) outcome evidence + Art. 13(8) support-period record, that the attack-surface limitation + exploitation-mitigation coding-outcome duties have been exercised with the Annex I Part I essential-requirements anchor + 6-phase risk-assessment propagation.)*
+*(PR.PS-06 anchors the secure-software-development lifecycle dimension — secure software development practices are integrated, and their performance is monitored throughout the SDLC; the CRA Annex I Part I (2)(j) + (2)(k) attack-surface + exploitation-mitigation outcomes are realised through the SDLC, with the manufacturer building the coding-standards baseline from industry frameworks. PR.PS-02 anchors the software-maintenance dimension — software is maintained, replaced, and removed commensurate with risk; the Annex I Part I (2)(j) + (2)(k) attack-surface + exploitation-mitigation outcomes are maintained across the support period ≥ 5 years (Art. 13(8) sentence 3) — with ongoing exploitation-mitigation updates + attack-surface monitoring + vulnerability remediation per Art. 13(6) (cross to D-02.2 — SG-CRA-008 + SG-CRA-010). The two subcategories together enable the manufacturer to demonstrate ex post, through the documented Annex VII §2 design/development documentation record + Annex VII §3 risk-assessment record + Annex I Part I (2)(j)/(k) outcome evidence + Art. 13(8) support-period record, that the attack-surface limitation + exploitation-mitigation coding-outcome duties have been exercised with the Annex I Part I essential-requirements anchor + 6-phase risk-assessment propagation.)*
 
 ---
 
@@ -56,8 +56,8 @@ PR.PS-01, PR.PS-02.
   title: "Product with digital elements designed, developed and produced to limit attack surfaces (including external interfaces) and to reduce incident impact via exploitation-mitigation mechanisms and techniques"
 
   derives_from:
-    hso_sub_so: SO-D-07.2.CRA
-    per_reg_so: SO-CRA-046
+    hso_sub_so: SG-D-07.2.CRA
+    per_reg_so: SG-CRA-046
     source_sr: SR-CRA-067, SR-CRA-068
     hso_file: ../../HierarchicalSecurityObjectives/D-07_Secure-Development/D-07.2.md
     objective_ref_section: "### D-07.2.1"

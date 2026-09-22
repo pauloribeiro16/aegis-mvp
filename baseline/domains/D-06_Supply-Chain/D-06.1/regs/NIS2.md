@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| NIS2 | SO-NIS2-014 | Supply chain security is managed across direct supplier and service-provider relationships, including security-related aspects of those relationships (Art. 21(2)(d) + Art. 21(1) chapeau) | Entity supplier relationships; `direct` scope-limiter (Tier-1 + operationally-dependent sub-tier scope is calibrated by Member State transposition); continuous risk-management; GV.SC-02 + ID.AM-04 + GV.OC-03 |
+| NIS2 | SG-NIS2-014 | Supply chain security is managed across direct supplier and service-provider relationships, including security-related aspects of those relationships (Art. 21(2)(d) + Art. 21(1) chapeau) | Entity supplier relationships; `direct` scope-limiter (Tier-1 + operationally-dependent sub-tier scope is calibrated by Member State transposition); continuous risk-management; GV.SC-02 + ID.AM-04 + GV.OC-03 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-06.1.2 — Sub-SO for NIS 2
 
 ```yaml
-id: SO-D-06.1.NIS2
+id: SG-D-06.1.NIS2
 subdomain: D-06.1
 applies_to: [NIS2]
-inherits_from: SO-NIS2-014
+inherits_from: SG-NIS2-014
 source_SR: SR-NIS2-020
 activation: if NIS2 in applicable_regs
 phase_1A_role: 1_of_N
@@ -67,7 +67,7 @@ assessment has been documented for each direct supplier.)*
 
   derives_from:
     hso_sub_so: SO-6.1.NIS2
-    per_reg_so: SO-NIS2-014
+    per_reg_so: SG-NIS2-014
     source_sr: SR-NIS2-020, SR-NIS2-021
     hso_file: ../../HierarchicalSecurityObjectives/D-06_Supply-Chain/6.1.md
     objective_ref_section: "### 6.1.2"

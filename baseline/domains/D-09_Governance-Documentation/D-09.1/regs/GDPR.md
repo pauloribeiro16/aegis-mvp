@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-026 + SO-GDPR-027 + SO-GDPR-037 | Appropriate data-protection policies reviewed and updated where necessary, with the controller responsibility-accountability chain (Art. 24(1)/(2) + Art. 5(2)) and DPO designation + independence (Art. 37/38/39), securing the controller-side policy architecture. | Process-oriented data-protection policies; DPO as governance anchor; accountability under Art. 5(2). |
+| GDPR | SG-GDPR-026 + SG-GDPR-027 + SG-GDPR-037 | Appropriate data-protection policies reviewed and updated where necessary, with the controller responsibility-accountability chain (Art. 24(1)/(2) + Art. 5(2)) and DPO designation + independence (Art. 37/38/39), securing the controller-side policy architecture. | Process-oriented data-protection policies; DPO as governance anchor; accountability under Art. 5(2). |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-09.1.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-09.1.GDPR
+id: SG-D-09.1.GDPR
 subdomain: D-09.1
 applies_to: [GDPR]
-inherits_from: SO-GDPR-026 + SO-GDPR-027 + SO-GDPR-037
+inherits_from: SG-GDPR-026 + SG-GDPR-027 + SG-GDPR-037
 source_SR: SR-GDPR-043 + SR-GDPR-044 + SR-GDPR-062 + SR-GDPR-063 + SR-GDPR-064
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_5
@@ -51,7 +51,7 @@ GV.PO-P1, GV.PO-P6, GV.MT-P3, GV.PO-P5.
 
   derives_from:
     hso_sub_so: SO-9.1.GDPR
-    per_reg_so: SO-GDPR-026 + SO-GDPR-027 + SO-GDPR-037
+    per_reg_so: SG-GDPR-026 + SG-GDPR-027 + SG-GDPR-037
     source_sr: SR-GDPR-043 + SR-GDPR-044 + SR-GDPR-063
     hso_file: ../../HierarchicalSecurityObjectives/D-09_Governance-Documentation/9.1.md
     objective_ref_section: "### 9.1.1"

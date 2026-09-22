@@ -186,7 +186,7 @@
     "AI_ACT": [],
     "AI_Act": [
       {
-        "id": "SO-D-05.1.AIACT",
+        "id": "SG-D-05.1.AIACT",
         "csf_anchors": [
           "ID.AM-03",
           "ID.AM-08",
@@ -196,7 +196,7 @@
         ]
       },
       {
-        "id": "SO-D-05.2.AIACT",
+        "id": "SG-D-05.2.AIACT",
         "csf_anchors": [
           "PR.PS-04",
           "GV.PO-02"
@@ -210,14 +210,14 @@
     ],
     "CRA": [
       {
-        "id": "SO-D-05.1.CRA",
+        "id": "SG-D-05.1.CRA",
         "csf_anchors": [
           "ID.AM-08",
           "ID.AM-03"
         ]
       },
       {
-        "id": "SO-D-05.2.CRA",
+        "id": "SG-D-05.2.CRA",
         "csf_anchors": [
           "PR.PS-02",
           "GV.OV-02",
@@ -225,7 +225,7 @@
         ]
       },
       {
-        "id": "SO-D-05.3.CRA",
+        "id": "SG-D-05.3.CRA",
         "csf_anchors": [
           "PR.DS-10",
           "ID.AM-08",
@@ -235,7 +235,7 @@
     ],
     "GDPR": [
       {
-        "id": "SO-D-05.1.GDPR",
+        "id": "SG-D-05.1.GDPR",
         "csf_anchors": [
           "ID.AM-08",
           "ID.AM-03",
@@ -244,7 +244,7 @@
         ]
       },
       {
-        "id": "SO-D-05.2.GDPR",
+        "id": "SG-D-05.2.GDPR",
         "csf_anchors": [
           "ID.AM-08",
           "ID.AM-03"
@@ -255,7 +255,7 @@
         ]
       },
       {
-        "id": "SO-D-05.3.GDPR",
+        "id": "SG-D-05.3.GDPR",
         "csf_anchors": [
           "PR.DS-10",
           "ID.AM-08",
@@ -263,7 +263,7 @@
         ]
       },
       {
-        "id": "SO-D-05.4.GDPR",
+        "id": "SG-D-05.4.GDPR",
         "csf_anchors": [
           "PR.DS-10",
           "ID.AM-08"

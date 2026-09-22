@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-028 + SO-GDPR-036 + SO-GDPR-037 (cross-ref) | DPIA covering the four Art. 35(7) content items (systematic description, necessity & proportionality, risks, mitigation); reviewed on change of risk per Art. 35(11); joint-controller arrangement per Art. 26 (cross to D-06.3); DPO designation per Art. 37-39 cross-referenced from D-09.1. | Personal-data-rights impact; pre-launch for high-risk processing; reviewed on risk change. |
+| GDPR | SG-GDPR-028 + SG-GDPR-036 + SG-GDPR-037 (cross-ref) | DPIA covering the four Art. 35(7) content items (systematic description, necessity & proportionality, risks, mitigation); reviewed on change of risk per Art. 35(11); joint-controller arrangement per Art. 26 (cross to D-06.3); DPO designation per Art. 37-39 cross-referenced from D-09.1. | Personal-data-rights impact; pre-launch for high-risk processing; reviewed on risk change. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-09.2.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-09.2.GDPR
+id: SG-D-09.2.GDPR
 subdomain: D-09.2
 applies_to: [GDPR]
-inherits_from: SO-GDPR-028 + SO-GDPR-036 + SO-GDPR-037 (cross-ref from D-09.1)
+inherits_from: SG-GDPR-028 + SG-GDPR-036 + SG-GDPR-037 (cross-ref from D-09.1)
 source_SR: SR-GDPR-045 + SR-GDPR-046 + SR-GDPR-047
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_5
@@ -50,7 +50,7 @@ ID.RA-P3, ID.RA-P4, ID.RA-P5, GV.MT-P2.
 
   derives_from:
     hso_sub_so: SO-9.2.GDPR
-    per_reg_so: SO-GDPR-028 + SO-GDPR-036 + SO-GDPR-037
+    per_reg_so: SG-GDPR-028 + SG-GDPR-036 + SG-GDPR-037
     source_sr: SR-GDPR-045 + SR-GDPR-046 + SR-GDPR-047
     hso_file: ../../HierarchicalSecurityObjectives/D-09_Governance-Documentation/9.2.md
     objective_ref_section: "### 9.2.1"

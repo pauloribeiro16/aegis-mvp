@@ -7,7 +7,7 @@
 
 #### D-06.3.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-06.3.HL
+id: SG-D-06.3.HL
 subdomain: D-06.3
 applies_to: auto
 status: static

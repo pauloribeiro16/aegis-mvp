@@ -30,12 +30,12 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-AIACT-010 | A quality management system is implemented to ensure compliance with the AI Act, documented in a systematic and orderly manner in the form of written policies, procedures and instructions, and covering at least 13 enumerated aspects including techniques, procedures and systematic actions for the design, design control and design verification of the high-risk AI system. | `AIA-C20` (Art. 17(1) — `systematic and orderly manner` + `quality management system` POLY (ISO 9001 / ISO/IEC 23053 / internal bespoke) + 13-element closed list (a)–(m)); `AIA-C21` (Art. 17(1)(c) — `design, design control and design verification` 3-way AND of near-synonyms); `AIA-C22` (Art. 17(1)(g) — risk-management-system documentation cross-reference to Art. 9) | D-09.1 (primary), D-07.1 (cross) |
-| SO-AIACT-010 | D-09.1, D-07.1 | Art. 17(1)+(1)(c)+(1)(g) | QMS with 13 enumerated aspects + design/design control/verification |
+| SG-AIACT-010 | A quality management system is implemented to ensure compliance with the AI Act, documented in a systematic and orderly manner in the form of written policies, procedures and instructions, and covering at least 13 enumerated aspects including techniques, procedures and systematic actions for the design, design control and design verification of the high-risk AI system. | `AIA-C20` (Art. 17(1) — `systematic and orderly manner` + `quality management system` POLY (ISO 9001 / ISO/IEC 23053 / internal bespoke) + 13-element closed list (a)–(m)); `AIA-C21` (Art. 17(1)(c) — `design, design control and design verification` 3-way AND of near-synonyms); `AIA-C22` (Art. 17(1)(g) — risk-management-system documentation cross-reference to Art. 9) | D-09.1 (primary), D-07.1 (cross) |
+| SG-AIACT-010 | D-09.1, D-07.1 | Art. 17(1)+(1)(c)+(1)(g) | QMS with 13 enumerated aspects + design/design control/verification |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-017
@@ -43,7 +43,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: AIA-C20, article_ref: "Art. 17(1) — `Providers of high-risk AI systems shall put a quality management system in place that ensures compliance with this Regulation. That system shall be documented in a systematic and orderly manner in the form of written policies, procedures and instructions, and shall include at least the following aspects: (a) … (m)`" }
     - { clause_id: AIA-C22, article_ref: "Art. 17(1)(g) — `the risk management system referred to in Article 9`" }
-  linked_objectives: [SO-AIACT-010]
+  linked_objectives: [SG-AIACT-010]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -122,14 +122,14 @@ status: DRAFT
     system.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-018
   title: "Secure design control and verification integrated into SDLC"
   source_clauses:
     - { clause_id: AIA-C21, article_ref: "Art. 17(1)(c) — `techniques, procedures and systematic actions to be used for the design, design control and design verification of the high-risk AI system`" }
-  linked_objectives: [SO-AIACT-010]
+  linked_objectives: [SG-AIACT-010]
   sub_domain: [D-07.1]
   nist_csf_mapping:
     - { id: PR.PS-06, title: "Secure software development practices are integrated, and their performance is monitored throughout the SDLC" }
@@ -200,14 +200,14 @@ status: DRAFT
     verification or only pre-market verification.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-019
   title: "Deployer measures aligned with provider instructions for use"
   source_clauses:
     - { clause_id: AIA-C23, article_ref: "Art. 26(1) — `Deployers of high-risk AI systems shall take appropriate technical and organisational measures to ensure they use such systems in accordance with the instructions for use`" }
-  linked_objectives: [SO-AIACT-011]
+  linked_objectives: [SG-AIACT-011]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.PO-01, title: "Organizational cybersecurity policy is established, communicated, and enforced" }
@@ -284,14 +284,14 @@ status: DRAFT
     inherits the provider's `appropriate` ceiling.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-023
   title: "Adversarial evaluation of GPAI models for systemic risk mitigation"
   source_clauses:
     - { clause_id: AIA-C28, article_ref: "Art. 55(1)(a) — `perform model evaluation in accordance with standardised protocols and tools reflecting the state of the art, including conducting and documenting adversarial testing of the model with a view to identifying and mitigating systemic risks`" }
-  linked_objectives: [SO-AIACT-014]
+  linked_objectives: [SG-AIACT-014]
   sub_domain: [D-07.3, D-02.1]
   nist_csf_mapping:
     - { id: GV.RM-06, title: "A standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated" }

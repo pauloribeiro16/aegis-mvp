@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-012; SO-DORA-011 (standards link) | ICT third-party contractual arrangements clearly allocate rights and obligations in writing, include the Art. 30(2) minimum elements, and comply with Art. 28(5) information-security standards; CIF contracts add Art. 30(3) clauses | Financial-entity ICT third-party contractual layer; competent-authority-facing evidence; CIF escalator |
+| DORA | SG-DORA-012; SG-DORA-011 (standards link) | ICT third-party contractual arrangements clearly allocate rights and obligations in writing, include the Art. 30(2) minimum elements, and comply with Art. 28(5) information-security standards; CIF contracts add Art. 30(3) clauses | Financial-entity ICT third-party contractual layer; competent-authority-facing evidence; CIF escalator |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-06.3.4 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-06.3.DORA
+id: SG-D-06.3.DORA
 subdomain: D-06.3
 applies_to: [DORA]
-inherits_from: [SO-DORA-011, SO-DORA-012]
+inherits_from: [SG-DORA-011, SG-DORA-012]
 source_SR: [SR-DORA-019, SR-DORA-020, SR-DORA-021, SR-DORA-022]
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_N
@@ -46,8 +46,8 @@ phase_1A_role: 1_of_N
   title: "Art. 30(1)+(2) 9-element ICT-contract closed-list + Art. 28(5) standards record + Art. 30(3) CIF-only clauses (audit/access/exit) — clause-list union with GDPR Art. 28(3) when same ICT provider is processor"
 
   derives_from:
-    hso_sub_so: SO-D-06.3.DORA
-    per_reg_so: SO-DORA-011, SO-DORA-012
+    hso_sub_so: SG-D-06.3.DORA
+    per_reg_so: SG-DORA-011, SG-DORA-012
     source_sr: SR-DORA-019, SR-DORA-020, SR-DORA-021, SR-DORA-022
     hso_file: ../../HierarchicalSecurityObjectives/D-06_Supply-Chain/D-06.3.md
     objective_ref_section: "### D-06.3.4"

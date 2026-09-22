@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-016 + SO-DORA-017 | Management body defines, approves, oversees and is responsible for the implementation of all arrangements related to the ICT risk management framework (Art. 5(2)), supported by a sound, comprehensive and well-documented framework (Art. 6(1)); ICT risk assigned to a control function with appropriate level of independence according to three lines of defence model + identification/classification/documentation of ICT supported business functions and information/ICT assets (Art. 6(4) + Art. 7(1)). | Financial-entity ICT risk-management framework; three-lines-of-defence + asset identification/classification as governance anchor. |
+| DORA | SG-DORA-016 + SG-DORA-017 | Management body defines, approves, oversees and is responsible for the implementation of all arrangements related to the ICT risk management framework (Art. 5(2)), supported by a sound, comprehensive and well-documented framework (Art. 6(1)); ICT risk assigned to a control function with appropriate level of independence according to three lines of defence model + identification/classification/documentation of ICT supported business functions and information/ICT assets (Art. 6(4) + Art. 7(1)). | Financial-entity ICT risk-management framework; three-lines-of-defence + asset identification/classification as governance anchor. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-09.1.4 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-09.1.DORA
+id: SG-D-09.1.DORA
 subdomain: D-09.1
 applies_to: [DORA]
-inherits_from: SO-DORA-016 + SO-DORA-017
+inherits_from: SG-DORA-016 + SG-DORA-017
 source_SR: SR-DORA-026 + SR-DORA-027 + SR-DORA-028
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_5
@@ -48,7 +48,7 @@ GV.RR-01, GV.RR-02, GV.PO-01 (primary), GV.OC-01, GV.RM-04, GV.RM-02.
 
   derives_from:
     hso_sub_so: SO-9.1.DORA
-    per_reg_so: SO-DORA-016 + SO-DORA-017
+    per_reg_so: SG-DORA-016 + SG-DORA-017
     source_sr: SR-DORA-026 + SR-DORA-027
     hso_file: ../../HierarchicalSecurityObjectives/D-09_Governance-Documentation/9.1.md
     objective_ref_section: "### 9.1.4"

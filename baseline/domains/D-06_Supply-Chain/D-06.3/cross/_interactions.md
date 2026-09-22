@@ -33,10 +33,10 @@
 #### Participants (from CRDA-deep §D-06.3)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-022; SO-GDPR-033; SO-GDPR-035 | Processor contracts contain the eight Art. 28(3)(a)–(h) mandatory clauses; third-country transfers use Art. 46 safeguards where no adequacy decision exists; third-country court or administrative requests are recognised only through an international-agreement basis | Controller/processor personal-data contract; transfer-safeguard contractual layer; DPA-facing accountability |
-| NIS2 | SO-NIS2-015; SO-NIS2-016 | Direct suppliers and service providers are assessed on supplier-specific vulnerabilities, product/service quality, cybersecurity practices, secure-development procedures, and EU-level coordinated supply-chain risk-assessment outputs | Entity-side direct-supplier contractual and assessment layer; Member-State-transposition-sensitive `direct` scope-limiter |
-| CRA | SO-CRA-039; SO-CRA-040 | Importers perform pre-market checks and escalation; distributors act with due care, verify CE/documentation/manufacturer/importer compliance, and escalate non-conformity or vulnerabilities | Product market-access layer; importer/distributor obligations to manufacturer and market surveillance authority (MSA), imposed by regulation rather than negotiated as a DPA |
-| DORA | SO-DORA-012; SO-DORA-011 (standards link) | ICT third-party contractual arrangements clearly allocate rights and obligations in writing, include the Art. 30(2) minimum elements, and comply with Art. 28(5) information-security standards; CIF contracts add Art. 30(3) clauses | Financial-entity ICT third-party contractual layer; competent-authority-facing evidence; CIF escalator |
+| GDPR | SG-GDPR-022; SG-GDPR-033; SG-GDPR-035 | Processor contracts contain the eight Art. 28(3)(a)–(h) mandatory clauses; third-country transfers use Art. 46 safeguards where no adequacy decision exists; third-country court or administrative requests are recognised only through an international-agreement basis | Controller/processor personal-data contract; transfer-safeguard contractual layer; DPA-facing accountability |
+| NIS2 | SG-NIS2-015; SG-NIS2-016 | Direct suppliers and service providers are assessed on supplier-specific vulnerabilities, product/service quality, cybersecurity practices, secure-development procedures, and EU-level coordinated supply-chain risk-assessment outputs | Entity-side direct-supplier contractual and assessment layer; Member-State-transposition-sensitive `direct` scope-limiter |
+| CRA | SG-CRA-039; SG-CRA-040 | Importers perform pre-market checks and escalation; distributors act with due care, verify CE/documentation/manufacturer/importer compliance, and escalate non-conformity or vulnerabilities | Product market-access layer; importer/distributor obligations to manufacturer and market surveillance authority (MSA), imposed by regulation rather than negotiated as a DPA |
+| DORA | SG-DORA-012; SG-DORA-011 (standards link) | ICT third-party contractual arrangements clearly allocate rights and obligations in writing, include the Art. 30(2) minimum elements, and comply with Art. 28(5) information-security standards; CIF contracts add Art. 30(3) clauses | Financial-entity ICT third-party contractual layer; competent-authority-facing evidence; CIF escalator |
 
 ## Validated relationships (from CRDA-deep §D-06.3)
 
@@ -96,7 +96,7 @@ Legend: **Y** = scope overlap on a single event at a single party. **Conditional
 ## Scope-overlap principle (operational)
 
 #### Scope-overlap principle (operational)
-The high-level SO (`SO-D-06.3.HL`) engages when ≥2 participating regulations apply to the same supplier relationship or to a single integrated supply-chain event. The dominant high-overlap scenario is a financial entity that is also a GDPR controller and a NIS 2 entity contracting with an ICT provider that processes personal data: GDPR Art. 28(3), NIS 2 Art. 21(2)(d)/(3), and DORA Art. 30 all apply, and the contract must satisfy the union of clauses. CRA usually operates on the product-market-access side rather than the contract itself; it joins the same architecture when the ICT service includes a CRA-classified product supplied through importer/distributor channels or when a component vulnerability is identified during the lifecycle.
+The high-level SO (`SG-D-06.3.HL`) engages when ≥2 participating regulations apply to the same supplier relationship or to a single integrated supply-chain event. The dominant high-overlap scenario is a financial entity that is also a GDPR controller and a NIS 2 entity contracting with an ICT provider that processes personal data: GDPR Art. 28(3), NIS 2 Art. 21(2)(d)/(3), and DORA Art. 30 all apply, and the contract must satisfy the union of clauses. CRA usually operates on the product-market-access side rather than the contract itself; it joins the same architecture when the ICT service includes a CRA-classified product supplied through importer/distributor channels or when a component vulnerability is identified during the lifecycle.
 
 ## Aggregation logic (from CRDA-deep verified classifications)
 
@@ -142,7 +142,7 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs — AI Act out-of-scope per AEGIS taxonomy �
   volere_subtype: immunity
   title: "Third-party security obligations are made enforceable through contracts, transfer safeguards, written mandates, or market-access duties, with a consolidated 4-track contractual-security matrix where multiple regulations apply to the same supplier relationship (GDPR Art. 28(3) 8-element DPA + DORA Art. 30(2) 9-element ICT-contract + NIS 2 supplier-assessment + CRA importer/distributor market-access)"
   derives_from:
-    hso_sub_so: SO-D-06.3.HL
+    hso_sub_so: SG-D-06.3.HL
     hso_file: ../../HierarchicalSecurityObjectives/D-06_Supply-Chain/D-06.3.md
     objective_ref_section: "### D-06.3.0"
   description: |
@@ -199,10 +199,10 @@ status: DRAFT
 ##### Participants
 | Regulation | SO ID | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-022, SO-GDPR-033, SO-GDPR-035 | Eight-element DPA per Art. 28(3)(a)–(h) + sufficient-guarantees processor selection + Art. 46 appropriate safeguards + Art. 47 BCR + Art. 48 third-country request filter | Personal data processing contracts; controller/processor |
-| NIS2 | SO-NIS2-015, SO-NIS2-016 | Supplier three-prong assessment (vulnerabilities + quality + secure-development) + EU-level coordinated supply-chain risk-assessment integration (Art. 21(3) + Art. 22) | Direct supplier contractual obligations; per-supplier |
-| CRA | SO-CRA-039, SO-CRA-040 | Importer pre-market verification + 10-year conformity retention + distributor due-care + non-conformity escalation (Art. 19 + Art. 20) | Economic operator (importer/distributor) contractual obligations; market access |
-| DORA | SO-DORA-012 | Rights and obligations clearly allocated + 9 minimum elements (a)–(i) + unrestricted audit rights (Art. 30(1)–(3)) | ICT third-party contractual arrangements; financial entity |
+| GDPR | SG-GDPR-022, SG-GDPR-033, SG-GDPR-035 | Eight-element DPA per Art. 28(3)(a)–(h) + sufficient-guarantees processor selection + Art. 46 appropriate safeguards + Art. 47 BCR + Art. 48 third-country request filter | Personal data processing contracts; controller/processor |
+| NIS2 | SG-NIS2-015, SG-NIS2-016 | Supplier three-prong assessment (vulnerabilities + quality + secure-development) + EU-level coordinated supply-chain risk-assessment integration (Art. 21(3) + Art. 22) | Direct supplier contractual obligations; per-supplier |
+| CRA | SG-CRA-039, SG-CRA-040 | Importer pre-market verification + 10-year conformity retention + distributor due-care + non-conformity escalation (Art. 19 + Art. 20) | Economic operator (importer/distributor) contractual obligations; market access |
+| DORA | SG-DORA-012 | Rights and obligations clearly allocated + 9 minimum elements (a)–(i) + unrestricted audit rights (Art. 30(1)–(3)) | ICT third-party contractual arrangements; financial entity |
 | AI_Act | — | Out-of-scope (sole authority: DORA) | n/a |
 **Sole-authority note:** AI Act is out-of-scope for D-06.3 per AEGIS taxonomy §4.1. DORA is the sole authority for ICT-services contractual-security architecture (Art. 30 minimum elements + audit rights).
 ##### Pairwise matrix

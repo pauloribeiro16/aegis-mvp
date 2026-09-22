@@ -7,7 +7,7 @@
 
 #### D-05.3.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-05.3.HL
+id: SG-D-05.3.HL
 subdomain: D-05.3
 applies_to: auto  # activates when ≥2 applicable regs target overlapping erasure layers on the same party AND ≥1 sub-SO activates
 status: static

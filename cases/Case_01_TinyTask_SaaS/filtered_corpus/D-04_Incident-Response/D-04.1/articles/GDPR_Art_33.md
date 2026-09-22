@@ -36,19 +36,19 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-GDPR-008 | Personal data breaches are detected and triaged; the moment of "becoming aware" is documented to anchor the 72-hour notification clock. | `GDPR-CP17` (Art. 33(1)); `GDPR-C06` (Art. 4(12) — breach definition) | D-04.1 |
-| SO-GDPR-008 | D-04.1, D-10.1 | Art. 4(12), Art. 33(1) | Breach detection and "becoming aware" anchoring |
-| SO-GDPR-009 | Personal data breaches are contained and mitigated through appropriate technical and organisational measures (including, where applicable, measures rendering the data unintelligible to unauthorised parties, and subsequent measures that ensure the high risk no longer materialises). | `GDPR-CP18` (Art. 33(3)(d)); `GDPR-CP20` (Art. 34(3)(a)/(b)) | D-04.2 |
-| SO-GDPR-009 | D-04.2 | Art. 33(3)(d), Art. 34(3)(a)/(b) | Containment and mitigation of breaches |
-| SO-GDPR-010 | Personal data breaches are notified to the supervisory authority without undue delay and, where feasible, no later than 72 hours after the controller becomes aware, unless the breach is unlikely to result in a risk to data subjects' rights and freedoms. | `GDPR-CP17` (Art. 33(1)); `GDPR-C06` (Art. 4(12)) | D-04.3 |
-| SO-GDPR-010 | D-04.3 | Art. 33(1), Art. 4(12) | 72h notification to supervisory authority |
-| SO-GDPR-011 | Personal data breaches likely to result in a high risk to data subjects are communicated to the affected data subjects without undue delay, in clear and plain language, unless one of the three Art. 34(3) exceptions applies. | `GDPR-CP19` (Art. 34(1)/(2)/(3)); `GDPR-CP18` (Art. 33(3)(b)/(c)/(d)) | D-04.3 |
-| SO-GDPR-030 | Personal-data processing systems and services are monitored for adverse events covering the five Art. 32(2) risk types (accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to personal data), with a clear definition of the moment of "becoming aware of" a breach to anchor the Art. 33(1) notification clock. | `GDPR-CP16` (Art. 32(2)); `GDPR-CP17` (Art. 33(1) — `becoming aware`); `GDPR-CP15` (Art. 32(1)(b)) | D-10.1, D-04.1 |
-| SO-GDPR-030 | D-10.1, D-04.1 | Art. 32(2), Art. 33(1), Art. 32(1)(b) | Monitoring the five Art. 32(2) risk types |
+| SG-GDPR-008 | Personal data breaches are detected and triaged; the moment of "becoming aware" is documented to anchor the 72-hour notification clock. | `GDPR-CP17` (Art. 33(1)); `GDPR-C06` (Art. 4(12) — breach definition) | D-04.1 |
+| SG-GDPR-008 | D-04.1, D-10.1 | Art. 4(12), Art. 33(1) | Breach detection and "becoming aware" anchoring |
+| SG-GDPR-009 | Personal data breaches are contained and mitigated through appropriate technical and organisational measures (including, where applicable, measures rendering the data unintelligible to unauthorised parties, and subsequent measures that ensure the high risk no longer materialises). | `GDPR-CP18` (Art. 33(3)(d)); `GDPR-CP20` (Art. 34(3)(a)/(b)) | D-04.2 |
+| SG-GDPR-009 | D-04.2 | Art. 33(3)(d), Art. 34(3)(a)/(b) | Containment and mitigation of breaches |
+| SG-GDPR-010 | Personal data breaches are notified to the supervisory authority without undue delay and, where feasible, no later than 72 hours after the controller becomes aware, unless the breach is unlikely to result in a risk to data subjects' rights and freedoms. | `GDPR-CP17` (Art. 33(1)); `GDPR-C06` (Art. 4(12)) | D-04.3 |
+| SG-GDPR-010 | D-04.3 | Art. 33(1), Art. 4(12) | 72h notification to supervisory authority |
+| SG-GDPR-011 | Personal data breaches likely to result in a high risk to data subjects are communicated to the affected data subjects without undue delay, in clear and plain language, unless one of the three Art. 34(3) exceptions applies. | `GDPR-CP19` (Art. 34(1)/(2)/(3)); `GDPR-CP18` (Art. 33(3)(b)/(c)/(d)) | D-04.3 |
+| SG-GDPR-030 | Personal-data processing systems and services are monitored for adverse events covering the five Art. 32(2) risk types (accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to personal data), with a clear definition of the moment of "becoming aware of" a breach to anchor the Art. 33(1) notification clock. | `GDPR-CP16` (Art. 32(2)); `GDPR-CP17` (Art. 33(1) — `becoming aware`); `GDPR-CP15` (Art. 32(1)(b)) | D-10.1, D-04.1 |
+| SG-GDPR-030 | D-10.1, D-04.1 | Art. 32(2), Art. 33(1), Art. 32(1)(b) | Monitoring the five Art. 32(2) risk types |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-014
@@ -57,7 +57,7 @@ status: DRAFT
     - { clause_id: GDPR-CP17, article_ref: "Art. 33(1) — 72-hour notification trigger" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(b) — confidentiality of processing systems" }
     - { clause_id: GDPR-C06, article_ref: "Art. 4(12) — personal data breach definition" }
-  linked_objectives: [SO-GDPR-008]
+  linked_objectives: [SG-GDPR-008]
   sub_domain: [D-04.1, D-10.1]
   nist_csf_mapping:
     - { id: DE.CM-01, title: "Networks monitored for potentially adverse events" }
@@ -77,7 +77,7 @@ status: DRAFT
     `becoming aware` (Art. 33(1)) carries POLY-S3. Reading chosen: documented awareness by a controller employee with delegated breach-handling responsibility, the moment the breach is captured by the controller's detection capability. An alternative reading that awareness attaches whenever any employee becomes aware, including informally, is rejected because it would force an unreasonably early clock and is inconsistent with how organisations actually triage. A third reading that awareness occurs only when senior management is formally briefed is too late and creates compliance risk. The chosen reading is consistent with EDPB Guidelines 9/2022 §3.4 and aligns with the controller's documented incident-response procedure. Operationally, controllers designate a breach-handling role, document the awareness moment, and timestamp detection events to support the 72-hour clock calculation. Remain open: (a) whether AI-driven anomaly detection that flags a breach but does not escalate within the controller's documented procedure still constitutes "awareness", pending EDPB guidance on automated detection; and (b) how the awareness moment is established when the breach is detected by a sub-processor rather than the controller, pending alignment with Art. 33(2) processor notification.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-015
@@ -86,7 +86,7 @@ status: DRAFT
     - { clause_id: GDPR-CP18, article_ref: "Art. 33(3)(d) — measures taken or proposed" }
     - { clause_id: GDPR-CP20, article_ref: "Art. 34(3)(a)/(b) — measures to render data unintelligible / subsequent measures" }
     - { clause_id: GDPR-CP15, article_ref: "Art. 32(1)(d) — testing" }
-  linked_objectives: [SO-GDPR-009]
+  linked_objectives: [SG-GDPR-009]
   sub_domain: [D-04.2]
   nist_csf_mapping:
     - { id: RS.MI-01, title: "Incidents contained" }
@@ -107,7 +107,7 @@ status: DRAFT
     Art. 34(3)(a) carries VAG-S3 on `unintelligible` (see SR-GDPR-004 for chosen reading). All readings converge on the operational containment and mitigation obligation. The `where appropriate` hedge in Art. 33(3)(d) is read as the controller's reasonable judgement on whether mitigation measures exist and are material; it is not a discretion to omit the field. Art. 34(3)(b) `subsequent measures which ensure that the high risk to the rights and freedoms of data subjects referred to in paragraph 1 is no longer likely to materialise` is the harder threshold: the controller must demonstrate that mitigation actually neutralises the high risk, not merely that mitigation was attempted. Remain open: (a) whether the controller's notification to the supervisory authority under Art. 33(3)(d) must include proposed measures when containment is still in progress, or only taken measures with a separate proposed-measures addendum, pending EDPB guidance; and (b) how the mitigation obligation applies to breaches that originate at a sub-processor, pending alignment with Art. 33(2) processor notification.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-016
@@ -117,7 +117,7 @@ status: DRAFT
     - { clause_id: GDPR-C06, article_ref: "Art. 4(12) — personal data breach" }
     - { clause_id: GDPR-CP16, article_ref: "Art. 32(2) — risk enumeration" }
     - { clause_id: GDPR-C09, article_ref: "Art. 4(22) — supervisory authority concerned" }
-  linked_objectives: [SO-GDPR-010]
+  linked_objectives: [SG-GDPR-010]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents reported internally to appropriate stakeholders" }
@@ -137,7 +137,7 @@ status: DRAFT
     `without undue delay and, where feasible, not later than 72 hours` carries S3 VAG+SCOPE on the double temporal anchor. Reading chosen: 72 hours is the hard ceiling; `without undue delay` requires action immediately upon awareness; `where feasible` is a narrow, technical-feasibility exception (e.g. forensic preservation in progress, key personnel unavailable through the night). The threshold `unlikely to result in a risk` is interpreted via EDPB Guidelines 9/2022 as the precautionary principle: notification is required unless the controller can demonstrate that the breach is unlikely to result in a risk, and the demonstration burden rests with the controller. An alternative reading that controller judgement suffices with no demonstration required is rejected because it inverts the burden and is inconsistent with EDPB practice. Remain open: (a) whether the 72-hour clock resets on material new information about the same breach, or runs continuously from initial awareness, pending EDPB clarification; and (b) how the `where feasible` exception applies when the controller is in a multi-jurisdictional incident with different working hours, pending alignment with NIS 2 incident-handling timelines.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-017
@@ -145,7 +145,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP17, article_ref: "Art. 33(2) — processor-to-controller notification" }
     - { clause_id: GDPR-C06, article_ref: "Art. 4(12) — personal data breach" }
-  linked_objectives: [SO-GDPR-010]
+  linked_objectives: [SG-GDPR-010]
   sub_domain: [D-04.3, D-06.3]
   nist_csf_mapping:
     - { id: RS.CO-02, title: "Incidents reported internally to appropriate stakeholders" }
@@ -164,7 +164,7 @@ status: DRAFT
     `without undue delay` inherits S3 VAG ambiguity (Berry §5.1). Reading chosen: action on the same operational shift or business day, with hard escalation channels documented in the Art. 28(3) processor contract. An alternative reading fixing the window at 24 hours is acceptable but operationally narrower. A third reading extending the window to 72 hours (mirroring the controller's clock) is rejected because it would compress the controller's own window to zero in practice. The chosen reading aligns with EDPB Guidelines 9/2022 §3.4 and ISO 27001 A.16.1.2 reporting expectations. Remain open: whether AI-driven detection by the processor that flags a probable breach without confirmation triggers the `without undue delay` clock, or whether confirmation is required, pending EDPB guidance on probabilistic detection.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-018
@@ -172,7 +172,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP17, article_ref: "Art. 33(3)(a)/(b)/(c)/(d) — notification content" }
     - { clause_id: GDPR-CP17, article_ref: "Art. 33(1) — overall 72h envelope" }
-  linked_objectives: [SO-GDPR-010]
+  linked_objectives: [SG-GDPR-010]
   sub_domain: [D-04.3, D-09.4]
   nist_csf_mapping:
     - { id: RS.AN-03, title: "Analysis performed to determine what occurred and root cause" }
@@ -193,7 +193,7 @@ status: DRAFT
     `where possible`, `approximate number`, `likely consequences` are acknowledged VAG-S2. Reading chosen: best-effort reporting at the time of notification, with subsequent updates as investigation proceeds. The Art. 33(4) phased-disclosure mechanism supports this: the controller can provide initial incomplete information and supplement as it becomes available, provided the reasons for incompleteness are documented. An alternative reading requiring precise reporting at 72 hours is rejected: the OJ text explicitly softens with `where possible` and `approximate`. Remain open: (a) whether the phased-disclosure model applies to each Art. 33(3) element independently or only to elements (a), (c), and (d), pending EDPB Guidelines 9/2022 revision; and (b) how the controller documents the boundary between initial notification and supplemental disclosure in audit defensible form, pending alignment with ISO 27035 incident-management practice.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-019
@@ -202,7 +202,7 @@ status: DRAFT
     - { clause_id: GDPR-CP19, article_ref: "Art. 34(1) — high-risk breach communication to data subject" }
     - { clause_id: GDPR-CP19, article_ref: "Art. 34(2) — content of communication" }
     - { clause_id: GDPR-CP16, article_ref: "Art. 32(2) — risk enumeration (cross)" }
-  linked_objectives: [SO-GDPR-011]
+  linked_objectives: [SG-GDPR-011]
   sub_domain: [D-04.3]
   nist_csf_mapping:
     - { id: RS.CO-03, title: "Information shared with designated stakeholders per information-sharing rules" }
@@ -221,7 +221,7 @@ status: DRAFT
     `likely to result in a high risk` carries POLY+VAG-S3 (the three-tier `risk`/`high risk`/`high risk` architecture across Arts. 33, 34, 35). Reading chosen: the Art. 34 threshold is higher than the Art. 33 threshold — objectively elevated above ordinary processing risk, per EDPB Guidelines 9/2022. An alternative reading treating the threshold as severe impact on data subject's rights, per CNIL guidance, is operationally similar but framing-different. The chosen reading treats the threshold as risk-of-significant-harm, not merely risk-of-any-harm; the controller documents the risk assessment with reference to the data categories (Art. 9 special categories raise the threshold), the data-subject population (vulnerable populations raise the threshold), and the breach characteristics (encrypted vs plaintext, contained vs ongoing). Remain open: (a) whether `clear and plain language` requires a CEFR B1 reading-age standard or whether national DPA guidance is acceptable, pending EDPB harmonisation; and (b) whether the Art. 34 communication can be combined with Art. 33 notification to the supervisory authority, or must be a separate communication, pending EDPB Guidelines 9/2022 clarification.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-020
@@ -230,7 +230,7 @@ status: DRAFT
     - { clause_id: GDPR-CP20, article_ref: "Art. 34(3)(a) — encryption/unintelligibility exception" }
     - { clause_id: GDPR-CP20, article_ref: "Art. 34(3)(b) — subsequent-measures exception" }
     - { clause_id: GDPR-CP19, article_ref: "Art. 34(1) — high-risk trigger" }
-  linked_objectives: [SO-GDPR-011, SO-GDPR-002]
+  linked_objectives: [SG-GDPR-011, SG-GDPR-002]
   sub_domain: [D-04.3, D-01.3]
   nist_csf_mapping:
     - { id: PR.DS-01, title: "Data-at-rest protected" }
@@ -250,7 +250,7 @@ status: DRAFT
     Both exceptions carry VAG-S3 (see SR-GDPR-004 for `unintelligible` reading chosen). The `no longer likely to materialise` wording in Art. 34(3)(b) is read as a high threshold: the controller must demonstrate that the mitigation has materially reduced the risk below the Art. 34(1) threshold, not merely that mitigation was attempted. The Art. 34(3)(a) operational condition `those measures were applied to the personal data affected by the personal data breach` requires the controller to demonstrate that the encryption protected the actual affected dataset, not merely that encryption was deployed on the dataset generally. Rule preserves the cryptographic-reading exception. Remain open: (a) whether rotation of cryptographic keys after the breach (treating the old keys as compromised) satisfies the Art. 34(3)(a) carve-out when the controller retains access to old keys for legitimate purposes, pending EDPB clarification; and (b) how the Art. 34(3)(b) `subsequent measures` carve-out interacts with the Art. 33 supervisory-authority notification (which is not carved out), pending alignment with EDPB Guidelines 9/2022.
 ```
 
-### SO-GDPR-001 / SO-GDPR-014 (CIA + resilience)
+### SG-GDPR-001 / SG-GDPR-014 (CIA + resilience)
 
 ```yaml
 - sr_id: SR-GDPR-049
@@ -258,7 +258,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: GDPR-CP16, article_ref: "Art. 32(2) — risk enumeration" }
     - { clause_id: GDPR-CP17, article_ref: "Art. 33(1) — breach awareness (cross)" }
-  linked_objectives: [SO-GDPR-030]
+  linked_objectives: [SG-GDPR-030]
   sub_domain: [D-10.1, D-04.1]
   nist_csf_mapping:
     - { id: DE.CM-01, title: "Networks and network services are monitored to find potentially adverse events" }

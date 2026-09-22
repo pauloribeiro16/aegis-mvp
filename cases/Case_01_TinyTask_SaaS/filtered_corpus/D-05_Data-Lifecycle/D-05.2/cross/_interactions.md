@@ -41,9 +41,9 @@
 #### Participants (from CRDA-deep §D-05.2)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-017 | Personal data kept no longer than necessary; longer only where lawful and Art. 89(1) safeguards in place (Art. 5(1)(e) storage limitation + Art. 30(1)(f) RoPA retention time-limits) | Personal data; storage limitation; controller/processor; Art. 5(1)(e) + Art. 30(1)(f) + Art. 89(1); ID.AM-08 + ID.AM-03 |
-| CRA | SO-CRA-035 + SO-CRA-061 (cross-ref) | Security updates and supporting advisory messages remain available across support period + Art. 13(18) 10-year Annex II information accessibility | Update artefacts (firmware, patches, advisories) + Annex II information; manufacturer obligation; Annex I Part II (7)/(8) + Art. 13(9) 10-year tail + Art. 13(18) 10-year information accessibility + Art. 13(8) 5-year support-period floor; PR.PS-02 + GV.OC-04 (10-year tail SR) + PR.PS-02 + GV.OV-02 |
-| AI_Act | SO-AIACT-006 | High-risk AI system logs retained for ≥6 months aligned with intended purpose, unless Union/national law provides otherwise (Art. 19(1); T5 mapping error on Art. 12(4) per `SR-AIACT-008` `ambiguity_notes`) | AI logs; minimum floor; provider obligation; Art. 19(1) 6-month floor + `under their control` POLY + GDPR escape clause; PR.PS-04 + GV.PO-02 |
+| GDPR | SG-GDPR-017 | Personal data kept no longer than necessary; longer only where lawful and Art. 89(1) safeguards in place (Art. 5(1)(e) storage limitation + Art. 30(1)(f) RoPA retention time-limits) | Personal data; storage limitation; controller/processor; Art. 5(1)(e) + Art. 30(1)(f) + Art. 89(1); ID.AM-08 + ID.AM-03 |
+| CRA | SG-CRA-035 + SG-CRA-061 (cross-ref) | Security updates and supporting advisory messages remain available across support period + Art. 13(18) 10-year Annex II information accessibility | Update artefacts (firmware, patches, advisories) + Annex II information; manufacturer obligation; Annex I Part II (7)/(8) + Art. 13(9) 10-year tail + Art. 13(18) 10-year information accessibility + Art. 13(8) 5-year support-period floor; PR.PS-02 + GV.OC-04 (10-year tail SR) + PR.PS-02 + GV.OV-02 |
+| AI_Act | SG-AIACT-006 | High-risk AI system logs retained for ≥6 months aligned with intended purpose, unless Union/national law provides otherwise (Art. 19(1); T5 mapping error on Art. 12(4) per `SR-AIACT-008` `ambiguity_notes`) | AI logs; minimum floor; provider obligation; Art. 19(1) 6-month floor + `under their control` POLY + GDPR escape clause; PR.PS-04 + GV.PO-02 |
 
 ## Validated relationships (from CRDA-deep §D-05.2)
 
@@ -126,7 +126,7 @@ retention duty applies to.
 ## Scope-overlap principle (operational). The high-level SO
 
 #### Scope-overlap principle (operational). The high-level SO
-(`SO-D-05.2.HL`) engages on a given party **if and only if ≥2 applicable
+(`SG-D-05.2.HL`) engages on a given party **if and only if ≥2 applicable
 regulations' data-class scope-determiners overlap on the same party**
 (e.g. a GDPR controller that also manufactures CRA-regulated products
 and operates a high-risk AI system processing personal data in both
@@ -369,7 +369,7 @@ three sub-SOs and the per-recipient evidence packs.
 A company with ≥2 applicable regulations in scope of D-05.2 — with
 overlapping data-class scope-determiners on the same party — operates
 a **3-axis retention/archiving architecture** with explicit
-axis-segregated hand-offs. The high-level SO (`SO-D-05.2.HL`)
+axis-segregated hand-offs. The high-level SO (`SG-D-05.2.HL`)
 describes the common retention/archiving duty as the 3-axis layering
 rule (GDPR ceiling on personal data + AI Act minimum floor on AI
 logs + CRA availability tail on update artefacts); the per-reg
@@ -447,7 +447,7 @@ GDPR, CRA, AI Act (3 of 5 regs — NIS 2 and DORA are out-of-scope per AEGIS tax
   volere_subtype: privacy
   title: "Data retained for the period required to satisfy its declared purpose — 3-axis retention/archiving architecture (GDPR ceiling + AI Act floor + CRA availability tail) with separation architecture where regimes overlap"
   derives_from:
-    hso_sub_so: SO-D-05.2.HL
+    hso_sub_so: SG-D-05.2.HL
     hso_file: ../../HierarchicalSecurityObjectives/D-05_Data-Lifecycle/D-05.2.md
     objective_ref_section: "### D-05.2.0"
   description: |
@@ -504,11 +504,11 @@ status: DRAFT
 ##### Participants
 | Regulation | SO ID | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-017 | Personal data kept no longer than necessary; longer only where lawful and Art. 89(1) safeguards in place (Art. 5(1)(e) + Art. 30(1)(f)) | Personal data; storage limitation |
+| GDPR | SG-GDPR-017 | Personal data kept no longer than necessary; longer only where lawful and Art. 89(1) safeguards in place (Art. 5(1)(e) + Art. 30(1)(f)) | Personal data; storage limitation |
 | NIS2 | — | Out-of-scope (sole authority: GDPR) | n/a |
-| CRA | SO-CRA-035 | Security updates and advisories remain available across support period + 10-year update-availability tail (Art. 13(9) + Annex I Part II (7)/(8)) | Product updates; support-period continuity |
+| CRA | SG-CRA-035 | Security updates and advisories remain available across support period + 10-year update-availability tail (Art. 13(9) + Annex I Part II (7)/(8)) | Product updates; support-period continuity |
 | DORA | — | Out-of-scope (sole authority: GDPR) | n/a |
-| AI_Act | SO-AIACT-006 | High-risk AI system logs retained for ≥6 months aligned with intended purpose, unless Union/national law provides otherwise (Art. 19(1)) | AI logs; minimum floor |
+| AI_Act | SG-AIACT-006 | High-risk AI system logs retained for ≥6 months aligned with intended purpose, unless Union/national law provides otherwise (Art. 19(1)) | AI logs; minimum floor |
 **Sole-authority note:** NIS2 and DORA are out-of-scope for D-05.2 per AEGIS taxonomy §4.1 — DORA Art. 12(1) backup policies specify scope and frequency but do not impose retention/archiving obligations as such. GDPR is the dedicated authority for retention; CRA addresses the distinct update-availability tail; AI Act addresses the distinct AI-log minimum floor.
 ##### Pairwise matrix
 

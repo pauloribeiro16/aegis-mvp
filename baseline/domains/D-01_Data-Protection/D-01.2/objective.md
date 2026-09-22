@@ -7,7 +7,7 @@
 
 #### D-01.2.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-01.2.HL
+id: SG-D-01.2.HL
 subdomain: D-01.2
 applies_to: auto  # activates when ≥2 applicable regs overlap on same channel
 status: static

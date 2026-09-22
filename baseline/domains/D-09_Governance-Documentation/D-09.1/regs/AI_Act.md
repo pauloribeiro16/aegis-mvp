@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| AI_Act | SO-AIACT-007 + SO-AIACT-010 | High-risk AI systems are designed and developed so their operation is sufficiently transparent to enable deployers to interpret output and use it appropriately, accompanied by concise, complete, correct and clear instructions for use (Art. 13(1)+(3)); a quality management system documented in a systematic and orderly manner in the form of written policies, procedures and instructions covering at least 13 enumerated aspects including design/design control/design verification and risk-management-system documentation (Art. 17(1)). | AI-system-specific policy carrier via QMS; transparency-to-deployers as policy content. |
+| AI_Act | SG-AIACT-007 + SG-AIACT-010 | High-risk AI systems are designed and developed so their operation is sufficiently transparent to enable deployers to interpret output and use it appropriately, accompanied by concise, complete, correct and clear instructions for use (Art. 13(1)+(3)); a quality management system documented in a systematic and orderly manner in the form of written policies, procedures and instructions covering at least 13 enumerated aspects including design/design control/design verification and risk-management-system documentation (Art. 17(1)). | AI-system-specific policy carrier via QMS; transparency-to-deployers as policy content. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-09.1.5 — Sub-SO for AI Act
 
 ```yaml
-id: SO-D-09.1.AI_Act
+id: SG-D-09.1.AI_Act
 subdomain: D-09.1
 applies_to: [AI_Act]
-inherits_from: SO-AIACT-007 + SO-AIACT-010
+inherits_from: SG-AIACT-007 + SG-AIACT-010
 source_SR: SR-AIACT-010 + SR-AIACT-011 + SR-AIACT-017 + SR-AIACT-019
 activation: if AI_Act in applicable_regs
 phase_1A_role: 1_of_5
@@ -50,7 +50,7 @@ GOVERN-1.4, MAP-1.1, MEASURE-2.8, MEASURE-2.9, GOVERN-1.1, GOVERN-1.3, GOVERN-1.
 
   derives_from:
     hso_sub_so: SO-9.1.AI_Act
-    per_reg_so: SO-AIACT-007 + SO-AIACT-010
+    per_reg_so: SG-AIACT-007 + SG-AIACT-010
     source_sr: SR-AIACT-010 + SR-AIACT-017
     hso_file: ../../HierarchicalSecurityObjectives/D-09_Governance-Documentation/9.1.md
     objective_ref_section: "### 9.1.5"

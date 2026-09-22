@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| AI_Act | SO-AIACT-009 + SO-AIACT-010 | High-risk AI systems achieve appropriate level of accuracy, robustness, and cybersecurity with lifecycle consistency (Art. 15(1) + Art. 15(4)–(5)) + a QMS with 13 enumerated aspects including design/design control/design verification (Art. 17(1)+(1)(c)). | AI-system-specific design discipline; QMS as formal carrier of design controls; lifecycle-consistency clause as qualitative cross-cutting requirement; SR-AIACT-014 (Art. 15(1)) + SR-AIACT-018 (Art. 17(1)(c)). |
+| AI_Act | SG-AIACT-009 + SG-AIACT-010 | High-risk AI systems achieve appropriate level of accuracy, robustness, and cybersecurity with lifecycle consistency (Art. 15(1) + Art. 15(4)–(5)) + a QMS with 13 enumerated aspects including design/design control/design verification (Art. 17(1)+(1)(c)). | AI-system-specific design discipline; QMS as formal carrier of design controls; lifecycle-consistency clause as qualitative cross-cutting requirement; SR-AIACT-014 (Art. 15(1)) + SR-AIACT-018 (Art. 17(1)(c)). |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-07.1.5 — Sub-SO for AI Act
 
 ```yaml
-id: SO-D-07.1.AIACT
+id: SG-D-07.1.AIACT
 subdomain: D-07.1
 applies_to: [AI_Act]
-inherits_from: SO-AIACT-009 + SO-AIACT-010
+inherits_from: SG-AIACT-009 + SG-AIACT-010
 source_SR: SR-AIACT-014
 activation: if AI_Act in applicable_regs
 phase_1A_role: 1_of_N
@@ -54,8 +54,8 @@ MEASURE-2.5, MEASURE-2.6, MEASURE-2.7, GOVERN-1.2.
   title: "High-risk AI systems designed and developed to achieve appropriate level of accuracy, robustness, and cybersecurity, performing consistently throughout their lifecycle, with QMS covering design/design-control/design-verification"
 
   derives_from:
-    hso_sub_so: SO-D-07.1.AIACT
-    per_reg_so: SO-AIACT-009, SO-AIACT-010
+    hso_sub_so: SG-D-07.1.AIACT
+    per_reg_so: SG-AIACT-009, SG-AIACT-010
     source_sr: SR-AIACT-014, SR-AIACT-018
     hso_file: ../../HierarchicalSecurityObjectives/D-07_Secure-Development/D-07.1.md
     objective_ref_section: "### D-07.1.5"

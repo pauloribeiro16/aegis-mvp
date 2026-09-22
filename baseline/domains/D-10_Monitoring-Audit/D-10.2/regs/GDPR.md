@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-031 | Compliance records (records of processing, consent records, processor contract records, breach notification records, DPIA records) are maintained in writing or in electronic form with integrity and traceability sufficient to demonstrate compliance and to support supervisory-authority inspections. | Entity-level compliance-record integrity + traceability; Art. 30(3) `in writing, including in electronic form` + Art. 5(2) `demonstrate compliance` (accountability) + Art. 31 SA cooperation; supervisor authority access on request. |
+| GDPR | SG-GDPR-031 | Compliance records (records of processing, consent records, processor contract records, breach notification records, DPIA records) are maintained in writing or in electronic form with integrity and traceability sufficient to demonstrate compliance and to support supervisory-authority inspections. | Entity-level compliance-record integrity + traceability; Art. 30(3) `in writing, including in electronic form` + Art. 5(2) `demonstrate compliance` (accountability) + Art. 31 SA cooperation; supervisor authority access on request. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-10.2.1 — Sub-SO for GDPR
 
 ```yaml
-id: SO-D-10.2.GDPR
+id: SG-D-10.2.GDPR
 subdomain: D-10.2
 applies_to: [GDPR]
-inherits_from: SO-GDPR-031
+inherits_from: SG-GDPR-031
 source_SR: SR-GDPR-044 + SR-GDPR-048 + SR-GDPR-050
 activation: if GDPR in applicable_regs
 phase_1A_role: 1_of_4
@@ -51,7 +51,7 @@ GV.MT-P3, GV.PO-P5, ID.IM-P1, ID.IM-P4, ID.IM-P6, ID.IM-P8, CT.DM-P9.
 
   derives_from:
     hso_sub_so: SO-10.2.GDPR
-    per_reg_so: SO-GDPR-031
+    per_reg_so: SG-GDPR-031
     source_sr: SR-GDPR-044 + SR-GDPR-048 + SR-GDPR-050
     hso_file: ../../HierarchicalSecurityObjectives/D-10_Monitoring-Audit/10.2.md
     objective_ref_section: "### 10.2.1"

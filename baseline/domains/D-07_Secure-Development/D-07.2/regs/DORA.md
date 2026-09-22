@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | (no OJ-mandated D-07.2 SO; partial via SO-DORA-013 Art. 9(4)(e) — D-07.4 primary) | No dedicated secure-coding mandate in OJ; AEGIS taxonomy §4.1 marks DORA as sole authority but OJ-literal text is silent. **T4-vs-text gap awareness:** T4 maps DORA-C19 (Art. 9(4)(f) patches and updates) to D-07.2 but the OJ text is about patch-management policies, not coding practices. The SR-DORA-023 Art. 9(4)(e) change-management **partially** maps to D-07.2 as inference only (D-07.4 primary). | **Entity-level process** (six-step change management per Art. 9(4)(e) — recorded/tested/assessed/approved/implemented/verified). The DORA-side participation at D-07.2 is **partial** by inference (Art. 9(4)(e) change-mgmt implies secure-coding dimension through testing-vulnerability-assessments + source-code-reviews as part of the testing modalities per Art. 25, but no OJ-mandated coding-standard prescription). |
+| DORA | (no OJ-mandated D-07.2 SO; partial via SG-DORA-013 Art. 9(4)(e) — D-07.4 primary) | No dedicated secure-coding mandate in OJ; AEGIS taxonomy §4.1 marks DORA as sole authority but OJ-literal text is silent. **T4-vs-text gap awareness:** T4 maps DORA-C19 (Art. 9(4)(f) patches and updates) to D-07.2 but the OJ text is about patch-management policies, not coding practices. The SR-DORA-023 Art. 9(4)(e) change-management **partially** maps to D-07.2 as inference only (D-07.4 primary). | **Entity-level process** (six-step change management per Art. 9(4)(e) — recorded/tested/assessed/approved/implemented/verified). The DORA-side participation at D-07.2 is **partial** by inference (Art. 9(4)(e) change-mgmt implies secure-coding dimension through testing-vulnerability-assessments + source-code-reviews as part of the testing modalities per Art. 25, but no OJ-mandated coding-standard prescription). |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-07.2.2 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-07.2.DORA
+id: SG-D-07.2.DORA
 subdomain: D-07.2
 applies_to: [DORA]
-inherits_from: SO-DORA-013 (partial via Art. 9(4)(e) — D-07.4 primary, D-07.2 partial by inference only)
+inherits_from: SG-DORA-013 (partial via Art. 9(4)(e) — D-07.4 primary, D-07.2 partial by inference only)
 source_SR: SR-DORA-023
 activation: if DORA in applicable_regs
 phase_1A_role: 1_of_N
@@ -54,8 +54,8 @@ PR.PS-01, PR.PS-02, PR.PS-06.
   title: "ICT change-management six-step (recorded/tested/assessed/approved/implemented/verified) with implicit coding-dimension inference through tested/assessed legs and Art. 25 testing modalities (DORA partial — no OJ-mandated secure-coding-standards prescription; SR-DORA-023 partial at D-07.2 by inference only, D-07.4 primary)"
 
   derives_from:
-    hso_sub_so: SO-D-07.2.DORA
-    per_reg_so: SO-DORA-013 (partial via Art. 9(4)(e) — D-07.4 primary, D-07.2 partial by inference only)
+    hso_sub_so: SG-D-07.2.DORA
+    per_reg_so: SG-DORA-013 (partial via Art. 9(4)(e) — D-07.4 primary, D-07.2 partial by inference only)
     source_sr: SR-DORA-023
     hso_file: ../../HierarchicalSecurityObjectives/D-07_Secure-Development/D-07.2.md
     objective_ref_section: "### D-07.2.2"

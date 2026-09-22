@@ -7,7 +7,7 @@
 
 #### D-09.1.0 — High-level SecurityObjective
 ```yaml
-id: SO-D-09.1.HL
+id: SG-D-09.1.HL
 subdomain: D-09.1
 applies_to: auto  # activates when ≥2 applicable regs have ≥1 pair with Y or Conditional-Y-on-same-party scope overlap AND ≥1 sub-SO activates; for D-09.1 the matrix above shows every pair has Y or Conditional-Y activation on the joint-condition operator (no N (typically) scope-disjoint pairs), so the high-level SO engages whenever ≥2 regs are applicable; the 9 SAME — COMPLEMENTARY pairs stack on a layered 5-policy architecture; the 1 SAME — EQUAL pair (NIS 2 ↔ DORA) discharges both obligations on the DORA-dominant stack for financial entities. The high-level SO does NOT collapse any per-reg policy artefact; it surfaces the common documented-policy-architecture duty with the per-reg anchor, governance body, content template, threshold, evidence template, and recipient preserved verbatim in the 5 sub-SOs.
 status: static

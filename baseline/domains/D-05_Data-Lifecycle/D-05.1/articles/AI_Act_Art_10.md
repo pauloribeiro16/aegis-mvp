@@ -30,14 +30,14 @@ status: DRAFT
 
 | SO ID | Description | Source clauses | Sub-domain |
 |---|---|---|---|
-| SO-AIACT-003 | High-risk AI systems which make use of techniques involving the training of AI models with data are developed on the basis of training, validation and testing data sets that meet quality criteria, supported by data governance practices that detect, prevent and mitigate possible biases and that allow the detection of biases in view of the intended purpose. | `AIA-C05` (Art. 10(1) `quality criteria` + 3-way dataset AND); `AIA-C06` (Art. 10(2) 8-element list of data governance practices + 3-way AND of bias activities + `biases` POLY); `AIA-C08` (Art. 10(5) special-category data + `strictly necessary` + `state-of-the-art` + 6 cumulative conditions (a)–(f)) | D-05.1, D-05.2 |
-| SO-AIACT-003 | D-05.1, D-05.2 | Art. 10(1)+(2)+(3) | Data governance practices + dataset quality + bias detection |
-| SO-AIACT-004 | Where strictly necessary for the purpose of ensuring bias detection and correction in high-risk AI systems, providers may exceptionally process special categories of personal data subject to appropriate safeguards and six cumulative conditions, including state-of-the-art security and privacy-preserving measures. | `AIA-C08` (Art. 10(5) — exception to GDPR Art. 9 prohibition; 6 cumulative conditions (a)–(f) all required; cross-regulation borrow from GDPR) | D-05.1 |
-| SO-AIACT-004 | D-05.1 | Art. 10(5) | Special-category data for bias detection with 6 cumulative conditions |
+| SG-AIACT-003 | High-risk AI systems which make use of techniques involving the training of AI models with data are developed on the basis of training, validation and testing data sets that meet quality criteria, supported by data governance practices that detect, prevent and mitigate possible biases and that allow the detection of biases in view of the intended purpose. | `AIA-C05` (Art. 10(1) `quality criteria` + 3-way dataset AND); `AIA-C06` (Art. 10(2) 8-element list of data governance practices + 3-way AND of bias activities + `biases` POLY); `AIA-C08` (Art. 10(5) special-category data + `strictly necessary` + `state-of-the-art` + 6 cumulative conditions (a)–(f)) | D-05.1, D-05.2 |
+| SG-AIACT-003 | D-05.1, D-05.2 | Art. 10(1)+(2)+(3) | Data governance practices + dataset quality + bias detection |
+| SG-AIACT-004 | Where strictly necessary for the purpose of ensuring bias detection and correction in high-risk AI systems, providers may exceptionally process special categories of personal data subject to appropriate safeguards and six cumulative conditions, including state-of-the-art security and privacy-preserving measures. | `AIA-C08` (Art. 10(5) — exception to GDPR Art. 9 prohibition; 6 cumulative conditions (a)–(f) all required; cross-regulation borrow from GDPR) | D-05.1 |
+| SG-AIACT-004 | D-05.1 | Art. 10(5) | Special-category data for bias detection with 6 cumulative conditions |
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-004
@@ -45,7 +45,7 @@ status: DRAFT
   source_clauses:
     - { clause_id: AIA-C05, article_ref: "Art. 10(1) — `High-risk AI systems which make use of techniques involving the training of AI models with data shall be developed on the basis of training, validation and testing data sets that meet the quality criteria referred to in paragraphs 2 to 5 whenever such data sets are used`" }
     - { clause_id: AIA-C06, article_ref: "Art. 10(2) — 8-element closed list (a)–(h) of data governance practices, including (f) examination in view of possible biases … and (g) appropriate measures to detect, prevent and mitigate possible biases" }
-  linked_objectives: [SO-AIACT-003]
+  linked_objectives: [SG-AIACT-003]
   sub_domain: [D-05.1, D-05.2]
   nist_csf_mapping:
     - { id: ID.AM-03, title: "Inventories of data and corresponding metadata for designated data types are maintained" }
@@ -136,14 +136,14 @@ status: DRAFT
     the risk class of the high-risk system per Annex III.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-005
   title: "Dataset fitness benchmark across relevance representativeness and completeness"
   source_clauses:
     - { clause_id: AIA-C07, article_ref: "Art. 10(3) — `Training, validation and testing data sets shall be relevant, sufficiently representative, and to the best extent possible, free of errors and complete in view of the intended purpose`" }
-  linked_objectives: [SO-AIACT-003]
+  linked_objectives: [SG-AIACT-003]
   sub_domain: [D-05.1, D-05.2]
   nist_csf_mapping:
     - { id: PR.DS-12, title: "Data is managed consistent with the organization's risk strategy to protect the confidentiality, integrity, and availability of data" }
@@ -228,14 +228,14 @@ status: DRAFT
     population coverage across protected attributes).
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-006
   title: "Exceptional special-category data processing for bias correction"
   source_clauses:
     - { clause_id: AIA-C08, article_ref: "Art. 10(5) — `To the extent that it is strictly necessary for the purpose of ensuring bias detection and correction … the providers of such systems may exceptionally process special categories of personal data, subject to appropriate safeguards … all the following conditions must be met: (a) … (f)`" }
-  linked_objectives: [SO-AIACT-004]
+  linked_objectives: [SG-AIACT-004]
   sub_domain: [D-05.1]
   nist_csf_mapping:
     - { id: PR.DS-12, title: "Data is managed consistent with the organization's risk strategy to protect the confidentiality, integrity, and availability of data" }
@@ -326,14 +326,14 @@ status: DRAFT
     techniques such as differential privacy.
 ```
 
-### SO-AIACT-001 (AI risk management lifecycle)
+### SG-AIACT-001 (AI risk management lifecycle)
 
 ```yaml
 - sr_id: SR-AIACT-014
   title: "Accuracy robustness and cybersecurity baseline across AI lifecycle"
   source_clauses:
     - { clause_id: AIA-C16, article_ref: "Art. 15(1) — `High-risk AI systems shall be designed and developed in such a way that they achieve an appropriate level of accuracy, robustness, and cybersecurity, and that they perform consistently in those respects throughout their lifecycle`" }
-  linked_objectives: [SO-AIACT-009]
+  linked_objectives: [SG-AIACT-009]
   sub_domain: [D-07.1, D-02.1]
   nist_csf_mapping:
     - { id: PR.PS-06, title: "Secure software development practices are integrated, and their performance is monitored throughout the SDLC" }

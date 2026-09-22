@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| DORA | SO-DORA-018 + SO-DORA-007 + SO-DORA-003 | ICT systems and tools are continuously monitored and controlled for security and functioning (Art. 8(1) per `DORA-C07` — OJ-literal locus Art. 9(1)) + anomalous activities promptly detected through multi-layered controls (Art. 10(1)+(2)) + ICT risk identified on a continuous basis (Art. 7(2)). | Financial-entity continuous monitoring + control of ICT-system security and functioning (CIA+A); prompt detection of anomalous activities; continuous ICT risk identification. |
+| DORA | SG-DORA-018 + SG-DORA-007 + SG-DORA-003 | ICT systems and tools are continuously monitored and controlled for security and functioning (Art. 8(1) per `DORA-C07` — OJ-literal locus Art. 9(1)) + anomalous activities promptly detected through multi-layered controls (Art. 10(1)+(2)) + ICT risk identified on a continuous basis (Art. 7(2)). | Financial-entity continuous monitoring + control of ICT-system security and functioning (CIA+A); prompt detection of anomalous activities; continuous ICT risk identification. |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -18,10 +18,10 @@
 #### D-10.1.4 — Sub-SO for DORA
 
 ```yaml
-id: SO-D-10.1.DORA
+id: SG-D-10.1.DORA
 subdomain: D-10.1
 applies_to: [DORA]
-inherits_from: SO-DORA-018 + SO-DORA-007 + SO-DORA-003
+inherits_from: SG-DORA-018 + SG-DORA-007 + SG-DORA-003
 source_SR: SR-DORA-030 + SR-DORA-011 + SR-DORA-012 + SR-DORA-004
 activation: if DORA in applicable_regs
 phase_1A_role: 4_of_5
@@ -48,7 +48,7 @@ DE.CM-01, DE.CM-09, PR.PS-04, DE.AE-02, RS.MA-01, ID.RA-01, ID.RA-03, PR.PS-02.
 
   derives_from:
     hso_sub_so: SO-10.1.DORA
-    per_reg_so: SO-DORA-018 + SO-DORA-007 + SO-DORA-003
+    per_reg_so: SG-DORA-018 + SG-DORA-007 + SG-DORA-003
     source_sr: SR-DORA-030 + SR-DORA-011 + SR-DORA-012 + SR-DORA-004
     hso_file: ../../HierarchicalSecurityObjectives/D-10_Monitoring-Audit/10.1.md
     objective_ref_section: "### 10.1.4"

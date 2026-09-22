@@ -48,7 +48,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
 
 ## Security Rules (from 02_SecurityRules_NIST.md)
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-002
@@ -57,7 +57,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     - { clause_id: DORA-C15, article_ref: "Art. 9(4)(d) — strong authentication mechanisms based on relevant standards and dedicated control systems" }
     - { clause_id: DORA-C16, article_ref: "Art. 9(4)(d) same locus — T4 reads `Multi-Factor Authentication`; OJ says `strong authentication mechanisms`" }
     - { clause_id: DORA-C17, article_ref: "Art. 9(4)(d) same locus — `protection measures of cryptographic keys`" }
-  linked_objectives: [SO-DORA-002]
+  linked_objectives: [SG-DORA-002]
   sub_domain: [D-01.3, D-03.1, D-03.2]
   nist_csf_mapping:
     - { id: PR.AA-03, title: "Users, services, and hardware are authenticated" }
@@ -148,14 +148,14 @@ _No standalone SO row cites this article directly (covered via the rules below).
     or be carved out as a separate sub-regime.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-005
   title: "Annual risk-scenario register refresh with strategic recalibration"
   source_clauses:
     - { clause_id: DORA-C06, article_ref: "Art. 7(2) sentence 2 — `Financial entities shall review on a regular basis, and at least yearly, the risk scenarios impacting them`" }
-  linked_objectives: [SO-DORA-003]
+  linked_objectives: [SG-DORA-003]
   sub_domain: [D-02.1, D-09.2]
   nist_csf_mapping:
     - { id: ID.RA-05, title: "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response decisions" }
@@ -229,14 +229,14 @@ _No standalone SO row cites this article directly (covered via the rules below).
     taxonomy across the three ESAs.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-007
   title: "Documented patch and update governance covering full asset estate"
   source_clauses:
     - { clause_id: DORA-C19, article_ref: "Art. 9(4)(f) — `have appropriate and comprehensive documented policies for patches and updates`" }
-  linked_objectives: [SO-DORA-004]
+  linked_objectives: [SG-DORA-004]
   sub_domain: [D-02.2]
   nist_csf_mapping:
     - { id: PR.PS-02, title: "Software is maintained, replaced, and removed commensurate with risk" }
@@ -301,14 +301,14 @@ _No standalone SO row cites this article directly (covered via the rules below).
     the OJ text itself does not specify.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-019
   title: "ICT third-party risk managed under four-factor proportionality"
   source_clauses:
     - { clause_id: DORA-C35, article_ref: "Art. 28(1) — `manage ICT third-party risk … taking into account: (i) the nature, scale, complexity and importance of ICT-related dependencies; (ii) the risks arising from contractual arrangements on the use of ICT services … taking into account the criticality or importance of the respective service, process or function`" }
-  linked_objectives: [SO-DORA-011]
+  linked_objectives: [SG-DORA-011]
   sub_domain: [D-06.1, D-06.3]
   nist_csf_mapping:
     - { id: GV.SC-02, title: "Suppliers and other third parties are known, prioritized, and assessed using a cybersecurity supply chain risk management process" }
@@ -361,14 +361,14 @@ _No standalone SO row cites this article directly (covered via the rules below).
     entity-policy matter awaiting EBA RTS clarity.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-024
   title: "Management-body ICT-risk literacy maintained through regular training"
   source_clauses:
     - { clause_id: DORA-C02, article_ref: "Art. 5(4) — `Members of the management body … shall actively keep up to date with sufficient knowledge and skills … including by following specific training on a regular basis, commensurate to the ICT risk being managed`" }
-  linked_objectives: [SO-DORA-014]
+  linked_objectives: [SG-DORA-014]
   sub_domain: [D-08.3]
   nist_csf_mapping:
     - { id: PR.AT-03, title: "All senior executives understand their roles and responsibilities in achieving the organization's cybersecurity objectives" }
@@ -423,7 +423,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     assessment scores, peer-benchmark exercises) remain for entity policy.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-025
@@ -432,7 +432,7 @@ _No standalone SO row cites this article directly (covered via the rules below).
     - { clause_id: DORA-C27, article_ref: "Art. 13(6) — `ICT security awareness programmes and digital operational resilience training as compulsory modules in their staff training schemes`" }
     - { clause_id: DORA-C28, article_ref: "Art. 13(6) same locus — `level of complexity commensurate to the remit of their functions`" }
     - { clause_id: DORA-C26, article_ref: "Art. 13(6) same locus — T4 mapping mismatch per `../Regulation/DORA/Ambiguity/05_DORA.md` §2.26" }
-  linked_objectives: [SO-DORA-015]
+  linked_objectives: [SG-DORA-015]
   sub_domain: [D-08.1, D-08.2]
   nist_csf_mapping:
     - { id: PR.AT-01, title: "All users are informed and trained on cybersecurity topics (e.g., recognition of phishing, social engineering, and other relevant risks)" }
@@ -497,14 +497,14 @@ _No standalone SO row cites this article directly (covered via the rules below).
     matter awaiting industry convergence.
 ```
 
-### SO-DORA-001 (CIA + A maintained across data states)
+### SG-DORA-001 (CIA + A maintained across data states)
 
 ```yaml
 - sr_id: SR-DORA-026
   title: "Management body owns full lifecycle of ICT risk management framework"
   source_clauses:
     - { clause_id: DORA-C01, article_ref: "Art. 5(2) — `the management body of the financial entity shall define, approve, oversee and be responsible for the implementation of all arrangements related to the ICT risk management framework`" }
-  linked_objectives: [SO-DORA-016]
+  linked_objectives: [SG-DORA-016]
   sub_domain: [D-09.1]
   nist_csf_mapping:
     - { id: GV.RR-01, title: "Organizational leadership is responsible and accountable for cybersecurity risk and promotes a risk-aware ethical culture" }

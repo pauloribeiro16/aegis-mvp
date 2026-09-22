@@ -1417,6 +1417,310 @@
       "new_line": "- **§1 inherited from the corpus unchanged.** Any technology tokens (`CI/CD`, `SBOM`, and similar) that appear in §1 come from the frozen Phase 0 Baseline Goal prose and are retained as inherited corpus wording (ADR-004 D2 — frozen artifact content). Technology-neutrality applies to the Adjusted Goals layer (§3), not to the inherited Baseline Goal wording.",
       "sr": "—",
       "surface": "tech_neutrality_m12"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-01.1",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-01.2",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-01.3",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-01.4",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-02.1",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-02.2",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-02.3",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-02.4",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-03.1",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-03.2",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-03.3",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-03.4",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-04.1",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-04.2",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-04.3",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-04.4",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-05.1",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-05.2",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-05.3",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-05.4",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-06.1",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-06.2",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-06.3",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-06.4",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-07.1",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-07.2",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-07.3",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-07.4",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-08.1",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-08.2",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-08.3",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-09.1",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-09.2",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-09.3",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-09.4",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-10.1",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-10.2",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
+    },
+    {
+      "file": "_m13_marker",
+      "subdomain": "D-10.3",
+      "old_line": "_m13_marker",
+      "new_line": "_m13_marker",
+      "sr": "-",
+      "surface": "phase_nomenclature_m13"
     }
   ]
 }

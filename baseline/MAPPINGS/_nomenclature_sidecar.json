@@ -1,0 +1,8 @@
+{
+  "policy": "Phase 0 + Phase 1 nomenclature: SO- -> SG- (Security Goal). Frozen ids in methodology_compact untouched (read-only provenance). Phase 2/3 lanes (PO-/SO-D-XX.Y-NNN objectives, REQ-* requirements) and ADRs (historical records) explicitly out of scope per user instruction. Re-runs are no-ops.",
+  "applied_on": "2026-09-22",
+  "milestone": "M13",
+  "scope": "Fase 0 (baseline corpus + sr_control_mappings + traceability) + Fase 1 (template + Case_01 Doc06 + filtered_corpus + scripts)",
+  "rewrites": 0,
+  "substitutions": 0
+}

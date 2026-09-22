@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-034 | Product data (personal or other) limited to adequate/relevant/necessary for intended purpose | Product data; manufacturer design; Annex I Part I (2)(g) + Art. 13(3) sentence 2 + Art. 3(23) `intended purpose`; PR.DS-12 + ID.AM-03 |
+| CRA | SO-CRA-034 | Product data (personal or other) limited to adequate/relevant/necessary for intended purpose | Product data; manufacturer design; Annex I Part I (2)(g) + Art. 13(3) sentence 2 + Art. 3(23) `intended purpose`; ID.AM-08 + ID.AM-03 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -30,8 +30,8 @@ phase_1A_role: 1_of_N
 **Objective.** Data processed by a product with digital elements — personal or other — is limited to what is adequate, relevant, and necessary in relation to the intended purpose of the product (Art. 3(23) `intended purpose` definition), with the risk assessment per Art. 13(2) and the intended purpose + reasonably foreseeable use per Art. 13(3) sentence 2 supplying the proportionality calibration (Annex I Part I (2)(g)).
 
 **CSF anchors (from `SR-CRA-046` v0.3 security_rationale):**
-PR.DS-12, ID.AM-03.
-*(PR.DS-12 anchors the strategic-posture dimension — data is managed
+ID.AM-08, ID.AM-03.
+*(ID.AM-08 anchors the strategic-posture dimension — data is managed
 consistent with the manufacturer's risk strategy, with the Art. 13(2)
 risk assessment supplying the proportionality bar that determines which
 data classes are adequate, relevant, and necessary for the product's
@@ -72,13 +72,13 @@ than its intended purpose requires.)*
     The product shall limit data processed by a product with digital elements — personal or other — to what is adequate, relevant, and necessary in relation to the intended purpose of the product (Art. 3(23) `intended purpose` definition), with the risk assessment per Art. 13(2) and the intended purpose + reasonably foreseeable use per Art. 13(3) sentence 2 supplying the proportionality calibration (Annex I Part I (2)(g)).
 
   fit_criterion: |
-    A manufacturer-side product-data minimisation architecture is operated under ID.AM-03 inventories of data and corresponding metadata for designated data types (data-class inventory per product variant with intended-purpose tag) + PR.DS-12 data managed consistent with the manufacturer's risk strategy (Art. 13(2) risk assessment supplies the proportionality bar); the Annex I Part I (2)(g) `adequate, relevant and limited to what is necessary in relation to the intended purpose of the product` test is applied to every data-collection surface at design-time and re-calibrated on any product change; the Art. 3(23) intended purpose is documented in the technical documentation under Annex VII §2 and the risk assessment under Annex VII §3 calibrates which data classes are adequate/relevant/necessary for that purpose; for an integrated-stack manufacturer-controller (the same party is both manufacturer and controller), the manufacturer-controller documents the Art. 6(4) compatibility assessment separately from the CRA-side design-time minimisation; the CRA-side minimisation does NOT require the Art. 6(4) compatibility test on change of purpose (that is the GDPR-side controller's residual obligation); CRA-side coverage of training data is sequential not concurrent with AI Act Art. 10 — CRA Annex I Part I (2)(g) operates at runtime on product data, AI Act Art. 10 operates upstream on the training pipeline; verified by Annex VII §2 technical-documentation inspection + Annex VII §3 risk-assessment record review + per-data-class intended-purpose mapping audit + Annex I Part I (2)(g) minimisation test per data-class review + MSA / ENISA inspection-ready evidence pack on request.
+    A manufacturer-side product-data minimisation architecture is operated under ID.AM-03 inventories of data and corresponding metadata for designated data types (data-class inventory per product variant with intended-purpose tag) + ID.AM-08 data managed consistent with the manufacturer's risk strategy (Art. 13(2) risk assessment supplies the proportionality bar); the Annex I Part I (2)(g) `adequate, relevant and limited to what is necessary in relation to the intended purpose of the product` test is applied to every data-collection surface at design-time and re-calibrated on any product change; the Art. 3(23) intended purpose is documented in the technical documentation under Annex VII §2 and the risk assessment under Annex VII §3 calibrates which data classes are adequate/relevant/necessary for that purpose; for an integrated-stack manufacturer-controller (the same party is both manufacturer and controller), the manufacturer-controller documents the Art. 6(4) compatibility assessment separately from the CRA-side design-time minimisation; the CRA-side minimisation does NOT require the Art. 6(4) compatibility test on change of purpose (that is the GDPR-side controller's residual obligation); CRA-side coverage of training data is sequential not concurrent with AI Act Art. 10 — CRA Annex I Part I (2)(g) operates at runtime on product data, AI Act Art. 10 operates upstream on the training pipeline; verified by Annex VII §2 technical-documentation inspection + Annex VII §3 risk-assessment record review + per-data-class intended-purpose mapping audit + Annex I Part I (2)(g) minimisation test per data-class review + MSA / ENISA inspection-ready evidence pack on request.
 
   priority: MUST
   verification_method: INSPECT
   dependencies: [5.1.1 (when CRA-classified product processes personal data at runtime — verbatim-language match binds; GDPR-side Art. 6(4) compatibility test is the residual GDPR-only requirement not absorbed by CRA-side), 5.1.3 (when CRA-classified high-risk AI product — upstream AI Act training-data quality feeds downstream CRA runtime minimisation; 3-track matrix applies)]
 
-  nist_csf: [PR.DS-12, ID.AM-03]
+  nist_csf: [ID.AM-08, ID.AM-03]
 
   applicable_if:
     regs: [CRA]
@@ -142,4 +142,3 @@ verified_relationship: COMPLEMENTARY (CRDA-deep, D-05.1: GDPR↔CRA = COMPLEMENT
 ```
 
 <!-- aegis:purity: own_reg=CRA; demoted=6; core_cross_mentions=2 -->
-

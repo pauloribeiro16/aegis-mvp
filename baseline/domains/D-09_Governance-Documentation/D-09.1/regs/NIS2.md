@@ -124,4 +124,3 @@ verified_relationship: COMPLEMENTARY (CRDA-deep, D-09.1: GDPR↔NIS2 = COMPLEMEN
 ```
 
 <!-- aegis:purity: own_reg=NIS2; demoted=4; core_cross_mentions=2 -->
-

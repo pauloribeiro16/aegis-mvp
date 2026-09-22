@@ -121,4 +121,3 @@ R3 is the literal reading. S2.
 R1 is the literal reading. S2. **Cross-reference to Art. 21(2)(j) NIS 2** where the opt-out is also present.
 
 <!-- aegis:purity: own_reg=CRA; demoted=1; core_cross_mentions=0 -->
-

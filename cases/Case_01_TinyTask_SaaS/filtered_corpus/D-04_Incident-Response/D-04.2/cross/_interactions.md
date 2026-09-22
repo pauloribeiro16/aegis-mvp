@@ -36,7 +36,7 @@
 #### Participants (from CRDA-deep §D-04.2)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-009 | Personal-data breaches contained and mitigated via Art. 33(3)(d) measures (incl. rendering data unintelligible) + Art. 34(3)(a)/(b) unintelligibility carve-out | Personal data; post-detection containment, mitigation and remediation runbooks; PR.DS-12 + PR.IR-04 |
+| GDPR | SO-GDPR-009 | Personal-data breaches contained and mitigated via Art. 33(3)(d) measures (incl. rendering data unintelligible) + Art. 34(3)(a)/(b) unintelligibility carve-out | Personal data; post-detection containment, mitigation and remediation runbooks; ID.AM-08 + PR.IR-04 |
 | NIS 2 | SO-NIS2-005 | Six-action incident-handling capability (prevent, detect, analyse, contain, respond, recover) per Art. 21(2)(b) + Art. 6(8) `contain` action | Entity-level ICT systems; lifecycle-phase content; RC.RP-01 + RC.RP-04 + PR.IR-03 |
 | CRA | SO-CRA-021 + SO-CRA-022 | Product availability preserved post-incident via resilience and DoS-resistance + cascading-impact minimisation + exploitation mitigation | Product with digital elements; manufacturer design; Annex I Part I (2)(h)/(i)/(k); PR.IR-04 + PR.IR-03 + DE.CM-09 |
 | DORA | SO-DORA-010 | Comprehensive ICT business continuity policy operationalised through dedicated, appropriate and documented arrangements, plans, procedures and mechanisms (incl. response and recovery plans subject to independent internal audit for non-microenterprises; backup policies; restoration and recovery procedures) | Financial entity; BC arrangements under Art. 11 + Art. 12; RC.RP-01 + RC.RP-04 + PR.IR-04 |
@@ -402,7 +402,7 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs — AI Act out-of-scope per AEGIS taxonomy �
   priority: MUST
   verification_method: TEST
   dependencies: [4.1 (containment depends on a prior detection-and-triage event feeding the containment trigger)]
-  nist_csf: [RS.MI-01, RS.MI-02, PR.DS-01, PR.DS-12, PR.IR-03, PR.IR-04, RC.RP-01, RC.RP-04, DE.CM-09]
+  nist_csf: [RS.MI-01, RS.MI-02, PR.DS-01, ID.AM-08, PR.IR-03, PR.IR-04, RC.RP-01, RC.RP-04, DE.CM-09]
   applicable_if:
     regs: [GDPR, NIS2, CRA, DORA]
     scope_overlap: conditional   # HL engages only when ≥2 applicable regs target overlapping containment layers on the same party (see HSO scope-overlap principle); AI Act out-of-scope
@@ -483,7 +483,7 @@ status: DRAFT
 ##### Emergent tensions (3+ regulations)
 None. The containment architecture is consistently layered: product → entity → personal-data-specific runbook. No 3-way contradiction; no non-pairwise-surfacing effect.
 ##### SR cross-validation
-NIST CSF 2.0 anchoring is consistent: PR.IR-03 (Network resources prioritised based on importance), PR.IR-04 (Adequate resource capacity), and RC.RP-04 (Recovery plans executed). GDPR adds PR.DS-12 (Data disposal managed) only via the unintelligibility-rendering path. CRA's exploitation-mitigation obligation (SR-CRA-068 `Deploy-time exploitation-mitigation mechanisms and techniques`, Annex I Part I (2)(k)) maps to a CSF category not separately enumerated under DE.CM; this is a known CSF 2.0 gap and is appropriately flagged as a product-design construct rather than a CSF GOVERN/IDENTIFY category.
+NIST CSF 2.0 anchoring is consistent: PR.IR-03 (Network resources prioritised based on importance), PR.IR-04 (Adequate resource capacity), and RC.RP-04 (Recovery plans executed). GDPR adds ID.AM-08 (Data disposal managed) only via the unintelligibility-rendering path. CRA's exploitation-mitigation obligation (SR-CRA-068 `Deploy-time exploitation-mitigation mechanisms and techniques`, Annex I Part I (2)(k)) maps to a CSF category not separately enumerated under DE.CM; this is a known CSF 2.0 gap and is appropriately flagged as a product-design construct rather than a CSF GOVERN/IDENTIFY category.
 ##### Downstream implication
 Phase 2 obligation derivation must treat containment as a 3-layer construct: (1) product design (CRA), (2) entity-level plans (NIS2/DORA), (3) breach-specific content (GDPR Art. 33(3)(d) unintelligibility render). Phase 3 case generation must verify that case companies operating across all three layers produce a single integrated containment playbook.
 ---
@@ -522,4 +522,3 @@ status: DRAFT
 ## Structural banners (merged Parts)
 
 # Part 4 — Relevant Ambiguity (by regulation)
-

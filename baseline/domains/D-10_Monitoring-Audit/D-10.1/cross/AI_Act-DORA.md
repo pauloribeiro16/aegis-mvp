@@ -43,5 +43,3 @@
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation must produce a layered stack: DORA Art. 9(1) entity-level continuous monitoring + AI Act Art. 72 post-market monitoring.
 
 ---
-
-

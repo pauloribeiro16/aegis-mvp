@@ -51,7 +51,7 @@
 <!-- pair: GDPR,NIS2 -->
 | GDPR ↔ NIS2 | **Different perspective** | Tension/difference |
 |---|---|---|
-| **GDPR** (SR-GDPR-009 + SR-GDPR-010, Art. 12(6) + Art. 11(2) + Art. 5(1)(c)) | Proportionate identity verification for rights requests; minimised collection of identity verification data | Controller; data-subject-side; PR.AA-03 + PR.AA-02 + PR.DS-12 |
+| **GDPR** (SR-GDPR-009 + SR-GDPR-010, Art. 12(6) + Art. 11(2) + Art. 5(1)(c)) | Proportionate identity verification for rights requests; minimised collection of identity verification data | Controller; data-subject-side; PR.AA-03 + PR.AA-02 + ID.AM-08 |
 | **NIS2** (SR-NIS2-003 + SR-NIS2-004, Art. 21(2)(i) HR-security dimension) | Workforce identity lifecycle (joiner-mover-leaver) as HR-security substrate | Entity-level; workforce-side; PR.AT-02 + PR.AA-01 |
 
 **Why Different perspective**: GDPR's identity verification is for data subjects exercising rights (external/rights-exercise context); NIS 2's identity lifecycle is for workforce (joiner-mover-leaver internal context). A controller that is a NIS 2 essential entity is jointly bound: data-subject-side verification (GDPR) + workforce-side lifecycle (NIS 2). The two are different perspectives on identity management at different boundaries (external vs internal). → full rationale: `../../../Regulation/GDPR/02_SecurityRules_NIST.md` SR-GDPR-009; `../../../Regulation/NIS2/02_SecurityRules_NIST.md` SR-NIS2-003 + SR-NIS2-004
@@ -60,4 +60,3 @@
 
 _(Part 3 duplicates of Part 1 §1 were byte-identical and deduplicated:
 42 lines — see ../../_migration_report.md)_
-

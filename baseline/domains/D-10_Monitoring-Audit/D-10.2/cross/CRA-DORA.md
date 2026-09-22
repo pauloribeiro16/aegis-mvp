@@ -43,5 +43,3 @@
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation must produce two separate artefacts: CRA Annex VII §5-§8 technical documentation + DORA Art. 9(4)(a) CIA+A policy.
 
 ---
-
-

@@ -765,4 +765,3 @@ Proportionality principle. Same Berry `appropriate and proportionate` pattern as
 5. **`structured, machine-readable format that is easily automatically processable` (CL65) is CRA-unique.** No other regulation in the corpus requires machine-readable user notification. NIS 2 Art. 23(4)(a)(b) uses the same temporal pattern but does not specify format.
 
 <!-- aegis:purity: own_reg=CRA; demoted=9; core_cross_mentions=0 -->
-

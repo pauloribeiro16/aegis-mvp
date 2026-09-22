@@ -199,7 +199,7 @@ GDPR, NIS 2, CRA, DORA, AI Act (ALL 5 participate on the testing object). The fi
   priority: MUST
   verification_method: TEST
   dependencies: [10.3.1, 10.3.2, 10.3.3, 10.3.4, 10.3.5]
-  nist_csf: [PR.IP-07, ID.RA-05, DE.AE-02, GV.OV-03]
+  nist_csf: [ID.IM-03, ID.RA-05, DE.AE-02, GV.OV-03]
   applicable_if:
     regs: [GDPR, NIS2, CRA, DORA, AI_Act]
     scope_overlap: Y   # HL engages whenever ≥2 applicable regs have ≥1 Y or Conditional-Y-scope-overlap pair on the same party; for D-10.3 the 5×5 matrix shows every pair has Y or Conditional-Y activation on the joint-condition operator (no N (typically) scope-disjoint pairs), so the HL engages whenever ≥2 regs are applicable; the 9 SAME — COMPLEMENTARY pairs stack on 5 parallel testing programmes; the 1 SAME — EQUAL pair (NIS 2 ↔ DORA) discharges both obligations on the DORA-led testing-programme stack for significant financial entities under Art. 26(1) TLPT; no GENUINE TENSION pair, no CONTRADICTORY pair, no CORRECTED reclassification; **NO OJ-level consolidation rule exists for testing** — the 5 parallel testing programmes are the operative consequence; the HL does NOT collapse the 5 testing mandates into a single testing programme.
@@ -236,4 +236,3 @@ _Deep Analysis source not found._
 ## Structural banners (merged Parts)
 
 # Part 4 — Relevant Ambiguity (by regulation)
-

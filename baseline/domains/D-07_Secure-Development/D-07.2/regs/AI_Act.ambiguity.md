@@ -12,4 +12,3 @@
 **Berry anchor:** §5.1 (`where appropriate`), §5.4.7 (5-way AND + 6-way OR), §3.3.1.
 
 <!-- aegis:purity: own_reg=AI_Act; demoted=0; core_cross_mentions=0 -->
-

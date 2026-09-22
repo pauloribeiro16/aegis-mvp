@@ -237,4 +237,3 @@ Inherits the `regular` vagueness from GDPR C02/27/28. S2.
 4. **The `essential and important entities` classification propagates through every Chapter IV clause.** Resolving it is the prerequisite for any other finding.
 
 <!-- aegis:purity: own_reg=NIS2; demoted=2; core_cross_mentions=0 -->
-

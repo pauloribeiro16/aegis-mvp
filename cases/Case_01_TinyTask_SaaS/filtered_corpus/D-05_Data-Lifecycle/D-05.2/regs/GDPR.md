@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-017 | Personal data kept no longer than necessary; longer only where lawful and Art. 89(1) safeguards in place (Art. 5(1)(e) storage limitation + Art. 30(1)(f) RoPA retention time-limits) | Personal data; storage limitation; controller/processor; Art. 5(1)(e) + Art. 30(1)(f) + Art. 89(1); PR.DS-12 + ID.AM-03 |
+| GDPR | SO-GDPR-017 | Personal data kept no longer than necessary; longer only where lawful and Art. 89(1) safeguards in place (Art. 5(1)(e) storage limitation + Art. 30(1)(f) RoPA retention time-limits) | Personal data; storage limitation; controller/processor; Art. 5(1)(e) + Art. 30(1)(f) + Art. 89(1); ID.AM-08 + ID.AM-03 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -30,8 +30,8 @@ phase_1A_role: 1_of_N
 **Objective.** Personal data are kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed (Art. 5(1)(e)); longer retention is permitted only where lawful and subject to Art. 89(1) safeguards (pseudonymisation, aggregation, access limitation) for archiving purposes in the public interest, scientific or historical research, or statistical purposes; the RoPA documents the envisaged time limits for erasure of the different categories of data (Art. 30(1)(f)).
 
 **CSF anchors (from `SR-GDPR-029` v0.3 security_rationale):**
-PR.DS-12, ID.AM-03.
-*(PR.DS-12 captures the per-dataset risk-and-purpose binding — the
+ID.AM-08, ID.AM-03.
+*(ID.AM-08 captures the per-dataset risk-and-purpose binding — the
 controller defines and documents a retention period for each category,
 resets the clock when the underlying purpose changes, and pairs
 long-term archiving or research-only retention with the Art. 89(1)
@@ -72,13 +72,13 @@ for its declared purpose on the day of any supervisory inspection.)*
     The product shall keep personal data in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed (Art. 5(1)(e)); longer retention is permitted only where lawful and subject to Art. 89(1) safeguards (pseudonymisation, aggregation, access limitation) for archiving purposes in the public interest, scientific or historical research, or statistical purposes; the RoPA documents the envisaged time limits for erasure of the different categories of data (Art. 30(1)(f)).
 
   fit_criterion: |
-    A controller-side personal-data-retention-ceiling architecture is operated under ID.AM-03 inventories of data and corresponding metadata for designated data types (every personal-data category appears in an inventory tagged with declared purpose, lawful basis, and envisaged erasure time so that periodic review can decide to retain, anonymise or delete against a documented clock) + PR.DS-12 data managed consistent with the controller's risk strategy (the controller defines and documents a retention period for each category, resets the clock when the underlying purpose changes, and pairs long-term archiving or research-only retention with the Art. 89(1) pseudonymisation, aggregation and access-limitation safeguards); the Art. 5(1)(e) `no longer than is necessary` ceiling is enforced per data category with periodic erasure-or-anonymisation review; the Art. 30(1)(f) RoPA envisages-time-limits-for-erasure (or the criteria for determining them, where possible per OJ hedge) are documented per category; for the public-interest/research/statistical carve-out, Art. 89(1) safeguards (pseudonymisation, aggregation, access limitation) are applied so that the residual data set at any moment is the smallest the purpose permits; the controller demonstrates ex post against the Art. 5(2) accountability duty that no personal data was retained beyond the period necessary for its declared purpose on the day of any supervisory inspection; when the same data flow is also a CRA update artefact (CRA update-distribution log containing personal data) or an AI Act log (AI log containing personal data), the GDPR Art. 5(1)(e) `necessary` boundary is the operative cap on the personal-data subset, with separation architecture (pseudonymisation of the personal-data subset, separate retention rules) as the controlled hand-off to the CRA-side availability tail or AI Act-side log floor; verified by data-inventory audit + per-category retention-period documentation review + Art. 30(1)(f) RoPA time-... (line truncated to 2000 chars)
+    A controller-side personal-data-retention-ceiling architecture is operated under ID.AM-03 inventories of data and corresponding metadata for designated data types (every personal-data category appears in an inventory tagged with declared purpose, lawful basis, and envisaged erasure time so that periodic review can decide to retain, anonymise or delete against a documented clock) + ID.AM-08 data managed consistent with the controller's risk strategy (the controller defines and documents a retention period for each category, resets the clock when the underlying purpose changes, and pairs long-term archiving or research-only retention with the Art. 89(1) pseudonymisation, aggregation and access-limitation safeguards); the Art. 5(1)(e) `no longer than is necessary` ceiling is enforced per data category with periodic erasure-or-anonymisation review; the Art. 30(1)(f) RoPA envisages-time-limits-for-erasure (or the criteria for determining them, where possible per OJ hedge) are documented per category; for the public-interest/research/statistical carve-out, Art. 89(1) safeguards (pseudonymisation, aggregation, access limitation) are applied so that the residual data set at any moment is the smallest the purpose permits; the controller demonstrates ex post against the Art. 5(2) accountability duty that no personal data was retained beyond the period necessary for its declared purpose on the day of any supervisory inspection; when the same data flow is also a CRA update artefact (CRA update-distribution log containing personal data) or an AI Act log (AI log containing personal data), the GDPR Art. 5(1)(e) `necessary` boundary is the operative cap on the personal-data subset, with separation architecture (pseudonymisation of the personal-data subset, separate retention rules) as the controlled hand-off to the CRA-side availability tail or AI Act-side log floor; verified by data-inventory audit + per-category retention-period documentation review + Art. 30(1)(f) RoPA time-... (line truncated to 2000 chars)
 
   priority: MUST
   verification_method: TEST
   dependencies: [5.2.2 (when CRA update-distribution log contains personal data — separation architecture is the layering rule; GDPR Art. 5(1)(e) `necessary` boundary remains the operative cap on the personal-data subset, CRA-side availability tail applies to the artefact portion), 5.2.3 (when AI log contains personal data — floor-within-ceiling relationship; operative range is [6 months, "necessary"] with AI Act setting the floor and GDPR setting the cap)]
 
-  nist_csf: [PR.DS-12, ID.AM-03]
+  nist_csf: [ID.AM-08, ID.AM-03]
 
   applicable_if:
     regs: [GDPR]
@@ -138,4 +138,3 @@ verified_relationship: NON-SAME (CRDA-deep, D-05.2: GDPR↔CRA = CORRECTED from 
 ```
 
 <!-- aegis:purity: own_reg=GDPR; demoted=5; core_cross_mentions=2 -->
-

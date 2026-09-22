@@ -1656,4 +1656,3 @@ Same Berry-flagged vague quantitative term as Art. 10(1), CL24-3, CL27-1, CL27-2
 `consistent approach` between DORA reporting and NIS 2 reporting (NIS 2 Art. 23; cf. NIS 2 file §3.10). S3.
 
 <!-- aegis:purity: own_reg=DORA; demoted=25; core_cross_mentions=0 -->
-

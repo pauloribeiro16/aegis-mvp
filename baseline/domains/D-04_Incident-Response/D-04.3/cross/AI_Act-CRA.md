@@ -64,4 +64,3 @@ When the same party is both CRA manufacturer and AI Act provider/deployer for th
 
 _(Part 3 duplicates of Part 1 §1 were byte-identical and deduplicated:
 44 lines — see ../../_migration_report.md)_
-

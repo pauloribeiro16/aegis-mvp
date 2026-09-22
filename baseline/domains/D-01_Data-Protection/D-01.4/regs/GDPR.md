@@ -35,14 +35,14 @@ storage integrity (Art. 5(1)(f)) and the Art. 16 rectification cascade with
 Art. 19 recipient-cascade duty.
 
 **CSF anchors (from `SR-GDPR-005` + `SR-GDPR-006` v0.3 security_rationale):**
-PR.DS-01, PR.DS-12, PR.DS-10.
+PR.DS-01, ID.AM-08, PR.DS-10.
 *(`SR-GDPR-005` covers the Art. 5(1)(d) accuracy + Art. 5(1)(f) integrity leg
 anchored to PR.DS-01 (storage-layer immutability, write-audit logging,
-tamper-evidence) + PR.DS-12 (policy-level data-management discipline
+tamper-evidence) + ID.AM-08 (policy-level data-management discipline
 governing data-quality monitoring, periodic refresh cadence, and the
 feedback loop to the rectification workflow); `SR-GDPR-006` covers the Art.
 16 + Art. 19 rectification workflow anchored to PR.DS-10 (controlled-write
-integrity check on data in process) + PR.DS-12 (recipient register +
+integrity check on data in process) + ID.AM-08 (recipient register +
 propagation procedure).)*
 
 ---
@@ -70,13 +70,13 @@ propagation procedure).)*
     The product shall ensure personal data are accurate and, where necessary, kept up to date; every reasonable step shall be taken to ensure that inaccurate personal data are erased or rectified without delay, with the storage-integrity property anchored separately and the Art. 16 rectification cascade with Art. 19 recipient-cascade duty preserved (GDPR Art. 5(1)(d) accuracy + Art. 5(1)(f) integrity + Art. 16 + Art. 19 cascade).
 
   fit_criterion: |
-    Personal-data storage uses integrity-checked storage with cryptographic hashes / MACs that detect tampering on reads (PR.DS-01); data-quality monitoring is in place with documented periodic-refresh cadence governing accuracy review (PR.DS-12); the Art. 16 rectification workflow is documented with recipient register and propagation procedure to each recipient to whom the personal data have been disclosed (PR.DS-12 + Art. 19 cascade); verified by automated integrity-check audit (hash/MAC validation) + manual rectification-cascade review + DPA inspection-ready evidence pack on request.
+    Personal-data storage uses integrity-checked storage with cryptographic hashes / MACs that detect tampering on reads (PR.DS-01); data-quality monitoring is in place with documented periodic-refresh cadence governing accuracy review (ID.AM-08); the Art. 16 rectification workflow is documented with recipient register and propagation procedure to each recipient to whom the personal data have been disclosed (ID.AM-08 + Art. 19 cascade); verified by automated integrity-check audit (hash/MAC validation) + manual rectification-cascade review + DPA inspection-ready evidence pack on request.
 
   priority: MUST
   verification_method: TEST
   dependencies: []
 
-  nist_csf: [PR.DS-01, PR.DS-10, PR.DS-12]
+  nist_csf: [PR.DS-01, PR.DS-10, ID.AM-08]
 
   applicable_if:
     regs: [GDPR]
@@ -139,4 +139,3 @@ verified_relationship: SAME (CRDA-deep, D-01.4: GDPR↔CRA CORRECTED from COMPLE
 ```
 
 <!-- aegis:purity: own_reg=GDPR; demoted=3; core_cross_mentions=0 -->
-

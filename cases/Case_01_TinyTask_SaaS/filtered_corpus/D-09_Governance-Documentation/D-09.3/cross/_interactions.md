@@ -464,4 +464,3 @@ status: DRAFT
 ##### Pair: GDPR ↔ [not in CRDA D-09.3 participants]
 > **Note:** GDPR is out-of-scope as strict mandate for D-09.3 per CRDA (RoPA focuses on processing purposes/data categories/recipients/safeguards — not information assets). GDPR ↔ CRA / GDPR ↔ DORA / GDPR ↔ NIS2 pairs not in CRDA matrix. No pair analysis included.
 ---
-

@@ -16,4 +16,3 @@ verified_relationship_basis: CRDA-deep verified (6 pairs: 6 SAME, no CORRECTED, 
 emergent_tensions: 1
 ```
 **Objective.** Third-party boundary responsibilities are explicitly allocated so that non-EU representatives, direct-supplier scope, cross-border routing, substantial-modification accountability, economic-operator identification, and audit/access rights remain traceable to the correct actor and recipient.
-

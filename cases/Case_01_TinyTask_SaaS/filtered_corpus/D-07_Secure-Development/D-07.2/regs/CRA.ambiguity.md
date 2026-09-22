@@ -14,4 +14,3 @@
 ### 1. Annex I — full text
 
 <!-- aegis:purity: own_reg=CRA; demoted=0; core_cross_mentions=0 -->
-

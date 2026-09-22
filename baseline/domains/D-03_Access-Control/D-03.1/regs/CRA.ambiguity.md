@@ -349,4 +349,3 @@ T2 had no clauses for Art. 6–8 — these articles were outside the T2 cybersec
 4. **The Art. 7/8/Alex III/IV architecture is a 3-tier classification** (analogous to AI Act's risk tiers):
 
 <!-- aegis:purity: own_reg=CRA; demoted=2; core_cross_mentions=0 -->
-

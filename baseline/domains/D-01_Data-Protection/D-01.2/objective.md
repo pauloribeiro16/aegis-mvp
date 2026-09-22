@@ -19,4 +19,3 @@ emergent_tensions: 0
 calls, and third-party APIs — is protected against unauthorised disclosure
 and alteration through cryptographic confidentiality and integrity controls
 (mutual authentication, encryption, integrity verification).
-

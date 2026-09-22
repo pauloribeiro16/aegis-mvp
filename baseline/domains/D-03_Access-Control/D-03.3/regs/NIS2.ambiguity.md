@@ -113,4 +113,3 @@ R1 is the literal reading. R2 and R3 produce materially distinct compliance obli
 ---
 
 <!-- aegis:purity: own_reg=NIS2; demoted=0; core_cross_mentions=0 -->
-

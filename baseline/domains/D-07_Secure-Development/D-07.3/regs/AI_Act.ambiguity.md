@@ -12,4 +12,3 @@
 **Berry anchor:** §5.1 (`standardised`, `state of the art`, `systemic`), §3.3.1 (`adversarial testing`).
 
 <!-- aegis:purity: own_reg=AI_Act; demoted=0; core_cross_mentions=0 -->
-

@@ -328,4 +328,3 @@ Art. 29 was **newly highlighted in v0.2** (T3 omitted it entirely). It serves th
 *Berry anchor:* §5.1 (`appropriate`); §3.3.1 (`register`). Same as CRA-CL129.
 
 <!-- aegis:purity: own_reg=DORA; demoted=3; core_cross_mentions=0 -->
-

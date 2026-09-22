@@ -129,4 +129,3 @@ verified_relationship: DIFFERENT-PERSPECTIVE-AT-PROCESS-VS-OUTCOME (CRDA-deep, D
 > [as quoted in NIS2 ↔ DORA above]
 
 <!-- aegis:purity: own_reg=DORA; demoted=5; core_cross_mentions=1 -->
-

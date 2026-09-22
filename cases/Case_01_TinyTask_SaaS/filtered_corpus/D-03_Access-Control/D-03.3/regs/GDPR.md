@@ -143,4 +143,3 @@ verified_relationship: SAME — COMPLEMENTARY (CRDA-deep, D-03.3: GDPR↔NIS2 SA
 ```
 
 <!-- aegis:purity: own_reg=GDPR; demoted=5; core_cross_mentions=1 -->
-

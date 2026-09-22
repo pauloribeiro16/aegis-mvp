@@ -29,7 +29,7 @@ phase_1A_role: 1_of_N
 
 **Objective.** NIS 2 boundary management is split across cross-border notification routing and entity-side supplier-scope control: for incidents affecting two or more Member States, CSIRTs, competent authorities, and SPOCs route information to other affected Member States and ENISA; for supply-chain boundaries, the Art. 21(2)(d) `direct` supplier/service-provider scope-limiter defines which third parties sit inside the entity's NIS 2 supplier-security perimeter, and Art. 22 coordinated supply-chain risk-assessment outputs feed into supplier decisions where available.
 
-**CSF anchors (from NIS 2 SRs):** RS.CO-04, GV.SC-05, GV.SC-02, GV.SC-03, ID.RA-02.
+**CSF anchors (from NIS 2 SRs):** RS.MA-04, GV.SC-05, GV.SC-02, GV.SC-03, ID.RA-02.
 
 ---
 
@@ -62,7 +62,7 @@ phase_1A_role: 1_of_N
   verification_method: TEST
   dependencies: [6.1.2 (vendor-risk-assessment four-tier discipline provides tier-1 supplier-register input to direct-supplier-scope register), 6.3.2 (Art. 21(2)(d) supplier contracts materialise the direct-supplier-scope register boundary decisions into contractual instruments)]
 
-  nist_csf: [RS.CO-04, GV.SC-05, GV.SC-02, GV.SC-03, ID.AM-04, ID.RA-02]
+  nist_csf: [RS.MA-04, GV.SC-05, GV.SC-02, GV.SC-03, ID.AM-04, ID.RA-02]
 
   applicable_if:
     regs: [NIS2]
@@ -125,4 +125,3 @@ verified_relationship: COMPLEMENTARY (CRDA-deep, D-06.4: GDPR↔NIS2 = COMPLEMEN
 ```
 
 <!-- aegis:purity: own_reg=NIS2; demoted=5; core_cross_mentions=2 -->
-

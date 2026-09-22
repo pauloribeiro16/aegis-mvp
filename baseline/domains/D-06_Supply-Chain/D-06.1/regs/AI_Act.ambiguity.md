@@ -7,4 +7,3 @@
 _No applicable AI_Act ambiguity._
 
 <!-- aegis:purity: own_reg=AI_Act; demoted=0; core_cross_mentions=0 -->
-

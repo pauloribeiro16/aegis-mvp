@@ -61,5 +61,3 @@
 
 **Why complementary**: GDPR Art. 27 designates an EU *representative* (a legal-address anchor for non-EU controllers); NIS2 Art. 23(6) routes notifications across *Member States* via SPOCs (Single Points of Contact). Different actors (representative vs SPOC), different purposes (legal address vs notification routing). Both apply when a non-EU controller operates across multiple MS.
 
-
-

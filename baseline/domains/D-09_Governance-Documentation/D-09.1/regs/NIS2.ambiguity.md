@@ -521,4 +521,3 @@ Same Berry-classic vague term as GDPR Art. 25(1) and Art. 32(1). Three materiall
 3. **`insufficient levels of cybersecurity` is the trigger for delegated acts.** Same definitional regress pattern as Art. 23(3) `significant incident`: the trigger is itself undefined, leaving Commission discretion to specify. This is structurally identical to the DORA Art. 26(11) TLPT normative-tension (binding obligation anchored to non-binding TIBER-EU).
 
 <!-- aegis:purity: own_reg=NIS2; demoted=5; core_cross_mentions=0 -->
-

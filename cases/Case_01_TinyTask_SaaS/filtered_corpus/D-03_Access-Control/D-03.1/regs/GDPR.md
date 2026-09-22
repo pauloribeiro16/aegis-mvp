@@ -40,13 +40,13 @@ verification scope is constrained by Art. 5(1)(c) data minimisation).
 - The downstream notification cascade (Art. 33 personal-data-breach notification) is part of D-04.3, not D-03.1.
 
 **CSF anchors (from `SR-GDPR-009` + `SR-GDPR-010` v0.3 security_rationale):**
-PR.AA-03, PR.AA-02, PR.DS-12.
+PR.AA-03, PR.AA-02, ID.AM-08.
 *(`SR-GDPR-009` covers the Art. 12(6) reasonable-doubts verification
 trigger anchored to PR.AA-03 (users/services/hardware authenticated at
 the rights-request endpoint) + PR.AA-02 (identities proofed and bound
 to credentials proportionate to context). `SR-GDPR-010` covers the Art.
 5(1)(c) minimisation of identity-verification data anchored to
-PR.AA-02 + PR.DS-12 (data managed consistent with risk strategy).)*
+PR.AA-02 + ID.AM-08 (data managed consistent with risk strategy).)*
 
 ---
 
@@ -79,7 +79,7 @@ PR.AA-02 + PR.DS-12 (data managed consistent with risk strategy).)*
   verification_method: TEST
   dependencies: [3.2.1 (verification outcome feeds the staff-authentication event at the rights-exercise endpoint)]
 
-  nist_csf: [PR.AA-02, PR.AA-03, PR.DS-12]
+  nist_csf: [PR.AA-02, PR.AA-03, ID.AM-08]
 
   applicable_if:
     regs: [GDPR]
@@ -134,4 +134,3 @@ verified_relationship: SAME (CRDA-deep, D-03.1: GDPR↔NIS2 CORRECTED from DIFFE
 ```
 
 <!-- aegis:purity: own_reg=GDPR; demoted=5; core_cross_mentions=1 -->
-

@@ -189,7 +189,7 @@
       {
         "id": "SO-D-08.2.CRA",
         "csf_anchors": [
-          "PR.AT-04",
+          "PR.AT-02",
           "GV.SC-03"
         ]
       }
@@ -212,7 +212,7 @@
       {
         "id": "SO-D-08.3.DORA",
         "csf_anchors": [
-          "PR.AT-03",
+          "PR.AT-02",
           "GV.RR-01"
         ]
       }
@@ -251,7 +251,7 @@
       {
         "id": "SO-D-08.3.NIS2",
         "csf_anchors": [
-          "PR.AT-03",
+          "PR.AT-02",
           "GV.RR-01"
         ]
       }
@@ -267,7 +267,7 @@
           "PR.AT-01",
           "GV.RR-02",
           "GV.RR-04",
-          "PR.AT-03",
+          "PR.AT-02",
           "GV.RR-01"
         ],
         "scope_overlap": "N"
@@ -286,7 +286,7 @@
         "req_id": "8.2.3",
         "title": "Where the product is intended for integration, information necessary for the integrator to comply with Annex I cybersecurity requirements and Annex VII documentation requirements is delivered",
         "nist_csf": [
-          "PR.AT-04",
+          "PR.AT-02",
           "GV.SC-03"
         ],
         "scope_overlap": "N"
@@ -316,7 +316,7 @@
         "req_id": "8.3.2",
         "title": "Members of the management body of financial entities actively keep up to date with sufficient knowledge and skills to understand and assess ICT risk, commensurate to the ICT risk being managed",
         "nist_csf": [
-          "PR.AT-03",
+          "PR.AT-02",
           "GV.RR-01"
         ],
         "scope_overlap": "N"
@@ -365,7 +365,7 @@
         "req_id": "8.3.1",
         "title": "Members of management bodies of essential and important entities follow cybersecurity training to gain sufficient knowledge and skills to identify risks and assess cybersecurity risk-management practices",
         "nist_csf": [
-          "PR.AT-03",
+          "PR.AT-02",
           "GV.RR-01"
         ],
         "scope_overlap": "N"
@@ -379,23 +379,23 @@
       "GV.RR-04",
       "PR.AT-01",
       "PR.AT-02",
-      "PR.AT-03"
+      "PR.AT-02"
     ],
     "CRA": [
       "GV.SC-03",
       "PR.AT-01",
-      "PR.AT-04"
+      "PR.AT-02"
     ],
     "CRA (partial)": [
       "GV.SC-03",
       "PR.AT-01 (with UNMAPPED_CSF on the user-side)",
-      "PR.AT-04"
+      "PR.AT-02"
     ],
     "DORA": [
       "GV.RR-01",
       "PR.AT-01",
       "PR.AT-02",
-      "PR.AT-03"
+      "PR.AT-02"
     ],
     "GDPR": [
       "PR.AT-01",
@@ -405,7 +405,7 @@
       "GV.RR-01",
       "PR.AT-01",
       "PR.AT-02",
-      "PR.AT-03",
+      "PR.AT-02",
       "PR.PS-01"
     ]
   },

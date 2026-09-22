@@ -38,7 +38,7 @@
 
 **Verified relationship (after OJ-text analysis):** SAME (CORRECTED — wording only).
 
-**Reasoning:** The two target different objects (personal-data semantic accuracy + storage integrity vs AI-system resilience to errors/faults/inconsistencies via backup/fail-safe) and use different CSF anchors (GDPR PR.DS-01 + PR.DS-12 + PR.DS-10 vs AI Act PR.IR-03 + PR.IR-04 + PR.DS-11). CRDA's DIFFERENT PERSPECTIVE correctly identifies the framing difference; under the 5-option taxonomy the relationship is better described as COMPLEMENTARY (the data accuracy property coexists with the system resilience property on the same AI-system-using-personal-data asset). The objects are nested: AI-system resilience sits inside the storage stack that GDPR's PR.DS-01 protects; GDPR accuracy sits inside the AI-system lifecycle that Art. 15(1) constrains.
+**Reasoning:** The two target different objects (personal-data semantic accuracy + storage integrity vs AI-system resilience to errors/faults/inconsistencies via backup/fail-safe) and use different CSF anchors (GDPR PR.DS-01 + ID.AM-08 + PR.DS-10 vs AI Act PR.IR-03 + PR.IR-04 + PR.DS-11). CRDA's DIFFERENT PERSPECTIVE correctly identifies the framing difference; under the 5-option taxonomy the relationship is better described as COMPLEMENTARY (the data accuracy property coexists with the system resilience property on the same AI-system-using-personal-data asset). The objects are nested: AI-system resilience sits inside the storage stack that GDPR's PR.DS-01 protects; GDPR accuracy sits inside the AI-system lifecycle that Art. 15(1) constrains.
 
 **Scope-disjoint test:** Y when a GDPR controller deploys a high-risk AI system processing personal data.
 
@@ -61,4 +61,3 @@
 
 _(Part 3 duplicates of Part 1 §1 were byte-identical and deduplicated:
 43 lines — see ../../_migration_report.md)_
-

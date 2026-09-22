@@ -383,4 +383,3 @@ Same Berry-classic vague term as GDPR Art. 25(1) and Art. 32(1). Three materiall
 4. **Cross-regulation parallel.** Art. 25 mirrors the standardisation provisions in CRA Art. 27 (presumption of conformity via harmonised standards) and AI Act Art. 40 (conformity assessment via harmonised standards). The `European and international standards and technical specifications` triplet is the standard cross-regulation formulation.
 
 <!-- aegis:purity: own_reg=NIS2; demoted=4; core_cross_mentions=0 -->
-

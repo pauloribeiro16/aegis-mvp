@@ -16,4 +16,3 @@ verified_relationship_basis: CRDA-deep verified (6 pairs: 3 SAME — COMPLEMENTA
 emergent_tensions: 0  # strictly: 0 CONTRADICTORY or CORRECTED reclassifications on the general-awareness duty itself — the 6 verified pairs are all SAME (3 SAME — COMPLEMENTARY + 1 SAME — EQUAL + 3 SAME — DIFFERENT-PERSPECTIVE substantively scope-disjoint); the 3 substantively scope-disjoint pairs are SAME — DIFFERENT-PERSPECTIVE per CRDA-deep verified classifications — no reclassification is required, but the parallel tracks coexist on different audiences; no Phase 1C tension resolution is required for D-08.1
 ```
 **Objective.** General security awareness is established through a documented training programme with population-wide coverage, audience-routing, and governance hooks.
-

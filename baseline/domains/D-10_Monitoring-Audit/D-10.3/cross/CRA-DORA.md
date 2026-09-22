@@ -43,5 +43,3 @@
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation must produce a layered stack: CRA Annex VII §6 + Annex VIII conformity-assessment + DORA Art. 24-26 entity-level testing programme.
 
 ---
-
-

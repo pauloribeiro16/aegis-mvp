@@ -57,5 +57,3 @@
 
 **Why different-perspective**: GDPR Art. 27 is a *legal-address* obligation (representative must be EU-based, mandate in writing); DORA Art. 30(3)(e) is a *rights* obligation (audit + inspection + on-site copy rights). Different mechanisms: GDPR = designate, DORA = assert audit rights. Both apply when a non-EU ICT third-party provider is critical/important for a financial entity.
 
-
-

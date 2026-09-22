@@ -152,4 +152,3 @@ T3 had no clauses for Annex VIII. The v0.2 expansion adds 9 atomic clauses (CL16
 **End of Annex VIII file. Next: `99_CRA_Synthesis.md`.**
 
 <!-- aegis:purity: own_reg=CRA; demoted=0; core_cross_mentions=0 -->
-

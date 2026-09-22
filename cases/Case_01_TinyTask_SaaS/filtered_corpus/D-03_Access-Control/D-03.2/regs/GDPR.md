@@ -136,4 +136,3 @@ when those regs apply on the same party.)*
 ```
 
 <!-- aegis:purity: own_reg=GDPR; demoted=4; core_cross_mentions=0 -->
-

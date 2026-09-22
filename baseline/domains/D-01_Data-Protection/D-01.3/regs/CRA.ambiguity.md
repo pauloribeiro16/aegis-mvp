@@ -133,4 +133,3 @@ Data scope — personal + non-personal.
 Same Berry-classic as GDPR Art. 25(1), Art. 32(1), NIS 2 Art. 21(1).
 
 <!-- aegis:purity: own_reg=CRA; demoted=1; core_cross_mentions=0 -->
-

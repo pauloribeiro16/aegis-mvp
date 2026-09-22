@@ -136,4 +136,3 @@ verified_relationship: NON-SAME (CRDA-deep, D-04.4: GDPR↔NIS2 = COMPLEMENTARY;
 ```
 
 <!-- aegis:purity: own_reg=GDPR; demoted=6; core_cross_mentions=2 -->
-

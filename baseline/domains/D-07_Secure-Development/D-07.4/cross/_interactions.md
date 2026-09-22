@@ -445,7 +445,7 @@ status: DRAFT
 ##### Emergent tensions (2 regulations)
 - Only 2 regulations have non-zero coverage. No 3-regulation emergent tension exists. Note: the substantial-modification regime under CRA Art. 21-22 + DORA Art. 9(4)(e) creates a layered obligation where the same change event must be assessed against both regimes — the substantive assessment objects differ (product-conformity vs. entity-process discipline) but the documentation overlap is high.
 ##### SR cross-validation
-The two applicable regulations map D-07.4 to the NIST CSF 2.0 Subcategories **PR.PS-02** (Software maintained/replaced/removed commensurate with risk) and **PR.PS-01** (Configuration management practices established, documented, applied). CRA additionally anchors on **ID.SC-04** (Suppliers prioritised by criticality) via the substantial-modification trigger; DORA additionally anchors on **GV.RR-02** (Roles/responsibilities/accountabilities established) for the six-step approval-act dimension.
+The two applicable regulations map D-07.4 to the NIST CSF 2.0 Subcategories **PR.PS-02** (Software maintained/replaced/removed commensurate with risk) and **PR.PS-01** (Configuration management practices established, documented, applied). CRA additionally anchors on **GV.SC-07** (Suppliers prioritised by criticality) via the substantial-modification trigger; DORA additionally anchors on **GV.RR-02** (Roles/responsibilities/accountabilities established) for the six-step approval-act dimension.
 ##### Downstream implication
 Phase 1 entities must implement both regimes' change-management obligations: CRA's substantial-modification assessment for product changes; DORA's six-step process for entity-side changes. The regimes stack without overlap, but the same change event may trigger both. The DORA six-step documentation can serve as the evidence trail for CRA Art. 13(14) series-production conformity.
 ---
@@ -491,4 +491,3 @@ status: DRAFT
 ## Structural banners (merged Parts)
 
 # Part 4 — Relevant Ambiguity (by regulation)
-

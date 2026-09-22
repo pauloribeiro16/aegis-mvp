@@ -63,5 +63,3 @@
 
 **Why different-perspective**: NIS2 `direct` scope-limiter is about *who* the entity is liable for (direct suppliers); CRA Art. 22/23 is about *who* becomes the manufacturer (third-party on substantial modification) and *who* provides identification to MSAs. Different actors, different triggers. Both apply when a NIS2-entity deploys a CRA-classified product substantially modified by a third party: the deployer is NIS2-liable for the direct supplier, and the third-party modifier becomes a CRA-manufacturer.
 
-
-

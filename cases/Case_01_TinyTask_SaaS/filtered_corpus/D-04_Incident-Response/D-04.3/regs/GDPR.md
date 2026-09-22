@@ -30,7 +30,7 @@ phase_1A_role: 1_of_N  # if GDPR-only, high-level SO is redundant; sub-SO used d
 **Objective.** A personal data breach is notified to the competent supervisory authority without undue delay and, where feasible, no later than 72 hours after the controller becomes aware of the breach — unless the breach is unlikely to result in a risk to data subjects' rights and freedoms (Art. 33(1)).
 
 **CSF anchors (from `SR-GDPR-016` v0.3 security_rationale):**
-RS.CO-02, RS.CO-04, RS.MA-03.
+RS.CO-02, RS.MA-04, RS.MA-03.
 
 ---
 
@@ -63,7 +63,7 @@ RS.CO-02, RS.CO-04, RS.MA-03.
   verification_method: TEST
   dependencies: [4.1.1 (notification requires prior `becoming aware` moment; 72h clock binds to 4.1 GDPR trigger anchor), 4.2.1 (notification content requires prior containment classification feeding Art. 33(3)(d) Measures-taken section)]
 
-  nist_csf: [RS.CO-02, RS.CO-04, RS.MA-03]
+  nist_csf: [RS.CO-02, RS.MA-04, RS.MA-03]
 
   applicable_if:
     regs: [GDPR]
@@ -117,4 +117,3 @@ verified_relationship: CONDITIONAL (CRDA-deep, D-04.3 GDPR↔NIS2: SCOPE-DISJOIN
 ```
 
 <!-- aegis:purity: own_reg=GDPR; demoted=4; core_cross_mentions=1 -->
-

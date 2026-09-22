@@ -296,4 +296,3 @@ The 3-attribute triad (`sound, comprehensive and well-documented`) is **the most
 
 
 <!-- aegis:purity: own_reg=DORA; demoted=6; core_cross_mentions=0 -->
-

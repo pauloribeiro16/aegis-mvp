@@ -115,4 +115,3 @@ Inherits Art. 3(23) D23. Same multi-source definition (instructions, promotional
 Same as GDPR Art. 5(1)(c) `adequate, relevant and limited to what is necessary`. Cross-regulation pattern.
 
 <!-- aegis:purity: own_reg=CRA; demoted=1; core_cross_mentions=0 -->
-

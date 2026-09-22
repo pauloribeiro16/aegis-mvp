@@ -20,4 +20,3 @@ interact with the entity's systems, products, services, components and
 data operates through an authentication mechanism of sufficient strength
 for the risk in scope, with the strictest applicable floor discharging
 the most permissive on the same authentication event when both apply.
-

@@ -213,4 +213,3 @@ verified_relationship: NON-SAME (CRDA-deep, D-04.4: GDPR↔DORA = COMPLEMENTARY;
 ```
 
 <!-- aegis:purity: own_reg=DORA; demoted=7; core_cross_mentions=1 -->
-

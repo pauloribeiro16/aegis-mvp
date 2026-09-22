@@ -333,7 +333,7 @@ status: DRAFT
 - **CRA "personal or other" scope extension** beyond GDPR's personal-data scope creates a compliance-population gap: a CRA manufacturer protecting non-personal data (e.g. sensor telemetry) may not be in GDPR scope, but a NIS 2 entity that ingests the same data is in scope. A CRA baseline met at the product level does not by itself discharge the NIS 2 entity's deployment-side responsibility.
 <!-- /emergent -->
 ##### SR cross-validation
-CSF mappings converge on PR.DS-01 (Data-at-rest protected) for all four regulations, with CRA additionally mapping to PR.DS-02 (in-transit) per the SR-CRA-001 umbrella and DORA additionally mapping to PR.DS-02/PR.DS-10/PR.DS-12 for the in-transit/in-use/risk-strategy dimensions. The shared PR.DS-01 anchor is the operational pivot; divergence is at the supplementary layer (CRA: harmonised standards; DORA: classification-driven key protection; GDPR: pseudonymisation/Art. 4(5) de-attribution; NIS 2: appropriate-and-proportionate). No contradictory CSF mappings observed.
+CSF mappings converge on PR.DS-01 (Data-at-rest protected) for all four regulations, with CRA additionally mapping to PR.DS-02 (in-transit) per the SR-CRA-001 umbrella and DORA additionally mapping to PR.DS-02/PR.DS-10/ID.AM-08 for the in-transit/in-use/risk-strategy dimensions. The shared PR.DS-01 anchor is the operational pivot; divergence is at the supplementary layer (CRA: harmonised standards; DORA: classification-driven key protection; GDPR: pseudonymisation/Art. 4(5) de-attribution; NIS 2: appropriate-and-proportionate). No contradictory CSF mappings observed.
 ##### Downstream implication
 For Phase 1C Doc 07 (cross-regulation consolidation in the company profile), D-01.1 is a **stack-merge** sub-domain: a single at-rest control (e.g. disk encryption with key custody) typically satisfies all four regulators when documentation links each one. Proportionality: a 5-FTE SaaS may default to the CRA state-of-the-art floor as the highest common denominator; a 500-FTE financial entity must additionally document the DORA classification-driven cipher strength overlay.
 ---
@@ -372,4 +372,3 @@ status: DRAFT
 ## Structural banners (merged Parts)
 
 # Part 4 — Relevant Ambiguity (by regulation)
-

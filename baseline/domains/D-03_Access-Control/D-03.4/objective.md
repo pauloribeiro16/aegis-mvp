@@ -20,4 +20,3 @@ processing systems and the product's product-centric configuration is
 managed so that the baseline state of every processing system and every
 product configuration is the minimum-necessary / secure configuration,
 with relaxation requiring affirmative data-subject or user intervention.
-

@@ -16,4 +16,3 @@ verified_relationship_basis: CRDA-deep verified (0 pairs — single-participant 
 emergent_tensions: 0
 ```
 **Objective.** The manufacturer draws up and maintains a software bill of materials (SBOM) covering the components and dependencies contained in the product with digital elements, in a commonly used and machine-readable format that supports automated downstream consumption, with at minimum the top-level dependencies.
-

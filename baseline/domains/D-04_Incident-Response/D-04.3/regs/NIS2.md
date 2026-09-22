@@ -30,7 +30,7 @@ phase_1A_role: 1_of_N
 **Objective.** A significant incident is notified to the CSIRT or, where applicable, the competent authority via a twin-trigger pattern — an early warning within 24 hours of awareness (Art. 23(4)(a), `SR-NIS2-010`) followed by an incident notification within 72 hours with severity, impact, and (where available) indicators of compromise (Art. 23(4)(b), `SR-NIS2-011`).
 
 **CSF anchors (from `SR-NIS2-010` v0.3 security_rationale):**
-RS.CO-04, RS.MA-02.
+RS.MA-04, RS.MA-02.
 *(The downstream `SR-NIS2-011` 72h tier adds RS.MA-03.)*
 
 ---
@@ -64,7 +64,7 @@ RS.CO-04, RS.MA-02.
   verification_method: TEST
   dependencies: [4.1.2 (notification clock depends on 4.1 NIS 2 awareness event; 24h bound), 4.2.2 (notification content requires prior containment classification feeding 72h tier severity/impact assessment)]
 
-  nist_csf: [RS.CO-04, RS.MA-02, RS.MA-03]
+  nist_csf: [RS.MA-04, RS.MA-02, RS.MA-03]
 
   applicable_if:
     regs: [NIS2]
@@ -121,4 +121,3 @@ verified_relationship: CONDITIONAL (CRDA-deep, D-04.3 GDPR↔NIS2: SCOPE-DISJOIN
 ```
 
 <!-- aegis:purity: own_reg=NIS2; demoted=4; core_cross_mentions=1 -->
-

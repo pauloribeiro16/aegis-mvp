@@ -120,4 +120,3 @@ verified_relationship: DIFFERENT-PERSPECTIVE / COMPLEMENTARY / EQUAL (CRDA-deep,
 ```
 
 <!-- aegis:purity: own_reg=NIS2; demoted=4; core_cross_mentions=2 -->
-

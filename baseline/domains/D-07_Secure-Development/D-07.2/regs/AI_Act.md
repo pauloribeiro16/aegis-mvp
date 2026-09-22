@@ -132,4 +132,3 @@ verified_relationship: DIFFERENT-PERSPECTIVE-AT-AI-VS-CONVENTIONAL (CRDA-deep, D
 ```
 
 <!-- aegis:purity: own_reg=AI_Act; demoted=5; core_cross_mentions=2 -->
-

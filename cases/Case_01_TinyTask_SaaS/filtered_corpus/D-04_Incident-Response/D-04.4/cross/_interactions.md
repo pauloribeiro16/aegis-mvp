@@ -115,7 +115,7 @@ This file is part of the CRDA-deep pilot chain:
 |---|---|---|---|
 | GDPR | SO-GDPR-014 | Timely restoration of availability and access to personal data after physical or technical incident (with continuing confidentiality, integrity and resilience of processing systems) | Personal-data availability; controller/processor; Art. 32(1)(b)+(c) + Art. 5(1)(f) (cross) + Art. 32(2) risk-enumeration (cross); PR.IR-04 + PR.DS-11 + RC.RP-04 |
 | NIS 2 | SO-NIS2-013 | Business-continuity triad (BC + backup + DR + crisis management) ensuring the ability to restore availability and integrity of network and information systems and manage crises arising from significant incidents | Entity ICT systems; all-hazards approach (Art. 21(2) chapeau + Recital 56); Art. 21(2)(c); RC.RP-04 + PR.DS-11 |
-| CRA | SO-CRA-021 (cross-ref) | Preservation of availability of essential and basic functions of a product with digital elements *also after an incident*, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks, and reduced incident impact via exploitation-mitigation mechanisms | Product with digital elements; manufacturer perspective; Annex I Part I (2)(h) + (2)(k) + (2)(i) + Art. 13(21); PR.IR-03 + PR.DS-12 |
+| CRA | SO-CRA-021 (cross-ref) | Preservation of availability of essential and basic functions of a product with digital elements *also after an incident*, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks, and reduced incident impact via exploitation-mitigation mechanisms | Product with digital elements; manufacturer perspective; Annex I Part I (2)(h) + (2)(k) + (2)(i) + Art. 13(21); PR.IR-03 + ID.AM-08 |
 | DORA | SO-DORA-010 | Comprehensive ICT BC policy with dedicated arrangements/plans/procedures/mechanisms including ICT response and recovery plans (independent internal audit for non-microenterprises), backup policies with criticality/confidentiality-graded scope and minimum frequency, and restoration and recovery procedures and methods | Financial entity; BC framework + backup architecture + audit-verified arrangements; Art. 11(1)–(3) + Art. 12(1); RC.RP-01 + PR.IR-03 + RC.RP-04 + PR.IR-04 + PR.DS-11 + RC.RP-03 |
 
 ## Validated relationships (from CRDA-deep §D-04.4)
@@ -511,7 +511,7 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs — AI Act is out-of-scope per AEGIS taxonom
   priority: MUST
   verification_method: TEST
   dependencies: [4.1 (recovery depends on a prior detection-and-triage event feeding the recovery trigger), 4.2 (recovery depends on prior containment classification feeding the recovery scope — BC framework invoked when containment is not sufficient; restoration scope determined by what was contained)]
-  nist_csf: [RC.RP-01, RC.RP-03, RC.RP-04, PR.DS-11, PR.DS-12, PR.IR-03, PR.IR-04]
+  nist_csf: [RC.RP-01, RC.RP-03, RC.RP-04, PR.DS-11, ID.AM-08, PR.IR-03, PR.IR-04]
   applicable_if:
     regs: [GDPR, NIS2, CRA, DORA]
     scope_overlap: conditional   # HL engages when ≥2 applicable regs target overlapping recovery layers on the same party AND ≥1 sub-SO activates (per HSO scope-overlap principle); AI Act out-of-scope per AEGIS taxonomy §4.1 (AI Act Art. 15(3) backup/fail-safe plans are technical-redundancy solutions covered under D-01.4/2.1, not entity-level recovery)
@@ -592,7 +592,7 @@ status: DRAFT
 ##### Emergent tensions (3+ regulations)
 None. The recovery architecture is consistently layered: product → entity → personal-data-specific outcome. No 3-way contradiction; no non-pairwise-surfacing effect. DORA's specificity on backup scoping (criticality/confidentiality) is the only structural sharpening, and it operates within the NIS2 BC framework rather than against it.
 ##### SR cross-validation
-NIST CSF 2.0 anchoring is dominated by **RC.RP-04** (Recovery plans executed), **PR.DS-11** (Backups created and protected), and **PR.IR-04** (Adequate resource capacity). GDPR maps RC.RP-04 via SR-GDPR-024 directly. NIS2 maps PR.DS-11 via SR-NIS2-019 (the backup pillar of the BC triad). DORA maps all three via SR-DORA-015 (explicit backup policy) and SR-DORA-014 (recovery plans). CRA's resilience design is partially outside the CSF RC/PR.IR scope (it is a product-design construct mapped to PR.IR-03 + PR.DS-12, not to RC.*). The CSF 2.0 surface is consistent; the CRA-side gap is known and flagged as a product-design vs CSF-operational category mismatch.
+NIST CSF 2.0 anchoring is dominated by **RC.RP-04** (Recovery plans executed), **PR.DS-11** (Backups created and protected), and **PR.IR-04** (Adequate resource capacity). GDPR maps RC.RP-04 via SR-GDPR-024 directly. NIS2 maps PR.DS-11 via SR-NIS2-019 (the backup pillar of the BC triad). DORA maps all three via SR-DORA-015 (explicit backup policy) and SR-DORA-014 (recovery plans). CRA's resilience design is partially outside the CSF RC/PR.IR scope (it is a product-design construct mapped to PR.IR-03 + ID.AM-08, not to RC.*). The CSF 2.0 surface is consistent; the CRA-side gap is known and flagged as a product-design vs CSF-operational category mismatch.
 ##### Downstream implication
 Phase 2 obligation derivation for D-04.4 must distinguish the `timely` GDPR anchor (VAG, requires operationalisation) from the DORA-specific backup-scoping on criticality/confidentiality (which resolves the VAG). Phase 3 case generation must verify that financial-entity case companies produce a backup-scoping matrix grounded in DORA Art. 12(1)(a), and non-financial case companies must operationalise `timely` via NIS2-derived backup-cadence requirements. CRA's product-level resilience should be referenced in Phase 2 as a control already in place when the entity's ICT estate is built on CRA-compliant products.
 ---
@@ -709,4 +709,3 @@ This file is part of the CRDA-deep pilot chain:
 ## Structural banners (merged Parts)
 
 # Part 4 — Relevant Ambiguity (by regulation)
-

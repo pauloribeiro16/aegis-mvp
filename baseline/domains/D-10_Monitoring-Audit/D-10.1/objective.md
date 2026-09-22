@@ -16,4 +16,3 @@ verified_relationship_basis: CRDA-deep verified (10 pairs: 9 SAME — COMPLEMENT
 emergent_tensions: 1  # CRDA-flagged GENUINE TENSION on CRA Annex I Part I (2)(l) user opt-out vs. mandatory-monitoring regimes (GDPR Art. 32(2), NIS 2 Art. 21(2)(b), DORA Art. 8(1)); the OJ does not resolve this conflict; the tension propagates to 3 of 10 pairs (GDPR↔CRA primary flag, NIS2↔CRA propagated flag, CRA↔DORA propagated flag); Phase 1C Doc 07 must perform the Layer 2 OJ-level resolution on this conflict because no OJ-level consolidation rule exists.
 ```
 **Objective.** Continuous security monitoring is established through a **layered detection-and-monitoring architecture** spanning personal-data processing systems, network and information systems, on-device product activity, ICT systems and tools, and high-risk AI systems, with detection capability feeding the incident-response chain.
-

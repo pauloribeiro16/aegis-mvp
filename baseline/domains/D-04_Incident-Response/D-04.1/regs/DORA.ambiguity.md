@@ -354,4 +354,3 @@ The 3-attribute triad (`sound, comprehensive and well-documented`) is **the most
 **Proportionality-status:** Art. 4 applies.
 
 <!-- aegis:purity: own_reg=DORA; demoted=9; core_cross_mentions=0 -->
-

@@ -16,4 +16,3 @@
 **Berry anchor:** §3.3.1 (`market surveillance`, cross-regulation borrow).
 
 <!-- aegis:purity: own_reg=AI_Act; demoted=0; core_cross_mentions=0 -->
-

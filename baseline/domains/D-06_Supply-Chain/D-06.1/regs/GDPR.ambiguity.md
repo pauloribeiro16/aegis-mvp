@@ -30,4 +30,3 @@ Berry §5.1: `sufficient` is inquiry-resistant. EDPB Guidelines 07/2020 propose 
 ---
 
 <!-- aegis:purity: own_reg=GDPR; demoted=0; core_cross_mentions=0 -->
-

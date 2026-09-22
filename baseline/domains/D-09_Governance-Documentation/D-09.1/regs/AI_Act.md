@@ -124,4 +124,3 @@ verified_relationship: COMPLEMENTARY (CRDA-deep, D-09.1: GDPR↔AI_Act = COMPLEM
 ```
 
 <!-- aegis:purity: own_reg=AI_Act; demoted=4; core_cross_mentions=2 -->
-

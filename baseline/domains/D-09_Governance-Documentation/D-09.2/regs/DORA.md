@@ -119,4 +119,3 @@ verified_relationship: DIFFERENT-PERSPECTIVE / COMPLEMENTARY / EQUAL (CRDA-deep,
 ```
 
 <!-- aegis:purity: own_reg=DORA; demoted=4; core_cross_mentions=2 -->
-

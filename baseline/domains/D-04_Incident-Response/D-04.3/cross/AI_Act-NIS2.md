@@ -64,4 +64,3 @@ When both apply, NIS2's 24-hour early warning is earlier than the AI Act's defau
 
 _(Part 3 duplicates of Part 1 §1 were byte-identical and deduplicated:
 44 lines — see ../../_migration_report.md)_
-

@@ -51,4 +51,3 @@ T3 had no clauses for Art. 18–23. The v0.2 expansion adds 17 atomic clauses (C
 **End of Art. 18–23 file. Next: `07_CRA_Art24-26_OSS.md`.**
 
 <!-- aegis:purity: own_reg=CRA; demoted=0; core_cross_mentions=0 -->
-

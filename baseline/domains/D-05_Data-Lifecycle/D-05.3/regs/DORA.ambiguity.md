@@ -314,4 +314,3 @@ This is **structurally different** from the NIS 2 model (where significant cyber
 *Berry anchor:* §5.1 (`appropriate`); §3.3.1 (`register`). Same as CRA-CL129.
 
 <!-- aegis:purity: own_reg=DORA; demoted=8; core_cross_mentions=0 -->
-

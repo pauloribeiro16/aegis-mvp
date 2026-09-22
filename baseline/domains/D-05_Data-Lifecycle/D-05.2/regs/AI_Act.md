@@ -150,4 +150,3 @@ incident-log retention and DORA Art. 12.)*
 ```
 
 <!-- aegis:purity: own_reg=AI_Act; demoted=6; core_cross_mentions=3 -->
-

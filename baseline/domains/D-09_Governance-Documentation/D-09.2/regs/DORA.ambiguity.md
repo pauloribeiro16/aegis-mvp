@@ -1897,4 +1897,3 @@ The structural pattern is **mandatory acknowledge + discretionary substance** �
 The `at least every 3 years` cadence is a **hard numeric anchor**. This is the same Berry-relief pattern as CRA Annex I §2(c) `automatic security updates installed within an appropriate timeframe` (no anchor) vs. CRA Annex II §4 `disseminated without delay` (no anchor).
 
 <!-- aegis:purity: own_reg=DORA; demoted=34; core_cross_mentions=0 -->
-

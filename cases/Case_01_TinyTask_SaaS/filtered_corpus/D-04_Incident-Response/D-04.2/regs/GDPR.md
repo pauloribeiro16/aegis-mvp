@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-009 | Personal-data breaches contained and mitigated via Art. 33(3)(d) measures (incl. rendering data unintelligible) + Art. 34(3)(a)/(b) unintelligibility carve-out | Personal data; post-detection containment, mitigation and remediation runbooks; PR.DS-12 + PR.IR-04 |
+| GDPR | SO-GDPR-009 | Personal-data breaches contained and mitigated via Art. 33(3)(d) measures (incl. rendering data unintelligible) + Art. 34(3)(a)/(b) unintelligibility carve-out | Personal data; post-detection containment, mitigation and remediation runbooks; ID.AM-08 + PR.IR-04 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -34,8 +34,8 @@ phase_1A_role: 1_of_N
 - The downstream notification cascade (Art. 33 supervisory-authority notification including the measures description) is part of D-04.3, not D-04.2.
 
 **CSF anchors (from `SR-GDPR-015` v0.3 security_rationale):**
-PR.DS-12, PR.IR-04, RC.RP-04.
-*(PR.DS-12 anchors the data-disposal-managed leg (the unintelligibility
+ID.AM-08, PR.IR-04, RC.RP-04.
+*(ID.AM-08 anchors the data-disposal-managed leg (the unintelligibility
 rendering is the GDPR-unique expression of this anchor); PR.IR-04
 anchors the adequate-resource-capacity leg (the TOMs catalogue
 operationalises the resource allocation for containment); RC.RP-04
@@ -67,13 +67,13 @@ containment-then-recovery sequence.)*
     The product shall contain and mitigate personal-data breaches through appropriate technical and organisational measures (TOMs), including — where applicable — measures rendering the personal data unintelligible to any person who is not authorised to access the data (Art. 34(3)(a)) and subsequent measures that ensure the high risk to data subjects' rights and freedoms no longer materialises (Art. 34(3)(b)), with the measures taken or proposed documented in the Art. 33(3)(d) supervisory-authority notification content; the `where appropriate` qualifier from Art. 33(3)(d) operationalises the TOMs depth with high-risk data categories (Art. 9 special categories, financial data, health data) triggering deeper and more aggressive containment than low-risk categories (GDPR Art. 33(3)(d) + Art. 34(3)(a)/(b) + Art. 32(1)(d)).
 
   fit_criterion: |
-    A personal-data post-breach TOMs catalogue is maintained covering containment, mitigation and remediation measures, with the measures selected per the `where appropriate` Art. 33(3)(d) qualifier and depth scaled to data-category risk (Art. 9 special categories, financial data, health data trigger deeper measures); PR.DS-01 data-at-rest protected leg anchors the cryptographic foundation (with the operational condition that the protection measures were applied to the data actually affected by the breach, not merely to data generally); PR.IR-04 adequate-resource-capacity leg anchors the resource allocation for containment; PR.DS-12 data-managed-consistent-with-risk-strategy leg anchors the unintelligibility-rendering discipline; the Art. 34(3)(a) unintelligibility rendering — operationalised as encryption with sufficient key separation that the adversary cannot recover plaintext, with the cryptographic key unavailable to any party outside the controller's authorised set — is the GDPR-unique carve-out that operates as a substitute for Art. 34 data-subject notification when applied; the Art. 34(3)(b) `subsequent measures which ensure that the high risk no longer likely to materialise` leg is the harder threshold — the controller must demonstrate that mitigation actually neutralises the high risk, not merely that mitigation was attempted; the Art. 33(3)(d) measures description in the supervisory-authority notification (4.3 cross-ref) covers both taken and proposed measures; for multi-reg parties, the GDPR TOMs are documented as a section within the NIS 2 entity-level response plan or within the DORA BC arrangements, not as a separate runbook; the personal-data post-breach containment discipline operates at the controller post-event runbook layer only, with the boundary hand-off to entity-level `contain` phase (NIS 2 leg), product-design availability (CRA leg) and BC arrangements (DORA leg) documented as the controlled interfaces; verified by TOMs catalogue audit + Art. 33(3)(d) measures description in notification records review + Art. 34(3)(a) encryption-with-key-separation evidence on the affected dataset (PR.DS-01 + PR.IR-04) + Art. 34(3)(b) mitigation-effect demonstration records (when Art. 34(3)(b) is invoked) + DPA inspection-ready evidence pack on request.
+    A personal-data post-breach TOMs catalogue is maintained covering containment, mitigation and remediation measures, with the measures selected per the `where appropriate` Art. 33(3)(d) qualifier and depth scaled to data-category risk (Art. 9 special categories, financial data, health data trigger deeper measures); PR.DS-01 data-at-rest protected leg anchors the cryptographic foundation (with the operational condition that the protection measures were applied to the data actually affected by the breach, not merely to data generally); PR.IR-04 adequate-resource-capacity leg anchors the resource allocation for containment; ID.AM-08 data-managed-consistent-with-risk-strategy leg anchors the unintelligibility-rendering discipline; the Art. 34(3)(a) unintelligibility rendering — operationalised as encryption with sufficient key separation that the adversary cannot recover plaintext, with the cryptographic key unavailable to any party outside the controller's authorised set — is the GDPR-unique carve-out that operates as a substitute for Art. 34 data-subject notification when applied; the Art. 34(3)(b) `subsequent measures which ensure that the high risk no longer likely to materialise` leg is the harder threshold — the controller must demonstrate that mitigation actually neutralises the high risk, not merely that mitigation was attempted; the Art. 33(3)(d) measures description in the supervisory-authority notification (4.3 cross-ref) covers both taken and proposed measures; for multi-reg parties, the GDPR TOMs are documented as a section within the NIS 2 entity-level response plan or within the DORA BC arrangements, not as a separate runbook; the personal-data post-breach containment discipline operates at the controller post-event runbook layer only, with the boundary hand-off to entity-level `contain` phase (NIS 2 leg), product-design availability (CRA leg) and BC arrangements (DORA leg) documented as the controlled interfaces; verified by TOMs catalogue audit + Art. 33(3)(d) measures description in notification records review + Art. 34(3)(a) encryption-with-key-separation evidence on the affected dataset (PR.DS-01 + PR.IR-04) + Art. 34(3)(b) mitigation-effect demonstration records (when Art. 34(3)(b) is invoked) + DPA inspection-ready evidence pack on request.
 
   priority: MUST
   verification_method: TEST
   dependencies: [4.1.1 (containment triggered by prior `becoming aware` data-flow detection event), 4.2.2 (when controller is also NSIE — GDPR TOMs documented as section within NIS 2 plan), 4.2.4 (when DORA-controller — GDPR TOMs documented as section within DORA BC arrangements)]
 
-  nist_csf: [RS.MI-01, RS.MI-02, PR.DS-01, PR.DS-12, PR.IR-04, RC.RP-04]
+  nist_csf: [RS.MI-01, RS.MI-02, PR.DS-01, ID.AM-08, PR.IR-04, RC.RP-04]
 
   applicable_if:
     regs: [GDPR]
@@ -128,4 +128,3 @@ verified_relationship: NON-SAME (CRDA-deep, D-04.2: GDPR↔NIS2 = COMPLEMENTARY;
 ```
 
 <!-- aegis:purity: own_reg=GDPR; demoted=5; core_cross_mentions=2 -->
-

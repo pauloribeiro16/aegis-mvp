@@ -12,4 +12,3 @@
 _(no GDPR Sub-SO or requirements in this sub-domain)_
 
 <!-- aegis:purity: own_reg=GDPR; demoted=0; core_cross_mentions=0 -->
-

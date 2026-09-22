@@ -2663,4 +2663,3 @@ The recipients are selected based on competence. Same Berry pattern as NIS 2 CL4
 `material` is undefined (cf. CRA Annex I §1 `material risk`, NIS 2 Art. 21(2)(e) `significant harm`). Three readings of the reporting-threshold gate:
 
 <!-- aegis:purity: own_reg=DORA; demoted=47; core_cross_mentions=0 -->
-

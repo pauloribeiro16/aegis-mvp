@@ -218,4 +218,3 @@ R2 is the literal reading. S2.
 Same Berry-classic vague term as GDPR Art. 25(1) and Art. 32(1). Three materially distinct readings:
 
 <!-- aegis:purity: own_reg=NIS2; demoted=1; core_cross_mentions=0 -->
-

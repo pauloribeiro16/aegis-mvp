@@ -12,4 +12,3 @@
 **Berry anchor:** §5.1 (`as resilient as possible`), §5.4.7 (OR-chains), §3.3.1.
 
 <!-- aegis:purity: own_reg=AI_Act; demoted=0; core_cross_mentions=0 -->
-

@@ -19,4 +19,3 @@ emergent_tensions: 0
 access through appropriate technical measures — primarily encryption with
 appropriate key custody — calibrated to the risks identified in the entity's
 risk assessment and commensurate with the state of the art.
-

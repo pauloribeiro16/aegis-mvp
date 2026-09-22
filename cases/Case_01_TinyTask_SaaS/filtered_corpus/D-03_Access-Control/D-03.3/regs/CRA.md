@@ -143,4 +143,3 @@ verified_relationship: SAME — COMPLEMENTARY (CRDA-deep, D-03.3: GDPR↔CRA SAM
 ```
 
 <!-- aegis:purity: own_reg=CRA; demoted=5; core_cross_mentions=1 -->
-

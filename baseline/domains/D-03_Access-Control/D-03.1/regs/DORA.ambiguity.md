@@ -1799,4 +1799,3 @@ Same Berry-flagged vague quantitative term as Art. 10(1), CL24-3, CL27-1, CL27-2
 **Proportionality-status:** Art. 4 does not apply (clause IS the proportionality provision).
 
 <!-- aegis:purity: own_reg=DORA; demoted=32; core_cross_mentions=0 -->
-

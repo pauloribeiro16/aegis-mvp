@@ -16,4 +16,3 @@ verified_relationship_basis: CRDA-deep verified (0 pairs — single-participant 
 emergent_tensions: 0
 ```
 **Objective.** Personal data are exported to the data subject in a structured, commonly used, machine-readable format, and the data subject can transmit those data to another controller without hindrance, subject to the qualifying conditions and exclusions that scope the right.
-

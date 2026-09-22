@@ -34,8 +34,8 @@ and tools designed to ensure ICT-system resilience, continuity and
 availability (Art. 9(2)).
 
 **CSF anchors (from `SR-DORA-001` v0.3 security_rationale):**
-PR.DS-01, PR.DS-02, PR.DS-10, PR.DS-12.
-*(The PR.DS-02 / PR.DS-10 / PR.DS-12 anchors are inherited from the 4×3
+PR.DS-01, PR.DS-02, PR.DS-10, ID.AM-05.
+*(The PR.DS-02 / PR.DS-10 / ID.AM-05 anchors are inherited from the 4×3
 matrix context; D-01.1 is the at-rest cell, which is anchored
 specifically by PR.DS-01.)*
 
@@ -151,4 +151,3 @@ verified_relationship: SAME (CRDA-deep, D-01.1: GDPR↔DORA CORRECTED from COMPL
 ```
 
 <!-- aegis:purity: own_reg=DORA; demoted=5; core_cross_mentions=0 -->
-

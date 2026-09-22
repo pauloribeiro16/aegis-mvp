@@ -64,4 +64,3 @@ The OJ texts impose the same substantive obligation (encryption of data at rest 
 
 _(Part 3 duplicates of Part 1 §1 were byte-identical and deduplicated:
 46 lines — see ../../_migration_report.md)_
-

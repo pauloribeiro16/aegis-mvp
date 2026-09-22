@@ -121,4 +121,3 @@ verified_relationship: PARTIAL (CRDA-deep, D-09.3: NIS2↔DORA = SAME — EQUAL 
 ```
 
 <!-- aegis:purity: own_reg=DORA; demoted=4; core_cross_mentions=2 -->
-

@@ -275,7 +275,7 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs — AI Act out-of-scope per AEGIS taxonomy �
   priority: MUST
   verification_method: TEST
   dependencies: [6.3 (contractual-security matrix provides the contractual substrate that legitimises audit-rights invocation; CRA economic-operator records feed CRA-AR mandate and substantial-modification records; DORA Art. 30 CIF-clauses establish contractual basis for Art. 30(3)(e) audit-rights), 6.1 (vendor-risk-assessment four-factor proportionality shapes CIF designation that triggers audit-rights; processor-tier feeds cross-MS SPOC routing for GDPR-NIS 2 dual controllers)]
-  nist_csf: [GV.SC-02, GV.SC-03, GV.SC-04, GV.SC-05, GV.OC-02, GV.OC-03, GV.RR-02, RS.CO-04, ID.AM-04, ID.RA-02, DE.CM-06]
+  nist_csf: [GV.SC-02, GV.SC-03, GV.SC-04, GV.SC-05, GV.OC-02, GV.OC-03, GV.RR-02, RS.MA-04, ID.AM-04, ID.RA-02, DE.CM-06]
   applicable_if:
     regs: [GDPR, NIS2, CRA, DORA]
     scope_overlap: conditional   # HL engages only when ≥2 applicable regs anchor boundary mechanisms on the same non-EU or cross-border supply-chain event (see HSO scope-overlap principle); AI Act out-of-scope
@@ -1723,4 +1723,3 @@ R1 vs R2 admit materially distinct compliance populations. S3.
 ### 6. Cross-clause structural observations
 ## AI_Act
 _No applicable AI_Act ambiguity._
-

@@ -32,7 +32,7 @@ phase_1A_role: 1_of_N
 - GPAI providers of systemic-risk models separately report under `SR-AIACT-024` / `SO-AIACT-014` to the AI Office without undue delay — distinct recipient, separate clock. The AI Act therefore introduces two distinct recipient classes (MSAs for high-risk AI serious incidents, AI Office for GPAI systemic-risk incidents), each with its own clock pattern.
 
 **CSF anchors (from `SR-AIACT-022` v0.3 security_rationale):**
-RS.CO-02, RS.CO-04, RS.MA-03, RS.MA-01.
+RS.CO-02, RS.MA-04, RS.MA-03, RS.MA-01.
 
 ---
 
@@ -65,7 +65,7 @@ RS.CO-02, RS.CO-04, RS.MA-03, RS.MA-01.
   verification_method: TEST
   dependencies: [4.1.5 (notification clock depends on 4.1 awareness event from 4.1 detection leg; AI Act detection obligations are coupled to the Art. 73/55 reporting triggers and not standalone — 4.1 AI Act out-of-scope, but 4.3 AI Act pulls awareness from 4.1 detection capabilities operated at the AI-system boundary), 4.2.5 (notification content requires prior incident-classification feeding Art. 73 content template)]
 
-  nist_csf: [RS.CO-02, RS.CO-04, RS.MA-03, RS.MA-01]
+  nist_csf: [RS.CO-02, RS.MA-04, RS.MA-03, RS.MA-01]
 
   applicable_if:
     regs: [AI_Act]
@@ -124,4 +124,3 @@ verified_relationship: CONDITIONAL (CRDA-deep, D-04.3 GDPR↔AI_Act: SCOPE-DISJO
 ```
 
 <!-- aegis:purity: own_reg=AI_Act; demoted=4; core_cross_mentions=1 -->
-

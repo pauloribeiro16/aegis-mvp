@@ -550,4 +550,3 @@ The information set is undefined. The standard is "necessary" — same Berry pat
 `material` is undefined (cf. CRA Annex I §1 `material risk`, NIS 2 Art. 21(2)(e) `significant harm`). Three readings of the reporting-threshold gate:
 
 <!-- aegis:purity: own_reg=DORA; demoted=12; core_cross_mentions=0 -->
-

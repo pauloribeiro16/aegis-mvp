@@ -117,4 +117,3 @@ R2 is the literal reading. R3 vs R4 is a Layer 1 polysemy. S2.
 4. **The `essential and important entities` classification propagates through every Chapter IV clause.** Resolving it is the prerequisite for any other finding.
 
 <!-- aegis:purity: own_reg=NIS2; demoted=1; core_cross_mentions=0 -->
-

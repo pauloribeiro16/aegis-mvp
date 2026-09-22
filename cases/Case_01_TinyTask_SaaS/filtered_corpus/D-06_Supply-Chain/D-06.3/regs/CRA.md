@@ -29,7 +29,7 @@ phase_1A_role: 1_of_N
 
 **Objective.** CRA contractual-security coverage is expressed through economic-operator duties rather than a single negotiated contract: importers place products with digital elements on the Union market only after verifying conformity assessment, technical documentation, CE marking, and manufacturer identification, and escalate significant risk or vulnerabilities to the manufacturer and MSA while taking corrective measures; distributors act with due care, verify CE marking and required documentation, confirm manufacturer/importer compliance, and escalate non-conformity or vulnerabilities.
 
-**CSF anchors (from CRA SRs):** GV.SC-02, GV.SC-04, RS.MI-01, RS.CO-04.
+**CSF anchors (from CRA SRs):** GV.SC-02, GV.SC-04, RS.MI-01, RS.MA-04.
 
 ---
 
@@ -62,7 +62,7 @@ phase_1A_role: 1_of_N
   verification_method: TEST
   dependencies: [6.1.3 (third-party-component due diligence shapes component-vulnerability reporting inputs), 6.4.3 (substantial-modification accountability + 10-year economic-operator identification retention are the boundary-side handles that feed this matrix's records)]
 
-  nist_csf: [GV.SC-02, GV.SC-04, RS.MI-01, RS.CO-04]
+  nist_csf: [GV.SC-02, GV.SC-04, RS.MI-01, RS.MA-04]
 
   applicable_if:
     regs: [CRA]
@@ -136,4 +136,3 @@ verified_relationship: DIFFERENT-PERSPECTIVE (CRDA-deep, D-06.3: GDPR↔CRA = DI
 > (See GDPR↔CRA pair above for the verbatim Art. 19 + Art. 20 text.)
 
 <!-- aegis:purity: own_reg=CRA; demoted=6; core_cross_mentions=1 -->
-

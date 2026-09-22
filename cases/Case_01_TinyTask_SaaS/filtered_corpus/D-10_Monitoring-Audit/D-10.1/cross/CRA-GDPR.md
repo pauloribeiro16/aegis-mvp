@@ -44,5 +44,3 @@
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation must surface the CRA user opt-out vs. GDPR mandatory monitoring conflict for Layer 2 review. The two regimes can stack, but the user's opt-out from CRA monitoring may not legally exempt the controller from GDPR Art. 32(2) mandatory detection — the conflict requires OJ-level resolution.
 
 ---
-
-

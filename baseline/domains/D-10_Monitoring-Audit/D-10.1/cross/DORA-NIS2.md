@@ -43,5 +43,3 @@
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation must produce a DORA-dominant stack: DORA Art. 9(1) continuous monitoring discharges both DORA's dedicated monitoring obligation and NIS 2's Art. 21(2)(b) partial-coverage detection dimension for DORA financial entities.
 
 ---
-
-

@@ -224,4 +224,3 @@ Per the NIS 2 pattern, pausing here for your review before continuing with:
 - `04_CRA_Art14_Reporting.md` (the "Art. 23 NIS 2" analog)
 
 <!-- aegis:purity: own_reg=CRA; demoted=3; core_cross_mentions=0 -->
-

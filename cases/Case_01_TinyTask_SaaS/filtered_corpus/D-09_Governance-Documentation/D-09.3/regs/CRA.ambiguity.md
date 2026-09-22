@@ -74,4 +74,3 @@ R3 is the literal reading. S2.
 ---
 
 <!-- aegis:purity: own_reg=CRA; demoted=0; core_cross_mentions=0 -->
-

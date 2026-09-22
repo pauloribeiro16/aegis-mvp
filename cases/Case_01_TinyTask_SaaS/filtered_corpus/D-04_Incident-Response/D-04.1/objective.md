@@ -16,4 +16,3 @@ verified_relationship_basis: CRDA-deep verified (6 pairs, 3 COMPLEMENTARY + 3 DI
 emergent_tensions: 0
 ```
 **Objective.** Security-relevant events affecting the entity's systems, products, services, components and data are detected and triaged with documented trigger moments that anchor the downstream notification and response pipelines.
-

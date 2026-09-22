@@ -43,4 +43,3 @@ R1 vs R2 yield materially distinct decision-classification systems.
 ---
 
 <!-- aegis:purity: own_reg=GDPR; demoted=0; core_cross_mentions=0 -->
-

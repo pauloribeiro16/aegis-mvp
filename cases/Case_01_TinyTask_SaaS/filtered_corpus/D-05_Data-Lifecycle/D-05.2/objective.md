@@ -16,4 +16,3 @@ verified_relationship_basis: CRDA-deep verified (3 pairs: 1 SAME — CRA↔AI_Ac
 emergent_tensions: 1
 ```
 **Objective.** Data — across the data classes in scope — is retained for the period required to satisfy its declared purpose, with documented retention rationale and, where the underlying purpose changes, a reset of the retention clock. Long-term archiving or research-only retention is paired with safeguards proportional to the residual identifiability.
-

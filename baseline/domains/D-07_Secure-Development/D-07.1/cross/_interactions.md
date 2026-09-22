@@ -484,7 +484,7 @@ status: DRAFT
 - **The `state of the art` anchor is duplicated but uncoordinated**: GDPR Art. 25(1), NIS 2 Art. 21(1) sentence 2, CRA Annex I opening, DORA Art. 4, and AI Act Art. 9(1) all anchor to `state of the art` — but each regulation interprets the anchor independently. An entity implementing all 5 must reconcile the five `state of the art` baselines (industry-framework reading in GDPR; cost/state-of-the-art in NIS 2; Annex I essential-requirements in CRA; EBA Guidelines in DORA; harmonised standards + AI Act Art. 9 risk-management in AI Act).
 <!-- /emergent -->
 ##### SR cross-validation
-The 5 regulations map D-07.1 by-design to the NIST CSF 2.0 Subcategories **PR.PS-06** (Secure software development practices integrated, and their performance is monitored throughout the SDLC) and **PR.PS-02** (Software is maintained, replaced, and removed commensurate with risk) as the dominant pair. GDPR additionally maps **PR.DS-12** (Data managed consistent with risk strategy) for the by-design data-protection dimension; CRA additionally maps **PR.PS-01** (Configuration management practices established, documented, and applied) for the by-default layer. The CSF mapping converges on the SDLC-discipline anchor with regulation-specific additions on the data/configuration/asset dimensions.
+The 5 regulations map D-07.1 by-design to the NIST CSF 2.0 Subcategories **PR.PS-06** (Secure software development practices integrated, and their performance is monitored throughout the SDLC) and **PR.PS-02** (Software is maintained, replaced, and removed commensurate with risk) as the dominant pair. GDPR additionally maps **ID.AM-08** (Data managed consistent with risk strategy) for the by-design data-protection dimension; CRA additionally maps **PR.PS-01** (Configuration management practices established, documented, and applied) for the by-default layer. The CSF mapping converges on the SDLC-discipline anchor with regulation-specific additions on the data/configuration/asset dimensions.
 ##### Downstream implication
 A Phase 1 entity must implement at minimum one by-design obligation from each applicable regulation — the regimes stack, not substitute. The CRA-conformant product design serves as the upstream gate for NIS 2 / DORA / AI Act deployment decisions. GDPR by-design outputs (pseudonymisation, minimisation) become a CRA Annex I input only when the product processes personal data — the cross-regulation propagation is conditional on data-classification overlap.
 ---
@@ -524,4 +524,3 @@ status: DRAFT
 ## Structural banners (merged Parts)
 
 # Part 4 — Relevant Ambiguity (by regulation)
-

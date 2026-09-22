@@ -272,7 +272,7 @@
           "PR.DS-01",
           "PR.DS-02",
           "PR.DS-10",
-          "PR.DS-12"
+          "ID.AM-08"
         ]
       },
       {
@@ -281,7 +281,7 @@
           "PR.DS-01",
           "PR.DS-02",
           "PR.DS-10",
-          "PR.DS-12"
+          "ID.AM-08"
         ]
       },
       {
@@ -299,7 +299,7 @@
           "PR.DS-01",
           "PR.DS-02",
           "PR.DS-10",
-          "PR.DS-12"
+          "ID.AM-08"
         ]
       }
     ],
@@ -329,7 +329,7 @@
         "id": "SO-D-01.4.GDPR",
         "csf_anchors": [
           "PR.DS-01",
-          "PR.DS-12",
+          "ID.AM-08",
           "PR.DS-10"
         ]
       }
@@ -432,7 +432,7 @@
           "PR.DS-01",
           "PR.DS-02",
           "PR.DS-10",
-          "PR.DS-12"
+          "ID.AM-08"
         ],
         "scope_overlap": "N"
       }
@@ -471,7 +471,7 @@
         "nist_csf": [
           "PR.DS-01",
           "PR.DS-10",
-          "PR.DS-12"
+          "ID.AM-08"
         ],
         "scope_overlap": "N"
       }
@@ -511,13 +511,13 @@
       "PR.DS-01",
       "PR.DS-02",
       "PR.DS-10",
-      "PR.DS-12"
+      "ID.AM-08"
     ],
     "GDPR": [
       "PR.DS-01",
       "PR.DS-02",
       "PR.DS-10",
-      "PR.DS-12",
+      "ID.AM-08",
       "PR.IR-01",
       "PR.IR-03"
     ],

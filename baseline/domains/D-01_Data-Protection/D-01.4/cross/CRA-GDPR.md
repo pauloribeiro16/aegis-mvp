@@ -52,7 +52,7 @@
 <!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **Complementary** | Tension/difference |
 |---|---|---|
-| **GDPR** (SR-GDPR-005 + SR-GDPR-006, Art. 5(1)(d) + Art. 16) | Accuracy of stored personal data; rectification workflow with cascade propagation | Personal-data scope; accuracy (semantic) + integrity (storage); PR.DS-01 + PR.DS-10 + PR.DS-12 |
+| **GDPR** (SR-GDPR-005 + SR-GDPR-006, Art. 5(1)(d) + Art. 16) | Accuracy of stored personal data; rectification workflow with cascade propagation | Personal-data scope; accuracy (semantic) + integrity (storage); PR.DS-01 + PR.DS-10 + ID.AM-08 |
 | **CRA** (SR-CRA-005, Annex I Part I (2)(f)+(l)) | Integrity of data, commands, programs, configuration; corruption reported | Product-level; "personal or other"; integrity as the universal quantifier "any manipulation or modification not authorised by the user"; PR.DS-01 + PR.DS-10 + PR.PS-04 |
 
 **Why Complementary**: GDPR anchors integrity to two distinct principles (Art. 5(1)(d) accuracy — semantic; Art. 5(1)(f) integrity — storage) and Art. 16 rectification (cascade workflow). CRA anchors to a single clause covering data + commands + programs + configuration with a universal-quantifier "any manipulation" and a corruption-reporting obligation. The two are complementary: GDPR's accuracy dimension is semantic; CRA's integrity dimension is technical. A CRA product handling personal data is jointly bound; the CRA universal-quantifier integrity protection satisfies GDPR's Art. 5(1)(f) integrity leg, while GDPR's Art. 5(1)(d) accuracy leg remains a controller obligation. → full rationale: `../../../Regulation/GDPR/02_SecurityRules_NIST.md` SR-GDPR-005 + SR-GDPR-006; `../../../Regulation/CRA/02_SecurityRules_NIST.md` SR-CRA-005
@@ -61,4 +61,3 @@
 
 _(Part 3 duplicates of Part 1 §1 were byte-identical and deduplicated:
 43 lines — see ../../_migration_report.md)_
-

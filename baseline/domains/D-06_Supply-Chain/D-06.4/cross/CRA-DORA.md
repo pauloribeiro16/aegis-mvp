@@ -57,5 +57,3 @@
 
 **Why different-perspective**: CRA Art. 23(1) imposes an *identification duty on economic operators* (they must identify upstream supplier and downstream recipient); DORA Art. 30(3)(e) imposes *audit rights on financial entities* over critical providers. Different mechanisms: CRA = operator-side identification obligation; DORA = financial-entity-side rights. Both apply when a CRA-classified product is supplied to a financial entity via an importer/distributor.
 
-
-

@@ -494,4 +494,3 @@ Same `appropriate` + `risks` double VAG as GDPR Art. 32(1) and NIS 2 Art. 21(1).
 Same as GDPR Art. 5(1)(c) `adequate, relevant and limited to what is necessary`. Cross-regulation pattern.
 
 <!-- aegis:purity: own_reg=CRA; demoted=4; core_cross_mentions=0 -->
-

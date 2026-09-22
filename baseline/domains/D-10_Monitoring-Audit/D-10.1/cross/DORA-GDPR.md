@@ -43,5 +43,3 @@
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation must produce a DORA-led stack: DORA Art. 9(1) continuous monitoring + GDPR Art. 32(2) 5-risk-type detection as a sub-component.
 
 ---
-
-

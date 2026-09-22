@@ -325,4 +325,3 @@ T3 had no clause for Art. 25 — it was outside the T3 cybersecurity-taxonomy su
 4. **Cross-regulation parallel.** Art. 25 mirrors the standardisation provisions in CRA Art. 27 (presumption of conformity via harmonised standards) and AI Act Art. 40 (conformity assessment via harmonised standards). The `European and international standards and technical specifications` triplet is the standard cross-regulation formulation.
 
 <!-- aegis:purity: own_reg=NIS2; demoted=2; core_cross_mentions=0 -->
-

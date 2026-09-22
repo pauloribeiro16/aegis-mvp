@@ -119,4 +119,3 @@ verified_relationship: PARTIAL (CRDA-deep, D-09.3: NIS2↔CRA = SAME — COMPLEM
 ```
 
 <!-- aegis:purity: own_reg=NIS2; demoted=4; core_cross_mentions=2 -->
-

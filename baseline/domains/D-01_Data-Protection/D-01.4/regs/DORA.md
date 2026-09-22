@@ -34,11 +34,11 @@ tools designed to ensure ICT-system resilience, continuity and availability
 (Art. 9(2)).
 
 **CSF anchors (from `SR-DORA-001` v0.3 security_rationale):**
-PR.DS-01, PR.DS-02, PR.DS-10, PR.DS-12.
-*(The PR.DS-01 / PR.DS-02 / PR.DS-10 / PR.DS-12 anchors are inherited from
+PR.DS-01, PR.DS-02, PR.DS-10, ID.AM-05.
+*(The PR.DS-01 / PR.DS-02 / PR.DS-10 / ID.AM-05 anchors are inherited from
 the 4×3 matrix context; D-01.4 is the integrity cell, which is anchored
 specifically by PR.DS-01 (at-rest integrity) + PR.DS-10 (in-use integrity),
-with PR.DS-02 (in-transit integrity) + PR.DS-12 (data managed consistent
+with PR.DS-02 (in-transit integrity) + ID.AM-05 (data managed consistent
 with risk strategy) as the supplementary cell anchors.)*
 
 ---
@@ -66,13 +66,13 @@ with risk strategy) as the supplementary cell anchors.)*
     The product shall maintain data confidentiality, integrity, authenticity and availability at high standards across all data states — at rest, in use, or in transit — through ICT security policies, procedures, protocols and tools designed to ensure ICT-system resilience, continuity and availability, with the integrity cell of the 4×3 CIA+A × data-states matrix as the binding property on the DORA side (DORA Art. 9(2)).
 
   fit_criterion: |
-    ICT-system-level integrity controls cover at-rest integrity (PR.DS-01 — cryptographic hashes / MACs on stored data), in-transit integrity (PR.DS-02 — signed-protocol integrity on data in motion), in-use integrity (PR.DS-10 — runtime integrity controls such as signed firmware, control-flow integrity, tamper-detection instrumentation), and risk-strategy-managed data integrity (PR.DS-12 — data managed consistent with risk strategy per DORA Art. 6 chapeau); the integrity cell of the DORA Art. 9(2) 4×3 matrix is documented and discharged; verified by configuration audit of all four integrity anchors + classification-driven cipher-strength overlay (per DORA Art. 9(4)(d) + SR-DORA-003 GV.RM-04) + national-CA + ESAs inspection-ready evidence pack on request.
+    ICT-system-level integrity controls cover at-rest integrity (PR.DS-01 — cryptographic hashes / MACs on stored data), in-transit integrity (PR.DS-02 — signed-protocol integrity on data in motion), in-use integrity (PR.DS-10 — runtime integrity controls such as signed firmware, control-flow integrity, tamper-detection instrumentation), and risk-strategy-managed data integrity (ID.AM-05 — data managed consistent with risk strategy per DORA Art. 6 chapeau); the integrity cell of the DORA Art. 9(2) 4×3 matrix is documented and discharged; verified by configuration audit of all four integrity anchors + classification-driven cipher-strength overlay (per DORA Art. 9(4)(d) + SR-DORA-003 GV.RM-04) + national-CA + ESAs inspection-ready evidence pack on request.
 
   priority: MUST
   verification_method: TEST
   dependencies: []
 
-  nist_csf: [PR.DS-01, PR.DS-02, PR.DS-10, PR.DS-12]
+  nist_csf: [PR.DS-01, PR.DS-02, PR.DS-10, ID.AM-05]
 
   applicable_if:
     regs: [DORA]
@@ -157,4 +157,3 @@ verified_relationship: SAME (CRDA-deep, D-01.4: GDPR↔DORA CORRECTED from COMPL
 ```
 
 <!-- aegis:purity: own_reg=DORA; demoted=6; core_cross_mentions=0 -->
-

@@ -266,4 +266,3 @@ This is **structurally different** from the NIS 2 model (where significant cyber
 
 
 <!-- aegis:purity: own_reg=DORA; demoted=10; core_cross_mentions=0 -->
-

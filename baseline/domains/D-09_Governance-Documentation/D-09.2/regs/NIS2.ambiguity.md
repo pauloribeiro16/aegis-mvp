@@ -408,4 +408,3 @@ Same Berry-classic vague term as GDPR Art. 25(1) and Art. 32(1). Three materiall
 **Layer 1 observation** — The physical-environment scope of NIS 2 is broader than DORA, CRA, AI Act (all of which are software/cyber-focused). The all-hazards approach with physical-environment coverage is the **single most distinctive feature of NIS 2 vs the other four regulations** in the corpus. **For software-compliance analysis, the physical-environment dimension is out-of-scope**: it does not generate software requirements, only physical-security requirements. The clause is included for completeness but flagged as **out-of-scope for the software-compliance track of the methodology**. Layer 3 (inference-trust) will need to adjudicate whether software-software integration controls are needed for the physical-environment dimension (e.g. environmental sensors feeding into SIEM).
 
 <!-- aegis:purity: own_reg=NIS2; demoted=2; core_cross_mentions=0 -->
-

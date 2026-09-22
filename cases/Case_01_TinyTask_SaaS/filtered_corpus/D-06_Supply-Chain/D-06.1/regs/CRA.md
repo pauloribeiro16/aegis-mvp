@@ -147,4 +147,3 @@ verified_relationship: DIFFERENT-PERSPECTIVE (CRDA-deep, D-06.1: GDPR↔CRA = DI
 ```
 
 <!-- aegis:purity: own_reg=CRA; demoted=6; core_cross_mentions=2 -->
-

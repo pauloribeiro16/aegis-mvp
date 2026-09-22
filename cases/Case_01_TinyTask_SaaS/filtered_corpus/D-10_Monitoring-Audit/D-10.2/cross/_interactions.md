@@ -187,7 +187,7 @@ GDPR, CRA, DORA, AI Act (4 of 5 participate — **NIS 2 is fully out-of-scope** 
   priority: MUST
   verification_method: TEST
   dependencies: [10.2.1, 10.2.2, 10.2.3, 10.2.4]
-  nist_csf: [PR.DS-11, PR.PT-01, DE.CM-01, GV.PO-02]
+  nist_csf: [PR.DS-11, PR.PS-04, DE.CM-01, GV.PO-02]
   applicable_if:
     regs: [GDPR, CRA, DORA, AI_Act]
     scope_overlap: Conditional   # HL engages when ≥2 applicable regs have ≥1 Y or Conditional-Y-scope-overlap pair on the same party; for 10.2 the 4×4 matrix shows 5 of 6 pairs have Conditional-Y activation on the joint-condition operator (1 N (typically) pair: GDPR ↔ CRA is substantively scope-disjoint by record-type distinctness — no joint-condition between GDPR and CRA alone), so the HL engages whenever ≥2 regs are applicable and the joint-condition is met via DORA or AI Act; the 6 SAME — COMPLEMENTARY pairs stack on the layered 4-audit-records architecture; no EQUAL pair, no GENUINE TENSION pair, no CORRECTED reclassification; the 1 OJ-consistent floor-within-ceiling reconciliation (NOT a tension) on GDPR ↔ AI_Act is preserved as a scope-caveat in the aggregation logic, NOT as a tension; the HL does NOT collapse the 4 audit-logging mandates into a single audit-logging duty.
@@ -230,4 +230,3 @@ _Deep Analysis source not found._
 ##### Pair: NIS2 ↔ [not in CRDA D-10.2 participants]
 > **Note:** NIS 2 is fully out-of-scope for D-10.2 per CRDA (T3-vs-text gap: OJ Art. 21(2)(j) does not mention logging). No pair analysis included. Logging implied only by Art. 23(4)(b) indicators-of-compromise reporting, not imposed as standalone obligation.
 ---
-

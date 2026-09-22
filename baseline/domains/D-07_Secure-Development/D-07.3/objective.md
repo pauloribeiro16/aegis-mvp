@@ -16,4 +16,3 @@ verified_relationship_basis: CRDA-deep verified (1 pair: 1 SAME — COMPLEMENTAR
 emergent_tensions: 0  # strictly: 0 CONTRADICTORY or CORRECTED reclassifications on the CI/CD-pipeline-security duty itself — the 1 verified pair is SAME — COMPLEMENTARY with scope-disjoint qualifier; no Phase 1C tension resolution is required for D-07.3
 ```
 **Objective.** CI/CD pipeline security delivers build-time control baselines (signed artefacts, build-agent integrity, ephemeral build environments) and update-distribution delivery-path security.
-

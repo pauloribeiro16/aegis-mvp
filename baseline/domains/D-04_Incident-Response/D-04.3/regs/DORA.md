@@ -34,7 +34,7 @@ phase_1A_role: 1_of_N
 - Affected-client notification under Art. 19(3) — and, where the OJ-corrective note in `SR-DORA-017` applies, only when the incident has financial-interest impact on clients.
 
 **CSF anchors (from `SR-DORA-017` v0.3 security_rationale):**
-RS.CO-02, RS.CO-04.
+RS.CO-02, RS.MA-04.
 
 ---
 
@@ -67,7 +67,7 @@ RS.CO-02, RS.CO-04.
   verification_method: TEST
   dependencies: [4.1.4 (notification clock depends on 4.1 DORA multi-layer + SPOF detection feeding the awareness event), 4.2.4 (notification content requires prior BC-arrangements containment classification + impact assessment feeding Art. 19(1) content template + Art. 19(3) client notification)]
 
-  nist_csf: [RS.CO-02, RS.CO-04, RS.MA-03]
+  nist_csf: [RS.CO-02, RS.MA-04, RS.MA-03]
 
   applicable_if:
     regs: [DORA]
@@ -123,4 +123,3 @@ verified_relationship: CONDITIONAL (CRDA-deep, D-04.3 GDPR↔DORA: SCOPE-DISJOIN
 > [OJ-corrective note (v0.2 audit, material): Art. 19(3) — trigger condition dropped. OJ Art. 19(3) conditions client notification: `Where a major ICT-related incident occurs AND HAS AN IMPACT ON THE FINANCIAL INTERESTS OF CLIENTS, financial entities shall, without undue delay as soon as they become aware of it, inform their clients about the major ICT-related incident and about the measures that have been taken to mitigate the adverse effects of such incident.` The SR drops the trigger condition `and has an impact on the financial interests of clients` — converting a conditional obligation into an unconditional one. Every major incident would trigger client notification under the SR; OJ scopes to those with client-financial-impact.]
 
 <!-- aegis:purity: own_reg=DORA; demoted=5; core_cross_mentions=2 -->
-

@@ -312,7 +312,7 @@ GDPR, NIS 2, CRA, DORA, AI Act (5 of 5 regs — the only fully-covered 5-track s
   priority: MUST
   verification_method: TEST
   dependencies: [4.1 (notification depends on a prior detection-and-triage event feeding the notification trigger — `becoming aware` anchor from 4.1 GDPR leg binds the 72h clock; DORA detection architecture feeds GDPR awareness), 4.2 (notification depends on containment classification for severity/impact content — the 72h tier requires severity+impact assessment per NIS 2 SR-NIS2-011; CRA 72h tier requires nature-of-exploit information per Art. 14(2)(b))]
-  nist_csf: [RS.CO-02, RS.CO-04, RS.MA-01, RS.MA-02, RS.MA-03]
+  nist_csf: [RS.CO-02, RS.MA-04, RS.MA-01, RS.MA-02, RS.MA-03]
   applicable_if:
     regs: [GDPR, NIS2, CRA, DORA, AI_Act]
     scope_overlap: conditional   # HL engages on the same event only if event's material scope overlaps with ≥2 applicable regs' scopes (CRDA-deep scope-overlap principle); for events touching only one reg, only the triggered sub-SO applies on its own clock
@@ -419,7 +419,7 @@ status: DRAFT
 - **Recipient fragmentation exceeds pairwise additivity.** The 5 regulations notify to 5 distinct recipient classes (DPA, CSIRT, MSA, competent authority, AI Office) with overlapping but non-identical event triggers. The pairwise readings treat each pair independently, but the operational pipeline must allocate events to recipients in a single decision. The non-pairwise additivity is the *routing complexity* — no single regulation specifies how to route an event that satisfies multiple triggers simultaneously (e.g., a NIS2-significant incident affecting personal data in a CRA-classified product deployed by a financial entity using high-risk AI). Phase 2 must codify a recipient-routing matrix.
 <!-- /emergent -->
 ##### SR cross-validation
-NIST CSF 2.0 mapping is dominated by **RS.CO-04** (Incident information shared with stakeholders) and **RS.MA-01/02/03** (Incident management executed at planning/assessment/analysis tiers). GDPR maps to RS.CO-02 (Stakeholders notified of incidents) via the data-subject communication SR-GDPR-019. CRA's user notification SR-CRA-036 maps to RS.CO-03 (Incident details shared with stakeholders). AI Act's tiered triggers (SR-AIACT-022) maps to RS.CO-04 with the temporal differentiation. The CSF 2.0 surface is consistent — no CSF cross-mapping conflict. The conflict is purely at the timeline and recipient level, which is not a CSF construct; it is a regulatory-orchestration concern.
+NIST CSF 2.0 mapping is dominated by **RS.MA-04** (Incident information shared with stakeholders) and **RS.MA-01/02/03** (Incident management executed at planning/assessment/analysis tiers). GDPR maps to RS.CO-02 (Stakeholders notified of incidents) via the data-subject communication SR-GDPR-019. CRA's user notification SR-CRA-036 maps to RS.CO-03 (Incident details shared with stakeholders). AI Act's tiered triggers (SR-AIACT-022) maps to RS.MA-04 with the temporal differentiation. The CSF 2.0 surface is consistent — no CSF cross-mapping conflict. The conflict is purely at the timeline and recipient level, which is not a CSF construct; it is a regulatory-orchestration concern.
 ##### Downstream implication
 Phase 2 obligation derivation for D-04.3 is the single most complex orchestration problem in the methodology. The output must include: (1) a notification-deadline matrix per regulation, (2) a recipient-routing rule for simultaneous triggers, (3) a binding-procedure principle for conflicting timelines, (4) a per-tier content-requirement schedule (24h early warning content ≠ 72h incident content ≠ 1m final report content). Phase 3 case generation must validate that case companies in the financial-entity / NIS2-essential / high-risk-AI-deployer intersection produce a single unified notification playbook that satisfies all 5 regulations. The 14d CRA AEV final tier (CRA-specific) is a tightening that does not appear in any other regulation; case companies must surface this independently.
 ---
@@ -457,4 +457,3 @@ status: DRAFT
 ## Structural banners (merged Parts)
 
 # Part 4 — Relevant Ambiguity (by regulation)
-

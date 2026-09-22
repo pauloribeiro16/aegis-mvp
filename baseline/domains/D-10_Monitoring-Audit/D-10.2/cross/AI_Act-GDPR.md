@@ -45,5 +45,3 @@
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation must codify AI Act Art. 19(1) 6-month floor as a hard minimum within the GDPR Art. 5(1)(e) ceiling envelope. The two regimes are reconcilable within the intersection [6 months, "necessary"].
 
 ---
-
-

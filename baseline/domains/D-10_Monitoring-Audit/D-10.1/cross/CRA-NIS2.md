@@ -43,5 +43,3 @@
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation must produce a layered stack: NIS 2 Art. 21(2)(b) incident-handling detection + CRA Annex I Part I (2)(l) product-level monitoring.
 
 ---
-
-

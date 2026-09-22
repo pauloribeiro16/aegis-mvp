@@ -51,4 +51,3 @@
 
 
 <!-- aegis:purity: own_reg=AI_Act; demoted=1; core_cross_mentions=0 -->
-

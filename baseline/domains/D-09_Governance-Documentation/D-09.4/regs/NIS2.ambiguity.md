@@ -369,4 +369,3 @@ Same Berry-classic vague term as GDPR Art. 33/34 and CRA Art. 14. Three material
 8. **The "physical environment" scope extension is the most distinctive feature of NIS 2 vs other regulations in the corpus.** All other regulations (GDPR, CRA, DORA, AI Act) are software/cyber-focused. NIS 2's all-hazards + physical-environment coverage is the unique outlier. **For software-compliance analysis, the physical-environment dimension is out-of-scope** — it does not generate software requirements.
 
 <!-- aegis:purity: own_reg=NIS2; demoted=6; core_cross_mentions=0 -->
-

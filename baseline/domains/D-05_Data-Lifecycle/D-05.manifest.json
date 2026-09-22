@@ -189,7 +189,7 @@
         "id": "SO-D-05.1.AIACT",
         "csf_anchors": [
           "ID.AM-03",
-          "PR.DS-12",
+          "ID.AM-08",
           "PR.PS-06",
           "PR.DS-01",
           "GV.OC-03"
@@ -207,7 +207,7 @@
       {
         "id": "SO-D-05.1.CRA",
         "csf_anchors": [
-          "PR.DS-12",
+          "ID.AM-08",
           "ID.AM-03"
         ]
       },
@@ -223,7 +223,7 @@
         "id": "SO-D-05.3.CRA",
         "csf_anchors": [
           "PR.DS-10",
-          "PR.DS-12 (+ PR.DS-02 for the second limb)"
+          "ID.AM-08 (+ PR.DS-02 for the second limb)"
         ]
       }
     ],
@@ -231,7 +231,7 @@
       {
         "id": "SO-D-05.1.GDPR",
         "csf_anchors": [
-          "PR.DS-12",
+          "ID.AM-08",
           "ID.AM-03",
           "GV.OC-03",
           "GV.PO-01"
@@ -240,7 +240,7 @@
       {
         "id": "SO-D-05.2.GDPR",
         "csf_anchors": [
-          "PR.DS-12",
+          "ID.AM-08",
           "ID.AM-03"
         ]
       },
@@ -248,7 +248,7 @@
         "id": "SO-D-05.3.GDPR",
         "csf_anchors": [
           "PR.DS-10",
-          "PR.DS-12",
+          "ID.AM-08",
           "GV.SC-04"
         ]
       },
@@ -256,7 +256,7 @@
         "id": "SO-D-05.4.GDPR",
         "csf_anchors": [
           "PR.DS-10",
-          "PR.DS-12"
+          "ID.AM-08"
         ]
       }
     ]
@@ -268,7 +268,7 @@
         "title": "High-risk AI training/validation/testing datasets meet Art. 10(3) quality criteria and Art. 10(2) 8-element data-governance practice; Art. 10(5) special-category 6-cumulative-condition gateway documented when applicable",
         "nist_csf": [
           "ID.AM-03",
-          "PR.DS-12",
+          "ID.AM-08",
           "PR.PS-06",
           "PR.DS-01",
           "GV.OC-03"
@@ -291,7 +291,7 @@
         "req_id": "5.1.2",
         "title": "Product data limited to what is adequate, relevant, and necessary in relation to the intended purpose of the product, with risk-assessment proportionality calibration",
         "nist_csf": [
-          "PR.DS-12",
+          "ID.AM-08",
           "ID.AM-03"
         ],
         "scope_overlap": "N"
@@ -311,7 +311,7 @@
         "title": "User of a product with digital elements can securely and easily remove, on a permanent basis, all data and settings of the product via a discoverable user-interface affordance, with Annex II §8(d) decommissioning instructions",
         "nist_csf": [
           "PR.DS-10",
-          "PR.DS-12"
+          "ID.AM-08"
         ],
         "scope_overlap": "N"
       }
@@ -321,7 +321,7 @@
         "req_id": "5.1.1",
         "title": "Personal data limited to what is adequate, relevant, and necessary for the processing purpose, with Art. 6(4) compatibility assessment on change of purpose and Art. 9(1) special-category prohibition honoured",
         "nist_csf": [
-          "PR.DS-12",
+          "ID.AM-08",
           "ID.AM-03",
           "GV.OC-03",
           "GV.PO-01"
@@ -332,7 +332,7 @@
         "req_id": "5.2.1",
         "title": "Personal data retained no longer than necessary for the processing purpose; longer retention only where lawful and subject to Art. 89(1) safeguards; Art. 30(1)(f) RoPA time-limits documented per category",
         "nist_csf": [
-          "PR.DS-12",
+          "ID.AM-08",
           "ID.AM-03"
         ],
         "scope_overlap": "N"
@@ -342,7 +342,7 @@
         "title": "Personal data erased without undue delay on the data subject's Art. 17(1) request where one of the 6 grounds applies; processor deletes or returns all personal data on contract end per Art. 28(3)(g); cryptographic key destruction as deletion path",
         "nist_csf": [
           "PR.DS-10",
-          "PR.DS-12",
+          "ID.AM-08",
           "GV.SC-04"
         ],
         "scope_overlap": "N"
@@ -352,7 +352,7 @@
         "title": "Data subject receives personal data in a structured, commonly used, machine-readable format (Art. 20(1) + Art. 15(3) companion copy), supplied by the controller without undue delay (Art. 12(3) ≤1 month, ≤2 months complex) and free of charge (Art. 12(5)); cross-controller direct transmission provided where technically feasible",
         "nist_csf": [
           "PR.DS-10",
-          "PR.DS-12"
+          "ID.AM-08"
         ],
         "scope_overlap": "N"
       }
@@ -364,7 +364,7 @@
       "GV.PO-02",
       "ID.AM-03",
       "PR.DS-01",
-      "PR.DS-12",
+      "ID.AM-08",
       "PR.PS-04",
       "PR.PS-06"
     ],
@@ -373,7 +373,7 @@
       "GV.PO-02",
       "ID.AM-03",
       "PR.DS-01",
-      "PR.DS-12",
+      "ID.AM-08",
       "PR.PS-04",
       "PR.PS-06"
     ],
@@ -382,8 +382,8 @@
       "GV.OV-02",
       "ID.AM-03",
       "PR.DS-10",
-      "PR.DS-12",
-      "PR.DS-12 (+ PR.DS-02 for the second limb)",
+      "ID.AM-08",
+      "ID.AM-08 (+ PR.DS-02 for the second limb)",
       "PR.PS-02"
     ],
     "GDPR": [
@@ -392,7 +392,7 @@
       "GV.SC-04",
       "ID.AM-03",
       "PR.DS-10",
-      "PR.DS-12"
+      "ID.AM-08"
     ]
   },
   "counts": {

@@ -140,4 +140,3 @@ verified_relationship: SOLE-AUTHORITY (CRDA-deep, D-06.2: CRA is the SOLE AUTHOR
 ```
 
 <!-- aegis:purity: own_reg=CRA; demoted=2; core_cross_mentions=0 -->
-

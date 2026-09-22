@@ -81,4 +81,3 @@ Same Berry-flagged phrase as Art. 14(5)(b). S3 because the exception triggers in
 #### Clause breakdown
 
 <!-- aegis:purity: own_reg=GDPR; demoted=0; core_cross_mentions=0 -->
-

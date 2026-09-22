@@ -293,7 +293,7 @@
         "id": "SO-D-07.1.GDPR",
         "csf_anchors": [
           "PR.PS-06",
-          "PR.DS-12"
+          "ID.AM-08"
         ]
       }
     ],
@@ -411,7 +411,7 @@
         "title": "Personal-data processing implements data-protection principles via appropriate technical and organisational measures designed into the means of processing, with by-default limits on amount, extent, storage period and accessibility",
         "nist_csf": [
           "PR.PS-06",
-          "PR.DS-12"
+          "ID.AM-08"
         ],
         "scope_overlap": "N"
       }
@@ -458,7 +458,7 @@
       "PR.PS-06"
     ],
     "GDPR": [
-      "PR.DS-12",
+      "ID.AM-08",
       "PR.PS-06"
     ],
     "NIS2": [

@@ -347,7 +347,7 @@ GDPR, NIS 2, CRA, DORA (4 of 5 regs — AI Act out-of-scope per AEGIS taxonomy �
   priority: MUST
   verification_method: TEST
   dependencies: []
-  nist_csf: [PR.AA-01, PR.AA-02, PR.AA-03, PR.AA-04, PR.AA-05, PR.AA-06, ID.AM-01, PR.AT-02, PR.DS-12, DE.CM-09]
+  nist_csf: [PR.AA-01, PR.AA-02, PR.AA-03, PR.AA-04, PR.AA-05, PR.AA-06, ID.AM-01, PR.AT-02, ID.AM-08, DE.CM-09]
   applicable_if:
     regs: [GDPR, NIS2, CRA, DORA]
     scope_overlap: conditional   # HL engages only when ≥2 applicable regs target overlapping identity boundaries on the same party (see HSO scope-overlap principle)
@@ -430,7 +430,7 @@ status: DRAFT
 - **CRA's "verifiable manner"** (Annex I Part I (2)(d)) is a S3 VAG term that the SR-CRA-023 reading resolves to PR.AA-01 (identities managed by the organisation) + ID.AM-01 (hardware inventories). The verifiable-manner threshold is operationally consequential for product manufacturers: a CRA product that does not have a verifiable identity-management framework for users/services/components fails Annex I Part I (2)(d). This is **stricter** than GDPR's data-subject-side verification (Art. 12(6) "reasonable means proportionate to risk").
 <!-- /emergent -->
 ##### SR cross-validation
-CSF mappings are diverse: GDPR maps to PR.AA-03 + PR.AA-02 + PR.DS-12; NIS 2 to PR.AA-01 + PR.AA-05 + PR.AT-02; CRA to PR.AA-01 + ID.AM-01; DORA to PR.AA-03 + PR.AA-04. The shared anchors are PR.AA-01 (NIS 2 + CRA) and PR.AA-03 (GDPR + DORA); the supplementary anchors (PR.AA-02, PR.AA-04, PR.AA-05, PR.AT-02, PR.DS-12, ID.AM-01) capture the boundary-specific depth. The cross-cutting observation: identity management is a sub-domain where the four regulators target different identity objects and the CSF mapping accordingly diverges at the supplementary layer.
+CSF mappings are diverse: GDPR maps to PR.AA-03 + PR.AA-02 + ID.AM-08; NIS 2 to PR.AA-01 + PR.AA-05 + PR.AT-02; CRA to PR.AA-01 + ID.AM-01; DORA to PR.AA-03 + PR.AA-04. The shared anchors are PR.AA-01 (NIS 2 + CRA) and PR.AA-03 (GDPR + DORA); the supplementary anchors (PR.AA-02, PR.AA-04, PR.AA-05, PR.AT-02, ID.AM-08, ID.AM-01) capture the boundary-specific depth. The cross-cutting observation: identity management is a sub-domain where the four regulators target different identity objects and the CSF mapping accordingly diverges at the supplementary layer.
 ##### Downstream implication
 For Phase 1C Doc 07, D-03.1 is a **multi-boundary identity architecture** sub-domain: a company across multiple regulators must document each identity boundary separately. Proportionality: a small SaaS (no DORA, no NIS 2) may operate a unified identity service for product users and staff; a DORA financial entity must operate separate identity architectures for staff, services, and data subjects, with documented boundary hand-offs.
 ---
@@ -468,4 +468,3 @@ status: DRAFT
 ## Structural banners (merged Parts)
 
 # Part 4 — Relevant Ambiguity (by regulation)
-

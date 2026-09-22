@@ -19,4 +19,3 @@ emergent_tensions: 0
 systems, products, services, components and data are managed in a
 verifiable, lifecycle-aware manner with documented boundaries between
 identity types and explicit hand-off protocols at boundary surfaces.
-

@@ -57,4 +57,3 @@ T3 had no clause for Art. 22 — it was outside the T3 cybersecurity-taxonomy su
 **End of Art. 22 file. Next: `05_NIS2_Art23_Reporting.md` (the most consequential after Art. 21).**
 
 <!-- aegis:purity: own_reg=NIS2; demoted=0; core_cross_mentions=0 -->
-

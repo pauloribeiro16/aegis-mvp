@@ -51,7 +51,7 @@
 <!-- pair: GDPR,DORA -->
 | GDPR ↔ DORA | **Complementary** | Tension/difference |
 |---|---|---|
-| **GDPR** (SR-GDPR-009 + SR-GDPR-010, Art. 12(6) + Art. 11(2)) | Proportionate identity verification for data subjects | Data-subject-side; PR.AA-03 + PR.AA-02 + PR.DS-12 |
+| **GDPR** (SR-GDPR-009 + SR-GDPR-010, Art. 12(6) + Art. 11(2)) | Proportionate identity verification for data subjects | Data-subject-side; PR.AA-03 + PR.AA-02 + ID.AM-08 |
 | **DORA** (SR-DORA-002, Art. 9(4)(d)) | Strong authentication + key protection (3-control AND); identity-lifecycle is one dimension | Financial entity; strong-authentication; PR.AA-03 + PR.AA-04 |
 
 **Why Complementary**: DORA's strong-authentication obligation is the principal identity-lifecycle anchor for DORA financial entities; GDPR's data-subject identity verification is the rights-exercise anchor. A DORA financial entity processing personal data is jointly bound: DORA strong-authentication for staff/services (PR.AA-03 + PR.AA-04) + GDPR data-subject verification (PR.AA-03 + PR.AA-02). The two converge on PR.AA-03 as the shared anchor. → full rationale: `../../../Regulation/GDPR/02_SecurityRules_NIST.md` SR-GDPR-009; `../../../Regulation/DORA/02_SecurityRules_NIST.md` SR-DORA-002
@@ -60,4 +60,3 @@
 
 _(Part 3 duplicates of Part 1 §1 were byte-identical and deduplicated:
 42 lines — see ../../_migration_report.md)_
-

@@ -717,4 +717,3 @@ Same pattern as NIS 2 Art. 23(7). `necessary` — by whom?
 Same as NIS 2 Art. 23(1) `mere act of notification`.
 
 <!-- aegis:purity: own_reg=CRA; demoted=17; core_cross_mentions=0 -->
-

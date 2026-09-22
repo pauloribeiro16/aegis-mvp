@@ -22,4 +22,3 @@ the key custodian and the data consumer are distinct roles under distinct
 technical and organisational control, with the cryptographic key (not the
 storage medium) as the necessary condition for intelligibility of the
 protected data.
-

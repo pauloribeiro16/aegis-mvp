@@ -138,4 +138,3 @@ verified_relationship: SAME (CRDA-deep, D-01.1: GDPR↔NIS2 CORRECTED from COMPL
 ```
 
 <!-- aegis:purity: own_reg=NIS2; demoted=5; core_cross_mentions=0 -->
-

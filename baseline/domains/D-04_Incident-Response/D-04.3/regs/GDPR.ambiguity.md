@@ -367,4 +367,3 @@ Inherits Art. 35(1) `high risk` threshold. S2 because the trigger is the same DP
 The awareness trigger is polysemous (cf. CRA C25, NIS 2 C25 — same pattern across regulations).
 
 <!-- aegis:purity: own_reg=GDPR; demoted=3; core_cross_mentions=0 -->
-

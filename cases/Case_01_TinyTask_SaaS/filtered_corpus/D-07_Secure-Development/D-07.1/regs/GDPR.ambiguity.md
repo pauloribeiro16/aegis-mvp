@@ -195,4 +195,3 @@ Same Berry-flagged phrase as Art. 14(5)(b). S3 because the exception triggers in
 `meaningful information` + `the logic involved` are partially self-contradictory: full logic disclosure would expose trade secrets; meaningful-but-not-full disclosure has no threshold. This is the central automated-decision-making transparency question (cf. AI Act Art. 13, Art. 14 cross-over).
 
 <!-- aegis:purity: own_reg=GDPR; demoted=1; core_cross_mentions=0 -->
-

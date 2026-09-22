@@ -682,4 +682,3 @@ Same Berry-classic vague term as GDPR Art. 25(1) and Art. 32(1). Three materiall
 **Layer 1 observation — T3-vs-text gap (T3 NIS2-C11).** T3 reads this clause as `CI/CD Pipeline Security`. **The OJ Art. 21(2)(e) text does not contain `pipeline`, `CI`, `CD`, `continuous integration`, or `continuous deployment`.** Pipeline security as a distinct obligation is a T3-imposed layer, not a Directive obligation. Same T3-vs-text gap pattern as GDPR C15/C17/C28 and CRA C03/C06.
 
 <!-- aegis:purity: own_reg=NIS2; demoted=3; core_cross_mentions=0 -->
-

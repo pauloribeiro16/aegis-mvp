@@ -49,12 +49,11 @@
 | CRA ↔ DORA | **Equal** | Tension/difference |
 |---|---|---|
 | **CRA** (SR-CRA-005, Annex I Part I (2)(f)+(l)) | Integrity of data + commands + programs + configuration; corruption reported | Product-level; PR.DS-01 + PR.DS-10 + PR.PS-04 |
-| **DORA** (SR-DORA-001, Art. 9(2)) | Integrity is one of the 4×3 CIA+A cells | Financial entity; ICT-system scope; PR.DS-01 + PR.DS-10 + PR.DS-12 |
+| **DORA** (SR-DORA-001, Art. 9(2)) | Integrity is one of the 4×3 CIA+A cells | Financial entity; ICT-system scope; PR.DS-01 + PR.DS-10 + ID.AM-08 |
 
-**Why Equal**: Both regulations impose an integrity obligation with the same CSF anchors (PR.DS-01 + PR.DS-10); the principal difference is the layer (CRA product vs DORA ICT system) and the supplementary CSF (CRA PR.PS-04 logging; DORA PR.DS-12 risk-strategy). A DORA financial entity using CRA-regulated products meets both when the integrity stack is documented as product + deployment. → full rationale: `../../../Regulation/CRA/02_SecurityRules_NIST.md` SR-CRA-005; `../../../Regulation/DORA/02_SecurityRules_NIST.md` SR-DORA-001
+**Why Equal**: Both regulations impose an integrity obligation with the same CSF anchors (PR.DS-01 + PR.DS-10); the principal difference is the layer (CRA product vs DORA ICT system) and the supplementary CSF (CRA PR.PS-04 logging; DORA ID.AM-08 risk-strategy). A DORA financial entity using CRA-regulated products meets both when the integrity stack is documented as product + deployment. → full rationale: `../../../Regulation/CRA/02_SecurityRules_NIST.md` SR-CRA-005; `../../../Regulation/DORA/02_SecurityRules_NIST.md` SR-DORA-001
 
 
 
 _(Part 3 duplicates of Part 1 §1 were byte-identical and deduplicated:
 39 lines — see ../../_migration_report.md)_
-

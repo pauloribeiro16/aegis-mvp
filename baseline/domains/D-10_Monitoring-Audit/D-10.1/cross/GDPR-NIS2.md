@@ -43,5 +43,3 @@
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation must produce a layered detection stack: GDPR Art. 32(2) 5-risk-type monitoring + NIS 2 Art. 21(2)(b) incident-handling detection capability.
 
 ---
-
-

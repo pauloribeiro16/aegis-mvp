@@ -125,4 +125,3 @@ verified_relationship: COMPLEMENTARY (SAME) with Conditional Y scope overlap on 
 - For a DORA financial entity that does not customise CRA-conformant products (simple supplier-customer boundary), the entity-side six-step process operates on the financial-entity ICT-infrastructure changes with the DORA six-step documentation serving as the change-management evidence trail for the entity's CRA-conformant product procurements when substantively the same change event is recorded on both sides.
 
 <!-- aegis:purity: own_reg=DORA; demoted=4; core_cross_mentions=0 -->
-

@@ -45,5 +45,3 @@
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation must produce two separate artefacts: GDPR Art. 30 RoPA + CRA Annex VII §5-§8 technical documentation.
 
 ---
-
-

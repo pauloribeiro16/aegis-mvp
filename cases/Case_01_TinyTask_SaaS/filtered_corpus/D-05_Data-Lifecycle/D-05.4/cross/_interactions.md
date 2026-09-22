@@ -20,7 +20,7 @@
 **Participants (from CRDA):** GDPR (sole authority)
 **Sole-authority note:** NIS2, CRA, DORA, and AI Act are all out-of-scope for D-05.4 per AEGIS taxonomy §4.1. GDPR Art. 20 is the SOLE AUTHORITY. The CRA Annex I Part I (2)(m) secure cross-product data transfer (SR-CRA-049) overlaps at the *technical* level (secure transfer mechanism) but does not constitute a portability *right* — it is a manufacturer-side architectural obligation, not a data-subject right.
 **Pairwise matrix:** No applicable pairs — only one participant (GDPR).
-**NIST CSF 2.0 anchoring:** **PR.DS-10** (Data-in-use protected) and **PR.DS-12** (Data managed consistent with risk strategy). Single-regulation; CSF mapping is consistent.
+**NIST CSF 2.0 anchoring:** **PR.DS-10** (Data-in-use protected) and **ID.AM-08** (Data managed consistent with risk strategy). Single-regulation; CSF mapping is consistent.
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation produces a single-track portability rule. Phase 3 case generation validates that case companies expose an Art. 20 export function for personal data. The CRA cross-product transfer mechanism (SR-CRA-049) should be cited as a *complementary* technical anchor when the data resides in a CRA-classified product, but it does not substitute for the GDPR Art. 20 right.
 ---
 
@@ -50,7 +50,7 @@
 #### Participants (from CRDA-deep §D-05.4)
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| GDPR | SO-GDPR-020 | Data subject receives personal data in a structured, commonly used, machine-readable format and can transmit those data to another controller without hindrance; the Art. 15(3) `commonly used electronic form` copy is the operational companion obligation supplying the read-only copy at the data subject's request, and Art. 20 supplies the portability right to transmit to another controller | Personal data; data-subject right; Art. 20(1)/(2)/(3)/(4) + Art. 15(3) companion copy; PR.DS-10 + PR.DS-12 |
+| GDPR | SO-GDPR-020 | Data subject receives personal data in a structured, commonly used, machine-readable format and can transmit those data to another controller without hindrance; the Art. 15(3) `commonly used electronic form` copy is the operational companion obligation supplying the read-only copy at the data subject's request, and Art. 20 supplies the portability right to transmit to another controller | Personal data; data-subject right; Art. 20(1)/(2)/(3)/(4) + Art. 15(3) companion copy; PR.DS-10 + ID.AM-08 |
 **Sole-authority framing.** The CRDA-deep source-of-truth explicitly
 notes that **CRA, NIS 2, DORA, and AI Act are all out-of-scope for
 D-05.4** per AEGIS taxonomy §4.1. GDPR Art. 20 is the **SOLE
@@ -408,7 +408,7 @@ collection + at data-subject-request time); (8) the **Art. 30(1)(b)
 RoPA record** as the documentation loop (categories of data
 subjects + categories of personal data + retention + security
 measures); (9) the **Art. 35(7) DPIA where applicable** as the
-risk-assessment loop; (10) the **PR.DS-10 + PR.DS-12 anchoring**
+risk-assessment loop; (10) the **PR.DS-10 + ID.AM-08 anchoring**
 as the runtime-integrity + data-management substrate for the
 export pipeline; (11) the **CRA Annex I Part I (2)(m) second-limb
 secure cross-product transfer (`SR-CRA-049`)** cited as the
@@ -471,7 +471,7 @@ GDPR SOLE AUTHORITY (1 of 5 regs — NIS 2, CRA, DORA, AI Act are out-of-scope p
   priority: MUST
   verification_method: TEST
   dependencies: []
-  nist_csf: [PR.DS-10, PR.DS-12]
+  nist_csf: [PR.DS-10, ID.AM-08]
   applicable_if:
     regs: [GDPR]
     scope_overlap: Y   # HL engages only when GDPR in applicable_regs AND portability-eligible personal data exists (Art. 6(1)(a) consent or Art. 6(1)(b) contract basis + Art. 20(3) automated-means requirement); single-regulator sub-domain — the HL is redundant in this single-regulator case but is emitted for traceability per the activation model
@@ -529,7 +529,7 @@ No applicable pairs — only one participant (GDPR).
 ##### Emergent tensions (3+ regulations)
 None.
 ##### SR cross-validation
-NIST CSF 2.0 anchoring via **PR.DS-10** (Data-in-use protected) and **PR.DS-12** (Data disposal managed). Single-regulation; CSF mapping is consistent.
+NIST CSF 2.0 anchoring via **PR.DS-10** (Data-in-use protected) and **ID.AM-08** (Data disposal managed). Single-regulation; CSF mapping is consistent.
 ##### Downstream implication
 Phase 2 obligation derivation produces a single-track portability rule. Phase 3 case generation validates that case companies expose an Art. 20 export function for personal data. The CRA cross-product transfer mechanism (SR-CRA-049) should be cited as a *complementary* technical anchor when the data resides in a CRA-classified product, but it does not substitute for the GDPR Art. 20 right.
 ---
@@ -567,7 +567,7 @@ status: DRAFT
 **Participants (from CRDA):** GDPR (sole authority)
 **Sole-authority note:** NIS2, CRA, DORA, and AI Act are all out-of-scope for D-05.4 per AEGIS taxonomy §4.1. GDPR Art. 20 is the SOLE AUTHORITY. The CRA Annex I Part I (2)(m) secure cross-product data transfer (SR-CRA-049) overlaps at the *technical* level (secure transfer mechanism) but does not constitute a portability *right* — it is a manufacturer-side architectural obligation, not a data-subject right.
 **Pairwise matrix:** No applicable pairs — only one participant (GDPR).
-**NIST CSF 2.0 anchoring:** **PR.DS-10** (Data-in-use protected) and **PR.DS-12** (Data managed consistent with risk strategy). Single-regulation; CSF mapping is consistent.
+**NIST CSF 2.0 anchoring:** **PR.DS-10** (Data-in-use protected) and **ID.AM-08** (Data managed consistent with risk strategy). Single-regulation; CSF mapping is consistent.
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation produces a single-track portability rule. Phase 3 case generation validates that case companies expose an Art. 20 export function for personal data. The CRA cross-product transfer mechanism (SR-CRA-049) should be cited as a *complementary* technical anchor when the data resides in a CRA-classified product, but it does not substitute for the GDPR Art. 20 right.
 ---
 ### D-06 Supply Chain
@@ -576,4 +576,3 @@ status: DRAFT
 ## Structural banners (merged Parts)
 
 # Part 4 — Relevant Ambiguity (by regulation)
-

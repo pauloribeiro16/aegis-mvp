@@ -31,4 +31,3 @@
 * **SCOPE-Q — S3** — `becomes aware of the serious incident` — same awareness-trigger ambiguity as GDPR/CRA/NIS 2/DORA. Compounded here by the multi-timeline structure.
 
 <!-- aegis:purity: own_reg=AI_Act; demoted=1; core_cross_mentions=0 -->
-

@@ -1033,4 +1033,3 @@ Same four dimensions as NIS 2 Art. 6(2) D02. Inherits same POLY (authenticity un
 5. **`structured, machine-readable format that is easily automatically processable` (CL65) is CRA-unique.** No other regulation in the corpus requires machine-readable user notification. NIS 2 Art. 23(4)(a)(b) uses the same temporal pattern but does not specify format.
 
 <!-- aegis:purity: own_reg=CRA; demoted=15; core_cross_mentions=0 -->
-

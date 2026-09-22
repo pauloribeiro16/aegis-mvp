@@ -497,7 +497,7 @@ status: DRAFT
 - **GDPR DPIA does not address cybersecurity risk**: GDPR Art. 35(7) covers risks to data-subject rights and freedoms; it does not require cybersecurity-risk analysis. The CRA risk assessment covers cybersecurity risks; the NIS 2 / DORA risk frameworks cover operational ICT risks; the AI Act covers AI-system risks. None of the four non-GDPR assessments substitute for GDPR DPIA. For a CRA-regulated product processing personal data, the GDPR DPIA must be a separate artefact even when the CRA risk assessment has been performed.
 <!-- /emergent -->
 ##### SR cross-validation
-All 5 regulations map D-09.2 to the NIST CSF 2.0 Subcategory **ID.RA-05** (Threats, vulnerabilities, likelihoods, impacts used to understand inherent risk and inform risk response) as the convergent anchor. GDPR additionally maps **ID.RA-04** (Potential impacts and likelihoods of threats exploiting vulnerabilities are identified and recorded) for the DPIA-specific impact-and-likelihood dimension; AI Act additionally maps **GV.RM-04** (Strategic direction for risk response) for the continuous-iterative dimension; CRA additionally maps **ID.SC-04** (Suppliers prioritised by criticality) for the supply-chain risk dimension.
+All 5 regulations map D-09.2 to the NIST CSF 2.0 Subcategory **ID.RA-05** (Threats, vulnerabilities, likelihoods, impacts used to understand inherent risk and inform risk response) as the convergent anchor. GDPR additionally maps **ID.RA-04** (Potential impacts and likelihoods of threats exploiting vulnerabilities are identified and recorded) for the DPIA-specific impact-and-likelihood dimension; AI Act additionally maps **GV.RM-04** (Strategic direction for risk response) for the continuous-iterative dimension; CRA additionally maps **GV.SC-07** (Suppliers prioritised by criticality) for the supply-chain risk dimension.
 ##### Downstream implication
 D-09.2 is the most heavily-overlapped sub-domain. Phase 1 entities must implement five distinct assessment artefacts with no OJ-level consolidation. The Layer 1 cross-cutting analysis is required to map the five assessment objects. For DORA financial entities deploying high-risk AI products processing personal data, all five assessments apply simultaneously. The CRA Art. 13(4) sentence 2 AI-Act-substitution rule is the only OJ-level consolidation available.
 ---
@@ -537,4 +537,3 @@ status: DRAFT
 ## Structural banners (merged Parts)
 
 # Part 4 — Relevant Ambiguity (by regulation)
-

@@ -65,4 +65,3 @@ Where one event is both a personal-data breach and a major ICT-related incident 
 
 _(Part 3 duplicates of Part 1 §1 were byte-identical and deduplicated:
 45 lines — see ../../_migration_report.md)_
-

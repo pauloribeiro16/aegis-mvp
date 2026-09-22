@@ -16,4 +16,3 @@ verified_relationship_basis: CRDA-deep verified (6 pairs: 6 SAME, no CORRECTED, 
 emergent_tensions: 0
 ```
 **Objective.** Vendors, suppliers, components, and ICT service providers undergo risk-anchored due diligence with proportionality documentation and ongoing monitoring before entry to the supply chain.
-

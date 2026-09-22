@@ -79,4 +79,3 @@ Soft hedge on retention-period documentation and security-measure documentation.
 ---
 
 <!-- aegis:purity: own_reg=GDPR; demoted=0; core_cross_mentions=0 -->
-

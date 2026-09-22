@@ -152,4 +152,3 @@ The information set is undefined. The standard is "necessary" — same Berry pat
 - **Structural implication:** the **single EU Hub** is structurally analogous to the **NIS 2 single point of contact (SPOC)** (NIS 2 Art. 12) and the **CER Directive critical-entity framework** but at a higher integration level.
 
 <!-- aegis:purity: own_reg=DORA; demoted=3; core_cross_mentions=0 -->
-

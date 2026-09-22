@@ -140,4 +140,3 @@ verified_relationship: DIFFERENT-PERSPECTIVE (CRDA-deep, D-06.4: GDPR↔CRA = EQ
 > (See NIS2↔CRA pair above for the verbatim text.)
 
 <!-- aegis:purity: own_reg=CRA; demoted=6; core_cross_mentions=3 -->
-

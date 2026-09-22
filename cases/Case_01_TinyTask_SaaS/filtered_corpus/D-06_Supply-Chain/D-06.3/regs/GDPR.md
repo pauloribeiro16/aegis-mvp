@@ -29,7 +29,7 @@ phase_1A_role: 1_of_N
 
 **Objective.** Controller/processor contracts and related transfer instruments include the GDPR-specific contractual security obligations required for personal-data processing: the Art. 28(3)(a)–(h) eight-element DPA floor, sub-processor authorisation and change-notification, processor Art. 32 security-measure commitments, audit/inspection access, and contract-end return/deletion; the Art. 46 appropriate-safeguards mechanism and the Art. 48 international-agreement filter apply where personal data leaves the EEA or is exposed to third-country legal-process pressure.
 
-**CSF anchors (from GDPR SRs):** GV.SC-03, GV.SC-04, GV.SC-02, GV.OC-03, PR.DS-12.
+**CSF anchors (from GDPR SRs):** GV.SC-03, GV.SC-04, GV.SC-02, GV.OC-03, ID.AM-08.
 
 ---
 
@@ -62,7 +62,7 @@ phase_1A_role: 1_of_N
   verification_method: TEST
   dependencies: [6.1.1 (processor-selection discipline feeds DPA party-list and sub-processor chain), 6.3.4 (clause-list union when same ICT provider is processor — GDPR-specific clauses retained)]
 
-  nist_csf: [GV.SC-02, GV.SC-03, GV.SC-04, GV.OC-03, PR.DS-12]
+  nist_csf: [GV.SC-02, GV.SC-03, GV.SC-04, GV.OC-03, ID.AM-08]
 
   applicable_if:
     regs: [GDPR]
@@ -127,4 +127,3 @@ verified_relationship: COMPLEMENTARY (CRDA-deep, D-06.3: GDPR↔NIS2 = COMPLEMEN
 > (See GDPR↔NIS2 pair above for the verbatim 8-element list.)
 
 <!-- aegis:purity: own_reg=GDPR; demoted=6; core_cross_mentions=2 -->
-

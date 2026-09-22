@@ -64,4 +64,3 @@ When the same entity is both controller and NIS2 entity, and one incident satisf
 
 _(Part 3 duplicates of Part 1 §1 were byte-identical and deduplicated:
 44 lines — see ../../_migration_report.md)_
-

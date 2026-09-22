@@ -64,4 +64,3 @@
 **Berry anchor:** §5.1 (`foreseeable`, `appropriate`), §5.2.1 (`known`/`foreseeable` scope), §3.3.1 (`misuse`).
 
 <!-- aegis:purity: own_reg=AI_Act; demoted=0; core_cross_mentions=0 -->
-

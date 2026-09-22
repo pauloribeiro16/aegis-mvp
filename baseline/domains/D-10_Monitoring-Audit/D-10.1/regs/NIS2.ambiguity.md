@@ -115,4 +115,3 @@ R2 is the literal reading. R3 vs R4 is a Layer 1 polysemy. S2.
 **Layer 1 observation** — The physical-environment scope of NIS 2 is broader than DORA, CRA, AI Act (all of which are software/cyber-focused). The all-hazards approach with physical-environment coverage is the **single most distinctive feature of NIS 2 vs the other four regulations** in the corpus. **For software-compliance analysis, the physical-environment dimension is out-of-scope**: it does not generate software requirements, only physical-security requirements. The clause is included for completeness but flagged as **out-of-scope for the software-compliance track of the methodology**. Layer 3 (inference-trust) will need to adjudicate whether software-software integration controls are needed for the physical-environment dimension (e.g. environmental sensors feeding into SIEM).
 
 <!-- aegis:purity: own_reg=NIS2; demoted=1; core_cross_mentions=0 -->
-

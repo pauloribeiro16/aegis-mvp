@@ -240,4 +240,3 @@ The 1-month clock restarts on `handling of the incident`. `handling` — POLY pe
 `detailed` — undefined. Same Berry VAG as GDPR Art. 33(4) `detailed`.
 
 <!-- aegis:purity: own_reg=NIS2; demoted=2; core_cross_mentions=0 -->
-

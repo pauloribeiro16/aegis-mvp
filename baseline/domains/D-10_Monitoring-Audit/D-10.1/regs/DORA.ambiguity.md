@@ -1822,4 +1822,3 @@ Same Berry-flagged vague quantitative term as Art. 10(1), CL24-3, CL27-1, CL27-2
 *Berry anchor:* §5.1 (`appropriate`); §3.3.1 (`register`). Same as CRA-CL129.
 
 <!-- aegis:purity: own_reg=DORA; demoted=28; core_cross_mentions=0 -->
-

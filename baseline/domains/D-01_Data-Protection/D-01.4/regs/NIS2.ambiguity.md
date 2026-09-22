@@ -7,4 +7,3 @@
 _No applicable NIS2 ambiguity._
 
 <!-- aegis:purity: own_reg=NIS2; demoted=0; core_cross_mentions=0 -->
-

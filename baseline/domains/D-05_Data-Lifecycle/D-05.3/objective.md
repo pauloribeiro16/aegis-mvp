@@ -16,4 +16,3 @@ verified_relationship_basis: CRDA-deep verified (1 pair: 1 SAME — COMPLEMENTAR
 emergent_tensions: 0
 ```
 **Objective.** Data held about a person is rendered inaccessible to the controller on the data subject's election, and data held by a product with digital elements is rendered inaccessible to the manufacturer on the user's election, by whichever mechanism — the controller-side policy execution or the manufacturer-side product affordance — applies to the data object. Erasure is performed without undue delay and is documented to demonstrate compliance; where a processor is involved, the processor-side mirror ensures deletion-or-return at contract end.
-

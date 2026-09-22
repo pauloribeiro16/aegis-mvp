@@ -171,4 +171,3 @@ verified_relationship: SAME (CRDA-deep, D-01.4: GDPR↔AI_Act CORRECTED from DIF
 ```
 
 <!-- aegis:purity: own_reg=AI_Act; demoted=5; core_cross_mentions=0 -->
-

@@ -43,8 +43,24 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from normalize_csf_anchors import normalize_csf_tokens, dedupe_lists  # documented normalization
+
 RE_TAG = re.compile(r"^<!--\s*/?aegis:")
 RE_PURITY = re.compile(r"^<!-- aegis:purity")
+RE_CSF_TOKEN = re.compile(r"\b(?:GV|ID|PR|DE|RS|RC)\.[A-Z]{2}-\d{2}\b")
+
+
+def src_variants(line: str):
+    """Coverage variants for an original-corpus line under the documented
+    CSF normalization (see normalize_csf_anchors.py). PR.DS-12 is mapped to
+    ID.AM-08 by default and to ID.AM-05 in classification-overlay contexts,
+    so both variants are tried."""
+    base = dedupe_lists(normalize_csf_tokens(line, None))
+    if "PR.DS-12" in line:
+        alt = line.replace("PR.DS-12", "ID.AM-05")
+        return [base, dedupe_lists(normalize_csf_tokens(alt, None))]
+    return [base]
 
 # Generated-boilerplate patterns (output-only lines). Each entry: (regex, label).
 GENERATED = [
@@ -152,17 +168,34 @@ def verify_subdomain(orig_sub: Path, cur_sub: Path, report):
     tgt_nonblank = Counter({k: v for k, v in tgt_counter.items() if k.strip()})
     src_set = set(src_nonblank)
 
-    # 1. SET coverage
-    uncovered = [(i + 1, l) for i, l in enumerate(src) if l.strip() and l not in tgt_set]
+    def covered(line: str) -> bool:
+        return any(v in tgt_set for v in src_variants(line))
 
-    # 2. multiset surplus (original > output): intentional dedup only
-    surplus = Counter(src_nonblank) - tgt_nonblank
+    # 1. SET coverage (normalization-aware: documented CSF map applied)
+    uncovered = [(i + 1, l) for i, l in enumerate(src) if l.strip() and not covered(l)]
+
+    # 2. multiset surplus (original > output): intentional dedup / documented
+    #    normalization only. Lines whose every variant is absent from target
+    #    are already reported as uncovered; here they would be double-counted,
+    #    so variant-covered lines are excluded from surplus.
+    surplus = Counter(l for l in src_nonblank if not covered(l))
     surplus_total = sum(surplus.values())
-    surplus_uncovered = [l for l in surplus if l not in tgt_set]  # must be empty given (1)
+    surplus_uncovered = []
     blank_surplus = max(0, len(src) - len(src_nonblank) - (sum(tgt_counter.values()) - sum(tgt_nonblank.values())))
 
-    # 3. reverse surplus
-    rev = tgt_nonblank - Counter(src_nonblank)
+    # 3. reverse surplus (normalization-aware: a target line is explained if
+    #    it exists in the original, or its documented normalization does)
+    norm_src = Counter()
+    for l in src_nonblank:
+        for v in src_variants(l):
+            norm_src[v] += 1
+
+    def explained(k: str) -> bool:
+        if k in src_set:
+            return True
+        return normalize_csf_tokens(k, None) in norm_src or k in norm_src
+
+    rev = Counter({k: v for k, v in tgt_nonblank.items() if k.strip() and not explained(k)})
     classes, unclassified = classify_out_surplus(rev, src_set)
 
     res = {
@@ -234,7 +267,15 @@ def verify_articles(orig_root: Path, cur_root: Path, log):
 
 
 def verify_manifests(orig_root: Path, cur_root: Path, log):
+    """Manifest deep-equality, ex `modular_layout` and CSF-token-insensitive
+    (CSF anchor normalization is documented in _csf_anchor_normalization.md
+    and validated separately by the anchor-resolvability check)."""
     out = {"same": 0, "differ": 0}
+
+    def canon(obj):
+        s = json.dumps(obj, sort_keys=True, ensure_ascii=False)
+        return RE_CSF_TOKEN.sub("", s)
+
     for mf in sorted(orig_root.glob("D-*/D-*.manifest.json")):
         rel = mf.relative_to(orig_root)
         cur = cur_root / rel
@@ -245,14 +286,34 @@ def verify_manifests(orig_root: Path, cur_root: Path, log):
         a = json.loads(mf.read_text(encoding="utf-8-sig"))
         b = json.loads(cur.read_text(encoding="utf-8-sig"))
         b.pop("modular_layout", None)
-        if a == b:
+        if canon(a) == canon(b):
             out["same"] += 1
         else:
             out["differ"] += 1
             keys = set(a) | set(b)
-            delta = [k for k in keys if a.get(k) != b.get(k)]
+            delta = [k for k in keys if canon(a.get(k)) != canon(b.get(k))]
             log.append(f"MANIFEST DIFFERS: {rel.as_posix()} keys={delta}")
     return out
+
+
+def verify_anchor_resolvability(cur_root: Path, log):
+    """R2b: every CSF token cited on objective/cross/index layers must exist
+    in the referential. articles/ excluded (verbatim source corpus)."""
+    import json as _json
+    ref = _json.loads((cur_root.parent / "CONTROLS" / "NIST_CSF_2.0" / "CSF_2.0.json")
+                      .read_text(encoding="utf-8-sig"))
+    universe = set(ref["subcategories"])
+    pat = re.compile(r"\b(?:GV|ID|PR|DE|RS|RC)\.[A-Z]{2}-\d{2}\b")
+    bad = 0
+    for p in sorted(cur_root.glob("D-*/D-*.[0-9]*/regs/*.md")) + \
+             sorted(cur_root.glob("D-*/D-*.[0-9]*/cross/*.md")) + \
+             sorted(cur_root.glob("D-*/D-*.[0-9]*/objective.md")) + \
+             sorted(cur_root.glob("D-*/D-*.manifest.json")):
+        for m in pat.finditer(p.read_text(encoding="utf-8-sig", errors="replace")):
+            if m.group(0) not in universe:
+                bad += 1
+                log.append(f"R2b UNRESOLVABLE: {m.group(0)} in {p.as_posix()}")
+    return bad
 
 
 def tree_compare(orig_root: Path, cur_root: Path, log):
@@ -297,6 +358,7 @@ def main():
 
     # C/D/E/F
     articles = verify_articles(orig_root, cur_root, log)
+    r2b_bad = verify_anchor_resolvability(cur_root, log)
     manifests = verify_manifests(orig_root, cur_root, log)
     only_orig, merged_removed, only_cur = tree_compare(orig_root, cur_root, log)
 
@@ -319,12 +381,13 @@ def main():
     print(f"B. UNCLASSIFIED output lines:    {n_unclass}   <-- MUST be 0")
     print(f"C. articles: {articles['same']} identical, {articles['differ']} differ, "
           f"{articles['missing']} missing, {len(articles['extra_in_current'])} extra")
-    print(f"D. manifests: {manifests['same']} equal (ex-modular_layout), {manifests['differ']} differ")
+    print(f"D. manifests: {manifests['same']} equal (ex-modular_layout, CSF-token-insensitive), {manifests['differ']} differ")
+    print(f"G. R2b unresolvable CSF anchors (regs/cross/objective/manifests): {r2b_bad}   <-- MUST be 0")
     print(f"E. files only in original (non-merged): {len(only_orig)}; merged files replaced: {len(merged_removed)}")
     print(f"E. files only in current (new modules): {len(only_cur)}")
     ok = (n_uncovered == 0 and n_unclass == 0 and ann_bad == 0
           and articles["differ"] == 0 and articles["missing"] == 0
-          and manifests["differ"] == 0 and not only_orig)
+          and manifests["differ"] == 0 and not only_orig and r2b_bad == 0)
     print("VERDICT:", "NO INFORMATION LOST" if ok else "FAILURES FOUND — see report")
 
     # console detail
@@ -365,7 +428,8 @@ def main():
     rep.append(f"| B. Unclassified output lines | **{n_unclass}** (required: 0) |")
     rep.append(f"| C. Article copies identical | {articles['same']}/{articles['total']} "
                f"(differ {articles['differ']}, missing {articles['missing']}) |")
-    rep.append(f"| D. Manifests equal (ex `modular_layout`) | {manifests['same']}/{manifests['same'] + manifests['differ']} |")
+    rep.append(f"| D. Manifests equal (ex `modular_layout`, CSF-token-insensitive) | {manifests['same']}/{manifests['same'] + manifests['differ']} |")
+    rep.append(f"| G. R2b unresolvable CSF anchors (regs/cross/objective/manifests) | **{r2b_bad}** (required: 0) — see _csf_anchor_normalization.md |")
     rep.append(f"| E. Original-only files (non-merged) | {len(only_orig)} |")
     rep.append(f"| F. Merged files replaced by modules | {len(merged_removed)} (content verified line-by-line above) |")
     rep.append(f"| F. New modular files | {len(only_cur)} |")

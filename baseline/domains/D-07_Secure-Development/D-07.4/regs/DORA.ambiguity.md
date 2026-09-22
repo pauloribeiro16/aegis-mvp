@@ -101,4 +101,3 @@ Same `anonymised and aggregated` pattern as NIS 2 CL45. S2 on anonymity/aggregat
 The structural pattern is **mandatory acknowledge + discretionary substance** — the CA must acknowledge receipt (per the `shall … acknowledge receipt and may … provide` coordination) but the substantive feedback is at CA discretion. This is **the opposite** of the NIS 2 Art. 23(5) pattern (mandatory CSIRT response within 24h), and is a deliberate DORA choice reflecting the CA-specific regulatory authority.
 
 <!-- aegis:purity: own_reg=DORA; demoted=4; core_cross_mentions=0 -->
-

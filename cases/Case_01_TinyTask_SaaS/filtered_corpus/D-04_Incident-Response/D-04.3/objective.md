@@ -16,4 +16,3 @@ emergent_tensions: 2  # documented below
 verified_relationship_basis: CRDA-deep verified (10 pairs, 1 SAME + 1 COMPLEMENTARY + 3 SCOPE-DISJOINT + 5 CONTRADICTORY / CONDITIONAL-CONTRADICTORY)
 ```
 **Objective.** A major security incident is notified to the applicable recipients within the regulatory timelines applicable to the event's material scope.
-

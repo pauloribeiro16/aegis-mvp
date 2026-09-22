@@ -16,4 +16,3 @@ verified_relationship_basis: CRDA-deep verified (3 pairs: 2 SAME — GDPR↔CRA 
 emergent_tensions: 1
 ```
 **Objective.** Data collected or otherwise acquired is limited to what is adequate, relevant, and necessary in relation to the purpose for which it is processed, with a documented necessity assessment and, where the underlying purpose changes, a compatibility assessment confirming that the new use is consistent with the original. Special-category data is processed only where a narrow exception applies and is documented to that effect.
-

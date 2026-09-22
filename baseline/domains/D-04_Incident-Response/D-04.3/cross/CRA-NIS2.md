@@ -64,4 +64,3 @@ The correct reading is complementary with partial alignment. For severe incident
 
 _(Part 3 duplicates of Part 1 §1 were byte-identical and deduplicated:
 44 lines — see ../../_migration_report.md)_
-

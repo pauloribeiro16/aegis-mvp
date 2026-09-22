@@ -456,4 +456,3 @@ status: DRAFT
 ##### Pair: AI_Act ↔ [not in CRDA D-08.1] (omitted — AI Act is fully absent per CRDA)
 > **Note:** CRDA marks AI Act as out-of-scope for D-08.1 (no general-security-awareness mandate). The AI Act Art. 4 (AI literacy) and SR-AIACT-012 (human-oversight training for high-risk AI) are mapped to D-08.2 (role-specific competence), not D-08.1. No pair analysis is included here.
 ---
-

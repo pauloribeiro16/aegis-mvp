@@ -16,4 +16,3 @@ verified_relationship_basis: CRDA-deep verified (3 pairs: 3 SAME — COMPLEMENTA
 emergent_tensions: 0  # strictly: 0 CONTRADICTORY or CORRECTED reclassifications on the coding-practices duty itself — the 3 verified pairs are all SAME — COMPLEMENTARY with different scope-disjoint qualifiers; 2 Layer 2 review items are documented separately (P0 DORA-taxonomy-disagreement + CRA outcome-level vs AI Act attack-category layered-stack requirement) but they are NOT CONTRADICTORY/CORRECTED reclassifications that require Phase 1C tension-resolution
 ```
 **Objective.** Coding practices deliver attack-surface limitation, exploitation mitigation, and AI-system attack-defence under an appropriate coding-practice evidence base.
-

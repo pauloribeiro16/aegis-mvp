@@ -348,4 +348,3 @@ The 3-attribute triad (`sound, comprehensive and well-documented`) is **the most
 *Berry anchor:* §5.1 (`appropriate`); §3.3.1 (`register`). Same as CRA-CL129.
 
 <!-- aegis:purity: own_reg=DORA; demoted=7; core_cross_mentions=0 -->
-

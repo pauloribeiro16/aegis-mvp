@@ -43,5 +43,3 @@
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation must produce a DORA-dominant stack: DORA Art. 24-26 testing programme + TLPT discharges both DORA's dedicated testing obligations and NIS 2's Art. 21(2)(f) partial-coverage effectiveness-assessment for DORA financial entities.
 
 ---
-
-

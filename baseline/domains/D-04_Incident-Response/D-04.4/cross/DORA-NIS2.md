@@ -65,4 +65,3 @@ The verified relationship is complementary: NIS2 provides the generic entity BC/
 
 _(Part 3 duplicates of Part 1 §1 were byte-identical and deduplicated:
 45 lines — see ../../_migration_report.md)_
-

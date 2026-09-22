@@ -23,4 +23,3 @@
 **Berry anchor:** §5.1 (`necessary`), §3.3.1 (`competence`/`training`/`authority`), §5.4.7.
 
 <!-- aegis:purity: own_reg=AI_Act; demoted=0; core_cross_mentions=0 -->
-

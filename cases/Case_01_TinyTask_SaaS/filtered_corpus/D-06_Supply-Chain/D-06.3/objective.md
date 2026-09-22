@@ -16,4 +16,3 @@ verified_relationship_basis: CRDA-deep verified (6 pairs: 5 SAME + 1 CORRECTED; 
 emergent_tensions: 1
 ```
 **Objective.** Third-party security obligations are made enforceable through contracts, transfer safeguards, written mandates, or market-access duties, as appropriate to the regulatory perspective and the actor involved.
-

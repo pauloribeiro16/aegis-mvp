@@ -19,4 +19,3 @@ emergent_tensions: 0
 across the data lifecycle — at rest, in transit, and in use — with
 corruption detected, logged, and reported, and with semantic accuracy
 maintained as the workflow leg of the personal-data principle.
-

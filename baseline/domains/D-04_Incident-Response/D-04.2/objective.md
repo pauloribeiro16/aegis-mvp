@@ -16,4 +16,3 @@ verified_relationship_basis: CRDA-deep verified (6 pairs, 5 COMPLEMENTARY + 1 DI
 emergent_tensions: 0
 ```
 **Objective.** Security incidents affecting the entity's systems, products, services, components and data are contained and mitigated through appropriate measures that address the incident's impact and reduce the probability of further damage.
-

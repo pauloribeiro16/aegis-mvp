@@ -43,5 +43,3 @@
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation must produce a layered stack: CRA Annex I Part I (2)(l) product-level monitoring + AI Act Art. 12 AI-system event logging.
 
 ---
-
-

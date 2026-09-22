@@ -128,4 +128,3 @@ R5 is the literal reading. R1 is the dominant industry reading. S2.
 Same POLY as GDPR and CRA:
 
 <!-- aegis:purity: own_reg=NIS2; demoted=1; core_cross_mentions=0 -->
-

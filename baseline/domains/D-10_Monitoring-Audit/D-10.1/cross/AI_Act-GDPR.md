@@ -43,5 +43,3 @@
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation must produce a layered stack: GDPR Art. 32(2) pre-breach detection + AI Act Art. 72 post-market monitoring.
 
 ---
-
-

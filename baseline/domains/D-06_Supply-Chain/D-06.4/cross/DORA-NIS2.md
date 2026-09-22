@@ -57,5 +57,3 @@
 
 **Why complementary (DORA exceeds)**: NIS2 `direct` scope-limiter limits the supplier universe; DORA Art. 30(3)(e) audit rights apply to critical or important providers (which may include non-direct providers via the supply chain). A financial entity's DORA audit rights extend beyond NIS2's `direct` scope into the broader supply chain of critical providers.
 
-
-

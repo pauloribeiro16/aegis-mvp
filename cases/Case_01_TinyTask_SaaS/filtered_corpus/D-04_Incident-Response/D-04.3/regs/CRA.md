@@ -127,4 +127,3 @@ verified_relationship: CONDITIONAL (CRDA-deep, D-04.3 GDPR↔CRA: SAME; NIS2↔C
 ```
 
 <!-- aegis:purity: own_reg=CRA; demoted=4; core_cross_mentions=1 -->
-

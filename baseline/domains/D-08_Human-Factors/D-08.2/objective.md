@@ -16,4 +16,3 @@ verified_relationship_basis: CRDA-deep verified (10 pairs in 5×5 matrix: 5 SAME
 emergent_tensions: 0  # strictly: 0 CONTRADICTORY or CORRECTED reclassifications on the role-specific-competence duty itself — the 5 verified pairs are all SAME (3 SAME — COMPLEMENTARY + 1 SAME — EQUAL + 1 SAME — DIFFERENT-PERSPECTIVE); the 4 substantively scope-disjoint pairs are SCOPE-DISJOINT (recommended, NOT CLASSIFIED by CRDA); the 1 COMPLEMENTARY pair (GDPR↔DORA) is COMPLEMENTARY (recommended, NOT CLASSIFIED by CRDA); no Phase 1C tension resolution is required for D-08.2
 ```
 **Objective.** Role-specific competence is established through a function-specific depth, audience-routing, competence-criteria-anchored training, and governance hooks architecture.
-

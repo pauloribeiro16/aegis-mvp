@@ -126,4 +126,3 @@ verified_relationship: DIFFERENT-PERSPECTIVE-AT-PROCESS-VS-OUTCOME (CRDA-deep, D
 ```
 
 <!-- aegis:purity: own_reg=CRA; demoted=4; core_cross_mentions=2 -->
-

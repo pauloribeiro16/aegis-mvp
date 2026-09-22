@@ -16,4 +16,3 @@ verified_relationship_basis: CRDA-deep verified (1 pair: 1 SAME — COMPLEMENTAR
 emergent_tensions: 0  # strictly: 0 CONTRADICTORY or CORRECTED reclassifications on the change-management duty itself — the 1 verified pair is SAME — COMPLEMENTARY with Conditional Y scope overlap on the substantial-modification trigger event; no Phase 1C tension resolution is required for D-07.4
 ```
 **Objective.** Change management delivers documented change-management procedures (manufacturer-side series-production conformity + entity-side change-management six-step), risk-assessment-approach, controlled-manner, and substantial-modification assessment with manufacturer-equivalent status consequences where applicable.
-

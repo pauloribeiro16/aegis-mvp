@@ -48,4 +48,3 @@
 * **SCOPE-Q — S2** — `unless provided otherwise in the applicable Union or national law, in particular in Union law on the protection of personal data` — the GDPR escape clause creates cross-regulation scope ambiguity.
 
 <!-- aegis:purity: own_reg=AI_Act; demoted=3; core_cross_mentions=0 -->
-

@@ -262,4 +262,3 @@ Inherits the GDPR/T1 `training` polysemy. S2 because the same training-practice 
 `meaningful information` + `the logic involved` are partially self-contradictory: full logic disclosure would expose trade secrets; meaningful-but-not-full disclosure has no threshold. This is the central automated-decision-making transparency question (cf. AI Act Art. 13, Art. 14 cross-over).
 
 <!-- aegis:purity: own_reg=GDPR; demoted=1; core_cross_mentions=0 -->
-

@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| CRA | SO-CRA-021 (cross-ref) | Preservation of availability of essential and basic functions of a product with digital elements *also after an incident*, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks, and reduced incident impact via exploitation-mitigation mechanisms | Product with digital elements; manufacturer perspective; Annex I Part I (2)(h) + (2)(k) + (2)(i) + Art. 13(21); PR.IR-03 + PR.DS-12 |
+| CRA | SO-CRA-021 (cross-ref) | Preservation of availability of essential and basic functions of a product with digital elements *also after an incident*, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks, and reduced incident impact via exploitation-mitigation mechanisms | Product with digital elements; manufacturer perspective; Annex I Part I (2)(h) + (2)(k) + (2)(i) + Art. 13(21); PR.IR-03 + ID.AM-08 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -34,12 +34,12 @@ phase_1A_role: 1_of_N
 - The CRA `also after an incident` anchor (Annex I Part I (2)(h)) is design-time and runtime — the resilience mechanism must be in place before the incident, not bolted on after. The Annex VII §6 test-reports demonstrating verification of conformity with Annex I Part I and Part II cybersecurity requirements (including the post-incident-availability obligation of (2)(h)) are the market-surveillance evidence base on a reasoned request.
 
 **CSF anchors (from `SR-CRA-043` v0.3 security_rationale):**
-PR.IR-03, PR.DS-12.
+PR.IR-03, ID.AM-08.
 *(PR.IR-03 anchors the resilience pillar — mechanisms in place to
 achieve resilience requirements in normal and adverse situations;
 the post-incident availability reading is supplied by the literal
 `also after an incident` qualifier — resilience mechanisms must be
-in place before the incident, not bolted on after. PR.DS-12 captures
+in place before the incident, not bolted on after. ID.AM-08 captures
 the CIA-availability leg and the data-management dimension of
 impact-mitigation — data is managed consistent with the manufacturer's
 risk strategy, with exploitation-mitigation controls (rate-limiting,
@@ -79,13 +79,13 @@ availability + exploitation-mitigation recovery-architecture aspect.)*
     The product with digital elements shall preserve the availability of essential and basic functions *also after an incident*, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks, with the manufacturer reducing the impact of an incident using appropriate exploitation-mitigation mechanisms and techniques (binary + runtime layers — rate-limiting, ASLR/DEP, control-flow integrity, configuration hardening) and minimising the negative impact on services of other devices and networks (cross-product impact containment) (CRA Annex I Part I (2)(h) `also after an incident` + (2)(k) exploitation-mitigation + (2)(i) cross-product impact minimisation + Art. 13(21) corrective measures; the Annex I (2)(h) anchor is design-time and runtime — resilience must be in place before the incident, not bolted on after).
 
   fit_criterion: |
-    An intra-product resilience architecture is engineered pre-incident so that essential and basic functions survive an attack (Annex I Part I (2)(h) `also after an incident`) — the resilience mechanism is in place before the incident, not bolted on after; an exploitation-mitigation mechanism operates at the binary layer + runtime layer — rate-limiting, ASLR/DEP, control-flow integrity (CFI), configuration hardening, sandboxing, secure enclaves, principle of least privilege at process level — via PR.DS-12 data-management-discipline substrate (Annex I Part I (2)(k)); cross-product impact containment minimises the negative impact on services of other devices or networks via Annex I Part I (2)(i) cross-boundary responsibility (the (2)(i) CRA-unique reading); the (2)(h)+(2)(k)+(2)(i) triad is risk-calibrated via the Art. 13(2) risk assessment; the Annex VII §2 technical-documentation evidence demonstrates the resilience architecture (general description §1 + design / vuln-handling processes §2 + SBOM §2 + risk-assessment §3); the Annex VII §6 test-reports demonstrate verification of conformity with Annex I Part I and Part II cybersecurity requirements (including the post-incident-availability obligation of (2)(h)); the product-internal resilience feeds the deployer's entity-level (NIS 2) and financial-entity (DORA) BC frameworks via deployment (CRA products reduce the load on the entity's BC framework by continuing to function during/after attack); for an integrated manufacturer-controller (manufacturer is also controller), the CRA product-internal resilience feeds the controller-side recovery-evidence base via Annex VII technical documentation; the CRA product-internal resilience does NOT replace the deployer's entity-level BC framework for cases where the product itself fails or the attack propagates beyond the product boundary (CRA is a layered-not-substituted caveat — structurally different from 4.1 where CRA `verifiable manner` is the strictest knowledge-test floor; here, CRA is a layered prevention/mitigation); verified by Annex I (2)(h) resilience architecture review + (2)(k) exploitation-mitigation evidence inspection + (2)(i) cross-product impact-containment evidence review + Annex VII §2 technical-documentation review + Annex VII §6 test-reports review (including post-incident-availability verification) + Art. 13(2) risk-calibration documentation + MSA reasoned-request inspection-ready evidence pack on request.
+    An intra-product resilience architecture is engineered pre-incident so that essential and basic functions survive an attack (Annex I Part I (2)(h) `also after an incident`) — the resilience mechanism is in place before the incident, not bolted on after; an exploitation-mitigation mechanism operates at the binary layer + runtime layer — rate-limiting, ASLR/DEP, control-flow integrity (CFI), configuration hardening, sandboxing, secure enclaves, principle of least privilege at process level — via ID.AM-08 data-management-discipline substrate (Annex I Part I (2)(k)); cross-product impact containment minimises the negative impact on services of other devices or networks via Annex I Part I (2)(i) cross-boundary responsibility (the (2)(i) CRA-unique reading); the (2)(h)+(2)(k)+(2)(i) triad is risk-calibrated via the Art. 13(2) risk assessment; the Annex VII §2 technical-documentation evidence demonstrates the resilience architecture (general description §1 + design / vuln-handling processes §2 + SBOM §2 + risk-assessment §3); the Annex VII §6 test-reports demonstrate verification of conformity with Annex I Part I and Part II cybersecurity requirements (including the post-incident-availability obligation of (2)(h)); the product-internal resilience feeds the deployer's entity-level (NIS 2) and financial-entity (DORA) BC frameworks via deployment (CRA products reduce the load on the entity's BC framework by continuing to function during/after attack); for an integrated manufacturer-controller (manufacturer is also controller), the CRA product-internal resilience feeds the controller-side recovery-evidence base via Annex VII technical documentation; the CRA product-internal resilience does NOT replace the deployer's entity-level BC framework for cases where the product itself fails or the attack propagates beyond the product boundary (CRA is a layered-not-substituted caveat — structurally different from 4.1 where CRA `verifiable manner` is the strictest knowledge-test floor; here, CRA is a layered prevention/mitigation); verified by Annex I (2)(h) resilience architecture review + (2)(k) exploitation-mitigation evidence inspection + (2)(i) cross-product impact-containment evidence review + Annex VII §2 technical-documentation review + Annex VII §6 test-reports review (including post-incident-availability verification) + Art. 13(2) risk-calibration documentation + MSA reasoned-request inspection-ready evidence pack on request.
 
   priority: MUST
   verification_method: TEST
   dependencies: [4.2.3 (recovery depends on prior exploitation-mitigation + impact-containment discipline from 4.2 leg), 4.1.3 (recovery depends on prior product-internal recording feeding the awareness trigger)]
 
-  nist_csf: [PR.IR-03, PR.DS-12]
+  nist_csf: [PR.IR-03, ID.AM-08]
 
   applicable_if:
     regs: [CRA]
@@ -140,4 +140,3 @@ verified_relationship: NON-SAME (CRDA-deep, D-04.4: GDPR↔CRA = DIFFERENT-PERSP
 ```
 
 <!-- aegis:purity: own_reg=CRA; demoted=5; core_cross_mentions=1 -->
-

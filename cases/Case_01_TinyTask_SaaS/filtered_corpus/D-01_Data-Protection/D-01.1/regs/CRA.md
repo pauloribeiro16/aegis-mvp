@@ -140,4 +140,3 @@ verified_relationship: SAME (CRDA-deep, D-01.1: GDPR↔CRA CORRECTED from COMPLE
 ```
 
 <!-- aegis:purity: own_reg=CRA; demoted=4; core_cross_mentions=1 -->
-

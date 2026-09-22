@@ -112,4 +112,3 @@ verified_relationship: COMPLEMENTARY (SAME) with substantial scope-disjoint qual
 - The vulnerability-handling-and-disclosure leg (Art. 21(2)(e) fourth clause) is one of three coordinated legs — its operational implementation is the entity's coordinated vulnerability-handling capability (cross to D-02.3 — CRA is sole authority for the CVD-architecture, NIS 2 partial coverage per SO-NIS2-002).
 
 <!-- aegis:purity: own_reg=NIS2; demoted=2; core_cross_mentions=0 -->
-

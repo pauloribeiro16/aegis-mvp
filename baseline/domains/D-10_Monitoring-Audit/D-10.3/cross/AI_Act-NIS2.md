@@ -43,5 +43,3 @@
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation must produce a layered stack: NIS 2 Art. 21(2)(f) effectiveness-assessment + AI Act Art. 9(6)+(7) + Art. 15(1) AI-system testing.
 
 ---
-
-

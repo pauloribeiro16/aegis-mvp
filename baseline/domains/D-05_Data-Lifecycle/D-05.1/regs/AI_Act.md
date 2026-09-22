@@ -7,7 +7,7 @@
 
 | Regulation | Canonical SO | 1-line summary | Scope/angle |
 |---|---|---|---|
-| AI_Act | SO-AIACT-003 + SO-AIACT-004 | High-risk AI training/validation/testing datasets meet quality criteria (relevant/representative/free of errors/complete) + bias-detection data governance (8-element list) + exceptional special-category processing for bias correction (6 cumulative conditions (a)–(f)) | Training data; provider-driven; Art. 10(1)/(2)/(3)/(5); ID.AM-03 + PR.DS-12 + PR.PS-06 + PR.DS-01 + GV.OC-03 |
+| AI_Act | SO-AIACT-003 + SO-AIACT-004 | High-risk AI training/validation/testing datasets meet quality criteria (relevant/representative/free of errors/complete) + bias-detection data governance (8-element list) + exceptional special-category processing for bias correction (6 cumulative conditions (a)–(f)) | Training data; provider-driven; Art. 10(1)/(2)/(3)/(5); ID.AM-03 + ID.AM-08 + PR.PS-06 + PR.DS-01 + GV.OC-03 |
 
 | Axis (reg) | Trigger | Material scope | Recipient | Legal anchor |
 |---|---|---|---|---|
@@ -33,7 +33,7 @@ phase_1A_role: 1_of_N
 
 **CSF anchors (from `SR-AIACT-003` + `SR-AIACT-004` + `SR-AIACT-005`
 + `SR-AIACT-006` v0.3 security_rationale):**
-ID.AM-03, PR.DS-12, PR.PS-06, PR.DS-01, GV.OC-03.
+ID.AM-03, ID.AM-08, PR.PS-06, PR.DS-01, GV.OC-03.
 
 ---
 
@@ -60,13 +60,13 @@ ID.AM-03, PR.DS-12, PR.PS-06, PR.DS-01, GV.OC-03.
     The product shall develop high-risk AI systems on the basis of training, validation and testing data sets that meet the quality criteria of being relevant, sufficiently representative, and to the best extent possible, free of errors and complete in view of the intended purpose (Art. 10(3)), supported by data governance practices that detect, prevent and mitigate possible biases per the Art. 10(2) 8-element closed list (a)–(h); exceptional special-category processing for bias detection and correction is permitted only when all 6 cumulative Art. 10(5) conditions (a)–(f) are satisfied (Art. 10(1) + Art. 10(2) + Art. 10(3) + Art. 10(5)).
 
   fit_criterion: |
-    A provider-side training-pipeline data-governance architecture is operated under ID.AM-03 datasets and corresponding metadata inventory (data sources through preparation operations to deployed model, with bias-detection (f) and bias-detection/prevention/mitigation (g) records) + PR.DS-12 data managed consistent with the provider's risk strategy (the upstream control that (f) and (g) operationalise) + PR.PS-06 secure software development practices integrated (the secure engineering pipeline into which data-collection, preparation and bias-mitigation practices are embedded) + PR.DS-01 data-at-rest CIA protected (the pseudonymisation, differential-privacy and federated-learning techniques that constitute the state-of-the-art privacy-preserving measures referenced by the Art. 10(5) safeguards clause) + GV.OC-03 legal/regulatory/contractual requirements regarding cybersecurity understood and managed (the legal-and-regulatory understanding substrate that the cross-regulation GDPR Art. 9 interaction requires); the Art. 10(2) 8-element closed list (a)–(h) is AND-coordinated so partial compliance with six of eight does not satisfy Art. 10; the Art. 10(3) 4-criterion quality benchmark (relevant, sufficiently representative, free of errors, complete) is verified per dataset; when special-category personal data is processed for bias detection and correction, the Art. 10(5) 6-cumulative-condition gateway is documented: (a) bias detection and correction cannot be effectively achieved by processing other data, (b) special categories are strictly necessary and limited to the bias detection and correction, (c) effective technical and organisational safeguards in place, (d) datasets subject to enhanced data governance, (e) safeguards documented, (f) special-category data deleted after the bias detection and correction; `biases` is read cumulatively across statistical / algorithmic / societal senses; outside the narrow Art. 10(5) window, the AI Act does not trigger special-categor... (line truncated to 2000 chars)
+    A provider-side training-pipeline data-governance architecture is operated under ID.AM-03 datasets and corresponding metadata inventory (data sources through preparation operations to deployed model, with bias-detection (f) and bias-detection/prevention/mitigation (g) records) + ID.AM-08 data managed consistent with the provider's risk strategy (the upstream control that (f) and (g) operationalise) + PR.PS-06 secure software development practices integrated (the secure engineering pipeline into which data-collection, preparation and bias-mitigation practices are embedded) + PR.DS-01 data-at-rest CIA protected (the pseudonymisation, differential-privacy and federated-learning techniques that constitute the state-of-the-art privacy-preserving measures referenced by the Art. 10(5) safeguards clause) + GV.OC-03 legal/regulatory/contractual requirements regarding cybersecurity understood and managed (the legal-and-regulatory understanding substrate that the cross-regulation GDPR Art. 9 interaction requires); the Art. 10(2) 8-element closed list (a)–(h) is AND-coordinated so partial compliance with six of eight does not satisfy Art. 10; the Art. 10(3) 4-criterion quality benchmark (relevant, sufficiently representative, free of errors, complete) is verified per dataset; when special-category personal data is processed for bias detection and correction, the Art. 10(5) 6-cumulative-condition gateway is documented: (a) bias detection and correction cannot be effectively achieved by processing other data, (b) special categories are strictly necessary and limited to the bias detection and correction, (c) effective technical and organisational safeguards in place, (d) datasets subject to enhanced data governance, (e) safeguards documented, (f) special-category data deleted after the bias detection and correction; `biases` is read cumulatively across statistical / algorithmic / societal senses; outside the narrow Art. 10(5) window, the AI Act does not trigger special-categor... (line truncated to 2000 chars)
 
   priority: MUST
   verification_method: TEST
   dependencies: [5.1.1 (when high-risk AI provider processes personal data — AI Act Art. 10(5) operates as a narrow permission into the GDPR Art. 9(1) prohibition, conditioned on 6 cumulative safeguards (a)–(f); outside the Art. 10(5) window, GDPR Art. 9(1) binds and the AI Act gateway does not extend the controller-side processing basis), 5.1.2 (when CRA-classified high-risk AI product — upstream AI Act training-data quality feeds downstream CRA runtime minimisation; 3-track matrix applies with explicit upstream-to-downstream minimisation hand-off)]
 
-  nist_csf: [ID.AM-03, PR.DS-12, PR.PS-06, PR.DS-01, GV.OC-03]
+  nist_csf: [ID.AM-03, ID.AM-08, PR.PS-06, PR.DS-01, GV.OC-03]
 
   applicable_if:
     regs: [AI_ACT]
@@ -123,7 +123,7 @@ verified_relationship: NON-SAME (CRDA-deep, D-05.1: GDPR↔AI_Act = CORRECTED fr
 practice anchored to ID.AM-03 (inventories of data and corresponding
 metadata for designated data types — the dataset-inventory substrate
 for traceability from data sources through preparation operations to
-deployed model) + PR.DS-12 (data managed consistent with the
+deployed model) + ID.AM-08 (data managed consistent with the
 organisation's risk strategy — the upstream control that the
 bias-examination (f) and bias-detection/prevention/mitigation (g)
 duties operationalise) + PR.PS-06 (secure software development
@@ -131,7 +131,7 @@ practices integrated, performance monitored throughout the SDLC —
 the secure engineering pipeline into which data-collection,
 preparation and bias-mitigation practices are embedded). `SR-AIACT-004`
 covers the Art. 10(5) 6-cumulative-condition special-category
-gateway anchored to PR.DS-12 + PR.DS-01 (data-at-rest CIA protected
+gateway anchored to ID.AM-08 + PR.DS-01 (data-at-rest CIA protected
 — including the pseudonymisation, differential-privacy and
 federated-learning techniques that constitute the state-of-the-art
 privacy-preserving measures referenced by the safeguards clause) +
@@ -140,9 +140,9 @@ cybersecurity — including privacy and civil-liberties obligations —
 understood and managed — the legal-and-regulatory understanding
 substrate that the cross-regulation GDPR Art. 9 interaction requires).
 `SR-AIACT-005` covers the Art. 10(3) 4-criterion dataset quality
-benchmark anchored to PR.DS-12 + PR.DS-01. `SR-AIACT-006` covers the
+benchmark anchored to ID.AM-08 + PR.DS-01. `SR-AIACT-006` covers the
 Art. 10(5) exceptional special-category processing anchored to
-PR.DS-12 + PR.DS-01 + GV.OC-03. The five subcategories together
+ID.AM-08 + PR.DS-01 + GV.OC-03. The five subcategories together
 operationalise the AI Act training-pipeline upstream data quality +
 data-governance + special-category gateway architecture.)*
 
@@ -161,4 +161,3 @@ data-governance + special-category gateway architecture.)*
 ```
 
 <!-- aegis:purity: own_reg=AI_Act; demoted=6; core_cross_mentions=2 -->
-

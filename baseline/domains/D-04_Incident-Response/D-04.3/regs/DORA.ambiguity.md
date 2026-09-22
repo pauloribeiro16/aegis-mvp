@@ -2220,4 +2220,3 @@ This is **structurally different** from the NIS 2 model (where significant cyber
 **Note on definitional anchors:** every ICT-related clause in Ch. IV inherits from DORA Art. 3(2) → NIS 2 Art. 6(1) (`network and information system`). The TLPT definitional anchor is DORA Art. 26(11) → **TIBER-EU** (non-binding ECB framework) — same **binding-to-non-binding definitional regress** pattern as CRA Annex I → ISO standards.
 
 <!-- aegis:purity: own_reg=DORA; demoted=49; core_cross_mentions=0 -->
-

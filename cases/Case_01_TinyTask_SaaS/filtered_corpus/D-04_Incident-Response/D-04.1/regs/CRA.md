@@ -129,4 +129,3 @@ verified_relationship: NON-SAME (CRDA-deep, D-04.1: GDPR↔CRA = DIFFERENT-PERSP
 ```
 
 <!-- aegis:purity: own_reg=CRA; demoted=5; core_cross_mentions=2 -->
-

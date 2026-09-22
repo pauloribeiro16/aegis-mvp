@@ -101,4 +101,3 @@ Net: as of mid-2025, **the Art. 20 mandates are substantially implemented via Re
 `consistent approach` between DORA reporting and NIS 2 reporting (NIS 2 Art. 23; cf. NIS 2 file §3.10). S3.
 
 <!-- aegis:purity: own_reg=DORA; demoted=2; core_cross_mentions=0 -->
-

@@ -43,5 +43,3 @@
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation must produce a layered stack: DORA Art. 9(4)(a) CIA+A logging + AI Act Art. 12 AI-system event logging.
 
 ---
-
-

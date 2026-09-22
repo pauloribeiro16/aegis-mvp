@@ -105,4 +105,3 @@ R1 vs R2 yield materially distinct breach-response workflows.
 The awareness trigger is polysemous (cf. CRA C25, NIS 2 C25 — same pattern across regulations).
 
 <!-- aegis:purity: own_reg=GDPR; demoted=1; core_cross_mentions=0 -->
-

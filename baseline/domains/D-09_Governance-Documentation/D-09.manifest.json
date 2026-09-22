@@ -518,7 +518,7 @@
         "id": "SO-D-09.4.AI_Act",
         "csf_anchors": [
           "ID.AM-08 (primary)",
-          "PR.DS-12",
+          "ID.AM-08",
           "GV.PO-01"
         ]
       }
@@ -535,7 +535,7 @@
         "id": "SO-D-09.2.CRA",
         "csf_anchors": [
           "ID.RA-05 (primary)",
-          "ID.SC-04"
+          "GV.SC-07"
         ]
       },
       {
@@ -549,7 +549,7 @@
         "id": "SO-D-09.4.CRA",
         "csf_anchors": [
           "ID.AM-08 (primary)",
-          "PR.DS-12",
+          "ID.AM-08",
           "ID.RA-05"
         ]
       }
@@ -582,7 +582,7 @@
         "id": "SO-D-09.4.DORA",
         "csf_anchors": [
           "ID.AM-08 (primary)",
-          "PR.DS-12",
+          "ID.AM-08",
           "GV.PO-01"
         ]
       }
@@ -608,7 +608,7 @@
         "id": "SO-D-09.4.GDPR",
         "csf_anchors": [
           "ID.AM-08 (primary)",
-          "PR.DS-12",
+          "ID.AM-08",
           "GV.PO-02"
         ]
       }
@@ -641,7 +641,7 @@
         "id": "SO-D-09.4.NIS2",
         "csf_anchors": [
           "ID.AM-08 (primary)",
-          "PR.DS-12"
+          "ID.AM-08"
         ]
       }
     ]
@@ -675,7 +675,7 @@
         "title": "Provider of high-risk AI system draws up and keeps up-to-date the Annex IV technical documentation before placing on market or putting into service, the 13-element QMS documentation, and the Art. 19(1) provider logs under their control",
         "nist_csf": [
           "ID.AM-08",
-          "PR.DS-12",
+          "ID.AM-08",
           "GV.PO-01"
         ],
         "scope_overlap": "N"
@@ -699,7 +699,7 @@
         "title": "Manufacturer documents the cybersecurity risk assessment referred to in Art. 13(2) covering intended purpose + reasonably foreseeable use + Annex I Part I (2) applicability, updated during support period and recorded in Annex VII §3",
         "nist_csf": [
           "ID.RA-05",
-          "ID.SC-04"
+          "GV.SC-07"
         ],
         "scope_overlap": "N"
       },
@@ -717,7 +717,7 @@
         "title": "Manufacturer draws up before placing on market the technical documentation per Annex VII §1-§8 8-item content list, keeps it at MSA disposal for at least 10 years or the support period (whichever longer), and provides the EU declaration + CE marking",
         "nist_csf": [
           "ID.AM-08",
-          "PR.DS-12",
+          "ID.AM-08",
           "ID.RA-05"
         ],
         "scope_overlap": "N"
@@ -763,7 +763,7 @@
         "title": "Financial entity develops and documents an information security policy defining rules to protect availability, authenticity, integrity and confidentiality of data, information assets and ICT assets, including those of customers where applicable (Art. 9(4)(a) DORA)",
         "nist_csf": [
           "ID.AM-08",
-          "PR.DS-12",
+          "ID.AM-08",
           "GV.PO-01"
         ],
         "scope_overlap": "N"
@@ -798,7 +798,7 @@
         "title": "Controller and processor maintain a record of processing activities (RoPA) under Art. 30(1)/(2)/(3)/(4)/(5) GDPR with the 7-item content list, on-DPA-request, subject to the 250-employee exception",
         "nist_csf": [
           "ID.AM-08",
-          "PR.DS-12",
+          "ID.AM-08",
           "GV.PO-02"
         ],
         "scope_overlap": "N"
@@ -840,7 +840,7 @@
         "title": "Member States encourage use of European or internationally accepted standards and specifications for the security of network and information systems, with Commission delegated acts under Art. 24(2) and ENISA candidate scheme request under Art. 24(3)",
         "nist_csf": [
           "ID.AM-08",
-          "PR.DS-12"
+          "ID.AM-08"
         ],
         "scope_overlap": "N"
       }
@@ -859,7 +859,7 @@
       "ID.AM-08 (primary)",
       "ID.RA-05",
       "ID.RA-05 (primary)",
-      "PR.DS-12"
+      "ID.AM-08"
     ],
     "CRA": [
       "GV.OC-03",
@@ -874,8 +874,8 @@
       "ID.AM-08 (primary)",
       "ID.RA-05",
       "ID.RA-05 (primary)",
-      "ID.SC-04",
-      "PR.DS-12"
+      "GV.SC-07",
+      "ID.AM-08"
     ],
     "DORA": [
       "GV.OC-03",
@@ -894,7 +894,7 @@
       "ID.AM-08 (primary)",
       "ID.RA-05",
       "ID.RA-05 (primary)",
-      "PR.DS-12"
+      "ID.AM-08"
     ],
     "GDPR": [
       "GV.OV-03",
@@ -910,7 +910,7 @@
       "ID.RA-04",
       "ID.RA-05",
       "ID.RA-05 (primary)",
-      "PR.DS-12"
+      "ID.AM-08"
     ],
     "NIS2": [
       "GV.OV-01",
@@ -925,7 +925,7 @@
       "ID.AM-08 (primary)",
       "ID.RA-05",
       "ID.RA-05 (primary)",
-      "PR.DS-12",
+      "ID.AM-08",
       "PR.PS-01",
       "PR.PS-01 (primary)"
     ]

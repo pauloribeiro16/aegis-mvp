@@ -224,4 +224,3 @@ Each block is a governance checkpoint. **Art. 28 is the longest single article i
 
 
 <!-- aegis:purity: own_reg=DORA; demoted=2; core_cross_mentions=0 -->
-

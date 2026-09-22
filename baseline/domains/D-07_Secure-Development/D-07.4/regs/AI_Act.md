@@ -12,4 +12,3 @@
 _(no AI Act Sub-SO or requirements in this sub-domain)_
 
 <!-- aegis:purity: own_reg=AI_Act; demoted=0; core_cross_mentions=0 -->
-

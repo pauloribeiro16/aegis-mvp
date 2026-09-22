@@ -43,5 +43,3 @@
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation must produce a layered stack: NIS 2 Art. 21(2)(f) effectiveness-assessment + CRA Annex VII §6 + Annex VIII conformity-assessment.
 
 ---
-
-

@@ -51,8 +51,8 @@
 <!-- pair: GDPR,CRA -->
 | GDPR ↔ CRA | **Different perspective** | Tension/difference |
 |---|---|---|
-| **GDPR** (SR-GDPR-013, Art. 25(2)) | Data-protection by default: only personal data necessary for each specific purpose processed — across amount, extent, period, accessibility | Controller; personal-data scope; "by default" across 4 dimensions; PR.DS-12 + GV.PO-01 (data-management + policy) |
-| **CRA** (SR-CRA-018 + SR-CRA-025 + SR-CRA-026, Annex I Part I (2)(b)+(c)) | Secure-by-default configuration + reset to original + automatic security updates default + opt-out + postponement | Manufacturer; product-level; "tailor-made" carve-out for business users; PR.PS-01 + PR.DS-12 + GV.SC-03 |
+| **GDPR** (SR-GDPR-013, Art. 25(2)) | Data-protection by default: only personal data necessary for each specific purpose processed — across amount, extent, period, accessibility | Controller; personal-data scope; "by default" across 4 dimensions; ID.AM-08 + GV.PO-01 (data-management + policy) |
+| **CRA** (SR-CRA-018 + SR-CRA-025 + SR-CRA-026, Annex I Part I (2)(b)+(c)) | Secure-by-default configuration + reset to original + automatic security updates default + opt-out + postponement | Manufacturer; product-level; "tailor-made" carve-out for business users; PR.PS-01 + ID.AM-08 + GV.SC-03 |
 
 **Why Different perspective**: GDPR's "by default" obligation is **data-centric** (only the personal data necessary for the purpose is processed, across 4 dimensions); CRA's "secure by default" obligation is **product-centric** (the product is made available with secure-by-default configuration + reset capability). The two are different perspectives on "default" at different objects (data vs product). A controller deploying a CRA-regulated product is jointly bound: the data-centric by-default (GDPR) + the product-centric by-default (CRA). The two are not contradictory: they target different objects at different layers. **Caveat:** the CRA `tailor-made` carve-out (Annex I Part I (2)(b) "unless otherwise agreed between manufacturer and business user in relation to a tailor-made product") is a product-level configuration exception that does not apply to GDPR's data-centric by-default obligation — a CRA tailor-made product configuration does not exempt the controller from GDPR's data-protection by default. → full rationale: `../../../Regulation/GDPR/02_SecurityRules_NIST.md` SR-GDPR-013; `../../../Regulation/CRA/02_SecurityRules_NIST.md` SR-CRA-018 + SR-CRA-025 + SR-CRA-026
 
@@ -60,4 +60,3 @@
 
 _(Part 3 duplicates of Part 1 §1 were byte-identical and deduplicated:
 42 lines — see ../../_migration_report.md)_
-

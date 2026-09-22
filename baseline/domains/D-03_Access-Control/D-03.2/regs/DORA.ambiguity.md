@@ -63,4 +63,3 @@ S2 (per-element); aggregate S3 due to the open-ended `at least` qualifier.
 ---
 
 <!-- aegis:purity: own_reg=DORA; demoted=0; core_cross_mentions=0 -->
-

@@ -64,4 +64,3 @@ If both tracks apply to the same financial entity and incident, the NIS2 hard 24
 
 _(Part 3 duplicates of Part 1 §1 were byte-identical and deduplicated:
 44 lines — see ../../_migration_report.md)_
-

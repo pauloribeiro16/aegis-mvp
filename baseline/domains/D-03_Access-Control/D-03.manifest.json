@@ -311,7 +311,7 @@
         "id": "SO-D-03.4.CRA",
         "csf_anchors": [
           "PR.PS-01",
-          "PR.DS-12",
+          "ID.AM-08",
           "GV.SC-03"
         ]
       }
@@ -345,7 +345,7 @@
         "csf_anchors": [
           "PR.AA-03",
           "PR.AA-02",
-          "PR.DS-12"
+          "ID.AM-08"
         ]
       },
       {
@@ -368,7 +368,7 @@
         "id": "SO-D-03.4.GDPR",
         "csf_anchors": [
           "PR.PS-01",
-          "PR.DS-12",
+          "ID.AM-08",
           "GV.PO-01"
         ]
       }
@@ -446,7 +446,7 @@
         "title": "Products with digital elements made available with secure-by-default configuration + reset-to-original-state capability + auto-update default + opt-out + postponement (Annex I Part I (2)(b) + (2)(c) multi-leg product default)",
         "nist_csf": [
           "PR.PS-01",
-          "PR.DS-12",
+          "ID.AM-08",
           "GV.SC-03"
         ],
         "scope_overlap": "N"
@@ -490,7 +490,7 @@
         "nist_csf": [
           "PR.AA-02",
           "PR.AA-03",
-          "PR.DS-12"
+          "ID.AM-08"
         ],
         "scope_overlap": "N"
       },
@@ -519,7 +519,7 @@
         "title": "Personal-data processing systems implement by-default measures across amount, extent, period, and accessibility (Art. 25(2) four-dimension AND)",
         "nist_csf": [
           "PR.PS-01",
-          "PR.DS-12",
+          "ID.AM-08",
           "GV.PO-01"
         ],
         "scope_overlap": "N"
@@ -568,7 +568,7 @@
       "PR.AA-01",
       "PR.AA-05",
       "PR.AA-06",
-      "PR.DS-12",
+      "ID.AM-08",
       "PR.PS-01",
       "PR.PS-04"
     ],
@@ -585,7 +585,7 @@
       "PR.AA-05",
       "PR.AA-06",
       "PR.AT-02",
-      "PR.DS-12",
+      "ID.AM-08",
       "PR.PS-01"
     ],
     "NIS2": [

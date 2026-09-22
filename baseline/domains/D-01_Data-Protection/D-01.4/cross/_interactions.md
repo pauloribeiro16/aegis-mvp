@@ -225,9 +225,9 @@ integrity sits inside DORA CIA+A, which sits inside GDPR personal-data
 accuracy, which is a sub-property of AI Act system resilience). The
 operational convergence is on **PR.DS-01 (storage integrity) + PR.DS-10
 (in-use integrity) + PR.PS-04 (log records)**, with each regulation adding
-its layer-specific anchor (GDPR's PR.DS-12 data-quality workflow + Art. 16
+its layer-specific anchor (GDPR's ID.AM-08 data-quality workflow + Art. 16
 rectification; CRA's PR.PS-04 corruption reporting + (2)(l) logging;
-DORA's PR.DS-02 in-transit integrity + PR.DS-12 risk-strategy; AI Act's
+DORA's PR.DS-02 in-transit integrity + ID.AM-08 risk-strategy; AI Act's
 PR.IR-03 / PR.IR-04 / PR.DS-11 resilience + backup). The strictest
 operational surface (DORA's ICT-system integrity + CRA's universal-quantifier
 protection on the product substrate) covers the storage-integrity leg;
@@ -260,7 +260,7 @@ between the layered objects (CRA integrity substrate under DORA CIA+A,
 under GDPR accuracy workflow, under AI Act resilience). **Proportionality
 (P2):** a non-AI, non-DORA SaaS handles the GDPR + CRA floor (PR.DS-01 +
 PR.DS-10 + PR.PS-04 + Art. 16 rectification workflow); a DORA financial
-entity adds the system-level integrity layer (PR.DS-12 risk-strategy + DORA
+entity adds the system-level integrity layer (ID.AM-08 risk-strategy + DORA
 Art. 9(2) 4×3 matrix); a DORA financial entity using high-risk AI adds the
 AI-system resilience layer (PR.IR-03 + PR.IR-04 + PR.DS-11 + Art. 15(3)
 backup/fail-safe). For proportionality, D-01.4 is a **layered-object**
@@ -299,7 +299,7 @@ GDPR, CRA, DORA, AI_Act (4 of 5 regs; NIS 2 absent per AEGIS taxonomy §4.1 — 
   priority: MUST
   verification_method: TEST
   dependencies: []
-  nist_csf: [PR.DS-01, PR.DS-02, PR.DS-10, PR.DS-11, PR.DS-12, PR.PS-04, PR.IR-03, PR.IR-04]
+  nist_csf: [PR.DS-01, PR.DS-02, PR.DS-10, PR.DS-11, ID.AM-08, PR.PS-04, PR.IR-03, PR.IR-04]
   applicable_if:
     regs: [GDPR, CRA, DORA, AI_Act]
     scope_overlap: conditional   # HL engages only when ≥2 applicable regs' primary-object scopes overlap on same data asset (see HSO scope-overlap principle)
@@ -397,7 +397,7 @@ status: DRAFT
 - **NIS 2 absence.** All four other regulations impose an integrity obligation; NIS 2 is silent on the standalone integrity dimension (T3-vs-text gap; CRA + DORA are dedicated authorities). For a NIS 2 NSIE that is not also DORA-scoped, the integrity obligation is anchored to NIS 2's broader risk-management framework rather than to a dedicated integrity clause. This is a **regulatory gap** that the AEGIS taxonomy should surface for Layer 2 review.
 <!-- /emergent -->
 ##### SR cross-validation
-CSF mappings converge on PR.DS-01 (data-at-rest) and PR.DS-10 (data-in-use) for the data integrity property. CRA additionally anchors on PR.PS-04 (logging); DORA on PR.DS-12 (risk-strategy); AI Act on PR.IR-03 + PR.IR-04 (resilience) + PR.DS-11 (data backup consistency). GDPR adds PR.DS-12 (data managed consistent with risk strategy) for the accuracy-side workflow. The shared PR.DS-01 + PR.DS-10 anchor is the operational pivot; divergence is at the supplementary layer (semantic accuracy / technical integrity / system resilience).
+CSF mappings converge on PR.DS-01 (data-at-rest) and PR.DS-10 (data-in-use) for the data integrity property. CRA additionally anchors on PR.PS-04 (logging); DORA on ID.AM-08 (risk-strategy); AI Act on PR.IR-03 + PR.IR-04 (resilience) + PR.DS-11 (data backup consistency). GDPR adds ID.AM-08 (data managed consistent with risk strategy) for the accuracy-side workflow. The shared PR.DS-01 + PR.DS-10 anchor is the operational pivot; divergence is at the supplementary layer (semantic accuracy / technical integrity / system resilience).
 ##### Downstream implication
 For Phase 1C Doc 07, D-01.4 is a **layered object** sub-domain: the company profile must document integrity at four distinct object levels (personal-data, ICT-system, AI-system, configuration) and the cascade between them. Proportionality: a non-AI, non-DORA SaaS handles the GDPR + CRA floor; a DORA financial entity adds the system-level layer; a DORA financial entity using high-risk AI adds the AI-system layer.
 ---
@@ -442,4 +442,3 @@ status: DRAFT
 ## Structural banners (merged Parts)
 
 # Part 4 — Relevant Ambiguity (by regulation)
-

@@ -118,4 +118,3 @@ verified_relationship: DIFFERENT-PERSPECTIVE (CRDA-deep, D-09.2: GDPR↔NIS2 = D
 ```
 
 <!-- aegis:purity: own_reg=GDPR; demoted=4; core_cross_mentions=2 -->
-

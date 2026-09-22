@@ -61,5 +61,3 @@
 
 **Why equal (different objects)**: Both GDPR Art. 27 and CRA Art. 18 require a written EU-side representative for non-EU entities. Different objects: GDPR = data-protection representative; CRA = product-compliance representative. When a non-EU manufacturer of CRA-classified products is also a non-EU controller, both representatives are required, with different mandates (Art. 27 representative handles data-subject requests and DPA liaison; Art. 18 AR retains technical documentation and cooperates with MSA).
 
-
-

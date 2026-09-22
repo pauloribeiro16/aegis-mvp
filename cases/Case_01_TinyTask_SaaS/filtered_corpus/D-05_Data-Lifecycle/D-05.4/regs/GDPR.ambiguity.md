@@ -41,4 +41,3 @@ R1 vs R3 yield materially distinct data-export engineering.
 `commonly used` is undefined (cf. CRA Art. 13(c) on SBOM — same open-list pattern). Common for whom — data subject, sector, jurisdiction?
 
 <!-- aegis:purity: own_reg=GDPR; demoted=1; core_cross_mentions=0 -->
-

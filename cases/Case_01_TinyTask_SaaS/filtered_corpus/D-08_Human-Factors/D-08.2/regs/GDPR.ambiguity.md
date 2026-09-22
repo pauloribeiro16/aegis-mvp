@@ -51,4 +51,3 @@ Inherits the GDPR/T1 `training` polysemy. S2 because the same training-practice 
 - Chapter V inherits Art. 28 processor obligations (transfer is processing via a processor). Art. 28(3) DPA clauses must include transfer safeguards.
 
 <!-- aegis:purity: own_reg=GDPR; demoted=0; core_cross_mentions=0 -->
-

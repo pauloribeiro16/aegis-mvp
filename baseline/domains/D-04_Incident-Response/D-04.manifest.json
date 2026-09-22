@@ -381,7 +381,7 @@
         "id": "SO-D-04.3.AI_Act",
         "csf_anchors": [
           "RS.CO-02",
-          "RS.CO-04",
+          "RS.MA-04",
           "RS.MA-03",
           "RS.MA-01"
         ]
@@ -415,7 +415,7 @@
         "id": "SO-D-04.4.CRA",
         "csf_anchors": [
           "PR.IR-03",
-          "PR.DS-12"
+          "ID.AM-08"
         ]
       }
     ],
@@ -442,7 +442,7 @@
         "id": "SO-D-04.3.DORA",
         "csf_anchors": [
           "RS.CO-02",
-          "RS.CO-04"
+          "RS.MA-04"
         ]
       },
       {
@@ -469,7 +469,7 @@
       {
         "id": "SO-D-04.2.GDPR",
         "csf_anchors": [
-          "PR.DS-12",
+          "ID.AM-08",
           "PR.IR-04",
           "RC.RP-04"
         ]
@@ -478,7 +478,7 @@
         "id": "SO-D-04.3.GDPR",
         "csf_anchors": [
           "RS.CO-02",
-          "RS.CO-04",
+          "RS.MA-04",
           "RS.MA-03"
         ]
       },
@@ -511,7 +511,7 @@
       {
         "id": "SO-D-04.3.NIS2",
         "csf_anchors": [
-          "RS.CO-04",
+          "RS.MA-04",
           "RS.MA-02"
         ]
       },
@@ -531,7 +531,7 @@
         "title": "Serious incident involving high-risk AI reported to market surveillance authorities under 4-trigger × 4-timeline matrix (15d default / 10d death / 2d widespread / 15d causal-link-anchor); GPAI systemic-risk report separately to AI Office under Art. 55",
         "nist_csf": [
           "RS.CO-02",
-          "RS.CO-04",
+          "RS.MA-04",
           "RS.MA-03",
           "RS.MA-01"
         ],
@@ -575,7 +575,7 @@
         "title": "Product with digital elements preserves essential and basic functions `also after an incident` through resilience and exploitation-mitigation architecture (intra-product recovery, layered not substituted)",
         "nist_csf": [
           "PR.IR-03",
-          "PR.DS-12"
+          "ID.AM-08"
         ],
         "scope_overlap": "N"
       }
@@ -612,7 +612,7 @@
         "title": "Major ICT-related incident reported to competent authority `without undue delay`; affected clients informed `without undue delay` as soon as financial entity becomes aware — pending EBA/ESMA/EIOPA RTS (4h pending)",
         "nist_csf": [
           "RS.CO-02",
-          "RS.CO-04",
+          "RS.MA-04",
           "RS.MA-03"
         ],
         "scope_overlap": "N"
@@ -651,7 +651,7 @@
           "RS.MI-01",
           "RS.MI-02",
           "PR.DS-01",
-          "PR.DS-12",
+          "ID.AM-08",
           "PR.IR-04",
           "RC.RP-04"
         ],
@@ -662,7 +662,7 @@
         "title": "Personal-data breach notified to supervisory authority within 72 hours `where feasible` of becoming aware, with `unlikely risk` carve-out documented",
         "nist_csf": [
           "RS.CO-02",
-          "RS.CO-04",
+          "RS.MA-04",
           "RS.MA-03"
         ],
         "scope_overlap": "N"
@@ -707,7 +707,7 @@
         "req_id": "4.3.2",
         "title": "Significant incident notified via twin-trigger pattern — 24h early warning + 72h incident notification + 1m final report — to CSIRT or competent authority",
         "nist_csf": [
-          "RS.CO-04",
+          "RS.MA-04",
           "RS.MA-02",
           "RS.MA-03"
         ],
@@ -727,13 +727,13 @@
   "applicable_nist_controls_by_regulation": {
     "AI_Act": [
       "RS.CO-02",
-      "RS.CO-04",
+      "RS.MA-04",
       "RS.MA-01",
       "RS.MA-03"
     ],
     "CRA": [
       "DE.CM-09",
-      "PR.DS-12",
+      "ID.AM-08",
       "PR.IR-03",
       "PR.IR-04",
       "PR.PS-04",
@@ -753,7 +753,7 @@
       "RC.RP-03",
       "RC.RP-04",
       "RS.CO-02",
-      "RS.CO-04",
+      "RS.MA-04",
       "RS.MA-01",
       "RS.MA-02",
       "RS.MA-03"
@@ -764,12 +764,12 @@
       "DE.CM-09",
       "PR.DS-01",
       "PR.DS-11",
-      "PR.DS-12",
+      "ID.AM-08",
       "PR.IR-04",
       "PR.PS-04",
       "RC.RP-04",
       "RS.CO-02",
-      "RS.CO-04",
+      "RS.MA-04",
       "RS.MA-02",
       "RS.MA-03",
       "RS.MI-01",
@@ -785,7 +785,7 @@
       "PR.PS-04",
       "RC.RP-01",
       "RC.RP-04",
-      "RS.CO-04",
+      "RS.MA-04",
       "RS.MA-01",
       "RS.MA-02",
       "RS.MA-03",

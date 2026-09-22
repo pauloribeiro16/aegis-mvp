@@ -20,4 +20,3 @@ products, services, components, and data is managed per least privilege
 with explicit authorisation-model choice, documented entitlements,
 attack-surface-limitation evidence, and boundary hand-offs between access
 surfaces.
-

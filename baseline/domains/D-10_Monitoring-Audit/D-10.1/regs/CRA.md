@@ -118,4 +118,3 @@ verified_relationship: COMPLEMENTARY (CRDA-deep, D-10.1: GDPR↔CRA = COMPLEMENT
 ```
 
 <!-- aegis:purity: own_reg=CRA; demoted=4; core_cross_mentions=2 -->
-

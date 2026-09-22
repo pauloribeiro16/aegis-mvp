@@ -45,5 +45,3 @@
 **Downstream implication (Phase 1C Doc 07):** Phase 2 obligation derivation must produce a DORA-led stack: DORA Art. 24 testing programme + Art. 25 modalities + Art. 26 TLPT (for significant entities) + GDPR Art. 32(1)(d) effectiveness-evaluation as sub-component.
 
 ---
-
-

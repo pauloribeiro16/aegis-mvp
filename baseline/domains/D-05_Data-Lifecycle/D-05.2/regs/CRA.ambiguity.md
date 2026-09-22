@@ -100,4 +100,3 @@ Same pattern as NIS 2 Art. 23(3) `caused or is capable of causing`. Actual vs po
 Same four dimensions as NIS 2 Art. 6(2) D02. Inherits same POLY (authenticity undefined).
 
 <!-- aegis:purity: own_reg=CRA; demoted=2; core_cross_mentions=0 -->
-

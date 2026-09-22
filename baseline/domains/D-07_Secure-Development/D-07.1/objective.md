@@ -16,4 +16,3 @@ verified_relationship_basis: CRDA-deep verified (10 pairs: 10 SAME — COMPLEMEN
 emergent_tensions: 0
 ```
 **Objective.** Security is integrated into the acquisition, design, development, production, deployment and maintenance of systems and products via documented by-design decisions, risk-assessment propagation, proportionate safeguards, and lifecycle consistency.
-

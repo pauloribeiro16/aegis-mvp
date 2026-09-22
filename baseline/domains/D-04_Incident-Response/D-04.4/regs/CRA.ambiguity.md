@@ -55,4 +55,3 @@ R1 is the literal reading; R2 is the harmonised reading. S2.
 ### 1. Annex I — full text
 
 <!-- aegis:purity: own_reg=CRA; demoted=0; core_cross_mentions=0 -->
-

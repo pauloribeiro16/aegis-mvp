@@ -1,0 +1,40 @@
+{
+  "control_id": "PO.1.3",
+  "framework": "NIST SSDF v1.1",
+  "function": "PO",
+  "category": "Define Security Requirements for Software Development (PO)",
+  "subcategory_id": "PO.1.3",
+  "subcategory_text": "Communicate the security requirements to all relevant parties, including but not limited to development teams, operations teams, and third-party suppliers.",
+  "informative_references": [
+    "NIST SSDF v1.1: PO.1.3",
+    "NIST SP 800-53 Rev. 5: SA-9, PM-15",
+    "NIST CSF 2.0: GV.OC-04, GV.SC-01"
+  ],
+  "implementation_examples": [
+    "Publish security requirements in a developer handbook accessible to all engineers",
+    "Communicate security requirements via onboarding training for new developers and contractors",
+    "Send explicit security-requirement briefings to third-party developers and suppliers"
+  ],
+  "assessment_objectives": [
+    "Determine whether security requirements are disseminated to all relevant internal and external stakeholders.",
+    "Determine whether acknowledgement of security requirements is recorded for each stakeholder."
+  ],
+  "related_controls": [
+    "PO.1.1 (NIST SSDF v1.1 — same family)",
+    "PO.1.2 (NIST SSDF v1.1 — same family)",
+    "PO.1.4 (NIST SSDF v1.1 — same family)",
+    "PO.1.5 (NIST SSDF v1.1 — same family)",
+    "PO.2.1 (NIST SSDF v1.1 — same family)",
+    "PO.2.2 (NIST SSDF v1.1 — same family)",
+    "PO.2.3 (NIST SSDF v1.1 — same family)",
+    "PO.3.1 (NIST SSDF v1.1 — same family)",
+    "PO.3.2 (NIST SSDF v1.1 — same family)",
+    "PO.3.3 (NIST SSDF v1.1 — same family)",
+    "PO.4.1 (NIST SSDF v1.1 — same family)",
+    "PO.4.2 (NIST SSDF v1.1 — same family)",
+    "PO.5.1 (NIST SSDF v1.1 — same family)",
+    "PO.5.2 (NIST SSDF v1.1 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218",
+  "source_version": "1.1 (2022-02-08)"
+}

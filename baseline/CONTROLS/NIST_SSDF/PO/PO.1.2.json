@@ -1,0 +1,40 @@
+{
+  "control_id": "PO.1.2",
+  "framework": "NIST SSDF v1.1",
+  "function": "PO",
+  "category": "Define Security Requirements for Software Development (PO)",
+  "subcategory_id": "PO.1.2",
+  "subcategory_text": "Protect the security requirements from unauthorized access, tampering, and deletion. The integrity and confidentiality of the requirements are critical to ensuring the software is built securely.",
+  "informative_references": [
+    "NIST SSDF v1.1: PO.1.2",
+    "NIST SP 800-53 Rev. 5: SA-15, PM-9",
+    "NIST CSF 2.0: PR.DS-01, GV.PO-02"
+  ],
+  "implementation_examples": [
+    "Store security requirements in version-controlled repositories with restricted access",
+    "Apply cryptographic integrity checks (e.g., digital signatures) on requirements artefacts",
+    "Audit access logs for security requirements files on a defined cadence"
+  ],
+  "assessment_objectives": [
+    "Determine whether security requirements are protected from unauthorized modification and disclosure.",
+    "Determine whether access to security requirements is logged and audited."
+  ],
+  "related_controls": [
+    "PO.1.1 (NIST SSDF v1.1 — same family)",
+    "PO.1.3 (NIST SSDF v1.1 — same family)",
+    "PO.1.4 (NIST SSDF v1.1 — same family)",
+    "PO.1.5 (NIST SSDF v1.1 — same family)",
+    "PO.2.1 (NIST SSDF v1.1 — same family)",
+    "PO.2.2 (NIST SSDF v1.1 — same family)",
+    "PO.2.3 (NIST SSDF v1.1 — same family)",
+    "PO.3.1 (NIST SSDF v1.1 — same family)",
+    "PO.3.2 (NIST SSDF v1.1 — same family)",
+    "PO.3.3 (NIST SSDF v1.1 — same family)",
+    "PO.4.1 (NIST SSDF v1.1 — same family)",
+    "PO.4.2 (NIST SSDF v1.1 — same family)",
+    "PO.5.1 (NIST SSDF v1.1 — same family)",
+    "PO.5.2 (NIST SSDF v1.1 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218",
+  "source_version": "1.1 (2022-02-08)"
+}

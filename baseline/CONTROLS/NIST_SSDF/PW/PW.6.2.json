@@ -1,0 +1,41 @@
+{
+  "control_id": "PW.6.2",
+  "framework": "NIST SSDF v1.1",
+  "function": "PW",
+  "category": "Configure Compilation, Interpreter, and Build Processes to Improve Executable Security (PW)",
+  "subcategory_id": "PW.6.2",
+  "subcategory_text": "Use namespacing, sandboxing, and isolation mechanisms provided by the platform to limit the impact of a compromised component.",
+  "informative_references": [
+    "NIST SSDF v1.1: PW.6.2",
+    "NIST SP 800-53 Rev. 5: SC-7, SC-39, SI-3",
+    "NIST CSF 2.0: PR.PS-06, PR.IR-01"
+  ],
+  "implementation_examples": [
+    "Use seccomp, AppArmor, or SELinux profiles in production",
+    "Run untrusted parsers in a sandbox (e.g., gVisor, Firecracker, Wasm)",
+    "Isolate tenants in multi-tenant systems"
+  ],
+  "assessment_objectives": [
+    "Determine whether sandboxing or isolation is used to limit blast radius.",
+    "Determine whether the isolation configuration is reviewed for drift."
+  ],
+  "related_controls": [
+    "PW.1.1 (NIST SSDF v1.1 — same family)",
+    "PW.1.2 (NIST SSDF v1.1 — same family)",
+    "PW.1.3 (NIST SSDF v1.1 — same family)",
+    "PW.2.1 (NIST SSDF v1.1 — same family)",
+    "PW.3.1 (NIST SSDF v1.1 — same family)",
+    "PW.3.2 (NIST SSDF v1.1 — same family)",
+    "PW.4.1 (NIST SSDF v1.1 — same family)",
+    "PW.4.2 (NIST SSDF v1.1 — same family)",
+    "PW.4.3 (NIST SSDF v1.1 — same family)",
+    "PW.4.4 (NIST SSDF v1.1 — same family)",
+    "PW.5.1 (NIST SSDF v1.1 — same family)",
+    "PW.5.2 (NIST SSDF v1.1 — same family)",
+    "PW.6.1 (NIST SSDF v1.1 — same family)",
+    "PW.7.1 (NIST SSDF v1.1 — same family)",
+    "PW.7.2 (NIST SSDF v1.1 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218",
+  "source_version": "1.1 (2022-02-08)"
+}

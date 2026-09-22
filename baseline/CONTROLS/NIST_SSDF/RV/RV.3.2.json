@@ -1,0 +1,31 @@
+{
+  "control_id": "RV.3.2",
+  "framework": "NIST SSDF v1.1",
+  "function": "RV",
+  "category": "Analyze Root Causes of Vulnerabilities (RV)",
+  "subcategory_id": "RV.3.2",
+  "subcategory_text": "Implement improvements to the SDLC that target the systemic root causes of identified vulnerabilities and measure their effectiveness over time.",
+  "informative_references": [
+    "NIST SSDF v1.1: RV.3.2",
+    "NIST SP 800-53 Rev. 5: PM-9, CA-7",
+    "NIST CSF 2.0: GV.RM-01, ID.IM-04"
+  ],
+  "implementation_examples": [
+    "Add a new SAST rule triggered by a recurring vulnerability pattern",
+    "Update secure-coding training based on root-cause findings",
+    "Track vulnerability-recurrence metrics after improvements are deployed"
+  ],
+  "assessment_objectives": [
+    "Determine whether systemic improvements are implemented after root-cause analysis.",
+    "Determine whether improvement effectiveness is measured."
+  ],
+  "related_controls": [
+    "RV.1.1 (NIST SSDF v1.1 — same family)",
+    "RV.1.2 (NIST SSDF v1.1 — same family)",
+    "RV.2.1 (NIST SSDF v1.1 — same family)",
+    "RV.2.2 (NIST SSDF v1.1 — same family)",
+    "RV.3.1 (NIST SSDF v1.1 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218",
+  "source_version": "1.1 (2022-02-08)"
+}

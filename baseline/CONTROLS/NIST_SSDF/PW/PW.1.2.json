@@ -1,0 +1,41 @@
+{
+  "control_id": "PW.1.2",
+  "framework": "NIST SSDF v1.1",
+  "function": "PW",
+  "category": "Design Software to Meet Security Requirements and Mitigate Risks (PW)",
+  "subcategory_id": "PW.1.2",
+  "subcategory_text": "Document and track security-relevant design decisions and their rationale so that the security posture of the software is traceable.",
+  "informative_references": [
+    "NIST SSDF v1.1: PW.1.2",
+    "NIST SP 800-53 Rev. 5: SA-15, SA-17",
+    "NIST CSF 2.0: GV.PO-02, ID.RA-01"
+  ],
+  "implementation_examples": [
+    "Maintain an Architecture Decision Record (ADR) log with security implications",
+    "Link design decisions to identified threats and mitigations",
+    "Review design decisions at design-review checkpoints"
+  ],
+  "assessment_objectives": [
+    "Determine whether security-relevant design decisions are documented with rationale.",
+    "Determine whether decisions are tracked over the project lifetime."
+  ],
+  "related_controls": [
+    "PW.1.1 (NIST SSDF v1.1 — same family)",
+    "PW.1.3 (NIST SSDF v1.1 — same family)",
+    "PW.2.1 (NIST SSDF v1.1 — same family)",
+    "PW.3.1 (NIST SSDF v1.1 — same family)",
+    "PW.3.2 (NIST SSDF v1.1 — same family)",
+    "PW.4.1 (NIST SSDF v1.1 — same family)",
+    "PW.4.2 (NIST SSDF v1.1 — same family)",
+    "PW.4.3 (NIST SSDF v1.1 — same family)",
+    "PW.4.4 (NIST SSDF v1.1 — same family)",
+    "PW.5.1 (NIST SSDF v1.1 — same family)",
+    "PW.5.2 (NIST SSDF v1.1 — same family)",
+    "PW.6.1 (NIST SSDF v1.1 — same family)",
+    "PW.6.2 (NIST SSDF v1.1 — same family)",
+    "PW.7.1 (NIST SSDF v1.1 — same family)",
+    "PW.7.2 (NIST SSDF v1.1 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218",
+  "source_version": "1.1 (2022-02-08)"
+}

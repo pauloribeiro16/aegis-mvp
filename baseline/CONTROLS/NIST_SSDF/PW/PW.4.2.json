@@ -1,0 +1,41 @@
+{
+  "control_id": "PW.4.2",
+  "framework": "NIST SSDF v1.1",
+  "function": "PW",
+  "category": "Configure Compilation, Interpreter, and Build Processes to Improve Executable Security (PW)",
+  "subcategory_id": "PW.4.2",
+  "subcategory_text": "Use compiler and interpreter options that produce useful warnings and treat warnings as errors where appropriate to surface potential security issues early.",
+  "informative_references": [
+    "NIST SSDF v1.1: PW.4.2",
+    "NIST SP 800-53 Rev. 5: SA-15, SI-2",
+    "NIST CSF 2.0: PR.PS-01"
+  ],
+  "implementation_examples": [
+    "Build with -Wall -Wextra -Werror for GCC/Clang",
+    "Treat Pyflakes, Ruff, or ESLint warnings as build failures in CI",
+    "Fail the build when security-relevant warnings are emitted"
+  ],
+  "assessment_objectives": [
+    "Determine whether strict warning settings are enabled in the build.",
+    "Determine whether security-relevant warnings fail the build."
+  ],
+  "related_controls": [
+    "PW.1.1 (NIST SSDF v1.1 — same family)",
+    "PW.1.2 (NIST SSDF v1.1 — same family)",
+    "PW.1.3 (NIST SSDF v1.1 — same family)",
+    "PW.2.1 (NIST SSDF v1.1 — same family)",
+    "PW.3.1 (NIST SSDF v1.1 — same family)",
+    "PW.3.2 (NIST SSDF v1.1 — same family)",
+    "PW.4.1 (NIST SSDF v1.1 — same family)",
+    "PW.4.3 (NIST SSDF v1.1 — same family)",
+    "PW.4.4 (NIST SSDF v1.1 — same family)",
+    "PW.5.1 (NIST SSDF v1.1 — same family)",
+    "PW.5.2 (NIST SSDF v1.1 — same family)",
+    "PW.6.1 (NIST SSDF v1.1 — same family)",
+    "PW.6.2 (NIST SSDF v1.1 — same family)",
+    "PW.7.1 (NIST SSDF v1.1 — same family)",
+    "PW.7.2 (NIST SSDF v1.1 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218",
+  "source_version": "1.1 (2022-02-08)"
+}

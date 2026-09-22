@@ -1,0 +1,31 @@
+{
+  "control_id": "RV.1.1",
+  "framework": "NIST SSDF v1.1",
+  "function": "RV",
+  "category": "Identify and Confirm Vulnerabilities on an Ongoing Basis (RV)",
+  "subcategory_id": "RV.1.1",
+  "subcategory_text": "Identify vulnerabilities continuously using automated scanning, advisories, threat-intelligence feeds, and bug-bounty or external-research inputs.",
+  "informative_references": [
+    "NIST SSDF v1.1: RV.1.1",
+    "NIST SP 800-53 Rev. 5: SI-2, SI-5, PM-15",
+    "NIST CSF 2.0: ID.RA-01, ID.RA-08"
+  ],
+  "implementation_examples": [
+    "Run scheduled SCA scans of all production dependencies",
+    "Subscribe to NVD, GHSA, vendor advisories, and OS package feeds",
+    "Operate a bug-bounty programme for customer-facing surfaces"
+  ],
+  "assessment_objectives": [
+    "Determine whether vulnerability identification is continuous and automated.",
+    "Determine whether external reports are tracked and acknowledged."
+  ],
+  "related_controls": [
+    "RV.1.2 (NIST SSDF v1.1 — same family)",
+    "RV.2.1 (NIST SSDF v1.1 — same family)",
+    "RV.2.2 (NIST SSDF v1.1 — same family)",
+    "RV.3.1 (NIST SSDF v1.1 — same family)",
+    "RV.3.2 (NIST SSDF v1.1 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218",
+  "source_version": "1.1 (2022-02-08)"
+}

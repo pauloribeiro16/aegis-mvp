@@ -1,0 +1,31 @@
+{
+  "control_id": "RV.3.1",
+  "framework": "NIST SSDF v1.1",
+  "function": "RV",
+  "category": "Analyze Root Causes of Vulnerabilities (RV)",
+  "subcategory_id": "RV.3.1",
+  "subcategory_text": "Analyse the root cause of each remediated vulnerability to identify systemic gaps (e.g., missing controls, training, tooling, or process) and inform improvements.",
+  "informative_references": [
+    "NIST SSDF v1.1: RV.3.1",
+    "NIST SP 800-53 Rev. 5: SI-2, PM-9",
+    "NIST CSF 2.0: RS.AN-08, ID.IM-04"
+  ],
+  "implementation_examples": [
+    "Perform root-cause analysis (5 Whys, fishbone) for critical vulnerabilities",
+    "Identify whether the root cause is process, training, tool, or design",
+    "Track root-cause findings as inputs to SSDF practice improvements"
+  ],
+  "assessment_objectives": [
+    "Determine whether root-cause analysis is performed on remediated vulnerabilities.",
+    "Determine whether systemic findings feed back into SSDF practice improvements."
+  ],
+  "related_controls": [
+    "RV.1.1 (NIST SSDF v1.1 — same family)",
+    "RV.1.2 (NIST SSDF v1.1 — same family)",
+    "RV.2.1 (NIST SSDF v1.1 — same family)",
+    "RV.2.2 (NIST SSDF v1.1 — same family)",
+    "RV.3.2 (NIST SSDF v1.1 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218",
+  "source_version": "1.1 (2022-02-08)"
+}

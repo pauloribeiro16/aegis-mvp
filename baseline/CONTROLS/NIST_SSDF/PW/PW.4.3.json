@@ -1,0 +1,41 @@
+{
+  "control_id": "PW.4.3",
+  "framework": "NIST SSDF v1.1",
+  "function": "PW",
+  "category": "Configure Compilation, Interpreter, and Build Processes to Improve Executable Security (PW)",
+  "subcategory_id": "PW.4.3",
+  "subcategory_text": "Pin toolchain and dependency versions in the build to ensure reproducibility and prevent supply-chain surprises.",
+  "informative_references": [
+    "NIST SSDF v1.1: PW.4.3",
+    "NIST SP 800-53 Rev. 5: SA-12, SA-15",
+    "NIST CSF 2.0: PR.PS-02, ID.SC-04 (legacy 1.1)"
+  ],
+  "implementation_examples": [
+    "Pin package versions via lockfiles (package-lock.json, poetry.lock, Pipfile.lock, go.sum)",
+    "Use pinned Docker base images with digest references",
+    "Verify integrity via checksums or signatures on dependency downloads"
+  ],
+  "assessment_objectives": [
+    "Determine whether dependencies are pinned with verified integrity.",
+    "Determine whether toolchain versions are pinned and reproducible."
+  ],
+  "related_controls": [
+    "PW.1.1 (NIST SSDF v1.1 — same family)",
+    "PW.1.2 (NIST SSDF v1.1 — same family)",
+    "PW.1.3 (NIST SSDF v1.1 — same family)",
+    "PW.2.1 (NIST SSDF v1.1 — same family)",
+    "PW.3.1 (NIST SSDF v1.1 — same family)",
+    "PW.3.2 (NIST SSDF v1.1 — same family)",
+    "PW.4.1 (NIST SSDF v1.1 — same family)",
+    "PW.4.2 (NIST SSDF v1.1 — same family)",
+    "PW.4.4 (NIST SSDF v1.1 — same family)",
+    "PW.5.1 (NIST SSDF v1.1 — same family)",
+    "PW.5.2 (NIST SSDF v1.1 — same family)",
+    "PW.6.1 (NIST SSDF v1.1 — same family)",
+    "PW.6.2 (NIST SSDF v1.1 — same family)",
+    "PW.7.1 (NIST SSDF v1.1 — same family)",
+    "PW.7.2 (NIST SSDF v1.1 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218",
+  "source_version": "1.1 (2022-02-08)"
+}

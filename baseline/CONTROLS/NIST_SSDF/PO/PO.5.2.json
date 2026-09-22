@@ -1,0 +1,40 @@
+{
+  "control_id": "PO.5.2",
+  "framework": "NIST SSDF v1.1",
+  "function": "PO",
+  "category": "Implement and Maintain Secure Environments for Software Development (PO)",
+  "subcategory_id": "PO.5.2",
+  "subcategory_text": "Monitor and audit the secure development environments for unauthorized access, misuse, or compromise, and respond to detected anomalies.",
+  "informative_references": [
+    "NIST SSDF v1.1: PO.5.2",
+    "NIST SP 800-53 Rev. 5: AC-2, AU-2, IR-4, SI-4",
+    "NIST CSF 2.0: DE.CM-01, RS.AN-03"
+  ],
+  "implementation_examples": [
+    "Centralise audit logs from build and source-control systems",
+    "Alert on anomalous access (e.g., off-hours, foreign IP) to development infrastructure",
+    "Run periodic red-team exercises against the build environment"
+  ],
+  "assessment_objectives": [
+    "Determine whether development environments are monitored and audited.",
+    "Determine whether detected anomalies are responded to per defined procedures."
+  ],
+  "related_controls": [
+    "PO.1.1 (NIST SSDF v1.1 — same family)",
+    "PO.1.2 (NIST SSDF v1.1 — same family)",
+    "PO.1.3 (NIST SSDF v1.1 — same family)",
+    "PO.1.4 (NIST SSDF v1.1 — same family)",
+    "PO.1.5 (NIST SSDF v1.1 — same family)",
+    "PO.2.1 (NIST SSDF v1.1 — same family)",
+    "PO.2.2 (NIST SSDF v1.1 — same family)",
+    "PO.2.3 (NIST SSDF v1.1 — same family)",
+    "PO.3.1 (NIST SSDF v1.1 — same family)",
+    "PO.3.2 (NIST SSDF v1.1 — same family)",
+    "PO.3.3 (NIST SSDF v1.1 — same family)",
+    "PO.4.1 (NIST SSDF v1.1 — same family)",
+    "PO.4.2 (NIST SSDF v1.1 — same family)",
+    "PO.5.1 (NIST SSDF v1.1 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218",
+  "source_version": "1.1 (2022-02-08)"
+}

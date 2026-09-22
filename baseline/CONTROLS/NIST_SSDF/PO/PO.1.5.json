@@ -1,0 +1,40 @@
+{
+  "control_id": "PO.1.5",
+  "framework": "NIST SSDF v1.1",
+  "function": "PO",
+  "category": "Define Security Requirements for Software Development (PO)",
+  "subcategory_id": "PO.1.5",
+  "subcategory_text": "Revise the security requirements as necessary to reflect changes in the software development environment, the threat landscape, or the organization's risk tolerance.",
+  "informative_references": [
+    "NIST SSDF v1.1: PO.1.5",
+    "NIST SP 800-53 Rev. 5: PM-16, CA-7",
+    "NIST CSF 2.0: ID.RA-01, GV.RM-01"
+  ],
+  "implementation_examples": [
+    "Review and update security requirements at least annually and after any material incident",
+    "Subscribe to authoritative vulnerability and threat feeds to inform requirement revisions",
+    "Track changes to applicable laws and regulations that may require requirement updates"
+  ],
+  "assessment_objectives": [
+    "Determine whether security requirements are reviewed on a defined cadence.",
+    "Determine whether requirement updates are triggered by changes in environment, threats, or risk tolerance."
+  ],
+  "related_controls": [
+    "PO.1.1 (NIST SSDF v1.1 — same family)",
+    "PO.1.2 (NIST SSDF v1.1 — same family)",
+    "PO.1.3 (NIST SSDF v1.1 — same family)",
+    "PO.1.4 (NIST SSDF v1.1 — same family)",
+    "PO.2.1 (NIST SSDF v1.1 — same family)",
+    "PO.2.2 (NIST SSDF v1.1 — same family)",
+    "PO.2.3 (NIST SSDF v1.1 — same family)",
+    "PO.3.1 (NIST SSDF v1.1 — same family)",
+    "PO.3.2 (NIST SSDF v1.1 — same family)",
+    "PO.3.3 (NIST SSDF v1.1 — same family)",
+    "PO.4.1 (NIST SSDF v1.1 — same family)",
+    "PO.4.2 (NIST SSDF v1.1 — same family)",
+    "PO.5.1 (NIST SSDF v1.1 — same family)",
+    "PO.5.2 (NIST SSDF v1.1 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218",
+  "source_version": "1.1 (2022-02-08)"
+}

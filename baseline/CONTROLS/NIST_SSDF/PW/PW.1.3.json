@@ -1,0 +1,41 @@
+{
+  "control_id": "PW.1.3",
+  "framework": "NIST SSDF v1.1",
+  "function": "PW",
+  "category": "Design Software to Meet Security Requirements and Mitigate Risks (PW)",
+  "subcategory_id": "PW.1.3",
+  "subcategory_text": "Identify and use secure design patterns, principles, and reference architectures to reduce the risk of design-level vulnerabilities.",
+  "informative_references": [
+    "NIST SSDF v1.1: PW.1.3",
+    "NIST SP 800-53 Rev. 5: SA-8, SA-15",
+    "NIST CSF 2.0: PR.PS-01, GV.PO-02"
+  ],
+  "implementation_examples": [
+    "Apply the principle of least privilege to all design components",
+    "Use vetted cryptographic libraries and established key-management patterns",
+    "Adopt defence-in-depth design with documented trust boundaries"
+  ],
+  "assessment_objectives": [
+    "Determine whether secure design principles and patterns are adopted.",
+    "Determine whether the design references vetted building blocks rather than bespoke cryptography or auth."
+  ],
+  "related_controls": [
+    "PW.1.1 (NIST SSDF v1.1 — same family)",
+    "PW.1.2 (NIST SSDF v1.1 — same family)",
+    "PW.2.1 (NIST SSDF v1.1 — same family)",
+    "PW.3.1 (NIST SSDF v1.1 — same family)",
+    "PW.3.2 (NIST SSDF v1.1 — same family)",
+    "PW.4.1 (NIST SSDF v1.1 — same family)",
+    "PW.4.2 (NIST SSDF v1.1 — same family)",
+    "PW.4.3 (NIST SSDF v1.1 — same family)",
+    "PW.4.4 (NIST SSDF v1.1 — same family)",
+    "PW.5.1 (NIST SSDF v1.1 — same family)",
+    "PW.5.2 (NIST SSDF v1.1 — same family)",
+    "PW.6.1 (NIST SSDF v1.1 — same family)",
+    "PW.6.2 (NIST SSDF v1.1 — same family)",
+    "PW.7.1 (NIST SSDF v1.1 — same family)",
+    "PW.7.2 (NIST SSDF v1.1 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218",
+  "source_version": "1.1 (2022-02-08)"
+}

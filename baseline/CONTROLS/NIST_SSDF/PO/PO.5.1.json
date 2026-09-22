@@ -1,0 +1,40 @@
+{
+  "control_id": "PO.5.1",
+  "framework": "NIST SSDF v1.1",
+  "function": "PO",
+  "category": "Implement and Maintain Secure Environments for Software Development (PO)",
+  "subcategory_id": "PO.5.1",
+  "subcategory_text": "Implement and maintain secure environments for developing software, including the build infrastructure, source-control systems, and testing environments, with appropriate access controls and segregation.",
+  "informative_references": [
+    "NIST SSDF v1.1: PO.5.1",
+    "NIST SP 800-53 Rev. 5: SA-15, CM-5, CM-7, SC-7",
+    "NIST CSF 2.0: PR.AA-01, PR.AA-05"
+  ],
+  "implementation_examples": [
+    "Isolate build runners from production networks",
+    "Use ephemeral, immutable build environments",
+    "Enforce MFA and least-privilege on source-control systems"
+  ],
+  "assessment_objectives": [
+    "Determine whether development environments implement access controls and segregation.",
+    "Determine whether environments are immutable or controlled for drift."
+  ],
+  "related_controls": [
+    "PO.1.1 (NIST SSDF v1.1 — same family)",
+    "PO.1.2 (NIST SSDF v1.1 — same family)",
+    "PO.1.3 (NIST SSDF v1.1 — same family)",
+    "PO.1.4 (NIST SSDF v1.1 — same family)",
+    "PO.1.5 (NIST SSDF v1.1 — same family)",
+    "PO.2.1 (NIST SSDF v1.1 — same family)",
+    "PO.2.2 (NIST SSDF v1.1 — same family)",
+    "PO.2.3 (NIST SSDF v1.1 — same family)",
+    "PO.3.1 (NIST SSDF v1.1 — same family)",
+    "PO.3.2 (NIST SSDF v1.1 — same family)",
+    "PO.3.3 (NIST SSDF v1.1 — same family)",
+    "PO.4.1 (NIST SSDF v1.1 — same family)",
+    "PO.4.2 (NIST SSDF v1.1 — same family)",
+    "PO.5.2 (NIST SSDF v1.1 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218",
+  "source_version": "1.1 (2022-02-08)"
+}

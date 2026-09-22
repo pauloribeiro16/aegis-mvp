@@ -1,0 +1,667 @@
+# NIST SSDF v1.1 (SP 800-218) — advisory referential spec
+# Source: NIST SP 800-218 (Feb 2022), https://doi.org/10.6028/NIST.SP.800-218
+# 49 practices organised in 4 families (PO, PS, PW, RV).
+
+framework: "NIST SSDF v1.1"
+framework_short: "NIST_SSDF"
+directory: "NIST_SSDF"
+version: "1.1 (2022-02-08)"
+source_url: "https://doi.org/10.6028/NIST.SP.800-218"
+fetched_date: "2026-09-22"
+
+families:
+  # ---- PO: Practices for Organizations ----
+  - function: "PO"
+    function_dir: "PO"
+    category_name: "Practices for the Organization"
+    practices:
+      - id: "PO.1.1"
+        category: "Define Security Requirements for Software Development"
+        text: "Identify and document all security requirements for the organization's software development processes and the software that the organization develops. These requirements include compliance with applicable laws and regulations, organizational security policies, and the organization's security plan."
+        informative_references:
+          - "NIST SSDF v1.1: PO.1.1"
+          - "NIST SP 800-53 Rev. 5: SA-15, PM-7"
+          - "NIST SP 800-64 Rev. 2: Phase 1 (Initiation)"
+          - "NIST CSF 2.0: GV.PO-01, GV.PO-02"
+        examples:
+          - "Define the security requirements for each software development project at the planning stage before any code is written"
+          - "Document the security requirements in a Software Requirements Specification (SRS) or equivalent artefact"
+          - "Trace each security requirement to one or more applicable laws, regulations, standards, and policy clauses"
+        objectives:
+          - "Determine whether security requirements for software development are identified and documented."
+          - "Determine whether security requirements include applicable laws, regulations, and policies."
+          - "Determine whether security requirements are reviewed and approved before software development begins."
+      - id: "PO.1.2"
+        category: "Define Security Requirements for Software Development"
+        text: "Protect the security requirements from unauthorized access, tampering, and deletion. The integrity and confidentiality of the requirements are critical to ensuring the software is built securely."
+        informative_references:
+          - "NIST SSDF v1.1: PO.1.2"
+          - "NIST SP 800-53 Rev. 5: SA-15, PM-9"
+          - "NIST CSF 2.0: PR.DS-01, GV.PO-02"
+        examples:
+          - "Store security requirements in version-controlled repositories with restricted access"
+          - "Apply cryptographic integrity checks (e.g., digital signatures) on requirements artefacts"
+          - "Audit access logs for security requirements files on a defined cadence"
+        objectives:
+          - "Determine whether security requirements are protected from unauthorized modification and disclosure."
+          - "Determine whether access to security requirements is logged and audited."
+      - id: "PO.1.3"
+        category: "Define Security Requirements for Software Development"
+        text: "Communicate the security requirements to all relevant parties, including but not limited to development teams, operations teams, and third-party suppliers."
+        informative_references:
+          - "NIST SSDF v1.1: PO.1.3"
+          - "NIST SP 800-53 Rev. 5: SA-9, PM-15"
+          - "NIST CSF 2.0: GV.OC-04, GV.SC-01"
+        examples:
+          - "Publish security requirements in a developer handbook accessible to all engineers"
+          - "Communicate security requirements via onboarding training for new developers and contractors"
+          - "Send explicit security-requirement briefings to third-party developers and suppliers"
+        objectives:
+          - "Determine whether security requirements are disseminated to all relevant internal and external stakeholders."
+          - "Determine whether acknowledgement of security requirements is recorded for each stakeholder."
+      - id: "PO.1.4"
+        category: "Define Security Requirements for Software Development"
+        text: "Provide training and resources so that everyone involved in the software development process can understand and fulfil the security requirements."
+        informative_references:
+          - "NIST SSDF v1.1: PO.1.4"
+          - "NIST SP 800-53 Rev. 5: AT-2, AT-3, SA-11"
+          - "NIST CSF 2.0: PR.AT-01, PR.AT-02"
+        examples:
+          - "Provide role-specific training on secure development (e.g., OWASP Top 10, language-specific secure coding)"
+          - "Maintain an internal wiki of secure-coding guidance tied to the security requirements"
+          - "Schedule refresher training annually and after any material change to requirements"
+        objectives:
+          - "Determine whether training is provided to all parties involved in software development."
+          - "Determine whether training records demonstrate role-appropriate secure-development competence."
+      - id: "PO.1.5"
+        category: "Define Security Requirements for Software Development"
+        text: "Revise the security requirements as necessary to reflect changes in the software development environment, the threat landscape, or the organization's risk tolerance."
+        informative_references:
+          - "NIST SSDF v1.1: PO.1.5"
+          - "NIST SP 800-53 Rev. 5: PM-16, CA-7"
+          - "NIST CSF 2.0: ID.RA-01, GV.RM-01"
+        examples:
+          - "Review and update security requirements at least annually and after any material incident"
+          - "Subscribe to authoritative vulnerability and threat feeds to inform requirement revisions"
+          - "Track changes to applicable laws and regulations that may require requirement updates"
+        objectives:
+          - "Determine whether security requirements are reviewed on a defined cadence."
+          - "Determine whether requirement updates are triggered by changes in environment, threats, or risk tolerance."
+
+      - id: "PO.2.1"
+        category: "Define Roles and Responsibilities"
+        text: "Define roles and responsibilities for each member of the software development team, including but not limited to development, security, operations, and quality assurance."
+        informative_references:
+          - "NIST SSDF v1.1: PO.2.1"
+          - "NIST SP 800-53 Rev. 5: PM-2, PS-2, SA-3"
+          - "NIST CSF 2.0: GV.RR-01, GV.RR-02"
+        examples:
+          - "Maintain a RACI matrix per project identifying who is responsible, accountable, consulted, and informed for security activities"
+          - "Embed security champions within each development team"
+          - "Document responsibilities in role descriptions and onboarding packs"
+        objectives:
+          - "Determine whether roles and responsibilities for software security are defined for all team members."
+          - "Determine whether security roles are embedded within development teams."
+      - id: "PO.2.2"
+        category: "Define Roles and Responsibilities"
+        text: "Provide training so that each member of the software development team has the skills and knowledge needed to fulfil their responsibilities."
+        informative_references:
+          - "NIST SSDF v1.1: PO.2.2"
+          - "NIST SP 800-53 Rev. 5: AT-2, AT-3, SA-16"
+          - "NIST CSF 2.0: PR.AT-01, GV.RR-04"
+        examples:
+          - "Provide hands-on training mapped to each security role"
+          - "Maintain role-based learning paths and certification records"
+          - "Offer mentoring and pairing for newly assigned security responsibilities"
+        objectives:
+          - "Determine whether role-specific training is provided to each software development team member."
+          - "Determine whether training effectiveness is evaluated."
+      - id: "PO.2.3"
+        category: "Define Roles and Responsibilities"
+        text: "Hold the people responsible for security accountable for fulfilling their responsibilities."
+        informative_references:
+          - "NIST SSDF v1.1: PO.2.3"
+          - "NIST SP 800-53 Rev. 5: PM-3, PS-4, CA-1"
+          - "NIST CSF 2.0: GV.RR-03"
+        examples:
+          - "Include security objectives in performance reviews for responsible roles"
+          - "Tie security metrics into team-level scorecards"
+          - "Perform periodic audits of role-responsibility fulfilment"
+        objectives:
+          - "Determine whether responsible individuals are held accountable for security outcomes."
+          - "Determine whether accountability is enforced via documented processes."
+
+      - id: "PO.3.1"
+        category: "Implement Supporting Toolchains"
+        text: "Identify and integrate toolchains that automate security testing, code analysis, build, and deployment to reduce the risk of human error and increase the efficiency of security activities."
+        informative_references:
+          - "NIST SSDF v1.1: PO.3.1"
+          - "NIST SP 800-53 Rev. 5: SA-15, SA-11, CM-7"
+          - "NIST CSF 2.0: PR.PS-01, ID.AM-08"
+        examples:
+          - "Integrate SAST, DAST, SCA, secret scanning, and IaC scanning tools into CI/CD"
+          - "Pin tool versions and verify integrity of tools in the toolchain"
+          - "Maintain a toolchain inventory with supported versions and update cadence"
+        objectives:
+          - "Determine whether toolchains automate security testing and analysis."
+          - "Determine whether toolchain components are inventoried and their integrity verified."
+      - id: "PO.3.2"
+        category: "Implement Supporting Toolchains"
+        text: "Configure toolchains to produce consistent, reproducible artefacts and to make the security status of the software visible throughout the development lifecycle."
+        informative_references:
+          - "NIST SSDF v1.1: PO.3.2"
+          - "NIST SP 800-53 Rev. 5: SA-15, CM-3, CM-5"
+          - "NIST CSF 2.0: PR.IP-01 (legacy 1.1), PR.PS-01"
+        examples:
+          - "Emit SBOM and provenance attestations for every build"
+          - "Expose security-test results in a developer-facing dashboard"
+          - "Reproduce builds from source with declared dependencies"
+        objectives:
+          - "Determine whether the toolchain produces reproducible artefacts."
+          - "Determine whether security status is visible to developers throughout the lifecycle."
+      - id: "PO.3.3"
+        category: "Implement Supporting Toolchains"
+        text: "Maintain the toolchains to keep them up to date with the latest security patches and updates."
+        informative_references:
+          - "NIST SSDF v1.1: PO.3.3"
+          - "NIST SP 800-53 Rev. 5: SI-2, MA-2"
+          - "NIST CSF 2.0: ID.RA-01, PR.PS-02"
+        examples:
+          - "Subscribe to vendor security advisories for all toolchain components"
+          - "Apply toolchain updates within a defined SLA after advisory publication"
+          - "Track toolchain update status in a patch-management register"
+        objectives:
+          - "Determine whether toolchains are patched within defined SLAs."
+          - "Determine whether patch status is tracked and reported."
+
+      - id: "PO.4.1"
+        category: "Define and Use Criteria for Software Security Checks"
+        text: "Define criteria for evaluating the security of software components and the security of the software as a whole. The criteria should be consistent with the organization's security requirements and risk tolerance."
+        informative_references:
+          - "NIST SSDF v1.1: PO.4.1"
+          - "NIST SP 800-53 Rev. 5: SA-15, SA-11, PM-30"
+          - "NIST CSF 2.0: GV.PO-01, GV.PO-02"
+        examples:
+          - "Define pass/fail thresholds for SAST, DAST, and SCA tools (severity, CVSS, EPSS)"
+          - "Define acceptance criteria for code-review completion"
+          - "Define release-blocking criteria (e.g., no critical findings open)"
+        objectives:
+          - "Determine whether explicit pass/fail criteria are defined for security checks."
+          - "Determine whether criteria are aligned with security requirements and risk tolerance."
+      - id: "PO.4.2"
+        category: "Define and Use Criteria for Software Security Checks"
+        text: "Apply the defined criteria to evaluate the security of software throughout the development lifecycle, including during design, implementation, testing, and deployment."
+        informative_references:
+          - "NIST SSDF v1.1: PO.4.2"
+          - "NIST SP 800-53 Rev. 5: SA-15, CA-7"
+          - "NIST CSF 2.0: GV.PO-02, ID.RA-01"
+        examples:
+          - "Run security gates at each lifecycle phase (design review, code review, build, release)"
+          - "Record pass/fail outcomes with evidence retained for audit"
+          - "Block release when criteria are not met"
+        objectives:
+          - "Determine whether security checks are applied at every lifecycle phase."
+          - "Determine whether failing results gate progression to the next phase."
+
+      - id: "PO.5.1"
+        category: "Implement and Maintain Secure Environments for Software Development"
+        text: "Implement and maintain secure environments for developing software, including the build infrastructure, source-control systems, and testing environments, with appropriate access controls and segregation."
+        informative_references:
+          - "NIST SSDF v1.1: PO.5.1"
+          - "NIST SP 800-53 Rev. 5: SA-15, CM-5, CM-7, SC-7"
+          - "NIST CSF 2.0: PR.AA-01, PR.AA-05"
+        examples:
+          - "Isolate build runners from production networks"
+          - "Use ephemeral, immutable build environments"
+          - "Enforce MFA and least-privilege on source-control systems"
+        objectives:
+          - "Determine whether development environments implement access controls and segregation."
+          - "Determine whether environments are immutable or controlled for drift."
+      - id: "PO.5.2"
+        category: "Implement and Maintain Secure Environments for Software Development"
+        text: "Monitor and audit the secure development environments for unauthorized access, misuse, or compromise, and respond to detected anomalies."
+        informative_references:
+          - "NIST SSDF v1.1: PO.5.2"
+          - "NIST SP 800-53 Rev. 5: AC-2, AU-2, IR-4, SI-4"
+          - "NIST CSF 2.0: DE.CM-01, RS.AN-03"
+        examples:
+          - "Centralise audit logs from build and source-control systems"
+          - "Alert on anomalous access (e.g., off-hours, foreign IP) to development infrastructure"
+          - "Run periodic red-team exercises against the build environment"
+        objectives:
+          - "Determine whether development environments are monitored and audited."
+          - "Determine whether detected anomalies are responded to per defined procedures."
+
+  # ---- PS: Protect Software ----
+  - function: "PS"
+    function_dir: "PS"
+    category_name: "Protect Software"
+    practices:
+      - id: "PS.1.1"
+        category: "Protect All Forms of Code from Unauthorized Access and Tampering"
+        text: "Store all forms of code (source, build scripts, configuration, infrastructure-as-code) in a version-control system with appropriate access controls. Restrict who can read, modify, or push code based on the principle of least privilege."
+        informative_references:
+          - "NIST SSDF v1.1: PS.1.1"
+          - "NIST SP 800-53 Rev. 5: AC-3, AC-6, CM-5, SC-28"
+          - "NIST CSF 2.0: PR.AA-01, PR.DS-01"
+        examples:
+          - "Use protected branches and pull-request reviews for all production-bound code"
+          - "Apply branch protection rules that require reviews and signed commits"
+          - "Audit code-access permissions quarterly"
+        objectives:
+          - "Determine whether code is stored in version-controlled repositories."
+          - "Determine whether code access follows the principle of least privilege."
+      - id: "PS.1.2"
+        category: "Protect All Forms of Code from Unauthorized Access and Tampering"
+        text: "Provide a mechanism to verify the integrity of code (e.g., cryptographic hashes, digital signatures) and reject code whose integrity cannot be verified."
+        informative_references:
+          - "NIST SSDF v1.1: PS.1.2"
+          - "NIST SP 800-53 Rev. 5: SI-7, SC-13"
+          - "NIST CSF 2.0: PR.DS-02, PR.PS-01"
+        examples:
+          - "Sign release artefacts with a hardened signing key"
+          - "Verify the signature on every artefact before deployment"
+          - "Reject unsigned or unverified artefacts in deployment pipelines"
+        objectives:
+          - "Determine whether code artefacts are integrity-protected (signature or hash)."
+          - "Determine whether unverified code is rejected by the deployment pipeline."
+      - id: "PS.1.3"
+        category: "Protect All Forms of Code from Unauthorized Access and Tampering"
+        text: "Restrict access to code modification and submission tools (e.g., source-control UIs, command-line tools) to authorised users and log all access."
+        informative_references:
+          - "NIST SSDF v1.1: PS.1.3"
+          - "NIST SP 800-53 Rev. 5: AC-2, AU-2, AU-3"
+          - "NIST CSF 2.0: PR.AA-05, DE.CM-01"
+        examples:
+          - "Restrict the use of git-push and merge operations to authorised roles"
+          - "Log and alert on push events from outside approved locations"
+          - "Use signed commits from approved developer keys"
+        objectives:
+          - "Determine whether code-submission tools are access-controlled."
+          - "Determine whether access events are logged and audited."
+
+      - id: "PS.2.1"
+        category: "Provide a Mechanism for Verifying Software Release Integrity"
+        text: "Make a mechanism available for users and operators to verify the integrity of the released software (e.g., published hashes, signed manifests, attestation)."
+        informative_references:
+          - "NIST SSDF v1.1: PS.2.1"
+          - "NIST SP 800-53 Rev. 5: SI-7, SC-13"
+          - "NIST CSF 2.0: PR.PS-01, PR.DS-02"
+        examples:
+          - "Publish signed checksums and SLSA-style provenance for every release"
+          - "Provide a verification command in the install instructions"
+          - "Host the verification artefacts on a separate channel from the release artefacts"
+        objectives:
+          - "Determine whether a release-integrity verification mechanism is made available to consumers."
+          - "Determine whether consumers can validate the integrity before installation."
+      - id: "PS.2.2"
+        category: "Provide a Mechanism for Verifying Software Release Integrity"
+        text: "Document the verification mechanism and how to use it, so that consumers and operators can correctly verify release integrity."
+        informative_references:
+          - "NIST SSDF v1.1: PS.2.2"
+          - "NIST SP 800-53 Rev. 5: SA-5, PM-15"
+          - "NIST CSF 2.0: GV.PO-02, GV.SC-01"
+        examples:
+          - "Publish verification instructions alongside the release notes"
+          - "Include sample verification commands in the project README"
+          - "Provide troubleshooting guidance for common verification failures"
+        objectives:
+          - "Determine whether verification instructions are documented and published."
+          - "Determine whether instructions are kept up to date with the latest release format."
+
+      - id: "PS.3.1"
+        category: "Archive and Protect Each Software Release"
+        text: "Archive each released software version with its complete toolchain, configuration, and source so that the artefact can be reproduced or analysed later (e.g., for vulnerability remediation or audit)."
+        informative_references:
+          - "NIST SSDF v1.1: PS.3.1"
+          - "NIST SP 800-53 Rev. 5: AU-10, CM-4, SA-15"
+          - "NIST CSF 2.0: PR.PS-01, PR.IP-04 (legacy 1.1)"
+        examples:
+          - "Maintain versioned archives of every released artefact for at least the supported-lifetime of the release"
+          - "Include the build manifest and toolchain versions in the archive"
+          - "Protect archives with restricted access and integrity verification"
+        objectives:
+          - "Determine whether each release is archived with sufficient provenance to enable reproduction."
+          - "Determine whether archives are protected from unauthorised modification."
+      - id: "PS.3.2"
+        category: "Archive and Protect Each Software Release"
+        text: "Collect, protect, and retain evidence (e.g., test results, code-review records, audit logs) that demonstrate the software release meets the organisation's security requirements."
+        informative_references:
+          - "NIST SSDF v1.1: PS.3.2"
+          - "NIST SP 800-53 Rev. 5: AU-2, AU-10, CA-2"
+          - "NIST CSF 2.0: GV.PO-02, ID.AM-08"
+        examples:
+          - "Store release-attestation evidence with the release archive"
+          - "Retain evidence for at least the supported-lifetime of the release plus a defined buffer"
+          - "Apply integrity protection to release-attestation evidence"
+        objectives:
+          - "Determine whether release-attestation evidence is collected and retained."
+          - "Determine whether evidence is protected from tampering."
+
+  # ---- PW: Produce Well-Secured Software ----
+  - function: "PW"
+    function_dir: "PW"
+    category_name: "Produce Well-Secured Software"
+    practices:
+      - id: "PW.1.1"
+        category: "Design Software to Meet Security Requirements and Mitigate Risks"
+        text: "Use structured threat modelling, misuse cases, or risk analyses during design to identify and prioritise security risks and to inform the design of mitigations."
+        informative_references:
+          - "NIST SSDF v1.1: PW.1.1"
+          - "NIST SP 800-53 Rev. 5: SA-11, SA-15, RA-3"
+          - "NIST CSF 2.0: ID.RA-04, ID.RA-05"
+        examples:
+          - "Conduct STRIDE-style threat modelling for each new feature or major change"
+          - "Document attack-surface decisions and accepted risks"
+          - "Re-run threat models after material design changes"
+        objectives:
+          - "Determine whether threat modelling is performed during design."
+          - "Determine whether identified risks are prioritised and mitigated in the design."
+      - id: "PW.1.2"
+        category: "Design Software to Meet Security Requirements and Mitigate Risks"
+        text: "Document and track security-relevant design decisions and their rationale so that the security posture of the software is traceable."
+        informative_references:
+          - "NIST SSDF v1.1: PW.1.2"
+          - "NIST SP 800-53 Rev. 5: SA-15, SA-17"
+          - "NIST CSF 2.0: GV.PO-02, ID.RA-01"
+        examples:
+          - "Maintain an Architecture Decision Record (ADR) log with security implications"
+          - "Link design decisions to identified threats and mitigations"
+          - "Review design decisions at design-review checkpoints"
+        objectives:
+          - "Determine whether security-relevant design decisions are documented with rationale."
+          - "Determine whether decisions are tracked over the project lifetime."
+      - id: "PW.1.3"
+        category: "Design Software to Meet Security Requirements and Mitigate Risks"
+        text: "Identify and use secure design patterns, principles, and reference architectures to reduce the risk of design-level vulnerabilities."
+        informative_references:
+          - "NIST SSDF v1.1: PW.1.3"
+          - "NIST SP 800-53 Rev. 5: SA-8, SA-15"
+          - "NIST CSF 2.0: PR.PS-01, GV.PO-02"
+        examples:
+          - "Apply the principle of least privilege to all design components"
+          - "Use vetted cryptographic libraries and established key-management patterns"
+          - "Adopt defence-in-depth design with documented trust boundaries"
+        objectives:
+          - "Determine whether secure design principles and patterns are adopted."
+          - "Determine whether the design references vetted building blocks rather than bespoke cryptography or auth."
+
+      - id: "PW.2.1"
+        category: "Review the Human-readable Code"
+        text: "Have one or more qualified reviewers (other than the author) review the human-readable code (source, configuration, IaC, build scripts) for security defects, adherence to coding standards, and clarity."
+        informative_references:
+          - "NIST SSDF v1.1: PW.2.1"
+          - "NIST SP 800-53 Rev. 5: SA-11, SA-12"
+          - "NIST CSF 2.0: PR.PS-01, GV.OV-01"
+        examples:
+          - "Enforce peer review on every pull request that touches production code"
+          - "Provide reviewers with a security-focused review checklist"
+          - "Track review SLAs and report missed reviews"
+        objectives:
+          - "Determine whether code reviews are mandatory and performed by a qualified reviewer."
+          - "Determine whether review records are retained."
+
+      - id: "PW.3.1"
+        category: "Test Executable Code"
+        text: "Run automated security tests (SAST, DAST, SCA, secret scanning, IaC scanning, container scanning) as part of the test suite for the executable code, and triage the findings."
+        informative_references:
+          - "NIST SSDF v1.1: PW.3.1"
+          - "NIST SP 800-53 Rev. 5: SA-11, CA-7, SI-2"
+          - "NIST CSF 2.0: PR.PS-01, ID.RA-01"
+        examples:
+          - "Run SAST on every commit and full repository scan nightly"
+          - "Run DAST against staging environments"
+          - "Triage findings based on severity and exploitability (CVSS, EPSS)"
+        objectives:
+          - "Determine whether automated security tests are executed against the build."
+          - "Determine whether findings are triaged and remediated in defined SLAs."
+      - id: "PW.3.2"
+        category: "Test Executable Code"
+        text: "Run fuzz, dynamic, or penetration tests against the executable code to identify vulnerabilities that may not be detected by static analysis alone."
+        informative_references:
+          - "NIST SSDF v1.1: PW.3.2"
+          - "NIST SP 800-53 Rev. 5: SA-11, CA-8"
+          - "NIST CSF 2.0: ID.RA-01, PR.PS-01"
+        examples:
+          - "Fuzz parsers and external input handlers"
+          - "Run penetration tests at major release milestones"
+          - "Schedule annual third-party penetration tests for production systems"
+        objectives:
+          - "Determine whether dynamic testing (fuzz, DAST, pen test) is performed."
+          - "Determine whether dynamic-test findings feed into remediation."
+
+      - id: "PW.4.1"
+        category: "Configure Compilation, Interpreter, and Build Processes to Improve Executable Security"
+        text: "Configure the build to enable compiler and interpreter security features (e.g., ASLR, stack canaries, control-flow integrity, RELRO) appropriate to the platform."
+        informative_references:
+          - "NIST SSDF v1.1: PW.4.1"
+          - "NIST SP 800-53 Rev. 5: SI-7, SA-15"
+          - "NIST CSF 2.0: PR.PS-01, PR.PS-06"
+        examples:
+          - "Compile with hardened flags (e.g., -fstack-protector-strong, -D_FORTIFY_SOURCE=2)"
+          - "Enable DEP/NX, ASLR, and CET where supported"
+          - "Use safe interpreters with sandbox options enabled by default"
+        objectives:
+          - "Determine whether the build enables platform hardening features."
+          - "Determine whether hardening settings are tracked and verified."
+      - id: "PW.4.2"
+        category: "Configure Compilation, Interpreter, and Build Processes to Improve Executable Security"
+        text: "Use compiler and interpreter options that produce useful warnings and treat warnings as errors where appropriate to surface potential security issues early."
+        informative_references:
+          - "NIST SSDF v1.1: PW.4.2"
+          - "NIST SP 800-53 Rev. 5: SA-15, SI-2"
+          - "NIST CSF 2.0: PR.PS-01"
+        examples:
+          - "Build with -Wall -Wextra -Werror for GCC/Clang"
+          - "Treat Pyflakes, Ruff, or ESLint warnings as build failures in CI"
+          - "Fail the build when security-relevant warnings are emitted"
+        objectives:
+          - "Determine whether strict warning settings are enabled in the build."
+          - "Determine whether security-relevant warnings fail the build."
+      - id: "PW.4.3"
+        category: "Configure Compilation, Interpreter, and Build Processes to Improve Executable Security"
+        text: "Pin toolchain and dependency versions in the build to ensure reproducibility and prevent supply-chain surprises."
+        informative_references:
+          - "NIST SSDF v1.1: PW.4.3"
+          - "NIST SP 800-53 Rev. 5: SA-12, SA-15"
+          - "NIST CSF 2.0: PR.PS-02, ID.SC-04 (legacy 1.1)"
+        examples:
+          - "Pin package versions via lockfiles (package-lock.json, poetry.lock, Pipfile.lock, go.sum)"
+          - "Use pinned Docker base images with digest references"
+          - "Verify integrity via checksums or signatures on dependency downloads"
+        objectives:
+          - "Determine whether dependencies are pinned with verified integrity."
+          - "Determine whether toolchain versions are pinned and reproducible."
+      - id: "PW.4.4"
+        category: "Configure Compilation, Interpreter, and Build Processes to Improve Executable Security"
+        text: "Use tools that detect common security flaws in the build chain itself (e.g., typo-squatting, dependency confusion, malicious post-install scripts)."
+        informative_references:
+          - "NIST SSDF v1.1: PW.4.4"
+          - "NIST SP 800-53 Rev. 5: SI-3, SI-8"
+          - "NIST CSF 2.0: PR.PS-02, ID.SC-04 (legacy 1.1)"
+        examples:
+          - "Run SCA tools that compare installed dependencies against declared manifests"
+          - "Use package provenance attestations where supported"
+          - "Alert on newly added dependencies that do not match the project's allowlist"
+        objectives:
+          - "Determine whether the build detects supply-chain anomalies."
+          - "Determine whether alerts are routed to the appropriate response procedure."
+
+      - id: "PW.5.1"
+        category: "Review and Analyze Human-readable Code"
+        text: "Use static analysis tools to identify security defects, dangerous constructs, and coding-standard violations in human-readable code."
+        informative_references:
+          - "NIST SSDF v1.1: PW.5.1"
+          - "NIST SP 800-53 Rev. 5: SA-11, SI-2"
+          - "NIST CSF 2.0: PR.PS-01, ID.RA-01"
+        examples:
+          - "Run SAST (e.g., Semgrep, CodeQL, SonarQube) on every commit"
+          - "Configure rulesets aligned with OWASP Top 10 and CWE Top 25"
+          - "Treat high-severity findings as release-blocking"
+        objectives:
+          - "Determine whether static analysis is run on human-readable code."
+          - "Determine whether static-analysis findings are addressed before release."
+      - id: "PW.5.2"
+        category: "Review and Analyze Human-readable Code"
+        text: "Manually review code that static analysis cannot effectively evaluate (e.g., authentication logic, access-control checks, cryptographic usage, complex business rules)."
+        informative_references:
+          - "NIST SSDF v1.1: PW.5.2"
+          - "NIST SP 800-53 Rev. 5: SA-11, SA-15"
+          - "NIST CSF 2.0: PR.PS-01"
+        examples:
+          - "Define a list of high-risk code areas that require manual review"
+          - "Assign security-knowledgeable reviewers for these areas"
+          - "Document the manual review outcome in the change record"
+        objectives:
+          - "Determine whether manual review is performed on high-risk code areas."
+          - "Determine whether manual review outcomes are documented."
+
+      - id: "PW.6.1"
+        category: "Configure Compilation, Interpreter, and Build Processes to Improve Executable Security"
+        text: "Apply security-relevant compiler and interpreter flags, language modes, and runtime options that reduce the attack surface of the executable."
+        informative_references:
+          - "NIST SSDF v1.1: PW.6.1"
+          - "NIST SP 800-53 Rev. 5: SI-7, SA-15"
+          - "NIST CSF 2.0: PR.PS-01"
+        examples:
+          - "Compile with -O2 or higher to enable most hardening checks"
+          - "Enable PIE, full RELRO, BIND_NOW on Linux ELF builds"
+          - "Use signed modules and script execution policies where supported"
+        objectives:
+          - "Determine whether security-relevant compile/runtime options are applied consistently."
+          - "Determine whether option changes are tracked in build manifests."
+      - id: "PW.6.2"
+        category: "Configure Compilation, Interpreter, and Build Processes to Improve Executable Security"
+        text: "Use namespacing, sandboxing, and isolation mechanisms provided by the platform to limit the impact of a compromised component."
+        informative_references:
+          - "NIST SSDF v1.1: PW.6.2"
+          - "NIST SP 800-53 Rev. 5: SC-7, SC-39, SI-3"
+          - "NIST CSF 2.0: PR.PS-06, PR.IR-01"
+        examples:
+          - "Use seccomp, AppArmor, or SELinux profiles in production"
+          - "Run untrusted parsers in a sandbox (e.g., gVisor, Firecracker, Wasm)"
+          - "Isolate tenants in multi-tenant systems"
+        objectives:
+          - "Determine whether sandboxing or isolation is used to limit blast radius."
+          - "Determine whether the isolation configuration is reviewed for drift."
+
+      - id: "PW.7.1"
+        category: "Review and Analyze the Errors and Warnings Produced by Compilation, Interpreter, and Build Processes"
+        text: "Review and analyse all warnings emitted during the build to identify potential security issues and remove their root causes."
+        informative_references:
+          - "NIST SSDF v1.1: PW.7.1"
+          - "NIST SP 800-53 Rev. 5: SA-15, SI-2"
+          - "NIST CSF 2.0: PR.PS-01"
+        examples:
+          - "Treat compiler warnings as actionable backlog items"
+          - "Track time-to-resolution of security-relevant warnings"
+          - "Suppress warnings only with justification captured in the source"
+        objectives:
+          - "Determine whether all build warnings are reviewed."
+          - "Determine whether the underlying issues are remediated, not suppressed."
+      - id: "PW.7.2"
+        category: "Review and Analyze the Errors and Warnings Produced by Compilation, Interpreter, and Build Processes"
+        text: "Use linters and formatters to enforce consistent code style that aids review and reduces defect-prone constructs."
+        informative_references:
+          - "NIST SSDF v1.1: PW.7.2"
+          - "NIST SP 800-53 Rev. 5: SA-15, SI-2"
+          - "NIST CSF 2.0: PR.PS-01"
+        examples:
+          - "Use Black/Ruff for Python, Prettier for JS/TS, gofmt for Go"
+          - "Enforce lint-clean pre-commit hooks"
+          - "Run formatters in CI to keep style consistent across contributors"
+        objectives:
+          - "Determine whether linters and formatters are configured and run in CI."
+          - "Determine whether style drift is detected and remediated."
+
+  # ---- RV: Respond to Vulnerabilities ----
+  - function: "RV"
+    function_dir: "RV"
+    category_name: "Respond to Vulnerabilities"
+    practices:
+      - id: "RV.1.1"
+        category: "Identify and Confirm Vulnerabilities on an Ongoing Basis"
+        text: "Identify vulnerabilities continuously using automated scanning, advisories, threat-intelligence feeds, and bug-bounty or external-research inputs."
+        informative_references:
+          - "NIST SSDF v1.1: RV.1.1"
+          - "NIST SP 800-53 Rev. 5: SI-2, SI-5, PM-15"
+          - "NIST CSF 2.0: ID.RA-01, ID.RA-08"
+        examples:
+          - "Run scheduled SCA scans of all production dependencies"
+          - "Subscribe to NVD, GHSA, vendor advisories, and OS package feeds"
+          - "Operate a bug-bounty programme for customer-facing surfaces"
+        objectives:
+          - "Determine whether vulnerability identification is continuous and automated."
+          - "Determine whether external reports are tracked and acknowledged."
+      - id: "RV.1.2"
+        category: "Identify and Confirm Vulnerabilities on an Ongoing Basis"
+        text: "Confirm the applicability and impact of each reported vulnerability to the organisation's software, and triage by severity, exploitability, and exposure."
+        informative_references:
+          - "NIST SSDF v1.1: RV.1.2"
+          - "NIST SP 800-53 Rev. 5: SI-2, RA-3"
+          - "NIST CSF 2.0: ID.RA-04, ID.RA-05"
+        examples:
+          - "Triage vulnerabilities using CVSS, EPSS, and contextual exposure scoring"
+          - "Reproduce the vulnerability in a test environment before remediation"
+          - "Document triage decisions in the vulnerability-management system"
+        objectives:
+          - "Determine whether vulnerabilities are confirmed and triaged."
+          - "Determine whether triage considers severity and actual exposure."
+
+      - id: "RV.2.1"
+        category: "Assess, Prioritize, and Remediate Vulnerabilities"
+        text: "Assess the risk of each vulnerability in the context of the deployed software and prioritise remediation accordingly. Apply SLAs based on severity (e.g., critical within 24h, high within 7 days, medium within 30 days)."
+        informative_references:
+          - "NIST SSDF v1.1: RV.2.1"
+          - "NIST SP 800-53 Rev. 5: SI-2, RA-3"
+          - "NIST CSF 2.0: ID.RA-04, RS.MI-01"
+        examples:
+          - "Define and publish severity-to-SLA mapping"
+          - "Apply mitigations (workarounds) when immediate patching is infeasible"
+          - "Track remediation progress against SLAs"
+        objectives:
+          - "Determine whether vulnerabilities are prioritised using risk-based SLAs."
+          - "Determine whether mitigations are applied when patches are deferred."
+      - id: "RV.2.2"
+        category: "Assess, Prioritize, and Remediate Vulnerabilities"
+        text: "Remediate each confirmed vulnerability by patching, replacing, or removing the vulnerable component, and verify the remediation effectiveness."
+        informative_references:
+          - "NIST SSDF v1.1: RV.2.2"
+          - "NIST SP 800-53 Rev. 5: SI-2, SI-10"
+          - "NIST CSF 2.0: RS.MI-02, PR.PS-02"
+        examples:
+          - "Patch vulnerable dependencies via automated PR"
+          - "Replace insecure functions with safe equivalents"
+          - "Re-run scans to verify the vulnerability is gone"
+        objectives:
+          - "Determine whether vulnerabilities are remediated."
+          - "Determine whether remediation effectiveness is verified."
+
+      - id: "RV.3.1"
+        category: "Analyze Root Causes of Vulnerabilities"
+        text: "Analyse the root cause of each remediated vulnerability to identify systemic gaps (e.g., missing controls, training, tooling, or process) and inform improvements."
+        informative_references:
+          - "NIST SSDF v1.1: RV.3.1"
+          - "NIST SP 800-53 Rev. 5: SI-2, PM-9"
+          - "NIST CSF 2.0: RS.AN-08, ID.IM-04"
+        examples:
+          - "Perform root-cause analysis (5 Whys, fishbone) for critical vulnerabilities"
+          - "Identify whether the root cause is process, training, tool, or design"
+          - "Track root-cause findings as inputs to SSDF practice improvements"
+        objectives:
+          - "Determine whether root-cause analysis is performed on remediated vulnerabilities."
+          - "Determine whether systemic findings feed back into SSDF practice improvements."
+      - id: "RV.3.2"
+        category: "Analyze Root Causes of Vulnerabilities"
+        text: "Implement improvements to the SDLC that target the systemic root causes of identified vulnerabilities and measure their effectiveness over time."
+        informative_references:
+          - "NIST SSDF v1.1: RV.3.2"
+          - "NIST SP 800-53 Rev. 5: PM-9, CA-7"
+          - "NIST CSF 2.0: GV.RM-01, ID.IM-04"
+        examples:
+          - "Add a new SAST rule triggered by a recurring vulnerability pattern"
+          - "Update secure-coding training based on root-cause findings"
+          - "Track vulnerability-recurrence metrics after improvements are deployed"
+        objectives:
+          - "Determine whether systemic improvements are implemented after root-cause analysis."
+          - "Determine whether improvement effectiveness is measured."

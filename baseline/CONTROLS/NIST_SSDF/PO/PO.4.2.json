@@ -1,0 +1,40 @@
+{
+  "control_id": "PO.4.2",
+  "framework": "NIST SSDF v1.1",
+  "function": "PO",
+  "category": "Define and Use Criteria for Software Security Checks (PO)",
+  "subcategory_id": "PO.4.2",
+  "subcategory_text": "Apply the defined criteria to evaluate the security of software throughout the development lifecycle, including during design, implementation, testing, and deployment.",
+  "informative_references": [
+    "NIST SSDF v1.1: PO.4.2",
+    "NIST SP 800-53 Rev. 5: SA-15, CA-7",
+    "NIST CSF 2.0: GV.PO-02, ID.RA-01"
+  ],
+  "implementation_examples": [
+    "Run security gates at each lifecycle phase (design review, code review, build, release)",
+    "Record pass/fail outcomes with evidence retained for audit",
+    "Block release when criteria are not met"
+  ],
+  "assessment_objectives": [
+    "Determine whether security checks are applied at every lifecycle phase.",
+    "Determine whether failing results gate progression to the next phase."
+  ],
+  "related_controls": [
+    "PO.1.1 (NIST SSDF v1.1 — same family)",
+    "PO.1.2 (NIST SSDF v1.1 — same family)",
+    "PO.1.3 (NIST SSDF v1.1 — same family)",
+    "PO.1.4 (NIST SSDF v1.1 — same family)",
+    "PO.1.5 (NIST SSDF v1.1 — same family)",
+    "PO.2.1 (NIST SSDF v1.1 — same family)",
+    "PO.2.2 (NIST SSDF v1.1 — same family)",
+    "PO.2.3 (NIST SSDF v1.1 — same family)",
+    "PO.3.1 (NIST SSDF v1.1 — same family)",
+    "PO.3.2 (NIST SSDF v1.1 — same family)",
+    "PO.3.3 (NIST SSDF v1.1 — same family)",
+    "PO.4.1 (NIST SSDF v1.1 — same family)",
+    "PO.5.1 (NIST SSDF v1.1 — same family)",
+    "PO.5.2 (NIST SSDF v1.1 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218",
+  "source_version": "1.1 (2022-02-08)"
+}

@@ -63,7 +63,7 @@ DE.CM-09, DE.CM-01 (primary), ID.RA-04, GV.OV-01.
   verification_method: TEST
   dependencies: [10.1.1 (when controller-manufacturer — **CRDA-flagged GENUINE TENSION (primary)**: CRA user opt-out vs. GDPR mandatory monitoring; the OJ does not resolve; Layer 2 OJ-level resolution required; the two regimes stack on the layered monitoring architecture — entity-layer mandatory + product-layer with opt-out), 10.1.2 (when NSIE deploys CRA-regulated products — **CRDA-flagged GENUINE TENSION (propagated)**: CRA user opt-out vs. NIS 2 mandatory monitoring; same structural conflict as GDPR↔CRA), 10.1.4 (when DORA entity deploys CRA-regulated products — **CRDA-flagged GENUINE TENSION (propagated)**: CRA user opt-out vs. DORA mandatory monitoring; same structural conflict as GDPR↔CRA), 10.1.5 (when CRA-regulated product is also high-risk AI — CRA Annex I conformity + AI Act post-market monitoring stack for AI-enabled products; the AI Act adds the feedback-loop dimension; the CRA opt-out tension does NOT extend to the AI Act pair — the AI Act Art. 72 monitoring is provider-side, not subject to user opt-out)]
 
-  nist_csf: [DE.CM-01, DE.CM-09, ID.IM-04]
+  nist_csf: [DE.CM-09, DE.CM-01]
 
   applicable_if:
     regs: [CRA]

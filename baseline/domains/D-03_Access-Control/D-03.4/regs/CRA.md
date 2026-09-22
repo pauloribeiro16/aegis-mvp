@@ -97,7 +97,7 @@ Chain Risk Management Plan). `SR-CRA-018` covers the Annex I Part I
   verification_method: TEST
   dependencies: [3.1.3 (product-side identity substrate feeds the secure-by-default baseline)]
 
-  nist_csf: [PR.PS-01, ID.AM-08, GV.SC-03]
+  nist_csf: [PR.PS-01, ID.AM-08]
 
   applicable_if:
     regs: [CRA]

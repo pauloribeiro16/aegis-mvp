@@ -35,7 +35,8 @@ aegis-mvp/
 │   ├── 02_Regulatory_Mapping_and_Generic_Objectives.md
 │   ├── CONTROLS/           # Control referentials (NIST_CSF_2.0, NIST_PF, NIST_AI_RMF, …)
 │   ├── MAPPINGS/           # OVERLAYS + sr_control_mappings/<REG>.json (complete SR↔CSF/PF/AI-RMF
-│   │                       #   store extracted from the frozen dashboards; _control_uniformization.md ledger)
+│   │                       #   store extracted from the frozen dashboards; traceability/ chain
+│   │                       #   reg -> article -> objective -> requirement -> control; ledgers)
 │   └── domains/            # MODULAR per-regulation corpus (38 sub-domains)
 │       ├── index.md        # Corpus index (modular layout)
 │       ├── _migration_report.md  # Modularization audit trail (line accounting)
@@ -75,7 +76,7 @@ aegis-mvp/
 
 | Nature | Content | Agent Obligation |
 |---|---|---|
-| **Inherited (Free)** | 38 Sub-domains `D-XX.Y`, verbatim articles (`articles/`), control referentials (`CONTROLS/`: NIST CSF 2.0, NIST PF 1.1, NIST AI RMF), ambiguity baseline (`AMBIGUITY_REGISTRY/`), SR↔control mapping store (`MAPPINGS/sr_control_mappings/`, dashboard-extracted and uniformized with the modules). | **Read-only by reference** via `config.yaml`. Never modify, copy, or re-derive interpretations already established. |
+| **Inherited (Free)** | 38 Sub-domains `D-XX.Y`, verbatim articles (`articles/`), control referentials (`CONTROLS/`: NIST CSF 2.0, NIST PF 1.1, NIST AI RMF), ambiguity baseline (`AMBIGUITY_REGISTRY/`), SR↔control mapping store (`MAPPINGS/sr_control_mappings/`) and full traceability chain (`MAPPINGS/traceability/`: regulation → article → clause → HSO → SO-REG → Sub-SO → requirement → controls), both dashboard-extracted and uniformized with the modules. | **Read-only by reference** via `config.yaml`. Never modify, copy, or re-derive interpretations already established. |
 | **Company Input** | Profile, products/services, data handled, infrastructure, assumed regulations. | **Provided once** in `input/<company>/company_input.md` (5 sections, plain prose). Never fabricate facts (Rule R6). |
 | **Generated Output** | Applicability rationale, sub-domain triggers, company-adjusted objectives (`AG-D-XX.Y-NNN`). | **Produced by the agent** into `output/<company>/phase1_output.md` following `SPEC.md`. |
 

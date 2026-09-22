@@ -74,6 +74,7 @@ PR.DS-P1, PR.PO-P3.
   dependencies: ["1.3 (Key Management — pending generation)"]
 
   nist_csf: [PR.DS-01, PR.DS-10]
+  nist_pf: [PR.DS-P1, PR.PO-P3]
 
   applicable_if:
     regs: [GDPR]

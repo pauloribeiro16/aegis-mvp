@@ -63,7 +63,7 @@ DE.CM-01 (primary), DE.CM-09, PR.PS-04, DE.AE-02, RS.MA-01, ID.RA-01, ID.RA-03.
   verification_method: TEST
   dependencies: [10.1.1 (when DORA-controller — DORA Art. 8(1) / Art. 9(1) continuous monitoring is broader than GDPR Art. 32(2); DORA-led stack with GDPR detection as sub-component), 10.1.2 (when DORA-NSIE — **NIS 2 ↔ DORA EQUAL on continuous-monitoring dimension, DORA-dominant for financial entities**; DORA Art. 8(1) / Art. 9(1) continuous monitoring discharges both DORA's dedicated monitoring obligation and NIS 2's Art. 21(2)(b) partial-coverage detection dimension; for non-financial NSIEs, NIS 2 detection capability operates on the all-hazards basis without DORA), 10.1.3 (when DORA entity deploys CRA-regulated products — **CRDA-flagged GENUINE TENSION (propagated)**: CRA user opt-out vs. DORA mandatory monitoring; Layer 2 OJ-level resolution required), 10.1.5 (when DORA financial entity deploys high-risk AI — DORA continuous monitoring + AI Act post-market monitoring stack; DORA-led stack with AI Act as AI-system-level overlay)]
 
-  nist_csf: [DE.CM-01, DE.CM-09, PR.PS-04, DE.AE-02, ID.RA-01, ID.RA-03]
+  nist_csf: [DE.CM-01, DE.CM-09, PR.PS-04]
 
   applicable_if:
     regs: [DORA]

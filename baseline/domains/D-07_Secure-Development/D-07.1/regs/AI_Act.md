@@ -70,7 +70,8 @@ MEASURE-2.5, MEASURE-2.6, MEASURE-2.7, GOVERN-1.2.
   verification_method: TEST
   dependencies: [7.1.1 (when high-risk AI system processes personal data — Recital 78 preservation; GDPR by-design overlay on AI Act by-design + QMS), 7.1.2 (when NIS embeds high-risk AI — NIS 2 procurement gate + AI Act QMS governance gate stack), 7.1.3 (when AI-enabled CRA product — CRA Art. 13(4) sentence 2 explicit AI-Act-substitution for risk assessment unifies Art. 9 + Art. 13 risk-assessment documentation), 7.1.4 (when DORA FE deploys high-risk AI — DORA Art. 9(4)(e) change-mgmt operational gate + AI Act QMS governance gate stack)]
 
-  nist_csf: [PR.PS-06, ID.RA-01]
+  nist_csf: [PR.PS-06, PR.IR-03, ID.RA-04]
+  nist_airmf: [MEASURE-2.5, MEASURE-2.6, MEASURE-2.7, GOVERN-1.2]
 
   applicable_if:
     regs: [AI_Act]

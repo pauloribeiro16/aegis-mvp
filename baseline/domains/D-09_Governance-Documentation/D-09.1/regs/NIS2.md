@@ -65,7 +65,7 @@ ID.RA-05, GV.PO-01 (primary), PR.PS-01, ID.IM-01, GV.OV-03.
   verification_method: TEST
   dependencies: [8.3.1 (Art. 20(2) sentence 1 management-body training as literacy prerequisite for Art. 20(1) approve/oversee/liable), 9.1.1 (when controller-NSIE — NIS 2 management-body approval minute as governance hook on top of GDPR data-protection policies; policies stacked, not collapsed), 9.1.4 (when DORA-NSIE — DORA Art. 6(1) ICT risk-management framework discharges both DORA's dedicated framework obligation and NIS 2's Art. 21(2)(a)+(f) policy artefacts + Art. 20(1) governance act; EQUAL classification, DORA-dominant stack for financial entities), 9.1.5 (when NSIE deploys high-risk AI — AI Act QMS as sub-policy of NIS 2 entity-level governance), 9.1.3 (when entity procures CRA-conformant — CRA presumption substitutes for parts of NIS 2 supplier-assessment evidence but not NIS 2 entity-level policy architecture)]
 
-  nist_csf: [GV.PO-01, GV.RR-02, GV.OV-01, GV.RM-05]
+  nist_csf: [GV.RR-02, GV.PO-01]
 
   applicable_if:
     regs: [NIS2]

@@ -86,7 +86,7 @@ secured-communications second/third clauses of Art. 21(2)(j).)*
   verification_method: TEST
   dependencies: [3.1.2 (workforce identity substrate feeds the staff-authentication event)]
 
-  nist_csf: [PR.AA-03, PR.AA-05, PR.DS-02, PR.IR-03]
+  nist_csf: [PR.AA-03, PR.AA-05]
 
   applicable_if:
     regs: [NIS2]

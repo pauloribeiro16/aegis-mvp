@@ -73,6 +73,7 @@ GV.PO-P2, CT.PO-P4.
   dependencies: [7.1.2 (when controller is also NSIE — GDPR by-design outputs realised through NIS 2 acquisition + development gates per SR-NIS2-026/027), 7.1.3 (when integrated manufacturer-controller — CRA Annex I Part I engineering substrate + GDPR Art. 25(1) personal-data overlay stack vertically), 7.1.4 (when DORA financial entity is also controller — GDPR overlay on DORA change-mgmt six-step + testing), 7.1.5 (when high-risk AI system processes personal data — Recital 78 preservation, GDPR by-design overlay on AI Act by-design + QMS)]
 
   nist_csf: [PR.PS-06, ID.AM-08]
+  nist_pf: [GV.PO-P2, CT.PO-P4]
 
   applicable_if:
     regs: [GDPR]

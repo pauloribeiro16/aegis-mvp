@@ -63,7 +63,7 @@ DE.CM-01 (primary), DE.CM-09, RS.MA-04, RS.MA-03.
   verification_method: TEST
   dependencies: [10.1.1 (when controller = NSIE — GDPR detection capability + NIS 2 all-hazards detection capability on overlapping detection capability with different triggering frameworks — risk-type-triggered vs. incident-triggered; partial trigger alignment), 10.1.3 (when NSIE deploys CRA-regulated products — **CRDA-flagged GENUINE TENSION propagated**: CRA user opt-out vs. NIS 2 mandatory monitoring; the OJ does not resolve; Layer 2 OJ-level resolution required; the two regimes stack on the layered monitoring architecture — entity-layer mandatory + product-layer with opt-out), 10.1.4 (when DORA-NSIE — **NIS 2 ↔ DORA EQUAL on continuous-monitoring dimension, DORA-dominant for financial entities**; DORA Art. 8(1) / Art. 9(1) continuous monitoring discharges both DORA's dedicated monitoring obligation and NIS 2's Art. 21(2)(b) partial-coverage detection dimension; for non-financial NSIEs, NIS 2 detection capability operates on the all-hazards basis without DORA), 10.1.5 (when NSIE deploys high-risk AI — NIS 2 entity-level operational monitoring + AI Act AI-system lifecycle monitoring; different trigger alignment; the two regimes stack without overlap)]
 
-  nist_csf: [DE.CM-01, DE.CM-09, DE.AE-02, ID.IM-04]
+  nist_csf: [DE.CM-01, DE.CM-09]
 
   applicable_if:
     regs: [NIS2]

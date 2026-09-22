@@ -81,6 +81,7 @@ for its declared purpose on the day of any supervisory inspection.)*
   dependencies: [5.2.2 (when CRA update-distribution log contains personal data — separation architecture is the layering rule; GDPR Art. 5(1)(e) `necessary` boundary remains the operative cap on the personal-data subset, CRA-side availability tail applies to the artefact portion), 5.2.3 (when AI log contains personal data — floor-within-ceiling relationship; operative range is [6 months, "necessary"] with AI Act setting the floor and GDPR setting the cap)]
 
   nist_csf: [ID.AM-08, ID.AM-03]
+  nist_pf: [CT.PO-P4, CT.DM-P5]
 
   applicable_if:
     regs: [GDPR]

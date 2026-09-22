@@ -69,7 +69,7 @@ GV.OV-01, GV.PO-02, PR.PS-02, GV.SC-04, GV.OV-02, ID.IM-04.
   verification_method: INSPECT
   dependencies: [7.3.2]
 
-  nist_csf: [GV.OV-01, GV.PO-02, PR.PS-02, GV.SC-04, GV.OV-02, ID.IM-04]
+  nist_csf: [GV.OV-01, GV.PO-02]
 
   applicable_if:
     regs: [CRA]

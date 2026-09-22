@@ -68,6 +68,7 @@ MANAGE-2.3, MANAGE-4.3, GOVERN-1.1.
   dependencies: [4.1.5 (notification clock depends on 4.1 awareness event from 4.1 detection leg; AI Act detection obligations are coupled to the Art. 73/55 reporting triggers and not standalone — 4.1 AI Act out-of-scope, but 4.3 AI Act pulls awareness from 4.1 detection capabilities operated at the AI-system boundary), 4.2.5 (notification content requires prior incident-classification feeding Art. 73 content template)]
 
   nist_csf: [RS.CO-02, RS.MA-04, RS.MA-03, RS.MA-01]
+  nist_airmf: [MANAGE-2.3, MANAGE-4.3, GOVERN-1.1]
 
   applicable_if:
     regs: [AI_Act]

@@ -74,7 +74,8 @@ MAP-3.5, GOVERN-2.1, GOVERN-2.2, GOVERN-3.1.
   verification_method: TEST
   dependencies: [8.2.1 (Conditional Y on AI Act deployer-controller with same natural person as both data-processing staff and AI human overseer — AI Act layer is the additional competence dimension on top of GDPR role-specific), 8.2.2 (when NSIE deploys high-risk AI and assigns human oversight — NIS 2 risk-identification baseline + AI Act 5-element + 4-element AND stack), 8.2.4 (when DORA FE deploys high-risk AI — DORA `commensurate to the remit` carrier + AI Act 5-element sub-component)]
 
-  nist_csf: [PR.AT-02, PR.AT-01, GV.RR-02, GV.RR-04, GV.RR-01]
+  nist_csf: [PR.AT-02, PR.AT-01, GV.RR-02]
+  nist_airmf: [MAP-3.5, GOVERN-2.1, GOVERN-2.2]
 
   applicable_if:
     regs: [AI_Act]

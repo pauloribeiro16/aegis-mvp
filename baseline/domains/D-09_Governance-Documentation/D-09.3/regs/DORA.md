@@ -63,7 +63,7 @@ ID.AM-01, ID.AM-02, ID.AM-03, ID.AM-05.
   verification_method: TEST
   dependencies: [8.3.2 (Art. 5(4) management-body training as literacy prerequisite for Art. 5(2) define/approve/oversee/be-responsible), 9.1.4 (Art. 5(2) four-verb coordination as upstream policy-architecture governance hook), 9.3.1 (when DORA-NSIE — DORA Art. 7(1) `3-way AND` discharges both; EQUAL, DORA-dominant stack for financial entities), 9.3.2 (when DORA entity procures CRA-conformant — CRA Annex VII §1-§2 as upstream product-level sub-register feeding the DORA entity-level master record; COMPLEMENTARY, Conditional-Y scope overlap)]
 
-  nist_csf: [ID.AM-01, ID.AM-02, ID.AM-05]
+  nist_csf: [ID.AM-01, ID.AM-02, ID.AM-03, ID.AM-05]
 
   applicable_if:
     regs: [DORA]

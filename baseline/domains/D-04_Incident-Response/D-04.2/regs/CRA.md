@@ -72,7 +72,7 @@ mechanism effectiveness.)*
   verification_method: TEST
   dependencies: [4.1.3 (containment design at product-internal state level feeds from prior product-internal detection events), 4.2.2 (CRA product-resilience evidence feeds NIS 2 entity-level plan when NIS 2 entity deploys / manufactures CRA product), 4.2.4 (CRA product-resilience design feeds DORA BC arrangements when DORA FE deploys CRA product)]
 
-  nist_csf: [PR.IR-03, PR.IR-04, DE.CM-09]
+  nist_csf: [PR.IR-03, ID.AM-08]
 
   applicable_if:
     regs: [CRA]

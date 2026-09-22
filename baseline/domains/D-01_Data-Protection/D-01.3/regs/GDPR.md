@@ -76,7 +76,8 @@ remains effective on the day of the breach.)*
   verification_method: TEST
   dependencies: []
 
-  nist_csf: [PR.DS-01, PR.IR-03]
+  nist_csf: [PR.DS-01]
+  nist_pf: [PR.DS-P1, CT.DP-P2]
 
   applicable_if:
     regs: [GDPR]

@@ -63,7 +63,7 @@ PR.PS-06, GV.PO-02, ID.RA-05 (primary), GV.OV-02.
   verification_method: TEST
   dependencies: [9.2.5 (when product is both CRA-regulated and AI-Act high-risk — CRA Art. 13(4) sentence 2 consolidation rule permits AI Act Art. 9 risk-management system to substitute for CRA Art. 13(3) cybersecurity risk assessment on a single artefact; the ONLY OJ-level cross-regulation consolidation rule in 9.2), 9.2.1 (when controller-manufacturer — CRA cybersecurity risk assessment on product cybersecurity risk + GDPR DPIA on data-subject rights; DIFFERENT-PERSPECTIVE, distinct artefacts, **no OJ-level consolidation rule** even when CRA risk assessment performed — GDPR DPIA must be a separate artefact), 9.2.4 (when DORA entity procures CRA-conformant — CRA product-level pre-market + DORA entity-level operational; COMPLEMENTARY, Conditional-Y scope overlap), 9.2.2 (when entity procures CRA-conformant — CRA product-level + NIS 2 entity-level operational; COMPLEMENTARY; CRA risk-assessment record is an input to NIS 2 entity's supplier-risk register, meet at supplier-customer interface)]
 
-  nist_csf: [ID.RA-05, GV.SC-07]
+  nist_csf: [PR.PS-06, GV.PO-02]
 
   applicable_if:
     regs: [CRA]

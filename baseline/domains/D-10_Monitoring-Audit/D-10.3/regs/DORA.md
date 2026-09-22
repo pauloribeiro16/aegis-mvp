@@ -64,7 +64,7 @@ GV.OV-02, ID.RA-01, PR.PS-06, ID.RA-04, PR.AA-05, PR.AA-06.
   verification_method: TEST
   dependencies: [10.3.1 (Conditional — Y when DORA financial entity is a controller; **DORA-led stack** with GDPR Art. 32(1)(d) effectiveness-evaluation as sub-component; DORA Art. 24(1) testing programme discharges the financial entity's testing obligation and the GDPR effectiveness-evaluation becomes a sub-component within the DORA-led stack), 10.3.2 (**EQUAL on testing-programme dimension, DORA-dominant for significant financial entities under Art. 26(1) TLPT**; for DORA significant financial entities, DORA Art. 24(1) testing programme + Art. 25(1) 12-way modalities + Art. 26(1) TLPT discharges both DORA's dedicated testing obligation and NIS 2's Art. 21(2)(f) partial-coverage effectiveness-assessment; for non-financial NSIEs, NIS 2 is the authority; the EQUAL pair discharges both obligations on the DORA-led stack), 10.3.3 (Conditional — Y when DORA entity procures CRA-conformant products; DORA Art. 24(1) testing programme + Art. 25(1) 12-way modalities + Art. 26(1) TLPT + CRA Annex VII §6 test reports + Annex VIII modules; product-level upstream vs. entity-level downstream; the two regimes stack without consolidation), 10.3.5 (Y — when DORA financial entity deploys high-risk AI; DORA Art. 24(1) testing programme + Art. 25(1) 12-way modalities + Art. 26(1) TLPT + AI Act Art. 9(6) testing for risk management + Art. 9(7) real-world-conditions testing per Art. 60 + Art. 15(1) baseline testing `throughout their lifecycle`; the two regimes stack without consolidation)]
 
-  nist_csf: [ID.IM-03, ID.RA-05, DE.AE-02, GV.OV-03, PR.PS-04]
+  nist_csf: [GV.OV-02, ID.RA-01, PR.PS-06]
 
   applicable_if:
     regs: [DORA]

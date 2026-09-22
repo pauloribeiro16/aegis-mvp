@@ -63,7 +63,7 @@ GV.PO-02, ID.AM-02, GV.OC-03, ID.RA-04, GV.SC-04.
   verification_method: TEST
   dependencies: [9.1.3 (Art. 13(8) manufacturer policies/processes/procedures as upstream governance hook), 9.3.3 (when DORA entity procures CRA-conformant — DORA-led stack with CRA Annex VII §1-§2 as upstream product-level sub-register feeding the DORA entity-level master record; COMPLEMENTARY, Conditional-Y scope overlap), 9.3.1 (when entity is not manufacturer — substantively scope-disjoint per CRDA `N (typically)` on the NIS 2 ↔ CRA pair; different objects — entity asset register vs. product architecture documentation — meeting at supplier-customer interface only)]
 
-  nist_csf: [ID.AM-01, ID.AM-02]
+  nist_csf: [GV.PO-02, ID.AM-02]
 
   applicable_if:
     regs: [CRA]

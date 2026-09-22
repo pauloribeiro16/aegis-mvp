@@ -69,7 +69,7 @@ PR.PS-06, GV.PO-02.
   verification_method: TEST
   dependencies: [7.1.1 (when integrated manufacturer-controller — CRA Annex I Part I engineering substrate + GDPR Art. 25(1) personal-data overlay), 7.1.2 (when NIS 2 entity deploys / manufactures CRA product — supplier-customer boundary; NIS 2 supplier-assessment references CRA Annex VII technical documentation), 7.1.4 (when DORA FE deploys CRA product — DORA design-procurement baseline satisfied by CRA-conformant-product selection; CRA Annex VII §3 risk-assessment record feeds DORA Art. 6(1) ICT risk-management framework), 7.1.5 (when AI-enabled CRA product — CRA Art. 13(4) sentence 2 explicit AI-Act-substitution for risk assessment unifies Art. 9 + Art. 13 risk-assessment documentation)]
 
-  nist_csf: [PR.PS-06, PR.PS-01]
+  nist_csf: [PR.PS-06, GV.PO-02]
 
   applicable_if:
     regs: [CRA]

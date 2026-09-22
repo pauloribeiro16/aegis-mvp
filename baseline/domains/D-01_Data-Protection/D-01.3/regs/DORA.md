@@ -80,7 +80,7 @@ AND of Art. 9(4)(d).)*
   verification_method: TEST
   dependencies: []
 
-  nist_csf: [PR.AA-03, PR.AA-04, PR.DS-01, GV.RM-04]
+  nist_csf: [PR.AA-03, PR.AA-04]
 
   applicable_if:
     regs: [DORA]

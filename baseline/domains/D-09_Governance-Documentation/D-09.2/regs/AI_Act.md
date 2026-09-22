@@ -65,7 +65,8 @@ GOVERN-1.1, GOVERN-1.3, GOVERN-1.5, MAP-5.1, MAP-3.1, MAP-3.2, MANAGE-1.2.
   verification_method: TEST
   dependencies: [9.2.3 (when product is both CRA-regulated and AI-Act high-risk — CRA Art. 13(4) sentence 2 consolidation rule permits AI Act Art. 9 risk-management system to substitute for CRA Art. 13(3) cybersecurity risk assessment on a single artefact; the ONLY OJ-level cross-regulation consolidation rule in 9.2), 9.2.1 (when high-risk AI processes personal data — AI Act Art. 9 continuous iterative + GDPR DPIA pre-launch on-change; DIFFERENT-PERSPECTIVE, distinct artefacts, **no OJ-level consolidation rule**; AI Act Recital 78 explicit GDPR preservation), 9.2.2 (when NSIE deploys high-risk AI — NIS 2 entity-level operational + AI Act AI-system-level continuous iterative; COMPLEMENTARY), 9.2.4 (when DORA FE deploys high-risk AI — DORA entity-level operational + AI Act AI-system-level continuous iterative; COMPLEMENTARY, **no OJ-level consolidation rule** — DORA has no equivalent to CRA Art. 13(4) sentence 2)]
 
-  nist_csf: [ID.RA-05, GV.RM-04]
+  nist_csf: [GV.RM-01, GV.RM-06]
+  nist_airmf: [GOVERN-1.1, GOVERN-1.3, GOVERN-1.5, MAP-5.1]
 
   applicable_if:
     regs: [AI_Act]

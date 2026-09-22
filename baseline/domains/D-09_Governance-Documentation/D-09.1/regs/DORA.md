@@ -63,7 +63,7 @@ GV.RR-01, GV.RR-02, GV.PO-01 (primary), GV.OC-01, GV.RM-04, GV.RM-02.
   verification_method: TEST
   dependencies: [8.3.2 (Art. 5(4) management-body training as literacy prerequisite for Art. 5(2) define/approve/oversee/be-responsible), 9.1.2 (when DORA-NSIE — DORA Art. 6(1) ICT risk-management framework discharges both DORA's dedicated framework obligation and NIS 2's Art. 21(2)(a)+(f) policy artefacts + Art. 20(1) governance act; EQUAL classification, DORA-dominant stack for financial entities), 9.1.1 (when DORA-controller — DORA framework as carrier + GDPR data-protection policies as module; DORA-dominant stack), 9.1.3 (when DORA entity procures CRA-conformant — CRA presumption discharges parts of DORA supplier-assessment evidence but not DORA framework obligation), 9.1.5 (when DORA FE deploys high-risk AI — DORA ICT risk-management framework + AI Act QMS + Art. 26(1) deployer measures stack; three-lines-of-defence + QMS compatible governance architectures; DORA-led stack with AI Act QMS as sub-component)]
 
-  nist_csf: [GV.PO-01, GV.PO-02, GV.RM-04, GV.RR-01, GV.RR-02, GV.OC-03, GV.OC-04, GV.RM-05]
+  nist_csf: [GV.RR-01, GV.RR-02]
 
   applicable_if:
     regs: [DORA]

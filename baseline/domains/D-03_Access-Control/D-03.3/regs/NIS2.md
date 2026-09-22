@@ -89,7 +89,7 @@ for any technical-control decision.)*
   verification_method: TEST
   dependencies: [3.1.2 (workforce identity substrate feeds the role-definition entitlement inventory)]
 
-  nist_csf: [PR.AA-01, PR.AA-05, ID.AM-01, ID.AM-02]
+  nist_csf: [PR.AA-01, PR.AA-05]
 
   applicable_if:
     regs: [NIS2]

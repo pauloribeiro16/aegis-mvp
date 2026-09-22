@@ -66,7 +66,8 @@ GV.MT-P3, GV.PO-P5, ID.IM-P1, ID.IM-P4, ID.IM-P6, ID.IM-P8, CT.DM-P9.
   verification_method: TEST
   dependencies: [10.2.2 (N (typically) — substantively scope-disjoint by record-type distinctness; GDPR compliance records vs. CRA product documentation; no joint condition on this pair alone; engages only via DORA or AI Act third-regulator joint-condition), 10.2.3 (Conditional — Y when DORA financial entity is a controller; GDPR compliance records + DORA CIA+A information security policy stack on different record types: compliance vs. operational CIA+A policy; conditional discharge when the DORA-led stack integrates the Art. 30(3) records as a sub-component), 10.2.4 (Conditional — Y when high-risk AI system processes personal data and logs contain personal data; **floor-within-ceiling pattern** — AI Act Art. 19(1) ≥6-month hard floor WITHIN GDPR Art. 5(1)(e) `as long as necessary` envelope; the two regimes operate on different time scales; the floor-within-ceiling is OJ-consistent, NOT a tension; Phase 1 entities must implement AI Act Art. 19(1) ≥6-month retention as a hard minimum + extend to GDPR `necessary` envelope when the AI system `intended purpose` requires more than 6 months or when a DPA request requires longer retention)]
 
-  nist_csf: [PR.DS-11, PR.PS-04, DE.CM-01, GV.PO-02]
+  nist_csf: [GV.PO-02, GV.OV-03]
+  nist_pf: [GV.MT-P3, GV.PO-P5]
 
   applicable_if:
     regs: [GDPR]

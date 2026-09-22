@@ -66,7 +66,8 @@ GV.PO-P1, GV.PO-P6, GV.MT-P3, GV.PO-P5.
   verification_method: TEST
   dependencies: [9.1.2 (when controller = NSIE — NIS 2 management-body approval minute as governance hook on top of GDPR data-protection policies; policies stacked, not collapsed), 9.1.4 (when DORA-controller — DORA Art. 6(1) ICT risk-management framework as carrier + GDPR Art. 24(1) data-protection policies as module; DORA-dominant stack), 9.1.5 (when provider/deployer = controller — AI Act QMS as sub-policy of GDPR data-protection policies; AI Act Recital 78 explicit GDPR preservation)]
 
-  nist_csf: [GV.PO-01, GV.PO-02, GV.RM-04, GV.RR-01, GV.RR-02, GV.RR-03, GV.OV-03]
+  nist_csf: [GV.PO-01, GV.PO-02, GV.RM-04]
+  nist_pf: [GV.PO-P1, GV.PO-P6]
 
   applicable_if:
     regs: [GDPR]

@@ -73,7 +73,8 @@ data-flow boundary.)*
   verification_method: TEST
   dependencies: [4.1.2 (when controller is also NSIE — data-flow detection feeds entity detection), 4.1.3 (when integrated manufacturer-controller — CRA product-internal recording feeds data-flow awareness for personal-data subset)]
 
-  nist_csf: [DE.CM-01, DE.CM-09, DE.AE-02, PR.PS-04, RS.MA-02]
+  nist_csf: [DE.CM-01, DE.CM-09, RS.MA-02]
+  nist_pf: [GV.MT-P5, GV.MT-P3, CM.AW-P7]
 
   applicable_if:
     regs: [GDPR]

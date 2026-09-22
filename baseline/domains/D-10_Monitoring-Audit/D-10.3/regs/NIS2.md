@@ -64,7 +64,7 @@ GV.PO-01, ID.IM-01, GV.OV-03, GV.PO-02.
   verification_method: TEST
   dependencies: [10.3.1 (Y — when controller = NSIE; GDPR Art. 32(1)(d) effectiveness-evaluation of security measures + NIS 2 Art. 21(2)(f) effectiveness-assessment of risk-management measures; different scopes but same effectiveness objective; partial trigger alignment; entity-discretionary cadence alignment; the two regimes stack on the all-hazards risk-management framework + the Art. 32(1)(d) security measures), 10.3.3 (Conditional — Y when NSIE procures CRA-conformant products; NIS 2 Art. 21(2)(f) effectiveness-assessment + CRA Annex I Part II (3) effective/regular tests + Annex VIII modules; CRA conformity-assessment is a specific dimension of NIS 2 effectiveness-assessment; the two regimes stack on the entity-level + product-level), 10.3.4 (**EQUAL on testing-programme dimension, DORA-dominant for significant financial entities under Art. 26(1) TLPT**; for DORA significant financial entities, DORA Art. 24(1) testing programme discharges both DORA's dedicated testing obligation and NIS 2's Art. 21(2)(f) partial-coverage effectiveness-assessment; for non-financial NSIEs, NIS 2 is the authority; the EQUAL pair discharges both obligations on the DORA-led stack), 10.3.5 (Conditional — Y when NSIE deploys high-risk AI; NIS 2 Art. 21(2)(f) effectiveness-assessment + AI Act Art. 9(6) testing for risk management + Art. 9(7) real-world-conditions testing + Art. 15(1) baseline testing; AI Act adds real-world-conditions dimension; the two regimes stack without consolidation)]
 
-  nist_csf: [ID.IM-03, ID.RA-05, GV.OV-03, DE.AE-02]
+  nist_csf: [GV.PO-01, ID.IM-01, GV.OV-03]
 
   applicable_if:
     regs: [NIS2]

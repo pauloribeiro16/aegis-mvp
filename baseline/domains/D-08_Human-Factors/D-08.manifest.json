@@ -280,12 +280,14 @@
         "nist_csf": [
           "PR.AT-02",
           "PR.AT-01",
-          "GV.RR-02",
-          "GV.RR-04",
-          "PR.AT-02",
-          "GV.RR-01"
+          "GV.RR-02"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_airmf": [
+          "MAP-3.5",
+          "GOVERN-2.1",
+          "GOVERN-2.2"
+        ]
       }
     ],
     "CRA": [
@@ -345,7 +347,11 @@
           "PR.AT-01",
           "PR.AT-02"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "GV.AT-P1",
+          "GV.AT-P2"
+        ]
       },
       {
         "req_id": "8.2.1",
@@ -354,7 +360,11 @@
           "PR.AT-02",
           "PR.AT-01"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "GV.AT-P1",
+          "GV.AT-P2"
+        ]
       }
     ],
     "NIS2": [
@@ -389,7 +399,6 @@
   },
   "applicable_nist_controls_by_regulation": {
     "AI_Act": [
-      "GV.RR-01",
       "GV.RR-02",
       "GV.RR-04",
       "PR.AT-01",

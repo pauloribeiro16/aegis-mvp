@@ -63,7 +63,7 @@ GV.PO-01 (primary), GV.SC-01, GV.PO-02, GV.OC-03.
   verification_method: TEST
   dependencies: [9.1.1 (when controller-manufacturer — manufacturer-side CRA policies coexist with controller-side GDPR data-protection policies on different artefacts; policies stacked, not collapsed), 9.1.2 (when entity procures CRA-conformant — CRA presumption substitutes for parts of NIS 2 supplier-assessment evidence but not NIS 2 entity-level policy architecture), 9.1.4 (when DORA entity procures CRA-conformant — CRA presumption discharges parts of DORA supplier-assessment evidence but not DORA framework obligation), 9.1.5 (when product is both CRA-regulated and AI-Act high-risk — CRA Annex I conformity + AI Act QMS stack; no OJ-level consolidation rule at 9.1)]
 
-  nist_csf: [GV.PO-01, GV.PO-02, GV.SC-01, GV.SC-04, GV.OC-03]
+  nist_csf: [GV.PO-01, GV.SC-01]
 
   applicable_if:
     regs: [CRA]

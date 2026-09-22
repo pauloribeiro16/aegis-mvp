@@ -62,7 +62,7 @@ phase_1A_role: 1_of_N
   verification_method: TEST
   dependencies: [6.1.2 (supplier-register and three-prong assessment feeds direct-supplier contractual-security matrix; the assessment object is preserved across assessment-arch and contract-arch layers)]
 
-  nist_csf: [GV.SC-02, GV.SC-03, GV.SC-04, ID.AM-04, ID.RA-01, ID.RA-02, PR.PS-06]
+  nist_csf: [GV.SC-02, GV.SC-03]
 
   applicable_if:
     regs: [NIS2]

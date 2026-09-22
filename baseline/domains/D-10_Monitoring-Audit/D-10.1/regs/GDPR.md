@@ -66,7 +66,8 @@ CM.AW-P7, CM.AW-P8, PR.DS-P1, CT.DP-P2.
   verification_method: TEST
   dependencies: [10.1.2 (when controller = NSIE — GDPR detection capability + NIS 2 all-hazards detection capability on overlapping detection capability with different triggering frameworks — risk-type-triggered vs. incident-triggered; partial trigger alignment), 10.1.3 (when controller-manufacturer — **CRDA-flagged GENUINE TENSION**: CRA user opt-out vs. GDPR mandatory monitoring; the OJ does not resolve; Layer 2 OJ-level resolution required; the two regimes stack on the layered monitoring architecture — entity-layer mandatory + product-layer with opt-out), 10.1.4 (when DORA-controller — DORA Art. 8(1) / Art. 9(1) continuous monitoring is broader than GDPR Art. 32(2); DORA-led stack with GDPR detection as sub-component; for DORA financial entities, the DORA-led stack discharges the GDPR continuous-monitoring obligation), 10.1.5 (when provider/deployer = controller — GDPR pre-breach detection + AI Act lifecycle monitoring on different trigger alignment; pre-breach vs. lifecycle; the two regimes stack)]
 
-  nist_csf: [DE.CM-01, DE.CM-09, DE.AE-02, ID.IM-04]
+  nist_csf: [RS.CO-03, RS.MA-04]
+  nist_pf: [CM.AW-P7, CM.AW-P8]
 
   applicable_if:
     regs: [GDPR]

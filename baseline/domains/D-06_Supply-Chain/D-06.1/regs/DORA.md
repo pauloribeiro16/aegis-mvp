@@ -81,7 +81,7 @@ importance of the ICT-related dependencies.)*
   verification_method: TEST
   dependencies: [6.1.1 (when financial entity is also controller — DORA four-factor satisfies GDPR `sufficient guarantees` with GDPR-specific Art. 28(3) clauses appended on controller side), 6.1.2 (when financial entity = NIS 2 essential entity — DORA Art. 28(1) satisfies NIS 2 supply-chain-security chapeau in the financial-services subset via lex specialis; NIS 2 chapeau extends to physical + operational hazards)]
 
-  nist_csf: [GV.SC-01, GV.SC-02, GV.SC-03, ID.AM-04]
+  nist_csf: [GV.SC-02, ID.AM-04]
 
   applicable_if:
     regs: [DORA]

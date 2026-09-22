@@ -63,7 +63,7 @@ GV.RR-02, GV.RM-02, ID.RA-01, ID.RA-03, ID.RA-05 (primary), ID.IM-04, GV.OV-02.
   verification_method: TEST
   dependencies: [8.3.2 (Art. 5(4) management-body training as literacy prerequisite for Art. 5(2) define/approve/oversee/be-responsible), 9.2.2 (when DORA-NSIE — DORA continuous + yearly discharges both; EQUAL, DORA-dominant stack for financial entities), 9.2.1 (when DORA-controller — DPIA pre-launch + DORA continuous + yearly; DIFFERENT-PERSPECTIVE, distinct artefacts, **no OJ-level consolidation rule**), 9.2.3 (when DORA entity procures CRA-conformant — DORA entity-level operational + CRA product-level pre-market; COMPLEMENTARY, Conditional-Y scope overlap), 9.2.5 (when DORA FE deploys high-risk AI — DORA entity-level operational + AI Act AI-system-level continuous iterative; COMPLEMENTARY, **no OJ-level consolidation rule**)]
 
-  nist_csf: [ID.RA-05, GV.RR-02]
+  nist_csf: [GV.RR-02, GV.RM-02]
 
   applicable_if:
     regs: [DORA]

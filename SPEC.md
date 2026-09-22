@@ -74,6 +74,11 @@ All paths live in `config.yaml` (see that file). The executor must resolve:
   (clause + article refs) and the `nist_csf` / `nist_pf` / `nist_airmf` anchor
   sets, uniformized with the per-regulation modules (see
   `baseline/MAPPINGS/_control_uniformization.md`).
+- `corpus.traceability` — generated baseline traceability chain
+  (`traceability/<REG>.md` + `traceability.csv` + `index.md`): regulation ->
+  article -> ambiguity clause -> HSO -> SO-<REG> -> Sub-SO -> requirement ->
+  CSF/PF/AI-RMF controls. Read it to place an objective in the full chain;
+  regenerate with `scripts/build_traceability.py`.
 - `ambiguity_registry.path` — canonical ambiguity baseline (`registry.md`).
 - `pipeline.output_language` — output language (default `en`).
 
@@ -141,9 +146,13 @@ derivation; P5 renders and validates.
      requirement YAML `nist_csf` / `nist_pf` / `nist_airmf` keys, the
      generated `**Control anchors:**` lines on the `regs/<REG>.ambiguity.md`
      clause cards, and the mapping store
-     (`corpus.sr_control_mappings/<REG>.json`). Copy from these surfaces
+     (`corpus.sr_control_mappings/<REG>.json`). Every requirement carries all
+     three axes where published (`nist_csf` everywhere; `nist_pf` on GDPR
+     modules, `nist_airmf` on AI_Act modules). Copy from these surfaces
      instead of re-deriving mappings; they are guaranteed contradiction-free
-     against the dashboards (check H of `scripts/verify_no_loss.py`).
+     against the dashboards (check H of `scripts/verify_no_loss.py`), and
+     `corpus.traceability` gives the ready-made regulation -> article ->
+     objective -> requirement -> control chain for every requirement.
   5. If the cited clause has a card in the ambiguity registry, reference the
      card instead of resolving silently (rule R7).
 - **P5 — Render and validate.** Render output §1–§6 per `templates/phase1_output.md`

@@ -103,7 +103,7 @@ the support period and through the 10-year tail.)*
   verification_method: TEST
   dependencies: [6.1.3 (SBOM feeds component-tier inventory substrate under SR-CRA-050 due diligence — the manufacturer integrates the SBOM-derived component inventory into the Art. 13(5) due-diligence procedure)]
 
-  nist_csf: [ID.AM-02, GV.SC-02, GV.SC-03]
+  nist_csf: [ID.AM-02, GV.SC-02]
 
   applicable_if:
     regs: [CRA]

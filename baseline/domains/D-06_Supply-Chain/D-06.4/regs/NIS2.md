@@ -62,7 +62,7 @@ phase_1A_role: 1_of_N
   verification_method: TEST
   dependencies: [6.1.2 (vendor-risk-assessment four-tier discipline provides tier-1 supplier-register input to direct-supplier-scope register), 6.3.2 (Art. 21(2)(d) supplier contracts materialise the direct-supplier-scope register boundary decisions into contractual instruments)]
 
-  nist_csf: [RS.MA-04, GV.SC-05, GV.SC-02, GV.SC-03, ID.AM-04, ID.RA-02]
+  nist_csf: [RS.MA-04, GV.SC-05]
 
   applicable_if:
     regs: [NIS2]

@@ -62,7 +62,7 @@ phase_1A_role: 1_of_N
   verification_method: TEST
   dependencies: [6.3.3 (economic-operator compliance matrix provides Art. 19/20 + Art. 13(6) records that feed Art. 21/22/23 boundary operations), 6.1.3 (third-party-component due diligence shapes component-vulnerability inputs to substantial-modification assessments; OSS stewardship assessment is part of the substantial-modification analysis), 6.4.1 (single-entity dual-role handling — AR can be GDPR Art. 27 representative ONLY with separately documented mandates and recipient channels)]
 
-  nist_csf: [GV.RR-02, GV.SC-03, GV.SC-04, GV.OC-03, GV.SC-02]
+  nist_csf: [GV.RR-02, GV.SC-03]
 
   applicable_if:
     regs: [CRA]

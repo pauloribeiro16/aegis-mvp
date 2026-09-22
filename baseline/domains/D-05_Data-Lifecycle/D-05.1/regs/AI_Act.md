@@ -66,7 +66,8 @@ ID.AM-03, ID.AM-08, PR.PS-06, PR.DS-01, GV.OC-03.
   verification_method: TEST
   dependencies: [5.1.1 (when high-risk AI provider processes personal data — AI Act Art. 10(5) operates as a narrow permission into the GDPR Art. 9(1) prohibition, conditioned on 6 cumulative safeguards (a)–(f); outside the Art. 10(5) window, GDPR Art. 9(1) binds and the AI Act gateway does not extend the controller-side processing basis), 5.1.2 (when CRA-classified high-risk AI product — upstream AI Act training-data quality feeds downstream CRA runtime minimisation; 3-track matrix applies with explicit upstream-to-downstream minimisation hand-off)]
 
-  nist_csf: [ID.AM-03, ID.AM-08, PR.PS-06, PR.DS-01, GV.OC-03]
+  nist_csf: [ID.RA-01, ID.RA-04, PR.PS-06, GV.SC-04]
+  nist_airmf: [MEASURE-1.1, MEASURE-2.1, MEASURE-2.3, MAP-3.3]
 
   applicable_if:
     regs: [AI_ACT]

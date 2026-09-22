@@ -73,7 +73,7 @@ prioritised leg for criticality-based backup scope.)*
   verification_method: TEST
   dependencies: [4.1.4 (containment triggered by prior multi-layer detection event), 4.2.1 (when DORA-controller — GDPR Art. 33(3)(d) TOMs documented as section within DORA BC arrangements), 4.2.3 (when DORA FE deploys CRA product — CRA Annex I (2)(h)/(i)/(k) resilience design feeds DORA BC arrangements), 4.2.2 (when DORA + NIS 2 cross-sector — NIS 2 chapeau coverage is the additional layer for non-financial incidents; physical + operational hazards still bind via NIS 2)]
 
-  nist_csf: [RC.RP-01, RC.RP-04, PR.IR-04, PR.IR-03, PR.DS-11, RC.RP-03]
+  nist_csf: [RC.RP-01, PR.IR-03]
 
   applicable_if:
     regs: [DORA]

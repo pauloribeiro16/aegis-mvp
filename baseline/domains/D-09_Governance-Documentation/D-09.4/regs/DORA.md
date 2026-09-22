@@ -63,7 +63,7 @@ GV.PO-01, ID.AM-08 (primary), GV.OC-03.
   verification_method: TEST
   dependencies: [9.4.1 (when DORA-controller — DORA Art. 9(4)(a) IS-policy is different record type from RoPA; for DORA financial entities, the GDPR RoPA remains the dedicated authority for processing-activities documentation per CRDA-absence flag; the two artefacts are not substitutable), 9.4.2 (when DORA-NSIE — DORA Art. 9(4)(a) IS-policy documentation + NIS 2 Art. 24 certification-driven records on distinct artefacts; CRDA-recommended COMPLEMENTARY), 9.4.3 (when DORA entity procures CRA-conformant products — DORA Art. 9(4)(a) IS-policy documentation + CRA Annex VII 8-item technical documentation on distinct artefacts; CRDA-recommended COMPLEMENTARY), 9.4.5 (when DORA financial entity deploys high-risk AI — DORA Art. 9(4)(a) IS-policy + AI Act Art. 17(1) QMS on distinct artefacts; CRDA-recommended COMPLEMENTARY)]
 
-  nist_csf: [ID.AM-08, GV.PO-01]
+  nist_csf: [GV.PO-01, ID.AM-08, GV.OC-03]
 
   applicable_if:
     regs: [DORA]

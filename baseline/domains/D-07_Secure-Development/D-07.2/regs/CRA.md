@@ -72,7 +72,7 @@ PR.PS-01, PR.PS-02.
   verification_method: TEST
   dependencies: [7.2.3 (when AI-enabled CRA product — CRA Annex I Part I (2)(j)+(k) outcome-level obligations + AI Act Art. 15(4)–(5) AI-attack-defence categories stack vertically with no OJ-level consolidation rule)]
 
-  nist_csf: [PR.PS-06, PR.PS-02]
+  nist_csf: [PR.PS-01, PR.PS-02]
 
   applicable_if:
     regs: [CRA]

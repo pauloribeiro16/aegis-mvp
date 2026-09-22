@@ -70,7 +70,7 @@ ID.AM-02, GV.SC-03.
   verification_method: TEST
   dependencies: [7.1.3]
 
-  nist_csf: [PR.PS-06, PR.PS-02]
+  nist_csf: [ID.AM-02, GV.SC-03]
 
   applicable_if:
     regs: [CRA]

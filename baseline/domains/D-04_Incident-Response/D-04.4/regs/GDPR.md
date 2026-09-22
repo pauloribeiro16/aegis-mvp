@@ -79,6 +79,7 @@ supervisory-authority evidence loop.)*
   dependencies: [4.2.1 (recovery depends on prior containment classification — the five-event risk class determines which recovery pipeline fires), 4.1.1 (recovery depends on prior `becoming aware` trigger feeding the recovery-event classification)]
 
   nist_csf: [PR.IR-04, PR.DS-11, RC.RP-04]
+  nist_pf: [PR.PO-P3]
 
   applicable_if:
     regs: [GDPR]

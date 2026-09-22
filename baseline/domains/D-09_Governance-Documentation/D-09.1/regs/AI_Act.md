@@ -65,7 +65,8 @@ GOVERN-1.4, MAP-1.1, MEASURE-2.8, MEASURE-2.9, GOVERN-1.1, GOVERN-1.3, GOVERN-1.
   verification_method: TEST
   dependencies: [9.1.1 (when provider/deployer = controller — AI Act QMS as sub-policy of GDPR data-protection policies; AI Act Recital 78 explicit GDPR preservation), 9.1.2 (when NSIE deploys high-risk AI — AI Act QMS as sub-policy of NIS 2 entity-level governance framework), 9.1.3 (when product is both CRA-regulated and AI-Act high-risk — CRA Annex I conformity + AI Act QMS stack; no OJ-level consolidation rule at 9.1), 9.1.4 (when DORA FE deploys high-risk AI — DORA ICT risk-management framework + AI Act QMS + Art. 26(1) deployer measures stack; three-lines-of-defence + QMS compatible governance architectures; DORA-led stack with AI Act QMS as sub-component)]
 
-  nist_csf: [GV.PO-01, GV.PO-02, GV.RM-01, GV.RM-04, GV.OC-03, GV.OC-04]
+  nist_csf: [GV.PO-01, GV.OC-03, GV.OC-04]
+  nist_airmf: [GOVERN-1.4, MAP-1.1, MEASURE-2.8, MEASURE-2.9]
 
   applicable_if:
     regs: [AI_Act]

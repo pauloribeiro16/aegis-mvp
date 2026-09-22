@@ -744,32 +744,45 @@
         "title": "Provider of high-risk AI system operates a documented quality management system with at least 13 enumerated aspects and instructions for use enabling deployer-interpretable transparency",
         "nist_csf": [
           "GV.PO-01",
-          "GV.PO-02",
-          "GV.RM-01",
-          "GV.RM-04",
           "GV.OC-03",
           "GV.OC-04"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_airmf": [
+          "GOVERN-1.4",
+          "MAP-1.1",
+          "MEASURE-2.8",
+          "MEASURE-2.9"
+        ]
       },
       {
         "req_id": "9.2.5",
         "title": "Provider establishes, implements, documents, and maintains a continuous iterative risk-management system across the AI lifecycle with the four Art. 9(2)(a)-(d) steps, cross-coupled with Art. 27 FRIA for certain Annex III categories",
         "nist_csf": [
-          "ID.RA-05",
-          "GV.RM-04"
+          "GV.RM-01",
+          "GV.RM-06"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_airmf": [
+          "GOVERN-1.1",
+          "GOVERN-1.3",
+          "GOVERN-1.5",
+          "MAP-5.1"
+        ]
       },
       {
         "req_id": "9.4.5",
         "title": "Provider of high-risk AI system draws up and keeps up-to-date the Annex IV technical documentation before placing on market or putting into service, the 13-element QMS documentation, and the Art. 19(1) provider logs under their control",
         "nist_csf": [
-          "ID.AM-08",
-          "ID.AM-08",
-          "GV.PO-01"
+          "PR.PS-04",
+          "GV.PO-02"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_airmf": [
+          "MEASURE-2.4",
+          "MEASURE-4.2",
+          "GOVERN-1.4"
+        ]
       }
     ],
     "CRA": [
@@ -778,10 +791,7 @@
         "title": "Manufacturer and OSS-steward cybersecurity policies with verifiable documentation, CVD, support-period, and presumption of conformity via harmonised standards, common specifications, or CSA certification",
         "nist_csf": [
           "GV.PO-01",
-          "GV.PO-02",
-          "GV.SC-01",
-          "GV.SC-04",
-          "GV.OC-03"
+          "GV.SC-01"
         ],
         "scope_overlap": "N"
       },
@@ -789,8 +799,8 @@
         "req_id": "9.2.3",
         "title": "Manufacturer documents the cybersecurity risk assessment referred to in Art. 13(2) covering intended purpose + reasonably foreseeable use + Annex I Part I (2) applicability, updated during support period and recorded in Annex VII §3",
         "nist_csf": [
-          "ID.RA-05",
-          "GV.SC-07"
+          "PR.PS-06",
+          "GV.PO-02"
         ],
         "scope_overlap": "N"
       },
@@ -798,7 +808,7 @@
         "req_id": "9.3.2",
         "title": "Manufacturer draws up product-level technical documentation containing at least the general description and the design/development/production/vulnerability-handling-processes architecture description per Annex VII §1-§2",
         "nist_csf": [
-          "ID.AM-01",
+          "GV.PO-02",
           "ID.AM-02"
         ],
         "scope_overlap": "N"
@@ -807,9 +817,8 @@
         "req_id": "9.4.3",
         "title": "Manufacturer draws up before placing on market the technical documentation per Annex VII §1-§8 8-item content list, keeps it at MSA disposal for at least 10 years or the support period (whichever longer), and provides the EU declaration + CE marking",
         "nist_csf": [
-          "ID.AM-08",
-          "ID.AM-08",
-          "ID.RA-05"
+          "GV.PO-02",
+          "GV.OC-03"
         ],
         "scope_overlap": "N"
       }
@@ -819,14 +828,8 @@
         "req_id": "9.1.4",
         "title": "Financial entity operates a sound, comprehensive, well-documented ICT risk-management framework with three-lines-of-defence and identified, classified, documented ICT supported business functions and assets",
         "nist_csf": [
-          "GV.PO-01",
-          "GV.PO-02",
-          "GV.RM-04",
           "GV.RR-01",
-          "GV.RR-02",
-          "GV.OC-03",
-          "GV.OC-04",
-          "GV.RM-05"
+          "GV.RR-02"
         ],
         "scope_overlap": "N"
       },
@@ -834,8 +837,8 @@
         "req_id": "9.2.4",
         "title": "Financial entity continuously identifies ICT risks and reviews risk scenarios at least yearly under the three-lines-of-defence model with classification and documentation per Art. 7(1)-(2)",
         "nist_csf": [
-          "ID.RA-05",
-          "GV.RR-02"
+          "GV.RR-02",
+          "GV.RM-02"
         ],
         "scope_overlap": "N"
       },
@@ -845,6 +848,7 @@
         "nist_csf": [
           "ID.AM-01",
           "ID.AM-02",
+          "ID.AM-03",
           "ID.AM-05"
         ],
         "scope_overlap": "N"
@@ -853,9 +857,9 @@
         "req_id": "9.4.4",
         "title": "Financial entity develops and documents an information security policy defining rules to protect availability, authenticity, integrity and confidentiality of data, information assets and ICT assets, including those of customers where applicable (Art. 9(4)(a) DORA)",
         "nist_csf": [
+          "GV.PO-01",
           "ID.AM-08",
-          "ID.AM-08",
-          "GV.PO-01"
+          "GV.OC-03"
         ],
         "scope_overlap": "N"
       }
@@ -867,32 +871,43 @@
         "nist_csf": [
           "GV.PO-01",
           "GV.PO-02",
-          "GV.RM-04",
-          "GV.RR-01",
-          "GV.RR-02",
-          "GV.RR-03",
-          "GV.OV-03"
+          "GV.RM-04"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "GV.PO-P1",
+          "GV.PO-P6"
+        ]
       },
       {
         "req_id": "9.2.1",
         "title": "Controller carries out a pre-launch DPIA covering the four Art. 35(7) content items before high-risk personal-data processing, reviewed on change of risk per Art. 35(11) and submitted for prior consultation where residual risk is high",
         "nist_csf": [
-          "ID.RA-04",
-          "ID.RA-05"
+          "ID.RA-01",
+          "ID.RA-05",
+          "ID.RA-06"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "ID.RA-P3",
+          "ID.RA-P4",
+          "ID.RA-P5"
+        ]
       },
       {
         "req_id": "9.4.1",
         "title": "Controller and processor maintain a record of processing activities (RoPA) under Art. 30(1)/(2)/(3)/(4)/(5) GDPR with the 7-item content list, on-DPA-request, subject to the 250-employee exception",
         "nist_csf": [
-          "ID.AM-08",
-          "ID.AM-08",
+          "ID.AM-03",
           "GV.PO-02"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "ID.IM-P1",
+          "ID.IM-P4",
+          "ID.IM-P6",
+          "ID.IM-P8"
+        ]
       }
     ],
     "NIS2": [
@@ -900,10 +915,8 @@
         "req_id": "9.1.2",
         "title": "Essential and important entities establish policies on risk analysis, information system security, and effectiveness assessment, approved and overseen by the management body",
         "nist_csf": [
-          "GV.PO-01",
           "GV.RR-02",
-          "GV.OV-01",
-          "GV.RM-05"
+          "GV.PO-01"
         ],
         "scope_overlap": "N"
       },
@@ -912,7 +925,7 @@
         "title": "Essential and important entities establish and maintain documented policies on risk analysis and information system security on a continuous basis with all-hazards methodology and Cooperation Group coordinated-assessments ingestion",
         "nist_csf": [
           "ID.RA-05",
-          "GV.OV-01"
+          "GV.PO-01"
         ],
         "scope_overlap": "N"
       },
@@ -920,7 +933,6 @@
         "req_id": "9.3.1",
         "title": "Essential and important entities adopt asset-management sub-domain coordinated with access control under NIS 2 Art. 21(2)(i), approved and overseen by the management body",
         "nist_csf": [
-          "PR.PS-01",
           "ID.AM-01",
           "ID.AM-02"
         ],
@@ -930,8 +942,8 @@
         "req_id": "9.4.2",
         "title": "Member States encourage use of European or internationally accepted standards and specifications for the security of network and information systems, with Commission delegated acts under Art. 24(2) and ENISA candidate scheme request under Art. 24(3)",
         "nist_csf": [
-          "ID.AM-08",
-          "ID.AM-08"
+          "GV.SC-04",
+          "GV.OC-03"
         ],
         "scope_overlap": "N"
       }
@@ -946,10 +958,8 @@
       "GV.RM-01",
       "GV.RM-04",
       "GV.RM-06",
-      "ID.AM-08",
       "ID.RA-03",
       "ID.RA-04",
-      "ID.RA-05",
       "ID.RA-06",
       "PR.PS-04",
       "RC.RP-03"
@@ -961,10 +971,7 @@
       "GV.PO-02",
       "GV.SC-01",
       "GV.SC-04",
-      "GV.SC-07",
-      "ID.AM-01",
       "ID.AM-02",
-      "ID.AM-08",
       "ID.RA-04",
       "ID.RA-05",
       "PR.PS-06"
@@ -972,13 +979,10 @@
     "DORA": [
       "GV.OC-01",
       "GV.OC-03",
-      "GV.OC-04",
       "GV.OV-02",
       "GV.PO-01",
-      "GV.PO-02",
       "GV.RM-02",
       "GV.RM-04",
-      "GV.RM-05",
       "GV.RR-01",
       "GV.RR-02",
       "ID.AM-01",
@@ -997,14 +1001,9 @@
       "GV.PO-01",
       "GV.PO-02",
       "GV.RM-04",
-      "GV.RR-01",
-      "GV.RR-02",
-      "GV.RR-03",
       "ID.AM-03",
-      "ID.AM-08",
       "ID.IM-04",
       "ID.RA-01",
-      "ID.RA-04",
       "ID.RA-05",
       "ID.RA-06",
       "PR.AA-02",
@@ -1014,16 +1013,13 @@
     ],
     "NIS2": [
       "GV.OC-03",
-      "GV.OV-01",
       "GV.OV-03",
       "GV.PO-01",
-      "GV.RM-05",
       "GV.RM-06",
       "GV.RR-02",
       "GV.SC-04",
       "ID.AM-01",
       "ID.AM-02",
-      "ID.AM-08",
       "ID.IM-01",
       "ID.RA-05",
       "ID.RA-06",

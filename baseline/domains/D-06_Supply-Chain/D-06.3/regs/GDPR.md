@@ -62,7 +62,8 @@ phase_1A_role: 1_of_N
   verification_method: TEST
   dependencies: [6.1.1 (processor-selection discipline feeds DPA party-list and sub-processor chain), 6.3.4 (clause-list union when same ICT provider is processor — GDPR-specific clauses retained)]
 
-  nist_csf: [GV.SC-02, GV.SC-03, GV.SC-04, GV.OC-03, ID.AM-08]
+  nist_csf: [GV.SC-03]
+  nist_pf: [ID.DE-P3]
 
   applicable_if:
     regs: [GDPR]

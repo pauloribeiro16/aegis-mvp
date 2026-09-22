@@ -72,6 +72,7 @@ GV.AT-P1, GV.AT-P2.
   dependencies: [8.1.1 (8.1 awareness substrate is upstream governance input — annual general awareness + this quarterly role-specific), 8.2.2 (Conditional Y on controller-NSIE adopting Member-State encouragement — GDPR role-specific + NIS 2 employee risk-identification stack), 8.2.4 (when DORA-controller — DORA Art. 13(6) carrier + GDPR role-specific sub-component)]
 
   nist_csf: [PR.AT-02, PR.AT-01]
+  nist_pf: [GV.AT-P1, GV.AT-P2]
 
   applicable_if:
     regs: [GDPR]

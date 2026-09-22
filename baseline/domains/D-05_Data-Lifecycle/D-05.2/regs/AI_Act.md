@@ -68,6 +68,7 @@ MEASURE-2.4, MEASURE-4.2, GOVERN-1.4.
   dependencies: [5.2.1 (when AI log contains personal data — floor-within-ceiling relationship binds; operative range is [6 months, "necessary"] with AI Act setting the floor and GDPR setting the cap; the provider chooses actual retention within the range based on intended purpose)]
 
   nist_csf: [PR.PS-04, GV.PO-02]
+  nist_airmf: [MEASURE-2.4, MEASURE-4.2, GOVERN-1.4]
 
   applicable_if:
     regs: [AI_ACT]

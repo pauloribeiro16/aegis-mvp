@@ -65,7 +65,8 @@ ID.IM-P1, ID.IM-P4, ID.IM-P6, ID.IM-P8, CT.DM-P9, CM.PO-P1, CM.AW-P1, CM.AW-P3.
   verification_method: TEST
   dependencies: [9.4.2 (when controller = NSIE — RoPA + certification-driven records on distinct artefacts; substantively scope-disjoint per CRDA `N (typically)`), 9.4.3 (when controller = manufacturer — RoPA + Annex VII 8-item technical documentation on distinct artefacts; substantively scope-disjoint per CRDA `N (typically)`), 9.4.4 (when DORA-controller — DORA Art. 9(4)(a) IS-policy is different record type from RoPA; for DORA financial entities, the GDPR RoPA remains the dedicated authority for processing-activities documentation per CRDA-absence flag), 9.4.5 (when provider/deployer = controller — RoPA + AI Act Annex IV + Art. 17 QMS on three parallel artefacts; AI Act Recital 78 explicit GDPR preservation; no OJ-level consolidation rule for documentation)]
 
-  nist_csf: [ID.AM-08, GV.PO-02]
+  nist_csf: [ID.AM-03, GV.PO-02]
+  nist_pf: [ID.IM-P1, ID.IM-P4, ID.IM-P6, ID.IM-P8]
 
   applicable_if:
     regs: [GDPR]

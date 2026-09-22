@@ -68,7 +68,8 @@ PR.DS-10, ID.AM-08, GV.SC-04.
   verification_method: TEST
   dependencies: [5.3.2 (when CRA-classified product processes personal data — the controller-side Art. 17 path is executed through the manufacturer's (2)(m) affordance at the architectural layer; the manufacturer enables the deletion affordance, the controller operationalises the data-subject right through that affordance)]
 
-  nist_csf: [PR.DS-10, ID.AM-08, GV.SC-04]
+  nist_csf: [PR.DS-10, ID.AM-08]
+  nist_pf: [CT.DM-P4, CT.DM-P5]
 
   applicable_if:
     regs: [GDPR]

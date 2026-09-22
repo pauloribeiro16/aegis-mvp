@@ -85,6 +85,7 @@ protected, maintained, and tested.)*
   dependencies: []
 
   nist_csf: [PR.IR-03, PR.IR-04, PR.DS-11]
+  nist_airmf: [MEASURE-2.6, MEASURE-2.7, MANAGE-2.3]
 
   applicable_if:
     regs: [AI_Act]

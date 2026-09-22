@@ -72,7 +72,8 @@ MEASURE-2.7, MAP-3.2, MANAGE-1.3.
   verification_method: TEST
   dependencies: [7.2.1 (when AI-enabled CRA product — CRA Annex I Part I (2)(j)+(k) outcome-level obligations + AI Act Art. 15(4)–(5) AI-attack-defence categories stack vertically with no OJ-level consolidation rule; CRA-side outcomes + AI Act AI-attack-defence categories are complementary with non-substitution)]
 
-  nist_csf: [PR.PS-06, ID.RA-01]
+  nist_csf: [ID.RA-04, PR.PS-06, RS.MI-01, RS.MA-03]
+  nist_airmf: [MEASURE-2.7, MAP-3.2, MANAGE-1.3]
 
   applicable_if:
     regs: [AI_Act]

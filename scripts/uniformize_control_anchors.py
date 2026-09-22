@@ -68,7 +68,7 @@ _TOK = r"(?:GV|ID|PR|DE|RS|RC)\.[A-Z]{2}-\d{2}(?: \(primary\))?"
 RE_STRICT_LIST = re.compile(rf"^{_TOK}(?:,\s*{_TOK})*\.?\s*$")
 RE_YAML_FENCE = re.compile(r"^```")
 RE_NIST_LINE = re.compile(r"^(\s*)nist_csf:\s*\[([^\]]*)\]\s*$")
-RE_SR_FIELD = re.compile(r"source_SR?:\s*(SR-[A-Z0-9_]+-\d+)")
+RE_SR_FIELD = re.compile(r"source_[sS][rR]:\s*(SR-[A-Z0-9_]+-\d+)")
 RE_CLAUSE = re.compile(r"^\*\*Clause: ([A-Za-z0-9_\-]+)\*\*")
 RE_CA_LINE = re.compile(r"^(?:- )?\*\*Control anchors:\*\*")
 RE_YAML_FENCE_INDENTED = re.compile(r"^\s*```")
@@ -645,9 +645,26 @@ def summarize(rep, changes, applied):
     if not applied:
         print("\nDry run: nothing written. Re-run with --apply to write changes.")
         return
+    # sidecar is ACCUMULATIVE: prior documented replacements (e.g. the Sub-SO
+    # corrections of a previous run) must survive alongside the new ones —
+    # verify_no_loss.py needs every documented transformation for coverage.
+    merged = list(changes)
+    if CHANGES_JSON.exists():
+        try:
+            prior = json.loads(CHANGES_JSON.read_text(encoding="utf-8-sig"))
+        except (json.JSONDecodeError, OSError):
+            prior = {"changes": []}
+        seen = {(c.get("file"), c.get("old_line"), c.get("new_line")) for c in merged}
+        for c in prior.get("changes", []):
+            key = (c.get("file"), c.get("old_line"), c.get("new_line"))
+            if key not in seen:
+                seen.add(key)
+                merged.append(c)
+        print(f"sidecar merged: {len(changes)} new + "
+              f"{len(merged) - len(changes)} prior documented replacements")
     CHANGES_JSON.write_text(json.dumps(
         {"policy": "dashboard-wins uniformization; applied by scripts/uniformize_control_anchors.py",
-         "applied_on": date.today().isoformat(), "changes": changes},
+         "applied_on": date.today().isoformat(), "changes": merged},
         ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     write_ledger(rep, changes)
     print(f"\nsidecar: {CHANGES_JSON}")

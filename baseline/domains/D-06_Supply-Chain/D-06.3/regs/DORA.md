@@ -62,7 +62,7 @@ phase_1A_role: 1_of_N
   verification_method: TEST
   dependencies: [6.1.4 (ICT-third-party risk assessment + four-factor proportionality shapes contract depth and CIF designation), 6.3.1 (clause-list union when same ICT provider is processor — GDPR-specific clauses retained; this is the operative effect of the CORRECTED CRDA pair), 6.4.4 (CIF audit/access rights are the boundary-side handle that backs up the contractual CIF clauses; per Art. 30(3)(e)(i)/(ii))]
 
-  nist_csf: [GV.SC-01, GV.SC-02, GV.SC-03, GV.SC-04, ID.AM-04, DE.CM-06]
+  nist_csf: [GV.SC-02, ID.AM-04]
 
   applicable_if:
     regs: [DORA]

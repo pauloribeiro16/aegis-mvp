@@ -65,7 +65,8 @@ MEASURE-2.4, MEASURE-4.2, GOVERN-1.4, GOVERN-2.1, MAP-1.1, MEASURE-2.8, MEASURE-
   verification_method: TEST
   dependencies: [9.4.1 (when provider/deployer = controller — GDPR RoPA + AI Act Annex IV + AI Act Art. 17(1) QMS on three parallel artefacts; AI Act Recital 78 explicit GDPR preservation; no OJ-level consolidation rule for documentation), 9.4.2 (when NSIE deploys high-risk AI — NIS 2 Art. 24 certification-driven records + AI Act Art. 17(1) QMS on distinct artefacts; CRDA-recommended COMPLEMENTARY), 9.4.3 (when CRA-regulated product is also high-risk AI system — CRA Annex VII + AI Act Annex IV + AI Act Art. 17(1) QMS on three parallel artefacts; no OJ-level consolidation rule for documentation at 9.4 — the CRA Art. 13(4) sentence 2 risk-assessment consolidation rule at 9.2 covers the *risk-assessment object* not the *documentation object*), 9.4.4 (when DORA financial entity deploys high-risk AI — DORA Art. 9(4)(a) IS-policy + AI Act Art. 17(1) QMS on distinct artefacts; CRDA-recommended COMPLEMENTARY)]
 
-  nist_csf: [ID.AM-08, GV.PO-01]
+  nist_csf: [PR.PS-04, GV.PO-02]
+  nist_airmf: [MEASURE-2.4, MEASURE-4.2, GOVERN-1.4]
 
   applicable_if:
     regs: [AI_Act]

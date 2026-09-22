@@ -78,7 +78,8 @@ propagation procedure).)*
   verification_method: TEST
   dependencies: []
 
-  nist_csf: [PR.DS-01, PR.DS-10, ID.AM-08]
+  nist_csf: [PR.DS-01, ID.AM-08]
+  nist_pf: [CT.DM-P1, CT.DM-P3]
 
   applicable_if:
     regs: [GDPR]

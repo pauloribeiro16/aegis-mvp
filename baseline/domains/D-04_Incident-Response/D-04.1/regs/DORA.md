@@ -72,7 +72,7 @@ from Art. 17(1) `detect/manage/notify` 3-way.)*
   verification_method: TEST
   dependencies: [4.1.1 (when DORA financial entity is also controller — DORA detection architecture feeds GDPR `becoming aware` for personal-data subset), 4.1.2 (when DORA + NIS 2 cross-sector — DORA Art. 10 satisfies NIS 2 ICT-hazard detection; NIS 2 chapeau extends to physical + operational hazards)]
 
-  nist_csf: [DE.CM-01, DE.CM-09, DE.AE-02, RS.MA-01, RS.MA-02, RS.MA-03]
+  nist_csf: [DE.CM-01, DE.CM-09, DE.AE-02]
 
   applicable_if:
     regs: [DORA]

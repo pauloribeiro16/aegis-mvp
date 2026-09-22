@@ -69,7 +69,7 @@ specifically by PR.DS-02.)*
   verification_method: TEST
   dependencies: ["1.3 (Key/Certificate Management — pending generation)", "3.x (Mutual Authentication — pending generation)"]
 
-  nist_csf: [PR.DS-02]
+  nist_csf: [PR.DS-01, PR.DS-02, PR.DS-10, ID.AM-08]
 
   applicable_if:
     regs: [DORA]

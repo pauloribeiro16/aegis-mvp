@@ -64,7 +64,7 @@ RS.MA-02, RS.CO-02.
   verification_method: TEST
   dependencies: [4.1.3 (notification clock depends on 4.1 CRA product-internal recording feeding the AEV detection trigger), 4.2.3 (notification content requires prior exploitation-mitigation discipline feeding 72h tier nature-of-exploit section)]
 
-  nist_csf: [RS.MA-02, RS.CO-02, RS.AN-03, RS.AN-07]
+  nist_csf: [RS.MA-02, RS.CO-02]
 
   applicable_if:
     regs: [CRA]

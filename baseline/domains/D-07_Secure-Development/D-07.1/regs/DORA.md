@@ -69,7 +69,7 @@ ID.RA-01, ID.RA-03.
   verification_method: TEST
   dependencies: [7.1.1 (when DORA FE is also controller — GDPR Art. 25(1) data-protection overlay on DORA change-mgmt), 7.1.2 (when DORA FE is also NSIE — DORA Art. 9(4)(e) change-mgmt operationalises NIS 2 maintenance phase for ICT-hazard subset; NIS 2 chapeau extends to physical + operational hazards), 7.1.3 (when DORA FE deploys / manufactures CRA product — CRA-conformant-product procurement feeds DORA design-procurement baseline), 7.1.5 (when DORA FE deploys high-risk AI — DORA change-mgmt six-step operational gate + AI Act QMS governance gate stack)]
 
-  nist_csf: [PR.PS-06]
+  nist_csf: [ID.RA-01, ID.RA-03]
 
   applicable_if:
     regs: [DORA]

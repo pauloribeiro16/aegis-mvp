@@ -66,6 +66,7 @@ CT.DM-P1, CT.DM-P6.
   dependencies: []
 
   nist_csf: [PR.DS-10, ID.AM-08]
+  nist_pf: [CT.DM-P1, CT.DM-P6]
 
   applicable_if:
     regs: [GDPR]

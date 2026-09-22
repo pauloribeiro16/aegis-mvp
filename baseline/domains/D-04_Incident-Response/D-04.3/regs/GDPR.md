@@ -66,6 +66,7 @@ CM.AW-P7, CM.PO-P2.
   dependencies: [4.1.1 (notification requires prior `becoming aware` moment; 72h clock binds to 4.1 GDPR trigger anchor), 4.2.1 (notification content requires prior containment classification feeding Art. 33(3)(d) Measures-taken section)]
 
   nist_csf: [RS.CO-02, RS.MA-04, RS.MA-03]
+  nist_pf: [CM.AW-P7, CM.PO-P2]
 
   applicable_if:
     regs: [GDPR]

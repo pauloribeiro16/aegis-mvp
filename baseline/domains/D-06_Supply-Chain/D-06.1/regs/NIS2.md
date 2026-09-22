@@ -82,7 +82,7 @@ assessment has been documented for each direct supplier.)*
   verification_method: TEST
   dependencies: [6.1.1 (when controller-NSIE combined — processor-tier feeds supplier-tier for data-processing supplier), 6.1.3 (when NIS 2 entity deploys/manufactures CRA product — supplier-tier on manufacturer stacks with component-tier), 6.1.4 (when financial entity = NIS 2 essential entity — DORA Art. 28(1) satisfies NIS 2 ICT-hazard subset; NIS 2 chapeau extends to physical + operational hazards via lex specialis analysis)]
 
-  nist_csf: [GV.SC-02, GV.SC-03, GV.SC-04, ID.AM-04, ID.RA-01, ID.RA-02]
+  nist_csf: [GV.SC-02, GV.SC-03]
 
   applicable_if:
     regs: [NIS2]

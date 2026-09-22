@@ -83,7 +83,7 @@ executes against — provisioning, role-transition review, separation).)*
   verification_method: TEST
   dependencies: [3.2.2 (workforce identity feeds the staff-authentication event at the entity-side boundary)]
 
-  nist_csf: [PR.AA-01, PR.AA-05, PR.AT-02]
+  nist_csf: [PR.AA-01, PR.AA-05]
 
   applicable_if:
     regs: [NIS2]

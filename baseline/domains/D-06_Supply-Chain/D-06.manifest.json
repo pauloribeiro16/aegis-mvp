@@ -462,8 +462,7 @@
         "title": "Three-anchored SBOM architecture: machine-readable format covering at least top-level dependencies authored at release + retained in technical documentation under Annex VII §2(b) + disclosed to MSAs on reasoned request under Annex VII §8 + optional user access under Annex II §9",
         "nist_csf": [
           "ID.AM-02",
-          "GV.SC-02",
-          "GV.SC-03"
+          "GV.SC-02"
         ],
         "scope_overlap": "N"
       },
@@ -471,10 +470,8 @@
         "req_id": "6.3.3",
         "title": "Importer pre-market verification (Art. 19) + distributor due-care + non-conformity escalation (Art. 20) + component-vulnerability reporting (Art. 13(6)) — regulatory economic-operator duties, NOT DPA-style contracts",
         "nist_csf": [
-          "GV.SC-02",
           "GV.SC-04",
-          "RS.MI-01",
-          "RS.MA-04"
+          "RS.MI-02"
         ],
         "scope_overlap": "N"
       },
@@ -483,10 +480,7 @@
         "title": "Art. 18 written authorised representative mandate + Art. 21 own-name/trademark manufacturer-equivalent + Art. 22 third-party substantial-modification manufacturer-status + Art. 23 10-year upstream/downstream economic-operator identification log",
         "nist_csf": [
           "GV.RR-02",
-          "GV.SC-03",
-          "GV.SC-04",
-          "GV.OC-03",
-          "GV.SC-02"
+          "GV.SC-03"
         ],
         "scope_overlap": "N"
       }
@@ -496,9 +490,7 @@
         "req_id": "6.1.4",
         "title": "ICT-third-party-as-financial-entity-counterparty risk under Art. 28(1) four-factor proportionality (nature, scale, complexity, importance) with Art. 28(5) CIF escalator",
         "nist_csf": [
-          "GV.SC-01",
           "GV.SC-02",
-          "GV.SC-03",
           "ID.AM-04"
         ],
         "scope_overlap": "N"
@@ -507,12 +499,8 @@
         "req_id": "6.3.4",
         "title": "Art. 30(1)+(2) 9-element ICT-contract closed-list + Art. 28(5) standards record + Art. 30(3) CIF-only clauses (audit/access/exit) — clause-list union with GDPR Art. 28(3) when same ICT provider is processor",
         "nist_csf": [
-          "GV.SC-01",
           "GV.SC-02",
-          "GV.SC-03",
-          "GV.SC-04",
-          "ID.AM-04",
-          "DE.CM-06"
+          "ID.AM-04"
         ],
         "scope_overlap": "N"
       },
@@ -532,22 +520,24 @@
         "title": "Processor-as-legal-entity due diligence with documented `sufficient guarantees` and Art. 28(3) DPA closed-list clauses",
         "nist_csf": [
           "GV.SC-02",
-          "GV.SC-03",
-          "ID.AM-04"
+          "GV.SC-03"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "ID.DE-P5",
+          "ID.IM-P2"
+        ]
       },
       {
         "req_id": "6.3.1",
         "title": "Art. 28(3)(a)–(h) 8-element DPA closed-list contracts + Art. 46 transfer safeguards + Art. 48 international-agreement filter for third-country legal-process exposure",
         "nist_csf": [
-          "GV.SC-02",
-          "GV.SC-03",
-          "GV.SC-04",
-          "GV.OC-03",
-          "ID.AM-08"
+          "GV.SC-03"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "ID.DE-P3"
+        ]
       },
       {
         "req_id": "6.4.1",
@@ -556,7 +546,11 @@
           "GV.OC-02",
           "GV.RR-02"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "GV.PO-P3",
+          "GV.PO-P4"
+        ]
       }
     ],
     "NIS2": [
@@ -565,11 +559,7 @@
         "title": "Direct-supplier-as-relationship security with Art. 21(2)(d) `direct` scope-limiter, Art. 21(1) `appropriate and proportionate` chapeau, and Art. 21(3) three-prong supplier assessment",
         "nist_csf": [
           "GV.SC-02",
-          "GV.SC-03",
-          "GV.SC-04",
-          "ID.AM-04",
-          "ID.RA-01",
-          "ID.RA-02"
+          "GV.SC-03"
         ],
         "scope_overlap": "N"
       },
@@ -578,12 +568,7 @@
         "title": "Art. 21(2)(d) direct-supplier contractual-security embedding + Art. 21(3) three-prong assessment evidence + Art. 22 coordinated-assessment ingestion",
         "nist_csf": [
           "GV.SC-02",
-          "GV.SC-03",
-          "GV.SC-04",
-          "ID.AM-04",
-          "ID.RA-01",
-          "ID.RA-02",
-          "PR.PS-06"
+          "GV.SC-03"
         ],
         "scope_overlap": "N"
       },
@@ -592,11 +577,7 @@
         "title": "Art. 23(6)/(8) cross-MS SPOC / CSIRT / ENISA notification routing + Art. 21(2)(d) `direct` supplier/service-provider scope register + Art. 22 coordinated supply-chain risk-assessment ingestion",
         "nist_csf": [
           "RS.MA-04",
-          "GV.SC-05",
-          "GV.SC-02",
-          "GV.SC-03",
-          "ID.AM-04",
-          "ID.RA-02"
+          "GV.SC-05"
         ],
         "scope_overlap": "N"
       }
@@ -613,7 +594,8 @@
       "ID.AM-02",
       "ID.RA-02",
       "RS.MA-04",
-      "RS.MI-01"
+      "RS.MI-01",
+      "RS.MI-02"
     ],
     "DORA": [
       "DE.CM-06",
@@ -630,7 +612,6 @@
       "GV.SC-02",
       "GV.SC-03",
       "GV.SC-04",
-      "ID.AM-04",
       "ID.AM-08"
     ],
     "NIS2": [
@@ -901,6 +882,7 @@
     "GDPR": [
       "GV.PO-P3",
       "GV.PO-P4",
+      "ID.DE-P3",
       "ID.DE-P5",
       "ID.IM-P2"
     ]

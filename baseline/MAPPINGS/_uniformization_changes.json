@@ -5,6 +5,742 @@
     {
       "file": "baseline/domains/D-01_Data-Protection/D-01.1/regs/DORA.md",
       "subdomain": "D-01.1",
+      "old_line": "  nist_csf: [PR.DS-01]",
+      "new_line": "  nist_csf: [PR.DS-01, PR.DS-02, PR.DS-10, ID.AM-08]",
+      "sr": "SR-DORA-001",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-01_Data-Protection/D-01.2/regs/DORA.md",
+      "subdomain": "D-01.2",
+      "old_line": "  nist_csf: [PR.DS-02]",
+      "new_line": "  nist_csf: [PR.DS-01, PR.DS-02, PR.DS-10, ID.AM-08]",
+      "sr": "SR-DORA-001",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-01_Data-Protection/D-01.3/regs/DORA.md",
+      "subdomain": "D-01.3",
+      "old_line": "  nist_csf: [PR.AA-03, PR.AA-04, PR.DS-01, GV.RM-04]",
+      "new_line": "  nist_csf: [PR.AA-03, PR.AA-04]",
+      "sr": "SR-DORA-002",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-01_Data-Protection/D-01.3/regs/GDPR.md",
+      "subdomain": "D-01.3",
+      "old_line": "  nist_csf: [PR.DS-01, PR.IR-03]",
+      "new_line": "  nist_csf: [PR.DS-01]",
+      "sr": "SR-GDPR-003",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-01_Data-Protection/D-01.4/regs/DORA.md",
+      "subdomain": "D-01.4",
+      "old_line": "  nist_csf: [PR.DS-01, PR.DS-02, PR.DS-10, ID.AM-05]",
+      "new_line": "  nist_csf: [PR.DS-01, PR.DS-02, PR.DS-10, ID.AM-08]",
+      "sr": "SR-DORA-001",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-01_Data-Protection/D-01.4/regs/GDPR.md",
+      "subdomain": "D-01.4",
+      "old_line": "  nist_csf: [PR.DS-01, PR.DS-10, ID.AM-08]",
+      "new_line": "  nist_csf: [PR.DS-01, ID.AM-08]",
+      "sr": "SR-GDPR-005",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-02_Vulnerability-Management/D-02.1/regs/AI_Act.md",
+      "subdomain": "D-02.1",
+      "old_line": "  nist_csf: [ID.RA-03, ID.RA-04, ID.RA-06, PR.PS-06, RS.MI-01, RS.MA-03, GV.RM-01, GV.RM-06]",
+      "new_line": "  nist_csf: [GV.RM-01, GV.RM-06]",
+      "sr": "SR-AIACT-001",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-02_Vulnerability-Management/D-02.1/regs/CRA.md",
+      "subdomain": "D-02.1",
+      "old_line": "  nist_csf: [ID.RA-01, ID.AM-02, PR.PS-02]",
+      "new_line": "  nist_csf: [ID.RA-01, PR.PS-02]",
+      "sr": "SR-CRA-006",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-02_Vulnerability-Management/D-02.1/regs/DORA.md",
+      "subdomain": "D-02.1",
+      "old_line": "  nist_csf: [ID.RA-01, ID.RA-03, ID.RA-05, ID.IM-04, PR.PS-02, GV.OV-02]",
+      "new_line": "  nist_csf: [ID.RA-01, ID.RA-03]",
+      "sr": "SR-DORA-004",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-02_Vulnerability-Management/D-02.1/regs/GDPR.md",
+      "subdomain": "D-02.1",
+      "old_line": "  nist_csf: [ID.RA-01, PR.PS-02, ID.RA-05, ID.IM-02]",
+      "new_line": "  nist_csf: [ID.RA-01, PR.PS-02]",
+      "sr": "SR-GDPR-007",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-02_Vulnerability-Management/D-02.2/regs/CRA.md",
+      "subdomain": "D-02.2",
+      "old_line": "  nist_csf: [PR.PS-02, PR.IR-03, ID.RA-01, ID.RA-06, PR.PS-01, GV.OV-02]",
+      "new_line": "  nist_csf: [PR.PS-02, ID.RA-06]",
+      "sr": "SR-CRA-010",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-02_Vulnerability-Management/D-02.2/regs/DORA.md",
+      "subdomain": "D-02.2",
+      "old_line": "  nist_csf: [PR.PS-01, PR.PS-02, PR.IR-01, PR.IR-03, ID.RA-01]",
+      "new_line": "  nist_csf: [PR.PS-01, PR.IR-01, PR.IR-03]",
+      "sr": "SR-DORA-006",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-02_Vulnerability-Management/D-02.3/regs/CRA.md",
+      "subdomain": "D-02.3",
+      "old_line": "  nist_csf: [GV.PO-01, GV.SC-04, RS.CO-03]",
+      "new_line": "  nist_csf: [GV.PO-01, GV.SC-04]",
+      "sr": "SR-CRA-019",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-02_Vulnerability-Management/D-02.4/regs/DORA.md",
+      "subdomain": "D-02.4",
+      "old_line": "  nist_csf: [GV.OV-02, ID.RA-01, ID.RA-04, PR.PS-06]",
+      "new_line": "  nist_csf: [GV.OV-02, ID.RA-01, PR.PS-06]",
+      "sr": "SR-DORA-008",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-03_Access-Control/D-03.1/regs/CRA.md",
+      "subdomain": "D-03.1",
+      "old_line": "  nist_csf: [PR.AA-01, PR.AA-05, PR.AA-06, ID.AM-01, DE.CM-09]",
+      "new_line": "  nist_csf: [PR.AA-01, ID.AM-01]",
+      "sr": "SR-CRA-023",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-03_Access-Control/D-03.1/regs/GDPR.md",
+      "subdomain": "D-03.1",
+      "old_line": "  nist_csf: [PR.AA-02, PR.AA-03, ID.AM-08]",
+      "new_line": "  nist_csf: [PR.AA-03, PR.AA-02]",
+      "sr": "SR-GDPR-009",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-03_Access-Control/D-03.1/regs/NIS2.md",
+      "subdomain": "D-03.1",
+      "old_line": "  nist_csf: [PR.AA-01, PR.AA-05, PR.AT-02]",
+      "new_line": "  nist_csf: [PR.AA-01, PR.AA-05]",
+      "sr": "SR-NIS2-003",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-03_Access-Control/D-03.2/regs/CRA.md",
+      "subdomain": "D-03.2",
+      "old_line": "  nist_csf: [PR.AA-01, PR.AA-05, PR.AA-06, ID.AM-01, DE.CM-09]",
+      "new_line": "  nist_csf: [PR.AA-01, ID.AM-01]",
+      "sr": "SR-CRA-023",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-03_Access-Control/D-03.2/regs/GDPR.md",
+      "subdomain": "D-03.2",
+      "old_line": "  nist_csf: [PR.AA-05, PR.AA-06, PR.AT-02]",
+      "new_line": "  nist_csf: [PR.AA-05, PR.AA-06]",
+      "sr": "SR-GDPR-011",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-03_Access-Control/D-03.2/regs/NIS2.md",
+      "subdomain": "D-03.2",
+      "old_line": "  nist_csf: [PR.AA-03, PR.AA-05, PR.DS-02, PR.IR-03]",
+      "new_line": "  nist_csf: [PR.AA-03, PR.AA-05]",
+      "sr": "SR-NIS2-006",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-03_Access-Control/D-03.3/regs/CRA.md",
+      "subdomain": "D-03.3",
+      "old_line": "  nist_csf: [PR.AA-01, PR.AA-05, PR.AA-06, PR.PS-04, ID.AM-01, DE.CM-09]",
+      "new_line": "  nist_csf: [PR.AA-05, PR.AA-06, DE.CM-09]",
+      "sr": "SR-CRA-024",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-03_Access-Control/D-03.3/regs/DORA.md",
+      "subdomain": "D-03.3",
+      "old_line": "  nist_csf: [PR.AA-03, PR.AA-04, PR.AA-05, PR.AA-06]",
+      "new_line": "  nist_csf: [PR.AA-05, PR.AA-06]",
+      "sr": "SR-DORA-010",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-03_Access-Control/D-03.3/regs/GDPR.md",
+      "subdomain": "D-03.3",
+      "old_line": "  nist_csf: [PR.AA-05, PR.AA-06, PR.AT-02]",
+      "new_line": "  nist_csf: [PR.AA-05, PR.AA-06]",
+      "sr": "SR-GDPR-011",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-03_Access-Control/D-03.3/regs/NIS2.md",
+      "subdomain": "D-03.3",
+      "old_line": "  nist_csf: [PR.AA-01, PR.AA-05, ID.AM-01, ID.AM-02]",
+      "new_line": "  nist_csf: [PR.AA-01, PR.AA-05]",
+      "sr": "SR-NIS2-003",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-03_Access-Control/D-03.4/regs/CRA.md",
+      "subdomain": "D-03.4",
+      "old_line": "  nist_csf: [PR.PS-01, ID.AM-08, GV.SC-03]",
+      "new_line": "  nist_csf: [PR.PS-01, ID.AM-08]",
+      "sr": "SR-CRA-025",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-03_Access-Control/D-03.4/regs/GDPR.md",
+      "subdomain": "D-03.4",
+      "old_line": "  nist_csf: [PR.PS-01, ID.AM-08, GV.PO-01]",
+      "new_line": "  nist_csf: [PR.PS-01, ID.AM-08]",
+      "sr": "SR-GDPR-013",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.1/regs/CRA.md",
+      "subdomain": "D-04.1",
+      "old_line": "  nist_csf: [DE.CM-09, PR.PS-04, RS.MA-02]",
+      "new_line": "  nist_csf: [PR.PS-04, DE.AE-08]",
+      "sr": "SR-CRA-027",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.1/regs/DORA.md",
+      "subdomain": "D-04.1",
+      "old_line": "  nist_csf: [DE.CM-01, DE.CM-09, DE.AE-02, RS.MA-01, RS.MA-02, RS.MA-03]",
+      "new_line": "  nist_csf: [DE.CM-01, DE.CM-09, DE.AE-02]",
+      "sr": "SR-DORA-011",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.1/regs/GDPR.md",
+      "subdomain": "D-04.1",
+      "old_line": "  nist_csf: [DE.CM-01, DE.CM-09, DE.AE-02, PR.PS-04, RS.MA-02]",
+      "new_line": "  nist_csf: [DE.CM-01, DE.CM-09, RS.MA-02]",
+      "sr": "SR-GDPR-014",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.1/regs/NIS2.md",
+      "subdomain": "D-04.1",
+      "old_line": "  nist_csf: [DE.CM-01, DE.CM-09, DE.AE-02, PR.PS-04, RS.MA-01]",
+      "new_line": "  nist_csf: [RS.MA-01, RS.AN-03]",
+      "sr": "SR-NIS2-008",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.2/regs/CRA.md",
+      "subdomain": "D-04.2",
+      "old_line": "  nist_csf: [PR.IR-03, PR.IR-04, DE.CM-09]",
+      "new_line": "  nist_csf: [PR.IR-03, ID.AM-08]",
+      "sr": "SR-CRA-043",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.2/regs/DORA.md",
+      "subdomain": "D-04.2",
+      "old_line": "  nist_csf: [RC.RP-01, RC.RP-04, PR.IR-04, PR.IR-03, PR.DS-11, RC.RP-03]",
+      "new_line": "  nist_csf: [RC.RP-01, PR.IR-03]",
+      "sr": "SR-DORA-013",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.2/regs/GDPR.md",
+      "subdomain": "D-04.2",
+      "old_line": "  nist_csf: [RS.MI-01, RS.MI-02, PR.DS-01, ID.AM-08, PR.IR-04, RC.RP-04]",
+      "new_line": "  nist_csf: [RS.MI-01, RS.MI-02, PR.DS-01]",
+      "sr": "SR-GDPR-015",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.2/regs/NIS2.md",
+      "subdomain": "D-04.2",
+      "old_line": "  nist_csf: [RS.MI-01, RS.MI-02, PR.IR-03, PR.IR-04, RC.RP-01]",
+      "new_line": "  nist_csf: [RS.MA-01, RS.AN-03]",
+      "sr": "SR-NIS2-008",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.3/regs/CRA.md",
+      "subdomain": "D-04.3",
+      "old_line": "  nist_csf: [RS.MA-02, RS.CO-02, RS.AN-03, RS.AN-07]",
+      "new_line": "  nist_csf: [RS.MA-02, RS.CO-02]",
+      "sr": "SR-CRA-029",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.3/regs/DORA.md",
+      "subdomain": "D-04.3",
+      "old_line": "  nist_csf: [RS.CO-02, RS.MA-04, RS.MA-03]",
+      "new_line": "  nist_csf: [RS.CO-02, RS.MA-04]",
+      "sr": "SR-DORA-017",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.3/regs/NIS2.md",
+      "subdomain": "D-04.3",
+      "old_line": "  nist_csf: [RS.MA-04, RS.MA-02, RS.MA-03]",
+      "new_line": "  nist_csf: [RS.MA-04, RS.MA-02]",
+      "sr": "SR-NIS2-010",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.4/regs/DORA.md",
+      "subdomain": "D-04.4",
+      "old_line": "  nist_csf: [RC.RP-01, RC.RP-03, RC.RP-04, PR.IR-03, PR.IR-04, PR.DS-11]",
+      "new_line": "  nist_csf: [RC.RP-01, PR.IR-03]",
+      "sr": "SR-DORA-013",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-05_Data-Lifecycle/D-05.1/regs/AI_Act.md",
+      "subdomain": "D-05.1",
+      "old_line": "  nist_csf: [ID.AM-03, ID.AM-08, PR.PS-06, PR.DS-01, GV.OC-03]",
+      "new_line": "  nist_csf: [ID.RA-01, ID.RA-04, PR.PS-06, GV.SC-04]",
+      "sr": "SR-AIACT-003",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-05_Data-Lifecycle/D-05.1/regs/GDPR.md",
+      "subdomain": "D-05.1",
+      "old_line": "  nist_csf: [ID.AM-08, ID.AM-03, GV.OC-03, GV.PO-01]",
+      "new_line": "  nist_csf: [ID.AM-08, ID.AM-03]",
+      "sr": "SR-GDPR-025",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-05_Data-Lifecycle/D-05.2/regs/CRA.md",
+      "subdomain": "D-05.2",
+      "old_line": "  nist_csf: [PR.PS-02, GV.OV-02, GV.OC-04]",
+      "new_line": "  nist_csf: [PR.PS-02, GV.OV-02]",
+      "sr": "SR-CRA-016",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-05_Data-Lifecycle/D-05.3/regs/GDPR.md",
+      "subdomain": "D-05.3",
+      "old_line": "  nist_csf: [PR.DS-10, ID.AM-08, GV.SC-04]",
+      "new_line": "  nist_csf: [PR.DS-10, ID.AM-08]",
+      "sr": "SR-GDPR-030",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-06_Supply-Chain/D-06.1/regs/DORA.md",
+      "subdomain": "D-06.1",
+      "old_line": "  nist_csf: [GV.SC-01, GV.SC-02, GV.SC-03, ID.AM-04]",
+      "new_line": "  nist_csf: [GV.SC-02, ID.AM-04]",
+      "sr": "SR-DORA-019",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-06_Supply-Chain/D-06.1/regs/GDPR.md",
+      "subdomain": "D-06.1",
+      "old_line": "  nist_csf: [GV.SC-02, GV.SC-03, ID.AM-04]",
+      "new_line": "  nist_csf: [GV.SC-02, GV.SC-03]",
+      "sr": "SR-GDPR-033",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-06_Supply-Chain/D-06.1/regs/NIS2.md",
+      "subdomain": "D-06.1",
+      "old_line": "  nist_csf: [GV.SC-02, GV.SC-03, GV.SC-04, ID.AM-04, ID.RA-01, ID.RA-02]",
+      "new_line": "  nist_csf: [GV.SC-02, GV.SC-03]",
+      "sr": "SR-NIS2-020",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-06_Supply-Chain/D-06.2/regs/CRA.md",
+      "subdomain": "D-06.2",
+      "old_line": "  nist_csf: [ID.AM-02, GV.SC-02, GV.SC-03]",
+      "new_line": "  nist_csf: [ID.AM-02, GV.SC-02]",
+      "sr": "SR-CRA-008",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-06_Supply-Chain/D-06.3/regs/CRA.md",
+      "subdomain": "D-06.3",
+      "old_line": "  nist_csf: [GV.SC-02, GV.SC-04, RS.MI-01, RS.MA-04]",
+      "new_line": "  nist_csf: [GV.SC-04, RS.MI-02]",
+      "sr": "SR-CRA-051",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-06_Supply-Chain/D-06.3/regs/DORA.md",
+      "subdomain": "D-06.3",
+      "old_line": "  nist_csf: [GV.SC-01, GV.SC-02, GV.SC-03, GV.SC-04, ID.AM-04, DE.CM-06]",
+      "new_line": "  nist_csf: [GV.SC-02, ID.AM-04]",
+      "sr": "SR-DORA-019",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-06_Supply-Chain/D-06.3/regs/GDPR.md",
+      "subdomain": "D-06.3",
+      "old_line": "  nist_csf: [GV.SC-02, GV.SC-03, GV.SC-04, GV.OC-03, ID.AM-08]",
+      "new_line": "  nist_csf: [GV.SC-03]",
+      "sr": "SR-GDPR-034",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-06_Supply-Chain/D-06.3/regs/NIS2.md",
+      "subdomain": "D-06.3",
+      "old_line": "  nist_csf: [GV.SC-02, GV.SC-03, GV.SC-04, ID.AM-04, ID.RA-01, ID.RA-02, PR.PS-06]",
+      "new_line": "  nist_csf: [GV.SC-02, GV.SC-03]",
+      "sr": "SR-NIS2-020",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-06_Supply-Chain/D-06.4/regs/CRA.md",
+      "subdomain": "D-06.4",
+      "old_line": "  nist_csf: [GV.RR-02, GV.SC-03, GV.SC-04, GV.OC-03, GV.SC-02]",
+      "new_line": "  nist_csf: [GV.RR-02, GV.SC-03]",
+      "sr": "SR-CRA-059",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-06_Supply-Chain/D-06.4/regs/NIS2.md",
+      "subdomain": "D-06.4",
+      "old_line": "  nist_csf: [RS.MA-04, GV.SC-05, GV.SC-02, GV.SC-03, ID.AM-04, ID.RA-02]",
+      "new_line": "  nist_csf: [RS.MA-04, GV.SC-05]",
+      "sr": "SR-NIS2-018",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.1/regs/AI_Act.md",
+      "subdomain": "D-07.1",
+      "old_line": "  nist_csf: [PR.PS-06, ID.RA-01]",
+      "new_line": "  nist_csf: [PR.PS-06, PR.IR-03, ID.RA-04]",
+      "sr": "SR-AIACT-014",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.1/regs/CRA.md",
+      "subdomain": "D-07.1",
+      "old_line": "  nist_csf: [PR.PS-06, PR.PS-01]",
+      "new_line": "  nist_csf: [PR.PS-06, GV.PO-02]",
+      "sr": "SR-CRA-064",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.1/regs/DORA.md",
+      "subdomain": "D-07.1",
+      "old_line": "  nist_csf: [PR.PS-06]",
+      "new_line": "  nist_csf: [ID.RA-01, ID.RA-03]",
+      "sr": "SR-DORA-004",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.1/regs/NIS2.md",
+      "subdomain": "D-07.1",
+      "old_line": "  nist_csf: [PR.PS-06, PR.PS-02]",
+      "new_line": "  nist_csf: [PR.PS-06, GV.SC-02]",
+      "sr": "SR-NIS2-026",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.2/regs/AI_Act.md",
+      "subdomain": "D-07.2",
+      "old_line": "  nist_csf: [PR.PS-06, ID.RA-01]",
+      "new_line": "  nist_csf: [ID.RA-04, PR.PS-06, RS.MI-01, RS.MA-03]",
+      "sr": "SR-AIACT-016",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.2/regs/CRA.md",
+      "subdomain": "D-07.2",
+      "old_line": "  nist_csf: [PR.PS-06, PR.PS-02]",
+      "new_line": "  nist_csf: [PR.PS-01, PR.PS-02]",
+      "sr": "SR-CRA-067",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.2/regs/DORA.md",
+      "subdomain": "D-07.2",
+      "old_line": "  nist_csf: [PR.PS-06]",
+      "new_line": "  nist_csf: [PR.PS-01, PR.PS-02, PR.PS-06]",
+      "sr": "SR-DORA-023",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.3/regs/CRA.md",
+      "subdomain": "D-07.3",
+      "old_line": "  nist_csf: [PR.PS-06, PR.PS-02]",
+      "new_line": "  nist_csf: [ID.AM-02, GV.SC-03]",
+      "sr": "SR-CRA-009",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.4/regs/CRA.md",
+      "subdomain": "D-07.4",
+      "old_line": "  nist_csf: [GV.OV-01, GV.PO-02, PR.PS-02, GV.SC-04, GV.OV-02, ID.IM-04]",
+      "new_line": "  nist_csf: [GV.OV-01, GV.PO-02]",
+      "sr": "SR-CRA-069",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-08_Human-Factors/D-08.2/regs/AI_Act.md",
+      "subdomain": "D-08.2",
+      "old_line": "  nist_csf: [PR.AT-02, PR.AT-01, GV.RR-02, GV.RR-04, GV.RR-01]",
+      "new_line": "  nist_csf: [PR.AT-02, PR.AT-01, GV.RR-02]",
+      "sr": "SR-AIACT-013",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.1/regs/AI_Act.md",
+      "subdomain": "D-09.1",
+      "old_line": "  nist_csf: [GV.PO-01, GV.PO-02, GV.RM-01, GV.RM-04, GV.OC-03, GV.OC-04]",
+      "new_line": "  nist_csf: [GV.PO-01, GV.OC-03, GV.OC-04]",
+      "sr": "SR-AIACT-010",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.1/regs/CRA.md",
+      "subdomain": "D-09.1",
+      "old_line": "  nist_csf: [GV.PO-01, GV.PO-02, GV.SC-01, GV.SC-04, GV.OC-03]",
+      "new_line": "  nist_csf: [GV.PO-01, GV.SC-01]",
+      "sr": "SR-CRA-072",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.1/regs/DORA.md",
+      "subdomain": "D-09.1",
+      "old_line": "  nist_csf: [GV.PO-01, GV.PO-02, GV.RM-04, GV.RR-01, GV.RR-02, GV.OC-03, GV.OC-04, GV.RM-05]",
+      "new_line": "  nist_csf: [GV.RR-01, GV.RR-02]",
+      "sr": "SR-DORA-026",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.1/regs/GDPR.md",
+      "subdomain": "D-09.1",
+      "old_line": "  nist_csf: [GV.PO-01, GV.PO-02, GV.RM-04, GV.RR-01, GV.RR-02, GV.RR-03, GV.OV-03]",
+      "new_line": "  nist_csf: [GV.PO-01, GV.PO-02, GV.RM-04]",
+      "sr": "SR-GDPR-043",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.1/regs/NIS2.md",
+      "subdomain": "D-09.1",
+      "old_line": "  nist_csf: [GV.PO-01, GV.RR-02, GV.OV-01, GV.RM-05]",
+      "new_line": "  nist_csf: [GV.RR-02, GV.PO-01]",
+      "sr": "SR-NIS2-032",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.2/regs/AI_Act.md",
+      "subdomain": "D-09.2",
+      "old_line": "  nist_csf: [ID.RA-05, GV.RM-04]",
+      "new_line": "  nist_csf: [GV.RM-01, GV.RM-06]",
+      "sr": "SR-AIACT-001",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.2/regs/CRA.md",
+      "subdomain": "D-09.2",
+      "old_line": "  nist_csf: [ID.RA-05, GV.SC-07]",
+      "new_line": "  nist_csf: [PR.PS-06, GV.PO-02]",
+      "sr": "SR-CRA-064",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.2/regs/DORA.md",
+      "subdomain": "D-09.2",
+      "old_line": "  nist_csf: [ID.RA-05, GV.RR-02]",
+      "new_line": "  nist_csf: [GV.RR-02, GV.RM-02]",
+      "sr": "SR-DORA-028",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.2/regs/GDPR.md",
+      "subdomain": "D-09.2",
+      "old_line": "  nist_csf: [ID.RA-04, ID.RA-05]",
+      "new_line": "  nist_csf: [ID.RA-01, ID.RA-05, ID.RA-06]",
+      "sr": "SR-GDPR-045",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.2/regs/NIS2.md",
+      "subdomain": "D-09.2",
+      "old_line": "  nist_csf: [ID.RA-05, GV.OV-01]",
+      "new_line": "  nist_csf: [ID.RA-05, GV.PO-01]",
+      "sr": "SR-NIS2-035",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.3/regs/CRA.md",
+      "subdomain": "D-09.3",
+      "old_line": "  nist_csf: [ID.AM-01, ID.AM-02]",
+      "new_line": "  nist_csf: [GV.PO-02, ID.AM-02]",
+      "sr": "SR-CRA-087",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.3/regs/DORA.md",
+      "subdomain": "D-09.3",
+      "old_line": "  nist_csf: [ID.AM-01, ID.AM-02, ID.AM-05]",
+      "new_line": "  nist_csf: [ID.AM-01, ID.AM-02, ID.AM-03, ID.AM-05]",
+      "sr": "SR-DORA-029",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.3/regs/NIS2.md",
+      "subdomain": "D-09.3",
+      "old_line": "  nist_csf: [PR.PS-01, ID.AM-01, ID.AM-02]",
+      "new_line": "  nist_csf: [ID.AM-01, ID.AM-02]",
+      "sr": "SR-NIS2-005",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.4/regs/AI_Act.md",
+      "subdomain": "D-09.4",
+      "old_line": "  nist_csf: [ID.AM-08, GV.PO-01]",
+      "new_line": "  nist_csf: [PR.PS-04, GV.PO-02]",
+      "sr": "SR-AIACT-008",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.4/regs/CRA.md",
+      "subdomain": "D-09.4",
+      "old_line": "  nist_csf: [ID.AM-08, ID.RA-05]",
+      "new_line": "  nist_csf: [GV.PO-02, GV.OC-03]",
+      "sr": "SR-CRA-085",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.4/regs/DORA.md",
+      "subdomain": "D-09.4",
+      "old_line": "  nist_csf: [ID.AM-08, GV.PO-01]",
+      "new_line": "  nist_csf: [GV.PO-01, ID.AM-08, GV.OC-03]",
+      "sr": "SR-DORA-031",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.4/regs/GDPR.md",
+      "subdomain": "D-09.4",
+      "old_line": "  nist_csf: [ID.AM-08, GV.PO-02]",
+      "new_line": "  nist_csf: [ID.AM-03, GV.PO-02]",
+      "sr": "SR-GDPR-048",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.4/regs/NIS2.md",
+      "subdomain": "D-09.4",
+      "old_line": "  nist_csf: [ID.AM-08]",
+      "new_line": "  nist_csf: [GV.SC-04, GV.OC-03]",
+      "sr": "SR-NIS2-043",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.1/regs/CRA.md",
+      "subdomain": "D-10.1",
+      "old_line": "  nist_csf: [DE.CM-01, DE.CM-09, ID.IM-04]",
+      "new_line": "  nist_csf: [DE.CM-09, DE.CM-01]",
+      "sr": "SR-CRA-100",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.1/regs/DORA.md",
+      "subdomain": "D-10.1",
+      "old_line": "  nist_csf: [DE.CM-01, DE.CM-09, PR.PS-04, DE.AE-02, ID.RA-01, ID.RA-03]",
+      "new_line": "  nist_csf: [DE.CM-01, DE.CM-09, PR.PS-04]",
+      "sr": "SR-DORA-030",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.1/regs/GDPR.md",
+      "subdomain": "D-10.1",
+      "old_line": "  nist_csf: [DE.CM-01, DE.CM-09, DE.AE-02, ID.IM-04]",
+      "new_line": "  nist_csf: [RS.CO-03, RS.MA-04]",
+      "sr": "SR-GDPR-019",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.1/regs/NIS2.md",
+      "subdomain": "D-10.1",
+      "old_line": "  nist_csf: [DE.CM-01, DE.CM-09, DE.AE-02, ID.IM-04]",
+      "new_line": "  nist_csf: [DE.CM-01, DE.CM-09]",
+      "sr": "SR-NIS2-009",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.2/regs/AI_Act.md",
+      "subdomain": "D-10.2",
+      "old_line": "  nist_csf: [PR.PS-04, DE.CM-09, DE.AE-03, RC.RP-03]",
+      "new_line": "  nist_csf: [PR.PS-04, DE.CM-09, DE.AE-03]",
+      "sr": "SR-AIACT-007",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.2/regs/CRA.md",
+      "subdomain": "D-10.2",
+      "old_line": "  nist_csf: [PR.DS-11, ID.AM-08, GV.PO-02, ID.RA-04]",
+      "new_line": "  nist_csf: [GV.OC-03, ID.RA-04, GV.SC-04]",
+      "sr": "SR-CRA-088",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.2/regs/GDPR.md",
+      "subdomain": "D-10.2",
+      "old_line": "  nist_csf: [PR.DS-11, PR.PS-04, DE.CM-01, GV.PO-02]",
+      "new_line": "  nist_csf: [GV.PO-02, GV.OV-03]",
+      "sr": "SR-GDPR-044",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.3/regs/AI_Act.md",
+      "subdomain": "D-10.3",
+      "old_line": "  nist_csf: [ID.IM-03, ID.RA-05, PR.PS-04, GV.OV-03]",
+      "new_line": "  nist_csf: [ID.RA-01, ID.RA-04, PR.PS-06, GV.SC-04]",
+      "sr": "SR-AIACT-003",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.3/regs/CRA.md",
+      "subdomain": "D-10.3",
+      "old_line": "  nist_csf: [ID.IM-03, ID.RA-05, DE.AE-02, GV.OV-03]",
+      "new_line": "  nist_csf: [ID.RA-04, GV.OV-01]",
+      "sr": "SR-CRA-101",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.3/regs/DORA.md",
+      "subdomain": "D-10.3",
+      "old_line": "  nist_csf: [ID.IM-03, ID.RA-05, DE.AE-02, GV.OV-03, PR.PS-04]",
+      "new_line": "  nist_csf: [GV.OV-02, ID.RA-01, PR.PS-06]",
+      "sr": "SR-DORA-008",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.3/regs/GDPR.md",
+      "subdomain": "D-10.3",
+      "old_line": "  nist_csf: [ID.IM-03, ID.RA-05, DE.AE-02, GV.OV-03]",
+      "new_line": "  nist_csf: [RS.CO-03, RS.MA-04]",
+      "sr": "SR-GDPR-019",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.3/regs/NIS2.md",
+      "subdomain": "D-10.3",
+      "old_line": "  nist_csf: [ID.IM-03, ID.RA-05, GV.OV-03, DE.AE-02]",
+      "new_line": "  nist_csf: [GV.PO-01, ID.IM-01, GV.OV-03]",
+      "sr": "SR-NIS2-037",
+      "surface": "req_yaml_nist_csf"
+    },
+    {
+      "file": "baseline/domains/D-01_Data-Protection/D-01.1/regs/DORA.md",
+      "subdomain": "D-01.1",
       "old_line": "PR.DS-01, PR.DS-02, PR.DS-10, ID.AM-05.",
       "new_line": "PR.DS-01, PR.DS-02, PR.DS-10, ID.AM-08.",
       "sr": "SR-DORA-001",

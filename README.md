@@ -43,7 +43,8 @@ aegis-mvp/
 │   ├── 02_Regulatory_Mapping_and_Generic_Objectives.md
 │   ├── CONTROLS/        NIST CSF 2.0 / PF 1.1 / AI RMF referentials (anchor resolvability)
 │   ├── MAPPINGS/        sr_control_mappings/<REG>.json — complete SR↔CSF/PF/AI-RMF store
-│   │                    extracted from the frozen dashboards (+ uniformization ledger)
+│   │                    extracted from the frozen dashboards; traceability/ — full chain
+│   │                    regulation → article → clause → objective → requirement → control
 │   └── domains/         canonical 38 sub-domains, MODULAR per-regulation layout:
 │                         D-XX.Y/{_index.md, objective.md, regs/<REG>.md,
 │                         regs/<REG>.ambiguity.md, cross/<R1>-<R2>.md,
@@ -83,7 +84,10 @@ aegis-mvp/
   frozen per-regulation dashboards (`Methodology_compact/00_METHODOLOGY/
   00_VISUALISATIONS`, read-only) and verified contradiction-free by
   `scripts/verify_no_loss.py` (checks G/H). Ledger:
-  `baseline/MAPPINGS/_control_uniformization.md`.
+  `baseline/MAPPINGS/_control_uniformization.md`. Every security requirement
+  carries its full chain — regulation, articles, ambiguity clauses, objectives
+  (HSO → SO-REG → Sub-SO), and all mapped controls — in
+  `baseline/MAPPINGS/traceability/` (regenerate with `scripts/build_traceability.py`).
 
 ## Status — Increment 0 (MVP)
 

@@ -64,7 +64,7 @@ GV.OC-03, ID.RA-04, GV.SC-04, ID.RA-05, GV.OV-01, GV.PO-02, PR.PS-02.
   verification_method: TEST
   dependencies: [10.2.1 (N (typically) — substantively scope-disjoint by record-type distinctness; CRA product documentation vs. GDPR compliance records; no joint condition on this pair alone; engages only via DORA or AI Act third-regulator joint-condition), 10.2.3 (Conditional — Y when DORA entity procures CRA-conformant products; CRA product documentation + DORA CIA+A information security policy stack; CRA product documentation feeds the DORA entity-level audit-records stack), 10.2.4 (Conditional — Y when CRA-regulated product is also high-risk AI; CRA Annex VII §5–§8 product documentation + Annex I Part II (3) effective/regular tests + AI Act Art. 12(1)+(2) automatic event logging + Art. 19(1) provider log retention stack; product documentation traceability feeds AI Act automatic event logging chain)]
 
-  nist_csf: [PR.DS-11, ID.AM-08, GV.PO-02, ID.RA-04]
+  nist_csf: [GV.OC-03, ID.RA-04, GV.SC-04]
 
   applicable_if:
     regs: [CRA]

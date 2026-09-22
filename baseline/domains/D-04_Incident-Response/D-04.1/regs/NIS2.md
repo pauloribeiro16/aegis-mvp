@@ -72,7 +72,7 @@ detection evidence.)*
   verification_method: TEST
   dependencies: [4.1.3 (when NIS 2 entity deploys / manufactures CRA product — CRA product-internal recording feeds entity-level detection), 4.1.4 (when DORA + NIS 2 cross-sector — DORA Art. 10 satisfies NIS 2 detection for ICT-hazard subset; NIS 2 chapeau extends to physical + operational hazards)]
 
-  nist_csf: [DE.CM-01, DE.CM-09, DE.AE-02, PR.PS-04, RS.MA-01]
+  nist_csf: [RS.MA-01, RS.AN-03]
 
   applicable_if:
     regs: [NIS2]

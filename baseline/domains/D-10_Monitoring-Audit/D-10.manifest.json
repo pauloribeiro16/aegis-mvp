@@ -497,7 +497,13 @@
           "ID.IM-04",
           "GV.OV-03"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_airmf": [
+          "MANAGE-4.1",
+          "MEASURE-3.1",
+          "MEASURE-4.1",
+          "GOVERN-1.5"
+        ]
       },
       {
         "req_id": "10.2.4",
@@ -505,21 +511,31 @@
         "nist_csf": [
           "PR.PS-04",
           "DE.CM-09",
-          "DE.AE-03",
-          "RC.RP-03"
+          "DE.AE-03"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_airmf": [
+          "MEASURE-2.4",
+          "MEASURE-3.1",
+          "GOVERN-1.6"
+        ]
       },
       {
         "req_id": "10.3.5",
         "title": "Provider ensures high-risk AI system is tested for the purpose of identifying risk management measures, performs consistently for intended purpose, may be tested in real-world conditions per Article 60, and achieves appropriate accuracy/robustness/cybersecurity throughout the AI-system lifecycle",
         "nist_csf": [
-          "ID.IM-03",
-          "ID.RA-05",
-          "PR.PS-04",
-          "GV.OV-03"
+          "ID.RA-01",
+          "ID.RA-04",
+          "PR.PS-06",
+          "GV.SC-04"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_airmf": [
+          "MEASURE-1.1",
+          "MEASURE-2.1",
+          "MEASURE-2.3",
+          "MAP-3.3"
+        ]
       }
     ],
     "CRA": [
@@ -527,9 +543,8 @@
         "req_id": "10.1.3",
         "title": "Product with digital elements records and monitors relevant internal activity (access to or modification of data, services or functions) with a user opt-out mechanism, and enables vulnerability sharing through a single contact address",
         "nist_csf": [
-          "DE.CM-01",
           "DE.CM-09",
-          "ID.IM-04"
+          "DE.CM-01"
         ],
         "scope_overlap": "N"
       },
@@ -537,10 +552,9 @@
         "req_id": "10.2.2",
         "title": "Manufacturer maintains technical documentation + risk-assessment documentation + test reports + SBOM on MSA reasoned request during the support period with effective/regular tests of the product",
         "nist_csf": [
-          "PR.DS-11",
-          "ID.AM-08",
-          "GV.PO-02",
-          "ID.RA-04"
+          "GV.OC-03",
+          "ID.RA-04",
+          "GV.SC-04"
         ],
         "scope_overlap": "N"
       },
@@ -548,10 +562,8 @@
         "req_id": "10.3.3",
         "title": "Manufacturer carries out effective and regular tests of the product, demonstrates conformity via OJ-codified modules (Module A or Module B+C and H), and includes test reports in technical documentation",
         "nist_csf": [
-          "ID.IM-03",
-          "ID.RA-05",
-          "DE.AE-02",
-          "GV.OV-03"
+          "ID.RA-04",
+          "GV.OV-01"
         ],
         "scope_overlap": "N"
       }
@@ -563,10 +575,7 @@
         "nist_csf": [
           "DE.CM-01",
           "DE.CM-09",
-          "PR.PS-04",
-          "DE.AE-02",
-          "ID.RA-01",
-          "ID.RA-03"
+          "PR.PS-04"
         ],
         "scope_overlap": "N"
       },
@@ -584,11 +593,9 @@
         "req_id": "10.3.4",
         "title": "Financial entity establishes, maintains and reviews a sound and comprehensive digital operational resilience testing programme with a 12-way testing modalities portfolio and TLPT for significant entities on a regular basis",
         "nist_csf": [
-          "ID.IM-03",
-          "ID.RA-05",
-          "DE.AE-02",
-          "GV.OV-03",
-          "PR.PS-04"
+          "GV.OV-02",
+          "ID.RA-01",
+          "PR.PS-06"
         ],
         "scope_overlap": "N"
       }
@@ -598,34 +605,40 @@
         "req_id": "10.1.1",
         "title": "Controller and processor monitor personal-data processing systems for the 5 Art. 32(2) risk types, with breach-`becoming-aware` clock anchoring the Art. 33(1) 72-hour notification",
         "nist_csf": [
-          "DE.CM-01",
-          "DE.CM-09",
-          "DE.AE-02",
-          "ID.IM-04"
+          "RS.CO-03",
+          "RS.MA-04"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "CM.AW-P7",
+          "CM.AW-P8"
+        ]
       },
       {
         "req_id": "10.2.1",
         "title": "Controller and processor maintain compliance records in writing or electronic form with integrity and traceability sufficient to demonstrate compliance and to support supervisory-authority inspections",
         "nist_csf": [
-          "PR.DS-11",
-          "PR.PS-04",
-          "DE.CM-01",
-          "GV.PO-02"
+          "GV.PO-02",
+          "GV.OV-03"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "GV.MT-P3",
+          "GV.PO-P5"
+        ]
       },
       {
         "req_id": "10.3.1",
         "title": "Controller and processor establish a process for regularly testing, assessing and evaluating the effectiveness of technical and organisational measures, with DPIA review at least when there is a change of the risk",
         "nist_csf": [
-          "ID.IM-03",
-          "ID.RA-05",
-          "DE.AE-02",
-          "GV.OV-03"
+          "RS.CO-03",
+          "RS.MA-04"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "CM.AW-P7",
+          "CM.AW-P8"
+        ]
       }
     ],
     "NIS2": [
@@ -634,9 +647,7 @@
         "title": "Essential and important entities establish an incident-handling capability with 6-action lifecycle (prevent, detect, analyse, contain, respond, recover) covering detection of all-hazards incidents",
         "nist_csf": [
           "DE.CM-01",
-          "DE.CM-09",
-          "DE.AE-02",
-          "ID.IM-04"
+          "DE.CM-09"
         ],
         "scope_overlap": "N"
       },
@@ -644,10 +655,9 @@
         "req_id": "10.3.2",
         "title": "Essential and important entities establish policies and procedures to assess the effectiveness of cybersecurity risk-management measures as part of the all-hazards risk-management framework",
         "nist_csf": [
-          "ID.IM-03",
-          "ID.RA-05",
-          "GV.OV-03",
-          "DE.AE-02"
+          "GV.PO-01",
+          "ID.IM-01",
+          "GV.OV-03"
         ],
         "scope_overlap": "N"
       }
@@ -660,11 +670,9 @@
       "GV.OV-03",
       "GV.PO-02",
       "GV.SC-04",
-      "ID.IM-03",
       "ID.IM-04",
       "ID.RA-01",
       "ID.RA-04",
-      "ID.RA-05",
       "PR.IR-03",
       "PR.PS-04",
       "PR.PS-06",
@@ -675,21 +683,15 @@
       "RS.MA-04"
     ],
     "CRA": [
-      "DE.AE-02",
       "DE.CM-01",
       "DE.CM-09",
       "GV.OC-03",
       "GV.OV-01",
-      "GV.OV-03",
       "GV.PO-02",
       "GV.SC-04",
-      "ID.AM-08",
-      "ID.IM-03",
-      "ID.IM-04",
       "ID.RA-01",
       "ID.RA-04",
       "ID.RA-05",
-      "PR.DS-11",
       "PR.PS-02"
     ],
     "DORA": [
@@ -698,14 +700,11 @@
       "DE.CM-09",
       "GV.OC-03",
       "GV.OV-02",
-      "GV.OV-03",
       "GV.PO-01",
       "ID.AM-08",
-      "ID.IM-03",
       "ID.RA-01",
       "ID.RA-03",
       "ID.RA-04",
-      "ID.RA-05",
       "PR.AA-05",
       "PR.AA-06",
       "PR.PS-04",
@@ -713,19 +712,12 @@
       "RS.MA-01"
     ],
     "GDPR": [
-      "DE.AE-02",
       "DE.AE-03",
-      "DE.CM-01",
-      "DE.CM-09",
       "GV.OV-03",
       "GV.PO-02",
       "ID.AM-03",
       "ID.AM-08",
-      "ID.IM-03",
-      "ID.IM-04",
-      "ID.RA-05",
       "PR.DS-01",
-      "PR.DS-11",
       "PR.IR-03",
       "PR.PS-04",
       "RS.AN-07",
@@ -734,16 +726,12 @@
       "RS.MA-04"
     ],
     "NIS2": [
-      "DE.AE-02",
       "DE.CM-01",
       "DE.CM-09",
       "GV.OV-03",
       "GV.PO-01",
       "GV.PO-02",
       "ID.IM-01",
-      "ID.IM-03",
-      "ID.IM-04",
-      "ID.RA-05",
       "RS.MA-03",
       "RS.MA-04"
     ]

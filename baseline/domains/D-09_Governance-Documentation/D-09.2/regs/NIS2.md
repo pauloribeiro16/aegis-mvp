@@ -65,7 +65,7 @@ ID.RA-05 (primary), GV.PO-01, GV.RM-06, ID.RA-06, PR.IR-01.
   verification_method: TEST
   dependencies: [8.3.1 (Art. 20(2) management-body training as literacy prerequisite for Art. 20(1) approve/oversee/liable), 9.2.4 (when DORA-NSIE — DORA continuous + yearly discharges both; EQUAL, DORA-dominant), 9.2.3 (when entity procures CRA-conformant — NIS 2 entity-level operational + CRA product-level pre-market; COMPLEMENTARY; meet at supplier-customer interface — CRA risk-assessment record is an input to the NIS 2 entity's supplier-risk register, cross to 6.1), 9.2.5 (when NSIE deploys high-risk AI — NIS 2 entity-level operational + AI Act AI-system-level continuous iterative; COMPLEMENTARY), 9.2.1 (when controller-NSIE — NIS 2 continuous + GDPR DPIA pre-launch on-change; DIFFERENT-PERSPECTIVE, conditional-Y scope overlap when DPIA conducted for NSIE's processing)]
 
-  nist_csf: [ID.RA-05, GV.OV-01]
+  nist_csf: [ID.RA-05, GV.PO-01]
 
   applicable_if:
     regs: [NIS2]

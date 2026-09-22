@@ -65,7 +65,8 @@ ID.RA-P3, ID.RA-P4, ID.RA-P5, GV.MT-P2.
   verification_method: TEST
   dependencies: [9.2.3 (when controller-manufacturer — DPIA on data-subject rights + CRA risk-assessment on product cybersecurity risk; DIFFERENT-PERSPECTIVE, distinct artefacts, no OJ-level consolidation), 9.2.4 (when DORA-controller — DPIA pre-launch + DORA continuous + yearly; DIFFERENT-PERSPECTIVE, distinct artefacts), 9.2.5 (when AI-system processes personal data — DPIA pre-launch + AI Act Art. 9 continuous iterative; DIFFERENT-PERSPECTIVE; AI Act Recital 78 explicit GDPR preservation), 9.2.2 (when controller-NSIE — DPIA pre-launch on-change + NIS 2 continuous operational; DIFFERENT-PERSPECTIVE, conditional-Y scope overlap when DPIA conducted for NSIE's processing)]
 
-  nist_csf: [ID.RA-04, ID.RA-05]
+  nist_csf: [ID.RA-01, ID.RA-05, ID.RA-06]
+  nist_pf: [ID.RA-P3, ID.RA-P4, ID.RA-P5]
 
   applicable_if:
     regs: [GDPR]

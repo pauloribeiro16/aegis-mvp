@@ -315,8 +315,7 @@
         "title": "Security updates available across support period and the 10-year-or-remainder tail; Annex II information accessible for ≥10 years from placing on market; support-period end-date communicated at purchase",
         "nist_csf": [
           "PR.PS-02",
-          "GV.OV-02",
-          "GV.OC-04"
+          "GV.OV-02"
         ],
         "scope_overlap": "N"
       },
@@ -336,11 +335,14 @@
         "title": "Personal data limited to what is adequate, relevant, and necessary for the processing purpose, with Art. 6(4) compatibility assessment on change of purpose and Art. 9(1) special-category prohibition honoured",
         "nist_csf": [
           "ID.AM-08",
-          "ID.AM-03",
-          "GV.OC-03",
-          "GV.PO-01"
+          "ID.AM-03"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "CT.PO-P4",
+          "CT.DP-P4",
+          "ID.RA-P3"
+        ]
       },
       {
         "req_id": "5.2.1",
@@ -349,17 +351,24 @@
           "ID.AM-08",
           "ID.AM-03"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "CT.PO-P4",
+          "CT.DM-P5"
+        ]
       },
       {
         "req_id": "5.3.1",
         "title": "Personal data erased without undue delay on the data subject's Art. 17(1) request where one of the 6 grounds applies; processor deletes or returns all personal data on contract end per Art. 28(3)(g); cryptographic key destruction as deletion path",
         "nist_csf": [
           "PR.DS-10",
-          "ID.AM-08",
-          "GV.SC-04"
+          "ID.AM-08"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "CT.DM-P4",
+          "CT.DM-P5"
+        ]
       },
       {
         "req_id": "5.4.1",
@@ -368,7 +377,11 @@
           "PR.DS-10",
           "ID.AM-08"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "CT.DM-P1",
+          "CT.DM-P6"
+        ]
       }
     ]
   },
@@ -655,9 +668,12 @@
   "applicable_pf_controls_by_regulation": {
     "GDPR": [
       "CT.DM-P1",
+      "CT.DM-P4",
       "CT.DM-P5",
       "CT.DM-P6",
-      "CT.PO-P4"
+      "CT.DP-P4",
+      "CT.PO-P4",
+      "ID.RA-P3"
     ]
   },
   "applicable_airmf_controls_by_regulation": {

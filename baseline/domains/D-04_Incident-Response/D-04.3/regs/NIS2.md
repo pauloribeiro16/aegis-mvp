@@ -64,7 +64,7 @@ RS.MA-04, RS.MA-02.
   verification_method: TEST
   dependencies: [4.1.2 (notification clock depends on 4.1 NIS 2 awareness event; 24h bound), 4.2.2 (notification content requires prior containment classification feeding 72h tier severity/impact assessment)]
 
-  nist_csf: [RS.MA-04, RS.MA-02, RS.MA-03]
+  nist_csf: [RS.MA-04, RS.MA-02]
 
   applicable_if:
     regs: [NIS2]

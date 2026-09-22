@@ -66,7 +66,8 @@ CM.AW-P7, CM.AW-P8, CM.PO-P1, CM.AW-P5, CT.DM-P3.
   verification_method: TEST
   dependencies: [10.3.2 (Y — when controller = NSIE; GDPR Art. 32(1)(d) effectiveness-evaluation of security measures + NIS 2 Art. 21(2)(f) effectiveness-assessment of risk-management measures; different scopes but same effectiveness objective; partial trigger alignment; entity-discretionary cadence alignment), 10.3.3 (Conditional — Y when controller deploys CRA-regulated products; GDPR Art. 32(1)(d) effectiveness-evaluation of security measures + CRA Annex I Part II (3) effective/regular tests of the product + Annex VIII modules; entity-level vs. product-level; different testing purposes stack without consolidation — **NO OJ-level consolidation rule for testing**), 10.3.4 (Conditional — Y when DORA financial entity is a controller; DORA-led stack with GDPR Art. 32(1)(d) effectiveness-evaluation as sub-component; DORA Art. 24(1) testing programme discharges the financial entity's testing obligation and the GDPR effectiveness-evaluation becomes a sub-component within the DORA-led stack), 10.3.5 (Conditional — Y when high-risk AI system processes personal data; GDPR Art. 32(1)(d) effectiveness-evaluation + AI Act Art. 9(6) testing for risk management + Art. 9(7) real-world-conditions testing + Art. 15(1) baseline testing; entity-level regular testing vs. AI-system-level testing; partial trigger alignment; the two regimes stack without consolidation)]
 
-  nist_csf: [ID.IM-03, ID.RA-05, DE.AE-02, GV.OV-03]
+  nist_csf: [RS.CO-03, RS.MA-04]
+  nist_pf: [CM.AW-P7, CM.AW-P8]
 
   applicable_if:
     regs: [GDPR]

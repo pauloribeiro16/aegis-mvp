@@ -62,7 +62,7 @@ phase_1A_role: 1_of_N
   verification_method: TEST
   dependencies: [6.1.3 (third-party-component due diligence shapes component-vulnerability reporting inputs), 6.4.3 (substantial-modification accountability + 10-year economic-operator identification retention are the boundary-side handles that feed this matrix's records)]
 
-  nist_csf: [GV.SC-02, GV.SC-04, RS.MI-01, RS.MA-04]
+  nist_csf: [GV.SC-04, RS.MI-02]
 
   applicable_if:
     regs: [CRA]

@@ -1,3 +1,103 @@
+<!-- excessive-reclassification-v1 -->
+
+# Reclassification note on `excessive` entries (M7 follow-up)
+
+The auditor's M7 pass flagged 78 entries as `excessive`. A targeted re-read (independent of the auditor's heuristic) distinguishes two cases:
+
+| Kind | Count | Meaning | Fix? |
+|---|---|---|---|
+| **literal duplicates** (same ID listed more than once within one objective's anchor list) | 78 | mechanical noise; fixable with `dedupe_objective_anchors.py` | yes (idempotent, 0 occurrences in this corpus) |
+| **cross-block overlap** (a Sub-SO card and one of its Volere requirements share the same anchor set) | 0 | intentional — the requirement's `nist_csf:` references the consolidated Sub-SO anchors; this is how the corpus is structured | no — these are not redundant |
+
+`dedupe_objective_anchors.py` was written and run; it reports 0 changes (the audit's 78 'excessive' verdicts are all of the cross-block kind). No corpus file has been modified.
+
+## Literal duplicates (none in this corpus)
+
+- ### D-01.1 · DORA · subso SO-D-01.1.DORA: {'PR.DS-01': 2, 'PR.DS-02': 2, 'PR.DS-10': 2}
+- ### D-01.2 · DORA · subso SO-D-01.2.DORA: {'PR.DS-01': 2, 'PR.DS-02': 2, 'PR.DS-10': 2}
+- ### D-01.3 · CRA · subso SO-D-01.3.CRA: {'PR.DS-01': 2, 'PR.AA-05': 2, 'GV.OV-01': 2}
+- ### D-01.3 · DORA · subso SO-D-01.3.DORA: {'PR.AA-03': 4, 'PR.AA-04': 2, 'PR.DS-01': 4, 'GV.RM-04': 2}
+- ### D-01.3 · GDPR · subso SO-D-01.3.GDPR: {'PR.DS-01': 6, 'PR.IR-03': 2}
+- ### D-01.4 · AI_Act · subso SO-D-01.4.AI_Act: {'PR.IR-03': 2, 'PR.IR-04': 4, 'PR.DS-11': 2}
+- ### D-01.4 · CRA · subso SO-D-01.4.CRA: {'PR.DS-01': 2, 'PR.DS-10': 2, 'PR.PS-04': 2}
+- ### D-01.4 · DORA · subso SO-D-01.4.DORA: {'PR.DS-01': 3, 'PR.DS-02': 3, 'PR.DS-10': 3, 'ID.AM-05': 2}
+- ### D-01.4 · GDPR · subso SO-D-01.4.GDPR: {'PR.DS-01': 2, 'ID.AM-08': 3, 'PR.DS-10': 2}
+- ### D-02.1 · CRA · subso SO-D-02.1.CRA: {'ID.RA-01': 2, 'ID.AM-02': 3, 'PR.PS-02': 2}
+- ### D-02.1 · DORA · subso SO-D-02.1.DORA: {'ID.RA-01': 2, 'ID.RA-03': 2, 'GV.OV-02': 2}
+- ### D-02.1 · GDPR · subso SO-D-02.1.GDPR: {'ID.RA-01': 2, 'PR.PS-02': 2, 'ID.RA-05': 2, 'ID.IM-02': 2}
+- ### D-02.1 · NIS2 · subso SO-D-02.1.NIS2: {'ID.RA-01': 2, 'GV.SC-04': 2}
+- ### D-02.3 · NIS2 · subso SO-D-02.3.NIS2: {'ID.RA-01': 2, 'GV.SC-04': 2}
+- ### D-02.4 · AI_Act · subso SO-D-02.4.AI_Act: {'ID.RA-01': 3, 'ID.RA-04': 6, 'PR.PS-06': 3, 'GV.SC-04': 3}
+- ### D-02.4 · CRA · subso SO-D-02.4.CRA: {'ID.RA-01': 6, 'PR.PS-06': 3, 'DE.CM-09': 3}
+- ### D-03.1 · CRA · subso SO-D-03.1.CRA: {'PR.AA-01': 2, 'ID.AM-01': 2, 'PR.AA-05': 2, 'PR.AA-06': 2, 'DE.CM-09': 2}
+- ### D-03.1 · DORA · subso SO-D-03.1.DORA: {'PR.AA-03': 4, 'PR.AA-04': 2}
+- ### D-03.1 · GDPR · subso SO-D-03.1.GDPR: {'PR.AA-03': 2, 'PR.AA-02': 3, 'ID.AM-08': 2}
+- ### D-03.1 · NIS2 · subso SO-D-03.1.NIS2: {'PR.AA-01': 3, 'PR.AA-05': 4, 'PR.AT-02': 2}
+- ### D-03.2 · CRA · subso SO-D-03.2.CRA: {'PR.AA-01': 4, 'PR.AA-05': 4, 'PR.AA-06': 4, 'ID.AM-01': 2, 'DE.CM-09': 2}
+- ### D-03.2 · DORA · subso SO-D-03.2.DORA: {'PR.AA-03': 4, 'PR.AA-04': 2}
+- ### D-03.2 · NIS2 · subso SO-D-03.2.NIS2: {'PR.AA-03': 4, 'PR.AA-05': 2, 'PR.DS-02': 2, 'PR.IR-03': 2}
+- ### D-03.3 · CRA · subso SO-D-03.3.CRA: {'PR.AA-05': 4, 'PR.AA-06': 4, 'DE.CM-09': 2}
+- ### D-03.3 · DORA · subso SO-D-03.3.DORA: {'PR.AA-05': 3, 'PR.AA-06': 3}
+- ### D-03.3 · GDPR · subso SO-D-03.3.GDPR: {'PR.AA-05': 6, 'PR.AA-06': 4, 'PR.AT-02': 2}
+- ### D-03.3 · NIS2 · subso SO-D-03.3.NIS2: {'PR.AA-01': 2, 'PR.AA-05': 4, 'ID.AM-01': 4, 'ID.AM-02': 2}
+- ### D-03.4 · CRA · subso SO-D-03.4.CRA: {'PR.PS-01': 3, 'ID.AM-08': 2, 'GV.SC-03': 2}
+- ### D-03.4 · GDPR · subso SO-D-03.4.GDPR: {'PR.PS-01': 3, 'ID.AM-08': 3}
+- ### D-04.1 · CRA · subso SO-D-04.1.CRA: {'PR.PS-04': 2, 'DE.CM-09': 2}
+- ### D-04.1 · DORA · subso SO-D-04.1.DORA: {'DE.CM-01': 2, 'DE.CM-09': 2, 'DE.AE-02': 4, 'RS.MA-01': 2}
+- ### D-04.1 · GDPR · subso SO-D-04.1.GDPR: {'DE.CM-01': 2}
+- ### D-04.1 · NIS2 · subso SO-D-04.1.NIS2: {'DE.CM-01': 2}
+- ### D-04.2 · CRA · subso SO-D-04.2.CRA: {'PR.IR-03': 2, 'PR.IR-04': 2}
+- ### D-04.2 · DORA · subso SO-D-04.2.DORA: {'RC.RP-01': 2, 'PR.IR-03': 2, 'RC.RP-04': 2, 'PR.IR-04': 4}
+- ### D-04.4 · CRA · subso SO-D-04.4.CRA: {'PR.IR-03': 2, 'ID.AM-08': 2}
+- ### D-04.4 · GDPR · subso SO-D-04.4.GDPR: {'PR.IR-04': 4, 'PR.DS-11': 2, 'RC.RP-04': 2}
+- ### D-04.4 · NIS2 · subso SO-D-04.4.NIS2: {'RC.RP-04': 2, 'PR.DS-11': 2}
+- ### D-05.1 · CRA · subso SO-D-05.1.CRA: {'ID.AM-08': 2, 'ID.AM-03': 2}
+- ### D-05.2 · GDPR · subso SO-D-05.2.GDPR: {'ID.AM-08': 2, 'ID.AM-03': 2}
+- ### D-05.3 · CRA · subso SO-D-05.3.CRA: {'PR.DS-10': 3, 'ID.AM-08': 4, 'PR.DS-02': 3}
+- ### D-06.1 · CRA · subso SO-D-06.1.CRA: {'GV.SC-01': 6, 'GV.SC-02': 2, 'ID.RA-02': 3}
+- ### D-06.1 · DORA · subso SO-D-06.1.DORA: {'GV.SC-02': 4, 'ID.AM-04': 3}
+- ### D-06.1 · GDPR · subso SO-D-06.1.GDPR: {'GV.SC-02': 3, 'GV.SC-04': 2}
+- ### D-06.1 · NIS2 · subso SO-D-06.1.NIS2: {'GV.SC-02': 2}
+- ### D-07.1 · AI_Act · subso SO-D-07.1.AIACT: {'PR.PS-06': 3, 'ID.RA-04': 2, 'ID.RA-01': 2}
+- ### D-07.1 · CRA · subso SO-D-07.1.CRA: {'PR.PS-06': 3}
+- ### D-07.1 · GDPR · subso SO-D-07.1.GDPR: {'PR.PS-06': 2, 'ID.AM-08': 3}
+- ### D-07.1 · NIS2 · subso SO-D-07.1.NIS2: {'PR.PS-06': 3, 'PR.PS-02': 2}
+- ### D-07.2 · AI_Act · subso SO-D-07.2.AIACT: {'ID.RA-04': 2, 'PR.PS-06': 2, 'ID.RA-01': 2}
+- ### D-07.2 · CRA · subso SO-D-07.2.CRA: {'PR.PS-02': 2}
+- ### D-07.2 · DORA · subso SO-D-07.2.DORA: {'PR.PS-06': 5}
+- ### D-07.3 · NIS2 · subso SO-D-07.3.NIS2: {'PR.PS-02': 3, 'ID.RA-01': 6}
+- ### D-07.4 · DORA · subso SO-D-07.4.DORA: {'PR.PS-01': 4, 'PR.PS-02': 5, 'PR.PS-06': 4}
+- ### D-08.1 · CRA · subso SO-D-08.1.CRA: {'PR.AT-01': 4}
+- ### D-08.1 · DORA · subso SO-D-08.1.DORA: {'PR.AT-01': 3, 'PR.AT-02': 3}
+- ### D-08.1 · GDPR · subso SO-D-08.1.GDPR: {'PR.AT-01': 3, 'PR.AT-02': 2}
+- ### D-08.1 · NIS2 · subso SO-D-08.1.NIS2: {'PR.AT-01': 3, 'PR.PS-01': 3}
+- ### D-08.2 · AI_Act · subso SO-D-08.2.AIACT: {'PR.AT-02': 4, 'PR.AT-01': 3, 'GV.RR-02': 4, 'GV.RR-04': 2}
+- ### D-08.2 · CRA · subso SO-D-08.2.CRA: {'PR.AT-02': 3, 'GV.SC-03': 3}
+- ### D-08.2 · DORA · subso SO-D-08.2.DORA: {'PR.AT-01': 3, 'PR.AT-02': 3}
+- ### D-08.2 · GDPR · subso SO-D-08.2.GDPR: {'PR.AT-01': 3, 'PR.AT-02': 2}
+- ### D-08.2 · NIS2 · subso SO-D-08.2.NIS2: {'PR.AT-01': 3, 'PR.AT-02': 3}
+- ### D-08.3 · DORA · subso SO-D-08.3.DORA: {'PR.AT-02': 3, 'GV.RR-01': 3}
+- ### D-09.1 · GDPR · subso SO-D-09.1.GDPR: {'GV.PO-01': 6, 'GV.RM-04': 2}
+- ### D-09.1 · NIS2 · subso SO-D-09.1.NIS2: {'GV.PO-01': 6}
+- ### D-09.2 · NIS2 · subso SO-D-09.2.NIS2: {'ID.RA-05': 3, 'GV.PO-01': 2}
+- ### D-09.3 · NIS2 · subso SO-D-09.3.NIS2: {'ID.AM-01': 4, 'ID.AM-02': 2, 'PR.PS-01': 2}
+- ### D-10.1 · AI_Act · subso SO-D-10.1.AI_Act: {'DE.CM-09': 3, 'ID.IM-04': 2, 'GV.OV-03': 2}
+- ### D-10.1 · GDPR · subso SO-D-10.1.GDPR: {'DE.CM-01': 2}
+- ### D-10.2 · CRA · subso SO-D-10.2.CRA: {'ID.RA-04': 4, 'GV.PO-02': 2, 'PR.PS-02': 2, 'PR.DS-11': 2}
+- ### D-10.2 · DORA · subso SO-D-10.2.DORA: {'GV.PO-01': 3, 'ID.AM-08': 2, 'GV.OC-03': 2}
+- ### D-10.2 · GDPR · subso SO-D-10.2.GDPR: {'GV.PO-02': 2, 'PR.PS-04': 2, 'PR.DS-11': 2}
+- ### D-10.3 · AI_Act · subso SO-D-10.3.AI_Act: {'ID.RA-04': 2, 'ID.IM-03': 2}
+- ### D-10.3 · CRA · subso SO-D-10.3.CRA: {'ID.RA-04': 2, 'ID.RA-01': 2, 'ID.IM-03': 2}
+- ### D-10.3 · DORA · subso SO-D-10.3.DORA: {'ID.RA-04': 2, 'ID.IM-03': 2, 'DE.AE-02': 2}
+- ### D-10.3 · GDPR · subso SO-D-10.3.GDPR: {'ID.IM-03': 2}
+- ### D-10.3 · NIS2 · subso SO-D-10.3.NIS2: {'GV.PO-01': 2, 'GV.OV-03': 2, 'ID.IM-03': 2}
+
+## Cross-block overlaps (representative sample, 10 of 0)
+
+
+
+---
+
 <!-- executive-summary-v1 -->
 
 # Executive summary — objective-anchor audit

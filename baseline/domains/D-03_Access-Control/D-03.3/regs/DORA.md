@@ -87,7 +87,7 @@ financial-sector overlap.)*
   verification_method: TEST
   dependencies: [3.1.4 (staff + service identity substrate feeds the entitlement inventory), 3.2.4 (authentication-strength floor feeds the strong-authentication event at the financial-entity boundary)]
 
-  nist_csf: [PR.AA-03, PR.AA-04, PR.AA-05, PR.AA-06]
+  nist_csf: [PR.AA-05, PR.AA-06]
 
   applicable_if:
     regs: [DORA]

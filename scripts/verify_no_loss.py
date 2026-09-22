@@ -408,7 +408,7 @@ def verify_crosswalk_consistency(cur_root: Path, xwalk_dir: Path, log):
       - Sub-SO `**CSF anchors (from ...)**` strict list lines
     Returns the number of contradictions."""
     RE_NIST = re.compile(r"^(\s*)nist_csf:\s*\[([^\]]*)\]\s*$")
-    RE_SR = re.compile(r"source_SR?:\s*(SR-[A-Z0-9_]+-\d+)")
+    RE_SR = re.compile(r"source_[sS][rR]:\s*(SR-[A-Z0-9_]+-\d+)")
     RE_HDR2 = re.compile(r"^\*\*CSF anchors \(from ([^*]*?)\):\*\*$")
     RE_SRID = re.compile(r"SR-[A-Z0-9_]+-\d+")
     TOK = re.compile(r"\b(?:GV|ID|PR|DE|RS|RC)\.[A-Z]{2}-\d{2}\b")

@@ -90,7 +90,8 @@ lever with the technical-enforcement lever.)*
   verification_method: TEST
   dependencies: [3.1.1 (data-subject identity feeds the verification event at the controller-facing rights-exercise endpoint)]
 
-  nist_csf: [PR.AA-05, PR.AA-06, PR.AT-02]
+  nist_csf: [PR.AA-05, PR.AA-06]
+  nist_pf: [PR.AC-P1, PR.AC-P2, CT.PO-P1]
 
   applicable_if:
     regs: [GDPR]

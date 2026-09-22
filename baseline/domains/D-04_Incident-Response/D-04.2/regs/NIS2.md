@@ -72,7 +72,7 @@ sequence.)*
   verification_method: TEST
   dependencies: [4.1.2 (containment triggered by prior entity-level all-hazards detection event), 4.2.1 (when controller-NSIE — GDPR TOMs inside NIS 2 plan), 4.2.3 (when NIS 2 entity deploys/manufactures CRA product — CRA product-resilience evidence feeds NIS 2 plan), 4.2.4 (when DORA + NIS 2 cross-sector — NIS 2 chapeau coverage is the additional layer for non-financial incidents; physical + operational hazards still bind via NIS 2)]
 
-  nist_csf: [RS.MI-01, RS.MI-02, PR.IR-03, PR.IR-04, RC.RP-01]
+  nist_csf: [RS.MA-01, RS.AN-03]
 
   applicable_if:
     regs: [NIS2]

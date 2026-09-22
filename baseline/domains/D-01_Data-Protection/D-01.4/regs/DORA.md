@@ -72,7 +72,7 @@ with risk strategy) as the supplementary cell anchors.)*
   verification_method: TEST
   dependencies: []
 
-  nist_csf: [PR.DS-01, PR.DS-02, PR.DS-10, ID.AM-05]
+  nist_csf: [PR.DS-01, PR.DS-02, PR.DS-10, ID.AM-08]
 
   applicable_if:
     regs: [DORA]

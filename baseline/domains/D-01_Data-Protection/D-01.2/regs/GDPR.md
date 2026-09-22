@@ -71,6 +71,7 @@ PR.DS-P2, PR.AC-P5.
   dependencies: ["1.3 (Key/Certificate Management — pending generation)", "3.x (Mutual Authentication — pending generation)"]
 
   nist_csf: [PR.DS-02, PR.IR-01]
+  nist_pf: [PR.DS-P2, PR.AC-P5]
 
   applicable_if:
     regs: [GDPR]

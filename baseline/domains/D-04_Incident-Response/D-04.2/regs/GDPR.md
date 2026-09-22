@@ -75,7 +75,8 @@ containment-then-recovery sequence.)*
   verification_method: TEST
   dependencies: [4.1.1 (containment triggered by prior `becoming aware` data-flow detection event), 4.2.2 (when controller is also NSIE — GDPR TOMs documented as section within NIS 2 plan), 4.2.4 (when DORA-controller — GDPR TOMs documented as section within DORA BC arrangements)]
 
-  nist_csf: [RS.MI-01, RS.MI-02, PR.DS-01, ID.AM-08, PR.IR-04, RC.RP-04]
+  nist_csf: [RS.MI-01, RS.MI-02, PR.DS-01]
+  nist_pf: [PR.PO-P7, CT.DM-P10]
 
   applicable_if:
     regs: [GDPR]

@@ -559,7 +559,12 @@
           "RS.MA-03",
           "RS.MA-01"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_airmf": [
+          "MANAGE-2.3",
+          "MANAGE-4.3",
+          "GOVERN-1.1"
+        ]
       }
     ],
     "CRA": [
@@ -567,9 +572,8 @@
         "req_id": "4.1.3",
         "title": "Product-internal activity recorded and monitored with user opt-out where appropriate; corruption / unauthorised modification reported",
         "nist_csf": [
-          "DE.CM-09",
           "PR.PS-04",
-          "RS.MA-02"
+          "DE.AE-08"
         ],
         "scope_overlap": "N"
       },
@@ -578,8 +582,7 @@
         "title": "Product availability preserved after incident via resilience + DoS resistance + cross-product impact minimisation + exploitation mitigation; Art. 13(21) corrective measures on non-conformity",
         "nist_csf": [
           "PR.IR-03",
-          "PR.IR-04",
-          "DE.CM-09"
+          "ID.AM-08"
         ],
         "scope_overlap": "N"
       },
@@ -588,9 +591,7 @@
         "title": "Actively-exploited vulnerability notified on three-tier pattern — 24h early warning + 72h vulnerability notification + 14d final report — to CSIRT + ENISA, with severe-incident (SI) parallel pathway at 24h/72h/1m",
         "nist_csf": [
           "RS.MA-02",
-          "RS.CO-02",
-          "RS.AN-03",
-          "RS.AN-07"
+          "RS.CO-02"
         ],
         "scope_overlap": "N"
       },
@@ -611,10 +612,7 @@
         "nist_csf": [
           "DE.CM-01",
           "DE.CM-09",
-          "DE.AE-02",
-          "RS.MA-01",
-          "RS.MA-02",
-          "RS.MA-03"
+          "DE.AE-02"
         ],
         "scope_overlap": "N"
       },
@@ -623,11 +621,7 @@
         "title": "Financial-entity BC arrangements: dedicated, appropriate and documented response/recovery plans + backup policies + restoration procedures; independent internal audit for non-microenterprises",
         "nist_csf": [
           "RC.RP-01",
-          "RC.RP-04",
-          "PR.IR-04",
-          "PR.IR-03",
-          "PR.DS-11",
-          "RC.RP-03"
+          "PR.IR-03"
         ],
         "scope_overlap": "N"
       },
@@ -636,8 +630,7 @@
         "title": "Major ICT-related incident reported to competent authority `without undue delay`; affected clients informed `without undue delay` as soon as financial entity becomes aware — pending EBA/ESMA/EIOPA RTS (4h pending)",
         "nist_csf": [
           "RS.CO-02",
-          "RS.MA-04",
-          "RS.MA-03"
+          "RS.MA-04"
         ],
         "scope_overlap": "N"
       },
@@ -646,11 +639,7 @@
         "title": "Comprehensive ICT BC policy with dedicated appropriate documented arrangements + response/recovery plans + backup-scoping on criticality/confidentiality + restoration procedures; OJ-corrected Art. 11(2)(a)–(e) BC-policy objectives preserved verbatim",
         "nist_csf": [
           "RC.RP-01",
-          "RC.RP-03",
-          "RC.RP-04",
-          "PR.IR-03",
-          "PR.IR-04",
-          "PR.DS-11"
+          "PR.IR-03"
         ],
         "scope_overlap": "N"
       }
@@ -662,11 +651,14 @@
         "nist_csf": [
           "DE.CM-01",
           "DE.CM-09",
-          "DE.AE-02",
-          "PR.PS-04",
           "RS.MA-02"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "GV.MT-P5",
+          "GV.MT-P3",
+          "CM.AW-P7"
+        ]
       },
       {
         "req_id": "4.2.1",
@@ -674,12 +666,13 @@
         "nist_csf": [
           "RS.MI-01",
           "RS.MI-02",
-          "PR.DS-01",
-          "ID.AM-08",
-          "PR.IR-04",
-          "RC.RP-04"
+          "PR.DS-01"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "PR.PO-P7",
+          "CT.DM-P10"
+        ]
       },
       {
         "req_id": "4.3.1",
@@ -689,7 +682,11 @@
           "RS.MA-04",
           "RS.MA-03"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "CM.AW-P7",
+          "CM.PO-P2"
+        ]
       },
       {
         "req_id": "4.4.1",
@@ -699,7 +696,10 @@
           "PR.DS-11",
           "RC.RP-04"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "PR.PO-P3"
+        ]
       }
     ],
     "NIS2": [
@@ -707,11 +707,8 @@
         "req_id": "4.1.2",
         "title": "Entity-level all-hazards detection operating the Art. 6(8) six-action `detect` leg of incident handling",
         "nist_csf": [
-          "DE.CM-01",
-          "DE.CM-09",
-          "DE.AE-02",
-          "PR.PS-04",
-          "RS.MA-01"
+          "RS.MA-01",
+          "RS.AN-03"
         ],
         "scope_overlap": "N"
       },
@@ -719,11 +716,8 @@
         "req_id": "4.2.2",
         "title": "Entity-level `contain` action within the Art. 6(8) six-action incident-handling lifecycle; entity response plan as procedural wrapper",
         "nist_csf": [
-          "RS.MI-01",
-          "RS.MI-02",
-          "PR.IR-03",
-          "PR.IR-04",
-          "RC.RP-01"
+          "RS.MA-01",
+          "RS.AN-03"
         ],
         "scope_overlap": "N"
       },
@@ -732,8 +726,7 @@
         "title": "Significant incident notified via twin-trigger pattern — 24h early warning + 72h incident notification + 1m final report — to CSIRT or competent authority",
         "nist_csf": [
           "RS.MA-04",
-          "RS.MA-02",
-          "RS.MA-03"
+          "RS.MA-02"
         ],
         "scope_overlap": "N"
       },
@@ -762,10 +755,7 @@
       "GV.SC-04",
       "ID.AM-08",
       "PR.IR-03",
-      "PR.IR-04",
       "PR.PS-04",
-      "RS.AN-03",
-      "RS.AN-07",
       "RS.CO-02",
       "RS.MA-02"
     ],
@@ -782,19 +772,14 @@
       "RS.AN-03",
       "RS.CO-02",
       "RS.MA-01",
-      "RS.MA-02",
-      "RS.MA-03",
       "RS.MA-04"
     ],
     "GDPR": [
-      "DE.AE-02",
       "DE.CM-01",
       "DE.CM-09",
-      "ID.AM-08",
       "PR.DS-01",
       "PR.DS-11",
       "PR.IR-04",
-      "PR.PS-04",
       "RC.RP-04",
       "RS.CO-02",
       "RS.MA-02",
@@ -804,22 +789,14 @@
       "RS.MI-02"
     ],
     "NIS2": [
-      "DE.AE-02",
       "DE.CM-01",
       "DE.CM-09",
       "PR.DS-11",
-      "PR.IR-03",
-      "PR.IR-04",
-      "PR.PS-04",
-      "RC.RP-01",
       "RC.RP-04",
       "RS.AN-03",
       "RS.MA-01",
       "RS.MA-02",
-      "RS.MA-03",
-      "RS.MA-04",
-      "RS.MI-01",
-      "RS.MI-02"
+      "RS.MA-04"
     ]
   },
   "counts": {

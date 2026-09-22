@@ -63,7 +63,7 @@ GV.SC-04, GV.OC-03.
   verification_method: TEST
   dependencies: [9.4.1 (when controller = NSIE — RoPA + certification-driven records on distinct artefacts; substantively scope-disjoint per CRDA `N (typically)`; CRDA `different-perspective` is a taxonomy artifact), 9.4.3 (when NSIE procures CSA-certified CRA products — CRA Art. 27(8)/(9) CSA-certification presumption-of-conformity machinery is the upstream gate for NIS 2 procurements; certification boundary), 9.4.4 (when DORA-NSIE — DORA Art. 9(4)(a) IS-policy documentation + NIS 2 Art. 24 certification-driven records on distinct artefacts; CRDA-recommended COMPLEMENTARY), 9.4.5 (when NSIE deploys high-risk AI — NIS 2 Art. 24 certification-driven records + AI Act Art. 17(1) QMS documentation on distinct artefacts; CRDA-recommended COMPLEMENTARY)]
 
-  nist_csf: [ID.AM-08]
+  nist_csf: [GV.SC-04, GV.OC-03]
 
   applicable_if:
     regs: [NIS2]

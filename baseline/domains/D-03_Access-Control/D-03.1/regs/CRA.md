@@ -81,7 +81,7 @@ visibility leg that pairs with the preventive controls).)*
   verification_method: TEST
   dependencies: [3.2.3 (product-side identity substrate feeds the product-authentication mechanism choice)]
 
-  nist_csf: [PR.AA-01, PR.AA-05, PR.AA-06, ID.AM-01, DE.CM-09]
+  nist_csf: [PR.AA-01, ID.AM-01]
 
   applicable_if:
     regs: [CRA]

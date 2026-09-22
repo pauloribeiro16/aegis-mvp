@@ -68,7 +68,7 @@ PR.PS-06, GV.SC-02.
   verification_method: TEST
   dependencies: [7.1.1 (when controller is also NSIE — GDPR by-design outputs realised through NIS 2 acquisition + development gates), 7.1.3 (when NIS 2 entity procures / manufactures CRA product — NIS 2 supplier-customer boundary references CRA Annex VII technical documentation), 7.1.4 (when DORA financial entity is also NSIE — DORA Art. 9(4)(e) change-mgmt operationalises NIS 2 maintenance phase for ICT-hazard subset; NIS 2 chapeau extends to physical + operational hazards), 7.1.5 (when NIS embeds high-risk AI — NIS 2 procurement gate + AI Act QMS governance gate stack)]
 
-  nist_csf: [PR.PS-06, PR.PS-02]
+  nist_csf: [PR.PS-06, GV.SC-02]
 
   applicable_if:
     regs: [NIS2]

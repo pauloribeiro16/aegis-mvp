@@ -73,6 +73,7 @@ GV.AT-P1, GV.AT-P2.
   dependencies: [8.1.2 (when controller = NSIE — GDPR data-protection module combines with NIS 2 hygiene module into single curriculum), 8.1.4 (when DORA-controller — DORA Art. 13(6) is the carrier programme; GDPR content is a sub-component)]
 
   nist_csf: [PR.AT-01, PR.AT-02]
+  nist_pf: [GV.AT-P1, GV.AT-P2]
 
   applicable_if:
     regs: [GDPR]

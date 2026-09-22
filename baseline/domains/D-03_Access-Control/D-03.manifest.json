@@ -429,10 +429,7 @@
         "title": "Product users, services, and integrated components identities managed in verifiable manner throughout operational lifetime",
         "nist_csf": [
           "PR.AA-01",
-          "PR.AA-05",
-          "PR.AA-06",
-          "ID.AM-01",
-          "DE.CM-09"
+          "ID.AM-01"
         ],
         "scope_overlap": "N"
       },
@@ -441,10 +438,7 @@
         "title": "Appropriate control mechanisms for protection from unauthorised access, which may include authentication",
         "nist_csf": [
           "PR.AA-01",
-          "PR.AA-05",
-          "PR.AA-06",
-          "ID.AM-01",
-          "DE.CM-09"
+          "ID.AM-01"
         ],
         "scope_overlap": "N"
       },
@@ -452,11 +446,8 @@
         "req_id": "3.3.3",
         "title": "Access to product with digital elements limited to authenticated and authorised users, services, and hardware; possible unauthorised access reported; attack surfaces including external interfaces limited (multi-leg product-side authorisation framework)",
         "nist_csf": [
-          "PR.AA-01",
           "PR.AA-05",
           "PR.AA-06",
-          "PR.PS-04",
-          "ID.AM-01",
           "DE.CM-09"
         ],
         "scope_overlap": "N"
@@ -466,8 +457,7 @@
         "title": "Products with digital elements made available with secure-by-default configuration + reset-to-original-state capability + auto-update default + opt-out + postponement (Annex I Part I (2)(b) + (2)(c) multi-leg product default)",
         "nist_csf": [
           "PR.PS-01",
-          "ID.AM-08",
-          "GV.SC-03"
+          "ID.AM-08"
         ],
         "scope_overlap": "N"
       }
@@ -495,8 +485,6 @@
         "req_id": "3.3.4",
         "title": "Financial-entity ICT security policies limit physical or logical access to information assets and ICT assets to what is required for legitimate and approved functions and activities only (literal `only` qualifier)",
         "nist_csf": [
-          "PR.AA-03",
-          "PR.AA-04",
           "PR.AA-05",
           "PR.AA-06"
         ],
@@ -508,41 +496,55 @@
         "req_id": "3.1.1",
         "title": "Data-subject identity verified using reasonable means proportionate to risk (rights-exercise endpoint)",
         "nist_csf": [
-          "PR.AA-02",
           "PR.AA-03",
-          "ID.AM-08"
+          "PR.AA-02"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "PR.AC-P6",
+          "PR.AC-P3"
+        ]
       },
       {
         "req_id": "3.2.1",
         "title": "Authentication governed by instructions + confidentiality + minimisation (no OJ authentication-strength threshold)",
         "nist_csf": [
           "PR.AA-05",
-          "PR.AA-06",
-          "PR.AT-02"
+          "PR.AA-06"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "PR.AC-P1",
+          "PR.AC-P2",
+          "CT.PO-P1"
+        ]
       },
       {
         "req_id": "3.3.1",
         "title": "Authorisation in personal-data scope operates through documented instructions and confidentiality undertakings (chain of authority controller → processor → authorised persons)",
         "nist_csf": [
           "PR.AA-05",
-          "PR.AA-06",
-          "PR.AT-02"
+          "PR.AA-06"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "PR.AC-P1",
+          "PR.AC-P2",
+          "CT.PO-P1"
+        ]
       },
       {
         "req_id": "3.4.1",
         "title": "Personal-data processing systems implement by-default measures across amount, extent, period, and accessibility (Art. 25(2) four-dimension AND)",
         "nist_csf": [
           "PR.PS-01",
-          "ID.AM-08",
-          "GV.PO-01"
+          "ID.AM-08"
         ],
-        "scope_overlap": "N"
+        "scope_overlap": "N",
+        "nist_pf": [
+          "CT.DP-P4",
+          "CT.PO-P4"
+        ]
       }
     ],
     "NIS2": [
@@ -551,8 +553,7 @@
         "title": "Workforce identities managed throughout the employment lifecycle (joiner-mover-leaver)",
         "nist_csf": [
           "PR.AA-01",
-          "PR.AA-05",
-          "PR.AT-02"
+          "PR.AA-05"
         ],
         "scope_overlap": "N"
       },
@@ -561,9 +562,7 @@
         "title": "Multi-factor or continuous authentication `where appropriate` (Art. 21(2)(j) first clause)",
         "nist_csf": [
           "PR.AA-03",
-          "PR.AA-05",
-          "PR.DS-02",
-          "PR.IR-03"
+          "PR.AA-05"
         ],
         "scope_overlap": "N"
       },
@@ -572,9 +571,7 @@
         "title": "Entity-side access-control policy established and applied to network and information systems on a model-agnostic least-privilege basis (Art. 21(2)(i) literal AND of AC + HR-security + asset-management)",
         "nist_csf": [
           "PR.AA-01",
-          "PR.AA-05",
-          "ID.AM-01",
-          "ID.AM-02"
+          "PR.AA-05"
         ],
         "scope_overlap": "N"
       }
@@ -589,8 +586,7 @@
       "PR.AA-01",
       "PR.AA-05",
       "PR.AA-06",
-      "PR.PS-01",
-      "PR.PS-04"
+      "PR.PS-01"
     ],
     "DORA": [
       "PR.AA-03",
@@ -599,7 +595,6 @@
       "PR.AA-06"
     ],
     "GDPR": [
-      "GV.PO-01",
       "ID.AM-08",
       "PR.AA-02",
       "PR.AA-03",

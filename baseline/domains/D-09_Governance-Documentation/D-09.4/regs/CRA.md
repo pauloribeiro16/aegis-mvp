@@ -63,7 +63,7 @@ GV.PO-02, GV.OC-03, ID.AM-02, ID.RA-04, GV.SC-04.
   verification_method: TEST
   dependencies: [9.4.1 (when controller-manufacturer — RoPA + Annex VII 8-item technical documentation on distinct artefacts; substantively scope-disjoint per CRDA `N (typically)`; CRDA `different-perspective` is a taxonomy artifact), 9.4.2 (when NSIE procures CSA-certified CRA products — CRA Art. 27(8)/(9) CSA-certification presumption-of-conformity machinery is the upstream gate for NIS 2 procurements; certification boundary), 9.4.4 (when DORA entity procures CRA-conformant products — CRA Annex VII 8-item technical documentation + DORA Art. 9(4)(a) IS-policy documentation on distinct artefacts; CRDA-recommended COMPLEMENTARY), 9.4.5 (when CRA-regulated product is also high-risk AI system — CRA Annex VII + AI Act Annex IV + AI Act Art. 17(1) QMS on three parallel artefacts; no OJ-level consolidation rule for documentation at 9.4)]
 
-  nist_csf: [ID.AM-08, ID.RA-05]
+  nist_csf: [GV.PO-02, GV.OC-03]
 
   applicable_if:
     regs: [CRA]

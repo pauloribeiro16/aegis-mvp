@@ -65,7 +65,7 @@ ID.AM-01, ID.AM-02.
   verification_method: TEST
   dependencies: [9.1.2 (Art. 20(1) management-body approve/oversee/liable architecture as the upstream policy-architecture governance hook), 9.3.3 (when DORA-NSIE — DORA Art. 7(1) `3-way AND` discharges both; EQUAL, DORA-dominant stack for financial entities), 9.3.2 (when NSIE is not manufacturer — substantively scope-disjoint per CRDA `N (typically)` on the NIS 2 ↔ CRA pair; different objects — entity asset register vs. product architecture documentation — meeting at supplier-customer interface only)]
 
-  nist_csf: [PR.PS-01, ID.AM-01, ID.AM-02]
+  nist_csf: [ID.AM-01, ID.AM-02]
 
   applicable_if:
     regs: [NIS2]

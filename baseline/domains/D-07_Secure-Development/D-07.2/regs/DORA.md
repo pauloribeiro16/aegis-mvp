@@ -70,7 +70,7 @@ PR.PS-01, PR.PS-02, PR.PS-06.
   verification_method: TEST
   dependencies: []   # CRA↔DORA = N typically (scope-disjoint in baseline; manufacturer vs financial-entity, product vs process); DORA↔AI_Act = N typically (scope-disjoint in baseline; financial-entity vs AI-system-provider, process vs AI-system coding); HL engagement NOT activated on baseline
 
-  nist_csf: [PR.PS-06]
+  nist_csf: [PR.PS-01, PR.PS-02, PR.PS-06]
 
   applicable_if:
     regs: [DORA]

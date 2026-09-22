@@ -94,7 +94,8 @@ governance-side anchor.
   verification_method: TEST
   dependencies: [3.1.1 (data-subject identity verification feeds the opt-in-gate evidence on the accessibility dimension)]
 
-  nist_csf: [PR.PS-01, ID.AM-08, GV.PO-01]
+  nist_csf: [PR.PS-01, ID.AM-08]
+  nist_pf: [CT.DP-P4, CT.PO-P4]
 
   applicable_if:
     regs: [GDPR]

@@ -65,7 +65,8 @@ MEASURE-2.4, MEASURE-3.1, GOVERN-1.6, MEASURE-4.2, GOVERN-1.4, GOVERN-2.1.
   verification_method: TEST
   dependencies: [10.2.1 (Conditional — Y when high-risk AI system processes personal data and logs contain personal data; **floor-within-ceiling pattern (NOT a tension)** — AI Act Art. 19(1) ≥6-month hard floor WITHIN GDPR Art. 5(1)(e) `as long as necessary` envelope; the two regimes operate on different time scales — one is a floor, one is a ceiling; Phase 1 entities must implement AI Act Art. 19(1) ≥6-month retention as a hard minimum + extend to GDPR `necessary` envelope when the AI system `intended purpose` requires more than 6 months or when a DPA request requires longer retention), 10.2.2 (Conditional — Y when CRA-regulated product is also high-risk AI; CRA Annex VII §5–§8 product documentation + Annex I Part II (3) effective/regular tests + AI Act Art. 12(1)+(2) automatic event logging stack; product documentation traceability feeds AI Act automatic event logging chain), 10.2.3 (Conditional — Y when DORA financial entity deploys high-risk AI; AI Act Art. 12(1)+(2) automatic event logging + Art. 19(1) provider log retention + DORA Art. 9(4)(a) CIA+A information security policy stack; DORA-led CIA+A policy with AI Act automatic event logging as AI-system-level overlay)]
 
-  nist_csf: [PR.PS-04, DE.CM-09, DE.AE-03, RC.RP-03]
+  nist_csf: [PR.PS-04, DE.CM-09, DE.AE-03]
+  nist_airmf: [MEASURE-2.4, MEASURE-3.1, GOVERN-1.6]
 
   applicable_if:
     regs: [AI_Act]

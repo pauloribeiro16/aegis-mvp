@@ -65,6 +65,7 @@ GV.PO-P3, GV.PO-P4.
   dependencies: [6.3.1 (Art. 28(3) DPA contracts coexist with Art. 27 representative; representative receives DPA-related supervisory-authority correspondence but does not perform DPA negotiation — different actor roles)]
 
   nist_csf: [GV.OC-02, GV.RR-02]
+  nist_pf: [GV.PO-P3, GV.PO-P4]
 
   applicable_if:
     regs: [GDPR]

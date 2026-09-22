@@ -67,7 +67,7 @@ RS.CO-02, RS.MA-04.
   verification_method: TEST
   dependencies: [4.1.4 (notification clock depends on 4.1 DORA multi-layer + SPOF detection feeding the awareness event), 4.2.4 (notification content requires prior BC-arrangements containment classification + impact assessment feeding Art. 19(1) content template + Art. 19(3) client notification)]
 
-  nist_csf: [RS.CO-02, RS.MA-04, RS.MA-03]
+  nist_csf: [RS.CO-02, RS.MA-04]
 
   applicable_if:
     regs: [DORA]

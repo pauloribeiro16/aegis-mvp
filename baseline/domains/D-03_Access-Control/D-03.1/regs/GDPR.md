@@ -81,7 +81,8 @@ PR.AA-02 + ID.AM-08 (data managed consistent with risk strategy).)*
   verification_method: TEST
   dependencies: [3.2.1 (verification outcome feeds the staff-authentication event at the rights-exercise endpoint)]
 
-  nist_csf: [PR.AA-02, PR.AA-03, ID.AM-08]
+  nist_csf: [PR.AA-03, PR.AA-02]
+  nist_pf: [PR.AC-P6, PR.AC-P3]
 
   applicable_if:
     regs: [GDPR]

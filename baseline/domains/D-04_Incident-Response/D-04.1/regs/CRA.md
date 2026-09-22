@@ -74,7 +74,7 @@ pathway.)*
   verification_method: TEST
   dependencies: [4.1.2 (CRA product-internal recording feeds NIS 2 entity-level detection when NIS 2 entity deploys / manufactures CRA product), 4.1.4 (CRA product-internal recording feeds DORA financial-entity detection when DORA FE deploys CRA product)]
 
-  nist_csf: [DE.CM-09, PR.PS-04, RS.MA-02]
+  nist_csf: [PR.PS-04, DE.AE-08]
 
   applicable_if:
     regs: [CRA]

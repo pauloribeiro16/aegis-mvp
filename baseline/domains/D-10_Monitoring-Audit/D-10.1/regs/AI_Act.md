@@ -67,6 +67,7 @@ MANAGE-4.1, MEASURE-3.1, MEASURE-4.1, GOVERN-1.5, MANAGE-2.3, MANAGE-4.3, GOVERN
   dependencies: [10.1.1 (when provider/deployer = controller — GDPR pre-breach detection + AI Act lifecycle monitoring on different trigger alignment; pre-breach vs. lifecycle; the two regimes stack without overlap), 10.1.2 (when NSIE deploys high-risk AI — NIS 2 entity-level operational monitoring + AI Act AI-system lifecycle monitoring; different trigger alignment; the two regimes stack without overlap), 10.1.3 (when CRA-regulated product is also high-risk AI system — CRA Annex I conformity + AI Act post-market monitoring stack for AI-enabled products; the AI Act adds the feedback-loop dimension; the CRA opt-out tension does NOT extend to the AI Act pair — the AI Act Art. 72 monitoring is provider-side, not subject to user opt-out), 10.1.4 (when DORA financial entity deploys high-risk AI — DORA continuous monitoring + AI Act post-market monitoring stack; DORA-led stack with AI Act as AI-system-level overlay; the two regimes stack without overlap)]
 
   nist_csf: [DE.CM-09, ID.IM-04, GV.OV-03]
+  nist_airmf: [MANAGE-4.1, MEASURE-3.1, MEASURE-4.1, GOVERN-1.5]
 
   applicable_if:
     regs: [AI_Act]

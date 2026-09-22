@@ -1,0 +1,229 @@
+# CIS Critical Security Controls v8 — advisory referential spec
+# Source: Center for Internet Security Critical Security Controls v8 (May 2021).
+# https://www.cisecurity.org/controls/v8
+# 18 top-level controls organised in Implementation Groups (IG1/IG2/IG3).
+
+framework: "CIS Critical Security Controls v8"
+framework_short: "CIS_CONTROLS_V8"
+directory: "CIS_CONTROLS_V8"
+version: "v8 (2021-05)"
+source_url: "https://www.cisecurity.org/controls/v8"
+fetched_date: "2026-09-22"
+
+families:
+  - function: "01"
+    function_dir: "01_INVENTORY"
+    category_name: "Inventory and Control of Enterprise Assets"
+    practices:
+      - id: "01"
+        text: "Actively manage all enterprise assets connected to the infrastructure physically, virtually, or remotely, including those in cloud and remote environments, and ensure only authorised assets are granted access."
+        informative_references: ["CIS Controls v8: 01", "NIST SP 800-53 Rev 5: CM-08", "NIST CSF 2.0: ID.AM-01"]
+        examples:
+          - "IG1: Maintain an inventory of enterprise assets; address unauthorised assets"
+          - "LG2: Use active discovery tools; use DHCP logging; maintain address inventory"
+          - "IG3: Use agent-based discovery; employ passive discovery"
+        objectives: ["Determine whether all enterprise assets are inventoried.", "Determine whether unauthorised assets are addressed."]
+  - function: "02"
+    function_dir: "02_SOFTWARE_INVENTORY"
+    category_name: "Inventory and Control of Software Assets"
+    practices:
+      - id: "02"
+        text: "Actively manage all software on the network to ensure only authorised software is installed and executed, and that authorised software is current with the latest security updates."
+        informative_references: ["CIS Controls v8: 02", "NIST SP 800-53 Rev 5: CM-08", "NIST CSF 2.0: ID.AM-01"]
+        examples:
+          - "IG1: Maintain software inventory; remove unsupported software"
+          - "IG2: Use application allowlisting; use software inventory tools"
+          - "IG3: Use binary whitelisting; utilise reputation services"
+        objectives: ["Determine whether software is inventoried.", "Determine whether only authorised software runs."]
+  - function: "03"
+    function_dir: "03_DATA_PROTECTION"
+    category_name: "Data Protection"
+    practices:
+      - id: "03"
+        text: "Develop processes and technical controls to identify, classify, securely handle, retain, and dispose of data."
+        informative_references: ["CIS Controls v8: 03", "NIST SP 800-53 Rev 5: SC-28", "ISO/IEC 27001:2022 A.5.12"]
+        examples:
+          - "IG1: Identify and classify sensitive data; maintain a data inventory"
+          - "IG2: Apply access controls to sensitive data; encrypt data at rest"
+          - "IG3: Deploy DLP; segment data based on classification"
+        objectives: ["Determine whether data is identified and classified.", "Determine whether sensitive data is protected."]
+  - function: "04"
+    function_dir: "04_CONFIG_MGMT"
+    category_name: "Secure Configuration of Enterprise Assets and Software"
+    practices:
+      - id: "04"
+        text: "Establish and maintain the secure configuration of enterprise assets and software through configuration management."
+        informative_references: ["CIS Controls v8: 04", "NIST SP 800-53 Rev 5: CM-06", "NIST CSF 2.0: PR.PS-01"]
+        examples:
+          - "IG1: Establish secure baselines; apply CIS benchmarks"
+          - "IG2: Implement configuration management tools; enforce baselines"
+          - "IG3: Use validated security templates; automated config testing"
+        objectives: ["Determine whether secure baselines are established.", "Determine whether baselines are enforced."]
+  - function: "05"
+    function_dir: "05_ACCOUNT_MGMT"
+    category_name: "Account Management"
+    practices:
+      - id: "05"
+        text: "Use processes and tools to assign and manage authorisation to credentials for user accounts, including service accounts, administrator accounts, and vendor accounts."
+        informative_references: ["CIS Controls v8: 05", "NIST SP 800-53 Rev 5: AC-02, IA-04", "NIST CSF 2.0: PR.AA-01"]
+        examples:
+          - "IG1: Use unique passwords; disable default accounts"
+          - "IG2: Restrict administrator privileges; use PIM/PAM"
+          - "IG3: Centralise account management; enforce MFA everywhere"
+        objectives: ["Determine whether accounts are uniquely identified.", "Determine whether privileged accounts are restricted."]
+  - function: "06"
+    function_dir: "06_ACCESS_CONTROL"
+    category_name: "Access Control Management"
+    practices:
+      - id: "06"
+        text: "Use processes and tools to create, assign, manage, and revoke access credentials and privileges for users, administrators, and service accounts."
+        informative_references: ["CIS Controls v8: 06", "NIST SP 800-53 Rev 5: AC-03, AC-06", "NIST CSF 2.0: PR.AA-01"]
+        examples:
+          - "IG1: Enforce MFA for privileged access; enforce least privilege"
+          - "IG2: Restrict access to sensitive data; review access quarterly"
+          - "IG3: Use privileged access workstations; require MFA for all access"
+        objectives: ["Determine whether access control is enforced.", "Determine whether access is reviewed."]
+  - function: "07"
+    function_dir: "07_VULN_MGMT"
+    category_name: "Continuous Vulnerability Management"
+    practices:
+      - id: "07"
+        text: "Develop a plan to continuously assess and track vulnerabilities on all enterprise assets and remediate them based on risk."
+        informative_references: ["CIS Controls v8: 07", "NIST SSDF v1.1: RV.1.1, RV.2.1", "NIST CSF 2.0: ID.RA-01"]
+        examples:
+          - "IG1: Run automated vulnerability scans; remediate critical vulns"
+          - "IG2: Subscribe to threat intel; integrate scanning in CI/CD"
+          - "IG3: Run authenticated scans; perform penetration testing"
+        objectives: ["Determine whether vulnerability scans run on a cadence.", "Determine whether vulns are remediated within SLA."]
+  - function: "08"
+    function_dir: "08_AUDIT_LOGS"
+    category_name: "Audit Log Management"
+    practices:
+      - id: "08"
+        text: "Collect, alert, review, and retain audit logs of events that could help detect, understand, or recover from an attack."
+        informative_references: ["CIS Controls v8: 08", "NIST SP 800-53 Rev 5: AU-02, AU-06", "NIST CSF 2.0: DE.AE-02"]
+        examples:
+          - "IG1: Configure logging on enterprise assets; sync clocks"
+          - "IG2: Centralise logs (SIEM); define retention"
+          - "IG3: Use SOAR; integrate threat intelligence"
+        objectives: ["Determine whether audit logs are collected.", "Determine whether logs are reviewed."]
+  - function: "09"
+    function_dir: "09_EMAIL_BROWSER"
+    category_name: "Email and Web Browser Protections"
+    practices:
+      - id: "09"
+        text: "Improve protections and detections of threats from email and web vectors, as these are opportunities for attackers to manipulate human behaviour through direct engagement."
+        informative_references: ["CIS Controls v8: 09", "NIST SP 800-53 Rev 5: SI-08"]
+        examples:
+          - "IG1: Install browser/email protections; DMARC for email"
+          - "IG2: Use sandboxing; URL filtering; awareness training"
+          - "IG3: Use browser isolation; advanced anti-phishing"
+        objectives: ["Determine whether email and web are protected.", "Determine whether anti-phishing controls exist."]
+  - function: "10"
+    function_dir: "10_MALWARE"
+    category_name: "Malware Defenses"
+    practices:
+      - id: "10"
+        text: "Prevent or control the installation, spread, and execution of malicious applications, code, or scripts on enterprise assets."
+        informative_references: ["CIS Controls v8: 10", "NIST SP 800-53 Rev 5: SI-03", "NIST CSF 2.0: DE.CM-01"]
+        examples:
+          - "IG1: Deploy anti-malware; enable automatic updates"
+          - "IG2: Use EDR; centralised management; sandboxing"
+          - "IG3: Threat-hunting; behavioural analytics"
+        objectives: ["Determine whether anti-malware is deployed.", "Determine whether EDR is in use."]
+  - function: "11"
+    function_dir: "11_DATA_RECOVERY"
+    category_name: "Data Recovery"
+    practices:
+      - id: "11"
+        text: "Establish and maintain data recovery practices sufficient to restore in-scope enterprise assets to a pre-incident state."
+        informative_references: ["CIS Controls v8: 11", "NIST SP 800-53 Rev 5: CP-09, CP-10", "NIST CSF 2.0: RC.RP-01"]
+        examples:
+          - "IG1: Perform and test backups"
+          - "IG2: Protect backup data; automate recovery testing"
+          - "IG3: Test recovery at the alternate site; tabletop exercises"
+        objectives: ["Determine whether backups are performed.", "Determine whether restoration is tested."]
+  - function: "12"
+    function_dir: "12_NETWORK_INFRA"
+    category_name: "Network Infrastructure Management"
+    practices:
+      - id: "12"
+        text: "Establish, implement, and actively manage (track, report, correct) the security configuration of network infrastructure devices using a rigorous configuration management and change-control process."
+        informative_references: ["CIS Controls v8: 12", "NIST SP 800-53 Rev 5: CM-02, SC-07"]
+        examples:
+          - "IG1: Document network topology; segment per function"
+          - "IG2: Centralise network configuration; monitor changes"
+          - "IG3: Use intent-based networking; automated compliance"
+        objectives: ["Determine whether network configurations are managed.", "Determine whether the topology is segmented."]
+  - function: "13"
+    function_dir: "13_NETWORK_MONITORING"
+    category_name: "Network Monitoring and Defense"
+    practices:
+      - id: "13"
+        text: "Operate processes and tooling to establish and maintain comprehensive network monitoring and defences against security threats across the enterprise's network infrastructure and user base."
+        informative_references: ["CIS Controls v8: 13", "NIST SP 800-53 Rev 5: SI-04, AU-06"]
+        examples:
+          - "IG1: Centralise logging; monitor network traffic"
+          - "IG2: Use IDS/IPS; analyse flow data"
+          - "IG3: Use sandboxing; zero-trust segmentation"
+        objectives: ["Determine whether network is monitored.", "Determine whether detections are timely."]
+  - function: "14"
+    function_dir: "14_SECURITY_AWARENESS"
+    category_name: "Security Awareness and Skills Training"
+    practices:
+      - id: "14"
+        text: "Establish and maintain a security awareness program to influence behaviour among the workforce to be security conscious and properly skilled."
+        informative_references: ["CIS Controls v8: 14", "NIST SP 800-53 Rev 5: AT-02, AT-03"]
+        examples:
+          - "IG1: Provide awareness training annually; recognise phishing"
+          - "IG2: Role-based training; phishing simulations"
+          - "IG3: Continuous training; gamified simulations"
+        objectives: ["Determine whether awareness training exists.", "Determine whether role-based training is provided."]
+  - function: "15"
+    function_dir: "15_SERVICE_PROVIDER"
+    category_name: "Service Provider Management"
+    practices:
+      - id: "15"
+        text: "Develop a process to evaluate service providers who hold sensitive data or are responsible for an enterprise's critical IT platforms or processes to ensure these providers are protecting those platforms and data appropriately."
+        informative_references: ["CIS Controls v8: 15", "NIST SP 800-53 Rev 5: SA-09, SR-03"]
+        examples:
+          - "IG1: Inventory service providers; assess security posture"
+          - "IG2: Monitor provider security; require incident reporting"
+          - "IG3: Conduct on-site audits; continuous monitoring of providers"
+        objectives: ["Determine whether providers are inventoried.", "Determine whether provider security is monitored."]
+  - function: "16"
+    function_dir: "16_APP_SECURITY"
+    category_name: "Application Software Security"
+    practices:
+      - id: "16"
+        text: "Manage the security life cycle of in-house developed, hosted, or acquired software to prevent, detect, and remediate security weaknesses before they can impact the enterprise."
+        informative_references: ["CIS Controls v8: 16", "NIST SSDF v1.1: PO.1.1", "OWASP ASVS v4.0.3"]
+        examples:
+          - "IG1: Apply secure coding; use SAST/SCA in CI"
+          - "IG2: Run DAST; perform threat modelling"
+          - "IG3: Penetration testing; runtime application self-protection"
+        objectives: ["Determine whether secure SDLC is applied.", "Determine whether security tests run in CI."]
+  - function: "17"
+    function_dir: "17_IR_MGMT"
+    category_name: "Incident Response Management"
+    practices:
+      - id: "17"
+        text: "Establish a programme to develop and maintain an incident response capability to prepare, detect, and quickly respond to an attack."
+        informative_references: ["CIS Controls v8: 17", "NIST SP 800-53 Rev 5: IR-04, IR-08", "NIST CSF 2.0: RS.RP-01"]
+        examples:
+          - "IG1: Document IR plan; designate contacts"
+          - "IG2: Train IR team; tabletop exercises"
+          - "IG3: 24x7 IR coverage; threat-intel driven"
+        objectives: ["Determine whether an IR plan exists.", "Determine whether the IR team is trained."]
+  - function: "18"
+    function_dir: "18_PEN_TESTING"
+    category_name: "Penetration Testing"
+    practices:
+      - id: "18"
+        text: "Establish a programme for performing penetration testing to identify weaknesses in the enterprise environment and verify defences are operating as expected."
+        informative_references: ["CIS Controls v8: 18", "NIST SP 800-53 Rev 5: CA-08", "NIST SSDF v1.1: PW.3.2"]
+        examples:
+          - "IG1: Annual external pentest; remediate findings"
+          - "IG2: Internal pentests; red-team exercises"
+          - "IG3: Adversary emulation; continuous purple-team"
+        objectives: ["Determine whether pen tests are performed.", "Determine whether findings feed back into controls."]

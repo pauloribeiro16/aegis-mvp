@@ -1,0 +1,25 @@
+{
+  "control_id": "03",
+  "framework": "CIS Critical Security Controls v8",
+  "function": "03",
+  "category": "Data Protection (03)",
+  "subcategory_id": "03",
+  "subcategory_text": "Develop processes and technical controls to identify, classify, securely handle, retain, and dispose of data.",
+  "informative_references": [
+    "CIS Controls v8: 03",
+    "NIST SP 800-53 Rev 5: SC-28",
+    "ISO/IEC 27001:2022 A.5.12"
+  ],
+  "implementation_examples": [
+    "IG1: Identify and classify sensitive data; maintain a data inventory",
+    "IG2: Apply access controls to sensitive data; encrypt data at rest",
+    "IG3: Deploy DLP; segment data based on classification"
+  ],
+  "assessment_objectives": [
+    "Determine whether data is identified and classified.",
+    "Determine whether sensitive data is protected."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.cisecurity.org/controls/v8",
+  "source_version": "v8 (2021-05)"
+}

@@ -1,0 +1,24 @@
+{
+  "control_id": "14",
+  "framework": "CIS Critical Security Controls v8",
+  "function": "14",
+  "category": "Security Awareness and Skills Training (14)",
+  "subcategory_id": "14",
+  "subcategory_text": "Establish and maintain a security awareness program to influence behaviour among the workforce to be security conscious and properly skilled.",
+  "informative_references": [
+    "CIS Controls v8: 14",
+    "NIST SP 800-53 Rev 5: AT-02, AT-03"
+  ],
+  "implementation_examples": [
+    "IG1: Provide awareness training annually; recognise phishing",
+    "IG2: Role-based training; phishing simulations",
+    "IG3: Continuous training; gamified simulations"
+  ],
+  "assessment_objectives": [
+    "Determine whether awareness training exists.",
+    "Determine whether role-based training is provided."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.cisecurity.org/controls/v8",
+  "source_version": "v8 (2021-05)"
+}

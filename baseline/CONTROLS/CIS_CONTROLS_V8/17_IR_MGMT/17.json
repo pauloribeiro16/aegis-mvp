@@ -1,0 +1,25 @@
+{
+  "control_id": "17",
+  "framework": "CIS Critical Security Controls v8",
+  "function": "17",
+  "category": "Incident Response Management (17)",
+  "subcategory_id": "17",
+  "subcategory_text": "Establish a programme to develop and maintain an incident response capability to prepare, detect, and quickly respond to an attack.",
+  "informative_references": [
+    "CIS Controls v8: 17",
+    "NIST SP 800-53 Rev 5: IR-04, IR-08",
+    "NIST CSF 2.0: RS.RP-01"
+  ],
+  "implementation_examples": [
+    "IG1: Document IR plan; designate contacts",
+    "IG2: Train IR team; tabletop exercises",
+    "IG3: 24x7 IR coverage; threat-intel driven"
+  ],
+  "assessment_objectives": [
+    "Determine whether an IR plan exists.",
+    "Determine whether the IR team is trained."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.cisecurity.org/controls/v8",
+  "source_version": "v8 (2021-05)"
+}

@@ -1,0 +1,25 @@
+{
+  "control_id": "07",
+  "framework": "CIS Critical Security Controls v8",
+  "function": "07",
+  "category": "Continuous Vulnerability Management (07)",
+  "subcategory_id": "07",
+  "subcategory_text": "Develop a plan to continuously assess and track vulnerabilities on all enterprise assets and remediate them based on risk.",
+  "informative_references": [
+    "CIS Controls v8: 07",
+    "NIST SSDF v1.1: RV.1.1, RV.2.1",
+    "NIST CSF 2.0: ID.RA-01"
+  ],
+  "implementation_examples": [
+    "IG1: Run automated vulnerability scans; remediate critical vulns",
+    "IG2: Subscribe to threat intel; integrate scanning in CI/CD",
+    "IG3: Run authenticated scans; perform penetration testing"
+  ],
+  "assessment_objectives": [
+    "Determine whether vulnerability scans run on a cadence.",
+    "Determine whether vulns are remediated within SLA."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.cisecurity.org/controls/v8",
+  "source_version": "v8 (2021-05)"
+}

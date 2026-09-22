@@ -1,0 +1,25 @@
+{
+  "control_id": "18",
+  "framework": "CIS Critical Security Controls v8",
+  "function": "18",
+  "category": "Penetration Testing (18)",
+  "subcategory_id": "18",
+  "subcategory_text": "Establish a programme for performing penetration testing to identify weaknesses in the enterprise environment and verify defences are operating as expected.",
+  "informative_references": [
+    "CIS Controls v8: 18",
+    "NIST SP 800-53 Rev 5: CA-08",
+    "NIST SSDF v1.1: PW.3.2"
+  ],
+  "implementation_examples": [
+    "IG1: Annual external pentest; remediate findings",
+    "IG2: Internal pentests; red-team exercises",
+    "IG3: Adversary emulation; continuous purple-team"
+  ],
+  "assessment_objectives": [
+    "Determine whether pen tests are performed.",
+    "Determine whether findings feed back into controls."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.cisecurity.org/controls/v8",
+  "source_version": "v8 (2021-05)"
+}

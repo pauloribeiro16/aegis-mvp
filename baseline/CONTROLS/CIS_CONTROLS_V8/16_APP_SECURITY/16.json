@@ -1,0 +1,25 @@
+{
+  "control_id": "16",
+  "framework": "CIS Critical Security Controls v8",
+  "function": "16",
+  "category": "Application Software Security (16)",
+  "subcategory_id": "16",
+  "subcategory_text": "Manage the security life cycle of in-house developed, hosted, or acquired software to prevent, detect, and remediate security weaknesses before they can impact the enterprise.",
+  "informative_references": [
+    "CIS Controls v8: 16",
+    "NIST SSDF v1.1: PO.1.1",
+    "OWASP ASVS v4.0.3"
+  ],
+  "implementation_examples": [
+    "IG1: Apply secure coding; use SAST/SCA in CI",
+    "IG2: Run DAST; perform threat modelling",
+    "IG3: Penetration testing; runtime application self-protection"
+  ],
+  "assessment_objectives": [
+    "Determine whether secure SDLC is applied.",
+    "Determine whether security tests run in CI."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.cisecurity.org/controls/v8",
+  "source_version": "v8 (2021-05)"
+}

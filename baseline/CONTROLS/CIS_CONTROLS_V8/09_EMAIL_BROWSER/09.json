@@ -1,0 +1,24 @@
+{
+  "control_id": "09",
+  "framework": "CIS Critical Security Controls v8",
+  "function": "09",
+  "category": "Email and Web Browser Protections (09)",
+  "subcategory_id": "09",
+  "subcategory_text": "Improve protections and detections of threats from email and web vectors, as these are opportunities for attackers to manipulate human behaviour through direct engagement.",
+  "informative_references": [
+    "CIS Controls v8: 09",
+    "NIST SP 800-53 Rev 5: SI-08"
+  ],
+  "implementation_examples": [
+    "IG1: Install browser/email protections; DMARC for email",
+    "IG2: Use sandboxing; URL filtering; awareness training",
+    "IG3: Use browser isolation; advanced anti-phishing"
+  ],
+  "assessment_objectives": [
+    "Determine whether email and web are protected.",
+    "Determine whether anti-phishing controls exist."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.cisecurity.org/controls/v8",
+  "source_version": "v8 (2021-05)"
+}

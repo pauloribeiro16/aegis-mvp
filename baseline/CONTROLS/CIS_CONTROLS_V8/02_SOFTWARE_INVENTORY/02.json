@@ -1,0 +1,25 @@
+{
+  "control_id": "02",
+  "framework": "CIS Critical Security Controls v8",
+  "function": "02",
+  "category": "Inventory and Control of Software Assets (02)",
+  "subcategory_id": "02",
+  "subcategory_text": "Actively manage all software on the network to ensure only authorised software is installed and executed, and that authorised software is current with the latest security updates.",
+  "informative_references": [
+    "CIS Controls v8: 02",
+    "NIST SP 800-53 Rev 5: CM-08",
+    "NIST CSF 2.0: ID.AM-01"
+  ],
+  "implementation_examples": [
+    "IG1: Maintain software inventory; remove unsupported software",
+    "IG2: Use application allowlisting; use software inventory tools",
+    "IG3: Use binary whitelisting; utilise reputation services"
+  ],
+  "assessment_objectives": [
+    "Determine whether software is inventoried.",
+    "Determine whether only authorised software runs."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.cisecurity.org/controls/v8",
+  "source_version": "v8 (2021-05)"
+}

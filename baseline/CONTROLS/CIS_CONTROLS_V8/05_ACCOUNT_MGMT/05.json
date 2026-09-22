@@ -1,0 +1,25 @@
+{
+  "control_id": "05",
+  "framework": "CIS Critical Security Controls v8",
+  "function": "05",
+  "category": "Account Management (05)",
+  "subcategory_id": "05",
+  "subcategory_text": "Use processes and tools to assign and manage authorisation to credentials for user accounts, including service accounts, administrator accounts, and vendor accounts.",
+  "informative_references": [
+    "CIS Controls v8: 05",
+    "NIST SP 800-53 Rev 5: AC-02, IA-04",
+    "NIST CSF 2.0: PR.AA-01"
+  ],
+  "implementation_examples": [
+    "IG1: Use unique passwords; disable default accounts",
+    "IG2: Restrict administrator privileges; use PIM/PAM",
+    "IG3: Centralise account management; enforce MFA everywhere"
+  ],
+  "assessment_objectives": [
+    "Determine whether accounts are uniquely identified.",
+    "Determine whether privileged accounts are restricted."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.cisecurity.org/controls/v8",
+  "source_version": "v8 (2021-05)"
+}

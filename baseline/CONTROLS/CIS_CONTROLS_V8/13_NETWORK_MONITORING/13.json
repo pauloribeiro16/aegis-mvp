@@ -1,0 +1,24 @@
+{
+  "control_id": "13",
+  "framework": "CIS Critical Security Controls v8",
+  "function": "13",
+  "category": "Network Monitoring and Defense (13)",
+  "subcategory_id": "13",
+  "subcategory_text": "Operate processes and tooling to establish and maintain comprehensive network monitoring and defences against security threats across the enterprise's network infrastructure and user base.",
+  "informative_references": [
+    "CIS Controls v8: 13",
+    "NIST SP 800-53 Rev 5: SI-04, AU-06"
+  ],
+  "implementation_examples": [
+    "IG1: Centralise logging; monitor network traffic",
+    "IG2: Use IDS/IPS; analyse flow data",
+    "IG3: Use sandboxing; zero-trust segmentation"
+  ],
+  "assessment_objectives": [
+    "Determine whether network is monitored.",
+    "Determine whether detections are timely."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.cisecurity.org/controls/v8",
+  "source_version": "v8 (2021-05)"
+}

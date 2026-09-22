@@ -1,0 +1,25 @@
+{
+  "control_id": "11",
+  "framework": "CIS Critical Security Controls v8",
+  "function": "11",
+  "category": "Data Recovery (11)",
+  "subcategory_id": "11",
+  "subcategory_text": "Establish and maintain data recovery practices sufficient to restore in-scope enterprise assets to a pre-incident state.",
+  "informative_references": [
+    "CIS Controls v8: 11",
+    "NIST SP 800-53 Rev 5: CP-09, CP-10",
+    "NIST CSF 2.0: RC.RP-01"
+  ],
+  "implementation_examples": [
+    "IG1: Perform and test backups",
+    "IG2: Protect backup data; automate recovery testing",
+    "IG3: Test recovery at the alternate site; tabletop exercises"
+  ],
+  "assessment_objectives": [
+    "Determine whether backups are performed.",
+    "Determine whether restoration is tested."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.cisecurity.org/controls/v8",
+  "source_version": "v8 (2021-05)"
+}

@@ -1,0 +1,25 @@
+{
+  "framework": "CIS Critical Security Controls v8",
+  "version": "v8 (2021-05)",
+  "note": "advisory referential; ids authoritative; not enforced by scripts/verify_no_loss.py",
+  "subcategories": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "control_id": "08",
+  "framework": "CIS Critical Security Controls v8",
+  "function": "08",
+  "category": "Audit Log Management (08)",
+  "subcategory_id": "08",
+  "subcategory_text": "Collect, alert, review, and retain audit logs of events that could help detect, understand, or recover from an attack.",
+  "informative_references": [
+    "CIS Controls v8: 08",
+    "NIST SP 800-53 Rev 5: AU-02, AU-06",
+    "NIST CSF 2.0: DE.AE-02"
+  ],
+  "implementation_examples": [
+    "IG1: Configure logging on enterprise assets; sync clocks",
+    "IG2: Centralise logs (SIEM); define retention",
+    "IG3: Use SOAR; integrate threat intelligence"
+  ],
+  "assessment_objectives": [
+    "Determine whether audit logs are collected.",
+    "Determine whether logs are reviewed."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.cisecurity.org/controls/v8",
+  "source_version": "v8 (2021-05)"
+}

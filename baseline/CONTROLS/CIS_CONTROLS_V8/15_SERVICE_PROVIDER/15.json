@@ -1,0 +1,24 @@
+{
+  "control_id": "15",
+  "framework": "CIS Critical Security Controls v8",
+  "function": "15",
+  "category": "Service Provider Management (15)",
+  "subcategory_id": "15",
+  "subcategory_text": "Develop a process to evaluate service providers who hold sensitive data or are responsible for an enterprise's critical IT platforms or processes to ensure these providers are protecting those platforms and data appropriately.",
+  "informative_references": [
+    "CIS Controls v8: 15",
+    "NIST SP 800-53 Rev 5: SA-09, SR-03"
+  ],
+  "implementation_examples": [
+    "IG1: Inventory service providers; assess security posture",
+    "IG2: Monitor provider security; require incident reporting",
+    "IG3: Conduct on-site audits; continuous monitoring of providers"
+  ],
+  "assessment_objectives": [
+    "Determine whether providers are inventoried.",
+    "Determine whether provider security is monitored."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.cisecurity.org/controls/v8",
+  "source_version": "v8 (2021-05)"
+}

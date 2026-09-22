@@ -1,0 +1,25 @@
+{
+  "control_id": "04",
+  "framework": "CIS Critical Security Controls v8",
+  "function": "04",
+  "category": "Secure Configuration of Enterprise Assets and Software (04)",
+  "subcategory_id": "04",
+  "subcategory_text": "Establish and maintain the secure configuration of enterprise assets and software through configuration management.",
+  "informative_references": [
+    "CIS Controls v8: 04",
+    "NIST SP 800-53 Rev 5: CM-06",
+    "NIST CSF 2.0: PR.PS-01"
+  ],
+  "implementation_examples": [
+    "IG1: Establish secure baselines; apply CIS benchmarks",
+    "IG2: Implement configuration management tools; enforce baselines",
+    "IG3: Use validated security templates; automated config testing"
+  ],
+  "assessment_objectives": [
+    "Determine whether secure baselines are established.",
+    "Determine whether baselines are enforced."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.cisecurity.org/controls/v8",
+  "source_version": "v8 (2021-05)"
+}

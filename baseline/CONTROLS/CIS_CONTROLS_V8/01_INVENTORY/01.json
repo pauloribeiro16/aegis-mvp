@@ -1,0 +1,25 @@
+{
+  "control_id": "01",
+  "framework": "CIS Critical Security Controls v8",
+  "function": "01",
+  "category": "Inventory and Control of Enterprise Assets (01)",
+  "subcategory_id": "01",
+  "subcategory_text": "Actively manage all enterprise assets connected to the infrastructure physically, virtually, or remotely, including those in cloud and remote environments, and ensure only authorised assets are granted access.",
+  "informative_references": [
+    "CIS Controls v8: 01",
+    "NIST SP 800-53 Rev 5: CM-08",
+    "NIST CSF 2.0: ID.AM-01"
+  ],
+  "implementation_examples": [
+    "IG1: Maintain an inventory of enterprise assets; address unauthorised assets",
+    "LG2: Use active discovery tools; use DHCP logging; maintain address inventory",
+    "IG3: Use agent-based discovery; employ passive discovery"
+  ],
+  "assessment_objectives": [
+    "Determine whether all enterprise assets are inventoried.",
+    "Determine whether unauthorised assets are addressed."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.cisecurity.org/controls/v8",
+  "source_version": "v8 (2021-05)"
+}

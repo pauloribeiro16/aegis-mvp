@@ -1,0 +1,13 @@
+{
+  "referential": "CIS Critical Security Controls v8",
+  "version": "v8 (2021-05)",
+  "source_urls": [
+    "https://www.cisecurity.org/controls/v8"
+  ],
+  "fetched_date": "2026-09-22",
+  "subcategories": 18,
+  "expected_total": 18,
+  "unverified_entries": [],
+  "advisory": true,
+  "enforced_by_verify_no_loss": false
+}

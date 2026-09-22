@@ -1,0 +1,24 @@
+{
+  "control_id": "12",
+  "framework": "CIS Critical Security Controls v8",
+  "function": "12",
+  "category": "Network Infrastructure Management (12)",
+  "subcategory_id": "12",
+  "subcategory_text": "Establish, implement, and actively manage (track, report, correct) the security configuration of network infrastructure devices using a rigorous configuration management and change-control process.",
+  "informative_references": [
+    "CIS Controls v8: 12",
+    "NIST SP 800-53 Rev 5: CM-02, SC-07"
+  ],
+  "implementation_examples": [
+    "IG1: Document network topology; segment per function",
+    "IG2: Centralise network configuration; monitor changes",
+    "IG3: Use intent-based networking; automated compliance"
+  ],
+  "assessment_objectives": [
+    "Determine whether network configurations are managed.",
+    "Determine whether the topology is segmented."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.cisecurity.org/controls/v8",
+  "source_version": "v8 (2021-05)"
+}

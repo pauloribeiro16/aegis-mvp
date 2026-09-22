@@ -1,0 +1,25 @@
+{
+  "control_id": "06",
+  "framework": "CIS Critical Security Controls v8",
+  "function": "06",
+  "category": "Access Control Management (06)",
+  "subcategory_id": "06",
+  "subcategory_text": "Use processes and tools to create, assign, manage, and revoke access credentials and privileges for users, administrators, and service accounts.",
+  "informative_references": [
+    "CIS Controls v8: 06",
+    "NIST SP 800-53 Rev 5: AC-03, AC-06",
+    "NIST CSF 2.0: PR.AA-01"
+  ],
+  "implementation_examples": [
+    "IG1: Enforce MFA for privileged access; enforce least privilege",
+    "IG2: Restrict access to sensitive data; review access quarterly",
+    "IG3: Use privileged access workstations; require MFA for all access"
+  ],
+  "assessment_objectives": [
+    "Determine whether access control is enforced.",
+    "Determine whether access is reviewed."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.cisecurity.org/controls/v8",
+  "source_version": "v8 (2021-05)"
+}

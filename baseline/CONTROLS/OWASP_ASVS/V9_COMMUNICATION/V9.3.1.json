@@ -1,0 +1,24 @@
+{
+  "control_id": "V9.3.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V9",
+  "category": "Communication (V9)",
+  "subcategory_id": "V9.3.1",
+  "subcategory_text": "Verify that sensitive headers (Authorization, Cookie) are stripped on cross-origin redirects.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V9.3.1"
+  ],
+  "implementation_examples": [
+    "Header stripping on redirect"
+  ],
+  "assessment_objectives": [
+    "Determine whether sensitive headers are stripped on redirects."
+  ],
+  "related_controls": [
+    "V9.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V9.1.2 (OWASP ASVS v4.0.3 — same family)",
+    "V9.2.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

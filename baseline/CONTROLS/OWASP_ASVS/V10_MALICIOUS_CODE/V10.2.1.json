@@ -1,0 +1,25 @@
+{
+  "control_id": "V10.2.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V10",
+  "category": "Malicious Code (V10)",
+  "subcategory_id": "V10.2.1",
+  "subcategory_text": "Verify that third-party components are tracked, scanned, and updated on a defined cadence.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V10.2.1",
+    "NIST SSDF v1.1: RV.2.1"
+  ],
+  "implementation_examples": [
+    "SCA scans",
+    "Patch cadence"
+  ],
+  "assessment_objectives": [
+    "Determine whether third-party components are tracked."
+  ],
+  "related_controls": [
+    "V10.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V10.3.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

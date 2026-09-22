@@ -1,0 +1,28 @@
+{
+  "control_id": "V5.6.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V5",
+  "category": "Validation, Sanitization and Encoding (V5)",
+  "subcategory_id": "V5.6.1",
+  "subcategory_text": "Verify that user-supplied data is sanitised before being passed to mail headers, system calls, or interpreters.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V5.6.1",
+    "NIST SP 800-53 Rev 5: SI-10"
+  ],
+  "implementation_examples": [
+    "Header injection prevention"
+  ],
+  "assessment_objectives": [
+    "Determine whether sanitisation is applied before risky sinks."
+  ],
+  "related_controls": [
+    "V5.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V5.1.2 (OWASP ASVS v4.0.3 — same family)",
+    "V5.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V5.3.1 (OWASP ASVS v4.0.3 — same family)",
+    "V5.4.1 (OWASP ASVS v4.0.3 — same family)",
+    "V5.5.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

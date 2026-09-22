@@ -1,0 +1,32 @@
+{
+  "control_id": "V1.1.2",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V1",
+  "category": "Architecture (V1)",
+  "subcategory_id": "V1.1.2",
+  "subcategory_text": "Identify and document all components that handle sensitive data, including third-party libraries and services.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V1.1.2",
+    "NIST SP 800-53 Rev 5: SA-09"
+  ],
+  "implementation_examples": [
+    "Data-flow diagram",
+    "Component inventory"
+  ],
+  "assessment_objectives": [
+    "Determine whether sensitive-data handling components are identified."
+  ],
+  "related_controls": [
+    "V1.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V1.1.3 (OWASP ASVS v4.0.3 — same family)",
+    "V1.1.4 (OWASP ASVS v4.0.3 — same family)",
+    "V1.1.5 (OWASP ASVS v4.0.3 — same family)",
+    "V1.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V1.3.1 (OWASP ASVS v4.0.3 — same family)",
+    "V1.4.1 (OWASP ASVS v4.0.3 — same family)",
+    "V1.5.1 (OWASP ASVS v4.0.3 — same family)",
+    "V1.6.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

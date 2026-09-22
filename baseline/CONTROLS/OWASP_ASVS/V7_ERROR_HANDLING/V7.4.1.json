@@ -1,0 +1,26 @@
+{
+  "control_id": "V7.4.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V7",
+  "category": "Error Handling and Logging (V7)",
+  "subcategory_id": "V7.4.1",
+  "subcategory_text": "Verify that log injection attacks (CRLF, format string) are mitigated by escaping or encoding untrusted log data.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V7.4.1",
+    "NIST SP 800-53 Rev 5: SI-10"
+  ],
+  "implementation_examples": [
+    "Structured logging"
+  ],
+  "assessment_objectives": [
+    "Determine whether log injection is mitigated."
+  ],
+  "related_controls": [
+    "V7.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V7.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V7.2.2 (OWASP ASVS v4.0.3 — same family)",
+    "V7.3.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

@@ -1,0 +1,28 @@
+{
+  "control_id": "V6.2.3",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V6",
+  "category": "Stored Cryptography (V6)",
+  "subcategory_id": "V6.2.3",
+  "subcategory_text": "Verify that cryptographic keys are rotated at the defined frequency and on suspected compromise.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V6.2.3",
+    "NIST SP 800-53 Rev 5: SC-12"
+  ],
+  "implementation_examples": [
+    "Annual key rotation"
+  ],
+  "assessment_objectives": [
+    "Determine whether key rotation is implemented."
+  ],
+  "related_controls": [
+    "V6.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V6.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V6.2.2 (OWASP ASVS v4.0.3 — same family)",
+    "V6.3.1 (OWASP ASVS v4.0.3 — same family)",
+    "V6.4.1 (OWASP ASVS v4.0.3 — same family)",
+    "V6.5.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

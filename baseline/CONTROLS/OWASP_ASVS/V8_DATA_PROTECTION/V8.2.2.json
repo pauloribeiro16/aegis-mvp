@@ -1,0 +1,26 @@
+{
+  "control_id": "V8.2.2",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V8",
+  "category": "Data Protection (V8)",
+  "subcategory_id": "V8.2.2",
+  "subcategory_text": "Verify that sensitive data is not stored in the client (e.g., in localStorage) without justification.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V8.2.2"
+  ],
+  "implementation_examples": [
+    "Avoid client-side sensitive caches"
+  ],
+  "assessment_objectives": [
+    "Determine whether sensitive client-side storage is justified."
+  ],
+  "related_controls": [
+    "V8.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V8.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V8.3.1 (OWASP ASVS v4.0.3 — same family)",
+    "V8.4.1 (OWASP ASVS v4.0.3 — same family)",
+    "V8.5.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

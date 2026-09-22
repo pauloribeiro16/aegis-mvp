@@ -1,0 +1,28 @@
+{
+  "control_id": "V6.3.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V6",
+  "category": "Stored Cryptography (V6)",
+  "subcategory_id": "V6.3.1",
+  "subcategory_text": "Verify that passwords are stored using a strong, adaptive, salted hashing function (Argon2id, bcrypt, scrypt, PBKDF2).",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V6.3.1",
+    "NIST SP 800-53 Rev 5: SC-13"
+  ],
+  "implementation_examples": [
+    "Argon2id"
+  ],
+  "assessment_objectives": [
+    "Determine whether passwords use strong adaptive hashing."
+  ],
+  "related_controls": [
+    "V6.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V6.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V6.2.2 (OWASP ASVS v4.0.3 — same family)",
+    "V6.2.3 (OWASP ASVS v4.0.3 — same family)",
+    "V6.4.1 (OWASP ASVS v4.0.3 — same family)",
+    "V6.5.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

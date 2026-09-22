@@ -1,0 +1,25 @@
+{
+  "control_id": "V11.1.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V11",
+  "category": "Business Logic (V11)",
+  "subcategory_id": "V11.1.1",
+  "subcategory_text": "Verify that the application enforces business limits (e.g., transaction amounts, frequency) and rejects violations.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V11.1.1",
+    "NIST SP 800-53 Rev 5: AC-03"
+  ],
+  "implementation_examples": [
+    "Max transaction limits"
+  ],
+  "assessment_objectives": [
+    "Determine whether business limits are enforced."
+  ],
+  "related_controls": [
+    "V11.1.2 (OWASP ASVS v4.0.3 — same family)",
+    "V11.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V11.3.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

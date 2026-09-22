@@ -1,0 +1,26 @@
+{
+  "control_id": "V12.3.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V12",
+  "category": "Files and Resources (V12)",
+  "subcategory_id": "V12.3.1",
+  "subcategory_text": "Verify that file processing libraries are kept up to date and run with least privilege.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V12.3.1",
+    "NIST SSDF v1.1: RV.2.1"
+  ],
+  "implementation_examples": [
+    "ImageMagick policies",
+    "Sandboxed parsers"
+  ],
+  "assessment_objectives": [
+    "Determine whether file processors are sandboxed."
+  ],
+  "related_controls": [
+    "V12.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V12.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V12.4.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

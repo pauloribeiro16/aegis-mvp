@@ -1,0 +1,26 @@
+{
+  "control_id": "V13.1.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V13",
+  "category": "API and Web Service (V13)",
+  "subcategory_id": "V13.1.1",
+  "subcategory_text": "Verify that all API endpoints are documented and enforce the documented schema on input and output.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V13.1.1",
+    "OWASP API Security Top 10"
+  ],
+  "implementation_examples": [
+    "OpenAPI enforced"
+  ],
+  "assessment_objectives": [
+    "Determine whether APIs are documented and schema-enforced."
+  ],
+  "related_controls": [
+    "V13.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V13.3.1 (OWASP ASVS v4.0.3 — same family)",
+    "V13.4.1 (OWASP ASVS v4.0.3 — same family)",
+    "V13.5.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

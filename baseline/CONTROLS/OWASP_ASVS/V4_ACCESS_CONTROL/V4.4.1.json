@@ -1,0 +1,28 @@
+{
+  "control_id": "V4.4.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V4",
+  "category": "Access Control (V4)",
+  "subcategory_id": "V4.4.1",
+  "subcategory_text": "Verify that access control decisions are logged with sufficient detail for audit and incident response.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V4.4.1",
+    "NIST SP 800-53 Rev 5: AU-02"
+  ],
+  "implementation_examples": [
+    "Log denied access attempts"
+  ],
+  "assessment_objectives": [
+    "Determine whether access decisions are audited."
+  ],
+  "related_controls": [
+    "V4.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V4.1.2 (OWASP ASVS v4.0.3 — same family)",
+    "V4.1.3 (OWASP ASVS v4.0.3 — same family)",
+    "V4.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V4.2.2 (OWASP ASVS v4.0.3 — same family)",
+    "V4.3.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

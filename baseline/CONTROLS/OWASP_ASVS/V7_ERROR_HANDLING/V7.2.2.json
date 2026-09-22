@@ -1,0 +1,26 @@
+{
+  "control_id": "V7.2.2",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V7",
+  "category": "Error Handling and Logging (V7)",
+  "subcategory_id": "V7.2.2",
+  "subcategory_text": "Verify that logs include timestamp, source, user identity, event type, and outcome.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V7.2.2",
+    "NIST SP 800-53 Rev 5: AU-03"
+  ],
+  "implementation_examples": [
+    "Canonical event fields"
+  ],
+  "assessment_objectives": [
+    "Determine whether logs contain required fields."
+  ],
+  "related_controls": [
+    "V7.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V7.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V7.3.1 (OWASP ASVS v4.0.3 — same family)",
+    "V7.4.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

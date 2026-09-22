@@ -1,0 +1,26 @@
+{
+  "control_id": "V14.1.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V14",
+  "category": "Configuration (V14)",
+  "subcategory_id": "V14.1.1",
+  "subcategory_text": "Verify that all components are kept up to date with security patches.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V14.1.1",
+    "NIST SSDF v1.1: RV.2.1"
+  ],
+  "implementation_examples": [
+    "Patch management"
+  ],
+  "assessment_objectives": [
+    "Determine whether components are patched."
+  ],
+  "related_controls": [
+    "V14.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V14.3.1 (OWASP ASVS v4.0.3 — same family)",
+    "V14.4.1 (OWASP ASVS v4.0.3 — same family)",
+    "V14.5.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

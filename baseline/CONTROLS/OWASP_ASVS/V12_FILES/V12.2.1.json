@@ -1,0 +1,25 @@
+{
+  "control_id": "V12.2.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V12",
+  "category": "Files and Resources (V12)",
+  "subcategory_id": "V12.2.1",
+  "subcategory_text": "Verify that uploaded files are stored outside the web root or served with a download disposition.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V12.2.1"
+  ],
+  "implementation_examples": [
+    "Separate storage bucket",
+    "Content-Disposition: attachment"
+  ],
+  "assessment_objectives": [
+    "Determine whether uploads are isolated from web root."
+  ],
+  "related_controls": [
+    "V12.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V12.3.1 (OWASP ASVS v4.0.3 — same family)",
+    "V12.4.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

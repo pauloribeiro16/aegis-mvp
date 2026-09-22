@@ -1,0 +1,28 @@
+{
+  "control_id": "V8.3.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V8",
+  "category": "Data Protection (V8)",
+  "subcategory_id": "V8.3.1",
+  "subcategory_text": "Verify that sensitive data is sent to the server only over TLS, and HSTS is enabled on the host.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V8.3.1",
+    "NIST SP 800-53 Rev 5: SC-08"
+  ],
+  "implementation_examples": [
+    "TLS-only",
+    "HSTS preload"
+  ],
+  "assessment_objectives": [
+    "Determine whether sensitive transport is TLS-protected."
+  ],
+  "related_controls": [
+    "V8.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V8.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V8.2.2 (OWASP ASVS v4.0.3 — same family)",
+    "V8.4.1 (OWASP ASVS v4.0.3 — same family)",
+    "V8.5.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

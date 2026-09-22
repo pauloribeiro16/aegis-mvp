@@ -1,0 +1,26 @@
+{
+  "control_id": "V13.3.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V13",
+  "category": "API and Web Service (V13)",
+  "subcategory_id": "V13.3.1",
+  "subcategory_text": "Verify that API authorisation is per-resource and not only per-role or per-token scope.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V13.3.1",
+    "OWASP API Security Top 10: API1"
+  ],
+  "implementation_examples": [
+    "Per-resource ACLs"
+  ],
+  "assessment_objectives": [
+    "Determine whether API authorisation is per-resource."
+  ],
+  "related_controls": [
+    "V13.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V13.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V13.4.1 (OWASP ASVS v4.0.3 — same family)",
+    "V13.5.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

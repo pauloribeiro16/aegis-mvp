@@ -1,0 +1,25 @@
+{
+  "control_id": "V9.2.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V9",
+  "category": "Communication (V9)",
+  "subcategory_id": "V9.2.1",
+  "subcategory_text": "Verify that service-to-service communication uses mutually authenticated TLS or equivalent.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V9.2.1",
+    "NIST SP 800-53 Rev 5: IA-09"
+  ],
+  "implementation_examples": [
+    "mTLS for service traffic"
+  ],
+  "assessment_objectives": [
+    "Determine whether service-to-service auth is mutual."
+  ],
+  "related_controls": [
+    "V9.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V9.1.2 (OWASP ASVS v4.0.3 — same family)",
+    "V9.3.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

@@ -1,0 +1,27 @@
+{
+  "control_id": "V8.5.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V8",
+  "category": "Data Protection (V8)",
+  "subcategory_id": "V8.5.1",
+  "subcategory_text": "Verify that users can exercise their privacy rights (access, correction, deletion, portability) where applicable.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V8.5.1",
+    "GDPR Art. 15-20"
+  ],
+  "implementation_examples": [
+    "DSAR workflow"
+  ],
+  "assessment_objectives": [
+    "Determine whether privacy rights can be exercised."
+  ],
+  "related_controls": [
+    "V8.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V8.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V8.2.2 (OWASP ASVS v4.0.3 — same family)",
+    "V8.3.1 (OWASP ASVS v4.0.3 — same family)",
+    "V8.4.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

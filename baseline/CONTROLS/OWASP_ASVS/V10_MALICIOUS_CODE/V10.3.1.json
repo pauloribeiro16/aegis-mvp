@@ -1,0 +1,24 @@
+{
+  "control_id": "V10.3.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V10",
+  "category": "Malicious Code (V10)",
+  "subcategory_id": "V10.3.1",
+  "subcategory_text": "Verify that build pipelines are hardened and only run signed artefacts from trusted sources.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V10.3.1",
+    "NIST SSDF v1.1: PS.1.2"
+  ],
+  "implementation_examples": [
+    "Signed builds"
+  ],
+  "assessment_objectives": [
+    "Determine whether the build pipeline is hardened."
+  ],
+  "related_controls": [
+    "V10.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V10.2.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

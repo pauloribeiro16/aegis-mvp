@@ -1,0 +1,29 @@
+{
+  "control_id": "V5.1.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V5",
+  "category": "Validation, Sanitization and Encoding (V5)",
+  "subcategory_id": "V5.1.1",
+  "subcategory_text": "Verify that the application validates all input against a positive (allow-list) specification at the trust boundary.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V5.1.1",
+    "NIST SP 800-53 Rev 5: SI-10"
+  ],
+  "implementation_examples": [
+    "Allowlist validators",
+    "Schema validation"
+  ],
+  "assessment_objectives": [
+    "Determine whether input is allowlist-validated."
+  ],
+  "related_controls": [
+    "V5.1.2 (OWASP ASVS v4.0.3 — same family)",
+    "V5.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V5.3.1 (OWASP ASVS v4.0.3 — same family)",
+    "V5.4.1 (OWASP ASVS v4.0.3 — same family)",
+    "V5.5.1 (OWASP ASVS v4.0.3 — same family)",
+    "V5.6.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

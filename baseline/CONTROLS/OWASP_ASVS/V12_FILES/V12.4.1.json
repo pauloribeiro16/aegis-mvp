@@ -1,0 +1,26 @@
+{
+  "control_id": "V12.4.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V12",
+  "category": "Files and Resources (V12)",
+  "subcategory_id": "V12.4.1",
+  "subcategory_text": "Verify that file path operations use safe APIs that prevent path traversal.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V12.4.1",
+    "NIST SP 800-53 Rev 5: SI-10"
+  ],
+  "implementation_examples": [
+    "Realpath checks",
+    "Allowlisted directories"
+  ],
+  "assessment_objectives": [
+    "Determine whether path traversal is mitigated."
+  ],
+  "related_controls": [
+    "V12.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V12.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V12.3.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

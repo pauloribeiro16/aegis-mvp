@@ -1,0 +1,25 @@
+{
+  "control_id": "V11.3.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V11",
+  "category": "Business Logic (V11)",
+  "subcategory_id": "V11.3.1",
+  "subcategory_text": "Verify that anti-automation (rate limit, captcha, proof-of-work) protects business-sensitive endpoints.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V11.3.1",
+    "NIST SP 800-53 Rev 5: AC-07"
+  ],
+  "implementation_examples": [
+    "Rate limit on coupon redemption"
+  ],
+  "assessment_objectives": [
+    "Determine whether anti-automation protects business logic."
+  ],
+  "related_controls": [
+    "V11.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V11.1.2 (OWASP ASVS v4.0.3 — same family)",
+    "V11.2.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

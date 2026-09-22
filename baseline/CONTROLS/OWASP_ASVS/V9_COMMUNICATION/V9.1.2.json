@@ -1,0 +1,26 @@
+{
+  "control_id": "V9.1.2",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V9",
+  "category": "Communication (V9)",
+  "subcategory_id": "V9.1.2",
+  "subcategory_text": "Verify that certificates are valid, signed by a trusted CA, and have not been revoked.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V9.1.2",
+    "NIST SP 800-53 Rev 5: SC-17"
+  ],
+  "implementation_examples": [
+    "OCSP stapling",
+    "CRL checks"
+  ],
+  "assessment_objectives": [
+    "Determine whether certificate trust is verified."
+  ],
+  "related_controls": [
+    "V9.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V9.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V9.3.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

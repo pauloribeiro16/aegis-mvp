@@ -1,0 +1,31 @@
+{
+  "control_id": "V1.1.3",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V1",
+  "category": "Architecture (V1)",
+  "subcategory_id": "V1.1.3",
+  "subcategory_text": "Document a high-level threat model that covers the application's main attack surfaces.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V1.1.3",
+    "NIST SSDF v1.1: PW.1.1"
+  ],
+  "implementation_examples": [
+    "STRIDE threat model"
+  ],
+  "assessment_objectives": [
+    "Determine whether a high-level threat model exists."
+  ],
+  "related_controls": [
+    "V1.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V1.1.2 (OWASP ASVS v4.0.3 — same family)",
+    "V1.1.4 (OWASP ASVS v4.0.3 — same family)",
+    "V1.1.5 (OWASP ASVS v4.0.3 — same family)",
+    "V1.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V1.3.1 (OWASP ASVS v4.0.3 — same family)",
+    "V1.4.1 (OWASP ASVS v4.0.3 — same family)",
+    "V1.5.1 (OWASP ASVS v4.0.3 — same family)",
+    "V1.6.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

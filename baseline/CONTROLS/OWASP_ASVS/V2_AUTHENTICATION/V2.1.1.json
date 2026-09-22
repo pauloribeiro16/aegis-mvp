@@ -1,0 +1,30 @@
+{
+  "control_id": "V2.1.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V2",
+  "category": "Authentication (V2)",
+  "subcategory_id": "V2.1.1",
+  "subcategory_text": "Verify that all authentication paths, including API endpoints, are documented and use a consistent authentication mechanism.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V2.1.1",
+    "NIST SP 800-53 Rev 5: IA-02"
+  ],
+  "implementation_examples": [
+    "Centralised identity provider"
+  ],
+  "assessment_objectives": [
+    "Determine whether all auth paths use a consistent mechanism."
+  ],
+  "related_controls": [
+    "V2.1.2 (OWASP ASVS v4.0.3 — same family)",
+    "V2.1.3 (OWASP ASVS v4.0.3 — same family)",
+    "V2.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V2.3.1 (OWASP ASVS v4.0.3 — same family)",
+    "V2.4.1 (OWASP ASVS v4.0.3 — same family)",
+    "V2.5.1 (OWASP ASVS v4.0.3 — same family)",
+    "V2.6.1 (OWASP ASVS v4.0.3 — same family)",
+    "V2.7.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

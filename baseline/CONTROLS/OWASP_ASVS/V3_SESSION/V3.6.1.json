@@ -1,0 +1,28 @@
+{
+  "control_id": "V3.6.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V3",
+  "category": "Session Management (V3)",
+  "subcategory_id": "V3.6.1",
+  "subcategory_text": "Verify that concurrent sessions are limited and can be enumerated and revoked by the user.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V3.6.1",
+    "NIST SP 800-53 Rev 5: AC-10"
+  ],
+  "implementation_examples": [
+    "Active sessions dashboard"
+  ],
+  "assessment_objectives": [
+    "Determine whether the user can manage active sessions."
+  ],
+  "related_controls": [
+    "V3.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V3.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V3.3.1 (OWASP ASVS v4.0.3 — same family)",
+    "V3.4.1 (OWASP ASVS v4.0.3 — same family)",
+    "V3.5.1 (OWASP ASVS v4.0.3 — same family)",
+    "V3.7.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

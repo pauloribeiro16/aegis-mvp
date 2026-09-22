@@ -1,0 +1,28 @@
+{
+  "control_id": "V4.3.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V4",
+  "category": "Access Control (V4)",
+  "subcategory_id": "V4.3.1",
+  "subcategory_text": "Verify that administrative interfaces enforce the same access-control mechanisms as user interfaces.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V4.3.1",
+    "NIST SP 800-53 Rev 5: AC-03"
+  ],
+  "implementation_examples": [
+    "Admin RBAC same as user RBAC"
+  ],
+  "assessment_objectives": [
+    "Determine whether admin access uses the same control plane."
+  ],
+  "related_controls": [
+    "V4.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V4.1.2 (OWASP ASVS v4.0.3 — same family)",
+    "V4.1.3 (OWASP ASVS v4.0.3 — same family)",
+    "V4.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V4.2.2 (OWASP ASVS v4.0.3 — same family)",
+    "V4.4.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

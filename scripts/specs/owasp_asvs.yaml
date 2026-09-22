@@ -1,0 +1,511 @@
+# OWASP ASVS v4.0.3 — advisory referential spec
+# Source: OWASP Application Security Verification Standard v4.0.3
+# https://owasp.org/www-project-application-security-verification-standard/
+# 14 verification chapters (V1-V14), representative subset per chapter.
+
+framework: "OWASP ASVS v4.0.3"
+framework_short: "OWASP_ASVS"
+directory: "OWASP_ASVS"
+version: "4.0.3 (2021-10)"
+source_url: "https://owasp.org/www-project-application-security-verification-standard/"
+fetched_date: "2026-09-22"
+
+families:
+  # ---- V1: Architecture ----
+  - function: "V1"
+    function_dir: "V1_ARCHITECTURE"
+    category_name: "Architecture"
+    practices:
+      - id: "V1.1.1"
+        text: "Document the application's architecture, including data flows, trust boundaries, and security-critical components."
+        informative_references: ["OWASP ASVS v4.0.3: V1.1.1", "NIST SP 800-53 Rev 5: PL-08"]
+        examples: ["Architecture diagrams", "Threat models"]
+        objectives: ["Determine whether the application architecture is documented.", "Determine whether trust boundaries are identified."]
+      - id: "V1.1.2"
+        text: "Identify and document all components that handle sensitive data, including third-party libraries and services."
+        informative_references: ["OWASP ASVS v4.0.3: V1.1.2", "NIST SP 800-53 Rev 5: SA-09"]
+        examples: ["Data-flow diagram", "Component inventory"]
+        objectives: ["Determine whether sensitive-data handling components are identified."]
+      - id: "V1.1.3"
+        text: "Document a high-level threat model that covers the application's main attack surfaces."
+        informative_references: ["OWASP ASVS v4.0.3: V1.1.3", "NIST SSDF v1.1: PW.1.1"]
+        examples: ["STRIDE threat model"]
+        objectives: ["Determine whether a high-level threat model exists."]
+      - id: "V1.1.4"
+        text: "Define and document the application's security controls per each identified threat."
+        informative_references: ["OWASP ASVS v4.0.3: V1.1.4", "NIST CSF 2.0: GV.PO-02"]
+        examples: ["Control matrix"]
+        objectives: ["Determine whether controls are mapped to threats."]
+      - id: "V1.1.5"
+        text: "Document the application's security-relevant configuration and deployment topology."
+        informative_references: ["OWASP ASVS v4.0.3: V1.1.5", "NIST SP 800-53 Rev 5: CM-02"]
+        examples: ["Configuration baseline docs"]
+        objectives: ["Determine whether configuration and topology are documented."]
+      - id: "V1.2.1"
+        text: "Define trust boundaries (e.g., browser, mobile app, API gateway, backend) and enforce controls at each boundary."
+        informative_references: ["OWASP ASVS v4.0.3: V1.2.1", "NIST SP 800-53 Rev 5: SC-07"]
+        examples: ["Perimeter controls at each boundary"]
+        objectives: ["Determine whether trust boundaries are enforced."]
+      - id: "V1.3.1"
+        text: "Decompose the application into discrete components with defined responsibilities and interfaces."
+        informative_references: ["OWASP ASVS v4.0.3: V1.3.1", "NIST SP 800-53 Rev 5: SA-08"]
+        examples: ["Component-based architecture"]
+        objectives: ["Determine whether the application is decomposed into discrete components."]
+      - id: "V1.4.1"
+        text: "Document the application's external dependencies (third-party APIs, libraries, services) and the controls applied to them."
+        informative_references: ["OWASP ASVS v4.0.3: V1.4.1", "NIST SP 800-53 Rev 5: SR-03"]
+        examples: ["Dependency register"]
+        objectives: ["Determine whether external dependencies are documented."]
+      - id: "V1.5.1"
+        text: "Define and enforce a network segmentation strategy that separates the application's tiers and external services."
+        informative_references: ["OWASP ASVS v4.0.3: V1.5.1", "NIST SP 800-53 Rev 5: SC-32"]
+        examples: ["DMZ, app tier, data tier segmentation"]
+        objectives: ["Determine whether tiers are network-segmented."]
+      - id: "V1.6.1"
+        text: "Use a secure-by-default configuration that disables unnecessary features, ports, and services."
+        informative_references: ["OWASP ASVS v4.0.3: V1.6.1", "NIST SP 800-53 Rev 5: CM-07"]
+        examples: ["Minimal feature set", "Hardened defaults"]
+        objectives: ["Determine whether the application ships secure-by-default."]
+
+  # ---- V2: Authentication ----
+  - function: "V2"
+    function_dir: "V2_AUTHENTICATION"
+    category_name: "Authentication"
+    practices:
+      - id: "V2.1.1"
+        text: "Verify that all authentication paths, including API endpoints, are documented and use a consistent authentication mechanism."
+        informative_references: ["OWASP ASVS v4.0.3: V2.1.1", "NIST SP 800-53 Rev 5: IA-02"]
+        examples: ["Centralised identity provider"]
+        objectives: ["Determine whether all auth paths use a consistent mechanism."]
+      - id: "V2.1.2"
+        text: "Verify that authentication mechanisms enforce credential complexity and rotation policies per organisation policy."
+        informative_references: ["OWASP ASVS v4.0.3: V2.1.2", "NIST SP 800-53 Rev 5: IA-05"]
+        examples: ["Password policy enforcement"]
+        objectives: ["Determine whether credential complexity is enforced."]
+      - id: "V2.1.3"
+        text: "Verify that the application uses secure authentication for all sensitive operations (e.g., MFA for privileged actions)."
+        informative_references: ["OWASP ASVS v4.0.3: V2.1.3", "NIST SP 800-53 Rev 5: IA-02"]
+        examples: ["MFA for admin actions"]
+        objectives: ["Determine whether sensitive operations require MFA."]
+      - id: "V2.2.1"
+        text: "Verify that anti-automation controls (rate limiting, CAPTCHA, account lockout) protect authentication endpoints."
+        informative_references: ["OWASP ASVS v4.0.3: V2.2.1", "NIST SP 800-53 Rev 5: AC-07"]
+        examples: ["Rate limit login attempts", "Lockout on credential stuffing"]
+        objectives: ["Determine whether anti-automation controls are in place."]
+      - id: "V2.3.1"
+        text: "Verify that password storage uses a strong, salted, adaptive hashing algorithm (e.g., Argon2id, bcrypt, scrypt, PBKDF2)."
+        informative_references: ["OWASP ASVS v4.0.3: V2.3.1", "NIST SP 800-53 Rev 5: SC-13"]
+        examples: ["Argon2id with appropriate parameters"]
+        objectives: ["Determine whether passwords are stored with strong hashing."]
+      - id: "V2.4.1"
+        text: "Verify that credentials are protected in transit (TLS) and at rest (encryption)."
+        informative_references: ["OWASP ASVS v4.0.3: V2.4.1", "NIST SP 800-53 Rev 5: SC-08"]
+        examples: ["TLS for credential transmission", "Encrypted credential storage"]
+        objectives: ["Determine whether credentials are protected in transit and at rest."]
+      - id: "V2.5.1"
+        text: "Verify that account recovery and password reset flows are secure, rate-limited, and resistant to enumeration."
+        informative_references: ["OWASP ASVS v4.0.3: V2.5.1", "NIST SP 800-53 Rev 5: IA-04"]
+        examples: ["Token-based reset", "Time-limited codes"]
+        objectives: ["Determine whether recovery flows are secure and resist enumeration."]
+      - id: "V2.6.1"
+        text: "Verify that logouts invalidate all session tokens and clear sensitive data from the client."
+        informative_references: ["OWASP ASVS v4.0.3: V2.6.1", "NIST SP 800-53 Rev 5: AC-12"]
+        examples: ["Server-side session invalidation"]
+        objectives: ["Determine whether logout invalidates session tokens."]
+      - id: "V2.7.1"
+        text: "Verify that out-of-band authentication (e.g., email/SMS codes) is rate-limited and short-lived."
+        informative_references: ["OWASP ASVS v4.0.3: V2.7.1", "NIST SP 800-53 Rev 5: IA-05"]
+        examples: ["5-minute code expiry", "Rate-limit code requests"]
+        objectives: ["Determine whether out-of-band auth codes are short-lived and rate-limited."]
+
+  # ---- V3: Session Management ----
+  - function: "V3"
+    function_dir: "V3_SESSION"
+    category_name: "Session Management"
+    practices:
+      - id: "V3.1.1"
+        text: "Verify that the application generates a new session token on user authentication."
+        informative_references: ["OWASP ASVS v4.0.3: V3.1.1", "NIST SP 800-53 Rev 5: SC-23"]
+        examples: ["Session fixation prevention"]
+        objectives: ["Determine whether session IDs are renewed on login."]
+      - id: "V3.2.1"
+        text: "Verify that session tokens are sufficiently long and random to resist guessing or brute force."
+        informative_references: ["OWASP ASVS v4.0.3: V3.2.1", "NIST SP 800-53 Rev 5: SC-13"]
+        examples: ["128-bit entropy session IDs"]
+        objectives: ["Determine whether session IDs have sufficient entropy."]
+      - id: "V3.3.1"
+        text: "Verify that session tokens are transmitted only over TLS and cookies are Secure, HttpOnly, and SameSite."
+        informative_references: ["OWASP ASVS v4.0.3: V3.3.1", "NIST SP 800-53 Rev 5: SC-08"]
+        examples: ["Secure cookie attributes"]
+        objectives: ["Determine whether session cookies carry required flags."]
+      - id: "V3.4.1"
+        text: "Verify that the application enforces an idle and absolute session timeout per policy."
+        informative_references: ["OWASP ASVS v4.0.3: V3.4.1", "NIST SP 800-53 Rev 5: AC-12"]
+        examples: ["15-minute idle timeout", "8-hour absolute timeout"]
+        objectives: ["Determine whether session timeouts are enforced."]
+      - id: "V3.5.1"
+        text: "Verify that logout invalidates the session server-side and prevents token replay."
+        informative_references: ["OWASP ASVS v4.0.3: V3.5.1", "NIST SP 800-53 Rev 5: AC-12"]
+        examples: ["Server-side session store"]
+        objectives: ["Determine whether logout is server-side."]
+      - id: "V3.6.1"
+        text: "Verify that concurrent sessions are limited and can be enumerated and revoked by the user."
+        informative_references: ["OWASP ASVS v4.0.3: V3.6.1", "NIST SP 800-53 Rev 5: AC-10"]
+        examples: ["Active sessions dashboard"]
+        objectives: ["Determine whether the user can manage active sessions."]
+      - id: "V3.7.1"
+        text: "Verify that cookies are scoped to the appropriate path and domain."
+        informative_references: ["OWASP ASVS v4.0.3: V3.7.1"]
+        examples: ["Strict Path attribute"]
+        objectives: ["Determine whether cookie scoping is minimal."]
+
+  # ---- V4: Access Control ----
+  - function: "V4"
+    function_dir: "V4_ACCESS_CONTROL"
+    category_name: "Access Control"
+    practices:
+      - id: "V4.1.1"
+        text: "Verify that the application enforces access control at the application server or API gateway, not only at the client."
+        informative_references: ["OWASP ASVS v4.0.3: V4.1.1", "NIST SP 800-53 Rev 5: AC-03"]
+        examples: ["Server-side authorisation checks"]
+        objectives: ["Determine whether access control is enforced server-side."]
+      - id: "V4.1.2"
+        text: "Verify that access controls fail securely (deny by default)."
+        informative_references: ["OWASP ASVS v4.0.3: V4.1.2", "NIST SP 800-53 Rev 5: AC-03"]
+        examples: ["Default deny"]
+        objectives: ["Determine whether access controls fail securely."]
+      - id: "V4.1.3"
+        text: "Verify that the principle of least privilege is enforced in access control policy and implementation."
+        informative_references: ["OWASP ASVS v4.0.3: V4.1.3", "NIST SP 800-53 Rev 5: AC-06"]
+        examples: ["RBAC with least privilege"]
+        objectives: ["Determine whether least privilege is enforced."]
+      - id: "V4.2.1"
+        text: "Verify that sensitive data and APIs are protected against unauthorised access via IDOR and BOLA checks."
+        informative_references: ["OWASP ASVS v4.0.3: V4.2.1", "OWASP API Security Top 10: API1"]
+        examples: ["Tenant scoping", "Ownership checks"]
+        objectives: ["Determine whether IDOR/BOLA is mitigated."]
+      - id: "V4.2.2"
+        text: "Verify that direct object references are protected by per-request authorisation."
+        informative_references: ["OWASP ASVS v4.0.3: V4.2.2", "NIST SP 800-53 Rev 5: AC-03"]
+        examples: ["Per-object ACL check"]
+        objectives: ["Determine whether direct object references are authorised."]
+      - id: "V4.3.1"
+        text: "Verify that administrative interfaces enforce the same access-control mechanisms as user interfaces."
+        informative_references: ["OWASP ASVS v4.0.3: V4.3.1", "NIST SP 800-53 Rev 5: AC-03"]
+        examples: ["Admin RBAC same as user RBAC"]
+        objectives: ["Determine whether admin access uses the same control plane."]
+      - id: "V4.4.1"
+        text: "Verify that access control decisions are logged with sufficient detail for audit and incident response."
+        informative_references: ["OWASP ASVS v4.0.3: V4.4.1", "NIST SP 800-53 Rev 5: AU-02"]
+        examples: ["Log denied access attempts"]
+        objectives: ["Determine whether access decisions are audited."]
+
+  # ---- V5: Validation, Sanitization, Encoding ----
+  - function: "V5"
+    function_dir: "V5_VALIDATION"
+    category_name: "Validation, Sanitization and Encoding"
+    practices:
+      - id: "V5.1.1"
+        text: "Verify that the application validates all input against a positive (allow-list) specification at the trust boundary."
+        informative_references: ["OWASP ASVS v4.0.3: V5.1.1", "NIST SP 800-53 Rev 5: SI-10"]
+        examples: ["Allowlist validators", "Schema validation"]
+        objectives: ["Determine whether input is allowlist-validated."]
+      - id: "V5.1.2"
+        text: "Verify that input validation is performed at the server side, not only at the client."
+        informative_references: ["OWASP ASVS v4.0.3: V5.1.2", "NIST SP 800-53 Rev 5: SI-10"]
+        examples: ["Server-side validation"]
+        objectives: ["Determine whether server-side validation is in place."]
+      - id: "V5.2.1"
+        text: "Verify that all output is contextually encoded to prevent injection (HTML, JS, URL, SQL, LDAP, OS command)."
+        informative_references: ["OWASP ASVS v4.0.3: V5.2.1", "NIST SP 800-53 Rev 5: SI-10"]
+        examples: ["Output encoding by context"]
+        objectives: ["Determine whether output encoding is context-appropriate."]
+      - id: "V5.3.1"
+        text: "Verify that parameterised queries, ORM, or safe APIs are used for all database access."
+        informative_references: ["OWASP ASVS v4.0.3: V5.3.1", "NIST SP 800-53 Rev 5: SI-10"]
+        examples: ["Prepared statements", "ORM"]
+        objectives: ["Determine whether SQL injection is mitigated."]
+      - id: "V5.4.1"
+        text: "Verify that OS commands, file paths, and shell calls use safe APIs and avoid string concatenation."
+        informative_references: ["OWASP ASVS v4.0.3: V5.4.1", "NIST SP 800-53 Rev 5: SI-10"]
+        examples: ["Safe exec APIs", "Path canonicalisation"]
+        objectives: ["Determine whether command injection is mitigated."]
+      - id: "V5.5.1"
+        text: "Verify that deserialisation of untrusted data uses safe formats and validation."
+        informative_references: ["OWASP ASVS v4.0.3: V5.5.1", "NIST SP 800-53 Rev 5: SI-10"]
+        examples: ["JSON Schema validation", "Avoid native object deserialisation"]
+        objectives: ["Determine whether deserialisation is safe."]
+      - id: "V5.6.1"
+        text: "Verify that user-supplied data is sanitised before being passed to mail headers, system calls, or interpreters."
+        informative_references: ["OWASP ASVS v4.0.3: V5.6.1", "NIST SP 800-53 Rev 5: SI-10"]
+        examples: ["Header injection prevention"]
+        objectives: ["Determine whether sanitisation is applied before risky sinks."]
+
+  # ---- V6: Stored Cryptography ----
+  - function: "V6"
+    function_dir: "V6_CRYPTOGRAPHY"
+    category_name: "Stored Cryptography"
+    practices:
+      - id: "V6.1.1"
+        text: "Verify that regulated data (PCI, PII) is encrypted at rest using strong, vetted cryptographic algorithms."
+        informative_references: ["OWASP ASVS v4.0.3: V6.1.1", "NIST SP 800-53 Rev 5: SC-28", "ISO/IEC 27001:2022: A.8.24"]
+        examples: ["AES-256-GCM", "ChaCha20-Poly1305"]
+        objectives: ["Determine whether data at rest is encrypted with strong cryptography."]
+      - id: "V6.2.1"
+        text: "Verify that cryptographic keys are generated using a cryptographically secure random number generator."
+        informative_references: ["OWASP ASVS v4.0.3: V6.2.1", "NIST SP 800-53 Rev 5: SC-12"]
+        examples: ["CSPRNG for key material"]
+        objectives: ["Determine whether keys are generated via CSPRNG."]
+      - id: "V6.2.2"
+        text: "Verify that cryptographic keys are stored separately from the data they protect (e.g., in a KMS or HSM)."
+        informative_references: ["OWASP ASVS v4.0.3: V6.2.2", "NIST SP 800-53 Rev 5: SC-12"]
+        examples: ["KMS-managed keys", "HSM for root keys"]
+        objectives: ["Determine whether keys are stored separately from data."]
+      - id: "V6.2.3"
+        text: "Verify that cryptographic keys are rotated at the defined frequency and on suspected compromise."
+        informative_references: ["OWASP ASVS v4.0.3: V6.2.3", "NIST SP 800-53 Rev 5: SC-12"]
+        examples: ["Annual key rotation"]
+        objectives: ["Determine whether key rotation is implemented."]
+      - id: "V6.3.1"
+        text: "Verify that passwords are stored using a strong, adaptive, salted hashing function (Argon2id, bcrypt, scrypt, PBKDF2)."
+        informative_references: ["OWASP ASVS v4.0.3: V6.3.1", "NIST SP 800-53 Rev 5: SC-13"]
+        examples: ["Argon2id"]
+        objectives: ["Determine whether passwords use strong adaptive hashing."]
+      - id: "V6.4.1"
+        text: "Verify that the application uses vetted cryptographic libraries and does not implement custom cryptography."
+        informative_references: ["OWASP ASVS v4.0.3: V6.4.1", "NIST SSDF v1.1: PW.1.3"]
+        examples: ["libsodium, BoringSSL, NaCl"]
+        objectives: ["Determine whether only vetted crypto libraries are used."]
+      - id: "V6.5.1"
+        text: "Verify that cryptographic failures are logged without leaking key material or sensitive details."
+        informative_references: ["OWASP ASVS v4.0.3: V6.5.1", "NIST SP 800-53 Rev 5: AU-09"]
+        examples: ["Redact crypto errors in logs"]
+        objectives: ["Determine whether crypto failures are logged safely."]
+
+  # ---- V7: Error Handling and Logging ----
+  - function: "V7"
+    function_dir: "V7_ERROR_HANDLING"
+    category_name: "Error Handling and Logging"
+    practices:
+      - id: "V7.1.1"
+        text: "Verify that the application does not reveal stack traces, debug information, or sensitive details in error responses."
+        informative_references: ["OWASP ASVS v4.0.3: V7.1.1", "NIST SP 800-53 Rev 5: SI-11"]
+        examples: ["Generic error messages to users"]
+        objectives: ["Determine whether error responses are sanitised."]
+      - id: "V7.2.1"
+        text: "Verify that the application logs authentication, access-control, and data-modification events."
+        informative_references: ["OWASP ASVS v4.0.3: V7.2.1", "NIST SP 800-53 Rev 5: AU-02"]
+        examples: ["Log logins, denials, writes"]
+        objectives: ["Determine whether security events are logged."]
+      - id: "V7.2.2"
+        text: "Verify that logs include timestamp, source, user identity, event type, and outcome."
+        informative_references: ["OWASP ASVS v4.0.3: V7.2.2", "NIST SP 800-53 Rev 5: AU-03"]
+        examples: ["Canonical event fields"]
+        objectives: ["Determine whether logs contain required fields."]
+      - id: "V7.3.1"
+        text: "Verify that logs are stored securely, protected from tampering, and retained per policy."
+        informative_references: ["OWASP ASVS v4.0.3: V7.3.1", "NIST SP 800-53 Rev 5: AU-09"]
+        examples: ["Centralised log store", "Integrity protection"]
+        objectives: ["Determine whether logs are tamper-resistant."]
+      - id: "V7.4.1"
+        text: "Verify that log injection attacks (CRLF, format string) are mitigated by escaping or encoding untrusted log data."
+        informative_references: ["OWASP ASVS v4.0.3: V7.4.1", "NIST SP 800-53 Rev 5: SI-10"]
+        examples: ["Structured logging"]
+        objectives: ["Determine whether log injection is mitigated."]
+
+  # ---- V8: Data Protection ----
+  - function: "V8"
+    function_dir: "V8_DATA_PROTECTION"
+    category_name: "Data Protection"
+    practices:
+      - id: "V8.1.1"
+        text: "Verify that sensitive data is identified and classified, and protections applied per classification."
+        informative_references: ["OWASP ASVS v4.0.3: V8.1.1", "ISO/IEC 27001:2022: A.5.12"]
+        examples: ["Data classification scheme"]
+        objectives: ["Determine whether sensitive data is classified."]
+      - id: "V8.2.1"
+        text: "Verify that personal data is processed in accordance with applicable privacy laws (GDPR, LGPD, CCPA)."
+        informative_references: ["OWASP ASVS v4.0.3: V8.2.1", "GDPR Art. 5, 6"]
+        examples: ["Lawful basis per processing"]
+        objectives: ["Determine whether privacy-law obligations are met."]
+      - id: "V8.2.2"
+        text: "Verify that sensitive data is not stored in the client (e.g., in localStorage) without justification."
+        informative_references: ["OWASP ASVS v4.0.3: V8.2.2"]
+        examples: ["Avoid client-side sensitive caches"]
+        objectives: ["Determine whether sensitive client-side storage is justified."]
+      - id: "V8.3.1"
+        text: "Verify that sensitive data is sent to the server only over TLS, and HSTS is enabled on the host."
+        informative_references: ["OWASP ASVS v4.0.3: V8.3.1", "NIST SP 800-53 Rev 5: SC-08"]
+        examples: ["TLS-only", "HSTS preload"]
+        objectives: ["Determine whether sensitive transport is TLS-protected."]
+      - id: "V8.4.1"
+        text: "Verify that data retention is enforced per policy, including automated deletion when retention expires."
+        informative_references: ["OWASP ASVS v4.0.3: V8.4.1", "GDPR Art. 5(1)(e)"]
+        examples: ["Retention schedule", "Automated deletion"]
+        objectives: ["Determine whether retention is enforced."]
+      - id: "V8.5.1"
+        text: "Verify that users can exercise their privacy rights (access, correction, deletion, portability) where applicable."
+        informative_references: ["OWASP ASVS v4.0.3: V8.5.1", "GDPR Art. 15-20"]
+        examples: ["DSAR workflow"]
+        objectives: ["Determine whether privacy rights can be exercised."]
+
+  # ---- V9: Communication ----
+  - function: "V9"
+    function_dir: "V9_COMMUNICATION"
+    category_name: "Communication"
+    practices:
+      - id: "V9.1.1"
+        text: "Verify that TLS is used for all client-server communications and that only strong cipher suites are enabled."
+        informative_references: ["OWASP ASVS v4.0.3: V9.1.1", "NIST SP 800-53 Rev 5: SC-08"]
+        examples: ["TLS 1.3 only", "Disable weak ciphers"]
+        objectives: ["Determine whether strong TLS is configured."]
+      - id: "V9.1.2"
+        text: "Verify that certificates are valid, signed by a trusted CA, and have not been revoked."
+        informative_references: ["OWASP ASVS v4.0.3: V9.1.2", "NIST SP 800-53 Rev 5: SC-17"]
+        examples: ["OCSP stapling", "CRL checks"]
+        objectives: ["Determine whether certificate trust is verified."]
+      - id: "V9.2.1"
+        text: "Verify that service-to-service communication uses mutually authenticated TLS or equivalent."
+        informative_references: ["OWASP ASVS v4.0.3: V9.2.1", "NIST SP 800-53 Rev 5: IA-09"]
+        examples: ["mTLS for service traffic"]
+        objectives: ["Determine whether service-to-service auth is mutual."]
+      - id: "V9.3.1"
+        text: "Verify that sensitive headers (Authorization, Cookie) are stripped on cross-origin redirects."
+        informative_references: ["OWASP ASVS v4.0.3: V9.3.1"]
+        examples: ["Header stripping on redirect"]
+        objectives: ["Determine whether sensitive headers are stripped on redirects."]
+
+  # ---- V10: Malicious Code ----
+  - function: "V10"
+    function_dir: "V10_MALICIOUS_CODE"
+    category_name: "Malicious Code"
+    practices:
+      - id: "V10.1.1"
+        text: "Verify that code from untrusted sources is reviewed and tested before deployment."
+        informative_references: ["OWASP ASVS v4.0.3: V10.1.1", "NIST SSDF v1.1: PS.2.1"]
+        examples: ["Dependency review"]
+        objectives: ["Determine whether untrusted code is vetted."]
+      - id: "V10.2.1"
+        text: "Verify that third-party components are tracked, scanned, and updated on a defined cadence."
+        informative_references: ["OWASP ASVS v4.0.3: V10.2.1", "NIST SSDF v1.1: RV.2.1"]
+        examples: ["SCA scans", "Patch cadence"]
+        objectives: ["Determine whether third-party components are tracked."]
+      - id: "V10.3.1"
+        text: "Verify that build pipelines are hardened and only run signed artefacts from trusted sources."
+        informative_references: ["OWASP ASVS v4.0.3: V10.3.1", "NIST SSDF v1.1: PS.1.2"]
+        examples: ["Signed builds"]
+        objectives: ["Determine whether the build pipeline is hardened."]
+
+  # ---- V11: Business Logic ----
+  - function: "V11"
+    function_dir: "V11_BUSINESS_LOGIC"
+    category_name: "Business Logic"
+    practices:
+      - id: "V11.1.1"
+        text: "Verify that the application enforces business limits (e.g., transaction amounts, frequency) and rejects violations."
+        informative_references: ["OWASP ASVS v4.0.3: V11.1.1", "NIST SP 800-53 Rev 5: AC-03"]
+        examples: ["Max transaction limits"]
+        objectives: ["Determine whether business limits are enforced."]
+      - id: "V11.1.2"
+        text: "Verify that workflows require completion of prior steps and cannot be bypassed by reordering requests."
+        informative_references: ["OWASP ASVS v4.0.3: V11.1.2"]
+        examples: ["State machine enforcement"]
+        objectives: ["Determine whether workflow ordering is enforced."]
+      - id: "V11.2.1"
+        text: "Verify that the application defends against race conditions on shared state (TOCTOU)."
+        informative_references: ["OWASP ASVS v4.0.3: V11.2.1"]
+        examples: ["Optimistic locking", "Atomic transactions"]
+        objectives: ["Determine whether race conditions are mitigated."]
+      - id: "V11.3.1"
+        text: "Verify that anti-automation (rate limit, captcha, proof-of-work) protects business-sensitive endpoints."
+        informative_references: ["OWASP ASVS v4.0.3: V11.3.1", "NIST SP 800-53 Rev 5: AC-07"]
+        examples: ["Rate limit on coupon redemption"]
+        objectives: ["Determine whether anti-automation protects business logic."]
+
+  # ---- V12: Files and Resources ----
+  - function: "V12"
+    function_dir: "V12_FILES"
+    category_name: "Files and Resources"
+    practices:
+      - id: "V12.1.1"
+        text: "Verify that user-uploaded files are validated by type, size, and content."
+        informative_references: ["OWASP ASVS v4.0.3: V12.1.1", "NIST SP 800-53 Rev 5: SI-10"]
+        examples: ["MIME sniffing", "Magic byte check"]
+        objectives: ["Determine whether uploads are validated."]
+      - id: "V12.2.1"
+        text: "Verify that uploaded files are stored outside the web root or served with a download disposition."
+        informative_references: ["OWASP ASVS v4.0.3: V12.2.1"]
+        examples: ["Separate storage bucket", "Content-Disposition: attachment"]
+        objectives: ["Determine whether uploads are isolated from web root."]
+      - id: "V12.3.1"
+        text: "Verify that file processing libraries are kept up to date and run with least privilege."
+        informative_references: ["OWASP ASVS v4.0.3: V12.3.1", "NIST SSDF v1.1: RV.2.1"]
+        examples: ["ImageMagick policies", "Sandboxed parsers"]
+        objectives: ["Determine whether file processors are sandboxed."]
+      - id: "V12.4.1"
+        text: "Verify that file path operations use safe APIs that prevent path traversal."
+        informative_references: ["OWASP ASVS v4.0.3: V12.4.1", "NIST SP 800-53 Rev 5: SI-10"]
+        examples: ["Realpath checks", "Allowlisted directories"]
+        objectives: ["Determine whether path traversal is mitigated."]
+
+  # ---- V13: API and Web Service ----
+  - function: "V13"
+    function_dir: "V13_API"
+    category_name: "API and Web Service"
+    practices:
+      - id: "V13.1.1"
+        text: "Verify that all API endpoints are documented and enforce the documented schema on input and output."
+        informative_references: ["OWASP ASVS v4.0.3: V13.1.1", "OWASP API Security Top 10"]
+        examples: ["OpenAPI enforced"]
+        objectives: ["Determine whether APIs are documented and schema-enforced."]
+      - id: "V13.2.1"
+        text: "Verify that API authentication uses a strong, standardised mechanism (OAuth2, OIDC, mTLS)."
+        informative_references: ["OWASP ASVS v4.0.3: V13.2.1", "NIST SP 800-53 Rev 5: IA-09"]
+        examples: ["OAuth2 with PKCE"]
+        objectives: ["Determine whether API auth is standardised."]
+      - id: "V13.3.1"
+        text: "Verify that API authorisation is per-resource and not only per-role or per-token scope."
+        informative_references: ["OWASP ASVS v4.0.3: V13.3.1", "OWASP API Security Top 10: API1"]
+        examples: ["Per-resource ACLs"]
+        objectives: ["Determine whether API authorisation is per-resource."]
+      - id: "V13.4.1"
+        text: "Verify that REST verbs (GET, PUT, DELETE) enforce the correct semantics and are not used to bypass authorisation."
+        informative_references: ["OWASP ASVS v4.0.3: V13.4.1"]
+        examples: ["GET is idempotent and read-only"]
+        objectives: ["Determine whether REST semantics are enforced."]
+      - id: "V13.5.1"
+        text: "Verify that API rate limiting is applied per client identity and per endpoint."
+        informative_references: ["OWASP ASVS v4.0.3: V13.5.1", "NIST SP 800-53 Rev 5: AC-07"]
+        examples: ["Per-token rate limits"]
+        objectives: ["Determine whether API rate limits are per-identity."]
+
+  # ---- V14: Configuration ----
+  - function: "V14"
+    function_dir: "V14_CONFIGURATION"
+    category_name: "Configuration"
+    practices:
+      - id: "V14.1.1"
+        text: "Verify that all components are kept up to date with security patches."
+        informative_references: ["OWASP ASVS v4.0.3: V14.1.1", "NIST SSDF v1.1: RV.2.1"]
+        examples: ["Patch management"]
+        objectives: ["Determine whether components are patched."]
+      - id: "V14.2.1"
+        text: "Verify that unnecessary features, frameworks, and sample apps are removed from production deployments."
+        informative_references: ["OWASP ASVS v4.0.3: V14.2.1", "NIST SP 800-53 Rev 5: CM-07"]
+        examples: ["Remove example apps"]
+        objectives: ["Determine whether unnecessary features are removed."]
+      - id: "V14.3.1"
+        text: "Verify that security-relevant HTTP headers (CSP, HSTS, X-Frame-Options, Referrer-Policy) are set on responses."
+        informative_references: ["OWASP ASVS v4.0.3: V14.3.1", "NIST CSF 2.0: PR.PS-01"]
+        examples: ["CSP", "HSTS preload"]
+        objectives: ["Determine whether security headers are set."]
+      - id: "V14.4.1"
+        text: "Verify that secrets are not stored in source code, configuration files, or default accounts."
+        informative_references: ["OWASP ASVS v4.0.3: V14.4.1", "NIST SSDF v1.1: PS.1.1"]
+        examples: ["Secret manager", "No default passwords"]
+        objectives: ["Determine whether secrets are managed."]
+      - id: "V14.5.1"
+        text: "Verify that error messages and stack traces are not visible to external users."
+        informative_references: ["OWASP ASVS v4.0.3: V14.5.1", "NIST SP 800-53 Rev 5: SI-11"]
+        examples: ["Generic error responses"]
+        objectives: ["Determine whether internal error details are hidden."]

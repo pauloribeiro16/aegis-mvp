@@ -1,0 +1,27 @@
+{
+  "control_id": "V8.1.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V8",
+  "category": "Data Protection (V8)",
+  "subcategory_id": "V8.1.1",
+  "subcategory_text": "Verify that sensitive data is identified and classified, and protections applied per classification.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V8.1.1",
+    "ISO/IEC 27001:2022: A.5.12"
+  ],
+  "implementation_examples": [
+    "Data classification scheme"
+  ],
+  "assessment_objectives": [
+    "Determine whether sensitive data is classified."
+  ],
+  "related_controls": [
+    "V8.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V8.2.2 (OWASP ASVS v4.0.3 — same family)",
+    "V8.3.1 (OWASP ASVS v4.0.3 — same family)",
+    "V8.4.1 (OWASP ASVS v4.0.3 — same family)",
+    "V8.5.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

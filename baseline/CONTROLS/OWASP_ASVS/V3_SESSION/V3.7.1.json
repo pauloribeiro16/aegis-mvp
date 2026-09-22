@@ -1,0 +1,27 @@
+{
+  "control_id": "V3.7.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V3",
+  "category": "Session Management (V3)",
+  "subcategory_id": "V3.7.1",
+  "subcategory_text": "Verify that cookies are scoped to the appropriate path and domain.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V3.7.1"
+  ],
+  "implementation_examples": [
+    "Strict Path attribute"
+  ],
+  "assessment_objectives": [
+    "Determine whether cookie scoping is minimal."
+  ],
+  "related_controls": [
+    "V3.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V3.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V3.3.1 (OWASP ASVS v4.0.3 — same family)",
+    "V3.4.1 (OWASP ASVS v4.0.3 — same family)",
+    "V3.5.1 (OWASP ASVS v4.0.3 — same family)",
+    "V3.6.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

@@ -1,0 +1,13 @@
+{
+  "referential": "OWASP ASVS v4.0.3",
+  "version": "4.0.3 (2021-10)",
+  "source_urls": [
+    "https://owasp.org/www-project-application-security-verification-standard/"
+  ],
+  "fetched_date": "2026-09-22",
+  "subcategories": 83,
+  "expected_total": 83,
+  "unverified_entries": [],
+  "advisory": true,
+  "enforced_by_verify_no_loss": false
+}

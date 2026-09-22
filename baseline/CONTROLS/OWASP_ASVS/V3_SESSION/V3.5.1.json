@@ -1,0 +1,28 @@
+{
+  "control_id": "V3.5.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V3",
+  "category": "Session Management (V3)",
+  "subcategory_id": "V3.5.1",
+  "subcategory_text": "Verify that logout invalidates the session server-side and prevents token replay.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V3.5.1",
+    "NIST SP 800-53 Rev 5: AC-12"
+  ],
+  "implementation_examples": [
+    "Server-side session store"
+  ],
+  "assessment_objectives": [
+    "Determine whether logout is server-side."
+  ],
+  "related_controls": [
+    "V3.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V3.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V3.3.1 (OWASP ASVS v4.0.3 — same family)",
+    "V3.4.1 (OWASP ASVS v4.0.3 — same family)",
+    "V3.6.1 (OWASP ASVS v4.0.3 — same family)",
+    "V3.7.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

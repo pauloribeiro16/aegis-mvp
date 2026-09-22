@@ -1,0 +1,26 @@
+{
+  "control_id": "V14.2.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V14",
+  "category": "Configuration (V14)",
+  "subcategory_id": "V14.2.1",
+  "subcategory_text": "Verify that unnecessary features, frameworks, and sample apps are removed from production deployments.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V14.2.1",
+    "NIST SP 800-53 Rev 5: CM-07"
+  ],
+  "implementation_examples": [
+    "Remove example apps"
+  ],
+  "assessment_objectives": [
+    "Determine whether unnecessary features are removed."
+  ],
+  "related_controls": [
+    "V14.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V14.3.1 (OWASP ASVS v4.0.3 — same family)",
+    "V14.4.1 (OWASP ASVS v4.0.3 — same family)",
+    "V14.5.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

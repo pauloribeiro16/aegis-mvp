@@ -1,0 +1,31 @@
+{
+  "control_id": "V2.5.1",
+  "framework": "OWASP ASVS v4.0.3",
+  "function": "V2",
+  "category": "Authentication (V2)",
+  "subcategory_id": "V2.5.1",
+  "subcategory_text": "Verify that account recovery and password reset flows are secure, rate-limited, and resistant to enumeration.",
+  "informative_references": [
+    "OWASP ASVS v4.0.3: V2.5.1",
+    "NIST SP 800-53 Rev 5: IA-04"
+  ],
+  "implementation_examples": [
+    "Token-based reset",
+    "Time-limited codes"
+  ],
+  "assessment_objectives": [
+    "Determine whether recovery flows are secure and resist enumeration."
+  ],
+  "related_controls": [
+    "V2.1.1 (OWASP ASVS v4.0.3 — same family)",
+    "V2.1.2 (OWASP ASVS v4.0.3 — same family)",
+    "V2.1.3 (OWASP ASVS v4.0.3 — same family)",
+    "V2.2.1 (OWASP ASVS v4.0.3 — same family)",
+    "V2.3.1 (OWASP ASVS v4.0.3 — same family)",
+    "V2.4.1 (OWASP ASVS v4.0.3 — same family)",
+    "V2.6.1 (OWASP ASVS v4.0.3 — same family)",
+    "V2.7.1 (OWASP ASVS v4.0.3 — same family)"
+  ],
+  "source_url": "https://owasp.org/www-project-application-security-verification-standard/",
+  "source_version": "4.0.3 (2021-10)"
+}

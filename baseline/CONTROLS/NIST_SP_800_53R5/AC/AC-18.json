@@ -1,0 +1,43 @@
+{
+  "control_id": "AC-18",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "AC",
+  "category": "Access Control (AC-18)",
+  "subcategory_id": "AC-18",
+  "subcategory_text": "Establish usage restrictions, configuration requirements, and connection requirements for wireless access; and authorise wireless access to the system.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: AC-18",
+    "NIST CSF 2.0: PR.AA-04"
+  ],
+  "implementation_examples": [
+    "Use enterprise WPA3",
+    "Scan for rogue APs"
+  ],
+  "assessment_objectives": [
+    "Determine whether wireless access is controlled."
+  ],
+  "related_controls": [
+    "AC-01 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-02 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-03 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-04 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-05 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-06 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-07 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-08 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-10 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-11 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-12 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-14 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-17 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-19 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-20 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-21 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-22 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-23 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-24 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-25 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

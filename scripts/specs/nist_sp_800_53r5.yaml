@@ -1,0 +1,1502 @@
+# NIST SP 800-53 Rev 5 — advisory referential spec
+# Source: NIST SP 800-53 Rev 5 (Sep 2020, incl. Rev 5.1.1), https://doi.org/10.6028/NIST.SP.800-53r5
+# 20 control families, ~308 controls (control level, no enhancement-level).
+# Each control has concise statement + crosswalk to CSF 2.0, AI RMF and ISO 27001:2022.
+
+framework: "NIST SP 800-53 Rev 5"
+framework_short: "NIST_SP_800_53R5"
+directory: "NIST_SP_800_53R5"
+version: "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+source_url: "https://doi.org/10.6028/NIST.SP.800-53r5"
+fetched_date: "2026-09-22"
+
+families:
+  # ---- AC: Access Control ----
+  - function: "AC"
+    function_dir: "AC"
+    category_name: "Access Control"
+    practices:
+      - id: "AC-01"
+        text: "Develop, document, and disseminate an access control policy that addresses purpose, scope, roles, responsibilities, and compliance."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-01", "NIST CSF 2.0: GV.PO-01", "ISO/IEC 27001:2022: A.5.1"]
+        examples: ["Publish an organisation-wide access control policy", "Review policy at least annually"]
+        objectives: ["Determine whether an access control policy exists.", "Determine whether the policy is reviewed and approved."]
+      - id: "AC-02"
+        text: "Identify and select the following types of system accounts: administrator, service, and user; assign account managers; require approvals; and disable accounts when no longer needed."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-02", "NIST CSF 2.0: PR.AA-01", "ISO/IEC 27001:2022: A.5.16"]
+        examples: ["Maintain an authoritative account inventory", "Disable dormant accounts after 90 days"]
+        objectives: ["Determine whether account types are inventoried.", "Determine whether dormant accounts are disabled."]
+      - id: "AC-03"
+        text: "Enforce approved authorisations for logical access in accordance with applicable policies and the principles of least privilege and separation of duties."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-03", "NIST CSF 2.0: PR.AA-01", "ISO/IEC 27001:2022: A.5.15"]
+        examples: ["Apply RBAC with least privilege", "Separate duties on critical workflows"]
+        objectives: ["Determine whether access is authorised and least-privileged."]
+      - id: "AC-04"
+        text: "Control the flow of information within the system and between interconnected systems in accordance with approved authorisations."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-04", "NIST CSF 2.0: PR.PS-06"]
+        examples: ["Apply network segmentation", "Filter east-west traffic"]
+        objectives: ["Determine whether information flows are controlled."]
+      - id: "AC-05"
+        text: "Identify and document organisation-defined duties that require separation and define system access authorisations to support it."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-05", "ISO/IEC 27001:2022: A.5.3"]
+        examples: ["Document separation-of-duties matrix", "Enforce in provisioning"]
+        objectives: ["Determine whether separation of duties is enforced for sensitive operations."]
+      - id: "AC-06"
+        text: "Allow only authorised users and processes to access the system, and limit access to the minimum necessary for the assigned duties (least privilege)."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-06", "NIST CSF 2.0: PR.AA-01", "ISO/IEC 27001:2022: A.8.2"]
+        examples: ["Grant least-privilege RBAC", "Use JIT elevation"]
+        objectives: ["Determine whether access is least-privileged."]
+      - id: "AC-07"
+        text: "Enforce a limit of consecutive invalid logon attempts and lock the account after the threshold is reached."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-07", "NIST CSF 2.0: PR.AA-03"]
+        examples: ["Lock account after 5 failed attempts", "Alert on lockouts"]
+        objectives: ["Determine whether unsuccessful logon attempts are limited."]
+      - id: "AC-08"
+        text: "Display an approved system-use notification message before granting access."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-08", "ISO/IEC 27001:2022: A.5.34"]
+        examples: ["Show banner at login", "Require acknowledgement"]
+        objectives: ["Determine whether a system-use notice is displayed."]
+      - id: "AC-10"
+        text: "Limit the number of concurrent sessions per user to an organisation-defined number."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-10"]
+        examples: ["Cap concurrent sessions per user"]
+        objectives: ["Determine whether concurrent sessions are limited."]
+      - id: "AC-11"
+        text: "Lock the display and require re-authentication after an organisation-defined inactivity period."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-11", "NIST CSF 2.0: PR.AA-05"]
+        examples: ["Auto-lock after 15 minutes idle", "Require re-auth to resume"]
+        objectives: ["Determine whether devices auto-lock on inactivity."]
+      - id: "AC-12"
+        text: "Automatically terminate a user session after an organisation-defined condition or trigger."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-12"]
+        examples: ["Terminate sessions after 8 hours", "Force logout on policy events"]
+        objectives: ["Determine whether sessions are auto-terminated."]
+      - id: "AC-14"
+        text: "Identify and explicitly authorise anonymous users and restrict access to the minimum necessary."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-14"]
+        examples: ["Restrict anonymous access to public content only"]
+        objectives: ["Determine whether anonymous access is justified and minimised."]
+      - id: "AC-17"
+        text: "Establish and document usage restrictions, configuration requirements, and connection requirements for remote access; and authorise each remote access method."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-17", "NIST CSF 2.0: PR.AA-04"]
+        examples: ["Require VPN or zero-trust network access", "Audit remote sessions"]
+        objectives: ["Determine whether remote access is controlled and audited."]
+      - id: "AC-18"
+        text: "Establish usage restrictions, configuration requirements, and connection requirements for wireless access; and authorise wireless access to the system."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-18", "NIST CSF 2.0: PR.AA-04"]
+        examples: ["Use enterprise WPA3", "Scan for rogue APs"]
+        objectives: ["Determine whether wireless access is controlled."]
+      - id: "AC-19"
+        text: "Establish usage restrictions, configuration requirements, and connection requirements for mobile devices; and authorise mobile device access to the system."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-19", "NIST CSF 2.0: PR.AA-04"]
+        examples: ["Require MDM-enrolled devices", "Enforce container policies"]
+        objectives: ["Determine whether mobile device access is controlled."]
+      - id: "AC-20"
+        text: "Establish and document usage restrictions, configuration requirements, and connection requirements for external systems; and authorise external system access to the system."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-20", "NIST CSF 2.0: GV.SC-07"]
+        examples: ["Maintain an authorised third-party list", "Restrict external-system connections"]
+        objectives: ["Determine whether external-system access is controlled."]
+      - id: "AC-21"
+        text: "Control information sharing between the system and other systems, and employ information-sharing agreements."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-21", "ISO/IEC 27001:2022: A.5.14"]
+        examples: ["Sign data-sharing agreements", "Apply DLP at boundary"]
+        objectives: ["Determine whether information sharing is governed by agreements."]
+      - id: "AC-22"
+        text: "Designate individuals authorised to post information onto a publicly accessible system and review proposed content before posting."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-22", "ISO/IEC 27001:2022: A.5.10"]
+        examples: ["Maintain a public-content approver list", "Review before publication"]
+        objectives: ["Determine whether public-content postings are reviewed."]
+      - id: "AC-23"
+        text: "Employ data-mining protections to detect and prevent exfiltration of information from the system."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-23"]
+        examples: ["Apply DLP", "Detect anomalous bulk access"]
+        objectives: ["Determine whether data-mining protections are in place."]
+      - id: "AC-24"
+        text: "Establish and enforce controlled-access logic for access control decisions that do not involve the subject's identity (e.g., attribute-based, role-based)."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-24"]
+        examples: ["Apply ABAC where justified", "Document access decisions"]
+        objectives: ["Determine whether access control decisions use defined logic."]
+      - id: "AC-25"
+        text: "Identify and explicitly authorise the use of mobile code within the system and enforce usage restrictions."
+        informative_references: ["NIST SP 800-53 Rev 5: AC-25"]
+        examples: ["Maintain mobile-code allowlist", "Verify mobile code signatures"]
+        objectives: ["Determine whether mobile code is restricted."]
+
+  # ---- AT: Awareness and Training ----
+  - function: "AT"
+    function_dir: "AT"
+    category_name: "Awareness and Training"
+    practices:
+      - id: "AT-01"
+        text: "Develop, document, and disseminate an awareness and training policy."
+        informative_references: ["NIST SP 800-53 Rev 5: AT-01", "NIST CSF 2.0: GV.PO-01"]
+        examples: ["Publish awareness/training policy", "Review annually"]
+        objectives: ["Determine whether an awareness/training policy exists."]
+      - id: "AT-02"
+        text: "Provide security awareness training to all users on recognising social engineering, suspicious communications, and reporting indicators."
+        informative_references: ["NIST SP 800-53 Rev 5: AT-02", "NIST CSF 2.0: PR.AT-01", "ISO/IEC 27001:2022: A.6.3"]
+        examples: ["Annual awareness training", "Phishing simulations"]
+        objectives: ["Determine whether security awareness training is provided."]
+      - id: "AT-03"
+        text: "Provide role-based security training to personnel with assigned security responsibilities before authorising access and periodically thereafter."
+        informative_references: ["NIST SP 800-53 Rev 5: AT-03", "NIST CSF 2.0: PR.AT-02"]
+        examples: ["Role-based training for admins, devs, analysts", "Refresher annually"]
+        objectives: ["Determine whether role-based training is provided."]
+      - id: "AT-04"
+        text: "Document and monitor individual training activities including completion, type, and frequency."
+        informative_references: ["NIST SP 800-53 Rev 5: AT-04"]
+        examples: ["Track training records in LMS", "Alert on overdue training"]
+        objectives: ["Determine whether training records are maintained."]
+      - id: "AT-05"
+        text: "Provide annually, to senior executives and senior managers, security training that addresses the security risks and responsibilities associated with their roles."
+        informative_references: ["NIST SP 800-53 Rev 5: AT-05"]
+        examples: ["Executive security briefings annually"]
+        objectives: ["Determine whether executives receive security training."]
+      - id: "AT-06"
+        text: "Provide annually, to all personnel, training on how to identify and respond to indicators of insider threat."
+        informative_references: ["NIST SP 800-53 Rev 5: AT-06"]
+        examples: ["Insider-threat training annually"]
+        objectives: ["Determine whether insider-threat training is provided."]
+
+  # ---- AU: Audit and Accountability ----
+  - function: "AU"
+    function_dir: "AU"
+    category_name: "Audit and Accountability"
+    practices:
+      - id: "AU-01"
+        text: "Develop, document, and disseminate an audit and accountability policy."
+        informative_references: ["NIST SP 800-53 Rev 5: AU-01"]
+        examples: ["Publish audit policy"]
+        objectives: ["Determine whether an audit policy exists."]
+      - id: "AU-02"
+        text: "Identify the types of events that the system is capable of logging and select the events to log for continuous monitoring."
+        informative_references: ["NIST SP 800-53 Rev 5: AU-02", "NIST CSF 2.0: DE.CM-01"]
+        examples: ["Define event catalogue", "Review annually"]
+        objectives: ["Determine whether auditable events are defined."]
+      - id: "AU-03"
+        text: "Ensure that the system generates audit records containing the event type, timestamp, source, outcome, and subject identity."
+        informative_references: ["NIST SP 800-53 Rev 5: AU-03", "NIST CSF 2.0: DE.CM-01"]
+        examples: ["Capture canonical event fields", "Centralise logs"]
+        objectives: ["Determine whether audit records contain the required fields."]
+      - id: "AU-04"
+        text: "Allocate audit record storage capacity and configure auditing to reduce the likelihood of storage exhaustion."
+        informative_references: ["NIST SP 800-53 Rev 5: AU-04"]
+        examples: ["Provision log storage", "Alert on capacity"]
+        objectives: ["Determine whether audit storage is sized and monitored."]
+      - id: "AU-05"
+        text: "Identify and respond to audit failures (storage exhaustion, logging failure, integrity violation) with alerts and predefined actions."
+        informative_references: ["NIST SP 800-53 Rev 5: AU-05", "NIST CSF 2.0: DE.CM-01"]
+        examples: ["Alert on logging failure", "Fail-closed where applicable"]
+        objectives: ["Determine whether audit failures trigger defined responses."]
+      - id: "AU-06"
+        text: "Review and analyse information system audit records for indications of inappropriate or unusual activity and report findings to personnel."
+        informative_references: ["NIST SP 800-53 Rev 5: AU-06", "NIST CSF 2.0: DE.AE-02"]
+        examples: ["Daily review of security logs", "Anomaly detection"]
+        objectives: ["Determine whether audit records are reviewed."]
+      - id: "AU-07"
+        text: "Provide and configure audit reduction and report-generation tools to support on-demand analysis and reporting."
+        informative_references: ["NIST SP 800-53 Rev 5: AU-07"]
+        examples: ["SIEM with saved searches", "On-demand reports"]
+        objectives: ["Determine whether audit reduction tools are available."]
+      - id: "AU-08"
+        text: "Time-stamp audit records with a trusted time source."
+        informative_references: ["NIST SP 800-53 Rev 5: AU-08"]
+        examples: ["Synchronise clocks via NTP", "Use monotonic clocks"]
+        objectives: ["Determine whether audit records carry trusted timestamps."]
+      - id: "AU-09"
+        text: "Protect audit information, the audit tools, and the audit log repositories from unauthorised access, modification, and deletion."
+        informative_references: ["NIST SP 800-53 Rev 5: AU-09", "NIST CSF 2.0: PR.DS-01"]
+        examples: ["Restrict log repository access", "Encrypt logs at rest"]
+        objectives: ["Determine whether audit records and tools are protected."]
+      - id: "AU-10"
+        text: "Use cryptographic mechanisms to protect the integrity of audit information."
+        informative_references: ["NIST SP 800-53 Rev 5: AU-10"]
+        examples: ["Sign log streams", "Use write-once storage"]
+        objectives: ["Determine whether audit integrity is cryptographically protected."]
+      - id: "AU-11"
+        text: "Retain audit records for an organisation-defined period to support after-the-fact investigations."
+        informative_references: ["NIST SP 800-53 Rev 5: AU-11"]
+        examples: ["Retain logs 1+ year hot, 7 years cold"]
+        objectives: ["Determine whether audit retention is defined and enforced."]
+      - id: "AU-12"
+        text: "Generate audit records for the selected events at all system components."
+        informative_references: ["NIST SP 800-53 Rev 5: AU-12"]
+        examples: ["Centralised logging across components"]
+        objectives: ["Determine whether audit records are generated across components."]
+      - id: "AU-13"
+        text: "Monitor systems and components for the generation of audit records and report anomalies to designated personnel."
+        informative_references: ["NIST SP 800-53 Rev 5: AU-13"]
+        examples: ["Alert on dropped logs", "Monitor log source health"]
+        objectives: ["Determine whether audit generation is monitored."]
+
+  # ---- CA: Assessment, Authorization, and Monitoring ----
+  - function: "CA"
+    function_dir: "CA"
+    category_name: "Assessment, Authorization, and Monitoring"
+    practices:
+      - id: "CA-01"
+        text: "Develop, document, and disseminate an assessment, authorization, and monitoring policy."
+        informative_references: ["NIST SP 800-53 Rev 5: CA-01"]
+        examples: ["Publish CA policy"]
+        objectives: ["Determine whether a CA policy exists."]
+      - id: "CA-02"
+        text: "Assess the controls in the system at the frequency defined by the organisation to determine effectiveness."
+        informative_references: ["NIST SP 800-53 Rev 5: CA-02", "NIST CSF 2.0: ID.RA-01"]
+        examples: ["Annual control assessment", "Independent assessor for high-risk systems"]
+        objectives: ["Determine whether controls are assessed on a defined cadence."]
+      - id: "CA-03"
+        text: "Authorise the system for operation based on a satisfactory security assessment and accept residual risk."
+        informative_references: ["NIST SP 800-53 Rev 5: CA-03", "NIST CSF 2.0: GV.RM-04"]
+        examples: ["Authorising official signs ATO", "Residual-risk acceptance documented"]
+        objectives: ["Determine whether authorisation to operate is documented."]
+      - id: "CA-04"
+        text: "Monitor the system and associated controls on an ongoing basis to assess control effectiveness and document changes."
+        informative_references: ["NIST SP 800-53 Rev 5: CA-04", "NIST CSF 2.0: GV.OV-01"]
+        examples: ["Continuous control monitoring", "Track control drift"]
+        objectives: ["Determine whether controls are continuously monitored."]
+      - id: "CA-05"
+        text: "Develop and implement a plan of action to correct deficiencies and reduce or eliminate identified vulnerabilities."
+        informative_references: ["NIST SP 800-53 Rev 5: CA-05", "NIST CSF 2.0: ID.RA-01"]
+        examples: ["POA&M register", "Monthly tracking"]
+        objectives: ["Determine whether POA&Ms exist for known deficiencies."]
+      - id: "CA-06"
+        text: "Authorise the connection of systems to other systems and document the interface characteristics, security requirements, and nature of the communications."
+        informative_references: ["NIST SP 800-53 Rev 5: CA-06", "NIST CSF 2.0: GV.SC-07"]
+        examples: ["Interconnection Security Agreements (ISA)", "Boundary protection"]
+        objectives: ["Determine whether interconnections are authorised."]
+      - id: "CA-07"
+        text: "Implement a continuous monitoring strategy that includes metrics, monitoring frequencies, and response actions."
+        informative_references: ["NIST SP 800-53 Rev 5: CA-07", "NIST CSF 2.0: GV.OV-01"]
+        examples: ["ISCM strategy", "Dashboards per system"]
+        objectives: ["Determine whether continuous monitoring is implemented."]
+      - id: "CA-08"
+        text: "Conduct penetration testing at the frequency defined by the organisation and document findings and remediation actions."
+        informative_references: ["NIST SP 800-53 Rev 5: CA-08", "NIST CSF 2.0: ID.RA-01"]
+        examples: ["Annual pentest", "Red-team exercises"]
+        objectives: ["Determine whether penetration testing is performed."]
+      - id: "CA-09"
+        text: "Conduct internal system connectivity testing prior to authorisation and after changes that affect the system boundary."
+        informative_references: ["NIST SP 800-53 Rev 5: CA-09"]
+        examples: ["Test connectivity before ATO"]
+        objectives: ["Determine whether internal connectivity is tested."]
+
+  # ---- CM: Configuration Management ----
+  - function: "CM"
+    function_dir: "CM"
+    category_name: "Configuration Management"
+    practices:
+      - id: "CM-01"
+        text: "Develop, document, and disseminate a configuration management policy."
+        informative_references: ["NIST SP 800-53 Rev 5: CM-01"]
+        examples: ["Publish CM policy"]
+        objectives: ["Determine whether a CM policy exists."]
+      - id: "CM-02"
+        text: "Baseline the system and develop a configuration baseline; review and update the baseline at the defined frequency."
+        informative_references: ["NIST SP 800-53 Rev 5: CM-02", "NIST CSF 2.0: ID.AM-08"]
+        examples: ["Hardened image baseline", "Annual review"]
+        objectives: ["Determine whether configuration baselines are maintained."]
+      - id: "CM-03"
+        text: "Manage configuration changes through a formal change-control process that includes approval, testing, and rollback plans."
+        informative_references: ["NIST SP 800-53 Rev 5: CM-03", "NIST CSF 2.0: PR.IP-01 (legacy 1.1)"]
+        examples: ["Change advisory board", "Mandatory change tickets"]
+        objectives: ["Determine whether changes go through formal change control."]
+      - id: "CM-04"
+        text: "Analyse the security impact of changes prior to implementation."
+        informative_references: ["NIST SP 800-53 Rev 5: CM-04", "NIST CSF 2.0: ID.RA-01"]
+        examples: ["Security impact assessment per change"]
+        objectives: ["Determine whether security impact is assessed."]
+      - id: "CM-05"
+        text: "Define and enforce access restrictions for changes to the system and limit changes to authorised personnel."
+        informative_references: ["NIST SP 800-53 Rev 5: CM-05", "NIST CSF 2.0: PR.AA-01"]
+        examples: ["Restrict production change windows", "Use change approver roles"]
+        objectives: ["Determine whether change access is restricted."]
+      - id: "CM-06"
+        text: "Establish and document mandatory configuration settings that reflect the most restrictive mode consistent with operational requirements."
+        informative_references: ["NIST SP 800-53 Rev 5: CM-06", "NIST CSF 2.0: PR.PS-01"]
+        examples: ["CIS benchmarks", "Group policy / MDM enforcement"]
+        objectives: ["Determine whether secure configuration is enforced."]
+      - id: "CM-07"
+        text: "Configure the system to provide only essential capabilities and prohibit or restrict the use of non-essential functions, ports, protocols, and services."
+        informative_references: ["NIST SP 800-53 Rev 5: CM-07", "NIST CSF 2.0: PR.PS-01"]
+        examples: ["Least-functionality baseline", "Block unused ports"]
+        objectives: ["Determine whether unnecessary functions are restricted."]
+      - id: "CM-08"
+        text: "Develop, document, and maintain an inventory of system components that accurately reflects the current system."
+        informative_references: ["NIST SP 800-53 Rev 5: CM-08", "NIST CSF 2.0: ID.AM-01"]
+        examples: ["CMDB", "Automated asset discovery"]
+        objectives: ["Determine whether a system inventory is maintained."]
+      - id: "CM-09"
+        text: "Develop, document, and implement a configuration management plan for the system."
+        informative_references: ["NIST SP 800-53 Rev 5: CM-09"]
+        examples: ["Per-system CM plan"]
+        objectives: ["Determine whether a CM plan exists per system."]
+      - id: "CM-10"
+        text: "Use software and data integrity mechanisms (e.g., digital signatures, hashes) to verify software and data integrity during initial distribution and updates."
+        informative_references: ["NIST SP 800-53 Rev 5: CM-10", "NIST CSF 2.0: PR.DS-02"]
+        examples: ["Verify signatures on software", "Hash verification"]
+        objectives: ["Determine whether software and data integrity are verified."]
+      - id: "CM-11"
+        text: "Establish and maintain a configuration of the system that permits only user-installed software that is on an allow-list or is otherwise authorised."
+        informative_references: ["NIST SP 800-53 Rev 5: CM-11", "NIST CSF 2.0: PR.PS-01"]
+        examples: ["Application allowlist", "Block unapproved installs"]
+        objectives: ["Determine whether user-installed software is restricted."]
+      - id: "CM-12"
+        text: "Identify and document system information that could be used to fingerprint the system, and minimise the exposure where feasible."
+        informative_references: ["NIST SP 800-53 Rev 5: CM-12"]
+        examples: ["Minimise banner version disclosure"]
+        objectives: ["Determine whether system fingerprinting is minimised."]
+      - id: "CM-13"
+        text: "Apply data-at-rest and data-in-transit protections to system components per the information type and impact level."
+        informative_references: ["NIST SP 800-53 Rev 5: CM-13", "NIST CSF 2.0: PR.DS-01"]
+        examples: ["Encrypt disks", "TLS for transport"]
+        objectives: ["Determine whether data protections are applied."]
+      - id: "CM-14"
+        text: "Test, validate, and document configuration changes before applying them to production systems."
+        informative_references: ["NIST SP 800-53 Rev 5: CM-14"]
+        examples: ["Pre-prod change testing"]
+        objectives: ["Determine whether changes are tested before production."]
+
+  # ---- CP: Contingency Planning ----
+  - function: "CP"
+    function_dir: "CP"
+    category_name: "Contingency Planning"
+    practices:
+      - id: "CP-01"
+        text: "Develop, document, and disseminate a contingency planning policy."
+        informative_references: ["NIST SP 800-53 Rev 5: CP-01"]
+        examples: ["Publish CP policy"]
+        objectives: ["Determine whether a CP policy exists."]
+      - id: "CP-02"
+        text: "Develop a contingency plan that addresses the recovery and reconstitution of the system; review and update at the defined frequency."
+        informative_references: ["NIST SP 800-53 Rev 5: CP-02", "NIST CSF 2.0: RC.RP-01"]
+        examples: ["Documented contingency plan", "Annual review"]
+        objectives: ["Determine whether a contingency plan exists and is current."]
+      - id: "CP-03"
+        text: "Provide contingency training to personnel with contingency responsibilities."
+        informative_references: ["NIST SP 800-53 Rev 5: CP-03", "NIST CSF 2.0: PR.AT-02"]
+        examples: ["Annual CP training"]
+        objectives: ["Determine whether contingency training is provided."]
+      - id: "CP-04"
+        text: "Test the contingency plan at the frequency defined by the organisation and document lessons learned."
+        informative_references: ["NIST SP 800-53 Rev 5: CP-04", "NIST CSF 2.0: RC.RP-04"]
+        examples: ["Annual tabletop", "Failover test quarterly"]
+        objectives: ["Determine whether the contingency plan is tested."]
+      - id: "CP-06"
+        text: "Establish alternate storage and processing sites that can be activated when the primary site is unavailable."
+        informative_references: ["NIST SP 800-53 Rev 5: CP-06", "NIST CSF 2.0: RC.RP-05"]
+        examples: ["Hot/warm/cold DR site"]
+        objectives: ["Determine whether an alternate site is available."]
+      - id: "CP-07"
+        text: "Develop and document a contingency plan for alternate processing and storage sites that includes recovery procedures."
+        informative_references: ["NIST SP 800-53 Rev 5: CP-07"]
+        examples: ["Documented DR runbooks"]
+        objectives: ["Determine whether alternate-site plans are documented."]
+      - id: "CP-08"
+        text: "Establish alternate telecommunications services for the system when primary telecommunications are unavailable."
+        informative_references: ["NIST SP 800-53 Rev 5: CP-08"]
+        examples: ["Secondary ISP"]
+        objectives: ["Determine whether alternate telecom is available."]
+      - id: "CP-09"
+        text: "Conduct backups of user-level and system-level information and store them at a defined frequency and location."
+        informative_references: ["NIST SP 800-53 Rev 5: CP-09", "NIST CSF 2.0: PR.IP-04 (legacy 1.1)"]
+        examples: ["Daily backups", "Offsite storage"]
+        objectives: ["Determine whether backups are performed and stored."]
+      - id: "CP-10"
+        text: "Provide for the recovery and reconstitution of the system to a known state after a disruption or failure."
+        informative_references: ["NIST SP 800-53 Rev 5: CP-10", "NIST CSF 2.0: RC.RP-01"]
+        examples: ["Recovery runbook", "Tested restoration"]
+        objectives: ["Determine whether recovery procedures exist."]
+      - id: "CP-11"
+        text: "Provide for the continuation of essential missions and business functions with little or no loss of operational continuity."
+        informative_references: ["NIST SP 800-53 Rev 5: CP-11", "NIST CSF 2.0: RC.CO-03"]
+        examples: ["MBCO plan"]
+        objectives: ["Determine whether mission continuity is addressed."]
+      - id: "CP-12"
+        text: "Plan and coordinate with organisational stakeholders for the safe return of the system to normal operations after a contingency."
+        informative_references: ["NIST SP 800-53 Rev 5: CP-12"]
+        examples: ["Recovery coordination plan"]
+        objectives: ["Determine whether return-to-normal planning is documented."]
+      - id: "CP-13"
+        text: "Identify and document alternate communications paths for the system that can be activated when primary paths are unavailable."
+        informative_references: ["NIST SP 800-53 Rev 5: CP-13"]
+        examples: ["Out-of-band comms"]
+        objectives: ["Determine whether alternate comms paths exist."]
+
+  # ---- IA: Identification and Authentication ----
+  - function: "IA"
+    function_dir: "IA"
+    category_name: "Identification and Authentication"
+    practices:
+      - id: "IA-01"
+        text: "Develop, document, and disseminate an identification and authentication policy."
+        informative_references: ["NIST SP 800-53 Rev 5: IA-01"]
+        examples: ["Publish I&A policy"]
+        objectives: ["Determine whether an I&A policy exists."]
+      - id: "IA-02"
+        text: "Uniquely identify and authenticate organisational users (or processes acting on behalf of users)."
+        informative_references: ["NIST SP 800-53 Rev 5: IA-02", "NIST CSF 2.0: PR.AA-01", "ISO/IEC 27001:2022: A.5.16"]
+        examples: ["Unique user IDs", "Centralised identity provider"]
+        objectives: ["Determine whether users are uniquely identified and authenticated."]
+      - id: "IA-03"
+        text: "Uniquely identify and authenticate devices that connect to the system."
+        informative_references: ["NIST SP 800-53 Rev 5: IA-03", "NIST CSF 2.0: PR.AA-01"]
+        examples: ["Device certificates", "MDM posture check"]
+        objectives: ["Determine whether devices are uniquely identified."]
+      - id: "IA-04"
+        text: "Manage identifiers for users and devices, including issuing, validating, revoking, and auditing."
+        informative_references: ["NIST SP 800-53 Rev 5: IA-04", "NIST CSF 2.0: PR.AA-01"]
+        examples: ["Identity lifecycle management", "Periodic review"]
+        objectives: ["Determine whether identifiers are managed through their lifecycle."]
+      - id: "IA-05"
+        text: "Manage authenticators (passwords, tokens, certificates) including initial distribution, lost/compromised handling, and revocation."
+        informative_references: ["NIST SP 800-53 Rev 5: IA-05", "NIST CSF 2.0: PR.AA-01", "ISO/IEC 27001:2022: A.5.17"]
+        examples: ["Strong password policy", "Token revocation list"]
+        objectives: ["Determine whether authenticators are managed."]
+      - id: "IA-06"
+        text: "Obscure feedback of authentication information during the authentication process."
+        informative_references: ["NIST SP 800-53 Rev 5: IA-06"]
+        examples: ["Mask password fields", "Generic error messages"]
+        objectives: ["Determine whether authentication feedback is obscured."]
+      - id: "IA-07"
+        text: "Implement cryptographic mechanisms to protect the authenticity of transmitted authentication information."
+        informative_references: ["NIST SP 800-53 Rev 5: IA-07", "NIST CSF 2.0: PR.DS-02"]
+        examples: ["TLS for auth", "Signed tokens"]
+        objectives: ["Determine whether authentication traffic is cryptographically protected."]
+      - id: "IA-08"
+        text: "Uniquely identify and authenticate non-organisational users (or processes acting on their behalf)."
+        informative_references: ["NIST SP 800-53 Rev 5: IA-08", "NIST CSF 2.0: PR.AA-01"]
+        examples: ["Federated identity for partners", "Sponsored guest accounts"]
+        objectives: ["Determine whether external users are uniquely identified."]
+      - id: "IA-09"
+        text: "Provide service identification and authentication for system services."
+        informative_references: ["NIST SP 800-53 Rev 5: IA-09"]
+        examples: ["Service-to-service mTLS", "Workload identity"]
+        objectives: ["Determine whether services authenticate to each other."]
+      - id: "IA-10"
+        text: "Provide a fallback authentication mechanism for access to the system when the primary authentication is unavailable."
+        informative_references: ["NIST SP 800-53 Rev 5: IA-10"]
+        examples: ["Break-glass accounts with audit"]
+        objectives: ["Determine whether fallback authentication exists."]
+      - id: "IA-11"
+        text: "Require users to re-authenticate when assuming a different role or escalating privileges."
+        informative_references: ["NIST SP 800-53 Rev 5: IA-11", "NIST CSF 2.0: PR.AA-05"]
+        examples: ["Re-auth before admin operations"]
+        objectives: ["Determine whether re-authentication is required for role change."]
+      - id: "IA-12"
+        text: "Accept and electronically verify Personal Identity Verification (PIV) or other approved identity credentials."
+        informative_references: ["NIST SP 800-53 Rev 5: IA-12"]
+        examples: ["PIV card readers for federal systems"]
+        objectives: ["Determine whether PIV/equivalent credentials are accepted."]
+
+  # ---- IR: Incident Response ----
+  - function: "IR"
+    function_dir: "IR"
+    category_name: "Incident Response"
+    practices:
+      - id: "IR-01"
+        text: "Develop, document, and disseminate an incident response policy."
+        informative_references: ["NIST SP 800-53 Rev 5: IR-01", "NIST CSF 2.0: GV.PO-01"]
+        examples: ["Publish IR policy"]
+        objectives: ["Determine whether an IR policy exists."]
+      - id: "IR-02"
+        text: "Establish and maintain an incident response plan that provides the organisation with a roadmap for implementing response capability."
+        informative_references: ["NIST SP 800-53 Rev 5: IR-02", "NIST CSF 2.0: RS.RP-01"]
+        examples: ["IR plan", "Annual review"]
+        objectives: ["Determine whether an IR plan exists."]
+      - id: "IR-03"
+        text: "Test the incident response capability at the frequency defined by the organisation to determine effectiveness."
+        informative_references: ["NIST SP 800-53 Rev 5: IR-03", "NIST CSF 2.0: RS.CO-02"]
+        examples: ["Annual tabletop", "Live IR exercise"]
+        objectives: ["Determine whether the IR capability is tested."]
+      - id: "IR-04"
+        text: "Implement an incident handling capability for security incidents that includes preparation, detection, analysis, containment, eradication, and recovery."
+        informative_references: ["NIST SP 800-53 Rev 5: IR-04", "NIST CSF 2.0: RS.MA-01"]
+        examples: ["24x7 IR coverage", "Runbooks per incident type"]
+        objectives: ["Determine whether incident handling capability is implemented."]
+      - id: "IR-05"
+        text: "Track and document information system security incidents."
+        informative_references: ["NIST SP 800-53 Rev 5: IR-05", "NIST CSF 2.0: DE.AE-02"]
+        examples: ["Incident tracking system", "Status reporting"]
+        objectives: ["Determine whether incidents are tracked."]
+      - id: "IR-06"
+        text: "Report security incidents to designated authorities and personnel within the timeframes defined by the organisation."
+        informative_references: ["NIST SP 800-53 Rev 5: IR-06", "NIST CSF 2.0: RS.CO-02"]
+        examples: ["Escalation matrix", "Mandatory reporting timelines"]
+        objectives: ["Determine whether incidents are reported per defined timelines."]
+      - id: "IR-07"
+        text: "Provide incident response support resources to the organisation as required (e.g., forensics, legal, communications)."
+        informative_references: ["NIST SP 800-53 Rev 5: IR-07"]
+        examples: ["Retainer with DFIR firm", "Internal forensics lab"]
+        objectives: ["Determine whether IR support is provided."]
+      - id: "IR-08"
+        text: "Establish an incident response team that is trained and ready to respond to incidents."
+        informative_references: ["NIST SP 800-53 Rev 5: IR-08", "NIST CSF 2.0: RS.AN-03"]
+        examples: ["CSIRT", "On-call rota"]
+        objectives: ["Determine whether an incident response team exists."]
+      - id: "IR-09"
+        text: "Establish a process for organisational learning from incidents and apply lessons learned to update the response plan."
+        informative_references: ["NIST SP 800-53 Rev 5: IR-09", "NIST CSF 2.0: RS.AN-08"]
+        examples: ["Post-incident reviews", "Update playbooks"]
+        objectives: ["Determine whether lessons learned are captured and applied."]
+      - id: "IR-10"
+        text: "Establish a coordinated approach to incident handling with relevant external parties (ISAC, regulator, law enforcement)."
+        informative_references: ["NIST SP 800-53 Rev 5: IR-10", "NIST CSF 2.0: RS.CO-03"]
+        examples: ["ISAC membership", "NIS2 single point of contact"]
+        objectives: ["Determine whether external coordination is established."]
+
+  # ---- MA: Maintenance ----
+  - function: "MA"
+    function_dir: "MA"
+    category_name: "Maintenance"
+    practices:
+      - id: "MA-01"
+        text: "Develop, document, and disseminate a system maintenance policy."
+        informative_references: ["NIST SP 800-53 Rev 5: MA-01"]
+        examples: ["Publish maintenance policy"]
+        objectives: ["Determine whether a maintenance policy exists."]
+      - id: "MA-02"
+        text: "Schedule, perform, document, and review records of maintenance and repairs on system components."
+        informative_references: ["NIST SP 800-53 Rev 5: MA-02", "NIST CSF 2.0: ID.RA-01"]
+        examples: ["Maintenance tickets", "Maintenance windows"]
+        objectives: ["Determine whether maintenance is scheduled and documented."]
+      - id: "MA-03"
+        text: "Use maintenance tools that are approved, controlled, and free from malicious code."
+        informative_references: ["NIST SP 800-53 Rev 5: MA-03"]
+        examples: ["Approved tool list", "Tool integrity checks"]
+        objectives: ["Determine whether maintenance tools are controlled."]
+      - id: "MA-04"
+        text: "Provide non-local maintenance and diagnostic sessions that protect the confidentiality and integrity of sessions and remote access."
+        informative_references: ["NIST SP 800-53 Rev 5: MA-04"]
+        examples: ["MFA-protected remote maintenance", "Session recording"]
+        objectives: ["Determine whether remote maintenance is protected."]
+      - id: "MA-05"
+        text: "Require maintenance personnel to be authorised and escrowed where appropriate, and document their activities."
+        informative_references: ["NIST SP 800-53 Rev 5: MA-05"]
+        examples: ["Vetted vendor list", "Maintenance logs"]
+        objectives: ["Determine whether maintenance personnel are authorised."]
+      - id: "MA-06"
+        text: "Inspect and sanitise maintenance equipment before connection to the system."
+        informative_references: ["NIST SP 800-53 Rev 5: MA-06"]
+        examples: ["Media scan", "Tool sanitisation"]
+        objectives: ["Determine whether maintenance equipment is sanitised."]
+      - id: "MA-07"
+        text: "Control and document the use of field-deployed systems used to perform maintenance on organisational systems."
+        informative_references: ["NIST SP 800-53 Rev 5: MA-07"]
+        examples: ["Field technician laptops enrolled in MDM"]
+        objectives: ["Determine whether field-deployed maintenance systems are controlled."]
+
+  # ---- MP: Media Protection ----
+  - function: "MP"
+    function_dir: "MP"
+    category_name: "Media Protection"
+    practices:
+      - id: "MP-01"
+        text: "Develop, document, and disseminate a media protection policy."
+        informative_references: ["NIST SP 800-53 Rev 5: MP-01"]
+        examples: ["Publish media protection policy"]
+        objectives: ["Determine whether a media protection policy exists."]
+      - id: "MP-02"
+        text: "Restrict access to digital and non-digital media to authorised individuals."
+        informative_references: ["NIST SP 800-53 Rev 5: MP-02"]
+        examples: ["Locked media cabinets", "Encrypted USB drives"]
+        objectives: ["Determine whether media access is restricted."]
+      - id: "MP-03"
+        text: "Mark digital and non-digital media with the appropriate security markings to indicate the distribution, handling, and disposal requirements."
+        informative_references: ["NIST SP 800-53 Rev 5: MP-03"]
+        examples: ["Classification labels"]
+        objectives: ["Determine whether media is labelled with security markings."]
+      - id: "MP-04"
+        text: "Physically control and securely store digital and non-digital media."
+        informative_references: ["NIST SP 800-53 Rev 5: MP-04"]
+        examples: ["Locked storage", "Safe for backup tapes"]
+        objectives: ["Determine whether media is physically controlled."]
+      - id: "MP-05"
+        text: "Restrict the use of removable media on the system."
+        informative_references: ["NIST SP 800-53 Rev 5: MP-05", "NIST CSF 2.0: PR.PS-01"]
+        examples: ["Block unapproved USB", "Encrypt approved USB"]
+        objectives: ["Determine whether removable media use is restricted."]
+      - id: "MP-06"
+        text: "Sanitise or destroy digital and non-digital media before disposal or release for reuse."
+        informative_references: ["NIST SP 800-53 Rev 5: MP-06", "NIST CSF 2.0: PR.DS-01"]
+        examples: ["NIST 800-88 purge", "Certificate of destruction"]
+        objectives: ["Determine whether media is sanitised before disposal."]
+      - id: "MP-07"
+        text: "Control and restrict the use of system media containing sensitive information on systems and components that do not have an organisational-defined level of protection."
+        informative_references: ["NIST SP 800-53 Rev 5: MP-07"]
+        examples: ["Block media use on unmanaged systems"]
+        objectives: ["Determine whether media use on unprotected systems is restricted."]
+      - id: "MP-08"
+        text: "Downgrade media containing sensitive information before sharing with personnel who lack the clearance to handle the original classification."
+        informative_references: ["NIST SP 800-53 Rev 5: MP-08"]
+        examples: ["Downgrade labels and redaction"]
+        objectives: ["Determine whether media downgrade procedures exist."]
+
+  # ---- PE: Physical and Environmental Protection ----
+  - function: "PE"
+    function_dir: "PE"
+    category_name: "Physical and Environmental Protection"
+    practices:
+      - id: "PE-01"
+        text: "Develop, document, and disseminate a physical and environmental protection policy."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-01"]
+        examples: ["Publish PE policy"]
+        objectives: ["Determine whether a PE policy exists."]
+      - id: "PE-02"
+        text: "Control physical access to the system, the areas in which it is housed, and the supporting infrastructure."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-02", "NIST CSF 2.0: PR.AA-05"]
+        examples: ["Badge access", "Mantraps"]
+        objectives: ["Determine whether physical access is controlled."]
+      - id: "PE-03"
+        text: "Control physical access to the system output devices to prevent unauthorised individuals from obtaining system output."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-03"]
+        examples: ["Restrict access to printers/monitors"]
+        objectives: ["Determine whether output device access is controlled."]
+      - id: "PE-04"
+        text: "Control physical access to transmission lines and equipment used to convey information."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-04"]
+        examples: ["Locked telecom closets"]
+        objectives: ["Determine whether transmission lines are physically controlled."]
+      - id: "PE-05"
+        text: "Control physical access to system components by implementing physical access control lists, guards, or surveillance."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-05"]
+        examples: ["CCTV", "Visitor logs"]
+        objectives: ["Determine whether physical access is monitored."]
+      - id: "PE-06"
+        text: "Monitor physical intrusion alarms, sensors, and surveillance equipment; test at the defined frequency."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-06"]
+        examples: ["Alarm monitoring", "Sensor testing annually"]
+        objectives: ["Determine whether physical intrusion is monitored."]
+      - id: "PE-08"
+        text: "Control physical access to systems, equipment, and operating environments to authorised personnel during and after emergency events."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-08"]
+        examples: ["Emergency access procedures"]
+        objectives: ["Determine whether emergency physical access is controlled."]
+      - id: "PE-09"
+        text: "Protect the system and its components from damage due to fire, flooding, temperature, and other environmental hazards."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-09"]
+        examples: ["Fire suppression", "HVAC monitoring"]
+        objectives: ["Determine whether environmental protections are in place."]
+      - id: "PE-10"
+        text: "Provide and maintain an uninterruptible power supply and backup power to support system continuity."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-10"]
+        examples: ["UPS", "Generator"]
+        objectives: ["Determine whether backup power is provided."]
+      - id: "PE-11"
+        text: "Provide and maintain emergency lighting to support safe evacuation in the event of a power outage or disruption."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-11"]
+        examples: ["Battery-backed emergency lighting"]
+        objectives: ["Determine whether emergency lighting is provided."]
+      - id: "PE-12"
+        text: "Provide and maintain fire suppression and detection systems that activate automatically in the event of a fire."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-12"]
+        examples: ["FM-200 / Novec 1230", "Smoke detection"]
+        objectives: ["Determine whether fire detection and suppression are provided."]
+      - id: "PE-13"
+        text: "Implement and maintain a fire protection plan that describes the activities and responsibilities for fire prevention, detection, suppression, and recovery."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-13"]
+        examples: ["Documented fire plan"]
+        objectives: ["Determine whether a fire protection plan exists."]
+      - id: "PE-14"
+        text: "Implement and maintain temperature and humidity controls to ensure environmental conditions consistent with manufacturer specifications."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-14"]
+        examples: ["Datacentre HVAC", "Environmental monitoring"]
+        objectives: ["Determine whether temperature and humidity are controlled."]
+      - id: "PE-15"
+        text: "Implement and maintain controls to prevent damage from water leaks and other liquids."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-15"]
+        examples: ["Water sensors under raised floor"]
+        objectives: ["Determine whether water damage is prevented."]
+      - id: "PE-16"
+        text: "Control and monitor delivery and removal of system components and authorise delivery and removal personnel."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-16"]
+        examples: ["Asset in/out logs"]
+        objectives: ["Determine whether deliveries and removals are controlled."]
+      - id: "PE-17"
+        text: "Control and monitor the use of information system components that can be used for alternative purposes (e.g., printers, cameras)."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-17"]
+        examples: ["Camera placement policy"]
+        objectives: ["Determine whether alternative uses are controlled."]
+      - id: "PE-18"
+        text: "Position system components within the facility to minimise potential damage from physical and environmental hazards."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-18"]
+        examples: ["Avoid ground-floor for critical equipment"]
+        objectives: ["Determine whether component placement minimises risk."]
+      - id: "PE-19"
+        text: "Provide a means to identify and mark system components that are not in use or under maintenance."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-19"]
+        examples: ["Out-of-service tags"]
+        objectives: ["Determine whether unused components are identified."]
+      - id: "PE-20"
+        text: "Protect the system from the effects of electromagnetic pulse and electromagnetic interference."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-20"]
+        examples: ["EMP shielding where required"]
+        objectives: ["Determine whether EMP protection is in place."]
+      - id: "PE-21"
+        text: "Protect the system from the effects of electrostatic discharge."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-21"]
+        examples: ["ESD wrist straps in datacentre"]
+        objectives: ["Determine whether ESD protection is in place."]
+      - id: "PE-22"
+        text: "Mark and label critical components with the component's identity, the organisation's identity, and handling or disposal markings."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-22"]
+        examples: ["Asset tags"]
+        objectives: ["Determine whether components are labelled."]
+      - id: "PE-23"
+        text: "Protect system components from physical tampering, including during transportation and storage."
+        informative_references: ["NIST SP 800-53 Rev 5: PE-23"]
+        examples: ["Tamper-evident seals on hardware"]
+        objectives: ["Determine whether components are protected from tampering."]
+
+  # ---- PL: Planning ----
+  - function: "PL"
+    function_dir: "PL"
+    category_name: "Planning"
+    practices:
+      - id: "PL-01"
+        text: "Develop, document, and disseminate a system security plan that describes the system, its environment, and the security controls in place."
+        informative_references: ["NIST SP 800-53 Rev 5: PL-01", "NIST CSF 2.0: GV.PO-02"]
+        examples: ["SSP per system"]
+        objectives: ["Determine whether a system security plan exists."]
+      - id: "PL-02"
+        text: "Develop and document a system-level continuous monitoring strategy and update it as needed."
+        informative_references: ["NIST SP 800-53 Rev 5: PL-02"]
+        examples: ["Per-system monitoring strategy"]
+        objectives: ["Determine whether a system monitoring strategy exists."]
+      - id: "PL-04"
+        text: "Establish and maintain rules of behaviour that describe the responsibilities and expected behaviour for all users of the system."
+        informative_references: ["NIST SP 800-53 Rev 5: PL-04"]
+        examples: ["AUP", "Annual acknowledgement"]
+        objectives: ["Determine whether rules of behaviour exist."]
+      - id: "PL-07"
+        text: "Develop and document a concept of operations (CONOPS) that describes how the organisation intends to operate the system."
+        informative_references: ["NIST SP 800-53 Rev 5: PL-07"]
+        examples: ["CONOPS document"]
+        objectives: ["Determine whether a CONOPS exists."]
+      - id: "PL-08"
+        text: "Plan and document security-oriented actions for the system over its life cycle, including design, development, acquisition, operation, and disposal."
+        informative_references: ["NIST SP 800-53 Rev 5: PL-08", "NIST CSF 2.0: ID.SC-04 (legacy 1.1)"]
+        examples: ["Lifecycle security plan"]
+        objectives: ["Determine whether lifecycle security planning exists."]
+      - id: "PL-09"
+        text: "Develop and document a system development life cycle (SDLC) methodology that includes security considerations."
+        informative_references: ["NIST SP 800-53 Rev 5: PL-09", "NIST SSDF v1.1: PO.1.1"]
+        examples: ["Documented SDLC"]
+        objectives: ["Determine whether the SDLC includes security."]
+      - id: "PL-10"
+        text: "Establish and enforce a baseline configuration for the system that reflects the most secure mode consistent with operational requirements."
+        informative_references: ["NIST SP 800-53 Rev 5: PL-10"]
+        examples: ["Baseline per system"]
+        objectives: ["Determine whether a per-system baseline is enforced."]
+      - id: "PL-11"
+        text: "Use a system design and implementation process that incorporates security considerations throughout the system development life cycle."
+        informative_references: ["NIST SP 800-53 Rev 5: PL-11"]
+        examples: ["Secure-by-design review at each phase"]
+        objectives: ["Determine whether security is integrated into design and implementation."]
+
+  # ---- PM: Program Management ----
+  - function: "PM"
+    function_dir: "PM"
+    category_name: "Program Management"
+    practices:
+      - id: "PM-01"
+        text: "Establish and maintain a security programme plan that describes the organisation's security programme and its goals."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-01", "NIST CSF 2.0: GV.PO-01"]
+        examples: ["Programme plan"]
+        objectives: ["Determine whether a programme plan exists."]
+      - id: "PM-02"
+        text: "Appoint a senior information security officer (CISO) with the authority and resources to manage the security programme."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-02", "NIST CSF 2.0: GV.RR-01"]
+        examples: ["CISO appointment letter"]
+        objectives: ["Determine whether a CISO is appointed."]
+      - id: "PM-03"
+        text: "Allocate resources to implement the security programme and protect the system at the impact level defined."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-03"]
+        examples: ["Budget allocation"]
+        objectives: ["Determine whether resources are allocated."]
+      - id: "PM-04"
+        text: "Implement a process to ensure that security plans and assessments are reviewed and approved before implementation."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-04"]
+        examples: ["Plan review process"]
+        objectives: ["Determine whether plans are reviewed before implementation."]
+      - id: "PM-05"
+        text: "Develop and maintain a system inventory that lists the systems and the system owners responsible for them."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-05", "NIST CSF 2.0: ID.AM-01"]
+        examples: ["System inventory"]
+        objectives: ["Determine whether a system inventory exists."]
+      - id: "PM-06"
+        text: "Establish and enforce organisational policies and procedures for the protection of information at the impact level defined."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-06"]
+        examples: ["Information protection policy"]
+        objectives: ["Determine whether information protection policies exist."]
+      - id: "PM-07"
+        text: "Develop and maintain a comprehensive strategy for the protection of information and the systems that process it."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-07", "NIST CSF 2.0: GV.PO-02"]
+        examples: ["Information protection strategy"]
+        objectives: ["Determine whether an information protection strategy exists."]
+      - id: "PM-08"
+        text: "Implement a critical infrastructure plan that addresses the protection of systems that support critical infrastructure."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-08"]
+        examples: ["CIP plan"]
+        objectives: ["Determine whether critical infrastructure planning exists."]
+      - id: "PM-09"
+        text: "Establish a risk management strategy that addresses the protection of information and the systems that process it."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-09", "NIST CSF 2.0: GV.RM-01"]
+        examples: ["Risk management strategy"]
+        objectives: ["Determine whether a risk management strategy exists."]
+      - id: "PM-10"
+        text: "Implement a process to ensure the security categorisation of information and systems is consistent with the organisation's risk strategy."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-10"]
+        examples: ["Categorisation process"]
+        objectives: ["Determine whether categorisation is performed."]
+      - id: "PM-11"
+        text: "Define and document the testing and evaluation processes used to verify the security controls implemented."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-11"]
+        examples: ["T&E methodology"]
+        objectives: ["Determine whether testing/evaluation is defined."]
+      - id: "PM-12"
+        text: "Establish and manage a supply chain risk management strategy that addresses the protection of the system against supply chain threats."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-12", "NIST CSF 2.0: GV.SC-01"]
+        examples: ["SCRM strategy"]
+        objectives: ["Determine whether SCRM strategy exists."]
+      - id: "PM-13"
+        text: "Establish a process to ensure the security controls for systems and organisations are tested and evaluated periodically."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-13"]
+        examples: ["Periodic T&E"]
+        objectives: ["Determine whether controls are periodically tested."]
+      - id: "PM-14"
+        text: "Establish a process to ensure that security controls for systems and organisations are implemented and operating as intended."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-14"]
+        examples: ["Effectiveness monitoring"]
+        objectives: ["Determine whether control effectiveness is monitored."]
+      - id: "PM-15"
+        text: "Establish and enforce security and privacy policies and procedures for the protection of information shared with external parties."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-15", "NIST CSF 2.0: GV.SC-01"]
+        examples: ["External sharing policy"]
+        objectives: ["Determine whether external sharing policies exist."]
+      - id: "PM-16"
+        text: "Establish a process to ensure that threat information is collected, analysed, and used to inform the security programme."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-16", "NIST CSF 2.0: ID.RA-02"]
+        examples: ["Threat intel function"]
+        objectives: ["Determine whether threat information is operationalised."]
+      - id: "PM-17"
+        text: "Establish a process to ensure that the security programme is regularly reviewed and updated."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-17"]
+        examples: ["Annual programme review"]
+        objectives: ["Determine whether the programme is reviewed regularly."]
+      - id: "PM-18"
+        text: "Establish and maintain a process for the protection of privacy in the security programme (PIA-PM)."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-18"]
+        examples: ["Privacy programme"]
+        objectives: ["Determine whether privacy is integrated into the security programme."]
+      - id: "PM-19"
+        text: "Appoint a Senior Agency Official for Privacy (SAOP) or equivalent to manage privacy risks."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-19"]
+        examples: ["Privacy officer appointment"]
+        objectives: ["Determine whether a privacy officer is appointed."]
+      - id: "PM-20"
+        text: "Establish a process to ensure that the system privacy plan is reviewed and approved before implementation."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-20"]
+        examples: ["Privacy plan review"]
+        objectives: ["Determine whether privacy plans are reviewed."]
+      - id: "PM-21"
+        text: "Allocate resources for the implementation and operation of the privacy programme."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-21"]
+        examples: ["Privacy budget"]
+        objectives: ["Determine whether privacy programme is resourced."]
+      - id: "PM-22"
+        text: "Establish a process to ensure that privacy controls are implemented and operating as intended."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-22"]
+        examples: ["Privacy control monitoring"]
+        objectives: ["Determine whether privacy controls are monitored."]
+      - id: "PM-23"
+        text: "Establish a process to ensure that the privacy programme is aligned with applicable laws and regulations."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-23"]
+        examples: ["Privacy compliance review"]
+        objectives: ["Determine whether privacy programme is aligned with laws."]
+      - id: "PM-24"
+        text: "Establish a process to ensure that data quality is maintained throughout the data life cycle."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-24"]
+        examples: ["Data quality programme"]
+        objectives: ["Determine whether data quality is maintained."]
+      - id: "PM-25"
+        text: "Establish a process to ensure that personal data is minimised in the system."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-25", "ISO/IEC 27001:2022: A.5.34"]
+        examples: ["Data minimisation review"]
+        objectives: ["Determine whether data minimisation is enforced."]
+      - id: "PM-26"
+        text: "Establish a process to ensure that personal data use is limited to the purpose for which it was collected."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-26"]
+        examples: ["Purpose-limitation enforcement"]
+        objectives: ["Determine whether purpose limitation is enforced."]
+      - id: "PM-27"
+        text: "Establish a process to ensure that personal data is retained only as long as necessary for the purpose for which it was collected."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-27", "ISO/IEC 27001:2022: A.5.34"]
+        examples: ["Retention schedules"]
+        objectives: ["Determine whether retention limits are enforced."]
+      - id: "PM-28"
+        text: "Establish a process to ensure that personal data is disposed of when no longer needed."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-28"]
+        examples: ["Disposal workflows"]
+        objectives: ["Determine whether disposal procedures exist."]
+      - id: "PM-29"
+        text: "Establish a process to ensure that personal data is de-identified when it is shared with external parties."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-29"]
+        examples: ["De-identification pipeline"]
+        objectives: ["Determine whether de-identification is applied."]
+      - id: "PM-30"
+        text: "Establish a process to ensure that the supply chain risk management strategy is aligned with applicable laws and regulations."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-30"]
+        examples: ["SCRM regulatory alignment"]
+        objectives: ["Determine whether SCRM is aligned with laws."]
+      - id: "PM-31"
+        text: "Implement a continuous monitoring strategy that includes monitoring of the system's supply chain."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-31", "NIST CSF 2.0: GV.SC-04"]
+        examples: ["Supplier monitoring"]
+        objectives: ["Determine whether the supply chain is continuously monitored."]
+      - id: "PM-32"
+        text: "Analyse the impact of significant changes to the supply chain on the system's security posture."
+        informative_references: ["NIST SP 800-53 Rev 5: PM-32"]
+        examples: ["Supplier change impact analysis"]
+        objectives: ["Determine whether supply chain changes are impact-assessed."]
+
+  # ---- PS: Personnel Security ----
+  - function: "PS"
+    function_dir: "PS"
+    category_name: "Personnel Security"
+    practices:
+      - id: "PS-01"
+        text: "Develop, document, and disseminate a personnel security policy."
+        informative_references: ["NIST SP 800-53 Rev 5: PS-01"]
+        examples: ["Publish personnel security policy"]
+        objectives: ["Determine whether a personnel security policy exists."]
+      - id: "PS-02"
+        text: "Assign personnel security risk designations to all positions and screen individuals prior to authorisation."
+        informative_references: ["NIST SP 800-53 Rev 5: PS-02"]
+        examples: ["Position risk designations", "Pre-employment screening"]
+        objectives: ["Determine whether position designations and screening exist."]
+      - id: "PS-03"
+        text: "Screen individuals prior to authorising access and rescreen at the defined frequency for continued access."
+        informative_references: ["NIST SP 800-53 Rev 5: PS-03", "NIST CSF 2.0: GV.OC-04"]
+        examples: ["Background checks", "Periodic re-screening"]
+        objectives: ["Determine whether individuals are screened."]
+      - id: "PS-04"
+        text: "Upon termination of employment, terminate access, recover property, and complete exit procedures within the defined time period."
+        informative_references: ["NIST SP 800-53 Rev 5: PS-04", "NIST CSF 2.0: PR.AA-01"]
+        examples: ["Termination checklist", "Same-day access revocation"]
+        objectives: ["Determine whether termination procedures are followed."]
+      - id: "PS-05"
+        text: "Transfer personnel to new roles and ensure that access is reviewed and modified as appropriate."
+        informative_references: ["NIST SP 800-53 Rev 5: PS-05"]
+        examples: ["Transfer access review"]
+        objectives: ["Determine whether transfers trigger access review."]
+      - id: "PS-06"
+        text: "Use formal agreements that contain appropriate security and privacy requirements for personnel who access organisational systems."
+        informative_references: ["NIST SP 800-53 Rev 5: PS-06", "ISO/IEC 27001:2022: A.6.2"]
+        examples: ["NDAs", "Security terms"]
+        objectives: ["Determine whether access agreements exist."]
+      - id: "PS-07"
+        text: "Establish and enforce requirements for third-party personnel who access organisational systems."
+        informative_references: ["NIST SP 800-53 Rev 5: PS-07", "NIST CSF 2.0: GV.SC-07"]
+        examples: ["Vendor personnel screening"]
+        objectives: ["Determine whether third-party personnel requirements exist."]
+      - id: "PS-08"
+        text: "Implement a personnel sanctions process for personnel who violate security policies and procedures."
+        informative_references: ["NIST SP 800-53 Rev 5: PS-08"]
+        examples: ["Sanctions policy"]
+        objectives: ["Determine whether sanctions exist for violations."]
+      - id: "PS-09"
+        text: "Provide position descriptions that include security and privacy responsibilities."
+        informative_references: ["NIST SP 800-53 Rev 5: PS-09", "NIST CSF 2.0: GV.RR-02"]
+        examples: ["Job descriptions with security responsibilities"]
+        objectives: ["Determine whether security responsibilities are in job descriptions."]
+
+  # ---- PT: PII Processing and Transparency (Rev 5 new) ----
+  - function: "PT"
+    function_dir: "PT"
+    category_name: "PII Processing and Transparency"
+    practices:
+      - id: "PT-01"
+        text: "Implement operational privacy notices and consent mechanisms for processing personal information."
+        informative_references: ["NIST SP 800-53 Rev 5: PT-01", "ISO/IEC 27001:2022: A.5.34"]
+        examples: ["Privacy notices at collection points", "Consent capture"]
+        objectives: ["Determine whether privacy notices are provided."]
+      - id: "PT-02"
+        text: "Select and use appropriate privacy controls and processes that govern the system's processing of personal information."
+        informative_references: ["NIST SP 800-53 Rev 5: PT-02"]
+        examples: ["Privacy control selection"]
+        objectives: ["Determine whether privacy controls are selected appropriately."]
+      - id: "PT-03"
+        text: "Implement processes to manage the quality and integrity of personal information processed by the system."
+        informative_references: ["NIST SP 800-53 Rev 5: PT-03", "ISO/IEC 27001:2022: A.8.10"]
+        examples: ["Data quality checks"]
+        objectives: ["Determine whether PII quality is managed."]
+      - id: "PT-04"
+        text: "Implement processes to manage the response to privacy incidents."
+        informative_references: ["NIST SP 800-53 Rev 5: PT-04", "ISO/IEC 27001:2022: A.5.34"]
+        examples: ["Breach response procedures"]
+        objectives: ["Determine whether privacy incident response exists."]
+      - id: "PT-05"
+        text: "Implement processes to provide notice to individuals about the system's processing of their personal information."
+        informative_references: ["NIST SP 800-53 Rev 5: PT-05", "ISO/IEC 27001:2022: A.5.34"]
+        examples: ["Notice procedures"]
+        objectives: ["Determine whether processing notice is provided."]
+      - id: "PT-06"
+        text: "Implement processes to enable individuals to exercise their privacy rights (e.g., access, correction, deletion)."
+        informative_references: ["NIST SP 800-53 Rev 5: PT-06", "GDPR Art. 15-22"]
+        examples: ["DSAR workflow"]
+        objectives: ["Determine whether privacy rights can be exercised."]
+      - id: "PT-07"
+        text: "Implement processes to manage the system's use of personal information for secondary purposes."
+        informative_references: ["NIST SP 800-53 Rev 5: PT-07", "GDPR Art. 6(4)"]
+        examples: ["Secondary-use assessment"]
+        objectives: ["Determine whether secondary use is governed."]
+      - id: "PT-08"
+        text: "Implement processes to manage the system's recording of processing activities (records of processing)."
+        informative_references: ["NIST SP 800-53 Rev 5: PT-08", "GDPR Art. 30"]
+        examples: ["Record of processing activities"]
+        objectives: ["Determine whether processing records are maintained."]
+
+  # ---- RA: Risk Assessment ----
+  - function: "RA"
+    function_dir: "RA"
+    category_name: "Risk Assessment"
+    practices:
+      - id: "RA-01"
+        text: "Identify and document vulnerabilities in the system, the potential impact of exploitation, and the likelihood of exploitation."
+        informative_references: ["NIST SP 800-53 Rev 5: RA-01", "NIST CSF 2.0: ID.RA-01"]
+        examples: ["Vulnerability scans", "Penetration tests"]
+        objectives: ["Determine whether vulnerabilities are identified."]
+      - id: "RA-02"
+        text: "Identify and document threat information that could impact the system."
+        informative_references: ["NIST SP 800-53 Rev 5: RA-02", "NIST CSF 2.0: ID.RA-02"]
+        examples: ["Threat intel feeds"]
+        objectives: ["Determine whether threat information is documented."]
+      - id: "RA-03"
+        text: "Conduct a risk assessment that identifies, estimates, and prioritises risks to system operations, assets, and individuals."
+        informative_references: ["NIST SP 800-53 Rev 5: RA-03", "NIST CSF 2.0: ID.RA-04"]
+        examples: ["Annual risk assessment"]
+        objectives: ["Determine whether a risk assessment is conducted."]
+      - id: "RA-04"
+        text: "Assess the likelihood and impact of identified risks to the system and produce a risk determination."
+        informative_references: ["NIST SP 800-53 Rev 5: RA-04", "NIST CSF 2.0: ID.RA-04"]
+        examples: ["Likelihood/impact scoring"]
+        objectives: ["Determine whether likelihood and impact are assessed."]
+      - id: "RA-05"
+        text: "Identify, prioritise, and document risks that require treatment (mitigation, transfer, avoidance, acceptance)."
+        informative_references: ["NIST SP 800-53 Rev 5: RA-05", "NIST CSF 2.0: ID.RA-05"]
+        examples: ["Risk treatment plan"]
+        objectives: ["Determine whether risks are prioritised for treatment."]
+
+  # ---- SA: System and Services Acquisition ----
+  - function: "SA"
+    function_dir: "SA"
+    category_name: "System and Services Acquisition"
+    practices:
+      - id: "SA-01"
+        text: "Develop, document, and disseminate a system and services acquisition policy."
+        informative_references: ["NIST SP 800-53 Rev 5: SA-01"]
+        examples: ["Publish acquisition policy"]
+        objectives: ["Determine whether an acquisition policy exists."]
+      - id: "SA-02"
+        text: "Allocate resources to protect the system and its information, including budget, staff, and tools."
+        informative_references: ["NIST SP 800-53 Rev 5: SA-02"]
+        examples: ["Resource allocation per project"]
+        objectives: ["Determine whether resources are allocated for security."]
+      - id: "SA-03"
+        text: "Manage the system development life cycle (SDLC) including design, development, testing, deployment, and maintenance."
+        informative_references: ["NIST SP 800-53 Rev 5: SA-03", "NIST SSDF v1.1: PO.1.1"]
+        examples: ["Documented SDLC", "Phase gates"]
+        objectives: ["Determine whether the SDLC is managed."]
+      - id: "SA-04"
+        text: "Implement processes to ensure that acquisitions meet the organisation's security and privacy requirements."
+        informative_references: ["NIST SP 800-53 Rev 5: SA-04"]
+        examples: ["Procurement security review"]
+        objectives: ["Determine whether acquisitions meet requirements."]
+      - id: "SA-05"
+        text: "Require the developer of the system to produce a system security plan and implement the security controls in accordance with it."
+        informative_references: ["NIST SP 800-53 Rev 5: SA-05"]
+        examples: ["Developer SSP requirement"]
+        objectives: ["Determine whether developer SSPs are required."]
+      - id: "SA-08"
+        text: "Apply security and privacy engineering principles in the design and development of the system."
+        informative_references: ["NIST SP 800-53 Rev 5: SA-8", "NIST SSDF v1.1: PW.1.3"]
+        examples: ["Secure-by-design review"]
+        objectives: ["Determine whether secure engineering principles are applied."]
+      - id: "SA-09"
+        text: "Define and document the security and privacy roles and responsibilities for external providers of services."
+        informative_references: ["NIST SP 800-53 Rev 5: SA-09", "NIST CSF 2.0: GV.SC-07"]
+        examples: ["Vendor responsibility matrix"]
+        objectives: ["Determine whether external provider roles are defined."]
+      - id: "SA-10"
+        text: "Require the developer to perform configuration management during system development, implementation, and operation."
+        informative_references: ["NIST SP 800-53 Rev 5: SA-10", "NIST SSDF v1.1: PS.1.1"]
+        examples: ["Developer CM requirements"]
+        objectives: ["Determine whether developer CM is required."]
+      - id: "SA-11"
+        text: "Require the developer to test and evaluate the system for vulnerabilities and remediate them prior to delivery."
+        informative_references: ["NIST SP 800-53 Rev 5: SA-11", "NIST SSDF v1.1: PW.3.1"]
+        examples: ["Developer testing requirements"]
+        objectives: ["Determine whether developer testing is required."]
+      - id: "SA-15"
+        text: "Require the developer to follow a documented development process that incorporates security and privacy considerations throughout the SDLC."
+        informative_references: ["NIST SP 800-53 Rev 5: SA-15", "NIST SSDF v1.1: PO.3.1"]
+        examples: ["Developer process requirements"]
+        objectives: ["Determine whether developer processes are documented."]
+      - id: "SA-16"
+        text: "Require the developer to provide training on the secure use of the system to all users."
+        informative_references: ["NIST SP 800-53 Rev 5: SA-16"]
+        examples: ["Developer training materials"]
+        objectives: ["Determine whether developer-provided training exists."]
+      - id: "SA-17"
+        text: "Require the developer to design and implement the system using security and privacy design principles and patterns."
+        informative_references: ["NIST SP 800-53 Rev 5: SA-17", "NIST SSDF v1.1: PW.1.3"]
+        examples: ["Design pattern catalogue"]
+        objectives: ["Determine whether secure design patterns are required."]
+      - id: "SA-21"
+        text: "Require the developer of the system to identify and report vulnerabilities discovered after delivery."
+        informative_references: ["NIST SP 800-53 Rev 5: SA-21"]
+        examples: ["Vulnerability disclosure terms"]
+        objectives: ["Determine whether developer vulnerability reporting is required."]
+      - id: "SA-22"
+        text: "Support the developer in addressing vulnerabilities by providing supporting information and tooling."
+        informative_references: ["NIST SP 800-53 Rev 5: SA-22"]
+        examples: ["Shared remediation tooling"]
+        objectives: ["Determine whether developer support for remediation exists."]
+      - id: "SA-23"
+        text: "Use a process to manage the introduction of new technologies into the system that considers security implications."
+        informative_references: ["NIST SP 800-53 Rev 5: SA-23"]
+        examples: ["New-tech review board"]
+        objectives: ["Determine whether new-tech adoption is governed."]
+
+  # ---- SC: System and Communications Protection ----
+  - function: "SC"
+    function_dir: "SC"
+    category_name: "System and Communications Protection"
+    practices:
+      - id: "SC-01"
+        text: "Develop, document, and disseminate a system and communications protection policy."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-01"]
+        examples: ["Publish SC policy"]
+        objectives: ["Determine whether an SC policy exists."]
+      - id: "SC-02"
+        text: "Separate user functionality from system management functionality (e.g., separate networks, separate accounts)."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-02", "NIST CSF 2.0: PR.PS-06"]
+        examples: ["Dedicated management VLAN", "Separate admin accounts"]
+        objectives: ["Determine whether user and management functionality are separated."]
+      - id: "SC-03"
+        text: "Separate user functionality from information system management functionality at the user interface level."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-03"]
+        examples: ["Different interfaces for user vs admin"]
+        objectives: ["Determine whether UI-level separation exists."]
+      - id: "SC-04"
+        text: "Prevent unauthorised and unintended information transfer via shared system resources."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-04"]
+        examples: ["Container isolation", "Multi-tenant separation"]
+        objectives: ["Determine whether shared-resource leakage is prevented."]
+      - id: "SC-05"
+        text: "Implement protection against denial-of-service (DoS) attacks at the system and network levels."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-05", "NIST CSF 2.0: PR.IR-01"]
+        examples: ["DDoS mitigation", "Rate limiting"]
+        objectives: ["Determine whether DoS protection is implemented."]
+      - id: "SC-06"
+        text: "Restrict the dissemination, access, and use of information to authorised users and processes."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-06", "NIST CSF 2.0: PR.PS-06"]
+        examples: ["Need-to-know enforcement"]
+        objectives: ["Determine whether information dissemination is restricted."]
+      - id: "SC-07"
+        text: "Implement boundary protection mechanisms (firewalls, gateways, proxies) to monitor and control communications at external boundaries."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-07", "NIST CSF 2.0: PR.PS-06"]
+        examples: ["Firewalls", "IDS/IPS"]
+        objectives: ["Determine whether boundary protection is implemented."]
+      - id: "SC-08"
+        text: "Protect the confidentiality and integrity of transmitted information using cryptographic mechanisms."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-08", "NIST CSF 2.0: PR.DS-02", "ISO/IEC 27001:2022: A.8.24"]
+        examples: ["TLS 1.3", "IPsec"]
+        objectives: ["Determine whether transmission is cryptographically protected."]
+      - id: "SC-10"
+        text: "Terminate network connections at the end of sessions or after an organisation-defined period of inactivity."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-10"]
+        examples: ["Session timeouts"]
+        objectives: ["Determine whether sessions are terminated."]
+      - id: "SC-12"
+        text: "Establish and manage cryptographic keys using approved key management processes and infrastructure."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-12", "NIST CSF 2.0: PR.DS-01"]
+        examples: ["Key management policy", "HSM for root keys"]
+        objectives: ["Determine whether cryptographic keys are managed."]
+      - id: "SC-13"
+        text: "Use cryptography in accordance with applicable laws, regulations, and organisational policies."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-13", "NIST CSF 2.0: PR.DS-01"]
+        examples: ["FIPS-validated cryptography"]
+        objectives: ["Determine whether cryptographic use is compliant."]
+      - id: "SC-15"
+        text: "Implement collaborative computing mechanisms that provide the user with an explicit indication of the presence of others (no implicit collaboration)."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-15"]
+        examples: ["Visible meeting indicator"]
+        objectives: ["Determine whether collaborative sessions are indicated."]
+      - id: "SC-17"
+        text: "Issue public key certificates under an organisation-defined certificate policy or obtain certificates from a service provider."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-17"]
+        examples: ["Internal CA", "Public CA"]
+        objectives: ["Determine whether certificate issuance is governed."]
+      - id: "SC-18"
+        text: "Implement controls over the use of mobile code (e.g., JavaScript, Java applets, ActiveX) within the system."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-18"]
+        examples: ["Mobile-code allowlist", "CSP"]
+        objectives: ["Determine whether mobile code is controlled."]
+      - id: "SC-20"
+        text: "Implement address-space layout randomisation (ASLR) and other memory-protection techniques to reduce the impact of memory-safety vulnerabilities."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-20", "NIST SSDF v1.1: PW.4.1"]
+        examples: ["ASLR enabled", "DEP/NX"]
+        objectives: ["Determine whether memory protections are enabled."]
+      - id: "SC-21"
+        text: "Use data execution prevention (DEP) to prevent execution of code from non-executable memory regions."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-21"]
+        examples: ["NX/XN enabled"]
+        objectives: ["Determine whether DEP is enabled."]
+      - id: "SC-22"
+        text: "Implement architecture-specific security mitigations (e.g., ARM pointer authentication, x86 CET) where supported."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-22"]
+        examples: ["Enable CET on x86"]
+        objectives: ["Determine whether architecture-specific mitigations are enabled."]
+      - id: "SC-23"
+        text: "Protect the authenticity of communications sessions using session-level integrity protections."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-23"]
+        examples: ["Signed session tokens"]
+        objectives: ["Determine whether session authenticity is protected."]
+      - id: "SC-24"
+        text: "Fail to a known-safe state when failures occur in the system or its components."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-24", "NIST CSF 2.0: RC.RP-01"]
+        examples: ["Fail-closed on security failure"]
+        objectives: ["Determine whether the system fails to a safe state."]
+      - id: "SC-25"
+        text: "Use isolated execution environments for critical system components or services."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-25"]
+        examples: ["Enclaves", "Sandboxing"]
+        objectives: ["Determine whether critical components run in isolation."]
+      - id: "SC-26"
+        text: "Honeypots: deploy decoy systems or components to detect, deflect, or study attacks."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-26"]
+        examples: ["Decoy services"]
+        objectives: ["Determine whether honeypots are deployed where appropriate."]
+      - id: "SC-27"
+        text: "Use platform-independent applications to enable portability and reduce attack surface tied to a specific platform."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-27"]
+        examples: ["Containerised deployments"]
+        objectives: ["Determine whether platform independence is used."]
+      - id: "SC-28"
+        text: "Protect the confidentiality and integrity of information at rest using cryptographic mechanisms."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-28", "NIST CSF 2.0: PR.DS-01", "ISO/IEC 27001:2022: A.8.24"]
+        examples: ["Full-disk encryption", "Database encryption"]
+        objectives: ["Determine whether data at rest is cryptographically protected."]
+      - id: "SC-29"
+        text: "Implement heterogeneity to increase resilience and reduce the impact of single-platform vulnerabilities."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-29"]
+        examples: ["Mixed OS fleets"]
+        objectives: ["Determine whether heterogeneity is used."]
+      - id: "SC-30"
+        text: "Conceal or obscure the system's technical details to reduce the information available to attackers."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-30"]
+        examples: ["Strip version banners"]
+        objectives: ["Determine whether system details are concealed."]
+      - id: "SC-31"
+        text: "Implement covert channel analysis for the system when warranted by the impact level."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-31"]
+        examples: ["Covert-channel testing"]
+        objectives: ["Determine whether covert channels are analysed."]
+      - id: "SC-32"
+        text: "Partition the system into physical or logical compartments to isolate components and limit propagation."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-32"]
+        examples: ["Network segmentation", "Process isolation"]
+        objectives: ["Determine whether the system is partitioned."]
+      - id: "SC-34"
+        text: "Implement the system using a technique or mechanism that prevents the modification or substitution of the underlying hardware components."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-34"]
+        examples: ["Hardware root of trust"]
+        objectives: ["Determine whether hardware tampering is prevented."]
+      - id: "SC-35"
+        text: "Implement hardware-based protections for critical operations where software-only mitigations are insufficient."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-35"]
+        examples: ["HSM signing", "TPM key storage"]
+        objectives: ["Determine whether hardware protections are used."]
+      - id: "SC-36"
+        text: "Distribute the system's components across multiple physical locations to reduce the impact of a localised failure."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-36"]
+        examples: ["Multi-region deployment"]
+        objectives: ["Determine whether components are geographically distributed."]
+      - id: "SC-37"
+        text: "Deploy the system in multiple operational modes to provide redundancy and resilience."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-37"]
+        examples: ["Active-active", "Hot standby"]
+        objectives: ["Determine whether multiple operational modes are deployed."]
+      - id: "SC-38"
+        text: "Use cryptographic mechanisms to support identification of counterfeit or unauthorised software and hardware components."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-38"]
+        examples: ["Hardware attestation", "Signed firmware"]
+        objectives: ["Determine whether counterfeit components are detected."]
+      - id: "SC-39"
+        text: "Separate the system into separate domains based on the sensitivity of the information processed."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-39"]
+        examples: ["Domain separation by sensitivity"]
+        objectives: ["Determine whether domain separation by sensitivity is implemented."]
+      - id: "SC-40"
+        text: "Protect the system's communications and data from the effects of electromagnetic pulse and interference."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-40"]
+        examples: ["Shielding where required"]
+        objectives: ["Determine whether EMP protection is in place."]
+      - id: "SC-41"
+        text: "Use physically isolated, dedicated channels to communicate with the most sensitive system components."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-41"]
+        examples: ["Out-of-band management"]
+        objectives: ["Determine whether dedicated channels exist for sensitive communications."]
+      - id: "SC-42"
+        text: "Isolate the system's components from other components to limit the propagation of failures and contamination."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-42"]
+        examples: ["Sandboxing", "Container isolation"]
+        objectives: ["Determine whether components are isolated from one another."]
+      - id: "SC-43"
+        text: "Implement usage restrictions for the system's components to limit the attack surface."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-43"]
+        examples: ["Component allowlists"]
+        objectives: ["Determine whether component usage is restricted."]
+      - id: "SC-44"
+        text: "Design and implement the system to support the principle of least functionality (no unnecessary services)."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-44"]
+        examples: ["Minimal services by default"]
+        objectives: ["Determine whether the system follows least functionality."]
+      - id: "SC-45"
+        text: "Design and implement the system to use only vetted, organisation-approved software components."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-45"]
+        examples: ["Component allowlist"]
+        objectives: ["Determine whether only approved components are used."]
+      - id: "SC-46"
+        text: "Design and implement the system to support distributed, decentralised operation to reduce single points of failure."
+        informative_references: ["NIST SP 800-53 Rev 5: SC-46"]
+        examples: ["Decentralised architecture"]
+        objectives: ["Determine whether the system supports decentralised operation."]
+
+  # ---- SI: System and Information Integrity ----
+  - function: "SI"
+    function_dir: "SI"
+    category_name: "System and Information Integrity"
+    practices:
+      - id: "SI-01"
+        text: "Develop, document, and disseminate a system and information integrity policy."
+        informative_references: ["NIST SP 800-53 Rev 5: SI-01"]
+        examples: ["Publish SI policy"]
+        objectives: ["Determine whether an SI policy exists."]
+      - id: "SI-02"
+        text: "Identify system flaws, develop remediation plans, and install security-relevant software updates within the defined time period."
+        informative_references: ["NIST SP 800-53 Rev 5: SI-02", "NIST CSF 2.0: ID.RA-01", "NIST SSDF v1.1: RV.2.1"]
+        examples: ["Patch SLA", "Vulnerability remediation"]
+        objectives: ["Determine whether flaws are remediated within SLAs."]
+      - id: "SI-03"
+        text: "Implement malicious-code protection mechanisms at system entry and exit points and at workstations, servers, and mobile devices."
+        informative_references: ["NIST SP 800-53 Rev 5: SI-03", "NIST CSF 2.0: DE.CM-01"]
+        examples: ["Endpoint AV/EDR", "Email and web filtering"]
+        objectives: ["Determine whether malicious-code protection is implemented."]
+      - id: "SI-04"
+        text: "Monitor the system to detect attacks, indicators of potential attacks, and unauthorised activity."
+        informative_references: ["NIST SP 800-53 Rev 5: SI-04", "NIST CSF 2.0: DE.CM-01"]
+        examples: ["SIEM", "EDR", "Network IDS"]
+        objectives: ["Determine whether the system is monitored."]
+      - id: "SI-05"
+        text: "Receive and act on security alerts, advisories, and directives from external sources."
+        informative_references: ["NIST SP 800-53 Rev 5: SI-05", "NIST CSF 2.0: ID.RA-02"]
+        examples: ["Vendor advisory subscription"]
+        objectives: ["Determine whether external alerts are received and acted on."]
+      - id: "SI-07"
+        text: "Implement software, firmware, and information integrity checks to detect unauthorised changes."
+        informative_references: ["NIST SP 800-53 Rev 5: SI-07", "NIST CSF 2.0: PR.DS-02"]
+        examples: ["File integrity monitoring", "Secure boot"]
+        objectives: ["Determine whether integrity checks are implemented."]
+      - id: "SI-08"
+        text: "Implement spam and phishing protection at system entry points and end-user devices."
+        informative_references: ["NIST SP 800-53 Rev 5: SI-08"]
+        examples: ["Anti-spam gateway", "Phishing protection"]
+        objectives: ["Determine whether spam/phishing protection is implemented."]
+      - id: "SI-10"
+        text: "Validate inputs to the system to ensure that the information is correct, appropriate, and free of malicious content."
+        informative_references: ["NIST SP 800-53 Rev 5: SI-10", "NIST CSF 2.0: PR.PS-01"]
+        examples: ["Input validation", "Allowlist validation"]
+        objectives: ["Determine whether input validation is implemented."]
+      - id: "SI-11"
+        text: "Generate error messages that provide information necessary for corrective action without revealing information that could be exploited."
+        informative_references: ["NIST SP 800-53 Rev 5: SI-11", "NIST CSF 2.0: PR.PS-01"]
+        examples: ["Generic error messages for users", "Detailed errors for logs"]
+        objectives: ["Determine whether error messages are appropriately sanitised."]
+      - id: "SI-12"
+        text: "Manage and retain information within the system and the information output from the system in accordance with applicable laws, regulations, and policies."
+        informative_references: ["NIST SP 800-53 Rev 5: SI-12", "ISO/IEC 27001:2022: A.5.34"]
+        examples: ["Retention policies"]
+        objectives: ["Determine whether information management and retention are defined."]
+      - id: "SI-13"
+        text: "Implement and maintain mechanisms to predict and detect adverse impacts to the system from anticipated environmental or operational changes."
+        informative_references: ["NIST SP 800-53 Rev 5: SI-13"]
+        examples: ["Capacity planning", "Trend monitoring"]
+        objectives: ["Determine whether impact prediction is in place."]
+
+  # ---- SR: Supply Chain Risk Management ----
+  - function: "SR"
+    function_dir: "SR"
+    category_name: "Supply Chain Risk Management"
+    practices:
+      - id: "SR-01"
+        text: "Develop, document, and disseminate a supply chain risk management policy."
+        informative_references: ["NIST SP 800-53 Rev 5: SR-01", "NIST CSF 2.0: GV.SC-01"]
+        examples: ["Publish SCRM policy"]
+        objectives: ["Determine whether an SCRM policy exists."]
+      - id: "SR-02"
+        text: "Establish and document a supply chain risk management plan that addresses the risks associated with the system's supply chain."
+        informative_references: ["NIST SP 800-53 Rev 5: SR-02", "NIST CSF 2.0: GV.SC-02"]
+        examples: ["SCRM plan"]
+        objectives: ["Determine whether an SCRM plan exists."]
+      - id: "SR-03"
+        text: "Use supplier risk-assessment processes to determine the criticality of suppliers and the associated risks."
+        informative_references: ["NIST SP 800-53 Rev 5: SR-03", "NIST CSF 2.0: GV.SC-04"]
+        examples: ["Supplier tiering", "Critical-supplier list"]
+        objectives: ["Determine whether suppliers are risk-assessed."]
+      - id: "SR-04"
+        text: "Conduct due diligence on suppliers before entering into a contractual relationship."
+        informative_references: ["NIST SP 800-53 Rev 5: SR-04"]
+        examples: ["Security due diligence questionnaires"]
+        objectives: ["Determine whether supplier due diligence is performed."]
+      - id: "SR-05"
+        text: "Use acquisition and contract language that includes security and privacy requirements for suppliers."
+        informative_references: ["NIST SP 800-53 Rev 5: SR-05", "NIST CSF 2.0: GV.SC-07"]
+        examples: ["Security contract clauses"]
+        objectives: ["Determine whether contracts include security requirements."]
+      - id: "SR-06"
+        text: "Assess the supply chain risks arising from the supplier's supply chain (Nth-party risks)."
+        informative_references: ["NIST SP 800-53 Rev 5: SR-06"]
+        examples: ["Nth-party mapping"]
+        objectives: ["Determine whether Nth-party risks are assessed."]
+      - id: "SR-07"
+        text: "Inspect and test software and firmware before acceptance to verify provenance and integrity."
+        informative_references: ["NIST SP 800-53 Rev 5: SR-07", "NIST SSDF v1.1: PS.1.2"]
+        examples: ["Verify signatures", "Reproduce builds"]
+        objectives: ["Determine whether software is inspected before acceptance."]
+      - id: "SR-08"
+        text: "Use a notification process to inform the organisation of supply chain compromises, vulnerabilities, and changes."
+        informative_references: ["NIST SP 800-53 Rev 5: SR-08"]
+        examples: ["Supplier notifications"]
+        objectives: ["Determine whether supplier notifications are received."]
+      - id: "SR-09"
+        text: "Limit the exposure of the system to supply chain risks by employing defences such as hardening, network segmentation, and least privilege."
+        informative_references: ["NIST SP 800-53 Rev 5: SR-09", "NIST CSF 2.0: GV.SC-08"]
+        examples: ["Supplier isolation", "Defense-in-depth"]
+        objectives: ["Determine whether exposure to supply chain risk is limited."]
+      - id: "SR-10"
+        text: "Use the defence-in-depth strategy to protect the system against the risks introduced by the supply chain."
+        informative_references: ["NIST SP 800-53 Rev 5: SR-10"]
+        examples: ["Multiple compensating controls"]
+        objectives: ["Determine whether defence-in-depth addresses supply chain risks."]
+      - id: "SR-11"
+        text: "Use a process to identify and address weaknesses or deficiencies in the supply chain that could affect the system."
+        informative_references: ["NIST SP 800-53 Rev 5: SR-11"]
+        examples: ["Supply-chain POA&M"]
+        objectives: ["Determine whether supply chain weaknesses are addressed."]
+      - id: "SR-12"
+        text: "Implement a component disposal policy that addresses the disposal of components throughout their life cycle."
+        informative_references: ["NIST SP 800-53 Rev 5: SR-12"]
+        examples: ["Component retirement process"]
+        objectives: ["Determine whether component disposal is governed."]

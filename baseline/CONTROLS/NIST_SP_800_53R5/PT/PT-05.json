@@ -1,0 +1,29 @@
+{
+  "control_id": "PT-05",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "PT",
+  "category": "PII Processing and Transparency (PT-05)",
+  "subcategory_id": "PT-05",
+  "subcategory_text": "Implement processes to provide notice to individuals about the system's processing of their personal information.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: PT-05",
+    "ISO/IEC 27001:2022: A.5.34"
+  ],
+  "implementation_examples": [
+    "Notice procedures"
+  ],
+  "assessment_objectives": [
+    "Determine whether processing notice is provided."
+  ],
+  "related_controls": [
+    "PT-01 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-02 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-03 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-04 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-06 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-07 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-08 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

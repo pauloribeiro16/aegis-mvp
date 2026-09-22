@@ -1,0 +1,34 @@
+{
+  "control_id": "CM-12",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "CM",
+  "category": "Configuration Management (CM-12)",
+  "subcategory_id": "CM-12",
+  "subcategory_text": "Identify and document system information that could be used to fingerprint the system, and minimise the exposure where feasible.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: CM-12"
+  ],
+  "implementation_examples": [
+    "Minimise banner version disclosure"
+  ],
+  "assessment_objectives": [
+    "Determine whether system fingerprinting is minimised."
+  ],
+  "related_controls": [
+    "CM-01 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-02 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-03 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-04 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-05 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-06 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-07 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-08 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-09 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-10 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-11 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-13 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-14 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

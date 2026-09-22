@@ -1,0 +1,52 @@
+{
+  "control_id": "PM-20",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "PM",
+  "category": "Program Management (PM-20)",
+  "subcategory_id": "PM-20",
+  "subcategory_text": "Establish a process to ensure that the system privacy plan is reviewed and approved before implementation.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: PM-20"
+  ],
+  "implementation_examples": [
+    "Privacy plan review"
+  ],
+  "assessment_objectives": [
+    "Determine whether privacy plans are reviewed."
+  ],
+  "related_controls": [
+    "PM-01 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-02 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-03 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-04 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-05 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-06 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-07 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-08 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-09 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-10 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-11 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-12 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-13 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-14 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-15 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-16 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-17 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-18 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-19 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-21 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-22 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-23 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-24 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-25 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-26 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-27 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-28 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-29 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-30 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-31 (NIST SP 800-53 Rev 5 — same family)",
+    "PM-32 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

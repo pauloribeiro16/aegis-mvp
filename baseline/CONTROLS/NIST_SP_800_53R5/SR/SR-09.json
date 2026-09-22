@@ -1,0 +1,34 @@
+{
+  "control_id": "SR-09",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "SR",
+  "category": "Supply Chain Risk Management (SR-09)",
+  "subcategory_id": "SR-09",
+  "subcategory_text": "Limit the exposure of the system to supply chain risks by employing defences such as hardening, network segmentation, and least privilege.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: SR-09",
+    "NIST CSF 2.0: GV.SC-08"
+  ],
+  "implementation_examples": [
+    "Supplier isolation",
+    "Defense-in-depth"
+  ],
+  "assessment_objectives": [
+    "Determine whether exposure to supply chain risk is limited."
+  ],
+  "related_controls": [
+    "SR-01 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-02 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-03 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-04 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-05 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-06 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-07 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-08 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-10 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-11 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-12 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

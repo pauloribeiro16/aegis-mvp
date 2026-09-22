@@ -1,0 +1,32 @@
+{
+  "control_id": "SI-13",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "SI",
+  "category": "System and Information Integrity (SI-13)",
+  "subcategory_id": "SI-13",
+  "subcategory_text": "Implement and maintain mechanisms to predict and detect adverse impacts to the system from anticipated environmental or operational changes.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: SI-13"
+  ],
+  "implementation_examples": [
+    "Capacity planning",
+    "Trend monitoring"
+  ],
+  "assessment_objectives": [
+    "Determine whether impact prediction is in place."
+  ],
+  "related_controls": [
+    "SI-01 (NIST SP 800-53 Rev 5 — same family)",
+    "SI-02 (NIST SP 800-53 Rev 5 — same family)",
+    "SI-03 (NIST SP 800-53 Rev 5 — same family)",
+    "SI-04 (NIST SP 800-53 Rev 5 — same family)",
+    "SI-05 (NIST SP 800-53 Rev 5 — same family)",
+    "SI-07 (NIST SP 800-53 Rev 5 — same family)",
+    "SI-08 (NIST SP 800-53 Rev 5 — same family)",
+    "SI-10 (NIST SP 800-53 Rev 5 — same family)",
+    "SI-11 (NIST SP 800-53 Rev 5 — same family)",
+    "SI-12 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

@@ -1,0 +1,26 @@
+{
+  "control_id": "AT-06",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "AT",
+  "category": "Awareness and Training (AT-06)",
+  "subcategory_id": "AT-06",
+  "subcategory_text": "Provide annually, to all personnel, training on how to identify and respond to indicators of insider threat.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: AT-06"
+  ],
+  "implementation_examples": [
+    "Insider-threat training annually"
+  ],
+  "assessment_objectives": [
+    "Determine whether insider-threat training is provided."
+  ],
+  "related_controls": [
+    "AT-01 (NIST SP 800-53 Rev 5 — same family)",
+    "AT-02 (NIST SP 800-53 Rev 5 — same family)",
+    "AT-03 (NIST SP 800-53 Rev 5 — same family)",
+    "AT-04 (NIST SP 800-53 Rev 5 — same family)",
+    "AT-05 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

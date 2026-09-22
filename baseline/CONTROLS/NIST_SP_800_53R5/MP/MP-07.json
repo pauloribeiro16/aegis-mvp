@@ -1,0 +1,28 @@
+{
+  "control_id": "MP-07",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "MP",
+  "category": "Media Protection (MP-07)",
+  "subcategory_id": "MP-07",
+  "subcategory_text": "Control and restrict the use of system media containing sensitive information on systems and components that do not have an organisational-defined level of protection.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: MP-07"
+  ],
+  "implementation_examples": [
+    "Block media use on unmanaged systems"
+  ],
+  "assessment_objectives": [
+    "Determine whether media use on unprotected systems is restricted."
+  ],
+  "related_controls": [
+    "MP-01 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-02 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-03 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-04 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-05 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-06 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-08 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

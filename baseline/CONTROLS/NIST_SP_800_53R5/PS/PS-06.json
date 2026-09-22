@@ -1,0 +1,31 @@
+{
+  "control_id": "PS-06",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "PS",
+  "category": "Personnel Security (PS-06)",
+  "subcategory_id": "PS-06",
+  "subcategory_text": "Use formal agreements that contain appropriate security and privacy requirements for personnel who access organisational systems.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: PS-06",
+    "ISO/IEC 27001:2022: A.6.2"
+  ],
+  "implementation_examples": [
+    "NDAs",
+    "Security terms"
+  ],
+  "assessment_objectives": [
+    "Determine whether access agreements exist."
+  ],
+  "related_controls": [
+    "PS-01 (NIST SP 800-53 Rev 5 — same family)",
+    "PS-02 (NIST SP 800-53 Rev 5 — same family)",
+    "PS-03 (NIST SP 800-53 Rev 5 — same family)",
+    "PS-04 (NIST SP 800-53 Rev 5 — same family)",
+    "PS-05 (NIST SP 800-53 Rev 5 — same family)",
+    "PS-07 (NIST SP 800-53 Rev 5 — same family)",
+    "PS-08 (NIST SP 800-53 Rev 5 — same family)",
+    "PS-09 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

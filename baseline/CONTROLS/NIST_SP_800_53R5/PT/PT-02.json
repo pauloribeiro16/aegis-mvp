@@ -1,0 +1,28 @@
+{
+  "control_id": "PT-02",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "PT",
+  "category": "PII Processing and Transparency (PT-02)",
+  "subcategory_id": "PT-02",
+  "subcategory_text": "Select and use appropriate privacy controls and processes that govern the system's processing of personal information.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: PT-02"
+  ],
+  "implementation_examples": [
+    "Privacy control selection"
+  ],
+  "assessment_objectives": [
+    "Determine whether privacy controls are selected appropriately."
+  ],
+  "related_controls": [
+    "PT-01 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-03 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-04 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-05 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-06 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-07 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-08 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

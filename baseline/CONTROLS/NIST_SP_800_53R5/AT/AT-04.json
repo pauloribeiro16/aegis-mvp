@@ -1,0 +1,27 @@
+{
+  "control_id": "AT-04",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "AT",
+  "category": "Awareness and Training (AT-04)",
+  "subcategory_id": "AT-04",
+  "subcategory_text": "Document and monitor individual training activities including completion, type, and frequency.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: AT-04"
+  ],
+  "implementation_examples": [
+    "Track training records in LMS",
+    "Alert on overdue training"
+  ],
+  "assessment_objectives": [
+    "Determine whether training records are maintained."
+  ],
+  "related_controls": [
+    "AT-01 (NIST SP 800-53 Rev 5 — same family)",
+    "AT-02 (NIST SP 800-53 Rev 5 — same family)",
+    "AT-03 (NIST SP 800-53 Rev 5 — same family)",
+    "AT-05 (NIST SP 800-53 Rev 5 — same family)",
+    "AT-06 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

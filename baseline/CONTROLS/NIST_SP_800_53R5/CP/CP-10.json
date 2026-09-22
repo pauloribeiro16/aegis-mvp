@@ -1,0 +1,34 @@
+{
+  "control_id": "CP-10",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "CP",
+  "category": "Contingency Planning (CP-10)",
+  "subcategory_id": "CP-10",
+  "subcategory_text": "Provide for the recovery and reconstitution of the system to a known state after a disruption or failure.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: CP-10",
+    "NIST CSF 2.0: RC.RP-01"
+  ],
+  "implementation_examples": [
+    "Recovery runbook",
+    "Tested restoration"
+  ],
+  "assessment_objectives": [
+    "Determine whether recovery procedures exist."
+  ],
+  "related_controls": [
+    "CP-01 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-02 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-03 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-04 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-06 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-07 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-08 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-09 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-11 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-12 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-13 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

@@ -1,0 +1,29 @@
+{
+  "control_id": "PL-01",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "PL",
+  "category": "Planning (PL-01)",
+  "subcategory_id": "PL-01",
+  "subcategory_text": "Develop, document, and disseminate a system security plan that describes the system, its environment, and the security controls in place.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: PL-01",
+    "NIST CSF 2.0: GV.PO-02"
+  ],
+  "implementation_examples": [
+    "SSP per system"
+  ],
+  "assessment_objectives": [
+    "Determine whether a system security plan exists."
+  ],
+  "related_controls": [
+    "PL-02 (NIST SP 800-53 Rev 5 — same family)",
+    "PL-04 (NIST SP 800-53 Rev 5 — same family)",
+    "PL-07 (NIST SP 800-53 Rev 5 — same family)",
+    "PL-08 (NIST SP 800-53 Rev 5 — same family)",
+    "PL-09 (NIST SP 800-53 Rev 5 — same family)",
+    "PL-10 (NIST SP 800-53 Rev 5 — same family)",
+    "PL-11 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

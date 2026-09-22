@@ -1,0 +1,26 @@
+{
+  "control_id": "RA-02",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "RA",
+  "category": "Risk Assessment (RA-02)",
+  "subcategory_id": "RA-02",
+  "subcategory_text": "Identify and document threat information that could impact the system.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: RA-02",
+    "NIST CSF 2.0: ID.RA-02"
+  ],
+  "implementation_examples": [
+    "Threat intel feeds"
+  ],
+  "assessment_objectives": [
+    "Determine whether threat information is documented."
+  ],
+  "related_controls": [
+    "RA-01 (NIST SP 800-53 Rev 5 — same family)",
+    "RA-03 (NIST SP 800-53 Rev 5 — same family)",
+    "RA-04 (NIST SP 800-53 Rev 5 — same family)",
+    "RA-05 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

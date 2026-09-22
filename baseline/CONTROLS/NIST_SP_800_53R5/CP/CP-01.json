@@ -1,0 +1,32 @@
+{
+  "control_id": "CP-01",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "CP",
+  "category": "Contingency Planning (CP-01)",
+  "subcategory_id": "CP-01",
+  "subcategory_text": "Develop, document, and disseminate a contingency planning policy.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: CP-01"
+  ],
+  "implementation_examples": [
+    "Publish CP policy"
+  ],
+  "assessment_objectives": [
+    "Determine whether a CP policy exists."
+  ],
+  "related_controls": [
+    "CP-02 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-03 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-04 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-06 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-07 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-08 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-09 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-10 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-11 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-12 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-13 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

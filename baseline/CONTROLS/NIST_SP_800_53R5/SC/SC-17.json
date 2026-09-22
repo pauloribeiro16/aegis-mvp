@@ -1,0 +1,61 @@
+{
+  "control_id": "SC-17",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "SC",
+  "category": "System and Communications Protection (SC-17)",
+  "subcategory_id": "SC-17",
+  "subcategory_text": "Issue public key certificates under an organisation-defined certificate policy or obtain certificates from a service provider.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: SC-17"
+  ],
+  "implementation_examples": [
+    "Internal CA",
+    "Public CA"
+  ],
+  "assessment_objectives": [
+    "Determine whether certificate issuance is governed."
+  ],
+  "related_controls": [
+    "SC-01 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-02 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-03 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-04 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-05 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-06 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-07 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-08 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-10 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-12 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-13 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-15 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-18 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-20 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-21 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-22 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-23 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-24 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-25 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-26 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-27 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-28 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-29 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-30 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-31 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-32 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-34 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-35 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-36 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-37 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-38 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-39 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-40 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-41 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-42 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-43 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-44 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-45 (NIST SP 800-53 Rev 5 — same family)",
+    "SC-46 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

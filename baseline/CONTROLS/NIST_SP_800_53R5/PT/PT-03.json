@@ -1,0 +1,29 @@
+{
+  "control_id": "PT-03",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "PT",
+  "category": "PII Processing and Transparency (PT-03)",
+  "subcategory_id": "PT-03",
+  "subcategory_text": "Implement processes to manage the quality and integrity of personal information processed by the system.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: PT-03",
+    "ISO/IEC 27001:2022: A.8.10"
+  ],
+  "implementation_examples": [
+    "Data quality checks"
+  ],
+  "assessment_objectives": [
+    "Determine whether PII quality is managed."
+  ],
+  "related_controls": [
+    "PT-01 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-02 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-04 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-05 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-06 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-07 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-08 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

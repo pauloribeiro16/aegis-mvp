@@ -1,0 +1,27 @@
+{
+  "control_id": "MA-07",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "MA",
+  "category": "Maintenance (MA-07)",
+  "subcategory_id": "MA-07",
+  "subcategory_text": "Control and document the use of field-deployed systems used to perform maintenance on organisational systems.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: MA-07"
+  ],
+  "implementation_examples": [
+    "Field technician laptops enrolled in MDM"
+  ],
+  "assessment_objectives": [
+    "Determine whether field-deployed maintenance systems are controlled."
+  ],
+  "related_controls": [
+    "MA-01 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-02 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-03 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-04 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-05 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-06 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

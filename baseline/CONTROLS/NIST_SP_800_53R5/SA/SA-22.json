@@ -1,0 +1,35 @@
+{
+  "control_id": "SA-22",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "SA",
+  "category": "System and Services Acquisition (SA-22)",
+  "subcategory_id": "SA-22",
+  "subcategory_text": "Support the developer in addressing vulnerabilities by providing supporting information and tooling.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: SA-22"
+  ],
+  "implementation_examples": [
+    "Shared remediation tooling"
+  ],
+  "assessment_objectives": [
+    "Determine whether developer support for remediation exists."
+  ],
+  "related_controls": [
+    "SA-01 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-02 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-03 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-04 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-05 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-08 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-09 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-10 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-11 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-15 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-16 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-17 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-21 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-23 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

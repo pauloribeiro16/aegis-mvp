@@ -1,0 +1,35 @@
+{
+  "control_id": "IA-05",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "IA",
+  "category": "Identification and Authentication (IA-05)",
+  "subcategory_id": "IA-05",
+  "subcategory_text": "Manage authenticators (passwords, tokens, certificates) including initial distribution, lost/compromised handling, and revocation.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: IA-05",
+    "NIST CSF 2.0: PR.AA-01",
+    "ISO/IEC 27001:2022: A.5.17"
+  ],
+  "implementation_examples": [
+    "Strong password policy",
+    "Token revocation list"
+  ],
+  "assessment_objectives": [
+    "Determine whether authenticators are managed."
+  ],
+  "related_controls": [
+    "IA-01 (NIST SP 800-53 Rev 5 — same family)",
+    "IA-02 (NIST SP 800-53 Rev 5 — same family)",
+    "IA-03 (NIST SP 800-53 Rev 5 — same family)",
+    "IA-04 (NIST SP 800-53 Rev 5 — same family)",
+    "IA-06 (NIST SP 800-53 Rev 5 — same family)",
+    "IA-07 (NIST SP 800-53 Rev 5 — same family)",
+    "IA-08 (NIST SP 800-53 Rev 5 — same family)",
+    "IA-09 (NIST SP 800-53 Rev 5 — same family)",
+    "IA-10 (NIST SP 800-53 Rev 5 — same family)",
+    "IA-11 (NIST SP 800-53 Rev 5 — same family)",
+    "IA-12 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

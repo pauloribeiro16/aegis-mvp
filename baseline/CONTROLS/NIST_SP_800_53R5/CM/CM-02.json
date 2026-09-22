@@ -1,0 +1,36 @@
+{
+  "control_id": "CM-02",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "CM",
+  "category": "Configuration Management (CM-02)",
+  "subcategory_id": "CM-02",
+  "subcategory_text": "Baseline the system and develop a configuration baseline; review and update the baseline at the defined frequency.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: CM-02",
+    "NIST CSF 2.0: ID.AM-08"
+  ],
+  "implementation_examples": [
+    "Hardened image baseline",
+    "Annual review"
+  ],
+  "assessment_objectives": [
+    "Determine whether configuration baselines are maintained."
+  ],
+  "related_controls": [
+    "CM-01 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-03 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-04 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-05 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-06 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-07 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-08 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-09 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-10 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-11 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-12 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-13 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-14 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

@@ -1,0 +1,36 @@
+{
+  "control_id": "SA-08",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "SA",
+  "category": "System and Services Acquisition (SA-08)",
+  "subcategory_id": "SA-08",
+  "subcategory_text": "Apply security and privacy engineering principles in the design and development of the system.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: SA-8",
+    "NIST SSDF v1.1: PW.1.3"
+  ],
+  "implementation_examples": [
+    "Secure-by-design review"
+  ],
+  "assessment_objectives": [
+    "Determine whether secure engineering principles are applied."
+  ],
+  "related_controls": [
+    "SA-01 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-02 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-03 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-04 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-05 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-09 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-10 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-11 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-15 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-16 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-17 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-21 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-22 (NIST SP 800-53 Rev 5 — same family)",
+    "SA-23 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

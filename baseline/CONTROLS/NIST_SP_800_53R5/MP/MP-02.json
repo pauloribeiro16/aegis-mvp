@@ -1,0 +1,29 @@
+{
+  "control_id": "MP-02",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "MP",
+  "category": "Media Protection (MP-02)",
+  "subcategory_id": "MP-02",
+  "subcategory_text": "Restrict access to digital and non-digital media to authorised individuals.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: MP-02"
+  ],
+  "implementation_examples": [
+    "Locked media cabinets",
+    "Encrypted USB drives"
+  ],
+  "assessment_objectives": [
+    "Determine whether media access is restricted."
+  ],
+  "related_controls": [
+    "MP-01 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-03 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-04 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-05 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-06 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-07 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-08 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

@@ -1,0 +1,30 @@
+{
+  "control_id": "MP-06",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "MP",
+  "category": "Media Protection (MP-06)",
+  "subcategory_id": "MP-06",
+  "subcategory_text": "Sanitise or destroy digital and non-digital media before disposal or release for reuse.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: MP-06",
+    "NIST CSF 2.0: PR.DS-01"
+  ],
+  "implementation_examples": [
+    "NIST 800-88 purge",
+    "Certificate of destruction"
+  ],
+  "assessment_objectives": [
+    "Determine whether media is sanitised before disposal."
+  ],
+  "related_controls": [
+    "MP-01 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-02 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-03 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-04 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-05 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-07 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-08 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

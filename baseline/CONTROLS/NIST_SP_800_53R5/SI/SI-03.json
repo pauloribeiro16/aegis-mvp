@@ -1,0 +1,33 @@
+{
+  "control_id": "SI-03",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "SI",
+  "category": "System and Information Integrity (SI-03)",
+  "subcategory_id": "SI-03",
+  "subcategory_text": "Implement malicious-code protection mechanisms at system entry and exit points and at workstations, servers, and mobile devices.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: SI-03",
+    "NIST CSF 2.0: DE.CM-01"
+  ],
+  "implementation_examples": [
+    "Endpoint AV/EDR",
+    "Email and web filtering"
+  ],
+  "assessment_objectives": [
+    "Determine whether malicious-code protection is implemented."
+  ],
+  "related_controls": [
+    "SI-01 (NIST SP 800-53 Rev 5 — same family)",
+    "SI-02 (NIST SP 800-53 Rev 5 — same family)",
+    "SI-04 (NIST SP 800-53 Rev 5 — same family)",
+    "SI-05 (NIST SP 800-53 Rev 5 — same family)",
+    "SI-07 (NIST SP 800-53 Rev 5 — same family)",
+    "SI-08 (NIST SP 800-53 Rev 5 — same family)",
+    "SI-10 (NIST SP 800-53 Rev 5 — same family)",
+    "SI-11 (NIST SP 800-53 Rev 5 — same family)",
+    "SI-12 (NIST SP 800-53 Rev 5 — same family)",
+    "SI-13 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

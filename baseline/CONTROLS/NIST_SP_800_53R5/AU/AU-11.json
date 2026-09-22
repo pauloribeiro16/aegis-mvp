@@ -1,0 +1,33 @@
+{
+  "control_id": "AU-11",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "AU",
+  "category": "Audit and Accountability (AU-11)",
+  "subcategory_id": "AU-11",
+  "subcategory_text": "Retain audit records for an organisation-defined period to support after-the-fact investigations.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: AU-11"
+  ],
+  "implementation_examples": [
+    "Retain logs 1+ year hot, 7 years cold"
+  ],
+  "assessment_objectives": [
+    "Determine whether audit retention is defined and enforced."
+  ],
+  "related_controls": [
+    "AU-01 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-02 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-03 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-04 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-05 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-06 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-07 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-08 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-09 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-10 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-12 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-13 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

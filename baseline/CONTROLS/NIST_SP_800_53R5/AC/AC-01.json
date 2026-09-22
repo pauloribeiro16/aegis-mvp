@@ -1,0 +1,45 @@
+{
+  "control_id": "AC-01",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "AC",
+  "category": "Access Control (AC-01)",
+  "subcategory_id": "AC-01",
+  "subcategory_text": "Develop, document, and disseminate an access control policy that addresses purpose, scope, roles, responsibilities, and compliance.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: AC-01",
+    "NIST CSF 2.0: GV.PO-01",
+    "ISO/IEC 27001:2022: A.5.1"
+  ],
+  "implementation_examples": [
+    "Publish an organisation-wide access control policy",
+    "Review policy at least annually"
+  ],
+  "assessment_objectives": [
+    "Determine whether an access control policy exists.",
+    "Determine whether the policy is reviewed and approved."
+  ],
+  "related_controls": [
+    "AC-02 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-03 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-04 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-05 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-06 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-07 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-08 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-10 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-11 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-12 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-14 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-17 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-18 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-19 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-20 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-21 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-22 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-23 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-24 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-25 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

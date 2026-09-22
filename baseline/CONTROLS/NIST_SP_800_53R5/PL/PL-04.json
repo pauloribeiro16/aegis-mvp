@@ -1,0 +1,29 @@
+{
+  "control_id": "PL-04",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "PL",
+  "category": "Planning (PL-04)",
+  "subcategory_id": "PL-04",
+  "subcategory_text": "Establish and maintain rules of behaviour that describe the responsibilities and expected behaviour for all users of the system.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: PL-04"
+  ],
+  "implementation_examples": [
+    "AUP",
+    "Annual acknowledgement"
+  ],
+  "assessment_objectives": [
+    "Determine whether rules of behaviour exist."
+  ],
+  "related_controls": [
+    "PL-01 (NIST SP 800-53 Rev 5 — same family)",
+    "PL-02 (NIST SP 800-53 Rev 5 — same family)",
+    "PL-07 (NIST SP 800-53 Rev 5 — same family)",
+    "PL-08 (NIST SP 800-53 Rev 5 — same family)",
+    "PL-09 (NIST SP 800-53 Rev 5 — same family)",
+    "PL-10 (NIST SP 800-53 Rev 5 — same family)",
+    "PL-11 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

@@ -1,0 +1,43 @@
+{
+  "control_id": "AC-22",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "AC",
+  "category": "Access Control (AC-22)",
+  "subcategory_id": "AC-22",
+  "subcategory_text": "Designate individuals authorised to post information onto a publicly accessible system and review proposed content before posting.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: AC-22",
+    "ISO/IEC 27001:2022: A.5.10"
+  ],
+  "implementation_examples": [
+    "Maintain a public-content approver list",
+    "Review before publication"
+  ],
+  "assessment_objectives": [
+    "Determine whether public-content postings are reviewed."
+  ],
+  "related_controls": [
+    "AC-01 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-02 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-03 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-04 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-05 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-06 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-07 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-08 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-10 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-11 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-12 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-14 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-17 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-18 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-19 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-20 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-21 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-23 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-24 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-25 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

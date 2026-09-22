@@ -1,0 +1,42 @@
+{
+  "control_id": "PE-16",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "PE",
+  "category": "Physical and Environmental Protection (PE-16)",
+  "subcategory_id": "PE-16",
+  "subcategory_text": "Control and monitor delivery and removal of system components and authorise delivery and removal personnel.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: PE-16"
+  ],
+  "implementation_examples": [
+    "Asset in/out logs"
+  ],
+  "assessment_objectives": [
+    "Determine whether deliveries and removals are controlled."
+  ],
+  "related_controls": [
+    "PE-01 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-02 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-03 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-04 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-05 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-06 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-08 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-09 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-10 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-11 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-12 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-13 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-14 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-15 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-17 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-18 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-19 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-20 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-21 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-22 (NIST SP 800-53 Rev 5 — same family)",
+    "PE-23 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

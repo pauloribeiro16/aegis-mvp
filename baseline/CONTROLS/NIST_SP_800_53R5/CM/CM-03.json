@@ -1,0 +1,36 @@
+{
+  "control_id": "CM-03",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "CM",
+  "category": "Configuration Management (CM-03)",
+  "subcategory_id": "CM-03",
+  "subcategory_text": "Manage configuration changes through a formal change-control process that includes approval, testing, and rollback plans.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: CM-03",
+    "NIST CSF 2.0: PR.IP-01 (legacy 1.1)"
+  ],
+  "implementation_examples": [
+    "Change advisory board",
+    "Mandatory change tickets"
+  ],
+  "assessment_objectives": [
+    "Determine whether changes go through formal change control."
+  ],
+  "related_controls": [
+    "CM-01 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-02 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-04 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-05 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-06 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-07 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-08 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-09 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-10 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-11 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-12 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-13 (NIST SP 800-53 Rev 5 — same family)",
+    "CM-14 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

@@ -1,0 +1,28 @@
+{
+  "control_id": "MA-06",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "MA",
+  "category": "Maintenance (MA-06)",
+  "subcategory_id": "MA-06",
+  "subcategory_text": "Inspect and sanitise maintenance equipment before connection to the system.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: MA-06"
+  ],
+  "implementation_examples": [
+    "Media scan",
+    "Tool sanitisation"
+  ],
+  "assessment_objectives": [
+    "Determine whether maintenance equipment is sanitised."
+  ],
+  "related_controls": [
+    "MA-01 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-02 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-03 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-04 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-05 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-07 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

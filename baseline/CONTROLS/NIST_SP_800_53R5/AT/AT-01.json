@@ -1,0 +1,28 @@
+{
+  "control_id": "AT-01",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "AT",
+  "category": "Awareness and Training (AT-01)",
+  "subcategory_id": "AT-01",
+  "subcategory_text": "Develop, document, and disseminate an awareness and training policy.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: AT-01",
+    "NIST CSF 2.0: GV.PO-01"
+  ],
+  "implementation_examples": [
+    "Publish awareness/training policy",
+    "Review annually"
+  ],
+  "assessment_objectives": [
+    "Determine whether an awareness/training policy exists."
+  ],
+  "related_controls": [
+    "AT-02 (NIST SP 800-53 Rev 5 — same family)",
+    "AT-03 (NIST SP 800-53 Rev 5 — same family)",
+    "AT-04 (NIST SP 800-53 Rev 5 — same family)",
+    "AT-05 (NIST SP 800-53 Rev 5 — same family)",
+    "AT-06 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

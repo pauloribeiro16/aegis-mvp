@@ -1,0 +1,13 @@
+{
+  "referential": "NIST SP 800-53 Rev 5",
+  "version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)",
+  "source_urls": [
+    "https://doi.org/10.6028/NIST.SP.800-53r5"
+  ],
+  "fetched_date": "2026-09-22",
+  "subcategories": 274,
+  "expected_total": 274,
+  "unverified_entries": [],
+  "advisory": true,
+  "enforced_by_verify_no_loss": false
+}

@@ -1,0 +1,32 @@
+{
+  "control_id": "SR-10",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "SR",
+  "category": "Supply Chain Risk Management (SR-10)",
+  "subcategory_id": "SR-10",
+  "subcategory_text": "Use the defence-in-depth strategy to protect the system against the risks introduced by the supply chain.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: SR-10"
+  ],
+  "implementation_examples": [
+    "Multiple compensating controls"
+  ],
+  "assessment_objectives": [
+    "Determine whether defence-in-depth addresses supply chain risks."
+  ],
+  "related_controls": [
+    "SR-01 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-02 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-03 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-04 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-05 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-06 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-07 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-08 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-09 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-11 (NIST SP 800-53 Rev 5 — same family)",
+    "SR-12 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

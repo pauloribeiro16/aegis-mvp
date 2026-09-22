@@ -1,0 +1,31 @@
+{
+  "control_id": "IR-07",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "IR",
+  "category": "Incident Response (IR-07)",
+  "subcategory_id": "IR-07",
+  "subcategory_text": "Provide incident response support resources to the organisation as required (e.g., forensics, legal, communications).",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: IR-07"
+  ],
+  "implementation_examples": [
+    "Retainer with DFIR firm",
+    "Internal forensics lab"
+  ],
+  "assessment_objectives": [
+    "Determine whether IR support is provided."
+  ],
+  "related_controls": [
+    "IR-01 (NIST SP 800-53 Rev 5 — same family)",
+    "IR-02 (NIST SP 800-53 Rev 5 — same family)",
+    "IR-03 (NIST SP 800-53 Rev 5 — same family)",
+    "IR-04 (NIST SP 800-53 Rev 5 — same family)",
+    "IR-05 (NIST SP 800-53 Rev 5 — same family)",
+    "IR-06 (NIST SP 800-53 Rev 5 — same family)",
+    "IR-08 (NIST SP 800-53 Rev 5 — same family)",
+    "IR-09 (NIST SP 800-53 Rev 5 — same family)",
+    "IR-10 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

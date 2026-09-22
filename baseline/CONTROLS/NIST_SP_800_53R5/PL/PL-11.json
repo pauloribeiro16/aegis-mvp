@@ -1,0 +1,28 @@
+{
+  "control_id": "PL-11",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "PL",
+  "category": "Planning (PL-11)",
+  "subcategory_id": "PL-11",
+  "subcategory_text": "Use a system design and implementation process that incorporates security considerations throughout the system development life cycle.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: PL-11"
+  ],
+  "implementation_examples": [
+    "Secure-by-design review at each phase"
+  ],
+  "assessment_objectives": [
+    "Determine whether security is integrated into design and implementation."
+  ],
+  "related_controls": [
+    "PL-01 (NIST SP 800-53 Rev 5 — same family)",
+    "PL-02 (NIST SP 800-53 Rev 5 — same family)",
+    "PL-04 (NIST SP 800-53 Rev 5 — same family)",
+    "PL-07 (NIST SP 800-53 Rev 5 — same family)",
+    "PL-08 (NIST SP 800-53 Rev 5 — same family)",
+    "PL-09 (NIST SP 800-53 Rev 5 — same family)",
+    "PL-10 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

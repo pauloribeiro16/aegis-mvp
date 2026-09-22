@@ -1,0 +1,28 @@
+{
+  "control_id": "MA-04",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "MA",
+  "category": "Maintenance (MA-04)",
+  "subcategory_id": "MA-04",
+  "subcategory_text": "Provide non-local maintenance and diagnostic sessions that protect the confidentiality and integrity of sessions and remote access.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: MA-04"
+  ],
+  "implementation_examples": [
+    "MFA-protected remote maintenance",
+    "Session recording"
+  ],
+  "assessment_objectives": [
+    "Determine whether remote maintenance is protected."
+  ],
+  "related_controls": [
+    "MA-01 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-02 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-03 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-05 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-06 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-07 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

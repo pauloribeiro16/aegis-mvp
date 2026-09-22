@@ -1,0 +1,29 @@
+{
+  "control_id": "PS-05",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "PS",
+  "category": "Personnel Security (PS-05)",
+  "subcategory_id": "PS-05",
+  "subcategory_text": "Transfer personnel to new roles and ensure that access is reviewed and modified as appropriate.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: PS-05"
+  ],
+  "implementation_examples": [
+    "Transfer access review"
+  ],
+  "assessment_objectives": [
+    "Determine whether transfers trigger access review."
+  ],
+  "related_controls": [
+    "PS-01 (NIST SP 800-53 Rev 5 — same family)",
+    "PS-02 (NIST SP 800-53 Rev 5 — same family)",
+    "PS-03 (NIST SP 800-53 Rev 5 — same family)",
+    "PS-04 (NIST SP 800-53 Rev 5 — same family)",
+    "PS-06 (NIST SP 800-53 Rev 5 — same family)",
+    "PS-07 (NIST SP 800-53 Rev 5 — same family)",
+    "PS-08 (NIST SP 800-53 Rev 5 — same family)",
+    "PS-09 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

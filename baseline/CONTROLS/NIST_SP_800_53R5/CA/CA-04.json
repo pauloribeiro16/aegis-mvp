@@ -1,0 +1,31 @@
+{
+  "control_id": "CA-04",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "CA",
+  "category": "Assessment, Authorization, and Monitoring (CA-04)",
+  "subcategory_id": "CA-04",
+  "subcategory_text": "Monitor the system and associated controls on an ongoing basis to assess control effectiveness and document changes.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: CA-04",
+    "NIST CSF 2.0: GV.OV-01"
+  ],
+  "implementation_examples": [
+    "Continuous control monitoring",
+    "Track control drift"
+  ],
+  "assessment_objectives": [
+    "Determine whether controls are continuously monitored."
+  ],
+  "related_controls": [
+    "CA-01 (NIST SP 800-53 Rev 5 — same family)",
+    "CA-02 (NIST SP 800-53 Rev 5 — same family)",
+    "CA-03 (NIST SP 800-53 Rev 5 — same family)",
+    "CA-05 (NIST SP 800-53 Rev 5 — same family)",
+    "CA-06 (NIST SP 800-53 Rev 5 — same family)",
+    "CA-07 (NIST SP 800-53 Rev 5 — same family)",
+    "CA-08 (NIST SP 800-53 Rev 5 — same family)",
+    "CA-09 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

@@ -1,0 +1,28 @@
+{
+  "control_id": "AT-03",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "AT",
+  "category": "Awareness and Training (AT-03)",
+  "subcategory_id": "AT-03",
+  "subcategory_text": "Provide role-based security training to personnel with assigned security responsibilities before authorising access and periodically thereafter.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: AT-03",
+    "NIST CSF 2.0: PR.AT-02"
+  ],
+  "implementation_examples": [
+    "Role-based training for admins, devs, analysts",
+    "Refresher annually"
+  ],
+  "assessment_objectives": [
+    "Determine whether role-based training is provided."
+  ],
+  "related_controls": [
+    "AT-01 (NIST SP 800-53 Rev 5 — same family)",
+    "AT-02 (NIST SP 800-53 Rev 5 — same family)",
+    "AT-04 (NIST SP 800-53 Rev 5 — same family)",
+    "AT-05 (NIST SP 800-53 Rev 5 — same family)",
+    "AT-06 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

@@ -1,0 +1,32 @@
+{
+  "control_id": "CP-08",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "CP",
+  "category": "Contingency Planning (CP-08)",
+  "subcategory_id": "CP-08",
+  "subcategory_text": "Establish alternate telecommunications services for the system when primary telecommunications are unavailable.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: CP-08"
+  ],
+  "implementation_examples": [
+    "Secondary ISP"
+  ],
+  "assessment_objectives": [
+    "Determine whether alternate telecom is available."
+  ],
+  "related_controls": [
+    "CP-01 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-02 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-03 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-04 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-06 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-07 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-09 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-10 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-11 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-12 (NIST SP 800-53 Rev 5 — same family)",
+    "CP-13 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

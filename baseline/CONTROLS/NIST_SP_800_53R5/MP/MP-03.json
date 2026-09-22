@@ -1,0 +1,28 @@
+{
+  "control_id": "MP-03",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "MP",
+  "category": "Media Protection (MP-03)",
+  "subcategory_id": "MP-03",
+  "subcategory_text": "Mark digital and non-digital media with the appropriate security markings to indicate the distribution, handling, and disposal requirements.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: MP-03"
+  ],
+  "implementation_examples": [
+    "Classification labels"
+  ],
+  "assessment_objectives": [
+    "Determine whether media is labelled with security markings."
+  ],
+  "related_controls": [
+    "MP-01 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-02 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-04 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-05 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-06 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-07 (NIST SP 800-53 Rev 5 — same family)",
+    "MP-08 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

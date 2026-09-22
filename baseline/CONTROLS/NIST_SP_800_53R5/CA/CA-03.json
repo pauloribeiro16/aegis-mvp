@@ -1,0 +1,31 @@
+{
+  "control_id": "CA-03",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "CA",
+  "category": "Assessment, Authorization, and Monitoring (CA-03)",
+  "subcategory_id": "CA-03",
+  "subcategory_text": "Authorise the system for operation based on a satisfactory security assessment and accept residual risk.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: CA-03",
+    "NIST CSF 2.0: GV.RM-04"
+  ],
+  "implementation_examples": [
+    "Authorising official signs ATO",
+    "Residual-risk acceptance documented"
+  ],
+  "assessment_objectives": [
+    "Determine whether authorisation to operate is documented."
+  ],
+  "related_controls": [
+    "CA-01 (NIST SP 800-53 Rev 5 — same family)",
+    "CA-02 (NIST SP 800-53 Rev 5 — same family)",
+    "CA-04 (NIST SP 800-53 Rev 5 — same family)",
+    "CA-05 (NIST SP 800-53 Rev 5 — same family)",
+    "CA-06 (NIST SP 800-53 Rev 5 — same family)",
+    "CA-07 (NIST SP 800-53 Rev 5 — same family)",
+    "CA-08 (NIST SP 800-53 Rev 5 — same family)",
+    "CA-09 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

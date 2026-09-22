@@ -1,0 +1,29 @@
+{
+  "control_id": "PT-06",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "PT",
+  "category": "PII Processing and Transparency (PT-06)",
+  "subcategory_id": "PT-06",
+  "subcategory_text": "Implement processes to enable individuals to exercise their privacy rights (e.g., access, correction, deletion).",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: PT-06",
+    "GDPR Art. 15-22"
+  ],
+  "implementation_examples": [
+    "DSAR workflow"
+  ],
+  "assessment_objectives": [
+    "Determine whether privacy rights can be exercised."
+  ],
+  "related_controls": [
+    "PT-01 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-02 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-03 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-04 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-05 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-07 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-08 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

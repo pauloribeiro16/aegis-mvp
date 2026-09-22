@@ -1,0 +1,42 @@
+{
+  "control_id": "AC-24",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "AC",
+  "category": "Access Control (AC-24)",
+  "subcategory_id": "AC-24",
+  "subcategory_text": "Establish and enforce controlled-access logic for access control decisions that do not involve the subject's identity (e.g., attribute-based, role-based).",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: AC-24"
+  ],
+  "implementation_examples": [
+    "Apply ABAC where justified",
+    "Document access decisions"
+  ],
+  "assessment_objectives": [
+    "Determine whether access control decisions use defined logic."
+  ],
+  "related_controls": [
+    "AC-01 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-02 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-03 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-04 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-05 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-06 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-07 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-08 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-10 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-11 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-12 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-14 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-17 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-18 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-19 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-20 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-21 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-22 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-23 (NIST SP 800-53 Rev 5 — same family)",
+    "AC-25 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

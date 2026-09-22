@@ -1,0 +1,29 @@
+{
+  "control_id": "PT-07",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "PT",
+  "category": "PII Processing and Transparency (PT-07)",
+  "subcategory_id": "PT-07",
+  "subcategory_text": "Implement processes to manage the system's use of personal information for secondary purposes.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: PT-07",
+    "GDPR Art. 6(4)"
+  ],
+  "implementation_examples": [
+    "Secondary-use assessment"
+  ],
+  "assessment_objectives": [
+    "Determine whether secondary use is governed."
+  ],
+  "related_controls": [
+    "PT-01 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-02 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-03 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-04 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-05 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-06 (NIST SP 800-53 Rev 5 — same family)",
+    "PT-08 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

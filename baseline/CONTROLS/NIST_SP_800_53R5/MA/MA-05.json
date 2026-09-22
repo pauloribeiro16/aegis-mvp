@@ -1,0 +1,28 @@
+{
+  "control_id": "MA-05",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "MA",
+  "category": "Maintenance (MA-05)",
+  "subcategory_id": "MA-05",
+  "subcategory_text": "Require maintenance personnel to be authorised and escrowed where appropriate, and document their activities.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: MA-05"
+  ],
+  "implementation_examples": [
+    "Vetted vendor list",
+    "Maintenance logs"
+  ],
+  "assessment_objectives": [
+    "Determine whether maintenance personnel are authorised."
+  ],
+  "related_controls": [
+    "MA-01 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-02 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-03 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-04 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-06 (NIST SP 800-53 Rev 5 — same family)",
+    "MA-07 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

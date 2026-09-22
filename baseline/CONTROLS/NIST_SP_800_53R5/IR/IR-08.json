@@ -1,0 +1,32 @@
+{
+  "control_id": "IR-08",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "IR",
+  "category": "Incident Response (IR-08)",
+  "subcategory_id": "IR-08",
+  "subcategory_text": "Establish an incident response team that is trained and ready to respond to incidents.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: IR-08",
+    "NIST CSF 2.0: RS.AN-03"
+  ],
+  "implementation_examples": [
+    "CSIRT",
+    "On-call rota"
+  ],
+  "assessment_objectives": [
+    "Determine whether an incident response team exists."
+  ],
+  "related_controls": [
+    "IR-01 (NIST SP 800-53 Rev 5 — same family)",
+    "IR-02 (NIST SP 800-53 Rev 5 — same family)",
+    "IR-03 (NIST SP 800-53 Rev 5 — same family)",
+    "IR-04 (NIST SP 800-53 Rev 5 — same family)",
+    "IR-05 (NIST SP 800-53 Rev 5 — same family)",
+    "IR-06 (NIST SP 800-53 Rev 5 — same family)",
+    "IR-07 (NIST SP 800-53 Rev 5 — same family)",
+    "IR-09 (NIST SP 800-53 Rev 5 — same family)",
+    "IR-10 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

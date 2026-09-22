@@ -1,0 +1,33 @@
+{
+  "control_id": "AU-01",
+  "framework": "NIST SP 800-53 Rev 5",
+  "function": "AU",
+  "category": "Audit and Accountability (AU-01)",
+  "subcategory_id": "AU-01",
+  "subcategory_text": "Develop, document, and disseminate an audit and accountability policy.",
+  "informative_references": [
+    "NIST SP 800-53 Rev 5: AU-01"
+  ],
+  "implementation_examples": [
+    "Publish audit policy"
+  ],
+  "assessment_objectives": [
+    "Determine whether an audit policy exists."
+  ],
+  "related_controls": [
+    "AU-02 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-03 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-04 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-05 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-06 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-07 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-08 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-09 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-10 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-11 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-12 (NIST SP 800-53 Rev 5 — same family)",
+    "AU-13 (NIST SP 800-53 Rev 5 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-53r5",
+  "source_version": "Rev 5 / 5.1.1 (2020-09 / 2024-04)"
+}

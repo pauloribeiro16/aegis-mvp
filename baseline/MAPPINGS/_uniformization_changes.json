@@ -1193,6 +1193,70 @@
       "new_line": "GV.PO-01, ID.IM-01, GV.OV-03, GV.PO-02.",
       "sr": "SR-NIS2-037+SR-NIS2-038",
       "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-02_Vulnerability-Management/D-02.1/regs/DORA.md",
+      "subdomain": "D-02.1",
+      "old_line": "ID.RA-01, ID.RA-03, PR.PS-02, GV.OV-02.",
+      "new_line": "ID.RA-01, ID.RA-03, ID.RA-05, ID.IM-04, GV.OV-02, PR.PS-02.",
+      "sr": "SR-DORA-004+005",
+      "surface": "dora_reanchor_m10"
+    },
+    {
+      "file": "baseline/domains/D-02_Vulnerability-Management/D-02.1/regs/DORA.md",
+      "subdomain": "D-02.1",
+      "old_line": "  nist_csf: [ID.RA-01, ID.RA-03, ID.RA-05, ID.IM-04, PR.PS-02, GV.OV-02]",
+      "new_line": "  nist_csf: [ID.RA-01, ID.RA-03, PR.PS-02]",
+      "sr": "SR-DORA-004+005",
+      "surface": "dora_reanchor_m10"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.2/regs/DORA.md",
+      "subdomain": "D-04.2",
+      "old_line": "  nist_csf: [RC.RP-01, RC.RP-04, PR.IR-04, PR.IR-03, PR.DS-11, RC.RP-03]",
+      "new_line": "  nist_csf: [PR.IR-03, RC.RP-01, RS.MA-01]",
+      "sr": "SR-DORA-013+014+016",
+      "surface": "dora_reanchor_m10"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.4/regs/DORA.md",
+      "subdomain": "D-04.4",
+      "old_line": "  nist_csf: [RC.RP-01, RC.RP-03, RC.RP-04, PR.IR-03, PR.IR-04, PR.DS-11]",
+      "new_line": "  nist_csf: [RC.RP-01, PR.IR-03, RS.MA-01]",
+      "sr": "SR-DORA-013+014+015",
+      "surface": "dora_reanchor_m10"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.1/regs/DORA.md",
+      "subdomain": "D-07.1",
+      "old_line": "PR.PS-06.",
+      "new_line": "ID.RA-01, ID.RA-03, PR.PS-02.",
+      "sr": "SR-DORA-004",
+      "surface": "dora_reanchor_m10"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.1/regs/DORA.md",
+      "subdomain": "D-07.1",
+      "old_line": "  nist_csf: [PR.PS-06]",
+      "new_line": "  nist_csf: [ID.RA-01, ID.RA-03, PR.PS-02]",
+      "sr": "SR-DORA-004",
+      "surface": "dora_reanchor_m10"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.2/regs/DORA.md",
+      "subdomain": "D-09.2",
+      "old_line": "ID.RA-05 (primary), GV.RR-02.",
+      "new_line": "GV.RR-02, GV.RM-02, ID.RA-01, ID.RA-03, ID.RA-05, ID.IM-04, GV.OV-02, PR.PS-02.",
+      "sr": "SR-DORA-028+004+005",
+      "surface": "dora_reanchor_m10"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.1/regs/DORA.md",
+      "subdomain": "D-10.1",
+      "old_line": "DE.CM-01 (primary), DE.CM-09, PR.PS-04, DE.AE-02, ID.RA-01, ID.RA-03.",
+      "new_line": "DE.CM-01, DE.CM-09, PR.PS-04, DE.AE-02, RS.MA-01, ID.RA-01, ID.RA-03, PR.PS-02.",
+      "sr": "SR-DORA-030+011+012+004",
+      "surface": "dora_reanchor_m10"
     }
   ]
 }

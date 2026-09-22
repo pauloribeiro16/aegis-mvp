@@ -110,7 +110,7 @@ A Phase 1 goal is a **directional, prescriptive statement of intent** introduced
 | 2 | Adjusted goal | One directional sentence, technology-neutral, target-state | R3/R5 (unchanged) |
 | 3 | Pattern | `achieve \| cease \| maintain \| avoid \| optimize` | KAOS satisfaction patterns (§3.1) |
 | 4 | Property | `C \| I \| A \| privacy-right \| accountability` | Avizienis taxonomy + privacy axis (§3.7) |
-| 5 | Parent HSO | `SO-D-XX.Y.HL` (the frozen sub-domain objective) | refinement link (KAOS refinement tree) |
+| 5 | Parent goal | `SO-D-XX.Y.HL` (the frozen sub-domain **Baseline Goal**; legacy "HSO" — ADR-004) | refinement link (KAOS refinement tree) |
 | 6 | Regulatory source | `REG Art. N` list | R2a (unchanged) |
 | 7 | Control anchor | ≤2 referential IDs or `—` | R2b (unchanged) |
 | 8 | Adjustment | One-line explicit record of what was restated vs the corpus HSO — no silent relaxation | R3 made auditable (Doc13's inline `*Adjustment:*` practice, promoted to a field) |
@@ -149,7 +149,7 @@ Everything else a case needs (affected stakeholders, regulatory reporting, exter
 ### D4 — Terminology resolutions
 
 1. **`AG-` is canonical** for Phase 1 IDs (ratifies the de-facto P7 arbitration of 2026-08-27 documented in `phase1_rich_extension.md` open item 2). The MC canon (`AO-D-`) is the deviation to be fixed — campaign C4.
-2. **Layer nouns are fixed**: Phase 0 = *Generic/High-level Objectives* (frozen corpus, distinct namespace); Phase 1 = **Adjusted Goals**; Phase 2 = **Privacy/Security Operational Objectives**; Phase 3 = **Requirements**. The "objective" overload between F0 and F2 is *documented*, not renamed — they never coexist in one ID namespace (`SO-D-XX.Y.HL` vs `PO/SO-D-XX.Y-NNN`).
+2. **Layer nouns are fixed**: Phase 0 = **Baseline Goals** (concept level, per [ADR-004](ADR-2026-09-22_pipeline-io-contract.md); frozen artifact names/IDs stay — `objective.md`, `SO-D-XX.Y.*` — under ADR-004's alias table); Phase 1 = **Adjusted Goals**; Phase 2 = **Privacy/Security Operational Objectives**; Phase 3 = **Requirements**. *(Amended 2026-09-22: this clause originally documented the F0 "objective" overload as permanent; ADR-004 resolved it — "objective" starts at Fase 2.)*
 3. **Phase-2 class model renames**: `PrivacyGoal`/`SecurityGoal` → `PrivacyObjective`/`SecurityObjective`, with the D2 attributes (campaign C4); Phase 1 gains an `AdjustedGoal` class (D1 columns), linked to `HierarchicalSecurityObjective` by refinement.
 4. **`phase2c_goals_and_rules.md`** language aligned to "objective" for the PO/SO layer (campaign C4).
 5. **R5 collision**: `SPEC.md` R5 (Language) is renumbered in a future SPEC revision; technology neutrality stays `R5` per AGENTS (campaign C5). Until then, any citation of "R5" must name its document.
@@ -191,6 +191,7 @@ No edits to Methodology_compact, `baseline/`, or any case. No changes to Phase 0
 - ADR-001 (best-practice layer): objective regulatory-basis citations follow the ADR-001 tier model (T1/T2/T3 + version).
 - ADR-002 (MVP TECHNOLOGY-only): the D2 field 14 `realization_class` will carry only `TECHNOLOGY` in MVP-produced objectives; PROCESS/CAPABILITY remain full-methodology.
 - **Designations campaign (M9/M9b/M9c, 2026-09-22, parallel session):** the researcher's own convention — *Phase 1 = Goals (`AG-`), Phase 2 = Objectives, Phase 3 = Requirements; "AO" label retired* — was already applied to repo docs and cases. This **confirms D4.1/D4.2 as decided, not merely proposed**; the residual C4 scope is therefore only the MC methodology-core sweep (`00_METHODOLOGY/AGENTS.md` corr-008 table, `dependency_graph.yaml`, class models, `phase2c` flow doc) — verify current state before executing.
+- **ADR-004 (pipeline I/O contract, 2026-09-22):** extends the designation chain to Fase 0 — *regulation in → **Baseline Goals** out* — and makes this ADR's card schemas the format of each phase exchange (D1 columns for F0→F1, D2 schema for F1→F2). D4.2 above is amended accordingly.
 
 ## 9. Ratification checklist (P7)
 

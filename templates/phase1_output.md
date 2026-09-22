@@ -39,11 +39,15 @@ No fact may appear here that is not in the input (rule R6).>
 
 ## §4 Adjusted Goals
 
+**Framing (company context conditioning every goal below):**
+
+> <size + tier consequence; area of operation; regulatory roles (controller, manufacturer, …); inherited/managed capabilities; explicit exclusions. One block here instead of repeating context per goal.>
+
 ### D-XX.Y — <canonical name>
 
-| ID | Adjusted goal | Pattern | Property | Parent HSO | Regulatory source | Control anchor | Adjustment |
+| ID | Adjusted goal | Pattern | Property | Parent goal | Regulatory source | Control anchor | Adjustment |
 |---|---|---|---|---|---|---|---|
-| AG-D-XX.Y-001 | <company-proportional restatement> | achieve/cease/maintain/avoid/optimize | C/I/A/privacy-right/accountability | SO-D-XX.Y.HL | <REG Art. N> | <referential ID> or — | <what was restated vs the corpus HSO> |
+| AG-D-XX.Y-001 | <company-proportional restatement> | achieve/cease/maintain/avoid/optimize | C/I/A/privacy-right/accountability | SO-D-XX.Y.HL | <REG Art. N> | <referential ID> or — | <what was restated vs the corpus Baseline Goal> |
 
 <!-- IDs sequential per sub-domain (rule R4). Sources must exist as article
      copies in the sub-domain's articles/ dir (rule R2a); control anchors must
@@ -55,10 +59,13 @@ No fact may appear here that is not in the input (rule R6).>
      Property (Avizienis taxonomy + privacy axis): C = confidentiality,
      I = integrity, A = availability, privacy-right = data-subject right,
      accountability = answerability duty.
-     Parent HSO = the sub-domain's frozen objective id from
-     D-XX.Y/objective.md (SO-D-XX.Y.HL).
+     Parent goal = the sub-domain's frozen **Baseline Goal** id from
+     D-XX.Y/objective.md (SO-D-XX.Y.HL; legacy expansion "High-Level
+     Security Objective" — ADR-004 D2).
      Adjustment (rule R3, auditable): one line on what was restated against
-     the corpus HSO / Sub-SO — scope narrowed, mechanism named, tier adapted.
+     the corpus Baseline Goal (HL / per-regulation, legacy "Sub-SO") — scope
+     narrowed, mechanism named, tier adapted. Scale/hosting generics belong
+     in the Framing block, not per row.
      Goals carry no owner/verification fields: verification belongs to the
      Phase 2 objectives that refine them (ADR-003 D1/D3). -->
 

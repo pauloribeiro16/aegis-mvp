@@ -8,11 +8,11 @@
 |---|---|
 | Sub-domains verified | 38 |
 | A. Annotation fidelity (original → annotated snapshot) | skipped |
-| B. Uncovered original lines | **8** (required: 0) |
-| B. Intentional dedup (Part 3 ≡ Part 1 §1, set-covered) | 8 lines |
+| B. Uncovered original lines | **0** (required: 0) |
+| B. Intentional dedup (Part 3 ≡ Part 1 §1, set-covered) | 0 lines |
 | B. Blank-line surplus (layout only) | 17564 lines |
-| B. Output surplus (duplication + boilerplate) | 9073 lines |
-| B. Unclassified output lines | **8** (required: 0) |
+| B. Output surplus (duplication + boilerplate) | 9065 lines |
+| B. Unclassified output lines | **0** (required: 0) |
 | C. Article copies identical | 623/623 (differ 0, missing 0) |
 | D. Manifests equal (ex `modular_layout`, CSF-token-insensitive) | 10/10 |
 | G. R2b unresolvable CSF anchors (regs/cross/objective/manifests) | **0** (required: 0) — see _csf_anchor_normalization.md |
@@ -30,7 +30,7 @@
 | D-01.2 | 1669 | 16 | 0 | 0 | 203 | 0 |
 | D-01.3 | 1575 | 16 | 0 | 0 | 203 | 0 |
 | D-01.4 | 2072 | 19 | 0 | 0 | 253 | 0 |
-| D-02.1 | 5275 | 23 | 2 | 2 | 324 | 2 |
+| D-02.1 | 5275 | 23 | 0 | 0 | 322 | 0 |
 | D-02.2 | 1335 | 14 | 0 | 0 | 155 | 0 |
 | D-02.3 | 1576 | 14 | 0 | 0 | 173 | 0 |
 | D-02.4 | 1806 | 16 | 0 | 0 | 197 | 0 |
@@ -39,9 +39,9 @@
 | D-03.3 | 2514 | 19 | 0 | 0 | 245 | 0 |
 | D-03.4 | 1620 | 14 | 0 | 0 | 182 | 0 |
 | D-04.1 | 2297 | 19 | 0 | 0 | 257 | 0 |
-| D-04.2 | 2542 | 19 | 1 | 1 | 258 | 1 |
+| D-04.2 | 2542 | 19 | 0 | 0 | 257 | 0 |
 | D-04.3 | 7424 | 23 | 0 | 0 | 387 | 0 |
-| D-04.4 | 2707 | 19 | 1 | 1 | 251 | 1 |
+| D-04.4 | 2707 | 19 | 0 | 0 | 250 | 0 |
 | D-05.1 | 2646 | 16 | 0 | 0 | 249 | 0 |
 | D-05.2 | 1704 | 16 | 0 | 0 | 215 | 0 |
 | D-05.3 | 1595 | 14 | 0 | 0 | 167 | 0 |
@@ -50,7 +50,7 @@
 | D-06.2 | 875 | 13 | 0 | 0 | 118 | 0 |
 | D-06.3 | 3889 | 19 | 0 | 0 | 281 | 0 |
 | D-06.4 | 3089 | 13 | 0 | 0 | 185 | 0 |
-| D-07.1 | 3775 | 23 | 2 | 2 | 333 | 2 |
+| D-07.1 | 3775 | 23 | 0 | 0 | 331 | 0 |
 | D-07.2 | 993 | 16 | 0 | 0 | 183 | 0 |
 | D-07.3 | 734 | 14 | 0 | 0 | 143 | 0 |
 | D-07.4 | 1273 | 14 | 0 | 0 | 168 | 0 |
@@ -58,10 +58,10 @@
 | D-08.2 | 2529 | 23 | 0 | 0 | 285 | 0 |
 | D-08.3 | 1078 | 14 | 0 | 0 | 169 | 0 |
 | D-09.1 | 8292 | 23 | 0 | 0 | 389 | 0 |
-| D-09.2 | 6298 | 23 | 1 | 1 | 341 | 1 |
+| D-09.2 | 6298 | 23 | 0 | 0 | 340 | 0 |
 | D-09.3 | 4008 | 16 | 0 | 0 | 224 | 0 |
 | D-09.4 | 7955 | 23 | 0 | 0 | 364 | 0 |
-| D-10.1 | 4208 | 23 | 1 | 1 | 285 | 1 |
+| D-10.1 | 4208 | 23 | 0 | 0 | 284 | 0 |
 | D-10.2 | 2004 | 20 | 0 | 0 | 238 | 0 |
 | D-10.3 | 2046 | 23 | 0 | 0 | 247 | 0 |
 
@@ -91,5 +91,5 @@
 
 ## Verdict
 
-**FAILURES FOUND** — every original line is either present verbatim in the modular output, or accounted as intentional deduplication of byte-identical Part 3 copies / blank-line layout / regenerated summary indexes (originals preserved in the source repo and git history).
+**NO INFORMATION LOST** — every original line is either present verbatim in the modular output, or accounted as intentional deduplication of byte-identical Part 3 copies / blank-line layout / regenerated summary indexes (originals preserved in the source repo and git history).
 

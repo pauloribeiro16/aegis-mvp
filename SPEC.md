@@ -80,7 +80,7 @@ All paths live in `config.yaml` (see that file). The executor must resolve:
   `baseline/MAPPINGS/_control_uniformization.md`).
 - `corpus.traceability` — generated baseline traceability chain
   (`traceability/<REG>.md` + `traceability.csv` + `index.md`): regulation ->
-  article -> ambiguity clause -> HSO -> SO-<REG> -> Sub-SO -> requirement ->
+  article -> ambiguity clause -> Baseline Goals (HSO -> SO-<REG> -> Sub-SO, legacy) -> requirement ->
   CSF/PF/AI-RMF controls. Read it to place a goal in the full chain;
   regenerate with `scripts/build_traceability.py`.
 - `ambiguity_registry.path` — canonical ambiguity baseline (`registry.md`).
@@ -143,9 +143,9 @@ derivation; P5 renders and validates.
   3. Restate each as a company-proportional goal (rule R3) with ID
      `AG-D-XX.Y-NNN` (rule R4), classified by satisfaction pattern
      (`achieve | cease | maintain | avoid | optimize`), by protected property
-     (`C | I | A | privacy-right | accountability`), linked to its parent HSO
+     (`C | I | A | privacy-right | accountability`), linked to its parent goal (Baseline Goal)
      (`SO-D-XX.Y.HL`), and carrying a one-line adjustment record — what was
-     restated against the corpus HSO, never silently relaxed (ADR-003 D1).
+     restated against the corpus Baseline Goal, never silently relaxed (ADR-003 D1).
      Goals carry no owner/verification fields: verification belongs to the
      Phase 2 objectives that refine them (ADR-003 D3).
   4. Anchor it: cite regulation article(s) that **exist as copies** in the
@@ -180,7 +180,7 @@ One Markdown file with light AEGIS-style frontmatter and six sections. Skeleton:
 §3  Applicable Sub-domain Subset (table: Sub-domain | Name | Trigger rationale)
 §4  Adjusted Goals               (one table per sub-domain:
                                  | ID | Adjusted goal | Pattern | Property |
-                                 Parent HSO | Regulatory source | Control anchor |
+                                 Parent goal | Regulatory source | Control anchor |
                                  Adjustment |
                                  IDs: AG-D-XX.Y-NNN; pattern =
                                  achieve/cease/maintain/avoid/optimize;
@@ -227,10 +227,13 @@ the `company_input.md` used), `corpus` (the `corpus.root` value from config).
   in the phrasing only.
 - **R4 — IDs.** `AG-D-XX.Y-NNN`, zero-padded three digits, sequential per
   sub-domain within the run (`AG-D-01.1-001`, `AG-D-01.1-002`, …). `AG` =
-  **Adjusted Goal** — designation convention of the methodology: **Phase 1
-  produces Goals**, Phase 2 produces Objectives, Phase 3 produces Requirements.
-  This matches the AEGIS adjusted-goal scheme so later absorption into
-  Doc13-like documents is mechanical.
+  **Adjusted Goal** — designation convention of the methodology, i.e. the
+  pipeline I/O contract (ADR-004): **Fase 0 produces Baseline Goals** (frozen,
+  `SO-D-XX.Y.*`), **Fase 1 produces Adjusted Goals**, **Fase 2 produces
+  Security & Privacy Objectives** (`PO-/SO-D-XX.Y-NNN`), **Fase 3 produces
+  Requirements** (`REQ-D-XX.Y-NNN`); each phase's output is the only unit the
+  next phase consumes. This matches the AEGIS adjusted-goal scheme so later
+  absorption into Doc13-like documents is mechanical.
 - **R5 — Language.** Output in `pipeline.output_language` (default English).
   Input may be any language; the output §1 echo preserves proper nouns as-is.
 - **R6 — No invention of company facts.** Every statement about the company in
@@ -264,7 +267,7 @@ A run is **valid** when all of the following hold:
 8. Frontmatter fields complete; `status` set to `ACTIVE` only after this checklist
    passes.
 9. Every §4 goal carries a valid pattern (`achieve/cease/maintain/avoid/optimize`),
-   a valid property (`C/I/A/privacy-right/accountability`), its parent HSO id
+   a valid property (`C/I/A/privacy-right/accountability`), its parent goal id
    (`SO-D-XX.Y.HL`), and a non-empty Adjustment record (ADR-003 D1).
 
 ## 9. Absorption roadmap (increments)

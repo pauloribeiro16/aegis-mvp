@@ -14,3 +14,20 @@
 
 Total primary patches applied: **3**
 
+
+## Residual line mappings (M10 completion — DORA re-anchor vs original corpus)
+
+The DORA re-anchor replaced anchor-list/YAML lines that `verify_no_loss.py` compares against the original corpus. Machine-readable pair list: `baseline/MAPPINGS/_uniformization_changes.json` (`surface: dora_reanchor_m10`). Pairing:
+
+| Sub | Old line (original corpus) | New line (current) |
+|---|---|---|
+| D-02.1 | `ID.RA-01, ID.RA-03, PR.PS-02, GV.OV-02.` | `ID.RA-01, ID.RA-03, ID.RA-05, ID.IM-04, GV.OV-02, PR.PS-02.` |
+| D-02.1 | `nist_csf: [ID.RA-01, ID.RA-03, ID.RA-05, ID.IM-04, PR.PS-02, GV.OV-02]` | `nist_csf: [ID.RA-01, ID.RA-03, PR.PS-02]` |
+| D-04.2 | `nist_csf: [RC.RP-01, RC.RP-04, PR.IR-04, PR.IR-03, PR.DS-11, RC.RP-03]` | `nist_csf: [PR.IR-03, RC.RP-01, RS.MA-01]` |
+| D-04.4 | `nist_csf: [RC.RP-01, RC.RP-03, RC.RP-04, PR.IR-03, PR.IR-04, PR.DS-11]` | `nist_csf: [RC.RP-01, PR.IR-03, RS.MA-01]` |
+| D-07.1 | `PR.PS-06.` | `ID.RA-01, ID.RA-03, PR.PS-02.` |
+| D-07.1 | `nist_csf: [PR.PS-06]` | `nist_csf: [ID.RA-01, ID.RA-03, PR.PS-02]` |
+| D-09.2 | `ID.RA-05 (primary), GV.RR-02.` | `GV.RR-02, GV.RM-02, ID.RA-01, ID.RA-03, ID.RA-05, ID.IM-04, GV.OV-02, ` |
+| D-10.1 | `DE.CM-01 (primary), DE.CM-09, PR.PS-04, DE.AE-02, ID.RA-01, ID.RA-03.` | `DE.CM-01, DE.CM-09, PR.PS-04, DE.AE-02, RS.MA-01, ID.RA-01, ID.RA-03, ` |
+
+Also fixed: glued `RS.MA-01` token on the D-04.2 anchors header line.

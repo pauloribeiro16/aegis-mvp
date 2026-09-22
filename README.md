@@ -86,7 +86,7 @@ aegis-mvp/
   `scripts/verify_no_loss.py` (checks G/H). Ledger:
   `baseline/MAPPINGS/_control_uniformization.md`. Every security requirement
   carries its full chain — regulation, articles, ambiguity clauses, objectives
-  (HSO → SO-REG → Sub-SO), and all mapped controls — in
+  (Baseline Goals: HSO → SO-REG → Sub-SO, legacy), and all mapped controls — in
   `baseline/MAPPINGS/traceability/` (regenerate with `scripts/build_traceability.py`).
 
 ## Status — Increment 0 (MVP)

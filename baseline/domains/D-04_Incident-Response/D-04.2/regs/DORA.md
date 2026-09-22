@@ -33,7 +33,7 @@ phase_1A_role: 1_of_N
 - The DORA containment-and-mitigation obligation is the financial-entity BC arrangements architecture; the operational substrate is a comprehensive BC policy with dedicated, appropriate and documented arrangements including response and recovery plans, backup policies, and restoration procedures; the BC arrangements are subject to independent internal audit for non-microenterprises (the audit requirement is DORA-unique — no other participating regulator imposes an audit obligation on the containment architecture).
 - The downstream notification cascade (Art. 19(1) competent-authority + Art. 19(3) client notification) is part of D-04.3, not D-04.2.
 
-**CSF anchors (from `SR-DORA-013` + `SR-DORA-014` + `SR-DORA-016` v0.3 security_rationale):**RS.MA-01
+**CSF anchors (from `SR-DORA-013` + `SR-DORA-014` + `SR-DORA-016` v0.3 security_rationale):**
 RC.RP-01, PR.IR-03, RC.RP-04, PR.IR-04, RS.MA-01, RS.AN-03.
 *(RC.RP-01 anchors the recovery-plan-execution leg (Art. 11(2)/(3)
 response and recovery plans); RC.RP-04 anchors the recovery-plans-

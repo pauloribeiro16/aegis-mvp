@@ -82,7 +82,7 @@ aegis-mvp/
 
 | Nature | Content | Agent Obligation |
 |---|---|---|
-| **Inherited (Free)** | 38 Sub-domains `D-XX.Y`, verbatim articles (`articles/`), control referentials under `CONTROLS/` — enforced by `scripts/verify_no_loss.py` are NIST CSF 2.0, NIST PF 1.1, NIST AI RMF; **advisory** (per-control JSONs available for citation, **not** enforced by `verify_no_loss.py`) are NIST SP 800-53 Rev 5, NIST SSDF (SP 800-218), NIST AI SSDF (SP 800-218A), OWASP ASVS, OWASP SAMM, ISO/IEC 27001:2022, ISO/IEC 27701:2019, ISO/IEC 42001:2023, CIS Critical Security Controls v8, BSI IT-Grundschutz, and ENISA — ambiguity baseline (`AMBIGUITY_REGISTRY/`), SR↔control mapping store (`MAPPINGS/sr_control_mappings/`) and full traceability chain (`MAPPINGS/traceability/`: regulation → article → clause → HSO → SO-REG → Sub-SO → requirement → controls), both dashboard-extracted and uniformized with the modules. | **Read-only by reference** via `config.yaml`. Never modify, copy, or re-derive interpretations already established. |
+| **Inherited (Free)** | 38 Sub-domains `D-XX.Y`, verbatim articles (`articles/`), control referentials under `CONTROLS/` — enforced by `scripts/verify_no_loss.py` are NIST CSF 2.0, NIST PF 1.1, NIST AI RMF; **advisory** (per-control JSONs available for citation, **not** enforced by `verify_no_loss.py`) are NIST SP 800-53 Rev 5, NIST SSDF (SP 800-218), NIST AI SSDF (SP 800-218A), OWASP ASVS, OWASP SAMM, ISO/IEC 27001:2022, ISO/IEC 27701:2019, ISO/IEC 42001:2023, CIS Critical Security Controls v8, BSI IT-Grundschutz, and ENISA — ambiguity baseline (`AMBIGUITY_REGISTRY/`), SR↔control mapping store (`MAPPINGS/sr_control_mappings/`) and full traceability chain (`MAPPINGS/traceability/`: regulation → article → clause → Baseline Goals (HSO/SO-REG/Sub-SO legacy) → requirement → controls), both dashboard-extracted and uniformized with the modules. | **Read-only by reference** via `config.yaml`. Never modify, copy, or re-derive interpretations already established. |
 | **Company Input** | Profile, products/services, data handled, infrastructure, assumed regulations. | **Provided once** in `input/<company>/company_input.md` (5 sections, plain prose). Never fabricate facts (Rule R6). |
 | **Generated Output** | Applicability rationale, sub-domain triggers, company-adjusted goals (`AG-D-XX.Y-NNN`). | **Produced by the agent** into `output/<company>/phase1_output.md` following `SPEC.md`. |
 
@@ -97,7 +97,7 @@ flowchart TD
     In["Company Input<br>(input/&lt;company&gt;/company_input.md)"] --> P1["P1. Extract Facts<br>(Sector, size, jurisdiction, data categories, tech)"]
     P1 --> P2["P2. Confirm Applicable Regulations<br>(Scope checks for GDPR, CRA, NIS2, DORA, AI Act)"]
     P2 --> P3["P3. Select Sub-Domain Subset<br>(Trigger match against D-01.1 .. D-10.3)"]
-    P3 --> P4["P4. Derive Adjusted Goals<br>(HSO/Sub-SO restated proportionally; IDs: AG-D-XX.Y-NNN)"]
+    P3 --> P4["P4. Derive Adjusted Goals<br>(Baseline Goals restated proportionally; IDs: AG-D-XX.Y-NNN)"]
     P4 --> P5["P5. Render & Validate<br>(Render output & pass SPEC.md §8 checklist)"]
     P5 --> Out["Phase 1 Output<br>(output/&lt;company&gt;/phase1_output.md)"]
 ```
@@ -107,7 +107,7 @@ flowchart TD
 2. **P2 — Confirm Regulations:** Evaluate the 5 candidate regulations (`GDPR`, `CRA`, `NIS2`, `DORA`, `AI_Act`). State whether each applies or does not apply with a 1-line rationale.
 3. **P3 — Select Sub-domain Subset:** Determine which of the 38 sub-domains are triggered by the applicable regulations and the company's operational profile (typical small company: 4–10 sub-domains).
 4. **P4 — Derive Adjusted Goals:**
-   - For each active sub-domain, read `objective.md` (the regulation-neutral HSO) and, **for each regulation confirmed in P2**, the independent module `regs/<REG>.md` (Sub-SO card + security requirements + verbatim regulatory basis). When ≥2 confirmed regulations apply, consult `cross/<R1>-<R2>.md` and `cross/_interactions.md` for aggregation.
+   - For each active sub-domain, read `objective.md` (the regulation-neutral **Baseline Goal**; legacy "HSO" — ADR-004) and, **for each regulation confirmed in P2**, the independent module `regs/<REG>.md` (Sub-SO card + security requirements + verbatim regulatory basis). When ≥2 confirmed regulations apply, consult `cross/<R1>-<R2>.md` and `cross/_interactions.md` for aggregation.
    - Restate the objective as a company-proportional **goal** to fit the company's scale and operational reality (**proportionality**).
    - Assign canonical IDs (`AG-D-XX.Y-NNN`).
    - Cite regulatory articles and control anchors strictly from the baseline corpus: the module anchor surfaces (`regs/<REG>.md` Sub-SO anchor blocks + requirement YAML `nist_csf`/`nist_pf`/`nist_airmf`, the `**Control anchors:**` lines on the ambiguity cards) and the mapping store (`MAPPINGS/sr_control_mappings/<REG>.json`) are pre-verified — copy from them, never re-derive.
@@ -128,7 +128,7 @@ flowchart TD
 - **R3 — Proportionality:** Adjust wording to company size/maturity (e.g., an 8-person company gets managed-cloud encryption, not a dedicated PKI governance board).
 - **R4 — Standardized IDs:** Always use `AG-D-XX.Y-NNN` (e.g., `AG-D-01.1-001`).
 - **R5 — Strict Technology Neutrality in Phase 0 & Phase 1:** 
-  - **Phase 0:** Has zero company context, zero tools, zero infrastructure. It contains only legal text, ambiguity analysis, canonical taxonomy, and generic regulatory objectives (HSO/Sub-SOs).
+  - **Phase 0:** Has zero company context, zero tools, zero infrastructure. It contains only legal text, ambiguity analysis, canonical taxonomy, and generic regulatory **goals** (legacy names: HSO/Sub-SOs — ADR-004).
   - **Phase 1:** Specifies *what* must be achieved proportionately by the company without prescribing tools, software libraries, cloud vendors, or technical control implementations. Control implementation and vendor choices belong strictly to Phase 2.
 - **R6 — No Fact Invention:** Every statement about the company must trace back to `company_input.md`. Any unavoidable assumption must be prefixed with `> ASSUMPTION:`.
 - **R7 — Ambiguity Deference:** If an obligation references an ambiguity card in the registry, link to the card rather than inventing a novel legal interpretation.
@@ -150,6 +150,24 @@ flowchart TD
 
 ## 6. Phase Boundary: Phase 1 vs Phase 2
 
+### 6.0 Pipeline I/O contract (ADR-004 — normative)
+
+Each phase's output is the **only** unit of work the next phase consumes;
+company context enters once (Fase 1); regulations and control anchors ride the
+chain as citations, never as work units.
+
+| Phase | Input | Output (unit of exchange) | IDs |
+|---|---|---|---|
+| **Fase 0 — Baseline** (frozen) | Regulation corpus (verbatim articles + ambiguity analysis) | **Baseline Goals** (high-level + per-regulation) | `SO-D-XX.Y.HL`, `SO-D-XX.Y.<REG>` |
+| **Fase 1 — Contextual Definition** | Baseline Goals + company context | **Adjusted Goals** | `AG-D-XX.Y-NNN` |
+| **Fase 2 — Operationalization** | Adjusted Goals (+ obligations, tensions) | **Security & Privacy Operational Objectives** (tail: testable `RULE-*`) | `PO-/SO-D-XX.Y-NNN` |
+| **Fase 3 — Specification** | Objectives (+ Rules) | **Security & Privacy Requirements** | `REQ-D-XX.Y-NNN` |
+
+Concept/alias note: the frozen artifacts keep their names and IDs (`objective.md`,
+`SO-D-XX.Y.*`, legacy "HSO"/"Sub-SO" expansions) — conceptually they are
+**Baseline Goals** (ADR-004 D2 alias table). Prose says *goal* for the Fase 0
+layer; "objective" starts at Fase 2.
+
 | Feature | Phase 1 (This MVP) | Phase 2 (Downstream) |
 |---|---|---|
 | **Primary Goal** | Context, Regulatory Scope, Adjusted Goals | Concrete Rules, Controls, Mitigations |
@@ -157,5 +175,7 @@ flowchart TD
 | **Level of Abstraction** | Technology-neutral (what requirements bind us) | Architecture & implementation specific (how we comply) |
 | **Verification** | Regulatory and baseline control anchors | Verification tests, audit evidence, metrics |
 
-Designation convention (methodology-wide): **Phase 1 = Goals** (`AG-D-XX.Y-NNN`,
-Adjusted Goals), **Phase 2 = Objectives**, **Phase 3 = Requirements**.
+Designation convention (methodology-wide): **Fase 0 = Baseline Goals**
+(`SO-D-XX.Y.*`, frozen), **Fase 1 = Goals** (`AG-D-XX.Y-NNN`, Adjusted Goals),
+**Fase 2 = Objectives** (`PO-/SO-D-XX.Y-NNN`), **Fase 3 = Requirements**
+(`REQ-D-XX.Y-NNN`).

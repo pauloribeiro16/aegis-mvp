@@ -5,13 +5,13 @@ build_traceability.py
 Builds the complete baseline traceability chain for every regulation published
 in the per-regulation dashboards (GDPR, CRA, NIS2, DORA, AI_Act):
 
-    regulation -> article(s) -> ambiguity clause(s) -> HSO (SO-D-XX.Y.HL)
+    regulation -> article(s) -> ambiguity clause(s) -> baseline goal (SO-D-XX.Y.HL; legacy HSO)
     -> SO-<REG>-NNN -> Sub-SO (SO-D-XX.Y.<REG>) -> requirement (req_id + SR)
     -> NIST CSF 2.0 | NIST PF 1.1 | NIST AI RMF
 
 Sources (all read from the aegis-mvp baseline, already uniformized with the
 dashboards by scripts/uniformize_control_anchors.py):
-  - D-*/D-XX.Y/objective.md              HSO id (SO-D-XX.Y.HL)
+  - D-*/D-XX.Y/objective.md              baseline goal id (SO-D-XX.Y.HL; legacy HSO)
   - D-*/D-XX.Y/regs/<REG>.md             Sub-SO YAML (id, inherits_from, source_SR)
                                          + requirement YAML (req_id, title,
                                          source_sr, nist_csf / nist_pf / nist_airmf)
@@ -131,7 +131,7 @@ def main():
                        "`scripts/build_traceability.py` (re-run after any "
                        "`uniformize_control_anchors.py --apply`).")
     index_lines.append("- Chain per row: regulation -> article(s) -> ambiguity clause(s) -> "
-                       "HSO `SO-D-XX.Y.HL` -> `SO-<REG>-NNN` -> Sub-SO `SO-D-XX.Y.<REG>` -> "
+                       "Baseline goals (HSO `SO-D-XX.Y.HL` -> `SO-<REG>-NNN` -> Sub-SO `SO-D-XX.Y.<REG>`, legacy) -> "
                        "requirement (`req_id` + `SR`) -> CSF 2.0 | PF 1.1 | AI RMF.")
     index_lines.append("- Baseline-only: per-company adjusted goals (`AG-D-XX.Y-NNN`) are "
                        "recorded in each Phase 1 output (`templates/phase1_output.md` §4.1).")
@@ -144,7 +144,7 @@ def main():
 
     for reg in REGS:
         md = [f"# Traceability — {reg}", ""]
-        md.append("> Chain: regulation -> article(s) -> ambiguity clause(s) -> HSO -> "
+        md.append("> Chain: regulation -> article(s) -> ambiguity clause(s) -> baseline goal -> "
                   f"SO-{reg} -> Sub-SO -> requirement -> controls. Generated from the "
                   "modular corpus + `sr_control_mappings` (dashboard-uniformized).")
         md.append("")
@@ -163,7 +163,7 @@ def main():
             md.append(f"## {sub} — {name}")
             md.append("")
             md.append("| Requisito | SR | Artigos | Cláusulas | "
-                      "Objetivos (HSO -> SO-REG -> Sub-SO) | CSF 2.0 | PF 1.1 | AI RMF |")
+                      "Baseline goals (HSO -> SO-REG -> Sub-SO) | CSF 2.0 | PF 1.1 | AI RMF |")
             md.append("|---|---|---|---|---|---|---|---|")
 
             def req_key(r):

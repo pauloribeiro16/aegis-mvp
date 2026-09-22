@@ -5,7 +5,7 @@ phase: 1
 version: 1.1
 created: 2026-08-06
 updated: 2026-09-14
-author: Fase de Especificação 0 Skeleton / Fase de Especificação 1 reconciliation / Fase de Especificação 2 enrichment / Fase de Especificação 3 finalisation
+author: Skeleton
 status: ACTIVE
 case: Case_01_TinyTask_SaaS
 sibling_of: 01_PHASE1_CONTEXT/
@@ -16,7 +16,7 @@ reading_order_added: 2026-09-14
 # Phase 1 Rich Mode — Case 01 (TinyTask SaaS)
 
 > **Rich version of Phase 1 — enriched with corpus data from `00_METHODOLOGY/PREPROCESSING_by_domain/domains/`.**
-> Fase de Especificação 3 status: **COMPLETE** (all sprints complete, 6/6 lints pass, Validator verdict = PASS).
+> Status: **COMPLETE** (all sprints complete, 6/6 lints pass, Validator verdict = PASS).
 
 ## 0. Reading Order (canonical — post-2026-09-14 fold)
 
@@ -62,7 +62,7 @@ The Rich folder is a **sibling, NOT a replacement** of the legacy folder. Both f
 | 3 — Final Validation | COMPLETE | 3 new docs (RICH_VS_LEGACY, PROJECT_STATE, VALIDATOR_SPRINT3) + README v1.0 + 07b §11 cross-check (10/10 PASS) + SPRINT3_REPORT |
 | 4 — Adjusted Goals | COMPLETE | NEW Doc 07c (74 adjusted goals = 37 PG + 37 SG) + Doc 07b §12-§14 (decision table + tensions + corpus provenance) + Doc 04 BG cross-refs (5 BGs linked) + 4 tensions resolved with max-SLA routing |
 
-**Overall:** Rich folder is **READY** (6/6 Phase 1 lints pass, 0 errors, 44 warnings — all in legacy meta-docs not introduced by Fase de Especificação 2 enrichment). Validator verdict: **PASS** (see `validation/VALIDATOR_SPRINT3.md`).
+**Overall:** Rich folder is **READY** (6/6 Phase 1 lints pass, 0 errors, 44 warnings — all in legacy meta-docs). Validator verdict: **PASS** (see `validation/VALIDATOR_SPRINT3.md`).
 
 ## 3. Navigation
 
@@ -131,7 +131,7 @@ The Rich folder is a **sibling, NOT a replacement** of the legacy folder. Both f
 5. **Top ambiguity cards:** `05b_Ambiguity_Register.md` §3 (top 20 severity-sorted with R1/R2/R3 readings)
 6. **Verbatim quotes:** `04c_ThirdParty_Landscape.md` §4.1 + §5.1 + §5.2 (GDPR Art. 28 + CRA Art. 7 + CRA Art. 13(5)/(6))
 7. **Citations:** `Citation_Index.md` (18 unique (reg, ref) pairs + 3 coverage gaps)
-8. **Proportionality:** `07b_Proportionality_Profile.md` §4 (37-row tier table) + §11 (Fase de Especificação 3 corpus cross-check)
+8. **Proportionality:** `07b_Proportionality_Profile.md` §4 (37-row tier table) + §11 (corpus cross-check)
 9. **Validation:** `validation/SPRINT3_REPORT.md` (final lint status + Validator verdict PASS)
 
 ## 5. Lint Status
@@ -160,17 +160,10 @@ Latest report: `01_IMPLEMENTATION_TOOLS/lints/reports/lint_report_phase1_2026080
 | L3 — JSON Sidecars | `00_METHODOLOGY/PREPROCESSING_by_domain/domains/D-XX_Y/D-XX.Y.json` (38 files) | Doc 04b (Target fit_criterion, Verification Method), Doc 05b (ambiguity cards) |
 | L4 — Verbatim Articles | `00_METHODOLOGY/PREPROCESSING_by_domain/domains/D-XX_Y/articles/<REG>_Art_<N>.md` (623 files) | Doc 04c (Art. 28, Art. 7, Art. 13(5)/(6) quotes), Citation_Index |
 
-**Total corpus linkage cells added across Fase de Especificação 2:** 135 cells in 4 existing docs + 18 unique citations + 417 ambiguity cards + 4 corpus-field-map sections.
+**Total corpus linkage cells added:** 135 cells in 4 existing docs + 18 unique citations + 417 ambiguity cards + 4 corpus-field-map sections.
 
-## 7. Migration Notes — GDPR-C → GDPR-CL Clause IDs
 
-Legacy Phase 1 uses clause IDs like `GDPR-C-001`. The corpus uses **GDPR-CL-001** (the `-CL` suffix distinguishes corpus-level clause IDs from case-level ones). Fase de Especificação 1 added a **cross-reference shim** to Doc 06 §8 (not a find-replace) — both forms coexist. The canonical case-form is preserved for Phase 2/3 backward compatibility; the corpus-form is added as a parallel reference.
-
-```
-GDPR-C{NN} ↔ GDPR-CL/CP/RT{xx}  (semantic, not numerical)
-```
-
-## 8. Cross-references to Corpus (Example Paths)
+## 7. Cross-references to Corpus (Example Paths)
 
 | Layer | Pattern | Example |
 |-------|---------|---------|
@@ -179,10 +172,10 @@ GDPR-C{NN} ↔ GDPR-CL/CP/RT{xx}  (semantic, not numerical)
 | L3 (JSON sidecar) | `…/PREPROCESSING_by_domain/domains/D-XX.Y/D-XX.Y.json` | `…/domains/D-01.1/D-01.1.json` |
 | L4 (verbatim articles) | `…/PREPROCESSING_by_domain/domains/D-XX.Y/articles/<REG>_Art_<N>.md` | `…/domains/D-01.1/articles/GDPR_Art_5.md` |
 
-## 9. Outstanding Items (post-Fase de Especificação 3)
+## 8. Outstanding Items
 
 1. (Optional) Update Doc 06 Clause Mapping to use GDPR-CL corpus form as canonical (semantic remap, not renumbering)
 2. (Optional) Extend Doc 05b with full ambiguity card set (currently top 20 of 417)
 3. (Optional) Add corpus field map per-doc sections for 7b (Track B proportionality)
-4. Subagente Validator final review — DONE in Fase de Especificação 3 (`validation/VALIDATOR_SPRINT3.md`)
+4. Subagente Validator final review — DONE (`validation/VALIDATOR_SPRINT3.md`)
 5. Git branch + merge prep — handled by orchestrator (branch: `feature/aegis-p1-case01-rich`)

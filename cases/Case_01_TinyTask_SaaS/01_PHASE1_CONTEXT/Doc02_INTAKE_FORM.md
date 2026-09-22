@@ -4,7 +4,7 @@ title: AEGIS Intake Form — Company Context
 version: 2.1
 created: 2026-04-01
 updated: 2026-08-06
-author: Compliance Lead (Fase de Especificação 1 reconciliation)
+author: Compliance Lead
 status: RECONCILED
 inputs: [Doc01_Taxonomy_Reference.md]
 outputs: [Doc03_Company_Context_Assessment.md]
@@ -442,7 +442,7 @@ No trigger mismatches identified at current applicability profile.
 
 ### 7.2 Sub-Domain × Accountable (compact ownership)
 
-> Compiled from `Doc07_Org_Roles_RACI.md §4` (Fase de Especificação 2 enrichment) and the §10 Stakeholder roster. A = single sign-off; R = does the work. Dev = Lead Developer + developer team (5 staff, on-call rotation).
+> Compiled from `Doc07_Org_Roles_RACI.md §4` and the §10 Stakeholder roster. A = single sign-off; R = does the work. Dev = Lead Developer + developer team (5 staff, on-call rotation).
 
 | Sub-domain | Accountable (A) | Responsible (R) | Notes |
 |------------|-----------------|-----------------|-------|

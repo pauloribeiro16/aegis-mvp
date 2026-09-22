@@ -4,7 +4,7 @@ title: Security Control Domain Taxonomy Reference
 version: 1.1
 created: 2026-03-26
 updated: 2026-08-06
-author: "[AEGIS Research Team] (Fase de Especificação 1 reconciliation)"
+author: "[AEGIS Research Team]"
 status: RECONCILED
 source: Taxonomia.txt + Regulatory_Complementary_Mapping_Updated.txt (T6)
 traceability: PhD Thesis Chapter 5, Section 5.7

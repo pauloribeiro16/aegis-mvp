@@ -5,7 +5,7 @@ phase: 1
 version: 1.5
 created: 2026-07-13
 updated: 2026-08-27
-author: Fase de Especificação 5 Executor (deep-enrichment-builder; v1.6 redesign note per MATURITY_MODEL_CSF_STRICT)
+author: Executor (deep-enrichment-builder; v1.6 redesign note per MATURITY_MODEL_CSF_STRICT)
 status: DEEP_ENRICHED
 status_history:
   - { date: 2026-08-06, status: DRAFT, sprint: 0, by: 'Fase de Especificação 0 skeleton' }
@@ -24,11 +24,6 @@ frozen: false
 supersedes: none
 ---
 
-> **Fase de Especificação 3 Corpus Cross-Check Note (2026-08-06)**
-> Cross-checked 10 representative rows in §4 against the corpus at `00_METHODOLOGY/PREPROCESSING_by_domain/domains/`. Findings:
-> - **Track B `verification_method` ≠ Corpus `requirements.*.yaml.verification_method`.** 07b's column carries the **Track B tier-specific attribute value** per `proportionality_model.md §6` (MINIMAL=INSPECT, LIGHTWEIGHT=DEMONSTRATE+INSPECT, DEFERRED=`—`). The corpus's `verification_method` is a **regulatory method** (uniformly `TEST` at high-level aggregation) that defines how the fit_criterion is verified. These are complementary, not identical, dimensions.
-> - **Track B `example_controls` ↔ Corpus `considerations`**: 07b's `example_controls` column (e.g., "AWS S3 / DynamoDB SSE-KMS enabled (AES-256 default)") aligns with the corpus's `considerations` block (e.g., for D-01.1: "CRA's `state of the art` (product-level, harmonised-standards floor — the strictest)… a single encryption deployment with a joint risk-assessment artefact discharges all four obligations"). Both converge on AES-256 as the control primitive.
-> - **All 10 spot-checked rows PASS.** See §11 for the full cross-check table.
 
 # Proportionality Profile — TinyTask SaaS
 
@@ -220,7 +215,7 @@ Every obligation in Doc 08 (`08_Obligation_Derivation.md`), every rule in Doc 11
 
 ---
 
-## 11. Fase de Especificação 3 Corpus Cross-Check
+## 11. Corpus Cross-Check
 
 > Spot-check of 10 representative rows from §4 against the corpus at `00_METHODOLOGY/PREPROCESSING_by_domain/domains/D-XX.Y/`.
 >
@@ -280,9 +275,9 @@ For each spot-checked row, the cross-check performed these checks:
 
 ---
 
-## §12 Track B Decision Table (Fase de Especificação 4 addition)
+## §12 Track B Decision Table
 
-> Fase de Especificação 4 adds the explicit deterministic decision trail per `proportionality_model.md §5.1` + `§5.2` + `§5.3` — the (S, I, P) → Tier mapping that drives §4. S fixed at MICRO (Doc 04 §2). I from Doc 05 §5 `scope_overlap`. P from Doc 07 §3 priority column.
+> Deterministic decision trail per `proportionality_model.md §5.1` + `§5.2` + `§5.3` — the (S, I, P) → Tier mapping that drives §4. S fixed at MICRO (Doc 04 §2). I from Doc 05 §5 `scope_overlap`. P from Doc 07 §3 priority column.
 
 | Sub-Domain | S | I | P | Tier | Rationale |
 |-----------|---|---|---|------|-----------|
@@ -330,9 +325,9 @@ For each spot-checked row, the cross-check performed these checks:
 
 ---
 
-## §13 Tensions Cross-Reference (Fase de Especificação 4 addition)
+## §13 Tensions Cross-Reference
 
-> Fase de Especificação 4 elevates the 4 strategic tensions from Phase 2 `09_Strategic_Tensions_Report.md` (legacy) into the Phase 1 Rich Mode. Full resolution table with max-SLA routing is in `07c_Adjusted_Goals.md §5`. This section provides a one-line cross-reference for each tension and how it interacts with the proportionality table in §4.
+> The 4 strategic tensions, elevated from Phase 2 `09_Strategic_Tensions_Report.md`. Full resolution table with max-SLA routing is in `07c_Adjusted_Goals.md §5`. This section provides a one-line cross-reference for each tension and how it interacts with the proportionality table in §4.
 
 | Tension ID | Sub-Domain(s) in §4 | Type | Severity | Resolution (max-SLA routing) | Cross-ref |
 |------------|---------------------|------|----------|------------------------------|-----------|
@@ -345,9 +340,9 @@ For each spot-checked row, the cross-check performed these checks:
 
 ---
 
-## §14 Corpus Provenance (Fase de Especificação 4 addition)
+## §14 Corpus Provenance
 
-> Fase de Especificação 4 adds the explicit corpus provenance for (I, P) inputs and the Tier output. Each row in §4 (and the decision trail in §12) is traceable to a specific corpus field.
+> Corpus provenance for (I, P) inputs and the Tier output. Each row in §4 (and the decision trail in §12) is traceable to a specific corpus field.
 
 | Input | Source | Field | Used for |
 |-------|--------|-------|----------|

@@ -5,7 +5,7 @@ phase: 1
 version: 2.1
 created: 2026-04-01
 updated: 2026-08-10
-author: Fase de Especificação 5 Executor (deep-enrichment-builder)
+author: Executor (deep-enrichment-builder)
 status: DEEP_ENRICHED
 deep_enrichment_date: 2026-08-06
 ao_id_cross_ref_note_date: 2026-08-10
@@ -21,7 +21,6 @@ related_documents: 00_Taxonomy_Reference.md, 04_Company_Context_Assessment.md
 > **Mapping to Phase 1 Strategy:** This document is the artifact of
 > **Filter 1 (Regulation Applicability — binary predicates)** in
 > [`00_METHODOLOGY/PHASE1_STRATEGY.md`](../../../00_METHODOLOGY/PHASE1_STRATEGY.md) §5.
-> Updates to the underlying filter logic should be reflected here.
 
 # Regulatory Applicability Assessment
 
@@ -259,7 +258,7 @@ Based on applicable regulations (GDPR + CRA):
 
 ## §9 Per-Article Detailed Breakdown (54 articles)
 
-> Fase de Especificação 5 enrichment — per-article table mapping each clause to its sub-domain, obligated party, verification criteria, evidence type, risk, and implementation posture. Source: `phase1_ontology.yaml:clause_mappings[]` (28 GDPR + 26 CRA = 54 articles). **NO Effort/Cost/Timeline fields added per Fase de Especificação 5 scope.**
+> Per-article table mapping each clause to its sub-domain, obligated party, verification criteria, evidence type, risk, and implementation posture. Source: `phase1_ontology.yaml:clause_mappings[]` (28 GDPR + 26 CRA = 54 articles).
 
 | Stat | Value |
 |------|-------|
@@ -343,7 +342,7 @@ Based on applicable regulations (GDPR + CRA):
 
 ---
 
-## §10 Version History (Fase de Especificação 5 addition)
+## §10 Version History
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|

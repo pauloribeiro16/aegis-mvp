@@ -5,7 +5,7 @@ phase: 1
 version: 1.1
 created: 2026-04-01
 updated: 2026-08-06
-author: Compliance Lead (Fase de Especificação 1 reconciliation)
+author: Compliance Lead
 status: RECONCILED
 inputs: [Doc03_Company_Context_Assessment.md, Doc08_Regulatory_Applicability.md]
 outputs: [Doc11_Structured_Compliance_Matrix.md]
@@ -140,9 +140,6 @@ This document specifies the Excel-based Clause Mapping Matrix (Step B2), mapping
 
 ## 8. CROSS-REFERENCE: CASE CLAUSE IDS ↔ CORPUS CLAUSE IDS
 
-> **Fase de Especificação 1 reconciliation (I-01).** Mapping between case-form (`GDPR-C{NN}` / `CRA-C{NN}`) and corpus-form (`GDPR-CL/CP/RT{xx}` / `CRA-CL{xx}`).
-> **Canonical: case-form preserved for Phase 2/3 backward compat.** Corpus-form added as a parallel reference. The corpus form uses semantic prefixes: `GDPR-CL{xx}` = Clause, `GDPR-CP{xx}` = Privacy-by-design obligation, `GDPR-RT{xx}` = data-subject RighT, `CRA-CL{xx}` = Clause. There is **no 1:1 numerical correspondence** between case-form and corpus-form (e.g., case `GDPR-C01` ≠ corpus `GDPR-CL01`); the mapping is **semantic**.
-> **Source:** case's `06_Clause_Mapping_Matrix.xlsx → GDPR_MAPPING` (28 rows) and `CRA_MAPPING` (26 rows) cross-referenced with corpus `00_METHODOLOGY/PREPROCESSING_by_domain/domains/D-XX.Y/D-XX.Y.md` Part 4 `**Clause: ...**` metadata lines and the AEGIS Fase de Especificação 0 `corpus_field_map.md §4.1`.
 
 ### 8.1 GDPR Cross-Reference (28 clauses)
 
@@ -158,7 +155,7 @@ This document specifies the Excel-based Clause Mapping Matrix (Step B2), mapping
 | **GDPR-C08** | **Art. 9** | **D-05.3** | **3** | **`GDPR-CL09` (verify)** | **CONTROLLER + PROCESSOR** | **Processing of special categories. CANONICAL: Art. 9 → D-05.3 per `phase1_ontology.yaml` v1.1.; corpus clause `GDPR-CL09`.** |
 | GDPR-C09 | Art. 17 | D-05.3 | 3 | `GDPR-RT03` or `GDPR-RT06` (verify) | CONTROLLER | Right to erasure (data subject right family) |
 | GDPR-C10 | Art. 20 | D-05.4 | 3 | `GDPR-RT09` | CONTROLLER | Right to data portability (D-05.4 corpus carries `**Clause: GDPR-RT09 \| type: data subject right**`) |
-| GDPR-C11 | Art. 24(1) | D-09.1 | 2 | `GDPR-CL24` (verify) | CONTROLLER + PROCESSOR | Responsibility of the controller — case-form preserved as `GDPR-C11` (NOT `GDPR-C08`); mapping per ontology. Fase de Especificação 2 verify corpus. |
+| GDPR-C11 | Art. 24(1) | D-09.1 | 2 | `GDPR-CL24` (verify) | CONTROLLER + PROCESSOR | Responsibility of the controller — case-form preserved as `GDPR-C11` (NOT `GDPR-C08`); mapping per ontology. |
 | GDPR-C12 | Art. 25(1) | D-07.1 | 2 | `GDPR-CP02` (verify) | CONTROLLER | Data protection by design |
 | GDPR-C13 | Art. 25(2) | D-03.3 | 3 | `GDPR-CP03` (verify) | CONTROLLER | Data protection by default |
 | GDPR-C14 | Art. 28(1) | D-06.1 | 3 | `GDPR-CP07` (verify) | CONTROLLER | Processor obligations (selection) |
@@ -177,7 +174,6 @@ This document specifies the Excel-based Clause Mapping Matrix (Step B2), mapping
 | GDPR-C27 | Art. 34(1) | D-04.3 | 3 | `GDPR-CP19` | CONTROLLER | Breach communication to data subject |
 | GDPR-C28 | Art. 35(1) | D-09.2 | 3 | `GDPR-CP21` (verify) | CONTROLLER | Data protection impact assessment (DPIA) |
 
-> **Case-form enumeration notice:** Case uses sequential numbering 01–28. The mapping above follows `phase1_ontology.yaml` v1.1 (Rich copy, Fase de Especificação 1). The legacy numbering 01–28 is preserved verbatim — only the article/sub-domain mapping for `GDPR-C08` was previously inconsistent (script vs ontology) and is now resolved canonically to the ontology's `Art. 9 → D-05.3`.
 
 ### 8.2 CRA Cross-Reference (26 clauses)
 
@@ -210,16 +206,4 @@ This document specifies the Excel-based Clause Mapping Matrix (Step B2), mapping
 | CRA-C25 | Art. 25 | D-01.2 | 3 | `CRA-CL25` (verify) | MANUFACTURER | Unauthorised access prevention |
 | CRA-C26 | Art. 26 | D-04.4 | 3 | `CRA-CL26` (verify) | MANUFACTURER | Resilience to outages |
 
-> **Fase de Especificação 2 deliverable:** verify each `(verify)` corpus clause ID by reading the corresponding `D-XX.Y.md` Part 4 `**Clause:**` line. Update the table to replace `(verify)` with confirmed IDs.
 
-### 8.3 Migration Notes
-
-- **28 GDPR + 26 CRA = 54 clauses** total; both totals match the legacy `06_Clause_Mapping_Matrix.xlsx` sheet summaries.
-- **28 of 28 GDPR rows and 26 of 26 CRA rows** are mapped case-form ↔ article. Of these, **14 GDPR + 28 CRA rows carry a corpus-form `(verify)` marker** must resolve.
-- **8 GDPR rows map to corpus EMPTY sub-domains** (D-05.2, D-08.2, D-09.1, D-09.2, D-09.4, D-10.3, etc., per `corpus_field_map.md §3.4`). These rows have **no `D-XX.Y.md`** to verify against; Fase de Especificação 2 must either generate the missing 8 `.md` files OR mark the corpus-form as "TBD — corpus EMPTY".
-- **Case-form IDs are NOT renumbered.** Phase 2/3 docs (`15_Requirements_Allocation.md`, `17_Functional_Tree.md`, etc.) that reference `GDPR-C08` continue to refer to **Art. 9 → D-05.3** per this canonical mapping.
-
----
-
-**Next Document:** 07_Structured_Compliance_Matrix.md
-**Gate Status:** ⏳ PENDING REVIEW

@@ -5,7 +5,7 @@ phase: 1
 version: 2.1
 created: 2026-08-06
 updated: 2026-09-14
-author: Fase de Especificação 2 Executor (ambiguity-register-builder)
+author: ambiguity-register-builder
 status: CITES_BASELINE_AMBIGUITY_REGISTRY
 status_history:
   - { date: '2026-09-14', from: DEEP_ENRICHED, to: CITES_BASELINE_AMBIGUITY_REGISTRY,
@@ -1112,10 +1112,10 @@ Two card variants appear in the corpus:
 
 Both variants are preserved verbatim in §3; readers should note that CRA cards require reading the `analysis_text` block to extract the R1/R2/R3 readings.
 
-## §7 Gate Criteria (Fase de Especificação 3 readiness)
+## §7 Gate Criteria
 
 - [x] Ambiguity register methodology documented (§5, §6)
 - [x] At least 1 example entry with full provenance (§3 — 20 entries with full provenance)
 - [x] All open ambiguities catalogued by sub-domain (§2 — 37 sub-domains)
 - [x] Top 5 disambiguation priorities ranked (§4)
-- [ ] All ambiguities resolved (deferred to Fase de Especificação 3 with human review)
+- [ ] All ambiguities resolved (deferred; human review required)

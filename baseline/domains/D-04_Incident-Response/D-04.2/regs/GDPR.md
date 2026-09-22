@@ -34,7 +34,9 @@ phase_1A_role: 1_of_N
 - The downstream notification cascade (Art. 33 supervisory-authority notification including the measures description) is part of D-04.3, not D-04.2.
 
 **CSF anchors (from `SR-GDPR-015` v0.3 security_rationale):**
-ID.AM-08, PR.IR-04, RC.RP-04.
+RS.MI-01, RS.MI-02, PR.DS-01.
+**PF 1.1 anchors (from `SR-GDPR-015` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+PR.PO-P7, CT.DM-P10.
 *(ID.AM-08 anchors the data-disposal-managed leg (the unintelligibility
 rendering is the GDPR-unique expression of this anchor); PR.IR-04
 anchors the adequate-resource-capacity leg (the TOMs catalogue

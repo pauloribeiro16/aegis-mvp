@@ -6,6 +6,7 @@
 ## GDPR
 ##### Art. 5(1)(a) — Lawfulness, fairness, transparency
 **Clause: GDPR-CL01** | type: principle | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: GV.OC-03, GV.PO-01, GV.PO-02, PR.AA-02 · PF 1.1: GV.PO-P5, CM.PO-P1, GV.PO-P1, CM.AW-P1, CM.AW-P3 · AI RMF: — · from `SR-GDPR-026`, `SR-GDPR-065` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.5 (vagueness), §5.1 (lists `lawful`, `fair`).
 **Instance 1 — VAG / S3 / `lawful`, `fair`, `transparent`**
 Three conjunctive vague adjectives. Each is inquiry-resistant:
@@ -22,6 +23,7 @@ R1 vs R2 yield materially distinct compliance obligations (R1 requires substanti
 ---
 ##### Art. 5(1)(b) — Purpose limitation
 **Clause: GDPR-CL02** | type: principle | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: ID.AM-08, ID.AM-03, GV.OC-03, GV.PO-01 · PF 1.1: CT.PO-P4, CT.DP-P4, ID.RA-P3, GV.PO-P5, CM.PO-P1, GV.PO-P1 · AI RMF: — · from `SR-GDPR-025`, `SR-GDPR-026` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`specified`, `explicit`, `legitimate`), §5.4.7 (coordination).
 **Instance 1 — VAG / S2 / `specified`, `explicit`, `legitimate`**
 Three conjunctive qualifiers on the `purposes` noun. Berry §5.5: structural parallelism invites distinct readings, but the clause is anchored by Art. 6 (lawful bases) and Art. 13/14 (information to data subjects), which require purpose specification in the privacy notice.
@@ -38,6 +40,7 @@ R1 vs R2 yield materially distinct compliance obligations (R1 requires fresh con
 ---
 ##### Art. 5(2) — Accountability
 **Clause: GDPR-CL07** | type: principle (controller-specific) | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: GV.PO-01, GV.PO-02, GV.RM-04, GV.OV-03, PR.PS-04, DE.AE-03, RS.AN-07 · PF 1.1: GV.PO-P1, GV.PO-P6, GV.MT-P3, GV.PO-P5, CT.DM-P9, ID.IM-P8 · AI RMF: — · from `SR-GDPR-043`, `SR-GDPR-044`, `SR-GDPR-050` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`responsible`, `able to demonstrate`).
 **Instance 1 — VAG / S3 / `able to demonstrate compliance`**
 The accountability principle is the foundational obligation of GDPR. The standard for `demonstrating` is undefined.
@@ -82,6 +85,7 @@ R1 vs R2 yield materially distinct compliance obligations (R1 requires documente
 #### Clause breakdown
 ##### Art. 6(1)(a) — Consent
 **Clause: GDPR-CL08** | type: lawfulness base | obligatedParty: CONTROLLER | obligationType: PER-PURPOSE (continuous)
+**Control anchors:** CSF: GV.OC-03, GV.PO-01, PR.AA-02 · PF 1.1: GV.PO-P5, CM.PO-P1, GV.PO-P1, CT.PO-P3, CM.AW-P2 · AI RMF: — · from `SR-GDPR-026`, `SR-GDPR-051` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.1 (polysemy of `consent` — see Art. 4(11) reference); §5.4.7 (coordination `for one or more specific purposes`).
 **Instance 1 — POLY / S3 / `consent`**
 `consent` inherits all Art. 4(11) ambiguities (freely given + specific + informed + unambiguous). Additionally, `consent to the processing of his or her personal data for one or more specific purposes` couples consent with purpose-binding — the `one or more specific purposes` wording has the Berry §5.4.7 menu-card ambiguity (does a single-purpose consent bind the controller? does a multi-purpose consent require fresh consent for any new purpose?).
@@ -95,6 +99,7 @@ R1 vs R3 yield materially distinct consent-collection UI requirements.
 ---
 ##### Art. 6(1)(b) — Contract performance
 **Clause: GDPR-CL09** | type: lawfulness base | obligatedParty: CONTROLLER | obligationType: PER-CONTRACT
+**Control anchors:** CSF: GV.OC-03, GV.PO-02 · PF 1.1: GV.PO-P5, CT.PO-P1 · AI RMF: — · from `SR-GDPR-027` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`necessary`).
 **Instance 1 — VAG / S3 / `necessary for the performance of a contract`**
 `necessary` is the recurring vague term. `or in order to take steps at the request of the data subject prior to entering into a contract` extends the basis to pre-contractual steps. The boundary between `necessary for performance` and `optional but useful for performance` is undefined.
@@ -108,18 +113,21 @@ R1 vs R3 yield materially distinct compliance obligations (R1 requires per-proce
 ---
 ##### Art. 6(1)(c) — Legal obligation
 **Clause: GDPR-CL10** | type: lawfulness base | obligatedParty: CONTROLLER | obligationType: PER-OBLIGATION
+**Control anchors:** CSF: GV.OC-03, GV.PO-02 · PF 1.1: GV.PO-P5, CT.PO-P1 · AI RMF: — · from `SR-GDPR-027` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`necessary`, `legal obligation`).
 **Instance 1 — VAG / S2 / `legal obligation to which the controller is subject`**
 `legal obligation` is bounded (must be Union or Member State law) per Art. 6(3) but the `necessary` qualifier is still open. Art. 6(3) specifies the form of the legal basis but not the necessary-processing test. S2 because Art. 6(3) partially anchors the reading.
 ---
 ##### Art. 6(1)(d) — Vital interests
 **Clause: GDPR-CL11** | type: lawfulness base | obligatedParty: CONTROLLER | obligationType: PER-INCIDENT
+**Control anchors:** CSF: GV.OC-03, GV.PO-02 · PF 1.1: GV.PO-P5, CT.PO-P1 · AI RMF: — · from `SR-GDPR-027` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.1 (`vital interests` polysemy), §5.1 (`necessary`).
 **Instance 1 — POLY / S2 / `vital interests`**
 `vital interests` is undefined. Recital 46 attempts to fix as `life-critical` situations; EDPB Guidelines interpret as life OR health (interchangeable). S2 because Recital 46 (non-binding) constrains the reading to life-critical emergencies.
 ---
 ##### Art. 6(1)(e) — Public interest / official authority
 **Clause: GDPR-CL12** | type: lawfulness base | obligatedParty: CONTROLLER (public authority) | obligationType: PER-TASK
+**Control anchors:** CSF: GV.OC-03, GV.PO-02 · PF 1.1: GV.PO-P5, CT.PO-P1 · AI RMF: — · from `SR-GDPR-027` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`necessary`, `task carried out in the public interest`), §3.3.1 (`official authority` polysemy).
 **Instance 1 — VAG / S3 / `task carried out in the public interest or in the exercise of official authority`**
 The disjunctive is wide. `Public interest` is undefined at EU level; Member State law determines it per Art. 6(2). `Official authority` typically requires a public-law empowerment but the boundary with `public interest` (private entities performing public-interest tasks) is contested.
@@ -133,6 +141,7 @@ R1 vs R2 yield materially distinct compliance obligations (R1 limits applicabili
 ---
 ##### Art. 6(1)(f) — Legitimate interests
 **Clause: GDPR-CL13** | type: lawfulness base | obligatedParty: CONTROLLER (non-public) | obligationType: PER-PURPOSE
+**Control anchors:** CSF: GV.OC-03, GV.PO-02 · PF 1.1: GV.PO-P5, CT.PO-P1 · AI RMF: — · from `SR-GDPR-027` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.1 (`legitimate interests` polysemy), §5.1 (`necessary`).
 **Instance 1 — POLY+VAG / S3 / `legitimate interests` + balancing test**
 `legitimate interests` is undefined. The clause includes a built-in balancing test: `except where such interests are overridden by the interests or fundamental rights and freedoms of the data subject`. The Recital 47 attempt to fix the meaning of `legitimate` is non-binding. The `in particular where the data subject is a child` sentence triggers Art. 8 protection.
@@ -148,12 +157,14 @@ Children are singled out as requiring additional protection, but the operational
 ---
 ##### Art. 7(1) — Demonstrability of consent
 **Clause: GDPR-CL15** | type: consent-specific | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.AA-02, GV.OC-03 · PF 1.1: CT.PO-P3, CM.AW-P2 · AI RMF: — · from `SR-GDPR-051` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`able to demonstrate`).
 **Instance 1 — VAG / S2 / `able to demonstrate`**
 The standard for `demonstrating` is undefined; Art. 5(2) accountability and Art. 30 records-of-processing provide partial anchors. S2 because both reading converge on record-keeping.
 ---
 ##### Art. 7(2) — Bundled consent
 **Clause: GDPR-CL16** | type: consent-specific | obligatedParty: CONTROLLER | obligationType: PER-CONSENT-COLLECTION
+**Control anchors:** CSF: GV.PO-02, PR.AA-02 · PF 1.1: CT.PO-P3, GV.PO-P1 · AI RMF: — · from `SR-GDPR-052` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`clearly`, `intelligible`, `easily accessible`, `clear and plain`).
 **Instance 1 — VAG / S3 / `clearly distinguishable`, `intelligible and easily accessible form`, `clear and plain language`**
 Four conjunctive vague modifiers on consent-presentation form. EDPB Guidelines 05/2020 §3.6 fix `clearly distinguishable` as requiring separate tick-boxes for separate purposes, but `intelligible and easily accessible form` and `clear and plain language` remain inquiry-resistant.
@@ -169,12 +180,14 @@ The cascading-invalidation rule: if part of the declaration infringes GDPR, only
 ---
 ##### Art. 7(3) — Withdrawal of consent
 **Clause: GDPR-CL17** | type: consent-specific (data-subject right) | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.AA-02, GV.OC-03 · PF 1.1: CT.PO-P3, CM.AW-P2 · AI RMF: — · from `SR-GDPR-051` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`at any time`, `as easy to withdraw as to give`).
 **Instance 1 — VAG / S2 / `as easy to withdraw as to give`**
 The standard `as easy` is undefined. EDPB Guidelines 05/2020 §3.7 fix it as: at most 2-3 clicks to reach withdrawal UI. S2 because the EDPB guideline is de facto binding on supervisory authorities.
 ---
 ##### Art. 7(4) — Conditional consent and contract
 **Clause: GDPR-CL18** | type: consent-specific (anti-coupling) | obligatedParty: CONTROLLER | obligationType: PER-CONSENT-COLLECTION
+**Control anchors:** CSF: GV.PO-02, PR.AA-02 · PF 1.1: CT.PO-P3, GV.PO-P1 · AI RMF: — · from `SR-GDPR-052` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`utmost account`, `not necessary`).
 **Instance 1 — VAG / S3 / `utmost account`, `not necessary for the performance of that contract`**
 `utmost account` is the standard (Berry §5.1: `utmost` appears in similar formulations). `not necessary for the performance of that contract` couples with Art. 6(1)(b) — but the boundary of `necessary for contract performance` was already ambiguous (Clause-CL09). The two clauses together create a recursive ambiguity.
@@ -199,6 +212,7 @@ R1 vs R2 yield materially distinct consent-collection UI requirements.
 #### Clause breakdown
 ##### Art. 8(1) — Age threshold for consent
 **Clause: GDPR-CL19** | type: consent-specific (children) | obligatedParty: CONTROLLER (information-society services to children) | obligationType: PER-OFFERING
+**Control anchors:** CSF: PR.AA-02, GV.OC-03 · PF 1.1: CT.PO-P3, GV.PO-P5 · AI RMF: — · from `SR-GDPR-054` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.1 (`parental responsibility` polysemy), §5.2.1 (Member State age override).
 **Instance 1 — POLY / S3 / `parental responsibility`**
 `parental responsibility` is a legal term of art imported from family law; the GDPR does not define it. Recital 38 hints at it. Different Member State legal systems define it differently (sole vs joint custody; unmarried parents; same-sex parents; surrogacy). The data controller must determine responsibility for each user but has no general-purpose source of truth.
@@ -214,6 +228,7 @@ Member States may lower the age threshold to no less than 13 — multi-jurisdict
 ---
 ##### Art. 8(2) — Reasonable verification efforts
 **Clause: GDPR-CL20** | type: consent-specific (children) | obligatedParty: CONTROLLER | obligationType: PER-CHILD-ACCESS
+**Control anchors:** CSF: PR.AA-02, GV.OC-03 · PF 1.1: CT.PO-P3, GV.PO-P5 · AI RMF: — · from `SR-GDPR-054` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`reasonable efforts`).
 **Instance 1 — VAG / S3 / `reasonable efforts ... taking into consideration available technology`**
 `reasonable efforts` is the recurring vague phrase. The `available technology` qualifier shifts the standard over time (2024 technology vs 2026 vs 2028). EDPB Guidelines on children's consent provide factors but not a closed list.
@@ -247,6 +262,7 @@ R1 vs R3 yield materially distinct age-verification infrastructure requirements.
 #### Clause breakdown
 ##### Art. 9(1) — General prohibition on special-category processing
 **Clause: GDPR-CL21** | type: principle (sensitive data) | obligatedParty: CONTROLLER | obligationType: PER-CATEGORY
+**Control anchors:** CSF: GV.OC-03, ID.AM-08, PR.AA-02 · PF 1.1: GV.PO-P5, CT.DP-P2, ID.RA-P3, CT.PO-P3 · AI RMF: — · from `SR-GDPR-028`, `SR-GDPR-053` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.1 (polysemy of each special category), §5.4.7 (long OR enumeration).
 **Instance 1 — POLY+COORD / S3 / enumerated categories**
 9 categories connected by commas and `and`: `racial or ethnic origin, political opinions, religious or philosophical beliefs, trade union membership, and ... genetic data, biometric data ..., data concerning health or data concerning ... sex life or sexual orientation`. Each term has a poly reference (Art. 4(13)–(15)) but the boundaries are contested.
@@ -260,6 +276,7 @@ R1 vs R2 yield materially distinct biometric-processing scope.
 ---
 ##### Art. 9(2)(a) — Explicit consent for special categories
 **Clause: GDPR-CL22** | type: lawfulness base (special category) | obligatedParty: CONTROLLER | obligationType: PER-CATEGORY-CONSENT
+**Control anchors:** CSF: GV.OC-03, ID.AM-08, PR.AA-02 · PF 1.1: GV.PO-P5, CT.DP-P2, ID.RA-P3, CT.PO-P3 · AI RMF: — · from `SR-GDPR-028`, `SR-GDPR-053` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`explicit` vs `specific` — consent Art. 4(11) requires `specific`; Art. 9(2)(a) adds `explicit`).
 **Instance 1 — POLY / S3 / `explicit consent` vs `specific consent`**
 The Art. 9(2)(a) consent requires `explicit` (a stronger qualifier than the Art. 4(11) `specific`). The boundary between `explicit` and `specific` is undefined; EDPB Guidelines 05/2020 attempt to fix but do not exhaust the gap. S3 because the standard of consent collection differs materially.
@@ -273,6 +290,7 @@ R1 vs R3 yield materially distinct consent-collection UI.
 ---
 ##### Art. 9(2)(g) — Substantial public interest
 **Clause: GDPR-CL23** | type: lawfulness base (special category) | obligatedParty: CONTROLLER | obligationType: PER-MEMBER-STATE-LAW
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`substantial public interest`, `proportionate`, `essence of the right to data protection`, `suitable and specific measures`).
 **Instance 1 — VAG / S3 / `substantial public interest`**
 `substantial public interest` inherits the Art. 6(1)(e) `public interest` ambiguity plus the `substantial` qualifier. The clause cross-references Charter Art. 52(1) via `essence of the right`.
@@ -280,6 +298,7 @@ S3 — same family of ambiguity as Art. 6(1)(e), but more severe because `substa
 ---
 ##### Art. 9(2)(j) — Research/statistics/archiving (with Art. 89(1) safeguards)
 **Clause: GDPR-CL24** | type: lawfulness base (special category, research) | obligatedParty: CONTROLLER | obligationType: PER-MEMBER-STATE-LAW
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`archiving purposes in the public interest`, `proportionate`, `essence`).
 The clause cross-references Art. 89(1) for the substantive safeguards (pseudonymisation, no decisions about data subjects, etc.). The Art. 89(1) reference provides partial anchoring but does not define `archiving`.
 ---
@@ -291,6 +310,7 @@ The clause cross-references Art. 89(1) for the substantive safeguards (pseudonym
 #### Clause breakdown
 ##### Art. 21(1) — Objection grounds and overriding
 **Clause: GDPR-RT16** | type: data subject right (object) | obligatedParty: CONTROLLER | obligationType: PER-OBJECTION
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`compelling legitimate grounds`).
 **Instance 1 — VAG / S3 / `compelling legitimate grounds`**
 `compelling` is stronger than Art. 6(1)(f) `legitimate interests`. The `overriding` test for compelling grounds is undefined.
@@ -303,6 +323,7 @@ R1 vs R2 yield materially distinct balance-tests in objection handling.
 ---
 ##### Art. 23(1) — Permissible restriction grounds
 **Clause: GDPR-RT20** | type: principle (restrictions scope) | obligatedParty: MEMBER STATE | obligationType: PER-RESTRICTION
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`essence of the fundamental rights and freedoms`, `necessary and proportionate`), §5.4.7 (10-element OR-list).
 **Instance 1 — VAG / S3 / `essence of the fundamental rights and freedoms`**
 `Essence` is Charter Art. 52(1) terminology. CJEU case law (Schrems I/II, Digital Rights Ireland) uses `essence` as a hard-test threshold but does not specify the operational test. S3 because Member State restrictions on Charter rights depend on the essence-test being met.
@@ -338,6 +359,7 @@ R1 vs R2 yield materially distinct restriction-scrutiny standards.
 - Chapter V transfer mechanisms do not create new Chapter III rights but the Art. 15(2) right to be informed of transfer safeguards cross-references Chapter V.
 ##### Art. 24(1) — General controller responsibility
 **Clause: GDPR-CP01** | type: controller-specific | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: GV.PO-01, GV.PO-02, GV.RM-04, GV.OV-03 · PF 1.1: GV.PO-P1, GV.PO-P6, GV.MT-P3, GV.PO-P5 · AI RMF: — · from `SR-GDPR-043`, `SR-GDPR-044` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`appropriate`, `where necessary`), §5.4.7 (`technical and organisational`).
 **Instance 1 — VAG / S3 / `appropriate technical and organisational measures`**
 Same pattern as Art. 5(1)(f) and Art. 32(1) — `appropriate` is the recurring Berry-flagged vague term. Art. 32 anchors the specific security measures but the cross-clause `appropriate` chain remains qualitatively undefined.
@@ -361,6 +383,7 @@ R1 vs R2 yield materially distinct review-cadence policies.
 #### Clause breakdown
 ##### Art. 27(2)(a) — Occasional-processing exception
 **Clause: GDPR-CP06** | type: extraterritoriality exception | obligatedParty: NON-EU CONTROLLER/PROCESSOR | obligationType: PER-PROCESSING-ACTIVITY
+**Control anchors:** CSF: GV.OC-02, GV.RR-02 · PF 1.1: GV.PO-P3, GV.PO-P4 · AI RMF: — · from `SR-GDPR-038` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`occasional`, `large scale`, `unlikely`).
 **Instance 1 — VAG / S3 / `occasional`, `large scale`, `unlikely to result in a risk`**
 Three inquiry-resistant qualifiers combined with AND. The exception requires all three to fail (i.e., occasional AND small-scale AND low-risk). The boundary of each is undefined.
@@ -392,12 +415,14 @@ R1 vs R2 yield materially distinct representative-designation policies.
 #### Clause breakdown
 ##### Art. 30(1)+(2) — Records content
 **Clause: GDPR-CP12** | type: documentation | obligatedParty: CONTROLLER + PROCESSOR | obligationType: CONTINUOUS
+**Control anchors:** CSF: ID.AM-08, ID.AM-03, GV.PO-02, GV.OV-03, PR.PS-04, DE.AE-03, RS.AN-07 · PF 1.1: CT.PO-P4, CT.DM-P5, GV.MT-P3, GV.PO-P5, ID.IM-P1, ID.IM-P4, ID.IM-P6, ID.IM-P8, CT.DM-P9 · AI RMF: — · from `SR-GDPR-029`, `SR-GDPR-044`, `SR-GDPR-048`, +1 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`where possible` × 2), §5.4.7 (closed AND-list).
 **Instance 1 — VAG / S2 / `where possible` × 2**
 Soft hedge on retention-period documentation and security-measure documentation. `Where possible` defers to controller judgement. S2 because the same documentation practice applies.
 ---
 ##### Art. 37(1)(b) — DPO designation (monitoring threshold)
 **Clause: GDPR-CP25** | type: DPO designation | obligatedParty: CONTROLLER + PROCESSOR | obligationType: CONTINUOUS
+**Control anchors:** CSF: GV.RR-02, GV.SC-02 · PF 1.1: GV.PO-P3 · AI RMF: — · from `SR-GDPR-062` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`core activities`, `regular and systematic`, `large scale`).
 **Instance 1 — VAG / S3 / `core activities`**
 `Core activities` is the Berry-flagged term. EDPB Guidelines 3/2018 attempt to fix as primary business activities (vs ancillary/supporting).
@@ -424,12 +449,14 @@ R1 vs R2 yield materially distinct DPO-designation policies.
 #### Clause breakdown
 ##### Art. 38(2) — DPO resources
 **Clause: GDPR-CP26** | type: DPO independence | obligatedParty: CONTROLLER + PROCESSOR | obligationType: CONTINUOUS
+**Control anchors:** CSF: GV.RR-01, GV.RR-03 · PF 1.1: GV.PO-P3 · AI RMF: — · from `SR-GDPR-063` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`necessary`).
 **Instance 1 — VAG / S2 / `resources necessary`**
 Inherits Art. 28(1) `sufficient` ambiguity. S2 because the same compliance practice (provide-adequate-resources) applies.
 ---
 ##### Art. 38(6) — No conflict of interests
 **Clause: GDPR-CP27** | type: DPO independence | obligatedParty: CONTROLLER + PROCESSOR | obligationType: CONTINUOUS
+**Control anchors:** CSF: GV.RR-01, GV.RR-03 · PF 1.1: GV.PO-P3 · AI RMF: — · from `SR-GDPR-063` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`conflict of interests`).
 **Instance 1 — VAG / S2 / `conflict of interests`**
 Undefined; EDPB Guidelines 3/2018 attempt to fix factors (e.g. DPO cannot also be CISO in some configurations). S2 because the factors converge on the same DPO-role separation.
@@ -449,6 +476,7 @@ Undefined; EDPB Guidelines 3/2018 attempt to fix factors (e.g. DPO cannot also b
 #### Clause breakdown
 ##### Art. 39(1)(b) — DPO monitoring and training
 **Clause: GDPR-CP28** | type: DPO tasks | obligatedParty: DPO | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.AT-01, PR.AT-02, GV.OV-03, ID.IM-02 · PF 1.1: GV.AT-P1, GV.AT-P2, GV.MT-P3, ID.IM-P2 · AI RMF: — · from `SR-GDPR-042`, `SR-GDPR-064` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`awareness-raising`, `training`).
 **Instance 1 — POLY+VAG / S2 / `awareness-raising and training`**
 Inherits the GDPR/T1 `training` polysemy. S2 because the same training-practice applies.
@@ -482,6 +510,7 @@ Inherits the GDPR/T1 `training` polysemy. S2 because the same training-practice 
 - Chapter V inherits Art. 28 processor obligations (transfer is processing via a processor). Art. 28(3) DPA clauses must include transfer safeguards.
 ##### Art. 44 — General transfer principle
 **Clause: GDPR-TR01** | type: principle (transfers) | obligatedParty: CONTROLLER + PROCESSOR | obligationType: PER-TRANSFER
+**Control anchors:** CSF: GV.SC-02, GV.SC-03, GV.OC-03 · PF 1.1: ID.IM-P7, ID.DE-P5 · AI RMF: — · from `SR-GDPR-055` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`not undermined`).
 **Instance 1 — VAG / S3 / `not undermined`**
 `Undermined` is qualitative. The clause establishes an outcome obligation (level-of-protection equivalence) without specifying the test for equivalence. EDPB Recommendations 01/2020 on supplementary measures attempt to operationalise.
@@ -515,6 +544,7 @@ R1 vs R2 yield materially distinct onward-transfer assessment scope.
 #### Clause breakdown
 ##### Art. 45(1) — Adequacy-based transfer
 **Clause: GDPR-TR02** | type: transfer mechanism (adequacy) | obligatedParty: CONTROLLER + PROCESSOR | obligationType: PER-TRANSFER (to adequacy-decision country)
+**Control anchors:** CSF: GV.SC-02, GV.SC-03, GV.OC-03 · PF 1.1: ID.IM-P7, ID.DE-P5 · AI RMF: — · from `SR-GDPR-055` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`adequate level of protection`).
 **Instance 1 — VAG / S3 / `adequate level of protection`**
 `Adequate level of protection` is the central transfer concept, derived from Schrems II's `essentially equivalent` test. The Commission decides (Art. 45(3)) but the substantive standard is undefined in the OJ text.
@@ -527,6 +557,7 @@ R1 vs R2 yield materially distinct third-country-selection policies.
 ---
 ##### Art. 45(3) — Periodic review
 **Clause: GDPR-TR03** | type: adequacy maintenance | obligatedParty: EUROPEAN COMMISSION | obligationType: PERIODIC (4 years)
+**Control anchors:** CSF: GV.SC-02, GV.SC-03, GV.OC-03 · PF 1.1: ID.IM-P7, ID.DE-P5 · AI RMF: — · from `SR-GDPR-055` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`at least every four years`).
 **Instance 1 — VAG / S2 / `at least every four years`**
 Hard numeric anchor (4 years) reduces temporal ambiguity. `At least` permits earlier review. S2 because the same review-practice applies.
@@ -547,6 +578,7 @@ Hard numeric anchor (4 years) reduces temporal ambiguity. `At least` permits ear
 #### Clause breakdown
 ##### Art. 47(2)(f) — Liability acceptance
 **Clause: GDPR-TR06** | type: BCR component | obligatedParty: EU CONTROLLER/PROCESSOR | obligationType: CONTINUOUS
+**Control anchors:** CSF: GV.SC-01, GV.SC-03 · PF 1.1: ID.DE-P3, ID.DE-P4 · AI RMF: — · from `SR-GDPR-058` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`shall be exempt from that liability, in whole or in part, only if it proves that that member is not responsible for the event giving rise to the damage`).
 **Instance 1 — VAG / S3 / `shall be exempt ... only if it proves that that member is not responsible`**
 The standard of proof (`proves`) and the standard of responsibility (`not responsible for the event`) are both qualitative. BCRs typically include dispute-resolution and insurance mechanisms to operationalise this clause.
@@ -566,6 +598,7 @@ R1 vs R2 yield materially distinct BCR liability-engineering scope.
 #### Clause breakdown
 ##### Art. 49(1)(a) — Explicit consent for transfer
 **Clause: GDPR-TR08** | type: derogation (consent) | obligatedParty: CONTROLLER + PROCESSOR | obligationType: PER-TRANSFER (no adequacy + no safeguards)
+**Control anchors:** CSF: PR.AA-02, GV.OC-03 · PF 1.1: CT.PO-P3, GV.PO-P5, ID.DE-P3 · AI RMF: — · from `SR-GDPR-054`, `SR-GDPR-057` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.1 (`explicitly consented` polysemy — vs Art. 4(11) `specific` and Art. 9(2)(a) `explicit`).
 **Instance 1 — POLY / S3 / `explicitly consented ... after having been informed of the possible risks`**
 The clause requires explicit consent AND informed-of-risks. The `explicitly` qualifier's relationship to Art. 4(11) `unambiguous` and Art. 9(2)(a) `explicit` is unclear — three different qualifiers across three articles for transfer consent.
@@ -578,12 +611,14 @@ R1 vs R2 yield materially distinct consent-collection UI for transfers.
 ---
 ##### Art. 49(1)(d) — Important reasons of public interest
 **Clause: GDPR-TR09** | type: derogation (public interest) | obligatedParty: CONTROLLER + PROCESSOR | obligationType: PER-TRANSFER
+**Control anchors:** CSF: GV.OC-03 · PF 1.1: GV.PO-P5, ID.DE-P3 · AI RMF: — · from `SR-GDPR-057` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`important reasons of public interest`).
 **Instance 1 — POLY+VAG / S2 / `important reasons of public interest`**
 Cross-clause propagation: Art. 6(1)(e) `public interest` + Art. 23(1)(e) `other important objectives of general public interest` + Art. 49(1)(d) `important reasons of public interest`. S2 because Art. 49(1)(d) explicitly defers to Union or Member State law for recognition.
 ---
 ##### Art. 49(1)(second subparagraph) — Compelling legitimate interests (catch-all)
 **Clause: GDPR-TR10** | type: derogation (last-resort) | obligatedParty: CONTROLLER + PROCESSOR | obligationType: PER-TRANSFER (no other mechanism available)
+**Control anchors:** CSF: GV.OC-03 · PF 1.1: GV.PO-P5, ID.DE-P3 · AI RMF: — · from `SR-GDPR-057` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`not repetitive`, `limited number`, `compelling legitimate interests`, `suitable safeguards`).
 **Instance 1 — VAG+SCOPE-Q / S3 / `not repetitive, limited number, compelling legitimate interests, suitable safeguards`**
 Four conjunctive qualifiers. The catch-all derogation requires ALL to be met. EDPB Guidelines 2/2018 attempt to operationalise but the thresholds are qualitative.
@@ -655,3 +690,4 @@ R1 vs R2 yield materially distinct catch-all transfer-eligibility assessment.
 
 
 <!-- aegis:purity: own_reg=GDPR; demoted=3; core_cross_mentions=0 -->
+<!-- aegis:control-anchors: generated by scripts/uniformize_control_anchors.py from baseline/MAPPINGS/sr_control_mappings; not part of the verbatim Part 4 body -->

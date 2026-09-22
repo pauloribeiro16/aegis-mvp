@@ -42,6 +42,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Verbatim phrase:** `substantial public interest`
 - **Sub-domain touchpoints:** D-01.1
 - **Card variant:** GDPR-light
+- **Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 
 **Instances across cases:** C01 card #4 (case impact: biometric data optional); C02 card 3.01 (case impact: government-contracted border control).
 
@@ -62,6 +63,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3) + POLY (S2) — `state of the art`, `effective manner`
 - **Sub-domain touchpoints:** D-01.1, D-01.3
 - **Card variant:** GDPR-light
+- **Control anchors:** CSF: PR.PS-01, ID.AM-08, PR.PS-06, PR.DS-01 · PF 1.1: CT.DP-P4, CT.PO-P4, GV.PO-P2, CT.DP-P2 · AI RMF: — · from `SR-GDPR-013`, `SR-GDPR-039`, `SR-GDPR-040`, +1 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 
 **Instances across cases:** C01 card #2; C02 card 3.02; C03 card 3.
 
@@ -83,6 +85,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3) + COORD (S3) + POLY (S2)
 - **Sub-domain touchpoints:** D-01.1, D-01.2, D-04.3, D-06.3, D-09.2
 - **Card variant:** GDPR-light
+- **Control anchors:** CSF: PR.DS-01, PR.DS-10, PR.DS-02, PR.IR-01, PR.IR-03, ID.RA-01, PR.PS-02, ID.RA-05, ID.IM-02, PR.AA-05, PR.AA-06, PR.AT-02, DE.CM-01, DE.CM-09, RS.MA-02, RS.MI-01, RS.MI-02, PR.IR-04, PR.DS-11, RC.RP-04, GV.SC-03, GV.SC-04, DE.CM-06, PR.PS-06, ID.AM-08 · PF 1.1: PR.DS-P1, PR.PO-P3, PR.DS-P2, PR.AC-P5, CT.DP-P2, GV.MT-P3, CT.DM-P10, ID.RA-P3, ID.RA-P5, PR.AC-P1, PR.AC-P2, CT.PO-P1, GV.AT-P2, GV.MT-P5, CM.AW-P7, PR.PO-P7, ID.DE-P5, CT.DM-P9, GV.PO-P2, CT.PO-P4 · AI RMF: — · from `SR-GDPR-001`, `SR-GDPR-002`, `SR-GDPR-003`, +11 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 
 **Verbatim phrases:** `state of the art`, `(a) AND (b) AND (c) AND (d)`, `in a timely manner`
 
@@ -113,6 +116,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Verbatim phrase:** `likely to result in a high risk`
 - **Sub-domain touchpoints:** D-01.3, D-04.3
 - **Card variant:** GDPR-light
+- **Control anchors:** CSF: RS.CO-03, RS.MA-04, PR.DS-01, PR.IR-03 · PF 1.1: CM.AW-P7, CM.AW-P8, PR.DS-P1, CT.DP-P2, CM.PO-P1 · AI RMF: — · from `SR-GDPR-019`, `SR-GDPR-020`, `SR-GDPR-021` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 
 **Variants:**
 - **R1 (EDPB 9/2022):** `High risk` = objectively elevated above ordinary processing risk.
@@ -132,6 +136,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Verbatim phrases:** `render the personal data unintelligible`, `disproportionate effort`
 - **Sub-domain touchpoints:** D-01.3, D-04.3
 - **Card variant:** GDPR-light
+- **Control anchors:** CSF: PR.DS-01, PR.IR-03, RS.MI-01, RS.MI-02, RS.CO-03, PR.PS-06 · PF 1.1: PR.DS-P1, CT.DP-P2, PR.PO-P7, CT.DM-P10, CM.AW-P7, CM.PO-P1 · AI RMF: — · from `SR-GDPR-004`, `SR-GDPR-015`, `SR-GDPR-020`, +2 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 
 **Variants:**
 - **R1 (strict):** Art. 34(3) exceptions interpreted strictly; biometric Art. 9 data fails the encryption carve-out only if AES-256 + HSM-backed key + cryptographic sharding + AI Act log re-identification prevented.
@@ -150,6 +155,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S2)
 - **Sub-domain touchpoints:** D-09.1
 - **Card variant:** GDPR-light
+- **Control anchors:** CSF: GV.PO-01, GV.PO-02, GV.RM-04, GV.OV-03 · PF 1.1: GV.PO-P1, GV.PO-P6, GV.MT-P3, GV.PO-P5 · AI RMF: — · from `SR-GDPR-043`, `SR-GDPR-044` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 
 **Variants:** Single Recommended Variant per C03: scope of `responsibility` includes downstream processors (controller cannot delegate accountability). Cites Art. 5(2) accountability principle.
 
@@ -162,6 +168,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3)
 - **Sub-domain touchpoints:** D-09.1
 - **Card variant:** GDPR-light
+- **Control anchors:** CSF: GV.RR-02, GV.SC-03, GV.PO-01, GV.OV-03 · PF 1.1: GV.PO-P3, ID.DE-P3, CM.PO-P1, GV.MT-P3 · AI RMF: — · from `SR-GDPR-060`, `SR-GDPR-061` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 
 **Variants:** R1 (transparent allocation in JCA document), R2 (controller-only by default). C02 §3.10 adopted R1.
 
@@ -174,6 +181,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S2)
 - **Sub-domain touchpoints:** D-04.3, D-06.3 (cross-cut)
 - **Card variant:** GDPR-light
+- **Control anchors:** CSF: DE.CM-01, DE.CM-09, RS.MA-02, RS.CO-02, RS.MA-04, RS.MA-03, RS.AN-03, RS.AN-07, DE.CM-03, DE.AE-02 · PF 1.1: GV.MT-P5, GV.MT-P3, CM.AW-P7, CM.PO-P2, ID.DE-P3, CM.PO-P1, ID.RA-P3 · AI RMF: — · from `SR-GDPR-014`, `SR-GDPR-016`, `SR-GDPR-017`, +2 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 
 **Variants:** R1 (notification starts at controller awareness, not incident detection); R2 (notification starts at incident detection by controller or processor under contract).
 
@@ -188,6 +196,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S2)
 - **Sub-domain touchpoints:** D-04.3
 - **Card variant:** GDPR-light
+- **Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 
 **Variants:** R1 (notification within 72h of awareness, not of detection); R2 (72h clock starts at first detection by any internal party).
 
@@ -203,6 +212,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Verbatim phrase:** `proves impossible or would involve a disproportionate effort`
 - **Sub-domain touchpoints:** D-04.3
 - **Card variant:** GDPR-light
+- **Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 
 **Variants:**
 - **R1 (Recital 62):** Exception applies narrowly to research/archiving; controllers must demonstrate efforts.
@@ -222,6 +232,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Verbatim phrase:** `shall not adversely affect the rights and freedoms of others`
 - **Sub-domain touchpoints:** D-04.3
 - **Card variant:** GDPR-light
+- **Control anchors:** CSF: RS.CO-02, ID.AM-08 · PF 1.1: CM.AW-P5, CT.DM-P3 · AI RMF: — · from `SR-GDPR-022` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 
 **Variants:**
 - **R1 (EDPB):** Redact only data identifying other natural persons.
@@ -237,6 +248,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S2)
 - **Sub-domain touchpoints:** D-01.4
 - **Card variant:** GDPR-light
+- **Control anchors:** CSF: PR.DS-10, ID.AM-08, RS.CO-02 · PF 1.1: CT.DM-P3, CM.AW-P5 · AI RMF: — · from `SR-GDPR-006`, `SR-GDPR-022` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 
 **Cases citing this card:** C01 (Doc09 card #14).
 
@@ -248,6 +260,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Verbatim phrase:** `compelling legitimate grounds`
 - **Sub-domain touchpoints:** D-01.1
 - **Card variant:** GDPR-light
+- **Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 
 **Variants:**
 - **R1 (EDPB):** `Compelling` = strictly necessary (lex specialis to legitimate interests).
@@ -270,6 +283,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3)
 - **Sub-domain touchpoints:** D-09.1
 - **Card variant:** GDPR-light
+- **Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 
 **Cases citing this card:** C02 (Doc09 §3.09).
 
@@ -280,6 +294,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** POLY+VAG (S3)
 - **Sub-domain touchpoints:** D-09.2
 - **Card variant:** GDPR-light
+- **Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 
 **Instance:** Both C01 and C02 reproduce the full Art. 35 verbatim (10 paragraphs). The ambiguity is whether a single DPIA can address a set of similar processing operations (Art. 35(1)) vs requiring one DPIA per processing operation.
 
@@ -294,6 +309,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** COORD (S3)
 - **Sub-domain touchpoints:** D-04.3
 - **Card variant:** GDPR-light (cross-regulation)
+- **Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 
 **Verbatim resolution (C03 §4 cross-cutting):** DORA 4h + RTS Art. 6 + NIS 2 24h + CRA 24h + GDPR 72h + AI Act 15d/2d/10d — single SOC pipeline with per-regulation output stream.
 
@@ -308,6 +324,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3)
 - **Sub-domain touchpoints:** D-06.1, D-09.3
 - **Card variant:** source-locus / NIS 2-light
+- **Control anchors:** CSF: PR.DS-01, PR.DS-02, GV.RM-04, ID.RA-01, GV.SC-04, PR.AA-01, PR.AA-05, PR.AT-02, ID.AM-01, ID.AM-02, PR.AA-03, PR.IR-03, RS.MA-01, RS.AN-03, DE.CM-01, DE.CM-09, RC.RP-04, PR.DS-11, GV.SC-02, GV.SC-03, PR.PS-06, PR.PS-02, PR.AT-01, PR.PS-01, ID.RA-05, GV.PO-01, ID.IM-01, GV.OV-03, GV.RM-06, ID.RA-06, PR.IR-01, RS.MI-02 · PF 1.1: — · AI RMF: — · from `SR-NIS2-001`, `SR-NIS2-002`, `SR-NIS2-003`, +19 more (00_VISUALISATIONS/NIS2/NIS2_Dashboard.html)
 
 **Recommended Variant (C02 + C03):** Art. 21(2)(a)–(j) closed-AND-list reading; CRO + CISO owns.
 
@@ -320,6 +337,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3)
 - **Sub-domain touchpoints:** D-09.1
 - **Card variant:** source-locus
+- **Control anchors:** CSF: PR.DS-01, PR.DS-02, GV.RM-04, GV.SC-02, GV.SC-03, GV.PO-01, ID.IM-01, GV.OV-03, GV.PO-02, GV.RM-06, ID.RA-06 · PF 1.1: — · AI RMF: — · from `SR-NIS2-001`, `SR-NIS2-020`, `SR-NIS2-037`, +2 more (00_VISUALISATIONS/NIS2/NIS2_Dashboard.html)
 
 **Cases citing this card:** C02 (Doc09 §3.12).
 
@@ -330,6 +348,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S2)
 - **Sub-domain touchpoints:** D-06.1
 - **Card variant:** source-locus
+- **Control anchors:** CSF: PR.DS-01, PR.DS-02, GV.RM-04 · PF 1.1: — · AI RMF: — · from `SR-NIS2-001` (00_VISUALISATIONS/NIS2/NIS2_Dashboard.html)
 
 **Cases citing this card:** C02 (Doc09 §3.13).
 
@@ -340,6 +359,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3)
 - **Sub-domain touchpoints:** D-04.3
 - **Card variant:** source-locus
+- **Control anchors:** CSF: RS.MA-04, RS.MA-02, RS.MA-03, RS.CO-03, GV.OC-03 · PF 1.1: — · AI RMF: — · from `SR-NIS2-010`, `SR-NIS2-011`, `SR-NIS2-016`, +1 more (00_VISUALISATIONS/NIS2/NIS2_Dashboard.html)
 
 **Cases citing this card:** C02 (Doc09 §3.14).
 
@@ -350,6 +370,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3)
 - **Sub-domain touchpoints:** D-04.3
 - **Card variant:** source-locus
+- **Control anchors:** CSF: RS.MA-04, RS.MA-02, RS.MA-03 · PF 1.1: — · AI RMF: — · from `SR-NIS2-010`, `SR-NIS2-011` (00_VISUALISATIONS/NIS2/NIS2_Dashboard.html)
 
 **Cases citing this card:** C02 (Doc09 §3.15).
 
@@ -360,6 +381,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3)
 - **Sub-domain touchpoints:** D-04.3
 - **Card variant:** source-locus
+- **Control anchors:** CSF: ID.IM-01, GV.OV-03, RS.MI-02 · PF 1.1: — · AI RMF: — · from `SR-NIS2-042` (00_VISUALISATIONS/NIS2/NIS2_Dashboard.html)
 
 **Cases citing this card:** C03 (Doc09 card 11).
 
@@ -370,6 +392,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3)
 - **Sub-domain touchpoints:** D-08.3
 - **Card variant:** source-locus
+- **Control anchors:** CSF: ID.AM-04, ID.RA-01, ID.RA-02, GV.SC-02, GV.SC-04, PR.PS-06 · PF 1.1: — · AI RMF: — · from `SR-NIS2-022`, `SR-NIS2-023`, `SR-NIS2-024` (00_VISUALISATIONS/NIS2/NIS2_Dashboard.html)
 
 **Cases citing this card:** C03 (Doc09 card 12).
 
@@ -380,6 +403,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S2)
 - **Sub-domain touchpoints:** D-02.3
 - **Card variant:** source-locus
+- **Control anchors:** CSF: RC.RP-04, PR.DS-11 · PF 1.1: — · AI RMF: — · from `SR-NIS2-019` (00_VISUALISATIONS/NIS2/NIS2_Dashboard.html)
 
 **Variants:**
 - **R1:** security.txt + email + CVD page only.
@@ -398,6 +422,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3)
 - **Sub-domain touchpoints:** D-01.1, D-01.2
 - **Card variant:** CRA-light / source-locus
+- **Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 
 **Cases citing this card:** C01 (Doc09 card #5, #13, #25+); C02 (Doc09 §3.16).
 
@@ -408,6 +433,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3)
 - **Sub-domain touchpoints:** D-09.3
 - **Card variant:** CRA-light
+- **Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 
 **Cases citing this card:** C03 (Doc09 card 8).
 
@@ -418,6 +444,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S2)
 - **Sub-domain touchpoints:** D-09.3
 - **Card variant:** CRA-light
+- **Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 
 **Cases citing this card:** C01 (Doc09).
 
@@ -428,6 +455,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3)
 - **Sub-domain touchpoints:** D-09.2
 - **Card variant:** CRA-light
+- **Control anchors:** CSF: ID.RA-05, PR.PS-06 · PF 1.1: — · AI RMF: — · from `SR-CRA-065` (00_VISUALISATIONS/CRA/CRA_Dashboard.html)
 
 **Cases citing this card:** C03 (Doc09 card 7).
 
@@ -438,6 +466,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3)
 - **Sub-domain touchpoints:** D-06.1
 - **Card variant:** CRA-light
+- **Control anchors:** CSF: GV.SC-01, GV.SC-02, ID.RA-02 · PF 1.1: — · AI RMF: — · from `SR-CRA-050` (00_VISUALISATIONS/CRA/CRA_Dashboard.html)
 
 **Recommended Variant (C03 cross-cutting):** Annex I Part I (2)(h) closed-list reading; CRO + Procurement owns.
 
@@ -450,6 +479,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3)
 - **Sub-domain touchpoints:** D-06.3
 - **Card variant:** CRA-light
+- **Control anchors:** CSF: PR.PS-02, GV.SC-04, RS.MI-01, RS.MI-02, GV.OV-02, GV.SC-02 · PF 1.1: — · AI RMF: — · from `SR-CRA-015`, `SR-CRA-045`, `SR-CRA-061`, +1 more (00_VISUALISATIONS/CRA/CRA_Dashboard.html)
 
 **Cases citing this card:** C03 (Doc09 card 9).
 
@@ -460,6 +490,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3)
 - **Sub-domain touchpoints:** D-02.3, D-04.1
 - **Card variant:** source-locus
+- **Control anchors:** CSF: RS.MA-01, RS.MA-04, RS.MA-02, RS.CO-02 · PF 1.1: — · AI RMF: — · from `SR-CRA-028`, `SR-CRA-029` (00_VISUALISATIONS/CRA/CRA_Dashboard.html)
 
 **Cases citing this card:** C02 (Doc09 §3.17).
 
@@ -470,6 +501,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3)
 - **Sub-domain touchpoints:** D-02.3
 - **Card variant:** source-locus
+- **Control anchors:** CSF: RS.MA-01, RS.AN-03 · PF 1.1: — · AI RMF: — · from `SR-CRA-031` (00_VISUALISATIONS/CRA/CRA_Dashboard.html)
 
 **Cases citing this card:** C02 (Doc09 §3.18).
 
@@ -480,6 +512,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3)
 - **Sub-domain touchpoints:** D-04.3
 - **Card variant:** source-locus
+- **Control anchors:** CSF: RS.MA-01, RS.AN-03, ID.RA-04, RS.MA-03, GV.OC-04, GV.PO-01 · PF 1.1: — · AI RMF: — · from `SR-CRA-031`, `SR-CRA-034`, `SR-CRA-090` (00_VISUALISATIONS/CRA/CRA_Dashboard.html)
 
 **Cases citing this card:** C02 (Doc09 §3.19).
 
@@ -490,6 +523,7 @@ Each entry is the **canonical methodology reading**. Where cases diverged, both 
 - **Berry flag:** VAG (S3)
 - **Sub-domain touchpoints:** D-04.3
 - **Card variant:** source-locus
+- **Control anchors:** CSF: RS.MA-01, RS.AN-03, RS.MA-03 · PF 1.1: — · AI RMF: — · from `SR-CRA-031`, `SR-CRA-035` (00_VISUALISATIONS/CRA/CRA_Dashboard.html)
 
 **Cases citing this card:** C02 (Doc09 §3.20).
 

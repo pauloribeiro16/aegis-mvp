@@ -346,6 +346,11 @@
           "PR.AA-03",
           "PR.AA-02",
           "ID.AM-08"
+        ],
+        "pf_anchors": [
+          "PR.AC-P6",
+          "PR.AC-P3",
+          "CT.DP-P4"
         ]
       },
       {
@@ -354,6 +359,12 @@
           "PR.AA-05",
           "PR.AA-06",
           "PR.AT-02"
+        ],
+        "pf_anchors": [
+          "PR.AC-P1",
+          "PR.AC-P2",
+          "CT.PO-P1",
+          "GV.AT-P2"
         ]
       },
       {
@@ -362,14 +373,23 @@
           "PR.AA-05",
           "PR.AA-06",
           "PR.AT-02"
+        ],
+        "pf_anchors": [
+          "PR.AC-P1",
+          "PR.AC-P2",
+          "CT.PO-P1",
+          "GV.AT-P2"
         ]
       },
       {
         "id": "SO-D-03.4.GDPR",
         "csf_anchors": [
           "PR.PS-01",
-          "ID.AM-08",
-          "GV.PO-01"
+          "ID.AM-08"
+        ],
+        "pf_anchors": [
+          "CT.DP-P4",
+          "CT.PO-P4"
         ]
       }
     ],
@@ -565,10 +585,10 @@
       "DE.CM-09",
       "GV.SC-03",
       "ID.AM-01",
+      "ID.AM-08",
       "PR.AA-01",
       "PR.AA-05",
       "PR.AA-06",
-      "ID.AM-08",
       "PR.PS-01",
       "PR.PS-04"
     ],
@@ -580,12 +600,12 @@
     ],
     "GDPR": [
       "GV.PO-01",
+      "ID.AM-08",
       "PR.AA-02",
       "PR.AA-03",
       "PR.AA-05",
       "PR.AA-06",
       "PR.AT-02",
-      "ID.AM-08",
       "PR.PS-01"
     ],
     "NIS2": [
@@ -597,7 +617,8 @@
       "PR.AT-02",
       "PR.DS-02",
       "PR.IR-03"
-    ]
+    ],
+    "AI_Act": []
   },
   "counts": {
     "subdomains": 4,
@@ -864,5 +885,17 @@
       "dedup_lines": 42,
       "balanced": true
     }
+  },
+  "applicable_pf_controls_by_regulation": {
+    "GDPR": [
+      "CT.DP-P4",
+      "CT.PO-P1",
+      "CT.PO-P4",
+      "GV.AT-P2",
+      "PR.AC-P1",
+      "PR.AC-P2",
+      "PR.AC-P3",
+      "PR.AC-P6"
+    ]
   }
 }

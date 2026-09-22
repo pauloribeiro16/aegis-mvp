@@ -30,7 +30,9 @@ phase_1A_role: 1_of_5
 **Objective.** The controller and processor implement appropriate technical and organisational measures including **a process for regularly testing, assessing and evaluating the effectiveness of technical and organisational measures for ensuring the security of the processing** (Art. 32(1)(d) GDPR); the DPIA is **reviewed at least when there is a change of the risk represented by processing operations** (Art. 35(11) GDPR).
 
 **CSF anchors (from `SR-GDPR-019` + `SR-GDPR-021` + `SR-GDPR-022` v0.3 security_rationale):**
-ID.IM-03 (primary), ID.RA-05, DE.AE-02, GV.OV-03.
+RS.CO-03, RS.MA-04, RS.CO-02, ID.AM-08.
+**PF 1.1 anchors (from `SR-GDPR-019`, `SR-GDPR-021`, `SR-GDPR-022` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+CM.AW-P7, CM.AW-P8, CM.PO-P1, CM.AW-P5, CT.DM-P3.
 *(ID.IM-03 — Configuration change control processes are in place — anchors the GDPR Art. 32(1)(d) `regularly testing, assessing and evaluating the effectiveness of technical and organisational measures` mapped to NIST CSF 2.0 ID.IM-03; ID.RA-05 — Threats, vulnerabilities, likelihoods, and impacts are used to establish risk tolerances — anchors the Art. 35(11) DPIA review on risk change dimension; DE.AE-02 — Adverse events are analyzed to identify or determine the scope of an incident — anchors the effectiveness-evaluation input to the incident-handling chain; GV.OV-03 — Cybersecurity risk management strategy outcomes are reviewed and inform changes — anchors the Art. 35(11) DPIA review feedback loop into the risk-management strategy. The four subcategories together enable the controller or processor to demonstrate ex post, against the Art. 5(2) accountability burden, that the Art. 32(1)(d) effectiveness-evaluation was operational with `regularly testing` cadence + Art. 35(11) DPIA review on risk change trigger.)*
 
 ---

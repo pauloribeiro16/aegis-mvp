@@ -41,6 +41,9 @@ aegis-mvp/
 │   ├── 00_Taxonomy_Reference.md
 │   ├── 01_Ambiguity_Registry.md
 │   ├── 02_Regulatory_Mapping_and_Generic_Objectives.md
+│   ├── CONTROLS/        NIST CSF 2.0 / PF 1.1 / AI RMF referentials (anchor resolvability)
+│   ├── MAPPINGS/        sr_control_mappings/<REG>.json — complete SR↔CSF/PF/AI-RMF store
+│   │                    extracted from the frozen dashboards (+ uniformization ledger)
 │   └── domains/         canonical 38 sub-domains, MODULAR per-regulation layout:
 │                         D-XX.Y/{_index.md, objective.md, regs/<REG>.md,
 │                         regs/<REG>.ambiguity.md, cross/<R1>-<R2>.md,
@@ -75,6 +78,12 @@ aegis-mvp/
 - **Interpretation is frozen.** Cross-regulation analysis, hierarchical objectives
   and ambiguity resolutions are already done in the baseline; this pipeline
   *applies* them to a company, it does not re-derive them.
+- **Control mappings are uniformized.** The NIST CSF 2.0 / PF 1.1 / AI RMF mappings
+  cited on the modules, the ambiguity cards and the registry are extracted from the
+  frozen per-regulation dashboards (`Methodology_compact/00_METHODOLOGY/
+  00_VISUALISATIONS`, read-only) and verified contradiction-free by
+  `scripts/verify_no_loss.py` (checks G/H). Ledger:
+  `baseline/MAPPINGS/_control_uniformization.md`.
 
 ## Status — Increment 0 (MVP)
 

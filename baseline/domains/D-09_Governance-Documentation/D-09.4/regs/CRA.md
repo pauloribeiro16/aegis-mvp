@@ -30,7 +30,7 @@ phase_1A_role: 3_of_5
 **Objective.** The manufacturer **draws up before placing a product with digital elements on the market the technical documentation referred to in Art. 31** (Art. 13(12) sentence 1 CRA), carries out the conformity assessment procedure referred to in Art. 32, draws up the EU declaration of conformity under Art. 28, and affixes the CE marking under Art. 30 (Art. 13(12) sentence 2); the manufacturer keeps the technical documentation and the EU declaration of conformity at the disposal of market surveillance authorities for at least 10 years or the support period, whichever is longer (Art. 13(13) CRA).
 
 **CSF anchors (from `SR-CRA-085` + `SR-CRA-087` + `SR-CRA-088` + `SR-CRA-078` v0.3 security_rationale):**
-ID.AM-08 (primary), ID.AM-08, ID.RA-05.
+GV.PO-02, GV.OC-03, ID.AM-02, ID.RA-04, GV.SC-04.
 
 ---
 

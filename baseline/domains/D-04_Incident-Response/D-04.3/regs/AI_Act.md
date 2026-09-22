@@ -33,6 +33,8 @@ phase_1A_role: 1_of_N
 
 **CSF anchors (from `SR-AIACT-022` v0.3 security_rationale):**
 RS.CO-02, RS.MA-04, RS.MA-03, RS.MA-01.
+**AI RMF anchors (from `SR-AIACT-022` — dashboard `00_VISUALISATIONS/AI_Act/AI_Act_Dashboard.html`, mechanical uniformization):**
+MANAGE-2.3, MANAGE-4.3, GOVERN-1.1.
 
 ---
 

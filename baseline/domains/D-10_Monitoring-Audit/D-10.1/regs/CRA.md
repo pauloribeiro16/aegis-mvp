@@ -30,7 +30,7 @@ phase_1A_role: 3_of_5
 **Objective.** A product with digital elements **provides security-related information by recording and monitoring relevant internal activity, including access to or modification of data, services or functions, and provides an opt-out mechanism for the user** (Annex I Part I (2)(l) CRA); the manufacturer **facilitates the sharing of information about potential vulnerabilities** through a single contact address (Annex I Part II (6) CRA).
 
 **CSF anchors (from `SR-CRA-100` + `SR-CRA-101` v0.3 security_rationale):**
-DE.CM-01 (primary), DE.CM-09, ID.IM-04.
+DE.CM-09, DE.CM-01 (primary), ID.RA-04, GV.OV-01.
 
 ---
 

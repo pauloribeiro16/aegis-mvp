@@ -37,6 +37,8 @@ phase_1A_role: 1_of_N
 - The DPO's awareness function is documented under Art. 5(2) accountability on the controller side — the controller must demonstrate that the Art. 39(1)(a)+(b) DPO-catalysed awareness function was operationally exercised and recorded on the day of any supervisory inspection.
 **CSF anchors (from `SR-GDPR-042` v0.3 security_rationale):**
 PR.AT-01, PR.AT-02.
+**PF 1.1 anchors (from `SR-GDPR-042` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+GV.AT-P1, GV.AT-P2.
 *(PR.AT-01 anchors the broad-coverage discipline: the DPO's awareness-raising obligation is structurally a general-population training duty covering all personnel involved in processing, on a recurring cadence and with content that updates to reflect emerging threats and the changing data flows of the organisation — phishing awareness, social-engineering recognition, password discipline, removable-media hygiene, incident-reporting reflexes. PR.AT-02 anchors the role-specific layer that PR.AT-01 cannot cover: personnel with data-subject-facing, access-management, breach-response or DPO-deputy responsibilities need role-specific reinforcement of their GDPR and cybersecurity obligations, distinct from the general awareness programme. The two subcategories together enable the controller or processor to demonstrate ex post, against the Art. 5(2) accountability duty read with the Art. 39(1) DPO mandate, that the DPO's awareness-and-training function was operationally exercised and recorded on the day of any supervisory inspection.)*
 
 ---

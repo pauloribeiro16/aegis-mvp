@@ -36,7 +36,7 @@ phase_1A_role: 1_of_N
 - Art. 5(2)+(4) management-body `define, approve, oversee and is responsible for the implementation of all arrangements related to the ICT risk management framework` is the upstream governance instrument for the by-design architecture on the DORA side.
 
 **CSF anchors (from `SR-DORA-004` v0.3 security_rationale):**
-PR.PS-06.
+ID.RA-01, ID.RA-03.
 
 ---
 

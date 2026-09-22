@@ -30,7 +30,7 @@ phase_1A_role: 2_of_5
 **Objective.** Essential and important entities establish an **incident-handling capability** covering prevention, detection, analysis, containment, response, and recovery of incidents (Art. 21(2)(b) NIS 2); the detection dimension is the partial-coverage dimension of D-10.1, operating on an all-hazards basis and feeding the Art. 23(1) significant-incident notification chain.
 
 **CSF anchors (from `SR-NIS2-009` + `SR-NIS2-014` v0.3 security_rationale):**
-DE.CM-01 (primary), DE.CM-09, DE.AE-02, ID.IM-04.
+DE.CM-01 (primary), DE.CM-09, RS.MA-04, RS.MA-03.
 
 ---
 

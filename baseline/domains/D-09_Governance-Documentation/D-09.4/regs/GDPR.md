@@ -30,7 +30,9 @@ phase_1A_role: 1_of_5
 **Objective.** Each controller and processor **maintains a record of processing activities under its responsibility** (Art. 30(1) GDPR), in writing or electronic form (Art. 30(3) GDPR), containing the Art. 30(1) 7-item content list; the processor maintains a parallel record under Art. 30(2) GDPR; records are made available to the supervisory authority on request (Art. 30(4) GDPR), subject to the Art. 30(5) 250-employee exception.
 
 **CSF anchors (from `SR-GDPR-048` + `SR-GDPR-050` + `SR-GDPR-065-068` v0.3 security_rationale):**
-ID.AM-08 (primary), ID.AM-08, GV.PO-02.
+ID.AM-03, GV.PO-02, PR.PS-04, DE.AE-03, RS.AN-07, PR.AA-02.
+**PF 1.1 anchors (from `SR-GDPR-048`, `SR-GDPR-050`, `SR-GDPR-065` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+ID.IM-P1, ID.IM-P4, ID.IM-P6, ID.IM-P8, CT.DM-P9, CM.PO-P1, CM.AW-P1, CM.AW-P3.
 
 ---
 

@@ -6,6 +6,7 @@
 ## GDPR
 ##### Art. 5(1)(c) — Data minimisation
 **Clause: GDPR-CL03** | type: principle | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.DS-10, ID.AM-08, PR.AA-02, PR.PS-01, ID.AM-03, GV.SC-04 · PF 1.1: CT.DM-P3, CM.AW-P5, PR.AC-P6, CT.DP-P4, CT.PO-P4, ID.RA-P3, CT.DM-P5, CT.DM-P4, ID.DE-P3 · AI RMF: — · from `SR-GDPR-006`, `SR-GDPR-010`, `SR-GDPR-013`, +4 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.5 (vagueness), §5.1 (`adequate`, `relevant`, `necessary`).
 **Instance 1 — VAG / S3 / `adequate`, `relevant`, `necessary`**
 Three inquiry-resistant adjectives; no measurement criterion. Art. 5(2) accountability shifts burden of demonstration to controller; Art. 35(7)(b) DPIA requires necessity assessment.
@@ -21,6 +22,7 @@ R1 vs R3 yield materially distinct compliance obligations (R1 permits default co
 ---
 ##### Art. 5(1)(d) — Accuracy
 **Clause: GDPR-CL04** | type: principle | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.DS-01, ID.AM-08, PR.DS-10 · PF 1.1: CT.DM-P1, CT.DM-P3, CM.AW-P5 · AI RMF: — · from `SR-GDPR-005`, `SR-GDPR-006` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.5 (vagueness), §5.1 (`reasonable`, `accurate`, `necessary`).
 **Instance 1 — VAG / S3 / `accurate`, `reasonable step`, `necessary`**
 `accurate` has no defined threshold; `reasonable step` is open-ended; `where necessary` and `without delay` are inquiry-resistant. Art. 16 (right to rectification) provides partial anchoring but does not define accuracy standard.
@@ -35,6 +37,7 @@ Whether data is `inaccurate` admits borderline cases (e.g. stale data, contested
 ---
 ##### Art. 5(1)(f) — Integrity and confidentiality
 **Clause: GDPR-CL06** | type: principle | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.DS-01, PR.DS-10, ID.AM-08, ID.RA-01, PR.PS-02, PR.IR-04, PR.DS-11, RC.RP-04, PR.PS-06 · PF 1.1: PR.DS-P1, PR.PO-P3, CT.DM-P1, CT.DM-P3, GV.MT-P3, CT.DM-P10, GV.PO-P2, CT.PO-P4 · AI RMF: — · from `SR-GDPR-001`, `SR-GDPR-005`, `SR-GDPR-007`, +2 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`appropriate`), §5.4.7 (`or` coordination).
 **Instance 1 — VAG / S3 / `appropriate security`, `appropriate technical or organisational measures`**
 `appropriate` is the recurring Berry-flagged term. `appropriate technical or organisational measures` uses OR whose inclusivity is unspecified. Art. 32 (security of processing) anchors `appropriate` to a risk-based test but does not resolve the OR.
@@ -56,6 +59,7 @@ R1 vs R2 yield materially distinct compliance obligations on breach response.
 ---
 ##### Art. 9(2)(g) — Substantial public interest
 **Clause: GDPR-CL23** | type: lawfulness base (special category) | obligatedParty: CONTROLLER | obligationType: PER-MEMBER-STATE-LAW
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`substantial public interest`, `proportionate`, `essence of the right to data protection`, `suitable and specific measures`).
 **Instance 1 — VAG / S3 / `substantial public interest`**
 `substantial public interest` inherits the Art. 6(1)(e) `public interest` ambiguity plus the `substantial` qualifier. The clause cross-references Charter Art. 52(1) via `essence of the right`.
@@ -63,6 +67,7 @@ S3 — same family of ambiguity as Art. 6(1)(e), but more severe because `substa
 ---
 ##### Art. 9(2)(j) — Research/statistics/archiving (with Art. 89(1) safeguards)
 **Clause: GDPR-CL24** | type: lawfulness base (special category, research) | obligatedParty: CONTROLLER | obligationType: PER-MEMBER-STATE-LAW
+**Control anchors:** CSF: — · PF 1.1: — · AI RMF: — (no consuming SR in dashboard mappings)
 **Berry anchor:** §5.1 (`archiving purposes in the public interest`, `proportionate`, `essence`).
 The clause cross-references Art. 89(1) for the substantive safeguards (pseudonymisation, no decisions about data subjects, etc.). The Art. 89(1) reference provides partial anchoring but does not define `archiving`.
 ---
@@ -74,6 +79,7 @@ The clause cross-references Art. 89(1) for the substantive safeguards (pseudonym
 #### Clause breakdown
 ##### Art. 16 — Rectification right
 **Clause: GDPR-RT12** | type: data subject right (rectification) | obligatedParty: CONTROLLER | obligationType: PER-REQUEST
+**Control anchors:** CSF: PR.DS-10, ID.AM-08, RS.CO-02 · PF 1.1: CT.DM-P3, CM.AW-P5 · AI RMF: — · from `SR-GDPR-006`, `SR-GDPR-022` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`without undue delay`, `inaccurate`, `incomplete`).
 **Instance 1 — VAG / S2 / `inaccurate`, `incomplete`**
 Inherits the Art. 5(1)(d) `accuracy` ambiguity (Clause CL04). S2 because the implementation test is the same as Art. 5(1)(d).
@@ -104,6 +110,7 @@ R1 vs R2 yield materially distinct rectification workflows.
 #### Clause breakdown
 ##### Art. 19 — Recipient notification
 **Clause: GDPR-RT15** | type: data subject right (cascade notification) | obligatedParty: CONTROLLER | obligationType: PER-ACTION
+**Control anchors:** CSF: PR.DS-10, ID.AM-08, RS.CO-02 · PF 1.1: CT.DM-P3, CM.AW-P5 · AI RMF: — · from `SR-GDPR-006`, `SR-GDPR-022` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`impossible`, `disproportionate effort`).
 **Instance 1 — VAG / S3 / `impossible` or `disproportionate effort`**
 Two escape clauses (Berry §5.1). `impossible` is binary; `disproportionate effort` is qualitative.
@@ -131,6 +138,7 @@ R1 vs R2 yield materially distinct cascade-notification policies.
 #### Clause breakdown
 ##### Art. 32(1) — Security measures (open list)
 **Clause: GDPR-CP15** | type: security | obligatedParty: CONTROLLER + PROCESSOR | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.DS-01, PR.DS-10, PR.DS-02, PR.IR-01, PR.IR-03, ID.RA-01, PR.PS-02, ID.RA-05, ID.IM-02, PR.AA-05, PR.AA-06, PR.AT-02, DE.CM-01, DE.CM-09, RS.MA-02, RS.MI-01, RS.MI-02, PR.IR-04, PR.DS-11, RC.RP-04, GV.SC-03, GV.SC-04, DE.CM-06, PR.PS-06, ID.AM-08 · PF 1.1: PR.DS-P1, PR.PO-P3, PR.DS-P2, PR.AC-P5, CT.DP-P2, GV.MT-P3, CT.DM-P10, ID.RA-P3, ID.RA-P5, PR.AC-P1, PR.AC-P2, CT.PO-P1, GV.AT-P2, GV.MT-P5, CM.AW-P7, PR.PO-P7, ID.DE-P5, CT.DM-P9, GV.PO-P2, CT.PO-P4 · AI RMF: — · from `SR-GDPR-001`, `SR-GDPR-002`, `SR-GDPR-003`, +11 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`state of the art`, `appropriate`, `as appropriate`), §5.4.7 (4-element list), §3.3.1 (CIA+R polysemy).
 **Instance 1 — VAG / S3 / `state of the art`**
 Cross-clause propagation — same as Art. 25(1). S3 because security-engineering scope is material to compliance.
@@ -147,3 +155,4 @@ R1 vs R2 yield materially distinct BCP/DRP engineering scope.
 ---
 
 <!-- aegis:purity: own_reg=GDPR; demoted=0; core_cross_mentions=0 -->
+<!-- aegis:control-anchors: generated by scripts/uniformize_control_anchors.py from baseline/MAPPINGS/sr_control_mappings; not part of the verbatim Part 4 body -->

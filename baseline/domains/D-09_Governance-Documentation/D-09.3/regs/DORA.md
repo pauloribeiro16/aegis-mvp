@@ -30,7 +30,7 @@ phase_1A_role: 3_of_3
 **Objective.** Financial entities **identify, classify and adequately document all ICT supported business functions, the roles and responsibilities supporting those functions, the information assets and ICT assets supporting those functions, and their roles and dependencies in relation to ICT risk** (Art. 7(1) DORA — the dedicated authority with explicit OJ-literal `3-way AND`); responsibility for managing and overseeing ICT risk is assigned to a control function with appropriate independence per the three lines of defence model (Art. 6(4) DORA).
 
 **CSF anchors (from `SR-DORA-029` v0.3 security_rationale):**
-ID.AM-01, ID.AM-02, ID.AM-05.
+ID.AM-01, ID.AM-02, ID.AM-03, ID.AM-05.
 
 ---
 

@@ -200,6 +200,11 @@
         "csf_anchors": [
           "PR.PS-04",
           "GV.PO-02"
+        ],
+        "airmf_anchors": [
+          "MEASURE-2.4",
+          "MEASURE-4.2",
+          "GOVERN-1.4"
         ]
       }
     ],
@@ -223,7 +228,8 @@
         "id": "SO-D-05.3.CRA",
         "csf_anchors": [
           "PR.DS-10",
-          "ID.AM-08 (+ PR.DS-02 for the second limb)"
+          "ID.AM-08",
+          "PR.DS-02"
         ]
       }
     ],
@@ -242,6 +248,10 @@
         "csf_anchors": [
           "ID.AM-08",
           "ID.AM-03"
+        ],
+        "pf_anchors": [
+          "CT.PO-P4",
+          "CT.DM-P5"
         ]
       },
       {
@@ -257,6 +267,10 @@
         "csf_anchors": [
           "PR.DS-10",
           "ID.AM-08"
+        ],
+        "pf_anchors": [
+          "CT.DM-P1",
+          "CT.DM-P6"
         ]
       }
     ]
@@ -372,8 +386,8 @@
       "GV.OC-03",
       "GV.PO-02",
       "ID.AM-03",
-      "PR.DS-01",
       "ID.AM-08",
+      "PR.DS-01",
       "PR.PS-04",
       "PR.PS-06"
     ],
@@ -381,9 +395,9 @@
       "GV.OC-04",
       "GV.OV-02",
       "ID.AM-03",
-      "PR.DS-10",
       "ID.AM-08",
-      "ID.AM-08 (+ PR.DS-02 for the second limb)",
+      "PR.DS-02",
+      "PR.DS-10",
       "PR.PS-02"
     ],
     "GDPR": [
@@ -391,9 +405,11 @@
       "GV.PO-01",
       "GV.SC-04",
       "ID.AM-03",
-      "PR.DS-10",
-      "ID.AM-08"
-    ]
+      "ID.AM-08",
+      "PR.DS-10"
+    ],
+    "NIS2": [],
+    "DORA": []
   },
   "counts": {
     "subdomains": 4,
@@ -635,5 +651,20 @@
       "dedup_lines": 0,
       "balanced": true
     }
+  },
+  "applicable_pf_controls_by_regulation": {
+    "GDPR": [
+      "CT.DM-P1",
+      "CT.DM-P5",
+      "CT.DM-P6",
+      "CT.PO-P4"
+    ]
+  },
+  "applicable_airmf_controls_by_regulation": {
+    "AI_Act": [
+      "GOVERN-1.4",
+      "MEASURE-2.4",
+      "MEASURE-4.2"
+    ]
   }
 }

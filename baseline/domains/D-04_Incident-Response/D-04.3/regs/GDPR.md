@@ -31,6 +31,8 @@ phase_1A_role: 1_of_N  # if GDPR-only, high-level SO is redundant; sub-SO used d
 
 **CSF anchors (from `SR-GDPR-016` v0.3 security_rationale):**
 RS.CO-02, RS.MA-04, RS.MA-03.
+**PF 1.1 anchors (from `SR-GDPR-016` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+CM.AW-P7, CM.PO-P2.
 
 ---
 

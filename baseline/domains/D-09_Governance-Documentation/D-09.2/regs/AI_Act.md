@@ -30,7 +30,9 @@ phase_1A_role: 1_of_5
 **Objective.** A risk management system is **established, implemented, documented and maintained** in relation to high-risk AI systems (Art. 9(1) AI Act), comprising the four Art. 9(2)(a)-(d) steps: identify and analyse known and reasonably foreseeable risks; estimate and evaluate reasonably-foreseeable-misuse risks; evaluate post-market-monitoring-data risks; and adopt appropriate and targeted risk-management measures.
 
 **CSF anchors (from `SR-AIACT-001` + `SR-AIACT-002` v0.3 security_rationale):**
-ID.RA-05 (primary), GV.RM-04.
+GV.RM-01, GV.RM-06, ID.RA-03, ID.RA-04, ID.RA-06.
+**AI RMF anchors (from `SR-AIACT-001`, `SR-AIACT-002` — dashboard `00_VISUALISATIONS/AI_Act/AI_Act_Dashboard.html`, mechanical uniformization):**
+GOVERN-1.1, GOVERN-1.3, GOVERN-1.5, MAP-5.1, MAP-3.1, MAP-3.2, MANAGE-1.2.
 
 ---
 

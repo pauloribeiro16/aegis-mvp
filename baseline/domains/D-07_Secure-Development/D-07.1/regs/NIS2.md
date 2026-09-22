@@ -34,7 +34,7 @@ phase_1A_role: 1_of_N
 - Art. 21(1) chapeau `appropriate and proportionate` is read with Art. 21(1) sentence 2 state-of-the-art floor + Recital 56 cost-of-implementation qualifier + Member-State-transposition-supplied proportionality calibration.
 - Art. 20(1) management-body approval+oversight+liability leg (cross to D-09.1) is the upstream governance instrument.
 **CSF anchors (from `SR-NIS2-026` v0.3 security_rationale):**
-PR.PS-06, PR.PS-02.
+PR.PS-06, GV.SC-02.
 *(PR.PS-06 anchors the secure-software-development lifecycle dimension — secure software development practices are integrated, and their performance is monitored throughout the SDLC; the NIS 2 Art. 21(2)(e) 3-phase coordinated lifecycle (acquisition + development + maintenance) maps to PR.PS-06 directly. PR.PS-02 anchors the software-maintenance dimension — software is maintained, replaced, and removed commensurate with risk; the NIS 2 Art. 21(2)(e) maintenance phase + vulnerability-handling-and-disclosure leg maps to PR.PS-02 directly. The two subcategories together enable the essential / important entity to demonstrate ex post, through documented supplier-SDLC-assessment records on the acquisition phase + in-house secure-by-design-decision records on the development phase + vulnerability-handling records + maintenance records + Art. 20(1) management-body approval record on the maintenance phase, that the Art. 21(2)(e) security-in-acquisition+development+maintenance duty has been exercised with the `appropriate and proportionate` chapeau + state-of-the-art floor.)*
 
 ---

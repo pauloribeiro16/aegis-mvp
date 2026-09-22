@@ -33,6 +33,9 @@ aegis-mvp/
 │   ├── 00_Taxonomy_Reference.md
 │   ├── 01_Ambiguity_Registry.md
 │   ├── 02_Regulatory_Mapping_and_Generic_Objectives.md
+│   ├── CONTROLS/           # Control referentials (NIST_CSF_2.0, NIST_PF, NIST_AI_RMF, …)
+│   ├── MAPPINGS/           # OVERLAYS + sr_control_mappings/<REG>.json (complete SR↔CSF/PF/AI-RMF
+│   │                       #   store extracted from the frozen dashboards; _control_uniformization.md ledger)
 │   └── domains/            # MODULAR per-regulation corpus (38 sub-domains)
 │       ├── index.md        # Corpus index (modular layout)
 │       ├── _migration_report.md  # Modularization audit trail (line accounting)
@@ -72,7 +75,7 @@ aegis-mvp/
 
 | Nature | Content | Agent Obligation |
 |---|---|---|
-| **Inherited (Free)** | 38 Sub-domains `D-XX.Y`, verbatim articles (`articles/`), control referentials (`CONTROLS/`), ambiguity baseline (`AMBIGUITY_REGISTRY/`). | **Read-only by reference** via `config.yaml`. Never modify, copy, or re-derive interpretations already established. |
+| **Inherited (Free)** | 38 Sub-domains `D-XX.Y`, verbatim articles (`articles/`), control referentials (`CONTROLS/`: NIST CSF 2.0, NIST PF 1.1, NIST AI RMF), ambiguity baseline (`AMBIGUITY_REGISTRY/`), SR↔control mapping store (`MAPPINGS/sr_control_mappings/`, dashboard-extracted and uniformized with the modules). | **Read-only by reference** via `config.yaml`. Never modify, copy, or re-derive interpretations already established. |
 | **Company Input** | Profile, products/services, data handled, infrastructure, assumed regulations. | **Provided once** in `input/<company>/company_input.md` (5 sections, plain prose). Never fabricate facts (Rule R6). |
 | **Generated Output** | Applicability rationale, sub-domain triggers, company-adjusted objectives (`AG-D-XX.Y-NNN`). | **Produced by the agent** into `output/<company>/phase1_output.md` following `SPEC.md`. |
 
@@ -100,7 +103,7 @@ flowchart TD
    - For each active sub-domain, read `objective.md` (the regulation-neutral HSO) and, **for each regulation confirmed in P2**, the independent module `regs/<REG>.md` (Sub-SO card + security requirements + verbatim regulatory basis). When ≥2 confirmed regulations apply, consult `cross/<R1>-<R2>.md` and `cross/_interactions.md` for aggregation.
    - Restate the objective to fit the company's scale and operational reality (**proportionality**).
    - Assign canonical IDs (`AG-D-XX.Y-NNN`).
-   - Cite regulatory articles and control anchors (NIST CSF / OWASP) strictly from the baseline corpus.
+   - Cite regulatory articles and control anchors strictly from the baseline corpus: the module anchor surfaces (`regs/<REG>.md` Sub-SO anchor blocks + requirement YAML `nist_csf`/`nist_pf`/`nist_airmf`, the `**Control anchors:**` lines on the ambiguity cards) and the mapping store (`MAPPINGS/sr_control_mappings/<REG>.json`) are pre-verified — copy from them, never re-derive.
    - Respect ambiguity cards from `AMBIGUITY_REGISTRY/` if applicable.
 5. **P5 — Render and Validate:** Output into `output/<company>/phase1_output.md` and verify against the checklist in `SPEC.md` §8.
 
@@ -111,7 +114,7 @@ flowchart TD
 - **R1 — Canonical Sub-domain Axis:** Always use canonical IDs `D-XX.Y` (`D-01.1` to `D-10.3`). Never merge or invent sub-domains.
 - **R2 — Anchor Integrity:**
   - Every regulatory citation must exist in the sub-domain's `articles/` directory or be quotable verbatim from `regs/<REG>.md` ("Verbatim regulatory basis" section).
-  - Every control anchor must exist in the `CONTROLS/` referential (e.g. NIST CSF 2.0).
+  - Every control anchor must exist in the `CONTROLS/` referential (NIST CSF 2.0, NIST PF 1.1 in `NIST_PF/`, NIST AI RMF in `NIST_AI_RMF/`). PF 1.1 anchors only accompany GDPR-derived obligations and AI RMF anchors only AI_Act-derived obligations (dashboard-published axes; rule R8).
   - **No invented anchors.** If an anchor cannot be verified, omit or re-derive the objective.
 - **R3 — Proportionality:** Adjust wording to company size/maturity (e.g., an 8-person company gets managed-cloud encryption, not a dedicated PKI governance board).
 - **R4 — Standardized IDs:** Always use `AG-D-XX.Y-NNN` (e.g., `AG-D-01.1-001`).

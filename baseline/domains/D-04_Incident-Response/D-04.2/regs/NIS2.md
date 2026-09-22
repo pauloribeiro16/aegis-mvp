@@ -34,7 +34,7 @@ phase_1A_role: 1_of_N
 - The downstream notification cascade (Art. 23(4)(b) incident notification + Art. 23(4)(d) 1m final report with mitigation measures) is part of D-04.3, not D-04.2.
 
 **CSF anchors (from `SR-NIS2-008` v0.3 security_rationale):**
-PR.IR-03, PR.IR-04, RC.RP-01.
+RS.MA-01, RS.AN-03.
 *(PR.IR-03 anchors the network-resources-prioritised-based-on-importance
 leg (the `contain` action isolates high-importance resources first);
 PR.IR-04 anchors the adequate-resource-capacity leg; RC.RP-01 anchors

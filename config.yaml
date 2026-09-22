@@ -17,6 +17,11 @@ corpus:
   controls: "baseline/CONTROLS"
   # Domain index (10 domains, 38 sub-domains, modular layout)
   domains_index: "baseline/domains/index.md"
+  # SR <-> control mapping store: complete per-regulation mappings (NIST CSF 2.0,
+  # NIST PF 1.1 for GDPR, NIST AI RMF for AI_Act) extracted verbatim from the
+  # frozen per-regulation dashboards by scripts/extract_dashboard_mappings.py.
+  # Read-only provenance of the dashboards: Methodology_compact 00_VISUALISATIONS.
+  sr_control_mappings: "baseline/MAPPINGS/sr_control_mappings"
 
 ambiguity_registry:
   # Canonical cross-case ambiguity baseline (49 clause cards); per-clause citations

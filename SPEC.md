@@ -41,7 +41,7 @@ graph/ontology/dashboard infrastructure. See §9.
 
 | Nature | Content | Obligation of the executor |
 |---|---|---|
-| **Inherited** | Modular sub-domain corpus (`D-01.1` … `D-10.3`, each `D-XX.Y/` providing a regulation-neutral `objective.md`, independent per-regulation modules `regs/<REG>.md` + `regs/<REG>.ambiguity.md`, cross-regulation analyses `cross/<R1>-<R2>.md` + `cross/_interactions.md`), verbatim article copies (`articles/`), control referentials (`CONTROLS/`), ambiguity baseline (`AMBIGUITY_REGISTRY/`) | **Read by reference** via `config.yaml`. Never modify, never copy into this repo, never re-derive interpretations the corpus already contains. |
+| **Inherited** | Modular sub-domain corpus (`D-01.1` … `D-10.3`, each `D-XX.Y/` providing a regulation-neutral `objective.md`, independent per-regulation modules `regs/<REG>.md` + `regs/<REG>.ambiguity.md`, cross-regulation analyses `cross/<R1>-<R2>.md` + `cross/_interactions.md`), verbatim article copies (`articles/`), control referentials (`CONTROLS/`), ambiguity baseline (`AMBIGUITY_REGISTRY/`), SR↔control mapping store (`MAPPINGS/sr_control_mappings/` — complete per-regulation NIST CSF 2.0 / PF 1.1 / AI RMF mappings extracted from the frozen dashboards) | **Read by reference** via `config.yaml`. Never modify, never copy into this repo, never re-derive interpretations the corpus already contains. |
 | **Company input** | Company profile, product, data handled, systems, regulations assumed | **Provided once** as `company_input.md` (§4). This is the *only* thing a new project must supply. |
 | **Generated** | Applicability reasoning + adjusted objectives with anchors | **Produced by the procedure** (§5) into `phase1_output.md` (§6). |
 
@@ -68,6 +68,12 @@ All paths live in `config.yaml` (see that file). The executor must resolve:
 - `corpus.controls` — control referentials (`NIST_CSF_2.0/CSF_2.0.json`,
   `NIST_PF/`, `NIST_AI_RMF/`, `NIST_80053R5/`, `NIST_SSDF/`, `OWASP_ASVS/`,
   `OWASP_SAMM/`).
+- `corpus.sr_control_mappings` — complete SR↔control mapping store, one JSON per
+  regulation (`GDPR.json`, `CRA.json`, `NIS2.json`, `DORA.json`, `AI_Act.json`)
+  plus a readable `index.md`. Each SR record carries its `source_clauses`
+  (clause + article refs) and the `nist_csf` / `nist_pf` / `nist_airmf` anchor
+  sets, uniformized with the per-regulation modules (see
+  `baseline/MAPPINGS/_control_uniformization.md`).
 - `ambiguity_registry.path` — canonical ambiguity baseline (`registry.md`).
 - `pipeline.output_language` — output language (default `en`).
 
@@ -129,7 +135,15 @@ derivation; P5 renders and validates.
      `AG-D-XX.Y-NNN` (rule R4).
   4. Anchor it: cite regulation article(s) that **exist as copies** in the
      sub-domain's `articles/` directory (rule R2a) and optionally 1–2 control
-     IDs from `CONTROLS/` referentials that clearly match (rule R2b).
+     IDs from `CONTROLS/` referentials that clearly match (rule R2b). The
+     module's own anchor surfaces are authoritative and pre-verified: the
+     Sub-SO "CSF anchors / PF 1.1 anchors / AI RMF anchors" blocks, the
+     requirement YAML `nist_csf` / `nist_pf` / `nist_airmf` keys, the
+     generated `**Control anchors:**` lines on the `regs/<REG>.ambiguity.md`
+     clause cards, and the mapping store
+     (`corpus.sr_control_mappings/<REG>.json`). Copy from these surfaces
+     instead of re-deriving mappings; they are guaranteed contradiction-free
+     against the dashboards (check H of `scripts/verify_no_loss.py`).
   5. If the cited clause has a card in the ambiguity registry, reference the
      card instead of resolving silently (rule R7).
 - **P5 — Render and validate.** Render output §1–§6 per `templates/phase1_output.md`
@@ -148,6 +162,10 @@ One Markdown file with light AEGIS-style frontmatter and six sections. Skeleton:
 §4  Adjusted Objectives         (one table per sub-domain:
                                  | ID | Adjusted objective | Regulatory source | Control anchor |
                                  IDs: AG-D-XX.Y-NNN)
+§4.1 Control Anchor Mapping     (table: ID | Regulation | CSF 2.0 | NIST PF 1.1 |
+                                 NIST AI RMF | Source — one row per (objective,
+                                 confirmed regulation) pair; values copied from the
+                                 active modules / mapping store; R8 discipline)
 §5  Ambiguities & Open Questions (registry card refs + company-specific doubts)
 §6  Handoff Notes to Phase 2    (≤10 lines: what the next phase should start from)
 ```
@@ -166,8 +184,9 @@ the `company_input.md` used), `corpus` (the `corpus.root` value from config).
     be quotable verbatim from that sub-domain's `regs/<REG>.md` ("Verbatim
     regulatory basis" section). Cite as `REG Art. N` exactly as the file names it.
   - *R2b:* Every control anchor must exist in the cited referential file under
-    `CONTROLS/` (grep-verifiable ID). Maximum 2 anchors per objective; omit the
-    column content (`—`) rather than stretch a match.
+    `CONTROLS/` (grep-verifiable ID) — NIST CSF 2.0 (`NIST_CSF_2.0/`), NIST PF 1.1
+    (`NIST_PF/`) and NIST AI RMF (`NIST_AI_RMF/`) alike. Maximum 2 anchors per
+    objective; omit the column content (`—`) rather than stretch a match.
   - **No invented anchors, ever.** If no anchor can be found, the objective is
     suspect — re-derive or drop it.
 - **R3 — Proportionality.** Objectives are restated to company size: a 15-employee
@@ -190,7 +209,10 @@ the `company_input.md` used), `corpus` (the `corpus.root` value from config).
   confirmed applicable in P2. The modular corpus enforces this by construction:
   read only `regs/<REG>.md` for confirmed regulations; the demarcated
   `Cross-references (informational)` sections and `cross/` files are context,
-  never obligation sources for a non-confirmed regulation.
+  never obligation sources for a non-confirmed regulation. The same discipline
+  binds the control anchors in §4.1: PF 1.1 anchors only on GDPR-derived rows
+  and AI RMF anchors only on AI_Act-derived rows (the axes the dashboards
+  publish), and never any anchor from a regulation that did not pass P2.
 
 ## 8. Run validation checklist
 

@@ -36,7 +36,9 @@ phase_1A_role: 1_of_N
 - AI-Act-side attack-defence is documented in QMS design-control records (Art. 17(1)(c) design/design-control/design-verification) + Annex IV technical documentation + Art. 9 risk-management-system documentation (cross to D-09.1 — SO-AIACT-010 + SO-AIACT-001).
 - For a high-risk AI system provider, the AI-attack-defence coding-practices baseline is built from AI/ML-specific frameworks (NIST AI RMF, ISO/IEC 23894, MITRE ATLAS) and demonstrated against the 6 Art. 15(4)–(5) attack-defence categories via the QMS + Annex IV documentation.
 **CSF anchors (from `SR-AIACT-016` v0.3 security_rationale):**
-PR.PS-06, ID.RA-01.
+ID.RA-04, PR.PS-06, RS.MI-01, RS.MA-03.
+**AI RMF anchors (from `SR-AIACT-016` — dashboard `00_VISUALISATIONS/AI_Act/AI_Act_Dashboard.html`, mechanical uniformization):**
+MEASURE-2.7, MAP-3.2, MANAGE-1.3.
 *(PR.PS-06 anchors the secure-software-development lifecycle dimension — secure software development practices are integrated, and their performance is monitored throughout the SDLC; the AI Act Art. 15(4)–(5) AI-attack-defence categories with the Art. 17(1)(c) QMS design/design-control/design-verification are realised through the SDLC with AI/ML-specific calibration. ID.RA-01 anchors the vulnerabilities-identified-validated-recorded dimension — vulnerabilities in assets are identified, validated, and recorded; the AI Act Art. 15(4)–(5) 6-category AI-attack-defence + Art. 9(2) foreseeable-risk identification map to ID.RA-01 directly. The two subcategories together enable the AI system provider to demonstrate ex post, through the documented Art. 15(4)–(5) AI-attack-defence measures + Art. 17(1)(c) QMS design/design-control/design-verification record + Art. 9 risk-management-system documentation + Annex IV technical documentation, that the AI-attack-defence duty has been exercised with the 6-category AI/ML-specific attack resistance.)*
 
 ---

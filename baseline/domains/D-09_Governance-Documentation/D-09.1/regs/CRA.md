@@ -30,7 +30,7 @@ phase_1A_role: 1_of_5
 **Objective.** An open-source software steward **puts in place and documents in a verifiable manner a cybersecurity policy** (Art. 24(1) CRA) covering vulnerability documentation, remediation, and information-sharing within the open-source community; a manufacturer **establishes policies, processes and procedures necessary to implement its CRA cybersecurity obligations** (Art. 13(8) CRA) including CVD policy, secure-update distribution, support-period determination, and cessation-of-operations communication.
 
 **CSF anchors (from `SR-CRA-072` + `SR-CRA-075` + `SR-CRA-077` v0.3 security_rationale):**
-GV.PO-01 (primary), GV.PO-02.
+GV.PO-01 (primary), GV.SC-01, GV.PO-02, GV.OC-03.
 
 ---
 

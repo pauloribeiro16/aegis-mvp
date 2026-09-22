@@ -30,7 +30,7 @@ phase_1A_role: 4_of_5
 **Objective.** Financial entities **develop and document an information security policy defining rules to protect the availability, authenticity, integrity and confidentiality of data, information assets and ICT assets, including those of their customers, where applicable** (Art. 9(4)(a) DORA); this is entity-level IS-policy documentation serving NCA audit purposes and is a **different record type from the GDPR RoPA**.
 
 **CSF anchors (from `SR-DORA-031` v0.3 security_rationale):**
-ID.AM-08 (primary), ID.AM-08, GV.PO-01.
+GV.PO-01, ID.AM-08 (primary), GV.OC-03.
 
 ---
 

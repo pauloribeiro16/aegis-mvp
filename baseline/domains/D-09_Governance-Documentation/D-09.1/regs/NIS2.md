@@ -30,7 +30,7 @@ phase_1A_role: 1_of_5
 **Objective.** The management body of essential and important entities **approves the cybersecurity risk-management measures, oversees their implementation, and can be held liable for infringements** (Art. 20(1) sentence 1 NIS 2); the entity adopts **policies on risk analysis and information system security** (Art. 21(2)(a)) and **policies and procedures to assess the effectiveness of cybersecurity risk-management measures** (Art. 21(2)(f)).
 
 **CSF anchors (from `SR-NIS2-035` + `SR-NIS2-036` + `SR-NIS2-037` v0.3 security_rationale):**
-GV.PO-01 (primary), GV.OV-01, GV.PO-02.
+ID.RA-05, GV.PO-01 (primary), PR.PS-01, ID.IM-01, GV.OV-03.
 *(GV.PO-01 — Organizational cybersecurity policy established, communicated, enforced — anchors the NIS 2 Art. 21(2)(a)+(f) policy artefacts mapped to NIST CSF 2.0 GV.PO-01; GV.OV-01 — Risk management strategy outcomes reviewed — anchors the NIS 2 management-body approve/oversee/liable governance act per DomainAnalysis §D-09.1 line 178 cross-validation; the management body's liability exposure for NIS 2 infringements (Art. 20(1) sentence 1) is the operational evidence layer for the governance hook. The three subcategories together enable the entity to demonstrate ex post, against the Member State transposition, that the Art. 21(2)(a)+(f) policies + Art. 20(1) management-body approval records were established, reviewed, and updated in light of the proportionality factors (degree of exposure; likelihood of incidents; severity of incidents).)*
 
 

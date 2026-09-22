@@ -34,7 +34,7 @@ phase_1A_role: 1_of_N
 - The downstream notification cascade (Art. 23(4) 24h early warning + 72h incident notification + 1m final report) is part of D-04.3, not D-04.1.
 
 **CSF anchors (from `SR-NIS2-008` + `SR-NIS2-009` v0.3 security_rationale):**
-DE.CM-01, DE.AE-02, PR.PS-04.
+RS.MA-01, RS.AN-03, DE.CM-01, DE.CM-09.
 *(DE.CM-01 anchors the networks-monitored leg (entity-level
 monitoring is the NIS 2 detection backbone); DE.AE-02 anchors the
 adverse-event analysis leg (the detection-triage threshold); PR.PS-04

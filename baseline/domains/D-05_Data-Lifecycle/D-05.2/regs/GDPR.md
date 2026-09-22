@@ -31,6 +31,8 @@ phase_1A_role: 1_of_N
 
 **CSF anchors (from `SR-GDPR-029` v0.3 security_rationale):**
 ID.AM-08, ID.AM-03.
+**PF 1.1 anchors (from `SR-GDPR-029` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+CT.PO-P4, CT.DM-P5.
 *(ID.AM-08 captures the per-dataset risk-and-purpose binding — the
 controller defines and documents a retention period for each category,
 resets the clock when the underlying purpose changes, and pairs

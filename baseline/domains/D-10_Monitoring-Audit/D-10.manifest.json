@@ -289,28 +289,60 @@
       {
         "id": "SO-D-10.1.AI_Act",
         "csf_anchors": [
-          "DE.CM-09 (primary)",
+          "DE.CM-09",
           "ID.IM-04",
-          "GV.OV-03"
+          "GV.OV-03",
+          "RS.CO-02",
+          "RS.MA-04",
+          "RS.MA-03",
+          "RS.MA-01"
+        ],
+        "airmf_anchors": [
+          "MANAGE-4.1",
+          "MEASURE-3.1",
+          "MEASURE-4.1",
+          "GOVERN-1.5",
+          "MANAGE-2.3",
+          "MANAGE-4.3",
+          "GOVERN-1.1"
         ]
       },
       {
         "id": "SO-D-10.2.AI_Act",
         "csf_anchors": [
-          "PR.PS-04 (primary)",
+          "PR.PS-04",
           "DE.CM-09",
           "DE.AE-03",
-          "RC.RP-03",
-          "PR.PS-04"
+          "GV.PO-02",
+          "RC.RP-03"
+        ],
+        "airmf_anchors": [
+          "MEASURE-2.4",
+          "MEASURE-3.1",
+          "GOVERN-1.6",
+          "MEASURE-4.2",
+          "GOVERN-1.4",
+          "GOVERN-2.1"
         ]
       },
       {
         "id": "SO-D-10.3.AI_Act",
         "csf_anchors": [
-          "ID.IM-03 (primary)",
-          "ID.RA-05",
-          "PR.PS-04",
-          "GV.OV-03"
+          "ID.RA-01",
+          "ID.RA-04",
+          "PR.PS-06",
+          "GV.SC-04",
+          "PR.IR-03"
+        ],
+        "airmf_anchors": [
+          "MEASURE-1.1",
+          "MEASURE-2.1",
+          "MEASURE-2.3",
+          "MAP-3.3",
+          "MEASURE-2.5",
+          "MEASURE-2.6",
+          "MEASURE-2.7",
+          "GOVERN-1.2"
         ]
       }
     ],
@@ -318,27 +350,33 @@
       {
         "id": "SO-D-10.1.CRA",
         "csf_anchors": [
-          "DE.CM-01 (primary)",
           "DE.CM-09",
-          "ID.IM-04"
+          "DE.CM-01",
+          "ID.RA-04",
+          "GV.OV-01"
         ]
       },
       {
         "id": "SO-D-10.2.CRA",
         "csf_anchors": [
-          "PR.DS-11 (primary)",
-          "ID.AM-08",
+          "GV.OC-03",
+          "ID.RA-04",
+          "GV.SC-04",
+          "ID.RA-05",
+          "GV.OV-01",
           "GV.PO-02",
-          "ID.RA-04"
+          "PR.PS-02"
         ]
       },
       {
         "id": "SO-D-10.3.CRA",
         "csf_anchors": [
-          "ID.IM-03 (primary)",
-          "ID.RA-05",
-          "DE.AE-02",
-          "GV.OV-03"
+          "ID.RA-04",
+          "GV.OV-01",
+          "GV.PO-02",
+          "ID.RA-01",
+          "GV.OC-03",
+          "GV.SC-04"
         ]
       }
     ],
@@ -346,10 +384,11 @@
       {
         "id": "SO-D-10.1.DORA",
         "csf_anchors": [
-          "DE.CM-01 (primary)",
+          "DE.CM-01",
           "DE.CM-09",
           "PR.PS-04",
           "DE.AE-02",
+          "RS.MA-01",
           "ID.RA-01",
           "ID.RA-03"
         ]
@@ -357,7 +396,7 @@
       {
         "id": "SO-D-10.2.DORA",
         "csf_anchors": [
-          "GV.PO-01 (primary)",
+          "GV.PO-01",
           "ID.AM-08",
           "GV.OC-03"
         ]
@@ -365,11 +404,12 @@
       {
         "id": "SO-D-10.3.DORA",
         "csf_anchors": [
-          "ID.IM-03 (primary)",
-          "ID.RA-05",
-          "DE.AE-02",
-          "GV.OV-03",
-          "PR.PS-04"
+          "GV.OV-02",
+          "ID.RA-01",
+          "PR.PS-06",
+          "ID.RA-04",
+          "PR.AA-05",
+          "PR.AA-06"
         ]
       }
     ],
@@ -377,28 +417,52 @@
       {
         "id": "SO-D-10.1.GDPR",
         "csf_anchors": [
-          "DE.CM-01 (primary)",
-          "DE.CM-09",
-          "DE.AE-02",
-          "ID.IM-04"
+          "RS.CO-03",
+          "RS.MA-04",
+          "PR.DS-01",
+          "PR.IR-03"
+        ],
+        "pf_anchors": [
+          "CM.AW-P7",
+          "CM.AW-P8",
+          "PR.DS-P1",
+          "CT.DP-P2"
         ]
       },
       {
         "id": "SO-D-10.2.GDPR",
         "csf_anchors": [
-          "PR.DS-11 (primary)",
+          "GV.PO-02",
+          "GV.OV-03",
+          "ID.AM-03",
           "PR.PS-04",
-          "DE.CM-01",
-          "GV.PO-02"
+          "DE.AE-03",
+          "RS.AN-07"
+        ],
+        "pf_anchors": [
+          "GV.MT-P3",
+          "GV.PO-P5",
+          "ID.IM-P1",
+          "ID.IM-P4",
+          "ID.IM-P6",
+          "ID.IM-P8",
+          "CT.DM-P9"
         ]
       },
       {
         "id": "SO-D-10.3.GDPR",
         "csf_anchors": [
-          "ID.IM-03 (primary)",
-          "ID.RA-05",
-          "DE.AE-02",
-          "GV.OV-03"
+          "RS.CO-03",
+          "RS.MA-04",
+          "RS.CO-02",
+          "ID.AM-08"
+        ],
+        "pf_anchors": [
+          "CM.AW-P7",
+          "CM.AW-P8",
+          "CM.PO-P1",
+          "CM.AW-P5",
+          "CT.DM-P3"
         ]
       }
     ],
@@ -406,19 +470,19 @@
       {
         "id": "SO-D-10.1.NIS2",
         "csf_anchors": [
-          "DE.CM-01 (primary)",
+          "DE.CM-01",
           "DE.CM-09",
-          "DE.AE-02",
-          "ID.IM-04"
+          "RS.MA-04",
+          "RS.MA-03"
         ]
       },
       {
         "id": "SO-D-10.3.NIS2",
         "csf_anchors": [
-          "ID.IM-03 (primary)",
-          "ID.RA-05",
+          "GV.PO-01",
+          "ID.IM-01",
           "GV.OV-03",
-          "DE.AE-02"
+          "GV.PO-02"
         ]
       }
     ]
@@ -593,74 +657,95 @@
     "AI_Act": [
       "DE.AE-03",
       "DE.CM-09",
-      "DE.CM-09 (primary)",
       "GV.OV-03",
-      "ID.IM-04",
-      "ID.RA-05",
+      "GV.PO-02",
+      "GV.SC-04",
       "ID.IM-03",
-      "ID.IM-03 (primary)",
+      "ID.IM-04",
+      "ID.RA-01",
+      "ID.RA-04",
+      "ID.RA-05",
+      "PR.IR-03",
       "PR.PS-04",
-      "PR.PS-04 (primary)",
-      "RC.RP-03"
+      "PR.PS-06",
+      "RC.RP-03",
+      "RS.CO-02",
+      "RS.MA-01",
+      "RS.MA-03",
+      "RS.MA-04"
     ],
     "CRA": [
       "DE.AE-02",
       "DE.CM-01",
-      "DE.CM-01 (primary)",
       "DE.CM-09",
+      "GV.OC-03",
+      "GV.OV-01",
       "GV.OV-03",
       "GV.PO-02",
+      "GV.SC-04",
+      "ID.AM-08",
+      "ID.IM-03",
       "ID.IM-04",
+      "ID.RA-01",
       "ID.RA-04",
       "ID.RA-05",
       "PR.DS-11",
-      "PR.DS-11 (primary)",
-      "ID.AM-08",
-      "ID.IM-03",
-      "ID.IM-03 (primary)"
+      "PR.PS-02"
     ],
     "DORA": [
       "DE.AE-02",
       "DE.CM-01",
-      "DE.CM-01 (primary)",
       "DE.CM-09",
       "GV.OC-03",
+      "GV.OV-02",
       "GV.OV-03",
       "GV.PO-01",
-      "GV.PO-01 (primary)",
-      "ID.RA-01",
-      "ID.RA-03",
-      "ID.RA-05",
       "ID.AM-08",
       "ID.IM-03",
-      "ID.IM-03 (primary)",
-      "PR.PS-04"
+      "ID.RA-01",
+      "ID.RA-03",
+      "ID.RA-04",
+      "ID.RA-05",
+      "PR.AA-05",
+      "PR.AA-06",
+      "PR.PS-04",
+      "PR.PS-06",
+      "RS.MA-01"
     ],
     "GDPR": [
       "DE.AE-02",
+      "DE.AE-03",
       "DE.CM-01",
-      "DE.CM-01 (primary)",
       "DE.CM-09",
       "GV.OV-03",
       "GV.PO-02",
+      "ID.AM-03",
+      "ID.AM-08",
+      "ID.IM-03",
       "ID.IM-04",
       "ID.RA-05",
+      "PR.DS-01",
       "PR.DS-11",
-      "PR.DS-11 (primary)",
-      "ID.IM-03",
-      "ID.IM-03 (primary)",
-      "PR.PS-04"
+      "PR.IR-03",
+      "PR.PS-04",
+      "RS.AN-07",
+      "RS.CO-02",
+      "RS.CO-03",
+      "RS.MA-04"
     ],
     "NIS2": [
       "DE.AE-02",
       "DE.CM-01",
-      "DE.CM-01 (primary)",
       "DE.CM-09",
       "GV.OV-03",
+      "GV.PO-01",
+      "GV.PO-02",
+      "ID.IM-01",
+      "ID.IM-03",
       "ID.IM-04",
       "ID.RA-05",
-      "ID.IM-03",
-      "ID.IM-03 (primary)"
+      "RS.MA-03",
+      "RS.MA-04"
     ]
   },
   "counts": {
@@ -890,5 +975,47 @@
       "dedup_lines": 0,
       "balanced": true
     }
+  },
+  "applicable_pf_controls_by_regulation": {
+    "GDPR": [
+      "CM.AW-P5",
+      "CM.AW-P7",
+      "CM.AW-P8",
+      "CM.PO-P1",
+      "CT.DM-P3",
+      "CT.DM-P9",
+      "CT.DP-P2",
+      "GV.MT-P3",
+      "GV.PO-P5",
+      "ID.IM-P1",
+      "ID.IM-P4",
+      "ID.IM-P6",
+      "ID.IM-P8",
+      "PR.DS-P1"
+    ]
+  },
+  "applicable_airmf_controls_by_regulation": {
+    "AI_Act": [
+      "GOVERN-1.1",
+      "GOVERN-1.2",
+      "GOVERN-1.4",
+      "GOVERN-1.5",
+      "GOVERN-1.6",
+      "GOVERN-2.1",
+      "MANAGE-2.3",
+      "MANAGE-4.1",
+      "MANAGE-4.3",
+      "MAP-3.3",
+      "MEASURE-1.1",
+      "MEASURE-2.1",
+      "MEASURE-2.3",
+      "MEASURE-2.4",
+      "MEASURE-2.5",
+      "MEASURE-2.6",
+      "MEASURE-2.7",
+      "MEASURE-3.1",
+      "MEASURE-4.1",
+      "MEASURE-4.2"
+    ]
   }
 }

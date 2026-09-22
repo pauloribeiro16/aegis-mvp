@@ -30,7 +30,7 @@ phase_1A_role: 1_of_3
 **Objective.** Essential and important entities adopt **access control policies coordinated with human resources security and asset management** (Art. 21(2)(i) NIS 2), with the management body approving, overseeing, and being liable for the cybersecurity risk-management measures (Art. 20(1) sentence 1 NIS 2).
 
 **CSF anchors (from `SR-NIS2-005` v0.3 security_rationale):**
-PR.PS-01 (primary), ID.AM-01, ID.AM-02.
+ID.AM-01, ID.AM-02.
 *(PR.PS-01 — Configuration management practices established — anchors the NIS 2 Art. 21(2)(i) asset-management coordinated-with-access-control sub-domain mapped to NIST CSF 2.0 PR.PS-01 per CRDA DomainAnalysis §D-09.3 line 86 cross-validation; ID.AM-01 — Inventories of hardware managed within the system — and ID.AM-02 — Inventories of software, services, and systems managed — are the convergent NIST CSF 2.0 subcategories for the entity-level hardware + software + services + systems inventory per CRDA DomainAnalysis §D-09.3 line 86. The three subcategories together enable the NSIE to demonstrate ex post, against the Member State competent authority, that the Art. 21(2)(i) asset-management sub-domain — coordinated with access control — is established, reviewed, and updated in light of the proportionality factors (degree of exposure; likelihood of incidents; severity per Recital 56).)*
 
 

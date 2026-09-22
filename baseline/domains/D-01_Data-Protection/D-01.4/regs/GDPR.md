@@ -36,6 +36,8 @@ Art. 19 recipient-cascade duty.
 
 **CSF anchors (from `SR-GDPR-005` + `SR-GDPR-006` v0.3 security_rationale):**
 PR.DS-01, ID.AM-08, PR.DS-10.
+**PF 1.1 anchors (from `SR-GDPR-005`, `SR-GDPR-006` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+CT.DM-P1, CT.DM-P3, CM.AW-P5.
 *(`SR-GDPR-005` covers the Art. 5(1)(d) accuracy + Art. 5(1)(f) integrity leg
 anchored to PR.DS-01 (storage-layer immutability, write-audit logging,
 tamper-evidence) + ID.AM-08 (policy-level data-management discipline

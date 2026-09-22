@@ -49,6 +49,21 @@ No fact may appear here that is not in the input (rule R6).>
      copies in the sub-domain's articles/ dir (rule R2a); control anchors must
      resolve in CONTROLS/ (rule R2b). No invented anchors. -->
 
+### §4.1 Control Anchor Mapping (applicable regulations only — rule R8)
+
+| ID | Regulation | CSF 2.0 | NIST PF 1.1 | NIST AI RMF | Source |
+|---|---|---|---|---|---|
+| AG-D-XX.Y-001 | <REG confirmed in §2> | <ids or —> | <ids or —> | <ids or —> | `SR-<REG>-NNN` |
+
+<!-- One row per (objective, confirmed regulation) pair. Copy the values from the
+     active module regs/<REG>.md (Sub-SO anchor blocks / requirement YAML
+     nist_csf / nist_pf / nist_airmf, including the generated `**Control anchors:**`
+     lines on the ambiguity cards) or from
+     baseline/MAPPINGS/sr_control_mappings/<REG>.json (complete SR mapping store).
+     PF 1.1 anchors exist only for GDPR-derived rows and AI RMF anchors only for
+     AI_Act-derived rows (dashboard-published axes). Never cite an anchor of a
+     regulation that is not confirmed in §2. -->
+
 ## §5 Ambiguities & Open Questions
 
 - <AMBIG registry card refs for cited clauses (rule R7), and any

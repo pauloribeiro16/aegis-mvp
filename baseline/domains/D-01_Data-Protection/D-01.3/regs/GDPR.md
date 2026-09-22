@@ -37,6 +37,8 @@ encryption anchor).
 
 **CSF anchors (from `SR-GDPR-003` + `SR-GDPR-004` v0.3 security_rationale):**
 PR.DS-01, PR.IR-03.
+**PF 1.1 anchors (from `SR-GDPR-003`, `SR-GDPR-004` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+PR.DS-P1, CT.DP-P2.
 *(`SR-GDPR-003` covers the Art. 32(1)(a) + Art. 4(5) pseudonymisation-separation
 test anchored to PR.DS-01; `SR-GDPR-004` covers the Art. 34(3)(a)
 unintelligibility carve-out anchored to PR.DS-01 + PR.IR-03 — the

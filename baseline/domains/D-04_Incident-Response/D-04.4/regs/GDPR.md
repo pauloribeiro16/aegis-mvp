@@ -33,6 +33,8 @@ phase_1A_role: 1_of_N
 - The GDPR restoration-and-recovery obligation is the personal-data-availability outcome of the controller; the operational substrate is a tested recovery capability with per-processing-activity RTO/RPO targets, where tested backups (PR.DS-11) and recovery-execution evidence (RC.RP-04) are the verifiable artefacts the supervisory authority may inspect under Art. 58 to confirm Art. 5(2) accountability.
 **CSF anchors (from `SR-GDPR-024` v0.3 security_rationale):**
 PR.IR-04, PR.DS-11, RC.RP-04.
+**PF 1.1 anchors (from `SR-GDPR-024` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+PR.PO-P3.
 *(PR.IR-04 anchors the resource-capacity dimension — adequate
 resource headroom to absorb incident and recover availability within
 the documented RTO; PR.DS-11 anchors the backup-discipline foundation

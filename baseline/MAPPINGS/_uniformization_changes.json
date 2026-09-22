@@ -1,0 +1,462 @@
+{
+  "policy": "dashboard-wins uniformization; applied by scripts/uniformize_control_anchors.py",
+  "applied_on": "2026-09-22",
+  "changes": [
+    {
+      "file": "baseline/domains/D-01_Data-Protection/D-01.1/regs/DORA.md",
+      "subdomain": "D-01.1",
+      "old_line": "PR.DS-01, PR.DS-02, PR.DS-10, ID.AM-05.",
+      "new_line": "PR.DS-01, PR.DS-02, PR.DS-10, ID.AM-08.",
+      "sr": "SR-DORA-001",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-01_Data-Protection/D-01.2/regs/DORA.md",
+      "subdomain": "D-01.2",
+      "old_line": "PR.DS-01, PR.DS-02, PR.DS-10, ID.AM-05.",
+      "new_line": "PR.DS-01, PR.DS-02, PR.DS-10, ID.AM-08.",
+      "sr": "SR-DORA-001",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-01_Data-Protection/D-01.4/regs/DORA.md",
+      "subdomain": "D-01.4",
+      "old_line": "PR.DS-01, PR.DS-02, PR.DS-10, ID.AM-05.",
+      "new_line": "PR.DS-01, PR.DS-02, PR.DS-10, ID.AM-08.",
+      "sr": "SR-DORA-001",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-02_Vulnerability-Management/D-02.1/regs/DORA.md",
+      "subdomain": "D-02.1",
+      "old_line": "ID.RA-01, ID.RA-03, PR.PS-02, GV.OV-02.",
+      "new_line": "ID.RA-01, ID.RA-03, ID.RA-05, ID.IM-04, GV.OV-02.",
+      "sr": "SR-DORA-004+SR-DORA-005",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-02_Vulnerability-Management/D-02.1/regs/GDPR.md",
+      "subdomain": "D-02.1",
+      "old_line": "ID.RA-01, PR.PS-02; ID.RA-05, ID.IM-02.",
+      "new_line": "ID.RA-01, PR.PS-02, ID.RA-05, ID.IM-02.",
+      "sr": "SR-GDPR-007+SR-GDPR-008",
+      "surface": "subso_anchors_nonstrict"
+    },
+    {
+      "file": "baseline/domains/D-03_Access-Control/D-03.4/regs/GDPR.md",
+      "subdomain": "D-03.4",
+      "old_line": "PR.PS-01, ID.AM-08, GV.PO-01.",
+      "new_line": "PR.PS-01, ID.AM-08.",
+      "sr": "SR-GDPR-013",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.1/regs/CRA.md",
+      "subdomain": "D-04.1",
+      "old_line": "DE.CM-09, PR.PS-04, RS.MA-02.",
+      "new_line": "PR.PS-04, DE.AE-08, DE.CM-09, DE.CM-01.",
+      "sr": "SR-CRA-027+SR-CRA-100",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.1/regs/GDPR.md",
+      "subdomain": "D-04.1",
+      "old_line": "DE.AE-02, PR.PS-04, DE.CM-01.",
+      "new_line": "DE.CM-01, DE.CM-09, RS.MA-02.",
+      "sr": "SR-GDPR-014",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.1/regs/NIS2.md",
+      "subdomain": "D-04.1",
+      "old_line": "DE.CM-01, DE.AE-02, PR.PS-04.",
+      "new_line": "RS.MA-01, RS.AN-03, DE.CM-01, DE.CM-09.",
+      "sr": "SR-NIS2-008+SR-NIS2-009",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.2/regs/CRA.md",
+      "subdomain": "D-04.2",
+      "old_line": "PR.IR-04, PR.IR-03, DE.CM-09.",
+      "new_line": "PR.IR-03, ID.AM-08, GV.SC-04.",
+      "sr": "SR-CRA-043+SR-CRA-044",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.2/regs/DORA.md",
+      "subdomain": "D-04.2",
+      "old_line": "RC.RP-01, RC.RP-04, PR.IR-04, PR.IR-03.",
+      "new_line": "RC.RP-01, PR.IR-03, RC.RP-04, PR.IR-04, RS.MA-01, RS.AN-03.",
+      "sr": "SR-DORA-013+SR-DORA-014+SR-DORA-016",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.2/regs/GDPR.md",
+      "subdomain": "D-04.2",
+      "old_line": "ID.AM-08, PR.IR-04, RC.RP-04.",
+      "new_line": "RS.MI-01, RS.MI-02, PR.DS-01.",
+      "sr": "SR-GDPR-015",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-04_Incident-Response/D-04.2/regs/NIS2.md",
+      "subdomain": "D-04.2",
+      "old_line": "PR.IR-03, PR.IR-04, RC.RP-01.",
+      "new_line": "RS.MA-01, RS.AN-03.",
+      "sr": "SR-NIS2-008",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-05_Data-Lifecycle/D-05.3/regs/CRA.md",
+      "subdomain": "D-05.3",
+      "old_line": "PR.DS-10, ID.AM-08 (+ PR.DS-02 for the second limb).",
+      "new_line": "PR.DS-10, ID.AM-08, PR.DS-02.",
+      "sr": "SR-CRA-048+SR-CRA-049",
+      "surface": "subso_anchors_nonstrict"
+    },
+    {
+      "file": "baseline/domains/D-06_Supply-Chain/D-06.1/regs/GDPR.md",
+      "subdomain": "D-06.1",
+      "old_line": "GV.SC-02, GV.SC-04, ID.AM-04.",
+      "new_line": "GV.SC-02, GV.SC-03.",
+      "sr": "SR-GDPR-033",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-06_Supply-Chain/D-06.1/regs/NIS2.md",
+      "subdomain": "D-06.1",
+      "old_line": "GV.SC-02, ID.AM-04, GV.OC-03.",
+      "new_line": "GV.SC-02, GV.SC-03.",
+      "sr": "SR-NIS2-020",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.1/regs/AI_Act.md",
+      "subdomain": "D-07.1",
+      "old_line": "PR.PS-06, ID.RA-01.",
+      "new_line": "PR.PS-06, PR.IR-03, ID.RA-04.",
+      "sr": "SR-AIACT-014",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.1/regs/CRA.md",
+      "subdomain": "D-07.1",
+      "old_line": "PR.PS-06, PR.PS-01.",
+      "new_line": "PR.PS-06, GV.PO-02.",
+      "sr": "SR-CRA-064",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.1/regs/DORA.md",
+      "subdomain": "D-07.1",
+      "old_line": "PR.PS-06.",
+      "new_line": "ID.RA-01, ID.RA-03.",
+      "sr": "SR-DORA-004",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.1/regs/NIS2.md",
+      "subdomain": "D-07.1",
+      "old_line": "PR.PS-06, PR.PS-02.",
+      "new_line": "PR.PS-06, GV.SC-02.",
+      "sr": "SR-NIS2-026",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.2/regs/AI_Act.md",
+      "subdomain": "D-07.2",
+      "old_line": "PR.PS-06, ID.RA-01.",
+      "new_line": "ID.RA-04, PR.PS-06, RS.MI-01, RS.MA-03.",
+      "sr": "SR-AIACT-016",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.2/regs/CRA.md",
+      "subdomain": "D-07.2",
+      "old_line": "PR.PS-06, PR.PS-02.",
+      "new_line": "PR.PS-01, PR.PS-02.",
+      "sr": "SR-CRA-067",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.2/regs/DORA.md",
+      "subdomain": "D-07.2",
+      "old_line": "PR.PS-06.",
+      "new_line": "PR.PS-01, PR.PS-02, PR.PS-06.",
+      "sr": "SR-DORA-023",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-07_Secure-Development/D-07.3/regs/CRA.md",
+      "subdomain": "D-07.3",
+      "old_line": "PR.PS-06, PR.PS-02.",
+      "new_line": "ID.AM-02, GV.SC-03.",
+      "sr": "SR-CRA-009",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-08_Human-Factors/D-08.1/regs/CRA.md",
+      "subdomain": "D-08.1",
+      "old_line": "PR.AT-01 (with UNMAPPED_CSF on the user-side).",
+      "new_line": "PR.AT-01.",
+      "sr": "SR-CRA-071",
+      "surface": "subso_anchors_nonstrict"
+    },
+    {
+      "file": "baseline/domains/D-08_Human-Factors/D-08.2/regs/AI_Act.md",
+      "subdomain": "D-08.2",
+      "old_line": "PR.AT-02, PR.AT-01, GV.RR-02.",
+      "new_line": "PR.AT-02, PR.AT-01, GV.RR-02, GV.RR-04.",
+      "sr": "SR-AIACT-013+SR-AIACT-020",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.1/regs/AI_Act.md",
+      "subdomain": "D-09.1",
+      "old_line": "GV.PO-01 (primary), GV.PO-02.",
+      "new_line": "GV.PO-01 (primary), GV.OC-03, GV.OC-04, GV.RM-01, GV.RM-04.",
+      "sr": "SR-AIACT-010+SR-AIACT-017",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.1/regs/CRA.md",
+      "subdomain": "D-09.1",
+      "old_line": "GV.PO-01 (primary), GV.PO-02.",
+      "new_line": "GV.PO-01 (primary), GV.SC-01, GV.PO-02, GV.OC-03.",
+      "sr": "SR-CRA-072+SR-CRA-075+SR-CRA-077",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.1/regs/DORA.md",
+      "subdomain": "D-09.1",
+      "old_line": "GV.PO-01 (primary), GV.RR-02, GV.RM-04.",
+      "new_line": "GV.RR-01, GV.RR-02, GV.PO-01 (primary), GV.OC-01, GV.RM-04, GV.RM-02.",
+      "sr": "SR-DORA-026+SR-DORA-027+SR-DORA-028",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.1/regs/GDPR.md",
+      "subdomain": "D-09.1",
+      "old_line": "GV.PO-01 (primary), GV.PO-02, GV.RM-04, GV.RR-02.",
+      "new_line": "GV.PO-01 (primary), GV.PO-02, GV.RM-04, GV.OV-03.",
+      "sr": "SR-GDPR-043+SR-GDPR-044",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.1/regs/NIS2.md",
+      "subdomain": "D-09.1",
+      "old_line": "GV.PO-01 (primary), GV.OV-01, GV.PO-02.",
+      "new_line": "ID.RA-05, GV.PO-01 (primary), PR.PS-01, ID.IM-01, GV.OV-03.",
+      "sr": "SR-NIS2-035+SR-NIS2-036+SR-NIS2-037",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.2/regs/AI_Act.md",
+      "subdomain": "D-09.2",
+      "old_line": "ID.RA-05 (primary), GV.RM-04.",
+      "new_line": "GV.RM-01, GV.RM-06, ID.RA-03, ID.RA-04, ID.RA-06.",
+      "sr": "SR-AIACT-001+SR-AIACT-002",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.2/regs/CRA.md",
+      "subdomain": "D-09.2",
+      "old_line": "ID.RA-05 (primary), GV.SC-07.",
+      "new_line": "PR.PS-06, GV.PO-02, ID.RA-05 (primary), GV.OV-02.",
+      "sr": "SR-CRA-064+SR-CRA-065+SR-CRA-066+SR-CRA-079",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.2/regs/DORA.md",
+      "subdomain": "D-09.2",
+      "old_line": "ID.RA-05 (primary), GV.RR-02.",
+      "new_line": "GV.RR-02, GV.RM-02, ID.RA-01, ID.RA-03, ID.RA-05 (primary), ID.IM-04, GV.OV-02.",
+      "sr": "SR-DORA-028+SR-DORA-004+SR-DORA-005",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.2/regs/GDPR.md",
+      "subdomain": "D-09.2",
+      "old_line": "ID.RA-05 (primary), ID.RA-04.",
+      "new_line": "ID.RA-01, ID.RA-05 (primary), ID.RA-06, RS.AN-03, ID.IM-04.",
+      "sr": "SR-GDPR-045+SR-GDPR-046+SR-GDPR-047",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.2/regs/NIS2.md",
+      "subdomain": "D-09.2",
+      "old_line": "ID.RA-05 (primary), GV.OV-01.",
+      "new_line": "ID.RA-05 (primary), GV.PO-01, GV.RM-06, ID.RA-06, PR.IR-01.",
+      "sr": "SR-NIS2-035+SR-NIS2-039+SR-NIS2-040",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.3/regs/CRA.md",
+      "subdomain": "D-09.3",
+      "old_line": "ID.AM-01, ID.AM-02.",
+      "new_line": "GV.PO-02, ID.AM-02, GV.OC-03, ID.RA-04, GV.SC-04.",
+      "sr": "SR-CRA-087+SR-CRA-088",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.3/regs/DORA.md",
+      "subdomain": "D-09.3",
+      "old_line": "ID.AM-01, ID.AM-02, ID.AM-05.",
+      "new_line": "ID.AM-01, ID.AM-02, ID.AM-03, ID.AM-05.",
+      "sr": "SR-DORA-029",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.3/regs/NIS2.md",
+      "subdomain": "D-09.3",
+      "old_line": "PR.PS-01 (primary), ID.AM-01, ID.AM-02.",
+      "new_line": "ID.AM-01, ID.AM-02.",
+      "sr": "SR-NIS2-005",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.4/regs/AI_Act.md",
+      "subdomain": "D-09.4",
+      "old_line": "ID.AM-08 (primary), ID.AM-08, GV.PO-01.",
+      "new_line": "PR.PS-04, GV.PO-02, RC.RP-03, GV.PO-01, GV.OC-03, GV.OC-04, GV.RM-01, GV.RM-04.",
+      "sr": "SR-AIACT-008+SR-AIACT-009+SR-AIACT-010+SR-AIACT-017",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.4/regs/CRA.md",
+      "subdomain": "D-09.4",
+      "old_line": "ID.AM-08 (primary), ID.AM-08, ID.RA-05.",
+      "new_line": "GV.PO-02, GV.OC-03, ID.AM-02, ID.RA-04, GV.SC-04.",
+      "sr": "SR-CRA-085+SR-CRA-087+SR-CRA-088+SR-CRA-078",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.4/regs/DORA.md",
+      "subdomain": "D-09.4",
+      "old_line": "ID.AM-08 (primary), ID.AM-08, GV.PO-01.",
+      "new_line": "GV.PO-01, ID.AM-08 (primary), GV.OC-03.",
+      "sr": "SR-DORA-031",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.4/regs/GDPR.md",
+      "subdomain": "D-09.4",
+      "old_line": "ID.AM-08 (primary), ID.AM-08, GV.PO-02.",
+      "new_line": "ID.AM-03, GV.PO-02, PR.PS-04, DE.AE-03, RS.AN-07, PR.AA-02.",
+      "sr": "SR-GDPR-048+SR-GDPR-050+SR-GDPR-065",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-09_Governance-Documentation/D-09.4/regs/NIS2.md",
+      "subdomain": "D-09.4",
+      "old_line": "ID.AM-08 (primary), ID.AM-08.",
+      "new_line": "GV.SC-04, GV.OC-03.",
+      "sr": "SR-NIS2-043",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.1/regs/AI_Act.md",
+      "subdomain": "D-10.1",
+      "old_line": "DE.CM-09 (primary), ID.IM-04, GV.OV-03.",
+      "new_line": "DE.CM-09 (primary), ID.IM-04, GV.OV-03, RS.CO-02, RS.MA-04, RS.MA-03, RS.MA-01.",
+      "sr": "SR-AIACT-021+SR-AIACT-022",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.1/regs/CRA.md",
+      "subdomain": "D-10.1",
+      "old_line": "DE.CM-01 (primary), DE.CM-09, ID.IM-04.",
+      "new_line": "DE.CM-09, DE.CM-01 (primary), ID.RA-04, GV.OV-01.",
+      "sr": "SR-CRA-100+SR-CRA-101",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.1/regs/DORA.md",
+      "subdomain": "D-10.1",
+      "old_line": "DE.CM-01 (primary), DE.CM-09, PR.PS-04, DE.AE-02, ID.RA-01, ID.RA-03.",
+      "new_line": "DE.CM-01 (primary), DE.CM-09, PR.PS-04, DE.AE-02, RS.MA-01, ID.RA-01, ID.RA-03.",
+      "sr": "SR-DORA-030+SR-DORA-011+SR-DORA-012+SR-DORA-004",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.1/regs/GDPR.md",
+      "subdomain": "D-10.1",
+      "old_line": "DE.CM-01 (primary), DE.CM-09, DE.AE-02, ID.IM-04.",
+      "new_line": "RS.CO-03, RS.MA-04, PR.DS-01, PR.IR-03.",
+      "sr": "SR-GDPR-019+SR-GDPR-020",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.1/regs/NIS2.md",
+      "subdomain": "D-10.1",
+      "old_line": "DE.CM-01 (primary), DE.CM-09, DE.AE-02, ID.IM-04.",
+      "new_line": "DE.CM-01 (primary), DE.CM-09, RS.MA-04, RS.MA-03.",
+      "sr": "SR-NIS2-009+SR-NIS2-014",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.2/regs/AI_Act.md",
+      "subdomain": "D-10.2",
+      "old_line": "PR.PS-04 (primary), DE.CM-09, DE.AE-03, RC.RP-03, PR.PS-04.",
+      "new_line": "PR.PS-04 (primary), DE.CM-09, DE.AE-03, GV.PO-02, RC.RP-03.",
+      "sr": "SR-AIACT-007+SR-AIACT-008+SR-AIACT-009",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.2/regs/CRA.md",
+      "subdomain": "D-10.2",
+      "old_line": "PR.DS-11 (primary), ID.AM-08, GV.PO-02, ID.RA-04.",
+      "new_line": "GV.OC-03, ID.RA-04, GV.SC-04, ID.RA-05, GV.OV-01, GV.PO-02, PR.PS-02.",
+      "sr": "SR-CRA-088+SR-CRA-080+SR-CRA-069+SR-CRA-070+SR-CRA-102",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.2/regs/GDPR.md",
+      "subdomain": "D-10.2",
+      "old_line": "PR.DS-11 (primary), PR.PS-04, DE.CM-01, GV.PO-02.",
+      "new_line": "GV.PO-02, GV.OV-03, ID.AM-03, PR.PS-04, DE.AE-03, RS.AN-07.",
+      "sr": "SR-GDPR-044+SR-GDPR-048+SR-GDPR-050",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.3/regs/AI_Act.md",
+      "subdomain": "D-10.3",
+      "old_line": "ID.IM-03 (primary), ID.RA-05, PR.PS-04, GV.OV-03.",
+      "new_line": "ID.RA-01, ID.RA-04, PR.PS-06, GV.SC-04, PR.IR-03.",
+      "sr": "SR-AIACT-003+SR-AIACT-014",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.3/regs/CRA.md",
+      "subdomain": "D-10.3",
+      "old_line": "ID.IM-03 (primary), ID.RA-05, DE.AE-02, GV.OV-03.",
+      "new_line": "ID.RA-04, GV.OV-01, GV.PO-02, ID.RA-01, GV.OC-03, GV.SC-04.",
+      "sr": "SR-CRA-101+SR-CRA-103+SR-CRA-104",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.3/regs/DORA.md",
+      "subdomain": "D-10.3",
+      "old_line": "ID.IM-03 (primary), ID.RA-05, DE.AE-02, GV.OV-03, PR.PS-04.",
+      "new_line": "GV.OV-02, ID.RA-01, PR.PS-06, ID.RA-04, PR.AA-05, PR.AA-06.",
+      "sr": "SR-DORA-008+SR-DORA-009+SR-DORA-010",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.3/regs/GDPR.md",
+      "subdomain": "D-10.3",
+      "old_line": "ID.IM-03 (primary), ID.RA-05, DE.AE-02, GV.OV-03.",
+      "new_line": "RS.CO-03, RS.MA-04, RS.CO-02, ID.AM-08.",
+      "sr": "SR-GDPR-019+SR-GDPR-021+SR-GDPR-022",
+      "surface": "subso_anchors"
+    },
+    {
+      "file": "baseline/domains/D-10_Monitoring-Audit/D-10.3/regs/NIS2.md",
+      "subdomain": "D-10.3",
+      "old_line": "ID.IM-03 (primary), ID.RA-05, GV.OV-03, DE.AE-02.",
+      "new_line": "GV.PO-01, ID.IM-01, GV.OV-03, GV.PO-02.",
+      "sr": "SR-NIS2-037+SR-NIS2-038",
+      "surface": "subso_anchors"
+    }
+  ]
+}

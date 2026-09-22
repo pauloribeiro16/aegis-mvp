@@ -30,7 +30,7 @@ phase_1A_role: 1_of_5
 **Objective.** The management body of the financial entity **defines, approves, oversees and is responsible for the implementation of all arrangements related to the ICT risk management framework** (Art. 5(2) DORA), supported by a **sound, comprehensive and well-documented ICT risk management framework** (Art. 6(1)) with a three-lines-of-defence model (Art. 6(4)).
 
 **CSF anchors (from `SR-DORA-026` + `SR-DORA-027` + `SR-DORA-028` v0.3 security_rationale):**
-GV.PO-01 (primary), GV.RR-02, GV.RM-04.
+GV.RR-01, GV.RR-02, GV.PO-01 (primary), GV.OC-01, GV.RM-04, GV.RM-02.
 
 ---
 

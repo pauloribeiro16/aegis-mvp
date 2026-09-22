@@ -221,14 +221,28 @@
         "id": "SO-D-07.1.AIACT",
         "csf_anchors": [
           "PR.PS-06",
-          "ID.RA-01"
+          "PR.IR-03",
+          "ID.RA-04"
+        ],
+        "airmf_anchors": [
+          "MEASURE-2.5",
+          "MEASURE-2.6",
+          "MEASURE-2.7",
+          "GOVERN-1.2"
         ]
       },
       {
         "id": "SO-D-07.2.AIACT",
         "csf_anchors": [
+          "ID.RA-04",
           "PR.PS-06",
-          "ID.RA-01"
+          "RS.MI-01",
+          "RS.MA-03"
+        ],
+        "airmf_anchors": [
+          "MEASURE-2.7",
+          "MAP-3.2",
+          "MANAGE-1.3"
         ]
       }
     ],
@@ -237,21 +251,21 @@
         "id": "SO-D-07.1.CRA",
         "csf_anchors": [
           "PR.PS-06",
-          "PR.PS-01"
+          "GV.PO-02"
         ]
       },
       {
         "id": "SO-D-07.2.CRA",
         "csf_anchors": [
-          "PR.PS-06",
+          "PR.PS-01",
           "PR.PS-02"
         ]
       },
       {
         "id": "SO-D-07.3.CRA",
         "csf_anchors": [
-          "PR.PS-06",
-          "PR.PS-02"
+          "ID.AM-02",
+          "GV.SC-03"
         ]
       },
       {
@@ -270,12 +284,15 @@
       {
         "id": "SO-D-07.1.DORA",
         "csf_anchors": [
-          "PR.PS-06"
+          "ID.RA-01",
+          "ID.RA-03"
         ]
       },
       {
         "id": "SO-D-07.2.DORA",
         "csf_anchors": [
+          "PR.PS-01",
+          "PR.PS-02",
           "PR.PS-06"
         ]
       },
@@ -294,6 +311,10 @@
         "csf_anchors": [
           "PR.PS-06",
           "ID.AM-08"
+        ],
+        "pf_anchors": [
+          "GV.PO-P2",
+          "CT.PO-P4"
         ]
       }
     ],
@@ -302,7 +323,7 @@
         "id": "SO-D-07.1.NIS2",
         "csf_anchors": [
           "PR.PS-06",
-          "PR.PS-02"
+          "GV.SC-02"
         ]
       },
       {
@@ -440,19 +461,27 @@
   "applicable_nist_controls_by_regulation": {
     "AI_Act": [
       "ID.RA-01",
-      "PR.PS-06"
+      "ID.RA-04",
+      "PR.IR-03",
+      "PR.PS-06",
+      "RS.MA-03",
+      "RS.MI-01"
     ],
     "CRA": [
       "GV.OV-01",
       "GV.OV-02",
       "GV.PO-02",
+      "GV.SC-03",
       "GV.SC-04",
+      "ID.AM-02",
       "ID.IM-04",
       "PR.PS-01",
       "PR.PS-02",
       "PR.PS-06"
     ],
     "DORA": [
+      "ID.RA-01",
+      "ID.RA-03",
       "PR.PS-01",
       "PR.PS-02",
       "PR.PS-06"
@@ -462,6 +491,7 @@
       "PR.PS-06"
     ],
     "NIS2": [
+      "GV.SC-02",
       "ID.RA-01",
       "PR.PS-02",
       "PR.PS-06"
@@ -724,5 +754,21 @@
       "dedup_lines": 41,
       "balanced": true
     }
+  },
+  "applicable_pf_controls_by_regulation": {
+    "GDPR": [
+      "CT.PO-P4",
+      "GV.PO-P2"
+    ]
+  },
+  "applicable_airmf_controls_by_regulation": {
+    "AI_Act": [
+      "GOVERN-1.2",
+      "MANAGE-1.3",
+      "MAP-3.2",
+      "MEASURE-2.5",
+      "MEASURE-2.6",
+      "MEASURE-2.7"
+    ]
   }
 }

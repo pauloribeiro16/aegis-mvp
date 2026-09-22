@@ -34,7 +34,7 @@ phase_1A_role: 1_of_N
 - The downstream notification cascade (Annex I Part II (4)/(5) CSIRT + ENISA CVD notification; Art. 14(1)/(3) AEV/SI notification) is part of D-04.3, not D-04.1.
 
 **CSF anchors (from `SR-CRA-027` + `SR-CRA-100` v0.3 security_rationale):**
-DE.CM-09, PR.PS-04, RS.MA-02.
+PR.PS-04, DE.AE-08, DE.CM-09, DE.CM-01.
 *(DE.CM-09 anchors the computing-hardware-monitored leg (the
 product-internal state-change visibility maps to hardware-level
 monitoring per CSF 2.0); PR.PS-04 anchors the software-logs-recorded

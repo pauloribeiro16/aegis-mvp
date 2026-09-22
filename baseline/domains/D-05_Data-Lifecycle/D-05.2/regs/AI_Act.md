@@ -33,6 +33,8 @@ phase_1A_role: 1_of_N
 
 **CSF anchors (from `SR-AIACT-008` v0.3 security_rationale):**
 PR.PS-04, GV.PO-02.
+**AI RMF anchors (from `SR-AIACT-008` — dashboard `00_VISUALISATIONS/AI_Act/AI_Act_Dashboard.html`, mechanical uniformization):**
+MEASURE-2.4, MEASURE-4.2, GOVERN-1.4.
 
 ---
 

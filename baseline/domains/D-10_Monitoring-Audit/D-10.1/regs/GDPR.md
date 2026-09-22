@@ -30,7 +30,9 @@ phase_1A_role: 1_of_5
 **Objective.** The controller and processor implement appropriate technical and organisational measures to ensure the **ongoing confidentiality, integrity, availability and resilience of processing systems and services** (Art. 32(1)(b) GDPR) and **regularly test, assess and evaluate their effectiveness** (Art. 32(1)(d) GDPR); personal-data processing systems and services are monitored for the five Art. 32(2) risk types, with a clear definition of the moment of `becoming aware of` a breach to anchor the Art. 33(1) 72-hour notification clock.
 
 **CSF anchors (from `SR-GDPR-019` + `SR-GDPR-020` v0.3 security_rationale):**
-DE.CM-01 (primary), DE.CM-09, DE.AE-02, ID.IM-04.
+RS.CO-03, RS.MA-04, PR.DS-01, PR.IR-03.
+**PF 1.1 anchors (from `SR-GDPR-019`, `SR-GDPR-020` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+CM.AW-P7, CM.AW-P8, PR.DS-P1, CT.DP-P2.
 *(DE.CM-01 — Networks and network services are monitored to find potentially adverse events — anchors the GDPR Art. 32(2) 5-risk-type monitoring mapped to NIST CSF 2.0 DE.CM-01; DE.CM-09 — Computing hardware and software, runtime environments, and their data are monitored — anchors the personal-data processing systems monitoring per DomainAnalysis cross-validation; DE.AE-02 — Adverse events are analyzed to identify or determine the scope of an incident — anchors the breach-`becoming-aware` clock per Art. 33(1); ID.IM-04 — Adequate resource capacity to ensure availability is maintained — anchors the Art. 32(1)(b) ongoing availability dimension. The four subcategories together enable the controller or processor to demonstrate ex post, against the Art. 5(2) accountability burden, that the 5-risk-type monitoring was operational and that the breach-`becoming-aware` clock was correctly anchored for Art. 33(1) notification.)*
 
 ---

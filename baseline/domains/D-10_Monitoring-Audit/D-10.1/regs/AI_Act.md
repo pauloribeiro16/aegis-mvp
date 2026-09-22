@@ -30,7 +30,9 @@ phase_1A_role: 5_of_5
 **Objective.** Providers of high-risk AI systems **establish and document a post-market monitoring system in a manner that is proportionate to the nature of the AI technologies and the risks of the high-risk AI system** (Art. 72(1) AI Act), with the system **actively and systematically collecting, documenting and analysing relevant data** (Art. 72(2) AI Act); market-surveillance cooperation under Regulation (EU) 2019/1020 applies (Art. 74(1) AI Act).
 
 **CSF anchors (from `SR-AIACT-021` + `SR-AIACT-022` v0.3 security_rationale):**
-DE.CM-09 (primary), ID.IM-04, GV.OV-03.
+DE.CM-09 (primary), ID.IM-04, GV.OV-03, RS.CO-02, RS.MA-04, RS.MA-03, RS.MA-01.
+**AI RMF anchors (from `SR-AIACT-021`, `SR-AIACT-022` — dashboard `00_VISUALISATIONS/AI_Act/AI_Act_Dashboard.html`, mechanical uniformization):**
+MANAGE-4.1, MEASURE-3.1, MEASURE-4.1, GOVERN-1.5, MANAGE-2.3, MANAGE-4.3, GOVERN-1.1.
 *(DE.CM-09 — Computing hardware and software, runtime environments, and their data are monitored — anchors the AI Act Art. 72(2) `actively and systematically collect, document and analyse relevant data` mapped to NIST CSF 2.0 DE.CM-09; ID.IM-04 — Adequate resource capacity to ensure availability is maintained — anchors the post-market monitoring system per DomainAnalysis cross-validation; GV.OV-03 — Cybersecurity risk management strategy outcomes are reviewed and inform changes — anchors the Art. 72 analysis-to-risk-management feedback loop. The three subcategories together enable the AI Act provider to demonstrate ex post, against the MSA + AI Office supervisory baseline, that the Art. 72(1)–(2) post-market monitoring system was operational with the `proportionate to the nature of the AI technologies and the risks` proportionality calibration, and that the `actively and systematically collect, document and analyse` 3-way verb AND was operational across the AI-system lifecycle. The Art. 74(1) market-surveillance cooperation under Regulation (EU) 2019/1020 provides the MSA + AI Office recipient channel.)*
 
 ---

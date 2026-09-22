@@ -231,6 +231,11 @@
           "PR.IR-03",
           "PR.IR-04",
           "PR.DS-11"
+        ],
+        "airmf_anchors": [
+          "MEASURE-2.6",
+          "MEASURE-2.7",
+          "MANAGE-2.3"
         ]
       }
     ],
@@ -309,6 +314,10 @@
         "csf_anchors": [
           "PR.DS-01",
           "PR.DS-10"
+        ],
+        "pf_anchors": [
+          "PR.DS-P1",
+          "PR.PO-P3"
         ]
       },
       {
@@ -316,6 +325,10 @@
         "csf_anchors": [
           "PR.DS-02",
           "PR.IR-01"
+        ],
+        "pf_anchors": [
+          "PR.DS-P2",
+          "PR.AC-P5"
         ]
       },
       {
@@ -323,6 +336,10 @@
         "csf_anchors": [
           "PR.DS-01",
           "PR.IR-03"
+        ],
+        "pf_anchors": [
+          "PR.DS-P1",
+          "CT.DP-P2"
         ]
       },
       {
@@ -331,6 +348,11 @@
           "PR.DS-01",
           "ID.AM-08",
           "PR.DS-10"
+        ],
+        "pf_anchors": [
+          "CT.DM-P1",
+          "CT.DM-P3",
+          "CM.AW-P5"
         ]
       }
     ],
@@ -506,18 +528,18 @@
     ],
     "DORA": [
       "GV.RM-04",
+      "ID.AM-08",
       "PR.AA-03",
       "PR.AA-04",
       "PR.DS-01",
       "PR.DS-02",
-      "PR.DS-10",
-      "ID.AM-08"
+      "PR.DS-10"
     ],
     "GDPR": [
+      "ID.AM-08",
       "PR.DS-01",
       "PR.DS-02",
       "PR.DS-10",
-      "ID.AM-08",
       "PR.IR-01",
       "PR.IR-03"
     ],
@@ -790,5 +812,24 @@
       "dedup_lines": 238,
       "balanced": true
     }
+  },
+  "applicable_pf_controls_by_regulation": {
+    "GDPR": [
+      "CM.AW-P5",
+      "CT.DM-P1",
+      "CT.DM-P3",
+      "CT.DP-P2",
+      "PR.AC-P5",
+      "PR.DS-P1",
+      "PR.DS-P2",
+      "PR.PO-P3"
+    ]
+  },
+  "applicable_airmf_controls_by_regulation": {
+    "AI_Act": [
+      "MANAGE-2.3",
+      "MEASURE-2.6",
+      "MEASURE-2.7"
+    ]
   }
 }

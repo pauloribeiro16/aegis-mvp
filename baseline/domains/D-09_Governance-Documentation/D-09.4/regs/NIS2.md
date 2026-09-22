@@ -30,7 +30,7 @@ phase_1A_role: 2_of_5
 **Objective.** Member States shall **encourage the use of European or internationally accepted standards and specifications relevant to the security of network and information systems** (Art. 24(1) sentence 1 NIS 2) and of qualified trust services (Art. 24(1) sentence 2); the Commission may adopt delegated acts specifying entities that must use certified ICT products, services and processes (Art. 24(2) NIS 2), and ENISA may be requested to prepare a candidate European cybersecurity certification scheme (Art. 24(3) NIS 2).
 
 **CSF anchors (from `SR-NIS2-043` v0.3 security_rationale):**
-ID.AM-08 (primary), ID.AM-08.
+GV.SC-04, GV.OC-03.
 
 ---
 

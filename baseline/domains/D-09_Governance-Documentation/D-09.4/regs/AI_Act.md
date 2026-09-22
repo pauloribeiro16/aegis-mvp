@@ -30,7 +30,9 @@ phase_1A_role: 5_of_5
 **Objective.** Providers of high-risk AI systems **draw up and keep up-to-date the technical documentation of the high-risk AI system in accordance with Annex IV before that system is placed on the market or put into service** (Art. 11(1) AI Act), **keep the logs automatically recorded by the high-risk AI system to the extent under their control** (Art. 19(1) AI Act), and document the **quality management system** in written policies, procedures, and instructions covering at least the 13 enumerated aspects (a)-(m) (Art. 17(1) AI Act).
 
 **CSF anchors (from `SR-AIACT-008` + `SR-AIACT-009` + `SR-AIACT-010` + `SR-AIACT-017` v0.3 security_rationale):**
-ID.AM-08 (primary), ID.AM-08, GV.PO-01.
+PR.PS-04, GV.PO-02, RC.RP-03, GV.PO-01, GV.OC-03, GV.OC-04, GV.RM-01, GV.RM-04.
+**AI RMF anchors (from `SR-AIACT-008`, `SR-AIACT-009`, `SR-AIACT-010`, +1 more — dashboard `00_VISUALISATIONS/AI_Act/AI_Act_Dashboard.html`, mechanical uniformization):**
+MEASURE-2.4, MEASURE-4.2, GOVERN-1.4, GOVERN-2.1, MAP-1.1, MEASURE-2.8, MEASURE-2.9, GOVERN-1.1, GOVERN-1.3, GOVERN-1.6.
 
 ---
 

@@ -41,6 +41,8 @@ verification scope is constrained by Art. 5(1)(c) data minimisation).
 
 **CSF anchors (from `SR-GDPR-009` + `SR-GDPR-010` v0.3 security_rationale):**
 PR.AA-03, PR.AA-02, ID.AM-08.
+**PF 1.1 anchors (from `SR-GDPR-009`, `SR-GDPR-010` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+PR.AC-P6, PR.AC-P3, CT.DP-P4.
 *(`SR-GDPR-009` covers the Art. 12(6) reasonable-doubts verification
 trigger anchored to PR.AA-03 (users/services/hardware authenticated at
 the rights-request endpoint) + PR.AA-02 (identities proofed and bound

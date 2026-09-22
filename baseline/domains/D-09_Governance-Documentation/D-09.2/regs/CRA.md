@@ -30,7 +30,7 @@ phase_1A_role: 1_of_5
 **Objective.** The manufacturer documents the **cybersecurity risk assessment referred to in Art. 13(2)** and updates it as appropriate during the support period, with the assessment covering intended purpose and reasonably foreseeable use (Art. 13(3) sentence 2) and indicating Annex I Part I (2) applicability (Art. 13(3) sentence 3) — documented in the **Annex VII §3 risk-assessment record** (Art. 13(4) sentence 1 + Annex VII §3 CRA).
 
 **CSF anchors (from `SR-CRA-064` + `SR-CRA-065` + `SR-CRA-066` + `SR-CRA-079` v0.3 security_rationale):**
-ID.RA-05 (primary), GV.SC-07.
+PR.PS-06, GV.PO-02, ID.RA-05 (primary), GV.OV-02.
 
 ---
 

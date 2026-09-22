@@ -34,7 +34,9 @@ phase_1A_role: 1_of_N
 - The by-design architecture propagates downstream to D-07.2 (Secure Coding Practices) via the AI Act Art. 15(4)–(5) AI-attack-defence categories as the AI/ML-specific secure-coding baseline (cross to D-07.2 — SR-AIACT-016).
 
 **CSF anchors (from `SR-AIACT-014` v0.3 security_rationale):**
-PR.PS-06, ID.RA-01.
+PR.PS-06, PR.IR-03, ID.RA-04.
+**AI RMF anchors (from `SR-AIACT-014` — dashboard `00_VISUALISATIONS/AI_Act/AI_Act_Dashboard.html`, mechanical uniformization):**
+MEASURE-2.5, MEASURE-2.6, MEASURE-2.7, GOVERN-1.2.
 *(PR.PS-06 anchors the secure-software-development lifecycle dimension — secure software development practices are integrated, and their performance is monitored throughout the SDLC; the AI Act Art. 15(1) accuracy+robustness+cybersecurity with lifecycle consistency + Art. 17(1)(c) QMS design/design-control/design-verification map to PR.PS-06 directly. ID.RA-01 anchors the vulnerabilities-identified-validated-recorded dimension — vulnerabilities in assets are identified, validated, and recorded; the AI Act Art. 9(2) foreseeable-risk identification + Art. 15(4)–(5) AI-attack-defence categories map to ID.RA-01 directly. The two subcategories together enable the AI system provider to demonstrate ex post, through the documented Art. 15(1) accuracy+robustness+cybersecurity baseline + Art. 17(1) QMS systematic-and-orderly-manner documentation + Art. 17(1)(c) design/design-control/design-verification sub-record + Art. 11 + 12(2) Annex IV technical documentation + Art. 9 risk-management-system documentation, that the Art. 15(1) + 17(1)(c) by-design + QMS duty has been exercised with the lifecycle-consistency + AI-attack-defence calibration.)*
 
 ---

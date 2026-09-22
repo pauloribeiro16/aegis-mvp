@@ -36,6 +36,8 @@ to, personal data transmitted) (Art. 32(1)(b) + Art. 32(2)).
 
 **CSF anchors (from `SR-GDPR-002` v0.3 security_rationale):**
 PR.DS-02, PR.IR-01.
+**PF 1.1 anchors (from `SR-GDPR-002` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+PR.DS-P2, PR.AC-P5.
 
 ---
 

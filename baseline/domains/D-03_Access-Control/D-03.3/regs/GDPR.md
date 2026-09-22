@@ -42,6 +42,8 @@ controller and processor definitions.
 
 **CSF anchors (from `SR-GDPR-011` + `SR-GDPR-012` v0.3 security_rationale):**
 PR.AA-05, PR.AA-06, PR.AT-02.
+**PF 1.1 anchors (from `SR-GDPR-011`, `SR-GDPR-012` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+PR.AC-P1, PR.AC-P2, CT.PO-P1, GV.AT-P2.
 *(`SR-GDPR-011` covers the Art. 29 + Art. 32(4) + Art. 28(3)(a)/(b)
 instruction-bound authorisation under least-privilege authorisation
 anchored to PR.AA-05 (access permissions managed per least privilege)

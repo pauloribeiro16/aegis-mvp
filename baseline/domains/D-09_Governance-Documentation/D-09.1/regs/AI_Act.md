@@ -30,7 +30,9 @@ phase_1A_role: 1_of_5
 **Objective.** High-risk AI systems are **designed and developed to ensure that their operation is sufficiently transparent to enable deployers to interpret a system's output and use it appropriately** (Art. 13(1) AI Act), accompanied by **concise, complete, correct and clear instructions for use** (Art. 13(3) AI Act); a provider **puts a quality management system in place** documented in written policies, procedures and instructions covering at least the 13 enumerated aspects (a)-(m) (Art. 17(1) AI Act).
 
 **CSF anchors (from `SR-AIACT-010` + `SR-AIACT-017` v0.3 security_rationale):**
-GV.PO-01 (primary), GV.PO-02.
+GV.PO-01 (primary), GV.OC-03, GV.OC-04, GV.RM-01, GV.RM-04.
+**AI RMF anchors (from `SR-AIACT-010`, `SR-AIACT-017` — dashboard `00_VISUALISATIONS/AI_Act/AI_Act_Dashboard.html`, mechanical uniformization):**
+GOVERN-1.4, MAP-1.1, MEASURE-2.8, MEASURE-2.9, GOVERN-1.1, GOVERN-1.3, GOVERN-1.6.
 
 ---
 

@@ -44,6 +44,8 @@ fail-safe plans.
   `SR-AIACT-015` ambiguity_notes (the literal OJ sense).
 **CSF anchors (from `SR-AIACT-015` v0.3 security_rationale):**
 PR.IR-03, PR.IR-04, PR.DS-11.
+**AI RMF anchors (from `SR-AIACT-015` — dashboard `00_VISUALISATIONS/AI_Act/AI_Act_Dashboard.html`, mechanical uniformization):**
+MEASURE-2.6, MEASURE-2.7, MANAGE-2.3.
 *(PR.IR-03 is the principal anchor — resilience mechanisms in normal and
 adverse situations (failover, redundant inference paths, graceful
 degradation); PR.IR-04 binds the capacity dimension (compute, storage,

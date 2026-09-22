@@ -30,6 +30,8 @@ phase_1A_role: 1_of_N
 **Objective.** Non-EU controllers and processors falling under GDPR Art. 3(2) designate a representative in writing in the Union unless the Art. 27(2) exception applies; the representative is the legal-address and accountability anchor for supervisory-authority and data-subject contact.
 
 **CSF anchors (from GDPR SR-GDPR-038):** GV.OC-02, GV.RR-02.
+**PF 1.1 anchors (from `SR-GDPR-038` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+GV.PO-P3, GV.PO-P4.
 
 ---
 

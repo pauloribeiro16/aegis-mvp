@@ -1,0 +1,2173 @@
+{
+  "meta": {
+    "regulation": "AI_Act",
+    "source_dashboard": "methodology_compact/00_METHODOLOGY/00_VISUALISATIONS/AI_Act/AI_Act_Dashboard.html",
+    "extracted_by": "scripts/extract_dashboard_mappings.py",
+    "extracted_on": "2026-09-22",
+    "sr_count": 24,
+    "axes": {
+      "nist_csf": true,
+      "nist_pf": false,
+      "nist_airmf": true
+    },
+    "id_normalization": {
+      "replaced_tokens": 4,
+      "unresolved_excluded": 0,
+      "policy": "scripts/normalize_csf_anchors.py phantom map + CSF 1.1->2.0 suffix padding; unresolved ids are excluded from anchor sets and reported per SR"
+    },
+    "ignored_source_folders": [
+      "Case_01",
+      "Case_02",
+      "Case_03",
+      "data",
+      "UNIFIED",
+      "tests",
+      "QNRCS"
+    ]
+  },
+  "srs": [
+    {
+      "sr_id": "SR-AIACT-001",
+      "title": "Continuous risk-management governance for high-risk AI lifecycle",
+      "sub_domain": [
+        "D-09.2"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-001"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C01",
+          "article_ref": "Art. 9(1) — `A risk management system shall be established, implemented, documented and maintained in relation to high-risk AI systems`"
+        }
+      ],
+      "nist_csf": [
+        "GV.RM-01",
+        "GV.RM-06"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "GOVERN-1.1",
+        "GOVERN-1.3",
+        "GOVERN-1.5",
+        "MAP-5.1"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-001",
+        "title": "Continuous risk-management governance for high-risk AI lifecycle",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C01",
+            "article_ref": "Art. 9(1) — `A risk management system shall be established, implemented, documented and maintained in relation to high-risk AI systems`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-001"
+        ],
+        "sub_domain": [
+          "D-09.2"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "GV.RM-01",
+            "title": "Risk management objectives are established and agreed to by organizational stakeholders"
+          },
+          {
+            "id": "GV.RM-06",
+            "title": "A standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Article 9(1) of Regulation (EU) 2024/1689 (the AI Act) imposes an\ninstitutional duty on providers of high-risk AI systems to\nestablish, implement, document and maintain a risk management\nsystem across the full lifecycle of those systems. The four\ncoordinated verbs frame this as a continuous obligation rather\nthan a one-off design exercise, and the clause operates as the\numbrella provision for the more substantive risk-management\nrequirements set out in paragraphs (2) to (10), which impose\nconcrete identification, evaluation and treatment steps. By\nbinding providers to the lifecycle scope — covering design,\ndevelopment, deployment, operation and post-market evolution —\nArticle 9(1) anchors the entire high-risk-AI risk-management\napparatus under a single governance substrate. Cross-regulation,\nthe clause mirrors the continuous risk-treatment duty in GDPR\nArticle 32 and the risk-management expectations under DORA\nArticle 6, and it sits upstream of the CRA cybersecurity-risk\nassessment in CRA Annex I §1.\n",
+        "security_rationale": "The obligation in Art. 9(1) is operationalised in NIST CSF 2.0\nthrough **GV.RM-01 (Risk management objectives are established\nand agreed to by organizational stakeholders)** and **GV.RM-06\n(A standardized method for calculating, documenting,\ncategorizing, and prioritizing cybersecurity risks is established\nand communicated)**. GV.RM-01 anchors the stakeholder-agreement\nsubstrate that the four coordinated verbs — establish, implement,\ndocument and maintain — require: without a documented set of\nobjectives agreed by the organisation, the lifecycle duty\nfragments into disconnected activities. GV.RM-06 supplies the\nstandardised calculation, documentation, categorisation and\nprioritisation method that prevents the umbrella Art. 9(1)\nprovision from operating as a vacuous frame, ensuring that the\nmore substantive obligations in paragraphs (2) to (10) plug\ninto a shared risk vocabulary. Together, the two GV.RM\nsub-categories supply the governance vocabulary (GV.RM-01) and\nthe methodological discipline (GV.RM-06) on which the\nlifecycle-wide risk-management apparatus depends. A provider\nevidencing GV.RM-01 stakeholder-agreed objectives and a\ndocumented GV.RM-06 risk-calculation method demonstrates ex\npost that the Art. 9(1) institutional substrate is in place,\nsatisfying the AI Act accountability envelope through\nauditable evidence of organisational alignment and\nmethodological rigour.\n",
+        "ambiguity_notes": "The clause carries medium severity on the risk management system\nreference because the AI Act does not specify which framework\nproviders must adopt, leaving a poly-semous reading where the\nrisk-management system could be aligned with ISO 31000:2018 (the\ncanonical international risk-management standard), the NIST AI\nRMF 1.0 (the US-equivalent AI-specific frame) or an internal\nbespoke system. The chosen reading is that the clause is\nframework-agnostic and permits ISO 31000-style or NIST AI RMF\nbased practice, while preserving an entity-internal bespoke\nreading as the literal OJ. The four-way verb coordination\n`established, implemented, documented AND maintained` raises a\nparallelism question whether each verb is a distinct activity or\na facet of a composite duty, and the literal reading treats them\nas cumulative activities each of which must be performed. As an\nalternative, providers could read the verbs as facets of one\ncomposite duty, simplifying documentation. The implicit VAG\nburden propagates from the substantive paragraphs (2) to (10),\nwhere `reasonably foreseeable` and `appropriate and targeted`\nsit. Remain open: whether the framework-agnosticism survives\nwhen the AI Office issues its first code of practice on\nrisk-management systems under Article 56.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "GOVERN-1.1",
+            "title": "Legal and regulatory requirements"
+          },
+          {
+            "id": "GOVERN-1.3",
+            "title": "Risk management processes and procedures"
+          },
+          {
+            "id": "GOVERN-1.5",
+            "title": "Ongoing monitoring and review of risk management"
+          },
+          {
+            "id": "MAP-5.1",
+            "title": "Likelihood and magnitude of each identified impact -- based on expected use, past uses in similar contexts, public incident reports, external feedback -- are identified and documented."
+          }
+        ],
+        "airmf_mapping_rationale": "AI Act risk management system (Art. 9) maps directly to GOVERN-1.* (policies/processes/monitoring) and MAP-5.1 (likelihood/magnitude of impacts). The decided R2 reading (NIST AI RMF as US-equivalent frame) makes this the most direct mapping in the catalog.\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-002",
+      "title": "Four-step AI risk-identification and treatment cycle",
+      "sub_domain": [
+        "D-09.2",
+        "D-02.1"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-001"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C02",
+          "article_ref": "Art. 9(2)(a)–(d) — 4-step list: (a) identification and analysis of the known and the reasonably foreseeable risks; (b) estimation and evaluation of the risks … under conditions of reasonably foreseeable misuse; (c) evaluation of other risks arising from analysis of post-market monitoring data; (d) adoption of appropriate and targeted risk management measures"
+        }
+      ],
+      "nist_csf": [
+        "ID.RA-03",
+        "ID.RA-04",
+        "ID.RA-06"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "GOVERN-1.3",
+        "MAP-3.1",
+        "MAP-3.2",
+        "MAP-5.1",
+        "MANAGE-1.2"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-002",
+        "title": "Four-step AI risk-identification and treatment cycle",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C02",
+            "article_ref": "Art. 9(2)(a)–(d) — 4-step list: (a) identification and analysis of the known and the reasonably foreseeable risks; (b) estimation and evaluation of the risks … under conditions of reasonably foreseeable misuse; (c) evaluation of other risks arising from analysis of post-market monitoring data; (d) adoption of appropriate and targeted risk management measures"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-001"
+        ],
+        "sub_domain": [
+          "D-09.2",
+          "D-02.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "ID.RA-03",
+            "title": "Threats, both internal and external, are identified, recorded, and prioritized"
+          },
+          {
+            "id": "ID.RA-04",
+            "title": "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified, recorded, and prioritized"
+          },
+          {
+            "id": "ID.RA-06",
+            "title": "Risk responses are chosen, prioritized, planned, tracked, and communicated"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Article 9(2) of the AI Act operationalises the institutional duty\nin Article 9(1) by prescribing a four-step closed list that the\nrisk-management system must comprise on a continuous and\niterative basis. Sub-point (a) requires identification and\nanalysis of the known and the reasonably foreseeable risks to\nhealth, safety and fundamental rights; sub-point (b) requires\nestimation and evaluation of the risks emerging from use under\nconditions of reasonably foreseeable misuse; sub-point (c)\nrequires evaluation of other risks arising from analysis of\npost-market monitoring data collected under Article 72; and\nsub-point (d) requires the adoption of appropriate and targeted\nrisk-management measures to address the identified risks. The\nframework language `It shall comprise the following steps`\ntogether with the `at least` qualifier preceding the list\nsignals that the four sub-points are a closed cumulative set\nrather than an exemplary list. By extending the threat picture\nfrom intended-purpose use to reasonably foreseeable misuse, the\nclause displaces the older product-safety baseline and aligns AI\nrisk-management with forward-looking foreseeability reasoning\nalready familiar in product-liability and GDPR\ndata-protection-by-design practice, with parallel effects in\nNIS 2 Article 21 risk-analysis and CRA Annex I §1 risk\nassessment.\n",
+        "security_rationale": "The obligation in Art. 9(2)(a)–(d) is operationalised in NIST\nCSF 2.0 through **ID.RA-03 (Threats, both internal and\nexternal, are identified, recorded, and prioritized)**,\n**ID.RA-04 (Potential impacts and likelihoods of threats\nexploiting vulnerabilities are identified, recorded, and\nprioritized)**, and **ID.RA-06 (Risk responses are chosen,\nprioritized, planned, tracked, and communicated)**. ID.RA-03\ncovers the identification-and-analysis half of sub-points (a)\nand (b) — known threats together with the foresight extension\nto reasonably foreseeable misuse scenarios that AI-specific\nfailure modes (data poisoning, model evasion, confidentiality\nattacks) require. ID.RA-04 supplies the impact-and-likelihood\nestimation that sub-point (b) operationalises, capturing both\nprobability and the harm envelope of each identified risk in a\nprioritised record. ID.RA-06 implements the sub-point (c)–(d)\nresponse-selection and treatment-tracking pipeline, including\nthe feedback loop from post-market monitoring data into the\ntreatment cycle. Together, the three ID.RA sub-categories\noperationalise the four-step identify–estimate–evaluate–treat\ncycle that Art. 9(2) prescribes as a closed cumulative set. A\nprovider evidencing ID.RA-03 threat records, ID.RA-04\nimpact-and-likelihood scores, and ID.RA-06 response-tracking\ntrails demonstrates ex post that the Art. 9(2) closed-list\nduty — including the foreseeable-misuse extension and the\npost-market data feedback — is discharged, with documented\ntraceability from identified risk to selected treatment.\n",
+        "ambiguity_notes": "The clause carries the central AI Act ambiguity on the phrase\n`reasonably foreseeable`, which recurs four times across Article\n9(2)(a) and 9(2)(b) and has no anchor in the OJ. The chosen\nreading is that the foresight standard is objective, anchored to\nindustry consensus and supervisory practice, with the hybrid\ncourt-determined reading available as a fallback. As an\nalternative, providers could read it as a subjective\nprovider-expectation standard calibrated to what a particular\nprovider should reasonably have foreseen. As a second\nalternative, a strict hybrid reading could defer the\ndetermination to court adjudication on a case-by-case basis,\ndeferring operational risk-allocation to litigation outcomes.\nThe phrase `known and the reasonably foreseeable risks` further\nraises a scope question about where the boundary between\n`known` and `reasonably foreseeable` sits. The phrase\n`reasonably foreseeable misuse` raises a poly-semous demarcation\nissue because the boundary between `use` and `misuse` is itself\nundefined in the Act. The four-step coordination by `It shall\ncomprise the following steps:` with `at least` is a closed\nAND-list, so providers must implement all four steps\ncumulatively; partial compliance of three of four does not\nsatisfy the clause. The verb phrase `appropriate and targeted`\non the risk-management measures is itself vague and undefined.\nRemain open: (a) whether `reasonably foreseeable misuse` extends\nto dual-use scenarios where the provider cannot realistically\nforesee the downstream application chain; (b) whether the\nboundary between `known` and `reasonably foreseeable` will be\nsettled by AI Office guidance under Article 56 or by\ncase-by-case supervisory practice under Article 70.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "GOVERN-1.3",
+            "title": "Risk management processes and procedures"
+          },
+          {
+            "id": "MAP-3.1",
+            "title": "Potential benefits of intended functionality and performance are examined and documented."
+          },
+          {
+            "id": "MAP-3.2",
+            "title": "Potential costs, including non-monetary costs, from expected or realized AI errors or system functionality and trustworthiness are examined and documented"
+          },
+          {
+            "id": "MAP-5.1",
+            "title": "Likelihood and magnitude of each identified impact -- based on expected use, past uses in similar contexts, public incident reports, external feedback -- are identified and documented."
+          },
+          {
+            "id": "MANAGE-1.2",
+            "title": "Treatment of documented AI risks is prioritized based on impact, likelihood, or available resources or methods."
+          }
+        ],
+        "airmf_mapping_rationale": "The four-step cycle (identify/analyze/treat/monitor) aligns with MAP-3.* (benefits/costs/scope) and MAP-5.1 (impact assessment), closing with MANAGE-1.2 (prioritized treatment).\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-003",
+      "title": "Risk-measure validation through targeted testing",
+      "sub_domain": [
+        "D-02.1",
+        "D-10.3",
+        "D-02.4"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-002"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C03",
+          "article_ref": "Art. 9(6) — `High-risk AI systems shall be tested for the purpose of identifying the most appropriate and targeted risk management measures. Testing shall ensure that high-risk AI systems perform consistently for their intended purpose`"
+        },
+        {
+          "clause_id": "AIA-C04",
+          "article_ref": "Art. 9(7) — `Testing procedures may include testing in real-world conditions in accordance with Article 60`"
+        }
+      ],
+      "nist_csf": [
+        "ID.RA-01",
+        "ID.RA-04",
+        "PR.PS-06",
+        "GV.SC-04"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "MEASURE-1.1",
+        "MEASURE-2.1",
+        "MEASURE-2.3",
+        "MAP-3.3"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-003",
+        "title": "Risk-measure validation through targeted testing",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C03",
+            "article_ref": "Art. 9(6) — `High-risk AI systems shall be tested for the purpose of identifying the most appropriate and targeted risk management measures. Testing shall ensure that high-risk AI systems perform consistently for their intended purpose`"
+          },
+          {
+            "clause_id": "AIA-C04",
+            "article_ref": "Art. 9(7) — `Testing procedures may include testing in real-world conditions in accordance with Article 60`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-002"
+        ],
+        "sub_domain": [
+          "D-02.1",
+          "D-10.3",
+          "D-02.4"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "ID.RA-01",
+            "title": "Vulnerabilities in assets are identified, validated, and recorded"
+          },
+          {
+            "id": "ID.RA-04",
+            "title": "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified, recorded, and prioritized"
+          },
+          {
+            "id": "PR.PS-06",
+            "title": "Secure software development practices are integrated, and their performance is monitored throughout the SDLC"
+          },
+          {
+            "id": "GV.SC-04",
+            "title": "Suppliers and other third parties are routinely assessed using audits, test results, or other forms of evaluation to confirm they are meeting their contractual obligations"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS",
+          "TRIGGERED"
+        ],
+        "regulatory_rationale": "Article 9(6) of the AI Act requires that high-risk AI systems be\ntested in order to identify the most appropriate and targeted\nrisk-management measures, and that testing ensure that the\nsystems perform consistently for their intended purpose. Article\n9(7) permits the testing procedures to include testing in\nreal-world conditions in accordance with the detailed rules set\nout in Article 60, which governs real-world testing plans,\ninformed-consent regimes for natural persons, and the obligation\nto suspend or terminate a test where serious risks materialise.\nTogether the two paragraphs form the verification layer of the\nAI-Act risk-management apparatus, ensuring that the measures\nadopted under Article 9(2)(d) are validated against actual\nAI-system behaviour rather than asserted on the basis of\ndesign-time analysis alone. Cross-regulation, the real-world\ntesting cross-reference interacts with CRA Article 24\nvulnerability-handling testing expectations and with NIS 2\nArticle 21 cybersecurity risk-management measures where\nreal-world testing uncovers incident-grade vulnerabilities.\n",
+        "security_rationale": "The obligation in Art. 9(6)–(7) is operationalised in NIST CSF\n2.0 through **ID.RA-01 (Vulnerabilities in assets are\nidentified, validated, and recorded)**, **ID.RA-04 (Potential\nimpacts and likelihoods of threats exploiting vulnerabilities\nare identified, recorded, and prioritized)**, **PR.PS-06\n(Secure software development practices are integrated, and their\nperformance is monitored throughout the SDLC)**, and **GV.SC-04\n(Suppliers and other third parties are routinely assessed using\naudits, test results, or other forms of evaluation to confirm\nthey are meeting their contractual obligations)**. ID.RA-01\nanchors the test-for-most-appropriate-measures duty:\nvulnerabilities must be discovered, validated and recorded\nbefore any targeted measure can be selected. ID.RA-04 connects\ntesting output to impact-and-likelihood prioritisation, so\ntest results feed upstream risk-treatment selection. PR.PS-06\nintegrates secure development practices throughout the SDLC,\nmaking testing a continuous practice that satisfies the\n`test-for-consistency` qualifier of Art. 9(6). GV.SC-04 covers\nsupplier assessment where testing relies on third-party\nevaluation infrastructure, including Article 60 real-world-\ntesting plans. A provider documenting ID.RA-01 records,\nID.RA-04 impact scores, PR.PS-06 SDLC integration and GV.SC-04\nthird-party assessments demonstrates ex post that the Art.\n9(6)–(7) verification layer — including test-for-consistency\ncontinuity and the Article 60 cross-reference — is operational.\n",
+        "ambiguity_notes": "The clause carries medium severity on the phrase `most\nappropriate AND targeted`, which is vague on both modifiers and\non the AND-coordination. The verb `testing` is poly-semous and\ncould be read as unit, integration, system, acceptance or\nred-team testing; the chosen reading is cumulative, with\nmultiple test levels required to satisfy the open-ended\nverification standard. Real-world testing under Article 9(7) is\nitself poly-semous between pilot deployment, A/B testing and\nlive inference monitoring, and the substantive boundary is\ndelegated to Article 60 detailed rules. The chosen reading is\nliteral: the substantive rules are in Article 60. As an\nalternative, providers could limit themselves to lab/sandbox\ntesting only, treating Article 9(7) as permissive rather than\nenabling. Remain open: whether testing-in-real-world-conditions\nunder Article 9(7) covers inference-time stress testing on\nproduction traffic, or only pre-market sandboxed pilots\ngoverned by Article 60 informed-consent regimes.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "MEASURE-1.1",
+            "title": "Approaches and metrics for measurement of AI risks are selected for implementation starting with the most significant AI risks"
+          },
+          {
+            "id": "MEASURE-2.1",
+            "title": "Test sets, metrics, and details about the tools used during test, evaluation, validation, and verification (TEVV) are documented"
+          },
+          {
+            "id": "MEASURE-2.3",
+            "title": "AI system performance or assurance criteria are measured qualitatively or quantitatively and demonstrated for conditions similar to deployment setting(s) and measures are documented"
+          },
+          {
+            "id": "MAP-3.3",
+            "title": "Targeted application scope is specified and documented based on a system's capability, organization, and established context"
+          }
+        ],
+        "airmf_mapping_rationale": "Validation testing maps to MEASURE-1.* (metrics) and MEASURE-2.1/2.3 (test sets, performance criteria). MAP-3.3 covers scoped application.\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-004",
+      "title": "Closed-list data-governance practice with bias examination and mitigation",
+      "sub_domain": [
+        "D-05.1",
+        "D-05.2"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-003"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C05",
+          "article_ref": "Art. 10(1) — `High-risk AI systems which make use of techniques involving the training of AI models with data shall be developed on the basis of training, validation and testing data sets that meet the quality criteria referred to in paragraphs 2 to 5 whenever such data sets are used`"
+        },
+        {
+          "clause_id": "AIA-C06",
+          "article_ref": "Art. 10(2) — 8-element closed list (a)–(h) of data governance practices, including (f) examination in view of possible biases … and (g) appropriate measures to detect, prevent and mitigate possible biases"
+        }
+      ],
+      "nist_csf": [
+        "ID.AM-03",
+        "ID.AM-08",
+        "PR.PS-06"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "GOVERN-1.4",
+        "MAP-2.1",
+        "MEASURE-2.11"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {
+        "PR.DS-12": "PR.DS-12 -> ID.AM-08 (internal 4x3 matrix cell; data-management policy)"
+      },
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-004",
+        "title": "Closed-list data-governance practice with bias examination and mitigation",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C05",
+            "article_ref": "Art. 10(1) — `High-risk AI systems which make use of techniques involving the training of AI models with data shall be developed on the basis of training, validation and testing data sets that meet the quality criteria referred to in paragraphs 2 to 5 whenever such data sets are used`"
+          },
+          {
+            "clause_id": "AIA-C06",
+            "article_ref": "Art. 10(2) — 8-element closed list (a)–(h) of data governance practices, including (f) examination in view of possible biases … and (g) appropriate measures to detect, prevent and mitigate possible biases"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-003"
+        ],
+        "sub_domain": [
+          "D-05.1",
+          "D-05.2"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "ID.AM-03",
+            "title": "Inventories of data and corresponding metadata for designated data types are maintained"
+          },
+          {
+            "id": "PR.DS-12",
+            "title": "Data is managed consistent with the organization's risk strategy to protect the confidentiality, integrity, and availability of data"
+          },
+          {
+            "id": "PR.PS-06",
+            "title": "Secure software development practices are integrated, and their performance is monitored throughout the SDLC"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS",
+          "ONE_TIME"
+        ],
+        "regulatory_rationale": "Article 10(1) of the AI Act requires that high-risk AI systems\nmaking use of techniques involving the training of AI models\nwith data be developed on the basis of training, validation and\ntesting data sets that meet the quality criteria laid down in\nparagraphs (2) to (5) whenever those data sets are used. Article\n10(2) operationalises this requirement through an eight-element\nclosed list of data-governance practices covering\ndata-collection processes, data-preparation operations,\nassumption-formulation, relevance-assessment, bias examination,\nand bias detection, prevention and mitigation. Sub-points (f)\nand (g) carry particular weight because they translate the\nupstream data-governance duty into operational bias-handling\nobligations: (f) requires examination of training, validation\nand testing data sets in view of possible biases, and (g)\nrequires appropriate measures to detect, prevent and mitigate\nthose biases. The cumulative eight-element structure means\nproviders must address all eight practices; partial compliance\nwith a subset does not satisfy Article 10. The exception in\nArticle 10(5), linked from SR-AIACT-006, exceptionally permits\nprocessing of special-category personal data within tightly\nbounded conditions and operates within the GDPR Article 9\nprohibition.\n",
+        "security_rationale": "The obligation in Art. 10(1)–(2) is operationalised in NIST\nCSF 2.0 through **ID.AM-03 (Inventories of data and\ncorresponding metadata for designated data types are\nmaintained)**, **PR.DS-12 (Data is managed consistent with the\norganization's risk strategy to protect the confidentiality,\nintegrity, and availability of data)**, and **PR.PS-06 (Secure\nsoftware development practices are integrated, and their\nperformance is monitored throughout the SDLC)**. ID.AM-03\nsupplies the dataset-inventory substrate for traceability from\ndata sources through preparation operations to deployed model.\nPR.DS-12 binds dataset management to the organisation's risk\nstrategy, the upstream control that the bias-examination\n(sub-point f) and bias-detection/prevention/mitigation\n(sub-point g) duties operationalise — bias in training data\npropagates into the deployed system and creates both\ndiscriminatory outcomes and poisoned-data attack surface.\nPR.PS-06 integrates secure development throughout the SDLC,\nembedding data-collection, preparation and bias-mitigation\npractices in the secure engineering pipeline. A provider\nevidencing ID.AM-03 inventories, PR.DS-12 risk-aligned\nmanagement and PR.PS-06 SDLC integration demonstrates ex post\nthat the Art. 10(1)–(2) cumulative eight-element duty —\nincluding the bias examination and mitigation in (f) and (g)\n— is audit-traceable from data source to deployed model.\n",
+        "ambiguity_notes": "The clause carries the central S3 poly-semous ambiguity on the\nterm `biases`, which is undefined in the Act and admits three\ndistinct readings: statistical bias understood as sampling error\nproducing unequal distribution of features, algorithmic bias\nunderstood as model architecture or training producing unequal\nperformance across subgroups, and societal bias understood as\ndeployed system producing discriminatory real-world outcomes.\nThe chosen reading is cumulative, with all three senses in\nscope, because the `examination in view of possible biases`\nopening together with the `detect, prevent AND mitigate` verb\nchain implicates upstream, model-level and downstream bias\ntreatment. As an alternative, providers could focus on\nstatistical bias only, since it is the most readily measurable\nsense. As a second alternative, providers could focus on\nsocietal bias only, since the Act frames the risk-management\nduty as protecting fundamental rights under the Charter. The\neight-element closed list is AND-coordinated, so partial\ncompliance of six of eight does not satisfy Article 10; within\nsub-point (g), the verbs `detect, prevent AND mitigate` form a\nfurther three-way AND of distinct activities, all of which must\nbe operationalised. The phrase `techniques involving the\ntraining of AI models` is itself poly-semous, with possible\nreadings including fine-tuning, transfer learning and\nreinforcement learning from human feedback; the chosen reading\nis broad, since the cross-reference to training, validation\nand testing datasets implies a comprehensive scope. Remain\nopen: (a) whether `biases` in sub-points (f) and (g) encompasses\nboth unintentional demographic bias and intentional\nbackdoor-style data-poisoning vectors that AI-Act Article 15(5)\naddresses separately; (b) whether the eight-element list admits\nany proportional scaling based on the size of the dataset or\nthe risk class of the high-risk system per Annex III.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "GOVERN-1.4",
+            "title": "Transparent policies, procedures, and other controls for risk management"
+          },
+          {
+            "id": "MAP-2.1",
+            "title": "The specific task, and methods used to implement the task, that the AI system will support is defined."
+          },
+          {
+            "id": "MEASURE-2.11",
+            "title": "Fairness and bias is evaluated and results are documented"
+          }
+        ],
+        "airmf_mapping_rationale": "Data governance requirements (Art. 10) map to GOVERN-1.4 (transparent controls) and MAP-2.1 (task/method documentation). Bias examination -> MEASURE-2.11 (fairness/bias).\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-005",
+      "title": "Dataset fitness benchmark across relevance representativeness and completeness",
+      "sub_domain": [
+        "D-05.1",
+        "D-05.2"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-003"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C07",
+          "article_ref": "Art. 10(3) — `Training, validation and testing data sets shall be relevant, sufficiently representative, and to the best extent possible, free of errors and complete in view of the intended purpose`"
+        }
+      ],
+      "nist_csf": [
+        "ID.AM-08",
+        "PR.DS-01"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "MAP-2.1",
+        "MAP-2.2",
+        "MEASURE-2.11"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {
+        "PR.DS-12": "PR.DS-12 -> ID.AM-08 (internal 4x3 matrix cell; data-management policy)"
+      },
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-005",
+        "title": "Dataset fitness benchmark across relevance representativeness and completeness",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C07",
+            "article_ref": "Art. 10(3) — `Training, validation and testing data sets shall be relevant, sufficiently representative, and to the best extent possible, free of errors and complete in view of the intended purpose`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-003"
+        ],
+        "sub_domain": [
+          "D-05.1",
+          "D-05.2"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.DS-12",
+            "title": "Data is managed consistent with the organization's risk strategy to protect the confidentiality, integrity, and availability of data"
+          },
+          {
+            "id": "PR.DS-01",
+            "title": "The confidentiality, integrity, and availability of data-at-rest are protected"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS",
+          "ONE_TIME"
+        ],
+        "regulatory_rationale": "Article 10(3) of the AI Act imposes a dataset-quality\nrequirement on providers of high-risk AI systems: training,\nvalidation and testing data sets shall be relevant, sufficiently\nrepresentative, and to the best extent possible, free of errors\nand complete in view of the intended purpose. The clause\nfunctions as the substantive quality benchmark referenced by\nthe umbrella duty in Article 10(1) and the data-governance\npractices listed in Article 10(2). The five-criteria structure\n— relevance, representativeness, error-freeness, completeness,\nplus the modifier `sufficiently` and the hedge `to the best\nextent possible` — is bound together with the soft hedge placed\nat the third coordinator, which affects the parse of what is\nhedged. The clause is the principal locus where dataset quality\nis operationalised for the high-risk-AI domain, and it\ninteracts with the AI-Office guidance on dataset quality that is\nexpected to be issued under Article 56 codes of practice. The\n`in view of the intended purpose` qualifier ties dataset\nquality back to the scope-determiner concept that recurs\nthroughout Article 10 and the broader Act.\n",
+        "security_rationale": "The obligation in Art. 10(3) is operationalised in NIST CSF 2.0\nthrough **PR.DS-12 (Data is managed consistent with the\norganization's risk strategy to protect the confidentiality,\nintegrity, and availability of data)** and **PR.DS-01 (The\nconfidentiality, integrity, and availability of data-at-rest\nare protected)**. PR.DS-12 supplies the risk-aligned\ndata-management substrate that the five quality criteria\n(relevant, sufficiently representative, free of errors,\ncomplete, and the soft-hedge qualifier) require for\nfitness-for-purpose — dataset quality must be tied to the\norganisation's documented risk strategy rather than treated as\na free-standing metric. PR.DS-01 anchors the integrity\ndimension that the `free of errors and complete` criteria\noperationalise, protecting data-at-rest from corruption, label\nnoise, missingness, and systematic measurement error that\nwould otherwise produce downstream model failures or\ndata-poisoning attack surface. Together, the two PR.DS\nsub-categories ensure that dataset quality is treated as a\ndata-security property bound to the organisation's risk\nstrategy. A provider documenting PR.DS-12 risk-aligned data\nmanagement and PR.DS-01 data-at-rest integrity controls\ndemonstrates ex post that the Art. 10(3) five-criteria\nbenchmark — including the strict-literal hedge binding on\n`free of errors and complete` — is evidence-based and\nsupervisory-auditable, with documented thresholds for each\ncriterion.\n",
+        "ambiguity_notes": "The clause carries the central S3 ambiguity on five vague\ndeterminers in one sentence: `relevant`, `sufficiently\nrepresentative`, `to the best extent possible`, `free of\nerrors`, `complete`. None of the five is anchored in the OJ.\nThe hedge-AND coordination problem is the dominant unresolved\nparse-tree issue: the third coordinator `and to the best extent\npossible` introduces a soft hedge on what would otherwise be\nhard requirements, with two competing readings — either all\nfive criteria are hedged under a permissive reading, or only\nthe last two are hedged under a strict reading. The chosen\nreading is strict literal: the hedge binds only the last two\ncriteria (`free of errors` and `complete`), so the first three\n(`relevant`, `sufficiently representative`, plus the structural\n`training, validation and testing data sets`) remain hard\nrequirements. As an alternative, providers could read the hedge\nas binding all five criteria uniformly, relaxing the burden of\nstrict representativeness. As a second alternative, the hedge\ncould be read as binding only `free of errors`, with `complete`\nremaining a hard requirement. The poly-semous `representative`\nadmits demographic, statistical and contextual senses; the\nchosen reading is literal and framework-agnostic, leaving the\nsense to provider interpretation. Remain open: (a) whether\n`free of errors` permits a residual error-rate budget (a small\npercentage of mislabelled examples) or requires zero-error\nperfect datasets that would be operationally infeasible at\nscale; (b) whether `complete` requires temporal completeness\n(full event coverage over time) or feature completeness (full\npopulation coverage across protected attributes).\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "MAP-2.1",
+            "title": "The specific task, and methods used to implement the task, that the AI system will support is defined."
+          },
+          {
+            "id": "MAP-2.2",
+            "title": "Documentation of information about a system's knowledge limits and how system output may be utilized and overseen by humans"
+          },
+          {
+            "id": "MEASURE-2.11",
+            "title": "Fairness and bias is evaluated and results are documented"
+          }
+        ],
+        "airmf_mapping_rationale": "Dataset fitness (relevance, representativeness) maps to MAP-2.1/2.2 (task documentation, knowledge limits) and MEASURE-2.11 (bias/fairness).\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-006",
+      "title": "Exceptional special-category data processing for bias correction",
+      "sub_domain": [
+        "D-05.1"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-004"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C08",
+          "article_ref": "Art. 10(5) — `To the extent that it is strictly necessary for the purpose of ensuring bias detection and correction … the providers of such systems may exceptionally process special categories of personal data, subject to appropriate safeguards … all the following conditions must be met: (a) … (f)`"
+        }
+      ],
+      "nist_csf": [
+        "ID.AM-08",
+        "PR.DS-01",
+        "GV.OC-03"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "MEASURE-2.11",
+        "MEASURE-2.10",
+        "GOVERN-1.1"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {
+        "PR.DS-12": "PR.DS-12 -> ID.AM-08 (internal 4x3 matrix cell; data-management policy)"
+      },
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-006",
+        "title": "Exceptional special-category data processing for bias correction",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C08",
+            "article_ref": "Art. 10(5) — `To the extent that it is strictly necessary for the purpose of ensuring bias detection and correction … the providers of such systems may exceptionally process special categories of personal data, subject to appropriate safeguards … all the following conditions must be met: (a) … (f)`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-004"
+        ],
+        "sub_domain": [
+          "D-05.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.DS-12",
+            "title": "Data is managed consistent with the organization's risk strategy to protect the confidentiality, integrity, and availability of data"
+          },
+          {
+            "id": "PR.DS-01",
+            "title": "The confidentiality, integrity, and availability of data-at-rest are protected"
+          },
+          {
+            "id": "GV.OC-03",
+            "title": "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "TRIGGERED"
+        ],
+        "regulatory_rationale": "Article 10(5) of the AI Act creates an exceptional gateway that\npermits providers of high-risk AI systems to process special\ncategories of personal data, as defined in Article 9(1) of\nRegulation (EU) 2016/679 (GDPR), to the extent strictly\nnecessary for the purpose of ensuring bias detection and bias\ncorrection in their training, validation and testing data sets.\nThe exception operates subject to appropriate safeguards for\nthe rights and freedoms of natural persons, and is conditioned\non the satisfaction of all six cumulative sub-conditions (a)\nthrough (f), which address necessity, scope, anonymisation,\ntechnical and organisational safeguards, supervisory oversight\nand a documentation duty. The clause is the principal locus\nwhere the AI Act deliberately crosses into GDPR territory, since\nthe GDPR Article 9 general prohibition on processing\nspecial-category personal data would otherwise bar the data\nflows that AI bias-detection and correction require. The\nexception is narrow in formal terms but each of the six\nsub-conditions is qualitatively specified, leaving providers\nwide practical discretion on how to evidence compliance.\n",
+        "security_rationale": "The obligation in Art. 10(5) is operationalised in NIST CSF\n2.0 through **PR.DS-12 (Data is managed consistent with the\norganization's risk strategy to protect the confidentiality,\nintegrity, and availability of data)**, **PR.DS-01 (The\nconfidentiality, integrity, and availability of data-at-rest\nare protected)**, and **GV.OC-03 (Legal, regulatory, and\ncontractual requirements regarding cybersecurity — including\nprivacy and civil liberties obligations — are understood and\nmanaged)**. PR.DS-12 supplies the risk-aligned data-management\nsubstrate that the strict-necessity qualifier and the six\ncumulative sub-conditions require for lawful processing under\nthe gateway. PR.DS-01 anchors data-at-rest integrity controls\n— including the pseudonymisation, differential-privacy and\nfederated-learning techniques that constitute the\nstate-of-the-art privacy-preserving measures referenced by the\nsafeguards clause. GV.OC-03 supplies the legal-and-regulatory\nunderstanding substrate that the cross-regulation GDPR\nArticle 9 interaction requires, ensuring that the\nstrict-necessity and appropriate-safeguards qualifiers are\noperationalised against an understood legal baseline rather\nthan as free-standing engineering decisions. A provider\nevidencing PR.DS-12 risk-aligned management, PR.DS-01\ndata-at-rest integrity controls (including\npseudonymisation/differential-privacy techniques) and\nGV.OC-03 legal-and-regulatory understanding demonstrates ex\npost that the Art. 10(5) exception is operationalised within\nthe GDPR Article 9 boundary, with each of the six cumulative\nsub-conditions satisfied and the cross-regulation interplay\ndocumented for supervisory review.\n",
+        "ambiguity_notes": "The clause carries the central S3 ambiguity on the phrase\n`strictly necessary`, which is a Berry-classic vague term\nfamiliar from GDPR Article 9(2) jurisprudence, and on\n`appropriate safeguards`, which is again undefined. The phrase\n`state-of-the-art security and privacy-preserving measures` is\npoly-semous, with possible readings as best practice,\npublished standards or frontier research; the chosen reading\nis published standards, since that aligns with EU supervisory\npractice under GDPR and the EDPB guidance on state-of-the-art\nsecurity measures. The six sub-conditions are AND-coordinated,\nso all six must be satisfied for the exception to apply.\nAs an alternative reading, providers could interpret `strictly\nnecessary` more permissively, allowing the exception where the\nbias-detection need is strong but not strictly indispensable.\nAs a second alternative, `appropriate safeguards` could be\nread narrowly to require state-of-the-art pseudonymisation and\ndifferential-privacy techniques specifically, rather than any\nreasonable safeguard combination. The escape-clause qualifier\n`unless provided otherwise in the applicable Union or national\nlaw, in particular Union law on the protection of personal\ndata` creates cross-regulation scope ambiguity with GDPR,\nsince the GDPR's own Article 9(2) lawful bases continue to\napply in parallel. Remain open: (a) whether the six\nsub-conditions are jointly exhaustive or whether additional\nprocedural safeguards such as explicit data-subject\nnotification or separate consent can be required by national\nsupervisory authorities; (b) whether the phrase `state-of-the-art`\naligns with the equivalent GDPR concept or diverges into a\nstricter AI-specific interpretation requiring frontier\ntechniques such as differential privacy.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "MEASURE-2.11",
+            "title": "Fairness and bias is evaluated and results are documented"
+          },
+          {
+            "id": "MEASURE-2.10",
+            "title": "Privacy risk of the AI system is examined and documented"
+          },
+          {
+            "id": "GOVERN-1.1",
+            "title": "Legal and regulatory requirements"
+          }
+        ],
+        "airmf_mapping_rationale": "Special-category data for bias detection -> MEASURE-2.11 (fairness) and MEASURE-2.10 (privacy risk). GOVERN-1.1 anchors the legal basis condition.\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-007",
+      "title": "Lifetime automatic logging of high-risk AI system events",
+      "sub_domain": [
+        "D-10.2"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-005"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C09",
+          "article_ref": "Art. 12(1) — `High-risk AI systems shall technically allow for the automatic recording of events (logs) over the lifetime of the system`"
+        },
+        {
+          "clause_id": "AIA-C10",
+          "article_ref": "Art. 12(2) — `In order to ensure a level of traceability of the functioning of a high-risk AI system that is appropriate to the intended purpose of the system, logging capabilities shall enable the recording of events relevant for: (a) … (b) … (c) …`"
+        }
+      ],
+      "nist_csf": [
+        "PR.PS-04",
+        "DE.CM-09",
+        "DE.AE-03"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "MEASURE-2.4",
+        "MEASURE-3.1",
+        "GOVERN-1.6"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-007",
+        "title": "Lifetime automatic logging of high-risk AI system events",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C09",
+            "article_ref": "Art. 12(1) — `High-risk AI systems shall technically allow for the automatic recording of events (logs) over the lifetime of the system`"
+          },
+          {
+            "clause_id": "AIA-C10",
+            "article_ref": "Art. 12(2) — `In order to ensure a level of traceability of the functioning of a high-risk AI system that is appropriate to the intended purpose of the system, logging capabilities shall enable the recording of events relevant for: (a) … (b) … (c) …`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-005"
+        ],
+        "sub_domain": [
+          "D-10.2"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.PS-04",
+            "title": "Log records are generated and made available for continuous monitoring and analysis"
+          },
+          {
+            "id": "DE.CM-09",
+            "title": "Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events"
+          },
+          {
+            "id": "DE.AE-03",
+            "title": "Event data are collected and correlated from multiple sources and sensors"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS",
+          "ONE_TIME"
+        ],
+        "regulatory_rationale": "Article 12(1) of the AI Act requires that high-risk AI systems\ntechnically allow for the automatic recording of events (logs)\nover the lifetime of the system. Article 12(2) operationalises\nthis requirement by mandating that logging capabilities ensure a\nlevel of traceability of the functioning of the high-risk AI\nsystem that is appropriate to the intended purpose of the\nsystem, by enabling the recording of events relevant for\nensuring traceability of the functioning of the system,\nmonitoring its operation, and facilitating post-market\nmonitoring under Article 72. Together the two paragraphs form\nthe log-generation and log-capability substrate for the AI-Act\npost-market-monitoring apparatus. The lifetime-scope qualifier\nties logging into the broader lifecycle obligations under\nArticles 9 and 17 and mirrors the log-retention duty that DORA\nArticle 12 places on financial entities and that NIS 2 Article\n21 places on essential and important entities.\n",
+        "security_rationale": "The obligation in Art. 12(1)–(2) is operationalised in NIST\nCSF 2.0 through **PR.PS-04 (Log records are generated and\nmade available for continuous monitoring and analysis)**,\n**DE.CM-09 (Computing hardware and software, runtime\nenvironments, and their data are monitored to find potentially\nadverse events)**, and **DE.AE-03 (Event data are collected\nand correlated from multiple sources and sensors)**. PR.PS-04\nanchors the lifetime automatic-event-recording substrate — the\nprovider must technically enable log generation across the full\nAI-system lifecycle, including AI-specific events (inference\ndecisions, model decisions, override events) implied by the\n`functioning of a high-risk AI system` opening of Art. 12(2)\nbeyond conventional security logs. DE.CM-09 covers the\nruntime-monitoring dimension of the three-element purpose list\n(traceability, monitoring, post-market monitoring), supporting\nlive operational monitoring alongside post-incident\nreconstruction. DE.AE-03 supplies the cross-source event\ncorrelation that converts the raw log stream into an\naudit-grade narrative, including cross-regulation flows under\nNIS 2 Art. 23 and DORA Art. 19. A provider documenting\nPR.PS-04 log generation, DE.CM-09 continuous-monitoring\ncoverage and DE.AE-03 multi-source correlation demonstrates\nex post that the Art. 12(1)–(2) lifetime logging duty —\nincluding AI-specific events beyond conventional security logs\n— is reconstructable for supervisory review.\n",
+        "ambiguity_notes": "The phrase `over the lifetime` is vague and undefined in the\nAI Act; the chosen reading aligns lifetime with the\nproduct-lifecycle definition in Article 3(1)(c), by analogy\nwith the CRA support-period concept in CRA Article 13(8). The\nphrase `events (logs)` is poly-semous, since AI-specific events\nsuch as inference events, model-decision events and override\nevents are not enumerated in the Act; the chosen reading is\nbroad, covering AI-specific events per the `functioning of a\nhigh-risk AI system` opening of Article 12(2). As an\nalternative, providers could read `events` as security-event\nlogs familiar from DORA and NIS 2, which is narrower and\nexcludes AI-specific inference-decision events. The phrase\n`appropriate to the intended purpose` in Article 12(2) is\nvague, and the term `traceability` is poly-semous between\nML-ops training-run reproducibility, runtime decision\naudit-trail traceability and data-lineage traceability; the\nchosen reading is cumulative, covering all three senses. The\nthree-element list in Article 12(2) (a)–(c) is AND-coordinated.\nRemain open: whether `over the lifetime` aligns lifetime\nduration with the deployer's deployment window or with the\nmanufacturer's broader product-lifecycle window extending into\npost-decommissioning support obligations.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "MEASURE-2.4",
+            "title": "Functionality and behavior of the AI system and its components are monitored when in production"
+          },
+          {
+            "id": "MEASURE-3.1",
+            "title": "Approaches, personnel, and documentation are in place to regularly identify and track existing, unanticipated, and emergent AI risks"
+          },
+          {
+            "id": "GOVERN-1.6",
+            "title": "Mechanisms and resources to inventory AI systems"
+          }
+        ],
+        "airmf_mapping_rationale": "Automatic logging (Art. 12) -> MEASURE-2.4 (monitoring functionality) and MEASURE-3.1 (regular identification of risks). GOVERN-1.6 covers inventory/mechanisms for logging.\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-008",
+      "title": "Six-month minimum log retention aligned with intended purpose",
+      "sub_domain": [
+        "D-10.2",
+        "D-05.2"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-006"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C11",
+          "article_ref": "Art. 12(4) per T5 — **T5 mapping error**: Art. 12 has only paragraphs 1, 2, 3 in the OJ; the substance is in Art. 19(1)"
+        },
+        {
+          "clause_id": "AIA-C19",
+          "article_ref": "Art. 19(1) — `the logs shall be kept for a period appropriate to the intended purpose of the high-risk AI system, of at least six months, unless provided otherwise in the applicable Union or national law`"
+        }
+      ],
+      "nist_csf": [
+        "PR.PS-04",
+        "GV.PO-02"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "MEASURE-2.4",
+        "MEASURE-4.2",
+        "GOVERN-1.4"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-008",
+        "title": "Six-month minimum log retention aligned with intended purpose",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C11",
+            "article_ref": "Art. 12(4) per T5 — **T5 mapping error**: Art. 12 has only paragraphs 1, 2, 3 in the OJ; the substance is in Art. 19(1)"
+          },
+          {
+            "clause_id": "AIA-C19",
+            "article_ref": "Art. 19(1) — `the logs shall be kept for a period appropriate to the intended purpose of the high-risk AI system, of at least six months, unless provided otherwise in the applicable Union or national law`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-006"
+        ],
+        "sub_domain": [
+          "D-10.2",
+          "D-05.2"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.PS-04",
+            "title": "Log records are generated and made available for continuous monitoring and analysis"
+          },
+          {
+            "id": "GV.PO-02",
+            "title": "Cybersecurity processes and procedures for implementing the cybersecurity policy are established, communicated, and enforced"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Article 19(1) of the AI Act requires providers of high-risk AI\nsystems to keep the logs referred to in Article 12(1) —\nautomatically generated by their high-risk AI systems and to\nthe extent that such logs are under their control — for a\nperiod appropriate to the intended purpose of the high-risk AI\nsystem, of at least six months, unless provided otherwise in\nthe applicable Union or national law. The clause anchors the\nAI-Act log-retention duty to the upstream log-generation duty\nin Article 12(1) and to the provider-side control allocation.\nThe six-month retention floor provides the only hard numeric\nanchor for retention duration across the AI Act; the soft\nanchor `appropriate to the intended purpose` permits upward\nadjustment for higher-risk or longer-lived systems. The escape\nclause defers to GDPR Article 5(1)(e), NIS 2 incident-log\nretention and DORA Article 12 where those apply, leaving\nfinancial-entity providers with concurrent log-retention\nobligations.\n",
+        "security_rationale": "The obligation in Art. 19(1) is operationalised in NIST CSF\n2.0 through **PR.PS-04 (Log records are generated and made\navailable for continuous monitoring and analysis)** and\n**GV.PO-02 (Cybersecurity processes and procedures for\nimplementing the cybersecurity policy are established,\ncommunicated, and enforced)**. PR.PS-04 anchors the\nlog-generation substrate that the six-month retention floor\nrequires — without continuous log generation, the retention\nduty is vacuous and the post-market monitoring and incident\ninvestigation flows have no reconstructable trail. GV.PO-02\nsupplies the process-and-procedure substrate that the upward\nadjustment clause (`appropriate to the intended purpose`)\nrequires, ensuring that retention duration beyond the\nsix-month floor is justified by the system's risk class and\ndocumented in the provider's cybersecurity policies and\nprocedures. Together, the two sub-categories cover the\nretention floor (PR.PS-04) and the retention-justification\nmethodology (GV.PO-02) that Art. 19(1) requires. A provider\nevidencing PR.PS-04 log-generation continuity and GV.PO-02\nretention-procedure documentation demonstrates ex post that\nthe Art. 19(1) six-month floor is operationalised, with\ndocumented justification for any upward adjustment under the\n`appropriate to the intended purpose` clause and the\ncross-regulation interplay with GDPR Art. 5(1)(e), NIS 2\nincident-log retention and DORA Art. 12.\n",
+        "ambiguity_notes": "The T5 mapping flag is preserved: AIA-C11 references Article\n12(4), which does not exist in the OJ text of the AI Act;\nArticle 12 has only paragraphs 1, 2 and 3. The substantive rule\non six-month log retention is correctly located at Article\n19(1), which is also the locus of AIA-C19. The chosen reading\npreserves the OJ-literal locus at Article 19(1) and surfaces\nthe T5 mapping error per Berry fidelity; the recommendation to\nT5 authors is to remove AIA-C11 as a duplicate or remap it to\nArticle 19(1). The phrase `under their control` is poly-semous,\nwith possible readings as physical control, legal control or\ntechnical access; the chosen reading is cumulative, covering\nall three senses. As an alternative, providers could read\n`under their control` narrowly as physical control only. The\n`appropriate to the intended purpose` qualifier is vague, and\nthe escape-clause scope ambiguity creates cross-regulation\nfriction with GDPR, NIS 2 and DORA log-retention. Remain open:\nwhether the T5 mapping reconciliation will consolidate AIA-C11\ninto AIA-C19 or remove AIA-C11 entirely.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "MEASURE-2.4",
+            "title": "Functionality and behavior of the AI system and its components are monitored when in production"
+          },
+          {
+            "id": "MEASURE-4.2",
+            "title": "Measurement results regarding AI system trustworthiness in deployment context(s) and across AI lifecycle are documented and informed by input from domain experts and other relevant AI actors to validate whether the system is performing consistently as intended"
+          },
+          {
+            "id": "GOVERN-1.4",
+            "title": "Transparent policies, procedures, and other controls for risk management"
+          }
+        ],
+        "airmf_mapping_rationale": "Log retention (Art. 19(1) Art. 12(2) basis) -> MEASURE-2.4 (production monitoring that generates the logs being retained) + MEASURE-4.2 (documentation of measurement results across deployment contexts, including the retained-log substrate used for accountability). AI RMF 1.0 has no subcategory specifically addressing `retention period`; the closest is GOVERN-1.4 (transparent policies/procedures for risk management), which anchors the retention policy (six-month floor) as a documented control. Spec B-MINOR-1 acknowledges: GOVERN-1.4 is the best available proxy; retention as such is operationalised via the policy/control plane rather than a dedicated measurement subcategory.\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-009",
+      "title": "Provider-side log-retention responsibility across hosting models",
+      "sub_domain": [
+        "D-10.2"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-006"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C09",
+          "article_ref": "Art. 12(1) — log-generation capability"
+        },
+        {
+          "clause_id": "AIA-C19",
+          "article_ref": "Art. 19(1) — `Providers of high-risk AI systems shall keep the logs referred to in Article 12(1)`"
+        }
+      ],
+      "nist_csf": [
+        "PR.PS-04",
+        "RC.RP-03"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "GOVERN-2.1",
+        "MEASURE-2.4",
+        "MEASURE-4.2"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-009",
+        "title": "Provider-side log-retention responsibility across hosting models",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C09",
+            "article_ref": "Art. 12(1) — log-generation capability"
+          },
+          {
+            "clause_id": "AIA-C19",
+            "article_ref": "Art. 19(1) — `Providers of high-risk AI systems shall keep the logs referred to in Article 12(1)`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-006"
+        ],
+        "sub_domain": [
+          "D-10.2"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.PS-04",
+            "title": "Log records are generated and made available for continuous monitoring and analysis"
+          },
+          {
+            "id": "RC.RP-03",
+            "title": "The integrity of backups and other restoration assets is verified before using them for restoration"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Article 19(1) of the AI Act, sentence 1, requires providers of\nhigh-risk AI systems to keep the logs referred to in Article\n12(1) — the automatically generated event logs — to the extent\nthat such logs are under their control. The clause allocates\nresponsibility for log retention to the provider, distinct from\nthe upstream log-generation duty in Article 12(1) and the\ndownstream supervisory-access duty in Article 21(1). The `under\ntheir control` qualifier is the responsibility-allocation\nhinge of the article, since the physical location of logs may\nvary between provider-hosted infrastructure, deployer-hosted\ninfrastructure and third-party cloud infrastructure. This SR\nfocuses on the responsibility-allocation aspect of Article\n19(1); the temporal-duration aspect (six-month minimum) is\ncovered in SR-AIACT-008.\n",
+        "security_rationale": "The obligation in Art. 19(1) sentence 1 is operationalised in\nNIST CSF 2.0 through **PR.PS-04 (Log records are generated and\nmade available for continuous monitoring and analysis)** and\n**RC.RP-03 (The integrity of backups and other restoration\nassets is verified before using them for restoration)**.\nPR.PS-04 anchors the log-availability substrate that the\nresponsibility-allocation hinge requires — the provider must\nkeep the Art. 12(1) logs available under their control\nregardless of where the underlying compute substrate is\nphysically hosted. RC.RP-03 supplies the integrity-verification\nhandle that supports the retention duty when logs are\nreconstructed from backups or other restoration assets,\nensuring that the supervisory-access flow does not encounter\ncorrupted records at audit time. Together, the two\nsub-categories cover log availability (PR.PS-04) and\nlog-integrity through restoration (RC.RP-03) that the\nresponsibility-allocation hinge operationalises. A provider\nevidencing PR.PS-04 log availability and RC.RP-03\nrestoration-integrity verification demonstrates ex post that\nthe Art. 19(1) sentence-1 responsibility-allocation duty is\ndischarged across hybrid and multi-cloud deployments,\nincluding the cross-cloud architectures common in\nDORA-regulated financial-entity deployments where logs may\nspan provider-, deployer- and third-party-hosted infrastructure.\n",
+        "ambiguity_notes": "The phrase `to the extent such logs are under their control`\nis poly-semous and carries medium severity; the chosen reading\nis cumulative, covering provider's physical control\n(provider-hosted logs), provider's legal control\n(deployer-hosted logs but under provider's contractual\nobligation to retain) and provider's technical access\n(deployer-hosted logs with provider's read-access). As an\nalternative reading, providers could limit the obligation to\nlogs under their physical control only, since the cross-reference\nto Article 12(1) `automatic recording of events` suggests a\nbroad reading but does not exclude a narrow reading. The\nupstream AIA-C11 / Article 12(4) T5 mapping flag from\nSR-AIACT-008 also propagates here as a structural reference.\nRemain open: whether the `under their control` allocation\nwill be enforced as a substantive obligation mandating\ncontractual flow-down to deployers and third-party hosts, or\nas a procedural obligation mandating only documentation of the\nresponsibility allocation.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "GOVERN-2.1",
+            "title": "Roles, responsibilities and lines of communication are documented and clear throughout the organization"
+          },
+          {
+            "id": "MEASURE-2.4",
+            "title": "Functionality and behavior of the AI system and its components are monitored when in production"
+          },
+          {
+            "id": "MEASURE-4.2",
+            "title": "Measurement results regarding AI system trustworthiness in deployment context(s) and across AI lifecycle are documented and informed by input from domain experts and other relevant AI actors to validate whether the system is performing consistently as intended"
+          }
+        ],
+        "airmf_mapping_rationale": "Provider responsibility for logs -> GOVERN-2.1 (documented roles/responsibilities) and MEASURE-2.4/4.2 (monitoring/measurement).\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-010",
+      "title": "Deployer-interpretable transparency enabling appropriate system use",
+      "sub_domain": [
+        "D-09.1"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-007"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C12",
+          "article_ref": "Art. 13(1) — `High-risk AI systems shall be designed and developed in such a way as to ensure that their operation is sufficiently transparent to enable deployers to interpret a system's output and use it appropriately. An appropriate type and degree of transparency shall be ensured`"
+        }
+      ],
+      "nist_csf": [
+        "GV.PO-01",
+        "GV.OC-03",
+        "GV.OC-04"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "GOVERN-1.4",
+        "MAP-1.1",
+        "MEASURE-2.8",
+        "MEASURE-2.9"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-010",
+        "title": "Deployer-interpretable transparency enabling appropriate system use",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C12",
+            "article_ref": "Art. 13(1) — `High-risk AI systems shall be designed and developed in such a way as to ensure that their operation is sufficiently transparent to enable deployers to interpret a system's output and use it appropriately. An appropriate type and degree of transparency shall be ensured`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-007"
+        ],
+        "sub_domain": [
+          "D-09.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "GV.PO-01",
+            "title": "Organizational cybersecurity policy is established, communicated, and enforced"
+          },
+          {
+            "id": "GV.OC-03",
+            "title": "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed"
+          },
+          {
+            "id": "GV.OC-04",
+            "title": "Critical objectives, capabilities, and services that stakeholders depend on or expect from the organization are understood and communicated"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS",
+          "ONE_TIME"
+        ],
+        "regulatory_rationale": "Article 13(1) of the AI Act requires that high-risk AI systems\nbe designed and developed in such a way as to ensure that their\noperation is sufficiently transparent to enable deployers to\ninterpret a system's output and use it appropriately. A second\nsentence requires that an appropriate type and degree of\ntransparency shall be ensured. The clause sits at the\nintersection of the design-and-development obligations in\nChapter III, Section 2 and the broader transparency obligations\nin Chapter V (Articles 50 to 52) that apply to all AI systems\ninteracting with natural persons. Article 13(1) is the\nprincipal high-risk-specific transparency duty, distinct from\nthe Article 50 user-facing transparency duty and the Article 70\ndeployer-information duty, and is also the principal locus\nwhere AI-explainability expectations are operationalised as a\nregulatory requirement.\nthe Article 50 user-facing transparency duty for AI systems\ninteracting with natural persons and from the Article 70\ndeployer-information duty. The clause is also the principal\nlocus where AI-explainability expectations are operationalised\nas a regulatory requirement, with downstream effects on\ntechnical-architecture choices for high-risk providers.\n",
+        "security_rationale": "The obligation in Art. 13(1) is operationalised in NIST CSF\n2.0 through **GV.PO-01 (Organizational cybersecurity policy\nis established, communicated, and enforced)**, **GV.OC-03\n(Legal, regulatory, and contractual requirements regarding\ncybersecurity — including privacy and civil liberties\nobligations — are understood and managed)**, and **GV.OC-04\n(Critical objectives, capabilities, and services that\nstakeholders depend on or expect from the organization are\nunderstood and communicated)**. GV.PO-01 anchors the\ncybersecurity-policy substrate that the dual-anchor\n`sufficiently transparent` plus `appropriate type and degree`\nqualifier requires — transparency must be policy-bound and\nenforced to be supervisory-auditable. GV.OC-03 supplies the\nlegal-and-regulatory understanding substrate that\ndistinguishes the high-risk-specific Art. 13(1) transparency\nduty from the Article 50 user-facing and Article 70\ndeployer-information duties, ensuring the cumulative AND of\nexplainability, disclosure and interpretability senses is\noperationalised against an understood regulatory baseline.\nGV.OC-04 anchors the stakeholder-communication dimension —\ndeployers are the principal stakeholders for AI-system\ntransparency — operationalising the `interpret a system's\noutput AND use it appropriately` opening through understood\ncapabilities and limitations. A provider documenting GV.PO-01\ntransparency policy, GV.OC-03 regulatory distinction and\nGV.OC-04 deployer-stakeholder communication demonstrates ex\npost that the Art. 13(1) high-risk-specific transparency duty\nis operationalised with policy enforcement, regulatory clarity\nand stakeholder usability.\n",
+        "ambiguity_notes": "The clause carries the central S3 ambiguity on `sufficiently\ntransparent` and on `appropriate type and degree of\ntransparency` — two vague anchors in one sentence, both\nmodifying the same concept. The phrase `transparent` is\npoly-semous and admits three distinct AI-governance senses:\nexplainability (the deployer can understand why the system\nproduced this output), disclosure (the deployer is told what\nthe system does in general) and interpretability (the deployer\ncan map inputs to outputs). The three senses imply different\ntechnical implementations — explainable-AI tooling,\nsystem documentation and model-architecture disclosure\nrespectively. The chosen reading is cumulative, covering all\nthree senses, because the `interpret a system's output AND\nuse it appropriately` opening implicates each. As an\nalternative, providers could focus on disclosure only, which\nis the cheapest to operationalise but the weakest against the\nexplanatory demands of automation-bias mitigation. As a second\nalternative, providers could focus on explainability only,\nwhich requires the most sophisticated technical tooling such\nas SHAP or LIME post-hoc explanation. The scope-determiner\n`intended purpose` remains undefined in Article 3 and recurs\nacross eleven of the twenty-nine mapped clauses, with its\nscope ambiguity propagating into Article 13(1). Remain open:\n(a) whether `appropriate type and degree of transparency`\nintroduces a tiered obligation calibrated to the risk class of\nthe high-risk system per Annex III categories, or a uniform\nobligation across all high-risk systems; (b) whether the\nexplainability sense requires post-hoc explanation tooling\nsuch as LIME or SHAP, or whether architectural transparency\nin the form of model-card disclosure suffices.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "GOVERN-1.4",
+            "title": "Transparent policies, procedures, and other controls for risk management"
+          },
+          {
+            "id": "MAP-1.1",
+            "title": "Intended purpose, potentially beneficial uses, context-specific laws, norms and expectations, and prospective settings in which the AI system will be deployed are understood and documented"
+          },
+          {
+            "id": "MEASURE-2.8",
+            "title": "Risks associated with transparency and accountability are examined and documented"
+          },
+          {
+            "id": "MEASURE-2.9",
+            "title": "AI model is explained, validated, and documented, and system output is interpreted within its context and to inform responsible use and governance"
+          }
+        ],
+        "airmf_mapping_rationale": "Transparency (Art. 13) -> GOVERN-1.4 (transparent policies), MAP-1.1 (intended purpose/context), MEASURE-2.8 (transparency risks) and MEASURE-2.9 (model explanation).\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-011",
+      "title": "Concise complete and clear deployer instructions for use",
+      "sub_domain": [
+        "D-09.1"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-007"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C13",
+          "article_ref": "Art. 13(3) — `instructions for use in an appropriate digital format or otherwise that include concise, complete, correct and clear information that is relevant, accessible and comprehensible to deployers`"
+        }
+      ],
+      "nist_csf": [
+        "GV.PO-01",
+        "GV.OC-04"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "GOVERN-1.4",
+        "MAP-1.1",
+        "MAP-3.4"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-011",
+        "title": "Concise complete and clear deployer instructions for use",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C13",
+            "article_ref": "Art. 13(3) — `instructions for use in an appropriate digital format or otherwise that include concise, complete, correct and clear information that is relevant, accessible and comprehensible to deployers`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-007"
+        ],
+        "sub_domain": [
+          "D-09.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "GV.PO-01",
+            "title": "Organizational cybersecurity policy is established, communicated, and enforced"
+          },
+          {
+            "id": "GV.OC-04",
+            "title": "Critical objectives, capabilities, and services that stakeholders depend on or expect from the organization are understood and communicated"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "ONE_TIME"
+        ],
+        "regulatory_rationale": "Article 13(3) of the AI Act requires high-risk AI systems to be\naccompanied by instructions for use, in an appropriate digital\nformat or otherwise, that include concise, complete, correct\nand clear information that is relevant, accessible and\ncomprehensible to deployers. The instructions-for-use duty\noperationalises the upstream transparency duty in Article\n13(1) by translating the abstract transparency requirement\ninto a concrete documentation deliverable that accompanies the\nhigh-risk AI system at placement on the market or putting into\nservice. The eight quality adjectives — concise, complete,\ncorrect, clear, relevant, accessible, comprehensible, plus\n`appropriate digital format` — set a substantive quality\nthreshold that providers must evidence in their documentation.\nArticle 13(3) is also a locus where the AI Act intersects with\nCRA Article 7(4) instructions-for-use obligations for products\nwith digital elements and with CRA Annex I documentation\nrequirements.\n",
+        "security_rationale": "The obligation in Art. 13(3) is operationalised in NIST CSF\n2.0 through **GV.PO-01 (Organizational cybersecurity policy is\nestablished, communicated, and enforced)** and **GV.OC-04\n(Critical objectives, capabilities, and services that\nstakeholders depend on or expect from the organization are\nunderstood and communicated)**. GV.PO-01 anchors the\npolicy-and-enforcement substrate that the eight quality\nadjectives (concise, complete, correct, clear, relevant,\naccessible, comprehensible, plus `appropriate digital format`)\nrequire — instructions for use must be policy-bound and\nenforced to ensure documentation discipline, with the twin\n4-way AND (`concise, complete, correct AND clear`) plus\n3-way AND (`relevant, accessible AND comprehensible`) both\nevidenced as compliance artefacts. GV.OC-04 supplies the\nstakeholder-communication substrate that the\ndeployer-facing documentation requires, ensuring that the\neight quality adjectives are operationalised as communication\noutputs rather than as engineering artefacts, and that the\ncharacteristics, capabilities and limitations of performance\nare conveyed in a manner the deployer can actually use.\nTogether, the two GV sub-categories cover policy enforcement\n(GV.PO-01) and stakeholder-usable communication (GV.OC-04)\nthat Art. 13(3) operationalises. A provider evidencing\nGV.PO-01 documentation policy and GV.OC-04\ndeployer-stakeholder communication demonstrates ex post that\nthe Art. 13(3) instructions-for-use duty is discharged as an\noperationally usable deliverable accompanying the high-risk\nAI system at placement on the market or putting into service.\n",
+        "ambiguity_notes": "The clause carries medium severity on eight vague adjectives\nin one sentence: `appropriate`, `concise`, `complete`,\n`correct`, `clear`, `relevant`, `accessible`,\n`comprehensible`. The phrase `characteristics, capabilities\nand limitations of performance` is poly-semous, with three\nnear-synonyms for system properties; the chosen reading is\nthat the three near-synonyms are intentionally cumulative and\neach must be addressed in the instructions. The twin\nAND-chains — `concise, complete, correct AND clear` (4-way)\nplus `relevant, accessible AND comprehensible` (3-way) —\nform a compounded coordination that is hard to satisfy with\nsingle-modality documentation. As an alternative reading,\nproviders could collapse the twin chains into a single\nintegrated documentation requirement. Remain open: whether\n`appropriate digital format` accepts machine-readable PDF/A-3\nplus human-readable HTML, or whether it requires a\nstructured-machine-readable format such as JSON-LD or XBRL\nthat supports automated supervisory ingestion under Article\n21 conformity-assessment documentation expectations.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "GOVERN-1.4",
+            "title": "Transparent policies, procedures, and other controls for risk management"
+          },
+          {
+            "id": "MAP-1.1",
+            "title": "Intended purpose, potentially beneficial uses, context-specific laws, norms and expectations, and prospective settings in which the AI system will be deployed are understood and documented"
+          },
+          {
+            "id": "MAP-3.4",
+            "title": "Processes for operator and practitioner proficiency with AI system performance and trustworthiness – and relevant technical standards and certifications – are defined, assessed and documented"
+          }
+        ],
+        "airmf_mapping_rationale": "Instructions for use (Art. 13) -> GOVERN-1.4 (transparent procedures), MAP-1.1 (intended purpose), MAP-3.4 (operator proficiency processes).\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-012",
+      "title": "Built-in effective human-oversight capability by design",
+      "sub_domain": [
+        "D-08.2",
+        "D-07.1"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-008"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C14",
+          "article_ref": "Art. 14(1) — `High-risk AI systems shall be designed and developed in such a way, including with appropriate human-machine interface tools, that they can be effectively overseen by natural persons during the period in which they are in use`"
+        }
+      ],
+      "nist_csf": [
+        "PR.AT-02",
+        "GV.RR-02",
+        "GV.RR-04"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "MAP-3.5",
+        "GOVERN-2.1",
+        "GOVERN-3.1"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-012",
+        "title": "Built-in effective human-oversight capability by design",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C14",
+            "article_ref": "Art. 14(1) — `High-risk AI systems shall be designed and developed in such a way, including with appropriate human-machine interface tools, that they can be effectively overseen by natural persons during the period in which they are in use`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-008"
+        ],
+        "sub_domain": [
+          "D-08.2",
+          "D-07.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.AT-02",
+            "title": "All members of the organization's workforce understand their roles and responsibilities in achieving the organization's cybersecurity objectives"
+          },
+          {
+            "id": "GV.RR-02",
+            "title": "Roles, responsibilities, authorities, and accountabilities related to cybersecurity risk management are established, communicated, understood, and enforced"
+          },
+          {
+            "id": "GV.RR-04",
+            "title": "Cybersecurity is included in human resources practices (e.g., people screening, onboarding, training, awareness, offboarding)"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS",
+          "ONE_TIME"
+        ],
+        "regulatory_rationale": "Article 14(1) of the AI Act requires that high-risk AI systems\nbe designed and developed in such a way, including with\nappropriate human-machine interface tools, that they can be\neffectively overseen by natural persons during the period in\nwhich they are in use. The clause is the umbrella provision\nfor the human-oversight duty in Article 14, with the more\nsubstantive content of the duty operationalised in Article\n14(2) to (5). The clause allocates responsibility for\noversight design to the provider, and it ensures that human\noversight is a built-in architectural feature of the high-risk\nAI system rather than an externally imposed deployment-time\nadd-on. Article 14(1) is the principal locus where the AI Act\nbridges from technical-design obligations to human-factors\nobligations, and it is reinforced by Article 14(2) on\ndeployer-implemented oversight measures and Article 14(3) on\nproportionality of oversight to the risks and intended purpose.\n",
+        "security_rationale": "The obligation in Art. 14(1) is operationalised in NIST CSF\n2.0 through **PR.AT-02 (All members of the organization's\nworkforce understand their roles and responsibilities in\nachieving the organization's cybersecurity objectives)**,\n**GV.RR-02 (Roles, responsibilities, authorities, and\naccountabilities related to cybersecurity risk management are\nestablished, communicated, understood, and enforced)**, and\n**GV.RR-04 (Cybersecurity is included in human resources\npractices (e.g., people screening, onboarding, training,\nawareness, offboarding))**. PR.AT-02 anchors the\nworkforce-role-understanding substrate that the `appropriate\nhuman-machine interface tools` qualifier requires — providers\nmust design oversight interfaces the deploying workforce can\nactually use to discharge the five abilities of Art. 14(4).\nGV.RR-02 supplies the RACI substrate that the `effectively\noverseen` duty requires, ensuring human oversight is a\nbuilt-in architectural feature with formal authority to\nintervene, not a deployment-time add-on. GV.RR-04 covers the\nHR-practices dimension — onboarding, training, awareness —\nthat the upstream Art. 13(3) instructions for use and the\ndownstream Art. 14(2) deployer-implemented measures jointly\nrequire for oversight sustainability. A provider documenting\nPR.AT-02 workforce role understanding, GV.RR-02 RACI\ndefinition and GV.RR-04 HR-practice integration demonstrates\nex post that the Art. 14(1) oversight-design substrate is\noperationalised as a built-in architectural feature,\nsatisfying the cumulative supervisor-can-intervene,\nsupervisor-does-intervene and supervisor-understands senses.\n",
+        "ambiguity_notes": "The clause carries medium severity on the vague adjectives\n`appropriate` (modifying human-machine interface tools) and\n`effectively overseen`. The phrase `effectively overseen` is\npoly-semous and admits three readings: supervisor-can-intervene,\nsupervisor-does-intervene, and supervisor-understands. The\nthree senses drive different design choices — stop-button,\ndashboard and explanation-panel respectively. The chosen\nreading is cumulative, covering all three senses, because the\n`during the period in which they are in use` opening implicates\neach. As an alternative reading, providers could focus on\nsupervisor-can-intervene only, which is the cheapest to\noperationalise but the weakest against the\nsupervisor-does-intervene and supervisor-understands senses\nthat Article 14(4) separately addresses. Remain open: whether\n`appropriate human-machine interface tools` requires the\nprovider to supply proprietary oversight tooling, or whether\ndeployer-supplied oversight tooling suffices where the\nprovider documents the oversight-design interface and the\nminimum-tooling expectations in the instructions for use under\nArticle 13(3).\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "MAP-3.5",
+            "title": "Processes for human oversight are defined, assessed, and documented in accordance with organizational policies"
+          },
+          {
+            "id": "GOVERN-2.1",
+            "title": "Roles, responsibilities and lines of communication are documented and clear throughout the organization"
+          },
+          {
+            "id": "GOVERN-3.1",
+            "title": "Decision-making on risk across the lifecycle is informed by a diverse team"
+          }
+        ],
+        "airmf_mapping_rationale": "Human oversight by design (Art. 14) -> MAP-3.5 (oversight processes defined), GOVERN-2.1 (roles), GOVERN-3.1 (diverse team decision-making).\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-013",
+      "title": "Five cumulative human-oversight abilities enabled as appropriate",
+      "sub_domain": [
+        "D-08.2"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-008"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C15",
+          "article_ref": "Art. 14(4) — `natural persons to whom human oversight is assigned are enabled, as appropriate and proportionate: (a) to properly understand … (b) to remain aware … (c) to correctly interpret … (d) to decide … (e) to intervene …`"
+        }
+      ],
+      "nist_csf": [
+        "PR.AT-02",
+        "PR.AT-01",
+        "GV.RR-02"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "MAP-3.5",
+        "GOVERN-2.1",
+        "GOVERN-2.2"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-013",
+        "title": "Five cumulative human-oversight abilities enabled as appropriate",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C15",
+            "article_ref": "Art. 14(4) — `natural persons to whom human oversight is assigned are enabled, as appropriate and proportionate: (a) to properly understand … (b) to remain aware … (c) to correctly interpret … (d) to decide … (e) to intervene …`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-008"
+        ],
+        "sub_domain": [
+          "D-08.2"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.AT-02",
+            "title": "All members of the organization's workforce understand their roles and responsibilities in achieving the organization's cybersecurity objectives"
+          },
+          {
+            "id": "PR.AT-01",
+            "title": "All users are informed and trained on cybersecurity topics (e.g., recognition of phishing, social engineering, and other relevant risks)"
+          },
+          {
+            "id": "GV.RR-02",
+            "title": "Roles, responsibilities, authorities, and accountabilities related to cybersecurity risk management are established, communicated, understood, and enforced"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Article 14(4) of the AI Act requires that natural persons to\nwhom human oversight is assigned are enabled, as appropriate\nand proportionate, to discharge five cumulative oversight\nabilities: (a) to properly understand the relevant capacities\nand limitations of the high-risk AI system and foreseeable\nmisuse scenarios; (b) to remain aware of automation bias; (c)\nto correctly interpret the output; (d) to decide not to use\nthe high-risk AI system or to disregard, override or reverse\nits output; and (e) to intervene on the operation or\ninterrupt the system through a stop button or similar\nprocedure. The five-element list operationalises the umbrella\nhuman-oversight duty in Article 14(1) and is reinforced by\nArticle 14(5) on deployer-oversight enablement.\n",
+        "security_rationale": "The obligation in Art. 14(4) is operationalised in NIST CSF\n2.0 through **PR.AT-02 (All members of the organization's\nworkforce understand their roles and responsibilities in\nachieving the organization's cybersecurity objectives)**,\n**PR.AT-01 (All users are informed and trained on\ncybersecurity topics (e.g., recognition of phishing, social\nengineering, and other relevant risks))**, and **GV.RR-02\n(Roles, responsibilities, authorities, and accountabilities\nrelated to cybersecurity risk management are established,\ncommunicated, understood, and enforced)**. PR.AT-02 covers\nthe role-understanding dimension that sub-points (a) `properly\nunderstand` and (c) `correctly interpret` require. PR.AT-01\nanchors the awareness-and-training substrate that sub-point\n(b) `remain aware of automation bias` and sub-points (d)\n`decide` and (e) `intervene` require, ensuring overseers\ndetect and respond to AI-specific failure modes including the\ncognitive-bias correction that `automation bias` operationalises.\nGV.RR-02 supplies the RACI substrate that sub-points (d) and\n(e) require — overseers must hold formal authority to override\nand interrupt the system. A provider evidencing PR.AT-02 role\nunderstanding, PR.AT-01 awareness training and GV.RR-02 RACI\ndefinition demonstrates ex post that the five-element Art.\n14(4) oversight-abilities list — cumulative AND of all five\nabilities plus the last-resort sub-point (e) intervention\nsafety net — is operationalised in the provider's training\nand tooling programme.\n",
+        "ambiguity_notes": "The clause carries medium severity on the soft-hedge opening\n`as appropriate and proportionate`, which modifies the entire\nfive-element list and which itself is a Berry-classic soft\nhedge. The phrase `automation bias` is poly-semous and\nimported from human-factors research without definition in\nthe OJ; the chosen reading is that the technical term carries\nits established human-factors meaning, which encompasses both\nthe cognitive tendency to defer to automated outputs and the\nrelated tendency to under-detect automation errors. The\nfive-element list is AND-coordinated, so all five abilities\nmust be enabled cumulatively. As an alternative reading,\nproviders could collapse the five abilities into a single\nintegrated training-and-tooling programme that addresses each\nability without treating them as separate documentation\ndeliverables. Remain open: whether the `as appropriate and\nproportionate` hedge permits omission of certain abilities for\nlow-risk categories of high-risk systems, such as Annex III\ncategory 1 biometric systems where some abilities are\noperationally infeasible or where sub-point (e) intervention\nis impossible at biometric-decision latency.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "MAP-3.5",
+            "title": "Processes for human oversight are defined, assessed, and documented in accordance with organizational policies"
+          },
+          {
+            "id": "GOVERN-2.1",
+            "title": "Roles, responsibilities and lines of communication are documented and clear throughout the organization"
+          },
+          {
+            "id": "GOVERN-2.2",
+            "title": "Risk management training for organizational personnel and partners to perform duties consistent with related policies, procedures, and agreements"
+          }
+        ],
+        "airmf_mapping_rationale": "Five oversight abilities -> MAP-3.5 (oversight processes), GOVERN-2.1 (roles/responsibilities), GOVERN-2.2 (training).\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-014",
+      "title": "Accuracy robustness and cybersecurity baseline across AI lifecycle",
+      "sub_domain": [
+        "D-07.1",
+        "D-02.1"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-009"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C16",
+          "article_ref": "Art. 15(1) — `High-risk AI systems shall be designed and developed in such a way that they achieve an appropriate level of accuracy, robustness, and cybersecurity, and that they perform consistently in those respects throughout their lifecycle`"
+        }
+      ],
+      "nist_csf": [
+        "PR.PS-06",
+        "PR.IR-03",
+        "ID.RA-04"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "MEASURE-2.5",
+        "MEASURE-2.6",
+        "MEASURE-2.7",
+        "GOVERN-1.2"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-014",
+        "title": "Accuracy robustness and cybersecurity baseline across AI lifecycle",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C16",
+            "article_ref": "Art. 15(1) — `High-risk AI systems shall be designed and developed in such a way that they achieve an appropriate level of accuracy, robustness, and cybersecurity, and that they perform consistently in those respects throughout their lifecycle`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-009"
+        ],
+        "sub_domain": [
+          "D-07.1",
+          "D-02.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.PS-06",
+            "title": "Secure software development practices are integrated, and their performance is monitored throughout the SDLC"
+          },
+          {
+            "id": "PR.IR-03",
+            "title": "Mechanisms are put in place to achieve resilience requirements in normal and adverse situations"
+          },
+          {
+            "id": "ID.RA-04",
+            "title": "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified, recorded, and prioritized"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 15(1) of Regulation (EU) 2024/1689 is the single provision\nthat fuses three AI-technical properties — accuracy, robustness,\nand cybersecurity — into one continuous, lifecycle-wide duty of\nthe high-risk AI provider. The provision applies from design\nthrough decommissioning and is read together with Recital 66,\nwhich clarifies that the three properties are to be interpreted\nin light of the system's intended purpose and the state of the\nart. The duty is articulated in 3-way AND form (the OJ does not\ncontemplate partial compliance with two of the three properties),\nand is anchored in Title III Chapter 2 (Section 2 — Requirements\nfor High-Risk AI Systems), placing it on the same legal plane as\nthe data-governance, documentation, transparency, human-oversight\nand risk-management obligations of Arts. 10–14. The combined\nreading with the cross-cutting post-market monitoring obligation\nof Art. 72(1) means the provider must demonstrate — ex-ante\n(conformity assessment) and ex-post (post-market surveillance)\n— that the three properties are not merely aspirational at\ndesign time but are maintained throughout the AI system's\nlifecycle. A compliance officer should treat Art. 15(1) as the\ncorner-stone substantive duty of the high-risk AI title, on par\nwith Art. 9 (risk management) and Art. 10 (data governance).\n",
+        "security_rationale": "The Art. 15(1) three-property duty is operationalised in NIST\nCSF 2.0 through **PR.PS-06 (Secure software development\npractices integrated across the SDLC)**, **PR.IR-03\n(Resilience mechanisms in normal and adverse situations)**,\nand **ID.RA-04 (Threat-impact prioritisation)**, with\nsupplementary alignment to **GV.OV-02 (Strategy review\nagainst changing risk landscape)**, **PR.DS-02\n(Data-in-transit confidentiality, integrity, availability)**,\nand **ID.RA-01 (Vulnerability identification, validation,\nrecording)**. PR.PS-06 anchors the SDLC substrate — secure\ncoding, threat modelling, verification, change control — on\nwhich the three properties rest: an accuracy, robustness, or\ncybersecurity defect is most often a defect of process rigour.\nPR.IR-03 enforces the resilience dimension of robustness:\nfailure-mode envelopes, graceful degradation, fail-safe\npatterns. ID.RA-04 supplies the risk-prioritisation\ndiscipline that converts the abstract duty into a ranked\ntreatment set. GV.OV-02 closes the loop by requiring the\nprovider to revisit the strategy when the threat landscape,\nthe regulatory baseline, or the technology stack shifts,\nsatisfying the lifecycle-consistency clause. PR.DS-02\nreinforces the cybersecurity property by binding data-in-\ntransit CIA to the substrate, and ID.RA-01 records each\nidentified vulnerability as evidence. Together these\nsubcategories produce auditable artefacts — SDLC records,\nresilience test reports, risk register, strategy-review\nminutes — that enable the provider to demonstrate ex post\nto the conformity-assessment body and the market-\nsurveillance authority that the three properties were\nmaintained throughout the system lifecycle (Art. 9 + Art. 15\n+ Art. 72 accountability chain).\n",
+        "ambiguity_notes": "Source clause AIA-C16 carries three **S3** features (per\n`../Regulation/AI_Act/Ambiguity/06_AI_Act.md` §2.16). First, `appropriate level of accuracy,\nrobustness, and cybersecurity` is VAG-3 — the three properties\nare each inquiry-resistant (Berry §5.1): `accuracy` has no OJ\nanchor for metric, threshold, or confidence level; `robustness`\nhas no OJ anchor for the perturbation class; `cybersecurity`\ninherits the EU-level definitional gap that CRA C07\n(`cybersecurity` POLY) and NIS 2 C01 (`cybersecurity` POLY)\nalso fail to close. Second, **POLY-S3** decomposes `accuracy`\ninto R1 precision / R2 recall / R3 F1 / R4 calibration, and\n`robustness` into R1 distributional shift / R2 adversarial /\nR3 operational — the OJ does not pick. Third, **COORD-S2** on\n`accuracy, robustness AND cybersecurity` admits no partial\ncompliance (2 of 3) reading, so the provider must address all\nthree in parallel. The lifecycle-consistency clause\n(`perform consistently in those respects throughout their\nlifecycle`) is itself VAG+POLY: `consistently` is POLY between\nR1 same-as-design-time / R2 monotonic improvement / R3 no-\ndegradation, and the OJ does not say which sense binds.\nPractical reading chosen (Berry §3.3.1): the three properties\nform an integrated engineering envelope, with the metric-set\nand the threshold-set disclosed in the technical documentation\n(Annex IV §2) and justified in the risk-management file\n(Art. 9). Remain open: (a) whether the supervisory authorities\nwill accept any one of the four accuracy metrics in lieu of a\nmetric-set, or require the full vector; (b) whether the\n`perform consistently` sense binds at design-time parity or at\na no-degradation floor; (c) whether partial compliance (2 of 3\nproperties) is ever tolerated in conformity-assessment practice.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "MEASURE-2.5",
+            "title": "AI system to be deployed is demonstrated to be valid and reliable and limitations of the generalizability are documented"
+          },
+          {
+            "id": "MEASURE-2.6",
+            "title": "AI system is evaluated regularly for safety risks with metrics for system reliability and robustness, real-time monitoring, and response times for AI system failures"
+          },
+          {
+            "id": "MEASURE-2.7",
+            "title": "AI system security and resilience are evaluated and documented"
+          },
+          {
+            "id": "GOVERN-1.2",
+            "title": "Characteristics of trustworthy AI"
+          }
+        ],
+        "airmf_mapping_rationale": "Art. 15 accuracy/robustness/cybersecurity -> MEASURE-2.5 (valid/reliable), MEASURE-2.6 (safety), MEASURE-2.7 (security/resilience). GOVERN-1.2 anchors trustworthy-AI characteristics.\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-015",
+      "title": "Resilience against errors faults and environmental drift",
+      "sub_domain": [
+        "D-01.4",
+        "D-02.1"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-009"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C17",
+          "article_ref": "Art. 15(3) — `High-risk AI systems shall be as resilient as possible regarding errors, faults or inconsistencies that may occur within the system or the environment … The robustness of high-risk AI systems may be achieved through technical redundancy solutions, which may include backup or fail-safe plans`"
+        }
+      ],
+      "nist_csf": [
+        "PR.IR-03",
+        "PR.IR-04",
+        "PR.DS-11"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "MEASURE-2.6",
+        "MEASURE-2.7",
+        "MANAGE-2.3"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-015",
+        "title": "Resilience against errors faults and environmental drift",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C17",
+            "article_ref": "Art. 15(3) — `High-risk AI systems shall be as resilient as possible regarding errors, faults or inconsistencies that may occur within the system or the environment … The robustness of high-risk AI systems may be achieved through technical redundancy solutions, which may include backup or fail-safe plans`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-009"
+        ],
+        "sub_domain": [
+          "D-01.4",
+          "D-02.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.IR-03",
+            "title": "Mechanisms are put in place to achieve resilience requirements in normal and adverse situations"
+          },
+          {
+            "id": "PR.IR-04",
+            "title": "Adequate resource capacity to ensure availability is maintained"
+          },
+          {
+            "id": "PR.DS-11",
+            "title": "Backups of data are created, protected, maintained, and tested"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 15(3) of Regulation (EU) 2024/1689 requires high-risk AI\nproviders to make the system `as resilient as possible`\nregarding errors, faults, and inconsistencies arising in the\nsystem or its operating environment, and lists technical\nredundancy (including backup and fail-safe plans) as one\npermissible means. Recital 66 confirms that resilience\nmeasures are to be proportionate to the intended purpose and\nthe state of the art. The 3-way OR of `errors, faults or\ninconsistencies` is broad — it covers both AI-technical\nfailures (e.g. inference-stage numerical instability) and\nenvironmental failures (e.g. sensor degradation) — and the\n2-way OR for the means (`backup OR fail-safe plans`) signals\nthat the OJ does not mandate a specific engineering pattern.\nA compliance officer should treat this provision as the\nresilience backstop to Art. 15(1): where Art. 15(1) sets the\ncontinuous property baseline, Art. 15(3) sets the failure-\nmode envelope.\n",
+        "security_rationale": "The Art. 15(3) resilience duty is operationalised in NIST\nCSF 2.0 through **PR.IR-03 (Resilience mechanisms in normal\nand adverse situations)**, **PR.IR-04 (Adequate resource\ncapacity for availability)**, and **PR.DS-11 (Backups\ncreated, protected, maintained, tested)**, with\nsupplementary alignment to **PR.PS-02 (Software maintenance\ncommensurate with risk)** and **ID.RA-04 (Threat-impact\nprioritisation)**. PR.IR-03 is the principal anchor: it\nrequires the provider to design, document, and verify\nresilience mechanisms — failover, redundant inference paths,\ngraceful degradation — that match the enumerated failure\nmodes (`errors, faults, inconsistencies`). PR.IR-04 binds\nthe capacity dimension: the resource budget (compute,\nstorage, network) must be sized for the resilience target,\nnot just the steady-state workload, so that backup and\nfail-safe modes have the substrate they need. PR.DS-11\noperationalises the explicit `backup` means: backups must\nnot only be created and protected but also tested, which\ncloses the gap between a documented backup and a usable\nbackup. PR.PS-02 reinforces the resilience chain by binding\nsoftware maintenance (patching, replacement) to risk, and\nID.RA-04 ensures the failure modes are prioritised in the\nrisk register rather than enumerated exhaustively. The\ncombined control set yields documented resilience\narchitectures, backup-restore test reports, capacity-planning\nrecords, and risk-prioritisation minutes — the evidentiary\nsubstrate that supports ex post demonstration of compliance\nto the conformity-assessment body and the market-\nsurveillance authority (Art. 9 + Art. 15(3) + Art. 72\naccountability chain).\n",
+        "ambiguity_notes": "Source clause AIA-C17 carries **S2** features (per\n`../Regulation/AI_Act/Ambiguity/06_AI_Act.md` §2.17). `as resilient as possible` is VAG-2\n(Berry §5.1 soft hedge; R1 best-effort maximum / R2\nreasonable best effort / R3 state-of-the-art — R3 dominant as\nthe literal OJ sense; cf. CRA C07 `state of the art` POLY\non the parallel product-cybersecurity axis). `errors, faults\nor inconsistencies` is POLY-2 (three near-synonyms for\nsystem deviations; reading chosen: R3 cumulative OR per the\n3-way OR). The 2-way OR of `backup OR fail-safe plans` is\nCOORD-2 — the OJ does not require both, only that\ntechnical redundancy be present in some recognised form.\nRemain open: (a) whether `as resilient as possible` collapses\nto `state of the art` or imposes a stricter best-effort\nceiling; (b) whether `fail-safe` requires a documented safe-\nstate behaviour or merely a documented fallback plan.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "MEASURE-2.6",
+            "title": "AI system is evaluated regularly for safety risks with metrics for system reliability and robustness, real-time monitoring, and response times for AI system failures"
+          },
+          {
+            "id": "MEASURE-2.7",
+            "title": "AI system security and resilience are evaluated and documented"
+          },
+          {
+            "id": "MANAGE-2.3",
+            "title": "Procedures are followed to respond to and recover from a previously unknown risk when it is identified"
+          }
+        ],
+        "airmf_mapping_rationale": "Resilience -> MEASURE-2.6 (safety risks) and MEASURE-2.7 (security/resilience). MANAGE-2.3 covers response to unknown adverse events.\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-016",
+      "title": "AI-specific attack vector mitigation across training and inference",
+      "sub_domain": [
+        "D-02.1",
+        "D-07.2"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-009"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C18",
+          "article_ref": "Art. 15(4)–(5) — `measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the training data set (data poisoning), or pre-trained components used in training (model poisoning), inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality attacks or model flaws`"
+        }
+      ],
+      "nist_csf": [
+        "ID.RA-04",
+        "PR.PS-06",
+        "RS.MI-01",
+        "RS.MA-03"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "MEASURE-2.7",
+        "MAP-3.2",
+        "MANAGE-1.3"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-016",
+        "title": "AI-specific attack vector mitigation across training and inference",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C18",
+            "article_ref": "Art. 15(4)–(5) — `measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the training data set (data poisoning), or pre-trained components used in training (model poisoning), inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality attacks or model flaws`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-009"
+        ],
+        "sub_domain": [
+          "D-02.1",
+          "D-07.2"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "ID.RA-04",
+            "title": "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified, recorded, and prioritized"
+          },
+          {
+            "id": "PR.PS-06",
+            "title": "Secure software development practices are integrated, and their performance is monitored throughout the SDLC"
+          },
+          {
+            "id": "RS.MI-01",
+            "title": "Incidents are contained"
+          },
+          {
+            "id": "RS.MA-03",
+            "title": "Incidents are categorized, prioritized, and scoped"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS",
+          "TRIGGERED"
+        ],
+        "regulatory_rationale": "Art. 15(4) of Regulation (EU) 2024/1689 requires high-risk AI\nproviders to put in place appropriate technical and\norganisational measures against AI-specific attack categories —\ndata poisoning, model poisoning, adversarial examples / model\nevasion, confidentiality attacks, and model flaws. Art. 15(5)\nelaborates the technical-and-organisational-measure framework,\nplacing the obligation on a CONTINUOUS+TRIGGERED axis (the\ncontinuous baseline; the triggered escalation when an attack\nis detected or suspected). Recital 66 frames the obligation as\nparallel to — not duplicative of — the CRA product-cybersecurity\nbaseline (CRA Annex I §(1)(b)–(c) for confidentiality,\nintegrity, availability of the AI substrate). The combined\nreading with Art. 73 (serious incident reporting) and Art. 72\n(post-market monitoring) means an attack on the AI substrate\ncan trigger a chain: detection → incident categorisation →\nmarket-surveillance reporting within the Art. 73 differentiated\ntimelines. A compliance officer should treat Art. 15(4)–(5) as\nthe AI-specific complement to the conventional cybersecurity\ncontrols inherited from CRA and NIS 2.\n",
+        "security_rationale": "The Art. 15(4)–(5) AI-specific attack duty is operationalised\nin NIST CSF 2.0 through **ID.RA-04 (Threat-impact\nprioritisation)**, **PR.PS-06 (Secure SDLC)**, **RS.MI-01\n(Incident containment)**, and **RS.MA-03 (Incident\ncategorisation, prioritisation, scoping)**, with\nsupplementary alignment to **RS.AN-03 (Root-cause\nanalysis)**, **DE.AE-02 (Event analysis)**, and **DE.CM-09\n(Runtime monitoring)**. ID.RA-04 forces the provider to\nrank the six attack categories — data poisoning, model\npoisoning, adversarial examples, confidentiality attacks,\nmodel flaws — by impact and likelihood rather than\nenumerate them, so that controls are sized to the\nprioritised threat picture. PR.PS-06 anchors the SDLC\nsubstrate (threat modelling, secure coding, code review,\nverification) where AI-specific attacks are most cheaply\nprevented by design. RS.MI-01 supplies the triggered\ncontainment arm — when an attack is detected, the\nprovider must contain it (model rollback, input filtering,\ninference quarantining) without waiting for full\nattribution. RS.MA-03 binds the response to a categorised\nscope so the Art. 73 reporting chain (SR-AIACT-022) can\nfire with the correct timeline (15 / 10 / 2 days).\nSupplementary RS.AN-03 (root cause), DE.AE-02 (event\nanalysis) and DE.CM-09 (runtime monitoring) close the\nloop on detection, attribution, and continuous\nobservability. The combined control set produces a\nthreat-prioritised control matrix, SDLC artefacts\n(threat models, code-review records, test reports),\nincident-response runbooks with categorised playbooks per\nattack class, and a continuous monitoring telemetry\nstream — the evidentiary substrate for ex post compliance\ndemonstration under the Art. 9 risk-management + Art. 15\ncybersecurity + Art. 73 incident-reporting + Art. 72\npost-market-monitoring accountability chain.\n",
+        "ambiguity_notes": "Source clause AIA-C18 carries **S2** on `where appropriate`\n(VAG soft hedge) and on the six named attack categories\n(POLY-2 — each is a research-term-of-art with multiple\noperational definitions: `data poisoning` alone covers label-\nflipping, backdoor injection, and feature-collision). The\n5-way AND of incident-response phases (`prevent, detect,\nrespond to, resolve AND control`) + 6-way OR of attack\ntypes is **S3** on the COORD axis (Berry §5.4.7 — twin\nmulti-element coordination); the cross-product admits ≥30\ndistinct obligation shapes per `../Regulation/AI_Act/Ambiguity/06_AI_Act.md` §2.18.\nPractical reading chosen: R1 cumulative AND for the 5 phases\n(all five must be present in the provider's IR process) and\nR1 cumulative OR for the 6 attack types (any of the six\nattack categories must be reachable by the 5-phase process).\nRemain open: (a) whether the supervisory authorities will\nrequire one mitigation per attack category, or accept a\ncross-cutting mitigation that subsumes several; (b) whether\n`confidentiality attacks` includes model inversion and\nmembership inference or only the narrower exfiltration\nsense used in some CRA readings.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "MEASURE-2.7",
+            "title": "AI system security and resilience are evaluated and documented"
+          },
+          {
+            "id": "MAP-3.2",
+            "title": "Potential costs, including non-monetary costs, from expected or realized AI errors or system functionality and trustworthiness are examined and documented"
+          },
+          {
+            "id": "MANAGE-1.3",
+            "title": "Responses to the AI risks deemed high priority are developed, planned, and documented"
+          }
+        ],
+        "airmf_mapping_rationale": "AI-specific attacks (data poisoning, model evasion) -> MEASURE-2.7 (security/resilience), MAP-3.2 (costs/risks), MANAGE-1.3 (response to high-priority risks).\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-017",
+      "title": "Documented quality management system governing AI compliance",
+      "sub_domain": [
+        "D-09.1"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-010"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C20",
+          "article_ref": "Art. 17(1) — `Providers of high-risk AI systems shall put a quality management system in place that ensures compliance with this Regulation. That system shall be documented in a systematic and orderly manner in the form of written policies, procedures and instructions, and shall include at least the following aspects: (a) … (m)`"
+        },
+        {
+          "clause_id": "AIA-C22",
+          "article_ref": "Art. 17(1)(g) — `the risk management system referred to in Article 9`"
+        }
+      ],
+      "nist_csf": [
+        "GV.PO-01",
+        "GV.RM-01",
+        "GV.RM-04"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "GOVERN-1.1",
+        "GOVERN-1.3",
+        "GOVERN-1.4",
+        "GOVERN-1.6"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-017",
+        "title": "Documented quality management system governing AI compliance",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C20",
+            "article_ref": "Art. 17(1) — `Providers of high-risk AI systems shall put a quality management system in place that ensures compliance with this Regulation. That system shall be documented in a systematic and orderly manner in the form of written policies, procedures and instructions, and shall include at least the following aspects: (a) … (m)`"
+          },
+          {
+            "clause_id": "AIA-C22",
+            "article_ref": "Art. 17(1)(g) — `the risk management system referred to in Article 9`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-010"
+        ],
+        "sub_domain": [
+          "D-09.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "GV.PO-01",
+            "title": "Organizational cybersecurity policy is established, communicated, and enforced"
+          },
+          {
+            "id": "GV.RM-01",
+            "title": "Risk management objectives are established and agreed to by organizational stakeholders"
+          },
+          {
+            "id": "GV.RM-04",
+            "title": "Strategic direction on identifying and responding to risks established and communicated"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 17(1) of Regulation (EU) 2024/1689 requires providers of\nhigh-risk AI systems to put in place a quality management\nsystem (QMS) that ensures compliance with the AI Act. The QMS\nmust be documented in a systematic and orderly manner as\nwritten policies, procedures, and instructions, and must\ncover at least the 13 enumerated aspects (a)–(m) of the\nparagraph. Sub-point (g) cross-refers to Art. 9 (the risk\nmanagement system), so the QMS is the governance substrate\nfor the substantive Title III obligations. Recital 67\ncharacterises the QMS as inspired by established quality\nstandards (ISO 9001 family) but does not mandate a specific\nstandard, leaving the provider to choose. A compliance officer\nshould treat the QMS as the umbrella obligation that the\nconformity assessment will examine first.\n",
+        "security_rationale": "The Art. 17(1) QMS duty is operationalised in NIST CSF 2.0\nthrough **GV.PO-01 (Organisational cybersecurity policy\nestablished, communicated, enforced)**, **GV.RM-01 (Risk\nmanagement objectives established and agreed)**, and\n**GV.RM-04 (Strategic direction on identifying and\nresponding to risks)**, with supplementary alignment to\n**GV.PO-02 (Cybersecurity processes and procedures\nestablished, communicated, enforced)** and **GV.OC-03\n(Legal, regulatory, contractual requirements understood\nand managed)**. GV.PO-01 is the policy arm of the QMS —\nthe top-level written cybersecurity policy that\noperationalises the 13-element list (a)–(m), including the\npolicies, procedures, and instructions anchor in Art. 17(1).\nGV.RM-01 binds the QMS to risk-management objectives that\nhave been agreed by organisational stakeholders, satisfying\nsub-point (g)'s cross-reference to Art. 9. GV.RM-04 supplies\nthe strategic-direction layer (risk appetite, response\nposture, escalation criteria) that connects policy\nformulation (GV.PO-01) and risk-objective setting\n(GV.RM-01) to operational risk-treatment decisions.\nSupplementary GV.PO-02 ensures that the policies are\naccompanied by processes and procedures that are also\ndocumented, communicated, and enforced — the systematic\nand orderly requirement of Art. 17(1). GV.OC-03 closes the\nloop by ensuring the QMS understands and manages the full\nset of legal, regulatory, and contractual obligations that\nthe AI Act adds on top of CRA, NIS 2, GDPR, and DORA. The\ncombined control set yields a documented policy stack,\nagreed risk-management objectives, a strategic-direction\ndocument, process and procedure manuals, and a legal/\nregulatory obligations register — the evidentiary\nsubstrate for the conformity-assessment body to examine\nthe QMS as the umbrella obligation under the Art. 17\nQMS + Art. 9 risk-management + Art. 43/47 conformity-\nassessment accountability chain.\n",
+        "ambiguity_notes": "Source clause AIA-C20 carries **S2** features (per\n`../Regulation/AI_Act/Ambiguity/06_AI_Act.md` §2.20). `systematic and orderly manner` is\nVAG-2 (Berry §5.1 — the OJ does not anchor the sense).\n`quality management system` is POLY-2 with R1 ISO 9001\n/ R2 ISO/IEC 23053 (AI risk management framework\nstandard) / R3 internal bespoke; the OJ does not name\nany specific standard (reading chosen: R3 literal). The\n3-way AND of `written policies, procedures AND instructions`\nand the 13-element closed list (a)–(m) are both COORD-2.\nAIA-C22 inherits POLY-2 from AIA-C01 (`risk management\nsystem` — the central AI Act ambiguity per `../Regulation/AI_Act/Ambiguity/06_AI_Act.md`\n§3.5). Remain open: (a) whether conformity-assessment\nbodies will accept an ISO 9001 certificate as a proxy\nfor the QMS or require a stand-alone AI-QMS file; (b)\nwhether the 13 elements must be discrete QMS chapters or\ncan be embedded into a single integrated management\nsystem.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "GOVERN-1.1",
+            "title": "Legal and regulatory requirements"
+          },
+          {
+            "id": "GOVERN-1.3",
+            "title": "Risk management processes and procedures"
+          },
+          {
+            "id": "GOVERN-1.4",
+            "title": "Transparent policies, procedures, and other controls for risk management"
+          },
+          {
+            "id": "GOVERN-1.6",
+            "title": "Mechanisms and resources to inventory AI systems"
+          }
+        ],
+        "airmf_mapping_rationale": "QMS (Art. 17) -> GOVERN-1.* cluster: legal requirements, processes, transparent controls, inventory mechanisms. The most governance-heavy mapping.\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-018",
+      "title": "Secure design control and verification integrated into SDLC",
+      "sub_domain": [
+        "D-07.1"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-010"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C21",
+          "article_ref": "Art. 17(1)(c) — `techniques, procedures and systematic actions to be used for the design, design control and design verification of the high-risk AI system`"
+        }
+      ],
+      "nist_csf": [
+        "PR.PS-06",
+        "PR.PS-01"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "GOVERN-4.1",
+        "GOVERN-4.3",
+        "MEASURE-2.7"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-018",
+        "title": "Secure design control and verification integrated into SDLC",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C21",
+            "article_ref": "Art. 17(1)(c) — `techniques, procedures and systematic actions to be used for the design, design control and design verification of the high-risk AI system`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-010"
+        ],
+        "sub_domain": [
+          "D-07.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.PS-06",
+            "title": "Secure software development practices are integrated, and their performance is monitored throughout the SDLC"
+          },
+          {
+            "id": "PR.PS-01",
+            "title": "Configuration management practices are established, documented, and applied to assets"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 17(1)(c) of Regulation (EU) 2024/1689 requires the QMS\nto include the techniques, procedures, and systematic actions\nused for the design, design control, and design verification\nof the high-risk AI system. This is the secure-development-\nlifecycle anchor of the QMS and is the operational bridge\nbetween Art. 17(1) (QMS) and Art. 9 (risk management) on\none side, and Art. 15 (accuracy / robustness / cybersecurity)\non the other. A compliance officer should treat Art. 17(1)(c)\nas the SDLC sub-process specification that the conformity\nassessment will examine alongside the technical documentation\n(Annex IV).\n",
+        "security_rationale": "The Art. 17(1)(c) SDLC duty is operationalised in NIST CSF\n2.0 through **PR.PS-06 (Secure software development\npractices integrated across the SDLC)** and **PR.PS-01\n(Configuration management practices established,\ndocumented, applied)**, with supplementary alignment to\n**PR.PS-02 (Software maintenance commensurate with risk)**,\n**ID.RA-01 (Vulnerability identification, validation,\nrecording)**, and **GV.PO-02 (Cybersecurity processes and\nprocedures established, communicated, enforced)**. PR.PS-06\nis the principal anchor: it directly maps to the\n`techniques, procedures and systematic actions` for\n`design, design control and design verification` of the\nhigh-risk AI system, covering threat modelling (design),\ncode review and change control (design control), and\ntesting and review (design verification). PR.PS-01 enforces\nthe design-control axis — configuration baselines,\nintegrity of design artefacts, controlled changes — so\nthat the design can be traced to its source and\nreconstructed. Supplementary PR.PS-02 binds software\nmaintenance to the risk picture (patching, replacement,\nremoval), closing the post-market SDLC loop. ID.RA-01\nensures that vulnerabilities identified during design\nverification are recorded, validated, and feed back into\nthe risk-management file under Art. 9. GV.PO-02 enforces\nthat the SDLC is anchored in documented, communicated, and\nenforced processes. The combined control set yields\ndocumented design specifications, configuration baselines,\nchange-control records, verification reports (test\nresults, code-review records), vulnerability register\nentries, and process manuals — the evidentiary substrate\nfor ex post demonstration of compliance under the Art. 17\nQMS + Art. 9 risk-management + Art. 15 accuracy-\nrobustness-cybersecurity + Art. 43/47 conformity-\nassessment accountability chain.\n",
+        "ambiguity_notes": "Source clause AIA-C21 carries **S2** POLY-2 on\n`design` vs. `design control` vs. `design verification`\n— three engineering terms with overlapping but distinct\nindustry meanings (Berry §3.3.1; cf. ISO 9001 §8.3, IEC\n62304, NIST SP 800-218 SSDF PW.4/PW.5/PW.7). The 3-way\nAND of `design, design control AND design verification`\n+ 3-way AND of `techniques, procedures AND systematic\nactions` is a twin 3-way AND that compounds the\ncumulative obligation (Berry §5.5). Remain open: (a)\nwhether `design verification` requires independent\nverification (i.e. a separate team) or self-verification\nby the design team is acceptable; (b) whether the\n`systematic actions` axis covers post-deployment\nverification or only pre-market verification.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "GOVERN-4.1",
+            "title": "Organizational policies, and practices to foster a critical thinking and safety-first mindset in design, development, deployment, and uses"
+          },
+          {
+            "id": "GOVERN-4.3",
+            "title": "Organizational practices are in place to enable AI testing, identification of incidents, and information sharing"
+          },
+          {
+            "id": "MEASURE-2.7",
+            "title": "AI system security and resilience are evaluated and documented"
+          }
+        ],
+        "airmf_mapping_rationale": "Secure design (Art. 15) -> GOVERN-4.1 (critical-thinking practices), GOVERN-4.3 (testing practices), MEASURE-2.7 (security evaluation).\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-019",
+      "title": "Deployer measures aligned with provider instructions for use",
+      "sub_domain": [
+        "D-09.1"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-011"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C23",
+          "article_ref": "Art. 26(1) — `Deployers of high-risk AI systems shall take appropriate technical and organisational measures to ensure they use such systems in accordance with the instructions for use`"
+        }
+      ],
+      "nist_csf": [
+        "GV.PO-01",
+        "GV.OC-03",
+        "PR.AT-01"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "GOVERN-2.1",
+        "MAP-3.4",
+        "MAP-1.1"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-019",
+        "title": "Deployer measures aligned with provider instructions for use",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C23",
+            "article_ref": "Art. 26(1) — `Deployers of high-risk AI systems shall take appropriate technical and organisational measures to ensure they use such systems in accordance with the instructions for use`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-011"
+        ],
+        "sub_domain": [
+          "D-09.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "GV.PO-01",
+            "title": "Organizational cybersecurity policy is established, communicated, and enforced"
+          },
+          {
+            "id": "GV.OC-03",
+            "title": "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed"
+          },
+          {
+            "id": "PR.AT-01",
+            "title": "All users are informed and trained on cybersecurity topics (e.g., recognition of phishing, social engineering, and other relevant risks)"
+          }
+        ],
+        "applies_to_role": [
+          "DEPLOYER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 26(1) of Regulation (EU) 2024/1689 requires deployers\nof high-risk AI systems to take appropriate technical and\norganisational measures to ensure they use the system in\naccordance with the provider's instructions for use. This\nis the deployer-side mirror of the provider's QMS\nobligation under Art. 17: the deployer cannot rely on the\nprovider's design-time safeguards to discharge its own\nduty. The phrase `technical and organisational measures`\nuses the same AND/OR pattern as GDPR Art. 5(1)(f) (security\nof processing, `C04`) and as NIS 2 Art. 21(1) (C18), so\nthe provider-deployer interface inherits the consolidated\ncross-regulation reading. A compliance officer at the\ndeployer should treat the instructions for use as the\nbinding use-case specification.\n",
+        "security_rationale": "The Art. 26(1) deployer duty is operationalised in NIST CSF\n2.0 through **GV.PO-01 (Organisational cybersecurity policy\nestablished, communicated, enforced)**, **GV.OC-03 (Legal,\nregulatory, contractual requirements understood and\nmanaged)**, and **PR.AT-01 (User awareness and training)**,\nwith supplementary alignment to **GV.RR-01 (Leadership\naccountability for cybersecurity risk)**, **GV.RR-02 (Roles,\nresponsibilities, authorities, accountabilities established\nand communicated)**, and **PR.AT-03 (Senior executive\nunderstanding of cybersecurity roles)**. GV.PO-01 anchors\nthe deployer's own organisational policy — the deployer\ncannot satisfy Art. 26(1) by merely adopting the\nprovider's policy unchanged; it must have a deployer-side\npolicy that maps to the provider's instructions for use.\nGV.OC-03 ensures the deployer understands and manages the\nfull set of legal (Art. 26 + Art. 27), regulatory (NIS 2 +\nDORA + CRA), and contractual (Art. 26 provider-deployer\nagreement) obligations layered on top of the AI Act.\nPR.AT-01 binds the technical-and-organisational measures\nto user awareness and training, so that deployer staff\nrecognise AI-specific risks (data poisoning, model\nevasion, automation bias). Supplementary GV.RR-01 and\nGV.RR-02 reinforce accountability by requiring leadership\nownership and explicit RACI for the AI system, and\nPR.AT-03 ensures the deployer's executives understand\ntheir role. The combined control set yields a documented\ndeployer cybersecurity policy, an obligations register,\na training programme, an executive accountability\nstatement, and a RACI matrix — the evidentiary substrate\nfor the deployer to demonstrate ex post that its use of\nthe high-risk AI system complied with the provider's\ninstructions and with Art. 26 (deployer obligations)\nunder the Art. 17 QMS + Art. 26 deployer + Art. 27\nfundamental-rights impact assessment + GDPR Art. 5(1)(f)\n+ NIS 2 Art. 21 accountability chain.\n",
+        "ambiguity_notes": "Source clause AIA-C23 carries **S2** features (per\n`../Regulation/AI_Act/Ambiguity/06_AI_Act.md` §2.23). `appropriate` is VAG-2 (Berry\n§5.1 — the legal-hedge vs. technical-recommendation\ndistinction is material; reading chosen: R3 cumulative —\n`appropriate` is read as `proportionate to the risk`,\nnot as a soft floor). The AND of `technical AND\norganisational` is COORD-2 (Berry §5.4.7 — same pattern\nas GDPR C04 and NIS 2 C18; reading chosen: R1 inclusive\n— both dimensions required, exclusive readings not\naccommodated by the OJ). Remain open: (a) whether a\ndeployer can satisfy `appropriate` by adopting the\nprovider's TOMs unchanged, or must adapt them to the\ndeployer's own risk profile; (b) whether the deployer's\n`appropriate` threshold is a separate assessment or\ninherits the provider's `appropriate` ceiling.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "GOVERN-2.1",
+            "title": "Roles, responsibilities and lines of communication are documented and clear throughout the organization"
+          },
+          {
+            "id": "MAP-3.4",
+            "title": "Processes for operator and practitioner proficiency with AI system performance and trustworthiness – and relevant technical standards and certifications – are defined, assessed and documented"
+          },
+          {
+            "id": "MAP-1.1",
+            "title": "Intended purpose, potentially beneficial uses, context-specific laws, norms and expectations, and prospective risks are understood and documented"
+          }
+        ],
+        "airmf_mapping_rationale": "Deployer measures (Art. 26) -> GOVERN-2.1 (deployer roles and responsibilities), MAP-3.4 (operator proficiency with AI system use), MAP-1.1 (deployer operating per intended purpose / following provider instructions for use).\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-020",
+      "title": "Competent human overseers assigned with training and authority",
+      "sub_domain": [
+        "D-08.2",
+        "D-09.1"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-011"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C24",
+          "article_ref": "Art. 26(2) — `Deployers shall assign human oversight to natural persons who have the necessary competence, training and authority, as well as the necessary support`"
+        }
+      ],
+      "nist_csf": [
+        "PR.AT-02",
+        "GV.RR-02",
+        "GV.RR-04"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "GOVERN-2.2",
+        "GOVERN-3.1",
+        "GOVERN-2.1"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-020",
+        "title": "Competent human overseers assigned with training and authority",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C24",
+            "article_ref": "Art. 26(2) — `Deployers shall assign human oversight to natural persons who have the necessary competence, training and authority, as well as the necessary support`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-011"
+        ],
+        "sub_domain": [
+          "D-08.2",
+          "D-09.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.AT-02",
+            "title": "All members of the organization's workforce understand their roles and responsibilities in achieving the organization's cybersecurity objectives"
+          },
+          {
+            "id": "GV.RR-02",
+            "title": "Roles, responsibilities, authorities, and accountabilities related to cybersecurity risk management are established, communicated, understood, and enforced"
+          },
+          {
+            "id": "GV.RR-04",
+            "title": "Cybersecurity is included in human resources practices (e.g., people screening, onboarding, training, awareness, offboarding)"
+          }
+        ],
+        "applies_to_role": [
+          "DEPLOYER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 26(2) of Regulation (EU) 2024/1689 requires deployers\nto assign human oversight to natural persons who have the\nnecessary competence, training, and authority, and the\nnecessary support. This is the deployer-side mirror of\nArt. 14(1) (provider design of oversight) and Art. 14(2)\n(provider enablement of oversight by deployers): the\ndeployer must identify, qualify, authorise, and resource\nthe natural persons who will exercise the oversight\nfunction. A compliance officer at the deployer should\ntreat this provision as the personnel-qualification anchor\nof the deployer's AI-governance framework.\n",
+        "security_rationale": "The Art. 26(2) deployer-oversight duty is operationalised\nin NIST CSF 2.0 through **PR.AT-02 (Workforce understanding\nof roles and responsibilities)**, **GV.RR-02 (Roles,\nresponsibilities, authorities, accountabilities\nestablished, communicated, understood, enforced)**, and\n**GV.RR-04 (Cybersecurity in HR practices)**, with\nsupplementary alignment to **PR.AT-01 (User awareness and\ntraining)**, **PR.AT-03 (Senior executive understanding\nof roles)**, and **GV.RR-01 (Leadership accountability\nfor cybersecurity risk)**. PR.AT-02 is the principal\nanchor: it requires the deployer to ensure the assigned\nhuman overseers understand their role (Art. 14(4)(a) —\nproperly understand the system's capacities, limitations\nand foreseeable misuse) and their responsibilities\n(Art. 14(4)(b)–(e) — awareness of automation bias,\ninterpretation, decision, intervention). GV.RR-02\nenforces the formal `competence, training AND authority`\nstructure by requiring roles, responsibilities,\nauthorities, and accountabilities to be established,\ncommunicated, understood, and enforced — the four-way\nAND that the deployer must evidence for each overseer.\nGV.RR-04 binds the overseer assignment to the deployer's\nHR practices (screening, onboarding, training, awareness,\noffboarding) so the `necessary support` element of\nArt. 26(2) is operationalised across the employment\nlifecycle. Supplementary PR.AT-01 covers the\n`awareness` training dimension, PR.AT-03 ensures the\ndeployer's executives understand the role, and GV.RR-01\nanchors leadership accountability. The combined control\nset yields personnel files per overseer documenting the\nfour elements (competence, training, authority,\nsupport), a RACI matrix, a training programme, HR\nonboarding/offboarding records, and an executive\naccountability statement — the evidentiary substrate\nfor the deployer to demonstrate ex post that each\noverseer met the Art. 26(2) qualification standard\nunder the Art. 14(1)+(2)+(4) provider-side design +\nArt. 26(2) deployer-side assignment + Art. 27\nfundamental-rights impact assessment accountability\nchain.\n",
+        "ambiguity_notes": "Source clause AIA-C24 carries **S2** features (per\n`../Regulation/AI_Act/Ambiguity/06_AI_Act.md` §2.24). `necessary` is VAG-2 (Berry §5.1).\n`competence, training, authority` is POLY-2 (three near-\nsynonyms for personnel qualifications; reading chosen:\nR3 literal AND — the three terms collectively cover the\ncognitive, capability, and authority dimensions). The\n3-way AND `competence, training AND authority` + the\n4th element `necessary support` is COORD-2. The deployer\nmust therefore maintain a personnel file per oversight\nperson, documenting each of the four elements. Remain\nopen: (a) whether `necessary support` is limited to\ntechnical support (access, tooling) or extends to\norganisational support (escalation paths, indemnity);\n(b) whether the same natural person can hold oversight\nfor multiple high-risk AI systems or whether one-person-\nper-system is required.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "GOVERN-2.2",
+            "title": "Risk management training for organizational personnel and partners to perform duties consistent with related policies, procedures, and agreements"
+          },
+          {
+            "id": "GOVERN-3.1",
+            "title": "Decision-making on risk across the lifecycle is informed by a diverse team"
+          },
+          {
+            "id": "GOVERN-2.1",
+            "title": "Roles, responsibilities and lines of communication are documented and clear throughout the organization"
+          }
+        ],
+        "airmf_mapping_rationale": "Competent overseers -> GOVERN-2.2 (training), GOVERN-3.1 (diverse team), GOVERN-2.1 (roles/authority).\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-021",
+      "title": "Post-market monitoring feedback loop with documented analysis",
+      "sub_domain": [
+        "D-10.1"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-012"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C25",
+          "article_ref": "Art. 72(1)–(2) — `Providers shall establish and document a post-market monitoring system in a manner that is proportionate to the nature of the AI technologies and the risks of the high-risk AI system. The post-market monitoring system shall actively and systematically collect, document and analyse relevant data`"
+        },
+        {
+          "clause_id": "AIA-C27",
+          "article_ref": "Art. 74(1) — `Regulation (EU) 2019/1020 shall apply to AI systems covered by this Regulation`"
+        }
+      ],
+      "nist_csf": [
+        "DE.CM-09",
+        "ID.IM-04",
+        "GV.OV-03"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "MANAGE-4.1",
+        "MEASURE-3.1",
+        "MEASURE-4.1",
+        "GOVERN-1.5"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-021",
+        "title": "Post-market monitoring feedback loop with documented analysis",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C25",
+            "article_ref": "Art. 72(1)–(2) — `Providers shall establish and document a post-market monitoring system in a manner that is proportionate to the nature of the AI technologies and the risks of the high-risk AI system. The post-market monitoring system shall actively and systematically collect, document and analyse relevant data`"
+          },
+          {
+            "clause_id": "AIA-C27",
+            "article_ref": "Art. 74(1) — `Regulation (EU) 2019/1020 shall apply to AI systems covered by this Regulation`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-012"
+        ],
+        "sub_domain": [
+          "D-10.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "DE.CM-09",
+            "title": "Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events"
+          },
+          {
+            "id": "ID.IM-04",
+            "title": "Cybersecurity risk management improvements are informed by awareness of related developments and context (e.g., threat intelligence, incidents, technology evolution)"
+          },
+          {
+            "id": "GV.OV-03",
+            "title": "Organizational cybersecurity performance is evaluated and reviewed for needed adjustments"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER",
+          "DEPLOYER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 72(1)–(2) of Regulation (EU) 2024/1689 requires high-\nrisk AI providers to establish and document a post-market\nmonitoring (PMM) system proportionate to the AI technology\nand the risks of the system, actively and systematically\ncollecting, documenting, and analysing relevant data. The\nPMM system feeds the lifecycle consistency duty of\nArt. 15(1) and the serious incident reporting duty of\nArt. 73. Art. 74(1) extends Regulation (EU) 2019/1020\n(the EU market-surveillance framework) to AI systems,\nimposing market-surveillance cooperation obligations on\nproviders and deployers. Recital 80 frames the PMM\nobligation as parallel to — but distinct from — the\nmedical-device PMM obligation under MDR Art. 83; the\nborrow is implicit (the OJ does not name the MDR).\nA compliance officer should treat the PMM system as the\nex-post assurance loop that complements the ex-ante\nconformity assessment.\n",
+        "security_rationale": "The Art. 72(1)–(2) post-market monitoring duty is\noperationalised in NIST CSF 2.0 through **DE.CM-09\n(Computing hardware, software, runtime environments and\ndata monitored for adverse events)**, **ID.IM-04\n(Improvements informed by threat intelligence,\nincidents, technology evolution)**, and **GV.OV-03\n(Organisational cybersecurity performance evaluated and\nreviewed for needed adjustments)**, with supplementary\nalignment to **DE.AE-03 (Event data collected and\ncorrelated from multiple sources)**, **GV.PO-02\n(Cybersecurity processes and procedures established,\ncommunicated, enforced)**, and **GV.OC-03 (Legal,\nregulatory, contractual requirements understood and\nmanaged)**. DE.CM-09 is the principal anchor: it binds\nthe PMM system to the runtime monitoring of the AI\nsubstrate (inference logs, telemetry, drift indicators)\nso that adverse events are detected in the operational\nenvironment, not just asserted at conformity-assessment\ntime. ID.IM-04 closes the feedback loop by requiring the\nPMM data to inform risk-management improvements\n(Art. 9 + Art. 15(1) lifecycle consistency), with\nexplicit reference to threat intelligence, incidents,\nand technology evolution. GV.OV-03 enforces the\norganisational performance-evaluation cadence — the\nPMM data must be reviewed and trigger adjustments, not\nmerely archived. Supplementary DE.AE-03 ensures\ncross-source event correlation; GV.PO-02 anchors the\nPMM system in documented, communicated, and enforced\nprocesses; and GV.OC-03 ensures the PMM system\nunderstands and manages the Regulation (EU) 2019/1020\nmarket-surveillance framework extended by Art. 74(1).\nThe combined control set yields a documented PMM plan,\nruntime telemetry, an event-correlation pipeline, a\nreview cadence with minutes, an improvement register,\nand a market-surveillance cooperation procedure — the\nevidentiary substrate for ex post demonstration of\ncompliance under the Art. 9 risk-management + Art. 15\nlifecycle consistency + Art. 72 PMM + Art. 73 incident\nreporting + Art. 74(1) market-surveillance\naccountability chain.\n",
+        "ambiguity_notes": "Source clause AIA-C25 carries **S2** features (per\n`06_AI_Art.md` §2.25). `proportionate to the nature` and\n`relevant data` are VAG-2. `post-market monitoring system`\nis POLY-2 — borrows from medical-device regulation (MDR\nArt. 83) but applied to AI; the borrow is implicit and\npractitioners must be familiar with both regimes. The\nadverbial AND `actively AND systematically` and the\n3-way verb AND `collect, document AND analyse` are\nCOORD-2. AIA-C27 (`market surveillance`) is POLY-2 and\nborrows the entire Regulation (EU) 2019/1020 framework\n— operators unfamiliar with 2019/1020 cannot read this\nclause self-contained (Berry §3.3.1 cross-regulation\nborrow). Remain open: (a) whether the PMM plan must\nbe submitted to the market-surveillance authority or\nis held internally; (b) whether deployer-side PMM\ncontributions are mandatory or optional.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "MANAGE-4.1",
+            "title": "Post-deployment AI system monitoring plans are implemented"
+          },
+          {
+            "id": "MEASURE-3.1",
+            "title": "Approaches, personnel, and documentation are in place to regularly identify and track existing, unanticipated, and emergent AI risks"
+          },
+          {
+            "id": "MEASURE-4.1",
+            "title": "Measurement approaches for identifying AI risks are documented and connected to deployment context(s) and informed through consultation with domain experts and other end users"
+          },
+          {
+            "id": "GOVERN-1.5",
+            "title": "Ongoing monitoring and review of risk management"
+          }
+        ],
+        "airmf_mapping_rationale": "Post-market monitoring (Art. 72) -> MANAGE-4.1 (post-deployment monitoring), MEASURE-3.1/4.1 (risk identification/measurement), GOVERN-1.5 (ongoing review).\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-022",
+      "title": "Tiered serious incident reporting with differentiated timelines",
+      "sub_domain": [
+        "D-04.3"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-013"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C26",
+          "article_ref": "Art. 73(1)–(4) — `report any serious incident`; `not later than 15 days after … becomes aware`; `not later than two days` (widespread infringement); `not later than 10 days` (death)"
+        }
+      ],
+      "nist_csf": [
+        "RS.CO-02",
+        "RS.MA-04",
+        "RS.MA-03",
+        "RS.MA-01"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "MANAGE-2.3",
+        "MANAGE-4.3",
+        "GOVERN-1.1"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {
+        "RS.CO-04": "RS.CO-04 -> RS.MA-04 (official 1.1->2.0 crosswalk (escalation context))"
+      },
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-022",
+        "title": "Tiered serious incident reporting with differentiated timelines",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C26",
+            "article_ref": "Art. 73(1)–(4) — `report any serious incident`; `not later than 15 days after … becomes aware`; `not later than two days` (widespread infringement); `not later than 10 days` (death)"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-013"
+        ],
+        "sub_domain": [
+          "D-04.3"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "RS.CO-02",
+            "title": "Incidents are reported internally to the appropriate stakeholders, including executive leadership and legal counsel"
+          },
+          {
+            "id": "RS.CO-04",
+            "title": "Coordination with stakeholders occurs consistent with applicable rules and regulations"
+          },
+          {
+            "id": "RS.MA-03",
+            "title": "Incidents are categorized, prioritized, and scoped"
+          },
+          {
+            "id": "RS.MA-01",
+            "title": "The incident management plan is executed in coordination with relevant third parties once an incident is declared"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER",
+          "DEPLOYER"
+        ],
+        "obligation_type": [
+          "TRIGGERED"
+        ],
+        "regulatory_rationale": "Art. 73(1)–(4) of Regulation (EU) 2024/1689 requires\nproviders of high-risk AI systems, and deployers where\napplicable, to report any serious incident to the market\nsurveillance authorities of the Member States where the\nincident occurred. The reporting timeline depends on the\nseverity: 15 days after the provider becomes aware\n(default), 10 days if the incident results in death,\n2 days for widespread infringement. Art. 73(2)\nalternatively starts the 15-day clock on a reasonable\nlikelihood to consider that a serious incident has\noccurred (whichever is later with the awareness trigger);\nthe same 15-day window governs both attribution thresholds.\nArt. 3(49) defines `serious incident` via three\nsub-categories (a)/(b)/(c). Recital 92 sets the penalty\nenvelope (Art. 99). The Art. 73 obligation is the most\ntemporally complex notification clause in the AEGIS\ncorpus — three numerical timelines (15 / 2 / 10 days) ×\ntwo attribution thresholds (awareness OR reasonable\nlikelihood, whichever is later). A compliance officer\nshould treat the Art. 73 timeline matrix as a mandatory\noperational reference, with pre-computed clock-start\nevents and per-trigger escalation paths.\n",
+        "security_rationale": "The Art. 73(1)–(4) serious-incident reporting duty is\noperationalised in NIST CSF 2.0 through **RS.CO-02\n(Incidents reported internally to executive leadership\nand legal counsel)**, **RS.CO-04 (Coordination with\nstakeholders consistent with applicable rules and\nregulations)**, **RS.MA-03 (Incidents categorised,\nprioritised, scoped)**, and **RS.MA-01 (Incident\nmanagement plan executed in coordination with relevant\nthird parties)**, with supplementary alignment to\n**RS.AN-03 (Root-cause analysis)**, **GV.OC-03 (Legal,\nregulatory, contractual requirements understood and\nmanaged)**, and **GV.PO-02 (Cybersecurity processes and\nprocedures established, communicated, enforced)**.\nRS.CO-02 is the internal-reporting arm: the provider\nmust route incident awareness to leadership and legal\ncounsel so the market-surveillance report can be\nreviewed before transmission. RS.CO-04 is the\nexternal-reporting arm — coordination with the market\nsurveillance authorities of the Member State(s) where\nthe incident occurred, consistent with the Art. 73\ndifferentiated timelines. RS.MA-03 binds the reporting\nchain to a categorised scope so the correct timeline\n(15 / 10 / 2 days) is selected based on the incident\nclass. RS.MA-01 ensures the provider's incident\nmanagement plan is executed in coordination with\ndeployers and other third parties, closing the\nprovider-deployer handoff for joint incidents.\nSupplementary RS.AN-03 (root-cause analysis) supplies\nthe substantiation the report must carry; GV.OC-03\nensures the provider understands the cross-regulation\n(NIS 2 C30, DORA Art. 19) reporting obligations; and\nGV.PO-02 anchors the reporting workflow in documented\nprocesses. The combined control set yields an incident\ncategorisation matrix, a timeline decision tree,\ninternal-reporting records, external-reporting\ntransmissions, a third-party coordination procedure,\nand a cross-regulation obligations register — the\nevidentiary substrate for ex post demonstration of\ncompliance with the Art. 73 timeline matrix and the\n4-timeline × 4-trigger cross-product under the\nArt. 9 risk-management + Art. 72 PMM + Art. 73 incident\nreporting + Art. 99 penalty-envelope accountability\nchain.\n",
+        "ambiguity_notes": "Source clause AIA-C26 carries **S3** features on three\naxes (per `../Regulation/AI_Act/Ambiguity/06_AI_Act.md` §2.26). `serious incident` is\nVAG-3 (defined in Art. 3(49) via three sub-categories\n(a)/(b)/(c) with distinct severity thresholds and\nundefined interaction; reading chosen: R3 literal —\nthe three sub-categories apply independently and an\nincident can satisfy one or more). `becomes aware of\nthe serious incident` is **SCOPE-Q-3** (Berry §5.7 —\nsame awareness-trigger ambiguity as GDPR Art. 33\n`becomes aware`, CRA Art. 14, NIS 2 C30, DORA Art. 19;\nPOLY+SCOPE-Q — R1 actual knowledge / R2 constructive\nknowledge / R3 either; R2 dominant CJEU reading\napplies). `reasonable likelihood of a causal link` is\nPOLY-2 (distinct from `established causal link`; the\ntwo thresholds trigger the same 15-day clock).\nThe 4-timeline × 4-trigger cross-product is **COORD-3**\n(Berry §5.7) — ≥16 distinct reporting-obligation\nshapes per `../Regulation/AI_Act/Ambiguity/06_AI_Act.md` §2.26. **Cross-article\nPOLY:** the `serious incidents` of Art. 73 (high-risk)\nand Art. 55 (GPAI — SR-AIACT-024) may overlap; the\nboundary (when does a GPAI incident trigger Art. 73\nreporting vs. Art. 55 reporting vs. both?) is\nundefined. Remain open: (a) whether the 2-day\nwidespread-infringement clock is calendar or business\ndays; (b) whether the `immediate` reporting duty\nimposes a numeric clock (e.g. 24 hours) or is unbounded;\n(c) whether the Art. 73 vs. Art. 55 boundary is\nresolved by the AI Office or by the provider's own\nclassification.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "MANAGE-2.3",
+            "title": "Procedures are followed to respond to and recover from a previously unknown risk when it is identified"
+          },
+          {
+            "id": "MANAGE-4.3",
+            "title": "Incidents and errors are communicated to relevant AI actors including affected communities"
+          },
+          {
+            "id": "GOVERN-1.1",
+            "title": "Legal and regulatory requirements"
+          }
+        ],
+        "airmf_mapping_rationale": "Incident reporting (Art. 73) -> MANAGE-2.3 (response/recovery), MANAGE-4.3 (incident communication), GOVERN-1.1 (legal/regulatory requirements including timelines).\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-023",
+      "title": "Adversarial evaluation of GPAI models for systemic risk mitigation",
+      "sub_domain": [
+        "D-07.3",
+        "D-02.1"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-014"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C28",
+          "article_ref": "Art. 55(1)(a) — `perform model evaluation in accordance with standardised protocols and tools reflecting the state of the art, including conducting and documenting adversarial testing of the model with a view to identifying and mitigating systemic risks`"
+        }
+      ],
+      "nist_csf": [
+        "GV.RM-06",
+        "ID.RA-04",
+        "PR.PS-06"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "MEASURE-2.7",
+        "MAP-5.1",
+        "GOVERN-5.1",
+        "MANAGE-1.2"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-023",
+        "title": "Adversarial evaluation of GPAI models for systemic risk mitigation",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C28",
+            "article_ref": "Art. 55(1)(a) — `perform model evaluation in accordance with standardised protocols and tools reflecting the state of the art, including conducting and documenting adversarial testing of the model with a view to identifying and mitigating systemic risks`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-014"
+        ],
+        "sub_domain": [
+          "D-07.3",
+          "D-02.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "GV.RM-06",
+            "title": "A standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated"
+          },
+          {
+            "id": "ID.RA-04",
+            "title": "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified, recorded, and prioritized"
+          },
+          {
+            "id": "PR.PS-06",
+            "title": "Secure software development practices are integrated, and their performance is monitored throughout the SDLC"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 55(1)(a) of Regulation (EU) 2024/1689 requires\nproviders of general-purpose AI (GPAI) models with\nsystemic risk to perform model evaluation in\naccordance with standardised protocols and tools\nreflecting the state of the art, including conducting\nand documenting adversarial testing of the model with\na view to identifying and mitigating systemic risks.\nArt. 55 sits in Title IV (General-Purpose AI Models),\nChapter V (Obligations of Providers of GPAI Models\nwith Systemic Risk), and is parallel to — but\ndistinct from — the Title III high-risk AI obligations\nof Arts. 9–15. Recital 110 frames the model-evaluation\nobligation as the upstream assurance for foundation\nmodels that can serve many downstream AI applications.\nA compliance officer at a GPAI provider should treat\nArt. 55(1)(a) as the technical-assurance anchor of\nthe systemic-risk regime, on par with the QMS\nobligation of Art. 17(1) for high-risk providers.\n",
+        "security_rationale": "The Art. 55(1)(a) GPAI model-evaluation duty is\noperationalised in NIST CSF 2.0 through **GV.RM-06\n(Standardised method for calculating, documenting,\ncategorising, prioritising cybersecurity risks)**,\n**ID.RA-04 (Threat-impact prioritisation)**, and\n**PR.PS-06 (Secure SDLC practices integrated,\nperformance monitored)**, with supplementary alignment\nto **GV.OC-03 (Legal, regulatory, contractual\nrequirements understood and managed)**, **GV.PO-01\n(Organisational cybersecurity policy established,\ncommunicated, enforced)**, and **GV.OV-02 (Strategy\nreviewed against changing risk landscape)**. GV.RM-06\nis the principal anchor: it operationalises the\n`standardised protocols` element of Art. 55(1)(a) by\nrequiring the GPAI provider to establish and\ncommunicate a standardised risk-calculation method,\nso that the model-evaluation is reproducible and\ndefensible rather than ad hoc. ID.RA-04 enforces the\n`identifying systemic risks` element: threats,\nvulnerabilities, likelihoods, and impacts are\nrecorded and prioritised, providing the structured\ninput to the `mitigating systemic risks` follow-up.\nPR.PS-06 binds the `conducting and documenting`\nelement to the SDLC substrate — secure development\npractices, threat modelling, and verification\nartefacts, so that the adversarial testing produces\nauditable records. Supplementary GV.OC-03 ensures\nthe GPAI provider understands the layered regulatory\nregime (AI Act + CRA + NIS 2 + DORA for financial-\nsector GPAI), GV.PO-01 anchors the model-evaluation\nprogramme in a top-level policy, and GV.OV-02\nenforces the strategy-review cadence required by\nthe `state of the art` element. The combined\ncontrol set yields a standardised evaluation\nmethodology, prioritised systemic-risk register,\nadversarial-testing reports, SDLC artefacts, a\ntop-level policy, a cross-regulation obligations\nregister, and strategy-review minutes — the\nevidentiary substrate for ex post demonstration of\ncompliance with the Art. 55(1)(a) model-evaluation\n+ Art. 9 risk-management + Art. 15(4)–(5) AI-\nspecific attack + Art. 72 PMM accountability chain.\n",
+        "ambiguity_notes": "Source clause AIA-C28 carries three **S3** features\n(per `../Regulation/AI_Act/Ambiguity/06_AI_Act.md` §2.28 — the second-most-\nconsequential AI Act ambiguity after `risk management\nsystem`). `standardised protocols` is VAG-3 (R1 ISO/IEC\nstandards / R2 NIST standards / R3 MLCommons benchmarks;\nreading chosen: R3 literal — the clause does not anchor\nthe sense, so the OJ defers to whichever standard the\nprovider can defend as `state of the art`). `state of\nthe art` is VAG-3 (Berry classic; cf. GDPR C09, CRA C07;\ntime-dependent, jurisdiction-dependent). `systemic risks`\nis VAG-3 (undefined at Union level for AI; the term is\nborrowed from financial-services regulation where it\nhas a specific meaning; the AI-Act use is broader —\nthe borrow is implicit and operators unfamiliar with\nDORA Art. 4(50) cannot read this clause self-contained).\n`adversarial testing` is POLY-2 (distinct from\nred-teaming, fuzzing, robustness testing). The\n`conducting AND documenting` + `identifying AND\nmitigating` pairs are COORD-2. The triple\n`standardised protocols + state of the art + systemic\nrisks` is **the second-most-consequential AI Act\nambiguity** per `../Regulation/AI_Act/Ambiguity/06_AI_Act.md` §3.5. Remain open:\n(a) whether the AI Office will issue a list of\nrecognised `standardised protocols` or leave the\ndetermination to the provider; (b) whether\n`systemic risks` includes downstream-application-\nlevel risks or only foundation-model-level risks;\n(c) whether `adversarial testing` requires a public\nreport (as some red-team frameworks recommend) or\na confidential internal report.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "MEASURE-2.7",
+            "title": "AI system security and resilience are evaluated and documented"
+          },
+          {
+            "id": "MAP-5.1",
+            "title": "Likelihood and magnitude of each identified impact -- based on expected use, past uses in similar contexts, public incident reports, external feedback -- are identified and documented."
+          },
+          {
+            "id": "GOVERN-5.1",
+            "title": "Organizational policies and practices are in place to collect, consider, prioritize, and integrate external feedback regarding potential individual and societal impacts related to AI risks"
+          },
+          {
+            "id": "MANAGE-1.2",
+            "title": "Treatment of documented AI risks is prioritized based on impact, likelihood, or available resources or methods."
+          }
+        ],
+        "airmf_mapping_rationale": "GPAI systemic risk evaluation -> MEASURE-2.7 (security), MAP-5.1 (impact magnitude), GOVERN-5.1 (third-party data), MANAGE-1.2 (prioritized treatment).\n"
+      }
+    },
+    {
+      "sr_id": "SR-AIACT-024",
+      "title": "GPAI serious incident reporting to the AI Office",
+      "sub_domain": [
+        "D-04.3"
+      ],
+      "linked_objectives": [
+        "SO-AIACT-014"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "AIA-C29",
+          "article_ref": "Art. 55(1)(c) — `keep track of, document, and report, without undue delay, to the AI Office and, as appropriate, to national competent authorities, relevant information about serious incidents and possible corrective measures to address them`"
+        }
+      ],
+      "nist_csf": [
+        "RS.CO-02",
+        "RS.MA-03",
+        "RS.AN-03"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [
+        "MANAGE-4.3",
+        "MANAGE-2.3",
+        "GOVERN-1.1"
+      ],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-AIACT-024",
+        "title": "GPAI serious incident reporting to the AI Office",
+        "source_clauses": [
+          {
+            "clause_id": "AIA-C29",
+            "article_ref": "Art. 55(1)(c) — `keep track of, document, and report, without undue delay, to the AI Office and, as appropriate, to national competent authorities, relevant information about serious incidents and possible corrective measures to address them`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-AIACT-014"
+        ],
+        "sub_domain": [
+          "D-04.3"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "RS.CO-02",
+            "title": "Incidents are reported internally to the appropriate stakeholders, including executive leadership and legal counsel"
+          },
+          {
+            "id": "RS.MA-03",
+            "title": "Incidents are categorized, prioritized, and scoped"
+          },
+          {
+            "id": "RS.AN-03",
+            "title": "Analysis is performed to determine what has occurred during an event and the root cause of the event"
+          }
+        ],
+        "applies_to_role": [
+          "PROVIDER"
+        ],
+        "obligation_type": [
+          "TRIGGERED"
+        ],
+        "regulatory_rationale": "Art. 55(1)(c) of Regulation (EU) 2024/1689 requires\nproviders of general-purpose AI models with systemic\nrisk to keep track of, document, and report, without\nundue delay, to the AI Office and, as appropriate, to\nnational competent authorities, relevant information\nabout serious incidents and possible corrective\nmeasures to address them. The recipient differs from\nthe high-risk AI obligation of Art. 73 — the GPAI\nreport goes to the AI Office (an EU-level body\nestablished by Art. 64), not the market surveillance\nauthorities of the Member States. Recital 110\nclarifies the GPAI-specific nature of the obligation\nand the upstream nature of the reporting (foundation\nmodel vs. downstream application). A compliance officer\nat a GPAI provider should treat Art. 55(1)(c) as the\nupstream companion to the high-risk Art. 73 obligation,\nwith a separate recipient and a separate (open-text)\ntimeline.\n",
+        "security_rationale": "The Art. 55(1)(c) GPAI serious-incident reporting duty\nis operationalised in NIST CSF 2.0 through **RS.CO-02\n(Incidents reported internally to executive leadership\nand legal counsel)**, **RS.MA-03 (Incidents\ncategorised, prioritised, scoped)**, and **RS.AN-03\n(Root-cause analysis)**, with supplementary alignment\nto **GV.OC-03 (Legal, regulatory, contractual\nrequirements understood and managed)**, **GV.PO-01\n(Organisational cybersecurity policy established,\ncommunicated, enforced)**, and **RS.CO-04\n(Coordination with stakeholders consistent with\napplicable rules and regulations)**. RS.CO-02 is the\ninternal-reporting arm: the GPAI provider must route\nincident awareness to leadership and legal counsel so\nthe AI Office report can be reviewed and the\n`without undue delay` clock is controlled. RS.MA-03\nbinds the reporting to a categorised scope so the\n`serious incidents AND possible corrective measures`\nelements are both addressed. RS.AN-03 enforces the\nroot-cause analysis that the report must carry to\nsatisfy the `relevant information` element of\nArt. 55(1)(c). Supplementary GV.OC-03 ensures the\nGPAI provider understands the cross-regulation\nreporting regime (Art. 55 GPAI + Art. 73 high-risk\n+ NIS 2 C30 + DORA Art. 19, with the Art. 55 vs.\nArt. 73 boundary per the SR-AIACT-022 ambiguity\nnote). GV.PO-01 anchors the reporting workflow in\na top-level policy; and RS.CO-04 ensures\ncoordination with the AI Office and national\ncompetent authorities is consistent with applicable\nrules. The combined control set yields a categorised\nincident register, a root-cause analysis pipeline,\ninternal-reporting records, AI Office transmissions,\na top-level policy, a cross-regulation obligations\nregister, and a coordination procedure — the\nevidentiary substrate for ex post demonstration of\ncompliance with the Art. 55(1)(c) reporting duty\nunder the Art. 9 risk-management + Art. 55(1)(a)\nmodel-evaluation + Art. 55(1)(c) GPAI incident\nreporting + Art. 72 PMM accountability chain.\n",
+        "ambiguity_notes": "Source clause AIA-C29 carries three **S3** features\n(per `../Regulation/AI_Act/Ambiguity/06_AI_Act.md` §2.29). `without undue delay`\nis VAG-3 (Berry classic; cf. NIS 2 C30 on `without\nundue delay`). `relevant information` is VAG-3\n(the OJ does not enumerate what is `relevant`).\n`as appropriate` is POLY-3 (R1 mandatory / R2\noptional / R3 case-by-case). The `serious incidents`\nterm is **POLY-3** for GPAI models — distinct from\n`serious incidents` for high-risk AI systems (Art. 73)\nbut the cross-reference is implicit; the boundary\n(when does a GPAI incident trigger Art. 55 reporting\nvs. Art. 73 reporting vs. both?) is undefined\n(Berry §3.3.1 cross-article polysemy). The 3-way\nverb AND `keep track of, document, AND report` and\nthe AND `serious incidents AND possible corrective\nmeasures` are COORD-2. Remain open: (a) whether\n`without undue delay` imposes a numeric clock (and\nif so, what number — 72h? 7d?) or is unbounded;\n(b) whether the `as appropriate` axis is mandatory\nwhen the national competent authority requests\nthe report; (c) whether the AI Office will issue\na unified incident-reporting template that\nresolves the Art. 55 vs. Art. 73 boundary.\n",
+        "nist_airmf_mapping": [
+          {
+            "id": "MANAGE-4.3",
+            "title": "Incidents and errors are communicated to relevant AI actors including affected communities"
+          },
+          {
+            "id": "MANAGE-2.3",
+            "title": "Procedures are followed to respond to and recover from a previously unknown risk when it is identified"
+          },
+          {
+            "id": "GOVERN-1.1",
+            "title": "Legal and regulatory requirements"
+          }
+        ],
+        "airmf_mapping_rationale": "GPAI incident reporting -> MANAGE-4.3 (incident communication), MANAGE-2.3 (response), GOVERN-1.1 (legal requirements).\n"
+      }
+    }
+  ]
+}

@@ -30,7 +30,9 @@ phase_1A_role: 1_of_4
 **Objective.** The controller and processor **maintain compliance records in writing or in electronic form with integrity and traceability sufficient to demonstrate compliance and to support supervisory-authority inspections** (Art. 30(3) + Art. 5(2) + Art. 31 GDPR), including records of processing activities, consent records, processor contract records, breach notification records, and DPIA records — made available to the supervisory authority on request (Art. 30(3)).
 
 **CSF anchors (from `SR-GDPR-044` + `SR-GDPR-048` + `SR-GDPR-050` v0.3 security_rationale):**
-PR.DS-11 (primary), PR.PS-04, DE.CM-01, GV.PO-02.
+GV.PO-02, GV.OV-03, ID.AM-03, PR.PS-04, DE.AE-03, RS.AN-07.
+**PF 1.1 anchors (from `SR-GDPR-044`, `SR-GDPR-048`, `SR-GDPR-050` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+GV.MT-P3, GV.PO-P5, ID.IM-P1, ID.IM-P4, ID.IM-P6, ID.IM-P8, CT.DM-P9.
 *(PR.DS-11 — Data are destroyed according to policy — anchors the GDPR Art. 30(3) `in writing, including in electronic form` records integrity mapped to NIST CSF 2.0 PR.DS-11; PR.PS-04 — Networks and environments are protected — anchors the electronic-form records with integrity controls per DomainAnalysis cross-validation; DE.CM-01 — Networks and network services are monitored to find potentially adverse events — anchors the Art. 30(3) traceability dimension + SA-access channel; GV.PO-02 — Information security policy is established, communicated, and maintained — anchors the Art. 5(2) accountability demonstrability burden. The four subcategories together enable the controller or processor to demonstrate ex post, against the Art. 5(2) accountability burden and the Art. 31 SA cooperation obligation, that the compliance records were maintained in writing/electronic form with integrity + traceability sufficient for the SA to inspect.)*
 
 ---

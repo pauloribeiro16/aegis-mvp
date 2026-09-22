@@ -30,7 +30,9 @@ phase_1A_role: 1_of_5
 **Objective.** The controller implements **appropriate technical and organisational measures, such as policies … which are designed to implement data-protection principles … in an effective manner** (Art. 24(1) GDPR), with the Art. 5(2) accountability burden and the DPO as the governance anchor (Art. 37-39).
 
 **CSF anchors (from `SR-GDPR-043` + `SR-GDPR-044` v0.3 security_rationale):**
-GV.PO-01 (primary), GV.PO-02, GV.RM-04, GV.RR-02.
+GV.PO-01 (primary), GV.PO-02, GV.RM-04, GV.OV-03.
+**PF 1.1 anchors (from `SR-GDPR-043`, `SR-GDPR-044` — dashboard `00_VISUALISATIONS/GDPR/GDPR_Dashboard.html`, mechanical uniformization):**
+GV.PO-P1, GV.PO-P6, GV.MT-P3, GV.PO-P5.
 *(GV.PO-01 — Organizational cybersecurity policy established, communicated, enforced — anchors the GDPR data-protection policy artefact via the Art. 24(1) `policies … designed to implement data-protection principles … in an effective manner` mapped to NIST CSF 2.0 GV.PO-01; GV.RM-04 — Strategic direction for risk response — anchors the GDPR data-protection-policy anchor per DomainAnalysis §D-09.1 line 178 cross-validation; the GDPR data-protection policy is the controller-side policy artefact that operationalises the Art. 5(2) accountability burden. The two subcategories together enable the controller or processor to demonstrate ex post, against the Art. 5(2) accountability burden shifted by Art. 24(1) chapeau, that the controller-side data-protection policies were adopted, reviewed, and updated in light of the four proportionality factors (nature, scope, context, purposes; risks of varying likelihood and severity). GV.RR-02 anchors the DPO role designation + independence — the DPO is the designated individual reporting to the management body but not a member per Art. 38(6). The DPO's Art. 39(1) tasks (inform and advise; monitor compliance with awareness-raising and training) are the operational evidence layer on the GDPR sub-SO.)*
 
 ---

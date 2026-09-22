@@ -30,7 +30,7 @@ phase_1A_role: 1_of_5
 **Objective.** Essential and important entities establish **policies on risk analysis and information system security** (Art. 21(2)(a) NIS 2) on a continuous basis, taking into account the proportionality factors (degree of exposure, likelihood of incidents, severity, state of the art, costs of implementation per Recital 56); the Cooperation Group may carry out coordinated supply-chain risk assessments under Art. 22(1) NIS 2 that NSIEs take into account per Art. 21(3) sentence 2.
 
 **CSF anchors (from `SR-NIS2-035` + `SR-NIS2-039` + `SR-NIS2-040` v0.3 security_rationale):**
-ID.RA-05 (primary), GV.OV-01.
+ID.RA-05 (primary), GV.PO-01, GV.RM-06, ID.RA-06, PR.IR-01.
 *(ID.RA-05 — Threats, vulnerabilities, likelihoods, impacts used to understand inherent risk and inform risk response — anchors the NIS 2 Art. 21(2)(a) continuous operational risk-analysis policy mapped to NIST CSF 2.0 ID.RA-05. SR-NIS2-040 establishes the **all-hazards methodology** with the proportionality factors (degree of exposure; likelihood of incidents; severity; state of the art; cost of implementation per Recital 56) calibrating the depth. The Cooperation Group coordinated supply-chain assessments per Art. 22(1) are the EU-level coordinated-assessment substrate for NSIEs to incorporate via Art. 21(3) sentence 2. The two subcategories together enable the NSIE to demonstrate ex post, against the Member State transposition + competent authority, that the Art. 21(2)(a) risk-analysis policy is operational continuous with all-hazards methodology, calibrated by the proportionality factors, and incorporates the Art. 22(1) Cooperation Group coordinated assessments.)*
 
 

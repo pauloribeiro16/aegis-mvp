@@ -32,7 +32,7 @@ phase_1A_role: 1_of_N
 **Considerations.**
 - The `direct` scope-limiter is POLY-S3 with three materially distinct readings per SR-NIS2-020: R1 (Tier-1 strict), R2 (Tier-1 + technically integrated), R3 (Tier-1 + operationally dependent). Chosen reading is R2 (risk-management-precaution principle — technical integration is the primary attack-surface handle on supply-chain risk).
 **CSF anchors (from `SR-NIS2-020` v0.3 security_rationale):**
-GV.SC-02, ID.AM-04, GV.OC-03.
+GV.SC-02, GV.SC-03.
 *(GV.SC-02 anchors the supplier-prioritisation dimension — direct
 suppliers are prioritised by criticality (the R1/R2/R3 `direct`
 reading determines which suppliers are within the prioritisation

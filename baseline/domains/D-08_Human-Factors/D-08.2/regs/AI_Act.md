@@ -38,7 +38,9 @@ phase_1A_role: 1_of_N
 - PR.AT-01 anchors the awareness-and-training substrate — `remain aware of automation bias` (Art. 14(4)(b)) + `decide` (Art. 14(4)(d)) + `intervene` (Art. 14(4)(e)) require overseers to detect and respond to AI-specific failure modes including the cognitive-bias correction that `automation bias` operationalises.
 - GV.RR-02 supplies the RACI substrate — overseers must hold formal authority to override and interrupt the system.
 **CSF anchors (from `SR-AIACT-013` v0.3 + `SR-AIACT-020` v0.3 security_rationale):**
-PR.AT-02, PR.AT-01, GV.RR-02.
+PR.AT-02, PR.AT-01, GV.RR-02, GV.RR-04.
+**AI RMF anchors (from `SR-AIACT-013`, `SR-AIACT-020` — dashboard `00_VISUALISATIONS/AI_Act/AI_Act_Dashboard.html`, mechanical uniformization):**
+MAP-3.5, GOVERN-2.1, GOVERN-2.2, GOVERN-3.1.
 *(PR.AT-02 covers the role-understanding dimension that sub-points (a) `properly understand` and (c) `correctly interpret` require. PR.AT-01 anchors the awareness-and-training substrate that sub-point (b) `remain aware of automation bias` and sub-points (d) `decide` and (e) `intervene` require, ensuring overseers detect and respond to AI-specific failure modes including the cognitive-bias correction that `automation bias` operationalises. GV.RR-02 supplies the RACI substrate that sub-points (d) and (e) require — overseers must hold formal authority to override and interrupt the system. A provider evidencing PR.AT-02 role understanding, PR.AT-01 awareness training and GV.RR-02 RACI definition demonstrates ex post that the five-element Art. 14(4) oversight-abilities list — cumulative AND of all five abilities plus the last-resort sub-point (e) intervention safety net — is operationalised in the provider's training and tooling programme. The Art. 26(2) deployer-side 4-element AND `competence, training AND authority AND support` adds the deployer's personnel-qualification anchor (PR.AT-02) + the deployer's formal RACI definition (GV.RR-02) + the deployer's HR-practices integration (GV.RR-04 — supplementary).)*
 
 ---

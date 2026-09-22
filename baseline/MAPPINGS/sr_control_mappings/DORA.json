@@ -1,0 +1,2092 @@
+{
+  "meta": {
+    "regulation": "DORA",
+    "source_dashboard": "methodology_compact/00_METHODOLOGY/00_VISUALISATIONS/DORA/DORA_Dashboard.html",
+    "extracted_by": "scripts/extract_dashboard_mappings.py",
+    "extracted_on": "2026-09-22",
+    "sr_count": 31,
+    "axes": {
+      "nist_csf": true,
+      "nist_pf": false,
+      "nist_airmf": false
+    },
+    "id_normalization": {
+      "replaced_tokens": 5,
+      "unresolved_excluded": 0,
+      "policy": "scripts/normalize_csf_anchors.py phantom map + CSF 1.1->2.0 suffix padding; unresolved ids are excluded from anchor sets and reported per SR"
+    },
+    "ignored_source_folders": [
+      "Case_01",
+      "Case_02",
+      "Case_03",
+      "data",
+      "UNIFIED",
+      "tests",
+      "QNRCS"
+    ]
+  },
+  "srs": [
+    {
+      "sr_id": "SR-DORA-001",
+      "title": "Cross-state CIA+A protection matrix with risk-tiered controls",
+      "sub_domain": [
+        "D-01.1",
+        "D-01.2",
+        "D-01.4"
+      ],
+      "linked_objectives": [
+        "SO-DORA-001"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C09",
+          "article_ref": "Art. 9(2) — CIA+A 4-way AND + at-rest/in-use/in-transit 3-way OR"
+        },
+        {
+          "clause_id": "DORA-C10",
+          "article_ref": "Art. 9(2) — in-transit dimension (same locus, explicit in OJ)"
+        },
+        {
+          "clause_id": "DORA-C11",
+          "article_ref": "Art. 9(2) — integrity dimension (same locus, explicit in OJ)"
+        }
+      ],
+      "nist_csf": [
+        "PR.DS-01",
+        "PR.DS-02",
+        "PR.DS-10",
+        "ID.AM-08"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {
+        "PR.DS-12": "PR.DS-12 -> ID.AM-08 (internal 4x3 matrix cell; data-management policy)"
+      },
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-001",
+        "title": "Cross-state CIA+A protection matrix with risk-tiered controls",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C09",
+            "article_ref": "Art. 9(2) — CIA+A 4-way AND + at-rest/in-use/in-transit 3-way OR"
+          },
+          {
+            "clause_id": "DORA-C10",
+            "article_ref": "Art. 9(2) — in-transit dimension (same locus, explicit in OJ)"
+          },
+          {
+            "clause_id": "DORA-C11",
+            "article_ref": "Art. 9(2) — integrity dimension (same locus, explicit in OJ)"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-001"
+        ],
+        "sub_domain": [
+          "D-01.1",
+          "D-01.2",
+          "D-01.4"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.DS-01",
+            "title": "Data-at-rest protected"
+          },
+          {
+            "id": "PR.DS-02",
+            "title": "Data-in-transit protected"
+          },
+          {
+            "id": "PR.DS-10",
+            "title": "Data-in-use protected"
+          },
+          {
+            "id": "PR.DS-12",
+            "title": "Data managed consistent with the organization's risk strategy"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 9(2) requires financial entities to design, procure and implement\nICT security policies, procedures, protocols and tools that aim to\nensure the resilience, continuity and availability of ICT systems and\nto maintain high standards of availability, authenticity, integrity\nand confidentiality of data, whether at rest, in use or in transit.\nThis provision sits at the core of Chapter II Section II's operational\nresilience architecture and supplies the substantive content to the\nchapeau obligation in Art. 6(8) that the ICT risk-management\nframework must address data security across the full ICT lifecycle\n(EBA Guidelines on ICT and security risk management §123). The four\nsecurity objectives (availability, authenticity, integrity and\nconfidentiality) are coordinated by `and` and the three data states\nby `or`, yielding a 4×3 protection matrix whose combination rule is\nthe principal subject of Art. 9(2) itself. Recital 49 makes clear\nthat the financial-sector objective is continuity of service under\nboth normal and adverse conditions, so availability across states\ncarries operational weight comparable to confidentiality (NIS 2\nArt. 21(2)(a) supplies a parallel cross-state formulation to which\nDORA-fall-back NSIEs are subject, reinforcing the vocabulary).\n",
+        "security_rationale": "The obligation in Art. 9(2) for cross-state CIA+A protection of\nfinancial-entity data is operationalised in NIST CSF 2.0 through\n**PR.DS-01 (Data-at-rest protected)**, **PR.DS-02 (Data-in-transit\nprotected)**, **PR.DS-10 (Data-in-use protected)**, and **PR.DS-12\n(Data managed consistent with the organization's risk strategy)**.\nPR.DS-01 and PR.DS-02 anchor confidentiality and integrity through\nencryption-at-rest (validated cryptographic modules, AES-class symmetric\nprimitives for bulk data) and authenticated-transport encryption for transit, with authenticated-encryption\nmodes preventing the classical confidentiality-without-integrity gap.\nPR.DS-10 closes the in-use dimension that financial entities have\nhistorically under-protected through confidential-computing enclaves\nand memory-encryption primitives, preventing the cross-state gap that\nturns a protected data store into an unprotected memory dump.\nPR.DS-12 supplies the risk-strategy calibration: data-handling\nrules are tiered against impact assessment (RTO/RPO alignment with\nbusiness-criticality), ensuring the 4×3 matrix reflects the entity's\nown criticality taxonomy rather than a uniform posture. The\naccountability link under Art. 5(2): these four PR.DS subcategories\njointly produce the documented evidence trail — classification\ninventory, cipher-algorithm register, key-custody records, in-use\nenclave attestations — that the management body can present to\ncompetent authorities to demonstrate that the CIA+A and cross-state\nobligations are continuously maintained, risk-calibrated, and\ninspectable.\n",
+        "ambiguity_notes": "Source clause DORA-C09 carries S3 on `high standards` (VAG — no\nmeasurement criterion), S3 on the 4-way AND of CIA+A (COORD —\npartial-compliance undefined; reading chosen: R1 all four required,\nany absence is non-compliance), and S3 on the 3-way OR of data\nstates (COORD — reading chosen: R1 all three required for the\nprotection to be effective across the data lifecycle). `at rest`,\n`in use`, `in transit` are explicit in the OJ text — unlike GDPR's\nT1-imposed split or NIS 2's T3-imposed split. `high standards` (R1\nbest practice / R2 published standards / R3 frontier research) —\nreading chosen: R1 best practice with R2 published standards as\nthe dominant EU supervisory reading (cf. EBA Guidelines on ICT and\nsecurity risk management). As a structural alternative to that\ndominant reading the OJ text could be argued to require an\nopen-ended pursuit of `high standards` calibrated against frontier\nresearch literature, raising the bar substantially but removing\nany comfortable reference set. A third constructed reading would\ntreat `high standards` as a composite trigger encompassing all\nthree reference frameworks simultaneously. Reading chosen: the\ndominant R1-with-R2 framing because supervisory convergence on\npublished ISO/IEC and NIST standards is the only source of\nmeasurability. The data-state 3-way OR reads as a *coordination*\nof three states rather than an alternative: a control that protects\ndata at rest but not in transit fails to deliver the\n`high standards` of confidentiality OJ-implied because movement\nis the dominant flow in financial-entity ICT. The Art. 15 RTS\nmandate to the ESAs remains pending for elements of Art. 9(2),\nwhich may eventually harden the measurability of `high standards`\nvia technical standards adopted under Art. 15(2)–(3). Remain open: (a)\nwhether the ESAs Joint Committee RTS under Art. 15 will introduce a\nmeasurable threshold that closes the `high standards` VAG regress;\n(b) whether supervisory convergence will hold across the three ESAs\ngiven divergent sectoral risk perceptions (banking, insurance,\nsecurities) and the EBA's prior preference for ISO/IEC alignment.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-002",
+      "title": "Strong authentication and cryptographic-key protection baseline",
+      "sub_domain": [
+        "D-01.3",
+        "D-03.1",
+        "D-03.2"
+      ],
+      "linked_objectives": [
+        "SO-DORA-002"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C15",
+          "article_ref": "Art. 9(4)(d) — strong authentication mechanisms based on relevant standards and dedicated control systems"
+        },
+        {
+          "clause_id": "DORA-C16",
+          "article_ref": "Art. 9(4)(d) same locus — T4 reads `Multi-Factor Authentication`; OJ says `strong authentication mechanisms`"
+        },
+        {
+          "clause_id": "DORA-C17",
+          "article_ref": "Art. 9(4)(d) same locus — `protection measures of cryptographic keys`"
+        }
+      ],
+      "nist_csf": [
+        "PR.AA-03",
+        "PR.AA-04"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-002",
+        "title": "Strong authentication and cryptographic-key protection baseline",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C15",
+            "article_ref": "Art. 9(4)(d) — strong authentication mechanisms based on relevant standards and dedicated control systems"
+          },
+          {
+            "clause_id": "DORA-C16",
+            "article_ref": "Art. 9(4)(d) same locus — T4 reads `Multi-Factor Authentication`; OJ says `strong authentication mechanisms`"
+          },
+          {
+            "clause_id": "DORA-C17",
+            "article_ref": "Art. 9(4)(d) same locus — `protection measures of cryptographic keys`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-002"
+        ],
+        "sub_domain": [
+          "D-01.3",
+          "D-03.1",
+          "D-03.2"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.AA-03",
+            "title": "Users, services, and hardware are authenticated"
+          },
+          {
+            "id": "PR.AA-04",
+            "title": "Identity assertions are managed, protected, and conveyed in a manner that verifies authenticity"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 9(4)(d) requires financial entities to implement policies and\nprotocols for strong authentication mechanisms, based on relevant\nstandards and dedicated control systems, and protection measures of\ncryptographic keys whereby data is encrypted based on results of\napproved data classification and ICT risk assessment processes.\nThis sub-paragraph forms part of the eight-item control list in\nArt. 9(4) (a)–(h), each item self-implementing under the Art. 6(8)\nchapeau framework, with the Art. 15 ESAs RTS mandate expected to\nspecify further the `relevant standards` against which the OJ text\nremains directionless (Recital 53 frames authentication strength\nin terms of contemporary best practice and recognised standards).\nThe two cited phrases sit in coordinated conjunction with the\npreceding encryption obligation: `protection measures of\ncryptographic keys whereby data is encrypted` makes the\nprotection-measure layer substantively dependent on a data\nclassification and ICT risk assessment result. The EBA Guidelines\non ICT and security risk management §145–§148 specify the\nsupervisory expectation that financial entities operate\nauthentication mechanisms aligned with NIST SP 800-63 or\nequivalent, and that cryptographic keys be managed under ISO/IEC\n27001 Annex A.10 or successor.\n",
+        "security_rationale": "The obligation in Art. 9(4)(d) for strong authentication and\ncryptographic-key protection is operationalised in NIST CSF 2.0\nthrough **PR.AA-03 (Users, services, and hardware are\nauthenticated)** and **PR.AA-04 (Identity assertions are managed,\nprotected, and conveyed in a manner that verifies authenticity)**.\nPR.AA-03 covers human and machine identities through NIST SP 800-63B\nAAL2/AAL3-aligned authenticators — FIDO2/WebAuthn for phishing-\nresistance, smartcard and PKI for privileged users, certificate-\nbased authentication in service-to-service flows — with strength\ncalibrated to risk-tier under Art. 4 proportionality. PR.AA-04\nenforces the integrity of identity-assertion conveyance via signed\nfederated-identity tokens, mutual transport authentication, and PKI chain-of-trust, preventing\nassertion tampering, replay, and cross-context token reuse that\ndominate modern federation attacks. The two subcategories jointly\nclose the credential-compromise attack surface that dominates\nfinancial-entity breach statistics. The accountability link under\nArt. 5(2): PR.AA-03 and PR.AA-04 outputs — authenticator-inventory\nregisters, AAL-mapping documentation, PKI chain-of-trust audit\nlogs, and identity-provider assurance records — produce the\ndocumented evidence trail that the management body can present to\ncompetent authorities to demonstrate that strong-authentication and\nkey-protection obligations are continuously enforced across human,\nservice-to-service, and machine identities.\n",
+        "ambiguity_notes": "Source clause DORA-C15 carries S3 on `strong authentication` (VAG\n— no defined strength benchmark; reading chosen: R4 mechanism-\nagnostic, the OJ does not specify), S3 on `relevant standards`\n(VAG — POLY with `information security standards` of C36; no\nspecific standard is named), and S3 on the three-control AND\n(COORD — `strong auth` AND `key protection` AND `encryption`;\nreading chosen: R1 all three required). **T4-vs-text gap:** T4\nmaps DORA-C16 to `Multi-Factor Authentication` but the OJ\nArt. 9(4)(d) text contains only `strong authentication\nmechanisms`. The dominant EBA Guidelines reading is MFA;\nalternative readings include hardware-token-only or other\n`strong` mechanisms (e.g. certificate-based authentication in\nservice-to-service contexts). Reading chosen: R5 mechanism-\nagnostic with R3 MFA as the dominant EU supervisory reading. The\nmechanism-agnostic fallback reading treats `strong authentication`\nas a category that admits hardware-tokens, certificate-based\nauthentication in machine-to-machine flows, FIDO2/WebAuthn-based\nphishing-resistant authentication, and other contemporary\nauthentication primitives whose `strength` claim can be\nsubstantiated. The MFA-as-default reading is the supervisory\nminimum that meets the EBA Guidelines' expectation but is\nvulnerable to under-specification for service-to-service flows\nwhere MFA in the human sense is structurally inapplicable. A\nthird constructed reading would impose MFA uniformly across all\nauthentication events including service-to-service, which the OJ\ntext does not require and which is operationally unrealistic. The\n`relevant standards` term inherits the broader POLY with C36\n`information security standards`, and the Art. 15 ESAs RTS is\nexpected to give content to that POLY through concrete standards\nreferences. Remain open: (a) whether the ESAs Joint Committee RTS\nunder Art. 15(2) will name specific authentication-strength\nstandards (e.g. ENISA-baseline, NIST SP 800-63B) and close the\nS3 VAG on `strong`; (b) whether service-account authentication in\nM2M flows will require comparable treatment to user authentication\nor be carved out as a separate sub-regime.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-003",
+      "title": "Classification-driven cryptographic-key protection with policy linkage",
+      "sub_domain": [
+        "D-01.3"
+      ],
+      "linked_objectives": [
+        "SO-DORA-002"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C15",
+          "article_ref": "Art. 9(4)(d) — `protection measures of cryptographic keys whereby data is encrypted based on results of approved data classification and ICT risk assessment processes`"
+        },
+        {
+          "clause_id": "DORA-C17",
+          "article_ref": "Art. 9(4)(d) same locus — key-management sub-phrase"
+        }
+      ],
+      "nist_csf": [
+        "PR.DS-01",
+        "GV.RM-04"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-003",
+        "title": "Classification-driven cryptographic-key protection with policy linkage",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C15",
+            "article_ref": "Art. 9(4)(d) — `protection measures of cryptographic keys whereby data is encrypted based on results of approved data classification and ICT risk assessment processes`"
+          },
+          {
+            "clause_id": "DORA-C17",
+            "article_ref": "Art. 9(4)(d) same locus — key-management sub-phrase"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-002"
+        ],
+        "sub_domain": [
+          "D-01.3"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.DS-01",
+            "title": "Data-at-rest protected"
+          },
+          {
+            "id": "GV.RM-04",
+            "title": "Strategic direction on identifying and responding to risks established and communicated"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 9(4)(d) `protection measures of cryptographic keys whereby\ndata is encrypted based on results of approved data classification\nand ICT risk assessment processes`. The clause ties encryption to\napproved data classification and ICT risk assessment — the\nclassification and assessment drive the encryption level. The\n`approved` qualifier is binding: data-classification processes must\nbe approved by the financial entity's governance layer (Art. 5(2)\nmanagement body oversight), and ICT risk assessment processes must\nsatisfy Art. 6 chapeau's requirement to maintain a sound and\ncomprehensive risk-management framework (NIS 2 Art. 21(2)(d) on\ncryptography supplies a parallel regime for non-financial NSIEs\nthat DORA financial entities retain as joint obligation where they\nalso operate as NIS 2 entities). Recital 53 grounds the\ndata-classification link in the precautionary principle applied\nto sensitive financial data, which EBA Guidelines on ICT and\nsecurity risk management §149 interpret as requiring tiered\nclassification reflected in tiered cryptographic strength.\n",
+        "security_rationale": "The obligation in Art. 9(4)(d) for classification-driven\ncryptographic-key protection is operationalised in NIST CSF 2.0\nthrough **PR.DS-01 (Data-at-rest protected)** and **GV.RM-04\n(Strategic direction on identifying and responding to risks\nestablished and communicated)**. PR.DS-01 anchors encryption-at-\nrest with HSM-anchored key custodianship, split-knowledge\nceremonies, documented rotation cadences scaled to data\ncriticality, and quorum-based key-recovery procedures — the\noperational substrate that makes the Art. 9(4)(d) classification-\ndriven proportionality tractable in practice. GV.RM-04 elevates\nthe strategic posture by requiring documented board-level direction\non risk response (including cryptographic-key policy as a strategic\nrisk-management artefact), aligned to the entity's risk appetite\nand reviewed under the broader framework-review cadence. The two\nsubcategories together bridge the technical layer (PR.DS-01) and\nthe governance layer (GV.RM-04) that the OJ text couples through\n`approved data classification and ICT risk assessment processes`.\nThe accountability link under Art. 5(2): PR.DS-01's key-inventory\nand rotation logs combined with GV.RM-04's strategic-policy records\nproduce the documented evidence trail the management body can\npresent to competent authorities demonstrating that encryption is\ngenuinely classification-driven, governance-approved, and risk-\ntiered rather than uniformly applied.\n",
+        "ambiguity_notes": "`approved data classification` (POLY S2) — R1 entity-internal\nclassification / R2 supervisory-recognised classification scheme\n/ R3 either; reading chosen: R1 entity-internal with R2 as the\nsupervisory expectation. `ICT risk assessment processes` (POLY\nS2) — R1 entity-internal / R2 sectoral / R3 EU-level; R1 literal.\n`protection measures` (POLY S2) — R1 key-management policy / R2\nkey-management operational capability / R3 both; R3 literal.\nThe reading chosen on `approved data classification` harmonises\nwith the management-body approval pattern of Art. 5(2), under\nwhich data classification is governance-approved. An alternative\nreading would interpret `approved` as supervisory-approved, in\nline with sectoral schemes such as EBA's payment-data taxonomy,\nbut that reading is unsupported by the OJ text because DORA does\nnot designate a single supervisory-recognised classification\nscheme for all financial entities.     The risk-assessment-processes\nvariant reading is straightforward: DORA imposes the obligation on\nthe entity, not on a sectoral authority. A supervisory-recognised\nclassification reading is otherwise unexplored in OJ text and so\nwas discarded. Remain open: (a) the operational threshold for `approved` governance approval — whether a documented policy suffices or a board-level resolution is required — pending EBA Guidelines clarification; (b) the relationship between the Art. 9(4)(d) classification scheme and any sectoral scheme the entity already operates, pending Art. 15 RTS.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-004",
+      "title": "Continuous ICT risk-source identification with inter-entity awareness",
+      "sub_domain": [
+        "D-02.1",
+        "D-10.1"
+      ],
+      "linked_objectives": [
+        "SO-DORA-003"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C06",
+          "article_ref": "Art. 7(2) — `on a continuous basis, identify all sources of ICT risk`"
+        },
+        {
+          "clause_id": "DORA-C08",
+          "article_ref": "Art. 8(2) — `identify all sources of ICT risk … and assess cyber threats and ICT vulnerabilities relevant to their ICT supported business functions`"
+        }
+      ],
+      "nist_csf": [
+        "ID.RA-01",
+        "ID.RA-03"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-004",
+        "title": "Continuous ICT risk-source identification with inter-entity awareness",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C06",
+            "article_ref": "Art. 7(2) — `on a continuous basis, identify all sources of ICT risk`"
+          },
+          {
+            "clause_id": "DORA-C08",
+            "article_ref": "Art. 8(2) — `identify all sources of ICT risk … and assess cyber threats and ICT vulnerabilities relevant to their ICT supported business functions`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-003"
+        ],
+        "sub_domain": [
+          "D-02.1",
+          "D-10.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "ID.RA-01",
+            "title": "Vulnerabilities in assets are identified, validated, and recorded"
+          },
+          {
+            "id": "ID.RA-03",
+            "title": "Threats, both internal and external, are identified, recorded, and prioritized"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 7(2) sentence 1 requires financial entities, on a continuous\nbasis, to identify all sources of ICT risk, in particular the risk\nexposure to and from other financial entities, and to assess cyber\nthreats and ICT vulnerabilities relevant to their ICT supported\nbusiness functions, information assets and ICT assets. Art. 8(2)\nreinforces the requirement to identify all sources of ICT risk.\nThese two articles form the temporal and methodological chassis of\nthe ICT risk-management framework mandated by Art. 6(8)(a):\nidentification is continuous rather than periodic, and the\ninter-entity risk-exposure qualifier (cf. Recital 55 on\ninterconnectedness) propagates the obligation across the financial\nsector's value chain (NIS 2 Art. 21(2)(c) imposes a parallel\nbaseline-risk identification regime on NSIEs outside DORA, and\nCRA Art. 13(5) on vulnerability handling supplies a downstream\nfact-feeding layer for product vendors feeding DORA entities).\n[OJ-corrective note (v0.2 audit, material): Art. 7(2) → Art. 8(2) misattribution (P0 disagreement cross-cutting). Art. 8(2) sentence 1 (Identification function): financial entities shall, on a regular basis, identify all ICT-supported business functions and the ICT assets that support those functions, including those of third-party providers, and identify the dependencies between those ICT assets. The audit notes that the source article_ref points to Art. 7(2) but the OJ text is in Art. 8(2).]\n",
+        "security_rationale": "The obligation in Art. 7(2)/Art. 8(2) for continuous identification\nof ICT risk sources is operationalised in NIST CSF 2.0 through\n**ID.RA-01 (Vulnerabilities in assets are identified, validated,\nand recorded)** and **ID.RA-03 (Threats, both internal and\nexternal, are identified, recorded, and prioritized)**. ID.RA-01\nsupplies the asset-vulnerability layer — continuous vulnerability\nscanning, CVE-feed ingestion, authenticated vulnerability\nvalidation, and validated vulnerability records tied to the\nentity's asset inventory, ensuring risk identification is\nevidence-based rather than self-declared. ID.RA-03 supplies the\nthreat-intelligence layer — internal-source threat catalogues\n(privileged-activity anomalies, insider-risk indicators) and\nexternal-source feeds (ISAC partnerships, ENISA threat landscape,\nsectoral TI providers) — with priority scoring aligned to entity\nrisk appetite. The OJ qualifier `in particular the risk exposure\nto and from other financial entities` requires the ID.RA-03\nthreat-prioritisation model to weight interconnectedness, shared\nCTPP exposure, and shared settlement-infrastructure dependency\nexplicitly, not as an after-thought. The accountability link\nunder Art. 5(2): the ID.RA-01 vulnerability register and ID.RA-03\nthreat catalogue, with documented update cadence, validation\nevidence, and inter-entity-exposure annotations, constitute the\ndocumented evidence trail the management body can present to\ncompetent authorities demonstrating that ICT risk identification\nis genuinely continuous and inter-entity-aware rather than\nperimeter-confined.\n",
+        "ambiguity_notes": "Source clause DORA-C06 carries S2 on `continuous basis` vs.\n`regular basis` (POLY — the two terms coexist in the same article\nwithout differentiation; reading chosen: `continuous` = always-on\nmonitoring, `regular` = scheduled review cadence), and S2 on\n`cyber threats AND ICT vulnerabilities` (POLY — distinct concepts;\nreading chosen: R1 cumulative, both assessed). `all sources of\nICT risk` (SCOPE-Q S2) — R1 all known / R2 all discoverable / R3\nuniversal quantifier; R3 literal OJ reading (per Berry §5.2.1).\n`relevant to` (VAG S2) — R1 directly impacting / R2 any plausible\nlink; R1 dominant. A contrasting reading of `relevant to` could\ntake a wider scope (any plausible link) given the OJ qualifier\n`information assets and ICT assets` is broad, but supervisory\npractice in EBA Guidelines on ICT and security risk management\n§92 treats `relevant to` as delimiting to assets whose compromise\nwould materially affect ICT-supported business functions. An\nopen question remains how to operationalise inter-entity\nrisk-identification in practice: bilateral information-sharing\narrangements under Art. 45 ESAs cooperation framework are one\nrecognised mechanism but do not yet have OJ-delegated form.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-005",
+      "title": "Annual risk-scenario register refresh with strategic recalibration",
+      "sub_domain": [
+        "D-02.1",
+        "D-09.2"
+      ],
+      "linked_objectives": [
+        "SO-DORA-003"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C06",
+          "article_ref": "Art. 7(2) sentence 2 — `Financial entities shall review on a regular basis, and at least yearly, the risk scenarios impacting them`"
+        }
+      ],
+      "nist_csf": [
+        "ID.RA-05",
+        "ID.IM-04",
+        "GV.OV-02"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-005",
+        "title": "Annual risk-scenario register refresh with strategic recalibration",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C06",
+            "article_ref": "Art. 7(2) sentence 2 — `Financial entities shall review on a regular basis, and at least yearly, the risk scenarios impacting them`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-003"
+        ],
+        "sub_domain": [
+          "D-02.1",
+          "D-09.2"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "ID.RA-05",
+            "title": "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response decisions"
+          },
+          {
+            "id": "ID.IM-04",
+            "title": "Cybersecurity risk management improvements are informed by awareness of related developments and context"
+          },
+          {
+            "id": "GV.OV-02",
+            "title": "The organizational cybersecurity risk management strategy is reviewed and adjusted to address changes in the organization's risk landscape"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "PERIODIC"
+        ],
+        "regulatory_rationale": "Art. 7(2) sentence 2 requires financial entities to review on a\nregular basis, and at least yearly, the risk scenarios impacting\nthem. The hard numeric anchor (`at least yearly`) closes the\ntemporal ambiguity of `regular basis`. Recital 56 supports this\ncadence by treating the risk-scenario inventory as a living\nartefact subject to evolving threat-actor capability, and EBA\nGuidelines on ICT and security risk management §100 expressly\nrequire the inventory to be refreshable at least annually with\ndocumented evidence of updates. The `at-least-yearly` floor is\nbinding even where the entity-internal `regular basis` cadence is\nset tighter (Art. 4 proportionality principle permits upward\ncalibration but not downward deviation). The provision sits within\nArt. 7 identification, and the broader Art. 6 chapeau obliges the\nmanagement body to review the framework periodically (NIS 2\nArt. 21(2)(f) on policy review contains a parallel cadence-floor\nobligation).\n[OJ-corrective note (v0.2 audit, material): Art. 7(2) → Art. 8(2) misattribution (P0 disagreement cross-cutting). Art. 8(2) sentence 2 (Identification function): on the basis of an assessment of the criticality of each ICT-supported business function, financial entities shall identify all ICT assets that support those functions, including those of third-party providers, and document the configuration of those ICT assets. The audit notes that the source article_ref points to Art. 7(2) but the OJ text is in Art. 8(2).]\n",
+        "security_rationale": "The obligation in Art. 7(2) sentence 2 for annual risk-scenario\nreview is operationalised in NIST CSF 2.0 through **ID.RA-05\n(Threats, vulnerabilities, likelihoods, and impacts are used to\nunderstand inherent risk and inform risk response decisions)**,\n**ID.IM-04 (Cybersecurity risk management improvements are\ninformed by awareness of related developments and context)**, and\n**GV.OV-02 (The organizational cybersecurity risk management\nstrategy is reviewed and adjusted to address changes in the\norganization's risk landscape)**. ID.RA-05 forces each scenario\ninto a structured likelihood-by-impact matrix, converting\nnarrative scenario description into quantified risk inputs that\ncan be aggregated across the register. ID.IM-04 closes the\nexternal-context feedback loop — supervisory guidance, ENISA\nthreat-landscape reports, sectoral near-miss incident learnings,\nand CTPP-concentration shifts feed scenario recalibration between\nannual cycles. GV.OV-02 anchors the strategic layer by requiring\nstrategy adjustment when scenario-review findings diverge from\nthe entity's risk-appetite statement, ensuring the review produces\ngovernance change rather than documentation churn. The hard\nnumeric anchor `at least yearly` aligns naturally with GV.OV-02's\nstrategic-review cadence. The accountability link under Art. 5(2):\nthe documented scenario-register revisions, likelihood-by-impact\nscore evolution, and management-body approval records produce the\ndocumented evidence trail the management body can present to\ncompetent authorities demonstrating that annual risk-scenario\nrefreshment is operationally substantive and strategy-influencing\nrather than a paperwork ritual.\n",
+        "ambiguity_notes": "`regular basis, and at least yearly` (COORD S2) — R1 the two\nanchors harmonise (regular = at-least-yearly); R2 `regular` may\nimpose a tighter cadence than yearly; reading chosen: R1 the\n`and at least yearly` anchors the floor. `risk scenarios`\n(POLY S2) — R1 entity-specific scenarios / R2 sectoral scenarios /\nR3 both; R3 literal. The reading chosen on the cadence-framing is\nexplicit that the `and at least yearly` clause is a hard floor\nrather than a softer default: a financial entity whose `regular\nbasis` cadence was set at three-yearly would still fail Art. 7(2)\nsentence 2. An alternative reading of `risk scenarios` limited to\nentity-specific scenarios would exclude sector-wide scenarios\n(e.g. CTPP concentration risk arising under Art. 28(4)) and would\nunder-deliver on the OJ qualifier `relevant to their ICT supported\nbusiness functions`, which implies external-scenario sensitivity.\nAn open question remains whether the EBA's planned supervisory\nreview templates under Art. 6(5) will impose a uniform scenario\ntaxonomy across the three ESAs.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-006",
+      "title": "Network and infrastructure management with automated blast-radius isolation",
+      "sub_domain": [
+        "D-02.2",
+        "D-07.1"
+      ],
+      "linked_objectives": [
+        "SO-DORA-004"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C13",
+          "article_ref": "Art. 9(4)(b) — `sound network and infrastructure management structure using appropriate techniques, methods and protocols that may include implementing automated mechanisms to isolate affected information assets in the event of cyber-attacks`"
+        }
+      ],
+      "nist_csf": [
+        "PR.PS-01",
+        "PR.IR-01",
+        "PR.IR-03"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-006",
+        "title": "Network and infrastructure management with automated blast-radius isolation",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C13",
+            "article_ref": "Art. 9(4)(b) — `sound network and infrastructure management structure using appropriate techniques, methods and protocols that may include implementing automated mechanisms to isolate affected information assets in the event of cyber-attacks`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-004"
+        ],
+        "sub_domain": [
+          "D-02.2",
+          "D-07.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.PS-01",
+            "title": "Configuration management practices are established, documented, and applied to assets"
+          },
+          {
+            "id": "PR.IR-01",
+            "title": "Networks and environments are protected from unauthorized logical access and usage"
+          },
+          {
+            "id": "PR.IR-03",
+            "title": "Mechanisms are put in place to achieve resilience requirements in normal and adverse situations"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 9(4)(b) requires financial entities to establish a sound\nnetwork and infrastructure management structure using appropriate\ntechniques, methods and protocols that may include implementing\nautomated mechanisms to isolate affected information assets in\nthe event of cyber-attacks. This is one of eight mandatory control\ndomains in Art. 9(4) chapeau, anchoring the structural dimension\nof ICT security controls (NIS 2 Art. 21(2)(b)–(c) on\nincident-handling and business-continuity supply a parallel\noperational dimension). Recital 53 highlights network-segmentation\npractice as a primary defence against lateral movement. The `may\ninclude` construction explicitly makes automated isolation\ncapability one of several possible control techniques within a\nbroader required structure of techniques, methods and protocols,\nnot a stand-alone obligation (cf. EBA Guidelines on ICT and\nsecurity risk management §172).\n",
+        "security_rationale": "The obligation in Art. 9(4)(b) for sound network and infrastructure\nmanagement structure is operationalised in NIST CSF 2.0 through\n**PR.PS-01 (Configuration management practices are established,\ndocumented, and applied to assets)**, **PR.IR-01 (Networks and\nenvironments are protected from unauthorized logical access and\nusage)**, and **PR.IR-03 (Mechanisms are put in place to achieve\nresilience requirements in normal and adverse situations)**.\nPR.PS-01 establishes the configuration baseline — golden images,\ndrift detection, configuration-as-code — that makes subsequent\nsegmentation and isolation enforceable rather than aspirational.\nPR.IR-01 enforces the logical-access layer (zero-trust east-west\ntraffic controls, network segmentation, micro-segmentation around\npayment-processing and settlement-infrastructure zones) that limits\nlateral movement once a perimeter is breached. PR.IR-03 supplies\nthe resilience layer (redundant paths, failover, automated\nisolation mechanisms triggered on detected compromise) that the\nOJ `may include` clause operationalises through segmented\nblast-radius containment. The three PR subcategories together\ntransform the OJ `sound network and infrastructure management\nstructure` from a procedural requirement into a measured\narchitectural capability. The accountability link under Art. 5(2):\nconfiguration-management records, segmentation-policy\ndocumentation, and isolation-test outcomes produce the documented\nevidence trail the management body can present to competent\nauthorities demonstrating that network and infrastructure\nmanagement is structurally protective rather than nominal.\n",
+        "ambiguity_notes": "Source clause DORA-C13 carries S2 on `sound` and `appropriate`\n(VAG), S2 on `network and infrastructure` (POLY — distinct or\ncomposite), and S2 on `techniques, methods and protocols` (COORD\n3-way AND of near-synonyms; reading chosen: R1 cumulative, the\nthree together cover the structural, procedural, and protocol-\nlevel dimensions of network and infrastructure management).\n**`may include` (POLY S2)** — R1 optional illustrative / R2\nexpected minimum; R1 literal OJ (the `may` softens the\n`include`). **T4-vs-text gap:** T4 maps DORA-C13 to `D-02.2\nPatch Management & Updates` but the OJ Art. 9(4)(b) text is\nabout network and infrastructure management structure, not\npatching. The Executor preserves OJ-literal locus at network\nmanagement. A contrasting reading would treat the segmentation\nmechanism as the dominant expected control and read `may\ninclude` as a quasi-mandatory listing (R2), but the literal OJ\nconstruction makes the listing illustrative. An open question is\nwhether the EBA Guidelines + ESAs Joint Committee output under\nArt. 15(2) will harden `may include` into a measurable\nsegmentation expectation, de facto converting it from R1 to R2.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-007",
+      "title": "Documented patch and update governance covering full asset estate",
+      "sub_domain": [
+        "D-02.2"
+      ],
+      "linked_objectives": [
+        "SO-DORA-004"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C19",
+          "article_ref": "Art. 9(4)(f) — `have appropriate and comprehensive documented policies for patches and updates`"
+        }
+      ],
+      "nist_csf": [
+        "PR.PS-02",
+        "ID.RA-01"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-007",
+        "title": "Documented patch and update governance covering full asset estate",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C19",
+            "article_ref": "Art. 9(4)(f) — `have appropriate and comprehensive documented policies for patches and updates`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-004"
+        ],
+        "sub_domain": [
+          "D-02.2"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.PS-02",
+            "title": "Software is maintained, replaced, and removed commensurate with risk"
+          },
+          {
+            "id": "ID.RA-01",
+            "title": "Vulnerabilities in assets are identified, validated, and recorded"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 9(4)(f) requires financial entities to have appropriate and\ncomprehensive documented policies for patches and updates. This\nsub-paragraph addresses the governance instrument (the *policy*)\nrather than the operational patch-deployment cadence, and operates\nalongside Art. 9(4)(b) network-and-infrastructure controls and\nArt. 7 identification (NIS 2 Art. 21(2)(e) on supply-chain\nsecurity contains a parallel patch-governance requirement with\nCRA Art. 13(11) vulnerability-handling rules feeding the supply\nside). The documented-policy qualifier is binding: an entity\noperating patch deployment ad hoc, even with high operational\ncadence, fails Art. 9(4)(f). EBA Guidelines on ICT and security\nrisk management §165–§168 expect policies to specify scope,\napproval authorities, exception handling and rollback procedures.\n",
+        "security_rationale": "The obligation in Art. 9(4)(f) for documented patch and update\npolicies is operationalised in NIST CSF 2.0 through **PR.PS-02\n(Software is maintained, replaced, and removed commensurate with\nrisk)** and **ID.RA-01 (Vulnerabilities in assets are identified,\nvalidated, and recorded)**. PR.PS-02 establishes the operational\npatch-management discipline — severity classification taxonomies,\nSLA-bound deployment windows, documented exception-handling for\ncompensating controls during deferred-patch windows, rollback\nrunbooks for production-impacting patches — anchored to risk-tier\nrather than uniform cadence. ID.RA-01 supplies the upstream\nvulnerability-identification substrate without which PR.PS-02\ncannot prioritise: validated vulnerability records tied to the\nasset inventory (CVE-feed ingestion, authenticated validation,\nrisk-scored entries) drive patch-priority ordering. The OJ\n`appropriate and comprehensive` qualifier aligns with PR.PS-02's\nrisk-commensurate framing under Art. 4 proportionality and with\nthe breadth requirement (full asset estate rather than critical-\nonly). The accountability link under Art. 5(2): the patch-\nclassification taxonomy, SLA-window records, exception registers,\nand rollback-procedure documentation produce the documented\nevidence trail the management body can present to competent\nauthorities demonstrating that patch governance is comprehensive,\ndocumented, and risk-driven rather than ad-hoc.\n",
+        "ambiguity_notes": "`appropriate and comprehensive` (COORD S2) — R1 both qualities\nrequired (literal AND); R2 either alone may suffice; R1 literal.\n**T4-vs-text gap:** T4 maps DORA-C19 to `D-07.2 Secure Coding\nPractices` but the OJ Art. 9(4)(f) text is `patches and\nupdates`, which is patch-management policy not secure-coding.\nThe Executor preserves OJ-literal locus at D-02.2 patch\nmanagement. Per AEGIS taxonomy §4.1, DORA is listed as sole\nauthority for D-07.2; this pilot finds no OJ-text support for\nthat assignment and recommends Layer 2 review. A contrasting\nreading of `appropriate` could treat the word as a proportionality\nelasticity valve under Art. 4 (entities operating at small scale\nmaintain less elaborate policies), but the literal conjunction\n`and comprehensive` requires both to be delivered regardless of\nentity scale. An open question is whether the ESAs Joint\nCommittee RTS under Art. 15(2) will provide quantified patch-SLA\nexpectations (e.g. severity-to-deployment-window mappings) that\nthe OJ text itself does not specify.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-008",
+      "title": "Multi-modality resilience testing programme as framework component",
+      "sub_domain": [
+        "D-10.3",
+        "D-02.4"
+      ],
+      "linked_objectives": [
+        "SO-DORA-005"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C32",
+          "article_ref": "Art. 24(1) — `establish, maintain and review a sound and comprehensive digital operational resilience testing programme as an integral part of the ICT risk-management framework`"
+        },
+        {
+          "clause_id": "DORA-C33",
+          "article_ref": "Art. 25(1) — testing modalities portfolio (12-way open list)"
+        }
+      ],
+      "nist_csf": [
+        "GV.OV-02",
+        "ID.RA-01",
+        "PR.PS-06"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-008",
+        "title": "Multi-modality resilience testing programme as framework component",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C32",
+            "article_ref": "Art. 24(1) — `establish, maintain and review a sound and comprehensive digital operational resilience testing programme as an integral part of the ICT risk-management framework`"
+          },
+          {
+            "clause_id": "DORA-C33",
+            "article_ref": "Art. 25(1) — testing modalities portfolio (12-way open list)"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-005"
+        ],
+        "sub_domain": [
+          "D-10.3",
+          "D-02.4"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "GV.OV-02",
+            "title": "The organizational cybersecurity risk management strategy is reviewed and adjusted to address changes in the organization's risk landscape"
+          },
+          {
+            "id": "ID.RA-01",
+            "title": "Vulnerabilities in assets are identified, validated, and recorded"
+          },
+          {
+            "id": "PR.PS-06",
+            "title": "Secure software development practices are integrated, and their performance is monitored throughout the SDLC"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS",
+          "PERIODIC"
+        ],
+        "regulatory_rationale": "Art. 24(1) requires financial entities to establish, maintain and\nreview a sound and comprehensive digital operational resilience\ntesting programme as an integral part of the ICT risk-management\nframework. Art. 25(1) operationalises this through a portfolio of\ntesting modalities — vulnerability assessments, scans, open source\nanalyses, network security assessments, gap analyses, physical\nsecurity reviews, questionnaires, source code reviews where\nfeasible, scenario-based tests, compatibility testing, performance\ntesting, end-to-end testing and penetration testing. Chapter IV\nis dedicated to the testing programme, with Art. 26 (TLPT) and\nArt. 27 (advanced testing for significant entities) imposing\nhigher-tier obligations alongside Art. 24–25 baseline (NIS 2\nArt. 21(2)(f) on basic cyber-hygiene and policy review imposes\na parallel periodic-test expectation on NSIEs that DORA NSIEs\nretain as joint obligation). The Art. 24(7) RTS mandate is the\nprincipal pending source of measurability for the `sound and\ncomprehensive` qualifier.\n[OJ-corrective note (v0.2 audit, material): Art. 25(1) — 12 OJ items miscounted (split + omission). OJ Art. 25(1) lists 12 comma-separated testing modalities: (1) vulnerability assessments and scans, (2) open source analyses, (3) network security assessments, (4) gap analyses, (5) physical security reviews, (6) questionnaires and scanning software solutions, (7) source code reviews where feasible, (8) scenario-based tests, (9) compatibility testing, (10) performance testing, (11) end-to-end testing, (12) penetration testing. The SR splits chunk #1 into 2 items and omits `scanning software solutions` from chunk #6.]\n",
+        "security_rationale": "The obligation in Art. 24(1)/Art. 25(1) for a sound and\ncomprehensive digital operational resilience testing programme is\noperationalised in NIST CSF 2.0 through **GV.OV-02 (The\norganizational cybersecurity risk management strategy is reviewed\nand adjusted to address changes in the organization's risk\nlandscape)**, **ID.RA-01 (Vulnerabilities in assets are\nidentified, validated, and recorded)**, and **PR.PS-06 (Secure\nsoftware development practices are integrated, and their\nperformance is monitored throughout the SDLC)**. GV.OV-02 anchors\nthe testing programme as a strategic-review instrument whose\nfindings must feed strategy adjustment, ensuring the programme\nis integral to the framework rather than parallel. ID.RA-01\nsupplies the validated vulnerability substrate that the twelve-\nmodality portfolio in Art. 25(1) — vulnerability assessments,\nscans, source-code reviews, scenario tests, penetration testing —\noperationalises into concrete testing outputs traceable to known\nvulnerabilities. PR.PS-06 closes the SDLC dimension by ensuring\nsecure-development controls are themselves tested rather than\nassumed, completing the modality coverage on the\napplication-layer side. The OJ `sound and comprehensive`\nqualifier is delivered by the multi-modality coverage plus\nstrategic-feedback loop. The accountability link under Art. 5(2):\nthe testing-programme charter, modality-coverage matrix,\ntest-execution records, and findings-to-strategy-adjustment logs\nproduce the documented evidence trail the management body can\npresent to competent authorities demonstrating that resilience\ntesting is structurally embedded and strategy-influencing rather\nthan incident-driven.\n",
+        "ambiguity_notes": "Source clause DORA-C32 carries S2 on `sound` and `comprehensive`\n(VAG), S2 on `testing programme` (POLY — single programme vs.\nportfolio of tests), and S2 on `establish, maintain AND review`\n(COORD 3-way verb coordination; reading chosen: R1 all three\nactivities required). DORA-C33 carries S3 on the 12-way open\nlist (`such as` pattern, COORD S3 — the `such as` softens the\nlist to illustrative; reading chosen: R2 illustrative-with-\nfloor — the entity selects from the list appropriate to its\nrisk profile, with the modalities collectively covering the\nICT-system attack surface). `where feasible` (VAG S2) — R1\ntechnically achievable / R2 cost-effective / R3 either; R3\nliteral. The dominance of `R2 illustrative-with-floor` over\npure-illustrative reflects the supervisory expectation that an\nentity running none of the twelve modalities would fail to\nestablish a `sound and comprehensive` testing programme. A\ncontrasting reading treats the `such as` clause as strictly\nillustrative with no floor, leaving the entity entirely free\nto select any testing modalities; this reading is consistent\nwith the OJ literal text but inconsistent with the supervisory\nexpectation in EBA Guidelines on ICT and security risk\nmanagement §208–§212. A third constructed reading would impose\nall twelve modalities as an enumerated floor — supported by\nthe structural formality of the twelve-item list in OJ but\nunsupported by the `such as` pattern's softening language. The\nArt. 24(7) RTS mandate is pending and may close the modality-\nselection question. Remain open: (a) whether the ESAs Joint\nCommittee RTS under Art. 24(7) will impose a quantified\nbaseline-modality floor for specific entity classes; (b) whether\n`where feasible` will be interpreted by supervisory practice as\nR1 (technically achievable) or R2 (cost-effective), with the\ndistinction materially affecting the supervisory treatment of\nclosed-source third-party components.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-009",
+      "title": "Threat-led penetration testing on triennial supervisory cycle",
+      "sub_domain": [
+        "D-02.4"
+      ],
+      "linked_objectives": [
+        "SO-DORA-005"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C34",
+          "article_ref": "Art. 26(1) — `shall carry out at least every 3 years advanced testing by means of TLPT`"
+        }
+      ],
+      "nist_csf": [
+        "ID.RA-01",
+        "ID.RA-04"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-009",
+        "title": "Threat-led penetration testing on triennial supervisory cycle",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C34",
+            "article_ref": "Art. 26(1) — `shall carry out at least every 3 years advanced testing by means of TLPT`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-005"
+        ],
+        "sub_domain": [
+          "D-02.4"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "ID.RA-01",
+            "title": "Vulnerabilities in assets are identified, validated, and recorded"
+          },
+          {
+            "id": "ID.RA-04",
+            "title": "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified, recorded, and prioritized"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "PERIODIC"
+        ],
+        "regulatory_rationale": "Art. 26(1) requires financial entities to carry out at least every\n3 years advanced testing by means of TLPT. The competent authority\nmay, where necessary, request a reduction or increase in this\nfrequency based on the entity's risk profile and operational\ncircumstances. The provision sits inside Chapter IV with scope\nlimitations dependent on entity significance (Art. 26(8)–(11)):\nthe TLPT obligation applies to entities identified as significant\nunder Art. 26(8) on the basis of size, interconnectedness,\ncomplexity, and risk profile. Art. 26(11) defines TLPT by\nreference to the TIBER-EU framework or equivalent, which\nincorporates ISO/IEC 33069 and threat-intelligence-led\nmethodology (cf. ESAs Joint Committee TIBER-EU Knowledge Hub).\nRecital 65 sets the policy rationale: TLPT bridges the gap\nbetween compliance-driven testing and real-world adversarial\ncapability.\n",
+        "security_rationale": "The obligation in Art. 26(1) for threat-led penetration testing\non a triennial cycle is operationalised in NIST CSF 2.0 through\n**ID.RA-01 (Vulnerabilities in assets are identified, validated,\nand recorded)** and **ID.RA-04 (Potential impacts and likelihoods\nof threats exploiting vulnerabilities are identified, recorded,\nand prioritized)**. ID.RA-01 supplies the validated-vulnerability\nsubstrate that TLPT exercises: identified vulnerabilities are re-\ntested under adversarial conditions to verify remediation efficacy\nand detect regression. ID.RA-04 supplies the threat-likelihood-\nimpact framing that TLPT's threat-intelligence-led methodology\ndepends on — TIBER-EU scenarios are constructed from current\ncampaigns whose impact-likelihood must be quantified to scope\nthe test realistically and prioritised so test-team effort\ntargets the most consequential threat paths. The OJ `at least\nevery 3 years` hard anchor maps to a supervisory-cycle rather\nthan operational-cadence frame, ensuring TLPT findings are\nreviewed in light of contemporary threat-actor capability at a\nfrequency aligned to strategic-risk reassessment. The\naccountability link under Art. 5(2): the TLPT charter, threat-\nscenario justifications, test-execution records, and remediation-\ntraceability documentation produce the documented evidence trail\nthe management body can present to competent authorities\ndemonstrating that adversarial-defence verification is performed\nat supervisory-relevant cadence with documented findings-to-\nremediation closure.\n",
+        "ambiguity_notes": "Source clause DORA-C34 carries S2 on `risk profile` (POLY —\nentity-internal vs. sectoral; R1 entity-internal literal), S2 on\n`operational circumstances` (VAG — entity-context dependent),\nand S2 on `where necessary` (VAG — CA judgment). The hard\nnumeric anchor (3 years) closes the temporal ambiguity. `TLPT`\n(POLY S2) — defined by reference to the TIBER-EU framework\n(Art. 26(11) — non-binding ESA guidance); R1 TIBER-EU, R2\nequivalent framework accepted; R1 dominant. `reduce or\nincrease` (COORD S2) — R1 either direction authorised; R1\nliteral. The dominant TIBER-EU reading is anchored in the\nESAs Joint Committee TIBER-EU Knowledge Hub, which converges\non the ECB-led methodology; equivalent framework acceptance\nis contingent on competent-authority recognition (an\nAOFIRST-only entity operating in France would still satisfy\nTLPT under national recognition even without TIBER-EU\ncertification). An open question remains the scope of\n`significant` under Art. 26(8): the OJ text references\nArt. 26(8) criteria but defers the operational scope\ndetermination to the supervisory authority.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-010",
+      "title": "Least-privilege physical and logical access governance",
+      "sub_domain": [
+        "D-03.3"
+      ],
+      "linked_objectives": [
+        "SO-DORA-006"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C14",
+          "article_ref": "Art. 9(4)(c) — `implement policies that limit the physical or logical access to information assets and ICT assets to what is required for legitimate and approved functions and activities only`"
+        }
+      ],
+      "nist_csf": [
+        "PR.AA-05",
+        "PR.AA-06"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-010",
+        "title": "Least-privilege physical and logical access governance",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C14",
+            "article_ref": "Art. 9(4)(c) — `implement policies that limit the physical or logical access to information assets and ICT assets to what is required for legitimate and approved functions and activities only`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-006"
+        ],
+        "sub_domain": [
+          "D-03.3"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.AA-05",
+            "title": "Access permissions, entitlements, and authorizations are defined and managed in accordance with the principle of least privilege"
+          },
+          {
+            "id": "PR.AA-06",
+            "title": "Access to physical and logical assets is limited to authorized users, services, and hardware"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 9(4)(c) requires financial entities to implement policies that\nlimit physical or logical access to information assets and ICT\nassets to what is required for legitimate and approved functions\nand activities only. This sits within Art. 9(4) chapeau and is\none of eight mandatory control categories (NIS 2 Art. 21(2)(d)\non cryptography and (e) on access control impose parallel\nobligations on NSIEs outside DORA). The OJ text is markedly\ncareful: the limiting phrase `what is required for legitimate\nand approved functions and activities only` carries the entire\nsubstantive burden of the rule, with `only` properly placed\nbefore the limiting phrase to avoid ambiguity (Berry §5.3.1\nfaithfully reproduces this placement). Recital 53 supplies\nthe principle-aligned framing without introducing normative\nadditionality.\n",
+        "security_rationale": "The obligation in Art. 9(4)(c) for least-privilege physical and\nlogical access is operationalised in NIST CSF 2.0 through\n**PR.AA-05 (Access permissions, entitlements, and authorizations\nare defined and managed in accordance with the principle of\nleast privilege)** and **PR.AA-06 (Access to physical and\nlogical assets is limited to authorized users, services, and\nhardware)**. PR.AA-05 establishes the permission-tier discipline:\nfunction-aligned entitlements, role-based and attribute-based\naccess control, just-in-time elevation with documented business\njustification, separation-of-duties enforcement on payment-\nauthorisation workflows, and privileged-access management with\nsession recording. PR.AA-06 enforces the physical-and-logical\ntwin layer — badge access, mantrap entry, secure-room zoning,\nand CCTV coverage complementing logical controls — preventing\nphysical-bypass of logical controls that an attacker can otherwise\nuse to circumvent authentication entirely. The OJ `legitimate\nAND approved` two-axis gating (function-aligned AND governance-\napproved) is operationalised through PR.AA-05's documented\nentitlement rationales and PR.AA-06's access-request approval\nworkflows with multi-party authorisation for privileged grants.\nThe accountability link under Art. 5(2): the entitlement\ninventory, access-review records, separation-of-duties\nattestation logs, and physical-access audit trails produce the\ndocumented evidence trail the management body can present to\ncompetent authorities demonstrating that access governance is\ndual-axis-gated and continuously enforced across both access\nmodalities.\n",
+        "ambiguity_notes": "Source clause DORA-C14 carries S2 on `physical or logical` (POLY\n— distinct access modes coordinated by OR; reading chosen: R1\nboth required, distinct instruments for physical and logical\naccess), S2 on `legitimate AND approved` (COORD — both qualifiers\nrequired; R1 literal), and S2 on the `only` qualifier (Berry §5.3.1\n— correctly placed before the limiting phrase). **T4-vs-text\ngap:** T4 unpacks DORA-C14 as `need-to-know and least privilege`.\n**The OJ text contains neither `need-to-know` nor `least\nprivilege`** — these are imported from ISO 27001 interpretation.\nThe Executor preserves OJ-literal language (`what is required for\nlegitimate and approved functions and activities only`) and maps\nto PR.AA-05 (least privilege) by meaning-alignment without\nimporting non-OJ vocabulary. A contrasting reading would treat\n`physical or logical` as an alternative (either suffices), but\nthe structural-protective objective of the provision requires\nboth layers to be governed because physical-access bypasses of\nlogical controls are an established threat vector. An open\nquestion is whether supervisory expectations will progressively\nharden `legitimate and approved` into formal need-to-know\nregistries.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-011",
+      "title": "Multi-class anomalous activity detection with SPOF identification",
+      "sub_domain": [
+        "D-04.1",
+        "D-10.1"
+      ],
+      "linked_objectives": [
+        "SO-DORA-007"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C20",
+          "article_ref": "Art. 10(1) — `mechanisms to promptly detect anomalous activities … including ICT network performance issues and ICT-related incidents, and to identify potential material single points of failure`"
+        }
+      ],
+      "nist_csf": [
+        "DE.CM-01",
+        "DE.CM-09",
+        "DE.AE-02"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-011",
+        "title": "Multi-class anomalous activity detection with SPOF identification",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C20",
+            "article_ref": "Art. 10(1) — `mechanisms to promptly detect anomalous activities … including ICT network performance issues and ICT-related incidents, and to identify potential material single points of failure`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-007"
+        ],
+        "sub_domain": [
+          "D-04.1",
+          "D-10.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "DE.CM-01",
+            "title": "Networks and network services are monitored to find potentially adverse events"
+          },
+          {
+            "id": "DE.CM-09",
+            "title": "Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events"
+          },
+          {
+            "id": "DE.AE-02",
+            "title": "Detected events are analyzed to understand attack targets and methods"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 10(1) requires financial entities to deploy mechanisms to\npromptly detect anomalous activities, in accordance with Art. 17,\nincluding ICT network performance issues and ICT-related incidents,\nand to identify potential material single points of failure.\nArticle 10 Chapter II Section II establishes the detection\nsubstrate that Chapter III operationalises into the incident-\nmanagement process. The cross-reference `in accordance with Art.\n17` ties detection to incident-management process (NIS 2 Art.\n21(2)(b) on incident-handling imposes a parallel baseline on\nNSIEs that DORA NSIEs also satisfy). Recital 54 highlights\nthe dual objective: cyber-threat detection and operational-\nperformance anomaly detection (the latter catching availability-\noriented incidents that the cyber-threat lens alone would miss).\n[OJ-corrective note (v0.2 audit, cosmetic): Art. 10(1) — \"deploy\" vs \"have in place\". OJ Art. 10(1) reads: `Financial entities shall have in place mechanisms to promptly detect anomalous activities` — the operative verb is `have in place`, not `deploy`. Operatively equivalent; no operational change required.]\n",
+        "security_rationale": "The obligation in Art. 10(1) for prompt detection of anomalous\nactivities and SPOF identification is operationalised in NIST CSF\n2.0 through **DE.CM-01 (Networks and network services are monitored\nto find potentially adverse events)**, **DE.CM-09 (Computing\nhardware and software, runtime environments, and their data are\nmonitored to find potentially adverse events)**, and **DE.AE-02\n(Detected events are analyzed to understand attack targets and\nmethods)**. DE.CM-01 covers the network-layer detection surface —\nflow telemetry, IDS/IPS signatures, east-west traffic baselining,\nDNS-monitoring, and CTPP-traffic anomaly detection. DE.CM-09\nextends coverage to the compute-layer surface — endpoint\ndetection and response, file-integrity monitoring, runtime-\nanomaly detection on transaction-processing hosts, and\nauthentication-system anomaly detection. DE.AE-02 supplies the\nanalysis layer that converts raw detections into understood\nattack patterns and supports SPOF identification through\nperformance-anomaly correlation (latency drift, error-rate\nspikes, capacity-saturation). The OJ three-class coverage\n(network, compute, performance) maps directly onto these three\nDE subcategories, ensuring no detection blind spot. The\naccountability link under Art. 5(2): the detection-coverage\nmatrix, SPOF register, and analysis-output records produce the\ndocumented evidence trail the management body can present to\ncompetent authorities demonstrating that detection is genuinely\nmulti-class and SPOF-aware rather than cyber-flavour-only.\n",
+        "ambiguity_notes": "Source clause DORA-C20 carries S2 on `promptly` (VAG — no\nspecified time-to-detect; reading chosen: R3 risk-based, per\nentity risk profile), S2 on `potential material` (VAG — VAG +\nPOLY combined; reading chosen: R1 reasonable-judgment-of-\nmateriality), and S2 on `anomalous activities` (POLY — R1\nsecurity anomaly / R2 performance anomaly / R3 behavioural\nanomaly; reading chosen: R3 cumulative, all three classes per\nthe `including ICT network performance issues AND ICT-related\nincidents` opening). A contrasting reading of `promptly` would\ntreat the term as a supervisor-imposed deterministic window\n(e.g. 24 hours), but no OJ-text support exists for a\ndeterministic interpretation. An alternative reading would limit\n`anomalous activities` to cyber-security flavour only, ignoring\nthe OJ qualifier `including ICT network performance issues` —\nthis reading is rejected because the qualifier is in OJ text.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-012",
+      "title": "Multi-layer detection with threshold-driven response triggering",
+      "sub_domain": [
+        "D-04.1",
+        "D-10.1"
+      ],
+      "linked_objectives": [
+        "SO-DORA-007"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C21",
+          "article_ref": "Art. 10(2) — `detection mechanisms … shall enable multiple layers of control, define alert thresholds and criteria to trigger and initiate ICT-related incident response processes, including automatic alert mechanisms for relevant staff in charge of ICT-related incident response`"
+        }
+      ],
+      "nist_csf": [
+        "DE.CM-01",
+        "RS.MA-01"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-012",
+        "title": "Multi-layer detection with threshold-driven response triggering",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C21",
+            "article_ref": "Art. 10(2) — `detection mechanisms … shall enable multiple layers of control, define alert thresholds and criteria to trigger and initiate ICT-related incident response processes, including automatic alert mechanisms for relevant staff in charge of ICT-related incident response`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-007"
+        ],
+        "sub_domain": [
+          "D-04.1",
+          "D-10.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "DE.CM-01",
+            "title": "Networks and network services are monitored to find potentially adverse events"
+          },
+          {
+            "id": "RS.MA-01",
+            "title": "The incident management plan is executed in coordination with relevant third parties once an incident is declared"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 10(2) requires financial entities to ensure that detection\nmechanisms enable multiple layers of control, define alert\nthresholds and criteria to trigger and initiate ICT-related\nincident response processes, including automatic alert mechanisms\nfor relevant staff in charge of ICT-related incident response.\nThis sub-paragraph specifies the operational shape of the\ndetection apparatus of Art. 10(1) — the four coordinated\nrequirements (multiple layers, thresholds, trigger, automatic\nalerts) build the detection-to-response bridge (NIS 2 Art.\n21(2)(b) parallels this with NSIE-side handling, with CRA Art.\n13(6) on handled vulnerabilities as upstream fact-flow into the\ndetection layer). Recital 54 frames `multiple layers` in\ndefence-in-depth terms, and EBA Guidelines on ICT and security\nrisk management §194 specify the supervisory expectation that\nlayers include at least network-layer, compute-layer and\napplication-layer detection.\n",
+        "security_rationale": "The obligation in Art. 10(2) for multi-layer detection with\nalert thresholds and automatic response-triggering is\noperationalised in NIST CSF 2.0 through **DE.CM-01 (Networks\nand network services are monitored to find potentially adverse\nevents)** and **RS.MA-01 (The incident management plan is\nexecuted in coordination with relevant third parties once an\nincident is declared)**. DE.CM-01 establishes the network-layer\ndetection substrate whose outputs are channelled into\nthreshold-driven alerting, with the OJ `multiple layers`\nrequirement operationalised through complementary coverage at\nnetwork, compute, and application layers (per EBA Guidelines\n§194 supervisory expectation). RS.MA-01 bridges detection to\nresponse: alert thresholds and trigger criteria operationalise\nthe transition from detection to declared-incident, ensuring\nthe response process initiates automatically without operator\ndelay once crossing triggers fire. The four-verb OJ coordination\n`enable, define, trigger, initiate` maps cleanly onto DE.CM-01\n(enable monitoring, define thresholds) and RS.MA-01 (trigger\ndeclaration, initiate response execution with relevant third\nparties including CTPPs and competent authorities). The\naccountability link under Art. 5(2): the layer-coverage\ndocumentation, threshold-tuning records, and response-trigger\naudit logs produce the documented evidence trail the management\nbody can present to competent authorities demonstrating that\ndetection-to-response is mechanised, threshold-driven, and\nauditably fast rather than operator-judgement-dependent.\n",
+        "ambiguity_notes": "Source clause DORA-C21 carries S2 on `multiple` (VAG — R1 ≥2\nlayers / R2 ≥3 layers; R1 literal minimum), S2 on `relevant\nstaff` (VAG — R1 incident-response team / R2 security\noperations / R3 management; R3 literal OJ), and S2 on\n`thresholds and criteria` (POLY — R1 quantitative thresholds\n/ R2 qualitative criteria / R3 both; R3 literal AND). The\nfour-verb coordination `enable, define, trigger, initiate`\n(S2) — reading chosen: R1 cumulative, the four verbs together\ndescribe the complete mechanism lifecycle. A contrasting reading\nof `multiple` would impose three or more layers (R2), aligned\nwith EBA Guidelines supervisory expectation of at least three\n(network, compute, application), but the OJ literal `multiple`\npermits as few as two. An open question is whether supervisory\nguidance has the operational force to displace the OJ literal\nminimum.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-013",
+      "title": "Integrated ICT business continuity policy framework",
+      "sub_domain": [
+        "D-04.2",
+        "D-04.4"
+      ],
+      "linked_objectives": [
+        "SO-DORA-010"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C22",
+          "article_ref": "Art. 11(1) — `comprehensive ICT business continuity policy, which may be adopted as a dedicated specific policy, forming an integral part of the overall business continuity policy of the financial entity`"
+        }
+      ],
+      "nist_csf": [
+        "RC.RP-01",
+        "PR.IR-03"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-013",
+        "title": "Integrated ICT business continuity policy framework",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C22",
+            "article_ref": "Art. 11(1) — `comprehensive ICT business continuity policy, which may be adopted as a dedicated specific policy, forming an integral part of the overall business continuity policy of the financial entity`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-010"
+        ],
+        "sub_domain": [
+          "D-04.2",
+          "D-04.4"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "RC.RP-01",
+            "title": "The recovery portion of the incident response plan is executed once the incident response plan has been performed to acceptable criteria"
+          },
+          {
+            "id": "PR.IR-03",
+            "title": "Mechanisms are put in place to achieve resilience requirements in normal and adverse situations"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 11(1) requires financial entities to put in place a\ncomprehensive ICT business continuity policy, which may be\nadopted as a dedicated specific policy forming an integral part\nof the overall business continuity policy of the financial\nentity. The provision sits in Chapter II Section II alongside\nArt. 12 backup and recovery obligations (NIS 2 Art. 21(2)(c)\non business-continuity imposes a parallel obligation on NSIEs\noutside DORA, with CRA Art. 13(8) on secure-by-default and\nsecure-update flows feeding the upstream incident-prevention\nside). The OJ `may be adopted as a dedicated specific policy`\nqualifier explicitly recognises either form-factor (standalone\ndocument or embedded within overall BC policy).\n",
+        "security_rationale": "The obligation in Art. 11(1) for a comprehensive ICT business\ncontinuity policy is operationalised in NIST CSF 2.0 through\n**RC.RP-01 (The recovery portion of the incident response plan\nis executed once the incident response plan has been performed\nto acceptable criteria)** and **PR.IR-03 (Mechanisms are put in\nplace to achieve resilience requirements in normal and adverse\nsituations)**. RC.RP-01 anchors the recovery-execution dimension:\nthe BC policy must specify the criteria under which recovery\ntransitions from incident-response to recovery-mode, ensuring\ncontinuity of critical functions with documented decision\npoints and recovery-time-objectives. PR.IR-03 supplies the\nbroader resilience-mechanism substrate that the BC policy\noperationalises — redundant systems, geographic dispersion,\nfailover orchestration, alternative-site arrangements, and\ncrisis-mode operations. The OJ `integral part` qualifier (BC\npolicy embedded within overall BC) is delivered through\nPR.IR-03's cross-policy consistency requirements and RC.RP-01's\ncoordination-with-overall-BC framing, preventing trigger-\ndivergence between ICT-BC and overall-BC activation. The\naccountability link under Art. 5(2): the BC policy document,\nrecovery-execution criteria, and resilience-mechanism inventory\nproduce the documented evidence trail the management body can\npresent to competent authorities demonstrating that ICT\ncontinuity is structurally embedded in the entity's overall\nbusiness-continuity framework rather than a free-standing\ndocument with unaligned triggers.\n",
+        "ambiguity_notes": "`comprehensive` (VAG S2) — R1 broad scope / R2 detailed\ncoverage / R3 both; R3 literal. `may be adopted as a dedicated\nspecific policy` (POLY S2) — R1 standalone document / R2\nembedded within overall BC policy / R3 either; R3 literal\n(the OJ explicitly permits either form). `integral part`\n(VAG S2) — R1 structurally embedded / R2 logically linked; R1\nliteral. A contrasting reading of `integral part` would allow\nlogical linking without structural embedding, but the\nsupervisory expectation (EBA Guidelines on ICT and security\nrisk management §210) requires structural integration to\nensure trigger-coordination. The literal OJ construction\nmakes `integral part` structurally protective. An open\nquestion is whether Art. 11(1) `integral part` extends to the\nthird-party risk dimension under Art. 28–30 (i.e. whether\nthe BC policy must cover CTPP-failure scenarios) or is\nrestricted to in-entity ICT.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-014",
+      "title": "BC implementation arrangements with independent audit review",
+      "sub_domain": [
+        "D-04.2",
+        "D-04.4"
+      ],
+      "linked_objectives": [
+        "SO-DORA-010"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C23",
+          "article_ref": "Art. 11(2) — `implement the ICT business continuity policy through dedicated, appropriate and documented arrangements, plans, procedures and mechanisms aiming to (a)–(e)`"
+        },
+        {
+          "clause_id": "DORA-C24",
+          "article_ref": "Art. 11(3) — `associated ICT response and recovery plans … shall be subject to independent internal audit reviews` (non-microenterprises)"
+        }
+      ],
+      "nist_csf": [
+        "RC.RP-04",
+        "PR.IR-04"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-014",
+        "title": "BC implementation arrangements with independent audit review",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C23",
+            "article_ref": "Art. 11(2) — `implement the ICT business continuity policy through dedicated, appropriate and documented arrangements, plans, procedures and mechanisms aiming to (a)–(e)`"
+          },
+          {
+            "clause_id": "DORA-C24",
+            "article_ref": "Art. 11(3) — `associated ICT response and recovery plans … shall be subject to independent internal audit reviews` (non-microenterprises)"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-010"
+        ],
+        "sub_domain": [
+          "D-04.2",
+          "D-04.4"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "RC.RP-04",
+            "title": "Critical mission functions and services are restored through the implementation of the recovery plan"
+          },
+          {
+            "id": "PR.IR-04",
+            "title": "Adequate resource capacity to ensure availability is maintained"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 11(2) requires financial entities to implement the ICT\nbusiness continuity policy through dedicated, appropriate and\ndocumented arrangements, plans, procedures and mechanisms\naiming to (a) continue critical operations, (b) recover from\nICT-related incidents, (c) manage crises, (d) protect\nstakeholders, and (e) comply with regulatory obligations. Art.\n11(3) requires ICT response and recovery plans to be subject\nto independent internal audit reviews for non-microenterprises.\nThe five-objective list (a)–(e) is functionally distinct from\nthe three Cs of generic BC (continuity, recovery, crisis) —\nthe addition of stakeholder protection and regulatory\ncompliance reflects the cross-stakeholder dimension of\nICT-related disruption in financial entities (NIS 2 Art.\n21(2)(c) on continuity parallels the first three objectives;\nGDPR Art. 32 security-of-processing converges on stakeholder-\nprotection (d) for personal-data cases).\n[OJ-corrective note (v0.2 audit, material): Art. 11(2)(c)/(d)/(e) — BCP objectives mislabelled. OJ Art. 11(2) chapeau + (a)–(e) actually reads: (a) ensure the continuity of the financial entity's critical or important functions; (b) quickly, appropriately and effectively respond to, and resolve, all ICT-related incidents in a way that limits damage and prioritises the resumption of activities and recovery actions; (c) activate, without delay, dedicated plans that enable containment measures, processes and technologies suited to each type of ICT-related incident; (d) estimate preliminary impacts, damages and losses; (e) set out communication and crisis management actions that ensure that updated information is transmitted to all relevant internal staff and external stakeholders in accordance with Article 14, and report to the competent authorities in accordance with Article 19. The SR's labels for (c)/(d)/(e) (manage crises, protect stakeholders, comply with regulatory obligations) do NOT match the OJ items.]\n",
+        "security_rationale": "The obligation in Art. 11(2)+(3) for BC-implementation\narrangements and independent internal audit review is\noperationalised in NIST CSF 2.0 through **RC.RP-04 (Critical\nmission functions and services are restored through the\nimplementation of the recovery plan)** and **PR.IR-04 (Adequate\nresource capacity to ensure availability is maintained)**.\nRC.RP-04 anchors the recovery-execution layer: the documented\narrangements, plans, procedures, and mechanisms (the four-\nartefact AND) operationalise the five-objective Art. 11(2)(a)–(e)\nlist into concrete recovery capability — continuity of critical\nfunctions, rapid response-and-resolution, plan activation for\ncontainment, impact-and-loss estimation, and crisis-communication\nplus CA reporting. PR.IR-04 supplies the resource-capacity\nsubstrate — redundant compute, storage, network, and\nalternative-site capacity — without which recovery plans are\npaper artefacts. The OJ Art. 11(3) audit-review obligation\n(non-microenterprises) maps onto RC.RP-04's recovery-execution\nverification dimension, ensuring the arrangements are subject\nto second-line assurance rather than self-attestation. The\naccountability link under Art. 5(2): the recovery-plan\ninventory, resource-capacity attestation, audit-review records,\nand findings-to-improvement-cycle documentation produce the\ndocumented evidence trail the management body can present to\ncompetent authorities demonstrating that BC arrangements are\noperationally substantive, audit-verified, and continuously\nresourced rather than nominal.\n",
+        "ambiguity_notes": "Source clause DORA-C23 carries S2 on the 3-way AND of\nadjectives (`dedicated, appropriate, documented`) and the\n4-way AND of artefact types (`arrangements, plans,\nprocedures, mechanisms`); reading chosen: R1 cumulative\n(all four artefacts + all three qualities required). DORA-C24\n`response AND recovery plans` (COORD S2) — R1 distinct plans\n/ R2 composite plan; R1 literal (the OJ enjoins two plan\ntypes). `associated` (VAG S2 — Art. 11(3) refers back to\nArt. 11(1) BC policy). `independent internal audit reviews`\n(POLY S2) — R1 third-line assurance / R2 second-line review\nwith independence / R3 any internal audit with independence;\nR3 literal. The microenterprise carve-out is preserved in\n`applies_to_role` per the OJ scope. A contrasting reading of\n`response AND recovery plans` would treat them as a single\ncomposite plan, but the OJ enumeration with `AND` and the\noperational difference between response (triage, containment)\nand recovery (service restoration) justifies the distinct\nreading. An open question is whether `independent internal\naudit` permits internal-audit-function co-sourcing under\nexternal-lead assurance terms, or restricts to in-house\naudit function with documented independence.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-015",
+      "title": "Risk-calibrated backup with verified restoration capability",
+      "sub_domain": [
+        "D-04.4"
+      ],
+      "linked_objectives": [
+        "SO-DORA-010"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C25",
+          "article_ref": "Art. 12(1) — `develop and document: (a) backup policies and procedures specifying the scope of the data that is subject to the backup and the minimum frequency of the backup, based on the criticality of information or the confidentiality level of the data; (b) restoration and recovery procedures and methods`"
+        }
+      ],
+      "nist_csf": [
+        "PR.DS-11",
+        "RC.RP-03",
+        "RC.RP-04"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-015",
+        "title": "Risk-calibrated backup with verified restoration capability",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C25",
+            "article_ref": "Art. 12(1) — `develop and document: (a) backup policies and procedures specifying the scope of the data that is subject to the backup and the minimum frequency of the backup, based on the criticality of information or the confidentiality level of the data; (b) restoration and recovery procedures and methods`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-010"
+        ],
+        "sub_domain": [
+          "D-04.4"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.DS-11",
+            "title": "Backups of data are created, protected, maintained, and tested"
+          },
+          {
+            "id": "RC.RP-03",
+            "title": "The integrity of backups and other restoration assets is verified before using them for restoration"
+          },
+          {
+            "id": "RC.RP-04",
+            "title": "Critical mission functions and services are restored through the implementation of the recovery plan"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS",
+          "TRIGGERED"
+        ],
+        "regulatory_rationale": "Art. 12(1)(a) requires financial entities to develop and\ndocument backup policies and procedures specifying the scope of\nthe data subject to backup and the minimum frequency of backup,\nbased on the criticality of information or the confidentiality\nlevel of the data. Art. 12(1)(b) requires restoration and\nrecovery procedures and methods. Article 12 Chapter II Section\nII operationalises Art. 11 BC policy with specific backup and\nrecovery obligations (NIS 2 Art. 21(2)(c) on continuity and\nArt. 21(2)(d) on cryptography supply parallel and overlapping\nobligations; CRA Art. 13(8) on secure-update is upstream).\nRecital 57 highlights the importance of restore-time\nconfidence (testing backups, not merely writing them) which\nEBA Guidelines on ICT and security risk management §215\noperationalise through documented restore-test cadence.\n",
+        "security_rationale": "The obligation in Art. 12(1) for backup policies and\nrestoration/recovery procedures is operationalised in NIST CSF\n2.0 through **PR.DS-11 (Backups of data are created, protected,\nmaintained, and tested)**, **RC.RP-03 (The integrity of backups\nand other restoration assets is verified before using them for\nrestoration)**, and **RC.RP-04 (Critical mission functions and\nservices are restored through the implementation of the recovery\nplan)**. PR.DS-11 establishes the backup-creation and protection\nlayer — encryption-at-rest of backup media, immutable storage\nfor ransomware-resistant retention, offsite replication with\ndocumented RPO alignment, and retention windows scaled to\ndata criticality. RC.RP-03 closes the restore-confidence\ndimension by requiring integrity verification before\nrestoration (Recital 57's testing-not-merely-writing principle),\nensuring backups are operationally usable through documented\nrestore-test cadence and cryptographic integrity checks. RC.RP-04\nanchors the service-restoration layer: the recovery plan\noperationalises restored data into running services with\ndocumented recovery-time-objectives. The OJ `based on\ncriticality of information OR confidentiality level` risk-\nbased proportionality is operationalised through tiered\nbackup cadences — Tier 1 critical trading books synchronously\nreplicated, Tier 2 settlement data at high cadence, Tier 3\nreporting data at standard cadence. The accountability link\nunder Art. 5(2): the backup-tier classification, restore-test\nrecords, and recovery-execution documentation produce the\ndocumented evidence trail the management body can present to\ncompetent authorities demonstrating that backup-and-recovery\nis risk-calibrated, restore-verified, and service-validated\nrather than write-only.\n",
+        "ambiguity_notes": "`minimum frequency` (VAG S2) — R1 fixed interval / R2 risk-\nbased interval / R3 event-driven; R2 dominant per the OJ\nqualifier `based on the criticality of information or the\nconfidentiality level`. `criticality of information OR\nconfidentiality level of the data` (COORD S2) — R1 either\ndimension suffices / R2 both required; R1 literal OR.\n`restoration AND recovery` (POLY S2) — R1 distinct activities\n(restore-from-backup vs. recover-service) / R2 composite\n(one end-to-end activity); reading chosen: R1 distinct (the\ntwo activities are coordinated but operationally separate;\nrestoration is the technical layer, recovery is the service\nlayer). A contrasting reading of `restoration AND recovery`\ntreats them as a single end-to-end activity, but the OJ\nenumeration with explicit `and` and the operational\ndifference between technical restore (data delivery) and\nservice recovery (operational state) justifies the distinct\nreading. An open question is whether the regulatory\nexpectation extends to cryptographic-key backup separately,\ngiven that some recovery scenarios rely on key-material\nredundancy.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-016",
+      "title": "End-to-end ICT-related incident management process with root-cause analysis",
+      "sub_domain": [
+        "D-04.1",
+        "D-04.3"
+      ],
+      "linked_objectives": [
+        "SO-DORA-008"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C30",
+          "article_ref": "Art. 17(1) — `define, establish and implement an ICT-related incident management process to detect, manage and notify ICT-related incidents`"
+        }
+      ],
+      "nist_csf": [
+        "RS.MA-01",
+        "RS.AN-03"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-016",
+        "title": "End-to-end ICT-related incident management process with root-cause analysis",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C30",
+            "article_ref": "Art. 17(1) — `define, establish and implement an ICT-related incident management process to detect, manage and notify ICT-related incidents`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-008"
+        ],
+        "sub_domain": [
+          "D-04.1",
+          "D-04.3"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "RS.MA-01",
+            "title": "The incident management plan is executed in coordination with relevant third parties once an incident is declared"
+          },
+          {
+            "id": "RS.AN-03",
+            "title": "Analysis is performed to determine what has occurred during an event and the root cause of the event"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS",
+          "TRIGGERED"
+        ],
+        "regulatory_rationale": "Art. 17(1) requires financial entities to define, establish and\nimplement an ICT-related incident management process to detect,\nmanage and notify ICT-related incidents. Article 17 Chapter III\nchapeau establishes the process obligation that Art. 18\nclassification and Art. 19 reporting operationalise (NIS 2\nArt. 21(2)(b) on incident-handling and Art. 23 on incident-\nnotification impose parallel obligations on NSIEs outside\nDORA, with the cross-notification interface between DORA\nArt. 19 and GDPR Art. 33 on personal-data breach creating\ncomposite supervisory exposure). The three-verb coordination\n`define, establish and implement` is process-setup; the\nthree-verb coordination `detect, manage and notify` is\nprocess-operation. Both coordinations are read cumulatively\nper the OJ coordination grammar.\n",
+        "security_rationale": "The obligation in Art. 17(1) for an end-to-end ICT-related\nincident management process is operationalised in NIST CSF 2.0\nthrough **RS.MA-01 (The incident management plan is executed\nin coordination with relevant third parties once an incident\nis declared)** and **RS.AN-03 (Analysis is performed to\ndetermine what has occurred during an event and the root cause\nof the event)**. RS.MA-01 establishes the process-execution\nlayer: the two OJ three-verb coordinations — `define, establish\nand implement` (process setup) and `detect, manage and notify`\n(process operation) — map onto pre-incident planning and post-\ndeclaration execution dimensions respectively, with third-\nparty-coordination covering CTPPs, competent authorities, and\nclient-communication channels under Art. 19 and Art. 14. RS.AN-03\nsupplies the root-cause-analysis substrate that converts\nincident response into organisational learning, ensuring the\nprocess is genuinely end-to-end rather than terminating at\ncontainment. The OJ Chapter III framing (Art. 17 chapeau, Art. 18\nclassification, Art. 19 reporting) is operationalised through\nRS.MA-01's third-party-coordination dimension, with RS.AN-03\nfindings feeding back into SR-DORA-005's annual scenario-register\nrefresh and SR-DORA-007's patch-priority ordering. The\naccountability link under Art. 5(2): the process-charter\ndocumentation, incident-timeline records, root-cause-analysis\nfindings, and notification-completion logs produce the\ndocumented evidence trail the management body can present to\ncompetent authorities demonstrating that incident management\nis process-driven, auditably end-to-end, and learning-feeding\nrather than containment-terminating.\n",
+        "ambiguity_notes": "Source clause DORA-C30 carries S2 on the twin 3-way verb\ncoordinations: `define, establish AND implement` (process setup\nverbs) and `detect, manage AND notify` (process operation\nverbs). Reading chosen: R1 cumulative — all three setup\nactivities required, all three operation activities required.\n`ICT-related incident` (POLY S2) — distinct from `cyber\nincident` (narrower) and `business continuity event` (broader);\nR1 OJ-literal locus at ICT-related. A contrasting reading of\n`ICT-related incident` would import a GDPR-style `personal\ndata breach` framing, but the OJ definition in Art. 3(8) is\nbroader and includes any ICT-related availability, integrity,\nconfidentiality or authenticity incident (CRA Art. 3(40)\ndefines `actively exploited vulnerability` which can trigger\nICT-related incidents under Art. 3(8) when exploited in\nfinancial entities' ICT systems). An open question is whether\na major ICT-related incident under Art. 18 always triggers\nparallel reporting under GDPR Art. 33 or only when the\nincident involves personal data (the cross-regulation trigger\ncharacterisation remains unsettled in OJ text).\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-017",
+      "title": "Major-ICT-incident notification to supervisor and affected clients",
+      "sub_domain": [
+        "D-04.3"
+      ],
+      "linked_objectives": [
+        "SO-DORA-008"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C31",
+          "article_ref": "Art. 19(1) — `Financial entities shall report major ICT-related incidents to the relevant competent authority`"
+        },
+        {
+          "clause_id": "DORA-C31",
+          "article_ref": "Art. 19(3) — `financial entities shall, without undue delay as soon as they become aware of it, inform their clients about the major ICT-related incident`"
+        }
+      ],
+      "nist_csf": [
+        "RS.CO-02",
+        "RS.MA-04"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {
+        "RS.CO-04": "RS.CO-04 -> RS.MA-04 (official 1.1->2.0 crosswalk (escalation context))"
+      },
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-017",
+        "title": "Major-ICT-incident notification to supervisor and affected clients",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C31",
+            "article_ref": "Art. 19(1) — `Financial entities shall report major ICT-related incidents to the relevant competent authority`"
+          },
+          {
+            "clause_id": "DORA-C31",
+            "article_ref": "Art. 19(3) — `financial entities shall, without undue delay as soon as they become aware of it, inform their clients about the major ICT-related incident`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-008"
+        ],
+        "sub_domain": [
+          "D-04.3"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "RS.CO-02",
+            "title": "Incidents are reported internally to the appropriate stakeholders, including executive leadership and legal counsel"
+          },
+          {
+            "id": "RS.CO-04",
+            "title": "Coordination with stakeholders occurs consistent with applicable rules and regulations"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "TRIGGERED"
+        ],
+        "regulatory_rationale": "Art. 19(1) imposes on financial entities a hard duty to notify the relevant\ncompetent authority of any major ICT-related incident, operating in parallel\nwith — and not substituting for — the GDPR Art. 72-hour personal data breach\nnotification under Regulation (EU) 2016/679 Art. 33 and the NIS 2 incident-\nnotification workflow under Directive (EU) 2022/2555 Art. 23, both of which\nmust be triggered under their own criteria where applicable. The OJ Art. 19(1)\ntrigger is the moment of classification as `major`, not the moment of awareness,\nwhile Art. 19(3) operates on a separate clock — `without undue delay as soon as\nthey become aware` — which is direct client-facing disclosure. The threshold\nclassification itself (Art. 18) delegates the criteria combination and\nmateriality thresholds to an EBA/ESMA/EIOPA RTS under Art. 18(3), with\nImplementing Regulation (EU) 2024/2956 partially addressing reporting templates\nin Annex I to IV. The recital frame (recital 56) confirms the sector-differentiated\nhour-anchors and the recital frame on all-hazards coverage supports the\nclassification-as-trigger reading.\n[OJ-corrective note (v0.2 audit, material): Art. 19(3) — trigger condition dropped. OJ Art. 19(3) conditions client notification: `Where a major ICT-related incident occurs AND HAS AN IMPACT ON THE FINANCIAL INTERESTS OF CLIENTS, financial entities shall, without undue delay as soon as they become aware of it, inform their clients about the major ICT-related incident and about the measures that have been taken to mitigate the adverse effects of such incident.` The SR drops the trigger condition `and has an impact on the financial interests of clients` — converting a conditional obligation into an unconditional one. Every major incident would trigger client notification under the SR; OJ scopes to those with client-financial-impact.]\n",
+        "security_rationale": "The Art. 19 major-incident notification duty is operationalised in NIST CSF\n2.0 through **RS.CO-02 (Incidents are reported internally to the appropriate\nstakeholders, including executive leadership and legal counsel)** and\n**RS.CO-04 (Coordination with stakeholders occurs consistent with applicable\nrules and regulations)**. RS.CO-02 anchors the internal escalation path\nthat must execute before any external notification — the supervisor-bound\nArt. 19(1) report is only as trustworthy as the internal chain that\nvalidated classification as `major`, escalated to executive leadership,\nand engaged legal counsel for regulatory-construction review. RS.CO-04\ngoverns the external notification layer itself, including the pre-approved\nsupervisor contact route, the evidence-trail format aligned with the EBA/\nESMA/EIOPA RTS templates (Implementing Regulation (EU) 2024/2956 Annex\nI–IV), and the parallel client-disclosure leg under Art. 19(3). Together\nthese two subcategories convert reactive disclosure into a rehearsed\ncommunication run-book, and a documented RS.CO-02 + RS.CO-04 control set\nlets the entity demonstrate ex-post to competent authority review that\nthe Art. 19(1)+(3) clocks were respected and the Art. 17 incident-\nmanagement process fed the supervisory and client disclosure channels\nin the required sequence.\n",
+        "ambiguity_notes": "S3 (Berry §5.7) on `major ICT-related incident` — the Art. 18(1) criteria are\nmultiplicative and residually vague; the chosen reading is that any one criterion\nsurpassing its materiality threshold (RTS-defined) triggers classification, with\nthe supervisor adjudicating borderline cases. S3 POLY+COORD on the twin temporal\ntrigger `without undue delay AS SOON AS they become aware` — the chosen reading\nis that `as soon as they become aware` is the moment the clock starts and\n`without undue delay` anchors the supervisory-side tempo. S3 POLY+SCOPE-Q on\n`becoming aware` — alternatives include actual knowledge, constructive knowledge,\nor either, with the dominant CJEU reading favouring constructive knowledge. S3\non the Art. 18 implementing acts dependency, which remain pending and may close\nthe threshold regress; the SR preserves the OJ-literal `major ICT-related\nincident` wording pending implementing acts. Remain open: pending EBA/ESMA/\nEIOPA technical standards under Art. 18(3), entities should adopt a written\ninterpretive position on borderline cases and document it for supervisory\nreview. Remain open: (a) whether `without undue delay AS SOON AS they become\naware` admits an early-warning mini-notification (analogous to NIS 2 Art. 23(4)\n24-hour early warning) before the full Art. 19(4) intermediate report at 72 hours,\npending EBA/ESMA/EIOPA technical-standards clarification; (b) the carve-out, if\nany, for payment-related incidents under Art. 23 (operational or security\npayment-related incidents) vis-à-vis the Art. 19(3) client-notification trigger,\npending EBA Guidelines on operational or security payment-related incidents.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-018",
+      "title": "Standing crisis communication plans for major ICT incidents",
+      "sub_domain": [
+        "D-04.3"
+      ],
+      "linked_objectives": [
+        "SO-DORA-009"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C29",
+          "article_ref": "Art. 14(1) — `crisis communication plans enabling a responsible disclosure of, at least, major ICT-related incidents or vulnerabilities to clients and counterparts as well as to the public, as appropriate`"
+        }
+      ],
+      "nist_csf": [
+        "RS.CO-03",
+        "RS.MA-04"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {
+        "RS.CO-04": "RS.CO-04 -> RS.MA-04 (official 1.1->2.0 crosswalk (escalation context))"
+      },
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-018",
+        "title": "Standing crisis communication plans for major ICT incidents",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C29",
+            "article_ref": "Art. 14(1) — `crisis communication plans enabling a responsible disclosure of, at least, major ICT-related incidents or vulnerabilities to clients and counterparts as well as to the public, as appropriate`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-009"
+        ],
+        "sub_domain": [
+          "D-04.3"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "RS.CO-03",
+            "title": "Information is shared with designated internal and external stakeholders consistent with the established information-sharing rules"
+          },
+          {
+            "id": "RS.CO-04",
+            "title": "Coordination with stakeholders occurs consistent with applicable rules and regulations"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "TRIGGERED"
+        ],
+        "regulatory_rationale": "Art. 14(1) requires financial entities to maintain crisis communication plans\nenabling responsible disclosure of, at least, major ICT-related incidents or\nvulnerabilities to clients and counterparts and, where appropriate, to the\npublic. The clause lives in the Chapter II Section 2 framework (per\n`02b_DORA_Ch2Sec2_Framework.md`) and is the standing-planning counterpart to\nthe triggered reporting of Art. 19: Art. 14(1) plans must be in place before\nany incident, whereas Art. 19 reporting is the triggered workflow once\nclassification occurs. The clause co-exists with NIS 2 Art. 23 supervisory\ncooperation (Directive (EU) 2022/2555) where the entity is in scope of both\nregimes, and with the CRA Art. 14 vulnerability-handling timeline\n(Regulation (EU) 2024/2847) where the underlying vulnerability originates in\na digital product. EBA Guidelines on ICT and security risk management frame\nthe standing planning requirement as risk-proportional, with recital context\nsupporting risk-based `as appropriate` calibration for the public dimension.\n",
+        "security_rationale": "The Art. 14(1) standing crisis-communication duty is operationalised in\nNIST CSF 2.0 through **RS.CO-03 (Information is shared with designated\ninternal and external stakeholders consistent with the established\ninformation-sharing rules)** and **RS.CO-04 (Coordination with stakeholders\noccurs consistent with applicable rules and regulations)**. RS.CO-03\nanchors the pre-agreed stakeholder taxonomy (clients, counterparts, and —\nwhere appropriate — the public), the templated messaging set calibrated\nper audience, and the information-sharing rules that govern disclosure\ncadence and granularity. RS.CO-04 layers the rules-and-regulations\nconsistency check, ensuring that crisis communications stay aligned with\nthe supervisor-pre-notification under Art. 19(1), the client-disclosure\nunder Art. 19(3), and any parallel obligations under NIS 2 Art. 23\nsupervisory cooperation and CRA Art. 14 vulnerability-handling timelines.\nTogether the two subcategories convert a reactive disclosure scramble\ninto a rehearsed run-book, and an entity exercising these controls\nannually and integrating them with Art. 17 incident-management can\ndemonstrate ex-post to supervisory review that the Art. 14(1) standing-\nplanning obligation was met before any specific incident trigger fired.\n",
+        "ambiguity_notes": "S3 POLY on `responsible disclosure` — alternatives include entity-judged\nresponsibility, supervisory-prescribed disclosure norms, or industry-accepted\nresponsible-disclosure practice; the chosen reading is the literal OJ\nformulation that places responsibility with the entity. S3 VAG on `at least`\nis read as a minimum floor that the entity may exceed in coverage. S3 POLY on\n`major` inherits the Art. 18 multiplicative-criteria regress, which remains\npending the EBA/ESMA/EIOPA RTS under Art. 18(3) and partly addressed in\nImplementing Regulation (EU) 2024/2956. S3 POLY on `as appropriate` is read\nin light of recital-context risk-based judgement. S3 COORD on the cumulative\nrecipient set `clients AND counterparts AS WELL AS to the public` — all three\ncategories are in scope; `as appropriate` softens only the public disclosure\ndimension. Remain open: how `as appropriate` should be operationalised for\nthe public leg, and at what signal threshold, remains for entity-documented\npolicy pending implementing-acts clarity.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-019",
+      "title": "ICT third-party risk managed under four-factor proportionality",
+      "sub_domain": [
+        "D-06.1",
+        "D-06.3"
+      ],
+      "linked_objectives": [
+        "SO-DORA-011"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C35",
+          "article_ref": "Art. 28(1) — `manage ICT third-party risk … taking into account: (i) the nature, scale, complexity and importance of ICT-related dependencies; (ii) the risks arising from contractual arrangements on the use of ICT services … taking into account the criticality or importance of the respective service, process or function`"
+        }
+      ],
+      "nist_csf": [
+        "GV.SC-02",
+        "ID.AM-04"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-019",
+        "title": "ICT third-party risk managed under four-factor proportionality",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C35",
+            "article_ref": "Art. 28(1) — `manage ICT third-party risk … taking into account: (i) the nature, scale, complexity and importance of ICT-related dependencies; (ii) the risks arising from contractual arrangements on the use of ICT services … taking into account the criticality or importance of the respective service, process or function`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-011"
+        ],
+        "sub_domain": [
+          "D-06.1",
+          "D-06.3"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "GV.SC-02",
+            "title": "Suppliers and other third parties are known, prioritized, and assessed using a cybersecurity supply chain risk management process"
+          },
+          {
+            "id": "ID.AM-04",
+            "title": "Inventories of suppliers and other third parties (e.g., vendors, partners, service providers) are maintained"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 28(1) requires financial entities to manage ICT third-party risk while\ntaking into account (i) the nature, scale, complexity and importance of\nICT-related dependencies and (ii) the risks arising from contractual\narrangements on the use of ICT services, including the criticality or\nimportance of the respective service, process or function. The clause is\nthe foundational third-party risk-governance rule, with the contractual\nminimum elements at Art. 30(1)–(2) and audit rights at Art. 30(3)(e)\noperationalising it. The regime parallels — but does not replace — GDPR\nArt. 28 processor controls and NIS 2 Art. 21 supply-chain security duties\n(Directive (EU) 2022/2555). The EBA Guidelines on outsourcing arrangements\nprovide the dominant EU supervisory baseline where the underlying service is\noutsourcing, including proportionality assessment under Art. 4.\n",
+        "security_rationale": "The Art. 28(1) ICT third-party risk-management duty is operationalised in\nNIST CSF 2.0 through **GV.SC-02 (Suppliers and other third parties are\nknown, prioritized, and assessed using a cybersecurity supply chain risk\nmanagement process)** and **ID.AM-04 (Inventories of suppliers and other\nthird parties (e.g., vendors, partners, service providers) are maintained)**.\nGV.SC-02 supplies the prioritisation and assessment engine that the\nfour-factor proportionality clause demands: suppliers are not treated\nuniformly but stratified by nature, scale, complexity, and importance of\ntheir ICT-supported dependency, and assessed using a documented supply-\nchain risk-management process that aligns with EBA Guidelines on\noutsourcing arrangements. ID.AM-04 anchors the upstream inventory that\nGV.SC-02 cannot operate without — the proportionality judgement under\nArt. 28(1)(i)+(ii) is only as defensible as the inventory on which it is\ncomputed. Together these two subcategories ensure that the financial\nentity maintains an evidence-backed picture of every third-party\ndependency and applies a documented prioritisation framework, allowing\nex-post demonstration to the competent authority that the Art. 28(1)\nfour-factor proportionality assessment was grounded in an actual\nsupplier inventory rather than ad-hoc case-by-case reasoning.\n",
+        "ambiguity_notes": "S2 COORD on `nature, scale, complexity AND importance` — read as cumulative,\nall four factors inform the risk assessment. S2 COORD on\n`service, process OR function` — read as cumulative, all three artefacts in\nscope. S2 POLY on `critical or important functions` — the undefined\ndistinction propagates to 18 of 38 DORA clauses per `../Regulation/DORA/Ambiguity/05_DORA.md` §3.4;\nthe chosen reading is that both categories are in scope and that distinct\nobligations may attach to each (DORA RTS may eventually fix the distinction\nbut as of the OJ text it is open). Remain open: how to operationalise the\nOR-coordination between `critical` and `important` remains a documented\nentity-policy matter awaiting EBA RTS clarity.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-020",
+      "title": "Information-security standards compliance for ICT third-party contracts",
+      "sub_domain": [
+        "D-06.3"
+      ],
+      "linked_objectives": [
+        "SO-DORA-011"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C36",
+          "article_ref": "Art. 28(5) — `financial entities may only enter into contractual arrangements with ICT third-party service providers that comply with appropriate information security standards. When those contractual arrangements concern critical or important functions, financial entities shall … take due consideration of the use, by ICT third-party service providers, of the most up-to-date and highest quality information security standards`"
+        }
+      ],
+      "nist_csf": [
+        "GV.SC-01",
+        "GV.SC-03"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-020",
+        "title": "Information-security standards compliance for ICT third-party contracts",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C36",
+            "article_ref": "Art. 28(5) — `financial entities may only enter into contractual arrangements with ICT third-party service providers that comply with appropriate information security standards. When those contractual arrangements concern critical or important functions, financial entities shall … take due consideration of the use, by ICT third-party service providers, of the most up-to-date and highest quality information security standards`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-011"
+        ],
+        "sub_domain": [
+          "D-06.3"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "GV.SC-01",
+            "title": "A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders"
+          },
+          {
+            "id": "GV.SC-03",
+            "title": "Contracts with suppliers and other third parties are used to implement appropriate measures designed to meet the objectives of an organization's cybersecurity program"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY",
+          "ICT_THIRD_PARTY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 28(5) requires financial entities to enter only into contractual\narrangements with ICT third-party service providers that comply with\nappropriate information security standards; for contractual arrangements\nconcerning critical or important functions, the financial entity shall\ntake due consideration of the use by providers of the most up-to-date and\nhighest quality information security standards. The clause carries the\ncentral DORA ambiguity flagged in `../Regulation/DORA/Ambiguity/05_DORA.md` §3.5: the OJ text does not\nname a specific standard — ISO/IEC 27001, SOC 2, NIST CSF, CIS Controls,\nand ENISA guidance are all plausible reference points, and EBA Guidelines\non outsourcing arrangements provide the supervisory-recognised floor for\ncritical or important functions outsourcing. The clause co-exists with\nCRA Art. 24 conformity-assessment duties for ICT products supplied under\ncontract (Regulation (EU) 2024/2847) and with the GDPR Art. 32 security-\nof-processing baseline. An EBA RTS under Art. 28(9) is expected to refine\nthe standards-set for CTPPs but has not closed the open-naming question.\n",
+        "security_rationale": "The Art. 28(5) standards-compliance duty is operationalised in NIST CSF\n2.0 through **GV.SC-01 (A cybersecurity supply chain risk management\nprogram, strategy, objectives, policies, and processes are established\nand agreed to by organizational stakeholders)** and **GV.SC-03 (Contracts\nwith suppliers and other third parties are used to implement appropriate\nmeasures designed to meet the objectives of an organization's cybersecurity\nprogram)**. GV.SC-01 establishes the entity-wide supply-chain cybersecurity\ngovernance that articulates which information-security standards the entity\ntreats as acceptable baselines — the very `appropriate information security\nstandards` that the OJ text leaves POLY — and the criteria for distinguishing\nbetween routine and critical-or-important-function contracts. GV.SC-03\nconverts that governance into enforceable contract terms, ensuring that\nthe `most up-to-date and highest quality` anchor for critical-or-important\nfunctions is reflected in measurable contract clauses (certification\nevidence, audit-rights linkage to Art. 30(3)(e), sub-outsourcing\ntransparency). Together these two subcategories close the gap between an\nentity's stated standards-set and the contractual surface with third-party\nproviders, allowing ex-post demonstration under Art. 28(5) that every\nICT-service contract was anchored in a documented program-level standards\nframework and tied back through enforceable contract terms — satisfying\nboth the general `appropriate` floor and the critical-or-important\n`most up-to-date AND highest quality` escalator.\n",
+        "ambiguity_notes": "S3 POLY on `information security standards` — the central DORA ambiguity\nper `../Regulation/DORA/Ambiguity/05_DORA.md` §3.5: the clause names no specific standard. The chosen\nreading is entity-selected standards with supervisory-recognised standards\n(ISO/IEC 27001, SOC 2 Type 2, NIST CSF, ENISA guidance, EBA Guidelines)\nas the EU-acceptable floor. S3 POLY on `most up-to-date` is read against\nalternatives of current published version, state-of-the-art, or frontier\npractice. S3 VAG on `highest quality` is read at the literal most-\nrigorous, comprehensive, industry-leading end of the spectrum. S3 COORD\non `most up-to-date AND highest quality` — both anchors required\ncumulatively. S2 POLY on `critical or important functions` — the\nundefined distinction propagates from `../Regulation/DORA/Ambiguity/05_DORA.md` §3.4. Compliance-\nframework note: ISO 27001, NIST 800-53, and EBA Guidelines function as\nreference frameworks rather than technology selections and are not part\nof the tech-stack exemption. Remain open: identification of the binding\nstandards-set for CTPP designation remains subject to EBA RTS under\nArt. 28(9) and to the Joint Committee oversight of CTPPs at Ch. V Sec. 2.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-021",
+      "title": "Minimum contractual elements for ICT third-party arrangements",
+      "sub_domain": [
+        "D-06.3"
+      ],
+      "linked_objectives": [
+        "SO-DORA-012"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C37",
+          "article_ref": "Art. 30(1)+(2) — `rights and obligations … shall be clearly allocated and set out in writing … shall include at least the following elements (a)–(i)`"
+        }
+      ],
+      "nist_csf": [
+        "GV.SC-03",
+        "GV.SC-04"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-021",
+        "title": "Minimum contractual elements for ICT third-party arrangements",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C37",
+            "article_ref": "Art. 30(1)+(2) — `rights and obligations … shall be clearly allocated and set out in writing … shall include at least the following elements (a)–(i)`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-012"
+        ],
+        "sub_domain": [
+          "D-06.3"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "GV.SC-03",
+            "title": "Contracts with suppliers and other third parties are used to implement appropriate measures designed to meet the objectives of an organization's cybersecurity program"
+          },
+          {
+            "id": "GV.SC-04",
+            "title": "Suppliers and other third parties are routinely assessed using audits, test results, or other forms of evaluation to confirm they are meeting their contractual obligations"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY",
+          "ICT_THIRD_PARTY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 30(1) requires that the rights and obligations of the financial entity\nand the ICT third-party service provider be clearly allocated and set out\nin writing; Art. 30(2) requires that the contractual arrangements include\nat least the minimum elements (a)–(i), covering description of functions,\nlocations, data, access and audit rights, SLAs, termination, and exit\nstrategies. The clause sits in the contractual core of the DORA third-party\nregime alongside Art. 28(5) (standards compliance) and Art. 30(3)(e)\n(audit rights), with EBA Guidelines on outsourcing arrangements providing\nthe supervisory baseline and with the open question of harmonised template\nelements pending EBA technical standards under Art. 30(7). The clause\nparallels — without replacing — GDPR Art. 28 controller-processor contract\nrequirements for personal-data processing.\n[OJ-corrective note (v0.2 audit, material): Art. 30(2) — audit rights and exit strategies misattributed. OJ Art. 30(2) lists minimum contractual elements (a)–(i) for ICT-service contracts; `audit rights` are in Art. 30(3)(e)(i) (CIF-only) and `exit strategies` are in Art. 30(3)(f) (CIF-only). The SR's 7-item gloss misattributes both to Art. 30(2), leading a compliance officer to require these for all ICT-service contracts when OJ only requires them for CIF-supporting contracts (with microenterprise carve-outs in Art. 30(3)).]\n",
+        "security_rationale": "The Art. 30(1)+(2) minimum contractual-elements duty is operationalised in\nNIST CSF 2.0 through **GV.SC-03 (Contracts with suppliers and other third\nparties are used to implement appropriate measures designed to meet the\nobjectives of an organization's cybersecurity program)** and **GV.SC-04\n(Suppliers and other third parties are routinely assessed using audits,\ntest results, or other forms of evaluation to confirm they are meeting\ntheir contractual obligations)**. GV.SC-03 anchors the contractual\nsurface as the execution instrument of supply-chain cybersecurity —\nthe nine-element minimum list in Art. 30(2) (functions, locations,\ndata, access, audit rights linkage, SLAs, termination, exit strategies,\nand the sub-outsourcing transparency expectation) maps directly onto\nGV.SC-03's `appropriate measures` contract design, ensuring that the\n`clearly allocated and set out in writing` Art. 30(1) requirement is\noperationalised through enforceable clauses. GV.SC-04 closes the\ndownstream verification loop: the contractual allocation is only as\nreliable as the routine assessment that confirms delivery against it,\nwhich feeds the audit-rights Art. 30(3)(e)(i) (CIF-only) and exit-\nstrategy Art. 30(3)(f) (CIF-only) obligations separately mapped at\nSR-DORA-022. Together these two subcategories convert a written\ncontract into an enforceable supply-chain control, and an entity\nevidencing GV.SC-03 contract design plus GV.SC-04 routine assessment\ncan demonstrate ex-post to the competent authority that the Art. 30\nminimum-elements obligation was met and that contract-level controls\nwere routinely verified — closing both the formal-allocation axis\nand the operational-performance axis of the third-party regime.\n",
+        "ambiguity_notes": "S2 VAG on `clearly allocated` is read in the operational sense of being\nunambiguous on rights and obligations under contractual-construction\nconventions. S2 COORD on the closed list of nine minimum elements is read\nas all nine required (closed-list reduction of ambiguity). S2 VAG on\n`at least` is read as a minimum floor; additional elements are permitted.\nRemain open: harmonised contract templates from EBA under Art. 30(7) are\npending and may crystallise supervisory expectations on `clearly\nallocated` (especially exit-strategy granularity and sub-outsourcing\ntransparency).\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-022",
+      "title": "Unrestricted audit rights over critical ICT third-party providers",
+      "sub_domain": [
+        "D-06.4"
+      ],
+      "linked_objectives": [
+        "SO-DORA-012"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C38",
+          "article_ref": "Art. 30(3)(e)(i)+(ii) — `unrestricted rights of access, inspection and audit by the financial entity, or an appointed third party, and by the competent authority … the right to take copies of relevant documentation on-site … the right to agree on alternative assurance levels if other clients' rights are affected`"
+        }
+      ],
+      "nist_csf": [
+        "GV.SC-03",
+        "DE.CM-06"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-022",
+        "title": "Unrestricted audit rights over critical ICT third-party providers",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C38",
+            "article_ref": "Art. 30(3)(e)(i)+(ii) — `unrestricted rights of access, inspection and audit by the financial entity, or an appointed third party, and by the competent authority … the right to take copies of relevant documentation on-site … the right to agree on alternative assurance levels if other clients' rights are affected`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-012"
+        ],
+        "sub_domain": [
+          "D-06.4"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "GV.SC-03",
+            "title": "Contracts with suppliers and other third parties are used to implement appropriate measures"
+          },
+          {
+            "id": "DE.CM-06",
+            "title": "External service provider activities and services are monitored to find potentially adverse events"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY",
+          "ICT_THIRD_PARTY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS",
+          "TRIGGERED"
+        ],
+        "regulatory_rationale": "Art. 30(3)(e)(i) requires contractual arrangements to include unrestricted\nrights of access, inspection and audit by the financial entity (or an\nappointed third party) and by the competent authority, including the right\nto take copies of relevant documentation on-site, the effective exercise of\nwhich is not impeded or limited by other contractual arrangements or\nimplementation policies. Art. 30(3)(e)(ii) permits the right to agree on\nalternative assurance levels where other clients' rights are affected. The\nclause operationalises the financial-entity verification axis of Art. 28\nand runs in parallel with — and does not substitute for — the supervisory\naudit powers under EBA Guidelines on outsourcing arrangements and with the\nCTPP Joint Committee oversight under Ch. V Sec. 2. EBA technical\nstandards are expected to refine the form of alternative-assurance levels\nunder Art. 30(7).\n",
+        "security_rationale": "The Art. 30(3)(e)(i)+(ii) audit-rights duty is operationalised in NIST\nCSF 2.0 through **GV.SC-03 (Contracts with suppliers and other third\nparties are used to implement appropriate measures designed to meet the\nobjectives of an organization's cybersecurity program)** and **DE.CM-06\n(External service provider activities and services are monitored to find\npotentially adverse events)**. GV.SC-03 anchors the contractual surface:\nthe unrestricted-rights clause — access, inspection, audit, on-site copy\ntaking — must be expressed in enforceable contract terms that pre-empt\nsupplier-side carve-outs, sub-outsourcing dilution, or competing-client\nconfidentiality claims, with the alternative-assurance-level exception\nof Art. 30(3)(e)(ii) narrowly bounded. DE.CM-06 layers the operational\nmonitoring dimension, ensuring that the contract-level right translates\ninto continuous surveillance of external service-provider activities so\nthat adverse events at the supplier are detected and routed into the\nentity's incident-response process under Art. 17 before they cascade.\nTogether these two subcategories convert a paper audit-right into a\nlive detection-and-verification capability, and an entity evidencing\nGV.SC-03 contract design plus DE.CM-06 ongoing monitoring can\ndemonstrate ex-post to the competent authority that the Art. 30(3)(e)\nunrestricted-rights obligation was both contractually anchored and\noperationally exercised — closing the gap between formal right and\neffective use that has historically caused post-incident forensics\nto stall at the supplier boundary.\n",
+        "ambiguity_notes": "S3 SCOPE-Q (Berry §5.2.1) on `unrestricted` — the universal quantifier\nis qualified immediately by `if other clients' rights are affected`;\nthe chosen reading is that `unrestricted` is the default rule with the\n`other clients' rights` exception permitting alternative-assurance levels\non a case-by-case basis. S3 VAG on `relevant documentation` is read at\nthe directly-material-evidence end of the spectrum, with the alternative\nof any plausible link reserved for residual cases. S3 VAG on `critical to\nthe operations` is read at the literal entity-judgement default. S2 POLY\non `access, inspection AND audit` — three distinct activities, the\nchosen reading is the literal AND. Remain open: the operational\nthresholds for `other clients' rights are affected` remain to be refined\nthrough EBA technical standards and through case-by-case bilateral\nnegotiations until a market convention crystallises.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-023",
+      "title": "ICT change management under six-step risk-based process",
+      "sub_domain": [
+        "D-07.4"
+      ],
+      "linked_objectives": [
+        "SO-DORA-013"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C18",
+          "article_ref": "Art. 9(4)(e) — `implement documented policies, procedures and controls for ICT change management, including changes to software, hardware, firmware components, systems or security parameters … that are based on a risk assessment approach … in order to ensure that all changes to ICT systems are recorded, tested, assessed, approved, implemented and verified in a controlled manner`"
+        }
+      ],
+      "nist_csf": [
+        "PR.PS-01",
+        "PR.PS-02",
+        "PR.PS-06"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-023",
+        "title": "ICT change management under six-step risk-based process",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C18",
+            "article_ref": "Art. 9(4)(e) — `implement documented policies, procedures and controls for ICT change management, including changes to software, hardware, firmware components, systems or security parameters … that are based on a risk assessment approach … in order to ensure that all changes to ICT systems are recorded, tested, assessed, approved, implemented and verified in a controlled manner`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-013"
+        ],
+        "sub_domain": [
+          "D-07.4"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.PS-01",
+            "title": "Configuration management practices are established, documented, and applied to assets"
+          },
+          {
+            "id": "PR.PS-02",
+            "title": "Software is maintained, replaced, and removed commensurate with risk"
+          },
+          {
+            "id": "PR.PS-06",
+            "title": "Secure software development practices are integrated, and their performance is monitored throughout the SDLC"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 9(4)(e) requires financial entities to implement documented policies,\nprocedures, and controls for ICT change management, including changes to\nsoftware, hardware, firmware components, systems, or security parameters,\nbased on a risk-assessment approach, so that all changes to ICT systems are\nrecorded, tested, assessed, approved, implemented, and verified in a\ncontrolled manner. The clause sits in the ICT-risk-management-framework\ncore of Chapter II Section 2 (per `02b_DORA_Ch2Sec2_Framework.md`) and is\nthe operational hinge of the protection-prevention architecture. It runs\nalongside CRA Art. 13 conformity-assessment obligations for ICT products\n(Regulation (EU) 2024/2847) where the changed component is a digital\nproduct, and alongside NIS 2 Art. 21(2)(e) basic security vulnerability-\nhandling duties (Directive (EU) 2022/2555). EBA Guidelines on ICT and\nsecurity risk management provide the supervisory baseline for the\nrisk-assessment approach.\n",
+        "security_rationale": "The Art. 9(4)(e) change-management duty is operationalised in NIST CSF\n2.0 through **PR.PS-01 (Configuration management practices are\nestablished, documented, and applied to assets)**, **PR.PS-02 (Software\nis maintained, replaced, and removed commensurate with risk)**, and\n**PR.PS-06 (Secure software development practices are integrated, and\ntheir performance is monitored throughout the SDLC)**. PR.PS-01 anchors\nthe documented-policy substrate — golden baselines, drift detection,\nconfiguration-as-code — that operationalises the `controlled manner`\nqualifier across the five change-target categories (software, hardware,\nfirmware, systems, security parameters). PR.PS-02 supplies the\ncommensurate-with-risk axis that the OJ `risk assessment approach`\ndemands, ensuring that change decisions are weighted by impact and\nlikelihood rather than treated uniformly. PR.PS-06 closes the SDLC\nintegration loop, ensuring that the `tested, assessed, approved`\nstages of the six-step process tie back to secure-development practices\nupstream and to verified-deployment evidence downstream. Together\nthese three subcategories convert a paper change-approval workflow into\nan evidence-backed governance discipline covering the full change-\ntarget surface, and an entity documenting PR.PS-01 + PR.PS-02 +\nPR.PS-06 coverage can demonstrate ex-post to supervisory review\nthat the Art. 9(4)(e) six-step process — recorded, tested, assessed,\napproved, implemented, verified — was anchored in platform-security\nconfiguration practice and proportionate to risk across the SDLC.\n",
+        "ambiguity_notes": "S3 COORD on the five-way OR of change-targets (`software, hardware,\nfirmware components, systems OR security parameters`) is read as all five\ncategories in scope. S3 COORD on the six-way AND of change-management steps\n(`recorded, tested, assessed, approved, implemented AND verified`) is read\nas cumulative — all six steps required; partial-process compliance is\nnon-compliance. S2 VAG on `controlled manner` is read as the combination\nof documented procedure and segregated approval at the literal end of the\nspectrum. S2 POLY on `change management` — distinct from release\nmanagement and configuration management in industry usage; the chosen\nreading keeps the OJ-literal locus at change management proper. Open\nquestion: how to evidence `tested` in the context of emergency changes\nremains a documented-entity-policy matter awaiting accumulated supervisory\npractice.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-024",
+      "title": "Management-body ICT-risk literacy maintained through regular training",
+      "sub_domain": [
+        "D-08.3"
+      ],
+      "linked_objectives": [
+        "SO-DORA-014"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C02",
+          "article_ref": "Art. 5(4) — `Members of the management body … shall actively keep up to date with sufficient knowledge and skills … including by following specific training on a regular basis, commensurate to the ICT risk being managed`"
+        }
+      ],
+      "nist_csf": [
+        "PR.AT-02",
+        "GV.RR-01"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {
+        "PR.AT-03": "PR.AT-03 -> PR.AT-02 (official 1.1->2.0 crosswalk (specialized roles))"
+      },
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-024",
+        "title": "Management-body ICT-risk literacy maintained through regular training",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C02",
+            "article_ref": "Art. 5(4) — `Members of the management body … shall actively keep up to date with sufficient knowledge and skills … including by following specific training on a regular basis, commensurate to the ICT risk being managed`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-014"
+        ],
+        "sub_domain": [
+          "D-08.3"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.AT-03",
+            "title": "All senior executives understand their roles and responsibilities in achieving the organization's cybersecurity objectives"
+          },
+          {
+            "id": "GV.RR-01",
+            "title": "Organizational leadership is responsible and accountable for cybersecurity risk and promotes a risk-aware ethical culture"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 5(4) requires members of the management body of the financial entity\nto actively keep up to date with sufficient knowledge and skills to enable\nthem to understand and assess ICT risk and its impact on the operations of\nthe financial entity, including by following specific training on a\nregular basis, commensurate to the ICT risk being managed. The clause is\nthe literacy underpinning of Art. 5(2) management-body responsibility and\ndefines the personal-capacity threshold for Art. 5(2) to operate\nmeaningfully. The clause co-exists with EBA Guidelines on Internal\nGovernance and with the fit-and-proper frameworks (CRD Art. 91, MiFID II\nArt. 4(1)(36)/(37) cross-reference); for smaller entities under Art. 4\nproportionality, training evidence can be proportionate to risk exposure.\n",
+        "security_rationale": "The Art. 5(4) management-body literacy duty is operationalised in NIST\nCSF 2.0 through **PR.AT-03 (All senior executives understand their roles\nand responsibilities in achieving the organization's cybersecurity\nobjectives)** and **GV.RR-01 (Organizational leadership is responsible\nand accountable for cybersecurity risk and promotes a risk-aware ethical\nculture)**. PR.AT-03 anchors the training-and-knowledge component — the\n`sufficient knowledge and skills` OJ phrase operationalised as documented\nrole-and-responsibility literacy, evidence of `actively keep up to date`,\nand training records calibrated to the ICT risk being managed. GV.RR-01\nlayers the accountability-and-culture dimension, ensuring that the\nmanagement body's literacy is not decorative but tied to the personal-\ncapacity prerequisite for the Art. 5(2) oversight-and-liability regime\nand to the broader fit-and-proper expectations under EBA Guidelines on\nInternal Governance, CRD Art. 91, and MiFID II Art. 4(1)(36)/(37). Together\nthese two subcategories close the gap between training-attendance\nevidence and demonstrable governance competence, and an entity\nevidencing PR.AT-03 senior-executive literacy plus GV.RR-01 leadership\naccountability can demonstrate ex-post to supervisory review that the\nArt. 5(4) `sufficient knowledge and skills` obligation was met at\npersonal-capacity level and that the management body was structurally\npositioned to discharge Art. 5(2) oversight responsibilities with\ninformed judgement rather than ceremonial sign-off.\n",
+        "ambiguity_notes": "S2 VAG on `sufficient` is read at the role-relevant-competency end of the\nspectrum per the `commensurate to the ICT risk` qualifier. S2 VAG on\n`regular basis` is read as risk-driven cadence per the literal\n`actively keep up to date` formulation (alternatives include scheduled or\nongoing). S2 VAG on `commensurate to the ICT risk` — the chosen reading\nis risk-proportional rather than risk-quantified. S2 POLY on `actively\nkeep up to date` — alternatives include self-study, formal training, or\nboth; the chosen reading is the literal AND. Remain open: evidence\nforms for `actively keep up to date` (training-attendance logs,\nassessment scores, peer-benchmark exercises) remain for entity policy.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-025",
+      "title": "Compulsory ICT security awareness and resilience training for staff",
+      "sub_domain": [
+        "D-08.1",
+        "D-08.2"
+      ],
+      "linked_objectives": [
+        "SO-DORA-015"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C27",
+          "article_ref": "Art. 13(6) — `ICT security awareness programmes and digital operational resilience training as compulsory modules in their staff training schemes`"
+        },
+        {
+          "clause_id": "DORA-C28",
+          "article_ref": "Art. 13(6) same locus — `level of complexity commensurate to the remit of their functions`"
+        },
+        {
+          "clause_id": "DORA-C26",
+          "article_ref": "Art. 13(6) same locus — T4 mapping mismatch per `../Regulation/DORA/Ambiguity/05_DORA.md` §2.26"
+        }
+      ],
+      "nist_csf": [
+        "PR.AT-01",
+        "PR.AT-02"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-025",
+        "title": "Compulsory ICT security awareness and resilience training for staff",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C27",
+            "article_ref": "Art. 13(6) — `ICT security awareness programmes and digital operational resilience training as compulsory modules in their staff training schemes`"
+          },
+          {
+            "clause_id": "DORA-C28",
+            "article_ref": "Art. 13(6) same locus — `level of complexity commensurate to the remit of their functions`"
+          },
+          {
+            "clause_id": "DORA-C26",
+            "article_ref": "Art. 13(6) same locus — T4 mapping mismatch per `../Regulation/DORA/Ambiguity/05_DORA.md` §2.26"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-015"
+        ],
+        "sub_domain": [
+          "D-08.1",
+          "D-08.2"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "PR.AT-01",
+            "title": "All users are informed and trained on cybersecurity topics (e.g., recognition of phishing, social engineering, and other relevant risks)"
+          },
+          {
+            "id": "PR.AT-02",
+            "title": "All members of the organization's workforce understand their roles and responsibilities in achieving the organization's cybersecurity objectives"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 13(6) requires financial entities to develop ICT security awareness\nprogrammes and digital operational resilience training as compulsory\nmodules in their staff training schemes, with a level of complexity\ncommensurate to the remit of staff functions. The clause is the workforce-\nscale counterpart to Art. 5(4) management-body training (governance track)\nand to the digital operational resilience testing duty at Chapter IV. The\nclause co-exists with GDPR Art. 39 staff-awareness duties for personal-\ndata processing (Regulation (EU) 2016/679) and with NIS 2 Art. 21(2)(g)\nbasic security training baselines (Directive (EU) 2022/2555). EBA\nGuidelines on ICT and security risk management set out the supervisory\nexpectation on calibration, and AI Act Art. 4(2) provider-deployer\nliteracy duties (Regulation (EU) 2024/1689) intersect where AI systems\nare in scope of the same staff training schemes.\n",
+        "security_rationale": "The Art. 13(6) workforce training duty is operationalised in NIST CSF\n2.0 through **PR.AT-01 (All users are informed and trained on cybersecurity\ntopics (e.g., recognition of phishing, social engineering, and other\nrelevant risks))** and **PR.AT-02 (All members of the organization's\nworkforce understand their roles and responsibilities in achieving the\norganization's cybersecurity objectives)**. PR.AT-01 anchors the baseline\nawareness layer that closes the human-factor gap — phishing recognition,\nsocial-engineering resistance, password hygiene, incident-reporting\nreflexes — and converts the OJ `ICT security awareness programmes` from\nan opt-in continuing-professional-development activity into a compulsory\ntraining-module floor across the workforce. PR.AT-02 layers the role-\nspecific depth dimension that the OJ `commensurate to the remit of\ntheir functions` qualifier demands, ensuring that staff in\nsecurity-critical roles (incident response, ICT operations, fraud\ninvestigation, third-party governance) receive calibrated depth rather\nthan a uniform baseline. Together these two subcategories operationalise\nboth the `compulsory` and the `commensurate` axes of Art. 13(6), and\nan entity evidencing PR.AT-01 coverage plus PR.AT-02 role-calibrated\ndepth can demonstrate ex-post to supervisory review that the Art. 13(6)\nworkforce-training obligation was met at both the universal-awareness\nfloor and the role-specific depth required by the staff function\ntaxonomy, and that completion thresholds were documented as a\ncondition of employment rather than as optional professional\ndevelopment.\n",
+        "ambiguity_notes": "S2 VAG on `compulsory` is read as completion-mandatory (not mere\nattendance). S2 COORD on `programmes, training, modules` is read\ncumulatively as three artefact types used interchangeably. S2 VAG on\n`level of complexity commensurate to the remit of their functions` is\nread as function-specific calibration per the OJ literal formulation.\nT4-vs-text gap (per `../Regulation/DORA/Ambiguity/05_DORA.md` §2.26): T4 maps DORA-C26 to D-02.2\n`Patch Management & Updates` with description `Learning and evolving:\npost-incident reviews; incorporate findings into patching and update\nprocesses`, while the OJ Art. 13(6) text is about training programmes\nonly — post-incident reviews live in Art. 13(2) and patching lives in\nArt. 9(4)(f). The Executor keeps the OJ-literal locus at D-08.1/D-08.2.\nT4-vs-text gap on DORA-C28: T4 reads `role-specific training` while the\nOJ Art. 13(6) uses only `commensurate to the remit of their functions`.\nRemain open: demonstration thresholds (completion percentages,\nassessment-pass thresholds) for `compulsory` are an entity-policy\nmatter awaiting industry convergence.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-026",
+      "title": "Management body owns full lifecycle of ICT risk management framework",
+      "sub_domain": [
+        "D-09.1"
+      ],
+      "linked_objectives": [
+        "SO-DORA-016"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C01",
+          "article_ref": "Art. 5(2) — `the management body of the financial entity shall define, approve, oversee and be responsible for the implementation of all arrangements related to the ICT risk management framework`"
+        }
+      ],
+      "nist_csf": [
+        "GV.RR-01",
+        "GV.RR-02"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-026",
+        "title": "Management body owns full lifecycle of ICT risk management framework",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C01",
+            "article_ref": "Art. 5(2) — `the management body of the financial entity shall define, approve, oversee and be responsible for the implementation of all arrangements related to the ICT risk management framework`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-016"
+        ],
+        "sub_domain": [
+          "D-09.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "GV.RR-01",
+            "title": "Organizational leadership is responsible and accountable for cybersecurity risk and promotes a risk-aware ethical culture"
+          },
+          {
+            "id": "GV.RR-02",
+            "title": "Roles, responsibilities, authorities, and accountabilities related to cybersecurity risk management are established, communicated, understood, and enforced"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 5(2) requires the management body of the financial entity to define,\napprove, oversee, and be responsible for the implementation of all\narrangements related to the ICT risk management framework. The clause is\nthe top-of-the-pyramid governance rule of DORA and establishes personal\nliability for the management body, which co-exists with the EBA Guidelines\non Internal Governance fit-and-proper expectations and with the cross-\nreference to MiFID II Art. 4(1)(36), CRD Art. 3(1)(7), UCITS, CSDR, and\nBMR `management body` definitions (per `02a_DORA_Ch2Sec1_Governance.md`\n§6.x). For smaller entities under Art. 4 proportionality, the management-\nbody definition follows national corporate-law default.\n",
+        "security_rationale": "The Art. 5(2) management-body ownership duty is operationalised in NIST\nCSF 2.0 through **GV.RR-01 (Organizational leadership is responsible and\naccountable for cybersecurity risk and promotes a risk-aware ethical\nculture)** and **GV.RR-02 (Roles, responsibilities, authorities, and\naccountabilities related to cybersecurity risk management are established,\ncommunicated, understood, and enforced)**. GV.RR-01 anchors the\naccountability substrate — the four-verb OJ coordination `define, approve,\noversee, be responsible` is operationalised as a personal-liability\nthreshold at the management-body level, complementing the EBA Guidelines\non Internal Governance fit-and-proper regime. GV.RR-02 layers the\nrole-allocation engine that translates the top-level ownership into\ndelegated authority and operational accountability, ensuring that the\n`all arrangements related to the ICT risk management framework` OJ\nqualifier is distributed across the entity's three-lines-of-defence\nstructure (or alternative model) without diluting the top-of-pyramid\nownership. Together these two subcategories close the gap between\nboard-level sign-off and operational accountability, and an entity\nevidencing GV.RR-01 leadership accountability plus GV.RR-02 role-\nallocation discipline can demonstrate ex-post to supervisory review\nthat the Art. 5(2) four-verb obligation was discharged through both\npersonal liability and documented delegation, rather than collapsing\ninto ceremonial approval without follow-through.\n",
+        "ambiguity_notes": "S2 SCOPE-Q on `all arrangements` is read at the literal in-scope end of\nthe spectrum — all arrangements within the framework. S2 POLY on\n`management body` is read at the board-of-directors end of the spectrum\nper EU corporate-law default. S2 COORD on the four-verb coordination\n`define, approve, oversee AND be responsible` (Berry §5.5) — the chosen\nreading is that each of the four activities is distinct and must be\nperformed. Remain open: how `all arrangements` interacts with new-\narrangement onboarding remains an entity-policy matter.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-027",
+      "title": "Sound and comprehensive ICT risk management framework documented",
+      "sub_domain": [
+        "D-09.1"
+      ],
+      "linked_objectives": [
+        "SO-DORA-016"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C03",
+          "article_ref": "Art. 6(1) — `Financial entities shall have a sound, comprehensive and well-documented ICT risk management framework … which enables them to address ICT risk quickly, efficiently and comprehensively`"
+        }
+      ],
+      "nist_csf": [
+        "GV.PO-01",
+        "GV.OC-01",
+        "GV.RM-04"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-027",
+        "title": "Sound and comprehensive ICT risk management framework documented",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C03",
+            "article_ref": "Art. 6(1) — `Financial entities shall have a sound, comprehensive and well-documented ICT risk management framework … which enables them to address ICT risk quickly, efficiently and comprehensively`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-016"
+        ],
+        "sub_domain": [
+          "D-09.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "GV.PO-01",
+            "title": "Organizational cybersecurity policy is established, communicated, and enforced"
+          },
+          {
+            "id": "GV.OC-01",
+            "title": "The organizational mission is understood and informs cybersecurity risk management"
+          },
+          {
+            "id": "GV.RM-04",
+            "title": "Strategic direction on identifying and responding to risks established and communicated"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 6(1) requires financial entities to have a sound, comprehensive, and\nwell-documented ICT risk management framework which enables them to address\nICT risk quickly, efficiently, and comprehensively. Art. 6(2) further\nspecifies that the framework shall include strategies, policies, protocols,\nprocedures, and ICT risk tools. The clause sets the top-of-stack\ngovernance artefact and is operationalised by the strategy policies at Art. 7,\nthe protection policies at Art. 9, and the incident-handling policies at\nChapter III. The clause parallels — without replacing — the NIS 2 Art. 21\nbasic cybersecurity governance baseline (Directive (EU) 2022/2555) and the\nAI Act Art. 9 risk-management duty for high-risk AI systems (Regulation\n(EU) 2024/1689) where AI components are in scope. EBA Guidelines on ICT\nand security risk management frame the supervisory expectations on\nframework quality attributes.\n[OJ-corrective note (v0.2 audit, cosmetic): Art. 6(2) — artefact order swap. OJ Art. 6(2) lists: `strategies, policies, procedures, ICT protocols and tools`. The SR swaps `procedures` and `protocols` (OJ puts `procedures` first), drops the `ICT` qualifier from `protocols`, and adds `ICT risk` to `tools`. All five items present; no operational change required.]\n",
+        "security_rationale": "The Art. 6(1)+(2) framework obligation is operationalised in NIST CSF 2.0\nthrough **GV.PO-01 (Organizational cybersecurity policy is established,\ncommunicated, and enforced)**, **GV.OC-01 (The organizational mission is\nunderstood and informs cybersecurity risk management)**, and **GV.RM-04\n(Strategic direction on identifying and responding to risks established\nand communicated)**. GV.PO-01 anchors the policy-substrate dimension of\nthe OJ `well-documented ICT risk management framework`, ensuring that\nthe framework is enforceable rather than aspirational. GV.OC-01\nsupplies the mission-alignment layer — the OJ `quickly, efficiently\nand comprehensively` adverb triplet maps onto mission-driven risk-\nmanagement prioritisation, where cybersecurity investment is\nproportionate to the entity's critical objectives and services.\nGV.RM-04 layers the strategic-direction engine, ensuring that the\nOJ `sound and comprehensive` quality attributes are anchored in a\ndocumented strategic-direction artefact that links identification\n(Art. 7–8) and response (Art. 17–19) into a coherent risk-handling\nchain. Together these three subcategories convert the top-of-stack\ngovernance artefact into an enforceable policy with mission alignment\nand strategic direction, and an entity evidencing GV.PO-01 + GV.OC-01\n+ GV.RM-04 coverage can demonstrate ex-post to supervisory review\nthat the Art. 6(1) `sound, comprehensive and well-documented`\nframework was anchored in enforceable policy rather than documented\naspiration.\n",
+        "ambiguity_notes": "S2 COORD on the three-way AND of adjectives (`sound, comprehensive AND\nwell-documented`) — all three required. S2 COORD on the three-way AND of\nadverbs (`quickly, efficiently AND comprehensively`) — all three required.\nS2 POLY on `framework` is read as composite artefact per the Art. 6(2)\nelaboration; alternatives include treating it as a single document, but\nthe Art. 6(2) elaboration settles the composite reading. Remain open:\ndocumentation-control granularity for `well-documented` (versioning,\napproval-trails, archival) is an entity-policy matter.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-028",
+      "title": "Independence of ICT risk oversight via three-lines-of-defence model",
+      "sub_domain": [
+        "D-09.1",
+        "D-09.2"
+      ],
+      "linked_objectives": [
+        "SO-DORA-017"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C04",
+          "article_ref": "Art. 6(4) — `assign the responsibility for managing and overseeing ICT risk to a control function and ensure an appropriate level of independence … according to the three lines of defence model, or an internal risk management and control model`"
+        }
+      ],
+      "nist_csf": [
+        "GV.RR-02",
+        "GV.RM-02"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-028",
+        "title": "Independence of ICT risk oversight via three-lines-of-defence model",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C04",
+            "article_ref": "Art. 6(4) — `assign the responsibility for managing and overseeing ICT risk to a control function and ensure an appropriate level of independence … according to the three lines of defence model, or an internal risk management and control model`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-017"
+        ],
+        "sub_domain": [
+          "D-09.1",
+          "D-09.2"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "GV.RR-02",
+            "title": "Roles, responsibilities, authorities, and accountabilities related to cybersecurity risk management are established, communicated, understood, and enforced"
+          },
+          {
+            "id": "GV.RM-02",
+            "title": "Risk roles, responsibilities, authorities, and accountabilities are established and communicated"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 6(4) requires financial entities to assign the responsibility for\nmanaging and overseeing ICT risk to a control function and to ensure an\nappropriate level of independence, in accordance with the three lines of\ndefence model or an internal risk management and control model. The\nthree-lines-of-defence model is the banking-supervision standard (Basel\nCommittee; EBA Guidelines on Internal Governance), but the OR with\n`internal risk management and control model` opens the door to alternative\nmodels (e.g. COSO, ISO 31000). The clause aligns functionally with the\nNIS 2 Art. 21(1) governance-of-cybersecurity-risk baseline (Directive\n(EU) 2022/2555) and is the structural-setup counterpart to Art. 7 asset\nidentification and to Art. 9 protection policies.\n",
+        "security_rationale": "The Art. 6(4) control-function independence duty is operationalised in\nNIST CSF 2.0 through **GV.RR-02 (Roles, responsibilities, authorities,\nand accountabilities related to cybersecurity risk management are\nestablished, communicated, understood, and enforced)** and **GV.RM-02\n(Risk roles, responsibilities, authorities, and accountabilities are\nestablished and communicated)**. GV.RR-02 anchors the structural\nseparation between operational management (first line), risk-and-\ncompliance oversight (second line), and internal audit (third line)\nthat the OJ `appropriate level of independence` qualifier operationalises\nin the three-lines-of-defence model — the interlock that prevents\noperational blind spots and compliance failures from going uncorrected.\nGV.RM-02 layers the communication-and-understanding engine, ensuring\nthat the role allocation is not merely established on paper but is\ncommunicated across the entity and understood by all three lines so\nthat escalation pathways, reporting lines, and authority thresholds\nare exercisable rather than theoretical. Together these two\nsubcategories operationalise the OJ `or an internal risk management\nand control model` alternative, and an entity evidencing GV.RR-02\nstructural separation plus GV.RM-02 documented role-allocation\ncommunication can demonstrate ex-post to supervisory review that\nthe Art. 6(4) independence obligation was met through both\narchitectural choice (3LoD or equivalent) and operational\ncommunication discipline, allowing alternative-model entities\n(COSO, ISO 31000) to satisfy the duty on equivalence terms.\n",
+        "ambiguity_notes": "S2 VAG on `appropriate level of independence` — alternatives include\nstructural separation, functional separation, or both; the chosen reading\nis the literal AND. S2 POLY on `control function` — alternatives include\nfirst-line, second-line, or third-line; the chosen reading is third-line\ngiven the three-lines-of-defence reference. S2 COORD on `ICT risk\nmanagement functions, control functions, AND internal audit functions`\n— all three function types in scope. S2 POLY on `or an internal risk\nmanagement and control model` — alternatives include either, with the\nchosen reading that both are accepted. Remain open: documentation of\nwhich alternative model is used (where not 3LoD) is an entity-policy\nmatter.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-029",
+      "title": "Inventory and classification of ICT-supported business assets",
+      "sub_domain": [
+        "D-09.3"
+      ],
+      "linked_objectives": [
+        "SO-DORA-017"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C05",
+          "article_ref": "Art. 7(1) — `identify, classify and adequately document all ICT supported business functions, roles and responsibilities, the information assets and ICT assets supporting those functions, and their roles and dependencies in relation to ICT risk`"
+        }
+      ],
+      "nist_csf": [
+        "ID.AM-01",
+        "ID.AM-02",
+        "ID.AM-03",
+        "ID.AM-05"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-029",
+        "title": "Inventory and classification of ICT-supported business assets",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C05",
+            "article_ref": "Art. 7(1) — `identify, classify and adequately document all ICT supported business functions, roles and responsibilities, the information assets and ICT assets supporting those functions, and their roles and dependencies in relation to ICT risk`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-017"
+        ],
+        "sub_domain": [
+          "D-09.3"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "ID.AM-01",
+            "title": "Inventories of hardware managed by the organization are maintained"
+          },
+          {
+            "id": "ID.AM-02",
+            "title": "Inventories of software, services, and systems managed by the organization are maintained"
+          },
+          {
+            "id": "ID.AM-03",
+            "title": "Inventories of data and corresponding metadata for designated data types are maintained"
+          },
+          {
+            "id": "ID.AM-05",
+            "title": "Assets are prioritized based on classification, criticality, resources, and impact on the mission"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 7(1) requires financial entities to identify, classify, and adequately\ndocument all ICT-supported business functions, the roles and responsibilities\nsupporting those functions, the information assets and ICT assets supporting\nthose functions, and their roles and dependencies in relation to ICT risk.\nThe clause is the inventory-onboarding substrate for every downstream\nobligation (vulnerability management, access control, incident response,\nthird-party risk management). The clause runs in parallel with GDPR Art. 30\nrecords-of-processing activities (Regulation (EU) 2016/679) — the data-asset\ninventory serves both regimes, and with NIS 2 Art. 21(2)(a) basic cybersecurity\nhygiene inventory duty (Directive (EU) 2022/2555). CRA Art. 13 conformity-\nassessment duties (Regulation (EU) 2024/2847) apply where ICT assets are\ndigital products. EBA Guidelines on ICT and security risk management set\nthe supervisory baseline for asset-classification granularity.\n[OJ-corrective note (v0.2 audit, material): Art. 7(1) → Art. 8(1) misattribution (P0 disagreement cross-cutting). Art. 8(1) (Identification function): financial entities shall identify all ICT-supported business functions and the ICT assets that support those functions, including those of third-party providers, and document them. The audit notes that the source article_ref points to Art. 7(1) but the OJ text is in Art. 8(1).]\n",
+        "security_rationale": "The Art. 7(1) asset-identification duty is operationalised in NIST CSF\n2.0 through **ID.AM-01 (Inventories of hardware managed by the\norganization are maintained)**, **ID.AM-02 (Inventories of software,\nservices, and systems managed by the organization are maintained)**,\n**ID.AM-03 (Inventories of data and corresponding metadata for\ndesignated data types are maintained)**, and **ID.AM-05 (Assets are\nprioritized based on classification, criticality, resources, and\nimpact on the mission)**. The three inventory subcategories\ndecompose the OJ `information assets and ICT assets` substrate into\nhardware, software/services/systems, and data layers, each with\nits own lifecycle, change-detection cadence, and ownership chain.\nID.AM-05 closes the prioritisation loop — the OJ `classify` verb is\noperationalised through classification, criticality, resource\nweight, and mission-impact scoring, ensuring that the inventory\nis not a flat list but a priority-ordered substrate for\ndownstream controls. Together these four subcategories convert a\ndocumentary exercise into the upstream input for vulnerability\nmanagement (Art. 9(4)(f)), access control (Art. 9(4)(c)), incident\nresponse (Art. 17), and third-party risk management (Art. 28), and\nan entity evidencing ID.AM-01/02/03 coverage plus ID.AM-05\nprioritisation can demonstrate ex-post to supervisory review\nthat the Art. 7(1) `identify, classify and adequately document`\nobligation was met at the hardware-software-data substrate level\nand that criticality scoring was anchored in mission-impact\nrather than vendor tier.\n",
+        "ambiguity_notes": "S3 COORD on the long AND chain `ICT supported business functions, roles\nand responsibilities, the information assets and ICT assets supporting\nthose functions, AND their roles and dependencies` — the chosen reading\nis that all four asset-classes plus dependencies are in scope per the\ninventory intent. The clause admits multiple parse trees; the\nfunctional-reading selection treats `roles and dependencies in relation\nto ICT risk` as a connective qualifier rather than a separate asset-class.\nS2 VAG on `adequately document` — alternatives include sufficiently-for-\naudit or sufficiently-for-risk-management; the chosen reading is the\ncumulative. S2 POLY on `ICT supported` — alternatives include fully-\nautomated, partially-automated, or any-function-with-ICT-dependency; the\nchosen reading is the literal latter. Remain open: change-detection\ncadence for asset-inventory refresh remains for entity policy, with EBA\nsupervisory practice providing convergence signals.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-030",
+      "title": "Continuous monitoring and control of ICT-system security and functioning",
+      "sub_domain": [
+        "D-10.1"
+      ],
+      "linked_objectives": [
+        "SO-DORA-018"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C07",
+          "article_ref": "Art. 8(1) — `continuously monitor and control the security and functioning of ICT systems and tools and shall minimise the impact of ICT risk on ICT systems through the deployment of appropriate ICT security tools, policies and procedures`"
+        }
+      ],
+      "nist_csf": [
+        "DE.CM-01",
+        "DE.CM-09",
+        "PR.PS-04"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {},
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-030",
+        "title": "Continuous monitoring and control of ICT-system security and functioning",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C07",
+            "article_ref": "Art. 8(1) — `continuously monitor and control the security and functioning of ICT systems and tools and shall minimise the impact of ICT risk on ICT systems through the deployment of appropriate ICT security tools, policies and procedures`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-018"
+        ],
+        "sub_domain": [
+          "D-10.1"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "DE.CM-01",
+            "title": "Networks and network services are monitored to find potentially adverse events"
+          },
+          {
+            "id": "DE.CM-09",
+            "title": "Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events"
+          },
+          {
+            "id": "PR.PS-04",
+            "title": "Log records are generated and made available for continuous monitoring and analysis"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 8(1) requires financial entities to continuously monitor and control\nthe security and functioning of ICT systems and tools and to minimise the\nimpact of ICT risk on ICT systems through the deployment of appropriate ICT\nsecurity tools, policies, and procedures. The clause is the real-time\nsecurity-operations substrate of DORA and pairs with the Art. 17 incident-\nmanagement process (which is triggered downstream of monitoring outputs)\nand with the Chapter IV testing regime (which validates monitoring\neffectiveness). The clause co-exists with NIS 2 Art. 21(2)(b) basic\ncybersecurity monitoring baseline (Directive (EU) 2022/2555) and with AI\nAct Art. 9(2) post-market-monitoring duties for high-risk AI systems\n(Regulation (EU) 2024/1689) where AI components are in scope. EBA Guidelines\non ICT and security risk management set the supervisory baseline for\nmonitoring coverage and cadence.\n[OJ-corrective note (v0.2 audit, material): Art. 8(1) → Art. 9(1) misattribution (P0 disagreement cross-cutting). Art. 9(1) (Protection and prevention): financial entities shall continuously monitor and control the security and functioning of ICT systems. The audit notes that the source article_ref points to Art. 8(1) but the OJ text is in Art. 9(1) — the `monitor` obligation actually lives under Art. 9, not Art. 8 (which is the chapeau for Identification, not monitoring).]\n",
+        "security_rationale": "The Art. 8(1) monitoring-and-control duty is operationalised in NIST CSF\n2.0 through **DE.CM-01 (Networks and network services are monitored to\nfind potentially adverse events)**, **DE.CM-09 (Computing hardware and\nsoftware, runtime environments, and their data are monitored to find\npotentially adverse events)**, and **PR.PS-04 (Log records are generated\nand made available for continuous monitoring and analysis)**. DE.CM-01\nanchors the network-layer monitoring — east-west traffic, perimeter\nevents, north-south anomalies — that operationalises the OJ\n`continuously monitor` qualifier at the network surface. DE.CM-09\nextends coverage to the compute layer (endpoints, servers, runtime\nenvironments, file integrity) so that the OJ `security AND functioning`\nAND-coordination is met across both cyber-threat and operational-\nperformance dimensions. PR.PS-04 closes the evidentiary loop, ensuring\nthat the monitoring output is anchored in log records that are\navailable for continuous analysis and incident-response consumption\nunder Art. 17. Together these three subcategories operationalise the\nOJ `tools, policies AND procedures` triplet through detection-engine\ncoverage plus platform-level logging discipline, and an entity\nevidencing DE.CM-01 + DE.CM-09 + PR.PS-04 coverage can demonstrate\nex-post to supervisory review that the Art. 8(1) `continuously\nmonitor and control` obligation was met at network, compute, and\nlog-evidence layers, and that the `minimise the impact of ICT risk`\nobjective was anchored in real-time detection rather than periodic\nsampling.\n",
+        "ambiguity_notes": "S2 VAG on `continuously` — the chosen reading is the practical EU-\nsupervisory reading of always-on or near-real-time at sufficiently fine\ncadence; alternatives include a more relaxed scheduled cadence. S2 POLY\non `control` — alternatives include preventive, detective, or corrective;\nthe chosen reading is the literal AND across all three. S2 COORD on\n`security AND functioning` — distinct aspects of ICT-system monitoring, the\nchosen reading is the literal AND. S2 COORD on `tools, policies AND\nprocedures` — all three artefact types required. Remain open:\ncadence expectations on `continuously` are subject to EBA supervisory\npractice; documented and evidence-backed cadences are recommended.\n"
+      }
+    },
+    {
+      "sr_id": "SR-DORA-031",
+      "title": "Information security policy covering CIA+A across data and ICT assets",
+      "sub_domain": [
+        "D-10.2"
+      ],
+      "linked_objectives": [
+        "SO-DORA-018"
+      ],
+      "source_clauses": [
+        {
+          "clause_id": "DORA-C12",
+          "article_ref": "Art. 9(4)(a) — `develop and document an information security policy defining rules to protect the availability, authenticity, integrity and confidentiality of data, information assets and ICT assets, including those of their customers, where applicable`"
+        }
+      ],
+      "nist_csf": [
+        "GV.PO-01",
+        "ID.AM-08",
+        "GV.OC-03"
+      ],
+      "nist_pf": [],
+      "nist_airmf": [],
+      "unmapped_markers": [],
+      "replaced_tokens": {
+        "PR.DS-12": "PR.DS-12 -> ID.AM-08 (internal 4x3 matrix cell; data-management policy)"
+      },
+      "unresolved": [],
+      "source_record": {
+        "sr_id": "SR-DORA-031",
+        "title": "Information security policy covering CIA+A across data and ICT assets",
+        "source_clauses": [
+          {
+            "clause_id": "DORA-C12",
+            "article_ref": "Art. 9(4)(a) — `develop and document an information security policy defining rules to protect the availability, authenticity, integrity and confidentiality of data, information assets and ICT assets, including those of their customers, where applicable`"
+          }
+        ],
+        "linked_objectives": [
+          "SO-DORA-018"
+        ],
+        "sub_domain": [
+          "D-10.2"
+        ],
+        "nist_csf_mapping": [
+          {
+            "id": "GV.PO-01",
+            "title": "Organizational cybersecurity policy is established, communicated, and enforced"
+          },
+          {
+            "id": "PR.DS-12",
+            "title": "Data is managed consistent with the organization's risk strategy to protect the confidentiality, integrity, and availability of data"
+          },
+          {
+            "id": "GV.OC-03",
+            "title": "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed"
+          }
+        ],
+        "applies_to_role": [
+          "FINANCIAL_ENTITY"
+        ],
+        "obligation_type": [
+          "CONTINUOUS"
+        ],
+        "regulatory_rationale": "Art. 9(4)(a) requires financial entities to develop and document an\ninformation security policy defining rules to protect the availability,\nauthenticity, integrity, and confidentiality of data, information assets,\nand ICT assets, including those of their customers, where applicable. The\nclause is the top-level policy instrument complementing the framework at\nArt. 6(1) and the operational polices at Art. 9(4)(b)–(j). The clause\nco-exists with GDPR Art. 5 principles relating to processing of personal\ndata (Regulation (EU) 2016/679), with NIS 2 Art. 21(2)(d) baseline-\ncryptography-policy duty (Directive (EU) 2022/2555), and with CRA\nconformity-of-products duties (Regulation (EU) 2024/2847) where the\npolicy covers protection of digital products. EBA Guidelines on ICT and\nsecurity risk management set the supervisory expectations on policy\ndocumentation and review cadence.\n",
+        "security_rationale": "The Art. 9(4)(a) information-security-policy duty is operationalised in\nNIST CSF 2.0 through **GV.PO-01 (Organizational cybersecurity policy is\nestablished, communicated, and enforced)**, **PR.DS-12 (Data is managed\nconsistent with the organization's risk strategy to protect the\nconfidentiality, integrity, and availability of data)**, and **GV.OC-03\n(Legal, regulatory, and contractual requirements regarding cybersecurity\n— including privacy and civil liberties obligations — are understood\nand managed)**. GV.PO-01 anchors the policy-substrate dimension — the\nOJ `develop and document an information security policy` requirement is\noperationalised as an established, communicated, and enforced policy\nrather than as an aspirational artefact. PR.DS-12 layers the data-\nmanagement axis, ensuring that the OJ `availability, authenticity,\nintegrity and confidentiality` four-way protection objective is\ntranslated into a risk-strategy-aligned data-governance regime\ncovering data, information assets, and ICT assets (including\ncustomer-owned assets where applicable). GV.OC-03 closes the\nlegal-regulatory-contractual alignment loop, ensuring that the\npolicy accounts for parallel GDPR, NIS 2, CRA, and contractual\nobligations rather than operating as an isolated DORA artefact.\nTogether these three subcategories convert the top-level policy\nrequirement into an enforceable, risk-strategy-aligned, and\nmulti-regulation-aware instrument, and an entity evidencing\nGV.PO-01 + PR.DS-12 + GV.OC-03 coverage can demonstrate ex-post\nto supervisory review that the Art. 9(4)(a) `develop and document`\nobligation was met through established-policy discipline, risk-\nstrategy alignment, and legal-regulatory mapping — closing the\ncommon gap where information-security policies exist as\ndocuments but not as enforceable instruments.\n",
+        "ambiguity_notes": "S2 COORD on the nested AND (CIA+A four-way of data/information assets/\nICT assets three-way = twelve pairings) is read as all twelve pairings in\nscope. S2 VAG on `where applicable` is read at the risk-based end of the\nspectrum per recital context; alternatives include entity-judgment or\ncontractually-determined scoping. S2 POLY on `information security policy`\nis read as a policy framework rather than a single document given the\nrule-definition scope. Remain open: `where applicable` evidence\nstandard (when applicable applies and when it does not) is an entity-\npolicy matter.\n"
+      }
+    }
+  ]
+}

@@ -30,7 +30,7 @@ phase_1A_role: 2_of_5
 **Objective.** Essential and important entities establish **policies and procedures to assess the effectiveness of cybersecurity risk-management measures** (Art. 21(2)(f) NIS 2) as part of the all-hazards risk-management framework; the cadence is entity-discretionary under Recital 56 (no quantitative threshold in the OJ).
 
 **CSF anchors (from `SR-NIS2-037` + `SR-NIS2-038` v0.3 security_rationale):**
-ID.IM-03 (primary), ID.RA-05, GV.OV-03, DE.AE-02.
+GV.PO-01, ID.IM-01, GV.OV-03, GV.PO-02.
 *(ID.IM-03 — Configuration change control processes are in place — anchors the NIS 2 Art. 21(2)(f) `policies and procedures to assess the effectiveness of cybersecurity risk-management measures` mapped to NIST CSF 2.0 ID.IM-03; ID.RA-05 — Threats, vulnerabilities, likelihoods, and impacts are used to establish risk tolerances — anchors the effectiveness-assessment feedback loop into the risk-management framework; GV.OV-03 — Cybersecurity risk management strategy outcomes are reviewed and inform changes — anchors the Art. 21(2)(f) effectiveness-assessment feedback into the all-hazards risk-management strategy outcomes; DE.AE-02 — Adverse events are analyzed to identify or determine the scope of an incident — anchors the effectiveness-assessment input to the incident-handling chain. The four subcategories together enable the NSIE to demonstrate ex post, against the competent authority (CSIRT), that the Art. 21(2)(f) effectiveness-assessment policies and procedures were operational with `policies and procedures to assess the effectiveness` cadence + methodology + evidence templates.)*
 
 ---

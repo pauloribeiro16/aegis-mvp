@@ -6,6 +6,7 @@
 ## GDPR
 ##### Art. 5(1)(c) — Data minimisation
 **Clause: GDPR-CL03** | type: principle | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: PR.DS-10, ID.AM-08, PR.AA-02, PR.PS-01, ID.AM-03, GV.SC-04 · PF 1.1: CT.DM-P3, CM.AW-P5, PR.AC-P6, CT.DP-P4, CT.PO-P4, ID.RA-P3, CT.DM-P5, CT.DM-P4, ID.DE-P3 · AI RMF: — · from `SR-GDPR-006`, `SR-GDPR-010`, `SR-GDPR-013`, +4 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §3.3.5 (vagueness), §5.1 (`adequate`, `relevant`, `necessary`).
 **Instance 1 — VAG / S3 / `adequate`, `relevant`, `necessary`**
 Three inquiry-resistant adjectives; no measurement criterion. Art. 5(2) accountability shifts burden of demonstration to controller; Art. 35(7)(b) DPIA requires necessity assessment.
@@ -21,6 +22,7 @@ R1 vs R3 yield materially distinct compliance obligations (R1 permits default co
 ---
 ##### Art. 5(1)(e) — Storage limitation
 **Clause: GDPR-CL05** | type: principle | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: ID.AM-08, ID.AM-03, PR.DS-10, GV.SC-04 · PF 1.1: CT.PO-P4, CT.DM-P5, CT.DM-P4, ID.DE-P3 · AI RMF: — · from `SR-GDPR-029`, `SR-GDPR-030`, `SR-GDPR-031`, +1 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`necessary`, `appropriate`), §3.3.1 (polysemy of `form which permits identification`).
 **Instance 1 — VAG / S3 / `no longer than is necessary`**
 Temporal vague phrase with no upper bound; same pattern as `without undue delay` (Berry §5.1). Art. 5(1)(e) further conditions on `appropriate technical and organisational measures required by this Regulation` — the cross-reference is itself ambiguous.
@@ -35,6 +37,7 @@ The `identification` threshold is the same Art. 4(1) `identifiable` question. Ps
 ---
 ##### Art. 5(2) — Accountability
 **Clause: GDPR-CL07** | type: principle (controller-specific) | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: GV.PO-01, GV.PO-02, GV.RM-04, GV.OV-03, PR.PS-04, DE.AE-03, RS.AN-07 · PF 1.1: GV.PO-P1, GV.PO-P6, GV.MT-P3, GV.PO-P5, CT.DM-P9, ID.IM-P8 · AI RMF: — · from `SR-GDPR-043`, `SR-GDPR-044`, `SR-GDPR-050` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`responsible`, `able to demonstrate`).
 **Instance 1 — VAG / S3 / `able to demonstrate compliance`**
 The accountability principle is the foundational obligation of GDPR. The standard for `demonstrating` is undefined.
@@ -79,6 +82,7 @@ R1 vs R2 yield materially distinct compliance obligations (R1 requires documente
 #### Clause breakdown
 ##### Art. 24(1) — General controller responsibility
 **Clause: GDPR-CP01** | type: controller-specific | obligatedParty: CONTROLLER | obligationType: CONTINUOUS
+**Control anchors:** CSF: GV.PO-01, GV.PO-02, GV.RM-04, GV.OV-03 · PF 1.1: GV.PO-P1, GV.PO-P6, GV.MT-P3, GV.PO-P5 · AI RMF: — · from `SR-GDPR-043`, `SR-GDPR-044` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`appropriate`, `where necessary`), §5.4.7 (`technical and organisational`).
 **Instance 1 — VAG / S3 / `appropriate technical and organisational measures`**
 Same pattern as Art. 5(1)(f) and Art. 32(1) — `appropriate` is the recurring Berry-flagged vague term. Art. 32 anchors the specific security measures but the cross-clause `appropriate` chain remains qualitatively undefined.
@@ -102,12 +106,14 @@ R1 vs R2 yield materially distinct review-cadence policies.
 #### Clause breakdown
 ##### Art. 30(1)+(2) — Records content
 **Clause: GDPR-CP12** | type: documentation | obligatedParty: CONTROLLER + PROCESSOR | obligationType: CONTINUOUS
+**Control anchors:** CSF: ID.AM-08, ID.AM-03, GV.PO-02, GV.OV-03, PR.PS-04, DE.AE-03, RS.AN-07 · PF 1.1: CT.PO-P4, CT.DM-P5, GV.MT-P3, GV.PO-P5, ID.IM-P1, ID.IM-P4, ID.IM-P6, ID.IM-P8, CT.DM-P9 · AI RMF: — · from `SR-GDPR-029`, `SR-GDPR-044`, `SR-GDPR-048`, +1 more (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`where possible` × 2), §5.4.7 (closed AND-list).
 **Instance 1 — VAG / S2 / `where possible` × 2**
 Soft hedge on retention-period documentation and security-measure documentation. `Where possible` defers to controller judgement. S2 because the same documentation practice applies.
 ---
 ##### Art. 30(5) — 250-employee exception
 **Clause: GDPR-CP13** | type: documentation exception | obligatedParty: CONTROLLER + PROCESSOR (<250 persons) | obligationType: CONTINUOUS
+**Control anchors:** CSF: ID.AM-03, GV.PO-02 · PF 1.1: ID.IM-P1, ID.IM-P4, ID.IM-P6, ID.IM-P8 · AI RMF: — · from `SR-GDPR-048` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** §5.1 (`likely`, `occasional`), §3.3.1 (`risk` polysemy).
 **Instance 1 — VAG / S3 / `likely to result in a risk`, `occasional`**
 Two qualifying exceptions. `Likely` is qualitative; `occasional` inherits Art. 27(2)(a) ambiguity. The exception requires the 3 conditions to ALL fail (risk OR not-occasional OR special categories).
@@ -127,6 +133,7 @@ R1 vs R2 yield materially distinct risk-thresholds for small-organisation docume
 #### Clause breakdown
 ##### Art. 31 — Cooperation duty
 **Clause: GDPR-CP14** | type: supervisory cooperation | obligatedParty: CONTROLLER + PROCESSOR | obligationType: PER-REQUEST
+**Control anchors:** CSF: PR.PS-04, DE.AE-03, RS.AN-07 · PF 1.1: CT.DM-P9, ID.IM-P8 · AI RMF: — · from `SR-GDPR-050` (00_VISUALISATIONS/GDPR/GDPR_Dashboard.html)
 **Berry anchor:** none — clause is unambiguous. Cooperation on request.
 ---
 ### Article 32 — Security of processing
@@ -145,3 +152,4 @@ R1 vs R2 yield materially distinct risk-thresholds for small-organisation docume
 #### Clause breakdown
 
 <!-- aegis:purity: own_reg=GDPR; demoted=0; core_cross_mentions=0 -->
+<!-- aegis:control-anchors: generated by scripts/uniformize_control_anchors.py from baseline/MAPPINGS/sr_control_mappings; not part of the verbatim Part 4 body -->

@@ -1,0 +1,29 @@
+{
+  "control_id": "RV.AI.3",
+  "framework": "NIST AI SSDF Profile v1.0",
+  "function": "RV",
+  "category": "Remediate AI Vulnerabilities (RV)",
+  "subcategory_id": "RV.AI.3",
+  "subcategory_text": "Remediate AI vulnerabilities by patching model components, updating guardrails, retraining with hardened data, switching to safer prompts, or revoking/rolling back the affected model version.",
+  "informative_references": [
+    "NIST SP 800-218A: RV.AI.3",
+    "NIST SSDF v1.1: RV.2.2",
+    "NIST AI RMF 1.0: MANAGE-2.4, MANAGE-3.1"
+  ],
+  "implementation_examples": [
+    "Patch guardrail rules to block the discovered jailbreak",
+    "Retrain on filtered or hardened data when poisoning is confirmed",
+    "Roll back to a known-good model version if a regression is detected"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI vulnerabilities are addressed via patch, guardrail update, or rollback.",
+    "Determine whether remediation effectiveness is verified."
+  ],
+  "related_controls": [
+    "RV.AI.1 (NIST AI SSDF Profile v1.0 — same family)",
+    "RV.AI.2 (NIST AI SSDF Profile v1.0 — same family)",
+    "RV.AI.4 (NIST AI SSDF Profile v1.0 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218A",
+  "source_version": "1.0 (2024-07-26)"
+}

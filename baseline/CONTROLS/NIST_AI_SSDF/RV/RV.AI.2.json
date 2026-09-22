@@ -1,0 +1,29 @@
+{
+  "control_id": "RV.AI.2",
+  "framework": "NIST AI SSDF Profile v1.0",
+  "function": "RV",
+  "category": "Triage AI Vulnerabilities (RV)",
+  "subcategory_id": "RV.AI.2",
+  "subcategory_text": "Confirm and triage AI vulnerabilities by impact (data leakage, harmful output, model theft, jailbreak), exploitability, exposure, and applicable regulatory regime.",
+  "informative_references": [
+    "NIST SP 800-218A: RV.AI.2",
+    "NIST SSDF v1.1: RV.1.2",
+    "NIST AI RMF 1.0: MEASURE-2.11, GOVERN-4.1"
+  ],
+  "implementation_examples": [
+    "Score AI vulnerabilities by data sensitivity and exploitability",
+    "Reproduce the vulnerability in a sandboxed test environment",
+    "Map findings to applicable AI regulations (EU AI Act, sectoral)"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI vulnerabilities are triaged by impact and regulatory exposure.",
+    "Determine whether findings are reproducible before prioritisation."
+  ],
+  "related_controls": [
+    "RV.AI.1 (NIST AI SSDF Profile v1.0 — same family)",
+    "RV.AI.3 (NIST AI SSDF Profile v1.0 — same family)",
+    "RV.AI.4 (NIST AI SSDF Profile v1.0 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218A",
+  "source_version": "1.0 (2024-07-26)"
+}

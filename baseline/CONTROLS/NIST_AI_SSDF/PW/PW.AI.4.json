@@ -1,0 +1,30 @@
+{
+  "control_id": "PW.AI.4",
+  "framework": "NIST AI SSDF Profile v1.0",
+  "function": "PW",
+  "category": "Test AI Data and Pipeline Integrity (PW)",
+  "subcategory_id": "PW.AI.4",
+  "subcategory_text": "Test datasets, training pipelines, and retrieval pipelines for integrity issues (data poisoning, leakage, distribution shift, retrieval corruption) that could degrade model security or behaviour.",
+  "informative_references": [
+    "NIST SP 800-218A: PW.AI.4",
+    "NIST SSDF v1.1: PW.3.1",
+    "NIST AI RMF 1.0: MANAGE-1.2, MANAGE-1.4"
+  ],
+  "implementation_examples": [
+    "Detect poisoned training samples via outlier and influence-function analysis",
+    "Audit retrieval indices for unauthorised content injection",
+    "Monitor training-data lineage against declared provenance"
+  ],
+  "assessment_objectives": [
+    "Determine whether data-integrity tests are part of the pipeline.",
+    "Determine whether retrieval pipelines are audited."
+  ],
+  "related_controls": [
+    "PW.AI.1 (NIST AI SSDF Profile v1.0 — same family)",
+    "PW.AI.2 (NIST AI SSDF Profile v1.0 — same family)",
+    "PW.AI.3 (NIST AI SSDF Profile v1.0 — same family)",
+    "PW.AI.5 (NIST AI SSDF Profile v1.0 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218A",
+  "source_version": "1.0 (2024-07-26)"
+}

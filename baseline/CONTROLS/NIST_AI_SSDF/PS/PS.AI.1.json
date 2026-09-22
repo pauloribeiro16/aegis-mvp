@@ -1,0 +1,30 @@
+{
+  "control_id": "PS.AI.1",
+  "framework": "NIST AI SSDF Profile v1.0",
+  "function": "PS",
+  "category": "Protect Model Artefacts from Unauthorized Access (PS)",
+  "subcategory_id": "PS.AI.1",
+  "subcategory_text": "Protect model artefacts (weights, checkpoints, embeddings, prompts) with access controls equivalent to or stronger than those applied to source code, and protect model artefacts from theft and tampering.",
+  "informative_references": [
+    "NIST SP 800-218A: PS.AI.1",
+    "NIST SSDF v1.1: PS.1.1",
+    "NIST AI RMF 1.0: MANAGE-2.4, MANAGE-4.2",
+    "NIST SP 800-53 Rev. 5: SC-28, AC-3"
+  ],
+  "implementation_examples": [
+    "Store weights in an access-controlled model registry with MFA",
+    "Encrypt model artefacts at rest with HSM-backed keys",
+    "Audit weight-access events to detect extraction attempts"
+  ],
+  "assessment_objectives": [
+    "Determine whether model artefacts are stored with access controls.",
+    "Determine whether weight-access events are audited."
+  ],
+  "related_controls": [
+    "PS.AI.2 (NIST AI SSDF Profile v1.0 — same family)",
+    "PS.AI.3 (NIST AI SSDF Profile v1.0 — same family)",
+    "PS.AI.4 (NIST AI SSDF Profile v1.0 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218A",
+  "source_version": "1.0 (2024-07-26)"
+}

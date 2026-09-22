@@ -1,0 +1,30 @@
+{
+  "control_id": "PW.AI.3",
+  "framework": "NIST AI SSDF Profile v1.0",
+  "function": "PW",
+  "category": "Test AI Robustness and Safety (PW)",
+  "subcategory_id": "PW.AI.3",
+  "subcategory_text": "Test models for adversarial robustness, bias, hallucination, prompt-injection resistance, and safety regressions across the release lifecycle and at defined cadence in production.",
+  "informative_references": [
+    "NIST SP 800-218A: PW.AI.3",
+    "NIST SSDF v1.1: PW.3.1, PW.3.2",
+    "NIST AI RMF 1.0: MEASURE-2.5, MEASURE-2.6, MEASURE-2.7"
+  ],
+  "implementation_examples": [
+    "Run adversarial-robustness benchmarks before release",
+    "Run red-team prompts covering jailbreaks and exfiltration",
+    "Run fairness evaluations across protected groups"
+  ],
+  "assessment_objectives": [
+    "Determine whether adversarial-robustness tests are performed pre-release.",
+    "Determine whether safety regressions are monitored in production."
+  ],
+  "related_controls": [
+    "PW.AI.1 (NIST AI SSDF Profile v1.0 — same family)",
+    "PW.AI.2 (NIST AI SSDF Profile v1.0 — same family)",
+    "PW.AI.4 (NIST AI SSDF Profile v1.0 — same family)",
+    "PW.AI.5 (NIST AI SSDF Profile v1.0 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218A",
+  "source_version": "1.0 (2024-07-26)"
+}

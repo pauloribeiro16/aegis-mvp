@@ -1,0 +1,13 @@
+{
+  "referential": "NIST AI SSDF Profile v1.0",
+  "version": "1.0 (2024-07-26)",
+  "source_urls": [
+    "https://doi.org/10.6028/NIST.SP.800-218A"
+  ],
+  "fetched_date": "2026-09-22",
+  "subcategories": 17,
+  "expected_total": 17,
+  "unverified_entries": [],
+  "advisory": true,
+  "enforced_by_verify_no_loss": false
+}

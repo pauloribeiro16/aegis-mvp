@@ -1,0 +1,30 @@
+{
+  "control_id": "PO.AI.1",
+  "framework": "NIST AI SSDF Profile v1.0",
+  "function": "PO",
+  "category": "Define Security Requirements for AI Systems (PO)",
+  "subcategory_id": "PO.AI.1",
+  "subcategory_text": "Identify and document the security requirements specific to AI systems, including model integrity, training-data provenance, evaluation rigour, and downstream harm mitigation, in addition to conventional software-security requirements.",
+  "informative_references": [
+    "NIST SP 800-218A: PO.AI.1",
+    "NIST SSDF v1.1: PO.1.1",
+    "NIST AI RMF 1.0: GOVERN-1.1, GOVERN-1.2",
+    "NIST AI 600-1 (GenAI Profile): GOVERN-1.1"
+  ],
+  "implementation_examples": [
+    "Document model-security requirements (e.g., resistance to prompt injection, model theft)",
+    "Document data-security requirements (training-data provenance, PII handling)",
+    "Document evaluation requirements (robustness, fairness, hallucination tests)"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI-specific security requirements are documented in addition to traditional security requirements.",
+    "Determine whether requirements address model integrity, data provenance, and downstream harm."
+  ],
+  "related_controls": [
+    "PO.AI.2 (NIST AI SSDF Profile v1.0 — same family)",
+    "PO.AI.3 (NIST AI SSDF Profile v1.0 — same family)",
+    "PO.AI.4 (NIST AI SSDF Profile v1.0 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218A",
+  "source_version": "1.0 (2024-07-26)"
+}

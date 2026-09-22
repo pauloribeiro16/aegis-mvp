@@ -1,0 +1,30 @@
+{
+  "control_id": "PS.AI.2",
+  "framework": "NIST AI SSDF Profile v1.0",
+  "function": "PS",
+  "category": "Protect Training Data and Datasets (PS)",
+  "subcategory_id": "PS.AI.2",
+  "subcategory_text": "Protect training, validation, and evaluation datasets from unauthorized access, tampering, and data poisoning, with provenance and integrity verification.",
+  "informative_references": [
+    "NIST SP 800-218A: PS.AI.2",
+    "NIST SSDF v1.1: PS.1.1",
+    "NIST AI RMF 1.0: MANAGE-1.2, MANAGE-1.4",
+    "NIST SP 800-53 Rev. 5: SI-7, SC-8"
+  ],
+  "implementation_examples": [
+    "Capture dataset provenance (source, licence, hash) in a dataset card",
+    "Sign and checksum datasets in storage",
+    "Detect dataset anomalies (statistical drift, label tampering) before training"
+  ],
+  "assessment_objectives": [
+    "Determine whether datasets have provenance and integrity protection.",
+    "Determine whether dataset tampering is detected."
+  ],
+  "related_controls": [
+    "PS.AI.1 (NIST AI SSDF Profile v1.0 — same family)",
+    "PS.AI.3 (NIST AI SSDF Profile v1.0 — same family)",
+    "PS.AI.4 (NIST AI SSDF Profile v1.0 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218A",
+  "source_version": "1.0 (2024-07-26)"
+}

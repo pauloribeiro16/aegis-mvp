@@ -1,0 +1,29 @@
+{
+  "control_id": "RV.AI.4",
+  "framework": "NIST AI SSDF Profile v1.0",
+  "function": "RV",
+  "category": "Analyse Root Causes of AI Vulnerabilities (RV)",
+  "subcategory_id": "RV.AI.4",
+  "subcategory_text": "Analyse root causes of remediated AI vulnerabilities (data quality, training-procedure gaps, missing guardrails, prompt-design flaws, supply-chain issues) and feed improvements back into the SDLC.",
+  "informative_references": [
+    "NIST SP 800-218A: RV.AI.4",
+    "NIST SSDF v1.1: RV.3.1, RV.3.2",
+    "NIST AI RMF 1.0: GOVERN-4.2, GOVERN-4.3"
+  ],
+  "implementation_examples": [
+    "Root-cause jailbreaks to missing input sanitisation",
+    "Identify training-data quality gaps that contributed to harmful outputs",
+    "Track root-cause findings as inputs to model-card updates"
+  ],
+  "assessment_objectives": [
+    "Determine whether root-cause analysis is performed on AI vulnerabilities.",
+    "Determine whether systemic improvements are implemented after analysis."
+  ],
+  "related_controls": [
+    "RV.AI.1 (NIST AI SSDF Profile v1.0 — same family)",
+    "RV.AI.2 (NIST AI SSDF Profile v1.0 — same family)",
+    "RV.AI.3 (NIST AI SSDF Profile v1.0 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218A",
+  "source_version": "1.0 (2024-07-26)"
+}

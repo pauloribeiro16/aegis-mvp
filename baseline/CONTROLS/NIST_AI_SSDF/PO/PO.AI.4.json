@@ -1,0 +1,29 @@
+{
+  "control_id": "PO.AI.4",
+  "framework": "NIST AI SSDF Profile v1.0",
+  "function": "PO",
+  "category": "Define Acceptance Criteria for AI (PO)",
+  "subcategory_id": "PO.AI.4",
+  "subcategory_text": "Define quantitative acceptance criteria for AI components (accuracy thresholds, fairness metrics, robustness benchmarks, hallucination rates) that gate progression to deployment.",
+  "informative_references": [
+    "NIST SP 800-218A: PO.AI.4",
+    "NIST SSDF v1.1: PO.4.1",
+    "NIST AI RMF 1.0: MEASURE-2.2, MEASURE-3.2"
+  ],
+  "implementation_examples": [
+    "Set minimum accuracy and demographic-parity thresholds per use-case",
+    "Define robustness benchmarks (adversarial accuracy drop tolerated)",
+    "Define hallucination-rate limits per release"
+  ],
+  "assessment_objectives": [
+    "Determine whether quantitative acceptance criteria are defined for AI releases.",
+    "Determine whether failing criteria block deployment."
+  ],
+  "related_controls": [
+    "PO.AI.1 (NIST AI SSDF Profile v1.0 — same family)",
+    "PO.AI.2 (NIST AI SSDF Profile v1.0 — same family)",
+    "PO.AI.3 (NIST AI SSDF Profile v1.0 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218A",
+  "source_version": "1.0 (2024-07-26)"
+}

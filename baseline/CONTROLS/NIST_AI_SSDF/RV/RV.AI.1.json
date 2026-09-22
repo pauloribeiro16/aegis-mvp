@@ -1,0 +1,29 @@
+{
+  "control_id": "RV.AI.1",
+  "framework": "NIST AI SSDF Profile v1.0",
+  "function": "RV",
+  "category": "Identify AI Vulnerabilities (RV)",
+  "subcategory_id": "RV.AI.1",
+  "subcategory_text": "Identify AI-specific vulnerabilities continuously via automated red-teaming, adversarial-input scanning, model-output monitoring, third-party advisories, and bug-bounty intake.",
+  "informative_references": [
+    "NIST SP 800-218A: RV.AI.1",
+    "NIST SSDF v1.1: RV.1.1",
+    "NIST AI RMF 1.0: MEASURE-2.10, MEASURE-2.11"
+  ],
+  "implementation_examples": [
+    "Run scheduled red-team prompt sweeps against deployed models",
+    "Subscribe to model-vulnerability advisories for the model's provider",
+    "Monitor production outputs for jailbreak or extraction indicators"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI vulnerabilities are identified continuously.",
+    "Determine whether production behaviour is monitored for attack indicators."
+  ],
+  "related_controls": [
+    "RV.AI.2 (NIST AI SSDF Profile v1.0 — same family)",
+    "RV.AI.3 (NIST AI SSDF Profile v1.0 — same family)",
+    "RV.AI.4 (NIST AI SSDF Profile v1.0 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218A",
+  "source_version": "1.0 (2024-07-26)"
+}

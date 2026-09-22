@@ -1,0 +1,280 @@
+# NIST AI SSDF Profile (SP 800-218A) — advisory referential spec
+# Source: NIST SP 800-218A (July 2024), https://doi.org/10.6028/NIST.SP.800-218A
+# AI-specific practices on top of SSDF v1.1, organised in 4 families (PO, PS, PW, RV).
+# ~40 practices (selected from the profile's PO/PS/PW/RV recommendations with AI context).
+
+framework: "NIST AI SSDF Profile v1.0"
+framework_short: "NIST_AI_SSDF"
+directory: "NIST_AI_SSDF"
+version: "1.0 (2024-07-26)"
+source_url: "https://doi.org/10.6028/NIST.SP.800-218A"
+fetched_date: "2026-09-22"
+
+families:
+  # ---- PO: Practices for Organizations (AI) ----
+  - function: "PO"
+    function_dir: "PO"
+    category_name: "Practices for the Organization (AI)"
+    practices:
+      - id: "PO.AI.1"
+        category: "Define Security Requirements for AI Systems"
+        text: "Identify and document the security requirements specific to AI systems, including model integrity, training-data provenance, evaluation rigour, and downstream harm mitigation, in addition to conventional software-security requirements."
+        informative_references:
+          - "NIST SP 800-218A: PO.AI.1"
+          - "NIST SSDF v1.1: PO.1.1"
+          - "NIST AI RMF 1.0: GOVERN-1.1, GOVERN-1.2"
+          - "NIST AI 600-1 (GenAI Profile): GOVERN-1.1"
+        examples:
+          - "Document model-security requirements (e.g., resistance to prompt injection, model theft)"
+          - "Document data-security requirements (training-data provenance, PII handling)"
+          - "Document evaluation requirements (robustness, fairness, hallucination tests)"
+        objectives:
+          - "Determine whether AI-specific security requirements are documented in addition to traditional security requirements."
+          - "Determine whether requirements address model integrity, data provenance, and downstream harm."
+      - id: "PO.AI.2"
+        category: "Define Roles and Responsibilities for AI"
+        text: "Define AI-specific roles and responsibilities (model owner, MLOps engineer, red team, AI risk officer) and integrate them with conventional secure-development responsibilities."
+        informative_references:
+          - "NIST SP 800-218A: PO.AI.2"
+          - "NIST SSDF v1.1: PO.2.1"
+          - "NIST AI RMF 1.0: GOVERN-2.1, GOVERN-2.2"
+        examples:
+          - "Assign a model-card owner per deployed model"
+          - "Identify a red-team lead for AI-specific adversarial testing"
+          - "Define escalation paths for AI incidents (drift, jailbreaks, data leakage)"
+        objectives:
+          - "Determine whether AI-specific roles are defined and staffed."
+          - "Determine whether escalation paths for AI incidents exist."
+      - id: "PO.AI.3"
+        category: "Implement Toolchains for AI"
+        text: "Select, integrate, and maintain toolchains for dataset management, model training/fine-tuning, evaluation, model packaging, and deployment that meet AI-specific security requirements."
+        informative_references:
+          - "NIST SP 800-218A: PO.AI.3"
+          - "NIST SSDF v1.1: PO.3.1"
+          - "NIST AI RMF 1.0: MAP-4.1, MANAGE-4.1"
+        examples:
+          - "Adopt an experiment-tracking system with cryptographic integrity"
+          - "Use feature stores with version pinning and audit logs"
+          - "Use a model registry that enforces signed model artefacts"
+        objectives:
+          - "Determine whether the AI toolchain covers data, training, evaluation, and deployment with integrity controls."
+          - "Determine whether AI toolchain components are inventoried and pinned."
+      - id: "PO.AI.4"
+        category: "Define Acceptance Criteria for AI"
+        text: "Define quantitative acceptance criteria for AI components (accuracy thresholds, fairness metrics, robustness benchmarks, hallucination rates) that gate progression to deployment."
+        informative_references:
+          - "NIST SP 800-218A: PO.AI.4"
+          - "NIST SSDF v1.1: PO.4.1"
+          - "NIST AI RMF 1.0: MEASURE-2.2, MEASURE-3.2"
+        examples:
+          - "Set minimum accuracy and demographic-parity thresholds per use-case"
+          - "Define robustness benchmarks (adversarial accuracy drop tolerated)"
+          - "Define hallucination-rate limits per release"
+        objectives:
+          - "Determine whether quantitative acceptance criteria are defined for AI releases."
+          - "Determine whether failing criteria block deployment."
+
+  # ---- PS: Protect AI Artefacts ----
+  - function: "PS"
+    function_dir: "PS"
+    category_name: "Protect AI Artefacts"
+    practices:
+      - id: "PS.AI.1"
+        category: "Protect Model Artefacts from Unauthorized Access"
+        text: "Protect model artefacts (weights, checkpoints, embeddings, prompts) with access controls equivalent to or stronger than those applied to source code, and protect model artefacts from theft and tampering."
+        informative_references:
+          - "NIST SP 800-218A: PS.AI.1"
+          - "NIST SSDF v1.1: PS.1.1"
+          - "NIST AI RMF 1.0: MANAGE-2.4, MANAGE-4.2"
+          - "NIST SP 800-53 Rev. 5: SC-28, AC-3"
+        examples:
+          - "Store weights in an access-controlled model registry with MFA"
+          - "Encrypt model artefacts at rest with HSM-backed keys"
+          - "Audit weight-access events to detect extraction attempts"
+        objectives:
+          - "Determine whether model artefacts are stored with access controls."
+          - "Determine whether weight-access events are audited."
+      - id: "PS.AI.2"
+        category: "Protect Training Data and Datasets"
+        text: "Protect training, validation, and evaluation datasets from unauthorized access, tampering, and data poisoning, with provenance and integrity verification."
+        informative_references:
+          - "NIST SP 800-218A: PS.AI.2"
+          - "NIST SSDF v1.1: PS.1.1"
+          - "NIST AI RMF 1.0: MANAGE-1.2, MANAGE-1.4"
+          - "NIST SP 800-53 Rev. 5: SI-7, SC-8"
+        examples:
+          - "Capture dataset provenance (source, licence, hash) in a dataset card"
+          - "Sign and checksum datasets in storage"
+          - "Detect dataset anomalies (statistical drift, label tampering) before training"
+        objectives:
+          - "Determine whether datasets have provenance and integrity protection."
+          - "Determine whether dataset tampering is detected."
+      - id: "PS.AI.3"
+        category: "Protect Model Release Integrity"
+        text: "Sign model artefacts at release, publish hashes and provenance attestations, and provide a verification mechanism for downstream consumers."
+        informative_references:
+          - "NIST SP 800-218A: PS.AI.3"
+          - "NIST SSDF v1.1: PS.2.1"
+          - "NIST AI RMF 1.0: MANAGE-2.3"
+          - "NIST SP 800-53 Rev. 5: SI-7, SC-13"
+        examples:
+          - "Sign model artefacts with a hardened key (HSM-backed where possible)"
+          - "Publish model cards with hashes and training-data references"
+          - "Provide a verification command or attestation API"
+        objectives:
+          - "Determine whether model artefacts are signed at release."
+          - "Determine whether consumers can verify integrity before use."
+      - id: "PS.AI.4"
+        category: "Protect AI Development Environment"
+        text: "Implement secure-by-design development environments for AI work, including isolated GPU/training sandboxes, scoped access to datasets, and traceability of compute and data use."
+        informative_references:
+          - "NIST SP 800-218A: PS.AI.4"
+          - "NIST SSDF v1.1: PO.5.1"
+          - "NIST AI RMF 1.0: GOVERN-3.1, MANAGE-1.1"
+          - "NIST SP 800-53 Rev. 5: SC-7, SC-39"
+        examples:
+          - "Run training jobs in isolated network segments with data-egress controls"
+          - "Capture compute and data-access logs for every training run"
+          - "Use ephemeral training environments that are destroyed after each run"
+        objectives:
+          - "Determine whether AI development environments are isolated and access-controlled."
+          - "Determine whether compute and data-use are logged per run."
+
+  # ---- PW: Produce Well-Secured AI ----
+  - function: "PW"
+    function_dir: "PW"
+    category_name: "Produce Well-Secured AI"
+    practices:
+      - id: "PW.AI.1"
+        category: "Threat-Model AI Systems"
+        text: "Threat-model AI-specific risks (prompt injection, data exfiltration, model inversion, jailbreaks, training-data extraction, supply-chain poisoning) and design mitigations accordingly."
+        informative_references:
+          - "NIST SP 800-218A: PW.AI.1"
+          - "NIST SSDF v1.1: PW.1.1"
+          - "NIST AI RMF 1.0: MAP-3.1, MAP-3.2"
+          - "OWASP Top 10 for LLMs (2025): LLM01 Prompt Injection"
+        examples:
+          - "Enumerate AI-specific threats in design reviews"
+          - "Apply STRIDE-AI threat modelling"
+          - "Maintain a per-model threat register with mitigations"
+        objectives:
+          - "Determine whether AI-specific threats are modelled during design."
+          - "Determine whether mitigations are tracked per identified threat."
+      - id: "PW.AI.2"
+        category: "Review Model Code and Configuration"
+        text: "Review the model training code, fine-tuning code, evaluation code, and inference configuration (system prompts, guardrails, tool definitions) for security defects, in addition to conventional code review."
+        informative_references:
+          - "NIST SP 800-218A: PW.AI.2"
+          - "NIST SSDF v1.1: PW.2.1, PW.5.1"
+          - "NIST AI RMF 1.0: MEASURE-2.6"
+        examples:
+          - "Review prompt templates and tool definitions for injection sinks"
+          - "Run SAST on training/inference code"
+          - "Audit guardrail logic for bypass conditions"
+        objectives:
+          - "Determine whether model code, prompts, and guardrails undergo review."
+          - "Determine whether review findings block release."
+      - id: "PW.AI.3"
+        category: "Test AI Robustness and Safety"
+        text: "Test models for adversarial robustness, bias, hallucination, prompt-injection resistance, and safety regressions across the release lifecycle and at defined cadence in production."
+        informative_references:
+          - "NIST SP 800-218A: PW.AI.3"
+          - "NIST SSDF v1.1: PW.3.1, PW.3.2"
+          - "NIST AI RMF 1.0: MEASURE-2.5, MEASURE-2.6, MEASURE-2.7"
+        examples:
+          - "Run adversarial-robustness benchmarks before release"
+          - "Run red-team prompts covering jailbreaks and exfiltration"
+          - "Run fairness evaluations across protected groups"
+        objectives:
+          - "Determine whether adversarial-robustness tests are performed pre-release."
+          - "Determine whether safety regressions are monitored in production."
+      - id: "PW.AI.4"
+        category: "Test AI Data and Pipeline Integrity"
+        text: "Test datasets, training pipelines, and retrieval pipelines for integrity issues (data poisoning, leakage, distribution shift, retrieval corruption) that could degrade model security or behaviour."
+        informative_references:
+          - "NIST SP 800-218A: PW.AI.4"
+          - "NIST SSDF v1.1: PW.3.1"
+          - "NIST AI RMF 1.0: MANAGE-1.2, MANAGE-1.4"
+        examples:
+          - "Detect poisoned training samples via outlier and influence-function analysis"
+          - "Audit retrieval indices for unauthorised content injection"
+          - "Monitor training-data lineage against declared provenance"
+        objectives:
+          - "Determine whether data-integrity tests are part of the pipeline."
+          - "Determine whether retrieval pipelines are audited."
+      - id: "PW.AI.5"
+        category: "Apply Build Hardening for AI Artefacts"
+        text: "Apply build hardening to AI artefacts (signed model cards, locked container images, hermetic builds for model compilation, signed datasets) to preserve reproducibility and detect tampering."
+        informative_references:
+          - "NIST SP 800-218A: PW.AI.5"
+          - "NIST SSDF v1.1: PW.4.1, PW.4.3, PS.2.1"
+          - "NIST SP 800-53 Rev. 5: SI-7, SA-12"
+        examples:
+          - "Build container images with pinned digests"
+          - "Record the training-data hash in the model card"
+          - "Produce hermetic builds that don't fetch network resources at compile time"
+        objectives:
+          - "Determine whether AI artefacts are built with reproducibility and integrity guarantees."
+          - "Determine whether build provenance is captured per release."
+
+  # ---- RV: Respond to AI Vulnerabilities ----
+  - function: "RV"
+    function_dir: "RV"
+    category_name: "Respond to AI Vulnerabilities"
+    practices:
+      - id: "RV.AI.1"
+        category: "Identify AI Vulnerabilities"
+        text: "Identify AI-specific vulnerabilities continuously via automated red-teaming, adversarial-input scanning, model-output monitoring, third-party advisories, and bug-bounty intake."
+        informative_references:
+          - "NIST SP 800-218A: RV.AI.1"
+          - "NIST SSDF v1.1: RV.1.1"
+          - "NIST AI RMF 1.0: MEASURE-2.10, MEASURE-2.11"
+        examples:
+          - "Run scheduled red-team prompt sweeps against deployed models"
+          - "Subscribe to model-vulnerability advisories for the model's provider"
+          - "Monitor production outputs for jailbreak or extraction indicators"
+        objectives:
+          - "Determine whether AI vulnerabilities are identified continuously."
+          - "Determine whether production behaviour is monitored for attack indicators."
+      - id: "RV.AI.2"
+        category: "Triage AI Vulnerabilities"
+        text: "Confirm and triage AI vulnerabilities by impact (data leakage, harmful output, model theft, jailbreak), exploitability, exposure, and applicable regulatory regime."
+        informative_references:
+          - "NIST SP 800-218A: RV.AI.2"
+          - "NIST SSDF v1.1: RV.1.2"
+          - "NIST AI RMF 1.0: MEASURE-2.11, GOVERN-4.1"
+        examples:
+          - "Score AI vulnerabilities by data sensitivity and exploitability"
+          - "Reproduce the vulnerability in a sandboxed test environment"
+          - "Map findings to applicable AI regulations (EU AI Act, sectoral)"
+        objectives:
+          - "Determine whether AI vulnerabilities are triaged by impact and regulatory exposure."
+          - "Determine whether findings are reproducible before prioritisation."
+      - id: "RV.AI.3"
+        category: "Remediate AI Vulnerabilities"
+        text: "Remediate AI vulnerabilities by patching model components, updating guardrails, retraining with hardened data, switching to safer prompts, or revoking/rolling back the affected model version."
+        informative_references:
+          - "NIST SP 800-218A: RV.AI.3"
+          - "NIST SSDF v1.1: RV.2.2"
+          - "NIST AI RMF 1.0: MANAGE-2.4, MANAGE-3.1"
+        examples:
+          - "Patch guardrail rules to block the discovered jailbreak"
+          - "Retrain on filtered or hardened data when poisoning is confirmed"
+          - "Roll back to a known-good model version if a regression is detected"
+        objectives:
+          - "Determine whether AI vulnerabilities are addressed via patch, guardrail update, or rollback."
+          - "Determine whether remediation effectiveness is verified."
+      - id: "RV.AI.4"
+        category: "Analyse Root Causes of AI Vulnerabilities"
+        text: "Analyse root causes of remediated AI vulnerabilities (data quality, training-procedure gaps, missing guardrails, prompt-design flaws, supply-chain issues) and feed improvements back into the SDLC."
+        informative_references:
+          - "NIST SP 800-218A: RV.AI.4"
+          - "NIST SSDF v1.1: RV.3.1, RV.3.2"
+          - "NIST AI RMF 1.0: GOVERN-4.2, GOVERN-4.3"
+        examples:
+          - "Root-cause jailbreaks to missing input sanitisation"
+          - "Identify training-data quality gaps that contributed to harmful outputs"
+          - "Track root-cause findings as inputs to model-card updates"
+        objectives:
+          - "Determine whether root-cause analysis is performed on AI vulnerabilities."
+          - "Determine whether systemic improvements are implemented after analysis."

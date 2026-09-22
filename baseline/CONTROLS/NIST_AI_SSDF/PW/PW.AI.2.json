@@ -1,0 +1,30 @@
+{
+  "control_id": "PW.AI.2",
+  "framework": "NIST AI SSDF Profile v1.0",
+  "function": "PW",
+  "category": "Review Model Code and Configuration (PW)",
+  "subcategory_id": "PW.AI.2",
+  "subcategory_text": "Review the model training code, fine-tuning code, evaluation code, and inference configuration (system prompts, guardrails, tool definitions) for security defects, in addition to conventional code review.",
+  "informative_references": [
+    "NIST SP 800-218A: PW.AI.2",
+    "NIST SSDF v1.1: PW.2.1, PW.5.1",
+    "NIST AI RMF 1.0: MEASURE-2.6"
+  ],
+  "implementation_examples": [
+    "Review prompt templates and tool definitions for injection sinks",
+    "Run SAST on training/inference code",
+    "Audit guardrail logic for bypass conditions"
+  ],
+  "assessment_objectives": [
+    "Determine whether model code, prompts, and guardrails undergo review.",
+    "Determine whether review findings block release."
+  ],
+  "related_controls": [
+    "PW.AI.1 (NIST AI SSDF Profile v1.0 — same family)",
+    "PW.AI.3 (NIST AI SSDF Profile v1.0 — same family)",
+    "PW.AI.4 (NIST AI SSDF Profile v1.0 — same family)",
+    "PW.AI.5 (NIST AI SSDF Profile v1.0 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218A",
+  "source_version": "1.0 (2024-07-26)"
+}

@@ -1,0 +1,31 @@
+{
+  "control_id": "PW.AI.1",
+  "framework": "NIST AI SSDF Profile v1.0",
+  "function": "PW",
+  "category": "Threat-Model AI Systems (PW)",
+  "subcategory_id": "PW.AI.1",
+  "subcategory_text": "Threat-model AI-specific risks (prompt injection, data exfiltration, model inversion, jailbreaks, training-data extraction, supply-chain poisoning) and design mitigations accordingly.",
+  "informative_references": [
+    "NIST SP 800-218A: PW.AI.1",
+    "NIST SSDF v1.1: PW.1.1",
+    "NIST AI RMF 1.0: MAP-3.1, MAP-3.2",
+    "OWASP Top 10 for LLMs (2025): LLM01 Prompt Injection"
+  ],
+  "implementation_examples": [
+    "Enumerate AI-specific threats in design reviews",
+    "Apply STRIDE-AI threat modelling",
+    "Maintain a per-model threat register with mitigations"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI-specific threats are modelled during design.",
+    "Determine whether mitigations are tracked per identified threat."
+  ],
+  "related_controls": [
+    "PW.AI.2 (NIST AI SSDF Profile v1.0 — same family)",
+    "PW.AI.3 (NIST AI SSDF Profile v1.0 — same family)",
+    "PW.AI.4 (NIST AI SSDF Profile v1.0 — same family)",
+    "PW.AI.5 (NIST AI SSDF Profile v1.0 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218A",
+  "source_version": "1.0 (2024-07-26)"
+}

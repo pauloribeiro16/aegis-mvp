@@ -1,0 +1,30 @@
+{
+  "control_id": "PW.AI.5",
+  "framework": "NIST AI SSDF Profile v1.0",
+  "function": "PW",
+  "category": "Apply Build Hardening for AI Artefacts (PW)",
+  "subcategory_id": "PW.AI.5",
+  "subcategory_text": "Apply build hardening to AI artefacts (signed model cards, locked container images, hermetic builds for model compilation, signed datasets) to preserve reproducibility and detect tampering.",
+  "informative_references": [
+    "NIST SP 800-218A: PW.AI.5",
+    "NIST SSDF v1.1: PW.4.1, PW.4.3, PS.2.1",
+    "NIST SP 800-53 Rev. 5: SI-7, SA-12"
+  ],
+  "implementation_examples": [
+    "Build container images with pinned digests",
+    "Record the training-data hash in the model card",
+    "Produce hermetic builds that don't fetch network resources at compile time"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI artefacts are built with reproducibility and integrity guarantees.",
+    "Determine whether build provenance is captured per release."
+  ],
+  "related_controls": [
+    "PW.AI.1 (NIST AI SSDF Profile v1.0 — same family)",
+    "PW.AI.2 (NIST AI SSDF Profile v1.0 — same family)",
+    "PW.AI.3 (NIST AI SSDF Profile v1.0 — same family)",
+    "PW.AI.4 (NIST AI SSDF Profile v1.0 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218A",
+  "source_version": "1.0 (2024-07-26)"
+}

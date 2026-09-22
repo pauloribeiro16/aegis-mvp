@@ -1,0 +1,30 @@
+{
+  "control_id": "PS.AI.3",
+  "framework": "NIST AI SSDF Profile v1.0",
+  "function": "PS",
+  "category": "Protect Model Release Integrity (PS)",
+  "subcategory_id": "PS.AI.3",
+  "subcategory_text": "Sign model artefacts at release, publish hashes and provenance attestations, and provide a verification mechanism for downstream consumers.",
+  "informative_references": [
+    "NIST SP 800-218A: PS.AI.3",
+    "NIST SSDF v1.1: PS.2.1",
+    "NIST AI RMF 1.0: MANAGE-2.3",
+    "NIST SP 800-53 Rev. 5: SI-7, SC-13"
+  ],
+  "implementation_examples": [
+    "Sign model artefacts with a hardened key (HSM-backed where possible)",
+    "Publish model cards with hashes and training-data references",
+    "Provide a verification command or attestation API"
+  ],
+  "assessment_objectives": [
+    "Determine whether model artefacts are signed at release.",
+    "Determine whether consumers can verify integrity before use."
+  ],
+  "related_controls": [
+    "PS.AI.1 (NIST AI SSDF Profile v1.0 — same family)",
+    "PS.AI.2 (NIST AI SSDF Profile v1.0 — same family)",
+    "PS.AI.4 (NIST AI SSDF Profile v1.0 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218A",
+  "source_version": "1.0 (2024-07-26)"
+}

@@ -1,0 +1,29 @@
+{
+  "control_id": "PO.AI.3",
+  "framework": "NIST AI SSDF Profile v1.0",
+  "function": "PO",
+  "category": "Implement Toolchains for AI (PO)",
+  "subcategory_id": "PO.AI.3",
+  "subcategory_text": "Select, integrate, and maintain toolchains for dataset management, model training/fine-tuning, evaluation, model packaging, and deployment that meet AI-specific security requirements.",
+  "informative_references": [
+    "NIST SP 800-218A: PO.AI.3",
+    "NIST SSDF v1.1: PO.3.1",
+    "NIST AI RMF 1.0: MAP-4.1, MANAGE-4.1"
+  ],
+  "implementation_examples": [
+    "Adopt an experiment-tracking system with cryptographic integrity",
+    "Use feature stores with version pinning and audit logs",
+    "Use a model registry that enforces signed model artefacts"
+  ],
+  "assessment_objectives": [
+    "Determine whether the AI toolchain covers data, training, evaluation, and deployment with integrity controls.",
+    "Determine whether AI toolchain components are inventoried and pinned."
+  ],
+  "related_controls": [
+    "PO.AI.1 (NIST AI SSDF Profile v1.0 — same family)",
+    "PO.AI.2 (NIST AI SSDF Profile v1.0 — same family)",
+    "PO.AI.4 (NIST AI SSDF Profile v1.0 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218A",
+  "source_version": "1.0 (2024-07-26)"
+}

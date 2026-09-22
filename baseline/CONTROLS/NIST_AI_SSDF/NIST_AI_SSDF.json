@@ -1,0 +1,24 @@
+{
+  "framework": "NIST AI SSDF Profile v1.0",
+  "version": "1.0 (2024-07-26)",
+  "note": "advisory referential; ids authoritative; not enforced by scripts/verify_no_loss.py",
+  "subcategories": [
+    "PO.AI.1",
+    "PO.AI.2",
+    "PO.AI.3",
+    "PO.AI.4",
+    "PS.AI.1",
+    "PS.AI.2",
+    "PS.AI.3",
+    "PS.AI.4",
+    "PW.AI.1",
+    "PW.AI.2",
+    "PW.AI.3",
+    "PW.AI.4",
+    "PW.AI.5",
+    "RV.AI.1",
+    "RV.AI.2",
+    "RV.AI.3",
+    "RV.AI.4"
+  ]
+}

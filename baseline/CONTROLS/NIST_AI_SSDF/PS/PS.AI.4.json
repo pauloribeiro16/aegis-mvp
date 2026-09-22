@@ -1,0 +1,30 @@
+{
+  "control_id": "PS.AI.4",
+  "framework": "NIST AI SSDF Profile v1.0",
+  "function": "PS",
+  "category": "Protect AI Development Environment (PS)",
+  "subcategory_id": "PS.AI.4",
+  "subcategory_text": "Implement secure-by-design development environments for AI work, including isolated GPU/training sandboxes, scoped access to datasets, and traceability of compute and data use.",
+  "informative_references": [
+    "NIST SP 800-218A: PS.AI.4",
+    "NIST SSDF v1.1: PO.5.1",
+    "NIST AI RMF 1.0: GOVERN-3.1, MANAGE-1.1",
+    "NIST SP 800-53 Rev. 5: SC-7, SC-39"
+  ],
+  "implementation_examples": [
+    "Run training jobs in isolated network segments with data-egress controls",
+    "Capture compute and data-access logs for every training run",
+    "Use ephemeral training environments that are destroyed after each run"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI development environments are isolated and access-controlled.",
+    "Determine whether compute and data-use are logged per run."
+  ],
+  "related_controls": [
+    "PS.AI.1 (NIST AI SSDF Profile v1.0 — same family)",
+    "PS.AI.2 (NIST AI SSDF Profile v1.0 — same family)",
+    "PS.AI.3 (NIST AI SSDF Profile v1.0 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218A",
+  "source_version": "1.0 (2024-07-26)"
+}

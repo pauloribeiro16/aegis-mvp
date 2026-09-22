@@ -1,0 +1,29 @@
+{
+  "control_id": "PO.AI.2",
+  "framework": "NIST AI SSDF Profile v1.0",
+  "function": "PO",
+  "category": "Define Roles and Responsibilities for AI (PO)",
+  "subcategory_id": "PO.AI.2",
+  "subcategory_text": "Define AI-specific roles and responsibilities (model owner, MLOps engineer, red team, AI risk officer) and integrate them with conventional secure-development responsibilities.",
+  "informative_references": [
+    "NIST SP 800-218A: PO.AI.2",
+    "NIST SSDF v1.1: PO.2.1",
+    "NIST AI RMF 1.0: GOVERN-2.1, GOVERN-2.2"
+  ],
+  "implementation_examples": [
+    "Assign a model-card owner per deployed model",
+    "Identify a red-team lead for AI-specific adversarial testing",
+    "Define escalation paths for AI incidents (drift, jailbreaks, data leakage)"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI-specific roles are defined and staffed.",
+    "Determine whether escalation paths for AI incidents exist."
+  ],
+  "related_controls": [
+    "PO.AI.1 (NIST AI SSDF Profile v1.0 — same family)",
+    "PO.AI.3 (NIST AI SSDF Profile v1.0 — same family)",
+    "PO.AI.4 (NIST AI SSDF Profile v1.0 — same family)"
+  ],
+  "source_url": "https://doi.org/10.6028/NIST.SP.800-218A",
+  "source_version": "1.0 (2024-07-26)"
+}

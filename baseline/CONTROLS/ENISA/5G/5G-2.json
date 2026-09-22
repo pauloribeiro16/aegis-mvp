@@ -1,0 +1,25 @@
+{
+  "control_id": "5G-2",
+  "framework": "ENISA Advisory",
+  "function": "5G",
+  "category": "5G Cybersecurity (5G-2)",
+  "subcategory_id": "5G-2",
+  "subcategory_text": "Protect signalling traffic and APIs against SS7, Diameter, and HTTP/2 vulnerabilities.",
+  "informative_references": [
+    "ENISA: 5G Cybersecurity 2024",
+    "NIST SP 800-53 Rev 5: SC-08"
+  ],
+  "implementation_examples": [
+    "Signalling firewalls",
+    "API authN/Z"
+  ],
+  "assessment_objectives": [
+    "Determine whether signalling is protected."
+  ],
+  "related_controls": [
+    "5G-1 (ENISA Advisory — same family)",
+    "5G-3 (ENISA Advisory — same family)"
+  ],
+  "source_url": "https://www.enisa.europa.eu/topics/nis-directive",
+  "source_version": "Advisory 2024 (NIS2 / 5G / Cloud / AI / Sectoral)"
+}

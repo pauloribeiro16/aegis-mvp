@@ -1,0 +1,13 @@
+{
+  "referential": "ENISA Advisory",
+  "version": "Advisory 2024 (NIS2 / 5G / Cloud / AI / Sectoral)",
+  "source_urls": [
+    "https://www.enisa.europa.eu/topics/nis-directive"
+  ],
+  "fetched_date": "2026-09-22",
+  "subcategories": 28,
+  "expected_total": 28,
+  "unverified_entries": [],
+  "advisory": true,
+  "enforced_by_verify_no_loss": false
+}

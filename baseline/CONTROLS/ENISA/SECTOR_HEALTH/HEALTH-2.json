@@ -1,0 +1,24 @@
+{
+  "control_id": "HEALTH-2",
+  "framework": "ENISA Advisory",
+  "function": "HEALTH",
+  "category": "Health Sector (HEALTH-2)",
+  "subcategory_id": "HEALTH-2",
+  "subcategory_text": "Protect health data (special-category PII) with encryption, pseudonymisation, and access controls aligned with GDPR Art. 9.",
+  "informative_references": [
+    "ENISA: Health Sector Guidance",
+    "GDPR Art. 9",
+    "ISO/IEC 27701:2019 A.5.34.2.2"
+  ],
+  "implementation_examples": [
+    "Health-data pseudonymisation"
+  ],
+  "assessment_objectives": [
+    "Determine whether health data is protected to GDPR Art. 9 standard."
+  ],
+  "related_controls": [
+    "HEALTH-1 (ENISA Advisory — same family)"
+  ],
+  "source_url": "https://www.enisa.europa.eu/topics/nis-directive",
+  "source_version": "Advisory 2024 (NIS2 / 5G / Cloud / AI / Sectoral)"
+}

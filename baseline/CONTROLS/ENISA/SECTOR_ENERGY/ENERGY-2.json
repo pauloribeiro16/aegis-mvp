@@ -1,0 +1,24 @@
+{
+  "control_id": "ENERGY-2",
+  "framework": "ENISA Advisory",
+  "function": "ENERGY",
+  "category": "Energy Sector (ENERGY-2)",
+  "subcategory_id": "ENERGY-2",
+  "subcategory_text": "Implement IEC 62443 zone-and-conduit controls for ICS in energy.",
+  "informative_references": [
+    "ENISA: Energy Sector Guidance",
+    "IEC 62443-3-3"
+  ],
+  "implementation_examples": [
+    "Zone definition",
+    "Conduit controls"
+  ],
+  "assessment_objectives": [
+    "Determine whether IEC 62443 is applied."
+  ],
+  "related_controls": [
+    "ENERGY-1 (ENISA Advisory — same family)"
+  ],
+  "source_url": "https://www.enisa.europa.eu/topics/nis-directive",
+  "source_version": "Advisory 2024 (NIS2 / 5G / Cloud / AI / Sectoral)"
+}

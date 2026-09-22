@@ -1,0 +1,25 @@
+{
+  "control_id": "ENERGY-1",
+  "framework": "ENISA Advisory",
+  "function": "ENERGY",
+  "category": "Energy Sector (ENERGY-1)",
+  "subcategory_id": "ENERGY-1",
+  "subcategory_text": "Apply OT/IT segmentation for power-grid and oil & gas operations with Purdue-model reference architecture.",
+  "informative_references": [
+    "ENISA: Energy Sector Guidance",
+    "NIST SP 800-53 Rev 5: SC-32",
+    "IEC 62443"
+  ],
+  "implementation_examples": [
+    "DMZ between IT and OT",
+    "Purdue levels"
+  ],
+  "assessment_objectives": [
+    "Determine whether OT/IT segmentation is applied."
+  ],
+  "related_controls": [
+    "ENERGY-2 (ENISA Advisory — same family)"
+  ],
+  "source_url": "https://www.enisa.europa.eu/topics/nis-directive",
+  "source_version": "Advisory 2024 (NIS2 / 5G / Cloud / AI / Sectoral)"
+}

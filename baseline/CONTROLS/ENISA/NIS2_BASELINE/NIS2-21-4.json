@@ -1,0 +1,33 @@
+{
+  "control_id": "NIS2-21-4",
+  "framework": "ENISA Advisory",
+  "function": "NIS2",
+  "category": "NIS2 Baseline (Essential / Important Entities) (NIS2-21-4)",
+  "subcategory_id": "NIS2-21-4",
+  "subcategory_text": "Implement state-of-the-art technical and organisational measures to ensure the security of network and information systems, including cryptographic controls where appropriate.",
+  "informative_references": [
+    "ENISA: NIS2 Implementing Guidance 2024",
+    "NIS2 Directive Art. 21(2)(c),(e)"
+  ],
+  "implementation_examples": [
+    "Cryptography standard",
+    "SOTA review"
+  ],
+  "assessment_objectives": [
+    "Determine whether SOTA controls are in place."
+  ],
+  "related_controls": [
+    "NIS2-21-1 (ENISA Advisory — same family)",
+    "NIS2-21-2 (ENISA Advisory — same family)",
+    "NIS2-21-3 (ENISA Advisory — same family)",
+    "NIS2-21-5 (ENISA Advisory — same family)",
+    "NIS2-21-6 (ENISA Advisory — same family)",
+    "NIS2-21-7 (ENISA Advisory — same family)",
+    "NIS2-21-8 (ENISA Advisory — same family)",
+    "NIS2-21-9 (ENISA Advisory — same family)",
+    "NIS2-21-10 (ENISA Advisory — same family)",
+    "NIS2-21-11 (ENISA Advisory — same family)"
+  ],
+  "source_url": "https://www.enisa.europa.eu/topics/nis-directive",
+  "source_version": "Advisory 2024 (NIS2 / 5G / Cloud / AI / Sectoral)"
+}

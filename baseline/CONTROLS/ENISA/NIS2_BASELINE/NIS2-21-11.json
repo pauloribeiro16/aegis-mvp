@@ -1,0 +1,32 @@
+{
+  "control_id": "NIS2-21-11",
+  "framework": "ENISA Advisory",
+  "function": "NIS2",
+  "category": "NIS2 Baseline (Essential / Important Entities) (NIS2-21-11)",
+  "subcategory_id": "NIS2-21-11",
+  "subcategory_text": "Apply policies and procedures to assess the cybersecurity of supply-chain components (cryptography, secure comms, access control) when acquiring ICT products and services.",
+  "informative_references": [
+    "ENISA: NIS2 Implementing Guidance 2024",
+    "NIS2 Directive Art. 21(2)(h),(i),(j)"
+  ],
+  "implementation_examples": [
+    "Secure procurement process"
+  ],
+  "assessment_objectives": [
+    "Determine whether acquisition policies include cybersecurity criteria."
+  ],
+  "related_controls": [
+    "NIS2-21-1 (ENISA Advisory — same family)",
+    "NIS2-21-2 (ENISA Advisory — same family)",
+    "NIS2-21-3 (ENISA Advisory — same family)",
+    "NIS2-21-4 (ENISA Advisory — same family)",
+    "NIS2-21-5 (ENISA Advisory — same family)",
+    "NIS2-21-6 (ENISA Advisory — same family)",
+    "NIS2-21-7 (ENISA Advisory — same family)",
+    "NIS2-21-8 (ENISA Advisory — same family)",
+    "NIS2-21-9 (ENISA Advisory — same family)",
+    "NIS2-21-10 (ENISA Advisory — same family)"
+  ],
+  "source_url": "https://www.enisa.europa.eu/topics/nis-directive",
+  "source_version": "Advisory 2024 (NIS2 / 5G / Cloud / AI / Sectoral)"
+}

@@ -1,0 +1,26 @@
+{
+  "control_id": "CLOUD-3",
+  "framework": "ENISA Advisory",
+  "function": "CLOUD",
+  "category": "Cloud Cybersecurity (CLOUD-3)",
+  "subcategory_id": "CLOUD-3",
+  "subcategory_text": "Encrypt data at rest and in transit in cloud workloads with customer-managed keys where required by data classification.",
+  "informative_references": [
+    "ENISA: Cloud Cybersecurity 2021",
+    "NIST SP 800-53 Rev 5: SC-28"
+  ],
+  "implementation_examples": [
+    "BYOK/CMEK",
+    "TLS everywhere"
+  ],
+  "assessment_objectives": [
+    "Determine whether cloud data is encrypted with appropriate key management."
+  ],
+  "related_controls": [
+    "CLOUD-1 (ENISA Advisory — same family)",
+    "CLOUD-2 (ENISA Advisory — same family)",
+    "CLOUD-4 (ENISA Advisory — same family)"
+  ],
+  "source_url": "https://www.enisa.europa.eu/topics/nis-directive",
+  "source_version": "Advisory 2024 (NIS2 / 5G / Cloud / AI / Sectoral)"
+}

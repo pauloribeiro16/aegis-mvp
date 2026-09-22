@@ -1,0 +1,23 @@
+{
+  "control_id": "DINF-1",
+  "framework": "ENISA Advisory",
+  "function": "DINF",
+  "category": "Digital Infrastructure (DINF-1)",
+  "subcategory_id": "DINF-1",
+  "subcategory_text": "Apply ENISA guidance for digital infrastructure (IXPs, DNS, TLD, cloud providers, datacentres) including BGP/DNSSEC, DDoS mitigation, and peering security.",
+  "informative_references": [
+    "ENISA: Digital Infrastructure Guidance",
+    "NIST SP 800-53 Rev 5: SC-08"
+  ],
+  "implementation_examples": [
+    "BGP route filtering",
+    "DNSSEC",
+    "DDoS mitigation"
+  ],
+  "assessment_objectives": [
+    "Determine whether digital-infrastructure hardening is applied."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.enisa.europa.eu/topics/nis-directive",
+  "source_version": "Advisory 2024 (NIS2 / 5G / Cloud / AI / Sectoral)"
+}

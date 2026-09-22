@@ -1,0 +1,24 @@
+{
+  "control_id": "5G-3",
+  "framework": "ENISA Advisory",
+  "function": "5G",
+  "category": "5G Cybersecurity (5G-3)",
+  "subcategory_id": "5G-3",
+  "subcategory_text": "Monitor and audit 5G network elements for anomalies consistent with known 5G attack patterns.",
+  "informative_references": [
+    "ENISA: 5G Cybersecurity 2024",
+    "NIST SP 800-53 Rev 5: SI-04"
+  ],
+  "implementation_examples": [
+    "5G-aware IDS"
+  ],
+  "assessment_objectives": [
+    "Determine whether 5G network elements are monitored."
+  ],
+  "related_controls": [
+    "5G-1 (ENISA Advisory — same family)",
+    "5G-2 (ENISA Advisory — same family)"
+  ],
+  "source_url": "https://www.enisa.europa.eu/topics/nis-directive",
+  "source_version": "Advisory 2024 (NIS2 / 5G / Cloud / AI / Sectoral)"
+}

@@ -1,0 +1,24 @@
+{
+  "control_id": "HEALTH-1",
+  "framework": "ENISA Advisory",
+  "function": "HEALTH",
+  "category": "Health Sector (HEALTH-1)",
+  "subcategory_id": "HEALTH-1",
+  "subcategory_text": "Apply ENISA health-sector guidance on medical device cybersecurity including vulnerability disclosure, secure-by-default, and patch cadence.",
+  "informative_references": [
+    "ENISA: Health Sector Guidance",
+    "MDCG 2019-16"
+  ],
+  "implementation_examples": [
+    "Medical device SBOMs",
+    "Patch SLAs"
+  ],
+  "assessment_objectives": [
+    "Determine whether medical-device cybersecurity is addressed."
+  ],
+  "related_controls": [
+    "HEALTH-2 (ENISA Advisory — same family)"
+  ],
+  "source_url": "https://www.enisa.europa.eu/topics/nis-directive",
+  "source_version": "Advisory 2024 (NIS2 / 5G / Cloud / AI / Sectoral)"
+}

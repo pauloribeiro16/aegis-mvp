@@ -1,0 +1,22 @@
+{
+  "control_id": "PUBADMIN-1",
+  "framework": "ENISA Advisory",
+  "function": "PUBADMIN",
+  "category": "Public Administration (PUBADMIN-1)",
+  "subcategory_id": "PUBADMIN-1",
+  "subcategory_text": "Apply ENISA guidance for public administrations: identity assurance, secure public services, and cross-border cooperation.",
+  "informative_references": [
+    "ENISA: Public Administration Guidance",
+    "eIDAS Regulation"
+  ],
+  "implementation_examples": [
+    "eIDAS integration",
+    "Secure e-government"
+  ],
+  "assessment_objectives": [
+    "Determine whether e-government services follow ENISA PA guidance."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.enisa.europa.eu/topics/nis-directive",
+  "source_version": "Advisory 2024 (NIS2 / 5G / Cloud / AI / Sectoral)"
+}

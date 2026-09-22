@@ -1,0 +1,25 @@
+{
+  "control_id": "AI-3",
+  "framework": "ENISA Advisory",
+  "function": "AI",
+  "category": "AI Cybersecurity (AI-3)",
+  "subcategory_id": "AI-3",
+  "subcategory_text": "Monitor AI systems for adversarial behaviour, jailbreaks, and unintended outputs in production.",
+  "informative_references": [
+    "ENISA: AI Cybersecurity 2024",
+    "NIST AI RMF 1.0: MANAGE-2.4"
+  ],
+  "implementation_examples": [
+    "Output monitoring",
+    "Red-team prompts"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI production is monitored."
+  ],
+  "related_controls": [
+    "AI-1 (ENISA Advisory — same family)",
+    "AI-2 (ENISA Advisory — same family)"
+  ],
+  "source_url": "https://www.enisa.europa.eu/topics/nis-directive",
+  "source_version": "Advisory 2024 (NIS2 / 5G / Cloud / AI / Sectoral)"
+}

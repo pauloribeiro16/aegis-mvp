@@ -1,0 +1,25 @@
+{
+  "control_id": "CLOUD-1",
+  "framework": "ENISA Advisory",
+  "function": "CLOUD",
+  "category": "Cloud Cybersecurity (CLOUD-1)",
+  "subcategory_id": "CLOUD-1",
+  "subcategory_text": "Apply shared-responsibility model: the cloud customer retains responsibility for data, identity, and access; the provider for infrastructure, host, and physical.",
+  "informative_references": [
+    "ENISA: Cloud Cybersecurity 2021",
+    "NIST SP 800-53 Rev 5: AC-03"
+  ],
+  "implementation_examples": [
+    "Shared-responsibility matrix per service"
+  ],
+  "assessment_objectives": [
+    "Determine whether the shared-responsibility split is documented."
+  ],
+  "related_controls": [
+    "CLOUD-2 (ENISA Advisory — same family)",
+    "CLOUD-3 (ENISA Advisory — same family)",
+    "CLOUD-4 (ENISA Advisory — same family)"
+  ],
+  "source_url": "https://www.enisa.europa.eu/topics/nis-directive",
+  "source_version": "Advisory 2024 (NIS2 / 5G / Cloud / AI / Sectoral)"
+}

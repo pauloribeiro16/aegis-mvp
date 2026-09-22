@@ -1,0 +1,22 @@
+{
+  "control_id": "TRANSPORT-1",
+  "framework": "ENISA Advisory",
+  "function": "TRANSPORT",
+  "category": "Transport Sector (TRANSPORT-1)",
+  "subcategory_id": "TRANSPORT-1",
+  "subcategory_text": "Apply ENISA transport-sector guidance: protect operational technology in aviation, rail, road, and maritime with cyber-physical controls and supply-chain assurance.",
+  "informative_references": [
+    "ENISA: Transport Sector Guidance",
+    "IEC 62443"
+  ],
+  "implementation_examples": [
+    "Cyber-physical safeguards",
+    "Supplier assurance"
+  ],
+  "assessment_objectives": [
+    "Determine whether transport OT is secured."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.enisa.europa.eu/topics/nis-directive",
+  "source_version": "Advisory 2024 (NIS2 / 5G / Cloud / AI / Sectoral)"
+}

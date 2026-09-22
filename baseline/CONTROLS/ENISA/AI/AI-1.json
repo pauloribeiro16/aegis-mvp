@@ -1,0 +1,25 @@
+{
+  "control_id": "AI-1",
+  "framework": "ENISA Advisory",
+  "function": "AI",
+  "category": "AI Cybersecurity (AI-1)",
+  "subcategory_id": "AI-1",
+  "subcategory_text": "Identify and address AI-specific threats (prompt injection, training-data poisoning, model theft) in AI systems.",
+  "informative_references": [
+    "ENISA: AI Cybersecurity 2024",
+    "NIST AI SSDF: PW.AI.1"
+  ],
+  "implementation_examples": [
+    "Adversarial testing",
+    "Data validation"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI-specific threats are addressed."
+  ],
+  "related_controls": [
+    "AI-2 (ENISA Advisory — same family)",
+    "AI-3 (ENISA Advisory — same family)"
+  ],
+  "source_url": "https://www.enisa.europa.eu/topics/nis-directive",
+  "source_version": "Advisory 2024 (NIS2 / 5G / Cloud / AI / Sectoral)"
+}

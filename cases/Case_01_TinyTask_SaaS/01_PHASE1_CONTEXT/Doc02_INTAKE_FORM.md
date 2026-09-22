@@ -8,16 +8,9 @@ author: Compliance Lead (Fase de Especificação 1 reconciliation)
 status: RECONCILED
 inputs: [Doc01_Taxonomy_Reference.md]
 outputs: [Doc03_Company_Context_Assessment.md]
-<!-- Note: 02_Regulatory_Mapping_Master.md is DEPRECATED as of Phase 1 v1.2 (2026-07-13). Use 00_METHODOLOGY/PREPROCESSING_by_domain/domains/ corpus or 00_Taxonomy_Reference.md instead. -->
 traceability: AEGIS Class Model → CompanyContext class
 related_documents: [00_Taxonomy_Reference.md]
 ---
-
-> **Fase de Especificação 1 Reconciliation Note (2026-08-06)**
-> Rich Mode copy of legacy `02_CASES/Case_01_TinyTask_SaaS/00_COMMON/01_Company_Context.md` (v2.0). File renamed from `01_Company_Context.md` → `01_INTAKE_FORM.md` per Rich Mode naming convention (this doc is the case's Intake Form, not a generic company context doc). Fase de Especificação 1 changes:
-> - **I-10 (status DRAFT → RECONCILED):** Fase de Especificação 1 milestone.
-> - **I-13 (02_Regulatory_Mapping_Master.md deprecation):** Banner added in frontmatter. `02_Regulatory_Mapping_Master.md` was previously cited as a downstream output; it is deprecated and superseded by `00_Taxonomy_Reference.md` + corpus.
-> - Body content unchanged from legacy. Fase de Especificação 2 will add L2 manifest cross-references per answered question.
 
 # AEGIS Intake Form — Company Context Assessment
 
@@ -25,6 +18,7 @@ related_documents: [00_Taxonomy_Reference.md]
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 3.0 | 2026-08-06 | Rich Mode reconciliation — file renamed from `01_Company_Context.md`; `02_Regulatory_Mapping_Master.md` citations superseded by `00_Taxonomy_Reference.md` + corpus |
 | 2.0 | 2026-04-23 | Converted to layered intake format — Layer 0 (Company Profile), Layer 1 (Decision Tree), Layer 2 (Conditional Blocks) |
 | 1.0 | 2026-04-01 | Initial release - TinyTask SaaS case (legacy format) |
 
@@ -426,7 +420,7 @@ No trigger mismatches identified at current applicability profile.
 | IR-11: Asset Inventory | PARTIAL | PARTIAL | Basic list; no CMDB |
 | IR-12: Risk Management | NO | NOT IMPLEMENTED | Not formalized |
 
-**Detailed qualitative evidence per control area** lives in [`Doc05_Security_Posture.md §2`](Doc05_Security_Posture.md) (historical instance — `DEPRECATED_FOR_MATURITY` since 2026-08-27; ownership of the formal posture scale at Phase 2 `Doc19_Framework_Mapping_Matrix.md §5.1`). The compact form above is the only Phase 1 deliverable for posture.
+**Detailed qualitative evidence per control area** lives in [`Doc05_Security_Posture.md §2`](Doc05_Security_Posture.md) (formal posture scale owned at Phase 2 `Doc19_Framework_Mapping_Matrix.md §5.1`). The compact form above is the only Phase 1 deliverable for posture.
 
 **Posture ownership declaration (per AEGIS P5):** any change to the column values here must be reflected in `Doc19 §5.1` rationale column and announced via `CHANGE_LOG_CENTRAL.md`. No Phase 1 doc owns the posture *scale*; Phase 1 owns the *observed state*.
 
@@ -619,6 +613,7 @@ CompanyContext {
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 2.1 | 2026-07-14 | Compliance Lead | Added §10 Stakeholders register + §11 Business Goals catalog (Sprint D-final) |
+| 3.0 | 2026-08-06 | Executor | Rich Mode reconciliation — file renamed from `01_Company_Context.md`; `02_Regulatory_Mapping_Master.md` citations superseded by `00_Taxonomy_Reference.md` + corpus |
 | 2.0 | 2026-04-23 | Compliance Lead | Converted to layered intake format |
 | 1.0 | 2026-04-01 | Compliance Lead | Initial release - TinyTask SaaS case |
 

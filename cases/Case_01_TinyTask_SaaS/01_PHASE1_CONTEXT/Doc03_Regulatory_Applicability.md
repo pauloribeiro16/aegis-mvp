@@ -15,16 +15,8 @@ inputs: [Doc03_Company_Context_Assessment.md]
 outputs: [Doc10_Clause_Mapping_Matrix.md]
 traceability: AEGIS Class Model → ComplianceContext, RegulatoryClause classes
 related_documents: 00_Taxonomy_Reference.md, 04_Company_Context_Assessment.md
-ag_id_migration_note: Each row's `Operational check per Doc 07c Appendix A §A.1.1/D-XX.X` references the sub-domain (not a specific PG/SG ID). The 74 detail cards in Doc 07c Appendix A retain their legacy PG/SG headings for Phase 2 traceability; see `07c_Adjusted_Goals.md` Appendix A §A.0 alias table for the corr-008 AG ID equivalents.
 ---
 
-<!-- Note: 02_Regulatory_Mapping_Master.md is DEPRECATED as of Phase 1 v1.2 (2026-07-13). Use 00_METHODOLOGY/PREPROCESSING_by_domain/domains/ corpus or 00_Taxonomy_Reference.md instead. -->
-
-> **Fase de Especificação 1 Reconciliation Note (2026-08-06)**
-> Rich Mode copy of legacy `01_PHASE1_CONTEXT/05_Regulatory_Applicability.md` (v1.2, the "v1.1" + Art. 32/33(2)/CRA Art. 13 updates from April). Fase de Especificação 1 changes:
-> - **I-10 (status DRAFT → RECONCILED):** Fase de Especificação 1 milestone.
-> - **I-13 (02_Regulatory_Mapping_Master.md deprecation):** Banner added. The legacy `02_Regulatory_Mapping_Master.md` (00_COMMON) is deprecated as a master mapping source; the Rich equivalent is the corpus + `00_Taxonomy_Reference.md`.
-> - Body content unchanged from legacy. Fase de Especificação 2 will add L1 participant lists per sub-domain.
 
 > **Mapping to Phase 1 Strategy:** This document is the artifact of
 > **Filter 1 (Regulation Applicability — binary predicates)** in
@@ -355,9 +347,11 @@ Based on applicable regulations (GDPR + CRA):
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
+| 3.0 | 2026-08-06 | Rich Mode reconciliation note consolidated into the changelog (was a body blockquote) |
 | 1.0 | 2026-04-01 | Compliance Lead | Initial release - TinyTask SaaS case |
 | 1.1 | 2026-04-11 | Compliance Lead | Added GDPR Art. 32 Processor obligations (NativeCompliance, not via DPA); Multi-Actor note for Controller + Processor roles |
 | 1.2 | 2026-04-11 | Compliance Lead | Added GDPR Art. 33(2) "without undue delay" processor→controller distinction; Added CRA Art. 13(8) 5-year minimum support period, Art. 13(9) 10-year security update retention, Art. 13(13) 10-year documentation retention |
+| 3.0 | 2026-08-06 | Rich Mode reconciliation note consolidated into the changelog (was a body blockquote) |
 | 2.0 | 2026-08-06 | Fase de Especificação 5 Executor | **Deep enrichment — §6 Per-Article Detailed Breakdown** (54 rows: 28 GDPR + 26 CRA) with 8 fields per row: Article, Topic, Sub-Domains, Obligated Party, Verification Criteria, Evidence Type, Risk if not met, Implementation Status. **NO Effort/Cost/Timeline fields added** per Fase de Especificação 5 scope. Frontmatter updated: status → DEEP_ENRICHED, sprint → 5. |
 
 ---

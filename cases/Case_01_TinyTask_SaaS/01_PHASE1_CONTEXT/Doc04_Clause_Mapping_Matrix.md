@@ -13,13 +13,6 @@ traceability: AEGIS Class Model → RegulatoryClause, DomainCoverageEntry classe
 related_documents: 00_Taxonomy_Reference.md
 ---
 
-> **Fase de Especificação 1 Reconciliation Note (2026-08-06)**
-> Rich Mode copy of legacy `01_PHASE1_CONTEXT/06_Clause_Mapping_Matrix.md` (v1.0). Fase de Especificação 1 changes:
-> - **I-01 (Clause ID shim):** Added the **Cross-Reference: Case Clause IDs ↔ Corpus Clause IDs** section below. The case form (`GDPR-C{NN}` / `CRA-C{NN}`) is preserved for Phase 2/3 backward compat. The corpus form (`GDPR-CL/CP/RT{xx}` / `CRA-CL{xx}`) is added as a parallel reference. The 28 GDPR + 26 CRA rows are mapped per the AEGIS Rich Mode corpus (`00_METHODOLOGY/PREPROCESSING_by_domain/domains/`).
-> - **GDPR-C08 conflict resolution:** Per `phase1_ontology.yaml` (Rich copy v1.1, header note), `GDPR-C08 = Art. 9 → D-05.3` is the **canonical case-form** mapping. The legacy scripts that map `GDPR-C08 = Art. 24(1) → D-09.1` are now deprecated; the `06_Clause_Mapping_Matrix.xlsx` sheet `GDPR_MAPPING` and all downstream documents (Doc 07, Doc 07b) use the ontology-canonical mapping. The shim table below documents the chosen canonical.
-> - **I-10 (status DRAFT → RECONCILED):** Fase de Especificação 1 milestone.
-> - **I-13 (02_Regulatory_Mapping_Master.md deprecation):** Banner not added in this doc (no reference).
-
 # Clause Mapping Matrix
 
 ## 1. DOCUMENT PURPOSE
@@ -130,6 +123,7 @@ This document specifies the Excel-based Clause Mapping Matrix (Step B2), mapping
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
+| 3.0 | 2026-08-06 | Rich Mode reconciliation note consolidated into the changelog (was a body blockquote) |
 | 1.0 | 2026-04-01 | Compliance Lead | Initial release - TinyTask SaaS case |
 
 ---
@@ -161,7 +155,7 @@ This document specifies the Excel-based Clause Mapping Matrix (Step B2), mapping
 | GDPR-C05 | Art. 5(1)(b) | D-05.1 | 3 | `GDPR-CL02` | CONTROLLER | Purpose limitation principle |
 | GDPR-C06 | Art. 5(1)(e) | D-05.2 | 3 | `GDPR-CL05` | CONTROLLER | Storage limitation principle (retention-linked) |
 | GDPR-C07 | Art. 5(1)(f) | D-01.1 | 2 | `GDPR-CL06` | CONTROLLER | Integrity & confidentiality principle |
-| **GDPR-C08** | **Art. 9** | **D-05.3** | **3** | **`GDPR-CL09` (verify)** | **CONTROLLER + PROCESSOR** | **Processing of special categories. CANONICAL: Art. 9 → D-05.3 per `phase1_ontology.yaml` v1.1. The legacy script mapping `GDPR-C08 = Art. 24(1) → D-09.1` is DEPRECATED. Fase de Especificação 2 must verify the corpus `D-05.3.md` Part 4 carries a `**Clause: GDPR-CL09 \| obligatedParty: CONTROLLER + PROCESSOR**` line; if not, the corpus clause ID is TBD and Fase de Especificação 2 must assign one.** |
+| **GDPR-C08** | **Art. 9** | **D-05.3** | **3** | **`GDPR-CL09` (verify)** | **CONTROLLER + PROCESSOR** | **Processing of special categories. CANONICAL: Art. 9 → D-05.3 per `phase1_ontology.yaml` v1.1.; corpus clause `GDPR-CL09`.** |
 | GDPR-C09 | Art. 17 | D-05.3 | 3 | `GDPR-RT03` or `GDPR-RT06` (verify) | CONTROLLER | Right to erasure (data subject right family) |
 | GDPR-C10 | Art. 20 | D-05.4 | 3 | `GDPR-RT09` | CONTROLLER | Right to data portability (D-05.4 corpus carries `**Clause: GDPR-RT09 \| type: data subject right**`) |
 | GDPR-C11 | Art. 24(1) | D-09.1 | 2 | `GDPR-CL24` (verify) | CONTROLLER + PROCESSOR | Responsibility of the controller — case-form preserved as `GDPR-C11` (NOT `GDPR-C08`); mapping per ontology. Fase de Especificação 2 verify corpus. |

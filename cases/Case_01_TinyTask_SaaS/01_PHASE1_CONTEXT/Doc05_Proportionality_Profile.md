@@ -24,14 +24,6 @@ frozen: false
 supersedes: none
 ---
 
-> **Fase de Especificação 1 Reconciliation Note (2026-08-06)**
-> Rich Mode copy of legacy `01_PHASE1_CONTEXT/07b_Proportionality_Profile.md` (v1.0, ACTIVE). Fase de Especificação 1 changes:
-> - **I-10:** Status remains `ACTIVE` (the legacy doc is signed-off as ACTIVE; Fase de Especificação 1 reconciliation is content-neutral for this document — all 37 sub-domain rows, decision-table mappings, and GATE-P readiness checks are preserved verbatim).
-> - **I-05/I-06 (FR/NFR IDs):** Doc references `FR-01/04` (Critical Analysis §7.1) and `IO-04` (Firebase Auth inheritance). These are **legacy v1.0 forms**. The canonical v2.0 form is `FR-{DOM}-{NN}` (e.g., `FR-IAM-01`) and `NFR-{CAT}-{NN}`. The mapping is documented in `00_METHODOLOGY/REFERENCE/fr_nfr_numbering.md`. <!-- LEGACY: numeric FR-01, IO-04 form, see canonical mapping in fr_nfr_numbering.md. -->
-> - **I-07 (rule counts):** Doc references "Q4 Critical patching 24h, high 7d" indirectly via Critical Analysis. The canonical v2.0 rule count is **46 rules (30 CR + 16 BPR)**. <!-- LEGACY: 38 was v1.0; canonical v2.0 is 46. -->
-> - **I-13 (02_Regulatory_Mapping_Master.md deprecation):** Not referenced. N/A.
-> - Body content unchanged from legacy. Fase de Especificação 2 will validate the 5-attribute coverage per row against the corpus `considerations` field.
-
 > **Fase de Especificação 3 Corpus Cross-Check Note (2026-08-06)**
 > Cross-checked 10 representative rows in §4 against the corpus at `00_METHODOLOGY/PREPROCESSING_by_domain/domains/`. Findings:
 > - **Track B `verification_method` ≠ Corpus `requirements.*.yaml.verification_method`.** 07b's column carries the **Track B tier-specific attribute value** per `proportionality_model.md §6` (MINIMAL=INSPECT, LIGHTWEIGHT=DEMONSTRATE+INSPECT, DEFERRED=`—`). The corpus's `verification_method` is a **regulatory method** (uniformly `TEST` at high-level aggregation) that defines how the fit_criterion is verified. These are complementary, not identical, dimensions.
@@ -91,7 +83,7 @@ No tier floor is breached: every MUST is at MINIMAL or above (proportionality_mo
 
 Columns: `Sub-domain | I (BUILD/INHERIT) | P | Tier | satisfaction_pattern | evidence_depth | verification_method | ownership | example_controls | Notes | Implementation Status | Implementation Priority`. One row per ACTIVE sub-domain (37 rows). D-08.3 is omitted.
 
-**v1.6 note** — `Implementation Status` (PARTIAL / NOT IMPLEMENTED / IMPLEMENTED) is the sole posture field; the prior `maturity_cur` / `maturity_tgt` 0–4 scalars were removed per `00_METHODOLOGY/MATURITY_MODEL_CSF_STRICT.md §9` (DEPRECATED). Capability assessment now lives in the graph as `EvidenceItem` nodes (Scale A per Function, Scale B per sub-domain) — see Case_01_P1_Dashboard.html Folio VIII.
+`Implementation Status` (PARTIAL / NOT IMPLEMENTED / IMPLEMENTED) is the sole posture field. Capability assessment lives in the graph as `EvidenceItem` nodes (Scale A per Function, Scale B per sub-domain) — see Case_01_P1_Dashboard.html Folio VIII.
 
 | Sub-domain                                | I       | P    | Tier        | satisfaction_pattern | evidence_depth                                                                       | verification_method              | ownership                | example_controls                                                                                                          | Notes                                                  | Risk if not met | Implementation Status | Implementation Priority |
 |-------------------------------------------|---------|------|-------------|----------------------|--------------------------------------------------------------------------------------|----------------------------------|--------------------------|---------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------|-----------------|------------------|-----------------------|

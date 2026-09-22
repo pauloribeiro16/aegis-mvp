@@ -57,11 +57,6 @@ logins on the app admin console; the console has no MFA today.
 |---|---|---|---|
 | AG-D-03.2-001 | Only staff acting on documented instructions, each bound by confidentiality and with an individual login, process client personal data; the admin console enforces multi-factor authentication as the technical protection measure. | GDPR Art. 28; GDPR Art. 29 | CSF 2.0 PR.AA-03 |
 
-*Anchor note (rule R2a, second arm): D-03.2's `articles/` directory holds no
-GDPR copies; Art. 28(3)(b) and Art. 29 are quoted verbatim inside the
-sub-domain's merged file (GDPR↔NIS2 pair section), which satisfies R2a.
-[Post-modularization: the same quote now lives in
-`D-03.2/regs/GDPR.md` → "Verbatim regulatory basis (GDPR)".]*
 
 ### D-05.3 — Right to Erasure
 

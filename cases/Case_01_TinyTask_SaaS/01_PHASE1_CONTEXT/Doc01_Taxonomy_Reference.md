@@ -12,12 +12,6 @@ inputs: []
 outputs: [Doc02_INTAKE_FORM.md]
 ---
 
-> **Fase de Especificação 1 Reconciliation Note (2026-08-06)**
-> Rich Mode copy of legacy `02_CASES/Case_01_TinyTask_SaaS/00_COMMON/00_Taxonomy_Reference.md` (v1.0). Fase de Especificação 1 changes:
-> - **I-10 (status DRAFT → RECONCILED):** Fase de Especificação 1 = reconciliation milestone.
-> - **I-13 (02_Regulatory_Mapping_Master.md deprecation):** This document does not reference that file. No banner added.
-> - Body content unchanged from legacy. Fase de Especificação 2 will add L1/L2/L3/L4 corpus paths per sub-domain.
-
 # Security Control Domain Taxonomy Reference
 
 ## 1. DOCUMENT PURPOSE
@@ -214,6 +208,7 @@ Since TinyTask SaaS only has **GDPR** and **CRA** applicable, the sole authority
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
+| 3.0 | 2026-08-06 | Rich Mode reconciliation note consolidated into the changelog (was a body blockquote) |
 | 1.0 | 2026-04-01 | AEGIS Research Team | Initial release - TinyTask SaaS case |
 
 ---

@@ -17,9 +17,9 @@ status_history:
   - { date: 2026-08-06, status: ADJUSTED_GOALS, sprint: 4, by: 'Fase de Especificação 4 adjusted goals' }
   - { date: 2026-08-06, status: DEEP_ENRICHED, sprint: 5, by: 'Fase de Especificação 5 DEEP enrichment' }
   - { date: 2026-08-10, status: TECH_FREE_PHASE1, sprint: 7, by: 'Fase de Especificação 7 tech-free restructure' }
-  - { date: 2026-08-10, status: AO_MIGRATED, sprint: 8, by: 'Fase de Especificação 8 Executor (corr-009)' }
-  - { date: 2026-08-10, status: AO_CANONICAL_IDS, sprint: 9, by: 'Fase de Especificação 9 Executor (corr-015)' }
-  - { date: 2026-08-13, status: NIST_CONTROLS_LAYER_PILOT, sprint: 10, by: 'Fase de Especificação 10 Executor (corr-016)' }
+  - { date: 2026-08-10, status: AG_MIGRATED, sprint: 8, by: 'Fase de Especificação 8 Executor' }
+  - { date: 2026-08-10, status: AG_CANONICAL_IDS, sprint: 9, by: 'Fase de Especificação 9 Executor' }
+  - { date: 2026-08-13, status: NIST_CONTROLS_LAYER_PILOT, sprint: 10, by: 'Fase de Especificação 10 Executor' }
   - { date: 2026-08-14, status: NIST_CONTROLS_FULL_COVERAGE, sprint: 11, by: 'Fase de Especificação 11 Executor (§3 expansion)' }
 tech_free_restructure_date: 2026-08-10
 tech_free_sections: ['§2', '§3', '§4', '§5', '§7']
@@ -43,8 +43,6 @@ appendix_a_migrated_d01_cards:
   - 'AG-D-01.2-002'
   - 'AG-D-01.3-002'
   - 'AG-D-01.4-002'
-ag_id_migration_date: 2026-08-10
-corr_007_superseded_by: corr-008 (AG ID model replaces PG/SG ID model)
 former_pg_sg_count: 74
 former_pg_count: 37
 former_sg_count: 37
@@ -59,21 +57,19 @@ inputs: [Doc03_Company_Context_Assessment.md, Doc08_Regulatory_Applicability.md,
 outputs: [11_Rules_Catalog.md]
 related_documents: [07b_Proportionality_Profile.md, 04_Company_Context_Assessment.md, phase1_ontology.yaml, 02_PHASE2_RULES/10_Privacy_Security_Goals.md, 02_PHASE2_RULES/09_Strategic_Tensions_Report.md, ../../../../../00_METHODOLOGY/REFERENCE/proportionality_model.md]
 frozen: false
-supersedes: 02_PHASE2_RULES/10_Privacy_Security_Goals.md §3-§4 (legacy PG/SG — now elevated to Phase 1 in Rich Mode)
-corr-008 supersedes: corr-007 (PG/SG ID model → AG ID model)
+supersedes: 02_PHASE2_RULES/10_Privacy_Security_Goals.md §3-§4
 ---
 
 # Adjusted Goals per Sub-Domain (Rich Mode)
 
 > **Phase 1 adjusted goals — tech-free layer.** §1 preserves the corpus-frozen generic baseline; §2-§4 derive the adjusted goals for the 35 ACTIVE sub-domains along three columns (high-level, GDPR-driven, CRA-driven); §5 resolves the 4 strategic tensions; §6 carries the Track B decision trail.
 >
-> **Technology-neutral by construction.** §2-§5 name no vendor, product, or tool. Implementation choices live in Appendix A (DEPRECATED, preserved for Phase 2 traceability) and in the Phase 2/Phase 3 deliverables.
+> **Technology-neutral by construction.** §2-§5 name no vendor, product, or tool. Implementation choices live in Appendix A (preserved for Phase 2 traceability) and in the Phase 2/Phase 3 deliverables.
 >
 > **Companion documents:**
 > - Doc 07 `07_Structured_Compliance_Matrix.md` §3 — sub-domain coverage matrix (source of the 35 ACTIVE / 3 NOT_ADDRESSED split)
 > - Doc 07b `07b_Proportionality_Profile.md` — 5-attribute operationalisation per sub-domain
 > - Doc 04 `04_Company_Context_Assessment.md` §4 — Business Goals (BG-01..BG-05) → linked to objectives here
-> - Phase 2 legacy `02_PHASE2_RULES/10_Privacy_Security_Goals.md` §3-§4 — superseded per Fase de Especificação 4
 > - Phase 2 legacy `02_PHASE2_RULES/09_Strategic_Tensions_Report.md` — 4 tensions (T-001..T-004), resolved here with max-SLA routing
 
 ---
@@ -101,7 +97,6 @@ This document is the **Phase 1 adjusted-objectives layer** of the TinyTask SaaS 
 
 > HSO + Sub-SOs from `00_METHODOLOGY/PREPROCESSING_by_domain/domains/D-XX.Y/`. NOT modified by Track B per `proportionality_model.md §1`. This is the **frozen regulatory baseline** — the floor that the Adjusted Goals in §2/§3/§4 must reach or exceed.
 
-> **AG ID model (corr-008; AG = Adjusted Goals — the earlier 'AO' (Adjusted Objective) label is retired).** §3 and §4 below carry corpus SO-D-XX.Y.GDPR / SO-D-XX.Y.CRA references and inline `formerly_known_as` aliases (`formerly PG-D-XX.X-NNN` / `formerly SG-D-XX.X-NNN`) where the legacy corr-007 PG/SG IDs are referenced for traceability. Appendix A preserves the 74 detail cards with their original PG/SG headings for the Phase 2 � Phase 1 traceability link; the alias table at the top of Appendix A maps every PG/SG ID to its AG equivalent.
 
 | Sub-Domain | HSO (corpus, frozen) | GDPR Sub-SO | CRA Sub-SO | Corpus Path |
 |------------|----------------------|-------------|------------|-------------|
@@ -237,9 +232,9 @@ This document is the **Phase 1 adjusted-objectives layer** of the TinyTask SaaS 
 
 **Inline notes — critical IDs carried in the main flow:**
 
-- **`AG-D-01.3-001` (D-01.3 Key Management, formerly `PG-D-01.3-001`)** — Phantom goal. `CR-D-01.3-001` in the Phase 2 catalog references the legacy PG ID, but `OBL-D-01.3-001` carries no PG/SG in Phase 2 Doc 10; the goal exists only in this document's Appendix A. Carried as finding **F-01 / F-03** (LOW); resolution deferred to the human arbiter per AGENTS.md P7. The regulatory obligation itself is unaffected and is stated in the D-01.3 row above.
-- **`AG-D-09.1-001` (D-09.1 Information Security Policies, formerly `PG-D-09.1-001`)** — Dual-coverage with `AG-D-09.1-002` (formerly `SG-D-09.1-001`; finding F-02, documented as intentional; NI reconciled to 2.500 under F-10). The same policy architecture satisfies both GDPR Art. 24 and CRA Art. 31 — one artefact, two regulatory readings.
-- **`AG-D-09.2-001` (D-09.2 Impact & Risk Assessments, formerly `PG-D-09.2-001`)** — Dual-coverage with `AG-D-09.2-002` (formerly `SG-D-09.2-001`). Resolved by tension **T-M-001**: a single unified assessment produces both the data-protection impact assessment and the product cybersecurity risk assessment as dual outputs.
+- **`AG-D-01.3-001` (D-01.3 Key Management)** — Phantom goal. `CR-D-01.3-001` in the Phase 2 catalog references the legacy PG ID, but `OBL-D-01.3-001` carries no PG/SG in Phase 2 Doc 10; the goal exists only in this document's Appendix A. Carried as finding **F-01 / F-03** (LOW); resolution deferred to the human arbiter per AGENTS.md P7. The regulatory obligation itself is unaffected and is stated in the D-01.3 row above.
+- **`AG-D-09.1-001` (D-09.1 Information Security Policies)** — Dual-coverage with `AG-D-09.1-002` (finding F-02, documented as intentional; NI reconciled to 2.500 under F-10). The same policy architecture satisfies both GDPR Art. 24 and CRA Art. 31 — one artefact, two regulatory readings.
+- **`AG-D-09.2-001` (D-09.2 Impact & Risk Assessments)** — Dual-coverage with `AG-D-09.2-002` . Resolved by tension **T-M-001**: a single unified assessment produces both the data-protection impact assessment and the product cybersecurity risk assessment as dual outputs.
 
 ---
 
@@ -289,9 +284,9 @@ This document is the **Phase 1 adjusted-objectives layer** of the TinyTask SaaS 
 
 **Inline notes — critical IDs carried in the main flow:**
 
-- **`AG-D-04.3-002` (D-04.3 Regulatory Notification, formerly `SG-D-04.3-001`)** — Anchor goal for tension **T-001**. Highest-priority SG in the case and the only HIGH-risk profile: the internal notification workflow runs on the **max-SLA 24h** routing so that the shorter of the two regulatory deadlines governs the single internal clock. See §5 T-001.
-- **`AG-D-09.1-002` (D-09.1 Information Security Policies, formerly `SG-D-09.1-001`)** — Dual-coverage with `AG-D-09.1-001` (formerly `PG-D-09.1-001`); the same policy architecture discharges both. Technical documentation retention is **10 years or the support period, whichever is longer** (CRA Art. 13(13)). Normalised Intensity **2.500** is authoritative per the Fase de Especificação 4 reconciliation of finding F-10 (superseding the legacy 2.750).
-- **`AG-D-09.2-002` (D-09.2 Impact & Risk Assessments, formerly `SG-D-09.2-001`)** — Dual-coverage with `AG-D-09.2-001` (formerly `PG-D-09.2-001`); the same assessment framework serves both, per T-M-001.
+- **`AG-D-04.3-002` (D-04.3 Regulatory Notification)** — Anchor goal for tension **T-001**. Highest-priority SG in the case and the only HIGH-risk profile: the internal notification workflow runs on the **max-SLA 24h** routing so that the shorter of the two regulatory deadlines governs the single internal clock. See §5 T-001.
+- **`AG-D-09.1-002` (D-09.1 Information Security Policies)** — Dual-coverage with `AG-D-09.1-001` ; the same policy architecture discharges both. Technical documentation retention is **10 years or the support period, whichever is longer** (CRA Art. 13(13)). Normalised Intensity **2.500** is authoritative per the Fase de Especificação 4 reconciliation of finding F-10 (superseding the legacy 2.750).
+- **`AG-D-09.2-002` (D-09.2 Impact & Risk Assessments)** — Dual-coverage with `AG-D-09.2-001` ; the same assessment framework serves both, per T-M-001.
 
 ---
 
@@ -309,7 +304,7 @@ This document is the **Phase 1 adjusted-objectives layer** of the TinyTask SaaS 
 
 **Risk if unresolved.** HIGH — fines up to €10M or 2% of turnover under the longer-deadline regulation, plus market-surveillance non-conformity under the shorter. For an 8-person team the cumulative exposure could be existential.
 
-**Anchors:** §2/§3/§4 D-04.3 rows; `AG-D-04.3-002` (Appendix A; formerly `SG-D-04.3-001`).
+**Anchors:** §2/§3/§4 D-04.3 rows; `AG-D-04.3-002` (Appendix A).
 
 ### T-002 (D-06.1, D-06.3) — Vendor-management scope
 
@@ -321,7 +316,7 @@ This document is the **Phase 1 adjusted-objectives layer** of the TinyTask SaaS 
 
 **Risk if unresolved.** MEDIUM — processor non-compliance plus a supply-chain gap. Mitigation cost is bounded by the reuse: the marginal effort of the second scope is small once the first is documented.
 
-**Anchors:** §2/§3/§4 D-06.1 and D-06.3 rows; `AG-D-06.1-001`, `AG-D-06.1-002`, `AG-D-06.3-001`, `AG-D-06.3-002` (Appendix A; formerly `PG-D-06.1-001`, `SG-D-06.1-001`, `PG-D-06.3-001`, `SG-D-06.3-001`).
+**Anchors:** §2/§3/§4 D-06.1 and D-06.3 rows; `AG-D-06.1-001`, `AG-D-06.1-002`, `AG-D-06.3-001`, `AG-D-06.3-002` (Appendix A).
 
 ### T-003 (D-09.4, D-09.1) — Documentation overlap
 
@@ -333,7 +328,7 @@ This document is the **Phase 1 adjusted-objectives layer** of the TinyTask SaaS 
 
 **Risk if unresolved.** MEDIUM — audit findings under both regulations. Mitigation is procedural (template unification), not infrastructural, so it does not compete for engineering capacity.
 
-**Anchors:** §2/§3/§4 D-09.1 and D-09.4 rows; `AG-D-09.1-001`, `AG-D-09.1-002`, `AG-D-09.4-001`, `AG-D-09.4-002` (Appendix A; formerly `PG-D-09.1-001`, `SG-D-09.1-001`, `PG-D-09.4-001`, `SG-D-09.4-001`).
+**Anchors:** §2/§3/§4 D-09.1 and D-09.4 rows; `AG-D-09.1-001`, `AG-D-09.1-002`, `AG-D-09.4-001`, `AG-D-09.4-002` (Appendix A).
 
 ### T-004 (D-08.2) — Data-protection versus product-security competence
 
@@ -345,7 +340,7 @@ This document is the **Phase 1 adjusted-objectives layer** of the TinyTask SaaS 
 
 **Risk if unresolved.** LOW — the competent-personnel requirement is procedural. Documenting competence discharges the obligation; no headcount change is implied at current scale.
 
-**Anchors:** §2/§3/§4 D-08.2 row; `AG-D-08.2-001`, `AG-D-08.2-002` (Appendix A; formerly `PG-D-08.2-001`, `SG-D-08.2-001`).
+**Anchors:** §2/§3/§4 D-08.2 row; `AG-D-08.2-001`, `AG-D-08.2-002` (Appendix A).
 
 ---
 
@@ -1431,12 +1426,12 @@ _Applicable regulations: GDPR, CRA_
 
 ## §8 Cross-References
 
-- **Appendix A**: All 74 detail cards (previously §2a/§3a, originally PG/SG, now alias-mapped to AG IDs per corr-008) preserved here for traceability with Phase 2 — `11_Rules_Catalog.md` and `12_Rules_Catalog.xlsx` reference these IDs in their "Related Goals" column. The alias table at the top of Appendix A maps every legacy PG/SG ID to its corr-008 AG equivalent.
-- **Doc 04 §4 BG-01..BG-05**: Business Goals → Adjusted Goals traceability. Each BG cell carries the AG ID directly plus the §2 / §3 / §4 column reference (corr-015 update): BG-01 → §1 + §2 + §3; BG-02 → §2 + §4; BG-03 → §3 D-05.3 (`AG-D-05.3-001`) + D-05.4 (`AG-D-05.4-001`); BG-04 → §3 D-02.1 (`AG-D-02.1-001`) + §4 D-02.1 (`AG-D-02.1-002`) + D-07.x; BG-05 → §3 D-06.1 (`AG-D-06.1-001`) + §4 D-06.1 (`AG-D-06.1-002`) + §5 T-002. Both AG IDs and Appendix A.A.0 alias are listed.
+- **Appendix A**: All 74 detail cards preserved verbatim for Phase 2 traceability — `11_Rules_Catalog.md` and `12_Rules_Catalog.xlsx` reference these IDs in their "Related Goals" column. The §A.0 alias table maps every legacy PG/SG ID to its AG equivalent.
+- **Doc 04 §4 BG-01..BG-05**: Business Goals → Adjusted Goals traceability. Each BG cell carries the AG ID directly plus the §2 / §3 / §4 column reference: BG-01 → §1 + §2 + §3; BG-02 → §2 + §4; BG-03 → §3 D-05.3 (`AG-D-05.3-001`) + D-05.4 (`AG-D-05.4-001`); BG-04 → §3 D-02.1 (`AG-D-02.1-001`) + §4 D-02.1 (`AG-D-02.1-002`) + D-07.x; BG-05 → §3 D-06.1 (`AG-D-06.1-001`) + §4 D-06.1 (`AG-D-06.1-002`) + §5 T-002. Both AG IDs and Appendix A.A.0 alias are listed.
 - **Doc 07 Sub-Domain Coverage Matrix (§3)**: Source of the 35 ACTIVE / 3 NOT_ADDRESSED split used in §2-§4.
 - **Doc 07b Proportionality Profile**: 5-attribute per-sub-domain operationalisation (`satisfaction_pattern`, `evidence_depth`, `verification_method`, `ownership`, `example_controls`).
 - **Doc 05b Ambiguity Register**: 417 ambiguity cards (R1/R2/R3 variant readings) — informs disambiguation of the generic objectives in §1.
-- **Phase 2 `10_Privacy_Security_Goals.md` (legacy)**: Original PG/SG formulation. Fase de Especificação 4 elevated PG/SG to Phase 1 Rich; legacy remains as Phase 2 reference but superseded (corr-008 now replaces PG/SG with AG IDs).
+- **Phase 2 `10_Privacy_Security_Goals.md`**: original PG/SG formulation — resolved by this document (§3-§4).
 - **Phase 2 `09_Strategic_Tensions_Report.md` (legacy)**: Original tensions list (T-001..T-004) — same IDs preserved here, now resolved with max-SLA routing in §5.
 - **`00_METHODOLOGY/REFERENCE/proportionality_model.md` §1, §5, §6**: Invariant + decision table + tier attribute definitions (cited throughout).
 - **`00_METHODOLOGY/PREPROCESSING_by_domain/domains/D-XX.Y/`**: Corpus source for the HSO + Sub-SOs in §1 and for the restated goals in §2-§4.
@@ -1446,18 +1441,17 @@ _Applicable regulations: GDPR, CRA_
 ## §9 Validation
 
 - **35 ACTIVE sub-domains × 3 columns** (high-level + GDPR-driven + CRA-driven) = **105 cells** in §2-§4, of which **8 are N/A** (7 GDPR: D-02.2, D-02.3, D-06.2, D-07.2, D-07.3, D-07.4, D-09.3; 1 CRA: D-05.4) → **97 populated adjusted goals**.
-- **AG IDs in §2/§3/§4 (corr-015 / v5.0)**: 35 entries in §2 (slot 001) + 28 in §3 (slot 001) + 34 in §4 (slot 002) = **97 AG entries**, with **8 carrying `—` for N/A cells** (7 GDPR + 1 CRA). Distinct AG IDs used in main tables: **35 slot 001 (HL/GDPR-driven, one per ACTIVE sub) + 34 slot 002 (CRA-driven) = 69 distinct IDs**.
-- **74 AG IDs preserved in Appendix A** (corr-008 migration: 37 PG-derived → 37 AG-D-XX.X-001 + 37 SG-derived → 37 AG-D-XX.X-002). All 47 PG/SG legacy IDs referenced by Phase 2 deliverables resolve within this file via the Appendix A.A.0 alias table (74 rows × 5 columns: legacy → AG → regulation → sub-domain → notes).
-- **§A.0 alias table enrichment (corr-015)**: 2 new columns (`Regulation`, `Sub-domain`) added in v5.0 — Phase 2 callers can now resolve a legacy PG/SG ID to its regulation and sub-domain without cross-referencing §2-§4.
-- **6 critical IDs documented in the main flow** with inline notes (now AG IDs with `formerly` aliases): `AG-D-01.3-001` (formerly `PG-D-01.3-001`), `AG-D-04.3-002` (formerly `SG-D-04.3-001`), `AG-D-09.1-001`/`AG-D-09.1-002`, `AG-D-09.2-001`/`AG-D-09.2-002` (§3 and §4).
+- **AG IDs in §2/§3/§4**: 35 entries in §2 (slot 001) + 28 in §3 (slot 001) + 34 in §4 (slot 002) = **97 AG entries**, with **8 carrying `—` for N/A cells** (7 GDPR + 1 CRA). Distinct AG IDs used in main tables: **35 slot 001 (HL/GDPR-driven, one per ACTIVE sub) + 34 slot 002 (CRA-driven) = 69 distinct IDs**.
+- **74 AG IDs preserved in Appendix A**: every legacy PG/SG ID referenced by Phase 2 deliverables resolves via the §A.0 alias table.
+- **§A.0 alias table columns**: legacy ID → AG ID → regulation → sub-domain → notes.
 - **§2 / §3 / §4 / §5 are technology-free** — no vendor, product, or tool named (verified by blocklist scan and by inspection).
 - **§1 is preserved verbatim** and contains 2 corpus-frozen quasi-technical terms (`CI/CD` in the D-07.3 HSO, `SBOM` in the D-06.2 HSO), retained per the `proportionality_model.md §1` invariant.
 - **Track B decision table: 37 rows** in §6 (35 ACTIVE + D-02.4 + D-06.4). D-08.3 is NOT_ADDRESSED and was never tiered.
 - **Distribution (37 tiered rows): 31 LIGHTWEIGHT + 5 MINIMAL + 1 DEFERRED = 37** (matches Doc 07b §3 + §4 verbatim). Restricted to the 35 ACTIVE rows of §2-§4: **31 LIGHTWEIGHT + 4 MINIMAL**, all MUST.
 - **4 tensions resolved** with max-SLA routing in §5 (T-001..T-004, IDs preserved from legacy Phase 2 + `phase1_ontology.yaml`).
 - Floor rule preserved: every MUST ≥ MINIMAL per `proportionality_model.md §5.3`.
-- Lints: see `validation/SPRINT4_REPORT.md` — RICH folder is lint-safe per lints scope (legacy `01_PHASE1_CONTEXT/` + `00_COMMON/` only). **v4.0 (corr-009)**: Phase 2 lints `lint_10_pso_rules` and `lint_11_rules_catalog` accept legacy PG/SG/CR/BPR IDs with DEPRECATED warnings during the transition window; new PO/SO/RULE patterns are accepted as PASS.
-- **v5.0 (corr-015)**: `validate_aegis_ids.py --quiet` passes — all 74 distinct AG IDs in this file cross-reference validly. Phase 1/2/3 lint gates remain PASS (Document Structure fails pre-existing pattern on §0/§10 vs "1./2." numbered headings; not introduced by corr-016).
+- Lints: see `validation/SPRINT4_REPORT.md` — legacy PG/SG/CR/BPR IDs lint as DEPRECATED warnings; AG IDs lint as PASS.
+- `validate_aegis_ids.py --quiet` passes — all 74 distinct AG IDs cross-reference validly. Document Structure reports a pre-existing heading-pattern failure on §0/§10, unrelated to the goals tables.
 
 ---
 
@@ -1469,9 +1463,9 @@ _Applicable regulations: GDPR, CRA_
 | 1.0 | 2026-08-06 | Fase de Especificação 4 Executor | Initial release — 74 adjusted goals (37 PG + 37 SG) + 4 tensions resolved + 37-row Track B decision trail |
 | 2.0 | 2026-08-06 | Fase de Especificação 5 Executor | Deep enrichment — 74 detail cards (12 fields each: Description, Scope, Out of scope, Source Article, Corpus path, NIST CSF Anchors, Verification Criteria, Verification Method, Owner, Status, Dependencies, Risk, Affected Stakeholders, Implementation Posture, Implementation Priority). 4 tensions expanded to multi-paragraph root cause analysis + source citations + resolution options + implementation + verification. **NO Effort/Cost/Timeline fields added** per Fase de Especificação 5 scope. Tables enriched with "See full details" anchor column. **Superseded by v3.0** — the tech-rich §2/§2a/§3/§3a of this version are preserved verbatim in Appendix A. |
 | 3.0 | 2026-08-10 | Executor | Phase 1 tech-free restructure. New §2/§3/§4 (high-level + GDPR-driven + CRA-driven, 35 rows × 3 columns, hybrid format) derived from the regulatory corpus. 4 tensions rewritten without technology references (§5). 74 PG/SG detail cards preserved in Appendix A (DEPRECATED). 6 critical IDs (`PG-D-01.3-001`, `SG-D-04.3-001`, `PG`/`SG-D-09.1-001`, `PG`/`SG-D-09.2-001`) retained in the main flow with inline notes. Scope corrected to 35 ACTIVE sub-domains per Doc 07 §3 (D-02.4 / D-06.4 / D-08.3 NOT_ADDRESSED). |
-| 4.0 | 2026-08-10 | Fase de Especificação 8 Executor (corr-009) | **AG ID migration (corr-008 supersedes corr-007).** 74 PG/SG IDs → 74 AG IDs (`PG-D-XX.X-001` → `AG-D-XX.X-001`; `SG-D-XX.X-001` → `AG-D-XX.X-002`). §1 docstring updated. 6 critical IDs in §3/§4 inline notes carry `formerly_known_as` aliases. §5 tension anchors updated. §8 cross-references to Doc 04 BG-03/BG-04 carry AG aliases. §9 validation rewritten for AG counts. Appendix A header note + DEPRECATED alias table (74 rows) added; the 74 detail cards preserved verbatim. Phase 2 lints (`lint_10_pso_rules`, `lint_11_rules_catalog`) updated to accept legacy PG/SG/CR/BPR IDs as DEPRECATED warnings during the transition window. Tech-free invariant preserved. |
-| 5.0 | 2026-08-10 | Fase de Especificação 9 Executor (corr-015) | **Canonical AG IDs in §2/§3/§4 tables (corr-015).** §2 HL (35 rows) and §3 GDPR-driven (35 rows, 7 N/A) now carry an `AG ID` column with `AG-D-XX.X-001` (slot 001, regulation-agnostic HL or GDPR-driven); §4 CRA-driven (35 rows, 1 N/A) carries `AG-D-XX.X-002` (slot 002, CRA-driven). Total: 35 + 28 + 34 = 97 AG entries in the main tables (69 distinct IDs in §2/§3/§4; 74 total in document including Appendix A.NOT_ADDRESSED subs D-02.4 / D-06.4). Appendix A.A.0 alias table expanded with `Regulation` and `Sub-domain` columns (74 rows × 5 columns, self-contained lookup). §1 + §8 + §9 rewritten for v5.0 AG ID counts (note: section numbers shifted in v6.0 with §7 now NIST Controls Mapping). Doc 04 §4 BG-01..BG-05 cells updated to reference §2/§3/§4 by AG ID. Frontmatter: `version: 5.0`, `id_format: AG-D-XX.X-NNN`, `ao_canonical_ids_count: 35`. `validate_aegis_ids.py --quiet` PASS; Phase 1/2/3 lint gates PASS. |
-| 6.0 | 2026-08-13 | Fase de Especificação 10 Executor (corr-016) | **NIST Controls Layer pilot (D-01.1).** New §7 NIST Controls Mapping added before Appendix A. CONTROLS/ restructured by framework→function (NIST_CSF/<function>/, NIST_PF/<function>-P/, NIST_AI_RMF/<function>/) + by_subdomain/. §7..§10 renumbered to §8..§11. D-01 detail cards (8) extracted from Appendix A to `_deprecated/07c_Appendix_A_D01_OLD.md`; Appendix A now retains D-02..D-10 (66 cards, LEGACY). Frontmatter: `version: 6.0`, `tech_free_sections` adds §7, `appendix_a_status: PARTIAL_LEGACY`, `appendix_a_cards_count: 66`, `appendix_a_migrated_to_deprecated: 8`. Pilot scope: 10 controls (5 CSF + 4 PF + 1 AI RMF) for D-01.1 only. |
+| 4.0 | 2026-08-10 | Fase de Especificação 8 Executor | **AG ID migration.** 74 PG/SG IDs → 74 AG IDs (`PG-D-XX.X-001` → `AG-D-XX.X-001`; `SG-D-XX.X-001` → `AG-D-XX.X-002`). §1 docstring updated. 6 critical IDs in §3/§4 inline notes carry `formerly_known_as` aliases. §5 tension anchors updated. §8 cross-references to Doc 04 BG-03/BG-04 carry AG aliases. §9 validation rewritten for AG counts. Appendix A header note + DEPRECATED alias table (74 rows) added; the 74 detail cards preserved verbatim. Phase 2 lints (`lint_10_pso_rules`, `lint_11_rules_catalog`) updated to accept legacy PG/SG/CR/BPR IDs as DEPRECATED warnings during the transition window. Tech-free invariant preserved. |
+| 5.0 | 2026-08-10 | Fase de Especificação 9 Executor | **Canonical AG IDs in §2/§3/§4 tables.** §2 HL (35 rows) and §3 GDPR-driven (35 rows, 7 N/A) now carry an `AG ID` column with `AG-D-XX.X-001` (slot 001, regulation-agnostic HL or GDPR-driven); §4 CRA-driven (35 rows, 1 N/A) carries `AG-D-XX.X-002` (slot 002, CRA-driven). Total: 35 + 28 + 34 = 97 AG entries in the main tables (69 distinct IDs in §2/§3/§4; 74 total in document including Appendix A.NOT_ADDRESSED subs D-02.4 / D-06.4). Appendix A.A.0 alias table expanded with `Regulation` and `Sub-domain` columns (74 rows × 5 columns, self-contained lookup). §1 + §8 + §9 rewritten for v5.0 AG ID counts (note: section numbers shifted in v6.0 with §7 now NIST Controls Mapping). Doc 04 §4 BG-01..BG-05 cells updated to reference §2/§3/§4 by AG ID. Frontmatter: `version: 5.0`, `id_format: AG-D-XX.X-NNN`, `ao_canonical_ids_count: 35`. `validate_aegis_ids.py --quiet` PASS; Phase 1/2/3 lint gates PASS. |
+| 6.0 | 2026-08-13 | Fase de Especificação 10 Executor | **NIST Controls Layer pilot (D-01.1).** New §7 NIST Controls Mapping added before Appendix A. CONTROLS/ restructured by framework→function (NIST_CSF/<function>/, NIST_PF/<function>-P/, NIST_AI_RMF/<function>/) + by_subdomain/. §7..§10 renumbered to §8..§11. D-01 detail cards (8) extracted from Appendix A to `_deprecated/07c_Appendix_A_D01_OLD.md`; Appendix A now retains D-02..D-10 (66 cards, LEGACY). Frontmatter: `version: 6.0`, `tech_free_sections` adds §7, `appendix_a_status: PARTIAL_LEGACY`, `appendix_a_cards_count: 66`, `appendix_a_migrated_to_deprecated: 8`. Pilot scope: 10 controls (5 CSF + 4 PF + 1 AI RMF) for D-01.1 only. |
 | 7.0 | 2026-08-14 | Executor (§3 NIST Controls expansion) | **§7 full coverage expansion.** 35 ACTIVE sub-domains now mapped to NIST CSF 2.0 + NIST PF 1.0 (+ NIST AI RMF where applicable). §7 grew from 1 pilot subsection (D-01.1, 10 controls) to 35 subsections (~300 CSF + ~200 PF controls total). 34 new `by_subdomain/<D-XX.X>.json` files created (D-01.2 through D-10.3, excluding D-02.4/D-06.4/D-08.3 NOT_ADDRESSED). Frontmatter: `version: 7.0`, `nist_controls_full_coverage: true`, `active_subdomains_mapped: 35`. |
 
 ---

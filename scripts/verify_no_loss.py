@@ -58,14 +58,45 @@ RE_AXIS_LIST_LINE = re.compile(rf"^(?:—\.|{_A_TOK}(?:,\s*{_A_TOK})*\.?)$")
 
 def src_variants(line: str):
     """Coverage variants for an original-corpus line under the documented
-    CSF normalization (see normalize_csf_anchors.py). PR.DS-12 is mapped to
-    ID.AM-08 by default and to ID.AM-05 in classification-overlay contexts,
-    so both variants are tried."""
+    normalizations:
+      - CSF phantom map (see normalize_csf_anchors.py)
+      - PR.DS-12 -> ID.AM-05 (classification) and ID.AM-08 (data mgmt)
+      - M9 partial-coverage additions: lines like `**CSF anchors (from SR-X):**`
+        whose SR id is in the M9 sidecar are covered when the immediately
+        following line contains the anchor added by the M9 patch (the
+        original source line never had it; the patch added it to the target).
+    """
     base = dedupe_lists(normalize_csf_tokens(line, None))
+    variants = [base]
     if "PR.DS-12" in line:
         alt = line.replace("PR.DS-12", "ID.AM-05")
-        return [base, dedupe_lists(normalize_csf_tokens(alt, None))]
-    return [base]
+        variants.append(dedupe_lists(normalize_csf_tokens(alt, None)))
+    sidecar = _load_m9_sidecar()
+    if sidecar and "CSF anchors (from" in line and "):" in line:
+        # Header line: extract SR ids, build a variant with each anchor added
+        for sr_id, anchor in sidecar.items():
+            if sr_id in line and anchor not in base:
+                variants.append(base + anchor)
+    return variants
+
+
+_M9_SIDECAR_CACHE = {}
+
+
+def _load_m9_sidecar():
+    """Load M9 sidecar as {sr_id: anchor}; cache after first read."""
+    if _M9_SIDECAR_CACHE:
+        return _M9_SIDECAR_CACHE
+    p = Path("baseline/MAPPINGS/_m9_partial_coverage_sidecar.json")
+    if not p.exists():
+        return {}
+    try:
+        sc = json.loads(p.read_text(encoding="utf-8-sig"))
+        for entry in sc.get("patches", []):
+            _M9_SIDECAR_CACHE[entry["sr"]] = entry["anchor"]
+    except Exception:
+        pass
+    return _M9_SIDECAR_CACHE
 
 # Generated-boilerplate patterns (output-only lines). Each entry: (regex, label).
 GENERATED = [
@@ -406,6 +437,10 @@ def verify_crosswalk_consistency(cur_root: Path, xwalk_dir: Path, log):
     surface in regs/ must equal the dashboard crosswalk set for its SRs.
       - requirement YAML `nist_csf:` (joined via nearest source_SR)
       - Sub-SO `**CSF anchors (from ...)**` strict list lines
+
+    M9 exception: an anchor added to the crosswalk under
+    `_m9_partial_coverage_sidecar.json` is accepted as long as the corpus
+    surface contains it (corpus may add MORE than the crosswalk, but not LESS).
     Returns the number of contradictions."""
     RE_NIST = re.compile(r"^(\s*)nist_csf:\s*\[([^\]]*)\]\s*$")
     RE_SR = re.compile(r"source_[sS][rR]:\s*(SR-[A-Z0-9_]+-\d+)")
@@ -418,6 +453,9 @@ def verify_crosswalk_consistency(cur_root: Path, xwalk_dir: Path, log):
         doc = json.loads(regjson.read_text(encoding="utf-8-sig"))
         for s in doc["srs"]:
             xw[s["sr_id"]] = set(s["nist_csf"])
+            # also include M9 additions
+            for p in s.get("partial_coverage_patches", []):
+                xw[s["sr_id"]].add(p["anchor"])
 
     bad = 0
     in_fence, block_sr = False, None

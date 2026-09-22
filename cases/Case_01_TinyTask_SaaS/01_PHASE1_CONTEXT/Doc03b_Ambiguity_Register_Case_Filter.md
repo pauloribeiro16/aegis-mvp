@@ -33,19 +33,6 @@ f1_pilot_fold_date: 2026-09-14
 
 # Ambiguity Register (Rich Mode)
 
-> **⚠️ F1-pilot C1 fold — 2026-09-14.** A interpretação regulatória de ambiguidade vive agora no canon metodológico
-> [`00_METHODOLOGY/AMBIGUITY_REGISTRY/`](../../../../00_METHODOLOGY/AMBIGUITY_REGISTRY/README.md)
-> — 49 cláusulas deduplicadas, 5 regulamentos, com variantes, resoluções canónicas e proveniência por caso.
-> Este documento é uma **instância per-caso** (CITE-BASELINE) e mantém-se na íntegra para liveness
-> do `phase1_graph.json`, dos parsers e do dashboard. **Se esta empresa adopta uma leitura diferente
-> da canónica para uma cláusula específica, documente-a aqui como variante justificada** — não substitua
-> a canónica silenciosamente. Ver `phase1_rich_extension.md v1.1` para a reclassificação metodológica
-> (JUSTIFIED-EXTENSION → CITES-BASELINE) e `CHANGE_LOG_CENTRAL.md` 2026-09-14.
-
-> Filtered corpus ambiguity cards (Berry lens) — only GDPR + CRA applicable sub-domains for Case_01.
-> Source: `00_METHODOLOGY/PREPROCESSING_by_domain/domains/D-XX.Y/D-XX.Y.json:ambiguity_cards[]`
-> Methodology: per-card filter on `regulation ∈ {GDPR, CRA}`; per-SD inclusion if sub-domain appears in `04a_Architecture_DataInventory.md` Compliance Mapping table (37 active sub-domains, D-08.3 inactive).
-
 ## §1 Summary Statistics
 
 | Metric | Value |
@@ -1082,8 +1069,6 @@ R2 is the literal reading. S2.
 **Risk if not resolved:** HIGH — CRA Art. 7(2)(a) classification drives conformity assessment procedure (default vs important/critical)
 
 ## §4 Recommended Disambiguation Order (top 5 by case impact)
-
-> Ranking heuristic: severity (S3 first) × cross-subdomain propagation × TinyTask-specific risk exposure (Art. 33 notification, Art. 32 security, Art. 30 records).
 
 | Rank | Card | Article | Why critical for TinyTask |
 |------|------|---------|---------------------------|

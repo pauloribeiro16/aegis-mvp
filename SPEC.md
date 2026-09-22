@@ -141,7 +141,13 @@ derivation; P5 renders and validates.
   2. Keep only the Sub-SOs / requirements of regulations confirmed in P2
      (the modules already enforce this per regulation).
   3. Restate each as a company-proportional goal (rule R3) with ID
-     `AG-D-XX.Y-NNN` (rule R4).
+     `AG-D-XX.Y-NNN` (rule R4), classified by satisfaction pattern
+     (`achieve | cease | maintain | avoid | optimize`), by protected property
+     (`C | I | A | privacy-right | accountability`), linked to its parent HSO
+     (`SO-D-XX.Y.HL`), and carrying a one-line adjustment record — what was
+     restated against the corpus HSO, never silently relaxed (ADR-003 D1).
+     Goals carry no owner/verification fields: verification belongs to the
+     Phase 2 objectives that refine them (ADR-003 D3).
   4. Anchor it: cite regulation article(s) that **exist as copies** in the
      sub-domain's `articles/` directory (rule R2a) and optionally 1–2 control
      IDs from `CONTROLS/` referentials that clearly match (rule R2b). The
@@ -173,8 +179,13 @@ One Markdown file with light AEGIS-style frontmatter and six sections. Skeleton:
 §2  Applicable Regulations      (table: Regulation | Verdict | Rationale)
 §3  Applicable Sub-domain Subset (table: Sub-domain | Name | Trigger rationale)
 §4  Adjusted Goals               (one table per sub-domain:
-                                 | ID | Adjusted goal | Regulatory source | Control anchor |
-                                 IDs: AG-D-XX.Y-NNN)
+                                 | ID | Adjusted goal | Pattern | Property |
+                                 Parent HSO | Regulatory source | Control anchor |
+                                 Adjustment |
+                                 IDs: AG-D-XX.Y-NNN; pattern =
+                                 achieve/cease/maintain/avoid/optimize;
+                                 property = C/I/A/privacy-right/accountability;
+                                 parent = SO-D-XX.Y.HL — ADR-003 D1)
 §4.1 Control Anchor Mapping     (table: ID | Regulation | CSF 2.0 | NIST PF 1.1 |
                                  NIST AI RMF | Source — one row per (goal,
                                  confirmed regulation) pair; values copied from the
@@ -252,6 +263,9 @@ A run is **valid** when all of the following hold:
 7. No company statement in §1/§2/§3 lacks an input trace or an `ASSUMPTION` mark.
 8. Frontmatter fields complete; `status` set to `ACTIVE` only after this checklist
    passes.
+9. Every §4 goal carries a valid pattern (`achieve/cease/maintain/avoid/optimize`),
+   a valid property (`C/I/A/privacy-right/accountability`), its parent HSO id
+   (`SO-D-XX.Y.HL`), and a non-empty Adjustment record (ADR-003 D1).
 
 ## 9. Absorption roadmap (increments)
 

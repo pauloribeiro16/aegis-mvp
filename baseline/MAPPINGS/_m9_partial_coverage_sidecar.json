@@ -1,0 +1,39 @@
+{
+  "policy": "Phase-1 evidence-based addition (M9); M6 dashboard-wins is the reverse policy (removal). See _partial_coverage_patch.md.",
+  "milestone": "M9",
+  "applied_on": "2026-09-22",
+  "patches": [
+    {
+      "reg": "DORA",
+      "sr": "SR-DORA-004",
+      "anchor": "PR.PS-02",
+      "subdomain": "D-07.1",
+      "rationale": "M7 audit partial-coverage: D-07.1 · DORA · req 7.1.4 (network & infrastructure management) — Article basis cites 'patch'; PR.PS-02 covers software maintenance commensurate with risk, operationalising Art. 9(4)(f) patch-and-update policies.",
+      "old_nist_csf": [
+        "ID.RA-01",
+        "ID.RA-03"
+      ],
+      "new_nist_csf": [
+        "ID.RA-01",
+        "ID.RA-03",
+        "PR.PS-02"
+      ]
+    },
+    {
+      "reg": "DORA",
+      "sr": "SR-DORA-013",
+      "anchor": "RS.MA-01",
+      "subdomain": "D-04.2",
+      "rationale": "M7 audit partial-coverage: D-04.2 · DORA · req 4.2.4 (BC arrangements dispatch) — Article basis cites 'incident'; RS.MA-01 covers incident-management-plan execution with third-party coordination (Art. 11(2) + Art. 19(1) + Art. 19(3)).",
+      "old_nist_csf": [
+        "PR.IR-03",
+        "RC.RP-01"
+      ],
+      "new_nist_csf": [
+        "PR.IR-03",
+        "RC.RP-01",
+        "RS.MA-01"
+      ]
+    }
+  ]
+}

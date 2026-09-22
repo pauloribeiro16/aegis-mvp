@@ -288,7 +288,8 @@
       ],
       "nist_csf": [
         "ID.RA-01",
-        "ID.RA-03"
+        "ID.RA-03",
+        "PR.PS-02"
       ],
       "nist_pf": [],
       "nist_airmf": [],
@@ -334,7 +335,16 @@
         "regulatory_rationale": "Art. 7(2) sentence 1 requires financial entities, on a continuous\nbasis, to identify all sources of ICT risk, in particular the risk\nexposure to and from other financial entities, and to assess cyber\nthreats and ICT vulnerabilities relevant to their ICT supported\nbusiness functions, information assets and ICT assets. Art. 8(2)\nreinforces the requirement to identify all sources of ICT risk.\nThese two articles form the temporal and methodological chassis of\nthe ICT risk-management framework mandated by Art. 6(8)(a):\nidentification is continuous rather than periodic, and the\ninter-entity risk-exposure qualifier (cf. Recital 55 on\ninterconnectedness) propagates the obligation across the financial\nsector's value chain (NIS 2 Art. 21(2)(c) imposes a parallel\nbaseline-risk identification regime on NSIEs outside DORA, and\nCRA Art. 13(5) on vulnerability handling supplies a downstream\nfact-feeding layer for product vendors feeding DORA entities).\n[OJ-corrective note (v0.2 audit, material): Art. 7(2) → Art. 8(2) misattribution (P0 disagreement cross-cutting). Art. 8(2) sentence 1 (Identification function): financial entities shall, on a regular basis, identify all ICT-supported business functions and the ICT assets that support those functions, including those of third-party providers, and identify the dependencies between those ICT assets. The audit notes that the source article_ref points to Art. 7(2) but the OJ text is in Art. 8(2).]\n",
         "security_rationale": "The obligation in Art. 7(2)/Art. 8(2) for continuous identification\nof ICT risk sources is operationalised in NIST CSF 2.0 through\n**ID.RA-01 (Vulnerabilities in assets are identified, validated,\nand recorded)** and **ID.RA-03 (Threats, both internal and\nexternal, are identified, recorded, and prioritized)**. ID.RA-01\nsupplies the asset-vulnerability layer — continuous vulnerability\nscanning, CVE-feed ingestion, authenticated vulnerability\nvalidation, and validated vulnerability records tied to the\nentity's asset inventory, ensuring risk identification is\nevidence-based rather than self-declared. ID.RA-03 supplies the\nthreat-intelligence layer — internal-source threat catalogues\n(privileged-activity anomalies, insider-risk indicators) and\nexternal-source feeds (ISAC partnerships, ENISA threat landscape,\nsectoral TI providers) — with priority scoring aligned to entity\nrisk appetite. The OJ qualifier `in particular the risk exposure\nto and from other financial entities` requires the ID.RA-03\nthreat-prioritisation model to weight interconnectedness, shared\nCTPP exposure, and shared settlement-infrastructure dependency\nexplicitly, not as an after-thought. The accountability link\nunder Art. 5(2): the ID.RA-01 vulnerability register and ID.RA-03\nthreat catalogue, with documented update cadence, validation\nevidence, and inter-entity-exposure annotations, constitute the\ndocumented evidence trail the management body can present to\ncompetent authorities demonstrating that ICT risk identification\nis genuinely continuous and inter-entity-aware rather than\nperimeter-confined.\n",
         "ambiguity_notes": "Source clause DORA-C06 carries S2 on `continuous basis` vs.\n`regular basis` (POLY — the two terms coexist in the same article\nwithout differentiation; reading chosen: `continuous` = always-on\nmonitoring, `regular` = scheduled review cadence), and S2 on\n`cyber threats AND ICT vulnerabilities` (POLY — distinct concepts;\nreading chosen: R1 cumulative, both assessed). `all sources of\nICT risk` (SCOPE-Q S2) — R1 all known / R2 all discoverable / R3\nuniversal quantifier; R3 literal OJ reading (per Berry §5.2.1).\n`relevant to` (VAG S2) — R1 directly impacting / R2 any plausible\nlink; R1 dominant. A contrasting reading of `relevant to` could\ntake a wider scope (any plausible link) given the OJ qualifier\n`information assets and ICT assets` is broad, but supervisory\npractice in EBA Guidelines on ICT and security risk management\n§92 treats `relevant to` as delimiting to assets whose compromise\nwould materially affect ICT-supported business functions. An\nopen question remains how to operationalise inter-entity\nrisk-identification in practice: bilateral information-sharing\narrangements under Art. 45 ESAs cooperation framework are one\nrecognised mechanism but do not yet have OJ-delegated form.\n"
-      }
+      },
+      "partial_coverage_patches": [
+        {
+          "anchor": "PR.PS-02",
+          "subdomain": "D-07.1",
+          "rationale": "M7 audit partial-coverage: D-07.1 · DORA · req 7.1.4 (network & infrastructure management) — Article basis cites 'patch'; PR.PS-02 covers software maintenance commensurate with risk, operationalising Art. 9(4)(f) patch-and-update policies.",
+          "applied_on": "2026-09-22",
+          "milestone": "M9"
+        }
+      ]
     },
     {
       "sr_id": "SR-DORA-005",
@@ -872,8 +882,9 @@
         }
       ],
       "nist_csf": [
+        "PR.IR-03",
         "RC.RP-01",
-        "PR.IR-03"
+        "RS.MA-01"
       ],
       "nist_pf": [],
       "nist_airmf": [],
@@ -915,7 +926,16 @@
         "regulatory_rationale": "Art. 11(1) requires financial entities to put in place a\ncomprehensive ICT business continuity policy, which may be\nadopted as a dedicated specific policy forming an integral part\nof the overall business continuity policy of the financial\nentity. The provision sits in Chapter II Section II alongside\nArt. 12 backup and recovery obligations (NIS 2 Art. 21(2)(c)\non business-continuity imposes a parallel obligation on NSIEs\noutside DORA, with CRA Art. 13(8) on secure-by-default and\nsecure-update flows feeding the upstream incident-prevention\nside). The OJ `may be adopted as a dedicated specific policy`\nqualifier explicitly recognises either form-factor (standalone\ndocument or embedded within overall BC policy).\n",
         "security_rationale": "The obligation in Art. 11(1) for a comprehensive ICT business\ncontinuity policy is operationalised in NIST CSF 2.0 through\n**RC.RP-01 (The recovery portion of the incident response plan\nis executed once the incident response plan has been performed\nto acceptable criteria)** and **PR.IR-03 (Mechanisms are put in\nplace to achieve resilience requirements in normal and adverse\nsituations)**. RC.RP-01 anchors the recovery-execution dimension:\nthe BC policy must specify the criteria under which recovery\ntransitions from incident-response to recovery-mode, ensuring\ncontinuity of critical functions with documented decision\npoints and recovery-time-objectives. PR.IR-03 supplies the\nbroader resilience-mechanism substrate that the BC policy\noperationalises — redundant systems, geographic dispersion,\nfailover orchestration, alternative-site arrangements, and\ncrisis-mode operations. The OJ `integral part` qualifier (BC\npolicy embedded within overall BC) is delivered through\nPR.IR-03's cross-policy consistency requirements and RC.RP-01's\ncoordination-with-overall-BC framing, preventing trigger-\ndivergence between ICT-BC and overall-BC activation. The\naccountability link under Art. 5(2): the BC policy document,\nrecovery-execution criteria, and resilience-mechanism inventory\nproduce the documented evidence trail the management body can\npresent to competent authorities demonstrating that ICT\ncontinuity is structurally embedded in the entity's overall\nbusiness-continuity framework rather than a free-standing\ndocument with unaligned triggers.\n",
         "ambiguity_notes": "`comprehensive` (VAG S2) — R1 broad scope / R2 detailed\ncoverage / R3 both; R3 literal. `may be adopted as a dedicated\nspecific policy` (POLY S2) — R1 standalone document / R2\nembedded within overall BC policy / R3 either; R3 literal\n(the OJ explicitly permits either form). `integral part`\n(VAG S2) — R1 structurally embedded / R2 logically linked; R1\nliteral. A contrasting reading of `integral part` would allow\nlogical linking without structural embedding, but the\nsupervisory expectation (EBA Guidelines on ICT and security\nrisk management §210) requires structural integration to\nensure trigger-coordination. The literal OJ construction\nmakes `integral part` structurally protective. An open\nquestion is whether Art. 11(1) `integral part` extends to the\nthird-party risk dimension under Art. 28–30 (i.e. whether\nthe BC policy must cover CTPP-failure scenarios) or is\nrestricted to in-entity ICT.\n"
-      }
+      },
+      "partial_coverage_patches": [
+        {
+          "anchor": "RS.MA-01",
+          "subdomain": "D-04.2",
+          "rationale": "M7 audit partial-coverage: D-04.2 · DORA · req 4.2.4 (BC arrangements dispatch) — Article basis cites 'incident'; RS.MA-01 covers incident-management-plan execution with third-party coordination (Art. 11(2) + Art. 19(1) + Art. 19(3)).",
+          "applied_on": "2026-09-22",
+          "milestone": "M9"
+        }
+      ]
     },
     {
       "sr_id": "SR-DORA-014",

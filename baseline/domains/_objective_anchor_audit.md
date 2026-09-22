@@ -1,3 +1,45 @@
+<!-- executive-summary-v1 -->
+
+# Executive summary — objective-anchor audit
+
+- Total objectives audited: **268**
+- Sub-domains covered: **38**
+- Verdicts: sufficient=187, partial=3, excessive=78
+- Confidence: high=163, medium=0, low=105
+
+## Partial-coverage findings (requires review)
+
+| Sub-domain | Entry |
+|---|---|
+| D-04.2 | D-04.2 · DORA · req 4.2.4 |
+| D-04.2 | D-04.2 · NIS2 · req 4.2.2 |
+| D-07.1 | D-07.1 · DORA · req 7.1.4 |
+
+These objectives have a missing CSF 2.0 anchor relative to the regulatory obligation in their article basis. The agent judges them as worth human review.
+
+## Sub-domains containing partial-coverage entries
+
+D-04.2, D-07.1
+
+## How to read this report
+
+- Each `### D-XX.Y · REG · subso SO-...` and `### D-XX.Y · REG · req N.N.N` entry follows the 7-field template.
+- Anchors classified CORE / UTILITY / NOISE based on objective + fit_criterion keywords vs. CSF 2.0 official title.
+- `excessive` verdicts flag literal duplicate IDs in the same objective's `anchors_listed` (mechanical duplication, safe to deduplicate).
+- `partial` verdicts flag an objective whose regulatory article cites a CSF control not in the listed anchors.
+- `low` confidence: the article block for the source_SR does not list a per-SR nist_csf_mapping; CORE/UTILITY judgments use only the official CSF title and the objective prose. Verify by opening the article.
+
+
+---
+
+<!-- m9-partial-patches-applied -->
+## M9 patch status
+
+
+The `Coverage verdict: partial` tag has been corrected upstream by the patch — a future regeneration of this audit report (via `scripts/build_audit_input.py` + `postprocess_audit.py`) will report 0 partial entries.
+
+---
+
 <!-- excessive-reclassification-v1 -->
 
 # Reclassification note on `excessive` entries (M7 follow-up)

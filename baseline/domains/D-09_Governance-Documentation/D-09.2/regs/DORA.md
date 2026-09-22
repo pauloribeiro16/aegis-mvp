@@ -30,7 +30,7 @@ phase_1A_role: 1_of_5
 **Objective.** Financial entities shall, on a continuous basis, **identify all sources of ICT risk** including risk exposure to and from other financial entities, and **assess cyber threats and ICT vulnerabilities relevant to ICT supported business functions, information assets and ICT assets** (Art. 7(2) sentence 1 DORA); risk scenarios are reviewed on a regular basis, and at least yearly (Art. 7(2) sentence 2), under a three-lines-of-defence model (Art. 6(4) DORA).
 
 **CSF anchors (from `SR-DORA-028` + `SR-DORA-004` + `SR-DORA-005` v0.3 security_rationale):**
-GV.RR-02, GV.RM-02, ID.RA-01, ID.RA-03, ID.RA-05 (primary), ID.IM-04, GV.OV-02.
+GV.RR-02, GV.RM-02, ID.RA-01, ID.RA-03, ID.RA-05, ID.IM-04, GV.OV-02, PR.PS-02.
 
 ---
 

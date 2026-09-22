@@ -41,13 +41,27 @@ No fact may appear here that is not in the input (rule R6).>
 
 ### D-XX.Y — <canonical name>
 
-| ID | Adjusted goal | Regulatory source | Control anchor |
-|---|---|---|---|
-| AG-D-XX.Y-001 | <company-proportional restatement> | <REG Art. N> | <referential ID> or — |
+| ID | Adjusted goal | Pattern | Property | Parent HSO | Regulatory source | Control anchor | Adjustment |
+|---|---|---|---|---|---|---|---|
+| AG-D-XX.Y-001 | <company-proportional restatement> | achieve/cease/maintain/avoid/optimize | C/I/A/privacy-right/accountability | SO-D-XX.Y.HL | <REG Art. N> | <referential ID> or — | <what was restated vs the corpus HSO> |
 
 <!-- IDs sequential per sub-domain (rule R4). Sources must exist as article
      copies in the sub-domain's articles/ dir (rule R2a); control anchors must
-     resolve in CONTROLS/ (rule R2b). No invented anchors. -->
+     resolve in CONTROLS/ (rule R2b). No invented anchors.
+     Pattern (KAOS satisfaction pattern, ADR-003 D1): achieve = target state
+     eventually reached; cease = bad condition eventually terminated;
+     maintain = good condition kept continuously true; avoid = bad condition
+     never occurs; optimize = criterion maximised/minimised.
+     Property (Avizienis taxonomy + privacy axis): C = confidentiality,
+     I = integrity, A = availability, privacy-right = data-subject right,
+     accountability = answerability duty.
+     Parent HSO = the sub-domain's frozen objective id from
+     D-XX.Y/objective.md (SO-D-XX.Y.HL).
+     Adjustment (rule R3, auditable): one line on what was restated against
+     the corpus HSO / Sub-SO — scope narrowed, mechanism named, tier adapted.
+     Goals carry no owner/verification fields: verification belongs to the
+     Phase 2 objectives that refine them (ADR-003 D1/D3). -->
+
 
 ### §4.1 Control Anchor Mapping (applicable regulations only — rule R8)
 

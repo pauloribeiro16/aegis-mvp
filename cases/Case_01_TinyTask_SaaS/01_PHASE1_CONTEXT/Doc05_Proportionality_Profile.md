@@ -217,12 +217,6 @@ Every obligation in Doc 08 (`08_Obligation_Derivation.md`), every rule in Doc 11
 
 ## 11. Corpus Cross-Check
 
-> Spot-check of 10 representative rows from §4 against the corpus at `00_METHODOLOGY/PREPROCESSING_by_domain/domains/D-XX.Y/`.
->
-> **Important:** Doc 07b's `verification_method` column carries the **Track B tier-specific attribute value** (per `proportionality_model.md §6`), NOT the corpus's `requirements.*.yaml.verification_method`. The corpus's `verification_method` is a **regulatory method** (uniformly `TEST` at high-level aggregation) that defines how the fit_criterion is verified; the Track B value defines how the company's chosen control is verified within the chosen tier. The two are complementary dimensions.
->
-> The cross-check verifies: (a) 07b's `verification_method` matches the Track B tier definition, AND (b) 07b's `example_controls` aligns with the corpus `considerations` block (which describes the regulatory convergence pattern).
-
 ### 11.1 Cross-Check Table
 
 | Sub-Domain | Tier (07b) | Doc 07b verification_method | Track B tier definition (proportionality_model.md §6) | Match (Track B)? | Corpus verification_method | Doc 07b example_controls | Corpus considerations (excerpt) | Match (considerations)? |
@@ -277,7 +271,6 @@ For each spot-checked row, the cross-check performed these checks:
 
 ## §12 Track B Decision Table
 
-> Deterministic decision trail per `proportionality_model.md §5.1` + `§5.2` + `§5.3` — the (S, I, P) → Tier mapping that drives §4. S fixed at MICRO (Doc 04 §2). I from Doc 05 §5 `scope_overlap`. P from Doc 07 §3 priority column.
 
 | Sub-Domain | S | I | P | Tier | Rationale |
 |-----------|---|---|---|------|-----------|
@@ -326,8 +319,6 @@ For each spot-checked row, the cross-check performed these checks:
 ---
 
 ## §13 Tensions Cross-Reference
-
-> The 4 strategic tensions, elevated from Phase 2 `09_Strategic_Tensions_Report.md`. Full resolution table with max-SLA routing is in `07c_Adjusted_Goals.md §5`. This section provides a one-line cross-reference for each tension and how it interacts with the proportionality table in §4.
 
 | Tension ID | Sub-Domain(s) in §4 | Type | Severity | Resolution (max-SLA routing) | Cross-ref |
 |------------|---------------------|------|----------|------------------------------|-----------|

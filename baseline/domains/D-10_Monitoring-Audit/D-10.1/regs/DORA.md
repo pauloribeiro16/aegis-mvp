@@ -30,7 +30,7 @@ phase_1A_role: 4_of_5
 **Objective.** Financial entities **continuously monitor and control the security and functioning of ICT systems and tools** and **minimise the impact of ICT risk on ICT systems** (Art. 8(1) DORA per SR-DORA-030; OJ-literal locus Art. 9(1)); **anomalous activities are promptly detected** through multi-layered controls, alert thresholds, incident response triggers, and identification of single points of failure (Art. 10(1)+(2) DORA), with sources of ICT risk **identified on a continuous basis** and risk scenarios reviewed on a regular basis, at least yearly (Art. 7(2) DORA).
 
 **CSF anchors (from `SR-DORA-030` + `SR-DORA-011` + `SR-DORA-012` + `SR-DORA-004` v0.3 security_rationale):**
-DE.CM-01 (primary), DE.CM-09, PR.PS-04, DE.AE-02, RS.MA-01, ID.RA-01, ID.RA-03.
+DE.CM-01, DE.CM-09, PR.PS-04, DE.AE-02, RS.MA-01, ID.RA-01, ID.RA-03, PR.PS-02.
 
 ---
 

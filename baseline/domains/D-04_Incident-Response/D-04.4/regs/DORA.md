@@ -93,7 +93,7 @@ data at standard cadence.)*
   verification_method: TEST
   dependencies: [4.2.4 (recovery depends on prior BC-arrangements containment discipline from 4.2 leg), 4.1.4 (recovery depends on prior multi-layer detection + SPOF identification feeding recovery-event classification)]
 
-  nist_csf: [RC.RP-01, PR.IR-03]
+  nist_csf: [RC.RP-01, PR.IR-03, RS.MA-01]
 
   applicable_if:
     regs: [DORA]

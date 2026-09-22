@@ -62,16 +62,6 @@ supersedes: 02_PHASE2_RULES/10_Privacy_Security_Goals.md §3-§4
 
 # Adjusted Goals per Sub-Domain (Rich Mode)
 
-> **Phase 1 adjusted goals — tech-free layer.** §1 preserves the corpus-frozen generic baseline; §2-§4 derive the adjusted goals for the 35 ACTIVE sub-domains along three columns (high-level, GDPR-driven, CRA-driven); §5 resolves the 4 strategic tensions; §6 carries the Track B decision trail.
->
-> **Technology-neutral by construction.** §2-§5 name no vendor, product, or tool. Implementation choices live in Appendix A (preserved for Phase 2 traceability) and in the Phase 2/Phase 3 deliverables.
->
-> **Companion documents:**
-> - Doc 07 `07_Structured_Compliance_Matrix.md` §3 — sub-domain coverage matrix (source of the 35 ACTIVE / 3 NOT_ADDRESSED split)
-> - Doc 07b `07b_Proportionality_Profile.md` — 5-attribute operationalisation per sub-domain
-> - Doc 04 `04_Company_Context_Assessment.md` §4 — Business Goals (BG-01..BG-05) → linked to objectives here
-> - Phase 2 legacy `02_PHASE2_RULES/09_Strategic_Tensions_Report.md` — 4 tensions (T-001..T-004), resolved here with max-SLA routing
-
 ---
 
 ## §0 Document Purpose
@@ -95,7 +85,6 @@ This document is the **Phase 1 adjusted-objectives layer** of the TinyTask SaaS 
 
 ## §1 Regulatory Floor (corpus, by reference)
 
-> The floor for every goal in §2-§4 is the corpus-frozen baseline of each sub-domain — `baseline/domains/<D-XX_Dir>/<D-XX.Y>/objective.md` + `regs/<REG>.md` (HSO `SO-D-XX.Y.HL` and the per-regulation Sub-SOs). The baseline is consumed by reference (rule R9) and is not duplicated here.
 
 ## §2 High-Level Adjusted Goals per Sub-Domain
 
@@ -246,8 +235,6 @@ This document is the **Phase 1 adjusted-objectives layer** of the TinyTask SaaS 
 
 ## §5 Tensions Resolved (4 tensions)
 
-> Per Doc 05 §7 Strategic Implications + `phase1_ontology.yaml` tensions + Phase 2 `09_Strategic_Tensions_Report.md` legacy. IDs T-001..T-004 preserved. Resolutions are stated as workflow and documentation dispositions; no vendor, product, or tool is named. The tech-rich resolution detail from v2.0 is preserved in Appendix A's detail cards.
-
 ### T-001 (D-04.3) — Notification timing difference
 
 **Type:** timing | **Severity:** HIGH
@@ -300,9 +287,7 @@ This document is the **Phase 1 adjusted-objectives layer** of the TinyTask SaaS 
 
 ## §6 Track B Decision Trail (37 rows)
 
-> Deterministic tier assignment per `proportionality_model.md §5.1` (MUST) + `§5.2` (SHOULD/COULD drop-one-tier + FTE≤1.0 → DEFERRED). S fixed at MICRO (Doc 04 §2). I from Doc 05 §5 `scope_overlap`. P from Doc 07 §3.
->
-> The table carries **37 rows**: the 35 ACTIVE sub-domains of §2-§4 plus D-02.4 and D-06.4, which the corpus tiered before Doc 07 §3 classified them NOT_ADDRESSED. D-08.3 (also NOT_ADDRESSED) was never tiered and has no row.
+
 
 | Sub-Domain | S | I | P | Tier | Rationale |
 |-----------|---|---|---|------|-----------|
@@ -347,10 +332,6 @@ This document is the **Phase 1 adjusted-objectives layer** of the TinyTask SaaS 
 ---
 
 ## §7 NIST Controls Mapping
-
-> **Full coverage scope.** This section maps all 35 ACTIVE sub-domains to NIST CSF 2.0, NIST PF 1.0, and (where applicable) NIST AI RMF controls. Per control, the full content lives at `00_METHODOLOGY/PREPROCESSING_by_domain/CONTROLS/<framework>/<function>/<control_id>.json`. The by-subdomain aggregated mapping (separated by framework) lives at `00_METHODOLOGY/PREPROCESSING_by_domain/CONTROLS/by_subdomain/<D-XX.X>.json`.
-
-> **Three NOT_ADDRESSED sub-domains (D-02.4, D-06.4, D-08.3)** are excluded per Doc 07 §3 — they have no regulatory authority for this case and therefore no §7 entry. They remain in §6 Track B decision trail where the corpus assigned them a tier.
 
 ### §7.1 D-01.1 — Data at Rest Encryption
 

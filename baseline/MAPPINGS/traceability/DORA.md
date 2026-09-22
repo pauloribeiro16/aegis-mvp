@@ -30,7 +30,7 @@
 
 | Requisito | SR | Artigos | Cláusulas | Objetivos (HSO -> SO-REG -> Sub-SO) | CSF 2.0 | PF 1.1 | AI RMF |
 |---|---|---|---|---|---|---|---|
-| 2.1.4 — Continuous ICT-risk identification + at-least-yearly scenario review (hard anchor) | `SR-DORA-004` | Art. 7(2) — `on a continuous basis, identify all sources of ICT risk`; Art. 8(2) — `identify all sources of ICT risk … and assess cyber threats and ICT vulnerabilities relevant to their ICT supported business functions` | DORA-C06, DORA-C08 | SO-D-02.1.HL -> SO-DORA-003 -> SO-D-02.1.DORA | ID.RA-01, ID.RA-03 | — | — |
+| 2.1.4 — Continuous ICT-risk identification + at-least-yearly scenario review (hard anchor) | `SR-DORA-004` | Art. 7(2) — `on a continuous basis, identify all sources of ICT risk`; Art. 8(2) — `identify all sources of ICT risk … and assess cyber threats and ICT vulnerabilities relevant to their ICT supported business functions` | DORA-C06, DORA-C08 | SO-D-02.1.HL -> SO-DORA-003 -> SO-D-02.1.DORA | ID.RA-01, ID.RA-03, PR.PS-02 | — | — |
 
 ## D-02.2 — Patch Management & Updates
 
@@ -82,7 +82,7 @@
 
 | Requisito | SR | Artigos | Cláusulas | Objetivos (HSO -> SO-REG -> Sub-SO) | CSF 2.0 | PF 1.1 | AI RMF |
 |---|---|---|---|---|---|---|---|
-| 4.2.4 — Financial-entity BC arrangements: dedicated, appropriate and documented response/recovery plans + backup policies + restoration procedures; independent internal audit for non-microenterprises | `SR-DORA-013` | Art. 11(1) — `comprehensive ICT business continuity policy, which may be adopted as a dedicated specific policy, forming an integral part of the overall business continuity policy of the financial entity` | DORA-C22 | SO-D-04.2.HL -> SO-DORA-010 -> SO-D-04.2.DORA | RC.RP-01, PR.IR-03 | — | — |
+| 4.2.4 — Financial-entity BC arrangements: dedicated, appropriate and documented response/recovery plans + backup policies + restoration procedures; independent internal audit for non-microenterprises | `SR-DORA-013` | Art. 11(1) — `comprehensive ICT business continuity policy, which may be adopted as a dedicated specific policy, forming an integral part of the overall business continuity policy of the financial entity` | DORA-C22 | SO-D-04.2.HL -> SO-DORA-010 -> SO-D-04.2.DORA | PR.IR-03, RC.RP-01, RS.MA-01 | — | — |
 
 ## D-04.3 — Incident Notification & Reporting
 
@@ -94,7 +94,7 @@
 
 | Requisito | SR | Artigos | Cláusulas | Objetivos (HSO -> SO-REG -> Sub-SO) | CSF 2.0 | PF 1.1 | AI RMF |
 |---|---|---|---|---|---|---|---|
-| 4.4.4 — Comprehensive ICT BC policy with dedicated appropriate documented arrangements + response/recovery plans + backup-scoping on criticality/confidentiality + restoration procedures; OJ-corrected Art. 11(2)(a)–(e) BC-policy objectives preserved verbatim | `SR-DORA-013` | Art. 11(1) — `comprehensive ICT business continuity policy, which may be adopted as a dedicated specific policy, forming an integral part of the overall business continuity policy of the financial entity` | DORA-C22 | SO-D-04.4.HL -> SO-DORA-010 -> SO-D-04.4.DORA | RC.RP-01, PR.IR-03 | — | — |
+| 4.4.4 — Comprehensive ICT BC policy with dedicated appropriate documented arrangements + response/recovery plans + backup-scoping on criticality/confidentiality + restoration procedures; OJ-corrected Art. 11(2)(a)–(e) BC-policy objectives preserved verbatim | `SR-DORA-013` | Art. 11(1) — `comprehensive ICT business continuity policy, which may be adopted as a dedicated specific policy, forming an integral part of the overall business continuity policy of the financial entity` | DORA-C22 | SO-D-04.4.HL -> SO-DORA-010 -> SO-D-04.4.DORA | RC.RP-01, PR.IR-03, RS.MA-01 | — | — |
 
 ## D-05.1 — Data Minimisation
 
@@ -143,7 +143,7 @@
 
 | Requisito | SR | Artigos | Cláusulas | Objetivos (HSO -> SO-REG -> Sub-SO) | CSF 2.0 | PF 1.1 | AI RMF |
 |---|---|---|---|---|---|---|---|
-| 7.1.4 — Sound network and infrastructure management structure with appropriate techniques/methods/protocols, patch and update policies, and secure-by-design operationalised via change-management six-step + testing programme (DORA partial — no OJ dedicated by-design mandate) | `SR-DORA-004` | Art. 7(2) — `on a continuous basis, identify all sources of ICT risk`; Art. 8(2) — `identify all sources of ICT risk … and assess cyber threats and ICT vulnerabilities relevant to their ICT supported business functions` | DORA-C06, DORA-C08 | SO-D-07.1.HL -> SO-DORA-004 -> SO-D-07.1.DORA | ID.RA-01, ID.RA-03 | — | — |
+| 7.1.4 — Sound network and infrastructure management structure with appropriate techniques/methods/protocols, patch and update policies, and secure-by-design operationalised via change-management six-step + testing programme (DORA partial — no OJ dedicated by-design mandate) | `SR-DORA-004` | Art. 7(2) — `on a continuous basis, identify all sources of ICT risk`; Art. 8(2) — `identify all sources of ICT risk … and assess cyber threats and ICT vulnerabilities relevant to their ICT supported business functions` | DORA-C06, DORA-C08 | SO-D-07.1.HL -> SO-DORA-004 -> SO-D-07.1.DORA | ID.RA-01, ID.RA-03, PR.PS-02 | — | — |
 
 ## D-07.2 — Secure Coding Practices
 

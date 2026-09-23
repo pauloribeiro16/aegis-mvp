@@ -2,9 +2,9 @@
 
 ## Executive Summary
 
-This deliverable establishes the formal **System Use Cases** for the **TinyTask SaaS** platform, translating the operational requirements and Product Use Cases (*PUC*) elicited in `Doc01` into rigorous, literature-grounded behavioral specifications. Grounded in foundational requirements engineering literature—specifically Alistair Cockburn's *Writing Effective Use Cases*, Craig Larman's *Applying UML and Patterns*, and the GPTools specification standard (`E1.2 – GPTools_AnáliseRequisitos_CasosDeUso_V4.0`)—this document specifies each elementary user goal at **Level 1 ("Sea Level")**.
+This deliverable establishes the formal **System Use Cases** for the **TinyTask SaaS** platform, translating the operational requirements and Product Use Cases (*PUC*) elicited in `Doc01` into rigorous, literature-grounded behavioral specifications and visual UML models. Grounded in foundational requirements engineering literature—specifically Alistair Cockburn's *Writing Effective Use Cases*, Craig Larman's *Applying UML and Patterns*, the OMG UML 2.5 standard, and the GPTools specification standard (`E1.2 – GPTools_AnáliseRequisitos_CasosDeUso_V4.0`)—this document specifies each elementary user goal at **Level 1 ("Sea Level")**.
 
-Rather than relying on generic or superficial summaries, each use case is detailed using the literature-standard fully dressed format: specifying primary and secondary actors, stakeholders and interests, preconditions, initiating triggers, black-box main success scenarios, branching extensions and alternative flows, success guarantees, and minimal guarantees. The resulting specification maintains strict technology neutrality, providing a verified functional baseline that directly supports downstream AEGIS Phase 3 security and privacy synthesis.
+To provide complete operational clarity, each macro capability is modeled with a **UML Use Case Diagram**, and every individual Level-1 use case is formalized with a **Fully Dressed Specification Card** paired with an interactive **UML Sequence Diagram** rendered natively in Markdown via Mermaid. The resulting specification maintains strict technology neutrality, providing a verified functional baseline that directly supports downstream AEGIS Phase 3 security and privacy synthesis.
 
 ---
 
@@ -14,8 +14,9 @@ Rather than relying on generic or superficial summaries, each use case is detail
 - [2. System Requirements Approach & Literature Foundations](#2-system-requirements-approach--literature-foundations)
   - [2.1 The Volere Triangular Decomposition: Business Events to System Use Cases](#21-the-volere-triangular-decomposition-business-events-to-system-use-cases)
   - [2.2 Use Case Architecture (Cockburn, Larman, Wiegers)](#22-use-case-architecture-cockburn-larman-wiegers)
-  - [2.3 Anatomy of a Literature-Grounded Use Case](#23-anatomy-of-a-literature-grounded-use-case)
-  - [2.4 Refinement Boundary: Cockburn's Sea Level (Level 1) vs. Micro-UI Anti-Patterns](#24-refinement-boundary-cockburns-sea-level-level-1-vs-micro-ui-anti-patterns)
+  - [2.3 Visual UML Modeling in Markdown (OMG UML 2.5 & Mermaid Standard)](#23-visual-uml-modeling-in-markdown-omg-uml-25--mermaid-standard)
+  - [2.4 Anatomy of a Literature-Grounded Use Case](#24-anatomy-of-a-literature-grounded-use-case)
+  - [2.5 Refinement Boundary: Cockburn's Sea Level (Level 1) vs. Micro-UI Anti-Patterns](#25-refinement-boundary-cockburns-sea-level-level-1-vs-micro-ui-anti-patterns)
 - [3. Requirements Analysis](#3-requirements-analysis)
   - [3.1 Work Context Model](#31-work-context-model)
   - [3.2 Traceability Matrix: Requirements (Doc01) to System Use Cases (Doc02)](#32-traceability-matrix-requirements-doc01-to-system-use-cases-doc02)
@@ -63,7 +64,7 @@ In any mature software engineering lifecycle, requirements elicitation and use c
 1. In `Doc01`, we identified business problems, established customer expectations, consolidated atomic functional requirements (prioritized via MoSCoW), and defined the Product Use Cases (*PUC*) boundary.
 2. In `Doc02`, we take those requirements and PUCs and model the dynamic behavioral interactions between actors and the system, specifying how business goals are fulfilled in practice.
 
-To prevent the common trap of superficial or generic descriptions, this document adopts the best practices established in requirements engineering literature, formalizing each use case into an operational contract that details normal execution, edge cases, error conditions, and verifiable guarantees.
+To prevent the common trap of superficial or generic descriptions, this document adopts the best practices established in requirements engineering literature, formalizing each use case into an operational contract that details normal execution, edge cases, error conditions, and verifiable guarantees, accompanied by visual UML diagrams rendered directly in Markdown.
 
 ---
 
@@ -86,7 +87,13 @@ Key literature principles enforced throughout this specification include:
 3. **Dual Scenario Coverage (Cockburn, 2000):** A use case is incomplete if it only documents the "happy path". Literature mandates documenting both the **Main Success Scenario** (the typical, ideal progression) and **Extensions** (alternative flows, branch conditions, validation failures, and exception handling).
 4. **Verifiable Guarantees (Cockburn, 2000):** Every use case explicitly declares its **Success Guarantees** (what must be true if the goal is achieved) and **Minimal Guarantees** (what the system guarantees even if the goal fails, protecting system and data integrity).
 
-### 2.3 Anatomy of a Literature-Grounded Use Case
+### 2.3 Visual UML Modeling in Markdown (OMG UML 2.5 & Mermaid Standard)
+
+In standard software engineering, text specifications and visual diagrams complement each other. To make the specification natively readable, version-controllable, and visually rich without relying on static external images, this document leverages **Mermaid.js**, the open industry standard for rendering UML directly inside Markdown:
+1. **Macro UML Use Case Diagrams (`flowchart LR`):** Positioned at each capability cluster (`{U.C. 1}` to `{U.C. 8}`), depicting the primary and supporting actors linked to oval use case goals in standard UML notation.
+2. **Detailed UML Sequence Diagrams (`sequenceDiagram`):** Positioned within each Level-1 use case (`{U.C. 1.1}` to `{U.C. 8.2}`), detailing the chronological message exchanges, system validation points, and alternative branching logic (`alt` / `else` / `opt` frames) between the actor, the system boundary, and external supporting services.
+
+### 2.4 Anatomy of a Literature-Grounded Use Case
 
 Each Level-1 System Use Case in this document follows the formal, fully dressed specification card:
 
@@ -104,13 +111,14 @@ Each Level-1 System Use Case in this document follows the formal, fully dressed 
 | **Extensions** | Branching conditions, business rule variations, and exception flows (e.g., `2a`, `3a`) indicating recovery paths. |
 | **Success Guarantees** | The postconditions that must hold when the use case completes successfully. |
 | **Minimal Guarantees** | The system state guaranteed even if the use case terminates prematurely (rollback, security preservation). |
+| **UML Sequence Diagram** | Visual behavioral interaction diagram illustrating actors, system boundary, happy path, and alternative frames. |
 
-### 2.4 Refinement Boundary: Cockburn's Sea Level (Level 1) vs. Micro-UI Anti-Patterns
+### 2.5 Refinement Boundary: Cockburn's Sea Level (Level 1) vs. Micro-UI Anti-Patterns
 
 A central lesson in Requirements Engineering is avoiding the **Clam-Level Decomposition Trap** (Anti-Pattern 3 in `phase3_functional_spec_guidelines.md`):
 - **Sea Level (User Goal — Level 1):** The interaction satisfies a complete, discrete business task in a single sitting that delivers measurable value to the user (e.g., *Create and assign tasks*, *Invite workspace members*, *Manage deliverable attachments*).
 - **Sub-function / Clam Level (Level 2+):** Micro-interactions such as clicking a specific button, focusing an input field, or validating a single string format.
-- **Rule:** Refinement strictly anchors at **Level 1 (`{U.C.n.m}`)**. There are **zero leaf nodes (`{U.C.n.m.k}`)** and **zero procedural UI scripts** in the baseline. Step sequences in the Main Success Scenario represent *business-level actor intent and system response*, not UI layout instructions.
+- **Rule:** Refinement strictly anchors at **Level 1 (`{U.C.n.m}`)**. There are **zero leaf nodes (`{U.C.n.m.k}`)** and **zero procedural UI scripts** in the baseline. Step sequences in the Main Success Scenario and Sequence Diagrams represent *business-level actor intent and system response*, not UI layout instructions.
 
 ---
 
@@ -178,6 +186,23 @@ The platform defines four human user roles and two external supporting system ac
 
 ### {U.C. 1} Manage User Accounts and Authentication
 
+#### UML Use Case Diagram: Capability Cluster {U.C. 1}
+
+```mermaid
+flowchart LR
+    Visitor["Unauthenticated Visitor / Registered User"]
+    Email["Notification / Email Service"]
+    
+    subgraph UC1_Cluster["{U.C. 1} Manage User Accounts and Authentication"]
+        UC1_1(["{U.C. 1.1} Register and authenticate user accounts"])
+        UC1_2(["{U.C. 1.2} Manage user profile and account preferences"])
+    end
+
+    Visitor --> UC1_1
+    Visitor --> UC1_2
+    UC1_1 -.-> Email
+```
+
 #### {U.C. 1.1} Register and authenticate user accounts
 - **Traceability:** Requirement `R1.1` | Product Use Case `PUC 1.1`
 - **Primary Actor:** Unauthenticated Visitor / Registered User
@@ -212,6 +237,45 @@ The platform defines four human user roles and two external supporting system ac
 - **Success Guarantees (Postconditions):** An authenticated session is issued to the user; the user has access to authorized workspace rosters.
 - **Minimal Guarantees:** Failed attempts leave database credentials unmodified; no partial account records remain in an ambiguous state.
 
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Actor as Visitor / User
+    participant System as TinyTask SaaS Platform
+    participant Email as Notification / Email Service
+
+    Note over Actor,System: Registration Flow
+    Actor->>System: Submit registration data (name, email, credentials)
+    alt Email already registered or invalid input
+        System-->>Actor: Validation error / prompt login (1a, 1b)
+    else Valid registration
+        System->>Email: Dispatch email activation link (PUC 1.1)
+        Email-->>Actor: Deliver activation link
+        Actor->>System: Access activation link
+        alt Activation link expired
+            System-->>Actor: Prompt link expired / offer regeneration (3a)
+        else Valid activation link
+            System-->>Actor: Confirm account activated
+        end
+    end
+
+    Note over Actor,System: Authentication Flow
+    Actor->>System: Submit credentials (email, password)
+    alt Invalid credentials
+        System-->>Actor: Authentication failure notice (5b)
+    else Valid credentials
+        System-->>Actor: Issue active session & return authorized workspace dashboard
+    end
+
+    opt Password Recovery Flow (5a)
+        Actor->>System: Submit registered email for reset
+        System->>Email: Dispatch single-use reset link
+        Email-->>Actor: Deliver reset link
+        Actor->>System: Access link & submit new password
+        System-->>Actor: Confirm password updated & return to login
+    end
+```
+
 ---
 
 #### {U.C. 1.2} Manage user profile and account preferences
@@ -237,9 +301,51 @@ The platform defines four human user roles and two external supporting system ac
 - **Success Guarantees:** Updated personal details and notification preferences take effect across all workspace views immediately.
 - **Minimal Guarantees:** In case of validation failure, existing profile data remains unchanged.
 
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Authenticated User
+    participant System as TinyTask SaaS Platform
+
+    User->>System: Navigate to profile settings
+    System-->>User: Return current profile data & preferences
+    User->>System: Submit updated profile data (display name, avatar, digest preferences)
+    alt Avatar file exceeds 2 MB
+        System-->>User: Reject file: size limit exceeded (4a)
+    else Mandatory field empty
+        System-->>User: Validation error: name required (4b)
+    else Inputs valid
+        System->>System: Persist updated profile & notification settings
+        System-->>User: Confirm profile update successful
+    end
+```
+
 ---
 
 ### {U.C. 2} Manage Workspaces and Teams
+
+#### UML Use Case Diagram: Capability Cluster {U.C. 2}
+
+```mermaid
+flowchart LR
+    Owner["Workspace Owner"]
+    Admin["Workspace Admin"]
+    Email["Notification / Email Service"]
+
+    subgraph UC2_Cluster["{U.C. 2} Manage Workspaces and Teams"]
+        UC2_1(["{U.C. 2.1} Create and configure workspace"])
+        UC2_2(["{U.C. 2.2} Invite workspace members and manage access roles"])
+        UC2_3(["{U.C. 2.3} Monitor workspace activity and operational metrics"])
+    end
+
+    Owner --> UC2_1
+    Owner --> UC2_2
+    Owner --> UC2_3
+    Admin --> UC2_1
+    Admin --> UC2_2
+    Admin --> UC2_3
+    UC2_2 -.-> Email
+```
 
 #### {U.C. 2.1} Create and configure workspace
 - **Traceability:** Requirement `R2.1` | Product Use Case `PUC 2.1`
@@ -264,6 +370,28 @@ The platform defines four human user roles and two external supporting system ac
     - 2b2. System updates workspace metadata and renders updated branding to all active members.
 - **Success Guarantees:** A logically isolated workspace is initialized; the creator possesses full administrative and billing privileges.
 - **Minimal Guarantees:** If slug collision occurs, no partial workspace container is provisioned.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Owner as Authenticated User / Owner
+    participant System as TinyTask SaaS Platform
+
+    Owner->>System: Submit workspace creation (name, unique slug, logo)
+    alt Requested URL slug already taken
+        System-->>Owner: Reject slug & suggest available alternatives (2a)
+    else Unique slug & valid inputs
+        System->>System: Provision isolated workspace container
+        System->>System: Assign creator as primary Workspace Owner
+        System-->>Owner: Route to initialized workspace dashboard
+    end
+
+    opt Reconfigure Existing Workspace Branding (2b)
+        Owner->>System: Update organization name / logo
+        System->>System: Commit branding update
+        System-->>Owner: Confirm workspace profile updated
+    end
+```
 
 ---
 
@@ -295,6 +423,41 @@ The platform defines four human user roles and two external supporting system ac
 - **Success Guarantees:** Roster reflects updated members and roles; authorization rules are strictly updated for subsequent actions.
 - **Minimal Guarantees:** The primary Workspace Owner role cannot be revoked or orphaned.
 
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Admin as Workspace Admin / Owner
+    participant System as TinyTask SaaS Platform
+    participant Email as Notification / Email Service
+    actor Member as Invited Member
+
+    Admin->>System: Submit member invitations (emails, roles: Admin/Member/Viewer)
+    alt Active member seat quota exhausted
+        System-->>Admin: Halt invitation: seat quota limit reached (2a)
+    else Within seat quota limit
+        System->>System: Generate secure invitation tokens
+        System->>Email: Dispatch onboarding invitation emails
+        Email-->>Member: Deliver invitation link
+        System-->>Admin: Confirm invitations dispatched & update roster
+    end
+
+    opt Modify Member Role (2b)
+        Admin->>System: Select member & assign new role
+        System->>System: Commit updated role permissions
+        System-->>Admin: Confirm role update
+    end
+
+    opt Revoke Membership (2c)
+        Admin->>System: Confirm removal of member
+        alt Target is primary Workspace Owner
+            System-->>Admin: Reject: Workspace Owner cannot be removed (2c2)
+        else Standard Member
+            System->>System: Revoke tokens, reallocate assignments, & free seat
+            System-->>Admin: Confirm member removed
+        end
+    end
+```
+
 ---
 
 #### {U.C. 2.3} Monitor workspace activity and operational metrics
@@ -316,9 +479,41 @@ The platform defines four human user roles and two external supporting system ac
 - **Success Guarantees:** Accurate, read-only operational telemetry is delivered to authorized management.
 - **Minimal Guarantees:** Metrics query executes read-only operations without impacting operational board latency.
 
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Admin as Workspace Admin / Owner
+    participant System as TinyTask SaaS Platform
+
+    Admin->>System: Request workspace metrics dashboard
+    System->>System: Aggregate active members, completed tasks, overdue items & storage consumed
+    alt Zero completed tasks
+        System-->>Admin: Render metrics dashboard with empty-state guidance (2a)
+    else Active data available
+        System-->>Admin: Render operational metrics with utilization percentages
+    end
+```
+
 ---
 
 ### {U.C. 3} Manage Projects
+
+#### UML Use Case Diagram: Capability Cluster {U.C. 3}
+
+```mermaid
+flowchart LR
+    Admin["Workspace Admin / Owner"]
+    Member["Workspace Member"]
+
+    subgraph UC3_Cluster["{U.C. 3} Manage Projects"]
+        UC3_1(["{U.C. 3.1} Create and configure projects"])
+        UC3_2(["{U.C. 3.2} Archive completed projects"])
+    end
+
+    Admin --> UC3_1
+    Admin --> UC3_2
+    Member --> UC3_1
+```
 
 #### {U.C. 3.1} Create and configure projects
 - **Traceability:** Requirement `R3.1` | Product Use Case `PUC 3.1`
@@ -342,6 +537,25 @@ The platform defines four human user roles and two external supporting system ac
     - 1b2. System restricts project board view strictly to the authorized subset of members.
 - **Success Guarantees:** Project container is provisioned with default workflow columns and accessible according to visibility rules.
 - **Minimal Guarantees:** Invalid creation parameters do not produce orphan project records.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Member as Workspace Member / Admin
+    participant System as TinyTask SaaS Platform
+
+    Member->>System: Submit project creation (title, description, visibility)
+    alt Missing mandatory title
+        System-->>Member: Validation error: title is required (1a)
+    else Restricted visibility selected
+        Member->>System: Designate authorized member subset (1b)
+        System->>System: Initialize private project container & default Kanban columns
+        System-->>Member: Route to restricted project board
+    else Workspace-wide visibility
+        System->>System: Initialize workspace-wide project container & default Kanban columns
+        System-->>Member: Route to project board
+    end
+```
 
 ---
 
@@ -367,9 +581,52 @@ The platform defines four human user roles and two external supporting system ac
 - **Success Guarantees:** Project is read-only; historical tasks, discussions, and attachments remain accessible for compliance and reference.
 - **Minimal Guarantees:** Archival preserves 100% of historical data integrity; no records or attachments are deleted.
 
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Admin as Workspace Admin / Owner
+    participant System as TinyTask SaaS Platform
+
+    Admin->>System: Select project archival option
+    System-->>Admin: Present confirmation modal detailing read-only consequences
+    Admin->>System: Confirm project archival
+    System->>System: Transition state to archived & lock tasks/discussions as read-only
+    System->>System: Move project to historical archive menu & log audit record
+    System-->>Admin: Confirm project successfully archived
+
+    opt Restore Archived Project (1a)
+        Admin->>System: Request project restoration
+        System->>System: Re-enable editing rights & restore to active project lists
+        System-->>Admin: Confirm project restored to active status
+    end
+```
+
 ---
 
 ### {U.C. 4} Manage and Execute Tasks
+
+#### UML Use Case Diagram: Capability Cluster {U.C. 4}
+
+```mermaid
+flowchart LR
+    Member["Workspace Member / Admin"]
+    Viewer["Workspace Viewer"]
+    Daemon["Automated System Daemon"]
+    Notify["Notification / Email Service"]
+
+    subgraph UC4_Cluster["{U.C. 4} Manage and Execute Tasks"]
+        UC4_1(["{U.C. 4.1} Create and assign tasks"])
+        UC4_2(["{U.C. 4.2} Track and transition task workflow states on visual boards"])
+        UC4_3(["{U.C. 4.3} Configure recurring automated tasks"])
+    end
+
+    Member --> UC4_1
+    Member --> UC4_2
+    Member --> UC4_3
+    Viewer --> UC4_2
+    Daemon --> UC4_3
+    UC4_1 -.-> Notify
+```
 
 #### {U.C. 4.1} Create and assign tasks
 - **Traceability:** Requirement `R4.1` | Product Use Case `PUC 4.1`
@@ -395,6 +652,26 @@ The platform defines four human user roles and two external supporting system ac
     - 1c1. System limits member picker strictly to users authorized on the project container.
 - **Success Guarantees:** Task card exists in the project backlog with assigned collaborators and initial status; assignees receive notifications.
 - **Minimal Guarantees:** Incomplete submissions do not create empty task items.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Member as Workspace Member / Admin
+    participant System as TinyTask SaaS Platform
+    actor Assignee as Assigned Collaborator
+
+    Member->>System: Submit new task (title, description, priority, due date, assignees)
+    alt Missing mandatory title
+        System-->>Member: Validation error: title is required (1a)
+    else Past due date warning
+        System-->>Member: Present past-due warning; allow override (1b)
+        Member->>System: Confirm creation
+    end
+    System->>System: Instantiate task in 'To-Do' status & assign unique ID
+    System->>System: Record task creation event in audit history
+    System->>Assignee: Dispatch in-app assignment notification
+    System-->>Member: Render new task card on project Kanban board
+```
 
 ---
 
@@ -423,6 +700,32 @@ The platform defines four human user roles and two external supporting system ac
 - **Success Guarantees:** Task state transition is committed and reflected immediately across all team views; audit trail is updated.
 - **Minimal Guarantees:** If concurrent state modification occurs, system reconciles to the latest valid transition without data corruption.
 
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Member as Workspace Member / Admin / Viewer
+    participant System as TinyTask SaaS Platform
+
+    Member->>System: Open project visual board
+    System-->>Member: Render Kanban columns (To-Do, In-Progress, Under-Review, Done)
+
+    opt Apply Multi-Criteria Filters
+        Member->>System: Select filter criteria (assignee, priority, overdue)
+        System-->>Member: Dynamically update displayed cards
+    end
+
+    opt Transition Task Workflow State
+        Member->>System: Move task card to new status column
+        alt Actor has Viewer role (Read-Only)
+            System-->>Member: Reject transition: read-only access (5a)
+        else Authorized Member
+            System->>System: Commit state transition & update timestamp
+            System->>System: Record transition event in task audit log
+            System-->>Member: Update board counters & card position
+        end
+    end
+```
+
 ---
 
 #### {U.C. 4.3} Configure recurring automated tasks
@@ -447,9 +750,47 @@ The platform defines four human user roles and two external supporting system ac
 - **Success Guarantees:** Future recurring work items are scheduled and automatically instantiated without manual overhead.
 - **Minimal Guarantees:** Failure in recurrence instantiation does not prevent the current task from successfully completing.
 
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Member as Workspace Member / Admin
+    participant System as TinyTask SaaS Platform
+    participant Daemon as Automated System Daemon
+
+    Member->>System: Configure recurrence rule on task (weekly / monthly schedule)
+    System->>System: Attach recurrence schedule to task record
+    System-->>Member: Confirm recurrence configured
+
+    Note over System,Daemon: Task Execution & Completion
+    Member->>System: Transition recurring task to 'Done'
+    System->>System: Mark current task instance 'Done'
+    System->>Daemon: Trigger recurrence handler
+    Daemon->>System: Duplicate task into 'To-Do' with next interval due date
+    System-->>Member: Display next recurring task instance in project backlog
+```
+
 ---
 
 ### {U.C. 5} Collaborate on Task Deliverables
+
+#### UML Use Case Diagram: Capability Cluster {U.C. 5}
+
+```mermaid
+flowchart LR
+    Member["Workspace Member / Admin"]
+    Viewer["Workspace Viewer"]
+    Email["Notification / Email Service"]
+
+    subgraph UC5_Cluster["{U.C. 5} Collaborate on Task Deliverables"]
+        UC5_1(["{U.C. 5.1} Manage task deliverable attachments"])
+        UC5_2(["{U.C. 5.2} Post in-task discussion comments and mention collaborators"])
+    end
+
+    Member --> UC5_1
+    Member --> UC5_2
+    Viewer --> UC5_1
+    UC5_2 -.-> Email
+```
 
 #### {U.C. 5.1} Manage task deliverable attachments
 - **Traceability:** Requirement `R5.1` | Product Use Case `PUC 5.1`
@@ -478,6 +819,38 @@ The platform defines four human user roles and two external supporting system ac
 - **Success Guarantees:** Deliverable file is stored, indexed, and available for authorized team retrieval; audit log records file lifecycle.
 - **Minimal Guarantees:** Aborted uploads leave no orphaned binary fragments in storage.
 
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Member as Workspace Member / Admin / Viewer
+    participant System as TinyTask SaaS Platform
+
+    Note over Member,System: File Upload Flow
+    Member->>System: Select local file to attach to task
+    alt File size exceeds 25 MB limit
+        System-->>Member: Reject upload: file exceeds 25 MB limit (2a)
+    else File size valid
+        System->>System: Store file & index metadata (name, size, author, timestamp)
+        System->>System: Generate thumbnail preview & record event in audit log
+        System-->>Member: Display attached deliverable preview on task card
+    end
+
+    opt Download Attachment (2b)
+        Member->>System: Request attachment download
+        System-->>Member: Deliver binary file stream
+    end
+
+    opt Remove Attachment (2c)
+        Member->>System: Request attachment removal
+        alt Actor is not uploader or Admin
+            System-->>Member: Reject deletion: unauthorized rights
+        else Authorized actor
+            System->>System: Purge file record & log deletion in audit log
+            System-->>Member: Remove attachment from task card view
+        end
+    end
+```
+
 ---
 
 #### {U.C. 5.2} Post in-task discussion comments and mention collaborators
@@ -504,9 +877,43 @@ The platform defines four human user roles and two external supporting system ac
 - **Success Guarantees:** Comment is permanently appended to task context; tagged collaborators are alerted immediately.
 - **Minimal Guarantees:** Discussion history remains immutable; comments cannot be silently overwritten by other users.
 
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Member as Workspace Member / Admin
+    participant System as TinyTask SaaS Platform
+    actor Tagged as Mentioned Collaborator
+
+    Member->>System: Submit Markdown comment with @collaborator mention
+    alt Blank / whitespace comment
+        System-->>Member: Validation error: comment text required (1a)
+    else Content valid
+        System->>System: Append comment to task thread with author & timestamp
+        System->>Tagged: Dispatch in-app mention alert linking to task card
+        System-->>Member: Render published comment in discussion feed
+    end
+```
+
 ---
 
 ### {U.C. 6} Track Activity History and Notifications
+
+#### UML Use Case Diagram: Capability Cluster {U.C. 6}
+
+```mermaid
+flowchart LR
+    User["Registered Workspace User"]
+    Email["Notification / Email Service"]
+
+    subgraph UC6_Cluster["{U.C. 6} Track Activity History and Notifications"]
+        UC6_1(["{U.C. 6.1} Consult chronological audit history on task cards"])
+        UC6_2(["{U.C. 6.2} Receive workspace alerts and daily task digests"])
+    end
+
+    User --> UC6_1
+    User --> UC6_2
+    UC6_2 -.-> Email
+```
 
 #### {U.C. 6.1} Consult chronological audit history on task cards
 - **Traceability:** Requirement `R6.1` | Product Use Case `PUC 6.1`
@@ -526,6 +933,21 @@ The platform defines four human user roles and two external supporting system ac
     - 2a1. System displays task creation event as the solitary timeline entry.
 - **Success Guarantees:** Complete, tamper-evident audit history is presented to authorized users.
 - **Minimal Guarantees:** History records are strictly read-only; no user action can alter historical audit entries.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Authorized Workspace User
+    participant System as TinyTask SaaS Platform
+
+    User->>System: Open activity history tab on task card
+    System->>System: Query immutable audit records for task ID
+    alt Only creation event exists
+        System-->>User: Render timeline showing task creation record (2a)
+    else Full modification history exists
+        System-->>User: Render chronological audit timeline (transitions, assignments, files)
+    end
+```
 
 ---
 
@@ -551,9 +973,56 @@ The platform defines four human user roles and two external supporting system ac
 - **Success Guarantees:** User receives timely operational alerts and morning work prioritization guidance.
 - **Minimal Guarantees:** Notification delivery failures are retried automatically without interrupting in-app operational workflows.
 
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Registered User
+    participant System as TinyTask SaaS Platform
+    participant Email as Notification / Email Service
+
+    User->>System: Open in-app notification center
+    alt Zero unread alerts
+        System-->>User: Display 'All caught up' status (1a)
+    else Unread assignments or mentions exist
+        System-->>User: Display actionable notification items with unread counters
+        User->>System: Click notification item
+        System->>System: Mark item as read
+        System-->>User: Route directly to referenced task card
+    end
+
+    Note over System,Email: Morning Scheduled Digest (08:00)
+    System->>System: Identify pending/overdue tasks for active users
+    alt User opted out in preferences
+        System->>System: Suppress email dispatch for user (4a)
+    else Digest enabled
+        System->>Email: Dispatch consolidated daily task summary digest
+        Email-->>User: Deliver morning prioritization digest
+    end
+```
+
 ---
 
 ### {U.C. 7} Manage Commercial Subscriptions
+
+#### UML Use Case Diagram: Capability Cluster {U.C. 7}
+
+```mermaid
+flowchart LR
+    Owner["Workspace Owner"]
+    Gateway["External Payment Gateway"]
+    Email["Notification / Email Service"]
+
+    subgraph UC7_Cluster["{U.C. 7} Manage Commercial Subscriptions"]
+        UC7_1(["{U.C. 7.1} Subscribe and manage workspace commercial plans"])
+        UC7_2(["{U.C. 7.2} Enforce operational grace period upon payment failure"])
+    end
+
+    Owner --> UC7_1
+    Owner --> UC7_2
+    Gateway --> UC7_1
+    Gateway --> UC7_2
+    UC7_2 -.-> Email
+```
 
 #### {U.C. 7.1} Subscribe and manage workspace commercial plans
 - **Traceability:** Requirement `R7.1` | Product Use Case `PUC 7.1`
@@ -582,6 +1051,29 @@ The platform defines four human user roles and two external supporting system ac
 - **Success Guarantees:** Subscription plan and member seat limits are automatically upgraded upon payment confirmation.
 - **Minimal Guarantees:** No credit card credentials ever cross or reside within TinyTask infrastructure; quotas only adjust upon verified payment.
 
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Owner as Workspace Owner
+    participant System as TinyTask SaaS Platform
+    participant Gateway as External Payment Gateway
+
+    Owner->>System: Select commercial plan tier (Pro/Enterprise) & seat quantity
+    System->>Gateway: Create checkout session with tier parameters & return URLs
+    Gateway-->>System: Return hosted checkout session URL
+    System-->>Owner: Redirect browser to secure checkout page
+    Owner->>Gateway: Submit payment credentials & authorize charge
+    alt Actor cancels checkout on provider page
+        Gateway-->>Owner: Redirect to cancel URL (4a)
+        Owner->>System: Return to workspace (current tier preserved)
+    else Payment authorized successfully
+        Gateway->>System: Dispatch signed asynchronous payment confirmation
+        System->>System: Verify signature, update subscription record & expand seat quota
+        Gateway-->>Owner: Redirect to success URL
+        Owner->>System: Return to workspace (active tier confirmed)
+    end
+```
+
 ---
 
 #### {U.C. 7.2} Enforce operational grace period upon payment failure
@@ -609,9 +1101,53 @@ The platform defines four human user roles and two external supporting system ac
 - **Success Guarantees:** Team operations are shielded from immediate disruption during temporary financial glitches; resolution restores normal status cleanly.
 - **Minimal Guarantees:** Client project data and attachments are completely protected from deletion during grace and suspension periods.
 
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Gateway as External Payment Gateway
+    participant System as TinyTask SaaS Platform
+    participant Email as Notification / Email Service
+    actor Owner as Workspace Owner
+
+    Gateway->>System: Dispatch recurring renewal failure event
+    System->>System: Register failure & initiate 7-day operational grace period
+    System->>Email: Dispatch urgent billing warning email
+    Email-->>Owner: Deliver grace period notice
+    System-->>Owner: Display administrative warning banner in workspace
+
+    Note over Owner,System: 7-Day Uninterrupted Normal Operations
+    alt Owner updates billing credentials within 7 days
+        Owner->>Gateway: Update payment method & execute retry
+        Gateway->>System: Dispatch payment confirmation
+        System->>System: Clear grace period & remove warning banners
+    else Grace period expires without resolution (Day 8)
+        System->>System: Transition workspace to read-only status (6a)
+        System->>System: Suspend member invitations until resolved
+    end
+```
+
 ---
 
 ### {U.C. 8} Export Data and Close Accounts
+
+#### UML Use Case Diagram: Capability Cluster {U.C. 8}
+
+```mermaid
+flowchart LR
+    User["Authenticated User"]
+    Owner["Workspace Owner"]
+    Email["Notification / Email Service"]
+
+    subgraph UC8_Cluster["{U.C. 8} Export Data and Close Accounts"]
+        UC8_1(["{U.C. 8.1} Export personal and workspace data archives"])
+        UC8_2(["{U.C. 8.2} Close user accounts and terminate workspace access"])
+    end
+
+    User --> UC8_1
+    User --> UC8_2
+    Owner --> UC8_1
+    UC8_2 -.-> Email
+```
 
 #### {U.C. 8.1} Export personal and workspace data archives
 - **Traceability:** Requirement `R8.1` | Product Use Case `PUC 8.1`
@@ -635,6 +1171,22 @@ The platform defines four human user roles and two external supporting system ac
     - 3a1. System notifies actor that compilation is queued and sends an email notification with download link once ready.
 - **Success Guarantees:** Complete, structured operational and personal data is delivered to the user without data omission.
 - **Minimal Guarantees:** Archive compilation executes asynchronously in read-only mode without impacting concurrent project editing.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Actor as User / Workspace Owner
+    participant System as TinyTask SaaS Platform
+
+    Actor->>System: Request data export (personal archive or workspace archive)
+    alt Non-Owner requests full workspace archive
+        System-->>Actor: Authorization error: Owner role required (2a)
+    else Authorized request
+        System->>System: Compile profile data, tasks, comments & attachments into archive
+        System-->>Actor: Present secure authenticated download link
+        Actor->>System: Download archive package
+    end
+```
 
 ---
 
@@ -660,6 +1212,26 @@ The platform defines four human user roles and two external supporting system ac
     - 3a1. System halts account closure, notifying actor that workspace ownership must be transferred to another administrator or the workspace deleted before closing the personal account.
 - **Success Guarantees:** User credentials and sessions are permanently deactivated; workspace access is revoked; confirmation receipt is sent.
 - **Minimal Guarantees:** Existing project tasks authored by the user retain historical attribution without breaking project integrity; orphaned ownership is prevented.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Authenticated User
+    participant System as TinyTask SaaS Platform
+    participant Email as Notification / Email Service
+
+    User->>System: Access account closure option
+    System-->>User: Present warning of credential loss & membership severance
+    User->>System: Confirm account termination
+    alt User is sole Workspace Owner of active workspace
+        System-->>User: Halt closure: transfer workspace ownership or delete workspace first (3a)
+    else Account eligible for termination
+        System->>System: Invalidate sessions, revoke tokens & remove workspace memberships
+        System->>Email: Dispatch digital closure receipt
+        Email-->>User: Deliver account closure confirmation receipt
+        System-->>User: Redirect to public landing page
+    end
+```
 
 ---
 
@@ -687,8 +1259,9 @@ The non-functional requirements define the platform's performance, availability,
 The system use case model establishes an exhaustive, literature-aligned functional baseline for TinyTask SaaS:
 1. **Total Sea-Level Fidelity:** 18 Level-1 use cases cleanly cover all operational capabilities without leaf-node noise or micro-UI procedural scripts.
 2. **Exhaustive Behavioral Contracts:** Each use case specifies pre/post conditions, black-box main success scenarios, and branching alternative/exception flows.
-3. **Seamless Sequential Traceability:** Direct 1:1 mapping from `Doc01` requirements (`R1.1`–`R8.2`) and PUCs (`PUC 1.1`–`PUC 8.2`) to System Use Cases (`{U.C. 1.1}`–`{U.C. 8.2}`).
-4. **AEGIS Phase 3 Synthesis Ready:** Provides a rich, verified functional canvas for attack surface mapping, trust boundary analysis, and regulatory requirement derivation.
+3. **Visual UML Coverage:** Every macro capability is illustrated with a UML Use Case diagram, and every Level-1 use case is paired with a UML Sequence diagram in native Markdown.
+4. **Seamless Sequential Traceability:** Direct 1:1 mapping from `Doc01` requirements (`R1.1`–`R8.2`) and PUCs (`PUC 1.1`–`PUC 8.2`) to System Use Cases (`{U.C. 1.1}`–`{U.C. 8.2}`).
+5. **AEGIS Phase 3 Synthesis Ready:** Provides a rich, verified functional canvas for attack surface mapping, trust boundary analysis, and regulatory requirement derivation.
 
 ---
 
@@ -698,6 +1271,7 @@ The system use case model establishes an exhaustive, literature-aligned function
 - Larman, C. (2004). *Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development* (3rd ed.). Prentice Hall.
 - Robertson, S., & Robertson, J. (2012). *Mastering the Requirements Process: Getting Requirements Right* (3rd ed.). Addison-Wesley Professional.
 - Wiegers, K., & Beatty, J. (2013). *Software Requirements* (3rd ed.). Microsoft Press.
+- Object Management Group (OMG). (2017). *OMG Unified Modeling Language (OMG UML) Version 2.5.1*.
 - Centro de Computação Gráfica (CCG) & PIEP. (2023). *E1.2 – GPTools_AnáliseRequisitos_CasosDeUso_V4.0: Especificação de Casos de Uso e Decomposição Funcional*. Guimarães, Portugal.
 
 ---
@@ -710,3 +1284,4 @@ The system use case model establishes an exhaustive, literature-aligned function
 | **2.0.0** | 2026-09-23 | Requirements Engineering Agent | Pure functional alignment, active English verbs, zero leaf nodes. |
 | **2.1.0** | 2026-09-23 | Requirements Engineering Agent | Consolidated to 18 Sea-Level use cases matching consolidated business requirements. |
 | **3.0.0** | 2026-09-23 | Requirements Engineering Agent | Literature-grounded overhaul (Cockburn, Larman, Wiegers) with full pre/post conditions, main success scenarios, and extension flows for all 18 use cases. |
+| **3.1.0** | 2026-09-23 | Requirements Engineering Agent | Added visual UML diagrams in Markdown: 8 Macro Use Case diagrams and 18 Level-1 Sequence Diagrams. |

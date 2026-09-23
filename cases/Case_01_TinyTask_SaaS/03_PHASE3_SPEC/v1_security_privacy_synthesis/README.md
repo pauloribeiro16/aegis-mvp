@@ -48,7 +48,7 @@ Preserves the 18 atomic functional requirement cards (`R1.1` to `R8.2`) and 18 P
 ### 3.3 [`Doc02_System_Use_Cases.md`](Doc02_System_Use_Cases.md)
 Maintains Cockburn's Sea-Level granularity (Level 1) across the 18 System Use Cases (`{U.C. 1.1}` to `{U.C. 8.2}`) while augmenting each card with:
 - **Security & Privacy Traces:** Direct references to `REQ-SEC-*` and `REQ-PRIV-*`.
-- **Security Preconditions:** Requiring TLS 1.3, authenticated tenant-scoped sessions, and verified RBAC permissions prior to execution.
+- **Security Preconditions:** Requiring secure encrypted channels, authenticated tenant-scoped sessions, and verified RBAC permissions prior to execution.
 - **Threat Extensions (Alternative Flows):** Explicit branching for authentication lockouts, authorization rejections, tampered webhook signatures, rate-limit throttling, and malicious file uploads.
 - **Enhanced Minimal Guarantees:** Mandating fail-safe rollback, zero data leakage, and non-repudiable audit logging (`REQ-SEC-10`).
 

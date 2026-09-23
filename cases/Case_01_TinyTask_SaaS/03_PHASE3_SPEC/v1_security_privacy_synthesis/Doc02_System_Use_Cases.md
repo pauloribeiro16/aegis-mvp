@@ -204,14 +204,14 @@ flowchart LR
 
 #### {U.C. 1.1} Register and authenticate user accounts
 - **Traceability:** Requirement `R1.1` | Product Use Case `PUC 1.1`
-- **Security & Privacy Traces:** `REQ-SEC-02` (Credential Hashing), `REQ-SEC-03` (Session Invalidation), `REQ-SEC-10` (Audit Logging), `REQ-PRIV-01` (Data Minimization), `REQ-PRIV-06` (TLS 1.3)
+- **Security & Privacy Traces:** `REQ-SEC-02` (Credential Hashing), `REQ-SEC-03` (Session Invalidation), `REQ-SEC-10` (Audit Logging), `REQ-PRIV-01` (Data Minimization), `REQ-PRIV-06` (Transport Encryption)
 - **Primary Actor:** Unauthenticated Visitor / Registered User
 - **Supporting Actors:** Notification / Email Service
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
 - **Stakeholders & Interests:**
   - *Platform Founders:* Fast, self-service onboarding with low drop-off.
   - *End Users:* Secure, reliable access to authorized team workspaces.
-- **Preconditions:** network connection terminates over TLS 1.3 (REQ-PRIV-06); The user has access to a valid email inbox.
+- **Preconditions:** network connection terminates over a secure encrypted channel (REQ-PRIV-06); The user has access to a valid email inbox.
 - **Trigger:** A prospective user initiates account registration, an existing user attempts login, or a user requests credential recovery.
 - **Main Success Scenario (Happy Path):**
   1. Actor submits registration details including full name, email address, and desired credentials.
@@ -742,7 +742,7 @@ flowchart LR
 
 #### {U.C. 7.1} Subscribe and manage workspace commercial plans
 - **Traceability:** Requirement `R7.1` | Product Use Case `PUC 7.1`
-- **Security & Privacy Traces:** `REQ-SEC-07` (Billing Invariant Protection), `REQ-SEC-08` (HMAC Webhook Verification), `REQ-SEC-10` (Audit Logging)
+- **Security & Privacy Traces:** `REQ-SEC-07` (Billing Invariant Protection), `REQ-SEC-08` (Cryptographic Webhook Verification), `REQ-SEC-10` (Audit Logging)
 - **Primary Actor:** Workspace Owner
 - **Supporting Actors:** External Payment Gateway
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
@@ -774,7 +774,7 @@ flowchart LR
 
 #### {U.C. 7.2} Enforce operational grace period upon payment failure
 - **Traceability:** Requirement `R7.2` | Product Use Case `PUC 7.2`
-- **Security & Privacy Traces:** `REQ-SEC-07` (Billing Invariant Protection), `REQ-SEC-08` (HMAC Webhook Verification), `REQ-SEC-10` (Audit Logging)
+- **Security & Privacy Traces:** `REQ-SEC-07` (Billing Invariant Protection), `REQ-SEC-08` (Cryptographic Webhook Verification), `REQ-SEC-10` (Audit Logging)
 - **Primary Actor:** External Payment Gateway / Workspace Owner
 - **Supporting Actors:** External Payment Gateway, Notification / Email Service
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)

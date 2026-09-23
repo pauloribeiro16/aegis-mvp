@@ -132,8 +132,8 @@ flowchart TD
         EmailService["Notification / Email Service"]
     end
 
-    Visitor -->|HTTP / TLS| Ingress
-    User -->|HTTP / TLS| Ingress
+    Visitor -->|Network Requests| Ingress
+    User -->|Network Requests| Ingress
     ExtGateway -->|Payment Webhooks| Ingress
     Ingress --> App
     App --> DB

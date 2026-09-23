@@ -107,13 +107,13 @@ Step 3 transforms the regulatory drivers and threat mitigations derived in Step 
 - **Volere Fit Criterion Rationale:** `Simulated unauthenticated or forged payment webhooks fail signature validation and produce zero changes in tenant billing status.`
 - **Verification Method:** `INSPECT` (Code review and automated webhook verification test).
 
-### `REQ-SEC-08`: Asymmetric HMAC Webhook Signature Verification
+### `REQ-SEC-08`: Cryptographic Webhook Origin Verification
 - **Syntactic Selection:** *Event-Driven*. Triggered when outbound event webhooks are dispatched to external listeners.
 - **Formulation:**
-  > *"When dispatching outbound event notifications to external webhook listeners, the system shall compute an HMAC-SHA256 signature across the event payload using a tenant-specific shared secret and transmit the signature in the request headers."*
+  > *"When dispatching outbound event notifications to external webhook listeners, the system shall compute a cryptographic message authentication code across the event payload using a tenant-specific shared secret and transmit the authentication proof in the request headers."*
 - **Why this EARS Pattern:** Ensures origin authenticity and payload integrity for downstream consumers.
-- **Volere Fit Criterion Rationale:** `Receiver test harness validates payload integrity and origin authenticity using the shared secret; any payload byte tampering invalidates the computed signature.`
-- **Verification Method:** `TEST` (Payload tampering and HMAC verification test harness).
+- **Volere Fit Criterion Rationale:** `Receiver test harness validates payload integrity and origin authenticity using the shared secret; any payload byte tampering invalidates the computed authentication proof.`
+- **Verification Method:** `TEST` (Payload tampering and cryptographic message authentication verification test harness).
 
 ### `REQ-SEC-09`: Inbound API Token Mediation & Rate Limiting
 - **Syntactic Selection:** *Combined Event-Driven & Unwanted Behavior*. Triggered on inbound API requests; handles the threshold exceedance.
@@ -163,19 +163,19 @@ Step 3 transforms the regulatory drivers and threat mitigations derived in Step 
 - **Volere Fit Criterion Rationale:** `Query interface and analytics exports restrict aggregations to project and workspace summaries; individual granular logs are accessible only to the author and the authorized workspace administrator.`
 - **Verification Method:** `ANALYZE` (Data governance and access query review).
 
-### `REQ-PRIV-05`: Personal Data Encryption at Rest
+### `REQ-PRIV-05`: Personal Data Cryptographic Protection at Rest
 - **Syntactic Selection:** *Ubiquitous*. Architectural storage invariant.
 - **Formulation:**
-  > *"The system shall encrypt all persistent storage volumes, file assets, and database backups containing personal data at rest using AES-256 or an equivalent industry-standard cryptographic cipher."*
-- **Volere Fit Criterion Rationale:** `Storage infrastructure manifests and volume configuration scripts confirm transparent disk and database encryption is enabled with cloud-managed key rotation.`
+  > *"The system shall cryptographically protect all persistent storage volumes, file assets, and database backups containing personal data at rest against unauthorized extraction using state-of-the-art cryptographic mechanisms."*
+- **Volere Fit Criterion Rationale:** `Storage infrastructure manifests and volume configuration scripts confirm transparent cryptographic protection is enabled with managed key rotation.`
 - **Verification Method:** `INSPECT` (Infrastructure-as-Code and volume configuration audit).
 
-### `REQ-PRIV-06`: Mandatory End-to-End Transport Layer Encryption
+### `REQ-PRIV-06`: Mandatory End-to-End Transport Layer Cryptographic Protection
 - **Syntactic Selection:** *Combined Ubiquitous & Unwanted Behavior*. Network ingress invariant.
 - **Formulation:**
-  > *"The system shall encrypt all data in transit across public networks using TLS 1.3 (with fallback to TLS 1.2), and if an unencrypted HTTP connection attempt is detected, the system shall redirect the client to HTTPS or reject the connection."*
-- **Volere Fit Criterion Rationale:** `SSL Labs scan of application ingress hosts yields an A+ grade; unencrypted port 80 connections immediately redirect to port 443 with HSTS enabled.`
-- **Verification Method:** `TEST` (Automated TLS handshake and redirect probe).
+  > *"The system shall cryptographically protect all personal and sensitive data in transit across public and untrusted networks against unauthorized disclosure and tampering, using state-of-the-art cryptographic communication mechanisms, and if an unencrypted connection attempt is detected, the system shall refuse the connection or enforce cryptographic upgrade."*
+- **Volere Fit Criterion Rationale:** `100% of network traffic traversing external boundaries is cryptographically protected; unencrypted transmission attempts fail closed.`
+- **Verification Method:** `TEST` (Automated network inspection verifying cryptographic transport protection on all external endpoints).
 
 ### `REQ-PRIV-07`: Automated Orphan File Asset Cleanup & Expiration
 - **Syntactic Selection:** *Event-Driven*. Triggered by project or task deletion.

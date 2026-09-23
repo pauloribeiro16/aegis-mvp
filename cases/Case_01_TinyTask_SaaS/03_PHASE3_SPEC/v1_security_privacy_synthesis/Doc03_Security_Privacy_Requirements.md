@@ -32,15 +32,15 @@ The following matrix establishes bidirectional traceability across regulatory dr
 | `REQ-SEC-05` | File Upload Strict Validation & Content Isolation | `SO-D-07.1-002` | `PRIN-ENG-02`, `PRIN-ENG-04` | `R4.1`, `R4.2` | `{U.C. 4.1}`, `{U.C. 4.2}` | `TEST` |
 | `REQ-SEC-06` | Context-Aware Output Encoding & Sanitization | `SO-D-07.1-002` | `PRIN-ENG-04` | `R5.1` | `{U.C. 5.1}` | `TEST` |
 | `REQ-SEC-07` | Cryptographic Billing Invariant Protection | `SO-D-01.1-002`, `SO-D-08.1-002` | `PRIN-ENG-03`, `PRIN-ENG-07` | `R7.1`, `R7.2` | `{U.C. 7.1}`, `{U.C. 7.2}` | `INSPECT` |
-| `REQ-SEC-08` | Asymmetric HMAC Webhook Signature Verification | `SO-D-05.1-002`, `SO-D-08.1-002` | `PRIN-ENG-01`, `PRIN-ENG-02` | `R8.1` | `{U.C. 8.1}` | `TEST` |
+| `REQ-SEC-08` | Cryptographic Webhook Origin Verification | `SO-D-05.1-002`, `SO-D-08.1-002` | `PRIN-ENG-01`, `PRIN-ENG-02` | `R8.1` | `{U.C. 8.1}` | `TEST` |
 | `REQ-SEC-09` | Inbound API Token Mediation & Rate Limiting | `SO-D-02.1-002`, `SO-D-05.1-002` | `PRIN-ENG-01`, `PRIN-ENG-02` | `R8.2` | `{U.C. 8.2}` | `TEST` |
 | `REQ-SEC-10` | Non-Repudiable Security Audit Logging | `SO-D-03.1-002` | `PRIN-ENG-07` | `R1.1` to `R8.2` | All Use Cases | `TEST` |
 | `REQ-PRIV-01`| Registration Data Minimization by Default | `PO-D-06.1-001` | `PRIN-ENG-06` | `R1.1` | `{U.C. 1.1}` | `INSPECT` |
 | `REQ-PRIV-02`| Structured Personal Data Portability & Export | `PO-D-06.2-001` | `PRIN-ENG-06` | `R1.2` | `{U.C. 1.2}` | `DEMONSTRATE` |
 | `REQ-PRIV-03`| Irreversible Data Subject Erasure & Pseudonymization | `PO-D-06.2-001` | `PRIN-ENG-06` | `R1.1`, `R1.2` | `{U.C. 1.1}`, `{U.C. 1.2}` | `TEST` |
 | `REQ-PRIV-04`| Purpose Limitation & Time Log Segregation | `PO-D-06.1-001` | `PRIN-ENG-03`, `PRIN-ENG-06` | `R6.1`, `R6.2` | `{U.C. 6.1}`, `{U.C. 6.2}` | `ANALYZE` |
-| `REQ-PRIV-05`| Personal Data Encryption at Rest | `PO-D-01.1-001` | `PRIN-ENG-01` | `R1.1`, `R1.2`, `R6.1` | `{U.C. 1.1}`, `{U.C. 1.2}`, `{U.C. 6.1}` | `INSPECT` |
-| `REQ-PRIV-06`| Mandatory End-to-End Transport Layer Encryption | `PO-D-01.2-001` | `PRIN-ENG-01` | `R1.1` to `R8.2` | All Use Cases | `TEST` |
+| `REQ-PRIV-05`| Personal Data Cryptographic Protection at Rest | `PO-D-01.1-001` | `PRIN-ENG-01` | `R1.1`, `R1.2`, `R6.1` | `{U.C. 1.1}`, `{U.C. 1.2}`, `{U.C. 6.1}` | `INSPECT` |
+| `REQ-PRIV-06`| Mandatory End-to-End Transport Layer Cryptographic Protection | `PO-D-01.2-001` | `PRIN-ENG-01` | `R1.1` to `R8.2` | All Use Cases | `TEST` |
 | `REQ-PRIV-07`| Automated Orphan File Asset Cleanup & Expiration | `PO-D-06.1-001` | `PRIN-ENG-06` | `R4.2` | `{U.C. 4.2}` | `TEST` |
 | `REQ-PRIV-08`| Privacy Audit Trail for Data Subject Modifications | `PO-D-03.1-001` | `PRIN-ENG-07` | `R1.1`, `R1.2`, `R6.1` | `{U.C. 1.1}`, `{U.C. 1.2}`, `{U.C. 6.1}` | `INSPECT` |
 
@@ -104,12 +104,12 @@ The following matrix establishes bidirectional traceability across regulatory dr
 - **Volere Fit Criterion:** Simulated unauthenticated or forged payment webhooks fail signature validation and produce zero changes in tenant billing status.
 - **Verification Method:** `TEST` (Mock payment gateway webhook signature suite).
 
-### `REQ-SEC-08`: Asymmetric HMAC Webhook Signature Verification
+### `REQ-SEC-08`: Cryptographic Webhook Origin Verification
 - **EARS Pattern:** Event-Driven
-- **Statement:** When dispatching outbound event notifications to external webhook listeners, the system shall compute an HMAC-SHA256 signature across the event payload using a tenant-specific shared secret and transmit the signature in the request headers.
+- **Statement:** When dispatching outbound event notifications to external webhook listeners, the system shall compute a cryptographic message authentication code across the event payload using a tenant-specific shared secret and transmit the authentication proof in the request headers.
 - **Upstream Traces:** `SO-D-05.1-002`, `SO-D-08.1-002`, `PRIN-ENG-02`
 - **Functional Traces:** `R8.1` | `{U.C. 8.1}`
-- **Volere Fit Criterion:** Receiver test harness validates payload integrity and origin authenticity using the shared secret; any payload byte tampering invalidates the computed signature.
+- **Volere Fit Criterion:** Receiver test harness validates payload integrity and origin authenticity using the shared secret; any payload byte tampering invalidates the computed authentication proof.
 - **Verification Method:** `TEST` (Webhook payload integrity and tamper assertion suite).
 
 ### `REQ-SEC-09`: Inbound API Token Mediation & Rate Limiting
@@ -164,21 +164,21 @@ The following matrix establishes bidirectional traceability across regulatory dr
 - **Volere Fit Criterion:** Query interface and analytics exports restrict aggregations to project and workspace summaries; individual granular logs are accessible only to the author and the authorized workspace administrator.
 - **Verification Method:** `ANALYZE` (Data flow audit verifying access controls on time logging entities).
 
-### `REQ-PRIV-05`: Personal Data Encryption at Rest
+### `REQ-PRIV-05`: Personal Data Cryptographic Protection at Rest
 - **EARS Pattern:** Ubiquitous
-- **Statement:** The system shall encrypt all persistent storage volumes, file assets, and database backups containing personal data at rest using AES-256 or an equivalent industry-standard cryptographic cipher.
+- **Statement:** The system shall cryptographically protect all persistent storage volumes, file assets, and database backups containing personal data at rest against unauthorized extraction using state-of-the-art cryptographic mechanisms.
 - **Upstream Traces:** `PO-D-01.1-001`, `PRIN-ENG-01`
 - **Functional Traces:** `R1.1`, `R1.2`, `R6.1` | `{U.C. 1.1}`, `{U.C. 1.2}`, `{U.C. 6.1}`
-- **Volere Fit Criterion:** Storage infrastructure manifests and volume configuration scripts confirm transparent disk and database encryption is enabled with cloud-managed key rotation.
+- **Volere Fit Criterion:** Storage infrastructure manifests and volume configuration scripts confirm transparent cryptographic protection is enabled with managed key rotation.
 - **Verification Method:** `INSPECT` (Infrastructure-as-Code and volume configuration audit).
 
-### `REQ-PRIV-06`: Mandatory End-to-End Transport Layer Encryption
+### `REQ-PRIV-06`: Mandatory End-to-End Transport Layer Cryptographic Protection
 - **EARS Pattern:** Ubiquitous & Unwanted Behavior
-- **Statement:** The system shall encrypt all data in transit across public networks using TLS 1.3 (with fallback to TLS 1.2), and if an unencrypted HTTP connection attempt is detected, the system shall redirect the client to HTTPS or reject the connection.
+- **Statement:** The system shall cryptographically protect all personal and sensitive data in transit across public and untrusted networks against unauthorized disclosure and tampering, using state-of-the-art cryptographic communication mechanisms, and if an unencrypted connection attempt is detected, the system shall refuse the connection or enforce cryptographic upgrade.
 - **Upstream Traces:** `PO-D-01.2-001`, `PRIN-ENG-01`
 - **Functional Traces:** `R1.1` to `R8.2` | All Use Cases
-- **Volere Fit Criterion:** SSL Labs scan of application ingress hosts yields an A+ grade; unencrypted port 80 connections immediately redirect to port 443 with HSTS enabled.
-- **Verification Method:** `TEST` (TLS cipher suite negotiation test and HSTS header verification).
+- **Volere Fit Criterion:** 100% of network traffic traversing external boundaries is cryptographically protected; unencrypted transmission attempts fail closed.
+- **Verification Method:** `TEST` (Automated network inspection verifying cryptographic transport protection on all external endpoints).
 
 ### `REQ-PRIV-07`: Automated Orphan File Asset Cleanup & Expiration
 - **EARS Pattern:** Event-Driven

@@ -527,15 +527,15 @@ The platform non-functional requirements are partitioned into general operationa
 | **REQ-SEC-05** | File Upload Strict Validation & Content Isolation | CRA Annex I / SO-D-07.1-002 | R5.1 | TEST |
 | **REQ-SEC-06** | Context-Aware Output Encoding & Sanitization | CRA Annex I / SO-D-07.1-002 | R5.2 | TEST |
 | **REQ-SEC-07** | Cryptographic Billing Invariant Protection | CRA Annex I / SO-D-01.1-002 | R7.1, R7.2 | INSPECT |
-| **REQ-SEC-08** | Asymmetric HMAC Webhook Signature Verification | CRA Annex I / SO-D-05.1-002 | R7.1, R7.2 | TEST |
+| **REQ-SEC-08** | Cryptographic Webhook Origin Verification | CRA Annex I / SO-D-05.1-002 | R7.1, R7.2 | TEST |
 | **REQ-SEC-09** | Inbound API Token Mediation & Rate Limiting | CRA Annex I / SO-D-02.1-002 | R1.1, R4.2 | TEST |
 | **REQ-SEC-10** | Non-Repudiable Security Audit Logging | CRA Annex I / SO-D-03.1-002 | R1.1 to R8.2 | TEST |
 | **REQ-PRIV-01** | Registration Data Minimization by Default | GDPR Art. 5(1)(c) / PO-D-06.1-001 | R1.1 | INSPECT |
 | **REQ-PRIV-02** | Structured Personal Data Portability & Export | GDPR Art. 20 / PO-D-06.2-001 | R8.1 | DEMONSTRATE |
 | **REQ-PRIV-03** | Irreversible Data Subject Erasure & Pseudonymization | GDPR Art. 17 / PO-D-06.2-001 | R8.2 | TEST |
 | **REQ-PRIV-04** | Purpose Limitation & Activity History Segregation | GDPR Art. 5(1)(b) / PO-D-06.1-001 | R6.1, R6.2 | ANALYZE |
-| **REQ-PRIV-05** | Personal Data Encryption at Rest | GDPR Art. 32 / PO-D-01.1-001 | R1.1, R1.2, R8.1 | INSPECT |
-| **REQ-PRIV-06** | Mandatory End-to-End Transport Layer Encryption | GDPR Art. 32 / PO-D-01.2-001 | R1.1 to R8.2 | TEST |
+| **REQ-PRIV-05** | Personal Data Cryptographic Protection at Rest | GDPR Art. 32 / PO-D-01.1-001 | R1.1, R1.2, R8.1 | INSPECT |
+| **REQ-PRIV-06** | Mandatory End-to-End Transport Layer Cryptographic Protection | GDPR Art. 32 / PO-D-01.2-001 | R1.1 to R8.2 | TEST |
 | **REQ-PRIV-07** | Automated Orphan File Asset Cleanup & Expiration | GDPR Art. 5(1)(e) / PO-D-06.1-001 | R5.1 | TEST |
 | **REQ-PRIV-08** | Privacy Audit Trail for Personal Data Modifications | GDPR Art. 30 / PO-D-03.1-001 | R1.1, R1.2, R8.2 | INSPECT |
 

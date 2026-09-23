@@ -28,14 +28,14 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
 +-----------------------------------------------------------------------------------+
 |                        AEGIS PHASE 2 REGULATORY & DESIGN SPINE                    |
 +-----------------------------------------------------------------------------------+
-|  GDPR Regulatory Spine (PO-*)           |  CRA Regulatory Spine (SO-*)            |
-|  - PO-D-01.1-001: Data at Rest (AES-256)|  - SO-D-01.1-002: Secret Store Invariants|
-|  - PO-D-01.2-001: Data in Transit (TLS) |  - SO-D-02.1-002: Hardened Auth & RBAC  |
-|  - PO-D-03.1-001: Privacy Audit Logging |  - SO-D-02.2-002: Session Invalidation  |
-|  - PO-D-06.1-001: Data Minimization     |  - SO-D-03.1-002: Security Audit Logs   |
-|  - PO-D-06.2-001: Data Subject Rights   |  - SO-D-05.1-002: Rate Limiting & DoS   |
-|                                         |  - SO-D-07.1-002: Input Sanitization    |
-|                                         |  - SO-D-08.1-002: Webhook HMAC Signatures|
+|  GDPR Regulatory Spine (PO-*)                        |  CRA Regulatory Spine (SO-*)            |
+|  - PO-D-01.1-001: Data at Rest Cryptographic Protection| - SO-D-01.1-002: Secret Store Invariants|
+|  - PO-D-01.2-001: Data in Transit Protection         |  - SO-D-02.1-002: Hardened Auth & RBAC  |
+|  - PO-D-03.1-001: Privacy Audit Logging              |  - SO-D-02.2-002: Session Invalidation  |
+|  - PO-D-06.1-001: Data Minimization                  |  - SO-D-03.1-002: Security Audit Logs   |
+|  - PO-D-06.2-001: Data Subject Rights                |  - SO-D-05.1-002: Rate Limiting & DoS   |
+|                                                      |  - SO-D-07.1-002: Input Sanitization    |
+|                                                      |  - SO-D-08.1-002: Webhook Authentication|
 +-----------------------------------------+-----------------------------------------+
 |                  7 UNIVERSAL SECURE DESIGN PRINCIPLES (Doc02)                     |
 |  PRIN-ENG-01: Explicit Trust Boundaries & Complete Mediation (Saltzer & Schroeder)|
@@ -63,10 +63,10 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
   - `SO-D-02.1-002`: Requires memory-hard salted password hashing and credential hardening.
   - `SO-D-02.2-002`: Requires cryptographic session generation, 30-minute idle expiration, and immediate invalidation on logout.
   - `PO-D-06.1-001` & `PRIN-ENG-06`: Mandates data minimization during onboarding (name, email, credentials only).
-  - `PO-D-01.2-001`: Mandates mandatory TLS 1.3 transport encryption.
+  - `PO-D-01.2-001`: Mandates state-of-the-art cryptographic protection for all data in transit across external and inter-service channels.
   - `SO-D-03.1-002` & `PRIN-ENG-07`: Mandates security audit logging of failed authentication attempts.
 - **Synthesis Decisions:**
-  - Derive `REQ-SEC-02` (Credential Hardening), `REQ-SEC-03` (Session Invalidation), `REQ-PRIV-01` (Registration Minimization), `REQ-PRIV-06` (TLS 1.3), and `REQ-SEC-10` (Audit Logging).
+  - Derive `REQ-SEC-02` (Credential Hardening), `REQ-SEC-03` (Session Invalidation), `REQ-PRIV-01` (Registration Minimization), `REQ-PRIV-06` (Data in Transit Encryption), and `REQ-SEC-10` (Audit Logging).
 
 ### Capability 2: Workspaces and Teams (`R2.1`, `R2.2`, `R2.3` | `{U.C. 2.1}`, `{U.C. 2.2}`, `{U.C. 2.3}`)
 - **V0 Baseline Scope:** User creates workspace with URL slug, invites members, assigns roles, consults metrics.
@@ -131,15 +131,15 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
   - *Threat 1 (Forged Billing Webhooks):* Attacker sending mock HTTP POST requests to TinyTask's webhook endpoint claiming an enterprise plan was paid.
   - *Threat 2 (Replay Attacks):* Re-submitting previous valid payment notifications to extend subscriptions fraudulently.
 - **Phase 2 Driving Rules:**
-  - `SO-D-08.1-002` & `PRIN-ENG-02`: Asymmetric HMAC signature verification on all external webhook notifications.
+  - `SO-D-08.1-002` & `PRIN-ENG-02`: Cryptographic message authentication verification on all external webhook notifications.
   - `SO-D-01.1-002` & `PRIN-ENG-03`: Cryptographic verification of billing state invariants before granting quotas.
 - **Synthesis Decisions:**
-  - Derive `REQ-SEC-07` (Cryptographic Billing Invariant Protection) and `REQ-SEC-08` (Asymmetric HMAC Webhook Verification).
+  - Derive `REQ-SEC-07` (Cryptographic Billing Invariant Protection) and `REQ-SEC-08` (Cryptographic Webhook Origin Verification).
 
 ### Capability 8: Export Data and Close Accounts (`R8.1`, `R8.2` | `{U.C. 8.1}`, `{U.C. 8.2}`)
 - **V0 Baseline Scope:** Export profile/workspace data archive and deactivate account.
 - **Threat & Vulnerability Hypotheses:**
-  - *Threat 1 (Post-Closure Token Re-use):* Deactivated user account continues accessing APIs using previously issued JWT/session tokens.
+  - *Threat 1 (Post-Closure Token Re-use):* Deactivated user account continues accessing APIs using previously issued session tokens.
   - *Privacy Threat 2 (Incomplete Erasure):* Personal data remaining active in database backups and operational tables after account termination.
   - *Privacy Threat 3 (Third-Party Data Contamination):* Exporting workspace archives exposing personal contact details of unrelated individuals.
 - **Phase 2 Driving Rules:**
@@ -166,6 +166,6 @@ In accordance with Phase 2 §2, TinyTask SaaS resolves two key operational tensi
 ## 5. Output Summary of Step 2
 
 Step 2 successfully derives:
-- **10 CRA Security Requirements:** Covering multi-tenancy, authentication, sessions, RBAC, file uploads, XSS defense, billing invariants, webhook HMACs, rate limiting, and audit trails.
+- **10 CRA Security Requirements:** Covering multi-tenancy, authentication, sessions, RBAC, file uploads, XSS defense, billing invariants, webhook cryptographic origin verification, rate limiting, and audit trails.
 - **8 GDPR Privacy Requirements:** Covering onboarding minimization, portability, erasure, purpose limitation, encryption at rest, encryption in transit, file lifecycle cleanup, and privacy audit logs.
 - All 18 requirements are now ready for formal syntactic authoring in Step 3.

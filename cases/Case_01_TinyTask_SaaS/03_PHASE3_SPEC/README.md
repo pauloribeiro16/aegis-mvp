@@ -23,26 +23,27 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 ## 2. Document Map
 
 ### 2.1 [`Doc01_Requirements_Elicitation_and_PUC.md`](file:///c:/Users/paulo.ribeiro/OneDrive%20-%20Instituto%20CCG%20ZGDV/Ambiente%20de%20Trabalho/Projetos_PhD/aegis-mvp/cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/Doc01_Requirements_Elicitation_and_PUC.md)
-*Estrutura 1:1 com o padrão **GPTools E1.1 — Modelo AS-IS / TO-BE & Levantamento de Requisitos***:
-- **Parte I – Âmbito:** Objetivo, descrição do problema, posição do produto, impacto esperado, características principais, stakeholders, utilizadores do sistema e restrições.
-- **Parte II – As-Is:** Papéis em contexto empresarial, fluxos de processos manuais com tabelas de dados (`['Dados', 'Tipo de Dados', 'Obrigatoriedade']`) e suporte de TI.
-- **Parte III – To-Be:**
-  - Expectativas do cliente (`['Expectativas Iniciais', 'Descrição']`).
-  - Atores do sistema (`['Ator', 'Descrição']`).
-  - Tabela sumária de Requisitos Funcionais MoSCoW (`['ID', 'ID', 'Requisito', 'Prioridade', 'Restrições']`).
-  - **Tabelas de especificação detalhada de requisitos (R1 a R12)** com a estrutura exata de 7 linhas e 1 coluna do Word:
-    `ID / Nome`, `Descrição`, `Origem do Requisito`, `Interfaces`, `Dependências`, `Problemas Identificados`, `Prioridade`.
-  - Requisitos Não Funcionais (`['ID', 'Requisito', 'Prioridade', 'Tipo']`).
-  - Tabela sumária de Casos de Uso do Produto (PUC) (`['PUC', 'Nome do PUC', 'Atores/Utilizadores', 'Input e Output']`).
-  - Modelo de Casos de Uso com diagrama Mermaid de Nível 0 e descrição dos Casos de Uso de Nível 1.
+*Direct 1:1 structural fidelity with **GPTools E1.1 — AS-IS / TO-BE Model & Requirements Elicitation***:
+- **Part I – Scope:** Objective, Problem Description, Product Position Statement, Expected Impact, Key Features, Stakeholders, System Users, and Constraints.
+- **Part II – As-Is:** Business Roles in Context, Manual Workflow Processes with 3-column data tables (`['Data Field', 'Data Type', 'Mandatory']`), and IT Support.
+- **Part III – To-Be:**
+  - Initial Customer Expectations (`['Initial Expectations', 'Description']`).
+  - System Actors (`['Actor', 'Description']`).
+  - Summary Table of Functional Requirements MoSCoW (`['ID', 'ID', 'Requirement', 'Priority', 'Restrictions']`).
+  - **Individual Requirement Cards (R1 to R12)** formatted with the exact 7-row single-column card structure from Word:
+    `ID: R... Name: <Action Verb Phrase>`, `Description`, `Requirement Origin`, `Interfaces`, `Dependencies`, `Identified Problems`, `Priority`.
+  - Non-Functional Requirements (`['ID', 'Requirement', 'Priority', 'Type']`).
+  - Summary Table of Product Use Cases (PUC) (`['PUC', 'PUC Name', 'Actors / Users', 'Input and Output']`).
+  - System Use Case Model with Level-0 Mermaid diagram and Level-1 descriptions.
 
 ### 2.2 [`Doc02_System_Use_Cases.md`](file:///c:/Users/paulo.ribeiro/OneDrive%20-%20Instituto%20CCG%20ZGDV/Ambiente%20de%20Trabalho/Projetos_PhD/aegis-mvp/cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/Doc02_System_Use_Cases.md)
-*Estrutura 1:1 com o padrão **GPTools E1.2 — Análise de Requisitos & Casos de Uso***:
-- **Enquadramento Metodológico:** Abordagem Volere e Decomposição Triangular.
-- **Modelo de Contexto de Trabalho:** Diagrama Mermaid de contexto com atores humanos, núcleo da aplicação e serviços externos.
-- **Tabela Sumária de Casos de Uso do Produto (PUC):** Entradas (`in`) e saídas (`out`) para cada interação.
-- **Casos de Uso de Sistema (`{U.C. 1}` a `{U.C. 8}`):** Detalhamento até ao **Nível 1** (`{U.C.n.m}`), puramente funcional.
-- **Disciplina de Granularidade:** Estritamente até ao Nível 1. **Sem nós folha (*leaf nodes*)** (`{U.C.n.m.k}`) nem sequências passo-a-passo de execução.
+*Direct 1:1 structural fidelity with **GPTools E1.2 — Requirements Analysis & Use Cases***:
+- **Methodological Framework:** Volere Approach and Triangular Functional Decomposition.
+- **Work Context Model:** Mermaid context diagram with human actors, core platform services, and external integrations.
+- **Summary Table of Product Use Cases (PUC):** Input (`in`) and output (`out`) payloads for each interaction.
+- **Domain Application Use Cases (`{U.C. 1}` to `{U.C. 8}`):** Detailed strictly up to **Level 1** (`{U.C.n.m}`), purely functional.
+- **Granularity Discipline:** Refinement strictly up to Level 1. **Zero leaf nodes** (`{U.C.n.m.k}`) and **zero step-by-step procedural execution sequences**.
+- **Action Verb Phrasing:** All requirement titles, sub-requirement names, and use case names use active verbs (e.g. "Manage...", "Authenticate...", "Configure...").
 
 ---
 

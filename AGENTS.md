@@ -148,6 +148,19 @@ flowchart TD
   - When a cleanup removes such a note, record the fact once in the document's own changelog (or the commit message), never inline in the body.
   - Pointers to corpus or governance material are **bare functional references** (IDs + paths only): explanatory glosses, legacy-name expansions, floor/justification paragraphs and "full chain" narratives live in governance documents (AGENTS/SPEC/ADRs) or the document's own changelog — never in case/example/output bodies.
 - **R12 — Placeholder & Anchor Integrity in Documents:** No document under `cases/`, `templates/`, `example/`, `output/` may contain unresolved placeholders — `?` table cells, `?` segments inside paths (e.g. `NIST_CSF/?/X.json`), `TODO`/`FIXME` markers, or unfilled `<>` slots outside `templates/`. Every cited control-referential path must resolve under `baseline/CONTROLS/` (e.g. `NIST_CSF/<FUNCTION>/<ID>.json`); a row whose anchor cannot be resolved is **dropped** (or its cell filled with `—`), never marked with `?`. Verified mechanically: `python scripts/doc_lint.py --strict` (SPEC §8).
+- **R13 — Phase 3 Functional Specification Standard & Verb Phrasing:**
+  - **Structure & Reference Standard:** Phase 3 functional deliverables (`Doc01` and `Doc02`) must strictly mirror the structural layout, section headings, and table schemas of the GPTools reference deliverables (`E1.1 — Modelo AS-IS / TO-BE & Levantamento de Requisitos` and `E1.2 — Análise de Requisitos & Casos de Uso`). Never invent new table columns, wrapper properties, or layout conventions.
+  - **Action Verb Conjugation (No Nominalizations):** All requirement titles, sub-requirement names, and use case names MUST use active verbs in the infinitive/imperative (e.g., "Manage User Accounts", NOT "User Account Management"; "Manage Projects", NOT "Project Lifecycle"; "Gerir Tarefas", NOT "Gestão de Tarefas"). Conjugation must always be an active verb in English as in Portuguese.
+  - **Exact Requirement Card Anatomy (E1.1 Table 22 Standard):** Individual functional requirements must use the exact 7-row single-column card format:
+    1. `ID: R... Name: <Active Verb Phrase>`
+    2. `Description: ...`
+    3. `Requirement Origin: ...`
+    4. `Interfaces: ...`
+    5. `Dependencies:` (Stakeholders, Data Sources, Extraction Periodicity, Information Systems / Databases, Preceding Requirements)
+    6. `Identified Problems: ...`
+    7. `Priority: Must / Should / Could / Won't`
+  - **Use Case Granularity (E1.2 Standard):** Refinement stops strictly at **Level 1** (`{U.C.n.m}`). **Zero leaf nodes** (`{U.C.n.m.k}`) and **zero step-by-step procedural execution sequences** (Step 1, Step 2, etc.) in the functional baseline.
+  - **Strict Pure Functionality:** Functional specification documents must represent pure business/user capability. Never pre-bake security, cryptography, or privacy controls (these belong strictly to the AEGIS Phase 3 synthesis layer driven by Phase 2 Operational Objectives and autonomous skills).
 
 ---
 

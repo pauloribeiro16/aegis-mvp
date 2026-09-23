@@ -219,6 +219,23 @@ This subsection is the **canonical filling guide** for every card row. Whenever 
 
 **Standing meta-rule:** every user correction to a filling style is codified into this §3.3 (with a ✅/❌ pair) in the same working session, so future filling is deterministic and never drifts back to the rejected style.
 
+### 3.4 V1 Functional Evolution (Refinement Pass)
+
+The V0 baseline is locked to protect elicitation from pre-baked security (§2.3) — not to freeze the functional model forever. The V1 security & privacy synthesis legitimately reveals functional gaps that pure business elicitation cannot see: a brute-force lockout creates the new user goal *recover a locked account*; irreversible erasure creates the obligation to offer a final export before data loss. A V1 that only appends constraint rows leaves such gaps undiscovered until implementation. V1 therefore applies a controlled **Functional Refinement Pass** with an exhaustive change taxonomy:
+
+| Type | Change | Rule | ✅ / ❌ |
+|---|---|---|---|
+| **D1 — Derived requirement** | New card `Rn.x` for user-visible, Cockburn Sea-Level functionality demanded by an obligation (`RN` / `PO-` / `SO-` / regulation article) not covered by any V0 card | Continues the package numbering; generates the matching PUC and fully dressed use case in `Doc02`; all R13 standards apply (active verb, technology neutrality, scale discipline) | ✅ `R1.3 Recover access to a locked user account` (derived from the NFR-RN10/RN11 lockout behavior) · ❌ `R1.3 Session Management Module` (nominalized, pseudo-origin) |
+| **D2 — Description refinement** | `Description` rewritten so an absorbed constraint can actually bind | ID, origin and scope preserved; targeted use cases gain steps or extensions only — their Main Success Scenario is otherwise preserved | ✅ `R8.2` gains "presents a final personal data export option before irreversible erasure" · ❌ rewriting the card into a different capability |
+| **D3 — Priority re-evaluation** | MoSCoW priority elevation driven by a confirmed regulation | The regulatory driver (article + Phase 2 objective) is cited in the register; summary table, card, and traceability matrix are updated together | ✅ `R1.2` SHOULD → MUST (GDPR Art. 5(1)(d) + Art. 16 rectification via `PO-D-01.4-001`) · ❌ "this feels mandatory" |
+| **D4 — Card split** | One V0 card bundles capabilities with distinct security surfaces needing separate lifecycle or priority | Highest ceremony; old→new renumbering recorded; only when D1–D3 demonstrably cannot express the change | ✅ (rare) · ❌ splitting `R4.2` into "move card left" + "move card right" (clam-level, Anti-Pattern 3) |
+
+**Prohibited in the pass:** deleting or silently shrinking V0 scope; inventing functionality without a traceable driver; technology leakage in any new or refined text (§2.1 still applies); clam-level derived cards (§1.2).
+
+**Change Register (mandatory):** every functional change — including `evaluated, no change` rows — is recorded as `type → from/to → driving RN/PO/SO/article → rationale`, and the V1 document's Version History documents the pass in one row. Reference application: `cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/analysis_v0_to_v1/STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md`.
+
+**Relationship to Anti-Pattern 1 (§7):** the Pre-Baked Security/Privacy Trap bans security mechanisms in **V0 authoring**. A V1 *derived* functional requirement is legitimate precisely because it carries its regulatory lineage (`RN` → regulation article) and stays in pure functional terms at Sea Level: "Recover access to a locked account" is a user goal; "store passwords with bcrypt" is not.
+
 ---
 
 ## 4. Deliverable Doc02: System Use Cases (E1.2 Standard)

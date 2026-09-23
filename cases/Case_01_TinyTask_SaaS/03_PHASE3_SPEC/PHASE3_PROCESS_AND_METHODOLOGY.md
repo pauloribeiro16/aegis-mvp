@@ -108,6 +108,7 @@ Attempting to author functional requirements and security requirements simultane
 **The AEGIS Solution:** 
 1. Build **Version 0 (V0)** as a **100% pure functional baseline** representing only what the business and users need to accomplish.
 2. Formally synthesize Phase 2 rules against V0 to produce **Version 1 (V1)**, which defines the testable security constraints, fit criteria, and use case extension points without distorting the underlying functional model.
+3. Where the synthesis reveals a genuine functional gap — an obligation that requires user-visible, goal-level functionality absent from V0 — evolve the functional model through the controlled **Functional Refinement Pass (Step 4b)**: every change classified in the D1–D4 taxonomy, recorded in the Functional Evolution Register, with `v0_functional_baseline/` left untouched as the locked reference.
 
 ```mermaid
 flowchart TD
@@ -123,7 +124,7 @@ flowchart TD
         UC_V0["Sea-Level Use Cases ({U.C. 1.1} .. {U.C. 8.2})<br>Cockburn Main Success Scenarios"]
     end
 
-    subgraph Synth["Synthesis Process (Steps 2 & 3)"]
+    subgraph Synth["Synthesis Process (Steps 2, 3 & 4b)"]
         Matrix["Cross-Cutting Matrix & Asset Mapping"]
         EARS["EARS Formulation of Security & Privacy NFRs (RN)"]
     end
@@ -131,7 +132,7 @@ flowchart TD
     subgraph P3_V1["Phase 3 — Version 1 (Synthesized Baseline)"]
         Doc01_V1["Doc01: Requirements Elicitation<br>(+ Non-Functional Requirements & P2 Trace)"]
         Doc02_V1["Doc02: System Use Cases<br>(+ Security Preconditions, Extensions, Guarantees)"]
-        Doc03_V1["Doc03: Security & Privacy Requirements<br>(EARS Catalog + Verification Methods)"]
+        Doc03_V1["Functional Evolution Register<br>(STEP5: D1-D4 changes, analysis dossier)"]
     end
 
     P2 --> Synth
@@ -174,7 +175,7 @@ flowchart TD
      - GDPR-derived: consent tracking, data minimization, right to erasure, purpose limitation, subject export.
   3. Formulate unambiguous **Fit Criteria** (Volere standard) that define verifiable pass/fail thresholds.
   4. Bind each requirement to an empirical **Verification Method** (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`).
-- **Result:** Formal Security & Privacy Requirements Specification (`Doc03_Security_Privacy_Requirements.md`).
+- **Result:** The formulated EARS security & privacy requirement set (`RN9` onwards). Per the absorption rule (2026-09-23) it is absorbed into the V1 cards during Step 4 — no standalone catalog document is produced.
 
 ### Step 4: Functional Model Augmentation & Traceability Weaving (V1)
 - **Goal:** Embed security and privacy constraints into the functional model without disrupting functional purity.
@@ -185,9 +186,21 @@ flowchart TD
      - Add **Minimal Guarantees** to Postconditions (e.g., *Minimal Guarantee: No unauthorized data modification occurs; all access rejections are recorded in immutable audit logs*).
      - Add cross-reference tags to the corresponding security & privacy NFR cards (`RN9` onwards).
   2. **Update Functional Cards (`Doc01` in V1):**
-     - Populate the **Non-Functional Requirements Table** with explicit references to the security & privacy NFR specifications.
+     - Absorb each applicable NFR into its `R<n.m>` card as a **`Security & Privacy Constraints:` row** carrying the full `regulation article → Phase 2 rule → PRIN-ENG → control anchor` chain; keep cross-cutting NFRs standalone in the Quality Attributes table.
      - Add security and privacy dependency references to the `Dependencies` block of individual requirement cards.
-- **Result:** Updated `v1_security_privacy_synthesis/` containing augmented `Doc01`, `Doc02`, and `Doc03`.
+- **Result:** Updated `v1_security_privacy_synthesis/` containing augmented `Doc01` and `Doc02`, plus the analysis dossier.
+
+### Step 4b: Functional Refinement Pass (V1 Functional Evolution)
+- **Goal:** Let the synthesis legitimately evolve the functional model where it revealed genuine gaps — without corrupting V0 and without re-opening elicitation.
+- **Rationale:** Freezing V0 protects elicitation from premature security pre-baking, not functional progress. Security and privacy synthesis routinely exposes user-visible functionality that pure business elicitation could not see (e.g., a brute-force lockout creates the new user goal of recovering a locked account; irreversible erasure creates the obligation to offer a final export). A V1 that only appends constraint rows leaves those gaps undiscovered until implementation.
+- **Allowed change types (exhaustive taxonomy):**
+  - **D1 — Derived requirement:** an obligation (`RN` / `PO-` / `SO-` / regulation article) requires user-visible, Cockburn Sea-Level functionality not covered by any V0 card. Adds a new card continuing the canonical package numbering (`Rn.x`) and generates the matching PUC and fully dressed use case in `Doc02`. All R13 standards apply (active verb, technology neutrality, company-scale discipline).
+  - **D2 — Description refinement:** the synthesis reveals ambiguity or omission in a V0 card's `Description` that prevents an absorbed constraint from binding. Rewrites only the `Description` (ID, origin, and scope preserved); targeted use cases gain steps or extensions — their Main Success Scenario is otherwise preserved.
+  - **D3 — Priority re-evaluation:** a confirmed regulation converts a MoSCoW priority (typically `Should`/`Could` → `Must`). Requires the regulatory driver (article + Phase 2 objective) cited in the register; summary table, card, and traceability matrix are updated together.
+  - **D4 — Card split:** distinct security surfaces within one V0 card demand separate lifecycle or priority. Highest ceremony; old→new renumbering is recorded; use only when D1–D3 demonstrably cannot express the change.
+- **Prohibited:** deleting or silently shrinking V0 scope; inventing functionality without a traceable driver; technology leakage in any new or refined text; clam-level derived cards.
+- **Change Register (mandatory):** every functional change — including `evaluated, no change` rows — is recorded as `type → from/to → driving RN/PO/SO/article → rationale` in the analysis dossier (`STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md`), and the V1 document's Version History documents the pass in one row.
+- **Result:** An evolved V1 whose functional set is a registered, traceable refinement of V0; `v0_functional_baseline/` untouched.
 
 ---
 
@@ -205,22 +218,23 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 │   ├── Doc01_Requirements_Elicitation_and_PUC.md# 18 Functional Requirements & 18 PUCs (Pure Functional)
 │   └── Doc02_System_Use_Cases.md                # 18 Level-1 Sea-Level Use Cases (Main Success Scenarios)
 │
-└── v1_security_privacy_synthesis/               # [VERSION 1] Synthesized Functional & Security Baseline
-    ├── README.md                                # V1 Synthesis Scope, Added Safeguards, and Traceability
-    ├── Doc01_Requirements_Elicitation_and_PUC.md# Augmented Doc01 with Non-Functional Security/Privacy Bindings
-    ├── Doc02_System_Use_Cases.md                # Augmented Doc02 with Cockburn Security Extensions & Guarantees
-    └── Doc03_Security_Privacy_Requirements.md   # The Formal EARS Security & Privacy Requirements Specification
+├── v1_security_privacy_synthesis/               # [VERSION 1] Synthesized & Functionally Evolved Baseline
+│   ├── README.md                                # V1 Synthesis Scope, Absorbed Constraints, and Refinement Pass
+│   ├── Doc01_Requirements_Elicitation_and_PUC.md# Absorbed Security/Privacy Constraints + Functional Refinement Pass (D1-D4)
+│   └── Doc02_System_Use_Cases.md                # Cockburn Security Extensions, Guarantees, and Derived Use Cases
+│
+└── analysis_v0_to_v1/                           # STEP1-STEP5 dossiers + V0/V1/V2 analysis tables (incl. Functional Evolution Register)
 ```
 
 ### Comparative Evolution Matrix
 
 | Dimension | Version 0 (Functional Baseline) | Version 1 (Security/Privacy Synthesis) | Downstream Phase 4 (Verification / Impl.) |
 |---|---|---|---|
-| **Primary Focus** | What the business & user need to achieve | How the system protects assets & complies with law | How the implementation is built and verified |
+| **Primary Focus** | What the business & user need to achieve | How the system protects assets & complies with law; functional gaps revealed by the synthesis are closed (Step 4b) | How the implementation is built and verified |
 | **Input Sources** | Stakeholder goals, As-Is workflows, Product scope | V0 Functional Baseline + Phase 2 `PO-` and `SO-` | V1 Specification + Architecture Decisions |
 | **Security Controls** | Zero (strictly excluded) | Fully specified via EARS (security & privacy NFRs `RN9`+) | Implemented as code, tests, CI/CD gates |
-| **Use Case Content** | Main Success Scenario (Sea-Level) | MSS + Security Preconditions + Threat Extensions | Concrete UI/API procedural execution scripts |
-| **Traceability** | Business Event -> Requirement -> PUC -> Use Case | Phase 2 Rules <-> Functional Scope <-> Security Reqs | Specification <-> Test Cases <-> Code Units |
+| **Use Case Content** | Main Success Scenario (Sea-Level) | MSS + Security Preconditions + Threat Extensions + derived use cases (D1) | Concrete UI/API procedural execution scripts |
+| **Traceability** | Business Event -> Requirement -> PUC -> Use Case | Phase 2 Rules <-> Functional Scope <-> Security Reqs <-> Functional Change Register | Specification <-> Test Cases <-> Code Units |
 | **Technology Neutrality**| Absolute (zero vendors, frameworks, protocols)| Absolute (pure functional security constraints) | Concrete technology stack selections |
 
 ---
@@ -269,7 +283,8 @@ Before declaring Phase 3 complete, verify that:
 - [ ] **V0 Functional Integrity:** `v0_functional_baseline/` contains only pure functional requirements and use cases, with zero pre-baked security or vendor names.
 - [ ] **Granularity Standard:** Every use case is at Cockburn Sea-Level (Level 1). Zero clam-level UI sequences.
 - [ ] **Verbal Phrasing:** 100% of requirement titles, sub-requirements, and use case names use active verbs in the infinitive.
-- [ ] **EARS Compliance:** 100% of security and privacy requirements in `Doc03` follow the EARS syntax templates.
+- [ ] **EARS Compliance:** 100% of security and privacy NFRs (`RN9` onwards) follow the EARS syntax templates.
+- [ ] **Functional Evolution Control:** Every V1 functional change is classified in the D1–D4 taxonomy and recorded in the Functional Evolution Register with its `RN`/`PO-`/`SO-`/article driver; `v0_functional_baseline/` files are untouched.
 - [ ] **Empirical Verification:** Every security requirement defines an unambiguous Fit Criterion and specifies one of the four ISO 29148 verification methods (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`).
 - [ ] **Bidirectional Traceability:** A complete traceability matrix connects Phase 2 `PO-` and `SO-` objectives to functional requirements `R...`, use cases `{U.C. ...}`, and the security & privacy NFRs (`RN9` onwards).
 - [ ] **Tooling Integrity:** Running `python scripts/doc_lint.py --strict` passes with 0 findings across the entire repository.

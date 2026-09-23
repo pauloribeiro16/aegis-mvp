@@ -222,9 +222,8 @@ Deliverable `Doc02` mirrors `E1.2 – GPTools_AnáliseRequisitos_CasosDeUso_V4.0
      - **Extensions (Alternative & Exception Flows):** Branching conditions, business rule variations, and error recovery paths (e.g., `2a`, `3a`), ensuring comprehensive exception handling.
      - **Success Guarantees (Postconditions):** What the system guarantees upon successful completion.
      - **Minimal Guarantees:** What the system guarantees even if the goal fails (data integrity, rollback, audit recording).
-     - **UML Sequence Diagram (Native Markdown via Mermaid):** An embedded Mermaid `sequenceDiagram` visualizing the chronological message exchange, system validations, and alternative flows (`alt` / `else` / `opt` frames) between the Actor, System Boundary, and Supporting Services.
 4. **Macro UML Use Case Diagrams:**
-   - Each macro use case group (`{U.C. 1}` to `{U.C. N}`) must be preceded by a Mermaid UML Use Case Diagram (`flowchart LR`), linking human actors and external services to oval user goal nodes in standard UML style.
+   - Each macro use case group (`{U.C. 1}` to `{U.C. N}`) must be preceded by an error-free Mermaid UML Use Case Diagram (`flowchart LR`), linking human actors and external services to oval user goal nodes in standard UML style, avoiding reserved bracket characters inside labels.
 
 ---
 
@@ -253,7 +252,7 @@ Before declaring any Phase 3 functional baseline deliverable complete, verify:
 - [ ] **Dependencies Check:** Verify that `Preceding Requirements:` is empty by default (>90% blank) and `Information Systems / Databases:` contains only technology-neutral terms.
 - [ ] **Restrictions Check:** Verify that the `Restrictions` column in the MoSCoW summary table is empty by default.
 - [ ] **Granularity Check:** Verify that `Doc02` contains zero leaf nodes (`{U.C.n.m.k}`) and zero procedural execution steps.
-- [ ] **UML Diagram Check:** Verify that every macro use case has a Mermaid UML Use Case Diagram and every Level-1 use case has a Mermaid UML Sequence Diagram detailing the behavioral exchange and alternative flows.
+- [ ] **UML Diagram Check:** Verify that every macro use case has a valid, error-free Mermaid UML Use Case Diagram (`flowchart LR`) depicting actors and user goals.
 - [ ] **Anti-Pattern Check:** Review all cards against Section 7 to ensure none of the 8 anti-patterns are present.
 - [ ] **doc_lint Check:** Run `python scripts/doc_lint.py --strict` and ensure 0 findings are returned.
 

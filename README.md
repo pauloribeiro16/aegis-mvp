@@ -55,9 +55,14 @@ aegis-mvp/
 ├── input/<company>/     one directory per company run
 ├── output/<company>/    one output per company run
 ├── cases/               benchmark reference cases from Methodology_compact
-│   └── Case_01_TinyTask_SaaS/
-│       ├── 01_PHASE1_CONTEXT/  Phase 1 contextual deliverables (Doc01 to Doc06)
-│       └── filtered_corpus/    deterministic composed case slice (active-reg modules verbatim, zero summaries)
+│   ├── Case_01_TinyTask_SaaS/
+│   │   ├── 01_PHASE1_CONTEXT/  Phase 1 contextual deliverables (Doc01 to Doc06)
+│   │   └── filtered_corpus/    deterministic composed case slice (active-reg modules verbatim, zero summaries)
+│   └── Case_02_SecureBorder_Solutions/
+│       ├── 01_PHASE1_CONTEXT/  Phase 1 deliverables (GDPR+CRA+NIS2+AI_Act, 35 active sub-domains)
+│       ├── 02_PHASE2_RULES/    Phase 2 operational objectives + secure design principles
+│       ├── 03_PHASE3_SPEC/     Phase 3 functional baseline (GPTools E1.1 + E1.2)
+│       └── filtered_corpus/    deterministic composed case slice (GDPR CRA NIS2 AI_Act)
 ├── example/             golden example: fictional company, real anchors
 └── scripts/             automation utilities
     ├── modularize_domains.py          merged Parts 1-4 → modular per-regulation layout (deterministic)

@@ -66,10 +66,15 @@ aegis-mvp/
 ├── input/                  # Target company inputs: input/<company>/company_input.md
 ├── output/                 # Target company outputs: output/<company>/phase1_output.md
 ├── cases/                  # Reference benchmark cases from the full methodology
-│   └── Case_01_TinyTask_SaaS/
-│       ├── 01_PHASE1_CONTEXT/  # Case deliverables (Doc01 intake + Doc02 adjusted goals)
-│       └── filtered_corpus/    # Case-specific deterministic corpus slice (NO summaries, verbatim in-scope only)
-│           └── index.md        # Slice index of in-scope sub-domains and articles
+│   ├── Case_01_TinyTask_SaaS/
+│   │   ├── 01_PHASE1_CONTEXT/  # Case deliverables (Doc01 intake + Doc02 adjusted goals)
+│   │   └── filtered_corpus/    # Case-specific deterministic corpus slice (NO summaries, verbatim in-scope only)
+│   │       └── index.md        # Slice index of in-scope sub-domains and articles
+│   └── Case_02_SecureBorder_Solutions/
+│       ├── 01_PHASE1_CONTEXT/  # Doc01 intake + Doc02 adjusted goals (GDPR+CRA+NIS2+AI_Act, 35 active)
+│       ├── 02_PHASE2_RULES/    # Doc01 operational objectives + Doc02 secure design principles
+│       ├── 03_PHASE3_SPEC/     # Doc01 requirements elicitation & PUC (E1.1) + Doc02 system use cases (E1.2)
+│       └── filtered_corpus/    # Deterministic corpus slice (GDPR CRA NIS2 AI_Act) + index.md
 ├── scripts/
 │   ├── modularize_domains.py          # Deterministic splitter: merged Parts 1-4 → modular per-regulation layout
 │   └── generate_case_corpus_slice.py  # Deterministic composer: case slice from modular modules (no deletion filtering)

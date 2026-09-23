@@ -30,7 +30,7 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/analysis_v0_to_v1/
 ├── README.md                                                     # (This file) Overview of cognitive trajectory and synthesis pipeline
 ├── STEP1_V0_FUNCTIONAL_AUDIT_AND_BOUNDARY_ANALYSIS.md            # Step 1: Deep audit of V0 pure functional baseline, assets, and boundaries
 ├── STEP2_REGULATORY_CROSS_CUTTING_AND_THREAT_DERIVATION.md       # Step 2: Juxtaposition of Phase 2 rules against V0 capabilities & threat modeling
-├── STEP3_EARS_REQUIREMENT_FORMULATION_AND_FIT_CRITERIA.md        # Step 3: Formulating REQ-SEC-* and REQ-PRIV-* using EARS & Volere fit criteria
+├── STEP3_EARS_REQUIREMENT_FORMULATION_AND_FIT_CRITERIA.md        # Step 3: Formulating the security & privacy NFRs (RN9–RN26) using EARS & Volere fit criteria
 └── STEP4_FUNCTIONAL_AUGMENTATION_AND_TRACEABILITY_WEAVING.md     # Step 4: Weaving security into Doc01 and Doc02 (Cockburn extensions & diffs)
 ```
 
@@ -54,7 +54,7 @@ flowchart TD
     end
 
     subgraph Step3["Step 3: EARS Formulation & Fit Criteria"]
-        EARS_Draft["Synthesize 10 REQ-SEC & 8 REQ-PRIV<br>Apply EARS Sentence Patterns"]
+        EARS_Draft["Synthesize 18 Security & Privacy NFRs (RN9–RN26)<br>Apply EARS Sentence Patterns"]
         Fit_Criteria["Establish Volere Fit Criteria &<br>ISO 29148 Verification Methods"]
         Threat --> EARS_Draft
         EARS_Draft --> Fit_Criteria

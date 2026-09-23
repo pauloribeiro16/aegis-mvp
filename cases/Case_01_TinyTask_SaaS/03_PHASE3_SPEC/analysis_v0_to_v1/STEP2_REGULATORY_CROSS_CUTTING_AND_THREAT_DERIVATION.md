@@ -66,7 +66,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
   - `PO-D-01.2-001`: Mandates state-of-the-art cryptographic protection for all data in transit across external and inter-service channels.
   - `SO-D-03.1-002` & `PRIN-ENG-07`: Mandates security audit logging of failed authentication attempts.
 - **Synthesis Decisions:**
-  - Derive `REQ-SEC-02` (Credential Hardening), `REQ-SEC-03` (Session Invalidation), `REQ-PRIV-01` (Registration Minimization), `REQ-PRIV-06` (Data in Transit Encryption), and `REQ-SEC-10` (Audit Logging).
+  - Derive `RN10` (Credential Hardening), `RN11` (Session Invalidation), `RN19` (Registration Minimization), `RN24` (Data in Transit Encryption), and `RN18` (Audit Logging).
 
 ### Capability 2: Workspaces and Teams (`R2.1`, `R2.2`, `R2.3` | `{U.C. 2.1}`, `{U.C. 2.2}`, `{U.C. 2.3}`)
 - **V0 Baseline Scope:** User creates workspace with URL slug, invites members, assigns roles, consults metrics.
@@ -78,7 +78,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
   - `PRIN-ENG-04`: Fail-safe defaults (default-deny catch-all on unauthorized operations).
   - `SO-D-03.1-002`: Non-repudiable audit logging of all role modifications.
 - **Synthesis Decisions:**
-  - Derive `REQ-SEC-01` (Multi-Tenant Data Isolation) and `REQ-SEC-04` (Role-Based Access Control).
+  - Derive `RN9` (Multi-Tenant Data Isolation) and `RN12` (Role-Based Access Control).
 
 ### Capability 3: Manage Projects (`R3.1`, `R3.2` | `{U.C. 3.1}`, `{U.C. 3.2}`)
 - **V0 Baseline Scope:** Team members create projects and archive completed projects.
@@ -89,7 +89,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
   - `SO-D-02.1-002`: RBAC role enforcement (Admin role required for lifecycle state changes).
   - `PRIN-ENG-01`: Tenant boundary isolation.
 - **Synthesis Decisions:**
-  - Bind `REQ-SEC-01` and `REQ-SEC-04` to project creation and archiving workflows.
+  - Bind `RN9` and `RN12` to project creation and archiving workflows.
 
 ### Capability 4: Manage and Execute Tasks (`R4.1`, `R4.2`, `R4.3` | `{U.C. 4.1}`, `{U.C. 4.2}`, `{U.C. 4.3}`)
 - **V0 Baseline Scope:** Create tasks, transition states on Kanban boards, configure recurrence.
@@ -100,7 +100,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
   - `SO-D-05.1-002` & `PRIN-ENG-02`: Rate limiting and peripheral resilience against request flooding.
   - `SO-D-02.1-002`: Continuous tenant context evaluation.
 - **Synthesis Decisions:**
-  - Derive `REQ-SEC-09` (Inbound API Rate Limiting) and bind `REQ-SEC-01`.
+  - Derive `RN17` (Inbound API Rate Limiting) and bind `RN9`.
 
 ### Capability 5: Collaborate on Deliverables (`R5.1`, `R5.2` | `{U.C. 5.1}`, `{U.C. 5.2}`)
 - **V0 Baseline Scope:** Upload deliverable files (25 MB cap) and post Markdown task comments.
@@ -112,7 +112,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
   - `SO-D-07.1-002` & `PRIN-ENG-02`: Input validation, magic-byte file signature validation, and context-aware output encoding.
   - `PO-D-06.1-001` & `PRIN-ENG-06`: Automated lifecycle expiration of orphaned files within 14 days.
 - **Synthesis Decisions:**
-  - Derive `REQ-SEC-05` (File Upload Strict Validation), `REQ-SEC-06` (Context-Aware Output Encoding), and `REQ-PRIV-07` (Orphan File Asset Cleanup).
+  - Derive `RN13` (File Upload Strict Validation), `RN14` (Context-Aware Output Encoding), and `RN25` (Orphan File Asset Cleanup).
 
 ### Capability 6: Track Activity History & Notifications (`R6.1`, `R6.2` | `{U.C. 6.1}`, `{U.C. 6.2}`)
 - **V0 Baseline Scope:** Consult chronological audit trail on task cards; receive email notifications.
@@ -123,7 +123,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
   - `SO-D-03.1-002` & `PRIN-ENG-07`: Append-only, tamper-resistant security audit logs.
   - `PO-D-06.1-001` & `PRIN-ENG-06`: Purpose limitation on operational logs.
 - **Synthesis Decisions:**
-  - Derive `REQ-SEC-10` (Non-Repudiable Security Audit Logging) and `REQ-PRIV-04` (Purpose Limitation).
+  - Derive `RN18` (Non-Repudiable Security Audit Logging) and `RN22` (Purpose Limitation).
 
 ### Capability 7: Manage Commercial Subscriptions (`R7.1`, `R7.2` | `{U.C. 7.1}`, `{U.C. 7.2}`)
 - **V0 Baseline Scope:** Upgrade commercial tiers, handle payment sessions, enforce 7-day grace period.
@@ -134,7 +134,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
   - `SO-D-08.1-002` & `PRIN-ENG-02`: Cryptographic message authentication verification on all external webhook notifications.
   - `SO-D-01.1-002` & `PRIN-ENG-03`: Cryptographic verification of billing state invariants before granting quotas.
 - **Synthesis Decisions:**
-  - Derive `REQ-SEC-07` (Cryptographic Billing Invariant Protection) and `REQ-SEC-08` (Cryptographic Webhook Origin Verification).
+  - Derive `RN15` (Cryptographic Billing Invariant Protection) and `RN16` (Cryptographic Webhook Origin Verification).
 
 ### Capability 8: Export Data and Close Accounts (`R8.1`, `R8.2` | `{U.C. 8.1}`, `{U.C. 8.2}`)
 - **V0 Baseline Scope:** Export profile/workspace data archive and deactivate account.
@@ -147,7 +147,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
   - `PO-D-01.1-001`: Encryption at rest for generated export archives.
   - `SO-D-02.2-002`: Emergency server-side token invalidation upon account termination.
 - **Synthesis Decisions:**
-  - Derive `REQ-PRIV-02` (Structured Data Portability), `REQ-PRIV-03` (Irreversible Erasure & Pseudonymization), `REQ-PRIV-05` (Encryption at Rest), and `REQ-SEC-03` (Immediate Token Invalidation).
+  - Derive `RN20` (Structured Data Portability), `RN21` (Irreversible Erasure & Pseudonymization), `RN23` (Encryption at Rest), and `RN11` (Immediate Token Invalidation).
 
 ---
 
@@ -156,10 +156,10 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
 In accordance with Phase 2 §2, TinyTask SaaS resolves two key operational tensions:
 1. **Tension T-M-002 (Integrated Security & Privacy by Design):**
    - *Conflict:* CRA demands deep logging and system observability, while GDPR demands strict data minimization.
-   - *Harmonized Specification:* `REQ-SEC-10` records security-relevant metadata (timestamp, user ID, IP address, action), while `REQ-PRIV-01` and `REQ-PRIV-03` ensure that personal descriptions, sensitive notes, and plaintext passwords are never included in log streams.
+   - *Harmonized Specification:* `RN18` records security-relevant metadata (timestamp, user ID, IP address, action), while `RN19` and `RN21` ensure that personal descriptions, sensitive notes, and plaintext passwords are never included in log streams.
 2. **Tension T-001 (Audit Retention vs. Right to Erasure):**
    - *Conflict:* GDPR Art. 17 grants users the right to delete their personal data, but financial and security audit trails must maintain historical integrity.
-   - *Harmonized Specification:* `REQ-PRIV-03` purges user contact information and credentials, while replacing historical authorship with an irreversible cryptographic pseudonym (`Deactivated User [ID: 9481]`), preserving system consistency without violating data subject rights.
+   - *Harmonized Specification:* `RN21` purges user contact information and credentials, while replacing historical authorship with an irreversible cryptographic pseudonym (`Deactivated User [ID: 9481]`), preserving system consistency without violating data subject rights.
 
 ---
 

@@ -34,7 +34,7 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
     ├── README.md                                # V1 Synthesis Scope, Added Safeguards, and Traceability
     ├── Doc01_Requirements_Elicitation_and_PUC.md# Augmented Doc01: Functional Cards + Non-Functional Security/Privacy Table 7b
     ├── Doc02_System_Use_Cases.md                # Augmented Doc02: 18 Sea-Level Use Cases with Security Preconditions & Extensions
-    └── Doc03_Security_Privacy_Requirements.md   # The Master Security & Privacy Specification (10 CRA REQ-SEC + 8 GDPR REQ-PRIV)
+    └── Doc03_Security_Privacy_Requirements.md   # The Master Security & Privacy Specification (18 NFRs, RN9–RN26)
 ```
 
 ---
@@ -67,7 +67,7 @@ All specifications in this directory are governed by [`PHASE3_PROCESS_AND_METHOD
 ### Version 1: Security & Privacy Synthesis (`v1_security_privacy_synthesis/`)
 - **Status:** Approved.
 - **Content:** Synthesis of Phase 2 GDPR/CRA Operational Objectives (`PO-` and `SO-`) and 7 Secure Design Principles (`PRIN-ENG-01` to `PRIN-ENG-07`) against the V0 functional baseline.
-- **Deliverables:** Augmented `Doc01` and `Doc02`, plus the new normative specification [`Doc03_Security_Privacy_Requirements.md`](v1_security_privacy_synthesis/Doc03_Security_Privacy_Requirements.md) containing 10 CRA Product Security (`REQ-SEC-*`) and 8 GDPR Privacy (`REQ-PRIV-*`) requirements in EARS syntax.
+- **Deliverables:** Augmented `Doc01` and `Doc02`, plus the new normative specification [`Doc03_Security_Privacy_Requirements.md`](v1_security_privacy_synthesis/Doc03_Security_Privacy_Requirements.md) containing 10 CRA Product Security and 8 GDPR Privacy requirements (`RN9`–`RN26`) in EARS syntax.
 
 ---
 

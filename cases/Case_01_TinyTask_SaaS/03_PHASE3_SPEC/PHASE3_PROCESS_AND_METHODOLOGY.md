@@ -125,7 +125,7 @@ flowchart TD
 
     subgraph Synth["Synthesis Process (Steps 2 & 3)"]
         Matrix["Cross-Cutting Matrix & Asset Mapping"]
-        EARS["EARS Formulation of REQ-SEC & REQ-PRIV"]
+        EARS["EARS Formulation of Security & Privacy NFRs (RN)"]
     end
 
     subgraph P3_V1["Phase 3 — Version 1 (Synthesized Baseline)"]
@@ -170,8 +170,8 @@ flowchart TD
 - **Process:**
   1. Transform Phase 2 operational goals into concrete, technology-neutral system requirements using EARS sentence templates.
   2. Assign canonical identifiers:
-     - `REQ-SEC-NNN`: CRA-derived technical security requirements (integrity, authentication, access control, audit, cryptography, vulnerability management).
-     - `REQ-PRIV-NNN`: GDPR-derived privacy requirements (consent tracking, data minimization, right to erasure, purpose limitation, subject export).
+     - Security & privacy requirements continue the existing `RN` numbering (e.g. `RN9` onwards, after the base NFR table), with the regulatory driver (CRA or GDPR) carried as data in the requirement's upstream-origin column — never as an ID prefix. CRA-derived: integrity, authentication, access control, audit, cryptography, vulnerability management.
+     - GDPR-derived: consent tracking, data minimization, right to erasure, purpose limitation, subject export.
   3. Formulate unambiguous **Fit Criteria** (Volere standard) that define verifiable pass/fail thresholds.
   4. Bind each requirement to an empirical **Verification Method** (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`).
 - **Result:** Formal Security & Privacy Requirements Specification (`Doc03_Security_Privacy_Requirements.md`).
@@ -183,9 +183,9 @@ flowchart TD
      - Add **Security Preconditions** (e.g., *Actor must possess an authenticated, valid session token authorized for the target tenant*).
      - Add **Cockburn Extensions (Alternative Flows)** for security and threat scenarios (e.g., *3a. Invalid credentials provided: System increments failure counter, logs event, and rejects authentication without indicating which field failed*).
      - Add **Minimal Guarantees** to Postconditions (e.g., *Minimal Guarantee: No unauthorized data modification occurs; all access rejections are recorded in immutable audit logs*).
-     - Add cross-reference tags to corresponding `REQ-SEC-*` and `REQ-PRIV-*` cards.
+     - Add cross-reference tags to the corresponding security & privacy NFR cards (`RN9` onwards).
   2. **Update Functional Cards (`Doc01` in V1):**
-     - Populate the **Non-Functional Requirements Table** with explicit references to the `REQ-SEC-*` and `REQ-PRIV-*` specifications.
+     - Populate the **Non-Functional Requirements Table** with explicit references to the security & privacy NFR specifications.
      - Add security and privacy dependency references to the `Dependencies` block of individual requirement cards.
 - **Result:** Updated `v1_security_privacy_synthesis/` containing augmented `Doc01`, `Doc02`, and `Doc03`.
 
@@ -218,7 +218,7 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 |---|---|---|---|
 | **Primary Focus** | What the business & user need to achieve | How the system protects assets & complies with law | How the implementation is built and verified |
 | **Input Sources** | Stakeholder goals, As-Is workflows, Product scope | V0 Functional Baseline + Phase 2 `PO-` and `SO-` | V1 Specification + Architecture Decisions |
-| **Security Controls** | Zero (strictly excluded) | Fully specified via EARS (`REQ-SEC-*`, `REQ-PRIV-*`) | Implemented as code, tests, CI/CD gates |
+| **Security Controls** | Zero (strictly excluded) | Fully specified via EARS (security & privacy NFRs `RN9`+) | Implemented as code, tests, CI/CD gates |
 | **Use Case Content** | Main Success Scenario (Sea-Level) | MSS + Security Preconditions + Threat Extensions | Concrete UI/API procedural execution scripts |
 | **Traceability** | Business Event -> Requirement -> PUC -> Use Case | Phase 2 Rules <-> Functional Scope <-> Security Reqs | Specification <-> Test Cases <-> Code Units |
 | **Technology Neutrality**| Absolute (zero vendors, frameworks, protocols)| Absolute (pure functional security constraints) | Concrete technology stack selections |
@@ -231,7 +231,7 @@ To maintain the highest professional standard of requirements engineering, autho
 
 ### 1. The Pre-Baked Security/Privacy Trap
 - **Anti-Pattern:** Writing *"User enters password which is encrypted using Argon2id"* in a functional requirement card.
-- **Remedy:** Keep functional cards focused on the business capability (*"Authenticate User Identity"*). Specify the cryptographic strength and algorithm constraints in `Doc03_Security_Privacy_Requirements.md` under `REQ-SEC-*`.
+- **Remedy:** Keep functional cards focused on the business capability (*"Authenticate User Identity"*). Specify the cryptographic strength and algorithm constraints in `Doc03_Security_Privacy_Requirements.md` under the security & privacy NFR IDs.
 
 ### 2. The Technology Leakage Trap
 - **Anti-Pattern:** Writing *"Store task records in PostgreSQL database hosted in AWS Frankfurt"*.
@@ -271,5 +271,5 @@ Before declaring Phase 3 complete, verify that:
 - [ ] **Verbal Phrasing:** 100% of requirement titles, sub-requirements, and use case names use active verbs in the infinitive.
 - [ ] **EARS Compliance:** 100% of security and privacy requirements in `Doc03` follow the EARS syntax templates.
 - [ ] **Empirical Verification:** Every security requirement defines an unambiguous Fit Criterion and specifies one of the four ISO 29148 verification methods (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`).
-- [ ] **Bidirectional Traceability:** A complete traceability matrix connects Phase 2 `PO-` and `SO-` objectives to functional requirements `R...`, use cases `{U.C. ...}`, and security requirements `REQ-SEC-*` / `REQ-PRIV-*`.
+- [ ] **Bidirectional Traceability:** A complete traceability matrix connects Phase 2 `PO-` and `SO-` objectives to functional requirements `R...`, use cases `{U.C. ...}`, and the security & privacy NFRs (`RN9` onwards).
 - [ ] **Tooling Integrity:** Running `python scripts/doc_lint.py --strict` passes with 0 findings across the entire repository.

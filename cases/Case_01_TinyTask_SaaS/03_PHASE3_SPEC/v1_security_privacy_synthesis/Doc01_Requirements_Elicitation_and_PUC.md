@@ -261,8 +261,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow prospective users to create an account with email verification, authenticate using valid credentials to establish an active session, and autonomously request password reset assistance via email. |
 | **Requirement Origin:** Founders Business Case & User Onboarding Workflow |
 | **Security & Privacy Constraints:**<br>**NFR-RN10** Credential Hardening & Salted Hashing — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.1-002, SO-D-01.1-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-01<br>**NFR-RN11** Cryptographic Session Management & Invalidation — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.2-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-02<br>**NFR-RN19** Registration Data Minimization by Default — `GDPR Art. 5(1)(c)` → `PO-D-06.1-001` → `PRIN-ENG-06` → CSF PR.DS-10, GV.OC-03 / PF CT.DP-P2 |
-| **Interfaces:** Unauthenticated Visitor, Registered User, and Notification / Email Service |
-| **Dependencies:**<br>• **Stakeholders:** Platform Founders, All End Users<br>• **Data Sources:** Registration Form, Login Form, Password Reset Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Interfaces:** Registration screen; Login screen; Password recovery flow; Transactional email interface |
+| **Dependencies:**<br>• **Stakeholders:** Platform Founders, All End Users<br>• **Data Sources:** Registration form submissions; Credential verification requests; Password reset requests<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Identity and Credential Store; Notification / Email Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -274,8 +274,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow an authenticated user to view and update their personal profile details (full name, avatar image, and contact details) and configure notification preferences. |
 | **Requirement Origin:** User Account Personalization Needs |
 | **Security & Privacy Constraints:**<br>**NFR-RN23** Personal Data Cryptographic Protection at Rest — `GDPR Art. 32(1)(a) + Art. 5(1)(f)` → `PO-D-01.1-001` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-10 / PF PR.DS-P1<br>**NFR-RN26** Privacy Audit Trail for Personal Data Modifications — `GDPR Art. 30` → `PO-D-03.1-001` → `PRIN-ENG-07` → CSF PR.PT-01, DE.CM-01 / PF CM.AW-P2 |
-| **Interfaces:** Authenticated User |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Profile Settings Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Interfaces:** Profile settings screen; Notification preferences panel |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Profile update submissions; Preference selections<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (user profile records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Should |
 
@@ -291,8 +291,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow an authenticated user to instantiate an isolated organizational workspace by specifying a workspace name and unique URL slug, automatically assigning the creator as Workspace Owner and permitting subsequent configuration of workspace branding and organization name. |
 | **Requirement Origin:** Multi-Tenant Organization Needs & Customer Expectation EXP-01 |
 | **Security & Privacy Constraints:**<br>**NFR-RN9** Multi-Tenant Data Isolation & Mediation — `CRA Annex I Part I (2)(d)` → `SO-D-02.1-002` → `PRIN-ENG-03` → CSF PR.AA-05, PR.DS-01 |
-| **Interfaces:** Workspace Owner and Workspace Admin |
-| **Dependencies:**<br>• **Stakeholders:** Platform Founders, Business Customers<br>• **Data Sources:** Workspace Creation and Settings Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database, File Storage Service<br>• **Preceding Requirements:** |
+| **Interfaces:** Workspace setup wizard; Organization branding settings |
+| **Dependencies:**<br>• **Stakeholders:** Platform Founders, Business Customers<br>• **Data Sources:** Workspace creation form; Branding configuration<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (workspace registry); File Storage Service (branding assets)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -304,8 +304,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow Workspace Admins and Owners to invite team members via email, assign access roles (Owner, Admin, Member, Viewer) that govern operational permissions within the workspace, modify member roles, or revoke membership, respecting active seat limits. |
 | **Requirement Origin:** Team Collaboration Needs & Governance |
 | **Security & Privacy Constraints:**<br>**NFR-RN12** Role-Based Access Control & Action Mediation — `CRA Annex I Part I (2)(d)` → `SO-D-02.1-002` → `PRIN-ENG-03` → CSF PR.AA-05, PR.AA-06 |
-| **Interfaces:** Workspace Admin, Workspace Owner, and Notification / Email Service |
-| **Dependencies:**<br>• **Stakeholders:** Team Leads, Project Managers<br>• **Data Sources:** Member Invitation Form, Membership Roster<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Interfaces:** Member invitation dialog; Role management console; Invitation email interface |
+| **Dependencies:**<br>• **Stakeholders:** Team Leads, Project Managers<br>• **Data Sources:** Invitation submissions; Role assignments<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (membership roster)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -317,8 +317,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must compile and present aggregated operational metrics to workspace leadership, displaying active member counts, tasks completed during the billing cycle, and total deliverable file storage consumed. |
 | **Requirement Origin:** Team Coordination Needs & Management Reporting |
 | **Security & Privacy Constraints:**<br>**NFR-RN22** Purpose Limitation & Time Log Segregation — `GDPR Art. 5(1)(b) + Art. 6(4)` → `PO-D-06.1-001` → `PRIN-ENG-03` → CSF GV.OC-03, PR.DS-10 / PF CM.PO-P2 |
-| **Interfaces:** Workspace Admin and Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** Team Leads, Executive Leadership<br>• **Data Sources:** Workspace Activity Logs<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Interfaces:** Operational metrics dashboard |
+| **Dependencies:**<br>• **Stakeholders:** Team Leads, Executive Leadership<br>• **Data Sources:** Workspace activity records<br>• **Extraction Periodicity:** on demand (continuous aggregation)<br>• **Information Systems / Databases:** Internal Application Database (activity aggregation)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Could |
 
@@ -334,8 +334,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow Workspace Admins and Members to initialize distinct project containers within a workspace, specifying project name, description of deliverables, and visibility settings (workspace-wide or restricted to selected members). |
 | **Requirement Origin:** Project Work Structuring Needs & As-Is Pain Point 2.1 |
 | **Security & Privacy Constraints:**<br>**NFR-RN9** Multi-Tenant Data Isolation & Mediation — `CRA Annex I Part I (2)(d)` → `SO-D-02.1-002` → `PRIN-ENG-03` → CSF PR.AA-05, PR.DS-01 |
-| **Interfaces:** Workspace Admin and Workspace Member |
-| **Dependencies:**<br>• **Stakeholders:** Project Managers, Team Contributors<br>• **Data Sources:** Project Creation Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Interfaces:** Project creation form; Project settings screen |
+| **Dependencies:**<br>• **Stakeholders:** Project Managers, Team Contributors<br>• **Data Sources:** Project creation submissions<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (project records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -346,8 +346,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R3.2 **Name:** Archive completed projects |
 | **Description:** The system must allow Workspace Admins and Owners to transition completed projects into archived status, rendering all tasks and discussions read-only and hiding the project from daily operational views while preserving historical data. |
 | **Requirement Origin:** Project Lifecycle Management Needs |
-| **Interfaces:** Workspace Admin and Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** Project Managers<br>• **Data Sources:** Project Settings Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Interfaces:** Project lifecycle controls (archive action) |
+| **Dependencies:**<br>• **Stakeholders:** Project Managers<br>• **Data Sources:** Project lifecycle actions<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (project records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Should |
 
@@ -362,8 +362,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R4.1 **Name:** Create and assign tasks |
 | **Description:** The system must allow authorized team members to create tasks within a project by specifying a mandatory title, optional description, priority level (Low, Medium, High, Urgent), and target due date, and assign execution responsibility to one or more active workspace members. |
 | **Requirement Origin:** Work Item Authoring Needs & As-Is Pain Point 2.2 |
-| **Interfaces:** Workspace Member, Workspace Admin, and Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Project Managers<br>• **Data Sources:** Task Creation Form, Member Picker<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Interfaces:** Task editor; Assignee picker |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Project Managers<br>• **Data Sources:** Task creation form; Member picker selections<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (task records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -374,8 +374,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R4.2 **Name:** Track and transition task workflow states on visual boards |
 | **Description:** The system must render tasks in interactive Kanban boards with standard status columns (To-Do, In-Progress, Under-Review, Done) and tabular views, allowing members to transition cards between states and filter tasks dynamically by assignee, status, priority, or overdue status. |
 | **Requirement Origin:** Agile Workflow Tracking Needs & Customer Expectation EXP-02 |
-| **Interfaces:** Workspace Member, Workspace Admin, Workspace Viewer |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Project Leads<br>• **Data Sources:** Task State Model, Filter Parameters<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Interfaces:** Kanban board view; Task list view; Filter controls |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Project Leads<br>• **Data Sources:** Task state transitions; Filter criteria<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (task state records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -386,8 +386,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R4.3 **Name:** Configure recurring automated tasks |
 | **Description:** The system must allow users to configure recurrence schedules (weekly or monthly) on a task, automatically creating a duplicate task instance in the "To-Do" column once the current instance is marked "Done". |
 | **Requirement Origin:** Repetitive Task Automation Needs |
-| **Interfaces:** Workspace Member and Workspace Admin |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Task Recurrence Rule<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Interfaces:** Recurrence configuration panel |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Recurrence schedule settings<br>• **Extraction Periodicity:** per recurrence schedule<br>• **Information Systems / Databases:** Internal Application Database (recurrence rules, task instances)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Could |
 
@@ -403,8 +403,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow authorized team members to upload deliverable files (supporting documents, spreadsheets, presentations, and images) up to 25 MB in size per file directly into a task card, view inline previews, download attached files, and remove outdated attachments. |
 | **Requirement Origin:** Document Centralization Needs & Customer Expectation EXP-04 |
 | **Security & Privacy Constraints:**<br>**NFR-RN13** File Upload Strict Validation & Content Isolation — `CRA Annex I Part I (2)(j)` → `SO-D-07.1-002` → `PRIN-ENG-02` → CSF PR.PS-06, PR.PS-02<br>**NFR-RN25** Automated Orphan File Asset Cleanup & Expiration — `GDPR Art. 5(1)(e)` → `PO-D-06.1-001` → `PRIN-ENG-07` → CSF PR.IP-06, PR.DS-10 / PF CT.DM-P3 |
-| **Interfaces:** Workspace Member, Workspace Admin, Workspace Viewer |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Clients<br>• **Data Sources:** Client File Upload, Stored Attachment Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** File Storage Service<br>• **Preceding Requirements:** |
+| **Interfaces:** File upload control; Inline preview pane; Download interface |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Clients<br>• **Data Sources:** Uploaded deliverable files<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** File Storage Service; Internal Application Database (attachment metadata)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -416,8 +416,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must provide a contextual comment thread inside each task card supporting rich text Markdown formatting and parsing collaborator mentions (@user) to automatically dispatch in-app notifications to tagged users. |
 | **Requirement Origin:** In-Context Collaboration Needs & Customer Expectation EXP-03 |
 | **Security & Privacy Constraints:**<br>**NFR-RN14** Context-Aware Output Encoding & Sanitization — `CRA Annex I Part I (2)(l)` → `SO-D-07.1-002` → `PRIN-ENG-04` → CSF PR.PS-06 |
-| **Interfaces:** Workspace Member, Workspace Admin, and Notification / Email Service |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Clients<br>• **Data Sources:** Task Comment Input<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Interfaces:** Comment thread editor; Mention interface |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Clients<br>• **Data Sources:** Comment submissions; Mention references<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (comment records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -433,8 +433,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must record and display a chronological audit feed on each task card documenting state changes, assignee reallocations, due date adjustments, and attachment events, identifying author and timestamp. |
 | **Requirement Origin:** Operational Transparency Needs & Team Accountability |
 | **Security & Privacy Constraints:**<br>**NFR-RN22** Purpose Limitation & Time Log Segregation — `GDPR Art. 5(1)(b) + Art. 6(4)` → `PO-D-06.1-001` → `PRIN-ENG-03` → CSF GV.OC-03, PR.DS-10 / PF CM.PO-P2 |
-| **Interfaces:** All Authorized Workspace Users |
-| **Dependencies:**<br>• **Stakeholders:** Project Managers, Contributors<br>• **Data Sources:** Audit Log Table<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Interfaces:** Task card audit timeline |
+| **Dependencies:**<br>• **Stakeholders:** Project Managers, Contributors<br>• **Data Sources:** Task change events<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (audit event records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -447,8 +447,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Requirement Origin:** User Attention Management & As-Is Pain Point 2.3 |
 | **Security & Privacy Constraints:**<br>**NFR-RN16** Cryptographic Webhook Origin Verification — `CRA Annex I Part I (2)(l)` → `SO-D-05.1-002, SO-D-08.1-002` → `PRIN-ENG-01` → CSF PR.DS-02, PR.AA-05 |
 
-| **Interfaces:** Authenticated User and Notification / Email Service |
-| **Dependencies:**<br>• **Stakeholders:** Contributors, Team Leads<br>• **Data Sources:** User Notifications Table, Scheduled Task Digest<br>• **Extraction Periodicity:** on demand / daily<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Interfaces:** In-app notification center; Daily digest email interface |
+| **Dependencies:**<br>• **Stakeholders:** Contributors, Team Leads<br>• **Data Sources:** Assignment events; Mention events; Due-date schedule<br>• **Extraction Periodicity:** on event / daily digest<br>• **Information Systems / Databases:** Internal Application Database (notification records); Notification / Email Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Should |
 
@@ -464,8 +464,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow the Workspace Owner to select a commercial plan tier (Free, Pro, Enterprise) and complete checkout via the external payment gateway, automatically updating workspace plan status, renewal date, and authorized member seat quotas upon payment confirmation. |
 | **Requirement Origin:** Customer Subscription Needs & Commercial Policy |
 | **Security & Privacy Constraints:**<br>**NFR-RN15** Cryptographic Billing Invariant Protection — `CRA Annex I Part I (2)(l)` → `SO-D-01.1-002, SO-D-08.1-002` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-02 |
-| **Interfaces:** Workspace Owner and External Payment Gateway |
-| **Dependencies:**<br>• **Stakeholders:** Executive Leadership, Business Customers<br>• **Data Sources:** Pricing Catalog, Payment Confirmation Event<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database, External Payment Gateway<br>• **Preceding Requirements:** |
+| **Interfaces:** Plan selection screen; Hosted checkout interface |
+| **Dependencies:**<br>• **Stakeholders:** Executive Leadership, Business Customers<br>• **Data Sources:** Pricing catalog; Payment confirmation events<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (subscription records); External Payment Gateway<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -477,8 +477,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must grant a 7-day operational grace period if an automated subscription renewal payment fails, maintaining normal workspace access while presenting payment update notices to the Workspace Owner before applying plan restrictions. |
 | **Requirement Origin:** Customer Retention & Business Continuity |
 | **Security & Privacy Constraints:**<br>**NFR-RN15** Cryptographic Billing Invariant Protection — `CRA Annex I Part I (2)(l)` → `SO-D-01.1-002, SO-D-08.1-002` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-02 |
-| **Interfaces:** Workspace Owner and External Payment Gateway |
-| **Dependencies:**<br>• **Stakeholders:** Customers, Finance Operations<br>• **Data Sources:** Payment Status Notification<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Interfaces:** Billing status banner; Payment update prompt |
+| **Dependencies:**<br>• **Stakeholders:** Customers, Finance Operations<br>• **Data Sources:** Payment failure events<br>• **Extraction Periodicity:** on event<br>• **Information Systems / Databases:** Internal Application Database (subscription records); External Payment Gateway (payment status)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -494,8 +494,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow authenticated users to download a structured export of their personal profile and authored tasks, and allow Workspace Owners to export a comprehensive archive of workspace projects, tasks, comments, and attachments. |
 | **Requirement Origin:** Data Portability Needs & Customer Expectation EXP-06 |
 | **Security & Privacy Constraints:**<br>**NFR-RN20** Structured Personal Data Portability & Export — `GDPR Art. 20 + Art. 15(3) + Art. 12(3)` → `PO-D-06.2-001` → `PRIN-ENG-06` → CSF PR.DS-10 / PF CT.DM-P1 |
-| **Interfaces:** Authenticated User and Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** End Users, Business Customers<br>• **Data Sources:** User Profile, Workspace Repositories<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database, File Storage Service<br>• **Preceding Requirements:** |
+| **Interfaces:** Export request screen; Archive download interface |
+| **Dependencies:**<br>• **Stakeholders:** End Users, Business Customers<br>• **Data Sources:** User profile records; Workspace content records<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (profile, task, comment records); File Storage Service (attachments)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -507,8 +507,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow users to autonomously terminate their accounts, invalidating active credentials and sessions, ending active workspace memberships, and dispatching a formal confirmation receipt via email. |
 | **Requirement Origin:** Self-Service Account Termination & Customer Expectation EXP-06 |
 | **Security & Privacy Constraints:**<br>**NFR-RN21** Irreversible Data Subject Erasure & Pseudonymization — `GDPR Art. 17 + Art. 28(3)(g)` → `PO-D-06.2-001` → `PRIN-ENG-07` → CSF PR.DS-10 / PF CT.DM-P1 |
-| **Interfaces:** Authenticated User and Notification / Email Service |
-| **Dependencies:**<br>• **Stakeholders:** End Users, Workspace Admins<br>• **Data Sources:** User Profile Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database, Notification / Email Service<br>• **Preceding Requirements:** |
+| **Interfaces:** Account closure flow; Confirmation email interface |
+| **Dependencies:**<br>• **Stakeholders:** End Users, Workspace Admins<br>• **Data Sources:** Account closure requests<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (user account records, memberships); Notification / Email Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 

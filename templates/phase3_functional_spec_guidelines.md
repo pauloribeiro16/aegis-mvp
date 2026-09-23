@@ -135,7 +135,7 @@ Deliverable `Doc01` mirrors `E1.1 – GPTools_ModeloASIS_TOBE V2.0`:
 
 ### 3.2 Exact 7-Row Single-Column Requirement Card Anatomy
 
-Every functional requirement card must follow this exact single-column markdown table structure:
+Every functional requirement card must follow this exact single-column markdown table structure. In the **V1 security & privacy synthesis**, an additional optional row — `Security & Privacy Constraints:` — is inserted between `Requirement Origin` and `Interfaces` (see §3.3); the pure functional baseline (V0) uses exactly these 7 rows:
 
 ```markdown
 | Requirement |
@@ -143,6 +143,7 @@ Every functional requirement card must follow this exact single-column markdown 
 | **ID:** R... **Name:** <Active Verb Phrase> |
 | **Description:** ... |
 | **Requirement Origin:** ... |
+| **Security & Privacy Constraints:** ... |   <- V1 synthesis only (optional; see §3.3)
 | **Interfaces:** ... |
 | **Dependencies:**<br>• **Stakeholders:** ...<br>• **Data Sources:** ...<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -161,19 +162,62 @@ Every functional requirement card must follow this exact single-column markdown 
 3. **Row 3 — `Requirement Origin:`:**
    - Traces the real business or stakeholder origin of the requirement (e.g., "Founders Business Case & Onboarding Workflow", "Team Lead Operational Intake", "Collaborator Sprint Feedback", "Customer Invoicing & Subscription Policy").
    - **Never cite self-referential internal system modules** (e.g., do NOT write "TinyTask SaaS / Identity Management" — see Anti-Pattern 6 in Section 7).
-4. **Row 4 — `Interfaces:`:**
-   - Identifies the human users and external services crossing the boundary of this requirement (e.g., "Workspace Member, Workspace Admin", "Unauthenticated User and Notification / Email Service").
+4. **Row 4 — `Interfaces:`**
+   - The **concrete interaction surfaces** through which the requirement is exercised: user-facing screens, forms, panels, flows, and external system interfaces (e.g., "Registration screen; Login screen; Password recovery flow; Transactional email interface").
+   - **Never a list of actors.** Actor names ("Workspace Admin", "Registered User") belong in the Actors table and in `Dependencies: Stakeholders`, not here — see Anti-Pattern 9 in Section 7.
 5. **Row 5 — `Dependencies:`:**
    - Structured sub-fields:
      - `Stakeholders:` Key business beneficiaries (e.g., "Executive Leadership, Team Contributors").
-     - `Data Sources:` Operational origin of the data payload (e.g., "User Registration Form", "Task Card Details").
-     - `Extraction Periodicity:` Operational tempo (e.g., "on demand", "daily").
-     - `Information Systems / Databases:` Must be generic (`Internal Application Database`, `File Storage Service`) or empty (`—`). Never cite commercial engines.
+     - `Data Sources:` Operational origin of the data payload, specific to what this requirement actually consumes (e.g., "Registration form submissions; Credential verification requests; Payment failure events").
+     - `Extraction Periodicity:` The operational tempo this requirement genuinely runs at — vary it when behavior dictates: "on demand", "on event", "daily digest", "per recurrence schedule", "continuous". Do not default to "on demand" when the capability is event- or schedule-driven.
+     - `Information Systems / Databases:` The functionally-specific repository this requirement reads/writes, named by role ("Identity and Credential Store", "Internal Application Database (task state records)", "File Storage Service", "External Payment Gateway"). Never paste the same generic value into every card — see Anti-Pattern 10 in Section 7. Never cite commercial engines.
      - `Preceding Requirements:` **Empty by default!** Only populate when a strict, hard business prerequisite exists between requirements.
 6. **Row 6 — `Identified Problems:`:**
    - **Empty by default** (or `—`), matching GPTools E1.1. Used only to record known business ambiguities or unresolved process conflicts.
 7. **Row 7 — `Priority:`:**
    - Strict MoSCoW classification: `Must`, `Should`, `Could`, or `Won't`.
+
+### 3.3 Card Field-Filling Standard (per-field rules, examples & anti-patterns)
+
+This subsection is the **canonical filling guide** for every card row. Whenever a filling style is corrected — in review or in conversation — the correction is codified here in the same session, so filling is always reproduced the same way.
+
+**Row `Description:`**
+- ✅ "The system must allow prospective users to create an account with email verification, authenticate using valid credentials to establish an active session, and autonomously request password reset assistance via email."
+- ❌ "Handles user management and auth flows." (nominalized, vague, no behavioral contract)
+
+**Row `Requirement Origin:`**
+- ✅ "Founders Business Case & User Onboarding Workflow"
+- ❌ "TinyTask SaaS / Identity Management module" (self-referential — Anti-Pattern 6)
+
+**Row `Security & Privacy Constraints:` (V1 synthesis only)**
+- Purpose: carry the absorbed security/privacy NFRs with their full tracing chain, so nothing "falls from the sky".
+- ✅ One condensed line per NFR, ids only:
+  `**NFR-RN10** Credential Hardening & Salted Hashing — CRA Annex I Part I (2)(d)+(2)(j) → SO-D-02.1-002 → PRIN-ENG-04 → CSF PR.AA-03, PR.DS-01`
+- Only NFRs **genuinely applicable to this card's function** (typically 1–3). Cards with no security surface carry no row at all — do not pad.
+- **Never** repeat cross-cutting NFRs (rate limiting, audit logging, transport encryption) card by card; they live once as standalone rows in the Quality Attributes table.
+- ❌ Dumping every NFR into the biggest card "for coverage"; ❌ listing an NFR without its four-link chain.
+
+**Row `Interfaces:`**
+- ✅ "Registration screen; Login screen; Password recovery flow; Transactional email interface" — the surfaces where the capability is exercised.
+- ❌ "Workspace Admin and Workspace Owner" — an actor list, not interfaces (Anti-Pattern 9). Actors already live in the Actors table and `Stakeholders`.
+
+**Row `Dependencies: Data Sources:`**
+- ✅ "Registration form submissions; Credential verification requests; Password reset requests" — the real operational origins for THIS requirement.
+- ❌ Copying the same generic source list into every card.
+
+**Row `Dependencies: Extraction Periodicity:`**
+- ✅ "on demand" for user-initiated actions; "on event" for failure/status-driven flows; "daily digest" for scheduled digests; "per recurrence schedule" for scheduler-driven capabilities.
+- ❌ Automatic "on demand" everywhere, including event- and schedule-driven requirements.
+
+**Row `Dependencies: Information Systems / Databases:`**
+- ✅ "Identity and Credential Store"; "Internal Application Database (task state records)"; "File Storage Service"; "Internal Application Database (subscription records); External Payment Gateway" — the functional repository role this requirement touches.
+- ❌ The identical "Internal Application Database" on 16 of 18 cards with no differentiation (Anti-Pattern 10). ❌ Commercial engines or products (Anti-Pattern 2).
+
+**Rows `Preceding Requirements:`, `Identified Problems:`, summary-table `Restrictions:`**
+- ✅ Empty by default; populated only with genuine, evidenced content.
+- ❌ Synthetic filler to look complete (Anti-Patterns 4 and 5).
+
+**Standing meta-rule:** every user correction to a filling style is codified into this §3.3 (with a ✅/❌ pair) in the same working session, so future filling is deterministic and never drifts back to the rejected style.
 
 ---
 
@@ -360,4 +404,28 @@ This section documents critical anti-patterns identified during the authoring an
   > "The system must quickly upload attachments in common formats and display them in a user-friendly manner."
 - **✔ CORRECT (Verifiable Behavioral Contract):**
   > "The system must allow users to upload file attachments up to 25 MB in PDF, PNG, JPEG, and CSV formats, rendering previews within 2 seconds under standard broadband conditions."
+
+---
+
+### Anti-Pattern 9: The Actor-Dump Interfaces Trap
+- **Description:** Filling the `Interfaces:` row of a requirement card with actor names ("Workspace Admin and Workspace Owner", "Authenticated User and Notification / Email Service") instead of the concrete interaction surfaces through which the capability is exercised.
+- **Why it breaks AEGIS:** Actors are already defined in the Actors table and in `Dependencies: Stakeholders`; duplicating them under "Interfaces" adds zero information and hides the real integration points. AEGIS downstream skills (trust-boundary analysis, attack-surface analysis) need the *surfaces* — screens, forms, flows, external system interfaces — to locate where mediation and validation must occur.
+- **❌ INCORRECT (Anti-Pattern):**
+  > `Interfaces: Workspace Admin and Workspace Owner`
+  > `Interfaces: Unauthenticated Visitor, Registered User, and Notification / Email Service`
+- **✔ CORRECT (Interaction Surfaces):**
+  > `Interfaces: Registration screen; Login screen; Password recovery flow; Transactional email interface`
+  > `Interfaces: Plan selection screen; Hosted checkout interface`
+
+---
+
+### Anti-Pattern 10: The Copy-Paste Databases Trap
+- **Description:** Pasting the same generic `Information Systems / Databases:` value (typically "Internal Application Database") into every requirement card regardless of what the requirement actually touches.
+- **Why it breaks AEGIS:** The IS/Databases field is a functional inventory signal: it tells downstream phases which repository roles each capability reads and writes (identity store vs task state vs audit records vs external gateway). A uniform value erases that signal, breaks data-flow analysis, and makes the field noise instead of data.
+- **❌ INCORRECT (Anti-Pattern):**
+  > 16 of 18 cards carrying `Information Systems / Databases: Internal Application Database` unchanged.
+- **✔ CORRECT (Functionally specific, technology-neutral):**
+  > `Information Systems / Databases: Identity and Credential Store` (registration/authentication)
+  > `Information Systems / Databases: Internal Application Database (task state records)` (board transitions)
+  > `Information Systems / Databases: File Storage Service; Internal Application Database (attachment metadata)` (attachments)
 

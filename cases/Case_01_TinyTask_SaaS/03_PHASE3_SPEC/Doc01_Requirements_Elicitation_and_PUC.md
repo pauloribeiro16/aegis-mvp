@@ -1,259 +1,483 @@
-# Doc01 — Requirements Elicitation & Product Use Cases (TinyTask SaaS)
+# Doc01 — AS-IS / TO-BE Model & Requirements Elicitation (TinyTask SaaS)
 
-> **Document ID:** `TT-P3-DOC01`  
+> **Deliverable Reference:** `E1.1 – TinyTask SaaS AS-IS / TO-BE Model & Requirements Elicitation`  
 > **Lifecycle Phase:** AEGIS Phase 3 — Specification (Functional Baseline)  
-> **Reference Standard:** Volere Requirements Specification & GPTools E1.1 Standard  
+> **Reference Standard:** GPTools Deliverable E1.1 Standard (`GPTools_ModeloASIS_TOBE V2.0`)  
 > **Prioritization Model:** MoSCoW (MUST, SHOULD, COULD, WON'T)  
+> **Language:** English  
 > **Status:** Approved Baseline  
 
 ---
 
 ## Table of Contents
 
-1. [Introduction & Methodological Framework](#1-introduction--methodological-framework)
-   - 1.1 [Purpose & Scope](#11-purpose--scope)
-   - 1.2 [The Volere Requirements Framework](#12-the-volere-requirements-framework)
-   - 1.3 [Triangular Functional Decomposition](#13-triangular-functional-decomposition)
-   - 1.4 [MoSCoW Prioritization Criteria](#14-moscow-prioritization-criteria)
-2. [Work Context Model](#2-work-context-model)
-   - 2.1 [Work Domain Narrative](#21-work-domain-narrative)
-   - 2.2 [Context Boundary Diagram](#22-context-boundary-diagram)
-   - 2.3 [External Interfaces](#23-external-interfaces)
-3. [Data Entities & Data Flow Specifications](#3-data-entities--data-flow-specifications)
-   - 3.1 [Entity: User Account & Authentication](#31-entity-user-account--authentication)
-   - 3.2 [Entity: Workspace & Membership](#32-entity-workspace--membership)
-   - 3.3 [Entity: Project & Task Entity](#33-entity-project--task-entity)
-   - 3.4 [Entity: Task Attachment & Metadata](#34-entity-task-attachment--metadata)
-   - 3.5 [Entity: Activity Feed & Comments](#35-entity-activity-feed--comments)
-   - 3.6 [Entity: Subscription & Billing Record](#36-entity-subscription--billing-record)
-   - 3.7 [Entity: Security Audit Log & Erasure Receipt](#37-entity-security-audit-log--erasure-receipt)
-4. [System Actors & Profiles](#4-system-actors--profiles)
-5. [Product Use Case (PUC) Summary Table](#5-product-use-case-puc-summary-table)
-6. [Exhaustive Functional Requirements Catalog (MoSCoW)](#6-exhaustive-functional-requirements-catalog-moscow)
-   - 6.1 [Requirements for {U.C.1} — Identity & Access Governance](#61-requirements-for-uc1--identity--access-governance)
-   - 6.2 [Requirements for {U.C.2} — Workspace & Team Administration](#62-requirements-for-uc2--workspace--team-administration)
-   - 6.3 [Requirements for {U.C.3} — Project & Task Lifecycle Management](#63-requirements-for-uc3--project--task-lifecycle-management)
-   - 6.4 [Requirements for {U.C.4} — Task Attachment & Media Ingestion](#64-requirements-for-uc4--task-attachment--media-ingestion)
-   - 6.5 [Requirements for {U.C.5} — Team Collaboration & Activity Feeds](#65-requirements-for-uc5--team-collaboration--activity-feeds)
-   - 6.6 [Requirements for {U.C.6} — Subscriptions & Data Subject Lifecycle](#66-requirements-for-uc6--subscriptions--data-subject-lifecycle)
-7. [Document History & Traceability Matrix](#7-document-history--traceability-matrix)
+1. [Executive Summary](#1-executive-summary)
+2. [Glossary & Acronyms](#2-glossary--acronyms)
+3. [Part I — Scope](#3-part-i--scope)
+   - 3.1 [Objective](#31-objective)
+     - 3.1.1 [Problem Description](#311-problem-description)
+     - 3.1.2 [Product Position Description](#312-product-position-description)
+     - 3.1.3 [Expected Impact](#313-expected-impact)
+     - 3.1.4 [Key Characteristics](#314-key-characteristics)
+   - 3.2 [Stakeholders](#32-stakeholders)
+   - 3.3 [System Users](#33-system-users)
+   - 3.4 [Constraints](#34-constraints)
+4. [Part II — As-Is Model](#4-part-ii--as-is-model)
+   - 4.1 [Business Roles in Context](#41-business-roles-in-context)
+   - 4.2 [As-Is Workflow & Information Fragmentation](#42-as-is-workflow--information-fragmentation)
+     - 4.2.1 [Gathering Initial Task & Project Information](#421-gathering-initial-task--project-information)
+     - 4.2.2 [Team Allocation, Scheduling, and Status Tracking](#422-team-allocation-scheduling-and-status-tracking)
+     - 4.2.3 [Media, Document Sharing, and Attachment Handling](#423-media-document-sharing-and-attachment-handling)
+     - 4.2.4 [Client Reporting and Progress Reviews](#424-client-reporting-and-progress-reviews)
+   - 4.3 [Current IT Support & Identified Deficiencies](#43-current-it-support--identified-deficiencies)
+     - 4.3.1 [Spreadsheet-Driven Tracking](#431-spreadsheet-driven-tracking)
+     - 4.3.2 [Ad-Hoc Messaging & Email Threads](#432-ad-hoc-messaging--email-threads)
+     - 4.3.3 [Unstructured Cloud Drives](#433-unstructured-cloud-drives)
+     - 4.3.4 [Lack of Data Isolation & GDPR Compliance Deficits](#434-lack-of-data-isolation--gdpr-compliance-deficits)
+5. [Part III — To-Be Model](#5-part-iii--to-be-model)
+   - 5.1 [Initial Customer Expectations](#51-initial-customer-expectations)
+   - 5.2 [System Actors](#52-system-actors)
+   - 5.3 [Functional Requirements (MoSCoW)](#53-functional-requirements-moscow)
+     - 5.3.1 [MoSCoW Prioritization Framework](#531-moscow-prioritization-framework)
+     - 5.3.2 [Summary Table of Functional Requirements](#532-summary-table-of-functional-requirements)
+     - 5.3.3 [Detailed Requirements Elaboration (R1 to R12)](#533-detailed-requirements-elaboration-r1-to-r12)
+   - 5.4 [Non-Functional Requirements](#54-non-functional-requirements)
+     - 5.4.1 [Domain Non-Functional Requirements](#541-domain-non-functional-requirements)
+     - 5.4.2 [Management, Security & Infrastructure Non-Functional Requirements](#542-management-security--infrastructure-non-functional-requirements)
+   - 5.5 [Business Use Cases & Product Use Cases (PUC)](#55-business-use-cases--product-use-cases-puc)
+   - 5.6 [High-Level Use Case Model ({U.C.1} to {U.C.6})](#56-high-level-use-case-model-uc1-to-uc6)
+6. [Bibliography](#6-bibliography)
 
 ---
 
-## 1. Introduction & Methodological Framework
+## 1. Executive Summary
 
-### 1.1 Purpose & Scope
+This report establishes the formal **AS-IS / TO-BE Functional Architecture** and **Requirements Elicitation** for **TinyTask SaaS** (Case 01). TinyTask is a modern, multi-tenant B2B task management and team collaboration web platform developed by an agile micro-enterprise of 8 engineers and operators located in Lisbon, Portugal.
 
-This document establishes the formal **Functional Requirements Baseline** and **Product Use Cases (PUC)** for **TinyTask SaaS** (Case 01). TinyTask is a cloud-native, multi-tenant B2B task management and team collaboration platform developed by a micro-enterprise of 8 engineers and operators based in Lisbon, Portugal.
+Following the exact methodological structure of the CCG GPTools Deliverable E1.1 standard, this deliverable bridges the operational problem space with a rigorous, testable software engineering specification. It analyzes the existing, highly fragmented "As-Is" operational baseline (characterized by disparate spreadsheets, untracked email chains, unmanaged file storage, and acute GDPR compliance liabilities), formalizes customer expectations, and defines the "To-Be" functional baseline.
 
-The functional specification formalizes what the TinyTask platform accomplishes from a business and operational standpoint, independent of specific implementation technologies, software frameworks, or vendor choices. It acts as the core functional foundation to be integrated with the **Phase 2 Operational Objectives** (`Doc01_Operational_Objectives.md`) and **Secure Engineering Principles** (`Doc02_Secure_Design_Principles.md`) during the AEGIS Phase 3 specification process.
+The deliverable articulates:
+- The **System Context** and multi-tenant organizational scope;
+- A detailed **As-Is analysis** of workflow deficiencies;
+- **Customer Expectations** and **System Actors**;
+- An exhaustive catalog of **Functional Requirements (`R1` through `R12`, decomposing into `FR-01` to `FR-38`)** prioritized via **MoSCoW**;
+- Quality-defining **Non-Functional Requirements** across usability, performance, reliability, and security;
+- A consolidated **Product Use Case (PUC)** model and Level-0 Use Case architecture (`{U.C.1}` to `{U.C.6}`).
 
-### 1.2 The Volere Requirements Framework
+---
 
-Requirements elicitation follows the **Volere Requirements Process** (Robertson & Robertson), adapted to modern SaaS multi-tenant architectures. Under Volere:
-- Requirements emerge from an explicit understanding of the **Work Context** and the operational problems the product resolves for its stakeholders.
-- Business events trigger **Product Use Cases (PUC)** that define the boundary interactions between external actors and the product.
-- Individual **Functional Requirements (FR)** capture the atomic, testable system behaviors required to satisfy each PUC.
+## 2. Glossary & Acronyms
 
-### 1.3 Triangular Functional Decomposition
+| Term | Expansion / Definition |
+|---|---|
+| **As-Is** | The current, baseline state of operations, workflows, and tools prior to the adoption of the system. |
+| **To-Be** | The target operational state enabled by the implementation of the new software platform. |
+| **B2B** | Business-to-Business commercial software model. |
+| **GDPR** | General Data Protection Regulation (Regulation (EU) 2016/679). |
+| **JWT** | JSON Web Token (RFC 7519) used for stateless, cryptographically signed session tokens. |
+| **MFA / TOTP** | Multi-Factor Authentication via Time-based One-Time Password (RFC 6238). |
+| **MoSCoW** | Prioritization methodology categorizing requirements into Must have, Should have, Could have, and Won't have. |
+| **PUC** | Product Use Case — business-level interaction boundary defined in the Volere requirements process. |
+| **RBAC** | Role-Based Access Control enforcing permission policies based on user organizational roles. |
+| **SaaS** | Software-as-a-Service cloud delivery model. |
+| **U.C.** | Use Case designation within the system functional decomposition. |
+| **Workspace** | Tenant boundary isolating projects, tasks, members, and billing for an organization. |
 
-Functional scoping is structured according to the **Triangular Functional Decomposition** model:
-1. **Work Context / Product Use Cases (PUC):** Global business interactions capturing inputs (`in`) and outputs (`out`).
-2. **System Use Cases (`{U.C.n}` and Level-1 `{U.C.n.m}`):** Decomposition of system capabilities into coherent operational areas, specifying participating actors, pre-conditions, and operational boundaries.
-3. **Atomic Functional Requirements (`FR-XX`):** Unambiguous, testable functional statements tied directly to Level-1 sub-use cases and prioritized via MoSCoW.
+---
+
+## 3. Part I — Scope
+
+### 3.1 Objective
+
+#### 3.1.1 Problem Description
+Small businesses, creative agencies, and agile engineering teams frequently suffer from severe operational friction in their daily project execution. Teams of 5 to 50 collaborators typically manage work through a disjointed patchwork of disconnected tools: shared spreadsheets that lack real-time synchronization, endless email chains with buried attachments, informal chat messages on WhatsApp or Slack where tasks are assigned without due dates or accountable ownership, and unmanaged cloud storage folders where document versions overwrite each other.
+
+This operational fragmentation produces critical business failures:
+1. **Lack of Centralized Visibility:** Project leaders and team managers cannot easily observe the real-time status of work items, resulting in missed customer deadlines and resource bottlenecks.
+2. **Accountability Deficit:** Without formal assignment, status progression, and change auditing, tasks fall through organizational cracks.
+3. **Data Security & Privacy Vulnerabilities:** Client files, sensitive commercial specifications, and personal data are shared through insecure email attachments and public links, directly violating GDPR confidentiality requirements (Art. 32) and exposing businesses to severe regulatory penalties.
+4. **Administrative Overhead:** Significant billable hours are wasted manually updating tracking spreadsheets, chasing colleagues for status reports, and locating misplaced document revisions.
+
+#### 3.1.2 Product Position Description
+**TinyTask SaaS** is positioned as an intuitive, unified, cloud-native B2B productivity platform specifically engineered for small and medium-sized organizations. Unlike heavyweight enterprise project management suites that suffer from extreme configuration complexity and high licensing costs, TinyTask delivers a lean, focused workspace experience combining:
+- Frictionless task lifecycle management across interactive Kanban and tabular views;
+- Contextual team discussions directly embedded within task cards;
+- Secure, validated file attachment ingestion with time-limited signed access;
+- Multi-tenant organizational isolation with self-service subscription management and built-in GDPR data subject rights (portability and account erasure).
+
+#### 3.1.3 Expected Impact
+Implementing TinyTask yields direct, measurable organizational improvements:
+- **Efficiency Gains:** Reduces internal status reporting and task lookup time by over 40% through centralized boards and automated notifications.
+- **Delivery Reliability:** Decreases overdue task rates through clear attribution, explicit priority tagging, and automated deadline reminders.
+- **Compliance Assurance:** Provides micro-enterprises with turnkey GDPR compliance (Articles 5, 17, 20, and 32) without requiring internal legal or dedicated security teams.
+- **Commercial Scalability:** Enables the TinyTask enterprise to operate a sustainable, recurring subscription revenue model (Free, Pro, and Enterprise tiers) powered by automated payment gateway integration.
+
+#### 3.1.4 Key Characteristics
+The TinyTask platform delivers the following primary architectural and functional characteristics:
+1. **Multi-Tenant Workspace Isolation:** Strict logical segregation ensuring an organization's projects, tasks, files, and users are never accessible to other tenants.
+2. **Dynamic Work Views:** Instant switching between visual Kanban board workflows (drag-and-drop state progression) and filterable tabular task registers.
+3. **Contextual In-Task Collaboration:** Rich-text Markdown comments with `@username` tagging that immediately alerts mentioned colleagues.
+4. **Secure Ingest & Expiring Access:** Server-side file validation (MIME whitelisting, 25 MB quota) coupled with randomized storage pointers and time-limited presigned URLs.
+5. **Role-Based Access Governance:** Granular permission enforcement across four canonical workspace roles (`Owner`, `Admin`, `Member`, `Viewer`).
+6. **Turnkey Subscription Lifecycle:** Self-service checkout, automated tier provisioning, and webhook reconciliation via integration with external payment gateways (Stripe).
+7. **Native Data Subject Rights:** Automated self-service data portability export (GDPR Art. 20) and permanent account erasure with audit receipts (GDPR Art. 17).
+
+### 3.2 Stakeholders
+
+The key stakeholders holding an interest in the success and operation of TinyTask SaaS include:
+
+| Stakeholder Group | Representative Profile | Core Interest & Expectations |
+|---|---|---|
+| **Platform Founders & Executives** | TinyTask Micro-Enterprise Leadership (Lisbon) | Sustainable product-market fit, low operational overhead, high customer retention, and automated subscription revenue collection. |
+| **Engineering & Operations Team** | TinyTask 8-Person Core Technical Team | Modular, maintainable codebase, low infrastructure maintenance burden, robust automated testing, and zero security vulnerabilities. |
+| **Subscribing Organization Owners** | SME Business Owners, Agency Executives | High team productivity, affordable predictable software costs, secure workspace isolation, and full ownership of business data. |
+| **Team Leaders & Project Managers** | Department Leads, Project Coordinators | Real-time operational visibility into task bottlenecks, seamless delegation, and automated progress notifications. |
+| **Individual Contributors** | Engineers, Designers, Marketing Specialists | Clean, intuitive task tracking without administrative friction, clear priorities, and focused communication. |
+| **External Clients & Auditors** | Third-Party Stakeholders, Regulatory Inspectors | Read-only inspection of deliverables, confidentiality of commercial exchanges, and verifiable GDPR compliance. |
+
+### 3.3 System Users
+
+System users correspond directly to the operational roles recognized by the TinyTask application:
+- **Workspace Owner:** The commercial and organizational head of a tenant workspace. Controls billing, member quotas, data export, and tenant deletion.
+- **Workspace Admin:** Team lead managing workspace configuration, project creation, member invitations, and role assignments.
+- **Workspace Member:** Active collaborator authoring tasks, updating status, uploading files, and contributing comments.
+- **Workspace Viewer:** External client or guest with read-only visibility into assigned projects and tasks.
+
+### 3.4 Constraints
+
+At the time of baseline specification, the following operational and engineering constraints govern TinyTask:
+- **Team & Scale Constraint:** The development and maintenance organization consists of 8 persons; architecture must prioritize managed cloud services and avoid custom infrastructure management.
+- **Regulatory Constraint:** The platform processes personal data of EU citizens and B2B client organizations, making strict adherence to GDPR (Regulation (EU) 2016/679) and NIS2/CRA product security standards non-negotiable.
+- **Commercial Constraint:** Core billing workflows must integrate with Stripe without storing credit card numbers or primary financial secrets on TinyTask infrastructure.
+- **Technology Neutrality:** Functional specifications must specify *what* capabilities must be delivered proportionately, avoiding prescriptive vendor lock-in at the functional stage.
+
+---
+
+## 4. Part II — As-Is Model
+
+### 4.1 Business Roles in Context
+
+In the baseline As-Is operational context—typical of small organizations prior to adopting TinyTask—collaborators execute multiple overlapping roles without formal system boundaries:
 
 ```mermaid
 flowchart TD
-    WCM["Work Context Model<br>(TinyTask Operational Boundary)"] --> PUC["Product Use Cases (PUC)<br>(Business Events & In/Out Data)"]
-    PUC --> HUC["High-Level System Use Cases<br>({U.C.1} .. {U.C.6})"]
-    HUC --> SUC["Level-1 System Sub-Cases<br>({U.C.1.1} .. {U.C.6.4})"]
-    SUC --> FR["Atomic Functional Requirements<br>(FR-01 .. FR-38 with MoSCoW)"]
+    subgraph As_Is_Environment ["As-Is Fragmented Operational State"]
+        direction TB
+        Mgr["Business Manager / Owner<br>(Manages billing on personal cards, chases invoices)"]
+        Lead["Team Lead / Project Manager<br>(Maintains master Excel file, sends weekly status emails)"]
+        Worker["Team Contributor<br>(Tracks tasks on personal notes, emails files, chats on WhatsApp)"]
+        Client["External Client<br>(Requests status updates via phone/email, reviews messy email threads)"]
+    end
 ```
 
-### 1.4 MoSCoW Prioritization Criteria
+- **Business Owner:** Manages commercial commitments informally, tracking project expenditures and customer subscriptions on local accounting spreadsheets.
+- **Project Lead:** Spends 2 to 3 hours daily consolidating status updates from team members across email and chat, manually editing a shared spreadsheet.
+- **Team Contributor:** Manages personal work queues in disparate desktop note applications; has no central visibility into team dependencies or changing priorities.
+- **External Client:** Receives sporadic project updates via email attachments; has no direct, secure window to review work in progress.
 
-Each functional requirement is classified according to the standardized **MoSCoW** convention:
+### 4.2 As-Is Workflow & Information Fragmentation
 
-| Priority | Designation | Operational Definition for TinyTask SaaS |
+#### 4.2.1 Gathering Initial Task & Project Information
+When a new project is initiated in the As-Is state, information is assembled through informal kickoff meetings and scattered email threads. Project goals are written in word-processor documents and stored on individual laptops. 
+
+The initial project metadata is recorded manually in unstructured spreadsheets, as depicted in the typical As-Is data format below:
+
+*Table 1 — Typical As-Is Project Tracking Spreadsheet Record*
+
+| Field Name | Typical Format | Mandatory | Observed Operational Deficiencies |
+|---|---|---|---|
+| Project Name | Text | Yes | Duplicated or conflicting names across departments. |
+| Client Name | Text | Yes | No link to contractual records; inconsistent spelling. |
+| Start / Due Date | Freeform Text (e.g., "End of Q2") | No | Ambiguous deadlines; lacks automated alert mechanisms. |
+| Budget / Hours Allocated | Number | No | Rarely updated after initial planning. |
+| Assigned Team | Comma-separated names | No | No linkage to individual user accounts or access permissions. |
+
+#### 4.2.2 Team Allocation, Scheduling, and Status Tracking
+Task assignments are communicated verbally or through chat channels. Team members maintain their own daily to-do lists. The Project Lead attempts to keep a centralized spreadsheet synchronized:
+
+*Table 2 — Typical As-Is Task Tracking Spreadsheet Record*
+
+| Field Name | Typical Format | Mandatory | Observed Operational Deficiencies |
+|---|---|---|---|
+| Task Description | Freeform Text | Yes | Vague descriptions lacking acceptance criteria. |
+| Assignee | Name string | No | Tasks frequently unassigned or assigned to multiple people without lead ownership. |
+| Status | Text ("Done", "In progress", "Pending") | No | Out of sync; depends on manual user updates; no audit of who changed status. |
+| Notes / Comments | Long text cell | No | Overwritten constantly; discussion history completely lost. |
+
+#### 4.2.3 Media, Document Sharing, and Attachment Handling
+Files (design mockups, technical specifications, spreadsheets) are shared as direct email attachments or uploaded to unmanaged cloud shared drives (e.g., personal Google Drive or Dropbox links).
+- Files lack expiration dates; sensitive commercial assets remain publicly accessible via shared links indefinitely.
+- Version control is handled by appending suffixes (`spec_v2_final_FINAL.docx`), causing critical misalignments.
+- There are no file type validations or size restrictions, creating malware ingress vectors and unmanaged storage growth.
+
+#### 4.2.4 Client Reporting and Progress Reviews
+To report progress to clients, managers manually compile data from spreadsheets, compose status email summaries, and export slide decks. This manual process takes hours, presents stale data, and offers clients no interactive verification.
+
+### 4.3 Current IT Support & Identified Deficiencies
+
+#### 4.3.1 Spreadsheet-Driven Tracking
+Spreadsheets are inherently unsuited for multi-user real-time workflow coordination:
+- Concurrent editing collisions result in lost updates.
+- No granular permission controls: a collaborator with access to the spreadsheet can accidentally edit or delete all team records.
+- Complete absence of an automated audit trail to verify historical changes.
+
+#### 4.3.2 Ad-Hoc Messaging & Email Threads
+Using email and general instant messaging for task management causes severe information fragmentation:
+- Decisions made in 1-on-1 chats are invisible to the wider team.
+- Critical task assignments are buried under unrelated conversational chatter.
+- Notifications cannot be scoped or prioritized, leading to "notification fatigue."
+
+#### 4.3.3 Unstructured Cloud Drives
+File sharing via generic cloud storage links creates significant governance gaps:
+- No linkage between an uploaded asset and the specific task context it fulfills.
+- Direct public sharing links cannot be audited, revoked, or automatically expired.
+
+#### 4.3.4 Lack of Data Isolation & GDPR Compliance Deficits
+The As-Is state poses immediate legal liabilities under EU data protection law:
+- **No Data Isolation:** Files containing client personal data are commingled in shared folders without tenant boundaries.
+- **No Portability Mechanism:** Exporting all data associated with a specific client requires days of manual data harvesting (violating GDPR Art. 20).
+- **Impossible Right to Erasure:** When a user requests account deletion, their personal information (email, name, chat history) remains scattered across dozens of spreadsheets, email chains, and shared drives, making verifiable erasure impossible (violating GDPR Art. 17).
+
+---
+
+## 5. Part III — To-Be Model
+
+### 5.1 Initial Customer Expectations
+
+The target "To-Be" state formalizes the requirements of stakeholders into a cohesive, centralized SaaS platform. The following table details the core initial customer expectations derived from business discovery:
+
+*Table 3 — Customer Initial Expectations*
+
+| ID | Expectation Title | Operational Description |
 |---|---|---|
-| **MUST** | Mandatory Core | Critical requirement mandatory for system operation, security baseline, or legal compliance. Non-negotiable for release. |
-| **SHOULD** | High Value | Highly recommended functional capability. Required for a complete user experience; workaround exists only with friction. |
-| **COULD** | Desirable Enhancer | Useful functional enhancement that can be deferred or omitted if schedule or budget constraints require. |
-| **WON'T** | Out of Current Scope | Feature recognized but explicitly excluded from the current baseline release (may be evaluated in future iterations). |
+| **`EXP-01`** | **Centralize Work in Tenant Workspaces** | Consolidate all projects, tasks, discussions, and files into strictly isolated organizational workspaces with role-based access. |
+| **`EXP-02`** | **Visual & Intuitive Task Lifecycle** | Provide Kanban boards and list views with real-time drag-and-drop status transitions (`To-Do`, `In-Progress`, `Under-Review`, `Done`). |
+| **`EXP-03`** | **Contextual In-Task Collaboration** | Embed Markdown discussions directly inside task cards with `@username` tagging and automated in-app notifications. |
+| **`EXP-04`** | **Secure Attachment Ingestion & Access** | Eliminate unmanaged public links by enforcing server-side file validation, secure cloud storage, and time-limited presigned download URLs. |
+| **`EXP-05`** | **Automated Subscription & Billing Management** | Enable self-service plan upgrades/downgrades via secure payment gateway integration without handling cardholder data. |
+| **`EXP-06`** | **Turnkey GDPR Compliance by Design** | Provide self-service data portability export (Art. 20) and automated account erasure with auditable receipts (Art. 17). |
 
----
+### 5.2 System Actors
 
-## 2. Work Context Model
+The following table formally specifies the actors interacting with the TinyTask platform:
 
-### 2.1 Work Domain Narrative
+*Table 4 — System Actors*
 
-The TinyTask system operates as an authenticated multi-tenant SaaS environment. Users access the platform via modern web browsers and mobile application clients. The system manages organizational boundaries through **Workspaces**. Each workspace isolates projects, tasks, collaborative comments, uploaded file attachments, and subscription billing.
+| Actor ID | Actor Name | Classification | Description & System Permissions |
+|---|---|---|---|
+| **`ACT-01`** | **`Workspace Owner`** | Privileged Human User | The commercial authority and primary administrator of a workspace. Controls billing, subscription tiers, member quotas, workspace data export, and workspace deletion. |
+| **`ACT-02`** | **`Workspace Admin`** | Privileged Human User | Operational manager within a workspace. Authorized to invite new members, modify roles (`Admin`, `Member`, `Viewer`), create/archive projects, and configure team settings. |
+| **`ACT-03`** | **`Workspace Member`** | Operational Human User | Core collaborative team user. Creates, edits, assigns, and transitions tasks; uploads attachments; posts comments; and manages personal profile settings. |
+| **`ACT-04`** | **`Workspace Viewer`** | Read-Only Human User | External client or auditor granted read-only visibility into projects, task lists, and comment feeds without modification or creation privileges. |
+| **`ACT-05`** | **`External Payment Gateway`** | External System (Stripe) | External payment processing engine that interacts via secure HTTPS APIs and delivers signed asynchronous webhook notifications concerning subscription state changes. |
+| **`ACT-06`** | **`System Scheduler`** | Automated Background Process | Internal background daemon executing periodic jobs, including daily email notification digests, token expiration sweeps, and retention cleanups. |
 
-The system interacts directly with three primary external services:
-1. **External Payment Gateway (Stripe):** Handles customer checkout, billing subscriptions, credit card tokenization, invoice generation, and asynchronous webhook delivery for subscription lifecycle events.
-2. **Transactional Messaging Provider:** Dispatches invitation emails, password recovery verification tokens, and daily digest notifications.
-3. **Managed Cloud Object Store:** Houses binary task attachments with presigned, expiring URL access.
+### 5.3 Functional Requirements (MoSCoW)
 
-### 2.2 Context Boundary Diagram
+#### 5.3.1 MoSCoW Prioritization Framework
+Requirements are classified according to the standardized **MoSCoW** convention:
+- **MUST:** Mandatory core requirement essential for system viability, security baseline, or regulatory compliance.
+- **SHOULD:** High-value requirement expected in a standard release; workarounds introduce significant operational friction.
+- **COULD:** Desirable feature or enhancement that may be included if schedule and resources permit.
+- **WON'T:** Out-of-scope requirement explicitly deferred to future platform iterations.
 
-```mermaid
-flowchart LR
-    subgraph External_Actors ["External Actors & Stakeholders"]
-        Owner["Workspace Owner"]
-        Admin["Workspace Admin"]
-        Member["Workspace Member"]
-        Viewer["Workspace Viewer"]
-    end
+#### 5.3.2 Summary Table of Functional Requirements
 
-    subgraph TinyTask_System ["TinyTask SaaS System Boundary"]
-        Core["TinyTask Web Application & Core API Services"]
-    end
+*Table 5 — Summary Table of Functional Requirements (MoSCoW)*
 
-    subgraph External_Services ["External Infrastructure & Services"]
-        Stripe["External Payment Gateway<br>(Stripe API & Webhooks)"]
-        Mail["Transactional Email Provider<br>(SMTP / API Service)"]
-        Storage["Cloud Object Storage<br>(Attachment Store)"]
-    end
-
-    Owner <-->|Workspace configuration, billing, erasure| Core
-    Admin <-->|Member invitations, role management, project setup| Core
-    Member <-->|Task creation, updates, comments, uploads| Core
-    Viewer <-->|Read-only task review, status inspection| Core
-
-    Core <-->|Billing checkout sessions, webhook events| Stripe
-    Core -->|Invitation tokens, password reset links| Mail
-    Core <-->|Presigned upload/download authorization| Storage
-```
-
-### 2.3 External Interfaces
-
-| Interface ID | Connected Entity | Interaction Channel | Exchanged Data Payload | Direction |
+| ID | Sub-ID | Requirement Statement | Priority | Constraints / Restrictions |
 |---|---|---|---|---|
-| **`INT-EXT-01`** | Web Client / User | HTTPS / REST / WebSockets | User credentials, session tokens, task models, JSON payloads | Bidirectional |
-| **`INT-EXT-02`** | Payment Gateway (Stripe) | HTTPS REST API | Checkout session creation, customer IDs, plan tier IDs | Outbound |
-| **`INT-EXT-03`** | Payment Gateway (Stripe) | HTTPS Webhook Endpoint | Signed event notifications (`customer.subscription.updated`, etc.) | Inbound |
-| **`INT-EXT-04`** | Transactional Mail Provider | HTTPS REST / TLS SMTP | Outbound invitation links, password reset tokens, activity digests | Outbound |
-| **`INT-EXT-05`** | Object Storage Service | HTTPS REST API | File binary streams, presigned upload URLs, download metadata | Bidirectional |
+| **`R1`** | | **Identity & Access Governance** | **MUST** | Centralized authentication, RBAC, session lifecycle. |
+| | `R1.1` | User registration with email verification link | MUST | Cryptographic token valid 24h. |
+| | `R1.2` | Credential authentication returning signed session token | MUST | Generic error on failure; rate limited. |
+| | `R1.3` | Password recovery via single-use email token | MUST | Token valid 1h; invalidates active sessions on reset. |
+| | `R1.4` | Enforce 4 canonical workspace roles (Owner, Admin, Member, Viewer) | MUST | Scoped per tenant workspace. |
+| | `R1.5` | User active session inspection and remote termination | SHOULD | Displays client IP country and user agent. |
+| | `R1.6` | Multi-Factor Authentication (MFA / TOTP) support | COULD | Standard RFC 6238 authenticator app. |
+| | `R1.7` | Enterprise Single Sign-On (SAML 2.0 / OIDC) | WON'T | Deferred to future enterprise iteration. |
+| **`R2`** | | **Workspace & Multi-Tenant Provisioning** | **MUST** | Strict database-level tenant isolation. |
+| | `R2.1` | Workspace creation assigning creator as Workspace Owner | MUST | Globally unique URL slug. |
+| | `R2.2` | Member invitation workflow via email token | MUST | Capped by active subscription seat limit. |
+| | `R2.3` | Role modification and membership revocation | MUST | Admin cannot demote Workspace Owner. |
+| | `R2.4` | Workspace metadata customization (name, logo upload) | SHOULD | Logo under 2 MB (PNG/JPEG only). |
+| | `R2.5` | Workspace onboarding and activity analytics dashboard | COULD | Visible only to Owners and Admins. |
+| | `R2.6` | Custom fine-grained permission matrix editor | WON'T | Deferred to future enterprise iteration. |
+| **`R3`** | | **Project Lifecycle & Containerization** | **MUST** | Logical encapsulation of work items. |
+| | `R3.1` | Project creation with title, description, and privacy settings | MUST | Scoped to parent workspace. |
+| | `R3.2` | Project archiving into read-only state | SHOULD | Preserves historical data integrity. |
+| **`R4`** | | **Task Authoring & Attribution** | **MUST** | Core work item creation and ownership. |
+| | `R4.1` | Task authoring with title, description, priority, assignee, due date | MUST | Title mandatory; defaults to `To-Do`. |
+| | `R4.2` | Restrict task assignment exclusively to active workspace members | MUST | Cannot assign tasks to external emails. |
+| | `R4.3` | Visual priority rating badges (Low, Medium, High, Urgent) | SHOULD | Default priority `Medium`. |
+| **`R5`** | | **Workflow Progression & Kanban Board Views** | **MUST** | Real-time state machine transitions. |
+| | `R5.1` | Status transitions between To-Do, In-Progress, Under-Review, Done | MUST | Records author and timestamp on every change. |
+| | `R5.2` | Interactive Kanban board with drag-and-drop state update | MUST | Optimistic UI update with server sync. |
+| | `R5.3` | Recurring task auto-cloning upon status completion | COULD | Daily, weekly, or monthly intervals. |
+| **`R6`** | | **Multi-Dimensional Task Querying & Filtering** | **MUST** | Dynamic dataset filtering without reload. |
+| | `R6.1` | Filter tasks by status, assignee, priority, and date range | MUST | Responsive client-side filter engine. |
+| | `R6.2` | Gantt chart timeline dependencies and critical path | WON'T | Out of scope for micro-SaaS initial baseline. |
+| **`R7`** | | **Secure Task Attachment Ingestion** | **MUST** | Validated ingestion and cloud storage. |
+| | `R7.1` | File attachment to active tasks with 25 MB size cap | MUST | Maximum 25 MB per file. |
+| | `R7.2` | Strict MIME type whitelist validation (PDF, Office, Images) | MUST | Executables (.exe, .sh, .bat) blocked. |
+| | `R7.3` | Cloud object storage isolation with randomized storage keys | MUST | Direct public bucket access forbidden. |
+| **`R8`** | | **Attachment Access & Lifecycle Governance** | **MUST** | Authorized, time-limited retrieval. |
+| | `R8.1` | Time-limited signed download URLs (max 15-minute expiry) | MUST | Accessible only to authorized workspace users. |
+| | `R8.2` | Permanent attachment deletion from database and storage | MUST | Triggered by uploader or workspace admin. |
+| | `R8.3` | Server-side image thumbnail generation for task preview | COULD | Generated upon upload completion. |
+| **`R9`** | | **Collaborative In-Task Discussions** | **MUST** | Markdown commentary and team tagging. |
+| | `R9.1` | Threaded Markdown comments on task detail cards | MUST | Blocked on archived projects. |
+| | `R9.2` | Real-time `@username` mentions dispatching notifications | MUST | Validated against active workspace users. |
+| | `R9.3` | Real-time WebSocket push for instant comment sync | COULD | Graceful fallback to periodic polling. |
+| **`R10`** | | **Activity Event Streaming & Alerts** | **MUST** | Immutable audit and user notification. |
+| | `R10.1` | Immutable activity event logging for all state changes | MUST | Logs actor, timestamp, old/new values. |
+| | `R10.2` | In-app notification center for assignments and mentions | MUST | Mark-as-read and filter capabilities. |
+| | `R10.3` | Scheduled daily email summary digest | SHOULD | Dispatched by System Scheduler at 08:00 UTC. |
+| **`R11`** | | **Commercial Subscription Lifecycle** | **MUST** | Turnkey payment provider integration. |
+| | `R11.1` | Plan tier checkout initiation via Stripe Checkout | MUST | Zero cardholder data stored on platform. |
+| | `R11.2` | Cryptographic signature verification of incoming webhooks | MUST | Invalid or unsigned requests rejected (401). |
+| | `R11.3` | Automated tier quota reconciliation on payment success | MUST | Updates seat limits and active period. |
+| | `R11.4` | Past-due grace period handling on payment failure | MUST | 7-day grace period before feature restriction. |
+| **`R12`** | | **Data Subject Rights & GDPR Lifecycle** | **MUST** | Automated privacy and compliance tools. |
+| | `R12.1` | Self-service personal data portability export (JSON format) | MUST | Fulfills GDPR Art. 20. |
+| | `R12.2` | Workspace-wide data archive export (ZIP archive) | MUST | Available exclusively to Workspace Owner. |
+| | `R12.3` | Verified account erasure with PII redaction | MUST | Fulfills GDPR Art. 17; password re-verified. |
+| | `R12.4` | Cryptographic digital erasure receipt issuance | SHOULD | Timestamped record retained for legal defense. |
 
----
+#### 5.3.3 Detailed Requirements Elaboration (R1 to R12)
 
-## 3. Data Entities & Data Flow Specifications
+##### `R1` — Identity & Access Governance
+- **Description:** Implements secure user onboarding, credential hashing, session token generation, and tenant-scoped role-based access control (RBAC).
+- **Origin:** TinyTask Security Architecture & GDPR Art. 32.
+- **Interfaces:** Web Client, Transactional Mail Provider.
+- **Dependencies:** User database, cryptographic signing service.
+- **Identified Constraints:** Credential storage must use modern salted hashing algorithms; plaintext passwords must never be logged.
+- **Priority:** **MUST**.
 
-The following tables define the primary business data entities manipulated by TinyTask, specifying attributes, types, and mandatory constraints.
+##### `R2` — Workspace & Multi-Tenant Provisioning
+- **Description:** Governs organizational tenancy, ensuring that every project, task, and team record is strictly encapsulated within a workspace boundary.
+- **Origin:** Business Model & Multi-Tenant Architecture.
+- **Interfaces:** Web Client, Transactional Mail Provider.
+- **Dependencies:** Database query filtering, `R1` authentication.
+- **Identified Constraints:** Cross-tenant data leakage is a critical security vulnerability; tenant boundaries must be enforced at the data layer.
+- **Priority:** **MUST**.
 
-### 3.1 Entity: User Account & Authentication
+##### `R3` — Project Lifecycle & Containerization
+- **Description:** Provides top-level containers to organize team tasks by objective, client, or work stream, including project archiving.
+- **Origin:** Core Task Management Product Specification.
+- **Interfaces:** Web Client.
+- **Dependencies:** `R2` Workspace context.
+- **Identified Constraints:** Archiving a project must render all constituent tasks read-only without deleting historical audit logs.
+- **Priority:** **MUST**.
 
-| Attribute Name | Data Type | Mandatory | Description & Constraints |
-|---|---|---|---|
-| `user_id` | UUIDv4 | Yes | System-wide unique identifier of the user account. |
-| `email` | String (RFC 5322) | Yes | Primary email address; unique index; used for authentication and notifications. |
-| `password_hash` | String | Yes | Salted cryptographic digest of user credential. Plaintext never persisted. |
-| `full_name` | String (Max 100) | Yes | User display name. |
-| `account_status` | Enum | Yes | Current state: `Pending_Verification`, `Active`, `Suspended`, `Marked_For_Deletion`. |
-| `created_at` | Timestamp (UTC) | Yes | Timestamp of initial account registration. |
-| `last_login_at` | Timestamp (UTC) | No | Timestamp of the most recent authenticated session. |
+##### `R4` — Task Authoring & Attribution
+- **Description:** Enables workspace members to create work items with explicit accountability, priority ratings, due dates, and descriptive context.
+- **Origin:** Core Task Management Product Specification.
+- **Interfaces:** Web Client.
+- **Dependencies:** `R3` Project container, active workspace membership.
+- **Identified Constraints:** Task assignment must be restricted to active members of the workspace.
+- **Priority:** **MUST**.
 
-### 3.2 Entity: Workspace & Membership
+##### `R5` — Workflow Progression & Kanban Board Views
+- **Description:** Visualizes tasks across Kanban columns (`To-Do`, `In-Progress`, `Under-Review`, `Done`) and updates state machine transitions via drag-and-drop.
+- **Origin:** User Experience & Agile Workflow Standard.
+- **Interfaces:** Web Client (Interactive Kanban UI).
+- **Dependencies:** `R4` Task entity, state transition validation logic.
+- **Identified Constraints:** Status changes must update the database atomically and record the acting user and timestamp.
+- **Priority:** **MUST**.
 
-| Attribute Name | Data Type | Mandatory | Description & Constraints |
-|---|---|---|---|
-| `workspace_id` | UUIDv4 | Yes | System-wide unique identifier of the workspace tenant. |
-| `name` | String (Max 80) | Yes | User-facing organization or workspace name. |
-| `slug` | String (Alphanumeric) | Yes | Unique URL-safe identifier for tenant routing. |
-| `subscription_tier` | Enum | Yes | Active tier: `Free`, `Pro`, `Enterprise`. |
-| `owner_id` | UUIDv4 | Yes | Foreign key referencing the `user_id` of the Workspace Owner. |
-| `membership_role` | Enum | Yes | Scoped role per user: `Owner`, `Admin`, `Member`, `Viewer`. |
-| `created_at` | Timestamp (UTC) | Yes | Workspace provisioning timestamp. |
+##### `R6` — Multi-Dimensional Task Querying & Filtering
+- **Description:** Equips users with dynamic search and multi-parameter filters (by assignee, status, priority, due date) to quickly surface work items.
+- **Origin:** User Experience & Daily Productivity.
+- **Interfaces:** Web Client.
+- **Dependencies:** `R4` Task attributes, database indexing.
+- **Identified Constraints:** Filtering must operate responsively without requiring full-page application reloads.
+- **Priority:** **MUST**.
 
-### 3.3 Entity: Project & Task Entity
+##### `R7` — Secure Task Attachment Ingestion
+- **Description:** Allows authorized users to upload documents, spreadsheets, and images to tasks, enforcing strict MIME validation and 25 MB file size caps.
+- **Origin:** Collaboration Requirements & NIS2/CRA Secure Ingest.
+- **Interfaces:** Cloud Object Storage (S3-compatible API).
+- **Dependencies:** `R4` Task entity, storage authorization service.
+- **Identified Constraints:** Executable binaries must be blocked; files must be stored with randomized storage keys in private buckets.
+- **Priority:** **MUST**.
 
-| Attribute Name | Data Type | Mandatory | Description & Constraints |
-|---|---|---|---|
-| `task_id` | UUIDv4 | Yes | System-wide unique identifier for the task. |
-| `workspace_id` | UUIDv4 | Yes | Foreign key identifying tenant boundary. |
-| `project_id` | UUIDv4 | Yes | Foreign key identifying the parent project. |
-| `title` | String (Max 250) | Yes | Short summary description of the task. |
-| `description` | Markdown / Text | No | Detailed narrative of the task requirements. |
-| `status` | Enum | Yes | Workflow state: `To-Do`, `In-Progress`, `Under-Review`, `Done`. |
-| `priority` | Enum | Yes | Urgency rating: `Low`, `Medium`, `High`, `Urgent`. |
-| `assignee_id` | UUIDv4 | No | Foreign key referencing assigned `user_id`. |
-| `due_date` | Date (ISO 8601) | No | Target completion date. |
-| `created_by` | UUIDv4 | Yes | Foreign key referencing author `user_id`. |
-| `updated_at` | Timestamp (UTC) | Yes | Timestamp of most recent modification. |
+##### `R8` — Attachment Access & Lifecycle Governance
+- **Description:** Generates time-limited, signed URLs for downloading attachments and coordinates permanent storage deletion upon task or attachment removal.
+- **Origin:** Data Protection & Storage Hygiene.
+- **Interfaces:** Cloud Object Storage.
+- **Dependencies:** `R7` Attachment entity, IAM signing keys.
+- **Identified Constraints:** Download links must expire within 15 minutes to prevent unauthorized distribution.
+- **Priority:** **MUST**.
 
-### 3.4 Entity: Task Attachment & Metadata
+##### `R9` — Collaborative In-Task Discussions
+- **Description:** Embeds threaded Markdown conversations directly within task cards, supporting `@username` mentions that trigger notifications.
+- **Origin:** Team Collaboration Specification.
+- **Interfaces:** Web Client, Notification Service.
+- **Dependencies:** `R4` Task entity, `R1` User identity.
+- **Identified Constraints:** Comments cannot be edited or deleted once older than 24 hours to preserve operational auditability.
+- **Priority:** **MUST**.
 
-| Attribute Name | Data Type | Mandatory | Description & Constraints |
-|---|---|---|---|
-| `attachment_id` | UUIDv4 | Yes | Unique identifier of the uploaded attachment. |
-| `task_id` | UUIDv4 | Yes | Foreign key referencing the parent task. |
-| `workspace_id` | UUIDv4 | Yes | Foreign key enforcing tenant data isolation. |
-| `original_filename` | String (Max 255) | Yes | Sanitized client filename. |
-| `mime_type` | String | Yes | Content type validated against allowed whitelist. |
-| `file_size_bytes` | Integer (BigInt) | Yes | File size in bytes (max 25 MB on Pro tier). |
-| `storage_key` | String | Yes | Opaque object storage path / blob pointer. |
-| `uploaded_by` | UUIDv4 | Yes | Foreign key referencing uploader `user_id`. |
-| `uploaded_at` | Timestamp (UTC) | Yes | Timestamp of successful upload completion. |
+##### `R10` — Activity Event Streaming & Alerts
+- **Description:** Maintains an immutable historical log of all task updates and dispatches notifications via an in-app inbox and daily email digests.
+- **Origin:** Accountability & Asynchronous Team Coordination.
+- **Interfaces:** Web Client, Transactional Mail Provider, System Scheduler.
+- **Dependencies:** State change event listeners, scheduler daemon.
+- **Identified Constraints:** Digest emails must honor user opt-in notification preferences.
+- **Priority:** **MUST**.
 
-### 3.5 Entity: Activity Feed & Comments
+##### `R11` — Commercial Subscription Lifecycle
+- **Description:** Orchestrates plan tier checkout via Stripe, verifies incoming webhook signatures, and reconciles workspace seat limits.
+- **Origin:** Business Model & Revenue Operations.
+- **Interfaces:** External Payment Gateway (Stripe API & Webhooks).
+- **Dependencies:** `R2` Workspace entity, secure webhook endpoint.
+- **Identified Constraints:** Payment card details must never be transmitted through or stored on TinyTask servers.
+- **Priority:** **MUST**.
 
-| Attribute Name | Data Type | Mandatory | Description & Constraints |
-|---|---|---|---|
-| `comment_id` | UUIDv4 | Yes | Unique identifier of the comment entry. |
-| `task_id` | UUIDv4 | Yes | Foreign key referencing the target task. |
-| `author_id` | UUIDv4 | Yes | Foreign key referencing author `user_id`. |
-| `body` | Text (Max 5000) | Yes | Comment prose, supporting `@mention` syntax. |
-| `created_at` | Timestamp (UTC) | Yes | Creation timestamp. |
-| `updated_at` | Timestamp (UTC) | No | Modification timestamp if edited. |
+##### `R12` — Data Subject Rights & GDPR Lifecycle
+- **Description:** Delivers self-service data portability export (Art. 20) and verified account/workspace erasure with PII redaction (Art. 17).
+- **Origin:** GDPR Compliance & Privacy-by-Design Baseline.
+- **Interfaces:** Web Client, Transactional Mail Provider, Storage Purge Worker.
+- **Dependencies:** All system data entities, background archive worker.
+- **Identified Constraints:** Account erasure must permanently redact personal identifiers while maintaining referential integrity for shared team tasks.
+- **Priority:** **MUST**.
 
-### 3.6 Entity: Subscription & Billing Record
+### 5.4 Non-Functional Requirements
 
-| Attribute Name | Data Type | Mandatory | Description & Constraints |
-|---|---|---|---|
-| `subscription_id` | String | Yes | External payment provider subscription reference (e.g., Stripe `sub_...`). |
-| `workspace_id` | UUIDv4 | Yes | Foreign key referencing tenant workspace. |
-| `plan_name` | Enum | Yes | Plan designation: `Free`, `Pro_Monthly`, `Pro_Annual`, `Enterprise`. |
-| `billing_status` | Enum | Yes | State: `Active`, `Past_Due`, `Canceled`, `Incomplete`. |
-| `current_period_end` | Timestamp (UTC) | Yes | Expiration timestamp of current prepaid cycle. |
-| `seats_allocated` | Integer | Yes | Maximum active members permitted under quota. |
+#### 5.4.1 Domain Non-Functional Requirements
+Domain non-functional requirements define the quality attributes governing user experience, performance, and reliability:
 
-### 3.7 Entity: Security Audit Log & Erasure Receipt
+*Table 6 — Domain Non-Functional Requirements*
 
-| Attribute Name | Data Type | Mandatory | Description & Constraints |
-|---|---|---|---|
-| `log_id` | UUIDv4 | Yes | Immutable event entry identifier. |
-| `workspace_id` | UUIDv4 | No | Workspace scope (nullable for cross-workspace auth events). |
-| `actor_id` | UUIDv4 | Yes | Foreign key of acting user or system principal. |
-| `action_type` | String | Yes | Canonical event code (e.g., `AUTH_SUCCESS`, `MEMBER_REMOVED`, `DATA_EXPORT_REQUESTED`). |
-| `ip_address` | String (IPv4/IPv6) | Yes | Request client IP address. |
-| `event_timestamp` | Timestamp (UTC) | Yes | Exact time of occurrence. |
-| `status_code` | String | Yes | Result status: `SUCCESS`, `DENIED`, `ERROR`. |
+| ID | Non-Functional Requirement Statement | Priority | Category | Verification Method |
+|---|---|---|---|---|
+| **`NFR-01`** | The web application UI **MUST** achieve a First Contentful Paint (FCP) of under 1.5 seconds and an interactive response time under 200 ms for task board state updates under standard broadband connections. | **MUST** | Performance | Automated Lighthouse / Core Web Vitals CI testing. |
+| **`NFR-02`** | The platform **MUST** be responsive and fully functional across modern standards-compliant desktop and mobile browsers (Chromium, Firefox, Safari) without requiring proprietary plugins. | **MUST** | Usability / Portability | Cross-browser automated end-to-end test suite. |
+| **`NFR-03`** | The Kanban board **MUST** support at least 1,000 active tasks per project without degrading client-side scrolling or dragging performance. | **SHOULD** | Scalability | Synthetic load testing with large project task datasets. |
+| **`NFR-04`** | The platform **MUST** maintain a minimum operational service availability of 99.5% uptime during business hours, excluding scheduled maintenance windows. | **MUST** | Reliability | Synthetic uptime monitoring and alerting. |
 
----
+#### 5.4.2 Management, Security & Infrastructure Non-Functional Requirements
+Management and infrastructure non-functional requirements define the security, data protection, and operational governance constraints:
 
-## 4. System Actors & Profiles
+*Table 7 — Management, Security & Infrastructure Non-Functional Requirements*
 
-The actors represent operational roles interacting with the TinyTask platform. A single human user may hold different roles across distinct workspaces (e.g., Owner in Workspace A, Viewer in Workspace B).
+| ID | Non-Functional Requirement Statement | Priority | Category | Verification Method |
+|---|---|---|---|---|
+| **`NFR-05`** | All network communications between clients, internal services, and external APIs **MUST** be encrypted in transit using TLS 1.3 (with TLS 1.2 as minimum fallback). | **MUST** | Security | SSL Labs A+ cipher configuration validation. |
+| **`NFR-06`** | All persisted application data (relational databases, caches, and cloud object storage) **MUST** be encrypted at rest using AES-256 or equivalent cryptographic standards. | **MUST** | Security | Cloud provider managed key encryption audits. |
+| **`NFR-07`** | The platform **MUST** enforce multi-tenant isolation at the database layer, ensuring no database query executed in a tenant context can return data belonging to another workspace. | **MUST** | Security / Tenancy | Automated tenancy isolation integration tests. |
+| **`NFR-08`** | Automated database backups **MUST** be executed daily, encrypted, and retained for 30 days with a verified Recovery Point Objective (RPO) of < 24 hours and Recovery Time Objective (RTO) of < 4 hours. | **MUST** | Disaster Recovery | Quarterly simulated backup restoration drills. |
+| **`NFR-09`** | Personal identifiers (name, email, IP addresses) **MUST** be processed strictly in accordance with GDPR principles of data minimization and purpose limitation. | **MUST** | Privacy / Compliance | Annual Data Protection Impact Assessment (DPIA). |
 
-| Actor Name | Classification | Definition & Operational Scope | Interacting Functional Areas |
-|---|---|---|---|
-| **`Workspace Owner`** | Human User (Privileged) | The primary billing and legal administrator of a workspace. Holds exclusive privileges to manage billing subscriptions, initiate workspace deletion, and request organizational data export. | `{U.C.1}`, `{U.C.2}`, `{U.C.6}` |
-| **`Workspace Admin`** | Human User (Privileged) | Designated project coordinator and team manager. Authorized to invite new members, adjust member roles (Admin, Member, Viewer), create projects, and archive workspace resources. | `{U.C.1}`, `{U.C.2}`, `{U.C.3}`, `{U.C.4}`, `{U.C.5}` |
-| **`Workspace Member`** | Human User (Operational) | Standard team member. Can create, update, and reassign tasks; upload attachments; write comments; and view project boards. | `{U.C.1}`, `{U.C.3}`, `{U.C.4}`, `{U.C.5}` |
-| **`Workspace Viewer`** | Human User (Read-Only) | External stakeholder, client, or auditor. Granted read-only visibility into projects, task lists, and discussions without modification rights. | `{U.C.1}`, `{U.C.3}`, `{U.C.5}` |
-| **`External Payment Gateway`** | External System (API) | External processing engine (Stripe) delivering asynchronous webhooks regarding checkout results, subscription state transitions, and payment failures. | `{U.C.6}` |
-| **`System Scheduler`** | Automated Background Process | Internal asynchronous execution worker that processes scheduled background tasks, reminder notifications, recurring digest emails, and batch retention cleanups. | `{U.C.5}`, `{U.C.6}` |
+### 5.5 Business Use Cases & Product Use Cases (PUC)
 
----
+The following table synthesizes the complete **Product Use Cases (PUC)** bridging the As-Is operational deficiencies into the To-Be system capabilities:
 
-## 5. Product Use Case (PUC) Summary Table
+*Table 8 — Product Use Case (PUC) Summary Table*
 
-The following table summarizes all **Product Use Cases (PUC)** across TinyTask's 6 functional domains, outlining input payloads (`in`) and output outcomes (`out`).
-
-| PUC ID | PUC Name | Primary Actors | Input Data (`in`) | Output Data (`out`) |
+| PUC ID | PUC Name | Participating Actors | Input Data (`in`) | Output Data (`out`) |
 |---|---|---|---|---|
 | **`PUC 1.1`** | Register User Account | New User | Email address, password, full name, accepted terms. | Verification email dispatched; pending user account record created. |
-| **`PUC 1.2`** | Authenticate & Establish Session | Registered User | Email, password (or authentication credentials). | Cryptographically signed session token; user workspace memberships list. |
+| **`PUC 1.2`** | Authenticate & Establish Session | Registered User | Email, password (or authentication credentials). | Signed session token; user workspace memberships list. |
 | **`PUC 1.3`** | Recover & Reset Password | Registered User | Account email address; reset verification token; new password. | Password reset confirmation; invalidated active sessions; audit log entry. |
 | **`PUC 1.4`** | Manage Profile & Active Sessions | Authenticated User | Updated profile attributes; request to terminate active session. | Updated profile record; terminated session token confirmation. |
 | **`PUC 2.1`** | Provision New Workspace | Authenticated User | Workspace name, desired URL slug, initial subscription selection. | Provisioned workspace tenant; user assigned `Workspace Owner` role. |
@@ -275,110 +499,22 @@ The following table summarizes all **Product Use Cases (PUC)** across TinyTask's
 | **`PUC 6.3`** | Request Data Portability Export | Workspace Owner / User | Data export request, export format choice (JSON/ZIP). | Background export job queued; signed download link delivered. |
 | **`PUC 6.4`** | Execute Account / Workspace Erasure | Workspace Owner / User | Deletion confirmation, re-authentication password. | Account/tenant marked for erasure; personal data redacted; audit receipt. |
 
----
+### 5.6 High-Level Use Case Model ({U.C.1} to {U.C.6})
 
-## 6. Exhaustive Functional Requirements Catalog (MoSCoW)
-
-This section provides the complete, unambiguous catalog of **Functional Requirements (`FR-01` to `FR-38`)** for TinyTask SaaS, mapped to their corresponding System Use Cases and classified by MoSCoW priority.
-
-### 6.1 Requirements for {U.C.1} — Identity & Access Governance
-
-| ID | Sub-ID | Functional Requirement Statement | MoSCoW | Mapped UC | Constraints / Rules |
-|---|---|---|---|---|---|
-| **`FR-01`** | `FR-01.1` | The platform **MUST** allow new users to register an account by submitting an email address, full name, and secure password. | **MUST** | `{U.C.1.1}` | Email must be unique across the platform. |
-| **`FR-01`** | `FR-01.2` | The platform **MUST** dispatch a cryptographic verification link to the submitted email before account activation is finalized. | **MUST** | `{U.C.1.1}` | Verification token valid for 24 hours. |
-| **`FR-02`** | `FR-02.1` | The platform **MUST** authenticate registered users against their email and password credentials, returning a signed session token. | **MUST** | `{U.C.1.2}` | Cryptographic token with strict expiry. |
-| **`FR-02`** | `FR-02.2` | The platform **MUST** reject authentication attempts with invalid credentials and record a timestamped failed login event. | **MUST** | `{U.C.1.2}` | Generic error message to prevent enumeration. |
-| **`FR-03`** | `FR-03.1` | The platform **MUST** provide a password recovery workflow that sends a single-use password reset token to the user's verified email. | **MUST** | `{U.C.1.3}` | Token expires in 1 hour; invalidated on first use. |
-| **`FR-03`** | `FR-03.2` | Upon successful password reset, the platform **MUST** invalidate all existing active sessions for that user account across all devices. | **MUST** | `{U.C.1.3}` | Immediate token revocation. |
-| **`FR-04`** | `FR-04.1` | The platform **MUST** enforce Role-Based Access Control (RBAC) differentiating permissions among four predefined roles: `Owner`, `Admin`, `Member`, and `Viewer`. | **MUST** | `{U.C.1.4}` | Roles are scoped per workspace tenant. |
-| **`FR-04`** | `FR-04.2` | The platform **SHOULD** permit users to inspect a list of their active sessions and terminate any non-current session on demand. | **SHOULD** | `{U.C.1.4}` | Displays client user-agent and IP country. |
-| **`FR-05`** | `FR-05.1` | The platform **COULD** support multi-factor authentication (MFA/TOTP) for user accounts requesting enhanced security. | **COULD** | `{U.C.1.2}` | Standard RFC 6238 TOTP authenticator app. |
-| **`FR-06`** | `FR-06.1` | The platform **WON'T** support enterprise Single Sign-On (SAML 2.0 / OIDC) federation in the initial baseline release. | **WON'T** | `{U.C.1.2}` | Reserved for future Enterprise release. |
-
-### 6.2 Requirements for {U.C.2} — Workspace & Team Administration
-
-| ID | Sub-ID | Functional Requirement Statement | MoSCoW | Mapped UC | Constraints / Rules |
-|---|---|---|---|---|---|
-| **`FR-07`** | `FR-07.1` | The platform **MUST** allow an authenticated user to create a new workspace tenant, automatically assigning that user the `Workspace Owner` role. | **MUST** | `{U.C.2.1}` | Workspace URL slug must be globally unique. |
-| **`FR-07`** | `FR-07.2` | The platform **MUST** strictly isolate all data, projects, tasks, and members of a workspace from all other workspaces. | **MUST** | `{U.C.2.1}` | Multi-tenant boundary enforced at database/query level. |
-| **`FR-08`** | `FR-08.1` | The platform **MUST** allow Workspace Owners and Admins to invite new users to the workspace by specifying their email and assigned role. | **MUST** | `{U.C.2.2}` | Invitation token valid for 7 days. |
-| **`FR-08`** | `FR-08.2` | The platform **MUST** prevent invitation dispatch if the active member count has reached the seat limit of the workspace's subscription tier. | **MUST** | `{U.C.2.2}` | Free tier capped at 5 active members. |
-| **`FR-09`** | `FR-09.1` | The platform **MUST** permit Workspace Owners and Admins to update member roles (`Admin`, `Member`, `Viewer`) within the workspace. | **MUST** | `{U.C.2.3}` | Admins cannot demote or remove the Workspace Owner. |
-| **`FR-09`** | `FR-09.2` | The platform **MUST** allow Workspace Owners and Admins to revoke a user's workspace membership, instantly terminating their access to workspace data. | **MUST** | `{U.C.2.3}` | Historical tasks created by user remain preserved. |
-| **`FR-10`** | `FR-10.1` | The platform **SHOULD** allow Workspace Admins to update the workspace name and upload an organizational logo. | **SHOULD** | `{U.C.2.4}` | Logo image limited to standard PNG/JPEG format under 2 MB. |
-| **`FR-11`** | `FR-11.1` | The platform **COULD** provide an activity dashboard displaying member onboarding history and weekly active contributor counts. | **COULD** | `{U.C.2.4}` | Visible only to Workspace Owners and Admins. |
-| **`FR-12`** | `FR-12.1` | The platform **WON'T** support custom role definitions or fine-grained custom permission matrices in the initial baseline release. | **WON'T** | `{U.C.2.3}` | Limited to the 4 canonical RBAC roles. |
-
-### 6.3 Requirements for {U.C.3} — Project & Task Lifecycle Management
-
-| ID | Sub-ID | Functional Requirement Statement | MoSCoW | Mapped UC | Constraints / Rules |
-|---|---|---|---|---|---|
-| **`FR-13`** | `FR-13.1` | The platform **MUST** permit Workspace Admins and Members to create projects within the workspace with a title, description, and target completion date. | **MUST** | `{U.C.3.1}` | Projects belong strictly to one workspace. |
-| **`FR-13`** | `FR-13.2` | The platform **SHOULD** allow Workspace Admins to archive completed projects, making them read-only while preserving all historical tasks. | **SHOULD** | `{U.C.3.1}` | Archived projects can be unarchived by Admins. |
-| **`FR-14`** | `FR-14.1` | The platform **MUST** allow Members and Admins to create tasks within a project, specifying title, description, status, priority, assignee, and due date. | **MUST** | `{U.C.3.2}` | Title is mandatory; status defaults to `To-Do`. |
-| **`FR-14`** | `FR-14.2` | The platform **MUST** restrict task assignment exclusively to active members of the containing workspace. | **MUST** | `{U.C.3.2}` | Users cannot assign tasks to external emails. |
-| **`FR-15`** | `FR-15.1` | The platform **MUST** allow Members, Admins, and the task assignee to transition task status between `To-Do`, `In-Progress`, `Under-Review`, and `Done`. | **MUST** | `{U.C.3.3}` | Every status change records author and timestamp. |
-| **`FR-15`** | `FR-15.2` | The platform **MUST** provide a Kanban board view grouping tasks by status columns and supporting real-time drag-and-drop state updates. | **MUST** | `{U.C.3.3}` | Immediate client update with optimistic UI. |
-| **`FR-16`** | `FR-16.1` | The platform **MUST** allow users to filter tasks by status, priority, assignee, and due date range, and sort by due date or last updated. | **MUST** | `{U.C.3.4}` | Filters apply dynamically without full page reload. |
-| **`FR-17`** | `FR-17.1` | The platform **SHOULD** allow users to define task priority ratings (`Low`, `Medium`, `High`, `Urgent`) with distinct visual badges. | **SHOULD** | `{U.C.3.2}` | Default priority is `Medium`. |
-| **`FR-18`** | `FR-18.1` | The platform **COULD** support recurring tasks that automatically generate a clone upon marking the current task as `Done`. | **COULD** | `{U.C.3.3}` | Recurrence intervals: daily, weekly, monthly. |
-| **`FR-19`** | `FR-19.1` | The platform **WON'T** provide Gantt chart project timeline dependencies or critical path computation in the initial release. | **WON'T** | `{U.C.3.4}` | Out of scope for micro-SaaS initial release. |
-
-### 6.4 Requirements for {U.C.4} — Task Attachment & Media Ingestion
-
-| ID | Sub-ID | Functional Requirement Statement | MoSCoW | Mapped UC | Constraints / Rules |
-|---|---|---|---|---|---|
-| **`FR-20`** | `FR-20.1` | The platform **MUST** permit Members and Admins to attach files (documents, spreadsheets, images) to any active task. | **MUST** | `{U.C.4.1}` | File size must not exceed 25 MB per file. |
-| **`FR-20`** | `FR-20.2` | The platform **MUST** validate uploaded file MIME types against an approved whitelist (PDF, DOCX, XLSX, PNG, JPEG, SVG, TXT). | **MUST** | `{U.C.4.1}` | Executable files (`.exe`, `.sh`, `.bat`) must be rejected. |
-| **`FR-21`** | `FR-21.1` | The platform **MUST** store file binaries in an isolated cloud object storage container using randomized, unguessable storage keys. | **MUST** | `{U.C.4.1}` | Direct public access to the storage bucket is blocked. |
-| **`FR-22`** | `FR-22.1` | The platform **MUST** generate time-limited, signed download URLs (max expiry 15 minutes) for authorized workspace members requesting an attachment. | **MUST** | `{U.C.4.2}` | URLs must not be reusable across unauthorized sessions. |
-| **`FR-23`** | `FR-23.1` | The platform **MUST** allow the uploader, Workspace Admins, or Owner to delete a task attachment, triggering permanent removal from storage. | **MUST** | `{U.C.4.3}` | Deletion removes metadata and physical object. |
-| **`FR-24`** | `FR-24.1` | The platform **COULD** generate inline image thumbnails for preview within the task detail panel. | **COULD** | `{U.C.4.2}` | Generated on server upon upload completion. |
-
-### 6.5 Requirements for {U.C.5} — Team Collaboration & Activity Feeds
-
-| ID | Sub-ID | Functional Requirement Statement | MoSCoW | Mapped UC | Constraints / Rules |
-|---|---|---|---|---|---|
-| **`FR-25`** | `FR-25.1` | The platform **MUST** permit workspace members to post threaded comments on tasks with rich text formatting (Markdown). | **MUST** | `{U.C.5.1}` | Comments cannot be posted to archived projects. |
-| **`FR-25`** | `FR-25.2` | The platform **MUST** support `@username` mentions within comments, generating an in-app notification for mentioned workspace members. | **MUST** | `{U.C.5.1}` | Mentions valid only for active workspace members. |
-| **`FR-26`** | `FR-26.1` | The platform **MUST** record an immutable chronological activity event whenever a task is created, status-transitioned, reassigned, or commented upon. | **MUST** | `{U.C.5.2}` | Event logs author, timestamp, and previous/new values. |
-| **`FR-27`** | `FR-27.1` | The platform **MUST** provide an in-app notification center showing unread task assignments, mentions, and due date alerts. | **MUST** | `{U.C.5.2}` | Users can mark individual or all notifications as read. |
-| **`FR-28`** | `FR-28.1` | The platform **SHOULD** dispatch a daily email digest summarizing outstanding tasks and mentions if enabled in user preferences. | **SHOULD** | `{U.C.5.3}` | Dispatched by System Scheduler at 08:00 UTC. |
-| **`FR-29`** | `FR-29.1` | The platform **COULD** support real-time WebSocket push updates to reflect collaborator comments and task moves without browser refresh. | **COULD** | `{U.C.5.1}` | Fallback to periodic polling if WebSocket unavailable. |
-
-### 6.6 Requirements for {U.C.6} — Subscriptions & Data Subject Lifecycle
-
-| ID | Sub-ID | Functional Requirement Statement | MoSCoW | Mapped UC | Constraints / Rules |
-|---|---|---|---|---|---|
-| **`FR-30`** | `FR-30.1` | The platform **MUST** allow the Workspace Owner to select and initiate a subscription upgrade from Free to Pro or Enterprise via Stripe Checkout. | **MUST** | `{U.C.6.1}` | Credit card information never touches TinyTask servers. |
-| **`FR-31`** | `FR-31.1` | The platform **MUST** listen for and verify cryptographic signatures of incoming payment gateway webhooks before mutating subscription states. | **MUST** | `{U.C.6.2}` | Unsigned or invalid webhook requests are rejected with 401. |
-| **`FR-32`** | `FR-32.1` | Upon receipt of a valid `invoice.payment_succeeded` webhook, the platform **MUST** automatically renew and update the workspace's active tier quota. | **MUST** | `{U.C.6.2}` | Updates current billing period end date. |
-| **`FR-33`** | `FR-33.1` | Upon receipt of an `invoice.payment_failed` webhook, the platform **MUST** mark the workspace as `Past_Due` and notify the Workspace Owner. | **MUST** | `{U.C.6.2}` | 7-day grace period before feature restriction. |
-| **`FR-34`** | `FR-34.1` | The platform **MUST** provide a self-service data portability export allowing any authenticated user to download all their personal data in machine-readable JSON format (GDPR Art. 20). | **MUST** | `{U.C.6.3}` | Includes profile, tasks created, and comments. |
-| **`FR-35`** | `FR-35.1` | The platform **MUST** provide Workspace Owners a full workspace data export mechanism containing all projects, tasks, comments, and attachment archives. | **MUST** | `{U.C.6.3}` | Packaged as a secure encrypted ZIP archive. |
-| **`FR-36`** | `FR-36.1` | The platform **MUST** provide an account deletion workflow allowing users to permanently erase their account and personal identifiers (GDPR Art. 17). | **MUST** | `{U.C.6.4}` | Re-authentication password verification required. |
-| **`FR-37`** | `FR-37.1` | Upon execution of account erasure, the platform **MUST** redact or pseudonymize the user's name and email across all historical comments and task logs. | **MUST** | `{U.C.6.4}` | Erased user replaced with `[Deleted User]`. |
-| **`FR-38`** | `FR-38.1` | The platform **SHOULD** issue an auditable, timestamped digital erasure receipt to the user upon successful completion of data erasure. | **SHOULD** | `{U.C.6.4}` | Retained in security audit trail for legal accountability. |
+The operational requirements of TinyTask coalesce into 6 canonical High-Level System Use Cases, detailed comprehensively in `Doc02_System_Use_Cases.md`:
+1. **`{U.C.1}` Identity & Access Governance:** Account registration, credential authentication, session tokens, password recovery, and tenant role resolution.
+2. **`{U.C.2}` Workspace & Team Administration:** Multi-tenant workspace provisioning, member invitations, role updates, and quota monitoring.
+3. **`{U.C.3}` Project & Task Lifecycle Management:** Project containerization, task authoring, Kanban board progression, and dynamic filtering.
+4. **`{U.C.4}` Task Attachment & Media Ingestion:** Presigned file upload, MIME validation, private cloud storage, and expiring download links.
+5. **`{U.C.5}` Team Collaboration & Activity Feeds:** Threaded Markdown task comments, user mentions, activity stream tracking, and scheduled digest emails.
+6. **`{U.C.6}` Subscriptions & Data Subject Lifecycle:** Stripe plan checkout, webhook reconciliation, self-service data portability (Art. 20), and account erasure (Art. 17).
 
 ---
 
-## 7. Document History & Traceability Matrix
+## 6. Bibliography
 
-### 7.1 Revision History
-
-| Revision | Date | Author / Role | Summary of Changes |
-|---|---|---|---|
-| `v1.0.0` | 2026-09-23 | Requirements Engineering Team | Initial formal functional requirements baseline and PUC specification for TinyTask SaaS, adopting the Volere & GPTools E1.1 framework with MoSCoW prioritization. |
-
-### 7.2 Functional Requirements to PUC Mapping Summary
-
-| Functional Domain | System Use Case | Product Use Cases Covered | Functional Requirements Range | Total MUST | Total SHOULD | Total COULD | Total WON'T |
-|---|---|---|---|---|---|---|---|
-| **Identity & Access** | `{U.C.1}` | `PUC 1.1`, `PUC 1.2`, `PUC 1.3`, `PUC 1.4` | `FR-01` to `FR-06` | 6 | 1 | 1 | 1 |
-| **Workspace & Team** | `{U.C.2}` | `PUC 2.1`, `PUC 2.2`, `PUC 2.3`, `PUC 2.4` | `FR-07` to `FR-12` | 5 | 1 | 1 | 1 |
-| **Projects & Tasks** | `{U.C.3}` | `PUC 3.1`, `PUC 3.2`, `PUC 3.3`, `PUC 3.4` | `FR-13` to `FR-19` | 6 | 2 | 1 | 1 |
-| **Attachments & Media** | `{U.C.4}` | `PUC 4.1`, `PUC 4.2`, `PUC 4.3` | `FR-20` to `FR-24` | 5 | 0 | 1 | 0 |
-| **Collaboration & Feeds** | `{U.C.5}` | `PUC 5.1`, `PUC 5.2`, `PUC 5.3` | `FR-25` to `FR-29` | 4 | 1 | 1 | 0 |
-| **Billing & Privacy** | `{U.C.6}` | `PUC 6.1`, `PUC 6.2`, `PUC 6.3`, `PUC 6.4` | `FR-30` to `FR-38` | 8 | 1 | 0 | 0 |
-| **TOTALS** | — | **22 PUCs** | **38 Requirements (45 sub-items)** | **34** | **6** | **5** | **3** |
+1. Robertson, S., & Robertson, J. (2012). *Mastering the Requirements Process: Getting Requirements Right* (3rd ed.). Addison-Wesley Professional.
+2. Centro de Computação Gráfica (CCG) & PIEP. (2023). *E1.1 – GPTools_ModeloASIS_TOBE V2.0: Relatório de Análise de Requisitos e Modelo As-Is / To-Be*. Guimarães, Portugal.
+3. Centro de Computação Gráfica (CCG) & PIEP. (2023). *E1.2 – GPTools_AnáliseRequisitos_CasosDeUso_V4.0: Especificação de Casos de Uso e Decomposição Funcional*. Guimarães, Portugal.
+4. European Parliament & Council of the European Union. (2016). *Regulation (EU) 2016/679 (General Data Protection Regulation)*. Official Journal of the European Union, L 119, 1–88.
+5. National Institute of Standards and Technology (NIST). (2024). *The NIST Cybersecurity Framework (CSF) 2.0*. NIST Special Publication.

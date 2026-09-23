@@ -169,6 +169,7 @@ flowchart TD
   - **Company Scale Discipline (No Enterprise Scope Inflation):** Repertoire of requirements must strictly fit the company's real context from the Intake Form (e.g., an 8-person micro-SaaS must NOT include enterprise SSO federation, complex permission matrices, or oversized features).
   - **Use Case Granularity (E1.2 Standard):** Refinement stops strictly at **Level 1** (`{U.C.n.m}`). **Zero leaf nodes** (`{U.C.n.m.k}`) and **zero step-by-step procedural execution sequences** (Step 1, Step 2, etc.) in the functional baseline.
   - **Strict Pure Functionality:** Functional specification documents must represent pure business/user capability. Never pre-bake security, cryptography, or privacy controls (these belong strictly to the AEGIS Phase 3 synthesis layer driven by Phase 2 Operational Objectives and autonomous skills).
+  - **Foundational Literature & Detailed Manual:** Full elicitation methodology, Volere Snow Card derivation, Cockburn goal levels, and downstream AEGIS security synthesis mapping are codified in [`templates/phase3_functional_spec_guidelines.md`](file:///c:/Users/paulo.ribeiro/OneDrive%20-%20Instituto%20CCG%20ZGDV/Ambiente%20de%20Trabalho/Projetos_PhD/aegis-mvp/templates/phase3_functional_spec_guidelines.md). All Phase 3 functional authoring must adhere to this guide.
 
 ---
 

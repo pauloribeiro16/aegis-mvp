@@ -195,4 +195,4 @@ Step 3 transforms the regulatory drivers and threat mitigations derived in Step 
 
 ## 5. Output Summary of Step 3
 
-All 18 security and privacy requirements are now authored in precise, deterministic EARS syntax, equipped with objective Volere fit criteria, and bound to ISO 29148 verification methods. They form the core content of [`Doc03_Security_Privacy_Requirements.md`](../v1_security_privacy_synthesis/Doc03_Security_Privacy_Requirements.md).
+All 18 security and privacy requirements are now authored in precise, deterministic EARS syntax, equipped with objective Volere fit criteria, and bound to ISO 29148 verification methods. Per the 2026-09-23 absorption rule they are absorbed into the `Security & Privacy Constraints` rows of the V1 `Doc01` cards (cross-cutting NFRs stay standalone in the Quality Attributes table) — no standalone catalog document.

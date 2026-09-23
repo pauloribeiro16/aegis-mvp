@@ -132,7 +132,7 @@ flowchart TD
     subgraph P3_V1["Phase 3 — Version 1 (Synthesized Baseline)"]
         Doc01_V1["Doc01: Requirements Elicitation<br>(+ Non-Functional Requirements & P2 Trace)"]
         Doc02_V1["Doc02: System Use Cases<br>(+ Security Preconditions, Extensions, Guarantees)"]
-        Doc03_V1["Functional Evolution Register<br>(STEP5: D1-D4 changes, analysis dossier)"]
+        Reg_V1["Functional Evolution Register<br>(STEP5: D1-D4 changes, analysis dossier)"]
     end
 
     P2 --> Synth
@@ -245,7 +245,7 @@ To maintain the highest professional standard of requirements engineering, autho
 
 ### 1. The Pre-Baked Security/Privacy Trap
 - **Anti-Pattern:** Writing *"User enters password which is encrypted using Argon2id"* in a functional requirement card.
-- **Remedy:** Keep functional cards focused on the business capability (*"Authenticate User Identity"*). Specify the cryptographic strength and algorithm constraints in `Doc03_Security_Privacy_Requirements.md` under the security & privacy NFR IDs.
+- **Remedy:** Keep functional cards focused on the business capability (*"Authenticate User Identity"*). Specify the cryptographic strength and algorithm constraints in the card's **`Security & Privacy Constraints:` row** under the absorbed security & privacy NFR IDs (or the Quality Attributes table for cross-cutting NFRs).
 
 ### 2. The Technology Leakage Trap
 - **Anti-Pattern:** Writing *"Store task records in PostgreSQL database hosted in AWS Frankfurt"*.

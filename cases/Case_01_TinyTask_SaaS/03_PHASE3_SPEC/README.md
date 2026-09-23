@@ -23,18 +23,19 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 │   ├── STEP1_V0_FUNCTIONAL_AUDIT_AND_BOUNDARY_ANALYSIS.md        # Step 1: Functional audit, assets, and boundaries
 │   ├── STEP2_REGULATORY_CROSS_CUTTING_AND_THREAT_DERIVATION.md   # Step 2: Phase 2 rules mapping & threat modeling
 │   ├── STEP3_EARS_REQUIREMENT_FORMULATION_AND_FIT_CRITERIA.md    # Step 3: EARS formulation & Volere fit criteria
-│   └── STEP4_FUNCTIONAL_AUGMENTATION_AND_TRACEABILITY_WEAVING.md # Step 4: Use case Cockburn extensions & diffs
+│   ├── STEP4_FUNCTIONAL_AUGMENTATION_AND_TRACEABILITY_WEAVING.md # Step 4: Use case Cockburn extensions & diffs
+│   ├── STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md                    # Step 4b: Functional Evolution Register (D1–D4 changes)
+│   └── V0_V1_V2_ANALYSIS_TABLES.md                               # Version ladder, per-requirement absorption, and register summary
 │
 ├── v0_functional_baseline/                      # [VERSION 0] Pure Functional Baseline (LOCKED)
 │   ├── README.md                                # V0 Scope, Rationale, and Architecture
 │   ├── Doc01_Requirements_Elicitation_and_PUC.md# 18 Functional Requirements & 18 PUCs (Pure Functional GPTools E1.1)
 │   └── Doc02_System_Use_Cases.md                # 18 Sea-Level System Use Cases (Cockburn Level-1 MSS GPTools E1.2)
 │
-└── v1_security_privacy_synthesis/               # [VERSION 1] Security & Privacy Synthesis (APPROVED)
-    ├── README.md                                # V1 Synthesis Scope, Added Safeguards, and Traceability
-    ├── Doc01_Requirements_Elicitation_and_PUC.md# Augmented Doc01: Functional Cards + Non-Functional Security/Privacy Table 7b
-    ├── Doc02_System_Use_Cases.md                # Augmented Doc02: 18 Sea-Level Use Cases with Security Preconditions & Extensions
-    └── Doc03_Security_Privacy_Requirements.md   # The Master Security & Privacy Specification (18 NFRs, RN9–RN26)
+└── v1_security_privacy_synthesis/               # [VERSION 1] Security & Privacy Synthesis + Functional Refinement Pass (APPROVED)
+    ├── README.md                                # V1 Synthesis Scope, Absorbed Constraints, and Refinement Pass
+    ├── Doc01_Requirements_Elicitation_and_PUC.md# 19 Functional Cards (incl. derived R1.3) + Absorbed Security/Privacy Constraints
+    └── Doc02_System_Use_Cases.md                # 19 Sea-Level Use Cases with Security Preconditions & Extensions
 ```
 
 ---
@@ -58,16 +59,17 @@ All specifications in this directory are governed by [`PHASE3_PROCESS_AND_METHOD
 
 ### Cognitive Trajectory & Synthesis Analysis (`analysis_v0_to_v1/`)
 - **Status:** Complete AI Training & Research Corpus.
-- **Content:** 4-step detailed breakdown deconstructing every decision, threat model, EARS syntactic pattern, and use case transformation from V0 to V1:
+- **Content:** 5-step detailed breakdown deconstructing every decision, threat model, EARS syntactic pattern, use case transformation, and functional evolution from V0 to V1:
   - [`STEP1_V0_FUNCTIONAL_AUDIT_AND_BOUNDARY_ANALYSIS.md`](analysis_v0_to_v1/STEP1_V0_FUNCTIONAL_AUDIT_AND_BOUNDARY_ANALYSIS.md)
   - [`STEP2_REGULATORY_CROSS_CUTTING_AND_THREAT_DERIVATION.md`](analysis_v0_to_v1/STEP2_REGULATORY_CROSS_CUTTING_AND_THREAT_DERIVATION.md)
   - [`STEP3_EARS_REQUIREMENT_FORMULATION_AND_FIT_CRITERIA.md`](analysis_v0_to_v1/STEP3_EARS_REQUIREMENT_FORMULATION_AND_FIT_CRITERIA.md)
   - [`STEP4_FUNCTIONAL_AUGMENTATION_AND_TRACEABILITY_WEAVING.md`](analysis_v0_to_v1/STEP4_FUNCTIONAL_AUGMENTATION_AND_TRACEABILITY_WEAVING.md)
+  - [`STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md`](analysis_v0_to_v1/STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md) — Functional Refinement Pass register (D1–D4 taxonomy)
 
 ### Version 1: Security & Privacy Synthesis (`v1_security_privacy_synthesis/`)
 - **Status:** Approved.
-- **Content:** Synthesis of Phase 2 GDPR/CRA Operational Objectives (`PO-` and `SO-`) and 7 Secure Design Principles (`PRIN-ENG-01` to `PRIN-ENG-07`) against the V0 functional baseline.
-- **Deliverables:** Augmented `Doc01` and `Doc02`, plus the new normative specification [`Doc03_Security_Privacy_Requirements.md`](v1_security_privacy_synthesis/Doc03_Security_Privacy_Requirements.md) containing 10 CRA Product Security and 8 GDPR Privacy requirements (`RN9`–`RN26`) in EARS syntax.
+- **Content:** Synthesis of Phase 2 GDPR/CRA Operational Objectives (`PO-` and `SO-`) and 7 Secure Design Principles (`PRIN-ENG-01` to `PRIN-ENG-07`) against the V0 functional baseline, plus the **Functional Refinement Pass (Step 4b)** that evolved the functional set where the synthesis revealed genuine gaps: derived `R1.3` (locked-account recovery), refined `R7.2`/`R8.2`, `R1.2` elevated to Must — registered in the STEP5 Functional Evolution Register.
+- **Deliverables:** `Doc01` (19 requirement cards with absorbed `Security & Privacy Constraints` rows carrying the full `regulation → Phase 2 rule → PRIN-ENG → control anchor` chain; `RN9`–`RN26`, 10 CRA Product Security + 8 GDPR Privacy in EARS syntax) and `Doc02` (19 use cases with security preconditions, threat extensions, and minimal guarantees). Per the absorption rule (2026-09-23) there is no standalone `Doc03` catalog.
 
 ---
 

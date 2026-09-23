@@ -3,7 +3,7 @@
 > **Step ID:** STEP-04  
 > **Inputs:**  
 > - Step 1 Functional Baseline (`v0_functional_baseline/Doc01`, `Doc02`)  
-> - Step 3 EARS Requirements Specification (`Doc03_Security_Privacy_Requirements.md`)  
+> - Step 3 EARS Requirements Specification (absorbed into `Doc01` cards per the 2026-09-23 absorption rule)  
 > - Alistair Cockburn (*Writing Effective Use Cases*, Chapter on Extension Handling)  
 > **Outputs:**  
 > - Augmented `Doc01_Requirements_Elicitation_and_PUC.md` (in `v1_security_privacy_synthesis/`)  
@@ -32,10 +32,10 @@ Security and privacy constraints are woven into the functional model strictly vi
 
 In `Doc01_Requirements_Elicitation_and_PUC.md`, the 18 atomic functional requirement cards (`R1.1` to `R8.2`) remain pure and technology-neutral. 
 
-To bind the security constraints, Section 2.3 is augmented with **Table 7b (Security & Privacy Non-Functional Synthesis)**, establishing direct lineage to `Doc03`:
+To bind the security constraints, Section 2.3 is augmented with **Table 7b (Security & Privacy Non-Functional Synthesis)**, establishing direct lineage to the Phase 2 tracing chain:
 
 ```markdown
-*Table 7b. Security & Privacy Non-Functional Synthesis (Traceable to Phase 2 & Doc03)*
+*Table 7b. Security & Privacy Non-Functional Synthesis (Traceable to Phase 2)*
 
 | ID | Security & Privacy Requirement | Upstream Origin | Bound Functional Requirements | Verification |
 |---|---|---|---|---|

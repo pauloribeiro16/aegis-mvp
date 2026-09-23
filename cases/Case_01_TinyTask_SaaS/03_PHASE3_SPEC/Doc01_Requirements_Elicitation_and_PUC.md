@@ -220,7 +220,8 @@ Functional requirements are prioritized using the MoSCoW methodology:
 |---|---|---|---|---|
 | **R1** | | **Manage User Accounts and Authentication** | **MUST** | |
 | | R1.1 | Register and authenticate user accounts | MUST | Unique email |
-| | R1.2 | Manage user profile and account preferences | SHOULD | |
+| | R1.2 | Manage user profile and account preferences | MUST | |
+| | R1.3 | Recover access to a locked user account | MUST | |
 | **R2** | | **Manage Workspaces and Teams** | **MUST** | |
 | | R2.1 | Create and configure workspace | MUST | Unique URL slug |
 | | R2.2 | Invite workspace members and manage access roles | MUST | Seat quota |
@@ -275,7 +276,21 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Interfaces:** Profile settings screen; Notification preferences panel |
 | **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Profile update submissions; Preference selections<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (user profile records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
-| **Priority:** Should |
+| **Priority:** Must |
+
+---
+
+##### R1.3 – Recover access to a locked user account
+
+| Requirement |
+|---|
+| **ID:** R1.3 **Name:** Recover access to a locked user account |
+| **Description:** The system must allow a user whose account is temporarily locked after repeated failed authentication attempts to autonomously regain access: the user requests recovery via the registered email address, receives a single-use time-limited recovery link, and upon following it the system lifts the lockout, invalidates all active sessions, and restores normal authentication. |
+| **Requirement Origin:** User Account Availability & Self-Service Recovery Needs (V1 Refinement Pass — derived from NFR-RN10/NFR-RN11 lockout behavior) |
+| **Interfaces:** Account recovery request form; Recovery email link; Login screen |
+| **Dependencies:**<br>• **Stakeholders:** All End Users, Platform Founders<br>• **Data Sources:** Account recovery requests; Lockout state records<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Identity and Credential Store; Notification / Email Service<br>• **Preceding Requirements:** |
+| **Identified Problems:** |
+| **Priority:** Must |
 
 ---
 
@@ -462,7 +477,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | Requirement |
 |---|
 | **ID:** R7.2 **Name:** Enforce operational grace period upon payment failure |
-| **Description:** The system must grant a 7-day operational grace period if an automated subscription renewal payment fails, maintaining normal workspace access while presenting payment update notices to the Workspace Owner before applying plan restrictions. |
+| **Description:** The system must grant a 7-day operational grace period if an automated subscription renewal payment fails, maintaining normal workspace access while presenting payment update notices to the Workspace Owner. Upon grace period expiry without resolution, the system must transition the workspace to a restricted read-only state that preserves project consultation and data export while suspending content modifications and member invitations until billing is rectified. |
 | **Requirement Origin:** Customer Retention & Business Continuity |
 | **Interfaces:** Billing status banner; Payment update prompt |
 | **Dependencies:**<br>• **Stakeholders:** Customers, Finance Operations<br>• **Data Sources:** Payment failure events<br>• **Extraction Periodicity:** on event<br>• **Information Systems / Databases:** Internal Application Database (subscription records); External Payment Gateway (payment status)<br>• **Preceding Requirements:** |
@@ -490,7 +505,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | Requirement |
 |---|
 | **ID:** R8.2 **Name:** Close user accounts and terminate workspace access |
-| **Description:** The system must allow users to autonomously terminate their accounts, invalidating active credentials and sessions, ending active workspace memberships, and dispatching a formal confirmation receipt via email. |
+| **Description:** The system must allow users to autonomously terminate their accounts, presenting a final personal data export option (R8.1) prior to irreversible erasure, invalidating active credentials and sessions, ending active workspace memberships, and dispatching a formal confirmation receipt via email. |
 | **Requirement Origin:** Self-Service Account Termination & Customer Expectation EXP-06 |
 | **Interfaces:** Account closure flow; Confirmation email interface |
 | **Dependencies:**<br>• **Stakeholders:** End Users, Workspace Admins<br>• **Data Sources:** Account closure requests<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (user account records, memberships); Notification / Email Service<br>• **Preceding Requirements:** |
@@ -516,11 +531,6 @@ The non-functional requirements define the platform's performance, availability,
 | **RN7** | The payment gateway integration must communicate exclusively over authenticated secure channels and enforce cryptographic webhook signature verification. | MUST | Interoperability |
 | **RN8** | The system architecture must enforce strict logical data segregation across workspaces (multi-tenancy), preventing cross-tenant access. | MUST | Architectural Integrity |
 
----
-
-### 3. Business Product Use Cases (PUC) Definition
-
-The Product Use Cases (*PUC*) delineate the functional boundary of TinyTask SaaS, mapping input payloads, processing boundaries, and output deliverables:
 
 *Table 8. Summary table of Product Use Cases (PUC)*
 
@@ -528,6 +538,7 @@ The Product Use Cases (*PUC*) delineate the functional boundary of TinyTask SaaS
 |---|---|---|---|---|
 | **PUC 1.1** | User registers or requests access | Visitor / User | Validate credentials, verify email, or issue password reset link | Active user session or email link |
 | **PUC 1.2** | User updates profile details | Registered User | Record updated personal details and preferences | Updated profile confirmation |
+| **PUC 1.3** | Account lockout blocks legitimate access | Locked-Out User | Verify recovery link, lift lockout, invalidate sessions | Restored account access |
 | **PUC 2.1** | User instantiates a team workspace | Workspace Owner | Provision workspace container and assign Owner role | Initialized workspace environment |
 | **PUC 2.2** | Admin manages member roster | Workspace Admin | Dispatch invitations, assign roles, or revoke access | Updated membership roster |
 | **PUC 2.3** | Leadership requests usage metrics | Workspace Admin | Aggregate member counts, completed tasks, and storage usage | Operational metrics dashboard |
@@ -610,3 +621,5 @@ flowchart LR
 | **1.0.0** | 2026-09-23 | Requirements Engineering Agent | Initial baseline elicitation (GPTools E1.1 structural model). |
 | **2.0.0** | 2026-09-23 | Requirements Engineering Agent | Purified functional scope, removed pre-baked security controls, enforced English active verbs. |
 | **2.1.0** | 2026-09-23 | Requirements Engineering Agent | Consolidated redundant requirements into 16 pure business capabilities at Cockburn Sea Level. |
+| **2.2.0** | 2026-09-23 | Requirements Engineering Agent | Functional Refinement Pass consolidated from V1: added `R1.3` (locked-account recovery), refined `R7.2`/`R8.2` descriptions, elevated `R1.2` to Must; 19 requirement cards, 19 PUCs. |
+| **3.0.0** | 2026-09-23 | Requirements Engineering Agent | V1 Functional Refinement Pass (Step 4b): added derived requirement `R1.3` (locked-account recovery, from NFR-RN10/RN11), refined `R7.2` restricted-state and `R8.2` final-export-offer descriptions, elevated `R1.2` to MUST (GDPR Art. 5(1)(d) + Art. 16, `PO-D-01.4-001`); register in `analysis_v0_to_v1/STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md`. |

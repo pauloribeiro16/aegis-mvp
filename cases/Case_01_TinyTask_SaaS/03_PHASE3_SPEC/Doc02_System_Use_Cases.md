@@ -26,6 +26,7 @@ To provide complete operational clarity, each macro capability cluster is modele
     - [{U.C. 1} Manage User Accounts and Authentication](#uc-1-manage-user-accounts-and-authentication)
       - [{U.C. 1.1} Register and authenticate user accounts](#uc-11-register-and-authenticate-user-accounts)
       - [{U.C. 1.2} Manage user profile and account preferences](#uc-12-manage-user-profile-and-account-preferences)
+      - [{U.C. 1.3} Recover access to a locked user account](#uc-13-recover-access-to-a-locked-user-account)
     - [{U.C. 2} Manage Workspaces and Teams](#uc-2-manage-workspaces-and-teams)
       - [{U.C. 2.1} Create and configure workspace](#uc-21-create-and-configure-workspace)
       - [{U.C. 2.2} Invite workspace members and manage access roles](#uc-22-invite-workspace-members-and-manage-access-roles)
@@ -138,30 +139,31 @@ flowchart TD
 
 ### 3.2 Traceability Matrix: Requirements (Doc01) to System Use Cases (Doc02)
 
-The following matrix establishes strict bi-directional traceability between the 18 consolidated functional requirements from `Doc01` and the 18 Level-1 System Use Cases:
+The following matrix establishes strict bi-directional traceability between the 19 consolidated functional requirements from `Doc01` (18 elicited + `R1.3` derived in the V1 Refinement Pass) and the 19 Level-1 System Use Cases:
 
 *Table 1. Traceability Matrix*
 
-| Functional Req (Doc01) | Product Use Case (Doc01) | System Use Case (Doc02) | Use Case Title | Priority |
-|---|---|---|---|---|
-| **R1.1** | **PUC 1.1** | **{U.C. 1.1}** | Register and authenticate user accounts | MUST |
-| **R1.2** | **PUC 1.2** | **{U.C. 1.2}** | Manage user profile and account preferences | SHOULD |
-| **R2.1** | **PUC 2.1** | **{U.C. 2.1}** | Create and configure workspace | MUST |
-| **R2.2** | **PUC 2.2** | **{U.C. 2.2}** | Invite workspace members and manage access roles | MUST |
-| **R2.3** | **PUC 2.3** | **{U.C. 2.3}** | Monitor workspace activity and operational metrics | COULD |
-| **R3.1** | **PUC 3.1** | **{U.C. 3.1}** | Create and configure projects | MUST |
-| **R3.2** | **PUC 3.2** | **{U.C. 3.2}** | Archive completed projects | SHOULD |
-| **R4.1** | **PUC 4.1** | **{U.C. 4.1}** | Create and assign tasks | MUST |
-| **R4.2** | **PUC 4.2** | **{U.C. 4.2}** | Track and transition task workflow states on visual boards | MUST |
-| **R4.3** | **PUC 4.3** | **{U.C. 4.3}** | Configure recurring automated tasks | COULD |
-| **R5.1** | **PUC 5.1** | **{U.C. 5.1}** | Manage task deliverable attachments | MUST |
-| **R5.2** | **PUC 5.2** | **{U.C. 5.2}** | Post in-task discussion comments and mention collaborators | MUST |
-| **R6.1** | **PUC 6.1** | **{U.C. 6.1}** | Consult chronological audit history on task cards | MUST |
-| **R6.2** | **PUC 6.2** | **{U.C. 6.2}** | Receive workspace alerts and daily task digests | SHOULD |
-| **R7.1** | **PUC 7.1** | **{U.C. 7.1}** | Subscribe and manage workspace commercial plans | MUST |
-| **R7.2** | **PUC 7.2** | **{U.C. 7.2}** | Enforce operational grace period upon payment failure | MUST |
-| **R8.1** | **PUC 8.1** | **{U.C. 8.1}** | Export personal and workspace data archives | MUST |
-| **R8.2** | **PUC 8.2** | **{U.C. 8.2}** | Close user accounts and terminate workspace access | MUST |
+| Functional Req (Doc01) | Product Use Case (Doc01) | System Use Case (Doc02) | Use Case Title | Priority | Bound NFR-Security & Privacy (in-card) |
+|---|---|---|---|---|---|
+| **R1.1** | **PUC 1.1** | **{U.C. 1.1}** | Register and authenticate user accounts | MUST | NFR-RN10, NFR-RN11, NFR-RN19 |
+| **R1.2** | **PUC 1.2** | **{U.C. 1.2}** | Manage user profile and account preferences | MUST | NFR-RN23, NFR-RN26 |
+| **R1.3** | **PUC 1.3** | **{U.C. 1.3}** | Recover access to a locked user account | MUST | NFR-RN10, NFR-RN11 |
+| **R2.1** | **PUC 2.1** | **{U.C. 2.1}** | Create and configure workspace | MUST | NFR-RN9 |
+| **R2.2** | **PUC 2.2** | **{U.C. 2.2}** | Invite workspace members and manage access roles | MUST | NFR-RN12 |
+| **R2.3** | **PUC 2.3** | **{U.C. 2.3}** | Monitor workspace activity and operational metrics | COULD | NFR-RN22 |
+| **R3.1** | **PUC 3.1** | **{U.C. 3.1}** | Create and configure projects | MUST | NFR-RN9 |
+| **R3.2** | **PUC 3.2** | **{U.C. 3.2}** | Archive completed projects | SHOULD | — |
+| **R4.1** | **PUC 4.1** | **{U.C. 4.1}** | Create and assign tasks | MUST | — |
+| **R4.2** | **PUC 4.2** | **{U.C. 4.2}** | Track and transition task workflow states on visual boards | MUST | — |
+| **R4.3** | **PUC 4.3** | **{U.C. 4.3}** | Configure recurring automated tasks | COULD | — |
+| **R5.1** | **PUC 5.1** | **{U.C. 5.1}** | Manage task deliverable attachments | MUST | NFR-RN13, NFR-RN25 |
+| **R5.2** | **PUC 5.2** | **{U.C. 5.2}** | Post in-task discussion comments and mention collaborators | MUST | NFR-RN14 |
+| **R6.1** | **PUC 6.1** | **{U.C. 6.1}** | Consult chronological audit history on task cards | MUST | NFR-RN22 |
+| **R6.2** | **PUC 6.2** | **{U.C. 6.2}** | Receive workspace alerts and daily task digests | SHOULD | NFR-RN16 |
+| **R7.1** | **PUC 7.1** | **{U.C. 7.1}** | Subscribe and manage workspace commercial plans | MUST | NFR-RN15 |
+| **R7.2** | **PUC 7.2** | **{U.C. 7.2}** | Enforce operational grace period upon payment failure | MUST | NFR-RN15 |
+| **R8.1** | **PUC 8.1** | **{U.C. 8.1}** | Export personal and workspace data archives | MUST | NFR-RN20 |
+| **R8.2** | **PUC 8.2** | **{U.C. 8.2}** | Close user accounts and terminate workspace access | MUST | NFR-RN21 |
 
 ---
 
@@ -195,11 +197,14 @@ flowchart LR
     subgraph UC1_Cluster ["UC 1 - Manage User Accounts and Authentication"]
         UC1_1(["UC 1.1: Register and authenticate user accounts"])
         UC1_2(["UC 1.2: Manage user profile and account preferences"])
+        UC1_3(["UC 1.3: Recover access to a locked user account"])
     end
 
     Visitor --> UC1_1
     Visitor --> UC1_2
+    Visitor --> UC1_3
     UC1_1 -.-> Email
+    UC1_3 -.-> Email
 ```
 
 #### {U.C. 1.1} Register and authenticate user accounts
@@ -210,7 +215,7 @@ flowchart LR
 - **Stakeholders & Interests:**
   - *Platform Founders:* Fast, self-service onboarding with low drop-off.
   - *End Users:* Secure, reliable access to authorized team workspaces.
-- **Preconditions:** The user has access to a valid email inbox.
+- **Preconditions:** network connection terminates over a secure encrypted channel (RN24); The user has access to a valid email inbox.
 - **Trigger:** A prospective user initiates account registration, an existing user attempts login, or a user requests credential recovery.
 - **Main Success Scenario (Happy Path):**
   1. Actor submits registration details including full name, email address, and desired credentials.
@@ -233,8 +238,11 @@ flowchart LR
     - 5a4. System updates credentials and invalidates reset link. Use case resumes at step 5.
   - **5b. Invalid login credentials:**
     - 5b1. System informs actor of authentication failure and increments failed attempt counter without revealing whether the email or password was incorrect.
+  - **5c. Repeated authentication failures exceed threshold (5 attempts):**
+    - 5c1. System temporarily blocks authentication attempts for target account for 15 minutes, returns generic throttling notice, and records security alert in audit log (RN11, RN18).
+    - 5c2. System informs the actor of the self-service recovery path ({U.C. 1.3}).
 - **Success Guarantees (Postconditions):** An authenticated session is issued to the user; the user has access to authorized workspace rosters.
-- **Minimal Guarantees:** Failed attempts leave database credentials unmodified; no partial account records remain in an ambiguous state.
+- **Minimal Guarantees:** Failed attempts leave database credentials unmodified; security audit log records timestamp and client IP for every rejected attempt; zero credentials or session tokens are leaked (RN18).
 
 ---
 
@@ -245,7 +253,7 @@ flowchart LR
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
 - **Stakeholders & Interests:**
   - *Team Contributors:* Maintain accurate identity details and control personal notification volume.
-- **Preconditions:** User possesses an active authenticated session.
+- **Preconditions:** token is authenticated and bound to target organization (RN9); User possesses an active authenticated session.
 - **Trigger:** User accesses account settings to update personal information or adjust notification channels.
 - **Main Success Scenario:**
   1. Actor navigates to profile settings and requests profile modification.
@@ -258,8 +266,39 @@ flowchart LR
     - 4a1. System rejects file, informs actor of the 2 MB limit, and retains current avatar.
   - **4b. Empty mandatory fields (e.g., blank name):**
     - 4b1. System prompts actor that display name is mandatory and halts update.
+  - **4c. Session timeout or invalid tenant context:**
+    - 4c1. System halts transaction, invalidates expired token, and redirects actor to re-authenticate without saving changes (RN11).
 - **Success Guarantees:** Updated personal details and notification preferences take effect across all workspace views immediately.
-- **Minimal Guarantees:** In case of validation failure, existing profile data remains unchanged.
+- **Minimal Guarantees:** Existing profile data remains unchanged if validation fails; profile modifications emit a structured privacy audit record (RN26).
+
+---
+
+#### {U.C. 1.3} Recover access to a locked user account
+- **Traceability:** Requirement `R1.3` | Product Use Case `PUC 1.3`
+- **Primary Actor:** Locked-Out Registered User
+- **Supporting Actors:** Notification / Email Service
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *End Users:* Autonomous, immediate recovery of account access without support queues.
+  - *Platform Founders:* Legitimate accounts remain reachable despite brute-force protection; low support burden.
+- **Preconditions:** account exists and is registered to the actor's email address; account authentication is temporarily locked after repeated failed attempts ({U.C. 1.1} extension 5c).
+- **Trigger:** Actor is denied login due to lockout and requests account recovery.
+- **Main Success Scenario:**
+  1. Actor opens the login interface and selects account recovery, submitting the registered email address.
+  2. System verifies that an account exists for the submitted address and dispatches a single-use, time-limited recovery link.
+  3. Actor accesses the recovery link from their email inbox.
+  4. System validates the link, clears the failed-attempt counter, and lifts the temporary lockout.
+  5. System invalidates all active sessions of the account (RN11) and guides the actor to authenticate with renewed credentials.
+  6. Actor submits valid credentials; system establishes an active authenticated session ({U.C. 1.1} step 6).
+- **Extensions:**
+  - **2a. Submitted address does not match any account:**
+    - 2a1. System returns a neutral confirmation regardless of account existence, preventing account enumeration (RN10).
+  - **3a. Recovery link expired or already used:**
+    - 3a1. System rejects the link and offers to dispatch a fresh recovery email.
+  - **4a. Actor cannot access the registered email inbox:**
+    - 4a1. System directs the actor to the platform's support channels; the lockout expires naturally after its time window.
+- **Success Guarantees:** The lockout is lifted and the failure counter reset; all prior sessions are invalidated; the actor regains normal authentication.
+- **Minimal Guarantees:** No credentials or session tokens are disclosed during recovery; every recovery attempt is recorded in the security audit log (RN18); a legitimate user is never permanently locked out.
 
 ---
 
@@ -296,7 +335,7 @@ flowchart LR
 - **Stakeholders & Interests:**
   - *Business Customers:* Rapid creation of isolated, branded team collaboration environments.
   - *Platform Leadership:* Clear tenant separation and initial account ownership.
-- **Preconditions:** Actor has an active authenticated user account.
+- **Preconditions:** actor possesses valid authenticated session (RN9); Actor has an active authenticated user account.
 - **Trigger:** Actor requests the creation of a new organization workspace or edits an existing workspace profile.
 - **Main Success Scenario:**
   1. Actor submits new workspace parameters: organization name, desired URL slug, and optional brand logo graphic.
@@ -309,8 +348,10 @@ flowchart LR
   - **2b. Workspace branding update on existing workspace:**
     - 2b1. Authorized Workspace Admin or Owner edits organization name or uploads new logo.
     - 2b2. System updates workspace metadata and renders updated branding to all active members.
+  - **3c. Unauthorized tenant boundary manipulation attempt:**
+    - 3c1. System refuses workspace container creation, terminates request, and emits high-priority security audit log (RN9, RN18).
 - **Success Guarantees:** A logically isolated workspace is initialized; the creator possesses full administrative and billing privileges.
-- **Minimal Guarantees:** If slug collision occurs, no partial workspace container is provisioned.
+- **Minimal Guarantees:** No partially provisioned workspace records remain if container provisioning fails; audit log records provisioning attempt (RN18).
 
 ---
 
@@ -322,7 +363,7 @@ flowchart LR
 - **Stakeholders & Interests:**
   - *Team Leads:* Flexible team onboarding and role governance without administrative overhead.
   - *Executive Leadership:* Strict enforcement of subscription seat quotas and role boundaries.
-- **Preconditions:** Actor is authenticated with Admin or Owner privileges in the target workspace.
+- **Preconditions:** actor role verified via RBAC engine (RN12); Actor is authenticated with Admin or Owner privileges in the target workspace.
 - **Trigger:** Admin decides to add team collaborators, adjust an existing member's operational role, or revoke access.
 - **Main Success Scenario:**
   1. Actor accesses member management interface and submits one or more collaborator email addresses with assigned initial roles (Admin, Member, Viewer).
@@ -339,8 +380,10 @@ flowchart LR
     - 2c1. Actor selects member to remove and confirms revocation.
     - 2c2. System verifies member is not the Workspace Owner (Owner cannot be removed).
     - 2c3. System revokes workspace access tokens, ends active project assignments, and frees one seat in the member quota.
+  - **4d. Actor lacks required administrative privilege (RBAC violation):**
+    - 4d1. System rejects invitation or role mutation with HTTP 403 Forbidden and records access denial in security audit log (RN12, RN18).
 - **Success Guarantees:** Roster reflects updated members and roles; authorization rules are strictly updated for subsequent actions.
-- **Minimal Guarantees:** The primary Workspace Owner role cannot be revoked or orphaned.
+- **Minimal Guarantees:** Member roster and seat quotas remain unaffected upon invitation or role assignment failures; all role modifications are permanently logged (RN18).
 
 ---
 
@@ -351,7 +394,7 @@ flowchart LR
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
 - **Stakeholders & Interests:**
   - *Team Leads & Owners:* Clear visibility into team productivity, task throughput, and resource utilization.
-- **Preconditions:** Actor holds Admin or Owner status in the workspace.
+- **Preconditions:** tenant context verified (RN9); Actor holds Admin or Owner status in the workspace.
 - **Trigger:** Actor accesses the workspace management dashboard to review operational performance.
 - **Main Success Scenario:**
   1. Actor requests workspace operational metrics view.
@@ -360,8 +403,10 @@ flowchart LR
 - **Extensions:**
   - **2a. Workspace has zero completed tasks:**
     - 2a1. System displays baseline setup guide and empty-state placeholders.
+  - **2a. Cross-tenant metrics query attempt detected:**
+    - 2a1. System blocks query execution, logs isolation breach attempt, and renders only authorized tenant data (RN9, RN18).
 - **Success Guarantees:** Accurate, read-only operational telemetry is delivered to authorized management.
-- **Minimal Guarantees:** Metrics query executes read-only operations without impacting operational board latency.
+- **Minimal Guarantees:** Zero cross-tenant metrics or data items are revealed; read failures produce no system state changes.
 
 ---
 
@@ -392,7 +437,7 @@ flowchart LR
 - **Stakeholders & Interests:**
   - *Project Managers:* Structuring client deliverables and team work streams into coherent containers.
   - *Team Contributors:* Clear organization and scope boundaries for tasks.
-- **Preconditions:** Actor is an active member or admin of the workspace.
+- **Preconditions:** actor role authorized to create projects (RN12); Actor is an active member or admin of the workspace.
 - **Trigger:** Team initiates a new operational project or client engagement.
 - **Main Success Scenario:**
   1. Actor requests project creation and submits project parameters: mandatory title, optional description of deliverables, and visibility setting (workspace-wide or private to designated members).
@@ -404,8 +449,10 @@ flowchart LR
   - **1b. Restricted project visibility configured:**
     - 1b1. Actor selects specific workspace members allowed to access the project.
     - 1b2. System restricts project board view strictly to the authorized subset of members.
+  - **3b. Actor lacks project creation privileges:**
+    - 3b1. System returns permission error and records unauthorized access attempt in audit log (RN12, RN18).
 - **Success Guarantees:** Project container is provisioned with default workflow columns and accessible according to visibility rules.
-- **Minimal Guarantees:** Invalid creation parameters do not produce orphan project records.
+- **Minimal Guarantees:** No unassigned or unisolated project containers are created; security audit trail records creation event (RN18).
 
 ---
 
@@ -416,7 +463,7 @@ flowchart LR
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
 - **Stakeholders & Interests:**
   - *Team Leads:* Decluttering active workspaces while retaining complete historical deliverable auditability.
-- **Preconditions:** Actor possesses Admin or Owner role in the workspace; project is active.
+- **Preconditions:** actor possesses Admin or Owner role (RN12); Actor possesses Admin or Owner role in the workspace; project is active.
 - **Trigger:** All project deliverables are finalized and the project lifecycle reaches completion.
 - **Main Success Scenario:**
   1. Actor accesses project settings and selects the archive project option.
@@ -428,8 +475,10 @@ flowchart LR
   - **1a. Unarchiving an archived project:**
     - 1a1. Actor locates project in archived repository and selects "Restore Project".
     - 1a2. System restores project to active status and enables editing capabilities.
+  - **3b. Unauthorized member attempts project archive:**
+    - 3b1. System denies archive transition, preserves active project state, and logs access violation (RN12, RN18).
 - **Success Guarantees:** Project is read-only; historical tasks, discussions, and attachments remain accessible for compliance and reference.
-- **Minimal Guarantees:** Archival preserves 100% of historical data integrity; no records or attachments are deleted.
+- **Minimal Guarantees:** Project state remains unmodified if archive authorization check fails.
 
 ---
 
@@ -465,7 +514,7 @@ flowchart LR
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
 - **Stakeholders & Interests:**
   - *Team Contributors & Leads:* Rapid, frictionless capture of actionable work items with clear ownership and deadlines.
-- **Preconditions:** Actor has member access to the parent active project.
+- **Preconditions:** actor belongs to authorized workspace project (RN9); Actor has member access to the parent active project.
 - **Trigger:** A new actionable work item or deliverable requirement arises.
 - **Main Success Scenario:**
   1. Actor initiates task creation within a project and submits task attributes: mandatory title, optional description, priority level (Low, Medium, High, Urgent), target due date, and assigns one or more active workspace members.
@@ -480,8 +529,10 @@ flowchart LR
     - 1b1. System alerts actor that due date is prior to current date, permitting override if intentional for historical logging.
   - **1c. Assignee is not a member of the project:**
     - 1c1. System limits member picker strictly to users authorized on the project container.
+  - **3b. Task creation payload contains unescaped malicious scripts:**
+    - 3b1. System sanitizes title and description text, neutralising embedded script tags (RN14).
 - **Success Guarantees:** Task card exists in the project backlog with assigned collaborators and initial status; assignees receive notifications.
-- **Minimal Guarantees:** Incomplete submissions do not create empty task items.
+- **Minimal Guarantees:** No partial task records exist without an assigned project identifier and tenant context.
 
 ---
 
@@ -493,7 +544,7 @@ flowchart LR
 - **Stakeholders & Interests:**
   - *Team Contributors:* Real-time operational visibility into workload, bottlenecks, and delivery progress.
   - *Clients & Viewers:* Transparent status updates without interrupting contributors.
-- **Preconditions:** User has access rights to the project board.
+- **Preconditions:** actor session is active; User has access rights to the project board.
 - **Trigger:** Actor accesses the project board to inspect progress, filters the view, or moves a task card to reflect progress.
 - **Main Success Scenario:**
   1. Actor opens the project board view.
@@ -507,8 +558,10 @@ flowchart LR
     - 5a1. System prevents state transitions and presents read-only board controls.
   - **5b. Task moved directly to "Done":**
     - 5b1. System records completion timestamp and checks whether task recurrence rules apply (triggering {U.C. 4.3} if configured).
+  - **2b. High-frequency state transition requests exceed rate limit:**
+    - 2b1. System throttles requests, returns HTTP 429 Too Many Requests, and preserves current board state (RN17).
 - **Success Guarantees:** Task state transition is committed and reflected immediately across all team views; audit trail is updated.
-- **Minimal Guarantees:** If concurrent state modification occurs, system reconciles to the latest valid transition without data corruption.
+- **Minimal Guarantees:** Task status updates are atomic; concurrent transition collisions are resolved without data corruption.
 
 ---
 
@@ -519,7 +572,7 @@ flowchart LR
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
 - **Stakeholders & Interests:**
   - *Team Contributors:* Eliminate manual effort in recreating repetitive operational duties (e.g., weekly syncs, monthly reviews).
-- **Preconditions:** Task exists within an active project.
+- **Preconditions:** daemon executes within isolated service context (RN9); Task exists within an active project.
 - **Trigger:** User sets a recurrence schedule on a task, or a recurring task is transitioned to "Done".
 - **Main Success Scenario:**
   1. Actor opens task details and configures a recurrence rule (e.g., every Monday, or 1st of every month).
@@ -531,8 +584,10 @@ flowchart LR
   - **1a. Actor disables recurrence:**
     - 1a1. Actor removes recurrence schedule.
     - 1a2. System updates task record; task behaves as standard one-off item upon completion.
+  - **2a. Recurring automation rule disabled or project archived:**
+    - 2a1. Daemon skips execution, logs informational status, and schedules no new instances (RN18).
 - **Success Guarantees:** Future recurring work items are scheduled and automatically instantiated without manual overhead.
-- **Minimal Guarantees:** Failure in recurrence instantiation does not prevent the current task from successfully completing.
+- **Minimal Guarantees:** Automation failures log diagnostic traces and do not generate duplicate task instances.
 
 ---
 
@@ -564,7 +619,7 @@ flowchart LR
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
 - **Stakeholders & Interests:**
   - *Contributors & Clients:* Centralize deliverable files in context, eliminating lost attachments and email silos.
-- **Preconditions:** User has access to the task card; member rights required for upload/delete; view rights sufficient for download.
+- **Preconditions:** actor possesses Member role; storage quota not exceeded; User has access to the task card; member rights required for upload/delete; view rights sufficient for download.
 - **Trigger:** Actor attaches a supporting document, downloads a deliverable, or deletes an obsolete file.
 - **Main Success Scenario:**
   1. Actor accesses task card attachment section and selects a local file to upload.
@@ -581,8 +636,10 @@ flowchart LR
   - **2c. Removing an attachment:**
     - 2c1. Authorized actor (uploader or Admin) requests attachment deletion.
     - 2c2. System verifies deletion rights, removes file from storage service, detaches metadata, and logs deletion event in audit history.
+  - **4c. Disallowed file type or executable binary signature detected:**
+    - 4c1. System rejects upload, purges temporary buffer immediately, and records file security event (RN13).
 - **Success Guarantees:** Deliverable file is stored, indexed, and available for authorized team retrieval; audit log records file lifecycle.
-- **Minimal Guarantees:** Aborted uploads leave no orphaned binary fragments in storage.
+- **Minimal Guarantees:** Incomplete or corrupted file fragments are automatically purged from storage buffers; deleted attachments are marked for irreversible cleanup within 14 days (RN25).
 
 ---
 
@@ -593,7 +650,7 @@ flowchart LR
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
 - **Stakeholders & Interests:**
   - *Team Contributors:* Maintain focused, contextual communication directly bound to deliverables.
-- **Preconditions:** Actor has member access to the project.
+- **Preconditions:** actor belongs to workspace team; Actor has member access to the project.
 - **Trigger:** Collaborator posts a status note, asks a question, or tags a teammate on a task card.
 - **Main Success Scenario:**
   1. Actor opens task card discussion section and enters comment text utilizing Markdown formatting.
@@ -607,8 +664,10 @@ flowchart LR
     - 1a1. System disables submission until non-whitespace text is entered.
   - **4a. Mentioned user has disabled email alerts:**
     - 4a1. System respects user preferences, generating in-app notification while suppressing external email dispatch.
+  - **3c. Comment body contains malicious script or disallowed HTML tags:**
+    - 3c1. System sanitizes and HTML-encodes input, rendering payload as inert text without executing active scripts (RN14).
 - **Success Guarantees:** Comment is permanently appended to task context; tagged collaborators are alerted immediately.
-- **Minimal Guarantees:** Discussion history remains immutable; comments cannot be silently overwritten by other users.
+- **Minimal Guarantees:** Unsubmitted draft comments are not stored; rendered comments are context-encoded to prevent stored XSS (RN14).
 
 ---
 
@@ -638,7 +697,7 @@ flowchart LR
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
 - **Stakeholders & Interests:**
   - *Project Managers & Team Leads:* Complete traceability and operational accountability for all task modifications.
-- **Preconditions:** User has access rights to view the task card.
+- **Preconditions:** actor possesses read permissions for target task (RN9); User has access rights to view the task card.
 - **Trigger:** Actor opens the task details card and navigates to the activity history tab.
 - **Main Success Scenario:**
   1. Actor opens the activity history tab on a task card.
@@ -647,8 +706,10 @@ flowchart LR
 - **Extensions:**
   - **2a. Task has no historical modifications beyond creation:**
     - 2a1. System displays task creation event as the solitary timeline entry.
+  - **2a. Audit log query exceeds pagination threshold:**
+    - 2a1. System caps result batch at 100 entries and requires cursor-based pagination (RN17).
 - **Success Guarantees:** Complete, tamper-evident audit history is presented to authorized users.
-- **Minimal Guarantees:** History records are strictly read-only; no user action can alter historical audit entries.
+- **Minimal Guarantees:** Audit records are read-only; history entries cannot be modified or deleted via user interfaces (RN18).
 
 ---
 
@@ -659,7 +720,7 @@ flowchart LR
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
 - **Stakeholders & Interests:**
   - *Team Contributors:* Stay informed of immediate assignments and critical deadlines without notification overload.
-- **Preconditions:** User holds an active account in one or more workspaces.
+- **Preconditions:** actor preferences permit notifications; User holds an active account in one or more workspaces.
 - **Trigger:** User logs into the platform and checks the notification center, or scheduled morning digest daemon triggers.
 - **Main Success Scenario:**
   1. Actor accesses platform interface and inspects notification bell icon displaying an unread alert counter.
@@ -671,8 +732,10 @@ flowchart LR
     - 1a1. System displays empty notification state ("All caught up").
   - **4a. User has opted out of daily email digests in profile preferences:**
     - 4a1. System skips email compilation for that user, preserving in-app notifications only.
+  - **3a. External notification service unavailable:**
+    - 3a1. System enqueues notifications in retry buffer and logs temporary transport failure without impacting core platform operations.
 - **Success Guarantees:** User receives timely operational alerts and morning work prioritization guidance.
-- **Minimal Guarantees:** Notification delivery failures are retried automatically without interrupting in-app operational workflows.
+- **Minimal Guarantees:** Notification deliveries contain only authorized user task snippets and exclude sensitive credentials.
 
 ---
 
@@ -706,7 +769,7 @@ flowchart LR
 - **Stakeholders & Interests:**
   - *Workspace Owner:* Transparent self-service billing, predictable licensing, and instant seat capacity expansion.
   - *Platform Leadership:* Automated subscription revenue capture and accurate quota management.
-- **Preconditions:** Actor is authenticated and holds the Workspace Owner role.
+- **Preconditions:** actor has Owner role; session authenticated (RN12); Actor is authenticated and holds the Workspace Owner role.
 - **Trigger:** Owner decides to upgrade from Free tier to Pro or Enterprise, or updates payment details.
 - **Main Success Scenario:**
   1. Actor navigates to workspace billing management and selects desired commercial plan tier and seat quantity.
@@ -722,8 +785,10 @@ flowchart LR
     - 4a2. System retains current plan status and presents checkout cancellation notice.
   - **5a. Payment authorization rejected by financial institution:**
     - 5a1. Payment gateway notifies actor of rejection and prompts for alternative payment method.
+  - **5c. Payment webhook signature validation fails:**
+    - 5c1. System rejects webhook as untrusted/forged, makes zero modifications to workspace subscription tier, and alerts security operations (RN15, RN16, RN18).
 - **Success Guarantees:** Subscription plan and member seat limits are automatically upgraded upon payment confirmation.
-- **Minimal Guarantees:** No credit card credentials ever cross or reside within TinyTask infrastructure; quotas only adjust upon verified payment.
+- **Minimal Guarantees:** No commercial plan upgrades or quota adjustments occur without verified cryptographic payment receipt (RN15, RN18).
 
 ---
 
@@ -735,7 +800,7 @@ flowchart LR
 - **Stakeholders & Interests:**
   - *Business Customers:* Business continuity and prevention of abrupt work stoppage due to transient card failures.
   - *Finance Operations:* Systematic recovery of unpaid renewals before service termination.
-- **Preconditions:** Workspace possesses an active paid commercial subscription reaching its renewal billing cycle.
+- **Preconditions:** external payment webhook verified via cryptographic signature (RN16); Workspace possesses an active paid commercial subscription reaching its renewal billing cycle.
 - **Trigger:** Automated recurring subscription renewal payment fails at the external payment gateway.
 - **Main Success Scenario:**
   1. External payment gateway attempts recurring subscription charge; transaction fails (e.g., expired card, insufficient funds).
@@ -748,9 +813,11 @@ flowchart LR
   8. System lifts the grace period and clears warning banners.
 - **Extensions:**
   - **6a. Grace period expires without payment resolution (Day 8):**
-    - 6a1. System automatically transitions workspace to restricted read-only status and suspends member invitations until billing is rectified.
+    - 6a1. System automatically transitions the workspace to a restricted read-only state — preserving project consultation and data export ({U.C. 8.1}) while suspending content modifications and member invitations — until billing is rectified (R7.2).
+  - **3a. Webhook timestamp exceeds allowable replay window (5 minutes):**
+    - 3a1. System rejects expired webhook payload, logs replay detection event, and halts state transition (RN16, RN18).
 - **Success Guarantees:** Team operations are shielded from immediate disruption during temporary financial glitches; resolution restores normal status cleanly.
-- **Minimal Guarantees:** Client project data and attachments are completely protected from deletion during grace and suspension periods.
+- **Minimal Guarantees:** Grace period state changes require verified payment gateway origin and emit immutable billing audit records (RN18).
 
 ---
 
@@ -782,7 +849,7 @@ flowchart LR
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
 - **Stakeholders & Interests:**
   - *End Users & Customers:* Autonomous data portability, offline backup capability, and complete vendor autonomy.
-- **Preconditions:** Actor possesses valid authenticated session; workspace export restricted to Workspace Owner.
+- **Preconditions:** actor possesses valid session; organization export requires Owner role (RN12); Actor possesses valid authenticated session; workspace export restricted to Workspace Owner.
 - **Trigger:** User requests export of personal profile and task data, or Workspace Owner requests full organization archive.
 - **Main Success Scenario:**
   1. Actor accesses data export options in settings menu and selects desired export scope (personal data export or full workspace archive).
@@ -795,8 +862,12 @@ flowchart LR
     - 2a1. System rejects request with authorization notice, permitting personal data export only.
   - **3a. Large workspace archive compilation:**
     - 3a1. System notifies actor that compilation is queued and sends an email notification with download link once ready.
+  - **2a. Workspace Member attempts organization-wide export:**
+    - 2a1. System restricts export options strictly to the member's own profile and authored contributions (RN12).
+  - **4b. Archive download link expires (link valid for 48 hours):**
+    - 4b1. System invalidates expired download token and prompts actor to request a fresh export archive (RN11).
 - **Success Guarantees:** Complete, structured operational and personal data is delivered to the user without data omission.
-- **Minimal Guarantees:** Archive compilation executes asynchronously in read-only mode without impacting concurrent project editing.
+- **Minimal Guarantees:** Personal data of third parties is strictly excluded from individual user data archives; exported archive package is encrypted at rest prior to download (RN20, RN23).
 
 ---
 
@@ -808,20 +879,27 @@ flowchart LR
 - **Stakeholders & Interests:**
   - *End Users:* Full sovereignty over account lifecycle and certainty of credential deactivation.
   - *Workspace Admins:* Immediate revocation of departed member access privileges.
-- **Preconditions:** Actor possesses an active authenticated user account.
+- **Preconditions:** actor possesses active session; identity confirmed (RN11); Actor possesses an active authenticated user account.
 - **Trigger:** User chooses to terminate their platform account.
 - **Main Success Scenario:**
   1. Actor accesses account security settings and selects "Close Account".
   2. System presents warning regarding permanent loss of credentials and severance of workspace memberships, requiring explicit confirmation.
-  3. Actor confirms account termination.
-  4. System invalidates all active sessions, revokes authentication tokens, marks the user account as closed, and removes active workspace memberships.
-  5. System dispatches a formal digital confirmation receipt via email certifying account termination date and time.
-  6. System terminates user session and redirects browser to public landing page.
+  3. System presents the final personal data export option ({U.C. 8.1}) prior to irreversible erasure and requests explicit confirmation of the closure.
+  4. Actor confirms account termination.
+  5. System invalidates all active sessions, revokes authentication tokens, marks the user account as closed, and removes active workspace memberships.
+  6. System dispatches a formal digital confirmation receipt via email certifying account termination date and time.
+  7. System terminates user session and redirects browser to public landing page.
 - **Extensions:**
-  - **3a. Actor is the sole Workspace Owner of an active multi-member workspace:**
-    - 3a1. System halts account closure, notifying actor that workspace ownership must be transferred to another administrator or the workspace deleted before closing the personal account.
-- **Success Guarantees:** User credentials and sessions are permanently deactivated; workspace access is revoked; confirmation receipt is sent.
-- **Minimal Guarantees:** Existing project tasks authored by the user retain historical attribution without breaking project integrity; orphaned ownership is prevented.
+  - **3a. Actor requests the final data export at the closure prompt:**
+    - 3a1. System initiates the personal data export flow ({U.C. 8.1}) and resumes the closure confirmation once the archive is delivered or declined.
+  - **4a. Actor is the sole Workspace Owner of an active multi-member workspace:**
+    - 4a1. System halts account closure, notifying actor that workspace ownership must be transferred to another administrator or the workspace deleted before closing the personal account.
+  - **5b. Closure confirmed by single user:**
+    - 5b1. System deactivates personal credentials, removes user from team rosters, and pseudonymizes authored task comments in accordance with RN21.
+  - **5c. Session invalidation fails during closure:**
+    - 5c1. System executes emergency forced server-side token revocation to prevent unauthorized post-closure access (RN11).
+- **Success Guarantees:** User credentials and sessions are permanently deactivated; workspace access is revoked; the final export was offered before irreversible erasure; confirmation receipt is sent.
+- **Minimal Guarantees:** Account deactivation immediately revokes authentication tokens, preventing subsequent API or UI access; personal data is pseudonymized within 30 days and audit logged (RN21, RN18).
 
 ---
 
@@ -847,10 +925,10 @@ The non-functional requirements define the platform's performance, availability,
 ## 6. Conclusions
 
 The system use case model establishes an exhaustive, literature-aligned functional baseline for TinyTask SaaS:
-1. **Total Sea-Level Fidelity:** 18 Level-1 use cases cleanly cover all operational capabilities without leaf-node noise or micro-UI procedural scripts.
+1. **Total Sea-Level Fidelity:** 19 Level-1 use cases cleanly cover all operational capabilities without leaf-node noise or micro-UI procedural scripts.
 2. **Exhaustive Behavioral Contracts:** Each use case specifies pre/post conditions, black-box main success scenarios, and branching alternative/exception flows.
 3. **Visual UML Coverage:** Every macro capability is illustrated with an error-free, native Markdown UML Use Case diagram.
-4. **Seamless Sequential Traceability:** Direct 1:1 mapping from `Doc01` requirements (`R1.1`–`R8.2`) and PUCs (`PUC 1.1`–`PUC 8.2`) to System Use Cases (`{U.C. 1.1}`–`{U.C. 8.2}`).
+4. **Seamless Sequential Traceability:** Direct 1:1 mapping from `Doc01` requirements (`R1.1`–`R8.2`, 19 cards including derived `R1.3`) and PUCs (`PUC 1.1`–`PUC 8.2`, 19 entries) to System Use Cases (`{U.C. 1.1}`–`{U.C. 8.2}`, 19 cases).
 5. **AEGIS Phase 3 Synthesis Ready:** Provides a rich, verified functional canvas for attack surface mapping, trust boundary analysis, and regulatory requirement derivation.
 
 ---
@@ -875,3 +953,4 @@ The system use case model establishes an exhaustive, literature-aligned function
 | **2.1.0** | 2026-09-23 | Requirements Engineering Agent | Consolidated to 18 Sea-Level use cases matching consolidated business requirements. |
 | **3.0.0** | 2026-09-23 | Requirements Engineering Agent | Literature-grounded overhaul (Cockburn, Larman, Wiegers) with full pre/post conditions, main success scenarios, and extension flows for all 18 use cases. |
 | **3.1.0** | 2026-09-23 | Requirements Engineering Agent | Added visual UML Use Case diagrams in native Markdown for each macro capability cluster, removing sequence diagrams. |
+| **3.2.0** | 2026-09-23 | Requirements Engineering Agent | V1 Functional Refinement Pass: added {U.C. 1.3} with PUC 1.3 (locked-account recovery, `R1.3`), final-export-offer step in {U.C. 8.2}, restricted-state alignment in {U.C. 7.2}; traceability matrix updated to 19 requirements. |

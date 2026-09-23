@@ -159,7 +159,8 @@ Every functional requirement card must follow this exact single-column markdown 
    - Follows the template: *"The system must allow [authorized actor] to [action/behavior], automatically [resulting system response or deliverable]."*
    - Written in active voice, free from jargon, unambiguous, and completely technology-neutral.
 3. **Row 3 — `Requirement Origin:`:**
-   - Traces the business origin of the requirement (e.g., "TinyTask SaaS / Identity Management", "TinyTask SaaS / Task Management", "TinyTask SaaS / Customer Billing").
+   - Traces the real business or stakeholder origin of the requirement (e.g., "Founders Business Case & Onboarding Workflow", "Team Lead Operational Intake", "Collaborator Sprint Feedback", "Customer Invoicing & Subscription Policy").
+   - **Never cite self-referential internal system modules** (e.g., do NOT write "TinyTask SaaS / Identity Management" — see Anti-Pattern 6 in Section 7).
 4. **Row 4 — `Interfaces:`:**
    - Identifies the human users and external services crossing the boundary of this requirement (e.g., "Workspace Member, Workspace Admin", "Unauthenticated User and Notification / Email Service").
 5. **Row 5 — `Dependencies:`:**
@@ -239,4 +240,111 @@ Before declaring any Phase 3 functional baseline deliverable complete, verify:
 - [ ] **Dependencies Check:** Verify that `Preceding Requirements:` is empty by default (>90% blank) and `Information Systems / Databases:` contains only technology-neutral terms.
 - [ ] **Restrictions Check:** Verify that the `Restrictions` column in the MoSCoW summary table is empty by default.
 - [ ] **Granularity Check:** Verify that `Doc02` contains zero leaf nodes (`{U.C.n.m.k}`) and zero procedural execution steps.
+- [ ] **Anti-Pattern Check:** Review all cards against Section 7 to ensure none of the 8 anti-patterns are present.
 - [ ] **doc_lint Check:** Run `python scripts/doc_lint.py --strict` and ensure 0 findings are returned.
+
+---
+
+## 7. Lessons Learned: Anti-Patterns in Requirements Engineering (How NOT to Write Requirements)
+
+This section documents critical anti-patterns identified during the authoring and refinement of functional baselines. Grounded in established Requirements Engineering literature (Robertson & Robertson / Volere, Alistair Cockburn, Karl Wiegers & Joy Beatty), these represent common traps that compromise specification quality, bias architectural choices, or prematurely couple business goals with technical mechanisms.
+
+### Anti-Pattern 1: The Pre-Baked Security & Privacy Trap
+- **Description:** Injecting concrete security, cryptographic, or privacy controls directly into the functional requirement baseline (e.g., specifying Two-Factor Authentication (2FA/TOTP), session termination timeouts, password hashing algorithms like bcrypt/Argon2, TLS encryption, or GDPR right-to-be-forgotten anonymization).
+- **Literature Grounding:** Robertson & Robertson (*Mastering the Requirements Process*, Volere) strictly separate *functional requirements* (the business capability the product must deliver) from *security non-functional requirements* and *operational constraints*. Pre-baking security mechanisms into functional cards blinds the engineering process to alternative threat mitigations.
+- **Why it breaks AEGIS:** AEGIS is specifically engineered to derive security and privacy requirements (`REQ-D-XX.Y-NNN`) systematically from regulatory anchors (GDPR, NIS2, CRA, DORA, AI Act) and control referentials (NIST CSF 2.0, NIST PF 1.1, NIST AI RMF) through specialized skills (Attack Surface, Trust Boundaries, Least Privilege, Data Minimization). If security is pre-baked into the functional cards, AEGIS cannot perform genuine derivation, resulting in circular reasoning or redundant controls.
+- **❌ INCORRECT (Anti-Pattern):**
+  > "The system must enforce Two-Factor Authentication (TOTP via Google Authenticator or SMS) and invalidate inactive sessions after 15 minutes of inactivity."
+- **✔ CORRECT (Pure Functional):**
+  > "The system must allow registered users to authenticate into their assigned workspace and access active projects."
+  > *(Security synthesis downstream will determine whether TOTP, WebAuthn, SSO, or session limits are mandated based on Phase 2 operational rules).*
+
+---
+
+### Anti-Pattern 2: The Technology Leakage Trap
+- **Description:** Referencing concrete software products, programming frameworks, database engines, cloud providers, or technical protocols in functional requirements or dependency cards (e.g., "PostgreSQL", "MySQL", "AWS S3", "Stripe", "Dotnet", "Angular", "WebSockets", "OAuth2").
+- **Literature Grounding:** Robertson & Robertson emphasize the *Essence of the System*—the pure policy and business capability free of implementation technologies. Wiegers & Beatty (*Software Requirements*, 3rd Ed.) warn that stating technologies in functional specifications prematurely constrains solution design and turns business requirements into legacy design decisions.
+- **Why it breaks AEGIS:** Phase 3 functional specifications define *what* the system provides to users. Technical architecture and component selection occur during Phase 3 solution synthesis. Early vendor lock-in violates AEGIS Rule R5.
+- **❌ INCORRECT (Anti-Pattern):**
+  > "Description: Store uploaded deliverable attachments in an AWS S3 bucket and record metadata in PostgreSQL. Payment is processed via Stripe Checkout."
+  > "Information Systems / Databases: AWS S3, PostgreSQL 15, Stripe API."
+- **✔ CORRECT (Technology-Neutral):**
+  > "Description: The system must allow collaborators to attach deliverable files directly to task cards, storing file content in the file storage service and recording metadata in the internal application database. External payments are completed via the external payment gateway."
+  > "Information Systems / Databases: Internal Application Database, File Storage Service."
+
+---
+
+### Anti-Pattern 3: The Clam-Level Decomposition Trap (Micro-UI Fragmentation)
+- **Description:** Decomposing user actions into micro-level user interface widgets or separate requirement cards for individual UI interactions (e.g., creating separate requirements for: "Upload file button", "Drag and drop file into box", "Support PNG format", "Support PDF format", "Generate file thumbnail").
+- **Literature Grounding:** Alistair Cockburn (*Writing Effective Use Cases*) defines goal levels: *Summary Level* (Kite/Cloud), *User Goal Level* (Sea Level), and *Subfunction Level* (Fish/Clam Level). Use cases and functional requirements must sit at **Sea Level** (Level 1)—an atomic interaction that provides measurable business value to the user and can be completed in a single uninterrupted sitting. Clam-level interactions are UI design choices, not functional requirements.
+- **Why it breaks AEGIS:** Micro-fragmentation inflates the requirement count, clutters traceability matrices, and makes security threat modeling unmanageable by scattering a single logical operation across dozens of trivial cards.
+- **❌ INCORRECT (Anti-Pattern):**
+  - `R4.1`: Allow user to click file upload button.
+  - `R4.2`: Allow user to drag and drop file into dropzone.
+  - `R4.3`: Support PDF attachment format.
+  - `R4.4`: Support PNG and JPG attachment format.
+  - `R4.5`: Render attachment preview thumbnail.
+- **✔ CORRECT (Consolidated Sea-Level):**
+  - `R4.1`: "Attach and manage task deliverable files" (allows uploading deliverable files up to 25 MB in common documentation and image formats, rendering inline previews and permitting authorized download and deletion).
+
+---
+
+### Anti-Pattern 4: The Artificial Chaining Trap (Preceding Requirements Abuse)
+- **Description:** Forcing artificial sequential dependencies into the `Preceding Requirements:` field of every requirement card (e.g., setting `R1.1` as preceding for `R1.2`, `R1.2` for `R1.3`, or chaining every feature to user login).
+- **Literature Grounding:** Volere Snow Cards specify dependencies only when a strict, indispensable logical constraint exists. GPTools E1.1 reference model leaves `Preceding Requirements` **empty** (>90% blank), as requirements exist concurrently within the functional scope. Chaining is a workflow scheduling artifact, not a fundamental system dependency.
+- **Why it breaks AEGIS:** Chaining creates false dependency graphs in architectural modeling, preventing modular implementation, parallel test engineering, and clean microservice boundary definition.
+- **❌ INCORRECT (Anti-Pattern):**
+  > Card R2.3: `Preceding Requirements: R2.2, R2.1, R1.3, R1.2, R1.1` (every previous card listed).
+- **✔ CORRECT (Clean Dependency):**
+  > Card R2.3: `Preceding Requirements: —` (empty by default; only filled when an absolute logical dependency exists, e.g., transitioning a task requires a task to exist).
+
+---
+
+### Anti-Pattern 5: The Phantom Restriction Trap
+- **Description:** Forcing synthetic narrative commentary into every cell of the `Restrictions` column in the MoSCoW summary table (e.g., inventing banal notes like "Requires user to have keyboard", "Limited to web browser", or repeating the requirement description).
+- **Literature Grounding:** GPTools E1.1 Table 20 explicitly leaves the `Restrictions` column **empty by default** for standard requirements. A restriction should only be stated when a genuine, non-trivial operational or business constraint limits the requirement (e.g., external legal restriction, statutory deadline, or legacy hardware ceiling).
+- **Why it breaks AEGIS:** Noise in restriction columns dilutes real architectural constraints, causing automated analyzers and human auditors to miss genuine project risks.
+- **❌ INCORRECT (Anti-Pattern):**
+  > Filling all 30 rows with repetitive fluff: "Subject to standard web browser availability", "Requires internet access", "User must be logged in".
+- **✔ CORRECT (Clean Table):**
+  > Leaving cells empty (`—`) by default, populating only genuine restrictions (e.g., "Subject to payment provider jurisdiction eligibility" or "Restricted to authorized organization owners").
+
+---
+
+### Anti-Pattern 6: The Pseudo-Origin / Self-Referential Trap
+- **Description:** Specifying the `Requirement Origin:` as an internal system module, category name, or document section (e.g., "TinyTask SaaS / Task Management", "System Architecture / Auth Module").
+- **Literature Grounding:** Robertson & Robertson define requirement origin as the *originating business event, stakeholder request, or operational reality* that justifies why the requirement exists. Requirements do not originate from their own functional category; they originate from human actors, operational problems, or business strategies.
+- **Why it breaks AEGIS:** AEGIS needs to trace business intent back to real organizational stakeholders to assess proportionality, risk appetite, and regulatory liability. Self-referential origins sever this traceability chain.
+- **❌ INCORRECT (Anti-Pattern):**
+  > `Requirement Origin: TinyTask SaaS / Identity Management`
+- **✔ CORRECT (Stakeholder & Operational Context):**
+  > `Requirement Origin: Founders Business Case & User Onboarding Workflow`
+  > `Requirement Origin: Team Lead Operational Intake & Work Coordination Feedback`
+  > `Requirement Origin: Customer Subscription & Commercial Billing Policy`
+
+---
+
+### Anti-Pattern 7: The Passive Nominalization Trap
+- **Description:** Titling requirements, sub-requirements, and use cases with noun phrases and nominalizations instead of active verbs in the infinitive or imperative (e.g., "User Account Management", "Task Lifecycle", "Gestão de Utilizadores", "Criação de Tarefas").
+- **Literature Grounding:** Standard software engineering guidelines (Cockburn, Wiegers, IEEE 830 / ISO/IEC/IEEE 29148) mandate active verb phrases for functional requirements and use cases. Systems do not provide "concepts"; they perform actions that allow users to achieve goals.
+- **Why it breaks AEGIS:** Nominalized names obscure the actor-action relationship, complicating automated extraction of operational capabilities and blurring authorization boundaries.
+- **❌ INCORRECT (Anti-Pattern):**
+  > `R1: User Account and Workspace Management`
+  > `R2.1: Task Creation and Lifecycle`
+  > `U.C. 1: Gestão de Projetos`
+- **✔ CORRECT (Active Verb Conjugation):**
+  > `R1: Manage User Accounts and Workspaces`
+  > `R2.1: Create and transition collaborative tasks`
+  > `U.C. 1: Gerir Projetos` / `Manage Projects`
+
+---
+
+### Anti-Pattern 8: The Vague Adjective / Unverifiable Quality Trap
+- **Description:** Using subjective, non-measurable adjectives in requirement descriptions (e.g., "The system must be fast", "The UI must be intuitive and user-friendly", "Support common attachment formats", "Handle high traffic").
+- **Literature Grounding:** Robertson & Robertson define the *Fit Criterion*—an unambiguous, quantifiable metric by which a tester can verify whether an implementation satisfies the requirement. Wiegers & Beatty identify unverifiable adjectives as the single most frequent cause of requirement ambiguity and customer-developer disputes.
+- **Why it breaks AEGIS:** Security and compliance verification requires binary or measurable assertions (`RULE-*`). Vague quality statements cannot be translated into automated tests, static checks, or audit evidence.
+- **❌ INCORRECT (Anti-Pattern):**
+  > "The system must quickly upload attachments in common formats and display them in a user-friendly manner."
+- **✔ CORRECT (Verifiable Behavioral Contract):**
+  > "The system must allow users to upload file attachments up to 25 MB in PDF, PNG, JPEG, and CSV formats, rendering previews within 2 seconds under standard broadband conditions."
+

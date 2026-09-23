@@ -168,7 +168,16 @@ flowchart TD
   - **Restrictions Column Discipline (Summary Table):** In the MoSCoW summary table, the `Restrictions` column must be **empty by default** for most requirements (matching GPTools Table 20). Only record genuine business constraints; never force synthetic text into every cell.
   - **Company Scale Discipline (No Enterprise Scope Inflation):** Repertoire of requirements must strictly fit the company's real context from the Intake Form (e.g., an 8-person micro-SaaS must NOT include enterprise SSO federation, complex permission matrices, or oversized features).
   - **Use Case Granularity (E1.2 Standard):** Refinement stops strictly at **Level 1** (`{U.C.n.m}`). **Zero leaf nodes** (`{U.C.n.m.k}`) and **zero step-by-step procedural execution sequences** (Step 1, Step 2, etc.) in the functional baseline.
-  - **Strict Pure Functionality:** Functional specification documents must represent pure business/user capability. Never pre-bake security, cryptography, or privacy controls (these belong strictly to the AEGIS Phase 3 synthesis layer driven by Phase 2 Operational Objectives and autonomous skills).
+  - **Requirement Origin Discipline:** Cite real operational, business event, or stakeholder origins (e.g., "Founders Business Case & User Onboarding Workflow", "Team Lead Operational Intake"). NEVER use self-referential internal module strings (e.g., do NOT write "TinyTask SaaS / Identity Management").
+  - **Anti-Patterns / How NOT to Write Requirements (Lessons Learned):** Strict adherence to avoiding the 8 canonical requirements engineering anti-patterns documented in [`templates/phase3_functional_spec_guidelines.md`](file:///c:/Users/paulo.ribeiro/OneDrive%20-%20Instituto%20CCG%20ZGDV/Ambiente%20de%20Trabalho/Projetos_PhD/aegis-mvp/templates/phase3_functional_spec_guidelines.md) §7:
+    1. *The Pre-Baked Security/Privacy Trap:* Injecting 2FA, session termination, password hashing, or GDPR anonymization into functional specs.
+    2. *The Technology Leakage Trap:* Mentioning specific databases (PostgreSQL), vendors (Stripe, AWS S3), frameworks, or protocols.
+    3. *The Clam-Level Decomposition Trap:* Fragmenting user goals into micro-UI cards (drag-and-drop, individual file formats, thumbnails).
+    4. *The Artificial Chaining Trap:* Sequentially populating `Preceding Requirements` with previous card IDs (>90% must be blank).
+    5. *The Phantom Restriction Trap:* Forcing arbitrary narrative fluff into every cell of the summary table's `Restrictions` column.
+    6. *The Pseudo-Origin Trap:* Using internal system categories as the requirement origin instead of stakeholder/business events.
+    7. *The Passive Nominalization Trap:* Using noun phrases ("User Account Management") instead of active verbs ("Manage User Accounts").
+    8. *The Vague Adjective Trap:* Using subjective terms ("fast", "intuitive", "common formats") without verifiable fit criteria.
   - **Foundational Literature & Detailed Manual:** Full elicitation methodology, Volere Snow Card derivation, Cockburn goal levels, and downstream AEGIS security synthesis mapping are codified in [`templates/phase3_functional_spec_guidelines.md`](file:///c:/Users/paulo.ribeiro/OneDrive%20-%20Instituto%20CCG%20ZGDV/Ambiente%20de%20Trabalho/Projetos_PhD/aegis-mvp/templates/phase3_functional_spec_guidelines.md). All Phase 3 functional authoring must adhere to this guide.
 
 ---

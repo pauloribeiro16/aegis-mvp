@@ -4,7 +4,7 @@
 
 This report establishes the formal system use case specification for the **TinyTask SaaS** platform, complementing the AS-IS / TO-BE model (*Doc01*) and formalizing the functional interactions between human actors, external services, and core system capabilities.
 
-The methodological framework follows the Volere approach and triangular functional decomposition. In strict accordance with the project guidelines, system use cases are refined to **Level 1** (`{U.C.n.m}`), omitting step-by-step procedural execution sequences and leaf-node decomposition (`{U.C.n.m.k}`).
+The methodological framework follows the Volere approach (Robertson & Robertson) and triangular functional decomposition (Cockburn). In strict accordance with the project guidelines, system use cases are refined to **Level 1** (`{U.C.n.m}`), omitting step-by-step procedural execution sequences and leaf-node decomposition (`{U.C.n.m.k}`).
 
 The specifications here represent pure functional business capabilities. Security and privacy overlays will be formally derived in subsequent Phase 3 deliverables using AEGIS Phase 2 Operational Objectives and automated auditing skills.
 
@@ -119,16 +119,16 @@ The following table maps Product Use Cases to participating actors, inputs, and 
 | **3.1** | Create and Configure New Project | Workspace Admin, Workspace Member | **(in)** Project title, scope description, visibility setting<br>**(out)** Initialized project accessible in navigation menu |
 | **3.2** | Archive Completed Project | Workspace Admin, Workspace Owner | **(in)** Selection of target project to archive<br>**(out)** Read-only project hidden from operational views |
 | **4.1** | Create and Assign Project Task | Workspace Member, Workspace Admin | **(in)** Title, description, priority, due date, assignee<br>**(out)** New task card in "To-Do" and assignee notification |
-| **4.2** | Update Task State on Kanban Board | Workspace Member, Workspace Admin | **(in)** Drag card to target column (In-Progress, Under-Review, Done)<br>**(out)** Updated task status and audit history event |
+| **4.2** | Track and Transition Task Workflow States | Workspace Member, Workspace Admin | **(in)** Transition card to target status column<br>**(out)** Updated task status and audit history event |
 | **4.3** | Search and Filter Tasks | All Users | **(in)** Search terms and filter criteria (assignee, priority, status)<br>**(out)** Filtered board and table views updated in real-time |
-| **5.1** | Attach Deliverable File to Task Card | Workspace Member, Workspace Admin | **(in)** File selection (up to 25 MB size cap)<br>**(out)** Uploaded file linked to task attachment gallery |
-| **5.2** | Download and Delete Task Attachment | Workspace Member, Workspace Admin | **(in)** Download or delete command for specified file<br>**(out)** File transferred to client or purged from attachment gallery |
-| **6.1** | Post Comment and Mention Collaborator | Workspace Member, Workspace Admin | **(in)** Markdown comment text with user mentions (@user)<br>**(out)** Comment posted and notifications delivered to tagged users |
+| **5.1** | Attach Deliverable Files to Task Card | Workspace Member, Workspace Admin | **(in)** File selection (up to 25 MB size cap)<br>**(out)** Uploaded file linked to task attachment gallery |
+| **5.2** | Download and Remove Task Attachments | Workspace Member, Workspace Admin, Workspace Viewer | **(in)** Download or delete command for specified file<br>**(out)** File transferred to client or purged from attachment gallery |
+| **6.1** | Post Threaded Comments and Mention Collaborators | Workspace Member, Workspace Admin | **(in)** Markdown comment text with user mentions (@user)<br>**(out)** Comment posted and notifications delivered to tagged users |
 | **6.2** | Consult In-App Notification Center | Authenticated User | **(in)** Access user notification drawer<br>**(out)** Chronological list of unread mentions and task assignments |
 | **7.1** | Subscribe and Upgrade Commercial Plan | Workspace Owner, External Payment Gateway | **(in)** Selected plan tier (Pro/Enterprise) and billing info<br>**(out)** Payment confirmation and updated workspace quotas |
-| **7.2** | Process Billing Webhook and Reconcile Quotas | External Payment Gateway, Platform Core | **(in)** Asynchronous webhook notification with payment event<br>**(out)** Reconciled plan tier and member quotas in database |
+| **7.2** | Process Billing Webhooks and Reconcile Quotas | External Payment Gateway, Platform Core | **(in)** Asynchronous webhook notification with payment event<br>**(out)** Reconciled plan tier and member quotas in database |
 | **8.1** | Export Personal and Workspace Data | Authenticated User, Workspace Owner | **(in)** Data export request (personal format or workspace archive)<br>**(out)** Downloadable archive package generated for client |
-| **8.2** | Deactivate and Close User Account | Authenticated User, Notification / Email Service | **(in)** Autonomous account deletion confirmation<br>**(out)** Credentials purged, name anonymized, receipt dispatched |
+| **8.2** | Close User Account | Authenticated User, Notification / Email Service | **(in)** Autonomous account closure confirmation<br>**(out)** Credentials invalidated, membership ended, receipt dispatched |
 
 ---
 
@@ -174,21 +174,21 @@ Organizes projects and work streams within the workspace:
 Represents the core operational engine of the platform:
 
 - **{U.C. 4.1} Create and Assign Task:** Users record tasks with mandatory titles, descriptions, due dates, priority ratings, and member attributions.
-- **{U.C. 4.2} Transition Task States on Kanban Board:** Users drag and drop task cards across columns ("To-Do", "In-Progress", "Under-Review", "Done") to update status.
+- **{U.C. 4.2} Track and Transition Task Workflow States:** Users drag and drop task cards across columns ("To-Do", "In-Progress", "Under-Review", "Done") to update status.
 - **{U.C. 4.3} Search and Filter Tasks:** Users search tasks and filter views dynamically by assignee, status, and priority.
 
 #### 4.2.5 Use Case 5 – Manage Task Attachments
 
 Governs deliverable documentation linked to task cards:
 
-- **{U.C. 5.1} Upload Task Attachment:** Users attach documents, spreadsheets, or images (up to 25 MB) directly to task cards.
-- **{U.C. 5.2} Download and Remove Attachment:** Users download deliverable files and allow uploaders or admins to delete attachments.
+- **{U.C. 5.1} Attach Deliverable Files to Task Card:** Users attach documents, spreadsheets, or images (up to 25 MB) directly to task cards.
+- **{U.C. 5.2} Download and Remove Task Attachments:** Users download deliverable files and allow uploaders or admins to delete attachments.
 
 #### 4.2.6 Use Case 6 – Collaborate and Notify
 
 Manages team discussions, alerts, and mentions:
 
-- **{U.C. 6.1} Post Comments and Mention Collaborators:** Users exchange contextual messages in Markdown within task cards, tagging colleagues via "@user".
+- **{U.C. 6.1} Post Threaded Comments and Mention Collaborators:** Users exchange contextual messages in Markdown within task cards, tagging colleagues via "@user".
 - **{U.C. 6.2} Consult Notification Center:** Displays in-app unread alerts and sends automated daily summary digests via email.
 
 #### 4.2.7 Use Case 7 – Manage Commercial Subscriptions
@@ -203,7 +203,7 @@ Governs commercial billing and plan tier lifecycle:
 Ensures user autonomy, data portability, and account closure:
 
 - **{U.C. 8.1} Export Personal and Workspace Data:** Users generate personal structured data archives, and Workspace Owners download complete workspace packages.
-- **{U.C. 8.2} Deactivate and Close Account:** Users autonomously close accounts, invalidating credentials, anonymizing names, and receiving confirmation receipts.
+- **{U.C. 8.2} Close User Account:** Users autonomously close accounts, invalidating credentials, ending memberships, and dispatching receipts.
 
 ---
 
@@ -231,9 +231,11 @@ With this specification locked, the system's functional boundary is completely d
 
 ## Bibliography
 
-1. Cockburn, A. (2000). *Writing Effective Use Cases*. Addison-Wesley Professional.
-2. Robertson, S., & Robertson, J. (2012). *Mastering the Requirements Process: Getting Requirements Right* (3rd ed.). Addison-Wesley Professional.
-3. Fowler, M. (2003). *UML Distilled: A Brief Guide to the Standard Object Modeling Language* (3rd ed.). Addison-Wesley Professional.
+1. Robertson, S., & Robertson, J. (2012). *Mastering the Requirements Process: Getting Requirements Right* (3rd ed.). Addison-Wesley Professional.
+2. Cockburn, A. (2000). *Writing Effective Use Cases*. Addison-Wesley Professional.
+3. Leffingwell, D., & Widrig, D. (2003). *Managing Software Requirements: A Use Case Approach* (2nd ed.). Addison-Wesley Professional.
+4. Wiegers, K., & Beatty, J. (2013). *Software Requirements* (3rd ed.). Microsoft Press.
+5. Fowler, M. (2003). *UML Distilled: A Brief Guide to the Standard Object Modeling Language* (3rd ed.). Addison-Wesley Professional.
 
 ---
 

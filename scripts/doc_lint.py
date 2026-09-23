@@ -78,7 +78,8 @@ def _is_leftover_slot(inner: str) -> bool:
 HTML_TAGS = {"details", "summary", "mark", "br", "b", "i", "em", "strong", "code", "sub", "sup"}
 RE_META = re.compile(
     r"(legacy expansion|formerly_known_as|formerly known as|\bcorr-\d+\b"
-    r"|deprecated|retired)",
+    r"|deprecated|retired"
+    r"|^\s*>\s*(?:selection\s+rule|corpus\s+provenance|per-article\s+table|compiled\s+from|source\s*:|\*{0,2}(?:added|renamed)\s+\d{4}-\d{2}-\d{2}))",
     re.IGNORECASE,
 )
 RE_SECTION = re.compile(r"^##\s+(.*)$")
@@ -138,7 +139,7 @@ def check_file(path: Path, full: bool) -> list[Finding]:
                         Finding(path, line_no, "R12 template-slot", line)
                     )
                     break
-        if full and not in_history and line_no > frontmatter_end and RE_META.search(line):
+        if full and not composed_corpus and not in_history and line_no > frontmatter_end and RE_META.search(line):
             findings.append(Finding(path, line_no, "R11 meta-commentary", line))
         for match in RE_REF_PATH.finditer(line):
             directory = CONTROLS / REFERENTIALS[match.group(1)] / match.group(2)

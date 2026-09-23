@@ -47,7 +47,7 @@ No fact may appear here that is not in the input (rule R6).>
 
 | ID | Adjusted goal | Pattern | Property | Parent goal | Regulatory source | Control anchor | Adjustment |
 |---|---|---|---|---|---|---|---|
-| AG-D-XX.Y-001 | <company-proportional restatement> | achieve/cease/maintain/avoid/optimize | C/I/A/privacy-right/accountability | SO-D-XX.Y.HL | <REG Art. N> | <referential ID> or — | <what was restated vs the corpus Baseline Goal> |
+| AG-D-XX.Y-001 | <company-proportional restatement> | achieve/cease/maintain/avoid/optimize | Confidentiality / Integrity / Availability / Privacy Right / Accountability | SO-D-XX.Y.HL | <REG Art. N> | <referential ID> or — | <what was restated vs the corpus Baseline Goal> |
 
 <!-- IDs sequential per sub-domain (rule R4). Sources must exist as article
      copies in the sub-domain's articles/ dir (rule R2a); control anchors must
@@ -56,9 +56,9 @@ No fact may appear here that is not in the input (rule R6).>
      eventually reached; cease = bad condition eventually terminated;
      maintain = good condition kept continuously true; avoid = bad condition
      never occurs; optimize = criterion maximised/minimised.
-     Property (Avizienis taxonomy + privacy axis): C = confidentiality,
-     I = integrity, A = availability, privacy-right = data-subject right,
-     accountability = answerability duty.
+     Property (Avizienis taxonomy + privacy axis): Confidentiality,
+     Integrity, Availability, Privacy Right (data-subject right),
+     Accountability (answerability duty).
      Parent goal = the sub-domain's frozen **Baseline Goal** id from
      D-XX.Y/objective.md (`SO-D-XX.Y.HL`).
      Adjustment (rule R3, auditable): one line on what was restated against

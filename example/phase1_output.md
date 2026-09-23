@@ -49,27 +49,27 @@ logins on the app admin console; the console has no MFA today.
 
 | ID | Adjusted goal | Pattern | Property | Parent HSO | Regulatory source | Control anchor | Adjustment |
 |---|---|---|---|---|---|---|---|
-| AG-D-01.1-001 | Client personal data at rest in the appointment platform database and its backups is protected by appropriate technical measures — encrypted to the current state of the art. | maintain | C | SO-D-01.1.HL | GDPR Art. 32; GDPR Art. 5 | CSF 2.0 PR.DS-01 | Scope narrowed to client personal data in the platform database and backups; "state of the art" reading deferred to card GDPR-CP15 (§5); mechanism choice left to Phase 2. |
+| AG-D-01.1-001 | Client personal data at rest in the appointment platform database and its backups is protected by appropriate technical measures — encrypted to the current state of the art. | maintain | Confidentiality | SO-D-01.1.HL | GDPR Art. 32; GDPR Art. 5 | CSF 2.0 PR.DS-01 | Scope narrowed to client personal data in the platform database and backups; "state of the art" reading deferred to card GDPR-CP15 (§5); mechanism choice left to Phase 2. |
 
 ### D-03.2 — Multi-Factor Authentication
 
 | ID | Adjusted goal | Pattern | Property | Parent HSO | Regulatory source | Control anchor | Adjustment |
 |---|---|---|---|---|---|---|---|
-| AG-D-03.2-001 | Only staff acting on documented instructions, each bound by confidentiality and with an individual login, process client personal data; the admin console enforces multi-factor authentication as the technical protection measure. | maintain | C | SO-D-03.2.HL | GDPR Art. 28; GDPR Art. 29 | CSF 2.0 PR.AA-03 | Corpus Sub-SO applied to the admin console only; individual logins already in place (input-declared); MFA named as the technical measure per corpus wording. |
+| AG-D-03.2-001 | Only staff acting on documented instructions, each bound by confidentiality and with an individual login, process client personal data; the admin console enforces multi-factor authentication as the technical protection measure. | maintain | Confidentiality | SO-D-03.2.HL | GDPR Art. 28; GDPR Art. 29 | CSF 2.0 PR.AA-03 | Corpus Sub-SO applied to the admin console only; individual logins already in place (input-declared); MFA named as the technical measure per corpus wording. |
 
 
 ### D-05.3 — Right to Erasure
 
 | ID | Adjusted goal | Pattern | Property | Parent HSO | Regulatory source | Control anchor | Adjustment |
 |---|---|---|---|---|---|---|---|
-| AG-D-05.3-001 | Erasure requests from clients are honoured without undue delay where an Art. 17(1) ground applies (e.g. consent withdrawn, data no longer necessary for the appointment service); consent withdrawal is made as easy as consent itself. | cease | privacy-right | SO-D-05.3.HL | GDPR Art. 17; GDPR Art. 7 | CSF 2.0 PR.DS-10 | Applied to client-initiated erasure via the app; timing kept as "without undue delay" (no registry card for Art. 17). |
-| AG-D-05.3-002 | The app provides clients a way to request account/data deletion, and the software-house contract requires deletion or return of all personal data, including existing copies, at contract end. | achieve | privacy-right | SO-D-05.3.HL | GDPR Art. 17; GDPR Art. 28 | CSF 2.0 PR.DS-10 | Processor-side deletion/return at contract end made contractual (Art. 28(3)(g)); contract not yet reviewed — open question (§5). |
+| AG-D-05.3-001 | Erasure requests from clients are honoured without undue delay where an Art. 17(1) ground applies (e.g. consent withdrawn, data no longer necessary for the appointment service); consent withdrawal is made as easy as consent itself. | cease | Privacy Right | SO-D-05.3.HL | GDPR Art. 17; GDPR Art. 7 | CSF 2.0 PR.DS-10 | Applied to client-initiated erasure via the app; timing kept as "without undue delay" (no registry card for Art. 17). |
+| AG-D-05.3-002 | The app provides clients a way to request account/data deletion, and the software-house contract requires deletion or return of all personal data, including existing copies, at contract end. | achieve | Privacy Right | SO-D-05.3.HL | GDPR Art. 17; GDPR Art. 28 | CSF 2.0 PR.DS-10 | Processor-side deletion/return at contract end made contractual (Art. 28(3)(g)); contract not yet reviewed — open question (§5). |
 
 ### D-09.4 — Records of Processing
 
 | ID | Adjusted goal | Pattern | Property | Parent HSO | Regulatory source | Control anchor | Adjustment |
 |---|---|---|---|---|---|---|---|
-| AG-D-09.4-001 | A Record of Processing Activities is maintained covering clinic and app processing, identifying the software house as processor and the PSP as a recipient. | maintain | accountability | SO-D-09.4.HL | GDPR Art. 30 | CSF 2.0 GV.PO-02; ID.AM-08 | RoPA scoped to clinic and app processing, with the software house named as processor and the PSP as a recipient. |
+| AG-D-09.4-001 | A Record of Processing Activities is maintained covering clinic and app processing, identifying the software house as processor and the PSP as a recipient. | maintain | Accountability | SO-D-09.4.HL | GDPR Art. 30 | CSF 2.0 GV.PO-02; ID.AM-08 | RoPA scoped to clinic and app processing, with the software house named as processor and the PSP as a recipient. |
 
 ## §5 Ambiguities & Open Questions
 

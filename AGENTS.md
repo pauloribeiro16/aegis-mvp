@@ -67,7 +67,7 @@ aegis-mvp/
 ├── output/                 # Target company outputs: output/<company>/phase1_output.md
 ├── cases/                  # Reference benchmark cases from the full methodology
 │   └── Case_01_TinyTask_SaaS/
-│       ├── 01_PHASE1_CONTEXT/  # Case deliverables (Doc01 to Doc06)
+│       ├── 01_PHASE1_CONTEXT/  # Case deliverables (Doc01 intake + Doc02 adjusted goals)
 │       └── filtered_corpus/    # Case-specific deterministic corpus slice (NO summaries, verbatim in-scope only)
 │           └── index.md        # Slice index of in-scope sub-domains and articles
 ├── scripts/

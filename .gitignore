@@ -6,3 +6,4 @@ __pycache__/
 .zcode/
 _audit_input.jsonl
 _t/
+scratch/

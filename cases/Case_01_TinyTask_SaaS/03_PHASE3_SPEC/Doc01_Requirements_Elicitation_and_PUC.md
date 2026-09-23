@@ -128,91 +128,40 @@ In the baseline As-Is operational state—typical of small teams prior to adopti
 
 - **Business Founder / Lead:** Manages commercial commitments, tracking client subscriptions and invoicing via local spreadsheets and direct email exchanges.
 - **Project Lead:** Spends 2 to 3 hours daily consolidating manual status updates across chat messages and emails, manually updating a shared spreadsheet.
-- **Team Contributor:** Tracks individual work in personal desktop note applications or paper notebooks, isolated from colleagues' real-time progress.
-- **External Client:** Periodically requests status meetings or emails to check project health, receiving sporadic deliverable attachments.
+- **Collaborator / Contributor:** Receives assignments via ad-hoc verbal requests or instant message channels without centralized priority queues or clear due dates.
+- **External Client:** Periodically inquires via email regarding deliverable progress, receiving static exported PDF status reports.
 
 ### 2. Workflow Processes for Work Management
 
-#### 2.1 Create and Initialize Projects
+#### 2.1 Task Allocation and Tracking (As-Is Process)
+The As-Is task tracking workflow is characterized by manual coordination friction:
 
-In the As-Is state, project initialization is recorded in an unstructured master spreadsheet on a shared drive:
+1. The Project Lead identifies an incoming project requirement from a client meeting.
+2. The requirement is noted in a personal notebook or digital notepad.
+3. The Project Lead drafts an email or instant message assigning the task to a team contributor.
+4. The contributor acknowledges receipt; however, the task is not logged into a centralized status register.
+5. Periodic follow-up messages are exchanged to ascertain whether the task has started, is blocked, or is finished.
+6. Deliverables are sent back via email attachment, creating duplicate copies across multiple inboxes.
 
-*Table 3 - Data manually inserted to create a new project*
+#### 2.2 Operational Inefficiencies Identified (As-Is)
+The following table summarizes the primary operational deficiencies observed in the As-Is state:
 
-| Data Field | Data Type | Mandatory |
-|---|---|---|
-| Project Name | Text | Yes |
-| Client / Organization Name | Text | Yes |
-| Start Date | Date (`dd/mm/yyyy`) | Yes |
-| Target End Date | Date (`dd/mm/yyyy`) | Yes |
-| Project Lead | Text | Yes |
-| Estimated Budget (€) | Decimal Number | No |
-| General Scope Description | Text Block | No |
+*Table 3. Inefficiencies identified in As-Is work management*
 
-#### 2.2 Define and Schedule Tasks
-
-Tasks are added as informal rows in separate tabs of the master spreadsheet:
-
-*Table 4 - Data manually inserted to define and schedule tasks*
-
-| Data Field | Data Type | Mandatory |
-|---|---|---|
-| Task Title | Text | Yes |
-| Assignee Name | Text | No |
-| Priority Level | Drop-down option (`High`, `Medium`, `Low`) | No |
-| Target Deadline | Date (`dd/mm/yyyy`) | No |
-| Estimated Effort (Hours) | Integer Number | No |
-| Deliverable Notes | Text | No |
-
-#### 2.3 Track Task Progress and Status
-
-Progress updates rely on manual self-reporting during periodic team catch-up calls:
-
-*Table 5 - Data manually inserted to track task progress*
-
-| Data Field | Data Type | Mandatory |
-|---|---|---|
-| Current Status | Drop-down option (`To-Do`, `In-Progress`, `Done`) | Yes |
-| Last Updated Date | Date (`dd/mm/yyyy`) | No |
-| Updated By | Text | No |
-| Actual Hours Spent | Decimal Number | No |
-| Blockers / Impediments | Text | No |
-
-#### 2.4 Share and Manage Document Attachments
-
-Deliverable files and specifications are shared via email attachments and unmanaged shared drives:
-
-*Table 6 - Data manually inserted to manage document attachments*
-
-| Data Field | Data Type | Mandatory |
-|---|---|---|
-| File Name | Text | Yes |
-| Shared Drive Path / URL | Text | Yes |
-| Document Category | Drop-down option | No |
-| Associated Task | Text | No |
-| Upload Date | Date (`dd/mm/yyyy`) | Yes |
-
-#### 2.5 Manage Commercial Subscriptions and Invoicing
-
-Customer subscription plans and billing statuses are tracked manually in an accounting ledger:
-
-*Table 7 - Data manually inserted to manage customer subscriptions*
-
-| Data Field | Data Type | Mandatory |
-|---|---|---|
-| Client Organization Name | Text | Yes |
-| Contracted Plan | Drop-down option (`Free`, `Pro`, `Enterprise`) | Yes |
-| Billing Cycle | Drop-down option (`Monthly`, `Annual`) | Yes |
-| Recurring Amount (€) | Decimal Number | Yes |
-| Payment Status | Drop-down option (`Paid`, `Pending`, `Past-Due`) | Yes |
-| Last Invoice Date | Date (`dd/mm/yyyy`) | Yes |
+| Inefficiency ID | Process Affected | Description | Impact |
+|---|---|---|---|
+| **INEF-01** | Task Allocation | Absence of centralized task backlog; assignments scattered across chat and email. | High risk of lost tasks and missed client deadlines. |
+| **INEF-02** | Status Visibility | Progress tracking relies entirely on manual inquiry meetings and repetitive messaging. | Wasted productive time (~15 hours/week across team). |
+| **INEF-03** | Deliverable Sharing | Deliverable files shared via unmanaged attachments; no version control or centralized search. | Broken audit trail; team members work on outdated file versions. |
+| **INEF-04** | Client Reporting | External clients have zero real-time visibility, demanding manual weekly summary preparation. | Client dissatisfaction and communication delays. |
 
 ### 3. IT Support
 
-In the As-Is baseline, operational tools are fragmented and unintegrated:
-- **Shared Spreadsheets:** Used for task lists and budgets, suffering from version conflicts, concurrent overwrite errors, and accidental formula corruption.
-- **Instant Messaging Applications:** Used for day-to-day discussion, leading to critical decisions getting buried in unsearchable chat histories.
-- **Decentralized Cloud Drives:** Used for file storage, lacking contextual links to specific task deliverables or approval histories.
+In the baseline state, IT infrastructure is highly fragmented across separate cloud tools:
+- General communication via standard instant messaging channels.
+- Ad-hoc spreadsheet tables stored on shared personal cloud drives.
+- Deliverables stored in local workstations and exchanged via email.
+- Billing handled manually through one-off invoices generated in desktop office software.
 
 ---
 
@@ -220,18 +169,20 @@ In the As-Is baseline, operational tools are fragmented and unintegrated:
 
 ### 1. Initial Customer Expectations
 
-The target To-Be system formalizes stakeholder expectations into a centralized SaaS platform:
+Based on preliminary user interviews and founder elicitation, the target To-Be system must satisfy the following core expectations:
 
-*Table 8. Description of customer initial expectations*
+*Table 4. Initial customer expectations*
 
-| Initial Expectations | Description |
-|---|---|
-| **1. Centralize Work Management in a Single Platform** | Consolidate workspaces, projects, task boards, comments, and deliverable documentation into a unified, secure web platform accessible anywhere. |
-| **2. Deliver Visual and Agile Task Management** | Provide interactive Kanban boards and dynamic table views enabling intuitive drag-and-drop state transitions with immediate visual feedback. |
-| **3. Contextualize Team Collaboration** | Support rich Markdown discussion threads directly embedded inside task cards, allowing user mentions to trigger instant alerts. |
-| **4. Integrate Document Attachment Storage** | Enable seamless uploading, previewing, and downloading of deliverable files directly indexed to specific tasks. |
-| **5. Automate Commercial Subscription Workflows** | Enable workspace owners to subscribe, upgrade, and manage plans and invoices through self-service payment gateway integration. |
-| **6. Ensure User Data Portability and Closure Autonomy** | Provide self-service personal data export, workspace archive generation, and autonomous account closure workflows. |
+| Expectation ID | Operational Expectation | Target Impact |
+|---|---|---|
+| **EXP-01** | Unified, self-service workspace setup where teams can register and invite members in minutes. | Immediate time-to-value; zero manual administrative provisioning. |
+| **EXP-02** | Interactive Kanban board offering fluid visual drag-and-drop task state transitions and clear priorities. | Complete real-time operational transparency across all team deliverables. |
+| **EXP-03** | In-task discussion threads with mentions (@collaborator) to eliminate external chat fragmentation. | Contextualized conversations directly tied to work deliverables. |
+| **EXP-04** | Centralized attachment repository supporting deliverable uploads with instant previews. | Single source of truth for all project documentation. |
+| **EXP-05** | Flexible, tiered self-service subscription billing with transparent seat quotas and upgrade workflows. | Predictable commercial scaling without manual sales friction. |
+| **EXP-06** | Complete user data control, offering one-click data export and autonomous account closure. | High customer trust and autonomy over organizational data. |
+
+---
 
 ### 2. Functional and Non-Functional Requirements
 
@@ -239,7 +190,7 @@ The target To-Be system formalizes stakeholder expectations into a centralized S
 
 The following table formally defines the actors interacting with the system in the To-Be model:
 
-*Table 9. List of actors*
+*Table 5. List of actors*
 
 | Actor | Description |
 |---|---|
@@ -247,8 +198,10 @@ The following table formally defines the actors interacting with the system in t
 | **Workspace Admin** | Operational workspace manager. Invites members, modifies roles, configures organization profile settings, and initializes new projects. |
 | **Workspace Member** | Standard collaborative contributor. Creates, edits, and transitions tasks; uploads attachments; posts comments; and manages profile settings. |
 | **Workspace Viewer** | External guest or client granted read-only visibility into authorized projects and task lists. |
-| **External Payment Gateway** | External payment processing engine responsible for handling payment sessions, executing billing charges, and dispatching signed asynchronous webhooks. |
-| **Notification / Email Service** | Internal subsystem responsible for dispatching verification emails, assignment notifications, and daily pending task digests. |
+| **External Payment Gateway** | External payment processing engine responsible for handling payment sessions, executing billing charges, and dispatching payment status confirmations. |
+| **Notification / Email Service** | Platform messaging subsystem responsible for dispatching verification emails, assignment notifications, and daily pending task digests. |
+
+---
 
 #### 2.2 Functional Requirements
 
@@ -261,53 +214,36 @@ Functional requirements are prioritized using the MoSCoW methodology:
 
 ##### 2.2.2 Summary Table of Functional Requirements
 
-*Table 10. List of functional requirements*
+*Table 6. List of functional requirements*
 
 | ID | ID | Requirement | Priority | Restrictions |
 |---|---|---|---|---|
-| **R1** | | **Manage User Accounts and Identity** | **MUST** | |
-| | R1.1 | Register user account with email verification | MUST | Unique email |
-| | R1.2 | Authenticate user credentials and issue active session | MUST | |
-| | R1.3 | Recover user credentials via email reset link | MUST | |
-| | R1.4 | Enforce role-based access control (RBAC) | MUST | |
+| **R1** | | **Manage User Accounts and Authentication** | **MUST** | |
+| | R1.1 | Register and authenticate user accounts | MUST | Unique email |
+| | R1.2 | Manage user profile and account preferences | SHOULD | |
 | **R2** | | **Manage Workspaces and Teams** | **MUST** | |
-| | R2.1 | Create workspace and assign creator as Workspace Owner | MUST | |
-| | R2.2 | Invite workspace members via email | MUST | Seat quota |
-| | R2.3 | Modify member roles and revoke workspace membership | MUST | |
-| | R2.4 | Configure workspace profile (name, logo) | SHOULD | |
-| | R2.5 | Monitor workspace activity and member metrics | COULD | |
+| | R2.1 | Create and configure workspace | MUST | Unique URL slug |
+| | R2.2 | Invite workspace members and manage access roles | MUST | Seat quota |
+| | R2.3 | Monitor workspace activity and operational metrics | COULD | |
 | **R3** | | **Manage Projects** | **MUST** | |
-| | R3.1 | Create project with title, description, and visibility | MUST | |
-| | R3.2 | Archive completed project to read-only state | SHOULD | |
-| **R4** | | **Create and Assign Tasks** | **MUST** | |
-| | R4.1 | Create task with title, description, priority, and due date | MUST | |
-| | R4.2 | Assign task to active workspace members | MUST | |
-| | R4.3 | Display visual priority badges (Low, Medium, High, Urgent) | SHOULD | |
-| **R5** | | **Manage Task States and Visual Board Views** | **MUST** | |
-| | R5.1 | Track and transition task workflow states on visual board | MUST | |
-| | R5.2 | Clone recurring tasks automatically upon completion | COULD | |
-| **R6** | | **Search and Filter Tasks** | **MUST** | |
-| | R6.1 | Filter tasks dynamically by status, assignee, priority, and date | MUST | |
-| **R7** | | **Manage Task Deliverable Attachments** | **MUST** | |
-| | R7.1 | Attach deliverable files to task card | MUST | 25 MB cap |
-| | R7.2 | Download and remove task attachments | MUST | |
-| **R8** | | **Collaborate via In-Task Comments** | **MUST** | |
-| | R8.1 | Post threaded comments and mention collaborators | MUST | |
-| | R8.2 | Stream comments in real-time | COULD | |
-| **R9** | | **Track Activity History and Alerts** | **MUST** | |
-| | R9.1 | Record chronological activity history on task cards | MUST | |
-| | R9.2 | Consult in-app notification center for assignments and mentions | MUST | |
-| | R9.3 | Dispatch daily pending task summary digest via email | SHOULD | |
-| **R10** | | **Manage Commercial Subscriptions** | **MUST** | |
-| | R10.1 | Subscribe and upgrade plan tier via payment gateway | MUST | |
-| | R10.2 | Ingest and process billing webhooks to update plan status | MUST | |
-| | R10.3 | Reconcile workspace member seat quotas upon payment success | MUST | |
-| | R10.4 | Enforce grace period upon subscription payment failure | MUST | |
-| **R11** | | **Manage User Data and Close Accounts** | **MUST** | |
-| | R11.1 | Export personal user profile and task data in structured format | MUST | |
-| | R11.2 | Export full workspace repository archive | MUST | |
-| | R11.3 | Close user account | MUST | |
-| | R11.4 | Dispatch digital confirmation receipt upon account closure | SHOULD | |
+| | R3.1 | Create and configure projects | MUST | |
+| | R3.2 | Archive completed projects | SHOULD | |
+| **R4** | | **Manage and Execute Tasks** | **MUST** | |
+| | R4.1 | Create and assign tasks | MUST | |
+| | R4.2 | Track and transition task workflow states on visual boards | MUST | |
+| | R4.3 | Configure recurring automated tasks | COULD | |
+| **R5** | | **Collaborate on Task Deliverables** | **MUST** | |
+| | R5.1 | Manage task deliverable attachments | MUST | 25 MB cap |
+| | R5.2 | Post in-task discussion comments and mention collaborators | MUST | |
+| **R6** | | **Track Activity History and Notifications** | **MUST** | |
+| | R6.1 | Consult chronological audit history on task cards | MUST | |
+| | R6.2 | Receive workspace alerts and daily task digests | SHOULD | |
+| **R7** | | **Manage Commercial Subscriptions** | **MUST** | |
+| | R7.1 | Subscribe and manage workspace commercial plans | MUST | |
+| | R7.2 | Enforce operational grace period upon payment failure | MUST | 7-day limit |
+| **R8** | | **Export Data and Close Accounts** | **MUST** | |
+| | R8.1 | Export personal and workspace data archives | MUST | |
+| | R8.2 | Close user accounts and terminate workspace access | MUST | |
 
 ---
 
@@ -315,137 +251,93 @@ Functional requirements are prioritized using the MoSCoW methodology:
 
 The detailed functional requirement cards follow the exact 7-row single-column format established in the reference project standard:
 
-#### R1 – Manage User Accounts and Identity
+#### R1 – Manage User Accounts and Authentication
 
-##### R1.1 – Register user account with email verification
+##### R1.1 – Register and authenticate user accounts
 
 | Requirement |
 |---|
-| **ID:** R1.1 **Name:** Register user account with email verification |
-| **Description:** The system must allow an unauthenticated visitor to register a user account by submitting full name, email address, and password, validating email uniqueness and automatically dispatching an activation email containing a time-limited confirmation link. |
-| **Requirement Origin:** Client Onboarding Needs & Customer Expectation EXP-01 |
-| **Interfaces:** Unauthenticated User and Notification / Email Service |
-| **Dependencies:**<br>• **Stakeholders:** Executive Leadership, Team Contributors<br>• **Data Sources:** User Registration Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **ID:** R1.1 **Name:** Register and authenticate user accounts |
+| **Description:** The system must allow prospective users to create an account with email verification, authenticate using valid credentials to establish an active session, and autonomously request password reset assistance via email. |
+| **Requirement Origin:** Founders Business Case & User Onboarding Workflow |
+| **Interfaces:** Unauthenticated Visitor, Registered User, and Notification / Email Service |
+| **Dependencies:**<br>• **Stakeholders:** Platform Founders, All End Users<br>• **Data Sources:** Registration Form, Login Form, Password Reset Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
-##### R1.2 – Authenticate user credentials and issue active session
+##### R1.2 – Manage user profile and account preferences
 
 | Requirement |
 |---|
-| **ID:** R1.2 **Name:** Authenticate user credentials and issue active session |
-| **Description:** The system must validate submitted email address and password credentials against registered active accounts, issuing an authenticated session and returning the list of authorized workspaces for that user. |
-| **Requirement Origin:** Client Access Management Needs & Customer Expectation EXP-01 |
-| **Interfaces:** Registered User |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Workspace Admins<br>• **Data Sources:** Login Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
-| **Identified Problems:** |
-| **Priority:** Must |
-
-##### R1.3 – Recover user credentials via email reset link
-
-| Requirement |
-|---|
-| **ID:** R1.3 **Name:** Recover user credentials via email reset link |
-| **Description:** The system must allow a user to request account recovery by submitting their registered email address, generating a single-use, time-limited reset link delivered via email that enables password updating. |
-| **Requirement Origin:** Self-Service User Account Operations |
-| **Interfaces:** Registered User and Notification / Email Service |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Password Recovery Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
-| **Identified Problems:** |
-| **Priority:** Must |
-
-##### R1.4 – Enforce role-based access control (RBAC)
-
-| Requirement |
-|---|
-| **ID:** R1.4 **Name:** Enforce role-based access control (RBAC) |
-| **Description:** The system must evaluate user actions against four standard workspace roles (Owner, Admin, Member, Viewer), granting execution privileges strictly according to the role held by the authenticated user in that workspace. |
-| **Requirement Origin:** Workspace Governance Needs & Customer Expectation EXP-01 |
-| **Interfaces:** All Platform Users |
-| **Dependencies:**<br>• **Stakeholders:** Workspace Admins, Executive Leadership<br>• **Data Sources:** Workspace Membership Table<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
-| **Identified Problems:** |
-| **Priority:** Must |
-
-#### R2 – Manage Workspaces and Teams
-
-##### R2.1 – Create workspace and assign creator as Workspace Owner
-
-| Requirement |
-|---|
-| **ID:** R2.1 **Name:** Create workspace and assign creator as Workspace Owner |
-| **Description:** The system must allow an authenticated user to instantiate a new isolated workspace by submitting a unique name and URL slug, establishing the creator as the primary Workspace Owner with full administrative authority. |
-| **Requirement Origin:** Multi-Tenant Organization Needs & Customer Expectation EXP-01 |
-| **Interfaces:** Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** Platform Founders, Business Customers<br>• **Data Sources:** Workspace Creation Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
-| **Identified Problems:** |
-| **Priority:** Must |
-
-##### R2.2 – Invite workspace members via email
-
-| Requirement |
-|---|
-| **ID:** R2.2 **Name:** Invite workspace members via email |
-| **Description:** The system must allow Workspace Admins and Owners to invite prospective members by submitting email addresses and initial roles, verifying that active member quotas are not exceeded and dispatching invitation emails with onboarding links. |
-| **Requirement Origin:** Team Collaboration Needs & As-Is Inefficiency 2.1 |
-| **Interfaces:** Workspace Admin, Workspace Owner, and Notification / Email Service |
-| **Dependencies:**<br>• **Stakeholders:** Team Leads, Project Managers<br>• **Data Sources:** Member Invitation Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
-| **Identified Problems:** |
-| **Priority:** Must |
-
-##### R2.3 – Modify member roles and revoke workspace membership
-
-| Requirement |
-|---|
-| **ID:** R2.3 **Name:** Modify member roles and revoke workspace membership |
-| **Description:** The system must allow Workspace Admins and Owners to update the role of existing members (between Admin, Member, and Viewer) or remove members from the workspace, preventing removal or demotion of the Workspace Owner. |
-| **Requirement Origin:** Team Administration Needs & Governance |
-| **Interfaces:** Workspace Admin and Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** Workspace Admins<br>• **Data Sources:** Workspace Member Roster<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
-| **Identified Problems:** |
-| **Priority:** Must |
-
-##### R2.4 – Configure workspace profile (name, logo)
-
-| Requirement |
-|---|
-| **ID:** R2.4 **Name:** Configure workspace profile (name, logo) |
-| **Description:** The system must allow Workspace Admins and Owners to update organization branding by editing the workspace name and uploading an organization logo graphic up to 2 MB in file size. |
-| **Requirement Origin:** Customer Branding & Customization |
-| **Interfaces:** Workspace Admin and Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** Business Customers<br>• **Data Sources:** Workspace Settings Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** File Storage Service<br>• **Preceding Requirements:** |
+| **ID:** R1.2 **Name:** Manage user profile and account preferences |
+| **Description:** The system must allow an authenticated user to view and update their personal profile details (full name, avatar image, and contact details) and configure notification preferences. |
+| **Requirement Origin:** User Account Personalization Needs |
+| **Interfaces:** Authenticated User |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Profile Settings Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Should |
 
-##### R2.5 – Monitor workspace activity and member metrics
+---
+
+#### R2 – Manage Workspaces and Teams
+
+##### R2.1 – Create and configure workspace
 
 | Requirement |
 |---|
-| **ID:** R2.5 **Name:** Monitor workspace activity and member metrics |
+| **ID:** R2.1 **Name:** Create and configure workspace |
+| **Description:** The system must allow an authenticated user to instantiate an isolated organizational workspace by specifying a workspace name and unique URL slug, automatically assigning the creator as Workspace Owner and permitting subsequent configuration of workspace branding and organization name. |
+| **Requirement Origin:** Multi-Tenant Organization Needs & Customer Expectation EXP-01 |
+| **Interfaces:** Workspace Owner and Workspace Admin |
+| **Dependencies:**<br>• **Stakeholders:** Platform Founders, Business Customers<br>• **Data Sources:** Workspace Creation and Settings Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database, File Storage Service<br>• **Preceding Requirements:** |
+| **Identified Problems:** |
+| **Priority:** Must |
+
+##### R2.2 – Invite workspace members and manage access roles
+
+| Requirement |
+|---|
+| **ID:** R2.2 **Name:** Invite workspace members and manage access roles |
+| **Description:** The system must allow Workspace Admins and Owners to invite team members via email, assign access roles (Owner, Admin, Member, Viewer) that govern operational permissions within the workspace, modify member roles, or revoke membership, respecting active seat limits. |
+| **Requirement Origin:** Team Collaboration Needs & Governance |
+| **Interfaces:** Workspace Admin, Workspace Owner, and Notification / Email Service |
+| **Dependencies:**<br>• **Stakeholders:** Team Leads, Project Managers<br>• **Data Sources:** Member Invitation Form, Membership Roster<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Identified Problems:** |
+| **Priority:** Must |
+
+##### R2.3 – Monitor workspace activity and operational metrics
+
+| Requirement |
+|---|
+| **ID:** R2.3 **Name:** Monitor workspace activity and operational metrics |
 | **Description:** The system must compile and present aggregated operational metrics to workspace leadership, displaying active member counts, tasks completed during the billing cycle, and total deliverable file storage consumed. |
 | **Requirement Origin:** Team Coordination Needs & Management Reporting |
 | **Interfaces:** Workspace Admin and Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** Team Leads, Executives<br>• **Data Sources:** Workspace Activity Logs<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Dependencies:**<br>• **Stakeholders:** Team Leads, Executive Leadership<br>• **Data Sources:** Workspace Activity Logs<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Could |
 
+---
+
 #### R3 – Manage Projects
 
-##### R3.1 – Create project with title, description, and visibility
+##### R3.1 – Create and configure projects
 
 | Requirement |
 |---|
-| **ID:** R3.1 **Name:** Create project with title, description, and visibility |
-| **Description:** The system must allow Workspace Admins and Members to initialize distinct project containers within a workspace, specifying project name, description of deliverables, and visibility settings (workspace-wide or restricted). |
+| **ID:** R3.1 **Name:** Create and configure projects |
+| **Description:** The system must allow Workspace Admins and Members to initialize distinct project containers within a workspace, specifying project name, description of deliverables, and visibility settings (workspace-wide or restricted to selected members). |
 | **Requirement Origin:** Project Work Structuring Needs & As-Is Pain Point 2.1 |
 | **Interfaces:** Workspace Admin and Workspace Member |
 | **Dependencies:**<br>• **Stakeholders:** Project Managers, Team Contributors<br>• **Data Sources:** Project Creation Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
-##### R3.2 – Archive completed project to read-only state
+##### R3.2 – Archive completed projects
 
 | Requirement |
 |---|
-| **ID:** R3.2 **Name:** Archive completed project to read-only state |
+| **ID:** R3.2 **Name:** Archive completed projects |
 | **Description:** The system must allow Workspace Admins and Owners to transition completed projects into archived status, rendering all tasks and discussions read-only and hiding the project from daily operational views while preserving historical data. |
 | **Requirement Origin:** Project Lifecycle Management Needs |
 | **Interfaces:** Workspace Admin and Workspace Owner |
@@ -453,273 +345,157 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Identified Problems:** |
 | **Priority:** Should |
 
-#### R4 – Create and Assign Tasks
+---
 
-##### R4.1 – Create task with title, description, priority, and due date
+#### R4 – Manage and Execute Tasks
+
+##### R4.1 – Create and assign tasks
 
 | Requirement |
 |---|
-| **ID:** R4.1 **Name:** Create task with title, description, priority, and due date |
-| **Description:** The system must enable rapid task authoring within a project, requiring a mandatory title and allowing optional detailed description, target due date, and initial priority level, placing the task in "To-Do" status. |
+| **ID:** R4.1 **Name:** Create and assign tasks |
+| **Description:** The system must allow authorized team members to create tasks within a project by specifying a mandatory title, optional description, priority level (Low, Medium, High, Urgent), and target due date, and assign execution responsibility to one or more active workspace members. |
 | **Requirement Origin:** Work Item Authoring Needs & As-Is Pain Point 2.2 |
 | **Interfaces:** Workspace Member, Workspace Admin, and Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Project Managers<br>• **Data Sources:** Task Creation Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Project Managers<br>• **Data Sources:** Task Creation Form, Member Picker<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
-##### R4.2 – Assign task to active workspace members
+##### R4.2 – Track and transition task workflow states on visual boards
 
 | Requirement |
 |---|
-| **ID:** R4.2 **Name:** Assign task to active workspace members |
-| **Description:** The system must allow assigning execution responsibility for a task to one or more active members of the workspace, dispatching instant notifications to the assigned users. |
-| **Requirement Origin:** Task Attribution Needs & As-Is Pain Point 2.2 |
-| **Interfaces:** Workspace Member, Workspace Admin |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Team Leads<br>• **Data Sources:** Workspace Member Picker<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
-| **Identified Problems:** |
-| **Priority:** Must |
-
-##### R4.3 – Display visual priority badges (Low, Medium, High, Urgent)
-
-| Requirement |
-|---|
-| **ID:** R4.3 **Name:** Display visual priority badges (Low, Medium, High, Urgent) |
-| **Description:** The system must render distinct visual badges for each priority level (Low, Medium, High, Urgent) across task cards and table views, enabling rapid visual triage of urgent deliverables. |
-| **Requirement Origin:** Visual Triage Needs & Customer Expectation EXP-02 |
-| **Interfaces:** All Users |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Task Priority Property<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
-| **Identified Problems:** |
-| **Priority:** Should |
-
-#### R5 – Manage Task States and Visual Board Views
-
-##### R5.1 – Track and transition task workflow states on visual board
-
-| Requirement |
-|---|
-| **ID:** R5.1 **Name:** Track and transition task workflow states on visual board |
-| **Description:** The system must display tasks organized in sequential status columns (To-Do, In-Progress, Under-Review, Done) on an interactive visual board, allowing authorized users to transition cards between states and recording transition author and timestamp in task history. |
+| **ID:** R4.2 **Name:** Track and transition task workflow states on visual boards |
+| **Description:** The system must render tasks in interactive Kanban boards with standard status columns (To-Do, In-Progress, Under-Review, Done) and tabular views, allowing members to transition cards between states and filter tasks dynamically by assignee, status, priority, or overdue status. |
 | **Requirement Origin:** Agile Workflow Tracking Needs & Customer Expectation EXP-02 |
-| **Interfaces:** Workspace Member, Workspace Admin |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Project Leads<br>• **Data Sources:** Task State Model<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Interfaces:** Workspace Member, Workspace Admin, Workspace Viewer |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Project Leads<br>• **Data Sources:** Task State Model, Filter Parameters<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
-##### R5.2 – Clone recurring tasks automatically upon completion
+##### R4.3 – Configure recurring automated tasks
 
 | Requirement |
 |---|
-| **ID:** R5.2 **Name:** Clone recurring tasks automatically upon completion |
+| **ID:** R4.3 **Name:** Configure recurring automated tasks |
 | **Description:** The system must allow users to configure recurrence schedules (weekly or monthly) on a task, automatically creating a duplicate task instance in the "To-Do" column once the current instance is marked "Done". |
 | **Requirement Origin:** Repetitive Task Automation Needs |
-| **Interfaces:** Workspace Member, Workspace Admin |
+| **Interfaces:** Workspace Member and Workspace Admin |
 | **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Task Recurrence Rule<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Could |
 
-#### R6 – Search and Filter Tasks
+---
 
-##### R6.1 – Filter tasks dynamically by status, assignee, priority, and date
+#### R5 – Collaborate on Task Deliverables
 
-| Requirement |
-|---|
-| **ID:** R6.1 **Name:** Filter tasks dynamically by status, assignee, priority, and date |
-| **Description:** The system must provide multi-criteria filter controls on project board and list views, dynamically filtering displayed tasks by assignee, status, priority, or overdue status without requiring page reloads. |
-| **Requirement Origin:** Task Retrieval Needs & Customer Expectation EXP-02 |
-| **Interfaces:** All Users |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Project Leads<br>• **Data Sources:** Task Search Index<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
-| **Identified Problems:** |
-| **Priority:** Must |
-
-#### R7 – Manage Task Deliverable Attachments
-
-##### R7.1 – Attach deliverable files to task card
+##### R5.1 – Manage task deliverable attachments
 
 | Requirement |
 |---|
-| **ID:** R7.1 **Name:** Attach deliverable files to task card |
-| **Description:** The system must allow authorized workspace members to upload deliverable files (supporting documents, spreadsheets, presentations, and images) up to 25 MB in size per file, indexing the attachment directly to the task card and updating task attachment counts. |
+| **ID:** R5.1 **Name:** Manage task deliverable attachments |
+| **Description:** The system must allow authorized team members to upload deliverable files (supporting documents, spreadsheets, presentations, and images) up to 25 MB in size per file directly into a task card, view inline previews, download attached files, and remove outdated attachments. |
 | **Requirement Origin:** Document Centralization Needs & Customer Expectation EXP-04 |
-| **Interfaces:** Workspace Member, Workspace Admin |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Clients<br>• **Data Sources:** Local Client File<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** File Storage Service<br>• **Preceding Requirements:** |
-| **Identified Problems:** |
-| **Priority:** Must |
-
-##### R7.2 – Download and remove task attachments
-
-| Requirement |
-|---|
-| **ID:** R7.2 **Name:** Download and remove task attachments |
-| **Description:** The system must provide secure download access for task attachments to users with project view rights, and allow the file uploader or Workspace Admin to permanently remove an attachment from the task card. |
-| **Requirement Origin:** Document Lifecycle Needs & Customer Expectation EXP-04 |
 | **Interfaces:** Workspace Member, Workspace Admin, Workspace Viewer |
-| **Dependencies:**<br>• **Stakeholders:** Contributors, Admins, Clients<br>• **Data Sources:** Stored Attachment Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** File Storage Service<br>• **Preceding Requirements:** |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Clients<br>• **Data Sources:** Client File Upload, Stored Attachment Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** File Storage Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
-#### R8 – Collaborate via In-Task Comments
-
-##### R8.1 – Post threaded comments and mention collaborators
+##### R5.2 – Post in-task discussion comments and mention collaborators
 
 | Requirement |
 |---|
-| **ID:** R8.1 **Name:** Post threaded comments and mention collaborators |
+| **ID:** R5.2 **Name:** Post in-task discussion comments and mention collaborators |
 | **Description:** The system must provide a contextual comment thread inside each task card supporting rich text Markdown formatting and parsing collaborator mentions (@user) to automatically dispatch in-app notifications to tagged users. |
 | **Requirement Origin:** In-Context Collaboration Needs & Customer Expectation EXP-03 |
 | **Interfaces:** Workspace Member, Workspace Admin, and Notification / Email Service |
-| **Dependencies:**<br>• **Stakeholders:** Contributors, Clients<br>• **Data Sources:** Task Comment Input<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Clients<br>• **Data Sources:** Task Comment Input<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
-##### R8.2 – Stream comments in real-time
+---
+
+#### R6 – Track Activity History and Notifications
+
+##### R6.1 – Consult chronological audit history on task cards
 
 | Requirement |
 |---|
-| **ID:** R8.2 **Name:** Stream comments in real-time |
-| **Description:** The system must push new comments instantly to active users currently viewing the task card without requiring manual interface refresh. |
-| **Requirement Origin:** Real-Time Team Communication Needs |
-| **Interfaces:** Active Online Users |
-| **Dependencies:**<br>• **Stakeholders:** Contributors<br>• **Data Sources:** Real-Time Message Stream<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Real-Time Push Channel<br>• **Preceding Requirements:** |
-| **Identified Problems:** |
-| **Priority:** Could |
-
-#### R9 – Track Activity History and Alerts
-
-##### R9.1 – Record chronological activity history on task cards
-
-| Requirement |
-|---|
-| **ID:** R9.1 **Name:** Record chronological activity history on task cards |
+| **ID:** R6.1 **Name:** Consult chronological audit history on task cards |
 | **Description:** The system must record and display a chronological audit feed on each task card documenting state changes, assignee reallocations, due date adjustments, and attachment events, identifying author and timestamp. |
 | **Requirement Origin:** Operational Transparency Needs & Team Accountability |
-| **Interfaces:** All Users |
+| **Interfaces:** All Authorized Workspace Users |
 | **Dependencies:**<br>• **Stakeholders:** Project Managers, Contributors<br>• **Data Sources:** Audit Log Table<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
-##### R9.2 – Consult in-app notification center for assignments and mentions
+##### R6.2 – Receive workspace alerts and daily task digests
 
 | Requirement |
 |---|
-| **ID:** R9.2 **Name:** Consult in-app notification center for assignments and mentions |
-| **Description:** The system must provide a notification center accessible via header bell icon with unread badge counter, displaying an actionable list of direct task assignments and @mentions linking directly to target tasks. |
+| **ID:** R6.2 **Name:** Receive workspace alerts and daily task digests |
+| **Description:** The system must provide an in-app notification center for direct assignments and @mentions, and automatically dispatch a daily summary email digest listing upcoming and overdue tasks assigned to the user. |
 | **Requirement Origin:** User Attention Management & As-Is Pain Point 2.3 |
-| **Interfaces:** Authenticated User |
-| **Dependencies:**<br>• **Stakeholders:** Contributors<br>• **Data Sources:** User Notifications Table<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
-| **Identified Problems:** |
-| **Priority:** Must |
-
-##### R9.3 – Dispatch daily pending task summary digest via email
-
-| Requirement |
-|---|
-| **ID:** R9.3 **Name:** Dispatch daily pending task summary digest via email |
-| **Description:** The system must compile and dispatch an automated email digest at 08:00 daily to subscribed users, listing tasks assigned to them that are due on the current day or currently overdue. |
-| **Requirement Origin:** Daily Work Prioritization Needs & Productivity |
-| **Interfaces:** Registered User and Notification / Email Service |
-| **Dependencies:**<br>• **Stakeholders:** Project Managers, Contributors<br>• **Data Sources:** Task Scheduler Daemon<br>• **Extraction Periodicity:** daily<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Interfaces:** Authenticated User and Notification / Email Service |
+| **Dependencies:**<br>• **Stakeholders:** Contributors, Team Leads<br>• **Data Sources:** User Notifications Table, Scheduled Task Digest<br>• **Extraction Periodicity:** on demand / daily<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Should |
 
-#### R10 – Manage Commercial Subscriptions
+---
 
-##### R10.1 – Subscribe and upgrade plan tier via payment gateway
+#### R7 – Manage Commercial Subscriptions
+
+##### R7.1 – Subscribe and manage workspace commercial plans
 
 | Requirement |
 |---|
-| **ID:** R10.1 **Name:** Subscribe and upgrade plan tier via payment gateway |
-| **Description:** The system must allow the Workspace Owner to select a commercial plan tier (Pro or Enterprise) and initiate checkout, redirecting the browser to a secure hosted checkout session provided by the external payment gateway. |
-| **Requirement Origin:** Customer Subscription Needs & Customer Expectation EXP-05 |
+| **ID:** R7.1 **Name:** Subscribe and manage workspace commercial plans |
+| **Description:** The system must allow the Workspace Owner to select a commercial plan tier (Free, Pro, Enterprise) and complete checkout via the external payment gateway, automatically updating workspace plan status, renewal date, and authorized member seat quotas upon payment confirmation. |
+| **Requirement Origin:** Customer Subscription Needs & Commercial Policy |
 | **Interfaces:** Workspace Owner and External Payment Gateway |
-| **Dependencies:**<br>• **Stakeholders:** Executive Leadership, Business Customers<br>• **Data Sources:** Pricing Catalog<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** External Payment Gateway<br>• **Preceding Requirements:** |
+| **Dependencies:**<br>• **Stakeholders:** Executive Leadership, Business Customers<br>• **Data Sources:** Pricing Catalog, Payment Confirmation Event<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database, External Payment Gateway<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
-##### R10.2 – Ingest and process billing webhooks to update plan status
+##### R7.2 – Enforce operational grace period upon payment failure
 
 | Requirement |
 |---|
-| **ID:** R10.2 **Name:** Ingest and process billing webhooks to update plan status |
-| **Description:** The system must ingest and validate signed asynchronous webhooks sent by the external payment gateway upon completed payments, updating workspace plan status, seat limits, and renewal dates immediately. |
-| **Requirement Origin:** Commercial Automation Needs & Revenue Reconciliation |
-| **Interfaces:** External Payment Gateway and Platform Core |
-| **Dependencies:**<br>• **Stakeholders:** Finance & IT Operations<br>• **Data Sources:** Billing Webhook Payloads<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
-| **Identified Problems:** |
-| **Priority:** Must |
-
-##### R10.3 – Reconcile workspace member seat quotas upon payment success
-
-| Requirement |
-|---|
-| **ID:** R10.3 **Name:** Reconcile workspace member seat quotas upon payment success |
-| **Description:** The system must automatically adjust authorized workspace member quotas upon receiving payment confirmation, enabling the immediate invitation of additional team members up to the new tier limit. |
-| **Requirement Origin:** Capacity Allocation Needs |
-| **Interfaces:** Workspace Admin and Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** Workspace Admins<br>• **Data Sources:** Plan Tier Member Quota<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
-| **Identified Problems:** |
-| **Priority:** Must |
-
-##### R10.4 – Enforce grace period upon subscription payment failure
-
-| Requirement |
-|---|
-| **ID:** R10.4 **Name:** Enforce grace period upon subscription payment failure |
-| **Description:** The system must grant a 7-day operational grace period if an automated subscription renewal payment fails, maintaining normal workspace access while presenting payment update notices to the Workspace Owner. |
+| **ID:** R7.2 **Name:** Enforce operational grace period upon payment failure |
+| **Description:** The system must grant a 7-day operational grace period if an automated subscription renewal payment fails, maintaining normal workspace access while presenting payment update notices to the Workspace Owner before applying plan restrictions. |
 | **Requirement Origin:** Customer Retention & Business Continuity |
 | **Interfaces:** Workspace Owner and External Payment Gateway |
-| **Dependencies:**<br>• **Stakeholders:** Customers, Finance<br>• **Data Sources:** Payment Failure Notification<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Dependencies:**<br>• **Stakeholders:** Customers, Finance Operations<br>• **Data Sources:** Payment Status Notification<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
-#### R11 – Manage User Data and Close Accounts
+---
 
-##### R11.1 – Export personal user profile and task data in structured format
+#### R8 – Export Data and Close Accounts
+
+##### R8.1 – Export personal and workspace data archives
 
 | Requirement |
 |---|
-| **ID:** R11.1 **Name:** Export personal user profile and task data in structured format |
-| **Description:** The system must allow an authenticated user to request and download a structured data package containing their personal profile information, preferences, and tasks authored by their account. |
-| **Requirement Origin:** User Data Autonomy & Customer Expectation EXP-06 |
-| **Interfaces:** Authenticated User |
-| **Dependencies:**<br>• **Stakeholders:** End Users<br>• **Data Sources:** User Profile and Tasks Table<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **ID:** R8.1 **Name:** Export personal and workspace data archives |
+| **Description:** The system must allow authenticated users to download a structured export of their personal profile and authored tasks, and allow Workspace Owners to export a comprehensive archive of workspace projects, tasks, comments, and attachments. |
+| **Requirement Origin:** Data Portability Needs & Customer Expectation EXP-06 |
+| **Interfaces:** Authenticated User and Workspace Owner |
+| **Dependencies:**<br>• **Stakeholders:** End Users, Business Customers<br>• **Data Sources:** User Profile, Workspace Repositories<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database, File Storage Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
-##### R11.2 – Export full workspace repository archive
+##### R8.2 – Close user accounts and terminate workspace access
 
 | Requirement |
 |---|
-| **ID:** R11.2 **Name:** Export full workspace repository archive |
-| **Description:** The system must provide the Workspace Owner with a self-service workspace export option, generating a comprehensive compressed archive containing projects, tasks, comments, and attachments. |
-| **Requirement Origin:** Organization Data Portability & Customer Expectation EXP-06 |
-| **Interfaces:** Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** Business Customers, Management<br>• **Data Sources:** Workspace Data Tables and Files<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
-| **Identified Problems:** |
-| **Priority:** Must |
-
-##### R11.3 – Close user account
-
-| Requirement |
-|---|
-| **ID:** R11.3 **Name:** Close user account |
-| **Description:** The system must allow users to autonomously terminate their accounts, invalidating active credentials and sessions, ending active workspace memberships, and recording account closure status. |
+| **ID:** R8.2 **Name:** Close user accounts and terminate workspace access |
+| **Description:** The system must allow users to autonomously terminate their accounts, invalidating active credentials and sessions, ending active workspace memberships, and dispatching a formal confirmation receipt via email. |
 | **Requirement Origin:** Self-Service Account Termination & Customer Expectation EXP-06 |
-| **Interfaces:** Authenticated User |
-| **Dependencies:**<br>• **Stakeholders:** End Users, Workspace Admins<br>• **Data Sources:** User Profile Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
+| **Interfaces:** Authenticated User and Notification / Email Service |
+| **Dependencies:**<br>• **Stakeholders:** End Users, Workspace Admins<br>• **Data Sources:** User Profile Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database, Notification / Email Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
-
-##### R11.4 – Dispatch digital confirmation receipt upon account closure
-
-| Requirement |
-|---|
-| **ID:** R11.4 **Name:** Dispatch digital confirmation receipt upon account closure |
-| **Description:** The system must send a confirmation receipt via email immediately upon account termination, certifying the date and time when the account was permanently closed. |
-| **Requirement Origin:** User Verification & Customer Expectation EXP-06 |
-| **Interfaces:** Closed User Account and Notification / Email Service |
-| **Dependencies:**<br>• **Stakeholders:** End Users<br>• **Data Sources:** Deactivation Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Notification / Email Service<br>• **Preceding Requirements:** |
-| **Identified Problems:** |
-| **Priority:** Should |
 
 ---
 
@@ -727,7 +503,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 
 The non-functional requirements define the platform's performance, availability, and usability targets:
 
-*Table 11. List of non-functional requirements*
+*Table 7. List of non-functional requirements*
 
 | ID | Requirement | Priority | Type |
 |---|---|---|---|
@@ -746,135 +522,91 @@ The non-functional requirements define the platform's performance, availability,
 
 The Product Use Cases (*PUC*) delineate the functional boundary of TinyTask SaaS, mapping input payloads, processing boundaries, and output deliverables:
 
-*Table 12. Summary table of Product Use Cases (PUC)*
+*Table 8. Summary table of Product Use Cases (PUC)*
 
-| PUC | PUC Name | Actors / Users | Input and Output |
-|---|---|---|---|
-| **1.1** | Register and Activate User Account | Unauthenticated User, Notification / Email Service | **(in)** Full name, email, password<br>**(out)** Verification email with activation link |
-| **1.2** | Authenticate User and Issue Session | Registered User | **(in)** Email and password credentials<br>**(out)** Active session and authorized workspace list |
-| **1.3** | Recover User Password via Reset Link | Registered User, Notification / Email Service | **(in)** User registered email address<br>**(out)** Password reset email with secure token |
-| **2.1** | Create Organization Workspace | Workspace Owner | **(in)** Workspace name and URL slug<br>**(out)** Instantiated workspace with creator as Owner |
-| **2.2** | Invite and Manage Workspace Members | Workspace Admin, Workspace Owner, Notification / Email Service | **(in)** Invitee email and assigned role (Admin, Member, Viewer)<br>**(out)** Invitation email and member added to roster |
-| **2.3** | Configure Workspace Profile Settings | Workspace Admin, Workspace Owner | **(in)** Updated workspace name and logo image (up to 2 MB)<br>**(out)** Updated workspace branding across client views |
-| **3.1** | Create and Configure New Project | Workspace Admin, Workspace Member | **(in)** Project title, scope description, visibility setting<br>**(out)** Initialized project accessible in navigation menu |
-| **3.2** | Archive Completed Project | Workspace Admin, Workspace Owner | **(in)** Selection of target project to archive<br>**(out)** Read-only project hidden from operational views |
-| **4.1** | Create and Assign Project Task | Workspace Member, Workspace Admin | **(in)** Title, description, priority, due date, assignee<br>**(out)** New task card in "To-Do" and assignee notification |
-| **4.2** | Track and Transition Task Workflow States | Workspace Member, Workspace Admin | **(in)** Transition card to target status column<br>**(out)** Updated task status and audit history event |
-| **4.3** | Search and Filter Tasks | All Users | **(in)** Search terms and filter criteria (assignee, priority, status)<br>**(out)** Filtered board and table views updated in real-time |
-| **5.1** | Attach Deliverable Files to Task Card | Workspace Member, Workspace Admin | **(in)** File selection (up to 25 MB size cap)<br>**(out)** Uploaded file linked to task attachment gallery |
-| **5.2** | Download and Remove Task Attachments | Workspace Member, Workspace Admin, Workspace Viewer | **(in)** Download or delete command for specified file<br>**(out)** File transferred to client or purged from attachment gallery |
-| **6.1** | Post Threaded Comments and Mention Collaborators | Workspace Member, Workspace Admin | **(in)** Markdown comment text with user mentions (@user)<br>**(out)** Comment posted and notifications delivered to tagged users |
-| **6.2** | Consult In-App Notification Center | Authenticated User | **(in)** Access user notification drawer<br>**(out)** Chronological list of unread mentions and task assignments |
-| **7.1** | Subscribe and Upgrade Commercial Plan | Workspace Owner, External Payment Gateway | **(in)** Selected plan tier (Pro/Enterprise) and billing info<br>**(out)** Payment confirmation and updated workspace quotas |
-| **7.2** | Process Billing Webhooks and Reconcile Quotas | External Payment Gateway, Platform Core | **(in)** Asynchronous webhook notification with payment event<br>**(out)** Reconciled plan tier and member quotas in database |
-| **8.1** | Export Personal and Workspace Data | Authenticated User, Workspace Owner | **(in)** Data export request (personal format or workspace archive)<br>**(out)** Downloadable archive package generated for client |
-| **8.2** | Close User Account | Authenticated User, Notification / Email Service | **(in)** Autonomous account closure confirmation<br>**(out)** Credentials invalidated, membership ended, receipt dispatched |
+| PUC ID | Business Trigger | Primary Actor | System Operational Boundary | Deliverables & Outputs |
+|---|---|---|---|---|
+| **PUC 1.1** | User registers or requests access | Visitor / User | Validate credentials, verify email, or issue password reset link | Active user session or email link |
+| **PUC 1.2** | User updates profile details | Registered User | Record updated personal details and preferences | Updated profile confirmation |
+| **PUC 2.1** | User instantiates a team workspace | Workspace Owner | Provision workspace container and assign Owner role | Initialized workspace environment |
+| **PUC 2.2** | Admin manages member roster | Workspace Admin | Dispatch invitations, assign roles, or revoke access | Updated membership roster |
+| **PUC 2.3** | Leadership requests usage metrics | Workspace Admin | Aggregate member counts, completed tasks, and storage usage | Operational metrics dashboard |
+| **PUC 3.1** | Team initializes new project | Workspace Member | Create project container with description and visibility | Project workspace board |
+| **PUC 3.2** | Team completes project lifecycle | Workspace Admin | Transition project to read-only archive status | Archived project record |
+| **PUC 4.1** | Team member authors new work item | Workspace Member | Store task with title, priority, due date, and assignees | New task card in "To-Do" |
+| **PUC 4.2** | Member transitions task or filters board | Workspace Member | Update status state, record history, and filter view | Board state update |
+| **PUC 4.3** | Recurring task is completed | Automated Daemon | Duplicate task instance into "To-Do" on configured schedule | Next recurring task instance |
+| **PUC 5.1** | Member attaches deliverable file | Workspace Member | Upload file, generate preview, and link to task | Stored attachment record |
+| **PUC 5.2** | Member comments on work item | Workspace Member | Store Markdown comment and notify mentioned users | In-thread comment and alerts |
+| **PUC 6.1** | User reviews task history | Workspace Member | Query chronological audit logs for task modifications | Rendered audit timeline |
+| **PUC 6.2** | User consults alerts or daily digest | Registered User | Present in-app alerts and dispatch morning email digest | Notification feed & daily digest |
+| **PUC 7.1** | Owner upgrades commercial tier | Workspace Owner | Process checkout and adjust member seat quotas | Updated subscription status |
+| **PUC 7.2** | Automated renewal charge fails | Payment Gateway | Initiate 7-day grace period and notify Owner | Grace period notice |
+| **PUC 8.1** | User or Owner requests data export | User / Owner | Compile structured profile or workspace data archive | Downloadable data archive |
+| **PUC 8.2** | User requests account closure | Registered User | Deactivate credentials, cancel memberships, and send receipt | Account termination receipt |
 
 ---
 
 ### 4. System Use Case Model
 
-The use case model formalizes interactions between system actors and the TinyTask platform. Refinement stops strictly at **Level 1**, omitting procedural execution steps and leaf nodes:
-
-#### 4.1 Level-0 System Use Case Diagram
+The following diagram illustrates the primary system actors and functional capability clusters:
 
 ```mermaid
 flowchart LR
-    subgraph Actors["System Actors"]
-        U_Anon["Unauthenticated User"]
-        U_Member["Workspace Member"]
-        U_Admin["Workspace Admin"]
-        U_Owner["Workspace Owner"]
-        S_Pay["Payment Gateway"]
-        S_Email["Email Service"]
+    Visitor["Unauthenticated Visitor"]
+    Member["Workspace Member"]
+    Admin["Workspace Admin"]
+    Owner["Workspace Owner"]
+    Gateway["External Payment Gateway"]
+    Notify["Notification / Email Service"]
+
+    subgraph TinyTask_SaaS["TinyTask SaaS Platform"]
+        R1["Manage User Accounts & Authentication (R1)"]
+        R2["Manage Workspaces & Teams (R2)"]
+        R3["Manage Projects (R3)"]
+        R4["Manage & Execute Tasks (R4)"]
+        R5["Collaborate on Task Deliverables (R5)"]
+        R6["Track Activity History & Notifications (R6)"]
+        R7["Manage Commercial Subscriptions (R7)"]
+        R8["Export Data & Close Accounts (R8)"]
     end
 
-    subgraph System["TinyTask SaaS Platform (Level 0)"]
-        UC1["{U.C. 1} Authenticate into the System"]
-        UC2["{U.C. 2} Manage Workspaces and Teams"]
-        UC3["{U.C. 3} Manage Projects"]
-        UC4["{U.C. 4} Manage and Execute Tasks"]
-        UC5["{U.C. 5} Manage Task Attachments"]
-        UC6["{U.C. 6} Collaborate and Notify"]
-        UC7["{U.C. 7} Manage Commercial Subscriptions"]
-        UC8["{U.C. 8} Manage User Data and Close Accounts"]
-    end
+    Visitor --> R1
+    Member --> R1
+    Member --> R3
+    Member --> R4
+    Member --> R5
+    Member --> R6
+    Member --> R8
+    Admin --> R2
+    Admin --> R3
+    Admin --> R4
+    Owner --> R2
+    Owner --> R7
+    Owner --> R8
 
-    U_Anon --> UC1
-    U_Member --> UC1
-    U_Member --> UC3
-    U_Member --> UC4
-    U_Member --> UC5
-    U_Member --> UC6
-    U_Member --> UC8
-
-    U_Admin --> UC2
-    U_Admin --> UC3
-    U_Admin --> UC4
-    U_Admin --> UC5
-    U_Admin --> UC6
-
-    U_Owner --> UC2
-    U_Owner --> UC7
-    U_Owner --> UC8
-
-    UC1 --> S_Email
-    UC2 --> S_Email
-    UC6 --> S_Email
-    UC7 <--> S_Pay
+    R1 -.-> Notify
+    R4 -.-> Notify
+    R5 -.-> Notify
+    R6 -.-> Notify
+    R7 <--> Gateway
 ```
-
-#### 4.2 Level-1 System Use Cases
-
-##### {U.C. 1} Authenticate into the System
-- **{U.C. 1.1} Register New Account:** Collects new user registration details and dispatches confirmation email with account activation link.
-- **{U.C. 1.2} Authenticate User Credentials:** Validates login credentials, issues authenticated session, and loads authorized workspace list.
-- **{U.C. 1.3} Recover Account Credentials:** Processes forgotten password requests by generating and emailing a secure, time-limited reset link.
-
-##### {U.C. 2} Manage Workspaces and Teams
-- **{U.C. 2.1} Create Workspace:** Instantiates a new multi-tenant organization environment and assigns the creator as Workspace Owner.
-- **{U.C. 2.2} Invite and Manage Members:** Dispatches email invitations, modifies member role assignments, and revokes workspace access.
-- **{U.C. 2.3} Configure Workspace Profile:** Updates organization display name, uploads custom logo graphic, and inspects plan tier quotas.
-
-##### {U.C. 3} Manage Projects
-- **{U.C. 3.1} Create and Configure Project:** Creates new project containers, specifying project name, scope description, and internal visibility.
-- **{U.C. 3.2} Archive Project:** Moves completed projects to historical archive mode, locking tasks and comments into read-only state.
-
-##### {U.C. 4} Manage and Execute Tasks
-- **{U.C. 4.1} Create and Assign Task:** Records new task items, sets priority ratings, assigns team contributors, and specifies due dates.
-- **{U.C. 4.2} Track and Transition Task Workflow States:** Enables visual tracking and movement of tasks across To-Do, In-Progress, Under-Review, and Done columns.
-- **{U.C. 4.3} Search and Filter Tasks:** Applies real-time multi-criteria filtering across project boards and tabular task views.
-
-##### {U.C. 5} Manage Task Attachments
-- **{U.C. 5.1} Attach Deliverable Files to Task Card:** Allows uploading deliverable documents and graphics (up to 25 MB) directly to task cards.
-- **{U.C. 5.2} Download and Remove Task Attachments:** Enables authorized users to download attached files and permits file deletion by uploaders or admins.
-
-##### {U.C. 6} Collaborate and Notify
-- **{U.C. 6.1} Post Threaded Comments and Mention Collaborators:** Supports contextual Markdown discussion inside task cards, triggering alerts via user mentions.
-- **{U.C. 6.2} Consult Notification Center:** Displays in-app unread alerts and dispatches daily pending task digests via email.
-
-##### {U.C. 7} Manage Commercial Subscriptions
-- **{U.C. 7.1} Subscribe and Upgrade Plan:** Enables Workspace Owners to select commercial tiers and complete checkout via external payment gateway.
-- **{U.C. 7.2} Process Billing Webhooks and Reconcile Quotas:** Ingests payment gateway webhooks and updates workspace member seat quotas.
-
-##### {U.C. 8} Manage User Data and Close Accounts
-- **{U.C. 8.1} Export Personal and Workspace Data:** Generates downloadable archives for user profiles and complete packages for workspaces.
-- **{U.C. 8.2} Close User Account:** Executes autonomous account closure, invalidating credentials, ending memberships, and dispatching receipts.
 
 ---
 
 ## Bibliography
 
-1. Robertson, S., & Robertson, J. (2012). *Mastering the Requirements Process: Getting Requirements Right* (3rd ed.). Addison-Wesley Professional.
-2. Cockburn, A. (2000). *Writing Effective Use Cases*. Addison-Wesley Professional.
-3. Leffingwell, D., & Widrig, D. (2003). *Managing Software Requirements: A Use Case Approach* (2nd ed.). Addison-Wesley Professional.
-4. Wiegers, K., & Beatty, J. (2013). *Software Requirements* (3rd ed.). Microsoft Press.
-5. Project Management Institute. (2021). *A Guide to the Project Management Body of Knowledge (PMBOK Guide)* (7th ed.). Project Management Institute.
+- Robertson, S., & Robertson, J. (2012). *Mastering the Requirements Process: Getting Requirements Right* (3rd ed.). Addison-Wesley Professional.
+- Cockburn, A. (2000). *Writing Effective Use Cases*. Addison-Wesley Professional.
+- Wiegers, K., & Beatty, J. (2013). *Software Requirements* (3rd ed.). Microsoft Press.
+- Leffingwell, D., & Widrig, D. (2003). *Managing Software Requirements: A Use Case Approach* (2nd ed.). Addison-Wesley Professional.
 
 ---
 
 ## Version History
 
-| Version | Date | Author | Modification Notes |
+| Version | Date | Author | Description of Changes |
 |---|---|---|---|
-| **1.0.0** | 2026-09-23 | AEGIS Technical Team | Initial baseline release of TinyTask SaaS AS-IS and TO-BE model matching GPTools E1.1 deliverable structure, table formats, and active action verb phrasing. |
+| **1.0.0** | 2026-09-23 | Requirements Engineering Agent | Initial baseline elicitation (GPTools E1.1 structural model). |
+| **2.0.0** | 2026-09-23 | Requirements Engineering Agent | Purified functional scope, removed pre-baked security controls, enforced English active verbs. |
+| **2.1.0** | 2026-09-23 | Requirements Engineering Agent | Consolidated redundant requirements into 16 pure business capabilities at Cockburn Sea Level. |

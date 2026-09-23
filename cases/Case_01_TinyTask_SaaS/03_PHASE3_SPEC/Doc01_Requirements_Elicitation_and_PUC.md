@@ -79,7 +79,7 @@ The platform's functional baseline is structured into core operational capabilit
 
 - **Multi-Tenant Workspaces:** Complete logical isolation across organizations, supporting dedicated member rosters and role-based access control.
 - **Visual Task Management:** Interactive Kanban boards (To-Do, In-Progress, Under-Review, Done) and tabular lists with multi-criteria dynamic filtering.
-- **Contextual In-Task Collaboration:** Rich Markdown discussion threads directly embedded within task cards, supporting user mentions (@user) to trigger instant alerts.
+- **Contextual In-Task Collaboration:** Rich Markdown discussion threads directly embedded within task cards, supporting user mentions to trigger instant alerts.
 - **Integrated Attachment Management:** Upload, preview, download, and delete deliverable files directly linked to task contexts.
 - **Commercial Subscription Management:** Seamless self-service billing integration via external payment gateway to manage Free, Pro, and Enterprise plan tiers.
 - **User Data Portability:** Self-service personal data export, workspace-level archive downloads, and autonomous account closure workflows.
@@ -115,7 +115,7 @@ The application defines four distinct user roles:
 The baseline product design operates under the following business and operational constraints:
 
 - **Development Team Capacity:** The technical organization consists of 8 persons, requiring architectural simplicity, high modularity, and rapid maintainability.
-- **Payment Card Processing:** The application does not collect, process, or store raw credit card details, delegating payment processing and PCI compliance to Stripe.
+- **Payment Processing:** The application delegates payment collection and billing transactions to an external payment gateway, avoiding local handling of credit card data.
 - **Technology Neutrality:** This document defines pure functional capabilities from the user's perspective, without pre-baking technical security controls, which will be formally synthesized in subsequent AEGIS phases.
 
 ---
@@ -210,9 +210,9 @@ Customer subscription plans and billing statuses are tracked manually in an acco
 ### 3. IT Support
 
 In the As-Is baseline, operational tools are fragmented and unintegrated:
-- **Shared Spreadsheets (Excel / Google Sheets):** Used for task lists and budgets, suffering from version conflicts, concurrent overwrite errors, and accidental formula corruption.
-- **Instant Messaging (Slack / WhatsApp):** Used for day-to-day discussion, leading to critical decisions getting buried in unsearchable chat histories.
-- **Decentralized Cloud Drives (Dropbox / Google Drive):** Used for file storage, lacking contextual links to specific task deliverables or approval histories.
+- **Shared Spreadsheets:** Used for task lists and budgets, suffering from version conflicts, concurrent overwrite errors, and accidental formula corruption.
+- **Instant Messaging Applications:** Used for day-to-day discussion, leading to critical decisions getting buried in unsearchable chat histories.
+- **Decentralized Cloud Drives:** Used for file storage, lacking contextual links to specific task deliverables or approval histories.
 
 ---
 
@@ -247,7 +247,7 @@ The following table formally defines the actors interacting with the system in t
 | **Workspace Admin** | Operational workspace manager. Invites members, modifies roles, configures organization profile settings, and initializes new projects. |
 | **Workspace Member** | Standard collaborative contributor. Creates, edits, and transitions tasks; uploads attachments; posts comments; and manages profile settings. |
 | **Workspace Viewer** | External guest or client granted read-only visibility into authorized projects and task lists. |
-| **Payment Gateway (Stripe)** | External payment processing engine responsible for handling card data, executing billing charges, and dispatching signed asynchronous webhooks. |
+| **External Payment Gateway** | External payment processing engine responsible for handling payment sessions, executing billing charges, and dispatching signed asynchronous webhooks. |
 | **Notification / Email Service** | Internal subsystem responsible for dispatching verification emails, assignment notifications, and daily pending task digests. |
 
 #### 2.2 Functional Requirements
@@ -265,60 +265,57 @@ Functional requirements are prioritized using the MoSCoW methodology:
 
 | ID | ID | Requirement | Priority | Restrictions |
 |---|---|---|---|---|
-| **R1** | | **Manage User Accounts and Identity** | **MUST** | Registration, login, password recovery, session review, and role enforcement. |
-| | R1.1 | Register user account with email verification | MUST | Email address must be unique across the platform. |
-| | R1.2 | Authenticate user credentials and issue active session | MUST | Returns authorized workspace list upon successful login. |
-| | R1.3 | Recover user credentials via email reset link | MUST | Single-use token with time-bound expiration. |
-| | R1.4 | Enforce role-based access control (RBAC) | MUST | Roles: Owner, Admin, Member, Viewer per workspace. |
-| | R1.5 | Review and terminate active user sessions | SHOULD | View remote sessions with remote logout option. |
-| | R1.6 | Support two-factor authentication (2FA / TOTP) | COULD | Optional six-digit authenticator code. |
-| | R1.7 | Support enterprise single sign-on (SSO SAML / OIDC) | WON'T | Out of scope for micro-SaaS initial release. |
-| **R2** | | **Manage Workspaces and Teams** | **MUST** | Workspace instantiation, member roster management, and organization settings. |
-| | R2.1 | Create workspace and assign creator as Workspace Owner | MUST | Unique workspace name and url slug. |
-| | R2.2 | Invite workspace members via email | MUST | Enforces member quota limits of active plan tier. |
-| | R2.3 | Modify member roles and revoke workspace membership | MUST | Admins cannot demote or remove Workspace Owner. |
-| | R2.4 | Configure workspace profile (name, logo) | SHOULD | Image upload capped at 2 MB. |
-| | R2.5 | Monitor workspace activity and member metrics | COULD | Displays active collaborator counts for the month. |
-| | R2.6 | Configure custom granular permission matrices | WON'T | Out of scope; restricted to 4 canonical roles. |
-| **R3** | | **Manage Projects** | **MUST** | Project creation, configuration, and archiving within workspaces. |
-| | R3.1 | Create project with title, description, and visibility | MUST | Project strictly belongs to a single workspace. |
-| | R3.2 | Archive completed project to read-only state | SHOULD | Blocks new tasks and comments in archived projects. |
-| **R4** | | **Create and Assign Tasks** | **MUST** | Task definition, due date scheduling, priority rating, and team attribution. |
-| | R4.1 | Create task with title, description, priority, and due date | MUST | Title mandatory; default initial state is "To-Do". |
-| | R4.2 | Assign task to active workspace members | MUST | Restricts assignment to members of the workspace. |
-| | R4.3 | Display visual priority badges (Low, Medium, High, Urgent) | SHOULD | Default priority rating is "Medium". |
-| **R5** | | **Manage Task States and Kanban Boards** | **MUST** | Visual status progression and interactive board manipulation. |
-| | R5.1 | Transition task states across To-Do, In-Progress, Under-Review, Done | MUST | Logs state transition author and timestamp in task history. |
-| | R5.2 | Update task state via interactive drag-and-drop Kanban board | MUST | Immediate visual column update upon card drag. |
-| | R5.3 | Clone recurring tasks automatically upon completion | COULD | Supports weekly or monthly auto-cloning. |
-| **R6** | | **Search and Filter Tasks** | **MUST** | Dynamic task retrieval across project boards. |
-| | R6.1 | Filter tasks dynamically by status, assignee, priority, and date | MUST | Updates board and table views without full page reload. |
-| | R6.2 | Visualize timeline dependencies via Gantt chart | WON'T | Out of scope for micro-SaaS initial release. |
-| **R7** | | **Upload and Manage Task Attachments** | **MUST** | File attachment management for project deliverables. |
-| | R7.1 | Upload deliverable file to task with 25 MB size cap | MUST | Maximum file size limit of 25 MB per attachment. |
-| | R7.2 | Support common document and image file formats | MUST | Supported formats: PDF, DOCX, XLSX, PNG, JPG. |
-| **R8** | | **Access and Delete Task Attachments** | **MUST** | Secure file retrieval and removal from task cards. |
-| | R8.1 | Download task attachment by authorized workspace members | MUST | Access restricted to members with project view rights. |
-| | R8.2 | Delete task attachment by uploader or administrator | MUST | Restricted to original uploader or Workspace Admin. |
-| | R8.3 | Display inline image thumbnail previews on task cards | COULD | Compact thumbnail preview in task detail modal. |
-| **R9** | | **Collaborate via In-Task Comments** | **MUST** | Contextual discussions, Markdown formatting, and user mentions. |
-| | R9.1 | Post threaded Markdown comments on task cards | MUST | Blocks comment posting on archived projects. |
-| | R9.2 | Mention collaborators (@user) to trigger notifications | MUST | Dispatches notification alerts to mentioned members. |
-| | R9.3 | Stream comments in real-time via WebSockets | COULD | Displays new comments dynamically without page reload. |
-| **R10** | | **Track Activity History and Alerts** | **MUST** | Audit history tracking and user notification management. |
-| | R10.1 | Record chronological activity history on task cards | MUST | Logs author, timestamp, and field changes. |
-| | R10.2 | Consult in-app notification center for assignments and mentions | MUST | Bell icon with unread badge counter in header. |
-| | R10.3 | Dispatch daily pending task summary digest via email | SHOULD | Aggregated email sent daily at 08:00 to subscribers. |
-| **R11** | | **Manage Commercial Subscriptions** | **MUST** | Plan tier management and automated quota updates via Stripe. |
-| | R11.1 | Subscribe and upgrade plan tier via Stripe Checkout | MUST | Redirects to hosted Stripe Checkout payment session. |
-| | R11.2 | Ingest and process billing webhooks to update plan status | MUST | Processes Stripe payment and cancellation webhooks. |
-| | R11.3 | Reconcile workspace member seat quotas upon payment success | MUST | Updates workspace member limits immediately. |
-| | R11.4 | Enforce 7-day grace period upon subscription payment failure | MUST | Maintains team access with warning banner during grace. |
-| **R12** | | **Manage User Data and Close Accounts** | **MUST** | Self-service data export and account closure workflows. |
-| | R12.1 | Export personal user profile and task data in JSON format | MUST | Downloadable structured JSON archive for the user. |
-| | R12.2 | Export full workspace repository archive in ZIP format | MUST | Exclusive to Workspace Owner. |
-| | R12.3 | Deactivate user account and anonymize display name | MUST | Replaces user name with "[Deleted User]" on tasks. |
-| | R12.4 | Dispatch digital confirmation receipt upon account closure | SHOULD | Automated confirmation email with closure timestamp. |
+| **R1** | | **Manage User Accounts and Identity** | **MUST** | |
+| | R1.1 | Register user account with email verification | MUST | Unique email |
+| | R1.2 | Authenticate user credentials and issue active session | MUST | |
+| | R1.3 | Recover user credentials via email reset link | MUST | |
+| | R1.4 | Enforce role-based access control (RBAC) | MUST | |
+| | R1.5 | Review and terminate active user sessions | SHOULD | |
+| | R1.6 | Support two-factor authentication (2FA / TOTP) | COULD | |
+| **R2** | | **Manage Workspaces and Teams** | **MUST** | |
+| | R2.1 | Create workspace and assign creator as Workspace Owner | MUST | |
+| | R2.2 | Invite workspace members via email | MUST | Seat quota |
+| | R2.3 | Modify member roles and revoke workspace membership | MUST | |
+| | R2.4 | Configure workspace profile (name, logo) | SHOULD | |
+| | R2.5 | Monitor workspace activity and member metrics | COULD | |
+| **R3** | | **Manage Projects** | **MUST** | |
+| | R3.1 | Create project with title, description, and visibility | MUST | |
+| | R3.2 | Archive completed project to read-only state | SHOULD | |
+| **R4** | | **Create and Assign Tasks** | **MUST** | |
+| | R4.1 | Create task with title, description, priority, and due date | MUST | |
+| | R4.2 | Assign task to active workspace members | MUST | |
+| | R4.3 | Display visual priority badges (Low, Medium, High, Urgent) | SHOULD | |
+| **R5** | | **Manage Task States and Kanban Boards** | **MUST** | |
+| | R5.1 | Transition task states across To-Do, In-Progress, Under-Review, Done | MUST | |
+| | R5.2 | Update task state via interactive drag-and-drop Kanban board | MUST | |
+| | R5.3 | Clone recurring tasks automatically upon completion | COULD | |
+| **R6** | | **Search and Filter Tasks** | **MUST** | |
+| | R6.1 | Filter tasks dynamically by status, assignee, priority, and date | MUST | |
+| **R7** | | **Upload and Manage Task Attachments** | **MUST** | |
+| | R7.1 | Upload deliverable file to task with 25 MB size cap | MUST | 25 MB cap |
+| | R7.2 | Support common document and image file formats | MUST | |
+| **R8** | | **Access and Delete Task Attachments** | **MUST** | |
+| | R8.1 | Download task attachment by authorized workspace members | MUST | |
+| | R8.2 | Delete task attachment by uploader or administrator | MUST | |
+| | R8.3 | Display inline image thumbnail previews on task cards | COULD | |
+| **R9** | | **Collaborate via In-Task Comments** | **MUST** | |
+| | R9.1 | Post threaded Markdown comments on task cards | MUST | |
+| | R9.2 | Mention collaborators to trigger notifications | MUST | |
+| | R9.3 | Stream comments in real-time | COULD | |
+| **R10** | | **Track Activity History and Alerts** | **MUST** | |
+| | R10.1 | Record chronological activity history on task cards | MUST | |
+| | R10.2 | Consult in-app notification center for assignments and mentions | MUST | |
+| | R10.3 | Dispatch daily pending task summary digest via email | SHOULD | |
+| **R11** | | **Manage Commercial Subscriptions** | **MUST** | |
+| | R11.1 | Subscribe and upgrade plan tier via payment gateway | MUST | |
+| | R11.2 | Ingest and process billing webhooks to update plan status | MUST | |
+| | R11.3 | Reconcile workspace member seat quotas upon payment success | MUST | |
+| | R11.4 | Enforce grace period upon subscription payment failure | MUST | |
+| **R12** | | **Manage User Data and Close Accounts** | **MUST** | |
+| | R12.1 | Export personal user profile and task data in structured format | MUST | |
+| | R12.2 | Export full workspace repository archive | MUST | |
+| | R12.3 | Deactivate user account and anonymize display name | MUST | |
+| | R12.4 | Dispatch digital confirmation receipt upon account closure | SHOULD | |
 
 ---
 
@@ -335,8 +332,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R1.1 **Name:** Register user account with email verification |
 | **Description:** The system must allow new users to register an account by submitting their full name, email address, and password, automatically dispatching a confirmation email containing a verification link to activate the account. |
 | **Requirement Origin:** TinyTask SaaS / Identity Management |
-| **Interfaces:** Unauthenticated User and Email / Notification Service |
-| **Dependencies:**<br>• **Stakeholders:** Executive Leadership, Team Contributors<br>• **Data Sources:** User Registration Form<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** None |
+| **Interfaces:** Unauthenticated User and Notification / Email Service |
+| **Dependencies:**<br>• **Stakeholders:** Executive Leadership, Team Contributors<br>• **Data Sources:** User Registration Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -348,7 +345,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must validate the email address and password provided by the user, issuing an authenticated session and returning the list of workspaces authorized for that account. |
 | **Requirement Origin:** TinyTask SaaS / Identity Management |
 | **Interfaces:** Registered User |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Workspace Admins<br>• **Data Sources:** Login Form<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R1.1 |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Workspace Admins<br>• **Data Sources:** Login Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -359,8 +356,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R1.3 **Name:** Recover user credentials via email reset link |
 | **Description:** The system must provide a self-service password recovery mechanism where users submit their registered email address to receive a secure, single-use, time-limited password reset link. |
 | **Requirement Origin:** TinyTask SaaS / Identity Management |
-| **Interfaces:** Registered User and Email / Notification Service |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Password Recovery Form<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R1.1 |
+| **Interfaces:** Registered User and Notification / Email Service |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Password Recovery Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -372,7 +369,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must enforce authorization checks across four standard roles (Owner, Admin, Member, Viewer) scoped per workspace, ensuring that operations are executed only by users with appropriate role permissions. |
 | **Requirement Origin:** TinyTask SaaS / Identity Management |
 | **Interfaces:** All Platform Users |
-| **Dependencies:**<br>• **Stakeholders:** Workspace Admins, Executive Leadership<br>• **Data Sources:** Workspace Membership Table<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R1.2 |
+| **Dependencies:**<br>• **Stakeholders:** Workspace Admins, Executive Leadership<br>• **Data Sources:** Workspace Membership Table<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -384,7 +381,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow users to view their active sessions across different devices and browsers, providing the option to remotely terminate any specific session or all other sessions. |
 | **Requirement Origin:** TinyTask SaaS / User Security and Usability |
 | **Interfaces:** Registered User |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Active Sessions Table<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R1.2 |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Active Sessions Table<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Should |
 
@@ -393,10 +390,10 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | Requirement |
 |---|
 | **ID:** R1.6 **Name:** Support two-factor authentication (2FA / TOTP) |
-| **Description:** The system must optionally allow users to enable two-factor authentication, requiring a time-based one-time six-digit passcode generated by a mobile authenticator app during login. |
+| **Description:** The system must optionally allow users to enable two-factor authentication, requiring a time-based one-time six-digit passcode generated by an authenticator application during login. |
 | **Requirement Origin:** TinyTask SaaS / Identity Management |
 | **Interfaces:** Registered User |
-| **Dependencies:**<br>• **Stakeholders:** Workspace Admins, Team Contributors<br>• **Data Sources:** Mobile Authenticator App<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R1.2 |
+| **Dependencies:**<br>• **Stakeholders:** Workspace Admins, Team Contributors<br>• **Data Sources:** Authenticator Application<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Could |
 
@@ -410,7 +407,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow any authenticated user to create a new workspace by providing a unique name and URL slug, automatically assigning the creator as the irrevocable Workspace Owner. |
 | **Requirement Origin:** TinyTask SaaS / Administration |
 | **Interfaces:** Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** Platform Founders, Business Customers<br>• **Data Sources:** Workspace Creation Form<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R1.2 |
+| **Dependencies:**<br>• **Stakeholders:** Platform Founders, Business Customers<br>• **Data Sources:** Workspace Creation Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -421,8 +418,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R2.2 **Name:** Invite workspace members via email |
 | **Description:** The system must allow Workspace Admins and Owners to invite new collaborators via email with a designated initial role, verifying that the workspace member seat quota is not exceeded. |
 | **Requirement Origin:** TinyTask SaaS / Team Management |
-| **Interfaces:** Workspace Admin, Workspace Owner, and Email Service |
-| **Dependencies:**<br>• **Stakeholders:** Team Leads, Project Managers<br>• **Data Sources:** Member Invitation Form<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R2.1 |
+| **Interfaces:** Workspace Admin, Workspace Owner, and Notification / Email Service |
+| **Dependencies:**<br>• **Stakeholders:** Team Leads, Project Managers<br>• **Data Sources:** Member Invitation Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -434,7 +431,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow administrators to update the role of an existing member (between Admin, Member, and Viewer) or remove the member from the workspace, strictly preventing other members from demoting or revoking the Workspace Owner. |
 | **Requirement Origin:** TinyTask SaaS / Team Management |
 | **Interfaces:** Workspace Admin and Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** Workspace Admins<br>• **Data Sources:** Workspace Member Roster<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R2.2 |
+| **Dependencies:**<br>• **Stakeholders:** Workspace Admins<br>• **Data Sources:** Workspace Member Roster<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -446,7 +443,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow uploading a custom organization logo (image file up to 2 MB) and updating the workspace display name for visual alignment with organizational branding. |
 | **Requirement Origin:** TinyTask SaaS / Branding |
 | **Interfaces:** Workspace Admin and Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** Business Customers<br>• **Data Sources:** Workspace Settings Form<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** Object Storage / Database<br>• **Preceding Requirements:** R2.1 |
+| **Dependencies:**<br>• **Stakeholders:** Business Customers<br>• **Data Sources:** Workspace Settings Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** File Storage Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Should |
 
@@ -458,7 +455,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must provide an overview dashboard displaying aggregated workspace metrics, including total active members, tasks completed in the current month, and total file storage used. |
 | **Requirement Origin:** TinyTask SaaS / Team Management |
 | **Interfaces:** Workspace Admin and Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** Team Leads, Executives<br>• **Data Sources:** Workspace Activity Logs<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R2.1 |
+| **Dependencies:**<br>• **Stakeholders:** Team Leads, Executives<br>• **Data Sources:** Workspace Activity Logs<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Could |
 
@@ -472,7 +469,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow creating projects within a workspace, specifying title, scope description, and visibility level (public to all workspace members or restricted to selected contributors). |
 | **Requirement Origin:** TinyTask SaaS / Project Management |
 | **Interfaces:** Workspace Admin and Workspace Member |
-| **Dependencies:**<br>• **Stakeholders:** Project Managers, Team Contributors<br>• **Data Sources:** Project Creation Form<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R2.1 |
+| **Dependencies:**<br>• **Stakeholders:** Project Managers, Team Contributors<br>• **Data Sources:** Project Creation Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -484,7 +481,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow archiving completed projects, rendering all contained tasks and comments read-only and hiding the project from daily operational project lists while preserving historical data. |
 | **Requirement Origin:** TinyTask SaaS / Project Management |
 | **Interfaces:** Workspace Admin and Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** Project Managers<br>• **Data Sources:** Project Settings Form<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R3.1 |
+| **Dependencies:**<br>• **Stakeholders:** Project Managers<br>• **Data Sources:** Project Settings Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Should |
 
@@ -498,7 +495,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must enable rapid task creation within a project, requiring a mandatory title and allowing optional detailed description, target due date, and initial priority level. |
 | **Requirement Origin:** TinyTask SaaS / Task Management |
 | **Interfaces:** Workspace Member, Workspace Admin, and Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Project Managers<br>• **Data Sources:** Task Creation Form<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R3.1 |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Project Managers<br>• **Data Sources:** Task Creation Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -510,7 +507,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow assigning execution responsibility for a task to one or more active workspace members, instantly notifying the assigned contributors. |
 | **Requirement Origin:** TinyTask SaaS / Task Management |
 | **Interfaces:** Workspace Member, Workspace Admin |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Team Leads<br>• **Data Sources:** Workspace Member Picker<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R4.1, R2.2 |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Team Leads<br>• **Data Sources:** Workspace Member Picker<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -522,7 +519,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must associate distinct colored badges and icons with each priority level (Low, Medium, High, Urgent) for rapid visual triage across board and table views. |
 | **Requirement Origin:** TinyTask SaaS / Usability |
 | **Interfaces:** All Users |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Task Priority Property<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R4.1 |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Task Priority Property<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Should |
 
@@ -536,7 +533,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must support transitioning tasks through the canonical workflow stages (To-Do, In-Progress, Under-Review, Done), recording the transitioning user and exact timestamp in the task history. |
 | **Requirement Origin:** TinyTask SaaS / Workflow Management |
 | **Interfaces:** Workspace Member, Workspace Admin |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Project Leads<br>• **Data Sources:** Task State Property<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R4.1 |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Project Leads<br>• **Data Sources:** Task State Property<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -548,7 +545,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must provide an interactive Kanban board interface where tasks are presented in vertical state columns, allowing users to drag and drop cards between columns to update their status. |
 | **Requirement Origin:** TinyTask SaaS / User Interface & Usability |
 | **Interfaces:** All Authorized Editors |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Project Leads<br>• **Data Sources:** Task Model and Column States<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R5.1 |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Project Leads<br>• **Data Sources:** Task Model and Column States<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -560,7 +557,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow configuring recurring task rules (weekly or monthly), automatically spawning a new task instance in the "To-Do" column once the previous instance is moved to "Done". |
 | **Requirement Origin:** TinyTask SaaS / Productivity |
 | **Interfaces:** Workspace Member, Workspace Admin |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Task Recurrence Configuration<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R5.1 |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Task Recurrence Configuration<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Could |
 
@@ -574,7 +571,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must provide instant filter controls on project board views, allowing users to filter tasks by assignee, priority level, due date range, or overdue status without reloading the page. |
 | **Requirement Origin:** TinyTask SaaS / Productivity |
 | **Interfaces:** All Users |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Project Leads<br>• **Data Sources:** Task Search Index<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R4.1 |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Project Leads<br>• **Data Sources:** Task Search Index<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -588,7 +585,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must enable attaching deliverable files directly to a task card via file upload picker or drag-and-drop, enforcing a strict maximum size cap of 25 MB per attachment. |
 | **Requirement Origin:** TinyTask SaaS / Document Management |
 | **Interfaces:** Workspace Member, Workspace Admin |
-| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Clients<br>• **Data Sources:** Local Client File<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** Cloud Object Storage<br>• **Preceding Requirements:** R4.1 |
+| **Dependencies:**<br>• **Stakeholders:** Team Contributors, Clients<br>• **Data Sources:** Local Client File<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** File Storage Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -597,10 +594,10 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | Requirement |
 |---|
 | **ID:** R7.2 **Name:** Support common document and image file formats |
-| **Description:** The system must support standard documentation and asset formats, including PDF, Microsoft Office documents (Word, Excel), presentations, and common image formats (PNG, JPEG). |
+| **Description:** The system must support standard documentation and asset formats, including PDF, documents (Word, Excel), presentations, and common image formats (PNG, JPEG). |
 | **Requirement Origin:** TinyTask SaaS / Document Management |
 | **Interfaces:** Workspace Member, Workspace Admin |
-| **Dependencies:**<br>• **Stakeholders:** Contributors, Project Leads<br>• **Data Sources:** Uploaded Attachments<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** Object Storage<br>• **Preceding Requirements:** R7.1 |
+| **Dependencies:**<br>• **Stakeholders:** Contributors, Project Leads<br>• **Data Sources:** Uploaded Attachments<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** File Storage Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -614,7 +611,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must provide a download link allowing any member with project view access to download the attached file to their local machine. |
 | **Requirement Origin:** TinyTask SaaS / Document Management |
 | **Interfaces:** All Users with project view access |
-| **Dependencies:**<br>• **Stakeholders:** Contributors, Clients<br>• **Data Sources:** Stored Attachment<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** Object Storage<br>• **Preceding Requirements:** R7.1 |
+| **Dependencies:**<br>• **Stakeholders:** Contributors, Clients<br>• **Data Sources:** Stored Attachment<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** File Storage Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -626,7 +623,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow the original file uploader or a Workspace Admin to delete an attachment from a task card, updating the task history accordingly. |
 | **Requirement Origin:** TinyTask SaaS / Document Management |
 | **Interfaces:** Workspace Member (uploader) and Workspace Admin |
-| **Dependencies:**<br>• **Stakeholders:** Contributors, Admins<br>• **Data Sources:** Attachment Record<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** Database / Object Storage<br>• **Preceding Requirements:** R7.1 |
+| **Dependencies:**<br>• **Stakeholders:** Contributors, Admins<br>• **Data Sources:** Attachment Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -638,7 +635,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must render compact image thumbnails for attached graphics within the task card view, enabling rapid visual inspection without downloading the original asset. |
 | **Requirement Origin:** TinyTask SaaS / Usability |
 | **Interfaces:** All Users |
-| **Dependencies:**<br>• **Stakeholders:** Designers, Contributors<br>• **Data Sources:** Attached Images<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** Object Storage<br>• **Preceding Requirements:** R7.2 |
+| **Dependencies:**<br>• **Stakeholders:** Designers, Contributors<br>• **Data Sources:** Attached Images<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** File Storage Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Could |
 
@@ -652,31 +649,31 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must provide a commenting thread inside each task card supporting rich text formatting via Markdown syntax (bold, italics, lists, and code blocks). |
 | **Requirement Origin:** TinyTask SaaS / Team Collaboration |
 | **Interfaces:** Workspace Member, Workspace Admin |
-| **Dependencies:**<br>• **Stakeholders:** Contributors, Clients<br>• **Data Sources:** Task Comment Box<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R4.1 |
+| **Dependencies:**<br>• **Stakeholders:** Contributors, Clients<br>• **Data Sources:** Task Comment Box<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
-##### R9.2 – Mention collaborators (@user) to trigger notifications
+##### R9.2 – Mention collaborators to trigger notifications
 
 | Requirement |
 |---|
-| **ID:** R9.2 **Name:** Mention collaborators (@user) to trigger notifications |
+| **ID:** R9.2 **Name:** Mention collaborators to trigger notifications |
 | **Description:** The system must parse user mentions using the "@" symbol within comment text, automatically triggering in-app and email notifications to the tagged collaborators. |
 | **Requirement Origin:** TinyTask SaaS / Team Collaboration |
-| **Interfaces:** Workspace Member and Notification Service |
-| **Dependencies:**<br>• **Stakeholders:** Contributors<br>• **Data Sources:** Comment Content<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R9.1 |
+| **Interfaces:** Workspace Member and Notification / Email Service |
+| **Dependencies:**<br>• **Stakeholders:** Contributors<br>• **Data Sources:** Comment Content<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
-##### R9.3 – Stream comments in real-time via WebSockets
+##### R9.3 – Stream comments in real-time
 
 | Requirement |
 |---|
-| **ID:** R9.3 **Name:** Stream comments in real-time via WebSockets |
+| **ID:** R9.3 **Name:** Stream comments in real-time |
 | **Description:** The system must immediately push new comments to active users viewing the task card without requiring manual page reloads. |
 | **Requirement Origin:** TinyTask SaaS / Collaboration |
 | **Interfaces:** Active Online Users |
-| **Dependencies:**<br>• **Stakeholders:** Contributors<br>• **Data Sources:** WebSocket Message Stream<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** WebSocket Gateway<br>• **Preceding Requirements:** R9.1 |
+| **Dependencies:**<br>• **Stakeholders:** Contributors<br>• **Data Sources:** Real-Time Message Stream<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Real-Time Push Channel<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Could |
 
@@ -690,7 +687,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must log and display a chronological audit trail on each task card documenting state changes, assignee reallocations, due date adjustments, and attachment events. |
 | **Requirement Origin:** TinyTask SaaS / Auditability |
 | **Interfaces:** All Users |
-| **Dependencies:**<br>• **Stakeholders:** Project Managers, Contributors<br>• **Data Sources:** Audit Log Table<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R4.1, R5.1 |
+| **Dependencies:**<br>• **Stakeholders:** Project Managers, Contributors<br>• **Data Sources:** Audit Log Table<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -702,7 +699,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must provide a bell icon with an unread badge counter in the navigation header, expanding into a notification drawer with direct links to referenced tasks. |
 | **Requirement Origin:** TinyTask SaaS / Usability |
 | **Interfaces:** Authenticated User |
-| **Dependencies:**<br>• **Stakeholders:** Contributors<br>• **Data Sources:** User Notifications Table<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R4.2, R9.2 |
+| **Dependencies:**<br>• **Stakeholders:** Contributors<br>• **Data Sources:** User Notifications Table<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -713,22 +710,22 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R10.3 **Name:** Dispatch daily pending task summary digest via email |
 | **Description:** The system must dispatch an aggregated email digest at 08:00 daily to subscribed users, summarizing their assigned tasks due on the current day or currently overdue. |
 | **Requirement Origin:** TinyTask SaaS / Productivity |
-| **Interfaces:** Registered User and Email Service |
-| **Dependencies:**<br>• **Stakeholders:** Project Managers, Contributors<br>• **Data Sources:** Task Scheduler Daemon<br>• **Extraction Periodicity:** Daily<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R4.1 |
+| **Interfaces:** Registered User and Notification / Email Service |
+| **Dependencies:**<br>• **Stakeholders:** Project Managers, Contributors<br>• **Data Sources:** Task Scheduler Daemon<br>• **Extraction Periodicity:** daily<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Should |
 
 #### R11 – Manage Commercial Subscriptions
 
-##### R11.1 – Subscribe and upgrade plan tier via Stripe Checkout
+##### R11.1 – Subscribe and upgrade plan tier via payment gateway
 
 | Requirement |
 |---|
-| **ID:** R11.1 **Name:** Subscribe and upgrade plan tier via Stripe Checkout |
-| **Description:** The system must allow the Workspace Owner to select a commercial plan (Pro or Enterprise) and initiate checkout, redirecting the browser to a secure Stripe Checkout payment session. |
+| **ID:** R11.1 **Name:** Subscribe and upgrade plan tier via payment gateway |
+| **Description:** The system must allow the Workspace Owner to select a commercial plan (Pro or Enterprise) and initiate checkout, redirecting the browser to a secure hosted checkout session. |
 | **Requirement Origin:** TinyTask SaaS / Billing |
-| **Interfaces:** Workspace Owner and Payment Gateway (Stripe) |
-| **Dependencies:**<br>• **Stakeholders:** Executive Leadership, Business Customers<br>• **Data Sources:** TinyTask Pricing Catalog<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** Stripe API / Database<br>• **Preceding Requirements:** R2.1 |
+| **Interfaces:** Workspace Owner and External Payment Gateway |
+| **Dependencies:**<br>• **Stakeholders:** Executive Leadership, Business Customers<br>• **Data Sources:** Pricing Catalog<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** External Payment Gateway<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -737,10 +734,10 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | Requirement |
 |---|
 | **ID:** R11.2 **Name:** Ingest and process billing webhooks to update plan status |
-| **Description:** The system must ingest and validate signed asynchronous webhooks sent by Stripe upon completed payments, updating the workspace plan tier and renewal date immediately. |
+| **Description:** The system must ingest and validate signed asynchronous webhooks sent by the payment gateway upon completed payments, updating the workspace plan tier and renewal date immediately. |
 | **Requirement Origin:** TinyTask SaaS / Billing |
-| **Interfaces:** Payment Gateway (Stripe) and TinyTask Backend |
-| **Dependencies:**<br>• **Stakeholders:** Finance & IT Operations<br>• **Data Sources:** Stripe Webhook Payloads<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R11.1 |
+| **Interfaces:** External Payment Gateway and Platform Core |
+| **Dependencies:**<br>• **Stakeholders:** Finance & IT Operations<br>• **Data Sources:** Billing Webhook Payloads<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -752,45 +749,45 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must automatically adjust authorized workspace member quotas upon receiving payment confirmation, enabling the immediate invitation of additional team members. |
 | **Requirement Origin:** TinyTask SaaS / Billing |
 | **Interfaces:** Workspace Admin and Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** Workspace Admins<br>• **Data Sources:** Plan Tier Member Quota<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R11.2, R2.2 |
+| **Dependencies:**<br>• **Stakeholders:** Workspace Admins<br>• **Data Sources:** Plan Tier Member Quota<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
-##### R11.4 – Enforce 7-day grace period upon subscription payment failure
+##### R11.4 – Enforce grace period upon subscription payment failure
 
 | Requirement |
 |---|
-| **ID:** R11.4 **Name:** Enforce 7-day grace period upon subscription payment failure |
+| **ID:** R11.4 **Name:** Enforce grace period upon subscription payment failure |
 | **Description:** The system must grant a 7-day grace period if an automated subscription renewal payment fails, maintaining normal operational access while notifying the Workspace Owner to update payment details. |
 | **Requirement Origin:** TinyTask SaaS / Customer Retention & Billing |
-| **Interfaces:** Workspace Owner and Payment Gateway |
-| **Dependencies:**<br>• **Stakeholders:** Customers, Finance<br>• **Data Sources:** Stripe Payment Failure Event<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R11.2 |
+| **Interfaces:** Workspace Owner and External Payment Gateway |
+| **Dependencies:**<br>• **Stakeholders:** Customers, Finance<br>• **Data Sources:** Payment Failure Notification<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
 #### R12 – Manage User Data and Close Accounts
 
-##### R12.1 – Export personal user profile and task data in JSON format
+##### R12.1 – Export personal user profile and task data in structured format
 
 | Requirement |
 |---|
-| **ID:** R12.1 **Name:** Export personal user profile and task data in JSON format |
-| **Description:** The system must allow any authenticated user to download a structured JSON archive containing their personal profile information, preferences, and tasks authored by their account. |
+| **ID:** R12.1 **Name:** Export personal user profile and task data in structured format |
+| **Description:** The system must allow any authenticated user to download a structured archive containing their personal profile information, preferences, and tasks authored by their account. |
 | **Requirement Origin:** TinyTask SaaS / Data Portability |
 | **Interfaces:** Authenticated User |
-| **Dependencies:**<br>• **Stakeholders:** End Users<br>• **Data Sources:** User Profile and Tasks Table<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R1.2 |
+| **Dependencies:**<br>• **Stakeholders:** End Users<br>• **Data Sources:** User Profile and Tasks Table<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
-##### R12.2 – Export full workspace repository archive in ZIP format
+##### R12.2 – Export full workspace repository archive
 
 | Requirement |
 |---|
-| **ID:** R12.2 **Name:** Export full workspace repository archive in ZIP format |
-| **Description:** The system must provide the Workspace Owner with a self-service workspace export option, generating a comprehensive ZIP archive containing projects, tasks, comments, and attachments. |
+| **ID:** R12.2 **Name:** Export full workspace repository archive |
+| **Description:** The system must provide the Workspace Owner with a self-service workspace export option, generating a comprehensive compressed archive containing projects, tasks, comments, and attachments. |
 | **Requirement Origin:** TinyTask SaaS / Data Portability |
 | **Interfaces:** Workspace Owner |
-| **Dependencies:**<br>• **Stakeholders:** Business Customers, Management<br>• **Data Sources:** Workspace Data Tables and Files<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** Database and Object Storage<br>• **Preceding Requirements:** R2.1 |
+| **Dependencies:**<br>• **Stakeholders:** Business Customers, Management<br>• **Data Sources:** Workspace Data Tables and Files<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -802,7 +799,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow users to autonomously close their accounts, invalidating their credentials and replacing their public name with "[Deleted User]" to preserve historical task integrity. |
 | **Requirement Origin:** TinyTask SaaS / Account Lifecycle |
 | **Interfaces:** Authenticated User |
-| **Dependencies:**<br>• **Stakeholders:** End Users, Workspace Admins<br>• **Data Sources:** User Profile Record<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** PostgreSQL Database<br>• **Preceding Requirements:** R1.2 |
+| **Dependencies:**<br>• **Stakeholders:** End Users, Workspace Admins<br>• **Data Sources:** User Profile Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -813,8 +810,8 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R12.4 **Name:** Dispatch digital confirmation receipt upon account closure |
 | **Description:** The system must send a confirmation receipt via email immediately upon account deactivation, certifying the date and time when the account was permanently closed. |
 | **Requirement Origin:** TinyTask SaaS / Communication |
-| **Interfaces:** Closed User Account and Email Service |
-| **Dependencies:**<br>• **Stakeholders:** End Users<br>• **Data Sources:** Deactivation Record<br>• **Extraction Periodicity:** On demand<br>• **Information Systems / Databases:** Database / Email Service<br>• **Preceding Requirements:** R12.3 |
+| **Interfaces:** Closed User Account and Notification / Email Service |
+| **Dependencies:**<br>• **Stakeholders:** End Users<br>• **Data Sources:** Deactivation Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Notification / Email Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Should |
 
@@ -834,7 +831,7 @@ The non-functional requirements define the platform's performance, availability,
 | **RN4** | The storage architecture must support up to 50,000 active tasks per workspace without degradation in search, filter, or rendering speed. | SHOULD | Scalability |
 | **RN5** | The system must execute automated daily database backups and maintain data recovery capabilities with an RPO under 24 hours. | MUST | Recoverability |
 | **RN6** | The user interface must support internationalization (i18n), offering full system localization in English and Portuguese. | SHOULD | Internationalization |
-| **RN7** | The Stripe integration must communicate exclusively over authenticated HTTPS channels and enforce cryptographic webhook signature verification. | MUST | Interoperability |
+| **RN7** | The payment gateway integration must communicate exclusively over authenticated secure channels and enforce cryptographic webhook signature verification. | MUST | Interoperability |
 | **RN8** | The system architecture must enforce strict logical data segregation across workspaces (multi-tenancy), preventing cross-tenant access. | MUST | Architectural Integrity |
 
 ---
@@ -847,11 +844,11 @@ The Product Use Cases (*PUC*) delineate the functional boundary of TinyTask SaaS
 
 | PUC | PUC Name | Actors / Users | Input and Output |
 |---|---|---|---|
-| **1.1** | Register and Activate User Account | Unauthenticated User, Email Service | **(in)** Full name, email, password<br>**(out)** Verification email with activation link |
+| **1.1** | Register and Activate User Account | Unauthenticated User, Notification / Email Service | **(in)** Full name, email, password<br>**(out)** Verification email with activation link |
 | **1.2** | Authenticate User and Issue Session | Registered User | **(in)** Email and password credentials<br>**(out)** Active session and authorized workspace list |
-| **1.3** | Recover User Password via Reset Link | Registered User, Email Service | **(in)** User registered email address<br>**(out)** Password reset email with secure token |
+| **1.3** | Recover User Password via Reset Link | Registered User, Notification / Email Service | **(in)** User registered email address<br>**(out)** Password reset email with secure token |
 | **2.1** | Create Organization Workspace | Workspace Owner | **(in)** Workspace name and URL slug<br>**(out)** Instantiated workspace with creator as Owner |
-| **2.2** | Invite and Manage Workspace Members | Workspace Admin, Workspace Owner, Email Service | **(in)** Invitee email and assigned role (Admin, Member, Viewer)<br>**(out)** Invitation email and member added to roster |
+| **2.2** | Invite and Manage Workspace Members | Workspace Admin, Workspace Owner, Notification / Email Service | **(in)** Invitee email and assigned role (Admin, Member, Viewer)<br>**(out)** Invitation email and member added to roster |
 | **2.3** | Configure Workspace Profile Settings | Workspace Admin, Workspace Owner | **(in)** Updated workspace name and logo image (up to 2 MB)<br>**(out)** Updated workspace branding across client views |
 | **3.1** | Create and Configure New Project | Workspace Admin, Workspace Member | **(in)** Project title, scope description, visibility setting<br>**(out)** Initialized project accessible in navigation menu |
 | **3.2** | Archive Completed Project | Workspace Admin, Workspace Owner | **(in)** Selection of target project to archive<br>**(out)** Read-only project hidden from operational views |
@@ -862,10 +859,10 @@ The Product Use Cases (*PUC*) delineate the functional boundary of TinyTask SaaS
 | **5.2** | Download and Delete Task Attachment | Workspace Member, Workspace Admin | **(in)** Download or delete command for specified file<br>**(out)** File transferred to client or purged from attachment gallery |
 | **6.1** | Post Comment and Mention Collaborator | Workspace Member, Workspace Admin | **(in)** Markdown comment text with user mentions (@user)<br>**(out)** Comment posted and notifications delivered to tagged users |
 | **6.2** | Consult In-App Notification Center | Authenticated User | **(in)** Access user notification drawer<br>**(out)** Chronological list of unread mentions and task assignments |
-| **7.1** | Subscribe and Upgrade Commercial Plan | Workspace Owner, Payment Gateway (Stripe) | **(in)** Selected plan tier (Pro/Enterprise) and billing info<br>**(out)** Payment confirmation and updated workspace quotas |
-| **7.2** | Process Billing Webhook and Reconcile Quotas | Payment Gateway (Stripe), TinyTask Backend | **(in)** Asynchronous webhook notification with payment event<br>**(out)** Reconciled plan tier and member quotas in database |
-| **8.1** | Export Personal and Workspace Data | Authenticated User, Workspace Owner | **(in)** Data export request (personal JSON or workspace ZIP)<br>**(out)** Downloadable archive package generated for client |
-| **8.2** | Deactivate and Close User Account | Authenticated User, Email Service | **(in)** Autonomous account deletion confirmation<br>**(out)** Credentials purged, name anonymized, receipt dispatched |
+| **7.1** | Subscribe and Upgrade Commercial Plan | Workspace Owner, External Payment Gateway | **(in)** Selected plan tier (Pro/Enterprise) and billing info<br>**(out)** Payment confirmation and updated workspace quotas |
+| **7.2** | Process Billing Webhook and Reconcile Quotas | External Payment Gateway, Platform Core | **(in)** Asynchronous webhook notification with payment event<br>**(out)** Reconciled plan tier and member quotas in database |
+| **8.1** | Export Personal and Workspace Data | Authenticated User, Workspace Owner | **(in)** Data export request (personal format or workspace archive)<br>**(out)** Downloadable archive package generated for client |
+| **8.2** | Deactivate and Close User Account | Authenticated User, Notification / Email Service | **(in)** Autonomous account deletion confirmation<br>**(out)** Credentials purged, name anonymized, receipt dispatched |
 
 ---
 
@@ -882,7 +879,7 @@ flowchart LR
         U_Member["Workspace Member"]
         U_Admin["Workspace Admin"]
         U_Owner["Workspace Owner"]
-        S_Stripe["Stripe Gateway"]
+        S_Pay["Payment Gateway"]
         S_Email["Email Service"]
     end
 
@@ -918,7 +915,7 @@ flowchart LR
     UC1 --> S_Email
     UC2 --> S_Email
     UC6 --> S_Email
-    UC7 <--> S_Stripe
+    UC7 <--> S_Pay
 ```
 
 #### 4.2 Level-1 System Use Cases
@@ -951,11 +948,11 @@ flowchart LR
 - **{U.C. 6.2} Consult Notification Center:** Displays in-app unread alerts and dispatches daily pending task digests via email.
 
 ##### {U.C. 7} Manage Commercial Subscriptions
-- **{U.C. 7.1} Subscribe and Upgrade Plan:** Enables Workspace Owners to select commercial tiers and complete checkout via Stripe.
-- **{U.C. 7.2} Process Billing Webhooks and Reconcile Quotas:** Ingests Stripe payment webhooks and updates workspace member seat quotas.
+- **{U.C. 7.1} Subscribe and Upgrade Plan:** Enables Workspace Owners to select commercial tiers and complete checkout via external payment gateway.
+- **{U.C. 7.2} Process Billing Webhooks and Reconcile Quotas:** Ingests payment gateway webhooks and updates workspace member seat quotas.
 
 ##### {U.C. 8} Manage User Data and Close Accounts
-- **{U.C. 8.1} Export Personal and Workspace Data:** Generates downloadable JSON archives for user profiles and complete ZIP packages for workspaces.
+- **{U.C. 8.1} Export Personal and Workspace Data:** Generates downloadable archives for user profiles and complete packages for workspaces.
 - **{U.C. 8.2} Deactivate and Close Account:** Executes autonomous account closure, invalidating credentials, anonymizing names, and dispatching receipts.
 
 ---

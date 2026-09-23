@@ -88,7 +88,7 @@ flowchart TD
     end
 
     subgraph External_Services["External Services"]
-        Stripe["Stripe Gateway (Billing)"]
+        PayGateway["External Payment Gateway"]
         MailService["Transactional Email Service"]
     end
 
@@ -99,7 +99,7 @@ flowchart TD
     WV -- "Read-Only Inspection" --> Core
 
     Core -- "Dispatch Notifications & Verification" --> MailService
-    Core <--> "Checkout Sessions & Webhooks" --> Stripe
+    Core <--> "Checkout Sessions & Webhooks" --> PayGateway
 ```
 
 ### 3.2 Summary Table of Product Use Cases (PUC)
@@ -110,11 +110,11 @@ The following table maps Product Use Cases to participating actors, inputs, and 
 
 | PUC | PUC Name | Actors / Users | Input and Output |
 |---|---|---|---|
-| **1.1** | Register and Activate User Account | Unauthenticated User, Email Service | **(in)** Full name, email, password<br>**(out)** Verification email with activation link |
+| **1.1** | Register and Activate User Account | Unauthenticated User, Notification / Email Service | **(in)** Full name, email, password<br>**(out)** Verification email with activation link |
 | **1.2** | Authenticate User and Issue Session | Registered User | **(in)** Email and password credentials<br>**(out)** Active session and authorized workspace list |
-| **1.3** | Recover User Password via Reset Link | Registered User, Email Service | **(in)** User registered email address<br>**(out)** Password reset email with secure token |
+| **1.3** | Recover User Password via Reset Link | Registered User, Notification / Email Service | **(in)** User registered email address<br>**(out)** Password reset email with secure token |
 | **2.1** | Create Organization Workspace | Workspace Owner | **(in)** Workspace name and URL slug<br>**(out)** Instantiated workspace with creator as Owner |
-| **2.2** | Invite and Manage Workspace Members | Workspace Admin, Workspace Owner, Email Service | **(in)** Invitee email and assigned role (Admin, Member, Viewer)<br>**(out)** Invitation email and member added to roster |
+| **2.2** | Invite and Manage Workspace Members | Workspace Admin, Workspace Owner, Notification / Email Service | **(in)** Invitee email and assigned role (Admin, Member, Viewer)<br>**(out)** Invitation email and member added to roster |
 | **2.3** | Configure Workspace Profile Settings | Workspace Admin, Workspace Owner | **(in)** Updated workspace name and logo image (up to 2 MB)<br>**(out)** Updated workspace branding across client views |
 | **3.1** | Create and Configure New Project | Workspace Admin, Workspace Member | **(in)** Project title, scope description, visibility setting<br>**(out)** Initialized project accessible in navigation menu |
 | **3.2** | Archive Completed Project | Workspace Admin, Workspace Owner | **(in)** Selection of target project to archive<br>**(out)** Read-only project hidden from operational views |
@@ -125,10 +125,10 @@ The following table maps Product Use Cases to participating actors, inputs, and 
 | **5.2** | Download and Delete Task Attachment | Workspace Member, Workspace Admin | **(in)** Download or delete command for specified file<br>**(out)** File transferred to client or purged from attachment gallery |
 | **6.1** | Post Comment and Mention Collaborator | Workspace Member, Workspace Admin | **(in)** Markdown comment text with user mentions (@user)<br>**(out)** Comment posted and notifications delivered to tagged users |
 | **6.2** | Consult In-App Notification Center | Authenticated User | **(in)** Access user notification drawer<br>**(out)** Chronological list of unread mentions and task assignments |
-| **7.1** | Subscribe and Upgrade Commercial Plan | Workspace Owner, Payment Gateway (Stripe) | **(in)** Selected plan tier (Pro/Enterprise) and billing info<br>**(out)** Payment confirmation and updated workspace quotas |
-| **7.2** | Process Billing Webhook and Reconcile Quotas | Payment Gateway (Stripe), TinyTask Backend | **(in)** Asynchronous webhook notification with payment event<br>**(out)** Reconciled plan tier and member quotas in database |
-| **8.1** | Export Personal and Workspace Data | Authenticated User, Workspace Owner | **(in)** Data export request (personal JSON or workspace ZIP)<br>**(out)** Downloadable archive package generated for client |
-| **8.2** | Deactivate and Close User Account | Authenticated User, Email Service | **(in)** Autonomous account deletion confirmation<br>**(out)** Credentials purged, name anonymized, receipt dispatched |
+| **7.1** | Subscribe and Upgrade Commercial Plan | Workspace Owner, External Payment Gateway | **(in)** Selected plan tier (Pro/Enterprise) and billing info<br>**(out)** Payment confirmation and updated workspace quotas |
+| **7.2** | Process Billing Webhook and Reconcile Quotas | External Payment Gateway, Platform Core | **(in)** Asynchronous webhook notification with payment event<br>**(out)** Reconciled plan tier and member quotas in database |
+| **8.1** | Export Personal and Workspace Data | Authenticated User, Workspace Owner | **(in)** Data export request (personal format or workspace archive)<br>**(out)** Downloadable archive package generated for client |
+| **8.2** | Deactivate and Close User Account | Authenticated User, Notification / Email Service | **(in)** Autonomous account deletion confirmation<br>**(out)** Credentials purged, name anonymized, receipt dispatched |
 
 ---
 
@@ -141,8 +141,8 @@ The platform defines the following actors:
 - **Workspace Admin:** Operational team manager. Configures settings, manages members, and creates projects.
 - **Workspace Member:** Active contributor. Creates and edits tasks, posts comments, and uploads attachments.
 - **Workspace Viewer:** Guest user granted read-only visibility into projects and task boards.
-- **Payment Gateway (Stripe):** External service processing payments and dispatching webhook notices.
-- **Transactional Email Service:** External service dispatching verification emails and task alerts.
+- **External Payment Gateway:** External service processing payments and dispatching webhook notices.
+- **Notification / Email Service:** External service dispatching verification emails and task alerts.
 
 ### 4.2 System Use Cases
 
@@ -195,14 +195,14 @@ Manages team discussions, alerts, and mentions:
 
 Governs commercial billing and plan tier lifecycle:
 
-- **{U.C. 7.1} Subscribe and Upgrade Plan:** Workspace Owners select paid plans and initiate checkout via hosted Stripe sessions.
-- **{U.C. 7.2} Process Billing Webhooks and Reconcile Quotas:** Ingests asynchronous payment events from Stripe to update workspace quotas automatically.
+- **{U.C. 7.1} Subscribe and Upgrade Plan:** Workspace Owners select paid plans and initiate checkout via external payment gateway.
+- **{U.C. 7.2} Process Billing Webhooks and Reconcile Quotas:** Ingests asynchronous payment events from payment gateway to update workspace quotas automatically.
 
 #### 4.2.8 Use Case 8 – Manage User Data and Close Accounts
 
 Ensures user autonomy, data portability, and account closure:
 
-- **{U.C. 8.1} Export Personal and Workspace Data:** Users generate personal JSON data archives, and Workspace Owners download complete workspace ZIP packages.
+- **{U.C. 8.1} Export Personal and Workspace Data:** Users generate personal structured data archives, and Workspace Owners download complete workspace packages.
 - **{U.C. 8.2} Deactivate and Close Account:** Users autonomously close accounts, invalidating credentials, anonymizing names, and receiving confirmation receipts.
 
 ---
@@ -212,11 +212,11 @@ Ensures user autonomy, data portability, and account closure:
 As defined in *Doc01*, the platform satisfies the following non-functional criteria:
 - **Performance (RN1):** Board load time under 500 ms for up to 200 tasks.
 - **Availability (RN2):** Minimum 99.5% service availability.
-- **Usabilidade (RN3):** Fully responsive layout for viewports from 375 px upwards.
+- **Usability (RN3):** Fully responsive layout for viewports from 375 px upwards.
 - **Scalability (RN4):** Capacity for 50,000 active tasks per workspace without performance loss.
 - **Recoverability (RN5):** Daily automated backups with RPO under 24 hours.
 - **Internationalization (RN6):** Full interface localization in English and Portuguese.
-- **Interoperability (RN7):** Secure HTTPS Stripe integration with cryptographic signature validation.
+- **Interoperability (RN7):** Secure payment gateway integration with cryptographic signature validation.
 - **Multi-Tenancy (RN8):** Complete logical data isolation across workspaces.
 
 ---

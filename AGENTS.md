@@ -148,17 +148,25 @@ flowchart TD
   - When a cleanup removes such a note, record the fact once in the document's own changelog (or the commit message), never inline in the body.
   - Pointers to corpus or governance material are **bare functional references** (IDs + paths only): explanatory glosses, legacy-name expansions, floor/justification paragraphs and "full chain" narratives live in governance documents (AGENTS/SPEC/ADRs) or the document's own changelog — never in case/example/output bodies.
 - **R12 — Placeholder & Anchor Integrity in Documents:** No document under `cases/`, `templates/`, `example/`, `output/` may contain unresolved placeholders — `?` table cells, `?` segments inside paths (e.g. `NIST_CSF/?/X.json`), `TODO`/`FIXME` markers, or unfilled `<>` slots outside `templates/`. Every cited control-referential path must resolve under `baseline/CONTROLS/` (e.g. `NIST_CSF/<FUNCTION>/<ID>.json`); a row whose anchor cannot be resolved is **dropped** (or its cell filled with `—`), never marked with `?`. Verified mechanically: `python scripts/doc_lint.py --strict` (SPEC §8).
-- **R13 — Phase 3 Functional Specification Standard & Verb Phrasing:**
+- **R13 — Phase 3 Functional Specification Standard, Strict Technology Neutrality & Phrasing Rules:**
   - **Structure & Reference Standard:** Phase 3 functional deliverables (`Doc01` and `Doc02`) must strictly mirror the structural layout, section headings, and table schemas of the GPTools reference deliverables (`E1.1 — Modelo AS-IS / TO-BE & Levantamento de Requisitos` and `E1.2 — Análise de Requisitos & Casos de Uso`). Never invent new table columns, wrapper properties, or layout conventions.
-  - **Action Verb Conjugation (No Nominalizations):** All requirement titles, sub-requirement names, and use case names MUST use active verbs in the infinitive/imperative (e.g., "Manage User Accounts", NOT "User Account Management"; "Manage Projects", NOT "Project Lifecycle"; "Gerir Tarefas", NOT "Gestão de Tarefas"). Conjugation must always be an active verb in English as in Portuguese.
+  - **Strict Technology Neutrality (ABSOLUTE BAN on specific technologies):**
+    - Under NO circumstances may any requirement, card, or description mention specific database engines, software frameworks, libraries, cloud providers, or technical protocols (e.g., **NEVER** write "PostgreSQL", "MySQL", "MongoDB", "Dotnet", "Angular", "React", "Stripe", "AWS S3", "WebSockets", "SAML", etc.).
+    - Use pure functional terms: "Internal Application Database", "File Storage Service", "External Payment Gateway", "Transactional Email Service", "Real-time communication channel".
+    - `Information Systems / Databases:` in dependency cards must be generic ("Internal Application Database") or left empty.
+  - **Action Verb Conjugation (No Nominalizations):**
+    - All requirement titles, sub-requirement names, and use case names MUST use active verbs in the infinitive/imperative (e.g., "Manage User Accounts", NOT "User Account Management"; "Manage Projects", NOT "Project Lifecycle"; "Gerir Tarefas", NOT "Gestão de Tarefas"). Conjugation must always be an active verb in English as in Portuguese.
   - **Exact Requirement Card Anatomy (E1.1 Table 22 Standard):** Individual functional requirements must use the exact 7-row single-column card format:
     1. `ID: R... Name: <Active Verb Phrase>`
     2. `Description: ...`
     3. `Requirement Origin: ...`
     4. `Interfaces: ...`
-    5. `Dependencies:` (Stakeholders, Data Sources, Extraction Periodicity, Information Systems / Databases, Preceding Requirements)
-    6. `Identified Problems: ...`
+    5. `Dependencies:` (Stakeholders, Data Sources, Extraction Periodicity, Information Systems / Databases [technology-neutral or empty], Preceding Requirements [**empty by default**])
+    6. `Identified Problems: ...` (empty by default)
     7. `Priority: Must / Should / Could / Won't`
+  - **Preceding Requirements Discipline:** Do NOT artificially chain requirements (e.g., do not put `R1.1` as preceding for every requirement). Leave `Preceding Requirements` **empty** by default, only populating it when a genuine, strict prerequisite dependency exists between requirements (matching GPTools E1.1 where >90% are blank).
+  - **Restrictions Column Discipline (Summary Table):** In the MoSCoW summary table, the `Restrictions` column must be **empty by default** for most requirements (matching GPTools Table 20). Only record genuine business constraints; never force synthetic text into every cell.
+  - **Company Scale Discipline (No Enterprise Scope Inflation):** Repertoire of requirements must strictly fit the company's real context from the Intake Form (e.g., an 8-person micro-SaaS must NOT include enterprise SSO federation, complex permission matrices, or oversized features).
   - **Use Case Granularity (E1.2 Standard):** Refinement stops strictly at **Level 1** (`{U.C.n.m}`). **Zero leaf nodes** (`{U.C.n.m.k}`) and **zero step-by-step procedural execution sequences** (Step 1, Step 2, etc.) in the functional baseline.
   - **Strict Pure Functionality:** Functional specification documents must represent pure business/user capability. Never pre-bake security, cryptography, or privacy controls (these belong strictly to the AEGIS Phase 3 synthesis layer driven by Phase 2 Operational Objectives and autonomous skills).
 

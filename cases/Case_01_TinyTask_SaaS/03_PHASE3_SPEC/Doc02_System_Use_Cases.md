@@ -2,33 +2,52 @@
 
 ## Executive Summary
 
-This deliverable specifies the formal **System Use Cases** for the **TinyTask SaaS** platform, elaborating the functional requirements elicited in `Doc01` into formal behavioral contracts. In strict accordance with the reference project standard (`E1.2 – GPTools_AnáliseRequisitos_CasosDeUso_V4.0`) and use case architecture literature (Alistair Cockburn, Robertson & Robertson), use case decomposition anchors rigorously at **Level 1 (`{U.C.n.m}`)**—Cockburn's "User Goal / Sea Level".
+This deliverable establishes the formal **System Use Cases** for the **TinyTask SaaS** platform, translating the operational requirements and Product Use Cases (*PUC*) elicited in `Doc01` into rigorous, literature-grounded behavioral specifications. Grounded in foundational requirements engineering literature—specifically Alistair Cockburn's *Writing Effective Use Cases*, Craig Larman's *Applying UML and Patterns*, and the GPTools specification standard (`E1.2 – GPTools_AnáliseRequisitos_CasosDeUso_V4.0`)—this document specifies each elementary user goal at **Level 1 ("Sea Level")**.
 
-The specification contains zero leaf nodes (`{U.C.n.m.k}`) and zero procedural execution sequences, providing an unambiguous, technology-neutral functional canvas for subsequent AEGIS Phase 3 security synthesis.
+Rather than relying on generic or superficial summaries, each use case is detailed using the literature-standard fully dressed format: specifying primary and secondary actors, stakeholders and interests, preconditions, initiating triggers, black-box main success scenarios, branching extensions and alternative flows, success guarantees, and minimal guarantees. The resulting specification maintains strict technology neutrality, providing a verified functional baseline that directly supports downstream AEGIS Phase 3 security and privacy synthesis.
 
 ---
 
 ## Table of Contents
 
 - [1. Introduction](#1-introduction)
-- [2. System Requirements Approach](#2-system-requirements-approach)
-  - [2.1 Volere Approach and Triangular Functional Decomposition](#21-volere-approach-and-triangular-functional-decomposition)
-  - [2.2 Refinement Boundary (No Leaf Nodes)](#22-refinement-boundary-no-leaf-nodes)
-  - [2.3 Non-Functional Requirements](#23-non-functional-requirements)
+- [2. System Requirements Approach & Literature Foundations](#2-system-requirements-approach--literature-foundations)
+  - [2.1 The Volere Triangular Decomposition: Business Events to System Use Cases](#21-the-volere-triangular-decomposition-business-events-to-system-use-cases)
+  - [2.2 Use Case Architecture (Cockburn, Larman, Wiegers)](#22-use-case-architecture-cockburn-larman-wiegers)
+  - [2.3 Anatomy of a Literature-Grounded Use Case](#23-anatomy-of-a-literature-grounded-use-case)
+  - [2.4 Refinement Boundary: Cockburn's Sea Level (Level 1) vs. Micro-UI Anti-Patterns](#24-refinement-boundary-cockburns-sea-level-level-1-vs-micro-ui-anti-patterns)
 - [3. Requirements Analysis](#3-requirements-analysis)
   - [3.1 Work Context Model](#31-work-context-model)
-  - [3.2 Summary Table of Product Use Cases (PUC)](#32-summary-table-of-product-use-cases-puc)
+  - [3.2 Traceability Matrix: Requirements (Doc01) to System Use Cases (Doc02)](#32-traceability-matrix-requirements-doc01-to-system-use-cases-doc02)
 - [4. Domain Application Use Cases](#4-domain-application-use-cases)
   - [4.1 System Actors](#41-system-actors)
-  - [4.2 System Use Cases](#42-system-use-cases)
+  - [4.2 System Use Cases Specification](#42-system-use-cases-specification)
     - [{U.C. 1} Manage User Accounts and Authentication](#uc-1-manage-user-accounts-and-authentication)
+      - [{U.C. 1.1} Register and authenticate user accounts](#uc-11-register-and-authenticate-user-accounts)
+      - [{U.C. 1.2} Manage user profile and account preferences](#uc-12-manage-user-profile-and-account-preferences)
     - [{U.C. 2} Manage Workspaces and Teams](#uc-2-manage-workspaces-and-teams)
+      - [{U.C. 2.1} Create and configure workspace](#uc-21-create-and-configure-workspace)
+      - [{U.C. 2.2} Invite workspace members and manage access roles](#uc-22-invite-workspace-members-and-manage-access-roles)
+      - [{U.C. 2.3} Monitor workspace activity and operational metrics](#uc-23-monitor-workspace-activity-and-operational-metrics)
     - [{U.C. 3} Manage Projects](#uc-3-manage-projects)
+      - [{U.C. 3.1} Create and configure projects](#uc-31-create-and-configure-projects)
+      - [{U.C. 3.2} Archive completed projects](#uc-32-archive-completed-projects)
     - [{U.C. 4} Manage and Execute Tasks](#uc-4-manage-and-execute-tasks)
+      - [{U.C. 4.1} Create and assign tasks](#uc-41-create-and-assign-tasks)
+      - [{U.C. 4.2} Track and transition task workflow states on visual boards](#uc-42-track-and-transition-task-workflow-states-on-visual-boards)
+      - [{U.C. 4.3} Configure recurring automated tasks](#uc-43-configure-recurring-automated-tasks)
     - [{U.C. 5} Collaborate on Task Deliverables](#uc-5-collaborate-on-task-deliverables)
+      - [{U.C. 5.1} Manage task deliverable attachments](#uc-51-manage-task-deliverable-attachments)
+      - [{U.C. 5.2} Post in-task discussion comments and mention collaborators](#uc-52-post-in-task-discussion-comments-and-mention-collaborators)
     - [{U.C. 6} Track Activity History and Notifications](#uc-6-track-activity-history-and-notifications)
+      - [{U.C. 6.1} Consult chronological audit history on task cards](#uc-61-consult-chronological-audit-history-on-task-cards)
+      - [{U.C. 6.2} Receive workspace alerts and daily task digests](#uc-62-receive-workspace-alerts-and-daily-task-digests)
     - [{U.C. 7} Manage Commercial Subscriptions](#uc-7-manage-commercial-subscriptions)
+      - [{U.C. 7.1} Subscribe and manage workspace commercial plans](#uc-71-subscribe-and-manage-workspace-commercial-plans)
+      - [{U.C. 7.2} Enforce operational grace period upon payment failure](#uc-72-enforce-operational-grace-period-upon-payment-failure)
     - [{U.C. 8} Export Data and Close Accounts](#uc-8-export-data-and-close-accounts)
+      - [{U.C. 8.1} Export personal and workspace data archives](#uc-81-export-personal-and-workspace-data-archives)
+      - [{U.C. 8.2} Close user accounts and terminate workspace access](#uc-82-close-user-accounts-and-terminate-workspace-access)
 - [5. Non-Functional Requirements](#5-non-functional-requirements)
 - [6. Conclusions](#6-conclusions)
 - [7. Bibliography](#7-bibliography)
@@ -38,32 +57,60 @@ The specification contains zero leaf nodes (`{U.C.n.m.k}`) and zero procedural e
 
 ## 1. Introduction
 
-The **TinyTask SaaS** platform delivers a lean, collaborative project and task management environment tailored for small agile teams, agencies, and consultancies. Following the operational elicitation established in `Doc01` (AS-IS and TO-BE models), this document defines the system-level operational use cases.
+The **TinyTask SaaS** platform delivers a lean, collaborative project and task management environment tailored for small agile teams, agencies, and consultancies. Following the operational elicitation established in `Doc01` (AS-IS and TO-BE models), this deliverable establishes the formal **System Use Cases**.
 
-The objective is to establish an exhaustive behavioral specification defining how primary actors interact with the system boundary to achieve defined operational outcomes, preserving strict technology neutrality.
+In any mature software engineering lifecycle, requirements elicitation and use case modeling form a **sequential continuum**:
+1. In `Doc01`, we identified business problems, established customer expectations, consolidated atomic functional requirements (prioritized via MoSCoW), and defined the Product Use Cases (*PUC*) boundary.
+2. In `Doc02`, we take those requirements and PUCs and model the dynamic behavioral interactions between actors and the system, specifying how business goals are fulfilled in practice.
+
+To prevent the common trap of superficial or generic descriptions, this document adopts the best practices established in requirements engineering literature, formalizing each use case into an operational contract that details normal execution, edge cases, error conditions, and verifiable guarantees.
 
 ---
 
-## 2. System Requirements Approach
+## 2. System Requirements Approach & Literature Foundations
 
-### 2.1 Volere Approach and Triangular Functional Decomposition
+### 2.1 The Volere Triangular Decomposition: Business Events to System Use Cases
 
-The specification follows the Volere requirements engineering methodology (Robertson & Robertson). Each functional requirement traces through a triangular decomposition:
+The specification follows the Volere requirements engineering methodology (Robertson & Robertson, 2012). Every functional capability traces through a triangular derivation:
+- **Business Event:** An occurrence in the operational environment that demands a response (e.g., *a new team member needs onboarding*, *a project phase is completed*, *a task deliverable is updated*).
+- **Product Use Case (PUC):** The automated partition of the business process executed within the system boundary (defined in `Doc01` Table 8).
+- **System Use Case:** The structured behavioral interaction between the primary actor and the system required to achieve the goal (detailed herein).
 
-1. **Business Events:** Real-world occurrences in the stakeholder environment that trigger work.
-2. **Product Use Cases (PUC):** The automated portion of the business response executed by the system.
-3. **Atomic Functional Requirements:** Standalone behavioral assertions prioritized via MoSCoW.
+### 2.2 Use Case Architecture (Cockburn, Larman, Wiegers)
 
-### 2.2 Refinement Boundary (No Leaf Nodes)
+According to Alistair Cockburn (*Writing Effective Use Cases*, 2000), Craig Larman (*Applying UML and Patterns*, 2004), and Karl Wiegers & Joy Beatty (*Software Requirements*, 2013), use cases represent **behavioral contracts** between stakeholders and the system. They describe the system's behavior under various conditions as it responds to a request from one of its stakeholders (the primary actor).
 
-In accordance with Cockburn's use case architecture and the GPTools standard:
-- **Level 0 (`{U.C. N}`):** Summary-level macro functional capabilities.
-- **Level 1 (`{U.C.n.m}`):** Elementary business user goals ("Sea Level"). Each use case describes a complete, atomic task completed by a single actor in a single operational context.
-- **Refinement Boundary:** Decomposition strictly terminates at Level 1. **Zero leaf nodes (`{U.C.n.m.k}`) and zero step-by-step procedural sequences** are specified in the functional baseline.
+Key literature principles enforced throughout this specification include:
+1. **Black-Box Perspective (Larman, 2004):** The use case specifies *what* the system does (its responsibilities and external contracts), never *how* internal components, database tables, or algorithms execute it.
+2. **Goal-Driven Scope (Cockburn, 2000):** Every use case is titled with an active verb phrase representing a clear, valuable user goal.
+3. **Dual Scenario Coverage (Cockburn, 2000):** A use case is incomplete if it only documents the "happy path". Literature mandates documenting both the **Main Success Scenario** (the typical, ideal progression) and **Extensions** (alternative flows, branch conditions, validation failures, and exception handling).
+4. **Verifiable Guarantees (Cockburn, 2000):** Every use case explicitly declares its **Success Guarantees** (what must be true if the goal is achieved) and **Minimal Guarantees** (what the system guarantees even if the goal fails, protecting system and data integrity).
 
-### 2.3 Non-Functional Requirements
+### 2.3 Anatomy of a Literature-Grounded Use Case
 
-System qualities (performance, availability, recoverability) are maintained in Section 5 as global constraints governing all use case implementations.
+Each Level-1 System Use Case in this document follows the formal, fully dressed specification card:
+
+| Field | Description & Literature Definition |
+|---|---|
+| **ID & Name** | Canonical identifier (`{U.C. n.m}`) and active verb phrase denoting the user goal. |
+| **Traceability** | Direct mapping to the underlying Functional Requirement (`R...`) and Product Use Case (`PUC...`) from `Doc01`. |
+| **Primary Actor** | The principal human user or external system initiating the interaction to achieve a business goal. |
+| **Supporting Actors** | Auxiliary subsystems or external services participating in the execution (e.g., Payment Gateway, Email Service). |
+| **Scope & Level** | System boundary: *TinyTask SaaS*; Level: *Sea Level (User Goal / Level 1)*. |
+| **Stakeholders & Interests** | The list of organizational stakeholders who care about the outcome and their specific interests. |
+| **Preconditions** | The state the system and actors must be in before the use case can be triggered. |
+| **Trigger** | The specific business event that initiates execution. |
+| **Main Success Scenario** | Numbered sequence of operational interactions between the Actor and the System (normal/happy path). |
+| **Extensions** | Branching conditions, business rule variations, and exception flows (e.g., `2a`, `3a`) indicating recovery paths. |
+| **Success Guarantees** | The postconditions that must hold when the use case completes successfully. |
+| **Minimal Guarantees** | The system state guaranteed even if the use case terminates prematurely (rollback, security preservation). |
+
+### 2.4 Refinement Boundary: Cockburn's Sea Level (Level 1) vs. Micro-UI Anti-Patterns
+
+A central lesson in Requirements Engineering is avoiding the **Clam-Level Decomposition Trap** (Anti-Pattern 3 in `phase3_functional_spec_guidelines.md`):
+- **Sea Level (User Goal — Level 1):** The interaction satisfies a complete, discrete business task in a single sitting that delivers measurable value to the user (e.g., *Create and assign tasks*, *Invite workspace members*, *Manage deliverable attachments*).
+- **Sub-function / Clam Level (Level 2+):** Micro-interactions such as clicking a specific button, focusing an input field, or validating a single string format.
+- **Rule:** Refinement strictly anchors at **Level 1 (`{U.C.n.m}`)**. There are **zero leaf nodes (`{U.C.n.m.k}`)** and **zero procedural UI scripts** in the baseline. Step sequences in the Main Success Scenario represent *business-level actor intent and system response*, not UI layout instructions.
 
 ---
 
@@ -71,41 +118,43 @@ System qualities (performance, availability, recoverability) are maintained in S
 
 ### 3.1 Work Context Model
 
-The following diagram illustrates the information boundaries between TinyTask SaaS and adjacent entities:
+The following diagram illustrates the information boundaries between TinyTask SaaS and adjacent external entities:
 
 ```mermaid
 flowchart TD
-    User["Team Members & Admins"] -->|Credentials, Tasks, Comments, Attachments| TT["TinyTask SaaS Platform"]
-    Owner["Workspace Owner"] -->|Subscription Tiers, Organization Data| TT
-    TT -->|Notifications & Task Digests| Mail["Notification / Email Service"]
-    TT -->|Checkout Sessions & Billing Updates| Gateway["External Payment Gateway"]
+    User["Team Members & Admins"] -->|Credentials, Tasks, Comments, Deliverables| TT["TinyTask SaaS Platform"]
+    Owner["Workspace Owner"] -->|Subscription Plans, Member Quotas, Data Archives| TT
+    TT -->|Transactional Emails & Task Digests| Mail["Notification / Email Service"]
+    TT -->|Checkout Sessions & Billing Inquiries| Gateway["External Payment Gateway"]
     Gateway -->|Payment Status Confirmations| TT
 ```
 
-### 3.2 Summary Table of Product Use Cases (PUC)
+### 3.2 Traceability Matrix: Requirements (Doc01) to System Use Cases (Doc02)
 
-*Table 1. Summary of Product Use Cases*
+The following matrix establishes strict bi-directional traceability between the 18 consolidated functional requirements from `Doc01` and the 18 Level-1 System Use Cases:
 
-| PUC ID | Business Trigger | Primary Actor | Target System Use Case |
-|---|---|---|---|
-| **PUC 1.1** | Visitor registers or requests access | Visitor / User | `{U.C. 1.1}` Register and authenticate user accounts |
-| **PUC 1.2** | User updates profile details | Registered User | `{U.C. 1.2}` Manage user profile and account preferences |
-| **PUC 2.1** | User instantiates a team workspace | Workspace Owner | `{U.C. 2.1}` Create and configure workspace |
-| **PUC 2.2** | Admin manages member roster | Workspace Admin | `{U.C. 2.2}` Invite workspace members and manage access roles |
-| **PUC 2.3** | Leadership requests usage metrics | Workspace Admin | `{U.C. 2.3}` Monitor workspace activity and operational metrics |
-| **PUC 3.1** | Team initializes new project | Workspace Member | `{U.C. 3.1}` Create and configure projects |
-| **PUC 3.2** | Team completes project lifecycle | Workspace Admin | `{U.C. 3.2}` Archive completed projects |
-| **PUC 4.1** | Member authors new work item | Workspace Member | `{U.C. 4.1}` Create and assign tasks |
-| **PUC 4.2** | Member transitions task or filters board | Workspace Member | `{U.C. 4.2}` Track and transition task workflow states on visual boards |
-| **PUC 4.3** | Recurring task is completed | Automated Daemon | `{U.C. 4.3}` Configure recurring automated tasks |
-| **PUC 5.1** | Member attaches deliverable file | Workspace Member | `{U.C. 5.1}` Manage task deliverable attachments |
-| **PUC 5.2** | Member comments on work item | Workspace Member | `{U.C. 5.2}` Post in-task discussion comments and mention collaborators |
-| **PUC 6.1** | User reviews task history | Workspace Member | `{U.C. 6.1}` Consult chronological audit history on task cards |
-| **PUC 6.2** | User consults alerts or daily digest | Registered User | `{U.C. 6.2}` Receive workspace alerts and daily task digests |
-| **PUC 7.1** | Owner upgrades commercial tier | Workspace Owner | `{U.C. 7.1}` Subscribe and manage workspace commercial plans |
-| **PUC 7.2** | Automated renewal charge fails | Payment Gateway | `{U.C. 7.2}` Enforce operational grace period upon payment failure |
-| **PUC 8.1** | User or Owner requests data export | User / Owner | `{U.C. 8.1}` Export personal and workspace data archives |
-| **PUC 8.2** | User requests account closure | Registered User | `{U.C. 8.2}` Close user accounts and terminate workspace access |
+*Table 1. Traceability Matrix*
+
+| Functional Req (Doc01) | Product Use Case (Doc01) | System Use Case (Doc02) | Use Case Title | Priority |
+|---|---|---|---|---|
+| **R1.1** | **PUC 1.1** | **{U.C. 1.1}** | Register and authenticate user accounts | MUST |
+| **R1.2** | **PUC 1.2** | **{U.C. 1.2}** | Manage user profile and account preferences | SHOULD |
+| **R2.1** | **PUC 2.1** | **{U.C. 2.1}** | Create and configure workspace | MUST |
+| **R2.2** | **PUC 2.2** | **{U.C. 2.2}** | Invite workspace members and manage access roles | MUST |
+| **R2.3** | **PUC 2.3** | **{U.C. 2.3}** | Monitor workspace activity and operational metrics | COULD |
+| **R3.1** | **PUC 3.1** | **{U.C. 3.1}** | Create and configure projects | MUST |
+| **R3.2** | **PUC 3.2** | **{U.C. 3.2}** | Archive completed projects | SHOULD |
+| **R4.1** | **PUC 4.1** | **{U.C. 4.1}** | Create and assign tasks | MUST |
+| **R4.2** | **PUC 4.2** | **{U.C. 4.2}** | Track and transition task workflow states on visual boards | MUST |
+| **R4.3** | **PUC 4.3** | **{U.C. 4.3}** | Configure recurring automated tasks | COULD |
+| **R5.1** | **PUC 5.1** | **{U.C. 5.1}** | Manage task deliverable attachments | MUST |
+| **R5.2** | **PUC 5.2** | **{U.C. 5.2}** | Post in-task discussion comments and mention collaborators | MUST |
+| **R6.1** | **PUC 6.1** | **{U.C. 6.1}** | Consult chronological audit history on task cards | MUST |
+| **R6.2** | **PUC 6.2** | **{U.C. 6.2}** | Receive workspace alerts and daily task digests | SHOULD |
+| **R7.1** | **PUC 7.1** | **{U.C. 7.1}** | Subscribe and manage workspace commercial plans | MUST |
+| **R7.2** | **PUC 7.2** | **{U.C. 7.2}** | Enforce operational grace period upon payment failure | MUST |
+| **R8.1** | **PUC 8.1** | **{U.C. 8.1}** | Export personal and workspace data archives | MUST |
+| **R8.2** | **PUC 8.2** | **{U.C. 8.2}** | Close user accounts and terminate workspace access | MUST |
 
 ---
 
@@ -113,141 +162,510 @@ flowchart TD
 
 ### 4.1 System Actors
 
-The platform defines four human roles and two external service actors:
-- **Workspace Owner:** Commercial and organizational administrative authority.
-- **Workspace Admin:** Team manager managing members, roles, and project containers.
-- **Workspace Member:** Standard contributor authoring tasks, comments, and attachments.
-- **Workspace Viewer:** Read-only guest reviewer.
-- **External Payment Gateway:** External billing processor handling subscriptions and payment confirmations.
-- **Notification / Email Service:** Subsystem dispatching transactional emails and digests.
+The platform defines four human user roles and two external supporting system actors:
+- **Workspace Owner:** Commercial and administrative authority. Controls billing, subscriptions, seat quotas, and organization-wide data archives.
+- **Workspace Admin:** Operational team coordinator. Manages workspace configuration, invites members, allocates access roles, and initializes projects.
+- **Workspace Member:** Standard contributor. Creates and updates tasks, uploads deliverables, participates in task discussions, and manages profile settings.
+- **Workspace Viewer:** Read-only guest or client observer. Accesses authorized projects, boards, and task details without edit rights.
+- **External Payment Gateway:** Third-party financial processor handling commercial plan checkout sessions and dispatching payment status confirmations.
+- **Notification / Email Service:** Subsystem responsible for dispatching activation emails, password reset links, assignment alerts, and daily digests.
 
 ---
 
-### 4.2 System Use Cases
+### 4.2 System Use Cases Specification
+
+---
 
 ### {U.C. 1} Manage User Accounts and Authentication
 
 #### {U.C. 1.1} Register and authenticate user accounts
+- **Traceability:** Requirement `R1.1` | Product Use Case `PUC 1.1`
 - **Primary Actor:** Unauthenticated Visitor / Registered User
-- **Goal:** Create a verified account, authenticate with credentials to establish an active session, or autonomously request password recovery assistance.
-- **Operational Scope:** The system validates registration details, sends email activation links, authenticates valid login submissions, and issues single-use reset links upon self-service recovery requests.
+- **Supporting Actors:** Notification / Email Service
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *Platform Founders:* Fast, self-service onboarding with low drop-off.
+  - *End Users:* Secure, reliable access to authorized team workspaces.
+- **Preconditions:** The user has access to a valid email inbox.
+- **Trigger:** A prospective user initiates account registration, an existing user attempts login, or a user requests credential recovery.
+- **Main Success Scenario (Happy Path):**
+  1. Actor submits registration details including full name, email address, and desired credentials.
+  2. System validates input format, verifies email address uniqueness, creates an unactivated account, and dispatches a time-limited email activation link.
+  3. Actor accesses the activation link sent via email.
+  4. System activates the account record and presents the login interface.
+  5. Actor submits valid credentials.
+  6. System verifies credentials, creates an active authenticated session, and returns the user's authorized workspace dashboard.
+- **Extensions (Alternative & Exception Flows):**
+  - **1a. Email already registered:**
+    - 1a1. System notifies actor that an account with that email already exists and offers login or password recovery options.
+  - **1b. Invalid credential format:**
+    - 1b1. System highlights formatting errors and prompts actor to supply conforming inputs.
+  - **3a. Activation link expired or tampered:**
+    - 3a1. System prompts actor that the link is invalid and offers to generate a fresh activation email.
+  - **5a. Actor forgot credentials (Password Recovery Flow):**
+    - 5a1. Actor submits registered email address on password recovery form.
+    - 5a2. System verifies email existence and dispatches a single-use, time-limited reset link.
+    - 5a3. Actor accesses reset link and provides a new password.
+    - 5a4. System updates credentials and invalidates reset link. Use case resumes at step 5.
+  - **5b. Invalid login credentials:**
+    - 5b1. System informs actor of authentication failure and increments failed attempt counter without revealing whether the email or password was incorrect.
+- **Success Guarantees (Postconditions):** An authenticated session is issued to the user; the user has access to authorized workspace rosters.
+- **Minimal Guarantees:** Failed attempts leave database credentials unmodified; no partial account records remain in an ambiguous state.
+
+---
 
 #### {U.C. 1.2} Manage user profile and account preferences
+- **Traceability:** Requirement `R1.2` | Product Use Case `PUC 1.2`
 - **Primary Actor:** Authenticated User
-- **Goal:** View and update personal profile details (full name, avatar, contact information) and configure operational notification preferences.
-- **Operational Scope:** The system stores updated profile parameters and applies notification preference filters to alert channels.
+- **Supporting Actors:** None
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *Team Contributors:* Maintain accurate identity details and control personal notification volume.
+- **Preconditions:** User possesses an active authenticated session.
+- **Trigger:** User accesses account settings to update personal information or adjust notification channels.
+- **Main Success Scenario:**
+  1. Actor navigates to profile settings and requests profile modification.
+  2. System displays current profile data (full name, avatar graphic, contact details, notification preferences).
+  3. Actor updates desired fields (e.g., changes display name, uploads new profile avatar, toggles email digest settings) and submits changes.
+  4. System validates inputs and checks avatar file size (maximum 2 MB).
+  5. System persists updated profile attributes and displays confirmation of successful update.
+- **Extensions:**
+  - **4a. Avatar graphic exceeds maximum size:**
+    - 4a1. System rejects file, informs actor of the 2 MB limit, and retains current avatar.
+  - **4b. Empty mandatory fields (e.g., blank name):**
+    - 4b1. System prompts actor that display name is mandatory and halts update.
+- **Success Guarantees:** Updated personal details and notification preferences take effect across all workspace views immediately.
+- **Minimal Guarantees:** In case of validation failure, existing profile data remains unchanged.
 
 ---
 
 ### {U.C. 2} Manage Workspaces and Teams
 
 #### {U.C. 2.1} Create and configure workspace
-- **Primary Actor:** Workspace Owner / Admin
-- **Goal:** Instantiate an isolated organizational workspace with unique URL slug and configure organization branding (name and logo).
-- **Operational Scope:** The system allocates tenant resources, assigns the creator as primary Owner, and stores branding metadata.
+- **Traceability:** Requirement `R2.1` | Product Use Case `PUC 2.1`
+- **Primary Actor:** Authenticated User (becoming Workspace Owner) / Workspace Admin
+- **Supporting Actors:** None
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *Business Customers:* Rapid creation of isolated, branded team collaboration environments.
+  - *Platform Leadership:* Clear tenant separation and initial account ownership.
+- **Preconditions:** Actor has an active authenticated user account.
+- **Trigger:** Actor requests the creation of a new organization workspace or edits an existing workspace profile.
+- **Main Success Scenario:**
+  1. Actor submits new workspace parameters: organization name, desired URL slug, and optional brand logo graphic.
+  2. System validates name and verifies that the requested URL slug is globally unique.
+  3. System provisions the isolated workspace container, sets default Free tier limits, and assigns the actor as the primary Workspace Owner.
+  4. System routes actor into the newly initialized workspace environment ready for project setup.
+- **Extensions:**
+  - **2a. Requested URL slug is already taken:**
+    - 2a1. System notifies actor and suggests available alternative slugs.
+  - **2b. Workspace branding update on existing workspace:**
+    - 2b1. Authorized Workspace Admin or Owner edits organization name or uploads new logo.
+    - 2b2. System updates workspace metadata and renders updated branding to all active members.
+- **Success Guarantees:** A logically isolated workspace is initialized; the creator possesses full administrative and billing privileges.
+- **Minimal Guarantees:** If slug collision occurs, no partial workspace container is provisioned.
+
+---
 
 #### {U.C. 2.2} Invite workspace members and manage access roles
-- **Primary Actor:** Workspace Admin / Owner
-- **Goal:** Invite team members via email, assign access roles (Owner, Admin, Member, Viewer), update member roles, or revoke workspace access.
-- **Operational Scope:** The system verifies seat quotas, dispatches email invitations, and maintains the workspace authorization roster.
+- **Traceability:** Requirement `R2.2` | Product Use Case `PUC 2.2`
+- **Primary Actor:** Workspace Admin / Workspace Owner
+- **Supporting Actors:** Notification / Email Service
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *Team Leads:* Flexible team onboarding and role governance without administrative overhead.
+  - *Executive Leadership:* Strict enforcement of subscription seat quotas and role boundaries.
+- **Preconditions:** Actor is authenticated with Admin or Owner privileges in the target workspace.
+- **Trigger:** Admin decides to add team collaborators, adjust an existing member's operational role, or revoke access.
+- **Main Success Scenario:**
+  1. Actor accesses member management interface and submits one or more collaborator email addresses with assigned initial roles (Admin, Member, Viewer).
+  2. System verifies that adding the requested users will not exceed the workspace's active member seat limit.
+  3. System generates unique invitation tokens and dispatches invitation emails with onboarding links to invitees.
+  4. System logs pending invitations in the workspace member roster.
+- **Extensions:**
+  - **2a. Member limit reached under active subscription plan:**
+    - 2a1. System halts invitation, notifies actor that seat capacity is exhausted, and prompts the Workspace Owner to upgrade plan tier.
+  - **2b. Modifying an existing member's role:**
+    - 2b1. Actor selects an existing member and updates their role (e.g., Member to Admin).
+    - 2b2. System verifies actor has authority (only Owners can appoint Admins) and commits the updated role.
+  - **2c. Revoking workspace membership:**
+    - 2c1. Actor selects member to remove and confirms revocation.
+    - 2c2. System verifies member is not the Workspace Owner (Owner cannot be removed).
+    - 2c3. System revokes workspace access tokens, ends active project assignments, and frees one seat in the member quota.
+- **Success Guarantees:** Roster reflects updated members and roles; authorization rules are strictly updated for subsequent actions.
+- **Minimal Guarantees:** The primary Workspace Owner role cannot be revoked or orphaned.
+
+---
 
 #### {U.C. 2.3} Monitor workspace activity and operational metrics
-- **Primary Actor:** Workspace Admin / Owner
-- **Goal:** Review aggregated operational metrics including active members, completed tasks, and total deliverable file storage consumed.
-- **Operational Scope:** The system compiles activity statistics and displays real-time workspace resource utilization.
+- **Traceability:** Requirement `R2.3` | Product Use Case `PUC 2.3`
+- **Primary Actor:** Workspace Admin / Workspace Owner
+- **Supporting Actors:** None
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *Team Leads & Owners:* Clear visibility into team productivity, task throughput, and resource utilization.
+- **Preconditions:** Actor holds Admin or Owner status in the workspace.
+- **Trigger:** Actor accesses the workspace management dashboard to review operational performance.
+- **Main Success Scenario:**
+  1. Actor requests workspace operational metrics view.
+  2. System queries operational data stores across projects and aggregates key performance metrics: total active members, tasks completed in current billing cycle, open overdue items, and total deliverable storage consumed.
+  3. System renders an aggregated metrics dashboard with visual progress indicators and utilization percentages against plan limits.
+- **Extensions:**
+  - **2a. Workspace has zero completed tasks:**
+    - 2a1. System displays baseline setup guide and empty-state placeholders.
+- **Success Guarantees:** Accurate, read-only operational telemetry is delivered to authorized management.
+- **Minimal Guarantees:** Metrics query executes read-only operations without impacting operational board latency.
 
 ---
 
 ### {U.C. 3} Manage Projects
 
 #### {U.C. 3.1} Create and configure projects
-- **Primary Actor:** Workspace Admin / Member
-- **Goal:** Create project containers with project name, deliverables description, and visibility settings (workspace-wide or restricted).
-- **Operational Scope:** The system stores project records, initializes project board views, and restricts access to designated members.
+- **Traceability:** Requirement `R3.1` | Product Use Case `PUC 3.1`
+- **Primary Actor:** Workspace Admin / Workspace Member
+- **Supporting Actors:** None
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *Project Managers:* Structuring client deliverables and team work streams into coherent containers.
+  - *Team Contributors:* Clear organization and scope boundaries for tasks.
+- **Preconditions:** Actor is an active member or admin of the workspace.
+- **Trigger:** Team initiates a new operational project or client engagement.
+- **Main Success Scenario:**
+  1. Actor requests project creation and submits project parameters: mandatory title, optional description of deliverables, and visibility setting (workspace-wide or private to designated members).
+  2. System validates input data, assigns the actor as project creator, and initializes default task workflow columns (To-Do, In-Progress, Under-Review, Done).
+  3. System records project entity and redirects actor to the initialized interactive project board.
+- **Extensions:**
+  - **1a. Blank project title:**
+    - 1a1. System flags title as mandatory and prompts actor to provide a valid name.
+  - **1b. Restricted project visibility configured:**
+    - 1b1. Actor selects specific workspace members allowed to access the project.
+    - 1b2. System restricts project board view strictly to the authorized subset of members.
+- **Success Guarantees:** Project container is provisioned with default workflow columns and accessible according to visibility rules.
+- **Minimal Guarantees:** Invalid creation parameters do not produce orphan project records.
+
+---
 
 #### {U.C. 3.2} Archive completed projects
-- **Primary Actor:** Workspace Admin / Owner
-- **Goal:** Transition completed projects to archived status to hide them from active operational views while preserving history.
-- **Operational Scope:** The system marks the project read-only and archives all associated task boards.
+- **Traceability:** Requirement `R3.2` | Product Use Case `PUC 3.2`
+- **Primary Actor:** Workspace Admin / Workspace Owner
+- **Supporting Actors:** None
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *Team Leads:* Decluttering active workspaces while retaining complete historical deliverable auditability.
+- **Preconditions:** Actor possesses Admin or Owner role in the workspace; project is active.
+- **Trigger:** All project deliverables are finalized and the project lifecycle reaches completion.
+- **Main Success Scenario:**
+  1. Actor accesses project settings and selects the archive project option.
+  2. System prompts for confirmation, detailing that the project will transition to read-only status and disappear from daily operational board menus.
+  3. Actor confirms archival.
+  4. System transitions project state to archived, marks all enclosed tasks and discussions as read-only, and records timestamp and actor identity in audit logs.
+  5. System updates workspace navigation, removing the project from active lists and moving it to the archived repository view.
+- **Extensions:**
+  - **1a. Unarchiving an archived project:**
+    - 1a1. Actor locates project in archived repository and selects "Restore Project".
+    - 1a2. System restores project to active status and enables editing capabilities.
+- **Success Guarantees:** Project is read-only; historical tasks, discussions, and attachments remain accessible for compliance and reference.
+- **Minimal Guarantees:** Archival preserves 100% of historical data integrity; no records or attachments are deleted.
 
 ---
 
 ### {U.C. 4} Manage and Execute Tasks
 
 #### {U.C. 4.1} Create and assign tasks
-- **Primary Actor:** Workspace Member / Admin
-- **Goal:** Create task cards with title, description, priority (Low, Medium, High, Urgent), and due date, and assign tasks to active members.
-- **Operational Scope:** The system stores task attributes in "To-Do" status and dispatches assignment alerts to designated members.
+- **Traceability:** Requirement `R4.1` | Product Use Case `PUC 4.1`
+- **Primary Actor:** Workspace Member / Workspace Admin
+- **Supporting Actors:** Notification / Email Service
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *Team Contributors & Leads:* Rapid, frictionless capture of actionable work items with clear ownership and deadlines.
+- **Preconditions:** Actor has member access to the parent active project.
+- **Trigger:** A new actionable work item or deliverable requirement arises.
+- **Main Success Scenario:**
+  1. Actor initiates task creation within a project and submits task attributes: mandatory title, optional description, priority level (Low, Medium, High, Urgent), target due date, and assigns one or more active workspace members.
+  2. System validates input data, initializes task in the "To-Do" status column, and assigns a unique task identifier.
+  3. System records task creation event in task audit history.
+  4. System generates internal assignment notifications for each assigned collaborator and dispatches notification alerts.
+  5. System displays the new task card on the project visual board.
+- **Extensions:**
+  - **1a. Missing mandatory title:**
+    - 1a1. System prompts actor to enter a descriptive title.
+  - **1b. Due date specified in the past:**
+    - 1b1. System alerts actor that due date is prior to current date, permitting override if intentional for historical logging.
+  - **1c. Assignee is not a member of the project:**
+    - 1c1. System limits member picker strictly to users authorized on the project container.
+- **Success Guarantees:** Task card exists in the project backlog with assigned collaborators and initial status; assignees receive notifications.
+- **Minimal Guarantees:** Incomplete submissions do not create empty task items.
+
+---
 
 #### {U.C. 4.2} Track and transition task workflow states on visual boards
-- **Primary Actor:** Workspace Member / Admin / Viewer
-- **Goal:** Visualize tasks on interactive Kanban boards, transition cards across status columns (To-Do, In-Progress, Under-Review, Done), and filter board views.
-- **Operational Scope:** The system updates task state models, records timestamped transitions, and applies real-time multi-criteria filters.
+- **Traceability:** Requirement `R4.2` | Product Use Case `PUC 4.2`
+- **Primary Actor:** Workspace Member / Workspace Admin / Workspace Viewer
+- **Supporting Actors:** None
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *Team Contributors:* Real-time operational visibility into workload, bottlenecks, and delivery progress.
+  - *Clients & Viewers:* Transparent status updates without interrupting contributors.
+- **Preconditions:** User has access rights to the project board.
+- **Trigger:** Actor accesses the project board to inspect progress, filters the view, or moves a task card to reflect progress.
+- **Main Success Scenario:**
+  1. Actor opens the project board view.
+  2. System queries active tasks and renders them categorized in visual status columns: To-Do, In-Progress, Under-Review, Done.
+  3. Actor applies filter parameters (e.g., filter by specific assignee, urgent priority, or overdue due dates).
+  4. System dynamically refreshes displayed task cards matching filter criteria.
+  5. Actor transitions a task card from current column to a target status column (e.g., from "In-Progress" to "Under-Review").
+  6. System verifies actor's edit authorization, updates the task state, records the transition event (author, prior state, new state, timestamp) in the task history, and updates board counters.
+- **Extensions:**
+  - **5a. Actor holds Viewer role (Read-Only):**
+    - 5a1. System prevents state transitions and presents read-only board controls.
+  - **5b. Task moved directly to "Done":**
+    - 5b1. System records completion timestamp and checks whether task recurrence rules apply (triggering {U.C. 4.3} if configured).
+- **Success Guarantees:** Task state transition is committed and reflected immediately across all team views; audit trail is updated.
+- **Minimal Guarantees:** If concurrent state modification occurs, system reconciles to the latest valid transition without data corruption.
+
+---
 
 #### {U.C. 4.3} Configure recurring automated tasks
-- **Primary Actor:** Workspace Member / Admin
-- **Goal:** Define recurring schedules (weekly, monthly) that automatically generate a new task instance upon completion of the current task.
-- **Operational Scope:** The system registers recurrence triggers and instantiates duplicated tasks in "To-Do" when marked "Done".
+- **Traceability:** Requirement `R4.3` | Product Use Case `PUC 4.3`
+- **Primary Actor:** Workspace Member / Workspace Admin (supported by Automated System Daemon)
+- **Supporting Actors:** Automated System Daemon
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *Team Contributors:* Eliminate manual effort in recreating repetitive operational duties (e.g., weekly syncs, monthly reviews).
+- **Preconditions:** Task exists within an active project.
+- **Trigger:** User sets a recurrence schedule on a task, or a recurring task is transitioned to "Done".
+- **Main Success Scenario:**
+  1. Actor opens task details and configures a recurrence rule (e.g., every Monday, or 1st of every month).
+  2. System validates schedule and attaches the recurrence rule to the task record.
+  3. During operational execution, a team member transitions the current task instance to "Done".
+  4. System marks the current instance "Done" and automatically instantiates a new duplicate task card in the "To-Do" column with due date set to the next scheduled interval.
+  5. System copies task title, description, priority, and assignees to the new instance, leaving previous comments and attachments attached to the completed historical instance.
+- **Extensions:**
+  - **1a. Actor disables recurrence:**
+    - 1a1. Actor removes recurrence schedule.
+    - 1a2. System updates task record; task behaves as standard one-off item upon completion.
+- **Success Guarantees:** Future recurring work items are scheduled and automatically instantiated without manual overhead.
+- **Minimal Guarantees:** Failure in recurrence instantiation does not prevent the current task from successfully completing.
 
 ---
 
 ### {U.C. 5} Collaborate on Task Deliverables
 
 #### {U.C. 5.1} Manage task deliverable attachments
-- **Primary Actor:** Workspace Member / Admin / Viewer
-- **Goal:** Upload deliverable files up to 25 MB directly to task cards, view inline previews, download deliverables, and remove outdated files.
-- **Operational Scope:** The system stores files in the file storage service, indexes attachment metadata, and verifies download/removal rights.
+- **Traceability:** Requirement `R5.1` | Product Use Case `PUC 5.1`
+- **Primary Actor:** Workspace Member / Workspace Admin / Workspace Viewer
+- **Supporting Actors:** None
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *Contributors & Clients:* Centralize deliverable files in context, eliminating lost attachments and email silos.
+- **Preconditions:** User has access to the task card; member rights required for upload/delete; view rights sufficient for download.
+- **Trigger:** Actor attaches a supporting document, downloads a deliverable, or deletes an obsolete file.
+- **Main Success Scenario:**
+  1. Actor accesses task card attachment section and selects a local file to upload.
+  2. System validates file size against the 25 MB ceiling and verifies authorized file extensions (documents, spreadsheets, images).
+  3. System streams file to the file storage service, indexes attachment metadata (filename, size, author, timestamp), and binds it to the task.
+  4. System generates and displays an inline preview thumbnail and updates the task attachment badge counter.
+  5. System records attachment upload in task audit history.
+- **Extensions:**
+  - **2a. File exceeds 25 MB size limit:**
+    - 2a1. System rejects file upload, notifies actor of size violation, and prompts to select a smaller file.
+  - **2b. Downloading an attachment:**
+    - 2b1. Actor (Member, Admin, or Viewer) clicks download on an attachment.
+    - 2b2. System delivers the file binary stream.
+  - **2c. Removing an attachment:**
+    - 2c1. Authorized actor (uploader or Admin) requests attachment deletion.
+    - 2c2. System verifies deletion rights, removes file from storage service, detaches metadata, and logs deletion event in audit history.
+- **Success Guarantees:** Deliverable file is stored, indexed, and available for authorized team retrieval; audit log records file lifecycle.
+- **Minimal Guarantees:** Aborted uploads leave no orphaned binary fragments in storage.
+
+---
 
 #### {U.C. 5.2} Post in-task discussion comments and mention collaborators
-- **Primary Actor:** Workspace Member / Admin
-- **Goal:** Publish rich text Markdown comments in contextual task threads and @mention collaborators to trigger automated alerts.
-- **Operational Scope:** The system records comments in chronological order and dispatches in-app alerts to mentioned collaborators.
+- **Traceability:** Requirement `R5.2` | Product Use Case `PUC 5.2`
+- **Primary Actor:** Workspace Member / Workspace Admin
+- **Supporting Actors:** Notification / Email Service
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *Team Contributors:* Maintain focused, contextual communication directly bound to deliverables.
+- **Preconditions:** Actor has member access to the project.
+- **Trigger:** Collaborator posts a status note, asks a question, or tags a teammate on a task card.
+- **Main Success Scenario:**
+  1. Actor opens task card discussion section and enters comment text utilizing Markdown formatting.
+  2. Actor types collaborator mention (`@collaborator`) selecting a target workspace member from the auto-complete suggestion list.
+  3. Actor submits comment.
+  4. System parses text, validates non-empty content, records comment in the task thread with author identity and timestamp.
+  5. System identifies mentioned users and generates in-app notification alerts linking directly to the comment.
+  6. System displays the new comment at the end of the chronological discussion thread.
+- **Extensions:**
+  - **1a. Empty comment submission:**
+    - 1a1. System disables submission until non-whitespace text is entered.
+  - **4a. Mentioned user has disabled email alerts:**
+    - 4a1. System respects user preferences, generating in-app notification while suppressing external email dispatch.
+- **Success Guarantees:** Comment is permanently appended to task context; tagged collaborators are alerted immediately.
+- **Minimal Guarantees:** Discussion history remains immutable; comments cannot be silently overwritten by other users.
 
 ---
 
 ### {U.C. 6} Track Activity History and Notifications
 
 #### {U.C. 6.1} Consult chronological audit history on task cards
-- **Primary Actor:** Authorized Workspace Users
-- **Goal:** Inspect a chronological audit feed documenting all task modifications, assignee updates, state transitions, and file events.
-- **Operational Scope:** The system queries audit log tables and renders an immutable historical timeline on the task card.
+- **Traceability:** Requirement `R6.1` | Product Use Case `PUC 6.1`
+- **Primary Actor:** Authorized Workspace Users (Member, Admin, Owner, Viewer)
+- **Supporting Actors:** None
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *Project Managers & Team Leads:* Complete traceability and operational accountability for all task modifications.
+- **Preconditions:** User has access rights to view the task card.
+- **Trigger:** Actor opens the task details card and navigates to the activity history tab.
+- **Main Success Scenario:**
+  1. Actor opens the activity history tab on a task card.
+  2. System queries the immutable audit log table for all events tied to the task identifier.
+  3. System renders a chronological timeline displaying: task creation, state transitions, assignee reallocations, due date changes, and attachment uploads/deletions, detailing the performing actor and exact timestamp for each event.
+- **Extensions:**
+  - **2a. Task has no historical modifications beyond creation:**
+    - 2a1. System displays task creation event as the solitary timeline entry.
+- **Success Guarantees:** Complete, tamper-evident audit history is presented to authorized users.
+- **Minimal Guarantees:** History records are strictly read-only; no user action can alter historical audit entries.
+
+---
 
 #### {U.C. 6.2} Receive workspace alerts and daily task digests
+- **Traceability:** Requirement `R6.2` | Product Use Case `PUC 6.2`
 - **Primary Actor:** Registered User
-- **Goal:** Consult an in-app notification center for direct assignments and mentions, and receive an automated morning email digest of pending tasks.
-- **Operational Scope:** The system tracks unread notification counters and runs scheduled morning email digest jobs.
+- **Supporting Actors:** Notification / Email Service
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *Team Contributors:* Stay informed of immediate assignments and critical deadlines without notification overload.
+- **Preconditions:** User holds an active account in one or more workspaces.
+- **Trigger:** User logs into the platform and checks the notification center, or scheduled morning digest daemon triggers.
+- **Main Success Scenario:**
+  1. Actor accesses platform interface and inspects notification bell icon displaying an unread alert counter.
+  2. Actor clicks notification center; System displays an actionable list of recent notifications (task assignments, @mentions).
+  3. Actor clicks a notification item; System marks the notification as read and navigates directly to the target task card.
+  4. Concurrently, at scheduled morning time (08:00 local workspace time), system identifies all tasks due today or overdue for the user and dispatches a consolidated email digest.
+- **Extensions:**
+  - **1a. User has zero unread notifications:**
+    - 1a1. System displays empty notification state ("All caught up").
+  - **4a. User has opted out of daily email digests in profile preferences:**
+    - 4a1. System skips email compilation for that user, preserving in-app notifications only.
+- **Success Guarantees:** User receives timely operational alerts and morning work prioritization guidance.
+- **Minimal Guarantees:** Notification delivery failures are retried automatically without interrupting in-app operational workflows.
 
 ---
 
 ### {U.C. 7} Manage Commercial Subscriptions
 
 #### {U.C. 7.1} Subscribe and manage workspace commercial plans
+- **Traceability:** Requirement `R7.1` | Product Use Case `PUC 7.1`
 - **Primary Actor:** Workspace Owner
-- **Goal:** Select plan tiers (Free, Pro, Enterprise) and complete checkout via the payment gateway, updating tier quotas upon payment confirmation.
-- **Operational Scope:** The system redirects to hosted checkout sessions and updates workspace member quotas and renewal dates upon payment receipt.
+- **Supporting Actors:** External Payment Gateway
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *Workspace Owner:* Transparent self-service billing, predictable licensing, and instant seat capacity expansion.
+  - *Platform Leadership:* Automated subscription revenue capture and accurate quota management.
+- **Preconditions:** Actor is authenticated and holds the Workspace Owner role.
+- **Trigger:** Owner decides to upgrade from Free tier to Pro or Enterprise, or updates payment details.
+- **Main Success Scenario:**
+  1. Actor navigates to workspace billing management and selects desired commercial plan tier and seat quantity.
+  2. System initiates checkout session with the external payment gateway, transferring plan metadata and success/cancel callback parameters.
+  3. System redirects actor's browser to the payment gateway's secure hosted payment page.
+  4. Actor completes payment transaction with the external payment provider.
+  5. External payment gateway records successful payment and dispatches asynchronous signed payment confirmation to the platform core.
+  6. System verifies payment confirmation signature, updates workspace subscription record (plan tier, renewal date, payment status), and instantly expands the authorized member seat quota.
+  7. Actor returns to TinyTask workspace, which displays confirmed active tier status and expanded member capacity.
+- **Extensions:**
+  - **4a. Actor cancels checkout on external gateway page:**
+    - 4a1. Payment gateway redirects actor back to TinyTask workspace via cancel callback.
+    - 4a2. System retains current plan status and presents checkout cancellation notice.
+  - **5a. Payment authorization rejected by financial institution:**
+    - 5a1. Payment gateway notifies actor of rejection and prompts for alternative payment method.
+- **Success Guarantees:** Subscription plan and member seat limits are automatically upgraded upon payment confirmation.
+- **Minimal Guarantees:** No credit card credentials ever cross or reside within TinyTask infrastructure; quotas only adjust upon verified payment.
+
+---
 
 #### {U.C. 7.2} Enforce operational grace period upon payment failure
+- **Traceability:** Requirement `R7.2` | Product Use Case `PUC 7.2`
 - **Primary Actor:** External Payment Gateway / Workspace Owner
-- **Goal:** Maintain operational access under a 7-day grace period following a payment failure while prompting for billing updates.
-- **Operational Scope:** The system records billing status warnings, maintains normal operations, and restricts access if unresolved after 7 days.
+- **Supporting Actors:** External Payment Gateway, Notification / Email Service
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *Business Customers:* Business continuity and prevention of abrupt work stoppage due to transient card failures.
+  - *Finance Operations:* Systematic recovery of unpaid renewals before service termination.
+- **Preconditions:** Workspace possesses an active paid commercial subscription reaching its renewal billing cycle.
+- **Trigger:** Automated recurring subscription renewal payment fails at the external payment gateway.
+- **Main Success Scenario:**
+  1. External payment gateway attempts recurring subscription charge; transaction fails (e.g., expired card, insufficient funds).
+  2. External payment gateway dispatches payment failure event to TinyTask platform.
+  3. System registers payment failure and initiates a 7-day operational grace period.
+  4. System dispatches urgent notification email to the Workspace Owner and displays an administrative payment warning banner within the workspace.
+  5. During the 7-day grace period, all workspace members retain full normal operational access to projects and tasks.
+  6. Workspace Owner accesses billing settings and updates payment credentials via the external payment gateway.
+  7. Payment gateway successfully charges renewal and dispatches payment confirmation.
+  8. System lifts the grace period and clears warning banners.
+- **Extensions:**
+  - **6a. Grace period expires without payment resolution (Day 8):**
+    - 6a1. System automatically transitions workspace to restricted read-only status and suspends member invitations until billing is rectified.
+- **Success Guarantees:** Team operations are shielded from immediate disruption during temporary financial glitches; resolution restores normal status cleanly.
+- **Minimal Guarantees:** Client project data and attachments are completely protected from deletion during grace and suspension periods.
 
 ---
 
 ### {U.C. 8} Export Data and Close Accounts
 
 #### {U.C. 8.1} Export personal and workspace data archives
+- **Traceability:** Requirement `R8.1` | Product Use Case `PUC 8.1`
 - **Primary Actor:** Authenticated User / Workspace Owner
-- **Goal:** Download structured exports of personal profile data and authored tasks, or full workspace archive packages of projects and deliverables.
-- **Operational Scope:** The system compiles structured data files and deliverable attachments into secure, downloadable archives.
+- **Supporting Actors:** None
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *End Users & Customers:* Autonomous data portability, offline backup capability, and complete vendor autonomy.
+- **Preconditions:** Actor possesses valid authenticated session; workspace export restricted to Workspace Owner.
+- **Trigger:** User requests export of personal profile and task data, or Workspace Owner requests full organization archive.
+- **Main Success Scenario:**
+  1. Actor accesses data export options in settings menu and selects desired export scope (personal data export or full workspace archive).
+  2. System verifies actor's authorization (Owner role required for workspace-level export).
+  3. System initiates background archive compilation, aggregating user profile records, project details, task cards, comment histories, and deliverable attachments into structured JSON and standard archive formats.
+  4. System compiles package and presents a secure, authenticated download link to the actor.
+  5. Actor downloads the comprehensive archive package to their local workstation.
+- **Extensions:**
+  - **2a. Non-Owner attempts workspace-level export:**
+    - 2a1. System rejects request with authorization notice, permitting personal data export only.
+  - **3a. Large workspace archive compilation:**
+    - 3a1. System notifies actor that compilation is queued and sends an email notification with download link once ready.
+- **Success Guarantees:** Complete, structured operational and personal data is delivered to the user without data omission.
+- **Minimal Guarantees:** Archive compilation executes asynchronously in read-only mode without impacting concurrent project editing.
+
+---
 
 #### {U.C. 8.2} Close user accounts and terminate workspace access
+- **Traceability:** Requirement `R8.2` | Product Use Case `PUC 8.2`
 - **Primary Actor:** Authenticated User
-- **Goal:** Autonomously close a user account, invalidating credentials and active sessions, and receiving an email confirmation receipt.
-- **Operational Scope:** The system deactivates credentials, removes active workspace memberships, and dispatches a final confirmation receipt.
+- **Supporting Actors:** Notification / Email Service
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *End Users:* Full sovereignty over account lifecycle and certainty of credential deactivation.
+  - *Workspace Admins:* Immediate revocation of departed member access privileges.
+- **Preconditions:** Actor possesses an active authenticated user account.
+- **Trigger:** User chooses to terminate their platform account.
+- **Main Success Scenario:**
+  1. Actor accesses account security settings and selects "Close Account".
+  2. System presents warning regarding permanent loss of credentials and severance of workspace memberships, requiring explicit confirmation.
+  3. Actor confirms account termination.
+  4. System invalidates all active sessions, revokes authentication tokens, marks the user account as closed, and removes active workspace memberships.
+  5. System dispatches a formal digital confirmation receipt via email certifying account termination date and time.
+  6. System terminates user session and redirects browser to public landing page.
+- **Extensions:**
+  - **3a. Actor is the sole Workspace Owner of an active multi-member workspace:**
+    - 3a1. System halts account closure, notifying actor that workspace ownership must be transferred to another administrator or the workspace deleted before closing the personal account.
+- **Success Guarantees:** User credentials and sessions are permanently deactivated; workspace access is revoked; confirmation receipt is sent.
+- **Minimal Guarantees:** Existing project tasks authored by the user retain historical attribution without breaking project integrity; orphaned ownership is prevented.
 
 ---
 
 ## 5. Non-Functional Requirements
+
+The non-functional requirements define the platform's performance, availability, and usability targets governing all use cases:
 
 *Table 2. Non-Functional Requirements Summary*
 
@@ -267,17 +685,20 @@ The platform defines four human roles and two external service actors:
 ## 6. Conclusions
 
 The system use case model establishes an exhaustive, literature-aligned functional baseline for TinyTask SaaS:
-1. **Total Sea-Level Fidelity:** 16 Level-1 use cases cleanly cover all operational capabilities.
-2. **Pure Functionality:** Zero pre-baked security or vendor-specific technology lock-in.
-3. **AEGIS Phase 3 Ready:** Provides an unambiguous canvas for security assertions, trust boundary mapping, and regulatory requirement derivation.
+1. **Total Sea-Level Fidelity:** 18 Level-1 use cases cleanly cover all operational capabilities without leaf-node noise or micro-UI procedural scripts.
+2. **Exhaustive Behavioral Contracts:** Each use case specifies pre/post conditions, black-box main success scenarios, and branching alternative/exception flows.
+3. **Seamless Sequential Traceability:** Direct 1:1 mapping from `Doc01` requirements (`R1.1`–`R8.2`) and PUCs (`PUC 1.1`–`PUC 8.2`) to System Use Cases (`{U.C. 1.1}`–`{U.C. 8.2}`).
+4. **AEGIS Phase 3 Synthesis Ready:** Provides a rich, verified functional canvas for attack surface mapping, trust boundary analysis, and regulatory requirement derivation.
 
 ---
 
 ## 7. Bibliography
 
 - Cockburn, A. (2000). *Writing Effective Use Cases*. Addison-Wesley Professional.
+- Larman, C. (2004). *Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development* (3rd ed.). Prentice Hall.
 - Robertson, S., & Robertson, J. (2012). *Mastering the Requirements Process: Getting Requirements Right* (3rd ed.). Addison-Wesley Professional.
 - Wiegers, K., & Beatty, J. (2013). *Software Requirements* (3rd ed.). Microsoft Press.
+- Centro de Computação Gráfica (CCG) & PIEP. (2023). *E1.2 – GPTools_AnáliseRequisitos_CasosDeUso_V4.0: Especificação de Casos de Uso e Decomposição Funcional*. Guimarães, Portugal.
 
 ---
 
@@ -287,4 +708,5 @@ The system use case model establishes an exhaustive, literature-aligned function
 |---|---|---|---|
 | **1.0.0** | 2026-09-23 | Requirements Engineering Agent | Initial baseline System Use Cases (GPTools E1.2 model). |
 | **2.0.0** | 2026-09-23 | Requirements Engineering Agent | Pure functional alignment, active English verbs, zero leaf nodes. |
-| **2.1.0** | 2026-09-23 | Requirements Engineering Agent | Consolidated to 16 Sea-Level use cases matching consolidated business requirements. |
+| **2.1.0** | 2026-09-23 | Requirements Engineering Agent | Consolidated to 18 Sea-Level use cases matching consolidated business requirements. |
+| **3.0.0** | 2026-09-23 | Requirements Engineering Agent | Literature-grounded overhaul (Cockburn, Larman, Wiegers) with full pre/post conditions, main success scenarios, and extension flows for all 18 use cases. |

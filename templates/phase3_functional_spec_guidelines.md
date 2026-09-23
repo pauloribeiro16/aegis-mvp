@@ -201,17 +201,27 @@ Deliverable `Doc02` mirrors `E1.2 – GPTools_AnáliseRequisitos_CasosDeUso_V4.0
 - **7. Bibliography**
 - **Version History**
 
-### 4.2 Use Case Granularity Rules (Cockburn Sea-Level Discipline)
-1. **Refinement Stops at Level 1:**
-   - Every use case must be expressed at **Level 1 (`{U.C.n.m}`)** — Cockburn's "User Goal / Sea Level".
-2. **Absolute Ban on Leaf Nodes:**
+### 4.2 Use Case Granularity & Literature Best Practices (Cockburn & Larman Standard)
+
+1. **Refinement Stops at Level 1 (Cockburn Sea-Level Discipline):**
+   - Every use case must be expressed at **Level 1 (`{U.C.n.m}`)** — Cockburn's "User Goal / Sea Level". A Sea-Level use case represents an elementary business task completed by a single actor in a single sitting that delivers measurable value to the user.
+2. **Absolute Ban on Leaf Nodes and Micro-UI Procedural Scripts:**
    - Never decompose into `{U.C.n.m.k}`.
-   - Never write step-by-step procedural execution sequences ("Step 1: User navigates to page; Step 2: User clicks input field; Step 3: ...").
-3. **Use Case Narrative Structure:**
-   - Each `{U.C.n.m}` describes:
-     - The triggering primary actor.
-     - The operational business intent.
-     - The system's processing response and output deliverable.
+   - Never write micro-UI procedural scripts ("Step 1: User navigates to URL; Step 2: User clicks blue button; Step 3: User focuses input..."). Step sequences in use cases must represent *functional actor intent and black-box system validation/commit*, not UI layout instructions.
+3. **Literature-Grounded Use Case Anatomy (Cockburn Fully Dressed Format):**
+   - Each `{U.C.n.m}` specification must adhere to the standard literature template (Cockburn, 2000; Larman, 2004; Wiegers & Beatty, 2013):
+     - **ID & Name:** Canonical identifier (`{U.C. n.m}`) and active verb phrase denoting the user goal.
+     - **Traceability:** Direct bidirectional mapping to underlying Functional Requirement (`R...`) and Product Use Case (`PUC...`) from `Doc01`.
+     - **Primary Actor:** The principal human user or external system initiating the interaction.
+     - **Supporting Actors:** Auxiliary services or external systems participating in the execution (e.g., Payment Gateway, Email Service).
+     - **Scope & Level:** System Boundary / Sea Level (User Goal / Level 1).
+     - **Stakeholders & Interests:** Key organizational beneficiaries and what they need guaranteed.
+     - **Preconditions:** The mandatory state of the system and actors before execution can trigger.
+     - **Trigger:** The business event that initiates execution.
+     - **Main Success Scenario (Happy Path):** Numbered sequence of operational interactions between Actor and System, describing business intent, input submission, system validation, state transition, and output delivery.
+     - **Extensions (Alternative & Exception Flows):** Branching conditions, business rule variations, and error recovery paths (e.g., `2a`, `3a`), ensuring comprehensive exception handling.
+     - **Success Guarantees (Postconditions):** What the system guarantees upon successful completion.
+     - **Minimal Guarantees:** What the system guarantees even if the goal fails (data integrity, rollback, audit recording).
 
 ---
 

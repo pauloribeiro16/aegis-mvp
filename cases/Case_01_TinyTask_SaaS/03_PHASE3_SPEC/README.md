@@ -18,6 +18,13 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 ├── README.md                                    # (This file) Phase 3 Navigation & Executive Index
 ├── PHASE3_PROCESS_AND_METHODOLOGY.md            # Master normative guide: RE literature, 4-step synthesis, and EARS rules
 │
+├── analysis_v0_to_v1/                           # [COGNITIVE TRAJECTORY] Step-by-Step Synthesis Dossier (AI Training Corpus)
+│   ├── README.md                                # Overview of cognitive trajectory and synthesis pipeline
+│   ├── STEP1_V0_FUNCTIONAL_AUDIT_AND_BOUNDARY_ANALYSIS.md        # Step 1: Functional audit, assets, and boundaries
+│   ├── STEP2_REGULATORY_CROSS_CUTTING_AND_THREAT_DERIVATION.md   # Step 2: Phase 2 rules mapping & threat modeling
+│   ├── STEP3_EARS_REQUIREMENT_FORMULATION_AND_FIT_CRITERIA.md    # Step 3: EARS formulation & Volere fit criteria
+│   └── STEP4_FUNCTIONAL_AUGMENTATION_AND_TRACEABILITY_WEAVING.md # Step 4: Use case Cockburn extensions & diffs
+│
 ├── v0_functional_baseline/                      # [VERSION 0] Pure Functional Baseline (LOCKED)
 │   ├── README.md                                # V0 Scope, Rationale, and Architecture
 │   ├── Doc01_Requirements_Elicitation_and_PUC.md# 18 Functional Requirements & 18 PUCs (Pure Functional GPTools E1.1)
@@ -48,6 +55,14 @@ All specifications in this directory are governed by [`PHASE3_PROCESS_AND_METHOD
 - **Status:** Locked.
 - **Content:** 18 atomic business requirements (`R1.1` to `R8.2`), 18 Product Use Cases (`PUC 1.1` to `PUC 8.2`), and 18 Sea-Level System Use Cases (`{U.C. 1.1}` to `{U.C. 8.2}`).
 - **Key Invariant:** Strictly pure functional, zero pre-baked security/privacy mechanisms, and 100% technology neutral (zero database/framework/cloud vendor names).
+
+### Cognitive Trajectory & Synthesis Analysis (`analysis_v0_to_v1/`)
+- **Status:** Complete AI Training & Research Corpus.
+- **Content:** 4-step detailed breakdown deconstructing every decision, threat model, EARS syntactic pattern, and use case transformation from V0 to V1:
+  - [`STEP1_V0_FUNCTIONAL_AUDIT_AND_BOUNDARY_ANALYSIS.md`](analysis_v0_to_v1/STEP1_V0_FUNCTIONAL_AUDIT_AND_BOUNDARY_ANALYSIS.md)
+  - [`STEP2_REGULATORY_CROSS_CUTTING_AND_THREAT_DERIVATION.md`](analysis_v0_to_v1/STEP2_REGULATORY_CROSS_CUTTING_AND_THREAT_DERIVATION.md)
+  - [`STEP3_EARS_REQUIREMENT_FORMULATION_AND_FIT_CRITERIA.md`](analysis_v0_to_v1/STEP3_EARS_REQUIREMENT_FORMULATION_AND_FIT_CRITERIA.md)
+  - [`STEP4_FUNCTIONAL_AUGMENTATION_AND_TRACEABILITY_WEAVING.md`](analysis_v0_to_v1/STEP4_FUNCTIONAL_AUGMENTATION_AND_TRACEABILITY_WEAVING.md)
 
 ### Version 1: Security & Privacy Synthesis (`v1_security_privacy_synthesis/`)
 - **Status:** Approved.

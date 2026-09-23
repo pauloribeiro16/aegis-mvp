@@ -28,8 +28,8 @@ A product manager drafting the security specification for TinyTask writes an ini
 
 #### `REQ-SEC-DATA-001` (Data-at-Rest Encryption)
 - **EARS Pattern:** Ubiquitous
-- **Specification:** The Database Subsystem SHALL encrypt all persistent storage volumes, tablespaces, and automated snapshots using AES-256-GCM with customer-isolated encryption keys managed via AWS KMS.
-- **Verification Method:** `[Infrastructure as Code Audit]` (Terraform compliance test asserting `storage_encrypted = true` and `kms_key_id` is defined).
+- **Specification:** The Database Subsystem SHALL encrypt all persistent storage volumes, tablespaces, and automated snapshots using an AEAD cipher (e.g. AES-256-GCM) with customer-isolated encryption keys.
+- **Verification Method:** `[Infrastructure Configuration Audit]` (Automated policy test asserting persistent storage encryption and key isolation).
 - **Traceability:** `PO-D-03.1-001` (GDPR Art. 32(1)(a)).
 
 #### `REQ-SEC-AUDT-001` (Security Event Audit Logging)

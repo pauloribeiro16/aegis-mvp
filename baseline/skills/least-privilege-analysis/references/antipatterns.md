@@ -1,112 +1,34 @@
-# Anti-Patterns & Smells — Least Privilege & Shared Mechanism
+# Anti-Patterns & Smells — Least Privilege & Mechanism Isolation
 
-Concrete configuration smells and architectural anti-patterns violating least privilege and least common mechanism.
-
----
-
-## 1. Container Root Execution & Docker Socket Mounting
-
-### Bad Pattern: Root Container with Host Docker Socket
-
-```yaml
-# docker-compose.yml
-services:
-  monitoring-agent:
-    image: custom-agent:latest
-    user: root # SMELL: Runs with UID 0
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock # SMELL: Full host control
-    privileged: true # SMELL: Disables all kernel security controls
-```
-
-**Consequence:** A compromise of `custom-agent` gives the attacker instant root access to the entire host operating system and all other co-located containers.
-
-**Hardened Pattern:**
-
-```yaml
-# docker-compose.yml
-services:
-  monitoring-agent:
-    image: custom-agent:latest
-    user: "10001:10001"
-    read_only: true
-    cap_drop:
-      - ALL
-    security_opt:
-      - no-new-privileges:true
-    # Hardened: No docker.sock mount; uses read-only cgroup metrics interface
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-```
+Functional use case smells and anti-patterns violating least privilege and mechanism isolation.
 
 ---
 
-## 2. Shared Database Superuser Connection
+## 1. Monolithic Role Authority
 
-### Bad Pattern: Application Using Postgres Superuser
-
-```env
-# .env application configuration
-DATABASE_URL=postgresql://postgres:master_password@db-host:5432/tinytask_prod
+### Bad Use Case Design Smell
+```markdown
+### Use Case: Manage Workspace
+1. User logs in.
+2. User can invite members, delete workspace, edit tasks, view billing invoices, and export system audit logs.
 ```
 
-**Consequence:** A single SQL injection flaw in any endpoint allows an attacker to execute administrative functions, write to the host filesystem via `pg_read_file` / `COPY`, or drop entire databases.
+**Why It Fails `PRIN-ENG-03`:**
+- Merges routine operational tasks (editing tasks) with high-risk administrative (deleting workspace) and financial (viewing invoices) capabilities into a single unsegregated role.
 
-**Hardened Pattern:**
-
-```sql
--- Database role hardening script
-CREATE ROLE tinytask_app WITH LOGIN PASSWORD 'app_secure_password';
-
--- Grant only required table-level DML
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO tinytask_app;
-REVOKE CREATE ON SCHEMA public FROM tinytask_app;
-REVOKE ALL PRIVILEGES ON DATABASE tinytask_prod FROM tinytask_app;
-```
-
-```env
-# Hardened connection string
-DATABASE_URL=postgresql://tinytask_app:app_secure_password@db-host:5432/tinytask_prod
-```
+**Hardened Use Case Pattern:**
+- Split into discrete, role-gated use cases: `UC-02: Task Collaboration` (Member), `UC-ADM-01: Workspace Governance` (Admin), and `UC-BIL-01: Invoice Management` (Owner).
 
 ---
 
-## 3. Shared Cryptographic Master Key Across Tenants
+## 2. Omnipotent Background Workers
 
-### Bad Pattern: Single Global Encryption Key Without Context
-
-```python
-# Encrypting tenant files using a static key without tenant separation
-def encrypt_tenant_file(file_bytes):
-    # SMELL: Shared mechanism. A key leak compromises all tenants simultaneously
-    cipher = Fernet(GLOBAL_SECRET_KEY)
-    return cipher.encrypt(file_bytes)
+### Bad Use Case Design Smell
+```markdown
+### Use Case: Generate Monthly Activity PDF
+1. System triggers monthly reporting worker.
+2. Worker queries all customer databases, payment ledgers, and authentication credential tables to compile PDF.
 ```
 
-**Consequence:** If one tenant's ciphertext is tampered with or if access is obtained by an insider, all tenant data is compromised simultaneously without cryptographic provenance.
-
-**Hardened Pattern:**
-
-```python
-# Envelope encryption with mandatory tenant encryption context in KMS
-def encrypt_tenant_file(file_bytes, tenant_id):
-    kms_client = boto3.client('kms')
-    response = kms_client.generate_data_key(
-        KeyId='alias/tinytask-data-kek',
-        KeySpec='AES_256',
-        EncryptionContext={'TenantId': tenant_id} # Hardened cryptographic binding
-    )
-    dek = response['Plaintext']
-    encrypted_dek = response['CiphertextBlob']
-    
-    # Encrypt file locally with DEK
-    nonce = os.urandom(12)
-    cipher = AESGCM(dek)
-    ciphertext = cipher.encrypt(nonce, file_bytes, tenant_id.encode('utf-8'))
-    
-    return {
-        'encrypted_dek': base64.b64encode(encrypted_dek).decode(),
-        'nonce': base64.b64encode(nonce).decode(),
-        'ciphertext': base64.b64encode(ciphertext).decode()
-    }
-```
+**Why It Fails `PRIN-ENG-03`:**
+- Grants the reporting worker broad read access to sensitive authentication and billing data that is completely irrelevant to compiling task activity statistics.

@@ -1,81 +1,71 @@
 # End-to-End Case Studies — Trust Boundary & Complete Mediation
 
-Realistic before-and-after architecture scenarios demonstrating trust boundary demarcation and complete mediation.
+Comprehensive before-and-after evaluations of functional Use Cases (`UC-*`) against `PRIN-ENG-01`.
 
 ---
 
-## Case Study 1: Asynchronous Worker & Queue Boundary Remediation
+## Case Study 1: Multi-Tenant Workspace Invitation (`UC-02`)
 
-### Context
-A document conversion platform processes user uploaded files asynchronously via a background task queue (RabbitMQ / SQS).
+### Initial (Flawed) Functional Use Case
 
-### Initial (Flawed) Architecture
+```markdown
+### Use Case: UC-02 — Workspace Member Invitation
+- **Primary Actor:** Authenticated User
+- **Pre-conditions:** User possesses an active account.
+- **Trigger:** User enters an email address and role to invite a collaborator to a workspace.
+- **Data Exchanged:** Target Workspace ID, Invitee Email, Assigned Role.
 
-```mermaid
-flowchart TD
-    User["Browser Client"]
-    Web["Web API Service"]
-    Queue["Task Message Queue"]
-    Worker["Background PDF Converter"]
-    S3[("S3 Storage Bucket")]
-    DB[("Customer DB")]
+#### Main Success Scenario:
+1. User submits invitation details with Workspace ID, Invitee Email, and Role.
+2. Ingress Gateway receives request and checks that User's session token is valid.
+3. System inserts invitation record into database for the specified Workspace ID.
+4. System sends invitation link to Invitee Email.
+5. System confirms invitation sent to User.
 
-    User -->|"1. POST /convert (File Upload)"| Web
-    Web -->|"2. Write file directly"| S3
-    Web -->|"3. Push message: { s3_key, user_id }"| Queue
-    Queue -->|"4. Consume message"| Worker
-    Worker -->|"5. Fetch S3 Object"| S3
-    Worker -->|"6. Direct SQL write (App DB Superuser)"| DB
+#### Failure Scenarios:
+- 2a. User session invalid: System displays login screen.
 ```
-
-### Analysis & Vulnerability Findings
-
-1. **Missing Boundary Isolation on Storage (`PRIN-MOD-01`):**  
-   Both `Web` and `Worker` use shared AWS IAM credentials with full read/write access to the entire `S3` bucket. If the worker's PDF parser is compromised (e.g. via an ImageMagick or Ghostscript vulnerability), the attacker has full read/write access to all tenants' uploaded files.
-2. **Missing Complete Mediation on Asynchronous Jobs (`PRIN-SEC-02`):**  
-   The message queue payload contains unverified `s3_key` and `user_id`. An attacker able to publish to the queue can direct the worker to process arbitrary files or overwrite arbitrary records.
-3. **Privilege Over-Assignment on Data Store (`PRIN-SEC-04`):**  
-   The worker uses the database superuser connection, allowing it to modify user account tables, billing data, or schemas, none of which are required for document conversion.
 
 ---
 
-### Remediated Architecture
+### Step-by-Step Analytical Evaluation
 
-```mermaid
-flowchart TD
-    subgraph IngressTier ["Zone 1: Web Ingress"]
-        User["Browser Client"]
-        Web["Web API Service<br>(IAM: PutObject Only)"]
-    end
+1. **Step 3 Finding — Missing Complete Mediation on Workspace Boundary (`PRIN-ENG-01`):**  
+   *Risk:* The gateway verifies that the user is logged in, but Step 3 executes the invitation insertion without verifying that the user is an **Administrator or Owner** of the specified Workspace ID. An authenticated member of Workspace A can invite malicious actors to Workspace B simply by modifying the `Workspace ID` parameter.
+2. **Step 3 Finding — Absence of Privilege Boundary Check:**  
+   *Risk:* Any user can assign the `Administrator` or `Owner` role to invitees without checking whether the user possesses the authority to grant that role.
 
-    subgraph QueueTier ["Zone 2: Decoupled Queue"]
-        Queue["Signed Message Queue<br>(HMAC Signature Verified)"]
-    end
+---
 
-    subgraph SandboxTier ["Zone 3: Isolated Worker Sandbox"]
-        Worker["PDF Converter Container<br>(Non-root, No DB Write, Read-Only FS)"]
-    end
+### Derived Atomic Security Requirements (EARS Syntax)
 
-    subgraph StorageTier ["Zone 4: Scoped Storage & Results DB"]
-        S3In[("S3 Inbound Bucket<br>(Tenant Scoped Prefixes)")]
-        S3Out[("S3 Outbound Results Bucket")]
-        DB[("Conversion Status DB<br>(Role: worker_status_writer)")]
-    end
+- `REQ-SEC-BND-020` (Workspace Authorization Complete Mediation):  
+  *When* a workspace invitation is requested, *the* Workspace Management Service *SHALL* verify that the authenticated actor holds an active administrative role within the target workspace, rejecting unauthorized requests before creating invitation records.
+- `REQ-SEC-BND-021` (Role Delegation Ceilings):  
+  *When* assigning a role to an invitee, *the* Workspace Management Service *SHALL* assert that the assigned role does not exceed the actor's own role privilege level.
 
-    User -->|"1. HTTPS / JWT"| Web
-    Web -->|"2. Scoped PutObject"| S3In
-    Web -->|"3. Sign & Publish Job"| Queue
-    Queue -->|"4. Verify Signature & Consume"| Worker
-    Worker -->|"5. Scoped GetObject"| S3In
-    Worker -->|"6. Write Output PDF"| S3Out
-    Worker -->|"7. INSERT INTO task_status"| DB
+---
+
+### Remediated Functional Use Case (`UC-02`)
+
+```markdown
+### Use Case: UC-02 — Workspace Member Invitation (Hardened)
+- **Primary Actor:** Workspace Administrator
+- **Pre-conditions:** Administrator holds an active session with verified administrative rights in the target workspace.
+- **Trigger:** Administrator submits invitation form with Invitee Email and Role.
+- **Data Exchanged:** Workspace ID, Invitee Email, Assigned Role.
+
+#### Main Success Scenario:
+1. Administrator submits invitation request.
+2. Ingress Gateway authenticates session and dispatches request to Core Workspace Service.
+3. Core Workspace Service evaluates complete mediation: verifies that the actor holds administrative authority within the designated Workspace ID and that the assigned role does not exceed the actor's privilege tier.
+4. Core Workspace Service generates a cryptographically random, single-use invitation token with a 72-hour expiration window.
+5. Core Workspace Service commits invitation record scoped to the target workspace.
+6. System dispatches invitation notification with secure acceptance link.
+7. System records audit log entry and confirms invitation to Administrator.
+
+#### Failure Scenarios:
+- 2a. Unauthenticated session: Ingress Gateway rejects request.
+- 3a. Actor lacks administrative role in target workspace: Core Workspace Service rejects request with access denied.
+- 3b. Role exceeds actor's privilege tier: Core Workspace Service rejects request with invalid role delegation.
 ```
-
-### Remediation Ledger
-
-| Component / Boundary | Initial State | Finding | Remediated State | Principle |
-|---|---|---|---|---|
-| Ingress $\rightarrow$ S3 | Global bucket write | Excessive blast radius | Scoped IAM role: `PutObject` strictly to `inbound/${tenant_id}/*` | `PRIN-SEC-01` |
-| Queue Message | Unsigned JSON | Spoofed queue jobs | Message payload cryptographically signed with HMAC secret | `PRIN-MOD-01` |
-| Worker Container | Root user, shared DB admin | Sandbox escape risk | Isolated container with read-only rootfs; scoped DB user `worker_status_writer` | `PRIN-SEC-04` |
-| Worker $\rightarrow$ DB | Full read/write | Unauthorized data access | Restricted DB role: `INSERT, UPDATE (status)` on `task_status` table only | `PRIN-SEC-02` |

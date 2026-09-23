@@ -1,11 +1,11 @@
 ---
 name: data-minimization-analysis
-description: Audits API schemas, database fields, and telemetry payloads to eliminate extraneous personal data collection, prevent over-exposure, and enforce purpose binding.
+description: Evaluates functional use cases (UC-*) to eliminate extraneous personal data collection, prevent excessive egress data exposure, and enforce purpose binding.
 ---
 
 # Data Minimization & Privacy Balance Analysis
 
-Inspects API schemas, request/response Data Transfer Objects (DTOs), database table columns, and telemetry payloads to eliminate extraneous data collection and prevent sensitive field leakage while preserving application functionality.
+Evaluates functional Use Cases (`UC-*`) to ensure that data exchanged across interaction steps is strictly necessary for the primary functional purpose, preventing superfluous data collection at ingress and over-exposure at egress.
 
 > **Target Principle:**  
 > - `PRIN-ENG-06` (Proactive Data Minimization & Scoped Projection — Cavoukian / GDPR Art. 5)
@@ -14,110 +14,94 @@ Inspects API schemas, request/response Data Transfer Objects (DTOs), database ta
 
 ## 1. Operational Mandate & Scope
 
-The agent acts as a Principal Privacy Engineer and API Architect reviewing:
-- **API Interfaces & DTOs:** OpenAPI schemas, Pydantic models, TypeScript interfaces, GraphQL query/mutation types.
-- **Data Ingestion Schemas:** Registration forms, profile update payloads, third-party webhook integrations.
-- **Telemetry & Logging Payloads:** Application log formats, error tracking payloads (Sentry), analytics event dictionaries.
+The agent acts as a Privacy Engineer and Information Architect reviewing **Functional Use Cases (`UC-*`)**:
+- **Data Exchanged Sections:** The inventory of data fields submitted by actors or returned by systems during use case execution.
+- **Purpose Binding:** Verifying that every collected data attribute links directly to an active functional feature.
+- **Egress Scoping:** Ensuring that interaction steps returning data to actors project only the minimal attributes required for that specific actor persona (e.g. public collaborator view vs private account owner view).
 
-The objective is to ensure that no superfluous personal or sensitive data is collected at ingress, that internal database entities are never passed raw to egress, and that necessary functionality is achieved using the least privacy-invasive representations.
+The analysis is **technology-agnostic**: it audits conceptual data dictionaries and functional flows without prescribing specific serialization formats (JSON/Protobuf) or ORM libraries.
 
 ---
 
 ## 2. Evaluation Procedure
 
-1. **Schema Field Inventory:** Extract all fields collected at ingress (request bodies) and emitted at egress (response bodies).
-2. **Strict Purpose Binding Verification (`PRIN-PRV-01`):** For each collected field, identify the exact functional requirement that justifies its collection. If a field is collected "for potential future analytics", flag it for immediate removal.
-3. **Egress Entity Exposure Audit:** Inspect response DTOs. Verify that database ORM models are not serialized directly to API responses (preventing accidental exposure of password hashes, internal IDs, or sensitive PII).
-4. **Coarsening & Privacy-Preserving Transformation (`PRIN-PRV-03`):** Where data is required for application features (e.g. fraud detection, localized content), determine if coarse-grained representations suffice (e.g. ISO country code instead of precise GPS coordinates; year of birth instead of exact timestamp).
-5. **Telemetry & Log Scrubbing:** Confirm that error loggers and analytics pipelines automatically strip or hash IP addresses, email addresses, and auth tokens.
-6. **Ledger Output:** Produce a Data Minimization Audit Ledger.
+1. **Use Case Data Field Extraction:** Extract all data fields listed under `Data Exchanged` and trace their role across the main scenario steps.
+2. **Purpose Justification Triage (`PRIN-ENG-06`):** For each collected field, evaluate whether the use case can successfully achieve its functional outcome without that field. If a field is non-essential (e.g. phone number or birthdate collected for online project collaboration), flag it for removal.
+3. **Egress Exposure Audit:** Inspect steps where the system displays or returns data to actors. Verify that internal metadata (security flags, internal IDs) and private collaborator attributes are not exposed to third parties.
+4. **Coarsening & Privacy-Preserving Transformation:** Where an attribute is required for operational behavior (e.g. localized language or timezone), evaluate whether a coarse representation (e.g. country code or timezone offset) suffices instead of precise identifiers.
+5. **Output Delivery:** Produce:
+   - Data Field Justification & Minimization Annotations.
+   - Derived Atomic Privacy Requirements in EARS syntax.
+   - Remediated Use Case Specification with minimized data exchanges.
 
 ---
 
 ## 3. Concrete Walkthrough Example
 
-### 3.1 Input Artifact: Vulnerable User Profile API & Schema
+### 3.1 Input Artifact: Functional Use Case (`UC-01`)
 
-```python
-# Pydantic ORM Model passed directly to API response
-from pydantic import BaseModel
-from datetime import datetime
+```markdown
+### Use Case: UC-01 — User Registration and Onboarding
+- **Primary Actor:** New User
+- **Pre-conditions:** User has access to the public registration interface.
+- **Trigger:** User submits account creation form.
+- **Data Exchanged:** Email, Password, Full Legal Name, Phone Number, Date of Birth, Physical Mailing Address, Preferred Language.
 
-class UserEntityResponse(BaseModel):
-    id: str
-    email: str
-    password_hash: str            # CRITICAL LEAK: Password hash exposed
-    full_name: str
-    date_of_birth: str            # SMELL: Exact birthdate exposed to all collaborators
-    home_address: str             # SMELL: Physical address collected for online SaaS
-    failed_login_attempts: int    # SMELL: Internal security telemetry leaked
-    created_at: datetime
-    updated_at: datetime
+#### Main Success Scenario:
+1. User enters registration data and submits form.
+2. System creates user record and stores all provided profile fields.
+3. System sends email verification to user's email address.
+4. System presents welcome dashboard displaying the user profile.
 
-    class Config:
-        from_attributes = True
-
-# FastApi endpoint
-@app.get("/api/v1/users/{user_id}", response_model=UserEntityResponse)
-def get_user_profile(user_id: str, db: Session = Depends(get_db)):
-    user = db.query(User).filter(User.id == user_id).first()
-    return user # Directly serializes database entity to JSON
+#### Failure Scenarios:
+- 1a. Mandatory field left empty: System halts registration and prompts user.
 ```
 
-### 3.2 Analytical Evaluation
+---
 
-1. **Violation of `PRIN-PRV-01` (Proactive Data Minimization):**
-   - Serializing the database `User` entity directly leaks `password_hash` and `failed_login_attempts` to the client.
-   - The SaaS application collects `home_address` and `date_of_birth` during onboarding, neither of which is required for task tracking or collaboration.
-2. **Violation of `PRIN-PRV-03` (Full Functionality & Privacy Balance):**
-   - Collaborators viewing a task assignee only need a display identifier and an avatar. Exposing personal emails and full birthdates violates privacy without offering additional functional utility.
+### 3.2 Step-by-Step Analytical Evaluation
 
-### 3.3 Remediated Data Transfer Objects (DTOs)
+1. **`Data Exchanged` Finding — Superfluous Personal Data Collection (`PRIN-ENG-06`):**  
+   *Analysis:* TinyTask is a digital collaboration tool. Collecting `Phone Number`, `Date of Birth`, and `Physical Mailing Address` during basic registration violates data minimization. None of these fields are needed to create an account, authenticate, or manage tasks.
+   *Remediation:* Remove `Phone Number`, `Date of Birth`, and `Physical Mailing Address` from the registration data exchange. Retain only `Email`, `Password`, `Display Name`, and `Preferred Language`.
+2. **Failure Branch 1a Finding — Coercive Mandatory Collection:**  
+   *Analysis:* Requiring non-essential fields as mandatory preconditions for service access violates GDPR Art. 5(1)(c) and EDPB guidelines.
 
-```python
-from pydantic import BaseModel, Field
+---
 
-# 1. Public Profile DTO (Used for team collaborators and task assignees)
-class PublicCollaboratorDTO(BaseModel):
-    id: str = Field(..., description="Opaque UUIDv4 identifier")
-    display_name: str = Field(..., description="Chosen public display nickname")
-    avatar_url: str | None = Field(None, description="Public avatar URL")
+### 3.3 Derived Atomic Privacy Requirements (EARS Syntax)
 
-# 2. Private Account DTO (Returned strictly to the authenticated user themselves)
-class AuthenticatedAccountProfileDTO(BaseModel):
-    id: str
-    display_name: str
-    email: str = Field(..., description="Account recovery email")
-    # Minimization: No physical address, no DOB, no password hashes or internal counts
+- `REQ-PRV-MIN-001` (Registration Data Minimization):  
+  *When* a new user account is registered, *the* Identity Subsystem *SHALL* accept only authentication credentials (email, password) and public display handle, prohibiting the mandatory collection of physical address, birthdate, or telephone numbers.
+- `REQ-PRV-MIN-002` (Collaborator Profile Scoped Projection):  
+  *When* rendering collaborator information within shared workspaces, *the* System *SHALL* project only display name and avatar reference, strictly omitting personal email addresses and contact information from non-administrative views.
 
-# Hardened API Route: Strict DTO Projection
-@app.get("/api/v1/users/{user_id}", response_model=PublicCollaboratorDTO)
-def get_collaborator_profile(user_id: str, db: Session = Depends(get_db)):
-    user = db.query(User).filter(User.id == user_id).first()
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
-    # Explicit mapping: Only minimum fields populated
-    return PublicCollaboratorDTO(
-        id=user.id,
-        display_name=user.display_name or "Anonymous",
-        avatar_url=user.avatar_url
-    )
+---
+
+### 3.4 Remediated Functional Use Case (`UC-01`)
+
+```markdown
+### Use Case: UC-01 — User Registration and Onboarding (Hardened)
+- **Primary Actor:** New User
+- **Pre-conditions:** User has access to the registration interface.
+- **Trigger:** User submits account creation form.
+- **Data Exchanged:** Email, Password, Display Name, Preferred Language.
+
+#### Main Success Scenario:
+1. User enters minimal credentials (Email, Password, Display Name).
+2. System validates input constraints and creates user record with default restrictive privacy settings.
+3. System issues verification dispatch to the provided email.
+4. System presents onboarding dashboard.
+
+#### Failure Scenarios:
+- 1a. Missing credential or invalid email format: System prompts user to correct entry.
 ```
-
-### 3.4 Data Minimization Audit Ledger
-
-| Field | Original Handling | Risk / Violation | Remediated Handling | Principle |
-|---|---|---|---|---|
-| `password_hash` | Serialized in API response | Offline brute-force credential compromise | **Excluded** from all DTO schemas | `PRIN-PRV-01` |
-| `home_address` | Collected at onboarding | Unnecessary collection of sensitive PII | **Removed** from database schema and signup form | `PRIN-PRV-01` |
-| `date_of_birth` | Exposed to team members | Privacy invasion / identity theft vector | **Removed**; age-gating replaced by self-attestation checkbox | `PRIN-PRV-03` |
-| `failed_logins` | Leaked in JSON | Account takeover reconnaissance | **Restricted** to internal logging stream | `PRIN-PRV-01` |
 
 ---
 
 ## 4. Reference Catalogs
 
-- **Detailed Heuristics:** Consult [`references/heuristics.md`](references/heuristics.md) for ingress validation rules, DTO projection guidelines, and log scrubbing algorithms.
-- **Concrete Anti-Patterns:** Consult [`references/antipatterns.md`](references/antipatterns.md) for mass assignment vulnerabilities, over-collection forms, and raw entity serializations.
-- **End-to-End Case Studies:** Consult [`references/examples.md`](references/examples.md) for full REST and GraphQL API schema minimization case studies.
-- **Audit Checklist:** Consult [`references/checklist.md`](references/checklist.md) for the structured data minimization audit checklist.
+- **Detailed Heuristics:** Consult [`references/heuristics.md`](references/heuristics.md) for technology-agnostic data minimization heuristics.
+- **Concrete Anti-Patterns:** Consult [`references/antipatterns.md`](references/antipatterns.md) for functional flow over-collection and exposure smells.
+- **End-to-End Case Studies:** Consult [`references/examples.md`](references/examples.md) for complete Use Case data minimization walkthroughs.
+- **Audit Checklist:** Consult [`references/checklist.md`](references/checklist.md) for the structured data minimization checklist.

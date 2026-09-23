@@ -1,130 +1,67 @@
-# End-to-End Case Studies — Least Privilege & Shared Mechanism
+# End-to-End Case Studies — Least Privilege & Mechanism Isolation
 
-Realistic before-and-after scenarios evaluating cloud IAM, container workloads, and cryptographic key custody.
-
----
-
-## Case Study 1: Multi-Tenant Cloud Architecture & Kubernetes Workload
-
-### Context
-A microservice running on AWS EKS processes sensitive customer financial reports.
-
-### Initial Configuration (Over-Privileged)
-
-#### 1. Kubernetes Pod Specification
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: report-generator
-spec:
-  containers:
-    - name: generator
-      image: company/report-gen:v1.2
-      # SMELL: Runs as root, write access to root filesystem, full host network
-      hostNetwork: true
-      securityContext:
-        privileged: true
-```
-
-#### 2. IAM Role for Service Accounts (IRSA)
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "s3:*",
-        "kms:*"
-      ],
-      "Resource": "*"
-    }
-  ]
-}
-```
-
-### Analysis & Vulnerabilities
-1. **Privileged Pod Execution (`PRIN-SEC-01`):** `privileged: true` disables AppArmor and seccomp profiles, mounts all host devices, and allows container escape directly to the underlying EC2 node.
-2. **Global IAM Actions (`PRIN-SEC-01`):** `s3:*` allows destroying production buckets.
-3. **Shared Mechanism Compromise (`PRIN-SEC-07`):** Unconstrained `kms:*` allows decrypting records belonging to other services in the AWS organization.
+Comprehensive before-and-after evaluations of functional Use Cases (`UC-*`) against `PRIN-ENG-03`.
 
 ---
 
-### Remediated Hardened Configuration
+## Case Study 1: Task Commenting & Attachment Management (`UC-03b`)
 
-#### 1. Kubernetes Pod Specification
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: report-generator
-spec:
-  automountServiceAccountToken: false
-  securityContext:
-    runAsNonRoot: true
-    runAsUser: 10001
-    runAsGroup: 10001
-    fsGroup: 10001
-    seccompProfile:
-      type: RuntimeDefault
-  containers:
-    - name: generator
-      image: company/report-gen:v1.2
-      securityContext:
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: true
-        capabilities:
-          drop:
-            - ALL
-      volumeMounts:
-        - name: ephemeral-tmp
-          mountPath: /tmp
-  volumes:
-    - name: ephemeral-tmp
-      emptyDir:
-        medium: Memory
-        sizeLimit: 128Mi
+### Initial (Flawed) Functional Use Case
+
+```markdown
+### Use Case: UC-03b — Add Comment and Attachment to Task
+- **Primary Actor:** Workspace Viewer (Read-Only Role)
+- **Pre-conditions:** Viewer has access to view tasks.
+- **Trigger:** Viewer types comment and attaches file.
+- **Data Exchanged:** Task ID, Comment Text, File Attachment.
+
+#### Main Success Scenario:
+1. Viewer submits comment and file.
+2. System attaches comment and file to the task.
+3. System updates task modification timestamp and re-indexes the entire workspace.
+4. System confirms comment posted.
+
+#### Failure Scenarios:
+- 1a. File too large: System displays error.
 ```
 
-#### 2. Scoped AWS IAM Policy
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "AllowReportS3BucketActions",
-      "Effect": "Allow",
-      "Action": [
-        "s3:GetObject",
-        "s3:PutObject"
-      ],
-      "Resource": "arn:aws:s3:::tinytask-reports-prod/reports/${aws:PrincipalTag/TenantId}/*"
-    },
-    {
-      "Sid": "AllowKMSDecryptWithContext",
-      "Effect": "Allow",
-      "Action": [
-        "kms:Decrypt",
-        "kms:GenerateDataKey"
-      ],
-      "Resource": "arn:aws:kms:eu-central-1:123456789012:key/report-encryption-key-id",
-      "Condition": {
-        "StringEquals": {
-          "kms:EncryptionContext:Service": "ReportGenerator",
-          "kms:EncryptionContext:TenantId": "${aws:PrincipalTag/TenantId}"
-        }
-      }
-    }
-  ]
-}
+---
+
+### Step-by-Step Analytical Evaluation
+
+1. **Step 1 & 2 Finding — Role Privilege Violation (`PRIN-ENG-03`):**  
+   *Risk:* A user holding the `Viewer` (read-only) role is permitted to modify state by posting comments and uploading files. This breaks the role definition.
+2. **Step 3 Finding — Excessive Processing Privilege:**  
+   *Risk:* Updating a comment triggers a full re-indexing of the entire workspace, introducing denial-of-service risks through resource exhaustion.
+
+---
+
+### Derived Atomic Security Requirements (EARS Syntax)
+
+- `REQ-SEC-PRIV-010` (Role-Constrained State Modification):  
+  *When* a task comment or attachment is submitted, *the* Authorization Subsystem *SHALL* verify that the actor holds at least the Collaborator role, rejecting submissions from actors assigned to Viewer roles with access denied.
+- `REQ-SEC-PRIV-011` (Incremental Worker Authority):  
+  *When* a comment is created, *the* Indexing Subsystem *SHALL* operate with incremental authority restricted to the specific new comment entity, prohibiting full-workspace re-indexing.
+
+---
+
+### Remediated Functional Use Case (`UC-03b`)
+
+```markdown
+### Use Case: UC-03b — Add Comment and Attachment to Task (Hardened)
+- **Primary Actor:** Verified Workspace Collaborator
+- **Pre-conditions:** Collaborator holds an active session with write permissions on the target task.
+- **Trigger:** Collaborator submits comment form with optional file attachment.
+- **Data Exchanged:** Workspace ID, Task ID, Comment Text, File Attachment.
+
+#### Main Success Scenario:
+1. Collaborator submits comment and attachment.
+2. Ingress Gateway validates active session and routes to Core Task Service.
+3. Core Task Service verifies that actor holds Collaborator or higher role within the target workspace.
+4. Core Task Service persists comment and commits attachment within the tenant's isolated storage quota.
+5. Core Task Service dispatches scoped incremental update event to notification and indexing processors.
+6. System confirms comment posted to Collaborator.
+
+#### Failure Scenarios:
+- 3a. Actor holds Viewer role: System rejects action with insufficient privilege.
 ```
-
-### Remediation Ledger
-
-| Component | Initial State | Hazard | Remediated State | Principle |
-|---|---|---|---|---|
-| Container User | Root (UID 0) | Host breakout | Non-root `UID 10001`, `drop: ALL` capabilities | `PRIN-SEC-01` |
-| Filesystem | Read-Write rootfs | Persistent malware injection | `readOnlyRootFilesystem: true`, tmpfs memory mount | `PRIN-SEC-01` |
-| S3 Storage | `s3:*` on `*` | Data destruction & leakage | `s3:GetObject, s3:PutObject` strictly scoped to tenant folder | `PRIN-SEC-01` |
-| KMS Decryption | `kms:*` on `*` | Global key abuse | Restricted to report key + tenant encryption context | `PRIN-SEC-07` |

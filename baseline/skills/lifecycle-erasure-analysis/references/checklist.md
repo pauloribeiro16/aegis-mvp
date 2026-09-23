@@ -1,30 +1,19 @@
 # Evaluation Checklist — Data Lifecycle & Irreversible Erasure
 
-Comprehensive verification checklist for evaluating data retention, deletion cascades, and erasure workflows against `PRIN-PRV-02` and `PRIN-PRV-04`.
+Verification checklist for auditing functional Use Cases (`UC-*`) against `PRIN-ENG-07`.
 
 ---
 
-## 1. Deletion Completeness & Anonymization (`PRIN-PRV-02`)
+## 1. Cascading Destruction in Use Cases (`PRIN-ENG-07`)
 
-- [ ] **No Raw Soft-Deletes:** Setting boolean flags (`is_deleted = true`) is accompanied by irreversible anonymization or hashing of all personal data fields (`email`, `full_name`, `phone`, `tax_id`).
-- [ ] **Cryptographic Destruction of Passwords:** Password hashes and session tokens are overwritten with static sentinel values (e.g. `"ERASED"`).
-- [ ] **Multi-Table Cascade:** Deletion triggers cascading deletes on user-owned private entities (personal tasks, private notes, direct messages).
-- [ ] **Object Storage Purge:** All associated files, profile avatars, and attachments in cloud object storage (S3/GCS) are permanently deleted.
-
----
-
-## 2. Backup & Disaster Recovery Tombstoning (`PRIN-PRV-02`)
-
-- [ ] **Immutable Tombstone Ledger:** Erasure events are recorded in an append-only tombstone ledger stored independently of primary database snapshots.
-- [ ] **Automated Restore Replay:** Disaster recovery procedures mandate the automated replay of tombstones against any restored snapshot prior to resuming production traffic.
-- [ ] **Bounded Backup Retention:** Database snapshots and WAL logs have an automated retention ceiling (e.g. maximum 30 days) after which physical backup blocks are purged.
-- [ ] **Crypto-Shredding Validation:** Where per-tenant or per-user keys are used, destroying the key in KMS renders historical backup data permanently undecryptable.
+- [ ] **No Raw Soft-Deletes:** Entity deletion steps specify irreversible anonymization or purge of personal identifiers rather than mere status flag changes.
+- [ ] **Comprehensive Cascade:** Deleting a parent account or workspace cascades to child tasks, comments, notes, and file attachments across all storage tiers.
+- [ ] **Immediate Session Invalidation:** Initiating account deletion revokes active sessions and credentials immediately.
 
 ---
 
-## 3. User Autonomy & Transparent Confirmation (`PRIN-PRV-04`)
+## 2. Disaster Recovery Resilience & User Rights (`PRIN-ENG-07`)
 
-- [ ] **Self-Service Deletion:** Account deletion is executable directly by the end-user via application settings without requiring customer support mediation.
-- [ ] **Pre-Deletion Data Portability:** Users can export a complete machine-readable copy of their data (JSON/CSV) prior to confirming deletion.
-- [ ] **Immediate Session Termination:** Triggering deletion immediately revokes all active JWTs, refresh tokens, and in-memory session caches.
-- [ ] **Audit Confirmation:** The system provides an immutable timestamped confirmation confirming complete account erasure.
+- [ ] **Disaster Recovery Tombstones:** Deletion flows generate persistent tombstone entries to prevent account resurrection during snapshot restoration.
+- [ ] **Pre-Deletion Data Portability:** Users are provided an opportunity to export their personal data in an open, structured format prior to permanent deletion.
+- [ ] **Audit Receipt:** The system provides an immutable audit confirmation of completed erasure to the requesting actor.

@@ -1,11 +1,11 @@
 ---
 name: fail-safe-defaults-analysis
-description: Evaluates routing fallbacks, authorization middleware, exception handling, and circuit breakers to ensure systems fail securely into a closed, default-deny state.
+description: Evaluates functional use cases (UC-*) to ensure exception paths, missing preconditions, and dependency outages default to refusal (fail closed) without leaking diagnostic state.
 ---
 
 # Fail-Safe Defaults & Closed Failure Analysis
 
-Inspects ingress routing configurations, authorization middleware, exception handlers, and external dependency circuit breakers to verify that access decisions default to refusal and that unexpected failures terminate in a secure closed state.
+Evaluates functional Use Cases (`UC-*`) to verify that all failure branches, missing preconditions, and external dependency outages terminate in a secure closed state without exposing internal system details or causing partial state corruption.
 
 > **Target Principle:**  
 > - `PRIN-ENG-04` (Fail-Safe Defaults & Closed Failure States — Saltzer & Schroeder / OWASP)
@@ -14,114 +14,97 @@ Inspects ingress routing configurations, authorization middleware, exception han
 
 ## 1. Operational Mandate & Scope
 
-The agent acts as a Systems Resilience & Security Architect reviewing:
-- **Routing & Ingress Gateways:** Reverse proxy catch-alls, firewall default policies, API gateway route tables.
-- **Authorization Decision Engines:** Middleware pipelines, Policy Decision Points (PDPs), role evaluators.
-- **Exception & Error Handlers:** Global error middleware, uncaught exception handlers, database transaction rollbacks.
-- **Circuit Breakers & Degraded States:** Upstream service failure handling (e.g. auth service timeouts, external IDP outages).
+The agent acts as a Systems Reliability & Resilience Architect reviewing **Functional Use Cases (`UC-*`)**:
+- **Precondition Failures:** How the use case responds when mandatory preconditions (authentication, active subscription, required permissions) are unsatisfied.
+- **Alternative & Exception Branches:** Ensuring alternative branches terminate in explicit refusal rather than implicit pass-through.
+- **External Dependency Outages:** Verifying that failures or timeouts of external services (identity providers, payment gateways, notification delivery) fail closed.
+- **State Rollback Semantics:** Confirming that multi-step transactions roll back fully if an intermediate step aborts.
 
-The goal is to guarantee that whenever a condition is not explicitly satisfied or an error occurs, the system defaults to denial of access and safe rollback.
+The analysis is **technology-agnostic**: it audits functional decision branches and state rollback requirements without prescribing specific middleware or programming constructs.
 
 ---
 
 ## 2. Evaluation Procedure
 
-1. **Default-Deny Policy Verification:** Inspect routing and authorization rule sets. Confirm that access is denied unless an explicit affirmative rule permits it.
-2. **Fail-Open vs Fail-Closed Triage:** Evaluate system behavior when external security dependencies (LDAP, OAuth2/OIDC IDP, token introspection, policy engines) time out or return errors. Verify that the gateway fails closed (rejects requests with HTTP 503/500).
-3. **Exception Boundary Leakage:** Inspect global error handling. Confirm that internal errors emit opaque error codes (e.g. `{"error": "internal_error", "reference_id": "err_9812"}`) and never disclose stack traces, memory dumps, or SQL query strings.
-4. **State Machine & Transaction Rollback:** Ensure that aborted operations trigger automated database transaction rollbacks, preventing partial state corruption.
-5. **Ledger Output:** Produce a Fail-Safe Defaults Audit Ledger.
+1. **Failure Branch Inventory:** Extract all failure scenarios, validation aborts, and exception paths documented in the use case.
+2. **Default-Deny Verification (`PRIN-ENG-04`):** Confirm that any condition not explicitly matching a success rule defaults to refusal of access.
+3. **Fail-Closed Dependency Audit:** For any step relying on an external service or internal subsystem, determine the system's behavior if that component times out or raises an error. Verify that the flow fails closed (rejects the transaction) rather than failing open.
+4. **State Consistency & Atomic Rollback:** Confirm that if a multi-step mutation (e.g. creating a workspace and allocating seats) fails midway, previous partial mutations are completely undone.
+5. **Output Delivery:** Produce:
+   - Step-by-Step Failure Handling Annotations.
+   - Derived Atomic Security Requirements in EARS syntax.
+   - Remediated Use Case Specification with explicit fail-closed branches.
 
 ---
 
 ## 3. Concrete Walkthrough Example
 
-### 3.1 Input Artifact: Vulnerable Authorization & Error Handling Middleware
+### 3.1 Input Artifact: Functional Use Case (`UC-05`)
 
-```python
-# FastAPI / Flask routing middleware
-@app.middleware("http")
-async def authorization_middleware(request: Request, call_next):
-    user_token = request.headers.get("Authorization")
-    
-    try:
-        auth_decision = await verify_with_auth_service(user_token)
-        if auth_decision == "ALLOW":
-            return await call_next(request)
-        elif auth_decision == "DENY":
-            return JSONResponse(status_code=403, content={"error": "Access Denied"})
-    except TimeoutError:
-        # SMELL 1: Fails open on auth service timeout to 'preserve availability'
-        logger.warning("Auth service timed out. Allowing request through in degraded mode.")
-        return await call_next(request)
-    except Exception as e:
-        # SMELL 2: Returns raw exception details and stack trace to client
-        return JSONResponse(status_code=500, content={"error": str(e), "trace": traceback.format_exc()})
+```markdown
+### Use Case: UC-05 — Subscription Seat Allocation
+- **Primary Actor:** Workspace Administrator
+- **Pre-conditions:** Workspace exists.
+- **Trigger:** Administrator purchases 5 additional seats.
+- **Data Exchanged:** Workspace ID, Seat Count, Payment Details.
 
-    # SMELL 3: Missing fallback return; unhandled decision falls through to allow
-    return await call_next(request)
+#### Main Success Scenario:
+1. Administrator submits purchase request for additional seats.
+2. System updates workspace record to reflect new seat quota.
+3. System requests payment charge from external Payment Gateway.
+4. System confirms successful seat expansion to Administrator.
+
+#### Failure Scenarios:
+- 3a. External Payment Gateway times out or is unreachable: System assumes payment will complete later and leaves new seats active to avoid disrupting the customer.
+- 3b. Payment declined: System leaves seats active but sends warning email.
 ```
 
-### 3.2 Analytical Evaluation
+---
 
-1. **Violation of `PRIN-ENG-04` (Fail-Open on Dependency Outage):**
-   - When `verify_with_auth_service` times out, the middleware executes `call_next(request)`, granting unauthenticated callers full access to private endpoints.
-   - **Remediation:** Must fail closed. An authentication outage must return HTTP 503 Service Unavailable, never allow unauthenticated execution.
-2. **Violation of `PRIN-ENG-04` (Uncaught Exception Leakage):**
-   - The catch block returns `traceback.format_exc()` directly to the client, exposing file paths, library versions, and database query strings to attackers.
-   - **Remediation:** Log the full trace internally with a correlation ID; return a sanitized, opaque error response.
-3. **Violation of `PRIN-ENG-04` (Missing Default-Deny Fallback):**
-   - If `auth_decision` is neither "ALLOW" nor "DENY" (e.g. empty or unexpected status), execution falls through to `call_next`.
-   - **Remediation:** Explicit terminal default return HTTP 403 Forbidden.
+### 3.2 Step-by-Step Analytical Evaluation
 
-### 3.3 Remediated Middleware Specification
+1. **Step 2 Finding — Inverted State Mutation Order (`PRIN-ENG-04`):**  
+   *Analysis:* Step 2 increments the seat quota *before* payment is verified in Step 3. If Step 3 aborts or times out, the user receives free seats without payment.
+2. **Failure Branch 3a & 3b Finding — Fail-Open Vulnerability:**  
+   *Analysis:* Leaving seats active when payment fails or times out violates fail-safe defaults. The system fails open under error conditions, causing commercial and security exposure.
+   *Remediation:* Reorder steps so payment verification gates seat allocation. If payment fails or times out, the system must fail closed: no seats are allocated, and the transaction is aborted.
 
-```python
-@app.middleware("http")
-async def authorization_middleware(request: Request, call_next):
-    user_token = request.headers.get("Authorization")
-    correlation_id = str(uuid.uuid4())
-    
-    try:
-        auth_decision = await verify_with_auth_service(user_token)
-        if auth_decision == "ALLOW":
-            return await call_next(request)
-            
-        # Explicit denial
-        return JSONResponse(
-            status_code=403,
-            content={"error": "access_denied", "correlation_id": correlation_id}
-        )
-    except TimeoutError:
-        # Hardened: Fail closed upon authentication service failure
-        logger.error(f"[{correlation_id}] Auth service timeout. Failing closed.")
-        return JSONResponse(
-            status_code=503,
-            headers={"Retry-After": "30"},
-            content={"error": "auth_service_unavailable", "correlation_id": correlation_id}
-        )
-    except Exception as e:
-        # Hardened: Opaque client response; internal debug logging
-        logger.exception(f"[{correlation_id}] Unhandled middleware error: {e}")
-        return JSONResponse(
-            status_code=500,
-            content={"error": "internal_server_error", "correlation_id": correlation_id}
-        )
+---
+
+### 3.3 Derived Atomic Security Requirements (EARS Syntax)
+
+- `REQ-SEC-FAIL-001` (Fail-Closed Payment Gating):  
+  *When* a seat allocation purchase is requested, *the* Subscription Management Subsystem *SHALL* verify successful payment settlement before incrementing the workspace seat quota, terminating in a closed rejection state if payment is not confirmed.
+- `REQ-SEC-FAIL-002` (Atomic Transaction Rollback):  
+  *If* any step of a multi-tier allocation workflow fails, *then the* System *SHALL* roll back all intermediate modifications, leaving workspace quotas in their pre-transaction state.
+
+---
+
+### 3.4 Remediated Functional Use Case (`UC-05`)
+
+```markdown
+### Use Case: UC-05 — Subscription Seat Allocation (Hardened)
+- **Primary Actor:** Workspace Administrator
+- **Pre-conditions:** Administrator holds verified billing authority for the target workspace.
+- **Trigger:** Administrator submits purchase request for additional seats.
+- **Data Exchanged:** Workspace ID, Requested Seat Count, Payment Token.
+
+#### Main Success Scenario:
+1. Administrator submits seat expansion request.
+2. System validates billing permissions and verifies payment authorization with external Payment Gateway.
+3. Upon confirmed payment authorization, System atomically increments the workspace seat quota.
+4. System issues receipt confirmation to Administrator.
+
+#### Failure Scenarios:
+- 2a. Payment authorization declined, timed out, or unconfirmed: System fails closed, aborts transaction without updating seat quota, and notifies Administrator of payment failure.
+- 3a. Internal persistence failure occurs: System rolls back seat allocation, voids payment authorization, and emits opaque transaction error.
 ```
-
-### 3.4 Fail-Safe Defaults Audit Ledger
-
-| Component / Path | Initial Handling | Hazard | Remediated Handling | Principle |
-|---|---|---|---|---|
-| Auth Timeout | Fails open (`call_next`) | Total auth bypass during network degradation | **Fails closed**: Returns HTTP 503 + Retry-After | `PRIN-ENG-04` |
-| Exception Handler | Emits `traceback.format_exc()` | System path and environment disclosure | **Sanitized**: Opaque error JSON with UUID correlation | `PRIN-ENG-04` |
-| Decision Fallthrough | Implicit pass-through | Unmodeled states execute unauthenticated | **Default-Deny**: Explicit terminal HTTP 403 fallback | `PRIN-ENG-04` |
 
 ---
 
 ## 4. Reference Catalogs
 
-- **Detailed Heuristics:** Consult [`references/heuristics.md`](references/heuristics.md) for fail-closed timeout algorithms, circuit breaker states, and error sanitization rules.
-- **Concrete Anti-Patterns:** Consult [`references/antipatterns.md`](references/antipatterns.md) for fail-open authorization bypasses, stack trace exposures, and unhandled promise rejections.
-- **End-to-End Case Studies:** Consult [`references/examples.md`](references/examples.md) for gateway circuit breaker and database transaction rollback scenarios.
+- **Detailed Heuristics:** Consult [`references/heuristics.md`](references/heuristics.md) for technology-agnostic fail-closed heuristics.
+- **Concrete Anti-Patterns:** Consult [`references/antipatterns.md`](references/antipatterns.md) for fail-open and partial-state functional smells.
+- **End-to-End Case Studies:** Consult [`references/examples.md`](references/examples.md) for complete Use Case failure flow walkthroughs.
 - **Audit Checklist:** Consult [`references/checklist.md`](references/checklist.md) for the structured fail-safe defaults checklist.

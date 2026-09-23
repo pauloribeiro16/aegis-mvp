@@ -1,11 +1,11 @@
 ---
 name: verifiability-analysis
-description: Decomposes ambiguous or compound security and privacy requirements into atomic, unambiguous, and automated-testable specifications using EARS syntax.
+description: Evaluates security and privacy requirements derived from functional use cases to eliminate subjective qualifiers and enforce atomic, verifiable EARS syntax.
 ---
 
 # Requirements Verifiability & Atomicity Analysis
 
-Evaluates security and privacy requirement specifications to eliminate ambiguous phrasing, decompose compound requirements into atomic statements, and guarantee that every requirement has a deterministic, testable verification method.
+Evaluates security and privacy requirements derived from functional Use Cases (`UC-*`) to eliminate ambiguous or subjective phrasing, decompose compound requirements into atomic statements, and guarantee that every requirement has a deterministic verification method.
 
 > **Target Principle:**  
 > - `PRIN-ENG-05` (Requirement Verifiability & Atomicity — ISO/IEC/IEEE 29148 / EARS)
@@ -14,80 +14,69 @@ Evaluates security and privacy requirement specifications to eliminate ambiguous
 
 ## 1. Operational Mandate & Scope
 
-The agent acts as a Principal Requirements Engineer and Compliance QA Lead reviewing:
-- **Requirement Specifications:** System Requirements Specifications (SRS), Product Requirement Documents (PRDs), RFC security sections.
-- **Security & Privacy Objectives:** Operational Objectives (`PO-` / `SO-`), regulatory transpositions, architecture acceptance criteria.
-- **Test Plans & Acceptance Criteria:** QA test suites, automated security regression assertions, compliance audit statements.
+The agent acts as a Systems Requirements Engineer and Compliance Lead reviewing **Requirements Derived from Functional Use Cases (`UC-*`)**:
+- **Requirement Statements:** Candidate security (`REQ-SEC-*`) and privacy (`REQ-PRV-*`) requirements binding a functional use case.
+- **Statement Syntax & Quality:** Inspecting against the ISO/IEC/IEEE 29148:2018 quality characteristics (singularity, unambiguous phrasing, necessity, verifiability).
+- **Verification Methods:** Confirming each requirement specifies an empirical verification category (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`).
 
-The goal is to eliminate untestable adjectives ("secure", "robust", "fast", "gracefully"), split compound statements joined by "and/or", and convert statements into deterministic EARS syntax with associated automated tests.
+The analysis is **technology-agnostic**: it enforces linguistic rigor, formal EARS grammar, and testability without prescribing specific test frameworks, programming languages, or execution environments.
 
 ---
 
 ## 2. Evaluation Procedure
 
-1. **Ambiguity & Jargon Scan:** Scan candidate text for subjective adjectives and adverbs:
-   - *Prohibited Terms:* "appropriate", "adequate", "sufficient", "seamless", "user-friendly", "robust", "securely", "properly", "fast", "gracefully".
-2. **Atomicity Decomposition (`PRIN-REQ-02`):** Search for conjunctions ("and", "as well as", "while also"). Split compound requirements so that each statement specifies exactly **one** system response to **one** condition.
-3. **EARS Formatting (`PRIN-REQ-04`):** Restructure each requirement using the Easy Approach to Requirements Syntax:
-   - **Event-Driven:** *When* `<trigger>`, *the* `<system>` *SHALL* `<action>`.
-   - **State-Driven:** *While* `<state>`, *the* `<system>` *SHALL* `<action>`.
-   - **Unwanted Behavior:** *If* `<trigger/fault>`, *then the* `<system>` *SHALL* `<action>`.
-4. **Deterministic Verification Method Assignment (`PRIN-REQ-01`):** Assign each atomic requirement an explicit verification method:
-   - `[Automated Unit/Integration Test]`
-   - `[Static Analysis / SAST Rule]`
-   - `[DAST / Penetration Assertion]`
-   - `[Infrastructure / Config Audit]`
-5. **Traceability Binding (`PRIN-REQ-03`):** Map each requirement back to its parent Operational Objective (`PO-` or `SO-`).
-6. **Ledger Output:** Produce a Requirements Verifiability Ledger.
+1. **Subjective Vocabulary Scan:** Scan candidate requirement text for non-verifiable words ("appropriate", "adequate", "sufficient", "fast", "properly", "robust", "securely", "gracefully").
+2. **Atomicity Decomposition (`PRIN-ENG-05`):** Detect compound sentences joined by coordinating conjunctions ("and", "or", "as well as"). Split compound requirements into atomic statements with individual identifiers.
+3. **EARS Grammar Structuring:** Ensure the requirement conforms strictly to one of the canonical EARS patterns (*When... SHALL*, *While... SHALL*, *If... then SHALL*, or *The system SHALL*).
+4. **Verification Method Binding:** Attach an explicit verification method category (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`) with an objective pass/fail threshold.
+5. **Output Delivery:** Produce:
+   - Statement Defect Annotations (ambiguity, compound statements).
+   - Decomposed Atomic EARS Requirements.
+   - Requirements Verifiability Ledger.
 
 ---
 
 ## 3. Concrete Walkthrough Example
 
-### 3.1 Input Artifact: Flawed & Compound PRD Requirement
+### 3.1 Input Artifact: Candidate Requirement for Task Creation (`UC-03`)
 
-> "The authentication system should securely store user passwords, provide fast login, and handle failed login attempts properly to prevent brute-force attacks."
+> "The task attachment subsystem should securely store uploaded files, verify file safety fast, and handle storage quota exceeded errors gracefully."
 
-### 3.2 Analytical Evaluation
+---
 
-1. **Violation of `PRIN-REQ-01` & `PRIN-REQ-04` (Unambiguous & Verifiable):**
-   - Phrased with non-normative modal verbs ("should" instead of RFC 2119 "SHALL").
-   - Contains untestable subjective qualifiers: "securely store", "fast login", "properly handle". A QA engineer cannot write a deterministic pass/fail assertion for "fast" or "properly".
-2. **Violation of `PRIN-REQ-02` (Atomicity):**
-   - Merges three distinct architectural concerns into a single sentence: password hashing, authentication latency, and brute-force mitigation.
-3. **Violation of `PRIN-REQ-03` (Traceability):**
-   - Missing explicit identifier and upstream objective citation.
+### 3.2 Step-by-Step Analytical Evaluation
+
+1. **Defect 1 — Non-Normative Modal Verb:** Uses "should" instead of RFC 2119 normative "SHALL".
+2. **Defect 2 — Subjective & Non-Verifiable Adjectives:** Uses "securely store", "verify file safety fast", and "handle errors gracefully". An engineer or auditor cannot write a binary pass/fail test for "fast" or "gracefully".
+3. **Defect 3 — Compound Concern (`PRIN-ENG-05`):** Combines three disjoint concerns (at-rest encryption, malicious file screening, and quota error handling) into a single sentence.
+
+---
 
 ### 3.3 Remediated Atomic Requirements (EARS Syntax)
 
-#### `REQ-SEC-AUTH-001` (Password Hashing Function)
-- **Specification:** When persisting new or updated user credentials, the Authentication Service SHALL hash the password using Argon2id with parameters: memory cost = 64 MiB (`m=65536`), time cost = 3 iterations (`t=3`), parallelism = 4 threads (`p=4`), and a cryptographically secure random salt of at least 16 bytes.
-- **Verification Method:** `[Automated Unit Test]` (Asserts hashing output format, algorithm string, and parameter tags upon user registration).
-- **Parent Objective:** `SO-D-03.1-001` (Cryptographic Protections).
+#### `REQ-SEC-DATA-010` (Attachment At-Rest Encryption)
+- **EARS Pattern:** Ubiquitous
+- **Specification:** The Storage Subsystem SHALL encrypt all persistent task attachment objects at rest using an AEAD cryptographic cipher with keys isolated per tenant.
+- **Verification Method:** `INSPECT` (Verification of at-rest encryption configuration and key isolation).
+- **Parent Use Case:** `UC-03` (Task Attachment Ingestion).
 
-#### `REQ-SEC-AUTH-002` (Authentication Latency SLA)
-- **Specification:** When processing a valid authentication request, the Ingress API SHALL respond with HTTP 200 within 250 milliseconds for the 95th percentile under a sustained load of 200 concurrent requests/second.
-- **Verification Method:** `[Performance / Load Test]` (Automated k6 / Gatling pipeline stage in staging).
-- **Parent Objective:** `SO-D-03.1-002` (Service Availability).
+#### `REQ-SEC-MALW-001` (Pre-Persistence Attachment Screening)
+- **EARS Pattern:** Event-Driven
+- **Specification:** When an attachment file is received, the Ingestion Gateway SHALL execute malware signature and file structure verification within 1500 milliseconds for files under 25 megabytes, rejecting infected files before committing them to persistent storage.
+- **Verification Method:** `TEST` (Automated integration test uploading standardized EICAR test file; asserts immediate rejection).
+- **Parent Use Case:** `UC-03` (Task Attachment Ingestion).
 
-#### `REQ-SEC-AUTH-003` (Brute-Force Rate Limiting & Error Timing)
-- **Specification:** If more than 5 failed authentication attempts occur for a single username or source IP within a 60-second sliding window, then the Authentication Gateway SHALL return HTTP 429 (Too Many Requests) with a `Retry-After: 60` header for all subsequent attempts for the remainder of that window.
-- **Verification Method:** `[Automated Integration Test]` (Submits 6 sequential bad credentials; asserts 6th request receives HTTP 429 with `Retry-After`).
-- **Parent Objective:** `SO-D-03.1-003` (Abuse Prevention).
-
-### 3.4 Requirements Verifiability Ledger
-
-| Original Text Segment | Flaw Detected | Remediated ID | EARS Pattern | Verification Method |
-|---|---|---|---|---|
-| "securely store user passwords" | Subjective adjective; no algorithm specified | `REQ-SEC-AUTH-001` | Event-Driven (*When... SHALL*) | Automated Unit Test (Argon2id parameters) |
-| "provide fast login" | Untestable performance term; no metric | `REQ-SEC-AUTH-002` | Event-Driven (*When... SHALL*) | Load Test (P95 $\le$ 250ms @ 200 rps) |
-| "handle failed logins properly" | Ambiguous adverb; unstated rate limit | `REQ-SEC-AUTH-003` | Unwanted Behavior (*If... then SHALL*) | Integration Test (HTTP 429 after 5 fails) |
+#### `REQ-SEC-QUOT-001` (Deterministic Quota Error Handling)
+- **EARS Pattern:** Unwanted Behavior
+- **Specification:** If an uploaded file causes the workspace storage volume to exceed its allocated quota, then the Storage Subsystem SHALL terminate the upload, discard all temporary file fragments, and return an explicit quota exceeded error.
+- **Verification Method:** `TEST` (Automated test filling quota to 100%; asserts subsequent upload fails and leaves zero orphaned fragments).
+- **Parent Use Case:** `UC-03` (Task Attachment Ingestion).
 
 ---
 
 ## 4. Reference Catalogs
 
-- **Detailed Heuristics:** Consult [`references/heuristics.md`](references/heuristics.md) for EARS syntax templates and the subjective vocabulary replacement table.
-- **Concrete Anti-Patterns:** Consult [`references/antipatterns.md`](references/antipatterns.md) for compound run-on requirements and untestable compliance prose.
-- **End-to-End Case Studies:** Consult [`references/examples.md`](references/examples.md) for full PRD and compliance requirement transformations.
+- **Detailed Heuristics:** Consult [`references/heuristics.md`](references/heuristics.md) for EARS grammar patterns and subjective term replacement tables.
+- **Concrete Anti-Patterns:** Consult [`references/antipatterns.md`](references/antipatterns.md) for compound and untestable requirement smells.
+- **End-to-End Case Studies:** Consult [`references/examples.md`](references/examples.md) for full Use Case requirement decomposition walkthroughs.
 - **Audit Checklist:** Consult [`references/checklist.md`](references/checklist.md) for the structured requirements verification checklist.

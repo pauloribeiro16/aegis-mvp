@@ -1,83 +1,65 @@
 # End-to-End Case Studies — Data Lifecycle & Irreversible Erasure
 
-Realistic before-and-after scenarios evaluating GDPR right to erasure cascades, cryptographic shredding, and backup tombstoning.
+Comprehensive before-and-after evaluations of functional Use Cases (`UC-*`) against `PRIN-ENG-07`.
 
 ---
 
-## Case Study 1: Multi-Tenant SaaS Right to Erasure Cascade & Backup Tombstone
+## Case Study 1: Workspace Dissolution and Data Purge (`UC-02d`)
 
-### Context
-A multi-tenant SaaS user exercises their GDPR Art. 17 right to erasure. The platform stores records in PostgreSQL, uploaded images in AWS S3, and takes daily RDS snapshots with a 30-day retention window.
+### Initial (Flawed) Functional Use Case
 
-### Initial (Non-Compliant) Process
-1. Web endpoint executes:
-   ```sql
-   UPDATE users SET status = 'deleted' WHERE id = 'usr_542';
-   ```
-2. The user is logged out.
-3. All tasks, project comments, and uploaded files in S3 are preserved untouched.
-4. Backups continue to capture the user's plain-text records.
+```markdown
+### Use Case: UC-02d — Dissolve Workspace
+- **Primary Actor:** Workspace Owner
+- **Pre-conditions:** Workspace exists.
+- **Trigger:** Owner requests workspace dissolution.
+- **Data Exchanged:** Workspace ID, Confirmation.
 
-### Analysis & Non-Compliance Findings
-- **Failure of Erasure (`PRIN-PRV-02`):** The personal data is merely hidden from immediate UI queries (`WHERE status != 'deleted'`). It remains fully accessible to DB administrators and raw SQL reports.
-- **Orphan Accumulation (`PRIN-PRV-02`):** Files uploaded to S3 (profile avatars, attachments containing sensitive documents) are never scheduled for deletion.
-- **Resurrection Hazard (`PRIN-PRV-02`):** If the database is restored from a backup next month, the account can be queried in full.
+#### Main Success Scenario:
+1. Owner submits dissolution request.
+2. System sets workspace status to "archived".
+3. System hides workspace from user dashboards.
+4. System confirms dissolution.
+
+#### Failure Scenarios:
+- 1a. User is not Workspace Owner: System halts action.
+```
 
 ---
 
-### Remediated Architecture & Process
+### Step-by-Step Analytical Evaluation
 
-#### 1. Multi-Store Cascading Deletion Transaction
-```python
-def execute_gdpr_erasure(user_id: str, db: Session, s3_client):
-    # Step 1: Query all S3 keys owned by user
-    attachments = db.query(Attachment).filter(Attachment.user_id == user_id).all()
-    for att in attachments:
-        s3_client.delete_object(Bucket=att.bucket_name, Key=att.s3_key)
-    
-    # Step 2: Delete private task records
-    db.query(Attachment).filter(Attachment.user_id == user_id).delete()
-    db.query(PersonalNote).filter(PersonalNote.user_id == user_id).delete()
-    
-    # Step 3: Irreversibly anonymize collaborative records
-    anon_email = f"erased_{hashlib.sha256(user_id.encode()).hexdigest()[:16]}@deleted.local"
-    db.query(User).filter(User.id == user_id).update({
-        "email": anon_email,
-        "full_name": "Erased Account",
-        "password_hash": "ERASED",
-        "is_deleted": True,
-        "deleted_at": datetime.now(timezone.utc)
-    })
-    
-    # Step 4: Record immutable tombstone
-    tombstone = DeletionTombstone(
-        user_id=user_id,
-        anonymized_hash=anon_email,
-        erased_at=datetime.now(timezone.utc)
-    )
-    db.add(tombstone)
-    db.commit()
-    
-    # Step 5: Export tombstone to append-only DR recovery S3 bucket
-    s3_client.put_object(
-        Bucket="tinytask-disaster-recovery-tombstones",
-        Key=f"tombstones/{user_id}.json",
-        Body=tombstone.to_json()
-    )
+1. **Step 2 Finding — Indefinite Data Retention under Archival Label (`PRIN-ENG-07`):**  
+   *Analysis:* Marking a workspace as "archived" retains all customer tasks, uploaded documents, comments, and member records indefinitely without an established retention ceiling or deletion schedule.
+2. **Missing Cascading Disposal:**  
+   *Analysis:* Fails to define a retention timeline for permanent destruction of underlying data and attachments.
+
+---
+
+### Derived Atomic Privacy Requirements (EARS Syntax)
+
+- `REQ-PRV-LIFE-020` (Workspace Dissolution Cascade):  
+  *When* a workspace dissolution is confirmed, *the* Data Lifecycle Subsystem *SHALL* schedule all associated tasks, project boards, and file attachments for irreversible purge after an optional 30-day grace recovery window.
+- `REQ-PRV-LIFE-021` (Disaster Recovery Ledger Recording):  
+  *When* executing the permanent purge of a dissolved workspace, *the* System *SHALL* record an immutable tombstone identifier in the disaster recovery ledger to prevent data resurrection upon snapshot restore.
+
+---
+
+### Remediated Functional Use Case (`UC-02d`)
+
+```markdown
+### Use Case: UC-02d — Dissolve Workspace (Hardened)
+- **Primary Actor:** Workspace Owner
+- **Pre-conditions:** Owner holds verified ownership authority; re-authentication completed.
+- **Trigger:** Owner initiates dissolution and exports workspace archive.
+- **Data Exchanged:** Workspace ID, Re-authentication Credentials, Export Choice.
+
+#### Main Success Scenario:
+1. Owner requests workspace dissolution and re-authenticates.
+2. System provides complete data export archive (JSON/CSV with all attachments) to Owner.
+3. Owner confirms permanent dissolution.
+4. System transitions workspace to restricted grace-period status for 30 days (read-only, accessible solely to Owner for recovery).
+5. Upon expiration of grace period, System irreversibly purges all workspace records, tasks, and stored file attachments across all tiers.
+6. System commits deletion tombstone to the disaster recovery ledger.
+7. System notifies Owner of final irreversible purge.
 ```
-
-#### 2. Backup Restoration Playbook Integration
-Whenever an RDS snapshot is restored into staging or production, the automated orchestrator runs:
-```bash
-python scripts/dr_replay_tombstones.py --tombstone-bucket tinytask-disaster-recovery-tombstones
-```
-This re-applies all deletion actions, ensuring restored snapshots never resurrect erased users.
-
-### Remediation Ledger
-
-| Target Store | Initial State | Risk | Remediated State | Principle |
-|---|---|---|---|---|
-| User Record | `status = 'deleted'` | PII retained in plain text | **Cryptographically anonymized** (`deleted_<hash>@...`) | `PRIN-PRV-02` |
-| S3 Attachments | Orphaned indefinitely | Data retention violation | **Purged synchronously** via S3 API before commit | `PRIN-PRV-02` |
-| DB Backups | Plaintext retained for 30d | Compliance resurrection on restore | **Immutable Tombstone Ledger** replayed upon DR restore | `PRIN-PRV-02` |
-| User Experience | Support ticket required | Lack of user autonomy | **Self-service** deletion API with immediate confirmation receipt | `PRIN-PRV-04` |

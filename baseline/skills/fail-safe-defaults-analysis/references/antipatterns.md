@@ -1,121 +1,36 @@
 # Anti-Patterns & Smells — Fail-Safe Defaults & Closed Failure States
 
-Concrete configuration smells and architectural anti-patterns that result in fail-open vulnerabilities or information leakage.
+Functional use case smells and anti-patterns that create fail-open vulnerabilities or partial state corruption.
 
 ---
 
-## 1. Fail-Open Authorization on Cache / Service Outages
+## 1. Fail-Open Authorization on Service Outage
 
-### Bad Pattern: Bypassing Auth Check when Redis or IDP is Unreachable
-
-```python
-# Authorization filter
-def is_user_authorized(user_id, resource_id):
-    try:
-        cached_permission = redis_client.get(f"perm:{user_id}:{resource_id}")
-        if cached_permission:
-            return cached_permission == "ALLOW"
-        return query_authorization_service(user_id, resource_id)
-    except ConnectionError:
-        # SMELL: Fails open during Redis outage
-        logger.error("Redis down! Allowing access to prevent customer interruption.")
-        return True
+### Bad Use Case Design Smell
+```markdown
+### Use Case: Access Secured Workspace Resource
+1. User requests access to confidential project report.
+2. System attempts to verify user permissions with Authorization Service.
+3. If Authorization Service times out, system allows access to avoid customer disruption.
 ```
 
-**Consequence:** When Redis experiences high load or crashes, all access controls disappear, allowing unauthorized users to access any resource.
+**Why It Fails `PRIN-ENG-04`:**
+- Degrades security to maintain availability under failure conditions, allowing unauthorized actors to access confidential assets during network or service glitches.
 
 **Hardened Pattern:**
-
-```python
-def is_user_authorized(user_id, resource_id):
-    try:
-        cached_permission = redis_client.get(f"perm:{user_id}:{resource_id}")
-        if cached_permission:
-            return cached_permission == "ALLOW"
-        return query_authorization_service(user_id, resource_id)
-    except Exception as e:
-        # Hardened: Fail closed upon authorization error
-        logger.error(f"Authorization evaluation failed: {e}. Defaulting to DENY.")
-        return False
-```
+- System fails closed: if Authorization Service is unavailable, access is denied immediately and user is advised to retry.
 
 ---
 
-## 2. Ingress Router Default Fallthrough
+## 2. Partial Mutations without Rollback
 
-### Bad Pattern: Nginx Reverse Proxy Missing Catch-All Deny
-
-```nginx
-# Nginx configuration
-server {
-    listen 80;
-    server_name api.tinytask.eu;
-
-    location /api/v1/tasks {
-        proxy_pass http://tasks-backend:8080;
-    }
-    
-    # SMELL: No default location / block. Unmatched requests serve local filesystem or Nginx defaults
-}
+### Bad Use Case Design Smell
+```markdown
+### Use Case: Delete Workspace and Transfer Data
+1. System deletes all user accounts from workspace.
+2. System transfers workspace files to external archive.
+3. If transfer fails, system displays error (accounts remain permanently deleted and files are lost).
 ```
 
-**Consequence:** Requests targeting undeclared paths may expose default server directories or leak server version information.
-
-**Hardened Pattern:**
-
-```nginx
-server {
-    listen 443 ssl http2;
-    server_name api.tinytask.eu;
-
-    location /api/v1/tasks {
-        proxy_pass http://tasks-backend:8080;
-    }
-
-    # Hardened: Default catch-all denies unmatched routes
-    location / {
-        return 404 '{"error": "route_not_found"}';
-        add_header Content-Type application/json;
-    }
-}
-```
-
----
-
-## 3. Raw Database Error Leaks in API Responses
-
-### Bad Pattern: Returning SQL Syntax Errors to Clients
-
-```javascript
-// Express.js route handler
-app.get('/api/v1/users', async (req, res) => {
-    try {
-        const users = await db.rawQuery(req.query.filter);
-        res.json(users);
-    } catch (err) {
-        // SMELL: Leaks table names, column names, and SQL dialect
-        res.status(500).json({ error: err.message, sql: err.sql });
-    }
-});
-```
-
-**Consequence:** Attackers harvest exact database schemas and SQL dialect syntax to refine SQL injection payloads.
-
-**Hardened Pattern:**
-
-```typescript
-app.get('/api/v1/users', async (req, res) => {
-    const correlationId = crypto.randomUUID();
-    try {
-        const filter = sanitizeFilter(req.query.filter);
-        const users = await db.safeQuery(filter);
-        res.json(users);
-    } catch (err) {
-        logger.error({ correlationId, error: err }, "Database query execution failed");
-        res.status(500).json({
-            error: "internal_server_error",
-            correlationId
-        });
-    }
-});
-```
+**Why It Fails `PRIN-ENG-04`:**
+- Multi-step destructive action lacks rollback semantics, leaving the system in a corrupted, irreversible state upon partial failure.

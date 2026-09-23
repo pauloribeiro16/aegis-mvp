@@ -1,11 +1,11 @@
 ---
 name: lifecycle-erasure-analysis
-description: Audits data retention, cascading deletion, object storage expiration, and cryptographic erasure to guarantee irreversible deletion across all operational tiers and backups.
+description: Evaluates functional use cases (UC-*) to ensure personal data is irreversibly purged across all operational tiers and backups upon deletion triggers.
 ---
 
 # Data Lifecycle & Irreversible Erasure Analysis
 
-Inspects relational database schemas, object storage lifecycle configurations, backup retention policies, and account deletion workflows to ensure personal data is irreversibly purged across all operational tiers in compliance with GDPR Art. 17 and privacy lifecycle standards.
+Evaluates functional Use Cases (`UC-*`) to verify that data lifecycle transitions, data retention limits, and account erasure requests result in complete, irreversible data destruction across primary storage, secondary caches, and disaster recovery backups.
 
 > **Target Principle:**  
 > - `PRIN-ENG-07` (End-to-End Lifecycle Security & Irreversible Erasure — Cavoukian / GDPR Art. 17)
@@ -14,115 +14,105 @@ Inspects relational database schemas, object storage lifecycle configurations, b
 
 ## 1. Operational Mandate & Scope
 
-The agent acts as a Data Protection & Database Reliability Architect reviewing:
-- **Relational & NoSQL Data Models:** SQL foreign key constraints (`ON DELETE CASCADE` vs `RESTRICT`), table partitioning, soft-delete flags.
-- **Object Storage & Cloud Buckets:** AWS S3 / GCP Cloud Storage bucket lifecycle rules, versioning policies, file deletion APIs.
-- **Backup & Disaster Recovery Architectures:** Database snapshots, WAL archiving, backup restore pipelines, tombstone ledgers.
-- **Self-Service Autonomy Interfaces:** Account deletion flows, data export (portability) APIs, user consent withdrawal mechanisms.
+The agent acts as a Data Protection & Systems Lifecycle Architect reviewing **Functional Use Cases (`UC-*`)**:
+- **Lifecycle Triggers:** Account deletion requests, workspace dissolution, data portability exports, and retention expiration events.
+- **Cascading Deletion Workflows:** Ensuring that deleting a parent entity (e.g. account or workspace) triggers complete removal of associated child records, uploaded attachments, and activity logs.
+- **Backup & Snapshot Resilience:** Verifying that the functional design prevents deleted personal data from being resurrected when restoring disaster recovery snapshots.
 
-The objective is to verify that user deletion requests result in complete, irreversible data destruction across primary storage, secondary caches, object stores, and disaster recovery backups.
+The analysis is **technology-agnostic**: it audits functional lifecycle flows and legal compliance guarantees without prescribing specific SQL statements, database engines, or cloud storage APIs.
 
 ---
 
 ## 2. Evaluation Procedure
 
-1. **Deletion Workflow Audit:** Trace the execution path triggered when a user or administrator requests account termination (`DELETE /api/v1/account`).
-2. **Soft-Delete vs True Erasure Triage (`PRIN-PRV-02`):** Check if the system merely sets `is_deleted = true` without anonymizing or purging personal identifiers. If personal data remains in plain text, flag as a compliance violation.
-3. **Multi-Store Cascade Verification:** Verify that deleting a user or project triggers cascading deletions across:
-   - Primary relational database tables (tasks, comments, audit metadata).
-   - Redis / in-memory cache keys (sessions, profile caches).
-   - Object storage buckets (attachments, avatars, exported reports).
-4. **Backup Resurrection Defense:** Inspect the disaster recovery restore procedure. Ensure that restoring a 14-day-old backup does not resurrect deleted user accounts (verify existence of a persistent, cryptographic Tombstone Ledger).
-5. **Cryptographic Shredding Evaluation:** For high-scale or immutable storage, evaluate whether data is encrypted with a dedicated per-user/tenant key that can be destroyed in KMS to render data instantly irrecoverable across all historical backups.
-6. **User Autonomy & Confirmation (`PRIN-PRV-04`):** Ensure user-initiated deletion is self-service, does not require customer support friction, and emits an immutable audit confirmation.
-7. **Ledger Output:** Produce a Lifecycle & Erasure Audit Ledger.
+1. **Lifecycle Trigger Inventory:** Identify all use case steps initiated by users or automated timers that request data deletion, account closure, or retention purges.
+2. **Soft-Delete vs True Erasure Audit (`PRIN-ENG-07`):** Verify whether the use case merely marks an entity as "inactive" or "hidden" while retaining personal data in plain text. If personal data persists without irreversible anonymization, flag as a compliance violation.
+3. **Multi-Store Cascade Tracing:** Ensure that the functional flow describes cascading deletion across:
+   - Primary user profiles and private task records.
+   - Associated file attachments and multimedia assets.
+   - Shared collaborative activity feeds (which must be irreversibly pseudonymized/anonymized).
+4. **Backup Resurrection Prevention:** Confirm the use case specifies an immutable deletion receipt (tombstone) that guarantees restored backups cannot resurrect erased accounts.
+5. **Output Delivery:** Produce:
+   - Lifecycle & Erasure Defect Annotations.
+   - Derived Atomic Privacy Requirements in EARS syntax.
+   - Remediated Use Case Specification with complete cascading erasure.
 
 ---
 
 ## 3. Concrete Walkthrough Example
 
-### 3.1 Input Artifact: Flawed Deletion Implementation
+### 3.1 Input Artifact: Functional Use Case (`UC-06`)
 
-```python
-# Application service handler
-@app.delete("/api/v1/users/{user_id}")
-def delete_user_account(user_id: str, db: Session = Depends(get_db)):
-    user = db.query(User).filter(User.id == user_id).first()
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
-        
-    # SMELL 1: Soft-delete only. PII remains in plain text indefinitely
-    user.is_deleted = True
-    db.commit()
-    
-    # SMELL 2: Task comments, uploaded files in S3, and billing records are left untouched
-    # SMELL 3: Redis user session remains active until TTL expiration
-    return {"status": "user marked as deleted"}
+```markdown
+### Use Case: UC-06 — User Account Deletion
+- **Primary Actor:** Authenticated User
+- **Pre-conditions:** User possesses an active account.
+- **Trigger:** User clicks "Delete Account" in profile settings.
+- **Data Exchanged:** User ID, Confirmation confirmation checkbox.
+
+#### Main Success Scenario:
+1. User requests account deletion and confirms dialog.
+2. System updates user status to "inactive".
+3. System prevents user from logging in.
+4. System confirms account closure.
+
+#### Failure Scenarios:
+- 1a. User cancels confirmation dialog: System returns to profile settings.
 ```
 
-### 3.2 Analytical Evaluation
+---
 
-1. **Violation of `PRIN-PRV-02` (End-to-End Lifecycle Security):**
-   - Setting `is_deleted = True` leaves name, email, and password hash permanently in the database. A breach or internal query still exposes this data.
-   - Files uploaded by the user to S3 are never deleted, continuing to accrue storage costs and privacy exposure.
-   - If the database is restored from a weekly snapshot, the user record is still completely intact.
-2. **Violation of `PRIN-PRV-04` (Respect for User Autonomy):**
-   - The user has no guarantee of erasure, active sessions are not immediately invalidated, and no cryptographic tombstone records the legal erasure event.
+### 3.2 Step-by-Step Analytical Evaluation
 
-### 3.3 Remediated Erasure Architecture
+1. **Step 2 Finding — Soft-Delete as Pseudo-Erasure (`PRIN-ENG-07`):**  
+   *Analysis:* Marking an account as "inactive" does not delete personal data. The user's email, name, uploaded files, and comments remain stored in plain text. A future data breach or administrative report will expose their data, violating GDPR Art. 17 right to erasure.
+   *Remediation:* The flow must mandate irreversible anonymization of the user profile and complete destruction of private assets.
+2. **Missing Storage & Asset Purge:**  
+   *Analysis:* Uploaded file attachments remain orphaned in storage, accumulating storage costs and privacy exposure.
+3. **Missing Backup Resurrection Defense:**  
+   *Analysis:* Restoring a database snapshot will bring the account back to life without record of the deletion request.
 
-```python
-from datetime import datetime, timezone
-import hashlib
+---
 
-@app.delete("/api/v1/users/{user_id}")
-def delete_user_account(user_id: str, db: Session = Depends(get_db), s3=Depends(get_s3), redis=Depends(get_redis)):
-    user = db.query(User).filter(User.id == user_id).first()
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
-        
-    # 1. Immediate Session & Cache Invalidation
-    redis.delete(f"session:{user_id}")
-    redis.delete(f"profile_cache:{user_id}")
-    
-    # 2. Asynchronous S3 Object Purge
-    purge_user_s3_assets(s3, bucket="tinytask-attachments", prefix=f"user_{user_id}/")
-    
-    # 3. Cascading Deletion of User-Owned Private Records
-    db.query(TaskAttachment).filter(TaskAttachment.user_id == user_id).delete()
-    
-    # 4. Irreversible Anonymization of Collaborative Records
-    user.email = f"erased_{hashlib.sha256(user_id.encode()).hexdigest()[:12]}@deleted.tinytask.local"
-    user.display_name = "Deactivated User"
-    user.password_hash = "ERASED"
-    user.is_deleted = True
-    
-    # 5. Cryptographic Tombstone Recording (Replayed upon DB disaster recovery)
-    tombstone = DeletionTombstone(
-        entity_id=user_id,
-        entity_type="user",
-        erased_at=datetime.now(timezone.utc)
-    )
-    db.add(tombstone)
-    db.commit()
-    
-    return {"status": "account permanently erased", "erased_at": tombstone.erased_at.isoformat()}
+### 3.3 Derived Atomic Privacy Requirements (EARS Syntax)
+
+- `REQ-PRV-LIFE-001` (Cascading Asset Destruction):  
+  *When* an account deletion request is confirmed, *the* Data Lifecycle Subsystem *SHALL* permanently delete all private tasks, draft notes, and uploaded attachments owned by the user across all storage tiers within 24 hours.
+- `REQ-PRV-LIFE-002` (Irreversible Profile Anonymization):  
+  *When* executing account erasure, *the* Identity Subsystem *SHALL* replace all personal identifiers (email, full name, contact handles) with irreversible synthetic pseudonyms, rendering collaborative historical comments permanently unlinked to the individual.
+- `REQ-PRV-LIFE-003` (Disaster Recovery Tombstone Assertion):  
+  *While* maintaining disaster recovery snapshots, *the* System *SHALL* persist an immutable erasure tombstone ledger ensuring restored snapshots do not resurrect erased user identities.
+
+---
+
+### 3.4 Remediated Functional Use Case (`UC-06`)
+
+```markdown
+### Use Case: UC-06 — User Account Deletion and Right to Erasure (Hardened)
+- **Primary Actor:** Authenticated User (Account Owner)
+- **Pre-conditions:** User holds an active session; re-authentication completed.
+- **Trigger:** User initiates account erasure request and provides security re-authentication.
+- **Data Exchanged:** User ID, Authentication Challenge, Optional Export Format Request.
+
+#### Main Success Scenario:
+1. User requests account erasure; System verifies credentials via step-up re-authentication.
+2. System offers immediate machine-readable data export (JSON/CSV) prior to permanent deletion.
+3. User confirms irreversible erasure.
+4. System terminates all active sessions and invalidates authentication credentials immediately.
+5. System permanently purges private user records and associated file attachments across all storage tiers.
+6. System irreversibly anonymizes user references in shared workspace comments with synthetic identifiers.
+7. System records an immutable deletion tombstone in the disaster recovery ledger.
+8. System issues final cryptographic confirmation receipt of erasure to User.
+
+#### Failure Scenarios:
+- 1a. Re-authentication fails: System halts erasure and logs security event.
 ```
-
-### 3.4 Lifecycle & Erasure Audit Ledger
-
-| Component | Initial Handling | Finding / Non-Compliance | Remediated Handling | Principle |
-|---|---|---|---|---|
-| Database Record | `is_deleted = True` (Plain PII kept) | GDPR Art. 17 non-compliance; PII leakage | **Irreversible anonymization** + tombstone record | `PRIN-PRV-02` |
-| S3 Storage Files | Orphaned indefinitely | Unbounded data retention | **Automated purge** of all S3 objects under user prefix | `PRIN-PRV-02` |
-| Redis Sessions | Left to expire | Session hijack risk post-deletion | **Immediate invalidation** of session keys | `PRIN-PRV-04` |
-| Backup Restore | User resurrected on snapshot recovery | Compliance resurrection hazard | **Tombstone Ledger replay** in DR pipeline | `PRIN-PRV-02` |
 
 ---
 
 ## 4. Reference Catalogs
 
-- **Detailed Heuristics:** Consult [`references/heuristics.md`](references/heuristics.md) for crypto-shredding, backup tombstone architectures, and S3 lifecycle rules.
-- **Concrete Anti-Patterns:** Consult [`references/antipatterns.md`](references/antipatterns.md) for soft-delete traps, orphan object accumulation, and backup resurrection flaws.
-- **End-to-End Case Studies:** Consult [`references/examples.md`](references/examples.md) for multi-table cascade scripts and disaster recovery restore tombstone playbooks.
-- **Audit Checklist:** Consult [`references/checklist.md`](references/checklist.md) for the structured lifecycle verification checklist.
+- **Detailed Heuristics:** Consult [`references/heuristics.md`](references/heuristics.md) for technology-agnostic lifecycle and tombstone heuristics.
+- **Concrete Anti-Patterns:** Consult [`references/antipatterns.md`](references/antipatterns.md) for functional flow soft-delete and orphan asset smells.
+- **End-to-End Case Studies:** Consult [`references/examples.md`](references/examples.md) for complete Use Case erasure walkthroughs.
+- **Audit Checklist:** Consult [`references/checklist.md`](references/checklist.md) for the structured lifecycle checklist.

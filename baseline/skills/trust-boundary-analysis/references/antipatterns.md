@@ -1,102 +1,51 @@
 # Anti-Patterns & Smells — Trust Boundary & Complete Mediation
 
-Concrete architectural smells and anti-patterns violating trust boundaries, complete mediation, and privilege separation.
+Functional use case smells and anti-patterns violating trust boundaries and complete mediation.
 
 ---
 
-## 1. Ambient Authority via Unsigned Headers
+## 1. Perimeter-Only Verification (The Flat Internal Trust Fallacy)
 
-### Bad Pattern: Trusting Edge-Injected Headers Internally
-
-```python
-# Internal User Service endpoint (Zone 2)
-@app.route('/internal/v1/users/<user_id>', methods=['GET'])
-def get_user_profile(user_id):
-    # SMELL: Trusting unauthenticated header passed from reverse proxy
-    caller_role = request.headers.get('X-User-Role')
-    
-    if caller_role == 'admin':
-        return db.get_user_with_sensitive_fields(user_id)
-    return db.get_user_public(user_id)
+### Bad Use Case Design Smell
+```markdown
+### Use Case: View Project Tasks
+1. User requests task list for Project ID `proj_123`.
+2. API Gateway validates that the user is logged in.
+3. System fetches all tasks matching `proj_123` from database and returns them to the user.
 ```
 
-**Consequence:** Any developer, compromised container, or internal attacker who can reach the internal port can forge `X-User-Role: admin` and extract sensitive data without credentials (Confused Deputy).
+**Why It Fails `PRIN-ENG-01`:**
+- Step 3 relies entirely on the gateway's authentication check and assumes that because the user is logged in, they are entitled to view `proj_123`. Any user can view other tenants' projects by guessing or enumerating IDs.
 
-**Hardened Pattern:**
-
-```python
-# Internal User Service endpoint (Zone 2)
-@app.route('/internal/v1/users/<user_id>', methods=['GET'])
-def get_user_profile(user_id):
-    token = request.headers.get('Authorization', '').replace('Bearer ', '')
-    try:
-        # Cryptographically verify internal JWT signed with Gateway Private Key
-        claims = jwt.decode(token, GATEWAY_PUBLIC_KEY, algorithms=['RS256'], audience='internal-user-service')
-    except jwt.InvalidTokenError:
-        abort(401, "Invalid internal caller identity token")
-        
-    caller_role = claims.get('role')
-    if caller_role == 'admin':
-        return db.get_user_with_sensitive_fields(user_id)
-    return db.get_user_public(user_id)
+**Hardened Use Case Pattern:**
+```markdown
+### Use Case: View Project Tasks (Hardened)
+1. User requests task list for Project ID `proj_123`.
+2. Ingress Gateway authenticates user and extracts verified tenant identity.
+3. Core Project Service mediates request: verifies that `proj_123` belongs to user's authorized tenant.
+4. Core Project Service queries tasks scoped strictly to both `proj_123` AND user's tenant identifier.
 ```
 
 ---
 
-## 2. Ingress Bypass & Direct Database Connectivity
+## 2. Ingress Bypass to Persistent Storage
 
-### Bad Pattern: Frontend or Lambda Connecting Directly to Database
-
-```mermaid
-flowchart LR
-    Client["Client Web App"] -->|"Bypasses Gateway & App Tier<br>Direct DB Connection"| DB[("Production Postgres")]
+### Bad Use Case Design Smell
+```markdown
+### Use Case: Upload User Avatar
+1. User selects image file in browser.
+2. Web application uploads file directly to public object storage bucket using a shared public key.
+3. Web application saves the public image URL into user profile.
 ```
 
-**Consequence:** Inability to enforce uniform auditing, rate limiting, or tenant isolation logic. Direct exposure of relational database ports to external networks.
+**Why It Fails `PRIN-ENG-01`:**
+- Completely bypasses the system's boundary mediation. Clients with shared credentials can overwrite, enumerate, or delete objects belonging to other users.
 
-**Hardened Pattern:**
-
-```mermaid
-flowchart LR
-    Client["Client Web App"] -->|"HTTPS / TLS 1.3"| Gateway["API Gateway"]
-    Gateway -->|"Internal mTLS"| App["Backend Application Tier"]
-    App -->|"Parameterized SQL via Scoped DB User"| DB[("Production Postgres (Private Subnet)")]
-```
-
----
-
-## 3. Perimeter-Only Authorization (Missing Complete Mediation)
-
-### Bad Pattern: Relying Solely on URL-Level Gateway Checks
-
-```python
-# API Gateway Route Filter
-if request.path.startswith("/api/v1/projects") and is_authenticated(user):
-    forward_to_upstream(request)
-
-# Backend Microservice Handler
-@app.route('/api/v1/projects/<project_id>', methods=['GET'])
-def get_project(project_id):
-    # SMELL: Queries project solely by project_id without verifying user owns this project
-    project = db.query("SELECT * FROM projects WHERE id = %s", [project_id])
-    return jsonify(project)
-```
-
-**Consequence:** Insecure Direct Object Reference (IDOR). Any authenticated user can access any other tenant's projects simply by guessing or iterating `project_id`.
-
-**Hardened Pattern:**
-
-```python
-# Backend Microservice Handler (Complete Mediation)
-@app.route('/api/v1/projects/<project_id>', methods=['GET'])
-def get_project(project_id):
-    tenant_id = g.current_user.tenant_id
-    # Enforces tenant boundary on every query
-    project = db.query(
-        "SELECT * FROM projects WHERE id = %s AND tenant_id = %s",
-        [project_id, tenant_id]
-    )
-    if not project:
-        abort(404, "Project not found or access denied")
-    return jsonify(project)
+**Hardened Use Case Pattern:**
+```markdown
+### Use Case: Upload User Avatar (Hardened)
+1. User initiates avatar upload.
+2. Core User Service validates user identity, evaluates file size/type constraints, and generates an ephemeral, strictly scoped upload authorization restricted to the user's isolated storage prefix.
+3. User transmits file using the scoped authorization.
+4. System validates completion and commits avatar reference to user profile.
 ```

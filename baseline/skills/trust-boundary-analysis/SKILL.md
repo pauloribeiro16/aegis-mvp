@@ -1,11 +1,11 @@
 ---
 name: trust-boundary-analysis
-description: Identifies, evaluates, and verifies trust boundaries across architecture diagrams and data flows to enforce complete mediation and prevent unauthorized elevation of privilege.
+description: Evaluates functional use cases (UC-*) to verify that trust boundaries between actors, mediation points, and data tiers are explicit, authenticated, and enforce complete mediation.
 ---
 
 # Trust Boundary & Complete Mediation Analysis
 
-Analyzes architectural diagrams, data flow representations (DFDs), and inter-service communication topologies to verify that trust boundaries are explicitly demarcated and that all boundary crossings enforce complete mediation.
+Evaluates functional Use Cases (`UC-*`) to ensure trust boundary crossings between actors, systems, and storage tiers are explicitly demarcated, authenticated, and enforce complete mediation without ambient authority.
 
 > **Target Principle:**  
 > - `PRIN-ENG-01` (Explicit Trust Boundaries & Complete Mediation — Shostack / Saltzer & Schroeder)
@@ -14,100 +14,103 @@ Analyzes architectural diagrams, data flow representations (DFDs), and inter-ser
 
 ## 1. Operational Mandate & Scope
 
-The agent acts as a Principal Security Architect reviewing architectural and data flow specifications:
-- **Architectural Diagrams:** Mermaid DFDs, C4 Model diagrams (Container/Component), sequence diagrams.
-- **Service Mesh & Network Maps:** Ingress routes, internal RPC/REST boundaries, asynchronous worker queues.
-- **Authorization & Context Propagation:** Token validation logic, gateway header forwarding, multi-tenant isolation barriers.
+The agent acts as a Systems Security Architect reviewing **Functional Use Cases (`UC-*`)**:
+- **Actor Transitions:** Demarcating transitions between External Actors (e.g. anonymous visitor, authenticated workspace member, third-party service) and Internal System Components.
+- **Mediation Points:** Verifying that data flows passing between execution tiers terminate at an explicit policy enforcement point.
+- **Context & Tenancy Binding:** Ensuring that every interaction step explicitly asserts the actor's authorized tenancy and role rather than relying on perimeter-only trust.
 
-The goal is to ensure that no process blindly trusts incoming data or requests across a boundary, that all access is fully mediated on every operation, and that privilege separation prevents single-point compromise.
+The analysis is **technology-agnostic**: it evaluates logical boundaries, data flows, and mediation requirements without prescribing specific network protocols, programming frameworks, or database products.
 
 ---
 
 ## 2. Evaluation Procedure
 
-1. **Zone Identification:** Classify components into distinct trust zones:
-   - **Zone 0 (Untrusted):** Public browsers, mobile apps, third-party webhooks, external integrations.
-   - **Zone 1 (DMZ / Edge):** Reverse proxies, TLS terminators, API Gateways.
-   - **Zone 2 (Internal Compute):** Core application microservices, asynchronous workers.
-   - **Zone 3 (Restricted Data):** Relational databases, key-value caches, cryptographic key stores.
-2. **Boundary Crossing Trace:** For every data flow crossing between zones, determine:
-   - Does the receiver authenticate the sender?
-   - Does the receiver validate and sanitize the payload schema before execution?
-   - Does the flow rely on implicit trust (e.g. trusting an unvalidated HTTP header)?
-3. **Mediation Verification (`PRIN-SEC-02`):** Confirm that downstream services perform localized authorization checks on the target resource (e.g., verifying tenant isolation) rather than relying on perimeter-only checks.
-4. **Separation of Privilege Verification (`PRIN-SEC-04`):** Confirm that distinct operational roles (e.g., read vs write, user vs administrative execution) require separate credentials or scoped assertions.
-5. **Ledger Output:** Produce a Trust Boundary Audit Ledger detailing findings and remediations.
+1. **Zone & Boundary Mapping:** Identify the operational zones implied by the use case:
+   - *Untrusted External:* User agents, public networks, third-party integrations.
+   - *Perimeter Mediation:* Ingress gateways, authentication checkpoints.
+   - *Core Application Logic:* Business workflows, task processors.
+   - *Persistent Storage:* Customer data stores, file archives.
+2. **Boundary Crossing Audit:** Trace every step in the use case where data or control transitions between zones.
+3. **Complete Mediation Verification (`PRIN-ENG-01`):** Ensure that downstream processing steps do not trust incoming claims blindly. Every step that reads or modifies data must explicitly assert and verify resource ownership (e.g. verifying that the actor belongs to the target workspace).
+4. **Step-by-Step Flow Inspection:** Flag any step where an actor accesses internal components without passing through mediation, or where identity context is assumed without verification.
+5. **Output Delivery:** Produce:
+   - Step-by-Step Boundary Risk Annotations.
+   - Derived Atomic Security Requirements in EARS syntax.
+   - Remediated Use Case Specification with explicit mediation steps.
 
 ---
 
 ## 3. Concrete Walkthrough Example
 
-### 3.1 Input Artifact: Vulnerable Multi-Tier Architecture
+### 3.1 Input Artifact: Functional Use Case (`UC-04`)
 
-```mermaid
-flowchart TD
-    Client["Public Client (Browser)"]
-    Gateway["API Gateway (Edge)"]
-    Service["Task Microservice"]
-    DB[("Customer Database")]
+```markdown
+### Use Case: UC-04 — Task Assignment and Team Notification
+- **Primary Actor:** Workspace Member
+- **Pre-conditions:** Member is logged into the application.
+- **Trigger:** Member selects a task and assigns it to another collaborator.
+- **Data Exchanged:** Task ID, Assignee ID, Optional notification note.
 
-    Client -->|"1. HTTP POST /api/tasks<br>(Bearer JWT)"| Gateway
-    Gateway -->|"2. HTTP POST :8081/tasks<br>Injects X-User-Id, X-Tenant-Id"| Service
-    Service -->|"3. SELECT * FROM tasks WHERE id = :id"| DB
+#### Main Success Scenario:
+1. Member submits task assignment request with Task ID and Assignee ID.
+2. System receives request at the edge gateway and validates user session.
+3. Edge gateway forwards request directly to the internal database to update task assignment record.
+4. Internal database notifies background notification service to email the assignee.
+5. System confirms assignment to the Member.
+
+#### Failure Scenarios:
+- 2a. Session invalid: System rejects request.
 ```
 
-### 3.2 Analytical Evaluation
+---
 
-1. **Violation of `PRIN-MOD-01` (Explicit Trust Boundaries):**
-   - The boundary between `Gateway` (Zone 1) and `Task Microservice` (Zone 2) relies on unauthenticated, unsigned HTTP headers (`X-User-Id`, `X-Tenant-Id`). If an attacker or a compromised service in Zone 2 injects these headers, the task service treats them as authoritative identity.
-2. **Violation of `PRIN-SEC-02` (Complete Mediation):**
-   - Step 3 performs a database query filtering only by `id` (`SELECT * FROM tasks WHERE id = :id`), relying on the edge gateway to have performed all tenant ownership checks. If the query parameter is manipulated, an authenticated user can read another tenant's tasks (IDOR vulnerability).
-3. **Violation of `PRIN-SEC-04` (Separation of Privilege):**
-   - The `Task Microservice` connects to `Customer Database` using a single shared database credential that has full read/write/schema-alter privileges across all tables.
+### 3.2 Step-by-Step Analytical Evaluation
 
-### 3.3 Remediated Architecture
+1. **Step 3 Finding — Missing Complete Mediation & Boundary Bypass (`PRIN-ENG-01`):**
+   - *Analysis:* The edge gateway routes directly to the internal database or assumes that validating the user session is sufficient. The system does not verify whether the authenticated member actually belongs to the workspace that owns the Task ID (Insecure Direct Object Reference hazard).
+   - *Remediation:* The request must pass to the Core Domain Logic, which must explicitly verify that the caller's tenancy matches the task's workspace before any database update is permitted.
+2. **Step 4 Finding — Unmediated Inter-Component Trust:**
+   - *Analysis:* The notification trigger assumes ambient authority. The notification service must receive a validated domain event carrying verified tenant and actor context, rather than raw unmediated triggers.
 
-```mermaid
-flowchart TD
-    subgraph Zone0 ["Zone 0: Untrusted External"]
-        Client["Public Client (Browser)"]
-    end
+---
 
-    subgraph Zone1 ["Zone 1: Perimeter DMZ"]
-        Gateway["API Gateway<br>(JWT Verification & Rate Limiting)"]
-    end
+### 3.3 Derived Atomic Security Requirements (EARS Syntax)
 
-    subgraph Zone2 ["Zone 2: Authenticated Microservice Mesh"]
-        Service["Task Microservice<br>(Tenant Isolation Enforcement)"]
-    end
+- `REQ-SEC-BND-001` (Workspace Tenancy Complete Mediation):  
+  *When* a task assignment action is requested, *the* Task Management Service *SHALL* verify that both the executing actor and the referenced task belong to the same authenticated workspace, rejecting unauthorized cross-tenant assignments with access denied.
+- `REQ-SEC-BND-002` (Mediated Event Dispatch):  
+  *When* dispatching notifications, *the* System *SHALL* transmit cryptographically signed internal event messages containing verified workspace context, prohibiting unmediated database-to-worker side-channels.
 
-    subgraph Zone3 ["Zone 3: Restricted Data Tier"]
-        DB[("Customer Database<br>(Scoped DB User: task_app)")]
-    end
+---
 
-    Client -->|"1. TLS 1.3 HTTPS<br>Bearer JWT"| Gateway
-    Gateway -->|"2. mTLS + Internal JWT<br>(Signed Claims: sub, tid, roles)"| Service
-    Service -->|"3. Parameterized Query<br>WHERE id = :id AND tenant_id = :claims.tid"| DB
+### 3.4 Remediated Functional Use Case (`UC-04`)
 
-    style Zone0 fill:#fff1f0,stroke:#ffa39e
-    style Zone1 fill:#fffbe6,stroke:#ffe58f
-    style Zone2 fill:#f6ffed,stroke:#b7eb8f
-    style Zone3 fill:#e6f7ff,stroke:#91d5ff
+```markdown
+### Use Case: UC-04 — Task Assignment and Team Notification (Hardened)
+- **Primary Actor:** Verified Workspace Member
+- **Pre-conditions:** Member is authenticated and belongs to the workspace owning the task.
+- **Trigger:** Member submits task assignment through the workspace interface.
+- **Data Exchanged:** Workspace ID, Task ID, Assignee ID, Notification note.
+
+#### Main Success Scenario:
+1. Member submits task assignment request.
+2. Ingress Gateway validates active session and routes request to Core Task Service.
+3. Core Task Service verifies complete mediation: asserts that the member has permission to assign tasks within the specific workspace owning the Task ID.
+4. Core Task Service updates the task assignment record in persistent storage within an isolated tenant scope.
+5. Core Task Service publishes an authenticated assignment event to the internal notification queue.
+6. Notification Service receives the verified event and dispatches notification to the Assignee.
+7. System confirms task assignment to the Member.
+
+#### Failure Scenarios:
+- 2a. Unauthenticated session: Ingress Gateway terminates request.
+- 3a. Member lacks permission or task belongs to another workspace: Core Task Service rejects request with access denied.
 ```
-
-### 3.4 Trust Boundary Audit Ledger
-
-| Crossing Point | Ingress Zone $\rightarrow$ Target Zone | Vulnerability / Hazard | Remediated Control | Principle |
-|---|---|---|---|---|
-| Edge to Core Service | Zone 1 $\rightarrow$ Zone 2 | Header spoofing / Confused deputy | Enforce **mTLS** and cryptographically **signed internal tokens** | `PRIN-MOD-01` |
-| Core Service to Data Tier | Zone 2 $\rightarrow$ Zone 3 | IDOR / Cross-tenant data leakage | Enforce **complete mediation**: queries must bind `tenant_id` from token claims | `PRIN-SEC-02` |
-| Core Service DB Connection | Zone 2 $\rightarrow$ Zone 3 | Excessive database privileges | Split into dedicated, least-privilege DB role (`task_app`) restricted to app tables | `PRIN-SEC-04` |
 
 ---
 
 ## 4. Reference Catalogs
 
-- **Detailed Heuristics:** Consult [`references/heuristics.md`](references/heuristics.md) for boundary discovery rules and token propagation standards.
-- **Concrete Anti-Patterns:** Consult [`references/antipatterns.md`](references/antipatterns.md) for real-world trust boundary bypasses and confused deputy scenarios.
-- **End-to-End Case Studies:** Consult [`references/examples.md`](references/examples.md) for complex asynchronous worker and microservice DFD remediations.
-- **Audit Checklist:** Consult [`references/checklist.md`](references/checklist.md) for the structured boundary verification checklist.
+- **Detailed Heuristics:** Consult [`references/heuristics.md`](references/heuristics.md) for technology-agnostic boundary discovery and mediation heuristics.
+- **Concrete Anti-Patterns:** Consult [`references/antipatterns.md`](references/antipatterns.md) for functional flow boundary bypasses and ambient authority smells.
+- **End-to-End Case Studies:** Consult [`references/examples.md`](references/examples.md) for complete multi-tier Use Case audit walkthroughs.
+- **Audit Checklist:** Consult [`references/checklist.md`](references/checklist.md) for the structured boundary checklist.

@@ -1,29 +1,19 @@
 # Evaluation Checklist — Data Minimization & Privacy Balance
 
-Comprehensive verification checklist for evaluating schemas and data flows against `PRIN-PRV-01` and `PRIN-PRV-03`.
+Verification checklist for auditing functional Use Cases (`UC-*`) against `PRIN-ENG-06`.
 
 ---
 
-## 1. Ingress Minimization (`PRIN-PRV-01`)
+## 1. Ingress Minimization in Use Cases (`PRIN-ENG-06`)
 
-- [ ] **Strict Schema Validation:** API request schemas reject extra, unmodeled properties (`additionalProperties: false` or `extra = 'forbid'`).
-- [ ] **No Mass Assignment:** Controllers never pass raw request bodies directly to database ORM models or database update queries.
-- [ ] **Functional Justification:** Every input field collected across onboarding, settings, and forms maps directly to an active feature.
-- [ ] **No Premature Collection:** Financial or physical address details are only requested during actual billing checkout, never during free tier sign-up.
-
----
-
-## 2. Egress Exposure & DTO Scoping (`PRIN-PRV-01`)
-
-- [ ] **Dedicated Output DTOs:** Every API endpoint returns an explicit DTO projection, never raw database entities.
-- [ ] **Sensitive Field Absence:** Passwords, password hashes, biometric tokens, MFA secrets, and payment tokens are completely absent from all response models.
-- [ ] **Internal Telemetry Exclusion:** System metadata (e.g. `failed_login_count`, internal database foreign keys, tenant encryption keys) is excluded from client responses.
-- [ ] **Role-Based DTOs:** Public collaborator views display only display names and avatars; private account details are accessible only by the account owner.
+- [ ] **Functional Justification:** Every field listed under `Data Exchanged` is indispensable for the primary goal of the use case.
+- [ ] **No Speculative Collection:** Fields collected for potential future marketing or unstated analytics are excluded from the use case.
+- [ ] **Deferred Sensitivity:** Financial, billing, or physical identity details are deferred until the specific use case requiring them (e.g. checkout) is invoked.
 
 ---
 
-## 3. Privacy-Preserving Balance & Coarsening (`PRIN-PRV-03`)
+## 2. Egress Scoping & Collaborator Views (`PRIN-ENG-06`)
 
-- [ ] **Location Coarsening:** Where location is required for language or localized pricing, only coarse country/region codes are retained; GPS coordinates are discarded.
-- [ ] **Log Scrubbing:** Application logs, error trackers, and telemetry streams automatically scrub or hash IP addresses, email addresses, and bearer tokens.
-- [ ] **Synthetic / Anonymous Identifiers:** Cross-service references use opaque UUIDs rather than email addresses or national identity numbers.
+- [ ] **Persona-Based Scoping:** Steps that display user data to collaborators project only public handles and avatars.
+- [ ] **No Internal Metadata Exposure:** System risk scores, internal database identifiers, and security counters are excluded from user-facing screens.
+- [ ] **Attribute Coarsening:** Contextual parameters (location, time) are coarsened to the minimum precision needed for functionality.

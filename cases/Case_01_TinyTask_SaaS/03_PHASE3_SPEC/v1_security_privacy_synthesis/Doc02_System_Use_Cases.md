@@ -26,6 +26,7 @@ To provide complete operational clarity, each macro capability cluster is modele
     - [{U.C. 1} Manage User Accounts and Authentication](#uc-1-manage-user-accounts-and-authentication)
       - [{U.C. 1.1} Register and authenticate user accounts](#uc-11-register-and-authenticate-user-accounts)
       - [{U.C. 1.2} Manage user profile and account preferences](#uc-12-manage-user-profile-and-account-preferences)
+      - [{U.C. 1.3} Recover access to a locked user account](#uc-13-recover-access-to-a-locked-user-account)
     - [{U.C. 2} Manage Workspaces and Teams](#uc-2-manage-workspaces-and-teams)
       - [{U.C. 2.1} Create and configure workspace](#uc-21-create-and-configure-workspace)
       - [{U.C. 2.2} Invite workspace members and manage access roles](#uc-22-invite-workspace-members-and-manage-access-roles)
@@ -138,14 +139,15 @@ flowchart TD
 
 ### 3.2 Traceability Matrix: Requirements (Doc01) to System Use Cases (Doc02)
 
-The following matrix establishes strict bi-directional traceability between the 18 consolidated functional requirements from `Doc01` and the 18 Level-1 System Use Cases:
+The following matrix establishes strict bi-directional traceability between the 19 consolidated functional requirements from `Doc01` (18 elicited + `R1.3` derived in the V1 Refinement Pass) and the 19 Level-1 System Use Cases:
 
 *Table 1. Traceability Matrix*
 
 | Functional Req (Doc01) | Product Use Case (Doc01) | System Use Case (Doc02) | Use Case Title | Priority | Bound NFR-Security & Privacy (in-card) |
 |---|---|---|---|---|---|
 | **R1.1** | **PUC 1.1** | **{U.C. 1.1}** | Register and authenticate user accounts | MUST | NFR-RN10, NFR-RN11, NFR-RN19 |
-| **R1.2** | **PUC 1.2** | **{U.C. 1.2}** | Manage user profile and account preferences | SHOULD | NFR-RN23, NFR-RN26 |
+| **R1.2** | **PUC 1.2** | **{U.C. 1.2}** | Manage user profile and account preferences | MUST | NFR-RN23, NFR-RN26 |
+| **R1.3** | **PUC 1.3** | **{U.C. 1.3}** | Recover access to a locked user account | MUST | NFR-RN10, NFR-RN11 |
 | **R2.1** | **PUC 2.1** | **{U.C. 2.1}** | Create and configure workspace | MUST | NFR-RN9 |
 | **R2.2** | **PUC 2.2** | **{U.C. 2.2}** | Invite workspace members and manage access roles | MUST | NFR-RN12 |
 | **R2.3** | **PUC 2.3** | **{U.C. 2.3}** | Monitor workspace activity and operational metrics | COULD | NFR-RN22 |
@@ -195,11 +197,14 @@ flowchart LR
     subgraph UC1_Cluster ["UC 1 - Manage User Accounts and Authentication"]
         UC1_1(["UC 1.1: Register and authenticate user accounts"])
         UC1_2(["UC 1.2: Manage user profile and account preferences"])
+        UC1_3(["UC 1.3: Recover access to a locked user account"])
     end
 
     Visitor --> UC1_1
     Visitor --> UC1_2
+    Visitor --> UC1_3
     UC1_1 -.-> Email
+    UC1_3 -.-> Email
 ```
 
 #### {U.C. 1.1} Register and authenticate user accounts
@@ -235,6 +240,7 @@ flowchart LR
     - 5b1. System informs actor of authentication failure and increments failed attempt counter without revealing whether the email or password was incorrect.
   - **5c. Repeated authentication failures exceed threshold (5 attempts):**
     - 5c1. System temporarily blocks authentication attempts for target account for 15 minutes, returns generic throttling notice, and records security alert in audit log (RN11, RN18).
+    - 5c2. System informs the actor of the self-service recovery path ({U.C. 1.3}).
 - **Success Guarantees (Postconditions):** An authenticated session is issued to the user; the user has access to authorized workspace rosters.
 - **Minimal Guarantees:** Failed attempts leave database credentials unmodified; security audit log records timestamp and client IP for every rejected attempt; zero credentials or session tokens are leaked (RN18).
 
@@ -264,6 +270,35 @@ flowchart LR
     - 4c1. System halts transaction, invalidates expired token, and redirects actor to re-authenticate without saving changes (RN11).
 - **Success Guarantees:** Updated personal details and notification preferences take effect across all workspace views immediately.
 - **Minimal Guarantees:** Existing profile data remains unchanged if validation fails; profile modifications emit a structured privacy audit record (RN26).
+
+---
+
+#### {U.C. 1.3} Recover access to a locked user account
+- **Traceability:** Requirement `R1.3` | Product Use Case `PUC 1.3`
+- **Primary Actor:** Locked-Out Registered User
+- **Supporting Actors:** Notification / Email Service
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *End Users:* Autonomous, immediate recovery of account access without support queues.
+  - *Platform Founders:* Legitimate accounts remain reachable despite brute-force protection; low support burden.
+- **Preconditions:** account exists and is registered to the actor's email address; account authentication is temporarily locked after repeated failed attempts ({U.C. 1.1} extension 5c).
+- **Trigger:** Actor is denied login due to lockout and requests account recovery.
+- **Main Success Scenario:**
+  1. Actor opens the login interface and selects account recovery, submitting the registered email address.
+  2. System verifies that an account exists for the submitted address and dispatches a single-use, time-limited recovery link.
+  3. Actor accesses the recovery link from their email inbox.
+  4. System validates the link, clears the failed-attempt counter, and lifts the temporary lockout.
+  5. System invalidates all active sessions of the account (RN11) and guides the actor to authenticate with renewed credentials.
+  6. Actor submits valid credentials; system establishes an active authenticated session ({U.C. 1.1} step 6).
+- **Extensions:**
+  - **2a. Submitted address does not match any account:**
+    - 2a1. System returns a neutral confirmation regardless of account existence, preventing account enumeration (RN10).
+  - **3a. Recovery link expired or already used:**
+    - 3a1. System rejects the link and offers to dispatch a fresh recovery email.
+  - **4a. Actor cannot access the registered email inbox:**
+    - 4a1. System directs the actor to the platform's support channels; the lockout expires naturally after its time window.
+- **Success Guarantees:** The lockout is lifted and the failure counter reset; all prior sessions are invalidated; the actor regains normal authentication.
+- **Minimal Guarantees:** No credentials or session tokens are disclosed during recovery; every recovery attempt is recorded in the security audit log (RN18); a legitimate user is never permanently locked out.
 
 ---
 
@@ -778,7 +813,7 @@ flowchart LR
   8. System lifts the grace period and clears warning banners.
 - **Extensions:**
   - **6a. Grace period expires without payment resolution (Day 8):**
-    - 6a1. System automatically transitions workspace to restricted read-only status and suspends member invitations until billing is rectified.
+    - 6a1. System automatically transitions the workspace to a restricted read-only state — preserving project consultation and data export ({U.C. 8.1}) while suspending content modifications and member invitations — until billing is rectified (R7.2).
   - **3a. Webhook timestamp exceeds allowable replay window (5 minutes):**
     - 3a1. System rejects expired webhook payload, logs replay detection event, and halts state transition (RN16, RN18).
 - **Success Guarantees:** Team operations are shielded from immediate disruption during temporary financial glitches; resolution restores normal status cleanly.
@@ -849,18 +884,21 @@ flowchart LR
 - **Main Success Scenario:**
   1. Actor accesses account security settings and selects "Close Account".
   2. System presents warning regarding permanent loss of credentials and severance of workspace memberships, requiring explicit confirmation.
-  3. Actor confirms account termination.
-  4. System invalidates all active sessions, revokes authentication tokens, marks the user account as closed, and removes active workspace memberships.
-  5. System dispatches a formal digital confirmation receipt via email certifying account termination date and time.
-  6. System terminates user session and redirects browser to public landing page.
+  3. System presents the final personal data export option ({U.C. 8.1}) prior to irreversible erasure and requests explicit confirmation of the closure.
+  4. Actor confirms account termination.
+  5. System invalidates all active sessions, revokes authentication tokens, marks the user account as closed, and removes active workspace memberships.
+  6. System dispatches a formal digital confirmation receipt via email certifying account termination date and time.
+  7. System terminates user session and redirects browser to public landing page.
 - **Extensions:**
-  - **3a. Actor is the sole Workspace Owner of an active multi-member workspace:**
-    - 3a1. System halts account closure, notifying actor that workspace ownership must be transferred to another administrator or the workspace deleted before closing the personal account.
-  - **4b. Closure confirmed by single user:**
-    - 4b1. System deactivates personal credentials, removes user from team rosters, and pseudonymizes authored task comments in accordance with RN21.
-  - **4c. Session invalidation fails during closure:**
-    - 4c1. System executes emergency forced server-side token revocation to prevent unauthorized post-closure access (RN11).
-- **Success Guarantees:** User credentials and sessions are permanently deactivated; workspace access is revoked; confirmation receipt is sent.
+  - **3a. Actor requests the final data export at the closure prompt:**
+    - 3a1. System initiates the personal data export flow ({U.C. 8.1}) and resumes the closure confirmation once the archive is delivered or declined.
+  - **4a. Actor is the sole Workspace Owner of an active multi-member workspace:**
+    - 4a1. System halts account closure, notifying actor that workspace ownership must be transferred to another administrator or the workspace deleted before closing the personal account.
+  - **5b. Closure confirmed by single user:**
+    - 5b1. System deactivates personal credentials, removes user from team rosters, and pseudonymizes authored task comments in accordance with RN21.
+  - **5c. Session invalidation fails during closure:**
+    - 5c1. System executes emergency forced server-side token revocation to prevent unauthorized post-closure access (RN11).
+- **Success Guarantees:** User credentials and sessions are permanently deactivated; workspace access is revoked; the final export was offered before irreversible erasure; confirmation receipt is sent.
 - **Minimal Guarantees:** Account deactivation immediately revokes authentication tokens, preventing subsequent API or UI access; personal data is pseudonymized within 30 days and audit logged (RN21, RN18).
 
 ---
@@ -887,10 +925,10 @@ The non-functional requirements define the platform's performance, availability,
 ## 6. Conclusions
 
 The system use case model establishes an exhaustive, literature-aligned functional baseline for TinyTask SaaS:
-1. **Total Sea-Level Fidelity:** 18 Level-1 use cases cleanly cover all operational capabilities without leaf-node noise or micro-UI procedural scripts.
+1. **Total Sea-Level Fidelity:** 19 Level-1 use cases cleanly cover all operational capabilities without leaf-node noise or micro-UI procedural scripts.
 2. **Exhaustive Behavioral Contracts:** Each use case specifies pre/post conditions, black-box main success scenarios, and branching alternative/exception flows.
 3. **Visual UML Coverage:** Every macro capability is illustrated with an error-free, native Markdown UML Use Case diagram.
-4. **Seamless Sequential Traceability:** Direct 1:1 mapping from `Doc01` requirements (`R1.1`–`R8.2`) and PUCs (`PUC 1.1`–`PUC 8.2`) to System Use Cases (`{U.C. 1.1}`–`{U.C. 8.2}`).
+4. **Seamless Sequential Traceability:** Direct 1:1 mapping from `Doc01` requirements (`R1.1`–`R8.2`, 19 cards including derived `R1.3`) and PUCs (`PUC 1.1`–`PUC 8.2`, 19 entries) to System Use Cases (`{U.C. 1.1}`–`{U.C. 8.2}`, 19 cases).
 5. **AEGIS Phase 3 Synthesis Ready:** Provides a rich, verified functional canvas for attack surface mapping, trust boundary analysis, and regulatory requirement derivation.
 
 ---
@@ -915,4 +953,4 @@ The system use case model establishes an exhaustive, literature-aligned function
 | **2.1.0** | 2026-09-23 | Requirements Engineering Agent | Consolidated to 18 Sea-Level use cases matching consolidated business requirements. |
 | **3.0.0** | 2026-09-23 | Requirements Engineering Agent | Literature-grounded overhaul (Cockburn, Larman, Wiegers) with full pre/post conditions, main success scenarios, and extension flows for all 18 use cases. |
 | **3.1.0** | 2026-09-23 | Requirements Engineering Agent | Added visual UML Use Case diagrams in native Markdown for each macro capability cluster, removing sequence diagrams. |
-- **Security & Privacy Traces:** **NFR-RN16** (Cryptographic Webhook Origin Verification)
+| **3.2.0** | 2026-09-23 | Requirements Engineering Agent | V1 Functional Refinement Pass: added {U.C. 1.3} with PUC 1.3 (locked-account recovery, `R1.3`), final-export-offer step in {U.C. 8.2}, restricted-state alignment in {U.C. 7.2}; traceability matrix updated to 19 requirements. |

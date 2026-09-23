@@ -11,15 +11,16 @@
 | Version | Path | Role | R | RN | Status |
 |---|---|---|---|---|---|
 | **V0** | `v0_functional_baseline/` | Pure functional snapshot (8 packages, 18 cards, 18 PUCs, 18 UCs). | 18 | 0 | LOCKED |
-| **V1** | `v1_security_privacy_synthesis/` | V0 + synthesis absorbed: 15 security/privacy NFRs embedded in R cards; RN17/RN18/RN24 cross-cutting standalone; RN1–RN8 operational standalone. | 18 | 26 (`RN1`–`RN26`) | APPROVED |
-| **V2** | top-level `Doc01`/`Doc02` | Consolidated functional baseline (v2.1); security traceability via Doc02 matrix. | 18 | 26 | ACTIVE |
+| **V1** | `v1_security_privacy_synthesis/` | V0 + synthesis absorbed + Functional Refinement Pass (Step 4b): 15 security/privacy NFRs embedded in R cards; RN17/RN18/RN24 cross-cutting standalone; RN1–RN8 operational standalone; +1 derived requirement (`R1.3`), 2 descriptions refined, 1 re-prioritized (register: STEP5). | 19 | 26 (`RN1`–`RN26`) | APPROVED |
+| **V2** | top-level `Doc01`/`Doc02` | Consolidated functional baseline (v2.2); security traceability via Doc02 matrix. | 19 | 26 | ACTIVE |
 
 ## §2 Per-Requirement Absorption (R1.1–R8.2)
 
 | Req ID | Name | Priority | Absorbed NFRs (tracing chain in card) |
 |---|---|---|---|
 | `R1.1` | Register and authenticate user accounts | Must | **NFR-RN10** Credential Hardening & Salted Hashing — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.1-002, SO-D-01.1-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-01<br>**NFR-RN11** Cryptographic Session Management & Invalidation — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.2-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-02<br>**NFR-RN19** Registration Data Minimization by Default — `GDPR Art. 5(1)(c)` → `PO-D-06.1-001` → `PRIN-ENG-06` → CSF PR.DS-10, GV.OC-03 / PF CT.DP-P2 |
-| `R1.2` | Manage user profile and account preferences | Should | **NFR-RN23** Personal Data Cryptographic Protection at Rest — `GDPR Art. 32(1)(a) + Art. 5(1)(f)` → `PO-D-01.1-001` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-10 / PF PR.DS-P1<br>**NFR-RN26** Privacy Audit Trail for Personal Data Modifications — `GDPR Art. 30` → `PO-D-03.1-001` → `PRIN-ENG-07` → CSF PR.PT-01, DE.CM-01 / PF CM.AW-P2 |
+| `R1.2` | Manage user profile and account preferences | Must | **NFR-RN23** Personal Data Cryptographic Protection at Rest — `GDPR Art. 32(1)(a) + Art. 5(1)(f)` → `PO-D-01.1-001` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-10 / PF PR.DS-P1<br>**NFR-RN26** Privacy Audit Trail for Personal Data Modifications — `GDPR Art. 30` → `PO-D-03.1-001` → `PRIN-ENG-07` → CSF PR.PT-01, DE.CM-01 / PF CM.AW-P2<br>*D3 (STEP5 CH-04): Should → Must (GDPR Art. 5(1)(d) + Art. 16, `PO-D-01.4-001`)* |
+| `R1.3` | Recover access to a locked user account | Must | **NFR-RN10** Credential Hardening & Salted Hashing — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.1-002, SO-D-01.1-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-01<br>**NFR-RN11** Cryptographic Session Management & Invalidation — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.2-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-02<br>*D1 (STEP5 CH-01): derived in the V1 Refinement Pass* |
 | `R2.1` | Create and configure workspace | Must | **NFR-RN9** Multi-Tenant Data Isolation & Mediation — `CRA Annex I Part I (2)(d)` → `SO-D-02.1-002` → `PRIN-ENG-03` → CSF PR.AA-05, PR.DS-01 |
 | `R2.2` | Invite workspace members and manage access roles | Must | **NFR-RN12** Role-Based Access Control & Action Mediation — `CRA Annex I Part I (2)(d)` → `SO-D-02.1-002` → `PRIN-ENG-03` → CSF PR.AA-05, PR.AA-06 |
 | `R2.3` | Monitor workspace activity and operational metrics | Could | **NFR-RN22** Purpose Limitation & Time Log Segregation — `GDPR Art. 5(1)(b) + Art. 6(4)` → `PO-D-06.1-001` → `PRIN-ENG-03` → CSF GV.OC-03, PR.DS-10 / PF CM.PO-P2 |
@@ -52,8 +53,8 @@
 | `RN17` | Inbound API Token Mediation & Rate Limiting | Security — cross-cutting | Quality Attributes table (standalone, full tracing chain in row) |
 | `RN18` | Non-Repudiable Security Audit Logging | Security — cross-cutting | Quality Attributes table (standalone, full tracing chain in row) |
 | `RN24` | Mandatory End-to-End Transport Layer Cryptographic Protection | Security — cross-cutting | Quality Attributes table (standalone, full tracing chain in row) |
-| `RN10` | Credential Hardening & Salted Hashing | Security/Privacy | Absorbed in `R1.1` card |
-| `RN11` | Cryptographic Session Management & Invalidation | Security/Privacy | Absorbed in `R1.1` card |
+| `RN10` | Credential Hardening & Salted Hashing | Security/Privacy | Absorbed in `R1.1`, `R1.3` cards |
+| `RN11` | Cryptographic Session Management & Invalidation | Security/Privacy | Absorbed in `R1.1`, `R1.3` cards |
 | `RN19` | Registration Data Minimization by Default | Security/Privacy | Absorbed in `R1.1` card |
 | `RN23` | Personal Data Cryptographic Protection at Rest | Security/Privacy | Absorbed in `R1.2` card |
 | `RN26` | Privacy Audit Trail for Personal Data Modifications | Security/Privacy | Absorbed in `R1.2` card |
@@ -76,6 +77,7 @@
 |---|---|---|
 | `{U.C. 1.1}` | `R1.1` | NFR-RN10, NFR-RN11, NFR-RN19 |
 | `{U.C. 1.2}` | `R1.2` | NFR-RN23, NFR-RN26 |
+| `{U.C. 1.3}` | `R1.3` | NFR-RN10, NFR-RN11 |
 | `{U.C. 2.1}` | `R2.1` | NFR-RN9 |
 | `{U.C. 2.2}` | `R2.2` | NFR-RN12 |
 | `{U.C. 2.3}` | `R2.3` | NFR-RN22 |
@@ -97,8 +99,20 @@
 
 | Surface | Count | Notes |
 |---|---|---|
-| Functional requirements | 18 | 13 MUST / 3 SHOULD / 2 COULD. |
+| Functional requirements | 19 | 15 MUST / 2 SHOULD / 2 COULD (18 elicited + derived `R1.3`). |
 | NFRs total | 26 | 8 operational + 3 cross-cutting security (standalone) + 15 absorbed in R cards. |
-| Cards with absorbed NFRs | 14 | 1–3 NFRs each; 4 cards have no security surface (R3.2, R4.1, R4.2, R4.3). |
+| Cards with absorbed NFRs | 15 | 1–3 NFRs each; 4 elicited cards have no security surface (R3.2, R4.1, R4.2, R4.3). |
 | NFRs without home | 0 | Every NFR is either absorbed (with chain) or standalone (with chain). |
+| Functional evolution (V0→V1) | 4 entries | 1×D1, 2×D2, 1×D3 + evaluated-no-change rows — see §6 and STEP5 register; V0 untouched. |
+
+## §6 Functional Evolution Register (V0 → V1, Step 4b)
+
+Full register with rationale and evaluated-no-change rows: [`STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md`](STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md).
+
+| # | Type | Change | Driving obligation |
+|---|---|---|---|
+| CH-01 | D1 — Derived requirement | New `R1.3` Recover access to a locked user account (+ `PUC 1.3`, `{U.C. 1.3}`) | NFR-RN10, NFR-RN11 (lockout in `{U.C. 1.1}` ext. 5c) |
+| CH-02 | D2 — Description refinement | `R8.2`: final personal data export offered before irreversible erasure (+ `{U.C. 8.2}` step 3 / ext. 3a) | NFR-RN21 (Art. 17), NFR-RN20 (Art. 20) |
+| CH-03 | D2 — Description refinement | `R7.2`: post-grace restricted state defined (read-only consultation + export preserved; modifications + invitations suspended) | NFR-RN15 + PRIN-ENG-04 |
+| CH-04 | D3 — Priority re-evaluation | `R1.2` Should → Must | GDPR Art. 5(1)(d) + Art. 16 via `PO-D-01.4-001` |
 

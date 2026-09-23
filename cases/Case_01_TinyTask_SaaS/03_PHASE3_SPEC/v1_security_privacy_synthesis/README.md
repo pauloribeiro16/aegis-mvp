@@ -25,26 +25,24 @@ While Version 0 established what the business and users need to accomplish in pu
 ```text
 cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/v1_security_privacy_synthesis/
 ├── README.md                                    # (This file) Overview of Version 1 synthesis and delta from V0
-├── Doc01_Requirements_Elicitation_and_PUC.md    # Augmented Doc01: Functional Cards + Non-Functional Security/Privacy Table 7b
-├── Doc02_System_Use_Cases.md                    # Augmented Doc02: 18 Sea-Level Use Cases with Security Preconditions, Extensions, & Guarantees
-└── Doc03_Security_Privacy_Requirements.md       # The Master Security & Privacy Specification (18 security & privacy NFRs `RN9`–`RN26`)
+├── Doc01_Requirements_Elicitation_and_PUC.md    # 19 Functional Cards (18 elicited + R1.3 derived) + absorbed Security/Privacy Constraints + Quality Attributes
+└── Doc02_System_Use_Cases.md                    # 19 Sea-Level Use Cases with Security Preconditions, Extensions, & Guarantees
 ```
 
 ---
 
-## 3. The 3 Artifacts of Version 1
+## 3. The 2 Artifacts of Version 1
 
-### 3.1 [`Doc03_Security_Privacy_Requirements.md`](Doc03_Security_Privacy_Requirements.md)
-The cornerstone deliverable of Version 1. It provides:
-- **Master Bidirectional Traceability Matrix:** Mapping each security/privacy requirement to its upstream Phase 2 Operational Objective (`PO-` or `SO-`), engineering principle (`PRIN-ENG-`), bound functional requirement (`R...`), and bound system use case (`{U.C. ...}`).
-- **Empirical ISO/IEC/IEEE 29148 Verification Bindings:** Assigning each requirement a concrete, testable Volere Fit Criterion and one of the four empirical evaluation methods (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`).
+Security & privacy NFRs (`RN9`–`RN26`) are **absorbed directly into the functional cards** they apply to (absorption rule, 2026-09-23); there is no standalone catalog document.
 
-### 3.2 [`Doc01_Requirements_Elicitation_and_PUC.md`](Doc01_Requirements_Elicitation_and_PUC.md)
-Preserves the 18 atomic functional requirement cards (`R1.1` to `R8.2`) and 18 Product Use Cases (`PUC 1.1` to `PUC 8.2`) while adding:
-- **Section 2.3 Table 7b:** Master synthesis cross-reference linking general operational quality attributes to the formal EARS requirements in `Doc03`.
+### 3.1 [`Doc01_Requirements_Elicitation_and_PUC.md`](Doc01_Requirements_Elicitation_and_PUC.md)
+Carries the evolved functional baseline — 19 requirement cards (`R1.1` to `R8.2`, including `R1.3` derived in the Functional Refinement Pass) and 19 Product Use Cases (`PUC 1.1` to `PUC 8.2`) — with:
+- **Absorbed `Security & Privacy Constraints` rows** (15 cards): each NFR line carries the full `regulation → Phase 2 rule → PRIN-ENG → control anchor` chain.
+- **Quality Attributes table (Table 7):** 8 operational NFRs (`RN1`–`RN8`) plus the 3 cross-cutting security NFRs (`RN17`, `RN18`, `RN24`).
+- **Functional Refinement Pass deltas (Step 4b):** derived `R1.3` (locked-account recovery), refined `R7.2`/`R8.2` descriptions, `R1.2` elevated to Must — registered in [`../analysis_v0_to_v1/STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md`](../analysis_v0_to_v1/STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md).
 
-### 3.3 [`Doc02_System_Use_Cases.md`](Doc02_System_Use_Cases.md)
-Maintains Cockburn's Sea-Level granularity (Level 1) across the 18 System Use Cases (`{U.C. 1.1}` to `{U.C. 8.2}`) while augmenting each card with:
+### 3.2 [`Doc02_System_Use_Cases.md`](Doc02_System_Use_Cases.md)
+Maintains Cockburn's Sea-Level granularity (Level 1) across the 19 System Use Cases (`{U.C. 1.1}` to `{U.C. 8.2}`) while augmenting each card with:
 - **Security & Privacy Traces:** Direct references to the security & privacy NFRs (`RN9`–`RN26`).
 - **Security Preconditions:** Requiring secure encrypted channels, authenticated tenant-scoped sessions, and verified RBAC permissions prior to execution.
 - **Threat Extensions (Alternative Flows):** Explicit branching for authentication lockouts, authorization rejections, tampered webhook signatures, rate-limit throttling, and malicious file uploads.
@@ -56,7 +54,8 @@ Maintains Cockburn's Sea-Level granularity (Level 1) across the 18 System Use Ca
 
 | Dimension | Version 0 (Baseline) | Version 1 (Synthesis) |
 |---|---|---|
-| **Scope** | Pure Functional Scope | Functional + Regulatory Security & Privacy Constraints |
+| **Scope** | Pure Functional Scope | Functional + Regulatory Security & Privacy Constraints + registered functional evolution (Step 4b) |
+| **Functional Set** | 18 elicited cards (locked) | 19 cards: `R1.3` derived, `R7.2`/`R8.2` refined, `R1.2` re-prioritized to Must (STEP5 register) |
 | **Security Coverage** | Zero (intentionally excluded) | 10 CRA Product Security + 8 GDPR Privacy Specifications |
 | **Use Case Extensions** | Functional errors only (bad format, missing fields) | Threat and security exception flows (auth brute force, XSS injection, forged webhooks, tenant bypass) |
 | **Audit & Logging** | Business activity history only | Forensic, immutable security audit logging (`RN18`) |

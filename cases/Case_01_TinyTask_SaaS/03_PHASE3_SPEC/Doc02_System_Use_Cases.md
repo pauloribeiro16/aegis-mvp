@@ -1,505 +1,244 @@
-# Doc02 — System Use Cases (TinyTask SaaS)
+# E1.2 – TinyTask SaaS: Análise de Requisitos e Casos de Uso de Sistema
 
-> **Document ID:** `TT-P3-DOC02`  
-> **Lifecycle Phase:** AEGIS Phase 3 — Specification (Functional Baseline)  
-> **Reference Standard:** Triangular Functional Decomposition & GPTools E1.2 Standard  
-> **Decomposition Level:** Level-0 to Level-1 System Use Cases (High-Level Baseline)  
-> **Status:** Approved Functional Baseline  
+## Sumário Executivo
 
----
+O presente documento constitui o relatório técnico de análise de requisitos e especificação de casos de uso de sistema para a plataforma **TinyTask SaaS**. Este documento complementa o modelo AS-IS / TO-BE (*Doc01*) e formaliza o desenho funcional da aplicação, estruturando a interação entre os diferentes atores operacionais e os serviços da plataforma.
 
-## Table of Contents
+A abordagem metodológica adotada baseia-se na decomposição funcional e na especificação formal de casos de uso até ao nível 1 de refinamento (`{U.C.n.m}`), omitindo deliberadamente passos sequenciais de execução e decomposição em nós folha (*leaf nodes*), em estrito alinhamento com a diretiva de engenharia de requisitos estabelecida no projeto de referência.
 
-1. [Methodological Approach](#1-methodological-approach)
-   - 1.1 [Volere Decomposition & System Use Cases](#11-volere-decomposition--system-use-cases)
-   - 1.2 [Triangular Functional Decomposition Model](#12-triangular-functional-decomposition-model)
-   - 1.3 [Scoping Constraint: High-Level Sub-Cases (No Leaf Nodes)](#13-scoping-constraint-high-level-sub-cases-no-leaf-nodes)
-2. [System Actors & Operational Profiles](#2-system-actors--operational-profiles)
-3. [Level-0 System Use Case Diagram](#3-level-0-system-use-case-diagram)
-4. [High-Level System Use Cases ({U.C.1} to {U.C.6})](#4-high-level-system-use-cases-uc1-to-uc6)
-   - 4.1 [{U.C.1} — User Account & Authentication Management](#41-uc1--user-account--authentication-management)
-     - 4.1.1 [Context & Business Objective](#411-context--business-objective)
-     - 4.1.2 [Level-1 Refinement Diagram](#412-level-1-refinement-diagram)
-     - 4.1.3 [Level-1 System Sub-Cases](#413-level-1-system-sub-cases)
-   - 4.2 [{U.C.2} — Workspace & Team Administration](#42-uc2--workspace--team-administration)
-     - 4.2.1 [Context & Business Objective](#421-context--business-objective)
-     - 4.2.2 [Level-1 Refinement Diagram](#422-level-1-refinement-diagram)
-     - 4.2.3 [Level-1 System Sub-Cases](#423-level-1-system-sub-cases)
-   - 4.3 [{U.C.3} — Project & Task Lifecycle Management](#43-uc3--project--task-lifecycle-management)
-     - 4.3.1 [Context & Business Objective](#431-context--business-objective)
-     - 4.3.2 [Level-1 Refinement Diagram](#432-level-1-refinement-diagram)
-     - 4.3.3 [Level-1 System Sub-Cases](#433-level-1-system-sub-cases)
-   - 4.4 [{U.C.4} — Task Attachment Management](#44-uc4--task-attachment-management)
-     - 4.4.1 [Context & Business Objective](#441-context--business-objective)
-     - 4.4.2 [Level-1 Refinement Diagram](#442-level-1-refinement-diagram)
-     - 4.4.3 [Level-1 System Sub-Cases](#443-level-1-system-sub-cases)
-   - 4.5 [{U.C.5} — Team Collaboration & Activity Feeds](#45-uc5--team-collaboration--activity-feeds)
-     - 4.5.1 [Context & Business Objective](#451-context--business-objective)
-     - 4.5.2 [Level-1 Refinement Diagram](#452-level-1-refinement-diagram)
-     - 4.5.3 [Level-1 System Sub-Cases](#453-level-1-system-sub-cases)
-   - 4.6 [{U.C.6} — Commercial Subscriptions & Account Lifecycle](#46-uc6--commercial-subscriptions--account-lifecycle)
-     - 4.6.1 [Context & Business Objective](#461-context--business-objective)
-     - 4.6.2 [Level-1 Refinement Diagram](#462-level-1-refinement-diagram)
-     - 4.6.3 [Level-1 System Sub-Cases](#463-level-1-system-sub-cases)
-5. [Summary of System Use Cases & Requirements Traceability](#5-summary-of-system-use-cases--requirements-traceability)
+As funcionalidades aqui especificadas refletem exclusivamente os requisitos de negócio e a experiência de utilização da aplicação, servindo de base funcional neutra para a subsequente aplicação das regras de segurança, privacidade e conformidade regulamentar da metodologia AEGIS.
 
 ---
 
-## 1. Methodological Approach
+## Índice
 
-### 1.1 Volere Decomposition & System Use Cases
+- [1. Introdução](#1-introdução)
+- [2. Abordagem aos Requisitos do Sistema](#2-abordagem-aos-requisitos-do-sistema)
+  - [2.1 A Abordagem Volere e Decomposição Triangular](#21-a-abordagem-volere-e-decomposição-triangular)
+  - [2.2 Fronteira de Refinamento (Sem Nós Folha / Leaf Nodes)](#22-fronteira-de-refinamento-sem-nós-folha--leaf-nodes)
+  - [2.3 Requisitos Não-Funcionais](#23-requisitos-não-funcionais)
+- [3. Análise de Requisitos](#3-análise-de-requisitos)
+  - [3.1 Modelo de Contexto de Trabalho](#31-modelo-de-contexto-de-trabalho)
+  - [3.2 Tabela de Casos de Uso do Produto (PUC)](#32-tabela-de-casos-de-uso-do-produto-puc)
+- [4. Casos de Uso da Aplicação de Domínio](#4-casos-de-uso-da-aplicação-de-domínio)
+  - [4.1 Atores do Sistema](#41-atores-do-sistema)
+  - [4.2 Casos de Uso de Sistema](#42-casos-de-uso-de-sistema)
+    - [4.2.1 Caso de Uso 1 – Autenticação e Gestão de Identidade](#421-caso-de-uso-1--autenticação-e-gestão-de-identidade)
+    - [4.2.2 Caso de Uso 2 – Administração de Espaços de Trabalho e Membros](#422-caso-de-uso-2--administração-de-espaços-de-trabalho-e-membros)
+    - [4.2.3 Caso de Uso 3 – Gestão de Projetos](#423-caso-de-uso-3--gestão-de-projetos)
+    - [4.2.4 Caso de Uso 4 – Gestão e Execução de Tarefas](#424-caso-de-uso-4--gestão-e-execução-de-tarefas)
+    - [4.2.5 Caso de Uso 5 – Gestão de Anexos e Documentos de Suporte](#425-caso-de-uso-5--gestão-de-anexos-e-documentos-de-suporte)
+    - [4.2.6 Caso de Uso 6 – Comunicação Colaborativa e Alertas](#426-caso-de-uso-6--comunicação-colaborativa-e-alertas)
+    - [4.2.7 Caso de Uso 7 – Gestão Comercial e Faturação](#427-caso-de-uso-7--gestão-comercial-e-faturação)
+    - [4.2.8 Caso de Uso 8 – Gestão do Ciclo de Vida da Conta e Dados](#428-caso-de-uso-8--gestão-do-ciclo-de-vida-da-conta-e-dados)
+- [5. Requisitos Não-Funcionais](#5-requisitos-não-funcionais)
+- [6. Conclusões](#6-conclusões)
+- [7. Bibliografia](#7-bibliografia)
+- [Histórico de Versões](#histórico-de-versões)
 
-In accordance with the Volere requirements engineering methodology and the GPTools E1.2 specification standard, **System Use Cases** bridge the gap between high-level business goals (Product Use Cases, documented in `Doc01_Requirements_Elicitation_and_PUC.md`) and technical software architecture.
+---
 
-While Product Use Cases capture the business interactions between external stakeholders and the system boundary, System Use Cases structure the operational capabilities provided by the platform to support those business interactions.
+## 1. Introdução
 
-### 1.2 Triangular Functional Decomposition Model
+A plataforma **TinyTask SaaS** destina-se a simplificar a colaboração operacional de equipas distribuídas, unificando a gestão de projetos, a atribuição de tarefas e o controlo de prazos num ambiente acessível e intuitivo.
 
-The triangular decomposition organizes functionality hierarchically:
-- **Level-0 System Use Case Diagram:** Macro-level view depicting the system boundary and the assignment of human/system actors to the 6 primary capability domains.
-- **High-Level System Use Cases (`{U.C.1}` to `{U.C.6}`):** Domain-level operational umbrellas describing the strategic objectives of each functional area.
-- **Level-1 System Sub-Cases (`{U.C.n.m}`):** Coherent, semi-granular functional sub-cases establishing the primary capabilities, participating actors, operational pre-conditions, and mapped functional requirements (`R1` to `R12`).
+O presente documento formaliza a arquitetura funcional da plataforma, apresentando o modelo de contexto, os atores e o refinamento dos Casos de Uso do Sistema correspondentes aos requisitos identificados no documento *Doc01*.
+
+---
+
+## 2. Abordagem aos Requisitos do Sistema
+
+### 2.1 A Abordagem Volere e Decomposição Triangular
+
+A especificação de requisitos baseia-se nos princípios de engenharia de software da abordagem Volere, combinando:
+1. **Identificação da Fronteira do Produto:** Determinação rigorosa dos dados que entram (*inputs*) e que saem (*outputs*) do sistema através dos Casos de Uso do Produto (*Product Use Cases* — PUC).
+2. **Decomposição Triangular de Casos de Uso:** Estruturação hierárquica partindo do nível macro (Nível 0) para sub-casos de nível 1, assegurando rastreabilidade direta com os requisitos funcionais priorizados por MoSCoW.
+
+### 2.2 Fronteira de Refinamento (Sem Nós Folha / Leaf Nodes)
+
+De acordo com a diretriz metodológica explícita deste projeto:
+- **Limite Superior de Granularidade:** Os casos de uso são refinados até ao **Nível 1** (`{U.C.n.m}`).
+- **Omissão Estrita de Nós Folha:** O documento **não decompõe** os casos de uso em sub-sub-casos de nível folha (`{U.C.n.m.k}`) nem descreve passos procedimentais sequenciais (passo 1, passo 2, etc.).
+- **Foco Funcional Puro:** As descrições centram-se nas capacidades de negócio que o sistema coloca ao dispor dos atores, mantendo total neutralidade relativamente a tecnologias ou mecanismos físicos de segurança.
+
+### 2.3 Requisitos Não-Funcionais
+
+Os requisitos não-funcionais (NFR) enquadram o desempenho, disponibilidade e usabilidade do sistema, garantindo tempos de resposta céleres e isolamento rigoroso entre inquilinos (*tenants*).
+
+---
+
+## 3. Análise de Requisitos
+
+### 3.1 Modelo de Contexto de Trabalho
+
+O modelo de contexto descreve as fronteiras de comunicação entre o sistema TinyTask e os atores externos intervenientes:
 
 ```mermaid
 flowchart TD
-    L0["Level-0 System Architecture<br>(6 High-Level System Use Cases)"] --> L1["Level-1 System Sub-Cases<br>({U.C.1.1} .. {U.C.6.4})"]
-    L1 -.->|Future Refinement Phase| LF["Leaf Use Cases & Execution Flows<br>(Interactive Co-Design)"]
-    L1 --> MFR["Mapped Functional Requirements<br>(R1 .. R12 from Doc01)"]
+    subgraph Atores_Humanos["Atores Humanos"]
+        UA["Utilizador Não Autenticado"]
+        WM["Workspace Member"]
+        WA["Workspace Admin"]
+        WO["Workspace Owner"]
+        WV["Workspace Viewer"]
+    end
+
+    subgraph Plataforma_TinyTask["Plataforma TinyTask SaaS"]
+        Core["Núcleo Operacional e Base de Dados"]
+    end
+
+    subgraph Sistemas_Externos["Sistemas e Serviços Externos"]
+        Stripe["Gateway Stripe (Pagamentos)"]
+        MailService["Serviço de Correio Transacional"]
+    end
+
+    UA -- "Formulário de Registo / Login" --> Core
+    WM -- "Criação de Tarefas, Comentários e Anexos" --> Core
+    WA -- "Gestão de Membros e Projetos" --> Core
+    WO -- "Subscrição Comercial e Faturação" --> Core
+    WV -- "Consulta de Leitura" --> Core
+
+    Core -- "Despacho de Notificações e Confirmações" --> MailService
+    Core <--> "Sessões Checkout e Webhooks" --> Stripe
 ```
 
-### 1.3 Scoping Constraint: High-Level Sub-Cases (No Leaf Nodes)
+### 3.2 Tabela de Casos de Uso do Produto (PUC)
 
-> [!IMPORTANT]
-> **Strict Baseline Scoping Constraint:**  
-> In compliance with the project's phasing strategy, this document establishes the functional specification strictly down to **Level-1 System Sub-Cases (`{U.C.n.m}`)**.  
-> **Leaf Use Cases** (e.g., sub-sub levels such as `{U.C.n.m.k}`, detailed step-by-step UI dialog sequences, alternative exception paths, and execution pseudocode) are **deliberately excluded** from this baseline. Leaf nodes will be developed subsequently in interactive collaboration with stakeholders and engineering leads.
+A tabela seguinte estabelece a correspondência entre os PUC e os dados de entrada e saída:
 
----
+*Tabela 1 - Tabela sumária de Casos de Uso do Produto (PUC)*
 
-## 2. System Actors & Operational Profiles
-
-System actors designate formal operational roles interacting with the TinyTask platform. A single physical user may hold different roles across distinct workspace tenants.
-
-| Actor ID | Actor Name | Classification | Primary Responsibilities & Permissions |
+| PUC | Nome do PUC | Atores/Utilizadores | Input e Output |
 |---|---|---|---|
-| **`ACT-01`** | **`Workspace Owner`** | Privileged Human User | Holds full administrative authority over a specific workspace tenant. Exclusively manages commercial subscription tiers, billing payment methods, tenant-wide data export, and workspace deletion. |
-| **`ACT-02`** | **`Workspace Admin`** | Privileged Human User | Manages day-to-day organizational operations within a workspace. Authorized to invite new members, assign and modify member roles (`Admin`, `Member`, `Viewer`), create and archive projects, and manage team quotas. |
-| **`ACT-03`** | **`Workspace Member`** | Operational Human User | Core collaborative user. Can create, edit, assign, and transition tasks; upload file attachments; post comments and `@mentions`; and inspect project Kanban boards. |
-| **`ACT-04`** | **`Workspace Viewer`** | Read-Only Human User | External client, guest reviewer, or observer. Granted read-only visibility into projects, task lists, and comment feeds. Cannot create, modify, or delete any workspace artifacts. |
-| **`ACT-05`** | **`External Payment Gateway`** | External System (Stripe) | External payment processing engine that interacts via secure HTTPS APIs and delivers signed asynchronous webhook notifications concerning subscription state changes. |
-| **`ACT-06`** | **`System Scheduler`** | Automated Background Process | Internal background daemon executing periodic jobs, including daily email notification digests, token expiration sweeps, and retention cleanups. |
+| **1.1** | Registar e Ativar Conta de Utilizador | Utilizador Não Autenticado, Serviço de Email | **(in)** Nome, email e palavra-passe<br>**(out)** Email com hiperligação de verificação de conta |
+| **1.2** | Autenticar Utilizador e Gerir Sessão | Utilizador Registado | **(in)** Email e palavra-passe<br>**(out)** Sessão autenticada e lista de workspaces autorizados |
+| **1.3** | Recuperar Palavra-passe de Acesso | Utilizador Registado, Serviço de Email | **(in)** Endereço de email do utilizador<br>**(out)** Hiperligação temporária para redefinição de credenciais |
+| **2.1** | Criar Espaço de Trabalho (Workspace) | Workspace Owner | **(in)** Nome do workspace e slug de identificação<br>**(out)** Workspace instanciado com o criador no papel de Owner |
+| **2.2** | Convidar e Administrar Membros de Equipa | Workspace Admin, Workspace Owner, Serviço de Email | **(in)** Email do convidado e papel pretendido (Admin, Member, Viewer)<br>**(out)** Notificação de convite e membro associado ao workspace |
+| **2.3** | Personalizar Definições do Workspace | Workspace Admin, Workspace Owner | **(in)** Nome atualizado e ficheiro de logótipo (até 2 MB)<br>**(out)** Perfil visual do workspace atualizado para a equipa |
+| **3.1** | Criar e Parametrizar Novo Projeto | Workspace Admin, Workspace Member | **(in)** Título, descrição do âmbito e visibilidade do projeto<br>**(out)** Projeto inicializado e acessível na barra de projetos |
+| **3.2** | Arquivar Projeto Concluído | Workspace Admin, Workspace Owner | **(in)** Seleção do projeto a arquivar<br>**(out)** Projeto em estado de só de leitura oculto da vista diária |
+| **4.1** | Criar e Atribuir Nova Tarefa | Workspace Member, Workspace Admin | **(in)** Título, descrição, prioridade, membro responsável e prazo<br>**(out)** Cartão de tarefa criado na coluna "To-Do" e notificação ao membro |
+| **4.2** | Atualizar Estado da Tarefa no Kanban | Workspace Member, Workspace Admin | **(in)** Arrastamento do cartão de tarefa para nova coluna de estado<br>**(out)** Estado da tarefa atualizado e evento registado no histórico |
+| **4.3** | Pesquisar e Filtrar Tarefas | Todos os Utilizadores | **(in)** Critérios de pesquisa (responsável, estado, prioridade, texto livre)<br>**(out)** Vista do quadro Kanban e listas filtradas em tempo real |
+| **5.1** | Anexar Documento a Cartão de Tarefa | Workspace Member, Workspace Admin | **(in)** Seleção de ficheiro local (até 25 MB)<br>**(out)** Ficheiro armazenado e associado à lista de anexos da tarefa |
+| **5.2** | Descarregar e Eliminar Anexo | Workspace Member, Workspace Admin | **(in)** Ordem de descarregamento ou eliminação de anexo<br>**(out)** Ficheiro transferido para o posto local ou removido do registo |
+| **6.1** | Publicar Comentário e Mencionar Colaboradores | Workspace Member, Workspace Admin | **(in)** Texto formatado em Markdown com menções (@membro)<br>**(out)** Comentário publicado e notificação emitida aos visados |
+| **6.2** | Consultar Centro de Notificações | Utilizador Autenticado | **(in)** Acesso ao painel de alertas do utilizador<br>**(out)** Lista de notificações de menções e atribuições não lidas |
+| **7.1** | Subscrever e Atualizar Plano Comercial | Workspace Owner, Gateway de Pagamento (Stripe) | **(in)** Seleção de plano Pro/Enterprise e dados de faturação<br>**(out)** Confirmação de subscrição e quota de membros atualizada |
+| **7.2** | Processar Notificação de Cobrança | Gateway de Pagamento (Stripe), Backend TinyTask | **(in)** Mensagem assíncrona de webhook com estado do pagamento<br>**(out)** Estado do plano reconciliado na base de dados do workspace |
+| **8.1** | Exportar Dados Pessoais e do Workspace | Utilizador Autenticado, Workspace Owner | **(in)** Pedido de exportação (JSON pessoal ou ZIP de workspace)<br>**(out)** Ficheiro compactado disponibilizado para descarregamento |
+| **8.2** | Encerrar Conta de Utilizador | Utilizador Autenticado, Serviço de Email | **(in)** Confirmação de encerramento da conta de utilizador<br>**(out)** Conta desativada, nome anonimizado e email de confirmação |
 
 ---
 
-## 3. Level-0 System Use Case Diagram
+## 4. Casos de Uso da Aplicação de Domínio
 
-The Level-0 diagram illustrates the global system boundary and the interactions between all system actors and the 6 primary System Use Cases.
+### 4.1 Atores do Sistema
 
-```mermaid
-flowchart LR
-    subgraph Actors ["System Actors"]
-        Owner["Workspace Owner<br>(ACT-01)"]
-        Admin["Workspace Admin<br>(ACT-02)"]
-        Member["Workspace Member<br>(ACT-03)"]
-        Viewer["Workspace Viewer<br>(ACT-04)"]
-        Stripe["External Payment Gateway<br>(ACT-05)"]
-        Scheduler["System Scheduler<br>(ACT-06)"]
-    end
+Os utilizadores e sistemas externos intervenientes são:
+- **Workspace Owner:** Responsável contratual e administrativo supremo do espaço de trabalho.
+- **Workspace Admin:** Gestor operacional que administra membros, projetos e permissões.
+- **Workspace Member:** Colaborador que cria tarefas, anexa ficheiros e publica comentários.
+- **Workspace Viewer:** Convidado externo ou auditor com privilégios exclusivos de leitura.
+- **Gateway de Pagamentos (Stripe):** Entidade externa encarregada das transações de subscrição.
+- **Serviço de Email:** Subsistema encarregado do envio de notificações transacionais.
 
-    subgraph TinyTask_System ["TinyTask SaaS — Level-0 System Boundary"]
-        UC1["{U.C.1}<br>User Account & Authentication"]
-        UC2["{U.C.2}<br>Workspace & Team Administration"]
-        UC3["{U.C.3}<br>Project & Task Lifecycle Management"]
-        UC4["{U.C.4}<br>Task Attachment Management"]
-        UC5["{U.C.5}<br>Team Collaboration & Activity Feeds"]
-        UC6["{U.C.6}<br>Subscriptions & Account Lifecycle"]
-    end
+### 4.2 Casos de Uso de Sistema
 
-    Owner --> UC1
-    Owner --> UC2
-    Owner --> UC6
+#### 4.2.1 Caso de Uso 1 – Autenticação e Gestão de Identidade
 
-    Admin --> UC1
-    Admin --> UC2
-    Admin --> UC3
-    Admin --> UC4
-    Admin --> UC5
+Este caso de uso abrange as funcionalidades de entrada na plataforma e gestão de credenciais:
 
-    Member --> UC1
-    Member --> UC3
-    Member --> UC4
-    Member --> UC5
+- **{U.C. 1.1} Registar Nova Conta:** O utilizador não autenticado submete os dados de inscrição (nome, email e palavra-passe). O sistema valida a unicidade do endereço e envia uma ligação de confirmação para ativação da conta.
+- **{U.C. 1.2} Autenticar Credenciais:** O utilizador introduz o seu email e palavra-passe. O sistema valida as credenciais e fornece uma sessão autenticada, carregando a lista de workspaces associados.
+- **{U.C. 1.3} Recuperar Credenciais:** O utilizador solicita a recuperação de acesso fornecendo o email de registo, recebendo uma hiperligação temporária para redefinir a palavra-passe.
 
-    Viewer --> UC1
-    Viewer --> UC3
-    Viewer --> UC5
+#### 4.2.2 Caso de Uso 2 – Administração de Espaços de Trabalho e Membros
 
-    Stripe --> UC6
-    Scheduler --> UC5
-    Scheduler --> UC6
-```
+Este caso de uso agrupa a gestão organizacional e de equipa:
 
----
+- **{U.C. 2.1} Criar Espaço de Trabalho:** Qualquer utilizador registado pode criar um novo workspace, tornando-se o seu proprietário primário (*Workspace Owner*).
+- **{U.C. 2.2} Convidar e Gerir Membros:** Permite aos administradores emitir convites por email e gerir a atribuição de papéis (Admin, Member, Viewer), respeitando a lotação do plano comercial contratado.
+- **{U.C. 2.3} Parametrizar Workspace:** Permite a edição do nome da organização e o carregamento do logótipo corporativo (ficheiro de imagem até 2 MB).
 
-## 4. High-Level System Use Cases ({U.C.1} to {U.C.6})
+#### 4.2.3 Caso de Uso 3 – Gestão de Projetos
 
-### 4.1 {U.C.1} — User Account & Authentication Management
+Este caso de uso organiza o portfólio de trabalho do workspace:
 
-#### 4.1.1 Context & Business Objective
-Provides user onboarding, identity verification, credential authentication, password recovery, and tenant membership access. It ensures that every user can securely sign in and access their authorized workspaces.
+- **{U.C. 3.1} Criar e Parametrizar Projeto:** O administrador ou membro cria novos projetos, configurando o nome, descrição do âmbito e restrições de visibilidade interna.
+- **{U.C. 3.2} Arquivar Projeto:** Permite colocar um projeto concluído no arquivo histórico da organização, bloqueando novas edições e mantendo os dados para consulta.
 
-#### 4.1.2 Level-1 Refinement Diagram
+#### 4.2.4 Caso de Uso 4 – Gestão e Execução de Tarefas
 
-```mermaid
-flowchart TD
-    UC1["{U.C.1} User Account & Authentication Management"] --> UC11["{U.C.1.1} User Registration & Email Verification"]
-    UC1 --> UC12["{U.C.1.2} Credential Authentication & Session Issuance"]
-    UC1 --> UC13["{U.C.1.3} Password Recovery Workflow"]
-    UC1 --> UC14["{U.C.1.4} Tenant Role Resolution & Session Review"]
-```
+Este caso de uso constitui o núcleo operacional da plataforma:
 
-#### 4.1.3 Level-1 System Sub-Cases
+- **{U.C. 4.1} Criar e Atribuir Tarefa:** Permite registar tarefas com título obrigatório, descrição em texto livre, prazo de conclusão, prioridade visual e responsável pela execução.
+- **{U.C. 4.2} Gerir Estados no Kanban:** O utilizador visualiza e transita tarefas entre as fases do fluxo de trabalho ("To-Do", "In-Progress", "Under-Review", "Done") através de arrastamento interativo.
+- **{U.C. 4.3} Filtrar e Pesquisar Tarefas:** Permite pesquisar tarefas e filtrar listas por responsável, estado e prioridade, atualizando os dados dinamicamente.
 
-##### `{U.C.1.1}` — User Registration & Email Verification
-- **Primary Actor:** `New User` (Unauthenticated)
-- **Scope & Purpose:** Enable self-service registration of a new user account, validating email format, verifying address ownership via email verification link, and creating the initial user profile.
-- **Pre-conditions:** The user is unauthenticated and possesses an accessible email address.
-- **Triggers:** User submits registration form on the public web application.
-- **Data In / Out:**
-  - `in`: Full name, email address, password, terms acceptance.
-  - `out`: Verification email dispatched; pending user account record created.
-- **Mapped Functional Requirements:** `R1.1`.
+#### 4.2.5 Caso de Uso 5 – Gestão de Anexos e Documentos de Suporte
 
-##### `{U.C.1.2}` — Credential Authentication & Session Issuance
-- **Primary Actor:** `Registered User`
-- **Scope & Purpose:** Validate user-supplied credentials (email and password), generate active login session, and retrieve accessible workspace memberships.
-- **Pre-conditions:** User account exists and email verification is complete.
-- **Triggers:** User submits login credentials.
-- **Data In / Out:**
-  - `in`: Email address, password credentials.
-  - `out`: Active user session, user profile, list of authorized workspace memberships.
-- **Mapped Functional Requirements:** `R1.2`, `R1.6`, `R1.7`.
+Este caso de uso rege o repositório documental associado às tarefas:
 
-##### `{U.C.1.3}` — Password Recovery Workflow
-- **Primary Actor:** `Registered User`
-- **Scope & Purpose:** Allow users who have forgotten their password to safely regain account access via a single-use reset link sent to their registered email address, terminating active sessions upon password reset.
-- **Pre-conditions:** User has an active, registered account.
-- **Triggers:** User selects "Forgot Password" on login interface.
-- **Data In / Out:**
-  - `in`: Account email address; reset token; new password credentials.
-  - `out`: Reset link email dispatched; updated password; existing sessions terminated.
-- **Mapped Functional Requirements:** `R1.3`.
+- **{U.C. 5.1} Carregar Anexo para Tarefa:** Permite anexar documentos, folhas de cálculo ou imagens diretamente a um cartão de tarefa, com limite estrito de 25 MB por anexo.
+- **{U.C. 5.2} Descarregar e Remover Anexo:** Permite descarregar ficheiros para o posto local e autoriza o membro que enviou ou o administrador a eliminar anexos.
 
-##### `{U.C.1.4}` — Tenant Role Resolution & Session Review
-- **Primary Actor:** `Workspace User` (`Owner`, `Admin`, `Member`, `Viewer`)
-- **Scope & Purpose:** Evaluate the requesting user's active session against the target workspace boundary, apply Role-Based Access Control (RBAC), and allow users to inspect and log out active sessions.
-- **Pre-conditions:** User possesses an active session.
-- **Triggers:** User switches workspace context or inspects active sessions under account settings.
-- **Data In / Out:**
-  - `in`: Active session, target `workspace_id`, session termination command.
-  - `out`: Workspace permission context; list of active sessions; logout confirmation.
-- **Mapped Functional Requirements:** `R1.4`, `R1.5`.
+#### 4.2.6 Caso de Uso 6 – Comunicação Colaborativa e Alertas
+
+Este caso de uso centraliza a discussão operacional e a notificação de equipa:
+
+- **{U.C. 6.1} Publicar Comentários em Tarefas:** Permite a troca de mensagens em fio de discussão contextual dentro de cada tarefa com suporte para sintaxe Markdown.
+- **{U.C. 6.2} Notificar e Mencionar Colaboradores:** Reconhece menções com "@" nos comentários e gera notificações no centro de alertas e resumos por email.
+
+#### 4.2.7 Caso de Uso 7 – Gestão Comercial e Faturação
+
+Este caso de uso gere as subscrições comerciais e a integração com a gateway Stripe:
+
+- **{U.C. 7.1} Subscrever e Alterar Plano:** O Workspace Owner seleciona o plano comercial pretendido e é direcionado para a plataforma de pagamento seguro Stripe Checkout.
+- **{U.C. 7.2} Processar Cobrança e Quotas:** O sistema recebe notificações assíncronas da Stripe via webhooks, atualizando as quotas de membros do workspace.
+
+#### 4.2.8 Caso de Uso 8 – Gestão do Ciclo de Vida da Conta e Dados
+
+Este caso de uso garante a transparência, portabilidade e encerramento de conta:
+
+- **{U.C. 8.1} Exportar Dados:** O utilizador pode gerar um ficheiro JSON com os seus dados pessoais e o Workspace Owner pode gerar um ficheiro ZIP completo do workspace.
+- **{U.C. 8.2} Desativar e Encerrar Conta:** O utilizador pode encerrar a sua conta de forma autónoma, ficando as credenciais invalidadas, o nome anonimizado nas tarefas e recebendo um comprovativo por correio eletrónico.
 
 ---
 
-### 4.2 {U.C.2} — Workspace & Team Administration
+## 5. Requisitos Não-Funcionais
 
-#### 4.2.1 Context & Business Objective
-Governs multi-tenant workspace creation, member invitation workflows, role administration, and subscription quota monitoring. It enables organizations to coordinate teams while preserving strict separation between workspaces.
-
-#### 4.2.2 Level-1 Refinement Diagram
-
-```mermaid
-flowchart TD
-    UC2["{U.C.2} Workspace & Team Administration"] --> UC21["{U.C.2.1} Workspace Tenant Provisioning"]
-    UC2 --> UC22["{U.C.2.2} Member Invitation Workflow"]
-    UC2 --> UC23["{U.C.2.3} Member Role Administration & Offboarding"]
-    UC2 --> UC24["{U.C.2.4} Workspace Settings & Quota Monitoring"]
-```
-
-#### 4.2.3 Level-1 System Sub-Cases
-
-##### `{U.C.2.1}` — Workspace Tenant Provisioning
-- **Primary Actor:** `Authenticated User`
-- **Scope & Purpose:** Provision a distinct workspace tenant with a custom organizational name and unique URL slug, establishing the creator as the initial `Workspace Owner`.
-- **Pre-conditions:** User is authenticated.
-- **Triggers:** User initiates workspace creation from the workspace switcher interface.
-- **Data In / Out:**
-  - `in`: Workspace name, unique URL slug, initial plan tier selection.
-  - `out`: Provisioned workspace tenant, initial default project, `Workspace Owner` role binding.
-- **Mapped Functional Requirements:** `R2.1`.
-
-##### `{U.C.2.2}` — Member Invitation Workflow
-- **Primary Actor:** `Workspace Owner`, `Workspace Admin`
-- **Scope & Purpose:** Invite team members to join the workspace by email, verifying that current member counts do not exceed the plan tier seat quota, and dispatching invitation emails.
-- **Pre-conditions:** Requesting user holds `Owner` or `Admin` privileges in the workspace.
-- **Triggers:** Admin enters invitee email and selects an initial role.
-- **Data In / Out:**
-  - `in`: Invitee email address, target role (`Admin`, `Member`, `Viewer`).
-  - `out`: Invitation link emailed; pending membership record registered.
-- **Mapped Functional Requirements:** `R2.2`.
-
-##### `{U.C.2.3}` — Member Role Administration & Offboarding
-- **Primary Actor:** `Workspace Owner`, `Workspace Admin`
-- **Scope & Purpose:** Modify assigned roles of active members or remove members entirely, immediately revoking their access to workspace data while retaining historical attribution.
-- **Pre-conditions:** Target user is an active member of the workspace; the `Workspace Owner` cannot be removed by an `Admin`.
-- **Triggers:** Admin selects role change or member removal command in workspace settings.
-- **Data In / Out:**
-  - `in`: Target `user_id`, new role designation, or removal command.
-  - `out`: Updated membership record; revocation of access; member list refreshed.
-- **Mapped Functional Requirements:** `R2.3`, `R2.6`.
-
-##### `{U.C.2.4}` — Workspace Settings & Quota Monitoring
-- **Primary Actor:** `Workspace Owner`, `Workspace Admin`
-- **Scope & Purpose:** Review workspace resource utilization (active seats, project counts) against active plan tier limits, and manage general workspace metadata (name, logo).
-- **Pre-conditions:** User holds `Owner` or `Admin` role in the workspace.
-- **Triggers:** Admin accesses the workspace settings dashboard.
-- **Data In / Out:**
-  - `in`: Workspace query parameters; optional updated organizational name/logo.
-  - `out`: Utilization metrics display (allocated seats vs limit); updated workspace profile.
-- **Mapped Functional Requirements:** `R2.4`, `R2.5`.
+Conforme especificado no documento *Doc01*, a aplicação obedece aos seguintes parâmetros não-funcionais:
+- **Desempenho (RN1):** Carregamento de quadros com até 200 tarefas em tempo inferior a 500 ms.
+- **Disponibilidade (RN2):** Disponibilidade mínima de serviço de 99,5%.
+- **Usabilidade (RN3):** Desenho responsivo para ecrãs móveis e desktop a partir de 375 px.
+- **Escalabilidade (RN4):** Capacidade para 50 000 tarefas por workspace sem quebra de resposta.
+- **Recuperabilidade (RN5):** Cópias de segurança diárias com RPO inferior a 24 horas.
+- **Internacionalização (RN6):** Suporte de interface em Português e Inglês.
+- **Interoperabilidade (RN7):** Integração Stripe via chamadas HTTPS autenticadas.
+- **Multi-Tenancy (RN8):** Segregação lógica integral de dados entre diferentes workspaces.
 
 ---
 
-### 4.3 {U.C.3} — Project & Task Lifecycle Management
+## 6. Conclusões
 
-#### 4.3.1 Context & Business Objective
-Forms the core operational engine of TinyTask. It provides project containerization, task authoring, assignment, priority tagging, due date tracking, and workflow state progression across Kanban and list representations.
+A presente especificação formaliza a totalidade dos requisitos funcionais e dos casos de uso de sistema para a plataforma **TinyTask SaaS**, fornecendo uma base sólida, rigorosa e puramente funcional.
 
-#### 4.3.2 Level-1 Refinement Diagram
-
-```mermaid
-flowchart TD
-    UC3["{U.C.3} Project & Task Lifecycle Management"] --> UC31["{U.C.3.1} Project Container Management"]
-    UC3 --> UC32["{U.C.3.2} Task Authoring & Attribution"]
-    UC3 --> UC33["{U.C.3.3} Workflow Progression & Board State Updates"]
-    UC3 --> UC34["{U.C.3.4} Multi-Dimensional Task Filtering & Views"]
-```
-
-#### 4.3.3 Level-1 System Sub-Cases
-
-##### `{U.C.3.1}` — Project Container Management
-- **Primary Actor:** `Workspace Admin`, `Workspace Member`
-- **Scope & Purpose:** Create, configure, update, and archive project containers that house discrete sets of tasks and collaborative threads.
-- **Pre-conditions:** User is an active workspace member with creation privileges.
-- **Triggers:** User creates or modifies a project.
-- **Data In / Out:**
-  - `in`: Project name, description, privacy setting, archive command.
-  - `out`: Created/updated project record; project listing update.
-- **Mapped Functional Requirements:** `R3.1`, `R3.2`.
-
-##### `{U.C.3.2}` — Task Authoring & Attribution
-- **Primary Actor:** `Workspace Member`, `Workspace Admin`
-- **Scope & Purpose:** Define new work items within a project, specifying task title, description, priority level, target due date, and assigning responsibility to a workspace colleague.
-- **Pre-conditions:** Containing project exists and is active (not archived).
-- **Triggers:** User clicks "New Task" and submits form.
-- **Data In / Out:**
-  - `in`: Project ID, title, description, priority (`Low`, `Medium`, `High`, `Urgent`), assignee ID, due date.
-  - `out`: Created task record; assignment notification routed to assignee.
-- **Mapped Functional Requirements:** `R4.1`, `R4.2`, `R4.3`.
-
-##### `{U.C.3.3}` — Workflow Progression & Board State Updates
-- **Primary Actor:** `Workspace Member`, `Workspace Admin`
-- **Scope & Purpose:** Transition tasks through standard operational stages (`To-Do`, `In-Progress`, `Under-Review`, `Done`), supporting drag-and-drop interactions on Kanban boards.
-- **Pre-conditions:** Task exists; requesting user is an active workspace member.
-- **Triggers:** User moves task card on Kanban board or changes status selector.
-- **Data In / Out:**
-  - `in`: Target `task_id`, new status value.
-  - `out`: Updated task entity; board column reordering; activity log record; optional recurring task clone trigger.
-- **Mapped Functional Requirements:** `R5.1`, `R5.2`, `R5.3`.
-
-##### `{U.C.3.4}` — Multi-Dimensional Task Filtering & Views
-- **Primary Actor:** `Workspace User` (`Owner`, `Admin`, `Member`, `Viewer`)
-- **Scope & Purpose:** Query and display tasks according to selectable criteria, including assignee, status, priority, and date ranges, presented in customizable views.
-- **Pre-conditions:** User has read access to the workspace.
-- **Triggers:** User applies search keywords or filters on project view.
-- **Data In / Out:**
-  - `in`: Filter criteria (assignee ID, status list, priority list, due date range, sorting order).
-  - `out`: Rendered task dataset matching filter criteria.
-- **Mapped Functional Requirements:** `R6.1`, `R6.2`.
+Com este documento concluído, fica plenamente delimitado o âmbito funcional sobre o qual a metodologia AEGIS aplicará subsequentemente as suas camadas de análise de ameaças, superfícies de ataque e objetivos operacionais de segurança e privacidade (Fase 2 e Fase 3).
 
 ---
 
-### 4.4 {U.C.4} — Task Attachment Management
+## Bibliografia
 
-#### 4.4.1 Context & Business Objective
-Provides upload, storage, retrieval, and disposal of files and media assets associated with tasks, enforcing file size limits and easy access for team members.
-
-#### 4.4.2 Level-1 Refinement Diagram
-
-```mermaid
-flowchart TD
-    UC4["{U.C.4} Task Attachment Management"] --> UC41["{U.C.4.1} Task File Upload"]
-    UC4 --> UC42["{U.C.4.2} Attachment Retrieval & Preview"]
-    UC4 --> UC43["{U.C.4.3} Attachment Removal"]
-```
-
-#### 4.4.3 Level-1 System Sub-Cases
-
-##### `{U.C.4.1}` — Task File Upload
-- **Primary Actor:** `Workspace Member`, `Workspace Admin`
-- **Scope & Purpose:** Upload file attachments (documents, spreadsheets, images) to a task, enforcing the 25 MB size cap.
-- **Pre-conditions:** Task exists; user is authorized to edit the task.
-- **Triggers:** User adds a file to the task attachment section.
-- **Data In / Out:**
-  - `in`: `task_id`, file binary, filename, file size.
-  - `out`: Stored attachment record; task attachment list updated.
-- **Mapped Functional Requirements:** `R7.1`, `R7.2`.
-
-##### `{U.C.4.2}` — Attachment Retrieval & Preview
-- **Primary Actor:** `Workspace User` (`Owner`, `Admin`, `Member`, `Viewer`)
-- **Scope & Purpose:** Enable authorized users to download or preview task attachments associated with projects they can view.
-- **Pre-conditions:** User belongs to the workspace containing the parent task.
-- **Triggers:** User clicks on an attachment preview thumbnail or download button.
-- **Data In / Out:**
-  - `in`: `attachment_id`, `task_id`.
-  - `out`: Downloadable file stream; optional thumbnail preview rendering.
-- **Mapped Functional Requirements:** `R8.1`, `R8.3`.
-
-##### `{U.C.4.3}` — Attachment Removal
-- **Primary Actor:** `Workspace Member` (Uploader), `Workspace Admin`, `Workspace Owner`
-- **Scope & Purpose:** Remove an attachment from a task, removing the record and associated file storage.
-- **Pre-conditions:** User is either the original uploader or holds `Admin`/`Owner` role.
-- **Triggers:** User clicks "Delete Attachment" and confirms.
-- **Data In / Out:**
-  - `in`: `attachment_id`, deletion confirmation.
-  - `out`: Removed attachment record; task card updated.
-- **Mapped Functional Requirements:** `R8.2`.
+1. Cockburn, A. (2000). *Writing Effective Use Cases*. Addison-Wesley Professional.
+2. Robertson, S., & Robertson, J. (2012). *Mastering the Requirements Process: Getting Requirements Right* (3rd ed.). Addison-Wesley Professional.
+3. Fowler, M. (2003). *UML Distilled: A Brief Guide to the Standard Object Modeling Language* (3rd ed.). Addison-Wesley Professional.
 
 ---
 
-### 4.5 {U.C.5} — Team Collaboration & Activity Feeds
+## Histórico de Versões
 
-#### 4.5.1 Context & Business Objective
-Enables communication among team members through Markdown task comments, user `@mentions`, activity history tracking, and automated email summary notifications.
-
-#### 4.5.2 Level-1 Refinement Diagram
-
-```mermaid
-flowchart TD
-    UC5["{U.C.5} Team Collaboration & Activity Feeds"] --> UC51["{U.C.5.1} Task Discussion & Collaborative Mentions"]
-    UC5 --> UC52["{U.C.5.2} Workspace Event Stream & In-App Alerts"]
-    UC5 --> UC53["{U.C.5.3} Scheduled Email Digest Generation"]
-```
-
-#### 4.5.3 Level-1 System Sub-Cases
-
-##### `{U.C.5.1}` — Task Discussion & Collaborative Mentions
-- **Primary Actor:** `Workspace Member`, `Workspace Admin`
-- **Scope & Purpose:** Enable threaded discussion on tasks using Markdown formatting, parsing `@username` mentions to trigger targeted notifications for mentioned colleagues.
-- **Pre-conditions:** Target task exists in an active project.
-- **Triggers:** User submits a comment on the task detail panel.
-- **Data In / Out:**
-  - `in`: `task_id`, Markdown comment text, tagged user references.
-  - `out`: Appended comment record; notifications dispatched to tagged users.
-- **Mapped Functional Requirements:** `R9.1`, `R9.2`, `R9.3`.
-
-##### `{U.C.5.2}` — Workspace Event Stream & In-App Alerts
-- **Primary Actor:** `Workspace User` (`Owner`, `Admin`, `Member`, `Viewer`)
-- **Scope & Purpose:** Record chronological history for task transitions and deliver notifications to the user's notification center.
-- **Pre-conditions:** User is authenticated within a workspace.
-- **Triggers:** Any state-changing event occurs on tasks assigned to or observed by the user.
-- **Data In / Out:**
-  - `in`: State-change event stream; user notification acknowledgment.
-  - `out`: Notification badge counter update; chronological activity feed entries.
-- **Mapped Functional Requirements:** `R10.1`, `R10.2`.
-
-##### `{U.C.5.3}` — Scheduled Email Digest Generation
-- **Primary Actor:** `System Scheduler`
-- **Scope & Purpose:** Aggregate outstanding task due dates, overdue assignments, and unread mentions for each user into a daily email digest.
-- **Pre-conditions:** Scheduler cron executes; user has daily digest enabled in preferences.
-- **Triggers:** Daily schedule timer fires at 08:00 UTC.
-- **Data In / Out:**
-  - `in`: Pending unread notification records, user digest preferences.
-  - `out`: Formatted summary email dispatched via transactional email provider.
-- **Mapped Functional Requirements:** `R10.3`.
-
----
-
-### 4.6 {U.C.6} — Commercial Subscriptions & Account Lifecycle
-
-#### 4.6.1 Context & Business Objective
-Encompasses the commercial subscription lifecycle (plan checkout, tier upgrades, Stripe webhook processing) alongside self-service data export and account closure workflows.
-
-#### 4.6.2 Level-1 Refinement Diagram
-
-```mermaid
-flowchart TD
-    UC6["{U.C.6} Commercial Subscriptions & Account Lifecycle"] --> UC61["{U.C.6.1} Plan Upgrade & Checkout Initiation"]
-    UC6 --> UC62["{U.C.6.2} Webhook Subscription Reconciliation"]
-    UC6 --> UC63["{U.C.6.3} Self-Service User Data Export"]
-    UC6 --> UC64["{U.C.6.4} Account Closure & Name Anonymization"]
-```
-
-#### 4.6.3 Level-1 System Sub-Cases
-
-##### `{U.C.6.1}` — Plan Upgrade & Checkout Initiation
-- **Primary Actor:** `Workspace Owner`
-- **Scope & Purpose:** Enable the Workspace Owner to select an upgraded plan tier (`Pro` or `Enterprise`), generating a hosted Stripe Checkout session.
-- **Pre-conditions:** Requesting user is the verified `Workspace Owner`.
-- **Triggers:** Owner selects "Upgrade Plan" in workspace billing settings.
-- **Data In / Out:**
-  - `in`: Desired plan tier ID, billing cycle (monthly/annual), return URL.
-  - `out`: Hosted Stripe Checkout session URL redirect.
-- **Mapped Functional Requirements:** `R11.1`.
-
-##### `{U.C.6.2}` — Webhook Subscription Reconciliation
-- **Primary Actor:** `External Payment Gateway` (Stripe)
-- **Scope & Purpose:** Ingest and process incoming payment gateway webhooks to update workspace subscription statuses, seat quotas, and payment failure states.
-- **Pre-conditions:** Webhook payload delivered from payment gateway.
-- **Triggers:** Stripe delivers an HTTP POST request to the webhook endpoint.
-- **Data In / Out:**
-  - `in`: Webhook payload (`invoice.payment_succeeded`, etc.).
-  - `out`: Updated workspace tier quota and billing status.
-- **Mapped Functional Requirements:** `R11.2`, `R11.3`, `R11.4`.
-
-##### `{U.C.6.3}` — Self-Service User Data Export
-- **Primary Actor:** `Workspace Owner`, `Registered User`
-- **Scope & Purpose:** Enable users to request an automated export of their personal account data or workspace data in structured formats (JSON and ZIP archive).
-- **Pre-conditions:** User is authenticated and submits request.
-- **Triggers:** User requests data export under account or workspace settings.
-- **Data In / Out:**
-  - `in`: Export scope request (personal data or full workspace).
-  - `out`: Background export job queued; download link delivered to requester upon completion.
-- **Mapped Functional Requirements:** `R12.1`, `R12.2`.
-
-##### `{U.C.6.4}` — Account Closure & Name Anonymization
-- **Primary Actor:** `Workspace Owner`, `Registered User`
-- **Scope & Purpose:** Execute user account deletion requests, removing login credentials and anonymizing display names across historical task logs to `[Deleted User]`.
-- **Pre-conditions:** User confirms deletion with password verification; if Workspace Owner, either transfers ownership or deletes the workspace tenant.
-- **Triggers:** User submits account/workspace deletion request.
-- **Data In / Out:**
-  - `in`: User password re-verification, confirmation token.
-  - `out`: User login removed; historical comments attributed to `[Deleted User]`; closure confirmation receipt.
-- **Mapped Functional Requirements:** `R12.3`, `R12.4`.
-
----
-
-## 5. Summary of System Use Cases & Requirements Traceability
-
-The matrix below provides complete bidirectional traceability between all **Level-1 System Sub-Cases** and the **Functional Requirements** defined in `Doc01_Requirements_Elicitation_and_PUC.md`.
-
-| High-Level UC | Level-1 Sub-Case | Sub-Case Title | Primary Actor | Mapped Functional Requirements |
-|---|---|---|---|---|
-| **`{U.C.1}`** | `{U.C.1.1}` | User Registration & Email Verification | New User | `R1.1` |
-| | `{U.C.1.2}` | Credential Authentication & Session Issuance | Registered User | `R1.2`, `R1.6`, `R1.7` |
-| | `{U.C.1.3}` | Password Recovery Workflow | Registered User | `R1.3` |
-| | `{U.C.1.4}` | Tenant Role Resolution & Session Review | Workspace User | `R1.4`, `R1.5` |
-| **`{U.C.2}`** | `{U.C.2.1}` | Workspace Tenant Provisioning | Authenticated User | `R2.1` |
-| | `{U.C.2.2}` | Member Invitation Workflow | Workspace Owner / Admin | `R2.2` |
-| | `{U.C.2.3}` | Member Role Administration & Offboarding | Workspace Owner / Admin | `R2.3`, `R2.6` |
-| | `{U.C.2.4}` | Workspace Settings & Quota Monitoring | Workspace Owner / Admin | `R2.4`, `R2.5` |
-| **`{U.C.3}`** | `{U.C.3.1}` | Project Container Management | Workspace Admin / Member | `R3.1`, `R3.2` |
-| | `{U.C.3.2}` | Task Authoring & Attribution | Workspace Member / Admin | `R4.1`, `R4.2`, `R4.3` |
-| | `{U.C.3.3}` | Workflow Progression & Board State Updates | Workspace Member / Admin | `R5.1`, `R5.2`, `R5.3` |
-| | `{U.C.3.4}` | Multi-Dimensional Task Filtering & Views | Workspace User | `R6.1`, `R6.2` |
-| **`{U.C.4}`** | `{U.C.4.1}` | Task File Upload | Workspace Member / Admin | `R7.1`, `R7.2` |
-| | `{U.C.4.2}` | Attachment Retrieval & Preview | Workspace User | `R8.1`, `R8.3` |
-| | `{U.C.4.3}` | Attachment Removal | Workspace Member / Admin | `R8.2` |
-| **`{U.C.5}`** | `{U.C.5.1}` | Task Discussion & Collaborative Mentions | Workspace Member / Admin | `R9.1`, `R9.2`, `R9.3` |
-| | `{U.C.5.2}` | Workspace Event Stream & In-App Alerts | Workspace User | `R10.1`, `R10.2` |
-| | `{U.C.5.3}` | Scheduled Email Digest Generation | System Scheduler | `R10.3` |
-| **`{U.C.6}`** | `{U.C.6.1}` | Plan Upgrade & Checkout Initiation | Workspace Owner | `R11.1` |
-| | `{U.C.6.2}` | Webhook Subscription Reconciliation | External Payment Gateway | `R11.2`, `R11.3`, `R11.4` |
-| | `{U.C.6.3}` | Self-Service User Data Export | Workspace Owner / User | `R12.1`, `R12.2` |
-| | `{U.C.6.4}` | Account Closure & Name Anonymization | Workspace Owner / User | `R12.3`, `R12.4` |
+| Versão | Data | Autor | Notas de Modificação |
+|---|---|---|---|
+| **1.0.0** | 2026-09-23 | Equipa Técnica AEGIS | Criação inicial da especificação de Casos de Uso de Sistema (Doc02) em conformidade com o padrão E1.2 do GPTools, contemplando o diagrama de contexto, a tabela sumária de PUC e o refinamento até ao nível 1 sem nós folha. |

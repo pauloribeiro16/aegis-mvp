@@ -260,6 +260,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R1.1 **Name:** Register and authenticate user accounts |
 | **Description:** The system must allow prospective users to create an account with email verification, authenticate using valid credentials to establish an active session, and autonomously request password reset assistance via email. |
 | **Requirement Origin:** Founders Business Case & User Onboarding Workflow |
+| **Security & Privacy Constraints:**<br>â¢ **NFR-RN10:** Credential Hardening & Salted Hashing — `CRA Annex I Part I (2)(d) + (2)(j)` → Phase 2 `SO-D-02.1-002, SO-D-01.1-002` → `PRIN-ENG-04` Fail-Safe Defaults & Closed Failure States → CSF PR.AA-03, PR.DS-01<br>â¢ **NFR-RN11:** Cryptographic Session Management & Invalidation — `CRA Annex I Part I (2)(d) + (2)(j)` → Phase 2 `SO-D-02.2-002` → `PRIN-ENG-04` Fail-Safe Defaults & Closed Failure States → CSF PR.AA-03, PR.DS-02<br>â¢ **NFR-RN18:** Non-Repudiable Security Audit Logging — `CRA Annex I Part I (2)(l)` → Phase 2 `SO-D-03.1-002` → `PRIN-ENG-07` End-to-End Lifecycle Security & Irreversible Erasure → CSF PR.PS-04, DE.AE-02<br>â¢ **NFR-RN19:** Registration Data Minimization by Default — `GDPR Art. 5(1)(c)` → Phase 2 `PO-D-06.1-001` → `PRIN-ENG-06` Proactive Data Minimization & Scoped Projection → CSF PR.DS-10, GV.OC-03 · PF CT.DP-P2<br>â¢ **NFR-RN21:** Irreversible Data Subject Erasure & Pseudonymization — `GDPR Art. 17 + Art. 28(3)(g)` → Phase 2 `PO-D-06.2-001` → `PRIN-ENG-07` End-to-End Lifecycle Security & Irreversible Erasure → CSF PR.DS-10 · PF CT.DM-P1<br>â¢ **NFR-RN23:** Personal Data Cryptographic Protection at Rest — `GDPR Art. 32(1)(a) + Art. 5(1)(f)` → Phase 2 `PO-D-01.1-001` → `PRIN-ENG-01` Trust Boundaries & Complete Mediation → CSF PR.DS-01, PR.DS-10 · PF PR.DS-P1<br>â¢ **NFR-RN24:** Mandatory End-to-End Transport Layer Cryptographic Protection — `GDPR Art. 32(1)(a) + Art. 32(2)` → Phase 2 `PO-D-01.2-001` → `PRIN-ENG-01` Trust Boundaries & Complete Mediation → CSF PR.DS-02, PR.IR-01 · PF PR.DS-P2<br>â¢ **NFR-RN26:** Privacy Audit Trail for Personal Data Modifications — `GDPR Art. 30` → Phase 2 `PO-D-03.1-001` → `PRIN-ENG-07` End-to-End Lifecycle Security & Irreversible Erasure → CSF PR.PT-01, DE.CM-01 · PF CM.AW-P2 |
 | **Interfaces:** Unauthenticated Visitor, Registered User, and Notification / Email Service |
 | **Dependencies:**<br>• **Stakeholders:** Platform Founders, All End Users<br>• **Data Sources:** Registration Form, Login Form, Password Reset Form<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -516,34 +517,6 @@ The platform non-functional requirements are partitioned into general operationa
 | **RN7** | The payment gateway integration must communicate exclusively over authenticated secure channels and enforce cryptographic webhook signature verification. | MUST | Interoperability |
 | **RN8** | The system architecture must enforce strict logical data segregation across workspaces (multi-tenancy), preventing cross-tenant access. | MUST | Architectural Integrity |
 
-*Table 7b. Security & Privacy Non-Functional Synthesis (Traceable to Phase 2 & Doc03)*
-
-| ID | Security & Privacy Requirement | Upstream Origin | Bound Functional Requirements | Verification |
-|---|---|---|---|---|
-| **RN9** | Multi-Tenant Data Isolation & Mediation | CRA Annex I / SO-D-02.1-002 | R1.2, R2.1, R3.1 | TEST |
-| **RN10** | Credential Hardening & Salted Hashing | CRA Annex I / SO-D-02.1-002 | R1.1 | TEST |
-| **RN11** | Cryptographic Session Management & Invalidation | CRA Annex I / SO-D-02.2-002 | R1.1 | TEST |
-| **RN12** | Role-Based Access Control & Action Mediation | CRA Annex I / SO-D-02.1-002 | R2.1, R2.2, R3.1 | TEST |
-| **RN13** | File Upload Strict Validation & Content Isolation | CRA Annex I / SO-D-07.1-002 | R5.1 | TEST |
-| **RN14** | Context-Aware Output Encoding & Sanitization | CRA Annex I / SO-D-07.1-002 | R5.2 | TEST |
-| **RN15** | Cryptographic Billing Invariant Protection | CRA Annex I / SO-D-01.1-002 | R7.1, R7.2 | INSPECT |
-| **RN16** | Cryptographic Webhook Origin Verification | CRA Annex I / SO-D-05.1-002 | R7.1, R7.2 | TEST |
-| **RN17** | Inbound API Token Mediation & Rate Limiting | CRA Annex I / SO-D-02.1-002 | R1.1, R4.2 | TEST |
-| **RN18** | Non-Repudiable Security Audit Logging | CRA Annex I / SO-D-03.1-002 | R1.1 to R8.2 | TEST |
-| **RN19** | Registration Data Minimization by Default | GDPR Art. 5(1)(c) / PO-D-06.1-001 | R1.1 | INSPECT |
-| **RN20** | Structured Personal Data Portability & Export | GDPR Art. 20 / PO-D-06.2-001 | R8.1 | DEMONSTRATE |
-| **RN21** | Irreversible Data Subject Erasure & Pseudonymization | GDPR Art. 17 / PO-D-06.2-001 | R8.2 | TEST |
-| **RN22** | Purpose Limitation & Activity History Segregation | GDPR Art. 5(1)(b) / PO-D-06.1-001 | R6.1, R6.2 | ANALYZE |
-| **RN23** | Personal Data Cryptographic Protection at Rest | GDPR Art. 32 / PO-D-01.1-001 | R1.1, R1.2, R8.1 | INSPECT |
-| **RN24** | Mandatory End-to-End Transport Layer Cryptographic Protection | GDPR Art. 32 / PO-D-01.2-001 | R1.1 to R8.2 | TEST |
-| **RN25** | Automated Orphan File Asset Cleanup & Expiration | GDPR Art. 5(1)(e) / PO-D-06.1-001 | R5.1 | TEST |
-| **RN26** | Privacy Audit Trail for Personal Data Modifications | GDPR Art. 30 / PO-D-03.1-001 | R1.1, R1.2, R8.2 | INSPECT |
-
----
-
-### 3. Business Product Use Cases (PUC) Definition
-
-The Product Use Cases (*PUC*) delineate the functional boundary of TinyTask SaaS, mapping input payloads, processing boundaries, and output deliverables:
 
 *Table 8. Summary table of Product Use Cases (PUC)*
 

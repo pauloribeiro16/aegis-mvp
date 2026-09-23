@@ -81,3 +81,10 @@ Throughout the four steps, the following rules are strictly enforced:
 - **Cockburn Sea-Level Granularity:** All use cases describe user goals achieved in a single session delivering business value. Zero micro-UI procedural scripts.
 - **EARS Compliance:** All security and privacy requirements adhere to the 5 canonical EARS sentence patterns.
 - **Empirical Verifiability:** Every requirement has an objective pass/fail threshold verifiable via `TEST`, `INSPECT`, `DEMONSTRATE`, or `ANALYZE`.
+
+---
+
+
+## 4. V1 Absorption Model (2026-09-23)
+
+Per user rule, **V1 absorbs security & privacy NFRs directly into each functional R<n.m> card** as a `Security & Privacy Constraints` block. The standalone RN catalog (former `Doc03_Security_Privacy_Requirements.md`) is dissolved. The 18 RNs security/privacy (now `RN9`–`RN26`) live in the constraint block of the R cards they apply to, with the full tracing chain `Regulation → Phase 2 rule → PRIN-ENG → CSF/PF/AIRMF anchor`. The 8 standalone operational NFRs (`RN1`–`RN8`) remain in `Doc01` as a quality-attributes table.

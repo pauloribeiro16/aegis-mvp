@@ -37,8 +37,6 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/v1_security_privacy_synthesis/
 ### 3.1 [`Doc03_Security_Privacy_Requirements.md`](Doc03_Security_Privacy_Requirements.md)
 The cornerstone deliverable of Version 1. It provides:
 - **Master Bidirectional Traceability Matrix:** Mapping each security/privacy requirement to its upstream Phase 2 Operational Objective (`PO-` or `SO-`), engineering principle (`PRIN-ENG-`), bound functional requirement (`R...`), and bound system use case (`{U.C. ...}`).
-- **10 CRA Product Security Requirements (`RN9` to `RN18`):** Authored using strict EARS sentence templates (Ubiquitous, Event-Driven, State-Driven, and Unwanted Behavior).
-- **8 GDPR Personal Data Protection Requirements (`RN19` to `RN26`):** Specifying concrete personal data rights, encryption standards, retention limits, and data subject access flows.
 - **Empirical ISO/IEC/IEEE 29148 Verification Bindings:** Assigning each requirement a concrete, testable Volere Fit Criterion and one of the four empirical evaluation methods (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`).
 
 ### 3.2 [`Doc01_Requirements_Elicitation_and_PUC.md`](Doc01_Requirements_Elicitation_and_PUC.md)

@@ -142,26 +142,26 @@ The following matrix establishes strict bi-directional traceability between the 
 
 *Table 1. Traceability Matrix*
 
-| Functional Req (Doc01) | Product Use Case (Doc01) | System Use Case (Doc02) | Use Case Title | Priority | Bound Security & Privacy Constraints (Doc03) |
+| Functional Req (Doc01) | Product Use Case (Doc01) | System Use Case (Doc02) | Use Case Title | Priority | Bound NFR-Security & Privacy (in-card) |
 |---|---|---|---|---|---|
-| **R1.1** | **PUC 1.1** | **{U.C. 1.1}** | Register and authenticate user accounts | MUST | RN10, RN11, RN18, RN19, RN24 |
-| **R1.2** | **PUC 1.2** | **{U.C. 1.2}** | Manage user profile and account preferences | SHOULD | RN9, RN20, RN23, RN26 |
-| **R2.1** | **PUC 2.1** | **{U.C. 2.1}** | Create and configure workspace | MUST | RN9, RN12, RN18 |
-| **R2.2** | **PUC 2.2** | **{U.C. 2.2}** | Invite workspace members and manage access roles | MUST | RN12, RN18, RN19 |
-| **R2.3** | **PUC 2.3** | **{U.C. 2.3}** | Monitor workspace activity and operational metrics | COULD | RN9, RN12 |
-| **R3.1** | **PUC 3.1** | **{U.C. 3.1}** | Create and configure projects | MUST | RN9, RN12, RN18 |
-| **R3.2** | **PUC 3.2** | **{U.C. 3.2}** | Archive completed projects | SHOULD | RN12, RN18 |
-| **R4.1** | **PUC 4.1** | **{U.C. 4.1}** | Create and assign tasks | MUST | RN9, RN12 |
-| **R4.2** | **PUC 4.2** | **{U.C. 4.2}** | Track and transition task workflow states on visual boards | MUST | RN9, RN17 |
-| **R4.3** | **PUC 4.3** | **{U.C. 4.3}** | Configure recurring automated tasks | COULD | RN9, RN18 |
-| **R5.1** | **PUC 5.1** | **{U.C. 5.1}** | Manage task deliverable attachments | MUST | RN13, RN25 |
-| **R5.2** | **PUC 5.2** | **{U.C. 5.2}** | Post in-task discussion comments and mention collaborators | MUST | RN14, RN26 |
-| **R6.1** | **PUC 6.1** | **{U.C. 6.1}** | Consult chronological audit history on task cards | MUST | RN18, RN22 |
-| **R6.2** | **PUC 6.2** | **{U.C. 6.2}** | Receive workspace alerts and daily task digests | SHOULD | RN9, RN24 |
-| **R7.1** | **PUC 7.1** | **{U.C. 7.1}** | Subscribe and manage workspace commercial plans | MUST | RN15, RN16, RN18 |
-| **R7.2** | **PUC 7.2** | **{U.C. 7.2}** | Enforce operational grace period upon payment failure | MUST | RN15, RN16, RN18 |
-| **R8.1** | **PUC 8.1** | **{U.C. 8.1}** | Export personal and workspace data archives | MUST | RN20, RN23, RN9 |
-| **R8.2** | **PUC 8.2** | **{U.C. 8.2}** | Close user accounts and terminate workspace access | MUST | RN21, RN26, RN11, RN18 |
+| **R1.1** | **PUC 1.1** | **{U.C. 1.1}** | Register and authenticate user accounts | MUST | NFR-RN10, NFR-RN11, NFR-RN18, NFR-RN19, NFR-RN21, NFR-RN23, NFR-RN24, NFR-RN26
+| **R1.2** | **PUC 1.2** | **{U.C. 1.2}** | Manage user profile and account preferences | SHOULD | NFR-RN9, NFR-RN20, NFR-RN21, NFR-RN23, NFR-RN26
+| **R2.1** | **PUC 2.1** | **{U.C. 2.1}** | Create and configure workspace | MUST | NFR-RN9, NFR-RN12
+| **R2.2** | **PUC 2.2** | **{U.C. 2.2}** | Invite workspace members and manage access roles | MUST | NFR-RN12
+| **R2.3** | **PUC 2.3** | **{U.C. 2.3}** | Monitor workspace activity and operational metrics | COULD | —
+| **R3.1** | **PUC 3.1** | **{U.C. 3.1}** | Create and configure projects | MUST | NFR-RN9, NFR-RN12
+| **R3.2** | **PUC 3.2** | **{U.C. 3.2}** | Archive completed projects | SHOULD | —
+| **R4.1** | **PUC 4.1** | **{U.C. 4.1}** | Create and assign tasks | MUST | NFR-RN13
+| **R4.2** | **PUC 4.2** | **{U.C. 4.2}** | Track and transition task workflow states on visual boards | MUST | NFR-RN13, NFR-RN25
+| **R4.3** | **PUC 4.3** | **{U.C. 4.3}** | Configure recurring automated tasks | COULD | —
+| **R5.1** | **PUC 5.1** | **{U.C. 5.1}** | Manage task deliverable attachments | MUST | NFR-RN14
+| **R5.2** | **PUC 5.2** | **{U.C. 5.2}** | Post in-task discussion comments and mention collaborators | MUST | —
+| **R6.1** | **PUC 6.1** | **{U.C. 6.1}** | Consult chronological audit history on task cards | MUST | NFR-RN22, NFR-RN23, NFR-RN26
+| **R6.2** | **PUC 6.2** | **{U.C. 6.2}** | Receive workspace alerts and daily task digests | SHOULD | NFR-RN22
+| **R7.1** | **PUC 7.1** | **{U.C. 7.1}** | Subscribe and manage workspace commercial plans | MUST | NFR-RN15
+| **R7.2** | **PUC 7.2** | **{U.C. 7.2}** | Enforce operational grace period upon payment failure | MUST | NFR-RN15
+| **R8.1** | **PUC 8.1** | **{U.C. 8.1}** | Export personal and workspace data archives | MUST | NFR-RN16
+| **R8.2** | **PUC 8.2** | **{U.C. 8.2}** | Close user accounts and terminate workspace access | MUST | NFR-RN17, NFR-RN18, NFR-RN24
 
 ---
 
@@ -204,7 +204,7 @@ flowchart LR
 
 #### {U.C. 1.1} Register and authenticate user accounts
 - **Traceability:** Requirement `R1.1` | Product Use Case `PUC 1.1`
-- **Security & Privacy Traces:** `RN10` (Credential Hashing), `RN11` (Session Invalidation), `RN18` (Audit Logging), `RN19` (Data Minimization), `RN24` (Transport Encryption)
+- **Security & Privacy Traces:** **NFR-RN10** (Credential Hashing), **NFR-RN11** (Session Invalidation), **NFR-RN18** (Audit Logging), **NFR-RN19** (Data Minimization), **NFR-RN24** (Transport Encryption)
 - **Primary Actor:** Unauthenticated Visitor / Registered User
 - **Supporting Actors:** Notification / Email Service
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
@@ -243,7 +243,7 @@ flowchart LR
 
 #### {U.C. 1.2} Manage user profile and account preferences
 - **Traceability:** Requirement `R1.2` | Product Use Case `PUC 1.2`
-- **Security & Privacy Traces:** `RN9` (Tenant Isolation), `RN20` (Portability), `RN23` (Encryption at Rest), `RN26` (Privacy Audit Trail)
+- **Security & Privacy Traces:** **NFR-RN9** (Tenant Isolation), **NFR-RN20** (Portability), **NFR-RN23** (Encryption at Rest), **NFR-RN26** (Privacy Audit Trail)
 - **Primary Actor:** Authenticated User
 - **Supporting Actors:** None
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
@@ -296,7 +296,7 @@ flowchart LR
 
 #### {U.C. 2.1} Create and configure workspace
 - **Traceability:** Requirement `R2.1` | Product Use Case `PUC 2.1`
-- **Security & Privacy Traces:** `RN9` (Multi-Tenant Isolation), `RN12` (Role-Based Access Control), `RN18` (Audit Logging)
+- **Security & Privacy Traces:** **NFR-RN9** (Multi-Tenant Isolation), **NFR-RN12** (Role-Based Access Control), **NFR-RN18** (Audit Logging)
 - **Primary Actor:** Authenticated User (becoming Workspace Owner) / Workspace Admin
 - **Supporting Actors:** None
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
@@ -325,7 +325,7 @@ flowchart LR
 
 #### {U.C. 2.2} Invite workspace members and manage access roles
 - **Traceability:** Requirement `R2.2` | Product Use Case `PUC 2.2`
-- **Security & Privacy Traces:** `RN12` (RBAC), `RN18` (Audit Logging), `RN19` (Data Minimization)
+- **Security & Privacy Traces:** **NFR-RN12** (RBAC), **NFR-RN18** (Audit Logging), **NFR-RN19** (Data Minimization)
 - **Primary Actor:** Workspace Admin / Workspace Owner
 - **Supporting Actors:** Notification / Email Service
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
@@ -358,7 +358,7 @@ flowchart LR
 
 #### {U.C. 2.3} Monitor workspace activity and operational metrics
 - **Traceability:** Requirement `R2.3` | Product Use Case `PUC 2.3`
-- **Security & Privacy Traces:** `RN9` (Multi-Tenant Isolation), `RN12` (RBAC)
+- **Security & Privacy Traces:** **NFR-RN9** (Multi-Tenant Isolation), **NFR-RN12** (RBAC)
 - **Primary Actor:** Workspace Admin / Workspace Owner
 - **Supporting Actors:** None
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
@@ -401,7 +401,7 @@ flowchart LR
 
 #### {U.C. 3.1} Create and configure projects
 - **Traceability:** Requirement `R3.1` | Product Use Case `PUC 3.1`
-- **Security & Privacy Traces:** `RN9` (Multi-Tenant Isolation), `RN12` (RBAC), `RN18` (Audit Logging)
+- **Security & Privacy Traces:** **NFR-RN9** (Multi-Tenant Isolation), **NFR-RN12** (RBAC), **NFR-RN18** (Audit Logging)
 - **Primary Actor:** Workspace Admin / Workspace Member
 - **Supporting Actors:** None
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
@@ -429,7 +429,7 @@ flowchart LR
 
 #### {U.C. 3.2} Archive completed projects
 - **Traceability:** Requirement `R3.2` | Product Use Case `PUC 3.2`
-- **Security & Privacy Traces:** `RN12` (RBAC), `RN18` (Audit Logging)
+- **Security & Privacy Traces:** **NFR-RN12** (RBAC), **NFR-RN18** (Audit Logging)
 - **Primary Actor:** Workspace Admin / Workspace Owner
 - **Supporting Actors:** None
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
@@ -481,7 +481,7 @@ flowchart LR
 
 #### {U.C. 4.1} Create and assign tasks
 - **Traceability:** Requirement `R4.1` | Product Use Case `PUC 4.1`
-- **Security & Privacy Traces:** `RN9` (Multi-Tenant Isolation), `RN12` (RBAC)
+- **Security & Privacy Traces:** **NFR-RN9** (Multi-Tenant Isolation), **NFR-RN12** (RBAC)
 - **Primary Actor:** Workspace Member / Workspace Admin
 - **Supporting Actors:** Notification / Email Service
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
@@ -511,7 +511,7 @@ flowchart LR
 
 #### {U.C. 4.2} Track and transition task workflow states on visual boards
 - **Traceability:** Requirement `R4.2` | Product Use Case `PUC 4.2`
-- **Security & Privacy Traces:** `RN9` (Multi-Tenant Isolation), `RN17` (Rate Limiting)
+- **Security & Privacy Traces:** **NFR-RN9** (Multi-Tenant Isolation), **NFR-RN17** (Rate Limiting)
 - **Primary Actor:** Workspace Member / Workspace Admin / Workspace Viewer
 - **Supporting Actors:** None
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
@@ -541,7 +541,7 @@ flowchart LR
 
 #### {U.C. 4.3} Configure recurring automated tasks
 - **Traceability:** Requirement `R4.3` | Product Use Case `PUC 4.3`
-- **Security & Privacy Traces:** `RN9` (Multi-Tenant Isolation), `RN18` (Audit Logging)
+- **Security & Privacy Traces:** **NFR-RN9** (Multi-Tenant Isolation), **NFR-RN18** (Audit Logging)
 - **Primary Actor:** Workspace Member / Workspace Admin (supported by Automated System Daemon)
 - **Supporting Actors:** Automated System Daemon
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
@@ -589,7 +589,7 @@ flowchart LR
 
 #### {U.C. 5.1} Manage task deliverable attachments
 - **Traceability:** Requirement `R5.1` | Product Use Case `PUC 5.1`
-- **Security & Privacy Traces:** `RN13` (Strict File Validation & Malware Isolation), `RN25` (Orphan File Expiration)
+- **Security & Privacy Traces:** **NFR-RN13** (Strict File Validation & Malware Isolation), **NFR-RN25** (Orphan File Expiration)
 - **Primary Actor:** Workspace Member / Workspace Admin / Workspace Viewer
 - **Supporting Actors:** None
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
@@ -621,7 +621,7 @@ flowchart LR
 
 #### {U.C. 5.2} Post in-task discussion comments and mention collaborators
 - **Traceability:** Requirement `R5.2` | Product Use Case `PUC 5.2`
-- **Security & Privacy Traces:** `RN14` (Context-Aware Output Encoding & Anti-XSS), `RN26` (Privacy Audit Trail)
+- **Security & Privacy Traces:** **NFR-RN14** (Context-Aware Output Encoding & Anti-XSS), **NFR-RN26** (Privacy Audit Trail)
 - **Primary Actor:** Workspace Member / Workspace Admin
 - **Supporting Actors:** Notification / Email Service
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
@@ -669,7 +669,7 @@ flowchart LR
 
 #### {U.C. 6.1} Consult chronological audit history on task cards
 - **Traceability:** Requirement `R6.1` | Product Use Case `PUC 6.1`
-- **Security & Privacy Traces:** `RN18` (Audit Logging), `RN22` (Purpose Limitation)
+- **Security & Privacy Traces:** **NFR-RN18** (Audit Logging), **NFR-RN22** (Purpose Limitation)
 - **Primary Actor:** Authorized Workspace Users (Member, Admin, Owner, Viewer)
 - **Supporting Actors:** None
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
@@ -693,7 +693,7 @@ flowchart LR
 
 #### {U.C. 6.2} Receive workspace alerts and daily task digests
 - **Traceability:** Requirement `R6.2` | Product Use Case `PUC 6.2`
-- **Security & Privacy Traces:** `RN9` (Multi-Tenant Isolation), `RN24` (Transport Encryption)
+- **Security & Privacy Traces:** **NFR-RN9** (Multi-Tenant Isolation), **NFR-RN24** (Transport Encryption)
 - **Primary Actor:** Registered User
 - **Supporting Actors:** Notification / Email Service
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
@@ -742,7 +742,7 @@ flowchart LR
 
 #### {U.C. 7.1} Subscribe and manage workspace commercial plans
 - **Traceability:** Requirement `R7.1` | Product Use Case `PUC 7.1`
-- **Security & Privacy Traces:** `RN15` (Billing Invariant Protection), `RN16` (Cryptographic Webhook Verification), `RN18` (Audit Logging)
+- **Security & Privacy Traces:** **NFR-RN15** (Billing Invariant Protection), **NFR-RN16** (Cryptographic Webhook Verification), **NFR-RN18** (Audit Logging)
 - **Primary Actor:** Workspace Owner
 - **Supporting Actors:** External Payment Gateway
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
@@ -774,7 +774,7 @@ flowchart LR
 
 #### {U.C. 7.2} Enforce operational grace period upon payment failure
 - **Traceability:** Requirement `R7.2` | Product Use Case `PUC 7.2`
-- **Security & Privacy Traces:** `RN15` (Billing Invariant Protection), `RN16` (Cryptographic Webhook Verification), `RN18` (Audit Logging)
+- **Security & Privacy Traces:** **NFR-RN15** (Billing Invariant Protection), **NFR-RN16** (Cryptographic Webhook Verification), **NFR-RN18** (Audit Logging)
 - **Primary Actor:** External Payment Gateway / Workspace Owner
 - **Supporting Actors:** External Payment Gateway, Notification / Email Service
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
@@ -825,7 +825,7 @@ flowchart LR
 
 #### {U.C. 8.1} Export personal and workspace data archives
 - **Traceability:** Requirement `R8.1` | Product Use Case `PUC 8.1`
-- **Security & Privacy Traces:** `RN20` (Data Portability), `RN23` (Encryption at Rest), `RN9` (Tenant Isolation)
+- **Security & Privacy Traces:** **NFR-RN20** (Data Portability), **NFR-RN23** (Encryption at Rest), **NFR-RN9** (Tenant Isolation)
 - **Primary Actor:** Authenticated User / Workspace Owner
 - **Supporting Actors:** None
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
@@ -855,7 +855,7 @@ flowchart LR
 
 #### {U.C. 8.2} Close user accounts and terminate workspace access
 - **Traceability:** Requirement `R8.2` | Product Use Case `PUC 8.2`
-- **Security & Privacy Traces:** `RN21` (Right to Erasure), `RN26` (Privacy Audit Trail), `RN11` (Session Invalidation), `RN18` (Audit Logging)
+- **Security & Privacy Traces:** **NFR-RN21** (Right to Erasure), **NFR-RN26** (Privacy Audit Trail), **NFR-RN11** (Session Invalidation), **NFR-RN18** (Audit Logging)
 - **Primary Actor:** Authenticated User
 - **Supporting Actors:** Notification / Email Service
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)

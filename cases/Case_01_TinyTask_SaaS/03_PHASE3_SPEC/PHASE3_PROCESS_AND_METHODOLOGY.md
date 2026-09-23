@@ -273,3 +273,6 @@ Before declaring Phase 3 complete, verify that:
 - [ ] **Empirical Verification:** Every security requirement defines an unambiguous Fit Criterion and specifies one of the four ISO 29148 verification methods (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`).
 - [ ] **Bidirectional Traceability:** A complete traceability matrix connects Phase 2 `PO-` and `SO-` objectives to functional requirements `R...`, use cases `{U.C. ...}`, and the security & privacy NFRs (`RN9` onwards).
 - [ ] **Tooling Integrity:** Running `python scripts/doc_lint.py --strict` passes with 0 findings across the entire repository.
+
+
+> **Absorption rule (2026-09-23):** the standalone security/privacy NFR catalog (former `Doc03`) is dissolved; NFRs are absorbed into the relevant R<n.m> cards with the full regulation → Phase 2 → PRIN-ENG → control anchor chain.

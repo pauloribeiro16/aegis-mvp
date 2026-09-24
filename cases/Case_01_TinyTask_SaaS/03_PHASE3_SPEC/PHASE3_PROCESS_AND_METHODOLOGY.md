@@ -41,7 +41,7 @@ The AEGIS Phase 3 methodology synthesizes four authoritative standards and theor
 The Volere methodology establishes that requirements do not exist in a vacuum; they stem from the **business context** and **business events**:
 1. **The Work Context Model:** Defines the boundaries of the business domain being studied, identifying external adjacent systems, human business actors, and information flows entering and leaving the work.
 2. **Business Events & Product Use Cases (PUC):** When a business event occurs (e.g., *Customer signs up*, *Member logs billable hours*), the organization responds. The portion of that response performed by software constitutes a **Product Use Case (PUC)**.
-3. **Purity of Functional Scope:** Functional requirements define *what the system must do to support the business work*, completely decoupled from technological choices or non-functional constraints. Conflating functional capabilities with security rules at the initial elicitation stage corrupts the baseline and hides true business needs.
+3. **Purity of Functional Scope:** Functional requirements define *what the system must do to support the business work*, completely decoupled from technological choices or non-functional constraints. Conflating functional requirements with security rules at the initial elicitation stage corrupts the baseline and hides true business needs.
 4. **Non-Functional Fit Criteria:** Non-functional requirements (including security and privacy) must have an unambiguous, measurable **Fit Criterion** that allows engineers to objectively determine whether an implementation satisfies the requirement.
 
 ### 1.2 Karl Wiegers & Joy Beatty: Software Requirements Architecture
@@ -156,7 +156,7 @@ flowchart TD
 - **Result:** Locked `v0_functional_baseline/` containing `Doc01` and `Doc02`.
 
 ### Step 2: Cross-Cutting Regulatory & Threat Analysis
-- **Goal:** Determine which Phase 2 objectives apply to which functional capabilities.
+- **Goal:** Determine which Phase 2 objectives apply to which functional requirements and areas.
 - **Process:**
   1. **Asset Identification:** Identify all business assets, user data, credentials, and system artifacts handled by each requirement `R...` and use case `{U.C. ...}`.
   2. **Trust Boundary Mapping:** Identify where data crosses organizational or system boundaries (e.g., user browser to application service, application service to external payment gateway, internal tenant to internal tenant).
@@ -245,7 +245,7 @@ To maintain the highest professional standard of requirements engineering, autho
 
 ### 1. The Pre-Baked Security/Privacy Trap
 - **Anti-Pattern:** Writing *"User enters password which is encrypted using Argon2id"* in a functional requirement card.
-- **Remedy:** Keep functional cards focused on the business capability (*"Authenticate User Identity"*). Specify the cryptographic strength and algorithm constraints in the card's **`Security & Privacy Constraints:` row** under the absorbed security & privacy NFR IDs (or the Quality Attributes table for cross-cutting NFRs).
+- **Remedy:** Keep functional cards focused on the business functionality (*"Authenticate User Identity"*). Specify the cryptographic strength and algorithm constraints in the card's **`Security & Privacy Constraints:` row** under the absorbed security & privacy NFR IDs (or the Quality Attributes table for cross-cutting NFRs).
 
 ### 2. The Technology Leakage Trap
 - **Anti-Pattern:** Writing *"Store task records in PostgreSQL database hosted in AWS Frankfurt"*.

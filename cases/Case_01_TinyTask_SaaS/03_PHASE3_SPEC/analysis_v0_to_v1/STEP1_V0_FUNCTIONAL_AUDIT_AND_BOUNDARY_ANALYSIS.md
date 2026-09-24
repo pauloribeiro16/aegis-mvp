@@ -2,7 +2,7 @@
 
 > **Step ID:** STEP-01  
 > **Input:** `v0_functional_baseline/Doc01_Requirements_Elicitation_and_PUC.md`, `v0_functional_baseline/Doc02_System_Use_Cases.md`  
-> **Output:** Asset Inventory, Actor Boundary Map, and Capability Audit  
+> **Output:** Asset Inventory, Actor Boundary Map, and Functionality Audit  
 > **Theoretical Grounding:** Suzanne & James Robertson (*Volere*), Karl Wiegers (*Software Requirements*), Alistair Cockburn (*Writing Effective Use Cases*)  
 
 ---
@@ -11,20 +11,20 @@
 
 The objective of Step 1 is to conduct an exhaustive, rigorous audit of the **pure functional baseline (Version 0)** before any security or privacy constraints are introduced. 
 
-In classical requirements engineering (Robertson & Robertson, 2012; Wiegers & Beatty, 2013), introducing security constraints prematurely leads to **The Pre-Baked Security Trap**: developers confuse the *essence of the business capability* with the *defensive mechanisms* used to secure it. 
+In classical requirements engineering (Robertson & Robertson, 2012; Wiegers & Beatty, 2013), introducing security constraints prematurely leads to **The Pre-Baked Security Trap**: developers confuse the *essence of the business functionality* with the *defensive mechanisms* used to secure it. 
 
 Step 1 ensures that:
-1. Every business capability is defined in pure, technology-neutral terms.
+1. Every business functionality is defined in pure, technology-neutral terms.
 2. All business assets, personal data entities, and system state transitions are identified.
 3. Every human and system boundary crossing is cataloged.
 
 ---
 
-## 2. Audit of the 8 Macro Capability Packages (V0)
+## 2. Audit of the 8 Functional Areas (V0)
 
-The functional baseline of TinyTask SaaS comprises 8 capability packages containing 18 atomic functional requirements (`R1.1` to `R8.2`), 18 Product Use Cases (`PUC 1.1` to `PUC 8.2`), and 18 Sea-Level System Use Cases (`{U.C. 1.1}` to `{U.C. 8.2}`).
+The functional baseline of TinyTask SaaS comprises 8 functional areas containing 18 atomic functional requirements (`R1.1` to `R8.2`), 18 Product Use Cases (`PUC 1.1` to `PUC 8.2`), and 18 Sea-Level System Use Cases (`{U.C. 1.1}` to `{U.C. 8.2}`).
 
-### Capability 1: Manage User Accounts and Authentication
+### Functional Area 1: Manage User Accounts and Authentication
 - **Requirements:**
   - `R1.1`: *Register and authenticate user accounts* (MUST)
   - `R1.2`: *Manage user profile and account preferences* (SHOULD)
@@ -32,7 +32,7 @@ The functional baseline of TinyTask SaaS comprises 8 capability packages contain
 - **Functional Intent:** Enable users to establish identity, confirm email ownership via time-limited activation links, authenticate with credentials, and maintain personal profile metadata and notification preferences.
 - **Why Pure Functional in V0:** V0 specifies *that* users authenticate and receive sessions, but strictly omits *how* passwords are encrypted, what entropy tokens require, or session timeout thresholds. These belong to non-functional security.
 
-### Capability 2: Manage Workspaces and Teams
+### Functional Area 2: Manage Workspaces and Teams
 - **Requirements:**
   - `R2.1`: *Create and configure workspace* (MUST)
   - `R2.2`: *Invite workspace members and manage access roles* (MUST)
@@ -41,14 +41,14 @@ The functional baseline of TinyTask SaaS comprises 8 capability packages contain
 - **Functional Intent:** Allow workspace instantiation, organizational branding via unique URL slugs, role delegation (Owner, Admin, Member, Viewer), and aggregate activity monitoring.
 - **Why Pure Functional in V0:** V0 defines the roles and business workflows, but leaves tenant-boundary enforcement mechanisms, IAM wildcard bans, and access mediation to security synthesis.
 
-### Capability 3: Manage Projects
+### Functional Area 3: Manage Projects
 - **Requirements:**
   - `R3.1`: *Create and configure projects* (MUST)
   - `R3.2`: *Archive completed projects* (SHOULD)
 - **Use Cases:** `{U.C. 3.1}`, `{U.C. 3.2}` | **PUCs:** `PUC 3.1`, `PUC 3.2`
 - **Functional Intent:** Organize team work into scoped project containers with dedicated visual boards, descriptions, and lifecycle states (Active vs. Archived).
 
-### Capability 4: Manage and Execute Tasks
+### Functional Area 4: Manage and Execute Tasks
 - **Requirements:**
   - `R4.1`: *Create and assign tasks* (MUST)
   - `R4.2`: *Track and transition task workflow states on visual boards* (MUST)
@@ -56,28 +56,28 @@ The functional baseline of TinyTask SaaS comprises 8 capability packages contain
 - **Use Cases:** `{U.C. 4.1}`, `{U.C. 4.2}`, `{U.C. 4.3}` | **PUCs:** `PUC 4.1`, `PUC 4.2`, `PUC 4.3`
 - **Functional Intent:** Core operational engine of the SaaS platform. Supports task creation, priority assignment, Kanban column drag-and-drop transitions, and scheduled recurrence.
 
-### Capability 5: Collaborate on Task Deliverables
+### Functional Area 5: Collaborate on Task Deliverables
 - **Requirements:**
   - `R5.1`: *Manage task deliverable attachments* (MUST)
   - `R5.2`: *Post in-task discussion comments and mention collaborators* (MUST)
 - **Use Cases:** `{U.C. 5.1}`, `{U.C. 5.2}` | **PUCs:** `PUC 5.1`, `PUC 5.2`
 - **Functional Intent:** Team collaboration. Attaching files to tasks (25 MB cap) and posting threaded discussion comments with `@mentions`.
 
-### Capability 6: Track Activity History and Notifications
+### Functional Area 6: Track Activity History and Notifications
 - **Requirements:**
   - `R6.1`: *Consult chronological audit history on task cards* (MUST)
   - `R6.2`: *Receive workspace alerts and daily task digests* (SHOULD)
 - **Use Cases:** `{U.C. 6.1}`, `{U.C. 6.2}` | **PUCs:** `PUC 6.1`, `PUC 6.2`
 - **Functional Intent:** Transparency. Real-time chronological audit trail of all field changes and asynchronous email digest dispatching.
 
-### Capability 7: Manage Commercial Subscriptions
+### Functional Area 7: Manage Commercial Subscriptions
 - **Requirements:**
   - `R7.1`: *Subscribe and manage workspace commercial plans* (MUST)
   - `R7.2`: *Enforce operational grace period upon payment failure* (MUST)
 - **Use Cases:** `{U.C. 7.1}`, `{U.C. 7.2}` | **PUCs:** `PUC 7.1`, `PUC 7.2`
 - **Functional Intent:** Monetization. Commercial tier upgrades, seat quota management, checkout session handoff, and 7-day payment failure grace period.
 
-### Capability 8: Export Data and Close Accounts
+### Functional Area 8: Export Data and Close Accounts
 - **Requirements:**
   - `R8.1`: *Export personal and workspace data archives* (MUST)
   - `R8.2`: *Close user accounts and terminate workspace access* (MUST)

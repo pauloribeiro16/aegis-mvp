@@ -4,7 +4,7 @@
 
 This deliverable establishes the formal **System Use Cases** for the **TinyTask SaaS** platform, translating the operational requirements and Product Use Cases (*PUC*) elicited in `Doc01` into rigorous, literature-grounded behavioral specifications and visual UML Use Case models. Grounded in foundational requirements engineering literature—specifically Alistair Cockburn's *Writing Effective Use Cases*, Craig Larman's *Applying UML and Patterns*, the OMG UML 2.5 standard, and the GPTools specification standard (`E1.2 – GPTools_AnáliseRequisitos_CasosDeUso_V4.0`)—this document specifies each elementary user goal at **Level 1 ("Sea Level")**.
 
-To provide complete operational clarity, each macro capability cluster is modeled with a robust, error-free **UML Use Case Diagram** rendered natively in Markdown via Mermaid, and every individual Level-1 use case is formalized with a **Fully Dressed Specification Card** detailing primary and supporting actors, stakeholders and interests, preconditions, triggers, black-box main success scenarios, branching extensions and alternative flows, success guarantees, and minimal guarantees. The resulting specification maintains strict technology neutrality, providing a verified functional baseline that directly supports downstream AEGIS Phase 3 security and privacy synthesis.
+To provide complete operational clarity, each macro functional area is modeled with a robust, error-free **UML Use Case Diagram** rendered natively in Markdown via Mermaid, and every individual Level-1 use case is formalized with a **Fully Dressed Specification Card** detailing primary and supporting actors, stakeholders and interests, preconditions, triggers, black-box main success scenarios, branching extensions and alternative flows, success guarantees, and minimal guarantees. The resulting specification maintains strict technology neutrality, providing a verified functional baseline that directly supports downstream AEGIS Phase 3 security and privacy synthesis.
 
 ---
 
@@ -73,7 +73,7 @@ To prevent superficial or generic descriptions, this document adopts the best pr
 
 ### 2.1 The Volere Triangular Decomposition: Business Events to System Use Cases
 
-The specification follows the Volere requirements engineering methodology (Robertson & Robertson, 2012). Every functional capability traces through a triangular derivation:
+The specification follows the Volere requirements engineering methodology (Robertson & Robertson, 2012). Every functional requirement traces through a triangular derivation:
 - **Business Event:** An occurrence in the operational environment that demands a response (e.g., *a new team member needs onboarding*, *a project phase is completed*, *a task deliverable is updated*).
 - **Product Use Case (PUC):** The automated partition of the business process executed within the system boundary (defined in `Doc01` Table 8).
 - **System Use Case:** The structured behavioral interaction between the primary actor and the system required to achieve the goal (detailed herein).
@@ -91,7 +91,7 @@ Key literature principles enforced throughout this specification include:
 ### 2.3 Visual UML Use Case Modeling in Markdown
 
 In standard software engineering, text specifications and visual diagrams complement each other. To make the specification natively readable, version-controllable, and visually rich without relying on static external images, this document leverages **Mermaid.js**, the open industry standard for rendering UML directly inside Markdown:
-- Each macro capability cluster (`{U.C. 1}` to `{U.C. 8}`) is preceded by an error-free **UML Use Case Diagram** (`flowchart LR`), depicting the human actors and supporting external services linked to oval use case goals in standard UML notation.
+- Each macro functional area (`{U.C. 1}` to `{U.C. 8}`) is preceded by an error-free **UML Use Case Diagram** (`flowchart LR`), depicting the human actors and supporting external services linked to oval use case goals in standard UML notation.
 - Node identifiers and text labels avoid special bracket characters that disrupt Markdown parsers, ensuring 100% error-free visual rendering.
 
 ### 2.4 Anatomy of a Literature-Grounded Use Case
@@ -187,7 +187,7 @@ The platform defines four human user roles and two external supporting system ac
 
 ### {U.C. 1} Manage User Accounts and Authentication
 
-#### UML Use Case Diagram: Capability Cluster {U.C. 1}
+#### UML Use Case Diagram: Functional Area {U.C. 1}
 
 ```mermaid
 flowchart LR
@@ -304,7 +304,7 @@ flowchart LR
 
 ### {U.C. 2} Manage Workspaces and Teams
 
-#### UML Use Case Diagram: Capability Cluster {U.C. 2}
+#### UML Use Case Diagram: Functional Area {U.C. 2}
 
 ```mermaid
 flowchart LR
@@ -412,7 +412,7 @@ flowchart LR
 
 ### {U.C. 3} Manage Projects
 
-#### UML Use Case Diagram: Capability Cluster {U.C. 3}
+#### UML Use Case Diagram: Functional Area {U.C. 3}
 
 ```mermaid
 flowchart LR
@@ -474,7 +474,7 @@ flowchart LR
 - **Extensions:**
   - **1a. Unarchiving an archived project:**
     - 1a1. Actor locates project in archived repository and selects "Restore Project".
-    - 1a2. System restores project to active status and enables editing capabilities.
+    - 1a2. System restores project to active status and enables editing functionality.
   - **3b. Unauthorized member attempts project archive:**
     - 3b1. System denies archive transition, preserves active project state, and logs access violation (RN12, RN18).
 - **Success Guarantees:** Project is read-only; historical tasks, discussions, and attachments remain accessible for compliance and reference.
@@ -484,7 +484,7 @@ flowchart LR
 
 ### {U.C. 4} Manage and Execute Tasks
 
-#### UML Use Case Diagram: Capability Cluster {U.C. 4}
+#### UML Use Case Diagram: Functional Area {U.C. 4}
 
 ```mermaid
 flowchart LR
@@ -593,7 +593,7 @@ flowchart LR
 
 ### {U.C. 5} Collaborate on Task Deliverables
 
-#### UML Use Case Diagram: Capability Cluster {U.C. 5}
+#### UML Use Case Diagram: Functional Area {U.C. 5}
 
 ```mermaid
 flowchart LR
@@ -673,7 +673,7 @@ flowchart LR
 
 ### {U.C. 6} Track Activity History and Notifications
 
-#### UML Use Case Diagram: Capability Cluster {U.C. 6}
+#### UML Use Case Diagram: Functional Area {U.C. 6}
 
 ```mermaid
 flowchart LR
@@ -741,7 +741,7 @@ flowchart LR
 
 ### {U.C. 7} Manage Commercial Subscriptions
 
-#### UML Use Case Diagram: Capability Cluster {U.C. 7}
+#### UML Use Case Diagram: Functional Area {U.C. 7}
 
 ```mermaid
 flowchart LR
@@ -823,7 +823,7 @@ flowchart LR
 
 ### {U.C. 8} Export Data and Close Accounts
 
-#### UML Use Case Diagram: Capability Cluster {U.C. 8}
+#### UML Use Case Diagram: Functional Area {U.C. 8}
 
 ```mermaid
 flowchart LR
@@ -848,7 +848,7 @@ flowchart LR
 - **Supporting Actors:** None
 - **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
 - **Stakeholders & Interests:**
-  - *End Users & Customers:* Autonomous data portability, offline backup capability, and complete vendor autonomy.
+  - *End Users & Customers:* Autonomous data portability, offline backup functionality, and complete vendor autonomy.
 - **Preconditions:** actor possesses valid session; organization export requires Owner role (RN12); Actor possesses valid authenticated session; workspace export restricted to Workspace Owner.
 - **Trigger:** User requests export of personal profile and task data, or Workspace Owner requests full organization archive.
 - **Main Success Scenario:**
@@ -925,9 +925,9 @@ The non-functional requirements define the platform's performance, availability,
 ## 6. Conclusions
 
 The system use case model establishes an exhaustive, literature-aligned functional baseline for TinyTask SaaS:
-1. **Total Sea-Level Fidelity:** 19 Level-1 use cases cleanly cover all operational capabilities without leaf-node noise or micro-UI procedural scripts.
+1. **Total Sea-Level Fidelity:** 19 Level-1 use cases cleanly cover all operational requirements without leaf-node noise or micro-UI procedural scripts.
 2. **Exhaustive Behavioral Contracts:** Each use case specifies pre/post conditions, black-box main success scenarios, and branching alternative/exception flows.
-3. **Visual UML Coverage:** Every macro capability is illustrated with an error-free, native Markdown UML Use Case diagram.
+3. **Visual UML Coverage:** Every macro functional area is illustrated with an error-free, native Markdown UML Use Case diagram.
 4. **Seamless Sequential Traceability:** Direct 1:1 mapping from `Doc01` requirements (`R1.1`–`R8.2`, 19 cards including derived `R1.3`) and PUCs (`PUC 1.1`–`PUC 8.2`, 19 entries) to System Use Cases (`{U.C. 1.1}`–`{U.C. 8.2}`, 19 cases).
 5. **AEGIS Phase 3 Synthesis Ready:** Provides a rich, verified functional canvas for attack surface mapping, trust boundary analysis, and regulatory requirement derivation.
 
@@ -952,5 +952,5 @@ The system use case model establishes an exhaustive, literature-aligned function
 | **2.0.0** | 2026-09-23 | Requirements Engineering Agent | Pure functional alignment, active English verbs, zero leaf nodes. |
 | **2.1.0** | 2026-09-23 | Requirements Engineering Agent | Consolidated to 18 Sea-Level use cases matching consolidated business requirements. |
 | **3.0.0** | 2026-09-23 | Requirements Engineering Agent | Literature-grounded overhaul (Cockburn, Larman, Wiegers) with full pre/post conditions, main success scenarios, and extension flows for all 18 use cases. |
-| **3.1.0** | 2026-09-23 | Requirements Engineering Agent | Added visual UML Use Case diagrams in native Markdown for each macro capability cluster, removing sequence diagrams. |
+| **3.1.0** | 2026-09-23 | Requirements Engineering Agent | Added visual UML Use Case diagrams in native Markdown for each macro functional cluster, removing sequence diagrams. |
 | **3.2.0** | 2026-09-23 | Requirements Engineering Agent | V1 Functional Refinement Pass: added {U.C. 1.3} with PUC 1.3 (locked-account recovery, `R1.3`), final-export-offer step in {U.C. 8.2}, restricted-state alignment in {U.C. 7.2}; traceability matrix updated to 19 requirements. |

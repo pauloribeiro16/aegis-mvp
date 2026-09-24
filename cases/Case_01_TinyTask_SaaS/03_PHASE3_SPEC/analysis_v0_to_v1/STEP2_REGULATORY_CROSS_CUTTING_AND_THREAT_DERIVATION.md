@@ -16,9 +16,9 @@ Step 2 executes the systematic juxtaposition of upstream compliance and engineer
 
 In the AEGIS methodology:
 - **Phase 2 establishes *what the organization must achieve*** to satisfy regulatory mandates (GDPR, CRA) and secure design principles.
-- **Phase 3 specifies *how software capabilities behave under constraint*** to enforce those objectives.
+- **Phase 3 specifies *how software functionalities behave under constraint*** to enforce those objectives.
 
-To prevent arbitrary or disconnected security requirements, Step 2 applies a rigorous **threat and privacy gap analysis** across each of the 8 functional capability packages, deriving the exact operational safeguards required.
+To prevent arbitrary or disconnected security requirements, Step 2 applies a rigorous **threat and privacy gap analysis** across each of the 8 functional areas, deriving the exact operational safeguards required.
 
 ---
 
@@ -50,9 +50,9 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
 
 ---
 
-## 3. Cognitive Trajectory: Capability-by-Capability Threat & Regulatory Synthesis
+## 3. Cognitive Trajectory: Functional-Area-by-Functional-Area Threat & Regulatory Synthesis
 
-### Capability 1: User Accounts & Authentication (`R1.1`, `R1.2` | `{U.C. 1.1}`, `{U.C. 1.2}`)
+### Functional Area 1: User Accounts & Authentication (`R1.1`, `R1.2` | `{U.C. 1.1}`, `{U.C. 1.2}`)
 - **V0 Baseline Scope:** User registers, validates email link, logs in with credentials, edits profile.
 - **Threat & Vulnerability Hypotheses:**
   - *Threat 1 (Credential Stuffing / Brute Force):* Attackers script automated login attempts against the public ingress.
@@ -68,7 +68,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
 - **Synthesis Decisions:**
   - Derive `RN10` (Credential Hardening), `RN11` (Session Invalidation), `RN19` (Registration Minimization), `RN24` (Data in Transit Encryption), and `RN18` (Audit Logging).
 
-### Capability 2: Workspaces and Teams (`R2.1`, `R2.2`, `R2.3` | `{U.C. 2.1}`, `{U.C. 2.2}`, `{U.C. 2.3}`)
+### Functional Area 2: Workspaces and Teams (`R2.1`, `R2.2`, `R2.3` | `{U.C. 2.1}`, `{U.C. 2.2}`, `{U.C. 2.3}`)
 - **V0 Baseline Scope:** User creates workspace with URL slug, invites members, assigns roles, consults metrics.
 - **Threat & Vulnerability Hypotheses:**
   - *Threat 1 (Cross-Tenant Data Leakage):* An authenticated user belonging to Tenant A modifies their request parameters (IDOR) to access or modify Tenant B's workspace.
@@ -80,7 +80,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
 - **Synthesis Decisions:**
   - Derive `RN9` (Multi-Tenant Data Isolation) and `RN12` (Role-Based Access Control).
 
-### Capability 3: Manage Projects (`R3.1`, `R3.2` | `{U.C. 3.1}`, `{U.C. 3.2}`)
+### Functional Area 3: Manage Projects (`R3.1`, `R3.2` | `{U.C. 3.1}`, `{U.C. 3.2}`)
 - **V0 Baseline Scope:** Team members create projects and archive completed projects.
 - **Threat & Vulnerability Hypotheses:**
   - *Threat 1 (Unauthorized Project Mutation):* Guests or standard members modifying project settings or archiving active work.
@@ -91,7 +91,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
 - **Synthesis Decisions:**
   - Bind `RN9` and `RN12` to project creation and archiving workflows.
 
-### Capability 4: Manage and Execute Tasks (`R4.1`, `R4.2`, `R4.3` | `{U.C. 4.1}`, `{U.C. 4.2}`, `{U.C. 4.3}`)
+### Functional Area 4: Manage and Execute Tasks (`R4.1`, `R4.2`, `R4.3` | `{U.C. 4.1}`, `{U.C. 4.2}`, `{U.C. 4.3}`)
 - **V0 Baseline Scope:** Create tasks, transition states on Kanban boards, configure recurrence.
 - **Threat & Vulnerability Hypotheses:**
   - *Threat 1 (API Resource Starvation):* Automated client firing 1,000 board transition requests per second, exhausting server connections.
@@ -102,7 +102,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
 - **Synthesis Decisions:**
   - Derive `RN17` (Inbound API Rate Limiting) and bind `RN9`.
 
-### Capability 5: Collaborate on Deliverables (`R5.1`, `R5.2` | `{U.C. 5.1}`, `{U.C. 5.2}`)
+### Functional Area 5: Collaborate on Deliverables (`R5.1`, `R5.2` | `{U.C. 5.1}`, `{U.C. 5.2}`)
 - **V0 Baseline Scope:** Upload deliverable files (25 MB cap) and post Markdown task comments.
 - **Threat & Vulnerability Hypotheses:**
   - *Threat 1 (Malicious Binary Upload / Web Shell):* Attacker uploads `.php`, `.exe`, or HTML file masquerading as a PDF to achieve remote execution.
@@ -114,7 +114,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
 - **Synthesis Decisions:**
   - Derive `RN13` (File Upload Strict Validation), `RN14` (Context-Aware Output Encoding), and `RN25` (Orphan File Asset Cleanup).
 
-### Capability 6: Track Activity History & Notifications (`R6.1`, `R6.2` | `{U.C. 6.1}`, `{U.C. 6.2}`)
+### Functional Area 6: Track Activity History & Notifications (`R6.1`, `R6.2` | `{U.C. 6.1}`, `{U.C. 6.2}`)
 - **V0 Baseline Scope:** Consult chronological audit trail on task cards; receive email notifications.
 - **Threat & Vulnerability Hypotheses:**
   - *Threat 1 (Audit Log Tampering / Erasure):* Malicious insider deleting historical records to cover up unauthorized actions.
@@ -125,7 +125,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
 - **Synthesis Decisions:**
   - Derive `RN18` (Non-Repudiable Security Audit Logging) and `RN22` (Purpose Limitation).
 
-### Capability 7: Manage Commercial Subscriptions (`R7.1`, `R7.2` | `{U.C. 7.1}`, `{U.C. 7.2}`)
+### Functional Area 7: Manage Commercial Subscriptions (`R7.1`, `R7.2` | `{U.C. 7.1}`, `{U.C. 7.2}`)
 - **V0 Baseline Scope:** Upgrade commercial tiers, handle payment sessions, enforce 7-day grace period.
 - **Threat & Vulnerability Hypotheses:**
   - *Threat 1 (Forged Billing Webhooks):* Attacker sending mock HTTP POST requests to TinyTask's webhook endpoint claiming an enterprise plan was paid.
@@ -136,7 +136,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
 - **Synthesis Decisions:**
   - Derive `RN15` (Cryptographic Billing Invariant Protection) and `RN16` (Cryptographic Webhook Origin Verification).
 
-### Capability 8: Export Data and Close Accounts (`R8.1`, `R8.2` | `{U.C. 8.1}`, `{U.C. 8.2}`)
+### Functional Area 8: Export Data and Close Accounts (`R8.1`, `R8.2` | `{U.C. 8.1}`, `{U.C. 8.2}`)
 - **V0 Baseline Scope:** Export profile/workspace data archive and deactivate account.
 - **Threat & Vulnerability Hypotheses:**
   - *Threat 1 (Post-Closure Token Re-use):* Deactivated user account continues accessing APIs using previously issued session tokens.

@@ -75,7 +75,7 @@ The deployment and adoption of TinyTask SaaS delivers the following organization
 
 ### 5. Key Features
 
-The platform's functional baseline is structured into core operational capabilities:
+The platform's functional baseline is structured into core operational functional areas:
 
 - **Multi-Tenant Workspaces:** Complete logical isolation across organizations, supporting dedicated member rosters and role-based access control.
 - **Visual Task Management:** Interactive Kanban boards (To-Do, In-Progress, Under-Review, Done) and tabular lists with multi-criteria dynamic filtering.
@@ -116,7 +116,7 @@ The baseline product design operates under the following business and operationa
 
 - **Development Team Capacity:** The technical organization consists of 8 persons, requiring architectural simplicity, high modularity, and rapid maintainability.
 - **Payment Processing:** The application delegates payment collection and billing transactions to an external payment gateway, avoiding local handling of credit card data.
-- **Technology Neutrality:** This document defines pure functional capabilities from the user's perspective, without pre-baking technical security controls, which will be formally synthesized in subsequent AEGIS phases.
+- **Technology Neutrality:** This document defines pure functional requirements from the user's perspective, without pre-baking technical security controls, which will be formally synthesized in subsequent AEGIS phases.
 
 ---
 
@@ -209,7 +209,7 @@ The following table formally defines the actors interacting with the system in t
 Functional requirements are prioritized using the MoSCoW methodology:
 - **MUST:** Mandatory requirement that must be satisfied in the baseline release for the system to be viable.
 - **SHOULD:** High-impact requirement that should be satisfied unless critical delivery constraints dictate deferral.
-- **COULD:** Desirable capability or enhancement that can be included if schedule and resources permit.
+- **COULD:** Desirable functionality or enhancement that can be included if schedule and resources permit.
 - **WON'T:** Out-of-scope feature that will not be implemented in the initial baseline release, reserved for future iterations.
 
 ##### 2.2.2 Summary Table of Functional Requirements
@@ -541,7 +541,7 @@ The platform non-functional requirements comprise the general operational qualit
 | **RN2** | The system must maintain monthly service availability of at least 99.5%, excluding scheduled maintenance windows announced in advance. | MUST | Availability |
 | **RN3** | The web application interface must be fully responsive, ensuring correct rendering on modern desktop and mobile viewports (minimum width of 375 px). | MUST | Usability |
 | **RN4** | The storage architecture must support up to 50,000 active tasks per workspace without degradation in search, filter, or rendering speed. | SHOULD | Scalability |
-| **RN5** | The system must execute automated daily database backups and maintain data recovery capabilities with an RPO under 24 hours. | MUST | Recoverability |
+| **RN5** | The system must execute automated daily database backups and maintain data recovery functionality with an RPO under 24 hours. | MUST | Recoverability |
 | **RN6** | The user interface must support internationalization (i18n), offering full system localization in English and Portuguese. | SHOULD | Internationalization |
 | **RN7** | The payment gateway integration must communicate exclusively over authenticated secure channels and enforce cryptographic webhook signature verification. | MUST | Interoperability |
 | **RN8** | The system architecture must enforce strict logical data segregation across workspaces (multi-tenancy), preventing cross-tenant access. | MUST | Architectural Integrity |
@@ -578,7 +578,7 @@ The platform non-functional requirements comprise the general operational qualit
 
 ### 4. System Use Case Model
 
-The following diagram illustrates the primary system actors and functional capability clusters:
+The following diagram illustrates the primary system actors and functional areas:
 
 ```mermaid
 flowchart LR
@@ -638,5 +638,5 @@ flowchart LR
 |---|---|---|---|
 | **1.0.0** | 2026-09-23 | Requirements Engineering Agent | Initial baseline elicitation (GPTools E1.1 structural model). |
 | **2.0.0** | 2026-09-23 | Requirements Engineering Agent | Purified functional scope, removed pre-baked security controls, enforced English active verbs. |
-| **2.1.0** | 2026-09-23 | Requirements Engineering Agent | Consolidated redundant requirements into 16 pure business capabilities at Cockburn Sea Level. |
+| **2.1.0** | 2026-09-23 | Requirements Engineering Agent | Consolidated redundant requirements into 16 pure business requirements at Cockburn Sea Level. |
 | **3.0.0** | 2026-09-23 | Requirements Engineering Agent | V1 Functional Refinement Pass (Step 4b): added derived requirement `R1.3` (locked-account recovery, from NFR-RN10/RN11), refined `R7.2` restricted-state and `R8.2` final-export-offer descriptions, elevated `R1.2` to MUST (GDPR Art. 5(1)(d) + Art. 16, `PO-D-01.4-001`); register in `analysis_v0_to_v1/STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md`. |

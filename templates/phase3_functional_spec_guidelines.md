@@ -23,7 +23,7 @@ Suzanne and James Robertson's *Mastering the Requirements Process: Getting Requi
    - A PUC is strictly delimited by its input data flows (`(in)`) and output data deliverables (`(out)`).
 4. **The Requirement Snow Card & Fit Criteria:**
    - Volere formalizes atomic requirements into standardized specification shells (*Snow Cards*).
-   - Every requirement must have a clear behavioral scope, origin, interfaces, and testable **Fit Criterion** (how to verify objectively whether a delivered capability satisfies the requirement).
+   - Every requirement must have a clear behavioral scope, origin, interfaces, and testable **Fit Criterion** (how to verify objectively whether a delivered functionality satisfies the requirement).
 5. **The Quality Gateway:**
    - Every elicited requirement must pass a rigorous filter before entering the baseline:
      - Is it unambiguous?
@@ -35,7 +35,7 @@ Suzanne and James Robertson's *Mastering the Requirements Process: Getting Requi
 Alistair Cockburn's *Writing Effective Use Cases* establishes the precision levels and boundaries of system use cases:
 
 1. **Goal Altitude Hierarchy:**
-   - **Sky / Cloud Level (Summary — Level 0):** High-level organizational goals or core capability groupings (e.g., "Manage Tasks", "Manage Projects").
+   - **Sky / Cloud Level (Summary — Level 0):** High-level organizational goals or core functional groupings (e.g., "Manage Tasks", "Manage Projects").
    - **Sea Level (User Goal — Level 1):** A discrete operational task undertaken by a single primary actor in a single sitting to achieve a meaningful business outcome (e.g., "Create and Assign Task", "Transition Task State").
    - **Underwater / Clam Level (Sub-function — Leaf Nodes / Level 2+):** Procedural, micro-interaction UI details (e.g., "Click submit button", "Select dropdown item 3", "Validate string length").
 2. **The AEGIS Level-1 Scoping Boundary:**
@@ -104,7 +104,7 @@ Deliverable `Doc01` mirrors `E1.1 – GPTools_ModeloASIS_TOBE V2.0`:
   2. Problem Description (Pain points of current operations)
   3. Product Position Statement (For / Who / The product is / That allows / Unlike / Our product distinguishes itself)
   4. Expected Impact (Measurable business outcomes)
-  5. Key Features (Functional capability pillars)
+  5. Key Features (Functional pillars)
   6. Stakeholders (Table 1: Stakeholder, Representatives, Role and Interest)
   7. System Users (Table 2: System User Role, Description and Responsibilities)
   8. Constraints (Operational, team size, and architectural constraints)
@@ -169,7 +169,7 @@ Every functional requirement card must follow this exact single-column markdown 
    - Structured sub-fields:
      - `Stakeholders:` Key business beneficiaries (e.g., "Executive Leadership, Team Contributors").
      - `Data Sources:` Operational origin of the data payload, specific to what this requirement actually consumes (e.g., "Registration form submissions; Credential verification requests; Payment failure events").
-     - `Extraction Periodicity:` The operational tempo this requirement genuinely runs at — vary it when behavior dictates: "on demand", "on event", "daily digest", "per recurrence schedule", "continuous". Do not default to "on demand" when the capability is event- or schedule-driven.
+     - `Extraction Periodicity:` The operational tempo this requirement genuinely runs at — vary it when behavior dictates: "on demand", "on event", "daily digest", "per recurrence schedule", "continuous". Do not default to "on demand" when the functionality is event- or schedule-driven.
      - `Information Systems / Databases:` The functionally-specific repository this requirement reads/writes, named by role ("Identity and Credential Store", "Internal Application Database (task state records)", "File Storage Service", "External Payment Gateway"). Never paste the same generic value into every card — see Anti-Pattern 10 in Section 7. Never cite commercial engines.
      - `Preceding Requirements:` **Empty by default!** Only populate when a strict, hard business prerequisite exists between requirements.
 6. **Row 6 — `Identified Problems:`:**
@@ -198,7 +198,7 @@ This subsection is the **canonical filling guide** for every card row. Whenever 
 - ❌ Dumping every NFR into the biggest card "for coverage"; ❌ listing an NFR without its four-link chain.
 
 **Row `Interfaces:`**
-- ✅ "Registration screen; Login screen; Password recovery flow; Transactional email interface" — the surfaces where the capability is exercised.
+- ✅ "Registration screen; Login screen; Password recovery flow; Transactional email interface" — the surfaces where the functionality is exercised.
 - ❌ "Workspace Admin and Workspace Owner" — an actor list, not interfaces (Anti-Pattern 9). Actors already live in the Actors table and `Stakeholders`.
 
 **Row `Dependencies: Data Sources:`**
@@ -206,7 +206,7 @@ This subsection is the **canonical filling guide** for every card row. Whenever 
 - ❌ Copying the same generic source list into every card.
 
 **Row `Dependencies: Extraction Periodicity:`**
-- ✅ "on demand" for user-initiated actions; "on event" for failure/status-driven flows; "daily digest" for scheduled digests; "per recurrence schedule" for scheduler-driven capabilities.
+- ✅ "on demand" for user-initiated actions; "on event" for failure/status-driven flows; "daily digest" for scheduled digests; "per recurrence schedule" for scheduler-driven functionalities.
 - ❌ Automatic "on demand" everywhere, including event- and schedule-driven requirements.
 
 **Row `Dependencies: Information Systems / Databases:`**
@@ -226,9 +226,9 @@ The V0 baseline is locked to protect elicitation from pre-baked security (§2.3)
 | Type | Change | Rule | ✅ / ❌ |
 |---|---|---|---|
 | **D1 — Derived requirement** | New card `Rn.x` for user-visible, Cockburn Sea-Level functionality demanded by an obligation (`RN` / `PO-` / `SO-` / regulation article) not covered by any V0 card | Continues the package numbering; generates the matching PUC and fully dressed use case in `Doc02`; all R13 standards apply (active verb, technology neutrality, scale discipline) | ✅ `R1.3 Recover access to a locked user account` (derived from the NFR-RN10/RN11 lockout behavior) · ❌ `R1.3 Session Management Module` (nominalized, pseudo-origin) |
-| **D2 — Description refinement** | `Description` rewritten so an absorbed constraint can actually bind | ID, origin and scope preserved; targeted use cases gain steps or extensions only — their Main Success Scenario is otherwise preserved | ✅ `R8.2` gains "presents a final personal data export option before irreversible erasure" · ❌ rewriting the card into a different capability |
+| **D2 — Description refinement** | `Description` rewritten so an absorbed constraint can actually bind | ID, origin and scope preserved; targeted use cases gain steps or extensions only — their Main Success Scenario is otherwise preserved | ✅ `R8.2` gains "presents a final personal data export option before irreversible erasure" · ❌ rewriting the card into a different functionality |
 | **D3 — Priority re-evaluation** | MoSCoW priority elevation driven by a confirmed regulation | The regulatory driver (article + Phase 2 objective) is cited in the register; summary table, card, and traceability matrix are updated together | ✅ `R1.2` SHOULD → MUST (GDPR Art. 5(1)(d) + Art. 16 rectification via `PO-D-01.4-001`) · ❌ "this feels mandatory" |
-| **D4 — Card split** | One V0 card bundles capabilities with distinct security surfaces needing separate lifecycle or priority | Highest ceremony; old→new renumbering recorded; only when D1–D3 demonstrably cannot express the change | ✅ (rare) · ❌ splitting `R4.2` into "move card left" + "move card right" (clam-level, Anti-Pattern 3) |
+| **D4 — Card split** | One V0 card bundles functionalities with distinct security surfaces needing separate lifecycle or priority | Highest ceremony; old→new renumbering recorded; only when D1–D3 demonstrably cannot express the change | ✅ (rare) · ❌ splitting `R4.2` into "move card left" + "move card right" (clam-level, Anti-Pattern 3) |
 
 **Prohibited in the pass:** deleting or silently shrinking V0 scope; inventing functionality without a traceable driver; technology leakage in any new or refined text (§2.1 still applies); clam-level derived cards (§1.2).
 
@@ -325,7 +325,7 @@ This section documents critical anti-patterns identified during the authoring an
 
 ### Anti-Pattern 1: The Pre-Baked Security & Privacy Trap
 - **Description:** Injecting concrete security, cryptographic, or privacy controls directly into the functional requirement baseline (e.g., specifying Two-Factor Authentication (2FA/TOTP), session termination timeouts, password hashing algorithms like bcrypt/Argon2, TLS encryption, or GDPR right-to-be-forgotten anonymization).
-- **Literature Grounding:** Robertson & Robertson (*Mastering the Requirements Process*, Volere) strictly separate *functional requirements* (the business capability the product must deliver) from *security non-functional requirements* and *operational constraints*. Pre-baking security mechanisms into functional cards blinds the engineering process to alternative threat mitigations.
+- **Literature Grounding:** Robertson & Robertson (*Mastering the Requirements Process*, Volere) strictly separate *functional requirements* (the business functionality the product must deliver) from *security non-functional requirements* and *operational constraints*. Pre-baking security mechanisms into functional cards blinds the engineering process to alternative threat mitigations.
 - **Why it breaks AEGIS:** AEGIS is specifically engineered to derive security and privacy requirements (`REQ-D-XX.Y-NNN`) systematically from regulatory anchors (GDPR, NIS2, CRA, DORA, AI Act) and control referentials (NIST CSF 2.0, NIST PF 1.1, NIST AI RMF) through specialized skills (Attack Surface, Trust Boundaries, Least Privilege, Data Minimization). If security is pre-baked into the functional cards, AEGIS cannot perform genuine derivation, resulting in circular reasoning or redundant controls.
 - **❌ INCORRECT (Anti-Pattern):**
   > "The system must enforce Two-Factor Authentication (TOTP via Google Authenticator or SMS) and invalidate inactive sessions after 15 minutes of inactivity."
@@ -337,7 +337,7 @@ This section documents critical anti-patterns identified during the authoring an
 
 ### Anti-Pattern 2: The Technology Leakage Trap
 - **Description:** Referencing concrete software products, programming frameworks, database engines, cloud providers, or technical protocols in functional requirements or dependency cards (e.g., "PostgreSQL", "MySQL", "AWS S3", "Stripe", "Dotnet", "Angular", "WebSockets", "OAuth2").
-- **Literature Grounding:** Robertson & Robertson emphasize the *Essence of the System*—the pure policy and business capability free of implementation technologies. Wiegers & Beatty (*Software Requirements*, 3rd Ed.) warn that stating technologies in functional specifications prematurely constrains solution design and turns business requirements into legacy design decisions.
+- **Literature Grounding:** Robertson & Robertson emphasize the *Essence of the System*—the pure policy and business functionality free of implementation technologies. Wiegers & Beatty (*Software Requirements*, 3rd Ed.) warn that stating technologies in functional specifications prematurely constrains solution design and turns business requirements into legacy design decisions.
 - **Why it breaks AEGIS:** Phase 3 functional specifications define *what* the system provides to users. Technical architecture and component selection occur during Phase 3 solution synthesis. Early vendor lock-in violates AEGIS Rule R5.
 - **❌ INCORRECT (Anti-Pattern):**
   > "Description: Store uploaded deliverable attachments in an AWS S3 bucket and record metadata in PostgreSQL. Payment is processed via Stripe Checkout."
@@ -401,7 +401,7 @@ This section documents critical anti-patterns identified during the authoring an
 ### Anti-Pattern 7: The Passive Nominalization Trap
 - **Description:** Titling requirements, sub-requirements, and use cases with noun phrases and nominalizations instead of active verbs in the infinitive or imperative (e.g., "User Account Management", "Task Lifecycle", "Gestão de Utilizadores", "Criação de Tarefas").
 - **Literature Grounding:** Standard software engineering guidelines (Cockburn, Wiegers, IEEE 830 / ISO/IEC/IEEE 29148) mandate active verb phrases for functional requirements and use cases. Systems do not provide "concepts"; they perform actions that allow users to achieve goals.
-- **Why it breaks AEGIS:** Nominalized names obscure the actor-action relationship, complicating automated extraction of operational capabilities and blurring authorization boundaries.
+- **Why it breaks AEGIS:** Nominalized names obscure the actor-action relationship, complicating automated extraction of operational functionalities and blurring authorization boundaries.
 - **❌ INCORRECT (Anti-Pattern):**
   > `R1: User Account and Workspace Management`
   > `R2.1: Task Creation and Lifecycle`
@@ -425,7 +425,7 @@ This section documents critical anti-patterns identified during the authoring an
 ---
 
 ### Anti-Pattern 9: The Actor-Dump Interfaces Trap
-- **Description:** Filling the `Interfaces:` row of a requirement card with actor names ("Workspace Admin and Workspace Owner", "Authenticated User and Notification / Email Service") instead of the concrete interaction surfaces through which the capability is exercised.
+- **Description:** Filling the `Interfaces:` row of a requirement card with actor names ("Workspace Admin and Workspace Owner", "Authenticated User and Notification / Email Service") instead of the concrete interaction surfaces through which the functionality is exercised.
 - **Why it breaks AEGIS:** Actors are already defined in the Actors table and in `Dependencies: Stakeholders`; duplicating them under "Interfaces" adds zero information and hides the real integration points. AEGIS downstream skills (trust-boundary analysis, attack-surface analysis) need the *surfaces* — screens, forms, flows, external system interfaces — to locate where mediation and validation must occur.
 - **❌ INCORRECT (Anti-Pattern):**
   > `Interfaces: Workspace Admin and Workspace Owner`
@@ -438,7 +438,7 @@ This section documents critical anti-patterns identified during the authoring an
 
 ### Anti-Pattern 10: The Copy-Paste Databases Trap
 - **Description:** Pasting the same generic `Information Systems / Databases:` value (typically "Internal Application Database") into every requirement card regardless of what the requirement actually touches.
-- **Why it breaks AEGIS:** The IS/Databases field is a functional inventory signal: it tells downstream phases which repository roles each capability reads and writes (identity store vs task state vs audit records vs external gateway). A uniform value erases that signal, breaks data-flow analysis, and makes the field noise instead of data.
+- **Why it breaks AEGIS:** The IS/Databases field is a functional inventory signal: it tells downstream phases which repository roles each functionality reads and writes (identity store vs task state vs audit records vs external gateway). A uniform value erases that signal, breaks data-flow analysis, and makes the field noise instead of data.
 - **❌ INCORRECT (Anti-Pattern):**
   > 16 of 18 cards carrying `Information Systems / Databases: Internal Application Database` unchanged.
 - **✔ CORRECT (Functionally specific, technology-neutral):**

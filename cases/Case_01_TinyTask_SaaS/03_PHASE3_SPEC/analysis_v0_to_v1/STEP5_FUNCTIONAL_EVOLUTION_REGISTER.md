@@ -14,7 +14,7 @@ For every synthesized obligation (`RN9`–`RN26` and their upstream `PO-`/`SO-` 
 
 > *Does complying with this obligation require user-visible, Cockburn Sea-Level functionality that no V0 card covers?*
 
-- **Yes** → the gap becomes a register entry: **D1** for a missing capability, **D2** for a binding-blocking ambiguity, **D3** for a priority conflict with a confirmed regulation, **D4** for a split.
+- **Yes** → the gap becomes a register entry: **D1** for a missing functionality, **D2** for a binding-blocking ambiguity, **D3** for a priority conflict with a confirmed regulation, **D4** for a split.
 - **No** → the obligation is recorded as `evaluated, no change` (the constraint binds inside existing cards and use case extensions).
 
 ---
@@ -38,7 +38,7 @@ For every synthesized obligation (`RN9`–`RN26` and their upstream `PO-`/`SO-` 
 | `R2.3` Monitor workspace activity (Could) | D3 | `NFR-RN22` | No elevation — RN22 constrains the purpose limitation of the data the feature aggregates; it does not oblige the feature's existence. If the card is deferred, no aggregation occurs and no obligation is violated. |
 | `R3.2` Archive completed projects (Should) | D3 | GDPR Art. 5(1)(e) (storage limitation) | No elevation — storage limitation constrains retention; it does not mandate an archiving feature. |
 | `R6.2` Receive alerts and daily digests (Should) | D3 | `NFR-RN16` | No elevation — webhook origin verification constrains the integration channel; it does not oblige notifications. |
-| Card split | D4 | — | None identified — no V0 card bundles capabilities with distinct security surfaces requiring separate lifecycle or priority. |
+| Card split | D4 | — | None identified — no V0 card bundles functionalities with distinct security surfaces requiring separate lifecycle or priority. |
 
 ---
 

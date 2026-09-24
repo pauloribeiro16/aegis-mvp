@@ -83,8 +83,8 @@ The following comparative examples illustrate how Cockburn sea-level use cases w
 - **Extensions:**
   - **5b. Invalid login credentials:**
     - 5b1. System informs actor of authentication failure and increments failed attempt counter without revealing whether the email or password was incorrect (RN10).
-  - **5c. Repeated authentication failures exceed threshold (5 attempts):**
-    - 5c1. System temporarily blocks authentication attempts for target account for 15 minutes, returns generic throttling notice, and records security alert in audit log (RN11, RN18).
+  - **5c. Repeated authentication failures exceed threshold:**
+    - 5c1. System temporarily blocks authentication attempts for target account, returns generic throttling notice, and records security alert in audit log (RN11, RN18).
 - **Minimal Guarantees:** Failed attempts leave database credentials unmodified; security audit log records timestamp and client IP for every rejected attempt; zero credentials or session tokens are leaked (RN18).
 ```
 - **Cognitive Justification:** Precondition enforces transport security (`RN24`); Extension 5c mitigates credential stuffing (`RN11`); Minimal guarantee mandates non-repudiable audit logging (`RN18`). The Main Success Scenario is 100% preserved.

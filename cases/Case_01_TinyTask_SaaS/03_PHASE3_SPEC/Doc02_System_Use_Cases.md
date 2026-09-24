@@ -238,8 +238,8 @@ flowchart LR
     - 5a4. System updates credentials and invalidates reset link. Use case resumes at step 5.
   - **5b. Invalid login credentials:**
     - 5b1. System informs actor of authentication failure and increments failed attempt counter without revealing whether the email or password was incorrect.
-  - **5c. Repeated authentication failures exceed threshold (5 attempts):**
-    - 5c1. System temporarily blocks authentication attempts for target account for 15 minutes, returns generic throttling notice, and records security alert in audit log (RN11, RN18).
+  - **5c. Repeated authentication failures exceed threshold:**
+    - 5c1. System temporarily blocks authentication attempts for target account, returns generic throttling notice, and records security alert in audit log (RN11, RN18).
     - 5c2. System informs the actor of the self-service recovery path ({U.C. 1.3}).
 - **Success Guarantees (Postconditions):** An authenticated session is issued to the user; the user has access to authorized workspace rosters.
 - **Minimal Guarantees:** Failed attempts leave database credentials unmodified; security audit log records timestamp and client IP for every rejected attempt; zero credentials or session tokens are leaked (RN18).
@@ -814,7 +814,7 @@ flowchart LR
 - **Extensions:**
   - **6a. Grace period expires without payment resolution (Day 8):**
     - 6a1. System automatically transitions the workspace to a restricted read-only state — preserving project consultation and data export ({U.C. 8.1}) while suspending content modifications and member invitations — until billing is rectified (R7.2).
-  - **3a. Webhook timestamp exceeds allowable replay window (5 minutes):**
+  - **3a. Webhook timestamp exceeds allowable replay window:**
     - 3a1. System rejects expired webhook payload, logs replay detection event, and halts state transition (RN16, RN18).
 - **Success Guarantees:** Team operations are shielded from immediate disruption during temporary financial glitches; resolution restores normal status cleanly.
 - **Minimal Guarantees:** Grace period state changes require verified payment gateway origin and emit immutable billing audit records (RN18).

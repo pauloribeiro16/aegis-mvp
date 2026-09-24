@@ -64,15 +64,15 @@ Step 3 transforms the regulatory drivers and threat mitigations derived in Step 
 - **Formulation:**
   > *"When a user sets or updates their account password, the system shall hash the password using a memory-hard, salted cryptographic hashing algorithm prior to persisting it in the internal application database, and the system shall never store, log, or transmit passwords in plaintext."*
 - **Why this EARS Pattern:** Pinpoints the exact lifecycle moment (password update) and dictates the immediate defensive transformation.
-- **Volere Fit Criterion Rationale:** Verifiable via database inspection and unit tests: `Stored password fields match standard cryptographic hash digest formats with unique salt lengths >= 16 bytes; zero plaintext password instances in application logs.`
+- **Volere Fit Criterion Rationale:** Verifiable via database inspection and unit tests: `Stored credential records match verified salted cryptographic one-way derivation formats with unique per-credential salt parameters; zero plaintext credential instances in application logs or data stores.`
 - **Verification Method:** `TEST` (Unit test verifying cryptographic derivation and salt uniqueness).
 
 ### `RN11`: Cryptographic Session Management & Invalidation
 - **Syntactic Selection:** *Combined State-Driven & Event-Driven*. Governs the active session state and the expiration/logout events.
 - **Formulation:**
-  > *"While a user is authenticated, the system shall maintain session state using cryptographically random tokens with a minimum of 128 bits of entropy. When a user initiates logout or exceeds 30 minutes of inactivity, the system shall immediately invalidate the session token on both client and server sides."*
-- **Why this EARS Pattern:** Couples the background invariant (high entropy tokens) with explicit trigger events (logout or idle timeout).
-- **Volere Fit Criterion Rationale:** Objective timing threshold: `Post-logout or expired session tokens submitted to protected API endpoints are rejected with HTTP 401 Unauthorized within 100 milliseconds.`
+  > *"While a user is authenticated, the system shall manage session state using secure, non-predictable cryptographic session identifiers. When a user initiates logout or exceeds an established period of user inactivity, the system shall terminate and invalidate the session state on both client and server sides, preventing resumption without re-authentication."*
+- **Why this EARS Pattern:** Couples the background invariant (non-predictable session identifiers) with explicit trigger events (logout or established inactivity).
+- **Volere Fit Criterion Rationale:** Objective control threshold: `Post-logout or invalidated session tokens submitted to protected API endpoints are rejected with authentication failure status; invalidated sessions cannot be resumed without re-authentication.`
 - **Verification Method:** `TEST` (Automated session expiration and revocation test suite).
 
 ### `RN12`: Role-Based Access Control & Action Mediation
@@ -86,9 +86,9 @@ Step 3 transforms the regulatory drivers and threat mitigations derived in Step 
 ### `RN13`: File Upload Strict Validation & Content Isolation
 - **Syntactic Selection:** *Combined Event-Driven & Unwanted Behavior*. Triggered by file attachment upload; branches on invalid file signature or size.
 - **Formulation:**
-  > *"When a file attachment is uploaded, the system shall validate that the actual file content matches the declared file signature (magic bytes) against an allowlist of non-executable document formats, and if an invalid signature, executable file, or size exceeding 25 MB is detected, the system shall reject the upload and discard the temporary buffer."*
+  > *"When a file attachment is uploaded, the system shall validate that the actual file content matches the declared MIME type and file signature (magic bytes) against an allowlist of non-executable document formats, and if an invalid signature, unauthorized executable format, or payload exceeding configured capacity limits is detected, the system shall reject the upload and discard the temporary buffer."*
 - **Why this EARS Pattern:** Addresses the file upload attack surface by specifying validation at the magic-byte level, not just superficial file extensions.
-- **Volere Fit Criterion Rationale:** `Submissions of spoofed executable binaries (e.g. .exe renamed to .pdf) are rejected with an explicit validation error, and zero temporary files remain on disk.`
+- **Volere Fit Criterion Rationale:** `Submissions of spoofed executable binaries or payloads exceeding configured capacity limits are rejected with an explicit validation error, and zero temporary files remain on disk.`
 - **Verification Method:** `TEST` (MIME/magic-byte spoofing test suite).
 
 ### `RN14`: Context-Aware Output Encoding & Sanitization
@@ -118,9 +118,9 @@ Step 3 transforms the regulatory drivers and threat mitigations derived in Step 
 ### `RN17`: Inbound API Token Mediation & Rate Limiting
 - **Syntactic Selection:** *Combined Event-Driven & Unwanted Behavior*. Triggered on inbound API requests; handles the threshold exceedance.
 - **Formulation:**
-  > *"When an external productivity API client sends a request to TinyTask endpoints, the system shall authenticate the client token and evaluate invocation frequency against a maximum threshold of 100 requests per minute per tenant. If the threshold is exceeded, the system shall throttle requests and return HTTP 429 Too Many Requests with a Retry-After header."*
+  > *"When an external productivity API client sends a request to TinyTask endpoints, the system shall authenticate the client token and evaluate invocation frequency against established tenant rate limits to protect service availability against resource exhaustion. If the rate limit is exceeded, the system shall throttle requests and return standard rate-limiting notifications."*
 - **Why this EARS Pattern:** Defines both the normal authentication path and the explicit rate-limiting throttle response.
-- **Volere Fit Criterion Rationale:** `Automated load generator exceeding 100 req/min receives HTTP 429 starting at request 101, recovering exactly when the time window resets.`
+- **Volere Fit Criterion Rationale:** `Automated load generation exceeding established tenant rate thresholds receives rate-limiting status responses, recovering normal processing once the request rate conforms to operational capacity.`
 - **Verification Method:** `TEST` (Automated API load and rate-limiting test).
 
 ### `RN18`: Non-Repudiable Security Audit Logging
@@ -145,14 +145,14 @@ Step 3 transforms the regulatory drivers and threat mitigations derived in Step 
 ### `RN20`: Structured Personal Data Portability & Export
 - **Syntactic Selection:** *Event-Driven*. Triggered by user invocation of GDPR Art. 20 data portability.
 - **Formulation:**
-  > *"When an authenticated workspace user requests an export of their personal account data (under GDPR Art. 20), the system shall compile all profile attributes, authored comments, assigned tasks, and logged hours into a machine-readable JSON archive within 24 hours of the request."*
-- **Volere Fit Criterion Rationale:** `Export package contains 100% of user-generated data formatted in valid, schema-conforming JSON without inclusion of third-party personal data.`
-- **Verification Method:** `DEMONSTRATE` (End-to-end export generation and JSON schema validation).
+  > *"When an authenticated workspace user requests an export of their personal account data (under GDPR Art. 20), the system shall compile all profile attributes, authored comments, assigned tasks, and logged hours into a structured, commonly used, and machine-readable format for user retrieval."*
+- **Volere Fit Criterion Rationale:** `Export package contains 100% of user-generated data formatted in structured, machine-readable format without inclusion of third-party personal data.`
+- **Verification Method:** `DEMONSTRATE` (End-to-end export generation and schema validation).
 
 ### `RN21`: Irreversible Data Subject Erasure & Pseudonymization
 - **Syntactic Selection:** *Event-Driven*. Triggered by user invocation of GDPR Art. 17 right to erasure.
 - **Formulation:**
-  > *"When a workspace administrator or user executes an account termination request (under GDPR Art. 17), the system shall permanently purge the user's credentials and personal contact details within 30 days, while pseudonymizing historical task comments and timesheets to maintain organizational audit integrity without retaining identifiable personal markers."*
+  > *"When a workspace administrator or user executes an account termination request (under GDPR Art. 17), the system shall irreversibly erase the user's credentials and direct personal contact details from active operational stores, while pseudonymizing historical task comments and timesheets to maintain organizational audit integrity without retaining identifiable personal markers."*
 - **Volere Fit Criterion Rationale:** `Post-erasure database search for the user's email or full name yields zero matches; historical records display a non-reversible pseudonym (e.g. Deactivated User [ID: 9481]).`
 - **Verification Method:** `TEST` (Account termination pipeline test and data pseudonymization assertion).
 
@@ -180,8 +180,8 @@ Step 3 transforms the regulatory drivers and threat mitigations derived in Step 
 ### `RN25`: Automated Orphan File Asset Cleanup & Expiration
 - **Syntactic Selection:** *Event-Driven*. Triggered by project or task deletion.
 - **Formulation:**
-  > *"When a workspace project or task containing file attachments is deleted, the system shall schedule the unlinked storage objects for permanent deletion within 14 days, preventing indefinite storage of orphaned personal documents."*
-- **Volere Fit Criterion Rationale:** `Background cleanup job successfully purges unreferenced storage files older than 14 days; object store audit verifies zero orphaned attachments remain.`
+  > *"When a workspace project or task containing file attachments is deleted, the system shall identify and schedule unlinked storage objects for permanent deletion in accordance with established retention policies, preventing indefinite storage of orphaned personal documents."*
+- **Volere Fit Criterion Rationale:** `Automated cleanup routines purge unreferenced storage assets according to retention schedules; object store audit verifies zero orphaned attachments remain.`
 - **Verification Method:** `TEST` (Object storage lifecycle expiration test).
 
 ### `RN26`: Privacy Audit Trail for Personal Data Modifications

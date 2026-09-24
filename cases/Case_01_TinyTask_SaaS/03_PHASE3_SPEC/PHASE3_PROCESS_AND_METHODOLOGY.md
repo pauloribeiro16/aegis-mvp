@@ -273,7 +273,11 @@ To maintain the highest professional standard of requirements engineering, autho
 
 ### 8. The Vague Adjective Trap
 - **Anti-Pattern:** Stating that the system must be *"fast"*, *"secure"*, *"intuitive"*, or *"reliable"*.
-- **Remedy:** Use Volere Fit Criteria and EARS templates with quantifiable, testable thresholds (e.g., *"Response time shall be under 200 ms at 95th percentile"*, *"Access shall be denied after 5 consecutive failed attempts"*).
+- **Remedy:** Use Volere Fit Criteria and EARS templates with testable, verifiable assertions (e.g., verifying that all stored passwords use salted cryptographic one-way hashes, or that unauthenticated access requests fail closed).
+
+### 9. The Premature Solution Design & Over-Specific Parameter Trap
+- **Anti-Pattern:** Prescribing arbitrary low-level operational numbers (*"30-minute idle session timeout"*, *"100 req/min rate limit"*, *"128-bit entropy"*, *"salt >= 16 bytes"*, *"export within 24 hours"*) into Phase 3 non-functional requirements.
+- **Remedy:** Maintain high-level control abstraction. Non-functional requirements must follow the chain `Regulation → Article/Clause → Control Framework (NIST CSF 2.0 / NIST PF 1.1 / ISO) → High-Level Control Objective`. Define the defensive boundary and control state at high level; reserve fine-grained operational parameterization and algorithm tuning for Phase 4 (Architecture & Implementation).
 
 ---
 
@@ -284,6 +288,7 @@ Before declaring Phase 3 complete, verify that:
 - [ ] **Granularity Standard:** Every use case is at Cockburn Sea-Level (Level 1). Zero clam-level UI sequences.
 - [ ] **Verbal Phrasing:** 100% of requirement titles, sub-requirements, and use case names use active verbs in the infinitive.
 - [ ] **EARS Compliance:** 100% of security and privacy NFRs (`RN9` onwards) follow the EARS syntax templates.
+- [ ] **High-Level Control Abstraction:** 100% of security and privacy NFRs express high-level control objectives anchored in regulatory clauses and NIST/ISO controls, without premature operational parameters.
 - [ ] **Functional Evolution Control:** Every V1 functional change is classified in the D1–D4 taxonomy and recorded in the Functional Evolution Register with its `RN`/`PO-`/`SO-`/article driver; `v0_functional_baseline/` files are untouched.
 - [ ] **Empirical Verification:** Every security requirement defines an unambiguous Fit Criterion and specifies one of the four ISO 29148 verification methods (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`).
 - [ ] **Bidirectional Traceability:** A complete traceability matrix connects Phase 2 `PO-` and `SO-` objectives to functional requirements `R...`, use cases `{U.C. ...}`, and the security & privacy NFRs (`RN9` onwards).

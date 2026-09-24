@@ -193,9 +193,10 @@ This subsection is the **canonical filling guide** for every card row. Whenever 
 - Purpose: carry the absorbed security/privacy NFRs with their full tracing chain, so nothing "falls from the sky".
 - ✅ One condensed line per NFR, ids only:
   `**NFR-RN10** Credential Hardening & Salted Hashing — CRA Annex I Part I (2)(d)+(2)(j) → SO-D-02.1-002 → PRIN-ENG-04 → CSF PR.AA-03, PR.DS-01`
+- **High-Level Control Abstraction Mandate:** NFRs must be expressed as **High-Level Control Objectives** anchored in the control referential (NIST CSF 2.0 / NIST PF 1.1 / ISO). They must **NEVER invent premature implementation parameters** (e.g., exact timeout minutes, request quotas, byte sizes, response latencies). Parameterization belongs to Phase 4 design (Anti-Pattern 11).
 - Only NFRs **genuinely applicable to this card's function** (typically 1–3). Cards with no security surface carry no row at all — do not pad.
 - **Never** repeat cross-cutting NFRs (rate limiting, audit logging, transport encryption) card by card; they live once as standalone rows in the Quality Attributes table.
-- ❌ Dumping every NFR into the biggest card "for coverage"; ❌ listing an NFR without its four-link chain.
+- ❌ Dumping every NFR into the biggest card "for coverage"; ❌ listing an NFR without its four-link chain; ❌ prescribing arbitrary operational numbers (Anti-Pattern 11).
 
 **Row `Interfaces:`**
 - ✅ "Registration screen; Login screen; Password recovery flow; Transactional email interface" — the surfaces where the functionality is exercised.
@@ -445,4 +446,25 @@ This section documents critical anti-patterns identified during the authoring an
   > `Information Systems / Databases: Identity and Credential Store` (registration/authentication)
   > `Information Systems / Databases: Internal Application Database (task state records)` (board transitions)
   > `Information Systems / Databases: File Storage Service; Internal Application Database (attachment metadata)` (attachments)
+
+---
+
+### Anti-Pattern 11: The Premature Solution Design & Over-Specific Parameter Trap (Conditioning the Implementation Architecture)
+- **Description:** Injecting arbitrary low-level operational parameters, implementation metrics, or solution mechanics into non-functional requirements and security constraints (e.g., prescribing "30-minute idle session timeout", "minimum 128 bits of entropy", "rate limit of 100 requests per minute with Retry-After header", "salt lengths >= 16 bytes", "data export delivered within 24 hours", or "files purged in 14 days").
+- **Literature Grounding:** Robertson & Robertson (*Mastering the Requirements Process*, Volere) and ISO/IEC/IEEE 29148:2018 emphasize that requirements must define *what* system quality or protective boundary must be achieved, not prematurely fix quantitative design parameters without stakeholder validation or empirical benchmarking. Karl Wiegers (*Software Requirements*, 3rd ed.) warns against "presupposing design in requirements", which narrows the solution space and blinds system architects to contextual trade-offs.
+- **Why it breaks AEGIS:** At Phase 3, the client/user has not yet specified low-level operational numbers. When an agent invents concrete parameters ("30 min", "100 req/min"), it **conditions the solution without knowledge of the operational reality** (*sem conhecimento de causa*). The proper AEGIS derivation lineage is:
+  $$\text{Applicable Regulation} \longrightarrow \text{Article / Clause} \longrightarrow \text{Control Framework Mapping (NIST CSF 2.0 / NIST PF 1.1 / ISO)} \longrightarrow \text{High-Level Control Objective}$$
+  Phase 3 defines the **High-Level Control Objective** anchored directly in the mapped control. Fine-grained numerical parameterization and algorithm tuning belong strictly to Phase 4 (Architecture & Implementation) or subsequent detailed design passes with stakeholder concurrence.
+- **❌ INCORRECT (Anti-Pattern - Premature Parameterization):**
+  > "While a user is authenticated, the system shall maintain session tokens with a minimum of 128 bits of entropy and terminate sessions after 30 minutes of inactivity, rejecting post-logout requests within 100 milliseconds."
+  > "The system shall throttle API clients exceeding 100 requests per minute per tenant, returning HTTP 429 Too Many Requests."
+  > "When an account termination request is submitted, the system shall permanently purge personal data within 30 days."
+- **✔ CORRECT (High-Level Control Objective Anchored in Regulation & Framework):**
+  > "The system shall manage authenticated user sessions through secure, non-predictable session identifiers, terminating and invalidating session state upon explicit user logout and following an established period of user inactivity, ensuring session state cannot be resumed without re-authentication."
+  > *(Anchored in CRA Annex I Part I (2)(j) → NIST CSF 2.0 PR.AA-03)*
+  > "The system shall monitor and throttle inbound external API requests to protect system availability against resource exhaustion and denial of service, enforcing request rate limitations commensurate with operational capacity."
+  > *(Anchored in CRA Annex I Part I (2)(e) → NIST CSF 2.0 PR.IR-01, PR.PS-02)*
+  > "When an account closure or data subject erasure request is executed, the system shall irreversibly erase personal identifiers and credentials from active operational stores, applying cryptographic pseudonymization or anonymization to historical records where retention is required for legal or organizational audit integrity."
+  > *(Anchored in GDPR Art. 17 → NIST PF CT.PO-P3)*
+
 

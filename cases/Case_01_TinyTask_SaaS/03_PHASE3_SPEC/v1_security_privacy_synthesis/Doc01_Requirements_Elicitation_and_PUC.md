@@ -547,7 +547,7 @@ The platform non-functional requirements comprise the general operational qualit
 | **RN8** | The system architecture must enforce strict logical data segregation across workspaces (multi-tenancy), preventing cross-tenant access. | MUST | Architectural Integrity |
 | **RN24** | The system shall cryptographically protect all data in transit across public and untrusted networks using state-of-the-art mechanisms, refusing or upgrading unencrypted connection attempts. | MUST | Security — Transport (GDPR Art. 32(1)(a)+Art. 32(2) → PO-D-01.2-001 → PRIN-ENG-01 → CSF PR.DS-02, PR.IR-01 / PF PR.DS-P2) |
 | **RN18** | The system shall record an immutable security audit entry for every authentication attempt, privilege elevation, permission rejection, and subscription modification, retaining actor, action, timestamp, and origin. | MUST | Security — Auditability (CRA Annex I Part I (2)(l) → SO-D-03.1-002 → PRIN-ENG-07 → CSF PR.PS-04, DE.AE-02) |
-| **RN17** | The system shall authenticate inbound integration clients and throttle request volumes beyond 100 requests per minute per tenant, rejecting excess requests with a retry indication. | MUST | Security — Attack Surface (CRA Annex I Part I (2)(d)+(2)(j) → SO-D-02.1-002, SO-D-05.1-002 → PRIN-ENG-02 → CSF PR.AA-01, PR.IR-01) |
+| **RN17** | The system shall authenticate inbound integration clients and throttle request volumes commensurate with operational capacity to protect availability against resource exhaustion, rejecting excess requests with a retry indication. | MUST | Security — Attack Surface (CRA Annex I Part I (2)(d)+(2)(j) → SO-D-02.1-002, SO-D-05.1-002 → PRIN-ENG-02 → CSF PR.AA-01, PR.IR-01) |
 
 
 *Table 8. Summary table of Product Use Cases (PUC)*

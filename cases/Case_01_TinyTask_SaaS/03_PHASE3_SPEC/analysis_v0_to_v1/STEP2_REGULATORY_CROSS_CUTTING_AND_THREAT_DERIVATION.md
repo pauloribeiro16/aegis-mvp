@@ -61,7 +61,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
   - *Privacy Threat 4 (Data Maximization):* Registration form unnecessarily demanding personal phone numbers or demographic data.
 - **Phase 2 Driving Rules:**
   - `SO-D-02.1-002`: Requires memory-hard salted password hashing and credential hardening.
-  - `SO-D-02.2-002`: Requires cryptographic session generation, 30-minute idle expiration, and immediate invalidation on logout.
+  - `SO-D-02.2-002`: Requires secure cryptographic session management, termination upon established inactivity, and immediate invalidation on logout.
   - `PO-D-06.1-001` & `PRIN-ENG-06`: Mandates data minimization during onboarding (name, email, credentials only).
   - `PO-D-01.2-001`: Mandates state-of-the-art cryptographic protection for all data in transit across external and inter-service channels.
   - `SO-D-03.1-002` & `PRIN-ENG-07`: Mandates security audit logging of failed authentication attempts.
@@ -110,7 +110,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
   - *Privacy Threat 3 (Indefinite Data Retention):* Deleted deliverable attachments remain stored on disk indefinitely.
 - **Phase 2 Driving Rules:**
   - `SO-D-07.1-002` & `PRIN-ENG-02`: Input validation, magic-byte file signature validation, and context-aware output encoding.
-  - `PO-D-06.1-001` & `PRIN-ENG-06`: Automated lifecycle expiration of orphaned files within 14 days.
+  - `PO-D-06.1-001` & `PRIN-ENG-06`: Automated lifecycle expiration of orphaned file assets in accordance with retention schedules.
 - **Synthesis Decisions:**
   - Derive `RN13` (File Upload Strict Validation), `RN14` (Context-Aware Output Encoding), and `RN25` (Orphan File Asset Cleanup).
 

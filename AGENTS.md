@@ -190,6 +190,7 @@ flowchart TD
   - **Card Field-Filling Standard:** Every card field (Description, Origin, Security & Privacy Constraints, Interfaces, Dependencies sub-fields, Priority) has a codified filling rule with a ✅ correct example and a ❌ anti-pattern in [`templates/phase3_functional_spec_guidelines.md`](file:///c:/Users/paulo.ribeiro/OneDrive%20-%20Instituto%20CCG%20ZGDV/Ambiente%20de%20Trabalho/Projetos_PhD/aegis-mvp/templates/phase3_functional_spec_guidelines.md) §3.3. Any correction to a filling style is codified there in the same session.
   - **V1 Functional Evolution (Refinement Pass):** V0 is locked against pre-baked security, not frozen functionally. In the V1 synthesis the functional set may evolve only through the exhaustive taxonomy **D1** derived requirement / **D2** description refinement / **D3** regulatory priority re-evaluation / **D4** card split, with every change (including `evaluated, no change`) recorded in a Functional Change Register carrying its `RN`/`PO-`/`SO-`/article driver, and `v0_functional_baseline/` untouched. Codified in [`templates/phase3_functional_spec_guidelines.md`](file:///c:/Users/paulo.ribeiro/OneDrive%20-%20Instituto%20CCG%20ZGDV/Ambiente%20de%20Trabalho/Projetos_PhD/aegis-mvp/templates/phase3_functional_spec_guidelines.md) §3.4.
   - **Specificity Matching (Altitude Control):** A downstream statement's specificity may not exceed its source's plus documented descents: every level drop on the **L0 property → L1 goal → L2 verifiable constraint → L3 mechanism category → L4 technology** scale requires a cited warrant (**W1** source statement, **W2** regulation verbatim, **W3** anchored Phase 2 objective/corpus module, **W4** admitted good practice per ADR-001, **W5** company statement); no warrant → stay at the source's level. Quantitative fit criteria are orthogonal (never count as a descent); L4 vocabulary is banned in Phases 0–3 (R5/R13 §2.1). Codified in [`templates/phase3_functional_spec_guidelines.md`](file:///c:/Users/paulo.ribeiro/OneDrive%20-%20Instituto%20CCG%20ZGDV/Ambiente%20de%20Trabalho/Projetos_PhD/aegis-mvp/templates/phase3_functional_spec_guidelines.md) §2.5.
+  - **Iterative Risk-Acceptance Rounds (ADR-005):** Phase 3 synthesis runs in rounds — each proposal carries the EARS constraint, the risk it addresses, its altitude level, and its regulatory chain, and the client answers **per item**: Accept / Reject (= explicit risk acceptance, recorded, never silent) / Adjust. Rounds iterate to convergence; only then do `Doc01`/`Doc02` versions evolve, followed by explicit **control selection** (Step 4). Formal threat modeling is **out of Phase 3** — it is Fase 4 (ADR-005). Register: `synthesis_rounds/` per case (template [`templates/phase3_risk_acceptance_register.md`](file:///c:/Users/paulo.ribeiro/OneDrive%20-%20Instituto%20CCG%20ZGDV/Ambiente%20de%20Trabalho/Projetos_PhD/aegis-mvp/templates/phase3_risk_acceptance_register.md)).
   - **Foundational Literature & Detailed Manual:** Full elicitation methodology, Volere Snow Card derivation, Cockburn goal levels, and downstream AEGIS security synthesis mapping are codified in [`templates/phase3_functional_spec_guidelines.md`](file:///c:/Users/paulo.ribeiro/OneDrive%20-%20Instituto%20CCG%20ZGDV/Ambiente%20de%20Trabalho/Projetos_PhD/aegis-mvp/templates/phase3_functional_spec_guidelines.md). All Phase 3 functional authoring must adhere to this guide.
 
 ---
@@ -207,12 +208,17 @@ chain as citations, never as work units.
 | **Fase 0 — Baseline** (frozen) | Regulation corpus (verbatim articles + ambiguity analysis) | **Baseline Goals** (high-level + per-regulation) | `SO-D-XX.Y.HL`, `SO-D-XX.Y.<REG>` |
 | **Fase 1 — Contextual Definition** | Baseline Goals + company context | **Adjusted Goals** | `AG-D-XX.Y-NNN` |
 | **Fase 2 — Operationalization** | Adjusted Goals (+ obligations, tensions) | **Security & Privacy Operational Objectives** (tail: testable `RULE-*`) | `PO-/SO-D-XX.Y-NNN` |
-| **Fase 3 — Specification** | Objectives (+ Rules) | **Security & Privacy Requirements** | `REQ-D-XX.Y-NNN` |
+| **Fase 3 — Specification** | Objectives (+ Rules) | **Security & Privacy Requirements** (risk-accepted via iterative rounds; control-anchored) | `REQ-D-XX.Y-NNN` (practice: `R<n>`/`RN<n>`) |
+| **Fase 4 — Threat Analysis** (new, deferred — ADR-005) | Accepted F3 baseline + selected controls | **Threat Model** (formal modeling over the accepted baseline) | naming fixed at phase design (proposed `TM-D-XX.Y-NNN`) |
 
 Concept/alias note: the frozen artifacts keep their names and IDs (`objective.md`,
 `SO-D-XX.Y.*`, legacy "HSO"/"Sub-SO" expansions) — conceptually they are
 **Baseline Goals** (ADR-004 D2 alias table). Prose says *goal* for the Fase 0
-layer; "objective" starts at Fase 2.
+layer; "objective" starts at Fase 2. Phase 3 now runs as an **iterative
+risk-acceptance cycle** (rounds of propose → client Accept/Reject/Adjust per
+item → converge) followed by explicit control selection; formal threat
+modeling is **Fase 4** (ADR-005), and verification/implementation is
+referenced as **Fase 5**.
 
 | Feature | Phase 1 (This MVP) | Phase 2 (Downstream) |
 |---|---|---|
@@ -224,4 +230,5 @@ layer; "objective" starts at Fase 2.
 Designation convention (methodology-wide): **Fase 0 = Baseline Goals**
 (`SO-D-XX.Y.*`, frozen), **Fase 1 = Goals** (`AG-D-XX.Y-NNN`, Adjusted Goals),
 **Fase 2 = Objectives** (`PO-/SO-D-XX.Y-NNN`), **Fase 3 = Requirements**
-(`REQ-D-XX.Y-NNN`).
+(`REQ-D-XX.Y-NNN`), **Fase 4 = Threat Model** (ADR-005, deferred);
+verification/implementation = **Fase 5**.

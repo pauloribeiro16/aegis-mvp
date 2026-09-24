@@ -336,7 +336,7 @@ A critical reason for maintaining this rigorous standard is that Phase 3 functio
 | **Dependencies: Stakeholders & Roles** | Directly feeds **Skill 3 (Least Privilege Analysis)** to enforce RBAC authorization checks and prevent privilege escalation. |
 | **Dependencies: Information Systems** | Informs architectural component placement and tenant isolation (multi-tenancy) in Phase 3 design. |
 | **Requirement Description & Verb** | Forms the primary functional contract upon which security assertions (`RULE-*`) and security requirements (`REQ-D-XX.Y-NNN`) are synthesized. |
-| **Identified Problems & Constraints** | Informs threat modeling and exception handling under **Skill 5 (Secure Defaults)** and **Skill 6 (Defensive Design)**. |
+| **Identified Problems & Constraints** | Informs downstream threat modeling (Phase 4, ADR-005) and exception handling under **Skill 5 (Secure Defaults)** and **Skill 6 (Defensive Design)**. |
 
 ---
 

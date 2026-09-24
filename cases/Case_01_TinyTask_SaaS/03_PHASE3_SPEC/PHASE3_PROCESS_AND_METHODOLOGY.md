@@ -108,7 +108,7 @@ Attempting to author functional requirements and security requirements simultane
 **The AEGIS Solution:** 
 1. Build **Version 0 (V0)** as a **100% pure functional baseline** representing only what the business and users need to accomplish.
 2. Formally synthesize Phase 2 rules against V0 to produce **Version 1 (V1)**, which defines the testable security constraints, fit criteria, and use case extension points without distorting the underlying functional model.
-3. Where the synthesis reveals a genuine functional gap — an obligation that requires user-visible, goal-level functionality absent from V0 — evolve the functional model through the controlled **Functional Refinement Pass (Step 4b)**: every change classified in the D1–D4 taxonomy, recorded in the Functional Evolution Register, with `v0_functional_baseline/` left untouched as the locked reference.
+3. Where the synthesis reveals a genuine functional gap — an obligation that requires user-visible, goal-level functionality absent from V0 — evolve the functional model through the controlled **Functional Refinement Pass (Step 5b)**: every change classified in the D1–D4 taxonomy, proposed through the Step 3 risk-acceptance rounds, with `v0_functional_baseline/` left untouched as the locked reference.
 
 ```mermaid
 flowchart TD
@@ -124,7 +124,7 @@ flowchart TD
         UC_V0["Sea-Level Use Cases ({U.C. 1.1} .. {U.C. 8.2})<br>Cockburn Main Success Scenarios"]
     end
 
-    subgraph Synth["Synthesis Process (Steps 2, 3 & 4b)"]
+    subgraph Synth["Synthesis Process (Steps 2–5b)"]
         Matrix["Cross-Cutting Matrix & Asset Mapping"]
         EARS["EARS Formulation of Security & Privacy NFRs (RN)"]
     end
@@ -132,17 +132,18 @@ flowchart TD
     subgraph P3_V1["Phase 3 — Version 1 (Synthesized Baseline)"]
         Doc01_V1["Doc01: Requirements Elicitation<br>(+ Non-Functional Requirements & P2 Trace)"]
         Doc02_V1["Doc02: System Use Cases<br>(+ Security Preconditions, Extensions, Guarantees)"]
-        Reg_V1["Functional Evolution Register<br>(STEP5: D1-D4 changes, analysis dossier)"]
+        Reg_V1["Risk Acceptance Register<br>(synthesis_rounds/ — client verdicts per item)"]
     end
 
     P2 --> Synth
     P3_V0 --> Synth
     Synth --> P3_V1
+    P3_V1 --> P4["Phase 4 — Threat Analysis<br>(deferred, ADR-005)"]
 ```
 
 ---
 
-## 3. The 4-Step Progressive Synthesis Process
+## 3. The Progressive Synthesis Process (Iterative Risk-Acceptance Cycle)
 
 ### Step 1: Elicitation and Freezing of Functional Baseline (V0)
 - **Goal:** Capture the complete operational scope of the product in purely functional terms.
@@ -155,7 +156,7 @@ flowchart TD
   6. Author Cockburn Sea-Level Use Cases (`{U.C. n.m}`) focusing on the Main Success Scenario (MSS).
 - **Result:** Locked `v0_functional_baseline/` containing `Doc01` and `Doc02`.
 
-### Step 2: Cross-Cutting Regulatory & Threat Analysis
+### Step 2: Cross-Cutting Regulatory Analysis
 - **Goal:** Determine which Phase 2 objectives apply to which functional requirements and areas.
 - **Process:**
   1. **Asset Identification:** Identify all business assets, user data, credentials, and system artifacts handled by each requirement `R...` and use case `{U.C. ...}`.
@@ -164,26 +165,32 @@ flowchart TD
      - For personal data processing (identity, contact details, logs), apply GDPR Operational Objectives (`PO-D-XX.Y-NNN`).
      - For software components, endpoints, storage, and interfaces, apply CRA Operational Objectives (`SO-D-XX.Y-NNN`).
      - For overall architectural behavior, apply Engineering Principles (`PRIN-ENG-01` to `PRIN-ENG-07`).
-- **Result:** Cross-cutting Traceability Matrix linking `R...` and `{U.C. ...}` to `PO-*`, `SO-*`, and `PRIN-ENG-*`.
+- **Result:** Cross-cutting Traceability Matrix linking `R...` and `{U.C. ...}` to `PO-*`, `SO-*`, and `PRIN-ENG-*`. Asset and trust-boundary maps are kept here — they drive proposal derivation and later seed Phase 4 (ADR-005). Formal threat modeling is **out of Phase 3 scope** (Phase 4).
 
-### Step 3: Formal Security & Privacy Specification (EARS Syntax & Volere Fit Criteria)
-- **Goal:** Formulate unambiguous, testable security and privacy requirements.
+### Step 3: Iterative Synthesis & Risk-Acceptance Rounds
+- **Goal:** Negotiate the synthesized constraints with the client until the risk posture converges — no constraint enters the baseline without an explicit client decision (ADR-005).
+- **Process (per round):**
+  1. **Formulate candidate proposals** from the juxtaposition matrix using EARS sentence templates. Each proposal carries: the EARS constraint, the **risk it addresses**, its **altitude level** (L2/L3, with the Specificity Matching check — guidelines §2.5), an unambiguous **Volere Fit Criterion**, an empirical **Verification Method** (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`), and its full regulatory chain (`regulation article → Phase 2 rule → PRIN-ENG → candidate anchor`).
+     - Security & privacy requirements continue the existing `RN` numbering (e.g. `RN9` onwards, after the base NFR table), with the regulatory driver carried as data — never as an ID prefix. CRA-derived: integrity, authentication, access control, audit, cryptography, vulnerability management. GDPR-derived: consent tracking, data minimization, right to erasure, purpose limitation, subject export.
+  2. **Present the round** to the client stakeholders.
+  3. **Record the client verdict per item** in the Risk Acceptance Register (`synthesis_rounds/RISK_ACCEPTANCE_REGISTER.md`): **Accept** · **Reject** (= explicit risk acceptance — the item remains registered as accepted-by-decision, never silently dropped) · **Adjust** (wording, level, or scope; re-proposed next round).
+  4. **Iterate** until convergence: a round with no new rejections, or an explicit client decision to close.
+- **Result:** The **accepted constraint set** plus a fully traced `synthesis_rounds/RISK_ACCEPTANCE_REGISTER.md`. No `Doc01`/`Doc02` version evolves before convergence.
+
+### Step 4: Control Identification & Selection
+- **Goal:** Select the best-matching controls for every accepted constraint, completing the derivation chain `regulation → article → objective → requirement → control` as a deliberate act.
 - **Process:**
-  1. Transform Phase 2 operational goals into concrete, technology-neutral system requirements using EARS sentence templates.
-  2. Assign canonical identifiers:
-     - Security & privacy requirements continue the existing `RN` numbering (e.g. `RN9` onwards, after the base NFR table), with the regulatory driver (CRA or GDPR) carried as data in the requirement's upstream-origin column — never as an ID prefix. CRA-derived: integrity, authentication, access control, audit, cryptography, vulnerability management.
-     - GDPR-derived: consent tracking, data minimization, right to erasure, purpose limitation, subject export.
-  3. Formulate unambiguous **Fit Criteria** (Volere standard) that define verifiable pass/fail thresholds.
-  4. Bind each requirement to an empirical **Verification Method** (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`).
-  5. Run the **Specificity Matching check** (guidelines §2.5): classify each formulated requirement at its altitude (L2 verifiable constraint / L3 mechanism category) and verify the wording stays within the level warranted by its cited chain (W1–W5: source statement, regulation verbatim, anchored objective, admitted good practice, company statement). Demote unwarranted mechanism-category wording — or add the missing warrant — before absorption. Quantitative fit criteria never count as a specificity descent.
-- **Result:** The formulated EARS security & privacy requirement set (`RN9` onwards). Per the absorption rule (2026-09-23) it is absorbed into the V1 cards during Step 4 — no standalone catalog document is produced.
+  1. For each accepted item, identify candidate controls in `baseline/CONTROLS/` (enforced: NIST CSF 2.0, PF 1.1, AI RMF; advisory referentials per ADR-001 tiers).
+  2. Copy anchors only from pre-verified surfaces (module anchor blocks, requirement YAML keys, the `MAPPINGS/sr_control_mappings/` store) — never re-derive (rules R2/R2b).
+  3. Record the selection rationale per item in the register: which control, from which referential/tier, and why it is the best fit.
+- **Result:** The accepted set carrying its selected control anchors, ready for absorption.
 
-### Step 4: Functional Model Augmentation & Traceability Weaving (V1)
+### Step 5: Absorption & Traceability Weaving (V1)
 - **Goal:** Embed security and privacy constraints into the functional model without disrupting functional purity.
 - **Process:**
   1. **Update Use Cases (`Doc02` in V1):**
      - Add **Security Preconditions** (e.g., *Actor must possess an authenticated, valid session token authorized for the target tenant*).
-     - Add **Cockburn Extensions (Alternative Flows)** for security and threat scenarios (e.g., *3a. Invalid credentials provided: System increments failure counter, logs event, and rejects authentication without indicating which field failed*).
+     - Add **Cockburn Extensions (Alternative Flows)** for accepted security behavior (e.g., *3a. Invalid credentials provided: System increments failure counter, logs event, and rejects authentication without indicating which field failed*).
      - Add **Minimal Guarantees** to Postconditions (e.g., *Minimal Guarantee: No unauthorized data modification occurs; all access rejections are recorded in immutable audit logs*).
      - Add cross-reference tags to the corresponding security & privacy NFR cards (`RN9` onwards).
   2. **Update Functional Cards (`Doc01` in V1):**
@@ -191,8 +198,8 @@ flowchart TD
      - Add security and privacy dependency references to the `Dependencies` block of individual requirement cards.
 - **Result:** Updated `v1_security_privacy_synthesis/` containing augmented `Doc01` and `Doc02`, plus the analysis dossier.
 
-### Step 4b: Functional Refinement Pass (V1 Functional Evolution)
-- **Goal:** Let the synthesis legitimately evolve the functional model where it revealed genuine gaps — without corrupting V0 and without re-opening elicitation.
+### Step 5b: Functional Refinement Pass (V1 Functional Evolution)
+- **Goal:** Let the synthesis legitimately evolve the functional model where it revealed genuine gaps — without corrupting V0 and without re-opening elicitation. Refinement items (D1 derived requirements, D2 refinements, D3 re-prioritizations) **enter the Step 3 round cycle as proposals** before absorption — the client accepts or rejects them like any other constraint.
 - **Rationale:** Freezing V0 protects elicitation from premature security pre-baking, not functional progress. Security and privacy synthesis routinely exposes user-visible functionality that pure business elicitation could not see (e.g., a brute-force lockout creates the new user goal of recovering a locked account; irreversible erasure creates the obligation to offer a final export). A V1 that only appends constraint rows leaves those gaps undiscovered until implementation.
 - **Allowed change types (exhaustive taxonomy):**
   - **D1 — Derived requirement:** an obligation (`RN` / `PO-` / `SO-` / regulation article) requires user-visible, Cockburn Sea-Level functionality not covered by any V0 card. Adds a new card continuing the canonical package numbering (`Rn.x`) and generates the matching PUC and fully dressed use case in `Doc02`. All R13 standards apply (active verb, technology neutrality, company-scale discipline).
@@ -202,6 +209,12 @@ flowchart TD
 - **Prohibited:** deleting or silently shrinking V0 scope; inventing functionality without a traceable driver; technology leakage in any new or refined text; clam-level derived cards.
 - **Change Register (mandatory):** every functional change — including `evaluated, no change` rows — is recorded as `type → from/to → driving RN/PO/SO/article → rationale` in the analysis dossier (`STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md`), and the V1 document's Version History documents the pass in one row.
 - **Result:** An evolved V1 whose functional set is a registered, traceable refinement of V0; `v0_functional_baseline/` untouched.
+
+### Phase 4 (Deferred): Threat Analysis — Out of Phase 3 Scope
+- **Goal:** Model threats formally — STRIDE/LINDDUN, attack-surface analysis, abuse scenarios — over the **accepted, control-informed baseline**.
+- **Trigger:** Researcher judgment that the accepted baseline is robust and concrete (post-convergence, post-control-selection).
+- **Scope boundary:** Phase 3 performs **zero formal threat modeling**. Asset identification and trust-boundary mapping (Step 2) remain in Phase 3 and seed Phase 4. Use-case security extensions describe *accepted security behavior*, not threat models.
+- **Contract:** ADR-005 — Fase 3 (risk-accepted, control-anchored requirements) → **Fase 4 Threat Model** → Fase 5 Verification & Assurance.
 
 ---
 
@@ -224,19 +237,22 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 │   ├── Doc01_Requirements_Elicitation_and_PUC.md# Absorbed Security/Privacy Constraints + Functional Refinement Pass (D1-D4)
 │   └── Doc02_System_Use_Cases.md                # Cockburn Security Extensions, Guarantees, and Derived Use Cases
 │
-└── analysis_v0_to_v1/                           # STEP1-STEP5 dossiers + V0/V1/V2 analysis tables (incl. Functional Evolution Register)
+├── analysis_v0_to_v1/                           # STEP1-STEP6 dossiers + V0/V1/V2 analysis tables (incl. Functional Evolution Register)
+│
+└── synthesis_rounds/                            # [ROUND CYCLE] Risk Acceptance Register + round proposals (ADR-005)
 ```
 
 ### Comparative Evolution Matrix
 
-| Dimension | Version 0 (Functional Baseline) | Version 1 (Security/Privacy Synthesis) | Downstream Phase 4 (Verification / Impl.) |
+| Dimension | Version 0 (Functional Baseline) | Version 1 (Security/Privacy Synthesis) | Downstream Phase 4 (Threat Analysis) → Phase 5 (Verification / Impl.) |
 |---|---|---|---|
 | **Primary Focus** | What the business & user need to achieve | How the system protects assets & complies with law; functional gaps revealed by the synthesis are closed (Step 4b) | How the implementation is built and verified |
 | **Input Sources** | Stakeholder goals, As-Is workflows, Product scope | V0 Functional Baseline + Phase 2 `PO-` and `SO-` | V1 Specification + Architecture Decisions |
 | **Security Controls** | Zero (strictly excluded) | Fully specified via EARS (security & privacy NFRs `RN9`+) | Implemented as code, tests, CI/CD gates |
-| **Use Case Content** | Main Success Scenario (Sea-Level) | MSS + Security Preconditions + Threat Extensions + derived use cases (D1) | Concrete UI/API procedural execution scripts |
+| **Use Case Content** | Main Success Scenario (Sea-Level) | MSS + Security Preconditions + Security Extensions + derived use cases (D1) | Concrete UI/API procedural execution scripts |
 | **Traceability** | Business Event -> Requirement -> PUC -> Use Case | Phase 2 Rules <-> Functional Scope <-> Security Reqs <-> Functional Change Register | Specification <-> Test Cases <-> Code Units |
 | **Technology Neutrality**| Absolute (zero vendors, frameworks, protocols)| Absolute (pure functional security constraints) | Concrete technology stack selections |
+| **Threat Modeling** | Zero (deferred by design) | Zero — assets & trust boundaries mapped, ready to seed Phase 4 | Phase 4: STRIDE/LINDDUN over the accepted baseline |
 
 ---
 
@@ -292,6 +308,9 @@ Before declaring Phase 3 complete, verify that:
 - [ ] **High-Level Control Abstraction:** 100% of security and privacy NFRs express high-level control objectives anchored in regulatory clauses and NIST/ISO controls, without premature operational parameters.
 - [ ] **Functional Evolution Control:** Every V1 functional change is classified in the D1–D4 taxonomy and recorded in the Functional Evolution Register with its `RN`/`PO-`/`SO-`/article driver; `v0_functional_baseline/` files are untouched.
 - [ ] **Specificity Matching:** Every security & privacy NFR's wording stays within the altitude warranted by its cited chain (L0–L4 scale, warrants W1–W5 — guidelines §2.5); zero L4 vocabulary anywhere in Phase 3 deliverables.
+- [ ] **Risk-Acceptance Control:** Every synthesized constraint's client verdict (Accept / Reject = risk accepted / Adjust) is recorded in the Risk Acceptance Register with round trace; no baseline version evolves before round convergence.
+- [ ] **Control Selection:** Every accepted constraint carries its selected control anchor copied from the pre-verified surfaces (module anchor blocks, requirement YAML keys, mapping store).
+- [ ] **Phase Boundary (Threats):** Zero formal threat modeling (STRIDE/LINDDUN, attack-scenario catalogs) inside Phase 3 deliverables — deferred to Phase 4 (ADR-005).
 - [ ] **Empirical Verification:** Every security requirement defines an unambiguous Fit Criterion and specifies one of the four ISO 29148 verification methods (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`).
 - [ ] **Bidirectional Traceability:** A complete traceability matrix connects Phase 2 `PO-` and `SO-` objectives to functional requirements `R...`, use cases `{U.C. ...}`, and the security & privacy NFRs (`RN9` onwards).
 - [ ] **Tooling Integrity:** Running `python scripts/doc_lint.py --strict` passes with 0 findings across the entire repository.

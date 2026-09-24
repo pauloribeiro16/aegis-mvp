@@ -35,6 +35,7 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/analysis_v0_to_v1/
 ├── STEP4_FUNCTIONAL_AUGMENTATION_AND_TRACEABILITY_WEAVING.md     # Step 4: Weaving security into Doc01 and Doc02 (Cockburn extensions & diffs)
 ├── STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md                        # Step 5b: Functional Evolution Register (D1–D4 changes, evaluated-no-change rows)
 ├── STEP6_SPECIFICITY_MATCHING_AUDIT.md                           # Specificity Matching audit (altitude warrants, corrections C-01..C-11)
+├── STEP7_PHASE2_COVERAGE_AUDIT.md                                # Phase 2 coverage audit (62 objectives: 16% applied as-is; anchors vs published sets)
 └── THREAT_ANALYSIS_DEFERRED.md                                   # Phase 4 seed: attack/privacy-threat hypotheses (ADR-005)
 ```
 

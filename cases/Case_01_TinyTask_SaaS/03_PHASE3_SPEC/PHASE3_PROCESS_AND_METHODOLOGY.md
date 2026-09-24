@@ -175,6 +175,7 @@ flowchart TD
      - GDPR-derived: consent tracking, data minimization, right to erasure, purpose limitation, subject export.
   3. Formulate unambiguous **Fit Criteria** (Volere standard) that define verifiable pass/fail thresholds.
   4. Bind each requirement to an empirical **Verification Method** (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`).
+  5. Run the **Specificity Matching check** (guidelines §2.5): classify each formulated requirement at its altitude (L2 verifiable constraint / L3 mechanism category) and verify the wording stays within the level warranted by its cited chain (W1–W5: source statement, regulation verbatim, anchored objective, admitted good practice, company statement). Demote unwarranted mechanism-category wording — or add the missing warrant — before absorption. Quantitative fit criteria never count as a specificity descent.
 - **Result:** The formulated EARS security & privacy requirement set (`RN9` onwards). Per the absorption rule (2026-09-23) it is absorbed into the V1 cards during Step 4 — no standalone catalog document is produced.
 
 ### Step 4: Functional Model Augmentation & Traceability Weaving (V1)
@@ -273,7 +274,7 @@ To maintain the highest professional standard of requirements engineering, autho
 
 ### 8. The Vague Adjective Trap
 - **Anti-Pattern:** Stating that the system must be *"fast"*, *"secure"*, *"intuitive"*, or *"reliable"*.
-- **Remedy:** Use Volere Fit Criteria and EARS templates with testable, verifiable assertions (e.g., verifying that all stored passwords use salted cryptographic one-way hashes, or that unauthenticated access requests fail closed).
+- **Remedy:** Use Volere Fit Criteria and EARS templates with testable, verifiable assertions (e.g., verifying that stored credentials cannot be recovered from any stored representation, or that unauthenticated access requests fail closed).
 
 ### 9. The Premature Solution Design & Over-Specific Parameter Trap
 - **Anti-Pattern:** Prescribing arbitrary low-level operational numbers (*"30-minute idle session timeout"*, *"100 req/min rate limit"*, *"128-bit entropy"*, *"salt >= 16 bytes"*, *"export within 24 hours"*) into Phase 3 non-functional requirements.
@@ -290,6 +291,7 @@ Before declaring Phase 3 complete, verify that:
 - [ ] **EARS Compliance:** 100% of security and privacy NFRs (`RN9` onwards) follow the EARS syntax templates.
 - [ ] **High-Level Control Abstraction:** 100% of security and privacy NFRs express high-level control objectives anchored in regulatory clauses and NIST/ISO controls, without premature operational parameters.
 - [ ] **Functional Evolution Control:** Every V1 functional change is classified in the D1–D4 taxonomy and recorded in the Functional Evolution Register with its `RN`/`PO-`/`SO-`/article driver; `v0_functional_baseline/` files are untouched.
+- [ ] **Specificity Matching:** Every security & privacy NFR's wording stays within the altitude warranted by its cited chain (L0–L4 scale, warrants W1–W5 — guidelines §2.5); zero L4 vocabulary anywhere in Phase 3 deliverables.
 - [ ] **Empirical Verification:** Every security requirement defines an unambiguous Fit Criterion and specifies one of the four ISO 29148 verification methods (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`).
 - [ ] **Bidirectional Traceability:** A complete traceability matrix connects Phase 2 `PO-` and `SO-` objectives to functional requirements `R...`, use cases `{U.C. ...}`, and the security & privacy NFRs (`RN9` onwards).
 - [ ] **Tooling Integrity:** Running `python scripts/doc_lint.py --strict` passes with 0 findings across the entire repository.

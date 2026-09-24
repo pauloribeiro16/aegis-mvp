@@ -91,6 +91,42 @@ Tailor the functional scope strictly to the target organization's operational pr
 - An 8-person micro-SaaS does not get enterprise SSO SAML/OIDC federation, multi-tenant billing splits, or complex custom permission matrix editors.
 - Keep requirements lean, focused, and realistic for the company's real context from the Intake Form.
 
+### 2.5 Specificity Matching (Altitude Control)
+
+Specificity is not a virtue to maximize — it is a debt that must be **warranted**. When a stakeholder says *"the platform must authenticate users securely"* (vague), the specification may not answer with a concrete mechanism unless the anchored context descends first. Every statement's altitude is matched against its source: **output specificity ≤ source specificity + documented descents**. This is the general rule behind §2.1 (technology neutrality is its L4 extreme) and it binds every artifact in this guide — V0 cards, V1 absorbed constraints, derived requirements (§3.4), and use case flows.
+
+**The specificity scale:**
+
+| Level | Kind | Examples |
+|---|---|---|
+| **L0 — Property** | Qualitative value word | "secure", "reliable", "user-friendly" |
+| **L1 — Goal / capability** | User or business goal (Cockburn Sea-Level, `AG-`) | "authenticate users", "export data" |
+| **L2 — Verifiable constraint** | Technology-neutral behavioral rule, EARS-shaped, quantifiable — where `PO-`/`SO-` objectives and synthesized `RN` requirements belong | "the system shall deny authentication after 5 consecutive failed attempts" |
+| **L3 — Mechanism category** | A family of implementations that constrains design | "salted one-way hashing", "webhook signature verification", "output encoding" |
+| **L4 — Technology / implementation** | Named technology, protocol, library | "TLS 1.3", "Argon2id", "HttpOnly cookies" — **banned** (§2.1) |
+
+**The matching rule:** a downstream statement may not exceed the specificity level of its source unless each level descent carries a **warrant** — a cited, dated document in the anchored context that itself descends:
+
+| Warrant | Source | Example |
+|---|---|---|
+| **W1 — Source statement** | The input itself is already at that level | company input names a system; a stakeholder asks for a signature check |
+| **W2 — Regulation verbatim** | The cited article's own text names the mechanism | GDPR Art. 32(1)(a) names "encryption" and "pseudonymisation" → authorizes L3 "encryption at rest", not "AES-256" |
+| **W3 — Anchored objective / corpus module** | The Phase 2 objective or `regs/<REG>.md` requirement text descends | `SO-D-01.1-002` "state-of-the-art mechanisms" stays L2 — it does **not** authorize "salted" |
+| **W4 — Admitted good practice** | A T2/T3 source per ADR-001 (conditional on ratification; ambiguity registry R2 = ceiling/minimum), cited tier + source + version | ENISA Art. 32 catalogue names the measure family |
+| **W5 — Company statement** | The company input text itself descends | "we process payments via an external gateway" |
+
+- **Quantitative precision is level-neutral but not warrant-free.** A number never causes a mechanism descent ("deny after 5 failed attempts" is L2, not L3), and verifiability demands measurable fit criteria (ISO 29148; Anti-Pattern 8) — but the *values themselves* must be derived from the regulation, a risk assessment, or a cited source, never invented (Anti-Pattern 11). Specificity without a warrant is unwarranted at every level, numeric or lexical.
+- **One level at a time.** A chain that warrants L2 does not authorize L3 wording; each descent step cites its own warrant.
+- **No warrant → stay at the source's level.** State the property or constraint; leave the mechanism open to Phase 4 / design. "This mechanism sounds right" is not a warrant.
+
+- ✅ `**NFR-RN10**` named "Credential Confidentiality Protection (State of the Art)" when the chain ends at a state-of-the-art clause (L2 = warranted level).
+- ❌ `**NFR-RN10**` named "Credential Hardening & **Salted** Hashing" when no anchored document mentions salt (unwarranted L2→L3 descent).
+- ✅ "encrypted at rest" under GDPR Art. 32(1)(a) (W2 — the article names encryption).
+- ❌ "AES-256-GCM at rest" anywhere in Phases 0–3 (L4; §2.1).
+- ✅ "blocks authentication after 5 failed attempts" (quantified L2 fit criterion — no mechanism descent; the *value* must still carry a derivation warrant, Anti-Pattern 11).
+
+**Composition with existing rules:** §2.1 is the L4 ban; Anti-Pattern 1 keeps security out of V0 (V1 absorbed constraints and §3.4-derived requirements obey *this* rule instead); Anti-Pattern 8 demands the quantitative fit criteria this rule explicitly does not restrict; **Anti-Pattern 11 is this rule's numeric twin** — it governs unwarranted *parameter values* while §2.5 governs unwarranted *mechanism vocabulary*. When a constraint genuinely needs an L3 category that only a good-practice source warrants, record it as `W4-pending` until ADR-001 is ratified — do not silently absorb general knowledge into the specification.
+
 ---
 
 ## 3. Deliverable Doc01: Requirements Elicitation & PUC (E1.1 Standard)

@@ -2,7 +2,7 @@
 
 > **Step ID:** STEP-03  
 > **Inputs:**  
-> - Step 2 Regulatory Cross-Cutting & Threat Matrix  
+> - Step 2 Regulatory Cross-Cutting Matrix (threat hypotheses deferred to Phase 4 — `THREAT_ANALYSIS_DEFERRED.md`)  
 > - Karl Wiegers & Joy Beatty (*Software Requirements*, 3rd ed., Chapter 11)  
 > - Suzanne & James Robertson (*Mastering the Requirements Process: Getting Requirements Right*, 3rd ed.)  
 > - ISO/IEC/IEEE 29148:2018 (Requirements Engineering Standard)  
@@ -15,7 +15,7 @@
 
 In classical requirements engineering, the failure to state non-functional constraints unambiguously leads to the **Vague Adjective Trap** (Anti-Pattern 8 in `phase3_functional_spec_guidelines.md`): engineers write that a system must be "secure", "fast", or "robust", which cannot be verified or tested.
 
-Step 3 transforms the regulatory drivers and threat mitigations derived in Step 2 into **atomic, mathematically verifiable system requirements** using two foundational methodologies:
+Step 3 transforms the regulatory drivers and mapped obligations derived in Step 2 into **atomic, mathematically verifiable system requirements** using two foundational methodologies:
 1. **EARS (Easy Approach to Requirements Syntax):** Developed by Alistair Mavin et al. and formalized by Karl Wiegers & Joy Beatty (2013). Enforces rigid sentence templates that eliminate ambiguity.
 2. **Volere Fit Criteria:** Developed by Suzanne & James Robertson (2012). Establishes an objective, quantifiable metric that separates satisfaction from failure.
 3. **ISO/IEC/IEEE 29148 Verification Methods:** Categorizes how the requirement is verified: `TEST`, `INSPECT`, `DEMONSTRATE`, or `ANALYZE`.

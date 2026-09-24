@@ -14,7 +14,7 @@ This directory provides the complete **step-by-step cognitive trace** that guide
 
 Rather than presenting only the end results (the final documents), this dossier deconstructs:
 1. **How each requirement and use case was analyzed.**
-2. **What questions and threat hypotheses were raised at each step.**
+2. **What questions and threat hypotheses were raised at each step** (threat hypotheses preserved for Phase 4 in [`THREAT_ANALYSIS_DEFERRED.md`](THREAT_ANALYSIS_DEFERRED.md) — deferred per ADR-005).
 3. **How upstream Phase 2 regulatory rules (`PO-` and `SO-`) and design principles (`PRIN-ENG-01` to `PRIN-ENG-07`) were cross-referenced with functional requirements and areas.**
 4. **Why specific EARS syntactic patterns and Volere fit criteria were chosen for each requirement.**
 5. **How the functional baseline was augmented without corrupting its underlying functional clarity.**
@@ -30,10 +30,12 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/analysis_v0_to_v1/
 ├── README.md                                                     # (This file) Overview of cognitive trajectory and synthesis pipeline
 ├── V0_V1_V2_ANALYSIS_TABLES.md                                    # Tabular view: V0 essence | V2 state | V1 RN synthesis per requirement and per use case
 ├── STEP1_V0_FUNCTIONAL_AUDIT_AND_BOUNDARY_ANALYSIS.md            # Step 1: Deep audit of V0 pure functional baseline, assets, and boundaries
-├── STEP2_REGULATORY_CROSS_CUTTING_AND_THREAT_DERIVATION.md       # Step 2: Juxtaposition of Phase 2 rules against V0 functionalities & threat modeling
+├── STEP2_REGULATORY_CROSS_CUTTING_AND_THREAT_DERIVATION.md       # Step 2: Juxtaposition of Phase 2 rules against V0 functionalities (threat hypotheses deferred to Phase 4)
 ├── STEP3_EARS_REQUIREMENT_FORMULATION_AND_FIT_CRITERIA.md        # Step 3: Formulating the security & privacy NFRs (RN9–RN26) using EARS & Volere fit criteria
 ├── STEP4_FUNCTIONAL_AUGMENTATION_AND_TRACEABILITY_WEAVING.md     # Step 4: Weaving security into Doc01 and Doc02 (Cockburn extensions & diffs)
-└── STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md                        # Step 4b: Functional Evolution Register (D1–D4 changes, evaluated-no-change rows)
+├── STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md                        # Step 5b: Functional Evolution Register (D1–D4 changes, evaluated-no-change rows)
+├── STEP6_SPECIFICITY_MATCHING_AUDIT.md                           # Specificity Matching audit (altitude warrants, corrections C-01..C-11)
+└── THREAT_ANALYSIS_DEFERRED.md                                   # Phase 4 seed: attack/privacy-threat hypotheses (ADR-005)
 ```
 
 ---
@@ -48,17 +50,17 @@ flowchart TD
         V0_In --> Audit
     end
 
-    subgraph Step2["Step 2: Regulatory Cross-Cutting & Threat Derivation"]
+    subgraph Step2["Step 2: Regulatory Cross-Cutting Analysis"]
         P2_In["Phase 2 Rules & Principles<br>(PO-*, SO-*, PRIN-ENG-*)"]
-        Threat["STRIDE & Privacy Threat Modeling<br>Map Rules to Functional Areas"]
-        Audit --> Threat
-        P2_In --> Threat
+        Juxtapose["Regulatory Rule Juxtaposition<br>Map Rules to Functional Areas"]
+        Audit --> Juxtapose
+        P2_In --> Juxtapose
     end
 
     subgraph Step3["Step 3: EARS Formulation & Fit Criteria"]
         EARS_Draft["Synthesize 18 Security & Privacy NFRs (RN9–RN26)<br>Apply EARS Sentence Patterns"]
         Fit_Criteria["Establish Volere Fit Criteria &<br>ISO 29148 Verification Methods"]
-        Threat --> EARS_Draft
+        Juxtapose --> EARS_Draft
         EARS_Draft --> Fit_Criteria
     end
 

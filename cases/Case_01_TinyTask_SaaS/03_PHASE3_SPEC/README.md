@@ -16,15 +16,19 @@ To maintain strict configuration control and prevent confusing mixed revisions, 
 ```text
 cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 ├── README.md                                    # (This file) Phase 3 Navigation & Executive Index
-├── PHASE3_PROCESS_AND_METHODOLOGY.md            # Master normative guide: RE literature, 4-step synthesis, and EARS rules
+├── PHASE3_PROCESS_AND_METHODOLOGY.md            # Master normative guide: RE literature, iterative risk-acceptance rounds, and EARS rules
+│
+├── synthesis_rounds/                            # [ROUND CYCLE] Risk Acceptance Register + round proposals (ADR-005)
 │
 ├── analysis_v0_to_v1/                           # [COGNITIVE TRAJECTORY] Step-by-Step Synthesis Dossier (AI Training Corpus)
 │   ├── README.md                                # Overview of cognitive trajectory and synthesis pipeline
 │   ├── STEP1_V0_FUNCTIONAL_AUDIT_AND_BOUNDARY_ANALYSIS.md        # Step 1: Functional audit, assets, and boundaries
-│   ├── STEP2_REGULATORY_CROSS_CUTTING_AND_THREAT_DERIVATION.md   # Step 2: Phase 2 rules mapping & threat modeling
+│   ├── STEP2_REGULATORY_CROSS_CUTTING_AND_THREAT_DERIVATION.md   # Step 2: Phase 2 rules mapping (threat hypotheses deferred to Phase 4)
 │   ├── STEP3_EARS_REQUIREMENT_FORMULATION_AND_FIT_CRITERIA.md    # Step 3: EARS formulation & Volere fit criteria
 │   ├── STEP4_FUNCTIONAL_AUGMENTATION_AND_TRACEABILITY_WEAVING.md # Step 4: Use case Cockburn extensions & diffs
-│   ├── STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md                    # Step 4b: Functional Evolution Register (D1–D4 changes)
+│   ├── STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md                    # Step 5b: Functional Evolution Register (D1–D4 changes)
+│   ├── STEP6_SPECIFICITY_MATCHING_AUDIT.md                       # Specificity Matching audit (altitude control, corrections C-01..C-11)
+│   ├── THREAT_ANALYSIS_DEFERRED.md                               # Phase 4 seed: attack/privacy-threat hypotheses (ADR-005)
 │   └── V0_V1_V2_ANALYSIS_TABLES.md                               # Version ladder, per-requirement absorption, and register summary
 │
 ├── v0_functional_baseline/                      # [VERSION 0] Pure Functional Baseline (LOCKED)
@@ -45,7 +49,7 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 All specifications in this directory are governed by [`PHASE3_PROCESS_AND_METHODOLOGY.md`](PHASE3_PROCESS_AND_METHODOLOGY.md), which synthesizes:
 - **Karl Wiegers & Joy Beatty (*Software Requirements*, 3rd ed.):** 3-level requirements architecture, EARS syntax patterns, and segregation of functional behavior from quality attributes.
 - **Suzanne & James Robertson (*Mastering the Requirements Process / Volere*, 3rd ed.):** Work context modeling, Product Use Cases (PUC), Snow Cards, and verifiable non-functional Fit Criteria.
-- **Alistair Cockburn (*Writing Effective Use Cases*):** Sea-Level (User Goal / Level 1) granularity, fully dressed behavioral format, and extension branches for threat handling.
+- **Alistair Cockburn (*Writing Effective Use Cases*):** Sea-Level (User Goal / Level 1) granularity, fully dressed behavioral format, and extension branches for security behavior.
 - **ISO/IEC/IEEE 29148:2018:** Mandatory quality characteristics and empirical verification methods (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`).
 
 ---
@@ -59,7 +63,7 @@ All specifications in this directory are governed by [`PHASE3_PROCESS_AND_METHOD
 
 ### Cognitive Trajectory & Synthesis Analysis (`analysis_v0_to_v1/`)
 - **Status:** Complete AI Training & Research Corpus.
-- **Content:** 5-step detailed breakdown deconstructing every decision, threat model, EARS syntactic pattern, use case transformation, and functional evolution from V0 to V1:
+- **Content:** 5-step detailed breakdown deconstructing every decision, regulatory mapping, EARS syntactic pattern, use case transformation, and functional evolution from V0 to V1 (threat hypotheses preserved separately for Phase 4 in [`THREAT_ANALYSIS_DEFERRED.md`](analysis_v0_to_v1/THREAT_ANALYSIS_DEFERRED.md)):
   - [`STEP1_V0_FUNCTIONAL_AUDIT_AND_BOUNDARY_ANALYSIS.md`](analysis_v0_to_v1/STEP1_V0_FUNCTIONAL_AUDIT_AND_BOUNDARY_ANALYSIS.md)
   - [`STEP2_REGULATORY_CROSS_CUTTING_AND_THREAT_DERIVATION.md`](analysis_v0_to_v1/STEP2_REGULATORY_CROSS_CUTTING_AND_THREAT_DERIVATION.md)
   - [`STEP3_EARS_REQUIREMENT_FORMULATION_AND_FIT_CRITERIA.md`](analysis_v0_to_v1/STEP3_EARS_REQUIREMENT_FORMULATION_AND_FIT_CRITERIA.md)
@@ -69,12 +73,14 @@ All specifications in this directory are governed by [`PHASE3_PROCESS_AND_METHOD
 ### Version 1: Security & Privacy Synthesis (`v1_security_privacy_synthesis/`)
 - **Status:** Approved.
 - **Content:** Synthesis of Phase 2 GDPR/CRA Operational Objectives (`PO-` and `SO-`) and 7 Secure Design Principles (`PRIN-ENG-01` to `PRIN-ENG-07`) against the V0 functional baseline, plus the **Functional Refinement Pass (Step 4b)** that evolved the functional set where the synthesis revealed genuine gaps: derived `R1.3` (locked-account recovery), refined `R7.2`/`R8.2`, `R1.2` elevated to Must — registered in the STEP5 Functional Evolution Register.
-- **Deliverables:** `Doc01` (19 requirement cards with absorbed `Security & Privacy Constraints` rows carrying the full `regulation → Phase 2 rule → PRIN-ENG → control anchor` chain; `RN9`–`RN26`, 10 CRA Product Security + 8 GDPR Privacy in EARS syntax) and `Doc02` (19 use cases with security preconditions, threat extensions, and minimal guarantees). Per the absorption rule (2026-09-23) there is no standalone `Doc03` catalog.
+- **Deliverables:** `Doc01` (19 requirement cards with absorbed `Security & Privacy Constraints` rows carrying the full `regulation → Phase 2 rule → PRIN-ENG → control anchor` chain; `RN9`–`RN26`, 10 CRA Product Security + 8 GDPR Privacy in EARS syntax) and `Doc02` (19 use cases with security preconditions, security extensions, and minimal guarantees). Per the absorption rule (2026-09-23) there is no standalone `Doc03` catalog.
 
 ---
 
 ## 4. Downstream Lifecycle Progression
 
 The outputs of **Version 1** serve as the direct inputs to:
-1. **Phase 4 (Verification & Assurance):** Transforming the ISO 29148 verification bindings (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`) into automated CI/CD test suites, security probes, and compliance audit dossiers.
-2. **System Architecture & Threat Modeling:** Consuming the trust boundaries and EARS constraints to generate component topologies and data flow threat models (STRIDE / LINDDUN).
+1. **Phase 4 (Threat Analysis — deferred, ADR-005):** Formal threat modeling (STRIDE / LINDDUN) over the accepted, control-informed baseline, seeded by the hypotheses preserved in [`analysis_v0_to_v1/THREAT_ANALYSIS_DEFERRED.md`](analysis_v0_to_v1/THREAT_ANALYSIS_DEFERRED.md). Triggered when the researcher judges the baseline robust and concrete.
+2. **Phase 5 (Verification & Assurance):** Transforming the ISO 29148 verification bindings (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`) and the Phase 4 threat model into automated CI/CD test suites, security probes, and compliance audit dossiers.
+
+Future baseline revisions (e.g., the chain-recalibration backlog) run through the **iterative risk-acceptance cycle** — see [`synthesis_rounds/RISK_ACCEPTANCE_REGISTER.md`](synthesis_rounds/RISK_ACCEPTANCE_REGISTER.md).

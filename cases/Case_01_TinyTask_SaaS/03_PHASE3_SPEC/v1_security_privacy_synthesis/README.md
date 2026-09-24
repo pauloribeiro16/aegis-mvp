@@ -45,7 +45,7 @@ Carries the evolved functional baseline — 19 requirement cards (`R1.1` to `R8.
 Maintains Cockburn's Sea-Level granularity (Level 1) across the 19 System Use Cases (`{U.C. 1.1}` to `{U.C. 8.2}`) while augmenting each card with:
 - **Security & Privacy Traces:** Direct references to the security & privacy NFRs (`RN9`–`RN26`).
 - **Security Preconditions:** Requiring secure encrypted channels, authenticated tenant-scoped sessions, and verified RBAC permissions prior to execution.
-- **Threat Extensions (Alternative Flows):** Explicit branching for authentication lockouts, authorization rejections, tampered webhook signatures, rate-limit throttling, and malicious file uploads.
+- **Security Extensions (Alternative Flows):** Explicit branching for authentication lockouts, authorization rejections, tampered webhook signatures, rate-limit throttling, and malicious file uploads.
 - **Enhanced Minimal Guarantees:** Mandating fail-safe rollback, zero data leakage, and non-repudiable audit logging (`RN18`).
 
 ---
@@ -54,10 +54,10 @@ Maintains Cockburn's Sea-Level granularity (Level 1) across the 19 System Use Ca
 
 | Dimension | Version 0 (Baseline) | Version 1 (Synthesis) |
 |---|---|---|
-| **Scope** | Pure Functional Scope | Functional + Regulatory Security & Privacy Constraints + registered functional evolution (Step 4b) |
+| **Scope** | Pure Functional Scope | Functional + Regulatory Security & Privacy Constraints + registered functional evolution (Step 5b) |
 | **Functional Set** | 18 elicited cards (locked) | 19 cards: `R1.3` derived, `R7.2`/`R8.2` refined, `R1.2` re-prioritized to Must (STEP5 register) |
 | **Security Coverage** | Zero (intentionally excluded) | 10 CRA Product Security + 8 GDPR Privacy Specifications |
-| **Use Case Extensions** | Functional errors only (bad format, missing fields) | Threat and security exception flows (auth brute force, XSS injection, forged webhooks, tenant bypass) |
+| **Use Case Extensions** | Functional errors only (bad format, missing fields) | Security exception flows (auth brute force, script injection, forged webhooks, tenant bypass) |
 | **Audit & Logging** | Business activity history only | Forensic, immutable security audit logging (`RN18`) |
 | **Traceability** | Business Goals -> Functional Cards -> Use Cases | Phase 2 Objectives <-> Functional Reqs <-> Use Cases <-> Test Methods |
 | **Verification Gate** | User acceptance of business flow | ISO 29148 verification methods (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`) |

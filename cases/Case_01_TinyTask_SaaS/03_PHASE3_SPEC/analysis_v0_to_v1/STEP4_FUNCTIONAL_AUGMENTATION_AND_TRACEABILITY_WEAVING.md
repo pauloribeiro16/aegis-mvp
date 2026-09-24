@@ -23,7 +23,7 @@ If an engineer directly rewrites the Main Success Scenario (MSS) to include secu
 **The AEGIS Methodological Solution:**
 Security and privacy constraints are woven into the functional model strictly via three non-intrusive extension points:
 1. **Security Preconditions:** Declare the authentication and tenant invariants that must hold before the use case begins.
-2. **Threat Extensions (Alternative Flows):** Explicit branch points that specify system behavior when an attack or failure occurs (e.g., brute-force lockout, forged webhook, XSS payload).
+2. **Security Extensions (Alternative Flows):** Explicit branch points that specify system behavior when an attack or failure occurs (e.g., brute-force lockout, forged webhook, XSS payload).
 3. **Enhanced Minimal Guarantees:** Strict postconditions ensuring fail-safe state rollback, zero data leakage, and immutable security audit logging (`RN18`).
 
 ---

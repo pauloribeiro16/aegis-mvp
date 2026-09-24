@@ -60,7 +60,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
   - *Threat 3 (Session Hijacking):* Session tokens intercepted over unencrypted channels or persisting after logout.
   - *Privacy Threat 4 (Data Maximization):* Registration form unnecessarily demanding personal phone numbers or demographic data.
 - **Phase 2 Driving Rules:**
-  - `SO-D-02.1-002`: Requires memory-hard salted password hashing and credential hardening.
+  - `SO-D-01.1-002` + CRA (2)(d): Require credential confidentiality protected by state-of-the-art mechanisms; the mechanism selection is a design decision (no hashing scheme is named by the corpus).
   - `SO-D-02.2-002`: Requires secure cryptographic session management, termination upon established inactivity, and immediate invalidation on logout.
   - `PO-D-06.1-001` & `PRIN-ENG-06`: Mandates data minimization during onboarding (name, email, credentials only).
   - `PO-D-01.2-001`: Mandates state-of-the-art cryptographic protection for all data in transit across external and inter-service channels.
@@ -112,7 +112,7 @@ To prevent arbitrary or disconnected security requirements, Step 2 applies a rig
   - `SO-D-07.1-002` & `PRIN-ENG-02`: Input validation, magic-byte file signature validation, and context-aware output encoding.
   - `PO-D-06.1-001` & `PRIN-ENG-06`: Automated lifecycle expiration of orphaned file assets in accordance with retention schedules.
 - **Synthesis Decisions:**
-  - Derive `RN13` (File Upload Strict Validation), `RN14` (Context-Aware Output Encoding), and `RN25` (Orphan File Asset Cleanup).
+  - Derive `RN13` (File Upload Strict Validation), `RN14` (Untrusted Content Neutralization), and `RN25` (Orphan File Asset Cleanup).
 
 ### Functional Area 6: Track Activity History & Notifications (`R6.1`, `R6.2` | `{U.C. 6.1}`, `{U.C. 6.2}`)
 - **V0 Baseline Scope:** Consult chronological audit trail on task cards; receive email notifications.

@@ -530,7 +530,7 @@ flowchart LR
   - **1c. Assignee is not a member of the project:**
     - 1c1. System limits member picker strictly to users authorized on the project container.
   - **3b. Task creation payload contains unescaped malicious scripts:**
-    - 3b1. System sanitizes title and description text, neutralising embedded script tags (RN14).
+    - 3b1. System neutralizes title and description text, disarming embedded active payloads (RN14).
 - **Success Guarantees:** Task card exists in the project backlog with assigned collaborators and initial status; assignees receive notifications.
 - **Minimal Guarantees:** No partial task records exist without an assigned project identifier and tenant context.
 
@@ -665,9 +665,9 @@ flowchart LR
   - **4a. Mentioned user has disabled email alerts:**
     - 4a1. System respects user preferences, generating in-app notification while suppressing external email dispatch.
   - **3c. Comment body contains malicious script or disallowed HTML tags:**
-    - 3c1. System sanitizes and HTML-encodes input, rendering payload as inert text without executing active scripts (RN14).
+    - 3c1. System neutralizes the submitted input, rendering any embedded payload as inert text (RN14).
 - **Success Guarantees:** Comment is permanently appended to task context; tagged collaborators are alerted immediately.
-- **Minimal Guarantees:** Unsubmitted draft comments are not stored; rendered comments are context-encoded to prevent stored XSS (RN14).
+- **Minimal Guarantees:** Unsubmitted draft comments are not stored; rendered comments cannot carry executable payloads (RN14).
 
 ---
 
@@ -954,3 +954,4 @@ The system use case model establishes an exhaustive, literature-aligned function
 | **3.0.0** | 2026-09-23 | Requirements Engineering Agent | Literature-grounded overhaul (Cockburn, Larman, Wiegers) with full pre/post conditions, main success scenarios, and extension flows for all 18 use cases. |
 | **3.1.0** | 2026-09-23 | Requirements Engineering Agent | Added visual UML Use Case diagrams in native Markdown for each macro functional cluster, removing sequence diagrams. |
 | **3.2.0** | 2026-09-23 | Requirements Engineering Agent | V1 Functional Refinement Pass: added {U.C. 1.3} with PUC 1.3 (locked-account recovery, `R1.3`), final-export-offer step in {U.C. 8.2}, restricted-state alignment in {U.C. 7.2}; traceability matrix updated to 19 requirements. |
+| **3.2.1** | 2026-09-24 | Requirements Engineering Agent | Specificity Matching audit (STEP6): neutralized implementation and attack-class vocabulary in {U.C. 4.1}/{U.C. 5.2} flows (RN14 wording demoted to warranted altitude); behavior and IDs unchanged. |

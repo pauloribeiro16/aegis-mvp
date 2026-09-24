@@ -261,7 +261,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R1.1 **Name:** Register and authenticate user accounts |
 | **Description:** The system must allow prospective users to create an account with email verification, authenticate using valid credentials to establish an active session, and autonomously request password reset assistance via email. |
 | **Requirement Origin:** Founders Business Case & User Onboarding Workflow |
-| **Security & Privacy Constraints:**<br>**NFR-RN10** Credential Hardening & Salted Hashing — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.1-002, SO-D-01.1-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-01<br>**NFR-RN11** Cryptographic Session Management & Invalidation — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.2-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-02<br>**NFR-RN19** Registration Data Minimization by Default — `GDPR Art. 5(1)(c)` → `PO-D-06.1-001` → `PRIN-ENG-06` → CSF PR.DS-10, GV.OC-03 / PF CT.DP-P2 |
+| **Security & Privacy Constraints:**<br>**NFR-RN10** Credential Confidentiality Protection (State of the Art) — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.1-002, SO-D-01.1-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-01<br>**NFR-RN11** Session Management & Invalidation — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.2-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-02<br>**NFR-RN19** Registration Data Minimization by Default — `GDPR Art. 5(1)(c)` → `PO-D-06.1-001` → `PRIN-ENG-06` → CSF PR.DS-10, GV.OC-03 / PF CT.DP-P2 |
 | **Interfaces:** Registration screen; Login screen; Password recovery flow; Transactional email interface |
 | **Dependencies:**<br>• **Stakeholders:** Platform Founders, All End Users<br>• **Data Sources:** Registration form submissions; Credential verification requests; Password reset requests<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Identity and Credential Store; Notification / Email Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -289,7 +289,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R1.3 **Name:** Recover access to a locked user account |
 | **Description:** The system must allow a user whose account is temporarily locked after repeated failed authentication attempts to autonomously regain access: the user requests recovery via the registered email address, receives a single-use time-limited recovery link, and upon following it the system lifts the lockout, invalidates all active sessions, and restores normal authentication. |
 | **Requirement Origin:** User Account Availability & Self-Service Recovery Needs (V1 Refinement Pass — derived from NFR-RN10/NFR-RN11 lockout behavior) |
-| **Security & Privacy Constraints:**<br>**NFR-RN10** Credential Hardening & Salted Hashing — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.1-002, SO-D-01.1-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-01<br>**NFR-RN11** Cryptographic Session Management & Invalidation — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.2-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-02 |
+| **Security & Privacy Constraints:**<br>**NFR-RN10** Credential Confidentiality Protection (State of the Art) — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.1-002, SO-D-01.1-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-01<br>**NFR-RN11** Session Management & Invalidation — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.2-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-02 |
 | **Interfaces:** Account recovery request form; Recovery email link; Login screen |
 | **Dependencies:**<br>• **Stakeholders:** All End Users, Platform Founders<br>• **Data Sources:** Account recovery requests; Lockout state records<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Identity and Credential Store; Notification / Email Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -332,7 +332,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R2.3 **Name:** Monitor workspace activity and operational metrics |
 | **Description:** The system must compile and present aggregated operational metrics to workspace leadership, displaying active member counts, tasks completed during the billing cycle, and total deliverable file storage consumed. |
 | **Requirement Origin:** Team Coordination Needs & Management Reporting |
-| **Security & Privacy Constraints:**<br>**NFR-RN22** Purpose Limitation & Time Log Segregation — `GDPR Art. 5(1)(b) + Art. 6(4)` → `PO-D-06.1-001` → `PRIN-ENG-03` → CSF GV.OC-03, PR.DS-10 / PF CM.PO-P2 |
+| **Security & Privacy Constraints:**<br>**NFR-RN22** Purpose Limitation & Activity Metrics Segregation — `GDPR Art. 5(1)(b) + Art. 6(4)` → `PO-D-06.1-001` → `PRIN-ENG-03` → CSF GV.OC-03, PR.DS-10 / PF CM.PO-P2 |
 | **Interfaces:** Operational metrics dashboard |
 | **Dependencies:**<br>• **Stakeholders:** Team Leads, Executive Leadership<br>• **Data Sources:** Workspace activity records<br>• **Extraction Periodicity:** on demand (continuous aggregation)<br>• **Information Systems / Databases:** Internal Application Database (activity aggregation)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -431,7 +431,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R5.2 **Name:** Post in-task discussion comments and mention collaborators |
 | **Description:** The system must provide a contextual comment thread inside each task card supporting rich text Markdown formatting and parsing collaborator mentions (@user) to automatically dispatch in-app notifications to tagged users. |
 | **Requirement Origin:** In-Context Collaboration Needs & Customer Expectation EXP-03 |
-| **Security & Privacy Constraints:**<br>**NFR-RN14** Context-Aware Output Encoding & Sanitization — `CRA Annex I Part I (2)(l)` → `SO-D-07.1-002` → `PRIN-ENG-04` → CSF PR.PS-06 |
+| **Security & Privacy Constraints:**<br>**NFR-RN14** Untrusted Content Neutralization — `CRA Annex I Part I (2)(l)` → `SO-D-07.1-002` → `PRIN-ENG-04` → CSF PR.PS-06 |
 | **Interfaces:** Comment thread editor; Mention interface |
 | **Dependencies:**<br>• **Stakeholders:** Team Contributors, Clients<br>• **Data Sources:** Comment submissions; Mention references<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (comment records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -448,7 +448,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R6.1 **Name:** Consult chronological audit history on task cards |
 | **Description:** The system must record and display a chronological audit feed on each task card documenting state changes, assignee reallocations, due date adjustments, and attachment events, identifying author and timestamp. |
 | **Requirement Origin:** Operational Transparency Needs & Team Accountability |
-| **Security & Privacy Constraints:**<br>**NFR-RN22** Purpose Limitation & Time Log Segregation — `GDPR Art. 5(1)(b) + Art. 6(4)` → `PO-D-06.1-001` → `PRIN-ENG-03` → CSF GV.OC-03, PR.DS-10 / PF CM.PO-P2 |
+| **Security & Privacy Constraints:**<br>**NFR-RN22** Purpose Limitation & Activity Metrics Segregation — `GDPR Art. 5(1)(b) + Art. 6(4)` → `PO-D-06.1-001` → `PRIN-ENG-03` → CSF GV.OC-03, PR.DS-10 / PF CM.PO-P2 |
 | **Interfaces:** Task card audit timeline |
 | **Dependencies:**<br>• **Stakeholders:** Project Managers, Contributors<br>• **Data Sources:** Task change events<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (audit event records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -640,3 +640,4 @@ flowchart LR
 | **2.0.0** | 2026-09-23 | Requirements Engineering Agent | Purified functional scope, removed pre-baked security controls, enforced English active verbs. |
 | **2.1.0** | 2026-09-23 | Requirements Engineering Agent | Consolidated redundant requirements into 16 pure business requirements at Cockburn Sea Level. |
 | **3.0.0** | 2026-09-23 | Requirements Engineering Agent | V1 Functional Refinement Pass (Step 4b): added derived requirement `R1.3` (locked-account recovery, from NFR-RN10/RN11), refined `R7.2` restricted-state and `R8.2` final-export-offer descriptions, elevated `R1.2` to MUST (GDPR Art. 5(1)(d) + Art. 16, `PO-D-01.4-001`); register in `analysis_v0_to_v1/STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md`. |
+| **3.0.1** | 2026-09-24 | Requirements Engineering Agent | Specificity Matching audit (STEP6): demoted unwarranted mechanism-category wording in absorbed constraint names (RN10, RN11, RN14, RN22) to the altitude warranted by the cited chains; IDs and chains unchanged. |

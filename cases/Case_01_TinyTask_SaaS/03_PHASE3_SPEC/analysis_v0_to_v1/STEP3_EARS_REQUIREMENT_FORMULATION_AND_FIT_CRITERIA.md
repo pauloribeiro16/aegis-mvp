@@ -59,18 +59,18 @@ Step 3 transforms the regulatory drivers and threat mitigations derived in Step 
 - **Volere Fit Criterion Rationale:** Must be a measurable 100% threshold: `100% of synthetic cross-tenant query probes executed during automated integration testing return HTTP 403 Forbidden with zero records leaked.`
 - **Verification Method:** `TEST` (Automated integration test suite injecting foreign tenant IDs).
 
-### `RN10`: Credential Hardening & Salted Hashing
+### `RN10`: Credential Confidentiality Protection (State of the Art)
 - **Syntactic Selection:** *Event-Driven*. Triggered by the event of a user registering or resetting credentials.
 - **Formulation:**
-  > *"When a user sets or updates their account password, the system shall hash the password using a memory-hard, salted cryptographic hashing algorithm prior to persisting it in the internal application database, and the system shall never store, log, or transmit passwords in plaintext."*
+  > *"When a user sets or updates their account password, the system shall protect the credential using state-of-the-art mechanisms such that the original value cannot be recovered from any stored representation, and the system shall never store, log, or transmit passwords in recoverable form."*
 - **Why this EARS Pattern:** Pinpoints the exact lifecycle moment (password update) and dictates the immediate defensive transformation.
-- **Volere Fit Criterion Rationale:** Verifiable via database inspection and unit tests: `Stored credential records match verified salted cryptographic one-way derivation formats with unique per-credential salt parameters; zero plaintext credential instances in application logs or data stores.`
-- **Verification Method:** `TEST` (Unit test verifying cryptographic derivation and salt uniqueness).
+- **Volere Fit Criterion Rationale:** Verifiable via database inspection and unit tests: `Stored credential representations are one-way verifiable (original value not recoverable), unique per credential, and zero recoverable credential values appear in application logs or data stores.`
+- **Verification Method:** `TEST` (Automated credential-storage inspection).
 
-### `RN11`: Cryptographic Session Management & Invalidation
+### `RN11`: Session Management & Invalidation
 - **Syntactic Selection:** *Combined State-Driven & Event-Driven*. Governs the active session state and the expiration/logout events.
 - **Formulation:**
-  > *"While a user is authenticated, the system shall manage session state using secure, non-predictable cryptographic session identifiers. When a user initiates logout or exceeds an established period of user inactivity, the system shall terminate and invalidate the session state on both client and server sides, preventing resumption without re-authentication."*
+  > *"While a user is authenticated, the system shall manage session state using unpredictable session identifiers. When a user initiates logout or exceeds an established period of user inactivity, the system shall terminate and invalidate the session state on both client and server sides, preventing resumption without re-authentication."*
 - **Why this EARS Pattern:** Couples the background invariant (non-predictable session identifiers) with explicit trigger events (logout or established inactivity).
 - **Volere Fit Criterion Rationale:** Objective control threshold: `Post-logout or invalidated session tokens submitted to protected API endpoints are rejected with authentication failure status; invalidated sessions cannot be resumed without re-authentication.`
 - **Verification Method:** `TEST` (Automated session expiration and revocation test suite).
@@ -86,17 +86,17 @@ Step 3 transforms the regulatory drivers and threat mitigations derived in Step 
 ### `RN13`: File Upload Strict Validation & Content Isolation
 - **Syntactic Selection:** *Combined Event-Driven & Unwanted Behavior*. Triggered by file attachment upload; branches on invalid file signature or size.
 - **Formulation:**
-  > *"When a file attachment is uploaded, the system shall validate that the actual file content matches the declared MIME type and file signature (magic bytes) against an allowlist of non-executable document formats, and if an invalid signature, unauthorized executable format, or payload exceeding configured capacity limits is detected, the system shall reject the upload and discard the temporary buffer."*
-- **Why this EARS Pattern:** Addresses the file upload attack surface by specifying validation at the magic-byte level, not just superficial file extensions.
+  > *"When a file attachment is uploaded, the system shall validate that the actual file content matches its declared file type and actual content signature against an allowlist of non-executable document formats, and if an invalid signature, unauthorized executable format, or payload exceeding configured capacity limits is detected, the system shall reject the upload and discard the temporary buffer."*
+- **Why this EARS Pattern:** Addresses the file upload attack surface by specifying content-level validation, not just declared file extensions.
 - **Volere Fit Criterion Rationale:** `Submissions of spoofed executable binaries or payloads exceeding configured capacity limits are rejected with an explicit validation error, and zero temporary files remain on disk.`
-- **Verification Method:** `TEST` (MIME/magic-byte spoofing test suite).
+- **Verification Method:** `TEST` (File-type spoofing test suite).
 
-### `RN14`: Context-Aware Output Encoding & Sanitization
+### `RN14`: Untrusted Content Neutralization
 - **Syntactic Selection:** *Event-Driven*. Triggered when comment data is retrieved and rendered to users.
 - **Formulation:**
-  > *"When task comments or rich-text descriptions are rendered to users, the system shall perform context-aware output encoding to neutralize embedded scripts, HTML tags, or executable markup."*
-- **Why this EARS Pattern:** Establishes that defense occurs at the output boundary, ensuring complete protection against stored XSS.
-- **Volere Fit Criterion Rationale:** `100% of stored XSS test vectors injected into comment fields are rendered as inert text entities with zero script execution.`
+  > *"When task comments or rich-text descriptions are rendered to users, the system shall neutralize embedded active content so that submitted scripts, markup, or executable payloads are rendered as inert text."*
+- **Why this EARS Pattern:** Establishes that defense occurs at the output boundary, ensuring complete protection against stored script injection.
+- **Volere Fit Criterion Rationale:** `100% of stored script-injection test vectors injected into comment fields are rendered as inert text with zero script execution.`
 - **Verification Method:** `TEST` (Automated browser-based dynamic security probe).
 
 ### `RN15`: Cryptographic Billing Invariant Protection
@@ -156,7 +156,7 @@ Step 3 transforms the regulatory drivers and threat mitigations derived in Step 
 - **Volere Fit Criterion Rationale:** `Post-erasure database search for the user's email or full name yields zero matches; historical records display a non-reversible pseudonym (e.g. Deactivated User [ID: 9481]).`
 - **Verification Method:** `TEST` (Account termination pipeline test and data pseudonymization assertion).
 
-### `RN22`: Purpose Limitation & Time Log Segregation
+### `RN22`: Purpose Limitation & Activity Metrics Segregation
 - **Syntactic Selection:** *State-Driven*. Governs the operational state of timesheet processing.
 - **Formulation:**
   > *"While processing logged billable hours and timesheet summaries, the system shall utilize time records strictly for project cost tracking and client invoicing, and shall prevent the extraction or profiling of individual employee performance metrics for unconsented secondary purposes."*
@@ -170,7 +170,7 @@ Step 3 transforms the regulatory drivers and threat mitigations derived in Step 
 - **Volere Fit Criterion Rationale:** `Storage infrastructure manifests and volume configuration scripts confirm transparent cryptographic protection is enabled with managed key rotation.`
 - **Verification Method:** `INSPECT` (Infrastructure-as-Code and volume configuration audit).
 
-### `RN24`: Mandatory End-to-End Transport Layer Cryptographic Protection
+### `RN24`: Cryptographic Protection of Data in Transit
 - **Syntactic Selection:** *Combined Ubiquitous & Unwanted Behavior*. Network ingress invariant.
 - **Formulation:**
   > *"The system shall cryptographically protect all personal and sensitive data in transit across public and untrusted networks against unauthorized disclosure and tampering, using state-of-the-art cryptographic communication mechanisms, and if an unencrypted connection attempt is detected, the system shall refuse the connection or enforce cryptographic upgrade."*

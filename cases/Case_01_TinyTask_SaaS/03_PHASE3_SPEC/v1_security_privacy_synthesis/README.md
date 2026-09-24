@@ -14,7 +14,7 @@
 Version 1 represents the **formal synthesis of cybersecurity and personal data protection obligations into the functional requirements baseline**.
 
 While Version 0 established what the business and users need to accomplish in purely functional, technology-neutral terms, Version 1 specifies **how the system protects its assets, users, and boundaries**, directly addressing:
-1. **EU Cyber Resilience Act (CRA) Annex I:** Product cybersecurity requirements, multi-tenant isolation, memory-hard credential hashing, token-based session expiration, strict MIME validation, context-aware output encoding, cryptographic webhook signatures, API throttling, and immutable audit trails.
+1. **EU Cyber Resilience Act (CRA) Annex I:** Product cybersecurity requirements, multi-tenant isolation, credential protection using state-of-the-art mechanisms, session expiration, strict file-type validation, untrusted content neutralization, cryptographic webhook signatures, API throttling, and immutable audit trails.
 2. **EU General Data Protection Regulation (GDPR):** Data minimization by default (Art. 5(1)(c)), data subject access and structured portability (Art. 15/20), right to erasure and pseudonymization (Art. 17), purpose limitation on timesheets (Art. 5(1)(b)), encryption at rest and in transit (Art. 32), automated orphan file cleanup (Art. 5(1)(e)), and privacy audit logging (Art. 30).
 3. **AEGIS 7 Secure Design Principles (`PRIN-ENG-01` to `PRIN-ENG-07`):** Explicit trust boundaries, fail-safe defaults, least privilege, complete mediation, and non-repudiable observability.
 

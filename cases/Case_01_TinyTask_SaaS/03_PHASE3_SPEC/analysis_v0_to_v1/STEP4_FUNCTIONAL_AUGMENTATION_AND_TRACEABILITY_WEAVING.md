@@ -40,11 +40,11 @@ To bind the security constraints, Section 2.3 is augmented with **Table 7b (Secu
 | ID | Security & Privacy Requirement | Upstream Origin | Bound Functional Requirements | Verification |
 |---|---|---|---|---|
 | **RN9** | Multi-Tenant Data Isolation & Mediation | CRA Annex I / SO-D-02.1-002 | R1.2, R2.1, R3.1 | TEST |
-| **RN10** | Credential Hardening & Salted Hashing | CRA Annex I / SO-D-02.1-002 | R1.1 | TEST |
-| **RN11** | Cryptographic Session Management & Invalidation | CRA Annex I / SO-D-02.2-002 | R1.1 | TEST |
+| **RN10** | Credential Confidentiality Protection (State of the Art) | CRA Annex I / SO-D-02.1-002 | R1.1 | TEST |
+| **RN11** | Session Management & Invalidation | CRA Annex I / SO-D-02.2-002 | R1.1 | TEST |
 | **RN12** | Role-Based Access Control & Action Mediation | CRA Annex I / SO-D-02.1-002 | R2.1, R2.2, R3.1 | TEST |
 | **RN13** | File Upload Strict Validation & Content Isolation | CRA Annex I / SO-D-07.1-002 | R5.1 | TEST |
-| **RN14** | Context-Aware Output Encoding & Sanitization | CRA Annex I / SO-D-07.1-002 | R5.2 | TEST |
+| **RN14** | Untrusted Content Neutralization | CRA Annex I / SO-D-07.1-002 | R5.2 | TEST |
 | **RN15** | Cryptographic Billing Invariant Protection | CRA Annex I / SO-D-01.1-002 | R7.1, R7.2 | INSPECT |
 | **RN16** | Cryptographic Webhook Origin Verification | CRA Annex I / SO-D-05.1-002 | R7.1, R7.2 | TEST |
 | **RN17** | Inbound API Token Mediation & Rate Limiting | CRA Annex I / SO-D-02.1-002 | R1.1, R4.2 | TEST |
@@ -54,7 +54,7 @@ To bind the security constraints, Section 2.3 is augmented with **Table 7b (Secu
 | **RN21** | Irreversible Data Subject Erasure & Pseudonymization | GDPR Art. 17 / PO-D-06.2-001 | R8.2 | TEST |
 | **RN22** | Purpose Limitation & Activity History Segregation | GDPR Art. 5(1)(b) / PO-D-06.1-001 | R6.1, R6.2 | ANALYZE |
 | **RN23** | Personal Data Cryptographic Protection at Rest | GDPR Art. 32 / PO-D-01.1-001 | R1.1, R1.2, R8.1 | INSPECT |
-| **RN24** | Mandatory End-to-End Transport Layer Cryptographic Protection | GDPR Art. 32 / PO-D-01.2-001 | R1.1 to R8.2 | TEST |
+| **RN24** | Cryptographic Protection of Data in Transit | GDPR Art. 32 / PO-D-01.2-001 | R1.1 to R8.2 | TEST |
 | **RN25** | Automated Orphan File Asset Cleanup & Expiration | GDPR Art. 5(1)(e) / PO-D-06.1-001 | R5.1 | TEST |
 | **RN26** | Privacy Audit Trail for Personal Data Modifications | GDPR Art. 30 / PO-D-03.1-001 | R1.1, R1.2, R8.2 | INSPECT |
 ```

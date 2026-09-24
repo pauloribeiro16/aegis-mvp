@@ -145,7 +145,7 @@ flowchart TD
 1. **Boundary Crossing 1 (Public User to Ingress):** Registration credentials, login attempts, profile changes. Requires strict encryption in transit, rate limiting, and input sanitization.
 2. **Boundary Crossing 2 (External Payment Gateway to Ingress):** Asynchronous billing status updates and payment receipts. Requires origin verification, cryptographic signatures, and replay prevention.
 3. **Boundary Crossing 3 (Application Core to Internal Storage):** Multi-tenant records residing in a shared database. Requires complete mediation so that tenant A cannot access tenant B's records under any circumstance.
-4. **Boundary Crossing 4 (File Uploads to Storage Service):** User-supplied binary blobs. Requires strict MIME/signature validation, file size limits, and access control.
+4. **Boundary Crossing 4 (File Uploads to Storage Service):** User-supplied binary blobs. Requires strict file-type/signature validation, file size limits, and access control.
 
 ---
 

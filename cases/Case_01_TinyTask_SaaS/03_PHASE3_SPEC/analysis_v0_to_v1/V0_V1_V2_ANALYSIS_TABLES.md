@@ -18,20 +18,20 @@
 
 | Req ID | Name | Priority | Absorbed NFRs (tracing chain in card) |
 |---|---|---|---|
-| `R1.1` | Register and authenticate user accounts | Must | **NFR-RN10** Credential Hardening & Salted Hashing — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.1-002, SO-D-01.1-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-01<br>**NFR-RN11** Cryptographic Session Management & Invalidation — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.2-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-02<br>**NFR-RN19** Registration Data Minimization by Default — `GDPR Art. 5(1)(c)` → `PO-D-06.1-001` → `PRIN-ENG-06` → CSF PR.DS-10, GV.OC-03 / PF CT.DP-P2 |
+| `R1.1` | Register and authenticate user accounts | Must | **NFR-RN10** Credential Confidentiality Protection (State of the Art) — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.1-002, SO-D-01.1-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-01<br>**NFR-RN11** Session Management & Invalidation — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.2-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-02<br>**NFR-RN19** Registration Data Minimization by Default — `GDPR Art. 5(1)(c)` → `PO-D-06.1-001` → `PRIN-ENG-06` → CSF PR.DS-10, GV.OC-03 / PF CT.DP-P2 |
 | `R1.2` | Manage user profile and account preferences | Must | **NFR-RN23** Personal Data Cryptographic Protection at Rest — `GDPR Art. 32(1)(a) + Art. 5(1)(f)` → `PO-D-01.1-001` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-10 / PF PR.DS-P1<br>**NFR-RN26** Privacy Audit Trail for Personal Data Modifications — `GDPR Art. 30` → `PO-D-03.1-001` → `PRIN-ENG-07` → CSF PR.PT-01, DE.CM-01 / PF CM.AW-P2<br>*D3 (STEP5 CH-04): Should → Must (GDPR Art. 5(1)(d) + Art. 16, `PO-D-01.4-001`)* |
-| `R1.3` | Recover access to a locked user account | Must | **NFR-RN10** Credential Hardening & Salted Hashing — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.1-002, SO-D-01.1-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-01<br>**NFR-RN11** Cryptographic Session Management & Invalidation — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.2-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-02<br>*D1 (STEP5 CH-01): derived in the V1 Refinement Pass* |
+| `R1.3` | Recover access to a locked user account | Must | **NFR-RN10** Credential Confidentiality Protection (State of the Art) — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.1-002, SO-D-01.1-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-01<br>**NFR-RN11** Session Management & Invalidation — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.2-002` → `PRIN-ENG-04` → CSF PR.AA-03, PR.DS-02<br>*D1 (STEP5 CH-01): derived in the V1 Refinement Pass* |
 | `R2.1` | Create and configure workspace | Must | **NFR-RN9** Multi-Tenant Data Isolation & Mediation — `CRA Annex I Part I (2)(d)` → `SO-D-02.1-002` → `PRIN-ENG-03` → CSF PR.AA-05, PR.DS-01 |
 | `R2.2` | Invite workspace members and manage access roles | Must | **NFR-RN12** Role-Based Access Control & Action Mediation — `CRA Annex I Part I (2)(d)` → `SO-D-02.1-002` → `PRIN-ENG-03` → CSF PR.AA-05, PR.AA-06 |
-| `R2.3` | Monitor workspace activity and operational metrics | Could | **NFR-RN22** Purpose Limitation & Time Log Segregation — `GDPR Art. 5(1)(b) + Art. 6(4)` → `PO-D-06.1-001` → `PRIN-ENG-03` → CSF GV.OC-03, PR.DS-10 / PF CM.PO-P2 |
+| `R2.3` | Monitor workspace activity and operational metrics | Could | **NFR-RN22** Purpose Limitation & Activity Metrics Segregation — `GDPR Art. 5(1)(b) + Art. 6(4)` → `PO-D-06.1-001` → `PRIN-ENG-03` → CSF GV.OC-03, PR.DS-10 / PF CM.PO-P2 |
 | `R3.1` | Create and configure projects | Must | **NFR-RN9** Multi-Tenant Data Isolation & Mediation — `CRA Annex I Part I (2)(d)` → `SO-D-02.1-002` → `PRIN-ENG-03` → CSF PR.AA-05, PR.DS-01 |
 | `R3.2` | Archive completed projects | Should | — |
 | `R4.1` | Create and assign tasks | Must | — |
 | `R4.2` | Track and transition task workflow states on visual boards | Must | — |
 | `R4.3` | Configure recurring automated tasks | Could | — |
 | `R5.1` | Manage task deliverable attachments | Must | **NFR-RN13** File Upload Strict Validation & Content Isolation — `CRA Annex I Part I (2)(j)` → `SO-D-07.1-002` → `PRIN-ENG-02` → CSF PR.PS-06, PR.PS-02<br>**NFR-RN25** Automated Orphan File Asset Cleanup & Expiration — `GDPR Art. 5(1)(e)` → `PO-D-06.1-001` → `PRIN-ENG-07` → CSF PR.IP-06, PR.DS-10 / PF CT.DM-P3 |
-| `R5.2` | Post in-task discussion comments and mention collaborators | Must | **NFR-RN14** Context-Aware Output Encoding & Sanitization — `CRA Annex I Part I (2)(l)` → `SO-D-07.1-002` → `PRIN-ENG-04` → CSF PR.PS-06 |
-| `R6.1` | Consult chronological audit history on task cards | Must | **NFR-RN22** Purpose Limitation & Time Log Segregation — `GDPR Art. 5(1)(b) + Art. 6(4)` → `PO-D-06.1-001` → `PRIN-ENG-03` → CSF GV.OC-03, PR.DS-10 / PF CM.PO-P2 |
+| `R5.2` | Post in-task discussion comments and mention collaborators | Must | **NFR-RN14** Untrusted Content Neutralization — `CRA Annex I Part I (2)(l)` → `SO-D-07.1-002` → `PRIN-ENG-04` → CSF PR.PS-06 |
+| `R6.1` | Consult chronological audit history on task cards | Must | **NFR-RN22** Purpose Limitation & Activity Metrics Segregation — `GDPR Art. 5(1)(b) + Art. 6(4)` → `PO-D-06.1-001` → `PRIN-ENG-03` → CSF GV.OC-03, PR.DS-10 / PF CM.PO-P2 |
 | `R6.2` | Receive workspace alerts and daily task digests | Should | **NFR-RN16** Cryptographic Webhook Origin Verification — `CRA Annex I Part I (2)(l)` → `SO-D-05.1-002, SO-D-08.1-002` → `PRIN-ENG-01` → CSF PR.DS-02, PR.AA-05 |
 | `R7.1` | Subscribe and manage workspace commercial plans | Must | **NFR-RN15** Cryptographic Billing Invariant Protection — `CRA Annex I Part I (2)(l)` → `SO-D-01.1-002, SO-D-08.1-002` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-02 |
 | `R7.2` | Enforce operational grace period upon payment failure | Must | **NFR-RN15** Cryptographic Billing Invariant Protection — `CRA Annex I Part I (2)(l)` → `SO-D-01.1-002, SO-D-08.1-002` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-02 |
@@ -52,20 +52,20 @@
 | `RN8` | Strict logical data segregation across workspaces (multi-tenancy) | Operational | Quality Attributes table (standalone) |
 | `RN17` | Inbound API Token Mediation & Rate Limiting | Security — cross-cutting | Quality Attributes table (standalone, full tracing chain in row) |
 | `RN18` | Non-Repudiable Security Audit Logging | Security — cross-cutting | Quality Attributes table (standalone, full tracing chain in row) |
-| `RN24` | Mandatory End-to-End Transport Layer Cryptographic Protection | Security — cross-cutting | Quality Attributes table (standalone, full tracing chain in row) |
-| `RN10` | Credential Hardening & Salted Hashing | Security/Privacy | Absorbed in `R1.1`, `R1.3` cards |
-| `RN11` | Cryptographic Session Management & Invalidation | Security/Privacy | Absorbed in `R1.1`, `R1.3` cards |
+| `RN24` | Cryptographic Protection of Data in Transit | Security — cross-cutting | Quality Attributes table (standalone, full tracing chain in row) |
+| `RN10` | Credential Confidentiality Protection (State of the Art) | Security/Privacy | Absorbed in `R1.1`, `R1.3` cards |
+| `RN11` | Session Management & Invalidation | Security/Privacy | Absorbed in `R1.1`, `R1.3` cards |
 | `RN19` | Registration Data Minimization by Default | Security/Privacy | Absorbed in `R1.1` card |
 | `RN23` | Personal Data Cryptographic Protection at Rest | Security/Privacy | Absorbed in `R1.2` card |
 | `RN26` | Privacy Audit Trail for Personal Data Modifications | Security/Privacy | Absorbed in `R1.2` card |
 | `RN9` | Multi-Tenant Data Isolation & Mediation | Security/Privacy | Absorbed in `R2.1` card |
 | `RN12` | Role-Based Access Control & Action Mediation | Security/Privacy | Absorbed in `R2.2` card |
-| `RN22` | Purpose Limitation & Time Log Segregation | Security/Privacy | Absorbed in `R2.3` card |
+| `RN22` | Purpose Limitation & Activity Metrics Segregation | Security/Privacy | Absorbed in `R2.3` card |
 | `RN9` | Multi-Tenant Data Isolation & Mediation | Security/Privacy | Absorbed in `R3.1` card |
 | `RN13` | File Upload Strict Validation & Content Isolation | Security/Privacy | Absorbed in `R5.1` card |
 | `RN25` | Automated Orphan File Asset Cleanup & Expiration | Security/Privacy | Absorbed in `R5.1` card |
-| `RN14` | Context-Aware Output Encoding & Sanitization | Security/Privacy | Absorbed in `R5.2` card |
-| `RN22` | Purpose Limitation & Time Log Segregation | Security/Privacy | Absorbed in `R6.1` card |
+| `RN14` | Untrusted Content Neutralization | Security/Privacy | Absorbed in `R5.2` card |
+| `RN22` | Purpose Limitation & Activity Metrics Segregation | Security/Privacy | Absorbed in `R6.1` card |
 | `RN15` | Cryptographic Billing Invariant Protection | Security/Privacy | Absorbed in `R7.1` card |
 | `RN15` | Cryptographic Billing Invariant Protection | Security/Privacy | Absorbed in `R7.2` card |
 | `RN20` | Structured Personal Data Portability & Export | Security/Privacy | Absorbed in `R8.1` card |

@@ -27,7 +27,6 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 │   ├── STEP3_EARS_REQUIREMENT_FORMULATION_AND_FIT_CRITERIA.md    # Step 3: EARS formulation & Volere fit criteria
 │   ├── STEP4_FUNCTIONAL_AUGMENTATION_AND_TRACEABILITY_WEAVING.md # Step 4: Use case Cockburn extensions & diffs
 │   ├── STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md                    # Step 5b: Functional Evolution Register (D1–D4 changes)
-│   ├── STEP6_SPECIFICITY_MATCHING_AUDIT.md                       # Specificity Matching audit (altitude control, corrections C-01..C-11)
 │   └── V0_V1_V2_ANALYSIS_TABLES.md                               # Version ladder, per-requirement absorption, and register summary
 │
 ├── v0_functional_baseline/                      # [VERSION 0] Pure Functional Baseline (LOCKED)

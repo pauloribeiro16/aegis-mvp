@@ -1,16 +1,5 @@
 # Step 2: Regulatory Cross-Cutting Analysis
 
-> **Step ID:** STEP-02  
-> **Inputs:**  
-> - Step 1 Functional Asset & Boundary Audit  
-> - Phase 2 `Doc01_Operational_Objectives.md` (35 Active Sub-Domains, `PO-*` & `SO-*`)  
-> - Phase 2 `Doc02_Secure_Design_Principles.md` (7 Engineering Principles `PRIN-ENG-01` to `PRIN-ENG-07`)  
-> **Output:** Cross-Cutting Regulatory Mapping Matrix  
-> **Methodological Grounding:** Regulatory juxtaposition (Phase 2 → V0); Privacy by Design (Cavoukian, 2009), Saltzer & Schroeder (1975).
-> **Threat hypotheses:** deferred to Phase 4 per ADR-005 — preserved in [`THREAT_ANALYSIS_DEFERRED.md`](THREAT_ANALYSIS_DEFERRED.md).  
-
----
-
 ## 1. Purpose & Methodological Rationale
 
 Step 2 executes the systematic juxtaposition of upstream compliance and engineering rules (**Phase 2**) against the pure functional baseline (**Version 0**).

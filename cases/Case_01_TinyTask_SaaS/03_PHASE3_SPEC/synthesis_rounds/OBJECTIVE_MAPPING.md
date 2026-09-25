@@ -1,12 +1,5 @@
 # Phase 2 Objective Mapping — Exhaustive Coverage Matrix (TinyTask SaaS)
 
-> **Purpose:** Conformant Step 2 output (manual Step 2 item 4; ADR-005): **every** Phase 2 objective and principle with an explicit verdict against the functional model, so a reviewer can judge whether each placement makes sense. This matrix is what the Step 3 rounds negotiate. UC-centric companion view: [`UC_OBJECTIVE_CORRESPONDENCE.md`](UC_OBJECTIVE_CORRESPONDENCE.md).
-> **Source of objectives/principles/anchors:** `../../02_PHASE2_RULES/Doc01_Operational_Objectives.md` (published control set = final column) + `Doc02_Secure_Design_Principles.md`.
-> **State legend:** `Covered (RNx)` = applied in V1 by the named requirement(s) · `Partial` = applied but chain driver/anchors need the listed adjustment · `Proposed R1 (P-xx / ADJ-x)` = new constraint or re-drive awaiting a client verdict in the register · `No functional carrier` = recorded decision (organizational/process control per ADR-002; not a product requirement) · `Design guidance` = constrains the design, deferred to architecture/Phase 4 context · `N/A` = requirement type not applicable to a SaaS product.
-> **Skills (analysis lens):** AS = attack-surface-analysis · TB = trust-boundary-analysis · LP = least-privilege-analysis · FS = fail-safe-defaults-analysis · V = verifiability-analysis · DM = data-minimization-analysis · LE = lifecycle-erasure-analysis.
-> **Recalibration note:** chains previously citing phantom `PO-D-06.1/2-001` and `PO-D-03.1-001` were remapped to the real objectives below (STEP7 §3); anchors corrected to each cited objective's published set.
-
----
 
 ## D-01 — Data Protection
 

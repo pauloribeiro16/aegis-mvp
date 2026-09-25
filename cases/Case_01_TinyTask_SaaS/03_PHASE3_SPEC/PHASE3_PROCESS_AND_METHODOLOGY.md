@@ -251,7 +251,7 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 │   ├── Doc01_Requirements_Elicitation_and_PUC.md# Absorbed Security/Privacy Constraints + Functional Refinement Pass (D1-D4)
 │   └── Doc02_System_Use_Cases.md                # Cockburn Security Extensions, Guarantees, and Derived Use Cases
 │
-├── analysis_v0_to_v1/                           # STEP1-STEP6 dossiers + V0/V1/V2 analysis tables (incl. Functional Evolution Register)
+├── analysis_v0_to_v1/                           # STEP1-STEP5 dossiers + V0/V1/V2 analysis tables (incl. Functional Evolution Register)
 │
 └── synthesis_rounds/                            # [ROUND CYCLE] Objective/principle mappings + round documentation (ADR-005)
 ```

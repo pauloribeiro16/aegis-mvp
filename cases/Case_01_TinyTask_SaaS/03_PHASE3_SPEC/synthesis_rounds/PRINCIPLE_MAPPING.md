@@ -1,5 +1,100 @@
 # Principle Mapping — Functional Requirements Analyzed Against the 7 Secure Design Principles (TinyTask SaaS)
 
+> **Purpose:** The principle-centric mirror of [`OBJECTIVE_MAPPING.md`](OBJECTIVE_MAPPING.md): for **each secure-design principle** (`PRIN-ENG-01`..`07`, Phase 2 `Doc02`), where it binds across the functional model (requirement cards `R<n.m>` and use cases `{U.C.n.m}`), how it is realized there, and its coverage state — so a reviewer can judge whether **every principle is being followed**, the same way the objective mapping judges whether every objective is applied.
+> **Sources:** `../../02_PHASE2_RULES/Doc02_Secure_Design_Principles.md` (principle definitions) · `../v1_security_privacy_synthesis/Doc01` (in-card NFR absorption) · [`UC_OBJECTIVE_CORRESPONDENCE.md`](UC_OBJECTIVE_CORRESPONDENCE.md) (per-UC bindings).
+> **State legend:** `Bound (RNx)` = realized by the named absorbed NFR / in-card constraint · `Bound (functional)` = realized directly in the requirement's functional description (no RN needed) · `Pending (P-xx / ADJ-x)` = gap proposed in the open round, awaiting client verdict (verdicts recorded in the round documentation) · `Cross-cutting` = binds via shared table row / preconditions, not a single card.
+> **Skills (analysis lens):** AS = attack-surface-analysis · TB = trust-boundary-analysis · LP = least-privilege-analysis · FS = fail-safe-defaults-analysis · V = verifiability-analysis · DM = data-minimization-analysis · LE = lifecycle-erasure-analysis.
+
+---
+
+## §1 Principle ↔ Functional Model Matrix (principle-centric)
+
+### `PRIN-ENG-01` — Explicit Trust Boundaries & Complete Mediation
+
+Every interface separating zones of differing privilege is demarcated; every crossing flow is authenticated and validated; no unmediated bypass.
+
+| Where | Realization | RN | State |
+|---|---|---|---|
+| `R7.1`, `R7.2` / `{U.C. 7.1}` `{U.C. 7.2}` | Gateway responses cross the boundary with complete mediation; billing state changes only on verified receipts | RN15 | Bound |
+| `R6.2` / `{U.C. 6.2}` | Notification transport crosses the boundary with verified origin (webhook signature) | RN16 | Bound |
+| `R1.2` / `{U.C. 1.2}` | Profile records protected within the boundary; egress scoped | RN23 | Bound |
+| All UCs (preconditions) | Transport confidentiality on every external-boundary flow | RN24 | Cross-cutting |
+| `R8.1`, `R8.2` / `{U.C. 8.1}` `{U.C. 8.2}` | Rights-exercise execution mediated by verified requester identity | — | Pending (P-01) |
+
+**Verdict: followed.** One pending mediation gap (P-01) awaiting verdict.
+
+### `PRIN-ENG-02` — Attack Surface Minimization & Peripheral Resilience
+
+Entry points, channels and active interfaces reduced to the minimum; auxiliary ingress matches core security intensity.
+
+| Where | Realization | RN | State |
+|---|---|---|---|
+| `R5.1` / `{U.C. 5.1}` | Upload surface minimized; disallowed types rejected at the boundary; content validated | RN13 | Bound |
+| `R4.2`, `R6.1` / `{U.C. 4.2}` `{U.C. 6.1}` | Transition/query request floods throttled (resilience of peripheral flows) | RN17 | Bound |
+| `R4.1`, `R5.2` / `{U.C. 4.1}` `{U.C. 5.2}` | Rendered/ingested content neutralized (no executable payloads) | RN14 | Bound |
+
+**Verdict: followed.**
+
+### `PRIN-ENG-03` — Least Privilege & Mechanism Isolation
+
+Every principal operates with minimum privileges; distinct tenants/sensitivity levels never share unisolated mechanisms.
+
+| Where | Realization | RN | State |
+|---|---|---|---|
+| `R2.1`, `R3.1` / `{U.C. 2.1}` `{U.C. 3.1}` | Tenant context enforced on every provisioning/creation action; containers born isolated | RN9 | Bound |
+| `R2.2`, `R3.2`, `R8.1` / `{U.C. 2.2}` `{U.C. 3.2}` `{U.C. 8.1}` | RBAC mediation before membership/archive/export mutations; Owner irremovable | RN12 | Bound |
+| `R2.3`, `R6.1` / `{U.C. 2.3}` `{U.C. 6.1}` | Metrics/audit queries purpose-scoped; no cross-tenant or surveillance aggregation | RN22 | Bound |
+| `R4.3` / `{U.C. 4.3}` | Recurrence daemon executes in an isolated service context | RN9 (pre) | Bound |
+
+**Verdict: followed.**
+
+### `PRIN-ENG-04` — Fail-Safe Defaults & Closed Failure States
+
+Access decisions and state transitions default to refusal; failures terminate in a secure closed state.
+
+| Where | Realization | RN | State |
+|---|---|---|---|
+| `R1.1`, `R1.3` / `{U.C. 1.1}` `{U.C. 1.3}` | Credentials stored unrecoverable; lockout fails closed; enumeration-resistant recovery responses | RN10, RN11 | Bound |
+| `R5.2` / `{U.C. 5.2}` | Sanitization fails safe — payloads never executed by default | RN14 | Bound |
+| `R7.2` / `{U.C. 7.2}` | Expired grace period → restricted read-only state, never silent open access | functional (description) | Bound |
+| `R2.1`, `R3.1` / `{U.C. 2.1}` `{U.C. 3.1}` | New artifacts start with restrictive secure-by-default configuration | — | Pending (P-02) |
+
+**Verdict: followed.** One pending default-configuration gap (P-02) awaiting verdict.
+
+### `PRIN-ENG-05` — Requirement Verifiability & Atomicity
+
+Every security/privacy requirement is atomic with a deterministic pass/fail verification method.
+
+| Where | Realization | RN | State |
+|---|---|---|---|
+| All RN cards + every round proposal | Volere fit criterion + empirical method (`TEST`/`INSPECT`/`DEMONSTRATE`/`ANALYZE`) on each requirement | global | Bound (recorded once) |
+
+**Verdict: followed** (structural — enforced by the card anatomy and the round-proposal template).
+
+### `PRIN-ENG-06` — Proactive Data Minimization & Scoped Projection
+
+Only strictly indispensable data is collected, transmitted or retained; egress projects strictly scoped views.
+
+| Where | Realization | RN | State |
+|---|---|---|---|
+| `R1.1` / `{U.C. 1.1}` | Registration collects only the necessary personal data | RN19 | Bound |
+| `R8.1` / `{U.C. 8.1}` | Archive limited to the requester's own data (no third-party leakage) | RN20 | Bound |
+
+**Verdict: followed.**
+
+### `PRIN-ENG-07` — End-to-End Lifecycle Security & Irreversible Erasure
+
+Protection covers the entire lifecycle; erasure permanently destroys across stores; observability is non-repudiable.
+
+| Where | Realization | RN | State |
+|---|---|---|---|
+| All R / all UCs | Immutable security audit record for authentication, privilege, denial and billing events | RN18 | Bound (cross-cutting, Quality Attributes) |
+| `R8.2` / `{U.C. 8.2}` | Erasure irreversible + pseudonymized; receipt issued; audit trail preserved | RN21 | Bound |
+| `R5.1` / `{U.C. 5.1}` | Deleted attachments purged on a retention schedule (no indefinite retention) | RN25 | Bound |
+| `R1.2` / `{U.C. 1.2}` | Personal-data modifications emit a privacy audit record (Art. 30 accountability) | RN26 | Bound |
+
+**Verdict: followed.**
+
 ---
 
 ## §2 Per-Requirement Principle Check (R1.1–R8.2)

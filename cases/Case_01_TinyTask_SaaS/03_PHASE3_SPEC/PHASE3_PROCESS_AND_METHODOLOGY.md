@@ -145,6 +145,18 @@ flowchart TD
 
 ## 3. The Progressive Synthesis Process (Iterative Risk-Acceptance Cycle)
 
+### The Phase 3 Loop in Two Parts
+
+Phase 3 is organized as **two distinct parts**:
+
+1. **Part 1 — Iterative Evolution Loop (the engine).** A permanent cycle between requirements and use cases, always improving them on two axes:
+   - **Compliance:** every Phase 2 objective is checked against the functional model via `synthesis_rounds/OBJECTIVE_MAPPING.md` (objective-centric) and `UC_OBJECTIVE_CORRESPONDENCE.md` (use-case-centric, regulation-tagged).
+   - **Principles:** every secure-design principle (`PRIN-ENG-01..07`) is checked via `synthesis_rounds/PRINCIPLE_MAPPING.md` (principle-centric) — the same review discipline as objectives, so "are all principles followed?" has a recorded, auditable answer.
+   Each loop iteration: **reveal** use cases and requirements → **check** objectives and principles (both mappings) → **propose** constraints/adjustments for the gaps → **client verdict** per item in the risk-acceptance register → **converge**. Only after convergence do `Doc01`/`Doc02` versions evolve. The transition from assessment to improvement **is** the round itself: the mappings produce proposals, the register turns verdicts into baseline changes.
+2. **Part 2 — Requirement Derivation (the inputs).** The derivation machinery that feeds the loop: the V0 functional baseline, the Phase 2 objectives and principles, the EARS formulation with fit criteria, and the absorption rules (§3.3 of the guidelines). Derivation produces the *candidates*; the Part 1 loop decides what enters the baseline.
+
+**Threat modulation is not a Phase 3 activity.** Threat analysis and modeling belong to Phase 4 (ADR-005): Phase 3 delivers a risk-accepted, control-anchored baseline whose asset and trust-boundary maps seed that later analysis. No threat catalog, attack modeling, or abuse-case derivation appears in Phase 3 deliverables.
+
 ### Step 1: Elicitation and Freezing of Functional Baseline (V0)
 - **Goal:** Capture the complete operational scope of the product in purely functional terms.
 - **Process:**

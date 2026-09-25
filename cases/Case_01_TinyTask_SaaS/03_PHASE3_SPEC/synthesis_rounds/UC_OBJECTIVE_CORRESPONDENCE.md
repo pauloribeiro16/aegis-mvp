@@ -1,7 +1,7 @@
 # UC ↔ Phase 2 Objective Correspondence Matrix (TinyTask SaaS)
 
 > **Purpose:** The use-case-centric view of the Phase 2 correspondence (companion to [`OBJECTIVE_MAPPING.md`](OBJECTIVE_MAPPING.md), which is objective-centric): for every System Use Case, which Phase 2 objectives and principles apply, **what each one demands of that functionality**, the skill lens used, the bound `RN`, and the current state.
-> **Sources:** `OBJECTIVE_MAPPING.md` (objective → carrier verdicts) · `../v1_security_privacy_synthesis/Doc01` (in-card RN absorption) · `../v1_security_privacy_synthesis/Doc02` (UC security preconditions, extensions, guarantees — the behavioral touchpoints) · [`RISK_ACCEPTANCE_REGISTER.md`](RISK_ACCEPTANCE_REGISTER.md) Round 1 (pending re-drives and new proposals).
+> **Sources:** `OBJECTIVE_MAPPING.md` (objective → carrier verdicts) · `../v1_security_privacy_synthesis/Doc01` (in-card RN absorption) · `../v1_security_privacy_synthesis/Doc02` (UC security preconditions, extensions, guarantees — the behavioral touchpoints) · the round documentation (pending re-drives and new proposals).
 > **State legend:** `Covered` = applied in V1 · `Cross-cutting` = binds via shared table row / preconditions, not a single card · `ADJ-x pending` = re-drive proposed in Round 1, awaiting client verdict · `P-x pending` = new constraint proposed in Round 1 · `—` = explicitly no applicable objective recorded (never silent).
 > **† legend:** an `RN` marked `†` sits under its **target** objective (post-Round-1); its current V1 chain driver is named in the ADJ item of the register.
 > **Skill codes:** AS = attack-surface-analysis · TB = trust-boundary-analysis · LP = least-privilege-analysis · FS = fail-safe-defaults-analysis · V = verifiability-analysis · DM = data-minimization-analysis · LE = lifecycle-erasure-analysis.
@@ -251,4 +251,4 @@ _(A `{U.C. 8.3}` Owner-workspace-deletion card becomes applicable if P-03 is acc
 | Most-covered UC | `{U.C. 1.1}` (5 rows) | authentication surface |
 | Least-covered UC | `{U.C. 4.2}` (1 row) | throttling only — matches the V0 "no security surface" reading |
 
-**Read rule:** every binding above traces to a chain that satisfies the anchor-integrity rule (chain anchors ∈ the cited objective's published control set); pending items take effect only after the client's verdicts in [`RISK_ACCEPTANCE_REGISTER.md`](RISK_ACCEPTANCE_REGISTER.md).
+**Read rule:** every binding above traces to a chain that satisfies the anchor-integrity rule (chain anchors ∈ the cited objective's published control set); pending items take effect only after the client's verdicts, recorded in the round documentation.

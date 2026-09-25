@@ -132,7 +132,7 @@ flowchart TD
     subgraph P3_V1["Phase 3 — Version 1 (Synthesized Baseline)"]
         Doc01_V1["Doc01: Requirements Elicitation<br>(+ Non-Functional Requirements & P2 Trace)"]
         Doc02_V1["Doc02: System Use Cases<br>(+ Security Preconditions, Extensions, Guarantees)"]
-        Reg_V1["Risk Acceptance Register<br>(synthesis_rounds/ — client verdicts per item)"]
+        Round_Notes["Round Documentation<br>(synthesis_rounds/ — client verdicts per item)"]
     end
 
     P2 --> Synth
@@ -152,7 +152,7 @@ Phase 3 is organized as **two distinct parts**:
 1. **Part 1 — Iterative Evolution Loop (the engine).** A permanent cycle between requirements and use cases, always improving them on two axes:
    - **Compliance:** every Phase 2 objective is checked against the functional model via `synthesis_rounds/OBJECTIVE_MAPPING.md` (objective-centric) and `UC_OBJECTIVE_CORRESPONDENCE.md` (use-case-centric, regulation-tagged).
    - **Principles:** every secure-design principle (`PRIN-ENG-01..07`) is checked via `synthesis_rounds/PRINCIPLE_MAPPING.md` (principle-centric) — the same review discipline as objectives, so "are all principles followed?" has a recorded, auditable answer.
-   Each loop iteration: **reveal** use cases and requirements → **check** objectives and principles (both mappings) → **propose** constraints/adjustments for the gaps → **client verdict** per item in the risk-acceptance register → **converge**. Only after convergence do `Doc01`/`Doc02` versions evolve. The transition from assessment to improvement **is** the round itself: the mappings produce proposals, the register turns verdicts into baseline changes.
+   Each loop iteration: **reveal** use cases and requirements → **check** objectives and principles (both mappings) → **propose** constraints/adjustments for the gaps → **client verdict** per item, recorded in the round documentation → **converge**. Only after convergence do `Doc01`/`Doc02` versions evolve. The transition from assessment to improvement **is** the round itself: the mappings produce proposals, the round documentation turns verdicts into baseline changes.
 2. **Part 2 — Requirement Derivation (the inputs).** The derivation machinery that feeds the loop: the V0 functional baseline, the Phase 2 objectives and principles, the EARS formulation with fit criteria, and the absorption rules (§3.3 of the guidelines). Derivation produces the *candidates*; the Part 1 loop decides what enters the baseline.
 
 **Threat modulation is not a Phase 3 activity.** Threat analysis and modeling belong to Phase 4 (ADR-005): Phase 3 delivers a risk-accepted, control-anchored baseline whose asset and trust-boundary maps seed that later analysis. No threat catalog, attack modeling, or abuse-case derivation appears in Phase 3 deliverables.
@@ -187,16 +187,16 @@ Phase 3 is organized as **two distinct parts**:
      - Security & privacy requirements continue the existing `RN` numbering (e.g. `RN9` onwards, after the base NFR table), with the regulatory driver carried as data — never as an ID prefix. CRA-derived: integrity, authentication, access control, audit, cryptography, vulnerability management. GDPR-derived: consent tracking, data minimization, right to erasure, purpose limitation, subject export.
      - **Anchor integrity:** the chain's control anchors must belong to the **published control set of the cited objective** (final column of the Phase 2 deliverable — the controls that objective already maps to). An anchor outside that set requires an explicit rationale and a W4 admission (ADR-001); anchors are never chosen ad hoc. The proposal cites the objective's published set as context, so the client can see which controls the requirement is built from — requirements are thereby informed by the existing control mapping without prescribing any technology.
   2. **Present the round** to the client stakeholders.
-  3. **Record the client verdict per item** in the Risk Acceptance Register (`synthesis_rounds/RISK_ACCEPTANCE_REGISTER.md`): **Accept** · **Reject** (= explicit risk acceptance — the item remains registered as accepted-by-decision, never silently dropped) · **Adjust** (wording, level, or scope; re-proposed next round).
+  3. **Record the client verdict per item** in the round documentation (the synthesis_rounds notes): **Accept** · **Reject** (= explicit risk acceptance — the item remains recorded as accepted-by-decision, never silently dropped) · **Adjust** (wording, level, or scope; re-proposed next round).
   4. **Iterate** until convergence: a round with no new rejections, or an explicit client decision to close.
-- **Result:** The **accepted constraint set** plus a fully traced `synthesis_rounds/RISK_ACCEPTANCE_REGISTER.md`. No `Doc01`/`Doc02` version evolves before convergence.
+- **Result:** The **accepted constraint set** plus a fully traced round documentation. No `Doc01`/`Doc02` version evolves before convergence.
 
 ### Step 4: Control Identification & Selection
 - **Goal:** Select the best-matching controls for every accepted constraint, completing the derivation chain `regulation → article → objective → requirement → control` as a deliberate act.
 - **Process:**
   1. For each accepted item, identify candidate controls in `baseline/CONTROLS/` (enforced: NIST CSF 2.0, PF 1.1, AI RMF; advisory referentials per ADR-001 tiers).
   2. Copy anchors only from pre-verified surfaces (module anchor blocks, requirement YAML keys, the `MAPPINGS/sr_control_mappings/` store) — never re-derive (rules R2/R2b).
-  3. Record the selection rationale per item in the register: which control, from which referential/tier, and why it is the best fit.
+  3. Record the selection rationale per item in the round documentation: which control, from which referential/tier, and why it is the best fit.
 - **Result:** The accepted set carrying its selected control anchors, ready for absorption.
 
 ### Step 5: Absorption & Traceability Weaving (V1)
@@ -218,7 +218,7 @@ Phase 3 is organized as **two distinct parts**:
 - **Allowed change types (exhaustive taxonomy):**
   - **D1 — Derived requirement:** an obligation (`RN` / `PO-` / `SO-` / regulation article) requires user-visible, Cockburn Sea-Level functionality not covered by any V0 card. Adds a new card continuing the canonical package numbering (`Rn.x`) and generates the matching PUC and fully dressed use case in `Doc02`. All R13 standards apply (active verb, technology neutrality, company-scale discipline).
   - **D2 — Description refinement:** the synthesis reveals ambiguity or omission in a V0 card's `Description` that prevents an absorbed constraint from binding. Rewrites only the `Description` (ID, origin, and scope preserved); targeted use cases gain steps or extensions — their Main Success Scenario is otherwise preserved.
-  - **D3 — Priority re-evaluation:** a confirmed regulation converts a MoSCoW priority (typically `Should`/`Could` → `Must`). Requires the regulatory driver (article + Phase 2 objective) cited in the register; summary table, card, and traceability matrix are updated together.
+  - **D3 — Priority re-evaluation:** a confirmed regulation converts a MoSCoW priority (typically `Should`/`Could` → `Must`). Requires the regulatory driver (article + Phase 2 objective) cited in the round documentation; summary table, card, and traceability matrix are updated together.
   - **D4 — Card split:** distinct security surfaces within one V0 card demand separate lifecycle or priority. Highest ceremony; old→new renumbering is recorded; use only when D1–D3 demonstrably cannot express the change.
 - **Prohibited:** deleting or silently shrinking V0 scope; inventing functionality without a traceable driver; technology leakage in any new or refined text; clam-level derived cards.
 - **Change Register (mandatory):** every functional change — including `evaluated, no change` rows — is recorded as `type → from/to → driving RN/PO/SO/article → rationale` in the analysis dossier (`STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md`), and the V1 document's Version History documents the pass in one row.
@@ -253,7 +253,7 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 │
 ├── analysis_v0_to_v1/                           # STEP1-STEP6 dossiers + V0/V1/V2 analysis tables (incl. Functional Evolution Register)
 │
-└── synthesis_rounds/                            # [ROUND CYCLE] Risk Acceptance Register + round proposals (ADR-005)
+└── synthesis_rounds/                            # [ROUND CYCLE] Objective/principle mappings + round documentation (ADR-005)
 ```
 
 ### Comparative Evolution Matrix
@@ -323,7 +323,7 @@ Before declaring Phase 3 complete, verify that:
 - [ ] **Functional Evolution Control:** Every V1 functional change is classified in the D1–D4 taxonomy and recorded in the Functional Evolution Register with its `RN`/`PO-`/`SO-`/article driver; `v0_functional_baseline/` files are untouched.
 - [ ] **Specificity Matching:** Every security & privacy NFR's wording stays within the altitude warranted by its cited chain (L0–L4 scale, warrants W1–W5 — guidelines §2.5); zero L4 vocabulary anywhere in Phase 3 deliverables.
 - [ ] **Exhaustive Mapping:** 100% of Phase 2 objectives and principles carry an explicit verdict in the Objective Mapping (applies — with skill — or no functional carrier); zero unmapped objectives.
-- [ ] **Risk-Acceptance Control:** Every synthesized constraint's client verdict (Accept / Reject = risk accepted / Adjust) is recorded in the Risk Acceptance Register with round trace; no baseline version evolves before round convergence.
+- [ ] **Risk-Acceptance Control:** Every synthesized constraint's client verdict (Accept / Reject = risk accepted / Adjust) is recorded in the round documentation with round trace; no baseline version evolves before round convergence.
 - [ ] **Control Selection:** Every accepted constraint carries its selected control anchor copied from the pre-verified surfaces (module anchor blocks, requirement YAML keys, mapping store).
 - [ ] **Phase Boundary (Threats):** Zero formal threat modeling (STRIDE/LINDDUN, attack-scenario catalogs) inside Phase 3 deliverables — deferred to Phase 4 (ADR-005).
 - [ ] **Empirical Verification:** Every security requirement defines an unambiguous Fit Criterion and specifies one of the four ISO 29148 verification methods (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`).

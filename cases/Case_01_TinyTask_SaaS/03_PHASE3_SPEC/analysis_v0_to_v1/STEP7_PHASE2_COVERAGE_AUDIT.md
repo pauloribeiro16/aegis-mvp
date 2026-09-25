@@ -69,5 +69,5 @@ The process described by the researcher — exhaustive objective↔functionality
 1. Exhaustive 62-objective + 7-principle mapping with per-objective verdicts (applies / no functional carrier — recorded decision).
 2. Skill citation per applicable objective.
 3. Chain recalibration: phantom POs remapped to real objectives (PO-D-05.1/05.2/05.3/05.4-001, PO-D-09.4-001); anchors corrected to the cited objective's published set.
-4. Driver-integrity re-assignments proposed through the Risk Acceptance Register (Round 1 adjustments) — the client accepts or rejects them.
+4. Driver-integrity re-assignments proposed through the round cycle (Round 1 adjustments) — the client accepts or rejects them.
 5. Anchor-integrity rule codified in the manual (chain anchors ∈ published set of the cited objective; extras need W4 rationale).

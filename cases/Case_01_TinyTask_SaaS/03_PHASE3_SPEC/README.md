@@ -18,7 +18,7 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 ├── README.md                                    # (This file) Phase 3 Navigation & Executive Index
 ├── PHASE3_PROCESS_AND_METHODOLOGY.md            # Master normative guide: RE literature, iterative risk-acceptance rounds, and EARS rules
 │
-├── synthesis_rounds/                            # [ROUND CYCLE] Risk Acceptance Register + round proposals (ADR-005)
+├── synthesis_rounds/                            # [ROUND CYCLE] Objective/principle mappings + round documentation (ADR-005)
 │
 ├── analysis_v0_to_v1/                           # [COGNITIVE TRAJECTORY] Step-by-Step Synthesis Dossier (AI Training Corpus)
 │   ├── README.md                                # Overview of cognitive trajectory and synthesis pipeline
@@ -82,4 +82,4 @@ The outputs of **Version 1** serve as the direct inputs to:
 1. **Phase 4 (Analysis — deferred, ADR-005):** Formal threat modeling (STRIDE / LINDDUN) over the accepted, control-informed baseline, seeded by the asset and trust-boundary maps produced in Step 2. Triggered when the researcher judges the baseline robust and concrete.
 2. **Phase 5 (Verification & Assurance):** Transforming the ISO 29148 verification bindings (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`) and the Phase 4 threat model into automated CI/CD test suites, security probes, and compliance audit dossiers.
 
-Future baseline revisions (e.g., the chain-recalibration backlog) run through the **iterative risk-acceptance cycle** — see [`synthesis_rounds/RISK_ACCEPTANCE_REGISTER.md`](synthesis_rounds/RISK_ACCEPTANCE_REGISTER.md).
+Future baseline revisions (e.g., the chain-recalibration backlog) run through the **iterative risk-acceptance cycle** — see [`synthesis_rounds/README.md`](synthesis_rounds/README.md).

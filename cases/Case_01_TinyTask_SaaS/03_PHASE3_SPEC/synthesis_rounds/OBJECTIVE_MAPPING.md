@@ -146,4 +146,4 @@
 | N/A (requirement type inapplicable to SaaS) | 2 |
 | **Total objectives** | **62** |
 
-Every objective above is explicitly placed; none is silent. Re-drives and new constraints take effect only after the client's verdicts in `RISK_ACCEPTANCE_REGISTER.md` (Round 1).
+Every objective above is explicitly placed; none is silent. Re-drives and new constraints take effect only after the client's verdicts, recorded in the round documentation (Round 1).

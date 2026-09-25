@@ -1,6 +1,6 @@
 # Phase 2 Objective Mapping — Exhaustive Coverage Matrix (TinyTask SaaS)
 
-> **Purpose:** Conformant Step 2 output (manual Step 2 item 4; ADR-005): **every** Phase 2 objective and principle with an explicit verdict against the functional model, so a reviewer can judge whether each placement makes sense. This matrix is what the Step 3 rounds negotiate.
+> **Purpose:** Conformant Step 2 output (manual Step 2 item 4; ADR-005): **every** Phase 2 objective and principle with an explicit verdict against the functional model, so a reviewer can judge whether each placement makes sense. This matrix is what the Step 3 rounds negotiate. UC-centric companion view: [`UC_OBJECTIVE_CORRESPONDENCE.md`](UC_OBJECTIVE_CORRESPONDENCE.md).
 > **Source of objectives/principles/anchors:** `../../02_PHASE2_RULES/Doc01_Operational_Objectives.md` (published control set = final column) + `Doc02_Secure_Design_Principles.md`.
 > **State legend:** `Covered (RNx)` = applied in V1 by the named requirement(s) · `Partial` = applied but chain driver/anchors need the listed adjustment · `Proposed R1 (P-xx / ADJ-x)` = new constraint or re-drive awaiting a client verdict in the register · `No functional carrier` = recorded decision (organizational/process control per ADR-002; not a product requirement) · `Design guidance` = constrains the design, deferred to architecture/Phase 4 context · `N/A` = requirement type not applicable to a SaaS product.
 > **Skills (analysis lens):** AS = attack-surface-analysis · TB = trust-boundary-analysis · LP = least-privilege-analysis · FS = fail-safe-defaults-analysis · V = verifiability-analysis · DM = data-minimization-analysis · LE = lifecycle-erasure-analysis.
@@ -61,7 +61,7 @@
 | Objective | Summary | Functional carrier | Skill | State vs V1 | Action / Round |
 |---|---|---|---|---|---|
 | `PO-D-05.1-001` | Minimization + purpose limitation (adequate, relevant, necessary) | `R1.1` (registration), `R2.3`/`R6.1` (activity data) | DM | **Covered (RN19, RN22)** — recalibrated from phantom PO-D-06.1-001 | — |
-| `SO-D-05.1-002` | CRA twin: product data limited to what is necessary | `R1.1`, `R5.1` (lifecycle) | DM | **Covered (RN19, RN25)** — was wrongly driving RN16/RN17; those re-driven (ADJ-4, ADJ-7) | ADJ-4, ADJ-7 |
+| `SO-D-05.1-002` | CRA twin: product data limited to what is necessary | `R1.1`, `R5.1` (lifecycle) | DM | **Partial** — functionally realized by RN19/RN25 (data limitation slices); RN16/RN17 wrongly driven here, re-driven (ADJ-8, ADJ-4) | ADJ-4, ADJ-7 |
 | `PO-D-05.2-001` | Retention no longer than necessary | `R5.1` (attachments) | LE | **Covered (RN25)** — recalibrated from phantom PO-D-06.1-001 | — |
 | `SO-D-05.2-002` | Updates/advisories available across support period | — | — | **No functional carrier** (organizational/support process) | — |
 | `PO-D-05.3-001` | Erasure without undue delay on request (Art. 17) | `R8.2` | LE | **Covered (RN21)** — recalibrated from phantom PO-D-06.2-001 | — |
@@ -84,7 +84,7 @@
 |---|---|---|---|---|---|
 | `PO-D-07.1-001` | DPbD technical/organisational measures (pseudonymisation…) | transversal (RN19/RN23 realize slices) | DM | **Covered (transversal)** | — |
 | `SO-D-07.1-002` | Product designed per Annex I essential requirements (umbrella) | transversal | AS | **Covered (umbrella for RN13/RN14)** — specific drivers re-assigned to SO-D-07.2-002 where narrower | ADJ-4, ADJ-6 |
-| `SO-D-07.2-002` | Attack surfaces limited (incl. external components) | `R5.1` (uploads), `R4.2` (throttling), `R5.2`/`R6.2` (rendering/webhooks) | AS | **Partial → Proposed R1 (ADJ-4, ADJ-6)** — RN13/RN17 re-drive here; RN16's integrity anchor re-based | ADJ-4, ADJ-6 |
+| `SO-D-07.2-002` | Attack surfaces limited (incl. external components) | `R5.1` (uploads), `R4.2` (throttling), `R5.2`/`R6.2` (rendering/webhooks) | AS | **Partial → Proposed R1 (ADJ-4, ADJ-6)** — RN13+RN17 re-drive here; RN14 re-based (ADJ-6) | ADJ-4, ADJ-6 |
 | `SO-D-07.3-002` | Secure, timely update distribution (automatic where appropriate) | — | — | **No functional carrier** (organizational/deployment) | — |
 | `SO-D-07.4-002` | Series-production conformity procedures | — | — | **N/A** (SaaS has no production series) | — |
 

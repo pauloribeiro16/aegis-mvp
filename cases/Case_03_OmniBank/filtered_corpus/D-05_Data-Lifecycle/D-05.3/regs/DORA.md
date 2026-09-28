@@ -1,0 +1,10 @@
+# D-05.3 — DORA module
+
+> Regulation-specific layer: applies when `DORA` is in scope
+> (activation: `if DORA in applicable_regs`). Independent of any other
+> regulation; cross-regulation material is demoted to the trailing
+> 'Cross-references (informational)' section and to [../cross/](../).
+
+_(no DORA Sub-SO or requirements in this sub-domain)_
+
+<!-- aegis:purity: own_reg=DORA; demoted=0; core_cross_mentions=0 -->

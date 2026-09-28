@@ -21,7 +21,7 @@ Under **ADR-004 (Pipeline I/O Contract)** and **ADR-002 (TECHNOLOGY-only MVP Sco
 cases/Case_01_TinyTask_SaaS/02_PHASE2_RULES/
 ├── README.md                          # Phase overview and pipeline contract
 ├── Doc01_Operational_Objectives.md     # The Regulatory Spine (35 sub-domains, PO/SO objectives & tensions)
-└── Doc02_Secure_Design_Principles.md   # The Engineering Spine (20 transversal principles across 4 categories)
+└── Doc02_Secure_Design_Principles.md   # The Engineering Spine (7 transversal principles across 4 categories)
 ```
 
 ---

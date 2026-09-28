@@ -3,7 +3,7 @@
 > **Case Study:** Case 02 — SecureBorder Solutions (Automated Border-Control Gates with On-Board Biometric Verification AI)  
 > **Lifecycle Phase:** AEGIS Phase 3 — Specification  
 > **Reference Standard:** Volere Requirements Process & GPTools Standards (E1.1 / E1.2)  
-> **Status:** Functional Baseline Active  
+> **Status:** V0 Locked — V1 round-converged synthesis in progress (ADR-005 rounds; two-part Phase 3 per ADR-006)  
 
 ---
 
@@ -14,8 +14,15 @@ This directory houses the formal **Functional Requirements and System Use Cases 
 ```text
 cases/Case_02_SecureBorder_Solutions/03_PHASE3_SPEC/
 ├── README.md                                    # (This file) Overview and roadmap for Phase 3
-├── Doc01_Requirements_Elicitation_and_PUC.md    # GPTools E1.1 standard: Context, Data, Actors, PUCs, & MoSCoW Requirements
-└── Doc02_System_Use_Cases.md                    # GPTools E1.2 standard: Level-0 & Level-1 System Use Cases ({U.C.1} .. {U.C.11})
+├── PHASE3_PROCESS_AND_METHODOLOGY.md            # Normative process manual (Steps 1–5b, rounds, Part 1 Exit Gate)
+│
+├── v0_functional_baseline/                      # [VERSION 0] Locked Pure Functional Baseline
+│   ├── README.md                                # V0 Scope, Rationale, and Architecture
+│   ├── Doc01_Requirements_Elicitation_and_PUC.md# 28 Functional Requirements & 28 PUCs (Pure Functional)
+│   └── Doc02_System_Use_Cases.md                # 28 Level-1 Sea-Level Use Cases
+│
+├── Doc01_Requirements_Elicitation_and_PUC.md    # Active working copy (synced to the current version folder)
+└── Doc02_System_Use_Cases.md                    # Active working copy (synced to the current version folder)
 ```
 
 ---
@@ -49,9 +56,9 @@ cases/Case_02_SecureBorder_Solutions/03_PHASE3_SPEC/
 
 ## 3. Downstream Phase 3 Synthesis
 
-Once the functional baseline is locked, the next step in Phase 3 is synthesizing **Security & Privacy Requirements** (`REQ-D-XX.Y-NNN`). 
+With the functional baseline locked, **Part 1 — Security & Compliance** synthesizes the risk-accepted **Security & Privacy Requirements** through the iterative risk-acceptance round cycle (ADR-005): exhaustive mapping of every Phase 2 objective and principle against this functional model → proposals per gap (EARS constraint, risk, altitude, chain) → client verdicts → convergence → only then does the deliverable version evolve, followed by explicit control selection. The **Part 1 Exit Gate (G1–G6)** then clears **Part 2 — Threat & Risk Analysis** (ADR-006).
 
-This synthesis will cross-cut these functional capabilities with:
+The synthesis cross-cuts the functional capabilities with:
 1. **Phase 2 Operational Objectives (`Doc01_Operational_Objectives.md`):** Multi-regulation operational rules (`PO-D-XX.Y-NNN` and `SO-D-XX.Y-NNN`) across GDPR, CRA, NIS 2, and AI Act ambits.
 2. **Phase 2 Secure Design Principles (`Doc02_Secure_Design_Principles.md`):** 7 foundational engineering principles (`PRIN-ENG-01` through `PRIN-ENG-07`).
 3. **AEGIS Autonomous Skills (`baseline/skills/`):** Automated auditing across Attack Surface Analysis, Trust Boundary Analysis, Least Privilege, Data Minimization, Fail-Safe Defaults, Verifiability, and Lifecycle Erasure.

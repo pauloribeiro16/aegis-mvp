@@ -49,6 +49,8 @@ After convergence, each accepted item gets its **best-matching controls** select
 
 Formal threat modeling leaves Phase 3 entirely and becomes **Fase 4 — Threat Analysis**: STRIDE/LINDDUN, attack-surface analysis, and abuse scenarios performed over the **accepted, control-informed baseline**. Trigger: researcher judgment that the accepted baseline is robust and concrete. Asset identification and trust-boundary mapping **remain in Phase 3 Step 2** (they are needed to derive proposals) and seed Phase 4.
 
+> **Superseded on the phase placement by [ADR-006](ADR-2026-09-28_phase3-two-part-structure.md) (2026-09-28):** threat & risk analysis is **Phase 3 Part 2**, launched through the Part 1 Exit Gate (G1–G6); the chain becomes F3 [Part 1 + Part 2] → F4 Verification & Implementation. The round cycle and control selection of this ADR remain unchanged.
+
 **ADR-004 contract amended:**
 
 | Phase | Input | Output | IDs |

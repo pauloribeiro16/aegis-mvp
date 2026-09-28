@@ -23,7 +23,7 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 ├── analysis_v0_to_v1/                           # [COGNITIVE TRAJECTORY] Step-by-Step Synthesis Dossier (AI Training Corpus)
 │   ├── README.md                                # Overview of cognitive trajectory and synthesis pipeline
 │   ├── STEP1_V0_FUNCTIONAL_AUDIT_AND_BOUNDARY_ANALYSIS.md        # Step 1: Functional audit, assets, and boundaries
-│   ├── STEP2_REGULATORY_CROSS_CUTTING_AND_THREAT_DERIVATION.md   # Step 2: Phase 2 rules mapping (hypothesis material deferred to Phase 4)
+│   ├── STEP2_REGULATORY_CROSS_CUTTING_ANALYSIS.md                # Step 2: Phase 2 rules mapping (threat analysis out of Phase 3 — Phase 4, ADR-005)
 │   ├── STEP3_EARS_REQUIREMENT_FORMULATION_AND_FIT_CRITERIA.md    # Step 3: EARS formulation & Volere fit criteria
 │   ├── STEP4_FUNCTIONAL_AUGMENTATION_AND_TRACEABILITY_WEAVING.md # Step 4: Use case Cockburn extensions & diffs
 │   ├── STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md                    # Step 5b: Functional Evolution Register (D1–D4 changes)
@@ -63,7 +63,7 @@ All specifications in this directory are governed by [`PHASE3_PROCESS_AND_METHOD
 - **Status:** Complete AI Training & Research Corpus.
 - **Content:** 5-step detailed breakdown deconstructing every decision, regulatory mapping, EARS syntactic pattern, use case transformation, and functional evolution from V0 to V1:
   - [`STEP1_V0_FUNCTIONAL_AUDIT_AND_BOUNDARY_ANALYSIS.md`](analysis_v0_to_v1/STEP1_V0_FUNCTIONAL_AUDIT_AND_BOUNDARY_ANALYSIS.md)
-  - [`STEP2_REGULATORY_CROSS_CUTTING_AND_THREAT_DERIVATION.md`](analysis_v0_to_v1/STEP2_REGULATORY_CROSS_CUTTING_AND_THREAT_DERIVATION.md)
+  - [`STEP2_REGULATORY_CROSS_CUTTING_ANALYSIS.md`](analysis_v0_to_v1/STEP2_REGULATORY_CROSS_CUTTING_ANALYSIS.md)
   - [`STEP3_EARS_REQUIREMENT_FORMULATION_AND_FIT_CRITERIA.md`](analysis_v0_to_v1/STEP3_EARS_REQUIREMENT_FORMULATION_AND_FIT_CRITERIA.md)
   - [`STEP4_FUNCTIONAL_AUGMENTATION_AND_TRACEABILITY_WEAVING.md`](analysis_v0_to_v1/STEP4_FUNCTIONAL_AUGMENTATION_AND_TRACEABILITY_WEAVING.md)
   - [`STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md`](analysis_v0_to_v1/STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md) — Functional Refinement Pass register (D1–D4 taxonomy)

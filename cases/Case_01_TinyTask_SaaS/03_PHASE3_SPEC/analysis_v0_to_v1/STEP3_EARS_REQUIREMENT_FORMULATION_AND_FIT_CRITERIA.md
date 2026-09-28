@@ -2,7 +2,7 @@
 
 > **Step ID:** STEP-03  
 > **Inputs:**  
-> - Step 2 Regulatory Cross-Cutting Matrix (threat hypotheses deferred to Phase 4 — `THREAT_ANALYSIS_DEFERRED.md`)  
+> - Step 2 Regulatory Cross-Cutting Matrix (threat analysis out of Phase 3 — Phase 4, ADR-005)  
 > - Karl Wiegers & Joy Beatty (*Software Requirements*, 3rd ed., Chapter 11)  
 > - Suzanne & James Robertson (*Mastering the Requirements Process: Getting Requirements Right*, 3rd ed.)  
 > - ISO/IEC/IEEE 29148:2018 (Requirements Engineering Standard)  

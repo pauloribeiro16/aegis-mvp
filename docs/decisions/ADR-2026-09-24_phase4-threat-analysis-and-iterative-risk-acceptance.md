@@ -71,7 +71,7 @@ Fase 4 = **Threat Model**; verification/implementation is referenced as **Fase 5
 
 ## 6. Consequences
 
-- **Case_01 is grandfathered**: its APPROVED V1 was produced under the one-shot process. Light retrofit only — threat-modeling dossier content moved to `analysis_v0_to_v1/THREAT_ANALYSIS_DEFERRED.md` (seed material for Phase 4), "Threat Extensions" renamed "Security Extensions", and `synthesis_rounds/` created for future revisions (e.g., the chain-recalibration backlog runs through the register).
+- **Case_01 is grandfathered**: its APPROVED V1 was produced under the one-shot process. Light retrofit only — "Threat Extensions" renamed "Security Extensions", and `synthesis_rounds/` created for future revisions (e.g., the chain-recalibration backlog runs through the register). **Amended 2026-09-28 (researcher decision):** no threat dossier or threat material is retained under the Phase 3 folder; Phase 4 starts from the accepted, control-informed baseline and the asset/trust-boundary statements of the Phase 3 deliverables.
 - **Case_02 and later cases** run the round cycle from the start.
 - Phase 4's internal design (threat-register schema, severity model, LINDDUN scope) is **not designed here** — it is built when first triggered.
 - The derivation chains (`regulation → article → objective → requirement → control`) remain the derivation spine across rounds; the cycle changes *when* and *in what order* they are exercised, not their structure.

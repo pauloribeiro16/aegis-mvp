@@ -1,11 +1,5 @@
 # Principle Mapping — Functional Requirements Analyzed Against the 7 Secure Design Principles (TinyTask SaaS)
 
-> **Purpose:** The principle-centric mirror of [`OBJECTIVE_MAPPING.md`](OBJECTIVE_MAPPING.md): for **each secure-design principle** (`PRIN-ENG-01`..`07`, Phase 2 `Doc02`), where it binds across the functional model (requirement cards `R<n.m>` and use cases `{U.C.n.m}`), how it is realized there, and its coverage state — so a reviewer can judge whether **every principle is being followed**, the same way the objective mapping judges whether every objective is applied.
-> **Sources:** `../../02_PHASE2_RULES/Doc02_Secure_Design_Principles.md` (principle definitions) · `../v1_security_privacy_synthesis/Doc01` (in-card NFR absorption) · [`UC_OBJECTIVE_CORRESPONDENCE.md`](UC_OBJECTIVE_CORRESPONDENCE.md) (per-UC bindings).
-> **State legend:** `Bound (RNx)` = realized by the named absorbed NFR / in-card constraint · `Bound (functional)` = realized directly in the requirement's functional description (no RN needed) · `Pending (P-xx / ADJ-x)` = gap proposed in the open round, awaiting client verdict (verdicts recorded in the round documentation) · `Cross-cutting` = binds via shared table row / preconditions, not a single card.
-> **Skills (analysis lens):** AS = attack-surface-analysis · TB = trust-boundary-analysis · LP = least-privilege-analysis · FS = fail-safe-defaults-analysis · V = verifiability-analysis · DM = data-minimization-analysis · LE = lifecycle-erasure-analysis.
-
----
 
 ## §1 Principle ↔ Functional Model Matrix (principle-centric)
 
@@ -19,9 +13,9 @@ Every interface separating zones of differing privilege is demarcated; every cro
 | `R6.2` / `{U.C. 6.2}` | Notification transport crosses the boundary with verified origin (webhook signature) | RN16 | Bound |
 | `R1.2` / `{U.C. 1.2}` | Profile records protected within the boundary; egress scoped | RN23 | Bound |
 | All UCs (preconditions) | Transport confidentiality on every external-boundary flow | RN24 | Cross-cutting |
-| `R8.1`, `R8.2` / `{U.C. 8.1}` `{U.C. 8.2}` | Rights-exercise execution mediated by verified requester identity | — | Pending (P-01) |
+| `R8.1`, `R8.2` / `{U.C. 8.1}` `{U.C. 8.2}` | Rights-exercise execution mediated by verified requester identity | RN27 | Bound |
 
-**Verdict: followed.** One pending mediation gap (P-01) awaiting verdict.
+**Verdict: followed.**
 
 ### `PRIN-ENG-02` — Attack Surface Minimization & Peripheral Resilience
 
@@ -57,9 +51,9 @@ Access decisions and state transitions default to refusal; failures terminate in
 | `R1.1`, `R1.3` / `{U.C. 1.1}` `{U.C. 1.3}` | Credentials stored unrecoverable; lockout fails closed; enumeration-resistant recovery responses | RN10, RN11 | Bound |
 | `R5.2` / `{U.C. 5.2}` | Sanitization fails safe — payloads never executed by default | RN14 | Bound |
 | `R7.2` / `{U.C. 7.2}` | Expired grace period → restricted read-only state, never silent open access | functional (description) | Bound |
-| `R2.1`, `R3.1` / `{U.C. 2.1}` `{U.C. 3.1}` | New artifacts start with restrictive secure-by-default configuration | — | Pending (P-02) |
+| `R2.1`, `R3.1` / `{U.C. 2.1}` `{U.C. 3.1}` | New artifacts start with restrictive secure-by-default configuration | RN28 | Bound |
 
-**Verdict: followed.** One pending default-configuration gap (P-02) awaiting verdict.
+**Verdict: followed.**
 
 ### `PRIN-ENG-05` — Requirement Verifiability & Atomicity
 
@@ -92,6 +86,7 @@ Protection covers the entire lifecycle; erasure permanently destroys across stor
 | `R8.2` / `{U.C. 8.2}` | Erasure irreversible + pseudonymized; receipt issued; audit trail preserved | RN21 | Bound |
 | `R5.1` / `{U.C. 5.1}` | Deleted attachments purged on a retention schedule (no indefinite retention) | RN25 | Bound |
 | `R1.2` / `{U.C. 1.2}` | Personal-data modifications emit a privacy audit record (Art. 30 accountability) | RN26 | Bound |
+| `R8.3` / `{U.C. 8.3}` | Workspace-level deletion permanently erases all workspace content and settings; deletion recorded | RN30, RN21 (co-driver), RN18 | Bound |
 
 **Verdict: followed.**
 
@@ -110,11 +105,11 @@ One row per (requirement × principle) binding: the principle is named in full, 
 | `R1.3` | `PRIN-ENG-04` Fail-Safe Defaults & Closed Failure States | Recovery fails closed on expired/reused links; enumeration-resistant responses | RN10, RN11 | Bound |
 | `R1.3` | `PRIN-ENG-07` End-to-End Lifecycle Security & Irreversible Erasure | Recovery attempts recorded in the audit log | RN18 | Bound |
 | `R2.1` | `PRIN-ENG-03` Least Privilege & Mechanism Isolation | Tenant context enforced on provisioning; workspace born isolated | RN9 | Bound |
-| `R2.1` | `PRIN-ENG-04` Fail-Safe Defaults & Closed Failure States | New workspace starts with restrictive secure-by-default configuration | — | Pending (P-02) |
+| `R2.1` | `PRIN-ENG-04` Fail-Safe Defaults & Closed Failure States | New workspace starts with restrictive secure-by-default configuration | RN28 | Bound |
 | `R2.2` | `PRIN-ENG-03` Least Privilege & Mechanism Isolation | RBAC mediation before every membership/role mutation; Owner irremovable | RN12 | Bound |
 | `R2.3` | `PRIN-ENG-03` Least Privilege & Mechanism Isolation | Metrics purpose-scoped; no cross-tenant or surveillance aggregation | RN22 | Bound |
 | `R3.1` | `PRIN-ENG-03` Least Privilege & Mechanism Isolation | Project containers created inside the tenant boundary | RN9 | Bound |
-| `R3.1` | `PRIN-ENG-04` Fail-Safe Defaults & Closed Failure States | New projects default to restricted visibility | — | Pending (P-02) |
+| `R3.1` | `PRIN-ENG-04` Fail-Safe Defaults & Closed Failure States | New projects default to restricted visibility | RN28 | Bound |
 | `R3.2` | `PRIN-ENG-03` Least Privilege & Mechanism Isolation | Archive transition only by Admin/Owner (no direct carrier; realized at `{U.C. 3.2}` via extension) | RN12 via `{U.C. 3.2}` | Bound (UC level) |
 | `R4.1` | `PRIN-ENG-02` Attack Surface Minimization & Peripheral Resilience | Task title/description neutralized against embedded active payloads | RN14 via `{U.C. 4.1}` extension | Bound (UC level) |
 | `R4.1` | `PRIN-ENG-01` Explicit Trust Boundaries & Complete Mediation | Task created within the authorized project/tenant context (precondition) | RN9 via `{U.C. 4.1}` precondition | Bound (UC level) |
@@ -136,10 +131,12 @@ One row per (requirement × principle) binding: the principle is named in full, 
 | `R7.2` | `PRIN-ENG-04` Fail-Safe Defaults & Closed Failure States | Expired grace → restricted read-only state, never silent open access | functional (description) | Bound |
 | `R8.1` | `PRIN-ENG-06` Proactive Data Minimization & Scoped Projection | Archive limited to the requester's own data (no third-party leakage) | RN20 | Bound |
 | `R8.1` | `PRIN-ENG-03` Least Privilege & Mechanism Isolation | Workspace-level export restricted to the Owner | RN12 via `{U.C. 8.1}` extension | Bound (UC level) |
-| `R8.1` | `PRIN-ENG-01` Explicit Trust Boundaries & Complete Mediation | Requester identity verified before executing the export | — | Pending (P-01) |
+| `R8.1` | `PRIN-ENG-01` Explicit Trust Boundaries & Complete Mediation | Requester identity verified before executing the export | RN27 | Bound |
 | `R8.2` | `PRIN-ENG-07` End-to-End Lifecycle Security & Irreversible Erasure | Erasure irreversible + pseudonymized; receipt issued; audit trail preserved | RN21, RN18 | Bound |
 | `R8.2` | `PRIN-ENG-03` Least Privilege & Mechanism Isolation | Closure invalidates all sessions/tokens (entitlement revocation) | RN11 via `{U.C. 8.2}` extension | Bound (UC level) |
-| `R8.2` | `PRIN-ENG-01` Explicit Trust Boundaries & Complete Mediation | Requester identity verified before executing the erasure | — | Pending (P-01) |
+| `R8.2` | `PRIN-ENG-01` Explicit Trust Boundaries & Complete Mediation | Requester identity verified before executing the erasure | RN27 | Bound |
+| `R8.3` | `PRIN-ENG-07` End-to-End Lifecycle Security & Irreversible Erasure | Workspace deletion permanently erases all workspace content; deletion recorded in audit log | RN30, RN21 (co-driver), RN18 | Bound |
+| `R8.3` | `PRIN-ENG-03` Least Privilege & Mechanism Isolation | Deletion restricted to the Workspace Owner | RN12 via `{U.C. 8.3}` | Bound (UC level) |
 
 **Cross-cutting principles (not per-card):** `PRIN-ENG-05` Atomic Verifiability — structural, realized by the Volere fit criterion + verification method on every requirement and proposal (recorded once); RN17 (rate limiting), RN18 (audit logging), RN24 (transport encryption) bind every use case as standalone Quality Attributes rows.
 
@@ -160,8 +157,8 @@ One row per (requirement × principle) binding: the principle is named in full, 
 | Surface | Count | Notes |
 |---|---|---|
 | Principles followed | 7/7 | every principle has ≥1 realization; none without a carrier |
-| Pending principle gaps | 2 | P-01 (PRIN-ENG-01 mediation of rights execution), P-02 (PRIN-ENG-04 secure-by-default configuration) — both already proposed in the open round |
-| Requirements realizing ≥1 principle | 18/19 | `R3.2` realized at UC level (extension) |
-| Pending re-drives touching principle chains | 10 RNs | ADJ-1…ADJ-9 (drivers, not principles) — see the round documentation |
+| Pending principle gaps | 0 | P-01/P-02 accepted in Round 1 and bound (RN27, RN28); P-03 accepted as D1 (`R8.3`); P-04 accepted (RN29) — see [`ROUND1_REGISTER.md`](ROUND1_REGISTER.md) |
+| Requirements realizing ≥1 principle | 20/20 | `R3.2` realized at UC level (extension); `R8.3` added in Round 1 |
+| Re-drives applied to principle chains | 11 RNs | ADJ-1…ADJ-9 accepted R1; drivers aligned to published control sets — see [`ROUND1_REGISTER.md`](ROUND1_REGISTER.md) |
 
 **Read rule:** gaps in this matrix are **principle gaps**, not requirement defects — they enter the open round as proposals (verdicts recorded in the round documentation); nothing is silently accepted.

@@ -245,6 +245,7 @@ Functional requirements are prioritized using the MoSCoW methodology:
 | **R8** | | **Export Data and Close Accounts** | **MUST** | |
 | | R8.1 | Export personal and workspace data archives | MUST | |
 | | R8.2 | Close user accounts and terminate workspace access | MUST | |
+| | R8.3 | Delete workspace and permanently erase workspace data | MUST | |
 
 ---
 
@@ -261,7 +262,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R1.1 **Name:** Register and authenticate user accounts |
 | **Description:** The system must allow prospective users to create an account with email verification, authenticate using valid credentials to establish an active session, and autonomously request password reset assistance via email. |
 | **Requirement Origin:** Founders Business Case & User Onboarding Workflow |
-| **Security & Privacy Constraints:**<br>**NFR-RN10** Credential Confidentiality Protection (State of the Art) — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.1-002, SO-D-01.1-002` → `PRIN-ENG-04` → CSF PR.DS-01, PR.PS-02, PR.PS-01<br>**NFR-RN11** Session Management & Invalidation — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.2-002` → `PRIN-ENG-04` → CSF PR.AA-01, PR.AA-05, PR.AA-06<br>**NFR-RN19** Registration Data Minimization by Default — `GDPR Art. 5(1)(c)` → `PO-D-05.1-001` → `PRIN-ENG-06` → CSF PR.DS-10, GV.OC-03 / PF CT.DP-P2 |
+| **Security & Privacy Constraints:**<br>**NFR-RN10** Credential Confidentiality Protection (State of the Art) — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-01.1-002, SO-D-03.1-002` → `PRIN-ENG-04` → CSF PR.DS-01, PR.AA-01, PR.AA-05<br>**NFR-RN11** Session Management & Invalidation — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-03.1-002` → `PRIN-ENG-04` → CSF PR.AA-01, PR.AA-05, PR.AA-06<br>**NFR-RN19** Registration Data Minimization by Default — `GDPR Art. 5(1)(c)` → `PO-D-05.1-001` → `PRIN-ENG-06` → CSF PR.DS-10, GV.OC-03 / PF CT.DP-P2 |
 | **Interfaces:** Registration screen; Login screen; Password recovery flow; Transactional email interface |
 | **Dependencies:**<br>• **Stakeholders:** Platform Founders, All End Users<br>• **Data Sources:** Registration form submissions; Credential verification requests; Password reset requests<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Identity and Credential Store; Notification / Email Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -289,7 +290,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R1.3 **Name:** Recover access to a locked user account |
 | **Description:** The system must allow a user whose account is temporarily locked after repeated failed authentication attempts to autonomously regain access: the user requests recovery via the registered email address, receives a single-use time-limited recovery link, and upon following it the system lifts the lockout, invalidates all active sessions, and restores normal authentication. |
 | **Requirement Origin:** User Account Availability & Self-Service Recovery Needs (V1 Refinement Pass — derived from NFR-RN10/NFR-RN11 lockout behavior) |
-| **Security & Privacy Constraints:**<br>**NFR-RN10** Credential Confidentiality Protection (State of the Art) — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.1-002, SO-D-01.1-002` → `PRIN-ENG-04` → CSF PR.DS-01, PR.PS-02, PR.PS-01<br>**NFR-RN11** Session Management & Invalidation — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-02.2-002` → `PRIN-ENG-04` → CSF PR.AA-01, PR.AA-05, PR.AA-06 |
+| **Security & Privacy Constraints:**<br>**NFR-RN10** Credential Confidentiality Protection (State of the Art) — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-01.1-002, SO-D-03.1-002` → `PRIN-ENG-04` → CSF PR.DS-01, PR.AA-01, PR.AA-05<br>**NFR-RN11** Session Management & Invalidation — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-03.1-002` → `PRIN-ENG-04` → CSF PR.AA-01, PR.AA-05, PR.AA-06 |
 | **Interfaces:** Account recovery request form; Recovery email link; Login screen |
 | **Dependencies:**<br>• **Stakeholders:** All End Users, Platform Founders<br>• **Data Sources:** Account recovery requests; Lockout state records<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Identity and Credential Store; Notification / Email Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -306,7 +307,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R2.1 **Name:** Create and configure workspace |
 | **Description:** The system must allow an authenticated user to instantiate an isolated organizational workspace by specifying a workspace name and unique URL slug, automatically assigning the creator as Workspace Owner and permitting subsequent configuration of workspace branding and organization name. |
 | **Requirement Origin:** Multi-Tenant Organization Needs & Customer Expectation EXP-01 |
-| **Security & Privacy Constraints:**<br>**NFR-RN9** Multi-Tenant Data Isolation & Mediation — `CRA Annex I Part I (2)(d)` → `SO-D-02.1-002` → `PRIN-ENG-03` → CSF PR.PS-02, PR.PS-01, ID.RA-01 |
+| **Security & Privacy Constraints:**<br>**NFR-RN9** Multi-Tenant Data Isolation & Mediation — `CRA Annex I Part I (2)(d)` → `SO-D-03.2-002` → `PRIN-ENG-03` → CSF PR.AA-05, PR.AA-06<br>**NFR-RN28** Secure-by-Default Configuration with User Reset — `CRA Annex I Part I (2)(b) + (2)(c)` → `SO-D-03.4-002` → `PRIN-ENG-04` → CSF PR.PS-01 |
 | **Interfaces:** Workspace setup wizard; Organization branding settings |
 | **Dependencies:**<br>• **Stakeholders:** Platform Founders, Business Customers<br>• **Data Sources:** Workspace creation form; Branding configuration<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (workspace registry); File Storage Service (branding assets)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -319,7 +320,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R2.2 **Name:** Invite workspace members and manage access roles |
 | **Description:** The system must allow Workspace Admins and Owners to invite team members via email, assign access roles (Owner, Admin, Member, Viewer) that govern operational permissions within the workspace, modify member roles, or revoke membership, respecting active seat limits. |
 | **Requirement Origin:** Team Collaboration Needs & Governance |
-| **Security & Privacy Constraints:**<br>**NFR-RN12** Role-Based Access Control & Action Mediation — `CRA Annex I Part I (2)(d)` → `SO-D-02.1-002` → `PRIN-ENG-03` → CSF PR.PS-02, ID.RA-01, PR.PS-01 |
+| **Security & Privacy Constraints:**<br>**NFR-RN12** Role-Based Access Control & Action Mediation — `CRA Annex I Part I (2)(d)` → `SO-D-03.3-002` → `PRIN-ENG-03` → CSF PR.AA-05, PR.AA-06 |
 | **Interfaces:** Member invitation dialog; Role management console; Invitation email interface |
 | **Dependencies:**<br>• **Stakeholders:** Team Leads, Project Managers<br>• **Data Sources:** Invitation submissions; Role assignments<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (membership roster)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -349,7 +350,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R3.1 **Name:** Create and configure projects |
 | **Description:** The system must allow Workspace Admins and Members to initialize distinct project containers within a workspace, specifying project name, description of deliverables, and visibility settings (workspace-wide or restricted to selected members). |
 | **Requirement Origin:** Project Work Structuring Needs & As-Is Pain Point 2.1 |
-| **Security & Privacy Constraints:**<br>**NFR-RN9** Multi-Tenant Data Isolation & Mediation — `CRA Annex I Part I (2)(d)` → `SO-D-02.1-002` → `PRIN-ENG-03` → CSF PR.PS-02, PR.PS-01, ID.RA-01 |
+| **Security & Privacy Constraints:**<br>**NFR-RN9** Multi-Tenant Data Isolation & Mediation — `CRA Annex I Part I (2)(d)` → `SO-D-03.2-002` → `PRIN-ENG-03` → CSF PR.AA-05, PR.AA-06<br>**NFR-RN28** Secure-by-Default Configuration with User Reset — `CRA Annex I Part I (2)(b) + (2)(c)` → `SO-D-03.4-002` → `PRIN-ENG-04` → CSF PR.PS-01 |
 | **Interfaces:** Project creation form; Project settings screen |
 | **Dependencies:**<br>• **Stakeholders:** Project Managers, Team Contributors<br>• **Data Sources:** Project creation submissions<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (project records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -418,7 +419,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R5.1 **Name:** Manage task deliverable attachments |
 | **Description:** The system must allow authorized team members to upload deliverable files (supporting documents, spreadsheets, presentations, and images) up to 25 MB in size per file directly into a task card, view inline previews, download attached files, and remove outdated attachments. |
 | **Requirement Origin:** Document Centralization Needs & Customer Expectation EXP-04 |
-| **Security & Privacy Constraints:**<br>**NFR-RN13** File Upload Strict Validation & Content Isolation — `CRA Annex I Part I (2)(j)` → `SO-D-07.1-002` → `PRIN-ENG-02` → CSF PR.PS-06, PR.PS-01<br>**NFR-RN25** Automated Orphan File Asset Cleanup & Expiration — `GDPR Art. 5(1)(e)` → `PO-D-05.2-001` → `PRIN-ENG-07` → CSF PR.DS-10, ID.AM-03 / PF CT.DM-P3 |
+| **Security & Privacy Constraints:**<br>**NFR-RN13** File Upload Strict Validation & Content Isolation — `CRA Annex I Part I (2)(j)` → `SO-D-07.2-002` → `PRIN-ENG-02` → CSF PR.PS-06<br>**NFR-RN25** Automated Orphan File Asset Cleanup & Expiration — `GDPR Art. 5(1)(e)` → `PO-D-05.2-001` → `PRIN-ENG-07` → CSF PR.DS-10, ID.AM-03 / PF CT.DM-P3 |
 | **Interfaces:** File upload control; Inline preview pane; Download interface |
 | **Dependencies:**<br>• **Stakeholders:** Team Contributors, Clients<br>• **Data Sources:** Uploaded deliverable files<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** File Storage Service; Internal Application Database (attachment metadata)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -431,7 +432,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R5.2 **Name:** Post in-task discussion comments and mention collaborators |
 | **Description:** The system must provide a contextual comment thread inside each task card supporting rich text Markdown formatting and parsing collaborator mentions (@user) to automatically dispatch in-app notifications to tagged users. |
 | **Requirement Origin:** In-Context Collaboration Needs & Customer Expectation EXP-03 |
-| **Security & Privacy Constraints:**<br>**NFR-RN14** Untrusted Content Neutralization — `CRA Annex I Part I (2)(l)` → `SO-D-07.1-002` → `PRIN-ENG-04` → CSF PR.PS-06 |
+| **Security & Privacy Constraints:**<br>**NFR-RN14** Untrusted Content Neutralization — `CRA Annex I Part I (2)(l)` → `SO-D-07.2-002` → `PRIN-ENG-04` → CSF PR.PS-06 |
 | **Interfaces:** Comment thread editor; Mention interface |
 | **Dependencies:**<br>• **Stakeholders:** Team Contributors, Clients<br>• **Data Sources:** Comment submissions; Mention references<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (comment records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -461,7 +462,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R6.2 **Name:** Receive workspace alerts and daily task digests |
 | **Description:** The system must provide an in-app notification center for direct assignments and @mentions, and automatically dispatch a daily summary email digest listing upcoming and overdue tasks assigned to the user. |
 | **Requirement Origin:** User Attention Management & As-Is Pain Point 2.3 |
-| **Security & Privacy Constraints:**<br>**NFR-RN16** Cryptographic Webhook Origin Verification — `CRA Annex I Part I (2)(l)` → `SO-D-05.1-002, SO-D-08.1-002` → `PRIN-ENG-01` → CSF PR.DS-10, ID.AM-03, PR.AT-01 |
+| **Security & Privacy Constraints:**<br>**NFR-RN16** Cryptographic Webhook Origin Verification — `CRA Annex I Part I (2)(l)` → `SO-D-01.4-002` → `PRIN-ENG-01` → CSF PR.DS-10 |
 | **Interfaces:** In-app notification center; Daily digest email interface |
 | **Dependencies:**<br>• **Stakeholders:** Contributors, Team Leads<br>• **Data Sources:** Assignment events; Mention events; Due-date schedule<br>• **Extraction Periodicity:** on event / daily digest<br>• **Information Systems / Databases:** Internal Application Database (notification records); Notification / Email Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -478,7 +479,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R7.1 **Name:** Subscribe and manage workspace commercial plans |
 | **Description:** The system must allow the Workspace Owner to select a commercial plan tier (Free, Pro, Enterprise) and complete checkout via the external payment gateway, automatically updating workspace plan status, renewal date, and authorized member seat quotas upon payment confirmation. |
 | **Requirement Origin:** Customer Subscription Needs & Commercial Policy |
-| **Security & Privacy Constraints:**<br>**NFR-RN15** Cryptographic Billing Invariant Protection — `CRA Annex I Part I (2)(l)` → `SO-D-01.1-002, SO-D-08.1-002` → `PRIN-ENG-01` → CSF PR.DS-01, PR.AT-01 |
+| **Security & Privacy Constraints:**<br>**NFR-RN15** Cryptographic Billing Invariant Protection — `CRA Annex I Part I (2)(l)` → `SO-D-01.4-002` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-10 |
 | **Interfaces:** Plan selection screen; Hosted checkout interface |
 | **Dependencies:**<br>• **Stakeholders:** Executive Leadership, Business Customers<br>• **Data Sources:** Pricing catalog; Payment confirmation events<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (subscription records); External Payment Gateway<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -491,7 +492,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R7.2 **Name:** Enforce operational grace period upon payment failure |
 | **Description:** The system must grant a 7-day operational grace period if an automated subscription renewal payment fails, maintaining normal workspace access while presenting payment update notices to the Workspace Owner. Upon grace period expiry without resolution, the system must transition the workspace to a restricted read-only state that preserves project consultation and data export while suspending content modifications and member invitations until billing is rectified. |
 | **Requirement Origin:** Customer Retention & Business Continuity |
-| **Security & Privacy Constraints:**<br>**NFR-RN15** Cryptographic Billing Invariant Protection — `CRA Annex I Part I (2)(l)` → `SO-D-01.1-002, SO-D-08.1-002` → `PRIN-ENG-01` → CSF PR.DS-01, PR.AT-01 |
+| **Security & Privacy Constraints:**<br>**NFR-RN15** Cryptographic Billing Invariant Protection — `CRA Annex I Part I (2)(l)` → `SO-D-01.4-002` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-10 |
 | **Interfaces:** Billing status banner; Payment update prompt |
 | **Dependencies:**<br>• **Stakeholders:** Customers, Finance Operations<br>• **Data Sources:** Payment failure events<br>• **Extraction Periodicity:** on event<br>• **Information Systems / Databases:** Internal Application Database (subscription records); External Payment Gateway (payment status)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -508,7 +509,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R8.1 **Name:** Export personal and workspace data archives |
 | **Description:** The system must allow authenticated users to download a structured export of their personal profile and authored tasks, and allow Workspace Owners to export a comprehensive archive of workspace projects, tasks, comments, and attachments. |
 | **Requirement Origin:** Data Portability Needs & Customer Expectation EXP-06 |
-| **Security & Privacy Constraints:**<br>**NFR-RN20** Structured Personal Data Portability & Export — `GDPR Art. 20 + Art. 15(3) + Art. 12(3)` → `PO-D-05.4-001` → `PRIN-ENG-06` → CSF PR.DS-10 / PF CT.DM-P1 |
+| **Security & Privacy Constraints:**<br>**NFR-RN20** Structured Personal Data Portability & Export — `GDPR Art. 20 + Art. 15(3) + Art. 12(3)` → `PO-D-05.4-001` → `PRIN-ENG-06` → CSF PR.DS-10 / PF CT.DM-P1<br>**NFR-RN27** Requester Identity Verification for Rights Exercise — `GDPR Art. 12(6) + Art. 11(2)` → `SO-D-03.1-001` → `PRIN-ENG-01` → CSF PR.AA-03, PR.AA-02 / PF PR.AC-P6 |
 | **Interfaces:** Export request screen; Archive download interface |
 | **Dependencies:**<br>• **Stakeholders:** End Users, Business Customers<br>• **Data Sources:** User profile records; Workspace content records<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (profile, task, comment records); File Storage Service (attachments)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -521,9 +522,22 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R8.2 **Name:** Close user accounts and terminate workspace access |
 | **Description:** The system must allow users to autonomously terminate their accounts, presenting a final personal data export option (R8.1) prior to irreversible erasure, invalidating active credentials and sessions, ending active workspace memberships, and dispatching a formal confirmation receipt via email. |
 | **Requirement Origin:** Self-Service Account Termination & Customer Expectation EXP-06 |
-| **Security & Privacy Constraints:**<br>**NFR-RN21** Irreversible Data Subject Erasure & Pseudonymization — `GDPR Art. 17 + Art. 28(3)(g)` → `PO-D-05.3-001` → `PRIN-ENG-07` → CSF PR.DS-10 / PF CT.DM-P1 |
+| **Security & Privacy Constraints:**<br>**NFR-RN21** Irreversible Data Subject Erasure & Pseudonymization — `GDPR Art. 17 + Art. 28(3)(g)` → `PO-D-05.3-001` → `PRIN-ENG-07` → CSF PR.DS-10 / PF CT.DM-P1<br>**NFR-RN27** Requester Identity Verification for Rights Exercise — `GDPR Art. 12(6) + Art. 11(2)` → `SO-D-03.1-001` → `PRIN-ENG-01` → CSF PR.AA-03, PR.AA-02 / PF PR.AC-P6 |
 | **Interfaces:** Account closure flow; Confirmation email interface |
 | **Dependencies:**<br>• **Stakeholders:** End Users, Workspace Admins<br>• **Data Sources:** Account closure requests<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (user account records, memberships); Notification / Email Service<br>• **Preceding Requirements:** |
+| **Identified Problems:** |
+| **Priority:** Must |
+
+##### R8.3 – Delete workspace and permanently erase workspace data
+
+| Requirement |
+|---|
+| **ID:** R8.3 **Name:** Delete workspace and permanently erase workspace data |
+| **Description:** The system must allow the Workspace Owner to delete an entire workspace together with all of its contents — projects, tasks, comments, attachments, and workspace settings — permanently and irreversibly, without deleting the owner's own account; the deletion is confirmed explicitly and certified with a receipt. |
+| **Requirement Origin:** Workspace Lifecycle Management Needs & Data Sovereignty (Round 1 — derived from SO-D-05.3-002) |
+| **Security & Privacy Constraints:**<br>**NFR-RN30** Workspace Permanent Removal — `CRA Annex I Part I (2)(m)` → `SO-D-05.3-002` → `PRIN-ENG-07` → CSF PR.DS-10, PR.DS-02<br>**NFR-RN21** Irreversible Data Subject Erasure & Pseudonymization (owner's personal data; co-driver) — `GDPR Art. 17 + Art. 28(3)(g)` → `PO-D-05.3-001` → `PRIN-ENG-07` → CSF PR.DS-10 / PF CT.DM-P1<br>**NFR-RN18** Security Audit Logging — `CRA Annex I Part I (2)(l)` → `SO-D-10.1-002, SO-D-04.1-002` → `PRIN-ENG-07` → CSF DE.CM-01, DE.CM-09 |
+| **Interfaces:** Workspace deletion flow; Confirmation dialog; Deletion receipt email interface |
+| **Dependencies:**<br>• **Stakeholders:** Business Customers, Workspace Owners<br>• **Data Sources:** Workspace deletion requests<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (workspace registry); File Storage Service (attachments)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -545,9 +559,10 @@ The platform non-functional requirements comprise the general operational qualit
 | **RN6** | The user interface must support internationalization (i18n), offering full system localization in English and Portuguese. | SHOULD | Internationalization |
 | **RN7** | The payment gateway integration must communicate exclusively over authenticated secure channels and enforce cryptographic webhook signature verification. | MUST | Interoperability |
 | **RN8** | The system architecture must enforce strict logical data segregation across workspaces (multi-tenancy), preventing cross-tenant access. | MUST | Architectural Integrity |
-| **RN24** | The system shall cryptographically protect all data in transit across public and untrusted networks using state-of-the-art mechanisms, refusing or upgrading unencrypted connection attempts. | MUST | Security — Transport (GDPR Art. 32(1)(a)+Art. 32(2) → PO-D-01.2-001 → PRIN-ENG-01 → CSF PR.DS-02, PR.IR-01 / PF PR.DS-P2) |
-| **RN18** | The system shall record an immutable security audit entry for every authentication attempt, privilege elevation, permission rejection, and subscription modification, retaining actor, action, timestamp, and origin. | MUST | Security — Auditability (CRA Annex I Part I (2)(l) → SO-D-03.1-002 → PRIN-ENG-07 → CSF PR.AA-05, DE.CM-09) |
-| **RN17** | The system shall authenticate inbound integration clients and throttle request volumes commensurate with operational capacity to protect availability against resource exhaustion, rejecting excess requests with a retry indication. | MUST | Security — Attack Surface (CRA Annex I Part I (2)(d)+(2)(j) → SO-D-02.1-002, SO-D-05.1-002 → PRIN-ENG-02 → CSF PR.PS-02, ID.RA-01, PR.DS-10) |
+| **RN24** | The system shall cryptographically protect all data in transit across public and untrusted networks using state-of-the-art mechanisms, refusing or upgrading unencrypted connection attempts. | MUST | Security — Transport (GDPR Art. 32(1)(a)+Art. 32(2) + CRA Annex I Part I (2)(e) + (2)(j) → PO-D-01.2-001, SO-D-01.2-002 → PRIN-ENG-01 → CSF PR.DS-02, PR.IR-01 / PF PR.DS-P2) |
+| **RN18** | The system shall record an immutable security audit entry for every authentication attempt, privilege elevation, permission rejection, and subscription modification, retaining actor, action, timestamp, and origin. | MUST | Security — Auditability (CRA Annex I Part I (2)(l) → SO-D-10.1-002, SO-D-04.1-002 → PRIN-ENG-07 → CSF DE.CM-01, DE.CM-09) |
+| **RN17** | The system shall authenticate inbound integration clients and throttle request volumes commensurate with operational capacity to protect availability against resource exhaustion, rejecting excess requests with a retry indication. | MUST | Security — Attack Surface (CRA Annex I Part I (2)(d)+(2)(j) → SO-D-07.2-002 → PRIN-ENG-02 → CSF PR.PS-02, PR.PS-06) |
+| **RN29** | The product shall be accompanied by secure-use instructions — or an address where they can be consulted — covering commissioning and lifetime measures (membership and role management, credential handling, sharing-default configuration) for end users and administrators. | SHOULD | Security Documentation (CRA Annex II §8(a)–(e) → SO-D-08.1-002 → CSF PR.AT-01) |
 
 
 *Table 8. Summary table of Product Use Cases (PUC)*
@@ -573,6 +588,7 @@ The platform non-functional requirements comprise the general operational qualit
 | **PUC 7.2** | Automated renewal charge fails | Payment Gateway | Initiate 7-day grace period and notify Owner | Grace period notice |
 | **PUC 8.1** | User or Owner requests data export | User / Owner | Compile structured profile or workspace data archive | Downloadable data archive |
 | **PUC 8.2** | User requests account closure | Registered User | Deactivate credentials, cancel memberships, and send receipt | Account termination receipt |
+| **PUC 8.3** | Workspace Owner deletes a workspace | Workspace Owner | Permanently erase all workspace content and settings; issue deletion receipt | Workspace deletion receipt |
 
 ---
 
@@ -642,3 +658,4 @@ flowchart LR
 | **3.0.0** | 2026-09-23 | Requirements Engineering Agent | V1 Functional Refinement Pass (Step 4b): added derived requirement `R1.3` (locked-account recovery, from NFR-RN10/RN11), refined `R7.2` restricted-state and `R8.2` final-export-offer descriptions, elevated `R1.2` to MUST (GDPR Art. 5(1)(d) + Art. 16, `PO-D-01.4-001`); register in `analysis_v0_to_v1/STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md`. |
 | **3.0.1** | 2026-09-24 | Requirements Engineering Agent | Specificity Matching pass: demoted unwarranted mechanism-category wording in absorbed constraint names (RN10, RN11, RN14, RN22) to the altitude warranted by the cited chains; IDs and chains unchanged. |
 | **3.0.2** | 2026-09-24 | Requirements Engineering Agent | Phase 2 coverage recalibration (`synthesis_rounds/OBJECTIVE_MAPPING.md`): phantom `PO-D-06.1/2-001` and `PO-D-03.1-001` drivers remapped to real objectives (`PO-D-05.1-001`, `PO-D-05.2-001`, `PO-D-05.3-001`, `PO-D-05.4-001`, `PO-D-09.4-001`); chain anchors corrected to each cited objective's published control set; IDs and constraint wording unchanged. |
+| **4.0.0** | 2026-09-28 | Requirements Engineering Agent | Round 1 synthesis (ADR-005, `synthesis_rounds/ROUND1_REGISTER.md`): 11 constraint chains re-anchored to their natural Phase 2 objectives with control sets realigned (ADJ-1…ADJ-9); new constraints RN27 (rights-requester identity verification, R8.1/R8.2), RN28 (secure-by-default configuration, R2.1/R3.1), RN29 (secure-use instructions, Table 7); derived requirement `R8.3` workspace permanent deletion (D1) with `RN30` and PUC 8.3; 20 requirement cards, 20 PUCs. |

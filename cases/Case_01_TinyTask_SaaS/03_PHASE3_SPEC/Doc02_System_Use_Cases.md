@@ -50,6 +50,7 @@ To provide complete operational clarity, each macro functional area is modeled w
     - [{U.C. 8} Export Data and Close Accounts](#uc-8-export-data-and-close-accounts)
       - [{U.C. 8.1} Export personal and workspace data archives](#uc-81-export-personal-and-workspace-data-archives)
       - [{U.C. 8.2} Close user accounts and terminate workspace access](#uc-82-close-user-accounts-and-terminate-workspace-access)
+      - [{U.C. 8.3} Delete workspace and permanently erase workspace data](#uc-83-delete-workspace-and-permanently-erase-workspace-data)
 - [5. Non-Functional Requirements](#5-non-functional-requirements)
 - [6. Conclusions](#6-conclusions)
 - [7. Bibliography](#7-bibliography)
@@ -139,7 +140,7 @@ flowchart TD
 
 ### 3.2 Traceability Matrix: Requirements (Doc01) to System Use Cases (Doc02)
 
-The following matrix establishes strict bi-directional traceability between the 19 consolidated functional requirements from `Doc01` (18 elicited + `R1.3` derived in the V1 Refinement Pass) and the 19 Level-1 System Use Cases:
+The following matrix establishes strict bi-directional traceability between the 20 consolidated functional requirements from `Doc01` (18 elicited + `R1.3` derived in the V1 Refinement Pass + `R8.3` derived in Round 1) and the 20 Level-1 System Use Cases:
 
 *Table 1. Traceability Matrix*
 
@@ -148,10 +149,10 @@ The following matrix establishes strict bi-directional traceability between the 
 | **R1.1** | **PUC 1.1** | **{U.C. 1.1}** | Register and authenticate user accounts | MUST | NFR-RN10, NFR-RN11, NFR-RN19 |
 | **R1.2** | **PUC 1.2** | **{U.C. 1.2}** | Manage user profile and account preferences | MUST | NFR-RN23, NFR-RN26 |
 | **R1.3** | **PUC 1.3** | **{U.C. 1.3}** | Recover access to a locked user account | MUST | NFR-RN10, NFR-RN11 |
-| **R2.1** | **PUC 2.1** | **{U.C. 2.1}** | Create and configure workspace | MUST | NFR-RN9 |
+| **R2.1** | **PUC 2.1** | **{U.C. 2.1}** | Create and configure workspace | MUST | NFR-RN9, NFR-RN28 |
 | **R2.2** | **PUC 2.2** | **{U.C. 2.2}** | Invite workspace members and manage access roles | MUST | NFR-RN12 |
 | **R2.3** | **PUC 2.3** | **{U.C. 2.3}** | Monitor workspace activity and operational metrics | COULD | NFR-RN22 |
-| **R3.1** | **PUC 3.1** | **{U.C. 3.1}** | Create and configure projects | MUST | NFR-RN9 |
+| **R3.1** | **PUC 3.1** | **{U.C. 3.1}** | Create and configure projects | MUST | NFR-RN9, NFR-RN28 |
 | **R3.2** | **PUC 3.2** | **{U.C. 3.2}** | Archive completed projects | SHOULD | — |
 | **R4.1** | **PUC 4.1** | **{U.C. 4.1}** | Create and assign tasks | MUST | — |
 | **R4.2** | **PUC 4.2** | **{U.C. 4.2}** | Track and transition task workflow states on visual boards | MUST | — |
@@ -162,8 +163,9 @@ The following matrix establishes strict bi-directional traceability between the 
 | **R6.2** | **PUC 6.2** | **{U.C. 6.2}** | Receive workspace alerts and daily task digests | SHOULD | NFR-RN16 |
 | **R7.1** | **PUC 7.1** | **{U.C. 7.1}** | Subscribe and manage workspace commercial plans | MUST | NFR-RN15 |
 | **R7.2** | **PUC 7.2** | **{U.C. 7.2}** | Enforce operational grace period upon payment failure | MUST | NFR-RN15 |
-| **R8.1** | **PUC 8.1** | **{U.C. 8.1}** | Export personal and workspace data archives | MUST | NFR-RN20 |
-| **R8.2** | **PUC 8.2** | **{U.C. 8.2}** | Close user accounts and terminate workspace access | MUST | NFR-RN21 |
+| **R8.1** | **PUC 8.1** | **{U.C. 8.1}** | Export personal and workspace data archives | MUST | NFR-RN20, NFR-RN27 |
+| **R8.2** | **PUC 8.2** | **{U.C. 8.2}** | Close user accounts and terminate workspace access | MUST | NFR-RN21, NFR-RN27 |
+| **R8.3** | **PUC 8.3** | **{U.C. 8.3}** | Delete workspace and permanently erase workspace data | MUST | NFR-RN30, NFR-RN21, NFR-RN18 |
 
 ---
 
@@ -340,7 +342,7 @@ flowchart LR
 - **Main Success Scenario:**
   1. Actor submits new workspace parameters: organization name, desired URL slug, and optional brand logo graphic.
   2. System validates name and verifies that the requested URL slug is globally unique.
-  3. System provisions the isolated workspace container, sets default Free tier limits, and assigns the actor as the primary Workspace Owner.
+  3. System provisions the isolated workspace container, sets default Free tier limits, initializes the restrictive secure-by-default configuration (RN28), and assigns the actor as the primary Workspace Owner.
   4. System routes actor into the newly initialized workspace environment ready for project setup.
 - **Extensions:**
   - **2a. Requested URL slug is already taken:**
@@ -350,7 +352,7 @@ flowchart LR
     - 2b2. System updates workspace metadata and renders updated branding to all active members.
   - **3c. Unauthorized tenant boundary manipulation attempt:**
     - 3c1. System refuses workspace container creation, terminates request, and emits high-priority security audit log (RN9, RN18).
-- **Success Guarantees:** A logically isolated workspace is initialized; the creator possesses full administrative and billing privileges.
+- **Success Guarantees:** A logically isolated workspace is initialized under the restrictive secure-by-default configuration (RN28); the creator possesses full administrative and billing privileges.
 - **Minimal Guarantees:** No partially provisioned workspace records remain if container provisioning fails; audit log records provisioning attempt (RN18).
 
 ---
@@ -442,13 +444,15 @@ flowchart LR
 - **Main Success Scenario:**
   1. Actor requests project creation and submits project parameters: mandatory title, optional description of deliverables, and visibility setting (workspace-wide or private to designated members).
   2. System validates input data, assigns the actor as project creator, and initializes default task workflow columns (To-Do, In-Progress, Under-Review, Done).
-  3. System records project entity and redirects actor to the initialized interactive project board.
+  3. System records the project entity with the restrictive default visibility (RN28) and redirects actor to the initialized interactive project board.
 - **Extensions:**
   - **1a. Blank project title:**
     - 1a1. System flags title as mandatory and prompts actor to provide a valid name.
   - **1b. Restricted project visibility configured:**
     - 1b1. Actor selects specific workspace members allowed to access the project.
     - 1b2. System restricts project board view strictly to the authorized subset of members.
+  - **1c. Actor explicitly selects workspace-wide visibility:**
+    - 1c1. System applies the explicit widening on creation and records the configuration change (RN28).
   - **3b. Actor lacks project creation privileges:**
     - 3b1. System returns permission error and records unauthorized access attempt in audit log (RN12, RN18).
 - **Success Guarantees:** Project container is provisioned with default workflow columns and accessible according to visibility rules.
@@ -834,12 +838,15 @@ flowchart LR
     subgraph UC8_Cluster ["UC 8 - Export Data and Close Accounts"]
         UC8_1(["UC 8.1: Export personal and workspace data archives"])
         UC8_2(["UC 8.2: Close user accounts and terminate workspace access"])
+        UC8_3(["UC 8.3: Delete workspace and permanently erase workspace data"])
     end
 
     User --> UC8_1
     User --> UC8_2
     Owner --> UC8_1
+    Owner --> UC8_3
     UC8_2 -.-> Email
+    UC8_3 -.-> Email
 ```
 
 #### {U.C. 8.1} Export personal and workspace data archives
@@ -853,13 +860,15 @@ flowchart LR
 - **Trigger:** User requests export of personal profile and task data, or Workspace Owner requests full organization archive.
 - **Main Success Scenario:**
   1. Actor accesses data export options in settings menu and selects desired export scope (personal data export or full workspace archive).
-  2. System verifies actor's authorization (Owner role required for workspace-level export).
+  2. System verifies actor's authorization (Owner role required for workspace-level export) and verifies the requester's identity before executing the export (RN27).
   3. System initiates background archive compilation, aggregating user profile records, project details, task cards, comment histories, and deliverable attachments into structured JSON and standard archive formats.
   4. System compiles package and presents a secure, authenticated download link to the actor.
   5. Actor downloads the comprehensive archive package to their local workstation.
 - **Extensions:**
   - **2a. Non-Owner attempts workspace-level export:**
     - 2a1. System rejects request with authorization notice, permitting personal data export only.
+  - **2b. Requester identity verification fails:**
+    - 2b1. System halts the export, records the failed verification attempt, and requires identity re-confirmation before execution (RN27, RN18).
   - **3a. Large workspace archive compilation:**
     - 3a1. System notifies actor that compilation is queued and sends an email notification with download link once ready.
   - **2a. Workspace Member attempts organization-wide export:**
@@ -886,7 +895,7 @@ flowchart LR
   2. System presents warning regarding permanent loss of credentials and severance of workspace memberships, requiring explicit confirmation.
   3. System presents the final personal data export option ({U.C. 8.1}) prior to irreversible erasure and requests explicit confirmation of the closure.
   4. Actor confirms account termination.
-  5. System invalidates all active sessions, revokes authentication tokens, marks the user account as closed, and removes active workspace memberships.
+  5. System performs the final requester identity verification (RN27) and, upon confirmation, invalidates all active sessions, revokes authentication tokens, marks the user account as closed, and removes active workspace memberships.
   6. System dispatches a formal digital confirmation receipt via email certifying account termination date and time.
   7. System terminates user session and redirects browser to public landing page.
 - **Extensions:**
@@ -894,12 +903,44 @@ flowchart LR
     - 3a1. System initiates the personal data export flow ({U.C. 8.1}) and resumes the closure confirmation once the archive is delivered or declined.
   - **4a. Actor is the sole Workspace Owner of an active multi-member workspace:**
     - 4a1. System halts account closure, notifying actor that workspace ownership must be transferred to another administrator or the workspace deleted before closing the personal account.
+  - **5a. Requester identity verification fails:**
+    - 5a1. System halts the closure, records the failed verification, and requires identity re-confirmation (RN27, RN18).
   - **5b. Closure confirmed by single user:**
     - 5b1. System deactivates personal credentials, removes user from team rosters, and pseudonymizes authored task comments in accordance with RN21.
   - **5c. Session invalidation fails during closure:**
     - 5c1. System executes emergency forced server-side token revocation to prevent unauthorized post-closure access (RN11).
 - **Success Guarantees:** User credentials and sessions are permanently deactivated; workspace access is revoked; the final export was offered before irreversible erasure; confirmation receipt is sent.
 - **Minimal Guarantees:** Account deactivation immediately revokes authentication tokens, preventing subsequent API or UI access; personal data is pseudonymized within 30 days and audit logged (RN21, RN18).
+
+- **Minimal Guarantees:** Account deactivation immediately revokes authentication tokens, preventing subsequent API or UI access; personal data is pseudonymized within 30 days and audit logged (RN21, RN18).
+
+---
+
+#### {U.C. 8.3} Delete workspace and permanently erase workspace data
+- **Traceability:** Requirement `R8.3` | Product Use Case `PUC 8.3`
+- **Primary Actor:** Workspace Owner
+- **Supporting Actors:** Notification / Email Service
+- **Scope & Level:** TinyTask SaaS Platform | Sea Level (User Goal / Level 1)
+- **Stakeholders & Interests:**
+  - *Business Customers:* Complete data sovereignty — abandoned workspaces leave no residual content behind.
+  - *Workspace Members:* Advance certainty that workspace deletion terminates their access and removes the content irrevocably.
+- **Preconditions:** Actor holds the Workspace Owner role for the target workspace (RN12); actor possesses a valid authenticated session.
+- **Trigger:** Owner decides to permanently retire a workspace and all of its contents.
+- **Main Success Scenario:**
+  1. Owner selects workspace deletion in workspace administration settings and submits the deletion request.
+  2. System presents the irreversible-deletion warning, enumerating the scope (projects, tasks, comments, attachments, settings), and requires explicit confirmation.
+  3. Owner confirms the permanent deletion.
+  4. System performs the final requester identity verification (RN27), then permanently erases all workspace content and settings across stores (RN30), revokes all member access to the workspace, and frees consumed seat quotas.
+  5. System records the deletion event in the security audit log (RN18) and dispatches a deletion receipt to the Owner's registered email address.
+- **Extensions:**
+  - **2a. Active paid subscription on the workspace:**
+    - 2a1. System requires the Owner to acknowledge that the deletion also terminates the subscription and ceases billing at the end of the current cycle before confirmation proceeds.
+  - **4a. Requester identity verification fails:**
+    - 4a1. System halts the deletion, records the failed verification, and requires identity re-confirmation (RN27, RN18).
+  - **4b. Partial erasure failure across stores:**
+    - 4b1. System completes the remaining erasure before finalizing, keeps the workspace in a pending-erasure state with no member access, and never returns the workspace to active status (RN30).
+- **Success Guarantees:** No workspace content or settings remain retrievable after deletion; the Owner receives a deletion receipt; member access ends immediately.
+- **Minimal Guarantees:** The deletion is recorded in the audit log (RN18); the Owner's own account remains intact, and erasure of the owner's personal data in the workspace follows RN21.
 
 ---
 
@@ -925,11 +966,11 @@ The non-functional requirements define the platform's performance, availability,
 ## 6. Conclusions
 
 The system use case model establishes an exhaustive, literature-aligned functional baseline for TinyTask SaaS:
-1. **Total Sea-Level Fidelity:** 19 Level-1 use cases cleanly cover all operational requirements without leaf-node noise or micro-UI procedural scripts.
+1. **Total Sea-Level Fidelity:** 20 Level-1 use cases cleanly cover all operational requirements without leaf-node noise or micro-UI procedural scripts.
 2. **Exhaustive Behavioral Contracts:** Each use case specifies pre/post conditions, black-box main success scenarios, and branching alternative/exception flows.
 3. **Visual UML Coverage:** Every macro functional area is illustrated with an error-free, native Markdown UML Use Case diagram.
-4. **Seamless Sequential Traceability:** Direct 1:1 mapping from `Doc01` requirements (`R1.1`–`R8.2`, 19 cards including derived `R1.3`) and PUCs (`PUC 1.1`–`PUC 8.2`, 19 entries) to System Use Cases (`{U.C. 1.1}`–`{U.C. 8.2}`, 19 cases).
-5. **AEGIS Phase 3 Synthesis Ready:** Provides a rich, verified functional canvas for attack surface mapping, trust boundary analysis, and regulatory requirement derivation.
+4. **Seamless Sequential Traceability:** Direct 1:1 mapping from `Doc01` requirements (`R1.1`–`R8.3`, 20 cards including derived `R1.3` and `R8.3`) and PUCs (`PUC 1.1`–`PUC 8.3`, 20 entries) to System Use Cases (`{U.C. 1.1}`–`{U.C. 8.3}`, 20 cases).
+5. **AEGIS Phase 3 Synthesis Ready:** Provides a rich, verified functional canvas for security & privacy synthesis; formal threat analysis is out of Phase 3 — it belongs to Phase 4 (ADR-005).
 
 ---
 
@@ -955,3 +996,4 @@ The system use case model establishes an exhaustive, literature-aligned function
 | **3.1.0** | 2026-09-23 | Requirements Engineering Agent | Added visual UML Use Case diagrams in native Markdown for each macro functional cluster, removing sequence diagrams. |
 | **3.2.0** | 2026-09-23 | Requirements Engineering Agent | V1 Functional Refinement Pass: added {U.C. 1.3} with PUC 1.3 (locked-account recovery, `R1.3`), final-export-offer step in {U.C. 8.2}, restricted-state alignment in {U.C. 7.2}; traceability matrix updated to 19 requirements. |
 | **3.2.1** | 2026-09-24 | Requirements Engineering Agent | Specificity Matching pass: neutralized implementation and attack-class vocabulary in {U.C. 4.1}/{U.C. 5.2} flows (RN14 wording demoted to warranted altitude); behavior and IDs unchanged. |
+| **4.0.0** | 2026-09-28 | Requirements Engineering Agent | Round 1 synthesis (ADR-005, `synthesis_rounds/ROUND1_REGISTER.md`): added `{U.C. 8.3}` workspace permanent deletion (derived `R8.3`, PUC 8.3); identity-verification steps and refusal flows in `{U.C. 8.1}`/`{U.C. 8.2}` (RN27); secure-by-default initialization in `{U.C. 2.1}`/`{U.C. 3.1}` (RN28); traceability matrix and use-case totals updated to 20. |

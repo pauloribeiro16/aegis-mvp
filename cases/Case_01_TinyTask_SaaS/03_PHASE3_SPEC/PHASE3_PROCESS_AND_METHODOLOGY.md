@@ -138,24 +138,24 @@ flowchart TD
     P2 --> Synth
     P3_V0 --> Synth
     Synth --> P3_V1
-    P3_V1 --> P4["Phase 4 — Threat Analysis<br>(deferred, ADR-005)"]
+    P3_V1 --> P3P2["Phase 3 — Part 2<br>Threat & Risk Analysis<br>(gated by the Part 1 Exit Gate, ADR-006)"]
 ```
 
 ---
 
 ## 3. The Progressive Synthesis Process (Iterative Risk-Acceptance Cycle)
 
-### The Phase 3 Loop in Two Parts
+### The Part 1 Loop: Engine and Inputs
 
-Phase 3 is organized as **two distinct parts**:
+Part 1 (Security & Compliance) runs an iterative loop with two internal roles:
 
-1. **Part 1 — Iterative Evolution Loop (the engine).** A permanent cycle between requirements and use cases, always improving them on two axes:
+1. **The engine — Iterative Evolution Loop.** A permanent cycle between requirements and use cases, always improving them on two axes:
    - **Compliance:** every Phase 2 objective is checked against the functional model via `synthesis_rounds/OBJECTIVE_MAPPING.md` (objective-centric) and `UC_OBJECTIVE_CORRESPONDENCE.md` (use-case-centric, regulation-tagged).
    - **Principles:** every secure-design principle (`PRIN-ENG-01..07`) is checked via `synthesis_rounds/PRINCIPLE_MAPPING.md` (principle-centric) — the same review discipline as objectives, so "are all principles followed?" has a recorded, auditable answer.
    Each loop iteration: **reveal** use cases and requirements → **check** objectives and principles (both mappings) → **propose** constraints/adjustments for the gaps → **client verdict** per item, recorded in the round documentation → **converge**. Only after convergence do `Doc01`/`Doc02` versions evolve. The transition from assessment to improvement **is** the round itself: the mappings produce proposals, the round documentation turns verdicts into baseline changes.
-2. **Part 2 — Requirement Derivation (the inputs).** The derivation machinery that feeds the loop: the V0 functional baseline, the Phase 2 objectives and principles, the EARS formulation with fit criteria, and the absorption rules (§3.3 of the guidelines). Derivation produces the *candidates*; the Part 1 loop decides what enters the baseline.
+2. **The inputs — Requirement Derivation.** The derivation machinery that feeds the loop: the V0 functional baseline, the Phase 2 objectives and principles, the EARS formulation with fit criteria, and the absorption rules (§3.3 of the guidelines). Derivation produces the *candidates*; the loop decides what enters the baseline.
 
-**Threat modulation is not a Phase 3 activity.** Threat analysis and modeling belong to Phase 4 (ADR-005): Phase 3 delivers a risk-accepted, control-anchored baseline whose asset and trust-boundary maps seed that later analysis. No threat catalog, attack modeling, or abuse-case derivation appears in Phase 3 deliverables.
+**Threat modulation is not a Part 1 activity.** Threat analysis and modeling belong to **Phase 3 Part 2 — Threat & Risk Analysis** (ADR-006, superseding the separate-Fase-4 placement of ADR-005): Part 1 delivers a risk-accepted, control-anchored baseline whose asset and trust-boundary statements seed Part 2. No threat catalog, attack modeling, or abuse-case derivation appears in Part 1 deliverables.
 
 ### Step 1: Elicitation and Freezing of Functional Baseline (V0)
 - **Goal:** Capture the complete operational scope of the product in purely functional terms.
@@ -178,7 +178,7 @@ Phase 3 is organized as **two distinct parts**:
      - For software components, endpoints, storage, and interfaces, apply CRA Operational Objectives (`SO-D-XX.Y-NNN`).
      - For overall architectural behavior, apply Engineering Principles (`PRIN-ENG-01` to `PRIN-ENG-07`).
   4. **Exhaustive Coverage Matrix (mandatory output):** **every** Phase 2 objective (`PO-`/`SO-` — all of them) and every `PRIN-ENG-*` principle receives an explicit verdict against the functional model: **applies** (naming the functional carrier `R...`/`{U.C. ...}` and the **skill** from `baseline/skills/` used as the analysis lens) or **no functional carrier** (a recorded decision: organizational/process control per ADR-002, design guidance, or Phase 4 scope). No objective may be left unmapped — this matrix is what makes the synthesis reviewable, and it is what the client sees in the Step 3 rounds. Stored per case as `synthesis_rounds/OBJECTIVE_MAPPING.md`.
-- **Result:** Cross-cutting Traceability Matrix linking `R...` and `{U.C. ...}` to `PO-*`, `SO-*`, and `PRIN-ENG-*`, plus the Exhaustive Coverage Matrix covering 100% of the objective set. Asset and trust-boundary maps are kept here — they drive proposal derivation and later seed Phase 4 (ADR-005). Formal threat modeling is **out of Phase 3 scope** (Phase 4).
+- **Result:** Cross-cutting Traceability Matrix linking `R...` and `{U.C. ...}` to `PO-*`, `SO-*`, and `PRIN-ENG-*`, plus the Exhaustive Coverage Matrix covering 100% of the objective set. Asset and trust-boundary statements are kept here — they drive proposal derivation and later seed Phase 3 Part 2 (ADR-006). Formal threat modeling is **out of Part 1 scope** (it lives in Part 2).
 
 ### Step 3: Iterative Synthesis & Risk-Acceptance Rounds
 - **Goal:** Negotiate the synthesized constraints with the client until the risk posture converges — no constraint enters the baseline without an explicit client decision (ADR-005).
@@ -224,11 +224,25 @@ Phase 3 is organized as **two distinct parts**:
 - **Change Register (mandatory):** every functional change — including `evaluated, no change` rows — is recorded as `type → from/to → driving RN/PO/SO/article → rationale` in the analysis dossier (`STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md`), and the V1 document's Version History documents the pass in one row.
 - **Result:** An evolved V1 whose functional set is a registered, traceable refinement of V0; `v0_functional_baseline/` untouched.
 
-### Phase 4 (Deferred): Threat Analysis — Out of Phase 3 Scope
-- **Goal:** Model threats formally — STRIDE/LINDDUN, attack-surface analysis, abuse scenarios — over the **accepted, control-informed baseline**.
-- **Trigger:** Researcher judgment that the accepted baseline is robust and concrete (post-convergence, post-control-selection).
-- **Scope boundary:** Phase 3 performs **zero formal threat modeling**. Asset identification and trust-boundary mapping (Step 2) remain in Phase 3 and seed Phase 4. Use-case security extensions describe *accepted security behavior*, not threat models.
-- **Contract:** ADR-005 — Fase 3 (risk-accepted, control-anchored requirements) → **Fase 4 Threat Model** → Fase 5 Verification & Assurance.
+### Phase 3 Part 2 (Gated): Threat & Risk Analysis
+- **Goal:** Model threats formally — STRIDE/LINDDUN, attack-surface analysis, abuse scenarios — over the **accepted, control-informed baseline**, and maintain the case risk register (treat / accept / defer, with rationale).
+- **Location:** `part2_threat_risk/` inside the Phase 3 folder; outputs carry `TM-D-XX.Y-NNN` IDs (ADR-006).
+- **Trigger:** the **Part 1 Exit Gate (G1–G6)** below, plus the researcher's order to launch.
+- **Scope boundary:** Part 1 performs **zero formal threat modeling**. Asset identification and trust-boundary statements (Step 2) remain in Part 1 and seed Part 2. Use-case security extensions describe *accepted security behavior*, not threat models.
+- **Contract:** ADR-006 — Fase 3 [Part 1 Security & Compliance + Part 2 Threat & Risk] → **Fase 4 Verification & Implementation** (the former "Fase 5"; ADR-005's separate-Fase-4 placement is superseded).
+
+### Part 1 Exit Gate (Critérios de Paragem)
+
+Part 2 launches only when every criterion is **GREEN** and evidenced in the transition dossier (`analysis_v<N>_to_v<N+1>/README.md`):
+
+| # | Criterion | Evidence surface |
+|---|---|---|
+| **G1** | Exhaustive mapping 100% verdicted — every Phase 2 objective and every principle placed, zero silent/pending | `synthesis_rounds/OBJECTIVE_MAPPING.md` totals + `PRINCIPLE_MAPPING.md` |
+| **G2** | Rounds converged — zero open verdicts; every rejection recorded as an explicit risk acceptance | `synthesis_rounds/ROUND<n>_REGISTER.md` |
+| **G3** | Control selection complete — every accepted constraint carries selected anchors from pre-verified surfaces, within published sets | register §3 |
+| **G4** | Deliverables at the current version — Phase 3 Quality Checklist (§6) green; `doc_lint.py --strict` = 0 | version folder + lint run |
+| **G5** | Sufficiency assessment produced — per-regulation compliance verdict + security verdict + explicit residual list | `synthesis_rounds/SUFFICIENCY_ASSESSMENT.md` |
+| **G6** | Transition dossier complete — steps documented like `analysis_v0_to_v1/` | `analysis_v<N>_to_v<N+1>/` |
 
 ---
 
@@ -252,13 +266,22 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 │   └── Doc02_System_Use_Cases.md                # Cockburn Security Extensions, Guarantees, and Derived Use Cases
 │
 ├── analysis_v0_to_v1/                           # STEP1-STEP5 dossiers + V0/V1/V2 analysis tables (incl. Functional Evolution Register)
+├── analysis_v1_to_v2/                           # [V1 → V2 TRANSITION] Round-1 dossier + Part 1 Exit Gate record
+├── v2_security_privacy_synthesis/               # [VERSION 2] Round 1 convergence — risk-accepted baseline (APPROVED, ACTIVE)
+│   ├── README.md                                # V2 Scope, Re-anchored Chains, New Constraints, Round Register
+│   ├── Doc01_Requirements_Elicitation_and_PUC.md# 20 Functional Cards (incl. derived R8.3) + Realigned Chains + RN27–RN30
+│   └── Doc02_System_Use_Cases.md                # 20 Sea-Level Use Cases (incl. {U.C. 8.3})
 │
-└── synthesis_rounds/                            # [ROUND CYCLE] Objective/principle mappings + round documentation (ADR-005)
+├── part2_threat_risk/                           # [PHASE 3 — PART 2] Threat & Risk Analysis (entry gate: G1–G6, ADR-006)
+│
+└── synthesis_rounds/                            # [ROUND CYCLE] Objective/principle mappings + round registers (ADR-005/006)
 ```
+
+Top-level `Doc01`/`Doc02` are active working copies, synced to the current version folder (V2).
 
 ### Comparative Evolution Matrix
 
-| Dimension | Version 0 (Functional Baseline) | Version 1 (Security/Privacy Synthesis) | Downstream Phase 4 (Threat Analysis) → Phase 5 (Verification / Impl.) |
+| Dimension | Version 0 (Functional Baseline) | Version 1/2 (Security & Privacy Synthesis) | Phase 3 Part 2 (Threat & Risk, gated) → Phase 4 (Verification / Impl.) |
 |---|---|---|---|
 | **Primary Focus** | What the business & user need to achieve | How the system protects assets & complies with law; functional gaps revealed by the synthesis are closed (Step 4b) | How the implementation is built and verified |
 | **Input Sources** | Stakeholder goals, As-Is workflows, Product scope | V0 Functional Baseline + Phase 2 `PO-` and `SO-` | V1 Specification + Architecture Decisions |
@@ -266,7 +289,7 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 | **Use Case Content** | Main Success Scenario (Sea-Level) | MSS + Security Preconditions + Security Extensions + derived use cases (D1) | Concrete UI/API procedural execution scripts |
 | **Traceability** | Business Event -> Requirement -> PUC -> Use Case | Phase 2 Rules <-> Functional Scope <-> Security Reqs <-> Functional Change Register | Specification <-> Test Cases <-> Code Units |
 | **Technology Neutrality**| Absolute (zero vendors, frameworks, protocols)| Absolute (pure functional security constraints) | Concrete technology stack selections |
-| **Threat Modeling** | Zero (deferred by design) | Zero — assets & trust boundaries mapped, ready to seed Phase 4 | Phase 4: STRIDE/LINDDUN over the accepted baseline |
+| **Threat Modeling** | Zero (deferred by design) | Zero — assets & trust boundaries mapped, ready to seed Part 2 | Part 2: STRIDE/LINDDUN + risk register over the accepted baseline |
 
 ---
 
@@ -308,7 +331,7 @@ To maintain the highest professional standard of requirements engineering, autho
 
 ### 9. The Premature Solution Design & Over-Specific Parameter Trap
 - **Anti-Pattern:** Prescribing arbitrary low-level operational numbers (*"30-minute idle session timeout"*, *"100 req/min rate limit"*, *"128-bit entropy"*, *"salt >= 16 bytes"*, *"export within 24 hours"*) into Phase 3 non-functional requirements.
-- **Remedy:** Maintain high-level control abstraction. Non-functional requirements must follow the chain `Regulation → Article/Clause → Control Framework (NIST CSF 2.0 / NIST PF 1.1 / ISO) → High-Level Control Objective`. Define the defensive boundary and control state at high level; reserve fine-grained operational parameterization and algorithm tuning for Phase 4 (Architecture & Implementation).
+- **Remedy:** Maintain high-level control abstraction. Non-functional requirements must follow the chain `Regulation → Article/Clause → Control Framework (NIST CSF 2.0 / NIST PF 1.1 / ISO) → High-Level Control Objective`. Define the defensive boundary and control state at high level; reserve fine-grained operational parameterization and algorithm tuning for Phase 4 (Verification & Implementation).
 
 ---
 
@@ -325,7 +348,8 @@ Before declaring Phase 3 complete, verify that:
 - [ ] **Exhaustive Mapping:** 100% of Phase 2 objectives and principles carry an explicit verdict in the Objective Mapping (applies — with skill — or no functional carrier); zero unmapped objectives.
 - [ ] **Risk-Acceptance Control:** Every synthesized constraint's client verdict (Accept / Reject = risk accepted / Adjust) is recorded in the round documentation with round trace; no baseline version evolves before round convergence.
 - [ ] **Control Selection:** Every accepted constraint carries its selected control anchor copied from the pre-verified surfaces (module anchor blocks, requirement YAML keys, mapping store).
-- [ ] **Phase Boundary (Threats):** Zero formal threat modeling (STRIDE/LINDDUN, attack-scenario catalogs) inside Phase 3 deliverables — deferred to Phase 4 (ADR-005).
+- [ ] **Phase Boundary (Threats):** Zero formal threat modeling (STRIDE/LINDDUN, attack-scenario catalogs) inside Part 1 deliverables — confined to Phase 3 Part 2 (`part2_threat_risk/`, ADR-006).
+- [ ] **Part 1 Exit Gate:** G1–G6 all GREEN and evidenced in the transition dossier before Part 2 starts (§3).
 - [ ] **Empirical Verification:** Every security requirement defines an unambiguous Fit Criterion and specifies one of the four ISO 29148 verification methods (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`).
 - [ ] **Bidirectional Traceability:** A complete traceability matrix connects Phase 2 `PO-` and `SO-` objectives to functional requirements `R...`, use cases `{U.C. ...}`, and the security & privacy NFRs (`RN9` onwards).
 - [ ] **Tooling Integrity:** Running `python scripts/doc_lint.py --strict` passes with 0 findings across the entire repository.

@@ -2,7 +2,7 @@
 
 > **Document Purpose:** Tabular view of the three baseline versions. In V1, every security & privacy NFR is **absorbed into the functional requirement card it applies to** under `Security & Privacy Constraints`, one condensed tracing line per NFR: `<Regulation Article> → <Phase 2 rule> → <PRIN-ENG principle> → <control anchor>`. Cross-cutting NFRs (RN17, RN18, RN24) stay standalone in the Quality Attributes table.
 
-> **Source of Truth:** `v0_functional_baseline/` (V0, LOCKED) · top-level `Doc01`/`Doc02` (V2, ACTIVE) · `v1_security_privacy_synthesis/Doc01` (V1, APPROVED).
+> **Source of Truth:** `v0_functional_baseline/` (V0, LOCKED) · `v2_security_privacy_synthesis/` (V2, ACTIVE — top-level `Doc01`/`Doc02` kept as synced copies) · `v1_security_privacy_synthesis/` (V1, APPROVED).
 
 ---
 
@@ -12,7 +12,7 @@
 |---|---|---|---|---|---|
 | **V0** | `v0_functional_baseline/` | Pure functional snapshot (8 packages, 18 cards, 18 PUCs, 18 UCs). | 18 | 0 | LOCKED |
 | **V1** | `v1_security_privacy_synthesis/` | V0 + synthesis absorbed + Functional Refinement Pass (Step 4b): 15 security/privacy NFRs embedded in R cards; RN17/RN18/RN24 cross-cutting standalone; RN1–RN8 operational standalone; +1 derived requirement (`R1.3`), 2 descriptions refined, 1 re-prioritized (register: STEP5). | 19 | 26 (`RN1`–`RN26`) | APPROVED |
-| **V2** | top-level `Doc01`/`Doc02` | Consolidated functional baseline (v2.2); security traceability via Doc02 matrix. | 19 | 26 | ACTIVE |
+| **V2** | `v2_security_privacy_synthesis/` | Round 1 convergence (ADR-005): 11 chains re-anchored with published-set anchors; +`RN27`–`RN30`; derived `R8.3` (+PUC 8.3, `{U.C. 8.3}`); register: `synthesis_rounds/ROUND1_REGISTER.md`. | 20 | 30 (`RN1`–`RN30`) | ACTIVE |
 
 ## §2 Per-Requirement Absorption (R1.1–R8.2)
 

@@ -4,7 +4,7 @@
 > **Objective Mapping:** [`OBJECTIVE_MAPPING.md`](OBJECTIVE_MAPPING.md) — Step 2 deliverable: all 62 Phase 2 objectives + 7 principles with explicit verdicts (applies — with skill — or no functional carrier).
 > **Principle Mapping:** [`PRINCIPLE_MAPPING.md`](PRINCIPLE_MAPPING.md) — principle-centric mirror: for each `PRIN-ENG-01..07`, where it binds across the functional model, how it is realized, and its coverage state (gaps feed the open round).
 > **UC Correspondence:** [`UC_OBJECTIVE_CORRESPONDENCE.md`](UC_OBJECTIVE_CORRESPONDENCE.md) — use-case-centric view: grid (objective × UC package, regulation-tagged) + 20 per-UC cards (what each objective demands there, regulation, skill, RN, post-Round-1 state).
-> **Process:** manual Step 2 (exhaustive matrix) → Step 3 rounds — propose (EARS constraint + addressed risk + altitude + chain) → client verdict per item (**Accept / Reject = explicit risk acceptance / Adjust**), recorded in the round documentation → iterate to convergence → only then do `Doc01`/`Doc02` versions evolve, followed by control selection (Step 4).
+> **Process:** manual Step 2 (exhaustive matrix) → Step 3 rounds — propose (EARS constraint + addressed risk + altitude + chain) → client verdict per item (**Accept / Reject = explicit risk acceptance / Adjust**), recorded in the round documentation → iterate to convergence → only then do `Doc01`/`Doc02` versions evolve, followed by control selection (Step 4). **Part 1 Exit Gate (G1–G6, ADR-006):** when all six are GREEN (evidenced in `../analysis_v1_to_v2/README.md`), Phase 3 Part 2 — Threat & Risk Analysis (`../part2_threat_risk/`) may launch.
 
 ## Capability lane rule (technology vs process)
 

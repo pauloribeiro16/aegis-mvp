@@ -3,7 +3,7 @@
 > **Case Study:** Case 01 — TinyTask SaaS (B2B Task Management Multi-Tenant Platform)  
 > **Lifecycle Phase:** AEGIS Phase 3 — Specification  
 > **Reference Standard:** Volere Requirements Process & GPTools Standards (E1.1 / E1.2), Cockburn Use Cases, ISO/IEC/IEEE 29148  
-> **Status:** Active Baseline Iterations (Version 0 and Version 1)  
+> **Status:** Active Baseline Iterations (Version 0, 1 and 2) — Phase 3 runs in two parts (ADR-006): Part 1 Security & Compliance (this tree) · Part 2 Threat & Risk Analysis (`part2_threat_risk/`)  
 
 ---
 
@@ -34,10 +34,20 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 │   ├── Doc01_Requirements_Elicitation_and_PUC.md# 18 Functional Requirements & 18 PUCs (Pure Functional GPTools E1.1)
 │   └── Doc02_System_Use_Cases.md                # 18 Sea-Level System Use Cases (Cockburn Level-1 MSS GPTools E1.2)
 │
-└── v1_security_privacy_synthesis/               # [VERSION 1] Security & Privacy Synthesis + Functional Refinement Pass (APPROVED)
-    ├── README.md                                # V1 Synthesis Scope, Absorbed Constraints, and Refinement Pass
-    ├── Doc01_Requirements_Elicitation_and_PUC.md# 19 Functional Cards (incl. derived R1.3) + Absorbed Security/Privacy Constraints
-    └── Doc02_System_Use_Cases.md                # 19 Sea-Level Use Cases with Security Preconditions & Extensions
+├── v1_security_privacy_synthesis/               # [VERSION 1] Security & Privacy Synthesis + Functional Refinement Pass (APPROVED)
+│   ├── README.md                                # V1 Synthesis Scope, Absorbed Constraints, and Refinement Pass
+│   ├── Doc01_Requirements_Elicitation_and_PUC.md# 19 Functional Cards (incl. derived R1.3) + Absorbed Security/Privacy Constraints
+│   └── Doc02_System_Use_Cases.md                # 19 Sea-Level Use Cases with Security Preconditions & Extensions
+│
+├── v2_security_privacy_synthesis/               # [VERSION 2] Round 1 Convergence — risk-accepted baseline (APPROVED, ACTIVE)
+│   ├── README.md                                # V2 Scope, Re-anchored Chains, New Constraints (RN27–RN30), and Round Register
+│   ├── Doc01_Requirements_Elicitation_and_PUC.md# 20 Functional Cards (incl. derived R8.3) + Realigned Chains + RN27–RN30
+│   └── Doc02_System_Use_Cases.md                # 20 Sea-Level Use Cases (incl. {U.C. 8.3}) with Identity/Secure-Default Flows
+│
+├── part2_threat_risk/                           # [PHASE 3 — PART 2] Threat & Risk Analysis (entry gate: Part 1 exit gate G1–G6)
+│   └── README.md                                # Part 2 Scope, Inputs, and Entry Criterion (ADR-006)
+│
+└── Doc01_... / Doc02_... (top level)            # Active working copies, synced to the current version folder (V2)
 ```
 
 ---
@@ -68,6 +78,11 @@ All specifications in this directory are governed by [`PHASE3_PROCESS_AND_METHOD
   - [`STEP4_FUNCTIONAL_AUGMENTATION_AND_TRACEABILITY_WEAVING.md`](analysis_v0_to_v1/STEP4_FUNCTIONAL_AUGMENTATION_AND_TRACEABILITY_WEAVING.md)
   - [`STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md`](analysis_v0_to_v1/STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md) — Functional Refinement Pass register (D1–D4 taxonomy)
 
+### Version 2: Security & Privacy Synthesis — Round 1 (`v2_security_privacy_synthesis/`)
+- **Status:** Approved (Round 1 converged 13/13, 2026-09-28; register: [`synthesis_rounds/ROUND1_REGISTER.md`](synthesis_rounds/ROUND1_REGISTER.md)).
+- **Content:** risk-accepted evolution of V1 — 11 constraint chains re-anchored to their natural Phase 2 objectives with published-set anchors (ADJ-1…9); new constraints `RN27` (requester identity verification), `RN28` (secure-by-default), `RN29` (secure-use instructions, SHOULD), `RN30` (workspace permanent removal); derived `R8.3` delete-workspace with `PUC 8.3`/`{U.C. 8.3}`; 20 cards / 20 PUCs / 20 UCs; sufficiency assessed in [`synthesis_rounds/SUFFICIENCY_ASSESSMENT.md`](synthesis_rounds/SUFFICIENCY_ASSESSMENT.md).
+- **Top-level `Doc01`/`Doc02`:** active working copies synced to this version.
+
 ### Version 1: Security & Privacy Synthesis (`v1_security_privacy_synthesis/`)
 - **Status:** Approved.
 - **Content:** Synthesis of Phase 2 GDPR/CRA Operational Objectives (`PO-` and `SO-`) and 7 Secure Design Principles (`PRIN-ENG-01` to `PRIN-ENG-07`) against the V0 functional baseline, plus the **Functional Refinement Pass (Step 4b)** that evolved the functional set where the synthesis revealed genuine gaps: derived `R1.3` (locked-account recovery), refined `R7.2`/`R8.2`, `R1.2` elevated to Must — registered in the STEP5 Functional Evolution Register.
@@ -77,8 +92,8 @@ All specifications in this directory are governed by [`PHASE3_PROCESS_AND_METHOD
 
 ## 4. Downstream Lifecycle Progression
 
-The outputs of **Version 1** serve as the direct inputs to:
-1. **Phase 4 (Analysis — deferred, ADR-005):** Formal threat modeling (STRIDE / LINDDUN) over the accepted, control-informed baseline, seeded by the asset and trust-boundary maps produced in Step 2. Triggered when the researcher judges the baseline robust and concrete.
-2. **Phase 5 (Verification & Assurance):** Transforming the ISO 29148 verification bindings (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`) and the Phase 4 threat model into automated CI/CD test suites, security probes, and compliance audit dossiers.
+The outputs of **Version 2** serve as the direct inputs to:
+1. **Phase 3 Part 2 — Threat & Risk Analysis** (`part2_threat_risk/`, ADR-006): STRIDE / LINDDUN and the case risk register over the accepted, control-informed baseline, seeded by the asset and trust-boundary statements of Part 1. Launched when the Part 1 Exit Gate (G1–G6) is GREEN — evidenced in [`analysis_v1_to_v2/README.md`](analysis_v1_to_v2/README.md).
+2. **Phase 4 — Verification & Implementation:** Transforming the ISO 29148 verification bindings (`TEST`, `INSPECT`, `DEMONSTRATE`, `ANALYZE`), the requirements, and the Part 2 threat model into automated CI/CD test suites, security probes, and compliance audit dossiers.
 
 Future baseline revisions (e.g., the chain-recalibration backlog) run through the **iterative risk-acceptance cycle** — see [`synthesis_rounds/README.md`](synthesis_rounds/README.md).

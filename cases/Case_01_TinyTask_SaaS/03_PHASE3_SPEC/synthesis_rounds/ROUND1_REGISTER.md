@@ -2,7 +2,7 @@
 
 > **Round window:** opened 2026-09-24 (proposals ADJ-1…ADJ-9, P-01…P-04) · verdicts collected 2026-09-28 · **Status: CONVERGED** — 13 Accepts, 0 Rejects, 0 Adjusts; no re-proposals required.
 > **Inputs:** [`OBJECTIVE_MAPPING.md`](OBJECTIVE_MAPPING.md) (exhaustive coverage matrix), [`PRINCIPLE_MAPPING.md`](PRINCIPLE_MAPPING.md) (principle gaps), `../v1_security_privacy_synthesis/Doc01`/`Doc02` (approved V1 baseline).
-> **Effect:** accepted items evolve `Doc01`/`Doc02` to version 4.0.0 (root-level active copies); `v0_functional_baseline/` and `v1_security_privacy_synthesis/` remain untouched as history.
+> **Effect:** accepted items evolve `Doc01`/`Doc02` to version 4.0.0, stored in `../v2_security_privacy_synthesis/` (top-level `Doc01`/`Doc02` kept as synced active copies); `v0_functional_baseline/` and `v1_security_privacy_synthesis/` remain untouched as history.
 > **Control selection source rule (ADR-005 Step 4):** anchors are copied only from pre-verified surfaces — the driver objective's published control set (`02_PHASE2_RULES/Doc01`) and the mapping store (`baseline/MAPPINGS/sr_control_mappings/<REG>.json`). PF 1.1 anchors accompany GDPR-derived obligations only (R2/R8).
 
 ---
@@ -116,5 +116,5 @@ All seven skills are in use across the coverage matrix (`OBJECTIVE_MAPPING.md` S
 ## §5 Convergence & Effect
 
 - **Convergence criterion met:** the round produced no rejections and no adjustments; the client closed the item set on 2026-09-28.
-- **Effect:** `Doc01`/`Doc02` evolve to **4.0.0** (root-level active copies) applying: 11 chain re-anchors (D2-class: driver/anchor updates, constraint wording unchanged), 4 new constraints (RN27, RN28, RN30 absorbed in-card; RN29 in Table 7), 1 D1 derived requirement (R8.3 + PUC 8.3 + {U.C. 8.3}).
+- **Effect:** `Doc01`/`Doc02` evolve to **4.0.0** (stored in `v2_security_privacy_synthesis/`) applying: 11 chain re-anchors (D2-class: driver/anchor updates, constraint wording unchanged), 4 new constraints (RN27, RN28, RN30 absorbed in-card; RN29 in Table 7), 1 D1 derived requirement (R8.3 + PUC 8.3 + {U.C. 8.3}).
 - Coverage after Round 1 (see updated totals in [`OBJECTIVE_MAPPING.md`](OBJECTIVE_MAPPING.md)): **26 objectives with a functional carrier · 31 organizational (no functional carrier, recorded decisions) · 2 design guidance · 3 N/A · total 62.**

@@ -3,7 +3,7 @@
 > **Case Study:** Case 02 — SecureBorder Solutions (Automated Border-Control Gates with On-Board Biometric Verification AI)  
 > **Lifecycle Phase:** AEGIS Phase 3 — Specification  
 > **Reference Standard:** Volere Requirements Process & GPTools Standards (E1.1 / E1.2)  
-> **Status:** V0 Locked — V1 round-converged synthesis in progress (ADR-005 rounds; two-part Phase 3 per ADR-006)  
+> **Status:** Part 1 COMPLETE — V1 approved (Round 1 converged 71/71 accepts, 2026-09-28); Exit Gate GREEN; Part 2 cleared (ADR-006)  
 
 ---
 
@@ -21,8 +21,17 @@ cases/Case_02_SecureBorder_Solutions/03_PHASE3_SPEC/
 │   ├── Doc01_Requirements_Elicitation_and_PUC.md# 28 Functional Requirements & 28 PUCs (Pure Functional)
 │   └── Doc02_System_Use_Cases.md                # 28 Level-1 Sea-Level Use Cases
 │
-├── Doc01_Requirements_Elicitation_and_PUC.md    # Active working copy (synced to the current version folder)
-└── Doc02_System_Use_Cases.md                    # Active working copy (synced to the current version folder)
+├── v1_security_privacy_synthesis/               # [VERSION 1] Round-converged Security & Privacy Synthesis (APPROVED, ACTIVE)
+│   ├── README.md                                # V1 Scope, Accepted Constraints (RN11–RN30), Round Register
+│   ├── Doc01_Requirements_Elicitation_and_PUC.md# 28 Cards + Absorbed Constraints + 51 Chain Rows
+│   └── Doc02_System_Use_Cases.md                # 28 Fully-Dressed Use Cases with Accepted Security Behavior
+│
+├── analysis_v0_to_v1/                           # [V0 → V1 TRANSITION] STEP1–STEP5 dossier + Part 1 Exit Gate record (GREEN)
+│
+├── part2_threat_risk/                           # [PHASE 3 — PART 2] Threat & Risk Analysis (entry gate: G1–G6, ADR-006)
+│
+├── Doc01_Requirements_Elicitation_and_PUC.md    # Active working copy (synced to the current version folder: V1)
+└── Doc02_System_Use_Cases.md                    # Active working copy (synced to the current version folder: V1)
 ```
 
 ---

@@ -32,9 +32,11 @@ Gate codified in [`../PHASE3_PROCESS_AND_METHODOLOGY.md`](../PHASE3_PROCESS_AND_
 
 | # | Criterion | Evidence | State |
 |---|---|---|---|
-| G1 | Exhaustive mapping 100% verdicted | `synthesis_rounds/OBJECTIVE_MAPPING.md` 100/100 + `PRINCIPLE_MAPPING.md` 7/7 | — |
-| G2 | Rounds converged | `ROUND1_REGISTER.md` verdict ledger | — |
-| G3 | Control selection complete | `ROUND1_REGISTER.md` §3 | — |
-| G4 | Deliverables at current version; checklist + `doc_lint --strict` | `v1_security_privacy_synthesis/` 2.0.0 | — |
-| G5 | Sufficiency assessment produced | `synthesis_rounds/SUFFICIENCY_ASSESSMENT.md` | — |
-| G6 | Transition dossier complete | STEP1–STEP5 of this directory | — |
+| G1 | Exhaustive mapping 100% verdicted | `synthesis_rounds/OBJECTIVE_MAPPING.md` 100/100 placed (92 covered / 2 organizational / 6 N/A) + `PRINCIPLE_MAPPING.md` 7/7 bound | **GREEN** |
+| G2 | Rounds converged | `ROUND1_REGISTER.md`: 20/20 constraint accepts + 51/51 chain-binding accepts, 0 reject, 0 adjust (2026-09-28) | **GREEN** |
+| G3 | Control selection complete | `ROUND1_REGISTER.md` §3 — per-constraint selections from published sets; store-flagged RN28 (SR-GDPR-030); no out-of-set anchor | **GREEN** |
+| G4 | Deliverables at current version; checklist + `doc_lint --strict` | `v1_security_privacy_synthesis/` 2.0.0; lint run 2026-09-28: 0 findings | **GREEN** |
+| G5 | Sufficiency assessment produced | `synthesis_rounds/SUFFICIENCY_ASSESSMENT.md` — four-regulation verdict + explicit residuals | **GREEN** |
+| G6 | Transition dossier complete | STEP1–STEP5 of this directory | **GREEN** |
+
+**Gate verdict: GREEN — Part 2 (Threat & Risk Analysis) is cleared to launch** (`../part2_threat_risk/`), on the researcher's order.

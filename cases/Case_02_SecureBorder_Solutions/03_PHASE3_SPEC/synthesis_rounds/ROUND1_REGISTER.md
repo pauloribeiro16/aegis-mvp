@@ -1,6 +1,6 @@
 # Round 1 Register — Iterative Risk-Acceptance Synthesis (SecureBorder eGate)
 
-> **Round window:** opened 2026-09-28 (proposals from the exhaustive mapping: 20 new constraints `RN11`–`RN30` + 51 chain bindings on existing functional cards) · **Status: OPEN — awaiting client verdicts.**
+> **Round window:** opened 2026-09-28 · verdicts collected 2026-09-28 · **Status: CONVERGED — 20/20 constraint accepts + 51/51 chain-binding accepts; 0 Rejects, 0 Adjusts; no Round 2 required.**
 > **Inputs:** [`OBJECTIVE_MAPPING.md`](OBJECTIVE_MAPPING.md) (100/100 objectives placed) · [`../analysis_v0_to_v1/STEP2_REGULATORY_CROSS_CUTTING_ANALYSIS.md`](../analysis_v0_to_v1/STEP2_REGULATORY_CROSS_CUTTING_ANALYSIS.md) (derivation) · `../v0_functional_baseline/` (locked baseline).
 > **Effect on acceptance:** accepted items are absorbed into `Doc01`/`Doc02` → V1 (`v1_security_privacy_synthesis/`); rejections stay recorded as explicit risk acceptances; `v0_functional_baseline/` remains untouched.
 > **Control selection rule (ADR-005 Step 4):** anchors copied only from pre-verified surfaces — the driver objective's published control set (Phase 2 `Doc01` final column) and the mapping store (`baseline/MAPPINGS/sr_control_mappings/<REG>.json`). PF 1.1 accompanies GDPR-derived obligations; AI RMF accompanies AI-Act-derived obligations (R2/R8).
@@ -186,5 +186,6 @@ Integrity note: store-flagged selections (RN28) cite the exact SR record; all ot
 
 ## §4 Convergence & Effect
 
-- **Status:** OPEN — client verdicts pending per batch (presented in plain business language; this register holds the formulations and IDs).
+- **Convergence:** the client accepted all batches in plain business language on 2026-09-28 — 20/20 new constraints (RN11–RN30) and 51/51 chain bindings; zero rejections (no explicit risk-acceptance entries) and zero adjustments; the round closed with no Round 2.
+- **Effect:** the accepted set is absorbed into `Doc01`/`Doc02` 2.0.0 in `v1_security_privacy_synthesis/` (top-level docs kept as synced active copies); coverage totals finalize in `OBJECTIVE_MAPPING.md` (92 covered / 2 organizational / 6 N/A = 100).
 - **On convergence:** accepted set absorbed → `Doc01`/`Doc02` V1 (2.0.0) in `v1_security_privacy_synthesis/`; the 28 use cases are elaborated to the fully-dressed Cockburn anatomy with the accepted security preconditions/extensions; coverage totals finalize in `OBJECTIVE_MAPPING.md`.

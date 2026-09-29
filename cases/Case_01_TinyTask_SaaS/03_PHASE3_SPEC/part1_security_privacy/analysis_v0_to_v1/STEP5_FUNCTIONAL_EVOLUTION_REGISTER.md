@@ -1,13 +1,5 @@
 # STEP 5 — Functional Evolution Register (V1 Refinement Pass)
 
-> **Case Study:** Case 01 — TinyTask SaaS  
-> **Lifecycle Phase:** AEGIS Phase 3 — Specification  
-> **Purpose:** Mandatory change register for the Step 4b Functional Refinement Pass: every functional change introduced in V1 relative to the locked V0 baseline, classified in the D1–D4 taxonomy, with its driving `RN`/`PO-`/`SO-`/regulation-article trace and rationale.  
-> **Normative basis:** `../../PHASE3_PROCESS_AND_METHODOLOGY.md` Step 4b; `templates/phase3_functional_spec_guidelines.md` §3.4.  
-> **Baselines:** FROM `../v0_functional_baseline/` (V0, LOCKED, 18 R cards) · TO `../v1_security_privacy_synthesis/` (V1, 19 R cards).
-
----
-
 ## 1. Gap-Analysis Method
 
 For every synthesized obligation (`RN9`–`RN26` and their upstream `PO-`/`SO-` drivers), the pass asks one question:

@@ -32,7 +32,7 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/analysis_v1_to_v2/
 | Functional set | 19 cards / 19 PUCs / 19 UCs | 20 cards / 20 PUCs / 20 UCs (`R8.3` D1) |
 | Round state | Round 1 open (13 items) | Converged 13/13 accepts (2026-09-28) |
 
-Round 2 update (2026-09-28, ADR-007): the Round-1 coverage verdicts were re-audited under the fulfillment semantics — **6 fully covered / 19 partially covered** (explicit carve-outs) / **32 organizational**; record corrections in [`../synthesis_rounds/ROUND2_REGISTER.md`](../synthesis_rounds/ROUND2_REGISTER.md), improvement proposals P1–P4 pending client verdicts (accepted baseline unchanged).
+Coverage verdicts follow the ADR-007 fulfillment semantics — **6 fully covered / 19 partially covered** (explicit carve-outs) / **32 organizational**; baseline-change proposals P1–P4 pending client verdicts in [`../synthesis_rounds/ROUND2_REGISTER.md`](../synthesis_rounds/ROUND2_REGISTER.md) (accepted baseline unchanged).
 
 ---
 
@@ -42,8 +42,8 @@ Gate codified in [`../../PHASE3_PROCESS_AND_METHODOLOGY.md`](../../PHASE3_PROCES
 
 | # | Criterion | Evidence | State |
 |---|---|---|---|
-| G1 | Exhaustive mapping 100% verdicted (objectives + principles), zero silent | `part1_security_privacy/synthesis_rounds/OBJECTIVE_MAPPING.md` 62/62 + totals; `PRINCIPLE_MAPPING.md` 7/7 bound, 0 pending gaps. R2 re-audit (ADR-007, 2026-09-28): 6 fully / 19 partially covered with discharge records, 32 organizational — totals sum 62 | **GREEN** |
-| G2 | Rounds converged; zero open verdicts; rejections recorded as risk acceptances | `ROUND1_REGISTER.md` §1: 13/13 accepts, 0 reject, 0 adjust; `part1_security_privacy/synthesis_rounds/README.md` state. Round 2 applied record corrections only (ADR-007); improvement proposals P1–P4 pending — accepted baseline unchanged | **GREEN** |
+| G1 | Exhaustive mapping 100% verdicted (objectives + principles), zero silent | `part1_security_privacy/synthesis_rounds/OBJECTIVE_MAPPING.md` 62/62 + totals; `PRINCIPLE_MAPPING.md` 7/7 bound, 0 pending gaps. ADR-007 discharge semantics: 6 fully / 19 partially covered with discharge records, 32 organizational — totals sum 62 | **GREEN** |
+| G2 | Rounds converged; zero open verdicts; rejections recorded as risk acceptances | `ROUND1_REGISTER.md` §1: 13/13 accepts, 0 reject, 0 adjust; `part1_security_privacy/synthesis_rounds/README.md` state. Round 2 carries baseline-change proposals only (ADR-007); P1–P4 pending — accepted baseline unchanged | **GREEN** |
 | G3 | Control selection complete; anchors ∈ published sets | `ROUND1_REGISTER.md` §3 (per-constraint selection + sources); no out-of-set anchor without W4 | **GREEN** |
 | G4 | Deliverables at current version; §6 checklist; `doc_lint.py --strict` = 0 | `part1_security_privacy/v2_security_privacy_synthesis/` 4.0.0; lint run 2026-09-28: 1650 files, 0 findings | **GREEN** |
 | G5 | Sufficiency assessment with verdict + explicit residuals | `part1_security_privacy/synthesis_rounds/SUFFICIENCY_ASSESSMENT.md` (compliance + security verdicts; residuals: organizational lane, RN29 SHOULD, threat validation) | **GREEN** |

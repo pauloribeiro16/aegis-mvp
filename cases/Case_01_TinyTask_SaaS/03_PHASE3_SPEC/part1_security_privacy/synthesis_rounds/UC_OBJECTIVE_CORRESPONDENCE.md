@@ -254,4 +254,4 @@ See [`ROUND1_REGISTER.md`](ROUND1_REGISTER.md) for formulations and control sele
 | Most-covered UC | `{U.C. 1.1}` (5 rows) | authentication surface |
 | Least-covered UC | `{U.C. 4.2}` (1 row) | throttling only — matches the V0 "no security surface" reading |
 
-**Read rule:** every binding above traces to a chain that satisfies the anchor-integrity rule (chain anchors ∈ the cited objective's published control set); Round 1 verdicts are recorded in [`ROUND1_REGISTER.md`](ROUND1_REGISTER.md); all bindings above are accepted and applied in `Doc01`/`Doc02` 4.0.0. Round 2 (2026-09-28, ADR-007) re-verdicted per-objective discharge in `OBJECTIVE_MAPPING.md` — the per-UC bindings above are unaffected.
+**Read rule:** every binding above traces to a chain that satisfies the anchor-integrity rule (chain anchors ∈ the cited objective's published control set); Round 1 verdicts are recorded in [`ROUND1_REGISTER.md`](ROUND1_REGISTER.md); all bindings above are accepted and applied in `Doc01`/`Doc02` 4.0.0. Per-objective discharge verdicts live in `OBJECTIVE_MAPPING.md` (ADR-007 vocabulary) — the per-UC bindings above are unaffected.

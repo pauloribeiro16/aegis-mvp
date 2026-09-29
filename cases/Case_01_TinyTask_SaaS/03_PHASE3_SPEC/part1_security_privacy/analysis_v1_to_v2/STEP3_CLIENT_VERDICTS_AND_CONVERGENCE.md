@@ -19,6 +19,6 @@ The 13 open items were presented to the client in two families, in plain busines
 
 ## 3. Convergence
 
-Per the manual's criterion — a round with no new rejections, or an explicit client closure — Round 1 **converged on 2026-09-28** with zero re-proposals; no Round 2 was required. No `Doc01`/`Doc02` version evolved before this point.
+Per the manual's criterion — a round with no new rejections, or an explicit client closure — Round 1 **converged on 2026-09-28** with zero re-proposals; the Round 1 item set closed with no re-proposals. No `Doc01`/`Doc02` version evolved before this point.
 
 Because there were zero rejections, the round produced **no explicit risk-acceptance entries**; the standing residuals of the baseline are the recorded organizational-lane decisions (31 objectives) and the SHOULD priority of RN29 — both carried in [`../synthesis_rounds/SUFFICIENCY_ASSESSMENT.md`](../synthesis_rounds/SUFFICIENCY_ASSESSMENT.md).

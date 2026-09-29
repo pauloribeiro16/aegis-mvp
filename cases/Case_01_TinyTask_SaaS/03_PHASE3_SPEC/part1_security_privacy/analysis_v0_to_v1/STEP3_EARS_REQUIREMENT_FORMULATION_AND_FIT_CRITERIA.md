@@ -1,15 +1,5 @@
 # Step 3: EARS Requirement Formulation & Fit Criteria Derivation
 
-> **Step ID:** STEP-03  
-> **Inputs:**  
-> - Step 2 Regulatory Cross-Cutting Matrix (threat analysis out of Phase 3 — Phase 4, ADR-005)  
-> - Karl Wiegers & Joy Beatty (*Software Requirements*, 3rd ed., Chapter 11)  
-> - Suzanne & James Robertson (*Mastering the Requirements Process: Getting Requirements Right*, 3rd ed.)  
-> - ISO/IEC/IEEE 29148:2018 (Requirements Engineering Standard)  
-> **Output:** Syntactic Specification of the 18 Security & Privacy NFRs (`RN9`–`RN26`)  
-> **Status:** Normative Specification Trajectory  
-
----
 
 ## 1. Purpose & Methodological Rationale
 

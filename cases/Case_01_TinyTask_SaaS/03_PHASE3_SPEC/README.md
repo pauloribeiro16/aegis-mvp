@@ -54,7 +54,7 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 │       ├── PRINCIPLE_MAPPING.md                    # Principle-centric mirror + per-requirement check
 │       ├── UC_OBJECTIVE_CORRESPONDENCE.md          # Use-case-centric view with regulation tags
 │       ├── ROUND1_REGISTER.md                      # Round 1: formulations, verdicts, control selections
-│       ├── ROUND2_REGISTER.md                      # Round 2: D3 elevation(s) and convergence
+│       ├── ROUND2_REGISTER.md                      # Round 2: baseline-change proposals (P1–P4), pending client verdicts
 │       └── SUFFICIENCY_ASSESSMENT.md               # Compliance + security verdict and residuals
 │
 ├── part2_threat_risk/                           # [PHASE 3 — PART 2] Threat & Risk Analysis (entry gate: Part 1 exit gate G1–G6)

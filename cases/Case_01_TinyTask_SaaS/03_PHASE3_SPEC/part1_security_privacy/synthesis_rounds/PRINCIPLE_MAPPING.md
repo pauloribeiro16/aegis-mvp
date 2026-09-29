@@ -61,7 +61,7 @@ Every security/privacy requirement is atomic with a deterministic pass/fail veri
 
 | Where | Realization | RN | State |
 |---|---|---|---|
-| All RN cards + every round proposal | Volere fit criterion + empirical method (`TEST`/`INSPECT`/`DEMONSTRATE`/`ANALYZE`) on each requirement | global | Bound (recorded once) |
+| All RN cards + every round proposal | Volere fit criterion + empirical method (`TEST`/`INSPECT`/`DEMONSTRATE`/`ANALYZE`) on each requirement | global | Bound (RN1–RN8 and the R1.2 elevation excepted — fit-criterion proposal P1 pending in [`ROUND2_REGISTER.md`](ROUND2_REGISTER.md)) |
 
 **Verdict: followed** (structural — enforced by the card anatomy and the round-proposal template).
 

@@ -1,17 +1,5 @@
 # Step 4: Functional Augmentation & Traceability Weaving
 
-> **Step ID:** STEP-04  
-> **Inputs:**  
-> - Step 1 Functional Baseline (`part1_security_privacy/v0_functional_baseline/Doc01`, `Doc02`)  
-> - Step 3 EARS Requirements Specification (absorbed into `Doc01` cards per the 2026-09-23 absorption rule)  
-> - Alistair Cockburn (*Writing Effective Use Cases*, Chapter on Extension Handling)  
-> **Outputs:**  
-> - Augmented `part1_security_privacy/Doc01_Requirements_Elicitation_and_PUC.md` (in `part1_security_privacy/v1_security_privacy_synthesis/`)  
-> - Augmented `part1_security_privacy/Doc02_System_Use_Cases.md` (in `part1_security_privacy/v1_security_privacy_synthesis/`)  
-> **Status:** Specification Synthesis Completed & Verified  
-
----
-
 ## 1. Purpose & Methodological Rationale
 
 The central challenge in requirements engineering is **how to inject security and regulatory constraints into functional models without corrupting functional clarity**.

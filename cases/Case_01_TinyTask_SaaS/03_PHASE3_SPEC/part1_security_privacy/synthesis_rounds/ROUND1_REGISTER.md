@@ -1,12 +1,5 @@
 # Round 1 Register — Iterative Risk-Acceptance Synthesis (TinyTask SaaS)
 
-> **Round window:** opened 2026-09-24 (proposals ADJ-1…ADJ-9, P-01…P-04) · verdicts collected 2026-09-28 · **Status: CONVERGED** — 13 Accepts, 0 Rejects, 0 Adjusts; no re-proposals required.
-> **Inputs:** [`OBJECTIVE_MAPPING.md`](OBJECTIVE_MAPPING.md) (exhaustive coverage matrix), [`PRINCIPLE_MAPPING.md`](PRINCIPLE_MAPPING.md) (principle gaps), `../v1_security_privacy_synthesis/Doc01`/`Doc02` (approved V1 baseline).
-> **Effect:** accepted items evolve `Doc01`/`Doc02` to version 4.0.0, stored in `../v2_security_privacy_synthesis/` (top-level `Doc01`/`Doc02` kept as synced active copies); `part1_security_privacy/v0_functional_baseline/` and `part1_security_privacy/v1_security_privacy_synthesis/` remain untouched as history.
-> **Control selection source rule (ADR-005 Step 4):** anchors are copied only from pre-verified surfaces — the driver objective's published control set (`02_PHASE2_RULES/Doc01`) and the mapping store (`baseline/MAPPINGS/sr_control_mappings/<REG>.json`). PF 1.1 anchors accompany GDPR-derived obligations only (R2/R8).
-
----
-
 ## §1 Verdict Ledger
 
 | Item | Type | Affected constraint(s) | Chain change (from → to) | Verdict |

@@ -1,12 +1,5 @@
 # Step 1: V0 Functional Audit & Boundary Analysis
 
-> **Step ID:** STEP-01  
-> **Input:** `part1_security_privacy/v0_functional_baseline/Doc01_Requirements_Elicitation_and_PUC.md`, `part1_security_privacy/v0_functional_baseline/Doc02_System_Use_Cases.md`  
-> **Output:** Asset Inventory, Actor Boundary Map, and Functionality Audit  
-> **Theoretical Grounding:** Suzanne & James Robertson (*Volere*), Karl Wiegers (*Software Requirements*), Alistair Cockburn (*Writing Effective Use Cases*)  
-
----
-
 ## 1. Purpose & Methodological Rationale
 
 The objective of Step 1 is to conduct an exhaustive, rigorous audit of the **pure functional baseline (Version 0)** before any security or privacy constraints are introduced. 

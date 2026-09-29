@@ -3,7 +3,7 @@
 > **Case Study:** Case 03 — OmniBank Financial Systems (Consumer Banking with In-House High-Risk Credit-Scoring AI)  
 > **Lifecycle Phase:** AEGIS Phase 3 — Specification  
 > **Reference Standard:** Volere Requirements Process & GPTools Standards (E1.1 / E1.2)  
-> **Status:** V0 Locked — V1 round-converged synthesis in progress (ADR-005 rounds; two-part Phase 3 per ADR-006)
+> **Status:** Part 1 COMPLETE — V2 approved (Round 1 converged 108/108 by directive, Round 2 1/1; 2026-09-29); Exit Gate GREEN; Part 2 cleared (ADR-006)
 
 ---
 
@@ -19,8 +19,22 @@ cases/Case_03_OmniBank/03_PHASE3_SPEC/
 │   ├── Doc01_Requirements_Elicitation_and_PUC.md# 43 Functional Requirements & 43 PUCs (Pure Functional)
 │   └── Doc02_System_Use_Cases.md                # 43 Level-1 Sea-Level Use Cases
 │
-├── Doc01_Requirements_Elicitation_and_PUC.md    # Active working copy (synced to the current version folder)
-└── Doc02_System_Use_Cases.md                    # Active working copy (synced to the current version folder)
+├── v1_security_privacy_synthesis/               # [VERSION 1] Round-1-converged synthesis (APPROVED)
+│   ├── README.md                                # V1 Scope, Accepted Constraints (RN11–RN26), Round Register
+│   ├── Doc01_Requirements_Elicitation_and_PUC.md# 43 Cards + Absorbed Constraints + 92 Chain Rows (2.0.0)
+│   └── Doc02_System_Use_Cases.md                # 43 Fully-Dressed Use Cases (2.0.0)
+│
+├── v2_security_privacy_synthesis/               # [VERSION 2] Round-2 convergence — ACTIVE (APPROVED)
+│   ├── README.md                                # V2 Scope and Delta from V1
+│   ├── Doc01_Requirements_Elicitation_and_PUC.md# 43 Cards, R3.3 MUST (3.0.0)
+│   └── Doc02_System_Use_Cases.md                # 43 Fully-Dressed Use Cases, matrix aligned (3.0.0)
+│
+├── analysis_v0_to_v1/                           # [V0 → V1 TRANSITION] STEP1–STEP5 dossier + Part 1 Exit Gate record (GREEN)
+│
+├── part2_threat_risk/                           # [PHASE 3 — PART 2] Threat & Risk Analysis (entry gate: G1–G6, ADR-006)
+│
+├── Doc01_Requirements_Elicitation_and_PUC.md    # Active working copy (synced to V2)
+└── Doc02_System_Use_Cases.md                    # Active working copy (synced to V2)
 ```
 
 ---

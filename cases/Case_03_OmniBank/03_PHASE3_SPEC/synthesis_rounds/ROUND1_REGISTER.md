@@ -1,6 +1,6 @@
 # Round 1 Register — Iterative Risk-Acceptance Synthesis (OmniBank Financial Systems)
 
-> **Round window:** opened 2026-09-28 · **Status: OPEN — awaiting client verdicts** (presented in plain business language; this register holds the formulations, chains and IDs).
+> **Round window:** opened 2026-09-28 · verdicts 2026-09-29 · **Status: CONVERGED — 16/16 constraint accepts + 92/92 chain-binding accepts by client directive** ("coloca o v2" with the evolution plan; the five plain-language batches stand accepted in full); 0 Rejects, 0 Adjusts.
 > **Inputs:** [`OBJECTIVE_MAPPING.md`](OBJECTIVE_MAPPING.md) (134/134 placed) · [`PRINCIPLE_MAPPING.md`](PRINCIPLE_MAPPING.md) · `../v0_functional_baseline/`.
 > **Control selection rule (ADR-005 Step 4):** anchors copied only from pre-verified surfaces — the driver objective’s published control set (Phase 2 final column) and the mapping store (`baseline/MAPPINGS/sr_control_mappings/<REG>.json`); PF accompanies GDPR-derived constraints; AI RMF accompanies AI-Act-derived constraints.
 
@@ -128,6 +128,6 @@ Per-constraint anchors are selected as subsets of the cited objectives’ publis
 
 ## §4 Convergence & Effect
 
-- **Status:** OPEN — client verdicts pending per batch.
+- **Convergence:** the client directed the completion ("coloca o v2"), accepting all five presented batches in full — 16/16 new constraints (RN11–RN26) and 92/92 chain bindings; zero rejections (no explicit risk-acceptance entries), zero adjustments; no Round 2 required for this item set.
 
 - **On convergence:** accepted set absorbed → `Doc01`/`Doc02` V1 (2.0.0) in `v1_security_privacy_synthesis/`; the 43 use cases elaborated to the fully-dressed Cockburn anatomy with the accepted security behavior; coverage totals finalize in `OBJECTIVE_MAPPING.md`.

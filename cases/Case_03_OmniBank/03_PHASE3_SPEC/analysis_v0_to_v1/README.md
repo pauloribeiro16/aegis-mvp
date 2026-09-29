@@ -37,6 +37,6 @@ Gate codified in [`../PHASE3_PROCESS_AND_METHODOLOGY.md`](../PHASE3_PROCESS_AND_
 | G3 | Control selection complete | `ROUND1_REGISTER.md` §3 — published sets + store-flagged PF (SR-GDPR-009/030); no out-of-set anchor | **GREEN** |
 | G4 | Deliverables at current version; checklist + `doc_lint --strict` + `check_traceability.py` | `v2_security_privacy_synthesis/` 3.0.0; lint run 2026-09-29: 0 findings; referential-integrity run 2026-09-29: T2/T3/T4 clean after chain re-anchoring | **GREEN** |
 | G5 | Sufficiency assessment produced | `synthesis_rounds/SUFFICIENCY_ASSESSMENT.md` — five-regulation verdict + explicit residuals | **GREEN** |
-| G6 | Transition dossier complete | `STEP3_EARS_FORMULATION_AND_ACCEPTANCE.md`, `STEP4_ABSORPTION_AND_TRACEABILITY_WEAVING.md`, `STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md` of this directory | **GREEN** |
+| G6 | Transition dossier complete | STEP1 (V0 audit), STEP2 (five-ambit juxtaposition), `STEP3_EARS_FORMULATION_AND_ACCEPTANCE.md`, `STEP4_ABSORPTION_AND_TRACEABILITY_WEAVING.md`, `STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md` of this directory | **GREEN** |
 
 **Gate verdict: GREEN — Part 2 (Threat & Risk Analysis) is cleared to launch** (`../part2_threat_risk/`), on the researcher's order.

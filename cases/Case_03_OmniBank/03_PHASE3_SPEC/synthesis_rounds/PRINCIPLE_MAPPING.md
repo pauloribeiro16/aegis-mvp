@@ -76,6 +76,26 @@ Decision/model integrity (RN11); at-rest protection (RN14); non-repudiable notif
 
 **Verdict: followed.**
 
+## §2 Per-Requirement Principle Check (the bindings whose mechanism is card-specific)
+
+One row per (requirement × principle) binding where the mechanism belongs to that card; the full derivation runs through [`OBJECTIVE_MAPPING.md`](OBJECTIVE_MAPPING.md) (objective → carrier) and the cards' `Security & Privacy Constraints` rows. A requirement without a binding has no direct security surface of its own.
+
+| Req | Principle | How it is upheld here | Carrier | State |
+|---|---|---|---|---|
+| `R1.2` | `PRIN-ENG-07` Lifecycle & Erasure | Score served only from an integrity-verified model version; failed verification withholds the decision | RN11 | Bound |
+| `R1.3` | `PRIN-ENG-01` Trust Boundaries | Overseer authority, competence, and intervention mediated per decision class | RN22 | Bound |
+| `R2.3` | `PRIN-ENG-03` Least Privilege | Key custody separated from the operating environment; destruction evidenced | RN15 | Bound |
+| `R4.4` | `PRIN-ENG-04` Fail-Safe Defaults | Deployments born restrictive; reset restores exactly the default | RN20 | Bound |
+| `R5.2` | `PRIN-ENG-05` Verifiability | One recorded clock-start drives the five regimes' notification deadlines | RN18 | Bound |
+| `R6.3` | `PRIN-ENG-01` Trust Boundaries | Rights executed only after proportionate requester verification | RN16 | Bound |
+| `R6.3` | `PRIN-ENG-07` Lifecycle & Erasure | Erasure destroys identifiers incl. key material; token-only records retained | RN17 | Bound |
+| `R7.1` | `PRIN-ENG-05` Verifiability | Register entries complete with criticality; one pass serves GDPR/NIS 2/DORA | RN26 | Bound |
+| `R8.4` | `PRIN-ENG-01` Trust Boundaries | Model served only after artefact integrity verification; mutation least-privileged | RN11, RN21 | Bound |
+| `R10.2` | `PRIN-ENG-02` Resilience | Post-market data feeds the AI risk loop continuously | RN24 | Bound |
+| `R11.4` | `PRIN-ENG-02` Resilience | Adversarial validation covers poisoning/evasion/confidentiality; findings drive targeted measures | RN25 | Bound |
+
+**Per-principle rollup (constraints realizing each principle):** PRIN-ENG-01 → RN13, RN16, RN19, RN21, RN22 · PRIN-ENG-02 → RN24, RN25 · PRIN-ENG-03 → RN15, RN21 · PRIN-ENG-04 → RN20 · PRIN-ENG-05 → structural (fit criterion + method on every RN and proposal) · PRIN-ENG-06 → RN12, RN17 · PRIN-ENG-07 → RN11, RN14, RN18, RN23.
+
 ## §3 Coverage Totals & Gaps
 
 | Surface | Count | Notes |

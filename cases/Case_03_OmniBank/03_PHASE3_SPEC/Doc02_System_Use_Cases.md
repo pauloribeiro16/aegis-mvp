@@ -43,9 +43,9 @@ flowchart TD
 
 | Req (Doc01) | PUC | System Use Case | Title | Priority | Bound NFR-Security & Privacy |
 |---|---|---|---|---|---|
-| **R1.1** | **PUC 1.1** | **{U.C. 1.1}** | operate customer banking channels | MUST | NFR-RN10, NFR-RN13, NFR-RN19, NFR-RN22 |
+| **R1.1** | **PUC 1.1** | **{U.C. 1.1}** | operate customer banking channels | MUST | NFR-RN13 (chains: R11.2, R11.1) |
 | **R1.2** | **PUC 1.2** | **{U.C. 1.2}** | process credit applications through automated scoring | MUST | NFR-RN11, NFR-RN12, NFR-RN13, NFR-RN23, NFR-RN6 |
-| **R1.3** | **PUC 1.3** | **{U.C. 1.3}** | provide human review and explanation of credit decisions | MUST | NFR-RN13, NFR-RN21, NFR-RN22, NFR-RN23, NFR-RN24 |
+| **R1.3** | **PUC 1.3** | **{U.C. 1.3}** | provide human review and explanation of credit decisions | MUST | NFR-RN13, NFR-RN19, NFR-RN22, NFR-RN23 |
 | **R1.4** | **PUC 1.4** | **{U.C. 1.4}** | maintain AI model releases and versions | MUST | NFR-RN11, NFR-RN21 |
 | **R2.1** | **PUC 2.1** | **{U.C. 2.1}** | configure data-at-rest encryption | MUST | NFR-RN14, NFR-RN15, NFR-RN19 |
 | **R2.2** | **PUC 2.2** | **{U.C. 2.2}** | protect data in transit | MUST | NFR-RN13, NFR-RN19 |
@@ -110,16 +110,16 @@ flowchart TD
 - **Supporting Actors:** None
 - **Scope & Level:** OmniBank Financial Systems Platform | Sea Level (User Goal / Level 1)
 - **Stakeholders & Interests:** *Customers:* seamless self-service banking. *Bank:* attributed, auditable channel operations.
-- **Preconditions:** Customer authenticated per channel policy (RN19); session protected in transit (RN13).
+- **Preconditions:** Customer authenticated per channel policy; session protected in transit (RN13).
 - **Trigger:** Customer initiates a banking operation (account, payment, card).
 - **Main Success Scenario:**
   1. Customer submits the operation through the mobile or web channel.
   2. System validates the operation against account state and limits.
-  3. System executes the operation and records it with attribution (RN22-chain audit fabric, R11.2).
+  3. System executes the operation and records it with attribution (V0 RN6 auditability; chain: R11.2).
   4. System confirms the outcome to the customer.
 - **Extensions:**
   - 2a. Validation fails (limit, state): 2a1. System refuses with the reason and records the attempt.
-  - 3a. Estate segregation breach attempt detected: 3a1. System blocks the flow, alerts the SOC, and records the event (RN10-chain, R11.1).
+  - 3a. Estate segregation breach attempt detected: 3a1. System blocks the flow, alerts the SOC, and records the event (V0 RN10 architectural isolation; chain: R11.1).
 - **Success Guarantees:** Operation executed and recorded with attribution; customer informed.
 - **Minimal Guarantees:** Failed operations leave no partial state; attempts are recorded (R11.2).
 
@@ -140,7 +140,7 @@ flowchart TD
   4. System communicates the outcome with the reasons underlying it (chain: SO-D-09.1-004 transparency).
   5. System records the decision as a token-only entry in tamper-evident storage (chain: R11.2, V0 RN6).
 - **Extensions:**
-  - 2a. Required data outside the purpose-bound set: 2a1. System proceeds without it and records the gap (RN12).
+  - 2a. Required data outside the purpose-bound set: 2a1. System withholds the automated decision, routes the case to human review ({U.C. 1.3}), and records the gap (RN12).
   - 3a. Model fault or inconsistent state: 3a1. System withholds the automated decision, routes to human review ({U.C. 1.3}), and triggers recovery ({U.C. 5.4}) (RN11).
   - 4a. Applicant contests the decision: 4a1. System routes the case to human review ({U.C. 1.3}).
 - **Success Guarantees:** Decision produced, logged, and communicated with reasons; decision record tamper-evident.
@@ -162,8 +162,8 @@ flowchart TD
   3. System records the review outcome as an attributed, tamper-evident decision (chain: R11.2).
   4. System supports delivery of the explanation to the applicant and propagates the corrected state (RN13).
 - **Extensions:**
-  - 1a. Overseer not authorized for the class: 1a1. System refuses and records the attempt (RN22, RN21-chain).
-  - 2a. Drivers insufficient for a reasoned review: 2a1. System returns the case to the AI governance queue with the gap recorded (RN24).
+  - 1a. Overseer not authorized for the class: 1a1. System refuses and records the attempt (RN22, RN19).
+  - 2a. Drivers insufficient for a reasoned review: 2a1. System returns the case to the AI governance queue with the gap recorded (chain: R10.2).
 - **Success Guarantees:** Review recorded non-repudiably; applicant explanation delivered; state consistent.
 - **Minimal Guarantees:** No review executes without trained, authorized oversight (RN22); every review leaves an attributed record.
 
@@ -938,7 +938,7 @@ Mirrors `Doc01` Table 7 — `RN1`–`RN10` quality attributes plus the cross-cut
 
 ## 6. Conclusions
 
-The system use case model establishes the round-converged behavioral contract for the OmniBank platform: 43 Level-1 fully-dressed use cases; accepted security behavior traced to `RN11`–`RN26` and the 92 chain bindings (Round 1: 16/16 + 92/92 accepts by client directive); the five-regulation chains and T-001..T-005 harmonizations visible in the flows; Part 2 (Threat & Risk Analysis, ADR-006) gated by the Part 1 Exit Gate.
+The system use case model establishes the round-converged behavioral contract for the OmniBank platform: 43 Level-1 fully-dressed use cases; accepted security behavior traced to `RN11`–`RN26` and the 92 chain bindings (Round 1: 16/16 + 92/92 accepts by client directive); the five-regulation chains and T-001..T-004 harmonizations visible in the flows, with T-005 (provider/deployer duty stacking) realized through the unified AI compliance file of {U.C. 10.2} and the AI governance flows of {U.C. 9.1}/{U.C. 11.4}; Part 2 (Threat & Risk Analysis, ADR-006) gated by the Part 1 Exit Gate.
 
 ## 7. Bibliography
 
@@ -956,4 +956,4 @@ The system use case model establishes the round-converged behavioral contract fo
 |---|---|---|---|
 | **1.0.0** | 2026-09-28 | Requirements Engineering Agent | Initial baseline System Use Cases (GPTools E1.2 model): 11 Level-0 groups, 43 Sea-Level use cases, zero leaf nodes; light identification format. |
 | **3.0.0** | 2026-09-29 | Requirements Engineering Agent | Round 2 synthesis (ADR-005, `synthesis_rounds/ROUND2_REGISTER.md`): `R3.3` coordinated vulnerability disclosure elevated SHOULD → MUST per CRA Annex I Part II (5) (D3); traceability matrix aligned. |
-| **2.0.0** | 2026-09-29 | Requirements Engineering Agent | Round 1 synthesis (ADR-005, `synthesis_rounds/ROUND1_REGISTER.md`, 16/16 + 92/92 accepts by client directive): 43 use cases elaborated to the fully-dressed Cockburn anatomy with the accepted security behavior (`RN11`–`RN26` + chain bindings); traceability matrix with bound NFRs; T-001..T-005 harmonizations realized in {U.C. 5.2}, {U.C. 6.3}, {U.C. 10.2}, {U.C. 7.1}. |
+| **2.0.0** | 2026-09-29 | Requirements Engineering Agent | Round 1 synthesis (ADR-005, `synthesis_rounds/ROUND1_REGISTER.md`, 16/16 + 92/92 accepts by client directive): 43 use cases elaborated to the fully-dressed Cockburn anatomy with the accepted security behavior (`RN11`–`RN26` + chain bindings); traceability matrix with bound NFRs; T-001..T-004 harmonizations realized in {U.C. 5.2}, {U.C. 6.3}, {U.C. 10.2}, {U.C. 7.1}; T-005 (provider/deployer duty stacking) realized through the unified AI compliance file of {U.C. 10.2} and {U.C. 9.1}/{U.C. 11.4}. |

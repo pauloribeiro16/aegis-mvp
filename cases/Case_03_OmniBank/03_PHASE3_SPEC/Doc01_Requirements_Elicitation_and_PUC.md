@@ -190,7 +190,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R1.2 **Name:** Process credit applications through automated scoring |
 | **Description:** The system must accept a credit application, collect the applicant and financial data necessary for the assessment, produce an automated credit score and access decision through the OmniScore platform, and communicate the outcome with the reasons underlying it. |
 | **Requirement Origin:** Consumer Credit Programme & OmniScore Governance Charter |
-| **Security & Privacy Constraints:**<br>**NFR-RN11** OmniScore Decision & Model Integrity at Serving — `GDPR Art. 5(1)(f)` · `CRA Annex I Part I (2)(f)+(l)` · `AI Act Art. 15` · `DORA Art. 9` → `PO-D-01.4-001`/`SO-D-01.4-002`/`SO-D-01.4-004`/`SO-D-01.4-003` → `PRIN-ENG-07` → CSF PR.DS-01, PR.DS-10, PR.PS-04<br>**NFR-RN12** Scoring Data Minimization & Purpose Binding — `GDPR Art. 5(1)(c)+Art. 6` · `AI Act Art. 10` → `PO-D-05.1-001`/`SO-D-05.1-003` → `PRIN-ENG-06` → CSF PR.PS-01, ID.AM-08<br>**NFR-RN23** AI Event Logging over Lifetime — `AI Act Art. 12(1)+Art. 19` → `SO-D-10.2-004`/`SO-D-05.2-003` → `PRIN-ENG-07` → CSF PR.PS-04, DE.CM-09, DE.AE-03 |
+| **Security & Privacy Constraints:**<br>**NFR-RN11** OmniScore Decision & Model Integrity at Serving — `GDPR Art. 5(1)(f)` · `CRA Annex I Part I (2)(f)+(l)` · `AI Act Art. 15` · `DORA Art. 9` → `PO-D-01.4-001`/`SO-D-01.4-002`/`SO-D-01.4-003`/`SO-D-01.4-004`/`SO-D-01.4-003` → `PRIN-ENG-07` → CSF PR.DS-01, PR.DS-10, PR.PS-04<br>**NFR-RN12** Scoring Data Minimization & Purpose Binding — `GDPR Art. 5(1)(c)+Art. 6` · `AI Act Art. 10` → `PO-D-05.1-001`/`SO-D-05.1-003` → `PRIN-ENG-06` → CSF PR.PS-01, ID.AM-08<br>**NFR-RN23** AI Event Logging over Lifetime — `AI Act Art. 12(1)+Art. 19` → `SO-D-10.2-004`/`SO-D-05.2-003` → `PRIN-ENG-07` → CSF PR.PS-04, DE.CM-09, DE.AE-03 |
 | **Interfaces:** Credit application form; Decision notification interface |
 | **Dependencies:**<br>• **Stakeholders:** Retail Customers, Consumer Credit Programme Owner<br>• **Data Sources:** Credit applications; applicant and financial data<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (applications); AI Model Serving Platform<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -254,10 +254,10 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 |---|
 | **ID:** R2.3 **Name:** Manage cryptographic key lifecycle and custody |
 | **Description:** The system must manage the full lifecycle of cryptographic keys and related material — generation, distribution, rotation, and destruction — with custody separated from the operational environments that use the protected data. |
-| **Requirement Origin:** Key Custody Standard (In-House HSM Estate) |
+| **Requirement Origin:** Key Custody Standard |
 | **Security & Privacy Constraints:**<br>**NFR-RN15** Key Custody Separation & Cryptographic Destruction — `GDPR Art. 4(5)+Art. 32(1)(a)` · `CRA Annex I Part I (2)(d)+(e)` · `DORA Art. 9` → `PO-D-01.3-001`/`SO-D-01.3-002`/`SO-D-01.3-003` → `PRIN-ENG-03` → CSF PR.DS-01, PR.AA-05 |
 | **Interfaces:** Key lifecycle console |
-| **Dependencies:**<br>• **Stakeholders:** Cryptographic Officers<br>• **Data Sources:** Key inventory; rotation and destruction events<br>• **Extraction Periodicity:** per cryptographic period<br>• **Information Systems / Databases:** Key Custody Service (HSM)<br>• **Preceding Requirements:** |
+| **Dependencies:**<br>• **Stakeholders:** Cryptographic Officers<br>• **Data Sources:** Key inventory; rotation and destruction events<br>• **Extraction Periodicity:** per cryptographic period<br>• **Information Systems / Databases:** Key Custody Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
 
@@ -457,7 +457,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R6.3 **Name:** Process data-subject requests |
 | **Description:** The system must receive, verify, and fulfil data-subject requests for access, rectification, and erasure within the statutory window, including the downstream correction cascade. |
 | **Requirement Origin:** Data Subject Rights Procedure |
-| **Security & Privacy Constraints:**<br>**NFR-RN16** Rights-Requester Identity Verification — `GDPR Art. 12(6)+Art. 11(2)+Art. 5(1)(c)` → `PO-D-03.1-001` → `PRIN-ENG-01` → CSF PR.AA-03, PR.AA-02 / PF PR.AC-P6<br>**NFR-RN17** Token-Only Decision-Record Retention — `GDPR Art. 17+Art. 5(1)(e)` · `AI Act Art. 12 retention leg` · statutory floors → `PO-D-05.3-001` → `PRIN-ENG-07` → CSF PR.DS-10, ID.AM-08 / PF CT.DM-P4<br>**Chain** Permanent Product-Data Removal — `CRA Annex I Part I (2)(m)` → `SO-D-05.3-002` → `PRIN-ENG-07` → CSF PR.DS-10, PR.DS-02 |
+| **Security & Privacy Constraints:**<br>**NFR-RN16** Rights-Requester Identity Verification — `GDPR Art. 12(6)+Art. 11(2)+Art. 5(1)(c)` → `PO-D-03.1-001` → `PRIN-ENG-01` → CSF PR.AA-03, PR.AA-02 / PF PR.AC-P6<br>**NFR-RN17** Token-Only Decision-Record Retention — `GDPR Art. 17+Art. 5(1)(e)` · `AI Act Art. 12(1)+Art. 19` → `PO-D-05.3-001`, `SO-D-10.2-004` → `PRIN-ENG-07` → CSF PR.DS-10, ID.AM-08 / PF CT.DM-P4<br>**Chain** Permanent Product-Data Removal — `CRA Annex I Part I (2)(m)` → `SO-D-05.3-002` → `PRIN-ENG-07` → CSF PR.DS-10, PR.DS-02 |
 | **Interfaces:** Rights request portal; case console |
 | **Dependencies:**<br>• **Stakeholders:** Data Subjects, DPO Team<br>• **Data Sources:** Requests; identity verifications; outcomes<br>• **Extraction Periodicity:** on event<br>• **Information Systems / Databases:** Internal Application Database (rights cases)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -498,7 +498,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R7.1 **Name:** Assess ICT third-party providers and maintain the register |
 | **Description:** The system must assess ICT third-party providers before and during engagement and maintain the register of information on ICT third-party arrangements with their criticality and locations. |
 | **Requirement Origin:** Third-Party Risk Management Standard (DORA Register) |
-| **Security & Privacy Constraints:**<br>**Chain** DORA Art. 28(1) → `SO-D-06.1-004` · NIS 2 Art. 21(2)(d) → `SO-D-06.4-003`<br>**Chain** **NFR-RN26** ICT Third-Party Register Completeness & Criticality — `DORA Art. 28-30` → `SO-D-06.4-004` · `GDPR Art. 28` → `PO-D-06.1-001`/`PO-D-06.3-001` · `NIS 2 Art. 21(3)` → `SO-D-06.1-003`/`SO-D-06.3-003` → `PRIN-ENG-05` → CSF GV.SC-04, GV.SC-07, ID.AM-05<br>**Chain** Processor & Supplier Due Diligence Family — `GDPR Art. 28` → `PO-D-06.1-001`/`PO-D-06.3-001` · `CRA Annex I` → `SO-D-06.1-002` · `NIS 2 Art. 21(2)-(3)` → `SO-D-06.1-003`/`SO-D-06.3-003` → `PRIN-ENG-05` → CSF GV.SC-01, GV.SC-02, GV.SC-03<br>**Chain** DORA Art. 28(1) → `SO-D-06.1-004` |
+| **Security & Privacy Constraints:**<br>**Chain** DORA Art. 28(1) → `SO-D-06.1-004` · NIS 2 Art. 21(2)(d) → `SO-D-06.4-003`<br>**Chain** **NFR-RN26** ICT Third-Party Register Completeness & Criticality — `DORA Art. 28-30` → `SO-D-06.4-004` · `GDPR Art. 28` → `PO-D-06.1-001`/`PO-D-06.3-001` · `NIS 2 Art. 21(3)` → `SO-D-06.1-003`/`SO-D-06.3-003` → `PRIN-ENG-05` → CSF GV.SC-02, GV.SC-03, ID.AM-04<br>**Chain** Processor & Supplier Due Diligence Family — `GDPR Art. 28` → `PO-D-06.1-001`/`PO-D-06.3-001` · `CRA Annex I` → `SO-D-06.1-002` · `NIS 2 Art. 21(2)-(3)` → `SO-D-06.1-003`/`SO-D-06.3-003` → `PRIN-ENG-05` → CSF GV.SC-01, GV.SC-02, GV.SC-03<br>**Chain** DORA Art. 28(1) → `SO-D-06.1-004` |
 | **Interfaces:** Vendor assessment console; register interface |
 | **Dependencies:**<br>• **Stakeholders:** Vendor Risk Managers, CISO<br>• **Data Sources:** Assessments; register entries<br>• **Extraction Periodicity:** per assessment cycle<br>• **Information Systems / Databases:** Internal Application Database (vendor register)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -511,7 +511,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R7.2 **Name:** Maintain software bills of materials |
 | **Description:** The system must generate and maintain machine-readable bills of materials for the product releases and AI model components. |
 | **Requirement Origin:** Secure Supply Chain Standard |
-| **Security & Privacy Constraints:**<br>**Chain** SBOM Maintenance — `CRA Annex I Part II (1)+Art. 13(6)` → `SO-D-06.2-001` → `PRIN-ENG-05` → CSF GV.SC-09, ID.AM-02 |
+| **Security & Privacy Constraints:**<br>**Chain** SBOM Maintenance — `CRA Annex I Part II (1)+Art. 13(6)` → `SO-D-06.2-001` → `PRIN-ENG-05` → CSF ID.AM-02, GV.SC-02 |
 | **Interfaces:** SBOM generation interface |
 | **Dependencies:**<br>• **Stakeholders:** Release Engineers<br>• **Data Sources:** Component inventories; release artefacts<br>• **Extraction Periodicity:** per release<br>• **Information Systems / Databases:** Internal Application Database (SBOM records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -524,7 +524,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R7.3 **Name:** Enforce contractual security terms |
 | **Description:** The system must record and track the security contractual terms of supplier and processor engagements, including sub-processor chains. |
 | **Requirement Origin:** Procurement Security Standard (Processor & Supplier Clauses) |
-| **Security & Privacy Constraints:**<br>**Chain** Contractual Security Terms — `GDPR Art. 28(3)` → `PO-D-06.3-001` · `CRA` → `SO-D-06.3-002` · `NIS 2 Art. 21(3)` → `SO-D-06.3-003` · `DORA Art. 30` → `SO-D-06.3-004` → `PRIN-ENG-05` → CSF GV.SC-04, GV.SC-07 |
+| **Security & Privacy Constraints:**<br>**Chain** Contractual Security Terms — `GDPR Art. 28(3)` → `PO-D-06.3-001` · `CRA` → `SO-D-06.3-002` · `NIS 2 Art. 21(3)` → `SO-D-06.3-003` · `DORA Art. 30` → `SO-D-06.3-004` → `PRIN-ENG-05` → CSF — (the four cited objectives publish no anchor set; contractual security is evidenced through the register chain of `R7.1` — `RN26`) |
 | **Interfaces:** Contract tracking console |
 | **Dependencies:**<br>• **Stakeholders:** Procurement, Compliance<br>• **Data Sources:** Contract terms; sub-processor chains<br>• **Extraction Periodicity:** on change<br>• **Information Systems / Databases:** Internal Application Database (contract records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -658,7 +658,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R10.2 **Name:** Execute unified risk and impact assessments |
 | **Description:** The system must execute the unified lifecycle risk assessment that feeds the data-protection impact assessment, the product-security risk assessment, the entity risk analysis, the ICT risk-management framework, and the AI risk-management system, updating on material change. |
 | **Requirement Origin:** Enterprise Risk Methodology (Five-Regime Unified Pass) |
-| **Security & Privacy Constraints:**<br>**Chain** AI Act Art. 72(1) → `SO-D-10.1-005`<br>**Chain** **NFR-RN24** Post-Market Monitoring Integration — `AI Act Art. 72` · `DORA ICT-risk feedback` → `SO-D-10.1-004`/`SO-D-09.2-005` → `PRIN-ENG-02` → CSF DE.CM-09, ID.IM-04<br>**Chain** Unified Lifecycle Assessment Family (T-003) — `GDPR Art. 35` → `PO-D-09.2-001` · `CRA Art. 13(2)` → `SO-D-09.2-002` · `NIS 2 Art. 21(2)(a)` → `SO-D-09.2-003` · `AI Act Art. 9(1)` → `SO-D-09.2-005` → `PRIN-ENG-05` → CSF ID.RA-01, ID.RA-05, GV.RM-01, GV.RM-06<br>**Chain** AI Act Art. 72(1) → `SO-D-10.1-005` |
+| **Security & Privacy Constraints:**<br>**Chain** AI Act Art. 72(1) → `SO-D-10.1-005`<br>**Chain** **NFR-RN24** Post-Market Monitoring Integration — `AI Act Art. 72` · `DORA Art. 6(3), Art. 8` → `SO-D-10.1-004`/`SO-D-09.2-005` → `PRIN-ENG-02` → CSF DE.CM-09, ID.IM-04<br>**Chain** Unified Lifecycle Assessment Family (T-003) — `GDPR Art. 35` → `PO-D-09.2-001` · `CRA Art. 13(2)` → `SO-D-09.2-002` · `NIS 2 Art. 21(2)(a)` → `SO-D-09.2-003` · `AI Act Art. 9(1)` → `SO-D-09.2-005` → `PRIN-ENG-05` → CSF ID.RA-01, ID.RA-05, GV.RM-01, GV.RM-06<br>**Chain** AI Act Art. 72(1) → `SO-D-10.1-005` |
 | **Interfaces:** Assessment workbench |
 | **Dependencies:**<br>• **Stakeholders:** CISO, DPO, AI Governance Lead<br>• **Data Sources:** Assessment inputs; regime outputs<br>• **Extraction Periodicity:** on material change / annual<br>• **Information Systems / Databases:** Internal Application Database (assessment records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -671,7 +671,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R10.3 **Name:** Maintain asset and AI documentation inventories |
 | **Description:** The system must maintain the asset inventory and the technical documentation of the product and the high-risk AI system, keeping them current across the lifecycle. |
 | **Requirement Origin:** Asset Management Standard & AI Technical Documentation Set |
-| **Security & Privacy Constraints:**<br>**Chain** CRA Art. 31(2) → `SO-D-09.3-001` · NIS 2 Art. 21(2)(i) → `SO-D-09.3-002` · DORA Art. 7(1) → `SO-D-09.3-003` · NIS 2 Art. 24(1) → `SO-D-09.4-003`<br>**Chain** Documentation & Records Family — `GDPR Art. 30` → `PO-D-09.4-001` · `CRA Art. 13+Annex VII` → `SO-D-09.4-002`/`SO-D-10.2-002` · `AI Act Art. 11+Annex IV` → `SO-D-09.4-005` · `NIS 2/DORA` → `SO-D-09.4-004`/`SO-D-09.4-005` → `PRIN-ENG-05` → CSF GV.OC-03, ID.AM-03, PR.PS-04, GV.PO-02 |
+| **Security & Privacy Constraints:**<br>**Chain** CRA Art. 31(2) → `SO-D-09.3-001` · NIS 2 Art. 21(2)(i) → `SO-D-09.3-002` · DORA Art. 7(1) → `SO-D-09.3-003` · NIS 2 Art. 24(1) → `SO-D-09.4-003`<br>**Chain** Documentation & Records Family — `GDPR Art. 30` → `PO-D-09.4-001` · `CRA Art. 13+Annex VII` → `SO-D-09.4-002`/`SO-D-10.2-002` · `AI Act Art. 11+Annex IV` → `SO-D-09.4-005` · `NIS 2 Art. 21(2)(a)` → `SO-D-09.4-003` · `DORA Art. 28(3)-(5)` → `SO-D-09.4-004` → `PRIN-ENG-05` → CSF GV.OC-03, ID.AM-03, PR.PS-04, GV.PO-02 |
 | **Interfaces:** Asset inventory console; documentation portal |
 | **Dependencies:**<br>• **Stakeholders:** IT Asset Managers, AI Governance Lead<br>• **Data Sources:** Asset records; documentation versions<br>• **Extraction Periodicity:** continuous<br>• **Information Systems / Databases:** Internal Application Database (asset and document records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -711,7 +711,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R11.2 **Name:** Maintain immutable audit logging |
 | **Description:** The system must record security-relevant and decision-relevant events in tamper-evident storage retained per the statutory floors, with integrity verification. |
 | **Requirement Origin:** Audit & Logging Standard (Statutory Floors) |
-| **Security & Privacy Constraints:**<br>**NFR-RN17** Token-Only Decision-Record Retention (co-driver) — `GDPR Art. 17` · statutory floors → `PO-D-05.3-001` → `PRIN-ENG-07` → CSF PR.DS-10, ID.AM-08<br>**NFR-RN23** AI Event Logging over Lifetime (co-driver) — `AI Act Art. 12(1)+Art. 19` → `SO-D-10.2-004` → `PRIN-ENG-07` → CSF PR.PS-04, DE.CM-09<br>**Chain** Compliance Records Family — `GDPR Art. 5(2)+Art. 24` → `PO-D-10.2-001` · `CRA Annex VII` → `SO-D-10.2-002` · `DORA` → `SO-D-10.2-003` → `PRIN-ENG-05` → CSF GV.PO-02, GV.OV-03, ID.AM-03 |
+| **Security & Privacy Constraints:**<br>**NFR-RN17** Token-Only Decision-Record Retention (co-driver) — `GDPR Art. 17+Art. 5(1)(e)` · `AI Act Art. 12(1)` → `PO-D-05.3-001`, `SO-D-10.2-004` → `PRIN-ENG-07` → CSF PR.DS-10, ID.AM-08<br>**NFR-RN23** AI Event Logging over Lifetime (co-driver) — `AI Act Art. 12(1)+Art. 19` → `SO-D-10.2-004` → `PRIN-ENG-07` → CSF PR.PS-04, DE.CM-09<br>**Chain** Compliance Records Family — `GDPR Art. 5(2)+Art. 24` → `PO-D-10.2-001` · `CRA Annex VII` → `SO-D-10.2-002` · `DORA Art. 17` → `SO-D-10.2-003` → `PRIN-ENG-05` → CSF GV.PO-02, GV.OV-03, ID.AM-03 |
 | **Interfaces:** Audit console |
 | **Dependencies:**<br>• **Stakeholders:** Internal Audit, Compliance<br>• **Data Sources:** Event records; integrity verifications<br>• **Extraction Periodicity:** continuous<br>• **Information Systems / Databases:** Tamper-Evident Event Store<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -769,49 +769,49 @@ The platform non-functional requirements define the measurable quality targets g
 
 | PUC ID | Business Trigger | Primary Actor | System Operational Boundary |
 |---|---|---|---|
-| **PUC 1.1** | Operate customer banking channels | Customer | Provide retail customers with self-service account management, payments, and card services through the mobile application and web platform, recording all customer-initiated operations with attribution |
-| **PUC 1.2** | Process credit applications through automated scoring | Customer | Accept a credit application, collect the applicant and financial data necessary for the assessment, produce an automated credit score and access decision through the omniscore platform, and communicate the outcome with the reasons underlying it |
-| **PUC 1.3** | Provide human review and explanation of credit decisions | Customer | Route flagged, declined, or contested automated credit decisions to an empowered human reviewer, provide the reviewer with the decision drivers and the applicant data on which the decision was based, record the review outcome as an attributed decision, and support the delivery of the explanation to the applicant |
-| **PUC 1.4** | Maintain AI model releases and versions | Customer | Version every omniscore model release with its verification metadata, govern its promotion to production, and support retiring a version from the serving estate |
-| **PUC 2.1** | Configure data-at-rest encryption | Operator | Protect stored personal, financial, and ai-related data with state-of-the-art at-rest encryption across the storage estates, applying field-level protection to the most sensitive data categories |
-| **PUC 2.2** | Protect data in transit | Operator | Protect customer, inter-service, and third-party data flows in transit with state-of-the-art channel encryption and integrity verification, refusing unauthenticated channels |
-| **PUC 2.3** | Manage cryptographic key lifecycle and custody | Operator | Manage the full lifecycle of cryptographic keys and related material — generation, distribution, rotation, and destruction — with custody separated from the operational environments that use the protected data |
-| **PUC 3.1** | Identify and assess vulnerabilities | Operator | Identify and document vulnerabilities across the ict estate, the product components, and the ai models on a continuing basis, maintaining a vulnerability register with severity assessment |
-| **PUC 3.2** | Remediate vulnerabilities through security updates | Operator | Address identified vulnerabilities through security updates deployed without delay according to severity, including updates to ai models and their components |
-| **PUC 3.3** | Operate coordinated vulnerability disclosure | Operator | Provide a documented channel for external security researchers to report vulnerabilities, triage reports, and publish disclosures under the coordinated disclosure policy |
-| **PUC 3.4** | Execute security and threat-led testing | Operator | Execute regular security testing of the product and ict estate and threat-led penetration testing at the defined cadence, producing evidence for conformity and supervisory review |
-| **PUC 4.1** | Manage identity lifecycle | Operator | Provision, review, and revoke operator identities and entitlements across the employment lifecycle — on induction, on role change, and on separation — including operators of the ai platform |
-| **PUC 4.2** | Enforce multi-factor authentication for privileged access | Operator | Require multi-factor verification for privileged and administrative access and refuse authentication attempts that do not meet the policy strength |
-| **PUC 4.3** | Review and reconcile access rights | Operator | Support periodic access reviews that reconcile granted entitlements against documented authorizations and record the review outcomes |
-| **PUC 4.4** | Maintain hardened secure configurations | Operator | Deploy platforms and services from hardened baseline configurations and support restoring a configuration to its known secure state |
-| **PUC 5.1** | Monitor and correlate security events | Operator | Collect and correlate security-relevant events from the ict estate, the product fleet, and the ai platform, presenting them for detection and triage |
-| **PUC 5.2** | Triage incidents and execute unified regulatory notification | Operator | Triage security incidents from one incident record, and when statutory criteria are met, generate and dispatch the notifications required by each applicable regime — supervisory, csirt, financial-authority, and market-surveillance — from a single clock-start discipline |
-| **PUC 5.3** | Maintain backups and execute disaster recovery | Operator | Maintain backups of critical data and systems and execute disaster-recovery and continuity procedures within the recovery objectives |
-| **PUC 5.4** | Investigate and recover AI system after failure | Operator | Investigate anomalous ai behaviour or model failure, restore the ai service to a verified operating state, and feed the findings back to the model owners |
-| **PUC 6.1** | Minimize data collection | Operator | Limit collected personal and operational data to what is adequate, relevant, and necessary for the stated purposes of each processing activity |
-| **PUC 6.2** | Enforce tiered retention schedules | Operator | Retain records according to tiered retention schedules derived from statutory floors and business purpose, and purge or de-identify records when their schedule expires |
-| **PUC 6.3** | Process data-subject requests | Operator | Receive, verify, and fulfil data-subject requests for access, rectification, and erasure within the statutory window, including the downstream correction cascade |
-| **PUC 6.4** | Deliver data exports and portability | Operator | Deliver a structured, machine-readable export of a requester’s personal data without affecting third-party data |
-| **PUC 6.5** | Manage AI training-data lifecycle | Operator | Govern the training, validation, and test datasets of the omniscore models across their lifecycle — collection, preparation, versioning, and retirement — with relevance and representativeness checks |
-| **PUC 7.1** | Assess ICT third-party providers and maintain the register | Operator | Assess ict third-party providers before and during engagement and maintain the register of information on ict third-party arrangements with their criticality and locations |
-| **PUC 7.2** | Maintain software bills of materials | Operator | Generate and maintain machine-readable bills of materials for the product releases and ai model components |
-| **PUC 7.3** | Enforce contractual security terms | Operator | Record and track the security contractual terms of supplier and processor engagements, including sub-processor chains |
-| **PUC 7.4** | Manage provider and vendor exit | Operator | Support the planned exit of a provider or vendor — data return or deletion, transition, and revocation of access — recording the completion of each exit step |
-| **PUC 8.1** | Apply secure development standards | Operator | Enforce the secure development standards — design review, coding outcomes, and code review — for all product components and ai model code |
-| **PUC 8.2** | Secure the release pipeline | Operator | Enforce security gates in the release pipeline — build verification, dependency and artefact checks, and signing — before a release is distributed |
-| **PUC 8.3** | Approve production changes | Operator | Route production changes through an approval decision that records the change scope, risk, and approver before deployment |
-| **PUC 8.4** | Secure the AI training and serving pipeline | Operator | Protect the ai training and serving pipeline — data ingestion, training jobs, and model artefacts — against unauthorized modification, with verification of model integrity at serving |
-| **PUC 9.1** | Deliver security and privacy awareness training | Operator | Deliver and record security and privacy awareness training for the workforce at onboarding and at the periodic cadence |
-| **PUC 9.2** | Maintain role-specific competence programs | Operator | Maintain role-specific competence programs — development, operations, ai oversight — and record the competence state of each role holder |
-| **PUC 9.3** | Deliver board and oversight-body security training | Operator | Deliver security and digital-operational-resilience training to the management body and record its completion |
-| **PUC 10.1** | Maintain the unified management system | Customer | Maintain the security policies, procedures, and the certified management system documentation that implement the data-protection, product-security, entity-security, ict-resilience, and ai-governance principles |
-| **PUC 10.2** | Execute unified risk and impact assessments | Customer | Execute the unified lifecycle risk assessment that feeds the data-protection impact assessment, the product-security risk assessment, the entity risk analysis, the ict risk-management framework, and the ai risk-management system, updating on material change |
-| **PUC 10.3** | Maintain asset and AI documentation inventories | Customer | Maintain the asset inventory and the technical documentation of the product and the high-risk ai system, keeping them current across the lifecycle |
-| **PUC 10.4** | Generate regulatory compliance reports | Customer | Generate the compliance reports and register updates required by the supervisory and conformity regimes from the recorded evidence |
-| **PUC 11.1** | Operate threat detection capabilities | Customer | Operate detection capabilities over the monitored estates, raising alerts on suspected malicious or anomalous activity |
-| **PUC 11.2** | Maintain immutable audit logging | Customer | Record security-relevant and decision-relevant events in tamper-evident storage retained per the statutory floors, with integrity verification |
-| **PUC 11.3** | Execute penetration and resilience testing | Customer | Execute the penetration-testing and digital-operational-resilience testing programmes — including threat-led scenarios — and record the findings with remediation tracking |
-| **PUC 11.4** | Test AI adversarial robustness and explainability | Customer | Test the omniscore models against adversarial manipulation and produce the explainability information that lets overseers and applicants understand decision drivers |
+| **PUC 1.1** | Operate customer banking channels | Customer | Account, payment, and card operations executed with customer attribution |
+| **PUC 1.2** | Process credit applications through automated scoring | Customer | Application intake to credit decision, with the reasons communicated |
+| **PUC 1.3** | Provide human review and explanation of credit decisions | Credit Decision Overseer | Flagged or contested decision opened, reviewed, and recorded as an attributed outcome |
+| **PUC 1.4** | Maintain AI model releases and versions | AI Governance Lead | Model release registered, promoted to serving, or withdrawn from service |
+| **PUC 2.1** | Configure data-at-rest encryption | Security Engineer | Storage estate configured with the mandated at-rest protection |
+| **PUC 2.2** | Protect data in transit | Security Engineer | Channel established with authenticated, integrity-protected transit |
+| **PUC 2.3** | Manage cryptographic key lifecycle and custody | Cryptographic Officer | Key lifecycle executed under separated custody, with destruction evidence |
+| **PUC 3.1** | Identify and assess vulnerabilities | Security Engineer | Vulnerability identified, assessed by severity, and registered |
+| **PUC 3.2** | Remediate vulnerabilities through security updates | Security Engineer | Security update deployed across the estate and the model fleet |
+| **PUC 3.3** | Operate coordinated vulnerability disclosure | Security Engineer | External report received, triaged, and disclosed under policy |
+| **PUC 3.4** | Execute security and threat-led testing | Security Engineer | Security and threat-led testing executed; findings registered |
+| **PUC 4.1** | Manage identity lifecycle | Identity Administrator | Identity provisioned, reviewed, or revoked per lifecycle event |
+| **PUC 4.2** | Enforce multi-factor authentication for privileged access | Privileged Operator | Privileged session established at the policy authentication strength |
+| **PUC 4.3** | Review and reconcile access rights | Compliance Officer | Entitlements reconciled against documented authorizations |
+| **PUC 4.4** | Maintain hardened secure configurations | Security Engineer | Platform deployed from the hardened baseline; drift corrected to the default |
+| **PUC 5.1** | Monitor and correlate security events | SOC Analyst | Estate, fleet, and AI events collected and correlated |
+| **PUC 5.2** | Triage incidents and execute unified regulatory notification | SOC Manager | Incident triaged from one record; per-regime notifications dispatched |
+| **PUC 5.3** | Maintain backups and execute disaster recovery | IT Operations | Recovery executed within the continuity envelope |
+| **PUC 5.4** | Investigate and recover AI system after failure | AI Operations | AI anomaly contained; last verified model version restored |
+| **PUC 6.1** | Minimize data collection | DPO | Collection points bound to the declared purposes |
+| **PUC 6.2** | Enforce tiered retention schedules | Compliance Officer | Retention schedule executed; records purged or de-identified |
+| **PUC 6.3** | Process data-subject requests | DPO Team | Rights request verified and fulfilled; identifiers destroyed on erasure |
+| **PUC 6.4** | Deliver data exports and portability | DPO Team | Structured, machine-readable export delivered to the verified requester |
+| **PUC 6.5** | Manage AI training-data lifecycle | AI Data Engineer | Training, validation, and test datasets governed and versioned |
+| **PUC 7.1** | Assess ICT third-party providers and maintain the register | Vendor Risk Manager | Third party assessed; register entry maintained with criticality |
+| **PUC 7.2** | Maintain software bills of materials | Release Engineer | Bill of materials generated per release and per model component set |
+| **PUC 7.3** | Enforce contractual security terms | Procurement | Supplier and processor security terms recorded and tracked |
+| **PUC 7.4** | Manage provider and vendor exit | Vendor Risk Manager | Exit plan executed; data handling and access revocation evidenced |
+| **PUC 8.1** | Apply secure development standards | Development Manager | Change admitted to the build only after standards review |
+| **PUC 8.2** | Secure the release pipeline | Release Engineer | Artefact distributed only after the pipeline gates pass and signing |
+| **PUC 8.3** | Approve production changes | Change Advisory Board | Production change approved, implemented, and verified under record |
+| **PUC 8.4** | Secure the AI training and serving pipeline | ML Engineer | Model served only after artefact integrity verification |
+| **PUC 9.1** | Deliver security and privacy awareness training | Awareness Officer | Awareness and hygiene training delivered and recorded |
+| **PUC 9.2** | Maintain role-specific competence programs | HR Manager | Role competence maintained; oversight eligibility gated on currency |
+| **PUC 9.3** | Deliver board and oversight-body security training | Board Secretariat | Management-body training delivered and evidenced |
+| **PUC 10.1** | Maintain the unified management system | CISO | Policy and procedure set maintained, approved, and versioned |
+| **PUC 10.2** | Execute unified risk and impact assessments | CISO | Unified assessment produced and refreshed on the declared triggers |
+| **PUC 10.3** | Maintain asset and AI documentation inventories | IT Asset Manager | Asset inventory and technical documentation kept current |
+| **PUC 10.4** | Generate regulatory compliance reports | Compliance Officer | Report or register update submitted from recorded evidence |
+| **PUC 11.1** | Operate threat detection capabilities | SOC Analyst | Detection alert raised and routed to triage |
+| **PUC 11.2** | Maintain immutable audit logging | Internal Audit | Security and decision events recorded with integrity verification |
+| **PUC 11.3** | Execute penetration and resilience testing | Penetration Tester | Penetration and resilience scenarios executed; findings tracked |
+| **PUC 11.4** | Test AI adversarial robustness and explainability | AI Governance Lead | Adversarial validation executed; explainability artefacts published |
 
 ---
 

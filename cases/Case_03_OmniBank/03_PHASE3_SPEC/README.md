@@ -45,7 +45,7 @@ cases/Case_03_OmniBank/03_PHASE3_SPEC/
 GPTools E1.1: Part I Scope, Part II As-Is, Part III To-Be with 11 functional groups, 43 requirement cards (7-row card anatomy), 10 measurable NFRs (Table 7), 43 PUCs (Table 8), and the System Use Case Model.
 
 ### 2.2 [`Doc02_System_Use_Cases.md`](Doc02_System_Use_Cases.md)
-GPTools E1.2: Level-1 Sea-Level discipline (zero leaf nodes, zero procedural scripts), light identification format pending the V1 fully-dressed elaboration.
+GPTools E1.2: Level-1 Sea-Level discipline (zero leaf nodes, zero procedural scripts) — the active documents carry the fully-dressed Cockburn anatomy synthesized in the V1/V2 rounds.
 
 ---
 

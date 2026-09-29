@@ -631,7 +631,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R10.2 **Name:** Assess vendors and record component provenance |
 | **Description:** The system must maintain vendor assessments covering security practices and component quality, record provenance for supplied hardware and software components, and track vendor findings to closure. |
 | **Requirement Origin:** Supplier Due Diligence Programme & Vendor Assessment Cycle |
-| **Security & Privacy Constraints:**<br>**Chain** Vendor & Supply-Chain Family (T-004) — `GDPR Art. 28` → `PO-D-06.1-001`, `PO-D-06.3-001` · `CRA Annex I Part I (2)` → `SO-D-06.1-002` · `NIS 2 Art. 21(2)-(3)` → `SO-D-06.1-003`, `SO-D-06.3-003`, `SO-D-07.1-003` → `PRIN-ENG-05` → CSF GV.SC-01, GV.SC-02, GV.SC-03, GV.SC-04, ID.RA-02 |
+| **Security & Privacy Constraints:**<br>**Chain** Vendor & Supply-Chain Family (T-004) — `GDPR Art. 28` → `PO-D-06.1-001`, `PO-D-06.3-001` · `CRA Annex I Part I (2)` → `SO-D-06.1-002` · `NIS 2 Art. 21(2)-(3)` → `SO-D-06.1-003`, `SO-D-06.3-003`, `SO-D-07.1-003` → `PRIN-ENG-05` → CSF GV.SC-01, GV.SC-02, GV.SC-03, ID.RA-02 |
 | **Interfaces:** Vendor assessment console; component provenance register |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder Operations & Security, Suppliers & Assessors<br>• **Data Sources:** Vendor Assessment Record, Component Provenance Record<br>• **Extraction Periodicity:** annual / per vendor<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |

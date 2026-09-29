@@ -510,7 +510,13 @@ def check_anchor_provenance(case: Case) -> list[Finding]:
               # would charge one chain's anchors to another.
               segs = list(RE_SEGMENT.finditer(piece))
               for seg in segs[-1:]:
-                objs = set(RE_OBJ_IN_SET.findall(seg.group("objs")))
+                # The anchor run belongs to the WHOLE constraint, not to the last
+                # regulation leg: a multi-regulation chain carries one driver per
+                # regulation inside one <br>-piece, and R2 is satisfied when an
+                # anchor belongs to the published set of ANY driver that piece
+                # cites. Scoping to the last leg would charge a GDPR leg's anchor
+                # to the CRA/NIS 2 leg that happens to close the chain.
+                objs = {o for s in segs for o in RE_OBJ_IN_SET.findall(s.group("objs"))}
                 if not objs:
                     continue
                 tail = piece[seg.end():]  # the anchor run starts past the drivers

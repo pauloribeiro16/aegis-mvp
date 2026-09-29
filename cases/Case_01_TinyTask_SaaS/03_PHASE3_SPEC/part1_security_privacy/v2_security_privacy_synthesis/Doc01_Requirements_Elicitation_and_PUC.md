@@ -275,7 +275,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R1.2 **Name:** Manage user profile and account preferences |
 | **Description:** The system must allow an authenticated user to view and update their personal profile details (full name, avatar image, and contact details) and configure notification preferences. |
 | **Requirement Origin:** User Account Personalization Needs |
-| **Security & Privacy Constraints:**<br>**NFR-RN23** Personal Data Cryptographic Protection at Rest — `GDPR Art. 32(1)(a) + Art. 5(1)(f)` → `PO-D-01.1-001` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-10 / PF PR.DS-P1<br>**NFR-RN26** Privacy Audit Trail for Personal Data Modifications — `GDPR Art. 30` → `PO-D-09.4-001` → `PRIN-ENG-07` → CSF ID.AM-08, PR.DS-10, DE.CM-01 / PF CM.AW-P2 |
+| **Security & Privacy Constraints:**<br>**NFR-RN23** Personal Data Cryptographic Protection at Rest — `GDPR Art. 32(1)(a) + Art. 5(1)(f)` → `PO-D-01.1-001` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-10 / PF PR.DS-P1<br>**NFR-RN26** Privacy Audit Trail for Personal Data Modifications — `GDPR Art. 30` → `PO-D-09.4-001` → `PRIN-ENG-07` → CSF ID.AM-08, PR.DS-10 / PF CM.AW-P2 |
 | **Interfaces:** Profile settings screen; Notification preferences panel |
 | **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Profile update submissions; Preference selections<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (user profile records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |

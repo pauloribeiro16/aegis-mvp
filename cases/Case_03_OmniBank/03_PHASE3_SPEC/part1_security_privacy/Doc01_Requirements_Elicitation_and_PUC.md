@@ -190,7 +190,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R1.2 **Name:** Process credit applications through automated scoring |
 | **Description:** The system must accept a credit application, collect the applicant and financial data necessary for the assessment, produce an automated credit score and access decision through the OmniScore platform, and communicate the outcome with the reasons underlying it. |
 | **Requirement Origin:** Consumer Credit Programme & OmniScore Governance Charter |
-| **Security & Privacy Constraints:**<br>**NFR-RN11** OmniScore Decision & Model Integrity at Serving — `GDPR Art. 5(1)(f)` · `CRA Annex I Part I (2)(f)+(l)` · `AI Act Art. 15` · `DORA Art. 9` → `PO-D-01.4-001`/`SO-D-01.4-002`/`SO-D-01.4-003`/`SO-D-01.4-004`/`SO-D-01.4-003` → `PRIN-ENG-07` → CSF PR.DS-01, PR.DS-10, PR.PS-04<br>**NFR-RN12** Scoring Data Minimization & Purpose Binding — `GDPR Art. 5(1)(c)+Art. 6` · `AI Act Art. 10` → `PO-D-05.1-001`/`SO-D-05.1-003` → `PRIN-ENG-06` → CSF PR.PS-01, ID.AM-08<br>**NFR-RN23** AI Event Logging over Lifetime — `AI Act Art. 12(1)+Art. 19` → `SO-D-10.2-004`/`SO-D-05.2-003` → `PRIN-ENG-07` → CSF PR.PS-04, DE.CM-09, DE.AE-03 |
+| **Security & Privacy Constraints:**<br>**NFR-RN11** OmniScore Decision & Model Integrity at Serving — `GDPR Art. 5(1)(f)` · `CRA Annex I Part I (2)(f)+(l)` · `AI Act Art. 15` · `DORA Art. 9` → `PO-D-01.4-001`/`SO-D-01.4-002`/`SO-D-01.4-003`/`SO-D-01.4-004` → `PRIN-ENG-07` → CSF PR.DS-01, PR.DS-10<br>**NFR-RN12** Scoring Data Minimization & Purpose Binding — `GDPR Art. 5(1)(c)+Art. 6` · `AI Act Art. 10` → `PO-D-05.1-001`/`SO-D-05.1-003` → `PRIN-ENG-06` → CSF ID.AM-08<br>**NFR-RN23** AI Event Logging over Lifetime — `AI Act Art. 12(1)+Art. 19` → `SO-D-10.2-004`/`SO-D-05.2-003` → `PRIN-ENG-07` → CSF PR.PS-04, DE.CM-09, DE.AE-03 |
 | **Interfaces:** Credit application form; Decision notification interface |
 | **Dependencies:**<br>• **Stakeholders:** Retail Customers, Consumer Credit Programme Owner<br>• **Data Sources:** Credit applications; applicant and financial data<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (applications); AI Model Serving Platform<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -324,7 +324,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R4.1 **Name:** Manage identity lifecycle |
 | **Description:** The system must provision, review, and revoke operator identities and entitlements across the employment lifecycle — on induction, on role change, and on separation — including operators of the AI platform. |
 | **Requirement Origin:** Access Control Policy & Joiner-Mover-Leaver Standard |
-| **Security & Privacy Constraints:**<br>**Chain** CRA Art. 13(15) → `SO-D-03.1-002`<br>**Chain** **NFR-RN21** AI Platform Access Mediation & Least Privilege — `CRA Annex I Part I (2)(d)` · `AI Act Art. 15 cybersecurity leg` · `NIS 2 Art. 21(2)(i)-(j)` → `SO-D-03.1-003`/`SO-D-03.1-003`/`SO-D-03.1-004` → `PRIN-ENG-03` → CSF PR.AA-05, PR.AA-06<br>**Chain** Identity Lifecycle Family — `GDPR Art. 32(4)` → `PO-D-03.1-001` · `NIS 2 Art. 21(2)(i)` → `SO-D-03.1-003` · `DORA Art. 9(3)(d)` → `SO-D-03.1-004` → `PRIN-ENG-03` → CSF PR.AA-01, PR.AA-05<br>**Chain** CRA Art. 13(15) → `SO-D-03.1-002` |
+| **Security & Privacy Constraints:**<br>**Chain** CRA Art. 13(15) → `SO-D-03.1-002`<br>**Chain** **NFR-RN21** AI Platform Access Mediation & Least Privilege — `CRA Annex I Part I (2)(d)` · `AI Act Art. 15 cybersecurity leg` · `NIS 2 Art. 21(2)(i)-(j)` → `SO-D-03.1-003`/`SO-D-03.1-004` → `PRIN-ENG-03` → CSF PR.AA-05<br>**Chain** Identity Lifecycle Family — `GDPR Art. 32(4)` → `PO-D-03.1-001` · `NIS 2 Art. 21(2)(i)` → `SO-D-03.1-003` · `DORA Art. 9(3)(d)` → `SO-D-03.1-004` → `PRIN-ENG-03` → CSF PR.AA-01, PR.AA-05<br>**Chain** CRA Art. 13(15) → `SO-D-03.1-002` |
 | **Interfaces:** Identity administration console |
 | **Dependencies:**<br>• **Stakeholders:** HR, Identity Administrators<br>• **Data Sources:** Employment lifecycle events; entitlement catalog<br>• **Extraction Periodicity:** on event<br>• **Information Systems / Databases:** Identity Store<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -483,7 +483,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R6.5 **Name:** Manage AI training-data lifecycle |
 | **Description:** The system must govern the training, validation, and test datasets of the OmniScore models across their lifecycle — collection, preparation, versioning, and retirement — with relevance and representativeness checks. |
 | **Requirement Origin:** AI Data Governance Standard (OmniScore) |
-| **Security & Privacy Constraints:**<br>**Chain** AI Training-Data Governance — `AI Act Art. 10` → `SO-D-05.1-003` → `PRIN-ENG-06` → CSF ID.AM-08, GV.PO-02 |
+| **Security & Privacy Constraints:**<br>**Chain** AI Training-Data Governance — `AI Act Art. 10` → `SO-D-05.1-003` → `PRIN-ENG-06` → CSF ID.AM-08 |
 | **Interfaces:** Dataset governance console |
 | **Dependencies:**<br>• **Stakeholders:** AI Data Engineers, AI Governance Lead<br>• **Data Sources:** Dataset versions; lineage and representativeness checks<br>• **Extraction Periodicity:** per training cycle<br>• **Information Systems / Databases:** AI Data Platform (datasets)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -498,7 +498,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R7.1 **Name:** Assess ICT third-party providers and maintain the register |
 | **Description:** The system must assess ICT third-party providers before and during engagement and maintain the register of information on ICT third-party arrangements with their criticality and locations. |
 | **Requirement Origin:** Third-Party Risk Management Standard (DORA Register) |
-| **Security & Privacy Constraints:**<br>**Chain** DORA Art. 28(1) → `SO-D-06.1-004` · NIS 2 Art. 21(2)(d) → `SO-D-06.4-003`<br>**Chain** **NFR-RN26** ICT Third-Party Register Completeness & Criticality — `DORA Art. 28-30` → `SO-D-06.4-004` · `GDPR Art. 28` → `PO-D-06.1-001`/`PO-D-06.3-001` · `NIS 2 Art. 21(3)` → `SO-D-06.1-003`/`SO-D-06.3-003` → `PRIN-ENG-05` → CSF GV.SC-02, GV.SC-03, ID.AM-04<br>**Chain** Processor & Supplier Due Diligence Family — `GDPR Art. 28` → `PO-D-06.1-001`/`PO-D-06.3-001` · `CRA Annex I` → `SO-D-06.1-002` · `NIS 2 Art. 21(2)-(3)` → `SO-D-06.1-003`/`SO-D-06.3-003` → `PRIN-ENG-05` → CSF GV.SC-01, GV.SC-02, GV.SC-03<br>**Chain** DORA Art. 28(1) → `SO-D-06.1-004` |
+| **Security & Privacy Constraints:**<br>**Chain** DORA Art. 28(1) → `SO-D-06.1-004` · NIS 2 Art. 21(2)(d) → `SO-D-06.4-003`<br>**Chain** **NFR-RN26** ICT Third-Party Register Completeness & Criticality — `DORA Art. 28-30` → `SO-D-06.4-004` · `GDPR Art. 28` → `PO-D-06.1-001`/`PO-D-06.3-001` · `NIS 2 Art. 21(3)` → `SO-D-06.1-003`/`SO-D-06.3-003` → `PRIN-ENG-05` → CSF GV.SC-02, GV.SC-03<br>**Chain** Processor & Supplier Due Diligence Family — `GDPR Art. 28` → `PO-D-06.1-001`/`PO-D-06.3-001` · `CRA Annex I` → `SO-D-06.1-002` · `NIS 2 Art. 21(2)-(3)` → `SO-D-06.1-003`/`SO-D-06.3-003` → `PRIN-ENG-05` → CSF GV.SC-01, GV.SC-02, GV.SC-03<br>**Chain** DORA Art. 28(1) → `SO-D-06.1-004` |
 | **Interfaces:** Vendor assessment console; register interface |
 | **Dependencies:**<br>• **Stakeholders:** Vendor Risk Managers, CISO<br>• **Data Sources:** Assessments; register entries<br>• **Extraction Periodicity:** per assessment cycle<br>• **Information Systems / Databases:** Internal Application Database (vendor register)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -577,7 +577,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R8.3 **Name:** Approve production changes |
 | **Description:** The system must route production changes through an approval decision that records the change scope, risk, and approver before deployment. |
 | **Requirement Origin:** Change Management Procedure |
-| **Security & Privacy Constraints:**<br>**Chain** ICT Change Management — `DORA Art. 9(4)(e)` → `SO-D-07.4-002` → `PRIN-ENG-05` → CSF GV.PO-02, PR.PS-04 |
+| **Security & Privacy Constraints:**<br>**Chain** ICT Change Management — `DORA Art. 9(4)(e)` → `SO-D-07.4-002` → `PRIN-ENG-05` → CSF PR.PS-01, PR.PS-02 |
 | **Interfaces:** Change approval interface |
 | **Dependencies:**<br>• **Stakeholders:** Change Advisory Board<br>• **Data Sources:** Change requests; approvals<br>• **Extraction Periodicity:** on event<br>• **Information Systems / Databases:** Internal Application Database (change records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -590,7 +590,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R8.4 **Name:** Secure the AI training and serving pipeline |
 | **Description:** The system must protect the AI training and serving pipeline — data ingestion, training jobs, and model artefacts — against unauthorized modification, with verification of model integrity at serving. |
 | **Requirement Origin:** AI Platform Security Standard (OmniScore) |
-| **Security & Privacy Constraints:**<br>**NFR-RN11** OmniScore Decision & Model Integrity at Serving (co-driver) — `CRA Annex I Part I (2)(f)+(l)` · `DORA Art. 9` → `SO-D-01.4-003`/`SO-D-01.4-004` → `PRIN-ENG-07` → CSF PR.DS-01, PR.DS-10, PR.PS-04 |
+| **Security & Privacy Constraints:**<br>**NFR-RN11** OmniScore Decision & Model Integrity at Serving (co-driver) — `CRA Annex I Part I (2)(f)+(l)` · `DORA Art. 9` → `SO-D-01.4-003`/`SO-D-01.4-004` → `PRIN-ENG-07` → CSF PR.DS-01, PR.DS-10 |
 | **Interfaces:** Training pipeline console; serving verification interface |
 | **Dependencies:**<br>• **Stakeholders:** ML Engineers, AI Governance Lead<br>• **Data Sources:** Pipeline states; model artefact verifications<br>• **Extraction Periodicity:** per training cycle<br>• **Information Systems / Databases:** AI Platform (pipeline records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -658,7 +658,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R10.2 **Name:** Execute unified risk and impact assessments |
 | **Description:** The system must execute the unified lifecycle risk assessment that feeds the data-protection impact assessment, the product-security risk assessment, the entity risk analysis, the ICT risk-management framework, and the AI risk-management system, updating on material change. |
 | **Requirement Origin:** Enterprise Risk Methodology (Five-Regime Unified Pass) |
-| **Security & Privacy Constraints:**<br>**Chain** AI Act Art. 72(1) → `SO-D-10.1-005`<br>**Chain** **NFR-RN24** Post-Market Monitoring Integration — `AI Act Art. 72` · `DORA Art. 6(3), Art. 8` → `SO-D-10.1-004`/`SO-D-09.2-005` → `PRIN-ENG-02` → CSF DE.CM-09, ID.IM-04<br>**Chain** Unified Lifecycle Assessment Family (T-003) — `GDPR Art. 35` → `PO-D-09.2-001` · `CRA Art. 13(2)` → `SO-D-09.2-002` · `NIS 2 Art. 21(2)(a)` → `SO-D-09.2-003` · `AI Act Art. 9(1)` → `SO-D-09.2-005` → `PRIN-ENG-05` → CSF ID.RA-01, ID.RA-05, GV.RM-01, GV.RM-06<br>**Chain** AI Act Art. 72(1) → `SO-D-10.1-005` |
+| **Security & Privacy Constraints:**<br>**Chain** AI Act Art. 72(1) → `SO-D-10.1-005`<br>**Chain** **NFR-RN24** Post-Market Monitoring Integration — `AI Act Art. 72` · `DORA Art. 6(3), Art. 8` → `SO-D-10.1-004`/`SO-D-09.2-005` → `PRIN-ENG-02` → CSF DE.CM-09<br>**Chain** Unified Lifecycle Assessment Family (T-003) — `GDPR Art. 35` → `PO-D-09.2-001` · `CRA Art. 13(2)` → `SO-D-09.2-002` · `NIS 2 Art. 21(2)(a)` → `SO-D-09.2-003` · `AI Act Art. 9(1)` → `SO-D-09.2-005` → `PRIN-ENG-05` → CSF ID.RA-01, ID.RA-05, GV.RM-01, GV.RM-06<br>**Chain** AI Act Art. 72(1) → `SO-D-10.1-005` |
 | **Interfaces:** Assessment workbench |
 | **Dependencies:**<br>• **Stakeholders:** CISO, DPO, AI Governance Lead<br>• **Data Sources:** Assessment inputs; regime outputs<br>• **Extraction Periodicity:** on material change / annual<br>• **Information Systems / Databases:** Internal Application Database (assessment records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |

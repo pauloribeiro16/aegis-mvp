@@ -130,9 +130,15 @@ class Case:
         self.name = root.name
         self.p1 = self._md("01_PHASE1_CONTEXT")
         self.p2 = self._md("02_PHASE2_RULES/Doc01_Operational_Objectives.md")
-        self.p3 = self._md("03_PHASE3_SPEC/Doc01_Requirements_Elicitation_and_PUC.md")
+        # Part 1 lives under part1_security_privacy/ (ADR-006 two-part layout); fall back to
+        # the flat layout so older cases keep resolving.
         self.p3_dir = root / "03_PHASE3_SPEC"
-        self.mapping = self._rglob_one("03_PHASE3_SPEC/synthesis_rounds/OBJECTIVE_MAPPING.md")
+        self.part1 = self.p3_dir / "part1_security_privacy"
+        self.p1_root = self.part1 if self.part1.is_dir() else self.p3_dir
+        self.p3 = self._md("03_PHASE3_SPEC/part1_security_privacy/Doc01_Requirements_Elicitation_and_PUC.md") \
+            or self._md("03_PHASE3_SPEC/Doc01_Requirements_Elicitation_and_PUC.md")
+        self.mapping = self._rglob_one("03_PHASE3_SPEC/part1_security_privacy/synthesis_rounds/OBJECTIVE_MAPPING.md") \
+            or self._rglob_one("03_PHASE3_SPEC/synthesis_rounds/OBJECTIVE_MAPPING.md")
         # ID universes.
         p1_text = self._text(self.p1)
         p2_text = self._text(self.p2)
@@ -394,7 +400,7 @@ def check_gate_evidence(case: Case) -> list[Finding]:
     """
     findings: list[Finding] = []
     path_token = re.compile(r"`([A-Za-z0-9_./-]+\.md)`")
-    roots = [case.p3_dir, case.p3_dir / "synthesis_rounds", case.p3_dir / "analysis_v0_to_v1", case.p3_dir / "analysis_v1_to_v2"]
+    roots = [case.p3_dir, case.p1_root / "synthesis_rounds", case.p1_root / "analysis_v0_to_v1", case.p1_root / "analysis_v1_to_v2"]
     for path in case._rglob("03_PHASE3_SPEC"):
         for line_no, line in enumerate(read(path), 1):
             if not GATE_ROW.match(line):
@@ -470,6 +476,64 @@ def check_driver_symmetry(case: Case) -> list[Finding]:
     return findings
 
 
+# ----------------------------------------------------------------------- T6
+
+# The anchor list follows the driver set (`→ PRIN-ENG-01 → CSF ...`), so it sits
+# *after* the segment match and must be read from the line, not from the match.
+RE_ANCHOR_RUN = re.compile(r"CSF\s+((?:[A-Z]{2}\.[A-Z]{2}-\d{2}(?:\s*,\s*)?)+)")
+RE_ANCHOR_ID = re.compile(r"\b[A-Z]{2}\.[A-Z]{2}-\d{2}\b")
+
+
+def check_anchor_provenance(case: Case) -> list[Finding]:
+    """T6: every control anchor a chain selects must belong to the published
+    anchor set of an objective that chain cites (R2 / ADR-005 Step 4). An
+    out-of-set anchor is a derivation defect, not a wording preference."""
+    findings: list[Finding] = []
+    published: dict[str, set[str]] = {}
+    for line in read(case.p2):
+        m = RE_MATRIX_ROW.match(line)
+        if not m:
+            continue
+        cells = [c.strip() for c in line.split("|")[1:-1]]
+        if len(cells) >= 9:
+            published[m.group(1)] = set(RE_ANCHOR_ID.findall(cells[8]))
+    if not published:
+        return findings
+    for path in case.active_deliverables:
+        for line_no, line in enumerate(read(path), 1):
+            # A cell packs several constraints separated by <br>; each carries its
+            # own driver set AND its own anchor run. Scope both to one constraint,
+            # or a later constraint's anchors are charged to an earlier chain.
+            for piece in line.split("<br>"):
+              # Only the LAST segment of a constraint owns the anchor run: earlier
+              # segments' tails run into the following segments' drivers, which
+              # would charge one chain's anchors to another.
+              segs = list(RE_SEGMENT.finditer(piece))
+              for seg in segs[-1:]:
+                objs = set(RE_OBJ_IN_SET.findall(seg.group("objs")))
+                if not objs:
+                    continue
+                tail = piece[seg.end():]  # the anchor run starts past the drivers
+                am = RE_ANCHOR_RUN.search(tail)
+                if not am:
+                    continue
+                allowed: set[str] = set()
+                for o in objs:
+                    allowed |= published.get(o, set())
+                if not allowed:
+                    continue  # drivers publish no set — recorded, not checkable
+                for anchor in sorted(set(RE_ANCHOR_ID.findall(am.group(1))) - allowed):
+                    findings.append(
+                        Finding(
+                            path,
+                            line_no,
+                            "T6 anchor outside the cited drivers' published set",
+                            f"{anchor} not published by any of {sorted(objs)}",
+                        )
+                    )
+    return findings
+
+
 # ---------------------------------------------------------------------- main
 
 
@@ -480,6 +544,7 @@ CHECKS = {
     "T3b": ("Ratio ceiling", check_ratio_claims),
     "T4": ("Gate evidence", check_gate_evidence),
     "T5": ("Driver symmetry", check_driver_symmetry),
+    "T6": ("Anchor provenance", check_anchor_provenance),
 }
 
 

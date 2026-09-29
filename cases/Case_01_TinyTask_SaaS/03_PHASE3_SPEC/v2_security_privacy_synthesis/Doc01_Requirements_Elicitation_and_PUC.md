@@ -262,7 +262,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R1.1 **Name:** Register and authenticate user accounts |
 | **Description:** The system must allow prospective users to create an account with email verification, authenticate using valid credentials to establish an active session, and autonomously request password reset assistance via email. |
 | **Requirement Origin:** Founders Business Case & User Onboarding Workflow |
-| **Security & Privacy Constraints:**<br>**NFR-RN10** Credential Confidentiality Protection (State of the Art) — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-01.1-002, SO-D-03.1-002` → `PRIN-ENG-04` → CSF PR.DS-01, PR.AA-01, PR.AA-05<br>**NFR-RN11** Session Management & Invalidation — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-03.1-002` → `PRIN-ENG-04` → CSF PR.AA-01, PR.AA-05, PR.AA-06<br>**NFR-RN19** Registration Data Minimization by Default — `GDPR Art. 5(1)(c)` → `PO-D-05.1-001` → `PRIN-ENG-06` → CSF PR.DS-10, GV.OC-03 / PF CT.DP-P2 |
+| **Security & Privacy Constraints:**<br>**Chain** GDPR → `SO-D-03.4-001` · CRA → `SO-D-05.1-002`<br>**Chain** **NFR-RN10** Credential Confidentiality Protection (State of the Art) — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-01.1-002, SO-D-03.1-002` → `PRIN-ENG-04` → CSF PR.DS-01, PR.AA-01, PR.AA-05<br>**NFR-RN11** Session Management & Invalidation — `CRA Annex I Part I (2)(d) + (2)(j)` → `SO-D-03.1-002` → `PRIN-ENG-04` → CSF PR.AA-01, PR.AA-05, PR.AA-06<br>**NFR-RN19** Registration Data Minimization by Default — `GDPR Art. 5(1)(c)` → `PO-D-05.1-001` → `PRIN-ENG-06` → CSF PR.DS-10, GV.OC-03 / PF CT.DP-P2 |
 | **Interfaces:** Registration screen; Login screen; Password recovery flow; Transactional email interface |
 | **Dependencies:**<br>• **Stakeholders:** Platform Founders, All End Users<br>• **Data Sources:** Registration form submissions; Credential verification requests; Password reset requests<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Identity and Credential Store; Notification / Email Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -419,7 +419,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R5.1 **Name:** Manage task deliverable attachments |
 | **Description:** The system must allow authorized team members to upload deliverable files (supporting documents, spreadsheets, presentations, and images) up to 25 MB in size per file directly into a task card, view inline previews, download attached files, and remove outdated attachments. |
 | **Requirement Origin:** Document Centralization Needs & Customer Expectation EXP-04 |
-| **Security & Privacy Constraints:**<br>**NFR-RN13** File Upload Strict Validation & Content Isolation — `CRA Annex I Part I (2)(j)` → `SO-D-07.2-002` → `PRIN-ENG-02` → CSF PR.PS-06<br>**NFR-RN25** Automated Orphan File Asset Cleanup & Expiration — `GDPR Art. 5(1)(e)` → `PO-D-05.2-001` → `PRIN-ENG-07` → CSF PR.DS-10, ID.AM-03 / PF CT.DM-P3 |
+| **Security & Privacy Constraints:**<br>**Chain** CRA → `SO-D-05.1-002`<br>**Chain** **NFR-RN13** File Upload Strict Validation & Content Isolation — `CRA Annex I Part I (2)(j)` → `SO-D-07.2-002` → `PRIN-ENG-02` → CSF PR.PS-06<br>**NFR-RN25** Automated Orphan File Asset Cleanup & Expiration — `GDPR Art. 5(1)(e)` → `PO-D-05.2-001` → `PRIN-ENG-07` → CSF PR.DS-10, ID.AM-03 / PF CT.DM-P3 |
 | **Interfaces:** File upload control; Inline preview pane; Download interface |
 | **Dependencies:**<br>• **Stakeholders:** Team Contributors, Clients<br>• **Data Sources:** Uploaded deliverable files<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** File Storage Service; Internal Application Database (attachment metadata)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -462,7 +462,6 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R6.2 **Name:** Receive workspace alerts and daily task digests |
 | **Description:** The system must provide an in-app notification center for direct assignments and @mentions, and automatically dispatch a daily summary email digest listing upcoming and overdue tasks assigned to the user. |
 | **Requirement Origin:** User Attention Management & As-Is Pain Point 2.3 |
-| **Security & Privacy Constraints:**<br>**NFR-RN16** Cryptographic Webhook Origin Verification — `CRA Annex I Part I (2)(l)` → `SO-D-01.4-002` → `PRIN-ENG-01` → CSF PR.DS-10 |
 | **Interfaces:** In-app notification center; Daily digest email interface |
 | **Dependencies:**<br>• **Stakeholders:** Contributors, Team Leads<br>• **Data Sources:** Assignment events; Mention events; Due-date schedule<br>• **Extraction Periodicity:** on event / daily digest<br>• **Information Systems / Databases:** Internal Application Database (notification records); Notification / Email Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -493,6 +492,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must grant a 7-day operational grace period if an automated subscription renewal payment fails, maintaining normal workspace access while presenting payment update notices to the Workspace Owner. Upon grace period expiry without resolution, the system must transition the workspace to a restricted read-only state that preserves project consultation and data export while suspending content modifications and member invitations until billing is rectified. |
 | **Requirement Origin:** Customer Retention & Business Continuity |
 | **Security & Privacy Constraints:**<br>**NFR-RN15** Cryptographic Billing Invariant Protection — `CRA Annex I Part I (2)(l)` → `SO-D-01.4-002` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-10 |
+| **Security & Privacy Constraints:**<br>**NFR-RN16** Cryptographic Webhook Origin Verification — `CRA Annex I Part I (2)(l)` → `SO-D-01.4-002` → `PRIN-ENG-01` → CSF PR.DS-10 |
 | **Interfaces:** Billing status banner; Payment update prompt |
 | **Dependencies:**<br>• **Stakeholders:** Customers, Finance Operations<br>• **Data Sources:** Payment failure events<br>• **Extraction Periodicity:** on event<br>• **Information Systems / Databases:** Internal Application Database (subscription records); External Payment Gateway (payment status)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -555,7 +555,7 @@ The platform non-functional requirements comprise the general operational qualit
 | **RN2** | The system must maintain monthly service availability of at least 99.5%, excluding scheduled maintenance windows announced in advance. | MUST | Availability |
 | **RN3** | The web application interface must be fully responsive, ensuring correct rendering on modern desktop and mobile viewports (minimum width of 375 px). | MUST | Usability |
 | **RN4** | The storage architecture must support up to 50,000 active tasks per workspace without degradation in search, filter, or rendering speed. | SHOULD | Scalability |
-| **RN5** | The system must execute automated daily database backups and maintain data recovery functionality with an RPO under 24 hours. | MUST | Recoverability |
+| **RN5** | The system must execute automated daily database backups and maintain data recovery functionality with an RPO under 24 hours. | MUST | Recoverability · CRA → `SO-D-04.4-002` |
 | **RN6** | The user interface must support internationalization (i18n), offering full system localization in English and Portuguese. | SHOULD | Internationalization |
 | **RN7** | The payment gateway integration must communicate exclusively over authenticated secure channels and enforce cryptographic webhook signature verification. | MUST | Interoperability |
 | **RN8** | The system architecture must enforce strict logical data segregation across workspaces (multi-tenancy), preventing cross-tenant access. | MUST | Architectural Integrity |

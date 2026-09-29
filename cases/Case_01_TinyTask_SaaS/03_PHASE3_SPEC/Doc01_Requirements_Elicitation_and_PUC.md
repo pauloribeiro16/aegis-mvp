@@ -462,7 +462,6 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R6.2 **Name:** Receive workspace alerts and daily task digests |
 | **Description:** The system must provide an in-app notification center for direct assignments and @mentions, and automatically dispatch a daily summary email digest listing upcoming and overdue tasks assigned to the user. |
 | **Requirement Origin:** User Attention Management & As-Is Pain Point 2.3 |
-| **Security & Privacy Constraints:**<br>**NFR-RN16** Cryptographic Webhook Origin Verification — `CRA Annex I Part I (2)(l)` → `SO-D-01.4-002` → `PRIN-ENG-01` → CSF PR.DS-10 |
 | **Interfaces:** In-app notification center; Daily digest email interface |
 | **Dependencies:**<br>• **Stakeholders:** Contributors, Team Leads<br>• **Data Sources:** Assignment events; Mention events; Due-date schedule<br>• **Extraction Periodicity:** on event / daily digest<br>• **Information Systems / Databases:** Internal Application Database (notification records); Notification / Email Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -493,6 +492,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must grant a 7-day operational grace period if an automated subscription renewal payment fails, maintaining normal workspace access while presenting payment update notices to the Workspace Owner. Upon grace period expiry without resolution, the system must transition the workspace to a restricted read-only state that preserves project consultation and data export while suspending content modifications and member invitations until billing is rectified. |
 | **Requirement Origin:** Customer Retention & Business Continuity |
 | **Security & Privacy Constraints:**<br>**NFR-RN15** Cryptographic Billing Invariant Protection — `CRA Annex I Part I (2)(l)` → `SO-D-01.4-002` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-10 |
+| **Security & Privacy Constraints:**<br>**NFR-RN16** Cryptographic Webhook Origin Verification — `CRA Annex I Part I (2)(l)` → `SO-D-01.4-002` → `PRIN-ENG-01` → CSF PR.DS-10 |
 | **Interfaces:** Billing status banner; Payment update prompt |
 | **Dependencies:**<br>• **Stakeholders:** Customers, Finance Operations<br>• **Data Sources:** Payment failure events<br>• **Extraction Periodicity:** on event<br>• **Information Systems / Databases:** Internal Application Database (subscription records); External Payment Gateway (payment status)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |

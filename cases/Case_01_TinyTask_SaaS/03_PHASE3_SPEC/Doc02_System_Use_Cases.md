@@ -160,9 +160,9 @@ The following matrix establishes strict bi-directional traceability between the 
 | **R5.1** | **PUC 5.1** | **{U.C. 5.1}** | Manage task deliverable attachments | MUST | NFR-RN13, NFR-RN25 |
 | **R5.2** | **PUC 5.2** | **{U.C. 5.2}** | Post in-task discussion comments and mention collaborators | MUST | NFR-RN14 |
 | **R6.1** | **PUC 6.1** | **{U.C. 6.1}** | Consult chronological audit history on task cards | MUST | NFR-RN22 |
-| **R6.2** | **PUC 6.2** | **{U.C. 6.2}** | Receive workspace alerts and daily task digests | SHOULD | NFR-RN16 |
+| **R6.2** | **PUC 6.2** | **{U.C. 6.2}** | Receive workspace alerts and daily task digests | SHOULD | — |
 | **R7.1** | **PUC 7.1** | **{U.C. 7.1}** | Subscribe and manage workspace commercial plans | MUST | NFR-RN15 |
-| **R7.2** | **PUC 7.2** | **{U.C. 7.2}** | Enforce operational grace period upon payment failure | MUST | NFR-RN15 |
+| **R7.2** | **PUC 7.2** | **{U.C. 7.2}** | Enforce operational grace period upon payment failure | MUST | NFR-RN15, NFR-RN16 |
 | **R8.1** | **PUC 8.1** | **{U.C. 8.1}** | Export personal and workspace data archives | MUST | NFR-RN20, NFR-RN27 |
 | **R8.2** | **PUC 8.2** | **{U.C. 8.2}** | Close user accounts and terminate workspace access | MUST | NFR-RN21, NFR-RN27 |
 | **R8.3** | **PUC 8.3** | **{U.C. 8.3}** | Delete workspace and permanently erase workspace data | MUST | NFR-RN30, NFR-RN21, NFR-RN18 |
@@ -643,7 +643,7 @@ flowchart LR
   - **4c. Disallowed file type or executable binary signature detected:**
     - 4c1. System rejects upload, purges temporary buffer immediately, and records file security event (RN13).
 - **Success Guarantees:** Deliverable file is stored, indexed, and available for authorized team retrieval; audit log records file lifecycle.
-- **Minimal Guarantees:** Incomplete or corrupted file fragments are automatically purged from storage buffers; deleted attachments are marked for irreversible cleanup within 14 days (RN25).
+- **Minimal Guarantees:** Incomplete or corrupted file fragments are automatically purged from storage buffers; deleted attachments are marked for irreversible cleanup and purged on the configured retention schedule (RN25).
 
 ---
 
@@ -711,7 +711,7 @@ flowchart LR
   - **2a. Task has no historical modifications beyond creation:**
     - 2a1. System displays task creation event as the solitary timeline entry.
   - **2a. Audit log query exceeds pagination threshold:**
-    - 2a1. System caps result batch at 100 entries and requires cursor-based pagination (RN17).
+    - 2a1. System throttles the query and returns a paginated result set (RN17).
 - **Success Guarantees:** Complete, tamper-evident audit history is presented to authorized users.
 - **Minimal Guarantees:** Audit records are read-only; history entries cannot be modified or deleted via user interfaces (RN18).
 
@@ -873,7 +873,7 @@ flowchart LR
     - 3a1. System notifies actor that compilation is queued and sends an email notification with download link once ready.
   - **2a. Workspace Member attempts organization-wide export:**
     - 2a1. System restricts export options strictly to the member's own profile and authored contributions (RN12).
-  - **4b. Archive download link expires (link valid for 48 hours):**
+  - **4b. Archive download link expires (link lifetime per the export policy):**
     - 4b1. System invalidates expired download token and prompts actor to request a fresh export archive (RN11).
 - **Success Guarantees:** Complete, structured operational and personal data is delivered to the user without data omission.
 - **Minimal Guarantees:** Personal data of third parties is strictly excluded from individual user data archives; exported archive package is encrypted at rest prior to download (RN20, RN23).

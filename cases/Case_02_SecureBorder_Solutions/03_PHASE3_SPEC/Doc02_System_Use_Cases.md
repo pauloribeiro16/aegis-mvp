@@ -83,7 +83,7 @@ flowchart TD
 | **R6.1** | **PUC 6.1** | **{U.C. 6.1}** | Execute unified regulatory notifications | MUST | NFR-RN21, NFR-RN14, NFR-RN26 |
 | **R7.1** | **PUC 7.1** | **{U.C. 7.1}** | Identify and remediate vulnerabilities | MUST | chains |
 | **R7.2** | **PUC 7.2** | **{U.C. 7.2}** | Distribute signed software and model updates | MUST | NFR-RN27 |
-| **R7.3** | **PUC 7.3** | **{U.C. 7.3}** | Operate coordinated vulnerability disclosure | SHOULD | chains |
+| **R7.3** | **PUC 7.3** | **{U.C. 7.3}** | Operate coordinated vulnerability disclosure | MUST | chains |
 | **R8.1** | **PUC 8.1** | **{U.C. 8.1}** | Enforce release pipeline security gates | MUST | NFR-RN20 + chains |
 | **R8.2** | **PUC 8.2** | **{U.C. 8.2}** | Maintain software bills of materials | MUST | chain (SO-D-06.2-002) |
 | **R8.3** | **PUC 8.3** | **{U.C. 8.3}** | Version and roll back AI models | MUST | NFR-RN15 |
@@ -661,4 +661,5 @@ The system use case model establishes the round-converged behavioral contract fo
 | Version | Date | Author | Description of Changes |
 |---|---|---|---|
 | **1.0.0** | 2026-09-23 | Requirements Engineering Agent | Initial baseline System Use Cases (GPTools E1.2 model): 11 Level-0 groups, 28 Sea-Level use cases, zero leaf nodes. |
+| **3.0.0** | 2026-09-29 | Requirements Engineering Agent | Round 2 synthesis (ADR-005, `synthesis_rounds/ROUND2_REGISTER.md`): traceability matrix priorities aligned — `R9.3` confirmed MUST (AI Act Art. 9(6)-(7) elevation applied at Table 6/card) and `R7.3` matrix row aligned to the MUST already carried by Table 6. |
 | **2.0.0** | 2026-09-28 | Requirements Engineering Agent | Round 1 synthesis (ADR-005, `synthesis_rounds/ROUND1_REGISTER.md`, 20/20 accepts + 51/51 chain bindings): 28 use cases elaborated to the fully-dressed Cockburn anatomy with security preconditions, extensions, and guarantees from the accepted constraint set (`RN11`–`RN30`); traceability matrix updated with bound NFRs; T-001..T-004 harmonizations realized in {U.C. 6.1}, {U.C. 4.1}, {U.C. 10.1}, {U.C. 10.2}; threat analysis remains Phase 3 Part 2 (ADR-006). |

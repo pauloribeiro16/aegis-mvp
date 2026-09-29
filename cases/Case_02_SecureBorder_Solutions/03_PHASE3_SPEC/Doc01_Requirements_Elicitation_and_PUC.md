@@ -260,7 +260,7 @@ Functional requirements are prioritized using the MoSCoW methodology:
 | **R9** | | **Govern AI Quality and Conformity** | **MUST** | |
 | | R9.1 | Maintain AI risk management and conformity documentation | MUST | |
 | | R9.2 | Monitor AI accuracy, drift, and bias | MUST | Quarterly bias cycle |
-| | R9.3 | Test AI systems adversarially and explain decisions | SHOULD | |
+| | R9.3 | Test AI systems adversarially and explain decisions | MUST | |
 | **R10** | | **Manage Governance, Risk, and Vendors** | **MUST** | |
 | | R10.1 | Maintain unified impact and risk assessments | MUST | Annual review |
 | | R10.2 | Assess vendors and record component provenance | MUST | |
@@ -605,7 +605,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Interfaces:** AI Governance Lead, Security Engineer, Border Control Officer |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder AI Governance & Privacy, SecureBorder Operations & Security<br>• **Data Sources:** Adversarial Test Record, Decision Explainability Record<br>• **Extraction Periodicity:** quarterly<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
-| **Priority:** Should |
+| **Priority:** Must |
 
 ---
 
@@ -816,4 +816,5 @@ flowchart LR
 | Version | Date | Author | Description of Changes |
 |---|---|---|---|
 | **1.0.0** | 2026-09-23 | Requirements Engineering Agent | Initial baseline elicitation (GPTools E1.1 structural model): 11 requirement groups, 28 Level-1 capabilities, 10 measurable NFRs. |
+| **3.0.0** | 2026-09-29 | Requirements Engineering Agent | Round 2 synthesis (ADR-005, `synthesis_rounds/ROUND2_REGISTER.md`): `R9.3` AI adversarial testing elevated SHOULD → MUST per AI Act Art. 9(6)-(7) (D3); Doc02 matrix `R7.3` aligned to the MUST already carried by Table 6. |
 | **2.0.0** | 2026-09-28 | Requirements Engineering Agent | Round 1 synthesis (ADR-005, `synthesis_rounds/ROUND1_REGISTER.md`, 20/20 accepts): 20 new security & privacy constraints `RN11`–`RN30` absorbed in-card (RN13 cross-cutting in Table 7), 51 regulatory chain rows bound to existing functional cards, tensions T-001..T-004 realized; 28 requirement cards, 28 PUCs. |

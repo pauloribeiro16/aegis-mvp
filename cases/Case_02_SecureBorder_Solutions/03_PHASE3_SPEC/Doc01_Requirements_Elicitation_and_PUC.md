@@ -285,7 +285,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must capture the traveller's facial image at the gate, extract a biometric verification template, apply irreversible de-linking to the template, and discard the raw capture immediately after extraction. |
 | **Requirement Origin:** Border Authority Service Contract & Passenger-Flow Programme |
 | **Security & Privacy Constraints:**<br>**NFR-RN11** Biometric Template Protection at Rest — `GDPR Art. 32(1)(a)+(b)+Art. 5(1)(f)` → `PO-D-01.1-001` · `CRA Annex I Part I (2)(e)` → `SO-D-01.1-002` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-10<br>**NFR-RN12** Cryptographic Key Custody Separation — `GDPR Art. 4(5)+Art. 32(1)(a)` → `PO-D-01.3-001` · `CRA Annex I Part I (2)(d)+(e)` → `SO-D-01.3-002` → `PRIN-ENG-03` → CSF PR.DS-01, PR.AA-05<br>**Chain** Data Minimization at Enrolment — `GDPR Art. 5(1)(c)` → `PO-D-05.1-001` · `CRA Annex I` → `SO-D-05.1-002` → `PRIN-ENG-06` → CSF ID.AM-08, ID.AM-03<br>**Chain** Retention Limitation — `GDPR Art. 5(1)(e)` → `PO-D-05.2-001` → `PRIN-ENG-07` → CSF ID.AM-08, ID.AM-03 |
-| **Interfaces:** Traveller, Border Control Officer, and Government Border Authority Integration |
+| **Interfaces:** Gate capture station; enrolment console; authority enrolment-record channel |
 | **Dependencies:**<br>• **Stakeholders:** Government Border Authorities, Airport Operators<br>• **Data Sources:** Gate Capture Session, Authority Enrolment Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -298,7 +298,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must verify the traveller's live capture against the enrolled template (1:1 match), consult the authority watchlist input, and produce a confidence-scored passage decision (pass or refer) within the statutory service target, opening the gate only on a pass outcome. |
 | **Requirement Origin:** Passenger-Flow Programme & Border Authority Service Contract |
 | **Security & Privacy Constraints:**<br>**NFR-RN12** Cryptographic Key Custody Separation — `GDPR Art. 4(5)+Art. 32(1)(a)` → `PO-D-01.3-001` · `CRA Annex I Part I (2)(d)+(e)` → `SO-D-01.3-002` → `PRIN-ENG-03` → CSF PR.DS-01, PR.AA-05<br>**NFR-RN13** Data-in-Transit Protection (cross-cutting, Table 7) — `GDPR Art. 32(1)(b)+Art. 32(2)` → `PO-D-01.2-001` · `CRA Annex I Part I (2)(e)+(j)` → `SO-D-01.2-002` → `PRIN-ENG-01` → CSF PR.DS-02, PR.IR-01<br>**NFR-RN14** Record & Command Integrity Protection — `CRA Annex I Part I (2)(f)+(l)` → `SO-D-01.4-002` → `PRIN-ENG-07` → CSF PR.DS-01, PR.DS-10, PR.PS-04<br>**NFR-RN15** AI Model Resilience & Fail-Safe Reversion — `AI Act Art. 15(3)` → `SO-D-01.4-004` → `PRIN-ENG-04` → CSF PR.IR-03, PR.IR-04, PR.DS-11<br>**NFR-RN20** Secure-by-Default Configuration & Reset — `GDPR Art. 25(2)` → `PO-D-03.4-001` · `CRA Annex I 2(b)+(c)` → `SO-D-03.4-002` → `PRIN-ENG-04` → CSF PR.PS-01<br>**NFR-RN22** Product Activity Recording & Tamper Evidence — `CRA Annex I Part I (2)(l)` → `SO-D-04.1-002`, `SO-D-10.1-002` → `PRIN-ENG-07` → CSF DE.CM-01, DE.CM-09<br>**NFR-RN24** AI Event Logging over Lifetime — `AI Act Art. 12(1)+Art. 19` → `SO-D-10.2-004`, `SO-D-05.2-004` → `PRIN-ENG-07` → CSF PR.PS-04, DE.CM-09, DE.AE-03 |
-| **Interfaces:** Traveller, Border Control Officer, and Government Border Authority Integration |
+| **Interfaces:** Gate capture and decision surface; verification service interface; authority decision-record channel |
 | **Dependencies:**<br>• **Stakeholders:** Government Border Authorities, Airport Operators, Travellers<br>• **Data Sources:** Enrolment Template, Watchlist Input, Decision Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -311,7 +311,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must allow authorized officers and authority users to consult past passage decisions — token-only entries with timestamp, gate, decision, confidence band, and override status — filtered by traveller token, date range, gate, and outcome. |
 | **Requirement Origin:** Authority Audit & Statistics Needs |
 | **Security & Privacy Constraints:**<br>**NFR-RN11** Biometric Template Protection at Rest — `GDPR Art. 32(1)(a)+(b)+Art. 5(1)(f)` → `PO-D-01.1-001` · `CRA Annex I Part I (2)(e)` → `SO-D-01.1-002` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-10<br>**NFR-RN14** Record & Command Integrity Protection — `CRA Annex I Part I (2)(f)+(l)` → `SO-D-01.4-002` → `PRIN-ENG-07` → CSF PR.DS-01, PR.DS-10, PR.PS-04<br>**Chain** Retention Limitation on Decision Records — `GDPR Art. 5(1)(e)` → `PO-D-05.2-001` → `PRIN-ENG-07` → CSF ID.AM-08, ID.AM-03 |
-| **Interfaces:** Border Control Officer, Compliance Analyst |
+| **Interfaces:** Decision-record query console; case audit view |
 | **Dependencies:**<br>• **Stakeholders:** Government Border Authorities<br>• **Data Sources:** Decision Record Store<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Should |
@@ -328,7 +328,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must present each referred or challenged decision to a border control officer with the decision basis (confidence band and contributing factors) and allow the officer to confirm or override the outcome in real time, recording the justification with the decision entry. |
 | **Requirement Origin:** Human-Oversight Obligation & Border Officer Operational Intake |
 | **Security & Privacy Constraints:**<br>**NFR-RN19** Authorized-Actor Instruction Mediation — `GDPR Art. 29+Art. 32(4)` → `PO-D-03.2-001`, `PO-D-03.3-001` · `CRA Annex I Part I (2)(d)` → `SO-D-03.3-002` · `NIS 2 Art. 21(2)` → `SO-D-03.3-003` → `PRIN-ENG-03` → CSF PR.AA-05, PR.AA-06<br>**NFR-RN29** Human Oversight Effectiveness — `AI Act Art. 14` → `SO-D-08.2-004` → `PRIN-ENG-01` → CSF PR.AT-02, PR.AT-01, GV.RR-02 |
-| **Interfaces:** Border Control Officer |
+| **Interfaces:** Oversight worklist; decision-drivers view; override control |
 | **Dependencies:**<br>• **Stakeholders:** Government Border Authorities<br>• **Data Sources:** Decision Queue, Override Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -340,7 +340,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R2.2 **Name:** Manage manual-lane referrals |
 | **Description:** The system must route referred travellers to the manual lane with a referral ticket, notify the officer desk, and track the referral to closure; on any gate fault the system must fail toward the manual lane automatically. |
 | **Requirement Origin:** Border Officer Operational Intake & Site Contingency Procedure |
-| **Interfaces:** Border Control Officer, Traveller |
+| **Interfaces:** Referral ticket queue; manual-lane processing station |
 | **Dependencies:**<br>• **Stakeholders:** Government Border Authorities, Airport Operators<br>• **Data Sources:** Referral Ticket, Gate Status Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -357,7 +357,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must manage operational identities for officers and SecureBorder staff across their engagement lifecycle — provisioning on induction (verifiable against government identity systems for officers), entitlement review on role change, and revocation within 24 hours of separation. |
 | **Requirement Origin:** Government Identity Federation Programme & HR Separation Workflow |
 | **Security & Privacy Constraints:**<br>**NFR-RN17** Operator Identity Lifecycle Management — `NIS 2 Art. 21(2)(i)` → `SO-D-03.1-003` · `CRA Annex I Part I (2)(d)+Art. 13(15)` → `SO-D-03.1-002` → `PRIN-ENG-03` → CSF PR.AA-01, PR.AA-05 |
-| **Interfaces:** Border Control Officer, SOC Analyst, Government Border Authority Integration |
+| **Interfaces:** Identity administration console; joiner-mover-leaver intake; entitlement catalogue |
 | **Dependencies:**<br>• **Stakeholders:** Government Border Authorities, SecureBorder Operations & Security<br>• **Data Sources:** Authority Identity Record, HR Engagement Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -370,7 +370,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must authenticate all operational users — including every remote access to the management plane — using multi-factor verification before granting access, and lock accounts after repeated failed attempts. |
 | **Requirement Origin:** Certified Operations Baseline & SOC Access Policy |
 | **Security & Privacy Constraints:**<br>**NFR-RN18** Strong Operator Authentication — `NIS 2 Art. 21(2)(j)` → `SO-D-03.2-003` · `CRA Annex I Part I (2)(d)` → `SO-D-03.2-002` → `PRIN-ENG-01` → CSF PR.AA-03, PR.AA-05, PR.AA-06 |
-| **Interfaces:** All Operational Users |
+| **Interfaces:** Operator sign-in surface; factor challenge; session establishment |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder Operations & Security<br>• **Data Sources:** Authentication Event Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -383,7 +383,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must let administrators assign least-privilege operational roles (oversight, monitoring, engineering, governance, site) and enforce a quarterly access-rights review with recorded outcomes. |
 | **Requirement Origin:** Certified Operations Baseline & Access Governance Policy |
 | **Security & Privacy Constraints:**<br>**NFR-RN17** Operator Identity Lifecycle Management — `NIS 2 Art. 21(2)(i)` → `SO-D-03.1-003` · `CRA Annex I Part I (2)(d)+Art. 13(15)` → `SO-D-03.1-002` → `PRIN-ENG-03` → CSF PR.AA-01, PR.AA-05<br>**NFR-RN19** Authorized-Actor Instruction Mediation — `GDPR Art. 29+Art. 32(4)` → `PO-D-03.2-001`, `PO-D-03.3-001` · `CRA Annex I Part I (2)(d)` → `SO-D-03.3-002` · `NIS 2 Art. 21(2)` → `SO-D-03.3-003` → `PRIN-ENG-03` → CSF PR.AA-05, PR.AA-06 |
-| **Interfaces:** Compliance Analyst, SOC Analyst, CISO |
+| **Interfaces:** Role assignment console; access-review worklist |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder Operations & Security<br>• **Data Sources:** Role Assignment Record, Access Review Record<br>• **Extraction Periodicity:** quarterly<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -400,7 +400,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must receive traveller rights requests (access, erasure, portability) routed via the government controller, locate all linked biometric material and decision records for the traveller token, irreversibly de-link and purge biometric material on erasure while preserving lawful token-only decision records, and produce the response artefact within the statutory window. |
 | **Requirement Origin:** Traveller Rights Requests via Government Controller |
 | **Security & Privacy Constraints:**<br>**NFR-RN16** Rights-Requester Identity Verification — `GDPR Art. 12(6)+Art. 11(2)+Art. 5(1)(c)` → `PO-D-03.1-001` → `PRIN-ENG-01` → CSF PR.AA-03, PR.AA-02<br>**NFR-RN28** Traveller Erasure & Portability Delivery — `GDPR Art. 17+Art. 20+Art. 15(3)` → `PO-D-05.3-001`, `PO-D-05.4-001` → `PRIN-ENG-07` → CSF PR.DS-10, ID.AM-08 / PF CT.DM-P4<br>**Chain** Rectification Cascade — `GDPR Art. 16+Art. 19` → `PO-D-01.4-001` → `PRIN-ENG-07` → CSF PR.DS-01, ID.AM-08, PR.DS-10<br>**Chain** Permanent Product-Data Removal — `CRA Annex I Part I (2)(m)` → `SO-D-05.3-002` → `PRIN-ENG-07` → CSF PR.DS-10, ID.AM-08, PR.DS-02 |
-| **Interfaces:** Privacy Officer (DPO), Government Border Authority Integration |
+| **Interfaces:** Data-subject request intake; identity-verification flow; erasure and export flow |
 | **Dependencies:**<br>• **Stakeholders:** Government Border Authorities, Travellers<br>• **Data Sources:** Rights Request Record, Enrolment Template Store, Decision Record Store<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -413,7 +413,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must maintain structured records of processing activities for both processing roles (traveller data on behalf of authorities; employee data under company responsibility), kept current and exportable on authority request. |
 | **Requirement Origin:** Statutory Documentation Obligation & Authority Inspection Readiness |
 | **Security & Privacy Constraints:**<br>**Chain** Records of Processing Activities — `GDPR Art. 30` → `PO-D-09.4-001` → `PRIN-ENG-05` → CSF ID.AM-03, GV.PO-02, PR.PS-04 |
-| **Interfaces:** Privacy Officer (DPO), Compliance Analyst |
+| **Interfaces:** Records-of-processing register; RoPA maintenance view |
 | **Dependencies:**<br>• **Stakeholders:** Government Border Authorities, SecureBorder Executive Leadership<br>• **Data Sources:** Processing Inventory Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -430,7 +430,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must collect security-relevant events from all gates, the back-office, and the verification AI — including access events, decision anomalies, integrity warnings, and model-behaviour signals — and correlate them into actionable alerts in the operations centre view. |
 | **Requirement Origin:** Security Operations Centre Handover & Fleet Monitoring Programme |
 | **Security & Privacy Constraints:**<br>**NFR-RN22** Product Activity Recording & Tamper Evidence — `CRA Annex I Part I (2)(l)` → `SO-D-04.1-002`, `SO-D-10.1-002` → `PRIN-ENG-07` → CSF DE.CM-01, DE.CM-09<br>**NFR-RN25** AI Post-Market Monitoring Integration — `AI Act Art. 72` → `SO-D-10.1-004` → `PRIN-ENG-02` → CSF DE.CM-09, ID.IM-04 |
-| **Interfaces:** SOC Analyst, Site Operations Technician |
+| **Interfaces:** Fleet event collector; SOC monitoring consoles; correlation view |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder Operations & Security<br>• **Data Sources:** Gate Event Stream, Back-Office Event Stream, AI Monitoring Stream<br>• **Extraction Periodicity:** continuous<br>• **Information Systems / Databases:** Internal Application Database, Event Store<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -443,7 +443,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must classify and prioritize incidents by statutory impact, support containment actions per incident class (gate tamper, network intrusion, model misbehaviour), and maintain the incident record through resolution with response timestamps. |
 | **Requirement Origin:** Incident Response Runbook & Statutory Notification Obligation |
 | **Security & Privacy Constraints:**<br>**Chain** NIS 2 Art. 21(2)(b) → `SO-D-10.1-003`<br>**Chain** **NFR-RN23** Incident-Handling Lifecycle Closure — `NIS 2 Art. 21(2)(c)` → `SO-D-04.1-003`, `SO-D-04.2-003` → `PRIN-ENG-02` → CSF RS.MA-01, RS.AN-03<br>**NFR-RN26** Breach Awareness & Containment Record — `GDPR Art. 33(1)+Art. 33(5)` → `PO-D-04.1-001`, `PO-D-04.2-001` → `PRIN-ENG-07` → CSF DE.CM-01, RS.MI-01, RS.MA-02<br>**Chain** NIS 2 Art. 21(2)(b) → `SO-D-10.1-003` |
-| **Interfaces:** SOC Analyst, Security Engineer, Compliance Analyst |
+| **Interfaces:** Incident console; containment controls; notification dispatch interface |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder Operations & Security<br>• **Data Sources:** Alert Queue, Incident Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -456,7 +456,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must support service recovery within the continuity targets for the back-office and gate management functions, restore from protected copies, and record continuity exercises (at least annual) with findings. |
 | **Requirement Origin:** Business Continuity Programme & Authority Service-Level Commitments |
 | **Security & Privacy Constraints:**<br>**Chain** NIS 2 Art. 21(2)(b) → `SO-D-10.1-003`<br>**Chain** **NFR-RN23** Incident-Handling Lifecycle Closure — `NIS 2 Art. 21(2)(c)` → `SO-D-04.1-003`, `SO-D-04.2-003` → `PRIN-ENG-02` → CSF RS.MA-01, RS.AN-03<br>**Chain** Post-Incident Availability Protection — `CRA Annex I Part I (2)` → `SO-D-04.2-002`, `SO-D-04.4-002` → `PRIN-ENG-04` → CSF PR.IR-03, ID.AM-08<br>**Chain** Continuity & Disaster Recovery — `NIS 2 Art. 21(2)(c)` → `SO-D-04.4-003` → `PRIN-ENG-04` → CSF RC.RP-04, PR.DS-11<br>**Chain** Ongoing CIA + Resilience — `GDPR Art. 32(1)(b)` → `PO-D-04.4-001`, `PO-D-10.1-001` → `PRIN-ENG-04` → CSF PR.IR-04, PR.DS-11, RC.RP-04 |
-| **Interfaces:** SOC Analyst, Site Operations Technician |
+| **Interfaces:** Backup console; recovery runbooks; continuity exercise view |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder Operations & Security, Airport Operators<br>• **Data Sources:** Recovery Runbook, Continuity Exercise Record<br>• **Extraction Periodicity:** annual<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -473,7 +473,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must generate and dispatch regulatory notifications from a single incident record — early warnings on the 24-hour clock, follow-up notifications within 72 hours, serious-incident reports per the AI statutory matrix, and conformity reports — tracking each obligation to acknowledgement. |
 | **Requirement Origin:** Multi-Regime Notification Obligation & Compliance Calendar |
 | **Security & Privacy Constraints:**<br>**NFR-RN21** Unified Regulatory Notification Timeline Enforcement — `GDPR Art. 33(1)` → `PO-D-04.3-001` · `CRA Art. 14` → `SO-D-04.3-002` · `NIS 2 Art. 23` → `SO-D-04.3-003` · `AI Act Art. 73` → `SO-D-04.3-004` → `PRIN-ENG-05` → CSF RS.MA-04, RS.MA-02, RS.CO-02<br>**NFR-RN14** Record & Command Integrity Protection — `CRA Annex I Part I (2)(f)+(l)` → `SO-D-01.4-002` → `PRIN-ENG-07` → CSF PR.DS-01, PR.DS-10, PR.PS-04<br>**NFR-RN26** Breach Awareness & Containment Record — `GDPR Art. 33(1)+Art. 33(5)` → `PO-D-04.1-001`, `PO-D-04.2-001` → `PRIN-ENG-07` → CSF DE.CM-01, RS.MI-01, RS.MA-02<br>**Chain** Cross-Border Incident Routing — `NIS 2 Art. 23` → `SO-D-06.4-003` → `PRIN-ENG-05` → CSF RS.MA-04, RS.CO-02 |
-| **Interfaces:** Compliance Analyst, Regulatory Dispatch Service |
+| **Interfaces:** Incident dossier builder; regulatory dispatch channel; notification receipt view |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder Operations & Security, Government Border Authorities<br>• **Data Sources:** Incident Record, Notification Obligation Calendar, Notification Receipt<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -490,7 +490,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must maintain a vulnerability register across gates, back-office, and AI components with risk-based remediation targets (critical items within 24 hours), and support periodic offensive testing of the verification pipeline. |
 | **Requirement Origin:** Vulnerability Management Programme & Offensive Testing Cycle |
 | **Security & Privacy Constraints:**<br>**Chain** Vulnerability Identification & Testing Family — `CRA Annex I Part I (2)(a)+Part II (1),(3)` → `SO-D-02.1-002`, `SO-D-02.4-002` · `NIS 2 Art. 21(2)(e)` → `SO-D-02.1-003`, `SO-D-07.3-003` · `GDPR Art. 32(1)(d)` → `PO-D-02.1-001` · `CRA Annex I Part II (3)` → `SO-D-10.3-002` (co) → `PRIN-ENG-02` → CSF ID.RA-01, ID.AM-02, PR.PS-02, PR.PS-06, GV.SC-04, DE.CM-09 |
-| **Interfaces:** Security Engineer, SOC Analyst |
+| **Interfaces:** Vulnerability register; scanner and test-report intake |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder Operations & Security<br>• **Data Sources:** Vulnerability Register, Test Findings Record<br>• **Extraction Periodicity:** continuous / annual<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -503,7 +503,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must distribute software and AI model updates to the gate fleet only as verifiable signed artefacts, staged per site with automatic rollback on failed health checks, with security updates prioritized over functional releases. |
 | **Requirement Origin:** Release Operations Procedure & Field Fleet Programme |
 | **Security & Privacy Constraints:**<br>**NFR-RN27** Secure Update Distribution across Support Period — `CRA Annex I Part I (2)(c)+Part II (2),(7),(8)` → `SO-D-07.3-002`, `SO-D-02.2-002`, `SO-D-05.2-002` → `PRIN-ENG-02` → CSF ID.AM-02, GV.SC-03<br>**Chain** Secure-Use Advisories — `CRA Annex II §8` → `SO-D-08.1-002` → `PRIN-ENG-01` → CSF PR.AT-01 |
-| **Interfaces:** Release Engineer, Site Operations Technician |
+| **Interfaces:** Update distribution interface; fleet deployment console; advisory notices |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder Operations & Security, Airport Operators<br>• **Data Sources:** Release Calendar, Update Package Record, Deployment Status<br>• **Extraction Periodicity:** per release<br>• **Information Systems / Databases:** Internal Application Database, Release Store<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -516,7 +516,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must operate a publicly identifiable disclosure intake for security researchers, triage submissions through the vulnerability process, and publish advisories once fixes are available. |
 | **Requirement Origin:** Disclosure Policy & Security Researcher Community |
 | **Security & Privacy Constraints:**<br>**Chain** Coordinated Vulnerability Disclosure — `CRA Annex I Part II (4)-(6)+Art. 13(8),(17)` → `SO-D-02.3-002` · `NIS 2 Art. 21(2)(e)` → `SO-D-02.3-003` → `PRIN-ENG-02` → CSF ID.RA-01, GV.SC-04 |
-| **Interfaces:** Security Engineer, Compliance Analyst |
+| **Interfaces:** Disclosure intake channel; triage queue; publication view |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder Operations & Security<br>• **Data Sources:** Disclosure Intake Record, Advisory Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -533,7 +533,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must enforce blocking security checks on every release candidate — code scanning, dependency analysis, and secret detection — with override restricted to named approvers and every override recorded. |
 | **Requirement Origin:** Secure Development Lifecycle Policy & Release Operations Procedure |
 | **Security & Privacy Constraints:**<br>**NFR-RN20** Secure-by-Default Configuration & Reset — `GDPR Art. 25(2)` → `PO-D-03.4-001` · `CRA Annex I 2(b)+(c)` → `SO-D-03.4-002` → `PRIN-ENG-04` → CSF PR.PS-01<br>**Chain** Attack-Surface Limitation in Production — `CRA Annex I Part I (2)(j)` → `SO-D-07.1-002`, `SO-D-07.2-002` → `PRIN-ENG-02` → CSF PR.PS-06, GV.PO-02, PR.PS-01, PR.PS-02 |
-| **Interfaces:** Release Engineer, Security Engineer |
+| **Interfaces:** Pipeline gate console; build and release record view |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder Operations & Security<br>• **Data Sources:** Pipeline Gate Record, Override Record<br>• **Extraction Periodicity:** per release<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -546,7 +546,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must generate and maintain a software bill of materials for every release — including third-party and open-source components — retained per release and producible for conformity assessment. |
 | **Requirement Origin:** Conformity Assessment Requirement & Component Governance Programme |
 | **Security & Privacy Constraints:**<br>**Chain** SBOM Maintenance — `CRA Annex I Part II (1)+Art. 13(6)` → `SO-D-06.2-002` → `PRIN-ENG-05` → CSF ID.AM-02, GV.SC-04 |
-| **Interfaces:** Release Engineer, AI Governance Lead |
+| **Interfaces:** SBOM generation interface; component inventory view |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder Operations & Security, Suppliers & Assessors<br>• **Data Sources:** Component Inventory Record<br>• **Extraction Periodicity:** per release<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -559,7 +559,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must version every verification model with its lineage (training data reference, evaluation results) and support rollback to the previous model version within 30 minutes of a triggering quality or safety event. |
 | **Requirement Origin:** AI Model Lifecycle Procedure & Field Quality Escalations |
 | **Security & Privacy Constraints:**<br>**NFR-RN15** AI Model Resilience & Fail-Safe Reversion — `AI Act Art. 15(3)` → `SO-D-01.4-004` → `PRIN-ENG-04` → CSF PR.IR-03, PR.IR-04, PR.DS-11 |
-| **Interfaces:** Release Engineer, AI Governance Lead |
+| **Interfaces:** Model registry console; promotion and rollback controls |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder Operations & Security<br>• **Data Sources:** Model Version Record, Model Evaluation Record<br>• **Extraction Periodicity:** per model release<br>• **Information Systems / Databases:** Internal Application Database, Release Store<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -576,7 +576,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must maintain the AI risk-management file (continuous identification, evaluation, and treatment of risks across the lifecycle) and the complete conformity documentation set — technical file, instructions, and assessment records — kept current for the statutory retention period. |
 | **Requirement Origin:** High-Risk AI Conformity Programme & Notified Body Assessment |
 | **Security & Privacy Constraints:**<br>**Chain** AI Risk-Management & Documentation Family — `AI Act Art. 9` → `SO-D-02.1-004`, `SO-D-09.2-004` · `AI Act Art. 10` → `SO-D-05.1-004` · `AI Act Art. 15(1)` → `SO-D-07.1-004` · `AI Act Art. 11+Annex IV` → `SO-D-09.4-004` → `PRIN-ENG-05` → CSF GV.RM-01, GV.RM-06, ID.RA-03, ID.RA-04, PR.PS-06 |
-| **Interfaces:** AI Governance Lead, Compliance Analyst |
+| **Interfaces:** Risk-management file workspace; conformity documentation repository |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder AI Governance & Privacy, Suppliers & Assessors<br>• **Data Sources:** AI Risk File, Conformity Documentation Set<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -589,7 +589,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must continuously monitor verification accuracy against the quality baseline, alert on degradation beyond the agreed threshold, run quarterly fairness assessments across demographic groups with disparity reporting, and feed post-market data back into the risk file. |
 | **Requirement Origin:** Post-Market Monitoring Programme & Fairness Assurance Commitments |
 | **Security & Privacy Constraints:**<br>**NFR-RN24** AI Event Logging over Lifetime — `AI Act Art. 12(1)+Art. 19` → `SO-D-10.2-004`, `SO-D-05.2-004` → `PRIN-ENG-07` → CSF PR.PS-04, DE.CM-09, DE.AE-03<br>**NFR-RN25** AI Post-Market Monitoring Integration — `AI Act Art. 72` → `SO-D-10.1-004` → `PRIN-ENG-02` → CSF DE.CM-09, ID.IM-04<br>**NFR-RN15** AI Model Resilience & Fail-Safe Reversion — `AI Act Art. 15(3)` → `SO-D-01.4-004` → `PRIN-ENG-04` → CSF PR.IR-03, PR.IR-04, PR.DS-11 |
-| **Interfaces:** AI Governance Lead, SOC Analyst |
+| **Interfaces:** Monitoring dashboards; drift and fairness reporting; alerting interface |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder AI Governance & Privacy, Government Border Authorities<br>• **Data Sources:** Decision Metrics Store, Fairness Assessment Record<br>• **Extraction Periodicity:** continuous / quarterly<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -602,7 +602,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must support scheduled adversarial testing of the verification pipeline (presentation-attack and evasion exercises) and produce per-decision explainability output (confidence band and contributing factors) for officer review and oversight reporting. |
 | **Requirement Origin:** Adversarial Testing Cycle & Human-Oversight Obligation |
 | **Security & Privacy Constraints:**<br>**NFR-RN30** AI Transparency & Deployer Interpretability — `AI Act Art. 13` → `SO-D-09.1-004` → `PRIN-ENG-05` → CSF GV.OC-03, GV.RM-01<br>**Chain** AI Adversarial & Real-World Testing — `AI Act Art. 9(6)-(7)+Art. 15(4)-(5)+Art. 60` → `SO-D-02.4-004`, `SO-D-07.2-004`, `SO-D-10.3-004` → `PRIN-ENG-02` → CSF ID.RA-01, ID.RA-04, PR.PS-06, GV.SC-04 |
-| **Interfaces:** AI Governance Lead, Security Engineer, Border Control Officer |
+| **Interfaces:** Adversarial test harness interface; explainability artefact viewer |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder AI Governance & Privacy, SecureBorder Operations & Security<br>• **Data Sources:** Adversarial Test Record, Decision Explainability Record<br>• **Extraction Periodicity:** quarterly<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -619,7 +619,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must maintain the unified assessment record — privacy impact, fundamental-rights leg, AI risk file linkage, and enterprise risk analysis — as one evidence base with dual outputs, reviewed on material change and at least annually. |
 | **Requirement Origin:** Unified Assessment Approach & Annual Governance Cycle |
 | **Security & Privacy Constraints:**<br>**Chain** Unified Lifecycle Assessment Family (T-003) — `GDPR Art. 35` → `PO-D-09.2-001` · `CRA Art. 13(2)` → `SO-D-09.2-002` · `NIS 2 Art. 21(2)(a)` → `SO-D-09.2-003` · `AI Act Art. 9(1)` → `SO-D-09.2-004` → `PRIN-ENG-05` → CSF ID.RA-01, ID.RA-05, ID.RA-06, GV.RM-01, GV.RM-06, RS.AN-03<br>**Chain** Governance Policy Family — `GDPR Art. 24` → `PO-D-09.1-001` · `NIS 2 Art. 20` → `SO-D-09.1-003` · `NIS 2 Art. 21(2)(h)` → `SO-D-01.1-003` → `PRIN-ENG-05` → CSF GV.PO-01, GV.PO-02, GV.RM-04, GV.OV-03, PR.DS-01, PR.DS-02 |
-| **Interfaces:** Privacy Officer (DPO), AI Governance Lead, Compliance Analyst |
+| **Interfaces:** Assessment workbench; evidence collection view |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder AI Governance & Privacy, SecureBorder Executive Leadership<br>• **Data Sources:** Assessment Record, Risk Register<br>• **Extraction Periodicity:** annual / on change<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -632,7 +632,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must maintain vendor assessments covering security practices and component quality, record provenance for supplied hardware and software components, and track vendor findings to closure. |
 | **Requirement Origin:** Supplier Due Diligence Programme & Vendor Assessment Cycle |
 | **Security & Privacy Constraints:**<br>**Chain** Vendor & Supply-Chain Family (T-004) — `GDPR Art. 28` → `PO-D-06.1-001`, `PO-D-06.3-001` · `CRA Annex I Part I (2)` → `SO-D-06.1-002` · `NIS 2 Art. 21(2)-(3)` → `SO-D-06.1-003`, `SO-D-06.3-003`, `SO-D-07.1-003` → `PRIN-ENG-05` → CSF GV.SC-01, GV.SC-02, GV.SC-03, GV.SC-04, ID.RA-02 |
-| **Interfaces:** Compliance Analyst, CISO |
+| **Interfaces:** Vendor assessment console; component provenance register |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder Operations & Security, Suppliers & Assessors<br>• **Data Sources:** Vendor Assessment Record, Component Provenance Record<br>• **Extraction Periodicity:** annual / per vendor<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -645,7 +645,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must produce compliance reports on request within the committed service window and track internal and external audit findings to closure. |
 | **Requirement Origin:** Certified Management System Cycle & Authority Inspection Readiness |
 | **Security & Privacy Constraints:**<br>**Chain** Documentation & Compliance Family — `CRA Art. 13+Annex VII` → `SO-D-09.4-002`, `SO-D-10.2-002` · `GDPR Art. 5(2)+Art. 24` → `PO-D-10.2-001`, `PO-D-10.3-001` · `NIS 2 Art. 21(2)(f)` → `SO-D-10.3-003` → `PRIN-ENG-05` → CSF GV.OC-03, GV.OV-01, GV.OV-03, GV.PO-02, ID.AM-03, PR.PS-04 |
-| **Interfaces:** Compliance Analyst, CISO |
+| **Interfaces:** Compliance dossier builder; audit evidence repository; report submission interface |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder Executive Leadership, Suppliers & Assessors<br>• **Data Sources:** Compliance Report Record, Audit Finding Record<br>• **Extraction Periodicity:** on demand / annual<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Should |
@@ -662,7 +662,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must track delivery of the annual security and privacy awareness programme to the whole workforce, recording completion and overdue status per person. |
 | **Requirement Origin:** Annual Awareness Programme & Workforce Compliance Tracking |
 | **Security & Privacy Constraints:**<br>**Chain** Awareness & Hygiene Training — `NIS 2 Art. 21(2)(g), Art. 21(3)` → `SO-D-08.1-003`, `SO-D-08.2-003` → `PRIN-ENG-01` → CSF PR.AT-01, PR.PS-01 |
-| **Interfaces:** HR, Compliance Analyst |
+| **Interfaces:** Training delivery interface; completion register |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder Operations & Security<br>• **Data Sources:** Training Assignment Record, Completion Record<br>• **Extraction Periodicity:** annual<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -675,7 +675,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **Description:** The system must track role-specific competence delivery — oversight tools and override logic for border control officers, AI limitations and escalation for oversight staff, and board-level briefings — with completion recorded before role activation. |
 | **Requirement Origin:** Human-Oversight Obligation & Role Activation Workflow |
 | **Security & Privacy Constraints:**<br>**NFR-RN29** Human Oversight Effectiveness — `AI Act Art. 14` → `SO-D-08.2-004` → `PRIN-ENG-01` → CSF PR.AT-02, PR.AT-01, GV.RR-02 |
-| **Interfaces:** HR, AI Governance Lead |
+| **Interfaces:** Competence programme interface; oversight eligibility view |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder AI Governance & Privacy, Government Border Authorities<br>• **Data Sources:** Competence Curriculum Record, Role Activation Record<br>• **Extraction Periodicity:** on assignment<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
 | **Priority:** Must |
@@ -816,5 +816,5 @@ flowchart LR
 | Version | Date | Author | Description of Changes |
 |---|---|---|---|
 | **1.0.0** | 2026-09-23 | Requirements Engineering Agent | Initial baseline elicitation (GPTools E1.1 structural model): 11 requirement groups, 28 Level-1 capabilities, 10 measurable NFRs. |
-| **3.0.0** | 2026-09-29 | Requirements Engineering Agent | Round 2 synthesis (ADR-005, `synthesis_rounds/ROUND2_REGISTER.md`): `R9.3` AI adversarial testing elevated SHOULD → MUST per AI Act Art. 9(6)-(7) (D3); Doc02 matrix `R7.3` aligned to the MUST already carried by Table 6. |
 | **2.0.0** | 2026-09-28 | Requirements Engineering Agent | Round 1 synthesis (ADR-005, `synthesis_rounds/ROUND1_REGISTER.md`, 20/20 accepts): 20 new security & privacy constraints `RN11`–`RN30` absorbed in-card (RN13 cross-cutting in Table 7), 51 regulatory chain rows bound to existing functional cards, tensions T-001..T-004 realized; 28 requirement cards, 28 PUCs. |
+| **3.0.0** | 2026-09-29 | Requirements Engineering Agent | Round 2 synthesis (ADR-005, `synthesis_rounds/ROUND2_REGISTER.md`): `R9.3` AI adversarial testing elevated SHOULD → MUST per AI Act Art. 9(6)-(7) (D3); Doc02 matrix `R7.3` aligned to the MUST already carried by Table 6. |

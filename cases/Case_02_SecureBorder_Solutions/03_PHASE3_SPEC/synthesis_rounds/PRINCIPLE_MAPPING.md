@@ -63,7 +63,7 @@
 
 | Where | Realization | RN | State |
 |---|---|---|---|
-| `R1.1` | Raw captures discarded on template extraction; templates de-linked (V0, W1) + chain rows | chain | Proposed (chain rows) |
+| `R1.1` | Raw captures discarded on template extraction; templates de-linked (V0, W1) + chain rows | chain | Bound (chain rows) |
 | `R4.1` | Exports limited to the requester's own data (T-002: token-only records) | RN28 | Bound |
 
 **Verdict: followed.**
@@ -130,7 +130,7 @@ One row per (requirement × principle) binding with the concrete mechanism and c
 
 | Surface | Count | Notes |
 |---|---|---|
-| Principles followed (pending R1) | 7/7 | every principle has ≥1 realization; none without a carrier |
+| Principles followed | 7/7 | every principle has ≥1 realization; none without a carrier |
 | Requirements realizing ≥1 principle | 27/28 | `R11.1` realized via chain row (hygiene/training objectives) |
 | Round-1 accepted constraints binding principle chains | 20 RNs | RN11–RN30 — see [`ROUND1_REGISTER.md`](ROUND1_REGISTER.md) |
 

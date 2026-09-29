@@ -76,7 +76,7 @@
 | `PO-D-05.1-001` | GDPR: minimization — adequate, relevant, necessary only | `R1.1` (functional: raw capture discarded; chain row) | DM | **Accepted R1 (chain row)** | R1.1 |
 | `SO-D-05.1-002` | CRA: product data limited to what is necessary | `R1.1` (chain row) | DM | **Accepted R1 (chain row)** | R1.1 |
 | `SO-D-05.1-004` | AI Act: training/validation/test data governance (Art. 10) | `R9.1` (chain row) | DM | **Accepted R1 (chain row)** | R9.1 |
-| `PO-D-05.2-001` | GDPR: retention no longer than necessary | `R1.1`, `R4.1` (chain row) | LE | **Accepted R1 (chain row)** | R1.1, R4.1 |
+| `PO-D-05.2-001` | GDPR: retention no longer than necessary | `R1.1`, `R1.3` (chain row) | LE | **Accepted R1 (chain row)** | R1.1, R1.3 |
 | `SO-D-05.2-002` | CRA: updates and advisories available across support period | `R7.2` (RN27 co-driver) | AS | **Accepted R1 (RN27 co-driver)** | RN27 |
 | `SO-D-05.2-004` | AI Act: Art. 12(1) logs kept ≥ 6 months, supplied on demand | `R1.2`, `R9.2` (RN24 co-driver) | V | **Accepted R1 (RN24 co-driver, T-002)** | RN24 |
 | `PO-D-05.3-001` | GDPR: erasure without undue delay (Art. 17 grounds a–f) | `R4.1` (RN28 co-driver) | LE | **Accepted R1 (RN28 co-driver, T-002)** | RN28 |
@@ -131,10 +131,10 @@
 | `SO-D-09.1-002` | CRA: open-source software steward cybersecurity policy | — | — | **N/A** (SecureBorder is not an open-source steward) | — |
 | `SO-D-09.1-003` | NIS 2: management body approves and oversees risk measures | `R10.1` (chain row) | V | **Accepted R1 (chain row)** | R10.1 |
 | `SO-D-09.1-004` | AI Act: transparency for deployers to interpret output (Art. 13) | `R9.3` (RN30) | V | **Accepted R1 (RN30)** | RN30 |
-| `PO-D-09.2-001` | GDPR: DPIA before high-risk processing (Art. 35) | `R10.1` (chain row, T-003) | V | **Proposal R1 (chain row, T-003)** | R10.1 |
-| `SO-D-09.2-002` | CRA: cybersecurity risk assessment documented + updated (Art. 13(2)) | `R10.1` (chain row, T-003) | V | **Proposal R1 (chain row, T-003)** | R10.1 |
-| `SO-D-09.2-003` | NIS 2: continuous risk-analysis policies | `R10.1` (chain row, T-003) | V | **Proposal R1 (chain row, T-003)** | R10.1 |
-| `SO-D-09.2-004` | AI Act: risk-management system established and maintained (Art. 9) | `R10.1`, `R9.1` (chain row, T-003) | V | **Proposal R1 (chain row, T-003)** | R10.1, R9.1 |
+| `PO-D-09.2-001` | GDPR: DPIA before high-risk processing (Art. 35) | `R10.1` (chain row, T-003) | V | **Accepted R1 (chain row, T-003)** | R10.1 |
+| `SO-D-09.2-002` | CRA: cybersecurity risk assessment documented + updated (Art. 13(2)) | `R10.1` (chain row, T-003) | V | **Accepted R1 (chain row, T-003)** | R10.1 |
+| `SO-D-09.2-003` | NIS 2: continuous risk-analysis policies | `R10.1` (chain row, T-003) | V | **Accepted R1 (chain row, T-003)** | R10.1 |
+| `SO-D-09.2-004` | AI Act: risk-management system established and maintained (Art. 9) | `R10.1`, `R9.1` (chain row, T-003) | V | **Accepted R1 (chain row, T-003)** | R10.1, R9.1 |
 | `PO-D-09.4-001` | GDPR: records of processing activities (Art. 30) | `R4.2` (functional — the card is the RoPA function) | V | **Accepted R1 (chain row)** | R4.2 |
 | `SO-D-09.4-002` | CRA: technical documentation before placing on market (Art. 13) | `R10.3` (chain row) | V | **Accepted R1 (chain row)** | R10.3 |
 | `SO-D-09.4-003` | NIS 2: Member States encourage use of standards | — | — | **N/A** (addressee: Member States) | — |
@@ -152,7 +152,7 @@
 | `SO-D-10.2-002` | CRA: technical documentation maintained across support period | `R10.3` (chain row) | V | **Accepted R1 (chain row)** | R10.3 |
 | `SO-D-10.2-004` | AI Act: automatic event logging over lifetime (Art. 12) | `R1.2`, `R9.2` (RN24 driver) | V | **Accepted R1 (RN24, T-002)** | RN24 |
 | `PO-D-10.3-001` | GDPR: regular testing/assessment of measures (D-10 slice) | `R10.3` (chain row) | V | **Accepted R1 (chain row)** | R10.3 |
-| `SO-D-10.3-002` | CRA: effective and regular product testing; reports in documentation | `R9.3`, `R7.1` (chain row) | V | **Accepted R1 (chain row)** | R9.3, R7.1 |
+| `SO-D-10.3-002` | CRA: effective and regular product testing; reports in documentation | `R7.1` (chain row) | V | **Accepted R1 (chain row)** | R7.1 |
 | `SO-D-10.3-003` | NIS 2: policies to assess effectiveness of risk measures | `R10.3` (chain row) | V | **Accepted R1 (chain row)** | R10.3 |
 | `SO-D-10.3-004` | AI Act: testing to identify targeted risk-management measures | `R9.3` (chain row) | V | **Accepted R1 (chain row)** | R9.3 |
 

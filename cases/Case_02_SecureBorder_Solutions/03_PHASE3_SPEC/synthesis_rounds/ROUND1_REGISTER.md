@@ -99,7 +99,7 @@ Each proposal: EARS constraint (altitude L2), risk addressed, Volere fit criteri
 - **EARS:** When an incident is handled, the system shall support and record closure across all six lifecycle actions — prevention, detection, analysis, containment, response, and recovery — with CSIRT-ready evidence.
 - **Risk:** partial incident handling leaves root causes unaddressed; evidence gaps vs CSIRT.
 - **Fit criterion:** 100% of closed incidents have evidence for all six actions. **Verification:** `INSPECT`.
-- **Chain:** NIS 2 Art. 21(2)(c) → `SO-D-04.1-003`, `SO-D-04.2-003` → PRIN-ENG-02 → CSF RS.MA-01, RS.AN-03.
+- **Chain:** NIS 2 Art. 21(2)(b) + Art. 6(8) → `SO-D-04.1-003`, `SO-D-04.2-003` → PRIN-ENG-02 → CSF RS.MA-01, RS.AN-03.
 - **Carriers:** `R5.2`, `R5.3`.
 
 ### RN24 — AI Event Logging over Lifetime (MUST; T-002 leg)

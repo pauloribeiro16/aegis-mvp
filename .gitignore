@@ -7,3 +7,10 @@ __pycache__/
 _audit_input.jsonl
 _t/
 scratch/
+
+# One-shot generation scripts and their intermediates. These are working
+# material, never deliverables: they are written at the repo root, are not
+# referenced by any script or document, and self-declare "deleted after run".
+# Left untracked, a `git add -A` would commit them.
+_tmp_*.py
+_tmp_*.json

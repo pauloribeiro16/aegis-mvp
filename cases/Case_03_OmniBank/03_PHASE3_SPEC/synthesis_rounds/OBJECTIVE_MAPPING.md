@@ -4,6 +4,10 @@
 > **State legend:** `Accepted R1 (RNxx)` = new constraint accepted in Round 1 · `Accepted R1 (chain row)` = realized by an existing V0 functional card, chain attached in Round 1 · no-carrier/N-A = recorded decisions.
 > **Verdicts:** Round 1 CONVERGED (16/16 + 92/92 accepts by client directive, 2026-09-29) — recorded in [`ROUND1_REGISTER.md`](ROUND1_REGISTER.md).
 
+> **Coverage-granularity note (recorded debt, ADR-007 D2/D3).** The `Accepted R1` verdicts above assert coverage at **carrier-linkage** granularity: the objective id appears in a requirement's chain. They are **not** discharge-verified — no per-objective check has confirmed that the carriers' Volere fit criteria reconstitute the objective's Phase 2 Verification Criteria, nor that every leg of its Operational Statement is carried. A leg-level audit has been performed in Case_01 only, where it moved 20 of 26 rows from "covered" to "partially covered" with named carve-outs. Treat the N/A and organizational rows as the *only* verdicts here resting on more than linkage, and route any uncarried PROCESS/CAPABILITY leg to the organizational deliverable (`Doc03_Organizational_Requirements.md`, ADR-008). Enforced mechanically by `python scripts/check_traceability.py --case Case_03_OmniBank` (T5 reports drivers whose declared carrier does not cite them back).
+
+> **Numbering note.** Phase 2 numbers objectives *compactly* within each sub-domain: regulations in the canonical order GDPR → CRA → NIS 2 → DORA → AI Act, numbered `001…n` over those actually present. Where a sub-domain lacks an earlier regulation, every later suffix shifts down. Phase 3 chains are re-anchored against this numbering (`scripts/reanchor_chains.py`); a citation must never be assumed to follow a fixed five-slot convention.
+
 ## D-01 — Data Protection & Encryption
 
 | Objective | Summary | Functional carrier | Skill | State vs V0 | Action / Round |

@@ -3,7 +3,7 @@
 
 ## §1 Correspondence Grid (objective × UC package)
 
-Columns are the functional packages (`R1`–`R8`); cells list the UCs `{n.m}` where the objective binds and the `RN` carrying it. UC-level detail (what each objective demands there) is in §2.
+Columns are the functional packages (`R1`–`R8`); cells list the UCs `{n.m}` where the objective binds and the `RN` carrying it. UC-level detail (what each objective demands there) is in §2. Per-objective discharge verdicts (fully/partially covered, carve-outs) live in [`OBJECTIVE_MAPPING.md`](OBJECTIVE_MAPPING.md) (ADR-007 vocabulary); §2 card `State` cells record the per-UC binding, not the objective's global discharge.
 
 | Objective | R1 | R2 | R3 | R4 | R5 | R6 | R7 | R8 |
 |---|---|---|---|---|---|---|---|---|
@@ -14,11 +14,12 @@ Columns are the functional packages (`R1`–`R8`); cells list the UCs `{n.m}` wh
 | `PO-D-01.4-001` (GDPR) (accuracy & rectification) | `{1.2}` (R1.2 Must — D3, no RN) | — | — | — | — | — | — | — |
 | `SO-D-01.4-002` (CRA) (integrity of data & commands) | — | — | — | — | — | `{6.2}` RN16 | `{7.1}` `{7.2}` RN15 | — |
 | `SO-D-03.1-001` (GDPR) (rights-requester identity verification) | — | — | — | — | — | — | — | `{8.1}` `{8.2}` RN27 |
-| `SO-D-03.1-002` (CRA) (identity/credential management) | `{1.1}` `{1.3}` RN11 | — | — | — | — | — | — | — |
+| `SO-D-03.1-002` (CRA) (identity/credential management) | `{1.1}` `{1.3}` RN10, RN11 | `{2.2}` RN12 | — | — | — | — | — | `{8.1}` `{8.2}` RN11 |
 | `SO-D-03.2-002` (CRA) (protection from unauthorised access) | `{1.2}` RN9 (pre) | `{2.1}` `{2.3}` `{4.3}` RN9 | `{3.1}` RN9 | `{4.1}` RN9 (pre) | — | `{6.1}` RN9 (pre) | — | — |
 | `SO-D-03.3-002` (CRA) (authenticated & authorized access) | — | `{2.2}` RN12 | `{3.1}` `{3.2}` RN12 (ext) | — | — | — | — | `{8.1}` `{8.3}` RN12 (ext) |
 | `SO-D-03.4-001` (CRA) (by-default only necessary data) | `{1.1}` RN19 | — | — | — | — | — | — | — |
 | `SO-D-03.4-002` (CRA) (secure-by-default, resettable) | — | `{2.1}` RN28 | `{3.1}` RN28 | — | — | — | — | — |
+| `PO-D-05.1-001` (GDPR) (minimization & purpose limitation) | `{1.1}` RN19 | `{2.3}` RN22 | — | — | — | `{6.1}` RN22 | — | — |
 | `PO-D-05.2-001` (GDPR) (retention limitation) | — | — | — | — | `{5.1}` RN25 | — | — | — |
 | `PO-D-05.3-001` (GDPR) (erasure on request) | — | — | — | — | — | — | — | `{8.2}` `{8.3}` RN21 (co) |
 | `SO-D-05.3-002` (CRA) (permanent removal of product data) | — | — | — | — | — | — | — | `{8.3}` RN30 |
@@ -26,9 +27,12 @@ Columns are the functional packages (`R1`–`R8`); cells list the UCs `{n.m}` wh
 | `SO-D-05.1-002` (CRA) (CRA twin, data limitation) | — *(realized functionally by RN19/RN25; no direct chain)* | — | — | — | — | — | — | — |
 | `SO-D-07.2-002` (CRA) (attack-surface limitation) | — | — | — | `{4.1}` RN14 (ext) `{4.2}` `{6.1}` RN17 | `{5.1}` RN13 `{5.2}` RN14 | — | — | — |
 | `SO-D-07.1-002` (CRA) (Annex I umbrella) | — *(umbrella; direct chains re-driven by ADJ-4/ADJ-6)* | — | — | — | — | — | — | — |
+| `PO-D-07.1-001` (GDPR) (DPbD measures) | `{1.1}` RN19 · `{1.2}` RN23 (slices) | — | — | — | — | — | — | — |
 | `SO-D-08.1-002` (CRA) (secure-use instructions) | — | — | — | — | — | — | — | — *(RN29, SHOULD: documentation coverage — P-04 accepted R1)* |
-| `PO-D-09.4-001` (GDPR) (Art. 30 records) | `{1.2}` RN26 | — | — | — | — | — | — | — |
+| `PO-D-09.4-001` (GDPR) (Art. 30 records — R2: register → organizational; RN26 supporting evidence) | `{1.2}` RN26 | — | — | — | — | — | — | — |
 | `SO-D-10.1-002` (CRA) (records & monitors activity) | `{1.1}` `{1.3}` RN18 | `{2.1}` `{2.2}` `{2.3}` RN18 | `{3.1}` `{3.2}` RN18 | `{4.3}` RN18 | — | `{6.1}` RN18 | `{7.1}` `{7.2}` RN18 | `{8.2}` `{8.3}` RN18 |
+| `SO-D-04.1-002` (CRA) (activity recording — R2: monitoring/triage → organizational lane) | `{1.1}` `{1.3}` RN18 | `{2.1}` `{2.2}` `{2.3}` RN18 | `{3.1}` `{3.2}` RN18 | `{4.3}` RN18 | — | `{6.1}` RN18 | `{7.1}` `{7.2}` RN18 | `{8.2}` `{8.3}` RN18 |
+| `SO-D-04.4-002` (CRA) (recovery measures, RPO) | — *(RN5 — V0 NFR, no UC binding)* | — | — | — | — | — | — | — |
 
 ### Principles (transversal)
 
@@ -67,7 +71,7 @@ See [`ROUND1_REGISTER.md`](ROUND1_REGISTER.md) for formulations and control sele
 | Objective / Principle | Reg | What it demands here | Skill | RN | State |
 |---|---|---|---|---|---|
 | `PO-D-01.1-001` | GDPR | Profile personal data at rest appropriately protected | TB | RN23 | Covered |
-| `PO-D-09.4-001` | GDPR | Profile modifications emit a privacy audit record (Art. 30 accountability) | V | RN26 | Covered |
+| `PO-D-09.4-001` | GDPR | Profile modifications emit a privacy audit record | V | RN26 | Supporting evidence (R2: Art. 30 register → organizational lane) |
 | `PO-D-01.4-001` | GDPR | Inaccurate personal data rectifiable without delay (profile editing is the mechanism) | V | — | Covered (R1.2 Must, D3) |
 | `PRIN-ENG-01` | — | Profile records protected within the trust boundary | TB | RN23 | Bound |
 
@@ -243,11 +247,11 @@ See [`ROUND1_REGISTER.md`](ROUND1_REGISTER.md) for formulations and control sele
 | Surface | Count | Notes |
 |---|---|---|
 | UC cards | 20/20 | every use case has an explicit correspondence section; none silent (`{U.C. 8.3}` added in Round 1) |
-| Objectives with UC bindings | 19 | rows in §1 with ≥1 binding or cross-cutting cell — 16 prior + 3 added in Round 1 (`SO-D-03.1-001`, `SO-D-03.4-002`, `SO-D-05.3-002`) |
-| Objectives without UC binding | 43 | 31 no-functional-carrier + 2 design guidance + 2 N/A + 8 covered without a dedicated UC cell (transversal, umbrella, functional-slice, or documentation carriers) — verdicts in `OBJECTIVE_MAPPING.md` |
+| Objectives with UC bindings | 22 | rows in §1 with ≥1 binding or cross-cutting cell — R2 additions: `PO-D-05.1-001`, `PO-D-07.1-001`, `SO-D-04.1-002`; co-driver cells completed on `SO-D-03.1-002` |
+| Objectives without UC binding | 40 | 31 no-functional-carrier + 2 design guidance + 3 N/A + 4 covered-family rows without a dedicated UC cell (functional-slice, umbrella, documentation, V0-NFR carriers) — verdicts in `OBJECTIVE_MAPPING.md` |
 | Re-drives | ADJ-1…ADJ-9 | accepted R1; pending markers removed from this matrix |
 | New proposals | 4 | accepted R1: P-01→`RN27`, P-02→`RN28`, P-03→`R8.3`/`RN30` (+`{U.C. 8.3}`), P-04→`RN29` |
 | Most-covered UC | `{U.C. 1.1}` (5 rows) | authentication surface |
 | Least-covered UC | `{U.C. 4.2}` (1 row) | throttling only — matches the V0 "no security surface" reading |
 
-**Read rule:** every binding above traces to a chain that satisfies the anchor-integrity rule (chain anchors ∈ the cited objective's published control set); Round 1 verdicts are recorded in [`ROUND1_REGISTER.md`](ROUND1_REGISTER.md); all bindings above are accepted and applied in `Doc01`/`Doc02` 4.0.0.
+**Read rule:** every binding above traces to a chain that satisfies the anchor-integrity rule (chain anchors ∈ the cited objective's published control set); Round 1 verdicts are recorded in [`ROUND1_REGISTER.md`](ROUND1_REGISTER.md); all bindings above are accepted and applied in `Doc01`/`Doc02` 4.0.0. Round 2 (2026-09-28, ADR-007) re-verdicted per-objective discharge in `OBJECTIVE_MAPPING.md` — the per-UC bindings above are unaffected.

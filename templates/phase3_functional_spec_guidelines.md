@@ -275,6 +275,35 @@ The V0 baseline is locked to protect elicitation from pre-baked security (§2.3)
 
 ---
 
+### 3.5 Objective Fulfillment Semantics & the Organizational Lane (ADR-007 / ADR-008)
+
+Mapping a Phase 2 objective to a carrier requirement is a **fulfillment claim**, not a bookkeeping link. Three rules make the claim verifiable; a fourth routes what no product requirement can carry.
+
+**Rule 1 — Congruence (when objectives may share one requirement).** A requirement (one EARS condition→response pair) may cite multiple Phase 2 objectives as drivers **only if every cited objective is satisfied by that same condition→response**. Objectives demanding different system responses get separate requirements. ✅ One requirement carries the GDPR and CRA twins for the transport-encryption leg, with the CRA twin's attack-surface leg discharged by the attack-surface carriers (cross-reference in the matrix). ❌ Absorbing a co-driver "by twin symmetry" because both objectives publish identical control anchors — identical anchors constrain the fourth chain link (controls), never the first (behavior).
+
+**Rule 2 — Discharge (what "covered" means).** An objective is **fully covered** only when the union of its carriers' Volere fit criteria reconstitutes the objective's Phase 2 Verification Criteria **and** every demand leg of its Operational Statement is carried, out-of-scale-recorded (with warrant), or explicitly carved out. ❌ Naming an RN next to an objective and writing "Covered".
+
+**Rule 3 — The matrix is the discharge graph; card chains cite primary drivers.** Cross-carrier fulfillment is recorded in the case's `synthesis_rounds/OBJECTIVE_MAPPING.md` (`VC discharge` column), not by stuffing every card chain (§3.3 economy: typically 1–3 constraints per card). Re-anchoring a chain to a different driver objective is a baseline change (round verdict, ADR-005) and **must re-examine the frozen wording/fit criterion against the new driver's demands** — wording is never grandfathered across a driver swap.
+
+**Verdict vocabulary (matrix State column):** `Fully covered` · `Partially covered (functional leg + explicit carve-out)` · `No functional carrier (organizational)` · `Design guidance` · `N/A`. A partial verdict names the carried legs, the discharging fit criteria, and the carve-out route of every uncarried leg.
+
+**Rule 4 — Explicit carve-outs; the organizational lane is the sink.** A leg no product requirement carries is routed to exactly one of: (a) the organizational lane → `Doc03_Organizational_Requirements.md` (ADR-008); (b) out-of-scale, with a company-scale warrant (§2.4 / R13); (c) design guidance (Phase 4 context); (d) a round proposal — a new or adjusted requirement, pending the client verdict (ADR-005).
+
+**Round proposal payload addition:** each proposal carries a **discharge statement** — which legs of each cited driver this requirement's fit criterion discharges.
+
+#### 3.5.1 Organizational Requirements (Doc03, PROCESS lane — ADR-008)
+
+Objectives and legs whose realization class is PROCESS/CAPABILITY (ADR-003) derive into the case's `03_PHASE3_SPEC/Doc03_Organizational_Requirements.md` — same derivation machinery, organizational subject:
+
+- **EARS organizational templates:** `The organization shall <response>.` · `When <trigger>, the organization shall <response>.` · `While <state>, the organization shall <response>.` · `If <condition>, then the organization shall <response>.` · `Where <activity exists>, the organization shall <response>.` — one congruent demand set per requirement (Rule 1 unchanged).
+- **Card anatomy (per requirement):** ID `ORG-D-XX.Y-NNN` + active-verb name; EARS statement; Requirement Origin (real stakeholder/business/regulatory event — never internal categories); Volere fit criterion; verification method (`INSPECT`/`DEMONSTRATE`/`ANALYZE` dominate; `TEST` where automated evidence exists); Dependencies (Stakeholders, Owner — from the Phase 2 Governance & Stakeholder Matrix, Cadence, Information Systems [technology-neutral or empty], Preceding Requirements [empty by default]); Priority (MoSCoW from regulatory priority).
+- **Chain:** `regulation article → Phase 2 objective → (principle) → organizational control anchor`. Primary anchors: NIST CSF 2.0 GOVERN function (`baseline/CONTROLS/NIST_CSF_2.0/GOVERN/`) and organizational categories of the other CSF functions; advisory under R2b agent discretion: ISO/IEC 27001:2022 Annex A organizational controls (`baseline/CONTROLS/ISO_27001_2022/A5_ORGANIZATIONAL/`), ENISA NIS2 baseline (`baseline/CONTROLS/ENISA/NIS2_BASELINE/`), BSI IT-Grundschutz OPS layer. PF 1.1 accompanies GDPR-derived obligations only. No invented anchors (R2).
+- **Specificity stays at L2** (§2.5): no invented operational parameters — values come from the regulation, a cited source, or a risk assessment.
+- **Doc03 blueprint:** Executive summary → per-domain sections `D-01`…`D-10` (one card per requirement) → coverage linkage table (objective / carve-out leg → ORG requirement → verification method → owner) → MoSCoW summary → Version History. Content enters through the ADR-005 round cycle; the Part 1 Exit Gate G1 evidence surface extends to the organizational mapping (ADR-008 D7).
+- ✅ `ORG-D-04.3-001` **Notify the supervisory authority of personal-data breaches within 72 hours** · ❌ `Breach Notification Process` (nominalization, §2.2) · ❌ `The system shall notify the authority` (product subject — an organizational duty).
+
+---
+
 ## 4. Deliverable Doc02: System Use Cases (E1.2 Standard)
 
 ### 4.1 Structural Blueprint

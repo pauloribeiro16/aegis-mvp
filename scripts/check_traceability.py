@@ -1,0 +1,536 @@
+#!/usr/bin/env python3
+"""Referential-integrity checker for the case pipeline (read-only, report-only).
+
+Complements ``doc_lint.py``, which enforces document *hygiene* (R11/R12 + control
+paths).  That lint cannot see the defect class where a requirement cites a Phase 2
+objective that does not exist, a totals table that does not sum, or an Exit Gate
+that certifies files which are absent.  Measured on Case_03 (2026-09-29):
+``doc_lint --strict`` returned 0 findings while 23 objective IDs cited in the
+delivered Doc01 resolved to nothing and 41 claimed carriers were absent from it.
+
+Checks
+------
+  T1  ID resolution        every cited ``PO-/SO-/AG-/ORG-/RN/R<TC>`` resolves
+                           against the case's own Phase 1/2/3 artefacts
+  T2  Regulatory coherence  for every chain segment ``<law> -> <objective>``, the
+                           regulation recorded for that objective in Phase 2
+                           matches the cited law
+  T3  Totals arithmetic     every ``| label | N |`` ledger row whose siblings share
+                           a stated total; and every ``N/M covered``-style claim
+                           does not exceed its own arithmetic ceiling
+  T4  Gate evidence         every file cited as G1-G6 evidence exists
+  T5  Driver symmetry       every driver the coverage matrix binds to a carrier is
+                           cited back by that carrier; every driver without a
+                           carrier carries an explicit verdict
+
+Scope: ``cases/Case_*/`` only — these are the artefacts that participate in the
+chain.  Governance (``AGENTS.md``, ``docs/decisions/``) legitimately talks about
+IDs generically and is out of scope.
+
+Usage::
+
+    python scripts/check_traceability.py                # human report, exit 0
+    python scripts/check_traceability.py --strict       # exit 1 on any finding
+    python scripts/check_traceability.py --case Case_03_OmniBank
+    python scripts/check_traceability.py --report _traceability.md
+
+Idempotent: reads the tree; writes nothing unless ``--report`` is given.
+"""
+
+from __future__ import annotations
+
+import argparse
+import io
+import re
+import sys
+from pathlib import Path
+from typing import Iterator
+
+REPO = Path(__file__).resolve().parent.parent
+CASES = REPO / "cases"
+
+# ---------------------------------------------------------------- ID grammars
+
+RE_OBJECTIVE = re.compile(r"\b(?:PO|SO)-D-\d\d\.\d-\d{3}\b")
+RE_GOAL = re.compile(r"\bAG-D-\d\d\.\d-\d{3}\b")
+RE_ORG = re.compile(r"\bORG-D-\d\d\.\d-\d{3}\b")
+RE_PRINCIPLE = re.compile(r"\bPRIN-ENG-\d{2}\b")
+RE_RN = re.compile(r"\bRN\d{1,3}\b")
+RE_CARD = re.compile(r"(?<![A-Za-z0-9])R(\d{1,2})\.(\d{1,2})(?![0-9.])")
+RE_UC = re.compile(r"\{U\.C\.\s*(\d{1,2})\.(\d{1,2})\}")
+RE_SECTION = re.compile(r"^##\s+(.*)$")
+HISTORY_SECTION = re.compile(r"version history|changelog|hist[oó]rico", re.IGNORECASE)
+
+# Law tokens as they appear on the left of a chain arrow.  Ordered longest-first
+# so "AI Act" wins over a bare "Act".
+RE_LAW = re.compile(
+    r"(?P<law>GDPR|CRA|NIS\s*2|AI\s*Act|DORA|NIS2|AI_Act)"
+)
+# A constraint may cite several laws jointly against a set of drivers —
+#   `GDPR Art. 5(1)(f)` · `CRA Annex I (2)(f)` · `DORA Art. 9` → `PO-…-001`/`SO-…-003`
+# which is legitimate.  A segment is a *run* of laws terminated by one arrow and
+# one driver set; the check is set-based (every law needs a driver of its own
+# regulation), never 1:1 per token.  A segment boundary is '|', '·' or '<'; a
+# law with no arrow in its run governs nothing.  The driver set may be one
+# backticked span (`A, B`) or several adjacent ones (`A`/`B`) — both are read.
+RE_SEGMENT = re.compile(
+    r"(?P<laws>(?:GDPR|CRA|NIS\s*2|AI[\s_]?Act|DORA)[^|·<]{0,70}?)+"
+    r"(?:[→>]{1,2}|-->)"
+    r"\s*(?P<objs>(?:`(?:PO|SO)-D-\d\d\.\d-\d{3}`[\s,/]*)+)"
+)
+RE_LAW_IN_RUN = re.compile(r"GDPR|CRA|NIS\s*2|AI[\s_]?Act|DORA")
+RE_OBJ_IN_SET = re.compile(r"(?:PO|SO)-D-\d\d\.\d-\d{3}")
+
+CANON_LAW = {
+    "GDPR": "GDPR",
+    "CRA": "CRA",
+    "NIS 2": "NIS2",
+    "NIS2": "NIS2",
+    "AI Act": "AI_Act",
+    "AI_Act": "AI_Act",
+    "DORA": "DORA",
+}
+# Phase 2 writes the regulation column as a markdown-bold token.
+RE_REG_CELL = re.compile(r"\*\*(GDPR|CRA|NIS\s*2|AI\s*Act|AI_Act|DORA)\*\*")
+
+LEDGER_TOTAL = re.compile(r"\|\s*\**Total\w*\**\s*\|\s*\**(\d+)\**\s*\|", re.IGNORECASE)
+# Only a *carried/covered* claim is bounded by the non-carrier rows.  "N/N placed"
+# and "N/N objectives" describe mapping completeness, where N/N is correct and
+# expected — matching those would flag every matrix in the repository.
+CLAIM_N_OF_M = re.compile(
+    r"\b(\d{1,4})\s*/\s*(\d{1,4})\b(?=[^0-9/]{0,40}\b(?:carried|covered)\b)", re.IGNORECASE
+)
+
+GATE_ROW = re.compile(r"^\|\s*\**G([1-6])\**\s*\|(.*)$")
+
+
+class Finding:
+    __slots__ = ("path", "line_no", "check", "text")
+
+    def __init__(self, path: Path, line_no: int, check: str, text: str) -> None:
+        self.path, self.line_no, self.check, self.text = path, line_no, check, text
+
+
+def read(path: Path) -> list[str]:
+    return io.open(path, encoding="utf-8", errors="replace").read().splitlines()
+
+
+def rel(path: Path) -> str:
+    return path.relative_to(REPO).as_posix()
+
+
+# ------------------------------------------------------------ case discovery
+
+
+class Case:
+    """A case's artefact inventory, loaded once."""
+
+    def __init__(self, root: Path) -> None:
+        self.root = root
+        self.name = root.name
+        self.p1 = self._md("01_PHASE1_CONTEXT")
+        self.p2 = self._md("02_PHASE2_RULES/Doc01_Operational_Objectives.md")
+        self.p3 = self._md("03_PHASE3_SPEC/Doc01_Requirements_Elicitation_and_PUC.md")
+        self.p3_dir = root / "03_PHASE3_SPEC"
+        self.mapping = self._rglob_one("03_PHASE3_SPEC/synthesis_rounds/OBJECTIVE_MAPPING.md")
+        # ID universes.
+        p1_text = self._text(self.p1)
+        p2_text = self._text(self.p2)
+        self.goals = set(RE_GOAL.findall(p1_text))
+        self.goals = {g for g in RE_GOAL.findall(p1_text)}
+        self.objectives = set(RE_OBJECTIVE.findall(p2_text))
+        # Regulation of each objective, as recorded in Phase 2's table.
+        self.objective_reg: dict[str, str] = {}
+        if self.p2:
+            for line in read(self.p2):
+                m = re.match(r"\|\s*`((?:PO|SO)-D-\d\d\.\d-\d{3})`\s*\|", line)
+                if not m:
+                    continue
+                reg = RE_REG_CELL.search(line)
+                if reg:
+                    self.objective_reg[m.group(1)] = CANON_LAW[reg.group(1).replace("  ", " ")]
+        # Deliverable-side ID universes (Phase 3).
+        self.deliverables = [p for p in self._rglob("03_PHASE3_SPEC") if self._is_deliverable(p)]
+        # The ACTIVE working copies only.  Version folders (v0_/v1_/v2_) are
+        # historical snapshots: they legitimately carry IDs that an earlier
+        # numbering produced, so asserting against them would either raise
+        # phantom findings or — worse — mask a defect in the live baseline by
+        # satisfying a lookup against a stale copy.
+        self.active_deliverables = [
+            p for p in self.deliverables if not self._is_versioned(p) and p != self.mapping
+        ]
+        if not self.active_deliverables and self.p3:
+            self.active_deliverables = [self.p3]
+        self.active_text = "\n".join(self._text(p) for p in self.active_deliverables)
+        self.cards = set(RE_CARD.findall(self.active_text))
+        self.rns = set(RE_RN.findall(self.active_text))
+        self.ucs = set(RE_UC.findall(self.active_text))
+        self.principles = set(RE_PRINCIPLE.findall(self._text(self._rglob_one("02_PHASE2_RULES/Doc02_Secure_Design_Principles.md"))))
+        self.orgs = set(RE_ORG.findall(self.active_text))
+
+    # -- helpers
+    def _md(self, relative: str) -> Path | None:
+        p = self.root / relative
+        if p.is_file():
+            return p
+        if p.is_dir():
+            docs = sorted(p.glob("Doc01*.md"))
+            return docs[0] if docs else None
+        return None
+
+    def _rglob(self, relative: str) -> list[Path]:
+        p = self.root / relative
+        if p.is_file():
+            return [p]
+        return sorted(p.rglob("*.md")) if p.is_dir() else []
+
+    def _rglob_one(self, relative: str) -> Path | None:
+        found = self._rglob(relative)
+        return found[0] if found else None
+
+    def _text(self, path: Path | None) -> str:
+        return "\n".join(read(path)) if path and path.is_file() else ""
+
+    @staticmethod
+    def _is_versioned(path: Path) -> bool:
+        parts = path.parts
+        return any(p.startswith(("v0_", "v1_", "v2_", "v3_")) for p in parts)
+
+    @staticmethod
+    def _is_deliverable(path: Path) -> bool:
+        parts = path.as_posix()
+        if "filtered_corpus" in parts:
+            return False
+        return path.name.startswith(("Doc01", "Doc02", "Doc03")) or path.name == "OBJECTIVE_MAPPING.md"
+
+
+def discover_cases(only: str | None) -> list[Case]:
+    if not CASES.is_dir():
+        return []
+    roots = sorted(p for p in CASES.iterdir() if p.is_dir())
+    out = []
+    for root in roots:
+        if only and only not in root.name:
+            continue
+        out.append(Case(root))
+    return out
+
+
+# ------------------------------------------------------------------- T1 / T2
+
+
+def check_id_resolution(case: Case) -> list[Finding]:
+    """T1: every objective/goal/ORG id cited in the ACTIVE deliverable must exist
+    in that case's own Phase 1/2 artefacts.  Version folders are historical
+    snapshots and are not asserted against."""
+    findings: list[Finding] = []
+    for path in case.active_deliverables:
+        section = ""
+        for line_no, line in enumerate(read(path), 1):
+            heading = RE_SECTION.match(line)
+            if heading:
+                section = heading.group(1)
+            # A Version History / CHANGELOG row legitimately *names* the ids it
+            # corrected; that is the record of a fix, not a live citation.
+            if HISTORY_SECTION.search(section):
+                continue
+            for oid in sorted(set(RE_OBJECTIVE.findall(line))):
+                if oid not in case.objectives:
+                    findings.append(
+                        Finding(path, line_no, "T1 unresolved objective", f"{oid}  (absent from Phase 2)")
+                    )
+            for gid in sorted(set(RE_GOAL.findall(line))):
+                if gid not in case.goals:
+                    findings.append(
+                        Finding(path, line_no, "T1 unresolved goal", f"{gid}  (absent from Phase 1)")
+                    )
+    return findings
+
+
+def check_regulatory_coherence(case: Case) -> list[Finding]:
+    """T2: the law on the left of a chain arrow must match the regulation Phase 2
+    records for each objective it points at."""
+    findings: list[Finding] = []
+    if not case.objective_reg:
+        return findings
+    for path in case.active_deliverables:
+        for line_no, line in enumerate(read(path), 1):
+            for seg in RE_SEGMENT.finditer(line):
+                laws = {
+                    CANON_LAW[m.group(0).replace("  ", " ")]
+                    for m in RE_LAW_IN_RUN.finditer(seg.group("laws"))
+                }
+                objs = set(RE_OBJ_IN_SET.findall(seg.group("objs")))
+                regs = {case.objective_reg[o] for o in objs if o in case.objective_reg}
+                if not objs or not regs:
+                    continue
+                unmatched_laws = laws - regs
+                if unmatched_laws:
+                    findings.append(
+                        Finding(
+                            path,
+                            line_no,
+                            "T2 law with no driver of its regulation",
+                            f"{sorted(unmatched_laws)} cited but the driver set is {sorted(objs)} ({sorted(regs)})",
+                        )
+                    )
+    return findings
+
+
+# ----------------------------------------------------------------------- T3
+
+
+def check_totals(case: Case) -> list[Finding]:
+    """T3: a markdown totals table must sum to its own declared Total row.
+
+    Only a single, self-contained table counts: a header row, a separator, a run of
+    rows whose count column is purely numeric, and a closing Total row.  Anything
+    else in the file (mixed-type tables, a "Total" word in prose) is left alone —
+    a totals checker that fires on incidental shapes trains its readers to ignore it.
+    """
+    findings: list[Finding] = []
+    for path in case._rglob("03_PHASE3_SPEC") + case._rglob("02_PHASE2_RULES"):
+        lines = read(path)
+        for start in range(len(lines)):
+            if not re.match(r"^\s*\|[-: |]+\|\s*$", lines[start]) or start < 1:
+                continue  # need a separator, and a header above it
+            header = [c.strip() for c in lines[start - 1].split("|")[1:-1]]
+            if len(header) < 2:
+                continue
+            # Collect the contiguous run of rows that follow the separator.
+            run: list[tuple[int, int]] = []  # (line_no, count)
+            idx = start + 1
+            while idx < len(lines):
+                cells = [c.strip() for c in lines[idx].split("|")[1:-1]]
+                if not lines[idx].lstrip().startswith("|"):
+                    break
+                if len(cells) != len(header):
+                    break
+                m = re.fullmatch(r"\**(\d+)\**", cells[1] or "")
+                if not m:
+                    break
+                run.append((idx + 1, int(m.group(1))))
+                idx += 1
+            if len(run) < 2:
+                continue
+            last_cells = [c.strip() for c in lines[run[-1][0] - 1].split("|")[1:-1]]
+            if not LEDGER_TOTAL.search(lines[run[-1][0] - 1]):
+                continue
+            declared = int(re.fullmatch(r"\**(\d+)\**", last_cells[1] or "").group(1))
+            body = [n for _, n in run[:-1]]
+            if sum(body) != declared:
+                findings.append(
+                    Finding(
+                        path,
+                        run[-1][0],
+                        "T3 totals do not sum",
+                        f"declared total {declared}, column sums to {sum(body)} ({body})",
+                    )
+                )
+    # A ratio can never exceed its denominator.
+    for path in case._rglob("03_PHASE3_SPEC"):
+        for line_no, line in enumerate(read(path), 1):
+            for m in CLAIM_N_OF_M.finditer(line):
+                if int(m.group(1)) > int(m.group(2)):
+                    findings.append(
+                        Finding(path, line_no, "T3 impossible ratio", m.group(0))
+                    )
+    return findings
+
+
+def _case_noncarrier_total(case: Case) -> int | None:
+    """Sum of the matrix's explicitly non-carried rows (N/A + organizational)."""
+    if not case.mapping:
+        return None
+    total = 0
+    seen = False
+    for line in read(case.mapping):
+        low = line.lower()
+        if not line.startswith("| `"):
+            continue
+        if "**n/a**" in low or "no functional carrier" in low:
+            total += 1
+            seen = True
+    return total if seen else None
+
+
+def check_ratio_claims(case: Case) -> list[Finding]:
+    """T3b: a 'N/M carried' claim may not exceed M minus the matrix's own
+    non-carried rows — the defect where 95/100 was asserted over a 92/100 table."""
+    findings: list[Finding] = []
+    noncarrier = _case_noncarrier_total(case)
+    if noncarrier is None:
+        return findings
+    ceiling_total = len(case.objectives)
+    ceiling_carried = ceiling_total - noncarrier
+    for path in case._rglob("03_PHASE3_SPEC"):
+        for line_no, line in enumerate(read(path), 1):
+            for m in CLAIM_N_OF_M.finditer(line):
+                num, den = int(m.group(1)), int(m.group(2))
+                if den != ceiling_total:
+                    continue
+                if num > ceiling_carried:
+                    findings.append(
+                        Finding(
+                            path,
+                            line_no,
+                            "T3 covered count exceeds matrix arithmetic",
+                            f"{num}/{den} claimed, but only {ceiling_carried}/{ceiling_total} are non-N/A/non-organizational in the matrix",
+                        )
+                    )
+    return findings
+
+
+# ----------------------------------------------------------------------- T4
+
+
+def check_gate_evidence(case: Case) -> list[Finding]:
+    """T4: every file path cited as G1-G6 evidence must exist.
+
+    Evidence is cited from three different vantage points in practice — relative to
+    the citing file, relative to the case's Phase 3 folder, or bare (implying the
+    synthesis_rounds folder).  All three are accepted; only a token that resolves
+    under none of them is a finding.
+    """
+    findings: list[Finding] = []
+    path_token = re.compile(r"`([A-Za-z0-9_./-]+\.md)`")
+    roots = [case.p3_dir, case.p3_dir / "synthesis_rounds", case.p3_dir / "analysis_v0_to_v1", case.p3_dir / "analysis_v1_to_v2"]
+    for path in case._rglob("03_PHASE3_SPEC"):
+        for line_no, line in enumerate(read(path), 1):
+            if not GATE_ROW.match(line):
+                continue
+            for token in path_token.findall(line):
+                if token.startswith("../") or token.startswith("./"):
+                    candidates = [path.parent / token]
+                else:
+                    candidates = [path.parent / token] + [base / token for base in roots]
+                if not any(c.resolve().exists() for c in candidates):
+                    findings.append(Finding(path, line_no, "T4 gate evidence file missing", token))
+    return findings
+
+
+# ----------------------------------------------------------------------- T5
+
+
+# Case-insensitive: the row state is lower-cased before matching, so an
+# uppercase-only pattern would never fire and every row would read as "silent".
+CARRIER_TOKENS = re.compile(
+    r"\bRN\d{1,3}\b|\bR\d{1,2}\.\d{1,2}\b|\bchain row\b|\btransversal\b|\bcovered\b",
+    re.IGNORECASE,
+)
+RE_MATRIX_ROW = re.compile(r"^\|\s*" + r"`((?:PO|SO)-D-\d\d\.\d-\d{3})`\s*\|")
+
+
+def check_driver_symmetry(case: Case) -> list[Finding]:
+    """T5: a driver the matrix binds to a carrier must actually be cited by the
+    ACTIVE deliverable; a driver with no carrier must say so explicitly.
+
+    The lookup deliberately excludes the matrix itself and the version folders —
+    asserting a driver against a stale snapshot would hide a live defect.
+    """
+    findings: list[Finding] = []
+    if not case.mapping:
+        return findings
+    delivered = set(RE_OBJECTIVE.findall(case.active_text))
+    for line_no, line in enumerate(read(case.mapping), 1):
+        m = RE_MATRIX_ROW.match(line)
+        if not m:
+            continue
+        oid = m.group(1)
+        cells = [c.strip() for c in line.split("|")[1:-1]]
+        state = " ".join(cells[1:]).lower()
+        # A non-coverage verdict (N/A, organizational, design guidance) means the
+        # row claims no product carrier at all — even when the note column happens
+        # to mention an RN ("supported by RN18 logs" on an ops row).
+        non_cover = any(
+            k in state for k in ("**n/a**", "no functional carrier", "design guidance")
+        )
+        cover_verdict = any(k in state for k in ("fully covered", "partially covered"))
+        claims_carrier = (not non_cover) and bool(CARRIER_TOKENS.search(state))
+        # ADR-007 D3: a carrier serving an objective *transversally* is recorded
+        # as a cross-reference in the matrix, not stamped on every slice card.
+        # The matrix is therefore authoritative for such rows and no card
+        # citation is required.
+        transversal = "transversal" in cells[2].lower() if len(cells) > 2 else False
+        if transversal:
+            continue
+        if claims_carrier and oid not in delivered:
+            findings.append(
+                Finding(
+                    case.mapping,
+                    line_no,
+                    "T5 claimed carrier does not cite the driver",
+                    f"{oid} declared covered here but cited by no active deliverable",
+                )
+            )
+        elif not claims_carrier and not cover_verdict and not non_cover:
+            findings.append(
+                Finding(case.mapping, line_no, "T5 driver with neither carrier nor verdict", oid)
+            )
+    return findings
+
+
+# ---------------------------------------------------------------------- main
+
+
+CHECKS = {
+    "T1": ("ID resolution", check_id_resolution),
+    "T2": ("Regulatory coherence", check_regulatory_coherence),
+    "T3": ("Totals arithmetic", check_totals),
+    "T3b": ("Ratio ceiling", check_ratio_claims),
+    "T4": ("Gate evidence", check_gate_evidence),
+    "T5": ("Driver symmetry", check_driver_symmetry),
+}
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--strict", action="store_true", help="exit 1 on any finding")
+    parser.add_argument("--case", help="restrict to one case directory name")
+    parser.add_argument("--report", type=Path, help="write findings to this markdown ledger")
+    args = parser.parse_args()
+
+    findings: list[Finding] = []
+    cases = discover_cases(args.case)
+    if not cases:
+        print("no cases found under cases/")
+        return 0
+
+    for case in cases:
+        print(f"\n=== {case.name} ===")
+        print(
+            f"    universe: {len(case.objectives)} objectives (Phase 2) · "
+            f"{len(case.goals)} goals (Phase 1) · {len(case.cards)} cards · "
+            f"{len(case.rns)} RNs · {len(case.ucs)} UCs · {len(case.orgs)} ORG"
+        )
+        for key, (_label, fn) in CHECKS.items():
+            results = fn(case)
+            findings.extend(results)
+            flag = "OK " if not results else "FAIL"
+            print(f"    [{flag}] {key} {_label}: {len(results)} finding(s)")
+    findings.sort(key=lambda f: (str(f.path), f.line_no))
+
+    if findings:
+        print("\n--- findings ---")
+    for finding in findings:
+        text = finding.text if len(finding.text) <= 130 else finding.text[:127] + "..."
+        print(f"{rel(finding.path)}:{finding.line_no}: [{finding.check}] {text}")
+    print(f"\n{len(findings)} findings across {len(cases)} case(s)")
+
+    if args.report:
+        rows = "\n".join(
+            f"| `{rel(f.path)}:{f.line_no}` | {f.check} | `{f.text.strip()[:100]}` |"
+            for f in findings
+        ) or "| — | — | — |"
+        args.report.write_text(
+            "# Referential-integrity report\n\n"
+            f"Findings: {len(findings)} across {len(cases)} case(s).\n\n"
+            "| Location | Check | Detail |\n|---|---|---|\n" + rows + "\n",
+            encoding="utf-8",
+        )
+        print(f"report written: {args.report}")
+    return 1 if args.strict and findings else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

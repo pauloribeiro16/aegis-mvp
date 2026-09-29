@@ -508,7 +508,7 @@ flowchart TD
 - **Preconditions:** Retention schedules approved; expiry events scheduled.
 - **Trigger:** A retention schedule expires for a record class.
 - **Main Success Scenario:**
-  1. System executes the purge or de-identification per the schedule (chain: PO-D-05.2-001/SO-D-05.2-005).
+  1. System executes the purge or de-identification per the schedule (chain: PO-D-05.2-001).
   2. System records the execution with evidence (chain: R11.2).
 - **Extensions:**
   - 1a. Statutory floor prevents deletion: 1a1. System applies the token-only separation per T-002 and records the legal basis (RN17).
@@ -565,7 +565,7 @@ flowchart TD
 - **Preconditions:** Dataset lineage recorded; access mediated (RN21).
 - **Trigger:** A training, validation, or test dataset is created, changed, or withdrawn from use.
 - **Main Success Scenario:**
-  1. Engineer governs the dataset across its lifecycle with relevance and representativeness checks (chain: SO-D-05.1-004, RN12).
+  1. Engineer governs the dataset across its lifecycle with relevance and representativeness checks (chain: SO-D-05.1-003, RN12).
   2. System versions the dataset and records the governance checks (chain: R10.3).
 - **Extensions:**
   - 1a. Representativeness check fails: 1a1. System blocks the training use and files the finding to the risk file (RN24).
@@ -604,7 +604,7 @@ flowchart TD
 - **Preconditions:** Component inventory current ({U.C. 8.2}).
 - **Trigger:** A release is produced or a component changes.
 - **Main Success Scenario:**
-  1. System generates/updates the machine-readable SBOM (chain: SO-D-06.2-002).
+  1. System generates/updates the machine-readable SBOM (chain: SO-D-06.2-001).
   2. SBOM feeds {U.C. 3.1} and {U.C. 7.1}.
 - **Extensions:**
   - 1a. Provenance incomplete: 1a1. System flags the entry as provisional.
@@ -922,7 +922,7 @@ flowchart TD
 - **Preconditions:** Test environments isolated; models versioned ({U.C. 1.4}).
 - **Trigger:** A validation cycle is due.
 - **Main Success Scenario:**
-  1. Governance Lead executes the adversarial testing — poisoning, evasion, confidentiality classes (RN25, chain: SO-D-02.1-004/SO-D-02.4-004/SO-D-07.1-004/SO-D-07.2-004/SO-D-10.3-004).
+  1. Governance Lead executes the adversarial testing — poisoning, evasion, confidentiality classes (RN25, chain: SO-D-02.1-005/SO-D-02.4-003/SO-D-07.1-005/SO-D-07.2-003/SO-D-10.3-005).
   2. System produces the explainability artefacts for overseers and applicants (chain: SO-D-09.1-004, RN22).
   3. Findings drive targeted measures in the risk file (RN24).
 - **Extensions:**

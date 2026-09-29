@@ -5,9 +5,9 @@
 ## 1. Phase Context & Pipeline Contract
 
 Under **ADR-004** and **ADR-002**:
-- **Input:** Phase 1 Adjusted Goals (`../01_PHASE1_CONTEXT/Doc02_Adjusted_Goals.md`) — 103 AGs, 38/38 sub-domains, five regulations (GDPR, CRA, NIS 2, DORA, AI Act), LARGE banking entity.
+- **Input:** Phase 1 Adjusted Goals (`../01_PHASE1_CONTEXT/Doc02_Adjusted_Goals.md`) — 134 AGs, 38/38 sub-domains, five regulations (GDPR, CRA, NIS 2, DORA, AI Act), LARGE banking entity.
 - **Exchange Unit:**
-  1. **Operational Objectives** (`Doc01_Operational_Objectives.md`): 103 PO-/SO- rows with verification criteria, methods, owners and published CSF anchor sets; five harmonised tensions.
+  1. **Operational Objectives** (`Doc01_Operational_Objectives.md`): 134 PO-/SO- rows with verification criteria, methods, owners and published CSF anchor sets; five harmonised tensions.
   2. **Secure Design & Systems Engineering Principles** (`Doc02_Secure_Design_Principles.md`): the 7 transversal principles (`PRIN-ENG-01..07`) with 1:1 skills mapping.
 - **Handoff to Phase 3:** objectives + principles are the verifiable boundary constraints and modeling grammar; Phase 3 Part 1 maps them onto the functional model through the exhaustive coverage matrix and the risk-acceptance rounds (ADR-005), then selects controls explicitly (Step 4).
 

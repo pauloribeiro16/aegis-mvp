@@ -18,7 +18,7 @@
 
 **Reading.**
 
-1. **Zero product-lane gaps.** Every obligation binding on the product or its operation carries a chain-complete carrier: `article → Phase 2 objective → requirement card / use case → selected control anchor`. 95/100 rows carried; nothing partial, nothing silent.
+1. **Zero product-lane gaps.** Every obligation binding on the product or its operation carries a chain-complete carrier: `article → Phase 2 objective → requirement card / use case → selected control anchor`. **92/100 rows carried**; no obligation is silent. (Coverage is asserted by carrier linkage; per-objective discharge verification under ADR-007 has been performed in Case_01 only — see the debt note in [`OBJECTIVE_MAPPING.md`](OBJECTIVE_MAPPING.md).)
 2. **The 2 organizational rows are not specification gaps** — DPO advisory and compliance-monitoring activities bind on the process lane (ADR-002); owners assigned in Phase 2 §13; total compliance conditional on operating them.
 3. **The 6 N/A rows are legally inapplicable** to this entity (EU-established EU manufacturer, no importer chain, not an OSS steward, product not offered for integration, Member-State addressee) — recorded, not deferred.
 4. **AI Act completeness note:** all 15 AI-Act rows are carried, including the full high-risk set (Art. 9 risk management, Art. 10 data governance, Art. 12 logging, Art. 13 transparency, Art. 14 oversight, Art. 15 robustness, Art. 72 post-market, Art. 73 serious incidents). Proportionality to a MEDIUM RIGOROUS-tier entity is respected through the unified-assessment families (T-003/T-004) rather than duplicated processes.
@@ -44,7 +44,7 @@
 
 ## §3 Overall verdict & Part 2 trigger
 
-- **As the Part 1 deliverable (specification): YES — sufficient.** Four-regulation traceable, security-complete for the lane, fully client-accepted, zero silent objectives, zero partial coverage.
+- **As the Part 1 deliverable (specification): YES — sufficient.** Four-regulation traceable, security-complete for the lane, fully client-accepted, zero silent objectives. Coverage is asserted at carrier-linkage granularity; a per-objective discharge audit (ADR-007) has not been run for this case.
 - **As total compliance/security assurance: conditional** — (1) the 2 organizational controls must be operated; (2) the accepted baseline awaits adversarial validation.
 
 **Part 2 trigger (ADR-006): RECOMMENDED — GO.** The Part 1 Exit Gate (G1–G6) is GREEN (see `../analysis_v0_to_v1/README.md`); the baseline is chain-complete and concrete. Fase 3 Part 2 — Threat & Risk Analysis (STRIDE/LINDDUN + risk register over the accepted baseline) is the correct next step, with particular attention to the biometric capture surface, the authority-integration boundary, and AI-specific threats (poisoning, evasion, model theft) against the Art. 15 measures.

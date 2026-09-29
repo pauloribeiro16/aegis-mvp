@@ -4,6 +4,8 @@
 > **State legend:** `Accepted R1 (RNxx)` = new constraint accepted in Round 1 with this objective as driver · `Accepted R1 (chain row)` = the objective is realized by an existing V0 functional card; the regulatory chain was attached to that card in Round 1 · transversal = umbrella realized by slices · no-carrier/N-A = recorded decisions.
 > **Verdicts:** Round 1 CONVERGED (20/20 + 51/51 accepts, 2026-09-28) — per-item verdicts recorded in [`ROUND1_REGISTER.md`](ROUND1_REGISTER.md); nothing enters the baseline silently.
 
+> **Coverage-granularity note (recorded debt, ADR-007 D2/D3).** The `Accepted R1` verdicts above assert coverage at **carrier-linkage** granularity: the objective id appears in a requirement's chain. They are **not** discharge-verified — no per-objective check has confirmed that the carriers' Volere fit criteria reconstitute the objective's Phase 2 Verification Criteria, nor that every leg of its Operational Statement is carried. A leg-level audit has been performed in Case_01 only, where it moved 20 of 26 rows from "covered" to "partially covered" with named carve-outs. Applying that measured rate to the 92 rows here, a substantial minority are expected to be partial. Until the retrofit runs, treat the N/A and organizational rows as the *only* verdicts here resting on more than linkage, and route any uncarried PROCESS/CAPABILITY leg to the organizational deliverable (`Doc03_Organizational_Requirements.md`, ADR-008). Enforced mechanically by `python scripts/check_traceability.py --case Case_02_SecureBorder_Solutions` (T5 reports drivers whose declared carrier does not cite them back).
+
 ## D-01 — Data Protection & Encryption
 
 | Objective | Summary | Functional carrier | Skill | State vs V0 | Action / Round |

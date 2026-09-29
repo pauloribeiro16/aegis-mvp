@@ -190,7 +190,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R1.2 **Name:** Process credit applications through automated scoring |
 | **Description:** The system must accept a credit application, collect the applicant and financial data necessary for the assessment, produce an automated credit score and access decision through the OmniScore platform, and communicate the outcome with the reasons underlying it. |
 | **Requirement Origin:** Consumer Credit Programme & OmniScore Governance Charter |
-| **Security & Privacy Constraints:**<br>**NFR-RN11** OmniScore Decision & Model Integrity at Serving — `GDPR Art. 5(1)(f)` · `CRA Annex I Part I (2)(f)+(l)` · `AI Act Art. 15` · `DORA Art. 9` → `PO-D-01.4-001`/`SO-D-01.4-002`/`SO-D-01.4-004` → `PRIN-ENG-07` → CSF PR.DS-01, PR.DS-10, PR.PS-04<br>**NFR-RN12** Scoring Data Minimization & Purpose Binding — `GDPR Art. 5(1)(c)+Art. 6` · `AI Act Art. 10` → `PO-D-05.1-001`/`SO-D-05.1-004` → `PRIN-ENG-06` → CSF PR.PS-01, ID.AM-08<br>**NFR-RN23** AI Event Logging over Lifetime — `AI Act Art. 12(1)+Art. 19` → `SO-D-10.2-004`/`SO-D-05.2-004` → `PRIN-ENG-07` → CSF PR.PS-04, DE.CM-09, DE.AE-03 |
+| **Security & Privacy Constraints:**<br>**NFR-RN11** OmniScore Decision & Model Integrity at Serving — `GDPR Art. 5(1)(f)` · `CRA Annex I Part I (2)(f)+(l)` · `AI Act Art. 15` · `DORA Art. 9` → `PO-D-01.4-001`/`SO-D-01.4-002`/`SO-D-01.4-004`/`SO-D-01.4-003` → `PRIN-ENG-07` → CSF PR.DS-01, PR.DS-10, PR.PS-04<br>**NFR-RN12** Scoring Data Minimization & Purpose Binding — `GDPR Art. 5(1)(c)+Art. 6` · `AI Act Art. 10` → `PO-D-05.1-001`/`SO-D-05.1-003` → `PRIN-ENG-06` → CSF PR.PS-01, ID.AM-08<br>**NFR-RN23** AI Event Logging over Lifetime — `AI Act Art. 12(1)+Art. 19` → `SO-D-10.2-004`/`SO-D-05.2-003` → `PRIN-ENG-07` → CSF PR.PS-04, DE.CM-09, DE.AE-03 |
 | **Interfaces:** Credit application form; Decision notification interface |
 | **Dependencies:**<br>• **Stakeholders:** Retail Customers, Consumer Credit Programme Owner<br>• **Data Sources:** Credit applications; applicant and financial data<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (applications); AI Model Serving Platform<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -203,7 +203,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R1.3 **Name:** Provide human review and explanation of credit decisions |
 | **Description:** The system must route flagged, declined, or contested automated credit decisions to an empowered human reviewer, provide the reviewer with the decision drivers and the applicant data on which the decision was based, record the review outcome as an attributed decision, and support the delivery of the explanation to the applicant. |
 | **Requirement Origin:** Consumer Credit Programme & AI Act Human-Oversight Commitments |
-| **Security & Privacy Constraints:**<br>**NFR-RN22** Human Oversight Effectiveness (OmniScore) — `AI Act Art. 14` → `SO-D-08.2-004` → `PRIN-ENG-01` → CSF PR.AT-02, PR.AT-01, GV.RR-02<br>**Chain** AI Transparency for Applicants and Overseers — `AI Act Art. 13` → `SO-D-09.1-004` → `PRIN-ENG-05` → CSF GV.OC-03, GV.RM-01 |
+| **Security & Privacy Constraints:**<br>**NFR-RN22** Human Oversight Effectiveness (OmniScore) — `AI Act Art. 14` → `SO-D-08.2-005` → `PRIN-ENG-01` → CSF PR.AT-02, PR.AT-01, GV.RR-02<br>**Chain** AI Transparency for Applicants and Overseers — `AI Act Art. 13` → `SO-D-09.1-005` → `PRIN-ENG-05` → CSF GV.OC-03, GV.RM-01 |
 | **Interfaces:** Review worklist; Explanation delivery interface |
 | **Dependencies:**<br>• **Stakeholders:** Credit Decision Overseers, Compliance<br>• **Data Sources:** Flagged decision records; decision drivers<br>• **Extraction Periodicity:** on event<br>• **Information Systems / Databases:** Internal Application Database (decision records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -230,7 +230,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R2.1 **Name:** Configure data-at-rest encryption |
 | **Description:** The system must protect stored personal, financial, and AI-related data with state-of-the-art at-rest encryption across the storage estates, applying field-level protection to the most sensitive data categories. |
 | **Requirement Origin:** Group Cryptographic Standard & Data Protection Policy |
-| **Security & Privacy Constraints:**<br>**NFR-RN14** Data-at-Rest Encryption with Field-Level Protection — `GDPR Art. 32(1)(a)+Art. 5(1)(f)` · `CRA Annex I Part I (2)(e)` · `NIS 2 Art. 21(2)(h)` · `DORA Art. 9` → `PO-D-01.1-001`/`SO-D-01.1-002`/`SO-D-01.1-003`/`SO-D-01.1-004` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-10 |
+| **Security & Privacy Constraints:**<br>**Chain** GDPR Art. 5(1)(f) → `PO-D-01.1-001`<br>**Chain** **NFR-RN14** Data-at-Rest Encryption with Field-Level Protection — `GDPR Art. 32(1)(a)+Art. 5(1)(f)` · `CRA Annex I Part I (2)(e)` · `NIS 2 Art. 21(2)(h)` · `DORA Art. 9` → `SO-D-01.1-004`/`SO-D-01.1-002`/`SO-D-01.1-003`/`SO-D-01.1-004` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-10<br>**Chain** GDPR Art. 5(1)(f) → `PO-D-01.1-001` |
 | **Interfaces:** Storage configuration interface |
 | **Dependencies:**<br>• **Stakeholders:** Security Engineers, Database Administrators<br>• **Data Sources:** Storage estate inventory; encryption state<br>• **Extraction Periodicity:** on change<br>• **Information Systems / Databases:** Key Custody Service; Storage Estate<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -255,7 +255,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R2.3 **Name:** Manage cryptographic key lifecycle and custody |
 | **Description:** The system must manage the full lifecycle of cryptographic keys and related material — generation, distribution, rotation, and destruction — with custody separated from the operational environments that use the protected data. |
 | **Requirement Origin:** Key Custody Standard (In-House HSM Estate) |
-| **Security & Privacy Constraints:**<br>**NFR-RN15** Key Custody Separation & Cryptographic Destruction — `GDPR Art. 4(5)+Art. 32(1)(a)` · `CRA Annex I Part I (2)(d)+(e)` · `NIS 2 Art. 21(2)(h)` · `DORA Art. 9` → `PO-D-01.3-001`/`SO-D-01.3-002`/`SO-D-01.3-003`/`SO-D-01.3-004` → `PRIN-ENG-03` → CSF PR.DS-01, PR.AA-05 |
+| **Security & Privacy Constraints:**<br>**NFR-RN15** Key Custody Separation & Cryptographic Destruction — `GDPR Art. 4(5)+Art. 32(1)(a)` · `CRA Annex I Part I (2)(d)+(e)` · `DORA Art. 9` → `PO-D-01.3-001`/`SO-D-01.3-002`/`SO-D-01.3-003` → `PRIN-ENG-03` → CSF PR.DS-01, PR.AA-05 |
 | **Interfaces:** Key lifecycle console |
 | **Dependencies:**<br>• **Stakeholders:** Cryptographic Officers<br>• **Data Sources:** Key inventory; rotation and destruction events<br>• **Extraction Periodicity:** per cryptographic period<br>• **Information Systems / Databases:** Key Custody Service (HSM)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -270,7 +270,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R3.1 **Name:** Identify and assess vulnerabilities |
 | **Description:** The system must identify and document vulnerabilities across the ICT estate, the product components, and the AI models on a continuing basis, maintaining a vulnerability register with severity assessment. |
 | **Requirement Origin:** Group Vulnerability Management Procedure |
-| **Security & Privacy Constraints:**<br>**Chain** Vulnerability Identification Family — `GDPR Art. 32(1)(d)` → `PO-D-02.1-001` · `CRA Annex I Part I (2)(a)+Part II (1)` → `SO-D-02.1-002` · `NIS 2 Art. 21(2)(e)` → `SO-D-02.1-003` · `DORA Art. 9` → `SO-D-02.1-005` → `PRIN-ENG-02` → CSF ID.RA-01, ID.AM-02, PR.PS-02, GV.SC-04 |
+| **Security & Privacy Constraints:**<br>**Chain** Vulnerability Identification Family — `GDPR Art. 32(1)(d)` → `PO-D-02.1-001` · `CRA Annex I Part I (2)(a)+Part II (1)` → `SO-D-02.1-002` · `NIS 2 Art. 21(2)(e)` → `SO-D-02.1-003` · `DORA Art. 9` → `SO-D-02.1-004` → `PRIN-ENG-02` → CSF ID.RA-01, ID.AM-02, PR.PS-02, GV.SC-04 |
 | **Interfaces:** Vulnerability register; scanner consoles |
 | **Dependencies:**<br>• **Stakeholders:** Security Engineers, SOC<br>• **Data Sources:** Scan results; advisory feeds<br>• **Extraction Periodicity:** continuous / per scan cycle<br>• **Information Systems / Databases:** Internal Application Database (vulnerability register)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -283,7 +283,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R3.2 **Name:** Remediate vulnerabilities through security updates |
 | **Description:** The system must address identified vulnerabilities through security updates deployed without delay according to severity, including updates to AI models and their components. |
 | **Requirement Origin:** Group Patch Management Procedure |
-| **Security & Privacy Constraints:**<br>**Chain** Remediation & Maintenance Family — `CRA Annex I Part II (2)` → `SO-D-02.2-002` · `DORA Art. 9(4)` → `SO-D-02.2-005` · `NIS 2 Art. 21(2)(e)` → `SO-D-07.3-003` → `PRIN-ENG-02` → CSF PR.PS-02, ID.RA-01 |
+| **Security & Privacy Constraints:**<br>**Chain** CRA → `SO-D-07.3-001`<br>**Chain** Remediation & Maintenance Family — `CRA Annex I Part II (2)` → `SO-D-02.2-001` · `DORA Art. 9(4)` → `SO-D-02.2-002` · `NIS 2 Art. 21(2)(e)` → `SO-D-07.3-002` → `PRIN-ENG-02` → CSF PR.PS-02, ID.RA-01 |
 | **Interfaces:** Patch management console; fleet distribution interface |
 | **Dependencies:**<br>• **Stakeholders:** Security Engineers, IT Operations<br>• **Data Sources:** Patch catalogue; deployment states<br>• **Extraction Periodicity:** per release cycle<br>• **Information Systems / Databases:** Internal Application Database (patch states)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -296,7 +296,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R3.3 **Name:** Operate coordinated vulnerability disclosure |
 | **Description:** The system must provide a documented channel for external security researchers to report vulnerabilities, triage reports, and publish disclosures under the coordinated disclosure policy. |
 | **Requirement Origin:** Coordinated Vulnerability Disclosure Policy |
-| **Security & Privacy Constraints:**<br>**Chain** Coordinated Vulnerability Disclosure — `CRA Annex I Part II (4)-(6)+Art. 13(8),(17)` → `SO-D-02.3-002` · `NIS 2 Art. 21(2)(e)` → `SO-D-02.3-003` → `PRIN-ENG-02` → CSF ID.RA-01, GV.SC-04 |
+| **Security & Privacy Constraints:**<br>**Chain** Coordinated Vulnerability Disclosure — `CRA Annex I Part II (4)-(6)+Art. 13(8),(17)` → `SO-D-02.3-001` · `NIS 2 Art. 21(2)(e)` → `SO-D-02.3-002` → `PRIN-ENG-02` → CSF ID.RA-01, GV.SC-04 |
 | **Interfaces:** Disclosure portal; intake channel |
 | **Dependencies:**<br>• **Stakeholders:** External Researchers, Security Engineers<br>• **Data Sources:** Disclosure reports; publication records<br>• **Extraction Periodicity:** on event<br>• **Information Systems / Databases:** Internal Application Database (disclosure records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -309,7 +309,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R3.4 **Name:** Execute security and threat-led testing |
 | **Description:** The system must execute regular security testing of the product and ICT estate and threat-led penetration testing at the defined cadence, producing evidence for conformity and supervisory review. |
 | **Requirement Origin:** Security Testing Standard & Supervisory Expectations |
-| **Security & Privacy Constraints:**<br>**Chain** Security & Threat-Led Testing — `CRA Annex I Part II (3)` → `SO-D-02.4-002` · `DORA Art. 24-27 (TLPT)` → `SO-D-02.4-005` → `PRIN-ENG-02` → CSF ID.RA-01, PR.PS-06, DE.CM-09 |
+| **Security & Privacy Constraints:**<br>**Chain** Security & Threat-Led Testing — `CRA Annex I Part II (3)` → `SO-D-02.4-001` · `DORA Art. 24-27 (TLPT)` → `SO-D-02.4-002` → `PRIN-ENG-02` → CSF ID.RA-01, PR.PS-06, DE.CM-09 |
 | **Interfaces:** Testing calendar; evidence repository |
 | **Dependencies:**<br>• **Stakeholders:** Security Engineers, Penetration Testers<br>• **Data Sources:** Test plans; findings and evidence<br>• **Extraction Periodicity:** per test programme<br>• **Information Systems / Databases:** Internal Application Database (test evidence)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -324,7 +324,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R4.1 **Name:** Manage identity lifecycle |
 | **Description:** The system must provision, review, and revoke operator identities and entitlements across the employment lifecycle — on induction, on role change, and on separation — including operators of the AI platform. |
 | **Requirement Origin:** Access Control Policy & Joiner-Mover-Leaver Standard |
-| **Security & Privacy Constraints:**<br>**NFR-RN21** AI Platform Access Mediation & Least Privilege — `CRA Annex I Part I (2)(d)` · `AI Act Art. 15 cybersecurity leg` · `NIS 2 Art. 21(2)(i)-(j)` → `SO-D-03.1-002`/`SO-D-03.1-003`/`SO-D-03.1-004` → `PRIN-ENG-03` → CSF PR.AA-05, PR.AA-06<br>**Chain** Identity Lifecycle Family — `GDPR Art. 32(4)` → `PO-D-03.1-001` · `NIS 2 Art. 21(2)(i)` → `SO-D-03.1-003` · `DORA Art. 9(3)(d)` → `SO-D-03.1-005` → `PRIN-ENG-03` → CSF PR.AA-01, PR.AA-05 |
+| **Security & Privacy Constraints:**<br>**Chain** CRA Art. 13(15) → `SO-D-03.1-002`<br>**Chain** **NFR-RN21** AI Platform Access Mediation & Least Privilege — `CRA Annex I Part I (2)(d)` · `AI Act Art. 15 cybersecurity leg` · `NIS 2 Art. 21(2)(i)-(j)` → `SO-D-03.1-003`/`SO-D-03.1-003`/`SO-D-03.1-004` → `PRIN-ENG-03` → CSF PR.AA-05, PR.AA-06<br>**Chain** Identity Lifecycle Family — `GDPR Art. 32(4)` → `PO-D-03.1-001` · `NIS 2 Art. 21(2)(i)` → `SO-D-03.1-003` · `DORA Art. 9(3)(d)` → `SO-D-03.1-004` → `PRIN-ENG-03` → CSF PR.AA-01, PR.AA-05<br>**Chain** CRA Art. 13(15) → `SO-D-03.1-002` |
 | **Interfaces:** Identity administration console |
 | **Dependencies:**<br>• **Stakeholders:** HR, Identity Administrators<br>• **Data Sources:** Employment lifecycle events; entitlement catalog<br>• **Extraction Periodicity:** on event<br>• **Information Systems / Databases:** Identity Store<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -337,7 +337,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R4.2 **Name:** Enforce multi-factor authentication for privileged access |
 | **Description:** The system must require multi-factor verification for privileged and administrative access and refuse authentication attempts that do not meet the policy strength. |
 | **Requirement Origin:** Authentication Standard & Privileged Access Policy |
-| **Security & Privacy Constraints:**<br>**NFR-RN19** Strong Privileged-Access Authentication — `NIS 2 Art. 21(2)(j)` · `CRA Annex I Part I (2)(d)` · `DORA Art. 9(3)(d)` → `SO-D-03.2-002`/`SO-D-03.2-003`/`SO-D-03.2-005` → `PRIN-ENG-01` → CSF PR.AA-03, PR.AA-05, PR.AA-06 |
+| **Security & Privacy Constraints:**<br>**NFR-RN19** Strong Privileged-Access Authentication — `NIS 2 Art. 21(2)(j)` · `CRA Annex I Part I (2)(d)` · `DORA Art. 9(3)(d)` → `SO-D-03.2-003`/`SO-D-03.2-002`/`SO-D-03.2-004` → `PRIN-ENG-01` → CSF PR.AA-03, PR.AA-05, PR.AA-06 |
 | **Interfaces:** Authentication interface |
 | **Dependencies:**<br>• **Stakeholders:** Privileged Operators<br>• **Data Sources:** Authentication attempts; policy states<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Identity Store (credential factors)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -350,7 +350,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R4.3 **Name:** Review and reconcile access rights |
 | **Description:** The system must support periodic access reviews that reconcile granted entitlements against documented authorizations and record the review outcomes. |
 | **Requirement Origin:** Access Review Procedure |
-| **Security & Privacy Constraints:**<br>**Chain** Access Review & Authorization Family — `GDPR Art. 29+Art. 32(4)` → `PO-D-03.2-001`/`PO-D-03.3-001` · `NIS 2 Art. 21(2)(i)-(j)` → `SO-D-03.3-003` → `PRIN-ENG-03` → CSF PR.AA-05, PR.AA-06 |
+| **Security & Privacy Constraints:**<br>**Chain** CRA → `SO-D-03.3-002` · DORA Art. 9(4)(c) → `SO-D-03.3-004`<br>**Chain** Access Review & Authorization Family — `GDPR Art. 29+Art. 32(4)` → `PO-D-03.2-001`/`PO-D-03.3-001` · `NIS 2 Art. 21(2)(i)-(j)` → `SO-D-03.3-003` → `PRIN-ENG-03` → CSF PR.AA-05, PR.AA-06 |
 | **Interfaces:** Access review worklist |
 | **Dependencies:**<br>• **Stakeholders:** Line Managers, Compliance<br>• **Data Sources:** Entitlement grants; review decisions<br>• **Extraction Periodicity:** quarterly<br>• **Information Systems / Databases:** Internal Application Database (review records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -363,7 +363,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R4.4 **Name:** Maintain hardened secure configurations |
 | **Description:** The system must deploy platforms and services from hardened baseline configurations and support restoring a configuration to its known secure state. |
 | **Requirement Origin:** Configuration Baseline Standard |
-| **Security & Privacy Constraints:**<br>**NFR-RN20** Secure-by-Default Configuration & Reset — `CRA Annex I 2(b)+(c)` · `NIS 2 Art. 21(2)(i)-(j)` · `GDPR Art. 25(2)` · `DORA Art. 9` → `SO-D-03.4-002`/`SO-D-03.4-003`/`PO-D-03.4-001`/`SO-D-03.4-005` → `PRIN-ENG-04` → CSF PR.PS-01 |
+| **Security & Privacy Constraints:**<br>**NFR-RN20** Secure-by-Default Configuration & Reset — `CRA Annex I 2(b)+(c)` · `GDPR Art. 25(2)` → `SO-D-03.4-002`/`PO-D-03.4-001` → `PRIN-ENG-04` → CSF PR.PS-01 |
 | **Interfaces:** Configuration baseline repository |
 | **Dependencies:**<br>• **Stakeholders:** Security Engineers, Platform Operations<br>• **Data Sources:** Baseline definitions; configuration states<br>• **Extraction Periodicity:** on change<br>• **Information Systems / Databases:** Internal Application Database (configuration records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -378,7 +378,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R5.1 **Name:** Monitor and correlate security events |
 | **Description:** The system must collect and correlate security-relevant events from the ICT estate, the product fleet, and the AI platform, presenting them for detection and triage. |
 | **Requirement Origin:** Security Operations Charter (24/7 SOC) |
-| **Security & Privacy Constraints:**<br>**Chain** Event Monitoring Family — `CRA Annex I Part I (2)(l)` → `SO-D-04.1-002` · `NIS 2 Art. 21(2)(c)` → `SO-D-04.1-003` · `DORA Art. 11` → `SO-D-04.1-005` → `PRIN-ENG-07` → CSF DE.CM-01, DE.CM-09 |
+| **Security & Privacy Constraints:**<br>**Chain** Event Monitoring Family — `CRA Annex I Part I (2)(l)` → `SO-D-04.1-002` · `NIS 2 Art. 21(2)(c)` → `SO-D-04.1-003` · `DORA Art. 11` → `SO-D-04.1-004` → `PRIN-ENG-07` → CSF DE.CM-01, DE.CM-09 |
 | **Interfaces:** Monitoring consoles |
 | **Dependencies:**<br>• **Stakeholders:** SOC Analysts<br>• **Data Sources:** Estate and fleet event streams<br>• **Extraction Periodicity:** continuous<br>• **Information Systems / Databases:** Security Event Store<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -391,7 +391,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R5.2 **Name:** Triage incidents and execute unified regulatory notification |
 | **Description:** The system must triage security incidents from one incident record, and when statutory criteria are met, generate and dispatch the notifications required by each applicable regime — supervisory, CSIRT, financial-authority, and market-surveillance — from a single clock-start discipline. |
 | **Requirement Origin:** Incident Response Procedure & Regulatory Notification Matrix |
-| **Security & Privacy Constraints:**<br>**NFR-RN18** Unified Notification Clock Enforcement — `GDPR Art. 33(1)` · `CRA Art. 14` · `NIS 2 Art. 23` · `DORA Art. 19` · `AI Act Art. 73` → `PO-D-04.3-001`/`SO-D-04.3-002`..`SO-D-04.3-005` → `PRIN-ENG-05` → CSF RS.MA-04, RS.MA-02, RS.CO-02 |
+| **Security & Privacy Constraints:**<br>**Chain** GDPR Art. 33(1) → `PO-D-04.3-001` · NIS 2 Art. 23(4)(a) → `SO-D-04.3-003` · DORA Art. 19(1) → `SO-D-04.3-004`<br>**Chain** **NFR-RN18** Unified Notification Clock Enforcement — `GDPR Art. 33(1)` · `CRA Art. 14` · `NIS 2 Art. 23` · `DORA Art. 19` · `AI Act Art. 73` → `SO-D-04.3-005`/`SO-D-04.3-002`..`SO-D-04.3-005` → `PRIN-ENG-05` → CSF RS.MA-04, RS.MA-02, RS.CO-02<br>**Chain** GDPR Art. 33(1) → `PO-D-04.3-001` · NIS 2 Art. 23(4)(a) → `SO-D-04.3-003` · DORA Art. 19(1) → `SO-D-04.3-004` |
 | **Interfaces:** Incident console; notification dispatch interface |
 | **Dependencies:**<br>• **Stakeholders:** SOC Managers, Compliance Officers<br>• **Data Sources:** Incident records; notification criteria and receipts<br>• **Extraction Periodicity:** on event<br>• **Information Systems / Databases:** Internal Application Database (incident records); Notification Dispatch Service<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -404,7 +404,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R5.3 **Name:** Maintain backups and execute disaster recovery |
 | **Description:** The system must maintain backups of critical data and systems and execute disaster-recovery and continuity procedures within the recovery objectives. |
 | **Requirement Origin:** Business Continuity & Disaster Recovery Plan |
-| **Security & Privacy Constraints:**<br>**Chain** Continuity & Recovery Family — `GDPR Art. 32(1)(c)` → `PO-D-04.2-001`/`PO-D-04.4-001` · `CRA Annex I Part I (2)` → `SO-D-04.2-002`/`SO-D-04.4-002` · `NIS 2 Art. 21(2)(c)` → `SO-D-04.2-003`/`SO-D-04.4-003` · `DORA Art. 11-12` → `SO-D-04.4-005` → `PRIN-ENG-04` → CSF RC.RP-04, PR.IR-03, PR.DS-11 |
+| **Security & Privacy Constraints:**<br>**Chain** DORA Art. 11(1) → `SO-D-04.2-004`<br>**Chain** Continuity & Recovery Family — `GDPR Art. 32(1)(c)` → `PO-D-04.2-001`/`PO-D-04.4-001` · `CRA Annex I Part I (2)` → `SO-D-04.2-002`/`SO-D-04.4-002` · `NIS 2 Art. 21(2)(c)` → `SO-D-04.2-003`/`SO-D-04.4-003` · `DORA Art. 11-12` → `SO-D-04.4-004` → `PRIN-ENG-04` → CSF RC.RP-04, PR.IR-03, PR.DS-11 |
 | **Interfaces:** Backup console; recovery runbooks |
 | **Dependencies:**<br>• **Stakeholders:** IT Operations, Business Continuity Managers<br>• **Data Sources:** Backup catalogues; recovery exercise records<br>• **Extraction Periodicity:** per backup cycle<br>• **Information Systems / Databases:** Backup Estate<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -444,7 +444,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R6.2 **Name:** Enforce tiered retention schedules |
 | **Description:** The system must retain records according to tiered retention schedules derived from statutory floors and business purpose, and purge or de-identify records when their schedule expires. |
 | **Requirement Origin:** Retention Schedule Standard (Statutory Financial Floors) |
-| **Security & Privacy Constraints:**<br>**Chain** Retention Family — `GDPR Art. 5(1)(e)` → `PO-D-05.2-001` · `DORA/NIS 2 record floors` → `SO-D-05.2-005` → `PRIN-ENG-07` → CSF ID.AM-08, ID.AM-03 |
+| **Security & Privacy Constraints:**<br>**Chain** CRA Art. 13(9) → `SO-D-05.2-002`<br>**Chain** Retention Family — `GDPR Art. 5(1)(e)` → `PO-D-05.2-001` → `PRIN-ENG-07` → CSF ID.AM-08, ID.AM-03 |
 | **Interfaces:** Retention policy console |
 | **Dependencies:**<br>• **Stakeholders:** Compliance Officers, Records Managers<br>• **Data Sources:** Retention schedules; expiry events<br>• **Extraction Periodicity:** per schedule<br>• **Information Systems / Databases:** Internal Application Database (retention rules)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -483,7 +483,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R6.5 **Name:** Manage AI training-data lifecycle |
 | **Description:** The system must govern the training, validation, and test datasets of the OmniScore models across their lifecycle — collection, preparation, versioning, and retirement — with relevance and representativeness checks. |
 | **Requirement Origin:** AI Data Governance Standard (OmniScore) |
-| **Security & Privacy Constraints:**<br>**Chain** AI Training-Data Governance — `AI Act Art. 10` → `SO-D-05.1-004` → `PRIN-ENG-06` → CSF ID.AM-08, GV.PO-02 |
+| **Security & Privacy Constraints:**<br>**Chain** AI Training-Data Governance — `AI Act Art. 10` → `SO-D-05.1-003` → `PRIN-ENG-06` → CSF ID.AM-08, GV.PO-02 |
 | **Interfaces:** Dataset governance console |
 | **Dependencies:**<br>• **Stakeholders:** AI Data Engineers, AI Governance Lead<br>• **Data Sources:** Dataset versions; lineage and representativeness checks<br>• **Extraction Periodicity:** per training cycle<br>• **Information Systems / Databases:** AI Data Platform (datasets)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -498,7 +498,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R7.1 **Name:** Assess ICT third-party providers and maintain the register |
 | **Description:** The system must assess ICT third-party providers before and during engagement and maintain the register of information on ICT third-party arrangements with their criticality and locations. |
 | **Requirement Origin:** Third-Party Risk Management Standard (DORA Register) |
-| **Security & Privacy Constraints:**<br>**NFR-RN26** ICT Third-Party Register Completeness & Criticality — `DORA Art. 28-30` · `GDPR Art. 28` · `NIS 2 Art. 21(3)` → `SO-D-06.1-005`/`SO-D-06.4-005`/`PO-D-06.1-001`/`SO-D-06.1-002`/`SO-D-06.1-003` → `PRIN-ENG-05` → CSF GV.SC-04, GV.SC-07, ID.AM-05<br>**Chain** Processor & Supplier Due Diligence Family — `GDPR Art. 28` → `PO-D-06.1-001`/`PO-D-06.3-001` · `CRA Annex I` → `SO-D-06.1-002` · `NIS 2 Art. 21(2)-(3)` → `SO-D-06.1-003`/`SO-D-06.3-003` → `PRIN-ENG-05` → CSF GV.SC-01, GV.SC-02, GV.SC-03 |
+| **Security & Privacy Constraints:**<br>**Chain** DORA Art. 28(1) → `SO-D-06.1-004` · NIS 2 Art. 21(2)(d) → `SO-D-06.4-003`<br>**Chain** **NFR-RN26** ICT Third-Party Register Completeness & Criticality — `DORA Art. 28-30` → `SO-D-06.4-004` · `GDPR Art. 28` → `PO-D-06.1-001`/`PO-D-06.3-001` · `NIS 2 Art. 21(3)` → `SO-D-06.1-003`/`SO-D-06.3-003` → `PRIN-ENG-05` → CSF GV.SC-04, GV.SC-07, ID.AM-05<br>**Chain** Processor & Supplier Due Diligence Family — `GDPR Art. 28` → `PO-D-06.1-001`/`PO-D-06.3-001` · `CRA Annex I` → `SO-D-06.1-002` · `NIS 2 Art. 21(2)-(3)` → `SO-D-06.1-003`/`SO-D-06.3-003` → `PRIN-ENG-05` → CSF GV.SC-01, GV.SC-02, GV.SC-03<br>**Chain** DORA Art. 28(1) → `SO-D-06.1-004` |
 | **Interfaces:** Vendor assessment console; register interface |
 | **Dependencies:**<br>• **Stakeholders:** Vendor Risk Managers, CISO<br>• **Data Sources:** Assessments; register entries<br>• **Extraction Periodicity:** per assessment cycle<br>• **Information Systems / Databases:** Internal Application Database (vendor register)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -511,7 +511,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R7.2 **Name:** Maintain software bills of materials |
 | **Description:** The system must generate and maintain machine-readable bills of materials for the product releases and AI model components. |
 | **Requirement Origin:** Secure Supply Chain Standard |
-| **Security & Privacy Constraints:**<br>**Chain** SBOM Maintenance — `CRA Annex I Part II (1)+Art. 13(6)` → `SO-D-06.2-002` → `PRIN-ENG-05` → CSF GV.SC-09, ID.AM-02 |
+| **Security & Privacy Constraints:**<br>**Chain** SBOM Maintenance — `CRA Annex I Part II (1)+Art. 13(6)` → `SO-D-06.2-001` → `PRIN-ENG-05` → CSF GV.SC-09, ID.AM-02 |
 | **Interfaces:** SBOM generation interface |
 | **Dependencies:**<br>• **Stakeholders:** Release Engineers<br>• **Data Sources:** Component inventories; release artefacts<br>• **Extraction Periodicity:** per release<br>• **Information Systems / Databases:** Internal Application Database (SBOM records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -524,7 +524,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R7.3 **Name:** Enforce contractual security terms |
 | **Description:** The system must record and track the security contractual terms of supplier and processor engagements, including sub-processor chains. |
 | **Requirement Origin:** Procurement Security Standard (Processor & Supplier Clauses) |
-| **Security & Privacy Constraints:**<br>**Chain** Contractual Security Terms — `GDPR Art. 28(3)` → `PO-D-06.3-001` · `CRA` → `SO-D-06.3-002` · `NIS 2 Art. 21(3)` → `SO-D-06.3-003` · `DORA Art. 30` → `SO-D-06.3-005` → `PRIN-ENG-05` → CSF GV.SC-04, GV.SC-07 |
+| **Security & Privacy Constraints:**<br>**Chain** Contractual Security Terms — `GDPR Art. 28(3)` → `PO-D-06.3-001` · `CRA` → `SO-D-06.3-002` · `NIS 2 Art. 21(3)` → `SO-D-06.3-003` · `DORA Art. 30` → `SO-D-06.3-004` → `PRIN-ENG-05` → CSF GV.SC-04, GV.SC-07 |
 | **Interfaces:** Contract tracking console |
 | **Dependencies:**<br>• **Stakeholders:** Procurement, Compliance<br>• **Data Sources:** Contract terms; sub-processor chains<br>• **Extraction Periodicity:** on change<br>• **Information Systems / Databases:** Internal Application Database (contract records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -551,7 +551,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R8.1 **Name:** Apply secure development standards |
 | **Description:** The system must enforce the secure development standards — design review, coding outcomes, and code review — for all product components and AI model code. |
 | **Requirement Origin:** Secure Development Standard |
-| **Security & Privacy Constraints:**<br>**Chain** Secure Development Family — `GDPR Art. 25(1)` → `PO-D-07.1-001` · `CRA Annex I Part I` → `SO-D-07.1-002` · `NIS 2 Art. 21(2)` → `SO-D-07.1-003` · `AI Act Art. 15(1)` → `SO-D-07.1-004` → `PRIN-ENG-02` → CSF PR.PS-06, GV.PO-02, GV.SC-02 |
+| **Security & Privacy Constraints:**<br>**Chain** DORA Art. 9(4)(b) → `SO-D-07.1-004`<br>**Chain** Secure Development Family — `GDPR Art. 25(1)` → `PO-D-07.1-001` · `CRA Annex I Part I` → `SO-D-07.1-002` · `NIS 2 Art. 21(2)` → `SO-D-07.1-003` · `AI Act Art. 15(1)` → `SO-D-07.1-005` → `PRIN-ENG-02` → CSF PR.PS-06, GV.PO-02, GV.SC-02 |
 | **Interfaces:** Design review records; review interface |
 | **Dependencies:**<br>• **Stakeholders:** Development Managers, Security Engineers<br>• **Data Sources:** Review outcomes; standards versions<br>• **Extraction Periodicity:** per change<br>• **Information Systems / Databases:** Internal Application Database (review records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -564,7 +564,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R8.2 **Name:** Secure the release pipeline |
 | **Description:** The system must enforce security gates in the release pipeline — build verification, dependency and artefact checks, and signing — before a release is distributed. |
 | **Requirement Origin:** Release Management Standard |
-| **Security & Privacy Constraints:**<br>**NFR-RN20** Secure-by-Default Configuration & Reset (co-driver) — `CRA Annex I 2(b)+(c)` → `SO-D-03.4-002` → `PRIN-ENG-04` → CSF PR.PS-01<br>**Chain** Attack-Surface Limitation in Production — `CRA Annex I Part I (2)(j)` → `SO-D-07.2-002` → `PRIN-ENG-02` → CSF PR.PS-01, PR.PS-02 |
+| **Security & Privacy Constraints:**<br>**NFR-RN20** Secure-by-Default Configuration & Reset (co-driver) — `CRA Annex I 2(b)+(c)` → `SO-D-03.4-002` → `PRIN-ENG-04` → CSF PR.PS-01<br>**Chain** Attack-Surface Limitation in Production — `CRA Annex I Part I (2)(j)` → `SO-D-07.2-001` → `PRIN-ENG-02` → CSF PR.PS-01, PR.PS-02 |
 | **Interfaces:** Pipeline gate console |
 | **Dependencies:**<br>• **Stakeholders:** Release Engineers<br>• **Data Sources:** Gate outcomes; artefact states<br>• **Extraction Periodicity:** per release<br>• **Information Systems / Databases:** Release Pipeline (gate records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -590,7 +590,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R8.4 **Name:** Secure the AI training and serving pipeline |
 | **Description:** The system must protect the AI training and serving pipeline — data ingestion, training jobs, and model artefacts — against unauthorized modification, with verification of model integrity at serving. |
 | **Requirement Origin:** AI Platform Security Standard (OmniScore) |
-| **Security & Privacy Constraints:**<br>**NFR-RN11** OmniScore Decision & Model Integrity at Serving (co-driver) — `CRA Annex I Part I (2)(f)+(l)` · `DORA Art. 9` → `SO-D-01.4-002`/`SO-D-01.4-004` → `PRIN-ENG-07` → CSF PR.DS-01, PR.DS-10, PR.PS-04 |
+| **Security & Privacy Constraints:**<br>**NFR-RN11** OmniScore Decision & Model Integrity at Serving (co-driver) — `CRA Annex I Part I (2)(f)+(l)` · `DORA Art. 9` → `SO-D-01.4-003`/`SO-D-01.4-004` → `PRIN-ENG-07` → CSF PR.DS-01, PR.DS-10, PR.PS-04 |
 | **Interfaces:** Training pipeline console; serving verification interface |
 | **Dependencies:**<br>• **Stakeholders:** ML Engineers, AI Governance Lead<br>• **Data Sources:** Pipeline states; model artefact verifications<br>• **Extraction Periodicity:** per training cycle<br>• **Information Systems / Databases:** AI Platform (pipeline records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -605,7 +605,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R9.1 **Name:** Deliver security and privacy awareness training |
 | **Description:** The system must deliver and record security and privacy awareness training for the workforce at onboarding and at the periodic cadence. |
 | **Requirement Origin:** Awareness Program Charter |
-| **Security & Privacy Constraints:**<br>**Chain** Awareness & Hygiene Training — `NIS 2 Art. 21(2)(g)` → `SO-D-08.1-003`/`SO-D-08.1-005` → `PRIN-ENG-01` → CSF PR.AT-01, PR.PS-01 |
+| **Security & Privacy Constraints:**<br>**Chain** CRA → `SO-D-08.1-002` · DORA Art. 13(6) → `SO-D-08.1-004`<br>**Chain** Awareness & Hygiene Training — `NIS 2 Art. 21(2)(g)` → `SO-D-08.1-003` → `PRIN-ENG-01` → CSF PR.AT-01, PR.PS-01 |
 | **Interfaces:** Training delivery interface |
 | **Dependencies:**<br>• **Stakeholders:** Awareness Officers, All Staff<br>• **Data Sources:** Course completions<br>• **Extraction Periodicity:** per campaign<br>• **Information Systems / Databases:** Internal Application Database (training records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -618,7 +618,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R9.2 **Name:** Maintain role-specific competence programs |
 | **Description:** The system must maintain role-specific competence programs — development, operations, AI oversight — and record the competence state of each role holder. |
 | **Requirement Origin:** Competence Framework (Role-Specific Curricula) |
-| **Security & Privacy Constraints:**<br>**NFR-RN22** Human Oversight Effectiveness (co-driver) — `AI Act Art. 14` → `SO-D-08.2-004` → `PRIN-ENG-01` → CSF PR.AT-02, PR.AT-01, GV.RR-02<br>**Chain** Role Competence Family — `NIS 2 Art. 21(2)(g)-(h)` → `SO-D-08.2-003`/`SO-D-08.3-002` → `PRIN-ENG-01` → CSF PR.AT-01, PR.AT-02 |
+| **Security & Privacy Constraints:**<br>**Chain** DORA Art. 13(6) → `SO-D-08.2-004` · NIS 2 Art. 20(2) → `SO-D-08.3-001`<br>**Chain** **NFR-RN22** Human Oversight Effectiveness (co-driver) — `AI Act Art. 14` → `SO-D-08.2-005` → `PRIN-ENG-01` → CSF PR.AT-02, PR.AT-01, GV.RR-02<br>**Chain** Role Competence Family — `NIS 2 Art. 21(2)(g)-(h)` → `SO-D-08.2-003`/`SO-D-08.3-002` → `PRIN-ENG-01` → CSF PR.AT-01, PR.AT-02 |
 | **Interfaces:** Competence console |
 | **Dependencies:**<br>• **Stakeholders:** HR, Line Managers<br>• **Data Sources:** Role curricula; competence states<br>• **Extraction Periodicity:** per cycle<br>• **Information Systems / Databases:** Internal Application Database (competence records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -645,7 +645,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R10.1 **Name:** Maintain the unified management system |
 | **Description:** The system must maintain the security policies, procedures, and the certified management system documentation that implement the data-protection, product-security, entity-security, ICT-resilience, and AI-governance principles. |
 | **Requirement Origin:** ISMS Charter & Certified Management System |
-| **Security & Privacy Constraints:**<br>**Chain** Governance Policy Family — `GDPR Art. 24` → `PO-D-09.1-001` · `CRA` → `SO-D-09.1-002` · `NIS 2 Art. 20` → `SO-D-09.1-003` · `DORA Art. 6(5)` → `SO-D-09.1-005` → `PRIN-ENG-05` → CSF GV.PO-01, GV.PO-02, GV.RM-04, GV.OV-03 |
+| **Security & Privacy Constraints:**<br>**Chain** Governance Policy Family — `GDPR Art. 24` → `PO-D-09.1-001` · `CRA` → `SO-D-09.1-002` · `NIS 2 Art. 20` → `SO-D-09.1-003` · `DORA Art. 6(5)` → `SO-D-09.1-004` → `PRIN-ENG-05` → CSF GV.PO-01, GV.PO-02, GV.RM-04, GV.OV-03 |
 | **Interfaces:** Management system document portal |
 | **Dependencies:**<br>• **Stakeholders:** CISO, Compliance<br>• **Data Sources:** Policy and procedure versions<br>• **Extraction Periodicity:** on change<br>• **Information Systems / Databases:** Internal Application Database (ISMS documents)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -658,7 +658,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R10.2 **Name:** Execute unified risk and impact assessments |
 | **Description:** The system must execute the unified lifecycle risk assessment that feeds the data-protection impact assessment, the product-security risk assessment, the entity risk analysis, the ICT risk-management framework, and the AI risk-management system, updating on material change. |
 | **Requirement Origin:** Enterprise Risk Methodology (Five-Regime Unified Pass) |
-| **Security & Privacy Constraints:**<br>**NFR-RN24** Post-Market Monitoring Integration — `AI Act Art. 72` · `DORA ICT-risk feedback` → `SO-D-10.1-004`/`SO-D-09.2-005` → `PRIN-ENG-02` → CSF DE.CM-09, ID.IM-04<br>**Chain** Unified Lifecycle Assessment Family (T-003) — `GDPR Art. 35` → `PO-D-09.2-001` · `CRA Art. 13(2)` → `SO-D-09.2-002` · `NIS 2 Art. 21(2)(a)` → `SO-D-09.2-003` · `AI Act Art. 9(1)` → `SO-D-09.2-004` → `PRIN-ENG-05` → CSF ID.RA-01, ID.RA-05, GV.RM-01, GV.RM-06 |
+| **Security & Privacy Constraints:**<br>**Chain** AI Act Art. 72(1) → `SO-D-10.1-005`<br>**Chain** **NFR-RN24** Post-Market Monitoring Integration — `AI Act Art. 72` · `DORA ICT-risk feedback` → `SO-D-10.1-004`/`SO-D-09.2-005` → `PRIN-ENG-02` → CSF DE.CM-09, ID.IM-04<br>**Chain** Unified Lifecycle Assessment Family (T-003) — `GDPR Art. 35` → `PO-D-09.2-001` · `CRA Art. 13(2)` → `SO-D-09.2-002` · `NIS 2 Art. 21(2)(a)` → `SO-D-09.2-003` · `AI Act Art. 9(1)` → `SO-D-09.2-005` → `PRIN-ENG-05` → CSF ID.RA-01, ID.RA-05, GV.RM-01, GV.RM-06<br>**Chain** AI Act Art. 72(1) → `SO-D-10.1-005` |
 | **Interfaces:** Assessment workbench |
 | **Dependencies:**<br>• **Stakeholders:** CISO, DPO, AI Governance Lead<br>• **Data Sources:** Assessment inputs; regime outputs<br>• **Extraction Periodicity:** on material change / annual<br>• **Information Systems / Databases:** Internal Application Database (assessment records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -671,7 +671,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R10.3 **Name:** Maintain asset and AI documentation inventories |
 | **Description:** The system must maintain the asset inventory and the technical documentation of the product and the high-risk AI system, keeping them current across the lifecycle. |
 | **Requirement Origin:** Asset Management Standard & AI Technical Documentation Set |
-| **Security & Privacy Constraints:**<br>**Chain** Documentation & Records Family — `GDPR Art. 30` → `PO-D-09.4-001` · `CRA Art. 13+Annex VII` → `SO-D-09.4-002`/`SO-D-10.2-002` · `AI Act Art. 11+Annex IV` → `SO-D-09.4-004` · `NIS 2/DORA` → `SO-D-09.4-003`/`SO-D-09.4-005` → `PRIN-ENG-05` → CSF GV.OC-03, ID.AM-03, PR.PS-04, GV.PO-02 |
+| **Security & Privacy Constraints:**<br>**Chain** CRA Art. 31(2) → `SO-D-09.3-001` · NIS 2 Art. 21(2)(i) → `SO-D-09.3-002` · DORA Art. 7(1) → `SO-D-09.3-003` · NIS 2 Art. 24(1) → `SO-D-09.4-003`<br>**Chain** Documentation & Records Family — `GDPR Art. 30` → `PO-D-09.4-001` · `CRA Art. 13+Annex VII` → `SO-D-09.4-002`/`SO-D-10.2-002` · `AI Act Art. 11+Annex IV` → `SO-D-09.4-005` · `NIS 2/DORA` → `SO-D-09.4-004`/`SO-D-09.4-005` → `PRIN-ENG-05` → CSF GV.OC-03, ID.AM-03, PR.PS-04, GV.PO-02 |
 | **Interfaces:** Asset inventory console; documentation portal |
 | **Dependencies:**<br>• **Stakeholders:** IT Asset Managers, AI Governance Lead<br>• **Data Sources:** Asset records; documentation versions<br>• **Extraction Periodicity:** continuous<br>• **Information Systems / Databases:** Internal Application Database (asset and document records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -698,7 +698,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R11.1 **Name:** Operate threat detection capabilities |
 | **Description:** The system must operate detection capabilities over the monitored estates, raising alerts on suspected malicious or anomalous activity. |
 | **Requirement Origin:** Detection Engineering Standard (SOC) |
-| **Security & Privacy Constraints:**<br>**Chain** Threat Detection Family — `CRA Annex I Part I (2)(l)` → `SO-D-10.1-002` · `NIS 2 Art. 21(2)(c)` → `SO-D-10.1-003` · `DORA Art. 10-11` → `SO-D-10.1-005` → `PRIN-ENG-02` → CSF DE.CM-01, DE.CM-09 |
+| **Security & Privacy Constraints:**<br>**Chain** GDPR Art. 32(1)(b) → `PO-D-10.1-001`<br>**Chain** Threat Detection Family — `CRA Annex I Part I (2)(l)` → `SO-D-10.1-002` · `NIS 2 Art. 21(2)(c)` → `SO-D-10.1-003` · `DORA Art. 10-11` → `SO-D-10.1-004` → `PRIN-ENG-02` → CSF DE.CM-01, DE.CM-09 |
 | **Interfaces:** Detection consoles |
 | **Dependencies:**<br>• **Stakeholders:** SOC Analysts, Detection Engineers<br>• **Data Sources:** Alert records; detection rules<br>• **Extraction Periodicity:** continuous<br>• **Information Systems / Databases:** Security Event Store (alerts)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -711,7 +711,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R11.2 **Name:** Maintain immutable audit logging |
 | **Description:** The system must record security-relevant and decision-relevant events in tamper-evident storage retained per the statutory floors, with integrity verification. |
 | **Requirement Origin:** Audit & Logging Standard (Statutory Floors) |
-| **Security & Privacy Constraints:**<br>**NFR-RN17** Token-Only Decision-Record Retention (co-driver) — `GDPR Art. 17` · statutory floors → `PO-D-05.3-001` → `PRIN-ENG-07` → CSF PR.DS-10, ID.AM-08<br>**NFR-RN23** AI Event Logging over Lifetime (co-driver) — `AI Act Art. 12(1)+Art. 19` → `SO-D-10.2-004` → `PRIN-ENG-07` → CSF PR.PS-04, DE.CM-09<br>**Chain** Compliance Records Family — `GDPR Art. 5(2)+Art. 24` → `PO-D-10.2-001` · `CRA Annex VII` → `SO-D-10.2-002` · `NIS 2/DORA` → `SO-D-10.2-003`/`SO-D-10.2-005` → `PRIN-ENG-05` → CSF GV.PO-02, GV.OV-03, ID.AM-03 |
+| **Security & Privacy Constraints:**<br>**NFR-RN17** Token-Only Decision-Record Retention (co-driver) — `GDPR Art. 17` · statutory floors → `PO-D-05.3-001` → `PRIN-ENG-07` → CSF PR.DS-10, ID.AM-08<br>**NFR-RN23** AI Event Logging over Lifetime (co-driver) — `AI Act Art. 12(1)+Art. 19` → `SO-D-10.2-004` → `PRIN-ENG-07` → CSF PR.PS-04, DE.CM-09<br>**Chain** Compliance Records Family — `GDPR Art. 5(2)+Art. 24` → `PO-D-10.2-001` · `CRA Annex VII` → `SO-D-10.2-002` · `DORA` → `SO-D-10.2-003` → `PRIN-ENG-05` → CSF GV.PO-02, GV.OV-03, ID.AM-03 |
 | **Interfaces:** Audit console |
 | **Dependencies:**<br>• **Stakeholders:** Internal Audit, Compliance<br>• **Data Sources:** Event records; integrity verifications<br>• **Extraction Periodicity:** continuous<br>• **Information Systems / Databases:** Tamper-Evident Event Store<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -724,7 +724,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R11.3 **Name:** Execute penetration and resilience testing |
 | **Description:** The system must execute the penetration-testing and digital-operational-resilience testing programmes — including threat-led scenarios — and record the findings with remediation tracking. |
 | **Requirement Origin:** Resilience Testing Programme (TLPT Cadence) |
-| **Security & Privacy Constraints:**<br>**Chain** Penetration & Resilience Testing Family — `GDPR Art. 32(1)(d)` → `PO-D-10.3-001` · `CRA Annex I Part II (3)` → `SO-D-10.3-002` · `NIS 2 Art. 21(2)(f)` → `SO-D-10.3-003` · `DORA Art. 24-27` → `SO-D-10.3-005` → `PRIN-ENG-02` → CSF ID.RA-01, GV.OV-01, GV.OC-03 |
+| **Security & Privacy Constraints:**<br>**Chain** Penetration & Resilience Testing Family — `GDPR Art. 32(1)(d)` → `PO-D-10.3-001` · `CRA Annex I Part II (3)` → `SO-D-10.3-002` · `NIS 2 Art. 21(2)(f)` → `SO-D-10.3-003` · `DORA Art. 24-27` → `SO-D-10.3-004` → `PRIN-ENG-02` → CSF ID.RA-01, GV.OV-01, GV.OC-03 |
 | **Interfaces:** Testing programme calendar; findings register |
 | **Dependencies:**<br>• **Stakeholders:** Penetration Testers, CISO<br>• **Data Sources:** Test scenarios; findings<br>• **Extraction Periodicity:** per programme<br>• **Information Systems / Databases:** Internal Application Database (findings)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -737,7 +737,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R11.4 **Name:** Test AI adversarial robustness and explainability |
 | **Description:** The system must test the OmniScore models against adversarial manipulation and produce the explainability information that lets overseers and applicants understand decision drivers. |
 | **Requirement Origin:** AI Validation Standard (Adversarial & Explainability) |
-| **Security & Privacy Constraints:**<br>**NFR-RN25** AI Adversarial Robustness Measures — `AI Act Art. 9(6)-(7)+Art. 15(1),(4)-(5)` · `CRA Annex I Part I (2)(l)` → `SO-D-02.1-004`/`SO-D-02.4-004`/`SO-D-07.1-004`/`SO-D-07.2-004`/`SO-D-10.3-004` → `PRIN-ENG-02` → CSF ID.RA-04, PR.PS-06, RS.MI-01 |
+| **Security & Privacy Constraints:**<br>**NFR-RN25** AI Adversarial Robustness Measures — `AI Act Art. 9(6)-(7)+Art. 15(1),(4)-(5)` → `SO-D-02.1-005`/`SO-D-02.4-003`/`SO-D-07.1-005`/`SO-D-07.2-003`/`SO-D-10.3-005` · `CRA Annex I Part I (2)(l)` → `SO-D-02.1-002`/`SO-D-07.2-001` → `PRIN-ENG-02` → CSF ID.RA-04, PR.PS-06, RS.MI-01 |
 | **Interfaces:** Adversarial testing console; explanation interface |
 | **Dependencies:**<br>• **Stakeholders:** AI Governance Lead, Model Owners<br>• **Data Sources:** Adversarial results; explanation artefacts<br>• **Extraction Periodicity:** per validation cycle<br>• **Information Systems / Databases:** AI Validation Platform (results)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -763,7 +763,7 @@ The platform non-functional requirements define the measurable quality targets g
 | **RN8** | Periodic fairness assessments must evidence decision-disparity limits across demographic groups within the approved thresholds. | MUST | AI Fairness |
 | **RN9** | All supervisory, CSIRT, market-surveillance, and registry integrations must communicate over authenticated, integrity-protected channels. | MUST | Interoperability |
 | **RN10** | Production estates must remain logically segregated per business line and jurisdiction, with no unauthorized cross-estate data flows. | MUST | Architectural Integrity |
-| **RN13** | All data crossing customer, inter-service, third-party, and authority channels shall be cryptographically protected in transit with state-of-the-art mechanisms and integrity verification, refusing unauthenticated channels. | MUST | Security — Transport (GDPR Art. 32(1)(b)+Art. 32(2) → PO-D-01.2-001 · CRA (2)(e)+(j) → SO-D-01.2-002 · NIS 2 Art. 21(2)(h) → SO-D-01.2-003 · DORA Art. 9 → SO-D-01.2-004 → PRIN-ENG-01 → CSF PR.DS-02, PR.IR-01) |
+| **RN13** | All data crossing customer, inter-service, third-party, and authority channels shall be cryptographically protected in transit with state-of-the-art mechanisms and integrity verification, refusing unauthenticated channels. | MUST | Security — Transport (GDPR Art. 32(1)(b)+Art. 32(2) → PO-D-01.2-001 · CRA (2)(e)+(j) → SO-D-01.2-002 · DORA Art. 9 → SO-D-01.2-003 → PRIN-ENG-01 → CSF PR.DS-02, PR.IR-01) |
 
 *Table 8. Summary table of Product Use Cases (PUC)*
 

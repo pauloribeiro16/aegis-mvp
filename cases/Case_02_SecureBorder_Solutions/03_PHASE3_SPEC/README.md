@@ -13,37 +13,56 @@ This directory houses the formal **Functional Requirements and System Use Cases 
 
 ```text
 cases/Case_02_SecureBorder_Solutions/03_PHASE3_SPEC/
-├── README.md                                    # (This file) Overview and roadmap for Phase 3
-├── PHASE3_PROCESS_AND_METHODOLOGY.md            # Normative process manual (Steps 1–5b, rounds, Part 1 Exit Gate)
+├── README.md                                    # (This file) Phase 3 Navigation & Executive Index
+├── PHASE3_PROCESS_AND_METHODOLOGY.md            # Master normative guide: RE literature, iterative risk-acceptance rounds, and EARS rules
 │
-├── v0_functional_baseline/                      # [VERSION 0] Locked Pure Functional Baseline
-│   ├── README.md                                # V0 Scope, Rationale, and Architecture
-│   ├── Doc01_Requirements_Elicitation_and_PUC.md# 28 Functional Requirements & 28 PUCs (Pure Functional)
-│   └── Doc02_System_Use_Cases.md                # 28 Level-1 Sea-Level Use Cases
+├── part1_security_privacy/                        # [PHASE 3 — PART 1] Security & Compliance (ADR-006)
+│   ├── Doc01_Requirements_Elicitation_and_PUC.md# Active Doc01 (working copy, synced to the current version folder)
+│   ├── Doc02_System_Use_Cases.md                # Active Doc02 (working copy, synced to the current version folder)
+│   ├── Doc03_Organizational_Requirements.md    # Organizational lane (ADR-008 PROCESS carrier)
+│   │
+│   ├── v0_functional_baseline/                      # [VERSION 0] Pure Functional Baseline (LOCKED)
+│   │   ├── README.md                                # V0 Scope, Rationale, and Architecture
+│   │   ├── Doc01_Requirements_Elicitation_and_PUC.md# 28 Functional Requirements & 28 PUCs (Pure Functional GPTools E1.1)
+│   │   └── Doc02_System_Use_Cases.md                # 28 Sea-Level System Use Cases (Cockburn Level-1 MSS GPTools E1.2)
+│   │
+│   ├── v1_security_privacy_synthesis/               # [VERSION 1] Round-converged synthesis (APPROVED)
+│   │   ├── README.md                                # V1 Synthesis Scope, Accepted Constraints (RN11–RN30), Round Register
+│   │   ├── Doc01_Requirements_Elicitation_and_PUC.md# 28 Functional Cards + Absorbed Constraints RN11–RN30 + 92 Chain Rows
+│   │   └── Doc02_System_Use_Cases.md                # 28 Fully-Dressed Use Cases with Accepted Security Behavior
+│   │
+│   ├── v2_security_privacy_synthesis/               # [VERSION 2] Round-2 convergence — risk-accepted baseline (APPROVED, ACTIVE)
+│   │   ├── README.md                                # V2 Scope and Delta from V1
+│   │   ├── Doc01_Requirements_Elicitation_and_PUC.md# 28 Functional Cards, R9.3 MUST (3.0.0)
+│   │   └── Doc02_System_Use_Cases.md                # 28 Fully-Dressed Use Cases, matrix aligned (3.0.0)
+│   │
+│   ├── analysis_v0_to_v1/                           # [COGNITIVE TRAJECTORY] Step-by-Step Synthesis Dossier
+│   │   README.md                                # Overview, the five steps, and the Exit Gate record
+│   │   STEP1_V0_FUNCTIONAL_AUDIT_AND_BOUNDARY_ANALYSIS.md   # Step 1: Functional audit, assets, boundaries, ingress points
+│   │   STEP2_REGULATORY_CROSS_CUTTING_ANALYSIS.md           # Step 2: Four-ambit juxtaposition → RN11–RN30 + 92 chain bindings
+│   │   STEP3_EARS_FORMULATION_AND_ACCEPTANCE.md             # Step 3: Accepted formulations & verdict trace
+│   │   STEP4_ABSORPTION_AND_TRACEABILITY_WEAVING.md         # Step 4: V1 absorption, UC upgrade, control selection
+│   │   STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md               # Step 5: D1–D4 changes + evaluated-no-change rows
+│   │
+│   └── synthesis_rounds/                            # [ROUND CYCLE] Objective/principle/UC mappings + round registers
+│       ├── README.md                                # Navigation, capability-lane rule, current state
+│       ├── OBJECTIVE_MAPPING.md                     # Every Phase 2 objective verdicted against the functional model
+│       ├── PRINCIPLE_MAPPING.md                    # Principle-centric mirror + per-requirement check
+│       ├── UC_OBJECTIVE_CORRESPONDENCE.md          # Use-case-centric view with regulation tags
+│       ├── ROUND1_REGISTER.md                      # Round 1: formulations, verdicts, control selections
+│       ├── ROUND2_REGISTER.md                      # Round 2: D3 elevation(s) and convergence
+│       └── SUFFICIENCY_ASSESSMENT.md               # Compliance + security verdict and residuals
 │
-├── v1_security_privacy_synthesis/               # [VERSION 1] Round-converged Security & Privacy Synthesis (APPROVED, ACTIVE)
-│   ├── README.md                                # V1 Scope, Accepted Constraints (RN11–RN30), Round Register
-│   ├── Doc01_Requirements_Elicitation_and_PUC.md# 28 Cards + Absorbed Constraints + 51 Chain Rows
-│   └── Doc02_System_Use_Cases.md                # 28 Fully-Dressed Use Cases with Accepted Security Behavior
-│
-├── analysis_v0_to_v1/                           # [V0 → V1 TRANSITION] STEP1–STEP5 dossier + Part 1 Exit Gate record (GREEN)
-│
-├── v2_security_privacy_synthesis/               # [VERSION 2] Round-2 convergence — risk-accepted baseline (APPROVED, ACTIVE)
-│   ├── README.md                                # V2 Scope and Delta from V1
-│   ├── Doc01_Requirements_Elicitation_and_PUC.md# 28 Cards, R9.3 MUST (3.0.0)
-│   └── Doc02_System_Use_Cases.md                # 28 Fully-Dressed Use Cases, matrix aligned (3.0.0)
-│
-├── part2_threat_risk/                           # [PHASE 3 — PART 2] Threat & Risk Analysis (entry gate: G1–G6, ADR-006)
-│
-├── Doc01_Requirements_Elicitation_and_PUC.md    # Active working copy (synced to the current version folder: V2)
-└── Doc02_System_Use_Cases.md                    # Active working copy (synced to the current version folder: V2)
+├── part2_threat_risk/                           # [PHASE 3 — PART 2] Threat & Risk Analysis (entry gate: Part 1 exit gate G1–G6)
+│   └── README.md                                # Part 2 Scope, Inputs, and Entry Criterion (ADR-006)
+```
 ```
 
 ---
 
 ## 2. Document Map
 
-### 2.1 [`Doc01_Requirements_Elicitation_and_PUC.md`](Doc01_Requirements_Elicitation_and_PUC.md)
+### 2.1 [`part1_security_privacy/Doc01_Requirements_Elicitation_and_PUC.md`](part1_security_privacy/Doc01_Requirements_Elicitation_and_PUC.md)
 *Direct 1:1 structural fidelity with **GPTools E1.1 — AS-IS / TO-BE Model & Requirements Elicitation***:
 - **Part I – Scope:** Objective, Problem Description, Product Position Statement, Expected Impact, Key Features, Stakeholders, System Users, and Constraints.
 - **Part II – As-Is:** Business Roles in Context, Manual Border-Control Workflow Processes with inefficiency tables, and IT Support.
@@ -57,7 +76,7 @@ cases/Case_02_SecureBorder_Solutions/03_PHASE3_SPEC/
   - Summary Table of Product Use Cases (PUC) — 28 business-triggered use cases.
   - System Use Case Model with Level-0 Mermaid diagram.
 
-### 2.2 [`Doc02_System_Use_Cases.md`](Doc02_System_Use_Cases.md)
+### 2.2 [`part1_security_privacy/Doc02_System_Use_Cases.md`](part1_security_privacy/Doc02_System_Use_Cases.md)
 *Direct 1:1 structural fidelity with **GPTools E1.2 — Requirements Analysis & Use Cases***:
 - **Methodological Framework:** Volere Approach and Triangular Functional Decomposition.
 - **Work Context Model:** Mermaid context diagram with human actors, the platform, and external integrations.

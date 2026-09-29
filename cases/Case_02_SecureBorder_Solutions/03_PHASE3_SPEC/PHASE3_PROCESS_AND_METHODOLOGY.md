@@ -108,7 +108,7 @@ Attempting to author functional requirements and security requirements simultane
 **The AEGIS Solution:** 
 1. Build **Version 0 (V0)** as a **100% pure functional baseline** representing only what the business and users need to accomplish.
 2. Formally synthesize Phase 2 rules against V0 to produce **Version 1 (V1)**, which defines the testable security constraints, fit criteria, and use case extension points without distorting the underlying functional model.
-3. Where the synthesis reveals a genuine functional gap — an obligation that requires user-visible, goal-level functionality absent from V0 — evolve the functional model through the controlled **Functional Refinement Pass (Step 5b)**: every change classified in the D1–D4 taxonomy, proposed through the Step 3 risk-acceptance rounds, with `v0_functional_baseline/` left untouched as the locked reference.
+3. Where the synthesis reveals a genuine functional gap — an obligation that requires user-visible, goal-level functionality absent from V0 — evolve the functional model through the controlled **Functional Refinement Pass (Step 5b)**: every change classified in the D1–D4 taxonomy, proposed through the Step 3 risk-acceptance rounds, with `part1_security_privacy/v0_functional_baseline/` left untouched as the locked reference.
 
 ```mermaid
 flowchart TD
@@ -132,7 +132,7 @@ flowchart TD
     subgraph P3_V1["Phase 3 — Version 1 (Synthesized Baseline)"]
         Doc01_V1["Doc01: Requirements Elicitation<br>(+ Non-Functional Requirements & P2 Trace)"]
         Doc02_V1["Doc02: System Use Cases<br>(+ Security Preconditions, Extensions, Guarantees)"]
-        Round_Notes["Round Documentation<br>(synthesis_rounds/ — client verdicts per item)"]
+        Round_Notes["Round Documentation<br>(part1_security_privacy/synthesis_rounds/ — client verdicts per item)"]
     end
 
     P2 --> Synth
@@ -150,8 +150,8 @@ flowchart TD
 Part 1 (Security & Compliance) runs an iterative loop with two internal roles:
 
 1. **The engine — Iterative Evolution Loop.** A permanent cycle between requirements and use cases, always improving them on two axes:
-   - **Compliance:** every Phase 2 objective is checked against the functional model via `synthesis_rounds/OBJECTIVE_MAPPING.md` (objective-centric) and `UC_OBJECTIVE_CORRESPONDENCE.md` (use-case-centric, regulation-tagged).
-   - **Principles:** every secure-design principle (`PRIN-ENG-01..07`) is checked via `synthesis_rounds/PRINCIPLE_MAPPING.md` (principle-centric) — the same review discipline as objectives, so "are all principles followed?" has a recorded, auditable answer.
+   - **Compliance:** every Phase 2 objective is checked against the functional model via `part1_security_privacy/synthesis_rounds/OBJECTIVE_MAPPING.md` (objective-centric) and `UC_OBJECTIVE_CORRESPONDENCE.md` (use-case-centric, regulation-tagged).
+   - **Principles:** every secure-design principle (`PRIN-ENG-01..07`) is checked via `part1_security_privacy/synthesis_rounds/PRINCIPLE_MAPPING.md` (principle-centric) — the same review discipline as objectives, so "are all principles followed?" has a recorded, auditable answer.
    Each loop iteration: **reveal** use cases and requirements → **check** objectives and principles (both mappings) → **propose** constraints/adjustments for the gaps → **client verdict** per item, recorded in the round documentation → **converge**. Only after convergence do `Doc01`/`Doc02` versions evolve. The transition from assessment to improvement **is** the round itself: the mappings produce proposals, the round documentation turns verdicts into baseline changes.
 2. **The inputs — Requirement Derivation.** The derivation machinery that feeds the loop: the V0 functional baseline, the Phase 2 objectives and principles, the EARS formulation with fit criteria, and the absorption rules (§3.3 of the guidelines). Derivation produces the *candidates*; the loop decides what enters the baseline.
 
@@ -166,7 +166,7 @@ Part 1 (Security & Compliance) runs an iterative loop with two internal roles:
   4. Ensure zero technology leakage (no references to specific databases, cloud services, or protocols).
   5. Derive Product Use Cases (PUC) mapping business events to boundary inputs and outputs.
   6. Author Cockburn Sea-Level Use Cases (`{U.C. n.m}`) focusing on the Main Success Scenario (MSS).
-- **Result:** Locked `v0_functional_baseline/` containing `Doc01` and `Doc02`.
+- **Result:** Locked `part1_security_privacy/v0_functional_baseline/` containing `Doc01` and `Doc02`.
 
 ### Step 2: Cross-Cutting Regulatory Analysis
 - **Goal:** Determine which Phase 2 objectives apply to which functional requirements and areas.
@@ -177,7 +177,7 @@ Part 1 (Security & Compliance) runs an iterative loop with two internal roles:
      - For personal data processing (identity, contact details, logs), apply GDPR Operational Objectives (`PO-D-XX.Y-NNN`).
      - For software components, endpoints, storage, and interfaces, apply CRA Operational Objectives (`SO-D-XX.Y-NNN`).
      - For overall architectural behavior, apply Engineering Principles (`PRIN-ENG-01` to `PRIN-ENG-07`).
-  4. **Exhaustive Coverage Matrix (mandatory output):** **every** Phase 2 objective (`PO-`/`SO-` — all of them) and every `PRIN-ENG-*` principle receives an explicit verdict against the functional model: **applies** (naming the functional carrier `R...`/`{U.C. ...}` and the **skill** from `baseline/skills/` used as the analysis lens) or **no functional carrier** (a recorded decision: organizational/process control per ADR-002, design guidance, or Phase 4 scope). No objective may be left unmapped — this matrix is what makes the synthesis reviewable, and it is what the client sees in the Step 3 rounds. Stored per case as `synthesis_rounds/OBJECTIVE_MAPPING.md`.
+  4. **Exhaustive Coverage Matrix (mandatory output):** **every** Phase 2 objective (`PO-`/`SO-` — all of them) and every `PRIN-ENG-*` principle receives an explicit verdict against the functional model: **applies** (naming the functional carrier `R...`/`{U.C. ...}` and the **skill** from `baseline/skills/` used as the analysis lens) or **no functional carrier** (a recorded decision: organizational/process control per ADR-002, design guidance, or Phase 4 scope). No objective may be left unmapped — this matrix is what makes the synthesis reviewable, and it is what the client sees in the Step 3 rounds. Stored per case as `part1_security_privacy/synthesis_rounds/OBJECTIVE_MAPPING.md`.
 - **Result:** Cross-cutting Traceability Matrix linking `R...` and `{U.C. ...}` to `PO-*`, `SO-*`, and `PRIN-ENG-*`, plus the Exhaustive Coverage Matrix covering 100% of the objective set. Asset and trust-boundary statements are kept here — they drive proposal derivation and later seed Phase 3 Part 2 (ADR-006). Formal threat modeling is **out of Part 1 scope** (it lives in Part 2).
 
 ### Step 3: Iterative Synthesis & Risk-Acceptance Rounds
@@ -187,7 +187,7 @@ Part 1 (Security & Compliance) runs an iterative loop with two internal roles:
      - Security & privacy requirements continue the existing `RN` numbering (e.g. `RN11` onwards in this case, after the base NFR table `RN1`–`RN10`), with the regulatory driver carried as data — never as an ID prefix. CRA-derived: integrity, authentication, access control, audit, cryptography, vulnerability management. GDPR-derived: consent tracking, data minimization, right to erasure, purpose limitation, subject export.
      - **Anchor integrity:** the chain's control anchors must belong to the **published control set of the cited objective** (final column of the Phase 2 deliverable — the controls that objective already maps to). An anchor outside that set requires an explicit rationale and a W4 admission (ADR-001); anchors are never chosen ad hoc. The proposal cites the objective's published set as context, so the client can see which controls the requirement is built from — requirements are thereby informed by the existing control mapping without prescribing any technology.
   2. **Present the round** to the client stakeholders.
-  3. **Record the client verdict per item** in the round documentation (the synthesis_rounds notes): **Accept** · **Reject** (= explicit risk acceptance — the item remains recorded as accepted-by-decision, never silently dropped) · **Adjust** (wording, level, or scope; re-proposed next round).
+  3. **Record the client verdict per item** in the round documentation (the part1_security_privacy/synthesis_rounds notes): **Accept** · **Reject** (= explicit risk acceptance — the item remains recorded as accepted-by-decision, never silently dropped) · **Adjust** (wording, level, or scope; re-proposed next round).
   4. **Iterate** until convergence: a round with no new rejections, or an explicit client decision to close.
 - **Result:** The **accepted constraint set** plus a fully traced round documentation. No `Doc01`/`Doc02` version evolves before convergence.
 
@@ -210,7 +210,7 @@ Part 1 (Security & Compliance) runs an iterative loop with two internal roles:
   2. **Update Functional Cards (`Doc01` in V1):**
      - Absorb each applicable NFR into its `R<n.m>` card as a **`Security & Privacy Constraints:` row** carrying the full `regulation article → Phase 2 rule → PRIN-ENG → control anchor` chain; keep cross-cutting NFRs standalone in the Quality Attributes table.
      - Add security and privacy dependency references to the `Dependencies` block of individual requirement cards.
-- **Result:** Updated `v1_security_privacy_synthesis/` containing augmented `Doc01` and `Doc02`, plus the analysis dossier.
+- **Result:** Updated `part1_security_privacy/v1_security_privacy_synthesis/` containing augmented `Doc01` and `Doc02`, plus the analysis dossier.
 
 ### Step 5b: Functional Refinement Pass (V1 Functional Evolution)
 - **Goal:** Let the synthesis legitimately evolve the functional model where it revealed genuine gaps — without corrupting V0 and without re-opening elicitation. Refinement items (D1 derived requirements, D2 refinements, D3 re-prioritizations) **enter the Step 3 round cycle as proposals** before absorption — the client accepts or rejects them like any other constraint.
@@ -222,13 +222,13 @@ Part 1 (Security & Compliance) runs an iterative loop with two internal roles:
   - **D4 — Card split:** distinct security surfaces within one V0 card demand separate lifecycle or priority. Highest ceremony; old→new renumbering is recorded; use only when D1–D3 demonstrably cannot express the change.
 - **Prohibited:** deleting or silently shrinking V0 scope; inventing functionality without a traceable driver; technology leakage in any new or refined text; clam-level derived cards.
 - **Change Register (mandatory):** every functional change — including `evaluated, no change` rows — is recorded as `type → from/to → driving RN/PO/SO/article → rationale` in the analysis dossier (`STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md`), and the V1 document's Version History documents the pass in one row.
-- **Result:** An evolved V1 whose functional set is a registered, traceable refinement of V0; `v0_functional_baseline/` untouched.
+- **Result:** An evolved V1 whose functional set is a registered, traceable refinement of V0; `part1_security_privacy/v0_functional_baseline/` untouched.
 
 ### Objective Fulfillment Record & the Organizational Lane (ADR-007 / ADR-008)
 
-- **Fulfillment semantics (ADR-007):** a coverage verdict is a fulfillment claim, not a bookkeeping link. One EARS condition→response may carry several Phase 2 objectives only under the **congruence rule** — every cited objective must be satisfied by that same condition→response; identical control-anchor sets never evidence demand equivalence. An objective is **fully covered** only when the union of its carriers' Volere fit criteria reconstitutes the objective's Phase 2 Verification Criteria and every statement leg is carried, out-of-scale-recorded (with warrant), or explicitly carved out. The coverage matrix (`synthesis_rounds/OBJECTIVE_MAPPING.md`, `VC discharge` column) is the authoritative discharge graph; delivered card chains cite primary drivers only. Re-anchoring a driver re-opens the wording/fit-criterion check — wording is never grandfathered across a driver swap. Round proposals carry a **discharge statement**.
+- **Fulfillment semantics (ADR-007):** a coverage verdict is a fulfillment claim, not a bookkeeping link. One EARS condition→response may carry several Phase 2 objectives only under the **congruence rule** — every cited objective must be satisfied by that same condition→response; identical control-anchor sets never evidence demand equivalence. An objective is **fully covered** only when the union of its carriers' Volere fit criteria reconstitutes the objective's Phase 2 Verification Criteria and every statement leg is carried, out-of-scale-recorded (with warrant), or explicitly carved out. The coverage matrix (`part1_security_privacy/synthesis_rounds/OBJECTIVE_MAPPING.md`, `VC discharge` column) is the authoritative discharge graph; delivered card chains cite primary drivers only. Re-anchoring a driver re-opens the wording/fit-criterion check — wording is never grandfathered across a driver swap. Round proposals carry a **discharge statement**.
 - **Verdict vocabulary:** `Fully covered` / `Partially covered (functional leg + explicit carve-out)` / `No functional carrier (organizational)` / `Design guidance` / `N/A`.
-- **Organizational lane (ADR-008):** uncarried PROCESS/CAPABILITY legs route to `Doc03_Organizational_Requirements.md` in this folder — EARS with organizational subject (`The organization shall …`), Volere fit criterion, `INSPECT`/`DEMONSTRATE`/`ANALYZE` method, owner from the Phase 2 Governance & Stakeholder Matrix, IDs `ORG-D-XX.Y-NNN`, chain terminating in organizational anchors (NIST CSF 2.0 GOVERN; advisory ISO 27001 A.5.x / ENISA NIS2 / BSI OPS per R2b). Doc03 content enters through the same round cycle and is covered by the Part 1 Exit Gate (G1 extends to the organizational mapping).
+- **Organizational lane (ADR-008):** uncarried PROCESS/CAPABILITY legs route to `part1_security_privacy/Doc03_Organizational_Requirements.md` in this folder — EARS with organizational subject (`The organization shall …`), Volere fit criterion, `INSPECT`/`DEMONSTRATE`/`ANALYZE` method, owner from the Phase 2 Governance & Stakeholder Matrix, IDs `ORG-D-XX.Y-NNN`, chain terminating in organizational anchors (NIST CSF 2.0 GOVERN; advisory ISO 27001 A.5.x / ENISA NIS2 / BSI OPS per R2b). Doc03 content enters through the same round cycle and is covered by the Part 1 Exit Gate (G1 extends to the organizational mapping).
 
 ### Phase 3 Part 2 (Gated): Threat & Risk Analysis
 - **Goal:** Model threats formally — STRIDE/LINDDUN, attack-surface analysis, abuse scenarios — over the **accepted, control-informed baseline**, and maintain the case risk register (treat / accept / defer, with rationale).
@@ -243,12 +243,12 @@ Part 2 launches only when every criterion is **GREEN** and evidenced in the tran
 
 | # | Criterion | Evidence surface |
 |---|---|---|
-| **G1** | Exhaustive mapping 100% verdicted — every Phase 2 objective and every principle placed, zero silent/pending | `synthesis_rounds/OBJECTIVE_MAPPING.md` totals + `PRINCIPLE_MAPPING.md` |
-| **G2** | Rounds converged — zero open verdicts; every rejection recorded as an explicit risk acceptance | `synthesis_rounds/ROUND<n>_REGISTER.md` |
+| **G1** | Exhaustive mapping 100% verdicted — every Phase 2 objective and every principle placed, zero silent/pending | `part1_security_privacy/synthesis_rounds/OBJECTIVE_MAPPING.md` totals + `PRINCIPLE_MAPPING.md` |
+| **G2** | Rounds converged — zero open verdicts; every rejection recorded as an explicit risk acceptance | `part1_security_privacy/synthesis_rounds/ROUND<n>_REGISTER.md` |
 | **G3** | Control selection complete — every accepted constraint carries selected anchors from pre-verified surfaces, within published sets | register §3 |
 | **G4** | Deliverables at the current version — Phase 3 Quality Checklist (§6) green; `doc_lint.py --strict` = 0 | version folder + lint run |
-| **G5** | Sufficiency assessment produced — per-regulation compliance verdict + security verdict + explicit residual list | `synthesis_rounds/SUFFICIENCY_ASSESSMENT.md` |
-| **G6** | Transition dossier complete — steps documented like `analysis_v0_to_v1/` | `analysis_v<N>_to_v<N+1>/` |
+| **G5** | Sufficiency assessment produced — per-regulation compliance verdict + security verdict + explicit residual list | `part1_security_privacy/synthesis_rounds/SUFFICIENCY_ASSESSMENT.md` |
+| **G6** | Transition dossier complete — steps documented like `part1_security_privacy/analysis_v0_to_v1/` | `analysis_v<N>_to_v<N+1>/` |
 
 ---
 
@@ -261,24 +261,48 @@ cases/Case_02_SecureBorder_Solutions/03_PHASE3_SPEC/
 ├── README.md                                    # Master Phase 3 Navigation & Executive Index
 ├── PHASE3_PROCESS_AND_METHODOLOGY.md            # (This file) Complete normative methodology manual
 │
-├── v0_functional_baseline/                      # [VERSION 0] Locked Pure Functional Baseline
-│   ├── README.md                                # V0 Scope, Rationale, and Architecture
-│   ├── Doc01_Requirements_Elicitation_and_PUC.md# 28 Functional Requirements & 28 PUCs (Pure Functional)
-│   └── Doc02_System_Use_Cases.md                # 28 Level-1 Sea-Level Use Cases (Main Success Scenarios)
+├── part1_security_privacy/                      # [PART 1] Security & Compliance — versioned baseline + rounds
+│   ├── Doc01_Requirements_Elicitation_and_PUC.md# Active Doc01 (working copy, synced to the current version folder)
+│   ├── Doc02_System_Use_Cases.md                # Active Doc02 (working copy, synced to the current version folder)
+│   ├── Doc03_Organizational_Requirements.md    # Organizational lane (ADR-008 PROCESS carrier)
+│   │
+│   ├── v0_functional_baseline/                  # [VERSION 0] Locked Pure Functional Baseline
+│   │   ├── README.md                            # V0 Scope, Rationale, and Architecture
+│   │   ├── Doc01_Requirements_Elicitation_and_PUC.md
+│   │   └── Doc02_System_Use_Cases.md
+│   │
+│   ├── v1_security_privacy_synthesis/           # [VERSION 1] Round-converged synthesis (APPROVED)
+│   │   ├── README.md                            # V1 Synthesis Scope, absorbed constraints, round register
+│   │   ├── Doc01_Requirements_Elicitation_and_PUC.md
+│   │   └── Doc02_System_Use_Cases.md
+│   │
+│   ├── v2_security_privacy_synthesis/           # [VERSION 2] Round-2 convergence (APPROVED, ACTIVE)
+│   │   ├── README.md                            # V2 Scope and delta from V1
+│   │   ├── Doc01_Requirements_Elicitation_and_PUC.md
+│   │   └── Doc02_System_Use_Cases.md
+│   │
+│   ├── analysis_v0_to_v1/                       # STEP1-STEP5 dossiers + Part 1 Exit Gate record
+│   │   ├── README.md
+│   │   ├── STEP1_V0_FUNCTIONAL_AUDIT_AND_BOUNDARY_ANALYSIS.md
+│   │   ├── STEP2_REGULATORY_CROSS_CUTTING_ANALYSIS.md
+│   │   ├── STEP3_EARS_FORMULATION_AND_ACCEPTANCE.md
+│   │   ├── STEP4_ABSORPTION_AND_TRACEABILITY_WEAVING.md
+│   │   └── STEP5_FUNCTIONAL_EVOLUTION_REGISTER.md
+│   │
+│   └── synthesis_rounds/                        # [ROUND CYCLE] Objective/principle/UC mappings + round registers
+│       ├── README.md
+│       ├── OBJECTIVE_MAPPING.md
+│       ├── PRINCIPLE_MAPPING.md
+│       ├── UC_OBJECTIVE_CORRESPONDENCE.md
+│       ├── ROUND1_REGISTER.md
+│       ├── ROUND2_REGISTER.md
+│       └── SUFFICIENCY_ASSESSMENT.md
 │
-├── v1_security_privacy_synthesis/               # [VERSION 1] Round-converged Security & Privacy Synthesis (ADR-005: rounds from the start)
-│   ├── README.md                                # V1 Synthesis Scope, Absorbed Constraints, and Refinement Pass
-│   ├── Doc01_Requirements_Elicitation_and_PUC.md# Absorbed Security/Privacy Constraints (RN11+) + Functional Evolution Register (D1-D4)
-│   └── Doc02_System_Use_Cases.md                # Fully-Dressed Cockburn Security Preconditions, Extensions, and Guarantees
-│
-├── analysis_v0_to_v1/                           # STEP1-STEP5 dossiers + Part 1 Exit Gate record
-│
-├── part2_threat_risk/                           # [PHASE 3 — PART 2] Threat & Risk Analysis (entry gate: G1–G6, ADR-006)
-│
-└── synthesis_rounds/                            # [ROUND CYCLE] Objective/principle mappings + round registers (ADR-005/006)
+└── part2_threat_risk/                           # [PART 2] Threat & Risk Analysis (entry gate: G1–G6, ADR-006)
+    └── README.md
 ```
 
-Top-level `Doc01`/`Doc02` are active working copies, synced to the current version folder (V1).
+Top-level `Doc01`/`Doc02` inside `part1_security_privacy/` are the active working copies, synced to the current version folder (V2).
 
 ### Comparative Evolution Matrix
 
@@ -339,12 +363,12 @@ To maintain the highest professional standard of requirements engineering, autho
 ## 6. Phase 3 Quality Checklist (Verification Gate)
 
 Before declaring Phase 3 complete, verify that:
-- [ ] **V0 Functional Integrity:** `v0_functional_baseline/` contains only pure functional requirements and use cases, with zero pre-baked security or vendor names.
+- [ ] **V0 Functional Integrity:** `part1_security_privacy/v0_functional_baseline/` contains only pure functional requirements and use cases, with zero pre-baked security or vendor names.
 - [ ] **Granularity Standard:** Every use case is at Cockburn Sea-Level (Level 1). Zero clam-level UI sequences.
 - [ ] **Verbal Phrasing:** 100% of requirement titles, sub-requirements, and use case names use active verbs in the infinitive.
 - [ ] **EARS Compliance:** 100% of security and privacy NFRs (`RN11` onwards) follow the EARS syntax templates.
 - [ ] **High-Level Control Abstraction:** 100% of security and privacy NFRs express high-level control objectives anchored in regulatory clauses and NIST/ISO controls, without premature operational parameters.
-- [ ] **Functional Evolution Control:** Every V1 functional change is classified in the D1–D4 taxonomy and recorded in the Functional Evolution Register with its `RN`/`PO-`/`SO-`/article driver; `v0_functional_baseline/` files are untouched.
+- [ ] **Functional Evolution Control:** Every V1 functional change is classified in the D1–D4 taxonomy and recorded in the Functional Evolution Register with its `RN`/`PO-`/`SO-`/article driver; `part1_security_privacy/v0_functional_baseline/` files are untouched.
 - [ ] **Specificity Matching:** Every security & privacy NFR's wording stays within the altitude warranted by its cited chain (L0–L4 scale, warrants W1–W5 — guidelines §2.5); zero L4 vocabulary anywhere in Phase 3 deliverables.
 - [ ] **Exhaustive Mapping:** 100% of Phase 2 objectives and principles carry an explicit verdict in the Objective Mapping (applies — with skill — or no functional carrier); zero unmapped objectives.
 - [ ] **Risk-Acceptance Control:** Every synthesized constraint's client verdict (Accept / Reject = risk accepted / Adjust) is recorded in the round documentation with round trace; no baseline version evolves before round convergence.

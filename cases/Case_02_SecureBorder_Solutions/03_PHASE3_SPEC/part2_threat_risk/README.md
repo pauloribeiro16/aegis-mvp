@@ -8,7 +8,7 @@
 
 ## 1. Scope
 
-Formal **threat and risk analysis over the accepted, control-informed baseline** produced by Part 1 (Version 1, `../v1_security_privacy_synthesis/`):
+Formal **threat and risk analysis over the accepted, control-informed baseline** produced by Part 1 (Version 1, `../part1_security_privacy/v1_security_privacy_synthesis/`):
 
 - **STRIDE** per functional area and trust-boundary crossing — with particular attention to the biometric capture surface, the authority-integration boundary, the multi-country update channel, and AI-specific attacks (data/model poisoning, adversarial examples/model evasion, confidentiality attacks, model flaws) against the Art. 15 measures.
 - **LINDDUN** privacy-threat lens over personal-data flows (traveller biometrics, employee data; linkability, identifiability, denyability/unawareness, disclosure, non-compliance).
@@ -19,13 +19,13 @@ Zero threat content exists in Part 1 deliverables by design; all threat work hap
 
 ## 2. Inputs
 
-1. **Accepted baseline:** `../v1_security_privacy_synthesis/Doc01`/`Doc02` (28 cards / 28 fully-dressed use cases, chains `regulation → objective → requirement → control` across four ambits).
+1. **Accepted baseline:** `../part1_security_privacy/v1_security_privacy_synthesis/Doc01`/`Doc02` (28 cards / 28 fully-dressed use cases, chains `regulation → objective → requirement → control` across four ambits).
 2. **Trust boundaries & assets:** the V1 functional model — gate capture sessions, authority integration, regulatory dispatch, update channel, per-country deployment isolation (V0 RN10), operator back-office.
-3. **Control surface:** the selected CSF 2.0 + PF anchors of the accepted set (`../synthesis_rounds/ROUND1_REGISTER.md` §3).
+3. **Control surface:** the selected CSF 2.0 + PF anchors of the accepted set (`../part1_security_privacy/synthesis_rounds/ROUND1_REGISTER.md` §3).
 
 ## 3. Entry Criterion (gate)
 
-Part 2 starts only with the **Part 1 Exit Gate (G1–G6) GREEN** — codified in [`../PHASE3_PROCESS_AND_METHODOLOGY.md`](../PHASE3_PROCESS_AND_METHODOLOGY.md) and evidenced for this case in [`../analysis_v0_to_v1/README.md`](../analysis_v0_to_v1/README.md).
+Part 2 starts only with the **Part 1 Exit Gate (G1–G6) GREEN** — codified in [`../PHASE3_PROCESS_AND_METHODOLOGY.md`](../PHASE3_PROCESS_AND_METHODOLOGY.md) and evidenced for this case in [`../part1_security_privacy/analysis_v0_to_v1/README.md`](../part1_security_privacy/analysis_v0_to_v1/README.md).
 
 ## 4. Method (high level)
 

@@ -8,7 +8,7 @@
 
 ## 1. Scope
 
-Formal **threat and risk analysis over the accepted, control-informed baseline** produced by Part 1 (Version 2, `../v2_security_privacy_synthesis/`):
+Formal **threat and risk analysis over the accepted, control-informed baseline** produced by Part 1 (Version 2, `../part1_security_privacy/v2_security_privacy_synthesis/`):
 
 - **STRIDE** per functional area and trust-boundary crossing — with particular attention to the OmniScore scoring surface (data/model poisoning, adversarial examples/model evasion, confidentiality attacks, model flaws), the mainframe/cloud boundary, the authority and registry channels, and the multi-regime notification flows.
 - **LINDDUN** privacy-threat lens over personal-data flows (customer PII, financial transactions, credit scores; linkability, identifiability, non-compliance).
@@ -17,13 +17,13 @@ Formal **threat and risk analysis over the accepted, control-informed baseline**
 
 ## 2. Inputs
 
-1. **Accepted baseline:** `../v2_security_privacy_synthesis/Doc01`/`Doc02` (43 cards / 43 fully-dressed use cases, chains across five ambits).
+1. **Accepted baseline:** `../part1_security_privacy/v2_security_privacy_synthesis/Doc01`/`Doc02` (43 cards / 43 fully-dressed use cases, chains across five ambits).
 2. **Trust boundaries & assets:** mainframe core, EU cloud channels, AI/ML platform, HSM custody, authority/registry channels, per-business-line segregation (V0 RN10).
-3. **Control surface:** the selected CSF 2.0 + PF anchors (`../synthesis_rounds/ROUND1_REGISTER.md` §3).
+3. **Control surface:** the selected CSF 2.0 + PF anchors (`../part1_security_privacy/synthesis_rounds/ROUND1_REGISTER.md` §3).
 
 ## 3. Entry Criterion (gate)
 
-Part 2 starts only with the **Part 1 Exit Gate (G1–G6) GREEN** — evidenced in [`../analysis_v0_to_v1/README.md`](../analysis_v0_to_v1/README.md).
+Part 2 starts only with the **Part 1 Exit Gate (G1–G6) GREEN** — evidenced in [`../part1_security_privacy/analysis_v0_to_v1/README.md`](../part1_security_privacy/analysis_v0_to_v1/README.md).
 
 ## 4. Method (high level)
 

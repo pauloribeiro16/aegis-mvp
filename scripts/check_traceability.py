@@ -18,10 +18,16 @@ Checks
   T3  Totals arithmetic     every ``| label | N |`` ledger row whose siblings share
                            a stated total; and every ``N/M covered``-style claim
                            does not exceed its own arithmetic ceiling
-  T4  Gate evidence         every file cited as G1-G6 evidence exists
+  T4  Gate evidence         every file cited as G1-G12 evidence exists
   T5  Driver symmetry       every driver the coverage matrix binds to a carrier is
                            cited back by that carrier; every driver without a
                            carrier carries an explicit verdict
+  T7  Threat ledger         Part 2 reconciliation: every threat card reaches the
+                           risk register (minus declared cross-lens merges), count
+                           claims match measured files, risk-distribution claims
+                           match the register, and every mitigating RN cited by a
+                           card/register row is published on that row's own target
+                           surface in the accepted Part 1 baseline
 
 Scope: ``cases/Case_*/`` only — these are the artefacts that participate in the
 chain.  Governance (``AGENTS.md``, ``docs/decisions/``) legitimately talks about
@@ -101,7 +107,7 @@ CLAIM_N_OF_M = re.compile(
     r"\b(\d{1,4})\s*/\s*(\d{1,4})\b(?=[^0-9/]{0,40}\b(?:carried|covered)\b)", re.IGNORECASE
 )
 
-GATE_ROW = re.compile(r"^\|\s*\**G([1-6])\**\s*\|(.*)$")
+GATE_ROW = re.compile(r"^\|\s*\**G(\d{1,2})\**\s*\|(.*)$")
 
 
 class Finding:
@@ -403,7 +409,8 @@ def check_gate_evidence(case: Case) -> list[Finding]:
     roots = [case.p3_dir, case.p1_root / "synthesis_rounds", case.p1_root / "analysis_v0_to_v1", case.p1_root / "analysis_v1_to_v2"]
     for path in case._rglob("03_PHASE3_SPEC"):
         for line_no, line in enumerate(read(path), 1):
-            if not GATE_ROW.match(line):
+            m = GATE_ROW.match(line)
+            if not m or int(m.group(1)) > 12:
                 continue
             for token in path_token.findall(line):
                 if token.startswith("../") or token.startswith("./"):
@@ -540,6 +547,376 @@ def check_anchor_provenance(case: Case) -> list[Finding]:
     return findings
 
 
+# ----------------------------------------------------------------------- T7
+
+# The Part 2 dossiers are invisible to T1-T6 (which scan only Doc01/Doc02/Doc03/
+# OBJECTIVE_MAPPING deliverables), so a threat dossier written against a phantom
+# baseline — wrong RN numbering, UC ids that no longer exist, cards that silently
+# vanish between dossier and register — passes every gate.  T7 reconciles the
+# Part 2 corpus against itself and against the accepted Part 1 baseline.
+
+RE_TM_ID = re.compile(r"TM-D-\d\d\.\d-\d{3}")
+RE_TM_CARD = re.compile(r"^#{4}\s+((?:TM|AT)-D-?\S*)")  # card heading, id first token
+RE_TM_CARD_STRICT = re.compile(r"^####\s+(TM-D-\d\d\.\d-\d{3})\s*:")
+RE_REGISTER_ROW = re.compile(r"^\|\s*\d{1,3}\s*\|\s*`?(TM-D-\d\d\.\d-\d{3})`?\s*\|")
+RE_HEADING = re.compile(r"^(#{1,6})\s+(.*)$")
+RE_CARD5 = re.compile(r"^#####\s+R(\d{1,2})\.(\d{1,2})\b")
+RE_UC4 = re.compile(r"^####\s+\{U\.C\.\s*(\d{1,2})\.(\d{1,2})\}")
+RE_TABLE1_ROW = re.compile(r"^\|\s*\**R(\d{1,2})\.(\d{1,2})\**\s*\|\s*\**PUC")
+RE_TABLE7_ROW = re.compile(r"^\|\s*\**(RN\d{1,3})\**\s*\|")
+RE_NFR_TOKEN = re.compile(r"NFR-(RN\d{1,3})\b")
+RE_BACKTICK = re.compile(r"`([^`]+)`")
+RE_RN_IN_SPAN = re.compile(r"(?:NFR-)?RN\d{1,3}")
+RE_BARE_RN = re.compile(r"\bRN\d{1,3}\b")
+RE_RN_RANGE = re.compile(r"RN\d{1,3}\s*[-–]\s*RN?\d{0,3}")
+RE_KPI_COUNTS = re.compile(r"(\d{1,3})\s+threats?\s*\(\s*(\d{1,3})\s*STRIDE\s*\+\s*(\d{1,3})\s*LINDDUN\s*\)", re.IGNORECASE)
+RE_THREAT_CARD_CLAIM = re.compile(r"(?<![\d.])(\d{1,3})\s+(?:exhaustive\s+|standardized\s+|technical\s+|privacy\s+)*threat cards\b", re.IGNORECASE)
+RE_IDENTIFIED_N = re.compile(r"\b(\d{1,3})\s*/\s*(\d{1,3})\s+identified threats\b", re.IGNORECASE)
+RE_ALL_CRITICAL = re.compile(r"All\s+(\d{1,3})\s+Critical\s+inherent", re.IGNORECASE)
+RE_PRIVACY_DIST = re.compile(r"All\s+(\d{1,3})\s+Critical\s+inherent\s+privacy\s+risks\s+and\s+(\d{1,3})\s+High\s+inherent", re.IGNORECASE)
+RE_KPI_LEVEL_ROW = re.compile(
+    r"^\|\s*\**(?P<band>Critical|High|Medium|Low)\s+Risk\s+Threats[^|]*\**\s*\|\s*\**(?P<inh>\d{1,3})\s+threats?[^|]*\**\s*\|\s*\**(?P<res>\d{1,3})\s+threats?", re.IGNORECASE
+)
+
+BAND_TOKENS = (("crit", "Crit"), ("🔴", "Crit"), ("alto", "High"), ("🟠", "High"),
+               ("méd", "Med"), ("🟡", "Med"), ("baixo", "Low"), ("🟢", "Low"),
+               ("critical", "Crit"), ("high", "High"), ("medium", "Med"), ("low", "Low"))
+
+
+def _risk_band(cell: str) -> str | None:
+    low = cell.lower()
+    for token, band in BAND_TOKENS:
+        if token in low:
+            return band
+    return None
+
+
+def _rn_ids_in_text(text: str) -> set[str]:
+    """RN ids inside backticked spans only; whole-span ranges (`RN1`–`RN30`) skipped."""
+    out: set[str] = set()
+    for span in RE_BACKTICK.findall(text):
+        if RE_RN_RANGE.search(span):
+            continue
+        for m in RE_RN_IN_SPAN.finditer(span):
+            out.add(m.group(0).replace("NFR-", ""))
+    return out
+
+
+def _accepted_baseline(case: Case) -> tuple[Path | None, Path | None]:
+    """The accepted (active) Doc01/Doc02: top-level copies first, then the v2 folder."""
+    p1 = case.part1
+    doc01 = p1 / "Doc01_Requirements_Elicitation_and_PUC.md"
+    doc02 = p1 / "Doc02_System_Use_Cases.md"
+    v2 = p1 / "v2_security_privacy_synthesis"
+    if not doc01.is_file():
+        doc01 = v2 / "Doc01_Requirements_Elicitation_and_PUC.md"
+    if not doc02.is_file():
+        doc02 = v2 / "Doc02_System_Use_Cases.md"
+    return (doc01 if doc01.is_file() else None, doc02 if doc02.is_file() else None)
+
+
+class _Surface:
+    """RN publication sets extracted from the accepted Part 1 baseline."""
+
+    def __init__(self, case: Case) -> None:
+        self.card_rns: dict[str, set[str]] = {}
+        self.card_anchors: dict[str, set[str]] = {}
+        self.uc_rns: dict[str, set[str]] = {}
+        self.bound_rns: dict[str, set[str]] = {}
+        self.table7: set[str] = set()
+        self.ok = False
+        doc01, doc02 = _accepted_baseline(case)
+        if doc01:
+            self._load_doc01(doc01)
+            self.ok = True
+        if doc02:
+            self._load_doc02(doc02)
+            self.ok = self.ok or bool(self.uc_rns or self.bound_rns)
+
+    def _load_doc01(self, path: Path) -> None:
+        current: str | None = None
+        for line in read(path):
+            m = RE_CARD5.match(line)
+            if m:
+                current = f"R{m.group(1)}.{m.group(2)}"
+                self.card_rns.setdefault(current, set())
+                continue
+            t7 = RE_TABLE7_ROW.match(line)
+            if t7:
+                self.table7.add(t7.group(1))
+                am = RE_ANCHOR_RUN.search(line)
+                if am:
+                    self.card_anchors.setdefault(t7.group(1), set()).update(RE_ANCHOR_ID.findall(am.group(1)))
+                continue
+            if current is None:
+                continue
+            if RE_HEADING.match(line):
+                current = None
+                continue
+            rns = set(RE_NFR_TOKEN.findall(line))
+            if rns:
+                self.card_rns[current] |= {r.replace("NFR-", "") for r in rns}
+                # per-constraint anchor run: everything after the LAST NFR token
+                # on the piece belongs to that constraint's chain
+                for piece in line.split("<br>"):
+                    toks = list(RE_NFR_TOKEN.finditer(piece))
+                    if not toks:
+                        continue
+                    rid = toks[-1].group(1).replace("NFR-", "")
+                    tail = piece[toks[-1].end():]
+                    am = RE_ANCHOR_RUN.search(tail)
+                    if am:
+                        self.card_anchors.setdefault(rid, set()).update(RE_ANCHOR_ID.findall(am.group(1)))
+
+    def _load_doc02(self, path: Path) -> None:
+        current_uc: str | None = None
+        for line in read(path):
+            m = RE_UC4.match(line)
+            if m:
+                current_uc = f"U{m.group(1)}.{m.group(2)}"
+                self.uc_rns.setdefault(current_uc, set())
+                continue
+            if current_uc is not None:
+                h = RE_HEADING.match(line)
+                if h:
+                    current_uc = None
+                    # Table 1 rows may follow a heading; keep scanning
+                else:
+                    if not RE_RN_RANGE.search(line):
+                        self.uc_rns[current_uc] |= set(RE_BARE_RN.findall(line))
+                    continue
+            m = RE_TABLE1_ROW.match(line)
+            if m:
+                self.bound_rns[f"R{m.group(1)}.{m.group(2)}"] = {
+                    r.replace("NFR-", "") for r in RE_NFR_TOKEN.findall(line)
+                }
+
+    def allowed_for(self, cards: set[str], ucs: set[str]) -> set[str]:
+        out: set[str] = set(self.table7)
+        for c in cards:
+            out |= self.bound_rns.get(c, set()) | self.card_rns.get(c, set())
+        for u in ucs:
+            out |= self.uc_rns.get(u, set())
+        return out
+
+    def anchors_for(self, rns: set[str]) -> set[str]:
+        out: set[str] = set()
+        for r in rns:
+            out |= self.card_anchors.get(r, set())
+        return out
+
+
+def _parse_threat_card(line_iter: list[tuple[int, str]], start: int) -> tuple[str, list[tuple[int, str]], int]:
+    """Return (tm_id, body lines, next index) for a `#### TM-D-...` card."""
+    tm_id = RE_TM_CARD_STRICT.match(line_iter[start][1]).group(1)
+    body: list[tuple[int, str]] = []
+    i = start + 1
+    while i < len(line_iter):
+        if RE_TM_CARD_STRICT.match(line_iter[i][1]) or (RE_HEADING.match(line_iter[i][1]) and not RE_TM_CARD_STRICT.match(line_iter[i][1]) and len(RE_HEADING.match(line_iter[i][1]).group(1)) <= 4):
+            break
+        body.append(line_iter[i])
+        i += 1
+    return tm_id, body, i
+
+
+def _targets_of(body: list[tuple[int, str]]) -> tuple[set[str], set[str]]:
+    text = "\n".join(l for _, l in body)
+    cards = {f"R{a}.{b}" for a, b in re.findall(r"\bR(\d{1,2})\.(\d{1,2})\b", text) if not re.match(r"^0", a)}
+    ucs = {f"U{a}.{b}" for a, b in re.findall(r"\{U\.C\.\s*(\d{1,2})\.(\d{1,2})\}", text)}
+    return cards, ucs
+
+
+def check_threat_ledger(case: Case) -> list[Finding]:
+    """T7: Part 2 threat-dossier reconciliation (see module docstring)."""
+    findings: list[Finding] = []
+    p2 = case.p3_dir / "part2_threat_risk"
+    if not p2.is_dir():
+        return findings
+    files = {p.name: p for p in sorted(p2.glob("*.md"))}
+    f02, f03, f05 = files.get("02_TECHNICAL_THREATS_STRIDE.md"), files.get("03_PRIVACY_THREATS_LINDDUN.md"), files.get("05_RISK_REGISTER_AND_GOVERNANCE.md")
+    if not (f02 and f05):
+        return findings  # Part 2 not launched (stub README only)
+
+    surface = _Surface(case)
+
+    def cards_of(path: Path) -> list[tuple[str, int, list[tuple[int, str]]]]:
+        lines = read(path)
+        out = []
+        i = 0
+        numbered = list(enumerate(lines, 1))
+        idx = 0
+        while idx < len(numbered):
+            if RE_TM_CARD_STRICT.match(numbered[idx][1]):
+                tm_id, body, nxt = _parse_threat_card(numbered, idx)
+                out.append((tm_id, numbered[idx][0], body))
+                idx = nxt
+            else:
+                idx += 1
+        return out
+
+    stride_cards = cards_of(f02) if f02 else []
+    linddun_cards = cards_of(f03) if f03 else []
+    all_cards = stride_cards + linddun_cards
+
+    # Register rows: header-indexed so schema changes (extra columns) survive.
+    reg_rows: list[tuple[int, dict[str, str]]] = []
+    reg_header: list[str] = []
+    for line_no, line in enumerate(read(f05), 1):
+        if line.startswith("|") and "Threat ID" in line and not reg_header:
+            reg_header = [c.strip() for c in line.split("|")[1:-1]]
+            continue
+        m = RE_REGISTER_ROW.match(line)
+        if m and reg_header:
+            cells = [c.strip() for c in line.split("|")[1:-1]]
+            if len(cells) == len(reg_header):
+                row = dict(zip(reg_header, cells))
+                row["_tm"] = m.group(1)
+                reg_rows.append((line_no, row))
+
+    def col(row: dict[str, str], *patterns: str) -> str:
+        for name, val in row.items():
+            if name == "_tm":
+                continue
+            if all(re.search(p, name, re.IGNORECASE) for p in patterns):
+                return val
+        return ""
+
+    # Declared cross-lens merges (05_, any heading mentioning a merge).
+    merged: set[str] = set()
+    in_merge = False
+    for line_no, line in enumerate(read(f05), 1):
+        h = RE_HEADING.match(line)
+        if h:
+            in_merge = bool(re.search(r"merge", h.group(2), re.IGNORECASE))
+            continue
+        if in_merge:
+            merged |= set(RE_TM_ID.findall(line))
+
+    # -- T7a: card <-> register bidirectional coverage
+    card_ids = [tid for tid, _, _ in all_cards]
+    reg_ids = [row["_tm"] for _, row in reg_rows]
+    carried = set(card_ids) - merged
+    for tid, ln, _ in all_cards:
+        if tid not in reg_ids and tid not in merged:
+            findings.append(Finding(f02 if tid in {c for c, _, _ in stride_cards} else f03, ln, "T7a threat card absent from register", tid))
+    for ln, row in reg_rows:
+        if row["_tm"] not in card_ids:
+            findings.append(Finding(f05, ln, "T7a register row has no threat card", row["_tm"]))
+
+    # -- T7d: duplicate card ids without a declared merge
+    seen: dict[str, int] = {}
+    for path, lst in ((f02, stride_cards), (f03, linddun_cards)):
+        for tid, ln, _ in lst:
+            if tid in seen and tid not in merged:
+                findings.append(Finding(path, ln, "T7d duplicate threat id without declared merge", tid))
+            seen[tid] = ln
+
+    # -- T7b: count claims vs measured files
+    n_stride, n_lind = len(stride_cards), len(linddun_cards)
+    n_reg = len(reg_rows)
+    n_expect = n_stride + n_lind - len(merged & set(card_ids))
+    for path in files.values():
+        for line_no, line in enumerate(read(path), 1):
+            for m in RE_KPI_COUNTS.finditer(line):
+                total, x, y = (int(g) for g in m.groups())
+                if x != n_stride or y != n_lind:
+                    findings.append(Finding(path, line_no, "T7b STRIDE/LINDDUN count claim vs files", f"claimed {x} STRIDE + {y} LINDDUN, files hold {n_stride} + {n_lind}"))
+                if total != n_expect:
+                    findings.append(Finding(path, line_no, "T7b total threats claim vs cards-merges", f"claimed {total}, cards {n_stride}+{n_lind} minus {len(merged & set(card_ids))} merge(s) = {n_expect}"))
+            for m in RE_THREAT_CARD_CLAIM.finditer(line):
+                claimed = int(m.group(1))
+                local = n_stride if "STRIDE" in path.name or "02_" in path.name else n_lind if "03_" in path.name else None
+                if local is not None and claimed != local:
+                    findings.append(Finding(path, line_no, "T7b threat-card count claim vs file", f"claimed {claimed}, file holds {local}"))
+            for m in RE_IDENTIFIED_N.finditer(line):
+                if int(m.group(2)) != n_reg or int(m.group(1)) != n_reg:
+                    findings.append(Finding(path, line_no, "T7b identified-threats ratio vs register rows", m.group(0)))
+
+    # -- T7c: risk-distribution claims
+    dist_inh: dict[str, int] = {"Crit": 0, "High": 0, "Med": 0, "Low": 0}
+    dist_res: dict[str, int] = {"Crit": 0, "High": 0, "Med": 0, "Low": 0}
+    for _, row in reg_rows:
+        b = _risk_band(col(row, r"inh", r"risk"))
+        if b:
+            dist_inh[b] += 1
+        b = _risk_band(col(row, r"res", r"risk"))
+        if b:
+            dist_res[b] += 1
+    for path in files.values():
+        for line_no, line in enumerate(read(path), 1):
+            m = RE_KPI_LEVEL_ROW.match(line)
+            if m:
+                band = {"Critical": "Crit", "High": "High", "Medium": "Med", "Low": "Low"}[m.group("band").capitalize()]
+                if int(m.group("inh")) != dist_inh.get(band):
+                    findings.append(Finding(path, line_no, "T7c KPI inherent distribution vs register", f"{band}: claimed {m.group('inh')}, register holds {dist_inh.get(band)}"))
+                if int(m.group("res")) != dist_res.get(band):
+                    findings.append(Finding(path, line_no, "T7c KPI residual distribution vs register", f"{band}: claimed {m.group('res')}, register holds {dist_res.get(band)}"))
+            m = RE_ALL_CRITICAL.search(line)
+            if m and path == f02:
+                matrix_crit = _matrix_band_count(f02, "Crit")
+                if int(m.group(1)) != matrix_crit:
+                    findings.append(Finding(path, line_no, "T7c Critical-inherent claim vs summary matrix", f"claimed {m.group(1)}, matrix holds {matrix_crit}"))
+            m = RE_PRIVACY_DIST.search(line)
+            if m and path == f03:
+                crit, high = _matrix_band_count(f03, "Crit"), _matrix_band_count(f03, "High")
+                if int(m.group(1)) != crit or int(m.group(2)) != high:
+                    findings.append(Finding(path, line_no, "T7c privacy distribution claim vs summary matrix", f"claimed {m.group(1)} Crit / {m.group(2)} High, matrix holds {crit} / {high}"))
+
+    # -- T7e: mitigating RNs must be published on the row's own target surface
+    if surface.ok:
+        for path, lst in ((f02, stride_cards), (f03, linddun_cards)):
+            for tid, ln, body in lst:
+                cards, ucs = _targets_of(body)
+                if not cards and not ucs:
+                    continue
+                cited = _rn_ids_in_text("\n".join(l for _, l in body))
+                allowed = surface.allowed_for(cards, ucs)
+                for rn in sorted(cited - allowed):
+                    findings.append(Finding(path, ln, "T7e mitigating RN not published on target surface", f"{tid} cites {rn}; not bound to {sorted(cards) or '—'} / {sorted(ucs) or '—'} in the accepted baseline"))
+        for ln, row in reg_rows:
+            cards = {f"R{a}.{b}" for a, b in re.findall(r"\bR(\d{1,2})\.(\d{1,2})\b", col(row, r"cards", r"ucs") + " " + col(row, r"threat title"))}
+            ucs = {f"U{a}.{b}" for a, b in re.findall(r"\{U\.C\.\s*(\d{1,2})\.(\d{1,2})\}", col(row, r"cards", r"ucs"))}
+            if not cards and not ucs:
+                continue
+            cited = _rn_ids_in_text(col(row, r"mitigat"))
+            allowed = surface.allowed_for(cards, ucs)
+            for rn in sorted(cited - allowed):
+                findings.append(Finding(f05, ln, "T7e register RN not published on target surface", f"{row['_tm']} cites {rn}; not bound to {sorted(cards) or '—'} / {sorted(ucs) or '—'} in the accepted baseline"))
+        # -- T7f: register CSF anchors ⊆ union of the cited RNs' published anchors
+        for ln, row in reg_rows:
+            anchor_cell = col(row, r"CSF")
+            if not anchor_cell or anchor_cell.strip() in {"—", "-"}:
+                continue
+            rns = _rn_ids_in_text(col(row, r"mitigat"))
+            allowed = surface.anchors_for(rns)
+            if not allowed:
+                continue
+            for anchor in sorted(set(RE_ANCHOR_ID.findall(anchor_cell)) - allowed):
+                findings.append(Finding(f05, ln, "T7f register anchor outside cited RNs' published set", f"{anchor} not published for {sorted(rns)}"))
+    return findings
+
+
+def _matrix_band_count(path: Path, band: str) -> int:
+    """Count summary-matrix rows whose Inherent Risk column carries `band`."""
+    lines = read(path)
+    header: list[str] = []
+    idx_inh = -1
+    count = 0
+    for line in lines:
+        if line.startswith("|") and "Threat ID" in line:
+            header = [c.strip() for c in line.split("|")[1:-1]]
+            idx_inh = next((i for i, h in enumerate(header) if re.search(r"inh", h, re.IGNORECASE) and re.search(r"risk", h, re.IGNORECASE)), -1)
+            continue
+        if idx_inh < 0 or not line.startswith("|"):
+            continue
+        cells = [c.strip() for c in line.split("|")[1:-1]]
+        if len(cells) != len(header) or not RE_TM_ID.search(cells[0]):
+            continue
+        if _risk_band(cells[idx_inh]) == band:
+            count += 1
+    return count
+
+
 # ---------------------------------------------------------------------- main
 
 
@@ -551,6 +928,7 @@ CHECKS = {
     "T4": ("Gate evidence", check_gate_evidence),
     "T5": ("Driver symmetry", check_driver_symmetry),
     "T6": ("Anchor provenance", check_anchor_provenance),
+    "T7": ("Threat ledger reconciliation", check_threat_ledger),
 }
 
 

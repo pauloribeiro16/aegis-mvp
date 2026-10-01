@@ -20,9 +20,16 @@ Business events drive Product Use Cases (Doc01 §3), realized here as System Use
 
 Each use case is specified at Cockburn’s Sea Level (User Goal, Level 1) in the fully-dressed format: traceability, primary & supporting actors, stakeholders, preconditions, trigger, main success scenario (black-box actor–system exchanges), extensions, and success/minimal guarantees.
 
-### 2.3 Refinement Boundary
+### 2.3 Refinement Boundary: Cockburn's Sea Level (Level 1) and Strict Level-2 Subfunction Criteria (ADR-009)
 
-Refinement stops strictly at Level 1 (`{U.C. n.m}`); zero leaf nodes, zero micro-UI procedural scripts. Security behavior appears as preconditions, extensions, and guarantees — never as threat models (formal threat analysis is Phase 3 Part 2, ADR-006).
+In accordance with Alistair Cockburn (*Writing Effective Use Cases*) and AEGIS Architecture Decision Record ADR-009:
+- **Sea Level (User Goal — Level 1):** The interaction satisfies a complete, discrete business task in a single sitting that delivers measurable value to the user (e.g., *operate customer banking channels*, *process credit applications through automated scoring*, *manage cryptographic key lifecycle and custody*). By default, >85% of all system use cases anchor strictly at Level 1 (`{U.C. n.m}`).
+- **Subfunction Level (Fish Level / Level 2 — `{U.C. n.m.k}`):** Decomposed sub-goals representing autonomous, complex security or cryptographic sub-transactions supporting one or more Sea-Level use cases.
+- **Strict Level-2 Decomposition Criteria (ADR-009 D1):** A Level-2 subfunction is permitted only when it satisfies all three criteria:
+  1. *Trust Boundary Crossing:* The transaction crosses distinct architectural trust zones (e.g., untrusted consumer channel to banking ingress; ingress to AI scoring enclave; core banking to external supervisory gateway).
+  2. *Autonomous Security Protocol & Multiple Failure Modes:* The transaction has dedicated security preconditions, challenge-response flows, multiple exception/attack branches, and distinct minimal guarantees.
+  3. *Cross-Cutting Reusability or Direct Regulatory Imperative:* The subfunction is invoked across multiple Sea-Level use cases or realizes a non-negotiable regulatory mandate (e.g., high-risk AI assessment with explainability, split-knowledge dual-control key custody, privileged MFA assertion challenge, tiered cryptographic erasure and retention segregation).
+- **Zero Clam-Level Use Cases:** Decomposing standard operational steps into Level 2 or specifying micro-UI interactions (clicking buttons, entering form text) remains strictly prohibited.
 
 ## 3. Requirements Analysis
 
@@ -146,6 +153,29 @@ flowchart TD
 - **Success Guarantees:** Decision produced, logged, and communicated with reasons; decision record tamper-evident.
 - **Minimal Guarantees:** On any model fault the automated decision is withheld, never silently produced (RN11); logs complete (RN23).
 
+##### {U.C. 1.2.1} Execute Automated Credit Scoring & High-Risk AI Assessment
+- **Traceability:** Requirement `R1.2` | `RN11`, `RN12`, `RN13`, `RN23`, `RN6` | Mitigates: `TM-D-01.1-001`, `TM-D-06.1-001`
+- **Primary Actor:** Customer (via application channel)
+- **Supporting Actors:** OmniScore AI Inference Enclave, Feature Store Service
+- **Scope & Level:** OmniBank Financial Systems Platform | Subfunction (Fish Level / Level 2 per ADR-009)
+- **Stakeholders & Interests:** *Customer:* bias-free, accurate credit scoring with explainability. *Bank & AI Lead:* AI Act Annex III conformity, non-repudiable scoring audit trails.
+- **Preconditions:** Application channel protected (`RN13`); applicant identity authenticated; OmniScore production model signature verified in enclave (`RN11`); feature set restricted to declared financial variables (`RN12`).
+- **Trigger:** Applicant submits structured credit application dataset for automated underwriting.
+- **Main Success Scenario:**
+  1. System routes applicant dataset across trust boundary TB-01/TB-04 into memory-isolated AI scoring enclave.
+  2. Enclave executes feature integrity validation, checking for demographic proxy attributes and outlier values (`RN12`).
+  3. Enclave queries authoritative historical feature store over mutually authenticated internal channel.
+  4. Enclave executes model inference generating numerical credit score, confidence interval, and top-3 contributing feature weights (`RN6`).
+  5. System checks score against risk policy bands: auto-approval, auto-decline, or referral to human review ({U.C. 1.3}).
+  6. System emits cryptographically signed inference decision record and feature contribution explanation to persistent ledger (`RN11`, `RN23`).
+  7. System clears ephemeral applicant feature vectors from inference memory within 5 seconds.
+- **Extensions:**
+  - **2a. Input feature vector contains undeclared or prohibited proxy attributes:** Enclave rejects inference, flags data minimization policy breach (`RN12`), and routes application to compliance triage.
+  - **4a. Model confidence score falls below statistical uncertainty threshold:** System withholds automated decision, locks transaction in pending review state, and routes to credit overseer ({U.C. 1.3}) (`RN11`).
+  - **6a. Inference ledger write fails or checksum mismatch detected:** System halts automated approval, holds funds disbursement, and logs critical audit failure (`RN23`).
+- **Success Guarantees:** Validated credit score and explainability weights computed in enclave; decision recorded tamper-evidently (`RN23`).
+- **Minimal Guarantees:** Inconclusive or faulted inferences fail closed without automated commitment; applicant feature vectors purged from memory.
+
 ---
 
 #### {U.C. 1.3} Provide human review and explanation of credit decisions
@@ -243,6 +273,28 @@ flowchart TD
   - 2a. Separation check fails: 2a1. System refuses the operation and alerts the CISO (RN15).
 - **Success Guarantees:** Keys managed per the cryptographic periods with separation enforced.
 - **Minimal Guarantees:** Custody separation is never bypassed (RN15); destruction events evidenced (RN17).
+
+##### {U.C. 2.3.1} Execute Split-Knowledge Dual-Control Cryptographic Key Custody Protocol
+- **Traceability:** Requirement `R2.3` | `RN15`, `RN17`, `RN19` | Mitigates: `TM-D-02.1-001`, `TM-D-03.3-001`
+- **Primary Actor:** Cryptographic Officer (Primary Custodian)
+- **Supporting Actors:** Secondary Cryptographic Custodian, Hardware Cryptographic Custody Module
+- **Scope & Level:** OmniBank Financial Systems Platform | Subfunction (Fish Level / Level 2 per ADR-009)
+- **Stakeholders & Interests:** *Bank & Regulators:* strict DORA RTS split-knowledge key ceremonies; impossibility of unilateral cryptographic master key extraction.
+- **Preconditions:** Both custodians authenticated via hardware-backed privileged MFA (`RN19`); dedicated key ceremony workstation isolated from operational network; hardware key module initialized.
+- **Trigger:** Master key generation, annual root rotation, or emergency cryptographic revocation ceremony initiated.
+- **Main Success Scenario:**
+  1. Primary custodian initiates key custody ceremony and enters cryptographic key share 1 into isolated custody terminal.
+  2. Secondary custodian presents independent identity assertion and enters distinct cryptographic key share 2 (dual control / 4-eyes principle per DORA RTS Art. 7).
+  3. Hardware custody module reconstructs master key inside tamper-responsive physical boundary using M-of-N threshold secret sharing.
+  4. Module executes requested key lifecycle operation (generation, rotation, or derivation of operational data wrapping keys) (`RN15`).
+  5. Module writes newly derived public certificates and encrypted key tokens to key registry.
+  6. Module immediately zeroizes reconstructed master key material from ephemeral working registers.
+  7. System generates dual-signed, non-repudiable ceremony log containing cryptographic timestamps and custodian IDs (`RN17`).
+- **Extensions:**
+  - **2a. Secondary custodian fails authentication or provides mismatched key share:** Ceremony immediately aborts, hardware module locks custody session, zeroizes partial shares, and logs security alert to CISO (`RN15`, `RN19`).
+  - **3a. Hardware tamper sensor or enclosure breach detected:** Module executes zeroization of all active memory and transitions to permanently locked state.
+- **Success Guarantees:** Cryptographic key lifecycle operation executed strictly under verified dual custody; complete non-repudiable audit evidence produced.
+- **Minimal Guarantees:** Zero unilateral key access possible; no unencrypted key share or master key residue exists outside hardware security boundary (`RN15`).
 
 ---
 
@@ -360,6 +412,30 @@ flowchart TD
   - 1a. Factor failure beyond the policy threshold: 1a1. System refuses and locks per policy, recording the lockout (RN19).
 - **Success Guarantees:** Only policy-strength authentication reaches privileged functions.
 - **Minimal Guarantees:** Weak modalities are refused; failures recorded (RN19).
+
+##### {U.C. 4.2.1} Authenticate Privileged Operators via Hardware Cryptographic Challenge
+- **Traceability:** Requirement `R4.2` | `RN19` | Mitigates: `TM-D-03.1-002`
+- **Primary Actor:** Privileged Operator (Core Banking Admin, SOC Analyst, AI Lead)
+- **Supporting Actors:** Hardware Cryptographic Authenticator, Privileged Access Management Gateway
+- **Scope & Level:** OmniBank Financial Systems Platform | Subfunction (Fish Level / Level 2 per ADR-009)
+- **Stakeholders & Interests:** *Regulators & CISO:* non-bypassable, phishing-resistant privileged authentication protecting core financial assets.
+- **Preconditions:** Operator privileged identity active in directory; hardware cryptographic authenticator registered to operator; session originates from authorized management workstation.
+- **Trigger:** Operator attempts to open session to privileged administrative console, core banking ledger, or AI model registry.
+- **Main Success Scenario:**
+  1. Operator presents primary credentials to privileged access gateway.
+  2. Gateway generates cryptographically random challenge nonce bounded by 60-second validity window.
+  3. Operator activates hardware authenticator with biometric or physical presence tap.
+  4. Authenticator signs challenge nonce using resident private key.
+  5. Gateway verifies cryptographic signature against registered public trust anchor in identity directory (`RN19`).
+  6. Gateway checks time-of-day, IP subnet, and least-privilege entitlement boundaries.
+  7. Gateway issues ephemeral, cryptographically signed administrative session token with maximum 15-minute idle timeout.
+  8. Gateway records privileged session establishment in immutable audit store.
+- **Extensions:**
+  - **4a. Signature verification fails or challenge nonce expired:** Gateway rejects authentication, logs security alert, and increments rate-limiting lockout counter (`RN19`).
+  - **6a. Access requested outside authorized operational window or unapproved network path:** Gateway denies access and alerts SOC.
+  - **7a. Consecutive failed privileged attempts reach policy threshold:** Gateway locks privileged identity, revokes all existing sessions, and triggers immediate incident ticket.
+- **Success Guarantees:** Privileged session established with non-repudiable hardware cryptographic proof; session bound to short-lived token.
+- **Minimal Guarantees:** All weak or non-cryptographic factors refused; failed attempts fail closed and trigger SOC alerts (`RN19`).
 
 ---
 
@@ -535,6 +611,27 @@ flowchart TD
   - 2a. Statutory floor conflicts: 2a1. System applies the token-only separation and records the legal basis (RN17).
 - **Success Guarantees:** Rights fulfilled within the statutory window; identifiers destroyed incl. key material.
 - **Minimal Guarantees:** No request executes without verification (RN16); erasure never leaves re-identification paths (RN15/RN17).
+
+##### {U.C. 6.3.1} Execute Irreversible Customer Financial Record Crypto-Erasure and Retention Segregation
+- **Traceability:** Requirement `R6.3` | `RN15`, `RN16`, `RN17` | Mitigates: `TM-D-05.3-001`
+- **Primary Actor:** DPO Team / Automated Lifecycle Deletion Engine
+- **Supporting Actors:** Core Banking Ledger, Customer Identity Repository
+- **Scope & Level:** OmniBank Financial Systems Platform | Subfunction (Fish Level / Level 2 per ADR-009)
+- **Stakeholders & Interests:** *Customer:* GDPR Art. 17 right to erasure. *Bank:* compliance with banking statutory retention floors (DORA / AML / commercial code) without retaining unauthorized personal data.
+- **Preconditions:** Customer identity re-verified (`RN16`); account closed with zero balance; erasure request validated by DPO or retention schedule expired.
+- **Trigger:** Confirmed data-subject erasure instruction or statutory retention expiry.
+- **Main Success Scenario:**
+  1. System partitions customer records into non-statutory personal data (marketing preferences, biometric profiles, communication history) and statutory financial ledgers (tax records, AML logs, transaction history).
+  2. System executes cryptographic key shredding for non-statutory data: destroys customer-specific wrapping keys from key management store (`RN15`, `RN17`).
+  3. System overwrites non-statutory record storage blocks with pseudorandom pattern passes.
+  4. System applies irreversible token-only pseudonymization to statutory financial ledgers, severing all direct personal identifiers and replacing them with non-reconstructible statutory tokens (`T-002`, `RN17`).
+  5. System moves pseudonymized statutory records into immutable, read-only regulatory archive with locked retention clock.
+  6. System issues cryptographically signed deletion certificate to customer and records non-personal disposal entry in RoPA.
+- **Extensions:**
+  - **1a. Customer account has active balance, unsettled loan, or pending legal hold:** System halts erasure, isolates records, and returns formal statutory explanation with refusal grounds (`RN16`).
+  - **4a. Key destruction verification fails:** System aborts transaction, rolls back archive transition, and flags key custody service for manual inspection (`RN15`).
+- **Success Guarantees:** Customer personal data permanently and irreversibly destroyed; statutory ledgers safely segregated under token-only protection with verifiable disposal certificate (`RN17`).
+- **Minimal Guarantees:** Zero plain-text customer personal data retained; statutory retention compliance preserved without leaving re-identification paths.
 
 ---
 

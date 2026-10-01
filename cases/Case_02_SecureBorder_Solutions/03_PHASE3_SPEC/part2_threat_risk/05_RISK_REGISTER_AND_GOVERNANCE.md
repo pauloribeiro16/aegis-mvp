@@ -143,6 +143,20 @@ The seven threats remaining at **High residual risk** are:
 
 **Verdict:** All seven High residuals are **formally accepted as fully mitigated** under mandatory, testable EARS constraints. None represents an unaddressed architectural vulnerability; each residual is the latent impact of a hypothetical constraint-defeating event, structurally bounded by the cited constraints.
 
+### 3.4 Part 2 to Part 1 Feedback Reconciliation Matrix (ADR-005 / ADR-009 D2)
+
+In accordance with ADR-005 and ADR-009, threat modeling in Part 2 is not a terminal artifact but an active validation engine. The following matrix documents the closed-loop bidirectional traceability between identified threats, their inherent risk, the derived Part 1 mitigating specification elements (EARS constraints, derived functional cards, and Level-2 subfunction use cases), and the resulting verified residual risk:
+
+| Threat ID | Threat Name | Inherent Risk | ADR-005 / ADR-009 Feedback Action | Part 1 Carrier (Req / UC Level 2) | Governing NFR / EARS | Residual Risk |
+|---|---|---|---|---|---|---|
+| `TM-D-03.1-001` | Traveller Identity Spoofing via Presentation Attacks & AI Evasion | 🔴 **Crit** (12) | Level-2 subfunction for depth/spectral liveness verification and enclave fail-closed matching | `{U.C. 1.2.1}` under `{U.C. 1.2}` | `RN11`, `RN14`, `RN15`, `RN20` | 🟠 **Alto** (4) — Mitigado |
+| `TM-D-01.1-001` | Biometric Template Theft at Rest | 🔴 **Crit** (8) | Enforce memory-isolated enclave matching and ephemeral vector zeroization within 5 seconds | `R1.1`, `R1.2`, `{U.C. 1.2.1}` | `RN11`, `RN12`, `RN13` | 🟠 **Alto** (4) — Mitigado |
+| `TM-D-03.1-003` | Operator Credential Compromise & MFA Bypass | 🔴 **Crit** (8) | Level-2 subfunction for hardware cryptographic nonce challenge, presence verification, and terminal binding | `{U.C. 3.2.1}` under `{U.C. 3.2}` | `RN17`, `RN18` | 🟡 **Médio** (3) — Mitigado |
+| `TM-D-05.3-002` | Cross-Country Erasure Gap (Zombie Records in Sibling Deployments) | 🔴 **Crit** (8) | Level-2 subfunction for distributed key shredding, storage block sanitization, and cryptographic purge receipt | `{U.C. 4.1.1}` under `{U.C. 4.1}` | `RN10`, `RN16`, `RN28` | 🟢 **Baixo** (2) — Mitigado |
+| `TM-D-09.4-001` | Spoofed Traveller Rights Request | 🔴 **Crit** (12) | Strict requester identity verification, escrow isolation, and non-repudiable audit recording | `R4.1`, `{U.C. 4.1.1}` | `RN16`, `RN28` | 🟠 **Alto** (4) — Mitigado |
+| `TM-D-06.1-001` | Malicious Update Injection into the Gate Fleet | 🔴 **Crit** (8) | Level-2 subfunction for dual digital signature verification, hardware anti-rollback check, and provenance validation | `{U.C. 7.2.1}` under `{U.C. 7.2}` | `RN9`, `RN10`, `RN27` | 🟠 **Alto** (4) — Mitigado |
+| `TM-D-03.4-002` | AI Fail-Safe Bypass to Fail-Open | 🔴 **Crit** (8) | Hardware-enforced fail-safe default ensuring physical barriers remain safely closed upon sensor or model fault | `R1.2`, `{U.C. 1.2.1}` | `RN15`, `RN20` | 🟡 **Médio** (3) — Mitigado |
+
 ---
 
 ## 4. Part 2 Exit Gate Formal Certification (Gates G7–G12)

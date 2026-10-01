@@ -3,14 +3,14 @@
 > **Case Study:** Case 01 — TinyTask SaaS (B2B Task Management Multi-Tenant Platform)  
 > **Lifecycle Phase:** AEGIS Phase 3 — Specification, **Part 2 of 2 (Threat & Risk Analysis)**  
 > **Step Deliverable:** Step 3 of 5 (`03_PRIVACY_THREATS_LINDDUN.md`)  
-> **Upstream Inputs:** Step 1 ([`01_SYSTEM_MODEL_ASSETS_AND_BOUNDARIES.md`](01_SYSTEM_MODEL_ASSETS_AND_BOUNDARIES.md)), Step 2 ([`02_TECHNICAL_THREATS_STRIDE.md`](02_TECHNICAL_THREATS_STRIDE.md)), Phase 3 Part 1 Approved Baseline Version 2 (4.0.0) — [`../part1_security_privacy/v2_security_privacy_synthesis/Doc01_Requirements_Elicitation_and_PUC.md`](../part1_security_privacy/v2_security_privacy_synthesis/Doc01_Requirements_Elicitation_and_PUC.md) & [`../part1_security_privacy/v2_security_privacy_synthesis/Doc02_System_Use_Cases.md`](../part1_security_privacy/v2_security_privacy_synthesis/Doc02_System_Use_Cases.md)  
+> **Upstream Inputs:** Step 1 ([`01_SYSTEM_MODEL_ASSETS_AND_BOUNDARIES.md`](01_SYSTEM_MODEL_ASSETS_AND_BOUNDARIES.md)), Step 2 ([`02_TECHNICAL_THREATS_STRIDE.md`](02_TECHNICAL_THREATS_STRIDE.md)), Phase 3 Part 1 Approved Baseline Version 2 (4.0.0) — [`../part1_security_privacy/v2_security_privacy_synthesis/Doc01_Requirements_Specification.md`](../part1_security_privacy/v2_security_privacy_synthesis/Doc01_Requirements_Specification.md) & [`../part1_security_privacy/v2_security_privacy_synthesis/Doc02_System_Use_Cases.md`](../part1_security_privacy/v2_security_privacy_synthesis/Doc02_System_Use_Cases.md)  
 > **Methodological Standard:** [`../../../templates/phase3_threat_risk_guidelines.md`](../../../templates/phase3_threat_risk_guidelines.md) §6.3 & [`00_METHODOLOGY_AND_EXECUTION_GUIDE.md`](00_METHODOLOGY_AND_EXECUTION_GUIDE.md) §6.3  
 
 ---
 
 ## 1. Executive Summary & Purpose
 
-This document executes the **LINDDUN privacy threat modeling** over all personal data (PII) lifecycle flows within TinyTask SaaS. Every mitigating constraint cited below is anchored to the accepted Part 1 Version 2 baseline — the same `RN` identifiers, titles, and enforcement steps published in `Doc01` (requirement-card constraint chains and Table 7) and `Doc02` (use-case preconditions, extensions, and guarantees).
+This document executes the **LINDDUN privacy threat modeling** over all personal data (PII) lifecycle flows within TinyTask SaaS. Every mitigating constraint cited below is anchored to the accepted Part 1 Version 2 baseline — the same `RN` identifiers, titles, and enforcement steps published in `Doc01` ([`Doc01_Requirements_Specification.md`](../part1_security_privacy/v2_security_privacy_synthesis/Doc01_Requirements_Specification.md)) and `Doc02` (use-case preconditions, extensions, and guarantees).
 
 ### 1.1 Artefact Lifecycle & Pipeline Transitions
 

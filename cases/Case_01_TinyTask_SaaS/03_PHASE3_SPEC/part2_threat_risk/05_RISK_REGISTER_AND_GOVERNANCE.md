@@ -153,6 +153,20 @@ The seven threats remaining at **High residual risk** are:
 
 **Verdict:** All seven High residuals are **formally accepted as fully mitigated** under mandatory, testable EARS constraints. None represents an unaddressed architectural vulnerability.
 
+### 3.4 Part 2 to Part 1 Feedback Reconciliation Matrix (ADR-005 / ADR-009 D2)
+
+In accordance with ADR-005 and ADR-009, threat modeling in Part 2 is not a terminal artifact but an active validation engine. The following matrix documents the closed-loop bidirectional traceability between identified threats, their inherent risk, the derived Part 1 mitigating specification elements (EARS constraints, derived functional cards, and Level-2 subfunction use cases), and the resulting verified residual risk:
+
+| Threat ID | Threat Name | Inherent Risk | ADR-005 / ADR-009 Feedback Action | Part 1 Carrier (Req / UC Level 2) | Governing NFR / EARS | Residual Risk |
+|---|---|---|---|---|---|---|
+| `TM-D-03.1-001` | Credential Brute Force & Stuffing | 🔴 **Crit** (9) | Level-2 subfunction decomposition with progressive timing delay and lockout state machine | `{U.C. 1.1.1}` under `{U.C. 1.1}` | `RN10`, `RN11` | 🟡 **Médio** (3) — Mitigado |
+| `TM-D-03.1-003` | Recovery Flow Abuse & Account Takeover | 🔴 **Crit** (12) | Derived functional requirement (D1) for locked account self-service recovery | `R1.3`, `{U.C. 1.3}` | `RN10`, `RN11`, `RN18` | 🟠 **Alto** (4) — Mitigado |
+| `TM-D-01.4-001` | Malicious File Attachment Injection | 🔴 **Crit** (12) | Level-2 subfunction for magic-bytes verification, macro sanitization, and execution stripping | `{U.C. 5.1.1}` under `{U.C. 5.1}` | `RN13`, `RN25` | 🟢 **Baixo** (2) — Mitigado |
+| `TM-D-03.2-002` | Direct Object Storage Retrieval | 🔴 **Crit** (12) | Enforce application-mediated storage tokenization and zero direct public URL generation | `R5.1`, `{U.C. 5.1.1}` | `RN13` | 🟠 **Alto** (4) — Mitigado |
+| `TM-D-01.4-003` | Payment Webhook Signature Forgery | 🔴 **Crit** (9) | Level-2 subfunction for constant-time HMAC verification and replay window enforcement | `{U.C. 7.2.1}` under `{U.C. 7.2}` | `RN15`, `RN16` | 🟢 **Baixo** (1) — Mitigado |
+| `TM-D-03.3-005` | Unauthorized Workspace Erasure | 🔴 **Crit** (8) | Level-2 subfunction for multi-tenant cryptographic key shredding and cascading disposal | `{U.C. 8.3.1}` under `{U.C. 8.3}` | `RN27`, `RN30` | 🟠 **Alto** (4) — Mitigado |
+| `TM-D-05.3-001` | Incomplete Lifecycle Erasure | 🔴 **Crit** (12) | Derived requirement (D1) for permanent workspace deletion and signed disposal receipt | `R8.3`, `{U.C. 8.3.1}` | `RN21`, `RN30` | 🟢 **Baixo** (2) — Mitigado |
+
 ---
 
 ## 4. Part 2 Exit Gate Formal Certification (Gates G7–G12)

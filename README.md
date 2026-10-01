@@ -29,6 +29,12 @@ repo (`Methodology_compact`).
 
 A complete worked example (fictional company, real corpus anchors) lives in `example/`.
 
+## Pipeline design (`docs/pipeline/`)
+
+How the LLM-assisted pipeline is organized end to end — phases, prompts (fichas),
+knowledge architecture, validation gates — and the governing ADRs (010–012):
+start at [`docs/pipeline/README.md`](docs/pipeline/README.md).
+
 ## Layout
 
 ```
@@ -37,6 +43,10 @@ aegis-mvp/
 ├── README.md            this file
 ├── SPEC.md              the contract: input schema, procedure, output schema, rules
 ├── config.yaml          corpus paths (reference, not copy)
+├── docs/
+│   ├── decisions/       ADR-001 … ADR-012 (architecture decision records)
+│   └── pipeline/        AI pipeline design: master design, Phase 1 fichas,
+│                        knowledge architecture, prompt catalog, literature
 ├── baseline/            Phase 0 Baseline (frozen taxonomy, ambiguity registry, generic objectives)
 │   ├── 00_Taxonomy_Reference.md
 │   ├── 01_Ambiguity_Registry.md

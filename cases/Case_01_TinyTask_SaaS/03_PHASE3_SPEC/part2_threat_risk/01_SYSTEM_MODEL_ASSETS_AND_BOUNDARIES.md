@@ -3,7 +3,7 @@
 > **Case Study:** Case 01 — TinyTask SaaS (B2B Task Management Multi-Tenant Platform)  
 > **Lifecycle Phase:** AEGIS Phase 3 — Specification, **Part 2 of 2 (Threat & Risk Analysis)**  
 > **Step Deliverable:** Step 1 of 5 (`01_SYSTEM_MODEL_ASSETS_AND_BOUNDARIES.md`)  
-> **Upstream Inputs:** Phase 3 Part 1 Approved Baseline Version 2 (4.0.0) — [`../part1_security_privacy/v2_security_privacy_synthesis/Doc01_Requirements_Elicitation_and_PUC.md`](../part1_security_privacy/v2_security_privacy_synthesis/Doc01_Requirements_Elicitation_and_PUC.md) (20 Cards `R1.1`–`R8.3`) & [`../part1_security_privacy/v2_security_privacy_synthesis/Doc02_System_Use_Cases.md`](../part1_security_privacy/v2_security_privacy_synthesis/Doc02_System_Use_Cases.md) (20 Use Cases `{U.C. 1.1}`–`{U.C. 8.3}`)  
+> **Upstream Inputs:** Phase 3 Part 1 Approved Baseline Version 2 (4.0.0) — [`../part1_security_privacy/v2_security_privacy_synthesis/Doc00_Process_and_Operational_Workflows.md`](../part1_security_privacy/v2_security_privacy_synthesis/Doc00_Process_and_Operational_Workflows.md) (Workflows & PUCs), [`../part1_security_privacy/v2_security_privacy_synthesis/Doc01_Requirements_Specification.md`](../part1_security_privacy/v2_security_privacy_synthesis/Doc01_Requirements_Specification.md) (20 Cards `R1.1`–`R8.3`) & [`../part1_security_privacy/v2_security_privacy_synthesis/Doc02_System_Use_Cases.md`](../part1_security_privacy/v2_security_privacy_synthesis/Doc02_System_Use_Cases.md) (20 Use Cases `{U.C. 1.1}`–`{U.C. 8.3}`)  
 > **Methodological Standard:** [`../../../templates/phase3_threat_risk_guidelines.md`](../../../templates/phase3_threat_risk_guidelines.md) §6.1 & [`00_METHODOLOGY_AND_EXECUTION_GUIDE.md`](00_METHODOLOGY_AND_EXECUTION_GUIDE.md) §6.1  
 
 ---
@@ -16,8 +16,8 @@ This document establishes the **structural context, asset inventory, trust bound
 
 | Transition Dimension | Content & Operational Flow |
 |---|---|
-| **Upstream Inputs (from Part 1)** | Consumes the certified Version 2 functional baseline: 20 Requirement Cards (`R1.1`–`R8.3`), 30 EARS non-functional constraints (`RN1`–`RN30`), and 20 Cockburn Sea-Level Use Cases (`{U.C. 1.1}`–`{U.C. 8.3}`). |
-| **Analytical Transformation** | Decomposes the functional system into: (1) 10 critical assets (`AST-01`–`AST-10`) categorized under CIA-A and GDPR; (2) 5 formal trust boundaries (`TB-01`–`TB-05`); (3) 10 inter-entity data flows (`DF-01`–`DF-10`) formalized in a DFD Level 1. |
+| **Upstream Inputs (from Part 1)** | Consumes the certified Version 2 baseline: Operational Workflows & PUCs ([`Doc00`](../part1_security_privacy/v2_security_privacy_synthesis/Doc00_Process_and_Operational_Workflows.md)), 20 Requirement Cards (`R1.1`–`R8.3`), 30 EARS non-functional constraints (`RN1`–`RN30`) ([`Doc01`](../part1_security_privacy/v2_security_privacy_synthesis/Doc01_Requirements_Specification.md)), and 20 Cockburn Sea-Level Use Cases (`{U.C. 1.1}`–`{U.C. 8.3}`) ([`Doc02`](../part1_security_privacy/v2_security_privacy_synthesis/Doc02_System_Use_Cases.md)). |
+| **Analytical Transformation** | Decomposes the operational workflows and functional system into: (1) 10 critical assets (`AST-01`–`AST-10`) categorized under CIA-A and GDPR; (2) 5 formal trust boundaries (`TB-01`–`TB-05`) derived from the `Doc00` trust zones; (3) 10 inter-entity data flows (`DF-01`–`DF-10`) formalized in a DFD Level 1. |
 | **Downstream Handoff $\rightarrow$ Step 2** | Transfers all boundary-crossing interactions to [`02_TECHNICAL_THREATS_STRIDE.md`](02_TECHNICAL_THREATS_STRIDE.md) for technical threat elicitation per functional package. |
 | **Downstream Handoff $\rightarrow$ Step 3** | Transfers all personal data flows to [`03_PRIVACY_THREATS_LINDDUN.md`](03_PRIVACY_THREATS_LINDDUN.md) for data subject privacy threat modeling. |
 | **Downstream Handoff $\rightarrow$ Step 4** | Anchors the root targets (`AST-01` Credentials, `AST-02` Tenant Files, `TB-02` Role Boundary, `TB-03` Multi-Tenant Storage) for Attack Tree decomposition in [`04_ATTACK_VECTORS_AND_DEFENSE_TREES.md`](04_ATTACK_VECTORS_AND_DEFENSE_TREES.md). |
@@ -209,7 +209,7 @@ The following table catalogs all 10 major data flows within TinyTask SaaS, ident
 
 | Flow ID | Flow Name & Description | Source Entity | Destination Entity | Data Items / Assets Transferred | Boundaries Crossed | Governing Part 1 Constraints |
 |---|---|---|---|---|---|---|
-| **DF-01** | User Authentication & Registration | `EE-01` (Client) | `P1` (Identity) | Email, plaintext password, salted hash, session JWT | `TB-01` | `RN10`, `RN11`, `RN18`, `RN24` |
+| **DF-01** | User Authentication & Registration | `EE-01` (Client) | `P1` (Identity) | Email, plaintext password, salted hash, cryptographically signed session token | `TB-01` | `RN10`, `RN11`, `RN18`, `RN24` |
 | **DF-02** | Workspace Provisioning & Administration | `EE-01` (Client) | `P2` (Workspace) | Workspace name, owner role, member role modifications | `TB-01`, `TB-02` | `RN12`, `RN18`, `RN28` |
 | **DF-03** | Member Invitation & Recovery Dispatch | `P2` (Workspace) | `EE-03` (Email) | Recipient email, cryptographic invitation/recovery token, workspace ID | `TB-05` | `RN10`, `RN24`, `RN28` |
 | **DF-04** | Project Configuration & Management | `EE-01` (Client) | `P3` (Projects) | Project title, deliverable description, visibility settings | `TB-01`, `TB-02` | `RN9`, `RN12`, `RN28` |

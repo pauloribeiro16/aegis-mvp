@@ -1,12 +1,5 @@
 # Principle Mapping — Functional Requirements Analyzed Against the 7 Secure Design Principles (SecureBorder eGate)
 
-> **Purpose:** the principle-centric mirror of [`OBJECTIVE_MAPPING.md`](OBJECTIVE_MAPPING.md): for **each secure-design principle** (`PRIN-ENG-01`..`07`, Phase 2 `Doc02`), where it binds across the functional model (requirement cards `R<n.m>` and use cases `{U.C.n.m}`), how it is realized there, and its coverage state.
-> **Sources:** `../../../02_PHASE2_RULES/Doc02_Secure_Design_Principles.md` (principle definitions) · `../analysis_v0_to_v1/STEP2_REGULATORY_CROSS_CUTTING_ANALYSIS.md` (derivation) · [`ROUND1_REGISTER.md`](ROUND1_REGISTER.md) (proposed constraints).
-> **State legend:** `Bound (RNx)` = realized by the named Round-1 accepted constraint · `Bound (functional)` = realized directly in the V0 requirement's functional description · `Cross-cutting` = binds via shared rows/preconditions. **All RN bindings were accepted in Round 1 (2026-09-28) and are bound in the V1 deliverables.**
-> **Skills (analysis lens):** AS = attack-surface-analysis · TB = trust-boundary-analysis · LP = least-privilege-analysis · FS = fail-safe-defaults-analysis · V = verifiability-analysis · DM = data-minimization-analysis · LE = lifecycle-erasure-analysis.
-
----
-
 ## §1 Principle ↔ Functional Model Matrix (principle-centric)
 
 ### `PRIN-ENG-01` — Explicit Trust Boundaries & Complete Mediation

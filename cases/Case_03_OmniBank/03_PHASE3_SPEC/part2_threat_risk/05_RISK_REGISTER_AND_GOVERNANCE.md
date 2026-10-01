@@ -144,6 +144,20 @@ The three threats remaining at **High residual risk** are:
 
 **Verdict:** All three High residuals are **formally accepted as fully mitigated** under mandatory, testable EARS constraints. None represents an unaddressed architectural vulnerability; each residual is the latent impact of a hypothetical cryptographic or serving-platform compromise whose likelihood the cited constraints reduce to the floor.
 
+### 3.4 Part 2 to Part 1 Feedback Reconciliation Matrix (ADR-005 / ADR-009 D2)
+
+In accordance with ADR-005 and ADR-009, threat modeling in Part 2 is not a terminal artifact but an active validation engine. The following matrix documents the closed-loop bidirectional traceability between identified threats, their inherent risk, the derived Part 1 mitigating specification elements (EARS constraints, derived functional cards, and Level-2 subfunction use cases), and the resulting verified residual risk:
+
+| Threat ID | Threat Name | Inherent Risk | ADR-005 / ADR-009 Feedback Action | Part 1 Carrier (Req / UC Level 2) | Governing NFR / EARS | Residual Risk |
+|---|---|---|---|---|---|---|
+| `TM-D-01.1-001` | Data-at-Rest Decryption via Key Compromise | 🔴 **Crit** (8) | Enforce field-level encryption, tenant segregation, and separated cryptographic key custody | `R2.1`, `R2.3`, `{U.C. 2.3.1}` | `RN14`, `RN15`, `RN19` | 🟠 **Alto** (4) — Mitigado |
+| `TM-D-01.2-002` | Key Custody Violation & Lifecycle Evidence Falsification | 🔴 **Crit** (8) | Level-2 subfunction for split-knowledge dual-control M-of-N threshold ceremonies and zeroization | `{U.C. 2.3.1}` under `{U.C. 2.3}` | `RN15`, `RN17`, `RN19` | 🟠 **Alto** (4) — Mitigado |
+| `TM-D-03.1-001` | OmniScore Decision Forgery at Serving | 🔴 **Crit** (8) | Level-2 subfunction for enclave feature validation, confidence thresholding, and signed inference logs | `{U.C. 1.2.1}` under `{U.C. 1.2}` | `RN11`, `RN23` | 🟡 **Médio** (3) — Mitigado |
+| `TM-D-01.1-002` | Model Inversion & Applicant Feature Reconstruction | 🔴 **Crit** (8) | Strict purpose-bound feature minimization and enclave-isolated scoring without model weight exposure | `R1.2`, `{U.C. 1.2.1}` | `RN11`, `RN12`, `RN23` | 🟠 **Alto** (4) — Mitigado |
+| `TM-D-03.1-002` | Privileged Access MFA Bypass | 🔴 **Crit** (8) | Level-2 subfunction for hardware cryptographic nonce challenge, presence verification, and ephemeral session binding | `{U.C. 4.2.1}` under `{U.C. 4.2}` | `RN19` | 🟡 **Médio** (3) — Mitigado |
+| `TM-D-05.3-001` | Retention Beyond Statutory Floors & Erasure Windows | 🔴 **Crit** (12) | Level-2 subfunction for customer cryptographic shredding, token-only statutory segregation, and deletion proof | `{U.C. 6.3.1}` under `{U.C. 6.3}` | `RN15`, `RN16`, `RN17` | 🟢 **Baixo** (1) — Mitigado |
+| `TM-D-05.1-001` | Applicant Profiling & Secondary Use of Scoring Data | 🔴 **Crit** (12) | Enforce purpose-bound scoring dataset, prompt feature vector clearing, and secondary-use isolation | `R1.2`, `{U.C. 1.2.1}` | `RN12`, `RN6` | 🟢 **Baixo** (2) — Mitigado |
+
 ---
 
 ## 4. Part 2 Exit Gate Formal Certification (Gates G7–G12)

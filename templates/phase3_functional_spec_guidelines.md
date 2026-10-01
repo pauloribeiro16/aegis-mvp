@@ -37,10 +37,15 @@ Alistair Cockburn's *Writing Effective Use Cases* establishes the precision leve
 1. **Goal Altitude Hierarchy:**
    - **Sky / Cloud Level (Summary — Level 0):** High-level organizational goals or core functional groupings (e.g., "Manage Tasks", "Manage Projects").
    - **Sea Level (User Goal — Level 1):** A discrete operational task undertaken by a single primary actor in a single sitting to achieve a meaningful business outcome (e.g., "Create and Assign Task", "Transition Task State").
-   - **Underwater / Clam Level (Sub-function — Leaf Nodes / Level 2+):** Procedural, micro-interaction UI details (e.g., "Click submit button", "Select dropdown item 3", "Validate string length").
-2. **The AEGIS Level-1 Scoping Boundary:**
-   - In accordance with the GPTools standard and Cockburn's sea-level principle, AEGIS functional use cases **anchor strictly at Level 1 (`{U.C.n.m}`)**.
-   - **Zero leaf nodes (`{U.C.n.m.k}`) and zero step-by-step procedural execution sequences** are written in the functional baseline. Micro-steps and procedural steps belong to interactive design and UI prototyping, not to the baseline functional architecture.
+   - **Underwater / Clam Level (Micro-UI — Strictly Prohibited):** Procedural, micro-interaction UI details (e.g., "Click submit button", "Select dropdown item 3", "Validate string length").
+   - **Fish Level (Subfunction / Level 2 — `{U.C. n.m.k}`):** Decomposed sub-goals representing autonomous, complex sub-transactions that support one or more Sea-Level use cases.
+2. **The AEGIS Sea-Level Foundation & Level-2 Decomposition Criteria (ADR-009):**
+   - By default, **>85% of all system use cases anchor strictly at Level 1 (`{U.C.n.m}`)**, representing complete user goals without procedural UI micromanagement.
+   - **Strict Level-2 Decomposition Criteria (ADR-009 D1):** A subfunction use case (`{U.C. n.m.k}`) is permitted **only** when a step in a Level-1 use case satisfies all three conditions:
+     1. *Trust Boundary Crossing:* The transaction crosses distinct architectural trust zones (e.g., untrusted client to application backend; application backend to external isolated processor).
+     2. *Autonomous Security Protocol & Multiple Failure Modes:* The transaction has dedicated security preconditions, challenge-response flows, multiple exception/attack branches, and distinct minimal guarantees.
+     3. *Cross-Cutting Reusability or Direct Regulatory Imperative:* The subfunction is invoked across multiple Sea-Level use cases or realizes a non-negotiable regulatory mandate (e.g., cryptographic erasure proof, webhook signature validation, credential challenge with progressive lockout).
+   - **Zero Clam-Level Use Cases:** Decomposing standard CRUD operations (creating a task, editing a description) into Level 2 remains strictly prohibited.
 
 ### 1.3 Requirements Quality Attributes (Wiegers & Beatty, 2013)
 Karl Wiegers and Joy Beatty's *Software Requirements* (3rd ed.) defines the essential quality attributes enforced in our specification:
@@ -63,12 +68,18 @@ Under **NO circumstances** may any requirement, table, card, or description ment
   - Frameworks & libraries: `Dotnet`, `Dotnet Core`, `Angular`, `React`, `Vue`, `Express`, `Spring`.
   - Cloud providers & vendors: `AWS`, `AWS S3`, `Google Cloud`, `Azure`, `Stripe`, `Sendgrid`, `Twilio`.
   - Protocols & standards: `WebSockets`, `SAML 2.0`, `OIDC`, `REST`, `GraphQL`, `gRPC`.
+  - Cryptography & tokens: `Argon2`, `Argon2id`, `Bcrypt`, `PBKDF2`, `HMAC`, `HMAC-SHA256`, `SHA-256`, `AES-256-GCM`, `JWT`, `Bearer Token`, `TLS 1.3`, `HTTPS`.
 - **Mandatory Functional Terms:**
   - Database $\rightarrow$ `Internal Application Database` or leave empty (`—`).
   - File storage $\rightarrow$ `File Storage Service` or `Attachment Storage`.
   - Payment/Billing $\rightarrow$ `External Payment Gateway` or `Payment Processing Service`.
   - Notifications/Email $\rightarrow$ `Transactional Email Service` or `Notification / Email Service`.
   - Real-time communication $\rightarrow$ `Real-Time Message Stream` or `Real-Time Push Channel`.
+  - Password hashing $\rightarrow$ `Memory-hard adaptive cryptographic key derivation function`.
+  - Payload signing $\rightarrow$ `Keyed cryptographic message authentication code`.
+  - Session tokens $\rightarrow$ `Cryptographically signed, time-bound session token`.
+  - Data encryption $\rightarrow$ `Authenticated high-assurance symmetric encryption at rest`.
+  - Transport security $\rightarrow$ `Authenticated and encrypted end-to-end communication channel`.
 
 ### 2.2 Action Verb Phrasing (No Nominalizations)
 All requirement group titles (`R1`, `R2`, ...), sub-requirement names (`R1.1`, `R1.2`, ...), and use case names (`{U.C. 1}`, `{U.C. 1.1}`, ...) **MUST** use active verbs in the infinitive/imperative form:
@@ -126,6 +137,12 @@ Specificity is not a virtue to maximize — it is a debt that must be **warrante
 - ✅ "blocks authentication after 5 failed attempts" (quantified L2 fit criterion — no mechanism descent; the *value* must still carry a derivation warrant, Anti-Pattern 11).
 
 **Composition with existing rules:** §2.1 is the L4 ban; Anti-Pattern 1 keeps security out of V0 (V1 absorbed constraints and §3.4-derived requirements obey *this* rule instead); Anti-Pattern 8 demands the quantitative fit criteria this rule explicitly does not restrict; **Anti-Pattern 11 is this rule's numeric twin** — it governs unwarranted *parameter values* while §2.5 governs unwarranted *mechanism vocabulary*. When a constraint genuinely needs an L3 category that only a good-practice source warrants, record it as `W4-pending` until ADR-001 is ratified — do not silently absorb general knowledge into the specification.
+
+### 2.6 The Dual Anchoring Principle (ADR-009 D4)
+A non-functional security or privacy requirement (NFR / EARS constraint `RN`) **must never exist as an unattached, floating rule**:
+1. **Functional Carrier Anchor:** Every non-functional constraint (`RN10`..`RN30`) must anchor into at least one primary functional requirement (`R...`) in `Doc01` that provides the concrete operational context where the constraint applies.
+2. **Behavioral Realization in Use Cases:** Every anchored constraint must be realized in `Doc02` through explicit Preconditions, Main Success Scenario steps, or Cockburn Extensions (Alternative/Exception Flows), and where complexity dictates, in a Level-2 subfunction (`{U.C. x.y.z}`).
+3. **No Orphan NFRs:** If a regulatory or threat-modeled obligation cannot be bound to an existing functional card, it must either derive a new functional requirement card (D1 taxonomy, e.g., `R1.3: Manage Active Sessions and Account Lockout`, `R8.3: Purge Workspace and Execute Right to Erasure`) or be routed to the organizational lane (`Doc03_Organizational_Requirements.md` per ADR-008).
 
 ---
 

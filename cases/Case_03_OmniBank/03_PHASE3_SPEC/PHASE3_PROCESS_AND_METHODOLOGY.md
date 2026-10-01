@@ -250,6 +250,35 @@ Part 2 launches only when every criterion is **GREEN** and evidenced in the tran
 | **G5** | Sufficiency assessment produced — per-regulation compliance verdict + security verdict + explicit residual list | `part1_security_privacy/synthesis_rounds/SUFFICIENCY_ASSESSMENT.md` |
 | **G6** | Transition dossier complete — steps documented like `part1_security_privacy/analysis_v0_to_v1/` | `analysis_v<N>_to_v<N+1>/` |
 
+### Threat Modeling on Operational & Business Processes (`Doc00` / ADR-009 D3)
+When evaluating threats and risks in Phase 3, analysis is not restricted to technical software DFDs. Operational processes documented in `Doc00_Process_and_Operational_Workflows.md` represent socio-technical execution paths and trust zone interfaces (`TZ-01` to `TZ-06`). Literature-grounded methods govern process-level risk evaluation:
+1. **SecBPMN2 Principles (Security-Annotated Business Processes):**
+   - *Segregation of Duties (SoD) / Four-Eyes Principle:* Verifying whether conflicting privileges (e.g., initiating credit disbursements vs. overriding AI credit scoring decisions, or generating cryptographic keys vs. authorizing ledger transfers) can be abused by a single operational role.
+   - *Binding of Duties (BoD):* Ensuring a financial transaction sequence initiated by an authenticated customer or credit officer cannot be hijacked mid-flow by an unauthenticated session or third-party API client.
+   - *Non-Repudiation across Trust Boundaries:* Ensuring handoffs between banking consumers, API ingress proxies, core banking ledgers, and supervisory regulatory gateways carry cryptographically verifiable audit trails.
+2. **PA-BPMN & Process LINDDUN:**
+   - *Unawareness:* Workflows capturing applicant financial and demographic data without antecedent transparent notice (GDPR Art. 13/14).
+   - *Linkability across Roles:* Exposure of customer credit records or account balances across separate institutional branches or third-party service providers without legal mandate.
+3. **NIST SP 800-160 Vol. 1 (Process Bypassing):**
+   - Verifying that technical system interfaces do not allow banking users or operators to bypass mandatory steps in the credit approval, payment authorization, or data retention lifecycle.
+
+### The Part 2 to Part 1 Reverse Feedback Loop (ADR-005 / ADR-009 D2)
+Threat modeling in Part 2 operates as a formal validation engine over the accepted specification of Part 1. When Part 2 discovers a threat whose inherent or residual risk is evaluated as Medium or High:
+1. **Derivation of Mitigating Specification Action:**
+   - *EARS Non-Functional Constraint (`RN`):* If the threat demands a behavioral or temporal restriction (e.g., ephemeral session lifetimes, cryptographic key rotation periods).
+   - *Derived Functional Requirement (D1 / `R<n.m>`):* If the threat demands a user-visible operational capability (e.g., automated AI decision explainability, human override console, customer-initiated rights management).
+   - *Level-2 Subfunction Use Case (`{U.C. x.y.z}`):* If the defense requires multi-step transactional flows with complex exception branches (e.g., automated credit scoring with high-risk AI assessment, dual-control cryptographic key custody, privileged MFA assertion challenge, tiered cryptographic erasure and retention segregation).
+2. **Audit & Traceability Closure:**
+   - Every case risk register (`05_RISK_REGISTER_AND_GOVERNANCE.md`) maintains a **Feedback Reconciliation Matrix** mapping:
+     `Threat ID (STRIDE/LINDDUN) -> Inherent Risk -> ADR-005 Mitigating Requirement (RN / R / Level-2 UC) -> Verified Residual Risk (Low/Med)`.
+   - The working baseline evolves traceably through an approved transition dossier, ensuring all feedback is closed before implementation.
+
+### The Dual Anchoring Principle (ADR-009 D4)
+A non-functional security or privacy requirement (NFR / EARS constraint `RN`) must never exist as an isolated, floating rule:
+1. **Functional Carrier Anchor:** Every non-functional constraint (`RN11`..`RN30`) must anchor into at least one primary functional requirement (`R...`) in `Doc01` that provides the concrete operational context where the constraint applies.
+2. **Behavioral Realization in Use Cases:** Every anchored constraint must be realized in `Doc02` through explicit Preconditions, Main Success Scenario steps, or Cockburn Extensions (Alternative/Exception Flows), and where complexity dictates, in a Level-2 subfunction (`{U.C. x.y.z}`).
+3. **Zero Orphan NFRs:** If a regulatory or threat-modeled obligation cannot be bound to an existing functional card, it must either derive a new functional requirement card (D1 taxonomy) or route to the organizational lane (`Doc03_Organizational_Requirements.md` per ADR-008).
+
 ---
 
 ## 4. Version Evolution & Artifact Directory Architecture

@@ -12,7 +12,7 @@ This document specifies the **System Use Case model** for the SecureBorder eGate
 - [2. System Requirements Approach & Literature Foundations](#2-system-requirements-approach--literature-foundations)
   - [2.1 The Volere Triangular Decomposition](#21-the-volere-triangular-decomposition)
   - [2.2 Use Case Architecture & Anatomy (Cockburn, Larman, Wiegers)](#22-use-case-architecture--anatomy-cockburn-larman-wiegers)
-  - [2.3 Refinement Boundary: Sea Level vs. Micro-UI Anti-Patterns](#23-refinement-boundary-sea-level-vs-micro-ui-anti-patterns)
+  - [2.3 Refinement Boundary: Cockburn's Sea Level (Level 1) and Strict Level-2 Subfunction Criteria (ADR-009)](#23-refinement-boundary-cockburns-sea-level-level-1-and-strict-level-2-subfunction-criteria-adr-009)
 - [3. Requirements Analysis](#3-requirements-analysis)
   - [3.1 Work Context Model](#31-work-context-model)
   - [3.2 Traceability Matrix: Requirements to System Use Cases](#32-traceability-matrix-requirements-to-system-use-cases)
@@ -40,9 +40,16 @@ Following Robertson & Robertson, business events drive Product Use Cases (Doc01 
 
 Each use case is specified at Cockburn's Sea Level (User Goal, Level 1) in the fully-dressed format: traceability, primary & supporting actors, stakeholders, preconditions, trigger, main success scenario (black-box actor–system exchanges), extensions (alternative/exception flows), success and minimal guarantees.
 
-### 2.3 Refinement Boundary: Sea Level vs. Micro-UI Anti-Patterns
+### 2.3 Refinement Boundary: Cockburn's Sea Level (Level 1) and Strict Level-2 Subfunction Criteria (ADR-009)
 
-Refinement stops strictly at Level 1 (`{U.C. n.m}`); there are **zero leaf nodes** and **zero micro-UI procedural scripts**. Security behavior appears as preconditions (state that must hold), extensions (accepted refusal/failure behavior), and guarantees (non-repudiable records) — never as procedural scripts, and never as threat models (formal threat analysis is Phase 3 Part 2, ADR-006).
+In accordance with Alistair Cockburn (*Writing Effective Use Cases*) and AEGIS Architecture Decision Record ADR-009:
+- **Sea Level (User Goal — Level 1):** The interaction satisfies a complete, discrete business task in a single sitting that delivers measurable value to the user (e.g., *Enrol traveller biometric reference*, *Perform biometric verification and gate decision*, *Review and override automated decisions*). By default, >85% of all system use cases anchor strictly at Level 1 (`{U.C. n.m}`).
+- **Subfunction Level (Fish Level / Level 2 — `{U.C. n.m.k}`):** Decomposed sub-goals representing autonomous, complex security or cryptographic sub-transactions supporting one or more Sea-Level use cases.
+- **Strict Level-2 Decomposition Criteria (ADR-009 D1):** A Level-2 subfunction is permitted only when it satisfies all three criteria:
+  1. *Trust Boundary Crossing:* The transaction crosses distinct architectural trust zones (e.g., untrusted traveller kiosk to local gate enclave; gate controller to government border authority or central fleet SOC).
+  2. *Autonomous Security Protocol & Multiple Failure Modes:* The transaction has dedicated security preconditions, challenge-response flows, multiple exception/attack branches, and distinct minimal guarantees.
+  3. *Cross-Cutting Reusability or Direct Regulatory Imperative:* The subfunction is invoked across multiple Sea-Level use cases or realizes a non-negotiable regulatory mandate (e.g., biometric presentation attack detection, multi-factor cryptographic assertion validation, multi-country cryptographic template purge, update digital signature verification).
+- **Zero Clam-Level Use Cases:** Decomposing standard operational steps into Level 2 or specifying micro-UI interactions (clicking buttons, entering form text) remains strictly prohibited.
 
 ## 3. Requirements Analysis
 
@@ -158,6 +165,28 @@ flowchart TD
 - **Success Guarantees:** Decision recorded tamper-evidently; gate state consistent with the decision; logs complete (RN24).
 - **Minimal Guarantees:** On any fault the gate fails closed (RN15); no plaintext biometric content outside the protected boundary (RN13).
 
+##### {U.C. 1.2.1} Execute Biometric Template Cryptographic Match & Presentation Attack Detection
+- **Traceability:** `R1.2` | `RN11`, `RN13`, `RN14`, `RN15`, `RN20` | Mitigates: `TM-D-03.1-001`, `TM-D-01.1-001`
+- **Primary Actor:** Traveller (via gate optical sensor)
+- **Supporting Actors:** Local Gate Controller, Biometric Enclave
+- **Scope & Level:** SecureBorder eGate Platform; Subfunction (Fish Level / Level 2 per ADR-009)
+- **Stakeholders & Interests:** *Traveller:* privacy-preserving matching, zero biometric vector leaks. *Border Authority:* reliable spoof detection and high-assurance verification.
+- **Preconditions:** Live optical capture obtained; verified biometric model active in memory enclave; anti-spoofing sensor baseline calibrated.
+- **Trigger:** Live facial capture is submitted to the matching pipeline.
+- **Main Success Scenario:**
+  1. System extracts feature vector from live optical capture within memory-isolated secure execution boundary.
+  2. System executes presentation attack detection (PAD / anti-spoofing) analyzing depth, spectral reflectance, and micro-texture patterns.
+  3. System loads encrypted reference template from tamper-resistant store and decrypts into isolated enclave memory (`RN11`).
+  4. System executes 1:1 biometric similarity matching score computation against calibrated decision threshold (`RN15`).
+  5. System emits cryptographically bound match assertion (Pass/Refer) to decision engine (`RN14`).
+  6. System zeroizes live feature vector and decrypted reference template memory within 5 seconds (`RN11`, `RN13`).
+- **Extensions:**
+  - **2a. Presentation attack or spoof detected:** 2a1. System flags spoofing attempt, aborts match, triggers gate fail-closed lock, logs security event with sensor telemetry (`RN22`), and routes traveller to manual inspection ({U.C. 2.2}).
+  - **4a. Match score falls into indeterminate ambiguity band:** 4a1. System generates referral token and transitions to manual-lane referral ({U.C. 2.2}).
+  - **5a. Enclave attestation failure or integrity fault:** 5a1. System triggers fail-safe safe closed state (`RN20`), logs critical security incident (`RN23`), and alerts SOC.
+- **Success Guarantees:** Biometric similarity evaluated accurately; gate state asserted cryptographically; all ephemeral vector memory zeroized within 5 seconds (`RN11`).
+- **Minimal Guarantees:** Gate fails closed on any detection failure or uncertainty (`RN15`); zero plaintext biometric vectors leaked outside isolated enclave (`RN13`).
+
 #### {U.C. 1.3} Consult traveller passage decision records
 - **Traceability:** `R1.3` | `PUC 1.3`
 - **Primary Actor:** Border Control Officer / Compliance Analyst
@@ -249,6 +278,29 @@ flowchart TD
 - **Success Guarantees:** Only policy-mandated authentication strengths reach the back-office.
 - **Minimal Guarantees:** Authentication failures are recorded and never silently retried without limit (RN18).
 
+##### {U.C. 3.2.1} Validate Operator Multi-Factor Cryptographic Assertion & Session Binding
+- **Traceability:** `R3.2` | `RN17`, `RN18` | Mitigates: `TM-D-03.1-003`
+- **Primary Actor:** Operational User (Border Control Officer, SOC Analyst, Security Engineer)
+- **Supporting Actors:** Hardware Security Authenticator
+- **Scope & Level:** SecureBorder eGate Platform; Subfunction (Fish Level / Level 2 per ADR-009)
+- **Stakeholders & Interests:** *Border Authority:* strict operator identity assurance. *Operations:* non-repudiable access without credential replay.
+- **Preconditions:** Operator identity provisioned and active (`RN17`); hardware cryptographic authenticator registered to operator identity.
+- **Trigger:** Operator initiates authentication challenge to access operational console or border oversight interface.
+- **Main Success Scenario:**
+  1. Operator presents primary credentials and connects hardware cryptographic authenticator.
+  2. System issues fresh, unpredictable cryptographic nonce challenge bounded by 60-second validity window.
+  3. Hardware authenticator signs nonce challenge using resident private key; operator provides user presence confirmation.
+  4. System verifies cryptographic signature against registered public trust anchor in identity directory.
+  5. System validates operator role, clearances, and national jurisdiction entitlements (`RN17`).
+  6. System issues cryptographically signed, short-lived session token bound to operator physical terminal and encrypted transport channel (`RN18`).
+  7. System logs successful authentication event with timestamp, actor ID, and terminal binding (`RN22`).
+- **Extensions:**
+  - **3a. Cryptographic signature invalid or expired nonce:** 3a1. System rejects authentication, records failure event, and increments rate-limiting lockout counter (`RN18`).
+  - **4a. Excessive consecutive failed attempts:** 4a1. System temporarily locks operator identity, raises alert to SOC, and requires supervisory unlock (`RN18`, `RN22`).
+  - **5a. Out-of-jurisdiction or unauthorized role attempt:** 5a1. System rejects access, revokes current challenge, and logs security breach attempt.
+- **Success Guarantees:** Mutual cryptographically proven identity established; short-lived session token securely bound; complete audit trail recorded.
+- **Minimal Guarantees:** Zero credential replay possible; session token bound strictly to issuing terminal; failed attempts fail closed and rate-limited (`RN18`).
+
 #### {U.C. 3.3} Assign and review operational access roles
 - **Traceability:** `R3.3` | `PUC 3.3`
 - **Primary Actor:** CISO
@@ -288,6 +340,28 @@ flowchart TD
   - **4a. Recipient cascade unreachable:** 4a1. System queues the cascade and records the pending state (chain: PO-D-01.4-001).
 - **Success Guarantees:** Rights executed within statutory deadlines; biometric content destroyed including key material (RN28).
 - **Minimal Guarantees:** No request executes without identity verification (RN16); every response is recorded against the clock.
+
+##### {U.C. 4.1.1} Execute Irreversible Traveller Biometric Template Purge & Cryptographic Proof
+- **Traceability:** `R4.1` | `RN16`, `RN28`, `RN10` | Mitigates: `TM-D-05.3-002`, `TM-D-09.4-001`
+- **Primary Actor:** Privacy Officer (DPO) / Automated Retention Daemon
+- **Supporting Actors:** Local Gate Fleet Controllers, Central Template Repository
+- **Scope & Level:** SecureBorder eGate Platform; Subfunction (Fish Level / Level 2 per ADR-009)
+- **Stakeholders & Interests:** *Traveller:* absolute right to erasure (GDPR Art. 17). *DPO:* auditable compliance and cross-country synchronization proof.
+- **Preconditions:** Traveller identity validated (`RN16`) or statutory retention schedule expired; valid erasure command authorized under GDPR Art. 17.
+- **Trigger:** Data-subject erasure order or statutory automated lifecycle purge trigger.
+- **Main Success Scenario:**
+  1. System identifies all encrypted template fragments, indexing metadata, and backup partitions across all national gate clusters.
+  2. System executes cryptographic key shredding: overwrites and destroys the specific key wrapping keys dedicated to the target template partition.
+  3. System overwrites raw physical storage blocks containing encrypted template artifacts with pseudorandom pattern passes.
+  4. System broadcasts signed synchronization purge assertion across all sibling multi-country gate deployments (`RN10`, `RN28`).
+  5. Sibling gate nodes confirm local cache erasure and return signed attestation receipts.
+  6. System generates non-repudiable cryptographic deletion receipt containing timestamp, pseudorandom confirmation hash, and statutory reference, without containing any personal or biometric data.
+  7. System updates Records of Processing Activities (RoPA) reflecting completed disposal.
+- **Extensions:**
+  - **1a. Conflicting statutory retention mandate:** 1a1. System isolates template in escrow, suppresses automated matching access, and logs statutory retention justification (`T-002`, `RN28`).
+  - **4a. Sibling gate node offline or unreachable during broadcast:** 4a1. System queues irrevocable purge directive in durable offline queue; offline gate node enforces purge immediately upon network reconnect prior to servicing passage requests.
+- **Success Guarantees:** Biometric template permanently and irreversibly destroyed across entire fleet; verifiable cryptographic deletion certificate produced (`RN28`).
+- **Minimal Guarantees:** Zero biometric residue or reconstructible fragments remain in any active or backup node; deletion verified across distributed deployments (`RN10`).
 
 #### {U.C. 4.2} Maintain records of processing activities
 - **Traceability:** `R4.2` | `PUC 4.2`
@@ -414,6 +488,28 @@ flowchart TD
   - **2a. Update fails integrity verification at the gate:** 2a1. Gate refuses the update and alerts the SOC (RN14, RN22).
 - **Success Guarantees:** Fleet reaches the patched state; advisories delivered; availability window met.
 - **Minimal Guarantees:** No unsigned or out-of-channel update is accepted by any fleet device (RN27, RN14).
+
+##### {U.C. 7.2.1} Verify Cryptographic Signature & Fleet Provenance for Software and Model Updates
+- **Traceability:** `R7.2` | `RN27`, `RN9`, `RN10` | Mitigates: `TM-D-06.1-001`
+- **Primary Actor:** Release Engineer / Automated Gate Node Update Agent
+- **Supporting Actors:** Hardware Trust Anchor (Gate Controller)
+- **Scope & Level:** SecureBorder eGate Platform; Subfunction (Fish Level / Level 2 per ADR-009)
+- **Stakeholders & Interests:** *Fleet:* verified integrity against supply-chain tampering. *Release Engineer:* atomic, verifiable fleet rollouts.
+- **Preconditions:** Update payload (firmware binary, application code, or AI model weights) staged in secure distribution channel (`RN27`); gate node in maintenance window or idle between passages.
+- **Trigger:** Gate node detects verified update package available from authorized fleet repository.
+- **Main Success Scenario:**
+  1. Gate update agent downloads staged package along with detached cryptographic signature manifest and SBOM metadata.
+  2. Agent verifies dual digital signatures over package digest using public keys anchored in hardware root-of-trust (`RN27`).
+  3. Agent checks monotonic rollback counter embedded in package manifest against internal hardware anti-rollback register.
+  4. Agent validates package integrity against published digest and verifies supply chain provenance chain of custody (`RN9`).
+  5. Gate controller applies update to inactive partition, executes self-test verification suite, and asserts operational health.
+  6. Controller commits new active partition, increments hardware rollback counter, and reports successful deployment status to central SOC.
+- **Extensions:**
+  - **2a. Cryptographic signature invalid or untrusted signer:** 2a1. Gate controller immediately rejects package, purges downloaded payload, alerts central SOC, and remains on current verified version (`RN14`, `RN27`).
+  - **3a. Rollback attempt detected:** 3a1. Gate controller blocks update, logs security tampering alert, and alerts SOC (`RN27`).
+  - **5a. Post-install self-test fails:** 5a1. Gate controller automatically rolls back to previous working partition, isolates update artifact, and logs diagnostic incident report (`RN15`).
+- **Success Guarantees:** Only authentic, non-repudiable, forward-versioned binaries or models are executed by fleet gates; deployment status confirmed (`RN27`).
+- **Minimal Guarantees:** Gate never boots or executes unverified payload; unauthorized or corrupted update fails closed without disrupting physical barrier security (`RN14`).
 
 #### {U.C. 7.3} Operate coordinated vulnerability disclosure
 - **Traceability:** `R7.3` | `PUC 7.3`

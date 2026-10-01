@@ -25,6 +25,7 @@ To provide complete operational clarity, each macro functional area is modeled w
   - [4.2 System Use Cases Specification](#42-system-use-cases-specification)
     - [{U.C. 1} Manage User Accounts and Authentication](#uc-1-manage-user-accounts-and-authentication)
       - [{U.C. 1.1} Register and authenticate user accounts](#uc-11-register-and-authenticate-user-accounts)
+        - [{U.C. 1.1.1} Execute Secure Authentication Challenge & Progressive Lockout](#uc-111-execute-secure-authentication-challenge--progressive-lockout)
       - [{U.C. 1.2} Manage user profile and account preferences](#uc-12-manage-user-profile-and-account-preferences)
       - [{U.C. 1.3} Recover access to a locked user account](#uc-13-recover-access-to-a-locked-user-account)
     - [{U.C. 2} Manage Workspaces and Teams](#uc-2-manage-workspaces-and-teams)
@@ -40,6 +41,7 @@ To provide complete operational clarity, each macro functional area is modeled w
       - [{U.C. 4.3} Configure recurring automated tasks](#uc-43-configure-recurring-automated-tasks)
     - [{U.C. 5} Collaborate on Task Deliverables](#uc-5-collaborate-on-task-deliverables)
       - [{U.C. 5.1} Manage task deliverable attachments](#uc-51-manage-task-deliverable-attachments)
+        - [{U.C. 5.1.1} Validate, Decontaminate & Isolate Uploaded Deliverable Asset](#uc-511-validate-decontaminate--isolate-uploaded-deliverable-asset)
       - [{U.C. 5.2} Post in-task discussion comments and mention collaborators](#uc-52-post-in-task-discussion-comments-and-mention-collaborators)
     - [{U.C. 6} Track Activity History and Notifications](#uc-6-track-activity-history-and-notifications)
       - [{U.C. 6.1} Consult chronological audit history on task cards](#uc-61-consult-chronological-audit-history-on-task-cards)
@@ -47,10 +49,12 @@ To provide complete operational clarity, each macro functional area is modeled w
     - [{U.C. 7} Manage Commercial Subscriptions](#uc-7-manage-commercial-subscriptions)
       - [{U.C. 7.1} Subscribe and manage workspace commercial plans](#uc-71-subscribe-and-manage-workspace-commercial-plans)
       - [{U.C. 7.2} Enforce operational grace period upon payment failure](#uc-72-enforce-operational-grace-period-upon-payment-failure)
+        - [{U.C. 7.2.1} Verify Cryptographic Signature & Replay Window for External Webhooks](#uc-721-verify-cryptographic-signature--replay-window-for-external-webhooks)
     - [{U.C. 8} Export Data and Close Accounts](#uc-8-export-data-and-close-accounts)
       - [{U.C. 8.1} Export personal and workspace data archives](#uc-81-export-personal-and-workspace-data-archives)
       - [{U.C. 8.2} Close user accounts and terminate workspace access](#uc-82-close-user-accounts-and-terminate-workspace-access)
       - [{U.C. 8.3} Delete workspace and permanently erase workspace data](#uc-83-delete-workspace-and-permanently-erase-workspace-data)
+        - [{U.C. 8.3.1} Execute Irreversible Cryptographic Purge of Multi-Tenant Workspace Data](#uc-831-execute-irreversible-cryptographic-purge-of-multi-tenant-workspace-data)
 - [5. Non-Functional Requirements](#5-non-functional-requirements)
 - [6. Conclusions](#6-conclusions)
 - [7. Bibliography](#7-bibliography)
@@ -114,12 +118,16 @@ Each Level-1 System Use Case in this document follows the formal, fully dressed 
 | **Success Guarantees** | The postconditions that must hold when the use case completes successfully. |
 | **Minimal Guarantees** | The system state guaranteed even if the use case terminates prematurely (rollback, security preservation). |
 
-### 2.5 Refinement Boundary: Cockburn's Sea Level (Level 1) vs. Micro-UI Anti-Patterns
+### 2.5 Refinement Boundary: Cockburn's Sea Level (Level 1) and Strict Level-2 Subfunction Criteria (ADR-009)
 
-A central lesson in Requirements Engineering is avoiding the **Clam-Level Decomposition Trap** (Anti-Pattern 3 in `phase3_functional_spec_guidelines.md`):
-- **Sea Level (User Goal — Level 1):** The interaction satisfies a complete, discrete business task in a single sitting that delivers measurable value to the user (e.g., *Create and assign tasks*, *Invite workspace members*, *Manage deliverable attachments*).
-- **Sub-function / Clam Level (Level 2+):** Micro-interactions such as clicking a specific button, focusing an input field, or validating a single string format.
-- **Rule:** Refinement strictly anchors at **Level 1 (`{U.C.n.m}`)**. There are **zero leaf nodes (`{U.C.n.m.k}`)** and **zero procedural UI scripts** in the baseline. Step sequences in the Main Success Scenario represent *business-level actor intent and system response*, not UI layout instructions.
+In accordance with Alistair Cockburn (*Writing Effective Use Cases*) and AEGIS Architecture Decision Record ADR-009:
+- **Sea Level (User Goal — Level 1):** The interaction satisfies a complete, discrete business task in a single sitting that delivers measurable value to the user (e.g., *Create and assign tasks*, *Invite workspace members*, *Manage deliverable attachments*). By default, >85% of all system use cases anchor strictly at Level 1 (`{U.C. n.m}`).
+- **Subfunction Level (Fish Level / Level 2 — `{U.C. n.m.k}`):** Decomposed sub-goals representing autonomous, complex security or cryptographic sub-transactions supporting one or more Sea-Level use cases.
+- **Strict Level-2 Decomposition Criteria (ADR-009 D1):** A Level-2 subfunction is permitted only when it satisfies all three criteria:
+  1. *Trust Boundary Crossing:* The transaction crosses distinct architectural trust zones (e.g., untrusted client to application backend; application backend to external isolated processor).
+  2. *Autonomous Security Protocol & Multiple Failure Modes:* The transaction has dedicated security preconditions, challenge-response flows, multiple exception/attack branches, and distinct minimal guarantees.
+  3. *Cross-Cutting Reusability or Direct Regulatory Imperative:* The subfunction is invoked across multiple Sea-Level use cases or realizes a non-negotiable regulatory mandate (e.g., cryptographic erasure proof, webhook signature validation, credential challenge with progressive lockout).
+- **Zero Clam-Level Use Cases:** Decomposing standard CRUD operations into Level 2 or specifying micro-UI interactions (clicking buttons, entering form text) remains strictly prohibited.
 
 ---
 
@@ -225,7 +233,7 @@ flowchart LR
   3. Actor accesses the activation link sent via email.
   4. System activates the account record and presents the login interface.
   5. Actor submits valid credentials.
-  6. System verifies credentials, creates an active authenticated session, and returns the user's authorized workspace dashboard.
+  6. System executes authentication challenge subfunction ({U.C. 1.1.1}), creates an active authenticated session, and returns the user's authorized workspace dashboard.
 - **Extensions (Alternative & Exception Flows):**
   - **1a. Email already registered:**
     - 1a1. System notifies actor that an account with that email already exists and offers login or password recovery options.
@@ -245,6 +253,42 @@ flowchart LR
     - 5c2. System informs the actor of the self-service recovery path ({U.C. 1.3}).
 - **Success Guarantees (Postconditions):** An authenticated session is issued to the user; the user has access to authorized workspace rosters.
 - **Minimal Guarantees:** Failed attempts leave database credentials unmodified; security audit log records timestamp and client IP for every rejected attempt; zero credentials or session tokens are leaked (RN18).
+
+##### {U.C. 1.1.1} Execute Secure Authentication Challenge & Progressive Lockout
+- **Traceability:** Requirement `R1.1`, `R1.2` | NFR `RN10`, `RN11`, `RN18`, `RN24` | Parent `{U.C. 1.1}`
+- **Primary Actor:** Unauthenticated Visitor / Registered User
+- **Supporting Actors:** Internal Application Database, Security Audit Subsystem
+- **Scope & Level:** TinyTask SaaS Platform | Subfunction (Level 2 / Fish Level)
+- **Stakeholders & Interests:**
+  - *Platform Founders:* Prevent unauthorized account compromise, credential stuffing, and brute-force enumeration.
+  - *Registered Users:* Guarantee that account identity is strongly protected with verifiable access control.
+- **Preconditions:** Connection is established across an authenticated and encrypted end-to-end communication channel (`RN24`).
+- **Trigger:** Parent use case `{U.C. 1.1}` or step-up authentication invokes credential verification.
+- **Main Success Scenario:**
+  1. System extracts submitted identity identifier and credential secret from transport payload.
+  2. System retrieves credential metadata (salt, memory-hard derivation parameters, reference hash, failed attempt counter, lockout expiry timestamp) from the internal application database.
+  3. System verifies that the target account is not currently subject to an active lockout period.
+  4. System executes the memory-hard adaptive cryptographic key derivation function using the submitted secret and the retrieved per-account salt (`RN10`).
+  5. System executes a constant-time comparison between the computed hash and the reference hash.
+  6. Hashes match: System resets the consecutive failed attempt counter to zero and clears any temporary lockout flags.
+  7. System generates a cryptographically signed, time-bound session token with restricted validity period (`RN10`).
+  8. System records the successful authentication challenge event in the immutable security audit log (`RN18`).
+  9. System returns the signed session token to the invoking parent use case.
+- **Extensions:**
+  - **2a. Identity identifier does not exist in datastore:**
+    - 2a1. System executes a dummy computation with identical computational duration using standard baseline parameters to prevent user enumeration via timing discrepancies (`RN10`).
+    - 2a2. System records an unauthenticated challenge failure event in the audit log (`RN18`).
+    - 2a3. System returns a generic authentication rejection message without disclosing whether the identifier or the credential was invalid.
+  - **3a. Account is currently locked:**
+    - 3a1. System evaluates the lockout expiry timestamp against the current monotonic clock.
+    - 3a2. Lockout period is still active: System rejects authentication immediately, increments the blocked-attempt counter, logs the event (`RN18`), and returns a generic temporary throttling notice indicating when retry is permitted.
+    - 3a3. Lockout period has elapsed: System resets failed attempt counter and resumes at step 4.
+  - **5a. Hash mismatch (invalid credentials):**
+    - 5a1. System increments the consecutive failed attempt counter in the datastore.
+    - 5a2. Counter < 5 consecutive failures: System introduces a progressive computational delay before returning a generic authentication failure notice.
+    - 5a3. Counter reaches 5 consecutive failures: System transitions account status to locked for a statutory duration, generates a security alert in the audit log (`RN11`, `RN18`), and dispatches an alert notification to the user's registered communication channel.
+- **Success Guarantees (Postconditions):** A cryptographically signed session token is issued; failed attempt counter is cleared; successful authentication is audit-logged.
+- **Minimal Guarantees (Fail-Secure):** No authentication state or token is granted on failure; no timing discrepancies are observable; generic error notices prevent user enumeration; all rejections are logged (`RN18`).
 
 ---
 
@@ -628,7 +672,7 @@ flowchart LR
 - **Main Success Scenario:**
   1. Actor accesses task card attachment section and selects a local file to upload.
   2. System validates file size against the 25 MB ceiling and verifies authorized file extensions (documents, spreadsheets, images).
-  3. System streams file to the file storage service, indexes attachment metadata (filename, size, author, timestamp), and binds it to the task.
+  3. System invokes deliverable validation and isolation subfunction ({U.C. 5.1.1}), streaming the sanitized asset into the file storage service, indexing metadata, and binding it to the task.
   4. System generates and displays an inline preview thumbnail and updates the task attachment badge counter.
   5. System records attachment upload in task audit history.
 - **Extensions:**
@@ -644,6 +688,35 @@ flowchart LR
     - 4c1. System rejects upload, purges temporary buffer immediately, and records file security event (RN13).
 - **Success Guarantees:** Deliverable file is stored, indexed, and available for authorized team retrieval; audit log records file lifecycle.
 - **Minimal Guarantees:** Incomplete or corrupted file fragments are automatically purged from storage buffers; deleted attachments are marked for irreversible cleanup and purged on the configured retention schedule (RN25).
+
+##### {U.C. 5.1.1} Validate, Decontaminate & Isolate Uploaded Deliverable Asset
+- **Traceability:** Requirement `R5.1` | NFR `RN13`, `RN25`, `RN18` | Parent `{U.C. 5.1}`
+- **Primary Actor:** Workspace Member / Workspace Admin
+- **Supporting Actors:** Internal File Storage Service, Deliverable Processing Engine
+- **Scope & Level:** TinyTask SaaS Platform | Subfunction (Level 2 / Fish Level)
+- **Stakeholders & Interests:**
+  - *Workspace Collaborators:* Exchange deliverable files safely without risking malware execution or server compromise.
+  - *Security Operations:* Prevent remote code execution, format spoofing, and malicious payload distribution.
+- **Preconditions:** Actor possesses an authenticated session with active Member rights for the parent task; storage quota allows additional file bytes.
+- **Trigger:** Parent use case `{U.C. 5.1}` receives a file upload stream for a task deliverable.
+- **Main Success Scenario:**
+  1. System buffers the initial bytes of the incoming deliverable payload in an isolated temporary staging buffer.
+  2. System evaluates payload size against the 25 MB ceiling and rejects streams that exceed the limit.
+  3. System inspects the payload binary header (*magic bytes*) to verify structural conformity with declared allowed deliverable formats (documents, spreadsheets, standard image formats) (`RN13`).
+  4. System executes file sanitization, stripping embedded executable macros, active scripts, and non-essential file metadata.
+  5. System generates a random, cryptographically collision-resistant storage identifier decoupled from the original user filename.
+  6. System streams the sanitized file into the dedicated file storage service, marked with restricted execution permissions (`no-exec`) on a segregated storage domain (`RN13`).
+  7. System records file attachment metadata (sanitized display filename, storage identifier, calculated byte length, uploader identity, timestamp) in the datastore and task audit history.
+  8. System returns the storage reference and thumbnail metadata to parent use case `{U.C. 5.1}`.
+- **Extensions:**
+  - **2a. Payload exceeds 25 MB size limit:**
+    - 2a1. System immediately terminates stream ingestion, deletes the temporary staging buffer, and returns a size limit violation error to the parent use case.
+  - **3a. Magic bytes mismatch or disallowed executable signature detected:**
+    - 3a1. System immediately aborts ingestion, purges the staging buffer irreversibly, records a file security alert in the audit log (`RN13`, `RN18`), and returns an invalid format rejection notice.
+  - **4a. Sanitization engine detects corrupted or unparseable file structures:**
+    - 4a1. System purges staging buffer, logs the parse failure, and notifies the uploader that the file structure is unreadable.
+- **Success Guarantees (Postconditions):** The deliverable file is validated, decontaminated, and persisted in an isolated storage domain with execution disabled; metadata is indexed and bound to the task card.
+- **Minimal Guarantees (Fail-Secure):** No unverified or executable byte stream is persisted in permanent storage; rejected or incomplete files leave zero residual fragments in staging buffers; security events are audit-logged (`RN18`).
 
 ---
 
@@ -808,7 +881,7 @@ flowchart LR
 - **Trigger:** Automated recurring subscription renewal payment fails at the external payment gateway.
 - **Main Success Scenario:**
   1. External payment gateway attempts recurring subscription charge; transaction fails (e.g., expired card, insufficient funds).
-  2. External payment gateway dispatches payment failure event to TinyTask platform.
+  2. External payment gateway dispatches payment event to TinyTask platform, invoking cryptographic signature and replay verification ({U.C. 7.2.1}).
   3. System registers payment failure and initiates a 7-day operational grace period.
   4. System dispatches urgent notification email to the Workspace Owner and displays an administrative payment warning banner within the workspace.
   5. During the 7-day grace period, all workspace members retain full normal operational access to projects and tasks.
@@ -822,6 +895,35 @@ flowchart LR
     - 3a1. System rejects expired webhook payload, logs replay detection event, and halts state transition (RN16, RN18).
 - **Success Guarantees:** Team operations are shielded from immediate disruption during temporary financial glitches; resolution restores normal status cleanly.
 - **Minimal Guarantees:** Grace period state changes require verified payment gateway origin and emit immutable billing audit records (RN18).
+
+##### {U.C. 7.2.1} Verify Cryptographic Signature & Replay Window for External Webhooks
+- **Traceability:** Requirement `R7.1`, `R7.2` | NFR `RN15`, `RN16`, `RN18` | Parent `{U.C. 7.1}`, `{U.C. 7.2}`
+- **Primary Actor:** External Payment Gateway
+- **Supporting Actors:** Internal Application Database, Security Audit Subsystem
+- **Scope & Level:** TinyTask SaaS Platform | Subfunction (Level 2 / Fish Level)
+- **Stakeholders & Interests:**
+  - *Finance Operations:* Ensure commercial subscription states reflect only authentic, untampered billing events.
+  - *System Administrators:* Prevent payment fraud, subscription spoofing, and replay attacks on billing endpoints.
+- **Preconditions:** Incoming webhook notification is delivered over an authenticated and encrypted communication channel (`RN24`); shared billing signing secret is configured in application secrets storage.
+- **Trigger:** External payment gateway dispatches an asynchronous event notification (e.g., payment succeeded, payment failed, subscription renewed) to the platform webhook endpoint.
+- **Main Success Scenario:**
+  1. System captures the raw incoming HTTP request payload, signature header, and transmission timestamp.
+  2. System extracts event timestamp and verifies that it falls within the acceptable 300-second clock-drift window relative to the monotonic system clock (`RN16`).
+  3. System extracts the external event unique identifier and verifies idempotency against the internal datastore of processed webhook events.
+  4. System computes the expected signature over the raw payload and timestamp using the pre-shared secret and a keyed cryptographic message authentication code algorithm (`RN16`).
+  5. System executes a constant-time cryptographic comparison between the received signature and the locally computed signature.
+  6. Signatures match: System records the external event identifier in the processed events ledger to guarantee idempotency.
+  7. System records the verified billing event in the immutable security audit log (`RN18`).
+  8. System parses the verified event payload and returns the validated commercial event data to the parent use case (`{U.C. 7.1}` or `{U.C. 7.2}`) for subscription state processing.
+- **Extensions:**
+  - **2a. Webhook timestamp falls outside the 300-second allowable window:**
+    - 2a1. System rejects webhook notification, records a replay alert in the security audit log (`RN16`, `RN18`), and returns an HTTP client rejection status without executing any billing logic.
+  - **3a. Event identifier already exists in processed events ledger:**
+    - 3a1. System identifies duplicate transmission, returns an acknowledgment status to the payment gateway without re-executing state transitions, and logs the duplicate receipt (`RN16`).
+  - **5a. Signature mismatch or malformed signature header:**
+    - 5a1. System halts processing immediately, discards payload, records an invalid signature security alert in the audit log (`RN16`, `RN18`), and returns an unauthorized rejection status.
+- **Success Guarantees (Postconditions):** The webhook payload is proven authentic, untampered, timely, and non-duplicate; the event is logged; valid billing data is passed to subscription handlers.
+- **Minimal Guarantees (Fail-Secure):** Zero subscription or account status modifications occur on unverified webhooks; rejected requests emit security audit alerts; pre-shared signing secrets are never exposed in log outputs (`RN18`).
 
 ---
 
@@ -912,8 +1014,6 @@ flowchart LR
 - **Success Guarantees:** User credentials and sessions are permanently deactivated; workspace access is revoked; the final export was offered before irreversible erasure; confirmation receipt is sent.
 - **Minimal Guarantees:** Account deactivation immediately revokes authentication tokens, preventing subsequent API or UI access; personal data is pseudonymized within 30 days and audit logged (RN21, RN18).
 
-- **Minimal Guarantees:** Account deactivation immediately revokes authentication tokens, preventing subsequent API or UI access; personal data is pseudonymized within 30 days and audit logged (RN21, RN18).
-
 ---
 
 #### {U.C. 8.3} Delete workspace and permanently erase workspace data
@@ -930,7 +1030,7 @@ flowchart LR
   1. Owner selects workspace deletion in workspace administration settings and submits the deletion request.
   2. System presents the irreversible-deletion warning, enumerating the scope (projects, tasks, comments, attachments, settings), and requires explicit confirmation.
   3. Owner confirms the permanent deletion.
-  4. System performs the final requester identity verification (RN27), then permanently erases all workspace content and settings across stores (RN30), revokes all member access to the workspace, and frees consumed seat quotas.
+  4. System performs the final requester identity verification (RN27), invokes irreversible cryptographic purge subfunction ({U.C. 8.3.1}) across datastores and file storage (RN30), revokes all member access to the workspace, and frees consumed seat quotas.
   5. System records the deletion event in the security audit log (RN18) and dispatches a deletion receipt to the Owner's registered email address.
 - **Extensions:**
   - **2a. Active paid subscription on the workspace:**
@@ -941,6 +1041,31 @@ flowchart LR
     - 4b1. System completes the remaining erasure before finalizing, keeps the workspace in a pending-erasure state with no member access, and never returns the workspace to active status (RN30).
 - **Success Guarantees:** No workspace content or settings remain retrievable after deletion; the Owner receives a deletion receipt; member access ends immediately.
 - **Minimal Guarantees:** The deletion is recorded in the audit log (RN18); the Owner's own account remains intact, and erasure of the owner's personal data in the workspace follows RN21.
+
+##### {U.C. 8.3.1} Execute Irreversible Cryptographic Purge of Multi-Tenant Workspace Data
+- **Traceability:** Requirement `R8.3` | NFR `RN21`, `RN30`, `RN18` | Parent `{U.C. 8.3}`
+- **Primary Actor:** Workspace Owner
+- **Supporting Actors:** Internal Application Database, File Storage Service, Audit Subsystem
+- **Scope & Level:** TinyTask SaaS Platform | Subfunction (Level 2 / Fish Level)
+- **Stakeholders & Interests:**
+  - *Departing Customers & Data Subjects:* Complete, verifiable realization of the right to erasure (GDPR Art. 17).
+  - *Data Protection Officer:* Assurance that multi-tenant isolation guarantees are maintained and no orphaned personal data persists.
+- **Preconditions:** Parent use case `{U.C. 8.3}` has successfully validated the Workspace Owner identity and confirmed irreversible deletion intent (`RN27`).
+- **Trigger:** Parent use case `{U.C. 8.3}` initiates the permanent workspace purge transaction.
+- **Main Success Scenario:**
+  1. System transitions the workspace entity into an immutable `PURGING` state, revoking active session tokens for all associated members immediately (`RN11`).
+  2. System identifies the dedicated tenant-specific cryptographic key wrapping the workspace data in the internal datastore.
+  3. System executes cryptographic key erasure (*crypto-shredding*), permanently destroying the workspace encryption key from the key management repository (`RN30`).
+  4. System executes cascading database purges, removing all relational task entities, kanban boards, project configurations, and membership rosters bound to the workspace tenant identifier (`RN21`).
+  5. System traverses file attachment storage, issuing irreversible deletion commands for all object files associated with the tenant storage container (`RN25`).
+  6. System scans collaboration comments: comments authored by members are pseudonymized and decoupled from personal profile identifiers in accordance with statutory retention policies (`RN21`).
+  7. System generates a cryptographically signed deletion confirmation receipt containing a timestamp, workspace identifier, and hash proof of completed purge operations (`RN30`).
+  8. System records the final disposal event in the immutable security audit log (`RN18`) and returns the signed receipt to parent use case `{U.C. 8.3}` for dispatch to the Owner.
+- **Extensions:**
+  - **4a. Transient database or storage service failure during cascade:**
+    - 4a1. System retains workspace in the non-operational `PURGING` state, enqueues remaining deletion steps in an isolated retry queue, alerts system administrators, and prevents any resurrection or read access to the workspace (`RN30`).
+- **Success Guarantees (Postconditions):** All workspace data is destroyed or rendered unrecoverable via key erasure; relational records and attachments are purged; member access is terminated; a signed deletion receipt is generated and audit-logged.
+- **Minimal Guarantees (Fail-Secure):** Once initiated, the purge cannot be reversed; the workspace never transitions back to active status; security audit log preserves proof of erasure without retaining sensitive personal payload data (`RN18`).
 
 ---
 

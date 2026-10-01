@@ -63,7 +63,7 @@ RE_ORG = re.compile(r"\bORG-D-\d\d\.\d-\d{3}\b")
 RE_PRINCIPLE = re.compile(r"\bPRIN-ENG-\d{2}\b")
 RE_RN = re.compile(r"\bRN\d{1,3}\b")
 RE_CARD = re.compile(r"(?<![A-Za-z0-9])R(\d{1,2})\.(\d{1,2})(?![0-9.])")
-RE_UC = re.compile(r"\{U\.C\.\s*(\d{1,2})\.(\d{1,2})\}")
+RE_UC = re.compile(r"\{U\.C\.\s*(\d{1,2})\.(\d{1,2})(?![0-9.])\}")
 RE_SECTION = re.compile(r"^##\s+(.*)$")
 HISTORY_SECTION = re.compile(r"version history|changelog|hist[oó]rico", re.IGNORECASE)
 
@@ -141,7 +141,9 @@ class Case:
         self.p3_dir = root / "03_PHASE3_SPEC"
         self.part1 = self.p3_dir / "part1_security_privacy"
         self.p1_root = self.part1 if self.part1.is_dir() else self.p3_dir
-        self.p3 = self._md("03_PHASE3_SPEC/part1_security_privacy/Doc01_Requirements_Elicitation_and_PUC.md") \
+        self.p3 = self._md("03_PHASE3_SPEC/part1_security_privacy/Doc01_Requirements_Specification.md") \
+            or self._md("03_PHASE3_SPEC/part1_security_privacy/Doc01_Requirements_Elicitation_and_PUC.md") \
+            or self._md("03_PHASE3_SPEC/Doc01_Requirements_Specification.md") \
             or self._md("03_PHASE3_SPEC/Doc01_Requirements_Elicitation_and_PUC.md")
         self.mapping = self._rglob_one("03_PHASE3_SPEC/part1_security_privacy/synthesis_rounds/OBJECTIVE_MAPPING.md") \
             or self._rglob_one("03_PHASE3_SPEC/synthesis_rounds/OBJECTIVE_MAPPING.md")
@@ -561,7 +563,7 @@ RE_TM_CARD_STRICT = re.compile(r"^####\s+(TM-D-\d\d\.\d-\d{3})\s*:")
 RE_REGISTER_ROW = re.compile(r"^\|\s*\d{1,3}\s*\|\s*`?(TM-D-\d\d\.\d-\d{3})`?\s*\|")
 RE_HEADING = re.compile(r"^(#{1,6})\s+(.*)$")
 RE_CARD5 = re.compile(r"^#####\s+R(\d{1,2})\.(\d{1,2})\b")
-RE_UC4 = re.compile(r"^####\s+\{U\.C\.\s*(\d{1,2})\.(\d{1,2})\}")
+RE_UC4 = re.compile(r"^#{4,5}\s+\{U\.C\.\s*(\d{1,2})\.(\d{1,2})(?:\.(\d{1,2}))?\}")
 RE_TABLE1_ROW = re.compile(r"^\|\s*\**R(\d{1,2})\.(\d{1,2})\**\s*\|\s*\**PUC")
 RE_TABLE7_ROW = re.compile(r"^\|\s*\**(RN\d{1,3})\**\s*\|")
 RE_NFR_TOKEN = re.compile(r"NFR-(RN\d{1,3})\b")
@@ -605,11 +607,15 @@ def _rn_ids_in_text(text: str) -> set[str]:
 def _accepted_baseline(case: Case) -> tuple[Path | None, Path | None]:
     """The accepted (active) Doc01/Doc02: top-level copies first, then the v2 folder."""
     p1 = case.part1
-    doc01 = p1 / "Doc01_Requirements_Elicitation_and_PUC.md"
+    doc01 = p1 / "Doc01_Requirements_Specification.md"
+    if not doc01.is_file():
+        doc01 = p1 / "Doc01_Requirements_Elicitation_and_PUC.md"
     doc02 = p1 / "Doc02_System_Use_Cases.md"
     v2 = p1 / "v2_security_privacy_synthesis"
     if not doc01.is_file():
-        doc01 = v2 / "Doc01_Requirements_Elicitation_and_PUC.md"
+        doc01 = v2 / "Doc01_Requirements_Specification.md"
+        if not doc01.is_file():
+            doc01 = v2 / "Doc01_Requirements_Elicitation_and_PUC.md"
     if not doc02.is_file():
         doc02 = v2 / "Doc02_System_Use_Cases.md"
     return (doc01 if doc01.is_file() else None, doc02 if doc02.is_file() else None)
@@ -722,7 +728,7 @@ def _parse_threat_card(line_iter: list[tuple[int, str]], start: int) -> tuple[st
 def _targets_of(body: list[tuple[int, str]]) -> tuple[set[str], set[str]]:
     text = "\n".join(l for _, l in body)
     cards = {f"R{a}.{b}" for a, b in re.findall(r"\bR(\d{1,2})\.(\d{1,2})\b", text) if not re.match(r"^0", a)}
-    ucs = {f"U{a}.{b}" for a, b in re.findall(r"\{U\.C\.\s*(\d{1,2})\.(\d{1,2})\}", text)}
+    ucs = {f"U{a}.{b}" for a, b in re.findall(r"\{U\.C\.\s*(\d{1,2})\.(\d{1,2})(?![0-9.])\}", text)}
     return cards, ucs
 
 

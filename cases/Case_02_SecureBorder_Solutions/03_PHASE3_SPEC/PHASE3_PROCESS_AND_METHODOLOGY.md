@@ -64,10 +64,11 @@ Wiegers and Beatty formalize the distinction between three hierarchical levels o
 *Source: Alistair Cockburn, "Writing Effective Use Cases", Addison-Wesley.*
 
 Cockburn establishes the standard for behavioral user requirements:
-1. **Goal Granularity (The Sea-Level Standard):**
-   - *Sky Level / Cloud Level:* Enterprise or summary goals (e.g., "Run SaaS Operations").
-   - *Sea Level (User Goal):* A task completed by a primary actor in a single session to achieve a measurable business objective (e.g., "Log Billable Hours", "Create Project Workspace"). **Phase 3 operates strictly at this level.**
-   - *Underwater / Clam Level:* Procedural micro-UI actions (clicking a button, entering text, validating email format). Cockburn warns against clam-level use cases as they clutter specifications with transient UI implementation details.
+1. **Goal Granularity Hierarchy & Level-2 Decomposition (ADR-009):**
+   - *Sky Level / Cloud Level (Level 0):* Enterprise summary goals bounding work events (Product Use Cases / PUC from Volere).
+   - *Sea Level (User Goal — Level 1):* A task completed by a primary actor in a single session to achieve a measurable business objective. **The core baseline operates at this level (>85% of all use cases).**
+   - *Fish Level (Subfunction — Level 2 / `{U.C. n.m.k}`):* Decomposed sub-transactions supporting one or more Sea-Level use cases. Permitted **only** when a step involves crossing a trust boundary, an autonomous security protocol with multiple exception/attack branches, or direct realization of a critical regulatory mandate (ADR-009 D1).
+   - *Underwater / Clam Level (Micro-UI — Strictly Prohibited):* Procedural micro-UI actions (clicking a button, entering text, validating field syntax). Cockburn warns against clam-level use cases as they clutter specifications with transient UI implementation details.
 2. **The Fully Dressed Use Case Anatomy:**
    - *Primary & Supporting Actors:* Who initiates and who assists.
    - *Preconditions & Trigger:* The exact state required before execution and the event initiating it.
@@ -249,6 +250,35 @@ Part 2 launches only when every criterion is **GREEN** and evidenced in the tran
 | **G4** | Deliverables at the current version — Phase 3 Quality Checklist (§6) green; `doc_lint.py --strict` = 0 | version folder + lint run |
 | **G5** | Sufficiency assessment produced — per-regulation compliance verdict + security verdict + explicit residual list | `part1_security_privacy/synthesis_rounds/SUFFICIENCY_ASSESSMENT.md` |
 | **G6** | Transition dossier complete — steps documented like `part1_security_privacy/analysis_v0_to_v1/` | `analysis_v<N>_to_v<N+1>/` |
+
+### Threat Modeling on Operational & Business Processes (`Doc00` / ADR-009 D3)
+When evaluating threats and risks in Phase 3, analysis is not restricted to technical software DFDs. Operational processes documented in `Doc00_Process_and_Operational_Workflows.md` represent socio-technical execution paths and trust zone interfaces (`TZ-01` to `TZ-05`). Literature-grounded methods govern process-level risk evaluation:
+1. **SecBPMN2 Principles (Security-Annotated Business Processes):**
+   - *Segregation of Duties (SoD) / Four-Eyes Principle:* Verifying whether conflicting privileges (e.g., configuring AI model thresholds vs. authorizing passenger referral overrides) can be abused by a single operational role.
+   - *Binding of Duties (BoD):* Ensuring a passage sequence initiated at an optical terminal cannot be hijacked mid-flow by an unauthenticated terminal or rogue network interactor.
+   - *Non-Repudiation across Trust Boundaries:* Ensuring handoffs between border officers, gate controllers, central fleet managers, and external government authorities carry cryptographically verifiable audit trails.
+2. **PA-BPMN & Process LINDDUN:**
+   - *Unawareness:* Workflows capturing biometric samples without antecedent transparent legal notice (GDPR Art. 13/14).
+   - *Linkability across Roles:* Exposure of traveller identity tokens or passage logs across sovereign national jurisdictions without legal mandate.
+3. **NIST SP 800-160 Vol. 1 (Process Bypassing):**
+   - Verifying that technical system interfaces do not allow travellers or operators to bypass mandatory steps in the border-control business process.
+
+### The Part 2 to Part 1 Reverse Feedback Loop (ADR-005 / ADR-009 D2)
+Threat modeling in Part 2 operates as a formal validation engine over the accepted specification of Part 1. When Part 2 discovers a threat whose inherent or residual risk is evaluated as Medium or High:
+1. **Derivation of Mitigating Specification Action:**
+   - *EARS Non-Functional Constraint (`RN`):* If the threat demands a behavioral or temporal restriction (e.g., ephemeral vector memory zeroization within 5 seconds).
+   - *Derived Functional Requirement (D1 / `R<n.m>`):* If the threat demands a user-visible operational capability (e.g., manual-lane referral tracking, coordinated vulnerability disclosure).
+   - *Level-2 Subfunction Use Case (`{U.C. x.y.z}`):* If the defense requires multi-step transactional flows with complex exception branches (e.g., presentation attack detection, multi-factor assertion validation, distributed template cryptographic purge).
+2. **Audit & Traceability Closure:**
+   - Every case risk register (`05_RISK_REGISTER_AND_GOVERNANCE.md`) maintains a **Feedback Reconciliation Matrix** mapping:
+     `Threat ID (STRIDE/LINDDUN) -> Inherent Risk -> ADR-005 Mitigating Requirement (RN / R / Level-2 UC) -> Verified Residual Risk (Low/Med)`.
+   - The working baseline evolves traceably through an approved transition dossier, ensuring all feedback is closed before implementation.
+
+### The Dual Anchoring Principle (ADR-009 D4)
+A non-functional security or privacy requirement (NFR / EARS constraint `RN`) must never exist as an isolated, floating rule:
+1. **Functional Carrier Anchor:** Every non-functional constraint (`RN11`..`RN30`) must anchor into at least one primary functional requirement (`R...`) in `Doc01` that provides the concrete operational context where the constraint applies.
+2. **Behavioral Realization in Use Cases:** Every anchored constraint must be realized in `Doc02` through explicit Preconditions, Main Success Scenario steps, or Cockburn Extensions (Alternative/Exception Flows), and where complexity dictates, in a Level-2 subfunction (`{U.C. x.y.z}`).
+3. **Zero Orphan NFRs:** If a regulatory or threat-modeled obligation cannot be bound to an existing functional card, it must either derive a new functional requirement card (D1 taxonomy) or route to the organizational lane (`Doc03_Organizational_Requirements.md` per ADR-008).
 
 ---
 

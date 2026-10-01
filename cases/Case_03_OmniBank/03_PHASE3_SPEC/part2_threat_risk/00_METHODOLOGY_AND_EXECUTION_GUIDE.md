@@ -21,9 +21,9 @@ flowchart TD
     end
 
     subgraph P3_P1["Phase 3 — Part 1: Security & Compliance Specification"]
-        V0["Version 0: Pure Functional Baseline<br>(Doc01 Cards R... + Doc02 Use Cases {U.C. ...})"]
+        V0["Version 0: Pure Functional Baseline<br>(Doc00 Workflows + Doc01 Cards + Doc02 Use Cases)"]
         Synth["Progressive Synthesis Loop (Steps 2–5b)<br>EARS Constraints (RN...) + Control Anchors (CSF / PF)"]
-        V2["Version 2: Accepted Specification Baseline<br>(Doc01 / Doc02 4.0.0 — Certified Green G1–G6)"]
+        V2["Version 2: Accepted Specification Baseline<br>(Doc00 / Doc01 / Doc02 4.0.0 — Certified Green G1–G6)"]
         V0 --> Synth --> V2
     end
 
@@ -90,7 +90,7 @@ flowchart LR
 
 ### 2.1 The Four Questions (The Threat Modeling Manifesto, 2020)
 Every Part 2 execution must answer four core questions:
-1. **What are we working on?** $\rightarrow$ Step 1: Assets, Data Flow Diagrams (DFD Level 1), and Trust Boundaries derived from the Part 1 Use Cases (`Doc02`) and Requirement Cards (`Doc01`).
+1. **What are we working on?** $\rightarrow$ Step 1: Assets, Data Flow Diagrams (DFD Level 1), and Trust Boundaries derived from the Part 1 Operational Workflows ([`Doc00`](../part1_security_privacy/v2_security_privacy_synthesis/Doc00_Process_and_Operational_Workflows.md)), Requirement Cards ([`Doc01`](../part1_security_privacy/v2_security_privacy_synthesis/Doc01_Requirements_Specification.md)), and Use Cases ([`Doc02`](../part1_security_privacy/v2_security_privacy_synthesis/Doc02_System_Use_Cases.md)).
 2. **What can go wrong?** $\rightarrow$ Steps 2, 3, and 4: STRIDE-per-interaction, LINDDUN data flows, and formal Attack Trees.
 3. **What are we going to do about it?** $\rightarrow$ Step 4 and 5: Mitigations through EARS constraints (`RN`), Cockburn Use Case exception flows, and MITRE D3FEND architectural techniques.
 4. **Did we do a good enough job?** $\rightarrow$ Step 5: Dual qualitative risk scoring (Inherent vs. Residual), risk reduction quantification ($\Delta R$), and Exit Gate validation (G7–G12).

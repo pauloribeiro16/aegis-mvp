@@ -229,6 +229,7 @@ This subsection is the **canonical filling guide** for every card row. Whenever 
 - Purpose: carry the absorbed security/privacy NFRs with their full tracing chain, so nothing "falls from the sky".
 - ✅ One condensed line per NFR, ids only:
   `**NFR-RN10** Credential Hardening & Salted Hashing — CRA Annex I Part I (2)(d)+(2)(j) → SO-D-02.1-002 → PRIN-ENG-04 → CSF PR.AA-03, PR.DS-01`
+- **Statement surface:** every RN must be statable as a complete EARS sentence ("The system shall …"), technology-neutral, at altitude L2. The sentence lives in the Doc01 **Security & Privacy Requirements Catalog** (the table following the quality attributes); the in-card row keeps title + chain as the absorption pointer. A constraint that exists only as a nominalized title is a defect — there is nothing to verify.
 - **High-Level Control Abstraction Mandate:** NFRs must be expressed as **High-Level Control Objectives** anchored in the control referential (NIST CSF 2.0 / NIST PF 1.1 / ISO). They must **NEVER invent premature implementation parameters** (e.g., exact timeout minutes, request quotas, byte sizes, response latencies). Parameterization belongs to Phase 4 design (Anti-Pattern 11).
 - Only NFRs **genuinely applicable to this card's function** (typically 1–3). Cards with no security surface carry no row at all — do not pad.
 - **Never** repeat cross-cutting NFRs (rate limiting, audit logging, transport encryption) card by card; they live once as standalone rows in the Quality Attributes table.

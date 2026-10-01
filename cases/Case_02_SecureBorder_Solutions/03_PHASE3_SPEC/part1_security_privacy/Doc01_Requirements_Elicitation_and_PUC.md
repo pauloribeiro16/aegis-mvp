@@ -442,7 +442,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R5.2 **Name:** Triage and manage incidents |
 | **Description:** The system must classify and prioritize incidents by statutory impact, support containment actions per incident class (gate tamper, network intrusion, model misbehaviour), and maintain the incident record through resolution with response timestamps. |
 | **Requirement Origin:** Incident Response Runbook & Statutory Notification Obligation |
-| **Security & Privacy Constraints:**<br>**Chain** NIS 2 Art. 21(2)(b) → `SO-D-10.1-003`<br>**Chain** **NFR-RN23** Incident-Handling Lifecycle Closure — `NIS 2 Art. 21(2)(c)` → `SO-D-04.1-003`, `SO-D-04.2-003` → `PRIN-ENG-02` → CSF RS.MA-01, RS.AN-03<br>**NFR-RN26** Breach Awareness & Containment Record — `GDPR Art. 33(1)+Art. 33(5)` → `PO-D-04.1-001`, `PO-D-04.2-001` → `PRIN-ENG-07` → CSF DE.CM-01, RS.MI-01, RS.MA-02<br>**Chain** NIS 2 Art. 21(2)(b) → `SO-D-10.1-003` |
+| **Security & Privacy Constraints:**<br>**Chain** NIS 2 Art. 21(2)(b) → `SO-D-10.1-003`<br>**Chain** **NFR-RN23** Incident-Handling Lifecycle Closure — `NIS 2 Art. 21(2)(c)` → `SO-D-04.1-003`, `SO-D-04.2-003` → `PRIN-ENG-02` → CSF RS.MA-01, RS.AN-03<br>**NFR-RN26** Breach Awareness & Containment Record — `GDPR Art. 33(1)+Art. 33(5)` → `PO-D-04.1-001`, `PO-D-04.2-001` → `PRIN-ENG-07` → CSF DE.CM-01, RS.MI-01, RS.MA-02|
 | **Interfaces:** Incident console; containment controls; notification dispatch interface |
 | **Dependencies:**<br>• **Stakeholders:** SecureBorder Operations & Security<br>• **Data Sources:** Alert Queue, Incident Record<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -704,13 +704,67 @@ The non-functional requirements define the platform's performance, availability,
 | **RN10** | Per-country deployments must remain logically and physically isolated from each other, with no cross-border data commingling. | MUST | Deployment Isolation |
 | **RN13** | All data crossing the gate–back-office, back-office–authority, and fleet–update channels shall be cryptographically protected in transit with state-of-the-art mechanisms and integrity verification, refusing unauthenticated channels. | MUST | Security — Transport (GDPR Art. 32(1)(b)+Art. 32(2) → PO-D-01.2-001 · CRA Annex I Part I (2)(e)+(j) → SO-D-01.2-002 → PRIN-ENG-01 → CSF PR.DS-02, PR.IR-01) |
 
+#### 2.4 Security & Privacy Requirements Catalog
+
+The function-specific security & privacy requirements are absorbed in-card as `Security & Privacy Constraints` rows carrying their full tracing chains; this catalog states each of them as a complete, verifiable requirement sentence, so the demanded behavior is readable without following a chain. The cross-cutting transport requirement remains the standalone row of Table 7.
+
+*Table 8. Security & Privacy Requirements (statement catalog; chains live on the absorbing cards)*
+
+| ID | Requirement | Priority | Type | Absorbed In |
+|---|---|---|---|---|
+| **RN11** | The system shall store traveller biometric templates only in cryptographically protected form under keys held in separated custody, such that compromise of the template store alone does not yield usable biometric identifiers. | MUST | Security — Data at Rest | R1.1, R1.3 |
+| **RN12** | The system shall hold cryptographic keys under custody separated from the data and services they protect, executing key lifecycle operations only through verified, separated control. | MUST | Security — Key Management | R1.1, R1.2 |
+| **RN14** | The system shall protect security-relevant records and commands against unauthorized alteration or injection across their full path, detecting and refusing any integrity violation. | MUST | Security — Integrity | R1.2, R1.3, R6.1 |
+| **RN15** | The verification AI shall sustain its approved operating behavior and, upon anomaly, degradation, or failure, revert to a fail-safe state that refuses passage or refers the traveller to the manual lane rather than defaulting to allow. | MUST | AI — Resilience | R1.2, R8.3, R9.2 |
+| **RN16** | The system shall verify the identity of every data-subject requester against verified identifiers before executing any right, delivering outcomes only to the verified titular subject. | MUST | Privacy — Rights | R4.1 |
+| **RN17** | The system shall manage operator identities through a governed lifecycle covering creation, mutation, deprovisioning, and periodic review, refusing access without a current, reviewed identity state. | MUST | Security — Identity | R3.1, R3.3 |
+| **RN18** | The system shall authenticate operators through multi-factor verification before granting access to operational or administrative functions. | MUST | Security — Authentication | R3.2 |
+| **RN19** | The system shall mediate security-relevant instructions through verification that the requesting actor holds authorization for that instruction class, rejecting and recording instructions from unverified actors. | MUST | Security — Authorization | R2.1, R3.3 |
+| **RN20** | The system shall initialize every component under a restrictive secure-by-default configuration and refuse or reset weakened configurations to the secure baseline. | MUST | Security — Configuration | R1.2, R8.1 |
+| **RN21** | The system shall dispatch every statutory notification through a single unified pipeline whose timeline is enforced across the applicable regimes, so that no notification bypasses or exceeds its regulatory clock. | MUST | Compliance — Notification | R6.1 |
+| **RN22** | The system shall record product activity, including security-relevant events and refusals, as tamper-evident entries, such that suppression or alteration is detectable. | MUST | Security — Auditability | R1.2, R5.1 |
+| **RN23** | The system shall manage every incident through a handled lifecycle reaching verified closure, such that prematurely or silently abandoned incidents are detectable. | MUST | Compliance — Incident Response | R5.2, R5.3 |
+| **RN24** | The system shall log AI events — serving decisions, model state changes, and monitoring signals — over the model lifetime, keeping the behavior of every deployed version evidenced. | MUST | AI — Logging | R1.2, R9.2 |
+| **RN25** | The system shall integrate AI performance monitoring into the post-market monitoring pipeline, so that accuracy, drift, and disparity signals reach detection independently of the serving path. | MUST | AI — Monitoring | R5.1, R9.2 |
+| **RN26** | The system shall record breach awareness and containment actions as they occur, evidencing the state of every statutory notification obligation. | MUST | Compliance — Breach Records | R5.2, R6.1 |
+| **RN27** | The system shall distribute software and model updates only through authenticated, integrity-verified channels for the full support period, installing nothing that fails signature verification. | MUST | Security — Supply Chain | R7.2 |
+| **RN28** | The system shall execute traveller erasure and portability through the managed rights pipeline across all stores, delivering outcomes only to the verified titular subject. | MUST | Privacy — Rights | R4.1 |
+| **RN29** | The system shall keep human oversight operative for automated decisions, with attribution, rationale, and reviewability, so that oversight effectiveness is evidenced rather than asserted. | MUST | AI — Oversight | R11.2, R2.1 |
+| **RN30** | The system shall provide the deployer with the information and interpretability means required to understand and communicate the AI system's capabilities, limitations, and decision basis. | MUST | AI — Transparency | R9.3 |
+
+#### 2.5 Requirement Type Coverage
+
+The specification covers the following requirement types. Types recorded as not represented carry no requirement in this specification because no source warrant exists for them (Rule R6); they are candidates for a future round if the client authors them.
+
+*Table 9. Requirement type coverage*
+
+| Requirement Type | Represented By | Coverage |
+|---|---|---|
+| Functional | 28 requirement cards (§2.2) | Represented |
+| Performance & Efficiency | RN1 | Represented |
+| Availability | RN2 | Represented |
+| Scalability | RN3 | Represented |
+| Recoverability | RN4 | Represented |
+| Privacy Responsiveness | RN5 | Represented |
+| Auditability | RN6, RN22 | Represented |
+| AI Quality | RN7 | Represented |
+| AI Fairness | RN8 | Represented |
+| Interoperability | RN9 | Represented |
+| Deployment Isolation | RN10 | Represented |
+| Security — Transport | RN13 (Table 7) | Represented |
+| Security & Privacy (function-specific) | RN11–RN12, RN14–RN30 (Table 8) | Represented |
+| Organizational (PROCESS lane) | `Doc03_Organizational_Requirements.md` (2 DPO requirements) | Represented |
+| Usability / Accessibility | — | Not represented — no source warrant in the intake or the Phase 2 objectives (R6); gate-facing interaction is bounded by the statutory service targets (RN1, RN5) |
+| Internationalization | — | Not represented — single-language operational context per deployment; a future multi-language deployment would enter through a round |
+| Maintainability / Portability | — | Not represented — no source warrant; implementation-era concerns belong to later engineering passes |
+
 ---
 
 ### 3. Business Product Use Cases (PUC) Definition
 
 The Product Use Cases (*PUC*) delineate the functional boundary of the SecureBorder eGate platform, mapping input payloads, processing boundaries, and output deliverables:
 
-*Table 8. Summary table of Product Use Cases (PUC)*
+*Table 10. Summary table of Product Use Cases (PUC)*
 
 | PUC ID | Business Trigger | Primary Actor | System Operational Boundary | Deliverables & Outputs |
 |---|---|---|---|---|
@@ -815,6 +869,7 @@ flowchart LR
 
 | Version | Date | Author | Description of Changes |
 |---|---|---|---|
+| **3.1.0** | 2026-10-01 | Requirements Engineering Agent | Security & Privacy Requirements catalog added (Table 8: full requirement statements for RN11–RN30 except the cross-cutting RN13, which remains in Table 7); requirement type coverage recorded (Table 9); PUC summary renumbered to Table 10; duplicated bare chain rows removed from R5.2 and R5.3. |
 | **1.0.0** | 2026-09-23 | Requirements Engineering Agent | Initial baseline elicitation (GPTools E1.1 structural model): 11 requirement groups, 28 Level-1 capabilities, 10 measurable NFRs. |
 | **2.0.0** | 2026-09-28 | Requirements Engineering Agent | Round 1 synthesis (ADR-005, `part1_security_privacy/synthesis_rounds/ROUND1_REGISTER.md`, 20/20 accepts): 20 new security & privacy constraints `RN11`–`RN30` absorbed in-card (RN13 cross-cutting in Table 7), 51 regulatory chain rows bound to existing functional cards, tensions T-001..T-004 realized; 28 requirement cards, 28 PUCs. |
 | **3.0.0** | 2026-09-29 | Requirements Engineering Agent | Round 2 synthesis (ADR-005, `part1_security_privacy/synthesis_rounds/ROUND2_REGISTER.md`): `R9.3` AI adversarial testing elevated SHOULD → MUST per AI Act Art. 9(6)-(7) (D3); Doc02 matrix `R7.3` aligned to the MUST already carried by Table 6. |

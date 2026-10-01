@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 from compose import (REGULATIONS, SD_RE, compose_call, confirmed_regulations,
-                     load_case, load_selection)
+                     extract_markdown_section, load_case, load_selection)
 from llm import LLMError, OllamaClient
 from trace import Trace, now_iso
 
@@ -191,24 +191,119 @@ def parse_p4(answer: str, sd_id: str) -> dict:
 
 
 def parse_p5(answer: str) -> dict:
-    doc_m = re.search(r"```markdown\n(.*?)```", answer, re.S)
-    notes_m = re.search(r"```run_notes\n(.*?)```", answer, re.S)
-    if not doc_m or not notes_m:
-        raise ValueError("P5 answer must contain one ```markdown block (phase1_output.md) "
-                         "and one ```run_notes block (RUN_NOTES.md)")
-    doc = doc_m.group(1).strip()
-    notes = notes_m.group(1).strip()
-    if not doc.startswith("---"):
-        raise ValueError("phase1_output.md must open with YAML frontmatter")
-    fm, _ = doc.split("---", 2)[1], None
-    if not re.search(r"status:\s*DRAFT", fm):
-        raise ValueError("frontmatter status must be DRAFT until G-P1-D sign-off")
-    for i in range(1, 7):
-        if not re.search(rf"^##\s+§{i}\b", doc, re.M):
-            raise ValueError(f"missing section §{i} in phase1_output.md")
-    if "RUN_NOTES" not in notes and "|" not in notes:
-        raise ValueError("RUN_NOTES block must contain the §8 evidence table")
-    return {"doc": doc, "notes": notes}
+    """P5 intro call: only the narrative blocks (§1 echo, §4 framing, §6 handoff).
+    The full document is assembled deterministically from validated artifacts —
+    asking the model to re-render 22 goal tables truncates at any output cap
+    (done_reason=length, jobs 1963648/1963810)."""
+    md = extract_fenced(answer, "markdown")
+    s1 = extract_markdown_section(md, "## §1", ["## §4"])
+    framing = extract_markdown_section(md, "## §4", ["## §6"])
+    s6 = extract_markdown_section(md, "## §6", [])
+    for name, sec in (("§1 Company Profile Echo", s1), ("§4 Framing", framing),
+                      ("§6 Handoff Notes to Phase 2", s6)):
+        if not sec.strip():
+            raise ValueError(f"p5 intro answer missing or empty: {name}")
+    return {"s1": s1.strip(), "framing": framing.strip(), "s6": s6.strip()}
+
+
+def assemble_p5(run_dir: Path, case: dict, s1: str, framing: str, s6: str) -> str:
+    """Deterministic assembly of phase1_output.md from validated step artifacts
+    (verdicts.md, selection.md, goals/D-XX.Y.md fragments)."""
+    import datetime as _dt
+    steps_dir = run_dir / "steps"
+    verdicts = (steps_dir / "verdicts.md").read_text(encoding="utf-8").strip()
+    selection_md = (steps_dir / "selection.md").read_text(encoding="utf-8")
+    sel_table = selection_md.split("Excluded candidates:")[0].strip()
+    frags = sorted((steps_dir / "goals").glob("D-*.md"))
+    if not frags:
+        raise ValueError("no goal fragments to assemble")
+    goal_blocks, a41_rows, s5_items = [], [], []
+    for f in frags:
+        t = f.read_text(encoding="utf-8")
+        m = re.search(r"(^### D-\d{2}\.\d[^\n]*\n(?:.*?))(?=^## §4\.1|\Z)", t, re.S | re.M)
+        if not m:
+            raise ValueError(f"goal fragment {f.name} missing the §4 heading+table block")
+        goal_blocks.append(m.group(1).strip())
+        a41 = re.search(r"^## §4\.1[^\n]*\n(.*?)(?=^## §5|\Z)", t, re.S | re.M)
+        if a41:
+            for line in a41.group(1).splitlines():
+                s = line.strip()
+                if s.startswith("|") and not re.fullmatch(r"\|[\s:|-]+\|", s) \
+                        and not s.startswith("| ID |"):
+                    a41_rows.append(s)
+        s5 = re.search(r"^## §5[^\n]*\n(.*?)\Z", t, re.S | re.M)
+        if s5:
+            for line in s5.group(1).splitlines():
+                s = line.strip()
+                if s and s.lower() != "none.":
+                    s5_items.append(s)
+    today = _dt.date.today().isoformat()
+    fm = (f"---\ndocument_id: MVP-P1-OUT-001\ntitle: \"Phase 1 Output — "
+          f"{case['company_name']} (Contextual Definition, MVP)\"\nversion: 0.1\n"
+          f"created: {today}\nstatus: DRAFT\ninput: pipeline/cases/{case['case_id']}/"
+          f"company_input.md\ncorpus: baseline\n---\n")
+    parts = [
+        fm, f"# Phase 1 Output — {case['company_name']}", "",
+        "## §1 Company Profile Echo", s1,
+        "## §2 Applicable Regulations", verdicts,
+        "## §3 Applicable Sub-domain Subset", sel_table,
+        "## §4 Adjusted Goals", "",
+        "**Framing (company context conditioning every goal below):**", framing, "",
+    ]
+    parts.extend(goal_blocks)
+    parts.append("### §4.1 Control Anchor Mapping (applicable regulations only — rule R8)")
+    parts.append("| ID | Regulation | CSF 2.0 | NIST PF 1.1 | NIST AI RMF | Source |")
+    parts.append("|---|---|---|---|---|---|")
+    parts.extend(a41_rows)
+    parts.append("## §5 Ambiguities & Open Questions")
+    parts.append("\n".join(s5_items) if s5_items else "None.")
+    parts.append("## §6 Handoff Notes to Phase 2")
+    parts.append(s6)
+    return "\n\n".join(parts) + "\n"
+
+
+def build_run_notes(run_dir: Path) -> str:
+    """Deterministic RUN_NOTES.md: run meta, §8 evidence plan, gate ledger."""
+    manifest = json.loads((run_dir / "manifest.json").read_text(encoding="utf-8"))
+    gates = sorted((run_dir / "steps" / "gates").glob("G-P1-*.approved")) \
+        if (run_dir / "steps" / "gates").exists() else []
+    gate_rows = "\n".join(f"| {g.stem} | approved | {g.read_text(encoding='utf-8').strip().splitlines()[-1][:80]} |"
+                          for g in gates)
+    n_calls = sum(1 for l in (run_dir / "trace.jsonl").read_text().splitlines() if l.strip()) \
+        if (run_dir / "trace.jsonl").exists() else 0
+    return f"""# RUN_NOTES — {manifest['run_id']}
+
+## Run meta
+
+| Field | Value |
+|---|---|
+| Case | {manifest['case_id']} |
+| Model | {manifest['model']} |
+| LLM calls (trace.jsonl) | {n_calls} |
+| Fichas | {', '.join(f"{k}={v}" for k, v in manifest['ficha_versions'].items())} |
+| Deliverable | phase1_output.md (DRAFT) |
+
+## SPEC §8 evidence
+
+| # | Item | How verified | Result |
+|---|---|---|---|
+| 1 | Input contract (5 sections) | validated at P1 (L0 stop condition) | PASS |
+| 2 | §2 covers every input §5 regulation | validate.py item 2 | run locally post-sync |
+| 3 | §3 codes exist in corpus | validate.py item 3 | run locally post-sync |
+| 4 | AG IDs unique, match §3 | validate.py item 4 | run locally post-sync |
+| 5 | Regulatory sources resolve (R2a) | validate.py item 5 | run locally post-sync |
+| 6 | Control anchors resolve (R2b) | validate.py item 6 | run locally post-sync |
+| 7 | No statement without input trace | L0 parsers + gate review | human check |
+| 8 | Frontmatter complete; DRAFT | assembly (deterministic) | PASS (DRAFT until G-P1-D) |
+| 9 | Pattern/property/parent/adjustment | validate.py item 9 | run locally post-sync |
+| 10 | Document hygiene (R11/R12) | validate.py R12-hygiene + doc_lint scope note | run locally post-sync |
+
+## Human gates
+
+| Gate | State | Note |
+|---|---|---|
+{gate_rows or "| (none yet) | | |"}
+"""
 
 
 PARSERS = {"p1": parse_p1, "p2": parse_p2, "p3": parse_p3, "p5": parse_p5}
@@ -221,9 +316,14 @@ EXTRA_INSTRUCTION = {
            "(a) the §3 selection table `| Sub-domain | Name | Trigger rationale |` and "
            "(b) a line `Excluded candidates:` followed by one line per excluded candidate "
            "in the form `<D-XX.Y> — <why-not>`. Nothing else."),
-    "p5": ("Wrap your answer: return TWO fenced blocks — first ```markdown containing the "
-           "complete phase1_output.md (frontmatter + §1–§6), then ```run_notes containing "
-           "RUN_NOTES.md (§8 evidence table + gate notes)."),
+    "p5": ("Wrap your answer: return ONLY one ```markdown fenced block containing exactly "
+           "three sections: `## §1 Company Profile Echo` (max 15 lines, verbatim-faithful "
+           "condensation of input §1-§4, no new facts), `## §4 Framing` (a single > "
+           "blockquote, max 8 lines: company size consequence, area of operation, "
+           "regulatory roles, inherited/managed capabilities, explicit exclusions) and "
+           "`## §6 Handoff Notes to Phase 2` (max 10 lines: applicable regulations, "
+           "sub-domain scope, open questions). Plain markdown prose — never JSON. "
+           "Nothing else."),
 }
 
 
@@ -410,8 +510,11 @@ class StepRunner:
                 json.dumps({"subdomain": subdomain, "goals": parsed["goals"]},
                            indent=1, ensure_ascii=False), encoding="utf-8")
         elif step == "p5":
-            (self.run_dir / "phase1_output.md").write_text(parsed["doc"], encoding="utf-8")
-            (self.run_dir / "RUN_NOTES.md").write_text(parsed["notes"], encoding="utf-8")
+            doc = assemble_p5(self.run_dir, self.case, parsed["s1"],
+                              parsed["framing"], parsed["s6"])
+            (self.run_dir / "phase1_output.md").write_text(doc, encoding="utf-8")
+            (self.run_dir / "RUN_NOTES.md").write_text(build_run_notes(self.run_dir),
+                                                       encoding="utf-8")
 
     # ---- public stage API -------------------------------------------------
 
@@ -448,7 +551,7 @@ class StepRunner:
         goals = sorted((self.run_dir / "steps" / "goals").glob("D-*.md"))
         if not goals:
             raise ValueError("no P4 goal artifacts found — run stage p4 first")
-        self._call("p5", None)
+        self._call("p5", None)  # narrative blocks only (§1, §4 framing, §6)
         return 1
 
     def _require(self, relpaths: tuple[str, ...], gate: str) -> None:

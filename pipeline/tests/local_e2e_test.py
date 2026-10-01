@@ -123,59 +123,25 @@ def goals_answer(sd: str, user_prompt: str) -> str:
             + m41 + "\n## §5\n\n- None.\n```")
 
 
-P5_DOC = """---
-document_id: MVP-P1-OUT-1
-title: "Phase 1 Output — TinyTask Lda."
-version: 0.1
-created: 2026-10-01
-status: DRAFT
-input: pipeline/cases/Case_01_TinyTask_SaaS/company_input.md
-corpus: baseline
----
-
-# Phase 1 Output — TinyTask Lda.
-
+P5_INTRO = """```markdown
 ## §1 Company Profile Echo
 
-TinyTask Lda., 8 employees (micro), Portugal (EU), B2B SaaS productivity tools.
+TinyTask Lda., 8 employees (micro-enterprise), Portugal (EU), B2B SaaS
+productivity tools. Develops and operates a rule-based task management
+platform as manufacturer; processes EU personal data as controller (customer
+accounts) and processor (customer task data) on hosted SaaS.
 
-## §2 Applicable Regulations
+## §4 Framing
 
-""" + VERDICT_TABLE + """
-
-## §3 Applicable Sub-domain Subset
-
-| Sub-domain | Name | Trigger rationale |
-|---|---|---|
-""" + "".join(f"| {sd} | name | rationale |\n" for sd in SELECTED) + """
-
-## §4 Adjusted Goals
-
-> framing
-
-### D-01.1 — Data at Rest Encryption
-
-| ID | Adjusted goal | Pattern | Property | Parent goal | Regulatory source | Control anchor | Adjustment |
-|---|---|---|---|---|---|---|---|
-| AG-D-01.1-001 | Personal data at rest encrypted. | achieve | C | SO-D-01.1.HL | GDPR Art. 32 | PR.DS-01 | Scope narrowed. |
-
-## §5 Ambiguities & Open Questions
-
-- data_scale open question; > ASSUMPTION: none.
+> 8-person micro-enterprise, non-critical B2B SaaS. Roles: GDPR controller +
+> processor, CRA manufacturer (default class, self-assessment). Exclusions:
+> NIS2, DORA, AI_Act.
 
 ## §6 Handoff Notes to Phase 2
 
-GDPR+CRA; sub-domains """ + ", ".join(SELECTED) + """.
-"""
-
-P5_NOTES = """# RUN_NOTES
-
-| # | Item | How verified | Result |
-|---|---|---|---|
-| 1 | input contract | read | PASS |
-| 2 | §2 coverage | parse | PASS |
-| 10 | doc_lint equivalent | validate.py | PASS |
-"""
+Applicable regulations: GDPR, CRA. Sub-domain scope: """ + ", ".join(SELECTED) + """. Open
+questions: data_scale not stated in intake.
+```"""
 
 
 # ---------------------------------------------------------------------------
@@ -232,7 +198,7 @@ class Handler(BaseHTTPRequestHandler):
             elif tag == "PROM-P1-04" and sd:
                 content = goals_answer(sd.group(1), user)
             elif tag == "PROM-P1-05":
-                content = f"```markdown\n{P5_DOC}\n```\n```run_notes\n{P5_NOTES}\n```"
+                content = P5_INTRO
             else:
                 content = "unknown step"
             self._json({"model": MODEL, "message": {"role": "assistant", "content": content},

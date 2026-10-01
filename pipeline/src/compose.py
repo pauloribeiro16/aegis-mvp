@@ -418,20 +418,14 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
         files.insert(0, (f"pack-p4/{sd_id}/BUILD_MANIFEST.md", manifest_block))
 
     elif step == "p5":
-        t = (repo / "templates" / "phase1_output.md").read_text(encoding="utf-8")
-        files.append(("templates/phase1_output.md", t))
-        files.append(("example/phase1_output.md", (repo / "example" / "phase1_output.md").read_text(encoding="utf-8")))
-        files.append(("example/RUN_NOTES.md", (repo / "example" / "RUN_NOTES.md").read_text(encoding="utf-8")))
-        spec = (repo / "SPEC.md").read_text(encoding="utf-8")
-        s8 = extract_markdown_section(spec, "## 8", ["## 9"])
-        files.append(("SPEC.md §8", s8))
-        for name in ["fact_sheet.yaml", "verdicts.md", "selection.md"]:
-            f = run_dir / "steps" / name
-            if f.exists():
-                files.append((f"steps/{name}", f.read_text(encoding="utf-8")))
-        goals = sorted((run_dir / "steps" / "goals").glob("D-*.md")) if (run_dir / "steps" / "goals").exists() else []
-        for g in goals:
-            files.append((f"steps/goals/{g.name}", g.read_text(encoding="utf-8")))
+        # intro call only (§1 echo, §4 framing, §6 handoff) — the document is
+        # assembled deterministically from the validated step artifacts, so the
+        # pack carries just the sources for the narrative blocks.
+        files.append(("templates/phase1_output.md", (repo / "templates" / "phase1_output.md").read_text(encoding="utf-8")))
+        files.append((str(case["input_path"].relative_to(repo)), case["input_text"]))
+        files.append(("steps/fact_sheet.yaml", (run_dir / "steps" / "fact_sheet.yaml").read_text(encoding="utf-8")))
+        files.append(("steps/verdicts.md", (run_dir / "steps" / "verdicts.md").read_text(encoding="utf-8")))
+        files.append(("steps/selection.md", (run_dir / "steps" / "selection.md").read_text(encoding="utf-8")))
     else:
         raise ValueError(f"unknown step: {step}")
 

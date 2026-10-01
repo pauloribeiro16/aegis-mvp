@@ -19,7 +19,7 @@ mkdir -p runs
 TIME=00:30:00
 case "$STAGE" in
   p3) TIME=00:45:00 ;;
-  p4|p4p5) TIME=02:00:00 ;;
+  p4|p4p5) TIME=03:00:00 ;;  # 1 call per selected sub-domain, sequential + render
 esac
 
 # Continuing an existing run: export MVP_RUN_ID=run_<tag>_<first-JOBID> so the

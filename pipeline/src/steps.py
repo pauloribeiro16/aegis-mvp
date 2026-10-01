@@ -21,6 +21,12 @@ from trace import Trace, now_iso
 NUM_CTX = {"p1": 16384, "p2": 16384, "p3": 32768, "p4": 32768, "p5": 32768}
 
 PATTERNS = {"achieve", "cease", "maintain", "avoid", "optimize"}
+# template §4 renders long-form property names; normalize to the enum codes
+PROPERTY_ALIASES = {
+    "confidentiality": "c", "integrity": "i", "availability": "a",
+    "privacy right": "privacy-right", "privacy-right": "privacy-right",
+    "accountability": "accountability", "c": "c", "i": "i", "a": "a",
+}
 
 
 # --------------------------------------------------------------------------
@@ -161,8 +167,9 @@ def parse_p4(answer: str, sd_id: str) -> dict:
         pattern = cells[2].strip().lower()
         if pattern not in PATTERNS:
             raise ValueError(f"invalid pattern {pattern!r} on {gid}")
-        prop = cells[3].strip().lower().replace(" ", "-")
-        if prop not in {"c", "i", "a", "privacy-right", "accountability"}:
+        prop_raw = " ".join(cells[3].strip().lower().split())
+        prop = PROPERTY_ALIASES.get(prop_raw) or PROPERTY_ALIASES.get(prop_raw.replace(" ", "-"))
+        if prop is None:
             raise ValueError(f"invalid property {cells[3]!r} on {gid}")
         parent = cells[4].replace("`", "").strip()
         if not re.fullmatch(rf"SO-{re.escape(sd_id)}\.HL", parent):
@@ -228,7 +235,8 @@ def p4_extra_instruction(sd_id: str) -> str:
         f"(c) a heading `## §5` listing only `> ASSUMPTION:` blockquotes and open "
         f"questions this sub-domain owes (ambiguity interpretation is already decided "
         f"in the corpus — do not cite or re-analyze ambiguity cards; write `None.` if "
-        f"empty). Nothing else."
+        f"empty). The Property column MUST use exactly one of these short codes: "
+        f"C, I, A, privacy-right, accountability. Nothing else."
     )
 
 
@@ -410,10 +418,15 @@ class StepRunner:
         self._require(("steps/selection.json",), "G-P1-C")
         selection = load_selection(self.run_dir)
         order = sorted(s["id"] for s in selection["selected"])
+        done = 0
         for sd_id in order:
+            if (self.run_dir / "steps" / "goals" / f"{sd_id}.md").exists():
+                print(f"[p4] {sd_id} already done (validated artifact on disk) — skipping", flush=True)
+                continue
             print(f"[p4] sub-domain {sd_id}", flush=True)
             self._call(f"p4:{sd_id}", sd_id)
-        return len(order)
+            done += 1
+        return done
 
     def stage_p5(self) -> int:
         self._require(("steps/selection.json",), "G-P1-C")

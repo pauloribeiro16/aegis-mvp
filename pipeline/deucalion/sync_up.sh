@@ -17,6 +17,8 @@ tar --exclude='__pycache__' --exclude='*.pyc' --exclude='pipeline/runs' \
     pipeline docs/pipeline baseline/domains baseline/MAPPINGS \
     templates example SPEC.md config.yaml
 echo "payload: $(du -h "$TAR" | cut -f1)"
-scp -q "$TAR" "$HOST:/tmp/$(basename "$TAR")"
-ssh "$HOST" "mkdir -p '$PROJ/aegis-mvp' && tar -xzf '/tmp/$(basename "$TAR")' -C '$PROJ/aegis-mvp' && rm '/tmp/$(basename "$TAR")' && echo 'synced to $PROJ/aegis-mvp'"
+# Stage through the NFS project dir — Deucalion login nodes do NOT share /tmp
+# (scp and ssh can land on different ln nodes; /tmp staging breaks silently).
+scp -q "$TAR" "$HOST:$PROJ/aegis-mvp/_sync_incoming.tgz"
+ssh "$HOST" "tar -xzf '$PROJ/aegis-mvp/_sync_incoming.tgz' -C '$PROJ/aegis-mvp' && rm '$PROJ/aegis-mvp/_sync_incoming.tgz' && echo 'synced to $PROJ/aegis-mvp'"
 rm -f "$TAR"

@@ -79,8 +79,10 @@ def main() -> int:
     if verdicts:
         regs = [v["regulation"] for v in verdicts["verdicts"]]
         check("5 canonical rows present", sorted(regs) == sorted(REGULATIONS), f"{regs}")
+    elif doc is None and not selection:
+        print("  [SKIP] stage p2 not reached yet (partial run)")
     else:
-        check("verdicts.json present", False, "stage p2 not run")
+        check("verdicts.json present", False, "run progressed past p2 but verdicts.json is missing")
 
     print("== §8 item 3 — sub-domain codes exist in the corpus ==")
     if selection:

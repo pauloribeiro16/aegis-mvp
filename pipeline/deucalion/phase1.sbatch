@@ -31,17 +31,23 @@ RUN_ID="${MVP_RUN_ID:-run_${RUN_TAG}_${SLURM_JOB_ID}}"
 mkdir -p "runs/${RUN_ID}/logs"
 RUN_LOG="runs/${RUN_ID}/logs/run_${STAGE}_${SLURM_JOB_ID}.log"
 touch "$RUN_LOG"
+exec 3>&1  # forensics channel: original slurm stdout, survives tee teardown
 exec > >(tee -a "$RUN_LOG") 2>&1
-trap 'rc=$?; echo "END=$(date -Is) EXIT_CODE=$rc"' EXIT
+trap 'rc=$?; line="END=$(date -Is) EXIT_CODE=$rc"; echo "$line" >&3; echo "$line" >> "$RUN_LOG"' EXIT
 
 echo "=== AEGIS-MVP Phase 1 pipeline | stage=${STAGE} model=${MODEL} job=${SLURM_JOB_ID} node=$(hostname -s) start=$(date -Is) ==="
-[ -f "runs/slurm_${SLURM_JOB_ID}.out" ] && mv "runs/slurm_${SLURM_JOB_ID}.out" "runs/${RUN_ID}/logs/"
+[ -f "runs/slurm_${SLURM_JOB_ID}.out" ] && mv "runs/slurm_${SLURM_JOB_ID}.out" "runs/${RUN_ID}/logs/" || true
 
-# --- environment -----------------------------------------------------------
+# --- environment ------------------------------------------------------------
+# Deucalion profile scripts touch unset vars: NEVER run module/profile under -u
+# (2026-10-01 job 1963493: set -u + source /etc/profile killed the shell
+# silently — both logs truncated after the first line).
+set +u
 source /etc/profile 2>/dev/null || true
 module purge 2>/dev/null || true
 module load Python/3.11.3-GCCcore-12.3.0 2>/dev/null \
   || echo "WARN: python module load failed; falling back to system python3"
+set -u
 
 # 0.32.13 binary — the only one that serves qwen3.8 (0.31.1: unknown architecture)
 export PATH="/projects/F202512235CPCAA1/graphify-methodology/bin:$PATH"

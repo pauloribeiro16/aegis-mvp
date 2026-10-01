@@ -1,0 +1,67 @@
+{
+ "run_id": "run_case01v2_1963538",
+ "case_id": "Case_01_TinyTask_SaaS",
+ "model": "qwen3.8:27b",
+ "ollama_base": "http://127.0.0.1:14972",
+ "num_ctx_policy": {
+  "p1": 16384,
+  "p2": 16384,
+  "p3": 32768,
+  "p4": 32768,
+  "p5": 32768
+ },
+ "ficha_versions": {
+  "p1": "PROM-P1-01 v1.0.0",
+  "p2": "PROM-P1-02 v1.0.0",
+  "p3": "PROM-P1-03 v1.0.0",
+  "p4": "PROM-P1-04 v1.1.0",
+  "p5": "PROM-P1-05 v1.0.0"
+ },
+ "aegis_git_rev": "",
+ "hostname": "gnx521.deucalion.macc.fccn.pt",
+ "stage_history": [
+  {
+   "stage": "p1",
+   "ts": "2026-10-01T14:33:56Z",
+   "job_id": "1963538",
+   "node": "gnx521",
+   "n_calls": 1,
+   "status": "ok"
+  },
+  {
+   "stage": "p2",
+   "ts": "2026-10-01T14:39:30Z",
+   "job_id": "1963555",
+   "node": "gnx521",
+   "n_calls": 1,
+   "status": "ok"
+  },
+  {
+   "stage": "p3",
+   "ts": "2026-10-01T14:48:00Z",
+   "job_id": "1963566",
+   "node": "gnx521",
+   "n_calls": 1,
+   "status": "ok"
+  },
+  {
+   "stage": "p4",
+   "ts": "2026-10-01T16:04:17Z",
+   "job_id": "1963690",
+   "node": "gnx521",
+   "n_calls": 3,
+   "status": "ok"
+  },
+  {
+   "stage": "p5",
+   "ts": "2026-10-01T16:31:37Z",
+   "job_id": "1963823",
+   "node": "gnx501",
+   "n_calls": 1,
+   "status": "ok"
+  }
+ ],
+ "n_calls_total": 30,
+ "created": "2026-10-01T14:32:05Z",
+ "updated": "2026-10-01T16:31:37Z"
+}

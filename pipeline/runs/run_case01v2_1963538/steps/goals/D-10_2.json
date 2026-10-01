@@ -1,0 +1,25 @@
+{
+ "subdomain": "D-10.2",
+ "goals": [
+  {
+   "id": "AG-D-10.2-001",
+   "goal": "The company maintains compliance records — records of processing activities, consent records, processor contract records, breach notification records, and DPIA records — in writing or in electronic form with integrity and traceability sufficient to demonstrate compliance and to support supervisory-authority inspections, made available to the supervisory authority on request.",
+   "pattern": "maintain",
+   "property": "accountability",
+   "parent": "SO-D-10.2.HL",
+   "source": "Art. 30(3); Art. 5(2); Art. 31",
+   "anchor": "GV.PO-02; GV.OV-03",
+   "adjustment": "Scope narrowed to an 8-employee B2B SaaS controller (customer account metadata) and processor (customer task data); no special-category data; processor-role records (Art. 28(3) contracts with the external payment sub-processor) are the primary processor-side artefact; the 250-employee Art. 30(5) exception is inapplicable because processing is a core, non-occasional business activity."
+  },
+  {
+   "id": "AG-D-10.2-002",
+   "goal": "The manufacturer maintains the technical documentation (general product description, design and development information, harmonised standards applied, test reports, EU declaration of conformity, and the software bill of materials on MSA reasoned request), preserves the cybersecurity risk-assessment documentation with updates as appropriate during the support period, and ensures test reports demonstrating conformity with Annex I Part I and Part II are part of the technical documentation and available on reasoned request from market surveillance authorities.",
+   "pattern": "maintain",
+   "property": "accountability",
+   "parent": "SO-D-10.2.HL",
+   "source": "Annex VII §5–§8; Annex VII §3; Annex I Part II (3); Art. 13(4) sentence 1; Art. 13(22)",
+   "anchor": "GV.OC-03; ID.RA-04",
+   "adjustment": "Scope narrowed to an 8-employee manufacturer of a rule-based SaaS platform (default product class, self-assessment conformity); no AI/ML components; SBOM scope limited to the platform's software components; support-period retention (10 years or support period, whichever longer) applies to the SaaS product lifecycle."
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "subdomain": "D-05.1",
+ "goals": [
+  {
+   "id": "AG-D-05.1-001",
+   "goal": "The company, as controller of customer account data and processor of task data containing end-user personal data, maintains that personal data collected and processed is limited to what is adequate, relevant, and necessary in relation to the declared processing purpose, with a documented necessity assessment per data class.",
+   "pattern": "maintain",
+   "property": "privacy-right",
+   "parent": "SO-D-05.1.HL",
+   "source": "Art. 5(1)(c) GDPR",
+   "anchor": "ID.AM-08, ID.AM-03",
+   "adjustment": "Narrowed from the regulation-neutral baseline to the company's two personal-data classes (customer account metadata; task data with end-user personal data) under its dual controller/processor roles; necessity assessment scoped to the 8-employee B2B SaaS operation rather than an enterprise-wide programme."
+  },
+  {
+   "id": "AG-D-05.1-002",
+   "goal": "When the purpose for which personal data is processed changes, the company achieves a documented Art. 6(4) five-factor compatibility assessment confirming the new purpose is consistent with the original before the new processing begins.",
+   "pattern": "achieve",
+   "property": "accountability",
+   "parent": "SO-D-05.1.HL",
+   "source": "Art. 6(4) GDPR",
+   "anchor": "ID.AM-08",
+   "adjustment": "Restated as a discrete trigger-based assessment (achieved on each purpose change) rather than a continuous obligation; scoped to the company's B2B SaaS data flows where purpose changes are bounded by the subscription contract and infrequent at 8-employee scale."
+  },
+  {
+   "id": "AG-D-05.1-003",
+   "goal": "The company avoids processing special-category personal data absent a valid Art. 9(2) exception basis, and documents any such basis to the effect that the narrow exception applies.",
+   "pattern": "avoid",
+   "property": "privacy-right",
+   "parent": "SO-D-05.1.HL",
+   "source": "Art. 9(1) GDPR; Art. 9(2) GDPR",
+   "anchor": "GV.OC-03",
+   "adjustment": "Restated as a pure guardrail: the company currently processes no special-category data and operates no AI/ML systems, so the AI Act Art. 10(5) gateway is inapplicable; the obligation reduces to never processing special-category data without an independently documented Art. 9(2) basis."
+  },
+  {
+   "id": "AG-D-05.1-004",
+   "goal": "The company, as manufacturer of the SaaS product with digital elements, maintains that data processed by the product (personal or other) is limited to what is adequate, relevant, and necessary in relation to the product's intended purpose, with proportionality calibrated by the Art. 13(2) risk assessment and the reasonably foreseeable use per Art. 13(3) sentence 2.",
+   "pattern": "maintain",
+   "property": "privacy-right",
+   "parent": "SO-D-05.1.HL",
+   "source": "Annex I Part I (2)(g) CRA; Art. 3(23) CRA; Art. 13(3) sentence 2 CRA",
+   "anchor": "ID.AM-08, ID.AM-03",
+   "adjustment": "Narrowed from the regulation-neutral baseline to the company's single B2B SaaS product (rule-based task management platform) in the default CRA product class; the intended purpose is the task-management function as declared in the product's technical documentation; no AI/ML training pipeline applies."
+  }
+ ]
+}

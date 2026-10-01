@@ -1,0 +1,24 @@
+=== AEGIS-MVP Phase 1 pipeline | stage=p4p5 model=qwen3.8:27b job=1963585 node=gnx521 start=2026-10-01T15:55:51+01:00 ===
+model manifest present: /projects/F202512235CPCAA1/CyberMetric_Deucalion/ollama_data/models/manifests/registry.ollama.ai/library/qwen3.8/27b
+name, memory.total [MiB], memory.free [MiB]
+NVIDIA A100-SXM4-80GB, 81920 MiB, 81152 MiB
+ollama up: http://127.0.0.1:15019
+=== stage p4 (model=qwen3.8:27b, dry_run=False) ===
+[p4] sub-domain D-01.1
+[p4] sub-domain D-01.2
+[p4] sub-domain D-02.1
+[p4] sub-domain D-02.3
+[p4] sub-domain D-03.1
+[p4] sub-domain D-03.2
+[p4] sub-domain D-04.1
+[p4] sub-domain D-04.3
+[p4] sub-domain D-05.1
+[p4] sub-domain D-05.2
+[p4] sub-domain D-05.3
+[p4] sub-domain D-05.4
+[p4] sub-domain D-06.1
+[p4] sub-domain D-06.2
+[p4] sub-domain D-06.3
+STAGE ABORTED: LLMError: step p4_D-06_3: L0 validation failed twice (invalid property 'Confidentiality' on AG-D-06.3-002); forensics in /projects/F202512235CPCAA1/mvp-pipeline/aegis-mvp/runs/run_case01v2_1963538/outputs
+=== stage p4p5 finished rc=1 at 2026-10-01T16:26:17+01:00 | run dir: runs/run_case01v2_1963538 ===
+END=2026-10-01T16:26:17+01:00 EXIT_CODE=1

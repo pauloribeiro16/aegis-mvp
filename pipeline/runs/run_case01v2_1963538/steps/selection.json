@@ -1,0 +1,180 @@
+{
+ "selected": [
+  {
+   "id": "D-01.1",
+   "name": "Data at Rest Encryption",
+   "rationale": "customer PII (names, emails, passwords, task data) stored on managed cloud → GDPR Art. 32 security of processing (encryption at rest)"
+  },
+  {
+   "id": "D-01.2",
+   "name": "Data in Transit Encryption",
+   "rationale": "PII transmitted via SaaS web/mobile interface and payment-provider API → GDPR Art. 32 security of processing (encryption in transit)"
+  },
+  {
+   "id": "D-02.1",
+   "name": "Vulnerability Identification",
+   "rationale": "TinyTask develops and places SaaS product on EU market as manufacturer → CRA Art. 13(1) vulnerability identification"
+  },
+  {
+   "id": "D-02.3",
+   "name": "Coordinated Vulnerability Disclosure",
+   "rationale": "TinyTask places product with digital elements on EU market as manufacturer → CRA Art. 13(1) coordinated vulnerability disclosure"
+  },
+  {
+   "id": "D-03.1",
+   "name": "Identity Lifecycle Management",
+   "rationale": "customer accounts with individual logins for business customers and their end-users → GDPR Art. 32 identity lifecycle management"
+  },
+  {
+   "id": "D-03.2",
+   "name": "Multi-Factor Authentication",
+   "rationale": "individual login accounts with stored passwords → GDPR Art. 32 authentication strength"
+  },
+  {
+   "id": "D-04.1",
+   "name": "Incident Detection & Triage",
+   "rationale": "processing of PII (names, emails, passwords, task data) on managed cloud → GDPR Art. 33 breach detection and triage"
+  },
+  {
+   "id": "D-04.3",
+   "name": "Incident Notification & Reporting",
+   "rationale": "personal data breach involving customer PII → GDPR Art. 33(1) 72-hour notification to supervisory authority"
+  },
+  {
+   "id": "D-05.1",
+   "name": "Data Minimisation",
+   "rationale": "collection of customer names, emails, passwords, and task data → GDPR Art. 5(1)(c) data minimisation"
+  },
+  {
+   "id": "D-05.2",
+   "name": "Retention & Archiving",
+   "rationale": "storage of customer PII and task data on managed cloud → GDPR Art. 5(1)(e) storage limitation"
+  },
+  {
+   "id": "D-05.3",
+   "name": "Right to Erasure",
+   "rationale": "customer and end-user PII stored in SaaS → GDPR Art. 17 right to erasure"
+  },
+  {
+   "id": "D-05.4",
+   "name": "Data Portability",
+   "rationale": "customer PII (names, emails, task data) held in structured format → GDPR Art. 20 data portability"
+  },
+  {
+   "id": "D-06.1",
+   "name": "Vendor Risk Assessment",
+   "rationale": "external payment provider as sub-processor + managed cloud hosting → GDPR Art. 28 processor due diligence"
+  },
+  {
+   "id": "D-06.2",
+   "name": "Software Bill of Materials (SBOM)",
+   "rationale": "TinyTask develops SaaS product and places on EU market as manufacturer → CRA Art. 13(1) SBOM"
+  },
+  {
+   "id": "D-06.3",
+   "name": "Contractual Security Obligations",
+   "rationale": "external payment provider and managed cloud as processors → GDPR Art. 28(3) contractual security obligations"
+  },
+  {
+   "id": "D-07.1",
+   "name": "Secure-by-Design Principles",
+   "rationale": "TinyTask develops SaaS product from scratch → GDPR Art. 25 data protection by design + CRA security by design"
+  },
+  {
+   "id": "D-07.2",
+   "name": "Secure Coding Practices",
+   "rationale": "in-house development of SaaS product with digital elements → CRA secure coding practices"
+  },
+  {
+   "id": "D-09.1",
+   "name": "Information Security Policies",
+   "rationale": "8-person SaaS company processing PII → GDPR Art. 32 documented security measures"
+  },
+  {
+   "id": "D-09.2",
+   "name": "Impact & Risk Assessments",
+   "rationale": "processing of PII (names, emails, passwords, task data) → GDPR Art. 35 risk assessment"
+  },
+  {
+   "id": "D-09.4",
+   "name": "Records of Processing",
+   "rationale": "controller and processor roles for PII → GDPR Art. 30 records of processing activities"
+  },
+  {
+   "id": "D-10.1",
+   "name": "Continuous Security Monitoring",
+   "rationale": "SaaS product processing PII on managed cloud → GDPR Art. 32 continuous security monitoring"
+  },
+  {
+   "id": "D-10.2",
+   "name": "Audit Logging & Traceability",
+   "rationale": "processing of PII with individual logins → GDPR Art. 32 audit logging and traceability"
+  }
+ ],
+ "excluded": [
+  {
+   "id": "D-01.3",
+   "why": "key custody separation is a sub-component of D-01.1/D-01.2; managed cloud provider handles key management; no distinct company fact triggers it independently"
+  },
+  {
+   "id": "D-01.4",
+   "why": "data integrity is implied by D-01.1/D-01.2 encryption controls; no distinct company fact triggers it independently"
+  },
+  {
+   "id": "D-02.2",
+   "why": "patch management is a sub-component of D-02.1 vulnerability identification; no distinct company fact triggers it independently"
+  },
+  {
+   "id": "D-02.4",
+   "why": "\"threat-led\" and TLPT are disproportionate for 8-person company with self-assessment conformity; basic security testing is covered by D-02.1"
+  },
+  {
+   "id": "D-03.3",
+   "why": "least privilege is a sub-component of D-03.1/D-03.2 identity management; no distinct company fact triggers it independently"
+  },
+  {
+   "id": "D-03.4",
+   "why": "secure defaults are a sub-component of D-07.1 secure by design; no distinct company fact triggers it independently"
+  },
+  {
+   "id": "D-04.2",
+   "why": "incident containment is a sub-component of D-04.1 incident detection; no distinct company fact triggers it independently"
+  },
+  {
+   "id": "D-04.4",
+   "why": "incident recovery is a sub-component of D-04.1 incident detection; no distinct company fact triggers it independently"
+  },
+  {
+   "id": "D-06.4",
+   "why": "third-party boundary management is a sub-component of D-06.1/D-06.3 vendor risk; no distinct company fact triggers it independently"
+  },
+  {
+   "id": "D-07.3",
+   "why": "CI/CD pipeline security is a sub-component of D-07.1/D-07.2 secure development; no distinct company fact triggers it independently"
+  },
+  {
+   "id": "D-07.4",
+   "why": "change management is a sub-component of D-07.1 secure by design; no distinct company fact triggers it independently"
+  },
+  {
+   "id": "D-08.1",
+   "why": "general security awareness is a generic obligation not clearly triggered by a specific company fact"
+  },
+  {
+   "id": "D-08.2",
+   "why": "role-specific competence is a generic obligation not clearly triggered by a specific company fact"
+  },
+  {
+   "id": "D-08.3",
+   "why": "subject matter targets NIS2 essential/important entities and DORA financial entities; neither applies to TinyTask"
+  },
+  {
+   "id": "D-09.3",
+   "why": "asset inventory is a sub-component of D-09.1 security policies; no distinct company fact triggers it independently"
+  },
+  {
+   "id": "D-10.3",
+   "why": "compliance testing is a sub-component of D-02.1/D-07.1; no distinct company fact triggers it independently"
+  }
+ ]
+}

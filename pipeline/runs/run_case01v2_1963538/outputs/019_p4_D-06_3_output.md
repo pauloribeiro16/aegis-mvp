@@ -1,0 +1,23 @@
+```markdown
+### D-06.3 — High-level Security Objective (regulation-neutral)
+
+| ID | Adjusted goal | Pattern | Property | Parent goal | Regulatory source | Control anchor | Adjustment |
+|---|---|---|---|---|---|---|---|
+| AG-D-06.3-001 | Maintain a processor contract with each sub-processor (currently the external payment provider) containing the Art. 28(3)(a)–(h) eight-element closed-list clauses (documented instructions, confidentiality, Art. 32 measures, sub-processor authorisation, data-subject-rights assistance, incident assistance, deletion-or-return, audit/inspection); maintain an Art. 46 appropriate-safeguards instrument for any third-country transfer lacking an adequacy decision; apply an Art. 48 filter that recognises third-country court or administrative requests for personal-data disclosure only through an international-agreement basis. | maintain | accountability | SO-D-06.3.HL | Art. 28(3)(a)–(h); Art. 46; Art. 48 | GV.SC-03 | Restated from corpus requirement 6.3.1 to the company's single-sub-processor (payment-provider) scale; the DPA matrix reduces to one processor contract; Art. 46/48 apply conditionally on hosting or payment-provider jurisdiction outside the EEA. |
+| AG-D-06.3-002 | As manufacturer of a default-class product with digital elements, upon identifying a vulnerability in an integrated component, report it to the person or entity manufacturing or maintaining that component and address and remediate it in accordance with Annex I Part II; Art. 19 importer pre-market verification and Art. 20 distributor due-care and non-conformity escalation duties apply to downstream economic operators in the supply chain, not to the manufacturer. | achieve | accountability | SO-D-06.3.HL | Art. 13(6); Art. 19(1)–(3); Art. 20(1)–(4) | GV.SC-04 | Restated from corpus requirement 6.3.3 to the manufacturer role; Art. 13(6) is the directly operative obligation for TinyTask; Art. 19/20 are scoped to downstream importers/distributors and retained for supply-chain completeness per the DIFFERENT-PERSPECTIVE CRDA classification. |
+
+## §4.1 Control Anchor Mapping
+
+| ID | Regulation | CSF 2.0 | NIST PF 1.1 | NIST AI RMF | Source |
+|---|---|---|---|---|---|
+| AG-D-06.3-001 | GDPR | GV.SC-03 | ID.DE-P3 | — | SR-GDPR-034 |
+| AG-D-06.3-002 | CRA | GV.SC-04, RS.MI-02 | — | — | SR-CRA-051 |
+
+## §5
+
+> ASSUMPTION: TinyTask Lda. acts as manufacturer (not importer or distributor) under CRA; therefore Art. 19 and Art. 20 obligations in requirement 6.3.3 are not directly applicable to the company and are retained in the goal only as supply-chain context for downstream economic operators. The directly operative CRA obligation in D-06.3 for TinyTask is Art. 13(6) component-vulnerability reporting.
+
+> ASSUMPTION: The single sub-processor relationship (external payment provider for payment metadata) is the sole Art. 28(3) DPA in scope for D-06.3; no additional processors or sub-processors are identified in the fact sheet.
+
+**Open question:** Data scale (volume of personal data processed) is not stated in the intake; this does not change the applicability of the goals above but may affect the proportionality of Art. 46 supplementary-measures assessment depth.
+```

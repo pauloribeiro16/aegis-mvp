@@ -1,0 +1,25 @@
+{
+ "subdomain": "D-10.1",
+ "goals": [
+  {
+   "id": "AG-D-10.1-001",
+   "goal": "The company maintains continuous monitoring of its personal-data processing systems (customer account metadata and task data on managed-cloud hosting) for the five Art. 32(2) risk types — accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to personal data — and defines the moment of becoming aware of a breach to anchor the Art. 33(1) 72-hour notification clock.",
+   "pattern": "maintain",
+   "property": "c",
+   "parent": "SO-D-10.1.HL",
+   "source": "Art. 32(1)(b); Art. 32(1)(d); Art. 32(2); Art. 33(1)",
+   "anchor": "RS.CO-03, RS.MA-04",
+   "adjustment": "Scope narrowed from a generic entity-level 5-risk-type monitoring to the company's specific B2B SaaS processing systems (8-employee, managed-cloud, two data categories); the 5-risk-type enumeration and 72-hour clock are unchanged; no enterprise-wide multi-system monitoring is required at this scale."
+  },
+  {
+   "id": "AG-D-10.1-002",
+   "goal": "The product with digital elements (rule-based task management platform, web and mobile interfaces) records and monitors relevant internal activity — access to or modification of data, services, or functions — and provides a user opt-out mechanism; the manufacturer facilitates the sharing of information about potential vulnerabilities through a single contact address.",
+   "pattern": "achieve",
+   "property": "i",
+   "parent": "SO-D-10.1.HL",
+   "source": "Annex I Part I (2)(l); Annex I Part II (6)",
+   "anchor": "DE.CM-09, DE.CM-01",
+   "adjustment": "Scope narrowed to a single-product B2B SaaS platform in the default product class (self-assessment conformity); on-device monitoring covers the platform's web and mobile interfaces; the user opt-out applies to the business customer's end-users; the vulnerability contact address is a single point for one product."
+  }
+ ]
+}

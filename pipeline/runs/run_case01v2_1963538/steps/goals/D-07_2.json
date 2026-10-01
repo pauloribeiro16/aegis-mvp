@@ -1,0 +1,15 @@
+{
+ "subdomain": "D-07.2",
+ "goals": [
+  {
+   "id": "AG-D-07.2-001",
+   "goal": "The product with digital elements is designed, developed, and produced to limit its attack surfaces, including external interfaces, and to reduce the impact of an incident using appropriate exploitation-mitigation mechanisms and techniques, demonstrated through the design/development documentation and risk-assessment record",
+   "pattern": "achieve",
+   "property": "i",
+   "parent": "SO-D-07.2.HL",
+   "source": "CRA Annex I Part I (2)(j); CRA Annex I Part I (2)(k); CRA Art. 13(1); CRA Art. 13(2)",
+   "anchor": "PR.PS-01, PR.PS-02",
+   "adjustment": "Restated for 8-FTE rule-based SaaS manufacturer (no AI/ML, no DORA, no AI Act); CRA participation is partial (outcome-level mandates only, no coding-standard prescription in OJ); coding-practices baseline from industry frameworks demonstrated against Annex I Part I (2)(j)+(k) via Annex VII §2/§3 records; HL SO not activated (single-regulation scope, no Conditional-Y overlap)"
+  }
+ ]
+}

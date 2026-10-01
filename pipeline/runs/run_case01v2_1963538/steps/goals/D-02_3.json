@@ -1,0 +1,35 @@
+{
+ "subdomain": "D-02.3",
+ "goals": [
+  {
+   "id": "AG-D-02.3-001",
+   "goal": "Maintain a documented, published, and operationally enforced coordinated vulnerability disclosure policy for the company's SaaS product with digital elements, covering intake, triage, and post-disclosure verification across the product's support period.",
+   "pattern": "maintain",
+   "property": "accountability",
+   "parent": "SO-D-02.3.HL",
+   "source": "CRA Annex I Part II (5); CRA Art. 13(8) sentence 6",
+   "anchor": "GV.PO-01",
+   "adjustment": "Restated from the CRA Sub-SO (SG-D-02.3.CRA) for a single-product, 8-person manufacturer; the \"enforce\" element (intake-channel evidence, triage-log records, post-disclosure verification artefacts) is retained at the scale of one product line rather than a multi-product portfolio; the NIS 2 Art. 12(1) CSIRT-coordinated pathway referenced in the baseline HL is inapplicable because NIS 2 is not confirmed for this entity."
+  },
+  {
+   "id": "AG-D-02.3-002",
+   "goal": "Achieve public disclosure of information about fixed vulnerabilities (description, affected products, impacts, severity, remediation guidance) once a security update is made available, with any delay recorded under the duly justified delay-justification framework.",
+   "pattern": "achieve",
+   "property": "accountability",
+   "parent": "SO-D-02.3.HL",
+   "source": "CRA Annex I Part II (4); CRA Art. 14(9)",
+   "anchor": "RS.CO-03",
+   "adjustment": "Restated from the CRA Sub-SO for a single-product manufacturer; the disclosure content set is unchanged; the delay exception is categories-based per Art. 14(9) delegated acts rather than a blanket deferral; no NIS 2 Art. 23(4) incident-reporting cascade applies (NIS 2 not confirmed)."
+  },
+  {
+   "id": "AG-D-02.3-003",
+   "goal": "Maintain a publicly identifiable contact address for vulnerability reporting and a designated single point of contact enabling security researchers and users to communicate directly and rapidly with the manufacturer.",
+   "pattern": "maintain",
+   "property": "accountability",
+   "parent": "SO-D-02.3.HL",
+   "source": "CRA Annex I Part II (6); CRA Art. 13(17); CRA Annex II §2",
+   "anchor": "GV.SC-04",
+   "adjustment": "Restated from the CRA Sub-SO for a single-product, 8-person manufacturer; the SPOC is a named individual or small team rather than a dedicated researcher-relations unit; the contact address is machine-discoverable (security.txt or well-known URI) at the scale of one product domain."
+  }
+ ]
+}

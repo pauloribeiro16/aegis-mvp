@@ -216,6 +216,15 @@ def parse_p5(answer: str) -> dict:
             "s6": s6.strip()}
 
 
+def _strip_heading(sec: str) -> str:
+    """The LLM sections arrive with their own `## §N` heading — the assembler
+    provides the canonical heading, so drop the model's duplicate."""
+    lines = sec.strip().splitlines()
+    if lines and lines[0].strip().startswith("#"):
+        lines = lines[1:]
+    return "\n".join(lines).strip()
+
+
 def assemble_p5(run_dir: Path, case: dict, s1: str, framing: str, s6: str) -> str:
     """Deterministic assembly of phase1_output.md from validated step artifacts
     (verdicts.md, selection.md, goals/D-XX.Y.md fragments)."""
@@ -254,11 +263,11 @@ def assemble_p5(run_dir: Path, case: dict, s1: str, framing: str, s6: str) -> st
           f"company_input.md\ncorpus: baseline\n---\n")
     parts = [
         fm, f"# Phase 1 Output — {case['company_name']}", "",
-        "## §1 Company Profile Echo", s1,
+        "## §1 Company Profile Echo", _strip_heading(s1),
         "## §2 Applicable Regulations", verdicts,
         "## §3 Applicable Sub-domain Subset", sel_table,
         "## §4 Adjusted Goals", "",
-        "**Framing (company context conditioning every goal below):**", framing, "",
+        "**Framing (company context conditioning every goal below):**", _strip_heading(framing), "",
     ]
     parts.extend(goal_blocks)
     parts.append("### §4.1 Control Anchor Mapping (applicable regulations only — rule R8)")
@@ -268,7 +277,7 @@ def assemble_p5(run_dir: Path, case: dict, s1: str, framing: str, s6: str) -> st
     parts.append("## §5 Ambiguities & Open Questions")
     parts.append("\n".join(s5_items) if s5_items else "None.")
     parts.append("## §6 Handoff Notes to Phase 2")
-    parts.append(s6)
+    parts.append(_strip_heading(s6))
     return "\n\n".join(parts) + "\n"
 
 

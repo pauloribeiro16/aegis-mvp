@@ -1,0 +1,25 @@
+{
+ "subdomain": "D-09.1",
+ "goals": [
+  {
+   "id": "AG-D-09.1-001",
+   "goal": "The controller maintains documented data-protection policies designed to implement data-protection principles in an effective manner, reviewed and updated where necessary in light of the nature, scope, context, and purposes of processing and the associated risks, and is able to demonstrate continuous compliance to the supervisory authority.",
+   "pattern": "maintain",
+   "property": "accountability",
+   "parent": "SO-D-09.1.HL",
+   "source": "Art. 24(1); Art. 5(2)",
+   "anchor": "GV.PO-01",
+   "adjustment": "DPO designation (Art. 37–39) assessed as not triggered for an 8-employee B2B SaaS with no special-category processing and no large-scale systematic monitoring; policy content remains entity-discretionary per the Art. 24(1) \"such as\" formulation; review cadence is a material-change-of-risk trigger supplemented by periodic review."
+  },
+  {
+   "id": "AG-D-09.1-002",
+   "goal": "The manufacturer maintains documented policies, processes, and procedures necessary to implement its CRA cybersecurity obligations, including a coordinated vulnerability disclosure policy, a secure-update distribution mechanism, a support-period determination methodology, and a cessation-of-operations communication procedure, with the presumption-of-conformity machinery tracked via harmonised standards, common specifications, or CSA certification.",
+   "pattern": "maintain",
+   "property": "accountability",
+   "parent": "SO-D-09.1.HL",
+   "source": "Art. 13(8); Art. 27(1)",
+   "anchor": "GV.PO-01",
+   "adjustment": "OSS-steward policy (Art. 24(1)) applicability not confirmed in the fact sheet — recorded as open question; manufacturer-side obligations (Art. 13(8) + Art. 27 presumption) are the operative carrier for a self-developed SaaS product in the default product class with self-assessment conformity."
+  }
+ ]
+}

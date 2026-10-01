@@ -1,0 +1,23 @@
+```markdown
+### D-02.3 — Coordinated Vulnerability Disclosure
+
+| ID | Adjusted goal | Pattern | Property | Parent goal | Regulatory source | Control anchor | Adjustment |
+|---|---|---|---|---|---|---|---|
+| AG-D-02.3-001 | Maintain a documented, published, and operationally enforced coordinated vulnerability disclosure policy for the company's SaaS product with digital elements, covering intake, triage, and post-disclosure verification across the product's support period. | maintain | Accountability | SO-D-02.3.HL | CRA Annex I Part II (5); CRA Art. 13(8) sentence 6 | GV.PO-01 | Restated from the CRA Sub-SO (SG-D-02.3.CRA) for a single-product, 8-person manufacturer; the "enforce" element (intake-channel evidence, triage-log records, post-disclosure verification artefacts) is retained at the scale of one product line rather than a multi-product portfolio; the NIS 2 Art. 12(1) CSIRT-coordinated pathway referenced in the baseline HL is inapplicable because NIS 2 is not confirmed for this entity. |
+| AG-D-02.3-002 | Achieve public disclosure of information about fixed vulnerabilities (description, affected products, impacts, severity, remediation guidance) once a security update is made available, with any delay recorded under the duly justified delay-justification framework. | achieve | Accountability | SO-D-02.3.HL | CRA Annex I Part II (4); CRA Art. 14(9) | RS.CO-03 | Restated from the CRA Sub-SO for a single-product manufacturer; the disclosure content set is unchanged; the delay exception is categories-based per Art. 14(9) delegated acts rather than a blanket deferral; no NIS 2 Art. 23(4) incident-reporting cascade applies (NIS 2 not confirmed). |
+| AG-D-02.3-003 | Maintain a publicly identifiable contact address for vulnerability reporting and a designated single point of contact enabling security researchers and users to communicate directly and rapidly with the manufacturer. | maintain | Accountability | SO-D-02.3.HL | CRA Annex I Part II (6); CRA Art. 13(17); CRA Annex II §2 | GV.SC-04 | Restated from the CRA Sub-SO for a single-product, 8-person manufacturer; the SPOC is a named individual or small team rather than a dedicated researcher-relations unit; the contact address is machine-discoverable (security.txt or well-known URI) at the scale of one product domain. |
+
+## §4.1 Control Anchor Mapping
+
+| ID | Regulation | CSF 2.0 | NIST PF 1.1 | NIST AI RMF | Source |
+|---|---|---|---|---|---|
+| AG-D-02.3-001 | CRA | GV.PO-01, GV.SC-04 | — | — | SR-CRA-019 |
+| AG-D-02.3-002 | CRA | RS.CO-03, GV.SC-04 | — | — | SR-CRA-020 |
+| AG-D-02.3-003 | CRA | GV.SC-04, RS.CO-03 | — | — | SR-CRA-021 |
+
+## §5
+
+> ASSUMPTION: GDPR is confirmed as applicable to the company (controller/processor for EU personal data) but carries no CVD obligation in D-02.3; regs/GDPR.md explicitly states "No CVD mandate; CRA sole authority per taxonomy §4.1" and "(no GDPR Sub-SO or requirements in this sub-domain)." No GDPR-derived goal is produced for this sub-domain.
+
+> ASSUMPTION: The baseline HL (SG-D-02.3.HL) references the NIS 2 Art. 12(1) CSIRT-coordinated pathway for the integrated manufacturer-as-NIS-2-entity stack. NIS 2 is not confirmed for this entity (excluded per fact_sheet: 8 employees, non-critical service, not in Annex I/II essential sectors); the NIS 2 leg of the baseline HL is therefore inapplicable and no NIS 2-derived goal is produced.
+```

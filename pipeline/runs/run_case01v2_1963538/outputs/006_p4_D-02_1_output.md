@@ -1,0 +1,23 @@
+```markdown
+### D-02.1 — Vulnerability Identification
+
+| ID | Adjusted goal | Pattern | Property | Parent goal | Regulatory source | Control anchor | Adjustment |
+|---|---|---|---|---|---|---|---|
+| AG-D-02.1-001 | TinyTask, as controller of customer-account personal data and processor of customer task data in its B2B SaaS platform, maintains a documented process for regularly testing, assessing, and evaluating the effectiveness of the technical and organisational measures ensuring the security of that processing, and reviews its data-protection impact assessment whenever a change in the risk represented by the processing operations is identified. | maintain | accountability | SO-D-02.1.HL | GDPR Art. 32(1)(d); GDPR Art. 35(11) | ID.RA-01, PR.PS-02 | Restated from the five-regulation, AI-inclusive baseline to TinyTask's 8-person managed-cloud SaaS context: AI-specific attack categories (data poisoning, model evasion, etc.) and NIS2/DORA/AI Act legs excluded (no AI/ML systems; not a financial entity; not an essential/important entity); the "regularly" cadence is discharged by a documented periodic testing programme scaled to the Art. 32(1) preamble factors; DPIA review trigger retained as the Art. 35(11) material-change condition. |
+| AG-D-02.1-002 | TinyTask, as manufacturer of a product with digital elements (SaaS platform with web and mobile interfaces) placed on the EU market in the default product class, ensures the product is made available without known exploitable vulnerabilities and maintains a continuing identification process — including a machine-readable software bill of materials covering at least the top-level dependencies and a vulnerability register — throughout the product's support period, exercising the constructive-knowledge due-diligence baseline. | maintain | I | SO-D-02.1.HL | CRA Annex I Part I (2)(a); CRA Annex I Part II (1) | ID.RA-01, ID.AM-02 | Restated from the five-regulation baseline to TinyTask's CRA manufacturer role on a default-class (self-assessment) SaaS product: NIS2/DORA/AI Act legs excluded (not applicable per fact sheet); the R2 constructive-knowledge baseline (inquiry-resistant, Annex VII §3 due-diligence floor) retained as the identification standard; SBOM scope limited to top-level dependencies per Annex I Part II (1); no AI-specific threat-model overlay (no AI/ML systems). |
+
+## §4.1 Control Anchor Mapping
+
+| ID | Regulation | CSF 2.0 | NIST PF 1.1 | NIST AI RMF | Source |
+|---|---|---|---|---|---|
+| AG-D-02.1-001 | GDPR | ID.RA-01, PR.PS-02 | GV.MT-P3, CT.DM-P10 | — | SR-GDPR-007 |
+| AG-D-02.1-002 | CRA | ID.RA-01, ID.AM-02 | — | — | SR-CRA-006 |
+
+## §5
+
+> ASSUMPTION: The CRA "support period" (Art. 13(8)) under which the vulnerability register and SBOM must be maintained is assumed to correspond to the commercial subscription lifecycle defined in TinyTask's terms of service; the specific duration is not stated in the intake fact sheet.
+
+> ASSUMPTION: The GDPR Art. 32(1) preamble factor "costs of implementation" is interpreted at the scale of an 8-employee company using managed-cloud hosting; the periodic testing cadence (e.g., at least semi-annual vulnerability scans plus event-triggered re-testing on material change) is the proportionate discharge of "regularly" for this scale, consistent with the cross-regulation note that any tighter cadence discharges the obligation.
+
+> OPEN QUESTION: The fact sheet records `data_scale: not stated in the intake`. A rough data-volume or data-subject-count figure would allow calibration of the Art. 32(1) "nature, scope, context, purposes, risks" factors and the DPIA review trigger granularity; the goal is stated at the regulation's altitude pending that input.
+```

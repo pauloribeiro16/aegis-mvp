@@ -1,0 +1,23 @@
+```markdown
+### D-09.2 — Impact and Risk Assessments
+
+| ID | Adjusted goal | Pattern | Property | Parent goal | Regulatory source | Control anchor | Adjustment |
+|---|---|---|---|---|---|---|---|
+| AG-D-09.2-001 | Where processing is likely to result in a high risk to the rights and freedoms of natural persons, a documented data-protection impact assessment covering the four Art. 35(7) content items (systematic description of envisaged processing and purposes; necessity and proportionality assessment; risks to data-subject rights and freedoms; measures to address those risks) is in place before processing begins; where residual risk remains high, prior consultation with the supervisory authority is sought. | achieve | privacy-right | SO-D-09.2.HL | Art. 35(1); Art. 35(7); Art. 36(1) | ID.RA-05; ID.RA-P4 | Restated for an 8-employee B2B SaaS controller processing customer account metadata and task data; the four Art. 35(7) content items are mandatory regardless of entity size; no mechanism or tool prescribed. |
+| AG-D-09.2-002 | The data-protection impact assessment is reviewed where there has been a change of the risk represented by the processing operations, with the review records identifying the trigger event, date, assessment of the change, residual-risk recalculation, and any updated measures. | maintain | privacy-right | SO-D-09.2.HL | Art. 35(11) | ID.IM-04; ID.RA-P5 | Restated for a small B2B SaaS controller; the on-change review trigger is mandatory; a documented periodic-review cadence supplements the material-change trigger per the corpus interpretation; no mechanism prescribed. |
+| AG-D-09.2-003 | Before placing the product with digital elements on the EU market, a documented cybersecurity risk assessment covering the intended purpose and reasonably foreseeable use (including operational environment and assets to be protected) is in place, indicating whether and in what manner Annex I Part I (2) requirements apply and how those requirements are implemented as informed by the risk assessment, recorded in the Annex VII §3 risk-assessment record. | achieve | I | SO-D-09.2.HL | Art. 13(2); Art. 13(3) sentence 1; Art. 13(3) sentence 2; Art. 13(3) sentence 3; Annex VII §3 | ID.RA-05; GV.PO-02 | Restated for a default-class manufacturer (self-assessment conformity) of a rule-based SaaS product; the Annex I Part I (2) applicability mapping is mandatory; the CRA Art. 13(4) sentence 2 consolidation rule does not apply (no AI Act applicability for this entity); no mechanism prescribed. |
+| AG-D-09.2-004 | The cybersecurity risk assessment is updated during the support period as appropriate, including upon becoming aware of a previously unidentified vulnerability, with the Annex VII §3 risk-assessment record kept current and available to market surveillance authorities for the retention period. | maintain | I | SO-D-09.2.HL | Art. 13(3) sentence 1; Art. 13(7) | GV.OV-02; ID.IM-04 | Restated for a small manufacturer with a defined support period; the update obligation is mandatory regardless of entity size; the 10-year retention per Art. 13(13) applies; no mechanism prescribed. |
+
+## §4.1 Control Anchor Mapping
+
+| ID | Regulation | CSF 2.0 | NIST PF 1.1 | NIST AI RMF | Source |
+|---|---|---|---|---|---|
+| AG-D-09.2-001 | GDPR | ID.RA-01; ID.RA-05; ID.RA-06 | ID.RA-P3; ID.RA-P4; ID.RA-P5 | — | SR-GDPR-045 |
+| AG-D-09.2-002 | GDPR | ID.IM-04; ID.RA-06 | ID.RA-P5; GV.MT-P2 | — | SR-GDPR-047 |
+| AG-D-09.2-003 | CRA | PR.PS-06; GV.PO-02; ID.RA-05 | — | — | SR-CRA-066 |
+| AG-D-09.2-004 | CRA | GV.OV-02; ID.IM-04 | — | — | SR-CRA-081 |
+
+## §5
+
+None.
+```

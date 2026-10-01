@@ -1,0 +1,12 @@
+# Case binding — pipeline layer only.
+# Points the generic Phase 1 pipeline at one company; contains no prompt text.
+case_id: Case_01_TinyTask_SaaS
+company_id: TinyTask
+company_name: TinyTask Lda.
+input: company_input.md            # relative to this directory (SPEC §4 contract, 5 sections)
+output_language: en
+source_intake: cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc01_INTAKE_FORM.md
+notes: >
+  company_input.md was derived from the case's layered intake Doc01_INTAKE_FORM.md
+  (Layer 0 profile + Layer 1 verdicts + Layer 2 conditional context) to satisfy the
+  SPEC §4 five-section input contract. All facts trace to Doc01; nothing was added.

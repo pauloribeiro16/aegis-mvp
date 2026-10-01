@@ -3,16 +3,22 @@ ficha_id: PROM-P1-04
 title: 'Derive Adjusted Goals'
 phase_step: 'Phase 1 · P4 (SPEC §5)'
 pattern: 'parallelization — one invocation per selected sub-domain'
-version: 1.0.0
+version: 1.1.0
 created: 2026-10-01
 status: ACTIVE
 normative_source:
-  - 'SPEC.md §5 P4, §7 R2, R3, R4, R7, R8'
+  - 'SPEC.md §5 P4, §7 R2, R3, R4, R8'
   - 'AGENTS.md §4 P4, §5 R13 (altitude discipline)'
   - 'docs/decisions/ADR-2026-09-22_goal-objective-structure.md (ADR-003 card schema)'
 ---
 
 # PROM-P1-04 — Derive Adjusted Goals
+
+> **v1.1.0 change (researcher ruling, 2026-10-01):** ambiguity cards no longer
+> enter Phase 1. The ambiguity interpretation was decided in Fase 0; this step
+> applies the decided interpretation and moves forward. `regs/<REG>.ambiguity.md`
+> is removed from the context pack; §5 entries carry only `> ASSUMPTION:`
+> blockquotes and open questions (R6), never card citations.
 
 ## Metadata
 
@@ -31,11 +37,10 @@ normative_source:
 |---|---|---|
 | 1 | `baseline/domains/<D-XX_Name>/<D-XX.Y>/objective.md` | the regulation-neutral Baseline Goal (`SO-D-XX.Y.HL`) |
 | 2 | `…/<D-XX.Y>/regs/<REG>.md` — **only for regulations confirmed at G-P1-B that are present in the module** | Sub-SO card + requirements + verbatim regulatory basis |
-| 3 | `…/<D-XX.Y>/regs/<REG>.ambiguity.md` | ambiguity cards for the clauses cited |
-| 4 | `…/<D-XX.Y>/cross/<R1>-<R2>.md` + `cross/_interactions.md` — **only when ≥2 confirmed regulations are present** | aggregation, tensions |
-| 5 | `baseline/MAPPINGS/sr_control_mappings/<REG>.json` (anchor slice) | pre-verified control anchors per SR |
-| 6 | `templates/phase1_output.md` §4 (incl. HTML comment) | KAOS pattern semantics, property taxonomy, column contract |
-| 7 | `output/<company>/packs/pack-p2.md` | fact sheet (proportionality source) |
+| 3 | `…/<D-XX.Y>/cross/<R1>-<R2>.md` + `cross/_interactions.md` — **only when ≥2 confirmed regulations are present** | aggregation, tensions |
+| 4 | `baseline/MAPPINGS/sr_control_mappings/<REG>.json` (anchor slice) | pre-verified control anchors per SR |
+| 5 | `templates/phase1_output.md` §4 (incl. HTML comment) | KAOS pattern semantics, property taxonomy, column contract |
+| 6 | `output/<company>/packs/pack-p2.md` | fact sheet (proportionality source) |
 
 ## Output schema
 
@@ -53,7 +58,7 @@ Per sub-domain, a `### D-XX.Y — <canonical name>` table, columns exactly:
 
 Plus §4.1 rows: `ID | Regulation | CSF 2.0 | NIST PF 1.1 | NIST AI RMF | Source` — one row per (goal, confirmed regulation) pair, `Source` = `SR-<REG>-NNN` from the mapping store.
 
-Plus §5 entries: ambiguity card citations + `> ASSUMPTION:` blockquotes produced by this step.
+Plus §5 entries: `> ASSUMPTION:` blockquotes and open questions produced by this step (R6). Ambiguity card citations are NOT produced — the interpretation is already decided in Fase 0.
 
 ## Prompt body
 
@@ -65,7 +70,7 @@ Plus §5 entries: ambiguity card citations + `> ASSUMPTION:` blockquotes produce
 > 4. Assign `AG-D-XX.Y-NNN` sequentially from 001 (R4).
 > 5. Anchor: cite regulatory sources that resolve in the module's `articles/` or are quotable verbatim from `regs/<REG>.md` (R2a). Copy control anchors only from the pack's pre-verified surfaces — never re-derive, never invent (R2b); max 2 per goal; use `—` rather than a stretch.
 > 6. Axis discipline: `nist_pf` anchors only accompany GDPR-derived obligations; `nist_airmf` only AI_Act-derived obligations (R8).
-> 7. If a cited clause has an ambiguity card in the pack, cite the card ID in §5 and follow its canonical resolution — do not re-interpret (R7).
+> 7. Ambiguity interpretation is already decided in the corpus (Fase 0 baseline) — apply it as written and move on; do not cite or re-analyze ambiguity cards in §5.
 > 8. Technology neutrality: state what must be achieved, never tools, vendors, or implementations (R5). Same altitude as the source module; a quantitative fit criterion is allowed, a mechanism prescription is not (R13 altitude discipline).
 > 9. Produce the §4 table, the §4.1 rows, and the §5 entries in the output schema above.
 
@@ -76,7 +81,7 @@ Plus §5 entries: ambiguity card citations + `> ASSUMPTION:` blockquotes produce
 - Every control anchor string was copied from a surface in the pack and exists in the corresponding referential (R2b).
 - IDs unique and sequential; every row has pattern, property, parent, non-empty Adjustment (§8 items 4, 9).
 - Wording is company-proportional and technology-neutral (R3, R5).
-- Every ambiguity encounter produced a §5 card citation, not a private interpretation (R7).
+- §5 contains only `> ASSUMPTION:` blockquotes and open questions — no ambiguity card citations.
 
 ## Guard hooks (L0/L1)
 

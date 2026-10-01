@@ -18,10 +18,10 @@ from compose import (REGULATIONS, SD_RE, compose_call, confirmed_regulations,
 from llm import LLMError, OllamaClient
 from trace import Trace, now_iso
 
-NUM_CTX = {"p1": 16384, "p2": 16384, "p3": 32768, "p4": 32768, "p5": 32768}
+NUM_CTX = {"p1": 16384, "p2": 16384, "p3": 32768, "p3f": 16384, "p4": 32768, "p5": 32768}
 # output budget per step (P5 renders the whole document: 22 goal tables
 # exceeded the 8192 default — done_reason=length truncation, job 1963648)
-NUM_PREDICT = {"p1": 4096, "p2": 2048, "p3": 8192, "p4": 8192, "p5": 16384}
+NUM_PREDICT = {"p1": 4096, "p2": 2048, "p3": 8192, "p3f": 2048, "p4": 8192, "p5": 16384}
 
 PATTERNS = {"achieve", "cease", "maintain", "avoid", "optimize"}
 # template §4 renders long-form property names; normalize to the enum codes
@@ -190,6 +190,14 @@ def parse_p4(answer: str, sd_id: str) -> dict:
     return {"md": md, "goals": goals}
 
 
+def parse_p3f(answer: str) -> dict:
+    md = extract_fenced(answer, "markdown")
+    lines = [l for l in md.strip().splitlines() if l.strip().startswith(">")]
+    if not lines:
+        raise ValueError("p3f answer must be a single > blockquote")
+    return {"framing": "\n".join(lines).strip()}
+
+
 def parse_p5(answer: str) -> dict:
     """P5 intro call: only the narrative blocks (§1 echo, §4 framing, §6 handoff).
     The full document is assembled deterministically from validated artifacts —
@@ -197,13 +205,15 @@ def parse_p5(answer: str) -> dict:
     (done_reason=length, jobs 1963648/1963810)."""
     md = extract_fenced(answer, "markdown")
     s1 = extract_markdown_section(md, "## §1", ["## §4"])
-    framing = extract_markdown_section(md, "## §4", ["## §6"])
+    framing = extract_markdown_section(md, "## §4", ["## §6"]) or None
     s6 = extract_markdown_section(md, "## §6", [])
-    for name, sec in (("§1 Company Profile Echo", s1), ("§4 Framing", framing),
+    for name, sec in (("§1 Company Profile Echo", s1),
                       ("§6 Handoff Notes to Phase 2", s6)):
         if not sec.strip():
             raise ValueError(f"p5 intro answer missing or empty: {name}")
-    return {"s1": s1.strip(), "framing": framing.strip(), "s6": s6.strip()}
+    # framing is optional in the answer when stage p3f already produced it
+    return {"s1": s1.strip(), "framing": (framing.strip() if framing else None),
+            "s6": s6.strip()}
 
 
 def assemble_p5(run_dir: Path, case: dict, s1: str, framing: str, s6: str) -> str:
@@ -306,7 +316,8 @@ def build_run_notes(run_dir: Path) -> str:
 """
 
 
-PARSERS = {"p1": parse_p1, "p2": parse_p2, "p3": parse_p3, "p5": parse_p5}
+PARSERS = {"p1": parse_p1, "p2": parse_p2, "p3": parse_p3, "p3f": parse_p3f,
+           "p5": parse_p5}
 
 EXTRA_INSTRUCTION = {
     "p1": "Wrap your answer: return ONLY one ```yaml fenced block with the fact sheet.",
@@ -324,6 +335,18 @@ EXTRA_INSTRUCTION = {
            "`## §6 Handoff Notes to Phase 2` (max 10 lines: applicable regulations, "
            "sub-domain scope, open questions). Plain markdown prose — never JSON. "
            "Nothing else."),
+    "p3f": ("Wrap your answer: return ONLY one ```markdown fenced block containing a "
+           "single > blockquote (max 8 lines) with the §4 framing: company size "
+           "consequence, area of operation, regulatory roles, inherited/managed "
+           "capabilities, explicit exclusions. Plain markdown — never JSON. "
+           "Nothing else."),
+    "p5_no_framing": ("Wrap your answer: return ONLY one ```markdown fenced block containing "
+                      "exactly two sections: `## §1 Company Profile Echo` (max 15 lines, "
+                      "verbatim-faithful condensation of input §1-§4, no new facts) and "
+                      "`## §6 Handoff Notes to Phase 2` (max 10 lines: applicable "
+                      "regulations, sub-domain scope, open questions). The §4 Framing "
+                      "block is already provided separately. Plain markdown — never JSON. "
+                      "Nothing else."),
 }
 
 
@@ -373,9 +396,14 @@ class StepRunner:
     def _call(self, step: str, subdomain: str | None) -> None:
         tag = step.replace(":", "_") if subdomain is None else f"p4_{subdomain.replace('.', '_')}"
         seq = self.trace.next_seq()
+        if subdomain is not None:
+            extra = p4_extra_instruction(subdomain)
+        elif step == "p5" and (self.run_dir / "steps" / "framing.md").exists():
+            extra = EXTRA_INSTRUCTION["p5_no_framing"]  # p3f already produced it
+        else:
+            extra = EXTRA_INSTRUCTION[step]
         call = compose_call(self.repo, self.case, self.run_dir, step, subdomain,
-                            extra_instruction=p4_extra_instruction(subdomain) if subdomain
-                            else EXTRA_INSTRUCTION[step])
+                            extra_instruction=extra)
         num_ctx = NUM_CTX[step.split(":")[0]]
         num_predict = NUM_PREDICT[step.split(":")[0]]
         # context budget guard (2026-10-01 job 1963648: D-09.4 pack ate the whole
@@ -509,9 +537,17 @@ class StepRunner:
             (goals_dir / f"{fname}.json").write_text(
                 json.dumps({"subdomain": subdomain, "goals": parsed["goals"]},
                            indent=1, ensure_ascii=False), encoding="utf-8")
+        elif step == "p3f":
+            (steps_dir / "framing.md").write_text(parsed["framing"] + "\n", encoding="utf-8")
         elif step == "p5":
-            doc = assemble_p5(self.run_dir, self.case, parsed["s1"],
-                              parsed["framing"], parsed["s6"])
+            framing = parsed.get("framing")
+            if not framing:
+                f = steps_dir / "framing.md"
+                if not f.exists():
+                    raise ValueError("no §4 framing: neither the p5 answer nor "
+                                     "steps/framing.md (stage p3f) provides it")
+                framing = f.read_text(encoding="utf-8").strip()
+            doc = assemble_p5(self.run_dir, self.case, parsed["s1"], framing, parsed["s6"])
             (self.run_dir / "phase1_output.md").write_text(doc, encoding="utf-8")
             (self.run_dir / "RUN_NOTES.md").write_text(build_run_notes(self.run_dir),
                                                        encoding="utf-8")
@@ -530,6 +566,11 @@ class StepRunner:
     def stage_p3(self) -> int:
         self._require(("steps/verdicts.json",), "G-P1-B")
         self._call("p3", None)
+        return 1
+
+    def stage_p3f(self) -> int:
+        self._require(("steps/verdicts.json",), "G-P1-B")
+        self._call("p3f", None)
         return 1
 
     def stage_p4(self) -> int:
@@ -551,7 +592,7 @@ class StepRunner:
         goals = sorted((self.run_dir / "steps" / "goals").glob("D-*.md"))
         if not goals:
             raise ValueError("no P4 goal artifacts found — run stage p4 first")
-        self._call("p5", None)  # narrative blocks only (§1, §4 framing, §6)
+        self._call("p5", None)  # narrative blocks (§1, §6; framing only if p3f absent)
         return 1
 
     def _require(self, relpaths: tuple[str, ...], gate: str) -> None:

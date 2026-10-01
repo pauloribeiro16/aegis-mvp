@@ -24,6 +24,7 @@ FICHA_FILES = {
     "p1": "PROM-P1-01_EXTRACT_FACTS.md",
     "p2": "PROM-P1-02_CONFIRM_REGULATIONS.md",
     "p3": "PROM-P1-03_SELECT_SUBDOMAINS.md",
+    "p3f": "PROM-P1-06_BUILD_FRAMING.md",
     "p4": "PROM-P1-04_DERIVE_ADJUSTED_GOALS.md",
     "p5": "PROM-P1-05_RENDER_VALIDATE.md",
 }
@@ -352,6 +353,13 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
         files.append((str(case["input_path"].relative_to(repo)), case["input_text"]))
         files.append(("templates/company_input.md", (repo / "templates" / "company_input.md").read_text(encoding="utf-8")))
 
+    elif step == "p3f":
+        files.append(("steps/fact_sheet.yaml", (run_dir / "steps" / "fact_sheet.yaml").read_text(encoding="utf-8")))
+        files.append(("steps/verdicts.md", (run_dir / "steps" / "verdicts.md").read_text(encoding="utf-8")))
+        t = (repo / "templates" / "phase1_output.md").read_text(encoding="utf-8")
+        files.append(("templates/phase1_output.md §4 framing contract",
+                      extract_markdown_section(t, "## §4", ["### D-"])))
+
     elif step == "p2":
         files.append(("steps/fact_sheet.yaml", (run_dir / "steps" / "fact_sheet.yaml").read_text(encoding="utf-8")))
         s5 = extract_markdown_section(case["input_text"], "## §5", ["## §6"])
@@ -410,6 +418,7 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
                                  ensure_ascii=False, separators=(",", ":"))))
         t = (repo / "templates" / "phase1_output.md").read_text(encoding="utf-8")
         files.append(("templates/phase1_output.md §4", extract_markdown_section(t, "## §4", ["## §5"])))
+        files.append(("steps/framing.md", (run_dir / "steps" / "framing.md").read_text(encoding="utf-8")))
         files.append(("steps/fact_sheet.yaml", (run_dir / "steps" / "fact_sheet.yaml").read_text(encoding="utf-8")))
         manifest_block = (
             f"Context pack build (deterministic): sub-domain {sd_id}; confirmed "

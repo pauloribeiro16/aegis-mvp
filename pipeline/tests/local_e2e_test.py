@@ -123,6 +123,12 @@ def goals_answer(sd: str, user_prompt: str) -> str:
             + m41 + "\n## §5\n\n- None.\n```")
 
 
+P3F_FRAMING = """```markdown
+> 8-person micro-enterprise, non-critical B2B SaaS. Roles: GDPR controller +
+> processor, CRA manufacturer (default class, self-assessment). Exclusions:
+> NIS2, DORA, AI_Act.
+```"""
+
 P5_INTRO = """```markdown
 ## §1 Company Profile Echo
 
@@ -136,6 +142,20 @@ accounts) and processor (customer task data) on hosted SaaS.
 > 8-person micro-enterprise, non-critical B2B SaaS. Roles: GDPR controller +
 > processor, CRA manufacturer (default class, self-assessment). Exclusions:
 > NIS2, DORA, AI_Act.
+
+## §6 Handoff Notes to Phase 2
+
+Applicable regulations: GDPR, CRA. Sub-domain scope: """ + ", ".join(SELECTED) + """. Open
+questions: data_scale not stated in intake.
+```"""
+
+P5_INTRO_NO_FRAMING = """```markdown
+## §1 Company Profile Echo
+
+TinyTask Lda., 8 employees (micro-enterprise), Portugal (EU), B2B SaaS
+productivity tools. Develops and operates a rule-based task management
+platform as manufacturer; processes EU personal data as controller and
+processor on hosted SaaS.
 
 ## §6 Handoff Notes to Phase 2
 
@@ -197,8 +217,12 @@ class Handler(BaseHTTPRequestHandler):
                 content = selection_answer()
             elif tag == "PROM-P1-04" and sd:
                 content = goals_answer(sd.group(1), user)
+            elif tag == "PROM-P1-06":
+                content = P3F_FRAMING
             elif tag == "PROM-P1-05":
-                content = P5_INTRO
+                # p3f already wrote steps/framing.md -> the p5 pack is attached and
+                # the instruction asks for two sections only
+                content = (P5_INTRO_NO_FRAMING if "two sections" in user else P5_INTRO)
             else:
                 content = "unknown step"
             self._json({"model": MODEL, "message": {"role": "assistant", "content": content},
@@ -249,14 +273,17 @@ def main() -> int:
           "system+user x2 attempts share files; outputs must have attempt2")
     check("attempt2 output kept", (run_dir / "outputs" / "002_p2_output_attempt2.md").exists())
 
-    print("-- 3. p3 + gates --")
+    print("-- 3. p3f (framing) + p3 + gates --")
     (run_dir / "steps" / "gates" / "G-P1-B.approved").write_text("approved: test")
+    proc = run_cli("run", "--stage", "p3f", "--run-dir", str(run_dir), "--base", base)
+    check("framing.md written from p3f", (run_dir / "steps" / "framing.md").exists()
+          and (run_dir / "steps" / "framing.md").read_text().strip().startswith(">"))
     proc = run_cli("run", "--stage", "p3", "--run-dir", str(run_dir), "--base", base)
     sel = json.loads((run_dir / "steps" / "selection.json").read_text())
     check("p3 selection == 4 sub-domains", sorted(s["id"] for s in sel["selected"]) == sorted(SELECTED),
           f"{[s['id'] for s in sel['selected']]}")
 
-    print("-- 4. p4+p5 combined stage --")
+    print("-- 4. p4+p5 combined stage (framing.md feeds p4 pack, p5 uses two-section intro) --")
     (run_dir / "steps" / "gates" / "G-P1-C.approved").write_text("approved: test")
     proc = run_cli("run", "--stage", "p4p5", "--run-dir", str(run_dir), "--base", base)
     check("p5 deliverable written", (run_dir / "phase1_output.md").exists())
@@ -268,7 +295,7 @@ def main() -> int:
     manifest = json.loads((run_dir / "manifest.json").read_text())
     n_trace = len([l for l in (run_dir / "trace.jsonl").read_text().splitlines() if l.strip()])
     n_in = len(list((run_dir / "inputs").glob("*_user.md")))
-    check("trace==inputs==manifest", n_trace == n_in == manifest["n_calls_total"] == 8,
+    check("trace==inputs==manifest", n_trace == n_in == manifest["n_calls_total"] == 9,
           f"trace={n_trace} inputs={n_in} manifest={manifest['n_calls_total']}")
     seqs = [json.loads(l)["seq"] for l in (run_dir / "trace.jsonl").read_text().splitlines() if l.strip()]
     check("seq strictly increasing across processes", seqs == sorted(seqs) and len(set(seqs)) == len(seqs))

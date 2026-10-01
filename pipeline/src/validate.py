@@ -170,14 +170,23 @@ def main() -> int:
     calls = [json.loads(l) for l in trace_path.read_text().splitlines() if l.strip()] if trace_path.exists() else []
     n_inputs = len(list((run / "inputs").glob("*_user.md")))
     n_outputs = len(list((run / "outputs").glob("*_output.md")))
-    n_real = sum(1 for c in calls if c.get("status") == "ok")
-    check("trace.jsonl lines == inputs == outputs", len(calls) == n_inputs and n_outputs == n_real,
-          f"trace={len(calls)} inputs={n_inputs} outputs={n_outputs} (ok calls={n_real})")
+    n_ok = sum(1 for c in calls if c.get("status") == "ok")
+    check("trace.jsonl lines == inputs == outputs", len(calls) == n_inputs == n_outputs,
+          f"trace={len(calls)} inputs={n_inputs} outputs={n_outputs} (ok calls={n_ok})")
     manifest = json.loads((run / "manifest.json").read_text())
     check("manifest n_calls_total matches trace", manifest.get("n_calls_total") == len(calls),
           f"manifest={manifest.get('n_calls_total')} trace={len(calls)}")
-    failed = [c["seq"] for c in calls if c.get("status") not in ("ok", "dry-run")]
-    check("no failed calls", not failed, f"{failed}")
+    # a step is complete iff its LAST call succeeded; earlier failed calls are
+    # retained history (retries after mid-stage aborts) — informational only
+    last_by_step: dict[str, dict] = {}
+    for c in calls:
+        last_by_step[c["step"]] = c
+    open_failures = [s for s, c in last_by_step.items() if c.get("status") != "ok"]
+    check("every step's last call succeeded", not open_failures, f"{open_failures}")
+    retries = [f"{c['seq']}({c['step']})" for c in calls if c.get("status") != "ok"]
+    if retries:
+        print(f"  [INFO] {len(retries)} retained failed call(s) from earlier jobs, "
+              f"retried later: {retries}")
 
     print()
     if FINDINGS:

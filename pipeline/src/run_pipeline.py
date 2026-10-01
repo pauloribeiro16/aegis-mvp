@@ -120,7 +120,8 @@ def main() -> int:
     p_new.add_argument("--base", default="http://127.0.0.1:11434")
 
     p_run = sub.add_parser("run", help="execute one stage")
-    p_run.add_argument("--stage", required=True, choices=["p1", "p2", "p3", "p4", "p5", "p4p5"])
+    p_run.add_argument("--stage", required=True,
+                       choices=["p1", "p2", "p3f", "p3", "p4", "p5", "p4p5"])
     p_run.add_argument("--repo", type=Path, default=REPO_DEFAULT)
     p_run.add_argument("--run-dir", type=Path, required=True)
     p_run.add_argument("--model", default=None)

@@ -274,6 +274,15 @@ class StepRunner:
                             extra_instruction=p4_extra_instruction(subdomain) if subdomain
                             else EXTRA_INSTRUCTION[step])
         num_ctx = NUM_CTX[step.split(":")[0]]
+        # context budget guard (2026-10-01 job 1963648: D-09.4 pack ate the whole
+        # 32K ctx, done_reason=length, empty content). est tokens x1.15 safety
+        # (chars/4 underestimates the real tokenizer) + 8K output budget.
+        est_tokens = (len(call["system"]) + len(call["user"])) // 4
+        if est_tokens * 1.15 + 8000 > num_ctx:
+            num_ctx = 65536
+        if est_tokens * 1.15 + 8000 > num_ctx:
+            raise LLMError(f"step {tag}: prompt ~{est_tokens} tokens does not fit "
+                           f"even a 64K context — trim the pack")
 
         in_dir = self.run_dir / "inputs"
         sys_path = in_dir / f"{seq:03d}_{tag}_system.md"

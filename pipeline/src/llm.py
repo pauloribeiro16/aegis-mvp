@@ -77,8 +77,11 @@ class OllamaClient:
         raise LLMError(f"warm-up failed after {retries} attempts: {last}")
 
     def chat(self, model: str, system: str, user: str, num_ctx: int,
-             temperature: float = 0.2, timeout_s: int | None = None) -> dict:
-        """One chat completion. Returns the full JSON response (stream=False)."""
+             temperature: float = 0.2, timeout_s: int | None = None,
+             num_predict: int = 8192) -> dict:
+        """One chat completion. Returns the full JSON response (stream=False).
+        num_predict explicit: a silent default cap truncates mid-answer and the
+        content arrives empty (seen on qwen3.8 with done_reason=length)."""
         payload = {
             "model": model,
             "messages": [
@@ -86,7 +89,8 @@ class OllamaClient:
                 {"role": "user", "content": user},
             ],
             "stream": False,
-            "options": {"num_ctx": num_ctx, "temperature": temperature},
+            "options": {"num_ctx": num_ctx, "temperature": temperature,
+                        "num_predict": num_predict},
         }
         raw = self._request("/api/chat", payload, timeout_s or self.timeout_read)
         return json.loads(raw.decode("utf-8"))

@@ -15,28 +15,28 @@
 ## §2 Product / Service
 
 TinyTask develops and operates B2B SaaS productivity tools: a rule-based task
-management platform sold by commercial subscription to clinics. The company
-develops the software itself and places the product, with its web and mobile
-interface, on the EU market as the manufacturer; the product falls in the
-default class with internal-production-control (self-assessment) conformity.
-There are no AI/ML systems developed, deployed or integrated — the platform is
-rule-based.
+management platform sold by commercial subscription to business customers.
+The company develops the software itself and places the product, with its web
+and mobile interface, on the EU market as the manufacturer; the product falls
+in the default class with internal-production-control (self-assessment)
+conformity. There are no AI/ML systems developed, deployed or integrated —
+the platform is rule-based.
 
 ## §3 Data Handled
 
 EU personal data processed in two roles. As controller: customer account
-metadata (names, emails, passwords). As processor, on behalf of clinics under
-standard Data Processing Agreements: clinic task data containing personal data
-of the clinics' own users. No health, payment-card or minors' data is stated as
-processed in-house; payments are handled by an external payment provider.
-Rough scale is not stated in the intake.
+metadata (names, emails, passwords). As processor, on behalf of business
+customers under standard Data Processing Agreements: task data containing
+personal data of the customers' own users. No health, payment-card or minors'
+data is stated as processed in-house; payments are handled by an external
+payment provider. Rough scale is not stated in the intake.
 
 ## §4 Operational & Service Model
 
-The platform is operated as a hosted SaaS service for clinic customers. Access
-follows the product's own account model (customer accounts with individual
-logins). Third-party processing flows: an external payment provider processes
-payments (sub-processor for payment metadata only, per the intake's
+The platform is operated as a hosted SaaS service for business customers.
+Access follows the product's own account model (customer accounts with
+individual logins). Third-party processing flows: an external payment provider
+processes payments (sub-processor for payment metadata only, per the intake's
 interpretation). Third-party software dependencies are not yet tracked in a
 formal SBOM; supplier security evaluations are conducted ad-hoc with reliance
 on standard supplier contracts/DPAs; vulnerability remediation is a manual
@@ -48,7 +48,7 @@ require regular and systematic large-scale monitoring).
 
 - GDPR — commercial B2B SaaS processing EU personal data (names, emails,
   passwords, task notes); TinyTask acts as controller for customer accounts
-  and processor for clinic task data.
+  and processor for customer task data.
 - CRA — TinyTask develops and places products with digital elements (SaaS +
   web/mobile interface) on the EU market as manufacturer, default product
   class.

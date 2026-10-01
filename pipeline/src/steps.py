@@ -19,6 +19,9 @@ from llm import LLMError, OllamaClient
 from trace import Trace, now_iso
 
 NUM_CTX = {"p1": 16384, "p2": 16384, "p3": 32768, "p4": 32768, "p5": 32768}
+# output budget per step (P5 renders the whole document: 22 goal tables
+# exceeded the 8192 default — done_reason=length truncation, job 1963648)
+NUM_PREDICT = {"p1": 4096, "p2": 2048, "p3": 8192, "p4": 8192, "p5": 16384}
 
 PATTERNS = {"achieve", "cease", "maintain", "avoid", "optimize"}
 # template §4 renders long-form property names; normalize to the enum codes
@@ -274,13 +277,14 @@ class StepRunner:
                             extra_instruction=p4_extra_instruction(subdomain) if subdomain
                             else EXTRA_INSTRUCTION[step])
         num_ctx = NUM_CTX[step.split(":")[0]]
+        num_predict = NUM_PREDICT[step.split(":")[0]]
         # context budget guard (2026-10-01 job 1963648: D-09.4 pack ate the whole
         # 32K ctx, done_reason=length, empty content). est tokens x1.15 safety
-        # (chars/4 underestimates the real tokenizer) + 8K output budget.
+        # (chars/4 underestimates the real tokenizer) + real output budget.
         est_tokens = (len(call["system"]) + len(call["user"])) // 4
-        if est_tokens * 1.15 + 8000 > num_ctx:
+        if est_tokens * 1.15 + num_predict + 2000 > num_ctx:
             num_ctx = 65536
-        if est_tokens * 1.15 + 8000 > num_ctx:
+        if est_tokens * 1.15 + num_predict + 2000 > num_ctx:
             raise LLMError(f"step {tag}: prompt ~{est_tokens} tokens does not fit "
                            f"even a 64K context — trim the pack")
 
@@ -319,7 +323,8 @@ class StepRunner:
         answer, raw = None, None
         for attempt in (1, 2):
             try:
-                raw = client.chat(self.model, call["system"], call["user"], num_ctx)
+                raw = client.chat(self.model, call["system"], call["user"], num_ctx,
+                                  num_predict=num_predict)
                 answer = raw.get("message", {}).get("content", "")
                 if not answer.strip():
                     raise LLMError("empty response content")
@@ -353,7 +358,8 @@ class StepRunner:
                           f"contract validation: {e}. Return the corrected answer only, "
                           f"exactly in the requested fenced format.")
             try:
-                raw2 = client.chat(self.model, call["system"], retry_user, num_ctx)
+                raw2 = client.chat(self.model, call["system"], retry_user, num_ctx,
+                                   num_predict=num_predict)
                 answer2 = raw2.get("message", {}).get("content", "")
                 retry_out = out_dir / f"{seq:03d}_{tag}_output_attempt2.md"
                 retry_out.write_text(answer2, encoding="utf-8")

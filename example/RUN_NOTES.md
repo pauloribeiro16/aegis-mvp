@@ -5,7 +5,7 @@
 | Run date | 2026-09-17 |
 | Executor | ZCode agent (LLM-assisted procedure, SPEC v0.1.0) |
 | Input | `example/company_input.md` (fictional company) |
-| Output | `example/phase1_output.md` |
+| Output | `example/doc02_adjusted_goals.md` |
 | Corpus | Methodology_compact `PREPROCESSING_by_domain` (build E3, frozen) |
 
 Steps executed: P1 fact sheet → P2 regulation scope check (5/5 with verdicts)

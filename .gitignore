@@ -14,3 +14,23 @@ scratch/
 # Left untracked, a `git add -A` would commit them.
 _tmp_*.py
 _tmp_*.json
+
+# Machine-local sync stamp (pipeline/deucalion/sync_up.sh writes it; it
+# records which workstation revision reached the cluster, not repo content).
+.cluster_sync_rev
+
+# Tool scratch directories.
+.dsh/
+
+# Generated experiment working material, all regenerable from the tracked
+# scripts: `scripts/build_scoring_pack.py` rebuilds pack/ + L2_SCORES.csv, and
+# _key.json is the BLINDING KEY — committing it would break the EXP-03
+# scoring before it is entered.
+scoring/
+
+# Exported deliverables (output/<company>/<run_id>/) are per-run generated
+# markdown; the authoritative copy of every run lives in $AEGIS_RUNS_DIR and,
+# since EXP-02, the pipeline is bit-reproducible, so these are rebuildable.
+# Tracked deliberately NOT: see §0. Add back with `git add -f` if the
+# deliverables belong in the repo for a thesis snapshot.
+output/

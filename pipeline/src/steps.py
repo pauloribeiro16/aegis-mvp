@@ -454,7 +454,23 @@ EXTRA_INSTRUCTION = {
     "p1": "Wrap your answer: return ONLY one ```yaml fenced block with the fact sheet.",
     "p2": ("Wrap your answer: return ONLY one ```markdown fenced block containing the "
            "5-row §2 verdict table (header + 5 rows, nothing else)."),
-    "p3": ("Wrap your answer: return ONLY one ```markdown fenced block containing "),    # PROMPT-ENGINEERED VARIANT (2026-10-04, after glm-4.7-flash and
+    # The default p3 wrap instruction was left as a dangling stub
+    # ("...fenced block containing ") by an earlier prompt-engineering pass that
+    # meant to replace it wholesale. The truncation is silent — the composed
+    # prompt is still well-formed, just missing its payload — and it is
+    # catastrophic: told to return one fenced block "containing" nothing, four of
+    # five models echoed the context pack back instead of answering
+    # (run_m02_glm47_r01_1979986 and its siblings, all aborting with "candidates
+    # neither selected nor excluded"). A composed prompt is asserted to end with
+    # its own instruction; see _assert_wrap_instruction.
+    "p3": ("Wrap your answer: return ONLY one ```markdown fenced block containing "
+           "(a) the §3 selection table `| Sub-domain | Name | Trigger rationale |` "
+           "with no preamble line, and "
+           "(b) a line `Excluded candidates:` followed by one line per excluded "
+           "candidate in the form `<D-XX.Y> — <why-not>`, or the word `none`. "
+           "The table and the exclusion list partition the candidate set: every "
+           "candidate appears in exactly one of them. Nothing else."),
+    # PROMPT-ENGINEERED VARIANT (2026-10-04, after glm-4.7-flash and
     # nemotron-3.5 both failed 5/5 screening runs here). The original asked for
     # a table PLUS the complement of it in a second section — a shape that
     # invites both observed failures: listing an id in both parts (glm) and
@@ -462,6 +478,9 @@ EXTRA_INSTRUCTION = {
     # prompt (nemotron). This variant fixes the ORDER OF OPERATIONS: decide the
     # exclusion first, then build the table from what is left, which makes an
     # overlap structurally impossible, and it forbids invented identifiers.
+    # It is the EXP-04 arm (--p3-instruction clarified), not the default: with
+    # the default itself truncated, an ablation run would have compared a broken
+    # control against a working treatment and concluded the variant fixed it.
     "p3_clarified": ("WORK IN THIS ORDER — it is not a suggestion, it is the whole task. "
            "STEP 1: look at the candidate set below and pick AT MOST ONE "
            "sub-domain to exclude, copying its identifier character-for-character "
@@ -500,6 +519,30 @@ EXTRA_INSTRUCTION = {
 # a prompt change is a measured arm rather than a silent redefinition of the
 # baseline.
 P3_INSTRUCTION_VARIANTS = {"clarified": EXTRA_INSTRUCTION["p3_clarified"]}
+
+
+def _assert_wrap_instruction(step: str, extra: str) -> None:
+    """A wrap instruction that states no payload is worse than none at all.
+
+    Every step's instruction ends by naming what the fenced block must contain.
+    When that clause was lost — as it was for p3, leaving the literal
+    "...fenced block containing " — the composed prompt is still syntactically
+    fine, passes every linter, and reaches the model as an instruction to return
+    a block containing nothing. Four of five models in run_m02_* answered by
+    echoing the context pack; the gate reported "candidates neither selected nor
+    excluded", a symptom four causal steps from the actual defect.
+
+    A dangling preposition is the signature, so it is what is checked: a wrap
+    instruction must not end on a word that promises something after it.
+    """
+    if not extra.startswith("Wrap your answer"):
+        return
+    stripped = extra.rstrip().rstrip("`").rstrip()
+    if stripped.split()[-1] in {"containing", "with", "of", "and", "the", "a", "to", "is"}:
+        raise ValueError(
+            f"step {step}: the wrap instruction ends on '{stripped.split()[-1]!r}' — it "
+            f"promises a payload and then stops. Text was almost certainly lost from "
+            f"EXTRA_INSTRUCTION[{step!r}]. Full instruction: {extra!r}")
 
 
 def p4_extra_instruction(sd_id: str, subso_ids: list[str] | None = None) -> str:
@@ -868,6 +911,7 @@ class StepRunner:
                 table = P3_INSTRUCTION_VARIANTS if step == "p3" else None
                 if table and override in table:
                     extra = table[override]
+        _assert_wrap_instruction(step, extra)
         call = compose_call(self.repo, self.case, self.run_dir, step, subdomain,
                             extra_instruction=extra)
         num_ctx = NUM_CTX[step.split(":")[0]]

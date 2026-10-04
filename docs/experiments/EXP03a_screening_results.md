@@ -1,9 +1,9 @@
 ---
 document_id: AEGIS-MODELS-M01-RESULTS
 title: 'M01 screening results — four Deucalion models on the AEGIS pipeline'
-version: 1.1.0
+version: 1.2.0
 created: 2026-10-03
-status: PARTIAL — screening closed, p3 root cause found, m02 re-test in flight
+status: PARTIAL — screening closed, p3 root cause found, m03 re-test in flight
 sources: 'docs/research/sources.yaml'
 upstream: '[00_RESULTS.md](00_RESULTS.md)'
 ---
@@ -146,14 +146,48 @@ answers indistinguishable. Since m01 recorded only `git rev` — which a prompt
 edit does not change — that split was previously unprovable from the run
 directory. Every run now carries `prompt_digests` in `config.json` (sha256,
 truncated, of all seven fichas plus the golden exemplar), so the instrument is
-machine-checkable from the artefacts. The `m02` launches record the v1.2.0
-digest; the `m01` runs predate the field.
+machine-checkable from the artefacts. The `m03` launches record the v1.2.0
+digest; the `m01` and `m02` runs predate or invalidate the field (§7).
 
 **Read the cut as it now stands:** 0/5 for each model under v1.1.0, with a
 named, fixed, and now testable cause. Whether that cause was the whole story is
-what the m02 tier measures.
+what the m03 tier measures.
 
-## 7. A reproducibility gap this experiment exposed
+## 7. m02 is void: the p3 wrap instruction had been truncated
+
+The m02 tier was launched and then **discarded as evidence**, and the reason is
+worth more than the tier would have been.
+
+`EXTRA_INSTRUCTION["p3"]` in `pipeline/src/steps.py` had been left as the
+literal string `"Wrap your answer: return ONLY one ```markdown fenced block
+containing "` — the clause naming what the block must contain was gone. An
+earlier prompt-engineering pass had meant to replace the default wholesale with
+the `clarified` variant and had gutted the string instead. The composed prompt
+is still syntactically valid and passes every linter; it simply asks the model
+to return a fenced block containing nothing.
+
+The effect was four of five models echoing the 25 kB context pack back verbatim
+instead of answering, and the gate reporting `candidates neither selected nor
+excluded (silent drop)` — a symptom four causal steps from the real defect. Only
+gemma4 still answered. Had the ablation been run as designed — the `clarified`
+variant against the default — it would have compared a broken control against a
+working treatment and concluded the variant fixed everything.
+
+Two things close it:
+
+- The default `p3` instruction is restored in full and states the partition
+  explicitly.
+- `_assert_wrap_instruction()` runs on every composed call and rejects a wrap
+  instruction ending on a dangling preposition (`containing`, `with`, `of`, …).
+  All six shipped instructions and both `p4` variants pass it; the exact stub
+  that broke m02 is the case that fails it.
+
+**The valid post-revision tier is `m03`**, with the restored instruction and the
+v1.2.0 ficha. m02 stays on disk as the record of the failure — 10 runs, 8 of
+them aborting at p3, is exactly the kind of evidence that gets tidied away and
+then re-spent.
+
+## 8. A reproducibility gap this experiment exposed
 
 Before the digest field existed, a run recorded its model, its sampler, and its
 `git rev` — and nothing about the prompt *text*. Three findings in this
@@ -161,3 +195,9 @@ experiment would have been silently incomparable across a prompt edit: the p3
 revision above, the EXP-04 ablation, and the per-step instruction variants.
 `prompt_digests` closes that; runs predating it are marked by the absent field
 rather than by a guess.
+
+The m02 void is the argument for it in miniature. The truncation was invisible
+in three places at once: `git rev` did not move (no Python on the composition
+path changed), the ficha diff was 133 characters of pure *addition* and read as a
+tightening, and every linter passed. Only the p3 digest differing from m01 said
+the instrument had moved — and the composed-input diff, once taken, located it.

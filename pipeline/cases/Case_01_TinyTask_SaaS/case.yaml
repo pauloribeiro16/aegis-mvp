@@ -5,6 +5,10 @@ company_id: TinyTask
 company_name: TinyTask Lda.
 input: company_input.md            # relative to this directory (SPEC §4 contract, 5 sections)
 output_language: en
+# Track B per-sub-domain overrides (controls.py): 'D-XX.Y: inheritability=INHERITABLE, priority=SHOULD'.
+# Defaults: BUILD_REQUIRED + MUST for every selected sub-domain. Example:
+#   track_b_overrides: [D-02.4: priority=SHOULD]
+track_b_overrides: []
 source_intake: cases/Case_01_TinyTask_SaaS/01_PHASE1_CONTEXT/Doc01_INTAKE_FORM.md
 notes: >
   company_input.md was derived from the case's layered intake Doc01_INTAKE_FORM.md

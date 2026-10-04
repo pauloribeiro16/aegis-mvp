@@ -1,0 +1,18 @@
+# Case binding — pipeline layer only.
+# Points the generic Phase 1 pipeline at one company; contains no prompt text.
+case_id: Case_02_SecureBorder_Solutions
+company_id: SecureBorder
+company_name: SecureBorder Solutions B.V.
+input: company_input.md            # relative to this directory (SPEC §4 contract, 5 sections)
+output_language: en
+track_b_overrides: []
+source_intake: cases/Case_02_SecureBorder_Solutions/01_PHASE1_CONTEXT/Doc01_INTAKE_FORM.md
+notes: >
+  company_input.md was derived from the case's layered intake Doc01_INTAKE_FORM.md
+  (Layer 0 profile, Layer 1 decision tree, Layer 2 conditional context, Layer 3
+  interactions) to satisfy the SPEC §4 five-section input contract. Every fact
+  traces to Doc01 — size, sector, data categories, hosting, organisation maturity
+  and the five regulation verdicts were projected, not added. Case 02 is the
+  difficulty step up from Case_01: 4 applicable regulations, MEDIUM scale
+  (450 employees), and a compliance maturity (certified ISMS, 25+ security staff,
+  CISO and DPO) far above the micro-company baseline.

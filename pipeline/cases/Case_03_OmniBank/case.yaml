@@ -1,0 +1,20 @@
+# Case binding — pipeline layer only.
+# Points the generic Phase 1 pipeline at one company; contains no prompt text.
+case_id: Case_03_OmniBank
+company_id: OmniBank
+company_name: OmniBank Financial Systems S.A.
+input: company_input.md            # relative to this directory (SPEC §4 contract, 5 sections)
+output_language: en
+track_b_overrides: []
+source_intake: cases/Case_03_OmniBank/01_PHASE1_CONTEXT/Doc01_INTAKE_FORM.md
+notes: >
+  company_input.md was projected from the case intake Doc01_INTAKE_FORM.md, which
+  was already close to the SPEC §4 five-section shape, to the exact section
+  contract. Every fact traces to Doc01 — the 5,000-employee LARGE-scale bank, the
+  four product lines including the in-house OmniScore credit-scoring AI, the
+  HSM key custody, the on-premise core banking estate, and all FIVE regulation
+  assumptions (this is the only case where DORA applies) were projected, not
+  added. Case 03 is the hardest case in the library: 5,000 employees, LARGE
+  scale, 5 applicable regulations, and four distinct incident-notification
+  regimes. Its scale resolves to the LARGE band of TRACK_B_MATRIX (see
+  controls.py for the band/threshold note).

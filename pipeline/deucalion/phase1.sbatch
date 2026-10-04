@@ -21,22 +21,25 @@
 
 set -uo pipefail
 
-: "${STAGE:?STAGE not exported (p1|p2|p3|p4|p5|p4p5)}"
+: "${STAGE:?STAGE not exported (p1|p2|p3|p3f|p4|p4t|p5|p4p5)}"
 : "${RUN_TAG:?RUN_TAG not exported (short tag, e.g. case01)}"
 : "${CASE:?CASE not exported (pipeline/cases/<case>)}"
 : "${MODEL:?MODEL not exported (e.g. qwen3.8:27b)}"
 
 # Continuing an existing run: pass MVP_RUN_ID; a fresh p1 job derives its own.
+# Os runs vivem FORA do checkout do repo (../aegis-runs), na mesma NFS — um
+# repositório não é arquivo de resultados.
+RUNS_ROOT="${MVP_RUNS_ROOT:-$SLURM_SUBMIT_DIR/../aegis-runs}"
 RUN_ID="${MVP_RUN_ID:-run_${RUN_TAG}_${SLURM_JOB_ID}}"
-mkdir -p "runs/${RUN_ID}/logs"
-RUN_LOG="runs/${RUN_ID}/logs/run_${STAGE}_${SLURM_JOB_ID}.log"
+mkdir -p "${RUNS_ROOT}/${RUN_ID}/logs"
+RUN_LOG="${RUNS_ROOT}/${RUN_ID}/logs/run_${STAGE}_${SLURM_JOB_ID}.log"
 touch "$RUN_LOG"
 exec 3>&1  # forensics channel: original slurm stdout, survives tee teardown
 exec > >(tee -a "$RUN_LOG") 2>&1
 trap 'rc=$?; line="END=$(date -Is) EXIT_CODE=$rc"; echo "$line" >&3; echo "$line" >> "$RUN_LOG"' EXIT
 
 echo "=== AEGIS-MVP Phase 1 pipeline | stage=${STAGE} model=${MODEL} job=${SLURM_JOB_ID} node=$(hostname -s) start=$(date -Is) ==="
-[ -f "runs/slurm_${SLURM_JOB_ID}.out" ] && mv "runs/slurm_${SLURM_JOB_ID}.out" "runs/${RUN_ID}/logs/" || true
+[ -f "runs/slurm_${SLURM_JOB_ID}.out" ] && mv "runs/slurm_${SLURM_JOB_ID}.out" "${RUNS_ROOT}/${RUN_ID}/logs/" || true
 
 # --- environment ------------------------------------------------------------
 # Deucalion profile scripts touch unset vars: NEVER run module/profile under -u
@@ -73,7 +76,7 @@ echo "model manifest present: ${MODEL_MANIFEST}"
 nvidia-smi --query-gpu=name,memory.total,memory.free --format=csv || true
 
 # --- serve Ollama on the compute node ---------------------------------------
-ollama serve > "runs/${RUN_ID}/logs/ollama_serve_${SLURM_JOB_ID}.log" 2>&1 &
+ollama serve > "${RUNS_ROOT}/${RUN_ID}/logs/ollama_serve_${SLURM_JOB_ID}.log" 2>&1 &
 OLLAMA_PID=$!
 UP=0
 for _ in $(seq 1 30); do
@@ -88,14 +91,31 @@ fi
 echo "ollama up: ${OLLAMA_BASE}"
 
 # --- initialise the run directory once, then run the stage ------------------
-if [ ! -f "runs/${RUN_ID}/manifest.json" ]; then
+# Sampler / experiment flags arrive as one env var per knob (see submit.sh).
+# They are applied ONLY when creating the run: every later stage reads the
+# config back from the run directory, so a resumed or re-queued stage cannot be
+# silently re-sampled with different settings than the ones on record.
+CFG_FLAGS=""
+[ -n "${MVP_TEMPERATURE:-}" ] && CFG_FLAGS="${CFG_FLAGS} --temperature=${MVP_TEMPERATURE}"
+[ -n "${MVP_SEED:-}" ]        && CFG_FLAGS="${CFG_FLAGS} --seed=${MVP_SEED}"   # "none" opts out
+[ -n "${MVP_TOP_P:-}" ]       && CFG_FLAGS="${CFG_FLAGS} --top-p=${MVP_TOP_P}"
+[ -n "${MVP_TOP_K:-}" ]       && CFG_FLAGS="${CFG_FLAGS} --top-k=${MVP_TOP_K}"
+[ -n "${MVP_ARM:-}" ]         && CFG_FLAGS="${CFG_FLAGS} --arm=${MVP_ARM}"
+[ -n "${MVP_REPEAT:-}" ]      && CFG_FLAGS="${CFG_FLAGS} --repeat=${MVP_REPEAT}"
+[ -n "${MVP_P4_ADJUSTMENT:-}" ] && CFG_FLAGS="${CFG_FLAGS} --p4-adjustment=${MVP_P4_ADJUSTMENT}"
+[ -n "${MVP_P3_INSTRUCTION:-}" ] && CFG_FLAGS="${CFG_FLAGS} --p3-instruction=${MVP_P3_INSTRUCTION}"
+[ "${MVP_PREAPPROVE_GATES:-}" = "1" ] && CFG_FLAGS="${CFG_FLAGS} --preapprove-gates"
+
+if [ ! -f "${RUNS_ROOT}/${RUN_ID}/manifest.json" ]; then
+  # shellcheck disable=SC2086  (word splitting IS the flag transport here)
   python3 pipeline/src/run_pipeline.py new-run --repo . --case "$CASE" \
-    --run-dir "runs/${RUN_ID}" --model "$MODEL" --base "$OLLAMA_BASE"
+    --run-dir "${RUNS_ROOT}/${RUN_ID}" --model "$MODEL" --base "$OLLAMA_BASE" \
+    ${CFG_FLAGS:+$CFG_FLAGS}
 fi
 python3 pipeline/src/run_pipeline.py run --stage "$STAGE" --repo . \
-  --run-dir "runs/${RUN_ID}" --base "$OLLAMA_BASE"
+  --run-dir "${RUNS_ROOT}/${RUN_ID}" --base "$OLLAMA_BASE"
 RC=$?
 
 kill "$OLLAMA_PID" 2>/dev/null || true
-echo "=== stage ${STAGE} finished rc=${RC} at $(date -Is) | run dir: runs/${RUN_ID} ==="
+echo "=== stage ${STAGE} finished rc=${RC} at $(date -Is) | run dir: ${RUNS_ROOT}/${RUN_ID} ==="
 exit "$RC"

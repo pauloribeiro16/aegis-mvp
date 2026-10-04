@@ -26,6 +26,7 @@ FICHA_FILES = {
     "p3": "PROM-P1-03_SELECT_SUBDOMAINS.md",
     "p3f": "PROM-P1-06_BUILD_FRAMING.md",
     "p4": "PROM-P1-04_DERIVE_ADJUSTED_GOALS.md",
+    "p4t": "PROM-P1-07_RESOLVE_TENSIONS.md",
     "p5": "PROM-P1-05_RENDER_VALIDATE.md",
 }
 
@@ -141,7 +142,7 @@ def parse_ficha(path: Path) -> dict[str, Any]:
 
     def table_field(section: str, field: str) -> str:
         for line in sections.get(section, "").splitlines():
-            m = re.match(rf"^\|\s*{re.escape(field)}\s*\|\s*(.*?)\s*\|?\s*$", line)
+            m = re.match(rf"^\|\s*{re.escape(field)}\s*\|\s*(.*?)\s*\|\s*$", line)
             if m:
                 return m.group(1).strip()
         return ""
@@ -173,12 +174,26 @@ def parse_ficha(path: Path) -> dict[str, Any]:
         "role": table_field("Metadata", "Role"),
         "mission": table_field("Metadata", "Mission"),
         "failure_mode": table_field("Metadata", "Failure mode"),
-        "human_gate": table_field("Metadata", "Human gate"),
+        "human_gate": (sections.get("Human gate", "").strip()
+                       or table_field("Metadata", "Human gate")),
+        "self_checks": sections.get("Self-checks (L2)", "").strip(),
         "prompt_body": prompt_body,
         "output_schema": schema,
         "pack_declared": pack_files,
         "source_path": str(path),
     }
+
+
+def extract_section_text(path: Path, start: str, end: str) -> str:
+    """Text of a `^## ` section of a file, from `start` up to the next
+    section whose heading starts with `end`."""
+    text = path.read_text(encoding="utf-8")
+    m = re.search(rf"(?m)^{re.escape(start)}.*?$", text)
+    if not m:
+        return ""
+    tail = text[m.end():]
+    stop = re.search(rf"(?m)^{re.escape(end)}", tail)
+    return (tail[: stop.start()] if stop else tail).strip()
 
 
 def extract_markdown_section(text: str, heading_prefix: str, stop_prefixes: list[str]) -> str:
@@ -234,6 +249,7 @@ def load_case(repo: Path, case_id: str) -> dict[str, Any]:
         "company_id": binding["company_id"],
         "company_name": binding["company_name"],
         "output_language": binding.get("output_language", "en"),
+        "track_b_overrides": binding.get("track_b_overrides", []),
         "input_path": input_path,
         "input_text": input_path.read_text(encoding="utf-8"),
     }
@@ -280,6 +296,22 @@ def candidate_subdomains(repo: Path, confirmed: list[str]) -> list[dict[str, str
     return out
 
 
+def sub_so_objective(repo: Path, sd_id: str, reg: str) -> str:
+    """The `**Objective.**` paragraph of the Sub-SO card for <REG> in
+    regs/<REG>.md — the regulation-specific baseline objective, verbatim."""
+    text = (domain_dir(repo, sd_id) / "regs" / f"{reg}.md").read_text(encoding="utf-8")
+    # the Sub-SO yaml block anchors the card; the Objective paragraph follows it
+    m_id = re.search(rf"id:\s*SG-{re.escape(sd_id)}\.{re.escape(reg)}\b", text)
+    if not m_id:
+        raise ValueError(f"{sd_id}/regs/{reg}.md: Sub-SO card SG-{sd_id}.{reg} not found")
+    tail = text[m_id.end():]
+    m = re.search(r"\*\*Objective\.\*\*\s*(.*?)(?=\n\n|\n\*\*|\Z)", tail, re.S)
+    if not m:
+        raise ValueError(f"{sd_id}/regs/{reg}.md: Sub-SO Objective paragraph not found "
+                         f"after the SG-{sd_id}.{reg} card")
+    return re.sub(r"\s+", " ", m.group(1)).strip()
+
+
 def objective_paragraph(sd_dir: Path) -> str:
     """The `**Objective.**` paragraph of objective.md (subject matter for P3)."""
     text = (sd_dir / "objective.md").read_text(encoding="utf-8")
@@ -318,17 +350,17 @@ def wrap_file(relpath: str, content: str) -> str:
     return f"\n\n----- BEGIN FILE: {relpath} -----\n{content}\n----- END FILE: {relpath} -----\n"
 
 
-def interactions_trim(path: Path, confirmed: list[str]) -> tuple[str, str]:
-    """Keep the operative CRDA aggregation sections of _interactions.md
-    (aggregation logic, tensions, scope overlap, recipients, relationships,
-    considerations); drop merged Parts 2-3 summaries duplicated in the regs
-    modules. Flag-not-drop via the banner."""
+def interactions_trim(path: Path, confirmed: list[str], keep: str = "operative") -> tuple[str, str]:
+    """Keep selected sections of _interactions.md. `keep="operative"` keeps the
+    CRDA aggregation sections; `keep="tensions"` keeps only the Emergent
+    tensions sections (pack p4t). Flag-not-drop via the banner."""
     text = path.read_text(encoding="utf-8")
     title = text.split("\n", 1)[0]
     sections = re.split(r"(?m)^## ", text)[1:]
     keep_re = re.compile(
         r"Aggregation logic|Emergent tensions|Scope-overlap|HSO considerations|"
-        r"Cross-recipient map|Participants \(CRDA")
+        r"Cross-recipient map|Participants \(CRDA") if keep == "operative" \
+        else re.compile(r"Emergent tensions")
     kept, dropped_titles = [], []
     for sec in sections:
         head = sec.split("\n", 1)[0]
@@ -336,12 +368,28 @@ def interactions_trim(path: Path, confirmed: list[str]) -> tuple[str, str]:
             kept.append("## " + sec.strip())
         else:
             dropped_titles.append(head[:60])
-    banner = (f"\n> [pack trim] Full file: {path.name}. Kept {len(kept)} operative "
-              f"section(s) for confirmed regulations ({', '.join(confirmed)}); omitted: "
-              f"{'; '.join(dropped_titles) or 'none'} — merged Parts 2-3 content and the "
-              f"per-pair 'Validated relationships' detail live in the regs modules and "
-              f"cross/<R1>-<R2>.md pair files.\n")
+    banner = (f"\n> [pack trim] Full file: {path.name}. Kept {len(kept)} section(s) "
+              f"for confirmed regulations ({', '.join(confirmed)}); omitted: "
+              f"{'; '.join(dropped_titles) or 'none'}.\n")
     return title + "\n\n" + "\n\n".join(kept), banner
+
+
+def golden_text(repo: Path) -> str:
+    """The quality reference injected in the P4 pack.
+
+    PINNED to the committed example/ document. It previously preferred
+    `output/TinyTask/doc02_adjusted_goals.md` whenever that file existed, which
+    made the in-prompt exemplar a function of which runs had already landed on
+    this machine — a silent confound for any experiment that varies the prompt
+    (EXP-04): run N's prompt was not a constant of the design. The freeze is a
+    precondition for the prompt ablation and protects seeded runs from a
+    mid-experiment prompt change.
+
+    NOT synced to the cluster while the EXP-03 agent runs are in flight: the
+    agent arm composes its packs through this function, and a mid-battery
+    change would hand different runs different prompts.
+    """
+    return (repo / "example" / "doc02_adjusted_goals.md").read_text(encoding="utf-8")
 
 
 def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tuple[list[tuple[str, str]], str]:
@@ -356,16 +404,17 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
     elif step == "p3f":
         files.append(("steps/fact_sheet.yaml", (run_dir / "steps" / "fact_sheet.yaml").read_text(encoding="utf-8")))
         files.append(("steps/verdicts.md", (run_dir / "steps" / "verdicts.md").read_text(encoding="utf-8")))
-        t = (repo / "templates" / "phase1_output.md").read_text(encoding="utf-8")
-        files.append(("templates/phase1_output.md §4 framing contract",
-                      extract_markdown_section(t, "## §4", ["### D-"])))
+        t = (repo / "templates" / "doc02_adjusted_goals.md").read_text(encoding="utf-8")
+        files.append(("templates/doc02_adjusted_goals.md §2 framing contract",
+                      extract_markdown_section(t, "## §2", ["## §3"])))
 
     elif step == "p2":
         files.append(("steps/fact_sheet.yaml", (run_dir / "steps" / "fact_sheet.yaml").read_text(encoding="utf-8")))
         s5 = extract_markdown_section(case["input_text"], "## §5", ["## §6"])
         files.append((str(case["input_path"].relative_to(repo)) + " §5", s5))
-        t = (repo / "templates" / "phase1_output.md").read_text(encoding="utf-8")
-        files.append(("templates/phase1_output.md §2", extract_markdown_section(t, "## §2", ["## §3"])))
+        t = (repo / "templates" / "doc02_adjusted_goals.md").read_text(encoding="utf-8")
+        files.append(("templates/doc02_adjusted_goals.md §0 (deliverable contract)",
+                      extract_markdown_section(t, "## §0", ["## §1"])))
 
     elif step == "p3":
         confirmed = confirmed_regulations(run_dir)
@@ -404,7 +453,12 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
             if f.exists():
                 files.append((rel(f), f.read_text(encoding="utf-8")))
         if len([r for r in confirmed if (sd_dir / "regs" / f"{r}.md").exists()]) >= 2:
-            for name in [f"{a}-{b}.md" for i, a in enumerate(confirmed) for b in confirmed[i + 1:]]:
+            # pair files are named alphabetically in the corpus (CRA-GDPR.md),
+            # NOT in REGULATIONS order — the naive name never resolved, so the
+            # threshold/timeline comparison the `narrowed` decision needs was
+            # silently never attached
+            for name in ["-".join(sorted((a, b))) + ".md"
+                         for i, a in enumerate(confirmed) for b in confirmed[i + 1:]]:
                 f = sd_dir / "cross" / name
                 if f.exists():
                     files.append((rel(f), f.read_text(encoding="utf-8")))
@@ -413,11 +467,30 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
                 trimmed, note = interactions_trim(inter, confirmed)
                 files.append((rel(inter) + " (operative sections)", trimmed))
                 trim_records.append(note)
-        files.append((f"pack-p4/{sd_id}/anchor_slice.json",
-                      json.dumps(slice_srs := anchor_slice(repo, sd_id, confirmed),
-                                 ensure_ascii=False, separators=(",", ":"))))
-        t = (repo / "templates" / "phase1_output.md").read_text(encoding="utf-8")
-        files.append(("templates/phase1_output.md §4", extract_markdown_section(t, "## §4", ["## §5"])))
+        # control anchors are DERIVED by code (controls.py) from the mapping
+        # store — the pack needs no anchor slice for the model
+        t = (repo / "templates" / "doc02_adjusted_goals.md").read_text(encoding="utf-8")
+        files.append(("templates/doc02_adjusted_goals.md §3 (goal table contract)",
+                      extract_markdown_section(t, "## §3", ["## §4"])))
+        # Worked examples of the transformation, baseline -> adjusted goal ->
+        # company implication. The quality reference is the produced TinyTask
+        # deliverable (38 sub-domains, 65 rows, L1 PASS). To stay non-circular
+        # the exemplar is always a DIFFERENT sub-domain from the one being
+        # written: the model must never see its own answer for the row it writes.
+        blocks = [b for b in re.split(r"(?m)^(?=### D-)", golden_text(repo))
+                  if b.lstrip().startswith("### D-") and "## §4" not in b and b.strip()]
+        others = [b for b in blocks if not b.lstrip().startswith(f"### {sd_id} ")]
+        exemplar = (others or blocks or [""])[0]
+        if exemplar.strip():
+            files.append(("output/TinyTask/doc02_adjusted_goals.md — worked example, a "
+                          "DIFFERENT sub-domain showing the transformation (the block for "
+                          f"{sd_id} is deliberately withheld; do not copy its text, match "
+                          "its calibration)",
+                          re.split(r"(?m)^## §4", exemplar)[0].strip() or exemplar.strip()))
+        files.append(("SPEC.md §7 derivation rules R2–R8 (anchor integrity, "
+                      "proportionality, no invention, regulation discipline)",
+                      extract_section_text(repo / "SPEC.md", "## 7. Derivation rules",
+                                            "## 8")))
         files.append(("steps/framing.md", (run_dir / "steps" / "framing.md").read_text(encoding="utf-8")))
         files.append(("steps/fact_sheet.yaml", (run_dir / "steps" / "fact_sheet.yaml").read_text(encoding="utf-8")))
         manifest_block = (
@@ -426,15 +499,25 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
         )
         files.insert(0, (f"pack-p4/{sd_id}/BUILD_MANIFEST.md", manifest_block))
 
-    elif step == "p5":
-        # intro call only (§1 echo, §4 framing, §6 handoff) — the document is
-        # assembled deterministically from the validated step artifacts, so the
-        # pack carries just the sources for the narrative blocks.
-        files.append(("templates/phase1_output.md", (repo / "templates" / "phase1_output.md").read_text(encoding="utf-8")))
-        files.append((str(case["input_path"].relative_to(repo)), case["input_text"]))
+    elif step == "p4t":
+        confirmed = confirmed_regulations(run_dir)
+        selection = load_selection(run_dir)
         files.append(("steps/fact_sheet.yaml", (run_dir / "steps" / "fact_sheet.yaml").read_text(encoding="utf-8")))
-        files.append(("steps/verdicts.md", (run_dir / "steps" / "verdicts.md").read_text(encoding="utf-8")))
-        files.append(("steps/selection.md", (run_dir / "steps" / "selection.md").read_text(encoding="utf-8")))
+        blocks: list[str] = []
+        for s in sorted(selection["selected"], key=lambda x: x["id"]):
+            inter = domain_dir(repo, s["id"]) / "cross" / "_interactions.md"
+            if not inter.exists():
+                continue
+            trimmed, note = interactions_trim(inter, confirmed, keep="tensions")
+            blocks.append(f"### {s['id']} — {s['name']}\n\n{trimmed}\n{note}")
+        header = (
+            f"Tension corpus (deterministic extraction): Emergent-tensions sections of "
+            f"cross/_interactions.md for the {len(selection['selected'])} selected "
+            f"sub-domains, under confirmed regulations {', '.join(confirmed)}. Resolve "
+            f"every tension that activates on this company; if none activates, answer "
+            f"`None.`"
+        )
+        files.append(("pack-p4t/tensions.md", header + "\n\n" + ("\n\n".join(blocks) or "(no corpus tension sections)")))
     else:
         raise ValueError(f"unknown step: {step}")
 
@@ -451,13 +534,26 @@ def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
     files, pack_text = build_pack(pack_step, repo, case, run_dir)
 
     title = f"{ficha['id']} — {subdomain}" if subdomain else ficha["id"]
+    extraction = not step.startswith(("p3", "p3f", "p4", "p4t"))
     system = (
         f"You are {ficha['role']}.\n{ficha['mission']}\n\n"
         "General discipline (binding):\n"
-        "- Extract only what the attached sources state; never invent facts, IDs or anchors.\n"
-        "- Use canonical identifiers exactly as they appear in the sources.\n"
-        "- Flag what cannot be decided instead of dropping or guessing it.\n"
-        "- No tools, vendors, or implementation technologies in any statement.\n"
+        + ("- Extract only what the attached sources state; never invent facts, IDs or anchors.\n"
+           "- Use canonical identifiers exactly as they appear in the sources.\n"
+           "- Flag what cannot be decided instead of dropping or guessing it.\n"
+           if extraction else
+           # the generative steps ADAPT the baseline into a company-proportional
+           # goal: fidelity to the sources does not mean copying them, and the
+           # "never invent facts" rule is scoped to the COMPANY's facts (R6),
+           # never to the obligation content
+           "- Keep the Sub-SO's obligation content intact: restate its full duty, do "
+           "not drop a leg, and calibrate it to the company — this is adaptation, not "
+           "extraction, so the goal text will not match the sources word for word.\n"
+           "- Never invent a fact ABOUT THE COMPANY: every company statement traces to "
+           "the fact sheet or the framing, or it is a fabrication (R6).\n"
+           "- Use canonical identifiers exactly as they appear in the sources.\n"
+           "- Flag what cannot be decided instead of dropping or guessing it.\n")
+        + "- No tools, vendors, or implementation technologies in any statement.\n"
         f"- Produce ONLY the requested output artifact, exactly in the Output schema; no extra commentary.\n"
         f"- Output language: {case['output_language']}.\n"
     )
@@ -466,6 +562,15 @@ def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
         f"{ficha['prompt_body']}\n\n"
         f"# Output schema\n\n```\n{ficha['output_schema']}\n```\n"
     )
+    # the self-checks and the acceptance bar the reviewer applies are the most
+    # decision-relevant text in the ficha — they must reach the model, not stay
+    # in the engineering document (they were parsed and silently dropped before)
+    if ficha.get("self_checks") or ficha.get("human_gate"):
+        user += "\n# Self-checks (apply before answering) and acceptance bar\n"
+        if ficha.get("self_checks"):
+            user += "\n" + ficha["self_checks"] + "\n"
+        if ficha.get("human_gate"):
+            user += (f"\nThe reviewer applies this bar: {ficha['human_gate']}\n")
     if extra_instruction:
         user += f"\n{extra_instruction}\n"
     user += "\n# Attached context (verbatim files)\n" + pack_text

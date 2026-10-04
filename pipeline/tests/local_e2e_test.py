@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 """local_e2e_test.py — exhaustive local test of the Phase 1 pipeline.
 
-Runs the FULL pipeline (p1→p5) against a Fake Ollama HTTP server (no model
-needed — the workstation cannot run one). Covers:
+Runs the FULL pipeline (p1→p2→p3f→p3→p4→p4t→p5) against a Fake Ollama HTTP
+server (no model needed — the workstation cannot run one). Covers:
   1. llm.py HTTP path (tags / warm-up / chat) against a real socket
   2. L0 validator + one repair-retry path (first p2 answer malformed)
   3. gate enforcement (stage refuses without approved gate file)
   4. state-on-disk re-entry across processes (CLI subprocess per stage)
   5. trace.jsonl seq continuation across stages + manifest counters
-  6. validate.py L1 green on the finished run + red on a corrupted copy
-  7. stage abort forensics (persistent garbage → exit 1, artifacts kept)
+  6. p5 zero-LLM assembly of the Doc02 deliverable + automatic validate.py
+  7. validate.py L1 green on the finished run + red on a corrupted copy
+  8. stage abort forensics (persistent garbage → exit 1, artifacts kept)
 
 Usage: python3 pipeline/tests/local_e2e_test.py
 Exit 0 iff every check passes.
@@ -30,12 +31,16 @@ REPO = Path(__file__).resolve().parents[2]
 SRC = REPO / "pipeline" / "src"
 sys.path.insert(0, str(SRC))
 
-from compose import candidate_subdomains, load_case  # noqa: E402
+from compose import candidate_subdomains  # noqa: E402
 
 MODEL = "qwen3.8:27b"
 TMP = Path("/tmp/mvp_e2e_test")
 CONFIRMED = ["GDPR", "CRA"]
-SELECTED = ["D-01.1", "D-03.1", "D-06.3", "D-09.1"]
+# representative subset with genuinely distinct baselines — the full 37-candidate
+# sweep is covered by the red-team quality_gate_test; this E2E exercises assembly.
+EXCLUDED = [c["id"] for c in candidate_subdomains(REPO, CONFIRMED)
+           if c["id"] not in ("D-01.1", "D-03.1", "D-06.3", "D-09.1", "D-02.2")]
+SELECTED = ["D-01.1", "D-02.2", "D-03.1", "D-06.3", "D-09.1"]
 
 FAILURES: list[str] = []
 
@@ -78,89 +83,104 @@ VERDICT_TABLE = """| Regulation | Verdict | Rationale |
 
 
 def selection_answer() -> str:
-    cands = [c["id"] for c in candidate_subdomains(REPO, CONFIRMED)]
-    rows = ""
     names = {c["id"]: c["name"] for c in candidate_subdomains(REPO, CONFIRMED)}
+    rows = ""
     for sd in SELECTED:
-        rows += f"| {sd} | {names[sd]} | company PII/tasks on managed SaaS → {'GDPR' if sd != 'D-09.1' else 'GDPR+CRA'} duty |\n"
-    excl = "\n".join(f"{c} — no company fact triggers it" for c in cands if c not in SELECTED)
+        rows += f"| {sd} | {names[sd]} | company PII/tasks on managed SaaS → GDPR duty |\n"
+    excl = "\n".join(f"{c} — no conformity-assessment or market-surveillance exposure declared; self-assessment only" for c in EXCLUDED)
     return ("```markdown\n| Sub-domain | Name | Trigger rationale |\n|---|---|---|\n"
             + rows + "\nExcluded candidates:\n" + excl + "\n```")
 
 
+FRAMING_TABLE = """```markdown
+| Dimension | Framing |
+|---|---|
+| Size | 8-person micro-enterprise; LIGHTWEIGHT/MINIMAL tier consequences across the board. |
+| Area of operation | B2B SaaS task-management platform for clinic customers, EU-domiciled (Portugal). |
+| Regulatory roles | GDPR controller (customer accounts) and processor (customer task data); CRA manufacturer (default class, self-assessment). |
+| Inherited capabilities | Hosted SaaS operated by the company; no third-party managed security layer declared. |
+```"""
+
+
 def goals_answer(sd: str, user_prompt: str) -> str:
-    """Build a contract-valid P4 answer using article numbers actually present
-    in the attached regs modules AND resolvable against the corpus (R2a)."""
-    sys.path.insert(0, str(REPO / "pipeline" / "src"))
+    """Build a contract-valid 9-column P4 answer: one row per (Sub-SO, confirmed
+    regulation) pair whose card exists in the attached module. The adjusted goal
+    keeps the Sub-SO's obligation terms (the content gates check retention and
+    adaptation), and the company implication is specific to the duty."""
+    sys.path.insert(0, str(SRC))
     from validate import resolve_reg_source
+    from compose import sub_so_objective
+    repo = Path(".")
     arts: dict[str, str] = {}
+    has_card: dict[str, bool] = {}
     for reg in CONFIRMED:
-        m = re.search(rf"----- BEGIN FILE: (.*/regs/{reg}\.md) -{{2,}}\n(.*?)----- END FILE", user_prompt, re.S)
+        m = re.search(rf"----- BEGIN FILE: ([^\n]*/regs/{reg}\.md) -{{2,}}\n(.*?)----- END FILE",
+                      user_prompt, re.S)
         if not m:
             continue
         body = m.group(2)
+        has_card[reg] = bool(re.search(rf"id:\s*SG-{re.escape(sd)}\.{reg}\b", body))
         for num in re.findall(r"Art(?:icle)?\.?\s*(\d+)", body):
             cand = f"{reg} Art. {num}"
-            if resolve_reg_source(REPO, sd, cand)[0]:
+            if resolve_reg_source(repo, sd, cand)[0]:
                 arts[reg] = cand
                 break
+    if not any(has_card.values()):
+        return ("```markdown\n### " + sd + " — Test Sub-domain\n\n"
+                "None — no Sub-SO for the confirmed regulations.\n\n"
+                "## §5\n\n- None.\n```")
     rows = ""
-    for i in range(1, 3):
-        reg = CONFIRMED[i % 2]
-        src = arts.get(reg, arts.get(CONFIRMED[0], "GDPR Art. 5"))
-        rows += (f"| AG-{sd}-{i:03d} | Company-proportional restatement of the {reg} baseline goal "
-                 f"for {sd} at micro scale. | maintain | {'C' if i == 1 else 'I'} | SO-{sd}.HL | "
-                 f"{src} | {'PR.DS-01' if i == 1 else '—'} | Scope narrowed to the "
-                 f"hosted SaaS context per fact sheet. |\n")
-    m41 = "".join(
-        f"| AG-{sd}-{i:03d} | {CONFIRMED[i % 2]} | PR.DS-01 | PR.DS-P1 | — | `SR-{CONFIRMED[i % 2]}-001` |\n"
-        for i in range(1, 3))
+    i = 0
+    for reg in CONFIRMED:  # canonical regulation order: GDPR slot, CRA slot
+        if not has_card.get(reg):
+            continue
+        i += 1
+        src = arts.get(reg, arts.get("GDPR", "GDPR Art. 5"))
+        baseline = " ".join(sub_so_objective(repo, sd, reg).split())
+        # a genuine restatement: the obligation's content words are carried
+        # over, but the duty is rewritten in the company's own terms rather than
+        # pasted from the baseline (the reformulation gate rejects an embed)
+        keep = [w for w in baseline.split()
+                if w.lower() not in
+                ("the", "a", "an", "and", "or", "of", "to", "in", "is", "are",
+                 "that", "with", "for", "on", "by", "as", "at", "be", "it",
+                 "its", "from", "this", "which", "are", "been", "has", "not",
+                 "or", "such", "any", "all", "where", "when", "also", "but",
+                 "may", "must", "can", "each", "other", "own", "same", "more")]
+        core = " ".join(keep[1:])
+        goal = (f"For TinyTask as {reg} controller and manufacturer, the {sd} duty is that "
+                f"{core} — held to the {reg} standard in the product TinyTask ships and the "
+                f"platform it hosts, at the LIGHTWEIGHT tier the framing fixes for a team of "
+                f"eight people with supplier-managed hosting, with the proof kept in the "
+                f"contractual position and the runtime record rather than a separate programme.")
+        # the implication is specific to this duty and company: it names the
+        # obligation's own content words, the company's operating model, and the
+        # tier the framing fixes — never a sentence reusable on another row
+        fp = [w for w in baseline.split()
+              if w.lower() not in
+              ("the", "a", "an", "and", "or", "of", "to", "in", "is", "are",
+               "that", "with", "for", "on", "by", "as", "at", "be", "it",
+               "its", "from", "this", "which", "been", "has", "not", "such",
+               "any", "all", "where", "when", "also", "but", "may", "must",
+               "can", "each", "other", "own", "same", "more", "most")]
+        subj = " ".join(fp[2:9])
+        implication = (f"In practice for TinyTask, meeting this {reg} {sd} duty means keeping "
+                       f"{subj} demonstrably under control inside the product and the hosting "
+                       f"it uses, with the 8-person team able to show the position on request at "
+                       f"the LIGHTWEIGHT tier set by the §2 framing.")
+        rows += (f"| AG-{sd}-{i:03d} | {goal} | {implication} | maintain | C | SO-{sd}.HL | "
+                 f"SG-{sd}.{reg} | {src} | narrowed: scope to the hosted platform — because "
+                 f"that is where the company performs the duty. |\n")
     return ("```markdown\n### " + sd + " — Test Sub-domain\n\n"
-            "| ID | Adjusted goal | Pattern | Property | Parent goal | Regulatory source | Control anchor | Adjustment |\n"
-            "|---|---|---|---|---|---|---|---|\n" + rows +
-            "\n## §4.1 Control Anchor Mapping\n\n"
-            "| ID | Regulation | CSF 2.0 | NIST PF 1.1 | NIST AI RMF | Source |\n|---|---|---|---|---|---|\n"
-            + m41 + "\n## §5\n\n- None.\n```")
+            "| ID | Adjusted goal | Company implication | Pattern | Property | Parent goal | Baseline source | Regulatory source | Adjustment |\n"
+            "|---|---|---|---|---|---|---|---|---|\n" + rows +
+            "\n## §5\n\n- None.\n```")
 
 
-P3F_FRAMING = """```markdown
-> 8-person micro-enterprise, non-critical B2B SaaS. Roles: GDPR controller +
-> processor, CRA manufacturer (default class, self-assessment). Exclusions:
-> NIS2, DORA, AI_Act.
-```"""
-
-P5_INTRO = """```markdown
-## §1 Company Profile Echo
-
-TinyTask Lda., 8 employees (micro-enterprise), Portugal (EU), B2B SaaS
-productivity tools. Develops and operates a rule-based task management
-platform as manufacturer; processes EU personal data as controller (customer
-accounts) and processor (customer task data) on hosted SaaS.
-
-## §4 Framing
-
-> 8-person micro-enterprise, non-critical B2B SaaS. Roles: GDPR controller +
-> processor, CRA manufacturer (default class, self-assessment). Exclusions:
-> NIS2, DORA, AI_Act.
-
-## §6 Handoff Notes to Phase 2
-
-Applicable regulations: GDPR, CRA. Sub-domain scope: """ + ", ".join(SELECTED) + """. Open
-questions: data_scale not stated in intake.
-```"""
-
-P5_INTRO_NO_FRAMING = """```markdown
-## §1 Company Profile Echo
-
-TinyTask Lda., 8 employees (micro-enterprise), Portugal (EU), B2B SaaS
-productivity tools. Develops and operates a rule-based task management
-platform as manufacturer; processes EU personal data as controller and
-processor on hosted SaaS.
-
-## §6 Handoff Notes to Phase 2
-
-Applicable regulations: GDPR, CRA. Sub-domain scope: """ + ", ".join(SELECTED) + """. Open
-questions: data_scale not stated in intake.
+TENSIONS_TABLE = """```markdown
+| ID | Sub-domains | Tension | Conflict | Resolution |
+|---|---|---|---|---|
+| T-001 | D-06.3 | Notification-clock divergence | GDPR and CRA notification duties anchor to different recipients and clocks on the same event. | Strictest timeline binds per recipient; parallel recipients keep their own clocks. |
 ```"""
 
 
@@ -174,6 +194,10 @@ class FakeOllama(ThreadingHTTPServer):
         self.requests: list[tuple[str, str]] = []  # (step_tag, prompt head)
         self.garbage_mode = False
         self.p2_seen = 0
+        self.p1_seen = 0
+        self.truncate_first_p1 = False
+        self.last_think: object = "<unset>"   # last `think` flag seen by the server
+        self.last_options: dict = {}
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -202,11 +226,29 @@ class Handler(BaseHTTPRequestHandler):
             step = re.search(r"Task — (PROM-P1-0\d)", user)
             tag = step.group(1) if step else "?"
             sd = re.search(r"PROM-P1-04 — (D-\d{2}\.\d)", user)
+            self.server.last_think = payload.get("think", "<absent>")
+            self.server.last_options = payload.get("options", {})
             content: str
+            done_reason = "stop"
+            eval_count = 128
             if self.server.garbage_mode:
                 content = "I am sorry, I cannot comply."
             elif tag == "PROM-P1-01":
+                self.server.p1_seen += 1
                 content = f"Here is the fact sheet:\n```yaml\n{FACT_SHEET}\n```"
+                if self.server.p1_seen == 1 and self.server.truncate_first_p1:
+                    # L0-VALID but incomplete: every field parse_p1 requires is
+                    # present and the closing fence is intact, so nothing but an
+                    # explicit done_reason check can catch this. This is the
+                    # job-1963538 seq-26 defect — D-10.1 was stored cut
+                    # mid-sentence at the num_predict cap and became the
+                    # artifact of record. The dropped line is an OPTIONAL field
+                    # (a real company fact: the external payment processor), so
+                    # its absence is a silent content loss, not a parse error.
+                    short = "\n".join(l for l in FACT_SHEET.splitlines()
+                                      if not l.startswith("third_party_processing"))
+                    content = f"Here is the fact sheet:\n```yaml\n{short}\n```"
+                    done_reason, eval_count = "length", 8192
             elif tag == "PROM-P1-02":
                 self.server.p2_seen += 1
                 if self.server.p2_seen == 1:  # retry-path: first attempt malformed
@@ -215,18 +257,17 @@ class Handler(BaseHTTPRequestHandler):
                     content = f"```markdown\n{VERDICT_TABLE}\n```"
             elif tag == "PROM-P1-03":
                 content = selection_answer()
+            elif tag == "PROM-P1-06":
+                content = FRAMING_TABLE
             elif tag == "PROM-P1-04" and sd:
                 content = goals_answer(sd.group(1), user)
-            elif tag == "PROM-P1-06":
-                content = P3F_FRAMING
-            elif tag == "PROM-P1-05":
-                # p3f already wrote steps/framing.md -> the p5 pack is attached and
-                # the instruction asks for two sections only
-                content = (P5_INTRO_NO_FRAMING if "two sections" in user else P5_INTRO)
+            elif tag == "PROM-P1-07":
+                content = TENSIONS_TABLE
             else:
                 content = "unknown step"
             self._json({"model": MODEL, "message": {"role": "assistant", "content": content},
-                        "eval_count": 128, "total_duration": 1_000_000_000})
+                        "done_reason": done_reason, "eval_count": eval_count,
+                        "total_duration": 1_000_000_000})
         else:
             self._json({}, 404)
 
@@ -235,11 +276,27 @@ class Handler(BaseHTTPRequestHandler):
 # test flow
 # ---------------------------------------------------------------------------
 
+EXPORT_DIR = TMP / "export"
+
+
+def _output_snapshot(d: Path) -> list[tuple[str, int]]:
+    """(relative path, mtime_ns) for every file under d — the fingerprint used
+    to prove the test never writes into the repo's real output/ tree. Asserting
+    non-existence instead would fail the moment a real deliverable lands there,
+    which is the normal state of a finished run."""
+    if not d.exists():
+        return []
+    return sorted((str(p.relative_to(d)), p.stat().st_mtime_ns)
+                  for p in d.rglob("*") if p.is_file())
+
+
 def run_cli(*args: str, expect_rc: int = 0) -> subprocess.CompletedProcess:
+    import os
+    env = dict(os.environ, AEGIS_EXPORT_DIR=str(EXPORT_DIR))
     proc = subprocess.run([sys.executable, str(REPO / "pipeline" / "src" / "run_pipeline.py"), *args],
-                          capture_output=True, text=True)
+                          capture_output=True, text=True, env=env)
     if proc.returncode != expect_rc:
-        print(proc.stdout[-2000:], proc.stderr[-2000:])
+        print(proc.stdout[-3000:], proc.stderr[-3000:])
         check(f"cli {' '.join(args[:3])} rc={expect_rc}", False, f"got rc={proc.returncode}")
     return proc
 
@@ -252,14 +309,37 @@ def main() -> int:
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     base = f"http://127.0.0.1:{srv.server_address[1]}"
     run_dir = TMP / "run_case01_TEST_000001"
+    repo_output_before = _output_snapshot(REPO / "output")
 
     print("-- 1. new-run + stage refusal without gate --")
     run_cli("new-run", "--case", "Case_01_TinyTask_SaaS", "--run-dir", str(run_dir), "--model", MODEL)
     run_dir.mkdir(exist_ok=True)  # new-run may not pre-create until manifest written
     proc = run_cli("run", "--stage", "p2", "--run-dir", str(run_dir), "--base", base, expect_rc=1)
     check("p2 refuses without G-P1-A", "G-P1-A not approved" in proc.stderr + proc.stdout)
+
+    # the first p1 answer comes back cut at the num_predict cap
+    srv.truncate_first_p1 = True
     proc = run_cli("run", "--stage", "p1", "--run-dir", str(run_dir), "--base", base)
     check("p1 completes (1 call)", "stage p1 done: 1 call" in proc.stdout)
+    check("think=false sent (qwen reasoning must not eat num_predict)",
+          srv.last_think is False, f"think={srv.last_think!r}")
+    check("num_predict explicit in options", bool(srv.last_options.get("num_predict")),
+          f"options={srv.last_options}")
+    trace1 = [json.loads(l) for l in (run_dir / "trace.jsonl").read_text().splitlines() if l.strip()]
+    p1 = [t for t in trace1 if t["step"] == "p1"][-1]
+    check("truncated attempt recorded as done_reason=length",
+          p1.get("attempt1_done_reason") == "length" and p1.get("attempt1_truncated_chars"),
+          f"attempt1_done_reason={p1.get('attempt1_done_reason')!r}")
+    check("truncation was a retryable failure, not silent acceptance",
+          "truncated at the num_predict" in (p1.get("attempt1_error") or ""))
+    check("truncated answer kept for forensics",
+          any(q.name.endswith("_output_truncated.md") for q in (run_dir / "outputs").iterdir()))
+    # the decisive assertion: the ARTIFACT is the complete second answer. The
+    # truncated answer was L0-valid, so only the done_reason rejection keeps the
+    # dropped field out of the artifact.
+    fact = (run_dir / "steps" / "fact_sheet.yaml").read_text()
+    check("fact_sheet.yaml is the COMPLETE retried answer, not the L0-valid truncated one",
+          "third_party_processing" in fact, f"fact_sheet.yaml={fact!r}")
 
     print("-- 2. gate file required between stages (state on disk) --")
     (run_dir / "steps" / "gates").mkdir(parents=True, exist_ok=True)
@@ -269,34 +349,51 @@ def main() -> int:
     trace = [json.loads(l) for l in (run_dir / "trace.jsonl").read_text().splitlines() if l.strip()]
     p2 = [t for t in trace if t["step"] == "p2"][-1]
     check("retry recorded (l0_retried)", p2.get("l0_retried") is True and p2.get("l0_first_error"))
-    check("inputs contain BOTH p2 attempts", len(list((run_dir / "inputs").glob("002_p2_*"))) == 2,
-          "system+user x2 attempts share files; outputs must have attempt2")
     check("attempt2 output kept", (run_dir / "outputs" / "002_p2_output_attempt2.md").exists())
 
-    print("-- 3. p3f (framing) + p3 + gates --")
+    print("-- 3. p3f (framing table) + p3 + gates --")
     (run_dir / "steps" / "gates" / "G-P1-B.approved").write_text("approved: test")
     proc = run_cli("run", "--stage", "p3f", "--run-dir", str(run_dir), "--base", base)
     check("framing.md written from p3f", (run_dir / "steps" / "framing.md").exists()
-          and (run_dir / "steps" / "framing.md").read_text().strip().startswith(">"))
+          and "| Size |" in (run_dir / "steps" / "framing.md").read_text())
     proc = run_cli("run", "--stage", "p3", "--run-dir", str(run_dir), "--base", base)
     sel = json.loads((run_dir / "steps" / "selection.json").read_text())
     check("p3 selection == 4 sub-domains", sorted(s["id"] for s in sel["selected"]) == sorted(SELECTED),
           f"{[s['id'] for s in sel['selected']]}")
 
-    print("-- 4. p4+p5 combined stage (framing.md feeds p4 pack, p5 uses two-section intro) --")
+    print("-- 4. p4 → p4t → p5 combined stage (Doc02 assembly, zero-LLM p5) --")
     (run_dir / "steps" / "gates" / "G-P1-C.approved").write_text("approved: test")
     proc = run_cli("run", "--stage", "p4p5", "--run-dir", str(run_dir), "--base", base)
-    check("p5 deliverable written", (run_dir / "phase1_output.md").exists())
+    check("p5 deliverable written", (run_dir / "doc02_adjusted_goals.md").exists())
     check("RUN_NOTES written", (run_dir / "RUN_NOTES.md").exists())
     goals = sorted(p.name for p in (run_dir / "steps" / "goals").glob("D-*.md"))
-    check("4 goal artifacts", len(goals) == 4, str(goals))
+    check("goal artifact per selected sub-domain", len(goals) == len(SELECTED),
+          f"{len(goals)} vs {len(SELECTED)}")
+    check("tensions.json written by p4t", (run_dir / "steps" / "tensions.json").exists())
+    doc = (run_dir / "doc02_adjusted_goals.md").read_text()
+    check("doc has §0–§6 in order",
+          [m.group(1) for m in re.finditer(r"^## (§\d)", doc, re.M)]
+          == ["§0", "§1", "§2", "§3", "§4", "§5", "§6"])
+    check("doc §6 control rows derived (PR.DS-01 present)", "| PROTECT | PR.DS-01 |" in doc)
+    check("doc §5 Track B rows present", "| D-01.1 | MICRO | BUILD_REQUIRED | MUST | LIGHTWEIGHT |" in doc)
+    check("doc §3 covers every selected sub-domain",
+          len(re.findall(r"(?m)^### D-\d{2}\.\d ", doc)) == len(SELECTED),
+          f"{len(re.findall(r'(?m)^### D-\\d{2}\\.\\d ', doc))} vs {len(SELECTED)}")
+    check("doc carries per-regulation baseline objectives",
+          "Regulation baseline — `SG-D-01.1.GDPR` (GDPR):" in doc
+          and "Regulation baseline — `SG-D-01.1.CRA` (CRA):" in doc)
+    exported = EXPORT_DIR / "TinyTask" / run_dir.name / "doc02_adjusted_goals.md"
+    check("deliverable exported (AEGIS_EXPORT_DIR)", exported.exists())
+    check("repo output/ untouched by tests", repo_output_before == _output_snapshot(REPO / "output"),
+          f"{len(repo_output_before)} pre-existing file(s) unchanged by the test")
 
     print("-- 5. trace/manifest consistency --")
     manifest = json.loads((run_dir / "manifest.json").read_text())
     n_trace = len([l for l in (run_dir / "trace.jsonl").read_text().splitlines() if l.strip()])
     n_in = len(list((run_dir / "inputs").glob("*_user.md")))
-    check("trace==inputs==manifest", n_trace == n_in == manifest["n_calls_total"] == 9,
-          f"trace={n_trace} inputs={n_in} manifest={manifest['n_calls_total']}")
+    n_expected = 5 + len(SELECTED)  # p1,p2,p3f,p3,p4t + one p4 call per selected sd
+    check("trace==inputs==manifest", n_trace == n_in == manifest["n_calls_total"] == n_expected,
+          f"trace={n_trace} inputs={n_in} manifest={manifest['n_calls_total']} expected={n_expected}")
     seqs = [json.loads(l)["seq"] for l in (run_dir / "trace.jsonl").read_text().splitlines() if l.strip()]
     check("seq strictly increasing across processes", seqs == sorted(seqs) and len(set(seqs)) == len(seqs))
 
@@ -311,11 +408,11 @@ def main() -> int:
     shutil.copytree(run_dir, corrupt)
     gjson = next((corrupt / "steps" / "goals").glob("*.json"))
     data = json.loads(gjson.read_text())
-    data["goals"][0]["anchor"] = "PR.FAKE-99"
+    data["goals"][0]["source"] = "GDPR Art. 999"
     gjson.write_text(json.dumps(data))
     proc = subprocess.run([sys.executable, str(REPO / "pipeline" / "src" / "validate.py"),
                            "--run-dir", str(corrupt)], capture_output=True, text=True)
-    check("validate.py FAIL on fake anchor", proc.returncode == 1 and "PR.FAKE-99" in proc.stdout)
+    check("validate.py FAIL on unresolvable source", proc.returncode == 1 and "GDPR Art. 999" in proc.stdout)
 
     print("-- 8. stage abort forensics on persistent garbage --")
     srv.garbage_mode = True

@@ -51,7 +51,8 @@ class OllamaClient:
 
     def ensure_model_cached(self, model: str) -> None:
         names = [m.get("name", "") for m in self.tags().get("models", [])]
-        if not any(n == model or n.split(":")[0] == model.split(":")[0] and n.endswith(model.split(":")[-1]) for n in names):
+        if not any(n == model or (n.split(":")[0] == model.split(":")[0]
+                                   and n.endswith(model.split(":")[-1])) for n in names):
             raise LLMError(
                 f"model '{model}' not present in the local Ollama cache (available: {names[:12]}...). "
                 "Compute nodes have no egress — pull it on the login node first."
@@ -78,10 +79,25 @@ class OllamaClient:
 
     def chat(self, model: str, system: str, user: str, num_ctx: int,
              temperature: float = 0.2, timeout_s: int | None = None,
-             num_predict: int = 8192) -> dict:
+             num_predict: int = 8192, sampler: dict | None = None) -> dict:
         """One chat completion. Returns the full JSON response (stream=False).
+
         num_predict explicit: a silent default cap truncates mid-answer and the
-        content arrives empty (seen on qwen3.8 with done_reason=length)."""
+        content arrives empty (seen on qwen3.8 with done_reason=length).
+
+        think=false: qwen3.8 emits a `thinking` block that shares the same
+        num_predict budget as the answer — a pack that fills the context could
+        spend the whole budget reasoning and return content="" (job 1963648,
+        seq 24: 2285 eval tokens, empty content). The pipeline has no use for
+        the reasoning trace; disabling it makes num_predict mean the answer.
+
+        sampler: seed / top_p / top_k from the run's config.json. A key set to
+        None is omitted rather than sent as null, so "we did not set it" stays
+        distinguishable from "we set it to the default" — the distinction the
+        determinism experiment depends on (docs/experiments/PREREG_01.md)."""
+        options = {"num_ctx": num_ctx, "temperature": temperature,
+                   "num_predict": num_predict}
+        options.update(sampler or {})
         payload = {
             "model": model,
             "messages": [
@@ -89,8 +105,41 @@ class OllamaClient:
                 {"role": "user", "content": user},
             ],
             "stream": False,
-            "options": {"num_ctx": num_ctx, "temperature": temperature,
-                        "num_predict": num_predict},
+            "think": False,
+            "options": options,
         }
         raw = self._request("/api/chat", payload, timeout_s or self.timeout_read)
-        return json.loads(raw.decode("utf-8"))
+        try:
+            return json.loads(raw.decode("utf-8"))
+        except json.JSONDecodeError as e:
+            # a truncated body is a transport failure, not a crash: let the
+            # caller's retry loop see it and record it in the trace
+            raise LLMError(f"malformed JSON in response from {self.base}/api/chat "
+                           f"({len(raw)} bytes): {e}") from e
+
+    def chat_messages(self, model: str, messages: list[dict], num_ctx: int,
+                      temperature: float = 0.2, timeout_s: int | None = None,
+                      num_predict: int = 8192, tools: list[dict] | None = None,
+                      sampler: dict | None = None) -> dict:
+        """Multi-turn completion (agent loop). `messages` is any role sequence;
+        when `tools` is given, Ollama may answer with message.tool_calls instead
+        of content. Same truncation/JSON guards and same sampler handling as
+        chat()."""
+        options = {"num_ctx": num_ctx, "temperature": temperature,
+                   "num_predict": num_predict}
+        options.update(sampler or {})
+        payload = {
+            "model": model,
+            "messages": messages,
+            "stream": False,
+            "think": False,
+            "options": options,
+        }
+        if tools:
+            payload["tools"] = tools
+        raw = self._request("/api/chat", payload, timeout_s or self.timeout_read)
+        try:
+            return json.loads(raw.decode("utf-8"))
+        except json.JSONDecodeError as e:
+            raise LLMError(f"malformed JSON in response from {self.base}/api/chat "
+                           f"({len(raw)} bytes): {e}") from e

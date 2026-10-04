@@ -5,31 +5,52 @@ Each step = one ficha (generic) + one deterministic pack. The L0 parser checks
 the model's answer against the ficha's output contract; on failure the call is
 retried once with the validator errors appended (flag-not-drop), then the stage
 aborts with forensics on disk.
+
+The final deliverable (doc02_adjusted_goals.md, Doc02 case format) is assembled
+deterministically: goals/framing/tensions come from L0-validated artifacts,
+controls and tiers are DERIVED by code (controls.py) — the deliverable step p5
+makes no LLM call.
 """
 
 from __future__ import annotations
 
 import json
+import os
 import re
+import shutil
 from pathlib import Path
 
-from compose import (REGULATIONS, SD_RE, compose_call, confirmed_regulations,
-                     extract_markdown_section, load_case, load_selection)
+from compose import (REGULATIONS, SD_RE, anchor_slice, compose_call,
+                     confirmed_regulations, domain_dir, load_case,
+                     load_selection, objective_paragraph, parse_simple_yaml,
+                     sub_so_objective)
+from controls import (goal_anchors, parse_overrides, sd_control_sections,
+                      track_b_rows)
+import quality
+import runconfig
 from llm import LLMError, OllamaClient
-from trace import Trace, now_iso
+from trace import Trace, count_calls, now_iso, update_manifest
 
-NUM_CTX = {"p1": 16384, "p2": 16384, "p3": 32768, "p3f": 16384, "p4": 32768, "p5": 32768}
-# output budget per step (P5 renders the whole document: 22 goal tables
-# exceeded the 8192 default — done_reason=length truncation, job 1963648)
-NUM_PREDICT = {"p1": 4096, "p2": 2048, "p3": 8192, "p3f": 2048, "p4": 8192, "p5": 16384}
+NUM_CTX = {"p1": 16384, "p2": 16384, "p3": 32768, "p3f": 16384, "p4": 32768,
+           "p4t": 32768}
+# output budget per step (P4 tables are the largest model output)
+# P4 emits a 9-column table for every Sub-SO of a module: at 8192 the answer
+# was truncated mid-table and the L0 repair hit the same cap (job 1969983,
+# D-08.3). The budget is the table, not a sentence.
+NUM_PREDICT = {"p1": 4096, "p2": 2048, "p3": 12288, "p3f": 2048, "p4": 16384,
+               "p4t": 4096}
 
 PATTERNS = {"achieve", "cease", "maintain", "avoid", "optimize"}
-# template §4 renders long-form property names; normalize to the enum codes
+# template §3 renders long-form property names; normalize to the enum codes
 PROPERTY_ALIASES = {
     "confidentiality": "c", "integrity": "i", "availability": "a",
     "privacy right": "privacy-right", "privacy-right": "privacy-right",
     "accountability": "accountability", "c": "c", "i": "i", "a": "a",
 }
+PROPERTY_LONG = {"c": "Confidentiality", "i": "Integrity", "a": "Availability",
+                 "privacy-right": "Privacy Right", "accountability": "Accountability"}
+FRAMING_DIMENSIONS = ["Size", "Area of operation", "Regulatory roles",
+                      "Inherited capabilities"]
 
 
 # --------------------------------------------------------------------------
@@ -59,13 +80,60 @@ def parse_md_table(text: str) -> list[list[str]]:
     return rows
 
 
+#: Spellings models reach for when a regulation id is written inline, mapped to
+#: the canonical token. Observed in the field: qwen3.8 wrote "AIACT" for
+#: AI_Act on a 4-regulation case (Case_02, job 1979399) and qwen3.5 wrote the
+#: same class of mangling at the smoke. This is a SPELLING map, not a
+#: tolerance: only the regulation token is normalised, the sub-domain part
+#: must still match exactly, and the row is still rejected downstream if the
+#: regulation is not one this module actually carries (check_subso_coverage /
+#: the L1 phantom-regulation check). A model that names the wrong regulation
+#: still fails; one that misspells the right one no longer costs a whole run.
+_REG_SPELLING = {
+    "aiact": "AI_Act", "aiacts": "AI_Act", "ai act": "AI_Act", "ai-act": "AI_Act",
+    "aia": "AI_Act", "ai": "AI_Act",
+    "nis2": "NIS2", "nis 2": "NIS2", "nis-2": "NIS2", "nisii": "NIS2",
+    "gdpr": "GDPR",
+    "cra": "CRA",
+    "dora": "DORA",
+    "doraia": "DORA",
+}
+
+
+def _canonical_reg(token: str) -> str:
+    """Canonical regulation token, or '' when the spelling is unrecognisable."""
+    t = token.strip().strip("` ").strip()
+    if t in REGULATIONS:
+        return t
+    return _REG_SPELLING.get(re.sub(r"[\s\-_]+", "", t).lower(), "")
+
+
+def _one_reg(bs: str, sd_id: str) -> str:
+    """The single regulation a Baseline source cites (SG-D-XX.Y.<REG>).
+
+    The sub-domain part must match EXACTLY — a row that points at a different
+    sub-domain is a real error and stays an error. Only the regulation token is
+    spelling-normalised, because that is the half models get wrong (see
+    _REG_SPELLING). An unrecognisable regulation token is still rejected here.
+    """
+    raw = bs.strip("` ")
+    m = re.fullmatch(rf"SG-{re.escape(sd_id)}\.(\S+)", raw)
+    if not m:
+        raise ValueError(f"Baseline source {bs!r} must cite exactly one Sub-SO id "
+                         f"SG-{sd_id}.<REG> (one regulation per goal row)")
+    reg = _canonical_reg(m.group(1))
+    if not reg:
+        raise ValueError(f"Baseline source {bs!r} has regulation {m.group(1)!r}, "
+                         f"which is not one of {'/'.join(REGULATIONS)}")
+    return reg
+
+
 # --------------------------------------------------------------------------
 # per-step L0 parsers (output contract = ficha Output schema)
 # --------------------------------------------------------------------------
 
 def parse_p1(answer: str) -> dict:
     yaml_text = extract_fenced(answer, "yaml")
-    from compose import parse_simple_yaml
     fact = parse_simple_yaml(yaml_text)
     required = ["company", "sector", "size_employees", "jurisdictions", "legal_form",
                 "product_summary", "develops_software", "data_categories",
@@ -149,135 +217,555 @@ def parse_p3(answer: str, candidates: list[str]) -> dict:
     return {"md": md, "selected": selected, "excluded": excluded}
 
 
-def parse_p4(answer: str, sd_id: str) -> dict:
+def parse_p3f(answer: str) -> dict:
+    """§2 Framing: a 2-column table with exactly the four canonical dimensions."""
     md = extract_fenced(answer, "markdown")
     rows = parse_md_table(md)
+    dims: dict[str, str] = {}
+    for cells in rows:
+        if len(cells) != 2:
+            raise ValueError(f"framing table row must have 2 columns: {cells}")
+        key = " ".join(cells[0].split()).lower().rstrip(":")
+        if key == "dimension":  # header row
+            continue
+        dims[key] = cells[1]
+    missing = [d for d in FRAMING_DIMENSIONS
+               if d.lower() not in dims or not dims[d.lower()].strip()]
+    if missing:
+        raise ValueError(f"framing table missing or empty dimension(s): {missing} "
+                         f"(expected exactly: {', '.join(FRAMING_DIMENSIONS)})")
+    extra = [k for k in dims if k not in [d.lower() for d in FRAMING_DIMENSIONS]]
+    if extra:
+        raise ValueError(f"framing table has unexpected dimension(s): {extra}")
+    return {"framing": md.strip()}
+
+
+def parse_p4(answer: str, sd_id: str, expect_id: bool = True) -> dict:
+    md = extract_fenced(answer, "markdown")
+    m5 = re.search(r"^##\s+§5\b", md, re.M)
+    if not m5:
+        raise ValueError("P4 answer missing the '## §5' section (assumptions/open questions)")
+    goals_part, assum_part = md[:m5.start()], md[m5.start():]
+
+    rows = parse_md_table(goals_part)
     goals = []
     seq = 0
+    last_reg_idx = -1
     for cells in rows:
-        if len(cells) != 8:
-            continue  # §4.1 rows have 6 columns; only the goal table has 8
+        if not cells:
+            continue
         idm = re.match(r"`?(AG-D-\d{2}\.\d-\d{3})`?", cells[0].replace("*", "").strip())
         if not idm:
-            continue
+            if expect_id:
+                continue
+            # per-row agent submission: the caller supplies 9 cells whose first
+            # cell is a placeholder; the id is assigned on persist, so only the
+            # column count and the field rules apply here
+            gid = f"AG-{sd_id}-NNN"
+        else:
+            gid = idm.group(1)
+        if len(cells) != 9:
+            raise ValueError(f"goal row {gid} has {len(cells)} columns, expected 9 "
+                             "(ID | Adjusted goal | Company implication | Pattern | Property | "
+                             "Parent goal | Baseline source | Regulatory source | Adjustment) — "
+                             "control anchors are derived by code, not emitted")
         seq += 1
-        gid = idm.group(1)
-        expected = f"AG-{sd_id}-{seq:03d}"
-        if gid != expected:
-            raise ValueError(f"goal IDs must be sequential from 001: expected {expected}, got {gid}")
-        if len(cells) < 8:
-            raise ValueError(f"goal row {gid} has {len(cells)} columns, expected 8")
-        pattern = cells[2].strip().lower()
+        if expect_id:
+            gid = idm.group(1)
+            expected = f"AG-{sd_id}-{seq:03d}"
+            if gid != expected:
+                raise ValueError(f"goal IDs must be sequential from 001: expected {expected}, got {gid}")
+        # a bare pipe inside a cell splits the row and breaks the column
+        # contract; reject it here rather than failing the whole stage later
+        if any("|" in c for c in cells):
+            raise ValueError(f"{gid}: a cell contains a literal '|' — markdown tables "
+                             "cannot carry it; rephrase using commas or semicolons")
+        pattern = cells[3].strip().lower()
         if pattern not in PATTERNS:
             raise ValueError(f"invalid pattern {pattern!r} on {gid}")
-        prop_raw = " ".join(cells[3].strip().lower().split())
+        prop_raw = " ".join(cells[4].strip().lower().split())
         prop = PROPERTY_ALIASES.get(prop_raw) or PROPERTY_ALIASES.get(prop_raw.replace(" ", "-"))
         if prop is None:
-            raise ValueError(f"invalid property {cells[3]!r} on {gid}")
-        parent = cells[4].replace("`", "").strip()
+            raise ValueError(f"invalid property {cells[4]!r} on {gid}")
+        parent = cells[5].replace("`", "").strip()
         if not re.fullmatch(rf"SO-{re.escape(sd_id)}\.HL", parent):
             raise ValueError(f"invalid parent goal {parent!r} on {gid} (expected SO-{sd_id}.HL)")
-        if not cells[5].strip():
-            raise ValueError(f"empty regulatory source on {gid} (R2a)")
+        reg = _one_reg(cells[6], sd_id)
+        reg_idx = REGULATIONS.index(reg)
+        if reg_idx < last_reg_idx:
+            raise ValueError(f"{gid}: regulation slots must follow the canonical order "
+                             f"{' → '.join(REGULATIONS)} (got {REGULATIONS[last_reg_idx]} "
+                             f"before {reg})")
+        last_reg_idx = reg_idx
         if not cells[7].strip():
+            raise ValueError(f"empty regulatory source on {gid} (R2a)")
+        if not cells[8].strip():
             raise ValueError(f"empty adjustment record on {gid} (R3/ADR-003 D1)")
         goals.append({
-            "id": gid, "goal": cells[1], "pattern": pattern, "property": prop,
-            "parent": parent, "source": cells[5], "anchor": cells[6].strip(), "adjustment": cells[7],
+            "id": gid, "goal": cells[1], "implication": cells[2], "pattern": pattern,
+            "property": prop, "parent": parent,
+            # the CANONICAL id, not the raw text: baseline_source is what the
+            # anchor derivation and the L1 validator key on, so leaving the
+            # mangled spelling here would break them downstream of the gate
+            "baseline_source": f"SG-{sd_id}.{reg}",
+            "regulation": reg, "source": cells[7].strip(), "adjustment": cells[8].strip(),
         })
     if not goals:
-        raise ValueError(f"no AG-D-{sd_id}-NNN rows found in P4 answer")
-    return {"md": md, "goals": goals}
+        # a module may legitimately carry no Sub-SO for the confirmed
+        # regulations (e.g. D-02.2 GDPR: partial via SG-D-02.1.GDPR; D-08.3 both)
+        if re.search(r"(?i)none\s*[—-]\s*no sub-so", md):
+            assumptions = []
+            for line in assum_part.splitlines():
+                s = line.strip()
+                if s.startswith(">") or s.startswith("- "):
+                    if s.lower().rstrip(".") not in ("- none", "> none"):
+                        assumptions.append(s)
+            return {"md": md, "goals": [], "assumptions": assumptions}
+        raise ValueError(f"no AG-D-{sd_id}-NNN rows found in P4 answer (if this module "
+                         f"carries no Sub-SO for the confirmed regulations, answer with "
+                         f"the marker 'None — no Sub-SO for the confirmed regulations.')")
+
+    assumptions = []
+    for line in assum_part.splitlines():
+        s = line.strip()
+        if s.startswith(">") or s.startswith("- "):
+            if s.lower().rstrip(".") not in ("- none", "> none"):
+                assumptions.append(s)
+
+    return {"md": md, "goals": goals, "assumptions": assumptions}
 
 
-def parse_p3f(answer: str) -> dict:
+def parse_p4t(answer: str) -> dict:
+    """Tension resolutions: a 5-column table, or the single line `None.`."""
     md = extract_fenced(answer, "markdown")
-    lines = [l for l in md.strip().splitlines() if l.strip().startswith(">")]
-    if not lines:
-        raise ValueError("p3f answer must be a single > blockquote")
-    return {"framing": "\n".join(lines).strip()}
+    if md.strip().lower().rstrip(".") == "none":
+        return {"md": md, "tensions": []}
+    tensions = []
+    seq = 0
+    for cells in parse_md_table(md):
+        if not cells:
+            continue
+        idm = re.match(r"`?(T-\d{3})`?", cells[0].replace("*", "").strip())
+        if not idm:
+            continue
+        if len(cells) != 5:
+            raise ValueError(f"tension row {idm.group(1)} has {len(cells)} columns, "
+                             "expected 5 (ID | Sub-domains | Tension | Conflict | Resolution)")
+        seq += 1
+        if idm.group(1) != f"T-{seq:03d}":
+            raise ValueError(f"tension IDs must be sequential from T-001: got {idm.group(1)}")
+        for i, name in ((2, "Tension"), (3, "Conflict"), (4, "Resolution")):
+            if not cells[i].strip():
+                raise ValueError(f"empty {name} cell on {idm.group(1)}")
+        tensions.append({"id": idm.group(1), "subdomains": cells[1],
+                         "tension": cells[2], "conflict": cells[3],
+                         "resolution": cells[4]})
+    if not tensions:
+        raise ValueError("no T-NNN rows and no `None.` marker in the p4t answer")
+    return {"md": md, "tensions": tensions}
 
 
-def parse_p5(answer: str) -> dict:
-    """P5 intro call: only the narrative blocks (§1 echo, §4 framing, §6 handoff).
-    The full document is assembled deterministically from validated artifacts —
-    asking the model to re-render 22 goal tables truncates at any output cap
-    (done_reason=length, jobs 1963648/1963810)."""
-    md = extract_fenced(answer, "markdown")
-    s1 = extract_markdown_section(md, "## §1", ["## §4"])
-    framing = extract_markdown_section(md, "## §4", ["## §6"]) or None
-    s6 = extract_markdown_section(md, "## §6", [])
-    for name, sec in (("§1 Company Profile Echo", s1),
-                      ("§6 Handoff Notes to Phase 2", s6)):
-        if not sec.strip():
-            raise ValueError(f"p5 intro answer missing or empty: {name}")
-    # framing is optional in the answer when stage p3f already produced it
-    return {"s1": s1.strip(), "framing": (framing.strip() if framing else None),
-            "s6": s6.strip()}
+PARSERS = {"p1": parse_p1, "p2": parse_p2, "p3": parse_p3, "p3f": parse_p3f,
+           "p4t": parse_p4t}
 
 
-def _strip_heading(sec: str) -> str:
-    """The LLM sections arrive with their own `## §N` heading — the assembler
-    provides the canonical heading, so drop the model's duplicate."""
-    lines = sec.strip().splitlines()
-    if lines and lines[0].strip().startswith("#"):
-        lines = lines[1:]
-    return "\n".join(lines).strip()
+# --------------------------------------------------------------------------
+# shared persistence + content gates (pipeline steps AND agent tools)
+# --------------------------------------------------------------------------
+
+def store_parsed(run_dir: Path, step: str, subdomain: str | None, parsed: dict) -> None:
+    """Persist one validated step artifact in the run's steps/ layout."""
+    steps_dir = run_dir / "steps"
+    if step == "p1":
+        (steps_dir / "fact_sheet.yaml").write_text(parsed["yaml_text"], encoding="utf-8")
+    elif step == "p2":
+        (steps_dir / "verdicts.md").write_text(parsed["md"], encoding="utf-8")
+        (steps_dir / "verdicts.json").write_text(
+            json.dumps({"verdicts": parsed["verdicts"]}, indent=1, ensure_ascii=False),
+            encoding="utf-8")
+    elif step == "p3":
+        (steps_dir / "selection.md").write_text(parsed["md"], encoding="utf-8")
+        (steps_dir / "selection.json").write_text(
+            json.dumps({"selected": parsed["selected"], "excluded": parsed["excluded"]},
+                       indent=1, ensure_ascii=False), encoding="utf-8")
+    elif step == "p3f":
+        (steps_dir / "framing.md").write_text(parsed["framing"] + "\n", encoding="utf-8")
+    elif subdomain is not None:
+        goals_dir = steps_dir / "goals"
+        goals_dir.mkdir(exist_ok=True)
+        fname = subdomain.replace(".", "_")
+        (goals_dir / f"{subdomain}.md").write_text(parsed["md"], encoding="utf-8")
+        (goals_dir / f"{fname}.json").write_text(
+            json.dumps({"subdomain": subdomain, "goals": parsed["goals"],
+                        "assumptions": parsed["assumptions"]},
+                       indent=1, ensure_ascii=False), encoding="utf-8")
+    elif step == "p4t":
+        (steps_dir / "tensions.md").write_text(parsed["md"] + "\n", encoding="utf-8")
+        (steps_dir / "tensions.json").write_text(
+            json.dumps({"tensions": parsed["tensions"]}, indent=1, ensure_ascii=False),
+            encoding="utf-8")
 
 
-def assemble_p5(run_dir: Path, case: dict, s1: str, framing: str, s6: str) -> str:
-    """Deterministic assembly of phase1_output.md from validated step artifacts
-    (verdicts.md, selection.md, goals/D-XX.Y.md fragments)."""
+def check_p4_quality(repo: Path, run_dir: Path, parsed: dict, sd_id: str) -> dict:
+    """Content gates: the Sub-SO must exist for each confirmed regulation the
+    module carries, and the rows must retain the obligation, stay grounded
+    in the intake, avoid technology, and be specific (quality.run_all)."""
+    goals = parsed["goals"]
+    sd_dir = domain_dir(repo, sd_id)
+    confirmed = confirmed_regulations(run_dir)
+
+    # every Sub-SO card this module carries for a confirmed regulation must
+    # be restated exactly once (no silent drop, no duplicate, no phantom reg)
+    # The `.exists()` guard matches the one in _call: without it, a confirmed
+    # regulation whose module file is absent raised FileNotFoundError here.
+    # That path is only reachable at 4+ applicable regulations — TinyTask
+    # (GDPR+CRA) never reached it, and no run did until Case_02 confirmed
+    # AI_Act against a module (D-06.4) that ships no AI_Act card.
+    expected_regs = [reg for reg in confirmed
+                     if (sd_dir / "regs" / f"{reg}.md").exists()
+                     and f"SG-{sd_id}.{reg}" in (sd_dir / "regs" / f"{reg}.md").read_text(encoding="utf-8")]
+    coverage = quality.check_subso_coverage(goals, expected_regs)
+    if coverage:
+        raise ValueError("; ".join(coverage))
+
+    baselines = {reg: sub_so_objective(repo, sd_id, reg) for reg in expected_regs}
+    steps_dir = run_dir / "steps"
+    sources = [baselines[r] for r in expected_regs]
+    for name in ("fact_sheet.yaml", "framing.md"):
+        f = steps_dir / name
+        if f.exists():
+            sources.append(f.read_text(encoding="utf-8"))
+    # implications already stored for OTHER sub-domains: the cheapest way to
+    # satisfy the column is one sentence pasted everywhere, so each row is
+    # compared against every OTHER row (this sub-domain's and previous ones')
+    other = [g["implication"] for jf in sorted((steps_dir / "goals").glob("*.json"))
+             for g in json.loads(jf.read_text()).get("goals", [])]
+    for g in goals:
+        peers = other + [o["implication"] for o in goals
+                         if o["id"] != g["id"]]
+        findings = quality.run_row(g, baselines, sources, peers)
+        if findings:
+            raise ValueError("; ".join(f"{g['id']}: {m}" for m in findings))
+    coverage = quality.check_subso_coverage(goals, expected_regs)
+    if coverage:
+        raise ValueError("; ".join(coverage))
+    return parsed
+
+
+EXTRA_INSTRUCTION = {
+    "p1": "Wrap your answer: return ONLY one ```yaml fenced block with the fact sheet.",
+    "p2": ("Wrap your answer: return ONLY one ```markdown fenced block containing the "
+           "5-row §2 verdict table (header + 5 rows, nothing else)."),
+    "p3": ("Wrap your answer: return ONLY one ```markdown fenced block containing "),    # PROMPT-ENGINEERED VARIANT (2026-10-04, after glm-4.7-flash and
+    # nemotron-3.5 both failed 5/5 screening runs here). The original asked for
+    # a table PLUS the complement of it in a second section — a shape that
+    # invites both observed failures: listing an id in both parts (glm) and
+    # inventing an exclusion id once the candidate list is far back in the
+    # prompt (nemotron). This variant fixes the ORDER OF OPERATIONS: decide the
+    # exclusion first, then build the table from what is left, which makes an
+    # overlap structurally impossible, and it forbids invented identifiers.
+    "p3_clarified": ("WORK IN THIS ORDER — it is not a suggestion, it is the whole task. "
+           "STEP 1: look at the candidate set below and pick AT MOST ONE "
+           "sub-domain to exclude, copying its identifier character-for-character "
+           "from that set. If you cannot justify excluding any, exclude none. "
+           "STEP 2: build the selection table from the remaining candidates. "
+           "A sub-domain can NEVER appear in both parts: if you excluded it, it "
+           "does not go in the table, and vice-versa. "
+           "Do NOT invent, guess, complete or 'fix' an identifier: every id you "
+           "write, in either part, must already exist in the candidate set. "
+           "Then return ONLY one ```markdown fenced block containing "
+           "(a) the §3 selection table `| Sub-domain | Name | Trigger rationale |` "
+           "with no preamble line, and "
+           "(b) a line `Excluded candidates:` followed by one line per excluded "
+           "candidate in the form `<D-XX.Y> — <why-not>`, or the word `none`. "
+           "Before you answer, check: every candidate appears in exactly one part."),
+
+
+    "p3f": ("Wrap your answer: return ONLY one ```markdown fenced block containing the "
+            "§2 framing table: header `| Dimension | Framing |` and exactly 4 rows — "
+            "Size, Area of operation, Regulatory roles, Inherited capabilities — each "
+            "framing cell 1–3 sentences traced to the fact sheet/verdicts (R6), "
+            "technology-neutral (R5). Nothing else."),
+    "p4t": ("Wrap your answer: return ONLY one ```markdown fenced block containing the "
+            "tension-resolution table `| ID | Sub-domains | Tension | Conflict | "
+            "Resolution |` with one row per corpus tension among the confirmed "
+            "regulations (IDs sequential T-001…; resolution states the binding rule, "
+            "e.g. strictest-SLA routing). If the corpus surfaces no tension among the "
+            "confirmed regulations, return ONLY the line `None.` inside the fence. "
+            "Technology-neutral (R5). Nothing else."),
+}
+
+
+# Per-run prompt variants. The shipped EXTRA_INSTRUCTION above is the reference
+# behaviour — it is what the EXP-02/EXP-03 baseline ran on. A variant is
+# selected per run via config.json `ficha_overrides: {"<key>": "<variant>"}`, so
+# a prompt change is a measured arm rather than a silent redefinition of the
+# baseline.
+P3_INSTRUCTION_VARIANTS = {"clarified": EXTRA_INSTRUCTION["p3_clarified"]}
+
+
+def p4_extra_instruction(sd_id: str, subso_ids: list[str] | None = None) -> str:
+    if subso_ids is None:
+        subso_ids = []
+    if not subso_ids:
+        # A module whose Sub-SO cards all belong to NON-confirmed regulations has
+        # no duty to restate (D-08.3 for a GDPR+CRA run carries only DORA/NIS2).
+        # The model kept inventing rows with an `SG-<sd>.HL` baseline and failed
+        # L0 twice per call; state the valid answer explicitly.
+        return (
+            f"Wrap your answer: return ONLY one ```markdown fenced block containing "
+            f"(a) the heading `### {sd_id} — <canonical name>` followed by the single line "
+            f"`None — no Sub-SO for the confirmed regulations.`, and (b) a heading `## §5` "
+            f"with `None.` READ THIS: the module header saying a regulation 'applies' means "
+            f"the regulation is IN SCOPE for the company — NOT that this sub-domain restates "
+            f"a duty under it. 11 of the 38 sub-domains carry such a module with NO Sub-SO "
+            f"card (the file ends with '(no ... Sub-SO or requirements in this sub-domain)'). "
+            f"Therefore this module has NO goal rows. Do not invent one, and do not cite "
+            f"`SG-{sd_id}.HL` as a baseline source. Nothing else."
+        )
+    return (
+        f"Wrap your answer: return ONLY one ```markdown fenced block containing "
+        f"(a) the heading `### {sd_id} — <canonical name>` and the 9-column goal table "
+        f"(`ID | Adjusted goal | Company implication | Pattern | Property | Parent goal | "
+        f"Baseline source | Regulatory source | Adjustment`), and (b) a heading `## §5` "
+        f"listing only `> ASSUMPTION:` blockquotes and open questions this sub-domain owes "
+        f"(ambiguity interpretation is already decided in the corpus — do not cite or "
+        f"re-analyze ambiguity cards; write `None.` if empty). Column rules: this module "
+        f"declares EXACTLY {len(subso_ids)} Sub-SO(s) to restate — "
+        f"{', '.join(subso_ids)} — and no others; write one row per listed id, in that "
+        f"order. A regulation whose module is attached but which is NOT in that list has no "
+        f"duty here. Adjusted goal = a full company-"
+        f"proportional RESTATEMENT of that Sub-SO's Objective (2+ sentences, same "
+        f"obligation content, no meta-language like 'restatement of the baseline'); "
+        f"Company implication = what this duty concretely means for THIS company given "
+        f"the §2 framing and fact sheet (1-2 sentences, name the company's actual "
+        f"situation); Baseline source = the single corpus Sub-SO id the row restates "
+        f"(e.g. `SG-{sd_id}.GDPR`); Property MUST be one of C, I, A, privacy-right, "
+        f"accountability. Control anchors are derived by code — do NOT emit any. "
+        f"ADJUSTMENT — a decision rule, not a menu. `unchanged — fits as stated` is "
+        f"correct ONLY when the duty applies to this company verbatim with no scope "
+        f"change. Otherwise: `narrowed: <the surface/role/system it is scoped to> — "
+        f"because <a fact from the intake>`. Use `flagged: <question>` when the answer "
+        f"depends on something not yet reviewed (an unreviewed contract, an unstated "
+        f"scale). Calibration test: would this row read exactly the same for a different "
+        f"company of your size? If yes, you have not calibrated it — it is `narrowed` or "
+        f"`flagged`. A micro-enterprise almost never satisfies a duty that presupposes "
+        f"dedicated infrastructure, in-house staff or a board: those narrow to a "
+        f"contractual-confirmation duty on the supplier, or to a question. `unchanged` "
+        f"belongs to the minority of rows that need no scoping at all. "
+        f"Nothing else."
+    )
+
+
+# EXP-04 arm: the same slot, offered as a closed 3-value MENU with no decision
+# procedure behind it. This is the "before" condition the 2026-10-03 EXP-01
+# measured once against the rule above (1 -> 17 `narrowed`). The original
+# v1.4.0 ficha text was never committed to git, so the arm is reconstructed here
+# as a controlled, versioned pair rather than recovered: what is varied is the
+# presence of the calibration procedure, not any other wording.
+P4_ADJUSTMENT_MENU = (
+    "ADJUSTMENT — pick exactly one of three values: `unchanged — fits as stated` | "
+    "`narrowed: <what> — because <company fact>` | `flagged: <open question>`. "
+    "Choose the value that best describes this row. Nothing else."
+)
+P4_ADJUSTMENT_VARIANTS = {"menu": P4_ADJUSTMENT_MENU}
+
+#: variant name -> replacement block. Selected per run via config.json
+#: `ficha_overrides: {"p4_adjustment": "<name>"}` (see runconfig.DEFAULTS).
+#: Absent/unknown => the decision rule above, which is the shipped behaviour.
+
+
+def _p4_instruction(sd_id: str, subso_ids: list[str] | None = None,
+                    adjustment_variant: str | None = None) -> str:
+    """p4_extra_instruction with the EXP-04 adjustment slot swapped.
+
+    Kept as a wrapper so the production path (`p4_extra_instruction`) is
+    byte-identical to before when no override is set — the ablation must change
+    exactly one thing.
+    """
+    base = p4_extra_instruction(sd_id, subso_ids)
+    if not adjustment_variant:
+        return base
+    replacement = P4_ADJUSTMENT_VARIANTS.get(adjustment_variant)
+    if replacement is None:
+        return base
+    head, sep, _tail = base.partition("ADJUSTMENT — a decision rule, not a menu.")
+    if not sep:
+        return base
+    return f"{head}{replacement}"
+
+
+# --------------------------------------------------------------------------
+# deterministic assembly of the deliverable (Doc02 case format)
+# --------------------------------------------------------------------------
+
+def _hl_goal(repo: Path, sd_id: str) -> str:
+    """The regulation-neutral Baseline Goal paragraph, verbatim from the corpus."""
+    return " ".join(objective_paragraph(domain_dir(repo, sd_id)).split())
+
+
+def _cell(v: str) -> str:
+    return " ".join(str(v).split())
+
+
+def _run_identity(run_dir: Path) -> str:
+    """run_id and mode of the run that is assembling this document."""
+    mf = run_dir / "manifest.json"
+    if not mf.exists():
+        return run_dir.name
+    try:
+        m = json.loads(mf.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return run_dir.name
+    return f"{m.get('run_id', run_dir.name)} ({m.get('mode', 'pipeline')})"
+
+
+def assemble_doc(repo: Path, run_dir: Path, case: dict) -> str:
+    """Deterministic assembly of doc02_adjusted_goals.md (Doc02 case format).
+
+    §0/§1 static template text; §2 the p3f framing table; §3 per sub-domain:
+    HL goal (corpus, verbatim) + the goal table from the L0-validated JSONs
+    with Regulation and Control Anchors DERIVED by code; §4 the p4t tension
+    resolutions (None for mono-regulation runs); §5 the deterministic Track B
+    matrix; §6 the NIST control tables derived from the mapping store +
+    CONTROLS referential."""
     import datetime as _dt
     steps_dir = run_dir / "steps"
-    verdicts = (steps_dir / "verdicts.md").read_text(encoding="utf-8").strip()
-    selection_md = (steps_dir / "selection.md").read_text(encoding="utf-8")
-    sel_table = selection_md.split("Excluded candidates:")[0].strip()
-    frags = sorted((steps_dir / "goals").glob("D-*.md"))
-    if not frags:
-        raise ValueError("no goal fragments to assemble")
-    goal_blocks, a41_rows, s5_items = [], [], []
-    for f in frags:
-        t = f.read_text(encoding="utf-8")
-        m = re.search(r"(^### D-\d{2}\.\d[^\n]*\n(?:.*?))(?=^## §4\.1|\Z)", t, re.S | re.M)
-        if not m:
-            raise ValueError(f"goal fragment {f.name} missing the §4 heading+table block")
-        goal_blocks.append(m.group(1).strip())
-        a41 = re.search(r"^## §4\.1[^\n]*\n(.*?)(?=^## §5|\Z)", t, re.S | re.M)
-        if a41:
-            for line in a41.group(1).splitlines():
-                s = line.strip()
-                if s.startswith("|") and not re.fullmatch(r"\|[\s:|-]+\|", s) \
-                        and not s.startswith("| ID |"):
-                    a41_rows.append(s)
-        s5 = re.search(r"^## §5[^\n]*\n(.*?)\Z", t, re.S | re.M)
-        if s5:
-            for line in s5.group(1).splitlines():
-                s = line.strip()
-                if s and s.lower() != "none.":
-                    s5_items.append(s)
+    fact = parse_simple_yaml((steps_dir / "fact_sheet.yaml").read_text(encoding="utf-8"))
+    selection = json.loads((steps_dir / "selection.json").read_text(encoding="utf-8"))
+    confirmed = confirmed_regulations(run_dir)
+    sel_ids = sorted(s["id"] for s in selection["selected"])
+    names = {s["id"]: s["name"] for s in selection["selected"]}
+    framing = (steps_dir / "framing.md").read_text(encoding="utf-8").strip()
+    tpath = steps_dir / "tensions.json"
+    tensions = json.loads(tpath.read_text(encoding="utf-8")).get("tensions", []) \
+        if tpath.exists() else []
+    overrides = parse_overrides(case.get("track_b_overrides"))
+
     today = _dt.date.today().isoformat()
-    fm = (f"---\ndocument_id: MVP-P1-OUT-001\ntitle: \"Phase 1 Output — "
-          f"{case['company_name']} (Contextual Definition, MVP)\"\nversion: 0.1\n"
-          f"created: {today}\nstatus: DRAFT\ninput: pipeline/cases/{case['case_id']}/"
-          f"company_input.md\ncorpus: baseline\n---\n")
+    n_goals = 0
+    goal_blocks: list[str] = []
+    for sd in sel_ids:
+        jf = steps_dir / "goals" / f"{sd.replace('.', '_')}.json"
+        data = json.loads(jf.read_text(encoding="utf-8"))
+        gs = data["goals"]
+        if not gs:
+            goal_blocks.append(
+                f"### {sd} — {names[sd]}\n\n"
+                f"**High-Level Security Goal (SO-{sd}.HL):** {_cell(_hl_goal(repo, sd))}\n\n"
+                "_None — no Sub-SO for the confirmed regulations in this module._")
+            continue
+        # one verbatim baseline paragraph per confirmed regulation the module carries
+        regs_present = sorted({g["regulation"] for g in gs}, key=REGULATIONS.index)
+        baselines = [f"**Regulation baseline — `SG-{sd}.{reg}` ({reg}):** "
+                     f"{_cell(sub_so_objective(repo, sd, reg))}" for reg in regs_present]
+        rows = []
+        for g in gs:
+            anchors = goal_anchors(repo, sd, [g["baseline_source"]])
+            rows.append(
+                f"| `{g['id']}` | {_cell(g['goal'])} | {_cell(g['implication'])} | "
+                f"{g['pattern']} | {PROPERTY_LONG[g['property']]} | {g['parent']} | "
+                f"{g['regulation']} | {_cell(g['source'])} | "
+                f"{', '.join(anchors) if anchors else '—'} | {_cell(g['adjustment'])} |")
+        n_goals += len(rows)
+        goal_blocks.append(
+            f"### {sd} — {names[sd]}\n\n"
+            f"**High-Level Security Goal (SO-{sd}.HL):** {_cell(_hl_goal(repo, sd))}\n\n"
+            + "\n\n".join(baselines) + "\n\n"
+            f"| AG ID | Adjusted Goal | Company implication | Pattern | Property "
+            f"| Parent Goal | Regulation | Articles | Control Anchors | Adjustment |\n"
+            f"|---|---|---|---|---|---|---|---|---|---|\n"
+            + "\n".join(rows))
+
+    if len(confirmed) >= 2 and tensions:
+        t_parts = [f"### {t['id']} ({t['subdomains']}) — {_cell(t['tension'])}\n\n"
+                   f"**Conflict:** {_cell(t['conflict'])}\n\n"
+                   f"**Resolution:** {_cell(t['resolution'])}" for t in tensions]
+        s4 = "\n\n".join(t_parts)
+    elif len(confirmed) >= 2:
+        s4 = "None — the confirmed regulation pairing surfaces no strategic tension in the corpus."
+    else:
+        s4 = "None — single-regulation run."
+
+    tb_rows = track_b_rows(fact, sel_ids, overrides)
+    s5_table = ("| Sub-Domain | Scale | Inheritability | Priority | Tier | Rationale |\n"
+                "|---|---|---|---|---|---|\n"
+                + "\n".join(f"| {r['subdomain']} | {r['scale']} | {r['inheritability']} "
+                            f"| {r['priority']} | {r['tier']} | {_cell(r['rationale'])} |"
+                            for r in tb_rows))
+
+    s6_parts: list[str] = []
+    for i, sd in enumerate(sel_ids, 1):
+        secs = sd_control_sections(repo, sd, confirmed)
+        body = [f"### §6.{i} {sd} — {names[sd]}\n\n_Applicable regulations: "
+                f"{', '.join(confirmed)}_"]
+        for sec in secs:
+            if not sec["rows"]:
+                continue
+            body.append(f"#### {sec['title']}\n\n"
+                        "| Function | Control ID | Description (1-liner) | Path |\n"
+                        "|---|---|---|---|\n"
+                        + "\n".join(f"| {r['function']} | {r['id']} | {_cell(r['text'])} "
+                                    f"| {r['path']} |" for r in sec["rows"]))
+        s6_parts.append("\n\n".join(body))
+
+    doc_id = "MVP-P1-DOC02-001"
     parts = [
-        fm, f"# Phase 1 Output — {case['company_name']}", "",
-        "## §1 Company Profile Echo", _strip_heading(s1),
-        "## §2 Applicable Regulations", verdicts,
-        "## §3 Applicable Sub-domain Subset", sel_table,
-        "## §4 Adjusted Goals", "",
-        "**Framing (company context conditioning every goal below):**", _strip_heading(framing), "",
+        f"---\ndocument_id: {doc_id}\ntitle: \"Adjusted Goals per Sub-Domain — "
+        f"{case['company_name']}\"\nversion: 0.1\ncreated: {today}\nstatus: DRAFT\n"
+        f"input: pipeline/cases/{case['case_id']}/company_input.md\ncorpus: baseline\n"
+        # the document declares its own producer: output/ is keyed by company,
+        # so two runs of one case export to the same path and the newest
+        # silently replaces the oldest
+        f"run_id: {_run_identity(run_dir)}\n---\n",
+        f"# Adjusted Goals per Sub-Domain — {case['company_name']}",
+        "## §0 Document Purpose",
+        f"This document is the **Phase 1 Adjusted Goals layer** of the "
+        f"{case['company_name']} run — the Fase 0 → Fase 1 exchange of the pipeline "
+        f"I/O contract (ADR-004): the frozen corpus **Baseline Goals** (high-level "
+        f"goal `SO-D-XX.Y.HL` + per-regulation Sub-SOs) restated against one "
+        f"company. It binds every ACTIVE sub-domain to: 1. a **regulatory floor** — "
+        f"the corpus Baseline Goals, consumed by reference (§1); 2. a **framing** — "
+        f"the company context conditioning every goal (§2); 3. **Adjusted Goals** — "
+        f"one company-proportional row per Sub-SO of each confirmed regulation, "
+        f"with code-derived control anchors (§3); 4. **resolutions** for the "
+        f"strategic tensions surfaced by the confirmed regulation pairings (§4); "
+        f"5. a **Track B tier** per sub-domain from the deterministic matrix (§5); "
+        f"6. the **NIST controls mapping** per sub-domain (§6).",
+        "## §1 Regulatory Floor (corpus, by reference)",
+        "The baseline floor for goals is consumed by reference from `baseline/domains/` "
+        "and `baseline/MAPPINGS/` per rule R9. The only baseline text reproduced here "
+        "is each sub-domain's High-Level Security Goal paragraph and each confirmed "
+        "regulation's Sub-SO objective, both verbatim — the rest is by reference.",
+        "## §2 Framing (company context conditioning every goal below)",
+        framing,
+        "## §3 Adjusted Goals",
+        "### §3.0 Structure and Interpretation Guide",
+        "Each active sub-domain presents:\n"
+        "1. **High-Level Security Goal (`SO-D-XX.Y.HL`):** the regulation-neutral "
+        "baseline objective, verbatim from the corpus module (`objective.md`).\n"
+        "2. **Regulation baseline (`SG-D-XX.Y.<REG>`):** each confirmed regulation's "
+        "Sub-SO objective, verbatim from the corpus module — the floor the adjusted "
+        "goal restates.\n"
+        "3. **Regulation-specific Adjusted Goals:** one row per Sub-SO of each "
+        "confirmed regulation, in canonical order (slot 001 = GDPR, 002 = CRA, …), "
+        "each with the **Company implication** — what the duty concretely means for "
+        "this company.\n"
+        "4. **Property:** one protected property per row (Confidentiality, "
+        "Integrity, Availability, Privacy Right, Accountability).\n"
+        "5. **Control Anchors:** NIST CSF 2.0 ids derived by code from the row's "
+        "Baseline source (`source_SR` → mapping store); the full per-axis mapping "
+        "lives in §6.\n"
+        "6. **Adjustment (closed vocabulary):** `unchanged — fits as stated` | "
+        "`narrowed: … — because …` | `flagged: …` — never silently relaxed (R3).",
     ]
     parts.extend(goal_blocks)
-    parts.append("### §4.1 Control Anchor Mapping (applicable regulations only — rule R8)")
-    parts.append("| ID | Regulation | CSF 2.0 | NIST PF 1.1 | NIST AI RMF | Source |")
-    parts.append("|---|---|---|---|---|---|")
-    parts.extend(a41_rows)
-    parts.append("## §5 Ambiguities & Open Questions")
-    parts.append("\n".join(s5_items) if s5_items else "None.")
-    parts.append("## §6 Handoff Notes to Phase 2")
-    parts.append(_strip_heading(s6))
+    parts.append("## §4 Tensions Resolved")
+    parts.append(s4)
+    parts.append(f"## §5 Track B Decision Trail ({len(tb_rows)} rows)")
+    parts.append(s5_table)
+    parts.append("## §6 NIST Controls Mapping")
+    parts.extend(s6_parts)
     return "\n\n".join(parts) + "\n"
 
 
@@ -300,21 +788,21 @@ def build_run_notes(run_dir: Path) -> str:
 | Model | {manifest['model']} |
 | LLM calls (trace.jsonl) | {n_calls} |
 | Fichas | {', '.join(f"{k}={v}" for k, v in manifest['ficha_versions'].items())} |
-| Deliverable | phase1_output.md (DRAFT) |
+| Deliverable | doc02_adjusted_goals.md (DRAFT) |
 
 ## SPEC §8 evidence
 
 | # | Item | How verified | Result |
 |---|---|---|---|
 | 1 | Input contract (5 sections) | validated at P1 (L0 stop condition) | PASS |
-| 2 | §2 covers every input §5 regulation | validate.py item 2 | run locally post-sync |
+| 2 | Confirmed regulation set (§2 verdicts) | validate.py item 2 (verdicts.json) | run locally post-sync |
 | 3 | §3 codes exist in corpus | validate.py item 3 | run locally post-sync |
-| 4 | AG IDs unique, match §3 | validate.py item 4 | run locally post-sync |
+| 4 | AG IDs unique, match selection | validate.py item 4 | run locally post-sync |
 | 5 | Regulatory sources resolve (R2a) | validate.py item 5 | run locally post-sync |
-| 6 | Control anchors resolve (R2b) | validate.py item 6 | run locally post-sync |
+| 6 | Control anchors resolve (R2b) | derived by controls.py + validate.py diff | PASS by construction |
 | 7 | No statement without input trace | L0 parsers + gate review | human check |
 | 8 | Frontmatter complete; DRAFT | assembly (deterministic) | PASS (DRAFT until G-P1-D) |
-| 9 | Pattern/property/parent/adjustment | validate.py item 9 | run locally post-sync |
+| 9 | Pattern/property/parent/baseline source/adjustment | validate.py item 9 | run locally post-sync |
 | 10 | Document hygiene (R11/R12) | validate.py R12-hygiene + doc_lint scope note | run locally post-sync |
 
 ## Human gates
@@ -323,56 +811,6 @@ def build_run_notes(run_dir: Path) -> str:
 |---|---|---|
 {gate_rows or "| (none yet) | | |"}
 """
-
-
-PARSERS = {"p1": parse_p1, "p2": parse_p2, "p3": parse_p3, "p3f": parse_p3f,
-           "p5": parse_p5}
-
-EXTRA_INSTRUCTION = {
-    "p1": "Wrap your answer: return ONLY one ```yaml fenced block with the fact sheet.",
-    "p2": ("Wrap your answer: return ONLY one ```markdown fenced block containing the "
-           "5-row §2 verdict table (header + 5 rows, nothing else)."),
-    "p3": ("Wrap your answer: return ONLY one ```markdown fenced block containing "
-           "(a) the §3 selection table `| Sub-domain | Name | Trigger rationale |` and "
-           "(b) a line `Excluded candidates:` followed by one line per excluded candidate "
-           "in the form `<D-XX.Y> — <why-not>`. Nothing else."),
-    "p5": ("Wrap your answer: return ONLY one ```markdown fenced block containing exactly "
-           "three sections: `## §1 Company Profile Echo` (max 15 lines, verbatim-faithful "
-           "condensation of input §1-§4, no new facts), `## §4 Framing` (a single > "
-           "blockquote, max 8 lines: company size consequence, area of operation, "
-           "regulatory roles, inherited/managed capabilities, explicit exclusions) and "
-           "`## §6 Handoff Notes to Phase 2` (max 10 lines: applicable regulations, "
-           "sub-domain scope, open questions). Plain markdown prose — never JSON. "
-           "Nothing else."),
-    "p3f": ("Wrap your answer: return ONLY one ```markdown fenced block containing a "
-           "single > blockquote (max 8 lines) with the §4 framing: company size "
-           "consequence, area of operation, regulatory roles, inherited/managed "
-           "capabilities, explicit exclusions. Plain markdown — never JSON. "
-           "Nothing else."),
-    "p5_no_framing": ("Wrap your answer: return ONLY one ```markdown fenced block containing "
-                      "exactly two sections: `## §1 Company Profile Echo` (max 15 lines, "
-                      "verbatim-faithful condensation of input §1-§4, no new facts) and "
-                      "`## §6 Handoff Notes to Phase 2` (max 10 lines: applicable "
-                      "regulations, sub-domain scope, open questions). The §4 Framing "
-                      "block is already provided separately. Plain markdown — never JSON. "
-                      "Nothing else."),
-}
-
-
-def p4_extra_instruction(sd_id: str) -> str:
-    return (
-        f"Wrap your answer: return ONLY one ```markdown fenced block containing "
-        f"(a) the heading `### {sd_id} — <canonical name>` and the 8-column goal table "
-        f"(`ID | Adjusted goal | Pattern | Property | Parent goal | Regulatory source | "
-        f"Control anchor | Adjustment`), (b) a heading `## §4.1 Control Anchor Mapping` "
-        f"with one row per (goal, confirmed regulation) pair "
-        f"(`ID | Regulation | CSF 2.0 | NIST PF 1.1 | NIST AI RMF | Source`), and "
-        f"(c) a heading `## §5` listing only `> ASSUMPTION:` blockquotes and open "
-        f"questions this sub-domain owes (ambiguity interpretation is already decided "
-        f"in the corpus — do not cite or re-analyze ambiguity cards; write `None.` if "
-        f"empty). The Property column MUST use exactly one of these short codes: "
-        f"C, I, A, privacy-right, accountability. Nothing else."
-    )
 
 
 # --------------------------------------------------------------------------
@@ -387,6 +825,13 @@ class StepRunner:
         self.model = model
         self.base = base
         self.dry_run = dry_run
+        # Sampler settings come from the run's config.json, never from a literal
+        # in this file: the trace records what was sent, and a record that
+        # disagrees with the payload makes the run uninterpretable (the failure
+        # that produced aegis_git_rev="" and a trace with no seed at all).
+        self.config = runconfig.load(run_dir)
+        self.temperature = float(self.config.get("temperature", 0.2))
+        self.sampler = runconfig.sampler_options(self.config)
         self.case = load_case(repo, self._case_id())
         self.trace = Trace(run_dir)
         self._client: OllamaClient | None = None
@@ -405,12 +850,26 @@ class StepRunner:
     def _call(self, step: str, subdomain: str | None) -> None:
         tag = step.replace(":", "_") if subdomain is None else f"p4_{subdomain.replace('.', '_')}"
         seq = self.trace.next_seq()
+        extra = ""
         if subdomain is not None:
-            extra = p4_extra_instruction(subdomain)
-        elif step == "p5" and (self.run_dir / "steps" / "framing.md").exists():
-            extra = EXTRA_INSTRUCTION["p5_no_framing"]  # p3f already produced it
+            sd_dir = domain_dir(self.repo, subdomain)
+            confirmed = confirmed_regulations(self.run_dir) if (
+                self.run_dir / "steps" / "verdicts.json").exists() else []
+            subso_ids = []
+            for reg in confirmed:
+                rf = sd_dir / "regs" / f"{reg}.md"
+                if rf.exists() and f"SG-{subdomain}.{reg}" in rf.read_text(encoding="utf-8"):
+                    subso_ids.append(f"SG-{subdomain}.{reg}")
+            extra = _p4_instruction(
+                subdomain, subso_ids=subso_ids,
+                adjustment_variant=(self.config.get("ficha_overrides") or {}).get("p4_adjustment"))
         else:
             extra = EXTRA_INSTRUCTION[step]
+            override = (self.config.get("ficha_overrides") or {}).get(f"{step}_instruction")
+            if override:
+                table = P3_INSTRUCTION_VARIANTS if step == "p3" else None
+                if table and override in table:
+                    extra = table[override]
         call = compose_call(self.repo, self.case, self.run_dir, step, subdomain,
                             extra_instruction=extra)
         num_ctx = NUM_CTX[step.split(":")[0]]
@@ -434,10 +893,17 @@ class StepRunner:
         record = {
             "seq": seq, "step": tag, "ficha_id": call["ficha"]["id"],
             "ficha_version": call["ficha"]["version"], "model": self.model,
-            "num_ctx": num_ctx, "temperature": 0.2,
+            # the EFFECTIVE num_ctx, after the escalation above, not the policy
+            # value in manifest.num_ctx_policy — the two legitimately differ and
+            # only this one describes what the model actually saw
+            "num_ctx": num_ctx, "num_predict": num_predict,
+            "temperature": self.temperature,
+            # sampler keys are recorded individually, including as null: "we sent
+            # no seed" is a fact about the run, and it is the fact EXP-02 tests
+            **{f"sampler_{k}": self.sampler.get(k) for k in runconfig.SAMPLER_KEYS},
             "ts_start": now_iso(), "system_path": str(sys_path),
             "user_path": str(user_path), "system_chars": len(call["system"]),
-            "user_chars": len(call["user"]), "est_prompt_tokens": len(call["user"]) // 4,
+            "user_chars": len(call["user"]), "est_prompt_tokens": est_tokens,
             "pack_files": call["files"],
         }
 
@@ -461,19 +927,40 @@ class StepRunner:
         for attempt in (1, 2):
             try:
                 raw = client.chat(self.model, call["system"], call["user"], num_ctx,
-                                  num_predict=num_predict)
+                                  temperature=self.temperature,
+                                  num_predict=num_predict, sampler=self.sampler)
                 answer = raw.get("message", {}).get("content", "")
+                record[f"attempt{attempt}_done_reason"] = raw.get("done_reason")
+                if raw.get("done_reason") == "length":
+                    # A truncated answer is NOT a valid artifact: it can still
+                    # parse as L0 and be stored as the artifact of record
+                    # (seq 26 of job 1963538: D-10.1 cut mid-sentence at the
+                    # 8192-token cap and passed). Keep it for forensics, then
+                    # make it a retryable failure like any other.
+                    (out_dir / f"{seq:03d}_{tag}_response_truncated.json").write_text(
+                        json.dumps(raw, indent=1, ensure_ascii=False), encoding="utf-8")
+                    (out_dir / f"{seq:03d}_{tag}_output_truncated.md").write_text(
+                        answer, encoding="utf-8")
+                    record[f"attempt{attempt}_truncated_chars"] = len(answer)
+                    raise LLMError(
+                        f"response truncated at the num_predict={num_predict} cap "
+                        f"(done_reason=length, {raw.get('eval_count')} eval tokens, "
+                        f"{len(answer)} chars returned) — answer is incomplete")
                 if not answer.strip():
                     raise LLMError("empty response content")
                 record[f"attempt{attempt}_latency_s"] = round(raw.get("total_duration", 0) / 1e9, 1)
                 record[f"attempt{attempt}_eval_tokens"] = raw.get("eval_count")
+                # the tokenizer's own prompt count. est_prompt_tokens is a
+                # chars/4 heuristic kept for continuity with older runs; this is
+                # the number cost accounting and context-budget decisions need,
+                # and it is the one that reveals a pack that actually overflowed.
+                record[f"attempt{attempt}_prompt_tokens"] = raw.get("prompt_eval_count")
                 break
             except LLMError as e:
                 record[f"attempt{attempt}_error"] = str(e)[:500]
                 if attempt == 1:
                     call["user"] += (f"\n\nNOTE: your previous response could not be used "
                                      f"({e}). Answer again, complete and correct.")
-                    call["system"] = call["system"]  # unchanged
         if answer is None:
             record.update({"status": "failed", "ts_end": now_iso(),
                            "output_path": None, "raw_path": None})
@@ -496,13 +983,31 @@ class StepRunner:
                           f"exactly in the requested fenced format.")
             try:
                 raw2 = client.chat(self.model, call["system"], retry_user, num_ctx,
-                                   num_predict=num_predict)
+                                   temperature=self.temperature,
+                                   num_predict=num_predict, sampler=self.sampler)
                 answer2 = raw2.get("message", {}).get("content", "")
+                record["l0_retry_done_reason"] = raw2.get("done_reason")
+                if raw2.get("done_reason") == "length":
+                    raise LLMError(
+                        f"L0 repair response truncated at the num_predict={num_predict} "
+                        f"cap (done_reason=length, {raw2.get('eval_count')} eval tokens)")
+                if not answer2.strip():
+                    raise LLMError("L0 repair response was empty")
                 retry_out = out_dir / f"{seq:03d}_{tag}_output_attempt2.md"
                 retry_out.write_text(answer2, encoding="utf-8")
                 record["retry_output_path"] = str(retry_out)
                 parsed = self._validate(step, answer2, subdomain)
                 answer, raw = answer2, raw2
+                # `raw_path`/`response_chars` must describe the answer that
+                # was ACCEPTED, not the one L0 rejected — otherwise the trace
+                # points at forensics that contradict steps/
+                retry_raw = out_dir / f"{seq:03d}_{tag}_response_attempt2.json"
+                retry_raw.write_text(json.dumps(raw2, indent=1, ensure_ascii=False),
+                                     encoding="utf-8")
+                record["accepted_raw_path"] = str(retry_raw)
+                record["accepted_output_path"] = str(retry_out)
+                record["response_chars"] = len(answer2)
+                record["est_output_tokens"] = raw2.get("eval_count")
                 record["l0_retried"] = True
             except (ValueError, KeyError, LLMError) as e2:
                 record.update({"status": "failed", "ts_end": now_iso(),
@@ -517,49 +1022,19 @@ class StepRunner:
 
     def _validate(self, step: str, answer: str, subdomain: str | None) -> dict:
         if subdomain is not None:
-            return parse_p4(answer, subdomain)
+            parsed = parse_p4(answer, subdomain)
+            return self._check_p4_quality(parsed, subdomain)
         if step == "p3":
             cands = [c["id"] for c in
                      __import__("compose").candidate_subdomains(self.repo, confirmed_regulations(self.run_dir))]
             return parse_p3(answer, cands)
         return PARSERS[step](answer)
 
+    def _check_p4_quality(self, parsed: dict, sd_id: str) -> dict:
+        return check_p4_quality(self.repo, self.run_dir, parsed, sd_id)
+
     def _store(self, step: str, subdomain: str | None, tag: str, parsed: dict) -> None:
-        steps_dir = self.run_dir / "steps"
-        if step == "p1":
-            (steps_dir / "fact_sheet.yaml").write_text(parsed["yaml_text"], encoding="utf-8")
-        elif step == "p2":
-            (steps_dir / "verdicts.md").write_text(parsed["md"], encoding="utf-8")
-            (steps_dir / "verdicts.json").write_text(
-                json.dumps({"verdicts": parsed["verdicts"]}, indent=1, ensure_ascii=False),
-                encoding="utf-8")
-        elif step == "p3":
-            (steps_dir / "selection.md").write_text(parsed["md"], encoding="utf-8")
-            (steps_dir / "selection.json").write_text(
-                json.dumps({"selected": parsed["selected"], "excluded": parsed["excluded"]},
-                           indent=1, ensure_ascii=False), encoding="utf-8")
-        elif subdomain is not None:
-            goals_dir = steps_dir / "goals"
-            goals_dir.mkdir(exist_ok=True)
-            fname = subdomain.replace(".", "_")
-            (goals_dir / f"{subdomain}.md").write_text(parsed["md"], encoding="utf-8")
-            (goals_dir / f"{fname}.json").write_text(
-                json.dumps({"subdomain": subdomain, "goals": parsed["goals"]},
-                           indent=1, ensure_ascii=False), encoding="utf-8")
-        elif step == "p3f":
-            (steps_dir / "framing.md").write_text(parsed["framing"] + "\n", encoding="utf-8")
-        elif step == "p5":
-            framing = parsed.get("framing")
-            if not framing:
-                f = steps_dir / "framing.md"
-                if not f.exists():
-                    raise ValueError("no §4 framing: neither the p5 answer nor "
-                                     "steps/framing.md (stage p3f) provides it")
-                framing = f.read_text(encoding="utf-8").strip()
-            doc = assemble_p5(self.run_dir, self.case, parsed["s1"], framing, parsed["s6"])
-            (self.run_dir / "phase1_output.md").write_text(doc, encoding="utf-8")
-            (self.run_dir / "RUN_NOTES.md").write_text(build_run_notes(self.run_dir),
-                                                       encoding="utf-8")
+        store_parsed(self.run_dir, step, subdomain, parsed)
 
     # ---- public stage API -------------------------------------------------
 
@@ -583,7 +1058,7 @@ class StepRunner:
         return 1
 
     def stage_p4(self) -> int:
-        self._require(("steps/selection.json",), "G-P1-C")
+        self._require(("steps/selection.json", "steps/framing.md"), "G-P1-C")
         selection = load_selection(self.run_dir)
         order = sorted(s["id"] for s in selection["selected"])
         done = 0
@@ -596,13 +1071,54 @@ class StepRunner:
             done += 1
         return done
 
-    def stage_p5(self) -> int:
+    def stage_p4t(self) -> int:
         self._require(("steps/selection.json",), "G-P1-C")
+        confirmed = confirmed_regulations(self.run_dir)
+        if len(confirmed) < 2:
+            (self.run_dir / "steps" / "tensions.json").write_text(
+                json.dumps({"tensions": []}, indent=1, ensure_ascii=False),
+                encoding="utf-8")
+            print("[p4t] single-regulation run — no tensions call needed", flush=True)
+            return 0
+        self._call("p4t", None)
+        return 1
+
+    def stage_p5(self) -> int:
+        """Zero-LLM assembly: Doc02 deliverable from validated artifacts +
+        code-derived controls/tiers, then L1 validation and export."""
+        self._require(("steps/selection.json", "steps/framing.md"), "G-P1-C")
         goals = sorted((self.run_dir / "steps" / "goals").glob("D-*.md"))
         if not goals:
             raise ValueError("no P4 goal artifacts found — run stage p4 first")
-        self._call("p5", None)  # narrative blocks (§1, §6; framing only if p3f absent)
-        return 1
+        doc = assemble_doc(self.repo, self.run_dir, self.case)
+        (self.run_dir / "doc02_adjusted_goals.md").write_text(doc, encoding="utf-8")
+        (self.run_dir / "RUN_NOTES.md").write_text(build_run_notes(self.run_dir),
+                                                   encoding="utf-8")
+        if not self.dry_run:
+            self._finalize_p5()
+        return 0
+
+    def _finalize_p5(self) -> None:
+        """Post-assembly gate: L1 validation runs NOW (before G-P1-D), and the
+        deliverable is exported to the repo's output/<company>/ convention."""
+        import validate as validate_mod
+        # the manifest's call counter is updated by run_pipeline AFTER the stage
+        # returns — bring it current before validating trace consistency
+        update_manifest(self.run_dir, n_calls_total=count_calls(self.run_dir))
+        findings = validate_mod.validate_run(self.repo, self.run_dir)
+        if findings:
+            raise ValueError(
+                f"post-assembly L1 validation failed with {len(findings)} finding(s) "
+                f"(doc02_adjusted_goals.md kept on disk for forensics): {findings}")
+        # one export directory per RUN: output/ keyed only by company means two
+        # runs of one case overwrite each other and the newest silently wins
+        out_dir = (Path(os.environ.get("AEGIS_EXPORT_DIR", str(self.repo / "output")))
+                   / self.case["company_id"] / self.run_dir.name)
+        out_dir.mkdir(parents=True, exist_ok=True)
+        shutil.copy(self.run_dir / "doc02_adjusted_goals.md",
+                    out_dir / "doc02_adjusted_goals.md")
+        shutil.copy(self.run_dir / "RUN_NOTES.md", out_dir / "RUN_NOTES.md")
+        print(f"[p5] L1 validation PASS; deliverable exported to {out_dir}", flush=True)
 
     def _require(self, relpaths: tuple[str, ...], gate: str) -> None:
         for rel in relpaths:

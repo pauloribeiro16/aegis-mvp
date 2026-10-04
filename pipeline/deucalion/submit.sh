@@ -19,7 +19,17 @@
 set -euo pipefail
 
 STAGE="${1:?stage required: p1|p2|p3|p3f|p4|p4t|p5|p4p5|all|agentic}"
-CASE="${2:-Case_01_TinyTask_SaaS}"
+# MVP_CASE is honoured so every driver knob is an env var (MODEL, RUN_TAG and
+# the sampler knobs already are). A resumed run that forgets $2 used to fall
+# back to Case_01 silently: the stage then assembled the deliverable from the
+# WRONG company while the run directory still said Case_02 — a mismatch visible
+# only in the document. It is now impossible to express, and the echo below
+# prints the resolved case on every submission.
+CASE="${2:-${MVP_CASE:-Case_01_TinyTask_SaaS}}"
+case "$CASE" in
+  Case_*) ;;
+  *) echo "FATAL: case '$CASE' does not name a pipeline/cases/Case_* binding" >&2; exit 2 ;;
+esac
 MODEL="${MVP_MODEL:-qwen3.8:27b}"
 RUN_TAG="${MVP_RUN_TAG:?set MVP_RUN_TAG=<short tag> (e.g. case01)}"
 
@@ -34,6 +44,30 @@ case "$STAGE" in
   *) echo "FATAL: unknown stage '$STAGE' (expected: p1|p2|p3|p3f|p4|p4t|p5|p4p5|all|agentic)" >&2
      exit 2 ;;
 esac
+
+# --- model preflight (login node, before any GPU slot is spent) -------------
+# The compute node re-checks the manifest (phase1.sbatch) but only AFTER the job
+# is scheduled and the GPU is allocated. This preflight costs a stat() instead of
+# a queue wait, and it is the guard against a silently mangled tag: the model
+# tags carry a colon (glm-4.7-flash:latest, nemotron-3.5-lightning:30b) and every
+# `${VAR%%:*}` shortcut truncates them into a name that does not exist — which is
+# how jobs 1979339/1979340 died 19s in with "manifest not in shared cache".
+# Resolve the tag from its own parts; never substring it.
+MODEL_NAME="${MODEL%%:*}"
+MODEL_TAG="${MODEL##*:}"
+[ "$MODEL_NAME" = "$MODEL" ] && MODEL_TAG="latest"   # bare name -> implicit :latest
+MANIFEST="${OLLAMA_MODELS:-/projects/F202512235CPCAA1/CyberMetric_Deucalion/ollama_data/models}/manifests/registry.ollama.ai/library/${MODEL_NAME}/${MODEL_TAG}"
+if [ ! -e "$MANIFEST" ]; then
+  # A model namespace with a dot (library/... is the flat namespace) or a
+  # non-library repo would live elsewhere; list what IS there rather than guess.
+  echo "FATAL: model '${MODEL}' -> no manifest at ${MANIFEST}" >&2
+  echo "       available in the shared cache:" >&2
+  CACHE="${OLLAMA_MODELS:-/projects/F202512235CPCAA1/CyberMetric_Deucalion/ollama_data/models}/manifests/registry.ollama.ai/library"
+  ls -1 "$CACHE" 2>/dev/null | sed 's/^/         /' >&2 || echo "         (cache unreadable from here)" >&2
+  echo "       (pull it on the login node with the graphify 0.32.13 binary)" >&2
+  exit 2
+fi
+echo "preflight: model '${MODEL}' -> manifest present"
 
 TIME=00:30:00
 case "$STAGE" in
@@ -75,4 +109,7 @@ DEPEND_ARGS=""
 sbatch -J "mvp_${STAGE}" --time="$TIME" $DEPEND_ARGS \
   --export="ALL,STAGE=${STAGE},CASE=${CASE},MODEL=${MODEL},RUN_TAG=${RUN_TAG}${EXTRA_RUN_ID}${EXTRA_AGENT}${EXTRA_EXPORT}" \
   pipeline/deucalion/phase1.sbatch
+# Echo the exact tag back so a mangled submission is visible in the submitter's
+# own terminal, not only 19 seconds later inside the job log.
+echo "submitted: stage=${STAGE} case=${CASE} model=${MODEL} tag=${RUN_TAG}${EXTRA_RUN_ID:+ run=${MVP_RUN_ID}}"
 echo "monitor: squeue -u \$USER ; then tail the run log under runs/run_${RUN_TAG}_<JOB>/logs/"

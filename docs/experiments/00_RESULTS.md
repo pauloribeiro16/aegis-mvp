@@ -133,6 +133,58 @@ objective metrics — retention measures survival, not correctness or
 calibration quality — which is exactly the question the blind rubric answers,
 and muse-glimmer is now a third arm worth scoring.
 
+**Correction to the record (2026-10-04).** The two cuts were booked as model
+incompatibilities. Reading the aborted answers shows a **shared cause in the
+prompt**: PROM-P1-03 v1.1.0 presented the exclusion line only in its non-empty
+form, never said a sub-domain may not appear in both lists, and never allowed
+an empty list — so glm-4.7-flash duplicated D-02.4 across both lists and
+nemotron invented the id `D-06.5`, then repeated it on the repair retry *with
+the reason it was wrong in the same line*. Both were filling a slot with no
+legal empty value. The prompt is revised to **v1.2.0** (explicit partition,
+empty form given, uncertain ids left IN the table), and the re-test runs as a
+**new tier `m02`**, not as a re-run of `m01`: a prompt revision changes the
+instrument. Runs now carry `prompt_digests` in `config.json` so that split is
+provable from the artefacts. Detail in
+[EXP03a_screening_results.md §6](EXP03a_screening_results.md).
+
+## The three cases (IN FLIGHT)
+
+**What it tested.** Whether the pipeline generalises past TinyTask. TinyTask is
+an 8-person SaaS with **2** confirmed regulations, and roughly 30 prior runs
+never executed a line of code that only a 4+-regulation case reaches. The
+cases added are **Case_02 SecureBorder Solutions** (450 employees; GDPR, CRA,
+NIS2, AI_Act — DORA excluded) and **Case_03 OmniBank** (5,000 employees; all
+five including DORA).
+
+**How it was designed.** Same pipeline, same prompts, same gates, same
+assembler; only the case binding changes. `qwen3.8:27b`, seeded, one run each —
+this lane is a correctness lane, not a measurement lane.
+
+**Results so far.** Both cases earn their place immediately. Case_02 ran the
+whole chain to p5 and exposed **three defects unreachable at 2 regulations**:
+
+1. `check_p4_quality` read `regs/<REG>.md` without checking it exists. Confirmed
+   AI_Act against D-06.4, whose module ships no AI_Act card → `FileNotFoundError`.
+2. The mapping store renders the AI Act SR series as `SR-AIACT-NNN` (no
+   underscore) while the regulation is `AI_Act` everywhere else — 203 references
+   across 8 modules, consistently. The code had assumed they were the same token.
+3. Models write `SG-D-07.2.AIACT` for `AI_Act`, and the stored id feeds anchor
+   derivation, so normalising only the display field would have been inert.
+
+The third one recurred at p5 through a different path (§6 control sections
+iterate the *confirmed* regulations, not the regulations a module actually
+carries). All three are now closed by one shared predicate —
+`compose.carries_reg_card()` — used at every read site, so the next 4+-regulation
+case does not find a fourth. Verified against the corpus: a confirmed
+regulation is a statement about the company, and a sub-domain carries cards for
+only the regulations that reach it — GDPR 29/38, CRA 36/38, NIS2 24/38,
+DORA 30/38, **AI_Act 10/38**.
+
+**What they say.** The MVP was never wrong on TinyTask; it was untested past
+it. A single added case paid for itself by finding three latent defects and a
+fourth variant, and the fix generalises because the predicate is derived from
+the corpus rather than from the case.
+
 ## EXP-05 — The robustness lane (COMPLETE — read [EXP05_robustness_results.md](EXP05_robustness_results.md))
 
 **What it tested.** The testing apparatus itself, and the behavioural rules no

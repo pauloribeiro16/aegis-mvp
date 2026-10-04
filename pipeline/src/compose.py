@@ -234,6 +234,39 @@ def domain_dir(repo: Path, sd_id: str) -> Path:
     raise FileNotFoundError(f"sub-domain directory not found for {sd_id}")
 
 
+def reg_module_path(repo: Path, sd_id: str, reg: str) -> Path:
+    """Path of `regs/<REG>.md` for a sub-domain — which may legitimately not exist.
+
+    A sub-domain's module carries one card per regulation that actually reaches
+    it. Confirming a regulation at G-P1-B says it applies to the COMPANY, not
+    that every selected sub-domain has a card for it: Case_02 confirms AI_Act
+    and selects D-06.4, whose module has no AI_Act card. Reading that path
+    unguarded is what killed p5 of run_sec02_p1_1979370 (job 1979980) with a
+    bare FileNotFoundError naming a file the corpus never promised to have.
+    Callers that require the card must check carries_reg_card() first and say
+    which regulation is missing — a FileNotFoundError on a derived path is not
+    a diagnosis.
+    """
+    return domain_dir(repo, sd_id) / "regs" / f"{reg}.md"
+
+
+def carries_reg_card(repo: Path, sd_id: str, reg: str) -> bool:
+    """Does this sub-domain carry a Sub-SO card for `reg`?
+
+    Requires both halves: the module file exists, AND it declares a card whose
+    id is exactly SG-<sd_id>.<reg>. The file alone is not enough — a module can
+    mention a regulation in its cross-reference section without resting a
+    baseline goal on it, and treating that mention as a card would invent an
+    obligation.
+    """
+    path = reg_module_path(repo, sd_id, reg)
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError:
+        return False
+    return f"SG-{sd_id}.{reg}" in text
+
+
 def subdomain_name(repo: Path, sd_id: str) -> str:
     idx = domain_dir(repo, sd_id) / "_index.md"
     m = re.search(r"^#\s+D-\d{2}\.\d+\s+[—-]\s+(.+)$", idx.read_text(encoding="utf-8"), re.M)
@@ -299,7 +332,13 @@ def candidate_subdomains(repo: Path, confirmed: list[str]) -> list[dict[str, str
 def sub_so_objective(repo: Path, sd_id: str, reg: str) -> str:
     """The `**Objective.**` paragraph of the Sub-SO card for <REG> in
     regs/<REG>.md — the regulation-specific baseline objective, verbatim."""
-    text = (domain_dir(repo, sd_id) / "regs" / f"{reg}.md").read_text(encoding="utf-8")
+    if not carries_reg_card(repo, sd_id, reg):
+        raise ValueError(
+            f"{sd_id} carries no Sub-SO card for {reg}: "
+            f"{reg_module_path(repo, sd_id, reg).name} is absent or declares no "
+            f"SG-{sd_id}.{reg}. A confirmed regulation applies to the company, "
+            f"not to every sub-domain — check the selection before deriving a goal.")
+    text = reg_module_path(repo, sd_id, reg).read_text(encoding="utf-8")
     # the Sub-SO yaml block anchors the card; the Objective paragraph follows it
     m_id = re.search(rf"id:\s*SG-{re.escape(sd_id)}\.{re.escape(reg)}\b", text)
     if not m_id:
@@ -372,6 +411,34 @@ def interactions_trim(path: Path, confirmed: list[str], keep: str = "operative")
               f"for confirmed regulations ({', '.join(confirmed)}); omitted: "
               f"{'; '.join(dropped_titles) or 'none'}.\n")
     return title + "\n\n" + "\n\n".join(kept), banner
+
+
+def prompt_digests(repo: Path) -> dict[str, str]:
+    """sha256 of every ficha this run will be prompted from, plus the golden.
+
+    A run records the sampler, the model and the git revision, but until now not
+    the prompt TEXT. That is the one input the pipeline cannot reconstruct: the
+    repo advances, `git rev` alone does not say which bytes of
+    PROM-P1-03_SELECT_SUBDOMAINS.md a given run actually received, and a prompt
+    edit is not a code edit. Comparing two runs across a prompt change without
+    this is comparing different instruments.
+
+    Cheap enough to write on every `new-run`: eight small files, once, before
+    the first call. A missing file is recorded as "absent" rather than skipped —
+    a silently shorter digest set would read as "unchanged".
+    """
+    import hashlib
+
+    out: dict[str, str] = {}
+    targets = {step: repo / "docs" / "pipeline" / "prompts" / fname
+               for step, fname in FICHA_FILES.items()}
+    targets["golden"] = repo / "example" / "doc02_adjusted_goals.md"
+    for key, path in targets.items():
+        try:
+            out[key] = hashlib.sha256(path.read_bytes()).hexdigest()[:16]
+        except OSError:
+            out[key] = "absent"
+    return out
 
 
 def golden_text(repo: Path) -> str:

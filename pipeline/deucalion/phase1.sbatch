@@ -66,10 +66,20 @@ find pipeline/src -name "*.pyc" -delete 2>/dev/null || true
 export PYTHONDONTWRITEBYTECODE=1
 
 # --- model cache check (no egress on compute nodes; pull happens on login) --
-MODEL_MANIFEST="${OLLAMA_MODELS}/manifests/registry.ollama.ai/library/${MODEL%%:*}/${MODEL##*:}"
+# A bare name (no colon) means the implicit :latest tag. Without this default,
+# `${MODEL##*:}` returns the WHOLE string for a colon-less model, so the probe
+# looks for library/glm-4.7-flash/glm-4.7-flash instead of .../latest and kills a
+# job that the model in fact has (this is what jobs 1979339/1979340 hit, after a
+# truncated tag lost the ":30b"; both models are present in the shared cache).
+MODEL_NAME="${MODEL%%:*}"
+MODEL_TAG="${MODEL##*:}"
+[ "$MODEL_NAME" = "$MODEL" ] && MODEL_TAG="latest"
+MODEL_MANIFEST="${OLLAMA_MODELS}/manifests/registry.ollama.ai/library/${MODEL_NAME}/${MODEL_TAG}"
 if [ ! -e "$MODEL_MANIFEST" ]; then
-  echo "FATAL: model '${MODEL}' manifest not in shared cache (${MODEL_MANIFEST})."
-  echo "       Pull it on the login node with the graphify 0.32.13 binary first."
+  echo "FATAL: model '${MODEL}' -> no manifest at ${MODEL_MANIFEST}"
+  echo "       available in the shared cache:"
+  ls -1 "${OLLAMA_MODELS}/manifests/registry.ollama.ai/library" 2>/dev/null | sed 's/^/         /'
+  echo "       (pull it on the login node with the graphify 0.32.13 binary first)"
   exit 2
 fi
 echo "model manifest present: ${MODEL_MANIFEST}"

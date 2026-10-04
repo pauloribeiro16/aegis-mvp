@@ -3,7 +3,7 @@ ficha_id: PROM-P1-03
 title: 'Select the Sub-Domain Subset'
 phase_step: 'Phase 1 · P3 (SPEC §5)'
 pattern: 'deterministic pre-filter + LLM trigger judgment'
-version: 1.1.0
+version: 1.2.0
 created: 2026-10-01
 status: ACTIVE
 normative_source:
@@ -13,6 +13,18 @@ normative_source:
 
 # PROM-P1-03 — Select the Sub-Domain Subset
 
+> **v1.2.0 change (2026-10-04):** the §3 table and the exclusion list are stated
+> as an explicit **partition** of the candidate set, and the exclusion list is
+> allowed to be **empty**. v1.1.0 showed only the non-empty form of the
+> exclusion line, and never said a sub-domain may not appear in both places.
+> Two models filled the slot instead of leaving it empty and died at L0 across
+> every repeat: `glm-4.7-flash` put D-02.4 in the table *and* in the exclusion
+> list; `nemotron-3.5-lightning` named D-06.5 — an id that does not exist —
+> and, on the repair retry, wrote the reason it was wrong inside the very line
+> that was wrong ("N/A (no D-06.5 in candidate set)"). The gate was right in
+> both cases; the prompt had left an apparently mandatory slot with no legal
+> empty value.
+>
 > **v1.1.0 change (2026-10-01):** the "4–10 sub-domain target" is removed —
 > it over-pruned (the golden case keeps 35/38 sub-domains ACTIVE under
 > GDPR+CRA). Every candidate is assessed; a candidate is EXCLUDED only with a
@@ -47,7 +59,17 @@ normative_source:
 
 ```text
 Excluded candidates: <D-XX.Y> — <one-line why-not (no company fact triggers it)>
+Excluded candidates: (none — every candidate is triggered)
 ```
+
+Several exclusions are written as several `Excluded candidates:` lines.
+
+**The two lists are a partition of the candidate set.** Every candidate id
+appears in exactly one of them: in the §3 table, or in the exclusion list.
+Never both, never neither. The exclusion list is a legal empty result — if
+every candidate is triggered, write `(none — every candidate is triggered)`
+and add no further line. A candidate you name in the exclusion list must be
+moved out of the §3 table in the same answer.
 
 ## Prompt body
 
@@ -56,13 +78,14 @@ Excluded candidates: <D-XX.Y> — <one-line why-not (no company fact triggers it
 > For each candidate sub-domain:
 > 1. Read its participant rows (which confirmed regulations are present) and the sub-domain's subject matter.
 > 2. Decide: does an obligation of a confirmed regulation match the sub-domain subject matter AND trigger on a company fact? Write the decision as a one-line trigger rationale in "company fact → regulation duty" form (example: "client PII stored on managed cloud → GDPR Art. 32 security of processing").
-> 3. If no company fact triggers it, move the sub-domain to the exclusion list with a why-not line naming the absent fact — not a hunch.
+> 3. If no company fact triggers it, move the sub-domain to the exclusion list with a why-not line naming the absent fact — not a hunch. "Move" means remove its row from the §3 table in this same answer: a sub-domain is either in the table or in the exclusion list, never in both.
 >
 > Rules:
-> 1. Canonical IDs only, exactly as in `baseline/domains/index.md` — never invent, merge, or reformat (R1).
+> 1. Canonical IDs only, exactly as in `baseline/domains/index.md` — never invent, merge, or reformat (R1). Copy each id from the candidate list above character for character. If you are unsure whether an id exists, do not name it: leave it IN the §3 table and let the reviewer prune at G-P1-C. An invented id (one that is not in the candidate list) is a hard failure, not a near miss.
 > 2. Only confirmed regulations generate triggers (R8).
 > 3. **Default is INCLUSION.** When a confirmed regulation applies broadly, most sub-domains stay active (the golden case keeps 35/38 under GDPR+CRA). Exclude only when a specific company fact is absent (e.g. "no AI systems placed on the market → D-10.3 compliance testing of AI models not triggered"). A doubt means INCLUDE with an `open question` tag — the reviewer prunes at G-P1-C.
 > 4. Do not read goal content or requirements yet — selection only.
+> 5. The §3 table and the exclusion list partition the candidate set: every candidate appears in exactly one. Never write a sub-domain in both. An empty exclusion list is a valid answer — write `Excluded candidates: (none — every candidate is triggered)` and stop. Do not invent an exclusion to fill the line.
 
 ## Self-checks (L2)
 
@@ -70,6 +93,9 @@ Excluded candidates: <D-XX.Y> — <one-line why-not (no company fact triggers it
 - Every selection cites ≥1 confirmed regulation + ≥1 company fact.
 - Every candidate is either selected or excluded with a grounded why-not line (no silent drops).
 - Count reported (selection + exclusions = candidate set).
+- No id appears in both the §3 table and the exclusion list; the exclusion list was
+  read back to confirm it is either empty or fully grounded — not padded to fill
+  the line.
 
 ## Guard hooks (L0/L1)
 

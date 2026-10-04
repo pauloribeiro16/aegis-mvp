@@ -20,8 +20,8 @@ import re
 import shutil
 from pathlib import Path
 
-from compose import (REGULATIONS, SD_RE, anchor_slice, compose_call,
-                     confirmed_regulations, domain_dir, load_case,
+from compose import (REGULATIONS, SD_RE, anchor_slice, carries_reg_card,
+                     compose_call, confirmed_regulations, domain_dir, load_case,
                      load_selection, objective_paragraph, parse_simple_yaml,
                      sub_so_objective)
 from controls import (goal_anchors, parse_overrides, sd_control_sections,
@@ -421,9 +421,7 @@ def check_p4_quality(repo: Path, run_dir: Path, parsed: dict, sd_id: str) -> dic
     # That path is only reachable at 4+ applicable regulations — TinyTask
     # (GDPR+CRA) never reached it, and no run did until Case_02 confirmed
     # AI_Act against a module (D-06.4) that ships no AI_Act card.
-    expected_regs = [reg for reg in confirmed
-                     if (sd_dir / "regs" / f"{reg}.md").exists()
-                     and f"SG-{sd_id}.{reg}" in (sd_dir / "regs" / f"{reg}.md").read_text(encoding="utf-8")]
+    expected_regs = [reg for reg in confirmed if carries_reg_card(repo, sd_id, reg)]
     coverage = quality.check_subso_coverage(goals, expected_regs)
     if coverage:
         raise ValueError("; ".join(coverage))
@@ -978,9 +976,21 @@ class StepRunner:
             parsed = self._validate(step, answer, subdomain)
         except (ValueError, KeyError) as e:
             record["l0_first_error"] = str(e)[:500]
+            # The repair must be a repair, not a rewrite. "Return the corrected
+            # answer" alone was read as "write it all again, thoroughly": on
+            # p4_D-03_2 of run_sec03_p1_1979371 (job 1979981) qwen3.8 answered
+            # 843 tokens, was told one row was a 93% near-verbatim copy of the
+            # Sub-SO, and returned 12,500 tokens — 15x the original — which hit
+            # the num_predict cap with the closing fence unwritten and killed
+            # the run. The diagnosis was right and the answer was otherwise
+            # sound; the repair destroyed it.
             retry_user = (call["user"] + f"\n\nNOTE: your previous answer failed the output "
-                          f"contract validation: {e}. Return the corrected answer only, "
-                          f"exactly in the requested fenced format.")
+                          f"contract validation: {e}.\n"
+                          f"Re-emit the SAME answer with only that defect corrected. "
+                          f"Every other row, id, citation and adjustment record stays "
+                          f"exactly as you wrote it. Do not add material, do not restate "
+                          f"the baseline, do not elaborate — the answer must come out "
+                          f"the same length or shorter, in the same fenced format.")
             try:
                 raw2 = client.chat(self.model, call["system"], retry_user, num_ctx,
                                    temperature=self.temperature,
@@ -1013,8 +1023,16 @@ class StepRunner:
                 record.update({"status": "failed", "ts_end": now_iso(),
                                "l0_final_error": str(e2)[:500]})
                 self.trace.append(record)
-                raise LLMError(f"step {tag}: L0 validation failed twice "
-                               f"({e2}); forensics in {out_dir}") from e2
+                # Both errors, because the second is often a symptom: a repair
+                # that ran past num_predict reports "no fenced block" for a run
+                # whose actual defect was a calibration failure on row 3. Naming
+                # only the final error is what made job 1979981 look like a
+                # format-contract failure instead of a lazy restatement.
+                raise LLMError(
+                    f"step {tag}: L0 validation failed twice.\n"
+                    f"  first:  {e}\n"
+                    f"  repair: {e2}\n"
+                    f"  forensics in {out_dir} (see trace.jsonl l0_first_error)") from e2
 
         record.update({"status": "ok", "ts_end": now_iso()})
         self.trace.append(record)

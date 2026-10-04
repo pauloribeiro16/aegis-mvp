@@ -19,7 +19,8 @@ import re
 from functools import lru_cache
 from pathlib import Path
 
-from compose import REGULATIONS, anchor_slice, domain_dir
+from compose import (REGULATIONS, anchor_slice, carries_reg_card, domain_dir,
+                     reg_module_path)
 
 REF_DIRS = {"nist_csf": "NIST_CSF_2.0", "nist_pf": "NIST_PF", "nist_airmf": "NIST_AI_RMF"}
 PATH_ALIAS = {"NIST_CSF_2.0": "NIST_CSF", "NIST_PF": "NIST_PF", "NIST_AI_RMF": "NIST_AI_RMF"}
@@ -64,7 +65,14 @@ TRACK_B_MATRIX = {
 # --------------------------------------------------------------------------
 
 def _module_text(repo: Path, sd_id: str, reg: str) -> str:
-    return (domain_dir(repo, sd_id) / "regs" / f"{reg}.md").read_text(encoding="utf-8")
+    path = reg_module_path(repo, sd_id, reg)
+    if not carries_reg_card(repo, sd_id, reg):
+        raise ValueError(
+            f"{sd_id} carries no Sub-SO card for {reg}: {path.name} is absent or "
+            f"declares no SG-{sd_id}.{reg}. There is no source_SR to map, and "
+            f"inventing one would break the regulation→article→objective→control "
+            f"traceability chain (R2/R2b).")
+    return path.read_text(encoding="utf-8")
 
 
 def sources_of(repo: Path, sd_id: str, reg: str) -> list[str]:
@@ -215,7 +223,16 @@ def sd_control_sections(repo: Path, sd_id: str, confirmed: list[str]) -> list[di
 
     for sr in anchor_slice(repo, sd_id, confirmed_eff):
         absorb(sr)
+    # A confirmed regulation is confirmed for the COMPANY; a sub-domain only
+    # carries the cards that actually reach it. D-06.4 has no AI_Act card even
+    # though Case_02 confirms AI_Act, and asking for its source_SRs raised
+    # FileNotFoundError on a path the corpus never promised (p5 of
+    # run_sec02_p1_1979370, job 1979980). Skipping here is the correct semantic:
+    # the module asserts no AI_Act baseline goal, so it contributes no AI_Act
+    # control rows and the §6 table stays a union over what the module cites.
     for reg in confirmed_eff:
+        if not carries_reg_card(repo, sd_id, reg):
+            continue
         for sr_id in sources_of(repo, sd_id, reg):
             absorb(_sr(repo, reg, sr_id))
     sections = []

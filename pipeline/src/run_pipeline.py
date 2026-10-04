@@ -31,7 +31,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-from compose import parse_ficha, FICHA_FILES  # noqa: E402
+from compose import parse_ficha, FICHA_FILES, prompt_digests  # noqa: E402
 import runconfig  # noqa: E402
 from steps import NUM_CTX, StepRunner  # noqa: E402
 from trace import count_calls, now_iso, update_manifest  # noqa: E402
@@ -123,6 +123,9 @@ def cmd_new_run(args: argparse.Namespace) -> int:
             ) if v
         },
         "aegis_git_rev": rev,
+        # the prompt bytes, not just the code revision: a ficha edit changes the
+        # instrument without changing a line of Python
+        "prompt_digests": prompt_digests(repo),
         "created": now_iso(),
     })
     update_manifest(run_dir, run_config=json.loads(cfg.read_text(encoding="utf-8")))

@@ -27,6 +27,12 @@ Design layer for the **LLM-assisted pipeline that executes the AEGIS methodology
 | [04_LITERATURE_REVIEW.md](04_LITERATURE_REVIEW.md) | Literature grounding: canonical LLM pipeline stage model, RAG vs KG evidence, security-RE/threat-modeling LLM work, guardrails & evals (annotated sources) | ACTIVE |
 | [prompts/](prompts/) | Executable prompt fichas. Phase 1: `PROM-P1-01` … `PROM-P1-05` | Phase 1 detailed |
 
+**External evidence layer:** [`../research/`](../research/README.md) carries the
+2026-10-03 survey of pipeline and agent-orchestration patterns, the mapping of
+both against this implementation (22 patterns adopted, 6 gaps, 4 contradictions),
+and a ranked experiment backlog. It is the yardstick this folder's design
+decisions are measured against.
+
 ## Governing decisions (ADRs in `docs/decisions/`)
 
 | ADR | Decision |

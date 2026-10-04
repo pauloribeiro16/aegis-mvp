@@ -46,8 +46,10 @@ Fichas are internal engineering artifacts (R11 does not bind their style, but th
 | PROM-P1-01 | Extract Company Facts | single structured call | [prompts/PROM-P1-01_EXTRACT_FACTS.md](prompts/PROM-P1-01_EXTRACT_FACTS.md) |
 | PROM-P1-02 | Confirm Applicable Regulations | routing (per regulation) | [prompts/PROM-P1-02_CONFIRM_REGULATIONS.md](prompts/PROM-P1-02_CONFIRM_REGULATIONS.md) |
 | PROM-P1-03 | Select the Sub-Domain Subset | pre-filter + judgment | [prompts/PROM-P1-03_SELECT_SUBDOMAINS.md](prompts/PROM-P1-03_SELECT_SUBDOMAINS.md) |
+| PROM-P1-06 | Build §2 Framing | single structured call (p3f, after G-P1-C) | [prompts/PROM-P1-06_BUILD_FRAMING.md](prompts/PROM-P1-06_BUILD_FRAMING.md) |
 | PROM-P1-04 | Derive Adjusted Goals | parallelization (per D-XX.Y) | [prompts/PROM-P1-04_DERIVE_ADJUSTED_GOALS.md](prompts/PROM-P1-04_DERIVE_ADJUSTED_GOALS.md) |
-| PROM-P1-05 | Render and Validate the Output | render + layered validation | [prompts/PROM-P1-05_RENDER_VALIDATE.md](prompts/PROM-P1-05_RENDER_VALIDATE.md) |
+| PROM-P1-07 | Resolve Strategic Tensions | single call per run (p4t, multi-regulation only) | [prompts/PROM-P1-07_RESOLVE_TENSIONS.md](prompts/PROM-P1-07_RESOLVE_TENSIONS.md) |
+| PROM-P1-05 | Assemble and Validate the Deliverable | deterministic assembly (zero LLM) + layered validation | [prompts/PROM-P1-05_RENDER_VALIDATE.md](prompts/PROM-P1-05_RENDER_VALIDATE.md) |
 
 ### Phase 2 — Operationalization (skeleton; fichas in the next pass)
 

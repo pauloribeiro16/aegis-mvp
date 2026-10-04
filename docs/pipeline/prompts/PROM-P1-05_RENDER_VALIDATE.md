@@ -1,9 +1,9 @@
 ---
 ficha_id: PROM-P1-05
-title: 'Render and Validate the Output'
+title: 'Assemble and Validate the Deliverable'
 phase_step: 'Phase 1 · P5 (SPEC §5, §8)'
-pattern: 'render + layered validation'
-version: 1.0.0
+pattern: 'deterministic assembly + layered validation (no LLM call)'
+version: 1.2.0
 created: 2026-10-01
 status: ACTIVE
 normative_source:
@@ -11,69 +11,53 @@ normative_source:
   - 'docs/pipeline/00_PIPELINE_MASTER_DESIGN.md §7 (validation layers)'
 ---
 
-# PROM-P1-05 — Render and Validate the Output
+# PROM-P1-05 — Assemble and Validate the Deliverable
+
+> **v1.2.0 change (2026-10-01):** the deliverable is the **Doc02 case format**
+> (`doc02_adjusted_goals.md`, §0–§6). The assembly step is now **entirely
+> deterministic — zero LLM calls**: §0/§1 are static template text; §2 is the
+> p3f framing table; §3 renders the L0-validated goal JSONs with Regulation
+> and Control Anchors derived by `controls.py`; §4 renders the p4t tension
+> resolutions; §5 applies the deterministic Track B matrix; §6 derives the
+> NIST control tables from the mapping store + CONTROLS referential. L1
+> validation runs automatically and the deliverable is exported to
+> `output/<company>/`.
 
 ## Metadata
 
 | Field | Content |
 |---|---|
-| Role | Renderer + quality gatekeeper |
-| Mission | Assemble the deliverable from approved step outputs; run the full §8 checklist; produce the run evidence |
-| Inputs | Fact sheet; §2 verdicts; §3 selection + exclusions; §4/§4.1/§5 fragments; template |
-| Output | `output/<company>/phase1_output.md` (status DRAFT) + `output/<company>/RUN_NOTES.md` |
+| Role | Assembler + quality gatekeeper (code, not a model) |
+| Mission | Stitch the deliverable from validated step artifacts and code-derived data; run the §8 checklist automatically |
+| Inputs | Fact sheet; selection; framing (p3f); goal JSONs (P4); tensions (p4t); template; case binding (Track B overrides) |
+| Output | `doc02_adjusted_goals.md` (status DRAFT) + `RUN_NOTES.md`, exported to `output/<company>/` |
 | Human gate | **G-P1-D (final)** — sign-off flips status to ACTIVE |
-| Failure mode | Any checklist failure keeps status DRAFT; findings are fixed or flagged, never silenced |
+| Failure mode | Any validation finding aborts the stage before sign-off; artifacts kept for forensics |
 
-## Context pack (load exactly these)
+## Assembly contract
 
-| # | File | Use |
+| § | Source | Nature |
 |---|---|---|
-| 1 | `templates/phase1_output.md` | 6-section structure, frontmatter, §4 framing blockquote |
-| 2 | All prior step outputs (packs + fragments) | content source |
-| 3 | `example/phase1_output.md` + `example/RUN_NOTES.md` | golden reference for shape and evidence style |
-| 4 | `SPEC.md` §8 | the checklist being evidenced |
+| §0 Document Purpose | template (static, counts parametrized) | code |
+| §1 Regulatory Floor | template (static, by-reference text) | code |
+| §2 Framing | `steps/framing.md` (p3f, L0-validated 4-row table) | verbatim |
+| §3 Adjusted Goals | `steps/goals/*.json` + HL paragraphs verbatim from `objective.md` + anchors via `controls.goal_anchors` | code + artifacts |
+| §4 Tensions Resolved | `steps/tensions.json` (p4t); `None` for mono-regulation runs | verbatim |
+| §5 Track B | `controls.track_b_rows` (deterministic matrix + case overrides) | code |
+| §6 NIST Controls Mapping | `controls.sd_control_sections` (mapping store + CONTROLS JSONs) | code |
 
-## Output schema
+## Validation (automatic, before G-P1-D)
 
-`phase1_output.md` with frontmatter (`document_id: MVP-P1-OUT-<n>`, `version`, `created`, `status: DRAFT`, `input`, `corpus`) and sections §1–§6 per the template:
-
-- §1 Company profile echo (≤15 lines, verbatim-faithful condensation of input §1–§4);
-- §2 Applicable regulations (5 pre-seeded rows, verdicts from G-P1-B);
-- §3 Applicable sub-domain subset (selection table from G-P1-C);
-- §4 Adjusted goals (framing blockquote + one table per sub-domain) + §4.1 control anchor mapping;
-- §5 Ambiguities & open questions (card citations + ASSUMPTION blockquotes; `None.` if empty);
-- §6 Handoff notes to Phase 2 (≤10 lines).
-
-`RUN_NOTES.md`: one evidence table row per §8 item (1–10): item → how verified → result.
-
-## Prompt body
-
-> You are the renderer and quality gatekeeper for this Phase 1 run.
->
-> 1. Assemble `phase1_output.md` strictly per the template's 6-section structure. The §1 echo condenses input §1–§4 without adding anything (R6). §2, §3, §4, §4.1, §5 come from the approved step outputs — render, do not re-decide.
-> 2. Open with the §4 framing blockquote (company size/tier, area, regulatory roles, inherited capabilities, exclusions) instead of repeating context per goal.
-> 3. Run the §8 checklist item by item; for each, record in `RUN_NOTES.md` how it was verified and the result. Machine-checkable items (3, 4, 5, 6, 9) are verified by direct inspection commands (grep/ls against the corpus paths); item 10 by running `python scripts/doc_lint.py --strict`.
-> 4. If any item fails: fix it in the fragment that produced it (not by editing the rendered document into consistency), re-render, and re-check.
-> 5. Keep status DRAFT. §6 handoff: applicable regulations, sub-domain scope, open questions — ≤10 lines.
-
-## Self-checks (L2)
-
-- All 6 sections present, in template order, with the template's column contracts.
-- §2 covers every input §5 regulation; §3 IDs match the confirmed selection; §4 IDs match §3 rows.
-- Frontmatter complete; status DRAFT until G-P1-D final.
-- No placeholders (`?`, `TODO`, unfilled `<>`), no editorial meta-commentary (R11, R12).
-
-## Guard hooks (L0/L1)
-
-- `python scripts/doc_lint.py --strict` → zero findings (§8 item 10).
-- §8 items 3–6, 9 verifiable by parse/grep (see ficha PROM-P1-04 guard hooks).
-- Anchor spot-checks: `ls <subdomain>/articles/ | grep <REG>` per cited source.
+- Doc-vs-artifact cell diff: §2 table == framing.md; §3 rows == goal JSONs (incl. derived Regulation and Anchors == `controls.goal_anchors`); §4 ids == tensions.json; §5 rows == matrix derivation; §6 rows == `controls.sd_control_sections` derivation.
+- §0–§6 present exactly once, in order; §1–§6 order check.
+- SPEC §8 items 2–6, 9 (sources resolve via `articles/`/`regs/`; anchors resolve in `CONTROLS/` — by construction, diff-checked anyway); R12 hygiene; trace/manifest consistency.
+- `doc_lint.py --strict` covers the exported copy under `output/<company>/`.
 
 ## Failure handling
 
-- Checklist failure that cannot be fixed at this step → revert to the producing ficha (P2/P3/P4), fix there, re-enter P5.
+- Any finding → stage aborts with the finding list; the document is kept on disk for forensics; fix the producing fragment/ficha and re-enter P5.
 - `doc_lint` findings are resolved, not waived.
 
 ## Human gate
 
-**G-P1-D (final):** reviewer walks `RUN_NOTES.md` evidence + the rendered document; on sign-off, frontmatter `status` is set to `ACTIVE` and §6 hands off to Phase 2.
+**G-P1-D (final):** reviewer walks `RUN_NOTES.md` evidence + the rendered document (including the §4 tension resolutions and the Track B tiers, which are company decisions); on sign-off, frontmatter `status` is set to `ACTIVE` and the deliverable hands off to Phase 2.

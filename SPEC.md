@@ -5,8 +5,8 @@ version: 0.1.0
 created: 2026-09-17
 status: ACTIVE
 inputs: [input/<company>/company_input.md]
-outputs: [output/<company>/phase1_output.md]
-related_documents: [README.md, config.yaml, templates/company_input.md, templates/phase1_output.md]
+outputs: [output/<company>/doc02_adjusted_goals.md]
+related_documents: [README.md, config.yaml, templates/company_input.md, templates/doc02_adjusted_goals.md]
 ---
 
 # AEGIS MVP — Minimum Phase 1 Pipeline Specification
@@ -43,7 +43,7 @@ graph/ontology/dashboard infrastructure. See §9.
 |---|---|---|
 | **Inherited** | Modular sub-domain corpus (`D-01.1` … `D-10.3`, each `D-XX.Y/` providing a regulation-neutral `objective.md`, independent per-regulation modules `regs/<REG>.md` + `regs/<REG>.ambiguity.md`, cross-regulation analyses `cross/<R1>-<R2>.md` + `cross/_interactions.md`), verbatim article copies (`articles/`), control referentials (`CONTROLS/`), ambiguity baseline (`AMBIGUITY_REGISTRY/`), SR↔control mapping store (`MAPPINGS/sr_control_mappings/` — complete per-regulation NIST CSF 2.0 / PF 1.1 / AI RMF mappings extracted from the frozen dashboards) | **Read by reference** via `config.yaml`. Never modify, never copy into this repo, never re-derive interpretations the corpus already contains. |
 | **Company input** | Company profile, product, data handled, systems, regulations assumed | **Provided once** as `company_input.md` (§4). This is the *only* thing a new project must supply. |
-| **Generated** | Applicability reasoning + adjusted goals with anchors | **Produced by the procedure** (§5) into `phase1_output.md` (§6). |
+| **Generated** | Applicability reasoning + adjusted goals with anchors | **Produced by the procedure** (§5) into `doc02_adjusted_goals.md` (§6). |
 
 Rationale: in the full methodology, "controls" (NIST/OWASP referentials) and
 regulatory interpretation are frozen Phase-0 baseline shared by all cases; a new
@@ -130,8 +130,14 @@ derivation; P5 renders and validates.
   sub-domain *and* the company's facts trigger them (e.g. a company storing
   client personal data in a cloud DB → `D-01.1 Data at Rest Encryption` is in
   scope via GDPR Art. 32). Record each selected sub-domain with a one-line
-  trigger rationale in output §3. Target size: as small as the facts allow
-  (typical small company: 4–10 sub-domains).
+  trigger rationale in output §3. **Default is inclusion**: a candidate is
+  excluded only with a why-not grounded in a specific absent company fact —
+  the golden case keeps 35/38 sub-domains ACTIVE under GDPR+CRA; the reviewer
+  prunes at the gate. After the subset is confirmed, a
+  framing step (ficha PROM-P1-06) renders the §2 Framing table — size/tier
+  consequence, area of operation, regulatory roles, inherited/managed
+  capabilities, exclusions — from the fact sheet + verdicts; it conditions
+  every P4 goal and is reviewed at G-P1-D.
 - **P4 — Derive adjusted goals.** For each in-scope sub-domain:
   1. Read `D-XX.Y/objective.md` (the regulation-neutral High-level Security
      Objective) and, for **each regulation confirmed in P2**, the independent
@@ -144,57 +150,92 @@ derivation; P5 renders and validates.
      `AG-D-XX.Y-NNN` (rule R4), classified by satisfaction pattern
      (`achieve | cease | maintain | avoid | optimize`), by protected property
      (`C | I | A | privacy-right | accountability`), linked to its parent goal (Baseline Goal)
-     (`SO-D-XX.Y.HL`), and carrying a one-line adjustment record — what was
-     restated against the corpus Baseline Goal, never silently relaxed (ADR-003 D1).
-     Goals carry no owner/verification fields: verification belongs to the
-     Phase 2 objectives that refine them (ADR-003 D3).
+     (`SO-D-XX.Y.HL`), naming the Baseline source — the corpus Sub-SO id(s)
+     (`SG-D-XX.Y.<REG>`) the goal restates — and carrying a one-line adjustment
+     record using the closed decision vocabulary (`unchanged — fits as stated` /
+     `narrowed: … — because …` / `flagged: …`): never silently relaxed, and "no
+     adjustment needed" is an explicit decision, not an invented one (ADR-003 D1).
+     Granularity: one goal row per Sub-SO of each confirmed regulation, in
+     canonical regulation order (slot 001 = GDPR, 002 = CRA, …); the
+     Sub-SO's requirements fuse into the wording. Goals carry no
+     owner/verification fields: verification belongs to the Phase 2 objectives
+     that refine them (ADR-003 D3). Control anchors are NOT emitted by the
+     model: the Regulation and Control Anchors columns of the deliverable are
+     derived by code (`controls.py`: Baseline source → `source_SR` → mapping
+     store → CONTROLS) — R2b by construction.
   4. Anchor it: cite regulation article(s) that **exist as copies** in the
-     sub-domain's `articles/` directory (rule R2a) and optionally 1–2 control
-     IDs from `CONTROLS/` referentials that clearly match (rule R2b). The
-     module's own anchor surfaces are authoritative and pre-verified: the
-     Sub-SO "CSF anchors / PF 1.1 anchors / AI RMF anchors" blocks, the
-     requirement YAML `nist_csf` / `nist_pf` / `nist_airmf` keys, the
-     generated `**Control anchors:**` lines on the `regs/<REG>.ambiguity.md`
-     clause cards, and the mapping store
-     (`corpus.sr_control_mappings/<REG>.json`). Every requirement carries all
-     three axes where published (`nist_csf` everywhere; `nist_pf` on GDPR
-     modules, `nist_airmf` on AI_Act modules). Copy from these surfaces
-     instead of re-deriving mappings; they are guaranteed contradiction-free
-     against the dashboards (check H of `scripts/verify_no_loss.py`), and
-     `corpus.traceability` gives the ready-made regulation -> article ->
-     objective -> requirement -> control chain for every requirement.
-  5. If the cited clause has a card in the ambiguity registry, reference the
-     card instead of resolving silently (rule R7).
-- **P5 — Render and validate.** Render output §1–§6 per `templates/phase1_output.md`
-  and run the checklist in §8. Write the file to
-  `output/<company>/phase1_output.md`.
+     sub-domain's `articles/` directory or are quotable verbatim from
+     `regs/<REG>.md` (rule R2a). The control-anchord surfaces are authoritative
+     and pre-verified — the Sub-SO "CSF anchors / PF 1.1 anchors / AI RMF
+     anchors" blocks, the requirement YAML `nist_csf` / `nist_pf` /
+     `nist_airmf` keys, and the mapping store
+     (`corpus.sr_control_mappings/<REG>.json`) — and are consumed only by the
+     code derivation, never re-decided by a model. They are guaranteed
+     contradiction-free against the dashboards (check H of
+     `scripts/verify_no_loss.py`), and `corpus.traceability` gives the
+     ready-made regulation -> article -> objective -> requirement -> control
+     chain for every requirement.
+  5. Ambiguity interpretation is settled in Fase 0 (researcher ruling
+     2026-10-01): apply the decided interpretation as written and move on —
+     Phase 1 outputs do NOT cite ambiguity cards. Unresolved points become
+     `> ASSUMPTION:` blockquotes (R6) or open questions recorded with the goal
+     fragments.
+- **P4t — Resolve strategic tensions (multi-regulation runs).** One call per
+  run: for every corpus tension among the confirmed regulation pairings
+  (Emergent-tensions sections of the selected sub-domains'
+  `cross/_interactions.md`), record the operational conflict and adopt the
+  binding resolution rule (max-SLA routing convention). Single-regulation
+  runs skip the call — §4 records `None — single-regulation run.`
+- **P5 — Assemble and validate (zero LLM).** The deliverable
+  (`doc02_adjusted_goals.md`, Doc02 case format) is assembled
+  **deterministically**: §0/§1 static template text; §2 the p3f framing
+  table; §3 the goal JSONs with Regulation and Control Anchors derived by
+  code plus each sub-domain's HL paragraph verbatim from the corpus; §4 the
+  p4t tension resolutions; §5 the deterministic Track B matrix (scale from
+  the fact sheet, defaults `BUILD_REQUIRED`/`MUST`, per-case overrides); §6
+  the NIST control tables derived from the mapping store + CONTROLS
+  referential. Run the checklist in §8 (L1 `validate.py` runs automatically
+  post-assembly, diffing every table against its artifact/derivation) and
+  write the file to `output/<company>/doc02_adjusted_goals.md`.
 
-## 6. Output contract — `phase1_output.md`
+## 6. Output contract — `doc02_adjusted_goals.md`
 
-One Markdown file with light AEGIS-style frontmatter and six sections. Skeleton:
-`templates/phase1_output.md`.
+One Markdown file with light AEGIS-style frontmatter and seven sections
+(the Doc02 case format). Skeleton: `templates/doc02_adjusted_goals.md`.
 
 ```
-§1  Company Profile Echo        (≤15 lines, verbatim-faithful condensation of input §1–§4)
-§2  Applicable Regulations      (table: Regulation | Verdict | Rationale)
-§3  Applicable Sub-domain Subset (table: Sub-domain | Name | Trigger rationale)
-§4  Adjusted Goals               (one table per sub-domain:
-                                 | ID | Adjusted goal | Pattern | Property |
-                                 Parent goal | Regulatory source | Control anchor |
-                                 Adjustment |
+§0  Document Purpose            (static: what the deliverable binds, by section)
+§1  Regulatory Floor            (static: corpus consumed by reference, rule R9)
+§2  Framing                     (4-row table: Size | Area of operation |
+                                 Regulatory roles | Inherited capabilities)
+§3  Adjusted Goals              (per sub-domain: HL goal paragraph verbatim from
+                                 objective.md + table:
+                                 | AG ID | Adjusted Goal | Pattern | Property |
+                                 Parent Goal | Regulation | Articles |
+                                 Control Anchors | Adjustment |
                                  IDs: AG-D-XX.Y-NNN; pattern =
                                  achieve/cease/maintain/avoid/optimize;
-                                 property = C/I/A/privacy-right/accountability;
-                                 parent = SO-D-XX.Y.HL — ADR-003 D1)
-§4.1 Control Anchor Mapping     (table: ID | Regulation | CSF 2.0 | NIST PF 1.1 |
-                                 NIST AI RMF | Source — one row per (goal,
-                                 confirmed regulation) pair; values copied from the
-                                 active modules / mapping store; R8 discipline)
-§5  Ambiguities & Open Questions (registry card refs + company-specific doubts)
-§6  Handoff Notes to Phase 2    (≤10 lines: what the next phase should start from)
+                                 property = Confidentiality/Integrity/Availability/
+                                 Privacy Right/Accountability;
+                                 parent = SO-D-XX.Y.HL — ADR-003 D1;
+                                 Regulation and Control Anchors derived by code)
+§4  Tensions Resolved           (one block per activating corpus tension:
+                                 T-NNN + Conflict + Resolution; `None` for
+                                 mono-regulation runs)
+§5  Track B Decision Trail      (table: Sub-Domain | Scale | Inheritability |
+                                 Priority | Tier | Rationale — deterministic
+                                 matrix + case overrides)
+§6  NIST Controls Mapping       (per sub-domain: applicable regulations +
+                                 per-axis tables Function | Control ID |
+                                 Description | Path — derived from the mapping
+                                 store + CONTROLS referential)
 ```
 
-Frontmatter fields (minimum): `document_id` (`MVP-P1-OUT-<n>`), `title`, `version`
+The confirmed-regulation verdict table is NOT part of the deliverable — it
+lives in `steps/verdicts.json`, the `RUN_NOTES.md` evidence, and the G-P1-B
+gate record (in the case convention it is the intake's Layer-1 table).
+
+Frontmatter fields (minimum): `document_id` (`MVP-P1-DOC02-<n>`), `title`, `version`
 (`0.1`), `created` (ISO date), `status` (`DRAFT` until §8 passes), `input` (path of
 the `company_input.md` used), `corpus` (the `corpus.root` value from config).
 
@@ -239,9 +280,12 @@ the `company_input.md` used), `corpus` (the `corpus.root` value from config).
 - **R6 — No invention of company facts.** Every statement about the company in
   §1, §2 and §3 must trace to input text or be marked as an explicit assumption
   (`> ASSUMPTION:` blockquote) in §5.
-- **R7 — Ambiguity deference.** When a clause cited for a goal has a card in
-  the ambiguity registry, cite the card (registry ID) in §5 and follow its canonical
-  resolution; do not re-litigate the ambiguity in the output.
+- **R7 — Ambiguity deference.** Where a cited clause is covered by the Fase 0
+  ambiguity analysis, the canonical resolution decided in Fase 0 governs;
+  novel legal interpretations are never invented — an unresolved point becomes
+  an open question instead. In Phase 1 outputs, ambiguity cards are **not
+  cited** (researcher ruling 2026-10-01): §5 carries `> ASSUMPTION:` blockquotes
+  and open questions only.
 - **R8 — Regulation discipline.** Obligations are derived only from regulations
   confirmed applicable in P2. The modular corpus enforces this by construction:
   read only `regs/<REG>.md` for confirmed regulations; the demarcated
@@ -268,7 +312,10 @@ A run is **valid** when all of the following hold:
    passes.
 9. Every §4 goal carries a valid pattern (`achieve/cease/maintain/avoid/optimize`),
    a valid property (`C/I/A/privacy-right/accountability`), its parent goal id
-   (`SO-D-XX.Y.HL`), and a non-empty Adjustment record (ADR-003 D1).
+   (`SO-D-XX.Y.HL`), a Baseline source citing the corpus Sub-SO id(s) it
+   restates (`SG-D-XX.Y.<REG>`), and a non-empty Adjustment record using the
+   closed decision vocabulary (`unchanged — fits as stated` / `narrowed: … —
+   because …` / `flagged: …`) (ADR-003 D1).
 10. Document hygiene: `python scripts/doc_lint.py --strict` reports zero findings
     over `cases/`, `templates/`, `example/`, `output/` (rules R11/R12 — no
     unresolved placeholders, no editorial meta-commentary, all cited control

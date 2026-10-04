@@ -3,7 +3,7 @@ ficha_id: PROM-P1-02
 title: 'Confirm Applicable Regulations'
 phase_step: 'Phase 1 · P2 (SPEC §5)'
 pattern: 'routing (one scope test per regulation)'
-version: 1.0.0
+version: 1.1.0
 created: 2026-10-01
 status: ACTIVE
 normative_source:
@@ -12,6 +12,12 @@ normative_source:
 ---
 
 # PROM-P1-02 — Confirm Applicable Regulations
+
+> **v1.1.0 change (2026-10-01):** scope tests carry the concrete thresholds
+> (NIS2 size classes, DORA Art. 2(1) entity list, CRA "placed on the market"
+> edge for SaaS-style delivery) so verdicts never rest on the model's memory
+> of parameters. Genuine edge cases become `flagged` + open question, never a
+> guess.
 
 ## Metadata
 
@@ -28,9 +34,9 @@ normative_source:
 
 | # | File | Use |
 |---|---|---|
-| 1 | `output/<company>/packs/pack-p2.md` | fact sheet (P1 output) |
+| 1 | `steps/fact_sheet.yaml` | fact sheet (P1 output) |
 | 2 | `input/<company>/company_input.md` §5 | assumed regulations + justifications |
-| 3 | `templates/phase1_output.md` §2 | verdict table format |
+| 3 | the P2 output contract (verdict table `Regulation | Verdict | Rationale`) | in this ficha |
 
 Scope criteria are embedded below (from SPEC §5 P2) — no corpus files are needed at this step.
 
@@ -50,9 +56,9 @@ Scope criteria are embedded below (from SPEC §5 P2) — no corpus files are nee
 >
 > Scope tests:
 > - **GDPR** — applies when the company is established in a jurisdiction covered by the input and processes personal data (establishment + processing).
-> - **CRA** — applies when the company develops or supplies products with digital elements that are placed on the market; use `develops_software` from the fact sheet. A company that only uses software does not, by that fact alone, place products with digital elements on the market.
-> - **NIS2** — applies when the company falls in an essential/important entity sector and meets the size threshold; state sector and size explicitly.
-> - **DORA** — applies to financial entities; check the sector field.
+> - **CRA** — applies when the company develops or supplies products with digital elements that are **placed on the market**; use `develops_software` from the fact sheet. A company that only uses software does not, by that fact alone, place products with digital elements on the market. Edge: software delivered purely as a remote service (the customer never receives the software) is a genuine CRA boundary case — if the input's delivery model does not clearly state placement on the market, verdict = `flagged` + open question; if the input §5 explicitly asserts placement as manufacturer, record `applies` citing that statement.
+> - **NIS2** — applies only if BOTH a sector test and a size test pass. Size classes: medium = ≥50 employees or >€10M turnover; large = ≥250 employees or >€50M turnover (and >€43M balance sheet). Essential entity = Annex I sector + large; important entity = Annex I sector + medium, or Annex II sector + medium-or-larger. Below medium in an Annex I/II sector → `does not apply` by size (state the numbers). DNS/TLD/cloud/data-centre-type providers can be designated regardless of size → `flagged` if plausible from the input.
+> - **DORA** — applies to financial entities as listed in DORA Art. 2(1) (credit institutions, payment/e-money institutions, insurance/reinsurance, investment firms, crypto-asset service providers, ICT third-party service providers serving financial entities, among others). Check the sector field and `third_party_processing`: a company providing ICT services TO financial entities may be in scope → `flagged` if plausible, `does not apply` if the sector excludes it.
 > - **AI_Act** — applies when the company places AI systems on the market or deploys high-risk AI systems; an ordinary product without AI functionality does not trigger it.
 >
 > Rules:
@@ -66,6 +72,7 @@ Scope criteria are embedded below (from SPEC §5 P2) — no corpus files are nee
 - Table has exactly 5 rows with the canonical regulation IDs.
 - Every input §5 entry is present (count match).
 - Every `applies` verdict's rationale names at least one fact-sheet field.
+- NIS2/DORA rationales state the size/sector numbers used.
 - No obligation language leaked into §2 (scope only).
 
 ## Guard hooks (L0/L1)

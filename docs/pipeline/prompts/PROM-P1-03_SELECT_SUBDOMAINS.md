@@ -3,7 +3,7 @@ ficha_id: PROM-P1-03
 title: 'Select the Sub-Domain Subset'
 phase_step: 'Phase 1 · P3 (SPEC §5)'
 pattern: 'deterministic pre-filter + LLM trigger judgment'
-version: 1.0.0
+version: 1.1.0
 created: 2026-10-01
 status: ACTIVE
 normative_source:
@@ -13,12 +13,18 @@ normative_source:
 
 # PROM-P1-03 — Select the Sub-Domain Subset
 
+> **v1.1.0 change (2026-10-01):** the "4–10 sub-domain target" is removed —
+> it over-pruned (the golden case keeps 35/38 sub-domains ACTIVE under
+> GDPR+CRA). Every candidate is assessed; a candidate is EXCLUDED only with a
+> why-not grounded in a specific company fact. Over-inclusion is cheaper than
+> a missed sub-domain; the reviewer prunes at G-P1-C.
+
 ## Metadata
 
 | Field | Content |
 |---|---|
 | Role | Solution-scope architect |
-| Mission | From the candidate set, select the sub-domains actually triggered by company facts + confirmed regulation duties |
+| Mission | From the candidate set, assess every sub-domain against company facts + confirmed regulation duties; exclude only with a grounded why-not |
 | Inputs | Confirmed regulation set (G-P1-B); fact sheet |
 | Output | §3 subset table + exclusion list (flag-not-drop) |
 | Human gate | **G-P1-C** — reviewer confirms composition and exclusions |
@@ -28,10 +34,10 @@ normative_source:
 
 | # | File | Use |
 |---|---|---|
-| 1 | `output/<company>/packs/pack-p3.md` — pre-filter result | candidate list |
+| 1 | `pack-p3/candidates.md` — deterministic pre-filter result | candidate list |
 | 2 | `baseline/domains/index.md` | canonical sub-domain names |
-| 3 | candidate `baseline/domains/<D-XX_Name>/<D-XX.Y>/_index.md` | participant rows (which regulations live in the module) |
-| 4 | `output/<company>/packs/pack-p2.md` | fact sheet + verdicts |
+| 3 | candidate sub-domain objective paragraphs + participant rows (embedded in the pre-filter block) | subject matter + which regulations live in the module |
+| 4 | `steps/fact_sheet.yaml` + `steps/verdicts.md` | fact sheet + verdicts |
 
 **Deterministic pre-filter (before the LLM step):** candidate set = every sub-domain whose module contains `regs/<REG>.md` for at least one regulation confirmed at G-P1-B. Read from `baseline/domains/index.md` module maps. Everything not in the candidate set is out of scope for the run.
 
@@ -50,19 +56,19 @@ Excluded candidates: <D-XX.Y> — <one-line why-not (no company fact triggers it
 > For each candidate sub-domain:
 > 1. Read its participant rows (which confirmed regulations are present) and the sub-domain's subject matter.
 > 2. Decide: does an obligation of a confirmed regulation match the sub-domain subject matter AND trigger on a company fact? Write the decision as a one-line trigger rationale in "company fact → regulation duty" form (example: "client PII stored on managed cloud → GDPR Art. 32 security of processing").
-> 3. If no company fact triggers it, move the sub-domain to the exclusion list with a why-not line.
+> 3. If no company fact triggers it, move the sub-domain to the exclusion list with a why-not line naming the absent fact — not a hunch.
 >
 > Rules:
 > 1. Canonical IDs only, exactly as in `baseline/domains/index.md` — never invent, merge, or reformat (R1).
 > 2. Only confirmed regulations generate triggers (R8).
-> 3. Target 4–10 sub-domains for a small company — use it as a proportionality signal, not as a hard rule; completeness over the candidate set wins.
+> 3. **Default is INCLUSION.** When a confirmed regulation applies broadly, most sub-domains stay active (the golden case keeps 35/38 under GDPR+CRA). Exclude only when a specific company fact is absent (e.g. "no AI systems placed on the market → D-10.3 compliance testing of AI models not triggered"). A doubt means INCLUDE with an `open question` tag — the reviewer prunes at G-P1-C.
 > 4. Do not read goal content or requirements yet — selection only.
 
 ## Self-checks (L2)
 
 - Every selected ID exists in `baseline/domains/index.md` (canonical spelling).
 - Every selection cites ≥1 confirmed regulation + ≥1 company fact.
-- Every candidate is either selected or excluded with a why-not line (no silent drops).
+- Every candidate is either selected or excluded with a grounded why-not line (no silent drops).
 - Count reported (selection + exclusions = candidate set).
 
 ## Guard hooks (L0/L1)

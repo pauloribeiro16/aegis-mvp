@@ -1,9 +1,59 @@
 # AGENTS.md — AEGIS MVP Operational Guidelines for Agents
 
 > **Scope:** Guidelines for AI agents (and human operators) executing tasks within the `aegis-mvp` repository.
-> **Current Version:** 0.1.0 (Increment 0 — Minimum Phase 1 Pipeline)
+> **Current Version:** 0.2.0 (Increment 0 — Minimum Phase 1 Pipeline; §-1 records the measured sampling defaults)
 
 ---
+
+## -1. Sampling defaults (measured — do not change without a registered experiment)
+
+**Every run is seeded by default: `seed=42`, `temperature=0.2`.**
+Running unseeded requires the explicit `--seed none`. Declared in
+`pipeline/src/runconfig.py` (`DEFAULTS`), written into each run's
+`config.json`, echoed into `manifest.json`, and recorded per call in
+`trace.jsonl` as `sampler_seed` / `sampler_temperature`.
+
+This is a **measured** default, not a preference. EXP-02 (45 runs,
+`docs/experiments/EXP02_results.md`):
+
+- **The seed makes the pipeline bit-reproducible** — the 15 seeded runs
+  produced byte-identical goal sets; assembled deliverables differ only in the
+  `run_id` line. Retention sd = 0.0000.
+- **All variance is sampling-driven; zero residual from the serving layer**,
+  contrary to the vendor's own nondeterminism warning for prefix caching.
+- **Unseeded runs abort at ~40%** on the R6 grounding gate (6 of 15 vs 0 of
+  30 seeded). For an unattended pipeline this is the difference between 100%
+  and 60% completion, so reproducibility is a correctness property here.
+- **Temperature stays 0.2.** Greedy (0.0) added no determinism once seeded and
+  cost a little retention (0.7159 vs 0.7171).
+
+Corollary: "I sent no seed" is no longer reachable by omission, only by
+intent — which is what stops a future experiment from unknowingly comparing a
+seeded arm against an unseeded one.
+
+**The agentic arm is not a production path** (researcher decision
+2026-10-04, EXP-03 n=15 per arm). Beyond cost (4.8× calls, 6.4× context) and
+the 53% clean-termination rate, the decisive reason is reproducibility
+*semantics*: pipeline calls are context-independent, so a fixed seed reproduces
+a whole run, while the agent accumulates state across jobs and is only
+deterministic conditional on that state. The branch stays as the historical
+comparison backing ADR-010. See `docs/experiments/EXP03_results.md`.
+
+---
+
+## 0. Onde vive o quê (caminhos fora do repositório)
+
+| Conteúdo | Local | Notas |
+|---|---|---|
+| **Corridas da pipeline** (artefactos, trace, logs) | `~/Work/aegis-runs/<run_id>/` na workstation; `../aegis-runs/<run_id>/` ao lado do checkout no cluster | **Nunca dentro do repo.** Configurado em `pipeline/deucalion/sync_down.sh` (`AEGIS_RUNS_DIR`) e `phase1.sbatch` (`MVP_RUNS_ROOT`) |
+| **Inspector (app React + API)** | `~/Work/aegis-inspector/` | Repo pnpm separado; a API lê `AEGIS_REPO` (este repo) e `AEGIS_RUNS_DIR` |
+| **Deliverables exportados** | `<repo>/output/<empresa>/<run_id>/` | Único resultado que fica no repo, um directório por corrida |
+| **Documentos de experiência** | `<repo>/docs/experiments/` | Pré-registos, resultados e o painel vivo; servido pela página *Pesquisa* do inspector sem deploy |
+| **Memória do projecto** | `~/.zcode/cli/memories/projects/aegis-mvp-*/memory/` | Decisões de amostragem e reprodutibilidade, com a evidência que as sustenta |
+| Corpus, baseline, templates, docs | `<repo>/` (como sempre) | Read-only por regra (ver §3) |
+
+O nome do directório de uma corrida é o id do job no cluster — o que a corrida
+produziu está no `manifest.json` e no cabeçalho do documento que ela exporta.
 
 ## 1. Mission & Purpose
 

@@ -1,9 +1,0 @@
-=== AEGIS-MVP Phase 1 pipeline | stage=p3 model=qwen3.8:27b job=1963566 node=gnx521 start=2026-10-01T15:42:46+01:00 ===
-model manifest present: /projects/F202512235CPCAA1/CyberMetric_Deucalion/ollama_data/models/manifests/registry.ollama.ai/library/qwen3.8/27b
-name, memory.total [MiB], memory.free [MiB]
-NVIDIA A100-SXM4-80GB, 81920 MiB, 81152 MiB
-ollama up: http://127.0.0.1:15000
-=== stage p3 (model=qwen3.8:27b, dry_run=False) ===
-=== stage p3 done: 1 call(s); run total 3 ===
-=== stage p3 finished rc=0 at 2026-10-01T15:48:00+01:00 | run dir: runs/run_case01v2_1963538 ===
-END=2026-10-01T15:48:00+01:00 EXIT_CODE=0

@@ -1,9 +1,9 @@
 ---
 document_id: AEGIS-MODELS-M01-RESULTS
 title: 'M01 screening results — four Deucalion models on the AEGIS pipeline'
-version: 1.2.0
+version: 1.3.0
 created: 2026-10-03
-status: PARTIAL — screening closed, p3 root cause found, m03 re-test in flight
+status: PARTIAL — screening closed, p3 fix verified on m03, deep dive pending
 sources: 'docs/research/sources.yaml'
 upstream: '[00_RESULTS.md](00_RESULTS.md)'
 ---
@@ -150,44 +150,40 @@ machine-checkable from the artefacts. The `m03` launches record the v1.2.0
 digest; the `m01` and `m02` runs predate or invalidate the field (§7).
 
 **Read the cut as it now stands:** 0/5 for each model under v1.1.0, with a
-named, fixed, and now testable cause. Whether that cause was the whole story is
-what the m03 tier measures.
+named, fixed, and testable cause. The m03 tier tests it.
 
-## 7. m02 is void: the p3 wrap instruction had been truncated
+## 7. m03: the fix holds — the p3 contract failure goes to zero
 
-The m02 tier was launched and then **discarded as evidence**, and the reason is
-worth more than the tier would have been.
+Ten runs, two per model, on the v1.2.0 ficha with the restored wrap instruction.
 
-`EXTRA_INSTRUCTION["p3"]` in `pipeline/src/steps.py` had been left as the
-literal string `"Wrap your answer: return ONLY one ```markdown fenced block
-containing "` — the clause naming what the block must contain was gone. An
-earlier prompt-engineering pass had meant to replace the default wholesale with
-the `clarified` variant and had gutted the string instead. The composed prompt
-is still syntactically valid and passes every linter; it simply asks the model
-to return a fenced block containing nothing.
+| Model | m01 (v1.1.0) | m03 (v1.2.0) | where it stands now |
+|---|---|---|---|
+| glm-4.7-flash | 0/5, all at **p3** | 0/2 delivered, **p3 passes** | dies at p4 `D-01.1`: `adjusted goal keeps 10 of the Sub-SO's 45 obligation terms` — over-compression |
+| nemotron-3.5-lightning | 0/5, all at **p3** | 0/2 delivered, **p3 passes** | dies at p4 `D-02.2`: `goal row has 10 columns, expected 9` — a formatting slip |
+| gemma4:31b | 4/5 delivered | 2/2 clear of p3 and p4 so far | — |
+| muse-glimmer:30b | 3/5 delivered | 2/2 clear of p3 and p4 so far | — |
+| qwen3.5:27b | **0/1, at p2** | 0/2, at p2 | unchanged, and it is a different step |
 
-The effect was four of five models echoing the 25 kB context pack back verbatim
-instead of answering, and the gate reporting `candidates neither selected nor
-excluded (silent drop)` — a symptom four causal steps from the real defect. Only
-gemma4 still answered. Had the ablation been run as designed — the `clarified`
-variant against the default — it would have compared a broken control against a
-working treatment and concluded the variant fixed everything.
+**The measurement: the selection-contract failure went from 10/10 to 0/4.** What
+is left is not the same failure wearing a different message. Both models now
+produce a valid §3 partition and die inside the goal derivation, one on a
+substantive calibration gate and one on a column count — defects a reviewer can
+read, rather than an id invented in a slot the prompt never gave them.
 
-Two things close it:
+**Two honest qualifications.** Neither m03 model delivered, so this is a pass
+rate on *one step*, not a rescue of the two cuts: they are no longer cut for the
+recorded reason, and they are not yet in. And n=2 per model — this establishes
+that the deterministic p3 failure is gone, which is what m01's 0/5 claimed and
+what the prompt predicted; it does not estimate a success rate.
 
-- The default `p3` instruction is restored in full and states the partition
-  explicitly.
-- `_assert_wrap_instruction()` runs on every composed call and rejects a wrap
-  instruction ending on a dangling preposition (`containing`, `with`, `of`, …).
-  All six shipped instructions and both `p4` variants pass it; the exact stub
-  that broke m02 is the case that fails it.
+**qwen3.5 is a separate problem and the p3 fix does not touch it.** It fails at
+p2 — before the p3 ficha is ever composed — with free prose where a fenced block
+is required, on both attempts. That is a formatting-discipline failure on a
+different step, and its answer is schema-constrained output, not a better prompt
+(E-01).
 
-**The valid post-revision tier is `m03`**, with the restored instruction and the
-v1.2.0 ficha. m02 stays on disk as the record of the failure — 10 runs, 8 of
-them aborting at p3, is exactly the kind of evidence that gets tidied away and
-then re-spent.
-
-## 8. A reproducibility gap this experiment exposed
+## 8. m02 is void: the p3 wrap instruction had been truncated
+## 9. A reproducibility gap this experiment exposed
 
 Before the digest field existed, a run recorded its model, its sampler, and its
 `git rev` — and nothing about the prompt *text*. Three findings in this

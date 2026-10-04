@@ -35,6 +35,12 @@ author: 'Decision: PhD researcher; formalization + record: Executor session'
 - **C2:** every executed run records the ficha versions it used (in `RUN_NOTES.md`), enabling the eval loop.
 - **C3:** ficha bodies are the single place carrying execution instructions; case deliverables never absorb them (R11).
 
+> Previsto (falsificável): a workflow arm completa corridas a uma fracção do
+> custo do agente, com saída estruturalmente estável sob seed fixa.
+> Sinal: um experimento registado (padrão EXP-03/EXP-04) mostrar o braço
+> alternativo a superar o workflow em qualidade com custo comparável.
+> Revisar: quando esse resultado existir (ver docs/decisions/ASSUMPTIONS.md).
+
 ## 5. Ratification checklist (P7)
 
 1. D1 (workflow, not agent) — **decided by researcher** (2026-10-01).

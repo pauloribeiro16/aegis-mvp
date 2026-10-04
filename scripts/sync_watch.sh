@@ -25,12 +25,14 @@ for i in $(seq 1 "$ROUNDS"); do
   local=$(ls -1 "$RUNS_DIR" 2>/dev/null | grep '^run_')
   missing=$(comm -23 <(echo "$remote" | sort) <(echo "$local" | sort))
 
-  # Only pull runs whose last log shows a finished stage; a run mid-flight would
-  # sync a half-written artefact and the inspector would read it as complete.
+  # Only pull runs whose job has actually ended. The trap in phase1.sbatch
+  # writes "END=… EXIT_CODE=" once, at job end; a "stage finished rc=" line
+  # appears at EVERY stage boundary, and matching it pulled mid-flight runs
+  # (four, on 2026-10-04) that the inspector then read as aborted.
   pulled=0
   for r in $missing; do
     done_marker=$(ssh -n -o ConnectTimeout=20 "$HOST" \
-      "grep -l 'stage .* finished rc=' '$PROJ/aegis-runs/$r'/logs/*.log 2>/dev/null | head -1" 2>/dev/null)
+      "grep -l '^END=.*EXIT_CODE=' '$PROJ/aegis-runs/$r'/logs/*.log 2>/dev/null | head -1" 2>/dev/null)
     [ -z "$done_marker" ] && continue
     # a run whose LAST stage ended in a failure is still evidence — pull it too,
     # but only once the job is no longer in the queue (checked below)

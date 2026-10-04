@@ -5,6 +5,8 @@ version: 1.0.0
 created: 2026-10-04
 status: OBJECTIVE PART COMPLETE — primary metric (blind rubric) pending researcher scoring
 sources: 'docs/research/sources.yaml'
+prereg: 'PREREG_01.md'
+prereg_version: 1.0.0
 upstream: '[PREREG_01.md](PREREG_01.md), [EXP02_results.md](EXP02_results.md)'
 ---
 

@@ -40,7 +40,8 @@ the reasoning attached to its sources over time.
 | [07_GRAPH_EVALUATION.md](07_GRAPH_EVALUATION.md) | Catalogue `KG-020`..`KG-026` + `KG-034`, `KG-035`: benchmarks wrong 57% of the time, answer-entity coverage as a gate, abstention collapse, judge noise floors, cheap deterministic proxies, and 13 negative results | ACTIVE |
 | [08_GRAPH_IN_AI_PIPELINES.md](08_GRAPH_IN_AI_PIPELINES.md) | Catalogue `KG-027`..`KG-032`: five architectural slots, provenance and the derivation DAG, graph-as-memory with its budget-controlled negative results, the cost ledger and break-even, the graph as an attack surface, and 14 consolidated anti-patterns | ACTIVE |
 | [09_KG_PATTERN_MAPPING.md](09_KG_PATTERN_MAPPING.md) | The KG verdict: **the three questions answered** (what to experiment with, how to build, how to evaluate), ADR-011 strengthened with a mechanism, **6 new gaps** (`G7`–`G12`), **5 contradictions** (`C-01`–`C-05`), and the one place the implementation is ahead of the literature | ACTIVE |
-| [sources.yaml](sources.yaml) | The source registry: 204 entries, each with URL, publication and retrieval dates, evidence grade, and the verbatim quote that supports the claim | ACTIVE |
+| [10_SCIENTIFIC_METHOD_ALIGNMENT.md](10_SCIENTIFIC_METHOD_ALIGNMENT.md) | Scientific-method alignment: catalogue `SM-001`..`SM-011` (preregistration, artifact badging, GQM, assumption signposts, security-ML pitfalls), **audit of the repo's governance layer** (three layers ahead of the literature, two trailing: unmeasured gate thresholds, ADRs without signposts), and the phased plan (P0 conventions → P1 guards → P2 experiments → P3 policy) — **awaiting ratification** | ACTIVE |
+| [sources.yaml](sources.yaml) | The source registry: 222 entries, each with URL, publication and retrieval dates, evidence grade, and the verbatim quote that supports the claim | ACTIVE |
 
 ## Source anchoring — how this stays attached to its sources
 

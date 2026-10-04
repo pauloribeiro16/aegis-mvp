@@ -1,7 +1,7 @@
 # AGENTS.md — AEGIS MVP Operational Guidelines for Agents
 
 > **Scope:** Guidelines for AI agents (and human operators) executing tasks within the `aegis-mvp` repository.
-> **Current Version:** 0.2.0 (Increment 0 — Minimum Phase 1 Pipeline; §-1 records the measured sampling defaults)
+> **Current Version:** 0.3.0 (Increment 0 — Minimum Phase 1 Pipeline; §-1 records the measured sampling defaults; §-2 records the scientific-conduct contract)
 
 ---
 
@@ -38,6 +38,41 @@ the 53% clean-termination rate, the decisive reason is reproducibility
 a whole run, while the agent accumulates state across jobs and is only
 deterministic conditional on that state. The branch stays as the historical
 comparison backing ADR-010. See `docs/experiments/EXP03_results.md`.
+
+---
+
+## -2. Conduta científica (como se trabalha neste repo)
+
+Estas regras formalizam prática já em vigor (PREREG_01/02, EXP-01..05).
+Fundamento e audit: `docs/research/10_SCIENTIFIC_METHOD_ALIGNMENT.md`.
+
+1. **Âncora obrigatória.** Toda afirmação sobre a pipeline ou o corpus leva
+   âncora verificável: `[S-nnn]` (registry de `docs/research/sources.yaml`),
+   `EXP-xx` (resultado medido), ou veredicto de checker (`doc_lint` /
+   `check_traceability` / `validate.py`). Prosa sem âncora é opinião e diz
+   isso.
+2. **Base declarada nos thresholds.** Todo parâmetro aplicado por gate tem
+   linha em `docs/experiments/METRICS.md` com a base (`measured: EXP-xx` /
+   `incident-calibrated: job-xxxx` / `convention, unmeasured → E-xx`). Um
+   threshold sem base declarada não pode ser citado como evidência de
+   qualidade.
+3. **Preregisto antes do dado.** Todo experimento corre sob preregisto
+   congelado (`docs/experiments/PREREG_0n.md`, versão registada antes da
+   primeira run); desvios registam-se no doc de resultados, nunca em
+   silêncio. O doc de resultados cita o preregisto e a sua versão (verificado
+   por `scripts/check_results_prereg.py`).
+4. **Resultado negativo é resultado.** Falsificador disparado, hipótese
+   refutada ou corrida abortada entram no `00_RESULTS.md` na mesma sessão da
+   análise, com a mesma proeminência dos positivos.
+5. **Decisão com sinal.** Toda decisão (ADR) leva consequência prevista
+   falsificável e sinal de revisão (condição pré-acordada que reabre a
+   decisão — padrão *signpost*, RAND MR-114 [S-279]). Sinal disparado ⇒ a
+   decisão revê-se, não se defende. O registo de pressupostos vive em
+   `docs/decisions/ASSUMPTIONS.md`.
+
+Excepção: a camada metodológica congelada (SPEC, baseline/, cases/) não é
+retrofitada — esta conduta aplica-se às camadas de pipeline, pesquisa e
+experimentos. R5 mantém-se.
 
 ---
 

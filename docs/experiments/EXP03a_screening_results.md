@@ -5,6 +5,8 @@ version: 1.3.0
 created: 2026-10-03
 status: PARTIAL — screening closed, p3 fix verified on m03, deep dive pending
 sources: 'docs/research/sources.yaml'
+prereg: none
+prereg_note: 'pre-convention run (2026-10-03); PREREG_01 covers EXP-02/03/04, not the model screening'
 upstream: '[00_RESULTS.md](00_RESULTS.md)'
 ---
 

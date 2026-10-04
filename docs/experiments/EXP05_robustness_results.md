@@ -5,6 +5,7 @@ version: 1.1.0
 created: 2026-10-04
 status: COMPLETE — 05a/05b/05c/05d analysed once
 prereg: 'PREREG_02.md'
+prereg_version: 1.0.0
 upstream: 'AEGIS-RES-04, AEGIS-RES-09'
 ---
 

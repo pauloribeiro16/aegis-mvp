@@ -37,6 +37,12 @@ author: 'Decision: PhD researcher; formalization + record: Executor session'
 - **C2:** when materialized, T6 provenance analysis gets a direct tool (which objective/test cited each out-of-set anchor).
 - **C3:** if a hybrid retrieval experiment is ever run, it benchmarks against the pack baseline (LegalBench-RAG-style snippet metrics) before any ficha changes.
 
+> Previsto (falsificável): os packs determinísticos respondem às perguntas
+> das Fases 1–3 sem o grafo; a dívida T6 (58 anchors fora do conjunto) é o
+> caso onde isso falha. Sinal: E-13 correr e a dívida T6 continuar sem
+> resolução, ou nova pergunta relacional que os packs não respondam ⇒
+> materializar. Revisar: após E-13 (ver docs/decisions/ASSUMPTIONS.md A6).
+
 ## 5. Ratification checklist (P7)
 
 1. D1/D2 (source of truth; schema now, build later) — **decided by researcher** (2026-10-01).

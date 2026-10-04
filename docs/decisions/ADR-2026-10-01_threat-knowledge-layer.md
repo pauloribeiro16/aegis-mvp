@@ -37,6 +37,11 @@ author: 'Decision: PhD researcher; formalization + record: Executor session'
 - **C2:** Part 2 fichas (PROM-P3B-*) cite threat IDs only after ingestion lands; until then they cite STRIDE/LINDDUN categories as today.
 - **C3:** advisory status (R2b pattern) — citing K3 entries is agent discretion, never an obligation source.
 
+> Previsto (falsificável): a camada K3 entra por ingestão verbatim com o
+> guard T8, sem alterar as Fases 1–2. Sinal: uma ficha da Parte 2 citar um
+> threat ID que não resolve sob `baseline/THREATS/` ⇒ corrigir a ficha e
+> re-verificar a ingestão. Revisar: quando o incremento de ingestão arrancar.
+
 ## 5. Ratification checklist (P7)
 
 1. D1/D2 (adopted set; CVE/KEV/EPSS excluded) — **decided by researcher** (2026-10-01).

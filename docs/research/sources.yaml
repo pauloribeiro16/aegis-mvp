@@ -4870,3 +4870,389 @@ sources:
       is irreproducible. That is a concrete engineering requirement, not a
       research finding, and it is the one this repo's own design already meets
       by keeping prompts in a catalog.
+
+  # ------------------------------------------------------------------
+  # Scientific-method pass (2026-10-04): preregistration, artifact
+  # evaluation, empirical-SE methodology, security-ML evaluation pitfalls,
+  # assumption registers. Serves AEGIS-RES-10.
+  # ------------------------------------------------------------------
+
+  - id: S-264
+    key: registered-reports-chambers
+    title: "The past, present and future of Registered Reports"
+    org: Chambers, C. D. & Tzavella, L. — Nature Human Behaviour
+    kind: preprint
+    evidence: PEER
+    url: https://www.nature.com/articles/s41562-021-01193-7
+    published: 2022-01
+    retrieved: 2026-10-04
+    recheck_after: never
+    supports: [SM-002]
+    status: active
+    quote: >-
+      Registered Reports are a form of empirical publication in which study
+      proposals are peer reviewed and pre-accepted before research is
+      undertaken.
+    notes: >-
+      The canonical description of the two-stage RR format. Cited for the
+      structural property (review before results exist), not for efficacy
+      claims — those are graded via S-267.
+
+  - id: S-265
+    key: elsevier-registered-reports-policy
+    title: "Registered Reports (publisher policy)"
+    org: Elsevier
+    kind: vendor-primary
+    evidence: PRIMARY
+    url: https://www.elsevier.com/researcher/author/policies-and-guidelines/registered-reports
+    published: 2026
+    retrieved: 2026-10-04
+    recheck_after: 2027-04-04
+    supports: [SM-002, SM-006]
+    status: active
+    quote: >-
+      Stage II results may include negative, non-conclusive, positive or
+      unexpected findings; in-principle acceptance is a provisional guarantee
+      that your work will be published regardless of the final outcomes.
+    notes: >-
+      Read for two facts: Stage II explicitly welcomes negative findings, and
+      in-principle acceptance makes publication results-independent — the
+      structural protection SM-006 recommends transplanting into the results
+      panel's conventions.
+
+  - id: S-266
+    key: cos-preregistration
+    title: "Preregistration (initiative page)"
+    org: Center for Open Science
+    kind: vendor-primary
+    evidence: PRIMARY
+    url: https://www.cos.io/initiatives/prereg
+    published: 2026
+    retrieved: 2026-10-04
+    recheck_after: 2027-04-04
+    supports: [SM-002]
+    status: active
+    quote: >-
+      When you preregister your research, you're simply specifying your
+      research plan in advance of your study and submitting it to a registry.
+    notes: >-
+      The minimal definition. The repo's PREREG_01/02 are registry-substitutes:
+      versioned, dated, in-repo, with change logs.
+
+  - id: S-267
+    key: prereg-effects-van-den-akker
+    title: "Preregistration in practice: a comparison of preregistered and non-preregistered studies in psychology"
+    org: van den Akker et al. — Behavior Research Methods 56(5)
+    kind: preprint
+    evidence: PEER
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11335781/
+    published: 2024
+    retrieved: 2026-10-04
+    recheck_after: never
+    supports: [SM-002, SM-006]
+    status: active
+    quote: >-
+      our data indicate that preregistration has beneficial effects in the
+      realm of statistical power and impact, but we did not find robust
+      evidence that preregistration prevents p-hacking and HARKing.
+    notes: >-
+      The honest-grading source: preregistration's strong claims are CONTESTED.
+      Also carries, as cited secondary, Scheel et al. (2021): positive-result
+      rates 0.44 in registered formats versus 0.96 in standard articles.
+      CONTESTED framing adopted in RES-10 rather than the popular strong claim.
+
+  - id: S-268
+    key: neurips-reproducibility-program
+    title: "Improving Reproducibility in Machine Learning Research (NeurIPS 2019 Reproducibility Program)"
+    org: Pineau et al. — JMLR 22(164)
+    kind: preprint
+    evidence: PEER
+    url: https://jmlr.org/papers/v22/20-303.html
+    published: 2021
+    retrieved: 2026-10-04
+    recheck_after: never
+    supports: [SM-002]
+    status: active
+    quote: >-
+      a code submission policy, a community-wide reproducibility challenge, and
+      the inclusion of the Machine Learning Reproducibility checklist as part
+      of the paper submission process.
+    notes: >-
+      The ML-field operationalisation of preregistration: checklist + code
+      submission + challenge. The checklist part is what a results doc can
+      adopt mechanically.
+
+  - id: S-269
+    key: acm-artifact-badging
+    title: "ACM Artifact Review and Badging"
+    org: ACM
+    kind: vendor-primary
+    evidence: PRIMARY
+    url: https://www.acm.org/publications/policies/artifact-review-badging
+    published: 2020
+    retrieved: 2026-10-04
+    recheck_after: 2027-04-04
+    supports: [SM-003]
+    status: active
+    quote: >-
+      An experimental result is not fully established unless it can be
+      independently reproduced. Functional: documented, consistent, complete,
+      exercisable; Reusable: significantly exceeds minimal functionality.
+    notes: >-
+      The policy framing behind A3 (reproduction harness): a result without an
+      executable reproduction path is not fully established — for our own
+      results docs, not just for published papers.
+
+  - id: S-270
+    key: usenix-security-artifact-eval-2024
+    title: "USENIX Security '24 Call for Artifacts"
+    org: USENIX Association
+    kind: vendor-primary
+    evidence: PRIMARY
+    url: https://www.usenix.org/conference/usenixsecurity24/call-for-artifacts
+    published: 2024
+    retrieved: 2026-10-04
+    recheck_after: 2027-04-04
+    supports: [SM-003, SM-010]
+    status: active
+    quote: >-
+      Badges: Artifacts Available / Functional / Results Reproduced; good
+      artifacts should be consistent with the paper, as complete as possible,
+      well documented, and easy to (re)use; each reviewed by at least two AEC
+      members.
+    notes: >-
+      Security venues' operationalisation of SM-003. The two-member review is
+      the independence requirement our single-operator runs do not satisfy —
+      recorded as an honest limit of the reproduction harness design.
+
+  - id: S-271
+    key: ndss-2025-artifact-eval
+    title: "NDSS 2025 Call for Artifacts"
+    org: NDSS Symposium
+    kind: vendor-primary
+    evidence: PRIMARY
+    url: https://www.ndss-symposium.org/ndss2025/call-for-artifacts/
+    published: 2024
+    retrieved: 2026-10-04
+    recheck_after: 2027-04-04
+    supports: [SM-003]
+    status: active
+    quote: >-
+      use the submitted artifact to obtain the main results presented in the
+      paper (exact match not required, tolerance allowed)
+    notes: >-
+      The "main results with stated tolerance" standard is the right one for
+      our reproduction harness: byte-identity (EXP-02) is the strong claim;
+      tolerance-stated reproduction of headline numbers is the requirement.
+
+  - id: S-272
+    key: secartifacts-hub
+    title: "Security Research Artifacts (community hub tracking artifact evaluation across security venues)"
+    org: secartifacts.github.io (community-run)
+    kind: framework-doc
+    evidence: PRACTITIONER
+    url: https://secartifacts.github.io/
+    published: 2026
+    retrieved: 2026-10-04
+    recheck_after: 2027-04-04
+    supports: [SM-003]
+    status: active
+    quote: >-
+      The goal of artifact evaluation (AE) is to recognize the authors who have
+      put in the effort to release usable hardware and software systems.
+    notes: >-
+      Live tracking of formal AE at USENIX Security (2020-), NDSS (2024-),
+      IEEE S&P (from 2026), ACSAC, PETS, WOOT, CHES. Evidence that AE is
+      becoming a venue norm in security, not an exception.
+
+  - id: S-273
+    key: runeson-host-case-study-guidelines
+    title: "Guidelines for conducting and reporting case study research in software engineering"
+    org: Runeson, P. & Höst, M. — Empirical Software Engineering 14(2)
+    kind: preprint
+    evidence: PEER
+    url: https://link.springer.com/article/10.1007/s10664-008-9102-8
+    published: 2009
+    retrieved: 2026-10-04
+    recheck_after: never
+    supports: [SM-004]
+    status: active
+    quote: >-
+      Case study is a suitable research methodology for software engineering
+      research since it studies contemporary phenomena in its natural context.
+    notes: >-
+      The canonical validity-checklist reference (construct/internal/external
+      validity, reliability, chain of evidence). This repo IS a single-case
+      study; the guidelines say that is legitimate provided the limits are
+      declared on every claim they bound — A4's convention.
+
+  - id: S-274
+    key: arp-dos-donts-security-ml
+    title: "Dos and Don'ts of Machine Learning in Computer Security"
+    org: Arp, Quiring, Pendlebury, Warnecke, Pierazzi, Wressnegger, Cavallaro, Rieck — USENIX Security 2022
+    kind: preprint
+    evidence: PEER
+    url: https://www.usenix.org/conference/usenixsecurity22/presentation/arp
+    published: 2022-08
+    retrieved: 2026-10-04
+    recheck_after: never
+    supports: [SM-010]
+    status: active
+    quote: >-
+      we conduct a study of 30 papers from top-tier security conferences within
+      the past 10 years and identify common pitfalls in the design,
+      implementation, and evaluation of learning-based security systems, with
+      actionable recommendations.
+    notes: >-
+      The security-specific evaluation checklist (sampling/temporal bias,
+      spurious correlations, baseline disclosure). P2 makes running this
+      checklist explicit for any future model-matrix or judge experiment.
+      Distinguished Paper award.
+
+  - id: S-275
+    key: cybok
+    title: "CyBOK — Cyber Security Body of Knowledge"
+    org: CyBOK project (UK NCSP, King's College London)
+    kind: framework-doc
+    evidence: PRIMARY
+    url: https://www.cybok.org/
+    published: 2019
+    retrieved: 2026-10-04
+    recheck_after: 2027-10-04
+    supports: [SM-011]
+    status: active
+    quote: >-
+      codifies the foundational knowledge of cyber security for education and
+      professional training (21 Knowledge Areas, v1.2 2026).
+    notes: >-
+      The institutional analogue of what docs/research/ does at repo scale: a
+      curated, versioned, evidence-graded body of knowledge with a drift
+      discipline. Confirmation, not a gap.
+
+  - id: S-276
+    key: sep-pseudoscience-popper
+    title: "Science and Pseudo-Science (Stanford Encyclopedia of Philosophy)"
+    org: Hansson, S. O. — Stanford Encyclopedia of Philosophy
+    kind: framework-doc
+    evidence: PRIMARY
+    url: https://plato.stanford.edu/entries/pseudo-science/
+    published: 2008
+    retrieved: 2026-10-04
+    recheck_after: 2027-10-04
+    supports: [SM-001]
+    status: active
+    quote: >-
+      Popper: statements or systems of statements, in order to be ranked as
+      scientific, must be capable of conflicting with possible, or conceivable
+      observations (Popper 1962, quoted in the entry).
+    notes: >-
+      The demarcation criterion SM-001 operationalises as the falsifier field
+      in every prereg. Also documents the standard philosophical objections —
+      which is why the repo's version is the engineering translation (name the
+      falsifier before the run) and not a philosophy claim.
+
+  - id: S-277
+    key: nygard-adr
+    title: "Documenting Architecture Decisions"
+    org: Nygard, M. — Cognitect blog (canonical ADR article)
+    kind: practitioner
+    evidence: PRACTITIONER
+    url: https://cognitect.com/blog/2015/11/15/documenting-architecture-decisions
+    published: 2011-11-15
+    retrieved: 2026-10-04
+    recheck_after: 2027-11-04
+    supports: [SM-007]
+    status: active
+    quote: >-
+      All consequences should be listed here, not just the "positive" ones.
+    notes: >-
+      The canonical ADR format (context/decision/consequences, status
+      lifecycle with supersession). Confirms the survey's negative finding:
+      the canon has NO revisit date or invalidation trigger — those exist only
+      in secondary templates, so adding them (P0/A2) is ahead of published
+      practice.
+
+  - id: S-278
+    key: nist-ssdf-sp800-218
+    title: "NIST SP 800-218 — Secure Software Development Framework (SSDF) v1.1"
+    org: NIST
+    kind: standard
+    evidence: PRIMARY
+    url: https://csrc.nist.gov/pubs/sp/800/218/final
+    published: 2022-02
+    retrieved: 2026-10-04
+    recheck_after: never
+    supports: [SM-009]
+    status: active
+    quote: >-
+      a core set of high-level secure software development practices that can
+      be integrated into each SDLC implementation, providing a common
+      vocabulary for secure software development.
+    notes: >-
+      The drafting model for verifiable practice: named practices + tasks +
+      implementation examples + references, so compliance is checkable against
+      named evidence. Already in the repo as an advisory referential
+      (baseline/CONTROLS/NIST_SSDF/).
+
+  - id: S-279
+    key: rand-assumption-based-planning
+    title: "Assumption-Based Planning: A Planning Tool for Very Uncertain Times"
+    org: Dewar, Builder, Hix, Levin — RAND MR-114
+    kind: framework-doc
+    evidence: PRIMARY
+    url: https://www.rand.org/pubs/monograph_reports/MR114.html
+    published: 1993
+    retrieved: 2026-10-04
+    recheck_after: never
+    supports: [SM-008, SM-007]
+    status: active
+    quote: >-
+      This report documents a strategic planning methodology, Assumption-Based
+      Planning, that RAND has developed over the last four years (load-bearing
+      assumptions carry pre-agreed signposts: warning events or thresholds
+      that trigger contingency planning).
+    notes: >-
+      The source of P0/A2's signpost pattern: an assumption is not managed
+      until it has a pre-agreed warning condition. Transplanted to the repo as
+      the assumption register + ADR "sinal de revisão" field.
+
+  - id: S-280
+    key: nasa-artemis-assumption-management
+    title: "Assumption Management in Complex Human Spaceflight: The Artemis Campaign"
+    org: Mistry, B. — NASA TP-20260004453
+    kind: vendor-primary
+    evidence: PRIMARY
+    url: https://ntrs.nasa.gov/citations/20260004453
+    published: 2026
+    retrieved: 2026-10-04
+    recheck_after: 2027-04-04
+    supports: [SM-008]
+    status: active
+    quote: >-
+      This paper argues that assumption management should be treated as a
+      formal safety and systems discipline in complex human spaceflight
+      programs.
+    notes: >-
+      Recent agency-grade confirmation that assumption registers are a formal
+      discipline, not documentation hygiene. The strongest current anchor for
+      A2's register existing as a first-class repo artefact.
+
+  - id: S-281
+    key: basili-gqm
+    title: "Goal Question Metric Paradigm"
+    org: Basili, Caldiera & Rombach — Encyclopedia of Software Engineering (Wiley)
+    kind: preprint
+    evidence: PEER
+    url: https://link.springer.com/referenceworkentry/10.1007/978-0-387-39940-9_481
+    published: 1994
+    retrieved: 2026-10-04
+    recheck_after: never
+    supports: [SM-005]
+    status: active
+    notes: >-
+      The canonical goals→questions→metrics derivation discipline (born at
+      NASA SEL). Encyclopaedia entry not opened this pass — no quote (R7);
+      the GQM claim in RES-10 §1/§2 rests on the paradigm being canonical,
+      which is not in dispute. The actionable part (METRICS.md: every metric
+      must name its question, instrument, and the basis of its floor) is this
+      repo's design, not a quote.

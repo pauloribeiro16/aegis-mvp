@@ -147,86 +147,21 @@ instrument. Runs now carry `prompt_digests` in `config.json` so that split is
 provable from the artefacts. Detail in
 [EXP03a_screening_results.md §6](EXP03a_screening_results.md).
 
-## The three cases (IN FLIGHT)
+## The three cases (COMPLETE — all three delivered with the reference model)
 
-**What it tested.** Whether the pipeline generalises past TinyTask. TinyTask is
-an 8-person SaaS with **2** confirmed regulations, and roughly 30 prior runs
-never executed a line of code that only a 4+-regulation case reaches. The
-cases added are **Case_02 SecureBorder Solutions** (450 employees; GDPR, CRA,
-NIS2, AI_Act — DORA excluded) and **Case_03 OmniBank** (5,000 employees; all
-five including DORA).
+**What it tested.** Whether the pipeline generalises past TinyTask: 2 regulations and 8 employees, versus Case_02 (4 regulations, 450 employees) and Case_03 (5 regulations, 5 000 employees).
 
-**How it was designed.** Same pipeline, same prompts, same gates, same
-assembler; only the case binding changes. `qwen3.8:27b`, seeded, one run each —
-this lane is a correctness lane, not a measurement lane.
+**How it was designed.** Same pipeline, prompts, gates and assembler; only the case binding changes. Seeded 42. It is a correctness lane, not a measurement lane.
 
-**Results so far.** Both cases earn their place immediately. Case_02 ran the
-whole chain to p5 and exposed **three defects unreachable at 2 regulations**:
+**Results — all three delivered.** Adding the cases paid for itself immediately: they exposed four latent defects that ~30 TinyTask runs could not reach (unguarded corpus reads, the `SR-AIACT` token, model spellings, and the p4 stub trap), and the two structural limits the MVP never had to face — a 136 kB pack with 5 regulations where the model would not stop writing, and a 42k-token pack that needed a 131 072 context rung. Both are fixed and verified; the 38-sub-domain taxonomy needed no change.
 
-1. `check_p4_quality` read `regs/<REG>.md` without checking it exists. Confirmed
-   AI_Act against D-06.4, whose module ships no AI_Act card → `FileNotFoundError`.
-2. The mapping store renders the AI Act SR series as `SR-AIACT-NNN` (no
-   underscore) while the regulation is `AI_Act` everywhere else — 203 references
-   across 8 modules, consistently. The code had assumed they were the same token.
-3. Models write `SG-D-07.2.AIACT` for `AI_Act`, and the stored id feeds anchor
-   derivation, so normalising only the display field would have been inert.
+**What they say.** The MVP was never wrong on TinyTask; it was untested past it. One added case paid for itself by finding three latent defects and a fourth variant, and each fix generalises because it is derived from the corpus rather than from the case.
 
-The third one recurred at p5 through a different path (§6 control sections
-iterate the *confirmed* regulations, not the regulations a module actually
-carries). All three are now closed by one shared predicate —
-`compose.carries_reg_card()` — used at every read site, so the next 4+-regulation
-case does not find a fourth. Verified against the corpus: a confirmed
-regulation is a statement about the company, and a sub-domain carries cards for
-only the regulations that reach it — GDPR 29/38, CRA 36/38, NIS2 24/38,
-DORA 30/38, **AI_Act 10/38**.
+## M02 — the coverage matrix (COMPLETE — 6 models × 3 cases, seeded)
 
-**What they say.** The MVP was never wrong on TinyTask; it was untested past
-it. A single added case paid for itself by finding three latent defects and a
-fourth variant, and the fix generalises because the predicate is derived from
-the corpus rather than from the case.
+**What it tested.** Whether model and case generalise together — the variable M01 never varied at the same time.
 
-## EXP-05 — The robustness lane (COMPLETE — read [EXP05_robustness_results.md](EXP05_robustness_results.md))
-
-**What it tested.** The testing apparatus itself, and the behavioural rules no
-gate covers: (05a) do the deterministic gates detect the faults they claim to
-cover — 36 real faults seeded one-at-a-time; (05b) is every id an output cites
-present in the pack that step received, and how much of each pack is ever used;
-(05c) does the choice of answer-matching rule change the *conclusion* of a
-cross-version diff; (05d) do R6/R8 survive input perturbations (4 metamorphic
-runs on the cluster).
-
-**How it was designed.** Preregistered before any run
-([PREREG_02.md](PREREG_02.md)): fault taxonomy from the checkers' implemented
-checks plus real git-history defects; replay of the 15 seeded EXP-02 arm-B
-runs for 05b; the repo's only real ficha-change pair plus a near-replication
-pair for 05c; two controls plus two perturbed arms for 05d. Analysis ran once
-per sub-experiment.
-
-**Results.** 05a: **36/36 faults detected, 0 false positives** — the gates'
-PASS is calibrated evidence. 05b: **coverage 100%** (1,155 structured ids +
-1,350 article citations, zero misses over 15 runs); utilisation 86.4% of pack
-ids, zero dead pack files. 05c: **the preregistered falsifier fired** — matcher
-choice changes which sub-domains count as changed (36 vs 15 on the same diff),
-so E-08 stays blocked until a canonical matcher is fixed by convention; and
-changing *one* upstream prompt re-worded **100% of goal rows** while changing
-**0% of ids, counts, or sub-domains**. 05d: **M2 (R8) HELD** — the
-preregistered irrelevant product line changed no verdict and no selection;
-**M1 (R6) FALSIFIED at its frozen letter** — section reordering flipped one
-extracted fact (`hosting: unclear` → `hosted SaaS service`, arguably the
-better reading) while every verdict pair and the whole selection set stayed
-identical; and the M2 run *aborted* at a P4 retention floor 22 steps deep —
-decision-invariant input changes are still not generation-inert.
-
-**What they say.** The deterministic layer is measured strong, not assumed:
-gates calibrated, grounding premise confirmed at the pack level (the exact
-metric on which published GraphRAG systems fail at 65.8%). Three independent
-perturbations (prompt version, input order, input addition) agree: **decisions
-and ids are the invariant layer; prose is not** — so regression checks and any
-future judge policy should assert on structure and treat wording drift as
-noise. The open flank is the *comparison layer*: no valid cross-version
-equivalence metric exists yet.
-
----
+**Results.** Only the reference clears all three cases. gemma4 clears Case 02 and muse clears Case 03, bracketing the reference's retention from both sides (0.628 / 0.793 vs 0.720 / 0.736). Every other failure is a gate working: R6 (invented quantity), over-compression, the p2 format contract. ornith is runtime-incompatible (CUDA, reproduced on two nodes) and is out of the matrix per the pre-registration. Full per-cell table in [EXP03a §8](EXP03a_screening_results.md), ground truth in `aegis-models/results/matrix_m02.tsv`.
 
 ## EXP-04 — the prompt ablation (COMPLETE — read [EXP04_results.md](EXP04_results.md))
 

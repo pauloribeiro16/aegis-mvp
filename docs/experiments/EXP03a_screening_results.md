@@ -1,9 +1,9 @@
 ---
 document_id: AEGIS-MODELS-M01-RESULTS
 title: 'M01 screening results — four Deucalion models on the AEGIS pipeline'
-version: 1.3.0
+version: 1.4.0
 created: 2026-10-03
-status: PARTIAL — screening closed, p3 fix verified on m03, deep dive pending
+status: COMPLETE — screening, deep dives (n=15) and the M02 coverage matrix closed
 sources: 'docs/research/sources.yaml'
 prereg: none
 prereg_note: 'pre-convention run (2026-10-03); PREREG_01 covers EXP-02/03/04, not the model screening'
@@ -185,6 +185,57 @@ different step, and its answer is schema-constrained output, not a better prompt
 (E-01).
 
 ## 8. m02 is void: the p3 wrap instruction had been truncated
+## 8. M02 — a matriz de cobertura (fechada 2026-10-05)
+
+**Question (PREREG-M02).** Does the pipeline generalise across models AND
+cases at once? M01 varied the model on one case; the three cases differ in
+regulation count (2/4/5) and scale, and 28 of 38 sub-domains carry an AI_Act
+module that is only a stub.
+
+**Design.** 6 models × 3 cases, seeded 42, `n=1` per cell (delivered cells got
+`r02`), stage `m04`; `m05` re-ran the two gemma4 cells after the p4 stub-trap
+fix (`d549428`). Ground truth is each run's `ficha_overrides` + `END=…EXIT_CODE=`
+in `aegis-models/results/matrix_m02.tsv` — never the run tag, which mislabelled
+the first EXP-04 battery.
+
+**Results — delivery.**
+
+| Model | Case 01 | Case 02 | Case 03 |
+|---|---|---|---|
+| qwen3.8:27b (ref.) | ✅ | ✅ | ✅ |
+| gemma4:31b | ✅ 15/15 | ✅ (após fix) | ❌ R6 |
+| muse-glimmer:30b | ✅ 15/15 | ❌ R6 | ✅ 2/2 |
+| glm-4.7-flash | ❌ | ❌ | ❌ over-compression |
+| nemotron-3.5-lightning | ❌ | ❌ | ❌ over-compression / formatting |
+| qwen3.5:27b | ❌ p2 contract | ❌ | ❌ |
+| ornith-1.5:35b | ❌ CUDA | ❌ CUDA | — runtime-incompatible (2 nós) |
+
+**Results — retention (delivered cells only).**
+
+| Model | Case | runs | retention |
+|---|---|---|---|
+| gemma4:31b | C0 2 | 1 | 0.6282 |
+| muse-glimmer:30b | C0 3 | 2 | 0.7925 |
+| qwen3.8:27b (ref.) | C0 2 | 1 | 0.7196 |
+| qwen3.8:27b (ref.) | C0 3 | 1 | 0.7361 |
+
+**What they say.**
+
+1. **The reference clears all three cases**; no other model clears more than
+   two. The 4- and 5-regulation paths are where the matrix breaks, not the
+   model alone.
+2. **The two survivors split the cases** — gemma4 clears Case 02, muse clears
+   Case 03 — and their retention brackets the reference from both sides
+   (0.628 and 0.793 against 0.720/0.736). The survivors are not "weaker
+   models", they are differently shaped.
+3. **Every remaining failure is a gate doing its job**: R6 (invented
+   quantity), over-compression (dropped obligation terms), the p2 format
+   contract. None is an infrastructure fault.
+4. **The AI Act stubs are the sharpest finding.** 28/38 sub-domains have an
+   AI_Act module with no card; the p4 instruction's "module is attached" wording
+   invited models to write rows the corpus does not support. Fixed, verified on
+   both gemma4 cells (R8 no longer fires).
+
 ## 9. A reproducibility gap this experiment exposed
 
 Before the digest field existed, a run recorded its model, its sampler, and its

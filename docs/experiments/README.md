@@ -25,7 +25,7 @@ where the programme is registered, instrumented, and reported.
 | [EXP01_pipeline_vs_agent.md](EXP01_pipeline_vs_agent.md) | The original n=1 comparison (2026-10-03): both arms L1 PASS, 65 rows, agent 5.2× the calls. Its §5 rubric is superseded by L2_RUBRIC.md | DRAFT (n=1) |
 | EXP02_noise_floor.md | The run-to-run variance measurement (3 arms × 15 runs) | running — results doc when analysed |
 | EXP03_orchestration.md | Pipeline vs agent at n=15 per arm, rubric-scored blind | not run |
-| EXP04_prompt_ablation.md | PROM-P1-04 decision rule vs menu, at n | not run |
+| [EXP04_results.md](EXP04_results.md) | PROM-P1-04 decision rule vs menu, n=5 per arm, seeded — menu 5/5 vs rule 0/5 under the current instrument; the rule arm regressed vs EXP-02-B 15/15 | COMPLETE (decision pending on the shipped arm) |
 
 **Results convention.** When an experiment's battery finishes and is analysed,
 its results document lands in this folder (same four-section shape as the

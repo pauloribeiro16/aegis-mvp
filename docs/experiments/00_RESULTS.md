@@ -228,6 +228,16 @@ equivalence metric exists yet.
 
 ---
 
+## EXP-04 — the prompt ablation (COMPLETE — read [EXP04_results.md](EXP04_results.md))
+
+**What it tested.** Whether the Adjustment column's decision procedure (rule with calibration test vs closed 3-value menu) changes what the model produces.
+
+**How it was designed.** Same pipeline/case/gates, seed 42, n=5 per arm; the arm actually run read from `ficha_overrides`, not the run tag.
+
+**Results.** Under the current instrument: **menu 5/5 delivered, rule 0/5** (deterministic over-compression at D-06.3). And the regression finding: the rule arm delivered 15/15 under the pre-TERMINATION instrument (EXP-02-B) — the prompt change regressed it, model-specifically (gemma4/muse deep dives deliver under the same instrument). The rule's calibration advantage (12% vs 6% `narrowed`) was only ever measured under the old instrument.
+
+**What it says.** The menu is the robust arm under the shipped prompt; the ablation cannot be run cleanly until either the menu is shipped or the rule text is shortened. Decision pending with the researcher (EXP04_results.md §Decision).
+
 ## Registered decisions (2026-10-04)
 
 **Scale band: the code's threshold governs (EU 2003/361).** `controls.py` bands

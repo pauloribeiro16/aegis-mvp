@@ -923,12 +923,19 @@ class StepRunner:
         # context budget guard (2026-10-01 job 1963648: D-09.4 pack ate the whole
         # 32K ctx, done_reason=length, empty content). est tokens x1.15 safety
         # (chars/4 underestimates the real tokenizer) + real output budget.
+        # The ladder doubles like the agent loop's: Case_03's D-07.1 pack is
+        # ~42k tokens (5 confirmed regulations), which cleared 64K with the
+        # safety margin by 1.4k tokens and died on the guard (job 1980137) —
+        # a rung at 131072 covers it with room; beyond that the answer is a
+        # pack-composition problem (E-15), not a context problem.
         est_tokens = (len(call["system"]) + len(call["user"])) // 4
-        if est_tokens * 1.15 + num_predict + 2000 > num_ctx:
-            num_ctx = 65536
-        if est_tokens * 1.15 + num_predict + 2000 > num_ctx:
-            raise LLMError(f"step {tag}: prompt ~{est_tokens} tokens does not fit "
-                           f"even a 64K context — trim the pack")
+        needed = est_tokens * 1.15 + num_predict + 2000
+        while needed > num_ctx and num_ctx < 131072:
+            num_ctx *= 2
+        if needed > num_ctx:
+            raise LLMError(f"step {tag}: prompt ~{est_tokens} tokens needs ~{int(needed)} "
+                           f"of context, above the 131072 ladder cap — trim the pack "
+                           f"(decompose per Sub-SO card; E-15)")
 
         in_dir = self.run_dir / "inputs"
         sys_path = in_dir / f"{seq:03d}_{tag}_system.md"

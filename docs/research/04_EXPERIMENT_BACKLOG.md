@@ -84,7 +84,7 @@ implementing any of it is a separate decision.
 | E-14 | Abstention rate, paired with hallucination rate | G8 | `PEER` | 0 GPU-h | Retrieval drives abstention to zero while improving the headline metric |
 | E-15 | Evidence-chain retention under the pack budget | G12 | `PEER` | 0 GPU-h | The one silent failure a bounded context produces |
 | E-16 | Retrieved anchor table vs full anchor dump in the P4 prompt | C-05 | `PEER` | ~2 GPU-h | Largest measured effect in the query thread; needs no graph at all |
-| E-17 | Audit the L3 judge for pinned temperature and seed | G9 | `PEER` | 0 GPU-h | An audit, not an experiment; do it before trusting any A/B |
+| E-17 | ~~Audit the L3 judge~~ — **CADUCADO 2026-10-05**: the L3 judge was demoted to L1 deterministic + L2; there is no judge in `pipeline/src` to audit. Its purpose is served by the blind human rubric (L2_RUBRIC) | G9 | `PEER` | 0 GPU-h | Superseded by the demotion; revisit only if a judge is reintroduced |
 | E-18 | Programmatic vs model-assigned citation ids | G10 | `PEER` | 0 GPU-h | Makes "the cited source is not hallucinated" a guarantee, not a hope |
 | E-19 | Mutation testing of the deterministic gates | R10 | `PRIMARY` | 0 GPU-h | A PASS is only evidence if the gate catches seeded faults |
 | E-20 | Pack utilisation and pack coverage | G7, G10 | `PEER` | 0 GPU-h | Turns "the pack is the retrieval" from a premise into two numbers |

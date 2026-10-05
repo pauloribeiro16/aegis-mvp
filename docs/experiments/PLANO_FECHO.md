@@ -3,7 +3,7 @@ document_id: AEGIS-EXP-PLAN
 title: 'Plano de fecho do programa experimental — todos os modelos, todos os casos'
 version: 1.0.0
 created: 2026-10-04
-status: ACTIVE — execução lançada
+status: ACTIVE — Fases 0-3 encerradas; Fase 4 reduced to the blind scoring + E-01
 sources: 'docs/research/sources.yaml'
 upstream: '[00_RESULTS.md](00_RESULTS.md) · [04_EXPERIMENT_BACKLOG.md](../research/04_EXPERIMENT_BACKLOG.md)'
 ---
@@ -86,16 +86,16 @@ precisa; a variância natural dos modelos já foi medida no m01 sem semente.
 | 3.2 | Referência qwen3.8 n=5 nos Casos 02 e 03 (a referência por caso, para as células dos modelos terem contra quem ser comparadas) | 8 corridas ≈ 6 GPU-h |
 | 3.3 | 2.ª repetição das células da matriz que passaram a triagem | ~10 corridas |
 
-### Fase 4 — o que não precisa de GPU, por ordem de desbloqueio
+### Fase 4 — o que não precisa de GPU (corrigida 2026-10-05)
 
-| # | O quê | Porquê primeiro |
+| # | O quê | Estado real |
 |---|---|---|
-| 4.1 | **Pontuação cega L2** (~2 h do investigador; 450 linhas esperam) | Sem ela, retenção não distingue restatement fiel de cópia. Bloqueia o veredicto do EXP-03 E a leitura da matriz |
-| 4.2 | E-17 — auditoria do juiz L3 (temperatura/seed fixados) | Custo zero; sem o seu piso de ruído, nenhum resultado pontuado por juiz é interpretável |
-| 4.3 | EXP-04 bateria (n=5 por braço, semeada) | Depois das validações 1.2/1.3; e o braço `menu` é o teste directo para a sobre-compressão do glm47 |
-| 4.4 | E-19 + E-20 (mutação dos gates; cobertura dos packs) | Custo zero; o E-19 ficou mais urgente com os gates novos desta semana |
-| 4.5 | E-01 — saída restringida por schema, protótipo no p2 | A classe de falha do qwen3.5 (e do nemotron no p4). Protótipo com 1 corrida; só se estende se provar |
-| 4.6 | Relatórios: `EXP04_results.md`, matriz no `EXP03a` §7+, painel `00_RESULTS` | No fim de cada fase, não no fim do programa |
+| 4.1 | **Pontuação cega L2** (~2 h do investigador; 450 linhas esperas) | **em aberto — bloqueia o veredicto de qualidade** |
+| 4.2 | ~~E-17 — auditoria do juiz L3~~ | **CADUCADO.** Não há juiz L3 no pipeline: a camada foi despromovida a L1 determinístico + L2, e `pipeline/src/quality.py` só tem medição mecânica. Não há nada para auditar. O item do backlog (E-17) deve ser marcado caducado com esta razão. |
+| 4.3 | EXP-04 bateria (n=5 por braço, semeada) | **FEITA** — [EXP04_results.md](EXP04_results.md): menu 5/5, regra 0/5 |
+| 4.4 | ~~E-19 + E-20~~ (mutação dos gates; cobertura dos packs) | **JÁ FEITOS** como EXP-05a/05b: 36/36 faults detectadas, cobertura 100%, utilização 86,4%. Listá-los como pendentes foi erro deste plano. |
+| 4.5 | E-01 — saída restringida por schema | **o único trabalho de construção que resta.** Protótipo no p2 (~1 GPU-h): é a classe que matou o qwen3.5 (4/4) e o nemotron, e a que quase matou o Caso 03 |
+| 4.6 | Relatórios | feitos: EXP04_results.md, EXP03a §8, painel, matriz TSV |
 
 ## 3. Orçamento e calendário
 

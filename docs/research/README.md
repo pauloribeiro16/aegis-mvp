@@ -41,7 +41,11 @@ the reasoning attached to its sources over time.
 | [08_GRAPH_IN_AI_PIPELINES.md](08_GRAPH_IN_AI_PIPELINES.md) | Catalogue `KG-027`..`KG-032`: five architectural slots, provenance and the derivation DAG, graph-as-memory with its budget-controlled negative results, the cost ledger and break-even, the graph as an attack surface, and 14 consolidated anti-patterns | ACTIVE |
 | [09_KG_PATTERN_MAPPING.md](09_KG_PATTERN_MAPPING.md) | The KG verdict: **the three questions answered** (what to experiment with, how to build, how to evaluate), ADR-011 strengthened with a mechanism, **6 new gaps** (`G7`–`G12`), **5 contradictions** (`C-01`–`C-05`), and the one place the implementation is ahead of the literature | ACTIVE |
 | [10_SCIENTIFIC_METHOD_ALIGNMENT.md](10_SCIENTIFIC_METHOD_ALIGNMENT.md) | Scientific-method alignment: catalogue `SM-001`..`SM-011` (preregistration, artifact badging, GQM, assumption signposts, security-ML pitfalls), **audit of the repo's governance layer** (three layers ahead of the literature, two trailing: unmeasured gate thresholds, ADRs without signposts), and the phased plan (P0 conventions → P1 guards → P2 experiments → P3 policy) — **awaiting ratification** | ACTIVE |
-| [sources.yaml](sources.yaml) | The source registry: 222 entries, each with URL, publication and retrieval dates, evidence grade, and the verbatim quote that supports the claim | ACTIVE |
+| [11_CONTEXT_MANAGEMENT.md](11_CONTEXT_MANAGEMENT.md) | Catalogue `CX-001`..`CX-008`: the eight sub-questions `PP-009`..`PP-015` and `AO-003` **name but do not evidence** — KV eviction and the "negligible loss" claim, extend/retrieve/compress, provenance loss under compression (0.86 vs 0.12), long-context evaluation methodology, memory poisoning, structured-input position and density, cost attribution, and prefix caching as a design lever | ACTIVE |
+| [12_PROMPT_ENGINEERING.md](12_PROMPT_ENGINEERING.md) | Catalogue `PE-001`..`PE-014`: the catalogue the repo did not have — "prompt engineering" appeared **zero** times across the 222-entry registry. CoT elicitation and its unfaithfulness, few-shot as a format problem, instruction hierarchy, injection as a prompt-structure problem, prompt sensitivity (76 points), the APO lineage **and its negative half**, and prompt-as-code | ACTIVE |
+| [13_ORCHESTRATION.md](13_ORCHESTRATION.md) | Catalogue `OR-001`..`OR-009`: the gaps `AO-013` itself listed as open — durable execution semantics, scheduling, HITL gates that are not barriers, the framework landscape read on execution and state, cost/latency as measurements, agent identity, evaluation methodology | ACTIVE |
+| [14_PATTERN_MAPPING.md](14_PATTERN_MAPPING.md) | The verdict for the three fronts: **6 positions strengthened**, **4 requiring qualification** (notably `PP-010` is over-stated as written), **6 new gaps** (`G13`–`G18`), **5 proposed experiments** (`E-23`–`E-27`, none run, none preregistered), and what would falsify the document | ACTIVE |
+| [sources.yaml](sources.yaml) | The source registry: 322 entries, each with URL, publication and retrieval dates, evidence grade, and the verbatim quote that supports the claim | ACTIVE |
 
 ## Source anchoring — how this stays attached to its sources
 
@@ -82,8 +86,10 @@ opened from acquiring the authority of a citation simply by being written down.
 ## Conventions
 
 - **Pattern IDs.** `PP-nnn` for pipeline patterns, `AO-nnn` for agent
-  orchestration, `E-nn` for experiments, `G-n` for gaps and `C-n` for
-  contradictions. Stable and never reused.
+  orchestration, `KG-nnn` for knowledge graphs, `SM-nnn` for scientific
+  method, `CX-nnn` for context management, `PE-nnn` for prompt engineering,
+  `OR-nnn` for orchestration gaps, `E-nn` for experiments, `G-n` for gaps and
+  `C-n` for contradictions. Stable and never reused.
 - **Evidence grades.** `PRIMARY` (vendor or standards documentation read
   directly), `PEER` (preprint; peer status not established), `PRACTITIONER`
   (named expert writing from experience), `CONTESTED` (credible sources
@@ -112,9 +118,23 @@ cross-referenced rather than divergent.
 
 ## Status
 
-- **Survey:** 2026-10-03, two independent passes (pipeline architecture; agent
-  orchestration), 123 registered sources.
+- **Passes completed:** five. 2026-10-03 (pipeline architecture; agent
+  orchestration), 2026-10-04 (knowledge graphs, four documents), 2026-10-04
+  (scientific-method alignment), and 2026-10-05 (context management; prompt
+  engineering; orchestration gaps — 100 sources, `S-284`..`S-383`).
+- **Registry:** 322 entries, 319 cited. `check_research_refs.py --strict`
+  passes with zero findings.
+- **A declared source bias, carried by all passes.** General web search was
+  unavailable throughout, so discovery ran through canonical-URL fetches, the
+  arXiv API, OpenAlex, Semantic Scholar and GitHub. Papers and official
+  documentation are well covered; **practitioner write-ups are thin** — which
+  matters most for the three most practitioner-heavy topics in the field. The
+  bias is stated in each pass rather than discovered later.
 - **Next:** E-04 and E-05, which are prerequisites for reading any future A/B
-  result scored by an LLM judge.
+  result scored by an LLM judge. Then `E-23`–`E-27` from
+  [14_PATTERN_MAPPING.md](14_PATTERN_MAPPING.md), none of which is
+  preregistered or run.
 - **Maintenance:** when a source is re-read, bump `retrieved` and push
   `recheck_after` in the same edit, and re-run the checker in `--strict` mode.
+  Note that the ~123 sources from the 2026-10-03 pass begin going stale around
+  2027-04-03 under the R4 drift alarm.

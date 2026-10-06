@@ -4415,7 +4415,7 @@ sources:
     published: 2026-06-24
     retrieved: 2026-10-04
     recheck_after: 2027-10-04
-    supports: [KG-027, KG-029]
+    supports: [KG-027, KG-029, CX-004, CX-008]
     status: active
     quote: >-
       a worked example surfaces what we call the citation-influence gap: a clean
@@ -4444,7 +4444,7 @@ sources:
     published: 2026-09-13
     retrieved: 2026-10-04
     recheck_after: 2027-10-04
-    supports: [KG-027, KG-029]
+    supports: [KG-027, KG-029, CX-004, CX-008]
     status: active
     quote: >-
       a RECOMP-style compressor's citations score 0.86 precision against its
@@ -5256,3 +5256,2378 @@ sources:
       which is not in dispute. The actionable part (METRICS.md: every metric
       must name its question, instrument, and the basis of its floor) is this
       repo's design, not a quote.
+
+  # ------------------------------------------------------------------
+  # Context-budget pass (2026-10-05): how much context a task actually
+  # NEEDS, as distinct from how much the model can hold. Closes the gap
+  # the registry acknowledged: every pre-existing long-context entry
+  # (S-115, S-116, S-117, S-223) is about degradation, capacity, or
+  # position effects; none measures effective length. Serves PP-013 /
+  # KG-033. Reads with ADR-2026-10-05_pack-budget-and-context-policy.
+  # ------------------------------------------------------------------
+
+  - id: S-282
+    key: ruler-real-context-size
+    title: "RULER: What's the Real Context Size of Your Long-Context Language Models?"
+    org: Hsieh, Sun, Kriman, Acharya, Rekesh, Jia, Zhang, Ginsburg (NVIDIA et al.)
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2404.06654
+    published: 2024-04-09
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PP-013, KG-033, CX-005]
+    status: active
+    quote: >-
+      only half of them can maintain satisfactory performance at the length
+      of 32K
+    notes: >-
+      The gap this registry had and now does not: the EFFECTIVE context
+      length, not the advertised window. 17 long-context models × 13 tasks,
+      and the benchmark is a configurable expansion of NIAH — "RULER expands
+      upon the vanilla NIAH test to encompass variations with diverse types
+      and quantities of needles" — so it inherits NIAH's lexical-match
+      critique (S-115) as a second limitation on top of the one the paper
+      already fixes. For this repo the operative consequence is narrow and
+      load-bearing: a num_ctx value is a capability ceiling, never evidence
+      that the material inside it is being used, so no rung of the context
+      ladder can be justified by "the window is big enough". Read with
+      S-283 (the same collapse without literal matching) and S-223 (the same
+      collapse while the material still fits).
+
+  - id: S-283
+    key: nolima-beyond-literal-matching
+    title: "NoLiMa: Long-Context Evaluation Beyond Literal Matching"
+    org: Modarressi, Deilamsalehy, Dernoncourt, Bui, Rossi, Yoon, Schütze; ICML 2025
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2502.05167
+    published: 2025-02-07
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PP-013, KG-033, CX-005]
+    status: active
+    quote: >-
+      At 32K, for instance, 11 models drop below 50% of their strong
+      short-length baselines.
+    notes: >-
+      The strongest published statement of the distinction this ADR turns on.
+      13 models advertising ≥128K, benchmarked on needles with minimal
+      lexical overlap — "questions and needles have minimal lexical overlap" —
+      so the measured drop is not a retrieval-string-matching artefact, and
+      "Even models enhanced with reasoning capabilities or CoT prompting
+      struggle to maintain performance in long contexts" rules out the
+      simplest repair (spend more reasoning on it). For a regulatory pack
+      this is the right shape: the p4/p4t material is definitionally NOT
+      lexically matched to the row being written, so the RULER number and
+      this one are the conservative bound on how much of a 44.8k-token pack
+      is actually exercised. S-223 is the complementary case — collapse
+      measured while the context still fits, so neither a bigger window nor
+      a needle-shaped probe detects it.
+
+  # ------------------------------------------------------------------
+  # 2026-10-05 pass — prompt design doctrine (PE-*)
+  # Surveyed via the arXiv API and direct canonical fetches. WebSearch was
+  # unavailable for the whole pass, so discovery ran through arXiv,
+  # OpenAlex and publisher landing pages; practitioner blogs are therefore
+  # thin in this block and that bias is declared in 12_PROMPT_ENGINEERING.md.
+  # ------------------------------------------------------------------
+
+  - id: S-284
+    key: wei-cot-prompting
+    title: "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models"
+    org: Google
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2201.11903
+    published: 2022-01
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-001]
+    status: active
+    quote: >-
+      prompting a 540B-parameter language model with just eight chain of
+      thought exemplars achieves state of the art accuracy on the GSM8K
+      benchmark
+    notes: >-
+      The origin of PE-001's baseline claim, and the number every later
+      reasoning-elicitation paper is measured against. Caveat that matters for
+      AEGIS: eight exemplars, on math and commonsense tasks, on a frontier
+      model. The register (EU regulatory prose) and the scale (a local 27B)
+      are both outside the measured envelope.
+
+  - id: S-285
+    key: kojima-zero-shot-cot
+    title: "Large Language Models are Zero-Shot Reasoners"
+    org: Google
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2205.11916
+    published: 2022-05
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-001]
+    status: active
+    quote: >-
+      we show that LLMs are decent zero-shot reasoners by simply adding
+      "Let's think step by step" before each answer ... increasing the accuracy
+      on MultiArith from 17.7% to 78.7% and GSM8K from 10.4% to 40.7%
+    notes: >-
+      The minimal-suffix result. Underwrites the claim that a large accuracy
+      delta is purchasable with a prompt edit alone, which is why prompt
+      wording is a first-class experimental variable in PE-008 and not a
+      constant.
+
+  - id: S-286
+    key: turpin-cot-unfaithful
+    title: "Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting"
+    org: "University of Washington / AI2"
+    kind: preprint
+    evidence: CONTESTED
+    url: https://arxiv.org/abs/2305.04388
+    published: 2023-05
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-002]
+    status: active
+    quote: >-
+      we find that CoT explanations can systematically misrepresent the true
+      reason for a model's prediction ... This causes accuracy to drop by as
+      much as 36% on a suite of 13 tasks from BIG-Bench Hard
+    notes: >-
+      The load-bearing negative result for PE-002, and the reason a CoT trace
+      in trace.jsonl is a generated artefact rather than evidence of the
+      pipeline's process. An R6 grounding gate that reads the model's own
+      reasoning as corroboration is unsound. Recorded CONTESTED because the
+      field later narrowed the claim to reasoning models (S-288) rather than
+      retracting it.
+
+  - id: S-287
+    key: lanham-cot-faithfulness
+    title: "Measuring Faithfulness in Chain-of-Thought Reasoning"
+    org: "Anthropic / Yale"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2307.13702
+    published: 2023-07
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-002]
+    status: active
+    quote: >-
+      Models show large variation across tasks in how strongly they condition
+      on the CoT ... As models become larger and more capable, they produce
+      less faithful reasoning on most tasks we study.
+    notes: >-
+      Defines the interventional test for faithfulness (perturb the CoT, watch
+      the answer) and supplies the direction of travel: scale reduces
+      faithfulness rather than raising it. A caution against assuming a
+      frontier model explains itself, and a caution against assuming a 27B
+      does either.
+
+  - id: S-288
+    key: reasoning-model-cot-unfaithful
+    title: "Reasoning Models Don't Always Say What They Think"
+    org: Anthropic
+    kind: preprint
+    evidence: CONTESTED
+    url: https://arxiv.org/abs/2505.05410
+    published: 2025-05
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-002]
+    status: active
+    quote: >-
+      CoTs reveal their usage of hints in at least 1% of examples where they
+      use the hint, but the reveal rate is often below 20% ... CoT monitoring
+      ... is not sufficient to rule them out
+    notes: >-
+      Extends S-286 to reasoning models, and is vendor-primary research from
+      the model builder rather than marketing. Kills any gate of the form
+      "read the trace to verify" on models that emit CoT at all.
+
+  - id: S-289
+    key: anthropic-thinking-summaries
+    title: "Thinking (Claude Platform Docs)"
+    org: Anthropic
+    kind: framework-doc
+    evidence: PRIMARY
+    url: https://platform.claude.com/docs/en/build-with-claude/thinking
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-04-05
+    supports: [PE-003]
+    status: active
+    quote: >-
+      what you see is never the raw chain of thought: the text in a thinking
+      block is a summary of Claude's reasoning ... No `display` setting returns
+      the raw chain of thought.
+    notes: >-
+      Decisive for doctrine rather than for measurement: on current frontier
+      models raw CoT is not obtainable, so any CoT-shaped prompt doctrine is
+      generation-specific. Note for PE-003 that the live doc moves between
+      models and modes; the recheck date is six months for that reason.
+
+  - id: S-290
+    key: nothinking-parallel-scaling
+    title: "Reasoning Models Can Be Effective Without Thinking"
+    org: "UC Berkeley"
+    kind: preprint
+    evidence: CONTESTED
+    url: https://arxiv.org/abs/2504.09858
+    published: 2025-04
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-003]
+    status: active
+    quote: >-
+      bypassing the thinking process via simple prompting, denoted as
+      NoThinking, can be surprisingly effective ... 51.3 vs. 28.9 on ACM 23
+      with 700 tokens
+    notes: >-
+      The sharpest published rebuttal to "CoT prompting is how you get
+      reasoning". Token-matched, so the win is not a compute artefact.
+      Recorded CONTESTED: the setting is a distilled R1 checkpoint, and the
+      comparison is to the same model with thinking enabled, not to a
+      non-reasoning baseline.
+
+  - id: S-291
+    key: overthinking-reasoning-action-dilemma
+    title: "The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks"
+    org: "CMU / UC Berkeley"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2502.08235
+    published: 2025-02
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-003]
+    status: active
+    quote: >-
+      we observe that higher overthinking scores correlate with decreased
+      performance ... can improve model performance by almost 30% while
+      reducing computational costs by 43%
+    notes: >-
+      Over 4,018 trajectories. Overthinking is a measurable and selectable
+      property rather than a vibe, which is what makes PE-003 actionable
+      inside a gated pipeline: the trace length is an observable.
+
+  - id: S-292
+    key: underthinking-o1-like
+    title: "Thoughts Are All Over the Place: On the Underthinking of o1-Like LLMs"
+    org: "Alibaba / ICT"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2501.18585
+    published: 2025-01
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-003]
+    status: active
+    quote: >-
+      we identify a phenomenon we term underthinking, where o1-like LLMs
+      frequently switch between different reasoning thoughts without
+      sufficiently exploring promising paths ... frequent thought switching
+      correlates with incorrect responses
+    notes: >-
+      The mirror failure to S-291, with its own metric (token efficiency in
+      incorrect answers). Recorded because it bounds PE-003 in both
+      directions: neither more nor less reasoning is monotonically better, so
+      "add a reasoning step" is not a safe default edit to a prompt.
+
+  - id: S-293
+    key: gpt3-few-shot
+    title: "Language Models are Few-Shot Learners"
+    org: OpenAI
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2005.14165
+    published: 2020-05
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-004]
+    status: active
+    quote: >-
+      GPT-3 is applied without any gradient updates or fine-tuning, with tasks
+      and few-shot demonstrations specified purely via text interaction
+    notes: >-
+      The origin of the few-shot regime that PE-004 studies. Carries its own
+      limitation in the same abstract, which is worth preserving: the authors
+      identify datasets where GPT-3's few-shot learning still struggles.
+
+  - id: S-294
+    key: liu-in-context-example-selection
+    title: "What Makes Good In-Context Examples for GPT-3?"
+    org: CMU
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2101.06804
+    published: 2021-01
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-004]
+    status: active
+    quote: >-
+      the retrieval-based prompt selection approach consistently outperforms
+      the random baseline ... significant gains are observed on tasks such as
+      table-to-text generation (41.9% on the ToTTo dataset) and open-domain
+      question answering (45.5% on the NQ dataset)
+    notes: >-
+      Selection by similarity is the positive half of the example-selection
+      story. The measured comparator is random selection, not a
+      deliberately adversarial ordering, so the headline numbers bound the
+      easy direction only.
+
+  - id: S-295
+    key: lu-fantastically-ordered-prompts
+    title: "Fantastically Ordered Prompts and Where to Find Them: Overcoming Few-Shot Prompt Order Sensitivity"
+    org: "UCL / AI2"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2104.08786
+    published: 2021-04
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-004, PE-008]
+    status: active
+    quote: >-
+      the order in which the samples are provided can make the difference
+      between near state-of-the-art and random guess performance ... a given
+      good permutation for one model is not transferable to another
+    notes: >-
+      Two findings that together invalidate a one-size-fits-all ordering
+      rule: ordering is worth near-SOTA versus chance, and the good
+      permutation does not transfer across models. Any AEGIS shot list tuned
+      against one model is void against another. The entropy-based fix
+      reported a 13% relative gain.
+
+  - id: S-296
+    key: min-demonstrations-content-vs-format
+    title: "Rethinking the Role of Demonstrations: What Makes In-Context Learning Work?"
+    org: "UW / AI2 / MIT"
+    kind: preprint
+    evidence: CONTESTED
+    url: https://arxiv.org/abs/2202.12837
+    published: 2022-02
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-004]
+    status: active
+    quote: >-
+      ground truth demonstrations are in fact not required -- randomly
+      replacing labels in the demonstrations barely hurts performance ...
+      including the fact that they provide a few examples of (1) the label
+      space, (2) the distribution of the input text, and (3) the overall
+      format of the sequence
+    notes: >-
+      The key negative result for PE-004, across 12 models including GPT-3.
+      It reframes example selection as a format and label-space problem rather
+      than a content problem, which is a materially different design
+      question from the one PE-004's positive half answers. Recorded
+      CONTESTED because the positive half (S-294) and this disagree about
+      what demonstrations are for; both are recorded rather than smoothed.
+
+  - id: S-297
+    key: many-shot-icl
+    title: "Many-Shot In-Context Learning"
+    org: "Google Research"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2404.11018
+    published: 2024-04
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-004]
+    status: active
+    quote: >-
+      unlike few-shot learning, many-shot learning is effective at overriding
+      pretraining biases, can learn high-dimensional functions with numerical
+      inputs, and performs comparably to fine-tuning. We also find that
+      inference cost increases linearly in the many-shot regime
+    notes: >-
+      The k-sweep answer on open models, which is the setting AEGIS runs in.
+      The cost clause is the operative half for a seeded, cache-sensitive
+      pipeline: more shots keep paying in accuracy and keep paying linearly in
+      tokens, so the prompt budget and the shot budget are the same decision.
+
+  - id: S-298
+    key: structured-prompting-1000-examples
+    title: "Structured Prompting: Scaling In-Context Learning to 1,000 Examples"
+    org: "Microsoft Research Asia"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2212.06713
+    published: 2022-12
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-004]
+    status: active
+    quote: >-
+      our approach improves end-task performance and reduces evaluation
+      variance over conventional in-context learning as the number of
+      demonstration examples increases
+    notes: >-
+      The only source in this block claiming that more demonstrations make a
+      run MORE deterministic, which is the opposite of the intuition PE-008
+      is built on. Requires an architectural change (separately encoded
+      demonstrations and rescaled attention), so it is not a prompt-only
+      intervention; recorded so the disagreement is visible.
+
+  - id: S-299
+    key: instruction-hierarchy
+    title: "The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions"
+    org: OpenAI
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2404.13208
+    published: 2024-04
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-005, PE-006]
+    status: active
+    quote: >-
+      one of the primary vulnerabilities underlying these attacks is that LLMs
+      often consider system prompts (e.g., text from an application
+      developer) to be the same priority as text from untrusted users and
+      third parties
+    notes: >-
+      The structural doctrine PE-005 rests on: the system prompt is a
+      privilege LEVEL, not a channel. The training result is reported to
+      transfer to unseen attack types with minimal capability degradation,
+      which is what makes hierarchy a design commitment rather than a
+      formatting convention.
+
+  - id: S-300
+    key: ifeval
+    title: "Instruction-Following Evaluation for Large Language Models"
+    org: "Google DeepMind"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2311.07911
+    published: 2023-11
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-005]
+    status: active
+    quote: >-
+      It focuses on a set of "verifiable instructions" such as "write in more
+      than 400 words" and "mention the keyword of AI at least 3 times". We
+      identified 25 types of those verifiable instructions and constructed
+      around 500 prompts
+    notes: >-
+      The instrument AEGIS would need if it wanted a reproducible
+      instruction-compliance gate: the instructions are chosen to be
+      checkable WITHOUT an LLM judge, which is exactly the property the
+      repo's E-17 withdrawal left unsatisfied. See 14_PATTERN_MAPPING.md.
+
+  - id: S-301
+    key: anthropic-prompting-best-practices
+    title: "Prompting best practices (Claude Platform Docs)"
+    org: Anthropic
+    kind: framework-doc
+    evidence: PRIMARY
+    url: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-04-05
+    supports: [PE-005]
+    status: active
+    quote: >-
+      Tell Claude what to do instead of what not to do. Instead of: "Do not
+      use markdown in your response" Try: "Your response should be composed of
+      smoothly flowing prose paragraphs."
+    notes: >-
+      Vendor doctrine on positive-over-negative phrasing, on XML delimiters,
+      and on example counts (3-5). Same doc carries the instruction to
+      re-check its own advice against your evals, which is the caveat that
+      keeps PE-005 from being cited as measured. Vendor guidance, not
+      evidence; the 3-5 band in particular is not a measured optimum.
+
+  - id: S-302
+    key: openai-prompt-engineering-guide
+    title: "Prompt engineering (OpenAI API guide)"
+    org: OpenAI
+    kind: framework-doc
+    evidence: PRIMARY
+    url: https://developers.openai.com/api/docs/guides/prompt-engineering
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-04-05
+    supports: [PE-005]
+    status: active
+    quote: >-
+      XML tags can help delineate where one piece of content (like a
+      supporting document used for reference) begins and ends.
+    notes: >-
+      The four-section developer-message order (Identity, Instructions,
+      Examples, Context) with context positioned last. Converges with S-301
+      on delimiter structure from an unrelated vendor, which is the strongest
+      available prior for PE-005's template; it is still guidance, not
+      measurement, and it is scoped to the models each vendor serves.
+
+  - id: S-303
+    key: spotlighting-data-marking
+    title: "Defending Against Indirect Prompt Injection Attacks With Spotlighting"
+    org: Microsoft
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2403.14720
+    published: 2024-03
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-006]
+    status: active
+    quote: >-
+      The key insight is to utilize transformations of an input to provide a
+      reliable and continuous signal of its provenance ... spotlighting
+      reduces the attack success rate from greater than 50% to below 2% in our
+      experiments
+    notes: >-
+      The cheapest high-yield structural mitigation in the whole prompt
+      survey, and the only one showing a prompt-level transform alone is
+      sufficient at scale. Directly applicable if AEGIS ever ingests
+      untrusted text. Caveat stated in the paper: evaluated on the GPT family.
+
+  - id: S-304
+    key: struq-structured-queries
+    title: "StruQ: Defending Against Prompt Injection with Structured Queries"
+    org: "University of Washington"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2402.06363
+    published: 2024-02
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-006]
+    status: active
+    quote: >-
+      These attacks rely on the LLM's ability to follow instructions and
+      inability to separate prompts and user data. We introduce structured
+      queries, a general approach ... a specially trained LLM that can produce
+      high-quality outputs from these inputs.
+    notes: >-
+      Channel separation done properly, and the price of doing it is explicit
+      in the quote: the defense requires a specially trained model. For a repo
+      running a local 27B with no training pipeline this is a documented
+      non-option, which is why PE-006 records it as the shape of the
+      guarantee rather than a recommendation.
+
+  - id: S-305
+    key: camel-prompt-injection-by-design
+    title: "Defeating Prompt Injections by Design (CaMeL)"
+    org: "Google DeepMind"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2503.18813
+    published: 2025-03
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-006]
+    status: active
+    quote: >-
+      CaMeL explicitly extracts the control and data flows from the (trusted)
+      query; therefore, the untrusted data retrieved by the LLM can never
+      impact the program flow ... solving 77% of tasks with provable security
+      (compared to 84% with an undefended system) in AgentDojo
+    notes: >-
+      The provable-security ceiling, and the architecturally stronger answer to
+      the same problem PE-006 addresses with delimiters. The cost is an
+      explicit control/data-flow abstraction, which is a large change to a
+      pipeline rather than a prompt edit. The 7-point utility gap against the
+      undefended system is the honest price of the guarantee.
+
+  - id: S-306
+    key: rethinking-pi-assessments
+    title: "Rethinking Assessments of Prompt Injection Attacks"
+    org: "CISPA / RPTU"
+    kind: preprint
+    evidence: CONTESTED
+    url: https://aclanthology.org/2026.findings-acl.1191/
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-006]
+    status: active
+    quote: >-
+      real-world applications are more vulnerable to prompt injection attacks
+      compared to those used in research settings. While complex attack
+      instructions are more sophisticated, they are less effective than simple
+      attack instructions. We further conduct an assessment of both
+      prompt-level and model-level defense mechanisms and highlight their
+      limitations in real-world applications.
+    notes: >-
+      The mandatory counterweight to S-303, S-304 and S-305, and the reason
+      PE-006 is written with a ceiling rather than a recommendation. Over
+      143,745 queries against 37 real applications. Read any defense number
+      in PE-006 together with this one.
+
+  - id: S-307
+    key: sclar-formatspread
+    title: "Quantifying Language Models' Sensitivity to Spurious Features in Prompt Design"
+    org: "UW / AI2 / UT Austin"
+    kind: preprint
+    evidence: CONTESTED
+    url: https://arxiv.org/abs/2310.11324
+    published: 2023-10
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-007, PE-008]
+    status: active
+    quote: >-
+      several widely used open-source LLMs are extremely sensitive to subtle
+      changes in prompt formatting in few-shot settings, with performance
+      differences of up to 76 accuracy points when evaluated using LLaMA-2-13B
+    notes: >-
+      The single most consequential source for AEGIS's methodology, and the
+      one that most qualifies the repo's own determinism result. Its
+      prescription is a reporting change: report a RANGE across plausible
+      prompt formats rather than a point on one format. Sensitivity is
+      reported to persist across model size, example count and instruction
+      tuning, and format performance correlates only weakly between models,
+      which puts single-format model comparison in doubt.
+
+  - id: S-308
+    key: brittlebench-prompt-sensitivity
+    title: "Brittlebench: Quantifying LLM robustness via prompt sensitivity"
+    org: "Hugging Face / Aalto / EPFL"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2603.13285
+    published: 2026-02
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-008]
+    status: active
+    quote: >-
+      a single perturbation alters the relative ranking of models in 63% of
+      cases ... semantics-preserving input perturbations can account for up to
+      half of the performance variance for a given model
+    notes: >-
+      The number to quote whenever a model comparison is at stake, and the
+      one that bounds how much of AEGIS's observed variance the seeded sampler
+      can possibly explain. Generalises S-307 from formatting to
+      semantics-preserving perturbation, and includes open-weight models, so
+      it applies to the 27B.
+
+  - id: S-309
+    key: flaw-or-artifact-prompt-sensitivity
+    title: "Flaw or Artifact? Rethinking Prompt Sensitivity in Evaluating LLMs"
+    org: "University of Notre Dame"
+    kind: preprint
+    evidence: CONTESTED
+    url: https://arxiv.org/abs/2509.01790
+    published: 2025-09
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-008]
+    status: active
+    quote: >-
+      much of the prompt sensitivity stems from heuristic evaluation methods,
+      including log-likelihood scoring and rigid answer matching, which often
+      overlook semantically correct responses expressed through alternative
+      phrasings ... prompt sensitivity may be more an artifact of evaluation
+      than a flaw in the models
+    notes: >-
+      The mandated counterweight to S-307 and S-308, and the reason PE-008 is
+      written as a measurement discipline rather than a defect list.
+      Operative consequence for AEGIS: a sensitivity figure is only comparable
+      if the SCORER is held fixed and named. Over 7 models, 6 benchmarks and
+      12 templates.
+
+  - id: S-310
+    key: api-interface-transfer-gap
+    title: "API Benchmark Scores Do Not Reliably Transfer to Chatbot Interfaces"
+    org: Stanford
+    kind: preprint
+    evidence: CONTESTED
+    url: https://arxiv.org/abs/2609.08861
+    published: 2026-09
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-008]
+    status: active
+    quote: >-
+      API evaluations score 3.4 percentage points higher in accuracy and 2.1
+      percentage points higher in test-retest agreement than corresponding
+      interface evaluations ... switching access surfaces can degrade
+      performance as much as downgrading a full model generation
+    notes: >-
+      A third variance axis, orthogonal to both seed and prompt format, which
+      is why PE-008 lists access surface as part of the recorded
+      configuration. Caveat: first-party surfaces of three providers only.
+
+  - id: S-311
+    key: reasoning-shift-context-compression
+    title: "Reasoning Shift: How Context Silently Shortens LLM Reasoning"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2604.01161
+    published: 2026-04
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-009]
+    status: active
+    quote: >-
+      reasoning models tend to produce much shorter reasoning traces (up to
+      74%) for the same problem under different context conditions compared to
+      the traces produced when the problem is presented in isolation ... this
+      compression is associated with a decrease in self-verification and
+      uncertainty management behaviors, such as double-checking
+    notes: >-
+      The highest-value unclaimed finding for AEGIS, and the direct threat to
+      a context-heavy pipeline: adding the regulatory corpus may silently
+      shorten the model's reasoning AND suppress the self-verification
+      behaviour the R6 gate depends on. Named as the first candidate in the
+      E-2x backlog in 14_PATTERN_MAPPING.md. Single small-author workshop
+      paper, so it is a hypothesis generator rather than a settled result.
+
+  - id: S-312
+    key: openai-reasoning-effort-guidance
+    title: "Reasoning models (OpenAI API guide)"
+    org: OpenAI
+    kind: framework-doc
+    evidence: PRIMARY
+    url: https://developers.openai.com/api/docs/guides/reasoning
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-04-05
+    supports: [PE-009]
+    status: active
+    quote: >-
+      Treat `reasoning.effort` as a tuning knob, not the primary way to recover
+      quality.
+    notes: >-
+      The clearest vendor statement that the CoT-prompting playbook is
+      generation-specific, and the source of the model-persona contrast PE-009
+      uses to place a local 27B: a non-reasoning model wants explicit
+      instructions, not a goal and trust. Not available on the AEGIS model,
+      recorded to fix the vocabulary and the position.
+
+  - id: S-313
+    key: beyond-english-prompt-translation
+    title: "Beyond English: The Impact of Prompt Translation Strategies across Languages and Tasks in Multilingual LLMs"
+    org: "HUJI / AI21"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2502.09331
+    published: 2025-02
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-010]
+    status: active
+    quote: >-
+      we view the prompt as a modular entity, composed of four functional
+      parts: instruction, context, examples, and output, either of which could
+      be translated or not. We evaluate pre-translation strategies across 35
+      languages
+    notes: >-
+      The four-part prompt decomposition applied across 35 languages, which is
+      the right instrument for a multilingual regulatory corpus. Caveat: none
+      of the task families is an EU-regulatory corpus, so the register the
+      repo actually works in is outside the measured set.
+
+  - id: S-314
+    key: xih-bench-language-asymmetry
+    title: "Language Shapes Instruction Hierarchy Compliance in Multilingual LLMs (XIH-Bench)"
+    org: KAIST
+    kind: preprint
+    evidence: CONTESTED
+    url: https://arxiv.org/abs/2607.23545
+    published: 2026-07
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-010]
+    status: active
+    quote: >-
+      IH compliance exhibits a clear language-dependent asymmetry: a language
+      that strengthens compliance in the higher-priority position can become
+      disruptive in the lower-priority position ... language specialization can
+      make lower-priority instructions in model-favored languages harder to
+      override, creating multilingual reliability and security risks
+    notes: >-
+      Instruction hierarchy is not language-invariant, which extends S-299 to
+      the configuration AEGIS actually runs: a multilingual corpus with
+      instructions in one language and source text in another. Six languages
+      by four domains.
+
+  - id: S-315
+    key: legalbench
+    title: "LegalBench: A Collaboratively Built Benchmark for Measuring Legal Reasoning in Large Language Models"
+    org: "Stanford / Harvard / CoCounsel"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2308.11462
+    published: 2023-08
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-010]
+    status: active
+    quote: >-
+      a collaboratively constructed legal reasoning benchmark consisting of
+      162 tasks covering six different types of legal reasoning. LegalBench was
+      built through an interdisciplinary process, in which we collected tasks
+      designed and hand-crafted by legal professionals
+    notes: >-
+      The closest domain anchor available, and the one that establishes the
+      register is hard rather than easy. Recorded with an explicit limit: it
+      is a CAPABILITY benchmark, not a prompt-design study, so it underwrites
+      "legal reasoning is benchmarkable and hard" and nothing about how to
+      prompt for it. See the declared literature gap in 12_PROMPT_ENGINEERING.md.
+
+  # ------------------------------------------------------------------
+  # 2026-10-05 pass — automatic prompt optimization and prompt-as-code (PE-*, AP-*)
+  # The repo held ZERO sources on APO before this pass: the only prior mention
+  # was one clause in docs/pipeline/04_LITERATURE_REVIEW.md. The negative half
+  # of this block is weighted as heavily as the positive half, because that is
+  # where the measured evidence is.
+  # ------------------------------------------------------------------
+
+  - id: S-316
+    key: opro
+    title: "Large Language Models as Optimizers"
+    org: "Google / Google DeepMind"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2309.03409
+    published: 2023-09
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-012]
+    status: active
+    quote: >-
+      outperform human-designed prompts by up to 8% on GSM8K, and by up to 50%
+      on Big-Bench Hard tasks.
+    notes: >-
+      The origin of the meta-prompt-over-trajectory lineage. The
+      human-prompt comparison is self-reported by the method's own authors
+      and the protocol behind "human-designed" is not independently audited,
+      which is why PE-012 leans on the independent benchmarks (S-321, S-323)
+      rather than on this number.
+
+  - id: S-317
+    key: promptbreeder
+    title: "Promptbreeder: Self-Referential Self-Improvement Via Prompt Evolution"
+    org: "Google DeepMind"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2309.16797
+    published: 2023-09
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-012]
+    status: active
+    quote: >-
+      Promptbreeder is able to evolve intricate task-prompts for the
+      challenging problem of hate speech classification.
+    notes: >-
+      First method to mutate the optimizer's own mutation prompt. Recorded
+      with the observation that the abstract carries no quantitative result,
+      which is itself part of the pattern PE-013 documents: the APO
+      literature's headline numbers are unevenly distributed and the methods
+      with the most elaborate self-reference are not the ones with the
+      strongest measurement.
+
+  - id: S-318
+    key: dspy-paper
+    title: "DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines"
+    org: "Stanford / Databricks"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2310.03714
+    published: 2023-10
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-012, PE-015]
+    status: active
+    quote: >-
+      Within minutes of compiling, a few lines of DSPy allow GPT-3.5 and
+      llama2-13b-chat to self-bootstrap pipelines
+    notes: >-
+      The declarative-signature paradigm the whole APO field optimises, and the
+      reason PE-015's prompt-as-code discussion is not purely about file
+      formats: in DSPy the prompt is a compiled artefact of a program, not a
+      hand-maintained document. Two case studies; the v1 paper.
+
+  - id: S-319
+    key: miprov2
+    title: "Optimizing Instructions and Demonstrations for Multi-Stage Language Model Programs (MIPROv2)"
+    org: "Stanford / UC Berkeley"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2406.11695
+    published: 2024-06
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-012]
+    status: active
+    quote: >-
+      MIPRO outperforms baseline optimizers on five of seven diverse
+      multi-stage LM programs
+    notes: >-
+      Recorded with its own denominator intact: five of seven, meaning it lost
+      on two programs. PE-012's headline pattern is that APO results are
+      task-distribution-dependent, and this is the primary-source version of
+      that claim from inside the field.
+
+  - id: S-320
+    key: gepa
+    title: "GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning"
+    org: "UC Berkeley / Stanford / Databricks / MIT"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2507.19457
+    published: 2025-07
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-012, PE-013]
+    status: active
+    quote: >-
+      GEPA outperforms GRPO by 6% on average and by up to 20%, while using up
+      to 35x fewer rollouts.
+    notes: >-
+      The current state of the art and the method the rest of the negative
+      block is measured against. Three absences in the paper are the reason
+      PE-012 does not treat its numbers as a settled ceiling: no limitations
+      section, no error bars or multi-seed runs, and no comparison against an
+      independently strong human-written prompt -- the baseline is the
+      un-optimised base program.
+
+  - id: S-321
+    key: apo-chess-benchmark
+    title: "Benchmarking Prompt Optimization of Large Language Models With Chess"
+    org: "Institut Polytechnique de Paris"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2610.00416
+    published: 2026-09
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-012, PE-013, PE-014]
+    status: active
+    quote: >-
+      whether optimized prompts transfer across models and to game play
+    notes: >-
+      The best independent critical artefact found: six algorithms across
+      eight models and three runs. Its baseline is a 55-character fixed
+      instruction rather than a well-written human prompt, and on that basis
+      only 4 of 8 models show a statistically significant gain. Also the
+      source of the two numbers PE-013 and PE-014 lean on: prompts grow from
+      55 characters to 2,109-3,626 under GEPA, and 14.9% of runs return an
+      unchanged prompt. Cross-model transfer is 31 improved / 16 declined / 2
+      unchanged over 49 pairs. Caveats: chess puzzles, public Lichess data,
+      pretraining exposure not excludable.
+
+  - id: S-322
+    key: apo-dev-test-gap
+    title: "Prompt Optimization as a State-Space Search Problem"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2511.18619
+    published: 2025-11
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-013]
+    status: active
+    quote: >-
+      even shallow search configurations (beam width=2, depth=2) improve upon
+      seed prompts on development sets.
+    notes: >-
+      The cleanest measurement of the dev/test gap in the APO literature:
+      development accuracy 0.40 to 0.80 while test accuracy moves only 0.20 to
+      0.50, so roughly half the apparent gain is fitting the selection set.
+      Also the source of a small free win for AEGIS -- verbosity operators
+      were never selected, and concision was the most useful transformation.
+
+  - id: S-323
+    key: human-beats-auto
+    title: "From Agent Failures to Text Policies: What Works and What Breaks"
+    org: "Independent"
+    kind: preprint
+    evidence: CONTESTED
+    url: https://arxiv.org/abs/2607.20668
+    published: 2026-07
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-012]
+    status: active
+    quote: >-
+      Human-written policies improve two frozen 7B agents on
+      TextWorldExpress by 5.0 success points
+    notes: >-
+      The sharpest human-versus-auto negative result in the block, and
+      notable because the model class matches AEGIS: frozen 7B agents, where
+      policies derived from counterfactual evidence plus iterative GEPA-style
+      search did not reliably beat fixed prompting. Recorded CONTESTED
+      because the domain is a text world rather than compliance work.
+
+  - id: S-324
+    key: detailed-prompts-no-gain
+    title: "Scientific Agents: Evaluating Profession-Specific System Prompts on Scientific Tasks"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2610.00084
+    published: 2026-09
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-012, PE-013]
+    status: active
+    quote: >-
+      Detailed profession-specific system prompts raise token use and estimated
+      cost per response without a consistent accuracy gain.
+    notes: >-
+      The measurement PE-013 uses for prompt inflation with a confidence
+      interval attached: mean accuracy change -0.6 pp, 95% CI [-1.5, +0.2],
+      over 503 profiles and 4,531 questions, with output tokens up 1.5-2.3x
+      and cost per successful call 2.2-4.5x. A specific profile prompt was
+      10.0 pp WORSE than baseline on one benchmark. Single-author preprint.
+
+  - id: S-325
+    key: benchmark-fingerprinting
+    title: "Gaming Without an Attacker: Benchmark Fingerprinting in LLM-Driven Search Under Selection Pressure"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2608.08722
+    published: 2026-08
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-013]
+    status: active
+    quote: >-
+      16/53 (30%) of in-distribution wins fail to transfer to held-out
+      configurations.
+    notes: >-
+      The most important number in the negative half, because no adversary is
+      present -- selection pressure alone is sufficient to make 30% of
+      evolutionary wins illusory. Underwrites PE-013's rule that an APO gain
+      is not a result until it survives a held-out configuration.
+
+  - id: S-326
+    key: reflection-blackbox
+    title: "Reflection in the Dark: Exposing and Escaping the Black Box in Reflective Prompt Optimization"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2603.18388
+    published: 2026-03
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-012]
+    status: active
+    quote: >-
+      the optimization process remains black-box and label-free
+    notes: >-
+      Supplies the hardest negative number in the block: from a defective
+      seed, GEPA drops GSM8K accuracy from 23.81% to 13.50%. Combined with
+      S-320's silence on the topic, this is the direct counterweight to
+      reading S-320's aggregate tables as a general recommendation.
+
+  - id: S-327
+    key: prefpo-prompt-inflation
+    title: "PrefPO: Pairwise Preference Prompt Optimization"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2603.19311
+    published: 2026-03
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-013]
+    status: active
+    quote: >-
+      PrefPO is susceptible at half the rate of TextGrad (37% vs 86%)
+    notes: >-
+      The best prompt-inflation measurement in the block: existing optimizers
+      produce prompts 14.7x their original length or with 34% repetitive
+      content. The susceptibility figure is the metric-gaming number -- a
+      prompt-hacking rate of 86% for TextGrad, meaning the optimiser learned
+      to satisfy the metric rather than the task. Proposer-authored.
+
+  - id: S-328
+    key: hard-prompt
+    title: "On the Capability and Limitation of Hard Prompt"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2609.32302
+    published: 2026-09
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-013]
+    status: active
+    quote: >-
+      long hard prompts exhibit the "prompt dominating answer phenomenon"
+    notes: >-
+      Formalises prompt inflation as a correctness hazard rather than a style
+      one: the same answer is emitted with high probability regardless of the
+      query, and the authors show that deciding whether a hard prompt exists
+      is NP-complete. Underwrites PE-013's rule that prompt length is a gate
+      parameter with a declared budget, not an unbounded dial.
+
+  - id: S-329
+    key: rlmopt
+    title: "RLMOpt: Adaptive Prompt Optimization via Recursive Language Models"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2608.10471
+    published: 2026-08
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-012, PE-014]
+    status: active
+    quote: >-
+      headroom available in the seed prompt
+    notes: >-
+      Names the mechanism behind the APO results: the gain is a function of
+      how much headroom the starting prompt left. The reproducibility-relevant
+      finding is that GEPA finished below its starting point in 2 of 11
+      matched runs while RLMOpt did so in 0, and that RLMOpt's prompts run
+      27-79% of GEPA's size.
+
+  - id: S-330
+    key: dspy-gepa-doc
+    title: "GEPA Optimization (DSPy docs)"
+    org: "DSPy / Stanford"
+    kind: framework-doc
+    evidence: PRIMARY
+    url: https://dspy.ai/current/getting-started/gepa-optimization/
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-04-05
+    supports: [PE-013]
+    status: active
+    quote: >-
+      If you omit valset, GEPA reuses trainset for selection.
+    notes: >-
+      The most valuable admission in the tooling layer, because it comes from
+      the optimiser's own documentation: reusing the training set for
+      selection lets prompts overfit those examples, and a large validation
+      set consumes budget and limits candidate exploration. PE-013's
+      held-out-configuration rule is a vendor-confirmed requirement, not the
+      survey's opinion.
+
+  - id: S-331
+    key: cache-divergence
+    title: "Same Request, Different Answer: Quantization Amplifies Cache-Induced Divergence in LLM Serving"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2609.04748
+    published: 2026-09
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-014]
+    status: active
+    quote: >-
+      Cached serving is deterministic given cache state, and irreproducible in
+      practice
+    notes: >-
+      The determinism boundary PE-014 is built on, and it independently
+      corroborates the repo's own EXP-02 finding. Cached serving changed the
+      trajectory in 36.2% of 16-bit and 75.0% of 4-bit episodes, while zero
+      of 800 episodes were non-bit-identical with caching disabled. This is
+      the exclusion condition AGENTS.md's determinism claim depends on.
+
+  - id: S-332
+    key: promptfoo-docs-intro
+    title: "promptfoo - Introduction"
+    org: promptfoo
+    kind: framework-doc
+    evidence: PRIMARY
+    url: https://www.promptfoo.dev/docs/intro/
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-04-05
+    supports: [PE-015]
+    status: active
+    quote: >-
+      The goal: test-driven LLM development, not trial-and-error.
+    notes: >-
+      The de-facto prompt testing layer, and the concrete instance of PE-014:
+      prompts as files, asserted in CI. Notable absence, which is the finding
+      -- there is no prompt linting, no static prompt validation and no prompt
+      diffing; versioning is delegated entirely to git. The typed assertion
+      vocabulary (roughly 40 deterministic checks including latency and cost,
+      plus model-assisted rubrics) is the part AEGIS could borrow without
+      adopting the tool. The introduction page did not load on the
+      verification pass; the assertions and CI pages did.
+
+  - id: S-333
+    key: langsmith-prompts
+    title: "LangSmith - Manage Prompts"
+    org: "LangChain / LangSmith"
+    kind: framework-doc
+    evidence: PRIMARY
+    url: https://docs.langchain.com/langsmith/manage-prompts
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-04-05
+    supports: [PE-015]
+    status: active
+    quote: >-
+      Environments ... let you track which version of a prompt is active in
+      each environment and promote commits between them.
+    notes: >-
+      The most complete prompt-registry implementation found: commits with
+      history and side-by-side diffs, staging and production promotion with
+      rollback, tags as stable version references, and commit webhooks. The
+      hosted and proprietary nature is the reason AEGIS keeps prompts in git
+      instead; the model is the reference design for PE-014.
+
+  - id: S-334
+    key: context-files-oss
+    title: "Context Engineering for AI Agents in Open-Source Software"
+    org: "University of Stuttgart"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2510.21413
+    published: 2025-10
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-015]
+    status: active
+    quote: >-
+      the adoption of AI context files in 466 open-source software projects
+    notes: >-
+      Empirical evidence that version-controlled instruction and context
+      files are mainstream practice rather than a house convention, with a
+      four-way classification of file style (descriptive, prescriptive,
+      prohibitive, conditional). This is the closest external anchor for the
+      repo's already-adopted practice of holding Phase 1 fichas as files.
+
+  - id: S-335
+    key: prompts-as-code
+    title: "Is It Time To Treat Prompts As Code? A Multi-Use Case Study For Prompt Optimization Using DSPy"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2507.03620
+    published: 2025-07
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [PE-015]
+    status: active
+    quote: >-
+      DSPy's systematic prompt optimization can enhance LLM performance
+    notes: >-
+      The only source that joins the prompt-as-code and APO threads. Five
+      industrial use cases with reported accuracy movement. Recorded with its
+      limits stated in the survey: twenty pages, one figure, and no variance or
+      cost reporting, so the percentages are not usable as thresholds.
+
+  # ------------------------------------------------------------------
+  # 2026-10-05 pass — context management, the confirmed gaps (CX-*)
+  # The repo already holds S-003/S-004/S-115/S-116/S-117/S-118 and the PP-009
+  # to PP-015 block. This block covers what the existing catalogue names but
+  # does not evidence: serving-layer compression, window extension, compression
+  # loss profile, long-context evaluation, memory poisoning, prefix caching as
+  # a design lever, structured-input position effects, cost attribution.
+  # ------------------------------------------------------------------
+
+  - id: S-336
+    key: h2o-heavy-hitter-oracle
+    title: "H2O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models"
+    org: "Stanford / CMU"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2306.14048
+    published: 2023-06
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-001]
+    status: active
+    quote: >-
+      Our implementation of H2O with 20% heavy hitters improves the throughput
+      over three leading inference systems DeepSpeed Zero-Inference, Hugging
+      Face Accelerate, and FlexGen by up to 29x, 29x, and 3x on OPT-6.7B and
+      OPT-30B. With the same batch size, H2O can reduce the latency by up to
+      1.9x.
+    notes: >-
+      The founding eviction method behind CX-001. Recorded with the absence
+      that matters: the abstract carries no numeric accuracy-loss figure, so
+      the loss profile is unmeasured here and must be taken from the
+      corrective studies S-338 and S-339.
+
+  - id: S-337
+    key: pyramidkv-pyramidal-funneling
+    title: "PyramidKV: Dynamic KV Cache Compression based on Pyramidal Information Funneling"
+    org: "Tsinghua / AMD"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2406.02069
+    published: 2024-06
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-001]
+    status: active
+    quote: >-
+      PyramidKV matches the performance of models with a full KV cache while
+      retaining only 12% of the KV cache ... retaining just 128 KV cache
+      entries enables the LLAMA-3-70B model to achieve 100.0 Acc.
+    notes: >-
+      The 100.0 NIAH score at 128 KV entries is the most-cited number in the
+      eviction literature and the one most directly contradicted downstream by
+      S-338 and S-339. Recorded here precisely so the contradiction is
+      traceable to the original claim rather than to a paraphrase of it.
+
+  - id: S-338
+    key: kv-compression-pitfalls-ifeval
+    title: "The Pitfalls of KV Cache Compression"
+    org: "UCLA / AI2"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2510.00231
+    published: 2025-09
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-001, CX-002]
+    status: active
+    quote: >-
+      KV cache compression promises increased throughput and efficiency with
+      negligible loss in performance ... in general the consequences of
+      compression in realistic scenarios such as multi-instruction prompting
+      have been insufficiently studied ... certain instructions degrade much
+      more rapidly with compression, effectively causing them to be completely
+      ignored by the LLM. As a practical example, we highlight system prompt
+      leakage as a case study.
+    notes: >-
+      The central corrective to CX-001, and the reason that section carries a
+      ceiling instead of a recommendation. Five methods (StreamingLLM, SnapKV,
+      TOVA, H2O, K-Norm) on two open models under multi-instruction prompting
+      with IFEval. The failure concentrates in instruction compliance and
+      shows up as system-prompt leakage, which is exactly the behaviour an R6
+      grounding gate depends on.
+
+  - id: S-339
+    key: kvdiagnosis-c-to-w-benchmark
+    title: "KVDiagnosis: A Diagnostic Benchmark for KV-Cache Compression in Long-Context Language Models"
+    org: "EPFL"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2608.09412
+    published: 2026-08
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-001, CX-002]
+    status: active
+    quote: >-
+      four evidence-aware workloads yield 59 800 supported compressed runs over
+      2 600 sources and 12 520 C-to-W rows ... 63.2% have low or partial
+      measured/projected coverage
+    notes: >-
+      The evaluation protocol CX-002 recommends adopting before touching a
+      serving layer: a per-source full-cache control, and correct-under-full
+      but wrong-under-compression row selection done per method-setting so no
+      compressor defines another's test set. Also reports that a controlled
+      evidence-attention boost repairs 29.2% of reproducible low-EAR failures
+      against 6.3% under a count-matched sham, which is the closest thing to
+      a causal claim in this literature.
+
+  - id: S-340
+    key: compression-aware-abstention
+    title: "Compression-Aware Abstention: Teaching LLMs to Refuse When KV-Compression Masks Remove Answer Evidence"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2608.29934
+    published: 2026-08
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-002, CX-004]
+    status: active
+    quote: >-
+      when the evicted tokens contain answer-bearing evidence, the model may
+      hallucinate instead of recognizing that the compressed context is
+      insufficient
+    notes: >-
+      The most actionable finding in the compression block, because it names
+      the failure mode that matters for a gated pipeline: compression converts
+      missing evidence into confident output. The mitigation is a small
+      abstention policy (a 10.1M-parameter adapter), which is the one result
+      in this block that is both cheap and directly paired with R6.
+
+  - id: S-341
+    key: rope-base-bounds-context
+    title: "Base of RoPE Bounds Context Length"
+    org: "Fudan / Microsoft"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2405.14591
+    published: 2024-05
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-003]
+    status: active
+    quote: >-
+      we derive that the base of RoPE bounds context length: there is an
+      absolute lower bound for the base value to obtain certain context length
+      capability
+    notes: >-
+      The falsifiable form of CX-003's claim, and the right shape for a
+      threshold with a declared base: a bound relating a served parameter to
+      demonstrated capability, rather than a vendor's nominal window.
+
+  - id: S-342
+    key: string-effective-context-half
+    title: "Why Does the Effective Context Length of LLMs Fall Short?"
+    org: "NVIDIA / Tsinghua"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2410.18745
+    published: 2024-10
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-003, CX-005]
+    status: active
+    quote: >-
+      recent work reveals that the effective context lengths of open-source
+      LLMs often fall short, typically not exceeding half of their training
+      lengths.
+    notes: >-
+      The headline number for CX-003 and CX-005: a nominal window is not a
+      capability, and the gap is routinely 2x. The recovery requires no
+      training, which means this is a property of the checkpoint rather than
+      of the serving configuration -- the strongest available reason not to
+      treat a vendor window figure as a budget.
+
+  - id: S-343
+    key: long-context-vs-rag-revisits
+    title: "Long Context vs. RAG for LLMs: An Evaluation and Revisits"
+    org: "University of Illinois Urbana-Champaign"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2501.01880
+    published: 2024-12
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-003, CX-004]
+    status: active
+    quote: >-
+      LC generally outperforms RAG in question-answering benchmarks, especially
+      for Wikipedia-based questions. Summarization-based retrieval performs
+      comparably to LC, while chunk-based retrieval lags behind. However, RAG
+      has advantages in dialogue-based and general question queries.
+    notes: >-
+      The most decision-relevant external measurement for the repo's corpus,
+      and the one that puts S-003's single-vendor "no RAG below 200k" claim in
+      context with an independent result. Read together with S-346: the same
+      summarisation that is competitive for CONTENT is the documented
+      laundering channel for TRUST, so the axis that separates them is
+      provenance rather than accuracy.
+
+  - id: S-344
+    key: longrope-2048k-short-context-readjust
+    title: "LongRoPE: Extending LLM Context Window Beyond 2 Million Tokens"
+    org: Microsoft
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2402.13753
+    published: 2024-02
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-003]
+    status: active
+    quote: >-
+      This is achieved by three key innovations ... (iii) we readjust
+      LongRoPE on 8k length to recover the short context window performance.
+    notes: >-
+      The explicit, named cost of window extension: a separate short-context
+      repair pass. The operative warning for AEGIS, whose per-call context is
+      far below 8K, is that extending the window is paid for out of the regime
+      the pipeline actually runs in.
+
+
+  - id: S-346
+    key: tma-nm-laundering-origin-binding
+    title: "Securing LLM-Agent Long-Term Memory Against Poisoning: Non-Malleable, Origin-Bound Authority with Machine-Checked Guarantees"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2606.24322
+    published: 2026-06
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-004, CX-006]
+    status: active
+    quote: >-
+      An attacker can launder an untrusted origin through three channels
+      specific to LLM agents: the agent's own summarization, a trusted-tool
+      echo, and manufactured corroboration ... existing defenses fail exactly
+      where the theory predicts (up to 68% laundering attack-success)
+    notes: >-
+      The finding that connects CX-004 to CX-006 and that the repo has no
+      counter to: a memory that passes review because it is a faithful summary
+      of a poisoned source is a laundering SUCCESS, and the agent's own
+      summarisation is one of the three named channels. A compaction pipeline
+      that cannot distinguish a faithful summary of a poisoned document from a
+      fact is the vulnerability, not the mitigation. Single author; the TLA+
+      artefacts and benchmark are the checkable part, not the prose.
+
+
+  - id: S-348
+    key: helmet-application-centric-eval
+    title: "HELMET: How to Evaluate Long-Context Language Models Effectively and Thoroughly"
+    org: "Princeton / NVIDIA"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2410.02694
+    published: 2024-10
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-005]
+    status: active
+    quote: >-
+      synthetic tasks like NIAH do not reliably predict downstream
+      performance ... while most LCLMs achieve perfect NIAH scores, open-source
+      models significantly lag behind closed ones when tasks require
+      full-context reasoning or following complex instructions - the gap widens
+      as length increases.
+    notes: >-
+      The largest model sweep in the evaluation block, and the load-bearing
+      finding for AEGIS's specific configuration: the open-versus-closed gap
+      is largest exactly where the pipeline lives, namely complex instruction
+      following at length. Its own practical recommendation (use its
+      retrieval-augmented tasks for fast model development because they
+      predict downstream performance better) is directly actionable.
+
+  - id: S-349
+    key: cre-positional-failures
+    title: "Positional Failures in Long-Context LLMs: A Blind Spot in Reasoning Benchmarks"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2605.23170
+    published: 2026-05
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-005, CX-007]
+    status: active
+    quote: >-
+      We audit 11 long-context benchmarks and find none jointly controls task
+      position, filler content, and context length for reasoning ... In the
+      initial five-model set, 76% of middle-position errors match surrounding
+      filler text versus 22% at the end position
+    notes: >-
+      The methodological paper CX-005 and CX-007 both build on, and the one
+      that explicitly extends the repo's existing U-curve evidence (S-116)
+      rather than restating it. Two results matter: no audited benchmark
+      controls position, filler and length jointly, and a diagnostic probe
+      that appends a copy of the target task at the end restores middle
+      accuracy to within 4 points of the end baseline across all nine models,
+      which is the causal evidence for the positional explanation.
+
+  - id: S-350
+    key: lexical-density-limits-context
+    title: "Dense Contexts Are Hard Contexts: Lexical Density Limits Effective Context in LLMs"
+    org: "Politecnico di Torino"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2606.06203
+    published: 2026-06
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-005, CX-007]
+    status: active
+    quote: >-
+      we study lexical density -- the rate at which a context introduces
+      distinct information -- as a third, largely overlooked factor that
+      systematically reduces the effective context window of LLMs ... models
+      that are near-perfect in sparse contexts drop below 60% retrieval score
+      on denser ones.
+    notes: >-
+      The single most important source for the gap the repo has declared in
+      its own catalogue, because it names the third factor alongside length and
+      position, holds the two the repo already has fixed, and is measured
+      across open-weight models from 9B to 685B. A regulatory corpus is dense
+      structured text, so this is the regime where the classical U-curve is
+      least predictive and the working hypothesis should change.
+
+  - id: S-351
+    key: sleeper-memory-poisoning
+    title: "Hidden in Memory: Sleeper Memory Poisoning in LLM Agents"
+    org: CISPA
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2605.15338
+    published: 2026-05
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-006]
+    status: active
+    quote: >-
+      poisoned memories were added up to 99.8% on GPT-5.5 and 95% on
+      Kimi-K2.6. Crucially, among successful retrievals, poisoned memories
+      cause attacker-intended agentic actions in 60-89% of evaluations across
+      models.
+    notes: >-
+      The attack surface includes a repository document, which is an
+      AEGIS-shaped vector rather than a hypothetical one. The number that
+      should govern any per-run gate design: the payload stays dormant across
+      multiple later conversations, so a grounding check that passes today is
+      not evidence about tomorrow.
+
+  - id: S-352
+    key: context-drift-equilibrium-kl
+    title: "Drift No More? Context Equilibria in Multi-Turn LLM Interactions"
+    org: "AI2 / Amazon / UMass"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2510.07777
+    published: 2025-10
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-006]
+    status: active
+    quote: >-
+      We formalize drift as the turn-wise KL divergence between the token-level
+      predictive distributions of the test model and a goal-consistent
+      reference model ... Our experiments consistently reveal stable,
+      noise-limited equilibria rather than runaway degradation
+    notes: >-
+      The closest external analogue to the repo's own grounding-gate abort
+      behaviour, and the source of a candidate measurement the pipeline is
+      already positioned to compute: drift is measurable per turn against a
+      reference, it has an equilibrium rather than a cliff, and it responds to
+      cheap interventions. Offers a principled replacement for a binary
+      pass/fail gate.
+
+  - id: S-353
+    key: vllm-automatic-prefix-caching-docs
+    title: "Automatic Prefix Caching (vLLM documentation)"
+    org: vLLM
+    kind: infrastructure-doc
+    evidence: PRIMARY
+    url: https://docs.vllm.ai/en/latest/features/automatic_prefix_caching/
+    published: 2026-09
+    retrieved: 2026-10-05
+    recheck_after: 2027-04-05
+    supports: [CX-008]
+    status: active
+    quote: >-
+      vLLM caches the KV cache of existing queries ... allowing the new query
+      to skip the computation of the shared part.
+    notes: >-
+      The canonical serving-layer lever, and the place CX-008's cost story
+      starts. Two limits stated in the same document bound what a stable
+      system prompt can buy: prefix caching reduces prefill only, not decode,
+      and a hit can resume only at a block boundary.
+
+  - id: S-354
+    key: prefix-eviction-fancy-fails-lru-wins
+    title: "When Fancy Eviction Fails: Rethinking Cache Replacement For LLM Prefix Reuse"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2609.28870
+    published: 2026-09
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-008]
+    status: active
+    quote: >-
+      Despite a large gap to Belady, sophisticated policies designed for
+      traditional caches provide little benefit over LRU. The reason is
+      structural: prefix reuse is dominated by the regular pacing of active
+      sessions, making recency unusually predictive.
+    notes: >-
+      The calibration source CX-008 needs, and the reason it recommends
+      against a sophisticated eviction policy by default. The stated
+      precondition (regular pacing makes recency predictive) is exactly what a
+      batch pipeline satisfies, which makes the expected gain small -- and
+      makes "fancy eviction does not help here" a preregisterable negative
+      prediction rather than an opinion. Fourteen policies on production traces
+      from two companies.
+
+  - id: S-355
+    key: kv-provenance-contract
+    title: "Preserving Provenance in Shared KV Caches for LLM Serving"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2609.38706
+    published: 2026-09
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-004, CX-008]
+    status: active
+    quote: >-
+      Cross-adapter collisions reduce accuracy from 0.94 to 0.64, incompatible
+      KV representations reduce reasoning accuracy to zero, and salt omission
+      enables 93% prompt identification from timing.
+    notes: >-
+      The serving-layer statement of the repo's provenance thesis, with hard
+      numbers, and the strongest argument in this block that the property
+      which makes a cache fast (identity by token content) is the same
+      property that destroys provenance. Formalises a KV provenance contract
+      whose repair costs under 0.34 ms on the hit path. The timing side channel
+      is the part a pipeline prompting with proprietary input would leak.
+
+  - id: S-356
+    key: stage-replay-kv-divergence-precision
+    title: "Stage-Replay Divergence Follows the KV Cache: Fixed-Prefix Precision Controls and Bidirectional Cache Transplantation"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2607.28495
+    published: 2026-07
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-008]
+    status: active
+    quote: >-
+      FP32 produces no decoded disagreement (95% Wilson upper bound 1.88%)
+      ... Bidirectional transplantation of all 48 key/value layers makes every
+      tested divergent continuation follow its cache donor, both on a selected
+      set at the primary checkpoint (24/24) and an outcome-blind replication at
+      a later checkpoint (43/43).
+    notes: >-
+      The source that qualifies PP-010 rather than vindicating it, and the
+      basis for CX-008's narrower claim: divergence is caused by the cache, is
+      attributable to it, and is moderated by numerical precision. The
+      practical consequence is that a precision-controlled caching policy is
+      available as an option, so the repo's existing "caching breaks
+      determinism" formulation is under-specified rather than wrong.
+
+  - id: S-357
+    key: hidden-structure-legal-formatting
+    title: "The Hidden Structure - Improving Legal Document Understanding Through Explicit Text Formatting"
+    org: "Humboldt University / ILBB"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2505.12837
+    published: 2025-05
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-007]
+    status: active
+    quote: >-
+      well-structured formats ... improve exact-match accuracy by ~20
+      percentage points. Optimizing the system prompt to include task details
+      and an advisory about structured input further elevates GPT-4.1's
+      accuracy by an additional ~10-13 percentage points
+    notes: >-
+      The closest existing study to the repo's declared CX-007 question: a
+      legal corpus, five input formats, controlled. Roughly thirty points
+      available from structure plus a structural advisory, on the domain the
+      pipeline actually serves. Recorded with its model-dependence intact,
+      which S-358 and S-359 independently confirm.
+
+  - id: S-358
+    key: veyrabench-format-count-length
+    title: "Prompt Design at Scale: How Format, Instruction Count, and Context Length Shape Instruction Adherence and Hallucination in Large Language Models"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2607.19257
+    published: 2026-07
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-007, PE-008]
+    status: active
+    quote: >-
+      Perfect-response rate collapses to zero by N=80 for every model, format,
+      and placement. Placement produces effects at least as large as format at
+      N=160 in most models, but the direction is model-specific ... What rises
+      sharply near each model's context ceiling is outright refusal to answer
+      (0% to 79-90%), distinct from sycophancy or fabrication.
+    notes: >-
+      The only fully factorial study of format, instruction count, context
+      length and placement, on a contamination-free reproducible corpus. Three
+      findings that bear directly on AEGIS: instruction count has a hard
+      collapse point, placement effects are model-specific in direction, and
+      the failure mode near the ceiling is ABDSTENTION rather than
+      fabrication, which changes what a grounding gate should be measuring.
+      Single author, synthetic corpus.
+
+  - id: S-359
+    key: sob-structured-output-value-accuracy
+    title: "The Structured Output Benchmark"
+    org: "Adobe / Montana State"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2604.25359
+    published: 2026-04
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-007]
+    status: active
+    quote: >-
+      models achieve near-perfect schema compliance, yet the best Value
+      Accuracy, measured by exact leaf-value match, reaches only 83.0% on
+      text, 67.2% on images, and 23.7% on audio, where longer context makes
+      extraction substantially harder.
+    notes: >-
+      The cleanest available statement that a JSON-emitting pipeline's failure
+      is not schema conformance but leaf-value correctness, and that it
+      degrades as context grows. Directly measurable against the repo's
+      rendered deliverables, and it sharpens PP-008: the output contract is
+      not the risky part.
+
+  - id: S-360
+    key: promcp-token-flow-attribution
+    title: "ProMCP: Profiling Token Flows and Latency Costs in Model Context Protocol-Based LLM Agents"
+    org: "University of Chicago"
+    kind: preprint
+    evidence: PEER
+    url: https://aclanthology.org/2026.findings-acl.1967/
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [CX-008]
+    status: active
+    quote: >-
+      topologies with customized clients devote 56-72% of total tokens and
+      60-67% of latency to planning and schema injection, whereas OTS clients
+      concentrate over 75-85% of latency in final answer synthesis. Crucially,
+      actual tool execution constitutes a negligible fraction of the total
+      cost across all configurations.
+    notes: >-
+      The measured attribution CX-008 needs, with the conclusion stated by the
+      authors: optimization should target schema orchestration and transport
+      rather than execution speed. The shape transfers to a schema-driven
+      pipeline even though the constants do not, which is why the entry is
+      registered as a structural prior rather than a threshold.
+
+  # ------------------------------------------------------------------
+  # 2026-10-05 pass — orchestration, the confirmed gaps (OR-*)
+  # The repo already holds the AO-001..AO-013 block, the MCP and A2A entries,
+  # and the multi-agent failure literature. This block covers what AO-013
+  # listed as open: durable execution, scheduling, human-in-the-loop
+  # semantics, the framework landscape on execution and state, cost and latency
+  # as measurements, agent identity, and evaluation methodology.
+  # ------------------------------------------------------------------
+
+  - id: S-361
+    key: temporal-determinism-activity-split
+    title: "Understanding Temporal"
+    org: "Temporal Technologies"
+    kind: infrastructure-doc
+    evidence: PRIMARY
+    url: https://docs.temporal.io/evaluate/understanding-temporal
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-04-05
+    supports: [OR-001]
+    status: active
+    quote: >-
+      Workflow code must be deterministic because Temporal reruns it to rebuild
+      state after a failure ... Anything that talks to the outside world belongs
+      in an Activity.
+    notes: >-
+      The canonical split, and it is a split on determinism rather than on
+      retries. Note what the page does not claim: no exactly-once guarantee is
+      made for Activities, and retry supervision is the documented behaviour.
+
+  - id: S-362
+    key: inngest-steps-not-exactly-once
+    title: "Steps and Workflows (Inngest)"
+    org: Inngest
+    kind: infrastructure-doc
+    evidence: PRIMARY
+    url: https://www.inngest.com/docs-markdown/durable-execution/steps-workflows
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-04-05
+    supports: [OR-001]
+    status: active
+    quote: >-
+      A step does not make an external action exactly once. ... Use an
+      idempotency key for writes, payments, and messages that must not happen
+      twice.
+    notes: >-
+      The most honest statement in the vendor literature, and the answer to
+      "what does durability mean when a step is a nondeterministic LLM call":
+      durability is per-step memoisation, not exactly-once. No vendor surveyed
+      claims exactly-once for the LLM call itself. Cite this for the
+      limitation, not against the product.
+
+  - id: S-363
+    key: inngest-nondeterminism-inside-steps
+    title: "Durable agents (Inngest)"
+    org: Inngest
+    kind: infrastructure-doc
+    evidence: PRIMARY
+    url: https://www.inngest.com/docs-markdown/durable-execution/durable-agents
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-04-05
+    supports: [OR-001]
+    status: active
+    quote: >-
+      random values, the current time, and API calls
+    notes: >-
+      The external corroboration AGENTS.md's seeding default lacked. The
+      guidance is to keep nondeterminism inside durable steps so a resumed run
+      makes the same decisions, which is the same content as the repo's
+      seed=42 rule reached from a replayability rationale rather than a
+      sampling one. The strongest available support for treating seeding as a
+      correctness property of resumable execution.
+
+  - id: S-364
+    key: dbos-step-checkpoint-not-exactly-once
+    title: "Architecture (DBOS)"
+    org: "DBOS Inc."
+    kind: infrastructure-doc
+    evidence: PRIMARY
+    url: https://docs.dbos.dev/architecture
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-04-05
+    supports: [OR-001]
+    status: active
+    quote: >-
+      However, once a step completes and is checkpointed, it is never
+      re-executed. ... Steps should be idempotent, meaning it should be safe to
+      retry them multiple times.
+    notes: >-
+      Independently declines the exactly-once claim in the same terms as
+      S-362, which is what makes the limitation a property of the problem
+      rather than of one vendor. The idempotency obligation on the step body is
+      the transferable discipline.
+
+  - id: S-365
+    key: langgraph-time-travel-reexecutes
+    title: "Time travel (LangGraph)"
+    org: LangChain
+    kind: framework-doc
+    evidence: PRIMARY
+    url: https://docs.langchain.com/oss/python/langgraph/use-time-travel
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-04-05
+    supports: [OR-001]
+    status: active
+    quote: >-
+      Nodes after the checkpoint re-execute, including any LLM calls, API
+      requests, and interrupts ... Replay re-executes nodes - it doesn't just
+      read from cache.
+    notes: >-
+      The framework that does NOT require determinism and pays for it by
+      re-executing. Cited against the naive reading that a checkpoint is a free
+      undo, and cited for the fact that a durable-execution layer can be built
+      without demanding reproducible LLM calls - at a cost the user must know
+      about.
+
+  - id: S-366
+    key: langgraph-checkpointers-durability-modes
+    title: "Checkpointers (LangGraph)"
+    org: LangChain
+    kind: framework-doc
+    evidence: PRIMARY
+    url: https://docs.langchain.com/oss/python/langgraph/checkpointers
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-04-05
+    supports: [OR-001, OR-002]
+    status: active
+    quote: >-
+      A super-step is a single "tick" of the graph where all nodes scheduled
+      for that step execute (potentially in parallel).
+    notes: >-
+      Two things the existing one-page-per-framework catalogue cannot express.
+      Super-steps give a coarse, named resume granularity suited to a staged
+      pipeline, and the three durability modes make the consistency-versus-
+      latency trade-off a user-tunable knob rather than a fixed property.
+      Undated page; verify the revision before citing a version.
+
+  - id: S-367
+    key: pydantic-ai-durability-is-pluggable-engine
+    title: "Durable execution (Pydantic AI)"
+    org: Pydantic
+    kind: framework-doc
+    evidence: PRIMARY
+    url: https://pydantic.dev/docs/ai/durable_execution/overview/
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-04-05
+    supports: [OR-001, OR-004]
+    status: active
+    quote: >-
+      Durability is not storage ... Each engine wraps every model request and
+      tool call as its own durable unit
+    notes: >-
+      The clearest statement that durability is an engine, not a framework
+      property. The architectural consequence for the repo's ADR-010 is that
+      "workflow versus agent" is one axis of a two-axis decision, and the 2026
+      question is which durability engine sits under the framework.
+
+  - id: S-368
+    key: soundgate-hitl-gate-not-a-barrier
+    title: "Stop Means Stop: Measuring and Repairing the Enforcement Gap in Agent-Framework Control Primitives"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2607.14166
+    published: 2026-07
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [OR-003]
+    status: active
+    quote: >-
+      Production LLM-agent frameworks ship control primitives - human-in-the-
+      loop approval gates, run cancellation, and execution timeouts - whose
+      names and documentation imply barrier semantics ... This contract holds
+      on none of six widely used open-source frameworks.
+    notes: >-
+      The most consequential finding in this block for the repo's
+      verify-gated design. The specific leak is a sibling effect executing
+      during a sibling's pause, found in every surveyed framework shipping a
+      pre-execution gate, with live models leaking 215 of 1,200 runs. A gate
+      is a narration of a barrier, not a barrier. Single-author unreviewed
+      preprint, so treat as strong-but-unconfirmed; the consequence for OR-003
+      does not depend on it being the only source.
+
+  - id: S-369
+    key: consent-integrity-lies-in-the-loop
+    title: "What You Approve Is What Executes: Consent Integrity for Black-Box LLM Agents"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2606.02668
+    published: 2026-06
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [OR-003]
+    status: active
+    quote: >-
+      Coding agents gate consequential actions behind a human-in-the-loop
+      approval dialog, but the dialog is narrated by the agent itself: the
+      human approves a summary the agent writes.
+    notes: >-
+      The second failure class in OR-003: even a correctly implemented gate
+      can be defeated at the presentation layer, because the thing approved is
+      the agent's own account of the action. The paper also reports the cost
+      of the obvious remedy honestly, marking 87% of normal commands
+      uninspectable, so OR-003 records the trade rather than a fix.
+
+  - id: S-370
+    key: oversight-capacity-inverted-u-escalation
+    title: "Oversight Has a Capacity: Calibrating Agent Guards to a Subjective, Fatiguing Human"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2606.08919
+    published: 2026-06
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [OR-003]
+    status: active
+    quote: >-
+      reviewers only moderately agree on what is risky (Fleiss' kappa = 0.52),
+      so there is no single correct label ... realized safety becomes an
+      inverted-U in the escalation rate: more human oversight can make a
+      system less safe
+    notes: >-
+      A quantitative argument against maximal human oversight, and two
+      consequences for the repo. A kappa of 0.52 means human review of a
+      grounding decision has no ground truth, which is a limit on any
+      human-in-the-loop arm; and the inverted-U says the safety-optimal guard
+      escalates below full escalation, which is worth testing before adopting a
+      human arm at all.
+
+  - id: S-371
+    key: temporal-approval-typed-decision-timeout
+    title: "Approval Pattern (Temporal)"
+    org: "Temporal Technologies"
+    kind: infrastructure-doc
+    evidence: PRIMARY
+    url: https://docs.temporal.io/design-patterns/approval
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-04-05
+    supports: [OR-003]
+    status: active
+    quote: >-
+      The Signal carries custom data - the approval decision, approver details,
+      and comments - that the Workflow captures and uses to determine next
+      steps.
+    notes: >-
+      The best-specified positive pattern in the block, and the three elements
+      OR-003 keeps: block with a timeout, capture the decision as structured
+      data rather than a boolean, and route timeout expiry to an explicit
+      branch. Capturing approver identity and comments is an audit
+      requirement, not a nicety, and it is the part a boolean gate omits.
+
+  - id: S-372
+    key: routellm-2x-cost-transfer
+    title: "RouteLLM: Learning to Route LLMs with Preference Data"
+    org: "UC Berkeley / Stanford"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2406.18665
+    published: 2024-06
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [OR-005]
+    status: active
+    quote: >-
+      significantly reduces costs - by over 2 times in certain cases - without
+      compromising the quality of responses ... [routers] maintain their
+      performance even when the strong and weak models are changed at test
+      time.
+    notes: >-
+      The transfer clause is the load-bearing caveat for OR-005: a routing
+      result is a property of the router, not of the model pair, so any
+      threshold in METRICS.md citing a routing saving must carry the
+      model-lineup dependency. The repo already uses routing (PP-019) without
+      a declared accounting rule, which is exactly the gap.
+
+  - id: S-373
+    key: lamas-critical-path-not-total-cost
+    title: "Learning Latency-Aware Orchestration for Multi-Agent Systems"
+    org: "University of Chicago"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2601.10560
+    published: 2026-01
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [OR-005]
+    status: active
+    quote: >-
+      In MAS, end-to-end latency is governed by the critical execution path,
+      so reducing total cost alone does not reliably reduce latency.
+    notes: >-
+      The measurement correction EXP-03 needs. The repo reports calls and
+      context as cost proxies and records no critical path, so its cost result
+      is not yet a latency result. The reported reduction is against
+      learning-based baselines only, not against a simple workflow.
+
+  - id: S-374
+    key: agentprune-5-6-vs-43-7-redundancy
+    title: "Cut the Crap: An Economical Communication Pipeline for LLM-based Multi-Agent Systems (AgentPrune)"
+    org: "University of Sydney / Meta"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2410.02506
+    published: 2024-10
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [OR-005, OR-006]
+    status: active
+    quote: >-
+      achieves comparable results as state-of-the-art topologies at merely $5.6
+      cost compared to their $43.7 ... 28.1%~72.8% down token reduction
+    notes: >-
+      The measured cost column AO-002's topology table lacks, and the most
+      useful corroboration available for the repo's minimal-context position:
+      removing redundant inter-agent traffic improved accuracy by 3.5-10.8%
+      against adversarial messages rather than degrading it, so a
+      code-owned minimal-context topology is not merely cheaper but
+      measurably no worse.
+
+  - id: S-375
+    key: batch-invariant-kernels-zero-flip-55-candidates
+    title: "A Paired Testing Protocol for Batch-Conditioned Refusal Robustness in LLM Serving"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2605.27763
+    published: 2026-05
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [OR-007]
+    status: active
+    quote: >-
+      standard vLLM reproduces 22/55 label flips on current score-flip
+      candidates, while enabling VLLM_BATCH_INVARIANT=1 reduces the same test to
+      0/55 flips
+    notes: >-
+      The measurement that bounds AGENTS.md's determinism claim. The repo found
+      zero residual variance from the serving layer against a hosted API; this
+      says that is a property of the endpoint configuration rather than of
+      seeded sampling, and names the flag that restores it on self-hosted
+      serving. The actionable consequence is a config.json field, not a
+      pipeline change. Single-author preprint.
+
+  - id: S-376
+    key: single-run-pass1-noise-floor-2-to-6pp
+    title: "On Randomness in Agentic Evals"
+    org: "Eindhoven University of Technology"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2602.07150
+    published: 2026-02
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [OR-008]
+    status: active
+    quote: >-
+      single-run pass@1 estimates vary by 2.2 to 6.0 percentage points
+      depending on which run is selected, with standard deviations exceeding
+      1.5 percentage points even at temperature 0 ... reported improvements of
+      2--3 percentage points may reflect evaluation noise rather than genuine
+      algorithmic progress.
+    notes: >-
+      The direct constraint on reading any future agent-versus-workflow A/B,
+      and the paper pair with EXP-02 that lets ADR-010 be defended on
+      measurement grounds rather than only cost grounds. Sixty thousand
+      trajectories on SWE-Bench-Verified, three models, two scaffolds. Note
+      also the scope limit: measured on scaffolded agents, so it does not
+      contradict a pipeline that measured sd = 0.0000; it bounds what an
+      agentic arm can be expected to deliver.
+
+  - id: S-377
+    key: icc-0-30-to-0-77-n-8-to-32
+    title: "Stochasticity in Agentic Evaluations: Quantifying Inconsistency with Intraclass Correlation"
+    org: "University of Aberdeen"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2512.06710
+    published: 2025-12
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [OR-008]
+    status: active
+    quote: >-
+      ICC converges by n=8-16 trials for structured tasks and n>=32 for
+      complex reasoning ... accuracy improvements are only trustworthy if ICC
+      also improves.
+    notes: >-
+      Supplies the instrument the repo's backlog lacks: a power basis for n
+      rather than a convenient one. The repo's EXP-03 ran n=15 per arm with no
+      power argument, which this source would have caught; the convergence
+      figures give a defensible range for any new preregistered experiment.
+
+  - id: S-378
+    key: harness-confound-rankings-reverse-30pp
+    title: "Finding the Right Fit: Model-Harness Interactions across Agent Tasks"
+    org: "University of Illinois Urbana-Champaign"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2610.00917
+    published: 2026-10
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [OR-008, OR-004]
+    status: active
+    quote: >-
+      Model rankings reverse across harnesses. On Terminal-Bench 4, Claude
+      leads GPT by 7.94 points in OpenHands but trails it by 30.16 points in
+      PI.
+    notes: >-
+      The caveat ADR-010 needs attached before it is cited anywhere. The
+      harness is a confound large enough to invert a model comparison, so a
+      workflow-versus-agent result must be defended on harness-controlled
+      grounds, which EXP-03 already is. Sixty-six configurations, five
+      models, four harnesses, three benchmarks.
+
+  - id: S-379
+    key: a2a-v1-contextid-opaque-server-side-state
+    title: "Agent2Agent (A2A) Protocol Specification, v1.0.0"
+    org: "A2A project / Linux Foundation"
+    kind: standard
+    evidence: PRIMARY
+    url: https://a2a-protocol.org/latest/specification/
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-04-05
+    supports: [OR-006, OR-009]
+    status: active
+    quote: >-
+      Server-generated contextId values SHOULD be treated as opaque identifiers
+      by clients ... Agents MUST reject messages containing mismatching
+      contextId and taskId.
+    notes: >-
+      A2A v1.0 read directly, which corrects the tone of the existing
+      registry entries on A2A (mostly negative) with two positive facts: the
+      state model is explicit (server-side, behind an opaque handle, never in
+      the payload) and the mismatched-identifier rejection is a real
+      referential-integrity guarantee, which is the same class of check the
+      repo's own traceability checker performs.
+
+  - id: S-380
+    key: a2a-authz-not-prescribed-intask-credentials
+    title: "A2A Specification - Security Considerations / Enterprise Implementation"
+    org: "A2A project / Linux Foundation"
+    kind: standard
+    evidence: PRIMARY
+    url: https://github.com/a2aproject/A2A/blob/main/docs/specification.md
+    published: 2026
+    retrieved: 2026-10-05
+    recheck_after: 2027-04-05
+    supports: [OR-009]
+    status: active
+    quote: >-
+      Authorization boundaries are defined by each agent's authorization model,
+      not prescribed by the protocol.
+    notes: >-
+      The precise content of AO-013's "no cross-protocol answer": A2A delegates
+      authorization out of the protocol and reinvents in-task token exchange
+      without naming RFC 8693. The same document specifies schema evolution
+      with a mandatory renames appendix and a deprecation schedule, which is
+      stronger than the equivalent in MCP and is worth recording as such.
+
+  - id: S-381
+    key: rfc8693-token-exchange-delegation
+    title: "RFC 8693: OAuth 2.0 Token Exchange"
+    org: IETF
+    kind: standard
+    evidence: PRIMARY
+    url: https://www.rfc-editor.org/rfc/rfc8693.html
+    published: 2019-12
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [OR-009]
+    status: active
+    quote: >-
+      With delegation semantics, principal A still has its own identity
+      separate from B.
+    notes: >-
+      The substrate every serious agent-identity proposal builds on, and the
+      frozen artefact OR-009 anchors to. The RFC itself flags the abuse risk
+      of delegation and prescribes scopes plus limited token lifetime. 2019
+      vintage and still the only normative delegation grant.
+
+  - id: S-382
+    key: delegation-gap-4-frameworks-no-confinement
+    title: "Delegation Without Trust: An Empirical Gap Analysis of Identity, Authorization, and Runtime Governance in Multi-Agent LLM Systems"
+    org: "Independent"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2609.00267
+    published: 2026-08
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [OR-009]
+    status: active
+    quote: >-
+      a correct system is one in which a fully prompt-injected agent still
+      cannot exceed the authority explicitly delegated to it ... three provide
+      no built-in confinement and one only partial; no existing standard alone
+      covers the requirement set.
+    notes: >-
+      Turns AO-013's open problem from "no answer exists" into a measured gap
+      with named frameworks, and supplies the right design standard for OR-009:
+      the test is what a fully prompt-injected agent can still reach. The
+      confinement figures are self-reported by the authors, so the claim to
+      carry is the gap, not the microsecond timing.
+
+  - id: S-383
+    key: rollout-cards-reporting-rules-20-9pp
+    title: "Rollout Cards: A Reproducibility Standard for Agent Research"
+    org: "University of Edinburgh"
+    kind: preprint
+    evidence: PEER
+    url: https://arxiv.org/abs/2605.12131
+    published: 2026-05
+    retrieved: 2026-10-05
+    recheck_after: 2027-10-05
+    supports: [OR-005, OR-008]
+    status: active
+    quote: >-
+      changing only the reporting rule can change reported scores by 20.9
+      absolute percentage points and, in some cases, invert rankings of
+      frontier models.
+    notes: >-
+      The accounting-rule requirement, and the source of a double-edged
+      finding for the repo. A cost or accuracy number without a declared
+      reporting rule is not a measurement. In the other direction, EXP-03's
+      disclosure of a 53% clean-termination rate is a rarity by this standard
+      -- an audit of 50 popular repositories found none reporting failed or
+      skipped runs -- so the repo should claim that as a methodological
+      strength rather than treat it as a weakness.

@@ -185,7 +185,7 @@ different step, and its answer is schema-constrained output, not a better prompt
 (E-01).
 
 ## 8. m02 is void: the p3 wrap instruction had been truncated
-## 8. M02 — a matriz de cobertura (fechada 2026-10-05)
+## 9. M02 — a matriz de cobertura (fechada 2026-10-05)
 
 **Question (PREREG-M02).** Does the pipeline generalise across models AND
 cases at once? M01 varied the model on one case; the three cases differ in
@@ -236,7 +236,7 @@ the first EXP-04 battery.
    invited models to write rows the corpus does not support. Fixed, verified on
    both gemma4 cells (R8 no longer fires).
 
-## 9. A reproducibility gap this experiment exposed
+## 10. A reproducibility gap this experiment exposed
 
 Before the digest field existed, a run recorded its model, its sampler, and its
 `git rev` — and nothing about the prompt *text*. Three findings in this

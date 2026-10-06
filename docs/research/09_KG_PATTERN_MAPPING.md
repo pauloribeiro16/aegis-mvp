@@ -374,6 +374,20 @@ becomes the model's ability to execute traversal over whatever it is shown.**
 That is why E-16 is an experiment on this pipeline rather than an adoption of
 either published recipe.
 
+**C-05a — Is the window the binding constraint, or the model?** `CONTESTED` in
+the literature, and the new evidence (2026-10-05 pass) tilts it. Everything
+above treats `num_ctx` as a capacity to be raised. [S-282] and [S-283] measure
+the *effective* length instead of the advertised one: only about half the tested
+models hold satisfactory performance at 32K, and at 32K 11 of 13 models fall
+below half their short-context baseline on needles with minimal lexical overlap
+— with reasoning models and CoT in the comparison, so "spend more reasoning on
+it" is not the repair. [S-223] is the decisive form, because its collapse was
+measured *while the material still fit the context window*. Read together the
+three say the same thing: **a prompt that fits is not a prompt that is read**,
+so the pack budget cannot be justified by the size of the window available. This
+is the anchor for `KG-033`'s framing and for the decomposition decision in
+`docs/decisions/ADR-2026-10-05_pack-budget-and-context-policy.md` D1/D3.
+
 ### Gaps (G7–G12)
 
 **G7 — No coverage metric.** The pipeline never computes whether a required

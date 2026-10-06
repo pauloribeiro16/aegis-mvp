@@ -56,6 +56,11 @@ def check(name: str, ok: bool, detail: str = "") -> bool:
     return ok
 
 
+def warn(name: str, detail: str = "") -> None:
+    print(f"  [WARN] {name}" + (f" — {detail}" if detail else ""))
+
+
+
 def resolve_control_anchor(repo: Path, anchor: str) -> bool:
     """Anchor id resolves to a control JSON under CONTROLS/ (R2b), any of the
     enforced referentials (NIST CSF 2.0 / NIST PF 1.1 / NIST AI RMF)."""
@@ -305,6 +310,28 @@ def validate_run(repo: Path, run: Path) -> list[str]:
               not bad3 and heads3 == sel_ids, f"{bad3}; heads={heads3}")
         guide = "### §3.0" in secs.get("§3", "")
         check("§3.0 interpretation guide present", guide, "missing §3.0 block")
+
+        # Calibration health check (anti-lazy-defaulting guard)
+        all_goals = [g for gs in goals_by_sd.values() for g in gs]
+        if all_goals:
+            n_tot = len(all_goals)
+            n_verb = sum(1 for g in all_goals if norm(g.get("adjustment", "")).startswith(("unchanged", "verbatim")))
+            ratio_verb = n_verb / n_tot
+            delegation_kw = re.compile(
+                r"\b(cloud provider|managed service|third-party|vendor|supplier|"
+                r"managed|delegat(ed?|ing)|external host(ing)?|saas provider)\b", re.I)
+            contradictions = [
+                g.get("id", "?") for g in all_goals
+                if norm(g.get("adjustment", "")).startswith(("unchanged", "verbatim"))
+                and delegation_kw.search(g.get("implication", ""))
+            ]
+            calib_msg = f"{n_verb}/{n_tot} ({ratio_verb:.0%}) verbatim"
+            if contradictions:
+                calib_msg += f"; {len(contradictions)} contradiction(s) (delegation in implication vs verbatim in adjustment): {contradictions[:4]}"
+            if ratio_verb > 0.70 or contradictions:
+                warn("calibration health (anti-lazy-defaulting guard)", calib_msg)
+            else:
+                print(f"  [PASS] calibration health — {calib_msg}")
 
         # §4 == tensions.json (or None)
         tpath = steps / "tensions.json"

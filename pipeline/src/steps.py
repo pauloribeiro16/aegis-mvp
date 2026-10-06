@@ -23,7 +23,7 @@ from pathlib import Path
 from compose import (REGULATIONS, SD_RE, anchor_slice, carries_reg_card,
                      compose_call, confirmed_regulations, domain_dir, load_case,
                      load_selection, objective_paragraph, parse_simple_yaml,
-                     sub_so_objective)
+                     p4t_blocks, sub_so_objective)
 from controls import (goal_anchors, parse_overrides, sd_control_sections,
                       track_b_rows)
 import quality
@@ -335,8 +335,23 @@ def parse_p4(answer: str, sd_id: str, expect_id: bool = True) -> dict:
     return {"md": md, "goals": goals, "assumptions": assumptions}
 
 
-def parse_p4t(answer: str) -> dict:
-    """Tension resolutions: a 5-column table, or the single line `None.`."""
+def parse_p4t(answer: str, sd_id: str | None = None) -> dict:
+    """Tension resolutions: a 5-column table, or the single line `None.`.
+
+    `sd_id` is the sub-domain whose call produced this answer (ADR-012 D1 makes
+    p4t one call per sub-domain). It does not relax the contract: the ID column
+    must still be sequential from T-001, because that is the only cross-row
+    invariant in the p4t step — there is no coverage gate over the tension list
+    and no peer-similarity gate to satisfy, so a per-call answer is exactly as
+    checkable as the monolithic one was. What the global numbering is FOR is the
+    merge, which renumbers across the whole selection.
+
+    Each answer is stored as its own slice under `steps/tensions/<sd>.*`, so a
+    row is attributable to the call that produced it without the row itself
+    carrying a provenance key: `tensions.json` keeps EXACTLY the shape
+    assemble_doc and validate.py have always read (agent/tools.py's
+    `submit_tensions` writes the same file through the same parser).
+    """
     md = extract_fenced(answer, "markdown")
     if md.strip().lower().rstrip(".") == "none":
         return {"md": md, "tensions": []}
@@ -353,7 +368,8 @@ def parse_p4t(answer: str) -> dict:
                              "expected 5 (ID | Sub-domains | Tension | Conflict | Resolution)")
         seq += 1
         if idm.group(1) != f"T-{seq:03d}":
-            raise ValueError(f"tension IDs must be sequential from T-001: got {idm.group(1)}")
+            raise ValueError(f"tension IDs must be sequential from T-001: got {idm.group(1)}"
+                             + (f" (sub-domain {sd_id})" if sd_id else ""))
         for i, name in ((2, "Tension"), (3, "Conflict"), (4, "Resolution")):
             if not cells[i].strip():
                 raise ValueError(f"empty {name} cell on {idm.group(1)}")
@@ -361,8 +377,56 @@ def parse_p4t(answer: str) -> dict:
                          "tension": cells[2], "conflict": cells[3],
                          "resolution": cells[4]})
     if not tensions:
-        raise ValueError("no T-NNN rows and no `None.` marker in the p4t answer")
+        raise ValueError("no T-NNN rows and no `None.` marker in the p4t answer"
+                         + (f" (sub-domain {sd_id})" if sd_id else ""))
     return {"md": md, "tensions": tensions}
+
+
+#: Column order of the merged §4 table, identical to the ficha's Output schema
+#: (PROM-P1-07) and to the header the monolithic answer used to carry.
+P4T_HEADER = "| ID | Sub-domains | Tension | Conflict | Resolution |"
+P4T_SEPARATOR = "|---|---|---|---|---|"
+
+
+def merge_tensions(per_sd: list[dict]) -> dict:
+    """Renumber the per-sub-domain p4t answers into one `T-NNN` sequence.
+
+    ADR-012 D1: p4t is one call per selected sub-domain, so each answer numbers
+    its own rows from T-001 and the ids are only unique WITHIN a call. The
+    merged artifact is what p5/assemble_doc and validate.py read, and they key
+    on the id sequence, so the sequence is renumbered here — over the selection
+    in canonical sub-domain order, which is the order the monolithic pack
+    presented the blocks in, so a reader sees the same row order as before.
+
+    `per_sd` is the list of stored per-sub-domain artifacts
+    (`{"subdomain": …, "tensions": [...]}`), in that canonical order. The return
+    value has the same shape `parse_p4t` returns, so `store_parsed` writes
+    `steps/tensions.md` / `steps/tensions.json` exactly as the monolithic step
+    did. `md` is RENDERED rather than copied from a model answer, which is
+    deliberate: the merged table is the only place the global numbering exists,
+    so the renderer and the renumberer must be the same code path. The rendered
+    table round-trips through `parse_p4t`, which is how the merge is verified.
+
+    Nothing is deduplicated. Two sub-domains that surface the same conflict
+    produce two rows with different ids: that is what the corpus said, and
+    dropping one would be a silent content loss dressed as cleanup. The row
+    shape is untouched too, so `store_parsed` writes `steps/tensions.md` /
+    `steps/tensions.json` exactly as the monolithic step did.
+    """
+    rows: list[dict] = []
+    for entry in per_sd:
+        rows.extend(dict(t) for t in entry.get("tensions", []))
+    for i, t in enumerate(rows, 1):
+        t["id"] = f"T-{i:03d}"
+    if not rows:
+        # the same marker the monolithic answer used, so parse_p4t accepts the
+        # merged artifact and assemble_doc/validate see the shape they always did
+        md = "None."
+    else:
+        md = "\n".join([P4T_HEADER, P4T_SEPARATOR] + [
+            f"| {t['id']} | {_cell(t['subdomains'])} | {_cell(t['tension'])} | "
+            f"{_cell(t['conflict'])} | {_cell(t['resolution'])} |" for t in rows])
+    return {"md": md, "tensions": rows, "assumptions": []}
 
 
 PARSERS = {"p1": parse_p1, "p2": parse_p2, "p3": parse_p3, "p3f": parse_p3f,
@@ -404,6 +468,31 @@ def store_parsed(run_dir: Path, step: str, subdomain: str | None, parsed: dict) 
         (steps_dir / "tensions.json").write_text(
             json.dumps({"tensions": parsed["tensions"]}, indent=1, ensure_ascii=False),
             encoding="utf-8")
+
+
+def store_tension_slice(run_dir: Path, sd_id: str, parsed: dict) -> None:
+    """One sub-domain's p4t answer, kept apart until the merge renumbers it.
+
+    `steps/tensions.<ext>` is the artifact of record for p5/validate; the
+    per-sub-domain slices are its INPUTS and live beside it under
+    `steps/tensions/`. Keeping them is what makes the stage resumable (a
+    sub-domain that failed is retried on the next invocation, a sub-domain that
+    succeeded is not re-asked) and what makes every row of the merged table
+    attributable to the call that produced it.
+    """
+    d = run_dir / "steps" / "tensions"
+    d.mkdir(exist_ok=True)
+    (d / f"{sd_id}.md").write_text(parsed["md"] + "\n", encoding="utf-8")
+    (d / f"{sd_id}.json").write_text(
+        json.dumps({"subdomain": sd_id, "tensions": parsed["tensions"]},
+                   indent=1, ensure_ascii=False), encoding="utf-8")
+
+
+def load_tension_slices(run_dir: Path, sd_ids: list[str]) -> list[dict]:
+    """The per-sub-domain p4t slices that exist, in canonical sub-domain order."""
+    d = run_dir / "steps" / "tensions"
+    return [json.loads((d / f"{sd}.json").read_text(encoding="utf-8"))
+            for sd in sd_ids if (d / f"{sd}.json").exists()]
 
 
 def check_p4_quality(repo: Path, run_dir: Path, parsed: dict, sd_id: str) -> dict:
@@ -513,6 +602,46 @@ EXTRA_INSTRUCTION = {
 }
 
 
+def p4t_extra_instruction(sd_id: str) -> str:
+    """The p4t wrap instruction, scoped to ONE sub-domain (ADR-012 D1).
+
+    The shipped whole-selection instruction above is the reference text; this
+    is the same contract narrowed to a single call, and the two differences are
+    load-bearing rather than cosmetic:
+
+    * SCOPE. The pack carries this sub-domain's Emergent-tensions sections and
+      no other, so a tension the model cannot quote from the attached text does
+      not exist for this call. Stating that keeps R8 (no invented obligation)
+      checkable against the pack instead of against memory.
+    * NUMBERING. The ID column restarts at T-001 per sub-domain and the merged
+      artifact renumbers the whole set. Without that sentence a model that
+      reasons globally would emit T-004 first and fail a check it cannot see.
+
+    The `None.` path is unchanged and is a real answer, not a skip: the
+    sub-domain's corpus tensions were read and none of them activates.
+    """
+    return (
+        f"Wrap your answer: return ONLY one ```markdown fenced block containing the "
+        f"tension-resolution table `| ID | Sub-domains | Tension | Conflict | "
+        f"Resolution |`, one row per tension of THIS sub-domain that activates on this "
+        f"company, or ONLY the line `None.` inside the fence when none of them does. "
+        f"SCOPE: this call resolves sub-domain {sd_id} alone — the attached pack carries "
+        f"the Emergent-tensions sections of that sub-domain and no other, and every "
+        f"selected sub-domain is resolved in its own call. Column rules: `Sub-domains` "
+        f"cites the canonical id `{sd_id}` (R1); `ID` restarts at `T-001` and runs "
+        f"sequentially, because the delivered table renumbers the whole set at merge — a "
+        f"gap or a number above 001 here is a defect. `Tension` names the conflict "
+        f"concisely, `Conflict` states which duties collide and on what operational "
+        f"dimension (clock, recipient, scope, competence), `Resolution` adopts ONE "
+        f"auditable binding rule for this company (e.g. strictest timeline binds per "
+        f"recipient; parallel recipients keep their own clocks) — never `TBD`. Skip a "
+        f"corpus tension whose triggering condition does not hold for this company: that "
+        f"is not a silent drop, it does not activate. Technology-neutral (R5); no "
+        f"obligation invented beyond the corpus tensions the pack quotes (R8). "
+        f"Nothing else."
+    )
+
+
 # Per-run prompt variants. The shipped EXTRA_INSTRUCTION above is the reference
 # behaviour — it is what the EXP-02/EXP-03 baseline ran on. A variant is
 # selected per run via config.json `ficha_overrides: {"<key>": "<variant>"}`, so
@@ -591,17 +720,12 @@ def p4_extra_instruction(sd_id: str, subso_ids: list[str] | None = None) -> str:
         f"situation); Baseline source = the single corpus Sub-SO id the row restates "
         f"(e.g. `SG-{sd_id}.GDPR`); Property MUST be one of C, I, A, privacy-right, "
         f"accountability. Control anchors are derived by code — do NOT emit any. "
-        f"ADJUSTMENT — a decision rule, not a menu. `unchanged — fits as stated` is "
-        f"correct ONLY when the duty applies to this company verbatim with no scope "
-        f"change. Otherwise: `narrowed: <the surface/role/system it is scoped to> — "
-        f"because <a fact from the intake>`. Use `flagged: <question>` when the answer "
-        f"depends on something not yet reviewed (an unreviewed contract, an unstated "
-        f"scale). Calibration test: would this row read exactly the same for a different "
-        f"company of your size? If yes, you have not calibrated it — it is `narrowed` or "
-        f"`flagged`. A micro-enterprise almost never satisfies a duty that presupposes "
-        f"dedicated infrastructure, in-house staff or a board: those narrow to a "
-        f"contractual-confirmation duty on the supplier, or to a question. `unchanged` "
-        f"belongs to the minority of rows that need no scoping at all. "
+        f"ADJUSTMENT — choose exactly one classification badge: `verbatim` (or `unchanged — fits as stated` "
+        f"if the baseline duty applies verbatim with no scope change) | `proportional` (adapted in rigor "
+        f"or operational scope to company size/profile) | `inherited` (delegated to or satisfied by "
+        f"an external cloud provider/supplier) | `flagged: <question>` (open question or unreviewed fact). "
+        f"Do NOT append long explanations here — all contextual justification and facts belong strictly "
+        f"in the Company implication column. "
         f"Nothing else."
     )
 
@@ -617,7 +741,11 @@ P4_ADJUSTMENT_MENU = (
     "`narrowed: <what> — because <company fact>` | `flagged: <open question>`. "
     "Choose the value that best describes this row. Nothing else."
 )
-P4_ADJUSTMENT_VARIANTS = {"menu": P4_ADJUSTMENT_MENU}
+P4_ADJUSTMENT_BADGES = (
+    "ADJUSTMENT — choose exactly one classification badge: `verbatim` | `proportional` | `inherited` | `flagged`. "
+    "Do NOT append explanations here — the justification belongs entirely in the Company implication column. Nothing else."
+)
+P4_ADJUSTMENT_VARIANTS = {"menu": P4_ADJUSTMENT_MENU, "badges": P4_ADJUSTMENT_BADGES}
 
 #: variant name -> replacement block. Selected per run via config.json
 #: `ficha_overrides: {"p4_adjustment": "<name>"}` (see runconfig.DEFAULTS).
@@ -638,9 +766,20 @@ def _p4_instruction(sd_id: str, subso_ids: list[str] | None = None,
     replacement = P4_ADJUSTMENT_VARIANTS.get(adjustment_variant)
     if replacement is None:
         return base
-    head, sep, _tail = base.partition("ADJUSTMENT — a decision rule, not a menu.")
+    # The anchor is the ADJUSTMENT marker of the SHIPPED base text. It moved
+    # when the base was rewritten to badge vocabulary ("a decision rule, not a
+    # menu" -> "choose exactly one classification badge") and the partition
+    # then failed silently — an override run would ship the base unchanged
+    # while config.json recorded the variant. m06 (menu) predates that rewrite;
+    # anything after it must swap against the current marker or not claim the
+    # variant at all.
+    head, sep, _tail = base.partition("ADJUSTMENT — choose exactly one classification badge")
     if not sep:
-        return base
+        raise ValueError(
+            "p4 adjustment override: the shipped base instruction no longer "
+            "contains the expected ADJUSTMENT marker — refusing to run with a "
+            "variant that would be silently ignored (record the instrument, "
+            "never assume it)")
     return f"{head}{replacement}"
 
 
@@ -694,8 +833,25 @@ def assemble_doc(repo: Path, run_dir: Path, case: dict) -> str:
     today = _dt.date.today().isoformat()
     n_goals = 0
     goal_blocks: list[str] = []
+    missing = [sd for sd in sel_ids
+               if not (steps_dir / "goals" / f"{sd.replace('.', '_')}.json").exists()]
     for sd in sel_ids:
         jf = steps_dir / "goals" / f"{sd.replace('.', '_')}.json"
+        if not jf.exists():
+            # Reachable only after a p4 sweep that reported PARTIAL: the stage
+            # now continues past a double-L0 failure instead of aborting, so a
+            # selected sub-domain can have no validated artifact. The old
+            # behaviour — abort the stage on the first failure — made this state
+            # impossible and a bare FileNotFoundError the only evidence. It is
+            # not papered over with a placeholder block: a §3 that silently
+            # omits 25 sub-domains is a fake deliverable. Name the gap, point at
+            # the record of the sweep, and let p5 fail loudly.
+            raise ValueError(
+                f"no validated P4 artifact for {len(missing)} of {len(sel_ids)} selected "
+                f"sub-domains (first: {sd}). The p4 sweep did not carry them — see "
+                f"steps/stage_result.json and the manifest's stage_result block for the "
+                f"graded outcome and the per-sub-domain L0 errors. A deliverable whose "
+                f"§3 omits a selected sub-domain is not a Phase 1 output.")
         data = json.loads(jf.read_text(encoding="utf-8"))
         gs = data["goals"]
         if not gs:
@@ -897,10 +1053,21 @@ class StepRunner:
         return self._client
 
     def _call(self, step: str, subdomain: str | None) -> None:
-        tag = step.replace(":", "_") if subdomain is None else f"p4_{subdomain.replace('.', '_')}"
+        # the step TAG is the forensic key: it names the `inputs/` and `outputs/`
+        # files, the trace line, and the resume decision. It is keyed on the step
+        # FAMILY plus the sub-domain (`p4:D-01.1` -> `p4_D-01_1`,
+        # `p4t:D-04.3` -> `p4t_D-04_3`) so every p4t sub-domain is as
+        # attributable as every p4 sub-domain. Keying on the literal "p4" prefix
+        # instead would have filed every p4t answer under `p4_*` and made the
+        # two indistinguishable in `inputs/`.
+        step_kind = step.split(":", 1)[0]
+        tag = (f"{step_kind}_{subdomain.replace('.', '_')}" if subdomain is not None
+               else step.replace(":", "_"))
         seq = self.trace.next_seq()
         extra = ""
-        if subdomain is not None:
+        if step_kind == "p4t":
+            extra = p4t_extra_instruction(subdomain)
+        elif subdomain is not None:
             sd_dir = domain_dir(self.repo, subdomain)
             confirmed = confirmed_regulations(self.run_dir) if (
                 self.run_dir / "steps" / "verdicts.json").exists() else []
@@ -922,8 +1089,8 @@ class StepRunner:
         _assert_wrap_instruction(step, extra)
         call = compose_call(self.repo, self.case, self.run_dir, step, subdomain,
                             extra_instruction=extra)
-        num_ctx = NUM_CTX[step.split(":")[0]]
-        num_predict = NUM_PREDICT[step.split(":")[0]]
+        num_ctx = NUM_CTX[step_kind]
+        num_predict = NUM_PREDICT[step_kind]
         # context budget guard (2026-10-01 job 1963648: D-09.4 pack ate the whole
         # 32K ctx, done_reason=length, empty content). est tokens x1.15 safety
         # (chars/4 underestimates the real tokenizer) + real output budget.
@@ -936,11 +1103,17 @@ class StepRunner:
         needed = est_tokens * 1.15 + num_predict + 2000
         while needed > num_ctx and num_ctx < 131072:
             num_ctx *= 2
-        if needed > num_ctx:
-            raise LLMError(f"step {tag}: prompt ~{est_tokens} tokens needs ~{int(needed)} "
-                           f"of context, above the 131072 ladder cap — trim the pack "
-                           f"(decompose per Sub-SO card; E-15)")
 
+        # ADR-012 D5: the refusal is a MEASURED outcome, not an absence of one.
+        # The raise used to sit here — above the `inputs/` write and above the
+        # trace record — so an exhausted ladder produced no pack, no trace line
+        # and no stage entry, only an exception string that named an estimate
+        # and pointed at a mitigation ("trim the pack") which is not the
+        # evidence. `PLANO_FECHO.md:124` records a context-fail cell from
+        # exactly this state and routes it to E-15, and E-15's traversal pass
+        # cannot run on an input that was never written. The decision itself
+        # is unchanged — the same estimate, the same 1.15 factor, the same
+        # 131072 cap, still a hard refusal — only the forensics come first.
         in_dir = self.run_dir / "inputs"
         sys_path = in_dir / f"{seq:03d}_{tag}_system.md"
         user_path = in_dir / f"{seq:03d}_{tag}_user.md"
@@ -967,6 +1140,31 @@ class StepRunner:
         out_dir = self.run_dir / "outputs"
         raw_path = out_dir / f"{seq:03d}_{tag}_response.json"
         out_path = out_dir / f"{seq:03d}_{tag}_output.md"
+
+        if needed > num_ctx:
+            # `status: context-fail` is the cell label PLANO_FECHO.md:124
+            # already uses for this outcome, so the trace is the same record an
+            # auditor expects rather than a new vocabulary. `est_prompt_tokens`,
+            # `system_chars`, `user_chars`, `pack_files`, `num_ctx` and
+            # `num_predict` are the fields a reader needs to place the refusal:
+            # how big the pack was, what was in it, what the model would have
+            # been asked for, and the ceiling it could not fit under.
+            record.update({
+                "status": "context-fail", "ts_end": now_iso(),
+                "output_path": None, "raw_path": None,
+                "context_ladder_cap": 131072,
+                "needed_tokens": int(needed),
+                "context_fail_error": (
+                    f"prompt ~{est_tokens} tokens needs ~{int(needed)} of context "
+                    f"(est x1.15 + num_predict={num_predict} + 2000) after the "
+                    f"ladder stopped at num_ctx={num_ctx}, above the 131072 cap"),
+            })
+            self.trace.append(record)
+            raise LLMError(f"step {tag}: prompt ~{est_tokens} tokens needs ~{int(needed)} "
+                           f"of context, above the 131072 ladder cap — trim the pack "
+                           f"(decompose per Sub-SO card; E-15). Refused call recorded "
+                           f"in trace.jsonl seq {seq} (status=context-fail); pack kept "
+                           f"in {in_dir}")
 
         if self.dry_run:
             record.update({"status": "dry-run", "ts_end": now_iso(),
@@ -1098,6 +1296,10 @@ class StepRunner:
         self._store(step, subdomain, tag, parsed)
 
     def _validate(self, step: str, answer: str, subdomain: str | None) -> dict:
+        # the step FAMILY routes the parser, not the presence of a sub-domain:
+        # both p4 and p4t now take one, and they have different contracts
+        if step.startswith("p4t"):
+            return parse_p4t(answer, sd_id=subdomain)
         if subdomain is not None:
             parsed = parse_p4(answer, subdomain)
             return self._check_p4_quality(parsed, subdomain)
@@ -1111,7 +1313,130 @@ class StepRunner:
         return check_p4_quality(self.repo, self.run_dir, parsed, sd_id)
 
     def _store(self, step: str, subdomain: str | None, tag: str, parsed: dict) -> None:
+        # a p4t answer is a SLICE until the merge renumbers it: writing it to
+        # steps/tensions.{md,json} per call would make the merged artifact a
+        # race between 38 writers and give every sub-domain the whole
+        # selection's T-NNN numbering.
+        if step.startswith("p4t"):
+            store_tension_slice(self.run_dir, subdomain, parsed)
+            return
         store_parsed(self.run_dir, step, subdomain, parsed)
+
+    # ---- per-sub-domain fault isolation (ADR-012 D1 / AGENTS.md §-2 rule 4) --
+
+    def _trace_record(self, tag: str) -> dict:
+        """The LAST trace line recorded for a step tag, read back from disk.
+
+        The stage summary is assembled from this rather than from the in-memory
+        exception so the two records cannot disagree: whatever `trace.jsonl`
+        says the L0 failure was, is what the summary reports. A tag with no
+        line means the call never reached the trace (a pack-composition error,
+        a missing corpus file) — the caller records the exception text then.
+        """
+        path = self.run_dir / "trace.jsonl"
+        if not path.exists():
+            return {}
+        last: dict = {}
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            try:
+                rec = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if rec.get("step") == tag:
+                last = rec
+        return last
+
+    def _failure_record(self, tag: str, sd_id: str, err: BaseException) -> dict:
+        """One sub-domain's graded failure record.
+
+        A double-L0 failure stays an L0 failure: nothing here relaxes, retries
+        or reclassifies it. What changes is that it is no longer the end of the
+        stage. AGENTS.md §-2 rule 4 makes a negative result a result, so the
+        record carries BOTH L0 strings (the first error is often the real defect
+        and the second a symptom of the repair), the sub-domain, the step tag
+        and the trace seq to read.
+        """
+        rec = self._trace_record(tag)
+        status = rec.get("status")
+        kind = ("context-fail" if status == "context-fail"
+                else "L0" if rec.get("l0_final_error")
+                else "transport" if rec.get("attempt2_error")
+                else "error")
+        out = {"subdomain": sd_id, "step": tag, "kind": kind,
+               "seq": rec.get("seq"),
+               "ts": rec.get("ts_end") or rec.get("ts_start")}
+        for key in ("l0_first_error", "l0_final_error", "attempt1_error",
+                    "attempt2_error", "est_prompt_tokens", "needed_tokens",
+                    "context_ladder_cap", "num_ctx", "num_predict"):
+            if rec.get(key) is not None:
+                out[key] = rec[key]
+        if not rec:
+            out["error"] = f"{type(err).__name__}: {err}"[:500]
+        return out
+
+    def _write_stage_result(self, stage: str, summary: dict) -> None:
+        """Record a stage's GRADED outcome, in the run's own artefacts.
+
+        Three sinks, deliberately redundant, because the consumers differ and
+        none of them is guaranteed to read the others:
+
+        * `steps/stage_result.json` — beside the artifacts, survives a run that
+          never reaches p5, and is re-read by a resumed stage.
+        * `manifest.json` under `stage_result` — travels with the manifest
+          through sync_down and is what a matrix row is built from.
+        * one canonical stdout line — the run log is the only thing that exists
+          even when the run directory is lost.
+
+        `status` is the graded cell: `ok` (everything the stage covers was
+        carried), `partial` (a subset failed), `failed` (nothing was carried —
+        which raises, so it never gets this far). It is deliberately NOT
+        `run_pipeline`'s `stage_history.status`, which records whether the
+        sweep itself completed and cannot express 13-of-38.
+        """
+        rec = dict(summary, stage=stage, ts=now_iso())
+        path = self.run_dir / "steps" / "stage_result.json"
+        doc: dict = {}
+        if path.exists():
+            try:
+                doc = json.loads(path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                doc = {}
+        if not isinstance(doc.get("stages"), dict):
+            doc = {"run_id": self.run_dir.name, "stages": {}}
+        doc["stages"][stage] = rec
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(doc, indent=1, ensure_ascii=False), encoding="utf-8")
+        manifest_block = dict(doc["stages"])
+        manifest_block["_note"] = (
+            "graded per-sub-domain outcome; run_pipeline's stage_history.status "
+            "records only whether the sweep completed")
+        update_manifest(self.run_dir, stage_result=manifest_block)
+        print(f"AEGIS_STAGE_RESULT stage={stage} status={rec['status']} "
+              f"carried={rec.get('carried')}/{rec.get('selected')} "
+              f"failed={rec.get('failed')} detail={rec.get('summary', '')!r}", flush=True)
+
+    def _raise_if_nothing_carried(self, stage: str, summary: dict,
+                                  failed_detail: str) -> None:
+        """Total failure raises; partial does not.
+
+        The stage must not report a 0-of-38 run the way it reports a 38-of-38
+        one, so `carried == 0` still aborts and takes the process exit code
+        with it. A PARTIAL sweep deliberately does not raise: p5 cannot render
+        a deliverable that is missing N sub-domains either way, so aborting
+        here would destroy the very record the partial outcome is made of. The
+        graded cell is carried by the three sinks above instead — that is the
+        difference between "delivered 13/38" and "delivered 0/38" being
+        distinguishable in the results.
+        """
+        if summary.get("carried") or self.dry_run:
+            return
+        raise LLMError(
+            f"stage {stage}: no sub-domain produced a validated artifact — "
+            f"0/{summary.get('selected')} carried, {summary.get('failed')} failed. "
+            f"{failed_detail} Forensics in {self.run_dir / 'inputs'}, "
+            f"{self.run_dir / 'outputs'} and steps/stage_result.json")
 
     # ---- public stage API -------------------------------------------------
 
@@ -1134,19 +1459,78 @@ class StepRunner:
         self._call("p3f", None)
         return 1
 
+    def _sweep(self, stage: str, order: list[str], done_marker, on_call) -> dict:
+        """Run one call per sub-domain, isolating a failure to its sub-domain.
+
+        Both p4 and p4t need the same loop and the same accounting, and the
+        accounting is the point: five qwen3.8 runs (jobs 1983224-1983232)
+        aborted at `p4_D-03_3` having completed 13 of 38 sub-domains, which the
+        M02 matrix — a BINARY cell — could not tell apart from a run that
+        completed none. The gates are untouched: a double-L0 failure is still a
+        double-L0 failure, still never stored as an artifact, still recorded
+        with both error strings. What stops happening is that one sub-domain
+        decides the fate of the other 37.
+
+        Resume semantics are the existing ones — a sub-domain with its
+        validated artifact on disk is not re-asked — so a resumed run retries
+        exactly the sub-domains that failed.
+        """
+        carried: list[str] = []
+        already: list[str] = []
+        failures: list[dict] = []
+        calls = 0
+        for sd_id in order:
+            if done_marker(sd_id):
+                print(f"[{stage}] {sd_id} already done (validated artifact on disk) — skipping",
+                      flush=True)
+                already.append(sd_id)
+                carried.append(sd_id)
+                continue
+            print(f"[{stage}] sub-domain {sd_id}", flush=True)
+            try:
+                on_call(sd_id)
+                carried.append(sd_id)
+            except (LLMError, ValueError, KeyError) as e:
+                rec = self._failure_record(f"{stage}_{sd_id.replace('.', '_')}", sd_id, e)
+                failures.append(rec)
+                print(f"[{stage}] {sd_id} FAILED ({rec['kind']}) — continuing with the "
+                      f"remaining sub-domains: {str(e)[:200]}", flush=True)
+            calls += 1
+        return {"carried": carried, "already": already, "failures": failures, "calls": calls}
+
     def stage_p4(self) -> int:
         self._require(("steps/selection.json", "steps/framing.md"), "G-P1-C")
         selection = load_selection(self.run_dir)
         order = sorted(s["id"] for s in selection["selected"])
-        done = 0
-        for sd_id in order:
-            if (self.run_dir / "steps" / "goals" / f"{sd_id}.md").exists():
-                print(f"[p4] {sd_id} already done (validated artifact on disk) — skipping", flush=True)
-                continue
-            print(f"[p4] sub-domain {sd_id}", flush=True)
-            self._call(f"p4:{sd_id}", sd_id)
-            done += 1
-        return done
+        sw = self._sweep("p4", order,
+                         done_marker=lambda sd: (self.run_dir / "steps" / "goals" / f"{sd}.md").exists(),
+                         on_call=lambda sd: self._call(f"p4:{sd}", sd))
+        n_failed = len(sw["failures"])
+        summary = {
+            # a dry run composes prompts and writes no artifact, so "carried"
+            # there means "the call composed and the context guard passed" —
+            # the count is over calls, not over files on disk, and it is
+            # labelled as such rather than reported as 0/38
+            "status": ("dry-run" if self.dry_run else
+                       "ok" if not n_failed else
+                       "partial" if sw["carried"] else "failed"),
+            "selected": len(order),
+            "carried": len(sw["carried"]),
+            "already_done": len(sw["already"]),
+            "failed": n_failed,
+            "calls": sw["calls"],
+            "summary": f"{len(sw['carried'])}/{len(order)} carried"
+                       + (f", {n_failed} failed (L0)" if n_failed else ""),
+            "artifact": "steps/goals/",
+            "failed_subdomains": [f["subdomain"] for f in sw["failures"]],
+            "failures": sw["failures"],
+        }
+        self._write_stage_result("p4", summary)
+        self._raise_if_nothing_carried(
+            "p4", summary,
+            "; ".join(f"{f['subdomain']}: {f.get('l0_final_error') or f.get('error', '')}"
+                      for f in sw["failures"][:3]))
+        return sw["calls"]
 
     def stage_p4t(self) -> int:
         self._require(("steps/selection.json",), "G-P1-C")
@@ -1156,9 +1540,81 @@ class StepRunner:
                 json.dumps({"tensions": []}, indent=1, ensure_ascii=False),
                 encoding="utf-8")
             print("[p4t] single-regulation run — no tensions call needed", flush=True)
+            self._write_stage_result("p4t", {
+                "status": "ok", "selected": len(load_selection(self.run_dir)["selected"]),
+                "eligible": 0, "no_material": 0, "carried": 0, "already_done": 0,
+                "failed": 0, "calls": 0, "tensions": 0,
+                "summary": "single-regulation run — no tensions call needed",
+                "artifact": "steps/tensions.json", "failed_subdomains": [], "failures": []})
             return 0
-        self._call("p4t", None)
-        return 1
+        # ADR-012 D1: one call per selected sub-domain, over that sub-domain's
+        # own Emergent-tensions section. `p4t_blocks` is the single source of
+        # truth for which sub-domains carry tension material at all, so the
+        # whole-selection view and the per-call views cannot diverge.
+        blocks = p4t_blocks(self.repo, self.run_dir)
+        eligible = [b["sd_id"] for b in blocks if b["has_tensions"]]
+        no_material = [b["sd_id"] for b in blocks if not b["has_tensions"]]
+        if no_material:
+            print(f"[p4t] no Emergent-tensions section for {len(no_material)} selected "
+                  f"sub-domain(s) — no call, no corpus material to rule on: "
+                  f"{', '.join(no_material)}", flush=True)
+        sw = self._sweep("p4t", eligible,
+                         done_marker=lambda sd: (self.run_dir / "steps" / "tensions" / f"{sd}.json").exists(),
+                         on_call=lambda sd: self._call(f"p4t:{sd}", sd))
+        n_failed = len(sw["failures"])
+        n_selected = len(load_selection(self.run_dir)["selected"])
+        base = {
+            "selected": n_selected,
+            "eligible": len(eligible),
+            "no_material": len(no_material),
+            "no_material_subdomains": no_material,
+            "carried": len(sw["carried"]),
+            "already_done": len(sw["already"]),
+            "failed": n_failed,
+            "calls": sw["calls"],
+            "summary": f"{len(sw['carried'])}/{len(eligible)} carried"
+                       + (f", {n_failed} failed (L0)" if n_failed else "")
+                       + (f"; {len(no_material)} of {n_selected} selected sub-domains "
+                          f"carry no corpus tension section" if no_material else ""),
+            "artifact": "steps/tensions.md (merged) / steps/tensions/ (per sub-domain)",
+            "failed_subdomains": [f["subdomain"] for f in sw["failures"]],
+            "failures": sw["failures"],
+        }
+        if not sw["carried"]:
+            base["status"] = "failed"
+            self._write_stage_result("p4t", dict(base, tensions=0))
+            self._raise_if_nothing_carried(
+                "p4t", base,
+                "; ".join(f"{f['subdomain']}: {f.get('l0_final_error') or f.get('error', '')}"
+                          for f in sw["failures"][:3]))
+        if self.dry_run:
+            # a dry run composed the calls; it must not WRITE the merged
+            # artifact, which would replace a real run's tensions.json with the
+            # empty result of a sweep that stored nothing
+            base["status"] = "dry-run"
+            base["tensions"] = None
+            self._write_stage_result("p4t", base)
+            return sw["calls"]
+        # the merge: canonical sub-domain order, T-NNN renumbered across the
+        # whole set. Runs whether or not the sweep was partial — a merged
+        # artifact built from the sub-domains that DID answer is the only
+        # honest §4 available, and the gaps are in the stage record, not hidden
+        # inside the table.
+        merged = merge_tensions(load_tension_slices(self.run_dir, sw["carried"]))
+        store_parsed(self.run_dir, "p4t", None, merged)
+        base["status"] = "ok" if not n_failed else "partial"
+        base["tensions"] = len(merged["tensions"])
+        # the row -> sub-domain map, so a merged row is attributable without
+        # replaying the trace (the slices on disk carry the same mapping)
+        n, rows_by_sd = 0, []
+        for sd in sw["carried"]:
+            k = len(load_tension_slices(self.run_dir, [sd])[0].get("tensions", []))
+            rows_by_sd.append({"subdomain": sd, "n_rows": k,
+                               "ids": [f"T-{i:03d}" for i in range(n + 1, n + 1 + k)]})
+            n += k
+        base["rows_by_subdomain"] = rows_by_sd
+        self._write_stage_result("p4t", base)
+        return sw["calls"]
 
     def stage_p5(self) -> int:
         """Zero-LLM assembly: Doc02 deliverable from validated artifacts +

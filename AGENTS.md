@@ -70,9 +70,21 @@ Fundamento e audit: `docs/research/10_SCIENTIFIC_METHOD_ALIGNMENT.md`.
    decisão revê-se, não se defende. O registo de pressupostos vive em
    `docs/decisions/ASSUMPTIONS.md`.
 
+6. **Anti-complacência e conselho crítico obrigatório.** Agentes sofrem de
+   forte viés de confirmação (*sycophancy*): tendem a validar gates, aprovar
+   artefactos e declarar tarefas concluídas baseados apenas na passagem mecânica
+   de formato (tabelas fechadas, ficheiros existentes, lint 0 erros), sem auditar
+   a substância real do conteúdo. Em qualquer revisão de gate (G-P1-A..D),
+   análise de deliverable ou decisão metodológica, o agente é expressamente
+   obrigado a assumir uma postura adversária via metodologia do **LLM Council**
+   (confronto deliberado entre *Contrarian*, *First Principles*, *Expansionist*,
+   *Outsider* e *Executor*). É proibido aprovar acriticamente ou concordar por
+   inércia com o operador.
+
 Excepção: a camada metodológica congelada (SPEC, baseline/, cases/) não é
 retrofitada — esta conduta aplica-se às camadas de pipeline, pesquisa e
 experimentos. R5 mantém-se.
+
 
 ---
 
@@ -232,6 +244,17 @@ flowchart TD
   - Whenever generating, filtering, or modifying documentation and baseline corpora, agents **must perform direct physical inspections** of the generated Markdown files (reading actual line ranges, verifying table columns/rows, validating section boundaries, checking markdown syntax rendering).
   - No task or implementation can be declared complete without physical evidence from the target files confirming that the output is visually and structurally sound.
   - For documents, physical inspection includes running `python scripts/doc_lint.py` over the touched scope (R11/R12 integrity) — reading ranges alone is not sufficient.
+- **R10b — Scientific Anti-Sycophancy & Universal Adversarial Engineering Framework:**
+  - **Foundations in Empirical Literature:** Large language models exhibit severe *sycophancy* and confirmation bias (Sharma et al., 2023; Wei et al., 2023), mode collapse and default bias in structured judgments (Zheng et al., 2023; Chen et al., 2023), and *specification gaming* where models satisfy mechanical metrics by injecting cosmetic changes rather than real domain engineering (Krakovna et al., 2020; Skalse et al., 2022). Automated mechanical passes (`doc_lint.py`, L0 regexes, table syntax checks) verify **syntactic hygiene only**, never **semantic validity or engineering depth**.
+  - **Universal Optimization Invariants (Mandatory across ALL phases, prompts, and deliverables):**
+    1. **Operational Delta Invariant (Anti-Cosmetic Customization):** Grounded in *CheckList* behavioral testing (Ribeiro et al., 2020). An adaptation or optimization is valid ONLY if it alters operational boundaries, engineering constraints, or fit criteria. Prepending an entity name to generic baseline prose is strictly forbidden. The Invariance Test: *"Would this requirement, goal, or rule read identically for a completely different company or architecture?"* If yes, it is uncalibrated compliance theater.
+    2. **Separation of Classification from Narrative:** Categorical decisions (priority, adjustment, status, verdict) must be pure, mutually exclusive Enums/badges. Never create hybrid fields like `enum: <explanation>` or `narrowed: <what> — because <fact>`. All contextual justification belongs exclusively in dedicated narrative fields.
+    3. **Mode Collapse & Distribution Ceiling:** Grounded in *Judge LLM Default Bias* (Zheng et al., 2023). A passive default choice (e.g. `unchanged`, `verbatim`, `standard`, `N/A`) must never exceed 60%–70% of an evaluated batch without triggering an explicit calibration collapse warning.
+    4. **Cross-Field Consistency Probing (NLI):** Narrative fields must be logically consistent with categorical badges (Gou et al., 2024). E.g., describing third-party delegation in narrative while marking `verbatim` or `self-contained` is flagged as a semantic contradiction.
+  - **The Adversarial Council Protocol (skill `llm-council`):**
+    - Whenever reviewing deliverables, evaluating gates (G-P1-A through G-P1-D), auditing goals, or assessing compliance chains, agents **MUST NEVER act as rubber-stampers** or adopt confirmation bias.
+    - Systematic interrogation across 4 orthogonal lenses: *Contrarian* (hunting compliance theater and failure modes), *First Principles* (bounding requirements vs echoing templates), *Outsider* (external hostile auditor detecting column contradictions), and *Executor* (actionable, falsifiable next steps).
+    - Any review comment or gate sign-off that merely says "everything looks good / conformant" without explicitly stating the stress-tests, friction points, and Council lenses analyzed is **STRICTLY INVALID**.
 - **R11 — No Editorial Meta-Commentary in Documents:** Case, example and output documents carry **content and functional cross-references only**.
   - Correction, migration, supersession and designation history — e.g. `corr-NNN` references, `formerly_known_as` notes, "deprecated"/"retired" remarks, migration or reconciliation notes — **never appears in document bodies, headings, blockquotes or frontmatter**. It belongs in the document's Version History / CHANGELOG section, in git history, or in agent memory.
   - Alias/mapping tables that resolve legacy IDs to current IDs are functional data and stay; the narrative around them does not.

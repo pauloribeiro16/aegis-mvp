@@ -38,14 +38,6 @@ while [ "$cycle" -lt "$MAX_CYCLES" ]; do
     if [ ! -d "$RUNS/$run_id" ]; then
       echo "  syncing $run_id"
       bash "$REPO/pipeline/deucalion/sync_down.sh" "$run_id" >/dev/null 2>&1
-      # the deliverable export lives under output/<company>/<run_id> on the
-      # cluster; pull it flat (the scp nesting quirk sync_down.sh skips)
-      mkdir -p "$REPO/output/TinyTask/$run_id"
-      scp -q -r "$HOST:$PROJ/aegis-mvp/output/TinyTask/$run_id/" "$REPO/output/TinyTask/$run_id/" 2>/dev/null
-      if [ -d "$REPO/output/TinyTask/$run_id/$run_id" ]; then
-        mv "$REPO/output/TinyTask/$run_id/$run_id/"* "$REPO/output/TinyTask/$run_id/" 2>/dev/null
-        rmdir "$REPO/output/TinyTask/$run_id/$run_id" 2>/dev/null
-      fi
     fi
   done
 

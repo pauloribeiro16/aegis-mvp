@@ -391,7 +391,8 @@ def main() -> int:
     manifest = json.loads((run_dir / "manifest.json").read_text())
     n_trace = len([l for l in (run_dir / "trace.jsonl").read_text().splitlines() if l.strip()])
     n_in = len(list((run_dir / "inputs").glob("*_user.md")))
-    n_expected = 5 + len(SELECTED)  # p1,p2,p3f,p3,p4t + one p4 call per selected sd
+    # p1,p2,p3,p3f + one p4 and one p4t call per selected sub-domain
+    n_expected = 4 + 2 * len(SELECTED)
     check("trace==inputs==manifest", n_trace == n_in == manifest["n_calls_total"] == n_expected,
           f"trace={n_trace} inputs={n_in} manifest={manifest['n_calls_total']} expected={n_expected}")
     seqs = [json.loads(l)["seq"] for l in (run_dir / "trace.jsonl").read_text().splitlines() if l.strip()]

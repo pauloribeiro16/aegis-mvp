@@ -413,6 +413,83 @@ def interactions_trim(path: Path, confirmed: list[str], keep: str = "operative")
     return title + "\n\n" + "\n\n".join(kept), banner
 
 
+#: Structural delimiter of one p4t sub-domain block, emitted by the pack
+#: builder and consumed by `split_p4t_pack`. Since ADR-012 D1 the p4t pack is
+#: sent one sub-domain at a time, so the block boundary is no longer a matter
+#: of taste: it is the key the per-call slice is stored under and the order the
+#: merge renumbers `T-NNN` in. An HTML comment is inert for the model and
+#: exactly matchable by the splitter; a regex over the corpus prose would be
+#: guessing where one sub-domain's Emergent-tensions text stops and the next
+#: begins, and that guess would be invisible when it was wrong.
+P4T_BLOCK_SENTINEL = "<!-- AEGIS-P4T-BLOCK {sd_id} -->"
+_P4T_BLOCK_RE = re.compile(r"(?m)^<!-- AEGIS-P4T-BLOCK (D-\d{2}\.\d) -->[ \t]*$")
+
+
+def p4t_blocks(repo: Path, run_dir: Path) -> list[dict[str, Any]]:
+    """The p4t tension corpus, split into one block per SELECTED sub-domain.
+
+    The monolithic p4t pack concatenated every selected sub-domain's
+    Emergent-tensions section into a single prompt whose size tracked the SIZE
+    OF THE SELECTION, not the regulation count (190,078 / 190,762 / 190,882 B
+    for Case 01 / 02 / 03 — a 0.4 % spread across 2 -> 4 -> 5 confirmed
+    regulations; 44,826 real prompt tokens on Case 03, job 1983144). ADR-012 D1
+    decomposes it: one call per sub-domain, as p4 already is.
+
+    Extracting the blocks HERE rather than splitting the concatenated pack
+    afterwards is what makes both halves of D1 true at once — the per-call
+    prompt is small, and each block carries the canonical sub-domain id the
+    merge keys on, so no boundary is ever recovered from prose.
+
+    `text` is the `interactions_trim(keep="tensions")` payload verbatim, so a
+    per-sub-domain pack embeds exactly the bytes the monolithic pack used to.
+    `has_tensions` is False for a sub-domain whose `_interactions.md` exists
+    but keeps no Emergent-tensions section: there is no corpus tension material
+    there, and asking a model to rule on absent material invites a fabricated
+    `None.` that reads as a negative finding. Such a sub-domain is reported
+    (`no_material`) and gets no call. Sub-domains with no `_interactions.md`
+    at all are absent from the list, as before.
+    """
+    confirmed = confirmed_regulations(run_dir)
+    selected = load_selection(run_dir)["selected"]
+    out: list[dict[str, Any]] = []
+    for s in sorted(selected, key=lambda x: x["id"]):
+        inter = domain_dir(repo, s["id"]) / "cross" / "_interactions.md"
+        if not inter.exists():
+            continue
+        text, note = interactions_trim(inter, confirmed, keep="tensions")
+        out.append({
+            "sd_id": s["id"], "name": s["name"], "text": text, "note": note,
+            "has_tensions": bool(re.search(r"(?m)^## .*Emergent tensions", text)),
+        })
+    return out
+
+
+def p4t_block_md(block: dict[str, Any]) -> str:
+    """One sub-domain's pack block: sentinel, heading, trimmed text, banner."""
+    return (P4T_BLOCK_SENTINEL.format(sd_id=block["sd_id"]) +
+            f"\n### {block['sd_id']} — {block['name']}\n\n{block['text']}\n{block['note']}")
+
+
+def split_p4t_pack(text: str) -> dict[str, str]:
+    """Recover {sub-domain id: block} from a composed p4t pack.
+
+    The inverse of writing `P4T_BLOCK_SENTINEL` before each block, and the
+    check that the delimiter really is doing its job: a pack with no sentinel
+    raises instead of falling back to a heading regex, because a silent
+    fallback here would hand the merge mis-keyed sub-domain blocks.
+    """
+    marks = list(_P4T_BLOCK_RE.finditer(text))
+    if not marks:
+        raise ValueError(
+            f"no {P4T_BLOCK_SENTINEL!r} delimiter in the p4t pack — the block "
+            "boundaries are unrecoverable and the merge cannot be keyed")
+    out: dict[str, str] = {}
+    for i, m in enumerate(marks):
+        end = marks[i + 1].start() if i + 1 < len(marks) else len(text)
+        out[m.group(1)] = text[m.start():end].strip("\n")
+    return out
+
+
 def prompt_digests(repo: Path) -> dict[str, str]:
     """sha256 of every ficha this run will be prompted from, plus the golden.
 
@@ -426,8 +503,17 @@ def prompt_digests(repo: Path) -> dict[str, str]:
     Cheap enough to write on every `new-run`: eight small files, once, before
     the first call. A missing file is recorded as "absent" rather than skipped —
     a silently shorter digest set would read as "unchanged".
+
+    The p4/p4t keys below cover the half of the prompt that lives in CODE, not
+    in ficha files: `p4_extra_instruction` (TERMINATION clause + ADJUSTMENT
+    variant table) and `p4t_extra_instruction` (per-sub-domain scope). The m06
+    run (job 1983666) exposed the gap — the badge-vocabulary rewrite changed
+    the instrument with `aegis_git_rev` frozen and digests identical, so three
+    instruments (rule / menu / badges) were distinguishable only by reading
+    `inputs/` verbatim. Deferred import: steps imports compose.
     """
     import hashlib
+    import inspect
 
     out: dict[str, str] = {}
     targets = {step: repo / "docs" / "pipeline" / "prompts" / fname
@@ -438,6 +524,18 @@ def prompt_digests(repo: Path) -> dict[str, str]:
             out[key] = hashlib.sha256(path.read_bytes()).hexdigest()[:16]
         except OSError:
             out[key] = "absent"
+    try:
+        import steps  # noqa: PLC0415 — deferred: steps imports this module
+        out["p4_instruction"] = hashlib.sha256("\n".join([
+            inspect.getsource(steps.p4_extra_instruction),
+            inspect.getsource(steps._p4_instruction),
+            repr(getattr(steps, "P4_ADJUSTMENT_VARIANTS", {})),
+        ]).encode()).hexdigest()[:16]
+        out["p4t_instruction"] = hashlib.sha256(
+            inspect.getsource(steps.p4t_extra_instruction).encode()).hexdigest()[:16]
+    except Exception:  # noqa: BLE001 — digesting must never block a new-run
+        out["p4_instruction"] = "absent"
+        out["p4t_instruction"] = "absent"
     return out
 
 
@@ -566,25 +664,50 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
         )
         files.insert(0, (f"pack-p4/{sd_id}/BUILD_MANIFEST.md", manifest_block))
 
-    elif step == "p4t":
+    elif step == "p4t" or step.startswith("p4t:"):
+        # ADR-012 D1: `p4t` (the whole selection in one prompt) is the
+        # debug/whole-selection view and `p4t:<sd>` is what stage_p4t actually
+        # sends. Both are built from the SAME block list, so the two views can
+        # never disagree about what a sub-domain's tension material is.
+        only = step.split(":", 1)[1] if ":" in step else None
         confirmed = confirmed_regulations(run_dir)
-        selection = load_selection(run_dir)
+        all_blocks = p4t_blocks(repo, run_dir)
+        blocks = all_blocks if only is None else [
+            b for b in all_blocks if b["sd_id"] == only]
+        if only is not None and not blocks:
+            raise ValueError(
+                f"p4t pack requested for {only}, which is not a selected sub-domain "
+                f"carrying cross/_interactions.md (selection: "
+                f"{', '.join(b['sd_id'] for b in all_blocks) or 'none'})")
         files.append(("steps/fact_sheet.yaml", (run_dir / "steps" / "fact_sheet.yaml").read_text(encoding="utf-8")))
-        blocks: list[str] = []
-        for s in sorted(selection["selected"], key=lambda x: x["id"]):
-            inter = domain_dir(repo, s["id"]) / "cross" / "_interactions.md"
-            if not inter.exists():
-                continue
-            trimmed, note = interactions_trim(inter, confirmed, keep="tensions")
-            blocks.append(f"### {s['id']} — {s['name']}\n\n{trimmed}\n{note}")
-        header = (
-            f"Tension corpus (deterministic extraction): Emergent-tensions sections of "
-            f"cross/_interactions.md for the {len(selection['selected'])} selected "
-            f"sub-domains, under confirmed regulations {', '.join(confirmed)}. Resolve "
-            f"every tension that activates on this company; if none activates, answer "
-            f"`None.`"
-        )
-        files.append(("pack-p4t/tensions.md", header + "\n\n" + ("\n\n".join(blocks) or "(no corpus tension sections)")))
+        body = "\n\n".join(p4t_block_md(b) for b in blocks)
+        if only is None:
+            header = (
+                f"Tension corpus (deterministic extraction): Emergent-tensions sections of "
+                f"cross/_interactions.md for the {len(load_selection(run_dir)['selected'])} "
+                f"selected sub-domains, under confirmed regulations {', '.join(confirmed)}. "
+                f"Resolve every tension that activates on this company; if none activates, "
+                f"answer `None.`"
+            )
+            files.append(("pack-p4t/tensions.md", header + "\n\n" + (body or "(no corpus tension sections)")))
+        else:
+            # one sub-domain per call: the deterministic build is recorded the
+            # same way p4 records it, so `inputs/NNN_p4t_<sd>_user.md` names the
+            # provenance of its own pack without needing the whole-selection file
+            files.append((
+                f"pack-p4t/{only}/tensions.md",
+                (f"Tension corpus (deterministic extraction): the Emergent-tensions "
+                 f"sections of cross/_interactions.md for sub-domain {only}, under "
+                 f"confirmed regulations {', '.join(confirmed)}. Resolve every tension "
+                 f"that activates on this company; if none activates, answer `None.`")
+                + "\n\n" + (body or "(no Emergent-tensions section for this sub-domain)"),
+            ))
+            files.insert(0, (
+                f"pack-p4t/{only}/BUILD_MANIFEST.md",
+                f"Context pack build (deterministic): sub-domain {only}; confirmed "
+                f"regulations {', '.join(confirmed)}; selection of "
+                f"{len(load_selection(run_dir)['selected'])} sub-domains, of which this "
+                f"call covers ONE (ADR-012 D1 — one p4t call per sub-domain).\n"))
     else:
         raise ValueError(f"unknown step: {step}")
 
@@ -595,7 +718,10 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
 def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
                  subdomain: str | None = None, extra_instruction: str = "") -> dict[str, Any]:
     """Assemble the full system+user messages for one LLM call."""
-    ficha_step = "p4" if step.startswith("p4:") else step
+    # the step TAG selects the pack ("p4:D-01.1", "p4t:D-04.3"); the ficha is
+    # the step FAMILY. Splitting on the first colon covers both, and a
+    # `startswith("p4:")` test does not — "p4t:D-04.3" is not a p4 ficha.
+    ficha_step = "p4" if step.startswith("p4:") else step.split(":", 1)[0]
     ficha = parse_ficha(repo / "docs" / "pipeline" / "prompts" / FICHA_FILES[ficha_step])
     pack_step = step if not step.startswith("p4:") else f"p4:{subdomain}"
     files, pack_text = build_pack(pack_step, repo, case, run_dir)

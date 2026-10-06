@@ -52,7 +52,7 @@ STOP = {
     "who", "whom", "whose", "what", "how", "why", "when", "where", "only",
 }
 
-ADJ_PREFIXES = ("unchanged", "narrowed:", "flagged:")
+ADJ_PREFIXES = ("unchanged", "verbatim", "narrowed", "proportional", "inherited", "flagged")
 
 
 def tokens(text: str) -> list[str]:
@@ -405,17 +405,17 @@ def _count_ungrounded(goal: str, implication: str, sources: list[str]) -> int:
 
 
 def adjustment_kind(adjustment: str) -> str:
-    """'unchanged' | 'narrowed' | 'flagged' | 'malformed'.
+    """'unchanged' | 'verbatim' | 'proportional' | 'inherited' | 'narrowed' | 'flagged' | 'malformed'.
 
     The mix EXP-01 reported as 17 narrowed vs 1, and which is meaningless
-    without a noise floor. 'malformed' is separated from the three legal values
+    without a noise floor. 'malformed' is separated from the legal values
     so an out-of-vocabulary row cannot be silently absorbed into a legitimate
     bucket in a distribution.
     """
     a = norm(adjustment)
     if not a:
         return "malformed"
-    for kind in ("narrowed", "flagged", "unchanged"):
+    for kind in ("verbatim", "proportional", "inherited", "narrowed", "flagged", "unchanged"):
         if a.startswith(kind):
             return kind
     return "malformed"
@@ -433,10 +433,6 @@ def score_run(goals: list[dict], baselines: dict[str, str], sources: list[str]) 
     all_implications = [r.get("implication", "") for r in goals]
     rows: list[dict] = []
     for i, r in enumerate(goals):
-        # exclude BY INDEX, not by value or object identity: two rows sharing
-        # one pasted sentence is precisely the defect this metric exists to
-        # catch, and Python constant-folds identical string literals into a
-        # single object — an identity filter would silently drop the evidence
         peers = [imp for j, imp in enumerate(all_implications) if j != i]
         rows.append(score_row(r, baselines, sources, peers))
 
@@ -446,6 +442,19 @@ def score_run(goals: list[dict], baselines: dict[str, str], sources: list[str]) 
     mix: dict[str, int] = {}
     for r in rows:
         mix[r["adjustment"]] = mix.get(r["adjustment"], 0) + 1
+
+    n_verbatim = mix.get("verbatim", 0) + mix.get("unchanged", 0)
+    ratio_verbatim = (n_verbatim / len(rows)) if rows else 0.0
+
+    delegation_kw = re.compile(
+        r"\b(cloud provider|managed service|third-party|vendor|supplier|"
+        r"managed|delegat(ed?|ing)|external host(ing)?|saas provider)\b", re.I)
+    contradictions = [
+        r["id"] for r, row_dict in zip(rows, goals)
+        if r["adjustment"] in ("verbatim", "unchanged")
+        and delegation_kw.search(row_dict.get("implication", ""))
+    ]
+    calibration_alert = bool(len(rows) >= 10 and ratio_verbatim > 0.70)
 
     return {
         "n_rows": len(rows),
@@ -469,6 +478,12 @@ def score_run(goals: list[dict], baselines: dict[str, str], sources: list[str]) 
             "n_above_dup_limit": sum(1 for s in peers_max if s > IMPLICATION_DUP_LIMIT),
         },
         "adjustment_mix": mix,
+        "calibration": {
+            "ratio_verbatim": round(ratio_verbatim, 3),
+            "calibration_alert": calibration_alert,
+            "n_contradictions": len(contradictions),
+            "contradiction_rows": contradictions,
+        },
         "n_rows_with_findings": sum(1 for r in rows if r["findings"]),
         "total_findings": sum(len(r["findings"]) for r in rows),
         "rows": rows,

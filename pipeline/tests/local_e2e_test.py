@@ -222,10 +222,14 @@ class Handler(BaseHTTPRequestHandler):
         length = int(self.headers.get("Content-Length", 0))
         payload = json.loads(self.rfile.read(length))
         if self.path == "/api/chat":
+            # the step tag can sit in ANY message: the multi-turn repair path
+            # (assistant answer + feedback user turn) does not carry it in the
+            # last message, so scan the whole conversation
             user = payload["messages"][-1]["content"]  # warm-up sends a single message
-            step = re.search(r"Task — (PROM-P1-0\d)", user)
+            convo = "\n".join(m.get("content", "") for m in payload["messages"])
+            step = re.search(r"Task — (PROM-P1-0\d)", convo)
             tag = step.group(1) if step else "?"
-            sd = re.search(r"PROM-P1-04 — (D-\d{2}\.\d)", user)
+            sd = re.search(r"PROM-P1-04 — (D-\d{2}\.\d)", convo)
             self.server.last_think = payload.get("think", "<absent>")
             self.server.last_options = payload.get("options", {})
             content: str

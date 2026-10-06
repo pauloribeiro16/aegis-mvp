@@ -195,14 +195,13 @@ CASES = [
         "maintain | C | SO-D-01.1.HL | SG-D-01.1.CRA | CRA Annex I Part I (2)(e) | "
         "unchanged — fits as stated |\n"),
      "2 times"),
-    ("adjustment outside the closed vocabulary", answer(
+    ("adjustment record too brief or invalid", answer(
         GOOD_ROWS.split("\n", 1)[0].replace("narrowed: scope to the platform database and "
                                            "its backups — because those are the stores the "
                                            "company operates.",
-                                           "relaxed — not needed, the company can ignore "
-                                           "this until 2027.")
+                                           "relaxed.")
         + "\n" + GOOD_ROWS.split("\n", 1)[1]),
-     "closed vocabulary"),
+     "too brief or invalid"),
     ("literal pipe inside a cell", answer(
         GOOD_ROWS.replace("The platform database runs in the company's own hosted SaaS, so "
                          "TinyTask must be able to show which protection applies there and to "

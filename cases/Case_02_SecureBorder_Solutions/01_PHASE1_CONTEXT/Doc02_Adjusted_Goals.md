@@ -69,8 +69,9 @@ The baseline floor for goals is consumed by reference from `baseline/domains/` a
 
 Each active sub-domain presents:
 1. **High-Level Security Goal (`SG-D-XX.Y.HL`):** The common, regulation-neutral baseline objective inherited from the methodology corpus (`baseline/domains/`).
-2. **Regulation-Specific Adjusted Goals:** Company-proportional restatements for each confirmed applicable regulation (slot 001 for GDPR, slot 002 for CRA, slot 003 for NIS 2, slot 004 for AI Act).
-3. **Adjustment Column (`Adjustment`):**
+2. **Regulation baseline (`SG-D-XX.Y.<REG>`):** Each confirmed regulation's Sub-SO objective, verbatim from the corpus module — the regulatory floor the adjusted goal restates.
+3. **Regulation-specific Adjusted Goals:** Company-proportional restatements for each confirmed applicable regulation (slot 001 for GDPR, slot 002 for CRA, slot 003 for NIS 2, slot 004 for AI Act).
+4. **Adjustment Column (`Adjustment`):**
    - **`—` (Standard Proportionality):** Indicates that the goal follows the overarching company proportionality defined in **§2 Framing** (MEDIUM scale, certified ISMS, 24/7 SOC, Critical-Class manufacturer, essential-entity supplier, high-risk-AI provider) without requiring sub-domain-specific legal exceptions or procedural deviations.
    - **Explicit Notes:** Document specific regulatory boundary conditions, statutory exceptions, or interpretation baselines that apply uniquely to that sub-domain (e.g. active special-category biometric provisions, Critical-Class notified-body assessment, essential-entity scope, four-regulation notification surface), including the **RIGOROUS** tier overrides of §5.
 
@@ -79,6 +80,12 @@ Each active sub-domain presents:
 ### D-01.1 — Data at Rest Encryption
 
 **High-Level Security Goal (SG-D-01.1.HL):** Data held at rest in storage is protected against unauthorised access through appropriate technical measures — primarily encryption with appropriate key custody — calibrated to the risks identified in the entity's risk assessment and commensurate with the state of the art.
+
+**Regulation baseline — `SG-D-01.1.GDPR` (GDPR):** Personal data at rest is processed in a manner that ensures appropriate security — including protection against unauthorised or unlawful processing and against accidental loss, destruction or damage — using appropriate technical or organisational measures, with the ability to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems and services (Art. 5(1)(f) + Art. 32(1)(b); the `appropriate` threshold is anchored by the five Art. 32(1) preamble factors — state of the art, costs of implementation, nature, scope, context, purposes, risks).
+
+**Regulation baseline — `SG-D-01.1.CRA` (CRA):** Where a product with digital elements stores data — personal or other — the confidentiality of that data is protected by encrypting relevant data at rest using state-of-the-art mechanisms (Annex I Part I (2)(e)).
+
+**Regulation baseline — `SG-D-01.1.NIS2` (NIS 2):** Essential and important entities establish policies and procedures regarding the use of cryptography and, where appropriate, encryption, covering the confidentiality, integrity, and authenticity of data stored, transmitted, and processed by network and information systems (Art. 21(2)(h)).
 
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
@@ -90,6 +97,10 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SG-D-01.2.HL):** Data in transit — across network paths, inter-service calls, and third-party APIs — is protected against unauthorised disclosure and alteration through cryptographic confidentiality and integrity controls (mutual authentication, encryption, integrity verification).
 
+**Regulation baseline — `SG-D-01.2.GDPR` (GDPR):** Personal data transmitted across networks, inter-service channels, and third-party infrastructure remains confidential and unaltered in transit, with the in-transit protection anchored to the five-event Art. 32(2) risk enumeration (accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data transmitted) (Art. 32(1)(b) + Art. 32(2)).
+
+**Regulation baseline — `SG-D-01.2.CRA` (CRA):** Where data is transmitted by a product with digital elements — personal or other — the confidentiality of the data in transit is protected by encrypting relevant data using state-of-the-art mechanisms, with the Annex I (2)(j) attack-surface-limitation leg constraining the exposed interfaces through which the data could otherwise leak (Annex I Part I (2)(e) + (2)(j)).
+
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
 | `AG-D-01.2-001` | Personal data transmitted across networks, inter-service channels, and third-party infrastructure remains confidential and unaltered in transit, with the in-transit protection anchored to the five-event Art. 32(2) risk enumeration (accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data transmitted) (Art. 32(1)(b) + Art. 32(2)). | maintain | Confidentiality & Integrity | SG-D-01.2.HL | GDPR | Art. 32(1)(b) + Art. 32(2) | PR.DS-02, PR.IR-01 | — |
@@ -98,6 +109,10 @@ Each active sub-domain presents:
 ### D-01.3 — Cryptographic Key Management
 
 **High-Level Security Goal (SG-D-01.3.HL):** Cryptographic keys and related authentication material are managed with separation of roles such that possession of the key material is not bundled with possession of the operational environment that uses it; the key custodian and the data consumer are distinct roles under distinct technical and organisational control, with the cryptographic key (not the storage medium) as the necessary condition for intelligibility of the protected data.
+
+**Regulation baseline — `SG-D-01.3.GDPR` (GDPR):** Where pseudonymisation or encryption is applied to personal data, the additional information required to re-identify the data subject (the cryptographic key, the mapping table, or the tokenisation seed) is kept separately and is subject to appropriate technical and organisational measures that prevent attribution (Art. 4(5) de-attribution test + Art. 34(3)(a) unintelligibility carve-out + Art. 32(1)(a) pseudonymisation/ encryption anchor).
+
+**Regulation baseline — `SG-D-01.3.CRA` (CRA):** Cryptographic keys and related authentication material used to protect the confidentiality and integrity of stored, transmitted or otherwise processed data by a product with digital elements — personal or other — are managed with separation of roles such that possession of the key material is not bundled with possession of the operational environment that uses it (Annex I Part I (2)(d) access-control + (2)(e) "other technical means" reading per `SR-CRA-004` ambiguity_notes; the Annex I text does not mention key management explicitly — the synthesis catalogue `99_CRA_Synthesis.md` §4 flags this as a T2-vs-text gap — so the key-separation reading rests on the combination of Annex I (2)(d) access-control duty with the Annex I (2)(e) "other technical means" residual).
 
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
@@ -108,6 +123,12 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SG-D-01.4.HL):** Data integrity is preserved against unauthorised modification across the data lifecycle — at rest, in transit, and in use — with corruption detected, logged, and reported, and with semantic accuracy maintained as the workflow leg of the personal-data principle.
 
+**Regulation baseline — `SG-D-01.4.GDPR` (GDPR):** Personal data are accurate and, where necessary, kept up to date; every reasonable step is taken to ensure that personal data that are inaccurate are erased or rectified without delay (Art. 5(1)(d) accuracy principle), with the integrity property anchored to two further legs — storage integrity (Art. 5(1)(f)) and the Art. 16 rectification cascade with Art. 19 recipient-cascade duty.
+
+**Regulation baseline — `SG-D-01.4.CRA` (CRA):** The integrity of stored, transmitted, or otherwise processed data — personal or other — as well as the integrity of commands, programs, and configuration, is protected against any manipulation or modification not authorised by the user (Annex I Part I (2)(f) — the universal-quantifier `any` makes the integrity protection unconditional); corruption is reported to the user / administering party (Annex I Part I (2)(f) `report on corruptions` + (2)(l) logging + monitoring).
+
+**Regulation baseline — `SG-D-01.4.AI_Act` (AI Act):** High-risk AI systems are as resilient as possible regarding errors, faults, or inconsistencies that may occur within the system or the environment (Art. 15(3)); the robustness of high-risk AI systems may be achieved through technical redundancy solutions, which may include backup or fail-safe plans.
+
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
 | `AG-D-01.4-001` | Personal data are accurate and, where necessary, kept up to date; every reasonable step is taken to ensure that personal data that are inaccurate are erased or rectified without delay (Art. 5(1)(d) accuracy principle), with the integrity property anchored to two further legs — storage integrity (Art. 5(1)(f)) and the Art. 16 rectification cascade with Art. 19 recipient-cascade duty. | maintain | Integrity | SG-D-01.4.HL | GDPR | Art. 5(1)(d) + Art. 5(1)(f) + Art. 16 + Art. 19 | PR.DS-01, ID.AM-08, PR.DS-10 | — |
@@ -117,6 +138,14 @@ Each active sub-domain presents:
 ### D-02.1 — Vulnerability Identification
 
 **High-Level Security Goal (SG-D-02.1.HL):** Vulnerabilities — including, where in scope, AI-system-specific attack surfaces (data poisoning, model poisoning, adversarial examples, model evasion, confidentiality attacks, model flaws) — are identified on a continuing basis across the system, product, ICT asset, or AI system that an entity operates, manufactures, deploys, or processes, with the resulting identification artefact (vulnerability register, risk-scenario catalogue, SBOM, or risk-management file) feeding the entity's testing, remediation, and notification cascades.
+
+**Regulation baseline — `SG-D-02.1.GDPR` (GDPR):** A controller or processor operates a process for regularly testing, assessing, and evaluating the effectiveness of the technical and organisational measures for ensuring the security of the processing (Art. 32(1)(d)); the data-protection impact assessment under Art. 35 is reviewed when there is a change of the risk represented by processing operations (Art. 35(11)).
+
+**Regulation baseline — `SG-D-02.1.CRA` (CRA):** A product with digital elements is made available on the market without known exploitable vulnerabilities (Annex I Part I (2)(a)), and vulnerabilities contained in the product — including the components listed in an SBOM — are identified and documented on a continuing basis throughout the support period (Annex I Part II (1) + Art. 13(3) + Art. 13(7)).
+
+**Regulation baseline — `SG-D-02.1.NIS2` (NIS 2):** Vulnerabilities in network and information systems are identified, handled, and disclosed through a coordinated vulnerability handling and disclosure process integrated into the system acquisition, development, and maintenance lifecycle (Art. 21(2)(e)).
+
+**Regulation baseline — `SG-D-02.1.AI_Act` (AI Act):** A risk-management system is established, implemented, documented, and maintained for high-risk AI systems throughout their lifecycle, comprising a continuous iterative process of (a) identification and analysis of known and reasonably foreseeable risks, (b) estimation and evaluation of risks emerging from use under conditions of reasonably foreseeable misuse, (c) evaluation of other risks arising from analysis of post-market monitoring data, and (d) adoption of appropriate and targeted risk-management measures (Art. 9(2)); the high-risk AI system is designed and developed to achieve an appropriate level of accuracy, robustness, and cybersecurity, and is resilient against errors, faults, or inconsistencies that may occur within the system or the environment, with appropriate technical and organisational measures to prevent, detect, respond to, resolve, and control for attacks trying to manipulate the training data set (data poisoning), pre-trained components used in training (model poisoning), inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality attacks, or model flaws (Art. 15(1)/(4)–(5)).
 
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
@@ -129,6 +158,8 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SG-D-02.2.HL):** Vulnerabilities identified in the upstream identification pipeline are addressed and remediated through security updates that are distributed via a secure, separated channel, with the entity-side policy governing patch deployment (severity-classified deployment windows, automated isolation of affected information assets in the event of a cyber-attack) forming a layered patch-management workflow on the asset.
 
+**Regulation baseline — `SG-D-02.2.CRA` (CRA):** Vulnerabilities of a product with digital elements are addressed and remediated through security updates without delay, including — where technically feasible — through security updates provided separately from functionality updates (Annex I Part II (2) + Annex I Part I (2)(c)); security updates are disseminated without delay to users via mechanisms that ensure the secure distribution of updates, accompanied by advisory messages describing the action users can take (Annex I Part II (7) + (8)); vulnerabilities — including those of integrated components — are handled effectively and in accordance with the Annex I Part II vulnerability-handling requirements throughout the support period determined by the manufacturer (minimum 5 years, or the expected use time if shorter — Art. 13(8)); each security update made available during the support period remains available after it has been issued for at least 10 years or for the remainder of the support period, whichever is longer (Art. 13(9)).
+
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
 | `AG-D-02.2-002` | Vulnerabilities of a product with digital elements are addressed and remediated through security updates without delay, including — where technically feasible — through security updates provided separately from functionality updates (Annex I Part II (2) + Annex I Part I (2)(c)); security updates are disseminated without delay to users via mechanisms that ensure the secure distribution of updates, accompanied by advisory messages describing the action users can take (Annex I Part II (7) + (8)); vulnerabilities — including those of integrated components — are handled effectively and in accordance with the Annex I Part II vulnerability-handling requirements throughout the support period determined by the manufacturer (minimum 5 years, or the expected use time if shorter — Art. 13(8)); each security update made available during the support period remains available after it has been issued for at least 10 years or for the remainder of the support period, whichever is longer (Art. 13(9)). | achieve | Confidentiality | SG-D-02.2.HL | CRA | Annex I Part II (2) + Annex I Part I (2)(c) + Annex I Part II (7) + Art. 13(9) | — | The 10-year (or remainder-of-support-period) update-availability floor is absolute; signed-update distribution is verified at the notified-body assessment. |
@@ -136,6 +167,10 @@ Each active sub-domain presents:
 ### D-02.3 — Coordinated Vulnerability Disclosure
 
 **High-Level Security Goal (SG-D-02.3.HL):** A coordinated vulnerability disclosure (CVD) ecosystem is maintained, covering the manufacturer-side CVD policy (intake, triage, publication, post-disclosure verification), a publicly identifiable contact address for vulnerability reporting, and — when the manufacturer also operates as a NIS 2 essential entity in a Member State — the institutional CSIRT-coordinated pathway under Art. 12(1) that integrates the manufacturer-side CVD with the Member-State-level disclosure coordination.
+
+**Regulation baseline — `SG-D-02.3.CRA` (CRA):** The manufacturer puts in place, documents and enforces a policy on coordinated vulnerability disclosure for its products with digital elements (Annex I Part II (5) + Art. 13(8) sentence 6); once a security update has been made available, the manufacturer shares and publicly discloses information about the fixed vulnerabilities, including a description of the vulnerability, the affected products, the impacts, the severity, and the remediation guidance — subject to a duly justified delay exception where security risks of publication outweigh security benefits (Annex I Part II (4)); the manufacturer facilitates the sharing of information about potential vulnerabilities in its products and in third-party components contained therein, including by providing a publicly identifiable contact address for the reporting of vulnerabilities (Annex I Part II (6)); the manufacturer designates a single point of contact to enable users — including security researchers — to communicate directly and rapidly with the manufacturer (Art. 13(17) + Annex II §2).
+
+**Regulation baseline — `SG-D-02.3.NIS2` (NIS 2):** Vulnerabilities in network and information systems are identified, handled, and disclosed through a coordinated vulnerability handling and disclosure process integrated into the system acquisition, development, and maintenance lifecycle (Art. 21(2)(e)).
 
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
@@ -146,6 +181,10 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SG-D-02.4.HL):** The security of the asset — product with digital elements, ICT-supported business functions / information assets / ICT assets, or high-risk AI system — is tested on a continuing basis, with a layered testing architecture combining conventional product-security testing, ICT defensive-capability testing (portfolio of testing modalities with periodic advanced TLPT), and AI-specific risk-management-measure testing plus real-world conditions.
 
+**Regulation baseline — `SG-D-02.4.CRA` (CRA):** Effective and regular tests and reviews of the security of a product with digital elements are applied on a continuing basis throughout the support period, with the tests and reviews producing evidence of conformity with the Annex I Part I cybersecurity requirements (Annex I Part II (3) + Annex VII §6); reports of the tests carried out to verify conformity are part of the technical documentation (Annex VII §6); the testing programme itself is audited under Module B periodic audits of the vulnerability-handling processes (Annex VIII Part II (8)).
+
+**Regulation baseline — `SG-D-02.4.AI_Act` (AI Act):** High-risk AI systems are tested to ensure that they perform consistently for their intended purpose (Art. 9(6)) and tested in real-world conditions in accordance with the detailed rules of Art. 60 (Art. 9(7)).
+
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
 | `AG-D-02.4-002` | Effective and regular tests and reviews of the security of a product with digital elements are applied on a continuing basis throughout the support period, with the tests and reviews producing evidence of conformity with the Annex I Part I cybersecurity requirements (Annex I Part II (3) + Annex VII §6); reports of the tests carried out to verify conformity are part of the technical documentation (Annex VII §6); the testing programme itself is audited under Module B periodic audits of the vulnerability-handling processes (Annex VIII Part II (8)). | achieve | Confidentiality | SG-D-02.4.HL | CRA | Annex I Part II (3) + Annex VII §6 + Annex VIII Part II (8) | ID.RA-01, PR.PS-06, DE.CM-09 | — |
@@ -154,6 +193,12 @@ Each active sub-domain presents:
 ### D-03.1 — Identity Lifecycle Management
 
 **High-Level Security Goal (SG-D-03.1.HL):** Identities of principals that interact with the entity's systems, products, services, components and data are managed in a verifiable, lifecycle-aware manner with documented boundaries between identity types and explicit hand-off protocols at boundary surfaces.
+
+**Regulation baseline — `SG-D-03.1.GDPR` (GDPR):** The identity of a natural person making a rights-exercise request under Art. 15–22 is verified using reasonable means proportionate to the risk of mis-identification, before action is taken; the controller may request additional information necessary to confirm the identity, and the data subject must supply enough information to enable identification if they wish to exercise the rights (Art. 12(6) + Art. 11(2); the verification scope is constrained by Art. 5(1)(c) data minimisation).
+
+**Regulation baseline — `SG-D-03.1.CRA` (CRA):** Identities, credentials, and access entitlements for users, services, and integrated components of the product with digital elements are managed in a verifiable manner throughout the operational lifetime of the product (Annex I Part I (2)(d) + Art. 13(15) type/batch/serial unique identification + Art. 13(17) single point of contact; backed by Annex II §3 unique-identification user information).
+
+**Regulation baseline — `SG-D-03.1.NIS2` (NIS 2):** Identities of the workforce — employees, contractors and other authorised personnel with access to network and information systems — are managed throughout the employment lifecycle, with provisioning on induction, entitlement review on role change, and revocation on separation, integrated into the entity's access-control policy and asset-management discipline (Art. 21(2)(i) HR-security dimension, coordinated by the literal AND with access-control policies and asset management).
 
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
@@ -165,6 +210,12 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SG-D-03.2.HL):** Authentication of users, services, and hardware that interact with the entity's systems, products, services, components and data operates through an authentication mechanism of sufficient strength for the risk in scope, with the strictest applicable floor discharging the most permissive on the same authentication event when both apply.
 
+**Regulation baseline — `SG-D-03.2.GDPR` (GDPR):** Persons authorised to process personal data act only on documented instructions from the controller (or processor) and are bound by confidentiality or an appropriate statutory obligation of confidentiality (Art. 28(3)(b) + Art. 29 + Art. 32(4) instruction-only processing); the identity of data subjects making rights-exercise requests is verified using reasonable means proportionate to the risk of mis-identification (Art. 12(6) + Art. 11(2)).
+
+**Regulation baseline — `SG-D-03.2.CRA` (CRA):** Protection from unauthorised access uses appropriate control mechanisms, which may include authentication, identity, or access-management systems, appropriate to the identified cybersecurity risk of the product (Annex I Part I (2)(d) — "including but not limited to" + 3-way OR).
+
+**Regulation baseline — `SG-D-03.2.NIS2` (NIS 2):** Multi-factor authentication or continuous authentication solutions are used where appropriate, and secured voice, video and text communications as well as secured emergency communication systems are deployed within the entity (Art. 21(2)(j)).
+
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
 | `AG-D-03.2-001` | Persons authorised to process personal data act only on documented instructions from the controller (or processor) and are bound by confidentiality or an appropriate statutory obligation of confidentiality (Art. 28(3)(b) + Art. 29 + Art. 32(4) instruction-only processing); the identity of data subjects making rights-exercise requests is verified using reasonable means proportionate to the risk of mis-identification (Art. 12(6) + Art. 11(2)). | maintain | Confidentiality | SG-D-03.2.HL | GDPR | Art. 29 + Art. 32(4) + Art. 28(3)(b) | PR.AA-05, PR.AA-06, PR.AT-02 | — |
@@ -174,6 +225,12 @@ Each active sub-domain presents:
 ### D-03.3 — Authorisation & Least Privilege
 
 **High-Level Security Goal (SG-D-03.3.HL):** The entitlement to perform actions on the entity's systems, products, services, components, and data is managed per least privilege with explicit authorisation-model choice, documented entitlements, attack-surface-limitation evidence, and boundary hand-offs between access surfaces.
+
+**Regulation baseline — `SG-D-03.3.GDPR` (GDPR):** Persons authorised to process personal data act only on documented instructions from the controller (or processor), and are bound by confidentiality or an appropriate statutory obligation of confidentiality, with documented instructions binding the controller → processor → authorised-persons chain of authority under Art. 29 + Art. 32(4) + Art. 28(3)(a)/(b) and Art. 4(7) + Art. 4(8) anchoring controller and processor definitions.
+
+**Regulation baseline — `SG-D-03.3.CRA` (CRA):** Access to the product with digital elements, its data, services, and functions is limited to authenticated and authorised users, services, and hardware, with possible unauthorised access reported (Annex I Part I (2)(d) `protection from unauthorised access through appropriate control mechanisms` + `possible unauthorised access reported` — R1 inclusive reading on `possible`) and attack surfaces including external interfaces limited (Annex I Part I (2)(j)).
+
+**Regulation baseline — `SG-D-03.3.NIS2` (NIS 2):** Access-control policies are established and applied at the entity level for the entity's network and information systems, covering access limited to authorised users, services, and hardware on a least-privilege basis, with the literal AND binding access-control + HR-security + asset-management together (Art. 21(2)(i)).
 
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
@@ -185,6 +242,10 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SG-D-03.4.HL):** The default disposition of the entity's data-centric processing systems and the product's product-centric configuration is managed so that the baseline state of every processing system and every product configuration is the minimum-necessary / secure configuration, with relaxation requiring affirmative data-subject or user intervention.
 
+**Regulation baseline — `SG-D-03.4.GDPR` (GDPR):** Personal-data processing systems implement appropriate technical and organisational measures ensuring that, by default, only personal data which are necessary for each specific purpose of the processing are processed — across the four AND-coordinated dimensions of amount of data collected, extent of their processing, period of their storage, and their accessibility — with the additional constraint that personal data are not made accessible without the individual's intervention to an indefinite number of natural persons (Art. 25(2) + Art. 25(1) privacy-by-design cross-anchor + Art. 5(1)(c) data minimisation underlying principle).
+
+**Regulation baseline — `SG-D-03.4.CRA` (CRA):** Products with digital elements are made available on the market with a secure-by-default configuration — including the possibility for the user to reset the product to its original state — unless otherwise agreed between manufacturer and business user in relation to a tailor-made product with digital elements (Annex I Part I (2)(b)), and the secure-by-default configuration ensures that vulnerabilities can be addressed through security updates — automatic security updates installed within an appropriate timeframe, enabled by default, with a clear and easy-to-use opt-out mechanism, through notification of available updates to users, and with the option to temporarily postpone them (Annex I Part I (2)(c)).
+
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
 | `AG-D-03.4-001` | Personal-data processing systems implement appropriate technical and organisational measures ensuring that, by default, only personal data which are necessary for each specific purpose of the processing are processed — across the four AND-coordinated dimensions of amount of data collected, extent of their processing, period of their storage, and their accessibility — with the additional constraint that personal data are not made accessible without the individual's intervention to an indefinite number of natural persons (Art. 25(2) + Art. 25(1) privacy-by-design cross-anchor + Art. 5(1)(c) data minimisation underlying principle). | maintain | Confidentiality & Privacy Right | SG-D-03.4.HL | GDPR | Art. 25(2) + Art. 25(1) + Art. 5(1)(c) | PR.PS-01, ID.AM-08 | — |
@@ -193,6 +254,12 @@ Each active sub-domain presents:
 ### D-04.1 — Incident Detection & Triage
 
 **High-Level Security Goal (SG-D-04.1.HL):** Security-relevant events affecting the entity's systems, products, services, components and data are detected and triaged with documented trigger moments that anchor the downstream notification and response pipelines.
+
+**Regulation baseline — `SG-D-04.1.GDPR` (GDPR):** Personal-data breaches are detected and triaged, and the moment of "becoming aware" is documented to anchor the 72-hour notification clock (Art. 33(1) + Art. 4(12) breach definition).
+
+**Regulation baseline — `SG-D-04.1.CRA` (CRA):** Relevant internal activity of the product with digital elements — including access to or modification of data, services, or functions — is recorded and monitored, with a user-visible opt-out mechanism where appropriate, and any corruption or unauthorised modification is reported (Annex I Part I (2)(l)).
+
+**Regulation baseline — `SG-D-04.1.NIS2` (NIS 2):** An incident-handling capability is established, covering the prevention, detection, analysis, containment, response, and recovery of incidents (Art. 21(2)(b) + Art. 6(8) six-action `incident handling` definition), with the detection dimension operationalised as all-hazards entity-level monitoring that surfaces adverse events affecting service continuity (Art. 21(2) chapeau + Recital 56).
 
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
@@ -204,6 +271,12 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SG-D-04.2.HL):** Security incidents affecting the entity's systems, products, services, components and data are contained and mitigated through appropriate measures that address the incident's impact and reduce the probability of further damage.
 
+**Regulation baseline — `SG-D-04.2.GDPR` (GDPR):** Personal-data breaches are contained and mitigated through appropriate technical and organisational measures, including — where applicable — measures rendering the personal data unintelligible to any person who is not authorised to access the data (Art. 34(3)(a)) and subsequent measures that ensure the high risk no longer materialises (Art. 34(3)(b)); the controller describes the measures taken or proposed in the Art. 33(3)(d) supervisory-authority notification.
+
+**Regulation baseline — `SG-D-04.2.CRA` (CRA):** The availability of essential and basic functions of a product with digital elements is protected also after an incident, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks (Annex I Part I (2)(h)); the manufacturer minimises the negative impact by the product itself or connected devices on the availability of services provided by other devices or networks (Annex I Part I (2)(i)); the manufacturer reduces the impact of an incident using appropriate exploitation-mitigation mechanisms and techniques (Annex I Part I (2)(k)). Where the manufacturer knows or has reason to believe that the product or processes are not in conformity with the Annex I cybersecurity requirements, the manufacturer takes the corrective measures necessary to bring the product into conformity, or to withdraw or recall the product (Art. 13(21)).
+
+**Regulation baseline — `SG-D-04.2.NIS2` (NIS 2):** The entity operates the incident-handling capability across all six actions of the Art. 6(8) `incident handling` lifecycle (prevent, detect, analyse, contain, respond, recover), with the `contain` action documented in the entity-level response plan as the lifecycle phase that isolates affected systems and prevents further damage (Art. 21(2)(b)).
+
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
 | `AG-D-04.2-001` | Personal-data breaches are contained and mitigated through appropriate technical and organisational measures, including — where applicable — measures rendering the personal data unintelligible to any person who is not authorised to access the data (Art. 34(3)(a)) and subsequent measures that ensure the high risk no longer materialises (Art. 34(3)(b)); the controller describes the measures taken or proposed in the Art. 33(3)(d) supervisory-authority notification. | achieve | Availability | SG-D-04.2.HL | GDPR | Art. 33(3)(d) | RS.MI-01, RS.MI-02, PR.DS-01 | — |
@@ -213,6 +286,14 @@ Each active sub-domain presents:
 ### D-04.3 — Incident Notification & Reporting
 
 **High-Level Security Goal (SG-D-04.3.HL):** A major security incident is notified to the applicable recipients within the regulatory timelines applicable to the event's material scope.
+
+**Regulation baseline — `SG-D-04.3.GDPR` (GDPR):** A personal data breach is notified to the competent supervisory authority without undue delay and, where feasible, no later than 72 hours after the controller becomes aware of the breach — unless the breach is unlikely to result in a risk to data subjects' rights and freedoms (Art. 33(1)).
+
+**Regulation baseline — `SG-D-04.3.CRA` (CRA):** An actively-exploited vulnerability contained in a product with digital elements that the manufacturer becomes aware of is notified on a three-tier temporal pattern: early warning within 24 hours (Art. 14(2)(a), `SR-CRA-029`); vulnerability notification within 72 hours with general information, nature of exploit, mitigations, and user actions (Art. 14(2)(b), `SR-CRA-030`); final report within 14 days of a corrective or mitigating measure being available (Art. 14(2)(c), `SR-CRA-030`).
+
+**Regulation baseline — `SG-D-04.3.NIS2` (NIS 2):** A significant incident is notified to the CSIRT or, where applicable, the competent authority via a twin-trigger pattern — an early warning within 24 hours of awareness (Art. 23(4)(a), `SR-NIS2-010`) followed by an incident notification within 72 hours with severity, impact, and (where available) indicators of compromise (Art. 23(4)(b), `SR-NIS2-011`).
+
+**Regulation baseline — `SG-D-04.3.AI_Act` (AI Act):** A serious incident involving a high-risk AI system is reported to the market surveillance authorities of the Member States where the incident occurred under a differentiated 4-timeline × 4-trigger matrix (Art. 73(1)–(4)): 15 days after the provider becomes aware (default); 10 days if the incident results in death; 2 days for widespread infringement; 15 days from reasonable likelihood of causal link (whichever is later with the awareness trigger, per Art. 73(2)).
 
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
@@ -225,6 +306,12 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SG-D-04.4.HL):** Systems, products, services, components and data are restored and recovered with documented recovery evidence applicable to the recovery dimensions of all four participating regulators on the same party.
 
+**Regulation baseline — `SG-D-04.4.GDPR` (GDPR):** The ability to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems and services is maintained, and to restore the availability and access to personal data in a timely manner in the event of a physical or technical incident (Art. 32(1)(b) + Art. 32(1)(c); Art. 5(1)(f) integrity/confidentiality cross-reference; Art. 32(2) five-event risk-enumeration cross).
+
+**Regulation baseline — `SG-D-04.4.CRA` (CRA):** The availability of essential and basic functions of a product with digital elements is protected *also after an incident*, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks, and the manufacturer reduces the impact of an incident using appropriate exploitation-mitigation mechanisms and techniques and minimises the negative impact on services of other devices and networks (Annex I Part I (2)(h) + (2)(k) + (2)(i) + Art. 13(21) corrective measures).
+
+**Regulation baseline — `SG-D-04.4.NIS2` (NIS 2):** Business continuity, backup management, disaster recovery, and crisis management capabilities are maintained, ensuring the ability to restore the availability and integrity of network and information systems and to manage crises arising from significant incidents (Art. 21(2)(c); the `business continuity, such as backup management and disaster recovery, and crisis management` structure imposes an AND chain across the BC + backup + DR + CM triad).
+
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
 | `AG-D-04.4-001` | The ability to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems and services is maintained, and to restore the availability and access to personal data in a timely manner in the event of a physical or technical incident (Art. 32(1)(b) + Art. 32(1)(c); Art. 5(1)(f) integrity/confidentiality cross-reference; Art. 32(2) five-event risk-enumeration cross). | maintain | Availability | SG-D-04.4.HL | GDPR | Art. 32(1)(c) + Art. 5(1)(f) + Art. 32(2) | PR.IR-04, PR.DS-11, RC.RP-04 | — |
@@ -234,6 +321,12 @@ Each active sub-domain presents:
 ### D-05.1 — Data Minimisation
 
 **High-Level Security Goal (SG-D-05.1.HL):** Data collected or otherwise acquired is limited to what is adequate, relevant, and necessary in relation to the purpose for which it is processed, with a documented necessity assessment and, where the underlying purpose changes, a compatibility assessment confirming that the new use is consistent with the original. Special-category data is processed only where a narrow exception applies and is documented to that effect.
+
+**Regulation baseline — `SG-D-05.1.GDPR` (GDPR):** Personal data collected and processed are limited to what is adequate, relevant, and necessary in relation to the purposes for which they are processed (Art. 5(1)(c)); further processing is compatible with the original purposes per the Art. 6(4) compatibility test (5 factors); special-category processing requires an Art. 9(2) basis subject to the Art. 9(1) prohibition; by-design and by-default minimisation is applied per Art. 25(1)/(2); a DPIA under Art. 35 is performed for high-risk processing.
+
+**Regulation baseline — `SG-D-05.1.CRA` (CRA):** Data processed by a product with digital elements — personal or other — is limited to what is adequate, relevant, and necessary in relation to the intended purpose of the product (Art. 3(23) `intended purpose` definition), with the risk assessment per Art. 13(2) and the intended purpose + reasonably foreseeable use per Art. 13(3) sentence 2 supplying the proportionality calibration (Annex I Part I (2)(g)).
+
+**Regulation baseline — `SG-D-05.1.AIACT` (AI Act):** High-risk AI systems which make use of techniques involving the training of AI models with data are developed on the basis of training, validation and testing data sets that meet the quality criteria — relevant, sufficiently representative, and to the best extent possible, free of errors and complete in view of the intended purpose (Art. 10(3)) — supported by data governance practices that detect, prevent and mitigate possible biases (Art. 10(1) + Art. 10(2) 8-element closed list (a)–(h)).
 
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
@@ -245,6 +338,12 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SG-D-05.2.HL):** Data — across the data classes in scope — is retained for the period required to satisfy its declared purpose, with documented retention rationale and, where the underlying purpose changes, a reset of the retention clock. Long-term archiving or research-only retention is paired with safeguards proportional to the residual identifiability.
 
+**Regulation baseline — `SG-D-05.2.GDPR` (GDPR):** Personal data are kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed (Art. 5(1)(e)); longer retention is permitted only where lawful and subject to Art. 89(1) safeguards (pseudonymisation, aggregation, access limitation) for archiving purposes in the public interest, scientific or historical research, or statistical purposes; the RoPA documents the envisaged time limits for erasure of the different categories of data (Art. 30(1)(f)).
+
+**Regulation baseline — `SG-D-05.2.CRA` (CRA):** Security updates and supporting advisory messages remain available to users across the support period and the 10-year (or remainder-of-support-period) update-availability tail (Art. 13(9) 10-year update-availability tail + Art. 13(8) 5-year support-period floor + Art. 13(18) 10-year Annex II information accessibility + Annex I Part II (7) secure update distribution + Annex I Part II (8) dissemination without delay, free of charge, with advisory messages); the manufacturer provides the support-period end-date clearly and understandably at the time of purchase (Art. 13(19) + Annex II §7).
+
+**Regulation baseline — `SG-D-05.2.AIACT` (AI Act):** Providers of high-risk AI systems keep the logs referred to in Art. 12(1) — automatically generated by their high-risk AI systems and to the extent such logs are under their control — for a period appropriate to the intended purpose, of at least six months, unless provided otherwise in the applicable Union or national law, in particular Union law on the protection of personal data (Art. 19(1)).
+
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
 | `AG-D-05.2-001` | Personal data are kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed (Art. 5(1)(e)); longer retention is permitted only where lawful and subject to Art. 89(1) safeguards (pseudonymisation, aggregation, access limitation) for archiving purposes in the public interest, scientific or historical research, or statistical purposes; the RoPA documents the envisaged time limits for erasure of the different categories of data (Art. 30(1)(f)). | maintain | Privacy Right | SG-D-05.2.HL | GDPR | Art. 5(1)(e) + Art. 30(1)(f) | ID.AM-08, ID.AM-03 | — |
@@ -255,6 +354,10 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SG-D-05.3.HL):** Data held about a person is rendered inaccessible to the controller on the data subject's election, and data held by a product with digital elements is rendered inaccessible to the manufacturer on the user's election, by whichever mechanism — the controller-side policy execution or the manufacturer-side product affordance — applies to the data object. Erasure is performed without undue delay and is documented to demonstrate compliance; where a processor is involved, the processor-side mirror ensures deletion-or-return at contract end.
 
+**Regulation baseline — `SG-D-05.3.GDPR` (GDPR):** Personal data are erased without undue delay on the data subject's Art. 17(1) request where one of the six Art. 17(1) grounds (a)–(f) applies: (a) no longer necessary for original purposes; (b) consent withdrawn (no other Art. 6(1) basis applies); (c) Art. 21(1) objection (no overriding compelling legitimate ground) or Art. 21(2) direct-marketing objection; (d) unlawful processing; (e) legal-obligation erasure; (f) information-society-service offers to a child (Art. 8(1)). On processor contract end, the processor deletes or returns all personal data and existing copies per Art. 28(3)(g).
+
+**Regulation baseline — `SG-D-05.3.CRA` (CRA):** The user of a product with digital elements can securely and easily remove, on a permanent basis, all data and settings of the product; where such data can be transferred to other products or systems, the transfer is done in a secure manner (Annex I Part I (2)(m) first limb — terminal deletion on user election — and second limb — secure cross-product transfer).
+
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
 | `AG-D-05.3-001` | Personal data are erased without undue delay on the data subject's Art. 17(1) request where one of the six Art. 17(1) grounds (a)–(f) applies: (a) no longer necessary for original purposes; (b) consent withdrawn (no other Art. 6(1) basis applies); (c) Art. 21(1) objection (no overriding compelling legitimate ground) or Art. 21(2) direct-marketing objection; (d) unlawful processing; (e) legal-obligation erasure; (f) information-society-service offers to a child (Art. 8(1)). On processor contract end, the processor deletes or returns all personal data and existing copies per Art. 28(3)(g). | cease | Privacy Right | SG-D-05.3.HL | GDPR | Art. 28(3)(g) | — | Traveller erasure requests are exercised via the government controller (processor mirror: delete-or-return at contract end); irreversible de-linking of biometric templates is the operative mechanism — tension T-002. |
@@ -264,6 +367,8 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SG-D-05.4.HL):** Personal data are exported to the data subject in a structured, commonly used, machine-readable format, and the data subject can transmit those data to another controller without hindrance, subject to the qualifying conditions and exclusions that scope the right.
 
+**Regulation baseline — `SG-D-05.4.GDPR` (GDPR):** The data subject receives personal data in a structured, commonly used, machine-readable format (Art. 20(1) + Art. 15(3) companion copy), supplied by the controller without undue delay (Art. 12(3) ≤1 month, extendable to ≤2 months for complex requests) and free of charge (Art. 12(5)). The data subject can transmit those data to another controller without hindrance (Art. 20(1)); where technically feasible, the originating controller transmits directly to the receiving controller (Art. 20(2) sentence 2). The right applies where processing is based on consent (Art. 6(1)(a)) or contract (Art. 6(1)(b)) AND processing is carried out by automated means (Art. 20(3)); the right does NOT apply to public-interest-task or legitimate-interest processing (Art. 20(4)), and the controller may refuse an export where it would adversely affect third-party rights.
+
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
 | `AG-D-05.4-001` | The data subject receives personal data in a structured, commonly used, machine-readable format (Art. 20(1) + Art. 15(3) companion copy), supplied by the controller without undue delay (Art. 12(3) ≤1 month, extendable to ≤2 months for complex requests) and free of charge (Art. 12(5)). The data subject can transmit those data to another controller without hindrance (Art. 20(1)); where technically feasible, the originating controller transmits directly to the receiving controller (Art. 20(2) sentence 2). The right applies where processing is based on consent (Art. 6(1)(a)) or contract (Art. 6(1)(b)) AND processing is carried out by automated means (Art. 20(3)); the right does NOT apply to public-interest-task or legitimate-interest processing (Art. 20(4)), and the controller may refuse an export where it would adversely affect third-party rights. | achieve | Privacy Right | SG-D-05.4.HL | GDPR | Art. 15(3) | PR.DS-10, ID.AM-08 | — |
@@ -271,6 +376,12 @@ Each active sub-domain presents:
 ### D-06.1 — Vendor Risk Assessment
 
 **High-Level Security Goal (SG-D-06.1.HL):** Vendors, suppliers, components, and ICT service providers undergo risk-anchored due diligence with proportionality documentation and ongoing monitoring before entry to the supply chain.
+
+**Regulation baseline — `SG-D-06.1.GDPR` (GDPR):** The controller engages only processors providing sufficient guarantees to implement appropriate technical and organisational measures in such a manner that processing meets the requirements of GDPR and protects data-subject rights (Art. 28(1)); the Art. 28(3) DPA closed-list clauses (a)–(h) are documented and the sub-processor authorisation chain (Art. 28(2)) is material to the due diligence.
+
+**Regulation baseline — `SG-D-06.1.CRA` (CRA):** The manufacturer exercises due diligence when integrating components sourced from third parties — including components of free and open-source software not made available on the market in the course of a commercial activity (Art. 3(48) FOSS definition) — so that those components do not compromise the cybersecurity of the product with digital elements (Art. 13(5) sentence 1); on becoming aware of a component vulnerability (Art. 13(6) sentence 1), the manufacturer addresses and remediates it without delay and shares relevant information with the component supplier (Art. 13(6) sentence 2).
+
+**Regulation baseline — `SG-D-06.1.NIS2` (NIS 2):** Essential and important entities take appropriate and proportionate technical, operational and organisational measures across direct supplier and service-provider relationships, including security-related aspects of those relationships (Art. 21(2)(d)), taking into account state of the art (Art. 21(1) sentence 2) and the risks posed to the security of network and information systems; the Art. 21(3) sentence 1 three-prong supplier assessment (supplier-specific vulnerabilities + overall quality of products and cybersecurity practices + supplier secure-development procedures) is performed per direct supplier, with EU-level coordinated risk-propagation inputs (Art. 21(3) sentence 2 → Art. 22) taken into account where available.
 
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
@@ -282,6 +393,8 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SG-D-06.2.HL):** The manufacturer draws up and maintains a software bill of materials (SBOM) covering the components and dependencies contained in the product with digital elements, in a commonly used and machine-readable format that supports automated downstream consumption, with at minimum the top-level dependencies.
 
+**Regulation baseline — `SG-D-06.2.CRA` (CRA):** The manufacturer draws up and maintains an SBOM covering the components and dependencies contained in the product with digital elements in a commonly used and machine-readable format that includes, at minimum, the top-level dependencies (Annex I Part II (1)).
+
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
 | `AG-D-06.2-002` | The manufacturer draws up and maintains an SBOM covering the components and dependencies contained in the product with digital elements in a commonly used and machine-readable format that includes, at minimum, the top-level dependencies (Annex I Part II (1)). | achieve | Confidentiality | SG-D-06.2.HL | CRA | Annex I Part II (1) | — | The SBOM is a Critical-Class conformity object: maintained per release and available to the notified body. |
@@ -289,6 +402,12 @@ Each active sub-domain presents:
 ### D-06.3 — Contractual Security Obligations
 
 **High-Level Security Goal (SG-D-06.3.HL):** Third-party security obligations are made enforceable through contracts, transfer safeguards, written mandates, or market-access duties, as appropriate to the regulatory perspective and the actor involved.
+
+**Regulation baseline — `SG-D-06.3.GDPR` (GDPR):** Controller/processor contracts and related transfer instruments include the GDPR-specific contractual security obligations required for personal-data processing: the Art. 28(3)(a)–(h) eight-element DPA floor, sub-processor authorisation and change-notification, processor Art. 32 security-measure commitments, audit/inspection access, and contract-end return/deletion; the Art. 46 appropriate-safeguards mechanism and the Art. 48 international-agreement filter apply where personal data leaves the EEA or is exposed to third-country legal-process pressure.
+
+**Regulation baseline — `SG-D-06.3.CRA` (CRA):** CRA contractual-security coverage is expressed through economic-operator duties rather than a single negotiated contract: importers place products with digital elements on the Union market only after verifying conformity assessment, technical documentation, CE marking, and manufacturer identification, and escalate significant risk or vulnerabilities to the manufacturer and MSA while taking corrective measures; distributors act with due care, verify CE marking and required documentation, confirm manufacturer/importer compliance, and escalate non-conformity or vulnerabilities.
+
+**Regulation baseline — `SG-D-06.3.NIS2` (NIS 2):** Essential and important entities manage contractual security for direct supplier and service-provider relationships by documenting the supplier universe under the `direct` scope-limiter, embedding security-related contractual aspects into supplier relationships, and assessing each direct supplier against the Art. 21(3) three-prong supplier-assessment structure (supplier-specific vulnerabilities + overall quality of products/services and cybersecurity practices + supplier secure-development procedures); Art. 22 coordinated supply-chain risk assessments are taken into account where available.
 
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
@@ -300,6 +419,12 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SG-D-06.4.HL):** Third-party boundary responsibilities are explicitly allocated so that non-EU representatives, direct-supplier scope, cross-border routing, substantial-modification accountability, economic-operator identification, and audit/access rights remain traceable to the correct actor and recipient.
 
+**Regulation baseline — `SG-D-06.4.GDPR` (GDPR):** Non-EU controllers and processors falling under GDPR Art. 3(2) designate a representative in writing in the Union unless the Art. 27(2) exception applies; the representative is the legal-address and accountability anchor for supervisory-authority and data-subject contact.
+
+**Regulation baseline — `SG-D-06.4.CRA` (CRA):** CRA third-party boundary management preserves product-compliance accountability across EU/non-EU and supply-chain actor boundaries: a non-EU manufacturer may appoint an authorised representative by written mandate, but core manufacturer obligations remain non-delegable; an importer or distributor that places a product under its own name/trademark or substantially modifies it becomes manufacturer-equivalent; a third party that substantially modifies a product becomes the manufacturer for the affected part (or the entire product if the modification affects the whole product's cybersecurity); economic operators maintain upstream/downstream identification records and provide them to MSAs on reasoned request, retaining the supply-chain information for 10 years.
+
+**Regulation baseline — `SG-D-06.4.NIS2` (NIS 2):** NIS 2 boundary management is split across cross-border notification routing and entity-side supplier-scope control: for incidents affecting two or more Member States, CSIRTs, competent authorities, and SPOCs route information to other affected Member States and ENISA; for supply-chain boundaries, the Art. 21(2)(d) `direct` supplier/service-provider scope-limiter defines which third parties sit inside the entity's NIS 2 supplier-security perimeter, and Art. 22 coordinated supply-chain risk-assessment outputs feed into supplier decisions where available.
+
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
 | `AG-D-06.4-001` | Non-EU controllers and processors falling under GDPR Art. 3(2) designate a representative in writing in the Union unless the Art. 27(2) exception applies; the representative is the legal-address and accountability anchor for supervisory-authority and data-subject contact. | maintain | Accountability | SG-D-06.4.HL | GDPR | Art. 27(1) + Art. 27(2)(a) | — | — |
@@ -309,6 +434,14 @@ Each active sub-domain presents:
 ### D-07.1 — Secure-by-Design Principles
 
 **High-Level Security Goal (SG-D-07.1.HL):** Security is integrated into the acquisition, design, development, production, deployment and maintenance of systems and products via documented by-design decisions, risk-assessment propagation, proportionate safeguards, and lifecycle consistency.
+
+**Regulation baseline — `SG-D-07.1.GDPR` (GDPR):** The controller implements appropriate technical and organisational measures — such as pseudonymisation — which are designed to implement data-protection principles, such as data minimisation, in an effective manner and to integrate the necessary safeguards into the processing (Art. 25(1) GDPR), and ensures that by default only personal data which are necessary for each specific purpose are processed (Art. 25(2) GDPR).
+
+**Regulation baseline — `SG-D-07.1.CRA` (CRA):** When placing a product with digital elements on the market, the manufacturer ensures that it has been designed, developed and produced in accordance with the essential cybersecurity requirements set out in Part I of Annex I (Art. 13(1) CRA), with the cybersecurity risk assessment propagated across the 6 lifecycle phases (planning, design, development, production, delivery, maintenance) per Art. 13(2) chapeau + sentence 1, with a view to minimising cybersecurity risks, preventing incidents, and minimising their impact (Art. 13(2) sentence 2).
+
+**Regulation baseline — `SG-D-07.1.NIS2` (NIS 2):** Essential and important entities take appropriate and proportionate technical, operational and organisational measures to ensure security in acquisition, development and maintenance of network and information systems, including vulnerability handling and disclosure (Art. 21(2)(e) NIS 2).
+
+**Regulation baseline — `SG-D-07.1.AIACT` (AI Act):** High-risk AI systems are designed and developed in such a way that they achieve an appropriate level of accuracy, robustness, and cybersecurity, and that they perform consistently in those respects throughout their lifecycle (Art. 15(1) AI Act).
 
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
@@ -321,6 +454,10 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SG-D-07.2.HL):** Coding practices deliver attack-surface limitation, exploitation mitigation, and AI-system attack-defence under an appropriate coding-practice evidence base.
 
+**Regulation baseline — `SG-D-07.2.CRA` (CRA):** The manufacturer designs, develops, and produces the product with digital elements to limit its attack surfaces, including attack surfaces of external interfaces (Annex I Part I (2)(j) CRA), and to reduce the impact of an incident using appropriate exploitation-mitigation mechanisms and techniques (Annex I Part I (2)(k) CRA).
+
+**Regulation baseline — `SG-D-07.2.AIACT` (AI Act):** High-risk AI systems are designed and developed with appropriate technical and organisational measures to enable the AI systems to effectively resist, as appropriate to the AI system's purpose and conditions of use, attempts to manipulate the training data set (data poisoning) or pre-trained components used in training (model poisoning), inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality attacks or model flaws (Art. 15(4)–(5) AI Act).
+
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
 | `AG-D-07.2-002` | The manufacturer designs, develops, and produces the product with digital elements to limit its attack surfaces, including attack surfaces of external interfaces (Annex I Part I (2)(j) CRA), and to reduce the impact of an incident using appropriate exploitation-mitigation mechanisms and techniques (Annex I Part I (2)(k) CRA). | maintain | Confidentiality | SG-D-07.2.HL | CRA | Annex I Part I (2)(j) | PR.PS-01, PR.PS-02 | — |
@@ -329,6 +466,10 @@ Each active sub-domain presents:
 ### D-07.3 — CI/CD Pipeline Security
 
 **High-Level Security Goal (SG-D-07.3.HL):** CI/CD pipeline security delivers build-time control baselines (signed artefacts, build-agent integrity, ephemeral build environments) and update-distribution delivery-path security.
+
+**Regulation baseline — `SG-D-07.3.CRA` (CRA):** The manufacturer of a product with digital elements shall securely distribute updates for the product with digital elements in a timely manner, including, where appropriate, through automatic updates (Annex I Part II (7) CRA), and ensure that updates are disseminated free of charge, are clearly described, contain information on the security improvements and on the actions the user should take (Annex I Part II (8) CRA).
+
+**Regulation baseline — `SG-D-07.3.NIS2` (NIS 2):** Essential and important entities take appropriate and proportionate technical, operational and organisational measures to ensure security in the maintenance of network and information systems, including vulnerability handling and disclosure (Art. 21(2)(e) third clause NIS 2).
 
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
@@ -339,6 +480,12 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SG-D-08.1.HL):** General security awareness is established through a documented training programme with population-wide coverage, audience-routing, and governance hooks.
 
+**Regulation baseline — `SG-D-08.1.GDPR` (GDPR):** The data protection officer informs and advises the controller or the processor and the employees who carry out processing of their obligations pursuant to this Regulation and to other Union or Member State data protection provisions (Art. 39(1)(a) GDPR), and monitors compliance with this Regulation, including the assignment of responsibilities, awareness-raising and training of staff involved in processing operations (Art. 39(1)(b) GDPR).
+
+**Regulation baseline — `SG-D-08.1.CRA` (CRA):** A product with digital elements is accompanied by detailed instructions — or an internet address referring to such detailed instructions — covering the necessary measures during initial commissioning and throughout the lifetime of the product to ensure its secure use (Annex II §8(a)–(e) CRA), and — where the product is intended for integration into other products — the information necessary for the integrator to comply with the essential cybersecurity requirements set out in Part I of Annex I and the documentation requirements set out in Annex VII (Annex II §8(f) CRA).
+
+**Regulation baseline — `SG-D-08.1.NIS2` (NIS 2):** Essential and important entities take appropriate and proportionate technical, operational and organisational measures to ensure basic cyber hygiene practices and cybersecurity training (Art. 21(2)(g) first clause NIS 2).
+
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
 | `AG-D-08.1-001` | The data protection officer informs and advises the controller or the processor and the employees who carry out processing of their obligations pursuant to this Regulation and to other Union or Member State data protection provisions (Art. 39(1)(a) GDPR), and monitors compliance with this Regulation, including the assignment of responsibilities, awareness-raising and training of staff involved in processing operations (Art. 39(1)(b) GDPR). | maintain | Accountability | SG-D-08.1.HL | GDPR | Art. 39(1)(b) + Art. 39(1)(a) | PR.AT-01, PR.AT-02 | — |
@@ -348,6 +495,14 @@ Each active sub-domain presents:
 ### D-08.2 — Role-Specific Competence
 
 **High-Level Security Goal (SG-D-08.2.HL):** Role-specific competence is established through a function-specific depth, audience-routing, competence-criteria-anchored training, and governance hooks architecture.
+
+**Regulation baseline — `SG-D-08.2.GDPR` (GDPR):** The data protection officer monitors compliance with this Regulation, including the assignment of responsibilities, awareness-raising and training of staff involved in processing operations (Art. 39(1)(b) GDPR) — the role-specific layer of the DPO-catalysed awareness function.
+
+**Regulation baseline — `SG-D-08.2.CRA` (CRA):** Where the product with digital elements is intended for integration into other products with digital elements, the manufacturer provides the information necessary for the integrator to comply with the essential cybersecurity requirements set out in Part I of Annex I and the documentation requirements set out in Annex VII (Annex II §8(f) CRA).
+
+**Regulation baseline — `SG-D-08.2.NIS2` (NIS 2):** Member States shall encourage essential and important entities to offer similar training to their employees on a regular basis, in order that they gain sufficient knowledge and skills to identify risks and assess cybersecurity risk-management practices (Art. 20(2) sentence 2 NIS 2).
+
+**Regulation baseline — `SG-D-08.2.AIACT` (AI Act):** High-risk AI systems are designed and developed in such a way, including with appropriate human-machine interface tools, that they can be effectively overseen by natural persons during the period in which they are in use (Art. 14(1) AI Act) — the provider-side design obligation for the human-oversight capability.
 
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
@@ -360,6 +515,14 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SG-D-09.1.HL):** Information security policies are established through a **documented policy architecture** with **governance hooks** and an **accountability chain** that anchor the entity's cybersecurity posture.
 
+**Regulation baseline — `SG-D-09.1.GDPR` (GDPR):** The controller implements **appropriate technical and organisational measures, such as policies … which are designed to implement data-protection principles … in an effective manner** (Art. 24(1) GDPR), with the Art. 5(2) accountability burden and the DPO as the governance anchor (Art. 37-39).
+
+**Regulation baseline — `SG-D-09.1.CRA` (CRA):** An open-source software steward **puts in place and documents in a verifiable manner a cybersecurity policy** (Art. 24(1) CRA) covering vulnerability documentation, remediation, and information-sharing within the open-source community; a manufacturer **establishes policies, processes and procedures necessary to implement its CRA cybersecurity obligations** (Art. 13(8) CRA) including CVD policy, secure-update distribution, support-period determination, and cessation-of-operations communication.
+
+**Regulation baseline — `SG-D-09.1.NIS2` (NIS 2):** The management body of essential and important entities **approves the cybersecurity risk-management measures, oversees their implementation, and can be held liable for infringements** (Art. 20(1) sentence 1 NIS 2); the entity adopts **policies on risk analysis and information system security** (Art. 21(2)(a)) and **policies and procedures to assess the effectiveness of cybersecurity risk-management measures** (Art. 21(2)(f)).
+
+**Regulation baseline — `SG-D-09.1.AI_Act` (AI Act):** High-risk AI systems are **designed and developed to ensure that their operation is sufficiently transparent to enable deployers to interpret a system's output and use it appropriately** (Art. 13(1) AI Act), accompanied by **concise, complete, correct and clear instructions for use** (Art. 13(3) AI Act); a provider **puts a quality management system in place** documented in written policies, procedures and instructions covering at least the 13 enumerated aspects (a)-(m) (Art. 17(1) AI Act).
+
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
 | `AG-D-09.1-001` | The controller implements **appropriate technical and organisational measures, such as policies … which are designed to implement data-protection principles … in an effective manner** (Art. 24(1) GDPR), with the Art. 5(2) accountability burden and the DPO as the governance anchor (Art. 37-39). | maintain | Accountability | SG-D-09.1.HL | GDPR | Art. 24(1) + Art. 5(2) | GV.PO-01, GV.PO-02, GV.RM-04, GV.OV-03 | — |
@@ -370,6 +533,14 @@ Each active sub-domain presents:
 ### D-09.2 — Impact & Risk Assessments
 
 **High-Level Security Goal (SG-D-09.2.HL):** Impact and risk assessments are established through a **documented assessment** of identified risks and mitigation measures, with a **review cadence** calibrated to the lifecycle phase of the assessment object.
+
+**Regulation baseline — `SG-D-09.2.GDPR` (GDPR):** Prior to processing that is likely to result in a high risk to the rights and freedoms of natural persons, the controller carries out a **data-protection impact assessment** covering the four Art. 35(7) content items and reviewed on change of risk per Art. 35(11) (Art. 35(1) + Art. 35(7) GDPR).
+
+**Regulation baseline — `SG-D-09.2.CRA` (CRA):** The manufacturer documents the **cybersecurity risk assessment referred to in Art. 13(2)** and updates it as appropriate during the support period, with the assessment covering intended purpose and reasonably foreseeable use (Art. 13(3) sentence 2) and indicating Annex I Part I (2) applicability (Art. 13(3) sentence 3) — documented in the **Annex VII §3 risk-assessment record** (Art. 13(4) sentence 1 + Annex VII §3 CRA).
+
+**Regulation baseline — `SG-D-09.2.NIS2` (NIS 2):** Essential and important entities establish **policies on risk analysis and information system security** (Art. 21(2)(a) NIS 2) on a continuous basis, taking into account the proportionality factors (degree of exposure, likelihood of incidents, severity, state of the art, costs of implementation per Recital 56); the Cooperation Group may carry out coordinated supply-chain risk assessments under Art. 22(1) NIS 2 that NSIEs take into account per Art. 21(3) sentence 2.
+
+**Regulation baseline — `SG-D-09.2.AI_Act` (AI Act):** A risk management system is **established, implemented, documented and maintained** in relation to high-risk AI systems (Art. 9(1) AI Act), comprising the four Art. 9(2)(a)-(d) steps: identify and analyse known and reasonably foreseeable risks; estimate and evaluate reasonably-foreseeable-misuse risks; evaluate post-market-monitoring-data risks; and adopt appropriate and targeted risk-management measures.
 
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
@@ -382,6 +553,14 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SG-D-09.4.HL):** Records of processing activities are established through **parallel documentation regimes** that produce records of processing activities, technical documentation, certification records, information security policy documentation, and quality management system documentation serving distinct audit purposes.
 
+**Regulation baseline — `SG-D-09.4.GDPR` (GDPR):** Each controller and processor **maintains a record of processing activities under its responsibility** (Art. 30(1) GDPR), in writing or electronic form (Art. 30(3) GDPR), containing the Art. 30(1) 7-item content list; the processor maintains a parallel record under Art. 30(2) GDPR; records are made available to the supervisory authority on request (Art. 30(4) GDPR), subject to the Art. 30(5) 250-employee exception.
+
+**Regulation baseline — `SG-D-09.4.CRA` (CRA):** The manufacturer **draws up before placing a product with digital elements on the market the technical documentation referred to in Art. 31** (Art. 13(12) sentence 1 CRA), carries out the conformity assessment procedure referred to in Art. 32, draws up the EU declaration of conformity under Art. 28, and affixes the CE marking under Art. 30 (Art. 13(12) sentence 2); the manufacturer keeps the technical documentation and the EU declaration of conformity at the disposal of market surveillance authorities for at least 10 years or the support period, whichever is longer (Art. 13(13) CRA).
+
+**Regulation baseline — `SG-D-09.4.NIS2` (NIS 2):** Member States shall **encourage the use of European or internationally accepted standards and specifications relevant to the security of network and information systems** (Art. 24(1) sentence 1 NIS 2) and of qualified trust services (Art. 24(1) sentence 2); the Commission may adopt delegated acts specifying entities that must use certified ICT products, services and processes (Art. 24(2) NIS 2), and ENISA may be requested to prepare a candidate European cybersecurity certification scheme (Art. 24(3) NIS 2).
+
+**Regulation baseline — `SG-D-09.4.AI_Act` (AI Act):** Providers of high-risk AI systems **draw up and keep up-to-date the technical documentation of the high-risk AI system in accordance with Annex IV before that system is placed on the market or put into service** (Art. 11(1) AI Act), **keep the logs automatically recorded by the high-risk AI system to the extent under their control** (Art. 19(1) AI Act), and document the **quality management system** in written policies, procedures, and instructions covering at least the 13 enumerated aspects (a)-(m) (Art. 17(1) AI Act).
+
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
 | `AG-D-09.4-001` | Each controller and processor **maintains a record of processing activities under its responsibility** (Art. 30(1) GDPR), in writing or electronic form (Art. 30(3) GDPR), containing the Art. 30(1) 7-item content list; the processor maintains a parallel record under Art. 30(2) GDPR; records are made available to the supervisory authority on request (Art. 30(4) GDPR), subject to the Art. 30(5) 250-employee exception. | maintain | Accountability | SG-D-09.4.HL | GDPR | Art. 30(1) + Art. 30(4) + Art. 30(5) + Art. 30(3) | ID.AM-03, GV.PO-02, PR.PS-04, DE.AE-03, RS.AN-07, PR.AA-02 | The Art. 30(5) under-250-employee exception is NOT relied upon: processing is large-scale biometric data on a continuous basis; controller-side and processor-side records are both maintained. |
@@ -392,6 +571,14 @@ Each active sub-domain presents:
 ### D-10.1 — Continuous Security Monitoring
 
 **High-Level Security Goal (SG-D-10.1.HL):** Continuous security monitoring is established through a **layered detection-and-monitoring architecture** spanning personal-data processing systems, network and information systems, on-device product activity, ICT systems and tools, and high-risk AI systems, with detection capability feeding the incident-response chain.
+
+**Regulation baseline — `SG-D-10.1.GDPR` (GDPR):** The controller and processor implement appropriate technical and organisational measures to ensure the **ongoing confidentiality, integrity, availability and resilience of processing systems and services** (Art. 32(1)(b) GDPR) and **regularly test, assess and evaluate their effectiveness** (Art. 32(1)(d) GDPR); personal-data processing systems and services are monitored for the five Art. 32(2) risk types, with a clear definition of the moment of `becoming aware of` a breach to anchor the Art. 33(1) 72-hour notification clock.
+
+**Regulation baseline — `SG-D-10.1.CRA` (CRA):** A product with digital elements **provides security-related information by recording and monitoring relevant internal activity, including access to or modification of data, services or functions, and provides an opt-out mechanism for the user** (Annex I Part I (2)(l) CRA); the manufacturer **facilitates the sharing of information about potential vulnerabilities** through a single contact address (Annex I Part II (6) CRA).
+
+**Regulation baseline — `SG-D-10.1.NIS2` (NIS 2):** Essential and important entities establish an **incident-handling capability** covering prevention, detection, analysis, containment, response, and recovery of incidents (Art. 21(2)(b) NIS 2); the detection dimension is the partial-coverage dimension of D-10.1, operating on an all-hazards basis and feeding the Art. 23(1) significant-incident notification chain.
+
+**Regulation baseline — `SG-D-10.1.AI_Act` (AI Act):** Providers of high-risk AI systems **establish and document a post-market monitoring system in a manner that is proportionate to the nature of the AI technologies and the risks of the high-risk AI system** (Art. 72(1) AI Act), with the system **actively and systematically collecting, documenting and analysing relevant data** (Art. 72(2) AI Act); market-surveillance cooperation under Regulation (EU) 2019/1020 applies (Art. 74(1) AI Act).
 
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
@@ -404,6 +591,12 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SG-D-10.2.HL):** Audit logging and traceability are established through a **layered audit-records architecture** spanning compliance records with integrity and traceability, product-level technical documentation traceability, entity-level information security policy documentation, and AI-system event logging with retention floors.
 
+**Regulation baseline — `SG-D-10.2.GDPR` (GDPR):** The controller and processor **maintain compliance records in writing or in electronic form with integrity and traceability sufficient to demonstrate compliance and to support supervisory-authority inspections** (Art. 30(3) + Art. 5(2) + Art. 31 GDPR), including records of processing activities, consent records, processor contract records, breach notification records, and DPIA records — made available to the supervisory authority on request (Art. 30(3)).
+
+**Regulation baseline — `SG-D-10.2.CRA` (CRA):** The manufacturer **maintains the technical documentation** (Annex VII §5-§8 CRA — harmonised standards applied, test reports, copy of the EU declaration of conformity, SBOM on MSA reasoned request), **preserves the cybersecurity risk-assessment documentation** (Annex VII §3 + Art. 13(4) sentence 1) during the support period (10 years or support period, whichever longer) with updates as appropriate, and ensures **test reports demonstrating verification of conformity with Annex I Part I and Part II** are part of the technical documentation and available on reasoned request from market surveillance authorities (Annex VII §6 + Annex I Part II (3) + Art. 13(22) CRA).
+
+**Regulation baseline — `SG-D-10.2.AI_Act` (AI Act):** Providers of high-risk AI systems ensure the systems **technically allow for the automatic recording of events (logs) over the lifetime of the system** (Art. 12(1) AI Act) with logging capabilities ensuring a level of traceability of the functioning **appropriate to the intended purpose** (Art. 12(2) AI Act); providers **keep the logs** automatically generated by the high-risk AI system, to the extent under their control, for a period **appropriate to the intended purpose and of at least six months** unless provided otherwise in the applicable Union or national law (Art. 19(1) AI Act).
+
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|
 | `AG-D-10.2-001` | The controller and processor **maintain compliance records in writing or in electronic form with integrity and traceability sufficient to demonstrate compliance and to support supervisory-authority inspections** (Art. 30(3) + Art. 5(2) + Art. 31 GDPR), including records of processing activities, consent records, processor contract records, breach notification records, and DPIA records — made available to the supervisory authority on request (Art. 30(3)). | maintain | Availability & Accountability | SG-D-10.2.HL | GDPR | Art. 5(2) + Art. 30(3) + Art. 31 | GV.PO-02, GV.OV-03, ID.AM-03, PR.PS-04, DE.AE-03, RS.AN-07 | — |
@@ -413,6 +606,14 @@ Each active sub-domain presents:
 ### D-10.3 — Compliance Testing
 
 **High-Level Security Goal (SG-D-10.3.HL):** Compliance testing is established through a **5-parallel-testing-programme architecture** spanning effectiveness-evaluation of security measures, effectiveness-assessment of risk-management measures, product-level conformity-assessment, entity-level digital operational resilience testing with TLPT, and AI-system-level testing for risk management with real-world-conditions and accuracy/robustness/cybersecurity baseline testing.
+
+**Regulation baseline — `SG-D-10.3.GDPR` (GDPR):** The controller and processor implement appropriate technical and organisational measures including **a process for regularly testing, assessing and evaluating the effectiveness of technical and organisational measures for ensuring the security of the processing** (Art. 32(1)(d) GDPR); the DPIA is **reviewed at least when there is a change of the risk represented by processing operations** (Art. 35(11) GDPR).
+
+**Regulation baseline — `SG-D-10.3.CRA` (CRA):** Manufacturers of products with digital elements **carry out effective and regular tests and reviews of the product** (Annex I Part II (3) CRA), and the technical documentation shall contain **the reports of the tests carried out to verify the conformity of the product with digital elements and of the vulnerability-handling processes with the essential cybersecurity requirements set out in Part I and Part II of Annex I** (Annex VII §6 CRA); conformity is demonstrated via the Annex VIII Part I (Module A internal production control) or Part II (Module B+C and H notified-body EU-type examination) conformity-assessment modules depending on product classification (Class I / Class II / critical per Art. 6 + Annex III).
+
+**Regulation baseline — `SG-D-10.3.NIS2` (NIS 2):** Essential and important entities establish **policies and procedures to assess the effectiveness of cybersecurity risk-management measures** (Art. 21(2)(f) NIS 2) as part of the all-hazards risk-management framework; the cadence is entity-discretionary under Recital 56 (no quantitative threshold in the OJ).
+
+**Regulation baseline — `SG-D-10.3.AI_Act` (AI Act):** Providers of high-risk AI systems ensure the systems are **tested for the purpose of identifying the most appropriate and targeted risk management measures**, and **testing shall ensure that high-risk AI systems perform consistently for their intended purpose** (Art. 9(6) AI Act); testing procedures may include **testing in real-world conditions in accordance with Article 60** (Art. 9(7) AI Act); high-risk AI systems are **designed and developed to achieve an appropriate level of accuracy, robustness, and cybersecurity, and to perform consistently in those respects throughout their lifecycle** (Art. 15(1) AI Act).
 
 | AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
 |---|---|---|---|---|---|---|---|---|

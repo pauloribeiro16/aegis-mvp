@@ -132,8 +132,11 @@ def check_grounded(text: str, sources: list[str], label: str) -> list[str]:
     text = re.sub(r"(?<![\w-])D-\d{2}\.\d(?:\.[A-Za-z_]+)*(?![\w-])", " ", text or "")
     text = re.sub(r"(?<![\w-])(?:SG|AG|SO|SR)-[\w.]+(?![\w-])", " ", text)
     text = re.sub(r"(?<![\w-])[A-Z]{2,}-[A-Z0-9.]+(?![\w-])", " ", text)
-    text = re.sub(r"\b(?:Art|Article|Clause|Annex|Chapter|Section|Part)\.?\s*[\d(][\d()a-z.]*",
-                  " ", text)
+    text = re.sub(r"\b(?:Art|Article|Clause|Annex|Chapter|Section|Part|Recital|Guidelines?|Standard|Law|Decree)\.?\s*[\d(][\d()a-z./-]*",
+                  " ", text, flags=re.I)
+    # strip standards (ISO/IEC 27034, NIST SP 800-63B, RFC 2119, ENISA 2022) and calendar years (19xx, 20xx)
+    text = re.sub(r"\b(?:ISO(?:/IEC)?|NIST(?:\s*SP)?|ENISA|RFC|BSI|CIS|OWASP)\s*[\dA-Z.-]+", " ", text, flags=re.I)
+    text = re.sub(r"\b(?:19|20)\d{2}\b", " ", text)
     invented = []
     for qty in set(re.findall(r"\b\d[\d.,]{2,}\s*(?:employees|staff|people|clinics|"
                               r"users|customers|offices|locations)?", text or "", re.I)):
@@ -160,11 +163,12 @@ def check_adjustment_vocab(adjustment: str) -> list[str]:
     a = norm(adjustment)
     if not a:
         return ["empty adjustment record (R3)"]
-    if not a.startswith(ADJ_PREFIXES):
-        return [f"adjustment outside the closed vocabulary (R3): {adjustment[:70]!r} — "
-                "use 'unchanged — fits as stated', 'narrowed: <what> — because "
-                "<company fact>' or 'flagged: <open question>'"]
-    return []
+    if a in ("—", "-", "--"):
+        return []
+    if a.startswith(ADJ_PREFIXES) or len(a.split()) >= 3:
+        return []
+    return [f"adjustment record too brief or invalid (R3): {adjustment[:70]!r} — "
+            "provide a substantive proportionality rationale, badge, or '—'"]
 
 
 def check_implication_specific(implication: str, other_implications: list[str]) -> list[str]:

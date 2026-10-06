@@ -295,7 +295,7 @@ flowchart TD
 - **Preconditions:** CVD policy published; contact address identifiable.
 - **Trigger:** A vulnerability report arrives.
 - **Main Success Scenario:**
-  1. System registers the report through the contact address (chain: SO-D-02.3-002/003).
+  1. System registers the report through the contact address (chain: SO-D-02.3-001/002).
   2. Engineer triages, remediates via {U.C. 3.1}/{U.C. 3.2}, and publishes under the policy with the justified-delay check.
 - **Extensions:**
   - 2a. Publication risk outweighs benefit: 2a1. System records the justified delay and re-evaluates on schedule.

@@ -810,7 +810,7 @@ The specification covers the following requirement types. Types recorded as not 
 | Architectural Integrity (segregation) | RN10 | Represented |
 | Security — Transport | RN13 (Table 7) | Represented |
 | Security & Privacy (function-specific) | RN11–RN12, RN14–RN26 (Table 8) | Represented |
-| Organizational (PROCESS lane) | — | Not written — 2 DPO objectives are recorded as organizational-carve-out candidates in `OBJECTIVE_MAPPING.md` (no `Doc03` written for this case) |
+| Organizational (PROCESS lane) | `Doc03_Organizational_Requirements.md` (DPO advisory and compliance-monitoring objectives `PO-D-08.1-001` / `PO-D-08.2-001`) | Represented |
 | Usability / Accessibility | — | Not represented — no source warrant in the intake or the Phase 2 objectives (R6); customer-facing interaction is bounded by the statutory service targets (RN1, RN5) |
 | Internationalization | — | Not represented — German-market retail context; a future multi-market deployment would enter through a round |
 | Maintainability / Portability | — | Not represented — no source warrant; implementation-era concerns belong to later engineering passes |

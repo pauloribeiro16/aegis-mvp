@@ -8,7 +8,7 @@
 
 | Item | Type | Change | Driver | Verdict |
 |---|---|---|---|---|
-| E1 | **D3 — priority re-evaluation** | `R3.3` Operate coordinated vulnerability disclosure: SHOULD → **MUST** (Table 6, card, Doc02 matrix) | `CRA Annex I Part II (5)` → `SO-D-02.3-002` (the manufacturer shall put in place and enforce the CVD policy) + `NIS 2 Art. 21(2)(e)` → `SO-D-02.3-003` | **Accept** |
+| E1 | **D3 — priority re-evaluation** | `R3.3` Operate coordinated vulnerability disclosure: SHOULD → **MUST** (Table 6, card, Doc02 matrix) | `CRA Annex I Part II (5)` → `SO-D-02.3-001` (the manufacturer shall put in place and enforce the CVD policy) + `NIS 2 Art. 21(2)(e)` → `SO-D-02.3-002` | **Accept** |
 
 ## §2 Control Selection
 

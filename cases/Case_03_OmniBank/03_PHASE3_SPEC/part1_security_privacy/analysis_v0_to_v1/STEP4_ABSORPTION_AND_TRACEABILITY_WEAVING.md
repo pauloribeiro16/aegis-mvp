@@ -4,9 +4,9 @@
 
 ## 1. Doc01 absorption
 
-- **In-card `Security & Privacy Constraints` rows** on 36 of the 43 requirement cards (the operating-model cards without a direct security surface stay clean): 16 cards carry `NFR-RNxx` lines, 10 carry chain-only lines, several carry both. Multi-regulation chains cite all demanding objectives on one line.
+- **In-card `Security & Privacy Constraints` rows** on 36 of the 43 requirement cards (the operating-model cards without a direct security surface stay clean): 16 cards carry `NFR-RNxx` lines, 20 carry chain-only lines; the two sets are disjoint. Multi-regulation chains cite all demanding objectives on one line.
 - **Table 7** gains the cross-cutting transport row **RN13** (alongside V0 RN1–RN10).
-- **No functional-set change** — see STEP5.
+- **Functional set** — no D1/D2/D4 change; the single D3 (`R3.3` SHOULD → MUST, Round 2) is registered in STEP5.
 - Version History **2.0.0**.
 
 ## 2. Doc02 weaving

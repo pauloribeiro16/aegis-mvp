@@ -10,7 +10,7 @@
 
 ## 1. Scope & Purpose of Version 2
 
-Version 2 is the **Round-2 evolution of the Round-1-converged V1**: the Part 1 residual review elevated `R3.3` (coordinated vulnerability disclosure) from SHOULD to **MUST** per `CRA Annex I Part II (5)` (D3, drivers `SO-D-02.3-002`/`SO-D-02.3-003`). The constraint set, chains and use-case behavior are otherwise those of the Round-1-converged V1.
+Version 2 is the **Round-2 evolution of the Round-1-converged V1**: the Part 1 residual review elevated `R3.3` (coordinated vulnerability disclosure) from SHOULD to **MUST** per `CRA Annex I Part II (5)` (D3, drivers `SO-D-02.3-001`/`SO-D-02.3-002`). The constraint set, chains and use-case behavior are otherwise those of the Round-1-converged V1.
 
 The top-level `Doc01`/`Doc02` in `03_PHASE3_SPEC/` are kept as synced copies of this version (the active working set).
 

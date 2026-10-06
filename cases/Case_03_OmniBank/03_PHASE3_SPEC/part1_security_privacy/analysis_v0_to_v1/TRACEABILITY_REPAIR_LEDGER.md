@@ -30,7 +30,7 @@
 ## 3. Recorded debt (ADR-007 D2/D3)
 
 - **Coverage granularity.** All 128 `Accepted R1` verdicts in `OBJECTIVE_MAPPING.md` assert coverage by **carrier linkage** (the objective id appears in a chain), not by discharge. A leg-level audit has been run in Case_01 only, where 20 of 26 "covered" rows became "partially covered" with named carve-outs. The same note is recorded in the Case_02 matrix. Attaching a chain makes the derivation auditable; it does not certify that the carrier's fit criteria discharge the objective.
-- **Organizational lane.** The 2 DPO objectives are verdicted `No functional carrier (organizational)`; this case has no `part1_security_privacy/Doc03_Organizational_Requirements.md`, so the ADR-008 lane is codified but unexercised here. It was first executed in Case_02 (`ORG-D-08.1-001`, `ORG-D-08.2-001`, 2026-09-29).
+- **Organizational lane.** The 2 DPO objectives (`PO-D-08.1-001`, `PO-D-08.2-001`) are verdicted `No functional carrier (organizational)` and are carried by `part1_security_privacy/Doc03_Organizational_Requirements.md`, so the ADR-008 lane is exercised here too. It was first executed in Case_02 (`ORG-D-08.1-001`, `ORG-D-08.2-001`, 2026-09-29).
 
 ## 4. Guards now in force
 

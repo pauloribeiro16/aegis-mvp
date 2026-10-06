@@ -766,7 +766,7 @@ The specification covers the following requirement types. Types recorded as not 
 | Architectural Integrity (segregation) | RN10 | Represented |
 | Security — Transport | RN13 (Table 7) | Represented |
 | Security & Privacy (function-specific) | RN11–RN12, RN14–RN26 (Table 8) | Represented |
-| Organizational (PROCESS lane) | — | Not written — 2 DPO objectives are recorded as organizational-carve-out candidates in `OBJECTIVE_MAPPING.md` (no `Doc03` written for this case) |
+| Organizational (PROCESS lane) | `Doc03_Organizational_Requirements.md` (DPO advisory and compliance-monitoring objectives `PO-D-08.1-001` / `PO-D-08.2-001`) | Represented |
 | Usability / Accessibility | — | Not represented — no source warrant in the intake or the Phase 2 objectives (R6); customer-facing interaction is bounded by the statutory service targets (RN1, RN5) |
 | Internationalization | — | Not represented — German-market retail context; a future multi-market deployment would enter through a round |
 | Maintainability / Portability | — | Not represented — no source warrant; implementation-era concerns belong to later engineering passes |
@@ -788,7 +788,7 @@ The specification covers the following requirement types. Types recorded as not 
 | Version | Date | Author | Description of Changes |
 |---|---|---|---|
 | **3.1.0** | 2026-10-01 | Requirements Engineering Agent | Security & Privacy Requirements catalog added (Table 8: full requirement statements for RN11–RN26 except the cross-cutting RN13, which remains in Table 7); requirement type coverage recorded (Table 9), including the deliberate security-control functional cards (R2.1–R2.3, R4.4) recorded as a composition decision; duplicated chain rows removed (R2.1, R4.1, R5.2, R7.1, R10.2); range notation in R5.2 expanded to explicit ids; editorial note removed from the R7.3 chain. |
-| **1.0.0** | 2026-09-23 | Requirements Engineering Agent | Initial baseline elicitation (GPTools E1.1 structural model). |
-| **2.0.0** | 2026-09-28 | Requirements Engineering Agent | Round 1 synthesis (ADR-005): 20 new security & privacy constraints RN11–RN30 absorbed in-card, 63 regulatory chain rows bound to functional cards. |
-| **3.0.0** | 2026-09-29 | Requirements Engineering Agent | Round 2 synthesis (ADR-005): R11.4 AI adversarial testing aligned per AI Act Art. 9(6)-(7). |
+| **1.0.0** | 2026-09-28 | Requirements Engineering Agent | Initial baseline elicitation (GPTools E1.1 structural model): 11 requirement groups, 43 Level-1 capabilities, 10 measurable NFRs; consolidated from the legacy operational use-case catalog plus the customer/AI product core. |
+| **2.0.0** | 2026-09-29 | Requirements Engineering Agent | Round 1 synthesis (ADR-005, `part1_security_privacy/synthesis_rounds/ROUND1_REGISTER.md`, 16/16 + 92/92 accepts by client directive): 16 new security & privacy constraints `RN11`–`RN26` absorbed in-card (RN13 cross-cutting in Table 7), 92 regulatory chain rows bound to existing functional cards, tensions T-001..T-005 realized; 43 requirement cards, 43 PUCs. |
+| **3.0.0** | 2026-09-29 | Requirements Engineering Agent | Round 2 synthesis (ADR-005, `part1_security_privacy/synthesis_rounds/ROUND2_REGISTER.md`: `R3.3` coordinated vulnerability disclosure elevated SHOULD → MUST per CRA Annex I Part II (5) (D3). |
 | **4.0.0** | 2026-10-01 | Requirements Engineering Agent | Modular separation pass: decoupled operational process flows and PUC catalog into [Doc00_Process_and_Operational_Workflows.md](Doc00_Process_and_Operational_Workflows.md). Refocused Doc01 strictly on atomic contractual requirement cards and EARS constraints with bidirectional traceability to PUCs. |

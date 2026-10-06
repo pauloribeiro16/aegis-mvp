@@ -2,8 +2,8 @@
 ficha_id: PROM-P1-07
 title: 'Resolve Strategic Tensions'
 phase_step: 'Phase 1 · P4t (after P4; multi-regulation runs only)'
-pattern: 'single structured call per run'
-version: 1.0.0
+pattern: 'one structured call per selected sub-domain, merged and renumbered'
+version: 1.1.0
 created: 2026-10-01
 status: ACTIVE
 normative_source:

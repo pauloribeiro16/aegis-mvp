@@ -260,6 +260,20 @@ This was also the first live run of per-sub-domain fault isolation, and the stag
 
 **Two things this matrix settled as a by-product.** The ctrl arm produced the most extreme defect measured in the programme — a **100% verbatim copy** of its own Sub-SO at C3/D-06.1 — which is direct evidence the M07 collapse is real on this instrument. And **D-06.3 is now the standing reproducible p4 failure point**: it took the EXP-04 rule arm and both M09 arms on C2, all on the retention floor against a 42-term Sub-SO, independently of prompt wording. It should be treated as the E-01 of the p4 content gates.
 
+## M10 — the instrument-validity test (COMPLETE — read [M10_results.md](M10_results.md))
+
+**What it tested.** Not a prompt: the instruments. Every calibration claim in the programme rests on one number — the `(unchanged+verbatim)` share of the Adjustment column, measured at a median 0.99 by M07 — and that number had never been checked against the construct it claims to measure. Re-scoring only: no model called, no cluster time.
+
+**How it was designed.** The two free-text columns measured separately against a cross-sectional placebo (same model, same company, a *genuinely different* duty), computed inside the M07 matrix so the instrument is constant, and on cells keyed by sub-domain **and regulation** because the three cases carry different regulation sets.
+
+**Results.** `Adjusted goal`: cross-company 0.249 vs placebo 0.061 → **+0.188**. `Company implication`: 0.062 vs 0.061 → **+0.002**. For reference, the median similarity of one model writing the same duty and company **twice** is 0.295. P1 (the badge classifier) held 15/15 including adversarial vectors; P2 was falsified by seven runs, all of them the over-compressed nemotron cells at 5–12%.
+
+**What it says.** The goal text carries the company. The `Company implication` — the one column that exists to carry it, and the one `check_implication_specific` guards — is indistinguishable from unrelated text. That retires the 0.99 panic without a parser story: the badge is sound, so `unchanged` is what the model writes **when it has nothing company-specific to say about that duty**, and the column where that emptiness would surface is empty. The goal is doing the work; the implication is decoration.
+
+**A deviation is recorded, not smoothed.** The first pass pooled M07 with M08 — whose `replicate` floor compares two *different instruments* — and used a near-neighbour placebo. It reported theatre confirmed on both columns. The corrected computation reverses the verdict on the goal column. Both errors were found by noticing that a floor of 0.03 across 684 supposedly-replicated cells was implausible.
+
+**Decision.** Only the implication branch authorises an intervention: **[PREREG_M11](PREREG_M11_IMPLICATION.md)** changes that one clause, requires a named checkable artefact from the fact sheet, and registers Q4 — asking for a named artefact is exactly the move that invites inventing one. The two M07/M08 gates stay untouched until it runs; the chairman proposed suspending them and it was not acted on, because `METRICS.md` M-05b already registers that judgement as a behavioural change affecting aborts.
+
 ## Registered decisions (2026-10-04)
 
 **Scale band: the code's threshold governs (EU 2003/361).** `controls.py` bands

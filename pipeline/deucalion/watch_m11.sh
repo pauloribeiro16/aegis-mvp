@@ -45,7 +45,7 @@ remaining() {
   return 1
 }
 
-echo "M09 watcher — jobs: $(our_jobs | tr '\n' ' ')"
+echo "M11 watcher — jobs: $(our_jobs | tr '\n' ' ')"
 while remaining; do
   [ "$ONCE" = "--once" ] && { echo "still running"; exit 0; }
   printf '%s  %s job(s) queued\n' "$(date -u +%H:%M:%S)" "$(ssh_q | wc -l)"

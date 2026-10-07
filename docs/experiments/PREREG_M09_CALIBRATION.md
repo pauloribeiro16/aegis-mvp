@@ -1,8 +1,9 @@
 # PREREG_M09 — Calibration instruction: literal exemplars in, literal exemplars out
 
-**Status:** FROZEN 2026-10-07, before the first run of any arm.
-**Frozen by:** aegis-mvp executor, on the researcher's instruction.
-**Matrix id:** M09 (2 arms × 2 cases). Run tags: `m09_c2_ctrl`,
+Version: 1.0.0
+Status: FROZEN 2026-10-07, before the first run of any arm.
+Frozen by: aegis-mvp executor, on the researcher's instruction.
+Matrix id: M09 (2 arms × 2 cases). Run tags: `m09_c2_ctrl`,
 `m09_c2_meta`, `m09_c3_ctrl`, `m09_c3_meta`.
 
 ---

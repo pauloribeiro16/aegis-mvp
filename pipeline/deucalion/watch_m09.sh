@@ -56,9 +56,15 @@ echo "$(date -u +%H:%M:%S)  queue drained"
 echo
 echo "=== pull down ==="
 cd "$REPO_ROOT"
-while read -r tag p1 all run; do
+# the log line is `tag p1=J all=J run=R case=C arm=A` — six fields, so a
+# positional `read` leaves `run` holding the `run=` prefix and every scp targets
+# a directory that does not exist. Pull the run id out by key.
+while read -r line; do
+  tag=$(echo "$line" | awk '{print $1}')
   case "$tag" in m09_*) ;; *) continue ;; esac
-  if [ -n "$run" ] && [ -d "$RUNS/$run" ]; then
+  run=$(echo "$line" | awk '{for(i=1;i<=NF;i++) if($i ~ /^run=/){sub(/^run=/,"",$i); print $i; exit}}')
+  [ -z "$run" ] && { echo "  $tag: no run id in the log line"; continue; }
+  if [ -d "$RUNS/$run" ]; then
     echo "  $run already local"
   else
     bash pipeline/deucalion/sync_down.sh "$run" >/dev/null 2>&1 \

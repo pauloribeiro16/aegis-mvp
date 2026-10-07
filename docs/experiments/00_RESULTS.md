@@ -250,6 +250,16 @@ This was also the first live run of per-sub-domain fault isolation, and the stag
 
 **What it says.** The badge instruction is the first p4 text under which the reference clears all three cases — but it is also the instrument with the *highest* measured default-collapse (0.99 unchanged on the reference, 0 `narrowed` on 15 of 18 runs). Delivery and calibration moved in opposite directions: the same explicit "full company-proportional RESTATEMENT" instruction that helps rows pass the L0 gates also invites verbatim restatement. What the delivered rows *are* — faithful restatement or compliance theatre — is precisely the question the blind L2 scoring owns (M-14's 0.70 threshold stays `convention` until then). The `prompt_digests` now carry `p4_instruction`/`p4t_instruction`, so this instrument is self-identifying for every future run.
 
+## M09 — the calibration-instruction ablation (COMPLETE — read [M09_results.md](M09_results.md))
+
+**What it tested.** Whether the literal exemplars in the p4 instruction's style tail — or the worked example — drive the default collapse M07 measured. Two arms × 2 cases, `qwen3.8:27b`, seed 42, n=1, arm read from `ficha_overrides`, preregistered as [PREREG_M09](PREREG_M09_CALIBRATION.md) before any run.
+
+**Results — H1 REFUTED.** Three of four preregistered falsifiers fired. Delivery 36/38 (ctrl) vs 35/38 (meta) on C2 and 34/38 vs **37/38** on C3; peer-similarity median improved on C2 (0.241→0.229) and worsened on C3 (0.220→0.242); and `ratio_verbatim` rose in **both** cases (0.978→0.989, 0.964→0.984). The registered retention downside did not fire — mean retention rose +0.013/+0.015.
+
+**What it says.** The one effect with a consistent sign ran **opposite** to the hypothesis: removing the literal exemplars made default collapse worse. The reading that fits is that those exemplars were load-bearing for the *retention* floor — they model "keep the Sub-SO's vocabulary, restructure the sentence" — so removing them left that instruction carrying the constraint alone. Retention and calibration traded places, the same pattern M07 recorded. The `meta` variant does not ship; the decision rule says a safety regression refutes regardless of the other predictions.
+
+**Two things this matrix settled as a by-product.** The ctrl arm produced the most extreme defect measured in the programme — a **100% verbatim copy** of its own Sub-SO at C3/D-06.1 — which is direct evidence the M07 collapse is real on this instrument. And **D-06.3 is now the standing reproducible p4 failure point**: it took the EXP-04 rule arm and both M09 arms on C2, all on the retention floor against a 42-term Sub-SO, independently of prompt wording. It should be treated as the E-01 of the p4 content gates.
+
 ## Registered decisions (2026-10-04)
 
 **Scale band: the code's threshold governs (EU 2003/361).** `controls.py` bands

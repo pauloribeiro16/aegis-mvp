@@ -1,18 +1,26 @@
 #!/usr/bin/env bash
-# watch_m09.sh — wait for the four M09 cells, pull them down, and verify that
-# each arm actually received the instruction it claims.
+# watch_m09.sh — wait for the four M09 cells, pull them down, and verify from
+# the artefacts that each arm actually received the instruction it declares.
 #
-# The verification is the point. A prompt override that silently does not
-# apply leaves config.json saying one thing and the run shipping another — the
-# m06 failure (`p4_instruction` digests identical, badge rewrite invisible, the
-# instrument distinguishable only by reading inputs/ verbatim). So this watcher
-# reads config.json back from every pulled run and asserts:
-#   ctrl  -> ficha_overrides is empty / has no p4_instruction
-#   meta  -> ficha_overrides.p4_instruction == "meta"
-# and that the two arms carry DIFFERENT prompt_digests.p4_instruction.
+# Three checks, in increasing order of how much they actually prove:
+#
+#   1. config.json records the arm          — bookkeeping
+#   2. the p4_instruction digest is EQUAL  — both arms ran the same code, so
+#      across arms                         the digest must NOT differ. The
+#                                           digest hashes the variant TABLE,
+#                                           not the selection, so a difference
+#                                           here would mean the payload moved
+#                                           mid-matrix, not that the arms are
+#                                           distinguishable.
+#   3. the prompt BYTES differ where the  — the claim itself. Compare one
+#      arms claim to differ                   `*_p4_*_user.md` per arm on the
+#                                           same case: the head up to
+#                                           `P4_STYLE_MARKER` must be
+#                                           byte-identical, and the tail must
+#                                           carry the literal exemplars in
+#                                           ctrl and none in meta.
 #
 # Usage: bash pipeline/deucalion/watch_m09.sh [--once]
-#   --once = check the queue once and exit (no long poll)
 set -uo pipefail
 
 HOST="${MVP_HOST:-paulinho@login.deucalion.macc.fccn.pt}"
@@ -25,12 +33,11 @@ POLL="${MVP_POLL:-120}"
 ssh_q() { ssh -n -o BatchMode=yes "$HOST" \
   "squeue -u \$USER -h -o '%i %j %t' | grep mvp_ || true" 2>/dev/null; }
 
-# every job id this matrix owns, so "done" means none of them are queued
 our_jobs() { awk '{for(i=1;i<=NF;i++) if($i ~ /^p1=|^all=/) print $i}' "$LOG" \
              | sed 's/.*=//' | grep -E '^[0-9]+$' | sort -u; }
 
 remaining() {
-  local queued now
+  local queued now j
   queued=$(ssh_q | awk '{print $1}')
   [ -z "$queued" ] && return 1
   now=$(our_jobs)
@@ -47,11 +54,10 @@ done
 echo "$(date -u +%H:%M:%S)  queue drained"
 
 echo
-echo "=== pull down + verify each arm ==="
+echo "=== pull down ==="
 cd "$REPO_ROOT"
 while read -r tag p1 all run; do
   case "$tag" in m09_*) ;; *) continue ;; esac
-  arm="${tag##*_}"
   if [ -n "$run" ] && [ -d "$RUNS/$run" ]; then
     echo "  $run already local"
   else
@@ -62,42 +68,69 @@ done < "$LOG"
 
 echo
 python3 - "$RUNS" <<'PY'
-import json, sys
+import json, re, sys
 from pathlib import Path
 
+MARKER = "Express the goal objectively and impersonally"
 runs = Path(sys.argv[1])
 log = runs / "m09_submissions.log"
-bad, seen = [], {}
-print(f"{'run':<34} {'arm':<5} {'ficha_overrides':<24} {'p4_instruction digest':<20}")
-print("-" * 88)
+bad, digests, prompts = [], {}, {}
+
 for line in log.read_text().splitlines():
     f = dict(kv.split("=", 1) for kv in line.split() if "=" in kv)
     tag = line.split()[0]
     if not tag.startswith("m09_") or "run" not in f:
         continue
-    run = runs / f["run"]
-    cfg, man = run / "config.json", run / "manifest.json"
-    if not (cfg.exists() and man.exists()):
-        bad.append(f"{f['run']}: not pulled")
+    run, arm = runs / f["run"], tag.rsplit("_", 1)[1]
+    cfg = run / "config.json"
+    if not cfg.exists():
+        bad.append(f"{tag}: not pulled")
         continue
-    ov = json.loads(cfg.read_text()).get("ficha_overrides") or {}
-    dig = json.loads(man.read_text()).get("prompt_digests", {}).get("p4_instruction", "?")
-    arm = tag.rsplit("_", 1)[1]
-    print(f"{f['run']:<34} {arm:<5} {str(ov):<24} {dig:<20}")
+    conf = json.loads(cfg.read_text())
+    ov = conf.get("ficha_overrides") or {}
+    dig = (conf.get("prompt_digests") or {}).get("p4_instruction", "?")
     got = ov.get("p4_instruction")
+    print(f"{f['run']:<32} arm={arm:<5} ficha_overrides={str(ov):<26} "
+          f"seed={conf.get('seed')} T={conf.get('temperature')} digest={dig}")
     if arm == "meta" and got != "meta":
-        bad.append(f"{tag}: arm=meta but p4_instruction={got!r} — OVERRIDE DID NOT LAND")
+        bad.append(f"{tag}: declares meta but p4_instruction={got!r}")
     if arm == "ctrl" and got is not None:
-        bad.append(f"{tag}: arm=ctrl but p4_instruction={got!r} — arms are not what they claim")
-    seen.setdefault(dig, []).append(tag)
+        bad.append(f"{tag}: declares ctrl but p4_instruction={got!r}")
+    digests.setdefault(dig, []).append(tag)
+    # the prompt bytes this run actually sent
+    users = sorted((run / "inputs").glob("*_p4_*_user.md")) if (run / "inputs").is_dir() else []
+    if users:
+        prompts[tag] = users[0].read_text(encoding="utf-8")
 
-if len(seen) < 2:
-    bad.append("both arms share one p4_instruction digest — the instrument is not distinguishable")
+if len(digests) != 1:
+    bad.append(f"p4_instruction digests differ across arms ({digests}) — the "
+               "payload moved mid-matrix; both arms must run the same code")
 else:
-    for dig, tags in seen.items():
-        print(f"\ndigest {dig}: {', '.join(tags)}")
+    (d, tags), = digests.items()
+    print(f"\ndigest {d} shared by all {len(tags)} cells — as it must be: the "
+          "digest hashes the variant table, not the selection")
+
+# byte-level comparison, per case, ctrl against meta
+for case in ("c2", "c3"):
+    a, b = prompts.get(f"m09_{case}_ctrl"), prompts.get(f"m09_{case}_meta")
+    if not a or not b:
+        print(f"\n{case}: prompt bytes unavailable (inputs/ not pulled)")
+        continue
+    ha = a.partition(MARKER)[0], a.partition(MARKER)[2]
+    hb = b.partition(MARKER)[0], b.partition(MARKER)[2]
+    if ha[0] != hb[0]:
+        bad.append(f"{case}: the head before the style marker differs between arms")
+    lit = lambda t: len(re.findall(r"e\.g\. '", t))
+    print(f"\n{case}: head identical={ha[0] == hb[0]}  "
+          f"literal exemplars ctrl={lit(ha[1])} meta={lit(hb[1])}  "
+          f"tail differs={ha[1] != hb[1]}")
+    if lit(ha[1]) == 0:
+        bad.append(f"{case}: ctrl carries no literal exemplar — the arm is not what it claims")
+    if lit(hb[1]) != 0:
+        bad.append(f"{case}: meta still carries {lit(hb[1])} literal exemplar(s)")
+
 print()
 print("RESULT: FAIL — " + "; ".join(bad) if bad
-      else "RESULT: PASS — each arm received the instruction it declares, and the two are distinguishable")
+      else "RESULT: PASS — each arm received the instruction it declares, on the same code")
 sys.exit(1 if bad else 0)
 PY

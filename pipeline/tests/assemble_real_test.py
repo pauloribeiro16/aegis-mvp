@@ -49,12 +49,15 @@ def check(name: str, ok: bool, detail: str = "") -> None:
 
 
 def p4_rows_from_example() -> list[str]:
-    """Project the example's reference rows to the 9-column P4 input contract.
+    """Project the example's reference rows to the P4 input contract.
 
-    The reference format (v7) carries no Company implication column and derives
-    Control Anchors by code — so this projection synthesises a distinct,
-    fact-sheet-grounded implication per row (the implication-specificity gate
-    rejects duplicates) and drops the anchors column, which assemble_doc
+    The golden carries two shapes. D-01.1 and D-01.2 — the two blocks
+    `compose.build_pack` ever slices into a p4 pack — are in the 9-column EMIT
+    shape and are already in the contract, so they are read directly. Every
+    other block is still in the DELIVERED shape, which has no Company
+    implication and carries the code-derived Control Anchors: those rows get a
+    synthesised, fact-sheet-grounded implication (the implication-specificity
+    gate rejects duplicates) and drop the anchors column, which assemble_doc
     re-derives from the mapping store."""
     text = (REPO / "example" / "doc02_adjusted_goals.md").read_text(encoding="utf-8")
     # the reference format's Property vocabulary differs from the pipeline's
@@ -69,22 +72,31 @@ def p4_rows_from_example() -> list[str]:
         c = [x.strip().strip("`") for x in line.strip().strip("|").split("|")]
         if len(c) < 9:
             continue
-        # reference row: AG ID | Adjusted Goal | Pattern | Property | Parent
-        # Goal | Regulation | Articles | Control Anchors | Adjustment
-        reg = c[5]
+        # EMIT row: ID | Adjusted goal | Company implication | Pattern |
+        #           Property | Parent goal | Baseline source | Regulatory
+        #           source | Adjustment
+        emit = c[6].startswith(f"SG-{SD}.")
+        if emit:
+            reg, impl, pat, prop, parent, source, adj = (
+                c[6].split(".")[-1], c[2], c[3].lower(),
+                PROP.get(c[4], "C"), c[5], c[7], c[8])
+        else:
+            # DELIVERED row: AG ID | Adjusted Goal | Pattern | Property |
+            #               Parent Goal | Regulation | Articles | Control
+            #               Anchors | Adjustment
+            reg, impl, pat, prop, parent, source, adj = c[5], "", c[2].lower(), c[3], c[4], c[6], c[8]
         if reg != "GDPR":  # the test's fake verdicts confirm GDPR only
             continue
-        pat = c[2].lower()
         if pat not in ("achieve", "cease", "maintain", "avoid", "optimize"):
             pat = "maintain"
-        # distinct implication grounded in the fact sheet (supplier-hosted app)
-        impl = (f"VetCare Connect runs the appointment app on an external software "
-                f"house's EU cloud, so under {reg} this duty binds through the "
-                f"supplier contract plus the configuration the company controls "
-                f"for {c[1][:60]}…")
-        out.append("| " + " | ".join([c[0], c[1], impl, pat,
-                                      PROP.get(c[3], "C"), c[4].replace("SG-", "SO-", 1),
-                                      f"`SG-{SD}.{reg}`", c[6], c[8]]) + " |")
+        if not impl:
+            impl = (f"VetCare Connect runs the appointment app on an external software "
+                    f"house's EU cloud, so under {reg} this duty binds through the "
+                    f"supplier contract plus the configuration the company controls "
+                    f"for {c[1][:60]}…")
+        out.append("| " + " | ".join([c[0], c[1], impl, pat, prop,
+                                      parent.replace("SG-", "SO-", 1),
+                                      f"`SG-{SD}.{reg}`", source, adj]) + " |")
     return out
 
 

@@ -110,10 +110,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-01.1.CRA` (CRA):** Where a product with digital elements stores data — personal or other — the confidentiality of that data is protected by encrypting relevant data at rest using state-of-the-art mechanisms (Annex I Part I (2)(e)).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-01.1-001` | Personal data at rest is processed in a manner that ensures appropriate security — including protection against unauthorised or unlawful processing and against accidental loss, destruction or damage — using appropriate technical or organisational measures, with the ability to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems and services. | maintain | Confidentiality & Integrity | SG-D-01.1.HL | GDPR | Art. 5(1)(f) + Art. 32(1)(b) | PR.DS-01, PR.DS-10 | The `appropriate` threshold is anchored by the five Art. 32(1) preamble factors; at MICRO scale, cost of implementation and state of the art jointly justify inheriting the encryption capability from the hosting layer. |
-| `AG-D-01.1-002` | Where the product stores data — personal or other — the confidentiality of that data is protected by encrypting relevant data at rest using state-of-the-art mechanisms. | maintain | Confidentiality & Integrity | SG-D-01.1.HL | CRA | Annex I Part I (2)(e) | PR.DS-01 | The state-of-the-art anchor is the stricter of the two floors on this subdomain; meeting it discharges the data-protection `appropriate` obligation on the same datastore. |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-01.1-001` | Personal data at rest is processed in a manner that ensures appropriate security — including protection against unauthorised or unlawful processing and against accidental loss, destruction or damage — using appropriate technical or organisational measures, with the ability to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems and services. | — | maintain | Confidentiality & Integrity | SG-D-01.1.HL | GDPR | Art. 5(1)(f) + Art. 32(1)(b) | PR.DS-01, PR.DS-10 | The `appropriate` threshold is anchored by the five Art. 32(1) preamble factors; at MICRO scale, cost of implementation and state of the art jointly justify inheriting the encryption capability from the hosting layer. |
+| `AG-D-01.1-002` | Where the product stores data — personal or other — the confidentiality of that data is protected by encrypting relevant data at rest using state-of-the-art mechanisms. | — | maintain | Confidentiality & Integrity | SG-D-01.1.HL | CRA | Annex I Part I (2)(e) | PR.DS-01 | The state-of-the-art anchor is the stricter of the two floors on this subdomain; meeting it discharges the data-protection `appropriate` obligation on the same datastore. |
 
 ### D-01.2 — Data in Transit Encryption
 
@@ -124,10 +124,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-01.2.CRA` (CRA):** Where data is transmitted by a product with digital elements — personal or other — the confidentiality of the data in transit is protected by encrypting relevant data using state-of-the-art mechanisms, with the Annex I (2)(j) attack-surface-limitation leg constraining the exposed interfaces through which the data could otherwise leak (Annex I Part I (2)(e) + (2)(j)).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-01.2-001` | Personal data transmitted across networks, inter-service channels, and third-party infrastructure remains confidential and unaltered in transit, with the in-transit protection anchored to the five-event Art. 32(2) risk enumeration — accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data transmitted. | maintain | Confidentiality & Integrity | SG-D-01.2.HL | GDPR | Art. 32(1)(b) + Art. 32(2) | PR.DS-02, PR.IR-01 | — |
-| `AG-D-01.2-002` | Where data is transmitted by the product — personal or other — the confidentiality of the data in transit is protected by encrypting relevant data using state-of-the-art mechanisms, with the attack-surface-limitation leg constraining the exposed interfaces through which the data could otherwise leak. | maintain | Confidentiality & Integrity | SG-D-01.2.HL | CRA | Annex I Part I (2)(e) + (2)(j) | PR.DS-02, PR.IR-01 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-01.2-001` | Personal data transmitted across networks, inter-service channels, and third-party infrastructure remains confidential and unaltered in transit, with the in-transit protection anchored to the five-event Art. 32(2) risk enumeration — accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data transmitted. | — | maintain | Confidentiality & Integrity | SG-D-01.2.HL | GDPR | Art. 32(1)(b) + Art. 32(2) | PR.DS-02, PR.IR-01 | — |
+| `AG-D-01.2-002` | Where data is transmitted by the product — personal or other — the confidentiality of the data in transit is protected by encrypting relevant data using state-of-the-art mechanisms, with the attack-surface-limitation leg constraining the exposed interfaces through which the data could otherwise leak. | — | maintain | Confidentiality & Integrity | SG-D-01.2.HL | CRA | Annex I Part I (2)(e) + (2)(j) | PR.DS-02, PR.IR-01 | — |
 
 ### D-01.3 — Key Management
 
@@ -138,10 +138,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-01.3.CRA` (CRA):** Cryptographic keys and related authentication material used to protect the confidentiality and integrity of stored, transmitted or otherwise processed data by a product with digital elements — personal or other — are managed with separation of roles such that possession of the key material is not bundled with possession of the operational environment that uses it (Annex I Part I (2)(d) access-control + (2)(e) "other technical means" reading per `SR-CRA-004` ambiguity_notes; the Annex I text does not mention key management explicitly — the synthesis catalogue `99_CRA_Synthesis.md` §4 flags this as a T2-vs-text gap — so the key-separation reading rests on the combination of Annex I (2)(d) access-control duty with the Annex I (2)(e) "other technical means" residual).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-01.3-001` | Where pseudonymisation or encryption is applied to personal data, the additional information required to re-identify the data subject — the key, the mapping table, or the tokenisation seed — is kept separately and is subject to appropriate technical and organisational measures that prevent attribution. | maintain | Confidentiality | SG-D-01.3.HL | GDPR | Art. 4(5) + Art. 34(3)(a) + Art. 32(1)(a) | PR.DS-01, PR.IR-03 | — |
-| `AG-D-01.3-002` | Cryptographic keys and related authentication material used to protect the confidentiality and integrity of data stored, transmitted or otherwise processed by the product are managed with separation of roles, so that possession of the key material is not bundled with possession of the operational environment that uses it. | maintain | Confidentiality | SG-D-01.3.HL | CRA | Annex I Part I (2)(d) + (2)(e) | PR.DS-01, PR.AA-05, GV.OV-01 | The Annex I text does not mention key management explicitly; the key-separation reading rests on combining the access-control duty with the `other technical means` residual, flagged as a text-versus-interpretation gap in the corpus synthesis catalogue. |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-01.3-001` | Where pseudonymisation or encryption is applied to personal data, the additional information required to re-identify the data subject — the key, the mapping table, or the tokenisation seed — is kept separately and is subject to appropriate technical and organisational measures that prevent attribution. | — | maintain | Confidentiality | SG-D-01.3.HL | GDPR | Art. 4(5) + Art. 34(3)(a) + Art. 32(1)(a) | PR.DS-01, PR.IR-03 | — |
+| `AG-D-01.3-002` | Cryptographic keys and related authentication material used to protect the confidentiality and integrity of data stored, transmitted or otherwise processed by the product are managed with separation of roles, so that possession of the key material is not bundled with possession of the operational environment that uses it. | — | maintain | Confidentiality | SG-D-01.3.HL | CRA | Annex I Part I (2)(d) + (2)(e) | PR.DS-01, PR.AA-05, GV.OV-01 | The Annex I text does not mention key management explicitly; the key-separation reading rests on combining the access-control duty with the `other technical means` residual, flagged as a text-versus-interpretation gap in the corpus synthesis catalogue. |
 
 ### D-01.4 — Data Integrity
 
@@ -152,10 +152,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-01.4.CRA` (CRA):** The integrity of stored, transmitted, or otherwise processed data — personal or other — as well as the integrity of commands, programs, and configuration, is protected against any manipulation or modification not authorised by the user (Annex I Part I (2)(f) — the universal-quantifier `any` makes the integrity protection unconditional); corruption is reported to the user / administering party (Annex I Part I (2)(f) `report on corruptions` + (2)(l) logging + monitoring).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-01.4-001` | Personal data are accurate and, where necessary, kept up to date, and inaccurate data are erased or rectified without delay, with the integrity property anchored to two further legs — storage integrity and the rectification cascade carrying the Art. 19 recipient-notification duty. | maintain | Integrity | SG-D-01.4.HL | GDPR | Art. 5(1)(d) + Art. 5(1)(f) + Art. 16 + Art. 19 | PR.DS-01, PR.DS-10, PR.DS-10 | — |
-| `AG-D-01.4-002` | The integrity of stored, transmitted, or otherwise processed data — as well as the integrity of commands, programs, and configuration — is protected against any manipulation or modification not authorised by the user, and corruption is reported to the user or administering party. | maintain | Integrity | SG-D-01.4.HL | CRA | Annex I Part I (2)(f) + (2)(l) | PR.DS-01, PR.DS-10, PR.PS-04 | The universal quantifier `any` makes this integrity protection unconditional — it admits no risk-based relaxation at MICRO scale. |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-01.4-001` | Personal data are accurate and, where necessary, kept up to date, and inaccurate data are erased or rectified without delay, with the integrity property anchored to two further legs — storage integrity and the rectification cascade carrying the Art. 19 recipient-notification duty. | — | maintain | Integrity | SG-D-01.4.HL | GDPR | Art. 5(1)(d) + Art. 5(1)(f) + Art. 16 + Art. 19 | PR.DS-01, PR.DS-10, PR.DS-10 | — |
+| `AG-D-01.4-002` | The integrity of stored, transmitted, or otherwise processed data — as well as the integrity of commands, programs, and configuration — is protected against any manipulation or modification not authorised by the user, and corruption is reported to the user or administering party. | — | maintain | Integrity | SG-D-01.4.HL | CRA | Annex I Part I (2)(f) + (2)(l) | PR.DS-01, PR.DS-10, PR.PS-04 | The universal quantifier `any` makes this integrity protection unconditional — it admits no risk-based relaxation at MICRO scale. |
 
 ### D-02.1 — Vulnerability Identification
 
@@ -166,10 +166,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-02.1.CRA` (CRA):** A product with digital elements is made available on the market without known exploitable vulnerabilities (Annex I Part I (2)(a)), and vulnerabilities contained in the product — including the components listed in an SBOM — are identified and documented on a continuing basis throughout the support period (Annex I Part II (1) + Art. 13(3) + Art. 13(7)).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-02.1-001` | The company operates a process for regularly testing, assessing, and evaluating the effectiveness of the technical and organisational measures securing the processing, and reviews the impact assessment when the risk represented by processing operations changes. | achieve | Confidentiality | SG-D-02.1.HL | GDPR | Art. 32(1)(d) + Art. 35(11) | ID.RA-01, PR.PS-02, ID.RA-05, ID.IM-02 | — |
-| `AG-D-02.1-002` | The product is made available on the market without known exploitable vulnerabilities, and vulnerabilities contained in it — including those in the components listed in the software bill of materials — are identified and documented on a continuing basis throughout the support period. | achieve | Confidentiality | SG-D-02.1.HL | CRA | Annex I Part I (2)(a) + Annex I Part II (1) + Art. 13(3) + Art. 13(7) | ID.RA-01, ID.AM-02, PR.PS-02 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-02.1-001` | The company operates a process for regularly testing, assessing, and evaluating the effectiveness of the technical and organisational measures securing the processing, and reviews the impact assessment when the risk represented by processing operations changes. | — | achieve | Confidentiality | SG-D-02.1.HL | GDPR | Art. 32(1)(d) + Art. 35(11) | ID.RA-01, PR.PS-02, ID.RA-05, ID.IM-02 | — |
+| `AG-D-02.1-002` | The product is made available on the market without known exploitable vulnerabilities, and vulnerabilities contained in it — including those in the components listed in the software bill of materials — are identified and documented on a continuing basis throughout the support period. | — | achieve | Confidentiality | SG-D-02.1.HL | CRA | Annex I Part I (2)(a) + Annex I Part II (1) + Art. 13(3) + Art. 13(7) | ID.RA-01, ID.AM-02, PR.PS-02 | — |
 
 ### D-02.2 — Patch Management
 
@@ -178,9 +178,9 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-02.2.CRA` (CRA):** Vulnerabilities of a product with digital elements are addressed and remediated through security updates without delay, including — where technically feasible — through security updates provided separately from functionality updates (Annex I Part II (2) + Annex I Part I (2)(c)); security updates are disseminated without delay to users via mechanisms that ensure the secure distribution of updates, accompanied by advisory messages describing the action users can take (Annex I Part II (7) + (8)); vulnerabilities — including those of integrated components — are handled effectively and in accordance with the Annex I Part II vulnerability-handling requirements throughout the support period determined by the manufacturer (minimum 5 years, or the expected use time if shorter — Art. 13(8)); each security update made available during the support period remains available after it has been issued for at least 10 years or for the remainder of the support period, whichever is longer (Art. 13(9)).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-02.2-002` | Vulnerabilities are addressed and remediated through security updates without delay, provided separately from functionality updates where technically feasible, and disseminated to users via mechanisms ensuring secure distribution together with advisory messages describing the action users can take. | achieve | Confidentiality | SG-D-02.2.HL | CRA | Annex I Part II (2) + (7) + (8) + Annex I Part I (2)(c) + Art. 13(8) + Art. 13(9) | PR.PS-02, PR.IR-03, ID.RA-01, PR.PS-01 | Each security update remains available for at least 10 years or the remainder of the support period, whichever is longer — a retention floor that outlasts the company's current planning horizon. |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-02.2-002` | Vulnerabilities are addressed and remediated through security updates without delay, provided separately from functionality updates where technically feasible, and disseminated to users via mechanisms ensuring secure distribution together with advisory messages describing the action users can take. | — | achieve | Confidentiality | SG-D-02.2.HL | CRA | Annex I Part II (2) + (7) + (8) + Annex I Part I (2)(c) + Art. 13(8) + Art. 13(9) | PR.PS-02, PR.IR-03, ID.RA-01, PR.PS-01 | Each security update remains available for at least 10 years or the remainder of the support period, whichever is longer — a retention floor that outlasts the company's current planning horizon. |
 
 ### D-02.3 — Coordinated Vulnerability Disclosure
 
@@ -189,9 +189,9 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-02.3.CRA` (CRA):** The manufacturer puts in place, documents and enforces a policy on coordinated vulnerability disclosure for its products with digital elements (Annex I Part II (5) + Art. 13(8) sentence 6); once a security update has been made available, the manufacturer shares and publicly discloses information about the fixed vulnerabilities, including a description of the vulnerability, the affected products, the impacts, the severity, and the remediation guidance — subject to a duly justified delay exception where security risks of publication outweigh security benefits (Annex I Part II (4)); the manufacturer facilitates the sharing of information about potential vulnerabilities in its products and in third-party components contained therein, including by providing a publicly identifiable contact address for the reporting of vulnerabilities (Annex I Part II (6)); the manufacturer designates a single point of contact to enable users — including security researchers — to communicate directly and rapidly with the manufacturer (Art. 13(17) + Annex II §2).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-02.3-002` | The company puts in place, documents and enforces a coordinated vulnerability disclosure policy, publicly discloses information about fixed vulnerabilities once an update is available, facilitates the sharing of information about potential vulnerabilities through a publicly identifiable contact address, and designates a single point of contact for users including security researchers. | achieve | Confidentiality | SG-D-02.3.HL | CRA | Annex I Part II (4) + (5) + (6) + Art. 13(8) + Art. 13(17) + Annex II §2 | GV.PO-01, GV.SC-04, RS.CO-03 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-02.3-002` | The company puts in place, documents and enforces a coordinated vulnerability disclosure policy, publicly discloses information about fixed vulnerabilities once an update is available, facilitates the sharing of information about potential vulnerabilities through a publicly identifiable contact address, and designates a single point of contact for users including security researchers. | — | achieve | Confidentiality | SG-D-02.3.HL | CRA | Annex I Part II (4) + (5) + (6) + Art. 13(8) + Art. 13(17) + Annex II §2 | GV.PO-01, GV.SC-04, RS.CO-03 | — |
 
 ### D-03.1 — Identity Lifecycle
 
@@ -202,10 +202,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-03.1.CRA` (CRA):** Identities, credentials, and access entitlements for users, services, and integrated components of the product with digital elements are managed in a verifiable manner throughout the operational lifetime of the product (Annex I Part I (2)(d) + Art. 13(15) type/batch/serial unique identification + Art. 13(17) single point of contact; backed by Annex II §3 unique-identification user information).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-03.1-001` | The identity of a natural person making a rights-exercise request under Art. 15–22 is verified using reasonable means proportionate to the risk of mis-identification before action is taken; the company may request additional information necessary to confirm identity, and the verification scope is itself constrained by data minimisation. | maintain | Confidentiality | SG-D-03.1.HL | GDPR | Art. 12(6) + Art. 11(2) + Art. 5(1)(c) | PR.AA-03, PR.AA-02, PR.DS-10 | — |
-| `AG-D-03.1-002` | Identities, credentials, and access entitlements for users, services, and integrated components of the product are managed in a verifiable manner throughout the operational lifetime of the product, backed by unique product identification and a designated single point of contact. | maintain | Confidentiality | SG-D-03.1.HL | CRA | Annex I Part I (2)(d) + Art. 13(15) + Art. 13(17) + Annex II §3 | PR.AA-01, ID.AM-01, PR.AA-05, PR.AA-06, DE.CM-09 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-03.1-001` | The identity of a natural person making a rights-exercise request under Art. 15–22 is verified using reasonable means proportionate to the risk of mis-identification before action is taken; the company may request additional information necessary to confirm identity, and the verification scope is itself constrained by data minimisation. | — | maintain | Confidentiality | SG-D-03.1.HL | GDPR | Art. 12(6) + Art. 11(2) + Art. 5(1)(c) | PR.AA-03, PR.AA-02, PR.DS-10 | — |
+| `AG-D-03.1-002` | Identities, credentials, and access entitlements for users, services, and integrated components of the product are managed in a verifiable manner throughout the operational lifetime of the product, backed by unique product identification and a designated single point of contact. | — | maintain | Confidentiality | SG-D-03.1.HL | CRA | Annex I Part I (2)(d) + Art. 13(15) + Art. 13(17) + Annex II §3 | PR.AA-01, ID.AM-01, PR.AA-05, PR.AA-06, DE.CM-09 | — |
 
 ### D-03.2 — Authentication Strength
 
@@ -216,10 +216,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-03.2.CRA` (CRA):** Protection from unauthorised access uses appropriate control mechanisms, which may include authentication, identity, or access-management systems, appropriate to the identified cybersecurity risk of the product (Annex I Part I (2)(d) — "including but not limited to" + 3-way OR).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-03.2-001` | Persons authorised to process personal data act only on documented instructions from the company and are bound by confidentiality or an appropriate statutory obligation of confidentiality; the identity of data subjects making rights-exercise requests is verified proportionately to the risk of mis-identification. | maintain | Confidentiality | SG-D-03.2.HL | GDPR | Art. 28(3)(b) + Art. 29 + Art. 32(4) + Art. 12(6) | PR.AA-05, PR.AA-06, PR.AT-02 | — |
-| `AG-D-03.2-002` | Protection from unauthorised access uses appropriate control mechanisms — which may include authentication, identity, or access-management systems — appropriate to the identified cybersecurity risk of the product. | maintain | Confidentiality | SG-D-03.2.HL | CRA | Annex I Part I (2)(d) | PR.AA-01, PR.AA-05, PR.AA-06, ID.AM-01, DE.CM-09 | The Annex I formulation is a non-exhaustive three-way disjunction, so the obligation is discharged by any mechanism proportionate to the assessed risk. |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-03.2-001` | Persons authorised to process personal data act only on documented instructions from the company and are bound by confidentiality or an appropriate statutory obligation of confidentiality; the identity of data subjects making rights-exercise requests is verified proportionately to the risk of mis-identification. | — | maintain | Confidentiality | SG-D-03.2.HL | GDPR | Art. 28(3)(b) + Art. 29 + Art. 32(4) + Art. 12(6) | PR.AA-05, PR.AA-06, PR.AT-02 | — |
+| `AG-D-03.2-002` | Protection from unauthorised access uses appropriate control mechanisms — which may include authentication, identity, or access-management systems — appropriate to the identified cybersecurity risk of the product. | — | maintain | Confidentiality | SG-D-03.2.HL | CRA | Annex I Part I (2)(d) | PR.AA-01, PR.AA-05, PR.AA-06, ID.AM-01, DE.CM-09 | The Annex I formulation is a non-exhaustive three-way disjunction, so the obligation is discharged by any mechanism proportionate to the assessed risk. |
 
 ### D-03.3 — Authorisation & Least Privilege
 
@@ -230,10 +230,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-03.3.CRA` (CRA):** Access to the product with digital elements, its data, services, and functions is limited to authenticated and authorised users, services, and hardware, with possible unauthorised access reported (Annex I Part I (2)(d) `protection from unauthorised access through appropriate control mechanisms` + `possible unauthorised access reported` — R1 inclusive reading on `possible`) and attack surfaces including external interfaces limited (Annex I Part I (2)(j)).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-03.3-001` | Persons authorised to process personal data act only on documented instructions and are bound by confidentiality, with the documented instructions binding the controller → processor → authorised-persons chain of authority. | maintain | Confidentiality | SG-D-03.3.HL | GDPR | Art. 29 + Art. 32(4) + Art. 28(3)(a)/(b) + Art. 4(7) + Art. 4(8) | PR.AA-05, PR.AA-06, PR.AT-02 | — |
-| `AG-D-03.3-002` | Access to the product, its data, services, and functions is limited to authenticated and authorised users, services, and hardware, with possible unauthorised access reported, and attack surfaces including external interfaces limited. | maintain | Confidentiality | SG-D-03.3.HL | CRA | Annex I Part I (2)(d) + (2)(j) | PR.AA-05, PR.AA-06, DE.CM-09 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-03.3-001` | Persons authorised to process personal data act only on documented instructions and are bound by confidentiality, with the documented instructions binding the controller → processor → authorised-persons chain of authority. | — | maintain | Confidentiality | SG-D-03.3.HL | GDPR | Art. 29 + Art. 32(4) + Art. 28(3)(a)/(b) + Art. 4(7) + Art. 4(8) | PR.AA-05, PR.AA-06, PR.AT-02 | — |
+| `AG-D-03.3-002` | Access to the product, its data, services, and functions is limited to authenticated and authorised users, services, and hardware, with possible unauthorised access reported, and attack surfaces including external interfaces limited. | — | maintain | Confidentiality | SG-D-03.3.HL | CRA | Annex I Part I (2)(d) + (2)(j) | PR.AA-05, PR.AA-06, DE.CM-09 | — |
 
 ### D-03.4 — Secure System Defaults
 
@@ -244,10 +244,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-03.4.CRA` (CRA):** Products with digital elements are made available on the market with a secure-by-default configuration — including the possibility for the user to reset the product to its original state — unless otherwise agreed between manufacturer and business user in relation to a tailor-made product with digital elements (Annex I Part I (2)(b)), and the secure-by-default configuration ensures that vulnerabilities can be addressed through security updates — automatic security updates installed within an appropriate timeframe, enabled by default, with a clear and easy-to-use opt-out mechanism, through notification of available updates to users, and with the option to temporarily postpone them (Annex I Part I (2)(c)).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-03.4-001` | Processing systems ensure that, by default, only personal data necessary for each specific purpose are processed — across the four AND-coordinated dimensions of amount collected, extent of processing, period of storage, and accessibility — and personal data are not made accessible without the individual's intervention to an indefinite number of natural persons. | maintain | Confidentiality & Privacy Right | SG-D-03.4.HL | GDPR | Art. 25(2) + Art. 25(1) + Art. 5(1)(c) | PR.PS-01, PR.DS-10, GV.PO-01 | — |
-| `AG-D-03.4-002` | The product is made available on the market with a secure-by-default configuration, including the possibility for the user to reset it to its original state, and that configuration ensures vulnerabilities can be addressed through security updates installed automatically within an appropriate timeframe, enabled by default, with a clear opt-out and a postponement option. | maintain | Confidentiality & Privacy Right | SG-D-03.4.HL | CRA | Annex I Part I (2)(b) + (2)(c) | PR.PS-01, PR.DS-10, GV.SC-03 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-03.4-001` | Processing systems ensure that, by default, only personal data necessary for each specific purpose are processed — across the four AND-coordinated dimensions of amount collected, extent of processing, period of storage, and accessibility — and personal data are not made accessible without the individual's intervention to an indefinite number of natural persons. | — | maintain | Confidentiality & Privacy Right | SG-D-03.4.HL | GDPR | Art. 25(2) + Art. 25(1) + Art. 5(1)(c) | PR.PS-01, PR.DS-10, GV.PO-01 | — |
+| `AG-D-03.4-002` | The product is made available on the market with a secure-by-default configuration, including the possibility for the user to reset it to its original state, and that configuration ensures vulnerabilities can be addressed through security updates installed automatically within an appropriate timeframe, enabled by default, with a clear opt-out and a postponement option. | — | maintain | Confidentiality & Privacy Right | SG-D-03.4.HL | CRA | Annex I Part I (2)(b) + (2)(c) | PR.PS-01, PR.DS-10, GV.SC-03 | — |
 
 ### D-04.1 — Incident Detection & Triage
 
@@ -258,10 +258,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-04.1.CRA` (CRA):** Relevant internal activity of the product with digital elements — including access to or modification of data, services, or functions — is recorded and monitored, with a user-visible opt-out mechanism where appropriate, and any corruption or unauthorised modification is reported (Annex I Part I (2)(l)).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-04.1-001` | Personal-data breaches are detected and triaged, and the moment of becoming aware is documented so as to anchor the 72-hour notification clock. | achieve | Availability | SG-D-04.1.HL | GDPR | Art. 33(1) + Art. 4(12) | DE.AE-02, PR.PS-04, DE.CM-01 | — |
-| `AG-D-04.1-002` | Relevant internal activity of the product — including access to or modification of data, services, or functions — is recorded and monitored, with a user-visible opt-out mechanism where appropriate, and any corruption or unauthorised modification is reported. | achieve | Availability | SG-D-04.1.HL | CRA | Annex I Part I (2)(l) | DE.CM-09, PR.PS-04, RS.MA-02 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-04.1-001` | Personal-data breaches are detected and triaged, and the moment of becoming aware is documented so as to anchor the 72-hour notification clock. | — | achieve | Availability | SG-D-04.1.HL | GDPR | Art. 33(1) + Art. 4(12) | DE.AE-02, PR.PS-04, DE.CM-01 | — |
+| `AG-D-04.1-002` | Relevant internal activity of the product — including access to or modification of data, services, or functions — is recorded and monitored, with a user-visible opt-out mechanism where appropriate, and any corruption or unauthorised modification is reported. | — | achieve | Availability | SG-D-04.1.HL | CRA | Annex I Part I (2)(l) | DE.CM-09, PR.PS-04, RS.MA-02 | — |
 
 ### D-04.2 — Containment & Mitigation
 
@@ -272,10 +272,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-04.2.CRA` (CRA):** The availability of essential and basic functions of a product with digital elements is protected also after an incident, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks (Annex I Part I (2)(h)); the manufacturer minimises the negative impact by the product itself or connected devices on the availability of services provided by other devices or networks (Annex I Part I (2)(i)); the manufacturer reduces the impact of an incident using appropriate exploitation-mitigation mechanisms and techniques (Annex I Part I (2)(k)). Where the manufacturer knows or has reason to believe that the product or processes are not in conformity with the Annex I cybersecurity requirements, the manufacturer takes the corrective measures necessary to bring the product into conformity, or to withdraw or recall the product (Art. 13(21)).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-04.2-001` | Personal-data breaches are contained and mitigated through appropriate technical and organisational measures, including measures rendering the personal data unintelligible to any unauthorised person and subsequent measures ensuring the high risk no longer materialises; the measures taken or proposed are described in the supervisory-authority notification. | achieve | Availability | SG-D-04.2.HL | GDPR | Art. 34(3)(a) + Art. 34(3)(b) + Art. 33(3)(d) | PR.DS-10, PR.IR-04, RC.RP-04 | — |
-| `AG-D-04.2-002` | The availability of essential and basic functions is protected also after an incident, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks; the negative impact on the availability of services provided by other devices or networks is minimised; and where the product or processes are not in conformity, corrective measures are taken or the product is withdrawn or recalled. | achieve | Availability | SG-D-04.2.HL | CRA | Annex I Part I (2)(h) + (2)(i) + (2)(k) + Art. 13(21) | PR.IR-04, PR.IR-03, DE.CM-09 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-04.2-001` | Personal-data breaches are contained and mitigated through appropriate technical and organisational measures, including measures rendering the personal data unintelligible to any unauthorised person and subsequent measures ensuring the high risk no longer materialises; the measures taken or proposed are described in the supervisory-authority notification. | — | achieve | Availability | SG-D-04.2.HL | GDPR | Art. 34(3)(a) + Art. 34(3)(b) + Art. 33(3)(d) | PR.DS-10, PR.IR-04, RC.RP-04 | — |
+| `AG-D-04.2-002` | The availability of essential and basic functions is protected also after an incident, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks; the negative impact on the availability of services provided by other devices or networks is minimised; and where the product or processes are not in conformity, corrective measures are taken or the product is withdrawn or recalled. | — | achieve | Availability | SG-D-04.2.HL | CRA | Annex I Part I (2)(h) + (2)(i) + (2)(k) + Art. 13(21) | PR.IR-04, PR.IR-03, DE.CM-09 | — |
 
 ### D-04.3 — Regulatory Notification
 
@@ -286,10 +286,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-04.3.CRA` (CRA):** An actively-exploited vulnerability contained in a product with digital elements that the manufacturer becomes aware of is notified on a three-tier temporal pattern: early warning within 24 hours (Art. 14(2)(a), `SR-CRA-029`); vulnerability notification within 72 hours with general information, nature of exploit, mitigations, and user actions (Art. 14(2)(b), `SR-CRA-030`); final report within 14 days of a corrective or mitigating measure being available (Art. 14(2)(c), `SR-CRA-030`).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-04.3-001` | A personal data breach is notified to the competent supervisory authority without undue delay and, where feasible, no later than 72 hours after the company becomes aware of it — unless the breach is unlikely to result in a risk to data subjects' rights and freedoms. | achieve | Availability & Accountability | SG-D-04.3.HL | GDPR | Art. 33(1) | RS.CO-02, RS.MA-01, RS.MA-03 | — |
-| `AG-D-04.3-002` | An actively-exploited vulnerability contained in the product that the company becomes aware of is notified on a three-tier temporal pattern: early warning within 24 hours; vulnerability notification within 72 hours with general information, nature of the exploit, mitigations and user actions; and a final report within 14 days of a corrective or mitigating measure being available. | achieve | Availability & Accountability | SG-D-04.3.HL | CRA | Art. 14(2)(a) + Art. 14(2)(b) + Art. 14(2)(c) | RS.MA-02, RS.CO-02 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-04.3-001` | A personal data breach is notified to the competent supervisory authority without undue delay and, where feasible, no later than 72 hours after the company becomes aware of it — unless the breach is unlikely to result in a risk to data subjects' rights and freedoms. | — | achieve | Availability & Accountability | SG-D-04.3.HL | GDPR | Art. 33(1) | RS.CO-02, RS.MA-01, RS.MA-03 | — |
+| `AG-D-04.3-002` | An actively-exploited vulnerability contained in the product that the company becomes aware of is notified on a three-tier temporal pattern: early warning within 24 hours; vulnerability notification within 72 hours with general information, nature of the exploit, mitigations and user actions; and a final report within 14 days of a corrective or mitigating measure being available. | — | achieve | Availability & Accountability | SG-D-04.3.HL | CRA | Art. 14(2)(a) + Art. 14(2)(b) + Art. 14(2)(c) | RS.MA-02, RS.CO-02 | — |
 
 ### D-04.4 — Restoration & Recovery
 
@@ -300,10 +300,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-04.4.CRA` (CRA):** The availability of essential and basic functions of a product with digital elements is protected *also after an incident*, through resilience and mitigation measures including resistance to and recovery from denial-of-service attacks, and the manufacturer reduces the impact of an incident using appropriate exploitation-mitigation mechanisms and techniques and minimises the negative impact on services of other devices and networks (Annex I Part I (2)(h) + (2)(k) + (2)(i) + Art. 13(21) corrective measures).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-04.4-001` | The ability to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems and services is maintained, and the availability of and access to personal data is restored in a timely manner in the event of a physical or technical incident. | maintain | Availability | SG-D-04.4.HL | GDPR | Art. 32(1)(b) + Art. 32(1)(c) + Art. 5(1)(f) + Art. 32(2) | PR.IR-04, PR.DS-01, RC.RP-04 | — |
-| `AG-D-04.4-002` | The availability of essential and basic functions is protected also after an incident through resilience and recovery measures, with exploitation-mitigation mechanisms and techniques reducing incident impact and corrective measures restoring conformity. | maintain | Availability | SG-D-04.4.HL | CRA | Annex I Part I (2)(h) + (2)(i) + (2)(k) + Art. 13(21) | PR.IR-03, PR.DS-10 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-04.4-001` | The ability to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems and services is maintained, and the availability of and access to personal data is restored in a timely manner in the event of a physical or technical incident. | — | maintain | Availability | SG-D-04.4.HL | GDPR | Art. 32(1)(b) + Art. 32(1)(c) + Art. 5(1)(f) + Art. 32(2) | PR.IR-04, PR.DS-01, RC.RP-04 | — |
+| `AG-D-04.4-002` | The availability of essential and basic functions is protected also after an incident through resilience and recovery measures, with exploitation-mitigation mechanisms and techniques reducing incident impact and corrective measures restoring conformity. | — | maintain | Availability | SG-D-04.4.HL | CRA | Annex I Part I (2)(h) + (2)(i) + (2)(k) + Art. 13(21) | PR.IR-03, PR.DS-10 | — |
 
 ### D-05.1 — Data Minimisation
 
@@ -314,10 +314,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-05.1.CRA` (CRA):** Data processed by a product with digital elements — personal or other — is limited to what is adequate, relevant, and necessary in relation to the intended purpose of the product (Art. 3(23) `intended purpose` definition), with the risk assessment per Art. 13(2) and the intended purpose + reasonably foreseeable use per Art. 13(3) sentence 2 supplying the proportionality calibration (Annex I Part I (2)(g)).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-05.1-001` | Personal data collected and processed are limited to what is adequate, relevant, and necessary in relation to the purposes for which they are processed; further processing is compatible with the original purposes per the Art. 6(4) five-factor test; by-design and by-default minimisation applies, and an impact assessment is performed for high-risk processing. | maintain | Privacy Right | SG-D-05.1.HL | GDPR | Art. 5(1)(c) + Art. 6(4) + Art. 25(1)/(2) + Art. 35 | PR.DS-10, ID.AM-03, GV.OC-03, GV.PO-01 | The Art. 9 special-category leg is inert for this case: no special-category data is processed. |
-| `AG-D-05.1-002` | Data processed by the product — personal or other — is limited to what is adequate, relevant, and necessary in relation to the intended purpose of the product, with the risk assessment and the intended purpose plus reasonably foreseeable use supplying the proportionality calibration. | maintain | Privacy Right | SG-D-05.1.HL | CRA | Annex I Part I (2)(g) + Art. 3(23) + Art. 13(2) + Art. 13(3) | PR.DS-10, ID.AM-03 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-05.1-001` | Personal data collected and processed are limited to what is adequate, relevant, and necessary in relation to the purposes for which they are processed; further processing is compatible with the original purposes per the Art. 6(4) five-factor test; by-design and by-default minimisation applies, and an impact assessment is performed for high-risk processing. | — | maintain | Privacy Right | SG-D-05.1.HL | GDPR | Art. 5(1)(c) + Art. 6(4) + Art. 25(1)/(2) + Art. 35 | PR.DS-10, ID.AM-03, GV.OC-03, GV.PO-01 | The Art. 9 special-category leg is inert for this case: no special-category data is processed. |
+| `AG-D-05.1-002` | Data processed by the product — personal or other — is limited to what is adequate, relevant, and necessary in relation to the intended purpose of the product, with the risk assessment and the intended purpose plus reasonably foreseeable use supplying the proportionality calibration. | — | maintain | Privacy Right | SG-D-05.1.HL | CRA | Annex I Part I (2)(g) + Art. 3(23) + Art. 13(2) + Art. 13(3) | PR.DS-10, ID.AM-03 | — |
 
 ### D-05.2 — Retention & Archiving
 
@@ -328,10 +328,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-05.2.CRA` (CRA):** Security updates and supporting advisory messages remain available to users across the support period and the 10-year (or remainder-of-support-period) update-availability tail (Art. 13(9) 10-year update-availability tail + Art. 13(8) 5-year support-period floor + Art. 13(18) 10-year Annex II information accessibility + Annex I Part II (7) secure update distribution + Annex I Part II (8) dissemination without delay, free of charge, with advisory messages); the manufacturer provides the support-period end-date clearly and understandably at the time of purchase (Art. 13(19) + Annex II §7).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-05.2-001` | Personal data are kept in a form which permits identification of data subjects for no longer than is necessary for the purposes processed; longer retention is permitted only where lawful and subject to Art. 89(1) safeguards, and the record of processing documents the envisaged erasure time limits per category of data. | maintain | Privacy Right | SG-D-05.2.HL | GDPR | Art. 5(1)(e) + Art. 89(1) + Art. 30(1)(f) | PR.DS-10, ID.AM-03 | — |
-| `AG-D-05.2-002` | Security updates and supporting advisory messages remain available to users across the support period and the 10-year (or remainder-of-support-period) update-availability tail, and the support-period end-date is provided clearly and understandably at the time of purchase. | maintain | Privacy Right | SG-D-05.2.HL | CRA | Art. 13(8) + Art. 13(9) + Art. 13(18) + Art. 13(19) + Annex I Part II (7) + (8) + Annex II §7 | PR.PS-02, GV.OV-02, GV.OC-04 | The 5-year support-period floor and the 10-year availability tail are absolute; they do not scale down with company size. |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-05.2-001` | Personal data are kept in a form which permits identification of data subjects for no longer than is necessary for the purposes processed; longer retention is permitted only where lawful and subject to Art. 89(1) safeguards, and the record of processing documents the envisaged erasure time limits per category of data. | — | maintain | Privacy Right | SG-D-05.2.HL | GDPR | Art. 5(1)(e) + Art. 89(1) + Art. 30(1)(f) | PR.DS-10, ID.AM-03 | — |
+| `AG-D-05.2-002` | Security updates and supporting advisory messages remain available to users across the support period and the 10-year (or remainder-of-support-period) update-availability tail, and the support-period end-date is provided clearly and understandably at the time of purchase. | — | maintain | Privacy Right | SG-D-05.2.HL | CRA | Art. 13(8) + Art. 13(9) + Art. 13(18) + Art. 13(19) + Annex I Part II (7) + (8) + Annex II §7 | PR.PS-02, GV.OV-02, GV.OC-04 | The 5-year support-period floor and the 10-year availability tail are absolute; they do not scale down with company size. |
 
 ### D-05.3 — Right to Erasure
 
@@ -342,10 +342,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-05.3.CRA` (CRA):** The user of a product with digital elements can securely and easily remove, on a permanent basis, all data and settings of the product; where such data can be transferred to other products or systems, the transfer is done in a secure manner (Annex I Part I (2)(m) first limb — terminal deletion on user election — and second limb — secure cross-product transfer).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-05.3-001` | Personal data are erased without undue delay on the data subject's request where one of the six Art. 17(1) grounds (a)–(f) applies; on processor contract end, the processor deletes or returns all personal data and existing copies. | cease | Privacy Right | SG-D-05.3.HL | GDPR | Art. 17(1)(a)–(f) + Art. 28(3)(g) | PR.DS-10, PR.DS-10, GV.SC-04 | — |
-| `AG-D-05.3-002` | The user of the product can securely and easily remove, on a permanent basis, all data and settings of the product; where such data can be transferred to other products or systems, the transfer is done in a secure manner. | cease | Privacy Right | SG-D-05.3.HL | CRA | Annex I Part I (2)(m) | PR.DS-10, PR.DS-10, PR.DS-02 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-05.3-001` | Personal data are erased without undue delay on the data subject's request where one of the six Art. 17(1) grounds (a)–(f) applies; on processor contract end, the processor deletes or returns all personal data and existing copies. | — | cease | Privacy Right | SG-D-05.3.HL | GDPR | Art. 17(1)(a)–(f) + Art. 28(3)(g) | PR.DS-10, PR.DS-10, GV.SC-04 | — |
+| `AG-D-05.3-002` | The user of the product can securely and easily remove, on a permanent basis, all data and settings of the product; where such data can be transferred to other products or systems, the transfer is done in a secure manner. | — | cease | Privacy Right | SG-D-05.3.HL | CRA | Annex I Part I (2)(m) | PR.DS-10, PR.DS-10, PR.DS-02 | — |
 
 ### D-05.4 — Data Portability
 
@@ -354,9 +354,9 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-05.4.GDPR` (GDPR):** The data subject receives personal data in a structured, commonly used, machine-readable format (Art. 20(1) + Art. 15(3) companion copy), supplied by the controller without undue delay (Art. 12(3) ≤1 month, extendable to ≤2 months for complex requests) and free of charge (Art. 12(5)). The data subject can transmit those data to another controller without hindrance (Art. 20(1)); where technically feasible, the originating controller transmits directly to the receiving controller (Art. 20(2) sentence 2). The right applies where processing is based on consent (Art. 6(1)(a)) or contract (Art. 6(1)(b)) AND processing is carried out by automated means (Art. 20(3)); the right does NOT apply to public-interest-task or legitimate-interest processing (Art. 20(4)), and the controller may refuse an export where it would adversely affect third-party rights.
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-05.4-001` | The data subject receives personal data in a structured, commonly used, machine-readable format, supplied without undue delay and free of charge, and can transmit those data to another controller without hindrance; where technically feasible the company transmits directly to the receiving controller. | achieve | Privacy Right | SG-D-05.4.HL | GDPR | Art. 20(1)–(4) + Art. 15(3) + Art. 12(3) + Art. 12(5) | PR.DS-10, PR.DS-10 | The right is scoped to consent- or contract-based processing carried out by automated means, which covers the company's B2B subscription relationship. |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-05.4-001` | The data subject receives personal data in a structured, commonly used, machine-readable format, supplied without undue delay and free of charge, and can transmit those data to another controller without hindrance; where technically feasible the company transmits directly to the receiving controller. | — | achieve | Privacy Right | SG-D-05.4.HL | GDPR | Art. 20(1)–(4) + Art. 15(3) + Art. 12(3) + Art. 12(5) | PR.DS-10, PR.DS-10 | The right is scoped to consent- or contract-based processing carried out by automated means, which covers the company's B2B subscription relationship. |
 
 ### D-06.1 — Vendor Risk Assessment
 
@@ -367,10 +367,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-06.1.CRA` (CRA):** The manufacturer exercises due diligence when integrating components sourced from third parties — including components of free and open-source software not made available on the market in the course of a commercial activity (Art. 3(48) FOSS definition) — so that those components do not compromise the cybersecurity of the product with digital elements (Art. 13(5) sentence 1); on becoming aware of a component vulnerability (Art. 13(6) sentence 1), the manufacturer addresses and remediates it without delay and shares relevant information with the component supplier (Art. 13(6) sentence 2).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-06.1-001` | The company engages only processors providing sufficient guarantees to implement appropriate technical and organisational measures such that processing meets the Regulation's requirements and protects data-subject rights, with the Art. 28(3) closed-list clauses documented and the sub-processor authorisation chain material to the due diligence. | achieve | Accountability | SG-D-06.1.HL | GDPR | Art. 28(1) + Art. 28(2) + Art. 28(3)(a)–(h) | GV.SC-02, GV.SC-04, ID.AM-04 | — |
-| `AG-D-06.1-002` | The company exercises due diligence when integrating components sourced from third parties — including free and open-source software components not made available on the market in the course of a commercial activity — so that those components do not compromise the cybersecurity of the product; on becoming aware of a component vulnerability it addresses and remediates it without delay and shares relevant information with the component supplier. | achieve | Accountability | SG-D-06.1.HL | CRA | Art. 13(5) + Art. 13(6) + Art. 3(48) | GV.SC-01, GV.SC-02, ID.RA-02 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-06.1-001` | The company engages only processors providing sufficient guarantees to implement appropriate technical and organisational measures such that processing meets the Regulation's requirements and protects data-subject rights, with the Art. 28(3) closed-list clauses documented and the sub-processor authorisation chain material to the due diligence. | — | achieve | Accountability | SG-D-06.1.HL | GDPR | Art. 28(1) + Art. 28(2) + Art. 28(3)(a)–(h) | GV.SC-02, GV.SC-04, ID.AM-04 | — |
+| `AG-D-06.1-002` | The company exercises due diligence when integrating components sourced from third parties — including free and open-source software components not made available on the market in the course of a commercial activity — so that those components do not compromise the cybersecurity of the product; on becoming aware of a component vulnerability it addresses and remediates it without delay and shares relevant information with the component supplier. | — | achieve | Accountability | SG-D-06.1.HL | CRA | Art. 13(5) + Art. 13(6) + Art. 3(48) | GV.SC-01, GV.SC-02, ID.RA-02 | — |
 
 ### D-06.2 — Software Bill of Materials
 
@@ -379,9 +379,9 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-06.2.CRA` (CRA):** The manufacturer draws up and maintains an SBOM covering the components and dependencies contained in the product with digital elements in a commonly used and machine-readable format that includes, at minimum, the top-level dependencies (Annex I Part II (1)).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-06.2-002` | The company draws up and maintains a software bill of materials covering the components and dependencies contained in the product, in a commonly used and machine-readable format that includes at minimum the top-level dependencies. | achieve | Confidentiality | SG-D-06.2.HL | CRA | Annex I Part II (1) | ID.AM-02, GV.SC-02, GV.SC-03 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-06.2-002` | The company draws up and maintains a software bill of materials covering the components and dependencies contained in the product, in a commonly used and machine-readable format that includes at minimum the top-level dependencies. | — | achieve | Confidentiality | SG-D-06.2.HL | CRA | Annex I Part II (1) | ID.AM-02, GV.SC-02, GV.SC-03 | — |
 
 ### D-06.3 — Contractual Security Obligations
 
@@ -392,10 +392,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-06.3.CRA` (CRA):** CRA contractual-security coverage is expressed through economic-operator duties rather than a single negotiated contract: importers place products with digital elements on the Union market only after verifying conformity assessment, technical documentation, CE marking, and manufacturer identification, and escalate significant risk or vulnerabilities to the manufacturer and MSA while taking corrective measures; distributors act with due care, verify CE marking and required documentation, confirm manufacturer/importer compliance, and escalate non-conformity or vulnerabilities.
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-06.3-001` | Controller/processor contracts and related transfer instruments include the eight-element Art. 28(3)(a)–(h) floor, sub-processor authorisation and change-notification, processor security-measure commitments, audit and inspection access, and contract-end return or deletion; the Art. 46 safeguards mechanism and the Art. 48 international-agreement filter apply where personal data leaves the EEA. | maintain | Accountability | SG-D-06.3.HL | GDPR | Art. 28(3)(a)–(h) + Art. 32 + Art. 46 + Art. 48 | — | — |
-| `AG-D-06.3-002` | Contractual security coverage is expressed through economic-operator duties rather than a single negotiated contract: importers place the product on the Union market only after verifying conformity assessment, technical documentation, conformity marking and manufacturer identification, and distributors act with due care and escalate non-conformity or vulnerabilities. | maintain | Accountability | SG-D-06.3.HL | CRA | Art. 19 + Art. 20 | — | The company distributes its own product directly and occupies neither the importer nor the distributor role, so this row binds only through the manufacturer-side duties those operators verify against. |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-06.3-001` | Controller/processor contracts and related transfer instruments include the eight-element Art. 28(3)(a)–(h) floor, sub-processor authorisation and change-notification, processor security-measure commitments, audit and inspection access, and contract-end return or deletion; the Art. 46 safeguards mechanism and the Art. 48 international-agreement filter apply where personal data leaves the EEA. | — | maintain | Accountability | SG-D-06.3.HL | GDPR | Art. 28(3)(a)–(h) + Art. 32 + Art. 46 + Art. 48 | — | — |
+| `AG-D-06.3-002` | Contractual security coverage is expressed through economic-operator duties rather than a single negotiated contract: importers place the product on the Union market only after verifying conformity assessment, technical documentation, conformity marking and manufacturer identification, and distributors act with due care and escalate non-conformity or vulnerabilities. | — | maintain | Accountability | SG-D-06.3.HL | CRA | Art. 19 + Art. 20 | — | The company distributes its own product directly and occupies neither the importer nor the distributor role, so this row binds only through the manufacturer-side duties those operators verify against. |
 
 ### D-07.1 — Secure-by-Design Principles
 
@@ -406,10 +406,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-07.1.CRA` (CRA):** When placing a product with digital elements on the market, the manufacturer ensures that it has been designed, developed and produced in accordance with the essential cybersecurity requirements set out in Part I of Annex I (Art. 13(1) CRA), with the cybersecurity risk assessment propagated across the 6 lifecycle phases (planning, design, development, production, delivery, maintenance) per Art. 13(2) chapeau + sentence 1, with a view to minimising cybersecurity risks, preventing incidents, and minimising their impact (Art. 13(2) sentence 2).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-07.1-001` | The company implements appropriate technical and organisational measures — such as pseudonymisation — designed to implement data-protection principles in an effective manner and to integrate the necessary safeguards into the processing, and ensures that by default only personal data necessary for each specific purpose are processed. | maintain | Confidentiality | SG-D-07.1.HL | GDPR | Art. 25(1) + Art. 25(2) | PR.PS-06, PR.DS-10 | — |
-| `AG-D-07.1-002` | When placing the product on the market, the company ensures it has been designed, developed and produced in accordance with the essential cybersecurity requirements of Annex I Part I, with the cybersecurity risk assessment propagated across the six lifecycle phases — planning, design, development, production, delivery, and maintenance — with a view to minimising cybersecurity risks, preventing incidents, and minimising their impact. | maintain | Confidentiality | SG-D-07.1.HL | CRA | Art. 13(1) + Art. 13(2) | PR.PS-06, PR.PS-01 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-07.1-001` | The company implements appropriate technical and organisational measures — such as pseudonymisation — designed to implement data-protection principles in an effective manner and to integrate the necessary safeguards into the processing, and ensures that by default only personal data necessary for each specific purpose are processed. | — | maintain | Confidentiality | SG-D-07.1.HL | GDPR | Art. 25(1) + Art. 25(2) | PR.PS-06, PR.DS-10 | — |
+| `AG-D-07.1-002` | When placing the product on the market, the company ensures it has been designed, developed and produced in accordance with the essential cybersecurity requirements of Annex I Part I, with the cybersecurity risk assessment propagated across the six lifecycle phases — planning, design, development, production, delivery, and maintenance — with a view to minimising cybersecurity risks, preventing incidents, and minimising their impact. | — | maintain | Confidentiality | SG-D-07.1.HL | CRA | Art. 13(1) + Art. 13(2) | PR.PS-06, PR.PS-01 | — |
 
 ### D-07.2 — Secure Coding Practices
 
@@ -418,9 +418,9 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-07.2.CRA` (CRA):** The manufacturer designs, develops, and produces the product with digital elements to limit its attack surfaces, including attack surfaces of external interfaces (Annex I Part I (2)(j) CRA), and to reduce the impact of an incident using appropriate exploitation-mitigation mechanisms and techniques (Annex I Part I (2)(k) CRA).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-07.2-002` | The company designs, develops, and produces the product so as to limit its attack surfaces, including the attack surfaces of external interfaces, and to reduce the impact of an incident using appropriate exploitation-mitigation mechanisms and techniques. | maintain | Confidentiality | SG-D-07.2.HL | CRA | Annex I Part I (2)(j) + (2)(k) | PR.PS-06, PR.PS-02 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-07.2-002` | The company designs, develops, and produces the product so as to limit its attack surfaces, including the attack surfaces of external interfaces, and to reduce the impact of an incident using appropriate exploitation-mitigation mechanisms and techniques. | — | maintain | Confidentiality | SG-D-07.2.HL | CRA | Annex I Part I (2)(j) + (2)(k) | PR.PS-06, PR.PS-02 | — |
 
 ### D-07.3 — Build & Update Distribution Security
 
@@ -429,9 +429,9 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-07.3.CRA` (CRA):** The manufacturer of a product with digital elements shall securely distribute updates for the product with digital elements in a timely manner, including, where appropriate, through automatic updates (Annex I Part II (7) CRA), and ensure that updates are disseminated free of charge, are clearly described, contain information on the security improvements and on the actions the user should take (Annex I Part II (8) CRA).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-07.3-002` | The company securely distributes updates for the product in a timely manner, including through automatic updates where appropriate, and ensures that updates are disseminated free of charge, are clearly described, and contain information on the security improvements and on the actions the user should take. | maintain | Confidentiality | SG-D-07.3.HL | CRA | Annex I Part II (7) + (8) | PR.PS-06, PR.PS-02 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-07.3-002` | The company securely distributes updates for the product in a timely manner, including through automatic updates where appropriate, and ensures that updates are disseminated free of charge, are clearly described, and contain information on the security improvements and on the actions the user should take. | — | maintain | Confidentiality | SG-D-07.3.HL | CRA | Annex I Part II (7) + (8) | PR.PS-06, PR.PS-02 | — |
 
 ### D-07.4 — Change Management
 
@@ -440,9 +440,9 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-07.4.CRA` (CRA):** The manufacturer of a product with digital elements that is part of a series of production ensures that procedures are in place for products with digital elements that are part of a series of production to remain in conformity with this Regulation (Art. 13(14) CRA).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-07.4-002` | The company ensures that procedures are in place for products that are part of a series of production to remain in conformity with the Regulation. | achieve | Confidentiality | SG-D-07.4.HL | CRA | Art. 13(14) | GV.OV-01, GV.PO-02, PR.PS-02, GV.SC-04, GV.OV-02, ID.IM-04 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-07.4-002` | The company ensures that procedures are in place for products that are part of a series of production to remain in conformity with the Regulation. | — | achieve | Confidentiality | SG-D-07.4.HL | CRA | Art. 13(14) | GV.OV-01, GV.PO-02, PR.PS-02, GV.SC-04, GV.OV-02, ID.IM-04 | — |
 
 ### D-08.1 — General Security Awareness
 
@@ -453,10 +453,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-08.1.CRA` (CRA):** A product with digital elements is accompanied by detailed instructions — or an internet address referring to such detailed instructions — covering the necessary measures during initial commissioning and throughout the lifetime of the product to ensure its secure use (Annex II §8(a)–(e) CRA), and — where the product is intended for integration into other products — the information necessary for the integrator to comply with the essential cybersecurity requirements set out in Part I of Annex I and the documentation requirements set out in Annex VII (Annex II §8(f) CRA).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-08.1-001` | The data protection officer informs and advises the company and the employees who carry out processing of their obligations under the Regulation, and monitors compliance including the assignment of responsibilities and the awareness-raising and training of staff involved in processing operations. | maintain | Accountability | SG-D-08.1.HL | GDPR | Art. 39(1)(a) + Art. 39(1)(b) | PR.AT-01, PR.AT-02 | — |
-| `AG-D-08.1-002` | The product is accompanied by detailed instructions — or an internet address referring to such instructions — covering the necessary measures during initial commissioning and throughout the lifetime of the product to ensure its secure use. | maintain | Accountability | SG-D-08.1.HL | CRA | Annex II §8(a)–(e) | PR.AT-01 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-08.1-001` | The data protection officer informs and advises the company and the employees who carry out processing of their obligations under the Regulation, and monitors compliance including the assignment of responsibilities and the awareness-raising and training of staff involved in processing operations. | — | maintain | Accountability | SG-D-08.1.HL | GDPR | Art. 39(1)(a) + Art. 39(1)(b) | PR.AT-01, PR.AT-02 | — |
+| `AG-D-08.1-002` | The product is accompanied by detailed instructions — or an internet address referring to such instructions — covering the necessary measures during initial commissioning and throughout the lifetime of the product to ensure its secure use. | — | maintain | Accountability | SG-D-08.1.HL | CRA | Annex II §8(a)–(e) | PR.AT-01 | — |
 
 ### D-08.2 — Role-Specific Competence
 
@@ -467,10 +467,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-08.2.CRA` (CRA):** Where the product with digital elements is intended for integration into other products with digital elements, the manufacturer provides the information necessary for the integrator to comply with the essential cybersecurity requirements set out in Part I of Annex I and the documentation requirements set out in Annex VII (Annex II §8(f) CRA).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-08.2-001` | The data protection officer monitors compliance including the assignment of responsibilities and the awareness-raising and training of staff involved in processing operations — the role-specific layer of the DPO-catalysed awareness function. | maintain | Accountability | SG-D-08.2.HL | GDPR | Art. 39(1)(b) | PR.AT-01, PR.AT-02 | — |
-| `AG-D-08.2-002` | Where the product is intended for integration into other products, the company provides the information necessary for the integrator to comply with the essential cybersecurity requirements of Annex I Part I and the documentation requirements of Annex VII. | maintain | Accountability | SG-D-08.2.HL | CRA | Annex II §8(f) | PR.AT-02, GV.SC-03 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-08.2-001` | The data protection officer monitors compliance including the assignment of responsibilities and the awareness-raising and training of staff involved in processing operations — the role-specific layer of the DPO-catalysed awareness function. | — | maintain | Accountability | SG-D-08.2.HL | GDPR | Art. 39(1)(b) | PR.AT-01, PR.AT-02 | — |
+| `AG-D-08.2-002` | Where the product is intended for integration into other products, the company provides the information necessary for the integrator to comply with the essential cybersecurity requirements of Annex I Part I and the documentation requirements of Annex VII. | — | maintain | Accountability | SG-D-08.2.HL | CRA | Annex II §8(f) | PR.AT-02, GV.SC-03 | — |
 
 ### D-09.1 — Information Security Policies
 
@@ -481,10 +481,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-09.1.CRA` (CRA):** An open-source software steward **puts in place and documents in a verifiable manner a cybersecurity policy** (Art. 24(1) CRA) covering vulnerability documentation, remediation, and information-sharing within the open-source community; a manufacturer **establishes policies, processes and procedures necessary to implement its CRA cybersecurity obligations** (Art. 13(8) CRA) including CVD policy, secure-update distribution, support-period determination, and cessation-of-operations communication.
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-09.1-001` | The company implements appropriate technical and organisational measures, such as policies, which are designed to implement data-protection principles in an effective manner, carrying the Art. 5(2) accountability burden with the data protection officer as governance anchor. | maintain | Accountability | SG-D-09.1.HL | GDPR | Art. 24(1) + Art. 5(2) + Art. 37–39 | GV.PO-01, GV.PO-02, GV.RM-04, GV.RR-02 | — |
-| `AG-D-09.1-002` | The company establishes the policies, processes and procedures necessary to implement its product-security obligations, including the coordinated vulnerability disclosure policy, secure-update distribution, support-period determination, and cessation-of-operations communication. | maintain | Accountability | SG-D-09.1.HL | CRA | Art. 13(8) + Art. 24(1) | GV.PO-01, GV.PO-02 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-09.1-001` | The company implements appropriate technical and organisational measures, such as policies, which are designed to implement data-protection principles in an effective manner, carrying the Art. 5(2) accountability burden with the data protection officer as governance anchor. | — | maintain | Accountability | SG-D-09.1.HL | GDPR | Art. 24(1) + Art. 5(2) + Art. 37–39 | GV.PO-01, GV.PO-02, GV.RM-04, GV.RR-02 | — |
+| `AG-D-09.1-002` | The company establishes the policies, processes and procedures necessary to implement its product-security obligations, including the coordinated vulnerability disclosure policy, secure-update distribution, support-period determination, and cessation-of-operations communication. | — | maintain | Accountability | SG-D-09.1.HL | CRA | Art. 13(8) + Art. 24(1) | GV.PO-01, GV.PO-02 | — |
 
 ### D-09.2 — Impact & Risk Assessments
 
@@ -495,10 +495,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-09.2.CRA` (CRA):** The manufacturer documents the **cybersecurity risk assessment referred to in Art. 13(2)** and updates it as appropriate during the support period, with the assessment covering intended purpose and reasonably foreseeable use (Art. 13(3) sentence 2) and indicating Annex I Part I (2) applicability (Art. 13(3) sentence 3) — documented in the **Annex VII §3 risk-assessment record** (Art. 13(4) sentence 1 + Annex VII §3 CRA).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-09.2-001` | Prior to processing likely to result in a high risk to the rights and freedoms of natural persons, the company carries out a data-protection impact assessment covering the four Art. 35(7) content items, reviewed when the risk represented by the processing operations changes. | achieve | Accountability | SG-D-09.2.HL | GDPR | Art. 35(1) + Art. 35(7) + Art. 35(11) | ID.RA-05, ID.RA-04 | — |
-| `AG-D-09.2-002` | The company documents the cybersecurity risk assessment and updates it as appropriate during the support period, with the assessment covering intended purpose and reasonably foreseeable use and indicating the applicability of the Annex I Part I (2) requirements, recorded in the Annex VII §3 risk-assessment record. | achieve | Accountability | SG-D-09.2.HL | CRA | Art. 13(2) + Art. 13(3) + Art. 13(4) + Annex VII §3 | ID.RA-05, GV.SC-07 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-09.2-001` | Prior to processing likely to result in a high risk to the rights and freedoms of natural persons, the company carries out a data-protection impact assessment covering the four Art. 35(7) content items, reviewed when the risk represented by the processing operations changes. | — | achieve | Accountability | SG-D-09.2.HL | GDPR | Art. 35(1) + Art. 35(7) + Art. 35(11) | ID.RA-05, ID.RA-04 | — |
+| `AG-D-09.2-002` | The company documents the cybersecurity risk assessment and updates it as appropriate during the support period, with the assessment covering intended purpose and reasonably foreseeable use and indicating the applicability of the Annex I Part I (2) requirements, recorded in the Annex VII §3 risk-assessment record. | — | achieve | Accountability | SG-D-09.2.HL | CRA | Art. 13(2) + Art. 13(3) + Art. 13(4) + Annex VII §3 | ID.RA-05, GV.SC-07 | — |
 
 ### D-09.3 — Asset Inventories
 
@@ -507,9 +507,9 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-09.3.CRA` (CRA):** Manufacturers of products with digital elements draw up **technical documentation** containing at least a **general description** of the product (Annex VII §1) and a **description of the design, development, production and vulnerability-handling processes** including the system architecture description (Annex VII §2); the technical documentation is drawn up before placing on the market and updated during the support period (Art. 31(2) CRA), and kept at the disposal of market surveillance authorities for at least 10 years or the support period, whichever is longer (Art. 13(13) CRA).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-09.3-002` | The company draws up technical documentation containing at least a general description of the product and a description of the design, development, production and vulnerability-handling processes including the system architecture description, drawn up before placing on the market, updated during the support period, and kept at the disposal of market surveillance authorities. | achieve | Accountability | SG-D-09.3.HL | CRA | Annex VII §1 + §2 + Art. 31(2) + Art. 13(13) | ID.AM-01, ID.AM-02 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-09.3-002` | The company draws up technical documentation containing at least a general description of the product and a description of the design, development, production and vulnerability-handling processes including the system architecture description, drawn up before placing on the market, updated during the support period, and kept at the disposal of market surveillance authorities. | — | achieve | Accountability | SG-D-09.3.HL | CRA | Annex VII §1 + §2 + Art. 31(2) + Art. 13(13) | ID.AM-01, ID.AM-02 | — |
 
 ### D-09.4 — Records of Processing
 
@@ -520,10 +520,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-09.4.CRA` (CRA):** The manufacturer **draws up before placing a product with digital elements on the market the technical documentation referred to in Art. 31** (Art. 13(12) sentence 1 CRA), carries out the conformity assessment procedure referred to in Art. 32, draws up the EU declaration of conformity under Art. 28, and affixes the CE marking under Art. 30 (Art. 13(12) sentence 2); the manufacturer keeps the technical documentation and the EU declaration of conformity at the disposal of market surveillance authorities for at least 10 years or the support period, whichever is longer (Art. 13(13) CRA).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-09.4-001` | The company maintains a record of processing activities under its responsibility, in writing or electronic form, containing the Art. 30(1) seven-item content list, with a parallel processor-side record, made available to the supervisory authority on request. | maintain | Accountability | SG-D-09.4.HL | GDPR | Art. 30(1)–(5) | ID.AM-08, PR.DS-10, GV.PO-02 | The Art. 30(5) under-250-employee exception is nominally available to an 8-person team but is not relied upon, because the processing is neither occasional nor free of risk to data-subject rights. |
-| `AG-D-09.4-002` | The company draws up the technical documentation before placing the product on the market, carries out the conformity assessment procedure, draws up the EU declaration of conformity and affixes the conformity marking, and keeps the technical documentation and the declaration at the disposal of market surveillance authorities for at least 10 years or the support period, whichever is longer. | maintain | Accountability | SG-D-09.4.HL | CRA | Art. 13(12) + Art. 13(13) + Art. 28 + Art. 30 + Art. 31 + Art. 32 | ID.AM-08, PR.DS-10, ID.RA-05 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-09.4-001` | The company maintains a record of processing activities under its responsibility, in writing or electronic form, containing the Art. 30(1) seven-item content list, with a parallel processor-side record, made available to the supervisory authority on request. | — | maintain | Accountability | SG-D-09.4.HL | GDPR | Art. 30(1)–(5) | ID.AM-08, PR.DS-10, GV.PO-02 | The Art. 30(5) under-250-employee exception is nominally available to an 8-person team but is not relied upon, because the processing is neither occasional nor free of risk to data-subject rights. |
+| `AG-D-09.4-002` | The company draws up the technical documentation before placing the product on the market, carries out the conformity assessment procedure, draws up the EU declaration of conformity and affixes the conformity marking, and keeps the technical documentation and the declaration at the disposal of market surveillance authorities for at least 10 years or the support period, whichever is longer. | — | maintain | Accountability | SG-D-09.4.HL | CRA | Art. 13(12) + Art. 13(13) + Art. 28 + Art. 30 + Art. 31 + Art. 32 | ID.AM-08, PR.DS-10, ID.RA-05 | — |
 
 ### D-10.1 — Continuous Security Monitoring
 
@@ -534,10 +534,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-10.1.CRA` (CRA):** A product with digital elements **provides security-related information by recording and monitoring relevant internal activity, including access to or modification of data, services or functions, and provides an opt-out mechanism for the user** (Annex I Part I (2)(l) CRA); the manufacturer **facilitates the sharing of information about potential vulnerabilities** through a single contact address (Annex I Part II (6) CRA).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-10.1-001` | The company implements appropriate technical and organisational measures to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems and services and regularly tests, assesses and evaluates their effectiveness, monitoring for the five Art. 32(2) risk types with a clear definition of the moment of becoming aware of a breach. | maintain | Availability | SG-D-10.1.HL | GDPR | Art. 32(1)(b) + Art. 32(1)(d) + Art. 32(2) + Art. 33(1) | DE.CM-01, DE.CM-09, DE.AE-02, ID.IM-04 | — |
-| `AG-D-10.1-002` | The product provides security-related information by recording and monitoring relevant internal activity, including access to or modification of data, services or functions, with an opt-out mechanism for the user, and the company facilitates the sharing of information about potential vulnerabilities through a single contact address. | maintain | Availability | SG-D-10.1.HL | CRA | Annex I Part I (2)(l) + Annex I Part II (6) | DE.CM-01, DE.CM-09, ID.IM-04 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-10.1-001` | The company implements appropriate technical and organisational measures to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems and services and regularly tests, assesses and evaluates their effectiveness, monitoring for the five Art. 32(2) risk types with a clear definition of the moment of becoming aware of a breach. | — | maintain | Availability | SG-D-10.1.HL | GDPR | Art. 32(1)(b) + Art. 32(1)(d) + Art. 32(2) + Art. 33(1) | DE.CM-01, DE.CM-09, DE.AE-02, ID.IM-04 | — |
+| `AG-D-10.1-002` | The product provides security-related information by recording and monitoring relevant internal activity, including access to or modification of data, services or functions, with an opt-out mechanism for the user, and the company facilitates the sharing of information about potential vulnerabilities through a single contact address. | — | maintain | Availability | SG-D-10.1.HL | CRA | Annex I Part I (2)(l) + Annex I Part II (6) | DE.CM-01, DE.CM-09, ID.IM-04 | — |
 
 ### D-10.2 — Audit Logging & Traceability
 
@@ -548,10 +548,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-10.2.CRA` (CRA):** The manufacturer **maintains the technical documentation** (Annex VII §5-§8 CRA — harmonised standards applied, test reports, copy of the EU declaration of conformity, SBOM on MSA reasoned request), **preserves the cybersecurity risk-assessment documentation** (Annex VII §3 + Art. 13(4) sentence 1) during the support period (10 years or support period, whichever longer) with updates as appropriate, and ensures **test reports demonstrating verification of conformity with Annex I Part I and Part II** are part of the technical documentation and available on reasoned request from market surveillance authorities (Annex VII §6 + Annex I Part II (3) + Art. 13(22) CRA).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-10.2-001` | The company maintains compliance records in writing or electronic form with integrity and traceability sufficient to demonstrate compliance and to support supervisory-authority inspections — records of processing, consent records, processor contract records, breach notification records, and impact-assessment records — made available to the supervisory authority on request. | maintain | Availability & Accountability | SG-D-10.2.HL | GDPR | Art. 30(3) + Art. 5(2) + Art. 31 | PR.DS-01, PR.PS-04, DE.CM-01, GV.PO-02 | — |
-| `AG-D-10.2-002` | The company maintains the technical documentation, preserves the cybersecurity risk-assessment documentation during the support period with updates as appropriate, and ensures that test reports demonstrating verification of conformity with Annex I Parts I and II form part of the technical documentation and are available on reasoned request from market surveillance authorities. | maintain | Availability & Accountability | SG-D-10.2.HL | CRA | Annex VII §3 + §5–§8 + Art. 13(4) + Art. 13(22) + Annex I Part II (3) | PR.DS-01, PR.PS-02, GV.PO-02, ID.RA-04 | — |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-10.2-001` | The company maintains compliance records in writing or electronic form with integrity and traceability sufficient to demonstrate compliance and to support supervisory-authority inspections — records of processing, consent records, processor contract records, breach notification records, and impact-assessment records — made available to the supervisory authority on request. | — | maintain | Availability & Accountability | SG-D-10.2.HL | GDPR | Art. 30(3) + Art. 5(2) + Art. 31 | PR.DS-01, PR.PS-04, DE.CM-01, GV.PO-02 | — |
+| `AG-D-10.2-002` | The company maintains the technical documentation, preserves the cybersecurity risk-assessment documentation during the support period with updates as appropriate, and ensures that test reports demonstrating verification of conformity with Annex I Parts I and II form part of the technical documentation and are available on reasoned request from market surveillance authorities. | — | maintain | Availability & Accountability | SG-D-10.2.HL | CRA | Annex VII §3 + §5–§8 + Art. 13(4) + Art. 13(22) + Annex I Part II (3) | PR.DS-01, PR.PS-02, GV.PO-02, ID.RA-04 | — |
 
 ### D-10.3 — Compliance Testing
 
@@ -562,10 +562,10 @@ Each active sub-domain presents:
 **Regulation baseline — `SG-D-10.3.CRA` (CRA):** Manufacturers of products with digital elements **carry out effective and regular tests and reviews of the product** (Annex I Part II (3) CRA), and the technical documentation shall contain **the reports of the tests carried out to verify the conformity of the product with digital elements and of the vulnerability-handling processes with the essential cybersecurity requirements set out in Part I and Part II of Annex I** (Annex VII §6 CRA); conformity is demonstrated via the Annex VIII Part I (Module A internal production control) or Part II (Module B+C and H notified-body EU-type examination) conformity-assessment modules depending on product classification (Class I / Class II / critical per Art. 6 + Annex III).
 
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
-|---|---|---|---|---|---|---|---|---|
-| `AG-D-10.3-001` | The company implements a process for regularly testing, assessing and evaluating the effectiveness of the technical and organisational measures securing the processing, and reviews the impact assessment at least when the risk represented by processing operations changes. | maintain | Accountability | SG-D-10.3.HL | GDPR | Art. 32(1)(d) + Art. 35(11) | PR.PS-02, ID.RA-05, DE.AE-02, GV.OV-03 | — |
-| `AG-D-10.3-002` | The company carries out effective and regular tests and reviews of the product, and the technical documentation contains the reports of the tests carried out to verify the conformity of the product and of the vulnerability-handling processes with Annex I Parts I and II. | maintain | Accountability | SG-D-10.3.HL | CRA | Annex I Part II (3) + Annex VII §6 + Annex VIII + Art. 6 + Annex III | PR.PS-02, ID.RA-05, DE.AE-02, GV.OV-03 | The product is default-class — not Class I, Class II, or critical under Art. 6 and Annex III — so conformity is demonstrated via the Annex VIII Part I internal-production-control module without notified-body involvement. |
+| AG ID | Adjusted Goal | Company implication| Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+|---|---|---|---|---|---|---|---|---|---|
+| `AG-D-10.3-001` | The company implements a process for regularly testing, assessing and evaluating the effectiveness of the technical and organisational measures securing the processing, and reviews the impact assessment at least when the risk represented by processing operations changes. | — | maintain | Accountability | SG-D-10.3.HL | GDPR | Art. 32(1)(d) + Art. 35(11) | PR.PS-02, ID.RA-05, DE.AE-02, GV.OV-03 | — |
+| `AG-D-10.3-002` | The company carries out effective and regular tests and reviews of the product, and the technical documentation contains the reports of the tests carried out to verify the conformity of the product and of the vulnerability-handling processes with Annex I Parts I and II. | — | maintain | Accountability | SG-D-10.3.HL | CRA | Annex I Part II (3) + Annex VII §6 + Annex VIII + Art. 6 + Annex III | PR.PS-02, ID.RA-05, DE.AE-02, GV.OV-03 | The product is default-class — not Class I, Class II, or critical under Art. 6 and Annex III — so conformity is demonstrated via the Annex VIII Part I internal-production-control module without notified-body involvement. |
 
 **Inline notes — critical IDs carried in the main flow:**
 
@@ -1731,7 +1731,7 @@ _Applicable regulations: GDPR, CRA_
 ## §9 Version History
 
 | Version | Date | Author | Changes |
-|---------|------|--------|---------|
+|---|---|---|---|
 | 7.1 | 2026-09-22 | aegis-mvp executor | Consolidated goals table per ADR-003 D1 + ADR-004; §2 Framing absorbs generic scale/hosting adjustments; AG designation enforced; cross-references aligned to MVP baseline. |
 | 7.0 | 2026-08-14 | Executor | §6 NIST Controls full coverage expansion across 35 active sub-domains. |
 | 6.0 | 2026-08-13 | Fase de Especificação 10 Executor | NIST Controls Layer pilot (D-01.1). CONTROLS/ restructured by framework→function. |
@@ -1747,7 +1747,7 @@ _Applicable regulations: GDPR, CRA_
 ## §10 Document Approval
 
 | Role | Name | Signature | Date |
-|------|------|-----------|------|
+|---|---|---|---|
 | Document Author (tech-free restructure) | Executor | | 2026-08-10 |
 | Business Review (CEO) | | | |
 | Technical Review (CTO) | | | |

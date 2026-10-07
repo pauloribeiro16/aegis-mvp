@@ -67,9 +67,18 @@ Each active sub-domain presents:
 
 **High-Level Security Goal (SO-D-XX.Y.HL):** <verbatim `objective.md` paragraph — filled by code>
 
-| AG ID | Adjusted Goal | Pattern | Property | Parent Goal | Regulation | Articles | Control Anchors | Adjustment |
+| AG ID | Adjusted Goal | Company implication | Pattern | Property | Parent Goal | Baseline source | Regulatory source | Adjustment |
 |---|---|---|---|---|---|---|---|---|
-| `AG-D-XX.Y-001` | <company-proportional restatement> | achieve/cease/maintain/avoid/optimize | Confidentiality / Integrity / Availability / Privacy Right / Accountability | `SO-D-XX.Y.HL` | <REG derived from Baseline source> | <REG Art. N; multi joined with `+`/`;`> | <CSF ids derived by code, `, `-joined; `—` if none> | <decision record: `unchanged — fits as stated` / `narrowed: … — because …` / `flagged: …`> |
+| `AG-D-XX.Y-001` | <company-proportional restatement> | <what this duty concretely means for THIS company> | achieve/cease/maintain/avoid/optimize | Confidentiality / Integrity / Availability / Privacy Right / Accountability | `SO-D-XX.Y.HL` | `SG-D-XX.Y.<REG>` | <REG Art. N; multi joined with `+`/`;`> | <decision record: `unchanged — fits as stated` / `narrowed: … — because …` / `flagged: …`> |
+
+<!-- This skeleton is the shape the MODEL writes and the L0 gate validates
+     (steps.py GOAL_COLUMNS_EMIT). The delivered document carries two further
+     columns this skeleton does not show, because both are filled by code and
+     the model is told never to emit them: `Regulation`, derived by code from
+     `Baseline source`, and `Control Anchors`, derived from the mapping store
+     (see item 4 above). The delivered header row is steps.py GOAL_COLUMNS_DOC
+     and is asserted against this file by
+     pipeline/tests/test_goal_columns_antidrift.py. -->
 
 <!-- IDs sequential per sub-domain (rule R4). Articles must exist as copies in
      the sub-domain's articles/ dir or be quotable verbatim from regs/<REG>.md

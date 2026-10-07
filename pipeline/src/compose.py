@@ -637,20 +637,24 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
         t = (repo / "templates" / "doc02_adjusted_goals.md").read_text(encoding="utf-8")
         files.append(("templates/doc02_adjusted_goals.md §3 (goal table contract)",
                       extract_markdown_section(t, "## §3", ["## §4"])))
-        # Worked examples of the transformation, baseline -> adjusted goal ->
-        # company implication. The quality reference is the produced TinyTask
-        # deliverable (38 sub-domains, 65 rows, L1 PASS). To stay non-circular
+        # Worked example of the transformation, baseline -> adjusted goal ->
+        # company implication. The quality reference is the committed TinyTask
+        # golden (example/doc02_adjusted_goals.md), NOT a run deliverable: the
+        # old label named output/TinyTask/, which is where this exemplar used to
+        # be read from and is not where it comes from now. To stay non-circular
         # the exemplar is always a DIFFERENT sub-domain from the one being
         # written: the model must never see its own answer for the row it writes.
+        # The label must name the file the model is actually being shown.
         blocks = [b for b in re.split(r"(?m)^(?=### D-)", golden_text(repo))
                   if b.lstrip().startswith("### D-") and "## §4" not in b and b.strip()]
         others = [b for b in blocks if not b.lstrip().startswith(f"### {sd_id} ")]
         exemplar = (others or blocks or [""])[0]
         if exemplar.strip():
-            files.append(("output/TinyTask/doc02_adjusted_goals.md — worked example, a "
-                          "DIFFERENT sub-domain showing the transformation (the block for "
-                          f"{sd_id} is deliberately withheld; do not copy its text, match "
-                          "its calibration)",
+            files.append(("example/doc02_adjusted_goals.md — worked example, a "
+                          "DIFFERENT sub-domain showing the transformation, in the "
+                          "exact column shape you must emit (the block for "
+                          f"{sd_id} is deliberately withheld; do not copy its text, "
+                          "match its calibration)",
                           re.split(r"(?m)^## §4", exemplar)[0].strip() or exemplar.strip()))
         files.append(("SPEC.md §7 derivation rules R2–R8 (anchor integrity, "
                       "proportionality, no invention, regulation discipline)",

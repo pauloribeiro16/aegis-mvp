@@ -52,6 +52,34 @@ PROPERTY_LONG = {"c": "Confidentiality", "i": "Integrity", "a": "Availability",
 FRAMING_DIMENSIONS = ["Size", "Area of operation", "Regulatory roles",
                       "Inherited capabilities"]
 
+# The goal table has two shapes and exactly one written-down source: the EMIT
+# shape, which is what the model writes and what `parse_p4` validates. The
+# DELIVERED shape is derived from it, because two of its columns are filled by
+# code from the mapping store and the model is explicitly forbidden to emit them
+# (`_p4_instruction`): `Regulation` comes off `Baseline source`, `Regulatory
+# source` is rendered as `Articles`, and `Control Anchors` is spliced in front
+# of `Adjustment`.
+#
+# These shapes used to be written out by hand in four places — the p4 wrapper
+# instruction, the L0 error message, the assembler's header row and template §3
+# — and commit c2745f6 migrated two of them and left the others: the prompt was
+# left showing a worked example whose shape its own gate rejected, on the two
+# columns where they disagreed most. `test_goal_columns_antidrift.py` fails if
+# they ever drift apart again.
+GOAL_COLUMNS_EMIT = (
+    "ID", "Adjusted goal", "Company implication", "Pattern", "Property",
+    "Parent goal", "Baseline source", "Regulatory source", "Adjustment",
+)
+GOAL_COLUMNS_DOC = (
+    "AG ID", "Adjusted Goal", "Company implication", "Pattern", "Property",
+    "Parent Goal", "Regulation", "Articles", "Control Anchors", "Adjustment",
+)
+
+
+def goal_table_header(columns: tuple[str, ...] = GOAL_COLUMNS_DOC) -> str:
+    """A markdown table's header row plus its separator, from a column list."""
+    return f"| {' | '.join(columns)} |\n" + f"|{'|'.join('---' for _ in columns)}|"
+
 
 # --------------------------------------------------------------------------
 # fenced-block extraction helpers
@@ -264,11 +292,11 @@ def parse_p4(answer: str, sd_id: str, expect_id: bool = True) -> dict:
             gid = f"AG-{sd_id}-NNN"
         else:
             gid = idm.group(1)
-        if len(cells) != 9:
-            raise ValueError(f"goal row {gid} has {len(cells)} columns, expected 9 "
-                             "(ID | Adjusted goal | Company implication | Pattern | Property | "
-                             "Parent goal | Baseline source | Regulatory source | Adjustment) — "
-                             "control anchors are derived by code, not emitted")
+        if len(cells) != len(GOAL_COLUMNS_EMIT):
+            raise ValueError(
+                f"goal row {gid} has {len(cells)} columns, expected "
+                f"{len(GOAL_COLUMNS_EMIT)} ({' | '.join(GOAL_COLUMNS_EMIT)}) — "
+                "control anchors are derived by code, not emitted")
         seq += 1
         if expect_id:
             gid = idm.group(1)
@@ -695,9 +723,9 @@ def p4_extra_instruction(sd_id: str, subso_ids: list[str] | None = None) -> str:
         )
     return (
         f"Wrap your answer: return ONLY one ```markdown fenced block containing "
-        f"(a) the heading `### {sd_id} — <canonical name>` and the 9-column goal table "
-        f"(`ID | Adjusted goal | Company implication | Pattern | Property | Parent goal | "
-        f"Baseline source | Regulatory source | Adjustment`), and (b) a heading `## §5` "
+        f"(a) the heading `### {sd_id} — <canonical name>` and the "
+        f"{len(GOAL_COLUMNS_EMIT)}-column goal table "
+        f"(`{' | '.join(GOAL_COLUMNS_EMIT)}`), and (b) a heading `## §5` "
         f"listing only `> ASSUMPTION:` blockquotes and open questions this sub-domain owes "
         f"(ambiguity interpretation is already decided in the corpus — do not cite or "
         f"re-analyze ambiguity cards; write `None.` if empty; at most 3 blockquotes). "
@@ -873,9 +901,7 @@ def assemble_doc(repo: Path, run_dir: Path, case: dict) -> str:
             f"### {sd} — {names[sd]}\n\n"
             f"**High-Level Security Goal (SO-{sd}.HL):** {_cell(_hl_goal(repo, sd))}\n\n"
             + "\n\n".join(baselines) + "\n\n"
-            f"| AG ID | Adjusted Goal | Company implication | Pattern | Property "
-            f"| Parent Goal | Regulation | Articles | Control Anchors | Adjustment |\n"
-            f"|---|---|---|---|---|---|---|---|---|---|\n"
+            + goal_table_header() + "\n"
             + "\n".join(rows))
 
     if len(confirmed) >= 2 and tensions:

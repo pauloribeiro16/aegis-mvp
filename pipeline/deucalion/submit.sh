@@ -87,7 +87,7 @@ EXTRA_AGENT=""
 # Slurm versions), so phase1.sbatch rebuilds the new-run flag list from the
 # individual vars. An unset knob stays unset: "no seed was sent" is a fact.
 EXTRA_EXPORT=""
-for env_name in MVP_TEMPERATURE MVP_SEED MVP_TOP_P MVP_TOP_K MVP_ARM MVP_REPEAT MVP_P4_ADJUSTMENT MVP_P3_INSTRUCTION MVP_P4_INSTRUCTION; do
+for env_name in MVP_TEMPERATURE MVP_SEED MVP_TOP_P MVP_TOP_K MVP_ARM MVP_REPEAT MVP_P4_ADJUSTMENT MVP_P3_INSTRUCTION MVP_P4_INSTRUCTION MVP_P4_IMPLICATION; do
   if [ -n "${!env_name:-}" ]; then
     EXTRA_EXPORT="${EXTRA_EXPORT},${env_name}=${!env_name}"
   fi

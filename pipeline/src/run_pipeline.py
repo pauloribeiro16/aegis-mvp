@@ -121,6 +121,7 @@ def cmd_new_run(args: argparse.Namespace) -> int:
                 ("p4_adjustment", args.p4_adjustment),
                 ("p3_instruction", args.p3_instruction),
                 ("p4_instruction", args.p4_instruction),
+                ("p4_implication", args.p4_implication),
             ) if v
         },
         "aegis_git_rev": rev,
@@ -272,6 +273,9 @@ def main() -> int:
     p_new.add_argument("--p4-instruction", default=None, choices=["meta"],
                        help="M09 arm: replace the p4 style tail's literal goal and "
                             "adjustment exemplars with structural criteria")
+    p_new.add_argument("--p4-implication", default=None, choices=["concrete"],
+                       help="M10 arm: require the Company implication to name a "
+                            "checkable artefact from the fact sheet")
     p_new.add_argument("--git-rev", default=None,
                        help="code revision override (the cluster checkout has "
                             "no .git; sync_up.sh stamps .cluster_sync_rev)")

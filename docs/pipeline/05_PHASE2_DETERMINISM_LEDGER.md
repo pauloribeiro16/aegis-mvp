@@ -195,9 +195,13 @@ The scan reports both rules and they do not agree:
 
 In Cases 01/02 the two rules coincide, because with 2 regulations GDPR is always
 present where CRA is. Case 03 has 5 regulations and sub-domains that skip GDPR —
-`D-02.2` starts at `001` for CRA. So one of the two conventions is wrong, and a
-pipeline must pick one deliberately rather than inherit whichever the last case
-used.
+`D-02.2` starts at `001` for CRA.
+
+**Resolved by measurement (§5.1):** the running Phase 1 pipeline numbers by rank
+among the regulations a sub-domain carries, and the hand-authored deliverables
+left gaps for absent regulations. The pipeline's convention is the one in force;
+the deliverables are the outliers. They remain valid for content and invalid as
+id goldens.
 
 ### 4.4 `PO-`/`SO-` prefix is not a function of regulation in Case 01
 
@@ -254,7 +258,70 @@ the specificity is a level-descent without a warrant, which
 most likely an upstream rendering fault that Phase 2 passed through — but the row
 now silently loses its control anchoring.
 
-## 5. What this document does not do
+## 5. The prototype, and what it measured
+
+`pipeline/src/phase2.py` implements the derivable half of §3 against a real
+Phase 1 run directory. It re-derives anchors through `controls.goal_anchors`
+rather than reading Phase 1's, inherits the objective slot, and emits `—` for
+every cell with no rule. `pipeline/tests/phase2_test.py` holds the derivations
+still.
+
+### 5.1 The goldens cannot be a byte-golden
+
+Run against `run_m08_musec2_1985228` (99 objectives, 38 sub-domains), the
+prototype's ids do not line up with the Case 02 deliverable: 87 ids in common,
+12 differing. The cause is §4.3, and it is now resolved by measurement rather
+than left open — **the two use different slot conventions**:
+
+| | D-01.4 in the run | D-01.4 in the Case 02 golden |
+|---|---|---|
+| GDPR | `001` | `001` |
+| CRA | `002` | `002` |
+| NIS 2 | absent | `003` (absent from the goal set) |
+| AI Act | `003` | `004` |
+
+The running Phase 1 pipeline numbers by rank among the regulations a
+sub-domain actually carries; the hand-authored deliverable left a gap for an
+absent regulation. Comparing the two by id therefore compares *different
+objectives* — which is how `SO-D-02.4-002` first looked like an anchor
+divergence and was not one.
+
+**Consequence:** the case deliverables are a valid reference for content and
+invalid as a reference for ids. Any Phase 2 gate that diffs against them by id
+will fire on every row.
+
+### 5.2 Anchor agreement, on the convention-independent key
+
+Compared on `(sub-domain, regulation)` — the pair that means the same thing
+under either convention — across the 63 pairs both artefacts carry:
+
+| | Count |
+|---|---|
+| Anchor sets identical | 48 |
+| Golden set is a strict subset of the derived set | 15 |
+| Derived set missing an anchor the golden carries | **0** |
+| Genuinely divergent | **0** |
+
+All 69 distinct anchors the prototype emits resolve to a real file under
+`baseline/CONTROLS/`, checked by `pipeline/tests/phase2_test.py`. R2b holds by
+construction rather than by review, and the prototype is strictly more complete
+than the deliverable it was checked against — consistent with §4.8, where a
+hand-authored row lost its anchors.
+
+### 5.3 A gate the hand-authored deliverables never had
+
+`G0 — upstream completeness`. `run_m09_c2_meta_1991136` records 38 selected
+sub-domains in `selection.json` but carries goal artifacts for 35: D-06.1,
+D-06.3 and D-06.4 were selected and never derived. The prototype reports the
+run as failed rather than rendering the 90 objectives it does have, because a
+total that is wrong by 10% is invisible in a table this size and visible only
+downstream, in Phase 3, as a coverage gap nobody can explain.
+
+This is the shape of defect §4.2 and §4.8 share: a structurally valid document
+carrying a silently wrong content. `doc_lint.py` cannot see any of them, and the
+prototype's gates exist to.
+
+## 6. What this document does not do
 
 - No pipeline stage, prompt, ficha or `case.yaml` field. A column marked *no rule
   found* is a finding to act on later, not a prompt to write now.
@@ -266,10 +333,12 @@ now silently loses its control anchoring.
 - No verdict on whether Phase 2 should exist in its current form. That question
   is §4.1 and it belongs to the researcher, not to this scan.
 
-## 6. Reproducing
+## 7. Reproducing
 
 ```bash
-python3 scripts/phase2_ledger_scan.py
+python3 scripts/phase2_ledger_scan.py                    # the measurements in §1-§4
+python3 pipeline/src/phase2.py --run-dir <phase1 run> --out <dir>   # the prototype
+python3 pipeline/tests/phase2_test.py                     # the derivations
 ```
 
 The script is a diagnostic, not a gate: it exits 0 whatever it finds. If its

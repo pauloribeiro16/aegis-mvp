@@ -823,6 +823,45 @@ P4_STYLE_META = (
 #: text above, which is the production path.
 P4_STYLE_VARIANTS = {"meta": P4_STYLE_META}
 
+# ---------------------------------------------------------------------------
+# M10 intervention: the Company implication column, not the goal.
+#
+# M10 measured the two columns separately against a cross-sectional placebo
+# (same model, same company, a genuinely different duty), inside the M07 matrix
+# so the instrument is constant:
+#
+#     Adjusted goal        cross-company 0.249  placebo 0.061  -> +0.188
+#     Company implication  cross-company 0.062  placebo 0.061  -> +0.002
+#
+# The goal text carries the company. The implication — the one column that
+# exists to carry it, and the one `check_implication_specific` guards — is
+# indistinguishable from unrelated text. That also explains the 0.99 badge
+# without a parser story: `unchanged` is what the model writes when it has
+# nothing company-specific to say about a duty.
+#
+# So the intervention targets that clause alone. It asks for a NAMED, checkable
+# artefact from the fact sheet rather than abstract scope language, and it gives
+# the model an explicit escape ("the duty is out of scope, say so") so the
+# pressure to invent a company fact is not merely relocated.
+P4_IMPLICATION_MARKER = (
+    "Company implication = what this duty concretely means for THIS company given "
+    "the §2 framing and fact sheet (1-2 sentences explaining operational impact, "
+    "roles and scope)")
+
+P4_IMPLICATION_CONCRETE = (
+    "Company implication = what this duty concretely means for THIS company given "
+    "the §2 framing and fact sheet (1-2 sentences). Name one checkable artefact "
+    "that appears in the fact sheet — a named system, a named supplier, a named "
+    "role, a named volume, a named site — and say what this duty does to it. "
+    "\"Operational impact, roles and scope\" in the abstract is not an answer: a "
+    "sentence that would read the same for a company of any size or sector has "
+    "not been written. If no artefact in the fact sheet is touched by this duty, "
+    "write that it is not, in one clause, and keep it short")
+
+#: variant name -> replacement clause. Selected per run via config.json
+#: `ficha_overrides: {"p4_implication": "<name>"}`.
+P4_IMPLICATION_VARIANTS = {"concrete": P4_IMPLICATION_CONCRETE}
+
 #: variant name -> replacement block. Selected per run via config.json
 #: `ficha_overrides: {"p4_adjustment": "<name>"}` (see runconfig.DEFAULTS).
 #: Absent/unknown => the decision rule above, which is the shipped behaviour.
@@ -830,14 +869,30 @@ P4_STYLE_VARIANTS = {"meta": P4_STYLE_META}
 
 def _p4_instruction(sd_id: str, subso_ids: list[str] | None = None,
                     adjustment_variant: str | None = None,
-                    style_variant: str | None = None) -> str:
-    """p4_extra_instruction with the EXP-04 adjustment and M09 style slots swapped.
+                    style_variant: str | None = None,
+                    implication_variant: str | None = None) -> str:
+    """p4_extra_instruction with the EXP-04 adjustment, M09 style and M10
+    implication slots swapped.
 
     Kept as a wrapper so the production path (`p4_extra_instruction`) is
     byte-identical to before when no override is set — the ablation must change
     exactly one thing.
     """
     base = p4_extra_instruction(sd_id, subso_ids)
+    if implication_variant:
+        replacement = P4_IMPLICATION_VARIANTS.get(implication_variant)
+        if replacement is None:
+            raise ValueError(
+                f"p4 implication override: unknown variant {implication_variant!r} "
+                f"(known: {sorted(P4_IMPLICATION_VARIANTS)})")
+        head, sep, _tail = base.partition(P4_IMPLICATION_MARKER)
+        if not sep:
+            raise ValueError(
+                "p4 implication override: the shipped base instruction no longer "
+                f"contains the expected marker ({P4_IMPLICATION_MARKER[:48]!r}…) — "
+                "refusing to run with a variant that would be silently ignored "
+                "(record the instrument, never assume it)")
+        base = f"{head}{replacement}" + _tail
     if style_variant:
         replacement = P4_STYLE_VARIANTS.get(style_variant)
         if replacement is None:
@@ -1161,7 +1216,8 @@ class StepRunner:
             extra = _p4_instruction(
                 subdomain, subso_ids=subso_ids,
                 adjustment_variant=(self.config.get("ficha_overrides") or {}).get("p4_adjustment"),
-                style_variant=(self.config.get("ficha_overrides") or {}).get("p4_instruction"))
+                style_variant=(self.config.get("ficha_overrides") or {}).get("p4_instruction"),
+                implication_variant=(self.config.get("ficha_overrides") or {}).get("p4_implication"))
         else:
             extra = EXTRA_INSTRUCTION[step]
             override = (self.config.get("ficha_overrides") or {}).get(f"{step}_instruction")

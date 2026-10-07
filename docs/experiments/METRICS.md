@@ -55,6 +55,8 @@ and the code comment in the same session.
 
 ## Rows pending promotion
 
+| M-16 | implication peer similarity (reported statistic, not a gate) | median over rows of `max_peer_similarity` | `pipeline/src/quality.py` (`score_run` → `max_peer_similarity`, `cached_ratio`) | Cada `Company implication` distingue-se das outras da corrida, ou é uma frase reutilizável? | `convention, unmeasured → E-10` — **limiar de leitura = M-07 (0.95)**, o nível a que `check_implication_specific` já chama duplicado; a distribuição real nunca foi medida. Introduzido pelo M09 (`PREREG_M09_CALIBRATION.md`), que o usa como métrica primária de diversidade. **SISTEMA CONHECIDO:** `cached_ratio` devolve `0.0` para qualquer par cuja `2·min/(a+b)` não alcance M-07 — atalho introduzido para tornar a passagem O(n²) sobre 65 linhas utilizável (29 s → 2 s, medido). Como `max_peer_similarity` é usado aqui para **relatar** e não para decidir, o valor reportado é um **limite inferior** nas linhas curtas; o viés é idêntico nos dois braços do M09, logo a comparação vale, mas o valor absoluto não quer dizer "esta duplicação" |
+
 Rows M-02 e M-03 (e a escolha 0.30/0.88 em geral) aguardam **E-10** — medir a
 taxa de disparo e a distribuição dos valores no corpus — que as converte de
 `convention` para `measured` ou as recalibra. A inconsistência M-05/M-05b

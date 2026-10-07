@@ -120,6 +120,7 @@ def cmd_new_run(args: argparse.Namespace) -> int:
             k: v for k, v in (
                 ("p4_adjustment", args.p4_adjustment),
                 ("p3_instruction", args.p3_instruction),
+                ("p4_instruction", args.p4_instruction),
             ) if v
         },
         "aegis_git_rev": rev,
@@ -268,6 +269,9 @@ def main() -> int:
     p_new.add_argument("--p3-instruction", default=None, choices=["clarified"],
                        help="EXP-M01: p3 prompt-engineered variant for the models "
                             "that failed the selection contract (glm, nemotron)")
+    p_new.add_argument("--p4-instruction", default=None, choices=["meta"],
+                       help="M09 arm: replace the p4 style tail's literal goal and "
+                            "adjustment exemplars with structural criteria")
     p_new.add_argument("--git-rev", default=None,
                        help="code revision override (the cluster checkout has "
                             "no .git; sync_up.sh stamps .cluster_sync_rev)")

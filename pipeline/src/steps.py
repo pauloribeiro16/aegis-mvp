@@ -778,20 +778,80 @@ P4_ADJUSTMENT_BADGES = (
 )
 P4_ADJUSTMENT_VARIANTS = {"menu": P4_ADJUSTMENT_MENU, "badges": P4_ADJUSTMENT_BADGES}
 
+
+# ---------------------------------------------------------------------------
+# M09 arm: the STYLE TAIL of the p4 instruction, with its literal exemplars
+# replaced by structural criteria.
+#
+# The shipped tail shows three verbatim goal sentences and three verbatim
+# adjustment rationales, all of them drawn from the same corpus the model is
+# being asked to restate. That is a compliance requirement encoded outside the
+# output contract — the thing S-296 names as the wrong place for it — and it
+# points at the failure M07 measured: the reference reached a 0.99
+# (unchanged+verbatim) ratio with zero `proportional` and zero `inherited`
+# rows. Whether the exemplar TEXT or the instruction TEXT drives that is the
+# question M09 exists to answer, so the arm removes the literal exemplars and
+# keeps every other word of the instruction identical.
+#
+# The replacement spans from the goal-style marker to the end of the string:
+# both example sets live there and nothing else does, so one partition swaps
+# both and leaves the wrap instruction, the TERMINATION clause, the column
+# contract and the Sub-SO enumeration byte-identical.
+P4_STYLE_MARKER = "Express the goal objectively and impersonally"
+
+P4_STYLE_META = (
+    "Express the goal objectively and impersonally: state the duty that must hold "
+    "across this entity's operational scope, keeping the Sub-SO's own obligation "
+    "vocabulary but rebuilt into this company's sentence structure. Do not paste the "
+    "baseline — a goal that is a near-verbatim copy of the Sub-SO objective restates "
+    "nothing about this company and is rejected. "
+    "Company implication = what this duty concretely means for THIS company given "
+    "the §2 framing and fact sheet (1-2 sentences explaining operational impact, roles "
+    "and scope); Baseline source = the single corpus Sub-SO id the row restates "
+    "(e.g. `SG-{sd_id}.GDPR`); Property MUST be one of C, I, A, privacy-right, "
+    "accountability. Control anchors are derived by code — do NOT emit any. "
+    "ADJUSTMENT — record the decision this duty forces on THIS company and the reason "
+    "behind it: whether the duty holds as the baseline states it, is narrowed by a "
+    "company fact you can name, or cannot be decided from the input. Justify "
+    "proportionality against the §2 framing — the company's scale, its operational "
+    "roles, and which capabilities it inherits from others — and never paste a label "
+    "without the reasoning behind it. Nothing else."
+)
+
+#: variant name -> replacement style tail. Selected per run via config.json
+#: `ficha_overrides: {"p4_instruction": "<name>"}`. Absent/unknown => the shipped
+#: text above, which is the production path.
+P4_STYLE_VARIANTS = {"meta": P4_STYLE_META}
+
 #: variant name -> replacement block. Selected per run via config.json
 #: `ficha_overrides: {"p4_adjustment": "<name>"}` (see runconfig.DEFAULTS).
 #: Absent/unknown => the decision rule above, which is the shipped behaviour.
 
 
 def _p4_instruction(sd_id: str, subso_ids: list[str] | None = None,
-                    adjustment_variant: str | None = None) -> str:
-    """p4_extra_instruction with the EXP-04 adjustment slot swapped.
+                    adjustment_variant: str | None = None,
+                    style_variant: str | None = None) -> str:
+    """p4_extra_instruction with the EXP-04 adjustment and M09 style slots swapped.
 
     Kept as a wrapper so the production path (`p4_extra_instruction`) is
     byte-identical to before when no override is set — the ablation must change
     exactly one thing.
     """
     base = p4_extra_instruction(sd_id, subso_ids)
+    if style_variant:
+        replacement = P4_STYLE_VARIANTS.get(style_variant)
+        if replacement is None:
+            raise ValueError(
+                f"p4 instruction override: unknown style variant {style_variant!r} "
+                f"(known: {sorted(P4_STYLE_VARIANTS)})")
+        head, sep, _tail = base.partition(P4_STYLE_MARKER)
+        if not sep:
+            raise ValueError(
+                "p4 style override: the shipped base instruction no longer contains "
+                f"the expected marker {P4_STYLE_MARKER!r} — refusing to run with a "
+                "variant that would be silently ignored (record the instrument, "
+                "never assume it)")
+        base = f"{head}{replacement.format(sd_id=sd_id)}"
     if not adjustment_variant:
         return base
     replacement = P4_ADJUSTMENT_VARIANTS.get(adjustment_variant)
@@ -1100,7 +1160,8 @@ class StepRunner:
                     subso_ids.append(f"SG-{subdomain}.{reg}")
             extra = _p4_instruction(
                 subdomain, subso_ids=subso_ids,
-                adjustment_variant=(self.config.get("ficha_overrides") or {}).get("p4_adjustment"))
+                adjustment_variant=(self.config.get("ficha_overrides") or {}).get("p4_adjustment"),
+                style_variant=(self.config.get("ficha_overrides") or {}).get("p4_instruction"))
         else:
             extra = EXTRA_INSTRUCTION[step]
             override = (self.config.get("ficha_overrides") or {}).get(f"{step}_instruction")

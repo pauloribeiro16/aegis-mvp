@@ -530,6 +530,8 @@ def prompt_digests(repo: Path) -> dict[str, str]:
             inspect.getsource(steps.p4_extra_instruction),
             inspect.getsource(steps._p4_instruction),
             repr(getattr(steps, "P4_ADJUSTMENT_VARIANTS", {})),
+            repr(getattr(steps, "P4_STYLE_MARKER", "")),
+            repr(getattr(steps, "P4_STYLE_VARIANTS", {})),
         ]).encode()).hexdigest()[:16]
         out["p4t_instruction"] = hashlib.sha256(
             inspect.getsource(steps.p4t_extra_instruction).encode()).hexdigest()[:16]

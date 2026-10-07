@@ -114,6 +114,7 @@ CFG_FLAGS=""
 [ -n "${MVP_REPEAT:-}" ]      && CFG_FLAGS="${CFG_FLAGS} --repeat=${MVP_REPEAT}"
 [ -n "${MVP_P4_ADJUSTMENT:-}" ] && CFG_FLAGS="${CFG_FLAGS} --p4-adjustment=${MVP_P4_ADJUSTMENT}"
 [ -n "${MVP_P3_INSTRUCTION:-}" ] && CFG_FLAGS="${CFG_FLAGS} --p3-instruction=${MVP_P3_INSTRUCTION}"
+[ -n "${MVP_P4_INSTRUCTION:-}" ] && CFG_FLAGS="${CFG_FLAGS} --p4-instruction=${MVP_P4_INSTRUCTION}"
 [ "${MVP_PREAPPROVE_GATES:-}" = "1" ] && CFG_FLAGS="${CFG_FLAGS} --preapprove-gates"
 
 if [ ! -f "${RUNS_ROOT}/${RUN_ID}/manifest.json" ]; then

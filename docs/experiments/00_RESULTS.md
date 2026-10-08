@@ -274,6 +274,16 @@ This was also the first live run of per-sub-domain fault isolation, and the stag
 
 **Decision.** Only the implication branch authorises an intervention: **[PREREG_M11](PREREG_M11_IMPLICATION.md)** changes that one clause, requires a named checkable artefact from the fact sheet, and registers Q4 — asking for a named artefact is exactly the move that invites inventing one. The two M07/M08 gates stay untouched until it runs; the chairman proposed suspending them and it was not acted on, because `METRICS.md` M-05b already registers that judgement as a behavioural change affecting aborts.
 
+## M11 — the Company-implication intervention (COMPLETE — read [M11_results.md](M11_results.md))
+
+**What it tested.** M10 found the `Adjusted goal` column carries the company (+0.507 cross-company vs placebo) and the `Company implication` does not (+0.042). M11 changed that one clause — it must name a checkable artefact from the fact sheet, with an explicit escape for duties that touch none — and predicted the implication's divergence would reach ≥ +0.10. Deucalion, jobs 1991408–1991416, `qwen3.8:27b`, seed 42, n=1.
+
+**Results — REFUTED.** implication divergence **+0.031** against its own control's **+0.042**; modal-string share 96% vs 97%; Q1 and Q2 did not fire. **Q4 held** — fabrications identical (0 C2, 1 C3 in both arms), so the clause did not invite invention. **Q3 held** — concrete carried *more* (37 vs 36 on C2, 36 vs 34 on C3).
+
+**What it says.** Two prompt interventions on this column have now failed to move it: M09 removed the exemplars, M11 demanded a named artefact. Taken with M10 the picture is consistent — the badge at 96–97% is reporting an *accurate* observation about a column that genuinely has little company-specific content, and telling the model to try harder did not add any. The remaining hypotheses are structural, not prompt-shaped: the implication may not be meant to vary, the lexical comparison of a one-sentence column may lack the resolution, or the L2 rubric is the thing that is actually missing.
+
+**Recorded in the results doc, not smoothed:** Q1's +0.10 threshold was anchored to M07's +0.002, which was measured across six models while this matrix is one model under a newer instrument (its own control reads +0.042). The threshold's basis was wrong per §-2.2; the verdict does not depend on it, because the treatment also failed to beat its own control. And `watch_m11.sh` reported a false FAIL on a discriminator that was a prefix of both clauses — the override did land, verified against all four prompt byte streams. Third time the machinery caught something; first time it caught itself.
+
 ## Registered decisions (2026-10-04)
 
 **Scale band: the code's threshold governs (EU 2003/361).** `controls.py` bands

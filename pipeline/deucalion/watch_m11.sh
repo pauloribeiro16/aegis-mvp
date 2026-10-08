@@ -77,7 +77,12 @@ python3 - "$RUNS" <<'PY'
 import json, re, sys
 from pathlib import Path
 
-MARKER = "Company implication = what this duty concretely means for THIS company"
+# The DISCRIMINATING phrase, not the shared opening. The shipped clause and
+# the concrete replacement both begin "Company implication = what this duty
+# concretely means for THIS company", so a marker on that prefix reports the
+# override as not landed on both arms - a false FAIL that names the right
+# suspicion for the wrong reason. The clauses diverge one sentence later.
+MARKER = "explaining operational impact, roles and scope"
 runs = Path(sys.argv[1])
 log = runs / "m11_submissions.log"
 bad, digests, prompts = [], {}, {}
@@ -132,15 +137,16 @@ for case in ("c2", "c3"):
     # is whether the treatment still carries the SHIPPED clause and the control
     # does — not a count of exemplars.
     shipped = lambda t: MARKER in t
+    treat = lambda t: "Name one checkable artefact" in t
+    escape = lambda t: "write that it is not, in one clause" in t
     print(f"\n{case}: head identical={ha[0] == hb[0]}  "
-          f"shipped clause in ctrl={shipped(a)} concrete={shipped(b)}  "
-          f"clause differs={ha[1] != hb[1]}")
-    if not shipped(a):
-        bad.append(f"{case}: ctrl does not carry the shipped clause — arm is not what it claims")
-    if shipped(b):
-        bad.append(f"{case}: concrete arm still carries the shipped clause — override did not land")
-    if ha[1] == hb[1]:
-        bad.append(f"{case}: the clause did not change between arms")
+          f"shipped ctrl={shipped(a)}/{shipped(b)}  "
+          f"concrete={treat(a)}/{treat(b)}  "
+          f"escape={escape(a)}/{escape(b)}  clause differs={ha[1] != hb[1]}")
+    if not (shipped(a) and not treat(a)):
+        bad.append(f"{case}: ctrl arm is not the shipped clause")
+    if not (treat(b) and escape(b) and not shipped(b)):
+        bad.append(f"{case}: concrete arm did not receive the replacement clause")
 
 print()
 print("RESULT: FAIL — " + "; ".join(bad) if bad

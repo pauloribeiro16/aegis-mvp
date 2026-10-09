@@ -211,8 +211,34 @@ CASES = [
 ]
 
 
+def test_candidate_filter_requires_a_sub_so() -> None:
+    """The P3 pre-filter must exclude a sub-domain the baseline cannot ground.
+
+    D-08.3 has a `regs/GDPR.md` module file but declares no `SG-D-08.3.GDPR`.
+    File-presence filtering offered it as a GDPR candidate to TinyTask (whose
+    only confirmed regulations are GDPR and CRA), the p4 model correctly
+    answered "None — no Sub-SO for the confirmed regulations", and G0 refused
+    the run twice (run_p2c1). The filter now requires a Sub-SO card.
+    """
+    sys.path.insert(0, str(SRC))
+    from compose import carries_reg_card, candidate_subdomains  # noqa: PLC0415
+
+    cands = {c["id"] for c in candidate_subdomains(REPO, ["GDPR", "CRA"])}
+    check("D-08.3 is not offered as a GDPR/CRA candidate (no Sub-SO card)",
+          "D-08.3" not in cands,
+          "module file exists but declares no SG-D-08.3.GDPR")
+    check("D-08.3 does carry a DORA Sub-SO, so it is reachable there",
+          carries_reg_card(REPO, "D-08.3", "DORA"))
+    check("every offered candidate carries a card for a confirmed regulation",
+          all(any(carries_reg_card(REPO, c, r) for r in ("GDPR", "CRA"))
+              for c in cands if c in ("D-01.1", "D-03.1", "D-08.1")))
+    check("the GDPR+CRA filter keeps the other 37 sub-domains",
+          len(cands) == 37, f"{len(cands)} candidates")
+
+
 def main() -> int:
     print("== red-team: do the content gates reject what passed before? ==")
+    test_candidate_filter_requires_a_sub_so()
     shutil.rmtree(TMP, ignore_errors=True)
     TMP.mkdir(parents=True)
     cli("new-run", "--case", "Case_01_TinyTask_SaaS", "--run-dir", str(RUN),

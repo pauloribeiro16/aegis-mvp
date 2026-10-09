@@ -310,8 +310,19 @@ def load_selection(run_dir: Path) -> dict[str, Any]:
 # --------------------------------------------------------------------------
 
 def candidate_subdomains(repo: Path, confirmed: list[str]) -> list[dict[str, str]]:
-    """Deterministic P3 pre-filter: every sub-domain whose module contains
-    regs/<REG>.md for at least one confirmed regulation (ficha PROM-P1-03)."""
+    """Deterministic P3 pre-filter: every sub-domain that carries a Sub-SO
+    baseline goal for at least one confirmed regulation (ficha PROM-P1-03).
+
+    The test is `carries_reg_card`, not "the module file exists". The corpus
+    modularises every regulation into every sub-domain, so file presence says
+    only that the layer was built — D-08.3 has a `regs/GDPR.md` that declares
+    no `SG-D-08.3.GDPR`, and offering it as a candidate sent the p4 model into
+    a pack with nothing to derive from: it answered "None — no Sub-SO for the
+    confirmed regulations", correctly, and gate G0 then refused the run
+    (run_p2c1, jobs 1996856/1996860). A candidate the baseline cannot ground is
+    not a candidate — p4 would be asked to restate an obligation that has no
+    baseline source, which R2 forbids.
+    """
     root = repo / "baseline" / "domains"
     out: list[dict[str, str]] = []
     for dom in sorted(root.iterdir()):
@@ -320,7 +331,9 @@ def candidate_subdomains(repo: Path, confirmed: list[str]) -> list[dict[str, str
         for sd in sorted(dom.iterdir()):
             if not (sd.is_dir() and SD_RE.match(sd.name)):
                 continue
-            present = [r for r in confirmed if (sd / "regs" / f"{r}.md").exists()]
+            present = [r for r in confirmed
+                       if (sd / "regs" / f"{r}.md").exists()
+                       and carries_reg_card(repo, sd.name, r)]
             if present:
                 out.append({
                     "id": sd.name,

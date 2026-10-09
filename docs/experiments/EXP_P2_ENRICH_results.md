@@ -191,15 +191,27 @@ The model's answer is explicit (`steps/goals/D-08.3.md`, preserved on the fork):
 > ### D-08.3 — High-level Security Objective (regulation-neutral)
 > None — no Sub-SO for the confirmed regulations.
 
-That answer is wrong on the corpus, and the corpus says so in one line:
+**That answer was correct, and this section originally said it was not.** An
+earlier reading of this document claimed the model was wrong because
 `baseline/domains/D-08_Human-Factors/D-08.3/regs/DORA.md` carries
 **`SG-DORA-014`** ("Members of the management body shall actively keep up to
-date with sufficient knowledge and skills…", DORA Art. 5(4)), DORA is confirmed
-for Case 01, and the same sub-domain's `_index.md` lists participants as
-AI Act / DORA / NIS 2. The AI Act module for this sub-domain is marked
-`(out-of-scope)` in the corpus, so the model's "None" is not wrong about the AI
-Act — it is wrong about DORA, which is the regulation it was never asked about
-individually.
+date with sufficient knowledge and skills…", DORA Art. 5(4)) and sits unused.
+DORA is **not** confirmed for Case 01 — the verdicts are GDPR *and CRA only*,
+with NIS2, DORA and AI Act all recorded as *does not apply* (`size_employees: 8`,
+no financial entity, no high-risk AI). D-08.3's Sub-SOs exist for DORA and NIS 2
+and for nothing else, so with GDPR and CRA confirmed there was nothing to derive,
+and the model said so precisely.
+
+The defect was upstream of the model and above it. `candidate_subdomains` — the
+deterministic P3 pre-filter — tested whether the module **file** `regs/<REG>.md`
+existed. The corpus modularises all five regulations into every sub-domain, so
+D-08.3 has a `regs/GDPR.md` that declares no `SG-D-08.3.GDPR`: file presence
+said "candidate", the pack carried two regulation modules with no cards in them,
+and P3 had selected D-08.3 on a rationale ("GDPR Art. 39(1)(b) management
+awareness") that has no baseline source here. R2 forbids deriving an obligation
+the corpus does not ground, so the honest outcome was an unclosable run, caught
+by G0 rather than shipped as a silently short document. Fixed in `compose.py`
+after this matrix closed — see the correction note below.
 
 Phase 2 then did what the gate exists for: **aborted** at G0 with
 `upstream incomplete: 1 selected sub-domain(s) have no Phase 1 goal artifact:

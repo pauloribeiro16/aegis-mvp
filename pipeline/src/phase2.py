@@ -591,8 +591,11 @@ def parse_p2o(answer: str, subdomain: str | None = None) -> dict:
         if not own:
             raise ValueError(f"p2o: {oid} owner cannot be empty")
         raw_rules = o.get("rules", [])
-        if not isinstance(raw_rules, list):
-            raise ValueError(f"p2o: {oid} expected list under 'rules'")
+        if not isinstance(raw_rules, list) or len(raw_rules) == 0:
+            # the RULE-* tail is the phase's bridge to Phase 3 (SPEC §6): an
+            # objective with no operational rule contributes nothing to the
+            # catalogue and must not pass as operationalized
+            raise ValueError(f"p2o: {oid} must carry at least one RULE-* rule")
         norm_rules = []
         for r in raw_rules:
             if isinstance(r, str):

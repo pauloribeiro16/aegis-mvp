@@ -616,6 +616,15 @@ def test_p2o_enrichment_hardening() -> None:
     except ValueError as e:
         check("thin non-falsifiable criteria is rejected", "too thin" in str(e))
 
+    no_rules = two_obj.replace(
+        'rules": [\n            {"rule_id": "RULE-D-01.1-001", "statement": "The service SHALL deny plaintext storage fallback paths.", "verification_target": "INSPECT"},\n            {"rule_id": "RULE-D-01.1-002", "statement": "Audit records MUST capture every encryption-mode downgrade attempt.", "verification_target": "INSPECT"}\n          ]',
+        'rules": []')
+    try:
+        phase2.parse_p2o(no_rules, "D-01.1")
+        check("objective without a RULE-* tail is rejected", False)
+    except ValueError as e:
+        check("objective without a RULE-* tail is rejected", "at least one RULE" in str(e))
+
     loose = two_obj.replace('"subdomain": "D-01.1"', '"subdomain": "d_01.1"')
     check("subdomain field is normalised before comparing",
           phase2.parse_p2o(loose, "D-01.1")["subdomain"] == "D-01.1")

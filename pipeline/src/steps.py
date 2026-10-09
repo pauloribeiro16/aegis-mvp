@@ -603,12 +603,15 @@ def check_p4_quality(repo: Path, run_dir: Path, parsed: dict, sd_id: str) -> dic
     # compared against every OTHER row (this sub-domain's and previous ones')
     other = [g["implication"] for jf in sorted((steps_dir / "goals").glob("*.json"))
              for g in json.loads(jf.read_text()).get("goals", [])]
+    all_findings = []
     for g in goals:
         peers = other + [o["implication"] for o in goals
                          if o["id"] != g["id"]]
         findings = quality.run_row(g, baselines, sources, peers)
         if findings:
-            raise ValueError("; ".join(f"{g['id']}: {m}" for m in findings))
+            all_findings.extend(f"{g['id']}: {m}" for m in findings)
+    if all_findings:
+        raise ValueError("; ".join(all_findings))
     coverage = quality.check_subso_coverage(goals, expected_regs)
     if coverage:
         raise ValueError("; ".join(coverage))
@@ -799,8 +802,10 @@ def p4_extra_instruction(sd_id: str, subso_ids: list[str] | None = None) -> str:
         f"a regulation absent from the list above is a hard failure (R8), and the stub "
         f"is exactly the trap. Adjusted goal = a declarative, normative security goal restating that Sub-SO's "
         f"Objective (2+ sentences, same obligation content). DO NOT prepend the company name "
-        f"(do NOT write '<Company> shall...' or '<Company> must...'). Express the goal objectively "
-        f"and impersonally, as a property the system holds rather than as an instruction issued "
+        f"(do NOT write '<Company> shall...' or '<Company> must...'). Do NOT paste or embed the "
+        f"Sub-SO Objective verbatim as a sentence (do not copy the baseline and append company calibration) — "
+        f"reformulate the duty in the company's sentence structure, keeping roughly half the Sub-SO's vocabulary. "
+        f"Express the goal objectively and impersonally, as a property the system holds rather than as an instruction issued "
         f"by someone; "
         f"Company implication = what this duty concretely means for THIS company given "
         f"the §2 framing and fact sheet (1-2 sentences explaining operational impact, roles and scope); "

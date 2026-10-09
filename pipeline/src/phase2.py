@@ -521,8 +521,8 @@ def parse_p2o(answer: str, subdomain: str | None = None) -> dict:
                 r_dict = {"rule_id": rid, "statement": stmt, "verification_target": meth}
             elif isinstance(r, dict):
                 r_dict = {
-                    "rule_id": str(r.get("rule_id", "")).strip(),
-                    "statement": str(r.get("statement", "")).strip(),
+                    "rule_id": str(r.get("rule_id") or r.get("id") or "").strip(),
+                    "statement": str(r.get("statement") or r.get("description") or r.get("rule") or "").strip(),
                     "verification_target": str(r.get("verification_target") or meth).strip().upper(),
                 }
             else:

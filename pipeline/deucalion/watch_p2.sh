@@ -7,7 +7,8 @@
 set -uo pipefail
 
 RUNS=(run_p2_c2_1996160 run_p2_c3_1996161)
-JOBS=(1996162 1996163)          # the phase2 jobs; each waits afterok on its p1
+JOBS=(1996172 1996173)          # the phase2 jobs; each waits afterok on its `all`
+ALL_JOBS=(1996170 1996171)      # the Phase 1 sweep they depend on
 POLL="${MVP_POLL:-120}"
 HOST="${MVP_HOST:-paulinho@login.deucalion.macc.fccn.pt}"
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
@@ -45,8 +46,9 @@ done
 
 # sacct, not squeue: a job that has left the queue has an outcome, and the
 # outcome is what decides whether an empty run dir is a bug or a failure.
+sacct_jobs="$(IFS=,; echo "${JOBS[*]},${ALL_JOBS[*]}")"
 ssh -o BatchMode=yes -o LogLevel=ERROR "$HOST" \
-  "sacct -j '$(IFS=,; echo "${JOBS[*]}")' --format=JobID,JobName%14,State,ExitCode --noheader" \
+  "sacct -j '$sacct_jobs' --format=JobID,JobName%14,State,ExitCode --noheader" \
   2>/dev/null || true
 
 for r in "${RUNS[@]}"; do

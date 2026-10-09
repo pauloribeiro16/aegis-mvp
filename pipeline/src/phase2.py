@@ -699,19 +699,24 @@ def render_doc01(repo: Path, run_dir: Path, rows: list[dict]) -> str:
     for r in rows:
         sd = r["subdomain"]
         if sd != current:
-            if current is not None and all_rules_in_subdomain:
-                lines += [
-                    "",
-                    f"#### Operational Engineering Rules (`RULE-*`) — {current}",
-                    "",
-                    "| Rule ID | Operational Statement | Method | Parent Objective |",
-                    "|---|---|---|---|",
-                ]
-                for rl in all_rules_in_subdomain:
-                    lines.append(
-                        f"| `{cell(rl.get('rule_id', ''))}` | {cell(rl.get('statement', ''))} | "
-                        f"`{cell(rl.get('verification_target', ''))}` | `{cell(rl.get('parent_obj', ''))}` |"
-                    )
+            if current is not None:
+                if all_rules_in_subdomain:
+                    lines += [
+                        "",
+                        f"#### Operational Engineering Rules (`RULE-*`) — {current}",
+                        "",
+                        "| Rule ID | Operational Statement | Method | Parent Objective |",
+                        "|---|---|---|---|",
+                    ]
+                    for rl in all_rules_in_subdomain:
+                        lines.append(
+                            f"| `{cell(rl.get('rule_id', ''))}` | {cell(rl.get('statement', ''))} | "
+                            f"`{cell(rl.get('verification_target', ''))}` | `{cell(rl.get('parent_obj', ''))}` |"
+                        )
+                # A sub-domain with no RULE block ends at its objectives table;
+                # the next heading still needs its blank separator, or the table
+                # and the `###` header end up on adjacent lines (run_p2c3,
+                # D-03.3 — the one sub-domain whose p2o call failed).
                 lines.append("")
                 all_rules_in_subdomain = []
 

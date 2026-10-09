@@ -342,8 +342,13 @@ preregistration is frozen), an **R6 fabrication** in a Doc02 constraint
 else in its fact sheet), and a diversity metric that counts 10 objectives the
 document never shows. A token-level R6 gate was measured and **rejected**: it
 fires on 37 of 37 translations. Case 01 was attempted per the researcher's
-override of X1 and **aborted honestly at G0** — the `D-08.3` repair derived zero
-goals twice, the second time while `SG-DORA-014` sat in the corpus.
+override of X1, **aborted honestly at G0**, and the cause was then traced and
+fixed: P3's candidate filter tested whether a regulation module **file** existed
+rather than whether it declared a Sub-SO, so D-08.3 — whose Sub-SOs exist for
+DORA and NIS2 only, while TinyTask confirms GDPR and CRA — was offered as a
+candidate with nothing behind it. The p4 model answered *"None — no Sub-SO for
+the confirmed regulations"* and was **right**. With the filter corrected, Case
+01 re-ran `p3 → all → phase2` and closed at 37/37.
 
 ## Registered decisions (2026-10-04)
 

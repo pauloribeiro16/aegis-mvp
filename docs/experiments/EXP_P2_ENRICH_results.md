@@ -22,6 +22,7 @@ P2-01, unchanged.
 | `run_p2c2` | Case_02_SecureBorder_Solutions | 1996917 | **ok** — 99 objectives, 38/38 operationalized |
 | `run_p2c3` | Case_03_OmniBank | 1996898 | **ok** — 129 objectives, 37/38 operationalized |
 | `run_p2c1` | Case_01_TinyTask_SaaS | 1996859 (p4 repair) → 1996860 (phase2) | **aborted at G0** — registered as D1, see §Case 01 |
+| `run_p2d_c1` | Case_01_TinyTask_SaaS | 1997413 (p3) → 1997414 (all) → 1997492 (phase2) | **ok after the P3 filter fix** — 65 objectives, 37/37 operationalized, see §Resolution |
 
 ---
 
@@ -43,7 +44,7 @@ fell short of what was registered before the runs.
 | Q5 | No method above the 60% collapse ceiling | ≤0.60 | **0.339** / **0.393** | pass |
 | Q6 | Catalogue exists: ≥1 rule/objective, mean ≤ 2.5 | 1.0–2.5 | **3.07** / **3.16** | **fail (both)** |
 | Q7 | New cells carry the company, not a template | mean ≤0.60 | **0.044** (translations), **0.065** (rules) | pass |
-| Q8 | Case 01 repair derives goals for D-08.3 | ≥1 goal | **0 goals** | **refuted** |
+| Q8 | Case 01 repair derives goals for D-08.3 | ≥1 goal | **0 goals** — and no goal exists to derive (D-08.3 has Sub-SOs only for DORA/NIS2, confirmed by nobody) | **refuted, for the wrong reason** |
 
 ## The four increments, measured
 
@@ -222,6 +223,48 @@ before the runs — with the file-count gate, Case 01 would have produced a
 document whose objective total was quietly one sub-domain short, with no marker
 that anything was missing.
 
+## Resolution — Case 01 closes after the P3 filter fix
+
+`run_p2c1` is preserved as the P2-02 record. The repair ran on a fresh fork,
+`run_p2d_c1`, against the corrected code (`compose.py`, rev `55f675c`):
+
+| Stage | Job | Result |
+|---|---|---|
+| `p3` | 1997413 | **37 selected** (D-08.3 absent — the filter now requires a Sub-SO card) |
+| `all` (p2, p4, p4t, p5) | 1997414 | p4 **37/37 carried**, p5 assembled, rc=0 |
+| `phase2` | 1997492 | **65 objectives, 37/37 operationalized, 65/65 seams, rc=0** |
+
+Two jobs on the way there were infrastructure, not pipeline: 1997453 and
+1997460 each landed on a node where `ollama serve` stopped responding during
+warm-up (the log went silent for ~20 minutes with 81 GiB free on the GPU, and
+every `p2o` call burned its five 180-second retries). Both were cancelled and
+resubmitted; pinning `--nodelist=gnx509`, where the OmniBank run had already
+succeeded, loaded the model in minutes and completed 38 calls with **zero
+failures**.
+
+Case 01's own numbers, and what they say:
+
+- **65 objectives over 37 sub-domains**, 65/65 seams filled — the seam fill
+  that P2-01 could not produce at all.
+- **251 `RULE-*`**, zero EARS violations, zero duplicate ids within or across
+  sub-domains.
+- **Method distribution** `INSPECT 40, DEMONSTRATE 28, ANALYZE 23, TEST 7` —
+  top method **40.8%**, far below the 60% ceiling. `TEST` falls to 7 of 65
+  (16%) where the two bank cases ran 15–18: an eight-person SaaS has fewer
+  things a CI suite can prove than a financial entity, and the distribution
+  moved in the direction the company's size predicts. That is the opposite of
+  mode collapse, and it is the first cross-case evidence that the method
+  assignment is reading the company rather than picking a favourite.
+- `grounding_ratio` **1.0**, 7/7 principles bound.
+- Doc01 722 lines / 76 tables, Doc02 64 lines; 0 column deviations, 0 glued
+  headings, 0 `?` cells (R10/R12 inspection).
+
+The three cases now cover the full range: 37/38/38 sub-domains, 65/99/129
+objectives, two to five confirmed regulations. Every prediction this document
+records was measured on two cases and not adjudicated by Case 01's
+preregistered cell — the P2-02 matrix stays as recorded, and this fork is a
+post-hoc resolution with its own provenance.
+
 ## Deviations from the preregistration
 
 1. **D1 (registered, pre-run):** Case 01 attempted via the upstream `p4`
@@ -243,6 +286,7 @@ that anything was missing.
 
 | Company | Run | Files |
 |---|---|---|
+| TinyTask | `run_p2d_c1` | Doc01 (722 lines, 76 tables) · Doc02 (64 lines) — in the run directory; `output/` is gitignored |
 | SecureBorder | `run_p2c2` | [`Doc01`](../../../output/SecureBorder/run_p2c2/Doc01_Operational_Objectives.md) (897 lines, 78 tables) · [`Doc02`](../../../output/SecureBorder/run_p2c2/Doc02_Secure_Design_Principles.md) (64 lines) |
 | OmniBank | `run_p2c3` | [`Doc01`](../../../output/OmniBank/run_p2c3/Doc01_Operational_Objectives.md) (1012 lines, 77 tables) · [`Doc02`](../../../output/OmniBank/run_p2c3/Doc02_Secure_Design_Principles.md) |
 

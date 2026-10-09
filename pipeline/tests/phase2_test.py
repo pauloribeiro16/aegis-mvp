@@ -328,13 +328,50 @@ def test_real_runs() -> None:
               not unresolved, f"{len(unresolved)} unresolved")
 
 
+def test_repair_messages_point_at_the_corridor() -> None:
+    """The p4 repair messages must name a target, not just a bound.
+
+    Measured on job 1996170: a row at retention 0.161 / similarity 0.012 was
+    repaired to 1.000 / 1.000 — the repair had no stopping rule and jumped to
+    the opposite bound. The fix is in the MESSAGE (a target band plus an explicit
+    prohibition on copying), never in the threshold: moving 0.30 or 0.88 after
+    seeing which runs pass would be changing the ruler after the mark.
+    """
+    print("p4 repair messages")
+    import quality
+
+    check("thresholds are unchanged (0.30 / 0.88)",
+          (quality.RETENTION_FLOOR, quality.NEAR_VERBATIM_LIMIT) == (0.30, 0.88),
+          f"{quality.RETENTION_FLOOR} / {quality.NEAR_VERBATIM_LIMIT}")
+
+    dense = ("controller processor contracts related transfer instruments include gdpr "
+             "specific contractual security obligations required personal data processing "
+             "article twenty eight processor engage subprocessor prior authorisation "
+             "contractual security obligations audit certification deletion return "
+             "obligations end of provision of services supervisory authority mandate "
+             "data protection impact assessment prior consultation technical measures "
+             "confidentiality integrity availability resilience restore availability")
+    thin = "The company signs data processing contracts with its suppliers."
+    low = quality.check_obligation_retention(thin, dense)
+    check("a low-retention row is still rejected", bool(low), (low[0][:40] if low else ""))
+    check("the low-retention message names a target band",
+          bool(low) and "half" in low[0].lower() and "zero" in low[0].lower(),
+          "says roughly half, and that copying scores zero")
+
+    copied = quality.check_obligation_retention(dense, dense)
+    check("a verbatim copy is still rejected", bool(copied), (copied[0][:40] if copied else ""))
+    check("the verbatim message tells it to keep fewer terms",
+          bool(copied) and "fewer terms" in copied[0].lower(),
+          "says keeping fewer terms is correct here")
+
+
 def main() -> int:
     print("phase2_test — derivations anchored to Phase 1 and the corpus")
     for fn in (test_id_derivation, test_slot_inherited, test_anchors_resolve,
                test_pollution_gate, test_prefix_gate, test_coverage_gate,
                test_seams_stay_unset, test_end_to_end_cli,
                test_doc02_renders, test_p2d_parser, test_doc02_gates,
-               test_real_runs):
+               test_repair_messages_point_at_the_corridor, test_real_runs):
         fn()
     print()
     if FAILURES:

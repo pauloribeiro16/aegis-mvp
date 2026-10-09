@@ -91,11 +91,24 @@ def check_obligation_retention(goal: str, baseline: str) -> list[str]:
         # terms the duty has, how many the row kept, and list them.
         need = max(1, round(len(b) * 0.30))
         missing = sorted(b - g)
+        # The target band is stated because without one the repair round has no
+        # stopping rule and overshoots. Measured 2026-10-09 on job 1996170
+        # (run_p2_c2_1996160): AG-D-06.4-002 came back at retention 0.161 /
+        # similarity 0.012, and the repair answered "keep the vocabulary" by
+        # pasting the baseline — retention 1.000 / similarity 1.000, the exact
+        # opposite bound. Across 642 passing D-06.3/D-06.4 rows retention runs
+        # 0.304-1.000 (median 0.619) and similarity 0.004-0.862 (median 0.112):
+        # the corridor is wide and the model crosses it routinely elsewhere. It
+        # does not know the corridor exists because it was never told.
         return [f"adjusted goal keeps {len(g & b)} of the Sub-SO's {len(b)} obligation "
                 f"terms; at least {need} are required ({retention:.0%}). "
                 f"Keep the Sub-SO's own obligation vocabulary — change the sentence "
                 f"structure and add the company calibration, do NOT substitute synonyms "
                 f"or drop clauses. Terms still missing: {', '.join(missing)}. "
+                f"Aim for roughly half the Sub-SO's vocabulary expressed in the "
+                f"company's own sentence structure. Reproducing the baseline text "
+                f"below scores ZERO regardless of how many terms it keeps — a copy "
+                f"is not a restatement. "
                 f"The Sub-SO objective you must restate (verbatim, do not omit any leg): "
                 f"\n\n{baseline.strip()}\n"]
     # the article citation lives in the Articles column, not in the goal prose:
@@ -108,13 +121,19 @@ def check_obligation_retention(goal: str, baseline: str) -> list[str]:
     sim = SequenceMatcher(None, norm(goal), norm(baseline)).ratio()
     gb, bb = norm(goal), norm(baseline)
     if bb and bb in gb and len(gb) < len(bb) * 2.2:
-        return ["adjusted goal embeds the Sub-SO objective verbatim instead of "
-                "restating it — a restatement reformulates the duty in the company's "
-                "terms, it does not paste the baseline"]
+        return [f"adjusted goal embeds the Sub-SO objective verbatim instead of "
+                f"restating it ({retention:.0%} of its terms kept) — a restatement "
+                f"reformulates the duty in the company's terms, it does not paste the "
+                f"baseline. Keep the OBLIGATION, drop the baseline's sentence shape: "
+                f"aim for roughly half the Sub-SO's vocabulary, rebuilt around this "
+                f"company's own actors, systems and scope. Keeping fewer terms is "
+                f"correct here; keeping all of them by copying is not."]
     if sim > 0.88:
         return [f"adjusted goal is a near-verbatim copy of the Sub-SO objective "
                 f"({sim:.0%} similar) — it restates nothing about this company; "
-                "calibrate it against the §2 framing"]
+                f"calibrate it against the §2 framing. Keep the obligation's terms "
+                f"but rebuild the sentence around this company's own actors and "
+                f"scope; roughly half the vocabulary is the target, not all of it."]
     return []
 
 

@@ -309,46 +309,56 @@ def check(rows: list[dict], run_dir: Path | None = None) -> list[str]:
 METHOD_VOCAB = {"TEST", "INSPECT", "DEMONSTRATE", "ANALYZE"}
 
 
-def _other_case_constraints(repo: Path) -> list[str]:
-    """Every other case's Doc02 `Constraint` cell, as flat text.
+def _other_case_intakes(repo: Path) -> list[str]:
+    """Every OTHER case's intake form, as flat text.
 
-    Read from the reference corpus in `cases/`, which is present on the cluster
-    checkout. Returns `[]` when it is absent, so the gate degrades to silence
+    The intake form is where a company declares its own nouns — `eGate`,
+    `traveller`, `kiosk`, `OmniScore`. That makes it the right source for a
+    contamination vocabulary, and an earlier version of this gate read the
+    Doc02 constraints instead and flagged `boundary`, `including`, `flows` and
+    `within` — ordinary English, on the first real run of Phase 2 (jobs
+    1996356/1996357). A gate that fires on the language is not a gate.
+
+    Returns `[]` when the corpus is absent, so the check degrades to silence
     rather than to a false accusation.
     """
     out: list[str] = []
-    for doc in sorted((repo / "cases").glob("Case_*/02_PHASE2_RULES/"
-                                            "Doc02_Secure_Design_Principles.md")):
+    for intake in sorted((repo / "cases").glob(
+            "Case_*/01_PHASE1_CONTEXT/Doc01_INTAKE_FORM.md")):
         try:
-            for line in doc.read_text(encoding="utf-8").splitlines():
-                if not re.match(r"^\|\s*`PRIN-ENG-\d\d`\s*\|", line):
-                    continue
-                cells = [c.strip() for c in line.strip().strip("|").split("|")]
-                if len(cells) >= 6:
-                    out.append(cells[4])
+            out.append(intake.read_text(encoding="utf-8"))
         except OSError:
             continue
     return out
 
 
 def _foreign_vocab(repo: Path) -> frozenset[str]:
-    """Content words that belong to SOME OTHER company's architecture.
+    """Content words that name SOME OTHER company's own assets.
 
-    G7 checks contamination against this vocabulary rather than against a
+    G7 compares a constraint against this vocabulary rather than against a
     capitalisation heuristic. A "does it look like a proper noun" regex cannot
     see `eGate` — the capital is mid-word, so no word boundary precedes it —
-    which is precisely the token the ledger's §4.6 defect is made of. Comparing
-    against real foreign vocabulary catches the recorded defect by name and has
-    no capitalisation blind spot. The principle definitions' own words are
-    excluded, since those are shared by every company and carry no signal.
+    which is precisely the token the ledger's §4.6 defect is made of. Reading
+    the other cases' intake forms catches the recorded defect by name without
+    a capitalisation blind spot, and because an intake states a company's own
+    assets rather than the register they are described in, it does not pull in
+    the surrounding English.
     """
     shared = set()
     for p in PRINCIPLES:
         shared |= set(re.findall(r"[a-z]{5,}", p["definition"].lower()))
-    vocab = set()
-    for text in _other_case_constraints(repo):
+    vocab: set[str] = set()
+    for text in _other_case_intakes(repo):
         vocab |= set(re.findall(r"[a-z]{5,}", text.lower()))
     return frozenset(vocab - shared - STOPWORDS)
+
+
+#: A token shaped like a NAME rather than a word: CamelCase (`eGate`,
+#: `OmniScore`), ALLCAPS (`SPOC`), or capitalised and not sentence-initial.
+#: The intersection of "looks like a name" and "appears in another case's
+#: intake" is what separates an asset from the English around it: `eGate` is
+#: both, `boundary` is in the intake too but is neither.
+_NAME_RE = re.compile(r"\b[a-z]+[A-Z][A-Za-z]*\b|\b[A-Z]{3,}\b|\b(?<![.!?]\s)[A-Z][a-z]{2,}\b")
 
 
 def check_doc02(repo: Path, run_dir: Path, principles: list[dict]) -> list[str]:
@@ -389,9 +399,10 @@ def check_doc02(repo: Path, run_dir: Path, principles: list[dict]) -> list[str]:
         out += [f"{pid}: {f}" for f in quality.check_no_technology(
             constraint, str(row.get("method_lead", "")), str(row.get("eval_scope", "")))]
         # G7 — another company's architecture, by name.
-        hits = sorted(set(re.findall(r"[a-z]{5,}", constraint.lower())) & foreign)
+        names = {m.group(0).lower() for m in _NAME_RE.finditer(constraint)}
+        hits = sorted(n for n in names & foreign if n not in declared)
         if hits:
-            out.append(f"{pid}: constraint names {', '.join(hits)} — vocabulary of "
+            out.append(f"{pid}: constraint names {', '.join(hits)} — an asset of "
                        f"another case, absent from this run's fact sheet (ledger §4.6)")
 
         method = str(row.get("method_lead", "") or "").strip()

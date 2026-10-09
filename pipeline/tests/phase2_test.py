@@ -285,6 +285,19 @@ def test_doc02_gates() -> None:
         f = phase2.check_doc02(REPO, run_dir, contaminated)
         check("G7 catches another case's architecture — ledger §4.6",
               any("egate" in x for x in f), f[0][:70] if f else "no finding")
+
+        # The first real Phase 2 run (jobs 1996356/1996357) failed with G7
+        # flagging "boundary, explicitly, flows, including, within" — ordinary
+        # English — because the vocabulary was built from other cases' Doc02
+        # prose rather than from their intake forms. This is the regression.
+        ordinary = [dict(p) for p in clean]
+        ordinary[1] = dict(ordinary[1], constraint=(
+            "The identity store must deny by default, explicitly, including "
+            "within every flow that crosses the internal boundary."))
+        f = phase2.check_doc02(REPO, run_dir, ordinary)
+        check("G7 does not fire on ordinary English",
+              not f, f[0][:70] if f else "silent")
+
         neutral = [dict(p) for p in clean]
         neutral[1] = dict(neutral[1], constraint="The identity store must deny by default.")
         check("G7 does not fire on the company's own vocabulary",

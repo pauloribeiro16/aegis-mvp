@@ -312,6 +312,39 @@ the one that remains is a first-attempt copy that repair messages structurally
 cannot reach. A fourth defect was the executor's: gate G7 fired on ordinary
 English (`boundary`, `within`, `flows`) on the first real Phase 2 run.
 
+## P2-02 — Phase 2 enriched (COMPLETE — read [EXP_P2_ENRICH_results.md](EXP_P2_ENRICH_results.md))
+
+**What it tested.** AEGIS-P2-ENRICH turned Phase 2 from a rename into systems
+engineering: ISO 29148 verification methods and falsifiable criteria, a
+sub-domain operational translation, harmonised regulatory tensions, and the
+`RULE-*` tail the ledger recorded as **0 occurrences across six hand-authored
+deliverables**. Implemented in `748b8ec..3a9c0fb`, hardened, preregistered, and
+run on two completed cases plus one attempted cell.
+
+**Results — PARTIAL.** Q1, Q2, Q3, Q5, Q7 hold. The three columns ADR-013 left
+as seams are now filled on **99/99** and **125/129** objectives, and the
+mode-collapse ceiling does not fire (top method 33.9% / 39.3% of its batch, all
+four used). The `RULE-*` tail exists: **699 rules**, zero EARS violations, zero
+duplicate ids, zero out-of-vocabulary targets. Cross-case similarity 0.044 on
+translations and 0.065 on rules. Deucalion 1996898 / 1996917.
+
+**What it says.** Two registered bars fired and are recorded rather than
+patched. **Q6**: the catalogue is *padded* — every objective carries ≥2 rules
+against a ficha that specifies 1–2, mean 3.07/3.16 versus a ceiling of 2.5.
+Each rule is a valid sentence, so no gate can see it: uniformly longer than
+specified is the same shape as a uniformly ticked checkbox. **Q4**: `D-03.3`
+was lost on Case 03 because the L0 repair message — tuned for p4's tabular
+extraction ("same length or shorter, do not add material") — pressured the
+model into dropping the whole `rules` array. Three defects found, all with
+forensics: that repair message (wrong for this step, deferred because the
+preregistration is frozen), an **R6 fabrication** in a Doc02 constraint
+(OmniBank has a "transactional email service" in its threat model and nowhere
+else in its fact sheet), and a diversity metric that counts 10 objectives the
+document never shows. A token-level R6 gate was measured and **rejected**: it
+fires on 37 of 37 translations. Case 01 was attempted per the researcher's
+override of X1 and **aborted honestly at G0** — the `D-08.3` repair derived zero
+goals twice, the second time while `SG-DORA-014` sat in the corpus.
+
 ## Registered decisions (2026-10-04)
 
 **Scale band: the code's threshold governs (EU 2003/361).** `controls.py` bands

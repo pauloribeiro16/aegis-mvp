@@ -284,6 +284,34 @@ This was also the first live run of per-sub-domain fault isolation, and the stag
 
 **Recorded in the results doc, not smoothed:** Q1's +0.10 threshold was anchored to M07's +0.002, which was measured across six models while this matrix is one model under a newer instrument (its own control reads +0.042). The threshold's basis was wrong per §-2.2; the verdict does not depend on it, because the treatment also failed to beat its own control. And `watch_m11.sh` reported a false FAIL on a discriminator that was a prefix of both clauses — the override did land, verified against all four prompt byte streams. Third time the machinery caught something; first time it caught itself.
 
+## P2-01 — Phase 2 end to end (COMPLETE — read [EXP_PHASE2_results.md](EXP_PHASE2_results.md))
+
+**What it tested.** The determinism ledger's §4.1 asked what Phase 2 is *for*,
+given that 85–90% of it is a rename of Phase 1 and the one artefact that would
+differentiate it does not exist. ADR-013 settled it: the `RULE-*` tail is
+de-scoped with a signpost, and Doc02's per-case architectural `Constraint` is
+named as the phase's generative cell. This ran that end to end.
+
+**Results — SUPPORTED.** All seven predictions passed on both cases. The
+`Constraint` column names each company's own architecture and nothing shared:
+`eGate kiosks`, `traveller biometric templates`, `watchlist-derived decisions`
+against `OmniScore AI/ML platform`, `retail customers`, `credit data`. Mean
+cross-case similarity 0.072, 7 of 7 principle pairs non-duplicate,
+`grounding_ratio` 1.0 on both. Doc01 is exact — 99 and 129 objectives, zero
+G0–G4 findings, zero unresolved anchors. Deucalion 1996446/1996447.
+
+**What it says — and what it cost.** Phase 2 never ran for most of the session
+because Phase 1 does not close under `qwen3.8:27b`. Three separate mechanisms,
+**two of them harness defects, not model errors**: a repair round with no
+stopping rule that answered "keep the vocabulary" by pasting the baseline
+(0.161 → 1.000); p4 exemplars that were baseline excerpts sitting at 0.669
+similarity against their own Sub-SO, 76% of the ceiling the same gate enforces;
+and `check_grounded` failing "Implementing Regulation (EU) 2024/2956" as a
+fabricated company quantity. Each case went from 2–4 lost sub-domains to 1, and
+the one that remains is a first-attempt copy that repair messages structurally
+cannot reach. A fourth defect was the executor's: gate G7 fired on ordinary
+English (`boundary`, `within`, `flows`) on the first real Phase 2 run.
+
 ## Registered decisions (2026-10-04)
 
 **Scale band: the code's threshold governs (EU 2003/361).** `controls.py` bands

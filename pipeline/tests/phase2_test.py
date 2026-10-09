@@ -192,11 +192,149 @@ def test_end_to_end_cli() -> None:
               text.count("| — |") >= 4, f"{text.count('| — |')} UNSET cells")
 
 
+def test_doc02_renders() -> None:
+    """Doc02 carries the 7 principles, 4 category tables and a resolvable §6.
+
+    The §6 paths are the check that closes ledger §4.5: the hand-authored
+    deliverables cite `file:///c:/Users/...`, which resolves only on the
+    author's machine. A relative link that 404s is caught here; an absolute one
+    that only works for one person never would be.
+    """
+    print("doc02")
+    with tempfile.TemporaryDirectory() as td:
+        run_dir = synth_run(Path(td) / "run", [goal("AG-D-01.1-001", "GDPR")], ["D-01.1"])
+        text = phase2.render_doc02(REPO, run_dir, phase2.principles_for(run_dir))
+    check("all 7 principles are rendered", all(p in text for p in phase2.PRINCIPLE_IDS))
+    check("four category tables", all(c["def_col"] in text for c in phase2.CATEGORIES))
+    check("no absolute file:// URL — ledger §4.5", "file:///" not in text)
+    bad = [p["skill"] for p in phase2.PRINCIPLES
+           if not (REPO / "baseline" / "skills" / p["skill"]).is_dir()]
+    check("every §6 skill path resolves", not bad, f"missing={bad}" if bad else "7/7")
+    check("unseamed constraints render as the UNSET marker",
+          text.count("| — |") >= 7, f"{text.count('| — |')} seams")
+
+
+def test_p2d_parser() -> None:
+    """L0 on the one generative step: 7 rows, canonical ids, no missing field.
+
+    Every rejection here corresponds to a way a 7-row document silently loses
+    content — a dropped principle, a duplicate, an empty constraint that would
+    render as a blank cell nobody can distinguish from an unset seam.
+    """
+    print("p2d parser")
+    import steps
+
+    ok = {"principles": [{"id": p, "constraint": f"constraint for {p}",
+                          "method_lead": "TEST (Lead)", "eval_scope": "an artefact"}
+                         for p in phase2.PRINCIPLE_IDS]}
+    good = "```json\n" + json.dumps(ok) + "\n```"
+    try:
+        parsed = steps.parse_p2d(good)
+        check("a well-formed answer parses", len(parsed["principles"]) == 7)
+    except Exception as e:  # noqa: BLE001 — the point is that it does not raise
+        check("a well-formed answer parses", False, str(e))
+        return
+
+    six = json.dumps({"principles": ok["principles"][:6]})
+    dup = json.dumps({"principles": [dict(ok["principles"][0])] * 7})
+    empty = json.loads(json.dumps(ok))
+    empty["principles"][3]["constraint"] = "  "
+    unknown = json.loads(json.dumps(ok))
+    unknown["principles"][0]["id"] = "PRIN-ENG-99"
+    for name, payload, expect in [
+            ("six rows is rejected", six, "exactly 7"),
+            ("a duplicated principle is rejected", dup, "more than once"),
+            ("an empty field is rejected", json.dumps(empty), "empty"),
+            ("an unknown id is rejected", json.dumps(unknown), "not one of")]:
+        try:
+            steps.parse_p2d("```json\n" + payload + "\n```")
+            check(name, False, "accepted — no error raised")
+        except Exception as e:  # noqa: BLE001
+            check(name, expect in str(e), str(e)[:70])
+
+
+def test_doc02_gates() -> None:
+    """G5 completeness, G6 neutrality, G7 cross-case contamination."""
+    print("doc02 gates")
+    with tempfile.TemporaryDirectory() as td:
+        run_dir = Path(td) / "run"
+        synth_run(run_dir, [goal("AG-D-01.1-001", "GDPR")], ["D-01.1"])
+        clean = phase2.principles_for(run_dir)
+
+        check("an all-unset document passes G5 (seams are honest)",
+              not phase2.check_doc02(REPO, run_dir, clean))
+
+        dropped = [p for p in clean if p["id"] != "PRIN-ENG-04"]
+        f = phase2.check_doc02(REPO, run_dir, dropped)
+        check("G5 catches a dropped principle",
+              any("PRIN-ENG-04" in x for x in f), f[0][:60] if f else "no finding")
+
+        tech = [dict(p) for p in clean]
+        tech[0] = dict(tech[0], constraint="Encrypt in the PostgreSQL database at rest.")
+        f = phase2.check_doc02(REPO, run_dir, tech)
+        check("G6 catches a technology term (R5/R13)",
+              any("PostgreSQL" in x for x in f), f[0][:70] if f else "no finding")
+
+        (run_dir / "steps" / "fact_sheet.yaml").write_text(
+            "company: Example Ltd\nsector: banking\ndata_categories: [identity]\n",
+            encoding="utf-8")
+        contaminated = [dict(p) for p in clean]
+        contaminated[1] = dict(contaminated[1],
+                               constraint="The eGate fleet must deny unauthorised passage.")
+        f = phase2.check_doc02(REPO, run_dir, contaminated)
+        check("G7 catches another case's architecture — ledger §4.6",
+              any("egate" in x for x in f), f[0][:70] if f else "no finding")
+        neutral = [dict(p) for p in clean]
+        neutral[1] = dict(neutral[1], constraint="The identity store must deny by default.")
+        check("G7 does not fire on the company's own vocabulary",
+              not any("egate" in x for x in phase2.check_doc02(REPO, run_dir, neutral)))
+
+
+def test_real_runs() -> None:
+    """The two experiment cases render, gate clean, and keep every anchor.
+
+    `scripts/phase2_rule_discovery.py` reads the hand-authored deliverables;
+    this reads the pipeline's own output for the same two cases, so the two
+    artefacts are never mistaken for each other.
+    """
+    print("real Phase 1 runs")
+    runs_root = Path.home() / "Work" / "aegis-runs"
+    # M07 ran the experiment's model across all three cases at full 38/38
+    # coverage, which is what G0 requires. The m08 runs are partial (G0 catches
+    # them), which is the gate working, not a broken fixture.
+    cases = {"Case_01_TinyTask_SaaS": "run_m07_qwen3_8_27b_c1_1983781",
+             "Case_02_SecureBorder_Solutions": "run_m07_qwen3_8_27b_c2_1983783",
+             "Case_03_OmniBank": "run_m07_qwen3_8_27b_c3_1983785"}
+    for case, run_id in cases.items():
+        run_dir = runs_root / run_id
+        if not (run_dir / "steps" / "goals").is_dir():
+            print(f"  [SKIP] {case} — {run_id} not on this machine")
+            continue
+        rows = phase2.build(REPO, run_dir)
+        findings = phase2.check(rows, run_dir)
+        if findings:
+            print(f"  [SKIP] {case} — {run_id} is an incomplete Phase 1 run "
+                  f"(G0): {findings[0][:60]}")
+            continue
+        check(f"{case}: Doc01 gates pass", True, f"{len(rows)} objectives")
+        unseamed = [c for c in ("criteria", "method", "owner")
+                    if any(r[c] == phase2.UNSET for r in rows)]
+        check(f"{case}: the three measured columns stay seams",
+              unseamed == ["criteria", "method", "owner"], f"{unseamed}")
+        unresolved = [a for r in rows for a in r["anchors"].split(", ")
+                      if a and a != phase2.UNSET
+                      and not list((REPO / "baseline" / "CONTROLS").rglob(f"{a}.json"))]
+        check(f"{case}: every anchor resolves under CONTROLS/ (R2b)",
+              not unresolved, f"{len(unresolved)} unresolved")
+
+
 def main() -> int:
     print("phase2_test — derivations anchored to Phase 1 and the corpus")
     for fn in (test_id_derivation, test_slot_inherited, test_anchors_resolve,
                test_pollution_gate, test_prefix_gate, test_coverage_gate,
-               test_seams_stay_unset, test_end_to_end_cli):
+               test_seams_stay_unset, test_end_to_end_cli,
+               test_doc02_renders, test_p2d_parser, test_doc02_gates,
+               test_real_runs):
         fn()
     print()
     if FAILURES:

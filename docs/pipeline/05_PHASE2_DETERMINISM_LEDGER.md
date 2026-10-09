@@ -169,6 +169,13 @@ This is a methodology question, not an engineering one. `RULE-*` is what would
 make an objective verifiable rather than restated, and it is precisely what is
 missing. Building a pipeline before answering it would automate the copy.
 
+**Answered 2026-10-09.** The researcher decided that the tail is not emitted in
+Doc01 v0.1 — de-scoped with a signpost, not left as an undocumented seam — and
+that Phase 2's generative cell is Doc02's per-case `Constraint` (§3.2, §3.3).
+Recorded in `docs/decisions/ADR-2026-10-09_phase2-objective-bridge.md`; the
+unseamed Doc01 columns are settled by offline measurement
+(`scripts/phase2_rule_discovery.py`), and the §4.1 premise itself is unchanged.
+
 ### 4.2 Four Case 03 objective cells contain raw baseline content
 
 `SO-D-01.3-003`, `SO-D-01.4-002`, `SO-D-01.4-004`, `SO-D-05.2-002` have an
@@ -258,6 +265,24 @@ the specificity is a level-descent without a warrant, which
 most likely an upstream rendering fault that Phase 2 passed through — but the row
 now silently loses its control anchoring.
 
+### 4.9 The three deliverables disagree on ownership granularity
+
+Added 2026-10-09, measured by `scripts/phase2_rule_discovery.py` (not by the
+ledger scan; see §5.4).
+
+Cases 01 and 02 ship a §13 governance matrix keyed on **sub-domains** (four
+columns, a dedicated `Core Sub-Domains Supervised` column). Case 03 ships a
+three-column matrix keyed on **domains** — `(D-01, D-05)` — buried in the
+governance-area label, with one row (*"AI governance (OmniScore, AI Act
+rows)"*) carrying no canonical id at all. §3.1 records the owner column as
+*no rule found* without noting that the three documents do not even share a
+granularity to search.
+
+The rule this enables is reproducible but **not deterministic**: "primary lead
+plus all supporting roles" matches 65.6% / 10.0% / 10.6% of rows, because the
+authors selected *some* supporting roles per row rather than the matrix's full
+list. §4.9's consequence is recorded in ADR-013 §3.
+
 ## 5. The prototype, and what it measured
 
 `pipeline/src/phase2.py` implements the derivable half of §3 against a real
@@ -321,6 +346,22 @@ This is the shape of defect §4.2 and §4.8 share: a structurally valid document
 carrying a silently wrong content. `doc_lint.py` cannot see any of them, and the
 prototype's gates exist to.
 
+### 5.4 A second, separate script — `scripts/phase2_rule_discovery.py`
+
+Added 2026-10-09 to discharge ADR-013 D3. It is **not** an extension of this
+ledger's backing scan: that script produces the numbers quoted throughout §1–§4,
+and changing the code that generates an already-published measurement would
+break its reproducibility. The new script answers a different question — *do the
+three columns marked "no rule found" have a derivation rule at all?* — by fitting
+candidate rules and reporting both in-sample and leave-one-case-out agreement.
+
+Its verdict, computed against a threshold frozen before the run: **no rule
+ships.** `Verification Criteria` collapses from 100 distinct values to 4 once the
+sub-domain slug is normalised (Case 03: 134 → 5), confirming §3.1's R10b
+challenge as a measurement; the regulation→method rule reaches 0.82 on Case 02
+and 0.55 on Case 03, which is the case for requiring all three rather than the
+best. Results in ADR-013 §3.
+
 ## 6. What this document does not do
 
 - No pipeline stage, prompt, ficha or `case.yaml` field. A column marked *no rule
@@ -331,12 +372,14 @@ prototype's gates exist to.
   them as chains; if the id scheme changes (§4.3, §4.4), Phase 3 chains must be
   re-anchored per R12b.
 - No verdict on whether Phase 2 should exist in its current form. That question
-  is §4.1 and it belongs to the researcher, not to this scan.
+  is §4.1 and it belongs to the researcher, not to this scan. **(Answered
+  2026-10-09 — see §4.1 and ADR-013.)**
 
 ## 7. Reproducing
 
 ```bash
 python3 scripts/phase2_ledger_scan.py                    # the measurements in §1-§4
+python3 scripts/phase2_rule_discovery.py                 # §5.4 — do the seams have a rule?
 python3 pipeline/src/phase2.py --run-dir <phase1 run> --out <dir>   # the prototype
 python3 pipeline/tests/phase2_test.py                     # the derivations
 ```

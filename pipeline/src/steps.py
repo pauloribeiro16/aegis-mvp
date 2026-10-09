@@ -29,16 +29,19 @@ from controls import (goal_anchors, parse_overrides, sd_control_sections,
 import quality
 import runconfig
 from llm import LLMError, OllamaClient
+from phase2 import PRINCIPLE_IDS
 from trace import Trace, count_calls, now_iso, update_manifest
 
 NUM_CTX = {"p1": 16384, "p2": 16384, "p3": 32768, "p3f": 16384, "p4": 32768,
-           "p4t": 32768}
+           "p4t": 32768, "p2d": 32768}
 # output budget per step (P4 tables are the largest model output)
 # P4 emits a 9-column table for every Sub-SO of a module: at 8192 the answer
 # was truncated mid-table and the L0 repair hit the same cap (job 1969983,
 # D-08.3). The budget is the table, not a sentence.
+# p2d emits 7 JSON objects of three prose fields — roughly a tenth of a P4
+# table, and the whole answer must land in one block, so 4096 has headroom.
 NUM_PREDICT = {"p1": 4096, "p2": 2048, "p3": 12288, "p3f": 2048, "p4": 16384,
-               "p4t": 4096}
+               "p4t": 4096, "p2d": 4096}
 
 PATTERNS = {"achieve", "cease", "maintain", "avoid", "optimize"}
 # template §3 renders long-form property names; normalize to the enum codes
@@ -457,8 +460,49 @@ def merge_tensions(per_sd: list[dict]) -> dict:
     return {"md": md, "tensions": rows, "assumptions": []}
 
 
+P2D_FIELDS = ("constraint", "method_lead", "eval_scope")
+
+
+def parse_p2d(answer: str) -> dict:
+    """The 7 secure-design principles, as a strict JSON list.
+
+    The one generative step in Phase 2 (ADR-013 D2). L0 is deliberately
+    unforgiving: exactly 7 objects, the canonical ids, in order, no duplicates,
+    no missing field. A principle dropped "because it does not activate" is a
+    silent loss dressed as judgement — the ficha tells the model to say so
+    inside the constraint instead.
+    """
+    import json as _json
+
+    raw = extract_fenced(answer, "json").strip()
+    data = _json.loads(raw)
+    rows = data.get("principles") if isinstance(data, dict) else data
+    if not isinstance(rows, list):
+        raise ValueError("p2d: expected a list under 'principles'")
+    if len(rows) != 7:
+        raise ValueError(f"p2d: expected exactly 7 principles, got {len(rows)}")
+    seen = set()
+    for i, r in enumerate(rows):
+        if not isinstance(r, dict):
+            raise ValueError(f"p2d: principle {i} is not an object")
+        pid = str(r.get("id", "")).strip()
+        if pid not in PRINCIPLE_IDS:
+            raise ValueError(f"p2d: principle {i} has id {pid!r}, not one of "
+                             f"{PRINCIPLE_IDS}")
+        if pid in seen:
+            raise ValueError(f"p2d: {pid} appears more than once")
+        seen.add(pid)
+        for f in P2D_FIELDS:
+            if not str(r.get(f, "") or "").strip():
+                raise ValueError(f"p2d: {pid} has an empty {f!r}")
+    missing = [p for p in PRINCIPLE_IDS if p not in seen]
+    if missing:
+        raise ValueError(f"p2d: no row for {', '.join(missing)}")
+    return {"principles": rows}
+
+
 PARSERS = {"p1": parse_p1, "p2": parse_p2, "p3": parse_p3, "p3f": parse_p3f,
-           "p4t": parse_p4t}
+           "p4t": parse_p4t, "p2d": parse_p2d}
 
 
 # --------------------------------------------------------------------------
@@ -495,6 +539,10 @@ def store_parsed(run_dir: Path, step: str, subdomain: str | None, parsed: dict) 
         (steps_dir / "tensions.md").write_text(parsed["md"] + "\n", encoding="utf-8")
         (steps_dir / "tensions.json").write_text(
             json.dumps({"tensions": parsed["tensions"]}, indent=1, ensure_ascii=False),
+            encoding="utf-8")
+    elif step == "p2d":
+        (steps_dir / "principles.json").write_text(
+            json.dumps({"principles": parsed["principles"]}, indent=1, ensure_ascii=False),
             encoding="utf-8")
 
 
@@ -571,6 +619,15 @@ EXTRA_INSTRUCTION = {
     "p1": "Wrap your answer: return ONLY one ```yaml fenced block with the fact sheet.",
     "p2": ("Wrap your answer: return ONLY one ```markdown fenced block containing the "
            "5-row §2 verdict table (header + 5 rows, nothing else)."),
+    # p2d is one call per run, and every one of the 7 rows has to survive as one
+    # JSON object or L0 rejects the whole answer. "Only" matters more here than
+    # anywhere else in the pipeline: a prose preamble is the cheapest way to lose
+    # the block, and the repair round costs a whole call.
+    "p2d": ("Wrap your answer: return ONLY one ```json fenced block shaped "
+            "{\"principles\": [ ... 7 objects ... ]}, each object with exactly the "
+            "keys \"id\", \"constraint\", \"method_lead\", \"eval_scope\". The seven "
+            "ids must be PRIN-ENG-01 through PRIN-ENG-07 in order, each appearing "
+            "exactly once. No text before or after the block."),
     # The default p3 wrap instruction was left as a dangling stub
     # ("...fenced block containing ") by an earlier prompt-engineering pass that
     # meant to replace it wholesale. The truncation is silent — the composed
@@ -1254,6 +1311,11 @@ class StepRunner:
         # is unchanged — the same estimate, the same 1.15 factor, the same
         # 131072 cap, still a hard refusal — only the forensics come first.
         in_dir = self.run_dir / "inputs"
+        # Phase 2 can be run against a Phase 1 run directory whose `inputs/`
+        # was never created (a resumed run, or one carried over from an older
+        # layout). Every prompt this call composes must land on disk BEFORE any
+        # model call, so the directory is created here rather than by `new-run`.
+        in_dir.mkdir(parents=True, exist_ok=True)
         sys_path = in_dir / f"{seq:03d}_{tag}_system.md"
         user_path = in_dir / f"{seq:03d}_{tag}_user.md"
         sys_path.write_text(call["system"], encoding="utf-8")
@@ -1777,6 +1839,74 @@ class StepRunner:
         if not self.dry_run:
             self._finalize_p5()
         return 0
+
+    def stage_phase2(self) -> int:
+        """Phase 2: Doc01 (deterministic) then Doc02 (one generative call).
+
+        Ordered so the deterministic half survives a failure of the generative
+        one: Doc01 needs nothing from a model, so a Doc02 abort must not take
+        the objectives with it. Doc02's constraints come from the `p2d` step
+        (PROM-P2-03); without it they render as `—`, which is the honest state
+        of a run that has not been synthesised yet.
+        """
+        import phase2 as p2
+
+        self._require(("steps/fact_sheet.yaml",), "G-P1-A")
+        if not (self.run_dir / "steps" / "goals").is_dir():
+            raise ValueError("no P4 goal artifacts — run stage p4 first")
+
+        rows = p2.build(self.repo, self.run_dir)
+        findings = p2.check(rows, self.run_dir)
+        if findings:
+            raise ValueError(
+                f"Phase 2 Doc01 gate failed with {len(findings)} finding(s): {findings}")
+
+        out_dir = self.run_dir / "outputs" / "phase2"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        (out_dir / "Doc01_Operational_Objectives.md").write_text(
+            p2.render_doc01(self.repo, self.run_dir, rows), encoding="utf-8")
+
+        calls = 0
+        # `_call` composes the pack, writes inputs/, appends a `dry-run` trace
+        # line and returns before any HTTP call. So the dry run still exercises
+        # the whole prompt-assembly path — which is the point of a dry run — and
+        # only the Doc02 synthesis is skipped.
+        self._call("p2d", None)
+        if not self.dry_run:
+            calls = 1
+            principles = p2.principles_for(self.run_dir)
+            doc2_findings = p2.check_doc02(self.repo, self.run_dir, principles)
+            if doc2_findings:
+                raise ValueError(
+                    f"Phase 2 Doc02 gate failed with {len(doc2_findings)} finding(s): "
+                    f"{doc2_findings}")
+            ratio = p2.grounding_ratio(principles, p2._fact_sheet(self.run_dir))
+        else:
+            # no principles were synthesised: the seams are the honest state.
+            principles, ratio = p2.principles_for(self.run_dir), 0.0
+        (out_dir / "Doc02_Secure_Design_Principles.md").write_text(
+            p2.render_doc02(self.repo, self.run_dir, principles), encoding="utf-8")
+
+        unseamed = sum(1 for p in principles
+                       if str(p.get("constraint", "")) in ("", p2.UNSET))
+        self._write_stage_result("phase2", {
+            "status": "ok" if (not self.dry_run and unseamed == 0) else "partial",
+            "selected": 7,
+            "carried": 7 - unseamed,
+            "failed": unseamed,
+            "objectives": len(rows),
+            "subdomains": len({r["subdomain"] for r in rows}),
+            "principles": len(principles),
+            "principles_unseamed": unseamed,
+            "grounding_ratio": ratio,
+            "calls": calls,
+            "summary": (f"{len(rows)} objectives over "
+                        f"{len({r['subdomain'] for r in rows})} sub-domains; "
+                        f"{7 - unseamed}/7 principles bound to this company"),
+            "doc01": str(out_dir / "Doc01_Operational_Objectives.md"),
+            "doc02": str(out_dir / "Doc02_Secure_Design_Principles.md"),
+        })
+        return calls
 
     def _finalize_p5(self) -> None:
         """Post-assembly gate: L1 validation runs NOW (before G-P1-D), and the

@@ -19,6 +19,13 @@ Design constraints taken from the ledger, not invented here:
   * Every cell this module cannot derive is emitted as an explicit `UNSET`
     marker, never as plausible filler. A blank cell is a visible seam; invented
     text is a lie that survives to Phase 3.
+
+Doc01 is fully deterministic. Doc02 is the opposite: its definitions are a
+baseline asset and its `Constraint` column is the one genuinely generative cell
+in Phase 2 (ledger §3.3). That column comes from the `p2d` step
+(`docs/pipeline/prompts/PROM-P2-03_SYNTHESIZE_PRINCIPLES.md`) and is loaded from
+`steps/principles.json`; with no such file every constraint renders as `UNSET`,
+which is the honest rendering of "not yet synthesised".
 """
 from __future__ import annotations
 
@@ -54,6 +61,77 @@ SCOPE_BY_REG = {
 #: Canonical regulation order, used only to ORDER rows. Slots themselves are
 #: inherited from Phase 1 — see module docstring.
 REG_ORDER = ["GDPR", "CRA", "NIS2", "DORA", "AI_Act"]
+
+#: The 7 universal engineering principles — a BASELINE ASSET (ADR-013 D2).
+#: Copied, never regenerated: `Definition` is byte-identical across all three
+#: hand-authored Doc02s for 5 of 7 (ledger §3.2). The per-case `Constraint` is
+#: the only generative cell in Doc02 (ledger §3.3), and it is what `p2d` produces.
+#:
+#: The `PRIN-ENG-06` and `-07` definitions use the Case 02/03 wording, which is
+#: the neutral one. Case 01 reads "strictly scoped DTOs" — an L4
+#: technology-class term recorded at ledger §4.7, and the reason the fixture
+#: selection is deliberate rather than arbitrary.
+CATEGORIES = [
+    {"n": 1, "title": "Architectural & Data Flow Modeling", "sec": "§2",
+     "def_col": "Architectural Definition", "con_col": "Diagrammatic & Modeling Constraint",
+     "domain": "System Architecture, Data Flow Diagrams (DFD), Component Topology, and Network Boundaries.",
+     "lit": "Adam Shostack (2014, *Threat Modeling: Designing for Security*); Jerome Saltzer & Michael Schroeder (1975)."},
+    {"n": 2, "title": "Core Systems & Access Security", "sec": "§3",
+     "def_col": "Security Definition", "con_col": "Architectural & Operational Constraint",
+     "domain": "System-wide access control, failure state handling, and resource isolation.",
+     "lit": "Jerome Saltzer & Michael Schroeder (1975, *The Protection of Information in Computer Systems*); OWASP."},
+    {"n": 3, "title": "Requirements Engineering & Verifiability", "sec": "§4",
+     "def_col": "Requirements Engineering Definition", "con_col": "Specification Constraint",
+     "domain": "Specification of system behaviors, verification criteria, and lifecycle traceability.",
+     "lit": "ISO/IEC/IEEE 29148:2018; INCOSE Guide to Writing Requirements; EARS (Mavin et al., 2009)."},
+    {"n": 4, "title": "Privacy by Design & Data Lifecycle", "sec": "§5",
+     "def_col": "Privacy Engineering Definition", "con_col": "Operational & Diagrammatic Constraint",
+     "domain": "Personal data lifecycle, data-subject sovereignty, and purpose-bound processing.",
+     "lit": "Ann Cavoukian (2009, *Privacy by Design: 7 Foundational Principles*); GDPR Art. 5, 17, 25; ISO/IEC 27701:2019."},
+]
+
+PRINCIPLES = [
+    {"id": "PRIN-ENG-01", "category": 1, "skill": "trust-boundary-analysis",
+     "name": "Explicit Trust Boundaries & Complete Mediation",
+     "source": "Shostack (2014) / Saltzer & Schroeder (1975)",
+     "definition": "Every interface separating zones of differing privilege must be visually demarcated, and every crossing flow must be authenticated and validated with zero unmediated bypasses."},
+    {"id": "PRIN-ENG-02", "category": 1, "skill": "attack-surface-analysis",
+     "name": "Attack Surface Minimization & Peripheral Resilience",
+     "source": "Howard & LeBlanc (2003) / Schneier (2000)",
+     "definition": "Accessible entry points, communication channels, and active interfaces must be reduced to the minimum necessary, and auxiliary ingress hooks must match core security intensity."},
+    {"id": "PRIN-ENG-03", "category": 2, "skill": "least-privilege-analysis",
+     "name": "Least Privilege & Mechanism Isolation",
+     "source": "Saltzer & Schroeder (1975)",
+     "definition": "Every principal (user, service, background worker) must operate with the minimum privileges necessary, and distinct tenants or sensitivity levels must not share unisolated execution mechanisms."},
+    {"id": "PRIN-ENG-04", "category": 2, "skill": "fail-safe-defaults-analysis",
+     "name": "Fail-Safe Defaults & Closed Failure States",
+     "source": "Saltzer & Schroeder (1975) / OWASP",
+     "definition": "Access decisions and state transitions must default to refusal, and unexpected failures or exceptions must terminate in a secure closed state without state corruption or data leakage."},
+    {"id": "PRIN-ENG-05", "category": 3, "skill": "verifiability-analysis",
+     "name": "Requirement Verifiability & Atomicity",
+     "source": "ISO/IEC/IEEE 29148:2018 / EARS (2009)",
+     "definition": "Every security and privacy requirement must be atomic (one single condition and response) and possess a deterministic, automated pass/fail verification method."},
+    {"id": "PRIN-ENG-06", "category": 4, "skill": "data-minimization-analysis",
+     "name": "Proactive Data Minimization & Scoped Projection",
+     "source": "Cavoukian (2009) / GDPR Art. 5(1)(c)",
+     "definition": "Only data strictly indispensable for fulfilling the declared service purpose may be collected, transmitted, or retained, and egress models must project strictly scoped data views."},
+    {"id": "PRIN-ENG-07", "category": 4, "skill": "lifecycle-erasure-analysis",
+     "name": "End-to-End Lifecycle Security & Irreversible Erasure",
+     "source": "Cavoukian (2009) / GDPR Art. 17",
+     "definition": "Protection covers the entire data lifecycle; data subject to erasure must be permanently destroyed across edge caches, primary stores, archives, and disaster-recovery copies."},
+]
+
+PRINCIPLE_IDS = [p["id"] for p in PRINCIPLES]
+
+#: Function words excluded from the grounding ratio. A constraint's tokens that
+#: appear in the fact sheet and in NO principle definition are the company-
+#: specific content. Deliberately a MEASUREMENT, not a gate (ficha PROM-P2-03,
+#: Guard hooks): M11 established that demanding a named artefact does not make
+#: a column more company-specific, so gating on it would reject a 7-row
+#: document into uselessness while teaching nothing.
+STOPWORDS = {"the", "and", "for", "with", "that", "this", "from", "every",
+             "must", "may", "its", "any", "all", "not", "are", "their",
+             "each", "which", "when", "where", "only", "into", "than", "then"}
 
 
 # --------------------------------------------------------------------------
@@ -161,7 +239,7 @@ def build(repo: Path, run_dir: Path) -> list[dict]:
 # --------------------------------------------------------------------------
 
 def check(rows: list[dict], run_dir: Path | None = None) -> list[str]:
-    """Findings. Empty list means the derived set passed everything below.
+    """Doc01 findings. Empty list means the derived set passed everything below.
 
     These are the defects that survived hand-authoring in cases 01-03 and that
     `doc_lint.py` cannot see, because each is a *content* fault inside a
@@ -222,6 +300,106 @@ def check(rows: list[dict], run_dir: Path | None = None) -> list[str]:
         for missing in sorted(upstream - have):
             out.append(f"{missing}: Phase 1 goal has no Phase 2 objective — dropped "
                        f"between phases")
+
+    return out
+
+
+#: The four empirical verification methods the Doc01 §1.3 publishes. A
+#: `method_lead` outside this vocabulary is not a rule, it is a new one.
+METHOD_VOCAB = {"TEST", "INSPECT", "DEMONSTRATE", "ANALYZE"}
+
+
+def _other_case_constraints(repo: Path) -> list[str]:
+    """Every other case's Doc02 `Constraint` cell, as flat text.
+
+    Read from the reference corpus in `cases/`, which is present on the cluster
+    checkout. Returns `[]` when it is absent, so the gate degrades to silence
+    rather than to a false accusation.
+    """
+    out: list[str] = []
+    for doc in sorted((repo / "cases").glob("Case_*/02_PHASE2_RULES/"
+                                            "Doc02_Secure_Design_Principles.md")):
+        try:
+            for line in doc.read_text(encoding="utf-8").splitlines():
+                if not re.match(r"^\|\s*`PRIN-ENG-\d\d`\s*\|", line):
+                    continue
+                cells = [c.strip() for c in line.strip().strip("|").split("|")]
+                if len(cells) >= 6:
+                    out.append(cells[4])
+        except OSError:
+            continue
+    return out
+
+
+def _foreign_vocab(repo: Path) -> frozenset[str]:
+    """Content words that belong to SOME OTHER company's architecture.
+
+    G7 checks contamination against this vocabulary rather than against a
+    capitalisation heuristic. A "does it look like a proper noun" regex cannot
+    see `eGate` — the capital is mid-word, so no word boundary precedes it —
+    which is precisely the token the ledger's §4.6 defect is made of. Comparing
+    against real foreign vocabulary catches the recorded defect by name and has
+    no capitalisation blind spot. The principle definitions' own words are
+    excluded, since those are shared by every company and carry no signal.
+    """
+    shared = set()
+    for p in PRINCIPLES:
+        shared |= set(re.findall(r"[a-z]{5,}", p["definition"].lower()))
+    vocab = set()
+    for text in _other_case_constraints(repo):
+        vocab |= set(re.findall(r"[a-z]{5,}", text.lower()))
+    return frozenset(vocab - shared - STOPWORDS)
+
+
+def check_doc02(repo: Path, run_dir: Path, principles: list[dict]) -> list[str]:
+    """Doc02 findings: G5 completeness, G6 technology neutrality, G7 grounding.
+
+    G7 mechanises ledger §4.6 — Case 03's Doc02 carrying Case 02's eGate
+    architecture — as a checkable property instead of a reviewer's memory.
+    The check is one-directional on purpose. A constraint that says nothing
+    company-specific is a weak document (reported by `grounding_ratio`), not a
+    defect, so it is measured rather than failed.
+    """
+    import quality  # noqa: PLC0415 — local: quality imports nothing from here
+
+    out: list[str] = []
+    by_id = {p["id"]: p for p in principles}
+
+    # G5 — every canonical principle exactly once. A dropped row and a duplicated
+    # row both leave a structurally valid table, which is why the check is
+    # bidirectional rather than a count.
+    for pid in PRINCIPLE_IDS:
+        if pid not in by_id:
+            out.append(f"{pid}: Doc02 has no row for this principle")
+    for pid, row in sorted(by_id.items()):
+        if pid not in PRINCIPLE_IDS:
+            out.append(f"{pid}: Doc02 carries an unknown principle id")
+
+    fact = _fact_sheet(run_dir)
+    declared = set(re.findall(r"[a-z]{5,}", fact.lower())) if fact else set()
+    foreign = _foreign_vocab(repo) - declared
+    for pid in PRINCIPLE_IDS:
+        row = by_id.get(pid)
+        if row is None:
+            continue
+        constraint = str(row.get("constraint", "") or "")
+        if not constraint.strip() or constraint == UNSET:
+            continue  # a declared seam is honest; an invented cell is not
+        # G6 — R5/R13 technology neutrality, reusing the Phase 1 gate.
+        out += [f"{pid}: {f}" for f in quality.check_no_technology(
+            constraint, str(row.get("method_lead", "")), str(row.get("eval_scope", "")))]
+        # G7 — another company's architecture, by name.
+        hits = sorted(set(re.findall(r"[a-z]{5,}", constraint.lower())) & foreign)
+        if hits:
+            out.append(f"{pid}: constraint names {', '.join(hits)} — vocabulary of "
+                       f"another case, absent from this run's fact sheet (ledger §4.6)")
+
+        method = str(row.get("method_lead", "") or "").strip()
+        if method and method != UNSET:
+            head = method.split(":")[0].split("(")[0].strip().strip("`").upper()
+            if head and head not in METHOD_VOCAB:
+                out.append(f"{pid}: method_lead {head!r} is outside the published "
+                           f"vocabulary {sorted(METHOD_VOCAB)}")
 
     return out
 
@@ -296,17 +474,124 @@ def render_doc01(repo: Path, run_dir: Path, rows: list[dict]) -> str:
     return "\n".join(lines)
 
 
-def render_doc02() -> str:
-    """Doc02 prototype. The 7 principles are a baseline asset; the per-case
-    constraint is a seam, so the principles render with their UNSET constraint
-    rather than with another company's architecture (ledger §4.6)."""
-    return "\n".join([
-        "# Secure Design & Systems Engineering Principles",
+def principles_for(run_dir: Path) -> list[dict]:
+    """The per-case `Constraint` / `Method & Lead` / `Evaluation Scope` triples.
+
+    Read from `steps/principles.json` when the `p2d` step ran; otherwise every
+    generative cell renders as `UNSET`. The fallback is deliberate and loud —
+    rendering another company's architecture here is the defect the ledger
+    records at §4.6, and a seam is the honest alternative to it.
+    """
+    by_id: dict[str, dict] = {}
+    f = run_dir / "steps" / "principles.json"
+    if f.exists():
+        try:
+            data = json.loads(f.read_text(encoding="utf-8"))
+            for p in data.get("principles", []):
+                if isinstance(p, dict) and p.get("id") in PRINCIPLE_IDS:
+                    by_id[p["id"]] = p
+        except (OSError, ValueError):
+            by_id = {}
+    return [dict(by_id.get(p["id"], {}), **p) for p in PRINCIPLES]
+
+
+def grounding_ratio(principles: list[dict], fact_sheet: str) -> float:
+    """Share of constraints carrying content absent from the definitions.
+
+    A constraint is counted as grounded when it contains at least one token
+    that appears in the company's fact sheet and in NO principle definition —
+    i.e. content that could only come from this company. A constraint that is
+    only the definition restated scores 0. Reported, never gated (see
+    `STOPWORDS`).
+    """
+    generic = set()
+    for p in PRINCIPLES:
+        generic |= set(re.findall(r"[a-z]{3,}", p["definition"].lower()))
+    company = set(re.findall(r"[a-z]{3,}", fact_sheet.lower())) - generic - STOPWORDS
+    if not company:
+        return 0.0
+    hit = 0
+    for p in principles:
+        con = str(p.get("constraint", "") or "").lower()
+        if con and any(t in company for t in set(re.findall(r"[a-z]{3,}", con))):
+            hit += 1
+    return round(hit / len(principles), 3) if principles else 0.0
+
+
+def _fact_sheet(run_dir: Path) -> str:
+    f = run_dir / "steps" / "fact_sheet.yaml"
+    return f.read_text(encoding="utf-8") if f.exists() else ""
+
+
+def render_doc02(repo: Path, run_dir: Path, principles: list[dict]) -> str:
+    """Doc02 — the engineering spine. Four category tables plus the §6 skill map.
+
+    The `Definition` column is a baseline asset copied from `PRINCIPLES`
+    (ADR-013 D2); the `Constraint` column is the per-case work `p2d` produces
+    (ledger §3.3). §6 emits REPO-RELATIVE paths: the absolute
+    `file:///c:/Users/…` links the hand-authored deliverables carry resolve only
+    on the author's machine (ledger §4.5).
+    """
+    by_id = {p["id"]: p for p in principles}
+    lines = [
+        f"# Secure Design & Systems Engineering Principles — {_company_name(repo, run_dir)}",
         "",
-        "> **Prototype:** principle scaffolding only. Per-case constraints are a "
-        "seam and render as `—`.",
+        "> **Document Purpose:** establishes the 7 technology-agnostic engineering "
+        "principles that constrain this company's solution space before "
+        "technologies are chosen in Phase 3. The definitions are a baseline "
+        "asset; the `Constraint` column is this company's own architecture. A "
+        "`—` cell is a seam — the pipeline has no derivation for it — not a "
+        "guess.",
         "",
-    ])
+        "## §1 The engineering spine",
+        "",
+        "Phase 2 runs on two non-overlapping pillars. **Doc01** carries the "
+        "regulatory spine: what the law proportionally requires, as verifiable "
+        "operational objectives. **Doc02** carries the engineering spine: 7 "
+        "universal principles bound to this company's architecture. Per "
+        "ISO/IEC/IEEE 29148:2018 clause 5.2.4 these state *verifiable "
+        "architectural constraints* — what boundaries, invariants and failure "
+        "modes must hold — without prescribing concrete database engines, "
+        "frameworks, protocols or libraries, which belong to Phase 3.",
+        "",
+    ]
+    for cat in CATEGORIES:
+        lines += [
+            f"## {cat['sec']} Principles Category {cat['n']} — {cat['title']}",
+            "",
+            f"> **Governing Domain:** {cat['domain']}  ",
+            f"> **Foundational Literature:** {cat['lit']}",
+            "",
+            f"| Principle ID | Principle Name | Academic Source | {cat['def_col']} | "
+            f"{cat['con_col']} | Verification Method & Lead |",
+            "|---|---|---|---|---|---|",
+        ]
+        for p in PRINCIPLES:
+            if p["category"] != cat["n"]:
+                continue
+            row = by_id.get(p["id"], {})
+            lines.append(
+                f"| `{p['id']}` | **{p['name']}** | {p['source']} | {p['definition']} | "
+                f"{cell(row.get('constraint', ''))} | {cell(row.get('method_lead', ''))} |")
+        lines.append("")
+
+    lines += [
+        "## §6 Operationalization via Specialized Agentic Skills (1:1 symmetry)",
+        "",
+        "| Principle ID | Principle Name | Specialized Autonomous Skill | Path in Repository | Primary Evaluation Scope |",
+        "|---|---|---|---|---|",
+    ]
+    for p in PRINCIPLES:
+        row = by_id.get(p["id"], {})
+        lines.append(
+            f"| `{p['id']}` | {p['name']} | `{p['skill']}` | "
+            f"[`baseline/skills/{p['skill']}/`](baseline/skills/{p['skill']}/) | "
+            f"{cell(row.get('eval_scope', ''))} |")
+    lines += ["", "## §7 Version History", "",
+              "| Version | Date | Author / Role | Changes |", "|---|---|---|---|",
+              "| `0.1` | — | aegis-mvp phase2 | Definitions from the baseline; "
+              "constraints per company. |", ""]
+    return "\n".join(lines)
 
 
 def _case_id(run_dir: Path) -> str:
@@ -349,8 +634,13 @@ def main(argv=None) -> int:
     rows = build(repo, run_dir)
     findings = check(rows, run_dir)
 
+    principles = principles_for(run_dir)
+    findings += check_doc02(repo, run_dir, principles)
+    ratio = grounding_ratio(principles, _fact_sheet(run_dir))
+
     if args.json:
-        print(json.dumps(rows, indent=1, ensure_ascii=False))
+        print(json.dumps({"objectives": rows, "principles": principles,
+                          "grounding_ratio": ratio}, indent=1, ensure_ascii=False))
         return 1 if findings else 0
 
     if args.out:
@@ -358,13 +648,16 @@ def main(argv=None) -> int:
         (args.out / "Doc01_Operational_Objectives.md").write_text(
             render_doc01(repo, run_dir, rows), encoding="utf-8")
         (args.out / "Doc02_Secure_Design_Principles.md").write_text(
-            render_doc02(), encoding="utf-8")
+            render_doc02(repo, run_dir, principles), encoding="utf-8")
 
     seams = {c: sum(1 for r in rows if r[c] == UNSET)
              for c in ("scope", "criteria", "method", "owner", "anchors")}
+    unseamed_prin = sum(1 for p in principles
+                        if str(p.get("constraint", "")) in ("", UNSET))
     print(f"objectives: {len(rows)}   sub-domains: {len({r['subdomain'] for r in rows})}")
     print(f"confirmed regulations: {_confirmed(run_dir) or 'not recorded in this run'}")
     print(f"unseamed cells: {seams}")
+    print(f"doc02 constraints unseamed: {unseamed_prin}/7   grounding_ratio: {ratio}")
     if findings:
         print(f"GATE FAIL ({len(findings)}):")
         for f in findings[:20]:

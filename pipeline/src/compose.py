@@ -28,6 +28,7 @@ FICHA_FILES = {
     "p4": "PROM-P1-04_DERIVE_ADJUSTED_GOALS.md",
     "p4t": "PROM-P1-07_RESOLVE_TENSIONS.md",
     "p5": "PROM-P1-05_RENDER_VALIDATE.md",
+    "p2d": "PROM-P2-03_SYNTHESIZE_PRINCIPLES.md",
 }
 
 # Sub-domain id like D-01.1
@@ -585,6 +586,30 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
         files.append(("templates/doc02_adjusted_goals.md §0 (deliverable contract)",
                       extract_markdown_section(t, "## §0", ["## §1"])))
 
+    elif step == "p2d":
+        # The 7 definitions are a BASELINE ASSET copied into the pack, never
+        # regenerated (ADR-013 D2; ledger §3.2 — the same text in three unrelated
+        # companies for 5 of 7). The local import breaks the compose<->phase2
+        # module cycle: by the time build_pack runs, compose is fully loaded.
+        import phase2 as _p2  # noqa: PLC0415 — local, cycle-breaking
+
+        files.append(("steps/fact_sheet.yaml",
+                      (run_dir / "steps" / "fact_sheet.yaml").read_text(encoding="utf-8")))
+        blocks = []
+        for p in _p2.PRINCIPLES:
+            cat = next(c for c in _p2.CATEGORIES if c["n"] == p["category"])
+            blocks.append(
+                f"### {p['id']} — {p['name']}\n"
+                f"Category {cat['n']} ({cat['title']}). Academic source: {p['source']}.\n"
+                f"UNIVERSAL DEFINITION (do not restate, bind it): {p['definition']}")
+        header = (
+            "The 7 principles below are universal and already written. They are the "
+            "BASELINE, not the work: your output is the per-company architectural "
+            "constraint that instantiates each one. Do not restate a definition as a "
+            "constraint — that is the single failure mode this step exists to avoid."
+        )
+        files.append(("pack-p2d/principles.md", header + "\n\n" + "\n\n".join(blocks)))
+
     elif step == "p3":
         confirmed = confirmed_regulations(run_dir)
         files.append(("steps/fact_sheet.yaml", (run_dir / "steps" / "fact_sheet.yaml").read_text(encoding="utf-8")))
@@ -735,11 +760,23 @@ def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
     files, pack_text = build_pack(pack_step, repo, case, run_dir)
 
     title = f"{ficha['id']} — {subdomain}" if subdomain else ficha["id"]
-    extraction = not step.startswith(("p3", "p3f", "p4", "p4t"))
-    system = (
-        f"You are {ficha['role']}.\n{ficha['mission']}\n\n"
-        "General discipline (binding):\n"
-        + ("- Extract only what the attached sources state; never invent facts, IDs or anchors.\n"
+    extraction = not step.startswith(("p3", "p3f", "p4", "p4t", "p2d"))
+    if step.startswith("p2d"):
+        # p2d has no Sub-SO and no obligation to keep intact — it binds a
+        # baseline principle to a company. It therefore gets its own clause
+        # rather than the p4 one, whose "do not drop a leg" advice would be
+        # meaningless here and reads as a non sequitur to the model.
+        discipline = (
+            "- The universal definitions in the pack are the BASELINE, not the task. "
+            "Your output binds each principle to this company's own architecture; "
+            "never restate a definition as if it were the constraint.\n"
+            "- Never invent a fact ABOUT THE COMPANY: every company statement traces "
+            "to the fact sheet, or it is a fabrication (R6). If the fact sheet does "
+            "not settle something, say so rather than filling it in.\n"
+            "- Use canonical identifiers exactly as they appear in the sources.\n"
+            "- Flag what cannot be decided instead of dropping or guessing it.\n")
+    else:
+        discipline = ("- Extract only what the attached sources state; never invent facts, IDs or anchors.\n"
            "- Use canonical identifiers exactly as they appear in the sources.\n"
            "- Flag what cannot be decided instead of dropping or guessing it.\n"
            if extraction else
@@ -754,6 +791,10 @@ def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
            "the fact sheet or the framing, or it is a fabrication (R6).\n"
            "- Use canonical identifiers exactly as they appear in the sources.\n"
            "- Flag what cannot be decided instead of dropping or guessing it.\n")
+    system = (
+        f"You are {ficha['role']}.\n{ficha['mission']}\n\n"
+        "General discipline (binding):\n"
+        + discipline
         + "- No tools, vendors, or implementation technologies in any statement.\n"
         f"- Produce ONLY the requested output artifact, exactly in the Output schema; no extra commentary.\n"
         f"- Output language: {case['output_language']}.\n"

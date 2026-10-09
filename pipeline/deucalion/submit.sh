@@ -18,7 +18,7 @@
 # a resumed stage cannot be silently re-sampled with different settings.
 set -euo pipefail
 
-STAGE="${1:?stage required: p1|p2|p3|p3f|p4|p4t|p5|p4p5|all|agentic}"
+STAGE="${1:?stage required: p1|p2|p3|p3f|p4|p4t|p5|phase2|p4p5|all|agentic}"
 # MVP_CASE is honoured so every driver knob is an env var (MODEL, RUN_TAG and
 # the sampler knobs already are). A resumed run that forgets $2 used to fall
 # back to Case_01 silently: the stage then assembled the deliverable from the
@@ -40,8 +40,8 @@ mkdir -p runs
 # Validate before queueing: an unknown stage would otherwise start a GPU job
 # (and an Ollama server) only for run_pipeline.py's argparse to reject it.
 case "$STAGE" in
-  p1|p2|p3|p3f|p4|p4t|p5|p4p5|all|agentic) ;;
-  *) echo "FATAL: unknown stage '$STAGE' (expected: p1|p2|p3|p3f|p4|p4t|p5|p4p5|all|agentic)" >&2
+  p1|p2|p3|p3f|p4|p4t|p5|phase2|p4p5|all|agentic) ;;
+  *) echo "FATAL: unknown stage '$STAGE' (expected: p1|p2|p3|p3f|p4|p4t|p5|phase2|p4p5|all|agentic)" >&2
      exit 2 ;;
 esac
 
@@ -74,6 +74,7 @@ case "$STAGE" in
   p3|p3f) TIME=00:45:00 ;;
   p4t)    TIME=00:45:00 ;;
   p4|p4p5) TIME=03:00:00 ;;  # 1 call per selected sub-domain, sequential + render
+  phase2)  TIME=00:30:00 ;;  # Doc01 is deterministic; p2d is ONE call per run
   all)     TIME=04:00:00 ;;  # partition MaxTime; actual ~40 min (p4 dominates)
   agentic) TIME=04:00:00 ;;  # one long tool-calling conversation; resumable via checkpoint
 esac

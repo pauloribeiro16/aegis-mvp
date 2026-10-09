@@ -1,9 +1,9 @@
 ---
 document_id: AEGIS-MVP-ASSUMPTIONS
 title: 'Assumption register — load-bearing assumptions with signposts'
-version: 1.1.0
+version: 1.2.0
 created: 2026-10-04
-updated: 2026-10-05
+updated: 2026-10-09
 status: ACTIVE
 upstream: 'AGENTS.md §-2 (rule 5), AEGIS-RES-10 §1 SM-008, ADR-2026-10-05_pack-budget-and-context-policy'
 ---
@@ -31,6 +31,7 @@ record the date and the follow-up in the same row, and open the contingency.
 | A6 | **ADR-011 D2** — schema desenhado, grafo materializado "on demand"; os packs servem as perguntas das Fases 1–3 | ADR-2026-10-01_knowledge-representation.md D2/D4 | E-13 dispara (T6 / pergunta relacional que os packs não respondem) | Materializar o grafo (builder determinístico) e revisitar a ADR — revê-se, não se defende | ABERTO |
 | A7 | **O forward pass do juiz não-determinístico não é alcançável por seed** — mesmo temperature=0 + greedy deixa items a inverter [S-241] | AEGIS-RES-09 §4.1; PREREG_02 E-17 caveat | Um provider retirar o parâmetro temperature (Claude Opus 4.7/4.8 já rejeita, HTTP 400) | Re-medir o piso do judge com o protocolo E-17; nenhum A/B judged sem piso válido | **FECHADO — 2026-10-05, contingência CADUCADA** (ver nota A7 abaixo) |
 | A8 | **O orçamento de contexto é uma restrição, não uma conveniência** — a escada de `num_ctx` existe porque os packs precisam de mais do que cabe, e por isso valeria a pena subi-la | ADR-2026-10-05_pack-budget-and-context-policy.md §1.1–§1.3, D1/D6 | (a) E-15 achar retenção da cadeia **igual** nos orçamentos current / 0.75× / 0.5× — o orçamento nunca foi a restrição; **ou** (b) um pack real ultrapassar 50 k tokens de prompt depois de D1; **ou** (c) uma célula `context-fail` registada (`PLANO_FECHO.md:124`) persistir depois de D1 | E-15 corre (0 GPU-h, já preregistrado); se (a) sem (b)/(c), o contexto sai da lista de restrições e a energia vai para onde os abortos estão de facto — as L0 quality gates | ABERTO |
+| A9 | **A F2 não emite o tail `RULE-*` porque nenhum artefacto do corpus define a linha RULE** (colunas, derivação de âncoras, método de verificação) — a omissão nos 3 casos manuais é evidência de forma indeterminada, não de um artefacto forgotten | ADR-2026-10-09_phase2-objective-bridge.md D1; ledger §1 finding 2, §4.1 | (a) um schema de linha RULE ser definido na metodologia; **ou** (b) a F3 declarar que não consegue citar um artefacto de nível regra; **ou** (c) a restrição Doc02 gerada para uma 4.ª empresa estruturalmente diferente sair genérica | Definir a linha RULE e re-emitir Doc01; revê-se a decisão, não se defende | ABERTO |
 
 ## Notes on the state changes (2026-10-05)
 

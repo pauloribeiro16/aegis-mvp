@@ -286,7 +286,7 @@ def main() -> int:
 
     p_run = sub.add_parser("run", help="execute one stage")
     p_run.add_argument("--stage", required=True,
-                       choices=["p1", "p2", "p3f", "p3", "p4", "p4t", "p5",
+                       choices=["p1", "p2", "p3f", "p3", "p4", "p4t", "p5", "phase2",
                                 "p4p5", "p4tp5", "all", "agentic"])
     p_run.add_argument("--repo", type=Path, default=REPO_DEFAULT)
     p_run.add_argument("--run-dir", type=Path, required=True)

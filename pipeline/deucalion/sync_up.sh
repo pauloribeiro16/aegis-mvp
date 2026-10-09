@@ -28,6 +28,7 @@ TAR="$(mktemp /tmp/aegis_mvp_sync_XXXX.tgz)"
 tar --exclude='__pycache__' --exclude='*.pyc' --exclude='pipeline/runs' \
     -czf "$TAR" \
     pipeline docs/pipeline baseline/domains baseline/MAPPINGS baseline/CONTROLS \
+    baseline/skills \
     templates example SPEC.md config.yaml .cluster_sync_rev cases
 echo "payload: $(du -h "$TAR" | cut -f1) (rev $REV)"
 # Stage through the NFS project dir — Deucalion login nodes do NOT share /tmp

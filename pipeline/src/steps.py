@@ -501,9 +501,9 @@ def parse_p2d(answer: str) -> dict:
     return {"principles": rows}
 
 
-def parse_p2o(answer: str) -> dict:
+def parse_p2o(answer: str, subdomain: str | None = None) -> dict:
     import phase2 as _p2
-    return _p2.parse_p2o(answer)
+    return _p2.parse_p2o(answer, subdomain)
 
 
 PARSERS = {"p1": parse_p1, "p2": parse_p2, "p3": parse_p3, "p3f": parse_p3f,

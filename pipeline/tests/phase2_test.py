@@ -579,6 +579,16 @@ def test_p2o_enrichment_hardening() -> None:
           rule_ids == [f"RULE-D-01.1-{n:03d}" for n in (1, 2, 3, 4)], str(rule_ids))
     check("rule ids are unique", len(set(rule_ids)) == len(rule_ids))
 
+    # the STEPS wrapper is the call site the stage actually uses: it must
+    # accept and forward the sub-domain (job 1996890: a 1-arg wrapper turned
+    # every p2o call into `takes 1 positional argument but 2 were given` — the
+    # phase2-level tests never exercised this route)
+    import steps as _steps
+    check("steps.parse_p2o wrapper forwards the sub-domain",
+          _steps.parse_p2o(two_obj, "D-01.1")["subdomain"] == "D-01.1")
+    check("steps.parse_p2o stays 1-arg compatible",
+          _steps.parse_p2o(two_obj)["objectives"][0]["method"] == "TEST")
+
     # a PO/SO swap by the model must still match its row via the slot
     check("slot survives a prefix swap",
           phase2._slot_of("SO-D-01.1-001") == "D-01.1-001"

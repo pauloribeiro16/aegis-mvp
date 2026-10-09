@@ -74,7 +74,7 @@ case "$STAGE" in
   p3|p3f) TIME=00:45:00 ;;
   p4t)    TIME=00:45:00 ;;
   p4|p4p5) TIME=03:00:00 ;;  # 1 call per selected sub-domain, sequential + render
-  phase2)  TIME=00:30:00 ;;  # Doc01 is deterministic; p2d is ONE call per run
+  phase2)  TIME=02:00:00 ;;  # enriched: 1 p2o call per sub-domain (38, sequential, resume) + 1 p2d
   all)     TIME=04:00:00 ;;  # partition MaxTime; actual ~40 min (p4 dominates)
   agentic) TIME=04:00:00 ;;  # one long tool-calling conversation; resumable via checkpoint
 esac

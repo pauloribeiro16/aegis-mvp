@@ -534,6 +534,130 @@ def test_p2o_parser_and_enrichment() -> None:
         check("rendered doc01 carries RULE-* table", "RULE-D-01.1-001" in text)
 
 
+def test_p2o_enrichment_hardening() -> None:
+    """The enriched p2o path's own failure modes, each one structural.
+
+    Rule ids must stay unique across objectives of one call (the model's
+    numbering restarts per objective); objective ids must carry this
+    sub-domain's slot; criteria must not be a repeated template; G0 must
+    refuse a selected sub-domain whose goal file exists but is EMPTY (the
+    registered Case 01 defect, prereg X1) — a file-count check would wave
+    it through and the sub-domain would vanish from Doc01 silently.
+    """
+    print("\np2o enrichment hardening")
+    two_obj = """```json
+    {
+      "subdomain": "D-01.1",
+      "operational_translation": "Encryption posture restated for this company's storage tier.",
+      "objectives": [
+        {
+          "objective_id": "PO-D-01.1-001",
+          "method": "TEST",
+          "criteria": "Automated pipeline tests confirm authenticated encryption of personal data volumes at rest.",
+          "owner": "Lead Developer",
+          "rules": [
+            {"rule_id": "RULE-D-01.1-001", "statement": "The system SHALL enforce authenticated encryption on persistent stores.", "verification_target": "TEST"},
+            {"rule_id": "RULE-D-01.1-002", "statement": "Key rotation MUST complete without service downtime.", "verification_target": "TEST"}
+          ]
+        },
+        {
+          "objective_id": "SO-D-01.1-002",
+          "method": "INSPECT",
+          "criteria": "Quarterly configuration audit reviews encryption settings against the published baseline checklist.",
+          "owner": "CISO",
+          "rules": [
+            {"rule_id": "RULE-D-01.1-001", "statement": "The service SHALL deny plaintext storage fallback paths.", "verification_target": "INSPECT"},
+            {"rule_id": "RULE-D-01.1-002", "statement": "Audit records MUST capture every encryption-mode downgrade attempt.", "verification_target": "INSPECT"}
+          ]
+        }
+      ]
+    }
+    ```"""
+    parsed = phase2.parse_p2o(two_obj, "D-01.1")
+    rule_ids = [rl["rule_id"] for o in parsed["objectives"] for rl in o["rules"]]
+    check("rule ids renumber canonically across the whole call",
+          rule_ids == [f"RULE-D-01.1-{n:03d}" for n in (1, 2, 3, 4)], str(rule_ids))
+    check("rule ids are unique", len(set(rule_ids)) == len(rule_ids))
+
+    # a PO/SO swap by the model must still match its row via the slot
+    check("slot survives a prefix swap",
+          phase2._slot_of("SO-D-01.1-001") == "D-01.1-001"
+          and phase2._slot_of("PO-D-01.1-001") == "D-01.1-001")
+
+    wrong_slot = two_obj.replace("SO-D-01.1-002", "SO-D-01.2-002")
+    try:
+        phase2.parse_p2o(wrong_slot, "D-01.1")
+        check("objective from another sub-domain is rejected", False)
+    except ValueError as e:
+        check("objective from another sub-domain is rejected", "belongs to" in str(e))
+
+    garbage_id = two_obj.replace("SO-D-01.1-002", "R-7")
+    try:
+        phase2.parse_p2o(garbage_id, "D-01.1")
+        check("malformed objective id is rejected", False)
+    except ValueError as e:
+        check("malformed objective id is rejected", "not a" in str(e))
+
+    dup = two_obj.replace(
+        "Quarterly configuration audit reviews encryption settings against the published baseline checklist.",
+        "Automated pipeline tests confirm authenticated encryption of personal data volumes at rest.")
+    try:
+        phase2.parse_p2o(dup, "D-01.1")
+        check("duplicated criteria template is rejected", False)
+    except ValueError as e:
+        check("duplicated criteria template is rejected", "duplicates" in str(e))
+
+    thin = two_obj.replace(
+        "Quarterly configuration audit reviews encryption settings against the published baseline checklist.",
+        "Compliance is ensured.")
+    try:
+        phase2.parse_p2o(thin, "D-01.1")
+        check("thin non-falsifiable criteria is rejected", False)
+    except ValueError as e:
+        check("thin non-falsifiable criteria is rejected", "too thin" in str(e))
+
+    loose = two_obj.replace('"subdomain": "D-01.1"', '"subdomain": "d_01.1"')
+    check("subdomain field is normalised before comparing",
+          phase2.parse_p2o(loose, "D-01.1")["subdomain"] == "D-01.1")
+
+    # seam metrics + diversity + the G0 empty-file regression
+    with tempfile.TemporaryDirectory() as td:
+        tmp = Path(td)
+        run = synth_run(tmp, [goal("AG-D-01.1-001", "GDPR"),
+                              goal("AG-D-01.1-002", "NIS2")],
+                        selected=["D-01.1", "D-08.3"])
+        (run / "steps" / "goals" / "D-08_3.json").write_text(
+            json.dumps({"subdomain": "D-08.3", "goals": []}), encoding="utf-8")
+        rows = phase2.build(REPO, run)
+        findings = phase2.check(rows, run)
+        check("G0 fires on a selected sub-domain whose goal file is EMPTY",
+              any("upstream incomplete" in f and "D-08.3" in f for f in findings),
+              str(findings)[:90])
+
+        p2_dir = run / "steps" / "phase2"
+        p2_dir.mkdir(parents=True)
+        (p2_dir / "D-01_1.json").write_text(json.dumps(parsed), encoding="utf-8")
+        op_map = phase2.load_operationalizations(run)
+        filled, total = phase2.seam_fill(rows, op_map)
+        check("seam_fill counts every matched objective", (filled, total) == (2, 2),
+              f"{filled}/{total}")
+        check("method distribution counts per method",
+              phase2.method_distribution(op_map) == {"INSPECT": 1, "TEST": 1})
+        text = phase2.render_doc01(REPO, run, rows)
+        check("rendered RULE table carries continuous canonical ids",
+              all(f"RULE-D-01.1-{n:03d}" in text for n in (1, 2, 3, 4)))
+        check("rendered RULE table carries both parent objectives",
+              "PO-D-01.1-001" in text and "SO-D-01.1-002" in text)
+
+    check("balanced method distribution passes",
+          not phase2.method_diversity_findings({"TEST": 5, "INSPECT": 3, "ANALYZE": 2}))
+    collapsed = phase2.method_diversity_findings({"TEST": 8, "INSPECT": 1, "DEMONSTRATE": 1})
+    check("one method over the 60% ceiling is flagged",
+          len(collapsed) == 1 and "TEST" in collapsed[0], str(collapsed)[:80])
+    check("batches too small to speak of distribution stay silent",
+          not phase2.method_diversity_findings({"TEST": 3}))
+
+
 def main() -> int:
     print("phase2_test — derivations anchored to Phase 1 and the corpus")
     for fn in (test_id_derivation, test_slot_inherited, test_anchors_resolve,
@@ -543,7 +667,8 @@ def main() -> int:
                test_repair_messages_point_at_the_corridor,
                test_no_exemplar_is_near_verbatim_to_a_baseline,
                test_eu_legal_citations_are_not_fabrications,
-               test_p2o_parser_and_enrichment, test_real_runs):
+               test_p2o_parser_and_enrichment, test_real_runs,
+               test_p2o_enrichment_hardening):
         fn()
     print()
     if FAILURES:

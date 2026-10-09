@@ -473,6 +473,67 @@ def load_operationalizations(run_dir: Path) -> dict[str, dict]:
     return out
 
 
+def _slot_of(objective_id: str) -> str | None:
+    """`SO-D-06.3-002` -> `D-06.3-002`. The regulation prefix is positional.
+
+    Matching operationalization data by FULL id would silently drop a row
+    whose model answer wrote `SO-` where Phase 1 derived `PO-` (GDPR slot):
+    the seams would stay `—` with nothing to point at. The slot is the
+    identity the two sides share by construction.
+    """
+    m = re.search(r"(D-\d{2}\.\d-\d{3})$", objective_id or "")
+    return m.group(1) if m else None
+
+
+def _ops_by_slot(op_data: dict) -> dict[str, dict]:
+    out: dict[str, dict] = {}
+    for o in op_data.get("objectives", []):
+        s = _slot_of(str(o.get("objective_id", "")))
+        if s:
+            out[s] = o
+    return out
+
+
+def seam_fill(rows: list[dict], op_map: dict[str, dict]) -> tuple[int, int]:
+    """(objectives whose method/criteria/owner came through, total objectives).
+
+    Measured, not gated: a p2o sub-domain that failed must surface as a
+    number in the stage result, not as silent `—` cells in the document.
+    """
+    by_slot: dict[str, dict] = {}
+    for blob in op_map.values():
+        by_slot.update(_ops_by_slot(blob))
+    filled = sum(1 for r in rows
+                 if by_slot.get(_slot_of(r["objective_id"]), {}).get("criteria"))
+    return filled, len(rows)
+
+
+def method_distribution(op_map: dict[str, dict]) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    for blob in op_map.values():
+        for o in blob.get("objectives", []):
+            m = str(o.get("method", ""))
+            counts[m] = counts.get(m, 0) + 1
+    return dict(sorted(counts.items()))
+
+
+def method_diversity_findings(dist: dict[str, int]) -> list[str]:
+    """R10b invariant 3: a default exceeding 60% of the batch is mode collapse.
+
+    The four ISO 29148 methods are the vocabulary the ficha offers; a batch
+    where one of them swallows the rest is the model picking a default, not
+    classifying — the same distribution ceiling the Phase 1 adjustment badge
+    was measured against.
+    """
+    total = sum(dist.values())
+    if total < 4:
+        return []
+    return [f"method {m}: {n}/{total} objectives ({n / total:.0%}) exceeds the "
+            f"60% mode-collapse ceiling (R10b) — the batch is collapsing to "
+            f"one default verification method"
+            for m, n in dist.items() if n / total > 0.60]
+
+
 def parse_p2o(answer: str, subdomain: str | None = None) -> dict:
     """Parse and validate one sub-domain's operationalization answer."""
     import quality
@@ -482,9 +543,12 @@ def parse_p2o(answer: str, subdomain: str | None = None) -> dict:
     data = json.loads(raw)
     if not isinstance(data, dict):
         raise ValueError("p2o: expected a JSON object")
-    sd = str(data.get("subdomain", "")).strip()
+    sd_raw = str(data.get("subdomain", "")).strip()
+    m_sd_field = re.match(r"^[Dd][-_.]?(\d{2})[-_.](\d)$", sd_raw)
+    sd = f"D-{m_sd_field.group(1)}.{m_sd_field.group(2)}" if m_sd_field else sd_raw.upper()
     if subdomain and sd != subdomain:
         raise ValueError(f"p2o: expected subdomain {subdomain!r}, got {sd!r}")
+    data["subdomain"] = sd or subdomain   # the blob is indexed by this key downstream
     op_trans = str(data.get("operational_translation", "")).strip()
     if not op_trans:
         raise ValueError("p2o: operational_translation cannot be empty")
@@ -493,25 +557,42 @@ def parse_p2o(answer: str, subdomain: str | None = None) -> dict:
         raise ValueError("p2o: expected non-empty list under 'objectives'")
 
     normalized_objs = []
+    seen_criteria: dict[str, str] = {}
+    rule_seq = 0    # per CALL, not per objective: rule ids are unique across
+                    # the whole sub-domain, and two objectives in one call
+                    # must never both emit RULE-D-XX.Y-001
     for idx, o in enumerate(objs):
         if not isinstance(o, dict):
             raise ValueError(f"p2o: objective {idx} is not an object")
-        oid = str(o.get("objective_id") or o.get("id") or "").strip()
-        # Normalise OBJ- prefix to SO- if emitted
+        oid = str(o.get("objective_id") or o.get("id") or "").strip().upper()
         if oid.startswith("OBJ-"):
             oid = "SO-" + oid[4:]
+        m_oid = re.match(r"^(?:PO|SO)-(D-\d{2}\.\d)-\d{3}$", oid)
+        if not m_oid:
+            raise ValueError(f"p2o: objective {idx} id {oid!r} is not a "
+                             f"PO-/SO-D-XX.Y-NNN id")
+        if subdomain and m_oid.group(1) != subdomain:
+            raise ValueError(f"p2o: {oid} belongs to {m_oid.group(1)}, not to "
+                             f"this sub-domain ({subdomain})")
         meth = str(o.get("method", "")).strip().upper()
         if meth not in METHOD_VOCAB:
-            raise ValueError(f"p2o: {oid or idx} invalid method {meth!r}, must be one of {sorted(METHOD_VOCAB)}")
+            raise ValueError(f"p2o: {oid} invalid method {meth!r}, must be one of {sorted(METHOD_VOCAB)}")
         crit = str(o.get("criteria", "")).strip()
-        if not crit:
-            raise ValueError(f"p2o: {oid or idx} criteria cannot be empty")
+        if len(crit.split()) < 8:
+            raise ValueError(f"p2o: {oid} criteria too thin to be falsifiable "
+                             f"({len(crit.split())} words) — name the verification "
+                             f"artifact or test condition")
+        crit_key = re.sub(r"\W+", " ", crit.lower()).strip()
+        if crit_key in seen_criteria:
+            raise ValueError(f"p2o: {oid} criteria duplicates {seen_criteria[crit_key]}'s "
+                             f"— a repeated template is not a per-objective criterion")
+        seen_criteria[crit_key] = oid
         own = str(o.get("owner", "")).strip()
         if not own:
-            raise ValueError(f"p2o: {oid or idx} owner cannot be empty")
+            raise ValueError(f"p2o: {oid} owner cannot be empty")
         raw_rules = o.get("rules", [])
         if not isinstance(raw_rules, list):
-            raise ValueError(f"p2o: {oid or idx} expected list under 'rules'")
+            raise ValueError(f"p2o: {oid} expected list under 'rules'")
         norm_rules = []
         for r in raw_rules:
             if isinstance(r, str):
@@ -520,23 +601,31 @@ def parse_p2o(answer: str, subdomain: str | None = None) -> dict:
                 stmt = parts[1].strip() if len(parts) > 1 else r.strip()
                 r_dict = {"rule_id": rid, "statement": stmt, "verification_target": meth}
             elif isinstance(r, dict):
+                vt = str(r.get("verification_target") or meth).strip().upper()
                 r_dict = {
                     "rule_id": str(r.get("rule_id") or r.get("id") or "").strip(),
                     "statement": str(r.get("statement") or r.get("description") or r.get("rule") or "").strip(),
-                    "verification_target": str(r.get("verification_target") or meth).strip().upper(),
+                    "verification_target": vt if vt in METHOD_VOCAB else meth,
                 }
             else:
-                raise ValueError(f"p2o: {oid or idx} rule must be string or object")
+                raise ValueError(f"p2o: {oid} rule must be string or object")
 
-            rid = r_dict["rule_id"]
-            if not re.match(r"^RULE-D-\d{2}\.\d-\d{3}$", rid):
-                raise ValueError(f"p2o: malformed rule_id {rid!r}")
+            # Every rule leaves with a CANONICAL id numbered across the whole
+            # call: the model's own numbering restarts per objective and takes
+            # variants (RULE-D-06.3-1, RULE_D_06_3_001, bare prose). The slot
+            # the rule names is honoured; the sequence is ours.
+            rule_seq += 1
+            m_sd = re.search(r"D[-_.](\d{2})[-_.](\d)", r_dict["rule_id"],
+                             re.IGNORECASE)
+            sd_norm = (f"D-{m_sd.group(1)}.{m_sd.group(2)}" if m_sd
+                       else m_oid.group(1))
+            r_dict["rule_id"] = f"RULE-{sd_norm}-{rule_seq:03d}"
             stmt = r_dict["statement"]
             if not ("SHALL" in stmt.upper() or "MUST" in stmt.upper()):
-                raise ValueError(f"p2o: {rid} statement must contain SHALL or MUST (EARS/RFC2119)")
+                raise ValueError(f"p2o: {r_dict['rule_id']} statement must contain SHALL or MUST (EARS/RFC2119)")
             tech_hits = quality.check_no_technology(stmt)
             if tech_hits:
-                raise ValueError(f"p2o: {rid} {tech_hits[0]}")
+                raise ValueError(f"p2o: {r_dict['rule_id']} {tech_hits[0]}")
             norm_rules.append(r_dict)
 
         normalized_objs.append({
@@ -636,9 +725,8 @@ def render_doc01(repo: Path, run_dir: Path, rows: list[dict]) -> str:
             lines += [DOC01_HEADER]
 
         op_data = op_map.get(current, {})
-        obj_matches = [o for o in op_data.get("objectives", []) if o.get("objective_id") == r["objective_id"]]
-        if obj_matches:
-            om = obj_matches[0]
+        om = _ops_by_slot(op_data).get(_slot_of(r["objective_id"]))
+        if om:
             crit = om.get("criteria") or r["criteria"]
             meth = om.get("method") or r["method"]
             own = om.get("owner") or r["owner"]

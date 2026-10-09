@@ -1530,7 +1530,7 @@ class StepRunner:
         if step.startswith("p4t"):
             return parse_p4t(answer, sd_id=subdomain)
         if step.startswith("p2o"):
-            return parse_p2o(answer)
+            return parse_p2o(answer, subdomain)
         if subdomain is not None:
             parsed = parse_p4(answer, subdomain)
             return self._check_p4_quality(parsed, subdomain)
@@ -1894,9 +1894,21 @@ class StepRunner:
             sd_file = p2_dir / f"{sd.replace('.', '_')}.json"
             if sd_file.exists():
                 continue
-            self._call(f"p2o:{sd}", sd)
-            if not self.dry_run:
-                calls += 1
+            try:
+                self._call(f"p2o:{sd}", sd)
+                if not self.dry_run:
+                    calls += 1
+            except (LLMError, ValueError, KeyError) as e:
+                print(f"[phase2] {sd} p2o FAILED ({type(e).__name__}) — continuing with "
+                      f"remaining sub-domains: {str(e)[:180]}", flush=True)
+
+        op_map = p2.load_operationalizations(self.run_dir)
+        dist = p2.method_distribution(op_map)
+        diversity = p2.method_diversity_findings(dist)
+        if diversity:
+            raise ValueError(f"Phase 2 method diversity gate failed with "
+                             f"{len(diversity)} finding(s): {diversity}")
+        filled, total = p2.seam_fill(rows, op_map)
 
         (out_dir / "Doc01_Operational_Objectives.md").write_text(
             p2.render_doc01(self.repo, self.run_dir, rows), encoding="utf-8")
@@ -1928,12 +1940,14 @@ class StepRunner:
             "objectives": len(rows),
             "subdomains": len(active_sds),
             "operationalized_subdomains": op_count,
+            "seams_filled": f"{filled}/{total}",
+            "method_distribution": dist,
             "principles": len(principles),
             "principles_unseamed": unseamed,
             "grounding_ratio": ratio,
             "calls": calls,
             "summary": (f"{len(rows)} objectives over {len(active_sds)} sub-domains; "
-                        f"{op_count} operationalized; "
+                        f"{op_count} operationalized; {filled}/{total} seams filled; "
                         f"{7 - unseamed}/7 principles bound to this company"),
             "doc01": str(out_dir / "Doc01_Operational_Objectives.md"),
             "doc02": str(out_dir / "Doc02_Secure_Design_Principles.md"),

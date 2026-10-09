@@ -28,6 +28,7 @@ Exit 0 iff every derivation holds.
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -365,13 +366,103 @@ def test_repair_messages_point_at_the_corridor() -> None:
           "says keeping fewer terms is correct here")
 
 
+def test_no_exemplar_is_near_verbatim_to_a_baseline() -> None:
+    """No worked example in the p4 instruction may be baseline prose.
+
+    Measured 2026-10-09 before the change: the p4 instruction quoted two
+    D-01.1 Sub-SO excerpts. One of them (`"Where the product stores data,
+    confidentiality is protected by encrypting relevant data at rest using
+    state-of-the-art mechanisms"`) scores 0.669 against its own baseline — 76%
+    of the 0.88 ceiling the same gate enforces — and the other scores 0.178
+    retention, i.e. would itself fail the 0.30 floor. An exemplar that teaches
+    the baseline's register teaches the model to fail the gate, and on a
+    sub-domain whose Sub-SO shares that register (D-04.4, D-06.1) copying is
+    the shortest path to satisfying the prompt.
+
+    This asserts the property, not the wording: it fails if a future exemplar
+    comes back. Exemplars are how a prompt leaks its own answer, and the check
+    has to exist before the next person adds one.
+    """
+    print("p4 exemplars vs the gate")
+    import quality
+    import steps
+    from compose import candidate_subdomains, sub_so_objective
+
+    instr = steps._p4_instruction("D-01.1", subso_ids=["SG-D-01.1.GDPR"])
+    baselines = {}
+    for c in candidate_subdomains(REPO, ["GDPR", "CRA"]):
+        for reg in ("GDPR", "CRA"):
+            try:
+                baselines[f"{c['id']}/{reg}"] = sub_so_objective(REPO, c["id"], reg)
+            except Exception:
+                continue
+
+    # The invariant is semantic, not textual: no quoted span in the instruction
+    # may itself BE Sub-SO prose. (A naive "long quoted span" test is
+    # apostrophe-blind — "the Sub-SO's" and "this company's" pair up into
+    # phantom spans — so it is deliberately not used.)
+    offenders = []
+    for q in re.findall(r"'([^']{40,})'", instr):
+        q = q.strip()
+        if len(q.split()) < 6:
+            continue
+        for key, base in baselines.items():
+            sim = quality.near_verbatim_similarity(q, base) or 0.0
+            if sim > quality.NEAR_VERBATIM_LIMIT:
+                offenders.append(f"{q[:40]!r} vs {key} ({sim:.2f})")
+    check("no quoted span in the p4 instruction is Sub-SO prose", not offenders,
+          "; ".join(offenders[:2]) if offenders else "none")
+
+    worst, worst_sd = 0.0, None
+    for key, base in baselines.items():
+        sim = quality.near_verbatim_similarity(instr, base) or 0.0
+        if sim > worst:
+            worst, worst_sd = sim, key
+    check("the p4 instruction is not near-verbatim to any Sub-SO",
+          worst <= quality.NEAR_VERBATIM_LIMIT,
+          f"max similarity {worst:.3f} vs {worst_sd} (ceiling "
+          f"{quality.NEAR_VERBATIM_LIMIT})")
+
+
+def test_eu_legal_citations_are_not_fabrications() -> None:
+    """A regulation number is not a company quantity (R6).
+
+    Measured 2026-10-09, job 1996171, D-04.3 row 004: the model cited
+    "Implementing Regulation (EU) 2024/2956" correctly, in both the goal prose
+    and the regulatory-source column. `check_grounded` stripped the year, left
+    "2956", and failed the row as an invented company figure — a legal
+    citation rejected as a fabrication, which is what makes the gate
+    untrustworthy rather than strict.
+    """
+    print("R6 grounding vs legal citations")
+    import quality
+
+    sources = ["The company employs 5000 staff in banking and financial services."]
+    cited = ("A major ICT-related incident is reported without undue delay; the "
+             "temporal anchor is addressed in Implementing Regulation (EU) 2024/2956.")
+    check("an EU implementing regulation is not a fabrication",
+          not quality.check_grounded(cited, sources, "goal"),
+          str(quality.check_grounded(cited, sources, "goal"))[:70])
+
+    really_fake = "The company operates 2956 clinics across the country."
+    check("a genuine invented quantity is still caught",
+          bool(quality.check_grounded(really_fake, sources, "goal")),
+          str(quality.check_grounded(really_fake, sources, "goal"))[:70])
+
+    other = "The company serves 8421 customers in three Member States."
+    check("a second genuine invented quantity is still caught",
+          bool(quality.check_grounded(other, sources, "goal")))
+
+
 def main() -> int:
     print("phase2_test — derivations anchored to Phase 1 and the corpus")
     for fn in (test_id_derivation, test_slot_inherited, test_anchors_resolve,
                test_pollution_gate, test_prefix_gate, test_coverage_gate,
                test_seams_stay_unset, test_end_to_end_cli,
                test_doc02_renders, test_p2d_parser, test_doc02_gates,
-               test_repair_messages_point_at_the_corridor, test_real_runs):
+               test_repair_messages_point_at_the_corridor,
+               test_no_exemplar_is_near_verbatim_to_a_baseline,
+               test_eu_legal_citations_are_not_fabrications, test_real_runs):
         fn()
     print()
     if FAILURES:

@@ -155,6 +155,16 @@ def check_grounded(text: str, sources: list[str], label: str) -> list[str]:
                   " ", text, flags=re.I)
     # strip standards (ISO/IEC 27034, NIST SP 800-63B, RFC 2119, ENISA 2022) and calendar years (19xx, 20xx)
     text = re.sub(r"\b(?:ISO(?:/IEC)?|NIST(?:\s*SP)?|ENISA|RFC|BSI|CIS|OWASP)\s*[\dA-Z.-]+", " ", text, flags=re.I)
+    # EU legal instruments: "Implementing Regulation (EU) 2024/2956", "Reg. (EU)
+    # 2016/679", "Directive 95/46/EC". This must run BEFORE the year strip: in
+    # "2024/2956" the year has a word boundary after it, so the year regex peels
+    # off "2024" and leaves "/2956", which the quantity rule then reads as an
+    # invented company figure. That is a legal citation flagged as an R6
+    # fabrication — measured 2026-10-09 on job 1996171, D-04.3 row 004, where
+    # the model cited IR (EU) 2024/2956 correctly and was failed for it. The
+    # YYYY/NNN shape is unique to a legal reference; no company quantity looks
+    # like one, so nothing real is lost.
+    text = re.sub(r"\b\d{4}/\d{1,6}\b", " ", text)
     text = re.sub(r"\b(?:19|20)\d{2}\b", " ", text)
     invented = []
     for qty in set(re.findall(r"\b\d[\d.,]{2,}\s*(?:employees|staff|people|clinics|"

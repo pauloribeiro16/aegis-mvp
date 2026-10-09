@@ -1529,6 +1529,8 @@ class StepRunner:
         # both p4 and p4t now take one, and they have different contracts
         if step.startswith("p4t"):
             return parse_p4t(answer, sd_id=subdomain)
+        if step.startswith("p2o"):
+            return parse_p2o(answer)
         if subdomain is not None:
             parsed = parse_p4(answer, subdomain)
             return self._check_p4_quality(parsed, subdomain)

@@ -492,32 +492,62 @@ def parse_p2o(answer: str, subdomain: str | None = None) -> dict:
     if not isinstance(objs, list) or len(objs) == 0:
         raise ValueError("p2o: expected non-empty list under 'objectives'")
 
-    for o in objs:
-        oid = str(o.get("objective_id", "")).strip()
-        if not re.match(r"^(PO|SO)-D-\d{2}\.\d-\d{3}$", oid):
-            raise ValueError(f"p2o: malformed objective_id {oid!r}")
+    normalized_objs = []
+    for idx, o in enumerate(objs):
+        if not isinstance(o, dict):
+            raise ValueError(f"p2o: objective {idx} is not an object")
+        oid = str(o.get("objective_id") or o.get("id") or "").strip()
+        # Normalise OBJ- prefix to SO- if emitted
+        if oid.startswith("OBJ-"):
+            oid = "SO-" + oid[4:]
         meth = str(o.get("method", "")).strip().upper()
         if meth not in METHOD_VOCAB:
-            raise ValueError(f"p2o: {oid} invalid method {meth!r}, must be one of {sorted(METHOD_VOCAB)}")
+            raise ValueError(f"p2o: {oid or idx} invalid method {meth!r}, must be one of {sorted(METHOD_VOCAB)}")
         crit = str(o.get("criteria", "")).strip()
         if not crit:
-            raise ValueError(f"p2o: {oid} criteria cannot be empty")
+            raise ValueError(f"p2o: {oid or idx} criteria cannot be empty")
         own = str(o.get("owner", "")).strip()
         if not own:
-            raise ValueError(f"p2o: {oid} owner cannot be empty")
-        rules = o.get("rules", [])
-        if not isinstance(rules, list):
-            raise ValueError(f"p2o: {oid} expected list under 'rules'")
-        for r in rules:
-            rid = str(r.get("rule_id", "")).strip()
+            raise ValueError(f"p2o: {oid or idx} owner cannot be empty")
+        raw_rules = o.get("rules", [])
+        if not isinstance(raw_rules, list):
+            raise ValueError(f"p2o: {oid or idx} expected list under 'rules'")
+        norm_rules = []
+        for r in raw_rules:
+            if isinstance(r, str):
+                parts = r.split(":", 1)
+                rid = parts[0].strip()
+                stmt = parts[1].strip() if len(parts) > 1 else r.strip()
+                r_dict = {"rule_id": rid, "statement": stmt, "verification_target": meth}
+            elif isinstance(r, dict):
+                r_dict = {
+                    "rule_id": str(r.get("rule_id", "")).strip(),
+                    "statement": str(r.get("statement", "")).strip(),
+                    "verification_target": str(r.get("verification_target") or meth).strip().upper(),
+                }
+            else:
+                raise ValueError(f"p2o: {oid or idx} rule must be string or object")
+
+            rid = r_dict["rule_id"]
             if not re.match(r"^RULE-D-\d{2}\.\d-\d{3}$", rid):
                 raise ValueError(f"p2o: malformed rule_id {rid!r}")
-            stmt = str(r.get("statement", "")).strip()
+            stmt = r_dict["statement"]
             if not ("SHALL" in stmt.upper() or "MUST" in stmt.upper()):
                 raise ValueError(f"p2o: {rid} statement must contain SHALL or MUST (EARS/RFC2119)")
             tech_hits = quality.check_no_technology(stmt)
             if tech_hits:
                 raise ValueError(f"p2o: {rid} {tech_hits[0]}")
+            norm_rules.append(r_dict)
+
+        normalized_objs.append({
+            "objective_id": oid,
+            "method": meth,
+            "criteria": crit,
+            "owner": own,
+            "rules": norm_rules,
+        })
+
+    data["objectives"] = normalized_objs
     return data
 
 

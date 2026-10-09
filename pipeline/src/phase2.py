@@ -446,42 +446,211 @@ def _company_name(repo: Path, run_dir: Path) -> str:
     return case.get("company_name") or _case_id(run_dir)
 
 
+def load_tensions(run_dir: Path) -> list[dict]:
+    tfile = run_dir / "steps" / "tensions.json"
+    if tfile.exists():
+        try:
+            return json.loads(tfile.read_text(encoding="utf-8")).get("tensions", [])
+        except (OSError, ValueError):
+            return []
+    return []
+
+
+def load_operationalizations(run_dir: Path) -> dict[str, dict]:
+    """Load per-subdomain operationalization data from steps/phase2/*.json."""
+    p2_dir = run_dir / "steps" / "phase2"
+    if not p2_dir.is_dir():
+        return {}
+    out: dict[str, dict] = {}
+    for jf in sorted(p2_dir.glob("*.json")):
+        try:
+            blob = json.loads(jf.read_text(encoding="utf-8"))
+            sd = blob.get("subdomain")
+            if sd:
+                out[sd] = blob
+        except (OSError, ValueError):
+            continue
+    return out
+
+
+def parse_p2o(answer: str, subdomain: str | None = None) -> dict:
+    """Parse and validate one sub-domain's operationalization answer."""
+    import quality
+    from steps import extract_fenced
+
+    raw = extract_fenced(answer, "json").strip()
+    data = json.loads(raw)
+    if not isinstance(data, dict):
+        raise ValueError("p2o: expected a JSON object")
+    sd = str(data.get("subdomain", "")).strip()
+    if subdomain and sd != subdomain:
+        raise ValueError(f"p2o: expected subdomain {subdomain!r}, got {sd!r}")
+    op_trans = str(data.get("operational_translation", "")).strip()
+    if not op_trans:
+        raise ValueError("p2o: operational_translation cannot be empty")
+    objs = data.get("objectives", [])
+    if not isinstance(objs, list) or len(objs) == 0:
+        raise ValueError("p2o: expected non-empty list under 'objectives'")
+
+    for o in objs:
+        oid = str(o.get("objective_id", "")).strip()
+        if not re.match(r"^(PO|SO)-D-\d{2}\.\d-\d{3}$", oid):
+            raise ValueError(f"p2o: malformed objective_id {oid!r}")
+        meth = str(o.get("method", "")).strip().upper()
+        if meth not in METHOD_VOCAB:
+            raise ValueError(f"p2o: {oid} invalid method {meth!r}, must be one of {sorted(METHOD_VOCAB)}")
+        crit = str(o.get("criteria", "")).strip()
+        if not crit:
+            raise ValueError(f"p2o: {oid} criteria cannot be empty")
+        own = str(o.get("owner", "")).strip()
+        if not own:
+            raise ValueError(f"p2o: {oid} owner cannot be empty")
+        rules = o.get("rules", [])
+        if not isinstance(rules, list):
+            raise ValueError(f"p2o: {oid} expected list under 'rules'")
+        for r in rules:
+            rid = str(r.get("rule_id", "")).strip()
+            if not re.match(r"^RULE-D-\d{2}\.\d-\d{3}$", rid):
+                raise ValueError(f"p2o: malformed rule_id {rid!r}")
+            stmt = str(r.get("statement", "")).strip()
+            if not ("SHALL" in stmt.upper() or "MUST" in stmt.upper()):
+                raise ValueError(f"p2o: {rid} statement must contain SHALL or MUST (EARS/RFC2119)")
+            tech_hits = quality.check_no_technology(stmt)
+            if tech_hits:
+                raise ValueError(f"p2o: {rid} {tech_hits[0]}")
+    return data
+
+
 def render_doc01(repo: Path, run_dir: Path, rows: list[dict]) -> str:
     name = _company_name(repo, run_dir)
+    tensions = load_tensions(run_dir)
+    op_map = load_operationalizations(run_dir)
+
     lines = [
         f"# Privacy & Security Operational Objectives — {name}",
         "",
-        "> **Document Purpose:** Operational Objectives derived from the Phase 1 "
-        "Adjusted Goals. Cells marked `—` are seams: the pipeline has no "
-        "derivation rule for them and does not invent one.",
+        "> **Document Purpose:** Defines the Operational Objectives across all active "
+        "sub-domains, separating the distinct operational scopes of applicable regulations, "
+        "establishing empirical verification methods (ISO 29148 / INCOSE), and formalizing "
+        "testable operational engineering rules (`RULE-*`). Cells marked `—` are seams: "
+        "the pipeline has no derivation rule for them and does not invent one.",
         "",
-        "## §1 Method",
+        "## §1 Governance & Structure Guide",
         "",
-        "Every populated cell is a function of the Phase 1 deliverable and the "
-        "frozen corpus. Control anchors are derived by `controls.goal_anchors` "
-        "(Sub-SO → `source_SR` → mapping store → CONTROLS), never copied and "
-        "never emitted by a model. Objective ids inherit the Phase 1 slot.",
+        "### 1.1 Separation of Regulatory Ambits",
+        "Where multiple regulations apply to the same sub-domain, they bind distinct operational "
+        "ambits and cannot be conflated into a single objective (e.g. GDPR binds personal data, "
+        "CRA binds product security, NIS 2 binds entity risk management, AI Act binds high-risk AI).",
+        "",
+        "### 1.2 Empirical Verification Methods (ISO 29148 / INCOSE)",
+        "Every operational objective is evaluated via one of four empirical methods:",
+        "- `TEST`: Automated assertion, CI/CD pipeline test, or runtime security probe.",
+        "- `INSPECT`: Systematic review of configuration (IaC), process artefacts, or audit records.",
+        "- `DEMONSTRATE`: Walkthrough or observable execution of an end-to-end operational flow.",
+        "- `ANALYZE`: Systematic risk examination, architectural boundary review, or threat model.",
         "",
     ]
+
+    if tensions:
+        lines += [
+            "## §2 Harmonisation of Strategic Tensions",
+            "",
+            "When multiple regulations apply, operational tensions are harmonized as follows:",
+            "",
+            "| Tension ID | Sub-Domains | Tension | Conflict | Resolution Strategy |",
+            "|---|---|---|---|---|",
+        ]
+        for t in tensions:
+            lines.append(
+                f"| `{cell(t.get('id', ''))}` | `{cell(t.get('subdomains', ''))}` | "
+                f"**{cell(t.get('tension', ''))}** | {cell(t.get('conflict', ''))} | "
+                f"{cell(t.get('resolution', ''))} |"
+            )
+        lines.append("")
+
+    sec_num = "§3" if tensions else "§2"
+    lines += [f"## {sec_num} Operational Objectives by Domain", ""]
+
     current = None
+    all_rules_in_subdomain: list[dict] = []
+
     for r in rows:
-        if r["subdomain"] != current:
-            current = r["subdomain"]
-            lines += [f"### {current} — {r['subdomain_name']}", "", DOC01_HEADER]
+        sd = r["subdomain"]
+        if sd != current:
+            if current is not None and all_rules_in_subdomain:
+                lines += [
+                    "",
+                    f"#### Operational Engineering Rules (`RULE-*`) — {current}",
+                    "",
+                    "| Rule ID | Operational Statement | Method | Parent Objective |",
+                    "|---|---|---|---|",
+                ]
+                for rl in all_rules_in_subdomain:
+                    lines.append(
+                        f"| `{cell(rl.get('rule_id', ''))}` | {cell(rl.get('statement', ''))} | "
+                        f"`{cell(rl.get('verification_target', ''))}` | `{cell(rl.get('parent_obj', ''))}` |"
+                    )
+                lines.append("")
+                all_rules_in_subdomain = []
+
+            current = sd
+            lines.append(f"### {current} — {r['subdomain_name']}")
+            lines.append("")
+
+            op_data = op_map.get(current, {})
+            op_trans = op_data.get("operational_translation")
+            if op_trans:
+                lines.append(f"**Operational Translation ({name} Context):** {op_trans}")
+                lines.append("")
+
+            lines += [DOC01_HEADER]
+
+        op_data = op_map.get(current, {})
+        obj_matches = [o for o in op_data.get("objectives", []) if o.get("objective_id") == r["objective_id"]]
+        if obj_matches:
+            om = obj_matches[0]
+            crit = om.get("criteria") or r["criteria"]
+            meth = om.get("method") or r["method"]
+            own = om.get("owner") or r["owner"]
+            for ritem in om.get("rules", []):
+                ritem_copy = dict(ritem)
+                ritem_copy["parent_obj"] = r["objective_id"]
+                all_rules_in_subdomain.append(ritem_copy)
+        else:
+            crit = r["criteria"]
+            meth = r["method"]
+            own = r["owner"]
+
         lines.append(
             "| `{oid}` | {stmt} | `{parent}` | **{reg}** | {scope} | {crit} | "
             "{meth} | {own} | `{anch}` |".format(
                 oid=cell(r["objective_id"]), stmt=cell(r["statement"]),
                 parent=cell(r["parent_goal"]), reg=cell(r["regulation"]),
-                scope=cell(r["scope"]), crit=cell(r["criteria"]),
-                meth=cell(r["method"]), own=cell(r["owner"]),
+                scope=cell(r["scope"]), crit=cell(crit),
+                meth=cell(meth), own=cell(own),
                 anch=cell(r["anchors"]))
         )
-    lines += ["", "## §2 Version History", "",
+
+    if all_rules_in_subdomain:
+        lines += [
+            "",
+            f"#### Operational Engineering Rules (`RULE-*`) — {current}",
+            "",
+            "| Rule ID | Operational Statement | Method | Parent Objective |",
+            "|---|---|---|---|",
+        ]
+        for rl in all_rules_in_subdomain:
+            lines.append(
+                f"| `{cell(rl.get('rule_id', ''))}` | {cell(rl.get('statement', ''))} | "
+                f"`{cell(rl.get('verification_target', ''))}` | `{cell(rl.get('parent_obj', ''))}` |"
+            )
+        lines.append("")
+
+    ver_sec = "§4" if tensions else "§3"
+    lines += ["", f"## {ver_sec} Version History", "",
               "| Version | Date | Author / Role | Changes |", "|---|---|---|---|",
-              "| `0.1` | — | aegis-mvp phase2 prototype | "
-              "Deterministic spine: ids, parents, statements, anchors. "
-              "Seams left unset. |", ""]
+              "| `0.2` | — | aegis-mvp Phase 2 (enriched) | "
+              "Operational translation, ISO 29148 methods, criteria, and RULE-* catalogue. |", ""]
     return "\n".join(lines)
 
 

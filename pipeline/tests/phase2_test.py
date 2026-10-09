@@ -467,6 +467,73 @@ def test_eu_legal_citations_are_not_fabrications() -> None:
           bool(quality.check_grounded(other, sources, "goal")))
 
 
+def test_p2o_parser_and_enrichment() -> None:
+    print("p2o parser and enrichment")
+    valid_json = """```json
+    {
+      "subdomain": "D-01.1",
+      "operational_translation": "For SecureBorder Solutions, operationalizing D-01.1 requires verifiable data at rest encryption.",
+      "objectives": [
+        {
+          "objective_id": "PO-D-01.1-001",
+          "method": "TEST",
+          "criteria": "Automated pipeline tests confirm AES-256-GCM encryption on personal data volumes.",
+          "owner": "Lead Developer + CISO",
+          "rules": [
+            {
+              "rule_id": "RULE-D-01.1-001",
+              "statement": "The system SHALL enforce authenticated encryption (AES-256-GCM) on all persistent databases.",
+              "verification_target": "TEST"
+            }
+          ]
+        }
+      ]
+    }
+    ```"""
+    parsed = phase2.parse_p2o(valid_json, "D-01.1")
+    check("valid p2o payload parses", parsed["subdomain"] == "D-01.1")
+    check("rule is preserved", parsed["objectives"][0]["rules"][0]["rule_id"] == "RULE-D-01.1-001")
+
+    # Invalid method
+    bad_meth = valid_json.replace('"TEST"', '"MAGIC"')
+    try:
+        phase2.parse_p2o(bad_meth, "D-01.1")
+        check("invalid method is rejected", False)
+    except ValueError as e:
+        check("invalid method is rejected", "invalid method" in str(e))
+
+    # Rule without SHALL or MUST
+    bad_rule = valid_json.replace("The system SHALL enforce", "The system may consider enforcing")
+    try:
+        phase2.parse_p2o(bad_rule, "D-01.1")
+        check("non-imperative rule is rejected", False)
+    except ValueError as e:
+        check("non-imperative rule is rejected", "SHALL or MUST" in str(e))
+
+    # Technology leakage
+    bad_tech = valid_json.replace("AES-256-GCM", "AWS DynamoDB encryption")
+    try:
+        phase2.parse_p2o(bad_tech, "D-01.1")
+        check("technology leakage is rejected", False)
+    except ValueError as e:
+        check("technology leakage is rejected", "technology leakage" in str(e))
+
+    # Test rendering with operationalization data
+    with tempfile.TemporaryDirectory() as td:
+        tmp = Path(td)
+        run = synth_run(tmp, [goal("AG-D-01.1-001", "GDPR")], selected=["D-01.1"])
+        p2_dir = run / "steps" / "phase2"
+        p2_dir.mkdir(parents=True)
+        (p2_dir / "D-01_1.json").write_text(json.dumps(parsed), encoding="utf-8")
+        text = phase2.render_doc01(REPO, run, phase2.build(REPO, run))
+        check("rendered doc01 carries operational translation",
+              "verifiable data at rest encryption" in text)
+        check("rendered doc01 carries method", "TEST" in text)
+        check("rendered doc01 carries criteria", "AES-256-GCM encryption on personal data volumes" in text)
+        check("rendered doc01 carries owner", "Lead Developer + CISO" in text)
+        check("rendered doc01 carries RULE-* table", "RULE-D-01.1-001" in text)
+
+
 def main() -> int:
     print("phase2_test — derivations anchored to Phase 1 and the corpus")
     for fn in (test_id_derivation, test_slot_inherited, test_anchors_resolve,
@@ -475,7 +542,8 @@ def main() -> int:
                test_doc02_renders, test_p2d_parser, test_doc02_gates,
                test_repair_messages_point_at_the_corridor,
                test_no_exemplar_is_near_verbatim_to_a_baseline,
-               test_eu_legal_citations_are_not_fabrications, test_real_runs):
+               test_eu_legal_citations_are_not_fabrications,
+               test_p2o_parser_and_enrichment, test_real_runs):
         fn()
     print()
     if FAILURES:

@@ -33,7 +33,7 @@ from phase2 import PRINCIPLE_IDS
 from trace import Trace, count_calls, now_iso, update_manifest
 
 NUM_CTX = {"p1": 16384, "p2": 16384, "p3": 32768, "p3f": 16384, "p4": 32768,
-           "p4t": 32768, "p2d": 32768}
+           "p4t": 32768, "p2o": 32768, "p2d": 32768}
 # output budget per step (P4 tables are the largest model output)
 # P4 emits a 9-column table for every Sub-SO of a module: at 8192 the answer
 # was truncated mid-table and the L0 repair hit the same cap (job 1969983,
@@ -41,7 +41,7 @@ NUM_CTX = {"p1": 16384, "p2": 16384, "p3": 32768, "p3f": 16384, "p4": 32768,
 # p2d emits 7 JSON objects of three prose fields — roughly a tenth of a P4
 # table, and the whole answer must land in one block, so 4096 has headroom.
 NUM_PREDICT = {"p1": 4096, "p2": 2048, "p3": 12288, "p3f": 2048, "p4": 16384,
-               "p4t": 4096, "p2d": 4096}
+               "p4t": 4096, "p2o": 4096, "p2d": 4096}
 
 PATTERNS = {"achieve", "cease", "maintain", "avoid", "optimize"}
 # template §3 renders long-form property names; normalize to the enum codes
@@ -501,8 +501,13 @@ def parse_p2d(answer: str) -> dict:
     return {"principles": rows}
 
 
+def parse_p2o(answer: str) -> dict:
+    import phase2 as _p2
+    return _p2.parse_p2o(answer)
+
+
 PARSERS = {"p1": parse_p1, "p2": parse_p2, "p3": parse_p3, "p3f": parse_p3f,
-           "p4t": parse_p4t, "p2d": parse_p2d}
+           "p4t": parse_p4t, "p2o": parse_p2o, "p2d": parse_p2d}
 
 
 # --------------------------------------------------------------------------
@@ -526,6 +531,12 @@ def store_parsed(run_dir: Path, step: str, subdomain: str | None, parsed: dict) 
                        indent=1, ensure_ascii=False), encoding="utf-8")
     elif step == "p3f":
         (steps_dir / "framing.md").write_text(parsed["framing"] + "\n", encoding="utf-8")
+    elif step.startswith("p2o") or step == "p2o":
+        p2_dir = steps_dir / "phase2"
+        p2_dir.mkdir(exist_ok=True)
+        fname = subdomain.replace(".", "_") if subdomain else "unknown"
+        (p2_dir / f"{fname}.json").write_text(
+            json.dumps(parsed, indent=1, ensure_ascii=False), encoding="utf-8")
     elif subdomain is not None:
         goals_dir = steps_dir / "goals"
         goals_dir.mkdir(exist_ok=True)
@@ -622,6 +633,9 @@ EXTRA_INSTRUCTION = {
     "p1": "Wrap your answer: return ONLY one ```yaml fenced block with the fact sheet.",
     "p2": ("Wrap your answer: return ONLY one ```markdown fenced block containing the "
            "5-row §2 verdict table (header + 5 rows, nothing else)."),
+    "p2o": ("Wrap your answer: return ONLY one ```json fenced block shaped "
+            "{\"subdomain\": \"...\", \"operational_translation\": \"...\", "
+            "\"objectives\": [ ... ]}. No text before or after the block."),
     # p2d is one call per run, and every one of the 7 rows has to survive as one
     # JSON object or L0 rejects the whole answer. "Only" matters more here than
     # anywhere else in the pipeline: a prose preamble is the cheapest way to lose
@@ -1265,6 +1279,8 @@ class StepRunner:
         extra = ""
         if step_kind == "p4t":
             extra = p4t_extra_instruction(subdomain)
+        elif step_kind == "p2o":
+            extra = EXTRA_INSTRUCTION["p2o"]
         elif subdomain is not None:
             sd_dir = domain_dir(self.repo, subdomain)
             confirmed = confirmed_regulations(self.run_dir) if (
@@ -1845,13 +1861,12 @@ class StepRunner:
         return 0
 
     def stage_phase2(self) -> int:
-        """Phase 2: Doc01 (deterministic) then Doc02 (one generative call).
+        """Phase 2: Operationalization & Engineering Rules.
 
-        Ordered so the deterministic half survives a failure of the generative
-        one: Doc01 needs nothing from a model, so a Doc02 abort must not take
-        the objectives with it. Doc02's constraints come from the `p2d` step
-        (PROM-P2-03); without it they render as `—`, which is the honest state
-        of a run that has not been synthesised yet.
+        Runs sub-domain operationalization (p2o) across all active sub-domains,
+        generating operational translations, ISO 29148 verification methods,
+        criteria, and RULE-* catalogue, followed by p2d for the 7 architectural
+        principles. Renders Doc01 and Doc02.
         """
         import phase2 as p2
 
@@ -1867,17 +1882,26 @@ class StepRunner:
 
         out_dir = self.run_dir / "outputs" / "phase2"
         out_dir.mkdir(parents=True, exist_ok=True)
+
+        active_sds = sorted({r["subdomain"] for r in rows})
+        calls = 0
+        p2_dir = self.run_dir / "steps" / "phase2"
+        p2_dir.mkdir(parents=True, exist_ok=True)
+
+        for sd in active_sds:
+            sd_file = p2_dir / f"{sd.replace('.', '_')}.json"
+            if sd_file.exists():
+                continue
+            self._call(f"p2o:{sd}", sd)
+            if not self.dry_run:
+                calls += 1
+
         (out_dir / "Doc01_Operational_Objectives.md").write_text(
             p2.render_doc01(self.repo, self.run_dir, rows), encoding="utf-8")
 
-        calls = 0
-        # `_call` composes the pack, writes inputs/, appends a `dry-run` trace
-        # line and returns before any HTTP call. So the dry run still exercises
-        # the whole prompt-assembly path — which is the point of a dry run — and
-        # only the Doc02 synthesis is skipped.
         self._call("p2d", None)
         if not self.dry_run:
-            calls = 1
+            calls += 1
             principles = p2.principles_for(self.run_dir)
             doc2_findings = p2.check_doc02(self.repo, self.run_dir, principles)
             if doc2_findings:
@@ -1886,11 +1910,12 @@ class StepRunner:
                     f"{doc2_findings}")
             ratio = p2.grounding_ratio(principles, p2._fact_sheet(self.run_dir))
         else:
-            # no principles were synthesised: the seams are the honest state.
             principles, ratio = p2.principles_for(self.run_dir), 0.0
+
         (out_dir / "Doc02_Secure_Design_Principles.md").write_text(
             p2.render_doc02(self.repo, self.run_dir, principles), encoding="utf-8")
 
+        op_count = len(list(p2_dir.glob("*.json")))
         unseamed = sum(1 for p in principles
                        if str(p.get("constraint", "")) in ("", p2.UNSET))
         self._write_stage_result("phase2", {
@@ -1899,13 +1924,14 @@ class StepRunner:
             "carried": 7 - unseamed,
             "failed": unseamed,
             "objectives": len(rows),
-            "subdomains": len({r["subdomain"] for r in rows}),
+            "subdomains": len(active_sds),
+            "operationalized_subdomains": op_count,
             "principles": len(principles),
             "principles_unseamed": unseamed,
             "grounding_ratio": ratio,
             "calls": calls,
-            "summary": (f"{len(rows)} objectives over "
-                        f"{len({r['subdomain'] for r in rows})} sub-domains; "
+            "summary": (f"{len(rows)} objectives over {len(active_sds)} sub-domains; "
+                        f"{op_count} operationalized; "
                         f"{7 - unseamed}/7 principles bound to this company"),
             "doc01": str(out_dir / "Doc01_Operational_Objectives.md"),
             "doc02": str(out_dir / "Doc02_Secure_Design_Principles.md"),

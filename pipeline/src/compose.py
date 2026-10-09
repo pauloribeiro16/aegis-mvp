@@ -28,6 +28,7 @@ FICHA_FILES = {
     "p4": "PROM-P1-04_DERIVE_ADJUSTED_GOALS.md",
     "p4t": "PROM-P1-07_RESOLVE_TENSIONS.md",
     "p5": "PROM-P1-05_RENDER_VALIDATE.md",
+    "p2o": "PROM-P2-01_OPERATIONALIZE_SUBDOMAIN.md",
     "p2d": "PROM-P2-03_SYNTHESIZE_PRINCIPLES.md",
 }
 
@@ -610,6 +611,20 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
         )
         files.append(("pack-p2d/principles.md", header + "\n\n" + "\n\n".join(blocks)))
 
+    elif step.startswith("p2o:"):
+        sd_id = step.split(":", 1)[1]
+        sd_dir = domain_dir(repo, sd_id)
+        rel = lambda p: str(p.relative_to(repo))
+        files.append(("steps/fact_sheet.yaml",
+                      (run_dir / "steps" / "fact_sheet.yaml").read_text(encoding="utf-8")))
+        obj_file = sd_dir / "objective.md"
+        if obj_file.exists():
+            files.append((rel(obj_file), obj_file.read_text(encoding="utf-8")))
+        fname = sd_id.replace(".", "_")
+        gfile = run_dir / "steps" / "goals" / f"{fname}.json"
+        if gfile.exists():
+            files.append((f"steps/goals/{sd_id}.json", gfile.read_text(encoding="utf-8")))
+
     elif step == "p3":
         confirmed = confirmed_regulations(run_dir)
         files.append(("steps/fact_sheet.yaml", (run_dir / "steps" / "fact_sheet.yaml").read_text(encoding="utf-8")))
@@ -760,8 +775,16 @@ def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
     files, pack_text = build_pack(pack_step, repo, case, run_dir)
 
     title = f"{ficha['id']} — {subdomain}" if subdomain else ficha["id"]
-    extraction = not step.startswith(("p3", "p3f", "p4", "p4t", "p2d"))
-    if step.startswith("p2d"):
+    extraction = not step.startswith(("p3", "p3f", "p4", "p4t", "p2o", "p2d"))
+    if step.startswith("p2o"):
+        discipline = (
+            "- Operationalize the sub-domain for this company: write the operational translation paragraph "
+            "and assign empirical verification attributes (method, criteria, owner) and operational rules (RULE-*).\n"
+            "- Method must be strictly one of TEST, INSPECT, DEMONSTRATE, or ANALYZE.\n"
+            "- Every rule statement MUST be imperative (contain SHALL or MUST).\n"
+            "- Technology neutrality (R5): never cite proprietary cloud vendors (AWS, Azure, GCP, etc.).\n"
+            "- Never invent facts about the company beyond fact_sheet.yaml (R6).\n")
+    elif step.startswith("p2d"):
         # p2d has no Sub-SO and no obligation to keep intact — it binds a
         # baseline principle to a company. It therefore gets its own clause
         # rather than the p4 one, whose "do not drop a leg" advice would be

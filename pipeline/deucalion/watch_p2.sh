@@ -21,9 +21,13 @@ cd "$REPO_ROOT"
 # hard error rather than an empty answer.
 queue_state() {
   local out
-  if ! out="$(ssh -o BatchMode=yes -o ConnectTimeout=30 "$HOST" \
-                "squeue -h -j $* -o '%i %T'" 2>&1)"; then
-    echo "WATCH FATAL: could not reach $HOST: $out" >&2
+  # LogLevel=ERROR matters: this host emits post-quantum key-exchange warnings on
+  # every ssh, and with 2>&1 those warnings land in `state`. They are non-empty
+  # text, so an empty queue would never look empty and the loop would never
+  # exit. The exit status, not the stderr text, is what decides success.
+  if ! out="$(ssh -o BatchMode=yes -o ConnectTimeout=30 -o LogLevel=ERROR "$HOST" \
+                "squeue -h -j $* -o '%i %T'" 2>/dev/null)"; then
+    echo "WATCH FATAL: could not reach $HOST" >&2
     exit 1
   fi
   printf '%s' "$out"
@@ -41,9 +45,9 @@ done
 
 # sacct, not squeue: a job that has left the queue has an outcome, and the
 # outcome is what decides whether an empty run dir is a bug or a failure.
-ssh -o BatchMode=yes "$HOST" \
+ssh -o BatchMode=yes -o LogLevel=ERROR "$HOST" \
   "sacct -j '$(IFS=,; echo "${JOBS[*]}")' --format=JobID,JobName%14,State,ExitCode --noheader" \
-  2>&1 | grep -v WARNING || true
+  2>/dev/null || true
 
 for r in "${RUNS[@]}"; do
   echo "=== sync down $r"

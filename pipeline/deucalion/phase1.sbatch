@@ -21,7 +21,7 @@
 
 set -uo pipefail
 
-: "${STAGE:?STAGE not exported (p1|p2|p3|p3f|p4|p4t|p5|phase2|p4p5)}"
+: "${STAGE:?STAGE not exported (p1|p2|p3|p3f|p4|p4t|p5|phase2|p3a_map|p4p5)}"
 : "${RUN_TAG:?RUN_TAG not exported (short tag, e.g. case01)}"
 : "${CASE:?CASE not exported (pipeline/cases/<case>)}"
 : "${MODEL:?MODEL not exported (e.g. qwen3.8:27b)}"

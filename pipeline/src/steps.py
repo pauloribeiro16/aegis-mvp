@@ -32,8 +32,12 @@ from llm import LLMError, OllamaClient
 from phase2 import PRINCIPLE_IDS
 from trace import Trace, count_calls, now_iso, update_manifest
 
+# p3a_map emits one verdict row per objective of one sub-domain (1-8 rows of
+# seven columns) — a fraction of a p4 table, and the pack is the objectives
+# already carrying their published anchors, so 16384 has room for the whole
+# V0 card pool without touching the ladder.
 NUM_CTX = {"p1": 16384, "p2": 16384, "p3": 32768, "p3f": 16384, "p4": 32768,
-           "p4t": 32768, "p2o": 32768, "p2d": 32768}
+           "p4t": 32768, "p2o": 32768, "p2d": 32768, "p3a_map": 16384}
 # output budget per step (P4 tables are the largest model output)
 # P4 emits a 9-column table for every Sub-SO of a module: at 8192 the answer
 # was truncated mid-table and the L0 repair hit the same cap (job 1969983,
@@ -41,7 +45,7 @@ NUM_CTX = {"p1": 16384, "p2": 16384, "p3": 32768, "p3f": 16384, "p4": 32768,
 # p2d emits 7 JSON objects of three prose fields — roughly a tenth of a P4
 # table, and the whole answer must land in one block, so 4096 has headroom.
 NUM_PREDICT = {"p1": 4096, "p2": 2048, "p3": 12288, "p3f": 2048, "p4": 16384,
-               "p4t": 4096, "p2o": 4096, "p2d": 4096}
+               "p4t": 4096, "p2o": 4096, "p2d": 4096, "p3a_map": 4096}
 
 PATTERNS = {"achieve", "cease", "maintain", "avoid", "optimize"}
 # template §3 renders long-form property names; normalize to the enum codes
@@ -546,6 +550,14 @@ def store_parsed(run_dir: Path, step: str, subdomain: str | None, parsed: dict) 
             json.dumps({"subdomain": subdomain, "goals": parsed["goals"],
                         "assumptions": parsed["assumptions"]},
                        indent=1, ensure_ascii=False), encoding="utf-8")
+    elif step.startswith("p3a_map"):
+        d = steps_dir / "phase3a_map"
+        d.mkdir(parents=True, exist_ok=True)
+        # `.md` keeps the dotted sub-domain id, `.json` the underscored form —
+        # the same split the p4 store uses, so a resume marker and a reader agree
+        # on which artefact is which.
+        (d / f"{subdomain.replace('.', '_')}.json").write_text(
+            json.dumps(parsed, indent=1), encoding="utf-8")
     elif step == "p4t":
         (steps_dir / "tensions.md").write_text(parsed["md"] + "\n", encoding="utf-8")
         (steps_dir / "tensions.json").write_text(
@@ -630,6 +642,7 @@ def check_p4_quality(repo: Path, run_dir: Path, parsed: dict, sd_id: str) -> dic
 
 
 EXTRA_INSTRUCTION = {
+    "p3a_map": ("Wrap your answer: return ONLY one ```markdown fenced block containing the verdict table, one row per objective, header row included."),
     "p1": "Wrap your answer: return ONLY one ```yaml fenced block with the fact sheet.",
     "p2": ("Wrap your answer: return ONLY one ```markdown fenced block containing the "
            "5-row §2 verdict table (header + 5 rows, nothing else)."),
@@ -1281,6 +1294,8 @@ class StepRunner:
             extra = p4t_extra_instruction(subdomain)
         elif step_kind == "p2o":
             extra = EXTRA_INSTRUCTION["p2o"]
+        elif step_kind == "p3a_map":
+            extra = EXTRA_INSTRUCTION["p3a_map"]
         elif subdomain is not None:
             sd_dir = domain_dir(self.repo, subdomain)
             confirmed = confirmed_regulations(self.run_dir) if (
@@ -1531,6 +1546,9 @@ class StepRunner:
             return parse_p4t(answer, sd_id=subdomain)
         if step.startswith("p2o"):
             return parse_p2o(answer, subdomain)
+        if step.startswith("p3a_map"):
+            import phase3 as _p3
+            return {"verdicts": _p3.parse_verdicts(answer)}
         if subdomain is not None:
             parsed = parse_p4(answer, subdomain)
             return self._check_p4_quality(parsed, subdomain)
@@ -1846,6 +1864,128 @@ class StepRunner:
         base["rows_by_subdomain"] = rows_by_sd
         self._write_stage_result("p4t", base)
         return sw["calls"]
+
+    def stage_p3a_map(self) -> int:
+        """Phase 3 Part 1, coverage mapping.
+
+        Two halves, and the order is the argument. The skeleton is built and
+        gated *before* any model call, so a missing objective is caught by a set
+        comparison rather than by reading a table. Then one call per active
+        sub-domain fills the judgement columns, each isolated: a sub-domain that
+        fails its repair is recorded and the sweep continues, because a whole run
+        aborting on one bad sub-domain costs 34 good calls and the diagnosis with
+        them (M02: 5/5 aborted at the same place).
+
+        The V0 baseline is read here and never written.
+        """
+        import phase3 as p3
+
+        self._require(("steps/fact_sheet.yaml",), "G-P1-A")
+        phase2_doc = self.run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md"
+        if not phase2_doc.is_file():
+            raise ValueError(f"no Phase 2 deliverable at {phase2_doc} — run --stage phase2 first")
+
+        objectives = p3.load_objectives(phase2_doc)
+        if not objectives:
+            raise ValueError("Phase 2 deliverable parsed to zero objectives")
+        skeleton = p3.build(objectives)
+
+        # the deterministic gate runs first, and a failure here costs nothing
+        skeleton_findings = p3.check(skeleton, objectives)
+        if skeleton_findings:
+            raise ValueError(f"Phase 3 skeleton gate failed with "
+                             f"{len(skeleton_findings)} finding(s): {skeleton_findings}")
+
+        v0 = (self.repo / "cases" / self.case["case_id"] / "03_PHASE3_SPEC"
+              / "part1_security_privacy" / "v0_functional_baseline"
+              / "Doc01_Requirements_Elicitation_and_PUC.md")
+        if not v0.is_file():
+            raise ValueError(f"no frozen V0 baseline at {v0}")
+        cards = p3.load_v0_cards(v0)
+        pool = [c["id"] for c in cards]
+        if not pool:
+            raise ValueError(f"frozen V0 baseline at {v0} yielded no candidate cards")
+
+        by_sd: dict[str, list[dict]] = {}
+        for r in skeleton:
+            by_sd.setdefault(r["subdomain"], []).append(r)
+
+        store = self.run_dir / "steps" / "phase3"
+        store.mkdir(parents=True, exist_ok=True)
+        calls = 0
+        failures = []
+
+        for sd in sorted(by_sd):
+            rows = by_sd[sd]
+            sd_objs = [o for o in objectives if o["subdomain"] == sd]
+            parsed_path = store / f"verdicts_{sd.replace('.', '_')}.json"
+            if parsed_path.is_file():
+                verdicts = json.loads(parsed_path.read_text(encoding="utf-8"))
+            else:
+                (store / f"pack_{sd.replace('.', '_')}.md").write_text(
+                    p3.build_verdict_pack(rows, cards), encoding="utf-8")
+                try:
+                    self._call(f"p3a_map:{sd}", sd)
+                    stored = (self.run_dir / "steps" / "phase3a_map"
+                              / f"{sd.replace('.', '_')}.json")
+                    if not stored.is_file():
+                        # A dry run composes the pack and stops at the call, so
+                        # there is nothing to read back. That is the rehearsal
+                        # path working, not a failure to report.
+                        if self.dry_run:
+                            continue
+                        raise FileNotFoundError(f"{stored} was not written by _call")
+                    verdicts = json.loads(stored.read_text(encoding="utf-8"))["verdicts"]
+                    sub_findings = p3.check_verdicts(verdicts, sd_objs, pool)
+                    if sub_findings:
+                        raise ValueError(f"{len(sub_findings)} finding(s): {sub_findings[0]}")
+                    if not self.dry_run:
+                        calls += 1
+                    parsed_path.write_text(json.dumps(verdicts, indent=1), encoding="utf-8")
+                except (LLMError, ValueError, KeyError, OSError) as e:
+                    failures.append(f"{sd}: {type(e).__name__}: {str(e)[:160]}")
+                    print(f"[phase3] {sd} verdicts FAILED — continuing: {str(e)[:160]}",
+                          flush=True)
+                    continue
+            by_sd[sd] = p3.apply_verdicts(rows, verdicts)
+
+        merged = [r for rows in by_sd.values() for r in rows]
+
+        out_dir = self.run_dir / "outputs" / "phase3" / "synthesis_rounds"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        grouped: dict[str, list[dict]] = {}
+        for r in merged:
+            grouped.setdefault(r["domain"], []).append(r)
+        (out_dir / "OBJECTIVE_MAPPING.md").write_text(
+            p3.render_matrix(merged, grouped,
+                             p3.domain_names_from(self.repo / "baseline/domains/index.md")),
+            encoding="utf-8")
+        (out_dir / "PRINCIPLE_MAPPING.md").write_text(
+            p3.render_principles(), encoding="utf-8")
+
+        findings = p3.check_verdicts(merged, [o for o in objectives
+                                              if o["id"] in {r["id"] for r in merged}],
+                                    pool) + p3.check_anchors(merged)
+        if findings:
+            print(f"[phase3] {len(findings)} verdict finding(s):", flush=True)
+            for f in findings[:12]:
+                print(f"    {f}", flush=True)
+
+        carried = len(by_sd) - len({f.split(":")[0] for f in failures})
+        self._write_stage_result("p3a_map", {
+            "status": "ok" if not failures and not findings else "partial",
+            "carried": carried,
+            "selected": len(by_sd),
+            "failed": len(failures),
+            "summary": f"{len(merged)} objectives / {len(by_sd)} sub-domains; "
+                       f"{len(findings)} finding(s)",
+            "objectives": len(merged),
+            "findings": len(findings),
+            "failures": failures,
+            "verdict_counts": {v: sum(1 for r in merged if r["verdict"] == v)
+                               for v in p3.VERDICTS},
+        })
+        return calls
 
     def stage_p5(self) -> int:
         """Zero-LLM assembly: Doc02 deliverable from validated artifacts +

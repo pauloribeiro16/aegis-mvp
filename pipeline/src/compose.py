@@ -30,6 +30,7 @@ FICHA_FILES = {
     "p5": "PROM-P1-05_RENDER_VALIDATE.md",
     "p2o": "PROM-P2-01_OPERATIONALIZE_SUBDOMAIN.md",
     "p2d": "PROM-P2-03_SYNTHESIZE_PRINCIPLES.md",
+    "p3a_map": "PROM-P3A-01_VERDICT_COVERAGE.md",
 }
 
 # Sub-domain id like D-01.1
@@ -769,6 +770,31 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
                 f"regulations {', '.join(confirmed)}; selection of "
                 f"{len(load_selection(run_dir)['selected'])} sub-domains, of which this "
                 f"call covers ONE (ADR-012 D1 — one p4t call per sub-domain).\n"))
+    elif step.startswith("p3a_map"):
+        # The coverage-mapping pack: this sub-domain's Phase 2 objectives with
+        # their published anchors already attached, plus the frozen V0 card pool
+        # that may carry them. Every anchor the model could name is on the page,
+        # so it has nothing to invent; the anchors it did not find absent are the
+        # process obligations, which the verdict vocabulary explains.
+        import phase3 as _p3
+
+        only = step.split(":", 1)[1]
+        phase2_doc = run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md"
+        objectives = _p3.load_objectives(phase2_doc)
+        rows = [r for r in _p3.build(objectives) if r["subdomain"] == only]
+        v0 = (repo / "cases" / case["case_id"] / "03_PHASE3_SPEC"
+              / "part1_security_privacy" / "v0_functional_baseline"
+              / "Doc01_Requirements_Elicitation_and_PUC.md")
+        cards = _p3.load_v0_cards(v0)
+        files.append((
+            f"pack-p3a_map/{only}/VERDICT_PACK.md",
+            _p3.build_verdict_pack(rows, cards)))
+        files.insert(0, (
+            f"pack-p3a_map/{only}/BUILD_MANIFEST.md",
+            f"Context pack build (determistic): sub-domain {only}; "
+            f"{len(rows)} Phase 2 objective(s) carrying their published anchor sets; "
+            f"{len(cards)} frozen V0 candidate cards; one call per sub-domain "
+            f"(ADR-012 D1).\n"))
     else:
         raise ValueError(f"unknown step: {step}")
 

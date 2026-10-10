@@ -32,6 +32,7 @@ Exit 0 iff every guarantee holds.
 """
 from __future__ import annotations
 
+import json
 import re
 import subprocess
 import sys
@@ -415,6 +416,41 @@ def test_unfilled_subdomain_stays_unset_not_half_filled() -> None:
     assert all(r["verdict"] == S.UNSET for r in partial)
     findings = phase3.check_verdicts(partial, objs, pool)
     assert len(findings) == len(rows), findings
+
+
+def test_store_parsed_routes_p3a_map_above_the_p4_catch_all() -> None:
+    """A named step that carries a sub-domain is swallowed by the p4 branch.
+
+    `store_parsed` ends in `elif subdomain is not None:` — the p4 store. Any
+    step that passes a sub-domain lands there unless it is matched ABOVE that
+    line, and p4 reads `parsed["md"]`, which a verdict table does not have. This
+    cost one cluster run: every sub-domain that parsed cleanly still failed with
+    `KeyError: 'md'`, and the trace said `ok` because the parser had passed —
+    the failure was in the store, after the record was already written.
+    """
+    import steps
+    with tempfile.TemporaryDirectory() as td:
+        run = Path(td)
+        payload = {"verdicts": [{"id": "SO-D-01.1-001", "verdict": S.ORGANIZATIONAL,
+                                 "discharge": "d", "carrier": "—", "skill": "—",
+                                 "summary": "s", "action": "—",
+                                 "carriers_cited": []}]}
+        steps.store_parsed(run, "p3a_map:D-01.1", "D-01.1", payload)
+        out = run / "steps" / "phase3a_map" / "D-01_1.json"
+        assert out.is_file(), "the verdict slice was not stored"
+        assert json.loads(out.read_text())["verdicts"][0]["id"] == "SO-D-01.1-001"
+
+
+def test_verdict_cell_accepts_backticks_or_bold() -> None:
+    """The model used both in one batch. Only the wording is compared."""
+    rows, objs, pool = _subdomain_rows("Case_01_TinyTask_SaaS", "D-03.2")
+    for marks in ("**%s**", "`%s`", "**`%s`**", "%s"):
+        answer = _answer(rows, **{rows[0]["id"]: {
+            "carrier": "—", "skill": "—",
+            "verdict": marks % S.ORGANIZATIONAL,
+            "discharge": "named organizational obligation"}})
+        parsed = phase3.parse_verdicts(answer)
+        assert parsed[0]["verdict"] == S.ORGANIZATIONAL, marks
 
 
 if __name__ == "__main__":

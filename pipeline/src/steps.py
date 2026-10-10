@@ -541,6 +541,14 @@ def store_parsed(run_dir: Path, step: str, subdomain: str | None, parsed: dict) 
         fname = subdomain.replace(".", "_") if subdomain else "unknown"
         (p2_dir / f"{fname}.json").write_text(
             json.dumps(parsed, indent=1, ensure_ascii=False), encoding="utf-8")
+    elif step.startswith("p3a_map"):
+        d = steps_dir / "phase3a_map"
+        d.mkdir(parents=True, exist_ok=True)
+        # `.md` keeps the dotted sub-domain id, `.json` the underscored form —
+        # the same split the p4 store uses, so a resume marker and a reader agree
+        # on which artefact is which.
+        (d / f"{subdomain.replace('.', '_')}.json").write_text(
+            json.dumps(parsed, indent=1), encoding="utf-8")
     elif subdomain is not None:
         goals_dir = steps_dir / "goals"
         goals_dir.mkdir(exist_ok=True)
@@ -550,14 +558,6 @@ def store_parsed(run_dir: Path, step: str, subdomain: str | None, parsed: dict) 
             json.dumps({"subdomain": subdomain, "goals": parsed["goals"],
                         "assumptions": parsed["assumptions"]},
                        indent=1, ensure_ascii=False), encoding="utf-8")
-    elif step.startswith("p3a_map"):
-        d = steps_dir / "phase3a_map"
-        d.mkdir(parents=True, exist_ok=True)
-        # `.md` keeps the dotted sub-domain id, `.json` the underscored form —
-        # the same split the p4 store uses, so a resume marker and a reader agree
-        # on which artefact is which.
-        (d / f"{subdomain.replace('.', '_')}.json").write_text(
-            json.dumps(parsed, indent=1), encoding="utf-8")
     elif step == "p4t":
         (steps_dir / "tensions.md").write_text(parsed["md"] + "\n", encoding="utf-8")
         (steps_dir / "tensions.json").write_text(

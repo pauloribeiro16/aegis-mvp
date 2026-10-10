@@ -325,7 +325,9 @@ def parse_verdicts(answer: str) -> list[dict]:
             continue
         if oid in rows:
             raise ValueError(f"verdict table repeats {oid}")
-        verdict = cells[4].replace("**", "").strip()
+        # The model wraps the verdict in backticks as often as in bold, and both
+#        # were seen in one batch — strip the marks, not the wording.
+        verdict = cells[4].replace("**", "").replace("`", "").strip()
         if verdict not in VERDICTS:
             raise ValueError(f"{oid}: verdict {verdict!r} is outside the ADR-007 D4 vocabulary")
         rows[oid] = {

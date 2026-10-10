@@ -1,67 +1,26 @@
 #!/usr/bin/env python3
-"""trace.py — call ledger and run manifest.
-
-Every LLM call appends one line to runs/<run_id>/trace.jsonl recording what
-was sent, what came back and where both are stored. manifest.json aggregates
-run-level state (stages done, call count, ficha versions).
-"""
+"""trace.py — Backward-compatible shim delegating to aegis_pipeline.core.trace."""
 
 from __future__ import annotations
 
-import datetime as _dt
-import json
+import sys
 from pathlib import Path
 
+# Ensure package root is in sys.path
+_src = Path(__file__).resolve().parent
+if str(_src) not in sys.path:
+    sys.path.insert(0, str(_src))
 
-def now_iso() -> str:
-    return _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+from aegis_pipeline.core.trace import (
+    Trace,
+    count_calls,
+    now_iso,
+    update_manifest,
+)
 
-
-class Trace:
-    def __init__(self, run_dir: Path):
-        self.run_dir = run_dir
-        self.path = run_dir / "trace.jsonl"
-        self.seq = self._max_seq()
-
-    def _max_seq(self) -> int:
-        if not self.path.exists():
-            return 0
-        last = 0
-        for line in self.path.read_text(encoding="utf-8").splitlines():
-            line = line.strip()
-            if line:
-                try:
-                    last = max(last, int(json.loads(line).get("seq", 0)))
-                except json.JSONDecodeError:
-                    continue
-        return last
-
-    def next_seq(self) -> int:
-        self.seq += 1
-        return self.seq
-
-    def append(self, record: dict) -> None:
-        with self.path.open("a", encoding="utf-8") as fh:
-            fh.write(json.dumps(record, ensure_ascii=False) + "\n")
-
-
-def update_manifest(run_dir: Path, **updates) -> dict:
-    path = run_dir / "manifest.json"
-    manifest: dict = {}
-    if path.exists():
-        manifest = json.loads(path.read_text(encoding="utf-8"))
-    for key, value in updates.items():
-        if key == "stage_history" and key in manifest and isinstance(manifest[key], list):
-            manifest[key].append(value)
-        else:
-            manifest[key] = value
-    manifest["updated"] = now_iso()
-    path.write_text(json.dumps(manifest, indent=1, ensure_ascii=False), encoding="utf-8")
-    return manifest
-
-
-def count_calls(run_dir: Path) -> int:
-    path = run_dir / "trace.jsonl"
-    if not path.exists():
-        return 0
-    return sum(1 for line in path.read_text(encoding="utf-8").splitlines() if line.strip())
+__all__ = [
+    "Trace",
+    "count_calls",
+    "now_iso",
+    "update_manifest",
+]

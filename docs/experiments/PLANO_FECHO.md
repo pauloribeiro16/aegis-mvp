@@ -31,7 +31,7 @@ upstream: '[00_RESULTS.md](00_RESULTS.md) · [04_EXPERIMENT_BACKLOG.md](../resea
 | Caso 02 | **entregue** (rc=0, 4 regulamentos) |
 | Caso 03 | **bloqueado no p4 D-04.3**: pack de 136 kB, 5 cartões; o modelo escreve as 5 filas certas + §5 e continua a escrever até ao cap de 16 384 tokens. **Actualizado (2026-10-05):** com o instrumento actual (rev `ad76979`, semente 42, braço `rule`) a referência não chega ao D-04.3 — aborta antes, no `p4 D-03.3`, no gate L0 de near-verbatim: 5/5 corridas, `AG-D-03.3-004` 93% → `AG-D-03.3-001` 99%, 29 808 tokens de prompt, `EXIT_CODE=1` (jobs 1983224, 1983226, 1983228, 1983230, 1983232). A célula da referência no Caso 03 é `no`. Resultado negativo completo em [00_RESULTS.md](00_RESULTS.md) §M02 |
 | Matriz m03 (pós-revisão do prompt) | gemma4 2/2, muse 2/2, glm47 0/2 (sobre-compressão no p4), nemotron 0/2 (linha de 10 colunas), qwen3.5 0/2 (p2 sem bloco), ornith 0/1 histórico (crash CUDA) |
-| Pontuação cega L2 | pack pronto (30 docs, 450 linhas), **0 notas lançadas** |
+| Pontuação cega L2 | pack **reconstruído** (30 docs, 450 linhas), **0 notas lançadas** — o pack anterior estava a meio; ver [L2-00](00_RESULTS.md) |
 | EXP-04 | código pronto, nunca lançado |
 | Correcção do prompt de selecção | verificada no m03: falha de contrato 10/10 → 0/4 |
 
@@ -90,7 +90,7 @@ precisa; a variância natural dos modelos já foi medida no m01 sem semente.
 
 | # | O quê | Estado real |
 |---|---|---|
-| 4.1 | **Pontuação cega L2** (~2 h do investigador; 450 linhas esperas) | **em aberto — bloqueia o veredicto de qualidade** |
+| 4.1 | **Pontuação cega L2** (~2 h do investigador; 450 linhas esperas) | **em aberto — bloqueia o veredicto de qualidade.** O pack foi reconstruído em 2026-10-10: o anterior não emitia o material de D1–D7 e a semente de amostragem nunca corria ([L2-00](00_RESULTS.md), [L2_RUBRIC.md](L2_RUBRIC.md) v1.1.0). Falta o §6.1 test–retest (κ) antes de o instrumento ter veredicto próprio |
 | 4.2 | ~~E-17 — auditoria do juiz L3~~ | **CADUCADO.** Não há juiz L3 no pipeline: a camada foi despromovida a L1 determinístico + L2, e `pipeline/src/quality.py` só tem medição mecânica. Não há nada para auditar. O item do backlog (E-17) deve ser marcado caducado com esta razão. |
 | 4.3 | EXP-04 bateria (n=5 por braço, semeada) | **FEITA** — [EXP04_results.md](EXP04_results.md): menu 5/5, regra 0/5 |
 | 4.4 | ~~E-19 + E-20~~ (mutação dos gates; cobertura dos packs) | **JÁ FEITOS** como EXP-05a/05b: 36/36 faults detectadas, cobertura 100%, utilização 86,4%. Listá-los como pendentes foi erro deste plano. |

@@ -43,7 +43,7 @@
 
 **Does v2 suffice?**
 
-- **As the Phase 3 deliverable (specification): YES.** Compliance-traceable (GDPR + CRA), security-complete for its lane, fully client-accepted, with zero silent objectives and discharge-verified coverage (6 fully / 19 partially covered with explicit carve-outs — ADR-007).
+- **As the Phase 3 deliverable (specification): YES.** Compliance-traceable (GDPR + CRA), security-complete for its lane, fully client-accepted, with zero silent objectives and anchored coverage — 6 fully covered, 19 partially covered with explicit carve-outs (ADR-007).
 - **As total compliance/security assurance: NO — and not expected.** Three standing conditions: (1) the 32 organizational controls must be operated in the process lane (owners in Phase 2 §13; derived specification: `Doc03`, ADR-008); (2) RN29 is SHOULD — a deferral would be a recorded residual; (3) the accepted baseline has not been exercised under attack scenarios.
 
 **Phase 4 trigger (ADR-005): RECOMMENDED — GO.** The trigger condition ("the accepted baseline is robust and concrete") is met: the baseline is chain-complete, control-anchored, converged with the client, and the asset/trust-boundary statements of the functional model are in place. Fase 4 — Threat Analysis (STRIDE/LINDDUN over the accepted baseline) is the correct next step and is where security sufficiency gets tested under adversarial pressure.

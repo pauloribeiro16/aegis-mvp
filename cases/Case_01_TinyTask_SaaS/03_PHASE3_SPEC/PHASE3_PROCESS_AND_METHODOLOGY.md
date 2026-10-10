@@ -292,8 +292,10 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 ├── PHASE3_PROCESS_AND_METHODOLOGY.md            # (This file) Complete normative methodology manual
 │
 ├── part1_security_privacy/                      # [PART 1] Security & Compliance — versioned baseline + rounds
-│   ├── Doc01_Requirements_Elicitation_and_PUC.md# Active Doc01 (working copy, synced to the current version folder)
+│   ├── Doc00_Process_and_Operational_Workflows.md # Active Doc00 (working copy, synced to the current version folder)
+│   ├── Doc01_Requirements_Specification.md       # Active Doc01 (working copy, synced to the current version folder)
 │   ├── Doc02_System_Use_Cases.md                # Active Doc02 (working copy, synced to the current version folder)
+│   ├── Doc03_Organizational_Requirements.md     # Active Doc03 — PROCESS lane (ADR-008), no version folder
 │   │
 │   ├── v0_functional_baseline/                  # [VERSION 0] Locked Pure Functional Baseline
 │   │   ├── README.md                            # V0 Scope, Rationale, and Architecture
@@ -307,7 +309,8 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 │   │
 │   ├── v2_security_privacy_synthesis/           # [VERSION 2] Round-1 convergence (APPROVED, ACTIVE)
 │   │   ├── README.md                            # V2 Scope, re-anchored chains, new constraints, round register
-│   │   ├── Doc01_Requirements_Elicitation_and_PUC.md
+│   │   ├── Doc00_Process_and_Operational_Workflows.md
+│   │   ├── Doc01_Requirements_Specification.md
 │   │   └── Doc02_System_Use_Cases.md
 │   │
 │   ├── analysis_v0_to_v1/                       # STEP1-STEP5 dossiers + V0/V1/V2 analysis tables

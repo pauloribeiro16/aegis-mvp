@@ -24,9 +24,9 @@ Constraint wording of RN9–RN18, RN24 is unchanged by ADJ items; only driver ob
 
 ## §2 New Constraint Formulations (EARS, altitude L2, technology-neutral)
 
-### RN27 — Requester Identity Verification for Rights Exercise (MUST; absorbs P-01)
-- **EARS:** If a data-subject request to export or erase personal data is submitted, the system shall verify the requester's identity, using means proportionate to the risk of mis-identification, before executing the request.
-- **Fit criterion:** every export/erasure execution is preceded by a recorded successful identity verification of the requester; unverified requests never reach execution.
+### RN27 — Requester Identity Verification for Rights Exercise (MUST; absorbs P-01; trigger and fit criterion widened by Round 2 P2)
+- **EARS:** If a data-subject request under Articles 15 to 22 is submitted, the system shall verify the requester's identity, using means proportionate to the risk of mis-identification and to the data volume disclosed, before executing the request.
+- **Fit criterion:** every execution of a rights request under Articles 15 to 22 is preceded by a recorded successful identity verification of the requester; unverified requests never reach execution; and verification discloses no personal data of third parties beyond what the verified request concerns.
 - **Verification:** `TEST` · **Volere fit criterion:** binary, deterministic.
 - **Chain:** `GDPR Art. 12(6) + Art. 11(2) + Art. 5(1)(c)` → `SO-D-03.1-001` → `PRIN-ENG-01` → CSF PR.AA-03, PR.AA-02 / PF PR.AC-P6.
 - **Carriers:** `R8.1`, `R8.2` cards; `{U.C. 8.1}` step 2 + extension 2b; `{U.C. 8.2}` step 5 + extension 5a.

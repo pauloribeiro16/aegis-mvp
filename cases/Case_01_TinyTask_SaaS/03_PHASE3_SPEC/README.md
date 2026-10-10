@@ -19,8 +19,10 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 ├── PHASE3_PROCESS_AND_METHODOLOGY.md            # Master normative guide: RE literature, iterative risk-acceptance rounds, and EARS rules
 │
 ├── part1_security_privacy/                        # [PHASE 3 — PART 1] Security & Compliance (ADR-006)
-│   ├── Doc01_Requirements_Elicitation_and_PUC.md# Active Doc01 (working copy, synced to the current version folder)
+│   ├── Doc00_Process_and_Operational_Workflows.md # Active Doc00 (working copy, synced to the current version folder)
+│   ├── Doc01_Requirements_Specification.md       # Active Doc01 (working copy, synced to the current version folder)
 │   ├── Doc02_System_Use_Cases.md                # Active Doc02 (working copy, synced to the current version folder)
+│   ├── Doc03_Organizational_Requirements.md     # Active Doc03 — PROCESS lane (ADR-008), no version folder
 │   │
 │   ├── v0_functional_baseline/                      # [VERSION 0] Pure Functional Baseline (LOCKED)
 │   │   ├── README.md                                # V0 Scope, Rationale, and Architecture
@@ -34,7 +36,7 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/
 │   │
 │   ├── v2_security_privacy_synthesis/               # [VERSION 2] Round-2 convergence — risk-accepted baseline (APPROVED, ACTIVE)
 │   │   ├── README.md                                # V2 Scope, Re-anchored Chains, New Constraints (RN27–RN30), and Round Register
-│   │   ├── Doc01_Requirements_Elicitation_and_PUC.md# 20 Functional Cards (incl. derived R8.3) + Realigned Chains + RN27–RN30
+│   │   ├── Doc01_Requirements_Specification.md   # 20 Functional Cards (incl. derived R8.3) + Realigned Chains + RN27–RN30
 │   │   └── Doc02_System_Use_Cases.md                # 20 Sea-Level System Use Cases (incl. {U.C. 8.3}) with Identity/Secure-Default Flows
 │   │
 │   ├── analysis_v0_to_v1/                           # [COGNITIVE TRAJECTORY] Step-by-Step Synthesis Dossier

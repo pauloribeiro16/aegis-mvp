@@ -26,7 +26,7 @@ Security, privacy, and regulatory constraints derived from the AEGIS methodology
     - [R7 – Manage Commercial Subscriptions](#r7--manage-commercial-subscriptions)
     - [R8 – Export Data and Close Accounts](#r8--export-data-and-close-accounts)
 - [3. Non-Functional Requirements & Transversal Attributes](#3-non-functional-requirements--transversal-attributes)
-  - [3.1 General Operational Quality Attributes (Table 7)](#31-general-operational-quality-attributes-table-7)
+  - [3.1 General Operational Quality Attributes](#31-general-operational-quality-attributes)
   - [3.2 Transversal Security and Privacy Requirements](#32-transversal-security-and-privacy-requirements)
 - [Bibliography](#bibliography)
 - [Version History](#version-history)
@@ -123,7 +123,7 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 | **ID:** R1.2 **Name:** Manage user profile and account preferences |
 | **Description:** The system must allow an authenticated user to view and update their personal profile details (full name, avatar image, and contact details) and configure notification preferences. |
 | **Requirement Origin:** User Account Personalization Needs (Realizes: PUC 1.2) |
-| **Security & Privacy Constraints:**<br>**NFR-RN23** Personal Data Cryptographic Protection at Rest — `GDPR Art. 32(1)(a) + Art. 5(1)(f)` → `PO-D-01.1-001` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-10 / PF PR.DS-P1<br>**NFR-RN26** Privacy Audit Trail for Personal Data Modifications — `GDPR Art. 30` → `PO-D-09.4-001` → `PRIN-ENG-07` → CSF ID.AM-08, PR.DS-10 / PF CM.AW-P2 |
+| **Security & Privacy Constraints:**<br>**NFR-RN23** Personal Data Cryptographic Protection at Rest — `GDPR Art. 32(1)(a) + Art. 5(1)(f)` → `PO-D-01.1-001` → `PRIN-ENG-01` → CSF PR.DS-01, PR.DS-10 / PF PR.DS-P1<br>**NFR-RN26** Privacy Audit Trail for Personal Data Modifications — `GDPR Art. 30` → `PO-D-09.4-001` → `PRIN-ENG-07` → CSF ID.AM-08, PR.DS-10 / PF CM.AW-P2 <br>**D3 elevation driver** (no RN bound) — `GDPR Art. 5(1)(d) + Art. 16` → `PO-D-01.4-001`: the rectification duty is discharged by this card's own editing surface rather than by a transversal constraint, and the priority is raised to Must because a data-subject right admits no deferral |
 | **Interfaces:** Profile settings screen; Notification preferences panel |
 | **Dependencies:**<br>• **Stakeholders:** Team Contributors<br>• **Data Sources:** Profile update submissions; Preference selections<br>• **Extraction Periodicity:** on demand<br>• **Information Systems / Databases:** Internal Application Database (user profile records)<br>• **Preceding Requirements:** |
 | **Identified Problems:** |
@@ -393,26 +393,26 @@ The detailed functional requirement cards follow the exact 7-row single-column f
 
 ## 3. Non-Functional Requirements & Transversal Attributes
 
-### 3.1 General Operational Quality Attributes (Table 7)
+### 3.1 General Operational Quality Attributes
 
 The platform non-functional requirements comprise the general operational quality attributes and the cross-cutting security & privacy requirements listed in Table 3; function-specific security & privacy NFRs are absorbed directly into the corresponding requirement cards as `Security & Privacy Constraints` rows (§2.3):
 
 *Table 3. General Operational Quality Attributes*
 
-| ID | Requirement | Priority | Type |
-|---|---|---|---|
-| **RN1** | The platform must achieve a page load response time of under 500 ms for Kanban boards and task list views containing up to 200 items. | MUST | Performance & Efficiency |
-| **RN2** | The system must maintain monthly service availability of at least 99.5%, excluding scheduled maintenance windows announced in advance. | MUST | Availability |
-| **RN3** | The web application interface must be fully responsive, ensuring correct rendering on modern desktop and mobile viewports (minimum width of 375 px). | MUST | Usability |
-| **RN4** | The storage architecture must support up to 50,000 active tasks per workspace without degradation in search, filter, or rendering speed. | SHOULD | Scalability |
-| **RN5** | The system must execute automated daily database backups and maintain data recovery functionality with an RPO under 24 hours. | MUST | Recoverability · CRA → `SO-D-04.4-002` |
-| **RN6** | The user interface must support internationalization (i18n), offering full system localization in English and Portuguese. | SHOULD | Internationalization |
-| **RN7** | The payment gateway integration must communicate exclusively over authenticated secure channels and enforce cryptographic webhook signature verification. | MUST | Interoperability |
-| **RN8** | The system architecture must enforce strict logical data segregation across workspaces (multi-tenancy), preventing cross-tenant access. | MUST | Architectural Integrity |
-| **RN24** | The system shall cryptographically protect all data in transit across public and untrusted networks using state-of-the-art mechanisms, refusing or upgrading unencrypted connection attempts. | MUST | Security — Transport (GDPR Art. 32(1)(a)+Art. 32(2) + CRA Annex I Part I (2)(e) + (2)(j) → PO-D-01.2-001, SO-D-01.2-002 → PRIN-ENG-01 → CSF PR.DS-02, PR.IR-01 / PF PR.DS-P2) |
-| **RN18** | The system shall record an immutable security audit entry for every authentication attempt, privilege elevation, permission rejection, and subscription modification, retaining actor, action, timestamp, and origin. | MUST | Security — Auditability (CRA Annex I Part I (2)(l) → SO-D-10.1-002, SO-D-04.1-002 → PRIN-ENG-07 → CSF DE.CM-01, DE.CM-09) |
-| **RN17** | The system shall authenticate inbound integration clients and throttle request volumes commensurate with operational capacity to protect availability against resource exhaustion, rejecting excess requests with a retry indication. | MUST | Security — Attack Surface (CRA Annex I Part I (2)(d)+(2)(j) → SO-D-07.2-002 → PRIN-ENG-02 → CSF PR.PS-02, PR.PS-06) |
-| **RN29** | The product shall be accompanied by secure-use instructions — or an address where they can be consulted — covering commissioning and lifetime measures (membership and role management, credential handling, sharing-default configuration) for end users and administrators. | SHOULD | Security Documentation (CRA Annex II §8(a)–(e) → SO-D-08.1-002 → CSF PR.AT-01) |
+| ID | Requirement | Fit criterion | Priority | Type |
+|---|---|---|---|---|
+| **RN1** | The platform must achieve a page load response time of under 500 ms for Kanban boards and task list views containing up to 200 items. | a measured page load for a 200-item board and task list stays under 500 ms | MUST | Performance & Efficiency |
+| **RN2** | The system must maintain monthly service availability of at least 99.5%, excluding scheduled maintenance windows announced in advance. | monthly availability measured over any complete calendar month is at least 99.5%, excluding announced maintenance | MUST | Availability |
+| **RN3** | The web application interface must be fully responsive, ensuring correct rendering on modern desktop and mobile viewports (minimum width of 375 px). | each viewport at or above 375 px width renders the board, task list, and forms without horizontal scroll or clipped controls | MUST | Usability |
+| **RN4** | The storage architecture must support up to 50,000 active tasks per workspace without degradation in search, filter, or rendering speed. | a workspace holding 50,000 active tasks returns search, filter, and render results within the RN1 budget | SHOULD | Scalability |
+| **RN5** | The system must execute automated daily database backups and maintain data recovery functionality with an RPO under 24 hours. | a restore from the most recent daily backup completes and returns the workspace to its pre-failure state within 24 hours of the failure | MUST | Recoverability · CRA → `SO-D-04.4-002` |
+| **RN6** | The user interface must support internationalization (i18n), offering full system localization in English and Portuguese. | every user-facing string and date/number format resolves in both English and Portuguese | SHOULD | Internationalization |
+| **RN7** | The payment gateway integration must communicate exclusively over authenticated secure channels and enforce cryptographic webhook signature verification. | an unsigned or wrongly-signed webhook is rejected without applying any subscription state change | MUST | Interoperability |
+| **RN8** | The system architecture must enforce strict logical data segregation across workspaces (multi-tenancy), preventing cross-tenant access. | a read or write attempted across a workspace boundary is refused and logged | MUST | Architectural Integrity |
+| **RN24** | The system shall cryptographically protect all data in transit across public and untrusted networks using state-of-the-art mechanisms, refusing or upgrading unencrypted connection attempts. | an unencrypted connection to a public interface is refused rather than downgraded | MUST | Security — Transport (GDPR Art. 32(1)(a)+Art. 32(2) + CRA Annex I Part I (2)(e) + (2)(j) → PO-D-01.2-001, SO-D-01.2-002 → PRIN-ENG-01 → CSF PR.DS-02, PR.IR-01 / PF PR.DS-P2) |
+| **RN18** | The system shall record an immutable security audit entry for every authentication attempt, privilege elevation, permission rejection, subscription modification, access to or modification of personal data, and user-initiated deletion, retaining actor, action, timestamp, and origin. | every event class named in the requirement produces exactly one immutable entry carrying actor, action, timestamp, and origin, and no user-initiated deletion is missing an entry | MUST | Security — Auditability (CRA Annex I Part I (2)(l) → SO-D-10.1-002, SO-D-04.1-002 → PRIN-ENG-07 → CSF DE.CM-01, DE.CM-09) |
+| **RN17** | The system shall authenticate inbound integration clients and throttle request volumes commensurate with operational capacity to protect availability against resource exhaustion, rejecting excess requests with a retry indication. | an inbound integration client without valid credentials is rejected, and a request burst beyond the stated capacity receives a retry indication instead of a queue | MUST | Security — Attack Surface (CRA Annex I Part I (2)(d)+(2)(j) → SO-D-07.2-002 → PRIN-ENG-02 → CSF PR.PS-02, PR.PS-06) |
+| **RN29** | The product shall be accompanied by secure-use instructions — or an address where they can be consulted — covering commissioning and lifetime measures (membership and role management, credential handling, sharing-default configuration) for end users and administrators. | the published documentation contains a secure-use section covering all five listed topics, addressed to both end users and administrators | SHOULD | Security Documentation (CRA Annex II §8(a)–(e) → SO-D-08.1-002 → CSF PR.AT-01) |
 
 ---
 
@@ -436,3 +436,4 @@ The platform non-functional requirements comprise the general operational qualit
 | **3.0.0** | 2026-09-23 | Requirements Engineering Agent | V1 Functional Refinement Pass: added derived requirement `R1.3` (locked-account recovery), refined `R7.2` and `R8.2`, elevated `R1.2` to MUST. |
 | **4.0.0** | 2026-09-28 | Requirements Engineering Agent | Round 1 synthesis (ADR-005): 11 constraint chains re-anchored to Phase 2 objectives; new constraints RN27, RN28, RN29; derived requirement `R8.3` with `RN30`; 20 requirement cards. |
 | **5.0.0** | 2026-10-01 | Requirements Engineering Agent | Modular separation pass: decoupled operational process flows and PUC catalog into [`Doc00_Process_and_Operational_Workflows.md`](Doc00_Process_and_Operational_Workflows.md). Refocused `Doc01` strictly on the atomic, contractual requirement specification cards and non-functional constraints with bidirectional traceability to PUCs. |
+| **5.1.0** | 2026-10-10 | Requirements Engineering Agent | Consolidation pass: the superseded `Doc01_Requirements_Elicitation_and_PUC.md` (v4.0.0) was retired; this file is the single `Doc01`. Its Part I–III scope, As-Is model and PUC catalogue were already carried by [`Doc00_Process_and_Operational_Workflows.md`](Doc00_Process_and_Operational_Workflows.md), and the actor-to-functional-area context diagram was preserved in [`Doc02_System_Use_Cases.md`](Doc02_System_Use_Cases.md) §3.1. No requirement card changed. |

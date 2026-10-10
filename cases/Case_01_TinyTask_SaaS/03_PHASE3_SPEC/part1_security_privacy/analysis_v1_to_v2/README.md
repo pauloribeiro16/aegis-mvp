@@ -43,10 +43,17 @@ Gate codified in [`../../PHASE3_PROCESS_AND_METHODOLOGY.md`](../../PHASE3_PROCES
 | # | Criterion | Evidence | State |
 |---|---|---|---|
 | G1 | Exhaustive mapping 100% verdicted (objectives + principles), zero silent | `part1_security_privacy/synthesis_rounds/OBJECTIVE_MAPPING.md` 62/62 + totals; `PRINCIPLE_MAPPING.md` 7/7 bound, 0 pending gaps. ADR-007 discharge semantics: 6 fully / 19 partially covered with discharge records, 32 organizational — totals sum 62 | **GREEN** |
-| G2 | Rounds converged; zero open verdicts; rejections recorded as risk acceptances | `ROUND1_REGISTER.md` §1: 13/13 accepts, 0 reject, 0 adjust; `part1_security_privacy/synthesis_rounds/README.md` state. Round 2 carries baseline-change proposals only (ADR-007); P1–P4 pending — accepted baseline unchanged | **GREEN** |
+| G2 | Rounds converged; zero open verdicts; rejections recorded as risk acceptances | `ROUND1_REGISTER.md` §1: 13/13 accepts, 0 reject, 0 adjust. `ROUND2_REGISTER.md`: **converged 2026-10-10, 4/4 verdicts** — P1 accept (fit criteria added), P2 accept (RN27 trigger widened to Arts. 15–22), P3 accept (RN18 trigger widened to data access/modification + user deletion), P4(a) accept (corruption-reporting leg carved out to the organizational lane, residual recorded). Zero open verdicts, zero rejections | **GREEN** |
 | G3 | Control selection complete; anchors ∈ published sets | `ROUND1_REGISTER.md` §3 (per-constraint selection + sources); no out-of-set anchor without W4 | **GREEN** |
-| G4 | Deliverables at current version; §6 checklist; `doc_lint.py --strict` = 0 | `part1_security_privacy/v2_security_privacy_synthesis/` 4.0.0; lint run 2026-09-28: 1650 files, 0 findings | **GREEN** |
+| G4 | Deliverables at current version; §6 checklist; `doc_lint.py --strict` = 0 | [`../v2_security_privacy_synthesis/`](../v2_security_privacy_synthesis/) is the active version folder; the Part 1 deliverables are its `Doc00`, `Doc01` and `Doc02`; `doc_lint.py --strict` run 2026-10-10: 3220 files, 0 findings | **GREEN** |
 | G5 | Sufficiency assessment with verdict + explicit residuals | `part1_security_privacy/synthesis_rounds/SUFFICIENCY_ASSESSMENT.md` (compliance + security verdicts; residuals: organizational lane, RN29 SHOULD, threat validation) | **GREEN** |
 | G6 | Transition dossier complete | This dossier (STEP1–STEP5) | **GREEN** |
 
 **Gate verdict: GREEN — Part 2 (Threat & Risk Analysis) is cleared to launch** (`../../part2_threat_risk`), on the researcher's order.
+
+**Gate re-audit, 2026-10-10.** G2 previously read GREEN against its own criterion ("zero open verdicts") while the same cell recorded Round 2 as pending; the dossier treated Round 2 as out of G2's scope by labelling its items "baseline-change proposals". That is a scoping decision, not a closure. Round 2 has now converged 4/4 and the criterion is satisfied on its own terms, so the gate stands without the carve-out.
+
+Two other claims were corrected in the same pass and neither weakens the gate:
+
+- **G5's residual list named a document that does not exist.** The sufficiency assessment and the coverage matrix both route 32 objectives to `Doc03_Organizational_Requirements.md`, which the case never shipped. The organizational lane is being specified now; until it lands, those 32 objectives are routed but not discharged.
+- **G1's "discharge-verified" wording overstated what the data supports.** All 62 Phase 2 `Verification Criteria` are one of two template sentences with the objective's own name substituted (ADR-013 §3, measured). The verdict label was corrected to `Fully covered (anchored)`; the coverage finding is unchanged, and the ADR-007 D2 reconstruction test is recorded as not executable on the current Phase 2 data.

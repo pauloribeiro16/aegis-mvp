@@ -386,7 +386,7 @@ def main() -> int:
     check("doc carries per-regulation baseline objectives",
           "Regulation baseline — `SG-D-01.1.GDPR` (GDPR):" in doc
           and "Regulation baseline — `SG-D-01.1.CRA` (CRA):" in doc)
-    exported = EXPORT_DIR / "TinyTask" / run_dir.name / "doc02_adjusted_goals.md"
+    exported = EXPORT_DIR / "TinyTask" / "phase1" / run_dir.name / "doc02_adjusted_goals.md"
     check("deliverable exported (AEGIS_EXPORT_DIR)", exported.exists())
     check("repo output/ untouched by tests", repo_output_before == _output_snapshot(REPO / "output"),
           f"{len(repo_output_before)} pre-existing file(s) unchanged by the test")

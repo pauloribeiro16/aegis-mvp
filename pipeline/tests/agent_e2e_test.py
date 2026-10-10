@@ -266,7 +266,7 @@ def main() -> int:
     print("-- 4. deliverable + validation + export --")
     check("doc02 written in run dir", (run_dir / "doc02_adjusted_goals.md").exists())
     check("RUN_NOTES written", (run_dir / "RUN_NOTES.md").exists())
-    exported = EXPORT_DIR / "TinyTask" / run_dir.name / "doc02_adjusted_goals.md"
+    exported = EXPORT_DIR / "TinyTask" / "phase1" / run_dir.name / "doc02_adjusted_goals.md"
     check("deliverable exported (AEGIS_EXPORT_DIR)", exported.exists())
     if exported.exists():
         check("run copy == exported copy",

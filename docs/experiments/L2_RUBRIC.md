@@ -1,7 +1,7 @@
 ---
 document_id: AEGIS-EXP-L2-RUBRIC
 title: 'L2 human scoring rubric — the two-stage instrument for EXP-03'
-version: 1.0.0
+version: 1.1.0
 created: 2026-10-03
 status: ACTIVE
 sources: 'docs/research/sources.yaml'
@@ -40,11 +40,18 @@ repetition**.
 
 ### 2a. Sampled goal rows (holistic, 1–5)
 
-Per document, sample **8 goal rows**, stratified by sub-domain block: sort the
-blocks canonically, split the row list into 8 contiguous strata by row index,
-and take the row at a within-stratum position drawn with the registered seed
-(§5). Never the first N rows — openers are calibrated differently by every
-generator.
+Per document, sample **8 goal rows**, stratified: sort the blocks canonically,
+split the row list into 8 contiguous strata by row index, and take the row at a
+within-stratum position drawn with the registered seed (§5). Never the first N
+rows — openers are calibrated differently by every generator.
+
+**The draw is paired, and it is deliberate.** The seed is consumed **once**,
+producing one set of 8 within-stratum positions that every document reuses.
+The batch is a single case, so the same 8 duty ids exist in each document;
+scoring the same duty everywhere makes every score difference attributable to
+the arm rather than to which duty happened to be drawn. Re-seeding per document
+converts a paired design into an unpaired one and throws that away — it is the
+one change to this section that would need a version bump and a stated reason.
 
 Score each sampled row **holistically** against these anchors:
 
@@ -92,14 +99,18 @@ impression:
 
 ## 5. Blinding and procedure
 
-1. Documents are exported to plain markdown with **all arm-identifying
-   metadata stripped** (no run id, no manifest, no export path, no timestamps,
-   §0 removed — it carries no model content anyway).
-2. The presentation file pairs documents and randomises order with the
-   registered seed (below). The mapping file is written to the runs directory
-   and is not opened until scores are entered.
-3. Scores are entered into **`L2_SCORES.csv`** with columns:
-   `doc_key, unit, item, score, notes` (unit = `row:<AG-ID>` or `doc:D<n>`).
+1. `scripts/build_scoring_pack.py` emits one **scoring sheet** per run into
+   `scoring/pack/`, carrying only the surfaces §1 names as model-written: the
+   sampled §3 goal rows, the §2 framing, the §4 tension resolutions and the
+   selected sub-domain set. §0, §1, §5 and §6 are excluded — they are
+   code-derived, and their row counts would re-identify the run.
+2. The sheets are presented in a seeded random order. The un-blinding map goes
+   to `scoring/_key.json`, is written **last**, and is not opened until scores
+   are entered. It is the only file that names arms; see §9 for its git status.
+3. Scores go into **`scoring/L2_SCORES.csv`** with columns
+   `doc_key, unit, item, score, notes`, where `unit` is `row:<AG-ID>` for a
+   goal row or `doc:D<n>` for a document item. The builder writes this schema
+   exactly — 8 row units + 7 document units per document, 450 units at n=30.
 4. Only after the batch is entered is the mapping opened and joined.
 5. Registered seeds: row sampling `20261003`, presentation order `20261004`,
    retest re-sampling `20261005`.
@@ -134,3 +145,45 @@ count) and the blind requirement are carried over unchanged. The reusable-
 sentence count is now measured mechanically as well
 (`quality.implication_reuse`), so the human judgement and the number can be
 compared — one more place where the instrument validates itself.
+
+## 8. What this instrument currently measures
+
+The batch in `scoring/` is **30 Phase 1 documents**: 15 pipeline (EXP-02 arm B)
+and 15 agent (EXP-03 agent arm), all of them the TinyTask case. The §2a anchors
+and the §2b items are written against Phase 1 output — goal rows, framing,
+tensions, sub-domain selection — because that is what the pipeline emits.
+
+Three consequences, stated so the next reader does not over-read the number:
+
+1. **The pipeline/agent comparison this batch was cut for is already closed by
+   other means.** The agentic arm was retired as a non-production path by
+   researcher decision (2026-10-04, `AGENTS.md` §-1). Score it and report it;
+   it is not the reason to spend the scoring.
+2. **There is no Phase 3 batch, and there cannot be one yet.** Phase 3 has no
+   pipeline stage — `pipeline/src/` holds no phase3 module and `run_pipeline.py`
+   has no `phase3` entry in `--stage`. A quality verdict about Phase 3
+   requirements needs Phase 3 output to score.
+3. **Until Phase 3 exists, the question worth asking this instrument is the one
+   Phase 3 inherits**: does a delivered Phase 1 document satisfy the duty it
+   claims, at the calibration its own intake implies? Phase 3 consumes Phase 1
+   adjusted goals as its drivers, so a Phase 1 document that scores 3 is a defect
+   Phase 3 will inherit, not a Phase 3 defect it can fix.
+
+The builder is corpus-agnostic — `sections()` pulls whatever model-written
+surfaces a document carries — so a Phase 3 batch needs the same script and a
+Phase 3 corpus, not new machinery.
+
+## 9. State and version control
+
+`scripts/build_scoring_pack.py` is tracked; its output is not uniformly so,
+because the three artefacts differ in whether they are regenerable:
+
+| Path | Tracked | Why |
+|---|---|---|
+| `scoring/pack/`, `scoring/_manifest.json` | no | regenerated deterministically from the runs directory |
+| `scoring/L2_SCORES.csv` | **yes** | carries the entered scores; ~2 h of research time that no script reproduces |
+| `scoring/_key.json` | **never** | the un-blinding map; committing it breaks the blinding before scoring |
+
+Rebuilding the pack re-randomises which run each `docNN` names, so **correct
+the builder before entering any score**, never after — scores entered against
+one key cannot be joined to a key rebuilt on another.

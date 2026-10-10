@@ -22,11 +22,13 @@ _tmp_*.json
 # Tool scratch directories.
 .dsh/
 
-# Generated experiment working material, all regenerable from the tracked
-# scripts: `scripts/build_scoring_pack.py` rebuilds pack/ + L2_SCORES.csv, and
-# _key.json is the BLINDING KEY — committing it would break the EXP-03
-# scoring before it is entered.
-scoring/
+# Experiment working material under scoring/. `pack/` and `_manifest.json` are
+# regenerable from the tracked `scripts/build_scoring_pack.py`, so they stay
+# untracked. `L2_SCORES.csv` is NOT regenerable — it carries the researcher's
+# entered scores, which is why it is tracked. `_key.json` is the BLINDING KEY;
+# committing it would break the scoring before it is entered, so it never is.
+scoring/*
+!scoring/L2_SCORES.csv
 
 # Exported deliverables (output/<company>/<run_id>/) are per-run generated
 # markdown; the authoritative copy of every run lives in $AEGIS_RUNS_DIR and,

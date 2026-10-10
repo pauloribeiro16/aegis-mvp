@@ -416,7 +416,7 @@ class AgentRunner:
                                                    encoding="utf-8")
         # per-run export, same convention as stage_p5
         out_dir = (Path(os.environ.get("AEGIS_EXPORT_DIR", str(self.repo / "output")))
-                   / self.toolbox.case["company_id"] / self.run_dir.name)
+                   / self.toolbox.case["company_id"] / "phase1" / self.run_dir.name)
         out_dir.mkdir(parents=True, exist_ok=True)
         shutil.copy(doc, out_dir / "doc02_adjusted_goals.md")
         shutil.copy(self.run_dir / "RUN_NOTES.md", out_dir / "RUN_NOTES.md")

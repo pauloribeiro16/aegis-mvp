@@ -204,7 +204,7 @@ def main() -> int:
         return 1
     srv.shutdown()
 
-    doc = (TMP / "export" / COMPANY / RUN.name / "doc02_adjusted_goals.md")
+    doc = (TMP / "export" / COMPANY / "phase1" / RUN.name / "doc02_adjusted_goals.md")
     check("deliverable exported", doc.exists(), str(doc))
     text = doc.read_text(encoding="utf-8")
 

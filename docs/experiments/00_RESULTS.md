@@ -350,6 +350,58 @@ candidate with nothing behind it. The p4 model answered *"None — no Sub-SO for
 the confirmed regulations"* and was **right**. With the filter corrected, Case
 01 re-ran `p3 → all → phase2` and closed at 37/37.
 
+## L2-00 — the blind instrument's own readiness audit (NEGATIVE RESULT, 2026-10-10)
+
+**What it tested.** Whether the L2 scoring pack was in the state `PLANO_FECHO.md`
+§4.1 described — *"pack pronto (30 docs, 450 linhas), 0 notas lançadas"* — before
+spending the researcher's scoring time on it. A readiness check, not an
+experiment.
+
+**How it was designed.** Read the builder, then read the artefact it had produced.
+Physical inspection of the output, per R10: the CSV schema, the heading set of all
+30 emitted sheets, and the row ids each document sampled.
+
+**Results so far.** The CSV was honest; the claim was not. Three defects:
+
+1. **47 % of the instrument had no material.** 210 of the 450 units are document
+   items D1–D7, which judge the §2 framing, the §4 tension resolutions and the
+   selected sub-domain set. Every emitted sheet carried only `## Goal 1..8` — the
+   exporter emitted the §3 goal table alone. The pack was asking 210 questions it
+   contained no answer to.
+2. **The registered row seed was inert.** `sample_rows()` built
+   `rng = random.Random(seed)` and never used it, returning the first row of each
+   stratum instead. The rubric's §5 registered `20261003`; the code passed
+   `SEED_ROWS + new_i`, so the seed was decoration either way. Consequence: all
+   30 documents sampled the **same 8 duty ids**.
+3. **The order of operations was inverted.** Rebuilding re-randomises which run
+   each `docNN` names, so scoring first and correcting later yields scores that
+   cannot be joined to a rebuilt key. The plan said "0 notas lançadas" as if the
+   next action were to score.
+
+**What they say.** A stated readiness is not a measured one, and the gap was
+invisible because the artefact *looked* complete: 450 rows, correct count, an
+empty score column that matched "0 notas lançadas" exactly. Fixed in
+`scripts/build_scoring_pack.py` — the exporter now pulls §2/§4/selection via
+`sections()`, the seeded within-stratum draw runs once and is reused, and the
+CSV conforms to the rubric's own §5.3 schema (`doc_key`, `row:<AG-ID>`,
+`doc:D<n>`). Verified on the rebuilt pack: framing 30/30, tensions 30/30,
+selection 38 for every document, 240 row + 210 document units, 30 distinct
+sheets, no arm-identifying token in any of them.
+
+**One defect was kept, deliberately.** Identical sampling across documents is a
+*paired* design, and for a single-case batch it is the stronger one: the same
+duty is scored in every document, so a score difference is attributable to the
+arm rather than to which duty was drawn. It is now intentional and recorded
+([L2_RUBRIC.md](L2_RUBRIC.md) §2a, v1.1.0) rather than a bug awaiting a
+well-meaning fix.
+
+**What it does not license.** The instrument now measures Phase 1 documents only.
+Phase 3 has no pipeline stage — `pipeline/src/` holds no phase3 module and
+`run_pipeline.py` has no `phase3` entry in `--stage` — so no Phase 3 quality
+verdict is available, and §6.1's test–retest still has to run before the
+instrument's κ is known. Scoring is still worth doing; it is not the closing of
+a phase.
+
 ## Registered decisions (2026-10-04)
 
 **Scale band: the code's threshold governs (EU 2003/361).** `controls.py` bands

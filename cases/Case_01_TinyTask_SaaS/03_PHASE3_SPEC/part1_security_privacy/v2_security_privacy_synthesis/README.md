@@ -22,7 +22,8 @@ The top-level `Doc01`/`Doc02` in `03_PHASE3_SPEC/` are kept as synced copies of 
 ```text
 cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/v2_security_privacy_synthesis/
 ├── README.md                                    # (This file) Overview of Version 2 and delta from V1
-├── ../Doc01_Requirements_Elicitation_and_PUC.md    # 20 Functional Cards (19 + R8.3 derived) + realigned constraint chains + RN27–RN30
+├── ../Doc00_Process_and_Operational_Workflows.md # Business context, process model, trust zones, PUC catalog
+├── ../Doc01_Requirements_Specification.md       # 20 Functional Cards (19 + R8.3 derived) + realigned constraint chains + RN27–RN30
 └── ../Doc02_System_Use_Cases.md                    # 20 Sea-Level Use Cases (incl. {U.C. 8.3}) with identity-verification and secure-default flows
 ```
 
@@ -30,8 +31,8 @@ cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/v2_security_privacy_synthesis/
 
 ## 3. The 2 Artifacts of Version 2
 
-### 3.1 [`../Doc01_Requirements_Elicitation_and_PUC.md`](../Doc01_Requirements_Elicitation_and_PUC.md)
-Carries the accepted baseline — 20 requirement cards (`R1.1` to `R8.3`, including `R8.3` derived in Round 1) and 20 Product Use Cases (`PUC 1.1` to `PUC 8.3`) — with:
+### 3.1 [`../Doc01_Requirements_Specification.md`](../Doc01_Requirements_Specification.md)
+Carries the accepted baseline — 20 requirement cards (`R1.1` to `R8.3`, including `R8.3` derived in Round 1) — with:
 - **Realigned constraint chains (11 RNs):** every absorbed constraint now cites its natural Phase 2 objective, with anchors belonging to that objective's published control set (ADJ-1…ADJ-9).
 - **New constraints:** `RN27` requester identity verification for rights exercise (`R8.1`/`R8.2`), `RN28` secure-by-default configuration (`R2.1`/`R3.1`), `RN30` workspace permanent removal (in-card on `R8.3`), `RN29` secure-use instructions (Table 7, SHOULD).
 - **Derived requirement `R8.3` (D1):** delete workspace and permanently erase workspace data, with matching `PUC 8.3`.

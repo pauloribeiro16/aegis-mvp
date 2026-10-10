@@ -31,15 +31,23 @@ if [ -z "$COMPANY" ] && [ -f "$RUNS_DIR/$RUN_ID/manifest.json" ]; then
 fi
 
 # O deliverable e o produto, nao a pasta da corrida: o P5 exporta-o para
-# output/<empresa>/<run_id>/ no compute node, e tem de vir a parte.
+# output/<empresa>/<fase>/<run_id>/ no compute node, e tem de vir a parte.
 if [ -n "$COMPANY" ]; then
-  mkdir -p "$REPO_ROOT/output/$COMPANY/$RUN_ID"
-  if scp -q "$HOST:$PROJ/aegis-mvp/output/$COMPANY/$RUN_ID/"'*' "$REPO_ROOT/output/$COMPANY/$RUN_ID/" 2>/dev/null; then
-    echo "synced deliverable to $REPO_ROOT/output/$COMPANY/$RUN_ID"
+  PHASE="phase1"
+  if [ -f "$RUNS_DIR/$RUN_ID/Doc01_Operational_Objectives.md" ]; then
+    PHASE="phase2"
+  elif [ -f "$RUNS_DIR/$RUN_ID/Doc00_Process_and_Operational_Workflows.md" ]; then
+    PHASE="phase3"
+  fi
+  mkdir -p "$REPO_ROOT/output/$COMPANY/$PHASE/$RUN_ID"
+  if scp -q "$HOST:$PROJ/aegis-mvp/output/$COMPANY/$PHASE/$RUN_ID/"'*' "$REPO_ROOT/output/$COMPANY/$PHASE/$RUN_ID/" 2>/dev/null; then
+    echo "synced deliverable to $REPO_ROOT/output/$COMPANY/$PHASE/$RUN_ID"
+  elif scp -q "$HOST:$PROJ/aegis-mvp/output/$COMPANY/$RUN_ID/"'*' "$REPO_ROOT/output/$COMPANY/$PHASE/$RUN_ID/" 2>/dev/null; then
+    echo "synced deliverable (legacy cluster path) to $REPO_ROOT/output/$COMPANY/$PHASE/$RUN_ID"
   elif [ -f "$RUNS_DIR/$RUN_ID/doc02_adjusted_goals.md" ]; then
-    cp "$RUNS_DIR/$RUN_ID/doc02_adjusted_goals.md" "$REPO_ROOT/output/$COMPANY/$RUN_ID/"
-    [ -f "$RUNS_DIR/$RUN_ID/RUN_NOTES.md" ] && cp "$RUNS_DIR/$RUN_ID/RUN_NOTES.md" "$REPO_ROOT/output/$COMPANY/$RUN_ID/"
-    echo "copied local deliverable to $REPO_ROOT/output/$COMPANY/$RUN_ID"
+    cp "$RUNS_DIR/$RUN_ID/doc02_adjusted_goals.md" "$REPO_ROOT/output/$COMPANY/$PHASE/$RUN_ID/"
+    [ -f "$RUNS_DIR/$RUN_ID/RUN_NOTES.md" ] && cp "$RUNS_DIR/$RUN_ID/RUN_NOTES.md" "$REPO_ROOT/output/$COMPANY/$PHASE/$RUN_ID/"
+    echo "copied local deliverable to $REPO_ROOT/output/$COMPANY/$PHASE/$RUN_ID"
   fi
 else
   echo "note: sem company_id (ou corrida ainda sem export) — output/ nao puxado"

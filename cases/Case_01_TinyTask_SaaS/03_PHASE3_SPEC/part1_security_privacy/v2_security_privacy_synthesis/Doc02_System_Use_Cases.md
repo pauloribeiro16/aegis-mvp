@@ -16,7 +16,7 @@ To provide complete operational clarity, each macro functional area is modeled w
   - [2.2 Use Case Architecture (Cockburn, Larman, Wiegers)](#22-use-case-architecture-cockburn-larman-wiegers)
   - [2.3 Visual UML Use Case Modeling in Markdown](#23-visual-uml-use-case-modeling-in-markdown)
   - [2.4 Anatomy of a Literature-Grounded Use Case](#24-anatomy-of-a-literature-grounded-use-case)
-  - [2.5 Refinement Boundary: Cockburn's Sea Level (Level 1) vs. Micro-UI Anti-Patterns](#25-refinement-boundary-cockburns-sea-level-level-1-vs-micro-ui-anti-patterns)
+  - [2.5 Refinement Boundary: Cockburn's Sea Level (Level 1) and Strict Level-2 Subfunction Criteria (ADR-009)](#25-refinement-boundary-cockburns-sea-level-level-1-and-strict-level-2-subfunction-criteria-adr-009)
 - [3. Requirements Analysis](#3-requirements-analysis)
   - [3.1 Work Context Model](#31-work-context-model)
   - [3.2 Traceability Matrix: Requirements (Doc01) to System Use Cases (Doc02)](#32-traceability-matrix-requirements-doc01-to-system-use-cases-doc02)
@@ -80,7 +80,7 @@ To prevent superficial or generic descriptions, this document adopts the best pr
 
 The specification follows the Volere requirements engineering methodology (Robertson & Robertson, 2012). Every functional requirement traces through a triangular derivation:
 - **Business Event:** An occurrence in the operational environment that demands a response (e.g., *a new team member needs onboarding*, *a project phase is completed*, *a task deliverable is updated*).
-- **Product Use Case (PUC):** The automated partition of the business process executed within the system boundary (defined in `Doc01` Table 8).
+- **Product Use Case (PUC):** The automated partition of the business process executed within the system boundary (defined in [`Doc00_Process_and_Operational_Workflows.md`](Doc00_Process_and_Operational_Workflows.md) Table 6).
 - **System Use Case:** The structured behavioral interaction between the primary actor and the system required to achieve the goal (detailed herein).
 
 ### 2.2 Use Case Architecture (Cockburn, Larman, Wiegers)
@@ -135,7 +135,50 @@ In accordance with Alistair Cockburn (*Writing Effective Use Cases*) and AEGIS A
 
 ### 3.1 Work Context Model
 
-The following diagram illustrates the information boundaries between TinyTask SaaS and adjacent external entities:
+**Actors and functional areas.** The diagram below shows which operational actor drives which functional area, and the supporting subsystems each area calls out to:
+
+```mermaid
+flowchart LR
+    Visitor["Unauthenticated Visitor"]
+    Member["Workspace Member"]
+    Admin["Workspace Admin"]
+    Owner["Workspace Owner"]
+    Gateway["External Payment Gateway"]
+    Notify["Notification / Email Service"]
+
+    subgraph TinyTask_SaaS["TinyTask SaaS Platform"]
+        R1["Manage User Accounts & Authentication (R1)"]
+        R2["Manage Workspaces & Teams (R2)"]
+        R3["Manage Projects (R3)"]
+        R4["Manage & Execute Tasks (R4)"]
+        R5["Collaborate on Task Deliverables (R5)"]
+        R6["Track Activity History & Notifications (R6)"]
+        R7["Manage Commercial Subscriptions (R7)"]
+        R8["Export Data & Close Accounts (R8)"]
+    end
+
+    Visitor --> R1
+    Member --> R1
+    Member --> R3
+    Member --> R4
+    Member --> R5
+    Member --> R6
+    Member --> R8
+    Admin --> R2
+    Admin --> R3
+    Admin --> R4
+    Owner --> R2
+    Owner --> R7
+    Owner --> R8
+
+    R1 -.-> Notify
+    R4 -.-> Notify
+    R5 -.-> Notify
+    R6 -.-> Notify
+    R7 <--> Gateway
+```
+
+**Information boundaries.** The diagram below illustrates the information boundaries between TinyTask SaaS and adjacent external entities:
 
 ```mermaid
 flowchart TD
@@ -152,7 +195,7 @@ The following matrix establishes strict bi-directional traceability between the 
 
 *Table 1. Traceability Matrix*
 
-| Functional Req (Doc01) | Product Use Case (Doc01) | System Use Case (Doc02) | Use Case Title | Priority | Bound NFR-Security & Privacy (in-card) |
+| Functional Req (Doc01) | Product Use Case (Doc00) | System Use Case (Doc02) | Use Case Title | Priority | Bound NFR-Security & Privacy (in-card) |
 |---|---|---|---|---|---|
 | **R1.1** | **PUC 1.1** | **{U.C. 1.1}** | Register and authenticate user accounts | MUST | NFR-RN10, NFR-RN11, NFR-RN19 |
 | **R1.2** | **PUC 1.2** | **{U.C. 1.2}** | Manage user profile and account preferences | MUST | NFR-RN23, NFR-RN26 |

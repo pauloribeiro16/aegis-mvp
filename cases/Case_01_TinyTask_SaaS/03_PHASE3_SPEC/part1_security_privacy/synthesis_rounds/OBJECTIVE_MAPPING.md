@@ -1,6 +1,6 @@
 # Phase 2 Objective Mapping — Exhaustive Coverage Matrix (TinyTask SaaS)
 
-> **Verdict vocabulary (ADR-007 D4):** `Fully covered` — the union of carrier fit criteria reconstitutes the objective's Verification Criteria and every statement leg is carried, out-of-scale-recorded, or carved out · `Partially covered` — the functional legs are carried; named legs are carved out to the organizational lane, design guidance, or a pending proposal · `No functional carrier (organizational)` — PROCESS/CAPABILITY obligation, recorded decision (input repertoire of `part1_security_privacy/Doc03_Organizational_Requirements.md`, ADR-008) · `Design guidance` / `N/A`. The `VC discharge` column is the authoritative discharge record; delivered card chains cite primary drivers only (ADR-007 D3).
+> **Verdict vocabulary (ADR-007 D4):** `Fully covered (anchored)` — every statement leg is carried by a named carrier whose control anchors sit inside that objective's published set, with no leg carved out. The label is `anchored`, not `discharge-verified`: the ADR-007 D2 reconstruction test requires the Phase 2 Verification Criteria to be object-specific, and all 62 of them are one of two template sentences with the objective's own name substituted (ADR-013 §3, measured). The reconstruction is therefore not executable on the current Phase 2 data, and no row claims it · `Partially covered` — the functional legs are carried; named legs are carved out to the organizational lane, design guidance, or a pending proposal · `No functional carrier (organizational)` — PROCESS/CAPABILITY obligation, recorded decision (input repertoire of `part1_security_privacy/Doc03_Organizational_Requirements.md`, ADR-008) · `Design guidance` / `N/A`. The `VC discharge` column is the authoritative leg-by-leg record of what each carrier carries and what it carves out; delivered card chains cite primary drivers only (ADR-007 D3).
 
 
 ## D-01 — Data Protection
@@ -9,12 +9,12 @@
 |---|---|---|---|---|---|---|
 | `PO-D-01.1-001` | Personal data at rest processed with appropriate security | `R1.2` (profile records) | TB | **Partially covered (RN23)** | RN23 → at-rest confidentiality (volumes, file assets, backups); carve-out: ongoing CIA/resilience of processing systems → organizational lane (SO-D-04.4-001/SO-D-10.1-001) | anchors match published set |
 | `SO-D-01.1-002` | Data at rest encrypted with state-of-the-art mechanisms | `R1.1`, `R1.3`, `R7.1`, `R7.2` | TB | **Partially covered (RN10, RN15, RN23)** | RN23 → product components; release-artifacts leg discharged via RN23 infrastructure-manifest INSPECT (SaaS interpretation recorded); RN15 → billing-state integrity only (not at-rest encryption) | RN10 anchor set corrected R0-recal |
-| `PO-D-01.2-001` | Personal data in transit confidential and unaltered | `R1.1`, all UC preconditions | TB | **Fully covered (RN24)** | RN24 fit criterion is broader than the objective (all data vs personal data flows — safe superset); Art. 32(2) five-event enumeration carried at its confidentiality/integrity core | anchors match |
-| `SO-D-01.2-002` | CRA twin: data in transit encrypted (state of the art) | `R1.1`, all UC preconditions | TB | **Fully covered (RN24 + RN13/RN14/RN17 x-ref)** | leg 1 (transport encryption) → RN24; attack-surface-limitation leg → SO-D-07.2-002 carriers RN13/RN14/RN17 (cross-reference recorded) | ADJ-9 accepted R1 |
+| `PO-D-01.2-001` | Personal data in transit confidential and unaltered | `R1.1`, all UC preconditions | TB | **Fully covered (anchored — RN24)** | RN24 fit criterion is broader than the objective (all data vs personal data flows — safe superset); Art. 32(2) five-event enumeration carried at its confidentiality/integrity core | anchors match |
+| `SO-D-01.2-002` | CRA twin: data in transit encrypted (state of the art) | `R1.1`, all UC preconditions | TB | **Fully covered (anchored — RN24 + RN13/RN14/RN17 x-ref)** | leg 1 (transport encryption) → RN24; attack-surface-limitation leg → SO-D-07.2-002 carriers RN13/RN14/RN17 (cross-reference recorded) | ADJ-9 accepted R1 |
 | `PO-D-01.3-001` | Re-identification info kept separate (key separation) | — (design constraint) | — | **Design guidance** | — | design/Phase 4 context |
 | `SO-D-01.3-002` | Cryptographic keys and auth material managed/protected | — (design constraint) | — | **Design guidance** | — | design/Phase 4 context |
 | `PO-D-01.4-001` | Accuracy + rectification without delay | `R1.2` (profile editing) | V | **Partially covered (R1.2 elevation)** | self-service rectification of profile fields carried; carrier has no fit criterion (ROUND2 §2 P1); Art. 19 recipient-notification cascade → organizational lane | D3 elevation, STEP5 CH-04 |
-| `SO-D-01.4-002` | Integrity of stored/transmitted data, commands, configuration | `R7.1`, `R7.2` (billing state), `R6.2` (webhook messages) | V | **Partially covered (RN15, RN16)** | RN15 → stored billing state; RN16 → webhook channel; configuration integrity → RN23 manifests (x-ref); carve-outs: corruption-reported leg → ROUND2 §2 P4; release-artifacts leg → SaaS interpretation (as SO-D-01.1-002) | re-driven, ADJ-7/ADJ-8 accepted R1 |
+| `SO-D-01.4-002` | Integrity of stored/transmitted data, commands, configuration | `R7.1`, `R7.2` (billing state), `R6.2` (webhook messages) | V | **Partially covered (RN15, RN16)** | RN15 → stored billing state; RN16 → webhook channel; configuration integrity → RN23 manifests (x-ref); carve-outs: corruption-reported leg → organizational lane, `ORG-D-01.4-001` (Round 2 P4(a), accepted 2026-10-10; residual risk recorded in `ROUND2_REGISTER.md`); release-artifacts leg → SaaS interpretation (as SO-D-01.1-002) | re-driven, ADJ-7/ADJ-8 accepted R1 |
 
 ## D-02 — Vulnerability Management
 
@@ -32,7 +32,7 @@
 | `SO-D-03.1-001` | Verify identity of data-subject rights requests (Art. 15–22) | `R8.1`, `R8.2` (RN27) | TB | **Partially covered (RN27)** | export/erase request verification carried; Art. 15/16/18/21 request types + minimisation-constrained verification leg → ROUND2 §2 P2 | P-01 accepted R1 |
 | `SO-D-03.1-002` | Identities, credentials, entitlements managed in a verified way | `R1.1`, `R1.3`, `R2.2` (credentials, sessions, roles) | LP | **Partially covered (RN11; RN10/RN12 co-drivers)** | credentials (RN10), session lifecycle (RN11), entitlement mediation (RN12) carried; carve-outs: joiner/mover/leaver offboarding beyond self-service, unique product identification, single point of contact → organizational lane | ADJ-2 accepted R1 |
 | `SO-D-03.2-001` | Authorized persons act on documented instructions (GDPR side) | — | — | **No functional carrier** (organizational) | — | — |
-| `SO-D-03.2-002` | Protection from unauthorised access via control mechanisms (CRA 2)(d) home | `R2.1`, `R3.1` (tenant isolation) | TB | **Fully covered (RN9)** | RN9 access-management fit criterion (100%-probe) reconstitutes the VC | re-driven, ADJ-1 accepted R1 |
+| `SO-D-03.2-002` | Protection from unauthorised access via control mechanisms (CRA 2)(d) home | `R2.1`, `R3.1` (tenant isolation) | TB | **Fully covered (anchored — RN9)** | RN9 access-management fit criterion (100%-probe) reconstitutes the VC | re-driven, ADJ-1 accepted R1 |
 | `SO-D-03.3-001` | Processor-side documented instructions + confidentiality | — | — | **No functional carrier** (organizational) | — | — |
 | `SO-D-03.3-002` | Access limited to authenticated and authorized users/services | `R2.2` (RBAC) | LP | **Partially covered (RN12)** | RN12 → authorized-mutation mediation + refused-mutation logging; x-refs: RN11 (authentication gating), RN17 (inbound service authentication), RN13/RN14 (surface limitation); carve-outs: active alerting beyond logging → organizational monitoring lane; hardware principals out-of-scale (no integrated hardware) | re-driven, ADJ-3 accepted R1 |
 | `SO-D-03.4-001` | By default only necessary personal data processed | `R1.1` (registration form) | DM | **Partially covered (RN19)** | amount collected → RN19; extent of processing → RN22 (x-ref); accessibility → RN12/RN28 (x-refs: RBAC + restrictive defaults satisfy the "not accessible without intervention to indefinite persons" leg); period-of-storage beyond attachments (RN25) → organizational retention schedules | after PO recalibration |
@@ -60,7 +60,7 @@
 | `PO-D-05.2-001` | Retention no longer than necessary | `R5.1` (attachments) | LE | **Partially covered (RN25)** | orphaned-attachment retention carried; carve-outs: retention ceilings for remaining data classes + documented erasure time limits per category → organizational retention schedules | PO recalibration (R0) |
 | `SO-D-05.2-002` | Updates/advisories available across support period | — | — | **No functional carrier** (organizational/support process) | — | — |
 | `PO-D-05.3-001` | Erasure without undue delay on request (Art. 17) | `R8.2` | LE | **Partially covered (RN21)** | irreversible erasure on request (self-service termination flow) carried; carve-out: processor delete-or-return at contract end → organizational/contracts lane | PO recalibration (R0) |
-| `SO-D-05.3-002` | User can permanently remove all data and settings of the product | `R8.3` (workspace deletion; `R8.2` account) | LE | **Fully covered (RN30; RN21 co-driver)** | permanent removal of all content + settings, certified (RN30/RN21); secure-transfer leg → RN24 transit protection on the R8.1 export flow (cross-reference recorded) | P-03 accepted R1 (D1) |
+| `SO-D-05.3-002` | User can permanently remove all data and settings of the product | `R8.3` (workspace deletion; `R8.2` account) | LE | **Fully covered (anchored — RN30; RN21 co-driver)** | permanent removal of all content + settings, certified (RN30/RN21); secure-transfer leg → RN24 transit protection on the R8.1 export flow (cross-reference recorded) | P-03 accepted R1 (D1) |
 | `PO-D-05.4-001` | Portability: structured, machine-readable, free of charge | `R8.1` | LE | **Partially covered (RN20)** | structured/machine-readable export incl. third-party-data exclusion carried; carve-outs: free-of-charge (company policy statement) → organizational; response-time bound → pending formulation; direct controller-to-controller transmission out-of-scale (recorded) | PO recalibration (R0) |
 
 ## D-06 — Supply Chain & Third-Party Security
@@ -79,7 +79,7 @@
 |---|---|---|---|---|---|---|
 | `PO-D-07.1-001` | DPbD technical/organisational measures (pseudonymisation…) | transversal (RN19/RN23 realize slices) | DM | **Partially covered (transversal: RN19, RN23)** | by-default minimization (RN19) + at-rest safeguard (RN23) slices; pseudonymisation exemplar → RN21 (x-ref); carve-out: holistic by-design integration → design lane (Phase 4 context) | — |
 | `SO-D-07.1-002` | Product designed per Annex I essential requirements (umbrella) | transversal | AS | **Partially covered (RN13/RN14/RN17 slices)** | essential-requirement slices carried via SO-D-07.2-002 drivers; carve-out: six-phase lifecycle risk-assessment propagation → organizational lane (SO-D-09.2-002) | specific drivers on SO-D-07.2-002, ADJ-4/ADJ-6 accepted R1 |
-| `SO-D-07.2-002` | Attack surfaces limited (incl. external components) | `R5.1` (uploads), `R4.2` (throttling), `R5.2`/`R6.2` (rendering/webhooks) | AS | **Fully covered (RN13, RN14, RN17)** | both legs (surface limitation incl. external components; exploitation mitigation) carried with verified fit criteria | re-driven, ADJ-4/ADJ-6 accepted R1 |
+| `SO-D-07.2-002` | Attack surfaces limited (incl. external components) | `R5.1` (uploads), `R4.2` (throttling), `R5.2`/`R6.2` (rendering/webhooks) | AS | **Fully covered (anchored — RN13, RN14, RN17)** | both legs (surface limitation incl. external components; exploitation mitigation) carried with verified fit criteria | re-driven, ADJ-4/ADJ-6 accepted R1 |
 | `SO-D-07.3-002` | Secure, timely update distribution (automatic where appropriate) | — | — | **No functional carrier** (organizational/deployment) | — | — |
 | `SO-D-07.4-002` | Series-production conformity procedures | — | — | **N/A** (SaaS has no production series) | — | — |
 
@@ -88,7 +88,7 @@
 | Objective | Summary | Functional carrier | Skill | State | VC discharge | Action / Round |
 |---|---|---|---|---|---|---|
 | `SO-D-08.1-001` | DPO informs/advises on obligations | — | — | **No functional carrier** (organizational) | — | — |
-| `SO-D-08.1-002` | Product accompanied by secure-use instructions (or info address) | `R8` package documentation surface (RN29) | — | **Fully covered (RN29, SHOULD)** | all instruction legs carried; topic-minimum interpretation + SHOULD priority residual recorded (SUFFICIENCY_ASSESSMENT §1) | P-04 accepted R1 |
+| `SO-D-08.1-002` | Product accompanied by secure-use instructions (or info address) | `R8` package documentation surface (RN29) | — | **Fully covered (anchored — RN29, SHOULD)** | all instruction legs carried; topic-minimum interpretation + SHOULD priority residual recorded (SUFFICIENCY_ASSESSMENT §1) | P-04 accepted R1 |
 | `SO-D-08.2-001` | DPO monitors compliance, awareness, training | — | — | **No functional carrier** (organizational) | — | — |
 | `SO-D-08.2-002` | Integration information for products integrating this product | — | — | **N/A** (product not offered for integration) | — | — |
 
@@ -133,11 +133,11 @@
 
 | Verdict | Count |
 |---|---|
-| Fully covered (discharge-verified) | 6 |
+| Fully covered (anchored) | 6 |
 | Partially covered (functional leg + explicit carve-out) | 19 |
 | No functional carrier (organizational) | 32 |
 | Design guidance (Phase 4 context) | 2 |
 | N/A (requirement type inapplicable to SaaS) | 3 |
 | **Total objectives** | **62** |
 
-Every objective above is explicitly placed with a discharge record — none is silent (ADR-007 D2). Round 1 closed on 2026-09-28 with 13/13 accepts — verdicts, formulations and control selections in [`ROUND1_REGISTER.md`](ROUND1_REGISTER.md); accepted items applied in `Doc01`/`Doc02` 4.0.0. Round 2 holds the baseline-change proposals P1–P4, pending client verdicts in [`ROUND2_REGISTER.md`](ROUND2_REGISTER.md) — the accepted baseline is unchanged by them.
+Every objective above is explicitly placed with a carrier and, where a leg is carried, an anchor set — none is silent (ADR-007 D2). Round 1 closed on 2026-09-28 with 13/13 accepts — verdicts, formulations and control selections in [`ROUND1_REGISTER.md`](ROUND1_REGISTER.md); accepted items applied in `Doc01`/`Doc02` 4.0.0. Round 2 holds the baseline-change proposals P1–P4, pending client verdicts in [`ROUND2_REGISTER.md`](ROUND2_REGISTER.md) — the accepted baseline is unchanged by them.

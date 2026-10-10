@@ -88,13 +88,20 @@ experimentos. R5 mantém-se.
 
 ---
 
-## 0. Onde vive o quê (caminhos fora do repositório)
+## 0. Onde vive o quê e Diretrizes Hierárquicas
 
+### Sub-diretrizes Hierárquicas (AGENTS.md)
+Este repositório adota uma estrutura hierárquica de contratos operacionais para agentes:
+- **Raiz ([`AGENTS.md`](file:///home/paulinho/Work/aegis-mvp/AGENTS.md)):** Regras globais, defaults de amostragem (§-1), conduta científica (§-2) e invariantes metodológicos (R1–R12).
+- **Casos de Referência ([`cases/AGENTS.md`](file:///home/paulinho/Work/aegis-mvp/cases/AGENTS.md)):** Estatuto de ground truth congelado dos casos de benchmark (Case 01/02/03), convenções de schemas e guia para adicionar novos casos.
+- **Motor da Pipeline ([`pipeline/AGENTS.md`](file:///home/paulinho/Work/aegis-mvp/pipeline/AGENTS.md)):** Arquitetura do pacote `aegis_pipeline`, shims em `pipeline/src/`, guia para acrescentar fases/estágios e boas práticas de manipulação.
+
+### Caminhos fora e dentro do repositório
 | Conteúdo | Local | Notas |
 |---|---|---|
 | **Corridas da pipeline** (artefactos, trace, logs) | `~/Work/aegis-runs/<run_id>/` na workstation; `../aegis-runs/<run_id>/` ao lado do checkout no cluster | **Nunca dentro do repo.** Configurado em `pipeline/deucalion/sync_down.sh` (`AEGIS_RUNS_DIR`) e `phase1.sbatch` (`MVP_RUNS_ROOT`) |
 | **Inspector (app React + API)** | `~/Work/aegis-inspector/` | Repo pnpm separado; a API lê `AEGIS_REPO` (este repo) e `AEGIS_RUNS_DIR` |
-| **Deliverables exportados** | `<repo>/output/<empresa>/<run_id>/` | Único resultado que fica no repo, um directório por corrida |
+| **Deliverables exportados** | `<repo>/output/<empresa>/<fase>/<run_id>/` | Resultados exportados organizados estritamente por fase (`phase1`, `phase2`, etc.) |
 | **Documentos de experiência** | `<repo>/docs/experiments/` | Pré-registos, resultados e o painel vivo; servido pela página *Pesquisa* do inspector sem deploy |
 | **Memória do projecto** | `~/.zcode/cli/memories/projects/aegis-mvp-*/memory/` | Decisões de amostragem e reprodutibilidade, com a evidência que as sustenta |
 | Corpus, baseline, templates, docs | `<repo>/` (como sempre) | Read-only por regra (ver §3) |

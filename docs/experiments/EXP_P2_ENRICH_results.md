@@ -287,8 +287,8 @@ post-hoc resolution with its own provenance.
 | Company | Run | Files |
 |---|---|---|
 | TinyTask | `run_p2d_c1` | Doc01 (722 lines, 76 tables) · Doc02 (64 lines) — in the run directory; `output/` is gitignored |
-| SecureBorder | `run_p2c2` | [`Doc01`](../../../output/SecureBorder/run_p2c2/Doc01_Operational_Objectives.md) (897 lines, 78 tables) · [`Doc02`](../../../output/SecureBorder/run_p2c2/Doc02_Secure_Design_Principles.md) (64 lines) |
-| OmniBank | `run_p2c3` | [`Doc01`](../../../output/OmniBank/run_p2c3/Doc01_Operational_Objectives.md) (1012 lines, 77 tables) · [`Doc02`](../../../output/OmniBank/run_p2c3/Doc02_Secure_Design_Principles.md) |
+| SecureBorder | `run_p2c2` | [`Doc01`](../../../output/SecureBorder/phase2/run_p2c2/Doc01_Operational_Objectives.md) (897 lines, 78 tables) · [`Doc02`](../../../output/SecureBorder/phase2/run_p2c2/Doc02_Secure_Design_Principles.md) (64 lines) |
+| OmniBank | `run_p2c3` | [`Doc01`](../../../output/OmniBank/phase2/run_p2c3/Doc01_Operational_Objectives.md) (1012 lines, 77 tables) · [`Doc02`](../../../output/OmniBank/phase2/run_p2c3/Doc02_Secure_Design_Principles.md) |
 
 Inspected physically per R10: table column integrity 0 deviations across 77/78
 tables, no glued headings, no `?` cells, no TODO/FIXME/`<>` (R12). One rendering

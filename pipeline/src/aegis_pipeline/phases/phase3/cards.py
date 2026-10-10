@@ -87,7 +87,10 @@ def parse_card(answer: str) -> dict:
     sections = _split_sections(block)
     card_sec = next((v for k, v in sections.items() if k.lower().startswith("card")), None)
     puc_sec = next((v for k, v in sections.items() if k.lower().startswith("puc")), None)
-    uc_sec = next((v for k, v in sections.items() if k.lower().startswith("use case")), None)
+    uc_key, uc_sec = next(
+        ((k, v) for k, v in sections.items() if k.lower().startswith("use case")),
+        (None, None),
+    )
     if not (card_sec and puc_sec and uc_sec):
         raise ValueError(
             "card call: expected three `####` sections — Card, PUC, Use case — "
@@ -137,12 +140,14 @@ def parse_card(answer: str) -> dict:
         raise ValueError("card: no PUC row with 5 columns (`PUC <n>.<m>` first cell)")
 
     # Use case: the fully-dressed fields
-    uc_id_match = re.search(r"\{U\.C\.\s*\d+\.\d+\}", uc_sec)
+    # o id vem no cabeçalho (`#### Use case {U.C. 1.1}`) — procurar em ambos
+    uc_id_match = re.search(r"\{U\.C\.\s*\d+\.\d+\}", f"{uc_key}\n{uc_sec}")
     if not uc_id_match:
         raise ValueError("card: use case has no `{U.C. n.m}` id")
     fields: dict[str, str] = {}
     for field in UC_FIELDS:
-        m = re.search(rf"\*\*{re.escape(field)}:?\*\*\s*(.+)", uc_sec)
+        # o cenário vem em lista multi-linha — capturar até ao próximo campo
+        m = re.search(rf"\*\*{re.escape(field)}:?\*\*\s*(.+?)(?=\n\*\*|\Z)", uc_sec, re.DOTALL)
         if not m:
             raise ValueError(f"card: use case missing {field!r}")
         fields[field] = m.group(1).strip()

@@ -1095,7 +1095,10 @@ class StepRunner:
             if line.strip().startswith("{")
         ]
         card_calls = [r for r in trace_rows if str(r.get("step", "")).startswith("p3a_card_")]
-        first_attempt = sum(1 for r in card_calls if not r.get("l0_retried"))
+        first_attempt = sum(
+            1 for r in card_calls
+            if r.get("status") == "ok" and not r.get("l0_retried")
+        )
 
         summary = {
             "status": "ok" if not failures else "partial",

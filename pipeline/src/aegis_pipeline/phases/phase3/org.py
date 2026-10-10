@@ -23,9 +23,20 @@ ORG_VERDICT = "No functional carrier (organizational)"
 DISPOSITIONS = ("ORG", "SCALE", "CARRIED")
 
 
+RE_OBJECTIVE_REF = re.compile(r"((?:PO|SO)-D-\d{2}\.\d-\d{3})")
+
+
 def parse_duty_audit(path: Path) -> dict[str, dict]:
-    """Parse the §3 audit table: objective → duty, disposition, warrant."""
+    """Parse the §3 audit table: objective → duty, disposition, warrant.
+
+    The audit merges rows in PROSE ("Merges with `X`", "Third instance … (see
+    `X`)"). The canonicalization unions rows connected by an explicit objective
+    reference plus rows sharing an identical duty text — the measured result on
+    the Case 01 audit is 26 duties, not the §4's 16: the remaining merges are
+    prose-relative and stay a human input (recorded deviation, PREREG_P3_01).
+    """
     out: dict[str, dict] = {}
+    order: list[str] = []
     for line in path.read_text(encoding="utf-8").splitlines():
         m = RE_DUTY_ROW.match(line.strip())
         if not m:
@@ -37,11 +48,43 @@ def parse_duty_audit(path: Path) -> dict[str, dict]:
             "disposition": m["disposition"],
             "warrant": m["warrant"].strip(),
         }
+        order.append(m["id"])
     if not out:
         raise ValueError(f"duty audit: no rows parsed from {path}")
     unknown = sorted(d for d in {v["disposition"] for v in out.values()} if d not in DISPOSITIONS)
     if unknown:
         raise ValueError(f"duty audit: dispositions outside {DISPOSITIONS}: {unknown}")
+
+    # union-find: referências explícitas + texto de dever idêntico
+    parent = {oid: oid for oid in order}
+
+    def find(x: str) -> str:
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    def union(a: str, b: str) -> None:
+        parent[find(a)] = find(b)
+
+    for oid, value in out.items():
+        for ref in RE_OBJECTIVE_REF.findall(value["duty"] + " " + value["warrant"]):
+            if ref != oid and ref in out:
+                union(oid, ref)
+    by_text: dict[str, str] = {}
+    for oid in order:
+        key = out[oid]["duty"].lower()
+        if key in by_text:
+            union(oid, by_text[key])
+        else:
+            by_text[key] = oid
+
+    canonical: dict[str, str] = {}
+    for oid in order:
+        root = find(oid)
+        canonical.setdefault(root, out[oid]["duty"])
+    for oid in order:
+        out[oid]["duty"] = canonical[find(oid)]
     return out
 
 

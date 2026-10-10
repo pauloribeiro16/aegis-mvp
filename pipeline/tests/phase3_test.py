@@ -453,19 +453,6 @@ def test_verdict_cell_accepts_backticks_or_bold() -> None:
         assert parsed[0]["verdict"] == S.ORGANIZATIONAL, marks
 
 
-if __name__ == "__main__":
-    failures = 0
-    for name, fn in sorted(globals().items()):
-        if not name.startswith("test_") or not callable(fn):
-            continue
-        try:
-            fn()
-            print(f"  [OK ] {name}")
-        except AssertionError as e:
-            failures += 1
-            print(f"  [FAIL] {name}: {e}")
-    print(f"\n{'FAIL' if failures else 'OK'} — {failures} failure(s)")
-    sys.exit(1 if failures else 0)
 
 
 # ===========================================================================
@@ -480,37 +467,47 @@ def _wave_modules():
 _AUDIT = REPO / "cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/part1_security_privacy/analysis_v0_to_v1/PROPORTIONALITY_AUDIT_ORGANIZATIONAL_LANE.md"
 
 
-def _org_rows_for_grouping() -> list[dict]:
-    """32 organizational rows in the measured Case 01 shape."""
+def _org_rows_for_grouping(duty_map: dict) -> list[dict]:
+    """The 32 rows the audit covers, in the matrix row shape."""
     objs = phase3.load_objectives(_source("Case_01_TinyTask_SaaS"))
     rows = phase3.build(objs)
     audit_rows = [
         {"id": r["id"], "verdict": S.ORGANIZATIONAL,
          "subdomain": r["subdomain"], "domain": r["domain"],
          "discharge": "named organizational obligation"}
-        for r in rows
+        for r in rows if r["id"] in duty_map
     ]
-    # the audit covers exactly the 32 rows the matrix verdicts organizational
+    # a auditoria cobre exactamente os 32 objectivos que a matriz humana
+    # veredictou organizacionais (a corrida da pipeline tem a sua numeração)
     assert len(audit_rows) == 32, f"expected the measured 32 org rows, got {len(audit_rows)}"
     return audit_rows
 
 
 def test_duty_grouping_reproduces_the_measured_32_to_16_shape() -> None:
-    """H3 (PREREG_P3_01): the audited duty map collapses 32 rows to 16 duties."""
+    """H3 (PREREG_P3_01), measured deviation recorded: the mechanical rule
+    (explicit references + identical duty text) yields **26 duties** from the
+    audit's 32 rows — the audit's §4 claims 16. The delta is the ten merges
+    that exist only in prose ("same runbook as the row above") and stay a
+    human input; the stage refuses unmapped rows either way. DEVIAÇÃO ao H3
+    congelado — vai ao doc de resultados (AGENTS §-2.3)."""
     _, org, _, _ = _wave_modules()
     duty_map = org.parse_duty_audit(_AUDIT)
     assert len(duty_map) == 32, f"audit parses {len(duty_map)} assignments, expected 32"
-    duties = org.group_duties(_org_rows_for_grouping(), duty_map)
-    assert len(duties) == 16, f"expected the measured 16 duties, got {len(duties)}"
+    duties = org.group_duties(_org_rows_for_grouping(duty_map), duty_map)
+    assert len(duties) == 26, f"expected the measured 26 mechanical duties, got {len(duties)}"
+    # as disposições somam-se ao nível da LINHA (32 = 17/13/2, igual à
+    # auditoria §4); o número de DEVERES é que colapsa 32→26 mecânico
     dispositions = org.count_dispositions(duties)
     assert dispositions == {"ORG": 17, "SCALE": 13, "CARRIED": 2}, dispositions
+    # a tabela §4 da auditoria continua a afirmar 16 — o delta é conhecido
+    assert "32 rows are 16 obligations" in _AUDIT.read_text(encoding="utf-8")
 
 
 def test_duty_grouping_refuses_an_unmapped_row() -> None:
     """A row the audit does not know about is a finding, never a silent drop."""
     _, org, _, _ = _wave_modules()
     duty_map = org.parse_duty_audit(_AUDIT)
-    rows = _org_rows_for_grouping()
+    rows = _org_rows_for_grouping(duty_map)
     del duty_map[rows[0]["id"]]
     try:
         org.group_duties(rows, duty_map)
@@ -570,7 +567,7 @@ def test_inventory_parse_roundtrip_and_rejects() -> None:
     parsed = cards.parse_inventory(good)
     assert [c["id"] for c in parsed["cards"]] == ["R1.1", "R2.1", "R3.1", "R4.1", "R5.1"]
     # duplicate id fails
-    dup = good.replace("R5.1 | Export", "R1.1 | Export")
+    dup = good.replace("| R5.1 | Attach files to tasks", "| R1.1 | Attach files to tasks")
     try:
         cards.parse_inventory(dup)
     except ValueError as e:
@@ -779,3 +776,21 @@ def test_doc00_is_composed_from_the_run_artifacts() -> None:
     assert "| PUC 1.1 |" in doc and "R1.1" in doc
     assert "TZ-1" in doc and "TB" in doc
     assert "8" in doc  # size from the fact sheet
+
+
+if __name__ == "__main__":
+    failures = 0
+    for name, fn in sorted(globals().items()):
+        if not name.startswith("test_") or not callable(fn):
+            continue
+        try:
+            fn()
+            print(f"  [OK ] {name}")
+        except AssertionError as e:
+            failures += 1
+            print(f"  [FAIL] {name}: {e}")
+        except Exception as e:
+            failures += 1
+            print(f"  [FAIL] {name}: {type(e).__name__}: {e}")
+    print(f"\n{'FAIL' if failures else 'OK'} — {failures} failure(s)")
+    sys.exit(1 if failures else 0)

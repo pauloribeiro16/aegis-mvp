@@ -17,7 +17,9 @@ same session as each stage completes.
 |---|---|---|---|---|---|
 | 2001072 | `p3a_cards` (attempt 1) | `run_p2enr_c1` (continue) | qwen3.8:27b | 42 (run config) | FAILED — 0/20 cards, **executor parser defect, not model quality** (see deviation D1) |
 | 2001112 | `p3a_cards` (attempt 2) | `run_p2enr_c1` | qwen3.8:27b | 42 | **COMPLETED — 20/20 cards, 0 failures** |
-| 2001126 | `p3a_propose` | `run_p2enr_c1` | qwen3.8:27b | 42 | submitted; result pending |
+| 2001126 | `p3a_propose` | `run_p2enr_c1` | qwen3.8:27b | 42 | COMPLETED — 18/19 proposals valid (1 isolated failure) |
+| 2001149 | `p3a_propose` (re-drive D-04.1) | `run_p2enr_c1` | qwen3.8:27b | 42 | COMPLETED — the same target failed again; failure stays recorded |
+| 2001153 | `p3a_round` | `run_p2enr_c1` | — (0 calls) | — | COMPLETED — ROUND1_REGISTER scaffold, 18 items, state PROPOSED |
 
 ## H1 — first-attempt card acceptance (wave 2): **SUPPORTED**
 
@@ -60,6 +62,28 @@ assigned its own objective numbering, so 39 of the run's 52 organizational
 verdicts are not in the audit's map. The rehearsal's `p3a_org` needs the duty
 audit re-entered against the run's ids (`steps/phase3/duty_audit.md`, same §3
 table format) — human input by design; the stage refuses to invent it.
+
+## H2 — proposal validity (wave 4): **SUPPORTED, with a scope deviation**
+
+- **Measurement:** 18/19 targeted sub-domains produced structurally valid
+  proposals on the first attempt (94.7%; threshold ≥90%). Physical inspection:
+  **60/60 anchor citations sit inside the objective's published sets** (T6 held
+  without a single finding).
+- **Scope deviation (recorded):** H2 as frozen speaks of "the measured 52-row
+  block"; the executed selector reads the model's OWN Action column, which
+  requested proposals for 19 rows — not all 52 organizational verdicts name a
+  proposal in their action. The round can add items by hand; the deviation is
+  the selector's scope, not a gate failure.
+- **The isolated failure:** D-04.1 (`PO-D-04.1-001`) failed 4 model calls
+  across two jobs (omitted target, then out-of-target blocks) — recorded per
+  the failure policy; the round may add the item manually.
+
+## Round state (the chain stopped here by design)
+
+`p3a_round` wrote the register scaffold: **18 items, all pending**, state
+PROPOSED. Closing it needs the human verdicts
+(`steps/phase3/round1_verdicts.json`) + the `G-P3-A` marker, then
+`p3a_org` → `p3a_weave` → `p3a_gate` complete the rehearsal.
 
 ## Pending (the chain stops at the human round by design)
 

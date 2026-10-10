@@ -82,6 +82,11 @@ NUM_CTX = {
     "p2o": 32768,
     "p2d": 32768,
     "p3a_map": 16384,
+    "p3a_cards": 32768,
+    "p3a_card": 32768,
+    "p3a_propose": 32768,
+    "p3a_org": 32768,
+    "p3a_weave": 32768,
 }
 
 NUM_PREDICT = {
@@ -94,10 +99,45 @@ NUM_PREDICT = {
     "p2o": 4096,
     "p2d": 4096,
     "p3a_map": 4096,
+    "p3a_cards": 8192,
+    "p3a_card": 8192,
+    "p3a_propose": 8192,
+    "p3a_org": 8192,
+    "p3a_weave": 8192,
 }
 
 EXTRA_INSTRUCTION = {
     "p3a_map": "Wrap your answer: return ONLY one ```markdown fenced block containing the verdict table, one row per objective, header row included.",
+    "p3a_cards": (
+        "Wrap your answer: return ONLY one ```markdown fenced block containing the inventory table "
+        "`| Card | Name | Business basis |` (header row included, one row per card you propose, "
+        "card ids `R<n>.<m>` starting at R1.1). Nothing else."
+    ),
+    "p3a_card": (
+        "Wrap your answer: return ONLY one ```markdown fenced block containing three sections — "
+        "`#### Card <id>` (the 7-row table: ID, Description, Requirement Origin, Interfaces, "
+        "Dependencies, Identified Problems, Priority), `#### PUC` (one 5-column row), and "
+        "`#### Use case {U.C. n.m}` (the fully-dressed fields including Traceability, Main Success "
+        "Scenario with numbered steps, Extensions). Nothing else."
+    ),
+    "p3a_propose": (
+        "Wrap your answer: return ONLY one ```markdown fenced block containing one `### <objective-id>` "
+        "section per target objective, in the order given, each with exactly these bold fields: "
+        "**Constraint (EARS)**, **Fit criterion**, **Risk addressed**, **Chain anchors**, "
+        "**Proposed carrier**. Nothing else."
+    ),
+    "p3a_org": (
+        "Wrap your answer: return ONLY one ```markdown fenced block containing the organizational "
+        "requirement card as bold fields: **Statement (EARS)**, **Requirement Origin**, "
+        "**Fit criterion**, **Verification Method**, **Chain**, **Control Anchors**, "
+        "**Dependencies**, **Priority**. Do not allocate the ORG id — the pipeline does that. Nothing else."
+    ),
+    "p3a_weave": (
+        "Wrap your answer: return ONLY one ```markdown fenced block starting with `#### Card <id>` "
+        "and containing the bold fields **Preconditions**, **Extensions**, **Constraints absorbed** "
+        "(the security preconditions and exception extensions the accepted constraints impose on "
+        "this card's use case). Nothing else."
+    ),
     "p1": "Wrap your answer: return ONLY one ```yaml fenced block with the fact sheet.",
     "p2": "Wrap your answer: return ONLY one ```markdown fenced block containing the 5-row §2 verdict table (header + 5 rows, nothing else).",
     "p2o": 'Wrap your answer: return ONLY one ```json fenced block shaped {"subdomain": "...", "operational_translation": "...", "methods": [{"id": "RULE-...", "method": "TEST|INSPECT|DEMONSTRATE|ANALYZE", "criteria": "...", "owner": "..."}], "principles": [{"id": "P-...", "rationale": "..."}]}.',
@@ -236,6 +276,40 @@ def store_parsed(run_dir: Path, step: str, subdomain: str | None, parsed: dict) 
         (d / f"{subdomain.replace('.', '_')}.json").write_text(
             json.dumps(parsed, indent=1), encoding="utf-8"
         )
+    elif step == "p3a_cards":
+        d = steps_dir / "phase3" / "cards"
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "inventory.json").write_text(
+            json.dumps(parsed, indent=1, ensure_ascii=False), encoding="utf-8"
+        )
+    elif step.startswith("p3a_card:"):
+        d = steps_dir / "phase3" / "cards"
+        d.mkdir(parents=True, exist_ok=True)
+        card_id = (subdomain or step.split(":", 1)[1]).replace(".", "_")
+        (d / f"{card_id}.json").write_text(
+            json.dumps(parsed, indent=1, ensure_ascii=False), encoding="utf-8"
+        )
+    elif step.startswith("p3a_propose:"):
+        d = steps_dir / "phase3"
+        d.mkdir(parents=True, exist_ok=True)
+        sd = (subdomain or step.split(":", 1)[1]).replace(".", "_")
+        (d / f"proposals_{sd}.json").write_text(
+            json.dumps(parsed, indent=1, ensure_ascii=False), encoding="utf-8"
+        )
+    elif step.startswith("p3a_org:"):
+        d = steps_dir / "phase3" / "org"
+        d.mkdir(parents=True, exist_ok=True)
+        slug = (subdomain or step.split(":", 1)[1]).replace(".", "_")
+        (d / f"{slug}.json").write_text(
+            json.dumps(parsed, indent=1, ensure_ascii=False), encoding="utf-8"
+        )
+    elif step.startswith("p3a_weave:"):
+        d = steps_dir / "phase3" / "weave"
+        d.mkdir(parents=True, exist_ok=True)
+        card_id = (subdomain or step.split(":", 1)[1]).replace(".", "_")
+        (d / f"{card_id}.json").write_text(
+            json.dumps(parsed, indent=1, ensure_ascii=False), encoding="utf-8"
+        )
     elif subdomain is not None:
         goals_dir = steps_dir / "goals"
         goals_dir.mkdir(exist_ok=True)
@@ -298,6 +372,11 @@ class StepRunner:
             extra = EXTRA_INSTRUCTION["p2o"]
         elif step_kind == "p3a_map":
             extra = EXTRA_INSTRUCTION["p3a_map"]
+        elif step_kind.startswith("p3a_"):
+            # wave 2/4/5/6 stages: p3a_cards, p3a_card:<id>, p3a_propose:<sd>,
+            # p3a_org:<duty>, p3a_weave:<card> — each carries its own wrap
+            # instruction and pack; they must NOT fall into the p4 catch-all.
+            extra = EXTRA_INSTRUCTION[step_kind]
         elif subdomain is not None:
             sd_dir = domain_dir(self.repo, subdomain)
             confirmed = confirmed_regulations(self.run_dir) if (
@@ -534,6 +613,23 @@ class StepRunner:
         if step.startswith("p3a_map"):
             import phase3 as _p3
             return {"verdicts": _p3.parse_verdicts(answer)}
+        if step == "p3a_cards":
+            from aegis_pipeline.phases.phase3 import cards as _p3c
+            return _p3c.parse_inventory(answer)
+        if step.startswith("p3a_card:"):
+            from aegis_pipeline.phases.phase3 import cards as _p3c
+            return _p3c.check_card_quality(_p3c.parse_card(answer))
+        if step.startswith("p3a_propose:"):
+            from aegis_pipeline.phases.phase3 import proposals as _p3p
+            sd = step.split(":", 1)[1]
+            targets = [t for t in getattr(self, "_p3a_propose_targets", []) if t["subdomain"] == sd]
+            return _p3p.parse_proposals(answer, targets)
+        if step.startswith("p3a_org:"):
+            from aegis_pipeline.phases.phase3 import org as _p3o
+            return _p3o.parse_org_card(answer, duty=str(subdomain or step.split(":", 1)[1]))
+        if step.startswith("p3a_weave:"):
+            from aegis_pipeline.phases.phase3 import weave as _p3w
+            return _p3w.parse_weave(answer)
         if subdomain is not None:
             parsed = parse_p4(answer, subdomain)
             return self._check_p4_quality(parsed, subdomain)
@@ -910,6 +1006,454 @@ class StepRunner:
             "verdict_counts": {v: sum(1 for r in merged if r["verdict"] == v) for v in p3.VERDICTS},
         })
         return calls
+
+    # ------------------------------------------------------------------
+    # Phase 3 Part 1 — waves 2, 4, 5, 6 (PREREG_P3_01)
+    # ------------------------------------------------------------------
+
+    def _p3_merged_rows(self) -> tuple[list[dict], list[dict]]:
+        import phase3 as p3
+
+        phase2_doc = self.run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md"
+        if not phase2_doc.is_file():
+            raise ValueError(f"no Phase 2 deliverable at {phase2_doc} — run --stage phase2 first")
+        objectives = p3.load_objectives(phase2_doc)
+        skeleton = p3.build(objectives)
+        verdict_rows: list[dict] = []
+        for path in sorted((self.run_dir / "steps" / "phase3").glob("verdicts_*.json")):
+            verdict_rows.extend(json.loads(path.read_text(encoding="utf-8")))
+        if not verdict_rows:
+            raise ValueError("no verdicts stored — run --stage p3a_map first")
+        return p3.apply_verdicts(skeleton, verdict_rows), objectives
+
+    def stage_p3a_cards(self) -> int:
+        from aegis_pipeline.phases.phase3 import cards as p3c
+
+        self._require(("steps/fact_sheet.yaml",), "G-P1-A")
+        if not (self.run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md").is_file():
+            raise ValueError("no Phase 2 deliverable — run --stage phase2 first")
+
+        cards_dir = self.run_dir / "steps" / "phase3" / "cards"
+        cards_dir.mkdir(parents=True, exist_ok=True)
+        inventory_path = cards_dir / "inventory.json"
+        calls = 0
+        failures: list[str] = []
+        if inventory_path.is_file():
+            inventory = json.loads(inventory_path.read_text(encoding="utf-8"))["cards"]
+        else:
+            self._call("p3a_cards", None)
+            if not self.dry_run:
+                calls += 1
+            if not inventory_path.is_file():
+                if self.dry_run:
+                    self._write_stage_result("p3a_cards", {
+                        "status": "dry-run", "carried": 0, "selected": 0, "failed": 0,
+                        "summary": "dry-run: prompts written, no inventory stored",
+                    })
+                    return calls
+                raise FileNotFoundError(f"{inventory_path} was not written by _call")
+            inventory = json.loads(inventory_path.read_text(encoding="utf-8"))["cards"]
+
+        accepted: list[dict] = []
+        for entry in inventory:
+            cid = entry["id"]
+            card_path = cards_dir / f"{cid.replace('.', '_')}.json"
+            if card_path.is_file():
+                accepted.append(json.loads(card_path.read_text(encoding="utf-8"))["card"])
+                continue
+            try:
+                self._call(f"p3a_card:{cid}", cid)
+                if not self.dry_run:
+                    calls += 1
+                if not card_path.is_file():
+                    if self.dry_run:
+                        continue
+                    raise FileNotFoundError(f"{card_path} was not written by _call")
+                card = json.loads(card_path.read_text(encoding="utf-8"))["card"]
+                if card["id"] != cid:
+                    raise ValueError(f"asked for {cid}, the card returned {card['id']}")
+                accepted.append(card)
+            except (LLMError, ValueError, KeyError, OSError) as e:
+                failures.append(f"{cid}: {type(e).__name__}: {str(e)[:160]}")
+                print(f"[p3a_cards] {cid} FAILED — continuing: {str(e)[:160]}", flush=True)
+
+        if accepted:
+            out_dir = self.run_dir / "outputs" / "phase3" / "v0_functional_baseline"
+            out_dir.mkdir(parents=True, exist_ok=True)
+            company = self.case.get("company_id", "company")
+            (out_dir / "Doc01_Requirements_Elicitation_and_PUC.md").write_text(
+                p3c.render_v0_doc01(accepted, company), encoding="utf-8"
+            )
+            (out_dir / "Doc02_System_Use_Cases.md").write_text(
+                p3c.render_v0_doc02(accepted, company), encoding="utf-8"
+            )
+
+        # first-attempt acceptance: trace rows for card calls without an L0 repair
+        trace_rows = [
+            json.loads(line)
+            for line in (self.run_dir / "trace.jsonl").read_text(encoding="utf-8").splitlines()
+            if line.strip().startswith("{")
+        ]
+        card_calls = [r for r in trace_rows if str(r.get("step", "")).startswith("p3a_card_")]
+        first_attempt = sum(1 for r in card_calls if not r.get("l0_retried"))
+
+        summary = {
+            "status": "ok" if not failures else "partial",
+            "carried": len(accepted),
+            "selected": len(inventory),
+            "failed": len(failures),
+            "summary": (
+                f"{len(accepted)}/{len(inventory)} cards; first-attempt "
+                f"{first_attempt}/{len(card_calls)} ({(first_attempt / len(card_calls) * 100):.0f}%"
+                f" over {len(card_calls)} calls)" if card_calls else "no card calls yet"
+            ),
+            "first_attempt": first_attempt,
+            "n_card_calls": len(card_calls),
+            "failures": failures,
+        }
+        self._write_stage_result("p3a_cards", summary)
+        self._raise_if_nothing_carried("p3a_cards", summary, "inventory failed or every card failed")
+        return calls
+
+    def stage_p3a_propose(self) -> int:
+        from aegis_pipeline.phases.phase3 import proposals as p3p
+
+        self._require(("steps/fact_sheet.yaml",), "G-P1-A")
+        rows, objectives = self._p3_merged_rows()
+        targets = p3p.select_proposal_targets(rows)
+        if not targets:
+            self._write_stage_result("p3a_propose", {
+                "status": "ok", "carried": 0, "selected": 0, "failed": 0,
+                "summary": "no rows flagged for proposal — nothing to propose",
+            })
+            return 0
+        # _validate filters this list by the step's sub-domain
+        self._p3a_propose_targets = targets
+
+        by_sd: dict[str, list[dict]] = {}
+        for target in targets:
+            by_sd.setdefault(target["subdomain"], []).append(target)
+
+        calls = 0
+        failures: list[str] = []
+        all_proposals: list[dict] = []
+        for sd in sorted(by_sd):
+            out_path = self.run_dir / "steps" / "phase3" / f"proposals_{sd.replace('.', '_')}.json"
+            if out_path.is_file():
+                all_proposals.extend(json.loads(out_path.read_text(encoding="utf-8"))["proposals"])
+                continue
+            try:
+                self._call(f"p3a_propose:{sd}", sd)
+                if not self.dry_run:
+                    calls += 1
+                if not out_path.is_file():
+                    if self.dry_run:
+                        continue
+                    raise FileNotFoundError(f"{out_path} was not written by _call")
+                parsed = json.loads(out_path.read_text(encoding="utf-8"))
+                expected = {t["id"] for t in by_sd[sd]}
+                got = {p["objective"] for p in parsed["proposals"]}
+                if got != expected:
+                    raise ValueError(f"proposals cover {sorted(got)}, expected {sorted(expected)}")
+                findings = p3p.check_proposals(parsed["proposals"], rows, objectives)
+                if findings:
+                    raise ValueError(f"{len(findings)} finding(s): {findings[0]}")
+                all_proposals.extend(parsed["proposals"])
+            except (LLMError, ValueError, KeyError, OSError) as e:
+                failures.append(f"{sd}: {type(e).__name__}: {str(e)[:160]}")
+                print(f"[p3a_propose] {sd} FAILED — continuing: {str(e)[:160]}", flush=True)
+
+        out_dir = self.run_dir / "outputs" / "phase3" / "analysis_v0_to_v1"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        (out_dir / "STEP2_ROUND1_PROPOSAL_DERIVATION.md").write_text(
+            p3p.render_proposal_derivation(all_proposals), encoding="utf-8"
+        )
+        summary = {
+            "status": "ok" if not failures else "partial",
+            "carried": len(all_proposals),
+            "selected": len(targets),
+            "failed": len(failures),
+            "summary": f"{len(all_proposals)}/{len(targets)} proposal(s) valid",
+            "failures": failures,
+        }
+        self._write_stage_result("p3a_propose", summary)
+        self._raise_if_nothing_carried("p3a_propose", summary, "every proposal call failed")
+        return calls
+
+    def stage_p3a_round(self) -> int:
+        from aegis_pipeline.phases.phase3 import proposals as p3p
+
+        all_proposals: list[dict] = []
+        for path in sorted((self.run_dir / "steps" / "phase3").glob("proposals_*.json")):
+            all_proposals.extend(json.loads(path.read_text(encoding="utf-8"))["proposals"])
+        if not all_proposals:
+            raise ValueError("no proposals stored — run --stage p3a_propose first")
+
+        verdicts_path = self.run_dir / "steps" / "phase3" / "round1_verdicts.json"
+        marker = self.run_dir / "steps" / "gates" / "G-P3-A.approved"
+        out_dir = self.run_dir / "outputs" / "phase3" / "synthesis_rounds"
+        out_dir.mkdir(parents=True, exist_ok=True)
+
+        if not marker.exists() or not verdicts_path.is_file():
+            # Sem marcador OU marcador pré-aprovado sem veredictos: o estado é
+            # PROPOSTED — nunca CONCLUDED (doc 08, two states; o fecho por
+            # construção é o modo de falha que a ronda existe para evitar).
+            if not verdicts_path.is_file():
+                verdicts_path.write_text(
+                    json.dumps(
+                        {"verdicts": {},
+                         "instructions": "enter Accept|Reject|Adjust per objective id"},
+                        indent=1, ensure_ascii=False,
+                    ),
+                    encoding="utf-8",
+                )
+            (out_dir / "ROUND1_REGISTER.md").write_text(
+                p3p.render_round_register(all_proposals, {}, converged=False),
+                encoding="utf-8",
+            )
+            self._write_stage_result("p3a_round", {
+                "status": "partial",
+                "carried": 0,
+                "selected": len(all_proposals),
+                "failed": 0,
+                "summary": (
+                    f"{len(all_proposals)} proposal(s) recorded — PROPOSED, not concluded: "
+                    "enter verdicts in steps/phase3/round1_verdicts.json and create the "
+                    "G-P3-A marker, then re-run this stage"
+                ),
+            })
+            return 0
+
+        verdict_map = json.loads(verdicts_path.read_text(encoding="utf-8")).get("verdicts", {})
+        state = p3p.apply_round_verdicts(all_proposals, verdict_map)
+        (self.run_dir / "steps" / "phase3" / "round1_state.json").write_text(
+            json.dumps(state, indent=1, ensure_ascii=False), encoding="utf-8"
+        )
+        (out_dir / "ROUND1_REGISTER.md").write_text(
+            p3p.render_round_register(all_proposals, verdict_map, converged=state["converged"]),
+            encoding="utf-8",
+        )
+        self._write_stage_result("p3a_round", {
+            "status": "ok" if state["converged"] else "partial",
+            "carried": len(state["accepted"]),
+            "selected": len(all_proposals),
+            "failed": 0,
+            "summary": (
+                f"{len(state['accepted'])} accepted / {len(state['rejected'])} rejected "
+                f"(explicit risk acceptance) / {len(state['adjusted'])} adjusted / "
+                f"{len(state['open'])} open"
+            ),
+            "open": state["open"],
+        })
+        return 0
+
+    def stage_p3a_org(self) -> int:
+        from aegis_pipeline.phases.phase3 import doc00 as p3d
+        from aegis_pipeline.phases.phase3 import org as p3o
+
+        self._require(("steps/fact_sheet.yaml",), "G-P1-A")
+        state_path = self.run_dir / "steps" / "phase3" / "round1_state.json"
+        if not state_path.is_file() or not json.loads(state_path.read_text(encoding="utf-8")).get("converged"):
+            raise ValueError(
+                "the acceptance round is not converged — the two-states rule blocks routing "
+                "until the human verdicts land (run --stage p3a_round after G-P3-A)"
+            )
+        rows, _ = self._p3_merged_rows()
+
+        audit_local = self.run_dir / "steps" / "phase3" / "duty_audit.md"
+        audit_case = (
+            self.repo / "cases" / self.case["case_id"] / "03_PHASE3_SPEC"
+            / "part1_security_privacy" / "analysis_v0_to_v1"
+            / "PROPORTIONALITY_AUDIT_ORGANIZATIONAL_LANE.md"
+        )
+        audit_path = audit_local if audit_local.is_file() else audit_case
+        if not audit_path.is_file():
+            raise ValueError(
+                "no proportionality audit found — the duty grouping is human input "
+                "(the 1:1 routing rule is the recorded failure); provide "
+                "steps/phase3/duty_audit.md in the Case 01 audit's §3 table format"
+            )
+        duty_map = p3o.parse_duty_audit(audit_path)
+        duties = p3o.group_duties(rows, duty_map)
+        dispositions = p3o.count_dispositions(duties)
+        for index, duty in enumerate(duties, start=1):
+            duty["slug"] = f"duty_{index:02d}"
+        (self.run_dir / "steps" / "phase3" / "duties.json").write_text(
+            json.dumps(duties, indent=1, ensure_ascii=False), encoding="utf-8"
+        )
+
+        org_dir = self.run_dir / "steps" / "phase3" / "org"
+        org_dir.mkdir(parents=True, exist_ok=True)
+        calls = 0
+        failures: list[str] = []
+        org_duties = [d for d in duties if "ORG" in d["dispositions"]]
+        cards: list[dict] = []
+        for duty in org_duties:
+            out_path = org_dir / f"{duty['slug']}.json"
+            if out_path.is_file():
+                cards.append(json.loads(out_path.read_text(encoding="utf-8")))
+                continue
+            try:
+                self._call(f"p3a_org:{duty['slug']}", duty["slug"])
+                if not self.dry_run:
+                    calls += 1
+                if not out_path.is_file():
+                    if self.dry_run:
+                        continue
+                    raise FileNotFoundError(f"{out_path} was not written by _call")
+                parsed = json.loads(out_path.read_text(encoding="utf-8"))
+                p3o.check_org_anchor_files(self.repo, parsed)
+                cards.append(parsed)
+            except (LLMError, ValueError, KeyError, OSError) as e:
+                failures.append(f"{duty['slug']}: {type(e).__name__}: {str(e)[:160]}")
+                print(f"[p3a_org] {duty['slug']} FAILED — continuing: {str(e)[:160]}", flush=True)
+
+        company = self.case.get("company_id", "company")
+        confirmed = confirmed_regulations(self.run_dir)
+        if cards:
+            out_dir = self.run_dir / "outputs" / "phase3" / "part1_security_privacy"
+            out_dir.mkdir(parents=True, exist_ok=True)
+            (out_dir / "Doc03_Organizational_Requirements.md").write_text(
+                p3o.render_doc03(org_duties, cards, company, confirmed), encoding="utf-8"
+            )
+            # Doc00 — composed, never generated (doc 08 wave 5)
+            v2_dir = self.run_dir / "outputs" / "phase3" / "v2_security_privacy_synthesis"
+            v2_dir.mkdir(parents=True, exist_ok=True)
+            tb_rows = [r for r in rows if (r.get("skill") or "") == "TB"]
+            (v2_dir / "Doc00_Process_and_Operational_Workflows.md").write_text(
+                p3d.render_doc00(company, p3d.load_fact_sheet(self.run_dir), p3d.load_cards(self.run_dir), tb_rows),
+                encoding="utf-8",
+            )
+        summary = {
+            "status": "ok" if not failures else "partial",
+            "carried": len(cards),
+            "selected": len(org_duties),
+            "failed": len(failures),
+            "summary": (
+                f"{len(duties)} duties from {sum(1 for r in rows if r['verdict'] == p3o.ORG_VERDICT)} "
+                f"organizational rows ({dispositions['ORG']} ORG / {dispositions['SCALE']} SCALE / "
+                f"{dispositions['CARRIED']} CARRIED); {len(cards)} ORG cards; "
+                "SCALE duties pending the proportionality decision (G-c)"
+            ),
+            "dispositions": dispositions,
+            "failures": failures,
+        }
+        self._write_stage_result("p3a_org", summary)
+        self._raise_if_nothing_carried("p3a_org", summary, "every org card failed")
+        return calls
+
+    def stage_p3a_weave(self) -> int:
+        from aegis_pipeline.phases.phase3 import weave as p3w
+
+        state_path = self.run_dir / "steps" / "phase3" / "round1_state.json"
+        if not state_path.is_file() or not json.loads(state_path.read_text(encoding="utf-8")).get("converged"):
+            raise ValueError("the acceptance round is not converged — run --stage p3a_round first")
+        state = json.loads(state_path.read_text(encoding="utf-8"))
+        accepted = state.get("accepted", [])
+        rows, _ = self._p3_merged_rows()
+
+        cards_dir = self.run_dir / "steps" / "phase3" / "cards"
+        card_files = sorted(cards_dir.glob("R*.json"))
+        if not card_files:
+            raise ValueError("no generated cards — run --stage p3a_cards first")
+        card_ids = {p.stem: p.stem.replace("_", ".") for p in card_files}
+
+        calls = 0
+        failures: list[str] = []
+        woven: dict[str, dict] = {}
+        for stem, real_id in card_ids.items():
+            routed = [p for p in accepted if (p.get("carrier") or "").strip("`") == real_id]
+            if not routed:
+                continue
+            out_path = self.run_dir / "steps" / "phase3" / "weave" / f"{stem}.json"
+            if out_path.is_file():
+                woven[real_id] = json.loads(out_path.read_text(encoding="utf-8"))
+                continue
+            try:
+                self._call(f"p3a_weave:{real_id}", real_id)
+                if not self.dry_run:
+                    calls += 1
+                if not out_path.is_file():
+                    if self.dry_run:
+                        continue
+                    raise FileNotFoundError(f"{out_path} was not written by _call")
+                woven[real_id] = json.loads(out_path.read_text(encoding="utf-8"))
+            except (LLMError, ValueError, KeyError, OSError) as e:
+                failures.append(f"{real_id}: {type(e).__name__}: {str(e)[:160]}")
+                print(f"[p3a_weave] {real_id} FAILED — continuing: {str(e)[:160]}", flush=True)
+
+        cards = [json.loads(p.read_text(encoding="utf-8"))["card"] for p in card_files]
+        out_dir = self.run_dir / "outputs" / "phase3" / "synthesis_rounds"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        (out_dir / "STEP4_CONSTRAINT_ABSORPTION.md").write_text(
+            p3w.render_step4(accepted, cards), encoding="utf-8"
+        )
+        uc_lines = ["---", "title: 'UC_OBJECTIVE_CORRESPONDENCE'", "generated_by: 'p3a_weave (wave 6)'", "---", "", "| Objective | Carrier | Use case |", "|---|---|---|"]
+        for row in rows:
+            carrier = (row.get("carrier") or "—").strip("`")
+            uc = next((c["usecase"]["uc_id"] for c in cards if c["id"] == carrier), "—")
+            uc_lines.append(f"| `{row['id']}` | {carrier} | {uc} |")
+        uc_lines.append("")
+        (out_dir / "UC_OBJECTIVE_CORRESPONDENCE.md").write_text("\n".join(uc_lines), encoding="utf-8")
+        (out_dir / "SUFFICIENCY_ASSESSMENT.md").write_text(
+            p3w.render_sufficiency(rows, state, confirmed_regulations(self.run_dir)),
+            encoding="utf-8",
+        )
+        # mechanical injection: the v1 Doc01 carries the accepted constraint blocks
+        v1_dir = self.run_dir / "outputs" / "phase3" / "v1_security_privacy_synthesis"
+        v1_dir.mkdir(parents=True, exist_ok=True)
+        v1 = ["---", "title: 'Doc01 v1 — Requirements Specification (constraints absorbed)'", "generated_by: 'p3a_weave (wave 6)'", "---", ""]
+        for proposal in accepted:
+            v1 += [
+                f"### Constraint from `{proposal['objective']}` → carrier {proposal.get('carrier', '—')}",
+                "",
+                f"**Constraint (EARS):** {proposal['constraint']}",
+                "",
+                f"**Fit criterion:** {proposal['fit_criterion']}",
+                "",
+            ]
+        if woven:
+            v1 += ["## Use case security preconditions and extensions (woven)", ""]
+            for real_id, block in sorted(woven.items()):
+                v1 += [f"#### Card {real_id}", "", f"**Preconditions:** {block.get('Preconditions', '—')}", "", f"**Extensions:** {block.get('Extensions', '—')}", ""]
+        (v1_dir / "Doc01_Requirements_Specification.md").write_text("\n".join(v1), encoding="utf-8")
+
+        summary = {
+            "status": "ok" if not failures else "partial",
+            "carried": len(woven),
+            "selected": len({(p.get("carrier") or "").strip("`") for p in accepted} - {""}),
+            "failed": len(failures),
+            "summary": f"{len(woven)} card(s) woven with {len(accepted)} accepted constraint(s)",
+            "failures": failures,
+        }
+        self._write_stage_result("p3a_weave", summary)
+        self._raise_if_nothing_carried("p3a_weave", summary, "every weave call failed")
+        return calls
+
+    def stage_p3a_gate(self) -> int:
+        from aegis_pipeline.phases.phase3 import weave as p3w
+
+        report = p3w.run_gate(self.run_dir, self.repo)
+        out_dir = self.run_dir / "steps" / "phase3"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        (out_dir / "gate_report.md").write_text(p3w.render_gate_report(report), encoding="utf-8")
+        print(f"AEGIS_P3_GATE state={report['state']} " + " ".join(
+            f"{g}={'CLOSED' if v.startswith('CLOSED') else 'OPEN'}" for g, v in report["gates"].items()
+        ), flush=True)
+        self._write_stage_result("p3a_gate", {
+            "status": "ok" if report["state"] == "CONCLUDED" else "partial",
+            "carried": 1 if report["state"] == "CONCLUDED" else 0,
+            "selected": 1,
+            "failed": 0,
+            "summary": (
+                f"state={report['state']}; "
+                + "; ".join(f"{g} {v.split(' — ')[0]}" for g, v in report["gates"].items())
+            ),
+            "gates": report["gates"],
+            "findings": report["findings"][:20],
+            "n_objectives": report["n_objectives"],
+        })
+        return 0
 
     def stage_p5(self) -> int:
         self._require(("steps/selection.json", "steps/framing.md"), "G-P1-C")

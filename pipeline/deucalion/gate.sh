@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # gate.sh — record a human gate verdict locally and push it to the cluster run.
 # Usage: bash pipeline/deucalion/gate.sh <RUN_ID> <GATE> "<review note>"
-#   GATE: G-P1-A | G-P1-B | G-P1-C | G-P1-D
+#   GATE: G-P1-A | G-P1-B | G-P1-C | G-P1-D | G-P3-A
 # Writes pipeline/runs/<RUN_ID>/steps/gates/<GATE>.approved (the marker file
 # the pipeline requires before the next stage) and scp's it up.
 set -euo pipefail
 
 RUN_ID="${1:?usage: gate.sh <RUN_ID> <GATE> \"<note>\"}"
-GATE="${2:?gate: G-P1-A|G-P1-B|G-P1-C|G-P1-D}"
+GATE="${2:?gate: G-P1-A|G-P1-B|G-P1-C|G-P1-D|G-P3-A}"
 NOTE="${3:?a review note is required — under AGENTS.md R10b it must state the stress-tests and friction points analyzed; an 'all good' sign-off is INVALID}"
 # R10b floor: reject rubber-stamp notes. ponytail: a length floor is a laziness
 # floor, not a substance guarantee — boilerplate defeats it; the real check is

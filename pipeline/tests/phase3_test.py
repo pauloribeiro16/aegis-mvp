@@ -466,3 +466,316 @@ if __name__ == "__main__":
             print(f"  [FAIL] {name}: {e}")
     print(f"\n{'FAIL' if failures else 'OK'} — {failures} failure(s)")
     sys.exit(1 if failures else 0)
+
+
+# ===========================================================================
+# Waves 2/4/5/6 — PREREG_P3_01 (frozen 2026-10-10, before any GPU time)
+# ===========================================================================
+
+def _wave_modules():
+    from aegis_pipeline.phases.phase3 import cards, org, proposals, weave
+    return cards, org, proposals, weave
+
+
+_AUDIT = REPO / "cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/part1_security_privacy/analysis_v0_to_v1/PROPORTIONALITY_AUDIT_ORGANIZATIONAL_LANE.md"
+
+
+def _org_rows_for_grouping() -> list[dict]:
+    """32 organizational rows in the measured Case 01 shape."""
+    objs = phase3.load_objectives(_source("Case_01_TinyTask_SaaS"))
+    rows = phase3.build(objs)
+    audit_rows = [
+        {"id": r["id"], "verdict": S.ORGANIZATIONAL,
+         "subdomain": r["subdomain"], "domain": r["domain"],
+         "discharge": "named organizational obligation"}
+        for r in rows
+    ]
+    # the audit covers exactly the 32 rows the matrix verdicts organizational
+    assert len(audit_rows) == 32, f"expected the measured 32 org rows, got {len(audit_rows)}"
+    return audit_rows
+
+
+def test_duty_grouping_reproduces_the_measured_32_to_16_shape() -> None:
+    """H3 (PREREG_P3_01): the audited duty map collapses 32 rows to 16 duties."""
+    _, org, _, _ = _wave_modules()
+    duty_map = org.parse_duty_audit(_AUDIT)
+    assert len(duty_map) == 32, f"audit parses {len(duty_map)} assignments, expected 32"
+    duties = org.group_duties(_org_rows_for_grouping(), duty_map)
+    assert len(duties) == 16, f"expected the measured 16 duties, got {len(duties)}"
+    dispositions = org.count_dispositions(duties)
+    assert dispositions == {"ORG": 17, "SCALE": 13, "CARRIED": 2}, dispositions
+
+
+def test_duty_grouping_refuses_an_unmapped_row() -> None:
+    """A row the audit does not know about is a finding, never a silent drop."""
+    _, org, _, _ = _wave_modules()
+    duty_map = org.parse_duty_audit(_AUDIT)
+    rows = _org_rows_for_grouping()
+    del duty_map[rows[0]["id"]]
+    try:
+        org.group_duties(rows, duty_map)
+    except ValueError as e:
+        assert rows[0]["id"] in str(e)
+    else:
+        raise AssertionError("unmapped organizational row did not fail the grouping")
+
+
+def test_org_card_parse_accepts_well_formed_and_rejects_defects() -> None:
+    _, org, _, _ = _wave_modules()
+    good = "\n".join([
+        "```markdown",
+        "**Statement (EARS):** Where the organization detects a breach of stored billing state, the organization shall record the detection and route it to a named owner for assessment.",
+        "**Requirement Origin:** GDPR Art. 33(1); proportionality audit warrant",
+        "**Fit Criterion:** A detection with no owner record does not close.",
+        "**Verification Method:** INSPECT",
+        "**Chain:** GDPR Art. 33(1) → SO-D-04.1-001 → DE.CM-9",
+        "**Control Anchors:** `DE.CM-9`, `GV.RR-2`",
+        "**Dependencies:** Stakeholders: founders",
+        "**Priority:** Must",
+        "```",
+    ])
+    parsed = org.parse_org_card(good, duty="duty_01")
+    assert parsed["Verification Method"] == "INSPECT"
+    assert parsed["_anchor_list"] == ["DE.CM-9", "GV.RR-2"]
+    # non-EARS
+    bad = good.replace("the organization shall record", "the organization records")
+    try:
+        org.parse_org_card(bad, duty="duty_01")
+    except ValueError as e:
+        assert "EARS" in str(e)
+    else:
+        raise AssertionError("non-EARS statement accepted")
+    # unknown method
+    try:
+        org.parse_org_card(good.replace("INSPECT", "SOMETIMES"), duty="duty_01")
+    except ValueError as e:
+        assert "Verification Method" in str(e)
+    else:
+        raise AssertionError("unknown verification method accepted")
+
+
+def test_inventory_parse_roundtrip_and_rejects() -> None:
+    cards, _, _, _ = _wave_modules()
+    good = "\n".join([
+        "```markdown",
+        "| Card | Name | Business basis |",
+        "|---|---|---|",
+        "| R1.1 | Register and authenticate user accounts | Customer accounts are core |",
+        "| R2.1 | Track billable tasks | The intake's core workflow |",
+        "| R3.1 | Manage team workspaces | Team plan tier |",
+        "| R4.1 | Export task reports | Customer ask |",
+        "| R5.1 | Attach files to tasks | Stated need |",
+        "```",
+    ])
+    parsed = cards.parse_inventory(good)
+    assert [c["id"] for c in parsed["cards"]] == ["R1.1", "R2.1", "R3.1", "R4.1", "R5.1"]
+    # duplicate id fails
+    dup = good.replace("R5.1 | Export", "R1.1 | Export")
+    try:
+        cards.parse_inventory(dup)
+    except ValueError as e:
+        assert "more than once" in str(e)
+    else:
+        raise AssertionError("duplicate card id accepted")
+    # bad id format fails
+    try:
+        cards.parse_inventory(good.replace("R3.1", "card-three"))
+    except ValueError as e:
+        assert "R<n>.<m>" in str(e)
+    else:
+        raise AssertionError("malformed card id accepted")
+
+
+def test_card_parse_rejects_nominalization_and_technology() -> None:
+    cards, _, _, _ = _wave_modules()
+    base = "\n".join([
+        "```markdown",
+        "#### Card R1.1",
+        "",
+        "| # | Row | Content |",
+        "|---|---|---|",
+        "| 1 | ID | R1.1 — Manage user accounts |",
+        "| 2 | Description | The system must allow users to register and authenticate. |",
+        "| 3 | Requirement Origin | Founders Business Case |",
+        "| 4 | Interfaces | Registration form; login form |",
+        "| 5 | Dependencies | Stakeholders: customers; Data Sources: —; Extraction Periodicity: on demand; Information Systems / Databases: ; Preceding Requirements: |",
+        "| 6 | Identified Problems | — |",
+        "| 7 | Priority | Must |",
+        "",
+        "#### PUC",
+        "",
+        "| PUC ID | Business Trigger | Primary Actor | System Operational Boundary | Deliverables & Outputs |",
+        "|---|---|---|---|---|",
+        "| PUC 1.1 | Visitor signs up | Visitor | Provision account | Created account |",
+        "",
+        "#### Use case {U.C. 1.1}",
+        "",
+        "**Traceability:** Requirement `R1.1` | PUC `1.1`",
+        "**Primary Actor:** Visitor",
+        "**Preconditions:** The visitor has an email address.",
+        "**Trigger:** The visitor submits the registration form.",
+        "**Main Success Scenario:** 1. The visitor submits the form. 2. The system validates the data. 3. The system creates the account. 4. The system confirms to the visitor.",
+        "**Extensions:** 2a. The email is already registered: the system says so.",
+        "**Success Guarantees:** The account exists.",
+        "**Minimal Guarantees:** No partial account is left.",
+        "```",
+    ])
+    parsed = cards.parse_card(base)
+    assert parsed["card"]["id"] == "R1.1"
+    # nominalization (R13 anti-pattern 7)
+    try:
+        cards.parse_card(base.replace("Manage user accounts", "User account management"))
+    except ValueError as e:
+        assert "nominalization" in str(e)
+    else:
+        raise AssertionError("nominalized name accepted")
+    # technology leakage (R5) — checked by check_card_quality
+    try:
+        cards.check_card_quality(cards.parse_card(base.replace("Registration form; login form", "Registration form; PostgreSQL database")))
+    except ValueError as e:
+        assert "technology" in str(e).lower()
+    else:
+        raise AssertionError("technology vocabulary accepted")
+    # priority enum
+    try:
+        cards.parse_card(base.replace("| 7 | Priority | Must |", "| 7 | Priority | Maybe |"))
+    except ValueError as e:
+        assert "Priority" in str(e)
+    else:
+        raise AssertionError("non-MoSCoW priority accepted")
+    # scenario too short
+    try:
+        cards.parse_card(base.replace("2. The system validates the data. 3. The system creates the account. 4. The system confirms to the visitor.", "2. The system creates the account."))
+    except ValueError as e:
+        assert "Main Success Scenario" in str(e)
+    else:
+        raise AssertionError("two-step scenario accepted")
+
+
+def test_proposal_targets_come_from_the_actions_not_a_new_judgement() -> None:
+    _, _, proposals, _ = _wave_modules()
+    rows = [
+        {"id": "SO-D-01.1-001", "subdomain": "D-01.1", "action": "Propose for Round 2: assign to security", "discharge": "x"},
+        {"id": "PO-D-01.2-001", "subdomain": "D-01.2", "action": "—", "discharge": "pending proposal: encryption leg"},
+        {"id": "SO-D-01.3-001", "subdomain": "D-01.3", "action": "—", "discharge": "fully routed to the organizational lane"},
+    ]
+    targets = proposals.select_proposal_targets(rows)
+    assert [t["id"] for t in targets] == ["SO-D-01.1-001", "PO-D-01.2-001"]
+
+
+def test_proposal_parse_and_published_anchor_gate() -> None:
+    _, _, proposals, _ = _wave_modules()
+    targets = [{"id": "SO-D-01.1-001", "subdomain": "D-01.1"}]
+    good = "\n".join([
+        "```markdown",
+        "### SO-D-01.1-001",
+        "",
+        "**Constraint (EARS):** Where the system stores personal data at rest, the system shall encrypt the stored data.",
+        "**Fit criterion:** A raw dump of the store is unreadable without the key.",
+        "**Risk addressed:** Personal data readable by an attacker with disk access.",
+        "**Chain anchors:** `PR.DS-1`, `PR.AC-1`",
+        "**Proposed carrier:** new",
+        "```",
+    ])
+    parsed = proposals.parse_proposals(good, targets)
+    assert parsed["proposals"][0]["objective"] == "SO-D-01.1-001"
+    # invented target rejected
+    try:
+        proposals.parse_proposals(good, [{"id": "SO-D-09.9-001", "subdomain": "D-09.9"}])
+    except ValueError as e:
+        assert "no block" in str(e)
+    else:
+        raise AssertionError("proposal for a non-target accepted")
+    # non-EARS
+    try:
+        proposals.parse_proposals(good.replace("the system shall encrypt", "the system encrypts"), targets)
+    except ValueError as e:
+        assert "EARS" in str(e)
+    else:
+        raise AssertionError("non-EARS constraint accepted")
+    # T6: anchor outside the published set
+    rows = [{"id": "SO-D-01.1-001"}]
+    objectives = [{"id": "SO-D-01.1-001", "anchors": "`PR.AC-1`"}]
+    findings = proposals.check_proposals(parsed["proposals"], rows, objectives)
+    assert any("PR.DS-1" in f and "T6" not in f or "published set" in f for f in findings), findings
+
+
+def test_round_verdicts_split_and_two_states() -> None:
+    _, _, proposals, _ = _wave_modules()
+    props = [
+        {"objective": "SO-D-01.1-001", "subdomain": "D-01.1", "constraint": "c", "fit_criterion": "f", "risk": "r", "anchors": ["PR.AC-1"], "carrier": "new"},
+        {"objective": "SO-D-01.2-001", "subdomain": "D-01.2", "constraint": "c", "fit_criterion": "f", "risk": "r", "anchors": ["PR.AC-1"], "carrier": "new"},
+    ]
+    state = proposals.apply_round_verdicts(props, {"SO-D-01.1-001": "Accept", "SO-D-01.2-001": "Reject"})
+    assert state["converged"] and len(state["accepted"]) == 1 and len(state["rejected"]) == 1
+    state_open = proposals.apply_round_verdicts(props, {"SO-D-01.1-001": "Accept"})
+    assert not state_open["converged"] and state_open["open"] == ["SO-D-01.2-001"]
+    try:
+        proposals.apply_round_verdicts(props, {"SO-D-01.1-001": "Sure"})
+    except ValueError as e:
+        assert "not in" in str(e)
+    else:
+        raise AssertionError("verdict outside the vocabulary accepted")
+
+
+def test_exit_gate_is_proposed_without_verdicts_and_concluded_with_them() -> None:
+    """H5 (PREREG_P3_01): the gate does not close G2 on a round with open items."""
+    import shutil
+
+    _, _, _, weave = _wave_modules()
+    case = "Case_01_TinyTask_SaaS"
+    with tempfile.TemporaryDirectory() as tmp:
+        run_dir = Path(tmp) / "run"
+        (run_dir / "steps" / "phase3").mkdir(parents=True)
+        (run_dir / "outputs" / "phase2").mkdir(parents=True)
+        (run_dir / "steps" / "gates").mkdir(parents=True)
+        shutil.copy(_source(case), run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md")
+        (run_dir / "manifest.json").write_text(json.dumps({"case_id": case}), encoding="utf-8")
+        # two verdicts, one per objective — enough to exercise the machinery
+        objs = phase3.load_objectives(run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md")
+        sample = objs[:2]
+        for obj in sample:
+            sd = obj["subdomain"].replace(".", "_")
+            (run_dir / "steps" / "phase3" / f"verdicts_{sd}.json").write_text(json.dumps([{
+                "id": obj["id"], "verdict": S.ORGANIZATIONAL,
+                "carrier": "`—`", "skill": "`—`",
+                "discharge": "the named organizational obligation",
+                "action": "Propose for Round 2",
+            }]), encoding="utf-8")
+        # round recorded but not converged → PROPOSED
+        (run_dir / "steps" / "phase3" / "round1_state.json").write_text(json.dumps(
+            {"accepted": [], "rejected": [], "adjusted": [], "open": [o["id"] for o in sample], "converged": False},
+        ), encoding="utf-8")
+        (run_dir / "outputs" / "phase3" / "synthesis_rounds").mkdir(parents=True)
+        (run_dir / "outputs" / "phase3" / "synthesis_rounds" / "ROUND1_REGISTER.md").write_text("scaffold")
+        report = weave.run_gate(run_dir, REPO)
+        assert report["state"] == "PROPOSED", report
+        assert not report["gates"]["G2"].startswith("CLOSED")
+        assert "not concluded" in report["gates"]["G2"] or "no human marker" in report["gates"]["G2"]
+        # converged + marker → G2 closes
+        (run_dir / "steps" / "phase3" / "round1_state.json").write_text(json.dumps(
+            {"accepted": [], "rejected": [{"objective": "x", "risk": "r"}], "adjusted": [], "open": [], "converged": True},
+        ), encoding="utf-8")
+        (run_dir / "steps" / "gates" / "G-P3-A.approved").write_text("review note", encoding="utf-8")
+        report = weave.run_gate(run_dir, REPO)
+        assert report["gates"]["G2"].startswith("CLOSED"), report
+
+
+def test_doc00_is_composed_from_the_run_artifacts() -> None:
+    from aegis_pipeline.phases.phase3 import doc00
+
+    card = {
+        "id": "R1.1", "name": "Manage user accounts", "description": "d", "origin": "o",
+        "interfaces": "i", "dependencies": "dep", "problems": "—", "priority": "Must",
+        "puc": {"puc_id": "PUC 1.1", "trigger": "t", "actor": "a", "boundary": "b", "outputs": "o"},
+        "usecase": {"uc_id": "{U.C. 1.1}", "Traceability": "R1.1", "Primary Actor": "a",
+                     "Preconditions": "p", "Trigger": "t", "Main Success Scenario": "1. x 2. y 3. z",
+                     "Extensions": "2a. e", "Success Guarantees": "s", "Minimal Guarantees": "m"},
+    }
+    doc = doc00.render_doc00(
+        "TinyTask", {"sector": "SaaS", "size": "8"}, [card],
+        [{"seq": 1, "skill": "TB", "objective": "SO-D-01.1-001", "summary": "s"}],
+    )
+    assert "| PUC 1.1 |" in doc and "R1.1" in doc
+    assert "TZ-1" in doc and "TB" in doc
+    assert "8" in doc  # size from the fact sheet

@@ -31,6 +31,11 @@ FICHA_FILES = {
     "p2o": "PROM-P2-01_OPERATIONALIZE_SUBDOMAIN.md",
     "p2d": "PROM-P2-03_SYNTHESIZE_PRINCIPLES.md",
     "p3a_map": "PROM-P3A-01_VERDICT_COVERAGE.md",
+    "p3a_cards": "PROM-P3A-02_INVENTORY.md",
+    "p3a_card": "PROM-P3A-03_CARD.md",
+    "p3a_propose": "PROM-P3A-04_PROPOSE.md",
+    "p3a_org": "PROM-P3A-05_ORG.md",
+    "p3a_weave": "PROM-P3A-06_WEAVE.md",
 }
 
 # Sub-domain id like D-01.1
@@ -795,6 +800,122 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
             f"{len(rows)} Phase 2 objective(s) carrying their published anchor sets; "
             f"{len(cards)} frozen V0 candidate cards; one call per sub-domain "
             f"(ADR-012 D1).\n"))
+    elif step.startswith("p3a_cards"):
+        # Inventory pack: the company profile and the Phase 2 objectives the
+        # product surface has to carry. The model proposes the card packages;
+        # the objectives tell it how big that surface is.
+        fact_sheet = run_dir / "steps" / "fact_sheet.yaml"
+        phase2_doc = run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md"
+        files.append((
+            "pack-p3a_cards/FACT_SHEET.yaml",
+            fact_sheet.read_text(encoding="utf-8") if fact_sheet.is_file() else "(missing)",
+        ))
+        files.append((
+            "pack-p3a_cards/PHASE2_OBJECTIVES.md",
+            phase2_doc.read_text(encoding="utf-8") if phase2_doc.is_file() else "(missing)",
+        ))
+        files.insert(0, (
+            "pack-p3a_cards/BUILD_MANIFEST.md",
+            "Context pack build (deterministic): one inventory call — fact sheet + "
+            "Phase 2 objectives; the card table it returns is stored per card and "
+            "each card is then driven individually.\n"))
+    elif step.startswith("p3a_card:"):
+        # Per-card pack: the stored inventory (the whole proposed surface, so
+        # the card knows its neighbours) plus the fact sheet.
+        card_id = step.split(":", 1)[1]
+        inventory = run_dir / "steps" / "phase3" / "cards" / "inventory.json"
+        fact_sheet = run_dir / "steps" / "fact_sheet.yaml"
+        inv_text = inventory.read_text(encoding="utf-8") if inventory.is_file() else "{}"
+        files.append((
+            f"pack-p3a_card/{card_id.replace('.', '_')}/INVENTORY.md",
+            "Proposed card inventory (the whole surface, for context):\n\n" + inv_text,
+        ))
+        files.append((
+            f"pack-p3a_card/{card_id.replace('.', '_')}/FACT_SHEET.yaml",
+            fact_sheet.read_text(encoding="utf-8") if fact_sheet.is_file() else "(missing)",
+        ))
+        files.insert(0, (
+            f"pack-p3a_card/{card_id.replace('.', '_')}/BUILD_MANIFEST.md",
+            f"Context pack build (deterministic): ONE card ({card_id}); inventory for "
+            "neighbour awareness; fact sheet for the company context (R6).\n"))
+    elif step.startswith("p3a_propose:"):
+        # Proposal pack = the same verdict pack the mapping call saw (this
+        # sub-domain's objectives with published anchors + the frozen pool)
+        # PLUS the verdicts that stage produced — the proposal answers the
+        # carve-outs the verdicts recorded.
+        import phase3 as _p3
+
+        only = step.split(":", 1)[1]
+        phase2_doc = run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md"
+        objectives = _p3.load_objectives(phase2_doc)
+        rows = [r for r in _p3.build(objectives) if r["subdomain"] == only]
+        v0 = (repo / "cases" / case["case_id"] / "03_PHASE3_SPEC"
+              / "part1_security_privacy" / "v0_functional_baseline"
+              / "Doc01_Requirements_Elicitation_and_PUC.md")
+        cards = _p3.load_v0_cards(v0)
+        base_pack = _p3.build_verdict_pack(rows, cards)
+        verdict_path = run_dir / "steps" / "phase3" / f"verdicts_{only.replace('.', '_')}.json"
+        verdicts = json.loads(verdict_path.read_text(encoding="utf-8")) if verdict_path.is_file() else []
+        files.append((
+            f"pack-p3a_propose/{only}/PROPOSAL_PACK.md",
+            base_pack + "\n\n## The verdicts already recorded for this sub-domain\n\n"
+            + json.dumps(verdicts, indent=1, ensure_ascii=False),
+        ))
+        files.insert(0, (
+            f"pack-p3a_propose/{only}/BUILD_MANIFEST.md",
+            f"Context pack build (deterministic): sub-domain {only}; the objectives "
+            f"with published anchors, the frozen V0 pool, and the verdicts recorded "
+            "for them — propose ONLY for the rows whose Action asks for a proposal.\n"))
+    elif step.startswith("p3a_org:"):
+        # Organizational pack: one duty — its objectives, their discharges and
+        # published anchors, and the audited disposition. The audit is human
+        # input; the pack carries it verbatim.
+        duty_slug = step.split(":", 1)[1]
+        duties_path = run_dir / "steps" / "phase3" / "duties.json"
+        duties = json.loads(duties_path.read_text(encoding="utf-8")) if duties_path.is_file() else []
+        duty = next((d for d in duties if d.get("slug") == duty_slug), None)
+        body = json.dumps(duty, indent=1, ensure_ascii=False) if duty else f"(duty {duty_slug} not found)"
+        fact_sheet = run_dir / "steps" / "fact_sheet.yaml"
+        files.append((
+            f"pack-p3a_org/{duty_slug}/DUTY.md",
+            "The duty to specify (objectives, dispositions, warrants from the "
+            "proportionality audit):\n\n" + body,
+        ))
+        files.append((
+            f"pack-p3a_org/{duty_slug}/FACT_SHEET.yaml",
+            fact_sheet.read_text(encoding="utf-8") if fact_sheet.is_file() else "(missing)",
+        ))
+        files.insert(0, (
+            f"pack-p3a_org/{duty_slug}/BUILD_MANIFEST.md",
+            f"Context pack build (deterministic): ONE organizational duty ({duty_slug}); "
+            "the proportionality audit decided ORG for it — write the requirement in "
+            "the proportional form the audit's warrant describes.\n"))
+    elif step.startswith("p3a_weave:"):
+        # Weave pack: the card as generated, plus the accepted constraints that
+        # name it (or are unassigned) — the preconditions/extensions answer them.
+        card_id = step.split(":", 1)[1]
+        card_path = run_dir / "steps" / "phase3" / "cards" / f"{card_id.replace('.', '_')}.json"
+        round_path = run_dir / "steps" / "phase3" / "round1_verdicts.json"
+        card = card_path.read_text(encoding="utf-8") if card_path.is_file() else "(card missing)"
+        accepted = []
+        if round_path.is_file():
+            state = json.loads(round_path.read_text(encoding="utf-8"))
+            accepted = [p for p in state.get("accepted", [])
+                        if p.get("carrier") == card_id or p.get("carrier") in (None, "", "—", "`—`")]
+        files.append((
+            f"pack-p3a_weave/{card_id.replace('.', '_')}/CARD.json",
+            card,
+        ))
+        files.append((
+            f"pack-p3a_weave/{card_id.replace('.', '_')}/ACCEPTED_CONSTRAINTS.md",
+            json.dumps(accepted, indent=1, ensure_ascii=False) if accepted
+            else "(no accepted constraints name this card — return the card unchanged, with empty Preconditions additions)",
+        ))
+        files.insert(0, (
+            f"pack-p3a_weave/{card_id.replace('.', '_')}/BUILD_MANIFEST.md",
+            f"Context pack build (deterministic): card {card_id}; the round-accepted "
+            "constraints routed to it; write security preconditions and exception "
+            "extensions for its use case.\n"))
     else:
         raise ValueError(f"unknown step: {step}")
 

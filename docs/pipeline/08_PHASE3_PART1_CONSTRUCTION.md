@@ -3,7 +3,7 @@ document_id: AEGIS-PIPE-08
 title: 'Phase 3 Part 1 — construction plan'
 version: 0.1.0
 created: 2026-10-10
-status: DRAFT — build plan; wave 0–1 unblocked, waves 2–6 gated
+status: ACTIVE — waves 0/1/3 built and run (p3a_map, PREREG-less first run recorded); waves 2/4/5/6 built 2026-10-10 under [PREREG_P3_01](../experiments/PREREG_P3_01.md); rehearsal pending
 sources: 'docs/pipeline/00_PIPELINE_MASTER_DESIGN.md'
 upstream: '[07_PHASE3_PART1_PLAN.md](07_PHASE3_PART1_PLAN.md) — the corrected design this builds · [06_PHASE3_PART1_REVIEW.md](06_PHASE3_PART1_REVIEW.md) · [05_PHASE2_DETERMINISM_LEDGER.md](05_PHASE2_DETERMINISM_LEDGER.md) · [ADR-010](../decisions/ADR-2026-10-01_pipeline-architecture.md) · [ADR-013](../decisions/ADR-2026-10-09_phase2-objective-bridge.md)'
 ---

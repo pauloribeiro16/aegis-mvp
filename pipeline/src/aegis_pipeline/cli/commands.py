@@ -194,6 +194,8 @@ def cmd_run(args: argparse.Namespace) -> int:
     if runconfig.load(run_dir).get("preapprove_gates"):
         gates_dir = run_dir / "steps" / "gates"
         gates_dir.mkdir(parents=True, exist_ok=True)
+        # G-P3-A NÃO é pré-aprovável: a ronda humana é o juízo que o falsificador
+        # da onda 4 mede — pré-aprovar é o fecho por construção (doc 08, two states).
         for g in ("G-P1-A", "G-P1-B", "G-P1-C"):
             marker = gates_dir / f"{g}.approved"
             if not marker.exists():
@@ -278,7 +280,8 @@ def main(argv=None) -> int:
     p_run = sub.add_parser("run", help="execute one stage")
     p_run.add_argument("--stage", required=True,
                        choices=["p1", "p2", "p3f", "p3", "p4", "p4t", "p5", "phase2", "p3a_map",
-                                "p4p5", "p4tp5", "all", "agentic"])
+                                "p3a_cards", "p3a_propose", "p3a_round", "p3a_org", "p3a_weave",
+                                "p3a_gate", "p4p5", "p4tp5", "all", "agentic"])
     p_run.add_argument("--repo", type=Path, default=REPO_DEFAULT)
     p_run.add_argument("--run-dir", type=Path, required=True)
     p_run.add_argument("--model", default=None)

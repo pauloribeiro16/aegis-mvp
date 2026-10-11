@@ -142,16 +142,29 @@ def _split_title(text: str) -> tuple[str, str]:
     return head.strip(), tail.strip()
 
 
-def _refs(examples: str, refs_a: str, refs_b: str) -> list[str]:
-    """As duas colunas 'Informative References' são a mesma lista partida; junta-se
-    sem duplicar e sem inventar referência nenhuma."""
-    out: list[str] = []
+_EXAMPLE = re.compile(r"^(1st|2nd|3rd|Ex\d+)\s*:")
+
+
+def _split_refs(examples: str, refs_a: str, refs_b: str) -> tuple[list[str], list[str]]:
+    """Separa as DUAS colunas que o workbook traz.
+
+    A coluna `Implementation Examples` (`1st:`, `3rd:`, `Ex1:`…) é texto de
+    implementação; as duas colunas `Informative References` são a mesma lista
+    partida, mais as referências informativas. Juntá-las numa só perdia a
+    distinção que a folha faz — e o painel deixava de dizer o que é exemplo e
+    o que é referência.
+    """
+    ex: list[str] = []
+    rf: list[str] = []
     for cell in (examples, refs_a, refs_b):
         for line in cell.split("\n"):
             line = line.strip()
-            if line and line not in out:
-                out.append(line)
-    return out
+            if not line:
+                continue
+            bucket = ex if _EXAMPLE.match(line) else rf
+            if line not in bucket:
+                bucket.append(line)
+    return ex, rf
 
 
 def read_introduction(book: Book) -> dict:
@@ -242,6 +255,12 @@ def _read_track(book: Book, sheet: str, *, header_row: int, fn_col: int, cat_col
     assert "subcategory" in header_marker, f"{sheet}: cabeçalho inesperado em {sub_col}"
 
     for r in range(header_row + 1, len(rows) + 1):
+        ex, rf = (
+            _split_refs(book.cell(rows, r, sub_col + 1),
+                        book.cell(rows, r, sub_col + 2),
+                        book.cell(rows, r, sub_col + 3))
+            if sub_col == COL_SUBCAT else ([], [])
+        )
         fn_txt = book.cell(rows, r, fn_col)
         cat_txt = book.cell(rows, r, cat_col)
         sub_txt = book.cell(rows, r, sub_col)
@@ -271,10 +290,8 @@ def _read_track(book: Book, sheet: str, *, header_row: int, fn_col: int, cat_col
                     "text": m.group(2).strip(),
                     "category": cur_cat["id"] if cur_cat else "",
                     "function": cur_cat["function"] if cur_cat else "",
-                    "refs": _refs(book.cell(rows, r, sub_col + 1),
-                                   book.cell(rows, r, sub_col + 2),
-                                   book.cell(rows, r, sub_col + 3))
-                    if sub_col == COL_SUBCAT else [],
+                    "examples": ex,
+                    "references": rf,
                     "policy_score": _num(book.cell(rows, r, pol_col)),
                     "policy_reasoning": book.cell(rows, r, polw_col),
                     "practice_score": _num(book.cell(rows, r, prac_col)),

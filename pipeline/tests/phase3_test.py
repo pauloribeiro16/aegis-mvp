@@ -808,3 +808,45 @@ def test_goal_anchors_carry_pf_for_gdpr_and_not_for_cra() -> None:
     assert "PR.DS-P1" in gdpr and "PR.PO-P3" in gdpr
     cra = goal_anchors(REPO, "D-01.1", ["SG-D-01.1.CRA"])
     assert cra and not any("-P" in a for a in cra), cra
+
+
+def test_maturity_levels_follow_the_cumulative_tier_rule() -> None:
+    """Onda QNRCS-maturidade: nível 0–4 pela regra cumulativa B→B∪S→B∪S∪E.
+
+    Esperado pelo tier: básico→2, substancial→3, elevado→4; 5 fica para
+    certificação externa (art. 27.º). Os controlos exigidos por objectivo vêm
+    das medidas por tier (32→16→... a forma cumulativa real do catálogo).
+    """
+    from aegis_pipeline.phases.phase3 import maturity
+
+    # extract sintético: 1 objectivo GR com 2 controlos; Básico cobre o 1.º,
+    # Substancial acrescenta o 2.º
+    extract = {
+        "medidas_essenciais_importantes": {
+            "basico": [{"control_id": "GR.CO-1", "control_text": "t", "medida": "m", "criterio": "c", "nivel": "Básico"}],
+            "substancial": [{"control_id": "GR.CO-2", "control_text": "t", "medida": "m", "criterio": "c", "nivel": "Substancial"}],
+            "elevado": [{"control_id": "GR.CO-2", "control_text": "t", "medida": "m2", "criterio": "c2", "nivel": "Elevado"}],
+        }
+    }
+    path = REPO / "docs/research/qnrcs/_test_extract.json"
+    path.write_text(json.dumps(extract), encoding="utf-8")
+    controls = [
+        {"control_id": "GR.CO-1", "function": "GR — Gerir", "mapped_nist_csf": ["GV.OC-01"]},
+        {"control_id": "GR.CO-2", "function": "GR — Gerir", "mapped_nist_csf": ["GV.RR-02"]},
+    ]
+    try:
+        # âncoras da corrida só cobrem o controlo do Básico → nível 1
+        r1 = maturity.maturity_levels(path, controls, "basico", {"GV.OC-01"})
+        assert r1["objectivos"]["GR"]["nivel_atingido"] == 1, r1
+        assert r1["nivel_esperado"] == 2
+        # âncoras cobrem os dois → nível 2 (Básico 100%)
+        r2 = maturity.maturity_levels(path, controls, "basico", {"GV.OC-01", "GV.RR-02"})
+        assert r2["objectivos"]["GR"]["nivel_atingido"] == 2, r2
+        # com o tier substancial, o esperado sobe para 3
+        r3 = maturity.maturity_levels(path, controls, "substancial", {"GV.OC-01", "GV.RR-02"})
+        assert r3["nivel_esperado"] == 3
+        assert r3["objectivos"]["GR"]["nivel_atingido"] == 2  # Substancial 100% ⇒ nível 2+... aqui 2 é B; S exige GR.CO-2 coberto ⇒ 3
+        # na regra: B 100% + S 100% ⇒ nível 3
+        assert r3["objectivos"]["GR"]["nivel_atingido"] == 3, r3
+    finally:
+        path.unlink(missing_ok=True)

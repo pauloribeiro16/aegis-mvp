@@ -81,6 +81,68 @@ def pf_maturity(repo: Path, anchors: dict[str, set[str]]) -> dict:
     }
 
 
+def maturity_levels(extract_path: Path, controls: list[dict], tier: str, run_csf: set[str]) -> dict:
+    """Nível de maturidade 0–4 por objectivo, da semântica cumulativa do QNRCS.
+
+    Os tiers são cumulativos (Básico ⊂ Substancial ⊂ Elevado, com exigência
+    escalada por controlo), logo o nível atingido de um objectivo é o maior k
+    tal que TODOS os controlos exigidos até k estão ancorados pela corrida:
+      0 nada · 1 Básico parcial · 2 Básico 100% · 3 B∪S 100% · 4 B∪S∪E 100%
+    O 5 fica reservado a certificação externa (art. 27.º). O esperado é o nível
+    que o tier da entidade exige (básico→2, substancial→3, elevado→4).
+    Limitações: 15 controlos sem medida ficam fora; RS/RC têm só 2 controlos
+    ao Básico (granularidade fraca).
+    """
+    data = json.loads(extract_path.read_text(encoding="utf-8"))
+    obj_of = {c["control_id"]: str(c["function"]).split(" — ")[0] for c in controls}
+    # a ponte controlo↔corrida é o mapped_nist_csf (o id nacional não está nas âncoras)
+    mapped = {c["control_id"]: set(c.get("mapped_nist_csf") or []) for c in controls}
+    tier_measures = data["medidas_essenciais_importantes"]
+
+    # controlos exigidos por objectivo, por nível cumulativo
+    expected: dict[str, dict[int, set[str]]] = {}
+    for tier_name in ("basico", "substancial", "elevado"):
+        level = {"basico": 2, "substancial": 3, "elevado": 4}[tier_name]
+        for m in tier_measures[tier_name]:
+            cid = m.get("control_id")
+            oid = obj_of.get(cid)
+            if not oid or not cid:
+                continue
+            expected.setdefault(oid, {2: set(), 3: set(), 4: set()})
+            for lv in (2, 3, 4):
+                if level >= lv:
+                    expected[oid][lv].add(cid)
+
+    expected_level = {"basico": 2, "substancial": 3, "elevado": 4}[tier]
+    out: dict[str, dict] = {}
+    for oid, lv_sets in sorted(expected.items()):
+        # cobertura cumulativa: controlo coberto ⟺ o seu mapped_nist_csf toca as âncoras
+        cov = {
+            lv: round(
+                100 * len({c for c in ids if mapped.get(c, set()) & run_csf}) / max(len(ids), 1), 1
+            )
+            for lv, ids in lv_sets.items()
+        }
+        level = 0
+        for lv in (4, 3, 2):
+            if cov[lv] >= 100:
+                level = lv
+                break
+        if level == 0 and cov[2] > 0:
+            level = 1
+        out[oid] = {
+            "nivel_atingido": level,
+            "cobertura_cumulativa": cov,
+            "controlos_esperados": {str(lv): len(ids) for lv, ids in lv_sets.items()},
+        }
+    return {
+        "objectivos": out,
+        "escala": "0–4 (+5 reservado a certificação externa, art. 27.º)",
+        "nota": "nível atingido = o maior k cujo conjunto cumulativo de controlos (Básico → B∪S → B∪S∪E) está 100% ancorado pela corrida",
+        "nivel_esperado": expected_level,
+    }
+
+
 def tier_summary(extract_path: Path, controls: list[dict]) -> dict:
     """Measures per tier per QNRCS objective — o comparativo por nível."""
     data = json.loads(extract_path.read_text(encoding="utf-8"))
@@ -115,6 +177,13 @@ def main() -> int:
     pf = pf_maturity(repo, anchors)
     all_anchors: set[str] = set().union(*anchors.values()) if anchors else set()
     csf_anchors = {a for a in all_anchors if not a.endswith(tuple(f"-P{i}" for i in range(1, 20)))}
+    from aegis_pipeline.phases.phase3.maturity import maturity_levels
+    maturity = maturity_levels(
+        repo / "docs" / "research" / "qnrcs" / "QNRCS_Reg756_2026_extract.json",
+        [json.loads(p.read_text(encoding="utf-8")) for p in sorted(qnrcs_dir.rglob("*.json")) if p.name not in ("_MANIFEST.json", "QNRCS.json", "_tiers.json")],
+        tier,
+        csf_anchors,
+    )
 
     controls = []
     for path in sorted(qnrcs_dir.rglob("*.json")):
@@ -171,6 +240,7 @@ def main() -> int:
             "objectivos": objectives,
         },
         "gaps_do_tier": gaps,
+        "maturidade": maturity,
         "pf": pf,
         "tiers": {
             "descricoes": {

@@ -1,0 +1,19 @@
+{
+ "control_id": "DE.MC-7",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "DE — Detetar",
+ "category": "DE.MC — Monitorização Contínua",
+ "subcategory_id": "DE.MC-7",
+ "subcategory_text": "O *hardware*, *software*, os ambientes em produção e os seus dados são monitorizados para detetar eventos potencialmente adversos.",
+ "description": "DE.MC-7 — O hardware, software, os ambientes em produção e os seus dados são monitorizados para detetar eventos potencialmente adversos. Descrição A entidade utiliza mecanismos de verificação que garantam a integridade de hardware, software, firmware e respetivos dados. Estes controlos têm como objetivo detetar manipulações não autorizadas ou erros inesperados devido a má utilização. Referências ISO/IEC 27001:2022 — 8.1 ISO/IEC 27002:2022 — 8.7, 8.19, 8.24, 8.26, 8.27, 8.32 NIST SP-800-53 Rev. 5 — PL-8 NIST CSF 2.0 — DE.CM-09 CIS CSC v8.1-2, 7 CyFun 2025-DE.CM-09",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

@@ -1,0 +1,19 @@
+{
+ "control_id": "RS.MI-1",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "RS — Responder",
+ "category": "RS.MI — Mitigação de Incidentes",
+ "subcategory_id": "RS.MI-1",
+ "subcategory_text": "Os incidentes são contidos.",
+ "description": "RS.MI-1 — Os incidentes são contidos. Descrição A entidade define processos e procedimentos sistematizados para resolução e tratamento de incidentes que lhe permitam conter, efetivamente, os incidentes ocorridos. Referências ISO/IEC 27001:2022 — 6.1.3, 7.5.2, 8.3, 10.2 ISO/IEC 27002:2022 — Anexo A 5.26, 5.37, 8.7, 8.16 NIST SP-800-53 Rev.5 — IR-4 2 NIST CSF 2.0- RS.M1-01 CIS CSC v8.1-17 CyFun 2025 — RS.M1-01",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

@@ -1,0 +1,29 @@
+{
+ "control_id": "ID.GA-8",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "ID — Identificar",
+ "category": "ID.GA — Gestão de Ativos",
+ "subcategory_id": "ID.GA-8",
+ "subcategory_text": "Os dados são destruídos de acordo com a Política de Classificação e Gestão de Dados definida.",
+ "description": "ID.GA-8 — Os dados são destruídos de acordo com a Política de Classificação e Gestão de Dados definida. As informações digitais e físicas são sujeitas aos métodos apropriados de destruição, de acordo com a classificação de informação.",
+ "informative_references": [
+  "ISO/IEC 27001:7.5.2",
+  "ISO/IEC 27001:7.5.3.8.1",
+  "ISO/IEC 27002:5.10",
+  "ISO/IEC 27002:7.10",
+  "ISO/IEC 27002:7.14",
+  "ISO/IEC 27002:8.10",
+  "NIST SP 800-53:MP-4"
+ ],
+ "mapped_nist_csf": [
+  "ID.AM-08"
+ ],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

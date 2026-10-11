@@ -1,0 +1,19 @@
+{
+ "control_id": "PR.GA-7",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "PR — Proteger",
+ "category": "PR.GA — Gestão de Identidades, Autenticação e Controlo de Acessos",
+ "subcategory_id": "PR.GA-7",
+ "subcategory_text": "A entidade gere os seus acessos remotos.",
+ "description": "PR.GA-7 — A entidade gere os seus acessos remotos. A entidade documenta, gere e controla os acessos remotos às suas redes e sistemas de informação. São considerados acessos remotos, todos os acessos feitos às redes e sistemas de informação por pessoal que comuniquem através de redes de comunicações externas à entidade. As VPN, quando criadas, devem ser consideradas redes de comunicações internas, observando-se os controlos de segurança apropriados. Cumulativamente, apenas são considerados acessos remotos a redes e sistemas de informação, aqueles que sejam realizados a sistemas que não estejam propositadamente disponíveis publicamente. Referências ISO/IEC 27001:2022 — 7.52, 8.1 ISO/IEC 27002:2022 — 5.14, 6.7, 7.9, 8.1, 8.5, 8.11, 8.20 NIST SP-800-53 Rev. 5 — AC -17 CIS CSC v8.1 — 5, 6, 13",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

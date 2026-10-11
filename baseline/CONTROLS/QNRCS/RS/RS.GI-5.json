@@ -1,0 +1,19 @@
+{
+ "control_id": "RS.GI-5",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "RS — Responder",
+ "category": "RS.GI — Gestão de Incidentes",
+ "subcategory_id": "RS.GI-5",
+ "subcategory_text": "São aplicados os critérios para iniciar a recuperação de incidentes.",
+ "description": "RS.GI-5 — São aplicados os critérios para iniciar a recuperação de incidentes. Descrição A entidade aplica os critérios definidos para dar início aos procedimentos de recuperação de incidentes, às caraterísticas conhecidas e presumíveis do incidente. Referências NIST CSF 2.0 — RS.MA-05 CyFun 2025-RS.MA-05",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

@@ -1,0 +1,19 @@
+{
+ "control_id": "GR.CA-10",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "GR — Gerir",
+ "category": "GR.CA — Gestão do Risco da Cadeia de Abastecimento",
+ "subcategory_id": "GR.CA-10",
+ "subcategory_text": "Aquando da definição de processos de gestão dos riscos da cadeia de abastecimento de cibersegurança a entidade inclui disposições para atividades que possam ocorrer durante ou após a cessação de contratos com fornecedores ou parceiros.",
+ "description": "GR.CA-10 — Aquando da definição de processos de gestão dos riscos da cadeia de abastecimento de cibersegurança a entidade inclui disposições para atividades que possam ocorrer durante ou após a cessação de contratos com fornecedores ou parceiros. A entidade garante que estão instituídos procedimentos internos para o término de parcerias, contratos ou acordos com fornecedores ou parceiros. Esta prática protege a entidade de determinados riscos inerentes às anteriores atividades ou responsabilidades dos fornecedores, como acesso não autorizado a informação ou sistemas, uso indevido de informação interna partilhada, divulgação de vulnerabilidades internas, entre outros aspetos. Referências NIST CSF 2.0 — GV.SC-10 CyFun 2025-GV.SC-10 5 — Identificar: O objetivo Identificar pretende estabelecer uma base comum, transversal à entidade, para a abordagem à gestão de riscos de cibersegurança no contexto da envolvência das suas redes e sistemas de informação, pessoas, ativos, dados e respetivas capacidades. A entidade identifica quais os ativos que suportam os seus processos críticos e os riscos associados relevantes. Esta identificação permite que a entidade consiga definir e priorizar os seus recursos e investimentos, de acordo com os seus objetivos gerais e com a sua estratégia de gestão de riscos. As práticas que se enquadram no objetivo Identificar são basilares para a efetiva utilização do QNRCS. Conhecer, num contexto organizacional, os recursos que suportam as funções importantes e os respetivos riscos associados, permite às entidades priorizar os seus esforços de forma consistente. 5.1 — ID.GA — Gestão de Ativos: A entidade identifica e gere, de acordo com a sua relevância para o cumprimento dos objetivos organizacionais e a estratégia de gestão do risco da entidade, os dados, equipamentos, sistemas e instalações que permitem cumprir os seus objetivos, no decorrer da sua atividade.",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

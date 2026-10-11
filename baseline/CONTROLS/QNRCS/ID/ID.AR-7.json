@@ -1,0 +1,35 @@
+{
+ "control_id": "ID.AR-7",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "ID — Identificar",
+ "category": "ID.AR — Avaliação do Risco",
+ "subcategory_id": "ID.AR-7",
+ "subcategory_text": "A entidade define processos para receber informação, analisar e responder a vulnera- bilidades provenientes de fontes internas e externas.",
+ "description": "ID.AR-7 — A entidade define processos para receber informação, analisar e responder a vulnera- bilidades provenientes de fontes internas e externas. A entidade define um processo formal para receber a submissão de vulnerabilidades, provenientes de fontes internas ou externas (por exemplo: formulários semi-automatizados, testes internos, relatórios de segurança ou investigadores de segurança). Cada submissão é analisada, verificada e, no caso de se confirmar que a informação configura uma vulnerabilidade, a entidade segue o processo de resposta a vulnerabilidades conforme definido. 20",
+ "informative_references": [
+  "ISO/IEC 27001:4.4",
+  "ISO/IEC 27001:7.5.2",
+  "ISO/IEC 27001:8.3",
+  "ISO/IEC 27001:9.1",
+  "ISO/IEC 27002:5.37",
+  "ISO/IEC 27002:5.7",
+  "ISO/IEC 27002:8.16",
+  "ISO/IEC 27002:8.29",
+  "ISO/IEC 27002:8.8"
+ ],
+ "mapped_nist_csf": [
+  "ID.RA-08"
+ ],
+ "mapped_cyfun": [
+  "ID.RA-08"
+ ],
+ "mapped_cis": [
+  "17"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

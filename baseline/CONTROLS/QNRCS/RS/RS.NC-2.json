@@ -1,0 +1,19 @@
+{
+ "control_id": "RS.NC-2",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "RS — Responder",
+ "category": "RS.NC — Notificação e Comunicação de Incidentes",
+ "subcategory_id": "RS.NC-2",
+ "subcategory_text": "Existe partilha voluntária de informação com partes interessadas externas.",
+ "description": "RS.NC-2 — Existe partilha voluntária de informação com partes interessadas externas. Descrição A entidade partilha, de forma voluntária, informações sobre os incidentes a grupos de interesse, para que estes possam beneficiar da partilha e melhorar tempos de resposta para identificar, detetar, conter e erradicar essas ameaças na sua circunscrição e no seu círculo de influência. Referências ISO/IEC 27001:2022 — 7.3, 7.4 ISO/IEC 27002:2022 — 5.5, 5.6, 5.26 NIST CSF 2.0-RS.CO-03 CIS CSC v8.1-17",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

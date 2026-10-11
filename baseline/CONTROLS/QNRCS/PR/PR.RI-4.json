@@ -1,0 +1,19 @@
+{
+ "control_id": "PR.RI-4",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "PR — Proteger",
+ "category": "PR.RI — Resiliência da Infraestrutura Tecnológica",
+ "subcategory_id": "PR.RI-4",
+ "subcategory_text": "São implementados mecanismos para cumprir os requisitos de resiliência em situações adversas.",
+ "description": "PR.RI-4 — São implementados mecanismos para cumprir os requisitos de resiliência em situações adversas. Descrição A entidade implementa os controlos necessários para que possa cumprir os requisitos de resiliência básicos em situações fora do comum e que garantam a alocação de recursos e equipamentos adicionais. Caso seja necessário responder a situações adversas, coloca-se em prática o Plano de Continuidade de Negócio. Referências ISO/IEC 27001:2022 — 6.2, 7.5.2, 8.1 ISO/IEC 27002:2022 — 5.29, 7.5, 8.14 NIST SP-800-53 Rev. 5 — CP-2 NIST CSF 2.0-PR.IR-03 CyFun 2025-PR.IR-03",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

@@ -1,0 +1,32 @@
+{
+ "control_id": "GR.CO-5",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "GR — Gerir",
+ "category": "GR.CO — Contexto Organizacional",
+ "subcategory_id": "GR.CO-5",
+ "subcategory_text": "Os requisitos de resiliência necessários para suportar a prestação de serviços críticos são definidos.",
+ "description": "GR.CO-5 — Os requisitos de resiliência necessários para suportar a prestação de serviços críticos são definidos. A entidade identifica e define quais são os requisitos de resiliência adequados para suportar a prestação dos seus serviços críticos. A entidade define e implementa um Plano de Continuidade de Negócio que contém disposições quanto a redundâncias, planos e tempos de resposta para a recuperação dos serviços críticos e respetivos processos. De maneira a garantir que o Plano de Continuidade de Negócio responde às necessidades a entidade realiza testes ao mesmo.",
+ "informative_references": [
+  "ISO/IEC 27001:6.2",
+  "ISO/IEC 27001:7.5.2",
+  "ISO/IEC 27001:8.1",
+  "ISO/IEC 27002:5.29",
+  "ISO/IEC 27002:5.5",
+  "ISO/IEC 27002:7.11",
+  "ISO/IEC 27002:7.5",
+  "ISO/IEC 27002:8.14"
+ ],
+ "mapped_nist_csf": [
+  "GV.OC-05"
+ ],
+ "mapped_cyfun": [
+  "GV.OC-04"
+ ],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

@@ -1,0 +1,44 @@
+{
+ "control_id": "DE.MC-3",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "DE — Detetar",
+ "category": "DE.MC — Monitorização Contínua",
+ "subcategory_id": "DE.MC-3",
+ "subcategory_text": "A atividade do pessoal da entidade é monitorizada para se detetar potenciais incidentes.",
+ "description": "DE.MC-3 — A atividade do pessoal da entidade é monitorizada para se detetar potenciais incidentes. A monitorização das atividades do pessoal da entidade está integrada no âmbito do processo de gestão e correlação de eventos de segurança. Esta atividade tem como objetivo recolher informação que possibilite uma atuação célere da entidade, no caso de existência de algum incidente que possa ter origem na atividade de um colaborador. A entidade garante também que a informação recolhida e o seu respetivo tratamento respeitam o enquadramento jurídico aplicável.",
+ "informative_references": [
+  "ISO/IEC 27001:(27002)",
+  "ISO/IEC 27001:8.1",
+  "ISO/IEC 27001:9.1",
+  "ISO/IEC 27001:A",
+  "ISO/IEC 27001:Anexo",
+  "ISO/IEC 27002:5.7",
+  "ISO/IEC 27002:8.1",
+  "ISO/IEC 27002:8.12",
+  "ISO/IEC 27002:8.15",
+  "ISO/IEC 27002:8.16",
+  "ISO/IEC 27002:8.19",
+  "ISO/IEC 27002:8.20",
+  "ISO/IEC 27002:8.23",
+  "ISO/IEC 27002:8.7",
+  "NIST SP 800-53:SC-7"
+ ],
+ "mapped_nist_csf": [
+  "DE.CM-03"
+ ],
+ "mapped_cyfun": [
+  "DE.CM-03"
+ ],
+ "mapped_cis": [
+  "13",
+  "15",
+  "3",
+  "8"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

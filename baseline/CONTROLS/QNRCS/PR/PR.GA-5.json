@@ -1,0 +1,43 @@
+{
+ "control_id": "PR.GA-5",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "PR — Proteger",
+ "category": "PR.GA — Gestão de Identidades, Autenticação e Controlo de Acessos",
+ "subcategory_id": "PR.GA-5",
+ "subcategory_text": "As permissões de acesso, os direitos e as autorizações são definidas numa política, são geridas, aplicadas e atualizadas, e incorporam os princípios do menor privilégio e da separação de funções.",
+ "description": "PR.GA-5 — As permissões de acesso, os direitos e as autorizações são definidas numa política, são geridas, aplicadas e atualizadas, e incorporam os princípios do menor privilégio e da separação de funções. As permissões de acesso e as autorizações são geridas de acordo com os princípios de acesso adequados à função, de acordo com os princípios de necessidade de conhecer e de segregação de funções, sendo que estes princípios e medidas de cibersegurança se aplicam a sistemas de TIC e TO, sempre que aplicável. Entende-se, por menor privilégio o acesso às redes e sistemas de informação da entidade conce- dido de acordo com o correto desempenho das suas funções. Por segregação de funções, entende-se 2 a divisão de atribuição de funções e de privilégios entre múltiplos indivíduos, de forma que um processo em particular não possa ser executado ou controlado apenas por um deles. O principal fundamento, para a aplicação desta prática de segregação de funções, é a prevenção de incidentes com impacto significativo nas atividades operacionais da entidade. Existindo múltiplas pessoas envolvidas, minimiza-se a oportunidade de transgressões e fomenta-se a probabilidade de estas serem detetadas e reportadas. O princípio de segregação de funções pode ser aplicado nos seguintes tipos de processos: 1 — Sequenciais: quando as atividades podem ser executadas em tarefas sequenciais e por pessoas diferentes (por exemplo: na atribuição de acessos, uma pessoa solicita, outra aprova e uma terceira atribui os acessos); 2 — Quórum: Quando as atividades requerem um quórum mínimo de aprovações para poderem ser executadas (por exemplo: a recuperação de uma chave de cifra, onde é requerida a presença de dois ou mais administradores de sistemas); 3 — Geoespacial: quando as atividades podem ser divididas em tarefas que são realizadas em locais diferentes (por exemplo: gestão de sistemas de informação, cujas tarefas são efetuadas por pessoal sediado em diferentes zonas geográficas).",
+ "informative_references": [
+  "ISO/IEC 27001:2",
+  "ISO/IEC 27001:8.1",
+  "ISO/IEC 27001:9",
+  "ISO/IEC 27001:9.1",
+  "ISO/IEC 27002:5.15",
+  "ISO/IEC 27002:5.3",
+  "ISO/IEC 27002:8.18",
+  "ISO/IEC 27002:8.2",
+  "ISO/IEC 27002:8.3",
+  "ISO/IEC 27002:8.4",
+  "NIST SP 800-53:AC-17"
+ ],
+ "mapped_nist_csf": [
+  "PR.AA-05"
+ ],
+ "mapped_cyfun": [
+  "PR.AA-05"
+ ],
+ "mapped_cis": [
+  "12",
+  "13",
+  "16",
+  "3",
+  "4",
+  "6",
+  "7"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

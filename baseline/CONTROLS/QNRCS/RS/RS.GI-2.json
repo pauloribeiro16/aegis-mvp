@@ -1,0 +1,32 @@
+{
+ "control_id": "RS.GI-2",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "RS — Responder",
+ "category": "RS.GI — Gestão de Incidentes",
+ "subcategory_id": "RS.GI-2",
+ "subcategory_text": "As notificações dos sistemas de deteção são triadas e validadas.",
+ "description": "RS.GI-2 — As notificações dos sistemas de deteção são triadas e validadas. A entidade garante que as notificações de incidentes originados nos sistemas de deteção (internos ou externos) ou fora da entidade são analisados, categorizados e tratados de forma sistematizada.",
+ "informative_references": [
+  "ISO/IEC 27001:9.1",
+  "ISO/IEC 27002:5.26",
+  "ISO/IEC 27002:8.16",
+  "ISO/IEC 27002:8.8",
+  "ISO/IEC 27002:A",
+  "ISO/IEC 27002:Anexo"
+ ],
+ "mapped_nist_csf": [
+  "RS.MA-02"
+ ],
+ "mapped_cyfun": [
+  "RS.MA-02"
+ ],
+ "mapped_cis": [
+  "17"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

@@ -1,0 +1,19 @@
+{
+ "control_id": "PR.FC-2",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "PR — Proteger",
+ "category": "PR.FC — Formação e Sensibilização",
+ "subcategory_id": "PR.FC-2",
+ "subcategory_text": "O pessoal com funções especializadas em cibersegurança e os órgãos de gestão, direção e administração recebem formação adequada para o exercício das suas funções.",
+ "description": "PR.FC-2 — O pessoal com funções especializadas em cibersegurança e os órgãos de gestão, direção e administração recebem formação adequada para o exercício das suas funções. Descrição As pessoas que desempenham funções especializadas em cibersegurança e os órgãos de gestão, direção e administração são sensibilizadas e formadas de modo a possuírem os conhecimentos e as competências necessárias para desempenharem tarefas relevantes, tendo em conta os riscos de cibersegurança. Referências ISO/IEC 27001:2022- 5.3, 7.2, 7.3 ISO/IEC 27002:2022- 5.2, 6.3 NIST SP-800-53 Rev. 5-AT-3 NIST CSF 2.0- PR.AT-02 CIS CSC v8.1-4,14,16 CyFun 2025 — PR-AT-02",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

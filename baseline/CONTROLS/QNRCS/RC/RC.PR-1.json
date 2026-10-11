@@ -1,0 +1,19 @@
+{
+ "control_id": "RC.PR-1",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "RC — Recuperar",
+ "category": "RC.PR — Execução do Plano de Recuperação",
+ "subcategory_id": "RC.PR-1",
+ "subcategory_text": "A entidade segue um plano de recuperação durante ou após um incidente.",
+ "description": "RC.PR-1 — A entidade segue um plano de recuperação durante ou após um incidente. Descrição A entidade sistematiza o seu processo de recuperação de incidentes, por forma a garantir uma correta alocação de recursos (humanos/tecnológicos e processuais) à resolução dos mesmos. No pro- cesso de recuperação de um incidente é relevante garantir a integridade e disponibilidade dos sistemas. Referências ISO/IEC 27001:2022 — 8.3, 10.2ISO/IEC 27002:2022 — 5.19, 5.24, 5.26, 5.29, 8.13 NIST SP-800-53 Rev.5 — CP-2 NIST CSF 2.0- RC.PR-01 CIS CSC v8.1 — 11 CyFun 2025 — RC.RP-01",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

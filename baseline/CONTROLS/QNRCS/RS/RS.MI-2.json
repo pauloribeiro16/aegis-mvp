@@ -1,0 +1,19 @@
+{
+ "control_id": "RS.MI-2",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "RS — Responder",
+ "category": "RS.MI — Mitigação de Incidentes",
+ "subcategory_id": "RS.MI-2",
+ "subcategory_text": "Os incidentes são resolvidos.",
+ "description": "RS.MI-2 — Os incidentes são resolvidos. Descrição A entidade possui processos e procedimentos sistematizados para resolução e tratamento de incidentes que lhe permitam indicar que os incidentes são, efetivamente, resolvidos. Referências ISO/IEC 27001:2022 — 6.1.3, 7.5.2, 8.3, 10.2 ISO/IEC 27002:2022 — 5.26, 8.7, 8.8 NIST SP-800-53 Rev.5 — IR-4 NIST CSF 2.0 — RS.MI-02 CIS CSC v8.1 — 17 9 — Recuperar: No âmbito do objetivo Recuperar, pretende-se desenvolver e implementar práticas e manter pla- nos de resiliência para restaurar qualquer capacidade e/ou serviço que tenha sido comprometido na sequência de um evento de cibersegurança. Estas práticas promovem a recuperação adequada das operações da entidade, para reduzir os impactos do incidente ocorrido. Entre outras, promove-se a exe- cução de planos de continuidade de negócio, de recuperação, da execução de exercícios de simulação de situações de crise e de atualizações dos planos com vista à melhoria dos mesmos. Os controlos pertencentes a este objetivo visam assegurar a resiliência da entidade nas suas dimensões: Pessoas, Processos e Tecnologia. Os controlos tencionam que, no caso de existência de um incidente, a entidade consiga utilizar os controlos para suporte à recuperação em tempo útil da sua atividade.",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

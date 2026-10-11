@@ -1,0 +1,29 @@
+{
+ "control_id": "RS.AI-1",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "RS — Responder",
+ "category": "RS.AI — Análise de Incidentes",
+ "subcategory_id": "RS.AI-1",
+ "subcategory_text": "É realizada uma análise forense para determinar o que ocorreu durante um incidente e a sua causa raiz.",
+ "description": "RS.AI-1 — É realizada uma análise forense para determinar o que ocorreu durante um incidente e a sua causa raiz. A entidade cria as condições necessárias para que lhe seja possível efetuar análises forenses, no âmbito do processo de resposta a incidentes.",
+ "informative_references": [
+  "ISO/IEC 27001:10.2",
+  "ISO/IEC 27001:9.1",
+  "ISO/IEC 27001:9.2",
+  "ISO/IEC 27002:5.26",
+  "ISO/IEC 27002:5.28"
+ ],
+ "mapped_nist_csf": [
+  "RS.AN-03"
+ ],
+ "mapped_cyfun": [
+  "RS.AN-03"
+ ],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

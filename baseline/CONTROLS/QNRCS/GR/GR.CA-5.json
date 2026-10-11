@@ -1,0 +1,19 @@
+{
+ "control_id": "GR.CA-5",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "GR — Gerir",
+ "category": "GR.CA — Gestão do Risco da Cadeia de Abastecimento",
+ "subcategory_id": "GR.CA-5",
+ "subcategory_text": "A entidade define e integra nos contratos e outros acordos com fornecedores os requisitos para gerir os riscos de cibersegurança da cadeia de abastecimento.",
+ "description": "GR.CA-5 — A entidade define e integra nos contratos e outros acordos com fornecedores os requisitos para gerir os riscos de cibersegurança da cadeia de abastecimento. A entidade garante que os seus fornecedores cumprem com os requisitos de cibersegurança estabelecidos no quadro contratual. Os contratos e outros acordos com fornecedores são utilizados para implementar medidas adequadas, de modo a garantir o cumprimento dos objetivos da Política de Cibersegurança da entidade e da Política de Gestão dos Riscos para a Cadeia de Abastecimento. Referências ISO/IEC 27001:2022 — 6.1.3, 7.5.2, 8.1, 9.1 ISO/IEC 27002:2022 — 5.20, 5.35 NIST CSF 2.0 — GV.SC-05 CyFun 2025-GV.SC-05",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

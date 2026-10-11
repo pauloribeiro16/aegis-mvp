@@ -1,0 +1,19 @@
+{
+ "control_id": "GR.SP-3",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "GR — Gerir",
+ "category": "GR.SP — Supervisão",
+ "subcategory_id": "GR.SP-3",
+ "subcategory_text": "O desempenho da gestão dos riscos de cibersegurança da entidade é avaliado e revisto para alterações necessárias.",
+ "description": "GR.SP-3 — O desempenho da gestão dos riscos de cibersegurança da entidade é avaliado e revisto para alterações necessárias. Descrição A entidade avalia e revê o seu desempenho da gestão dos riscos de cibersegurança, através da implementação de mecanismos de avaliação e monitorização de desempenho, para garantir que alte- rações são consideradas e aplicadas quando necessário. Referências NIST CSF 2.0 — GR.OV-3 CyFun 2025 — GV.OV-03",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

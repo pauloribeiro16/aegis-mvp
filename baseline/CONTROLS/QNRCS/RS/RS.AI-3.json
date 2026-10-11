@@ -1,0 +1,23 @@
+{
+ "control_id": "RS.AI-3",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "RS — Responder",
+ "category": "RS.AI — Análise de Incidentes",
+ "subcategory_id": "RS.AI-3",
+ "subcategory_text": "Os dados e metadados do incidente são recolhidos, e a sua integridade e proveniência são preservadas.",
+ "description": "RS.AI-3 — Os dados e metadados do incidente são recolhidos, e a sua integridade e proveniência são preservadas. A entidade recolhe dados e metadados das investigações realizadas dos incidentes, e dos dados analisados. A entidade preserva os dados e garante a sua integridade.",
+ "informative_references": [],
+ "mapped_nist_csf": [
+  "RS.AN-07"
+ ],
+ "mapped_cyfun": [
+  "RS.AN-07"
+ ],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

@@ -1,0 +1,23 @@
+{
+ "control_id": "ID.GA-6",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "ID — Identificar",
+ "category": "ID.GA — Gestão de Ativos",
+ "subcategory_id": "ID.GA-6",
+ "subcategory_text": "Os dados e respetivos metadados são identificados e registados.",
+ "description": "ID.GA-6 — Os dados e respetivos metadados são identificados e registados. A entidade mantém um registo atualizado dos dados e respetivos metadados para cada tipo de dados designados. sendo que se entendem como dados designados os dados que a entidade explicitamente identifica, categoriza e sinaliza como requerendo tratamento, proteção ou gestão especial. Este inclui o seu tipo, localização, responsável e classificação em termos de criticidade. Esta prática permite à entidade uma melhor gestão dos dados gerados, guardados e que circulam na rede, facilitando a gestão ao nível do cumprimento de requisitos legais e a correta e ponderada aplicação de medidas de cibersegurança que restrinjam e protejam o uso e retenção dos dados com base no risco. Os metadados são dados sobre dados, isto é, informação que descreve os dados. São exemplos de metadados: a) Metadados descritivos (título, autor, palavras-chave); b) Metadados estruturais (formato, esquema); c) Metadados administrativos (acessos, políticas de armazenamento da informação); d) Metadados técnicos (arquivo, informações de codificação e local de armazenamento).",
+ "informative_references": [],
+ "mapped_nist_csf": [
+  "ID.AM-07"
+ ],
+ "mapped_cyfun": [
+  "ID.AM-07"
+ ],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

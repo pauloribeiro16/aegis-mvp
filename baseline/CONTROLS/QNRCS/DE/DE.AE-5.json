@@ -1,0 +1,19 @@
+{
+ "control_id": "DE.AE-5",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "DE — Detetar",
+ "category": "DE.AE — Anomalias e Eventos",
+ "subcategory_id": "DE.AE-5",
+ "subcategory_text": "As informações sobre ciberameaças e outras informações contextuais são integradas na análise de eventos.",
+ "description": "DE.AE-5 — As informações sobre ciberameaças e outras informações contextuais são integradas na análise de eventos. Descrição A entidade incorpora a informação sobre ameaças provenientes de fontes de conhecimento legítimas e relevantes ao contexto do evento para a sua análise. Estes dados permitem uma maior clareza relativamente a potenciais táticas, técnicas e procedimentos utilizados por potenciais atacan- tes possibilitando uma análise mais aprofundada e fundamentada do contexto do(s) evento(s) para a determinação duma resposta mais direcionada e eficaz. Esta análise capacita a entidade em termos de resposta, priorização e mitigação de eventos de segurança potencialmente disruptivos às suas operações. Referências NIST CSF 2.0 — DE.AE-07",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

@@ -1,0 +1,21 @@
+{
+ "control_id": "RC.PR-4",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "RC — Recuperar",
+ "category": "RC.PR — Execução do Plano de Recuperação",
+ "subcategory_id": "RC.PR-4",
+ "subcategory_text": "A entidade considera os seus serviços críticos e a gestão dos riscos de cibersegurança para estabelecer normas operacionais pós-incidente.",
+ "description": "RC.PR-4 — A entidade considera os seus serviços críticos e a gestão dos riscos de cibersegurança para estabelecer normas operacionais pós-incidente. A entidade considera as conclusões retiradas de situações pós-incidente para redefinir, caso aplicável, as suas funções de missão crítica (e respetivas práticas operacionais) e postura de risco (incluindo novas vulnerabilidades identificadas pós-incidente). A entidade reflete quais as suas funções e operações mais críticas e prioritárias e pondera aumentar a sua ciberresiliência.",
+ "informative_references": [],
+ "mapped_nist_csf": [
+  "RC.RP-04"
+ ],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

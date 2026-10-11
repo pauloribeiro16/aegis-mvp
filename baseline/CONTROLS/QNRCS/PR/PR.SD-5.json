@@ -1,0 +1,44 @@
+{
+ "control_id": "PR.SD-5",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "PR — Proteger",
+ "category": "PR.SD — Segurança de Dados",
+ "subcategory_id": "PR.SD-5",
+ "subcategory_text": "São realizadas, mantidas e testadas cópias de segurança dos dados da entidade.",
+ "description": "PR.SD-5 -São realizadas, mantidas e testadas cópias de segurança dos dados da entidade. A entidade garante que as suas cópias de segurança são testadas e validadas regularmente, atra- vés da execução de planos de testes de restauro. Estes testes são efetuados no âmbito dos Planos de Continuidade do Negócio da entidade ou através de exercícios periódicos e planeados, para validação da integridade das cópias de segurança efetuadas.",
+ "informative_references": [
+  "ISO/IEC 27001:6.2",
+  "ISO/IEC 27001:7.5.1",
+  "ISO/IEC 27001:8.1",
+  "ISO/IEC 27002:5.1",
+  "ISO/IEC 27002:5.20",
+  "ISO/IEC 27002:5.23",
+  "ISO/IEC 27002:5.29",
+  "ISO/IEC 27002:5.32",
+  "ISO/IEC 27002:5.33",
+  "ISO/IEC 27002:5.37",
+  "ISO/IEC 27002:6.7",
+  "ISO/IEC 27002:8.12",
+  "ISO/IEC 27002:8.13",
+  "ISO/IEC 27002:8.17",
+  "ISO/IEC 27002:8.6",
+  "ISO/IEC 27002:8.7",
+  "ISO/IEC 27002:8.9",
+  "NIST SP 800-53:CP-9"
+ ],
+ "mapped_nist_csf": [
+  "PR.DS-11"
+ ],
+ "mapped_cyfun": [
+  "PR.DS-11"
+ ],
+ "mapped_cis": [
+  "11"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

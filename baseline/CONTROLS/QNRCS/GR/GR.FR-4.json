@@ -1,0 +1,43 @@
+{
+ "control_id": "GR.FR-4",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "GR — Gerir",
+ "category": "GR.FR — Funções, Responsabilidades e Autoridades",
+ "subcategory_id": "GR.FR-4",
+ "subcategory_text": "A cibersegurança é contemplada nos processos de gestão de recursos humanos.",
+ "description": "GR.FR-4 — A cibersegurança é contemplada nos processos de gestão de recursos humanos. Os processos organizacionais que gerem os recursos humanos, que incluem a seleção de candida- tos, contratação, categorização das posições e a cessação de vínculo laboral, são avaliados e revistos com base nos requisitos de cibersegurança estabelecidos pela entidade.",
+ "informative_references": [
+  "ISO/IEC 27001:4.1",
+  "ISO/IEC 27001:4.2",
+  "ISO/IEC 27001:7.1",
+  "ISO/IEC 27001:7.3",
+  "ISO/IEC 27002:5.11",
+  "ISO/IEC 27002:5.4",
+  "ISO/IEC 27002:5.5",
+  "ISO/IEC 27002:6.1",
+  "ISO/IEC 27002:6.2",
+  "ISO/IEC 27002:6.3",
+  "ISO/IEC 27002:6.4",
+  "ISO/IEC 27002:6.5",
+  "ISO/IEC 27002:6.6",
+  "ISO/IEC 27002:6.7",
+  "NIST SP 800-53:AT-1",
+  "NIST SP 800-53:AT-2",
+  "NIST SP 800-53:AT-3",
+  "NIST SP 800-53:PS-1",
+  "NIST SP 800-53:e"
+ ],
+ "mapped_nist_csf": [
+  "GV.RR-04"
+ ],
+ "mapped_cyfun": [
+  "GV.RR-04"
+ ],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

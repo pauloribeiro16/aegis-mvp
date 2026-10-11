@@ -1,0 +1,31 @@
+{
+ "control_id": "PR.SP-2",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "PR — Proteger",
+ "category": "PR.SP — Segurança de Plataformas",
+ "subcategory_id": "PR.SP-2",
+ "subcategory_text": "Os *logs* de sistemas e o histórico de atividades são documentados, implementados e revistos de acordo com as Políticas da entidade.",
+ "description": "PR.SP-2 — Os logs de sistemas e o histórico de atividades são documentados, implementados e revistos de acordo com as Políticas da entidade. Os logs de sistemas e o histórico de atividades da entidade são determinados, documentados, implementados e revistos.",
+ "informative_references": [
+  "ISO/IEC 27001:7.5.2.7.5.3",
+  "ISO/IEC 27001:9.1",
+  "ISO/IEC 27001:9.2",
+  "ISO/IEC 27002:5.37",
+  "ISO/IEC 27002:8.15",
+  "ISO/IEC 27002:8.17",
+  "ISO/IEC 27002:8.34"
+ ],
+ "mapped_nist_csf": [
+  "PR.PS-04"
+ ],
+ "mapped_cyfun": [
+  "PR.PS-04"
+ ],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

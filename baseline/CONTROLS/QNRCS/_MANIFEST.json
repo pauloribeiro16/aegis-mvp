@@ -1,0 +1,67 @@
+{
+ "referential": "QNRCS — Quadro Nacional de Referência de Cibersegurança",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026; base legal DL 125/2025 — RJC, transposição NIS 2)",
+ "subcategories": 107,
+ "expected_total": 107,
+ "unverified_entries": [],
+ "advisory": true,
+ "enforced_by_verify_no_loss": false,
+ "tier": "T2 (ADR-001 D2 — operationalization of a national regulator)",
+ "objectives": {
+  "GR": {
+   "nome": "Gerir",
+   "categorias": [
+    "GR.CO",
+    "GR.GR",
+    "GR.FR",
+    "GR.PP",
+    "GR.SP",
+    "GR.CA"
+   ]
+  },
+  "ID": {
+   "nome": "Identificar",
+   "categorias": [
+    "ID.GA",
+    "ID.AR",
+    "ID.MC"
+   ]
+  },
+  "PR": {
+   "nome": "Proteger",
+   "categorias": [
+    "PR.GA",
+    "PR.FC",
+    "PR.SD",
+    "PR.SP",
+    "PR.RI"
+   ]
+  },
+  "DE": {
+   "nome": "Detetar",
+   "categorias": [
+    "DE.MC",
+    "DE.AE"
+   ]
+  },
+  "RS": {
+   "nome": "Responder",
+   "categorias": [
+    "RS.GI",
+    "RS.AI",
+    "RS.NC",
+    "RS.MI"
+   ]
+  },
+  "RC": {
+   "nome": "Recuperar",
+   "categorias": [
+    "RC.PR",
+    "RC.CO"
+   ]
+  }
+ },
+ "maturity_note": "QNRCS é o referencial de maturidade do projecto: cada controlo tem medidas escalonadas por tier de entidade (básico/substancial/elevado) em _tiers.json, e a matriz de risco que escolhe o tier a partir do perfil da empresa.",
+ "built_from": "docs/research/qnrcs/QNRCS_Reg756_2026_extract.json",
+ "built_by": "scripts/build_qnrcs_referential.py"
+}

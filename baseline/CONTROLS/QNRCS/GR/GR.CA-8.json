@@ -1,0 +1,19 @@
+{
+ "control_id": "GR.CA-8",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "GR — Gerir",
+ "category": "GR.CA — Gestão do Risco da Cadeia de Abastecimento",
+ "subcategory_id": "GR.CA-8",
+ "subcategory_text": "O Plano de Resposta a Incidentes e o Plano de Recuperação de Desastres são testados com o acompanhamento dos fornecedores.",
+ "description": "GR.CA-8 — O Plano de Resposta a Incidentes e o Plano de Recuperação de Desastres são testados com o acompanhamento dos fornecedores. Descrição A entidade identifica os fornecedores e pontos de contacto a participar nas atividades previstas nos Planos de Resposta a Incidentes e Plano de Recuperação de Desastres e garante que os mesmos são envolvidos nos testes e nos exercícios planeados. Referências ISO/IEC 27001:2022 — 6.1.3, 7.5.2, 8.1, 8.3 ISO/IEC 27002:2022 — 5.26, 5.29 NIST SP-800-53 Rev. 5 — CP-2 NIST CSF 2.0 — GV.SC-08 CIS CSC v8.1-18 CyFun 2025-GV.SC-08",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

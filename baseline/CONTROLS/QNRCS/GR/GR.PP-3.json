@@ -1,0 +1,19 @@
+{
+ "control_id": "GR.PP-3",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "GR — Gerir",
+ "category": "GR.PP — Políticas e Planos de Cibersegurança",
+ "subcategory_id": "GR.PP-3",
+ "subcategory_text": "O Plano de Recuperação de Desastres é definido, comunicado, mantido e melhorado.",
+ "description": "GR.PP-3 — O Plano de Recuperação de Desastres é definido, comunicado, mantido e melhorado. Descrição O Plano de Recuperação de Desastres é definido, implementado e atualizado com frequência, com vista à sua melhoria. A entidade garante que as partes interessadas relevantes, internas e externas, têm o conhecimento apropriado de todas as atualizações efetuadas. Referências ISO/IEC 27001:2022 — 4.1, 4.2, 6.2, 7.5.2, 7.5.3, 8.1, 9.3.2, 10.2 ISO/IEC 27002:2022 — 5.5, 5.20, 5.29, 8.6 NIST SP-800-53 Rev.5 — CP-2 NIST CSF 2.0 — ID.IM-04 CIS CSC v8.1 — 17 CyFun 2025 — ID.IM-04",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

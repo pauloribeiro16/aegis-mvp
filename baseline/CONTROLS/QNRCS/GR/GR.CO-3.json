@@ -1,0 +1,34 @@
+{
+ "control_id": "GR.CO-3",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "GR — Gerir",
+ "category": "GR.CO — Contexto Organizacional",
+ "subcategory_id": "GR.CO-3",
+ "subcategory_text": "Os requisitos legais, regulamentares e contratuais para a cibersegurança, são com- preendidos e geridos.",
+ "description": "GR.CO-3 — Os requisitos legais, regulamentares e contratuais para a cibersegurança, são com- preendidos e geridos. A entidade garante que cumpre com a legislação e regulamentação de cibersegurança nacional e europeia em vigor. Para esse efeito, a entidade define quais são os requisitos legais, regulamentares e contratuais nacionais e europeus que necessitam de ser observados e seguidos.",
+ "informative_references": [
+  "ISO/IEC 27001:4.1",
+  "ISO/IEC 27001:4.2",
+  "ISO/IEC 27001:7.2",
+  "ISO/IEC 27002:5.31",
+  "ISO/IEC 27002:5.32",
+  "ISO/IEC 27002:5.33",
+  "ISO/IEC 27002:5.34",
+  "ISO/IEC 27002:5.35",
+  "ISO/IEC 27002:5.5",
+  "NIST SP 800-53:SR-1"
+ ],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [
+  "GV.OC-03"
+ ],
+ "mapped_cis": [
+  "17"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

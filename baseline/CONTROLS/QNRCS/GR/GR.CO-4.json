@@ -1,0 +1,33 @@
+{
+ "control_id": "GR.CO-4",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "GR — Gerir",
+ "category": "GR.CO — Contexto Organizacional",
+ "subcategory_id": "GR.CO-4",
+ "subcategory_text": "Os serviços críticos da entidade dos quais as partes interessadas externas dependem são identificados e comunicados.",
+ "description": "GR.CO-4 — Os serviços críticos da entidade dos quais as partes interessadas externas dependem são identificados e comunicados. A entidade identifica os seus serviços críticos, dos quais as partes interessadas externas dependem, e utiliza esta informação, integrando-a e gerindo-a no seu processo de gestão dos riscos. Ao integrar a informação na gestão dos riscos, a entidade classifica e prioriza os serviços críticos identificados. A entidade comunica esta identificação às partes interessadas externas.",
+ "informative_references": [
+  "ISO/IEC 27001:6.1.2",
+  "ISO/IEC 27001:7.1",
+  "ISO/IEC 27001:7.5.2",
+  "ISO/IEC 27001:8.1",
+  "ISO/IEC 27001:8.2",
+  "ISO/IEC 27002:5.5",
+  "ISO/IEC 27002:7.11",
+  "ISO/IEC 27002:7.12",
+  "ISO/IEC 27002:8.6"
+ ],
+ "mapped_nist_csf": [
+  "GV.OC-05"
+ ],
+ "mapped_cyfun": [
+  "GV.OC-04"
+ ],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

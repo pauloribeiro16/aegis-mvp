@@ -1,0 +1,19 @@
+{
+ "control_id": "DE.AE-6",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "DE — Detetar",
+ "category": "DE.AE — Anomalias e Eventos",
+ "subcategory_id": "DE.AE-6",
+ "subcategory_text": "Os critérios para a declaração de incidentes são definidos",
+ "description": "DE.AE-6 — Os critérios para a declaração de incidentes são definidos Descrição Tendo como base a tipificação e categorização dos eventos do seu sistema de gestão e correlação de eventos de segurança, a entidade define quais são os critérios que devem justificar a necessidade de abertura de incidentes. Referências ISO/IEC 27001:2022 — 8.1, 9.1, 10.2 ISO/IEC 27002:2022 — 5.25, 8.5, 8.12, 8.14, 8.16, 8.17 NIST CSF 2.0 — DE.AE-08 CIS CSC v8.1-8, 13 CyFun 2025-DE.AE-08 8 — Responder: Pretende-se, com o objetivo Responder, desenvolver e implementar práticas de resposta a um incidente de cibersegurança. Estas práticas devem capacitar a entidade para a contenção dos impactos de um potencial incidente, e para mitigar o impacto do incidente, isto é, reduzir e eventualmente reverter os seus potenciais efeitos adversos, através do planeamento da resposta a incidentes, da comunicação com as partes interessadas relevantes, da análise e mitigação de incidentes e da melhoria por intermédio das lições aprendidas.",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

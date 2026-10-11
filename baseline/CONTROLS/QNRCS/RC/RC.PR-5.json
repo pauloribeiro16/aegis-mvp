@@ -1,0 +1,23 @@
+{
+ "control_id": "RC.PR-5",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "RC — Recuperar",
+ "category": "RC.PR — Execução do Plano de Recuperação",
+ "subcategory_id": "RC.PR-5",
+ "subcategory_text": "A integridade dos ativos restaurados é verificada, os sistemas e serviços são restau- rados e o estado de normal funcionamento é confirmado.",
+ "description": "RC.PR-5 — A integridade dos ativos restaurados é verificada, os sistemas e serviços são restau- rados e o estado de normal funcionamento é confirmado. Definição Após um incidente a entidade verifica a integridade dos ativos que foram restaurados antes dos mesmos serem colocados em funcionamento. A entidade restaura os sistemas e serviços e confirma o estado operacional normal dos mesmos.",
+ "informative_references": [],
+ "mapped_nist_csf": [
+  "RC.RP-05"
+ ],
+ "mapped_cyfun": [
+  "RC.PR-05"
+ ],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

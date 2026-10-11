@@ -1,0 +1,33 @@
+{
+ "control_id": "ID.GA-4",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "ID — Identificar",
+ "category": "ID.GA — Gestão de Ativos",
+ "subcategory_id": "ID.GA-4",
+ "subcategory_text": "Os serviços prestados por fornecedores são inventariados.",
+ "description": "ID.GA-4 — Os serviços prestados por fornecedores são inventariados. Descrição A entidade mantém um inventário atualizado de todos os serviços externos prestados por fornecedores os quais utiliza e depende. Este inventário permite que a entidade tenha conhecimento do(s) responsáveis pela gestão destes serviços e das suas dependências.",
+ "informative_references": [
+  "ISO/IEC 27001:7.5.2",
+  "ISO/IEC 27001:7.5.3",
+  "ISO/IEC 27001:8.1",
+  "ISO/IEC 27002:5.12",
+  "ISO/IEC 27002:5.9",
+  "ISO/IEC 27002:8.6",
+  "NIST SP 800-53:AC-20"
+ ],
+ "mapped_nist_csf": [
+  "ID.AM-04"
+ ],
+ "mapped_cyfun": [
+  "ID.AM-04"
+ ],
+ "mapped_cis": [
+  "12"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

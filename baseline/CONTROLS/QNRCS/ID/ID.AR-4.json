@@ -1,0 +1,36 @@
+{
+ "control_id": "ID.AR-4",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "ID — Identificar",
+ "category": "ID.AR — Avaliação do Risco",
+ "subcategory_id": "ID.AR-4",
+ "subcategory_text": "São identificados e registados potenciais impactos e as respetivas probabilidades de ameaças.",
+ "description": "ID.AR-4 — São identificados e registados potenciais impactos e as respetivas probabilidades de ameaças. 20 A entidade identifica, na sua metodologia de gestão do risco, os critérios associados à aferição de probabilidade e impacto das ameaças. Os critérios para a definição da probabilidade e do impacto das ameaças devem considerar o contexto organizacional, os objetivos de negócio, bem como os próprios objetivos do processo de gestão dos riscos.",
+ "informative_references": [
+  "ISO/IEC 27001:6",
+  "ISO/IEC 27001:8",
+  "ISO/IEC 27002:5.36",
+  "ISO/IEC 27002:6.8",
+  "ISO/IEC 27002:8.32",
+  "ISO/IEC 27002:8.8"
+ ],
+ "mapped_nist_csf": [
+  "ID.RA-04"
+ ],
+ "mapped_cyfun": [
+  "ID.RA-06"
+ ],
+ "mapped_cis": [
+  "16",
+  "18",
+  "2",
+  "4",
+  "5"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

@@ -1,0 +1,29 @@
+{
+ "control_id": "RC.CO-1",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "RC — Recuperar",
+ "category": "RC.CO — Comunicação de Recuperação",
+ "subcategory_id": "RC.CO-1",
+ "subcategory_text": "As atividades de recuperação são comunicadas às partes interessadas, bem como aos órgãos de gestão, direção e administração.",
+ "description": "RC.CO-1 — As atividades de recuperação são comunicadas às partes interessadas, bem como aos órgãos de gestão, direção e administração. A entidade garante que as partes interessadas, internas e externas, são informadas quanto às atividades de recuperação e progressos no restauro para garantir o normal funcionamento dos sistemas e aplicações da entidade, após a ocorrência de incidentes. A entidade define uma estratégia de comunicação baseada num plano de comunicação produzido para o efeito. Este poderá ser consolidado com outros planos de comunicação existentes na entidade.",
+ "informative_references": [
+  "ISO/IEC 27001:10.1",
+  "ISO/IEC 27001:5.1",
+  "ISO/IEC 27001:7.4",
+  "ISO/IEC 27002:5.6",
+  "NIST SP 800-53:CP-2"
+ ],
+ "mapped_nist_csf": [
+  "RC.CO-03"
+ ],
+ "mapped_cyfun": [
+  "RC.CO-03"
+ ],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

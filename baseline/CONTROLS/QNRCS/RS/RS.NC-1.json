@@ -1,0 +1,19 @@
+{
+ "control_id": "RS.NC-1",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "RS — Responder",
+ "category": "RS.NC — Notificação e Comunicação de Incidentes",
+ "subcategory_id": "RS.NC-1",
+ "subcategory_text": "As partes interessadas internas e externas são notificadas dos incidentes.",
+ "description": "RS.NC-1 — As partes interessadas internas e externas são notificadas dos incidentes. Descrição A entidade define canais adequados para que os incidentes sejam reportados às partes interes- sadas relevantes, e identifica quais as partes interessadas que devem ser informadas dos incidentes. No processo de resposta a um incidente, a entidade identifica qual a informação que tem de ser partilhada com as partes interessadas externas. Referências ISO/IEC 27001:2022 — 5.3, 7.4, 10.1 ISO/IEC 27002:2022 — 5.5, 5.24, 5.36, 5.37, 6.3, 6.7, 6.8 NIST SP-800-53 Rev.5 — IR -6 NIST CSF 2.0-RS.CO-02 CIS CSC v8.1 — 17 CyFun 2025 — RS.CO-02",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

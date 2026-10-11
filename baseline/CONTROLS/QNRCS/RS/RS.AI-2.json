@@ -1,0 +1,23 @@
+{
+ "control_id": "RS.AI-2",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "RS — Responder",
+ "category": "RS.AI — Análise de Incidentes",
+ "subcategory_id": "RS.AI-2",
+ "subcategory_text": "As ações realizadas durante uma investigação são registadas e a integridade e proveniência dos registos são preservadas.",
+ "description": "RS.AI-2 — As ações realizadas durante uma investigação são registadas e a integridade e proveniência dos registos são preservadas. A entidade garante que todas as ações realizadas durante a investigação de um incidente são documentadas e que estes registos são protegidos de forma a garantir a sua integridade. Esta preservação é essencial para a realização de análises forenses e para demonstrar que foram tomadas as diligências necessárias para uma resposta eficaz ao incidente.",
+ "informative_references": [],
+ "mapped_nist_csf": [
+  "RS.AN-06"
+ ],
+ "mapped_cyfun": [
+  "RS.AN-06"
+ ],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

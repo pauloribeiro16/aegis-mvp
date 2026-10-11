@@ -1,0 +1,34 @@
+{
+ "control_id": "GR.PP-1",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "GR — Gerir",
+ "category": "GR.PP — Políticas e Planos de Cibersegurança",
+ "subcategory_id": "GR.PP-1",
+ "subcategory_text": "As Políticas para a gestão de Cibersegurança, incluindo a Política de Cibersegurança, são definidas com base no contexto organizacional, na estratégia de cibersegurança e nas prioridades da entidade.",
+ "description": "GR.PP-1 — As Políticas para a gestão de Cibersegurança, incluindo a Política de Cibersegurança, são definidas com base no contexto organizacional, na estratégia de cibersegurança e nas prioridades da entidade. A entidade define e aprova superiormente a sua Política de Cibersegurança e garante o compro- misso dos órgãos de gestão, direção e administração com a Política. A entidade comunica às partes interessadas a existência da Política de Cibersegurança. A entidade desenvolve, e identifica na Política de Cibersegurança as várias políticas que compõem o seu processo da gestão da cibersegurança, e que poderão ser nomeadamente: a) Política de Gestão dos Riscos de Cibersegurança; b) Política de Gestão do Risco da Cadeia de Abastecimento; c) Política de Gestão do Ciclo de Vida de Ativos; d) Política de Classificação e Gestão de Dados; e) Política de Monitorização, Identificação e Documentação das Vulnerabilidades; f) Política de Palavra-Passe; g) Política de Gestão de Identidades, Autenticação e Controlo de Acessos; h) Política de Uso Aceitável; i) Política de Cópias de Segurança.",
+ "informative_references": [
+  "ISO/IEC 27001:4",
+  "ISO/IEC 27001:7.2",
+  "ISO/IEC 27001:7.5.2.9.1",
+  "ISO/IEC 27002:5.1",
+  "ISO/IEC 27002:5.5",
+  "ISO/IEC 27002:5.8",
+  "NIST SP 800-53:SR-1"
+ ],
+ "mapped_nist_csf": [
+  "GV.PO-01"
+ ],
+ "mapped_cyfun": [
+  "GV.PO-01"
+ ],
+ "mapped_cis": [
+  "14",
+  "20"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

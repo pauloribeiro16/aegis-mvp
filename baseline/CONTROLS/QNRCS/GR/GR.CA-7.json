@@ -1,0 +1,19 @@
+{
+ "control_id": "GR.CA-7",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "GR — Gerir",
+ "category": "GR.CA — Gestão do Risco da Cadeia de Abastecimento",
+ "subcategory_id": "GR.CA-7",
+ "subcategory_text": "A entidade avalia os riscos de cibersegurança da cadeia de abastecimento.",
+ "description": "GR.CA-7 — A entidade avalia os riscos de cibersegurança da cadeia de abastecimento. Descrição Os fornecedores de redes e sistemas de informação, componentes e serviços de cibersegurança são identificados, priorizados e avaliados, recorrendo a um processo de avaliação do risco da cadeia de abastecimento de cibersegurança. A entidade, após a identificação dos fornecedores, categoriza-os considerando: 1) A exposição da sua informação aos mesmos; 2) O impacto na cadeia de abastecimento; 3) O tipo de bens e serviços fornecidos. Referências ISO/IEC 27001:2022 — 5.1, 6.1.2, 7.4, 7.5.2, 7.5.3, 8.1, 8.2 ISO/IEC 27002:2022 — 5.19, 5.21, 5.22 NIST SP-800-53 Rev. 5 — PM-9 NIST CSF 2.0 — GV.SC-07 CyFun 2025-GV.SC-07",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

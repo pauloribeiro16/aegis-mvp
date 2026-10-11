@@ -1,0 +1,32 @@
+{
+ "control_id": "ID.GA-2",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "ID — Identificar",
+ "category": "ID.GA — Gestão de Ativos",
+ "subcategory_id": "ID.GA-2",
+ "subcategory_text": "Os recursos lógicos que suportam os processos dos serviços da entidade são inventariados",
+ "description": "ID.GA-2 — Os recursos lógicos que suportam os processos dos serviços da entidade são inventariados A entidade inventaria os recursos lógicos que suportam os processos dos serviços da entidade, por forma a garantir que existe um mapeamento estruturado dos mesmos, e realiza um mapeamento das dependências entre ativos. Todos os dispositivos inventariados são classificados de acordo com a sua relevância para a entidade.",
+ "informative_references": [
+  "ISO/IEC 27001:7.5.2",
+  "ISO/IEC 27001:7.5.3",
+  "ISO/IEC 27001:8.1",
+  "ISO/IEC 27002:5.9",
+  "ISO/IEC 27002:8.30",
+  "NIST SP 800-53:CM-8"
+ ],
+ "mapped_nist_csf": [
+  "ID.AM-02"
+ ],
+ "mapped_cyfun": [
+  "ID.AM-02"
+ ],
+ "mapped_cis": [
+  "2"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

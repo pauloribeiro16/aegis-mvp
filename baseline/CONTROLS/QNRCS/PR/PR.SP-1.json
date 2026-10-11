@@ -1,0 +1,38 @@
+{
+ "control_id": "PR.SP-1",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "PR — Proteger",
+ "category": "PR.SP — Segurança de Plataformas",
+ "subcategory_id": "PR.SP-1",
+ "subcategory_text": "É criada e mantida uma configuração base de redes e sistemas de informação que incorpora os princípios de segurança.",
+ "description": "PR.SP-1 — É criada e mantida uma configuração base de redes e sistemas de informação que incorpora os princípios de segurança. A entidade estabelece uma configuração base para redes e sistemas de informação, para os seus componentes e para as suas comunicações e conectividades. Por configuração base, entende-se: 1) Programas informáticos instalados em estações de trabalho; 2) Equipamentos pessoais, tais como computadores portáteis, impressoras e outros dispositivos móveis; 3) Servidores e elementos de rede; 4) Versões e atualizações aplicadas a sistemas operativos e aplicações, configurações e parâmetros por omissão, topologia de rede e composição lógica das arquiteturas das redes e sistemas de informação.",
+ "informative_references": [
+  "ISO/IEC 27001:7.5.2",
+  "ISO/IEC 27001:7.5.3",
+  "ISO/IEC 27001:8.1",
+  "ISO/IEC 27001:9.1",
+  "ISO/IEC 27002:8.16",
+  "ISO/IEC 27002:8.19",
+  "ISO/IEC 27002:8.28",
+  "ISO/IEC 27002:8.32",
+  "NIST SP 800-53:CM-2"
+ ],
+ "mapped_nist_csf": [
+  "PR.PS-01"
+ ],
+ "mapped_cyfun": [
+  "PR.PS01"
+ ],
+ "mapped_cis": [
+  "1",
+  "12",
+  "4",
+  "7"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

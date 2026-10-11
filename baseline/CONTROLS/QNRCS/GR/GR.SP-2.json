@@ -1,0 +1,19 @@
+{
+ "control_id": "GR.SP-2",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "GR — Gerir",
+ "category": "GR.SP — Supervisão",
+ "subcategory_id": "GR.SP-2",
+ "subcategory_text": "A estratégia de gestão de riscos de cibersegurança é regularmente revista e adaptada para garantir a cobertura dos requisitos e riscos organizacionais.",
+ "description": "GR. SP-2 — A estratégia de gestão de riscos de cibersegurança é regularmente revista e adaptada para garantir a cobertura dos requisitos e riscos organizacionais. Descrição A entidade revê regularmente a estratégia de gestão dos riscos de cibersegurança para incorpo- rar requisitos e riscos organizacionais que sejam identificados através de análises de auditorias, de incidentes e do desempenho das funções de cibersegurança. Referências NIST CSF 2.0 — GV.OV-O2 CyFun 2025 — GV.OV-02",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

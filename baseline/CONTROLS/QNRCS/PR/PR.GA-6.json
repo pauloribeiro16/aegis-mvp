@@ -1,0 +1,37 @@
+{
+ "control_id": "PR.GA-6",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "PR — Proteger",
+ "category": "PR.GA — Gestão de Identidades, Autenticação e Controlo de Acessos",
+ "subcategory_id": "PR.GA-6",
+ "subcategory_text": "Os controlos de acesso físico a ativos da entidade são geridos, monitorizados e aplicados em função do risco.",
+ "description": "PR.GA-6 — Os controlos de acesso físico a ativos da entidade são geridos, monitorizados e aplicados em função do risco. A entidade protege e gere os acessos físicos às suas infraestruturas de rede e de sistemas de informação. A entidade aplica este controlo ao seu pessoal, visitantes, e terceiros que colaboram com a entidade, nas zonas da entidade que sejam de acesso restrito e/ou a áreas sensíveis que alojem informação confidencial, redes e/ou sistemas de informação.",
+ "informative_references": [
+  "ISO/IEC 27001:8.1",
+  "ISO/IEC 27002:7.1",
+  "ISO/IEC 27002:7.11",
+  "ISO/IEC 27002:7.12",
+  "ISO/IEC 27002:7.2",
+  "ISO/IEC 27002:7.3",
+  "ISO/IEC 27002:7.4",
+  "ISO/IEC 27002:7.5",
+  "ISO/IEC 27002:7.6",
+  "ISO/IEC 27002:7.8",
+  "ISO/IEC 27002:7.9",
+  "ISO/IEC 27002:8.1",
+  "NIST SP 800-53:PE-2"
+ ],
+ "mapped_nist_csf": [
+  "PR.AA-06"
+ ],
+ "mapped_cyfun": [
+  "PR.AS-06"
+ ],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

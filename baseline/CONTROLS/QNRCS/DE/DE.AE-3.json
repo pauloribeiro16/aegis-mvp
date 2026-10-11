@@ -1,0 +1,19 @@
+{
+ "control_id": "DE.AE-3",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "DE — Detetar",
+ "category": "DE.AE — Anomalias e Eventos",
+ "subcategory_id": "DE.AE-3",
+ "subcategory_text": "O impacto estimado e o âmbito dos eventos adversos detetados são compreendidos e identificados.",
+ "description": "DE.AE-3 — O impacto estimado e o âmbito dos eventos adversos detetados são compreendidos e identificados. 2 A entidade efetua uma categorização e tipificação dos eventos, por forma a aferir qual o impacto dos mesmos sobre as suas redes e sistemas de informação. A categorização dos eventos irá suportar a entidade no processo de decisão sobre que ações desencadear para cada tipo de evento. Os eventos poderão dar origem a incidentes. Referências ISO/IEC 27001:2022 — 8.1, 9.1, 10.2 ISO/IEC 27002:2022 — 5.7, 5.25, 8.12 NIST CSF 2.0 — DE.AE-04 CIS CSC v8.1 — 8, 13 CyFun 2025-DE.AE-04",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

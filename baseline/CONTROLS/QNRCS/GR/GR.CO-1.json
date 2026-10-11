@@ -1,0 +1,31 @@
+{
+ "control_id": "GR.CO-1",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "GR — Gerir",
+ "category": "GR.CO — Contexto Organizacional",
+ "subcategory_id": "GR.CO-1",
+ "subcategory_text": "A missão, visão, estratégia de gestão dos riscos e objetivos da entidade são definidos e comunicados.",
+ "description": "GR.CO-1 — A missão, visão, estratégia de gestão dos riscos e objetivos da entidade são definidos e comunicados. A missão, visão, valores, estratégias de gestão dos riscos e objetivos são os princípios fundamentais de orientação de uma entidade. Estes princípios indicam a forma como a entidade se posiciona no seu setor de atividade e como procura ser reconhecida pelo pessoal, clientes, fornecedores e outras entidades terceiras.",
+ "informative_references": [
+  "ISO/IEC 27001:5.1",
+  "ISO/IEC 27001:5.2",
+  "ISO/IEC 27001:6.1",
+  "ISO/IEC 27001:6.2",
+  "ISO/IEC 27001:7.4",
+  "ISO/IEC 27002:5.1",
+  "NIST SP 800-53:SR-1"
+ ],
+ "mapped_nist_csf": [
+  "GV.OC-01"
+ ],
+ "mapped_cyfun": [
+  "GV.OC-01"
+ ],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

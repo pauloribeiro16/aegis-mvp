@@ -1,0 +1,40 @@
+{
+ "control_id": "DE.MC-2",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "DE — Detetar",
+ "category": "DE.MC — Monitorização Contínua",
+ "subcategory_id": "DE.MC-2",
+ "subcategory_text": "O ambiente físico é monitorizado para possibilitar a deteção de potenciais incidentes de segurança.",
+ "description": "DE.MC-2 — O ambiente físico é monitorizado para possibilitar a deteção de potenciais incidentes de segurança. A entidade garante que os seus perímetros de segurança física são monitorizados. A monitorização dos controlos de proteção física é inserida no processo de gestão e correlação de eventos de segurança, associados a categorização e tipificação específica.",
+ "informative_references": [
+  "ISO/IEC 27001:8.1",
+  "ISO/IEC 27001:9.1",
+  "ISO/IEC 27002:5.22",
+  "ISO/IEC 27002:5.7",
+  "ISO/IEC 27002:7.1",
+  "ISO/IEC 27002:7.10",
+  "ISO/IEC 27002:7.11",
+  "ISO/IEC 27002:7.2",
+  "ISO/IEC 27002:7.4",
+  "ISO/IEC 27002:7.5",
+  "ISO/IEC 27002:8.15",
+  "ISO/IEC 27002:8.26",
+  "ISO/IEC 27002:8.3",
+  "ISO/IEC 27002:8.31",
+  "ISO/IEC 27002:8.32",
+  "ISO/IEC 27002:8.4"
+ ],
+ "mapped_nist_csf": [
+  "DE.CM-02"
+ ],
+ "mapped_cyfun": [
+  "DE.CM-02"
+ ],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

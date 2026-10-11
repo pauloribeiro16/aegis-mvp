@@ -1,0 +1,19 @@
+{
+ "control_id": "GR.CA-9",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "GR — Gerir",
+ "category": "GR.CA — Gestão do Risco da Cadeia de Abastecimento",
+ "subcategory_id": "GR.CA-9",
+ "subcategory_text": "As práticas de cibersegurança da cadeia de abastecimento são integradas em programas de cibersegurança e de gestão de riscos organizacionais, e o seu desempenho é monitorizado ao longo do ciclo de vida dos produtos e serviços tecnológicos.",
+ "description": "GR.CA-9 — As práticas de cibersegurança da cadeia de abastecimento são integradas em programas de cibersegurança e de gestão de riscos organizacionais, e o seu desempenho é monitorizado ao longo do ciclo de vida dos produtos e serviços tecnológicos. A entidade garante que todas as práticas de segurança relacionadas com a cadeia de abastecimento são integradas na Política de Cibersegurança, garantindo também uma monitorização contínua de todo o ciclo de vida dos produtos e serviços tecnológicos adquiridos. Esta sinergia permite a manutenção de um ambiente seguro e resiliente, capaz de endereçar os riscos emergentes de forma proativa. Referências NIST CSF 2.0 — GV.SC-09 CyFun 2025-GV.SC-09",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

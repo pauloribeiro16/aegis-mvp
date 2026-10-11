@@ -1,0 +1,35 @@
+{
+ "control_id": "ID.AR-1",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "ID — Identificar",
+ "category": "ID.AR — Avaliação do Risco",
+ "subcategory_id": "ID.AR-1",
+ "subcategory_text": "As vulnerabilidades dos ativos são identificadas e documentadas com base na meto- dologia definida.",
+ "description": "ID.AR-1 — As vulnerabilidades dos ativos são identificadas e documentadas com base na meto- dologia definida. Uma das bases da avaliação do risco da entidade é o processo de gestão de vulnerabilidades, nomeadamente, todas as vulnerabilidades conhecidas que não foram mitigadas. Estas vulnerabilidades são avaliadas em sede de análise do risco da entidade, sendo formalmente definida qual a estratégia a aplicar, respeitando a metodologia de gestão dos riscos da entidade.",
+ "informative_references": [
+  "ISO/IEC 27001:6.1.2",
+  "ISO/IEC 27001:6.1.3",
+  "ISO/IEC 27001:7.5.2",
+  "ISO/IEC 27001:8.2",
+  "ISO/IEC 27001:8.3",
+  "ISO/IEC 27002:5.36",
+  "ISO/IEC 27002:8.33",
+  "ISO/IEC 27002:8.8",
+  "NIST SP 800-53:RA-5"
+ ],
+ "mapped_nist_csf": [
+  "ID.RA-01"
+ ],
+ "mapped_cyfun": [
+  "ID.RA-01"
+ ],
+ "mapped_cis": [
+  "7"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

@@ -1,0 +1,32 @@
+{
+ "control_id": "RC.CO-2",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "RC — Recuperar",
+ "category": "RC.CO — Comunicação de Recuperação",
+ "subcategory_id": "RC.CO-2",
+ "subcategory_text": "As atualizações sobre a recuperação de incidentes são partilhadas utilizando métodos aprovados pela entidade.",
+ "description": "RC.CO-2 — As atualizações sobre a recuperação de incidentes são partilhadas utilizando métodos aprovados pela entidade. A entidade comunica o que é relevante no contexto de cibersegurança. O fluxo de comunicação deve ser controlado pela entidade para minimizar potenciais impactos na sua credibilidade e reputação. A entidade define uma estratégia de comunicação, que se poderá basear noutras estratégias/ panos de comunicação existentes na entidade.",
+ "informative_references": [
+  "ISO/IEC 27001:4.2",
+  "ISO/IEC 27001:5.1",
+  "ISO/IEC 27001:5.3",
+  "ISO/IEC 27001:7.4",
+  "ISO/IEC 27002:5.5",
+  "ISO/IEC 27002:5.6",
+  "NIST SP 800-53:CP-2"
+ ],
+ "mapped_nist_csf": [
+  "RC.CO-04"
+ ],
+ "mapped_cyfun": [
+  "2",
+  "RC.CO-04"
+ ],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

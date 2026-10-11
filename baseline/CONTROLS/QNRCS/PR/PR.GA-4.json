@@ -1,0 +1,23 @@
+{
+ "control_id": "PR.GA-4",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "PR — Proteger",
+ "category": "PR.GA — Gestão de Identidades, Autenticação e Controlo de Acessos",
+ "subcategory_id": "PR.GA-4",
+ "subcategory_text": "As afirmações de identidade são protegidas, transmitidas e verificadas.",
+ "description": "PR.GA-4- As afirmações de identidade são protegidas, transmitidas e verificadas. A entidade protege as afirmações de identidade utilizadas para transmitir a autenticação e as informações do utilizador, por exemplo, através de sistemas de início de sessão único (SSO — Single Sign-On). Entendem-se por afirmações de identidade, uma declaração digital utilizada durante a autenticação que confirma a identidade de um utilizador, dispositivo ou processo.",
+ "informative_references": [],
+ "mapped_nist_csf": [
+  "PR.AA-04"
+ ],
+ "mapped_cyfun": [
+  "PR.AA-04"
+ ],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

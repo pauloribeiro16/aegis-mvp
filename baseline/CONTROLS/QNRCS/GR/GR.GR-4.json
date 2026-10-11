@@ -1,0 +1,19 @@
+{
+ "control_id": "GR.GR-4",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "GR — Gerir",
+ "category": "GR.GR — Estratégia de Gestão do Risco",
+ "subcategory_id": "GR.GR-4",
+ "subcategory_text": "A entidade estabelece um canal de comunicação interno para partilha de riscos de cibersegurança.",
+ "description": "GR.GR-4 — A entidade estabelece um canal de comunicação interno para partilha de riscos de cibersegurança. Descrição A entidade determina e usa regularmente um canal interno a utilizar para comunicar os riscos de cibersegurança aos órgãos de gestão, direção e administração e às restantes áreas relevantes da entidade. Referências NIST CSF 2.0 — GV.RM-05 CyFun 2025 — GV.RM-05",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

@@ -1,0 +1,19 @@
+{
+ "control_id": "PR.RI-2",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "PR — Proteger",
+ "category": "PR.RI — Resiliência da Infraestrutura Tecnológica",
+ "subcategory_id": "PR.RI-2",
+ "subcategory_text": "Os ambientes de desenvolvimento e de teste são separados de ambientes de produção.",
+ "description": "PR.RI-2 — Os ambientes de desenvolvimento e de teste são separados de ambientes de produção. Descrição A entidade efetua a separação dos ambientes das suas redes e dos seus sistemas de informação, de forma física ou lógica, de acordo com as suas funções. Os ambientes de desenvolvimento e testes estão segregados dos ambientes de produção, quer em termos de acessos, quer em termos de dados. Referências ISO/IEC 27001:2022 — 8.1, 9.1 ISO/IEC 27002:2022 — 8.31, 8.30, 8.33 NIST SP-800-53 Rev. 5 — PL-8 NIST CSF 2.0 — PR.IR-01 CIS CSC v8.1-16 CyFun 2025-PR.IR-01",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

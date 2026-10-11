@@ -1,0 +1,36 @@
+{
+ "control_id": "RS.GI-1",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "RS — Responder",
+ "category": "RS.GI — Gestão de Incidentes",
+ "subcategory_id": "RS.GI-1",
+ "subcategory_text": "O Plano de Resposta a Incidentes é executado, em coordenação com as partes interessadas, durante ou após a ocorrência de um incidente.",
+ "description": "RS.GI-1 — O Plano de Resposta a Incidentes é executado, em coordenação com as partes interessadas, durante ou após a ocorrência de um incidente. A entidade sistematiza o seu Plano de Resposta a Incidentes, em coordenação com as partes interessadas, por forma a garantir uma correta alocação de recursos (humanos, tecnológicos e processuais) na resolução do mesmo. A resolução dos incidentes segue um processo sistematizado, no âmbito do qual é identificado um responsável pelo seu tratamento. No processo de análise de evidências de um incidente, é relevante garantir-se a integridade das evidências analisadas e recolhidas.",
+ "informative_references": [
+  "ISO/IEC 27001:10.2",
+  "ISO/IEC 27001:8.1",
+  "ISO/IEC 27001:8.3",
+  "ISO/IEC 27002:5.26",
+  "ISO/IEC 27002:8.13",
+  "ISO/IEC 27002:8.32",
+  "ISO/IEC 27002:8.8",
+  "NIST SP 800-53:(2)",
+  "NIST SP 800-53:2",
+  "NIST SP 800-53:CP-2"
+ ],
+ "mapped_nist_csf": [
+  "RS.MA-01"
+ ],
+ "mapped_cyfun": [
+  "RS.MA-01"
+ ],
+ "mapped_cis": [
+  "17"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

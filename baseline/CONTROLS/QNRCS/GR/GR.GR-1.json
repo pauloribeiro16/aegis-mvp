@@ -1,0 +1,30 @@
+{
+ "control_id": "GR.GR-1",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "GR — Gerir",
+ "category": "GR.GR — Estratégia de Gestão do Risco",
+ "subcategory_id": "GR.GR-1",
+ "subcategory_text": "O apetite e a tolerância ao risco da entidade são definidos, aprovados, comunicados e revistos regularmente.",
+ "description": "GR.GR-1 — O apetite e a tolerância ao risco da entidade são definidos, aprovados, comunicados e revistos regularmente. A entidade define, aprova, comunica e atualiza o nível de risco que está disposta a aceitar por forma a permitir aferir as expectativas sobre o seu nível de risco tolerável. O apetite ao risco considera o contexto organizacional e o setor no qual a entidade se insere.",
+ "informative_references": [
+  "ISO/IEC 27001:5.1",
+  "ISO/IEC 27001:6.1.1",
+  "ISO/IEC 27001:6.1.3",
+  "ISO/IEC 27001:8.3",
+  "ISO/IEC 27001:9.3.2",
+  "ISO/IEC 27001:9.3.3"
+ ],
+ "mapped_nist_csf": [
+  "GV.RM-02"
+ ],
+ "mapped_cyfun": [
+  "GV.RM-02"
+ ],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

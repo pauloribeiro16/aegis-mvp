@@ -1,0 +1,19 @@
+{
+ "control_id": "GR.CA-3",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "GR — Gerir",
+ "category": "GR.CA — Gestão do Risco da Cadeia de Abastecimento",
+ "subcategory_id": "GR.CA-3",
+ "subcategory_text": "Os processos de gestão dos riscos de cibersegurança da cadeia de abastecimento da entidade estão incluídos nos processos transversais de cibersegurança e na estratégia de gestão dos riscos da entidade.",
+ "description": "GR.CA-3 — Os processos de gestão dos riscos de cibersegurança da cadeia de abastecimento da entidade estão incluídos nos processos transversais de cibersegurança e na estratégia de gestão dos riscos da entidade. A entidade inclui os riscos associados à sua cadeia de abastecimento, incluindo fornecedores, prestadores de serviços e parceiros tecnológicos e, de forma sistemática, identifica, avalia, gere e monitoriza estes riscos. A entidade garante o alinhamento da gestão de riscos da cadeia de abastecimento com a gestão de riscos de cibersegurança e risco global da entidade. Esta gestão do risco de cibersegurança da cadeia de abastecimento deve garantir a resiliência da entidade face a potenciais incidentes com origem nos seus fornecedores, parceiros, prestadores de serviços e outros. NIST CSF 2.0 — GV.SC-03 CyFun 2025-GV.SC-03",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

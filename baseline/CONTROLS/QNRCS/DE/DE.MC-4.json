@@ -1,0 +1,19 @@
+{
+ "control_id": "DE.MC-4",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "DE — Detetar",
+ "category": "DE.MC — Monitorização Contínua",
+ "subcategory_id": "DE.MC-4",
+ "subcategory_text": "A entidade identifica e implementa mecanismos para deteção de código malicioso.",
+ "description": "DE.MC-4 — A entidade identifica e implementa mecanismos para deteção de código malicioso. A entidade implementa mecanismos que permitam a deteção e a prevenção de existência de atividade maliciosa nas suas redes e sistemas de informação. Referências ISO/IEC 27001:2022 — 8, 9.1 ISO/IEC 27002:2022 — 8.7, 8.12, 8.16 NIST SP-800-53 Rev. 5 — SC-7 CIS CSC v8.1 — 8, 10, 13",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

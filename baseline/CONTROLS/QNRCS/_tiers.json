@@ -1,0 +1,1158 @@
+{
+ "note": "medidas escalonadas por tier de entidade — o mecanismo de maturidade do QNRCS; o tier escolhe-se pela matriz_risco (dimensões G/M/P, sectores, limiares)",
+ "tiers": {
+  "basico": [
+   {
+    "control_id": "GR.CO-3",
+    "control_text": "Os requisitos legais, regulamentares e contratuais para a cibersegurança são compreendidos e geridos.",
+    "medida": "Os requisitos legais e regulamentares relativos à cibersegurança devem ser identificados e aplicados.",
+    "criterio": "Evidência da gestão quotidiana da entidade que demonstre o cumprimento dos requisitos e obrigações legais de cibersegurança aplicáveis à entidade.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "GR.CO-4",
+    "control_text": "Os serviços críticos da entidade dos quais as partes interessadas externas dependem são identificados e comunicados.",
+    "medida": "Devem ser identificados e documentados os serviços críticos, dos quais as partes interessadas externas dependem.",
+    "criterio": "Registo documentado da identificação dos serviços críticos dos quais as partes interessadas externas dependem.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "GR.CO-5",
+    "control_text": "Os requisitos de resiliência necessários para suportar a prestação de serviços críticos são definidos.",
+    "medida": "Os requisitos necessários para garantir o suporte de serviços críticos devem ser identificados e registados.",
+    "criterio": "Registo documentado da identificação dos requisitos de resiliência necessários para garantir o suporte dos serviços críticos.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "GR.CO-6",
+    "control_text": "Os serviços críticos externos, dos quais a entidade depende, são identificados e comunicados.",
+    "medida": "Devem ser identificados, documentados, classificados e priorizados os serviços críticos externos dos quais a entidade depende, numa lógica de compreensão do seu papel na cadeia de abastecimento. A entidade deve comunicar às partes interessadas esta identificação, respeitando sempre o princípio da necessidade de saber. A entidade deve incluir no processo de gestão dos riscos esta identificação.",
+    "criterio": "Registo da identificação, e da comunicação dos serviços críticos externos dos quais a entidade depende. Registo do processo de gestão dos riscos que contempla os serviços críticos externos dos quais a entidade depende, incluindo a definição de critérios para a classificação e priorização destes serviços.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "GR.GR-2",
+    "control_text": "Os processos de gestão dos riscos de cibersegurança estão incluídos na estratégia transversal da gestão de riscos da entidade.",
+    "medida": "A entidade deve identificar, aprovar, gerir e manter atualizados os processos de gestão dos riscos de cibersegurança.",
+    "criterio": "Evidência da gestão quotidiana que demonstre a implementação das várias fases de gestão de riscos da cibersegurança.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "GR.FR-1",
+    "control_text": "Os órgãos de gestão, direção e administração compreendem as suas funções e responsabilidades, e promovem uma cultura de cibersegurança, ética e de melhoria contínua.",
+    "medida": "Os órgãos de gestão, direção e administração devem disponibilizar os recursos necessários para a melhoria contínua da cibersegurança.",
+    "criterio": "Plano de Melhoria Contínua de Cibersegurança com medidas, prazos e recursos a afetar, aprovado pelos órgãos de gestão, direção e administração.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "GR.FR-4",
+    "control_text": "A cibersegurança é contemplada nos processos de gestão de recursos humanos.",
+    "medida": "A entidade deve definir uma Política de Uso Aceitável, que seja abrangente para toda a entidade e que defina as regras para a utilização segura e responsável dos seus ativos. A entidade deve disponibilizar a Política de Uso Aceitável ao pessoal aquando da sua entrada, sensibilizando-os para garantir o cumprimento da mesma.",
+    "criterio": "Política de Uso Aceitável aprovada e implementada e registo da tomada de conhecimento pelo pessoal aquando da sua entrada.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "GR.PP-1",
+    "control_text": "As Políticas para a gestão de Cibersegurança, incluindo a Política de Cibersegurança, são definidas com base no contexto organizacional, na estratégia de cibersegurança e nas prioridades da entidade.",
+    "medida": "A entidade deve definir, documentar e atualizar a Política de Cibersegurança aprovada pelos órgãos de gestão, direção e administração, que inclua a identificação e atribuição de funções e responsabilidades em cibersegurança. A entidade deve divulgar a política internamente.",
+    "criterio": "Política de Cibersegurança, aprovada pelos órgãos de gestão, direção e administração. Registos da comunicação interna da Política de Cibersegurança.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "GR.PP-2",
+    "control_text": "O Plano de Resposta a Incidentes é definido, comunicado, mantido e melhorado.",
+    "medida": "A entidade deve definir, aprovar, implementar e atualizar o Plano de Resposta a Incidentes com a devida atribuição e identificação de funções e responsabilidades.",
+    "criterio": "Plano de Resposta a Incidentes aprovado e implementado e devidamente atualizado.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "GR.CA-7",
+    "control_text": "A entidade avalia os riscos de cibersegurança da cadeia de abastecimento.",
+    "medida": "A entidade deve efetuar avaliações do risco da cadeia de abastecimento pelo menos uma vez por ano ou sempre que relevante.",
+    "criterio": "Registo documentado das avaliações do risco da cadeia de abastecimento.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "ID.GA-1",
+    "control_text": "Os equipamentos e os demais recursos físicos geridos ou detidos pela entidade são inventariados.",
+    "medida": "Os equipamentos e os demais recursos físicos geridos ou detidos pela entidade são inventariados. O inventário deve ser documentado e atualizado.",
+    "criterio": "Inventário atualizado de equipamentos e recursos físicos.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "ID.GA-2",
+    "control_text": "Os recursos lógicos que suportam os processos dos serviços da entidade são inventariados.",
+    "medida": "O inventário de recursos lógicos deve refletir as plataformas de software e aplicações que são geridos ou detidos pela entidade. O inventário deve ser documentado e atualizado.",
+    "criterio": "Inventário atualizado de recursos lógicos.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "ID.GA-4",
+    "control_text": "Os serviços prestados por fornecedores são inventariados.",
+    "medida": "A entidade deve incluir no seu inventário de ativos os serviços prestados por fornecedores que utiliza e dos quais depende.",
+    "criterio": "Inventário de ativos que inclua os serviços prestados por fornecedores que a entidade utiliza e depende.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "ID.GA-5",
+    "control_text": "Os ativos são classificados de acordo com a sua criticidade.",
+    "medida": "Os ativos devem ser classificados de acordo com a sua criticidade e valor dos mesmos.",
+    "criterio": "Registo da classificação dos ativos de acordo com a sua criticidade e valor.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "ID.GA-7",
+    "control_text": "Sistemas, hardware, software, serviços e dados são geridos ao longo dos seus ciclos de vida.",
+    "medida": "A entidade deve realizar atualizações de segurança dos seus sistemas regularmente e deve aplicar patches adequados nas suas aplicações e sistemas, sempre que possível. Na eventual impossibilidade da aplicação de atualizações de segurança, a entidade deve aplicar controlos compensatórios em função do risco. A entidade deve garantir a manutenção periódica dos equipamentos e demais recursos físicos existentes. A entidade aprova as ações de manutenção de software e hardware.",
+    "criterio": "Evidência técnica das atualizações de segurança e aplicação de patches nas aplicações e sistemas. Evidência técnica de aplicação de controlos compensatórios, que sejam aplicados de acordo com uma análise de risco, na eventual impossibilidade de realização de atualizações de segurança e de aplicação de patches. Registo da execução de manutenções de equipamentos e demais recursos físicos. Registo da aprovação das ações de manutenção de software e hardware.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "ID.AR-1",
+    "control_text": "As vulnerabilidades dos ativos são identificadas e documentadas com base na metodologia definida.",
+    "medida": "A entidade deve identificar vulnerabilidades dos seus ativos.",
+    "criterio": "Registo documentado das vulnerabilidades identificadas",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "ID.AR-4",
+    "control_text": "São identificados e registados potenciais impactos e as respetivas probabilidades de ameaças.",
+    "medida": "A entidade deve determinar e registar, no processo de gestão dos riscos, a probabilidade de concretização de ameaças e avaliar os respetivos potenciais impactos.",
+    "criterio": "Critérios para determinar a probabilidade das ameaças e para avaliar os potenciais impactos das mesmas.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "ID.AR-5",
+    "control_text": "A entidade avalia os riscos identificados.",
+    "medida": "A entidade deve realizar avaliações do risco com base na análise de ameaças, vulnerabilidades, probabilidades e impactos nos processos e em todos os ativos que garantam a continuidade do funcionamento das redes e sistemas de informação que utilizam, incluindo os ativos que garantam a prestação dos serviços críticos.",
+    "criterio": "Evidência da gestão quotidiana que demonstre realização de avaliações do risco tendo como base a análise de ameaças, vulnerabilidades, probabilidades e impactos nos processos e ativos organizacionais",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "ID.AR-6",
+    "control_text": "A entidade garante que as respostas aos riscos são identificadas e priorizadas.",
+    "medida": "A entidade implementa controlos de segurança para os riscos identificados.",
+    "criterio": "Evidência técnica da implementação de controlos de segurança para os riscos identificados.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "ID.AR-7",
+    "control_text": "A entidade define processos para receber informação, analisar e responder a vulnerabilidades provenientes de fontes internas e externas.",
+    "medida": "A entidade deve tratar as vulnerabilidades que tenha conhecimento.",
+    "criterio": "Registo da identificação e de tratamento das vulnerabilidades.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "ID.MC-3",
+    "control_text": "As melhorias são identificadas a partir da execução de processos, procedimentos e atividades operacionais.",
+    "medida": "A entidade deve efetuar avaliações pós-incidentes para identificar as lições aprendidas e, consequentemente, melhorar os processos/procedimentos/tecnologias para reforçar a sua ciber-resiliência.",
+    "criterio": "Registo documentado das avaliações pós-incidentes, com identificação de lições aprendidas, definição e implementação de melhorias.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "PR.GA-1",
+    "control_text": "Os ciclos de vida de gestão de identidades são definidos.",
+    "medida": "As identidades e credenciais de dispositivos, serviços e utilizadores devem ser geridas. A entidade deverá implementar uma Política de Palavra-passe e uma Política de Gestão de Identidades, Autenticação e Controlo de Acessos.",
+    "criterio": "Evidência técnica da gestão de identidades e respetivas credenciais de dispositivos, serviços e utilizadores. Política de Gestão de Identidades, Autenticação e Controlo de Acessos aprovada e implementada. Política de Palavra-passe aprovada e implementada.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "PR.GA-3",
+    "control_text": "São definidos mecanismos de autenticação de utilizadores, dispositivos e outros ativos de sistemas de informação.",
+    "medida": "A entidade deve implementar autenticação multifator (MFA) nos acessos remotos e contas privilegiadas.",
+    "criterio": "Evidência técnica da implementação de autenticação multifator (MFA) nos acessos remotos e contas privilegiadas.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "PR.GA-5",
+    "control_text": "A entidade aplica na sua gestão de acessos, os princípios do menor privilégio e da segregação de funções.",
+    "medida": "As permissões de acesso dos utilizadores aos sistemas da entidade devem ser definidas e geridas, em conformidade com a Política de Gestão de Identidades, Autenticação e Controlo de Acessos existente, sendo que as permissões de acesso devem ser revistas periodicamente. Os acessos aos dados, informações e tecnologias críticas, devem ser identificados de acordo com o princípio do menor privilégio. A entidade deve garantir que não são atribuídos privilégios de administração por defeito.",
+    "criterio": "Registo documentado da definição e evidência técnica da gestão de acessos dos utilizadores aos sistemas da entidade em conformidade com a Política de Gestão de Identidades, Autenticação e Controlo de Acessos. Inclusão na Política de Gestão de Identidades, Autenticação e Controlo de Acessos de critérios que garantam a aplicação do princípio do menor privilégio. Registo documentado dos utilizadores com privilégios de administração atribuídos e respetiva aprovação.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "PR.GA-6",
+    "control_text": "Os controlos de acesso físico a ativos da entidade são geridos, monitorizados e aplicados em função do risco.",
+    "medida": "A entidade deve definir quais são as zonas de acesso restrito que alojam informação confidencial, e/ou redes e/ou sistemas de informação e deve protegê-las.",
+    "criterio": "Evidência da definição das zonas de acesso restrito. Evidência da aplicação de medidas para proteção das zonas de acesso restrito.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "PR.GA-7",
+    "control_text": "A entidade gere os seus acessos remotos.",
+    "medida": "A entidade deve definir e documentar a lista de utilizadores e dispositivos com permissão para aceder remotamente às suas redes e sistemas. A entidade deve implementar controlos de segurança adequados para proteger as suas redes e sistemas quando acedidos remotamente.",
+    "criterio": "Registo documentado dos utilizadores e dispositivos autorizados a aceder remotamente a redes e sistemas da entidade. Evidência técnica da implementação de controlos de segurança para proteção adequada de ligações remotas aos sistemas da entidade.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "PR.FC-1",
+    "control_text": "Todo o pessoal é sensibilizado e formado em matérias de cibersegurança.",
+    "medida": "A entidade deve garantir que o pessoal é sensibilizado em matéria de cibersegurança e que os mesmos participam em ações de sensibilização periodicamente.",
+    "criterio": "Registo documentado da participação do pessoal em ações de sensibilização em matéria de cibersegurança.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "PR.FC-2",
+    "control_text": "O pessoal com funções especializadas em cibersegurança e os órgãos de gestão, direção e administração recebem formação adequada para o exercício das suas funções.",
+    "medida": "A entidade deve assegurar que os membros dos órgãos de gestão, direção e administração completam formações periódicas em matéria de cibersegurança.",
+    "criterio": "Registo documentado da participação periódica dos membros dos órgãos de gestão, direção e administração em ações de formação em matéria de cibersegurança.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "PR.SD-2",
+    "control_text": "A entidade protege a confidencialidade, integridade e disponibilidade dos dados em trânsito.",
+    "medida": "A entidade deve implementar mecanismos criptográficos para o acesso aos dados e informação considerada crítica/ sensível.",
+    "criterio": "Evidência técnica da implementação de mecanismos criptográficos para os dados em trânsito.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "PR.SD-5",
+    "control_text": "São realizadas, mantidas e testadas cópias de segurança dos dados da entidade.",
+    "medida": "Devem ser realizadas regularmente cópias de segurança de dados críticos para garantir a continuidade de negócio. A entidade deve armazenar as cópias de segurança num sistema distinto do dispositivo no qual os dados originais estão alojados.",
+    "criterio": "Evidência técnica da execução regular de cópias de segurança, e armazenamento num sistema distinto do dispositivo no qual os dados originais estão alojados.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "PR.SP-1",
+    "control_text": "É criada e mantida uma configuração base de redes e sistemas de informação que incorpora os princípios de segurança.",
+    "medida": "A entidade deve manter uma configuração base de redes e sistemas de informação que incorpora os princípios de segurança.",
+    "criterio": "Registo da configuração base aplicada nos diferentes sistemas e componentes de rede da entidade.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "PR.SP-2",
+    "control_text": "Os logs de sistemas e o histórico de atividades são documentados, implementados e revistos.",
+    "medida": "Os logs dos ativos devem ser recolhidos, guardados, protegidos e revistos regularmente. A definição da duração do armazenamento dos logs deve ter em conta a análise do risco dos sistemas e das atividades e o princípio da proporcionalidade.",
+    "criterio": "Evidência técnica da recolha, armazenamento e análise regular dos logs dos sistemas da entidade.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "PR.SP-3",
+    "control_text": "A instalação e execução de software não autorizado são impedidas.",
+    "medida": "A entidade deve impedir a instalação e execução de software não autorizado. A entidade deve implementar tecnologias de filtro de rede, e-mail e web.",
+    "criterio": "Evidência técnica da configuração implementada para impedir a instalação e execução de software não autorizado. Evidência técnica da implementação de tecnologias de filtro de rede, e-mail e web.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "PR.RI-1",
+    "control_text": "A entidade protege a integridade das redes de comunicações.",
+    "medida": "As firewalls devem ser instaladas, configuradas e as suas regras permanentemente atualizadas em todas as redes da entidade. A entidade deve proteger a integridade da rede dos seus sistemas críticos através da incorporação da segmentação e segregação da rede. Todos os pontos de acesso a redes sem fio da entidade devem ser configurados de forma segura, geridos e monitorizados de forma a prevenir acessos não autorizados e assegurar a integridade da rede.",
+    "criterio": "Evidência técnica da instalação e ativação de firewalls em todas as redes da entidade. Evidência técnica da segmentação e segregação das redes. Evidência técnica da configuração segura dos pontos de acesso a redes sem fio da entidade, da sua gestão e monitorização.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "DE.MC-1",
+    "control_text": "As redes e sistemas de informação são monitorizados para detetar potenciais incidentes.",
+    "medida": "Devem ser corretamente configuradas, instaladas e atualizadas soluções de monitorização de tráfego da rede, nomeadamente, através de firewalls e proteção contra atividade não autorizada e potencialmente maliciosa.",
+    "criterio": "Evidência técnica de instalação, configuração e atualização de soluções de monitorização de tráfego da rede e proteção contra atividade não autorizada e potencialmente maliciosa.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "DE.MC-4",
+    "control_text": "A entidade identifica e implementa mecanismos para deteção de atividade maliciosa.",
+    "medida": "A entidade deve instalar e atualizar ferramentas de monitorização de postos cliente (endpoints) por forma a detetar atividade maliciosa",
+    "criterio": "Evidência técnica da instalação de ferramentas de monitorização de postos cliente, e da sua atualização.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "DE.MC-5",
+    "control_text": "A utilização de aplicações não autorizadas em dispositivos móveis é detetada.",
+    "medida": "A entidade deve definir uma lista de aplicações aprovadas para uso em ativos corporativos. Todas as exceções devem ser aprovadas e documentadas. Em caso de utilização de dispositivos pessoais para fins profissionais, a entidade deve definir, na sua Política de Uso Aceitável, critérios a utilização de dispositivos pessoais no trabalho (BYOD).",
+    "criterio": "Registo das aplicações aprovadas para uso em ativos corporativos. Documentação da aprovação das exceções. Registo da inclusão de critérios para a Utilização de Dispositivos Pessoais no Trabalho (BYOD) na Política de Uso Aceitável.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "DE.AE-2",
+    "control_text": "Os eventos são recolhidos e correlacionados a partir de várias fontes e sensores",
+    "medida": "A funcionalidade de recolha de eventos de segurança dos sistemas e aplicações deve estar ativa, e esta informação deve ser analisada e preservada através de cópias de segurança, durante um período previamente definido pela entidade.",
+    "criterio": "Evidência técnica da recolha sistemática de eventos. Evidência técnica da preservação da informação da análise de eventos através de cópias de segurança.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "DE.AE-6",
+    "control_text": "Os critérios para a declaração de incidentes são definidos.",
+    "medida": "A entidade deve definir os limites a considerar quando um evento, conjunto de eventos ou correlação de múltiplos eventos, configura um incidente.",
+    "criterio": "Registo da definição dos limites que determinam quando um evento ou correlação de múltiplos eventos configura um incidente.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "RS.GI-1",
+    "control_text": "O Plano de Resposta a Incidentes é executado, em coordenação com as partes interessadas, durante ou após a ocorrência de um incidente.",
+    "medida": "O Plano de Resposta a Incidentes deve incluir as funções, as responsabilidades e as competências dos envolvidos e deve ser executado durante ou logo após um incidente.",
+    "criterio": "Registo da inclusão das funções, responsabilidades e competências dos envolvidos no Plano de Resposta a Incidentes.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "RS.NC-1",
+    "control_text": "As partes interessadas são informadas dos incidentes.",
+    "medida": "A entidade deve comunicar ao seu pessoal, de forma clara e simples, a ocorrência de incidentes. Os incidentes com impacto significativo devem ser notificados à autoridade competente nos termos do Regime Jurídico da Cibersegurança.",
+    "criterio": "Evidência da partilha de informações quanto à ocorrência de incidentes.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "RC.PR-1",
+    "control_text": "A entidade segue um plano de recuperação durante ou após um incidente.",
+    "medida": "Devem ser desenvolvidos e executados procedimentos de recuperação de incidentes, de acordo com o Plano de Resposta a Incidentes.",
+    "criterio": "Registo das ações tomadas em resposta a incidentes.",
+    "nivel": "Básico"
+   },
+   {
+    "control_id": "RC.PR-3",
+    "control_text": "A integridade das cópias de segurança e de outros ativos de restauro é verificada antes da sua utilização.",
+    "medida": "A integridade das cópias de segurança deve ser verificada antes da sua utilização no âmbito da recuperação pós incidente.",
+    "criterio": "Registo das ações tomadas em resposta a incidentes, que inclua a verificação da integridade das cópias de segurança.",
+    "nivel": "Básico"
+   }
+  ],
+  "substancial": [
+   {
+    "control_id": "GR.CO-1",
+    "control_text": "A missão, visão, estratégia de gestão dos riscos e objetivos da entidade são definidos e comunicados.",
+    "medida": "A missão, visão, estratégia de gestão dos riscos e objetivos da entidade devem ser definidas, comunicadas e priorizadas. A entidade deve, inclusive, definir as prioridades em matéria de cibersegurança.",
+    "criterio": "Registo documentado da missão, visão, estratégia de gestão do risco e objetivos no âmbito da cibersegurança e respetivas prioridades.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "GR.CO-4",
+    "control_text": "Os serviços críticos da entidade dos quais as partes interessadas dependem são geridos e comunicados.",
+    "medida": "Os serviços críticos da entidade, dos quais as partes interessadas dependem, devem ser classificados, priorizados e integrados no processo de gestão dos riscos.",
+    "criterio": "Registo do processo de gestão dos riscos que contempla os serviços críticos das quais as partes interessadas externas dependem, incluindo a definição de critérios para a classificação e priorização dos serviços críticos.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "GR.CO-5",
+    "control_text": "Os requisitos de resiliência necessários para suportar a prestação de serviços críticos são definidos.",
+    "medida": "A entidade deve implementar mecanismos de redundância para garantir a disponibilidade dos serviços críticos. A entidade deve definir, aprovar e implementar um Plano de Continuidade de Negócio contendo planos e tempos de resposta para a recuperação dos serviços críticos e respetivos processos.",
+    "criterio": "Evidencia técnica da implementação de mecanismos de redundância que garantam a disponibilidade dos serviços críticos. Plano de Continuidade de Negócio aprovado e implementado e que contenha a definição dos tempos necessários para a recuperação de cada serviço critico e respetivos processos.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "GR.GR-1",
+    "control_text": "O apetite e a tolerância ao risco da entidade são definidos, aprovados, comunicados e revistos regularmente.",
+    "medida": "A entidade deve definir, registar, aprovar, rever regularmente e comunicar internamente, o seu apetite e tolerância ao risco.",
+    "criterio": "Registo documentado e aprovado da definição do apetite e tolerância ao risco. Registo da sua comunicação às partes interessadas internas.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "GR.GR-2",
+    "control_text": "Os processos de gestão dos riscos de cibersegurança estão incluídos na estratégia transversal de gestão dos riscos da entidade.",
+    "medida": "A entidade deve garantir que os seus processos de gestão dos riscos de cibersegurança estão incluídos na estratégia transversal da gestão dos riscos da entidade.",
+    "criterio": "Evidência de gestão quotidiana que demonstre a implementação das várias fases de gestão de risco da cibersegurança nos processos transversais de gestão dos riscos da entidade.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "GR.GR-3",
+    "control_text": "A entidade define a sua estratégia de tratamento do risco.",
+    "medida": "A entidade deve definir e comunicar às partes interessadas a sua estratégia de tratamento do risco, respeitando sempre o princípio da necessidade de saber.",
+    "criterio": "Registo documentado da estratégia de tratamento do risco e da sua comunicação às partes interessadas.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "GR.GR-4",
+    "control_text": "A entidade estabelece um canal de comunicação interno para partilha de riscos de cibersegurança.",
+    "medida": "A entidade deve estabelecer um canal de comunicação interno, para partilha de informação sobre os riscos de cibersegurança, com os órgãos de gestão, direção e administração e restantes áreas relevantes.",
+    "criterio": "Canal interno de comunicação usado para a partilha de riscos de cibersegurança.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "GR.GR-5",
+    "control_text": "A entidade define uma Política de Gestão dos Riscos de Cibersegurança a qual prevê uma metodologia para a gestão dos riscos de cibersegurança.",
+    "medida": "A entidade define uma metodologia para a gestão dos riscos de cibersegurança que permita identificar, registar, calcular, categorizar e priorizar os riscos de cibersegurança.",
+    "criterio": "Registo da metodologia de gestão dos riscos de cibersegurança.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "GR.FR-2",
+    "control_text": "São atribuídos recursos adequados e proporcionais à estratégia de gestão do risco de cibersegurança, às funções, responsabilidades e políticas de cibersegurança da entidade.",
+    "medida": "A entidade deve alocar recursos suficientes e proporcionais à gestão do risco de cibersegurança, às funções, responsabilidades e políticas da entidade.",
+    "criterio": "Registo do planeamento das atividades em matéria de cibersegurança a curto ou médio prazo, e evidência da gestão quotidiana que demonstre a alocação dos recursos para a gestão do risco de cibersegurança.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "GR.FR-3",
+    "control_text": "As funções, responsabilidades e autoridades em matéria de cibersegurança são definidas e comunicadas ao pessoal, fornecedores e partes interessadas.",
+    "medida": "As funções, responsabilidades e autoridades de cibersegurança dentro da entidade devem ser documentadas, aprovadas, comunicadas, alinhadas com as funções internas e entidades externas, e atualizadas.",
+    "criterio": "Registo documentado e aprovado das funções, responsabilidades e autoridades e da sua comunicação às partes interessadas.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "GR.FR-4",
+    "control_text": "A cibersegurança é contemplada nos processos de gestão de recursos humanos.",
+    "medida": "A entidade deve desenvolver e manter medidas de cibersegurança associadas à gestão dos recursos humanos, aplicável no recrutamento, durante o contrato e após o seu término.",
+    "criterio": "Registo das medidas de cibersegurança para a gestão de recursos humanos, desde a entrada até à saída do pessoal.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "GR.PP-1",
+    "control_text": "As Políticas para a gestão de Cibersegurança, incluindo a Política de Cibersegurança, são definidas com base no contexto organizacional, na estratégia de cibersegurança e nas prioridades da entidade.",
+    "medida": "A entidade deve definir, aprovar e implementar uma Política de Classificação e Gestão de Dados.",
+    "criterio": "Política de Classificação e Gestão de Dados aprovada e implementada.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "GR.PP-3",
+    "control_text": "O Plano de Recuperação de Desastres é definido, comunicado, mantido e melhorado.",
+    "medida": "A entidade deve definir, aprovar, implementar e atualizar o Plano de Recuperação de Desastres com a devida atribuição e identificação de funções e responsabilidades.",
+    "criterio": "Plano de Recuperação de Desastres aprovado implementado, e devidamente atualizado.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "GR.CA-3",
+    "control_text": "Os processos de gestão dos riscos de cibersegurança da cadeia de abastecimento estão incluídos nos processos transversais de cibersegurança e de gestão dos riscos da entidade.",
+    "medida": "A entidade deve identificar, aprovar, gerir e manter atualizados, sempre que ocorram alterações, os riscos de cibersegurança associados à cadeia de abastecimento. A entidade deve incluir os processos de gestão dos riscos de cibersegurança da cadeia de abastecimento nos seus processos transversais de cibersegurança e de gestão dos riscos da entidade.",
+    "criterio": "Registo documentado da identificação, aprovação, gestão e atualização dos riscos de cibersegurança associados à cadeia de abastecimento.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "GR.CA-5",
+    "control_text": "A entidade define e integra nos contratos e outros acordos com fornecedores os requisitos para gerir os riscos de cibersegurança da cadeia de abastecimento.",
+    "medida": "A entidade deve definir e integrar requisitos de cibersegurança e os meios de partilha de informação sensível nos contratos e outros acordos a definir com fornecedores.",
+    "criterio": "Modelos de contratos/acordos contendo cláusulas específicas de requisitos de cibersegurança.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "GR.CA-7",
+    "control_text": "A entidade avalia os riscos de cibersegurança da cadeia de abastecimento.",
+    "medida": "A entidade deve mitigar os riscos identificados durante o processo de avaliação do risco da cadeia de abastecimento.",
+    "criterio": "Registo das medidas de mitigação aplicadas face aos riscos identificados durante o processo de avaliação do risco da cadeia de abastecimento.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "GR.CA-8",
+    "control_text": "O Plano de Resposta a Incidentes e o Plano de Recuperação de Desastres são testados com o acompanhamento dos fornecedores.",
+    "medida": "A entidade deve identificar o pessoal-chave dos fornecedores a incluir nas atividades previstas nos Plano de Resposta a Incidentes e Plano de Recuperação de Desastres.",
+    "criterio": "Registo da inclusão do pessoal-chave dos fornecedores nas atividades previstas nos Plano de Resposta a Incidentes e no Plano de Recuperação de Desastres.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "ID.GA-3",
+    "control_text": "As redes e fluxos de comunicação são mapeados.",
+    "medida": "A entidade deve criar diagramas de rede e sistemas que demonstrem a topologia da sua rede. A entidade deve mapear os fluxos de comunicação entre os seus sistemas internos.",
+    "criterio": "Diagramas de rede e sistemas de fluxos de comunicação internos",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "ID.GA-7",
+    "control_text": "Sistemas, hardware, software, serviços e dados são geridos ao longo dos seus ciclos de vida.",
+    "medida": "A entidade deve definir, aprovar e implementar uma Política de Gestão do Ciclo de Vida de Ativos para garantir que são implementadas medidas necessárias para gerir a perda, má utilização, dano ou roubo de ativos. A entidade deve planear, executar e documentar a manutenção preventiva e as reparações dos componentes críticos do seu sistema, de acordo com a Política de Gestão do Ciclo de Vida de Ativos.",
+    "criterio": "Política de Gestão do Ciclo de Vida de Ativos aprovada e implementada. Registo documentado do planeamento das ações de manutenção e reparações de componentes críticos dos sistemas, em conformidade com a Política de Gestão do Ciclo de Vida de Ativos.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "ID.GA-8",
+    "control_text": "Os dados são destruídos de acordo com a Política de Classificação e Gestão de Dados definida.",
+    "medida": "A entidade deve garantir que os dados dos seus sistemas críticos e as informações sensíveis são destruídos de acordo com a Política de Classificação e Gestão de Dados definida e aprovada.",
+    "criterio": "Registo da inclusão de medidas para a destruição dos dados dos sistemas críticos e das informações sensíveis na Política de Classificação e Gestão de Dados.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "ID.AR-1",
+    "control_text": "As vulnerabilidades dos ativos são identificadas e documentadas com base na metodologia definida.",
+    "medida": "A entidade deve aprovar e implementar uma Política de Monitorização, Identificação e Documentação das Vulnerabilidades dos seus sistemas críticos e implementar a mesma através da definição de um processo, que esteja incluído na Política.",
+    "criterio": "Política de Monitorização, Identificação e Documentação das Vulnerabilidades aprovada e implementada.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "ID.AR-5",
+    "control_text": "A entidade avalia os riscos identificados.",
+    "medida": "As avaliações do risco devem ser conduzidas, documentadas e atualizadas de forma contínua, com base nos critérios definidos na sua metodologia de gestão do risco.",
+    "criterio": "Registo documentado da avaliação do risco e respetiva atualização, tendo por base os critérios definidos na metodologia.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "ID.AR-6",
+    "control_text": "A entidade garante que as respostas aos riscos são identificadas e priorizadas.",
+    "medida": "As respostas aos riscos devem ser identificadas, priorizadas, planeadas, acompanhadas e comunicadas.",
+    "criterio": "Registo da identificação, priorização, planeamento, acompanhamento e comunicação das respostas aos riscos.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "ID.AR-7",
+    "control_text": "A entidade define processos para receber, analisar e responder a vulnerabilidades provenientes de fontes internas e externas.",
+    "medida": "A entidade deve implementar processos de gestão de vulnerabilidades que incluam processamento, análise e correção de vulnerabilidades de fontes internas e externas. O processo de gestão de vulnerabilidades da entidade deve estar alinhado com a Instrução Técnica de Divulgação Coordenada de Vulnerabilidades.",
+    "criterio": "Registo dos processos de gestão de vulnerabilidades que incluam processamento, análise e correção de vulnerabilidades de fontes internas e externas, o qual deve estar alinhado com a Instrução Técnica de Divulgação Coordenada de Vulnerabilidades.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "ID.MC-3",
+    "control_text": "As melhorias são identificadas a partir da avaliação e monitorização de processos, procedimentos e atividades operacionais.",
+    "medida": "A entidade deve incluir nos seus planos e processos de gestão de cibersegurança, as melhorias derivadas das monitorização e avaliação periódicas, das medidas, controlos e processos de cibersegurança.",
+    "criterio": "Registo das melhorias derivadas da monitorização e avaliação periódicas nos seus planos e processos de gestão de cibersegurança.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "PR.GA-1",
+    "control_text": "Os ciclos de vida de gestão de identidades são definidos.",
+    "medida": "As credenciais dos sistemas devem ser desativadas após um período específico de inatividade, como determinado na Política de Gestão de Identidades, Autenticação e Controlo de Acessos, a menos que isso comprometa o funcionamento seguro dos processos críticos. Os sistemas críticos da entidade devem ser monitorizados quanto à utilização atípica de credenciais dos sistemas.",
+    "criterio": "Evidência técnica da desativação de credenciais dos sistemas, após o período específico de inatividade definido de acordo com a Política de Gestão de Identidades, Autenticação e Controlo de Acessos. Registo da monitorização contínua dos sistemas críticos quanto à utilização atípica de credenciais dos sistemas.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "PR.GA-2",
+    "control_text": "A entidade verifica a identidade dos utilizadores, vinculando-a às respetivas credenciais.",
+    "medida": "A entidade deve implementar procedimentos de acordo com o estabelecido na Política de Gestão de Identidades, Autenticação e Controlo de Acessos para verificar a identidade dos utilizadores antes de emitir as credenciais que dão acesso aos sistemas da entidade.",
+    "criterio": "Registo da implementação de procedimentos de verificação da identidade dos utilizadores, antes da emissão de credenciais.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "PR.GA-3",
+    "control_text": "São definidos mecanismos de autenticação de utilizadores, dispositivos e outros ativos de sistemas de informação.",
+    "medida": "A entidade deve realizar uma avaliação do risco das comunicações entre sistemas críticos. Como resultado da avaliação, a entidade deve aplicar mecanismos de autenticação aos utilizadores, dispositivos e outros ativos, adequados e proporcionais ao risco identificado. A entidade deve implementar autenticação multifator (MFA) nos seus sistemas críticos.",
+    "criterio": "Registo da avaliação do risco das comunicações entre sistemas críticos. Evidência técnica dos mecanismos de autenticação aplicados aos utilizadores, dispositivos e outros ativos. Evidência técnica da implementação de autenticação multifator (MFA) nos sistemas críticos.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "PR.GA-5",
+    "control_text": "A entidade aplica na sua gestão de acessos, os princípios do menor privilégio e da segregação de funções",
+    "medida": "A entidade deve implementar mecanismos para apoiar a gestão de acessos aos seus sistemas críticos, incluindo a desativação, a monitorização, a comunicação e a eliminação de contas de utilizadores. A entidade deve aplicar o princípio de segregação de funções na gestão de permissões de acesso. A entidade deve gerir, documentar e rever regularmente as atribuições de privilégios elevados a utilizadores.",
+    "criterio": "Evidência técnica da implementação de mecanismos para apoiar a gestão do ciclo de vida dos acessos aos sistemas críticos. Registo da segregação de perfis de administração de ativos críticos em função da lista de papéis, funções e responsabilidades. Registo documentado da atribuição de privilégios elevados a utilizadores.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "PR.GA-6",
+    "control_text": "Os controlos de acesso físico a ativos da entidade são geridos, monitorizados e aplicados em função do risco.",
+    "medida": "O acesso físico a zonas de acesso restrito da entidade deve ser monitorizado. O acesso físico a zonas de acesso restrito deve incluir medidas para situações de emergência.",
+    "criterio": "Registo da monitorização do acesso físico a zonas de acesso restrito. Registo da definição de medidas para o acesso físico a zonas de acesso restrito a aplicar em situações de emergência.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "PR.GA-7",
+    "control_text": "A entidade gere os seus acessos remotos.",
+    "medida": "A entidade deve definir e implementar de acordo com a Política de Gestão de Identidades, Autenticação e Controlo de Acessos, as restrições de utilização, os requisitos de ligação e as autorizações de acesso remoto ao ambiente dos sistemas críticos da entidade. As ações realizadas no âmbito de manutenções remotas devem ser monitorizadas para análise de potenciais eventos que coloquem em causa a segurança dos sistemas. Os acessos atribuídos para manutenções remotas devem ser revogados assim que deixarem de ser necessários.",
+    "criterio": "Evidencia técnica da implementação de medidas de segurança para garantir que os acessos remotos ao ambiente dos sistemas críticos da entidade cumprem as restrições de utilização, os requisitos de ligação e as autorizações definidas. Evidencia técnica da monitorização das manutenções remotas, e dos acessos autorizados, atribuídos, e revogados após a conclusão da manutenção.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "PR.FC-1",
+    "control_text": "Todo o pessoal é sensibilizado e formado em matérias de cibersegurança.",
+    "medida": "A entidade deve realizar ações de formação periódicas para que o pessoal compreenda as suas funções, responsabilidades e prioridades específicas durante um incidente de cibersegurança, incluindo quais as ações que devem seguir para responder de forma eficaz. A entidade deve incluir a sensibilização e a comunicação de ameaças internas na sua formação em cibersegurança, de forma a ajudar o pessoal a reconhecer e responder a potenciais ameaças internas.",
+    "criterio": "Registo documentado da participação periódica do pessoal em ações de formação em matérias de cibersegurança.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "PR.FC-2",
+    "control_text": "O pessoal com funções especializadas em cibersegurança e os órgãos de gestão, direção e administração recebem formação adequada para o exercício das suas funções.",
+    "medida": "A entidade deve definir, implementar e atualizar periodicamente um plano estruturado de ações de formação em matéria de cibersegurança para o pessoal com funções especializadas em cibersegurança.",
+    "criterio": "Registo documentado da definição do Plano de sensibilização e formação para pessoal com funções especializadas em cibersegurança, e da respetiva execução do mesmo.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "PR.SD-1",
+    "control_text": "A entidade protege a confidencialidade, integridade e disponibilidade dos dados armazenados.",
+    "medida": "A entidade deve implementar controlos de verificação da integridade da informação, do software e firmware para detetar alterações não autorizadas aos dados por si armazenados. A restrição da utilização de suportes de armazenamento amovíveis deve ser assegurada em conformidade com a Política de Uso Aceitável.",
+    "criterio": "Evidência técnica da implementação de controlos de verificação da integridade da informação do software e firmware. Evidência técnica da configuração da restrição da utilização de suportes de armazenamento amovíveis.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "PR.SD-5",
+    "control_text": "São realizadas, mantidas e testadas cópias de segurança dos dados da entidade.",
+    "medida": "Deve ser definida, aprovada e implementada uma Política de Cópias de Segurança que inclua regras internas formais para a realização das cópias de segurança. A entidade deve verificar e testar regularmente a disponibilidade e integridade das cópias de segurança, de forma independente ao ambiente protegido. Deve ser definido e implementado um esquema de redundância aplicado às cópias de segurança da entidade. As cópias de segurança devem ser mantidas em locais distintos e protegidas segundo os mesmos mecanismos de segurança.",
+    "criterio": "Política de Cópias de Segurança aprovada e implementada. Evidência técnica da verificação e de testes regulares, de acordo com a periodicidade definida na Política de Cópias de Segurança, da integridade das cópias de segurança. Evidência técnica da implementação de um esquema de redundância das cópias de segurança, e seu armazenamento em local distinto e protegido.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "PR.SP-1",
+    "control_text": "É criada e mantida uma configuração base de redes e sistemas de informação que incorpora os princípios de segurança.",
+    "medida": "A entidade deve desenvolver, documentar e manter atualizada uma configuração base de segurança das suas redes e sistemas de informação.",
+    "criterio": "Evidência técnica das configurações base de segurança das redes e sistemas de informação.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "PR.SP-2",
+    "control_text": "Os logs de sistemas e o histórico de atividades são documentados, implementados e revistos.",
+    "medida": "Os logs dos ativos devem ser sincronizados utilizando uma fonte interna de relógio sincronizada com uma fonte de relógio oficial.",
+    "criterio": "Evidência técnica da sincronização temporal dos logs dos ativos.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "PR.SP-4",
+    "control_text": "É implementado um ciclo de vida de desenvolvimento seguro de software.",
+    "medida": "O ciclo de vida de desenvolvimento de sistemas e aplicações deve incorporar o princípio de segurança por defeito e princípio de segurança desde a conceção. Em caso de alterações e exceções durante o desenvolvimento de software a entidade deve efetuar uma análise do impacto na segurança, num ambiente de teste separado, antes da implementação em produção.",
+    "criterio": "Evidência técnica da aplicação dos princípios de segurança aplicadas ao ciclo de vida de desenvolvimento de sistemas e aplicações. Registos da gestão de alterações aplicável ao desenvolvimento de software.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "PR.RI-1",
+    "control_text": "A entidade protege a integridade das redes de comunicações.",
+    "medida": "A integridade da rede dos sistemas críticos deve ser protegida através da identificação, documentação e controlo das ligações entre os componentes do sistema e da limitação das ligações externas aos sistemas críticos da entidade. A entidade deve monitorizar e controlar as ligações e comunicações nos limites externos e nos principais limites internos dos seus sistemas críticos, implementando dispositivos e tecnologias de proteção.",
+    "criterio": "Diagrama de redes da entidade com referência à sua segmentação dos sistemas críticos. Demonstração das configurações para bloqueio de ligações não autorizadas aos sistemas críticos. Evidência técnica da monitorização de rede das ligações e comunicações aos sistemas críticos.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "PR.RI-2",
+    "control_text": "Os ambientes de desenvolvimento e de teste são separados de ambientes de produção.",
+    "medida": "O(s) ambiente(s) de desenvolvimento e teste deve(m) ser isolado(s) do ambiente de produção.",
+    "criterio": "Evidência técnica da separação de ambientes de teste e de produção.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "PR.RI-4",
+    "control_text": "São implementados controlos de segurança para cumprir os requisitos de resiliência em situações adversas.",
+    "medida": "A entidade deve garantir a implementação de controlos adequados para responder em tempo útil a eventuais disrupções às normais operações, em conformidade com o Plano de Continuidade de Negócios estabelecido.A entidade deve garantir a existência de mecanismos que garantam a disponibilidade dos seus sistemas críticos, através de soluções de balanceamento de carga e redundâncias dos sistemas.",
+    "criterio": "Evidência técnica da implementação de controlos adequados que permitam a resposta a disrupções de acordo com o Plano de Continuidade de Negócio.Evidência técnica da implementação de redundâncias técnicas nos sistemas críticos.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "PR.RI-5",
+    "control_text": "A entidade planeia a capacidade adequada dos recursos para garantir a disponibilidade das suas redes e sistemas de informação.",
+    "medida": "A entidade deve planear e disponibilizar a capacidade adequada dos recursos que processam o volume normal, atual e futuro, de informação dos sistemas críticos da entidade, redes, telecomunicações e armazenamento de dados.",
+    "criterio": "Registo do planeamento da capacidade dos recursos para o processamento de informações dos sistemas críticos, redes, telecomunicações e armazenamento de dados.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "DE.MC-1",
+    "control_text": "As redes e sistemas de informação são monitorizados para detetar potenciais incidentes.",
+    "medida": "A entidade deve monitorizar, identificar e bloquear comunicações, locais e remotas, não autorizadas às suas redes e sistemas críticos e remover conteúdo malicioso.",
+    "criterio": "Evidência da monitorização, identificação e bloqueio de comunicações não autorizadas e conteúdo/ações malicioso/maliciosas.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "DE.MC-2",
+    "control_text": "O ambiente físico é monitorizado para possibilitar a deteção de potenciais incidentes de segurança.",
+    "medida": "A entidade deve monitorizar o ambiente físico para identificar eventos potencialmente adversos.",
+    "criterio": "Evidência técnica da monitorização do ambiente físico.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "DE.MC-5",
+    "control_text": "A utilização de aplicações não autorizadas em dispositivos móveis é detetada.",
+    "medida": "A entidade deve incluir requisitos para a utilização de dispositivos móveis corporativos na sua Política de Uso Aceitável e monitorizar o cumprimento dos mesmos, nomeadamente no processo de gestão de eventos.",
+    "criterio": "Registo documentado de inclusão na Política de Uso Aceitável de requisitos para a utilização de dispositivos móveis corporativos e registo da monitorização do cumprimento destes requisitos.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "DE.MC-6",
+    "control_text": "As atividades dos prestadores de serviços externos são monitorizadas para deteção de incidentes.",
+    "medida": "Todas as ligações aos sistemas, aplicações ou infraestrutura da entidade, efetuadas por fornecedores ou qualquer entidade externa, devem ser monitorizadas e protegidas por forma a detetar eventos potencialmente adversos.A entidade deve garantir a contínua conformidade dos prestadores de serviços com as suas políticas e procedimentos e com os requisitos de segurança previamente definidos em contratos ou acordos.",
+    "criterio": "Registo da monitorização de todas as ligações aos sistemas, aplicações ou infraestrutura da entidade, efetuadas por fornecedores ou qualquer entidade externa.Registo da avaliação periódica dos prestadores de serviços com acesso às redes e sistemas da entidade por forma a garantir o cumprimento dos requisitos de segurança previamente definidos.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "DE.MC-7",
+    "control_text": "O hardware e o software, os ambientes em produção e os seus dados são monitorizados para detetar eventos potencialmente adversos.",
+    "medida": "O hardware, software, ambientes em produção e respetivos dados devem ser monitorizados para detetar eventos potencialmente adversos.",
+    "criterio": "Evidência técnica da recolha de eventos potencialmente adversos.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "DE.AE-1",
+    "control_text": "Os eventos detetados são analisados.",
+    "medida": "A entidade deve analisar a informação recolhida sobre os eventos detetados para filtrar eventos com impacto potencialmente relevante e identificar respetivas origens, alvos e métodos de ataque.",
+    "criterio": "Evidência técnica da análise da informação sobre os eventos detetados.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "DE.AE-4",
+    "control_text": "As informações sobre deteções de eventos são comunicadas.",
+    "medida": "As informações sobre eventos adversos devem ser disponibilizadas ao pessoal autorizado e configuradas nos sistemas relevantes para a devida deteção, investigação e resposta.",
+    "criterio": "Registo da disponibilização da informação sobre eventos adversos ao pessoal autorizado.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "RS.GI-1",
+    "control_text": "O Plano de Resposta a Incidentes é executado, em coordenação com as partes interessadas, durante ou após a ocorrência de um incidente.",
+    "medida": "As ações de resposta a incidentes devem ser coordenadas com as partes interessadas definidas no Plano de Resposta a Incidentes.",
+    "criterio": "Registo documentado do planeamento e atualização dos processos de resposta a incidentes que incluam requisitos para escalonamento.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "RS.GI-2",
+    "control_text": "As notificações de incidentes são triadas e validadas.",
+    "medida": "As notificações de incidentes devem ser triadas e validadas de acordo com o Plano de Resposta a Incidentes da entidade.",
+    "criterio": "Registo da triagem e validação das notificações de incidentes.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "RS.GI-3",
+    "control_text": "Os incidentes são categorizados e priorizados de acordo com o Plano de Resposta a Incidentes definido.",
+    "medida": "A entidade deve garantir que os incidentes de cibersegurança são categorizados de acordo com o nível de gravidade e impacto, e com os critérios de avaliação incluídos no Plano de Resposta a Incidentes. A entidade deve utilizar uma taxonomia de categorização de incidentes.",
+    "criterio": "Registo da categorização de incidentes e a sua classificação, de acordo com a taxonomia de categorização de incidentes.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "RS.GI-5",
+    "control_text": "São aplicados os critérios para iniciar a recuperação de incidentes.",
+    "medida": "Os critérios para iniciar a recuperação de incidentes devem estar definidos e ser aplicados.",
+    "criterio": "Registo de critérios e evidência da sua aplicação na fase inicial da recuperação de incidentes.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "RS.NC-1",
+    "control_text": "As partes interessadas internas e externas são informadas dos incidentes.",
+    "medida": "A entidade deve partilhar informação sobre incidentes com as partes interessadas externas relevantes dentro do prazo estabelecido no seu Plano de Resposta a Incidentes.",
+    "criterio": "Registo da partilha de informações sobre incidentes com as partes interessadas externas relevantes.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "RS.MI-1",
+    "control_text": "Os incidentes são contidos.",
+    "medida": "A entidade deve conter e resolver os incidentes. As decisões de não contenção e não resolução de incidentes devem ser documentadas.",
+    "criterio": "Evidência dos processos de contenção de incidentes. Registo de decisões tomadas durante o processo de resposta.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "RC.PR-5",
+    "control_text": "A integridade dos ativos restaurados é verificada, os sistemas e serviços são recuperados e o seu estado de normal funcionamento é confirmado.",
+    "medida": "A integridade dos ativos restaurados deve ser verificada, os sistemas e serviços devem ser recuperados e o seu estado de normal funcionamento deve ser confirmado.",
+    "criterio": "Registo do processo de verificação da integridade dos ativos, recuperação de sistemas e serviços e confirmação do normal estado de funcionamento.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "RC.PR-6",
+    "control_text": "O fim da recuperação do incidente é documentado e declarado com base em critérios prédefinidos.",
+    "medida": "O fim da recuperação do incidente deve ser documentado e declarado com base em critérios prédefinidos.",
+    "criterio": "Registo da definição de critérios para a declaração do fim da recuperação do incidente e evidência da sua implementação.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "RC.CO-1",
+    "control_text": "As atividades de recuperação são comunicadas às partes interessadas bem como aos órgãos de gestão, direção e administração.",
+    "medida": "As atividades de recuperação e os progressos no restauro do normal funcionamento dos sistemas e aplicações da entidade, devem ser comunicados às partes interessadas internas e externas.",
+    "criterio": "Registo da comunicação das atividades de recuperação e progresso do restauro, às partes interessadas, internas e externas.",
+    "nivel": "Substancial"
+   },
+   {
+    "control_id": "RC.CO-2",
+    "control_text": "As atualizações sobre a recuperação de incidentes são partilhadas utilizando métodos aprovados pela entidade.",
+    "medida": "As atualizações públicas sobre a recuperação do incidente devem ser partilhadas utilizando métodos de comunicação definidos e aprovados pela entidade.",
+    "criterio": "Registo dos procedimentos para a comunicação de atualizações públicas sobre a recuperação de incidentes.",
+    "nivel": "Substancial"
+   }
+  ],
+  "elevado": [
+   {
+    "control_id": "GR.CO-5",
+    "control_text": "Os requisitos de resiliência necessários para suportar a prestação de serviços críticos são definidos.",
+    "medida": "O Plano de Continuidade de Negócios deve ser testado.",
+    "criterio": "Evidência da execução de testes ao Plano de Continuidade de Negócio.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "GR.GR-5",
+    "control_text": "A entidade define uma Política de Gestão dos Riscos de Cibersegurança a qual prevê uma metodologia para a gestão dos riscos de cibersegurança.",
+    "medida": "A entidade define, aprova e implementa uma Política de Gestão dos Riscos de Cibersegurança.",
+    "criterio": "Política de Gestão dos Riscos de Cibersegurança aprovada e implementada.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "GR.SP-2",
+    "control_text": "A estratégia de gestão dos riscos de cibersegurança é regularmente revista e adaptada para garantir a cobertura dos requisitos e riscos organizacionais.",
+    "medida": "A estratégia de gestão dos riscos de cibersegurança deve ser revista regularmente e adaptada para garantir a cobertura dos requisitos e riscos organizacionais.",
+    "criterio": "Evidência de que a entidade tem atualizado o quadro de ameaças e que revê e adapta a estratégia de gestão dos riscos em conformidade.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "GR.SP-3",
+    "control_text": "O desempenho da gestão dos riscos de cibersegurança da entidade é avaliado e revisto para alterações necessárias.",
+    "medida": "Devem ser definidos e implementados mecanismos de avaliação do desempenho da gestão dos riscos de cibersegurança.",
+    "criterio": "Registo da definição de mecanismos para avaliar o desempenho da gestão dos riscos de cibersegurança.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "GR.CA-1",
+    "control_text": "As políticas e processos de gestão dos riscos da cadeia de abastecimento são identificados, estabelecidos, avaliados e geridos.",
+    "medida": "A entidade deve definir, aprovar, implementar, rever e atualizar a Política de Gestão de Riscos da Cadeia de Abastecimento e o respetivo procedimento.",
+    "criterio": "Política e procedimento de Gestão de Riscos da Cadeia de Abastecimento aprovados, implementados e atualizados.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "GR.CA-5",
+    "control_text": "A entidade define e integra nos contratos e outros acordos com fornecedores os requisitos para gerir os riscos de cibersegurança da cadeia de abastecimento.",
+    "medida": "Os contratos e outros acordos com fornecedores devem integrar disposições legais que permitam a avaliação contínua da cibersegurança dos fornecedores e a correção de eventuais falhas identificadas.",
+    "criterio": "Modelos de contratos/acordos contendo cláusulas específicas que permitam a avaliação contínua da cibersegurança dos fornecedores e a correção de eventuais falhas identificadas.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "GR.CA-6",
+    "control_text": "Antes da contratação de fornecedores são realizados processos de devida diligência para reduzir os riscos.",
+    "medida": "A entidade deve, antes de estabelecer relações contratuais com fornecedores, conduzir, sempre que possível, processos de devida diligência, com o objetivo de minimizar a sua exposição ao risco.",
+    "criterio": "Registo dos processos de devida diligência realizados antes da contratação.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "GR.CA-7",
+    "control_text": "A entidade avalia os riscos de cibersegurança da cadeia de abastecimento.",
+    "medida": "A entidade deve realizar avaliações da cibersegurança dos seus fornecedores em conformidade com o nível de exigência requerido.",
+    "criterio": "Registo da avaliação de cibersegurança dos fornecedores em conformidade com o nível de exigência requerido, nomeadamente: Certificados válidos no âmbito do Selo de Maturidade Digital; Relatórios de auditorias realizadas; Resultados de testes realizados no âmbito da cibersegurança.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "GR.CA-8",
+    "control_text": "O Plano de Resposta a Incidentes e o Plano de Recuperação de Desastres são testados com o acompanhamento dos fornecedores.",
+    "medida": "A entidade deve incluir o pessoal-chave dos fornecedores nos seus exercícios e testes dos Plano de Resposta a Incidentes e Plano de Recuperação de Desastres.",
+    "criterio": "Registo de testes e exercícios ao Plano de Resposta a Incidentes e Plano de Recuperação de Desastres com a inclusão do pessoal-chave dos fornecedores.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "ID.GA-1",
+    "control_text": "Os equipamentos e os demais recursos físicos geridos ou detidos pela entidade são inventariados.",
+    "medida": "A entidade deve utilizar ferramentas de suporte à gestão de equipamentos e os demais recursos físicos.",
+    "criterio": "Evidência técnica da ferramenta de inventariação e de suporte à gestão de equipamentos e os demais recursos físicos.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "ID.GA-2",
+    "control_text": "Os recursos lógicos que suportam os processos dos serviços da entidade são inventariados",
+    "medida": "A entidade deve utilizar ferramentas ou aplicações de suporte à gestão de recursos lógicos.",
+    "criterio": "Evidência técnica da ferramenta de inventariação e de suporte à gestão de recursos lógicos.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "ID.GA-3",
+    "control_text": "As redes e fluxos de comunicação são mapeados.",
+    "medida": "A entidade deve mapear os fluxos de comunicação externos, e os mesmos devem ser documentados, devidamente aprovados e atualizados.",
+    "criterio": "Diagramas de rede e sistemas e de fluxos de comunicação externos aprovados e atualizados.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "ID.GA-6",
+    "control_text": "Os dados e respetivos metadados são identificados e registados.",
+    "medida": "Os dados e respetivos metadados que a entidade trata devem ser identificados e classificados de acordo com a Política de Classificação e Gestão de Dados.",
+    "criterio": "Registo da identificação e classificação dos dados e respetivos metadados, de acordo com a Política de Classificação e Gestão de Dados.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "ID.GA-8",
+    "control_text": "Os dados são destruídos de acordo com a Política de Classificação e Gestão de Dados definida.",
+    "medida": "Os processos de sanitização, físicos e digitais, devem ser documentados e testados, para garantir a eficácia da destruição da informação.",
+    "criterio": "Registo do processo de sanitização e dos testes realizados.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "ID.GA-9",
+    "control_text": "A entidade implementa um processo de gestão de alterações.",
+    "medida": "A entidade deve estabelecer regras internas para a gestão de alterações, incluindo processos de avaliação e aprovação prévia de alterações. As alterações devem ser testadas e validadas antes da sua implementação nos sistemas operacionais. A entidade deve garantir a atualização dos seus procedimentos de forma a acompanhar as alterações efetuadas.",
+    "criterio": "Registo do processo documentado de gestão de alterações que inclua, pelo menos, a avaliação e aprovação prévia das regras para a realização de alterações. Registo do resultado dos testes e da validação às alterações efetuadas antes da sua implementação em produção. Evidência de uma gestão do quotidiano que reflita atualizações de procedimentos quando existam alterações.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "ID.AR-1",
+    "control_text": "As vulnerabilidades dos ativos são identificadas e documentadas com base na metodologia definida.",
+    "medida": "A entidade deve utilizar ferramentas de identificação e monitorização contínua das vulnerabilidades dos seus ativos. A entidade deve realizar testes de intrusão regulares.",
+    "criterio": "Evidência técnica de ferramentas de identificação e monitorização contínua das vulnerabilidades. Registo do resultado da realização regular de testes de intrusão.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "ID.AR-6",
+    "control_text": "A entidade garante que as respostas aos riscos são identificadas e priorizadas.",
+    "medida": "A entidade deve incluir na sua estratégia de tratamento dos riscos um plano de monitorização, revisão e melhoria contínua das respostas aos riscos.",
+    "criterio": "Registo da inclusão de um plano de monitorização, revisão e melhoria contínua, na estratégia de tratamento dos riscos.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "ID.AR-7",
+    "control_text": "A entidade define processos para receber informação, analisar e responder a vulnerabilidades provenientes de fontes internas e externas.",
+    "medida": "As vulnerabilidades registadas devem ser analisadas e avaliadas sistematicamente. A entidade deve implementar mecanismos automatizados, para divulgar e acompanhar os esforços de correção de vulnerabilidades, recolhidas de fontes internas e externas, para as principais partes interessadas.",
+    "criterio": "Registo do resultado da análise e avaliação das vulnerabilidades identificadas. Evidência técnica da implementação de mecanismos automatizados para a divulgação e acompanhamento dos esforços de correção de vulnerabilidades.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "ID.MC-2",
+    "control_text": "São identificadas melhorias a partir de testes e exercícios de cibersegurança.",
+    "medida": "Os testes e exercícios de cibersegurança devem ser utilizados para identificar pontos de melhoria dos processos da entidade. A entidade deve realizar testes com partes interessadas.",
+    "criterio": "Registo da realização de testes e exercícios de cibersegurança, incluindo os efetuados com partes interessadas.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "PR.GA-1",
+    "control_text": "Os ciclos de vida de gestão de identidades são definidos.",
+    "medida": "As identidades e credenciais dos dispositivos, serviços e utilizadores devem ser geridas através de mecanismos automatizados. A entidade deve aplicar autenticação segura nas suas transações entre sistemas críticos, nomeadamente, a autenticação multifator (MFA), certificados criptográficos, tokens e chaves criptográficas.",
+    "criterio": "Evidência técnica de mecanismos automatizados de suporte à gestão de identidades e credenciais dos dispositivos, serviços e utilizadores. Evidência técnica da aplicação de autenticação segura nas transações entre sistemas críticos.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "PR.GA-2",
+    "control_text": "A entidade verifica a identidade dos utilizadores, vinculando-a às respetivas credenciais.",
+    "medida": "A entidade deve garantir a utilização de credenciais únicas associadas a cada utilizador, dispositivo e processo que interaja com os sistemas críticos da entidade. A entidade deve garantir que todas as exceções estão documentadas e devidamente aprovadas.",
+    "criterio": "Evidência técnica da atribuição de credenciais únicas para cada utilizador, dispositivo ou processo que interaja com sistemas críticos da entidade. Registo documentado das exceções à Política de Gestão de Identidades, Autenticação e Controlo de Acessos e a sua respetiva aprovação.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "PR.GA-3",
+    "control_text": "São definidos mecanismos de autenticação de utilizadores, dispositivos e outros ativos de sistemas de informação.",
+    "medida": "A comunicação entre os sistemas da entidade e os sistemas externos (como os de parceiros, fornecedores ou prestadores de serviços, incluindo, serviços de computação em nuvem) deve ser enquadrada num acordo entre as entidades participantes. A entidade deve implementar autenticação multifator (MFA) em todos os seus dispositivos e outros ativos de sistemas de informação, quando estes o permitam.",
+    "criterio": "Modelos de acordos entre a entidade e terceiros para comunicação entre sistemas. Evidência técnica da implementação de autenticação multifator (MFA) em todos os seus dispositivos e outros ativos de sistemas de informação, quando possível.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "PR.GA-4",
+    "control_text": "As afirmações de identidade são protegidas, transmitidas e verificadas.",
+    "medida": "As afirmações de identidade devem ser protegidas, transmitidas e verificadas.",
+    "criterio": "Evidência técnica da proteção, transmissão e verificação das afirmações de identidade.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "PR.GA-5",
+    "control_text": "As permissões de acesso, os direitos e as autorizações são definidas numa política, geridas, aplicadas e atualizadas, e incorporam os princípios do menor privilégio e da separação de funções.",
+    "medida": "A entidade deve monitorizar o contexto em que ocorre a autenticação de utilizadores, e identificar os acessos realizados através de dispositivos, localizações e horários não habituais. A entidade deve monitorizar as atividades realizadas por utilizadores com privilégios elevados.",
+    "criterio": "Evidência técnica da aplicação de restrições e monitorização ativa do contexto em que ocorre a autenticação de utilizadores. Evidência técnica da monitorização das atividades realizadas por utilizadores com privilégios elevados.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "PR.GA-6",
+    "control_text": "Os controlos de acesso físico a ativos da entidade são geridos, monitorizados e aplicados em função do risco.",
+    "medida": "Os ativos alojados nas zonas de acesso restrito devem ser fisicamente protegidos.",
+    "criterio": "Evidência técnica da implementação de proteções físicas aos ativos alojados nas zonas críticas.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "PR.GA-7",
+    "control_text": "A entidade gere os seus acessos remotos.",
+    "medida": "O acesso remoto aos sistemas críticos da entidade deve ser monitorizado. O acesso remoto deve ser realizado através de canais seguros, utilizando mecanismos de encriptação forte e protocolos seguros aprovados internamente, sendo que o mesmo se aplica a ações de manutenção remota.",
+    "criterio": "Evidencia técnica da implementação de canais seguros para acesso remoto (incluindo ações de manutenção). Evidência técnica da recolha e análise dos registos de atividades dos utilizadores em formato remoto aquando do seu acesso aos sistemas críticos da entidade.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "PR.FC-1",
+    "control_text": "Todo o pessoal é sensibilizado e formado em matérias de cibersegurança.",
+    "medida": "A entidade deve definir e implementar indicadores para avaliar a eficácia das ações de sensibilização e formação. A entidade deve aplicar os resultados dos indicadores recolhidos, nos seus processos de melhoria contínua.",
+    "criterio": "Registo da definição dos indicadores para avaliar a eficácia das ações de sensibilização e formação, e recolha dos resultados dos mesmos com a respetiva integração em processos de melhoria continua.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "PR.SD-1",
+    "control_text": "A entidade protege a confidencialidade, integridade e disponibilidade dos dados armazenados.",
+    "medida": "A entidade protege as informações dos seus sistemas críticos, consideradas críticas/sensíveis, enquanto estiverem armazenadas, utilizando mecanismos criptográficos.",
+    "criterio": "Evidência técnica da implementação de controlos de segurança, e de mecanismos criptográficos, para proteção da informação armazenada nos sistemas críticos e que seja considerada crítica/sensível.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "PR.SD-2",
+    "control_text": "A entidade protege a confidencialidade, integridade e disponibilidade dos dados em trânsito.",
+    "medida": "A entidade deve implementar controlos de segurança que garantam a confidencialidade e integridade da informação em trânsito, consoante a sua classificação, para todos os fluxos de dados e interfaces de comunicação para o exterior, de acordo com a Política de Classificação e Gestão de Dados, incluindo quando há recurso a suportes de armazenamento amovíveis. Qualquer exceção à política deve ser devidamente registada.",
+    "criterio": "Evidência técnica da implementação dos controlos de segurança para proteção dos dados em trânsito, de acordo com a classificação, e em conformidade com a Política de Classificação e Gestão de Dados, inclusive nos fluxos de dados e interfaces de comunicação para o exterior.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "PR.SD-3",
+    "control_text": "A entidade implementa proteções que evitem exfiltração de dados.",
+    "medida": "A entidade deve adotar controlos de segurança adequados para monitorizar os seus sistemas críticos nas fronteiras externas e nos pontos críticos internos, para evitar acessos e atividades não autorizadas, incluindo exfiltração de dados.",
+    "criterio": "Evidência técnica da implementação de controlos de segurança adequados para monitorizar os sistemas críticos nas fronteiras externas e nos pontos críticos internos, para evitar acessos e atividades não autorizadas, incluindo exfiltração de dados.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "PR.SD-4",
+    "control_text": "A entidade protege a confidencialidade, integridade e disponibilidade dos dados em uso.",
+    "medida": "A entidade deve implementar controlos de segurança para proteger os seus sistemas críticos ou limitar o impacto de ataques de negação de serviço.",
+    "criterio": "Evidência técnica da implementação de controlos de segurança para proteger os sistemas críticos ou limitar o impacto de ataques de negação de serviço.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "PR.SD-5",
+    "control_text": "São realizadas, mantidas e testadas cópias de segurança dos dados da entidade.",
+    "medida": "O processo de verificação das cópias de segurança deve ser implementado em conformidade com os restantes processos, políticas e planos em matéria de cibersegurança da entidade (nomeadamente, o Plano de Continuidade de Negócio e o Plano de Resposta a Incidentes). As cópias de segurança dos sistemas críticos, nomeadamente, de sistemas operativos, configurações e aplicações, devem ser separadas das cópias de segurança de informações críticas.",
+    "criterio": "Registo de um processo de verificação das cópias de segurança em conformidade com os restantes procedimentos, planos e políticas da entidade. Evidência técnica do armazenamento em locais separados, das cópias de segurança dos sistemas críticos e das informações críticas.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "PR.SP-1",
+    "control_text": "É criada e mantida uma configuração base de redes e sistemas de informação que incorpora os princípios de segurança.",
+    "medida": "A entidade deve configurar os seus sistemas críticos com base no princípio de funcionalidades mínimas e desativar todos os protocolos, portos e serviços desnecessários. A entidade deve implementar controlos de segurança que prevejam os princípios de “deny-all” e “permit by exception”.",
+    "criterio": "Evidência técnica da aplicação do princípio da funcionalidade mínima e desativação de todos os protocolos, portos e serviços desnecessários, aquando da configuração das redes e sistemas da entidade. Evidência técnica da implementação de controlos alinhados com os princípios de segurança de “denyall” e “permit by exception”.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "PR.SP-2",
+    "control_text": "Os logs de sistemas e o histórico de atividades são documentados, implementados e revistos.",
+    "medida": "A entidade deve assegurar que as falhas no processamento de logs nos seus sistemas geram alertas. A capacidade de retenção e registo de logs deve ser revista periodicamente e ampliada sempre que necessário. Os logs gerados por sistemas críticos devem ser armazenados em sistema autónomo.",
+    "criterio": "Evidência técnica da alarmística para situações de falha de processamento de logs. Evidência técnica do armazenamento de logs gerados por sistemas críticos em sistema autónomo.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "PR.SP-4",
+    "control_text": "É implementado um ciclo de vida de desenvolvimento seguro de software.",
+    "medida": "Ao longo do ciclo de vida do desenvolvimento de software as práticas de desenvolvimento seguro devem ser integradas e o seu desempenho monitorizado.",
+    "criterio": "Registo dos testes de qualidade de software, respetivas conclusões e acompanhamento da devida integração dos critérios de segurança definidos.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "PR.RI-1",
+    "control_text": "A entidade protege a integridade das redes de comunicações.",
+    "medida": "A entidade deve implementar servidores proxy autenticados para o tráfego de comunicações definido entre os sistemas críticos da entidade e as redes externas. A entidade deve implementar controlos de segurança e de tolerância a falhas em dispositivos e tecnologias de proteção. A entidade deve controlar os fluxos de dados dos seus sistemas críticos.",
+    "criterio": "Evidência técnica da implementação de servidores proxy para a comunicação entre os sistemas críticos e redes externas. Evidência técnica da implementação de controlos de segurança para a tolerância a falhas dos dispositivos e tecnologias de proteção. Evidência técnica da monitorização dos fluxos de dados dos sistemas críticos.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "PR.RI-3",
+    "control_text": "Os ativos tecnológicos da entidade são protegidos de ameaças naturais.",
+    "medida": "A entidade deve implementar dispositivos de deteção de incêndios que se ativam e notificam automaticamente o pessoal indicado em caso de incêndio. A entidade deve testar periodicamente a eficácia dos controlos de segurança aplicados aos ambientes físicos.",
+    "criterio": "Evidência técnica da implementação de dispositivos de deteção contra ameaças naturais e registo da realização periódica de testes.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "DE.MC-1",
+    "control_text": "As redes e sistemas de informação são monitorizados para detetar potenciais incidentes.",
+    "medida": "A entidade deve monitorizar os seus sistemas críticos de forma contínua para detetar eventos e indicadores de potenciais incidentes e automaticamente acionar mecanismos de resposta.",
+    "criterio": "Registo de monitorização contínua dos sistemas críticos quanto a potenciais incidentes.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "DE.MC-2",
+    "control_text": "O ambiente físico é monitorizado para possibilitar a deteção de potenciais incidentes de segurança.",
+    "medida": "Para além da monitorização do acesso físico às instalações, a entidade deve monitorizar o acesso físico aos seus sistemas e dispositivos críticos, com alarmes de intrusão física, equipamento de vigilância e equipas de monitorização independentes.",
+    "criterio": "Evidência técnica da implementação de alarmes de intrusão física e equipamento de vigilância no acesso físico aos sistemas e dispositivos críticos. Registo de monitorização do acesso físico por equipas independentes.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "DE.MC-5",
+    "control_text": "A utilização de aplicações não autorizadas em dispositivos móveis é detetada.",
+    "medida": "A entidade deve gerir a instalação e suporte de software numa ferramenta centralizada. A entidade deve criar alarmística relativamente à instalação de software indevido e integrar o processo de alarmística na gestão de incidentes.",
+    "criterio": "Evidência técnica da ferramenta centralizada de suporte de software. Evidência técnica de alarmística relativamente à instalação de software indevido e integração deste processo de gestão de incidentes.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "DE.MC-7",
+    "control_text": "O hardware e o software, os ambientes em produção e os seus dados são monitorizados para detetar eventos potencialmente adversos.",
+    "medida": "A entidade deve efetuar verificações da integridade do hardware dos seus sistemas críticos para detetar eventuais adulterações. A deteção de adulterações do hardware dos sistemas críticos deve ser incluída no Plano de Resposta a Incidentes. A entidade deve implementar um sistema de deteção e alerta de eventos de segurança, que permita identificar falsos positivos, com vista a uma melhor deteção e bloqueio de código ou atividades maliciosas.",
+    "criterio": "Evidência técnica da monitorização de integridade de hardware dos sistemas críticos. Registo da inclusão da deteção de adulteração de hardware dos sistemas críticos no Plano de Resposta a Incidentes. Evidência técnica da implementação de sistemas de deteção de falsos positivos na deteção e bloqueio de código e atividades maliciosas.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "DE.AE-1",
+    "control_text": "Os eventos detetados são analisados.",
+    "medida": "A entidade deve implementar um sistema automatizado para agregação, correlação e análise dos eventos de segurança detetados.",
+    "criterio": "Evidência técnica da implementação de sistemas automatizados para agregação, correlação e análise dos eventos de segurança detetados.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "DE.AE-2",
+    "control_text": "Os eventos são recolhidos e correlacionados a partir de várias fontes e sensores.",
+    "medida": "O sistema automatizado para agregação, correlação e análise de eventos de segurança da entidade deve considerar, para os eventos dos ativos críticos, as diversas fontes e sensores existentes. O sistema automatizado para agregação, correlação e análise de eventos de segurança da entidade deve integrar informação relativa a rastreamentos de vulnerabilidades e estatísticas de performance dos sistemas e aplicações.",
+    "criterio": "Registo da integração de toda a informação proveniente das diversas fontes e sensores existentes (incluindo rastreamentos de vulnerabilidades e estatísticas de performance dos sistemas e aplicações) para a agregação, correlação e análise dos eventos de segurança dos ativos críticos da entidade.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "DE.AE-3",
+    "control_text": "O impacto estimado e o âmbito dos eventos adversos detetados são compreendidos e identificados.",
+    "medida": "Os potenciais impactos dos eventos de segurança detetados no normal funcionamento da entidade, nas operações, nos ativos ou nas pessoas devem ser tidos em conta durante o processo de gestão dos riscos.",
+    "criterio": "Registo documentado da revisão do processo de gestão dos riscos tendo em o impacto dos eventos de segurança detetados.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "RS.GI-3",
+    "control_text": "Os incidentes são categorizados e priorizados de acordo com o Plano de Resposta a Incidentes definido.",
+    "medida": "O Plano de Resposta a Incidentes deve descrever os procedimentos de resposta para os diferentes tipos de incidente definidos na taxonomia de categorização de incidentes. Devem ser utilizadas ferramentas automatizadas para apoiar na investigação e a avaliação do impacto de incidentes previamente validados.",
+    "criterio": "Registo documentado da inclusão de procedimentos de resposta a diferentes tipos de incidente, no Plano de Resposta a Incidentes. Evidência técnica da implementação de ferramentas automatizadas de apoio à investigação e avaliação do impacto de incidentes.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "RS.AI-1",
+    "control_text": "É realizada uma análise forense para determinar o que ocorreu durante um incidente e a sua causa raiz.",
+    "medida": "A entidade deve realizar análises forenses dos artefactos recolhidos para determinar a causa raiz do incidente. A entidade deve garantir a existência de mecanismos ondemand, internos ou externos para a realização de análises forenses.",
+    "criterio": "Registo documentado da realização de análises forenses.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "RS.AI-2",
+    "control_text": "As ações realizadas durante uma investigação são registadas e a integridade e proveniência dos registos são preservadas.",
+    "medida": "As ações realizadas durante uma investigação devem ser registadas e a integridade e a proveniência dos registos devem ser preservadas.",
+    "criterio": "Registo documentado das ações realizadas durante a investigação dos incidentes.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "RS.AI-3",
+    "control_text": "Os dados e metadados do incidente são recolhidos, e a sua integridade e proveniência são preservadas.",
+    "medida": "Os dados e metadados dos incidentes devem ser recolhidos e armazenados e a sua autenticidade, exatidão e rastreabilidade são protegidas.",
+    "criterio": "Evidência do armazenamento dos dados e metadados dos incidentes e da implementação de mecanismos que garantam a preservação da integridade e proveniência dos mesmos.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "RS.AI-4",
+    "control_text": "O impacto do incidente é estimado e validado.",
+    "medida": "O resultado da análise de incidentes deve ser considerado na avaliação de impacto do incidente em causa.",
+    "criterio": "Registo da inclusão dos resultados da análise das investigações realizadas, na avaliação de impacto do incidente.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "RS.MI-2",
+    "control_text": "Os incidentes são resolvidos.",
+    "medida": "O Plano de Resposta a Incidentes deve conter critérios que permitam declarar a conclusão da resolução do incidente.",
+    "criterio": "Registo da inclusão de critérios para declarar a conclusão da resolução do incidente no Plano de Resposta a Incidentes.",
+    "nivel": "Elevado"
+   },
+   {
+    "control_id": "RC.CO-2",
+    "control_text": "As atualizações sobre a recuperação de incidentes são partilhadas utilizando métodos aprovados pela entidade.",
+    "medida": "A entidade deve implementar uma estratégia de comunicação de crise para mitigar os impactos negativos durante uma crise.",
+    "criterio": "Registo documentado da estratégia de comunicação para situações de crise.",
+    "nivel": "Elevado"
+   }
+  ]
+ },
+ "matriz_risco": {
+  "formula": "= Probabilidade \\times Impacto \\times (\\frac{Dimensão}{3}) \\times Tipo \\ de \\ setor",
+  "formula_probabilidade": "Pr[Cenário,Ator] = Pr_{apriori} 0.5 + Pr_{CERT.PT} 0.25 + Pr_{peritos} 0.25",
+  "formula_probabilidade_alt": "Pr[Cenário,Ator] = Pr_{CERT.PT} 0.4 + Pr_{peritos} 0.6",
+  "dimensoes": [
+   {
+    "id": "G",
+    "nome": "Grande",
+    "peso": 3.0,
+    "criterio": "Entidade emprega mais de 250 pessoas; OU cujo volume de negócios anual excede 50 milhões de euros; OU cujo balanço total excede 43 milhões de euros"
+   },
+   {
+    "id": "M",
+    "nome": "Média",
+    "peso": 2.0,
+    "criterio": "Valores entre as categorias Grande (G) e Pequena (P)"
+   },
+   {
+    "id": "P",
+    "nome": "Pequena",
+    "peso": 1.0,
+    "criterio": "Quando se trate de entidade pública que empregue menos de 50 pessoas; OU, nos restantes casos quando a entidade empregue menos de 50 pessoas, E cujo volume de negócios anual não excede 10 milhões de euros, E cujo balanço total anual não excede 10 milhões de euros"
+   }
+  ],
+  "tipos_setor": [
+   {
+    "nome": "Setores de Importância Crítica",
+    "peso": 1.5,
+    "criterio": "Setores Anexo I Regime Jurídico da Cibersegurança"
+   },
+   {
+    "nome": "Outros Setores Críticos",
+    "peso": 1.0,
+    "criterio": "Setores Anexo II Regime Jurídico da Cibersegurança"
+   }
+  ],
+  "thresholds": [
+   {
+    "nivel": "Básico",
+    "min": 0,
+    "max": 99
+   },
+   {
+    "nivel": "Substancial",
+    "min": 100,
+    "max": 199
+   },
+   {
+    "nivel": "Elevado",
+    "min": 200,
+    "max": 1200
+   }
+  ],
+  "impactos": [
+   {
+    "nivel": 5,
+    "texto": "Evento que gera impacto sobre toda a entidade ou representa perda de disponibilidade, confidencialidade e/ou integridade causando prejuízos de forma generalizada, inviabilizando todas as funções primárias ou propor- cionando perceção negativa e/ou causa efeitos adversos muito graves ou catastróficos a indivíduos terceiros, outras empresas ou o País."
+   },
+   {
+    "nivel": 4,
+    "texto": "Evento que gera impacto sobre vários grupos ou representa perda de disponibilidade, confidencialidade e/ou integridade prejudicando as funções primárias de trabalho de múltiplas áreas da organização e/ou causa efeitos adversos graves a indivíduos ter- ceiros, outras empresas ou o País."
+   },
+   {
+    "nivel": 3,
+    "texto": "Evento que gera impacto sobre um grupo relevante dentro da entidade ou representa perda de disponibilidade, confidencialidade e/ou integridade prejudicando as funções primárias de trabalho e/ou causa efeitos adversos a indivíduos terceiros, outras empresas ou o País."
+   },
+   {
+    "nivel": 2,
+    "texto": "Evento que gera impacto sobre um pequeno grupo dentro da entidade ou representa perda de disponibilidade, confidencialidade e/ou integridade prejudicando as funções secundárias de trabalho, não sendo bastante para intervir nas funções principais, e/ou causar efeitos adversos limitados a indivíduos terceiros, outras empresas ou o País."
+   },
+   {
+    "nivel": 1,
+    "texto": "Evento que gera impacto sobre apenas uma pessoa ou representa perda de disponibilidade, confidencialidade e/ou integridade que não necessita de intervenção ou paralisação imediata."
+   }
+  ]
+ }
+}

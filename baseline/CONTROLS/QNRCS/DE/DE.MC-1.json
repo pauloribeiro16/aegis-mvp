@@ -1,0 +1,41 @@
+{
+ "control_id": "DE.MC-1",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "DE — Detetar",
+ "category": "DE.MC — Monitorização Contínua",
+ "subcategory_id": "DE.MC-1",
+ "subcategory_text": "As redes e sistemas de informação são monitorizados para detetar potenciais incidentes.",
+ "description": "DE.MC-1 — As redes e sistemas de informação são monitorizados para detetar potenciais incidentes. Descrição A entidade efetua a monitorização da sua rede e dos seus sistemas de informação, incluindo nos seus sistemas de IA e outros, incluindo a ligação com sistemas externos dos quais depende, como serviços de computação em nuvem. A monitorização está integrada com o processo de gestão e correlação de eventos de segurança. A monitorização e avaliação permitem que a entidade verifique a necessidade de correções, melhorias e, quando necessário, as comunique às partes interessadas relevantes.",
+ "informative_references": [
+  "ISO/IEC 27001:8.1",
+  "ISO/IEC 27001:9.1",
+  "ISO/IEC 27001:9.2",
+  "ISO/IEC 27002:5.22",
+  "ISO/IEC 27002:5.7",
+  "ISO/IEC 27002:8.12",
+  "ISO/IEC 27002:8.15",
+  "ISO/IEC 27002:8.16",
+  "ISO/IEC 27002:8.17",
+  "ISO/IEC 27002:8.21",
+  "ISO/IEC 27002:8.8",
+  "NIST SP 800-53:SC-7"
+ ],
+ "mapped_nist_csf": [
+  "DE.CM-01"
+ ],
+ "mapped_cyfun": [
+  "DE.CM-01"
+ ],
+ "mapped_cis": [
+  "1",
+  "10",
+  "13",
+  "8"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

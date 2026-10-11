@@ -1,0 +1,35 @@
+{
+ "control_id": "ID.MC-2",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "ID — Identificar",
+ "category": "ID.MC — Melhoria Contínua",
+ "subcategory_id": "ID.MC-2",
+ "subcategory_text": "São identificadas melhorias a partir de testes e exercícios de cibersegurança.",
+ "description": "ID.MC-2 — São identificadas melhorias a partir de testes e exercícios de cibersegurança. A entidade realiza testes e exercícios de cibersegurança, incluindo com partes interessadas, quando se justificar, para identificar pontos de melhoria. A entidade garante que Planos de Reposta a Incidentes, Planos de Recuperação de Desastres, e Planos de Continuidade de Negócio estabelecidos são testados, para que se possa determinar a eficácia, prontidão de execução dos mesmos e identificar possíveis pontos de falha.",
+ "informative_references": [
+  "ISO/IEC 27001:6.1.3",
+  "ISO/IEC 27001:7.5.2",
+  "ISO/IEC 27001:8.1",
+  "ISO/IEC 27001:8.3",
+  "ISO/IEC 27002:5.26",
+  "ISO/IEC 27002:5.29",
+  "NIST SP 800-53:CP-4",
+  "NIST SP 800-53:IR-3",
+  "NIST SP 800-53:PM-14"
+ ],
+ "mapped_nist_csf": [
+  "ID.IM-02"
+ ],
+ "mapped_cyfun": [
+  "ID.IM-02"
+ ],
+ "mapped_cis": [
+  "18"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

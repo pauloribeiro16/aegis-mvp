@@ -1,0 +1,37 @@
+{
+ "control_id": "DE.AE-1",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "DE — Detetar",
+ "category": "DE.AE — Anomalias e Eventos",
+ "subcategory_id": "DE.AE-1",
+ "subcategory_text": "Os eventos detetados são analisados.",
+ "description": "DE.AE-1 — Os eventos detetados são analisados. A entidade implementa um processo de gestão e de correlação de eventos de segurança que: 1) Suporta o seu processo de análise e tratamento de eventos; 2) Suporta o processo de identificação de possíveis incidentes.",
+ "informative_references": [
+  "ISO/IEC 27001:10.2",
+  "ISO/IEC 27001:8.1",
+  "ISO/IEC 27001:9.1",
+  "ISO/IEC 27002:5.24",
+  "ISO/IEC 27002:5.25",
+  "ISO/IEC 27002:5.7",
+  "ISO/IEC 27002:8.15",
+  "NIST SP 800-53:SI-4(2)"
+ ],
+ "mapped_nist_csf": [
+  "DE.AE-02"
+ ],
+ "mapped_cyfun": [
+  "DE.AE-02"
+ ],
+ "mapped_cis": [
+  "1",
+  "13",
+  "15",
+  "8"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

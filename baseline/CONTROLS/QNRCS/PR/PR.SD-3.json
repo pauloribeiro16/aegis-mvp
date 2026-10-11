@@ -1,0 +1,47 @@
+{
+ "control_id": "PR.SD-3",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "PR — Proteger",
+ "category": "PR.SD — Segurança de Dados",
+ "subcategory_id": "PR.SD-3",
+ "subcategory_text": "A entidade implementa proteções que evitem exfiltração de dados.",
+ "description": "PR.SD-3 — A entidade implementa proteções que evitem exfiltração de dados. A entidade implementa controlos de segurança nas fronteiras das suas instalações ou das suas redes e sistemas de informação, para detetar acessos e atividades não autorizadas e impedir a exfil- tração não autorizada de dados. É definido o âmbito de atuação e frequência da aplicação, com o objetivo de se adequar a mitigação do risco associado. Este risco deve ser calculado tendo por base a classificação de confidencialidade da informação.",
+ "informative_references": [
+  "ISO/IEC 27001:8.1",
+  "ISO/IEC 27002:5.10",
+  "ISO/IEC 27002:5.13",
+  "ISO/IEC 27002:5.14",
+  "ISO/IEC 27002:5.15",
+  "ISO/IEC 27002:5.3",
+  "ISO/IEC 27002:6.1",
+  "ISO/IEC 27002:6.2",
+  "ISO/IEC 27002:6.5",
+  "ISO/IEC 27002:6.6",
+  "ISO/IEC 27002:7.5",
+  "ISO/IEC 27002:7.6",
+  "ISO/IEC 27002:7.8",
+  "ISO/IEC 27002:8.11",
+  "ISO/IEC 27002:8.12",
+  "ISO/IEC 27002:8.18",
+  "ISO/IEC 27002:8.2",
+  "ISO/IEC 27002:8.20",
+  "ISO/IEC 27002:8.22",
+  "ISO/IEC 27002:8.24",
+  "ISO/IEC 27002:8.26",
+  "ISO/IEC 27002:8.3",
+  "ISO/IEC 27002:8.4"
+ ],
+ "mapped_nist_csf": [
+  "PR.DS-02"
+ ],
+ "mapped_cyfun": [],
+ "mapped_cis": [
+  "3"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

@@ -1,0 +1,29 @@
+{
+ "control_id": "ID.GA-5",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "ID — Identificar",
+ "category": "ID.GA — Gestão de Ativos",
+ "subcategory_id": "ID.GA-5",
+ "subcategory_text": "Os ativos são classificados de acordo com a sua criticidade.",
+ "description": "ID.GA-5 — Os ativos são classificados de acordo com a sua criticidade. A entidade classifica os seus ativos de acordo com a criticidade e valor que estes ativos representam para si. No processo de inventariação, a entidade: 1 — Identifica um método de classificação de ativos que seja aprovado internamente; 2 — Garante que os responsáveis pelos ativos os classificam de acordo com a importância dos mesmos para a entidade.",
+ "informative_references": [
+  "ISO/IEC 27002:5.12",
+  "ISO/IEC 27002:5.9",
+  "ISO/IEC 27002:8.6"
+ ],
+ "mapped_nist_csf": [
+  "ID.AM-05"
+ ],
+ "mapped_cyfun": [
+  "ID.AM-05"
+ ],
+ "mapped_cis": [
+  "3"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

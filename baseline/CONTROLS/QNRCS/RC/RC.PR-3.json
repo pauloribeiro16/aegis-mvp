@@ -1,0 +1,19 @@
+{
+ "control_id": "RC.PR-3",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "RC — Recuperar",
+ "category": "RC.PR — Execução do Plano de Recuperação",
+ "subcategory_id": "RC.PR-3",
+ "subcategory_text": "A integridade das cópias de segurança e de outros ativos de restauro é verificada antes da sua utilização.",
+ "description": "RC.PR-3 — A integridade das cópias de segurança e de outros ativos de restauro é verificada antes da sua utilização. A entidade verifica a integridade e autenticidade das cópias de segurança e de outros ativos usados no âmbito da recuperação pós-incidentes, antes destes serem colocados novamente em operação. Esta verificação assegura que os elementos para recuperação não estão comprometidos ou corrompidos, reduzindo o risco de prolongar o tempo de recuperação ou situações de reincidência de incidentes.",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

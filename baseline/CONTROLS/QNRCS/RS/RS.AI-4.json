@@ -1,0 +1,49 @@
+{
+ "control_id": "RS.AI-4",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "RS — Responder",
+ "category": "RS.AI — Análise de Incidentes",
+ "subcategory_id": "RS.AI-4",
+ "subcategory_text": "O impacto do incidente é estimado e validado.",
+ "description": "RS.AI-4 — O impacto do incidente é estimado e validado. No processo de categorização dos incidentes, a entidade avalia o impacto que os incidentes causam aos seus ativos e, consequentemente, à sua operação, utilizando essa avaliação para definir qual a severidade a atribuir ao incidente.",
+ "informative_references": [
+  "ISO/IEC 27001:4.1",
+  "ISO/IEC 27001:9.1",
+  "ISO/IEC 27002:5.25",
+  "ISO/IEC 27002:5.27",
+  "ISO/IEC 27002:5.29",
+  "ISO/IEC 27002:5.30",
+  "ISO/IEC 27002:5.7"
+ ],
+ "mapped_nist_csf": [
+  "RS.AN-08"
+ ],
+ "mapped_cyfun": [
+  "8.3",
+  "As",
+  "Comunicação",
+  "Incidentes:",
+  "RS.AN-08",
+  "RS.NC-Notificação",
+  "a",
+  "as",
+  "atividades",
+  "com",
+  "coordenadas",
+  "de",
+  "e",
+  "incidentes",
+  "interessadas",
+  "partes",
+  "resposta",
+  "são",
+  "—"
+ ],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

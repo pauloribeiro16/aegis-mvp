@@ -1,0 +1,19 @@
+{
+ "control_id": "PR.RI-1",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "PR — Proteger",
+ "category": "PR.RI — Resiliência da Infraestrutura Tecnológica",
+ "subcategory_id": "PR.RI-1",
+ "subcategory_text": "A entidade protege a integridade das redes de comunicações.",
+ "description": "PR.RI-1 — A entidade protege a integridade das redes de comunicações. A integridade das redes de comunicações é protegida através da sua segregação e segmentação. A rede de comunicações é desenhada de forma a não ser possível aceder-se a qualquer sistema, a partir de qualquer ponto da mesma. São criadas zonas de segurança com propósitos identificados e com barreiras bem definidas e forçadas por equipamentos de rede de comunicações com capacidade para o efeito (routers, gateways, firewalls, entre outros). As segregações da rede de comunicação são documentadas em políticas que definam o seu modelo de governação, nomeadamente, que autorizações são necessárias para a aprovação de novos fluxos e que fluxos entre zonas são pré-aprovados. Os fluxos de informação entre sistemas obrigam a autorizações específicas e conformidade com as políticas definidas para o efeito. Exemplos do que as restrições de fluxos incluem: 1) Impedimentos de transmissão de informação sensível em claro para a Internet; 2) Bloqueio de tráfego externo que indica ser interno (forjado); 3) Restrição de acessos diretos à Internet que não sejam feitos através de um proxy corporativo; 4) Limitação de transferências de informação, com base em estruturas de dados e conteúdos. O controlo dos fluxos de comunicação é efetuado com base nas características da informação e no caminho que a mesma efetua ao longo do seu transporte. A aplicação de restrições deve ser efetuada nos equipamentos de fronteira, como routers, firewalls ou proxies. Os fluxos regulam a transferência 20 de informação e os caminhos que podem ser abertos dentro de cada sistema ou entre sistemas. Estes são controlados operacionalmente e são sempre requeridas as autorizações prévias para que possam ser alterados. Referências ISO/IEC 27001:2022 — 8.1 ISO/IEC 27002:2022 — 5.14, 5.37, 8.8, 8.11, 8.16, 8.20, 8.21, 8.22, 8.23, 8.26 NIST CSF 2.0-PR.IR-01 CIS CSC v8.1 — 3, 4, 7, 10, 12, 13 CyFun 2025-PR.IR-01",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

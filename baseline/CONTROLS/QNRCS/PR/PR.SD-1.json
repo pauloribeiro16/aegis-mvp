@@ -1,0 +1,19 @@
+{
+ "control_id": "PR.SD-1",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "PR — Proteger",
+ "category": "PR.SD — Segurança de Dados",
+ "subcategory_id": "PR.SD-1",
+ "subcategory_text": "A entidade protege a confidencialidade, integridade e disponibilidade dos dados em repouso.",
+ "description": "PR.SD-1 — A entidade protege a confidencialidade, integridade e disponibilidade dos dados em repouso. Descrição As redes e sistemas de informação protegem a confidencialidade, integridade e disponibilidade dos dados armazenados. Referências ISO/IEC 27001:2022 — 8.1 ISO/IEC 27002:2022 — 5.10, 8.11, 8.17 NIST CSF 2.0-PR.DS-01 CIS CSC v8.1 — 3 CyFun 2025-PR.DS-01",
+ "informative_references": [],
+ "mapped_nist_csf": [],
+ "mapped_cyfun": [],
+ "mapped_cis": [],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

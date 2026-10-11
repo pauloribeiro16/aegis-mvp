@@ -1,0 +1,33 @@
+{
+ "control_id": "ID.GA-9",
+ "framework": "QNRCS",
+ "version": "Regulamento n.º 756/2026 (DR 2.ª série 118, 22-06-2026)",
+ "function": "ID — Identificar",
+ "category": "ID.GA — Gestão de Ativos",
+ "subcategory_id": "ID.GA-9",
+ "subcategory_text": "A entidade implementa um processo de gestão de alterações.",
+ "description": "ID.GA-9 — A entidade implementa um processo de gestão de alterações. A entidade implementa um processo formal de gestão de alterações, assegurando que todas as alterações nos sistemas de informação, planeadas ou não planeadas, e que possam ter impacto na infraes- trutura, sistemas, aplicações, serviços ou processos internos, são geridas de forma controlada e segura. As alterações incluem, mas não se limitam a:  Atualizações de software, patches de segurança e correções de vulnerabilidades;  Alteração de configurações de servidores, redes ou bases de dados;  Implementação de novas políticas de segurança, como regras de firewall;  Alteração de permissões de acesso para utilizadores:  Substituição ou atualização de hardware;  Introdução de novas aplicações ou descontinuação de sistemas antigos.",
+ "informative_references": [
+  "ISO/IEC 27001:7.5.3",
+  "ISO/IEC 27001:8.1",
+  "ISO/IEC 27002:8.19",
+  "ISO/IEC 27002:8.32",
+  "ISO/IEC 27002:8.33",
+  "ISO/IEC 27002:8.9",
+  "NIST SP 800-53:CM-9"
+ ],
+ "mapped_nist_csf": [
+  "ID.RA-07"
+ ],
+ "mapped_cyfun": [],
+ "mapped_cis": [
+  "12",
+  "4",
+  "5"
+ ],
+ "implementation_examples": [],
+ "assessment_objectives": [],
+ "related_controls": [],
+ "source_url": "https://www.cncs.gov.pt/pt/quadro-nacional",
+ "source_version": "QNRCS (Regulamento n.º 756/2026; base: DL 125/2025 — RJC, transposição NIS 2)"
+}

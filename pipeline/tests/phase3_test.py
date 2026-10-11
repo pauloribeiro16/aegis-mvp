@@ -794,3 +794,17 @@ if __name__ == "__main__":
             print(f"  [FAIL] {name}: {type(e).__name__}: {e}")
     print(f"\n{'FAIL' if failures else 'OK'} — {failures} failure(s)")
     sys.exit(1 if failures else 0)
+
+
+def test_goal_anchors_carry_pf_for_gdpr_and_not_for_cra() -> None:
+    """Onda A (2026-10-11): o eixo PF tinha sido esquecido — goal_anchors()
+    lia só nist_csf e toda a cadeia (goals → fase 2 → matriz → packs) nascia
+    CSF-only. R8: PF acompanha obrigações RGPD; as outras regulações não
+    publicam PF."""
+    from aegis_pipeline.guards.controls import goal_anchors
+
+    gdpr = goal_anchors(REPO, "D-01.1", ["SG-D-01.1.GDPR"])
+    assert any(re.match(r"[A-Z]{2}\.[A-Z]{2}-P\d+$", a) for a in gdpr), gdpr
+    assert "PR.DS-P1" in gdpr and "PR.PO-P3" in gdpr
+    cra = goal_anchors(REPO, "D-01.1", ["SG-D-01.1.CRA"])
+    assert cra and not any("-P" in a for a in cra), cra

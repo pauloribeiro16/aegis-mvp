@@ -145,17 +145,22 @@ def _sr(repo: Path, reg: str, sr_id: str) -> dict:
 
 
 def goal_anchors(repo: Path, sd_id: str, baseline_sources: list[str]) -> list[str]:
-    """CSF 2.0 anchors for one goal row (§3 column): ordered union of the
-    nist_csf sets of the source_SRs of each cited Sub-SO (dedup, stable)."""
+    """Published anchors for one goal row (§3 column): the ordered union of the
+    nist_csf sets of the source_SRs of each cited Sub-SO, plus the nist_pf set
+    of GDPR-derived sources (R8 — PF accompanies GDPR obligations only; the
+    other regulations publish no PF, so nothing else may cite it)."""
     out: list[str] = []
     for bs in baseline_sources:
         reg = bs.rsplit(".", 1)[1].strip("` ")
         if reg not in REGULATIONS:
             raise ValueError(f"{sd_id}: Baseline source {bs!r} ends in unknown regulation {reg!r}")
+        axes = ["nist_csf"] + (["nist_pf"] if reg == "GDPR" else [])
         for sr_id in sources_of(repo, sd_id, reg):
-            for c in _sr(repo, reg, sr_id).get("nist_csf") or []:
-                if c not in out:
-                    out.append(c)
+            sr = _sr(repo, reg, sr_id)
+            for ax in axes:
+                for c in sr.get(ax) or []:
+                    if c not in out:
+                        out.append(c)
     return out
 
 

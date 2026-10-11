@@ -85,6 +85,17 @@ PROPOSED. Closing it needs the human verdicts
 (`steps/phase3/round1_verdicts.json`) + the `G-P3-A` marker, then
 `p3a_org` → `p3a_weave` → `p3a_gate` complete the rehearsal.
 
+## Finding F2 — the proposals skipped the secure-design principles layer (researcher observation)
+
+The generated proposals connect objective → published anchors directly; the
+**PRIN-ENG-01..07 principles layer** (Phase 2's Doc02 principles, present in the
+matrix as `PRINCIPLE_MAPPING.md` with unset judgement columns) was not
+attributed. The researcher flagged it on the decision packet. Fix applied: every
+packet item now names the principle(s) it serves (or states "process duty — no
+design principle"), and the full principle attribution enters at the weave —
+each accepted constraint is absorbed by a product card and takes the principle
+mark there. The 18 hand-made attributions are PROPOSALS the round validates.
+
 ## Pending (the chain stops at the human round by design)
 
 - `p3a_propose` (job 2001126) → then **the human round**: verdicts

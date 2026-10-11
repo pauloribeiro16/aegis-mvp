@@ -489,8 +489,11 @@ def check_driver_symmetry(case: Case) -> list[Finding]:
 
 # The anchor list follows the driver set (`→ PRIN-ENG-01 → CSF ...`), so it sits
 # *after* the segment match and must be read from the line, not from the match.
-RE_ANCHOR_RUN = re.compile(r"CSF\s+((?:[A-Z]{2}\.[A-Z]{2}-\d{2}(?:\s*,\s*)?)+)")
-RE_ANCHOR_ID = re.compile(r"\b[A-Z]{2}\.[A-Z]{2}-\d{2}\b")
+# PF ids (`PR.DS-P1`) ride the same published sets as CSF since the anchor
+# column carries both axes (R8 — PF accompanies GDPR-derived obligations).
+RE_ANCHOR_RUN = re.compile(r"CSF\s+((?:[A-Z]{2}\.[A-Z]{2}-(?:\d{2}|P\d+)(?:\s*,\s*)?)+)")
+RE_ANCHOR_ID = re.compile(r"\b[A-Z]{2}\.[A-Z]{2}-(?:\d{2}|P\d+)\b")
+RE_ANCHOR_PF = re.compile(r"^([A-Z]{2}\.[A-Z]{2}-P\d+)$")
 
 
 def check_anchor_provenance(case: Case) -> list[Finding]:

@@ -7631,3 +7631,38 @@ sources:
       -- an audit of 50 popular repositories found none reporting failed or
       skipped runs -- so the repo should claim that as a methodological
       strength rather than treat it as a weakness.
+
+  - id: S-384
+    key: nist-csf2-maturity-tool-v1-0-3
+    title: "NIST CSF 2.0 Maturity Tool v1.0.3 (third-party workbook)"
+    org: "John Masserini (independent) — NOT a NIST publication"
+    kind: practitioner
+    evidence: PRACTITIONER
+    url: https://www.nist.gov/cyberframework
+    published: 2024-03-01
+    retrieved: 2026-10-11
+    recheck_after: never
+    supports: [OR-005]
+    status: active
+    quote: >-
+      Policy Maturity: How well do your corporate policies, procedures,
+      standards, and guidelines satisfy the NIST CSF requirements? Practice
+      Maturity: How well do your actual operational practices satisfy the NIST
+      CSF requirements regardless of what your policies & standards say?
+    notes: >-
+      A practitioner spreadsheet, not a NIST document -- the Introduction
+      disclaims NIST authorship and the References sheet lists GRC vendor
+      frameworks. Citable as a METHOD reference for maturity scoring; never as
+      an authority for what NIST says. Carries a 1-5 named scale (Initial /
+      Repeatable / Defined / Managed / Optimizing) scored on two independent
+      axes (Policy, Practice) with per-subcategory reasoning, a per-category
+      editable Target Score, and an unweighted mean roll-up. Its in-workbook
+      scores are declared demonstration data (Introduction!H1) and the Privacy
+      rows satisfy policy+practice=5 exactly -- not a result. Inventory
+      comparison is exact both ways (CSF 106/106, PF 100/100), so it adds no
+      controls to baseline/CONTROLS/. Contains no QNRCS, no tier and no
+      entity-size classification. Independently dates the Privacy Framework
+      to 1.0 (January 2020), contradicting the "PF 1.1" label inherited by 266
+      baseline files from the frozen dashboards. Local copy:
+      docs/research/maturity/NIST-CSF2.0-Maturity-Tool-v1.0.3.xlsx (recheck_after
+      never: a frozen v1.0.3 artefact).

@@ -18,6 +18,7 @@ Usage: python3 scripts/qnrcs_maturity.py --repo <repo> --run <run_dir> [--tier b
 from __future__ import annotations
 
 import argparse
+import re
 import json
 import sys
 from pathlib import Path
@@ -46,6 +47,55 @@ def run_anchor_sets(repo: Path, run: Path) -> dict[str, set[str]]:
     return out
 
 
+def pf_maturity(repo: Path, anchors: dict[str, set[str]]) -> dict:
+    """PF maturity: the run's PF anchors vs the full NIST_PF referential,
+    grouped by the referential's own function folders."""
+    pf_dir = repo / "baseline" / "CONTROLS" / "NIST_PF"
+    universe: dict[str, dict] = {}
+    for path in pf_dir.rglob("*.json"):
+        doc = json.loads(path.read_text(encoding="utf-8"))
+        universe[doc.get("control_id") or path.stem] = {
+            "function": doc.get("function") or path.parent.name,
+            "text": doc.get("subcategory_text") or "",
+        }
+    all_pf = {a for s in anchors.values() for a in s if re.match(r"[A-Z]{2}\.[A-Z]{2}-P\d+$", a)}
+    by_fn: dict[str, dict] = {}
+    for cid, meta in sorted(universe.items()):
+        fn = str(meta["function"]).split(" ")[0]
+        stat = by_fn.setdefault(fn, {"n": 0, "covered": 0})
+        stat["n"] += 1
+        stat["covered"] += int(cid in all_pf)
+    uncovered = [
+        {"id": cid, "titulo": meta["text"]}
+        for cid, meta in sorted(universe.items()) if cid not in all_pf
+    ]
+    n = len(universe)
+    covered_total = n - len(uncovered)
+    return {
+        "n_controlos": n,
+        "cobertos": covered_total,
+        "cobertura_pct": round(100 * covered_total / max(n, 1), 1),
+        "por_funcao": by_fn,
+        "not_cobertos": uncovered,
+        "nota": "PF só acompanha fontes RGPD (R8); a cobertura mede os PF ids que os requisitos publicam contra o referencial NIST_PF completo",
+    }
+
+
+def tier_summary(extract_path: Path, controls: list[dict]) -> dict:
+    """Measures per tier per QNRCS objective — o comparativo por nível."""
+    data = json.loads(extract_path.read_text(encoding="utf-8"))
+    # os per-control JSONs guardam o objectivo no campo function ("GR — Gerir")
+    obj_of = {c["control_id"]: str(c["function"]).split(" — ")[0] for c in controls}
+    out: dict[str, dict] = {}
+    for tier, measures in data["medidas_essenciais_importantes"].items():
+        for m in measures:
+            oid = obj_of.get(m.get("control_id"))
+            if oid:
+                out.setdefault(oid, {"basico": 0, "substancial": 0, "elevado": 0})
+                out[oid][tier] = out[oid].get(tier, 0) + 1
+    return out
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", type=Path, default=REPO_DEFAULT)
@@ -62,6 +112,7 @@ def main() -> int:
     tier_measures = tiers_doc["tiers"][tier]
 
     anchors = run_anchor_sets(repo, run)
+    pf = pf_maturity(repo, anchors)
     all_anchors: set[str] = set().union(*anchors.values()) if anchors else set()
     csf_anchors = {a for a in all_anchors if not a.endswith(tuple(f"-P{i}" for i in range(1, 20)))}
 
@@ -71,6 +122,9 @@ def main() -> int:
             continue
         controls.append(json.loads(path.read_text(encoding="utf-8")))
 
+    tiers_per_objective = tier_summary(
+        repo / "docs" / "research" / "qnrcs" / "QNRCS_Reg756_2026_extract.json", controls
+    )
     covered_by_fn: dict[str, dict] = {}
     gaps: list[dict] = []
     per_control = []
@@ -117,6 +171,15 @@ def main() -> int:
             "objectivos": objectives,
         },
         "gaps_do_tier": gaps,
+        "pf": pf,
+        "tiers": {
+            "descricoes": {
+                "basico": "medidas mínimas esperadas de qualquer entidade — o piso nacional",
+                "substancial": "medidas para entidades importantes (Anexo III do Reg. 756/2026)",
+                "elevado": "medidas para entidades essenciais — o tecto do quadro",
+            },
+            "por_objectivo": tiers_per_objective,
+        },
         "metodo": "um controlo QNRCS conta-se coberto quando algum dos seus mapped_nist_csf está no conjunto de âncoras publicado pela corrida (goal_anchors, CSF+PF)",
     }
     out_dir = run / "outputs" / "phase3" / "maturity"

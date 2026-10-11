@@ -26,43 +26,11 @@
   "source_id": "QNRCS-756/2026",
   "evidence": "PRIMARY"
  },
- "levels": [
-  {
-   "level": 1,
-   "name": "Initial",
-   "policy": "Policy or standard does not exist or is not formally approved by management.",
-   "practice": "Standard process does not exist."
-  },
-  {
-   "level": 2,
-   "name": "Repeatable",
-   "policy": "Policy or standard exists, but has not been reviewed in more than 2 years",
-   "practice": "Ad-hoc process exists and is done informally."
-  },
-  {
-   "level": 3,
-   "name": "Defined",
-   "policy": "Policy and standard exists with formal management approval. Policy exceptions are documented, approved and occur less than 5% of the time.",
-   "practice": "Formal process exists and is documented. Evidence can be provided for most activities. Less than 10% exceptions."
-  },
-  {
-   "level": 4,
-   "name": "Managed",
-   "policy": "Policy and standard exists with formal management approval. Policy exceptions are documented, approved and occur less than 3% of the time.",
-   "practice": "Formal process exists and is documented. Evidence can be provided for all activities and detailed metrics of the process are captured and reported. Minimal target for metrics has been established. Less than 5% of process exceptions occur with minimal reoccurring exceptions."
-  },
-  {
-   "level": 5,
-   "name": "Optimizing",
-   "policy": "Policy and standard exists with formal management approval. Policy exceptions are documented, approved and occur less than 0.5% of the time.",
-   "practice": "Formal process exists and is documented. Evidence can be provided for all activities and detailed metrics of the process are captured and reported.  Minimal target for metrics has been established and continually improving. Less than 1% of process exceptions occur."
-  }
- ],
  "tiers": [
   {
    "id": "basico",
    "nome": "Básico",
-   "nivel_escala": 2,
+   "state": 1,
    "risco_min": 0,
    "risco_max": 99,
    "n_medidas": 43
@@ -70,7 +38,7 @@
   {
    "id": "substancial",
    "nome": "Substancial",
-   "nivel_escala": 3,
+   "state": 2,
    "risco_min": 100,
    "risco_max": 199,
    "n_medidas": 59
@@ -78,21 +46,13 @@
   {
    "id": "elevado",
    "nome": "Elevado",
-   "nivel_escala": 4,
+   "state": 3,
    "risco_min": 200,
    "risco_max": 1200,
    "n_medidas": 51
   }
  ],
- "tier_mapping": {
-  "map": {
-   "basico": 2,
-   "substancial": 3,
-   "elevado": 4
-  },
-  "basis": "convention, unmeasured",
-  "note": "O nível do tier é uma convenção declarada, não uma medição: Básico ≈ nível 2 (Repetível), Substancial ≈ 3 (Definido), Elevado ≈ 4 (Gerido). O nível 5 (Otimizado) fica fora dos três tiers. Registado em docs/experiments/METRICS.md como convenção."
- },
+ "scale_note": "Escala própria do QNRCS: não implementado · Básico · Substancial · Elevado. O estado de um controlo é o tier mais alto cujas medidas do Anexo III a entidade cumpre. Não há nível 5 (Otimizado) nem certificação: o art. 27.º trata de certificação externa, que não é um estado de implementação.",
  "risk_matrix": {
   "formula": "= Probabilidade \\times Impacto \\times (\\frac{Dimensão}{3}) \\times Tipo \\ de \\ setor",
   "formula_probabilidade": "Pr[Cenário,Ator] = Pr_{apriori} 0.5 + Pr_{CERT.PT} 0.25 + Pr_{peritos} 0.25",
@@ -537,6 +497,33 @@
  },
  "tracks": [
   {
+   "scale": {
+    "kind": "qnrcs",
+    "max": 3,
+    "na_label": "Sem medida",
+    "states": [
+     {
+      "value": 0,
+      "label": "Não implementado",
+      "description": "A entidade não cumpre nenhuma medida do Anexo III para este controlo."
+     },
+     {
+      "value": 1,
+      "label": "Básico",
+      "description": "Cumpre as medidas essenciais do tier básico."
+     },
+     {
+      "value": 2,
+      "label": "Substancial",
+      "description": "Cumpre o básico e as medidas acrescidas do tier substancial."
+     },
+     {
+      "value": 3,
+      "label": "Elevado",
+      "description": "Cumpre o básico, o substancial e as medidas acrescidas do tier elevado."
+     }
+    ]
+   },
    "core_sheet": "QNRCS — Anexo III",
    "summary_sheet": "QNRCS por categoria",
    "summary_label": "QNRCS — Regulamento n.º 756/2026",
@@ -3815,7 +3802,7 @@
       "substancial": 3,
       "elevado": 1
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -3828,7 +3815,7 @@
       "substancial": 5,
       "elevado": 1
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -3841,7 +3828,7 @@
       "substancial": 3,
       "elevado": 0
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -3854,7 +3841,7 @@
       "substancial": 2,
       "elevado": 0
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -3867,7 +3854,7 @@
       "substancial": 0,
       "elevado": 2
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -3880,7 +3867,7 @@
       "substancial": 4,
       "elevado": 5
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -3893,7 +3880,7 @@
       "substancial": 3,
       "elevado": 6
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -3906,7 +3893,7 @@
       "substancial": 4,
       "elevado": 3
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -3919,7 +3906,7 @@
       "substancial": 1,
       "elevado": 1
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -3932,7 +3919,7 @@
       "substancial": 6,
       "elevado": 7
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -3945,7 +3932,7 @@
       "substancial": 2,
       "elevado": 1
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -3958,7 +3945,7 @@
       "substancial": 2,
       "elevado": 5
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -3971,7 +3958,7 @@
       "substancial": 3,
       "elevado": 3
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -3984,7 +3971,7 @@
       "substancial": 4,
       "elevado": 2
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -3997,7 +3984,7 @@
       "substancial": 5,
       "elevado": 4
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -4010,7 +3997,7 @@
       "substancial": 2,
       "elevado": 3
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -4023,7 +4010,7 @@
       "substancial": 4,
       "elevado": 1
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -4036,7 +4023,7 @@
       "substancial": 0,
       "elevado": 4
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -4049,7 +4036,7 @@
       "substancial": 1,
       "elevado": 0
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -4062,7 +4049,7 @@
       "substancial": 1,
       "elevado": 1
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -4075,7 +4062,7 @@
       "substancial": 2,
       "elevado": 0
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     },
@@ -4088,7 +4075,7 @@
       "substancial": 2,
       "elevado": 1
      },
-     "target": 2,
+     "target": 1,
      "policy": null,
      "practice": null
     }

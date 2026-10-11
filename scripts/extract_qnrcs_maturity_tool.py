@@ -16,7 +16,7 @@ O que difere do workbook NIST, e porquê:
   - **Sem notas de demonstração.** O NIST traz valores inventados para mostrar
     o gráfico; o QNRCS é um regulamento e não traz nada. Todos os controlos
     entram por pontuar — o estado inicial correcto para uma auto-avaliação.
-  - **A escala 1–5 é a mesma** (Inicial → Otimizado), com os textos do
+  - **A escala NÃO é a mesma** (Inicial → Otimizado), com os textos do
     workbook. O que muda são os *níveis* do QNRCS: três tiers cumulativos
     (Básico ⊂ Substancial ⊂ Elevado) que fixam o que se espera de cada
     controlo. Ambos são emitidos.
@@ -33,7 +33,6 @@ from pathlib import Path
 
 REPO_DEFAULT = Path(__file__).resolve().parents[1]
 EXTRACT_REL = "docs/research/qnrcs/QNRCS_Reg756_2026_extract.json"
-CSF_JSON_REL = "docs/research/maturity/csf_maturity_tool.json"
 OUT_REL = "docs/research/qnrcs/qnrcs_maturity_tool.json"
 
 TIER_ORDER = ("basico", "substancial", "elevado")
@@ -44,11 +43,16 @@ TIER_ORDER = ("basico", "substancial", "elevado")
 # silêncio — o tier BASICo ficava com 0 medidas e sem intervalo de risco.
 TIER_NAMES = {"basico": "Básico", "substancial": "Substancial", "elevado": "Elevado"}
 
-# Escala 1–5 partilhada com o workbook NIST. O mapeamento tier → nível é uma
-# CONVENÇÃO declarada, sem base medida: ver METRICS.md. O nível 5 fica fora dos
-# três tiers — o art. 27.º trata de certificação externa, que não é um nível de
-# maturidade operacional.
-TIER_TO_LEVEL = {"basico": 2, "substancial": 3, "elevado": 4}
+# A escala do QNRCS é a DO QNRCS — não a 1–5 do workbook NIST.
+#
+# A escala 1–5 mede um grau de maturidade *de uma medida que já existe*
+# (a política está escrita? o processo é documentado?). O QNRCS não mede isso:
+# pergunta que medidas do Anexo III estão implementadas, e as medidas estão
+# escalonadas por tier. Projectar os tiers na escala 1–5 obrigava a um mapeamento
+# que não tem fonte nenhuma (foi registado em METRICS.md como M-25 e retirado).
+# O estado de um controlo é o tier mais alto cujas medidas a entidade cumpre,
+# mais um estado para "não implementada" — que a escala 1–5 não tinha lugar para.
+TIER_TO_STATE = {"basico": 1, "substancial": 2, "elevado": 3}
 
 # Como o `refs` do extract está organized, e por que ordem se apresenta.
 REF_LABELS = (
@@ -89,7 +93,7 @@ def _tier_doc(measures: list[dict], thresholds: list[dict]) -> list[dict]:
             {
                 "id": tier,
                 "nome": nome,
-                "nivel_escala": TIER_TO_LEVEL[tier],
+                "state": TIER_TO_STATE[tier],
                 "risco_min": thr.get("min"),
                 "risco_max": thr.get("max"),
                 "n_medidas": counts.get(nome, 0),
@@ -153,7 +157,7 @@ def build(repo: Path) -> dict:
             "refs": _fmt_refs(c.get("refs") or {}),
             "measures": measures_by_control.get(c["id"], {}),
             # Sem nota de demonstração: um regulamento não as traz. O alvo por
-            # omissão é o nível do tier básico — a entidade pode mudá-lo.
+            # omissão é o estado do tier básico — a entidade pode mudá-lo.
             "policy_score": None,
             "policy_reasoning": "",
             "practice_score": None,
@@ -171,13 +175,28 @@ def build(repo: Path) -> dict:
                 "name": cat["name"],
                 "n_controls": cat_counts(src, cat["id"]),
                 "n_medidas": counts,
-                "target": TIER_TO_LEVEL["basico"],
+                "target": TIER_TO_STATE["basico"],
                 "policy": None,
                 "practice": None,
             }
         )
 
     track = {
+        "scale": {
+            "kind": "qnrcs",
+            "max": 3,
+            "na_label": "Sem medida",
+            "states": [
+                {"value": 0, "label": "Não implementado",
+                 "description": "A entidade não cumpre nenhuma medida do Anexo III para este controlo."},
+                {"value": 1, "label": "Básico",
+                 "description": "Cumpre as medidas essenciais do tier básico."},
+                {"value": 2, "label": "Substancial",
+                 "description": "Cumpre o básico e as medidas acrescidas do tier substancial."},
+                {"value": 3, "label": "Elevado",
+                 "description": "Cumpre o básico, o substancial e as medidas acrescidas do tier elevado."},
+            ],
+        },
         "core_sheet": "QNRCS — Anexo III",
         "summary_sheet": "QNRCS por categoria",
         "summary_label": "QNRCS — Regulamento n.º 756/2026",
@@ -191,13 +210,6 @@ def build(repo: Path) -> dict:
         "n_controls_with_measures": len(measures_by_control),
         "escalating_controls": sum(1 for m in measures_by_control.values() if len(m) == 3),
     }
-
-    # A escala 1–5 é a do workbook NIST — vai no mesmo sítio para que a página
-    # possa mostrar os textos dos níveis ao lado dos tiers.
-    levels = []
-    csf_json = repo / CSF_JSON_REL
-    if csf_json.exists():
-        levels = json.loads(csf_json.read_text(encoding="utf-8"))["levels"]
 
     return {
         "meta": {
@@ -226,18 +238,14 @@ def build(repo: Path) -> dict:
             "source_id": "QNRCS-756/2026",
             "evidence": "PRIMARY",
         },
-        "levels": levels,
         "tiers": tier_doc,
-        "tier_mapping": {
-            "map": TIER_TO_LEVEL,
-            "basis": "convention, unmeasured",
-            "note": (
-                "O nível do tier é uma convenção declarada, não uma medição: "
-                "Básico ≈ nível 2 (Repetível), Substancial ≈ 3 (Definido), "
-                "Elevado ≈ 4 (Gerido). O nível 5 (Otimizado) fica fora dos três "
-                "tiers. Registado em docs/experiments/METRICS.md como convenção."
-            ),
-        },
+        "scale_note": (
+            "Escala própria do QNRCS: não implementado · Básico · Substancial · "
+            "Elevado. O estado de um controlo é o tier mais alto cujas medidas do "
+            "Anexo III a entidade cumpre. Não há nível 5 (Otimizado) nem "
+            "certificação: o art. 27.º trata de certificação externa, que não é "
+            "um estado de implementação."
+        ),
         "risk_matrix": src["matriz_risco"],
         "public_measures": src["medidas_publicas_relevantes"],
         "tracks": [track],
@@ -274,9 +282,10 @@ def main() -> int:
 
     t = doc["tracks"][0]
     print(f"wrote {out.relative_to(args.repo)}")
-    print(f"  {len(doc['levels'])} níveis (1–5, partilhados com o workbook NIST)")
+    print(f"  escala própria: " + " · ".join(
+        f"{s['value']}={s['label']}" for s in doc["tracks"][0]["scale"]["states"]))
     print(f"  {len(doc['tiers'])} tiers: " + " · ".join(
-        f"{x['nome']} {x['n_medidas']} medidas (risco {x['risco_min']}–{x['risco_max']} → nível {x['nivel_escala']})"
+        f"{x['nome']} {x['n_medidas']} medidas (risco {x['risco_min']}–{x['risco_max']} → estado {x['state']})"
         for x in doc["tiers"]))
     print(f"  {len(t['functions'])} objectivos · {len(t['categories'])} categorias · "
           f"{len(t['subcategories'])} controlos")

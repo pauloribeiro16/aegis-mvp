@@ -876,8 +876,17 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
         for vf in sorted(merged_path.glob("verdicts_*.json")):
             verdicts.extend(json.loads(vf.read_text(encoding="utf-8")))
         by_id = {v["id"]: v for v in verdicts}
-        routed = [dict(by_id.get(r["id"], r)) for r in rows
-                  if by_id.get(r["id"], r).get("verdict") == "No functional carrier (organizational)"]
+        # Merge over the baseline row, not instead of it: the verdict record
+        # carries the verdict and the carrier, the baseline row carries the
+        # summary and the published anchors. Replacing one with the other
+        # silently dropped the anchors, and the pack then showed `_none_` for
+        # every objective the model most needed.
+        routed = []
+        for r in rows:
+            v = by_id.get(r["id"])
+            if v is None or v.get("verdict") != "No functional carrier (organizational)":
+                continue
+            routed.append({**r, **{k: val for k, val in v.items() if val}})
 
         cards_dir = run_dir / "steps" / "phase3" / "cards"
         cards = [json.loads(c.read_text(encoding="utf-8"))["card"]

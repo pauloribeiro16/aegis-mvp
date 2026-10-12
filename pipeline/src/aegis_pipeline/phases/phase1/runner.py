@@ -1213,6 +1213,9 @@ class StepRunner:
 
         self._require(("steps/fact_sheet.yaml",), "G-P1-A")
         rows, _objectives = self._p3_merged_rows()
+        # _p3_merged_rows returns the baseline rows with the verdicts applied; the
+        # gate check_principle_proposals reads `anchors`, so a row that lost them
+        # in the merge would make every anchor look outside the published set.
         routed = [r for r in rows
                   if r["verdict"] == "No functional carrier (organizational)"]
         principles = p3pc.canonical_principles()

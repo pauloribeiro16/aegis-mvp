@@ -167,6 +167,28 @@ def parse_org_card(answer: str, duty: str) -> dict:
     return {"duty": duty, **fields, "_anchor_list": anchors}
 
 
+def resolve_anchor(controls_root: Path, anchor: str) -> str | None:
+    """Resolve one anchor id to a file under `baseline/CONTROLS`, tolerantly.
+
+    The corpus is the authority. NIST CSF 2.0 writes every numeric suffix with a
+    leading zero, and the model writes `GV.RR-2` for `GV.RR-02` often enough to
+    be a format habit rather than a fabrication — the same habit the
+    objective-id spelling normalisation already handles.
+
+    The tolerance is a *lookup*, never a guess: a single-digit suffix is padded
+    only when the padded form resolves to a real file. `GV.RR-2` therefore
+    resolves and `PR.IP-1` does not — CSF 1.1's `PR.IP` has no CSF 2.0
+    counterpart, so padding it would dress a wrong-framework id as a typo and
+    let it past R2. Returns the id that resolved, or None.
+    """
+    if list(controls_root.rglob(f"{anchor}.json")):
+        return anchor
+    m = re.fullmatch(r"(.*?[0-9A-Za-z])-(\d)", anchor)
+    if m and list(controls_root.rglob(f"{m.group(1)}-0{m.group(2)}.json")):
+        return f"{m.group(1)}-0{m.group(2)}"
+    return None
+
+
 def check_org_anchor_files(repo: Path, parsed: dict) -> None:
     """Every cited anchor must exist as a JSON under baseline/CONTROLS (R2)."""
     from aegis_pipeline.guards.quality_gates import check_no_technology
@@ -175,12 +197,16 @@ def check_org_anchor_files(repo: Path, parsed: dict) -> None:
     if findings:
         raise ValueError(f"org card [{parsed['duty']}]: technology vocabulary (R5): {findings}")
     controls_root = repo / "baseline" / "CONTROLS"
+    resolved = []
     for anchor in parsed["_anchor_list"]:
-        hits = list(controls_root.rglob(f"{anchor}.json"))
-        if not hits:
+        hit = resolve_anchor(controls_root, anchor)
+        if hit is None:
             raise ValueError(
                 f"org card [{parsed['duty']}]: anchor {anchor!r} resolves to no file under baseline/CONTROLS (R2)"
             )
+        resolved.append(hit)
+    parsed["_anchor_list"] = resolved
+    parsed["Control Anchors"] = ", ".join(f"`{a}`" for a in resolved)
 
 
 def render_doc03(

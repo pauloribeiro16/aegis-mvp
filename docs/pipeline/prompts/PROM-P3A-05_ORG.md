@@ -3,7 +3,7 @@ ficha_id: PROM-P3A-05
 title: 'Write the organizational requirement for one duty'
 phase_step: 'Phase 3 Part 1 · Organizational lane (wave 5)'
 pattern: 'one structured call per duty'
-version: 1.0.0
+version: 1.1.0
 created: 2026-10-10
 status: ACTIVE
 normative_source:
@@ -39,14 +39,23 @@ normative_source:
 **Requirement Origin:** GDPR Art. 33(1) breach-handling duty; proportionality audit warrant
 **Fit criterion:** A detection with no owner record does not close.
 **Verification Method:** INSPECT
-**Chain:** GDPR Art. 33(1) → `SO-D-04.1-001` → `DE.CM-9`, `GV.RR-2`
-**Control Anchors:** `DE.CM-9`, `GV.RR-2`
+**Chain:** GDPR Art. 33(1) → `SO-D-04.1-001` → `DE.CM-09`, `GV.RR-02`
+**Control Anchors:** `DE.CM-09`, `GV.RR-02`
 **Dependencies:** Stakeholders: founders; Owner: named per requirement; Cadence: per detection; Information Systems / Databases: ; Databases: —
 **Priority:** Must
 ```
 
 ## Rules the output must obey
 
+- **Anchors come only from the `published_anchors` block of the duty.** Every
+  objective in the block lists the anchor set Phase 2 published for it, and no
+  anchor outside those lists exists for this case. A first run produced nothing
+  usable because the pack carried no anchors: the model named them from memory,
+  which meant CSF 1.1 categories (`PR.IP`, `PR.AC`, `PR.PT`) that CSF 2.0
+  renamed. Every numeric suffix in an anchor id is two digits, zero-padded —
+  copy the published list verbatim rather than retyping it. An objective listed
+  with no anchors is a process obligation; say so and name no anchor rather than
+  inventing one.
 - **One requirement per DUTY.** The duty block already merged the rows that
   share the obligation — do not split it back by objective or sub-domain.
 - **The proportional form is in the warrant.** The audit decided the shape the
@@ -78,6 +87,10 @@ anchor, wrong method enum).
 
 Doc 08 wave 5 · ADR-008 D4 · the Case 01 audit (32 rows → 16 duties) and its
 hand-written `Doc03` (the golden).
+
+## Changelog
+
+- 1.1.0 — the worked example carried one-digit anchor suffixes (`DE.CM-9`, `GV.RR-2`) and the model copied them; corrected to `DE.CM-09`, `GV.RR-02` and added the rule that anchors come from the duty's `published_anchors` block. The pack now supplies that block — the first run gave the model no valid anchor to copy.
 
 ## Prompt body
 

@@ -582,6 +582,21 @@ def golden_text(repo: Path) -> str:
     return (repo / "example" / "doc02_adjusted_goals.md").read_text(encoding="utf-8")
 
 
+def _published_anchors(run_dir: Path) -> dict[str, list[str]]:
+    """Objective id -> published control-anchor set, read from Phase 2 column 9.
+
+    The same surface `check_traceability.py` T6 reads, so the anchors the model
+    is offered and the anchors the gate later checks are the same list by
+    construction rather than by two implementations agreeing.
+    """
+    import phase3 as _p3
+
+    doc = run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md"
+    if not doc.is_file():
+        return {}
+    return {o["id"]: o["anchors"] for o in _p3.load_objectives(doc)}
+
+
 def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tuple[list[tuple[str, str]], str]:
     """Return (list of (relpath, content), pack_text) for a step. Deterministic."""
     files: list[tuple[str, str]] = []
@@ -867,14 +882,33 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
             f"with published anchors, the frozen V0 pool, and the verdicts recorded "
             "for them — propose ONLY for the rows whose Action asks for a proposal.\n"))
     elif step.startswith("p3a_org:"):
-        # Organizational pack: one duty — its objectives, their discharges and
-        # published anchors, and the audited disposition. The audit is human
-        # input; the pack carries it verbatim.
+        # Organizational pack: one duty — its objectives, the audited
+        # disposition, and the PUBLISHED anchor set of every objective it
+        # covers. The audit is human input and is carried verbatim.
+        #
+        # The anchors are the load-bearing part and they used to be missing: a
+        # first cluster run returned carried=0/21 because the model had no valid
+        # anchor on the page and reached for memory instead — copying the
+        # 1-digit example from the ficha and naming CSF 1.1 categories
+        # (PR.IP, PR.AC, PR.PT) that CSF 2.0 renamed. All 36 objectives across
+        # the 21 ORG duties do carry a published set, so the pack now reads it
+        # from the Phase 2 deliverable and hands it over.
         duty_slug = step.split(":", 1)[1]
         duties_path = run_dir / "steps" / "phase3" / "duties.json"
         duties = json.loads(duties_path.read_text(encoding="utf-8")) if duties_path.is_file() else []
         duty = next((d for d in duties if d.get("slug") == duty_slug), None)
-        body = json.dumps(duty, indent=1, ensure_ascii=False) if duty else f"(duty {duty_slug} not found)"
+        if duty:
+            anchors_by_obj = _published_anchors(run_dir)
+            for oid in duty.get("objectives", []):
+                hits = anchors_by_obj.get(oid, [])
+                duty.setdefault("published_anchors", {})[oid] = hits
+                if not hits:
+                    duty.setdefault("anchor_note", []).append(
+                        f"{oid}: no published anchor set — this objective is a process "
+                        f"obligation and its anchors belong in the ORGANIZATIONAL lane")
+            body = json.dumps(duty, indent=1, ensure_ascii=False)
+        else:
+            body = f"(duty {duty_slug} not found)"
         fact_sheet = run_dir / "steps" / "fact_sheet.yaml"
         files.append((
             f"pack-p3a_org/{duty_slug}/DUTY.md",

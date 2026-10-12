@@ -929,13 +929,18 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
         # name it (or are unassigned) — the preconditions/extensions answer them.
         card_id = step.split(":", 1)[1]
         card_path = run_dir / "steps" / "phase3" / "cards" / f"{card_id.replace('.', '_')}.json"
-        round_path = run_dir / "steps" / "phase3" / "round1_verdicts.json"
+        # The APPLIED round state, not the verdict file: `round1_state.json` is
+        # what the stage itself updates, and its carriers are rewritten to the
+        # allocated R<n.m> before this pack is built. Reading the verdict file
+        # here was a second source disagreeing with the first — the stage routed
+        # 12 proposals to 12 cards while this pack handed the model zero of
+        # them, and the model correctly answered "nothing routed".
+        round_path = run_dir / "steps" / "phase3" / "round1_state.json"
         card = card_path.read_text(encoding="utf-8") if card_path.is_file() else "(card missing)"
         accepted = []
         if round_path.is_file():
             state = json.loads(round_path.read_text(encoding="utf-8"))
-            accepted = [p for p in state.get("accepted", [])
-                        if p.get("carrier") == card_id or p.get("carrier") in (None, "", "—", "`—`")]
+            accepted = [p for p in state.get("accepted", []) if p.get("carrier") == f"`{card_id}`"]
         files.append((
             f"pack-p3a_weave/{card_id.replace('.', '_')}/CARD.json",
             card,
@@ -943,7 +948,7 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
         files.append((
             f"pack-p3a_weave/{card_id.replace('.', '_')}/ACCEPTED_CONSTRAINTS.md",
             json.dumps(accepted, indent=1, ensure_ascii=False) if accepted
-            else "(no accepted constraints name this card — return the card unchanged, with empty Preconditions additions)",
+            else "(no accepted constraints name this card)",
         ))
         files.insert(0, (
             f"pack-p3a_weave/{card_id.replace('.', '_')}/BUILD_MANIFEST.md",

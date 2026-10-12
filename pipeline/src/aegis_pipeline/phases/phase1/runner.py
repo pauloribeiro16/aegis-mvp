@@ -1410,6 +1410,11 @@ class StepRunner:
         for proposal in accepted:
             if (proposal.get("carrier") or "").strip("`") == "new":
                 proposal["carrier"] = f"`{card_by_objective[proposal['objective']]}`"
+        # Persist the rewrite: the weave pack is built inside `_call` from
+        # round1_state.json, and an in-memory-only rewrite meant the stage
+        # routed 12 proposals while the pack handed the model zero of them.
+        (self.run_dir / "steps" / "phase3" / "round1_state.json").write_text(
+            json.dumps(state, indent=1, ensure_ascii=False), encoding="utf-8")
 
         card_ids = {p.stem: p.stem.replace("_", ".") for p in card_files}
 

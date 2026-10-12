@@ -118,7 +118,12 @@ def group_duties(rows: list[dict], duty_map: dict[str, dict]) -> list[dict]:
         raise ValueError(f"duty grouping: {len(uncovered)} organizational rows not in the duty map: {uncovered[:8]}")
     ordered = sorted(duties.values(), key=lambda d: (min(d["objectives"]), d["duty"]))
     for duty in ordered:
-        duty["subdomain"] = duty["objectives"][0].split("-")[1]  # D-XX.Y do 1.º objectivo
+        # `PO-D-01.2-001`.split("-")[1] is "D", not the sub-domain — one duty
+        # rendered every card as ORG-D-NNN and the canonical ORG-D-XX.Y-NNN shape
+        # was unreachable. Duties cut across sub-domains (one card routed four
+        # objectives from D-02 and D-10), so the id names the sub-domain of the
+        # FIRST objective, which is the allocation rule the renderer documents.
+        duty["subdomain"] = re.match(r"^(?:PO|SO)-(D-\d{2}\.\d)-", duty["objectives"][0]).group(1)
     return ordered
 
 

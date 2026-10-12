@@ -803,6 +803,32 @@ def test_a_proposed_constraint_is_a_carrier_not_an_organizational_route() -> Non
     assert all(r["verdict"] == S.VERDICTS[1] for r in merged)
 
 
+def test_every_phase3_ficha_carries_the_neutrality_mapping() -> None:
+    """Naming the constraint is not enough — the model needs the replacement.
+
+    `compose_call` injects "no tools, vendors, or implementation technologies"
+    into every call's system prompt. On its own it does not move behaviour:
+    `duty_20` failed twice on `TLS 1.3` and the repair message said only
+    "technology vocabulary (R5)" — it named the prohibition without giving the
+    model anything to write instead. The same lesson as the adjustment badge
+    menu: the vocabulary has to offer the alternative, or the model reaches for
+    memory.
+
+    Every Phase 3 ficha therefore carries the ADR-009 D5 prohibited→mandatory
+    table, and the leak each one was written against is named in its changelog.
+    """
+    import compose
+
+    fichas = sorted((REPO / "docs" / "pipeline" / "prompts").glob("PROM-P3A-*.md"))
+    assert fichas, "no Phase 3 fichas found"
+    for f in fichas:
+        text = f.read_text(encoding="utf-8")
+        assert "## Technology neutrality (R5)" in text, f"{f.name}: no neutrality block"
+        assert "TLS 1.3" in text, f"{f.name}: the mapping that duty_20 failed on is missing"
+        assert "authenticated and encrypted end-to-end communication channel" in text, f.name
+        assert compose.parse_ficha(f), f"{f.name} no longer parses"
+
+
 if __name__ == "__main__":
     failures = 0
     for name, fn in sorted(globals().items()):

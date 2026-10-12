@@ -3,7 +3,7 @@ ficha_id: PROM-P3A-01
 title: 'Verdict the coverage matrix for one sub-domain'
 phase_step: 'Phase 3 Part 1 · Coverage mapping'
 pattern: 'one structured call per active sub-domain'
-version: 1.1.0
+version: 1.1.1
 created: 2026-10-10
 status: ACTIVE
 normative_source:
@@ -33,6 +33,29 @@ normative_source:
 | 1 | `OBJECTIVE_MAPPING.skeleton.md` | The rows to fill — one block per objective, with the judgement columns empty |
 | 2 | `V0_CARDS.md` | The candidate functional cards: id, name, description. **This is the whole carrier pool** |
 | 3 | `VERDICTS.md` | The five verdicts and what each one means |
+
+## Technology neutrality (R5) — write the second column
+
+Specifications name **what must hold**, never **what implements it**. Naming a
+protocol, algorithm, database engine or vendor in a requirement is a defect the
+gate rejects, and the repair round will not tell you what to write instead. So
+use the mapping: when the thought is the left-hand term, write the right-hand one.
+
+| Do not write | Write |
+|---|---|
+| *Argon2id, PBKDF2, Bcrypt* | memory-hard adaptive cryptographic key derivation function |
+| *HMAC-SHA256, HMAC* | keyed cryptographic message authentication code |
+| *JWT, session cookies, bearer token* | cryptographically signed, time-bound session authentication token |
+| *PostgreSQL, MySQL, SQLite, MongoDB* | Internal Application Database |
+| *AWS S3, Google Cloud Storage, Azure Blob* | External Object Storage Service |
+| *Stripe, PayPal, Adyen* | External Payment Gateway |
+| *AES-256-GCM, RSA-4096* | authenticated high-assurance symmetric / asymmetric encryption |
+| ***TLS 1.3, HTTPS, SSH*** | **authenticated and encrypted end-to-end communication channel** |
+| *OAuth 2.0, OIDC, SAML* | federated identity and authorization assertion protocol |
+
+The right-hand column is a control *objective*, not a mechanism. Do not soften it
+into vagueness either — "secure communication" is non-conformance, because a fit
+criterion cannot be written against it. Name the property, not the product.
 
 ## Output schema
 
@@ -131,6 +154,8 @@ ADR-007 D2/D4 · ADR-008 D4 · ADR-003 · the hand-authored Case 01 coverage mat
 which is the only one of the three cases carrying a discharge column.
 
 ## Changelog
+
+- 1.1.1 — added the R5 neutrality block with the ADR-009 D5 prohibited→mandatory mapping. the discharge column is where technology vocabulary leaks (TLS, AES-256)
 
 - 1.1.0 (2026-10-10) — added `RN (a derivar)` as a carrier value. The first cluster run routed 52 of 65 objectives to `organizational` and named none fully covered, because a transversal concern has no carrier until the constraint stage derives one, and the vocabulary had no value for "not derived yet". The enum is unchanged; only the carrier cell gained a value.
 

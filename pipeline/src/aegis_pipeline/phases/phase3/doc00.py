@@ -13,11 +13,25 @@ from pathlib import Path
 
 
 def load_fact_sheet(run_dir: Path) -> dict:
-    import yaml
+    """Read the fact sheet with the reader that owns its dialect.
+
+    The fact sheet is the flat YAML subset `parse_simple_yaml` documents — top
+    level `key: value`, inline lists, block lists, folded continuations — and
+    `parse_p1` validates it with exactly that reader. `yaml.safe_load` was used
+    here instead and rejected the file: a scalar containing `: ` (the product
+    summary does) is a nested mapping to a strict parser and a plain string to
+    ours. Two readers over one artefact is the hazard; this is now the one
+    reader, and Doc00 gets the same dict Phase 1 validated.
+
+    The dialect splits an inline list on commas, so a list value containing a
+    comma arrives split. That reading is Phase 1's too — it is not introduced
+    here — and the fix belongs with the producer, not with the reader.
+    """
+    from compose import parse_simple_yaml
 
     path = run_dir / "steps" / "fact_sheet.yaml"
-    data = yaml.safe_load(path.read_text(encoding="utf-8"))
-    if not isinstance(data, dict):
+    data = parse_simple_yaml(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict) or not data:
         raise ValueError(f"fact sheet {path} did not parse to a mapping")
     return data
 

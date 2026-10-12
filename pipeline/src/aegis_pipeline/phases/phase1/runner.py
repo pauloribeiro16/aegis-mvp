@@ -1290,6 +1290,29 @@ class StepRunner:
         calls = 0
         failures: list[str] = []
         org_duties = [d for d in duties if "ORG" in d["dispositions"]]
+
+        # The warrants are human input and the pack carries them verbatim, so a
+        # warrant that violates R5 hands the model a term the gate will reject
+        # on every attempt. `duty_20` failed twice on exactly that: the audit
+        # reads "Enforce TLS 1.3 on external interfaces". Checked here rather
+        # than in the loop because one bad warrant otherwise costs 20 good
+        # calls — the same reason the skeleton is gated before the first call.
+        from aegis_pipeline.guards.quality_gates import check_no_technology
+        tainted = []
+        for duty in org_duties:
+            for warrant in duty.get("warrants", []):
+                hits = check_no_technology(str(warrant))
+                if hits:
+                    tainted.append(f"{duty['slug']}: {hits[0][:120]}")
+        if tainted:
+            raise ValueError(
+                f"{len(tainted)} organizational warrant(s) carry technology vocabulary "
+                f"(R5). The warrants are the proportionality audit's own wording and "
+                f"the pack reproduces them verbatim, so the model cannot produce a "
+                f"card the gate would accept. Re-word the warrant in the audit, or "
+                f"record the carve-out. First: {tainted[0]}"
+            )
+
         cards: list[dict] = []
         for duty in org_duties:
             out_path = org_dir / f"{duty['slug']}.json"

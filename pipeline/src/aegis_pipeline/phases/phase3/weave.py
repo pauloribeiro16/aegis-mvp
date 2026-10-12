@@ -170,8 +170,11 @@ def run_gate(run_dir: Path, repo: Path) -> dict:
     gates["G3"] = "CLOSED" if not g3_findings else f"OPEN — {len(g3_findings)} anchor finding(s)"
 
     # G4 — doc_lint --strict over the produced markdown
+    # doc_lint takes no positional scope — it walks its own fixed scopes
+    # (cases/, example/, output/). The run's deliverables are exported under
+    # output/ by the caller, which is what makes the run visible to the lint.
     lint = subprocess.run(
-        ["python3", str(repo / "scripts" / "doc_lint.py"), "--strict", str(run_dir / "outputs" / "phase3")],
+        ["python3", str(repo / "scripts" / "doc_lint.py"), "--strict"],
         capture_output=True, text=True, timeout=120,
     )
     gates["G4"] = "CLOSED" if lint.returncode == 0 else f"OPEN — doc_lint: {lint.stdout[-400:] or lint.stderr[-400:]}"

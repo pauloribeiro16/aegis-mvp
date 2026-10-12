@@ -1382,6 +1382,35 @@ class StepRunner:
         card_files = sorted(cards_dir.glob("R*.json"))
         if not card_files:
             raise ValueError("no generated cards — run --stage p3a_cards first")
+
+        # Accepted proposals whose carrier is `new` have no card to weave into.
+        # They get one each, derived deterministically from the proposal itself —
+        # the D1 path the hand-written Round 1 used for R8.3. Allocation, not
+        # generation: the constraint is the description, the fit criterion is the
+        # acceptance bar, and no model call is involved.
+        from aegis_pipeline.phases.phase3.proposals import allocate_new_cards
+        new_cards = allocate_new_cards(
+            accepted, [p.stem.replace("_", ".") for p in card_files])
+        for card in new_cards:
+            stem = card["id"].replace(".", "_")
+            (cards_dir / f"{stem}.json").write_text(
+                json.dumps({"card": card}, indent=1, ensure_ascii=False),
+                encoding="utf-8")
+        if new_cards:
+            card_files = sorted(cards_dir.glob("R*.json"))
+            print(f"[p3a_weave] allocated {len(new_cards)} new card(s) from "
+                  f"accepted `new` proposals: "
+                  f"{', '.join(c['id'] for c in new_cards)}", flush=True)
+        # a proposal routed to an existing card carries its real id; the stored
+        # `new` ones are now covered by the allocation above
+        card_by_objective = {
+            obj: card["id"]
+            for card in new_cards for obj in card["objectives"]
+        }
+        for proposal in accepted:
+            if (proposal.get("carrier") or "").strip("`") == "new":
+                proposal["carrier"] = f"`{card_by_objective[proposal['objective']]}`"
+
         card_ids = {p.stem: p.stem.replace("_", ".") for p in card_files}
 
         calls = 0

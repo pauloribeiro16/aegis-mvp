@@ -81,7 +81,10 @@ def parse_proposals(answer: str, targets: list[dict]) -> list[dict]:
             raise ValueError(f"proposals [{oid}]: no chain anchors")
         out.append({
             "objective": oid,
-            "subdomain": oid.split("-")[1],
+            # `PO-D-01.2-001`.split("-")[1] is "D" — the same truncation org.py
+            # shipped, and it survives into the accepted round state, where the
+            # weave routes on it.
+            "subdomain": re.match(r"^(?:PO|SO)-(D-\d{2}\.\d)-", oid).group(1),
             "constraint": fields["Constraint (EARS)"],
             "fit_criterion": fields["Fit criterion"],
             "risk": fields["Risk addressed"],
@@ -204,3 +207,51 @@ def render_round_register(
         "",
     ]
     return "\n".join(lines) + "\n"
+
+
+def allocate_new_cards(
+    accepted: list[dict], existing: list[str], start_seq: int = 9
+) -> list[dict]:
+    """Derive one new functional card per accepted proposal whose carrier is `new`.
+
+    The proposal already carries everything a card needs — the EARS constraint
+    is the description, the fit criterion is the acceptance bar, the risk is the
+    origin — so this is allocation, not generation, and needs no model call.
+    This is the D1 path the hand-written Round 1 used for `R8.3`.
+
+    Cards group by the proposal's sub-domain root (R9.x under a D-XX.Y with two
+    duties gets R9.1, R9.2). The returned cards carry `dispositions` because the
+    weave and the stage result read it.
+    """
+    by_sub: dict[str, int] = {}
+    out = []
+    for proposal in accepted:
+        if (proposal.get("carrier") or "").strip("`") != "new":
+            continue
+        sub = proposal["subdomain"]
+        n = by_sub.get(sub, 0) + 1
+        by_sub[sub] = n
+        card = {
+            "id": f"R{start_seq}.{n}",
+            "name": f"Apply the {sub} security constraint",
+            "description": proposal["constraint"].rstrip("."),
+            "origin": f"Round 1 accepted proposal for `{proposal['objective']}` — {proposal['risk'][:140]}",
+            "constraints": [
+                {
+                    "id": f"RN-{proposal['objective']}",
+                    "text": proposal["constraint"],
+                    "fit_criterion": proposal["fit_criterion"],
+                    "chain": proposal["anchors"],
+                }
+            ],
+            "priority": "Must",
+            "objectives": [proposal["objective"]],
+            "subdomain": sub,
+        }
+        out.append(card)
+    used = set(existing)
+    for card in out:
+        while card["id"] in used:
+            card["id"] = f"R{int(card['id'][1:].split('.')[0]) + 1}.{card['id'].split('.')[1]}"
+        used.add(card["id"])
+    return out

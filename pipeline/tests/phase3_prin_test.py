@@ -180,6 +180,21 @@ def test_pack_carries_definition_and_published_anchors() -> None:
     assert prins[0]["source"], "the academic source rides along"
 
 
+def test_pack_tolerates_a_legacy_card() -> None:
+    """A stale card must not kill seven calls.
+
+    The cards on disk carry two shapes: the generated card (`name`) and the
+    legacy proposal record `allocate_new_cards` replaced. `KeyError: 'name'` on
+    one of them aborted the whole stage before any model call.
+    """
+    prins = p3pc.canonical_principles()
+    legacy = [{"id": "R10.1", "constraint": "Store encrypted at rest",
+               "objective": "PO-D-01.1-001"}]
+    out = p3pc.build_principle_pack(prins[0], ROUTED, legacy, "company: TinyTask")
+    assert "R10.1" in out
+    assert "Store encrypted at rest" in out
+
+
 if __name__ == "__main__":
     failures = 0
     for name, fn in sorted(globals().items()):

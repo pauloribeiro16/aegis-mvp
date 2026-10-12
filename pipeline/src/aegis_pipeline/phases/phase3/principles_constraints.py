@@ -172,7 +172,13 @@ def build_principle_pack(principle: dict, routed: list[dict],
                 ""]
     out += ["---", "", "# The functional cards that exist (do NOT re-describe them)",
             ""]
-    out += [f"- `{c['id']}` **{c['name']}**" for c in cards]
+    for c in cards:
+        # cards on disk come in two shapes: the generated card (`name`) and the
+        # legacy proposal record that `allocate_new_cards` replaced but which
+        # survived in older runs. Fall back rather than KeyError on the whole
+        # stage — one stale card must not kill seven calls.
+        label = c.get("name") or c.get("constraint") or c.get("description", "")
+        out.append(f"- `{c.get('id', '?')}` **{label[:160]}**")
     out += ["", "---", "", "# Company fact sheet", "", fact_sheet, "",
             "One block per constraint, keyed by the routed objective it "
             "PRIMARILY discharges; objectives it also carries go in `Also "

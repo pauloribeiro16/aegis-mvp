@@ -2,7 +2,8 @@
 
 Provides:
   - cmd_new_run: initializes a run directory, records manifest and sampling config
-  - cmd_run: executes stages (p1, p2, p3f, p3, p4, p4t, p5, phase2, p3a_map, agentic)
+  - cmd_run: executes stages (p1..p5, phase2, p3a_map, p3a_prin, p3a_cards,
+    p3a_propose, p3a_round, p3a_org, p3a_weave, p3a_gate, agentic)
   - main: parses command line arguments and dispatches commands
 """
 from __future__ import annotations
@@ -280,6 +281,7 @@ def main(argv=None) -> int:
     p_run = sub.add_parser("run", help="execute one stage")
     p_run.add_argument("--stage", required=True,
                        choices=["p1", "p2", "p3f", "p3", "p4", "p4t", "p5", "phase2", "p3a_map",
+                                "p3a_prin",
                                 "p3a_cards", "p3a_propose", "p3a_round", "p3a_org", "p3a_weave",
                                 "p3a_gate", "p4p5", "p4tp5", "all", "agentic"])
     p_run.add_argument("--repo", type=Path, default=REPO_DEFAULT)

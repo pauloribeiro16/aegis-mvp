@@ -778,6 +778,31 @@ def test_doc00_is_composed_from_the_run_artifacts() -> None:
     assert "8" in doc  # size from the fact sheet
 
 
+def test_a_proposed_constraint_is_a_carrier_not_an_organizational_route() -> None:
+    """A transversal concern has no carrier yet — that is not the same as being one.
+
+    The first real run routed all 65 objectives to `organizational` or
+    `partially covered` and named zero fully covered, against a hand-written
+    reference at 6 fully / 19 partial / 32 organizational. The model read the
+    V0 pool as user-facing features only and concluded that transport and
+    at-rest protection belong to infrastructure. They are carried by a card
+    plus a constraint derived in the next stage — so the carrier cell has to
+    have a value for "not derived yet", or that route has nowhere to go.
+    """
+    rows, objs, pool = _subdomain_rows("Case_01_TinyTask_SaaS", "D-01.2")
+    answer = _answer(rows, **{r["id"]: {
+        "carrier": "RN (a derivar)", "skill": "TB",
+        "verdict": S.VERDICTS[1],
+        "discharge": "no card carries it alone; requires a new transversal constraint"}
+        for r in rows})
+    parsed = phase3.parse_verdicts(answer)
+    merged = phase3.apply_verdicts(rows, parsed)
+    assert not phase3.check_verdicts(merged, objs, pool), phase3.check_verdicts(merged, objs, pool)
+    # the placeholder must not be read as a card, and must not fail resolution
+    assert all(r["carriers_cited"] == [] for r in merged)
+    assert all(r["verdict"] == S.VERDICTS[1] for r in merged)
+
+
 if __name__ == "__main__":
     failures = 0
     for name, fn in sorted(globals().items()):

@@ -3,7 +3,7 @@ ficha_id: PROM-P3A-01
 title: 'Verdict the coverage matrix for one sub-domain'
 phase_step: 'Phase 3 Part 1 · Coverage mapping'
 pattern: 'one structured call per active sub-domain'
-version: 1.0.0
+version: 1.1.0
 created: 2026-10-10
 status: ACTIVE
 normative_source:
@@ -44,6 +44,24 @@ normative_source:
 
 Exactly seven columns, one row per objective, in the order the objectives were
 given. The `Objective` cell repeats the id and nothing else.
+
+## What is not an organizational obligation
+
+`No functional carrier (organizational)` means the duty is a PROCESS or
+CAPABILITY obligation — a contract, a policy, a decision, a reporting duty. It
+does **not** mean "no card mentions this".
+
+A transversal concern — transport protection, data at rest, audit logging,
+tenant isolation — is carried by a functional card **plus** a transversal
+constraint that the constraint stage derives afterwards. At this stage that
+constraint does not exist yet, so there is nothing to name. Verdict such a row
+`Partially covered`, write the missing leg in the discharge as *"no card
+carries it alone; requires a new transversal constraint"*, and put
+`RN (a derivar)` in the carrier cell.
+
+Routing it to `organizational` says the obligation is a process duty. When it
+is not, that route is a carve-out of the wrong kind: the objective leaves the
+product lane and nothing ever picks it up.
 
 ## The five verdicts
 
@@ -111,6 +129,10 @@ is the round's business.
 
 ADR-007 D2/D4 · ADR-008 D4 · ADR-003 · the hand-authored Case 01 coverage matrix,
 which is the only one of the three cases carrying a discharge column.
+
+## Changelog
+
+- 1.1.0 (2026-10-10) — added `RN (a derivar)` as a carrier value. The first cluster run routed 52 of 65 objectives to `organizational` and named none fully covered, because a transversal concern has no carrier until the constraint stage derives one, and the vocabulary had no value for "not derived yet". The enum is unchanged; only the carrier cell gained a value.
 
 ## Prompt body
 

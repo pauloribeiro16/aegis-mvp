@@ -1303,7 +1303,12 @@ class StepRunner:
                 verdicts_path.write_text(
                     json.dumps(
                         {"verdicts": {},
-                         "instructions": "enter Accept|Reject|Adjust per objective id"},
+                         "instructions": (
+                             "enter Accept|Reject|Adjust per verdict key — the objective "
+                             "id for an objective-driven proposal, the principle id "
+                             "(PRIN-ENG-nn) for a constraint derived from a principle; "
+                             "one objective can carry two constraints, so the two keys "
+                             "are distinct verdicts")},
                         indent=1, ensure_ascii=False,
                     ),
                     encoding="utf-8",

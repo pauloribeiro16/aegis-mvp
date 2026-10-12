@@ -237,6 +237,37 @@ def test_validate_p3a_prin_refuses_without_the_routed_set() -> None:
         raise AssertionError("an empty routed set must raise, not parse blind")
 
 
+def test_one_objective_two_constraints_are_two_verdicts() -> None:
+    """A principle constraint and an objective-driven card need separate verdicts.
+
+    `SO-D-07.2-001` carries both in the live run. Keyed by objective alone, one
+    "Accept" governed two different constraints — the researcher could neither
+    keep the card and drop the principle constraint nor the reverse.
+    """
+    from aegis_pipeline.phases.phase3 import proposals as p3p  # noqa: PLC0415
+
+    obj = {"objective": "SO-D-07.2-001", "constraint": "objective-driven card"}
+    prin = {"objective": "SO-D-07.2-001", "constraint": "PRIN-ENG-02 constraint",
+            "principle": "PRIN-ENG-02"}
+    state = p3p.apply_round_verdicts([obj, prin],
+                                     {"SO-D-07.2-001": "Accept", "PRIN-ENG-02": "Reject"})
+    assert [p["constraint"] for p in state["accepted"]] == ["objective-driven card"]
+    assert [p["constraint"] for p in state["rejected"]] == ["PRIN-ENG-02 constraint"]
+    assert state["converged"], "both keys have verdicts — the round is closed"
+
+    partial = p3p.apply_round_verdicts([obj, prin], {"SO-D-07.2-001": "Accept"})
+    assert not partial["converged"]
+    assert partial["open"] == ["PRIN-ENG-02"], partial["open"]
+
+
+def test_principle_round_key_handles_a_proposal_without_a_principle() -> None:
+    """An objective-driven proposal has no `principle` key and must not KeyError."""
+    from aegis_pipeline.phases.phase3 import proposals as p3p  # noqa: PLC0415
+
+    assert p3p.round_key({"objective": "PO-D-01.2-001"}) == "PO-D-01.2-001"
+    assert p3p.round_key({"objective": "PO-D-01.2-001", "principle": "PRIN-ENG-01"}) == "PRIN-ENG-01"
+
+
 if __name__ == "__main__":
     failures = 0
     for name, fn in sorted(globals().items()):

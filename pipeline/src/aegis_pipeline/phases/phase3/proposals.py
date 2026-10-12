@@ -120,6 +120,19 @@ def check_proposals(
     return findings
 
 
+def round_key(proposal: dict) -> str:
+    """The id a verdict is entered under.
+
+    Objective-driven proposals are keyed by objective. A principle-derived
+    constraint is keyed by the PRINCIPLE, because it is a different artefact
+    discharging the same objective: `SO-D-07.2-001` has both an objective-driven
+    card and the PRIN-ENG-02 constraint, and one verdict cannot govern two
+    constraints. The plan recorded the opposite decision ("principle proposals
+    are not distinguished in the round") and the run falsified it.
+    """
+    return proposal.get("principle") or proposal["objective"]
+
+
 def apply_round_verdicts(
     proposals: list[dict],
     verdicts: dict[str, str],
@@ -128,12 +141,13 @@ def apply_round_verdicts(
     allowed = {"Accept", "Reject", "Adjust"}
     accepted, rejected, adjusted, open_items = [], [], [], []
     for proposal in proposals:
-        verdict = verdicts.get(proposal["objective"])
+        key = round_key(proposal)
+        verdict = verdicts.get(key)
         if verdict is None:
-            open_items.append(proposal["objective"])
+            open_items.append(key)
         elif verdict not in allowed:
             raise ValueError(
-                f"round: verdict {verdict!r} for {proposal['objective']} not in {sorted(allowed)}"
+                f"round: verdict {verdict!r} for {key} not in {sorted(allowed)}"
             )
         elif verdict == "Accept":
             accepted.append(proposal)
@@ -185,13 +199,15 @@ def render_round_register(
         "",
         "## §1 Verdict ledger",
         "",
-        "| Item | Objective | Proposed constraint | Verdict |",
-        "|---|---|---|---|",
+        "| Item | Verdict key | Discharges | Proposed constraint | Verdict |",
+        "|---|---|---|---|---|",
     ]
     for index, proposal in enumerate(proposals, start=1):
-        verdict = verdict_map.get(proposal["objective"], "**pending**")
+        key = round_key(proposal)
+        verdict = verdict_map.get(key, "**pending**")
         lines.append(
-            f"| P-{index:02d} | `{proposal['objective']}` | {proposal['constraint'][:140]} | {verdict} |"
+            f"| P-{index:02d} | `{key}` | `{proposal['objective']}` | "
+            f"{proposal['constraint'][:140]} | {verdict} |"
         )
     lines += [
         "",
@@ -199,7 +215,9 @@ def render_round_register(
         "",
         "1. Enter one verdict per item — `Accept`, `Reject` (= explicit risk acceptance,",
         "   recorded, never silent) or `Adjust` — in `steps/phase3/round1_verdicts.json`",
-        "   under `\"verdicts\": {\"<objective-id>\": \"Accept|Reject|Adjust\"}`.",
+        "   under `\"verdicts\": {\"<verdict-key>\": \"Accept|Reject|Adjust\"}`. The key is the",
+        "   objective id, or the principle id for a constraint derived from a principle —",
+        "   a principle id is separate because one objective can carry two constraints.",
         "2. Create `steps/gates/G-P3-A.approved` with the review note (≥200 chars).",
         "3. Re-run `--stage p3a_round`: the gate evaluates only on the CONCLUDED state.",
         "",

@@ -643,6 +643,22 @@ class StepRunner:
         if step.startswith("p3a_weave:"):
             from aegis_pipeline.phases.phase3 import weave as _p3w
             return _p3w.parse_weave(answer)
+        if step.startswith("p3a_prin:"):
+            # Must sit ABOVE the `subdomain is not None` catch-all: the principle
+            # id travels as `subdomain`, so without this branch the call falls
+            # into parse_p4, which demands a `## §5` section and AG-D-* rows and
+            # rejects every well-formed principle answer. Third time a new step
+            # has missed this dispatch table (store_parsed, the argparse choices,
+            # now here) — the pin is in phase3_prin_test.py.
+            from aegis_pipeline.phases.phase3 import principles_constraints as _p3pc
+            routed = self._p3a_prin_routed
+            if not routed:
+                raise ValueError(
+                    "p3a_prin: no routed objectives — the stage must set "
+                    "_p3a_prin_routed before calling; a principle constraint may "
+                    "only discharge objectives the matrix routed organizational")
+            return {"proposals": _p3pc.parse_principle_proposals(
+                answer, step.split(":", 1)[1], routed)}
         if subdomain is not None:
             parsed = parse_p4(answer, subdomain)
             return self._check_p4_quality(parsed, subdomain)

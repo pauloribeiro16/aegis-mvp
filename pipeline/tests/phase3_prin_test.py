@@ -195,6 +195,48 @@ def test_pack_tolerates_a_legacy_card() -> None:
     assert "Store encrypted at rest" in out
 
 
+def test_validate_dispatches_p3a_prin_to_its_own_parser() -> None:
+    """`_validate` must not fall through to `parse_p4` for a principle call.
+
+    The principle id travels as `subdomain`, so a step with no branch in the
+    dispatch table reaches `if subdomain is not None: parse_p4(...)`, which
+    demands a `## §5` section and AG-D-* rows. That is what killed all seven
+    calls of job 2023360: the model answered, and the p4 parser rejected the
+    answer twice before the stage gave up. Third registration point a new step
+    has missed (store_parsed, argparse choices, now this table) — the test is the
+    pin, not the fix.
+    """
+    from aegis_pipeline.phases.phase1.runner import StepRunner  # noqa: PLC0415
+
+    runner = StepRunner.__new__(StepRunner)
+    runner._p3a_prin_routed = ROUTED
+
+    parsed = runner._validate("p3a_prin:PRIN-ENG-01", answer(), "PRIN-ENG-01")
+
+    # shape the stage reads back off disk: {"proposals": [...]}
+    assert set(parsed) == {"proposals"}, f"unexpected store shape: {sorted(parsed)}"
+    assert len(parsed["proposals"]) == 1
+    assert parsed["proposals"][0]["principle"] == "PRIN-ENG-01"
+
+
+def test_validate_p3a_prin_refuses_without_the_routed_set() -> None:
+    """A principle call with no routed set must fail loudly, not parse blind.
+
+    Without this the parser would accept any block id the model invents, which
+    is exactly the R2 breach the `routed` argument exists to stop.
+    """
+    from aegis_pipeline.phases.phase1.runner import StepRunner  # noqa: PLC0415
+
+    runner = StepRunner.__new__(StepRunner)
+    runner._p3a_prin_routed = []
+    try:
+        runner._validate("p3a_prin:PRIN-ENG-01", "```markdown\n```", "PRIN-ENG-01")
+    except ValueError as e:
+        assert "routed" in str(e).lower(), f"unhelpful error: {e}"
+    else:
+        raise AssertionError("an empty routed set must raise, not parse blind")
+
+
 if __name__ == "__main__":
     failures = 0
     for name, fn in sorted(globals().items()):

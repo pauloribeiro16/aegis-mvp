@@ -978,6 +978,26 @@ def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
             "- Every rule statement MUST be imperative (contain SHALL or MUST).\n"
             "- Technology neutrality (R5): never cite proprietary cloud vendors (AWS, Azure, GCP, etc.).\n"
             "- Never invent facts about the company beyond fact_sheet.yaml (R6).\n")
+    elif step.startswith("p3a_"):
+        # The p3a steps are neither extraction nor Phase 1 goal-writing, and
+        # `p3a_map` starts with "p3", so it used to inherit the p4 generative
+        # clause — "restate the Sub-SO's full duty, do not drop a leg" — which is
+        # Phase 1 advice about phases. Measured on a real call: the model was
+        # told to keep an obligation intact while being asked to judge whether
+        # an obligation is covered at all.
+        discipline = (
+            "- You are judging coverage, not writing requirements. Do not restate a "
+            "duty in your own words: quote the objective's legs and say which one "
+            "the carrier carries and which one it does not.\n"
+            "- The `published_anchors` block in the pack is the whole universe of "
+            "valid anchors. Never name a control that is not in it, and never a "
+            "control id from a different framework version.\n"
+            "- Technology neutrality (R5): specifications name what must hold, not "
+            "what implements it. Use the prohibited-to-mandatory mapping in the ficha "
+            "rather than naming the protocol.\n"
+            "- Never invent a fact ABOUT THE COMPANY: every company statement traces "
+            "to the fact sheet, or it is a fabrication (R6).\n"
+            "- Flag what cannot be decided instead of dropping or guessing it.\n")
     elif step.startswith("p2d"):
         # p2d has no Sub-SO and no obligation to keep intact — it binds a
         # baseline principle to a company. It therefore gets its own clause

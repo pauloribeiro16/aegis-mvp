@@ -36,6 +36,7 @@ FICHA_FILES = {
     "p3a_propose": "PROM-P3A-04_PROPOSE.md",
     "p3a_org": "PROM-P3A-05_ORG.md",
     "p3a_weave": "PROM-P3A-06_WEAVE.md",
+    "p3a_prin": "PROM-P3A-07_PRINCIPLE_CONSTRAINTS.md",
 }
 
 # Sub-domain id like D-01.1
@@ -853,6 +854,49 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
             f"pack-p3a_card/{card_id.replace('.', '_')}/BUILD_MANIFEST.md",
             f"Context pack build (deterministic): ONE card ({card_id}); inventory for "
             "neighbour awareness; fact sheet for the company context (R6).\n"))
+    elif step.startswith("p3a_prin:"):
+        # One principle. The pack carries its canonical definition, the case's
+        # own p2d text for it, the objectives the matrix routed organizational
+        # WITH their published anchors, the card catalogue and the fact sheet.
+        # Every anchor the model could name is on the page — the same R2
+        # discipline as every other pack, and the reason it cannot invent one.
+        import phase3 as _p3
+        from aegis_pipeline.phases.phase3 import principles_constraints as _p3pc
+
+        pid = step.split(":", 1)[1]
+        principle = next((p for p in _p3pc.canonical_principles() if p["id"] == pid), None)
+        if principle is None:
+            raise ValueError(f"unknown principle {pid!r}")
+
+        phase2_doc = run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md"
+        objectives = _p3.load_objectives(phase2_doc)
+        rows = [r for r in _p3.build(objectives)]
+        merged_path = run_dir / "steps" / "phase3"
+        verdicts: list[dict] = []
+        for vf in sorted(merged_path.glob("verdicts_*.json")):
+            verdicts.extend(json.loads(vf.read_text(encoding="utf-8")))
+        by_id = {v["id"]: v for v in verdicts}
+        routed = [dict(by_id.get(r["id"], r)) for r in rows
+                  if by_id.get(r["id"], r).get("verdict") == "No functional carrier (organizational)"]
+
+        cards_dir = run_dir / "steps" / "phase3" / "cards"
+        cards = [json.loads(c.read_text(encoding="utf-8"))["card"]
+                 for c in sorted(cards_dir.glob("R*.json"))]
+        fact = run_dir / "steps" / "fact_sheet.yaml"
+        fact_sheet = fact.read_text(encoding="utf-8") if fact.is_file() else "(missing)"
+
+        files.append((
+            f"pack-p3a_prin/{pid}/PRINCIPLE_PACK.md",
+            _p3pc.build_principle_pack(principle, routed, cards, fact_sheet),
+        ))
+        files.insert(0, (
+            f"pack-p3a_prin/{pid}/BUILD_MANIFEST.md",
+            f"Context pack build (deterministic): principle {pid}; "
+            f"{len(routed)} objective(s) the matrix routed organizational, each with "
+            f"its published anchor set; {len(cards)} existing card(s); one call per "
+            f"principle. A constraint may only discharge a routed objective (R2; "
+            f"upgrading a partial is the round's call, not code's).\n"))
+
     elif step.startswith("p3a_propose:"):
         # Proposal pack = the same verdict pack the mapping call saw (this
         # sub-domain's objectives with published anchors + the frozen pool)

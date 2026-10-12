@@ -84,6 +84,7 @@ NUM_CTX = {
     "p3a_map": 16384,
     "p3a_cards": 32768,
     "p3a_card": 32768,
+    "p3a_prin": 16384,
     "p3a_propose": 32768,
     "p3a_org": 32768,
     "p3a_weave": 32768,
@@ -101,6 +102,7 @@ NUM_PREDICT = {
     "p3a_map": 4096,
     "p3a_cards": 8192,
     "p3a_card": 8192,
+    "p3a_prin": 4096,
     "p3a_propose": 8192,
     "p3a_org": 8192,
     "p3a_weave": 8192,
@@ -120,6 +122,10 @@ EXTRA_INSTRUCTION = {
         "`#### Use case {U.C. n.m}` (the fully-dressed fields including Traceability, Main Success "
         "Scenario with numbered steps, Extensions). Nothing else."
     ),
+    "p3a_prin": (
+        "Wrap your answer: return ONLY one ```markdown fenced block. One `### <objective-id>` "
+        "block per constraint you propose; an empty fenced block is a valid answer when the "
+        "principle adds nothing for these objectives."),
     "p3a_propose": (
         "Wrap your answer: return ONLY one ```markdown fenced block containing one `### <objective-id>` "
         "section per target objective, in the order given, each with exactly these bold fields: "
@@ -270,6 +276,11 @@ def store_parsed(run_dir: Path, step: str, subdomain: str | None, parsed: dict) 
         (p2_dir / f"{fname}.json").write_text(
             json.dumps(parsed, indent=1, ensure_ascii=False), encoding="utf-8"
         )
+    elif step.startswith("p3a_prin"):
+        d = steps_dir / "phase3a_prin"
+        d.mkdir(parents=True, exist_ok=True)
+        (d / f"{subdomain or step.split(':', 1)[1]}.json").write_text(
+            json.dumps(parsed, indent=1, ensure_ascii=False), encoding="utf-8")
     elif step.startswith("p3a_map"):
         d = steps_dir / "phase3a_map"
         d.mkdir(parents=True, exist_ok=True)
@@ -346,6 +357,8 @@ class StepRunner:
         self.temperature = float(self.config.get("temperature", 0.2))
         self.sampler = runconfig.sampler_options(self.config)
         self.case = load_case(repo, self._case_id())
+        self._p3a_prin_routed: list[dict] = []
+        self._p3a_propose_targets: list[dict] = []
         self.trace = Trace(run_dir)
         self._client: OllamaClient | None = None
 
@@ -1183,6 +1196,72 @@ class StepRunner:
         self._raise_if_nothing_carried("p3a_propose", summary, "every proposal call failed")
         return calls
 
+    def stage_p3a_prin(self) -> int:
+        """Principle-seeded constraint synthesis — one call per engineering principle.
+
+        The matrix routes an objective organizational for want of a functional
+        carrier, and a principle is what says which of those the PRODUCT must
+        carry. Without this pass the principles are decorative: PRINCIPLE_MAPPING
+        stays a skeleton, and transport protection (a PRIN-ENG-01 binding in the
+        hand-written case, RN24) lands in the organizational lane because nothing
+        ever proposed the constraint that would give it a card.
+
+        Proposals join the same human round as the objective-driven ones and are
+        stored in the `proposals_*.json` shape `p3a_round` already collects.
+        """
+        from aegis_pipeline.phases.phase3 import principles_constraints as p3pc
+
+        self._require(("steps/fact_sheet.yaml",), "G-P1-A")
+        rows, _objectives = self._p3_merged_rows()
+        routed = [r for r in rows
+                  if r["verdict"] == "No functional carrier (organizational)"]
+        principles = p3pc.canonical_principles()
+        store = self.run_dir / "steps" / "phase3"
+        cards = [json.loads(p.read_text(encoding="utf-8"))["card"]
+                 for p in sorted((store / "cards").glob("R*.json"))]
+
+        # _validate parses inside _call and has no view of the routed set; the
+        # propose stage hands its targets over the same way.
+        self._p3a_prin_routed = routed
+
+        calls = 0
+        failures: list[str] = []
+        proposals: list[dict] = []
+        for index, principle in enumerate(principles, start=1):
+            out_path = store / f"proposals_prin_{index:02d}.json"
+            if out_path.is_file():
+                proposals.extend(json.loads(out_path.read_text(encoding="utf-8"))["proposals"])
+                continue
+            try:
+                self._call(f"p3a_prin:{principle['id']}", principle["id"])
+                stored = self.run_dir / "steps" / "phase3a_prin" / f"{principle['id']}.json"
+                if not stored.is_file():
+                    raise FileNotFoundError(f"{stored} was not written by _call")
+                parsed = json.loads(stored.read_text(encoding="utf-8"))["proposals"]
+                findings = p3pc.check_principle_proposals(parsed, routed)
+                if findings:
+                    raise ValueError(f"{len(findings)} finding(s): {findings[0]}")
+                if not self.dry_run:
+                    calls += 1
+                proposals.extend(parsed)
+                out_path.write_text(json.dumps({"proposals": parsed}, indent=1,
+                                               ensure_ascii=False), encoding="utf-8")
+            except (LLMError, ValueError, KeyError, OSError) as e:
+                failures.append(f"{principle['id']}: {type(e).__name__}: {str(e)[:160]}")
+                print(f"[p3a_prin] {principle['id']} FAILED — continuing: {str(e)[:160]}",
+                      flush=True)
+
+        self._write_stage_result("p3a_prin", {
+            "status": "ok" if not failures else "partial",
+            "carried": len(proposals), "selected": len(principles), "failed": len(failures),
+            "summary": f"{len(proposals)} principle constraint(s) from "
+                       f"{len(principles) - len(failures)}/{len(principles)} principles",
+            "principles": [p["id"] for p in principles],
+            "proposing": sorted({p["principle"] for p in proposals}),
+            "failures": failures,
+        })
+        return calls
+
     def stage_p3a_round(self) -> int:
         from aegis_pipeline.phases.phase3 import proposals as p3p
 
@@ -1455,6 +1534,28 @@ class StepRunner:
             uc_lines.append(f"| `{row['id']}` | {carrier} | {uc} |")
         uc_lines.append("")
         (out_dir / "UC_OBJECTIVE_CORRESPONDENCE.md").write_text("\n".join(uc_lines), encoding="utf-8")
+
+        # Re-routing + matrix re-render, post-allocation and post-round. The
+        # matrix on disk was last written by `p3a_map`, before the round — the 12
+        # accepted constraints were never reflected in it. Re-routing runs first
+        # so the render sees the moved verdicts, and it moves only in one
+        # direction: organizational -> partially covered under an accepted
+        # constraint. Nothing becomes "Fully covered" by code decision.
+        from aegis_pipeline.phases.phase3 import principles_constraints as _p3pc
+        principle_accepted = [a for a in accepted if a.get("principle")]
+        for a in accepted:
+            a.setdefault("allocated_card", card_by_objective.get(a["objective"], "new"))
+        rows, moved = _p3pc.reroute_objectives(rows, accepted)
+        if moved:
+            print(f"[p3a_weave] re-routed {moved} objective(s) to a principle-derived card",
+                  flush=True)
+        grouped = {d: [r for r in rows if r["subdomain"].startswith(d)] for d in sorted({r["subdomain"][:4] for r in rows})}
+        from aegis_pipeline.phases.phase3 import skeleton as _p3sk
+        (out_dir / "OBJECTIVE_MAPPING.md").write_text(
+            _p3sk.render_matrix(rows, grouped, _p3sk.domain_names_from(self.repo / "baseline/domains/index.md")),
+            encoding="utf-8")
+        (out_dir / "PRINCIPLE_MAPPING.md").write_text(
+            _p3pc.render_principle_mapping(rows, accepted), encoding="utf-8")
         (out_dir / "SUFFICIENCY_ASSESSMENT.md").write_text(
             p3w.render_sufficiency(rows, state, confirmed_regulations(self.run_dir)),
             encoding="utf-8",

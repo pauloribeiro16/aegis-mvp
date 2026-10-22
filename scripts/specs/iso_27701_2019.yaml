@@ -7,6 +7,7 @@
 framework: "ISO/IEC 27701:2019"
 framework_short: "ISO_27701_2019"
 directory: "ISO_27701_2019"
+archive: true   # not a pipeline referential (ADR-015 §5)
 version: "2019 (Annex A PIMS controls)"
 source_url: "https://www.iso.org/standard/71670.html"
 fetched_date: "2026-09-22"

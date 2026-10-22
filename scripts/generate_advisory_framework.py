@@ -58,6 +58,10 @@ except ImportError:  # pragma: no cover
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 CONTROLS_ROOT = REPO_ROOT / "baseline" / "CONTROLS"
+# The advisory families the pipeline does not reach live here. They stay
+# verifiable and regenerable; they are simply not pipeline material, and
+# keeping them under CONTROLS/ made them look like it (ADR-015 §5).
+ARCHIVE_ROOT = REPO_ROOT / "baseline" / "CONTROLS_ARCHIVE"
 
 REQUIRED_LEAF_FIELDS = (
     "control_id",
@@ -118,8 +122,13 @@ def render_leaf(
     }
 
 
+def framework_root(spec: dict[str, Any]) -> Path:
+    """Where a family's tree is written: active referential or archive."""
+    return ARCHIVE_ROOT if spec.get("archive") else CONTROLS_ROOT
+
+
 def write_framework(spec: dict[str, Any]) -> tuple[int, list[Path]]:
-    target_dir = CONTROLS_ROOT / spec["directory"]
+    target_dir = framework_root(spec) / spec["directory"]
     target_dir.mkdir(parents=True, exist_ok=True)
 
     # Clear any prior leaf JSONs in family subdirectories (idempotent re-runs).
@@ -179,7 +188,7 @@ def write_framework(spec: dict[str, Any]) -> tuple[int, list[Path]]:
 
 def verify_framework(spec: dict[str, Any]) -> list[str]:
     """Sanity-check every emitted leaf: parses, has 12 fields, control_id matches stem."""
-    target_dir = CONTROLS_ROOT / spec["directory"]
+    target_dir = framework_root(spec) / spec["directory"]
     errors: list[str] = []
     declared_ids = set()
     for fam in spec["families"]:

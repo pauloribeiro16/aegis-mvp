@@ -6,6 +6,7 @@
 framework: "ISO/IEC 27001:2022"
 framework_short: "ISO_27001_2022"
 directory: "ISO_27001_2022"
+archive: true   # not a pipeline referential (ADR-015 §5)
 version: "2022 (Annex A)"
 source_url: "https://www.iso.org/standard/27001"
 fetched_date: "2026-09-22"

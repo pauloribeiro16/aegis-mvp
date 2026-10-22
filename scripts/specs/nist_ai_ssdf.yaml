@@ -6,6 +6,7 @@
 framework: "NIST AI SSDF Profile v1.0"
 framework_short: "NIST_AI_SSDF"
 directory: "NIST_AI_SSDF"
+archive: true   # not a pipeline referential (ADR-015 §5)
 version: "1.0 (2024-07-26)"
 source_url: "https://doi.org/10.6028/NIST.SP.800-218A"
 fetched_date: "2026-09-22"

@@ -6,6 +6,7 @@
 framework: "CIS Critical Security Controls v8"
 framework_short: "CIS_CONTROLS_V8"
 directory: "CIS_CONTROLS_V8"
+archive: true   # not a pipeline referential (ADR-015 §5)
 version: "v8 (2021-05)"
 source_url: "https://www.cisecurity.org/controls/v8"
 fetched_date: "2026-09-22"

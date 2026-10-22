@@ -8,6 +8,7 @@
 framework: "OWASP SAMM v2.0"
 framework_short: "OWASP_SAMM"
 directory: "OWASP_SAMM"
+archive: true   # not a pipeline referential (ADR-015 §5)
 version: "2.0 (2020-02)"
 source_url: "https://owasp.org/www-project-samm/"
 fetched_date: "2026-09-22"

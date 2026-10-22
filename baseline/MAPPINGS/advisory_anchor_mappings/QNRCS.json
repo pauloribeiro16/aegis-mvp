@@ -1,0 +1,3677 @@
+{
+ "meta": {
+  "framework": "QNRCS",
+  "title": "Regulamento n.º 756/2026",
+  "advisory": false,
+  "derived_by": "scripts/derive_qnrcs_anchors.py",
+  "derivation": "objective → SR → NIST CSF 2.0 id → QNRCS measure whose mapped_nist_csf contains it",
+  "normative_status": "PROPOSED — the linkage is machine-derived; the researcher's approval of each anchor is recorded in ADR-015 §5"
+ },
+ "srs": [
+  {
+   "sr_id": "SR-AIACT-002",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-09.2",
+    "D-02.1"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-001"
+   ],
+   "nist_csf": [
+    "ID.RA-03",
+    "ID.RA-04",
+    "ID.RA-06"
+   ],
+   "qnrcs": [
+    "ID.AR-4",
+    "ID.AR-6"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-003",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-02.1",
+    "D-10.3",
+    "D-02.4"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-002"
+   ],
+   "nist_csf": [
+    "GV.SC-04",
+    "ID.RA-01",
+    "ID.RA-04",
+    "PR.PS-06"
+   ],
+   "qnrcs": [
+    "ID.AR-1",
+    "ID.AR-4",
+    "PR.SP-3",
+    "PR.SP-4"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-004",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-05.1",
+    "D-05.2"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-003"
+   ],
+   "nist_csf": [
+    "ID.AM-03",
+    "ID.AM-08",
+    "PR.PS-06"
+   ],
+   "qnrcs": [
+    "ID.GA-3",
+    "ID.GA-7",
+    "ID.GA-8",
+    "PR.SP-3",
+    "PR.SP-4"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-005",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-05.1",
+    "D-05.2"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-003"
+   ],
+   "nist_csf": [
+    "ID.AM-08",
+    "PR.DS-01"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-006",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-05.1"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-004"
+   ],
+   "nist_csf": [
+    "GV.OC-03",
+    "ID.AM-08",
+    "PR.DS-01"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-007",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-10.2"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-005"
+   ],
+   "nist_csf": [
+    "DE.AE-03",
+    "DE.CM-09",
+    "PR.PS-04"
+   ],
+   "qnrcs": [
+    "DE.AE-2",
+    "PR.SP-2"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-008",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-10.2",
+    "D-05.2"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-006"
+   ],
+   "nist_csf": [
+    "GV.PO-02",
+    "PR.PS-04"
+   ],
+   "qnrcs": [
+    "PR.SP-2"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-009",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-10.2"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-006"
+   ],
+   "nist_csf": [
+    "PR.PS-04",
+    "RC.RP-03"
+   ],
+   "qnrcs": [
+    "PR.SP-2"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-010",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-09.1"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-007"
+   ],
+   "nist_csf": [
+    "GV.OC-03",
+    "GV.OC-04",
+    "GV.PO-01"
+   ],
+   "qnrcs": [
+    "GR.PP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-011",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-09.1"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-007"
+   ],
+   "nist_csf": [
+    "GV.OC-04",
+    "GV.PO-01"
+   ],
+   "qnrcs": [
+    "GR.PP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-012",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-08.2",
+    "D-07.1"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-008"
+   ],
+   "nist_csf": [
+    "GV.RR-02",
+    "GV.RR-04",
+    "PR.AT-02"
+   ],
+   "qnrcs": [
+    "GR.FR-3",
+    "GR.FR-4"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-013",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-08.2"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-008"
+   ],
+   "nist_csf": [
+    "GV.RR-02",
+    "PR.AT-01",
+    "PR.AT-02"
+   ],
+   "qnrcs": [
+    "GR.FR-3"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-014",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-07.1",
+    "D-02.1"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-009"
+   ],
+   "nist_csf": [
+    "ID.RA-04",
+    "PR.IR-03",
+    "PR.PS-06"
+   ],
+   "qnrcs": [
+    "ID.AR-4",
+    "PR.SP-3",
+    "PR.SP-4"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-015",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-01.4",
+    "D-02.1"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-009"
+   ],
+   "nist_csf": [
+    "PR.DS-11",
+    "PR.IR-03",
+    "PR.IR-04"
+   ],
+   "qnrcs": [
+    "PR.SD-5"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-016",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-02.1",
+    "D-07.2"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-009"
+   ],
+   "nist_csf": [
+    "ID.RA-04",
+    "PR.PS-06",
+    "RS.MA-03",
+    "RS.MI-01"
+   ],
+   "qnrcs": [
+    "ID.AR-4",
+    "PR.SP-3",
+    "PR.SP-4"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-017",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-09.1"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-010"
+   ],
+   "nist_csf": [
+    "GV.PO-01",
+    "GV.RM-01",
+    "GV.RM-04"
+   ],
+   "qnrcs": [
+    "GR.PP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-018",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-07.1"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-010"
+   ],
+   "nist_csf": [
+    "PR.PS-01",
+    "PR.PS-06"
+   ],
+   "qnrcs": [
+    "PR.SP-1",
+    "PR.SP-3",
+    "PR.SP-4"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-019",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-09.1"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-011"
+   ],
+   "nist_csf": [
+    "GV.OC-03",
+    "GV.PO-01",
+    "PR.AT-01"
+   ],
+   "qnrcs": [
+    "GR.PP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-020",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-08.2",
+    "D-09.1"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-011"
+   ],
+   "nist_csf": [
+    "GV.RR-02",
+    "GV.RR-04",
+    "PR.AT-02"
+   ],
+   "qnrcs": [
+    "GR.FR-3",
+    "GR.FR-4"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-022",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-04.3"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-013"
+   ],
+   "nist_csf": [
+    "RS.CO-02",
+    "RS.MA-01",
+    "RS.MA-03",
+    "RS.MA-04"
+   ],
+   "qnrcs": [
+    "RS.GI-1"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-023",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-07.3",
+    "D-02.1"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-014"
+   ],
+   "nist_csf": [
+    "GV.RM-06",
+    "ID.RA-04",
+    "PR.PS-06"
+   ],
+   "qnrcs": [
+    "ID.AR-4",
+    "PR.SP-3",
+    "PR.SP-4"
+   ]
+  },
+  {
+   "sr_id": "SR-AIACT-024",
+   "regulation": "AI_Act",
+   "sub_domain": [
+    "D-04.3"
+   ],
+   "linked_objectives": [
+    "SG-AIACT-014"
+   ],
+   "nist_csf": [
+    "RS.AN-03",
+    "RS.CO-02",
+    "RS.MA-03"
+   ],
+   "qnrcs": [
+    "RS.AI-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-001",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-01.1",
+    "D-01.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-001",
+    "SG-CRA-045"
+   ],
+   "nist_csf": [
+    "PR.DS-01",
+    "PR.DS-02"
+   ],
+   "qnrcs": [
+    "PR.SD-3"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-003",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-01.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-003",
+    "SG-CRA-001"
+   ],
+   "nist_csf": [
+    "PR.DS-02",
+    "PR.IR-01"
+   ],
+   "qnrcs": [
+    "PR.SD-3"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-004",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-01.3",
+    "D-01.1",
+    "D-03.3"
+   ],
+   "linked_objectives": [
+    "SG-CRA-004"
+   ],
+   "nist_csf": [
+    "GV.OV-01",
+    "PR.AA-05",
+    "PR.DS-01"
+   ],
+   "qnrcs": [
+    "PR.GA-5"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-005",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-01.4",
+    "D-10.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-005"
+   ],
+   "nist_csf": [
+    "PR.DS-01",
+    "PR.DS-10",
+    "PR.PS-04"
+   ],
+   "qnrcs": [
+    "PR.SD-4",
+    "PR.SP-2"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-006",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-02.1",
+    "D-02.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-006",
+    "SG-CRA-008"
+   ],
+   "nist_csf": [
+    "ID.RA-01",
+    "PR.PS-02"
+   ],
+   "qnrcs": [
+    "ID.AR-1",
+    "ID.GA-7"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-007",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-02.1"
+   ],
+   "linked_objectives": [
+    "SG-CRA-006",
+    "SG-CRA-007"
+   ],
+   "nist_csf": [
+    "ID.AM-02",
+    "ID.RA-01"
+   ],
+   "qnrcs": [
+    "ID.AR-1",
+    "ID.GA-2"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-008",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-06.2",
+    "D-02.1"
+   ],
+   "linked_objectives": [
+    "SG-CRA-007",
+    "SG-CRA-038"
+   ],
+   "nist_csf": [
+    "GV.SC-02",
+    "ID.AM-02"
+   ],
+   "qnrcs": [
+    "ID.GA-2"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-009",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-06.2",
+    "D-02.1",
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-CRA-007",
+    "SG-CRA-038"
+   ],
+   "nist_csf": [
+    "GV.SC-03",
+    "ID.AM-02"
+   ],
+   "qnrcs": [
+    "ID.GA-2"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-010",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-02.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-008"
+   ],
+   "nist_csf": [
+    "ID.RA-06",
+    "PR.PS-02"
+   ],
+   "qnrcs": [
+    "ID.AR-6",
+    "ID.GA-7"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-011",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-02.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-008",
+    "SG-CRA-009"
+   ],
+   "nist_csf": [
+    "PR.IR-03",
+    "PR.PS-02"
+   ],
+   "qnrcs": [
+    "ID.GA-7"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-012",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-02.2",
+    "D-04.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-010"
+   ],
+   "nist_csf": [
+    "ID.RA-06",
+    "PR.PS-02"
+   ],
+   "qnrcs": [
+    "ID.AR-6",
+    "ID.GA-7"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-013",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-02.2",
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-CRA-010",
+    "SG-CRA-061"
+   ],
+   "nist_csf": [
+    "GV.OV-02",
+    "ID.IM-02"
+   ],
+   "qnrcs": [
+    "ID.MC-2"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-014",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-02.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-010",
+    "SG-CRA-061"
+   ],
+   "nist_csf": [
+    "GV.OC-04",
+    "GV.PO-01"
+   ],
+   "qnrcs": [
+    "GR.PP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-015",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-02.2",
+    "D-07.4",
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-CRA-060",
+    "SG-CRA-047"
+   ],
+   "nist_csf": [
+    "GV.SC-04",
+    "PR.PS-02"
+   ],
+   "qnrcs": [
+    "ID.GA-7"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-016",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-02.2",
+    "D-05.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-011"
+   ],
+   "nist_csf": [
+    "GV.OV-02",
+    "PR.PS-02"
+   ],
+   "qnrcs": [
+    "ID.GA-7"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-017",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-02.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-009"
+   ],
+   "nist_csf": [
+    "PR.PS-02",
+    "RS.CO-03"
+   ],
+   "qnrcs": [
+    "ID.GA-7"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-018",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-03.4",
+    "D-02.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-019",
+    "SG-CRA-009"
+   ],
+   "nist_csf": [
+    "ID.AM-08",
+    "PR.PS-01"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8",
+    "PR.SP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-019",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-02.3",
+    "D-09.1"
+   ],
+   "linked_objectives": [
+    "SG-CRA-012",
+    "SG-CRA-049"
+   ],
+   "nist_csf": [
+    "GV.PO-01",
+    "GV.SC-04"
+   ],
+   "qnrcs": [
+    "GR.PP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-022",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-02.4",
+    "D-10.3",
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-CRA-014",
+    "SG-CRA-069"
+   ],
+   "nist_csf": [
+    "DE.CM-09",
+    "ID.RA-01",
+    "PR.PS-06"
+   ],
+   "qnrcs": [
+    "ID.AR-1",
+    "PR.SP-3",
+    "PR.SP-4"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-023",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-03.1",
+    "D-03.3",
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-CRA-015",
+    "SG-CRA-056"
+   ],
+   "nist_csf": [
+    "ID.AM-01",
+    "PR.AA-01"
+   ],
+   "qnrcs": [
+    "ID.GA-1",
+    "PR.GA-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-024",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-03.3",
+    "D-03.1"
+   ],
+   "linked_objectives": [
+    "SG-CRA-017"
+   ],
+   "nist_csf": [
+    "DE.CM-09",
+    "PR.AA-05",
+    "PR.AA-06"
+   ],
+   "qnrcs": [
+    "PR.GA-5",
+    "PR.GA-6"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-025",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-03.4"
+   ],
+   "linked_objectives": [
+    "SG-CRA-018",
+    "SG-CRA-045"
+   ],
+   "nist_csf": [
+    "ID.AM-08",
+    "PR.PS-01"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8",
+    "PR.SP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-026",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-03.4"
+   ],
+   "linked_objectives": [
+    "SG-CRA-018"
+   ],
+   "nist_csf": [
+    "GV.SC-03",
+    "PR.PS-01"
+   ],
+   "qnrcs": [
+    "PR.SP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-027",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-10.1",
+    "D-04.1"
+   ],
+   "linked_objectives": [
+    "SG-CRA-020",
+    "SG-CRA-068"
+   ],
+   "nist_csf": [
+    "DE.AE-08",
+    "PR.PS-04"
+   ],
+   "qnrcs": [
+    "PR.SP-2"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-028",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-04.3"
+   ],
+   "linked_objectives": [
+    "SG-CRA-023"
+   ],
+   "nist_csf": [
+    "RS.MA-01",
+    "RS.MA-04"
+   ],
+   "qnrcs": [
+    "RS.GI-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-029",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-04.3"
+   ],
+   "linked_objectives": [
+    "SG-CRA-024"
+   ],
+   "nist_csf": [
+    "RS.CO-02",
+    "RS.MA-02"
+   ],
+   "qnrcs": [
+    "RS.GI-2"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-030",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-04.3",
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-CRA-024"
+   ],
+   "nist_csf": [
+    "RS.AN-03",
+    "RS.AN-07",
+    "RS.CO-02"
+   ],
+   "qnrcs": [
+    "RS.AI-1",
+    "RS.AI-3"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-031",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-04.3"
+   ],
+   "linked_objectives": [
+    "SG-CRA-025",
+    "SG-CRA-027"
+   ],
+   "nist_csf": [
+    "RS.AN-03",
+    "RS.MA-01"
+   ],
+   "qnrcs": [
+    "RS.AI-1",
+    "RS.GI-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-032",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-04.3"
+   ],
+   "linked_objectives": [
+    "SG-CRA-026"
+   ],
+   "nist_csf": [
+    "RS.MA-02",
+    "RS.MA-03"
+   ],
+   "qnrcs": [
+    "RS.GI-2"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-033",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-04.3",
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-CRA-026"
+   ],
+   "nist_csf": [
+    "RS.AN-06",
+    "RS.AN-08"
+   ],
+   "qnrcs": [
+    "RS.AI-2",
+    "RS.AI-4"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-034",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-04.3"
+   ],
+   "linked_objectives": [
+    "SG-CRA-027"
+   ],
+   "nist_csf": [
+    "ID.RA-04",
+    "RS.MA-03"
+   ],
+   "qnrcs": [
+    "ID.AR-4"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-035",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-04.3"
+   ],
+   "linked_objectives": [
+    "SG-CRA-027"
+   ],
+   "nist_csf": [
+    "RS.AN-03",
+    "RS.MA-03"
+   ],
+   "qnrcs": [
+    "RS.AI-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-037",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-04.3"
+   ],
+   "linked_objectives": [
+    "SG-CRA-029"
+   ],
+   "nist_csf": [
+    "RS.AN-08",
+    "RS.MA-04"
+   ],
+   "qnrcs": [
+    "RS.AI-4"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-039",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-04.3",
+    "D-09.1"
+   ],
+   "linked_objectives": [
+    "SG-CRA-031"
+   ],
+   "nist_csf": [
+    "GV.PO-01",
+    "RS.MA-01"
+   ],
+   "qnrcs": [
+    "GR.PP-1",
+    "RS.GI-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-042",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-10.1",
+    "D-10.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-020",
+    "SG-CRA-068"
+   ],
+   "nist_csf": [
+    "DE.AE-02",
+    "DE.CM-09",
+    "PR.PS-04"
+   ],
+   "qnrcs": [
+    "DE.AE-1",
+    "PR.SP-2"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-043",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-04.2",
+    "D-04.4",
+    "D-07.1"
+   ],
+   "linked_objectives": [
+    "SG-CRA-021",
+    "SG-CRA-046"
+   ],
+   "nist_csf": [
+    "ID.AM-08",
+    "PR.IR-03"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-046",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-05.1",
+    "D-07.1"
+   ],
+   "linked_objectives": [
+    "SG-CRA-034",
+    "SG-CRA-072"
+   ],
+   "nist_csf": [
+    "ID.AM-03",
+    "ID.AM-08"
+   ],
+   "qnrcs": [
+    "ID.GA-3",
+    "ID.GA-7",
+    "ID.GA-8"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-047",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-05.2",
+    "D-02.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-035",
+    "SG-CRA-009"
+   ],
+   "nist_csf": [
+    "GV.OC-04",
+    "PR.PS-02"
+   ],
+   "qnrcs": [
+    "ID.GA-7"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-048",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-05.3"
+   ],
+   "linked_objectives": [
+    "SG-CRA-036"
+   ],
+   "nist_csf": [
+    "ID.AM-08",
+    "PR.DS-10"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8",
+    "PR.SD-4"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-049",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-05.3",
+    "D-03.3"
+   ],
+   "linked_objectives": [
+    "SG-CRA-036"
+   ],
+   "nist_csf": [
+    "ID.AM-08",
+    "PR.DS-02"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8",
+    "PR.SD-3"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-050",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-06.1",
+    "D-07.1"
+   ],
+   "linked_objectives": [
+    "SG-CRA-037"
+   ],
+   "nist_csf": [
+    "GV.SC-01",
+    "GV.SC-02",
+    "ID.RA-02"
+   ],
+   "qnrcs": [
+    "ID.AR-2"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-052",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-06.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-038"
+   ],
+   "nist_csf": [
+    "ID.AM-02"
+   ],
+   "qnrcs": [
+    "ID.GA-2"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-053",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-06.2",
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-CRA-038",
+    "SG-CRA-072"
+   ],
+   "nist_csf": [
+    "GV.SC-03",
+    "ID.AM-02"
+   ],
+   "qnrcs": [
+    "ID.GA-2"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-059",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-06.4"
+   ],
+   "linked_objectives": [
+    "SG-CRA-041"
+   ],
+   "nist_csf": [
+    "GV.RR-02",
+    "GV.SC-03"
+   ],
+   "qnrcs": [
+    "GR.FR-3"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-064",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-07.1",
+    "D-09.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-045"
+   ],
+   "nist_csf": [
+    "GV.PO-02",
+    "PR.PS-06"
+   ],
+   "qnrcs": [
+    "PR.SP-3",
+    "PR.SP-4"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-065",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-07.1",
+    "D-09.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-045",
+    "SG-CRA-053"
+   ],
+   "nist_csf": [
+    "ID.RA-05",
+    "PR.PS-06"
+   ],
+   "qnrcs": [
+    "ID.AR-5",
+    "PR.SP-3",
+    "PR.SP-4"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-066",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-09.2",
+    "D-09.4",
+    "D-07.1"
+   ],
+   "linked_objectives": [
+    "SG-CRA-053",
+    "SG-CRA-054"
+   ],
+   "nist_csf": [
+    "GV.OV-02",
+    "GV.PO-02",
+    "ID.RA-05"
+   ],
+   "qnrcs": [
+    "ID.AR-5"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-067",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-07.2",
+    "D-07.1"
+   ],
+   "linked_objectives": [
+    "SG-CRA-046",
+    "SG-CRA-022"
+   ],
+   "nist_csf": [
+    "PR.PS-01",
+    "PR.PS-02"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "PR.SP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-068",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-07.2",
+    "D-07.1"
+   ],
+   "linked_objectives": [
+    "SG-CRA-046",
+    "SG-CRA-043"
+   ],
+   "nist_csf": [
+    "PR.PS-02",
+    "PR.PS-06"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "PR.SP-3",
+    "PR.SP-4"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-070",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-07.4",
+    "D-06.4"
+   ],
+   "linked_objectives": [
+    "SG-CRA-047",
+    "SG-CRA-060"
+   ],
+   "nist_csf": [
+    "GV.SC-04",
+    "PR.PS-02"
+   ],
+   "qnrcs": [
+    "ID.GA-7"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-072",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-09.1"
+   ],
+   "linked_objectives": [
+    "SG-CRA-049"
+   ],
+   "nist_csf": [
+    "GV.PO-01",
+    "GV.SC-01"
+   ],
+   "qnrcs": [
+    "GR.PP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-074",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-09.1",
+    "D-04.3"
+   ],
+   "linked_objectives": [
+    "SG-CRA-031"
+   ],
+   "nist_csf": [
+    "RS.MA-01",
+    "RS.MA-04"
+   ],
+   "qnrcs": [
+    "RS.GI-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-075",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-09.1",
+    "D-02.3"
+   ],
+   "linked_objectives": [
+    "SG-CRA-051"
+   ],
+   "nist_csf": [
+    "GV.PO-01",
+    "GV.PO-02"
+   ],
+   "qnrcs": [
+    "GR.PP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-079",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-09.4",
+    "D-09.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-053"
+   ],
+   "nist_csf": [
+    "GV.PO-02",
+    "ID.RA-05"
+   ],
+   "qnrcs": [
+    "ID.AR-5"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-080",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-09.4",
+    "D-09.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-053",
+    "SG-CRA-069"
+   ],
+   "nist_csf": [
+    "ID.RA-05"
+   ],
+   "qnrcs": [
+    "ID.AR-5"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-083",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-CRA-056"
+   ],
+   "nist_csf": [
+    "GV.OC-04",
+    "PR.AA-01"
+   ],
+   "qnrcs": [
+    "PR.GA-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-087",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-09.4",
+    "D-09.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-059",
+    "SG-CRA-053"
+   ],
+   "nist_csf": [
+    "GV.PO-02",
+    "ID.AM-02"
+   ],
+   "qnrcs": [
+    "ID.GA-2"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-088",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-09.4",
+    "D-10.2",
+    "D-10.3"
+   ],
+   "linked_objectives": [
+    "SG-CRA-059"
+   ],
+   "nist_csf": [
+    "GV.OC-03",
+    "GV.SC-04",
+    "ID.RA-04"
+   ],
+   "qnrcs": [
+    "ID.AR-4"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-089",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-02.2",
+    "D-07.4",
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-CRA-060",
+    "SG-CRA-035"
+   ],
+   "nist_csf": [
+    "GV.OC-04",
+    "PR.PS-02"
+   ],
+   "qnrcs": [
+    "ID.GA-7"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-090",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-09.4",
+    "D-05.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-061"
+   ],
+   "nist_csf": [
+    "GV.OC-04",
+    "GV.PO-01"
+   ],
+   "qnrcs": [
+    "GR.PP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-094",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-09.4",
+    "D-09.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-064"
+   ],
+   "nist_csf": [
+    "GV.OC-03",
+    "ID.RA-05"
+   ],
+   "qnrcs": [
+    "ID.AR-5"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-100",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-10.1",
+    "D-04.1",
+    "D-10.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-068"
+   ],
+   "nist_csf": [
+    "DE.CM-01",
+    "DE.CM-09"
+   ],
+   "qnrcs": [
+    "DE.MC-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-101",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-10.2",
+    "D-10.3",
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-CRA-069",
+    "SG-CRA-014"
+   ],
+   "nist_csf": [
+    "GV.OV-01",
+    "ID.RA-04"
+   ],
+   "qnrcs": [
+    "ID.AR-4"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-102",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-10.2",
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-CRA-070",
+    "SG-CRA-053"
+   ],
+   "nist_csf": [
+    "GV.OC-03",
+    "ID.RA-05"
+   ],
+   "qnrcs": [
+    "ID.AR-5"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-103",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-10.3",
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-CRA-071",
+    "SG-CRA-095"
+   ],
+   "nist_csf": [
+    "GV.PO-02",
+    "ID.RA-01"
+   ],
+   "qnrcs": [
+    "ID.AR-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-105",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-09.4",
+    "D-07.1"
+   ],
+   "linked_objectives": [
+    "SG-CRA-072"
+   ],
+   "nist_csf": [
+    "GV.OC-04",
+    "ID.AM-08"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-106",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-09.4",
+    "D-09.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-072"
+   ],
+   "nist_csf": [
+    "ID.RA-04"
+   ],
+   "qnrcs": [
+    "ID.AR-4"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-109",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-09.4",
+    "D-06.2"
+   ],
+   "linked_objectives": [
+    "SG-CRA-072"
+   ],
+   "nist_csf": [
+    "ID.AM-02"
+   ],
+   "qnrcs": [
+    "ID.GA-2"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-110",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-08.1",
+    "D-02.2",
+    "D-03.4"
+   ],
+   "linked_objectives": [
+    "SG-CRA-048",
+    "SG-CRA-019"
+   ],
+   "nist_csf": [
+    "PR.PS-01"
+   ],
+   "qnrcs": [
+    "PR.SP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-CRA-111",
+   "regulation": "CRA",
+   "sub_domain": [
+    "D-08.1",
+    "D-05.3"
+   ],
+   "linked_objectives": [
+    "SG-CRA-048",
+    "SG-CRA-036"
+   ],
+   "nist_csf": [
+    "PR.PS-01"
+   ],
+   "qnrcs": [
+    "PR.SP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-001",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-01.1",
+    "D-01.2",
+    "D-01.4"
+   ],
+   "linked_objectives": [
+    "SG-DORA-001"
+   ],
+   "nist_csf": [
+    "ID.AM-08",
+    "PR.DS-01",
+    "PR.DS-02",
+    "PR.DS-10"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8",
+    "PR.SD-3",
+    "PR.SD-4"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-002",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-01.3",
+    "D-03.1",
+    "D-03.2"
+   ],
+   "linked_objectives": [
+    "SG-DORA-002"
+   ],
+   "nist_csf": [
+    "PR.AA-03",
+    "PR.AA-04"
+   ],
+   "qnrcs": [
+    "PR.GA-2",
+    "PR.GA-3",
+    "PR.GA-4"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-004",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-02.1",
+    "D-10.1"
+   ],
+   "linked_objectives": [
+    "SG-DORA-003"
+   ],
+   "nist_csf": [
+    "ID.RA-01",
+    "ID.RA-03",
+    "PR.PS-02"
+   ],
+   "qnrcs": [
+    "ID.AR-1",
+    "ID.GA-7"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-005",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-02.1",
+    "D-09.2"
+   ],
+   "linked_objectives": [
+    "SG-DORA-003"
+   ],
+   "nist_csf": [
+    "GV.OV-02",
+    "ID.IM-04",
+    "ID.RA-05"
+   ],
+   "qnrcs": [
+    "ID.AR-5"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-006",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-02.2",
+    "D-07.1"
+   ],
+   "linked_objectives": [
+    "SG-DORA-004"
+   ],
+   "nist_csf": [
+    "PR.IR-01",
+    "PR.IR-03",
+    "PR.PS-01"
+   ],
+   "qnrcs": [
+    "PR.SP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-007",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-02.2"
+   ],
+   "linked_objectives": [
+    "SG-DORA-004"
+   ],
+   "nist_csf": [
+    "ID.RA-01",
+    "PR.PS-02"
+   ],
+   "qnrcs": [
+    "ID.AR-1",
+    "ID.GA-7"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-008",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-10.3",
+    "D-02.4"
+   ],
+   "linked_objectives": [
+    "SG-DORA-005"
+   ],
+   "nist_csf": [
+    "GV.OV-02",
+    "ID.RA-01",
+    "PR.PS-06"
+   ],
+   "qnrcs": [
+    "ID.AR-1",
+    "PR.SP-3",
+    "PR.SP-4"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-009",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-02.4"
+   ],
+   "linked_objectives": [
+    "SG-DORA-005"
+   ],
+   "nist_csf": [
+    "ID.RA-01",
+    "ID.RA-04"
+   ],
+   "qnrcs": [
+    "ID.AR-1",
+    "ID.AR-4"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-010",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-03.3"
+   ],
+   "linked_objectives": [
+    "SG-DORA-006"
+   ],
+   "nist_csf": [
+    "PR.AA-05",
+    "PR.AA-06"
+   ],
+   "qnrcs": [
+    "PR.GA-5",
+    "PR.GA-6"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-011",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-04.1",
+    "D-10.1"
+   ],
+   "linked_objectives": [
+    "SG-DORA-007"
+   ],
+   "nist_csf": [
+    "DE.AE-02",
+    "DE.CM-01",
+    "DE.CM-09"
+   ],
+   "qnrcs": [
+    "DE.AE-1",
+    "DE.MC-1"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-012",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-04.1",
+    "D-10.1"
+   ],
+   "linked_objectives": [
+    "SG-DORA-007"
+   ],
+   "nist_csf": [
+    "DE.CM-01",
+    "RS.MA-01"
+   ],
+   "qnrcs": [
+    "DE.MC-1",
+    "RS.GI-1"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-013",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-04.2",
+    "D-04.4"
+   ],
+   "linked_objectives": [
+    "SG-DORA-010"
+   ],
+   "nist_csf": [
+    "PR.IR-03",
+    "RC.RP-01",
+    "RS.MA-01"
+   ],
+   "qnrcs": [
+    "RS.GI-1"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-014",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-04.2",
+    "D-04.4"
+   ],
+   "linked_objectives": [
+    "SG-DORA-010"
+   ],
+   "nist_csf": [
+    "PR.IR-04",
+    "RC.RP-04"
+   ],
+   "qnrcs": [
+    "RC.PR-4"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-015",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-04.4"
+   ],
+   "linked_objectives": [
+    "SG-DORA-010"
+   ],
+   "nist_csf": [
+    "PR.DS-11",
+    "RC.RP-03",
+    "RC.RP-04"
+   ],
+   "qnrcs": [
+    "PR.SD-5",
+    "RC.PR-4"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-016",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-04.1",
+    "D-04.3"
+   ],
+   "linked_objectives": [
+    "SG-DORA-008"
+   ],
+   "nist_csf": [
+    "RS.AN-03",
+    "RS.MA-01"
+   ],
+   "qnrcs": [
+    "RS.AI-1",
+    "RS.GI-1"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-019",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-06.1",
+    "D-06.3"
+   ],
+   "linked_objectives": [
+    "SG-DORA-011"
+   ],
+   "nist_csf": [
+    "GV.SC-02",
+    "ID.AM-04"
+   ],
+   "qnrcs": [
+    "ID.GA-4"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-023",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-07.4"
+   ],
+   "linked_objectives": [
+    "SG-DORA-013"
+   ],
+   "nist_csf": [
+    "PR.PS-01",
+    "PR.PS-02",
+    "PR.PS-06"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "PR.SP-1",
+    "PR.SP-3",
+    "PR.SP-4"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-024",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-08.3"
+   ],
+   "linked_objectives": [
+    "SG-DORA-014"
+   ],
+   "nist_csf": [
+    "GV.RR-01",
+    "PR.AT-02"
+   ],
+   "qnrcs": [
+    "GR.FR-1"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-026",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-09.1"
+   ],
+   "linked_objectives": [
+    "SG-DORA-016"
+   ],
+   "nist_csf": [
+    "GV.RR-01",
+    "GV.RR-02"
+   ],
+   "qnrcs": [
+    "GR.FR-1",
+    "GR.FR-3"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-027",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-09.1"
+   ],
+   "linked_objectives": [
+    "SG-DORA-016"
+   ],
+   "nist_csf": [
+    "GV.OC-01",
+    "GV.PO-01",
+    "GV.RM-04"
+   ],
+   "qnrcs": [
+    "GR.CO-1",
+    "GR.PP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-028",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-09.1",
+    "D-09.2"
+   ],
+   "linked_objectives": [
+    "SG-DORA-017"
+   ],
+   "nist_csf": [
+    "GV.RM-02",
+    "GV.RR-02"
+   ],
+   "qnrcs": [
+    "GR.FR-3",
+    "GR.GR-1"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-029",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-09.3"
+   ],
+   "linked_objectives": [
+    "SG-DORA-017"
+   ],
+   "nist_csf": [
+    "ID.AM-01",
+    "ID.AM-02",
+    "ID.AM-03",
+    "ID.AM-05"
+   ],
+   "qnrcs": [
+    "ID.GA-1",
+    "ID.GA-2",
+    "ID.GA-3",
+    "ID.GA-5"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-030",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-10.1"
+   ],
+   "linked_objectives": [
+    "SG-DORA-018"
+   ],
+   "nist_csf": [
+    "DE.CM-01",
+    "DE.CM-09",
+    "PR.PS-04"
+   ],
+   "qnrcs": [
+    "DE.MC-1",
+    "PR.SP-2"
+   ]
+  },
+  {
+   "sr_id": "SR-DORA-031",
+   "regulation": "DORA",
+   "sub_domain": [
+    "D-10.2"
+   ],
+   "linked_objectives": [
+    "SG-DORA-018"
+   ],
+   "nist_csf": [
+    "GV.OC-03",
+    "GV.PO-01",
+    "ID.AM-08"
+   ],
+   "qnrcs": [
+    "GR.PP-1",
+    "ID.GA-7",
+    "ID.GA-8"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-001",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-01.1",
+    "D-01.4"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-001"
+   ],
+   "nist_csf": [
+    "PR.DS-01",
+    "PR.DS-10"
+   ],
+   "qnrcs": [
+    "PR.SD-4"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-002",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-01.1",
+    "D-01.2",
+    "D-10.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-001",
+    "SG-GDPR-030"
+   ],
+   "nist_csf": [
+    "PR.DS-02",
+    "PR.IR-01"
+   ],
+   "qnrcs": [
+    "PR.SD-3"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-005",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-01.4"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-003"
+   ],
+   "nist_csf": [
+    "ID.AM-08",
+    "PR.DS-01"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-006",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-01.4",
+    "D-04.3",
+    "D-05.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-003",
+    "SG-GDPR-012"
+   ],
+   "nist_csf": [
+    "ID.AM-08",
+    "PR.DS-10"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8",
+    "PR.SD-4"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-007",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-10.3",
+    "D-02.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-004"
+   ],
+   "nist_csf": [
+    "ID.RA-01",
+    "PR.PS-02"
+   ],
+   "qnrcs": [
+    "ID.AR-1",
+    "ID.GA-7"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-008",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.2",
+    "D-10.3",
+    "D-02.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-004",
+    "SG-GDPR-028"
+   ],
+   "nist_csf": [
+    "ID.IM-02",
+    "ID.RA-05"
+   ],
+   "qnrcs": [
+    "ID.AR-5",
+    "ID.MC-2"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-009",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-03.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-005"
+   ],
+   "nist_csf": [
+    "PR.AA-02",
+    "PR.AA-03"
+   ],
+   "qnrcs": [
+    "PR.GA-2",
+    "PR.GA-3"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-010",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-03.1",
+    "D-05.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-005"
+   ],
+   "nist_csf": [
+    "ID.AM-08",
+    "PR.AA-02"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8",
+    "PR.GA-2"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-011",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-03.3"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-006"
+   ],
+   "nist_csf": [
+    "PR.AA-05",
+    "PR.AA-06"
+   ],
+   "qnrcs": [
+    "PR.GA-5",
+    "PR.GA-6"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-012",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-03.3",
+    "D-08.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-006"
+   ],
+   "nist_csf": [
+    "PR.AA-05",
+    "PR.AT-02"
+   ],
+   "qnrcs": [
+    "PR.GA-5"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-013",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-03.4",
+    "D-05.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-007",
+    "SG-GDPR-024"
+   ],
+   "nist_csf": [
+    "ID.AM-08",
+    "PR.PS-01"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8",
+    "PR.SP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-014",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-04.1",
+    "D-10.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-008"
+   ],
+   "nist_csf": [
+    "DE.CM-01",
+    "DE.CM-09",
+    "RS.MA-02"
+   ],
+   "qnrcs": [
+    "DE.MC-1",
+    "RS.GI-2"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-017",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-04.3",
+    "D-06.3"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-010"
+   ],
+   "nist_csf": [
+    "RS.CO-02",
+    "RS.MA-02"
+   ],
+   "qnrcs": [
+    "RS.GI-2"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-018",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-04.3",
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-010"
+   ],
+   "nist_csf": [
+    "RS.AN-03",
+    "RS.AN-07",
+    "RS.CO-02"
+   ],
+   "qnrcs": [
+    "RS.AI-1",
+    "RS.AI-3"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-022",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-04.3",
+    "D-05.3"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-012"
+   ],
+   "nist_csf": [
+    "ID.AM-08",
+    "RS.CO-02"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-023",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-04.3",
+    "D-09.2"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-013",
+    "SG-GDPR-028"
+   ],
+   "nist_csf": [
+    "GV.OC-03",
+    "ID.RA-06"
+   ],
+   "qnrcs": [
+    "ID.AR-6"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-024",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-04.4"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-014"
+   ],
+   "nist_csf": [
+    "PR.DS-11",
+    "PR.IR-04",
+    "RC.RP-04"
+   ],
+   "qnrcs": [
+    "PR.SD-5",
+    "RC.PR-4"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-025",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-05.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-015"
+   ],
+   "nist_csf": [
+    "ID.AM-03",
+    "ID.AM-08"
+   ],
+   "qnrcs": [
+    "ID.GA-3",
+    "ID.GA-7",
+    "ID.GA-8"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-026",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.1",
+    "D-05.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-016"
+   ],
+   "nist_csf": [
+    "GV.OC-03",
+    "GV.PO-01"
+   ],
+   "qnrcs": [
+    "GR.PP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-028",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.1",
+    "D-05.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-016"
+   ],
+   "nist_csf": [
+    "GV.OC-03",
+    "ID.AM-08"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-029",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-05.2",
+    "D-10.2"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-017"
+   ],
+   "nist_csf": [
+    "ID.AM-03",
+    "ID.AM-08"
+   ],
+   "qnrcs": [
+    "ID.GA-3",
+    "ID.GA-7",
+    "ID.GA-8"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-030",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-05.3"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-018",
+    "SG-GDPR-019"
+   ],
+   "nist_csf": [
+    "ID.AM-08",
+    "PR.DS-10"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8",
+    "PR.SD-4"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-031",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-05.3",
+    "D-06.3"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-019"
+   ],
+   "nist_csf": [
+    "GV.SC-04",
+    "PR.DS-10"
+   ],
+   "qnrcs": [
+    "PR.SD-4"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-032",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-05.4"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-020"
+   ],
+   "nist_csf": [
+    "ID.AM-08",
+    "PR.DS-10"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8",
+    "PR.SD-4"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-037",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-06.3",
+    "D-05.3"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-022",
+    "SG-GDPR-019"
+   ],
+   "nist_csf": [
+    "GV.SC-04",
+    "ID.AM-08"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-038",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-06.4",
+    "D-09.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-023"
+   ],
+   "nist_csf": [
+    "GV.OC-02",
+    "GV.RR-02"
+   ],
+   "qnrcs": [
+    "GR.CO-2",
+    "GR.FR-3"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-039",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-07.1",
+    "D-01.1",
+    "D-05.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-024"
+   ],
+   "nist_csf": [
+    "ID.AM-08",
+    "PR.PS-06"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "ID.GA-8",
+    "PR.SP-3",
+    "PR.SP-4"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-040",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-07.1",
+    "D-01.3"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-024",
+    "SG-GDPR-002"
+   ],
+   "nist_csf": [
+    "PR.DS-01",
+    "PR.PS-06"
+   ],
+   "qnrcs": [
+    "PR.SP-3",
+    "PR.SP-4"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-041",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-07.1",
+    "D-03.4"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-024",
+    "SG-GDPR-007"
+   ],
+   "nist_csf": [
+    "PR.PS-01",
+    "PR.PS-06"
+   ],
+   "qnrcs": [
+    "PR.SP-1",
+    "PR.SP-3",
+    "PR.SP-4"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-043",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-026"
+   ],
+   "nist_csf": [
+    "GV.PO-01",
+    "GV.PO-02",
+    "GV.RM-04"
+   ],
+   "qnrcs": [
+    "GR.PP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-045",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.2"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-028"
+   ],
+   "nist_csf": [
+    "ID.RA-01",
+    "ID.RA-05",
+    "ID.RA-06"
+   ],
+   "qnrcs": [
+    "ID.AR-1",
+    "ID.AR-5",
+    "ID.AR-6"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-046",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.2"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-028"
+   ],
+   "nist_csf": [
+    "ID.RA-05",
+    "RS.AN-03"
+   ],
+   "qnrcs": [
+    "ID.AR-5",
+    "RS.AI-1"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-047",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.2",
+    "D-10.3"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-028",
+    "SG-GDPR-004"
+   ],
+   "nist_csf": [
+    "ID.IM-04",
+    "ID.RA-06"
+   ],
+   "qnrcs": [
+    "ID.AR-6"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-048",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.4",
+    "D-10.2"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-029"
+   ],
+   "nist_csf": [
+    "GV.PO-02",
+    "ID.AM-03"
+   ],
+   "qnrcs": [
+    "ID.GA-3"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-049",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-10.1",
+    "D-04.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-030"
+   ],
+   "nist_csf": [
+    "DE.AE-02",
+    "DE.CM-01",
+    "DE.CM-03"
+   ],
+   "qnrcs": [
+    "DE.AE-1",
+    "DE.MC-1",
+    "DE.MC-3"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-050",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-10.2",
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-031"
+   ],
+   "nist_csf": [
+    "DE.AE-03",
+    "PR.PS-04",
+    "RS.AN-07"
+   ],
+   "qnrcs": [
+    "DE.AE-2",
+    "PR.SP-2",
+    "RS.AI-3"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-051",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.1",
+    "D-03.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-032"
+   ],
+   "nist_csf": [
+    "GV.OC-03",
+    "PR.AA-02"
+   ],
+   "qnrcs": [
+    "PR.GA-2"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-052",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.1",
+    "D-03.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-032"
+   ],
+   "nist_csf": [
+    "GV.PO-02",
+    "PR.AA-02"
+   ],
+   "qnrcs": [
+    "PR.GA-2"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-053",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-032"
+   ],
+   "nist_csf": [
+    "PR.AA-02"
+   ],
+   "qnrcs": [
+    "PR.GA-2"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-054",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.1",
+    "D-03.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-032"
+   ],
+   "nist_csf": [
+    "GV.OC-03",
+    "PR.AA-02"
+   ],
+   "qnrcs": [
+    "PR.GA-2"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-060",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.2",
+    "D-06.3"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-036"
+   ],
+   "nist_csf": [
+    "GV.RR-02",
+    "GV.SC-03"
+   ],
+   "qnrcs": [
+    "GR.FR-3"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-061",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.2"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-036"
+   ],
+   "nist_csf": [
+    "GV.OV-03",
+    "GV.PO-01"
+   ],
+   "qnrcs": [
+    "GR.PP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-062",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.1",
+    "D-09.2"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-037"
+   ],
+   "nist_csf": [
+    "GV.RR-02",
+    "GV.SC-02"
+   ],
+   "qnrcs": [
+    "GR.FR-3"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-063",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-037"
+   ],
+   "nist_csf": [
+    "GV.RR-01",
+    "GV.RR-03"
+   ],
+   "qnrcs": [
+    "GR.FR-1",
+    "GR.FR-2"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-064",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.1",
+    "D-09.2",
+    "D-08.1"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-037",
+    "SG-GDPR-025"
+   ],
+   "nist_csf": [
+    "GV.OV-03",
+    "ID.IM-02",
+    "PR.AT-02"
+   ],
+   "qnrcs": [
+    "ID.MC-2"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-065",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-038"
+   ],
+   "nist_csf": [
+    "GV.PO-02",
+    "PR.AA-02"
+   ],
+   "qnrcs": [
+    "PR.GA-2"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-066",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-038"
+   ],
+   "nist_csf": [
+    "RS.CO-02",
+    "RS.MA-02"
+   ],
+   "qnrcs": [
+    "RS.GI-2"
+   ]
+  },
+  {
+   "sr_id": "SR-GDPR-068",
+   "regulation": "GDPR",
+   "sub_domain": [
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-GDPR-038"
+   ],
+   "nist_csf": [
+    "ID.AM-03",
+    "ID.AM-08"
+   ],
+   "qnrcs": [
+    "ID.GA-3",
+    "ID.GA-7",
+    "ID.GA-8"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-001",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-01.1"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-001"
+   ],
+   "nist_csf": [
+    "GV.RM-04",
+    "PR.DS-01",
+    "PR.DS-02"
+   ],
+   "qnrcs": [
+    "PR.SD-3"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-002",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-02.1",
+    "D-02.3"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-002"
+   ],
+   "nist_csf": [
+    "GV.SC-04",
+    "ID.RA-01"
+   ],
+   "qnrcs": [
+    "ID.AR-1"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-003",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-03.1",
+    "D-03.3"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-003"
+   ],
+   "nist_csf": [
+    "PR.AA-01",
+    "PR.AA-05"
+   ],
+   "qnrcs": [
+    "PR.GA-1",
+    "PR.GA-5"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-004",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-08.2",
+    "D-03.1"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-003"
+   ],
+   "nist_csf": [
+    "PR.AA-01",
+    "PR.AT-02"
+   ],
+   "qnrcs": [
+    "PR.GA-1"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-005",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-09.3",
+    "D-03.3"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-003"
+   ],
+   "nist_csf": [
+    "ID.AM-01",
+    "ID.AM-02"
+   ],
+   "qnrcs": [
+    "ID.GA-1",
+    "ID.GA-2"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-006",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-03.2"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-004"
+   ],
+   "nist_csf": [
+    "PR.AA-03",
+    "PR.AA-05"
+   ],
+   "qnrcs": [
+    "PR.GA-3",
+    "PR.GA-5"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-007",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-03.2",
+    "D-01.2"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-004"
+   ],
+   "nist_csf": [
+    "PR.DS-02",
+    "PR.IR-03"
+   ],
+   "qnrcs": [
+    "PR.SD-3"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-008",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-04.1",
+    "D-04.2",
+    "D-04.4"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-005",
+    "SG-NIS2-013"
+   ],
+   "nist_csf": [
+    "RS.AN-03",
+    "RS.MA-01"
+   ],
+   "qnrcs": [
+    "RS.AI-1",
+    "RS.GI-1"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-009",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-10.1",
+    "D-04.1"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-005"
+   ],
+   "nist_csf": [
+    "DE.CM-01",
+    "DE.CM-09"
+   ],
+   "qnrcs": [
+    "DE.MC-1"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-010",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-04.3"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-006"
+   ],
+   "nist_csf": [
+    "RS.MA-02",
+    "RS.MA-04"
+   ],
+   "qnrcs": [
+    "RS.GI-2"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-012",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-04.3",
+    "D-04.4"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-007"
+   ],
+   "nist_csf": [
+    "RC.RP-06",
+    "RS.MA-04"
+   ],
+   "qnrcs": [
+    "RC.PR-6"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-013",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-04.3",
+    "D-04.4"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-008"
+   ],
+   "nist_csf": [
+    "RC.RP-06",
+    "RS.MA-04"
+   ],
+   "qnrcs": [
+    "RC.PR-6"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-015",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-04.3"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-010"
+   ],
+   "nist_csf": [
+    "RS.AN-07",
+    "RS.MA-04"
+   ],
+   "qnrcs": [
+    "RS.AI-3"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-019",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-04.4",
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-013"
+   ],
+   "nist_csf": [
+    "PR.DS-11",
+    "RC.RP-04"
+   ],
+   "qnrcs": [
+    "PR.SD-5",
+    "RC.PR-4"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-022",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-06.3",
+    "D-02.1"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-015"
+   ],
+   "nist_csf": [
+    "ID.AM-04",
+    "ID.RA-01",
+    "ID.RA-02"
+   ],
+   "qnrcs": [
+    "ID.AR-1",
+    "ID.AR-2",
+    "ID.GA-4"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-024",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-06.3",
+    "D-07.1"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-015"
+   ],
+   "nist_csf": [
+    "GV.SC-02",
+    "PR.PS-06"
+   ],
+   "qnrcs": [
+    "PR.SP-3",
+    "PR.SP-4"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-025",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-06.3",
+    "D-09.2"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-016"
+   ],
+   "nist_csf": [
+    "GV.SC-02",
+    "ID.RA-02"
+   ],
+   "qnrcs": [
+    "ID.AR-2"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-026",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-07.1"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-017"
+   ],
+   "nist_csf": [
+    "GV.SC-02",
+    "PR.PS-06"
+   ],
+   "qnrcs": [
+    "PR.SP-3",
+    "PR.SP-4"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-027",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-07.1"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-017"
+   ],
+   "nist_csf": [
+    "PR.PS-02",
+    "PR.PS-06"
+   ],
+   "qnrcs": [
+    "ID.GA-7",
+    "PR.SP-3",
+    "PR.SP-4"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-028",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-07.1",
+    "D-02.1"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-017",
+    "SG-NIS2-002"
+   ],
+   "nist_csf": [
+    "ID.RA-01",
+    "PR.PS-02"
+   ],
+   "qnrcs": [
+    "ID.AR-1",
+    "ID.GA-7"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-029",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-08.1"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-018"
+   ],
+   "nist_csf": [
+    "PR.AT-01",
+    "PR.PS-01"
+   ],
+   "qnrcs": [
+    "PR.SP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-031",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-08.3",
+    "D-09.1"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-020"
+   ],
+   "nist_csf": [
+    "GV.RR-01",
+    "PR.AT-02"
+   ],
+   "qnrcs": [
+    "GR.FR-1"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-032",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-09.1"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-021"
+   ],
+   "nist_csf": [
+    "GV.PO-01",
+    "GV.RR-02"
+   ],
+   "qnrcs": [
+    "GR.FR-3",
+    "GR.PP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-034",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-09.1",
+    "D-09.3"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-021"
+   ],
+   "nist_csf": [
+    "GV.OC-03",
+    "GV.RR-01"
+   ],
+   "qnrcs": [
+    "GR.FR-1"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-035",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-09.1",
+    "D-09.2"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-022"
+   ],
+   "nist_csf": [
+    "GV.PO-01",
+    "ID.RA-05"
+   ],
+   "qnrcs": [
+    "GR.PP-1",
+    "ID.AR-5"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-036",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-09.1"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-022"
+   ],
+   "nist_csf": [
+    "GV.PO-01",
+    "PR.PS-01"
+   ],
+   "qnrcs": [
+    "GR.PP-1",
+    "PR.SP-1"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-037",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-09.1",
+    "D-09.3",
+    "D-10.3"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-023"
+   ],
+   "nist_csf": [
+    "GV.OV-03",
+    "GV.PO-01",
+    "ID.IM-01"
+   ],
+   "qnrcs": [
+    "GR.PP-1",
+    "ID.MC-1"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-039",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-09.1",
+    "D-09.2"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-021",
+    "SG-NIS2-022"
+   ],
+   "nist_csf": [
+    "GV.RM-06",
+    "ID.RA-06"
+   ],
+   "qnrcs": [
+    "ID.AR-6"
+   ]
+  },
+  {
+   "sr_id": "SR-NIS2-042",
+   "regulation": "NIS2",
+   "sub_domain": [
+    "D-09.3",
+    "D-09.4"
+   ],
+   "linked_objectives": [
+    "SG-NIS2-023"
+   ],
+   "nist_csf": [
+    "GV.OV-03",
+    "ID.IM-01",
+    "RS.MI-02"
+   ],
+   "qnrcs": [
+    "ID.MC-1"
+   ]
+  }
+ ]
+}

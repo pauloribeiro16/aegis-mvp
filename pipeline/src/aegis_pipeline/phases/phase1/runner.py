@@ -1207,7 +1207,8 @@ class StepRunner:
                 got = {p["objective"] for p in parsed["proposals"]}
                 if got != expected:
                     raise ValueError(f"proposals cover {sorted(got)}, expected {sorted(expected)}")
-                findings = p3p.check_proposals(parsed["proposals"], rows, objectives)
+                findings = p3p.check_proposals(parsed["proposals"], rows, objectives,
+                                               p3p.load_rule_catalogue(self.run_dir))
                 if findings:
                     raise ValueError(f"{len(findings)} finding(s): {findings[0]}")
                 all_proposals.extend(parsed["proposals"])
@@ -1607,6 +1608,18 @@ class StepRunner:
             p3w.render_sufficiency(rows, state, confirmed_regulations(self.run_dir)),
             encoding="utf-8",
         )
+        # The QNRCS maturity the run attains, per objective. The national
+        # maturity reference is one of the four active referentials (ADR-015
+        # §5); until this, the module that computes the level had no producer
+        # in the pipeline at all.
+        from aegis_pipeline.phases.phase3 import maturity as _p3mat
+        _tier = str((self.case or {}).get("qnrcs_tier") or "basico")
+        _maturity = _p3mat.run_maturity(self.repo, self.run_dir, _tier)
+        if _maturity:
+            (out_dir / "QNRCS_MATURITY.md").write_text(
+                _p3mat.render_maturity(_maturity), encoding="utf-8")
+            print(f"[p3a_weave] QNRCS maturity: expected level {_maturity.get('nivel_esperado')}, "
+                  f"{len(_maturity.get('objectivos', {}))} objective(s) assessed", flush=True)
         # mechanical injection: the v1 Doc01 carries the accepted constraint blocks
         v1_dir = self.run_dir / "outputs" / "phase3" / "v1_security_privacy_synthesis"
         v1_dir.mkdir(parents=True, exist_ok=True)

@@ -6,6 +6,7 @@
 framework: "OWASP ASVS v4.0.3"
 framework_short: "OWASP_ASVS"
 directory: "OWASP_ASVS"
+archive: true   # not a pipeline referential (ADR-015 §5)
 version: "4.0.3 (2021-10)"
 source_url: "https://owasp.org/www-project-application-security-verification-standard/"
 fetched_date: "2026-09-22"

@@ -33,8 +33,10 @@ from compose import (
     reg_module_path,
 )
 
-REF_DIRS = {"nist_csf": "NIST_CSF_2.0", "nist_pf": "NIST_PF", "nist_airmf": "NIST_AI_RMF"}
-PATH_ALIAS = {"NIST_CSF_2.0": "NIST_CSF", "NIST_PF": "NIST_PF", "NIST_AI_RMF": "NIST_AI_RMF"}
+REF_DIRS = {"nist_csf": "NIST_CSF_2.0", "nist_pf": "NIST_PF", "nist_airmf": "NIST_AI_RMF",
+            "qnrcs": "QNRCS"}
+PATH_ALIAS = {"NIST_CSF_2.0": "NIST_CSF", "NIST_PF": "NIST_PF", "NIST_AI_RMF": "NIST_AI_RMF",
+              "QNRCS": "QNRCS"}
 DESC_MAX = 90
 
 TRACK_B_MATRIX = {
@@ -186,8 +188,26 @@ def control_meta(repo: Path, axis: str, cid: str) -> dict[str, str]:
     return {
         "function": d.get("function", "—"),
         "text": text,
-        "path": f"{PATH_ALIAS[ref]}/{d.get('function', '—')}/{cid}.json",
+        # The directory the leaf actually lives in, not its `function` field:
+        # the QNRCS leaves carry "DE — Detetar" as a function and sit under
+        # "DE", so the field is not a path component.
+        "path": f"{PATH_ALIAS[ref]}/{p.parent.name}/{cid}.json",
     }
+
+
+@lru_cache(maxsize=None)
+def qnrcs_anchors(repo_str: str) -> dict[str, list[str]]:
+    """SR id → the QNRCS measures it anchors, from the derived mapping store.
+
+    The store is machine-derived (`scripts/derive_qnrcs_anchors.py`): objective
+    → SR → NIST CSF 2.0 id → the QNRCS measure whose `mapped_nist_csf`
+    contains it. QNRCS is one of the four active referentials (ADR-015 §5).
+    """
+    path = Path(repo_str) / "baseline" / "MAPPINGS" / "advisory_anchor_mappings" / "QNRCS.json"
+    if not path.is_file():
+        return {}
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return {str(s.get("sr_id")): list(s.get("qnrcs") or []) for s in data.get("srs", [])}
 
 
 def sd_control_sections(repo: Path, sd_id: str, confirmed: list[str]) -> list[dict]:
@@ -197,22 +217,29 @@ def sd_control_sections(repo: Path, sd_id: str, confirmed: list[str]) -> list[di
         axes.append(("nist_pf", "NIST PF 1.0 controls"))
     if "AI_Act" in confirmed:
         axes.append(("nist_airmf", "NIST AI RMF controls"))
+    axes.append(("qnrcs", "QNRCS measures"))
     confirmed_eff = [r for r in REGULATIONS if r in confirmed]
     per_axis: dict[str, list[str]] = {ax: [] for ax, _ in axes}
+    qnrcs = qnrcs_anchors(str(repo))
 
-    def absorb(sr: dict) -> None:
+    def absorb(sr: dict, sr_id: str = "") -> None:
         for ax, _ in axes:
+            if ax == "qnrcs":
+                continue
             for c in sr.get(ax) or []:
                 if c not in per_axis[ax]:
                     per_axis[ax].append(c)
+        for c in qnrcs.get(sr_id, []):
+            if c not in per_axis["qnrcs"]:
+                per_axis["qnrcs"].append(c)
 
     for sr in anchor_slice(repo, sd_id, confirmed_eff):
-        absorb(sr)
+        absorb(sr, str(sr.get("sr_id") or ""))
     for reg in confirmed_eff:
         if not carries_reg_card(repo, sd_id, reg):
             continue
         for sr_id in sources_of(repo, sd_id, reg):
-            absorb(_sr(repo, reg, sr_id))
+            absorb(_sr(repo, reg, sr_id), sr_id)
     sections = []
     for ax, title in axes:
         rows = []

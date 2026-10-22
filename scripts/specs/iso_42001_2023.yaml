@@ -18,6 +18,7 @@
 framework: "ISO/IEC 42001:2023"
 framework_short: "ISO_42001_2023"
 directory: "ISO_42001_2023"
+archive: true   # not a pipeline referential (ADR-015 §5)
 version: "2023 (Annex A — section-aligned local subset; published control ordinals not asserted)"
 source_url: "https://www.iso.org/standard/81230.html"
 fetched_date: "2026-09-22"

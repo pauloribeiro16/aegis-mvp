@@ -40,6 +40,9 @@ from typing import Iterator
 
 REPO = Path(__file__).resolve().parent.parent
 CONTROLS = REPO / "baseline" / "CONTROLS"
+# The advisory families the pipeline does not reach (ADR-015 §5). A citation to
+# one of them still resolves — it points at the archive, not at nothing.
+CONTROLS_ARCHIVE = REPO / "baseline" / "CONTROLS_ARCHIVE"
 
 FULL_SCOPES = ["cases", "example", "output"]
 TEMPLATE_SCOPES = ["templates"]
@@ -150,7 +153,10 @@ def check_file(path: Path, full: bool) -> list[Finding]:
         if full and not composed_corpus and not in_history and line_no > frontmatter_end and RE_META.search(line):
             findings.append(Finding(path, line_no, "R11 meta-commentary", line))
         for match in RE_REF_PATH.finditer(line):
-            directory = CONTROLS / REFERENTIALS[match.group(1)] / match.group(2)
+            family = REFERENTIALS[match.group(1)]
+            directory = CONTROLS / family / match.group(2)
+            if not directory.exists():
+                directory = CONTROLS_ARCHIVE / family / match.group(2)
             if not directory.exists():
                 findings.append(
                     Finding(

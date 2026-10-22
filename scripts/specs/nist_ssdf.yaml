@@ -5,6 +5,7 @@
 framework: "NIST SSDF v1.1"
 framework_short: "NIST_SSDF"
 directory: "NIST_SSDF"
+archive: true   # not a pipeline referential (ADR-015 §5)
 version: "1.1 (2022-02-08)"
 source_url: "https://doi.org/10.6028/NIST.SP.800-218"
 fetched_date: "2026-09-22"

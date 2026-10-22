@@ -114,6 +114,7 @@ def test_a_verdict_that_outlives_its_inputs_is_visible_as_stale() -> None:
         report_path = run_dir / "steps" / "phase3" / "gate_report.md"
         report_path.write_text(weave.render_gate_report(first), encoding="utf-8")
         assert weave.previous_digest(run_dir) == first["inputs_digest"]
+        assert not weave.gate_report_is_stale(run_dir), "control: a fresh report is not stale"
 
         state = json.loads((run_dir / "steps" / "phase3" / "round1_state.json").read_text())
         state["open"] = ["PRIN-ENG-01"]
@@ -126,6 +127,60 @@ def test_a_verdict_that_outlives_its_inputs_is_visible_as_stale() -> None:
         assert second["state"] == "PROPOSED", second["state"]
         assert weave.previous_digest(run_dir) == first["inputs_digest"], \
             "the report on disk must still carry the verdict it was written with"
+        # ... and the report on disk must be recognisable as overtaken. Before
+        # this, the plumbing existed on both sides and nothing joined them:
+        # the digest moved and no reader could act on it.
+        assert weave.gate_report_is_stale(run_dir), \
+            "the report on disk still reads as current after its inputs changed"
+        assert second["previous_verdict_stale"], \
+            "run_gate did not notice that the verdict it replaces was already stale"
+
+
+def test_the_report_file_is_marked_stale_when_a_stage_writes_after_the_gate() -> None:
+    """The report file is what a reader opens. The stage record is what a
+    script reads. Both have to say the verdict is overtaken — otherwise the
+    file still says CONCLUDED over a run that is PROPOSED."""
+    from aegis_pipeline.phases.phase1.runner import StepRunner
+
+    with tempfile.TemporaryDirectory() as tmp:
+        run_dir = _build_run(Path(tmp), open_items=[], converged=True)
+        report = weave.run_gate(run_dir, REPO)
+        report_path = run_dir / "steps" / "phase3" / "gate_report.md"
+        report_path.write_text(weave.render_gate_report(report), encoding="utf-8")
+        assert "state: CONCLUDED" in report_path.read_text(encoding="utf-8")
+
+        class _Runner:
+            pass
+
+        stub = _Runner()
+        stub.run_dir = run_dir
+        StepRunner._write_stage_result(stub, "p3a_round", {
+            "status": "partial", "carried": 12, "selected": 25, "failed": 0, "summary": "7 open",
+        })
+
+        text = report_path.read_text(encoding="utf-8")
+        assert "state: STALE" in text, "the report on disk still claims to be current"
+        assert "stale_since: p3a_round" in text, text
+        # the digest it judged is kept: that is the record of what it was about
+        assert f"inputs_digest: {report['inputs_digest']}" in text, text
+        # and marking it twice is not an error
+        assert weave.invalidate_gate_report(run_dir, "p3a_org") is False
+
+
+def test_a_hand_edit_to_an_input_is_detected_without_a_stage_running() -> None:
+    """The choke point catches a stage writing. A human editing a file is not
+    a stage — the reader-side check is what catches that."""
+    with tempfile.TemporaryDirectory() as tmp:
+        run_dir = _build_run(Path(tmp), open_items=[], converged=True)
+        report = weave.run_gate(run_dir, REPO)
+        (run_dir / "steps" / "phase3" / "gate_report.md").write_text(
+            weave.render_gate_report(report), encoding="utf-8")
+        assert not weave.gate_report_is_stale(run_dir), "control: a fresh report is not stale"
+
+        mapping = run_dir / "outputs" / "phase3" / "synthesis_rounds" / "OBJECTIVE_MAPPING.md"
+        mapping.write_text(mapping.read_text(encoding="utf-8") + "\nan extra row\n", encoding="utf-8")
+        assert weave.gate_report_is_stale(run_dir), \
+            "a hand edit to a gate input left the report reading as current"
 
 
 def test_g4_lints_this_run_and_not_the_hand_written_corpus() -> None:

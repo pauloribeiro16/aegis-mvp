@@ -134,18 +134,36 @@ def gate_input_paths(run_dir: Path) -> list[Path]:
     verdict that outlives its inputs is worse than no gate: it was CONCLUDED at
     16:36 on run_p2enr_c1, `p3a_prin` and `p3a_round` later opened seven
     verdicts, and nothing said so.
+
+    The set has to cover what the gates *read*, not what looks related. G4
+    lints the whole `outputs/phase3/` tree and G6 judges a deliverable inside
+    it, so those files are inputs; a digest that skipped them would miss the
+    very mutation that matters. The case's frozen V0 baseline and the human
+    duty audit live in the repository, not in the run, so no run-scoped
+    fingerprint can cover them.
     """
     paths = [
         run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md",
-        run_dir / "outputs" / "phase3" / "synthesis_rounds" / "OBJECTIVE_MAPPING.md",
-        run_dir / "outputs" / "phase3" / "synthesis_rounds" / "ROUND1_REGISTER.md",
-        run_dir / "outputs" / "phase3" / "synthesis_rounds" / "SUFFICIENCY_ASSESSMENT.md",
-        run_dir / "outputs" / "phase3" / "synthesis_rounds" / "STEP4_CONSTRAINT_ABSORPTION.md",
-        run_dir / "steps" / "phase3" / "round1_state.json",
         run_dir / "steps" / "gates" / "G-P3-A.approved",
+        run_dir / "steps" / "phase3" / "round1_state.json",
+        run_dir / "steps" / "phase3" / "round1_verdicts.json",
+        run_dir / "steps" / "phase3" / "duties.json",
+        run_dir / "steps" / "phase3" / "duty_audit.md",
     ]
+    # every deliverable the gate lints or judges
+    paths += sorted((run_dir / "outputs" / "phase3").rglob("*.md"))
+    # every state file the verdict is derived from
     paths += sorted((run_dir / "steps" / "phase3").glob("verdicts_*.json"))
-    return paths
+    paths += sorted((run_dir / "steps" / "phase3").glob("proposals_*.json"))
+    for sub in ("cards", "org", "weave"):
+        paths += sorted((run_dir / "steps" / "phase3" / sub).glob("*.json"))
+    seen: set[Path] = set()
+    unique: list[Path] = []
+    for p in paths:
+        if p not in seen:
+            seen.add(p)
+            unique.append(p)
+    return unique
 
 
 def inputs_digest(run_dir: Path) -> str:
@@ -309,13 +327,19 @@ def run_gate(run_dir: Path, repo: Path) -> dict:
         state = "CONCLUDED"
     else:
         state = "FAILED"
+    live = inputs_digest(run_dir)
+    prior = previous_digest(run_dir)
     return {
         "state": state,
         "gates": gates,
         "findings": findings,
         "n_objectives": len(rows),
         "n_principles_pending": len(pending_principles),
-        "inputs_digest": inputs_digest(run_dir),
+        "inputs_digest": live,
+        # The verdict that was on disk before this run, and whether it had
+        # already been overtaken when this run started.
+        "previous_digest": prior,
+        "previous_verdict_stale": prior is not None and prior != live,
     }
 
 
@@ -328,6 +352,46 @@ def previous_digest(run_dir: Path) -> str | None:
     return m.group(1) if m else None
 
 
+def gate_report_is_stale(run_dir: Path) -> bool:
+    """True when the report on disk no longer describes the run as it stands.
+
+    The reader-side check. `run_gate` says what the verdict *is*; this says
+    whether the verdict *in front of the reader* is still the one the run
+    deserves. A report with no digest at all cannot be verified, so it is
+    treated as stale rather than trusted.
+    """
+    prior = previous_digest(run_dir)
+    if prior is None:
+        return False
+    return prior != inputs_digest(run_dir)
+
+
+def invalidate_gate_report(run_dir: Path, since: str) -> bool:
+    """Mark the report on disk as overtaken. Returns True if it was marked.
+
+    Called when a stage writes after the gate ran. The report keeps the
+    digest of the inputs it judged — that is the record of what it was a
+    verdict about — and its `state:` becomes STALE, so a reader who opens the
+    file alone cannot read it as a current certification.
+    """
+    report = run_dir / "steps" / "phase3" / "gate_report.md"
+    if not report.is_file():
+        return False
+    text = report.read_text(encoding="utf-8")
+    if re.search(r"^state:\s*STALE\s*$", text, re.MULTILINE):
+        return False
+    text = re.sub(r"^state:\s*\S+\s*$", "state: STALE", text, count=1, flags=re.MULTILINE)
+    text = re.sub(r"^(inputs_digest:.*)$", r"\1\nstale_since: " + since, text,
+                  count=1, flags=re.MULTILINE)
+    text = text.replace(
+        "# Exit gate — state: **",
+        "# Exit gate — state: **STALE** (this verdict was overtaken; re-run `p3a_gate`) — ",
+        1,
+    )
+    report.write_text(text, encoding="utf-8")
+    return True
+
+
 def render_gate_report(report: dict) -> str:
     lines = [
         "---",
@@ -335,6 +399,13 @@ def render_gate_report(report: dict) -> str:
         "generated_by: 'p3a_gate (wave 6)'",
         f"state: {report['state']}",
         f"inputs_digest: {report['inputs_digest']}",
+    ]
+    if report.get("previous_digest"):
+        lines.append(f"superseded_digest: {report['previous_digest']}")
+    if report.get("previous_verdict_stale"):
+        lines.append("superseded_verdict: stale — the verdict this report replaces "
+                     "had already been overtaken when it was written")
+    lines += [
         "---",
         "",
         f"# Exit gate — state: **{report['state']}**",
@@ -349,8 +420,9 @@ def render_gate_report(report: dict) -> str:
         f"Objectives in the matrix: {report['n_objectives']}.",
         f"Principles unplaced: {report.get('n_principles_pending', 0)}.",
         "",
-        f"Judged inputs digest: `{report['inputs_digest']}`. A later stage that writes "
-        "any gate input makes this verdict stale — re-run `p3a_gate`.",
+        f"Judged inputs digest: `{report['inputs_digest']}`. This verdict describes the "
+        "run as of that fingerprint. A later write to any gate input makes it stale, "
+        "and the report is then marked `state: STALE` — re-run `p3a_gate`.",
     ]
     if report["findings"]:
         lines += ["", "## Findings", ""]

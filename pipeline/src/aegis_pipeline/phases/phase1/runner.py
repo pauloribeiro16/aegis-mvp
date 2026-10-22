@@ -756,6 +756,12 @@ class StepRunner:
                     summary=f"STALE — {stage} ran after this verdict; re-run p3a_gate",
                 )
                 print(f"AEGIS_GATE_STALE p3a_gate verdict invalidated by {stage}", flush=True)
+            # The stage record is not what a reader opens. The report file is:
+            # mark it too, or a reader who opens it alone still reads
+            # CONCLUDED over a run that is PROPOSED.
+            from aegis_pipeline.phases.phase3 import weave as _p3w
+            if _p3w.invalidate_gate_report(self.run_dir, stage):
+                print(f"AEGIS_GATE_STALE gate_report.md marked stale by {stage}", flush=True)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(doc, indent=1, ensure_ascii=False), encoding="utf-8")
         manifest_block = dict(doc["stages"])

@@ -1,8 +1,9 @@
 ---
 document_id: AEGIS-EXP-L2-RUBRIC
 title: 'L2 human scoring rubric — the two-stage instrument for EXP-03'
-version: 1.1.0
+version: 1.2.0
 created: 2026-10-03
+updated: 2026-10-22
 status: ACTIVE
 sources: 'docs/research/sources.yaml'
 ---
@@ -64,6 +65,15 @@ Score each sampled row **holistically** against these anchors:
 | **1** | The row fails its duty: substantively wrong about the obligation, fabricated company facts, technology/vendor leakage, or near-verbatim baseline copy. |
 | **0** | Undetermined — the anchors above do not decide this row. Record what is missing from the anchors in the notes column. |
 
+**The material these anchors need is in `scoring/pack/_reference.md`.** Three of
+them ("the duty survives", "an obligation leg is dropped or distorted",
+"near-verbatim baseline copy") are judgements about the Sub-SO the goal had to
+keep, and D1–D4's "consistent with the intake" needs the intake. Neither is in
+the scoring sheet. The reference file carries both — the company's intake form
+and the `**Objective.**` text and published anchors of each sampled Sub-SO. It
+is **identical for every document in the batch** (one case, one corpus), so it
+carries no run id, no arm and no model and does not weaken the blind.
+
 ### 2b. Document-level items (1–5 each, same anchors idea)
 
 | # | Item | 5 anchor | 1 anchor |
@@ -85,6 +95,11 @@ impression:
 - **Obligation legs retained** (all legs of the Sub-SO duty appear, reworded)
 - **Company-proportional** (calibration names this company's scale/reality from the intake)
 - **Implication specific** (the implication says something true only of this company and this duty)
+
+These three are recorded as **pass/fail columns** in `scoring/L2_SCORES.csv`
+(`legs_retained`, `company_proportional`, `implication_specific`), one value per
+row unit, for the rows Stage 1 scored ≤ 3. They are reported per failure
+cause, never averaged into the composite (§4).
 
 ## 4. Aggregation (fixed in advance)
 
@@ -108,12 +123,42 @@ impression:
    to `scoring/_key.json`, is written **last**, and is not opened until scores
    are entered. It is the only file that names arms; see §9 for its git status.
 3. Scores go into **`scoring/L2_SCORES.csv`** with columns
-   `doc_key, unit, item, score, notes`, where `unit` is `row:<AG-ID>` for a
-   goal row or `doc:D<n>` for a document item. The builder writes this schema
-   exactly — 8 row units + 7 document units per document, 450 units at n=30.
+   `doc_key, unit, item, score, notes, legs_retained, company_proportional,
+   implication_specific`, where `unit` is `row:<AG-ID>` for a goal row or
+   `doc:D<n>` for a document item. The builder writes this schema exactly —
+   8 row units + 7 document units per document, 450 units at n=30. The last
+   three columns are the Stage-2 flags (§3); they stay empty for rows Stage 1
+   scored above 3.
 4. Only after the batch is entered is the mapping opened and joined.
 5. Registered seeds: row sampling `20261003`, presentation order `20261004`,
-   retest re-sampling `20261005`.
+   retest re-sampling `20261005`. The retest seed is implemented:
+   `scripts/build_scoring_pack.py --retest` draws the 4 documents (2 per arm)
+   and writes `scoring/_retest.json`.
+6. **The builder refuses to destroy entered scores.** `L2_SCORES.csv` is the one
+   artefact here no script reproduces (~2 h of research time), and rebuilding
+   also re-randomises which run each `docNN` names. The builder therefore exits
+   non-zero if the CSV already carries a score, unless `--force` is passed.
+
+### 5a. A known leak in the blind — declared, not repaired
+
+**The pipeline arm's 15 sheets are byte-identical; the agent arm's 15 are not.**
+The pipeline arm is deterministic (EXP-03 measured sd = 0 for its retention), so
+its 15 documents carry the same goals in the same order and the pack renders
+them identically. The agent arm varies from run to run. A scorer who opens the
+30 sheets can therefore identify the pipeline arm by inspection — fifteen
+identical sheets on one side, fifteen varied on the other — and, by
+elimination, the other fifteen too.
+
+This was not caught by the L2-00 readiness audit, which checked what the pack
+*carries*; it is a property of what the pack *looks like*.
+
+**Decision (researcher, 2026-10-22): document the leak and score the batch
+anyway.** Re-cutting the batch to break the identity would need more than one
+case and new runs on the cluster, and the batch's primary consumer is the
+Phase-1 quality question of §8, not the pipeline/agent comparison (already
+closed by other means). Every result computed from this batch therefore
+**declares the leak**, and the comparison it supports is stated as
+non-blind on the arm axis.
 
 ## 6. Instrument controls (single-rater design)
 
@@ -156,9 +201,9 @@ tensions, sub-domain selection — because that is what the pipeline emits.
 Three consequences, stated so the next reader does not over-read the number:
 
 1. **The pipeline/agent comparison this batch was cut for is already closed by
-   other means.** The agentic arm was retired as a non-production path by
-   researcher decision (2026-10-04, `AGENTS.md` §-1). Score it and report it;
-   it is not the reason to spend the scoring.
+   other means.** The agentic arm is not a production path — researcher decision
+   (2026-10-04, `AGENTS.md` §-1). Score it and report it; it is not the reason
+   to spend the scoring.
 2. **There is no Phase 3 batch, and there cannot be one yet.** Phase 3 has no
    pipeline stage — `pipeline/src/` holds no phase3 module and `run_pipeline.py`
    has no `phase3` entry in `--stage`. A quality verdict about Phase 3
@@ -183,7 +228,13 @@ because the three artefacts differ in whether they are regenerable:
 | `scoring/pack/`, `scoring/_manifest.json` | no | regenerated deterministically from the runs directory |
 | `scoring/L2_SCORES.csv` | **yes** | carries the entered scores; ~2 h of research time that no script reproduces |
 | `scoring/_key.json` | **never** | the un-blinding map; committing it breaks the blinding before scoring |
+| `scoring/_retest.json` | no | derived from the key by `--retest`; re-derivable |
 
 Rebuilding the pack re-randomises which run each `docNN` names, so **correct
 the builder before entering any score**, never after — scores entered against
-one key cannot be joined to a key rebuilt on another.
+one key cannot be joined to a key rebuilt on another. The builder now refuses
+to rebuild over entered scores at all (§5.6).
+
+`scoring/pack/_reference.md` is the arm-identical material the §2a anchors
+need (§2a). It is untracked with the rest of the pack and is regenerated with
+it.

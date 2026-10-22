@@ -402,6 +402,76 @@ verdict is available, and §6.1's test–retest still has to run before the
 instrument's κ is known. Scoring is still worth doing; it is not the closing of
 a phase.
 
+## L2-01 — the instrument's scoreability audit, four defects later (NEGATIVE RESULT, 2026-10-22)
+
+**What it tested.** Whether the L2 batch could be scored at all, and whether
+the scoring would have meant what it claims to mean. L2-00 audited whether the
+pack was *complete*; this audits whether it is *scorable*. Triggered by the
+adversarial review of the pipeline (2026-10-22), which found that the quality
+verdict the repository declares itself blocked on had an instrument nobody had
+used.
+
+**How it was designed.** Read the rubric's own anchors and asked, for each,
+what material the scorer must have in front of them to apply it. Then read the
+builder and the emitted artefact against that list. Physical inspection: the
+emitted sheets, the emitted CSV, the emitted key, and the re-run of the builder
+over the same runs directory.
+
+**Results so far.** Four defects, none of them in L2-00's list.
+
+1. **The pack did not carry the material its own anchors need.** Three of the
+   §2a anchors — "the duty survives", "an obligation leg is dropped or
+   distorted", "near-verbatim baseline copy" — are judgements about the Sub-SO
+   the goal had to keep; D1–D4's "consistent with the intake" needs the intake.
+   Neither the Sub-SO text nor the intake was in the sheet. **The anchors that
+   make the instrument an instrument were unapplicable as delivered.**
+2. **The blind leaks through the shape of the pack.** The pipeline arm is
+   deterministic (EXP-03: retention sd = 0), so its 15 sheets are byte-identical;
+   the agent arm's 15 are not. A scorer who opens the 30 sheets identifies the
+   arm by inspection — and, by elimination, the other one. L2-00 checked what
+   the pack *carries*; this is a property of what it *looks like*, and it was
+   not checked. **Decision (researcher, 2026-10-22): document the leak and score
+   anyway** — re-cutting the batch needs more than one case and new cluster
+   runs, and the batch's primary consumer is the Phase-1 quality question, not
+   the pipeline/agent comparison (already closed by other means).
+3. **Stage 2 had nowhere to be recorded.** The rubric's §3 defines three
+   pass/fail sub-criteria for rows scored ≤ 3; the CSV had five columns and
+   none for them. The instrument defined an analysis it could not store.
+4. **The §6.1 retest was unimplementable.** The rubric registers seed
+   `20261005` for the test–retest subset and nothing implemented it: no code
+   anywhere in the repository mentioned the seed. **The instrument could never
+   produce the κ it is judged by** — κ ≥ 0.7 usable, < 0.4 the instrument fails.
+
+A fifth defect was not in the instrument but in the risk around it: the builder
+opened `L2_SCORES.csv` in mode `"w"`. Re-running it would have destroyed the
+entered scores — the one artefact in this directory that no script reproduces —
+and re-randomised the key at the same time, so scores entered against one key
+could not be joined to a rebuilt one.
+
+**What they say.** "Built, seeded and empty" was true and was not enough. The
+pack had been audited for what it carried and for whether its sampling was
+random; it had never been audited for whether a human could execute the
+rubric with it. Three of the four defects would have made the ~2 h session
+either impossible or meaningless — the first because the anchors could not be
+applied, the fourth because the instrument could never be certified.
+
+**What changed.** `build_scoring_pack.py` now emits `scoring/pack/_reference.md`
+— the arm-identical material: the case's intake form and the `**Objective.**`
+text plus published anchors of each sampled Sub-SO (8 duties, all present, none
+empty); the CSV carries the three Stage-2 flag columns; `--retest` implements
+the registered seed; the builder refuses to rebuild over entered scores. The
+rubric goes to v1.2.0 with the leak declared in a new §5a. Rebuilding is
+deterministic: the key is byte-identical to the previous one.
+
+**What it does not license.** Nothing here is a quality verdict. No score has
+been entered, the batch has not been run, and §6.1's κ is still unknown. What
+changed is that the session the plan describes can now be held without the
+instrument failing under the scorer. The Phase-3 gap L2-00 recorded is also
+now stale in a different way: Phase 3 exists as pipeline stages, so the
+Phase-3 quality question is reachable in principle — but there is no Phase-3
+batch and no Phase-3 rubric, and the L2 rubric as written scores Phase 1
+output only.
+
 ## Registered decisions (2026-10-04)
 
 **Scale band: the code's threshold governs (EU 2003/361).** `controls.py` bands

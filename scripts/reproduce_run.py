@@ -57,6 +57,10 @@ def main() -> int:
     ap.add_argument("--base", required=True, help="Ollama base URL (script does not serve the model)")
     ap.add_argument("--repo", type=Path, default=REPO)
     ap.add_argument("--keep", action="store_true", help="keep the reproduction run dir")
+    ap.add_argument("--seed", type=int, default=None,
+                    help="override the original run's seed (for reproducing an unseeded run)")
+    ap.add_argument("--temperature", type=float, default=None,
+                    help="override the original run's temperature")
     args = ap.parse_args()
 
     orig = args.run_dir.resolve()
@@ -69,8 +73,11 @@ def main() -> int:
     config = json.loads(config_path.read_text())
     case_id = manifest.get("case_id")
     model = manifest.get("model")
-    seed = config.get("sampler_seed")
-    temperature = config.get("sampler_temperature")
+    # The config records the sampler under `seed`/`temperature` (config.py:
+    # SAMPLER_KEYS); the previous names were never written, so this script
+    # aborted "UNSEEDED" on every run it was pointed at.
+    seed = args.seed if args.seed is not None else config.get("seed")
+    temperature = args.temperature if args.temperature is not None else config.get("temperature")
     if not case_id or not model:
         print("FATAL: manifest missing case_id/model", file=sys.stderr)
         return 1
@@ -106,6 +113,17 @@ def main() -> int:
     if new_run.returncode != 0:
         print("FATAL: new-run failed", file=sys.stderr)
         return 1
+
+    # The deliverable's frontmatter carries the run's own date, read from
+    # config.json. A reproduction happens later, so its date would differ and
+    # the byte comparison could never succeed — the run date is provenance of
+    # the run being reproduced, so the reproduction inherits it.
+    repro_config_path = repro_dir / "config.json"
+    if repro_config_path.is_file() and config.get("created"):
+        repro_config = json.loads(repro_config_path.read_text())
+        repro_config["created"] = config["created"]
+        repro_config_path.write_text(json.dumps(repro_config, indent=1, ensure_ascii=False),
+                                     encoding="utf-8")
 
     for stage in ("p1", "p2", "p3", "p3f", "p4", "p4t", "p5"):
         rc = run_stage(stage, repro_dir, args.base, args.repo)

@@ -54,6 +54,26 @@ def _run_identity(run_dir: Path) -> str:
     return f"{m.get('run_id', run_dir.name)} ({m.get('mode', 'pipeline')})"
 
 
+def _run_date(run_dir: Path) -> str:
+    """The date the run started, from the run's own config.
+
+    `date.today()` made the deliverable unreproducible: the frontmatter
+    carried the assembly date, so a re-run on another day produced different
+    bytes and `scripts/reproduce_run.py` — which compares them byte for byte
+    — could never succeed. The date is provenance of the run, so it comes from
+    the run that produced it.
+    """
+    cfg = run_dir / "config.json"
+    if cfg.is_file():
+        try:
+            created = json.loads(cfg.read_text(encoding="utf-8")).get("created")
+        except (json.JSONDecodeError, OSError):
+            created = None
+        if isinstance(created, str) and len(created) >= 10:
+            return created[:10]
+    return _dt.date.today().isoformat()
+
+
 def assemble_doc(repo: Path, run_dir: Path, case: dict) -> str:
     """Deterministic assembly of doc02_adjusted_goals.md."""
     steps_dir = run_dir / "steps"
@@ -67,7 +87,7 @@ def assemble_doc(repo: Path, run_dir: Path, case: dict) -> str:
     tensions = json.loads(tpath.read_text(encoding="utf-8")).get("tensions", []) if tpath.exists() else []
     overrides = parse_overrides(case.get("track_b_overrides"))
 
-    today = _dt.date.today().isoformat()
+    today = _run_date(run_dir)
     n_goals = 0
     goal_blocks: list[str] = []
     for sd in sel_ids:

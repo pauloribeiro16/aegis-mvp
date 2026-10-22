@@ -9,6 +9,7 @@ card catalogue, and the trust-boundary (TB) verdict rows. Zero model calls.
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 
@@ -51,13 +52,51 @@ def render_doc00(
     cards: list[dict],
     tb_rows: list[dict],
 ) -> str:
-    """Part I/II from the fact sheet, Part III from the card catalogue, TZ from TB rows."""
+    """Parts I–IV: fact sheet, actors from the card catalogue, PUCs, trust zones.
 
-    def _fact(key: str, fallback: str = "—") -> str:
-        value = fact_sheet.get(key)
-        if isinstance(value, list):
-            return ", ".join(str(v) for v in value) if value else fallback
-        return str(value) if value else fallback
+    Two rules the earlier renderer broke. It asked the fact sheet for field
+    names that do not exist in the Phase 1 schema (`size`, `jurisdiction`,
+    `products_services`, `infrastructure`), so four bullets always read `—`
+    while the data sat in the file under `size_employees`, `jurisdictions`,
+    `product_summary` and `hosting`. And it dropped the fields it did not ask
+    for, including `open_questions` — where the honest "the intake does not
+    say" lives.
+    """
+
+    def fact(*keys: str, fallback: str = "—") -> str:
+        """First non-empty value among `keys`.
+
+        A name that does not resolve must not read as a fact that does not
+        exist, so every caller passes the spellings that can carry the fact.
+        """
+        for key in keys:
+            value = fact_sheet.get(key)
+            if isinstance(value, list):
+                joined = ", ".join(str(v) for v in value if v)
+                if joined:
+                    return joined
+            elif value not in (None, "", [], {}):
+                return str(value)
+        return fallback
+
+    def yes_no(value: str) -> str:
+        return {"true": "yes", "false": "no"}.get(value.strip().lower(), value)
+
+    # Not every card is functional: the constraint-absorption cards the weave
+    # stage allocates (carrier `new`) carry an objective and a constraint, not a
+    # product use case. Reading `card["puc"]` unguarded crashed the renderer
+    # whenever p3a_org ran after p3a_weave.
+    puc_cards = [c for c in cards if isinstance(c.get("puc"), dict)]
+
+    actors: dict[str, dict[str, list[str]]] = {}
+    for card in puc_cards:
+        puc = card["puc"]
+        actor = str(puc.get("actor") or "—").strip()
+        entry = actors.setdefault(actor, {"pucs": [], "cards": []})
+        if puc.get("puc_id"):
+            entry["pucs"].append(str(puc["puc_id"]))
+        if card.get("id"):
+            entry["cards"].append(str(card["id"]))
 
     lines = [
         "---",
@@ -67,30 +106,107 @@ def render_doc00(
         "",
         f"# Doc00 — Business Context, Process Models & Product Use Cases — {company}",
         "",
+        "## Scope",
+        "",
+        "This document carries the company context the requirements were derived from, the",
+        "operational actors those requirements bind, the product use case catalogue, and the",
+        "security and trust zones recorded in the coverage matrix.",
+        "",
+        "It does not carry the As-Is operational model — roles in context before the tool, the",
+        "current manual workflow, or an inefficiency register. No artifact of the pipeline",
+        "encodes that state: the intake records what the company handles, not how work is done",
+        "today. It is absent rather than estimated.",
+        "",
         "## Part I — Scope and Organizational Context",
         "",
         f"- **Company:** {company}",
-        f"- **Sector:** {_fact('sector')}",
-        f"- **Size:** {_fact('size')}",
-        f"- **Jurisdiction:** {_fact('jurisdiction')}",
-        f"- **Products / services:** {_fact('products_services')}",
-        f"- **Data handled:** {_fact('data_categories')}",
-        f"- **Infrastructure:** {_fact('infrastructure')}",
-        f"- **Assumed regulations:** {_fact('assumed_regulations')}",
+        f"- **Sector:** {fact('sector')}",
+        f"- **Size (employees):** {fact('size_employees', 'size')}",
+        f"- **Jurisdiction:** {fact('jurisdictions', 'jurisdiction')}",
+        f"- **Legal form:** {fact('legal_form')}",
+        f"- **Develops the software itself:** {yes_no(fact('develops_software'))}",
+        f"- **Products / services:** {fact('product_summary', 'products_services')}",
         "",
-        "## Part III — Product Use Case catalogue",
+        "### Data handled",
+        "",
+        f"- **Data categories:** {fact('data_categories')}",
+        f"- **Data subjects:** {fact('data_subjects')}",
+        f"- **Sensitive data:** {fact('sensitive_data', fallback='none declared')}",
+        f"- **Data scale:** {fact('data_scale')}",
+        "",
+        "### Operating model",
+        "",
+        f"- **Hosting:** {fact('hosting')}",
+        f"- **Access model:** {fact('access_model')}",
+        f"- **Third-party processing:** {fact('third_party_processing', fallback='none declared')}",
+        "",
+        "### Assumed regulations",
+        "",
+    ]
+    regulations = fact_sheet.get("assumed_regulations") or []
+    if isinstance(regulations, list) and regulations:
+        lines += [f"- {r}" for r in regulations]
+    else:
+        lines.append(f"- {fact('assumed_regulations')}")
+
+    open_questions = fact_sheet.get("open_questions") or []
+    if isinstance(open_questions, list) and open_questions:
+        lines += [
+            "",
+            "### What the intake does not say",
+            "",
+            "Stated rather than resolved — an estimate here would be an invention.",
+            "",
+        ]
+        lines += [f"- {q}" for q in open_questions]
+
+    lines += [
+        "",
+        "## Part II — Operational Actors and Interaction Model",
+        "",
+        "Actors derived from the requirement cards. The category column of the reference",
+        "deliverable (internal user / external user / external system) is not derivable from a",
+        "card and is therefore not asserted here.",
+        "",
+        "| Actor | Use cases triggered | Realizing requirements |",
+        "|---|---|---|",
+    ]
+    for actor in sorted(actors):
+        entry = actors[actor]
+        lines.append(
+            f"| {actor} | {', '.join(entry['pucs']) or '—'} | {', '.join(entry['cards']) or '—'} |"
+        )
+    if not actors:
+        lines.append("| — | — | No product use case cards were produced for this run. |")
+
+    if actors:
+        lines += ["", "```mermaid", "flowchart LR"]
+        for index, actor in enumerate(sorted(actors), start=1):
+            lines.append(f'  A{index}["{actor.replace(chr(34), chr(39))}"]')
+        for index, actor in enumerate(sorted(actors), start=1):
+            for puc_id in actors[actor]["pucs"]:
+                node = re.sub(r"[^A-Za-z0-9]", "_", puc_id) or "PUC"
+                lines.append(f'  A{index} --> {node}["{puc_id}"]')
+        lines.append("```")
+
+    lines += [
+        "",
+        "## Part III — Product Use Case Catalogue",
         "",
         "| PUC ID | Business Trigger | Primary Actor | System Operational Boundary | Deliverables & Outputs | Realizing Requirements |",
         "|---|---|---|---|---|---|",
     ]
-    for card in cards:
+    for card in puc_cards:
         p = card["puc"]
         lines.append(
             f"| {p['puc_id']} | {p['trigger']} | {p['actor']} | {p['boundary']} | {p['outputs']} | {card['id']} |"
         )
+    if not puc_cards:
+        lines.append("| — | — | — | — | — | No product use case cards were produced for this run. |")
+
     lines += [
         "",
-        "## Part III.b — Security & Trust Zone annotations",
+        "## Part IV — Security & Trust Zone Annotations",
         "",
         "| Zone | Trust-boundary skill | Protected perimeter |",
         "|---|---|---|",
@@ -98,9 +214,9 @@ def render_doc00(
     if tb_rows:
         for row in tb_rows:
             lines.append(
-                f"| TZ-{row.get('seq', '?')} | {row.get('skill', '—')} | {row.get('objective', '—')} — {row.get('summary', '')[:120]} |"
+                f"| TZ-{row.get('seq', '—')} | {row.get('skill', '—')} | {row.get('objective', '—')} — {row.get('summary', '')[:120]} |"
             )
     else:
-        lines.append("| — | — | No TB-skill rows in the coverage matrix; the Part 2 Step 1 pass owns the trust-boundary model. |")
+        lines.append("| — | — | No trust-boundary rows in the coverage matrix; the Part 2 threat pass owns the trust-boundary model. |")
     lines.append("")
     return "\n".join(lines) + "\n"

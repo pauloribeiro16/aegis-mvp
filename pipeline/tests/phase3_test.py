@@ -829,24 +829,6 @@ def test_every_phase3_ficha_carries_the_neutrality_mapping() -> None:
         assert compose.parse_ficha(f), f"{f.name} no longer parses"
 
 
-if __name__ == "__main__":
-    failures = 0
-    for name, fn in sorted(globals().items()):
-        if not name.startswith("test_") or not callable(fn):
-            continue
-        try:
-            fn()
-            print(f"  [OK ] {name}")
-        except AssertionError as e:
-            failures += 1
-            print(f"  [FAIL] {name}: {e}")
-        except Exception as e:
-            failures += 1
-            print(f"  [FAIL] {name}: {type(e).__name__}: {e}")
-    print(f"\n{'FAIL' if failures else 'OK'} — {failures} failure(s)")
-    sys.exit(1 if failures else 0)
-
-
 def test_goal_anchors_carry_pf_for_gdpr_and_not_for_cra() -> None:
     """Onda A (2026-10-11): o eixo PF tinha sido esquecido — goal_anchors()
     lia só nist_csf e toda a cadeia (goals → fase 2 → matriz → packs) nascia
@@ -896,8 +878,29 @@ def test_maturity_levels_follow_the_cumulative_tier_rule() -> None:
         # com o tier substancial, o esperado sobe para 3
         r3 = maturity.maturity_levels(path, controls, "substancial", {"GV.OC-01", "GV.RR-02"})
         assert r3["nivel_esperado"] == 3
-        assert r3["objectivos"]["GR"]["nivel_atingido"] == 2  # Substancial 100% ⇒ nível 2+... aqui 2 é B; S exige GR.CO-2 coberto ⇒ 3
-        # na regra: B 100% + S 100% ⇒ nível 3
+        # na regra: B 100% + S 100% ⇒ nível 3 (tecto = o tier avaliado)
         assert r3["objectivos"]["GR"]["nivel_atingido"] == 3, r3
     finally:
         path.unlink(missing_ok=True)
+
+
+# The runner goes LAST, always: while it sat mid-file, the two tests defined
+# after it never executed and the suite still printed OK.
+if __name__ == "__main__":
+    failures = 0
+    ran = 0
+    for name, fn in sorted(globals().items()):
+        if not name.startswith("test_") or not callable(fn):
+            continue
+        ran += 1
+        try:
+            fn()
+            print(f"  [OK ] {name}")
+        except AssertionError as e:
+            failures += 1
+            print(f"  [FAIL] {name}: {e}")
+        except Exception as e:
+            failures += 1
+            print(f"  [FAIL] {name}: {type(e).__name__}: {e}")
+    print(f"\n{'FAIL' if failures else 'OK'} — {ran} ran, {failures} failure(s)")
+    sys.exit(1 if failures else 0)

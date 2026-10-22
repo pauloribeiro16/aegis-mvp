@@ -118,6 +118,121 @@ def test_the_duty_pack_carries_the_published_anchors() -> None:
         f"anchor — the pack would hand the model a gap to guess into")
 
 
+# ---------------------------------------------------------------------------
+# Doc00 — the business context document `p3a_org` composes.
+#
+# It shipped with four bullets permanently reading `—` because it asked the
+# fact sheet for `size`, `jurisdiction`, `products_services` and
+# `infrastructure`, none of which exist in the Phase 1 schema. The data was in
+# the file the whole time, under `size_employees`, `jurisdictions`,
+# `product_summary` and `hosting`. A document that renders `—` where it holds
+# the fact is worse than no document: it reads as an absence of information
+# rather than an absence of code.
+# ---------------------------------------------------------------------------
+
+FACT_SHEET_REAL = {
+    "company": "TinyTask Lda.",
+    "sector": "Technology / Software (B2B SaaS productivity tools)",
+    "size_employees": 8,
+    "jurisdictions": ["Portugal (EU)"],
+    "legal_form": "Private Limited Company (Lda.)",
+    "product_summary": "rule-based task management platform sold by subscription",
+    "develops_software": True,
+    "data_categories": ["customer account metadata", "task data"],
+    "data_subjects": ["business customers"],
+    "sensitive_data": [],
+    "data_scale": "not stated",
+    "hosting": "unclear",
+    "access_model": "customer accounts with individual logins",
+    "third_party_processing": ["external payment provider"],
+    "assumed_regulations": ["GDPR — commercial B2B SaaS processing EU personal data"],
+    "open_questions": ["hosting: the intake does not say whether it is managed cloud"],
+}
+
+PUC_CARD = {
+    "id": "R1.1",
+    "name": "Manage Tasks",
+    "puc": {
+        "puc_id": "PUC 1.1",
+        "trigger": "A customer creates a task",
+        "actor": "Business Customer",
+        "boundary": "the task workspace",
+        "outputs": "a stored task record",
+    },
+}
+# The shape `p3a_weave` writes when it allocates a carrier for an accepted
+# constraint: an objective and a constraint, and no product use case at all.
+WEAVE_CARD = {
+    "id": "R10.1",
+    "objective": "SO-D-01.2-002",
+    "constraint": "the system shall authenticate every crossing flow",
+    "fit_criterion": "a bypass attempt fails",
+    "anchors": ["PR.DS-02"],
+    "carrier": "new",
+}
+
+
+def test_doc00_renders_every_fact_that_the_sheet_carries() -> None:
+    """The four fields that always read `—` must now carry their values."""
+    from aegis_pipeline.phases.phase3.doc00 import render_doc00
+
+    text = render_doc00("TinyTask", FACT_SHEET_REAL, [PUC_CARD], [])
+    for expected in ("8", "Portugal (EU)", "Private Limited Company (Lda.)",
+                     "rule-based task management platform", "customer accounts with individual logins",
+                     "external payment provider", "GDPR — commercial B2B SaaS"):
+        assert expected in text, f"{expected!r} is in the fact sheet but not in Doc00"
+    # The assertion that kills the defect directly: no bullet may read `—`
+    # while the sheet carries the fact behind it.
+    for line in text.splitlines():
+        if line.startswith("- **") and line.rstrip().endswith("—"):
+            key = line.split(":**")[0].removeprefix("- **").lower()
+            assert any(k in key for k in ("sensitive", "third-party")), \
+                f"empty bullet for a fact the sheet carries: {line}"
+
+
+def test_doc00_states_what_the_intake_does_not_say() -> None:
+    """`open_questions` is where the honest gap lives; dropping it is how a
+    document comes to assert more than the evidence supports."""
+    from aegis_pipeline.phases.phase3.doc00 import render_doc00
+
+    text = render_doc00("TinyTask", FACT_SHEET_REAL, [PUC_CARD], [])
+    assert "What the intake does not say" in text
+    assert "does not say whether it is managed cloud" in text
+
+
+def test_doc00_survives_cards_that_carry_no_product_use_case() -> None:
+    """Reading `card["puc"]` unguarded crashed the renderer whenever p3a_org
+    ran after p3a_weave, which is the order the chain now runs in."""
+    from aegis_pipeline.phases.phase3.doc00 import render_doc00
+
+    text = render_doc00("TinyTask", FACT_SHEET_REAL, [PUC_CARD, WEAVE_CARD], [])
+    assert "PUC 1.1" in text
+    assert "R10.1" not in text, "a constraint-absorption card is not a product use case"
+
+
+def test_doc00_with_an_empty_sheet_states_the_gaps_rather_than_omitting_them() -> None:
+    """A missing fact must render as a visible `—`, never as a line that is not
+    there — an absent bullet is indistinguishable from an absent fact."""
+    from aegis_pipeline.phases.phase3.doc00 import render_doc00
+
+    text = render_doc00("TinyTask", {}, [], [])
+    for label in ("**Sector:**", "**Size (employees):**", "**Jurisdiction:**", "**Hosting:**"):
+        assert f"- {label} —" in text, f"{label} is missing rather than declared empty"
+    assert "No product use case cards were produced" in text
+    assert "## Part II" in text and "## Part III" in text and "## Part IV" in text
+
+
+def test_doc00_declares_the_as_is_model_absent_rather_than_filling_it() -> None:
+    """There is no machine source for roles-in-context, workflow steps or
+    inefficiencies. The document says so instead of estimating."""
+    from aegis_pipeline.phases.phase3.doc00 import render_doc00
+
+    text = render_doc00("TinyTask", FACT_SHEET_REAL, [PUC_CARD], [])
+    scope = text.split("## Part I")[0]
+    assert "As-Is operational model" in scope
+    assert "absent rather than estimated" in scope
+
+
 if __name__ == "__main__":
     failures = 0
     for name, fn in sorted(globals().items()):

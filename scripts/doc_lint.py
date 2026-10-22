@@ -100,11 +100,19 @@ def iter_markdown(scopes: list[str]) -> Iterator[Path]:
             yield from sorted(root.rglob("*.md"))
 
 
+def rel(path: Path) -> str:
+    """Repo-relative when inside the repo, absolute otherwise (run dirs live outside)."""
+    try:
+        return path.relative_to(REPO).as_posix()
+    except ValueError:
+        return path.as_posix()
+
+
 def check_file(path: Path, full: bool) -> list[Finding]:
     findings: list[Finding] = []
     section = ""
-    rel = path.relative_to(REPO).as_posix()
-    composed_corpus = "filtered_corpus/" in rel
+    relative = rel(path)
+    composed_corpus = "filtered_corpus/" in relative
     lines = io.open(path, encoding="utf-8", errors="replace").read().splitlines()
     # YAML frontmatter: functional counters/contract ids live here; the R11
     # meta-commentary check applies to bodies, not to these fields.
@@ -149,7 +157,7 @@ def check_file(path: Path, full: bool) -> list[Finding]:
                         path,
                         line_no,
                         "R12 unresolved control path",
-                        f"{match.group(0)}  (missing: {directory.relative_to(REPO)})",
+                        f"{match.group(0)}  (missing: {rel(directory)})",
                     )
                 )
     return findings
@@ -159,22 +167,39 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--strict", action="store_true", help="exit 1 on any finding")
     parser.add_argument("--report", type=Path, help="write the findings to this markdown ledger")
+    parser.add_argument(
+        "paths",
+        nargs="*",
+        type=Path,
+        help="lint these files/directories instead of the repo scopes "
+             "(used by the Phase 3 exit gate to lint a run's own outputs)",
+    )
     args = parser.parse_args()
 
     findings: list[Finding] = []
     checked = 0
-    for path in iter_markdown(FULL_SCOPES):
-        findings.extend(check_file(path, full=True))
-        checked += 1
-    for path in iter_markdown(TEMPLATE_SCOPES):
-        results = check_file(path, full=False)
-        findings.extend(f for f in results if not f.check.startswith("R12 template-slot"))
-        checked += 1
+    if args.paths:
+        for target in args.paths:
+            if target.is_file() and target.suffix == ".md":
+                findings.extend(check_file(target, full=True))
+                checked += 1
+            elif target.is_dir():
+                for path in sorted(target.rglob("*.md")):
+                    findings.extend(check_file(path, full=True))
+                    checked += 1
+    else:
+        for path in iter_markdown(FULL_SCOPES):
+            findings.extend(check_file(path, full=True))
+            checked += 1
+        for path in iter_markdown(TEMPLATE_SCOPES):
+            results = check_file(path, full=False)
+            findings.extend(f for f in results if not f.check.startswith("R12 template-slot"))
+            checked += 1
 
     findings.sort(key=lambda f: (str(f.path), f.line_no))
     for finding in findings:
         text = finding.text if len(finding.text) <= 120 else finding.text[:117] + "..."
-        print(f"{finding.path.relative_to(REPO)}:{finding.line_no}: [{finding.check}] {text}")
+        print(f"{rel(finding.path)}:{finding.line_no}: [{finding.check}] {text}")
     print(
         f"\n{checked} files checked, {len(findings)} findings"
         f" ({len({str(f.path) for f in findings})} files affected)"
@@ -182,7 +207,7 @@ def main() -> int:
 
     if args.report:
         rows = "\n".join(
-            f"| `{f.path.relative_to(REPO)}:{f.line_no}` | {f.check} | "
+            f"| `{rel(f.path)}:{f.line_no}` | {f.check} | "
             f"`{f.text.strip()[:100]}` |"
             for f in findings
         ) or "| — | — | — |"

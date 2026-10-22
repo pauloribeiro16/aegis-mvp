@@ -49,7 +49,14 @@ def maturity_levels(
             for lv, ids in lv_sets.items()
         }
         level = 0
+        # The attained level is capped by the tier the entity is actually
+        # assessed at: an entity at "Básico" (level 2) can reach level 2, not 4,
+        # however well anchored its controls are. Uncapped, this reported 4 for
+        # a Básico assessment — the instrument over-reporting attainment.
+        ceiling = LEVEL_OF_TIER[tier]
         for lv in (4, 3, 2):
+            if lv > ceiling:
+                continue
             if cov[lv] >= 100:
                 level = lv
                 break

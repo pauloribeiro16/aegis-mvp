@@ -742,6 +742,20 @@ class StepRunner:
         if not isinstance(doc.get("stages"), dict):
             doc = {"run_id": self.run_dir.name, "stages": {}}
         doc["stages"][stage] = rec
+        # A Phase 3 stage that runs after the exit gate invalidates it: the gate
+        # is a pure function of the inputs on disk, so a verdict that outlives
+        # them is a verdict about a run that no longer exists. Marking it here —
+        # one choke point — beats having each p3a stage remember to.
+        if stage.startswith("p3a_") and stage != "p3a_gate":
+            prior = doc["stages"].get("p3a_gate")
+            if prior and prior.get("status") != "stale":
+                doc["stages"]["p3a_gate"] = dict(
+                    prior,
+                    status="stale",
+                    stale_since=stage,
+                    summary=f"STALE — {stage} ran after this verdict; re-run p3a_gate",
+                )
+                print(f"AEGIS_GATE_STALE p3a_gate verdict invalidated by {stage}", flush=True)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(doc, indent=1, ensure_ascii=False), encoding="utf-8")
         manifest_block = dict(doc["stages"])
@@ -1445,14 +1459,17 @@ class StepRunner:
             (out_dir / "Doc03_Organizational_Requirements.md").write_text(
                 p3o.render_doc03(org_duties, cards, company, confirmed), encoding="utf-8"
             )
-            # Doc00 — composed, never generated (doc 08 wave 5)
-            v2_dir = self.run_dir / "outputs" / "phase3" / "v2_security_privacy_synthesis"
-            v2_dir.mkdir(parents=True, exist_ok=True)
-            tb_rows = [r for r in rows if (r.get("skill") or "") == "TB"]
-            (v2_dir / "Doc00_Process_and_Operational_Workflows.md").write_text(
-                p3d.render_doc00(company, p3d.load_fact_sheet(self.run_dir), p3d.load_cards(self.run_dir), tb_rows),
-                encoding="utf-8",
-            )
+        # Doc00 — composed, never generated (doc 08 wave 5). It reads the fact
+        # sheet and the V0 cards, neither of which is the organizational lane:
+        # inside `if cards:` a run where every ORG card failed lost its business
+        # context document entirely.
+        v2_dir = self.run_dir / "outputs" / "phase3" / "v2_security_privacy_synthesis"
+        v2_dir.mkdir(parents=True, exist_ok=True)
+        tb_rows = [r for r in rows if (r.get("skill") or "") == "TB"]
+        (v2_dir / "Doc00_Process_and_Operational_Workflows.md").write_text(
+            p3d.render_doc00(company, p3d.load_fact_sheet(self.run_dir), p3d.load_cards(self.run_dir), tb_rows),
+            encoding="utf-8",
+        )
         summary = {
             "status": "ok" if not failures else "partial",
             "carried": len(cards),
@@ -1639,6 +1656,45 @@ class StepRunner:
             "n_objectives": report["n_objectives"],
         })
         return 0
+
+    # The Phase 3 chain, in dependency order. The gate is last by construction:
+    # a verdict computed before a later stage mutates its inputs is exactly the
+    # defect run_p2enr_c1 shipped (gate CONCLUDED at 16:36, seven verdicts opened
+    # at 21:00, nothing said so).
+    P3A_ORDER = (
+        "p3a_cards", "p3a_map", "p3a_propose", "p3a_prin",
+        "p3a_round", "p3a_org", "p3a_weave", "p3a_gate",
+    )
+
+    def _round_converged(self) -> bool:
+        state = self.run_dir / "steps" / "phase3" / "round1_state.json"
+        if not state.is_file():
+            return False
+        try:
+            return bool(json.loads(state.read_text(encoding="utf-8")).get("converged"))
+        except (json.JSONDecodeError, OSError):
+            return False
+
+    def stage_p3a_all(self) -> int:
+        """Run the Phase 3 chain end to end, stopping at the human round.
+
+        Everything downstream of `p3a_round` requires a converged round, so when
+        the verdicts are not recorded the chain stops and says so rather than
+        aborting inside `p3a_org` with a precondition error.
+        """
+        total = 0
+        for name in self.P3A_ORDER:
+            if name in ("p3a_org", "p3a_weave", "p3a_gate") and not self._round_converged():
+                print(
+                    f"=== p3a_all: stopping before {name} — the human round has not "
+                    f"converged. Record the verdicts in round1_verdicts.json, then "
+                    f"re-run p3a_all. ('p3a_gate' alone gives the current standing.) ===",
+                    flush=True,
+                )
+                break
+            print(f"=== stage {name} ===", flush=True)
+            total += getattr(self, f"stage_{name}")()
+        return total
 
     def stage_p5(self) -> int:
         self._require(("steps/selection.json", "steps/framing.md"), "G-P1-C")

@@ -283,7 +283,7 @@ def main(argv=None) -> int:
                        choices=["p1", "p2", "p3f", "p3", "p4", "p4t", "p5", "phase2", "p3a_map",
                                 "p3a_prin",
                                 "p3a_cards", "p3a_propose", "p3a_round", "p3a_org", "p3a_weave",
-                                "p3a_gate", "p4p5", "p4tp5", "all", "agentic"])
+                                "p3a_gate", "p3a_all", "p4p5", "p4tp5", "all", "agentic"])
     p_run.add_argument("--repo", type=Path, default=REPO_DEFAULT)
     p_run.add_argument("--run-dir", type=Path, required=True)
     p_run.add_argument("--model", default=None)

@@ -10,6 +10,7 @@ CONCLUDED, and the gate does not close.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -17,6 +18,12 @@ from pathlib import Path
 from aegis_pipeline.guards.quality_gates import check_no_technology
 
 RE_CARD_ID = re.compile(r"^R\d+\.\d+$")
+RE_SUFFICIENCY_ROW = re.compile(
+    r"^-\s+\*\*(?P<reg>[A-Za-z0-9_][A-Za-z0-9_ ]*):\*\*\s+"
+    r"(?P<full>\d+) fully covered,\s*(?P<partial>\d+) partial,\s*(?P<org>\d+) organizational",
+    re.MULTILINE,
+)
+RE_STEP4_ROW = re.compile(r"^\|\s*`[^`]+`\s*\|")
 
 
 def parse_weave(answer: str) -> dict:
@@ -65,11 +72,21 @@ def render_step4(accepted: list[dict], cards: list[dict]) -> str:
     return "\n".join(lines) + "\n"
 
 
-def render_sufficiency(rows: list[dict], round_state: dict, regs: list[str]) -> str:
-    """G5 evidence: compliance verdict per regulation + the explicit residue list."""
-    counts: dict[str, int] = {}
+def render_sufficiency(rows: list[dict], round_state: dict, regs: list[str] | None = None) -> str:
+    """G5 evidence: compliance verdict per regulation + the explicit residue list.
+
+    The counts are grouped by each objective's own regulation column. The
+    previous renderer printed the whole-matrix total once per regulation, so
+    GDPR and CRA came out byte-identical — and G5, being `is_file()`, passed it.
+    """
+    by_reg: dict[str, dict[str, int]] = {}
     for row in rows:
-        counts[row["verdict"]] = counts.get(row["verdict"], 0) + 1
+        reg = str(row.get("regulation") or "—").strip("*_ ")
+        bucket = by_reg.setdefault(reg, {})
+        bucket[row["verdict"]] = bucket.get(row["verdict"], 0) + 1
+    totals: dict[str, int] = {}
+    for row in rows:
+        totals[row["verdict"]] = totals.get(row["verdict"], 0) + 1
     residues = [
         f"`{p['objective']}` — risk accepted: {p['risk']}"
         for p in round_state.get("rejected", [])
@@ -83,13 +100,15 @@ def render_sufficiency(rows: list[dict], round_state: dict, regs: list[str]) -> 
         "## Compliance verdict per regulation",
         "",
     ]
-    for reg in regs:
-        lines.append(f"- **{reg}:** {counts.get('Fully covered (anchored)', 0)} fully covered, "
-                     f"{counts.get('Partially covered (functional leg + explicit carve-out)', 0)} partial, "
-                     f"{counts.get('No functional carrier (organizational)', 0)} organizational "
-                     "(counts span the whole matrix; per-objective regulation lives in the Fase 2 doc)")
+    for reg in sorted(by_reg):
+        bucket = by_reg[reg]
+        n = sum(bucket.values())
+        lines.append(f"- **{reg}:** {bucket.get('Fully covered (anchored)', 0)} fully covered, "
+                     f"{bucket.get('Partially covered (functional leg + explicit carve-out)', 0)} partial, "
+                     f"{bucket.get('No functional carrier (organizational)', 0)} organizational "
+                     f"({n} objective(s) under this regulation)")
     lines += ["", "## Security verdict", "",
-              f"- {sum(1 for r in rows if r['verdict'] == 'Fully covered (anchored)')} of {len(rows)} objectives fully carried after the round;"
+              f"- {totals.get('Fully covered (anchored)', 0)} of {len(rows)} objectives fully carried after the round;"
               f" {len(round_state.get('accepted', []))} constraints accepted and woven."]
     lines += ["", "## Residues (explicit)", ""]
     if residues:
@@ -105,6 +124,78 @@ def render_sufficiency(rows: list[dict], round_state: dict, regs: list[str]) -> 
 # ---------------------------------------------------------------------------
 # The exit gate — zero model calls.
 # ---------------------------------------------------------------------------
+
+
+def gate_input_paths(run_dir: Path) -> list[Path]:
+    """Every file whose content the verdict below depends on.
+
+    The report carries a digest of these, so a reader can tell whether the
+    verdict in front of them is still the verdict the run deserves. A gate
+    verdict that outlives its inputs is worse than no gate: it was CONCLUDED at
+    16:36 on run_p2enr_c1, `p3a_prin` and `p3a_round` later opened seven
+    verdicts, and nothing said so.
+    """
+    paths = [
+        run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md",
+        run_dir / "outputs" / "phase3" / "synthesis_rounds" / "OBJECTIVE_MAPPING.md",
+        run_dir / "outputs" / "phase3" / "synthesis_rounds" / "ROUND1_REGISTER.md",
+        run_dir / "outputs" / "phase3" / "synthesis_rounds" / "SUFFICIENCY_ASSESSMENT.md",
+        run_dir / "outputs" / "phase3" / "synthesis_rounds" / "STEP4_CONSTRAINT_ABSORPTION.md",
+        run_dir / "steps" / "phase3" / "round1_state.json",
+        run_dir / "steps" / "gates" / "G-P3-A.approved",
+    ]
+    paths += sorted((run_dir / "steps" / "phase3").glob("verdicts_*.json"))
+    return paths
+
+
+def inputs_digest(run_dir: Path) -> str:
+    """Content-independent fingerprint: identity, mtime and size of every input."""
+    h = hashlib.sha256()
+    for path in gate_input_paths(run_dir):
+        try:
+            st = path.stat()
+            h.update(f"{path}|{st.st_mtime_ns}|{st.st_size}\n".encode())
+        except OSError:
+            h.update(f"{path}|missing\n".encode())
+    return h.hexdigest()[:16]
+
+
+def _sufficiency_findings(path: Path, n_rows: int) -> list[str]:
+    """G5 measured the verdict per regulation, not the existence of a file.
+
+    The renderer relabelled the whole-matrix total once per regulation, so two
+    regulations got byte-identical lines and the gate passed them.
+    """
+    if not path.is_file():
+        return ["SUFFICIENCY_ASSESSMENT missing"]
+    found = []
+    triples = set()
+    n_lines = 0
+    for line in path.read_text(encoding="utf-8").splitlines():
+        m = RE_SUFFICIENCY_ROW.match(line)
+        if m:
+            n_lines += 1
+            triples.add((int(m["full"]), int(m["partial"]), int(m["org"])))
+    if not n_lines:
+        found.append("no per-regulation verdict line found")
+    elif len(triples) == 1:
+        found.append(
+            f"all {n_lines} regulation lines carry the same counts {triples.pop()} — "
+            "the whole-matrix total relabelled, not a per-regulation verdict"
+        )
+    elif n_rows and sum(sum(t) for t in triples) < n_rows:
+        found.append(f"per-regulation counts sum below the {n_rows} matrix rows — a row has no regulation")
+    return found
+
+
+def _step4_findings(path: Path, n_accepted: int) -> list[str]:
+    """G6 measured the existence of a file; it now measures the absorption itself."""
+    if not path.is_file():
+        return ["STEP4 absorption table missing (run p3a_weave)"]
+    rows = sum(1 for line in path.read_text(encoding="utf-8").splitlines() if RE_STEP4_ROW.match(line))
+    if rows != n_accepted:
+        return [f"{rows} absorption row(s) for {n_accepted} accepted constraint(s)"]
+    return []
 
 
 def run_gate(run_dir: Path, repo: Path) -> dict:
@@ -160,32 +251,54 @@ def run_gate(run_dir: Path, repo: Path) -> dict:
         gates["G2"] = "CLOSED"
     proposed = not gates["G2"].startswith("CLOSED")
 
-    # G1
+    # G1 — the matrix AND the principle layer are placed (ADR-006: "every Phase 2
+    # objective and every principle placed, zero silent/pending"). Reading only
+    # the rows let a run pass with PRINCIPLE_MAPPING at "Bound 0 / Pending 7".
     unset = [r["id"] for r in rows if r.get("verdict") in (None, "—", "")]
-    gates["G1"] = "CLOSED" if rows and not unset and not any(f.startswith("T-G1") for f in findings) \
-        else f"OPEN — {len(unset)} verdict(s) unset or skeleton findings"
+    pending_principles = [o for o in round_state.get("open", []) if str(o).startswith("PRIN-")]
+    g1_problems = []
+    if not rows:
+        g1_problems.append("empty matrix")
+    if unset:
+        g1_problems.append(f"{len(unset)} verdict(s) unset")
+    if any(f.startswith("T-G1") for f in findings):
+        g1_problems.append("skeleton findings")
+    if pending_principles:
+        g1_problems.append(
+            f"{len(pending_principles)} principle(s) unplaced ({', '.join(pending_principles[:3])}"
+            f"{'…' if len(pending_principles) > 3 else ''})"
+        )
+    gates["G1"] = "CLOSED" if not g1_problems else "OPEN — " + "; ".join(g1_problems)
 
     # G3 — accepted constraints cite published anchors
     g3_findings = [f for f in findings if f.startswith("T6")]
     gates["G3"] = "CLOSED" if not g3_findings else f"OPEN — {len(g3_findings)} anchor finding(s)"
 
-    # G4 — doc_lint --strict over the produced markdown
-    # doc_lint takes no positional scope — it walks its own fixed scopes
-    # (cases/, example/, output/). The run's deliverables are exported under
-    # output/ by the caller, which is what makes the run visible to the lint.
-    lint = subprocess.run(
-        ["python3", str(repo / "scripts" / "doc_lint.py"), "--strict"],
-        capture_output=True, text=True, timeout=120,
+    # G4 — doc_lint --strict over THIS run's deliverables. The lint walks the
+    # repo scopes on its own, and output/<case>/phase3/ was empty, so the gate
+    # was passing on the hand-written corpus while never reading the run.
+    deliverables = run_dir / "outputs" / "phase3"
+    if deliverables.is_dir():
+        lint = subprocess.run(
+            ["python3", str(repo / "scripts" / "doc_lint.py"), "--strict", str(deliverables)],
+            capture_output=True, text=True, timeout=120,
+        )
+        gates["G4"] = "CLOSED" if lint.returncode == 0 else f"OPEN — doc_lint: {lint.stdout[-400:] or lint.stderr[-400:]}"
+    else:
+        gates["G4"] = f"OPEN — no deliverables at {deliverables} to lint"
+
+    # G5 — a per-regulation verdict, not the existence of a file
+    suff_findings = _sufficiency_findings(
+        run_dir / "outputs" / "phase3" / "synthesis_rounds" / "SUFFICIENCY_ASSESSMENT.md", len(rows)
     )
-    gates["G4"] = "CLOSED" if lint.returncode == 0 else f"OPEN — doc_lint: {lint.stdout[-400:] or lint.stderr[-400:]}"
+    gates["G5"] = "CLOSED" if not suff_findings else "OPEN — " + suff_findings[0]
 
-    # G5 — sufficiency assessment exists
-    gates["G5"] = "CLOSED" if (run_dir / "outputs" / "phase3" / "synthesis_rounds" / "SUFFICIENCY_ASSESSMENT.md").is_file() \
-        else "OPEN — SUFFICIENCY_ASSESSMENT missing"
-
-    # G6 — the v0→v1 transition dossier
-    gates["G6"] = "CLOSED" if (run_dir / "outputs" / "phase3" / "synthesis_rounds" / "STEP4_CONSTRAINT_ABSORPTION.md").is_file() \
-        else "OPEN — STEP4 absorption table missing (run p3a_weave)"
+    # G6 — one absorption row per accepted constraint
+    step4_findings = _step4_findings(
+        run_dir / "outputs" / "phase3" / "synthesis_rounds" / "STEP4_CONSTRAINT_ABSORPTION.md",
+        len(round_state.get("accepted", [])),
+    )
+    gates["G6"] = "CLOSED" if not step4_findings else "OPEN — " + step4_findings[0]
 
     # CONCLUDED exige TODOS os gates fechados; com a ronda aberta é PROPOSED
     # mesmo com gates fechados — é a regra dos dois estados (doc 08).
@@ -201,7 +314,18 @@ def run_gate(run_dir: Path, repo: Path) -> dict:
         "gates": gates,
         "findings": findings,
         "n_objectives": len(rows),
+        "n_principles_pending": len(pending_principles),
+        "inputs_digest": inputs_digest(run_dir),
     }
+
+
+def previous_digest(run_dir: Path) -> str | None:
+    """The digest the report on disk was written with, if any."""
+    report = run_dir / "steps" / "phase3" / "gate_report.md"
+    if not report.is_file():
+        return None
+    m = re.search(r"^inputs_digest:\s*(\S+)", report.read_text(encoding="utf-8"), re.MULTILINE)
+    return m.group(1) if m else None
 
 
 def render_gate_report(report: dict) -> str:
@@ -210,6 +334,7 @@ def render_gate_report(report: dict) -> str:
         "title: 'Phase 3 Part 1 — exit gate report'",
         "generated_by: 'p3a_gate (wave 6)'",
         f"state: {report['state']}",
+        f"inputs_digest: {report['inputs_digest']}",
         "---",
         "",
         f"# Exit gate — state: **{report['state']}**",
@@ -219,7 +344,14 @@ def render_gate_report(report: dict) -> str:
     ]
     for gate in ("G1", "G2", "G3", "G4", "G5", "G6"):
         lines.append(f"| {gate} | {report['gates'].get(gate, '—')} |")
-    lines += ["", f"Objectives in the matrix: {report['n_objectives']}."]
+    lines += [
+        "",
+        f"Objectives in the matrix: {report['n_objectives']}.",
+        f"Principles unplaced: {report.get('n_principles_pending', 0)}.",
+        "",
+        f"Judged inputs digest: `{report['inputs_digest']}`. A later stage that writes "
+        "any gate input makes this verdict stale — re-run `p3a_gate`.",
+    ]
     if report["findings"]:
         lines += ["", "## Findings", ""]
         lines += [f"- {f}" for f in report["findings"][:40]]

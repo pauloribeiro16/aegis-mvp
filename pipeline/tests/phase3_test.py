@@ -697,6 +697,55 @@ def test_proposal_parse_and_published_anchor_gate() -> None:
     assert any("PR.DS-1" in f and "T6" not in f or "published set" in f for f in findings), findings
 
 
+def test_a_proposal_must_cite_the_rule_it_discharges() -> None:
+    """Measured on the cluster 2026-10-22: with the field merely permitted,
+    18 of 18 proposals omitted it. The consumer existed and never fired. So
+    when the objective carries Phase 2 rules, the citation is required — and
+    the rule must be that objective's own."""
+    _, _, proposals, _ = _wave_modules()
+    targets = [{"id": "SO-D-01.1-001", "subdomain": "D-01.1"}]
+    rules = {"SO-D-01.1-001": [{"rule_id": "RULE-D-01.1-001"},
+                                {"rule_id": "RULE-D-01.1-002"}]}
+    body = "\n".join([
+        "```markdown",
+        "### SO-D-01.1-001",
+        "",
+        "**Constraint (EARS):** Where the system stores personal data at rest, the system shall encrypt the stored data.",
+        "**Fit criterion:** A raw dump of the store is unreadable without the key.",
+        "**Risk addressed:** Personal data readable by an attacker with disk access.",
+        "**Chain anchors:** `PR.DS-01`",
+        "**Rules discharged:** `RULE-D-01.1-002`",
+        "**Proposed carrier:** new",
+        "```",
+    ])
+    parsed = proposals.parse_proposals(body, targets, rules)
+    assert parsed["proposals"][0]["rules"] == ["RULE-D-01.1-002"]
+
+    # the field omitted although the objective carries rules
+    try:
+        proposals.parse_proposals(body.replace("**Rules discharged:** `RULE-D-01.1-002`\n", ""),
+                                  targets, rules)
+    except ValueError as e:
+        assert "no rule cited" in str(e)
+    else:
+        raise AssertionError("a proposal with no rule cited passed L0")
+
+    # a rule of another objective: the shape is fine, so the parser lets it
+    # through and the SEMANTIC check catches it — that is where the catalogue
+    # lives.
+    foreign = proposals.parse_proposals(body.replace("RULE-D-01.1-002", "RULE-D-09.9-007"),
+                                        targets, rules)
+    findings = proposals.check_proposals(
+        foreign["proposals"], [{"id": "SO-D-01.1-001"}],
+        [{"id": "SO-D-01.1-001", "anchors": "`PR.DS-01`"}], rules)
+    assert any("not a Phase 2 rule of this objective" in f for f in findings), findings
+
+    # an objective with no rule needs no such line
+    parsed = proposals.parse_proposals(body.replace("**Rules discharged:** `RULE-D-01.1-002`\n", ""),
+                                       targets, {})
+    assert parsed["proposals"][0]["rules"] == []
+
+
 def test_round_verdicts_split_and_two_states() -> None:
     _, _, proposals, _ = _wave_modules()
     props = [

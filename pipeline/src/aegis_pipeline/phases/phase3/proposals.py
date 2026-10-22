@@ -63,7 +63,8 @@ def select_proposal_targets(rows: list[dict]) -> list[dict]:
     return targets
 
 
-def parse_proposals(answer: str, targets: list[dict]) -> list[dict]:
+def parse_proposals(answer: str, targets: list[dict],
+                     rules: dict[str, list[dict]] | None = None) -> list[dict]:
     """L0 for the proposal call: one `### <objective-id>` block per target."""
     from aegis_pipeline.phases.phase1.common import extract_fenced
 
@@ -105,11 +106,20 @@ def parse_proposals(answer: str, targets: list[dict]) -> list[dict]:
         anchors = [a.strip().strip("`") for a in fields["Chain anchors"].split(",") if a.strip()]
         if not anchors:
             raise ValueError(f"proposals [{oid}]: no chain anchors")
-        # `Rules discharged` is optional — an objective may carry no Phase 2
-        # rule — but when it is present it is checked against that objective's
-        # own rules, not against the catalogue as a whole.
+        # `Rules discharged` is REQUIRED when the objective carries Phase 2
+        # rules. Measured 2026-10-22 on the cluster: with the field merely
+        # permitted, 18 of 18 proposals omitted it — the model does not use a
+        # field it is not required to, and the tail stayed an orphan with a
+        # consumer that never fired. When the objective has no rule there is
+        # nothing to discharge and the field is absent.
         rm = re.search(r"\*\*Rules discharged:?\*\*\s*(.+)", body)
-        rules = [r.strip().strip("`") for r in rm.group(1).split(",") if r.strip()] if rm else []
+        cited = [r.strip().strip("`") for r in rm.group(1).split(",") if r.strip()] if rm else []
+        owned = {str(r.get("rule_id")) for r in (rules or {}).get(oid, [])}
+        if owned and not cited:
+            raise ValueError(
+                f"proposals [{oid}]: no rule cited, but the objective carries "
+                f"{len(owned)} Phase 2 rule(s) ({', '.join(sorted(owned))})"
+            )
         out.append({
             "objective": oid,
             # `PO-D-01.2-001`.split("-")[1] is "D" — the same truncation org.py
@@ -120,7 +130,7 @@ def parse_proposals(answer: str, targets: list[dict]) -> list[dict]:
             "fit_criterion": fields["Fit criterion"],
             "risk": fields["Risk addressed"],
             "anchors": anchors,
-            "rules": rules,
+            "rules": cited,
             "carrier": fields["Proposed carrier"],
         })
     return {"proposals": out}

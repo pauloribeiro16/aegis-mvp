@@ -79,9 +79,11 @@ Exactly one section per target objective, in the order given.
   lists them; naming another is a fabrication. Copy the ids exactly as
   published — the corpus publishes two-digit ids (`PR.AC-01`), and a
   single-digit form is rejected.
-- **Rules discharged come only from that objective's own Phase 2 rules.** The
-  objective block lists them, when it carries any. Naming a rule of another
-  objective is a fabrication, and so is naming a rule that does not exist.
+- **Rules discharged is mandatory when the objective carries Phase 2 rules.**
+  The objective block lists them. Name the rule or rules this constraint
+  discharges — at least one, and only from that objective's own list. Naming a
+  rule of another objective is a fabrication, and so is naming a rule that does
+  not exist. An objective with no Phase 2 rule has no such line.
 - **EARS with a system (or organizational) subject and `shall`.** One behaviour
   per constraint.
 - **The fit criterion is binary.** A reviewer can judge it true or false from

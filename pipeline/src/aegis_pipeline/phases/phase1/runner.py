@@ -636,7 +636,8 @@ class StepRunner:
             from aegis_pipeline.phases.phase3 import proposals as _p3p
             sd = step.split(":", 1)[1]
             targets = [t for t in getattr(self, "_p3a_propose_targets", []) if t["subdomain"] == sd]
-            return _p3p.parse_proposals(answer, targets)
+            return _p3p.parse_proposals(answer, targets,
+                                         _p3p.load_rule_catalogue(self.run_dir))
         if step.startswith("p3a_org:"):
             from aegis_pipeline.phases.phase3 import org as _p3o
             return _p3o.parse_org_card(answer, duty=str(subdomain or step.split(":", 1)[1]))

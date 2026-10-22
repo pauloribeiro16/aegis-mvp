@@ -26,6 +26,7 @@ Design layer for the **LLM-assisted pipeline that executes the AEGIS methodology
 | [03_PROMPT_CATALOG.md](03_PROMPT_CATALOG.md) | Prompt ficha anatomy + full catalog (Phase 1 detailed; Phases 2–3 skeleton) | ACTIVE |
 | [04_LITERATURE_REVIEW.md](04_LITERATURE_REVIEW.md) | Literature grounding: canonical LLM pipeline stage model, RAG vs KG evidence, security-RE/threat-modeling LLM work, guardrails & evals (annotated sources) | ACTIVE |
 | [prompts/](prompts/) | Executable prompt fichas. Phase 1: `PROM-P1-01` … `PROM-P1-05` | Phase 1 detailed |
+| [10_PHASE_ORIENTATION.md](10_PHASE_ORIENTATION.md) | Functional reference: what each phase consumes and produces, which guard measures what, the known seams ledger, and where to re-enter the work | ACTIVE |
 
 **External evidence layer:** [`../research/`](../research/README.md) carries the
 2026-10-03 survey of pipeline and agent-orchestration patterns, the mapping of

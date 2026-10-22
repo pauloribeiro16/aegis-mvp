@@ -1,0 +1,73 @@
+# Python bytecode
+__pycache__/
+*.pyc
+
+# ZCode session artifacts
+.zcode/
+_audit_input.jsonl
+_t/
+scratch/
+
+# One-shot generation scripts and their intermediates. These are working
+# material, never deliverables: they are written at the repo root, are not
+# referenced by any script or document, and self-declare "deleted after run".
+# Left untracked, a `git add -A` would commit them.
+_tmp_*.py
+_tmp_*.json
+
+# Machine-local sync stamp (pipeline/deucalion/sync_up.sh writes it; it
+# records which workstation revision reached the cluster, not repo content).
+.cluster_sync_rev
+
+# Tool scratch directories.
+.dsh/
+
+# Experiment working material under scoring/. `pack/` and `_manifest.json` are
+# regenerable from the tracked `scripts/build_scoring_pack.py`, so they stay
+# untracked. `L2_SCORES.csv` is NOT regenerable — it carries the researcher's
+# entered scores, which is why it is tracked. `_key.json` is the BLINDING KEY;
+# committing it would break the scoring before it is entered, so it never is.
+scoring/*
+!scoring/L2_SCORES.csv
+
+# Exported deliverables (output/<company>/<run_id>/) are per-run generated
+# markdown; the authoritative copy of every run lives in $AEGIS_RUNS_DIR and,
+# since EXP-02, the pipeline is bit-reproducible, so these are rebuildable.
+# Tracked deliberately NOT: see §0. Add back with `git add -f` if the
+# deliverables belong in the repo for a thesis snapshot.
+output/
+
+# ===== ↑ 以上同步自 .gitignore（「从 .gitignore 同步」只重写以上部分）=====
+.git/
+.hg/
+.svn/
+node_modules/
+bower_components/
+jspm_packages/
+site-packages/
+venv/
+coverage/
+htmlcov/
+lcov-report/
+cmakefiles/
+cmake-build-*/
+bazel-*/
+pods/
+deriveddata/
+storybook-static/
+playwright-report/
+test-results/
+allure-results/
+allure-report/
+cdk.out/
+*.egg-info/
+*.dist-info/
+eggs/
+pip-wheel-metadata/
+wheels/
+# ----- ↑ 以上为 ZCode 默认排除规则（自定义规则请写在本行下方，不会被同步/恢复改动）-----
+# 自定义规则写在下方（本行提示可删除）
+
+# Local credentials (machine-local secrets in .env at the repo root).
+.env
+.env.*

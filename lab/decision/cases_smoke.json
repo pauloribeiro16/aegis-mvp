@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "name": "smoke",
+  "note": "Three cases. The smoke test's job is to prove the serving route works end to end before the suite is spent on it: one noul, one choice, one score, plus the labelled applicability question that must come back 'yes' for GDPR and 'no' for NIS2.",
+  "cases": [
+    {
+      "id": "smoke.noul",
+      "tags": ["smoke"],
+      "state": "I was charged twice this month, please refund one of them.",
+      "questions": {
+        "refund": {"type": "noul", "instructions": "Is the customer asking for a refund?"}
+      },
+      "expect": {"answer_type": "noul"}
+    },
+    {
+      "id": "smoke.choice",
+      "tags": ["smoke"],
+      "state": "My card was declined twice at checkout and I need to pay now.",
+      "questions": {
+        "route": {
+          "type": "choice",
+          "instructions": "Which team should handle this request?",
+          "criteria": {
+            "billing": "Charges, invoices, refunds and payment methods.",
+            "technical": "Product bugs, outages and integration problems.",
+            "account": "Login and account settings."
+          }
+        }
+      },
+      "expect": {"answer_type": "choice"}
+    },
+    {
+      "id": "smoke.score",
+      "tags": ["smoke"],
+      "state": "The whole platform is down and no customer can work.",
+      "questions": {
+        "urgency": {
+          "type": "score",
+          "instructions": "How urgent is this request?",
+          "criteria": [
+            "Routine: no immediate business impact.",
+            "Time-sensitive: should handle today.",
+            "Blocking the customer now: production is down."
+          ]
+        }
+      },
+      "expect": {"answer_type": "score"}
+    },
+    {
+      "id": "smoke.labelled",
+      "tags": ["smoke"],
+      "state": "TinyTask Lda. is an 8-person company established in Portugal (EU). It develops and operates a rule-based B2B task management SaaS product placed on the EU market. It processes customer account metadata (names, emails, passwords) and task data. It has no AI/ML systems.",
+      "questions": {
+        "gdpr": {"type": "noul", "instructions": "Does regulation GDPR apply to this company?"},
+        "nis2": {"type": "noul", "instructions": "Does regulation NIS2 apply to this company?"}
+      },
+      "expect": {"answer_type": "noul", "labels": {"gdpr": true, "nis2": false}}
+    }
+  ]
+}

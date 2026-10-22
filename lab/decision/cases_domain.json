@@ -1,0 +1,1418 @@
+{
+  "version": 1,
+  "name": "domain",
+  "cases": [
+    {
+      "id": "domain.tension.t-001",
+      "tags": [
+        "L3",
+        "tension-activation"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCORPUS TENSION CONDITION (verbatim from baseline/domains/D-04_Incident-Response/D-04.3/cross/_interactions.md):\n1. **CONDITIONAL on multi-reg overlap** (same event, multiple applicable regs): **Five-track timeline divergence with no operationalisation principle specified in any one regulation.** Each regulation's clock is anchored to a distinct recipient and trigger moment; an entity subject to all 5 must maintain a 5-recipient notification pipeline with up to 6 distinct deadlines (4h DORA / 24h NIS 2 / 24h CRA / 72h GDPR / 14d CRA-AEV / 15d AI Act / 1m NIS 2-final). No regulation specifies the binding-procedure principle for resolving simultaneous triggers on a single event. *Resolution belongs in Phase 1C Doc 07.* When the underlying event's scope overlaps with only one applicable regulation's scope, this tension does not activate — the single triggered sub-SO applies on its own clock.\n\nQUESTION: does the activation condition declared above hold for this company, so that the tension activates?",
+      "questions": {
+        "activates": {
+          "type": "noul",
+          "instructions": "Does this corpus tension activate for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "activates": true
+        }
+      },
+      "provenance": "Label from the corpus condition (baseline/domains/D-04_Incident-Response/D-04.3/cross/_interactions.md) applied to the fact sheet. Warrant: The condition is multi-reg overlap on the same incident event. Two regulations are confirmed (GDPR and CRA), so the overlap holds and the tension activates. The pipeline's own row for T-001 reads: The strictest timeline binds for the earliest required notification; subsequent notifications to other recipients proceed on their own regulatory clocks."
+    },
+    {
+      "id": "domain.tension.t-002",
+      "tags": [
+        "L3",
+        "tension-activation"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCORPUS TENSION CONDITION (verbatim from baseline/domains/D-04_Incident-Response/D-04.3/cross/_interactions.md):\n2. **CONDITIONAL on multi-reg overlap** (same event, multiple applicable regs): **Recipient fragmentation exceeds pairwise additivity.** The 5 regulations notify to 5 distinct recipient classes — **DPA** (GDPR), **CSIRT** (NIS 2 / CRA), **CA** (DORA), **MSA** (AI Act high-risk), **AI Office** (AI Act GPAI). Pairwise readings treat each pair independently; the operational pipeline must allocate events to recipients in a single decision. The non-pairwise additivity is the *routing complexity* — no single regulation specifies how to route an event that satisfies multiple triggers simultaneously (e.g. a NIS 2-significant incident affecting personal data in a CRA-classified product deployed by a financial entity using high-risk AI). Phase 1C must codify a recipient-routing matrix. When the event's scope overlaps with only one applicable regulation's scope, only the single recipient applies — no routing problem arises.\n\nQUESTION: does the activation condition declared above hold for this company, so that the tension activates?",
+      "questions": {
+        "activates": {
+          "type": "noul",
+          "instructions": "Does this corpus tension activate for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "activates": true
+        }
+      },
+      "provenance": "Label from the corpus condition (baseline/domains/D-04_Incident-Response/D-04.3/cross/_interactions.md) applied to the fact sheet. Warrant: Same condition as T-001: the same incident event reaches more than one confirmed regulation, so a single routing decision is required. The pipeline's own row for T-002 reads: Each notification is routed to the specific recipient mandated by the applicable regulation (GDPR to DPA, CRA to CSIRT/MSA) without cross-routing; the company maintains parallel notification tracks for each confirmed regulation."
+    },
+    {
+      "id": "domain.tension.t-003",
+      "tags": [
+        "L3",
+        "tension-activation"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCORPUS TENSION CONDITION (verbatim from baseline/domains/D-05_Data-Lifecycle/D-05.2/cross/_interactions.md):\n**1 conditional emergent tension** — the **3-way retention/obligation interaction** (GDPR ceiling on personal data; AI Act floor on AI logs; CRA availability tail on update artefacts — three different data flows with three different obligation directions, with potential overlap on a single data flow when CRA update logs or AI logs contain personal data). The pairwise readings (GDPR↔CRA, GDPR↔AI_Act, CRA↔AI_Act) each handle two of the three axes, but the *non-pairwise observation* is that a single data stream (e.g. update logs from a CRA-classified high-risk AI product) may need to satisfy all three axes simultaneously: (a) the CRA update-availability tail applies to the update-artefact portion of the log; (b) the AI Act ≥6-month log-retention floor applies to the AI-system log portion; (c) the GDPR Art. 5(1)(e) `necessary` boundary applies to the personal-data portion. The high-level SO codifies this as a **layering rule, not a contradiction**: (a) identify the data class on the single data flow (update artefact vs AI log vs personal data); (b) apply the corresponding obligation direction (CRA availability floor on update artefacts; AI Act minimum floor on AI logs; GDPR ceiling on personal data); (c) when regimes overlap on a single data flow, **separation architecture** (pseudonymisation, separate retention rules, separate storage paths) is the controlled hand-off. The tension is **conditional** (it engages only when a CRA update log or an AI log contains personal data, or when a single data flow crosses regime boundaries) and is **regulated** by the separation-architecture requirement. Phase 1C Doc 07 documents the 3-axis layering architecture; Phase 3 case generation must surface the separation-architecture requirement explicitly when the case company's data flows cross regime boundaries. **No SCOPE-DISJOINT baseline pairs** — the 3×3 matrix shows **Conditional** scope overlap in baseline (Y or N depending on whether the data flow contains personal data); the baseline is not scope-disjoint across all three pairs. **No CONTRADICTORY pairs on the retention duty itself** — the 2 CORRECTED pairs (GDPR ↔ CRA and GDPR ↔ AI_Act) were relabelled from CONTRADICTORY to their correct classifications, and the relabelling is preserved verbatim. The **data-class divergence** (personal data / update artefacts / AI logs) is the **legitimately diverse dimension**: each regulator targets a distinct data class with a distinct obligation direction (ceiling vs floor vs floor), and the operational convergence is on the **3-axis layering rule** (GDPR ceiling + AI Act floor + CRA availability tail) with explicit axis-segregated hand-offs and separation-architecture requirement where regimes overlap on a single data flow. The **CRA 10-year tail is on update artefacts and Annex II information, NOT on personal data** — this is the rare-but-honest distinction that prevents the retention duty from being conflated across data classes; the controller-side GDPR `necessary` boundary remains the operative ceiling on the personal-data portion. The **AI Act 6-month floor is a floor-within-ceiling**, not a standalone obligation — the GDPR `necessary` boundary is the cap, the AI Act 6-month floor is the floor, the provider chooses the actual retention within the [6 months, \"necessary\"] range based on the intended purpose. The **CRA ↔ AI Act pair is genuinely N in baseline** (different objects, different actors, different purposes); the two obligations sit on different data flows and do not interact unless the same data flow is both a CRA update artefact and an AI Act log (a narrow window). The high-level SO surfaces the common retention/archiving duty as the 3-axis layering rule; the per-reg data class, obligation direction, trigger, anchor, lifecycle stage, recipient, and evidence template are documented separately in the three sub-SOs and the per-recipient evidence packs.\n\nQUESTION: does the activation condition declared above hold for this company, so that the tension activates?",
+      "questions": {
+        "activates": {
+          "type": "noul",
+          "instructions": "Does this corpus tension activate for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "activates": false
+        }
+      },
+      "provenance": "Label from the corpus condition (baseline/domains/D-05_Data-Lifecycle/D-05.2/cross/_interactions.md) applied to the fact sheet. Warrant: The condition engages only when a CRA update log or an AI log contains personal data, or a single data flow crosses regime boundaries. The fact sheet records zero AI/ML systems and the default CRA class with self-assessment conformity, so the condition does not hold. The pipeline's own row for T-003 reads: The tension does not activate for this company because the fact sheet confirms zero AI/ML systems (excluding AI Act logs) and the product is in the default class with self-assessment conformity (excluding high-risk CRA update log scenarios that trigger the 3-way overlap); therefore, no binding resolution rule is adopted as the triggering condition (presence of AI logs or high-risk CRA update logs "
+    },
+    {
+      "id": "domain.tension.t-004",
+      "tags": [
+        "L3",
+        "tension-activation"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCORPUS TENSION CONDITION (verbatim from baseline/domains/D-06_Supply-Chain/D-06.4/cross/_interactions.md):\n**1 conditional emergent tension**: the **four-party boundary architecture**. A non-EU provider or manufacturer may simultaneously require a GDPR Union representative, a CRA authorised representative, NIS 2 cross-MS routing and direct-supplier boundary treatment, and DORA audit/access rights if it supplies critical ICT services to a financial entity. The tension is not a contradiction; it is an allocation problem. Phase 1C must preserve the four mechanisms in a boundary matrix rather than merging them into one generic `third-party contact` or `supplier owner` field. The GDPR↔CRA EQUAL pair requires special treatment: it is **EQUAL in form** (written EU-side representative) but **different in object** (data-protection representative vs product-compliance authorised representative). A single legal entity may perform both roles only if both mandates and recipient channels are separately documented; otherwise two representatives or two mandates coexist.\n\nQUESTION: does the activation condition declared above hold for this company, so that the tension activates?",
+      "questions": {
+        "activates": {
+          "type": "noul",
+          "instructions": "Does this corpus tension activate for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "activates": false
+        }
+      },
+      "provenance": "Label from the corpus condition (baseline/domains/D-06_Supply-Chain/D-06.4/cross/_interactions.md) applied to the fact sheet. Warrant: The condition is that the provider is a non-EU provider or manufacturer requiring simultaneous representatives. TinyTask is established in Portugal (EU) and is not a non-EU provider, so the condition does not hold. The pipeline's own row for T-004 reads: TinyTask, as an EU-established manufacturer (Portugal), is not a \"non-EU provider\" requiring a Union representative under GDPR or an authorised representative under CRA; therefore, the four-party boundary architecture tension does not activate, and no external representative mandates are required."
+    },
+    {
+      "id": "domain.tension.t-005",
+      "tags": [
+        "L3",
+        "tension-activation"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCORPUS TENSION CONDITION (verbatim from baseline/domains/D-10_Monitoring-Audit/D-10.1/cross/_interactions.md):\n**1 conditional emergent tension** (CRDA-flagged GENUINE TENSION — Layer 2 OJ-level resolution required): **Tension #1: CRA Annex I Part I (2)(l) user opt-out vs. mandatory-monitoring regimes (GDPR Art. 32(2), NIS 2 Art. 21(2)(b), DORA Art. 8(1)) — CRDA-flagged, OJ does not resolve.** The CRA Annex I Part I (2)(l) `provide security-related information by recording and monitoring relevant internal activity, including access to or modification of data, services or functions, and provide an opt-out mechanism for the user` clause creates a structural conflict with the three mandatory-monitoring regimes: - **GDPR ↔ CRA** (primary tension, CRDA line 106): CRA user opt-out allows the user to disable on-device internal-activity monitoring; GDPR Art. 32(2) entity-level 5-risk-type monitoring is mandatory for the controller. For a CRA-regulated product processing personal data, the user's opt-out from CRA product-level monitoring does not legally exempt the controller from GDPR Art. 32(2) entity-level mandatory detection. The OJ does not resolve this conflict. - **NIS 2 ↔ CRA** (propagated tension, CRDA line 217): same structural conflict — CRA user opt-out vs. NIS 2 Art. 21(2)(b) entity-level all-hazards detection capability (mandatory). For an NSIE deploying CRA-regulated products, the user's opt-out from CRA product-level monitoring does not legally exempt the NSIE from NIS 2 mandatory detection. - **CRA ↔ DORA** (propagated tension, CRDA line 340): same structural conflict — CRA user opt-out vs. DORA Art. 8(1) entity-level continuous monitoring (mandatory). For a DORA entity deploying CRA-regulated products, the user's opt-out from CRA product-level monitoring does not legally exempt the DORA entity from DORA Art. 8(1) mandatory continuous monitoring. **Operational consequence.** The two regimes can stack on the layered monitoring architecture (entity-layer mandatory + product-layer with opt-out) — the controller / NSIE / DORA entity must maintain the mandatory monitoring on the entity layer regardless of the CRA opt-out at the product layer. The user's opt-out from CRA monitoring does not legally exempt the controller / NSIE / DORA entity from the respective mandatory-monitoring regime. **Phase 1C Doc 07 must perform the Layer 2 OJ-level resolution** because no OJ-level consolidation rule exists for the CRA opt-out vs. mandatory-monitoring conflict — the OJ explicitly permits the CRA opt-out without resolving how the opt-out interacts with the GDPR / NIS 2 / DORA mandatory monitoring. **No scope-disjoint pairs** at D-10.1 — all 10 pairs pass the scope-disjoint test (Y or Conditional-Y-on-same-party). **No CONTRADICTORY pairs** on the monitoring-duty itself. **No CORRECTED reclassifications.** The remaining 7 pairs (GDPR↔NIS2, GDPR↔DORA, GDPR↔AI_Act, NIS2↔AI_Act, CRA↔AI_Act, DORA↔AI_Act) are SAME — COMPLEMENTARY without emergent tension. The **NIS 2 ↔ DORA** pair is SAME — EQUAL (both regulations impose continuous-monitoring obligations; DORA-dominant for financial entities) without emergent tension. The **NIS 2 ↔ DORA EQUAL classification on continuous-monitoring dimension** is the structurally significant EQUAL pair: both regulations impose continuous-monitoring obligations (NIS 2 Art. 21(2)(b) detection capability vs. DORA Art. 8(1) per `SR-DORA-030` OJ-literal locus Art. 9(1) `continuously monitor and control the security and functioning of ICT systems and tools`). For DORA financial entities, the DORA Art. 9(1) continuous monitoring discharges both DORA's dedicated monitoring obligation and NIS 2's Art. 21(2)(b) partial-coverage detection dimension. For non-financial NSIEs, NIS 2 is the authority. The EQUAL classification preserves the OJ literal parallel between the two regimes on the continuous-monitoring dimension; the dominant-authority reading is the operational consequence of the DORA-direct-applicability vs NIS 2-MS-transposition asymmetry. The **DORA-led stack for financial entities** is the structurally significant COMPLEMENTARY pair: DORA Art. 8(1) continuous monitoring is broader (security AND functioning) than GDPR Art. 32(2) 5-risk-type detection. For DORA financial entities that are also controllers, the DORA Art. 8(1) / Art. 9(1) continuous monitoring discharges the financial entity's continuous-monitoring obligation and the GDPR detection capability becomes a sub-component within the DORA-led stack. The DORA Art. 10(1) prompt anomalous-activity detection + multi-layered controls + alert thresholds + auto-alert to relevant staff add the operational detection layer. The **AI Act post-market monitoring feedback loop** is the structurally significant COMPLEMENTARY dimension: AI Act Art. 72(2) `actively and systematically collect, document and analyse relevant data` adds the feedback-loop dimension (analysis-to-risk-management loop) that none of the other 4 regulators impose in equivalent form. The AI Act post-market monitoring data feeds back into the AI-Act provider's risk-management-system documentation (Art. 9 — cross to D-09.1) and the AI-system quality management system (Art. 17 — cross to D-09.1). The **NIS 2 partial coverage** is the structurally significant scope asymmetry: NIS 2 does not impose a dedicated continuous-monitoring mandate beyond the detection dimension of incident handling (Art. 21(2)(b)). The D-10.1 coverage on the NIS 2 side is partial via the SG-NIS2-005 incident-handling detection capability. For DORA financial entities that are also NSIEs, the DORA-led stack discharges the NIS 2 partial-coverage obligation; for non-financial NSIEs, the NIS 2 detection capability operates on the all-hazards basis without a dedicated continuous-monitoring mandate. The **CRA opt-out mechanism** is the structurally significant policy divergence: CRA is the only regulator that explicitly permits user opt-out from monitoring (Annex I Part I (2)(l)). The other 4 regulators impose mandatory monitoring on the entity layer (GDPR / NIS 2 / DORA) or AI-system layer (AI Act). The opt-out mechanism is the origin of the 1 CRDA-flagged GENUINE TENSION that propagates to 3 of 10 pairs. The high-level SO surfaces the common continuous-monitoring duty (pre-breach detection + on-device internal activity + ICT-system security and functioning + AI-system post-market data + incident-handling detection capability + cross-recipient evidence trail); the per-reg perspective on the monitoring mandate, anchor, scope dimension, trigger, threshold, recipient, and content template is documented separately in the 5 sub-SOs and the per-recipient evidence packs. **1 conditional emergent tension** (CRA opt-out vs. mandatory monitoring — Layer 2 OJ-level resolution required) is preserved as a Layer 2 review item because no OJ-level consolidation rule exists at D-10.1.\n\nQUESTION: does the activation condition declared above hold for this company, so that the tension activates?",
+      "questions": {
+        "activates": {
+          "type": "noul",
+          "instructions": "Does this corpus tension activate for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "activates": true
+        }
+      },
+      "provenance": "Label from the corpus condition (baseline/domains/D-10_Monitoring-Audit/D-10.1/cross/_interactions.md) applied to the fact sheet. Warrant: No activation condition restricts this tension: CRA Annex I Part I (2)(l) permits a user opt-out from product-level monitoring while GDPR Art. 32(2) imposes entity-level monitoring, and both duties exist for this company regardless of any user opt-out. The pipeline's own row for T-005 reads: TinyTask maintains GDPR Art. 32(2) mandatory monitoring at the entity layer regardless of any user opt-out from CRA product-level monitoring, as the user's opt-out does not legally exempt the controller from GDPR mandatory detection obligations."
+    },
+    {
+      "id": "domain.trigger.D_01_1",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-01.1 — Data at Rest Encryption — customer account metadata (names, emails, passwords) stored in SaaS → GDPR Art. 32 security of processing",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-01.1 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-01.1 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_01_2",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-01.2 — Data in Transit Encryption — B2B SaaS platform with web/mobile interface transmitting personal data → GDPR Art. 32 security of processing",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-01.2 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-01.2 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_01_3",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-01.3 — Cryptographic Key Management — encryption of personal data (passwords, task data) requires key custody separation → GDPR Art. 32 security of processing",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-01.3 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-01.3 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_01_4",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-01.4 — Data Integrity Mechanisms — task data containing personal data of customers' users requires integrity preservation → GDPR Art. 5(1)(f) integrity and confidentiality",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-01.4 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-01.4 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_02_1",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-02.1 — Vulnerability Identification — TinyTask develops software and places product on EU market as manufacturer → CRA Art. 14(2) vulnerability management",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-02.1 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-02.1 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_02_2",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-02.2 — Patch Management & Updates — SaaS product with digital elements requires security updates for vulnerabilities → CRA Art. 14(2) vulnerability management",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-02.2 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-02.2 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_02_3",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-02.3 — Coordinated Vulnerability Disclosure — manufacturer placing product with digital elements on EU market → CRA Art. 14(2) CVD policy",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-02.3 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-02.3 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_02_4",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-02.4 — Threat-Led Penetration Testing — product with digital elements requires security testing → CRA Art. 14(2) security testing",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-02.4 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": false
+        },
+        "contested": true
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-02.4 in not_addressed_subdomains, so the two artefacts DISAGREE and the label is contested."
+    },
+    {
+      "id": "domain.trigger.D_03_1",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-03.1 — Identity Lifecycle Management — customer accounts with individual logins require identity management → GDPR Art. 32 security of processing",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-03.1 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-03.1 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_03_2",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-03.2 — Multi-Factor Authentication — individual logins for customer accounts require strong authentication → GDPR Art. 32 security of processing",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-03.2 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-03.2 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_03_3",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-03.3 — Authorisation & Least Privilege — access to personal data (names, emails, passwords) requires least privilege → GDPR Art. 32 security of processing",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-03.3 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-03.3 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_03_4",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-03.4 — Secure System Defaults — SaaS product configuration must be secure by default → CRA Art. 13(1) secure by design",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-03.4 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-03.4 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_04_1",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-04.1 — Incident Detection & Triage — processing of personal data requires detection of security incidents → GDPR Art. 32 security of processing",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-04.1 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-04.1 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_04_2",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-04.2 — Incident Containment & Response — security incidents affecting personal data require containment → GDPR Art. 32 security of processing",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-04.2 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-04.2 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_04_3",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-04.3 — Incident Notification & Reporting — personal data breach requires notification to supervisory authority → GDPR Art. 33 notification of personal data breach",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-04.3 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-04.3 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_04_4",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-04.4 — Incident Recovery & Lessons Learned — recovery of systems processing personal data → GDPR Art. 32 security of processing",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-04.4 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-04.4 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_05_1",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-05.1 — Data Minimisation — collection of customer account metadata and task data → GDPR Art. 5(1)(c) data minimisation",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-05.1 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-05.1 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_05_2",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-05.2 — Retention & Archiving — retention of personal data (names, emails, passwords) → GDPR Art. 5(1)(e) storage limitation",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-05.2 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-05.2 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_05_3",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-05.3 — Right to Erasure — data subjects (business customers, users) can request erasure → GDPR Art. 17 right to erasure",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-05.3 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-05.3 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_05_4",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-05.4 — Data Portability — personal data in structured format can be exported → GDPR Art. 20 right to data portability",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-05.4 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-05.4 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_06_1",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-06.1 — Vendor Risk Assessment — external payment provider as sub-processor → GDPR Art. 28 processor obligations",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-06.1 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-06.1 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_06_2",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-06.2 — Software Bill of Materials (SBOM) — manufacturer of product with digital elements → CRA Art. 14(2) SBOM requirement",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-06.2 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-06.2 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_06_3",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-06.3 — Contractual Security Obligations — sub-processor (payment provider) requires contractual safeguards → GDPR Art. 28 processor contract",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-06.3 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-06.3 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_06_4",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-06.4 — Third-Party Boundary Management — sub-processor boundary for payment metadata → GDPR Art. 28 processor obligations",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-06.4 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": false
+        },
+        "contested": true
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-06.4 in not_addressed_subdomains, so the two artefacts DISAGREE and the label is contested."
+    },
+    {
+      "id": "domain.trigger.D_07_1",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-07.1 — Secure-by-Design Principles — software development as manufacturer → CRA Art. 13 secure by design",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-07.1 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-07.1 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_07_2",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-07.2 — Secure Coding Practices — develops software itself → CRA Art. 13 secure coding",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-07.2 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-07.2 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_07_3",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-07.3 — CI/CD Pipeline Security — software development pipeline for SaaS product → CRA Art. 13 secure development",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-07.3 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-07.3 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_07_4",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-07.4 — Change Management — software updates and modifications to SaaS product → CRA Art. 13 change management",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-07.4 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-07.4 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_08_1",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-08.1 — General Security Awareness — 8 employees processing personal data → GDPR Art. 39(1)(b) staff awareness",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-08.1 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-08.1 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_08_2",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-08.2 — Role-Specific Competence — developers and support staff handling personal data → GDPR Art. 39(1)(b) role-specific training",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-08.2 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-08.2 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_08_3",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-08.3 — Management Board Training — management of 8-person company overseeing GDPR/CRA compliance → GDPR Art. 39(1)(b) management awareness",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-08.3 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": false
+        },
+        "contested": true
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-08.3 in not_addressed_subdomains, so the two artefacts DISAGREE and the label is contested."
+    },
+    {
+      "id": "domain.trigger.D_09_1",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-09.1 — Information Security Policies — processing of personal data requires documented policies → GDPR Art. 32 security of processing",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-09.1 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-09.1 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_09_2",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-09.2 — Impact & Risk Assessments — processing of personal data requires risk assessment → GDPR Art. 32 risk-based approach",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-09.2 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-09.2 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_09_3",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-09.3 — Asset Inventories — SaaS platform with web/mobile interface requires asset inventory → CRA Art. 14(2) asset management",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-09.3 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-09.3 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_09_4",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-09.4 — Records of Processing — processing of personal data requires records → GDPR Art. 30 records of processing activities",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-09.4 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-09.4 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_10_1",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-10.1 — Continuous Security Monitoring — SaaS platform processing personal data requires monitoring → GDPR Art. 32 security of processing",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-10.1 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-10.1 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_10_2",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-10.2 — Audit Logging & Traceability — processing of personal data requires audit logs → GDPR Art. 32 security of processing",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-10.2 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-10.2 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.trigger.D_10_3",
+      "tags": [
+        "L3",
+        "subdomain-trigger"
+      ],
+      "state": "COMPANY FACTS (verbatim from the Phase 1 fact sheet):\ncompany: TinyTask Lda.\nsector: Technology / Software (B2B SaaS productivity tools)\nsize_employees: 8\njurisdictions: [Portugal (EU)]\nlegal_form: Private Limited Company (Lda.)\nproduct_summary: TinyTask develops and operates B2B SaaS productivity tools: a rule-based task management platform sold by commercial subscription to business customers. The company develops the software itself and places the product, with its web and mobile interface, on the EU market as the manufacturer; the product falls in the default class with internal-production-control (self-assessment) conformity. There are no AI/ML systems developed, deployed or integrated — the platform is rule-based.\ndevelops_software: true\ndata_categories: [customer account metadata (names, emails, passwords), task data containing personal data of the customers' own users]\ndata_subjects: [business customers, customers' own users]\nsensitive_data: []\ndata_scale: not stated\nhosting: unclear\naccess_model: customer accounts with individual logins\nthird_party_processing: [external payment provider processes payments (sub-processor for payment metadata only)]\nassumed_regulations:\n  - GDPR — commercial B2B SaaS processing EU personal data (names, emails, passwords, task notes); TinyTask acts as controller for customer accounts and processor for customer task data.\n  - CRA — TinyTask develops and places products with digital elements (SaaS + web/mobile interface) on the EU market as manufacturer, default product class.\n  - NIS2 — considered and excluded: technology sector but non-critical service, 8 employees (<50) and <€2M (<€10M), not in Annex I/II essential sectors.\n  - DORA — considered and excluded: not a financial entity and not an ICT provider to financial entities.\n  - AI_Act — considered and excluded: rule-based task management; zero AI/ML systems developed, deployed or integrated.\nopen_questions:\n  - hosting: §4 states the platform is operated as a hosted SaaS service but does not specify if it is in-house, managed cloud, or mixed.\n  - data_scale: §3 explicitly states \"Rough scale is not stated in the intake.\"\n\nREGULATIONS CONFIRMED AS APPLYING: GDPR, CRA\n\nCANDIDATE SUB-DOMAIN: D-10.3 — Compliance Testing — product with digital elements requires conformity assessment → CRA Art. 14(2) conformity assessment",
+      "questions": {
+        "triggered": {
+          "type": "noul",
+          "instructions": "Is sub-domain D-10.3 triggered for this company?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "triggered": true
+        }
+      },
+      "provenance": "Trigger rationale from run_p2enr_c1/steps/selection.md. The hand-written Case_01 deliverable lists D-10.3 as active (35 active sub-domains), which both artefacts agree on."
+    },
+    {
+      "id": "domain.principle.prin_eng_01.bound",
+      "tags": [
+        "L3",
+        "principle-constraint"
+      ],
+      "state": "PRINCIPLE PRIN-ENG-01 — CONSTRAINT (verbatim from the Phase 2 principles artifact):\nThe boundary between the TinyTask SaaS platform (controller/processor zone) and the external payment provider (sub-processor zone) must be explicitly demarcated, and all flows crossing this boundary for payment metadata must be authenticated and validated with no unmediated bypass. The boundary between the customer account zone and the customer task data zone must be visually demarcated, and all flows crossing this boundary must be authenticated and validated with no unmediated bypass.\n\nCANDIDATE OBJECTIVE: SO-D-01.2-002\nProtect data confidentiality via state-of-the-art encryption and limit attack surface by constraining exposed interfaces across all distributed SaaS instances.",
+      "questions": {
+        "constrains": {
+          "type": "noul",
+          "instructions": "Does this principle constrain the candidate objective?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "constrains": true
+        }
+      },
+      "provenance": "Label from the pipeline's own binding: run_p2enr_c1/steps/phase3a_prin/PRIN-ENG-01.json binds PRIN-ENG-01 to SO-D-01.2-002."
+    },
+    {
+      "id": "domain.principle.prin_eng_01.unbound",
+      "tags": [
+        "L3",
+        "principle-constraint"
+      ],
+      "state": "PRINCIPLE PRIN-ENG-01 — CONSTRAINT (verbatim from the Phase 2 principles artifact):\nThe boundary between the TinyTask SaaS platform (controller/processor zone) and the external payment provider (sub-processor zone) must be explicitly demarcated, and all flows crossing this boundary for payment metadata must be authenticated and validated with no unmediated bypass. The boundary between the customer account zone and the customer task data zone must be visually demarcated, and all flows crossing this boundary must be authenticated and validated with no unmediated bypass.\n\nCANDIDATE OBJECTIVE: PO-D-09.2-001\nConduct and review Data Protection Impact Assessments (DPIA) for high-risk processing, including risk analysis and prior consultation.",
+      "questions": {
+        "constrains": {
+          "type": "noul",
+          "instructions": "Does this principle constrain the candidate objective?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "constrains": false
+        }
+      },
+      "provenance": "Negative case: PO-D-09.2-001 lives in D-09.2, a domain unrelated to PRIN-ENG-01, and is not among the objectives PRIN-ENG-01 binds."
+    },
+    {
+      "id": "domain.principle.prin_eng_02.bound",
+      "tags": [
+        "L3",
+        "principle-constraint"
+      ],
+      "state": "PRINCIPLE PRIN-ENG-02 — CONSTRAINT (verbatim from the Phase 2 principles artifact):\nThe web and mobile interfaces of the TinyTask SaaS platform must expose only the minimum necessary entry points for rule-based task management and customer account access, and the interface to the external payment provider must match the core security intensity of the platform's primary ingress hooks.\n\nCANDIDATE OBJECTIVE: SO-D-07.2-001\nThe platform must limit attack surfaces and reduce incident impact via exploitation-mitigation mechanisms, evidenced by a documented coding-practice base.",
+      "questions": {
+        "constrains": {
+          "type": "noul",
+          "instructions": "Does this principle constrain the candidate objective?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "constrains": true
+        }
+      },
+      "provenance": "Label from the pipeline's own binding: run_p2enr_c1/steps/phase3a_prin/PRIN-ENG-02.json binds PRIN-ENG-02 to SO-D-07.2-001."
+    },
+    {
+      "id": "domain.principle.prin_eng_02.unbound",
+      "tags": [
+        "L3",
+        "principle-constraint"
+      ],
+      "state": "PRINCIPLE PRIN-ENG-02 — CONSTRAINT (verbatim from the Phase 2 principles artifact):\nThe web and mobile interfaces of the TinyTask SaaS platform must expose only the minimum necessary entry points for rule-based task management and customer account access, and the interface to the external payment provider must match the core security intensity of the platform's primary ingress hooks.\n\nCANDIDATE OBJECTIVE: PO-D-01.4-001\nEnsure accuracy of personal data, rectify inaccuracies, and propagate corrections to recipients.",
+      "questions": {
+        "constrains": {
+          "type": "noul",
+          "instructions": "Does this principle constrain the candidate objective?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "constrains": false
+        }
+      },
+      "provenance": "Negative case: PO-D-01.4-001 lives in D-01.4, a domain unrelated to PRIN-ENG-02, and is not among the objectives PRIN-ENG-02 binds."
+    },
+    {
+      "id": "domain.principle.prin_eng_03.bound",
+      "tags": [
+        "L3",
+        "principle-constraint"
+      ],
+      "state": "PRINCIPLE PRIN-ENG-03 — CONSTRAINT (verbatim from the Phase 2 principles artifact):\nCustomer accounts with individual logins must operate with the minimum privileges necessary to access their own account metadata and task data, and distinct business customers (tenants) must not share unisolated execution mechanisms for their task data containing personal data of their own users.\n\nCANDIDATE OBJECTIVE: SO-D-01.3-002\nCryptographic keys must be managed with role separation distinct from the operational environment custodian to ensure least-privilege access.",
+      "questions": {
+        "constrains": {
+          "type": "noul",
+          "instructions": "Does this principle constrain the candidate objective?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "constrains": true
+        }
+      },
+      "provenance": "Label from the pipeline's own binding: run_p2enr_c1/steps/phase3a_prin/PRIN-ENG-03.json binds PRIN-ENG-03 to SO-D-01.3-002."
+    },
+    {
+      "id": "domain.principle.prin_eng_03.unbound",
+      "tags": [
+        "L3",
+        "principle-constraint"
+      ],
+      "state": "PRINCIPLE PRIN-ENG-03 — CONSTRAINT (verbatim from the Phase 2 principles artifact):\nCustomer accounts with individual logins must operate with the minimum privileges necessary to access their own account metadata and task data, and distinct business customers (tenants) must not share unisolated execution mechanisms for their task data containing personal data of their own users.\n\nCANDIDATE OBJECTIVE: PO-D-08.1-001\nDPO informs and advises controller/employees on GDPR obligations and monitors compliance via documented, recurring, role-specific awareness and training programmes.",
+      "questions": {
+        "constrains": {
+          "type": "noul",
+          "instructions": "Does this principle constrain the candidate objective?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "constrains": false
+        }
+      },
+      "provenance": "Negative case: PO-D-08.1-001 lives in D-08.1, a domain unrelated to PRIN-ENG-03, and is not among the objectives PRIN-ENG-03 binds."
+    },
+    {
+      "id": "domain.principle.prin_eng_04.bound",
+      "tags": [
+        "L3",
+        "principle-constraint"
+      ],
+      "state": "PRINCIPLE PRIN-ENG-04 — CONSTRAINT (verbatim from the Phase 2 principles artifact):\nAccess decisions for customer accounts and task data must default to refusal, and unexpected failures in the rule-based task management platform must terminate in a secure closed state without state corruption or data leakage of customer account metadata or task data.\n\nCANDIDATE OBJECTIVE: SO-D-03.4-002\nEnsure the product is available with secure-by-default configuration, including automatic security updates, reset capability, and user opt-out/postponement mechanisms for updates.",
+      "questions": {
+        "constrains": {
+          "type": "noul",
+          "instructions": "Does this principle constrain the candidate objective?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "constrains": true
+        }
+      },
+      "provenance": "Label from the pipeline's own binding: run_p2enr_c1/steps/phase3a_prin/PRIN-ENG-04.json binds PRIN-ENG-04 to SO-D-03.4-002."
+    },
+    {
+      "id": "domain.principle.prin_eng_04.unbound",
+      "tags": [
+        "L3",
+        "principle-constraint"
+      ],
+      "state": "PRINCIPLE PRIN-ENG-04 — CONSTRAINT (verbatim from the Phase 2 principles artifact):\nAccess decisions for customer accounts and task data must default to refusal, and unexpected failures in the rule-based task management platform must terminate in a secure closed state without state corruption or data leakage of customer account metadata or task data.\n\nCANDIDATE OBJECTIVE: SO-D-02.2-001\nVulnerabilities in the platform and third-party components are remediated via secure, separate security updates with advisories, available for 10+ years.",
+      "questions": {
+        "constrains": {
+          "type": "noul",
+          "instructions": "Does this principle constrain the candidate objective?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "constrains": false
+        }
+      },
+      "provenance": "Negative case: SO-D-02.2-001 lives in D-02.2, a domain unrelated to PRIN-ENG-04, and is not among the objectives PRIN-ENG-04 binds."
+    },
+    {
+      "id": "domain.principle.prin_eng_05.bound",
+      "tags": [
+        "L3",
+        "principle-constraint"
+      ],
+      "state": "PRINCIPLE PRIN-ENG-05 — CONSTRAINT (verbatim from the Phase 2 principles artifact):\nEvery security and privacy requirement for the TinyTask SaaS platform, including GDPR compliance for customer account metadata and task data, must be atomic and possess a deterministic, automated pass/fail verification method.\n\nCANDIDATE OBJECTIVE: PO-D-02.1-001\nMaintain a process for regularly testing and evaluating the effectiveness of technical and organizational security measures for personal data processing, with DPIA reviews triggered by risk changes.",
+      "questions": {
+        "constrains": {
+          "type": "noul",
+          "instructions": "Does this principle constrain the candidate objective?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "constrains": true
+        }
+      },
+      "provenance": "Label from the pipeline's own binding: run_p2enr_c1/steps/phase3a_prin/PRIN-ENG-05.json binds PRIN-ENG-05 to PO-D-02.1-001."
+    },
+    {
+      "id": "domain.principle.prin_eng_05.unbound",
+      "tags": [
+        "L3",
+        "principle-constraint"
+      ],
+      "state": "PRINCIPLE PRIN-ENG-05 — CONSTRAINT (verbatim from the Phase 2 principles artifact):\nEvery security and privacy requirement for the TinyTask SaaS platform, including GDPR compliance for customer account metadata and task data, must be atomic and possess a deterministic, automated pass/fail verification method.\n\nCANDIDATE OBJECTIVE: PO-D-05.1-001\nGDPR data minimization, purpose limitation, and DPIA requirements",
+      "questions": {
+        "constrains": {
+          "type": "noul",
+          "instructions": "Does this principle constrain the candidate objective?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "constrains": false
+        }
+      },
+      "provenance": "Negative case: PO-D-05.1-001 lives in D-05.1, a domain unrelated to PRIN-ENG-05, and is not among the objectives PRIN-ENG-05 binds."
+    },
+    {
+      "id": "domain.principle.prin_eng_06.bound",
+      "tags": [
+        "L3",
+        "principle-constraint"
+      ],
+      "state": "PRINCIPLE PRIN-ENG-06 — CONSTRAINT (verbatim from the Phase 2 principles artifact):\nOnly data strictly indispensable for fulfilling the declared service purpose of rule-based task management may be collected, transmitted, or retained, and egress models to the external payment provider must project strictly scoped data views limited to payment metadata.\n\nCANDIDATE OBJECTIVE: PO-D-03.4-001\nEnsure processing systems handle customer account metadata and task data with data minimization by default, limiting collection, processing, storage, and accessibility to only what is necessary for specific purposes.",
+      "questions": {
+        "constrains": {
+          "type": "noul",
+          "instructions": "Does this principle constrain the candidate objective?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "constrains": true
+        }
+      },
+      "provenance": "Label from the pipeline's own binding: run_p2enr_c1/steps/phase3a_prin/PRIN-ENG-06.json binds PRIN-ENG-06 to PO-D-03.4-001."
+    },
+    {
+      "id": "domain.principle.prin_eng_06.unbound",
+      "tags": [
+        "L3",
+        "principle-constraint"
+      ],
+      "state": "PRINCIPLE PRIN-ENG-06 — CONSTRAINT (verbatim from the Phase 2 principles artifact):\nOnly data strictly indispensable for fulfilling the declared service purpose of rule-based task management may be collected, transmitted, or retained, and egress models to the external payment provider must project strictly scoped data views limited to payment metadata.\n\nCANDIDATE OBJECTIVE: PO-D-06.1-001\nVerify processor guarantees and document Art. 28 clauses before engagement",
+      "questions": {
+        "constrains": {
+          "type": "noul",
+          "instructions": "Does this principle constrain the candidate objective?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "constrains": false
+        }
+      },
+      "provenance": "Negative case: PO-D-06.1-001 lives in D-06.1, a domain unrelated to PRIN-ENG-06, and is not among the objectives PRIN-ENG-06 binds."
+    },
+    {
+      "id": "domain.principle.prin_eng_07.bound",
+      "tags": [
+        "L3",
+        "principle-constraint"
+      ],
+      "state": "PRINCIPLE PRIN-ENG-07 — CONSTRAINT (verbatim from the Phase 2 principles artifact):\nProtection covers the entire data lifecycle for customer account metadata and task data, and data subject to erasure must be permanently destroyed across edge caches, primary stores, archives, and disaster-recovery copies, including the external payment provider's sub-processor zone for payment metadata.\n\nCANDIDATE OBJECTIVE: PO-D-05.2-001\nRetain personal data only as long as necessary, document retention limits, and apply safeguards for extended retention.",
+      "questions": {
+        "constrains": {
+          "type": "noul",
+          "instructions": "Does this principle constrain the candidate objective?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "constrains": true
+        }
+      },
+      "provenance": "Label from the pipeline's own binding: run_p2enr_c1/steps/phase3a_prin/PRIN-ENG-07.json binds PRIN-ENG-07 to PO-D-05.2-001."
+    },
+    {
+      "id": "domain.principle.prin_eng_07.unbound",
+      "tags": [
+        "L3",
+        "principle-constraint"
+      ],
+      "state": "PRINCIPLE PRIN-ENG-07 — CONSTRAINT (verbatim from the Phase 2 principles artifact):\nProtection covers the entire data lifecycle for customer account metadata and task data, and data subject to erasure must be permanently destroyed across edge caches, primary stores, archives, and disaster-recovery copies, including the external payment provider's sub-processor zone for payment metadata.\n\nCANDIDATE OBJECTIVE: PO-D-10.3-001\nEstablish and maintain a process for regularly testing, assessing, and evaluating the effectiveness of technical and organisational security measures, including reviewing DPIAs upon risk changes.",
+      "questions": {
+        "constrains": {
+          "type": "noul",
+          "instructions": "Does this principle constrain the candidate objective?"
+        }
+      },
+      "expect": {
+        "answer_type": "noul",
+        "labels": {
+          "constrains": false
+        }
+      },
+      "provenance": "Negative case: PO-D-10.3-001 lives in D-10.3, a domain unrelated to PRIN-ENG-07, and is not among the objectives PRIN-ENG-07 binds."
+    },
+    {
+      "id": "domain.coverage.po_d_01.2_001",
+      "tags": [
+        "L3",
+        "coverage-verdict"
+      ],
+      "state": "OBJECTIVE: `PO-D-01.2-001`\nPersonal data in transit confidential and unaltered\n\nFUNCTIONAL CARRIER: `R1.1`, all UC preconditions\n\nVC DISCHARGE: RN24 fit criterion is broader than the objective (all data vs personal data flows — safe superset); Art. 32(2) five-event enumeration carried at its confidentiality/integrity core\n\nQUESTION: which coverage verdict applies to this objective?",
+      "questions": {
+        "verdict": {
+          "type": "choice",
+          "instructions": "Which coverage verdict applies to this objective?",
+          "criteria": {
+            "Fully_covered_(anchored)": "Fully covered (anchored)",
+            "Partially_covered_(functional_leg_+_explicit_carve-out)": "Partially covered (functional leg + explicit carve-out)",
+            "No_functional_carrier_(organizational)": "No functional carrier (organizational)",
+            "Design_guidance": "Design guidance",
+            "N/A": "N/A"
+          }
+        }
+      },
+      "expect": {
+        "answer_type": "choice",
+        "labels": {
+          "verdict": "Fully_covered_(anchored)"
+        }
+      },
+      "provenance": "Verdict vocabulary ADR-007 D4. Row from the reference matrix cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/part1_security_privacy/synthesis_rounds/OBJECTIVE_MAPPING.md."
+    },
+    {
+      "id": "domain.coverage.po_d_01.1_001",
+      "tags": [
+        "L3",
+        "coverage-verdict"
+      ],
+      "state": "OBJECTIVE: `PO-D-01.1-001`\nPersonal data at rest processed with appropriate security\n\nFUNCTIONAL CARRIER: `R1.2` (profile records)\n\nVC DISCHARGE: RN23 → at-rest confidentiality (volumes, file assets, backups); carve-out: ongoing CIA/resilience of processing systems → organizational lane (SO-D-04.4-001/SO-D-10.1-001)\n\nQUESTION: which coverage verdict applies to this objective?",
+      "questions": {
+        "verdict": {
+          "type": "choice",
+          "instructions": "Which coverage verdict applies to this objective?",
+          "criteria": {
+            "Fully_covered_(anchored)": "Fully covered (anchored)",
+            "Partially_covered_(functional_leg_+_explicit_carve-out)": "Partially covered (functional leg + explicit carve-out)",
+            "No_functional_carrier_(organizational)": "No functional carrier (organizational)",
+            "Design_guidance": "Design guidance",
+            "N/A": "N/A"
+          }
+        }
+      },
+      "expect": {
+        "answer_type": "choice",
+        "labels": {
+          "verdict": "Partially_covered_(functional_leg_+_explicit_carve-out)"
+        }
+      },
+      "provenance": "Verdict vocabulary ADR-007 D4. Row from the reference matrix cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/part1_security_privacy/synthesis_rounds/OBJECTIVE_MAPPING.md."
+    },
+    {
+      "id": "domain.coverage.so_d_02.1_001",
+      "tags": [
+        "L3",
+        "coverage-verdict"
+      ],
+      "state": "OBJECTIVE: `SO-D-02.1-001`\nProcess: regularly test effectiveness of measures\n\nFUNCTIONAL CARRIER: —\n\nVC DISCHARGE: —\n\nQUESTION: which coverage verdict applies to this objective?",
+      "questions": {
+        "verdict": {
+          "type": "choice",
+          "instructions": "Which coverage verdict applies to this objective?",
+          "criteria": {
+            "Fully_covered_(anchored)": "Fully covered (anchored)",
+            "Partially_covered_(functional_leg_+_explicit_carve-out)": "Partially covered (functional leg + explicit carve-out)",
+            "No_functional_carrier_(organizational)": "No functional carrier (organizational)",
+            "Design_guidance": "Design guidance",
+            "N/A": "N/A"
+          }
+        }
+      },
+      "expect": {
+        "answer_type": "choice",
+        "labels": {
+          "verdict": "No_functional_carrier_(organizational)"
+        }
+      },
+      "provenance": "Verdict vocabulary ADR-007 D4. Row from the reference matrix cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/part1_security_privacy/synthesis_rounds/OBJECTIVE_MAPPING.md."
+    },
+    {
+      "id": "domain.coverage.po_d_01.3_001",
+      "tags": [
+        "L3",
+        "coverage-verdict"
+      ],
+      "state": "OBJECTIVE: `PO-D-01.3-001`\nRe-identification info kept separate (key separation)\n\nFUNCTIONAL CARRIER: — (design constraint)\n\nVC DISCHARGE: —\n\nQUESTION: which coverage verdict applies to this objective?",
+      "questions": {
+        "verdict": {
+          "type": "choice",
+          "instructions": "Which coverage verdict applies to this objective?",
+          "criteria": {
+            "Fully_covered_(anchored)": "Fully covered (anchored)",
+            "Partially_covered_(functional_leg_+_explicit_carve-out)": "Partially covered (functional leg + explicit carve-out)",
+            "No_functional_carrier_(organizational)": "No functional carrier (organizational)",
+            "Design_guidance": "Design guidance",
+            "N/A": "N/A"
+          }
+        }
+      },
+      "expect": {
+        "answer_type": "choice",
+        "labels": {
+          "verdict": "Design_guidance"
+        }
+      },
+      "provenance": "Verdict vocabulary ADR-007 D4. Row from the reference matrix cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/part1_security_privacy/synthesis_rounds/OBJECTIVE_MAPPING.md."
+    },
+    {
+      "id": "domain.coverage.so_d_06.3_002",
+      "tags": [
+        "L3",
+        "coverage-verdict"
+      ],
+      "state": "OBJECTIVE: `SO-D-06.3-002`\nEconomic-operator contractual duties (importers/distributors)\n\nFUNCTIONAL CARRIER: —\n\nVC DISCHARGE: —\n\nQUESTION: which coverage verdict applies to this objective?",
+      "questions": {
+        "verdict": {
+          "type": "choice",
+          "instructions": "Which coverage verdict applies to this objective?",
+          "criteria": {
+            "Fully_covered_(anchored)": "Fully covered (anchored)",
+            "Partially_covered_(functional_leg_+_explicit_carve-out)": "Partially covered (functional leg + explicit carve-out)",
+            "No_functional_carrier_(organizational)": "No functional carrier (organizational)",
+            "Design_guidance": "Design guidance",
+            "N/A": "N/A"
+          }
+        }
+      },
+      "expect": {
+        "answer_type": "choice",
+        "labels": {
+          "verdict": "N/A"
+        }
+      },
+      "provenance": "Verdict vocabulary ADR-007 D4. Row from the reference matrix cases/Case_01_TinyTask_SaaS/03_PHASE3_SPEC/part1_security_privacy/synthesis_rounds/OBJECTIVE_MAPPING.md."
+    },
+    {
+      "id": "domain.adjustment.verbatim_d10_1_cra",
+      "tags": [
+        "L3",
+        "adjustment",
+        "unlabelled"
+      ],
+      "state": "BASELINE (regulation-neutral Sub-SO, verbatim):\nA product with digital elements **provides security-related information by recording and monitoring relevant internal activity, including access to or modification of data, services or functions, and provides an opt-out mechanism for the user** (Annex I Part I (2)(l) CRA); the manufacturer **facilitates the sharing of information about potential vulnerabilities** through a single contact address (Annex I Part II (6) CRA).\n\nADJUSTED GOAL (verbatim):\nThe product provides security-related information by recording and monitoring relevant internal activity, including access to or modification of data, services or functions, with an opt-out mechanism for the user, and the company facilitates the sharing of information about potential vulnerabilities through a single contact address.",
+      "questions": {
+        "relation": {
+          "type": "choice",
+          "instructions": "How does the adjusted goal relate to the baseline?",
+          "criteria": {
+            "verbatim": "The adjusted goal restates the baseline without changing it.",
+            "proportional": "The adjusted goal restates the baseline proportionately for this company.",
+            "narrowed": "The adjusted goal drops or moves out a mandatory leg of the baseline."
+          }
+        }
+      },
+      "expect": {
+        "answer_type": "choice"
+      },
+      "provenance": "Near-verbatim pair (D-10.1 / CRA, AG-D-10.1-002). NO LABEL: the L2 rubric that could adjudicate this does not exist yet, so the case is measured, not scored."
+    },
+    {
+      "id": "domain.adjustment.proportional_d10_1_gdpr",
+      "tags": [
+        "L3",
+        "adjustment",
+        "unlabelled"
+      ],
+      "state": "BASELINE (regulation-neutral Sub-SO, verbatim):\nThe controller and processor implement appropriate technical and organisational measures to ensure the **ongoing confidentiality, integrity, availability and resilience of processing systems and services** (Art. 32(1)(b) GDPR) and **regularly test, assess and evaluate their effectiveness** (Art. 32(1)(d) GDPR); personal-data processing systems and services are monitored for the five Art. 32(2) risk types, with a clear definition of the moment of `becoming aware of` a breach to anchor the Art. 33(1) 72-hour notification clock.\n\nADJUSTED GOAL (verbatim):\nThe company implements appropriate technical and organisational measures to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems and services and regularly tests, assesses and evaluates their effectiveness, monitoring for the five Art. 32(2) risk types with a clear definition of the moment of becoming aware of a breach.",
+      "questions": {
+        "relation": {
+          "type": "choice",
+          "instructions": "How does the adjusted goal relate to the baseline?",
+          "criteria": {
+            "verbatim": "The adjusted goal restates the baseline without changing it.",
+            "proportional": "The adjusted goal restates the baseline proportionately for this company.",
+            "narrowed": "The adjusted goal drops or moves out a mandatory leg of the baseline."
+          }
+        }
+      },
+      "expect": {
+        "answer_type": "choice"
+      },
+      "provenance": "Proportional restatement (D-10.1 / GDPR, AG-D-10.1-001). NO LABEL: the L2 rubric that could adjudicate this does not exist yet, so the case is measured, not scored."
+    },
+    {
+      "id": "domain.adjustment.narrowed_d02_2_cra",
+      "tags": [
+        "L3",
+        "adjustment",
+        "unlabelled"
+      ],
+      "state": "BASELINE (regulation-neutral Sub-SO, verbatim):\nVulnerabilities of a product with digital elements are addressed and remediated through security updates without delay, including — where technically feasible — through security updates provided separately from functionality updates (Annex I Part II (2) + Annex I Part I (2)(c)); security updates are disseminated without delay to users via mechanisms that ensure the secure distribution of updates, accompanied by advisory messages describing the action users can take (Annex I Part II (7) + (8)); vulnerabilities — including those of integrated components — are handled effectively and in accordance with the Annex I Part II vulnerability-handling requirements throughout the support period determined by the manufacturer (minimum 5 years, or the expected use time if shorter — Art. 13(8)); each security update made available during the support period remains available after it has been issued for at least 10 years or for the remainder of the support period, whichever is longer (Art. 13(9)).\n\nADJUSTED GOAL (verbatim):\nVulnerabilities are addressed and remediated through security updates without delay, provided separately from functionality updates where technically feasible, and disseminated to users via mechanisms ensuring secure distribution together with advisory messages describing the action users can take.",
+      "questions": {
+        "relation": {
+          "type": "choice",
+          "instructions": "How does the adjusted goal relate to the baseline?",
+          "criteria": {
+            "verbatim": "The adjusted goal restates the baseline without changing it.",
+            "proportional": "The adjusted goal restates the baseline proportionately for this company.",
+            "narrowed": "The adjusted goal drops or moves out a mandatory leg of the baseline."
+          }
+        }
+      },
+      "expect": {
+        "answer_type": "choice"
+      },
+      "provenance": "Scope narrowing (D-02.2 / CRA, AG-D-02.2-002): the support-period floor and the 10-year availability tail leave the goal text but stay in the Articles cell. NO LABEL: the L2 rubric that could adjudicate this does not exist yet, so the case is measured, not scored."
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+# Regenerable from the JSONL with one command:
+#   python3 lab/decision/report.py --results lab/decision/results/A*_cases_*.jsonl ...
+REPORT.json
+
+# The cluster's stdout for each arm. Machine-specific, large, and its content
+# that matters is already in the records and in the run logs on the cluster.
+cluster_run_logs.txt

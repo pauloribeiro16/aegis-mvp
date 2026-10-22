@@ -1,0 +1,818 @@
+{
+  "arms": [
+    {
+      "arm": "A1-bfloat16",
+      "variant": "A1-bfloat16",
+      "backend": "inproc",
+      "model": "LiquidAI_d1-3B",
+      "dtype": "bfloat16",
+      "records": 101,
+      "errors": 3,
+      "contract_failures": 0,
+      "contract_failed_records": 0,
+      "labelled": 84,
+      "labelled_correct": 54,
+      "unlabelled": 28,
+      "contested": 3,
+      "contested_correct": 0,
+      "expected_errors": 3,
+      "expected_errors_observed": 3,
+      "unexpected_errors": 0,
+      "failures": [
+        {
+          "case_id": "domain.tension.t-001",
+          "kind": "wrong_pick",
+          "detail": "activates: got False, expected True"
+        },
+        {
+          "case_id": "domain.tension.t-002",
+          "kind": "wrong_pick",
+          "detail": "activates: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_01_3",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_03_3",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_03_4",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_04_1",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_04_3",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_04_4",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_05_4",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_07_3",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_08_2",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_10_2",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_01.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_02.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_03.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_04.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_05.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_06.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_07.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.coverage.po_d_01.3_001",
+          "kind": "wrong_pick",
+          "detail": "verdict: got 'No_functional_carrier_(organizational)', expected 'Design_guidance'"
+        },
+        {
+          "case_id": "domain.coverage.so_d_06.3_002",
+          "kind": "wrong_pick",
+          "detail": "verdict: got 'No_functional_carrier_(organizational)', expected 'N/A'"
+        },
+        {
+          "case_id": "robust.minimal",
+          "kind": "wrong_pick",
+          "detail": "nis2: got True, expected False"
+        },
+        {
+          "case_id": "robust.minimal.paraphrased",
+          "kind": "wrong_pick",
+          "detail": "nis2: got True, expected False"
+        },
+        {
+          "case_id": "robust.minimal.paraphrased",
+          "kind": "wrong_pick",
+          "detail": "dora: got True, expected False"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "nis2: got True, expected False"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "nis2: got True, expected False"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "nis2: got True, expected False"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "nis2: got True, expected False"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "nis2: got True, expected False"
+        },
+        {
+          "case_id": "robust.batch_shape",
+          "kind": "wrong_pick",
+          "detail": "nis2: got True, expected False"
+        }
+      ],
+      "latency_median_ms": 27.37,
+      "latency_p95_ms": 34.98,
+      "accuracy": 0.6429,
+      "contract_ok": true,
+      "error_paths_ok": true
+    },
+    {
+      "arm": "A2",
+      "variant": "A2",
+      "backend": "http",
+      "model": "LiquidAI/d1-3B",
+      "dtype": "n/a",
+      "records": 104,
+      "errors": 6,
+      "contract_failures": 0,
+      "contract_failed_records": 0,
+      "labelled": 81,
+      "labelled_correct": 49,
+      "unlabelled": 28,
+      "contested": 3,
+      "contested_correct": 0,
+      "expected_errors": 5,
+      "expected_errors_observed": 5,
+      "unexpected_errors": 0,
+      "failures": [
+        {
+          "case_id": "domain.tension.t-001",
+          "kind": "wrong_pick",
+          "detail": "activates: got False, expected True"
+        },
+        {
+          "case_id": "domain.tension.t-002",
+          "kind": "wrong_pick",
+          "detail": "activates: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_01_3",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_03_3",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_03_4",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_04_1",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_04_2",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_04_3",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_04_4",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_05_4",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_07_3",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_07_4",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_08_2",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_10_2",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_01.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_02.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_03.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_04.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_05.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_06.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_07.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.coverage.po_d_01.3_001",
+          "kind": "wrong_pick",
+          "detail": "verdict: got 'No_functional_carrier_(organizational)', expected 'Design_guidance'"
+        },
+        {
+          "case_id": "domain.coverage.so_d_06.3_002",
+          "kind": "wrong_pick",
+          "detail": "verdict: got 'No_functional_carrier_(organizational)', expected 'N/A'"
+        },
+        {
+          "case_id": "robust.minimal",
+          "kind": "wrong_pick",
+          "detail": "nis2: got True, expected False"
+        },
+        {
+          "case_id": "robust.minimal.paraphrased",
+          "kind": "wrong_pick",
+          "detail": "nis2: got True, expected False"
+        },
+        {
+          "case_id": "robust.minimal.paraphrased",
+          "kind": "wrong_pick",
+          "detail": "dora: got True, expected False"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "nis2: got True, expected False"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "nis2: got True, expected False"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "nis2: got True, expected False"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "nis2: got True, expected False"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "nis2: got True, expected False"
+        },
+        {
+          "case_id": "smoke.labelled",
+          "kind": "wrong_pick",
+          "detail": "nis2: got True, expected False"
+        }
+      ],
+      "latency_median_ms": 45.37,
+      "latency_p95_ms": 91.53,
+      "accuracy": 0.6049,
+      "contract_ok": true,
+      "error_paths_ok": true
+    },
+    {
+      "arm": "A3-bfloat16",
+      "variant": "A3-bfloat16",
+      "backend": "inproc",
+      "model": "LiquidAI_d1-omni-600M",
+      "dtype": "bfloat16",
+      "records": 101,
+      "errors": 7,
+      "contract_failures": 0,
+      "contract_failed_records": 0,
+      "labelled": 84,
+      "labelled_correct": 61,
+      "unlabelled": 24,
+      "contested": 3,
+      "contested_correct": 2,
+      "expected_errors": 7,
+      "expected_errors_observed": 7,
+      "unexpected_errors": 0,
+      "failures": [
+        {
+          "case_id": "domain.tension.t-005",
+          "kind": "wrong_pick",
+          "detail": "activates: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_02_2",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_02_3",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_03_1",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_01.unbound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got True, expected False"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_05.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_05.unbound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got True, expected False"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_07.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.coverage.po_d_01.1_001",
+          "kind": "wrong_pick",
+          "detail": "verdict: got 'Fully_covered_(anchored)', expected 'Partially_covered_(functional_leg_+_explicit_carve-out)'"
+        },
+        {
+          "case_id": "domain.coverage.so_d_02.1_001",
+          "kind": "wrong_pick",
+          "detail": "verdict: got 'N/A', expected 'No_functional_carrier_(organizational)'"
+        },
+        {
+          "case_id": "domain.coverage.po_d_01.3_001",
+          "kind": "wrong_pick",
+          "detail": "verdict: got 'Fully_covered_(anchored)', expected 'Design_guidance'"
+        },
+        {
+          "case_id": "domain.coverage.so_d_06.3_002",
+          "kind": "wrong_pick",
+          "detail": "verdict: got 'Partially_covered_(functional_leg_+_explicit_carve-out)', expected 'N/A'"
+        },
+        {
+          "case_id": "robust.minimal",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.minimal",
+          "kind": "wrong_pick",
+          "detail": "cra: got False, expected True"
+        },
+        {
+          "case_id": "robust.minimal.paraphrased",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.minimal.paraphrased",
+          "kind": "wrong_pick",
+          "detail": "cra: got False, expected True"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.batch_shape",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.batch_shape",
+          "kind": "wrong_pick",
+          "detail": "cra: got False, expected True"
+        }
+      ],
+      "latency_median_ms": 16.6,
+      "latency_p95_ms": 22.52,
+      "accuracy": 0.7262,
+      "contract_ok": true,
+      "error_paths_ok": true
+    },
+    {
+      "arm": "A3-float16",
+      "variant": "A3-float16",
+      "backend": "inproc",
+      "model": "LiquidAI_d1-omni-600M",
+      "dtype": "float16",
+      "records": 101,
+      "errors": 7,
+      "contract_failures": 0,
+      "contract_failed_records": 0,
+      "labelled": 84,
+      "labelled_correct": 61,
+      "unlabelled": 24,
+      "contested": 3,
+      "contested_correct": 2,
+      "expected_errors": 7,
+      "expected_errors_observed": 7,
+      "unexpected_errors": 0,
+      "failures": [
+        {
+          "case_id": "domain.tension.t-005",
+          "kind": "wrong_pick",
+          "detail": "activates: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_01_3",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_02_2",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_02_3",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_03_1",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_01.unbound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got True, expected False"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_05.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_05.unbound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got True, expected False"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_07.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.coverage.po_d_01.1_001",
+          "kind": "wrong_pick",
+          "detail": "verdict: got 'Fully_covered_(anchored)', expected 'Partially_covered_(functional_leg_+_explicit_carve-out)'"
+        },
+        {
+          "case_id": "domain.coverage.so_d_02.1_001",
+          "kind": "wrong_pick",
+          "detail": "verdict: got 'N/A', expected 'No_functional_carrier_(organizational)'"
+        },
+        {
+          "case_id": "domain.coverage.po_d_01.3_001",
+          "kind": "wrong_pick",
+          "detail": "verdict: got 'Fully_covered_(anchored)', expected 'Design_guidance'"
+        },
+        {
+          "case_id": "domain.coverage.so_d_06.3_002",
+          "kind": "wrong_pick",
+          "detail": "verdict: got 'Partially_covered_(functional_leg_+_explicit_carve-out)', expected 'N/A'"
+        },
+        {
+          "case_id": "robust.minimal",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.minimal",
+          "kind": "wrong_pick",
+          "detail": "cra: got False, expected True"
+        },
+        {
+          "case_id": "robust.minimal.paraphrased",
+          "kind": "wrong_pick",
+          "detail": "cra: got False, expected True"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.batch_shape",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.batch_shape",
+          "kind": "wrong_pick",
+          "detail": "cra: got False, expected True"
+        }
+      ],
+      "latency_median_ms": 16.37,
+      "latency_p95_ms": 24.53,
+      "accuracy": 0.7262,
+      "contract_ok": true,
+      "error_paths_ok": true
+    },
+    {
+      "arm": "A3-float32",
+      "variant": "A3-float32",
+      "backend": "inproc",
+      "model": "LiquidAI_d1-omni-600M",
+      "dtype": "float32",
+      "records": 101,
+      "errors": 7,
+      "contract_failures": 0,
+      "contract_failed_records": 0,
+      "labelled": 84,
+      "labelled_correct": 60,
+      "unlabelled": 24,
+      "contested": 3,
+      "contested_correct": 2,
+      "expected_errors": 7,
+      "expected_errors_observed": 7,
+      "unexpected_errors": 0,
+      "failures": [
+        {
+          "case_id": "domain.tension.t-005",
+          "kind": "wrong_pick",
+          "detail": "activates: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_01_3",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_02_2",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_02_3",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.trigger.D_03_1",
+          "kind": "wrong_pick",
+          "detail": "triggered: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_01.unbound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got True, expected False"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_05.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_05.unbound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got True, expected False"
+        },
+        {
+          "case_id": "domain.principle.prin_eng_07.bound",
+          "kind": "wrong_pick",
+          "detail": "constrains: got False, expected True"
+        },
+        {
+          "case_id": "domain.coverage.po_d_01.1_001",
+          "kind": "wrong_pick",
+          "detail": "verdict: got 'Fully_covered_(anchored)', expected 'Partially_covered_(functional_leg_+_explicit_carve-out)'"
+        },
+        {
+          "case_id": "domain.coverage.so_d_02.1_001",
+          "kind": "wrong_pick",
+          "detail": "verdict: got 'N/A', expected 'No_functional_carrier_(organizational)'"
+        },
+        {
+          "case_id": "domain.coverage.po_d_01.3_001",
+          "kind": "wrong_pick",
+          "detail": "verdict: got 'Fully_covered_(anchored)', expected 'Design_guidance'"
+        },
+        {
+          "case_id": "domain.coverage.so_d_06.3_002",
+          "kind": "wrong_pick",
+          "detail": "verdict: got 'Partially_covered_(functional_leg_+_explicit_carve-out)', expected 'N/A'"
+        },
+        {
+          "case_id": "robust.minimal",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.minimal",
+          "kind": "wrong_pick",
+          "detail": "cra: got False, expected True"
+        },
+        {
+          "case_id": "robust.minimal.paraphrased",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.minimal.paraphrased",
+          "kind": "wrong_pick",
+          "detail": "cra: got False, expected True"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.repeat5",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.batch_shape",
+          "kind": "wrong_pick",
+          "detail": "gdpr: got False, expected True"
+        },
+        {
+          "case_id": "robust.batch_shape",
+          "kind": "wrong_pick",
+          "detail": "cra: got False, expected True"
+        }
+      ],
+      "latency_median_ms": 31.89,
+      "latency_p95_ms": 72.77,
+      "accuracy": 0.7143,
+      "contract_ok": true,
+      "error_paths_ok": true
+    }
+  ],
+  "determinism": {
+    "A1": {
+      "groups": 1,
+      "agreeing": 1,
+      "disagreements": [],
+      "stable": true
+    },
+    "A2": {
+      "groups": 1,
+      "agreeing": 1,
+      "disagreements": [],
+      "stable": true
+    },
+    "A3": {
+      "groups": 90,
+      "agreeing": 88,
+      "disagreements": [
+        "domain.trigger.D_01_3",
+        "robust.minimal.paraphrased"
+      ],
+      "stable": false
+    }
+  },
+  "total_records": 508
+}

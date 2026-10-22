@@ -2,6 +2,11 @@
 __pycache__/
 *.pyc
 
+# Local credentials. Machine-local, never a deliverable — a `git add -A`
+# would otherwise publish whatever secret the file holds.
+.env
+.env.*
+
 # ZCode session artifacts
 .zcode/
 _audit_input.jsonl

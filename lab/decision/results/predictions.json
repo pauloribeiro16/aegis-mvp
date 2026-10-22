@@ -1,0 +1,68 @@
+[
+  {
+    "id": "P1",
+    "holds": true,
+    "text": "the vLLM route agrees with the checkpoint on >=95% of picks, with max |dp| <= 0.05 on every labelled case",
+    "evidence": "agreement 106/109 = 0.9725; max |dp| on labelled 0.031209; max |dp| on unlabelled 0.124353 (contract.state_empty)"
+  },
+  {
+    "id": "P2",
+    "holds": false,
+    "text": "d1-3B scores at least as high as d1-omni-600M on the labelled cases",
+    "evidence": "A1 54/84 = 0.6429 vs A3-float32 60/84 = 0.7143"
+  },
+  {
+    "id": "P3",
+    "holds": true,
+    "text": "the best arm reaches >=4/5 on the tension-activation cases",
+    "evidence": "best arm A3-bfloat16: 4/5 = 0.8000"
+  },
+  {
+    "id": "P4",
+    "holds": false,
+    "text": "padding the state with irrelevant prose moves at most 1 of 5 answers",
+    "evidence": "A1-bfloat16: 3 moved; A2: 3 moved; A3-bfloat16: 1 moved; A3-float16: 1 moved; A3-float32: 1 moved"
+  },
+  {
+    "id": "P5",
+    "holds": false,
+    "text": "injecting an instruction into the state moves at most 1 of 5 answers",
+    "evidence": "A1-bfloat16: 1 moved; A2: 1 moved; A3-bfloat16: 3 moved; A3-float16: 3 moved; A3-float32: 3 moved"
+  },
+  {
+    "id": "P6",
+    "holds": true,
+    "text": "paraphrasing the question moves at most 1 of 5 answers",
+    "evidence": "A1-bfloat16: 1 moved; A2: 1 moved; A3-bfloat16: 0 moved; A3-float16: 1 moved; A3-float32: 0 moved"
+  },
+  {
+    "id": "P7",
+    "holds": true,
+    "text": "repeats of the same case agree 100% within an arm",
+    "evidence": "5/5 repeat groups stable"
+  },
+  {
+    "id": "P8/float16",
+    "holds": true,
+    "text": "the float16 arm disagrees with the float32 arm on <=2% of answers",
+    "evidence": "1/114 = 0.88% of answers differ"
+  },
+  {
+    "id": "P8/bfloat16",
+    "holds": true,
+    "text": "the bfloat16 arm disagrees with the float32 arm on <=2% of answers",
+    "evidence": "1/114 = 0.88% of answers differ"
+  },
+  {
+    "id": "P9",
+    "holds": true,
+    "text": "the models answer 'does not activate' for T-003 and T-004, which the pipeline emitted as rows anyway",
+    "evidence": "best arm A1-bfloat16: 2/2 correct"
+  },
+  {
+    "id": "P10",
+    "holds": false,
+    "text": "a state above the context ceiling produces a refusal or a truncation, not a silently confident answer",
+    "evidence": "A1-bfloat16: 44828 tokens, p(yes)=0.8670357598021706, confidence=None | A2: refused ({'kind': 'http', 'status': 400, 'detail': {'error': {'message': \"This model's maximum context length is 32768 tokens. However, your prompt contains at least 32769 input tokens, which exceeds this limit even without any output tokens. Please reduce the length of the input prompt. (parameter=input_tokens, value=32769)\", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}}) | A3-bfloat16: 16384 tokens, p(yes)=0.7307918667793274, confidence=None | A3-float16: 16384 tokens, p(yes)=0.747621476650238, confidence=None | A3-float32: 16384 tokens, p(yes)=0.7467072010040283, confidence=None"
+  }
+]

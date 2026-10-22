@@ -2,11 +2,29 @@
 # Source: BSI IT-Grundschutz (2023 Compendium).
 # https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html
 # Bausteine grouped by layer (INF/SYS/NET/APP/IND/CON). Representative subset of ~30 modules.
+#
+# Each card is a ONE-LINE ADVISORY SUMMARY of the published Baustein it names; the
+# published text is not reproduced. The id space mirrors the published Baustein id
+# space so that a citation resolves (ADR-2026-10-21).
+#
+# ADR-2026-10-21 corrected two defects in this spec:
+#   1. The CON family used hyphenated ids (CON-1) while every other module used the
+#      dot form and while the card's own reference string already said "CON.1".
+#      The ids are now CON.1 / CON.2 / CON.3.
+#   2. The DER family asserted a BSI module code whose published layer covers
+#      detection and response, while the cards describe an identity directory, a PKI
+#      and a federation. Rather than re-file that content against a mapping this
+#      repository cannot verify against the published Kompendium, the family was
+#      renamed to a content-derived namespace (IDM) and no published Baustein id is
+#      asserted for it.
+# The CON layer reading (containerisation) is registered as assumption A10 in
+# docs/decisions/ASSUMPTIONS.md: it is believed correct for the 2023 Compendium but
+# is not verifiable from this repository, and it has a signpost.
 
 framework: "BSI IT-Grundschutz"
 framework_short: "BSI_GRUNDSCHUTZ"
 directory: "BSI_GRUNDSCHUTZ"
-version: "2023 Compendium Edition"
+version: "2023 Compendium Edition (one-line advisory summaries of the published Bausteine; published text not reproduced)"
 source_url: "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html"
 fetched_date: "2026-09-22"
 
@@ -171,40 +189,40 @@ families:
     function_dir: "CON_CONTAINERS"
     category_name: "Containerisation (CON)"
     practices:
-      - id: "CON-1"
+      - id: "CON.1"
         text: "Operate Kubernetes and container orchestrators securely with CIS benchmarks."
         informative_references: ["BSI IT-Grundschutz CON.1", "CIS Kubernetes Benchmark", "NIST SP 800-53 Rev 5: CM-06"]
         examples: ["RBAC, network policies, Pod Security Standards"]
         objectives: ["Determine whether orchestrators follow hardened benchmarks."]
-      - id: "CON-2"
+      - id: "CON.2"
         text: "Operate container registries and supply chain securely with image scanning and signing."
         informative_references: ["BSI IT-Grundschutz CON.2", "NIST SSDF v1.1: PS.1.2", "NIST SP 800-53 Rev 5: SR-04"]
         examples: ["Image signing", "Admission control"]
         objectives: ["Determine whether the container supply chain is secured."]
-      - id: "CON-3"
+      - id: "CON.3"
         text: "Operate service mesh with mutual authentication and policy enforcement."
         informative_references: ["BSI IT-Grundschutz CON.3", "NIST SP 800-53 Rev 5: IA-09"]
         examples: ["mTLS via mesh"]
         objectives: ["Determine whether service-to-service auth is enforced."]
 
-  # ---- DER: Identity & Identity Federation ----
-  - function: "DER"
-    function_dir: "DER_DIRECTORY"
-    category_name: "Directory Service (DER)"
+  # ---- IDM: Identity, keys and federation (local namespace — no published Baustein id asserted) ----
+  - function: "IDM"
+    function_dir: "IDENTITY_AND_KEYS"
+    category_name: "Identity, Keys and Federation (IDM)"
     practices:
-      - id: "DER.1"
+      - id: "IDM.1"
         text: "Operate the Active Directory / identity directory with hardened configuration and monitoring."
-        informative_references: ["BSI IT-Grundschutz DER.1", "NIST SP 800-53 Rev 5: AC-02, IA-02"]
+        informative_references: ["BSI IT-Grundschutz (2023 Compendium) — identity, key and federation management topics; no published Baustein id asserted", "NIST SP 800-53 Rev 5: AC-02, IA-02"]
         examples: ["AD tiering", "Privileged Access Workstations"]
         objectives: ["Determine whether the directory service is hardened."]
-      - id: "DER.2"
+      - id: "IDM.2"
         text: "Operate Public Key Infrastructure (PKI) with secure key management and certificate lifecycle."
-        informative_references: ["BSI IT-Grundschutz DER.2", "NIST SP 800-53 Rev 5: SC-12, SC-17"]
+        informative_references: ["BSI IT-Grundschutz (2023 Compendium) — identity, key and federation management topics; no published Baustein id asserted", "NIST SP 800-53 Rev 5: SC-12, SC-17"]
         examples: ["CA hierarchies", "OCSP"]
         objectives: ["Determine whether PKI is managed."]
-      - id: "DER.3"
+      - id: "IDM.3"
         text: "Operate federation (SAML, OIDC) with strong assertions and lifecycle management."
-        informative_references: ["BSI IT-Grundschutz DER.3", "NIST SP 800-53 Rev 5: IA-08"]
+        informative_references: ["BSI IT-Grundschutz (2023 Compendium) — identity, key and federation management topics; no published Baustein id asserted", "NIST SP 800-53 Rev 5: IA-08"]
         examples: ["SAML/OIDC federation"]
         objectives: ["Determine whether federation is secure."]
 

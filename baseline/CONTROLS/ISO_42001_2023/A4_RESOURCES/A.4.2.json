@@ -1,0 +1,25 @@
+{
+  "control_id": "A.4.2",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A4",
+  "category": "Resources for AI (A)",
+  "subcategory_id": "A.4.2",
+  "subcategory_text": "Define competence requirements for personnel involved in AI development and deployment.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.4",
+    "NIST AI RMF 1.0: GOVERN-2.3"
+  ],
+  "implementation_examples": [
+    "AI competence matrix"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI competence requirements exist."
+  ],
+  "related_controls": [
+    "A.4.1 (ISO/IEC 42001:2023 — same family)",
+    "A.4.3 (ISO/IEC 42001:2023 — same family)",
+    "A.4.4 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A — section-aligned local subset; published control ordinals not asserted)"
+}

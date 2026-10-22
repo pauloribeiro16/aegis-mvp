@@ -1,0 +1,25 @@
+{
+  "control_id": "IDM.2",
+  "framework": "BSI IT-Grundschutz",
+  "function": "IDM",
+  "category": "Identity, Keys and Federation (IDM) (IDM)",
+  "subcategory_id": "IDM.2",
+  "subcategory_text": "Operate Public Key Infrastructure (PKI) with secure key management and certificate lifecycle.",
+  "informative_references": [
+    "BSI IT-Grundschutz (2023 Compendium) — identity, key and federation management topics; no published Baustein id asserted",
+    "NIST SP 800-53 Rev 5: SC-12, SC-17"
+  ],
+  "implementation_examples": [
+    "CA hierarchies",
+    "OCSP"
+  ],
+  "assessment_objectives": [
+    "Determine whether PKI is managed."
+  ],
+  "related_controls": [
+    "IDM.1 (BSI IT-Grundschutz — same family)",
+    "IDM.3 (BSI IT-Grundschutz — same family)"
+  ],
+  "source_url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz.html",
+  "source_version": "2023 Compendium Edition (one-line advisory summaries of the published Bausteine; published text not reproduced)"
+}

@@ -1,0 +1,34 @@
+{
+  "control_id": "A.6.11",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A6",
+  "category": "AI System Life Cycle (A)",
+  "subcategory_id": "A.6.11",
+  "subcategory_text": "Operate and monitor AI systems in production with KPIs, drift detection, and incident handling.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.6",
+    "NIST AI RMF 1.0: MANAGE-2.4"
+  ],
+  "implementation_examples": [
+    "Model monitoring"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI operations include monitoring."
+  ],
+  "related_controls": [
+    "A.6.1 (ISO/IEC 42001:2023 — same family)",
+    "A.6.2 (ISO/IEC 42001:2023 — same family)",
+    "A.6.3 (ISO/IEC 42001:2023 — same family)",
+    "A.6.4 (ISO/IEC 42001:2023 — same family)",
+    "A.6.5 (ISO/IEC 42001:2023 — same family)",
+    "A.6.6 (ISO/IEC 42001:2023 — same family)",
+    "A.6.7 (ISO/IEC 42001:2023 — same family)",
+    "A.6.8 (ISO/IEC 42001:2023 — same family)",
+    "A.6.9 (ISO/IEC 42001:2023 — same family)",
+    "A.6.10 (ISO/IEC 42001:2023 — same family)",
+    "A.6.12 (ISO/IEC 42001:2023 — same family)",
+    "A.6.13 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A — section-aligned local subset; published control ordinals not asserted)"
+}

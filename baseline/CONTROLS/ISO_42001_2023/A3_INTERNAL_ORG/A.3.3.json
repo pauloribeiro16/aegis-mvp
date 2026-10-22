@@ -1,0 +1,26 @@
+{
+  "control_id": "A.3.3",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A3",
+  "category": "Internal Organization for AI (A)",
+  "subcategory_id": "A.3.3",
+  "subcategory_text": "Segregate AI development from business functions where appropriate to manage conflicts of interest.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.3"
+  ],
+  "implementation_examples": [
+    "Independent review"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI dev is appropriately segregated."
+  ],
+  "related_controls": [
+    "A.3.1 (ISO/IEC 42001:2023 — same family)",
+    "A.3.2 (ISO/IEC 42001:2023 — same family)",
+    "A.3.4 (ISO/IEC 42001:2023 — same family)",
+    "A.3.5 (ISO/IEC 42001:2023 — same family)",
+    "A.3.6 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A — section-aligned local subset; published control ordinals not asserted)"
+}

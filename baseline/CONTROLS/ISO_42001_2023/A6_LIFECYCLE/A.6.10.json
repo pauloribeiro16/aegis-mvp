@@ -1,0 +1,33 @@
+{
+  "control_id": "A.6.10",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A6",
+  "category": "AI System Life Cycle (A)",
+  "subcategory_id": "A.6.10",
+  "subcategory_text": "Document and apply AI-specific operational procedures and playbooks.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.6"
+  ],
+  "implementation_examples": [
+    "AI operational procedures"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI operating procedures exist."
+  ],
+  "related_controls": [
+    "A.6.1 (ISO/IEC 42001:2023 — same family)",
+    "A.6.2 (ISO/IEC 42001:2023 — same family)",
+    "A.6.3 (ISO/IEC 42001:2023 — same family)",
+    "A.6.4 (ISO/IEC 42001:2023 — same family)",
+    "A.6.5 (ISO/IEC 42001:2023 — same family)",
+    "A.6.6 (ISO/IEC 42001:2023 — same family)",
+    "A.6.7 (ISO/IEC 42001:2023 — same family)",
+    "A.6.8 (ISO/IEC 42001:2023 — same family)",
+    "A.6.9 (ISO/IEC 42001:2023 — same family)",
+    "A.6.11 (ISO/IEC 42001:2023 — same family)",
+    "A.6.12 (ISO/IEC 42001:2023 — same family)",
+    "A.6.13 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A — section-aligned local subset; published control ordinals not asserted)"
+}

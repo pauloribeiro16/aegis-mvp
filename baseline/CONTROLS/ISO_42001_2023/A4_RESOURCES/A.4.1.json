@@ -1,0 +1,24 @@
+{
+  "control_id": "A.4.1",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A4",
+  "category": "Resources for AI (A)",
+  "subcategory_id": "A.4.1",
+  "subcategory_text": "Allocate resources and budget for the AI management system.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.4"
+  ],
+  "implementation_examples": [
+    "AIMS budget"
+  ],
+  "assessment_objectives": [
+    "Determine whether the AIMS is resourced."
+  ],
+  "related_controls": [
+    "A.4.2 (ISO/IEC 42001:2023 — same family)",
+    "A.4.3 (ISO/IEC 42001:2023 — same family)",
+    "A.4.4 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A — section-aligned local subset; published control ordinals not asserted)"
+}

@@ -1,0 +1,21 @@
+{
+  "control_id": "A.8.1",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A8",
+  "category": "Information for Interested Parties (A)",
+  "subcategory_id": "A.8.1",
+  "subcategory_text": "Define and apply transparency and explainability controls appropriate to the use case.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.8",
+    "NIST AI RMF 1.0: MEASURE-2.8"
+  ],
+  "implementation_examples": [
+    "User disclosures"
+  ],
+  "assessment_objectives": [
+    "Determine whether transparency controls are applied."
+  ],
+  "related_controls": [],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A — section-aligned local subset; published control ordinals not asserted)"
+}

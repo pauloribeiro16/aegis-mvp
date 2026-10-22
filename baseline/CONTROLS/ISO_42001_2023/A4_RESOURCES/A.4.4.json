@@ -1,0 +1,25 @@
+{
+  "control_id": "A.4.4",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A4",
+  "category": "Resources for AI (A)",
+  "subcategory_id": "A.4.4",
+  "subcategory_text": "Plan and provision computing and data resources for AI systems.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.4",
+    "NIST SP 800-53 Rev 5: SA-02"
+  ],
+  "implementation_examples": [
+    "Compute planning"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI resources are planned."
+  ],
+  "related_controls": [
+    "A.4.1 (ISO/IEC 42001:2023 — same family)",
+    "A.4.2 (ISO/IEC 42001:2023 — same family)",
+    "A.4.3 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A — section-aligned local subset; published control ordinals not asserted)"
+}

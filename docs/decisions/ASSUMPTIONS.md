@@ -1,9 +1,9 @@
 ---
 document_id: AEGIS-MVP-ASSUMPTIONS
 title: 'Assumption register — load-bearing assumptions with signposts'
-version: 1.2.0
+version: 1.3.0
 created: 2026-10-04
-updated: 2026-10-09
+updated: 2026-10-21
 status: ACTIVE
 upstream: 'AGENTS.md §-2 (rule 5), AEGIS-RES-10 §1 SM-008, ADR-2026-10-05_pack-budget-and-context-policy'
 ---
@@ -32,6 +32,7 @@ record the date and the follow-up in the same row, and open the contingency.
 | A7 | **O forward pass do juiz não-determinístico não é alcançável por seed** — mesmo temperature=0 + greedy deixa items a inverter [S-241] | AEGIS-RES-09 §4.1; PREREG_02 E-17 caveat | Um provider retirar o parâmetro temperature (Claude Opus 4.7/4.8 já rejeita, HTTP 400) | Re-medir o piso do judge com o protocolo E-17; nenhum A/B judged sem piso válido | **FECHADO — 2026-10-05, contingência CADUCADA** (ver nota A7 abaixo) |
 | A8 | **O orçamento de contexto é uma restrição, não uma conveniência** — a escada de `num_ctx` existe porque os packs precisam de mais do que cabe, e por isso valeria a pena subi-la | ADR-2026-10-05_pack-budget-and-context-policy.md §1.1–§1.3, D1/D6 | (a) E-15 achar retenção da cadeia **igual** nos orçamentos current / 0.75× / 0.5× — o orçamento nunca foi a restrição; **ou** (b) um pack real ultrapassar 50 k tokens de prompt depois de D1; **ou** (c) uma célula `context-fail` registada (`PLANO_FECHO.md:124`) persistir depois de D1 | E-15 corre (0 GPU-h, já preregistrado); se (a) sem (b)/(c), o contexto sai da lista de restrições e a energia vai para onde os abortos estão de facto — as L0 quality gates | ABERTO |
 | A9 | **A F2 não emite o tail `RULE-*` porque nenhum artefacto do corpus define a linha RULE** (colunas, derivação de âncoras, método de verificação) — a omissão nos 3 casos manuais é evidência de forma indeterminada, não de um artefacto forgotten | ADR-2026-10-09_phase2-objective-bridge.md D1, §5.1; ledger §1 finding 2, §4.1 | (a) um schema de linha RULE ser definido na metodologia; **ou** (b) a F3 declarar que não consegue citar um artefacto de nível regra; **ou** (c) a restrição Doc02 gerada para uma 4.ª empresa estruturalmente diferente sair genérica | Definir a linha RULE e re-emitir Doc01; revê-se a decisão, não se defende | **SINAL (b) DISPARADO — 2026-10-10**; revisitada em ADR-013 §5.1 e **D1 mantém-se** — 62/100/134 objectivos descarregados em 3 casos e 5 regulamentos sem artefacto de nível regra. O que o disparo estabelece é mais estreito: a lacuna é da cadeia, não da D1. Condições (a) e (c) não dispararam |
+| A10 | **A camada `CON` do BSI IT-Grundschutz (2023 Compendium) é a de contentores e orquestração** — os três cartões `CON.1`–`CON.3` (Kubernetes, registo de imagens, service mesh) apontam para Bausteins publicados com esse nome e desse tema; não é verificável a partir deste repositório, e a leitura anterior (CON = "Konzeption und Vorgehensweise") foi contestada pela revisão externa | ADR-2026-10-21_advisory-referential-nomenclature.md D3, §5; `scripts/specs/bsi_grundschutz.yaml` (comentário da família CON) | (a) o Compendium publicado mostrar que a camada CON não é a de contentores; **ou** (b) a auditoria normativa externa devolver a lista publicada de Bausteins e CON não lá aparecer como contentores; **ou** (c) um cartão `CON.*` ser citado num deliverable e um revisor não o conseguir reconciliar com o Compendium | Renomear a família como a família `DER` foi renomeada (código derivado do conteúdo, sem id de Baustein publicado afirmado) — ADR-2026-10-21 D3 | ABERTO |
 
 ## Notes on the state changes (2026-10-05)
 
@@ -75,6 +76,16 @@ depois. A anchor é a medição, não a intenção: o maior prompt já enviado �
 falhas L0 a 19,659–29,808 tokens de prompt com `done_reason=stop`
 (ADR-012 §1.7) — ou seja, o sinal (a) já tem o seu primeiro candidato em dados
 que ninguém tinha lido como sendo sobre contexto.
+
+**A10 — nova (2026-10-21).** Registada no mesmo dia da emenda que a torna
+necessária, e não depois: a emenda ADR-014 renomeou a família `DER` do
+referencial BSI (o conteúdo — directório de identidade, PKI, federação — não
+corresponde à camada publicada de detecção e reacção) e **manteve** a família
+`CON` (contentores e orquestração), porque a leitura de que a camada `CON` do
+Compendium 2023 é a de contentores é consistente com o conteúdo dos três cartões
+mas **não é verificável a partir deste repositório**. Registar a premissa antes de
+fechar a emenda é o que evita que a dúvida seja silenciosa: o sinal dispara, a
+família é renomeada, e a decisão é revisitada — não defendida.
 
 
 ## Convention note (A6, in prose for precision)

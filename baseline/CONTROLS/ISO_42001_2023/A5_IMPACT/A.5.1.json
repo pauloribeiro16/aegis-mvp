@@ -1,0 +1,24 @@
+{
+  "control_id": "A.5.1",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A5",
+  "category": "Assessing Impacts (A)",
+  "subcategory_id": "A.5.1",
+  "subcategory_text": "Conduct AI impact assessments before deployment, including individual, societal, and environmental impacts.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.5",
+    "NIST AI RMF 1.0: MAP-5.1"
+  ],
+  "implementation_examples": [
+    "AIA reports"
+  ],
+  "assessment_objectives": [
+    "Determine whether impact assessments are performed."
+  ],
+  "related_controls": [
+    "A.5.2 (ISO/IEC 42001:2023 — same family)",
+    "A.5.3 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A — section-aligned local subset; published control ordinals not asserted)"
+}

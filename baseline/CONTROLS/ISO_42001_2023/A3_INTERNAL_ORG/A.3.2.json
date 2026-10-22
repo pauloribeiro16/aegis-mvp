@@ -1,0 +1,27 @@
+{
+  "control_id": "A.3.2",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A3",
+  "category": "Internal Organization for AI (A)",
+  "subcategory_id": "A.3.2",
+  "subcategory_text": "Maintain oversight of the AIMS by top management (review, decisions, accountability).",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.3",
+    "NIST AI RMF 1.0: GOVERN-2.2"
+  ],
+  "implementation_examples": [
+    "AIMS management review"
+  ],
+  "assessment_objectives": [
+    "Determine whether top management oversees the AIMS."
+  ],
+  "related_controls": [
+    "A.3.1 (ISO/IEC 42001:2023 — same family)",
+    "A.3.3 (ISO/IEC 42001:2023 — same family)",
+    "A.3.4 (ISO/IEC 42001:2023 — same family)",
+    "A.3.5 (ISO/IEC 42001:2023 — same family)",
+    "A.3.6 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A — section-aligned local subset; published control ordinals not asserted)"
+}

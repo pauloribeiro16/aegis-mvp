@@ -1,0 +1,25 @@
+{
+  "control_id": "A.7.4",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A7",
+  "category": "Data for AI Systems (A)",
+  "subcategory_id": "A.7.4",
+  "subcategory_text": "Apply data security controls (encryption, access controls, integrity) to AI datasets and artefacts.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.7",
+    "NIST SP 800-53 Rev 5: SC-28"
+  ],
+  "implementation_examples": [
+    "Dataset encryption"
+  ],
+  "assessment_objectives": [
+    "Determine whether data security is applied to AI data."
+  ],
+  "related_controls": [
+    "A.7.1 (ISO/IEC 42001:2023 — same family)",
+    "A.7.2 (ISO/IEC 42001:2023 — same family)",
+    "A.7.3 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A — section-aligned local subset; published control ordinals not asserted)"
+}

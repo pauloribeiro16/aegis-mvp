@@ -1,0 +1,34 @@
+{
+  "control_id": "A.6.9",
+  "framework": "ISO/IEC 42001:2023",
+  "function": "A6",
+  "category": "AI System Life Cycle (A)",
+  "subcategory_id": "A.6.9",
+  "subcategory_text": "Deploy AI systems with appropriate change management, release controls, and rollback plans.",
+  "informative_references": [
+    "ISO/IEC 42001:2023 Annex A.6",
+    "NIST SSDF v1.1: PS.3.1"
+  ],
+  "implementation_examples": [
+    "AI deployment runbook"
+  ],
+  "assessment_objectives": [
+    "Determine whether AI deployment is controlled."
+  ],
+  "related_controls": [
+    "A.6.1 (ISO/IEC 42001:2023 — same family)",
+    "A.6.2 (ISO/IEC 42001:2023 — same family)",
+    "A.6.3 (ISO/IEC 42001:2023 — same family)",
+    "A.6.4 (ISO/IEC 42001:2023 — same family)",
+    "A.6.5 (ISO/IEC 42001:2023 — same family)",
+    "A.6.6 (ISO/IEC 42001:2023 — same family)",
+    "A.6.7 (ISO/IEC 42001:2023 — same family)",
+    "A.6.8 (ISO/IEC 42001:2023 — same family)",
+    "A.6.10 (ISO/IEC 42001:2023 — same family)",
+    "A.6.11 (ISO/IEC 42001:2023 — same family)",
+    "A.6.12 (ISO/IEC 42001:2023 — same family)",
+    "A.6.13 (ISO/IEC 42001:2023 — same family)"
+  ],
+  "source_url": "https://www.iso.org/standard/81230.html",
+  "source_version": "2023 (Annex A — section-aligned local subset; published control ordinals not asserted)"
+}

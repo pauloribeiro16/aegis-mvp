@@ -122,8 +122,12 @@ plus a `RULE-*` tail per sub-domain) and `Doc02_Secure_Design_Principles.md`
 - `steps/principles.json` is read by exactly one function, in the module that
   wrote it (`phase2/principles.py:133`). Phase 3's principle pack is built from
   the baseline definitions and never reads the company's instantiated constraint.
-- The `RULE-*` tail is invisible to Phase 3: `phase3/skeleton.py:36-59` filters
+- The `RULE-*` tail was invisible to Phase 3: `phase3/skeleton.py:36-59` filters
   rows by a 9-cell shape keyed on `PO-/SO-` ids, and RULE rows have 4 cells.
+  **Resolved 2026-10-22 (ADR-015):** the tail has a consumer. The rule
+  catalogue is the Phase 2 store (`steps/phase2/*.json`), a proposal declares
+  the rule it discharges, and the exit gate runs the referential-integrity
+  layer over the run.
 
 ### Phase 3 Part 1 — Specification & coverage
 
@@ -160,8 +164,8 @@ values), `PROCEDURAL`/`Doc03_Organizational_Requirements.md` (`ORG-D-XX.Y-NNN`),
 - `G6` (`phase3/weave.py:191-198`) checks that a table written by the same stage
   has one row per accepted constraint.
 - `PRINCIPLE_MAPPING.md` is read by no stage and by no guard.
-- `scripts/check_traceability.py` (T1–T7) is never invoked by the pipeline; it
-  is rooted at `cases/<case>/` and cannot be pointed at a run directory.
+- `scripts/check_traceability.py` (T1–T7) is now invoked by the exit gate, over
+  the run it judges. **Resolved 2026-10-22** — see S31.
 
 ## 3. Stage reference
 
@@ -209,6 +213,8 @@ Functional ledger. Each row is a location and the observable behaviour there.
 | S8 | `phase3/weave.py:106-109,186` | The renderer counts three of the five verdict values; a row verdicted `Design guidance` or `N/A` makes the G5 sum fall short permanently. |
 | S9 | `phase1/runner.py:1491-1599` vs `phase3/verdicts.py` | `p3a_weave` re-routes principle-derived rows in memory and re-renders `OBJECTIVE_MAPPING.md`, without writing the mutated rows back to the verdict store. `p3a_org` (`runner.py:1381`), `p3a_weave` (`runner.py:1499`) and the gate (`weave.py:219-221`) all rebuild from the store. |
 | S10 | `phase1/runner.py:257-262`, `compose.py:300-308,612` | `verdicts.md` and `verdicts.json` are written from one parse; the model reads the `.md`, the code reads the `.json`. Same shape for `selection.md`/`.json` and `goals/<sd>.md`/`.json`. |
+| S31 | `scripts/check_traceability.py:131-219` | The R12b referential-integrity layer was rooted at `cases/<case>/` and could not be pointed at a run, so the gate never ran it. **Resolved 2026-10-22:** `--run-dir` mode; the gate runs T1–T6 over the run it judges, and a finding blocks CONCLUDED. Pointed at `run_p2enr_c1` it finds 2 × T2 and 13 × T5 that the gate had reported as CLOSED. |
+| S32 | `docs/pipeline/prompts/PROM-P3A-04_PROPOSE.md:66` | The worked example showed single-digit anchors (`PR.AC-1`) that the corpus does not publish and the propose-time check rejects, so a model that copied the example failed the sub-domain. **Resolved 2026-10-22:** the example now shows `PR.AC-01`. |
 | S11 | `phase1/runner.py:1818-1830` | Human gate markers carry no digest. Re-running `p1` replaces the fact sheet and leaves `G-P1-A.approved` standing. Phase 3 has this mechanism (`phase3/weave.py:130-160`, `runner.py:749-758`); Phase 1 does not. |
 | S12 | `phase1/runner.py:784-801` | `stage_p1`/`p2`/`p3`/`p3f` return a hardcoded `1` for `n_calls`. |
 | S13 | `cli/commands.py:239` | `status` is written as `"ok"` for any stage that returns normally, including one whose `stage_result` recorded `"partial"`. |
@@ -229,6 +235,8 @@ Functional ledger. Each row is a location and the observable behaviour there.
 | S28 | `pipeline/deucalion/submit.sh:44` | The stage whitelist omits `p3a_all` and `p4tp5`, so neither can be queued although the CLI offers both. |
 | S29 | `pipeline/AGENTS.md` §2 | Documents the `phase3` package with 5 modules (14 exist), omits `pipeline/src/agent/` entirely, and lists 6 test files (12 exist). §5's pre-flight mandates 4 suites and omits the exit-gate and measurement suites. |
 | S30 | `docs/pipeline/00_PIPELINE_MASTER_DESIGN.md` | Dated 2026-10-01; describes Phase 3 as a skeleton and lists an L3 LLM-as-judge layer that `docs/decisions/ASSUMPTIONS.md:62-67` records as demoted to L1+L2. |
+| S33 | `guards/controls.py:36` | The resolver reached 3 of the 15 control families: **794 of the 1 073 control files were decoration**, and the delivered `Doc03` cited zero advisory anchors. **Resolved 2026-10-22 (ADR-016):** the active referential is CSF 2.0 + NIST PF + AI RMF + QNRCS; the other eleven families are under `baseline/CONTROLS_ARCHIVE/`, still regenerable from their specs. |
+| S34 | `phase3/maturity.py` | The QNRCS maturity computation had no importer at all. **Resolved 2026-10-22 (ADR-016):** `p3a_weave` writes `outputs/phase3/QNRCS_MATURITY.md` from it — the level the run attains per objective, capped by the entity's assessed tier. |
 
 ## 5. How to re-enter the work
 

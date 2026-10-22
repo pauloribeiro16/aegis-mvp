@@ -12,12 +12,38 @@ Adjusts, item by item (ADR-005).
 from __future__ import annotations
 
 import re
+from pathlib import Path
 
 from aegis_pipeline.guards.quality_gates import check_no_technology
 
 RE_OBJECTIVE = re.compile(r"^(?:PO|SO)-D-\d{2}\.\d-\d{3}$")
 RE_ANCHOR = re.compile(r"[A-Z]{2}\.[A-Z0-9-]+(?:-\d+)?")
 PROPOSAL_ACTIONS = ("propose", "round 2")
+
+
+def load_rule_catalogue(run_dir: Path) -> dict[str, list[dict]]:
+    """{objective_id: [rule, ...]} from the Phase 2 operationalization store.
+
+    The `RULE-*` tail is the only artefact Phase 2 produces that Phase 1 does
+    not, and until now nothing read it: Phase 3 loaded the Phase 2 document
+    through a 9-cell row filter keyed on `PO-/SO-` ids, and the RULE rows have
+    4 cells, so they were structurally invisible. This is the catalogue a
+    proposal cites when it says which rule it discharges.
+
+    The store is `steps/phase2/*.json`, not the rendered markdown: the parent
+    objective is recoverable from the `objectives[].rules[]` nesting there,
+    while the rendered row loses it.
+    """
+    from aegis_pipeline.phases.phase2.parsers import load_operationalizations
+
+    out: dict[str, list[dict]] = {}
+    for blob in load_operationalizations(run_dir).values():
+        for o in blob.get("objectives") or []:
+            oid = str(o.get("objective_id") or "")
+            rules = [r for r in (o.get("rules") or []) if r.get("rule_id")]
+            if oid and rules:
+                out[oid] = rules
+    return out
 
 
 def select_proposal_targets(rows: list[dict]) -> list[dict]:
@@ -79,6 +105,11 @@ def parse_proposals(answer: str, targets: list[dict]) -> list[dict]:
         anchors = [a.strip().strip("`") for a in fields["Chain anchors"].split(",") if a.strip()]
         if not anchors:
             raise ValueError(f"proposals [{oid}]: no chain anchors")
+        # `Rules discharged` is optional — an objective may carry no Phase 2
+        # rule — but when it is present it is checked against that objective's
+        # own rules, not against the catalogue as a whole.
+        rm = re.search(r"\*\*Rules discharged:?\*\*\s*(.+)", body)
+        rules = [r.strip().strip("`") for r in rm.group(1).split(",") if r.strip()] if rm else []
         out.append({
             "objective": oid,
             # `PO-D-01.2-001`.split("-")[1] is "D" — the same truncation org.py
@@ -89,6 +120,7 @@ def parse_proposals(answer: str, targets: list[dict]) -> list[dict]:
             "fit_criterion": fields["Fit criterion"],
             "risk": fields["Risk addressed"],
             "anchors": anchors,
+            "rules": rules,
             "carrier": fields["Proposed carrier"],
         })
     return {"proposals": out}
@@ -98,6 +130,7 @@ def check_proposals(
     proposals: list[dict],
     rows: list[dict],
     objectives: list[dict],
+    rules: dict[str, list[dict]] | None = None,
 ) -> list[str]:
     """Semantic gates: published anchors only (T6), technology ban, ids real."""
     findings: list[str] = []
@@ -116,6 +149,12 @@ def check_proposals(
             if anchor and anchor not in raw:
                 findings.append(
                     f"{oid}: anchor {anchor!r} is not in the objective's published set (T6)"
+                )
+        allowed = {str(r.get("rule_id")) for r in (rules or {}).get(oid, [])}
+        for rule in proposal.get("rules") or []:
+            if rule not in allowed:
+                findings.append(
+                    f"{oid}: rule {rule!r} is not a Phase 2 rule of this objective"
                 )
     return findings
 

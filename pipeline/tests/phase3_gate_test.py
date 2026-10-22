@@ -270,6 +270,27 @@ def test_a_p3a_stage_writing_after_the_gate_marks_it_stale_in_the_manifest() -> 
         assert manifest["stage_result"]["p3a_gate"]["status"] == "stale", manifest["stage_result"]["p3a_gate"]
 
 
+def test_the_gate_fails_when_the_chain_has_a_referential_finding() -> None:
+    """R12b: the chains must be re-anchored "before any coverage verdict is
+    credible". The gate's own docstring claimed it ran T1-T6; it did not, and
+    on run_p2enr_c1 it reported CONCLUDED over a deliverable whose chain cites
+    GDPR while its only driver is a CRA objective."""
+    with tempfile.TemporaryDirectory() as tmp:
+        run_dir = _build_run(Path(tmp), open_items=[], converged=True)
+        report = weave.run_gate(run_dir, REPO)
+        assert not report["chain_findings"], report["chain_findings"]
+        assert report["state"] == "CONCLUDED", report["state"]
+
+        deliverable = run_dir / "outputs" / "phase3" / "Doc01_Requirements_Specification.md"
+        deliverable.write_text(
+            "# Requirements\n\n"
+            "**Chain:** GDPR Art. 32(1)(a) -> `SO-D-01.2-002` -> `PR.DS-02`\n",
+            encoding="utf-8")
+        report = weave.run_gate(run_dir, REPO)
+        assert report["chain_findings"], "a law cited with a foreign driver passed the gate"
+        assert report["state"] != "CONCLUDED", report["state"]
+
+
 def test_sufficiency_counts_each_regulation_separately() -> None:
     """The renderer is G5's evidence, so it has to compute per regulation. On
     run_p2enr_c1's own matrix that is CRA 0/7/29 over 36 objectives and GDPR

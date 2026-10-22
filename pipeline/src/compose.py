@@ -809,7 +809,7 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
         cards = _p3.load_v0_cards(v0)
         files.append((
             f"pack-p3a_map/{only}/VERDICT_PACK.md",
-            _p3.build_verdict_pack(rows, cards)))
+            _p3.build_verdict_pack(rows, cards, _p3.load_rule_catalogue(run_dir))))
         files.insert(0, (
             f"pack-p3a_map/{only}/BUILD_MANIFEST.md",
             f"Context pack build (determistic): sub-domain {only}; "
@@ -921,7 +921,7 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
               / "part1_security_privacy" / "v0_functional_baseline"
               / "Doc01_Requirements_Elicitation_and_PUC.md")
         cards = _p3.load_v0_cards(v0)
-        base_pack = _p3.build_verdict_pack(rows, cards)
+        base_pack = _p3.build_verdict_pack(rows, cards, _p3.load_rule_catalogue(run_dir))
         verdict_path = run_dir / "steps" / "phase3" / f"verdicts_{only.replace('.', '_')}.json"
         verdicts = json.loads(verdict_path.read_text(encoding="utf-8")) if verdict_path.is_file() else []
         files.append((

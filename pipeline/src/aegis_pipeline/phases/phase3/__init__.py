@@ -43,6 +43,7 @@ from aegis_pipeline.phases.phase3.skeleton import (
     render_matrix,
     render_principles,
 )
+from aegis_pipeline.phases.phase3.proposals import load_rule_catalogue
 from aegis_pipeline.phases.phase3.v0_cards import load_v0_cards
 from aegis_pipeline.phases.phase3.verdicts import (
     RE_TABLE_ROW,
@@ -94,6 +95,7 @@ __all__ = [
     "anchor_findings",
     "apply_verdicts",
     "build_verdict_pack",
+    "load_rule_catalogue",
     # Cards
     "load_v0_cards",
     # Runner

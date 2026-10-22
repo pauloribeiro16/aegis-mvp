@@ -61,7 +61,7 @@ criterion cannot be written against it. Name the property, not the product.
 
 **Preconditions:** The user session is authenticated; stored credentials are encrypted at rest per <accepted constraint>.
 **Extensions:** 2a. Stored-data integrity check fails: the system refuses the operation and records the refusal.
-**Constraints absorbed:** <objective-id> — <one line on how the use case now discharges it>
+**Constraints absorbed:** <objective-id> [<RULE-id>] — <one line on how the use case now discharges it>
 ```
 
 ## Rules the output must obey
@@ -72,6 +72,9 @@ criterion cannot be written against it. Name the property, not the product.
   starts; extensions are numbered `<step><letter>` and stay at Level 1.
 - **Technology neutrality (R5).** No vendors, protocols, or parameters.
 - **Empty when nothing routes to the card** — say so; do not invent content.
+- **Carry the Phase 2 rule id** in brackets after the objective id, when the
+  absorbed constraint discharged one. That id is what ties the woven card back
+  to the rule the human round accepted.
 
 ## Self-checks (L2)
 

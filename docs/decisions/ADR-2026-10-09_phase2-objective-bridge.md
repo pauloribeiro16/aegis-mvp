@@ -236,3 +236,10 @@ schema were defined in the methodology; none exists.
 | `Verification Criteria` is compliance theater | ledger §3.1, R10b challenge |
 | Phase 2 has no pipeline stage, prompt, or ficha | ledger §6 — recorded scope fence, discharged by this ADR's implementation |
 | Fact sheet carries no governance, roles, or tier | `pipeline/src/steps.py:163` (P1 schema, 12 required fields); observed `steps/fact_sheet.yaml` in the M08/M11 runs |
+
+## 8. Version History
+
+| Date | Change |
+|---|---|
+| 2026-10-09 | Accepted. D1 (no `RULE-*` tail in Doc01 v0.1). |
+| 2026-10-22 | **D1 superseded by ADR-015** — the tail is emitted and Phase 3 cites the rule a proposal discharges. D2, D3 and D4 stand. |

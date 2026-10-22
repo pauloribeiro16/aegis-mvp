@@ -48,6 +48,7 @@ from aegis_pipeline.phases.phase3 import (
     domain_of,
     is_template_criterion,
     load_objectives,
+    load_rule_catalogue,
     load_v0_cards,
     main,
     org_id,

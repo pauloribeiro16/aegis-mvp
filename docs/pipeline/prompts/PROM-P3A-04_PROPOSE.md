@@ -63,7 +63,8 @@ criterion cannot be written against it. Name the property, not the product.
 **Constraint (EARS):** Where the system stores personal data at rest, the system shall encrypt the stored data with mechanisms consistent with current industry standards.
 **Fit criterion:** A stored dump of the data store is unreadable without the key; a record with no key reference fails review.
 **Risk addressed:** Personal data at rest readable by an attacker with disk access.
-**Chain anchors:** `PR.AC-1`, `PR.DS-1`
+**Chain anchors:** `PR.AC-01`, `PR.DS-01`
+**Rules discharged:** `RULE-D-01.1-001`
 **Proposed carrier:** `R1.1` — or `new` if no existing card can carry it
 ```
 
@@ -75,7 +76,12 @@ Exactly one section per target objective, in the order given.
   framework → high-level control objective. No operational parameters
   ("30-minute timeout", "128-bit entropy"), no vendor, no protocol.
 - **Anchors come only from the objective's published set.** The objective block
-  lists them; naming another is a fabrication.
+  lists them; naming another is a fabrication. Copy the ids exactly as
+  published — the corpus publishes two-digit ids (`PR.AC-01`), and a
+  single-digit form is rejected.
+- **Rules discharged come only from that objective's own Phase 2 rules.** The
+  objective block lists them, when it carries any. Naming a rule of another
+  objective is a fabrication, and so is naming a rule that does not exist.
 - **EARS with a system (or organizational) subject and `shall`.** One behaviour
   per constraint.
 - **The fit criterion is binary.** A reviewer can judge it true or false from

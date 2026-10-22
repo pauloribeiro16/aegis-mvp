@@ -119,7 +119,8 @@ def apply_verdicts(skeleton: list[dict], verdicts: list[dict]) -> list[dict]:
     return merged
 
 
-def build_verdict_pack(rows: list[dict], cards: list[dict]) -> str:
+def build_verdict_pack(rows: list[dict], cards: list[dict],
+                       rules: dict[str, list[dict]] | None = None) -> str:
     """The context one sub-domain's verdict call carries."""
     out = ["# Coverage rows to verdict", ""]
     for r in rows:
@@ -131,6 +132,11 @@ def build_verdict_pack(rows: list[dict], cards: list[dict]) -> str:
                    else "_none — this obligation has no product control anchor; if it is "
                         "discharged by a card, say so explicitly_"),
                 ""]
+        for rule in (rules or {}).get(r["id"], []):
+            out += [f"  - **Phase 2 rule `{rule['rule_id']}`** — {rule.get('statement', '')}"
+                    + (f" (verify: `{rule['verification_target']}`)"
+                       if rule.get("verification_target") else ""),
+                    ""]
 
     out += ["---", "", "# Candidate functional cards (V0 — the whole carrier pool)", ""]
     for c in cards:

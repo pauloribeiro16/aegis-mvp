@@ -216,8 +216,46 @@ def _step4_findings(path: Path, n_accepted: int) -> list[str]:
     return []
 
 
+def traceability_findings(run_dir: Path, repo: Path) -> list[str]:
+    """The R12b referential-integrity layer, run over THIS run.
+
+    `scripts/check_traceability.py` was rooted at the case corpus, so the
+    pipeline never ran it: this gate's own docstring claimed it ran T1–T6
+    and it did not. The script can now be pointed at a run directory, and
+    pointed at run_p2enr_c1 it finds what the gate reported as CLOSED — two
+    chains citing a law their driver does not carry, and thirteen objectives
+    the matrix declares covered that no deliverable cites.
+
+    R12b says the chains must be re-anchored "before any coverage verdict is
+    credible", so these findings block CONCLUDED rather than decorating the
+    report.
+    """
+    import subprocess
+    import sys
+
+    script = repo / "scripts" / "check_traceability.py"
+    if not script.is_file():
+        return []
+    try:
+        proc = subprocess.run(
+            [sys.executable, str(script), "--run-dir", str(run_dir), "--json"],
+            capture_output=True, text=True, timeout=180,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return ["referential-integrity layer could not be run — its verdict is unknown"]
+    try:
+        rows = json.loads(proc.stdout or "[]")
+    except json.JSONDecodeError:
+        return ["referential-integrity layer produced no readable verdict"]
+    return [
+        f"{r.get('check', 'T?')}: {Path(r.get('path', '')).name}:{r.get('line', 0)} — {r.get('text', '')}"
+        for r in rows
+    ]
+
+
 def run_gate(run_dir: Path, repo: Path) -> dict:
-    """T1–T6 (Part 1 scope) + doc_lint --strict + G1–G6 with the two-state rule."""
+    """The R12b referential-integrity layer (T1–T6 over this run) + doc_lint
+    --strict + G1–G6 with the two-state rule."""
     import subprocess
 
     import phase3 as p3
@@ -320,10 +358,11 @@ def run_gate(run_dir: Path, repo: Path) -> dict:
 
     # CONCLUDED exige TODOS os gates fechados; com a ronda aberta é PROPOSED
     # mesmo com gates fechados — é a regra dos dois estados (doc 08).
+    chain_findings = traceability_findings(run_dir, repo)
     all_closed = all(v.startswith("CLOSED") for v in gates.values())
     if proposed:
         state = "PROPOSED"
-    elif all_closed and not findings:
+    elif all_closed and not findings and not chain_findings:
         state = "CONCLUDED"
     else:
         state = "FAILED"
@@ -333,6 +372,7 @@ def run_gate(run_dir: Path, repo: Path) -> dict:
         "state": state,
         "gates": gates,
         "findings": findings,
+        "chain_findings": chain_findings,
         "n_objectives": len(rows),
         "n_principles_pending": len(pending_principles),
         "inputs_digest": live,
@@ -427,5 +467,10 @@ def render_gate_report(report: dict) -> str:
     if report["findings"]:
         lines += ["", "## Findings", ""]
         lines += [f"- {f}" for f in report["findings"][:40]]
+    if report.get("chain_findings"):
+        lines += ["", "## Referential integrity (R12b, over this run)", ""]
+        lines += [f"- {f}" for f in report["chain_findings"][:40]]
+        if len(report["chain_findings"]) > 40:
+            lines.append(f"- … and {len(report['chain_findings']) - 40} more")
     lines.append("")
     return "\n".join(lines) + "\n"

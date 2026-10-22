@@ -47,6 +47,7 @@ from __future__ import annotations
 
 import argparse
 import io
+import json
 import re
 import sys
 from pathlib import Path
@@ -59,6 +60,7 @@ CASES = REPO / "cases"
 
 RE_OBJECTIVE = re.compile(r"\b(?:PO|SO)-D-\d\d\.\d-\d{3}\b")
 RE_GOAL = re.compile(r"\bAG-D-\d\d\.\d-\d{3}\b")
+RE_RULE = re.compile(r"\bRULE-D-\d\d\.\d-\d{3}\b")
 RE_ORG = re.compile(r"\bORG-D-\d\d\.\d-\d{3}\b")
 RE_PRINCIPLE = re.compile(r"\bPRIN-ENG-\d{2}\b")
 RE_RN = re.compile(r"\bRN\d{1,3}\b")
@@ -122,7 +124,11 @@ def read(path: Path) -> list[str]:
 
 
 def rel(path: Path) -> str:
-    return path.relative_to(REPO).as_posix()
+    """Repo-relative when inside the repo, absolute otherwise (run dirs live outside)."""
+    try:
+        return path.relative_to(REPO).as_posix()
+    except ValueError:
+        return path.as_posix()
 
 
 # ------------------------------------------------------------ case discovery
@@ -134,11 +140,19 @@ class Case:
     def __init__(self, root: Path) -> None:
         self.root = root
         self.name = root.name
+        self._resolve_paths()
+        self._resolve_deliverables()
+        self._build_universes()
+
+    # -- path resolution (overridden by RunCase)
+
+    def _resolve_paths(self) -> None:
         self.p1 = self._md("01_PHASE1_CONTEXT")
         self.p2 = self._md("02_PHASE2_RULES/Doc01_Operational_Objectives.md")
+        self.p2_principles = self._rglob_one("02_PHASE2_RULES/Doc02_Secure_Design_Principles.md")
         # Part 1 lives under part1_security_privacy/ (ADR-006 two-part layout); fall back to
         # the flat layout so older cases keep resolving.
-        self.p3_dir = root / "03_PHASE3_SPEC"
+        self.p3_dir = self.root / "03_PHASE3_SPEC"
         self.part1 = self.p3_dir / "part1_security_privacy"
         self.p1_root = self.part1 if self.part1.is_dir() else self.p3_dir
         self.p3 = self._md("03_PHASE3_SPEC/part1_security_privacy/Doc01_Requirements_Specification.md") \
@@ -147,22 +161,8 @@ class Case:
             or self._md("03_PHASE3_SPEC/Doc01_Requirements_Elicitation_and_PUC.md")
         self.mapping = self._rglob_one("03_PHASE3_SPEC/part1_security_privacy/synthesis_rounds/OBJECTIVE_MAPPING.md") \
             or self._rglob_one("03_PHASE3_SPEC/synthesis_rounds/OBJECTIVE_MAPPING.md")
-        # ID universes.
-        p1_text = self._text(self.p1)
-        p2_text = self._text(self.p2)
-        self.goals = set(RE_GOAL.findall(p1_text))
-        self.goals = {g for g in RE_GOAL.findall(p1_text)}
-        self.objectives = set(RE_OBJECTIVE.findall(p2_text))
-        # Regulation of each objective, as recorded in Phase 2's table.
-        self.objective_reg: dict[str, str] = {}
-        if self.p2:
-            for line in read(self.p2):
-                m = re.match(r"\|\s*`((?:PO|SO)-D-\d\d\.\d-\d{3})`\s*\|", line)
-                if not m:
-                    continue
-                reg = RE_REG_CELL.search(line)
-                if reg:
-                    self.objective_reg[m.group(1)] = CANON_LAW[reg.group(1).replace("  ", " ")]
+
+    def _resolve_deliverables(self) -> None:
         # Deliverable-side ID universes (Phase 3).
         self.deliverables = [p for p in self._rglob("03_PHASE3_SPEC") if self._is_deliverable(p)]
         # The ACTIVE working copies only.  Version folders (v0_/v1_/v2_) are
@@ -176,10 +176,31 @@ class Case:
         if not self.active_deliverables and self.p3:
             self.active_deliverables = [self.p3]
         self.active_text = "\n".join(self._text(p) for p in self.active_deliverables)
+
+    def _build_universes(self) -> None:
+        # ID universes.
+        p1_text = self._text(self.p1)
+        p2_text = self._text(self.p2)
+        self.goals = set(RE_GOAL.findall(p1_text))
+        self.objectives = set(RE_OBJECTIVE.findall(p2_text))
+        # The `RULE-*` universe Phase 2 publishes. A rule id cited by a
+        # deliverable must resolve against it — the same shape as the
+        # objective arm, one level down the chain.
+        self.rules = set(RE_RULE.findall(p2_text))
+        # Regulation of each objective, as recorded in Phase 2's table.
+        self.objective_reg: dict[str, str] = {}
+        if self.p2:
+            for line in read(self.p2):
+                m = re.match(r"\|\s*`((?:PO|SO)-D-\d\d\.\d-\d{3})`\s*\|", line)
+                if not m:
+                    continue
+                reg = RE_REG_CELL.search(line)
+                if reg:
+                    self.objective_reg[m.group(1)] = CANON_LAW[reg.group(1).replace("  ", " ")]
         self.cards = set(RE_CARD.findall(self.active_text))
         self.rns = set(RE_RN.findall(self.active_text))
         self.ucs = set(RE_UC.findall(self.active_text))
-        self.principles = set(RE_PRINCIPLE.findall(self._text(self._rglob_one("02_PHASE2_RULES/Doc02_Secure_Design_Principles.md"))))
+        self.principles = set(RE_PRINCIPLE.findall(self._text(self.p2_principles)))
         self.orgs = set(RE_ORG.findall(self.active_text))
 
     # -- helpers
@@ -216,6 +237,51 @@ class Case:
         if "filtered_corpus" in parts:
             return False
         return path.name.startswith(("Doc01", "Doc02", "Doc03")) or path.name == "OBJECTIVE_MAPPING.md"
+
+
+class RunCase(Case):
+    """A pipeline run directory, read with the same checks as a case.
+
+    The checks are layout-agnostic — they only touch the attributes `Case`
+    builds — so pointing them at a run is a matter of resolving the same
+    artefacts at the run's paths. The Phase 3 exit gate calls this, which is
+    what its own docstring already claimed it did.
+
+    The differences from a case tree:
+      - Phase 1 is the run's own `doc02_adjusted_goals.md`;
+      - Phase 2/3 live under `outputs/`;
+      - `v0_functional_baseline/` is the frozen carrier pool the run read,
+        not a deliverable of the run, so it is excluded — while
+        `v1_security_privacy_synthesis/`, which IS the run's output, is kept.
+    """
+
+    def _resolve_paths(self) -> None:
+        self.p1 = self.root / "doc02_adjusted_goals.md"
+        self.p2 = self.root / "outputs" / "phase2" / "Doc01_Operational_Objectives.md"
+        self.p2_principles = self.root / "outputs" / "phase2" / "Doc02_Secure_Design_Principles.md"
+        out3 = self.root / "outputs" / "phase3"
+        self.p3_dir = out3
+        self.part1 = out3
+        self.p1_root = out3
+        self.p3 = next(iter(sorted(out3.rglob("Doc01_Requirements_Specification.md"))), None) \
+            or next(iter(sorted(out3.rglob("Doc01_Requirements_Elicitation_and_PUC.md"))), None)
+        self.mapping = out3 / "synthesis_rounds" / "OBJECTIVE_MAPPING.md"
+
+    def _resolve_deliverables(self) -> None:
+        out3 = self.root / "outputs" / "phase3"
+        self.deliverables = [p for p in sorted(out3.rglob("*.md")) if self._is_deliverable(p)]
+        self.active_deliverables = [
+            p for p in self.deliverables if not self._is_versioned(p) and p != self.mapping
+        ]
+        if not self.active_deliverables and self.p3:
+            self.active_deliverables = [self.p3]
+        self.active_text = "\n".join(self._text(p) for p in self.active_deliverables)
+
+    @staticmethod
+    def _is_versioned(path: Path) -> bool:
+        # In a run, `v0_functional_baseline/` is the frozen input pool and
+        # `v1_…` is what the run produced. Only the former is a snapshot.
+        return any(p.startswith("v0_") for p in path.parts)
 
 
 def discover_cases(only: str | None) -> list[Case]:
@@ -257,6 +323,11 @@ def check_id_resolution(case: Case) -> list[Finding]:
                 if gid not in case.goals:
                     findings.append(
                         Finding(path, line_no, "T1 unresolved goal", f"{gid}  (absent from Phase 1)")
+                    )
+            for rid in sorted(set(RE_RULE.findall(line))):
+                if rid not in case.rules:
+                    findings.append(
+                        Finding(path, line_no, "T1 unresolved rule", f"{rid}  (absent from Phase 2)")
                     )
     return findings
 
@@ -945,35 +1016,55 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--strict", action="store_true", help="exit 1 on any finding")
     parser.add_argument("--case", help="restrict to one case directory name")
+    parser.add_argument("--run-dir", type=Path,
+                        help="check a pipeline run directory instead of the case corpus")
     parser.add_argument("--report", type=Path, help="write findings to this markdown ledger")
+    parser.add_argument("--json", action="store_true",
+                        help="print the findings as JSON and exit (for callers, not humans)")
     args = parser.parse_args()
 
     findings: list[Finding] = []
-    cases = discover_cases(args.case)
+    if args.run_dir:
+        run_dir = args.run_dir.resolve()
+        if not run_dir.is_dir():
+            print(f"no such run directory: {run_dir}")
+            return 2
+        cases = [RunCase(run_dir)]
+    else:
+        cases = discover_cases(args.case)
     if not cases:
         print("no cases found under cases/")
         return 0
 
     for case in cases:
-        print(f"\n=== {case.name} ===")
-        print(
-            f"    universe: {len(case.objectives)} objectives (Phase 2) · "
-            f"{len(case.goals)} goals (Phase 1) · {len(case.cards)} cards · "
-            f"{len(case.rns)} RNs · {len(case.ucs)} UCs · {len(case.orgs)} ORG"
-        )
+        if not args.json:
+            print(f"\n=== {case.name} ===")
+            print(
+                f"    universe: {len(case.objectives)} objectives (Phase 2) · "
+                f"{len(case.goals)} goals (Phase 1) · {len(case.cards)} cards · "
+                f"{len(case.rns)} RNs · {len(case.ucs)} UCs · {len(case.orgs)} ORG"
+            )
         for key, (_label, fn) in CHECKS.items():
             results = fn(case)
             findings.extend(results)
-            flag = "OK " if not results else "FAIL"
-            print(f"    [{flag}] {key} {_label}: {len(results)} finding(s)")
+            if not args.json:
+                flag = "OK " if not results else "FAIL"
+                print(f"    [{flag}] {key} {_label}: {len(results)} finding(s)")
     findings.sort(key=lambda f: (str(f.path), f.line_no))
+
+    if args.json:
+        print(json.dumps([
+            {"path": rel(f.path), "line": f.line_no, "check": f.check, "text": f.text}
+            for f in findings
+        ], ensure_ascii=False, indent=1))
+        return 1 if (args.strict and findings) else 0
 
     if findings:
         print("\n--- findings ---")
     for finding in findings:
         text = finding.text if len(finding.text) <= 130 else finding.text[:127] + "..."
         print(f"{rel(finding.path)}:{finding.line_no}: [{finding.check}] {text}")
-    print(f"\n{len(findings)} findings across {len(cases)} case(s)")
+    print(f"\n{len(findings)} findings across {len(cases)} artefact set(s)")
 
     if args.report:
         rows = "\n".join(

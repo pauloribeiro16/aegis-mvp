@@ -74,6 +74,30 @@ The alternative — cutting the tail to conform to ADR-013 D1 — would have
 removed the only artefact Phase 2 produces that Phase 1 does not, and left the
 acceptance round as a judgement with nothing behind it.
 
+## 2a. The consumer, measured on the cluster (2026-10-22)
+
+Two runs of `p3a_propose` on `run_p2enr_c1` (Deucalion, `qwen3.8:27b`, jobs
+2114318 and 2114343), because a consumer that has never fired is not a
+consumer:
+
+| Run | The field | Result |
+|---|---|---|
+| job 2114318 | permitted, not required | **0 of 18** proposals cited a rule. 53 model responses, 0 with the field, 0 with a rule id. The pack carried the rules (12 of the propose prompts contained them) — the model simply did not use a field it was not required to. |
+| job 2114343 | **required** when the objective carries rules | **11 of 18** proposals cite their objective's rules; the other 7 are objectives with no Phase 2 rule. **0 invalid citations** — every cited rule belongs to the objective that cites it. |
+
+So the field is required, not optional: the L0 parser rejects a proposal that
+names none, and the semantic check rejects one that names a rule of another
+objective. An objective with no rule needs no such line.
+
+The same run also exercised the staleness mechanism in production: the choke
+point marked the exit-gate report stale on the cluster's copy of the run
+(`AEGIS_GATE_STALE gate_report.md marked stale by p3a_propose`).
+
+The honest standing of that run, after the gate was re-run with the new
+code: `state: PROPOSED` with G1, G2 and G5 open, and 15 referential findings
+(2 × T2, 13 × T5) in the report — the layer the gate's own docstring had
+claimed it ran and never did.
+
 ## 3. What this decision does not settle
 
 - **The `criteria`, `method` and `owner` columns stay `—`.** ADR-013 D3

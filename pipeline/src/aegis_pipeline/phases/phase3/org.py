@@ -241,7 +241,21 @@ def render_doc03(
         "## §3 Requirements",
         "",
     ]
-    for index, (duty, card) in enumerate(zip(duties, cards), start=1):
+    # The card's `duty` field holds the call slug (S20): join on it explicitly.
+    # A positional zip rendered duty N with card N+1's statement whenever one
+    # call failed — a deliverable that asserts the wrong duty is worse than one
+    # that names the gap.
+    cards_by_duty = {c.get("duty"): c for c in cards if isinstance(c, dict) and c.get("duty")}
+    pairs: list[tuple[dict, dict]] = []
+    unspec: list[dict] = []
+    for d in duties:
+        c = cards_by_duty.get(d["slug"])
+        if c is None:
+            unspec.append(d)
+        else:
+            pairs.append((d, c))
+
+    for index, (duty, card) in enumerate(pairs, start=1):
         org_id = f"ORG-{duty['subdomain']}-{index:03d}"
         lines += [
             f"### {org_id} — {duty['duty']}",
@@ -272,6 +286,13 @@ def render_doc03(
             lines.append(f"- {duty['duty']} — objectives: {', '.join(f'`{o}`' for o in duty['objectives'])} — pending the proportionality decision (G-c)")
     else:
         lines.append("None.")
+    if unspec:
+        lines += ["", "## §6 Duties whose card call failed", ""]
+        for duty in unspec:
+            lines.append(
+                f"- `{duty['slug']}` — {duty['duty']} — objectives: "
+                f"{', '.join(f'`{o}`' for o in duty['objectives'])} — no card stored; re-run p3a_org"
+            )
     lines.append("")
     lines.append(f"Confirmed regulations: {', '.join(confirmed_regs)}.")
     return "\n".join(lines) + "\n"

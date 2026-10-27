@@ -249,3 +249,125 @@ def render_v0_doc02(cards: list[dict], company: str) -> str:
             lines.append(f"**{field}:** {uc[field]}")
             lines.append("")
     return "\n".join(lines) + "\n"
+
+
+def render_v2_doc01(
+    cards: list[dict],
+    constraints_by_carrier: dict[str, list[dict]],
+    company: str,
+) -> str:
+    """Render the full Doc01 Requirements Specification with absorbed security & privacy constraints."""
+    groups: dict[str, list[dict]] = {}
+    for card in cards:
+        groups.setdefault(card["id"].split(".")[0], []).append(card)
+    lines = [
+        "---",
+        f"title: 'Doc01 — Requirements Specification ({company})'",
+        "generated_by: 'p3a_weave (wave 6)'",
+        "status: V2 — security & privacy constraints absorbed",
+        "---",
+        "",
+        f"# Doc01 — Requirements Specification — {company}",
+        "",
+        "## Part I — Requirements by package",
+        "",
+    ]
+    for group in sorted(groups):
+        lines.append(f"### Package R{group}")
+        lines.append("")
+        for card in groups[group]:
+            cid = card["id"]
+            lines.append(f"#### Card {cid} — {card['name']}")
+            lines.append("")
+            lines.append("| # | Row | Content |")
+            lines.append("|---|---|---|")
+            lines.append(f"| 1 | ID | {cid} — {card['name']} |")
+            lines.append(f"| 2 | Description | {card['description']} |")
+            lines.append(f"| 3 | Requirement Origin | {card.get('origin', card.get('Requirement Origin', '—'))} |")
+
+            absorbed = constraints_by_carrier.get(cid, [])
+            if absorbed:
+                constraint_lines = []
+                for p in absorbed:
+                    c_text = p.get("constraint", "").strip()
+                    f_text = p.get("fit_criterion", "").strip()
+                    obj = p.get("objective", "—")
+                    anchors = ", ".join(f"`{a}`" for a in p.get("anchors", [])) if p.get("anchors") else "—"
+                    constraint_lines.append(f"**From `{obj}`:** {c_text} (Fit: _{f_text}_; Anchors: {anchors})")
+                c_content = "<br>".join(constraint_lines)
+            else:
+                c_content = "—"
+
+            lines.append(f"| 4 | Security & Privacy Constraints | {c_content} |")
+            lines.append(f"| 5 | Interfaces | {card.get('interfaces', card.get('Interfaces', '—'))} |")
+            lines.append(f"| 6 | Dependencies | {card.get('dependencies', card.get('Dependencies', '—'))} |")
+            lines.append(f"| 7 | Identified Problems | {card.get('problems', card.get('Identified Problems')) or '—'} |")
+            lines.append(f"| 8 | Priority | {card.get('priority', card.get('Priority')) or '—'} |")
+            lines.append("")
+
+    puc_cards = [c for c in cards if c.get("puc")]
+    if puc_cards:
+        lines += [
+            "## Part II — Product Use Case catalogue",
+            "",
+            "| PUC ID | Business Trigger | Primary Actor | System Operational Boundary | Deliverables & Outputs |",
+            "|---|---|---|---|---|",
+        ]
+        for card in puc_cards:
+            p = card["puc"]
+            lines.append(f"| {p['puc_id']} | {p['trigger']} | {p['actor']} | {p['boundary']} | {p['outputs']} |")
+        lines.append("")
+    return "\n".join(lines) + "\n"
+
+
+def render_v2_doc02(
+    cards: list[dict],
+    woven: dict[str, dict],
+    company: str,
+) -> str:
+    """Render the full Doc02 System Use Cases with woven security preconditions and extensions."""
+    lines = [
+        "---",
+        f"title: 'Doc02 — System Use Cases ({company})'",
+        "generated_by: 'p3a_weave (wave 6)'",
+        "status: V2 — security preconditions and extensions woven",
+        "---",
+        "",
+        f"# Doc02 — System Use Cases — {company}",
+        "",
+    ]
+    for card in cards:
+        cid = card["id"]
+        uc = dict(card.get("usecase") or {})
+        # A card allocated from an accepted `new` proposal has no V0 use case.
+        # Fabricating one ("User is authenticated", a canned 3-step scenario)
+        # puts invented behaviour into a deliverable (R6); the unset narrative
+        # fields render as the visible `—` and the block names its derivation.
+        derived = not uc
+        if not uc:
+            uc = {"uc_id": f"{{U.C. {cid.lstrip('R')}}}", "Traceability": cid}
+
+        if cid in woven:
+            w = woven[cid]
+            if w.get("Preconditions") and w["Preconditions"] not in ("—", "-", ""):
+                orig_pre = uc.get("Preconditions", "").rstrip(".")
+                w_pre = w["Preconditions"].strip()
+                uc["Preconditions"] = f"{orig_pre}. Security: {w_pre}" if orig_pre else w_pre
+            if w.get("Extensions") and w["Extensions"] not in ("—", "-", ""):
+                orig_ext = uc.get("Extensions", "").strip()
+                w_ext = w["Extensions"].strip()
+                uc["Extensions"] = f"{orig_ext}\n{w_ext}" if orig_ext and orig_ext != "—" else w_ext
+
+        lines.append(f"## {uc.get('uc_id', f'{{U.C. {cid}}}')} — {card['name']}")
+        lines.append("")
+        if derived:
+            lines.append(
+                f"_(no V0 use case — card allocated from an accepted proposal; "
+                f"origin: {card.get('origin', '—')})_"
+            )
+            lines.append("")
+        for field in UC_FIELDS:
+            lines.append(f"**{field}:** {uc.get(field, '—')}")
+            lines.append("")
+    return "\n".join(lines) + "\n"
+

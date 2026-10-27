@@ -971,17 +971,12 @@ class StepRunner:
         if skeleton_findings:
             raise ValueError(f"Phase 3 skeleton gate failed with {len(skeleton_findings)} finding(s): {skeleton_findings}")
 
-        v0 = (
-            self.repo / "cases" / self.case["case_id"] / "03_PHASE3_SPEC"
-            / "part1_security_privacy" / "v0_functional_baseline"
-            / "Doc01_Requirements_Elicitation_and_PUC.md"
-        )
-        if not v0.is_file():
-            raise ValueError(f"no frozen V0 baseline at {v0}")
-        cards = p3.load_v0_cards(v0)
+        cards = p3.ensure_v0_pool(self.run_dir, self.repo, self.case.get("case_id"),
+                                  source=p3.v0_source(self.run_dir))
         pool = [c["id"] for c in cards]
         if not pool:
-            raise ValueError(f"frozen V0 baseline at {v0} yielded no candidate cards")
+            raise ValueError("no V0 candidate pool — neither a run-local baseline nor "
+                             f"the frozen case baseline yielded cards (source={p3.v0_source(self.run_dir)!r})")
 
         by_sd: dict[str, list[dict]] = {}
         for r in skeleton:
@@ -1078,6 +1073,7 @@ class StepRunner:
 
     def stage_p3a_cards(self) -> int:
         from aegis_pipeline.phases.phase3 import cards as p3c
+        from aegis_pipeline.phases.phase3 import v0_cards as p3v
 
         self._require(("steps/fact_sheet.yaml",), "G-P1-A")
         if not (self.run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md").is_file():
@@ -1085,6 +1081,22 @@ class StepRunner:
 
         cards_dir = self.run_dir / "steps" / "phase3" / "cards"
         cards_dir.mkdir(parents=True, exist_ok=True)
+        # The store is the single V0 source: when it already holds cards (a
+        # frozen seed, or a previous invocation of this stage), generation is
+        # not the source of truth and must not overwrite the baseline mid-run.
+        seeded = p3v.ensure_v0_pool(self.run_dir, self.repo, self.case.get("case_id"),
+                                    source=p3v.v0_source(self.run_dir))
+        if seeded:
+            source = p3v.v0_source(self.run_dir)
+            self._write_stage_result("p3a_cards", {
+                "status": "ok", "carried": len(seeded), "selected": len(seeded), "failed": 0,
+                "summary": (
+                    f"{len(seeded)} candidate card(s) already in steps/phase3/cards — "
+                    f"the pool is seeded (v0_source={source!r}); no generation call, "
+                    "the baseline cannot be rewritten mid-run"
+                ),
+            })
+            return 0
         inventory_path = cards_dir / "inventory.json"
         calls = 0
         failures: list[str] = []
@@ -1598,6 +1610,14 @@ class StepRunner:
         if moved:
             print(f"[p3a_weave] re-routed {moved} objective(s) to a principle-derived card",
                   flush=True)
+            # S9: Persist updated verdict slices back to steps/phase3 so p3a_gate reads current state
+            for sd in sorted({r["subdomain"] for r in rows}):
+                sd_rows = [r for r in rows if r["subdomain"] == sd]
+                sd_slug = sd.replace(".", "_")
+                v_file = self.run_dir / "steps" / "phase3" / f"verdicts_{sd_slug}.json"
+                if v_file.is_file():
+                    v_file.write_text(json.dumps(sd_rows, indent=2), encoding="utf-8")
+
         grouped = {d: [r for r in rows if r["subdomain"].startswith(d)] for d in sorted({r["subdomain"][:4] for r in rows})}
         from aegis_pipeline.phases.phase3 import skeleton as _p3sk
         (out_dir / "OBJECTIVE_MAPPING.md").write_text(
@@ -1621,24 +1641,38 @@ class StepRunner:
                 _p3mat.render_maturity(_maturity), encoding="utf-8")
             print(f"[p3a_weave] QNRCS maturity: expected level {_maturity.get('nivel_esperado')}, "
                   f"{len(_maturity.get('objectivos', {}))} objective(s) assessed", flush=True)
-        # mechanical injection: the v1 Doc01 carries the accepted constraint blocks
+
+        # Full deliverable rendering: constraints absorbed into full Doc01 cards and woven into Doc02 use cases
+        from aegis_pipeline.phases.phase3 import cards as p3c
+        company = (self.case or {}).get("company_id") or (self.case or {}).get("company", "Company")
+        constraints_by_carrier: dict[str, list[dict]] = {}
+        for proposal in accepted:
+            c = (proposal.get("carrier") or proposal.get("allocated_card") or "").strip("`")
+            if c:
+                constraints_by_carrier.setdefault(c, []).append(proposal)
+
+        v2_dir = self.run_dir / "outputs" / "phase3" / "part1_security_privacy" / "v2_security_privacy_synthesis"
+        v2_dir.mkdir(parents=True, exist_ok=True)
+        v2_root = self.run_dir / "outputs" / "phase3" / "v2_security_privacy_synthesis"
+        v2_root.mkdir(parents=True, exist_ok=True)
         v1_dir = self.run_dir / "outputs" / "phase3" / "v1_security_privacy_synthesis"
         v1_dir.mkdir(parents=True, exist_ok=True)
-        v1 = ["---", "title: 'Doc01 v1 — Requirements Specification (constraints absorbed)'", "generated_by: 'p3a_weave (wave 6)'", "---", ""]
-        for proposal in accepted:
-            v1 += [
-                f"### Constraint from `{proposal['objective']}` → carrier {proposal.get('carrier', '—')}",
-                "",
-                f"**Constraint (EARS):** {proposal['constraint']}",
-                "",
-                f"**Fit criterion:** {proposal['fit_criterion']}",
-                "",
-            ]
-        if woven:
-            v1 += ["## Use case security preconditions and extensions (woven)", ""]
-            for real_id, block in sorted(woven.items()):
-                v1 += [f"#### Card {real_id}", "", f"**Preconditions:** {block.get('Preconditions', '—')}", "", f"**Extensions:** {block.get('Extensions', '—')}", ""]
-        (v1_dir / "Doc01_Requirements_Specification.md").write_text("\n".join(v1), encoding="utf-8")
+
+        full_doc01 = p3c.render_v2_doc01(cards, constraints_by_carrier, company)
+        full_doc02 = p3c.render_v2_doc02(cards, woven, company)
+
+        for target_dir in (v2_dir, v2_root, v1_dir):
+            (target_dir / "Doc01_Requirements_Specification.md").write_text(full_doc01, encoding="utf-8")
+            (target_dir / "Doc02_System_Use_Cases.md").write_text(full_doc02, encoding="utf-8")
+
+        # Mirror Doc03 and Doc00 into v2_dir if present
+        for doc_name in ("Doc00_Process_and_Operational_Workflows.md", "Doc03_Organizational_Requirements.md",
+                         "Doc03_Organizational_and_Operational_Requirements.md"):
+            for src_cand in (self.run_dir / "outputs" / "phase3" / "part1_security_privacy" / doc_name,
+                             self.run_dir / "outputs" / "phase3" / "v2_security_privacy_synthesis" / doc_name):
+                if src_cand.is_file() and not (v2_dir / doc_name).is_file():
+                    import shutil
+                    shutil.copy2(src_cand, v2_dir / doc_name)
 
         summary = {
             "status": "ok" if not failures else "partial",
@@ -1675,6 +1709,10 @@ class StepRunner:
             "findings": report["findings"][:20],
             "n_objectives": report["n_objectives"],
         })
+        if report["state"] == "CONCLUDED":
+            company = (self.case or {}).get("company_id") or (self.case or {}).get("company", "Company")
+            export_dir = p3w.export_deliverables(self.run_dir, self.repo, company, self.run_id)
+            print(f"[p3a_gate] Exported deliverables to {export_dir}", flush=True)
         return 0
 
     # The Phase 3 chain, in dependency order. The gate is last by construction:

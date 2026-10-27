@@ -19,6 +19,11 @@ UNFILLED = UNSET
 
 RE_TABLE_ROW = re.compile(r"^\|(?P<cells>.+)\|\s*$")
 
+#: The shape of a control anchor as the model cites it in prose (`GV.RR-02`).
+#: One pattern, three readers: the parser, the merge and the fallback re-derive
+#: the same citation set, so a disagreement between them cannot be silent.
+RE_ANCHOR_CITE = re.compile(r"`?([A-Z]{2}\.[A-Z]{2}-(?:\d+|P\d+|[A-Z0-9]+))`?")
+
 
 def parse_verdicts(answer: str) -> list[dict]:
     """Parse one sub-domain's verdict table. Raises on any structural defect.
@@ -43,15 +48,24 @@ def parse_verdicts(answer: str) -> list[dict]:
         verdict = cells[4].replace("**", "").replace("`", "").strip()
         if verdict not in VERDICTS:
             raise ValueError(f"{oid}: verdict {verdict!r} is outside the ADR-007 D4 vocabulary")
+        discharge = cells[5]
+        # S5/S6: what the model actually cited, in the summary AND the
+        # discharge. Scanning only the discharge let a chain that names its
+        # anchor in the summary pass T3 with an invented one, and the old
+        # `anchors_used = s["anchors"]` merge handed every silent row the full
+        # published set — the one assignment that can never fail a check.
+        anchors_cited = sorted(set(
+            RE_ANCHOR_CITE.findall(f"{cells[1]} {discharge}")))
         rows[oid] = {
             "id": oid,
             "summary": cells[1],
             "carrier": cells[2],
             "skill": cells[3],
             "verdict": verdict,
-            "discharge": cells[5],
+            "discharge": discharge,
             "action": cells[6],
             "carriers_cited": sorted(set(re.findall(r"R\d+\.\d+", cells[2]))),
+            "anchors_cited": anchors_cited,
         }
     if not rows:
         raise ValueError("verdict table parsed to zero rows")
@@ -77,6 +91,11 @@ def check_verdicts(rows: list[dict], objectives: list[dict], pool: list[str]) ->
         empty = (not d) or d in (UNSET, "-", "—", "n/a", "N/A")
         if v == VERDICTS[0] and empty:
             findings.append(f"{oid}: Fully covered with no discharge record")
+        if v == VERDICTS[0] and not empty and pub.get(oid) and not r.get("anchors_cited"):
+            findings.append(
+                f"{oid}: fully covered but cites no anchor — the objective publishes "
+                f"{len(pub[oid])}; a discharge that names none is unverifiable (T3)"
+            )
         if v == ORGANIZATIONAL and empty:
             findings.append(f"{oid}: routed to the organizational lane without naming the obligation")
         if v == "N/A" and empty:
@@ -90,11 +109,17 @@ def check_verdicts(rows: list[dict], objectives: list[dict], pool: list[str]) ->
 
 
 def anchor_findings(rows: list[dict], published: dict[str, set]) -> list[str]:
-    """T6: a chain may only select anchors its objective publishes."""
+    """T6/T3: a chain may only select anchors its objective publishes.
+
+    Reads the merged row's `anchors_used` and falls back to the parser's
+    `anchors_cited`, so the check also runs on rows straight out of
+    `parse_verdicts` — the citation set the model produced is the source of
+    truth in either shape.
+    """
     findings = []
     for r in rows:
         allowed = published.get(r["id"], set())
-        used = set(r.get("anchors_used", []))
+        used = set(r.get("anchors_used") or r.get("anchors_cited") or [])
         stray = used - allowed
         if stray:
             findings.append(f"{r['id']}: chain selects anchor(s) outside the published set: {sorted(stray)}")
@@ -114,7 +139,13 @@ def apply_verdicts(skeleton: list[dict], verdicts: list[dict]) -> list[dict]:
         for col in ("carrier", "skill", "verdict", "discharge", "action"):
             row[col] = v[col] if v[col] else s[col]
         row["carriers_cited"] = v.get("carriers_cited", [])
-        row["anchors_used"] = s["anchors"]
+        cited = v.get("anchors_cited")
+        if cited is None:
+            cited = sorted(set(RE_ANCHOR_CITE.findall(v.get("discharge", ""))))
+        # What the row cites, and nothing else. Inheriting the published set
+        # here made `anchors_used` a tautology: T3 compared the objective's own
+        # anchors with themselves and could never find an invention.
+        row["anchors_used"] = cited
         merged.append(row)
     return merged
 

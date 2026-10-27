@@ -40,8 +40,8 @@ mkdir -p runs
 # Validate before queueing: an unknown stage would otherwise start a GPU job
 # (and an Ollama server) only for run_pipeline.py's argparse to reject it.
 case "$STAGE" in
-  p1|p2|p3|p3f|p4|p4t|p5|phase2|p3a_map|p3a_prin|p3a_cards|p3a_propose|p3a_round|p3a_org|p3a_weave|p3a_gate|p4p5|all|agentic) ;;
-  *) echo "FATAL: unknown stage '$STAGE' (expected: p1|p2|p3|p3f|p4|p4t|p5|phase2|p3a_map|p3a_prin|p3a_cards|p3a_propose|p3a_round|p3a_org|p3a_weave|p3a_gate|p4p5|all|agentic)" >&2
+  p1|p2|p3|p3f|p4|p4t|p5|phase2|p3a_map|p3a_prin|p3a_cards|p3a_propose|p3a_round|p3a_org|p3a_weave|p3a_gate|p3a_all|p4p5|all|agentic) ;;
+  *) echo "FATAL: unknown stage '$STAGE'" >&2
      exit 2 ;;
 esac
 
@@ -97,7 +97,7 @@ EXTRA_AGENT=""
 # Slurm versions), so phase1.sbatch rebuilds the new-run flag list from the
 # individual vars. An unset knob stays unset: "no seed was sent" is a fact.
 EXTRA_EXPORT=""
-for env_name in MVP_TEMPERATURE MVP_SEED MVP_TOP_P MVP_TOP_K MVP_ARM MVP_REPEAT MVP_P4_ADJUSTMENT MVP_P3_INSTRUCTION MVP_P4_INSTRUCTION MVP_P4_IMPLICATION; do
+for env_name in MVP_TEMPERATURE MVP_SEED MVP_TOP_P MVP_TOP_K MVP_ARM MVP_REPEAT MVP_P4_ADJUSTMENT MVP_P3_INSTRUCTION MVP_P4_INSTRUCTION MVP_P4_IMPLICATION MVP_V0_SOURCE; do
   if [ -n "${!env_name:-}" ]; then
     EXTRA_EXPORT="${EXTRA_EXPORT},${env_name}=${!env_name}"
   fi

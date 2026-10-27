@@ -20,7 +20,10 @@ from aegis_pipeline.guards.quality_gates import check_no_technology
 RE_CARD_ID = re.compile(r"^R\d+\.\d+$")
 RE_SUFFICIENCY_ROW = re.compile(
     r"^-\s+\*\*(?P<reg>[A-Za-z0-9_][A-Za-z0-9_ ]*):\*\*\s+"
-    r"(?P<full>\d+) fully covered,\s*(?P<partial>\d+) partial,\s*(?P<org>\d+) organizational",
+    r"(?P<full>\d+) fully covered,\s*(?P<partial>\d+) partial,\s*(?P<org>\d+) organizational"
+    r"(?:,\s*(?P<guidance>\d+) design guidance)?"
+    r"(?:,\s*(?P<na>\d+) N/A)?"
+    r"(?:\s*\((?P<total>\d+) objective)?",
     re.MULTILINE,
 )
 RE_STEP4_ROW = re.compile(r"^\|\s*`[^`]+`\s*\|")
@@ -103,10 +106,14 @@ def render_sufficiency(rows: list[dict], round_state: dict, regs: list[str] | No
     for reg in sorted(by_reg):
         bucket = by_reg[reg]
         n = sum(bucket.values())
-        lines.append(f"- **{reg}:** {bucket.get('Fully covered (anchored)', 0)} fully covered, "
-                     f"{bucket.get('Partially covered (functional leg + explicit carve-out)', 0)} partial, "
-                     f"{bucket.get('No functional carrier (organizational)', 0)} organizational "
-                     f"({n} objective(s) under this regulation)")
+        lines.append(
+            f"- **{reg}:** {bucket.get('Fully covered (anchored)', 0)} fully covered, "
+            f"{bucket.get('Partially covered (functional leg + explicit carve-out)', 0)} partial, "
+            f"{bucket.get('No functional carrier (organizational)', 0)} organizational, "
+            f"{bucket.get('Design guidance', 0)} design guidance, "
+            f"{bucket.get('N/A', 0)} N/A "
+            f"({n} objective(s) under this regulation)"
+        )
     lines += ["", "## Security verdict", "",
               f"- {totals.get('Fully covered (anchored)', 0)} of {len(rows)} objectives fully carried after the round;"
               f" {len(round_state.get('accepted', []))} constraints accepted and woven."]
@@ -181,28 +188,50 @@ def inputs_digest(run_dir: Path) -> str:
 def _sufficiency_findings(path: Path, n_rows: int) -> list[str]:
     """G5 measured the verdict per regulation, not the existence of a file.
 
-    The renderer relabelled the whole-matrix total once per regulation, so two
-    regulations got byte-identical lines and the gate passed them.
+    Three defects are guarded here, all measured on real runs:
+
+    * the renderer relabelling the whole-matrix total once per regulation, so
+      two regulations got byte-identical lines (S7) — but only when there ARE
+      at least two regulations, or a GDPR-only case fails forever;
+    * a line whose own buckets do not sum to the total it declares;
+    * the buckets across regulations summing below the matrix rows, which
+      means a row's regulation column collapsed into one the renderer does
+      not print (S8 — and a `Design guidance`/`N/A` row is exactly the kind
+      the three-bucket renderer used to drop on the floor).
     """
     if not path.is_file():
         return ["SUFFICIENCY_ASSESSMENT missing"]
     found = []
-    triples = set()
-    n_lines = 0
+    lines_by_reg: dict[str, dict[str, int]] = {}
+    declared: dict[str, int] = {}
     for line in path.read_text(encoding="utf-8").splitlines():
         m = RE_SUFFICIENCY_ROW.match(line)
         if m:
-            n_lines += 1
-            triples.add((int(m["full"]), int(m["partial"]), int(m["org"])))
-    if not n_lines:
+            counts = {k: int(m[k] or 0) for k in ("full", "partial", "org", "guidance", "na")}
+            lines_by_reg[m["reg"]] = counts
+            if m["total"] is not None:
+                declared[m["reg"]] = int(m["total"])
+    if not lines_by_reg:
         found.append("no per-regulation verdict line found")
-    elif len(triples) == 1:
+        return found
+    if len(lines_by_reg) > 1 and len({tuple(v.values()) for v in lines_by_reg.values()}) == 1:
+        sample_counts = next(iter(lines_by_reg.values()))
         found.append(
-            f"all {n_lines} regulation lines carry the same counts {triples.pop()} — "
+            f"all {len(lines_by_reg)} regulation lines carry the same counts {sample_counts} — "
             "the whole-matrix total relabelled, not a per-regulation verdict"
         )
-    elif n_rows and sum(sum(t) for t in triples) < n_rows:
-        found.append(f"per-regulation counts sum below the {n_rows} matrix rows — a row has no regulation")
+    for reg, counts in lines_by_reg.items():
+        if reg in declared and sum(counts.values()) != declared[reg]:
+            found.append(
+                f"{reg}: buckets sum to {sum(counts.values())} but the line declares "
+                f"{declared[reg]} objectives"
+            )
+    counted = sum(sum(v.values()) for v in lines_by_reg.values())
+    if n_rows and counted < n_rows:
+        found.append(
+            f"per-regulation buckets sum to {counted}, below the {n_rows} matrix rows "
+            "— a row has no regulation the renderer prints"
+        )
     return found
 
 
@@ -276,12 +305,9 @@ def run_gate(run_dir: Path, repo: Path) -> dict:
             verdict_rows.extend(json.loads(path.read_text(encoding="utf-8")))
         rows = p3.apply_verdicts(p3.build(objectives), verdict_rows) if verdict_rows else []
         skeleton_findings = p3.check(rows, objectives)
-        findings += [f"T-G1: {f}" for f in skeleton_findings]
-        pool_ids = [c["id"] for c in p3.load_v0_cards(
-            repo / "cases" / json.loads((run_dir / "manifest.json").read_text())["case_id"]
-            / "03_PHASE3_SPEC" / "part1_security_privacy" / "v0_functional_baseline"
-            / "Doc01_Requirements_Elicitation_and_PUC.md"
-        )]
+        case_id = json.loads((run_dir / "manifest.json").read_text()).get("case_id") if (run_dir / "manifest.json").is_file() else None
+        pool = p3.ensure_v0_pool(run_dir, repo, case_id, source=p3.v0_source(run_dir), seed=False)
+        pool_ids = [c["id"] for c in pool]
         findings += [f"T-matrix: {f}" for f in p3.check_verdicts(rows, objectives, pool_ids)]
         findings += [f"T6: {f}" for f in p3.check_anchors(rows)]
     else:
@@ -430,6 +456,31 @@ def invalidate_gate_report(run_dir: Path, since: str) -> bool:
     )
     report.write_text(text, encoding="utf-8")
     return True
+
+
+def export_deliverables(run_dir: Path, repo: Path, company: str, run_id: str) -> Path:
+    """Copy the Part 1 notebooks into `<repo>/output/<company>/phase3/<run_id>/`.
+
+    The one place the deliverable leaves the run directory. Doc00..Doc03 live
+    in up to three mirrors inside the run (`part1_security_privacy/`, the
+    `v2_*` roots, `synthesis_rounds/`) and the export flattens them, with the
+    gate report and the round register alongside — a reader of the exported
+    folder sees the specification AND the verdict that closed it.
+    """
+    export_dir = repo / "output" / company / "phase3" / run_id
+    export_dir.mkdir(parents=True, exist_ok=True)
+    import shutil
+    for src_dir in (
+        run_dir / "outputs" / "phase3" / "part1_security_privacy" / "v2_security_privacy_synthesis",
+        run_dir / "outputs" / "phase3" / "v2_security_privacy_synthesis",
+        run_dir / "outputs" / "phase3" / "part1_security_privacy",
+        run_dir / "outputs" / "phase3" / "synthesis_rounds",
+        run_dir / "steps" / "phase3",
+    ):
+        if src_dir.is_dir():
+            for f in src_dir.glob("*.md"):
+                shutil.copy2(f, export_dir / f.name)
+    return export_dir
 
 
 def render_gate_report(report: dict) -> str:

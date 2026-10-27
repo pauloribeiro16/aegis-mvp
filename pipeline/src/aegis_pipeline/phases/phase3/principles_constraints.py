@@ -208,7 +208,8 @@ def reroute_objectives(rows: list[dict], accepted: list[dict]) -> tuple[list[dic
             continue
         row["verdict"] = "Partially covered (functional leg + explicit carve-out)"
         row["carrier"] = f"`{p.get('allocated_card', 'new')}`"
-        row["discharge"] = (f"{p['principle']} binding — constraint accepted in "
+        source_label = p.get("principle") or p.get("objective", "Objective")
+        row["discharge"] = (f"{source_label} binding — constraint accepted in "
                             f"Round 1; see STEP4_CONSTRAINT_ABSORPTION")
         moved += 1
     return rows, moved

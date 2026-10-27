@@ -44,7 +44,7 @@ from aegis_pipeline.phases.phase3.skeleton import (
     render_principles,
 )
 from aegis_pipeline.phases.phase3.proposals import load_rule_catalogue
-from aegis_pipeline.phases.phase3.v0_cards import load_v0_cards
+from aegis_pipeline.phases.phase3.v0_cards import ensure_v0_pool, load_v0_cards, resolve_v0_doc, v0_source
 from aegis_pipeline.phases.phase3.verdicts import (
     RE_TABLE_ROW,
     UNFILLED,
@@ -98,6 +98,9 @@ __all__ = [
     "load_rule_catalogue",
     # Cards
     "load_v0_cards",
+    "resolve_v0_doc",
+    "ensure_v0_pool",
+    "v0_source",
     # Runner
     "REPO",
     "S_UNSET",

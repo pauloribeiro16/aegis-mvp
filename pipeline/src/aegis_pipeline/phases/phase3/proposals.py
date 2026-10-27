@@ -144,7 +144,15 @@ def check_proposals(
 ) -> list[str]:
     """Semantic gates: published anchors only (T6), technology ban, ids real."""
     findings: list[str] = []
-    published = {o["id"]: o.get("anchors_raw", o.get("anchors", "")) for o in objectives}
+    published: dict[str, set[str]] = {}
+    for o in objectives:
+        raw_val = o.get("anchors_raw", o.get("anchors", ""))
+        if isinstance(raw_val, (list, set)):
+            published[o["id"]] = {str(a).strip("` ") for a in raw_val if str(a).strip("` ")}
+        elif isinstance(raw_val, str):
+            published[o["id"]] = {a.strip("` ") for a in re.findall(r"`?([A-Za-z0-9._-]+)`?", raw_val) if a.strip("` ")}
+        else:
+            published[o["id"]] = set()
     known = {row["id"] for row in rows}
     for proposal in proposals:
         oid = proposal["objective"]
@@ -154,9 +162,10 @@ def check_proposals(
         tech = check_no_technology(proposal["constraint"], proposal["fit_criterion"])
         if tech:
             findings.append(f"{oid}: technology vocabulary (R5/L4): {tech}")
-        raw = str(published.get(oid, ""))
+        allowed_anchors = published.get(oid, set())
         for anchor in proposal["anchors"]:
-            if anchor and anchor not in raw:
+            clean_anchor = anchor.strip("` ")
+            if clean_anchor and clean_anchor not in allowed_anchors:
                 findings.append(
                     f"{oid}: anchor {anchor!r} is not in the objective's published set (T6)"
                 )

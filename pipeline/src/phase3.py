@@ -46,6 +46,8 @@ from aegis_pipeline.phases.phase3 import (
     check_verdicts,
     domain_names_from,
     domain_of,
+    ensure_v0_pool,
+    v0_source,
     is_template_criterion,
     load_objectives,
     load_rule_catalogue,
@@ -56,6 +58,7 @@ from aegis_pipeline.phases.phase3 import (
     render_matrix,
     render_principles,
     resolve_source,
+    resolve_v0_doc,
     subdomain_of,
 )
 

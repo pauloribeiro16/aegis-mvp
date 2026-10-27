@@ -100,6 +100,7 @@ def cmd_new_run(args: argparse.Namespace) -> int:
         "top_k": args.top_k,
         "arm": args.arm,
         "repeat": args.repeat,
+        "v0_source": args.v0_source if args.v0_source != "auto" else None,
         "preapprove_gates": args.preapprove_gates,
         "case": args.case,
         "ficha_overrides": {
@@ -277,6 +278,10 @@ def main(argv=None) -> int:
                        help="code revision override")
     p_new.add_argument("--preapprove-gates", action="store_true",
                        help="write G-P1-A/B/C markers for unattended runs")
+    p_new.add_argument("--v0-source", default="auto", choices=["auto", "frozen", "generated"],
+                       help="V0 baseline source: frozen = the case baseline for every "
+                            "stage (model comparisons); generated = p3a_cards only, "
+                            "never the frozen fallback; auto = run-local, else frozen")
 
     p_run = sub.add_parser("run", help="execute one stage")
     p_run.add_argument("--stage", required=True,

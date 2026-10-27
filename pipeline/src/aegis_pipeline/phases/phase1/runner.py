@@ -90,6 +90,11 @@ NUM_CTX = {
     "p3a_weave": 32768,
     "p3a_repropose": 32768,
     "p3a_org_cluster": 32768,
+    "p3b_model": 32768,
+    "p3b_stride": 32768,
+    "p3b_linddun": 32768,
+    "p3b_k3": 65536,
+    "p3b_tree": 32768,
 }
 
 NUM_PREDICT = {
@@ -110,6 +115,11 @@ NUM_PREDICT = {
     "p3a_weave": 8192,
     "p3a_repropose": 8192,
     "p3a_org_cluster": 8192,
+    "p3b_model": 8192,
+    "p3b_stride": 8192,
+    "p3b_linddun": 8192,
+    "p3b_k3": 8192,
+    "p3b_tree": 8192,
 }
 
 EXTRA_INSTRUCTION = {
@@ -159,6 +169,38 @@ EXTRA_INSTRUCTION = {
         "`| Duty | Objectives | Disposition | Scale fact | Warrant |` (header row included), "
         "one row per duty. Every organizational objective in the pack appears in exactly one "
         "duty row. Nothing else."
+    ),
+    "p3b_model": (
+        "Wrap your answer: return ONLY one ```markdown fenced block containing four `####` "
+        "sections — `#### Assets`, `#### Data flows`, `#### Trust boundaries`, "
+        "`#### Control allocation` — each a markdown table with the columns the ficha "
+        "specifies. Asset ids `AST-nn`, flow ids `DF-nn`, boundary ids `TB-nn`. Nothing else."
+    ),
+    "p3b_stride": (
+        "Wrap your answer: return ONLY one ```markdown fenced block containing one "
+        "`### <DF-id> T-<n>` section per threat, each with the bold fields **Threat**, "
+        "**Category**, **Inherent likelihood**, **Inherent impact**, **Mitigating "
+        "requirements**, **Mitigation assessment**, **Defense mechanism or gap**, "
+        "**Statutory obligation**. Nothing else."
+    ),
+    "p3b_linddun": (
+        "Wrap your answer: return ONLY one ```markdown fenced block containing one "
+        "`### <target-id> T-<n>` section per privacy threat, each with the bold fields "
+        "**Threat**, **Category**, **Inherent likelihood**, **Inherent impact**, "
+        "**Mitigating requirements**, **Mitigation assessment**, **Defense mechanism or "
+        "gap**, **Statutory obligation**. Nothing else."
+    ),
+    "p3b_k3": (
+        "Wrap your answer: return ONLY one ```markdown fenced block containing one "
+        "`### T-<n>` section per threat, listing the MITRE/CWE/CAPEC/D3FEND identifiers "
+        "that catalogue the threat, one per line or comma-separated. Only identifiers "
+        "from the catalog in the pack. Nothing else."
+    ),
+    "p3b_tree": (
+        "Wrap your answer: return ONLY one ```markdown fenced block containing the "
+        "indented attack tree: `(AND)`/`(OR)` gate prefixes, one node per line, and a "
+        "`[DEF: <requirement-id>]` marker on every node a Part 1 requirement cuts. "
+        "Nothing else."
     ),
     "p1": "Wrap your answer: return ONLY one ```yaml fenced block with the fact sheet.",
     "p2": "Wrap your answer: return ONLY one ```markdown fenced block containing the 5-row §2 verdict table (header + 5 rows, nothing else).",
@@ -351,6 +393,38 @@ def store_parsed(run_dir: Path, step: str, subdomain: str | None, parsed: dict) 
         (d / "duty_proposals.json").write_text(
             json.dumps({"status": "PROPOSED", "proposals": parsed["proposals"]},
                        indent=1, ensure_ascii=False), encoding="utf-8"
+        )
+    elif step == "p3b_model":
+        d = steps_dir / "phase3b"
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "system_model.json").write_text(
+            json.dumps(parsed, indent=1, ensure_ascii=False), encoding="utf-8"
+        )
+    elif step.startswith("p3b_stride:"):
+        d = steps_dir / "phase3b"
+        d.mkdir(parents=True, exist_ok=True)
+        df = (subdomain or step.split(":", 1)[1]).replace("-", "_")
+        (d / f"stride_{df}.json").write_text(
+            json.dumps(parsed, indent=1, ensure_ascii=False), encoding="utf-8"
+        )
+    elif step == "p3b_linddun":
+        d = steps_dir / "phase3b"
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "linddun.json").write_text(
+            json.dumps(parsed, indent=1, ensure_ascii=False), encoding="utf-8"
+        )
+    elif step == "p3b_k3":
+        d = steps_dir / "phase3b"
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "k3_mapping.json").write_text(
+            json.dumps(parsed, indent=1, ensure_ascii=False), encoding="utf-8"
+        )
+    elif step.startswith("p3b_tree:"):
+        d = steps_dir / "phase3b"
+        d.mkdir(parents=True, exist_ok=True)
+        tid = (subdomain or step.split(":", 1)[1]).replace("-", "_")
+        (d / f"tree_{tid}.json").write_text(
+            json.dumps(parsed, indent=1, ensure_ascii=False), encoding="utf-8"
         )
     elif subdomain is not None:
         goals_dir = steps_dir / "goals"
@@ -704,6 +778,45 @@ class StepRunner:
                     f"p3a_prin [{step.split(':', 1)[1]}]: {invented[0]}"
                     + (f" (+{len(invented) - 1} more)" if len(invented) > 1 else ""))
             return parsed
+        if step.startswith("p3b_stride:"):
+            from aegis_pipeline.phases.phase3b import schemas as _p3s
+            from aegis_pipeline.phases.phase3b import threats as _p3bt
+            flow = getattr(self, "_p3b_stride_target", None)
+            if flow is None:
+                raise ValueError("p3b_stride: the stage must set _p3b_stride_target before calling")
+            accepted_ids = {f"{p.get('principle') or p['objective']}" for p in self._p3_accepted()} | set(self._p3_org_ids())
+            return {"threats": _p3bt.parse_threats(
+                answer, "stride", accepted_ids, _p3s.threat_index(self.run_dir, self.repo))}
+        if step == "p3b_linddun":
+            from aegis_pipeline.phases.phase3b import schemas as _p3s
+            from aegis_pipeline.phases.phase3b import threats as _p3bt
+            model = getattr(self, "_p3b_linddun_model", None)
+            if model is None:
+                raise ValueError("p3b_linddun: the stage must set _p3b_linddun_model before calling")
+            accepted_ids = {f"{p.get('principle') or p['objective']}" for p in self._p3_accepted()} | set(self._p3_org_ids())
+            targets = {f["trust_boundary"] for f in model["flows"]} | {a["id"] for a in model["assets"]}
+            return {"threats": _p3bt.parse_threats(
+                answer, "linddun", accepted_ids, _p3s.threat_index(self.run_dir, self.repo))}
+        if step == "p3b_k3":
+            from aegis_pipeline.phases.phase3b import schemas as _p3s
+            from aegis_pipeline.phases.phase3b import threats as _p3bt
+            threats = getattr(self, "_p3b_k3_threats", None)
+            if not threats:
+                raise ValueError("p3b_k3: the stage must set _p3b_k3_threats before calling")
+            return {"mapping": _p3bt.parse_k3_mapping(
+                answer, threats, _p3s.threat_index(self.run_dir, self.repo))}
+        if step.startswith("p3b_tree:"):
+            from aegis_pipeline.phases.phase3b import adtrees as _p3ba
+            threat = getattr(self, "_p3b_tree_target", None)
+            if threat is None:
+                raise ValueError("p3b_tree: the stage must set _p3b_tree_target before calling")
+            accepted_ids = {f"{p.get('principle') or p['objective']}" for p in self._p3_accepted()} | set(self._p3_org_ids())
+            return _p3ba.parse_adtree(answer, threat["id"], accepted_ids)
+        if step == "p3b_model":
+            from aegis_pipeline.phases.phase3b import system_model as _p3sm
+            accepted = self._p3_accepted()
+            accepted_ids = [f"{p.get('principle') or p['objective']}" for p in accepted] + self._p3_org_ids()
+            return {"model": _p3sm.parse_system_model(answer, accepted_ids)}
         if step.startswith("p3a_repropose:"):
             from aegis_pipeline.phases.phase3 import proposals as _p3p
             item = getattr(self, "_p3a_repropose_target", None)
@@ -2021,6 +2134,351 @@ class StepRunner:
                 # are still unapplied. Skipping silently is correct — a repropose
                 # with no pending item is a precondition error, not a no-op.
                 continue
+            print(f"=== stage {name} ===", flush=True)
+            total += getattr(self, f"stage_{name}")()
+        return total
+
+    # ------------------------------------------------------------------
+    # Phase 3 Part 2 — threats and the human acceptance of risk (onda D).
+    # The golden rule: the model composes the register in state PROPOSED;
+    # only a person signs risk_verdicts.json. p3b_all stops at that gate.
+    # ------------------------------------------------------------------
+
+    P3B_ORDER = ("p3b_model", "p3b_threats", "p3b_trees", "p3b_risk_round", "p3b_gate")
+
+    def _p3_accepted(self) -> list[dict]:
+        """The constraints Part 1 accepted, from the LATEST round state."""
+        from aegis_pipeline.phases.phase3 import proposals as p3p
+
+        state = self._latest_round_state()
+        if not state.get("converged"):
+            raise ValueError("Part 1's acceptance round is not converged — Part 2 "
+                             "judges the ACCEPTED package (two-states rule)")
+        return state.get("accepted", [])
+
+    def _p3_org_ids(self) -> list[str]:
+        """The ORG ids Part 1 rendered, parsed from Doc03."""
+        for candidate in (
+            self.run_dir / "outputs" / "phase3" / "part1_security_privacy" / "Doc03_Organizational_Requirements.md",
+            self.run_dir / "outputs" / "phase3" / "part1_security_privacy" / "v2_security_privacy_synthesis" / "Doc03_Organizational_Requirements.md",
+        ):
+            if candidate.is_file():
+                return sorted(set(re.findall(r"^### (ORG-D-\d{2}\.\d-\d{3})", candidate.read_text(encoding="utf-8"), re.M)))
+        return []
+
+    def _p3b_renumber(self, path, prefix: str) -> None:
+        """Threat ids are GLOBAL (T-STR-001...): a per-flow T-1 collides in the
+        register, the trees and the gate's reconciliation. The model's local
+        numbering is replaced deterministically at store time; the counter
+        lives on the stage, so resumed runs keep the ids stable (the stores
+        already on disk fix the offset)."""
+        if not hasattr(self, "_p3b_seq"):
+            n = 0
+            for p_ in sorted((self.run_dir / "steps" / "phase3b").glob("*.json")):
+                for row in json.loads(p_.read_text(encoding="utf-8")).get("threats", []):
+                    m = re.match(rf"^{prefix}-(\d+)$", row.get("id", ""))
+                    if m:
+                        n = max(n, int(m.group(1)))
+            self._p3b_seq = n
+        blob = json.loads(Path(path).read_text(encoding="utf-8"))
+        for row in blob["threats"]:
+            self._p3b_seq += 1
+            row["id"] = f"{prefix}-{self._p3b_seq:03d}"
+        Path(path).write_text(json.dumps(blob, indent=1, ensure_ascii=False), encoding="utf-8")
+
+    def _p3b_threats_so_far(self) -> list[dict]:
+        store = self.run_dir / "steps" / "phase3b"
+        threats: list[dict] = []
+        for path in sorted(store.glob("stride_*.json")) + sorted(store.glob("linddun.json")):
+            threats.extend(json.loads(path.read_text(encoding="utf-8"))["threats"])
+        return threats
+
+    def stage_p3b_model(self) -> int:
+        from aegis_pipeline.phases.phase3b import system_model as p3sm
+
+        self._require(("steps/fact_sheet.yaml",), "G-P1-A")
+        accepted = self._p3_accepted()
+        accepted_ids = [f"{p.get('principle') or p['objective']}" for p in accepted] + self._p3_org_ids()
+        if not accepted_ids:
+            raise ValueError("no accepted Part 1 requirements — nothing to allocate")
+
+        out_path = self.run_dir / "steps" / "phase3b" / "system_model.json"
+        calls = 0
+        if not out_path.is_file():
+            self._call("p3b_model", None)
+            if not self.dry_run:
+                calls += 1
+            if not out_path.is_file():
+                if self.dry_run:
+                    self._write_stage_result("p3b_model", {
+                        "status": "dry-run", "carried": 0, "selected": len(accepted_ids),
+                        "failed": 0, "summary": "dry-run: pack written, no model stored"})
+                    return calls
+                raise FileNotFoundError(f"{out_path} was not written by _call")
+
+        model = json.loads(out_path.read_text(encoding="utf-8"))["model"]
+        company = (self.case or {}).get("company_id") or (self.case or {}).get("company", "Company")
+        out_dir = self.run_dir / "outputs" / "phase3b"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        (out_dir / "01_SYSTEM_MODEL_AND_FOUNDATIONS.md").write_text(
+            p3sm.render_system_model(model, company, accepted), encoding="utf-8")
+        self._write_stage_result("p3b_model", {
+            "status": "ok", "carried": 1, "selected": 1, "failed": 0,
+            "summary": (f"{len(model['assets'])} assets, {len(model['flows'])} flows, "
+                        f"{len(model['trust_boundaries'])} boundaries; "
+                        f"{len(model['allocation'])} requirement(s) allocated"),
+        })
+        return calls
+
+    def stage_p3b_threats(self) -> int:
+        from aegis_pipeline.phases.phase3b import schemas as p3s
+        from aegis_pipeline.phases.phase3b import threats as p3t
+
+        model_path = self.run_dir / "steps" / "phase3b" / "system_model.json"
+        if not model_path.is_file():
+            raise ValueError("no system model — run --stage p3b_model first")
+        model = json.loads(model_path.read_text(encoding="utf-8"))["model"]
+        accepted = self._p3_accepted()
+        accepted_ids = {f"{p.get('principle') or p['objective']}" for p in accepted} | set(self._p3_org_ids())
+        index = p3s.threat_index(self.run_dir, self.repo)
+
+        store = self.run_dir / "steps" / "phase3b"
+        store.mkdir(parents=True, exist_ok=True)
+        out_dir = self.run_dir / "outputs" / "phase3b"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        calls = 0
+        failures: list[str] = []
+
+        for flow in model["flows"]:
+            out_path = store / f"stride_{flow['id'].replace('-', '_')}.json"
+            if out_path.is_file():
+                continue
+            self._p3b_stride_target = flow
+            try:
+                self._call(f"p3b_stride:{flow['id']}", flow["id"])
+                if not self.dry_run:
+                    calls += 1
+                if not out_path.is_file():
+                    if self.dry_run:
+                        continue
+                    raise FileNotFoundError(f"{out_path} was not written by _call")
+                self._p3b_renumber(out_path, "T-STR")
+            except (LLMError, ValueError, KeyError, OSError) as e:
+                failures.append(f"stride {flow['id']}: {type(e).__name__}: {str(e)[:160]}")
+                print(f"[p3b_threats] stride {flow['id']} FAILED — continuing: {str(e)[:160]}", flush=True)
+
+        linddun_path = store / "linddun.json"
+        if not linddun_path.is_file():
+            self._p3b_linddun_model = model
+            try:
+                self._call("p3b_linddun", None)
+                if not self.dry_run:
+                    calls += 1
+                if not linddun_path.is_file() and not self.dry_run:
+                    raise FileNotFoundError(f"{linddun_path} was not written by _call")
+                self._p3b_renumber(linddun_path, "T-LIN")
+            except (LLMError, ValueError, KeyError, OSError) as e:
+                failures.append(f"linddun: {type(e).__name__}: {str(e)[:160]}")
+                print(f"[p3b_threats] linddun FAILED — continuing: {str(e)[:160]}", flush=True)
+
+        threats = self._p3b_threats_so_far()
+        if not threats:
+            self._write_stage_result("p3b_threats", {
+                "status": "partial", "carried": 0, "selected": len(model["flows"]) + 1,
+                "failed": len(failures), "summary": "no threats stored yet",
+                "failures": failures})
+            return calls
+
+        company = (self.case or {}).get("company_id") or (self.case or {}).get("company", "Company")
+        stride = [t for t in threats if t["method"] == "stride"]
+        linddun = [t for t in threats if t["method"] == "linddun"]
+        (out_dir / "02_STRIDE_THREAT_ANALYSIS.md").write_text(
+            p3t.render_threats(stride, "stride", company), encoding="utf-8")
+        (out_dir / "03_LINDDUN_PRIVACY_ANALYSIS.md").write_text(
+            p3t.render_threats(linddun, "linddun", company), encoding="utf-8")
+
+        k3_path = store / "k3_mapping.json"
+        if not k3_path.is_file():
+            self._p3b_k3_threats = threats
+            try:
+                self._call("p3b_k3", None)
+                if not self.dry_run:
+                    calls += 1
+            except (LLMError, ValueError, KeyError, OSError) as e:
+                failures.append(f"k3: {type(e).__name__}: {str(e)[:160]}")
+                print(f"[p3b_threats] k3 FAILED — continuing: {str(e)[:160]}", flush=True)
+        k3 = json.loads(k3_path.read_text(encoding="utf-8"))["mapping"] if k3_path.is_file() else {}
+        if k3:
+            (out_dir / "06_MITRE_KNOWLEDGE_MAPPING.md").write_text(
+                p3t.render_k3_mapping(threats, k3, company), encoding="utf-8")
+        self._write_stage_result("p3b_threats", {
+            "status": "ok" if not failures else "partial",
+            "carried": len(threats), "selected": len(model["flows"]) + 2,
+            "failed": len(failures),
+            "summary": (f"{len(stride)} STRIDE + {len(linddun)} LINDDUN threat(s); "
+                        f"{sum(1 for t in threats if t['mitigation_assessment'] == 'UNMITIGATED_GAP')} gap(s); "
+                        "residual computed in Python"),
+            "failures": failures,
+        })
+        return calls
+
+    def stage_p3b_trees(self) -> int:
+        from aegis_pipeline.phases.phase3b import adtrees as p3a_
+
+        threats = self._p3b_threats_so_far()
+        if not threats:
+            raise ValueError("no threats — run --stage p3b_threats first")
+        accepted_ids = {f"{p.get('principle') or p['objective']}" for p in self._p3_accepted()} | set(self._p3_org_ids())
+        targets = [t for t in threats if t["inherent_level"] in ("Critical", "High")]
+        store = self.run_dir / "steps" / "phase3b"
+        store.mkdir(parents=True, exist_ok=True)
+        calls = 0
+        failures: list[str] = []
+        trees: list[dict] = []
+        for t in targets:
+            out_path = store / f"tree_{t['id'].replace('-', '_')}.json"
+            if out_path.is_file():
+                trees.append(json.loads(out_path.read_text(encoding="utf-8")))
+                continue
+            self._p3b_tree_target = t
+            try:
+                self._call(f"p3b_tree:{t['id']}", t["id"])
+                if not self.dry_run:
+                    calls += 1
+                if not out_path.is_file():
+                    if self.dry_run:
+                        continue
+                    raise FileNotFoundError(f"{out_path} was not written by _call")
+                trees.append(json.loads(out_path.read_text(encoding="utf-8")))
+            except (LLMError, ValueError, KeyError, OSError) as e:
+                failures.append(f"tree {t['id']}: {type(e).__name__}: {str(e)[:160]}")
+                print(f"[p3b_trees] {t['id']} FAILED — continuing: {str(e)[:160]}", flush=True)
+
+        corrected = p3a_.enforce_residual_floor(threats, trees)
+        if corrected:
+            # The floor lives on the stored threat rows too, or the register
+            # would recompose from an unfloored row and undo the tree's teeth.
+            for path in sorted(store.glob("stride_*.json")) + sorted(store.glob("linddun.json")):
+                blob = json.loads(path.read_text(encoding="utf-8"))
+                changed = False
+                for row in blob["threats"]:
+                    fixed = next((x for x in threats
+                                  if x["id"] == row["id"] and x.get("residual_floored_by_tree")), None)
+                    if fixed:
+                        row.update({k: fixed[k] for k in ("i_res", "residual_score", "residual_level")})
+                        row["residual_floored_by_tree"] = True
+                        changed = True
+                if changed:
+                    path.write_text(json.dumps(blob, indent=1, ensure_ascii=False), encoding="utf-8")
+
+        (store / "adtrees.json").write_text(
+            json.dumps(trees, indent=1, ensure_ascii=False), encoding="utf-8")
+        company = (self.case or {}).get("company_id") or (self.case or {}).get("company", "Company")
+        out_dir = self.run_dir / "outputs" / "phase3b"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        (out_dir / "04_ATTACK_DEFENSE_TREES.md").write_text(
+            p3a_.render_adtrees(trees, company), encoding="utf-8")
+        open_paths = sum(1 for t in trees if t.get("unbroken_attack_path"))
+        self._write_stage_result("p3b_trees", {
+            "status": "ok" if not failures else "partial",
+            "carried": len(trees), "selected": len(targets), "failed": len(failures),
+            "summary": (f"{len(trees)} tree(s) for Critical/High threats; "
+                        f"{open_paths} with an OPEN path; {corrected} residual(s) floored at Medium"),
+            "failures": failures,
+        })
+        return calls
+
+    def stage_p3b_risk_round(self) -> int:
+        """Etapa 2.4 — zero model calls. Compose PROPOSED; apply human signatures."""
+        from aegis_pipeline.phases.phase3b import risk_governance as p3rg
+
+        threats = self._p3b_threats_so_far()
+        if not threats:
+            raise ValueError("no threats — run --stage p3b_threats first")
+        trees_blob = self.run_dir / "steps" / "phase3b" / "adtrees.json"
+        trees = json.loads(trees_blob.read_text(encoding="utf-8")) if trees_blob.is_file() else []
+        if any(t["inherent_level"] in ("Critical", "High") for t in threats) and not trees:
+            raise ValueError("Critical/High threats have no trees — run --stage p3b_trees "
+                             "(the floor needs the broken-path proof)")
+
+        store = self.run_dir / "steps" / "phase3b"
+        store.mkdir(parents=True, exist_ok=True)
+        register = p3rg.compose_risk_register(threats, trees)
+        # Re-float the floor flags the per-threat stores lost on the way here.
+        unbroken = {t["threat"] for t in trees if t.get("unbroken_attack_path")}
+        for row in register["threats"]:
+            row["unbroken_attack_path"] = row["id"] in unbroken
+
+        verdicts_path = store / "risk_verdicts.json"
+        if not verdicts_path.is_file():
+            verdicts_path.write_text(
+                json.dumps(p3rg.scaffold_risk_verdicts(register), indent=1, ensure_ascii=False),
+                encoding="utf-8")
+
+        blob = json.loads(verdicts_path.read_text(encoding="utf-8"))
+        decisions = blob.get("decisions", {})
+        if decisions:
+            register = p3rg.apply_risk_verdicts(register, decisions)
+            triggers = p3rg.rejection_triggers(register)
+            trigger_path = p3rg.write_round_trigger(self.run_dir, triggers)
+            if trigger_path:
+                print(f"[p3b_risk_round] {len(triggers)} rejection(s) reopen Part 1: "
+                      f"{trigger_path}", flush=True)
+        (store / "risk_register.json").write_text(
+            json.dumps(register, indent=1, ensure_ascii=False), encoding="utf-8")
+        company = (self.case or {}).get("company_id") or (self.case or {}).get("company", "Company")
+        out_dir = self.run_dir / "outputs" / "phase3b"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        (out_dir / "05_RISK_REGISTER_AND_GOVERNANCE.md").write_text(
+            p3rg.render_risk_register(register, company), encoding="utf-8")
+        n_signed = len(decisions)
+        self._write_stage_result("p3b_risk_round", {
+            "status": "ok",
+            "carried": n_signed, "selected": len(register["threats"]), "failed": 0,
+            "summary": (f"register PROPOSED with {len(register['threats'])} threat(s); "
+                        f"{n_signed} signed by a person"
+                        + (f"; {len(triggers)} rejection(s) reopen Part 1" if decisions and triggers else "")
+                        if decisions else
+                        f"register PROPOSED with {len(register['threats'])} threat(s) — "
+                        "AWAITING the human signatures in steps/phase3b/risk_verdicts.json (G-P3-B)"),
+        })
+        return 0
+
+    def stage_p3b_gate(self) -> int:
+        from aegis_pipeline.phases.phase3b import threat_gate as p3tg
+
+        report = p3tg.run_gate(self.run_dir, self.repo)
+        out_dir = self.run_dir / "steps" / "phase3b"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        (out_dir / "gate_report.md").write_text(p3tg.render_gate_report(report), encoding="utf-8")
+        print(f"AEGIS_P3B_GATE state={report['state']} " + " ".join(
+            f"{g}={'CLOSED' if v.startswith('CLOSED') else 'OPEN'}" for g, v in report["gates"].items()
+        ), flush=True)
+        self._write_stage_result("p3b_gate", {
+            "status": "ok" if report["state"] == "CONCLUDED" else "partial",
+            "carried": 1 if report["state"] == "CONCLUDED" else 0,
+            "selected": 1, "failed": 0,
+            "summary": (f"state={report['state']}; "
+                        + "; ".join(f"{g} {v.split(' — ')[0]}" for g, v in report["gates"].items())),
+            "gates": report["gates"], "findings": report["findings"][:20],
+            "n_threats": report["n_threats"],
+        })
+        if report["state"] == "CONCLUDED":
+            from aegis_pipeline.phases.phase3 import weave as p3w
+            company = (self.case or {}).get("company_id") or (self.case or {}).get("company", "Company")
+            export_dir = p3w.export_deliverables(self.run_dir, self.repo, company, self.run_id)
+            print(f"[p3b_gate] Exported deliverables to {export_dir}", flush=True)
+        return 0
+
+    def stage_p3b_all(self) -> int:
+        """Run the Part 2 chain, stopping at the human risk round."""
+        total = 0
+        for name in self.P3B_ORDER:
+            if name == "p3b_gate" and not (self.run_dir / "steps" / "phase3b" / "risk_verdicts.json").is_file():
+                print("=== p3b_all: no risk_verdicts.json yet — the register is "
+                      "PROPOSED; sign steps/phase3b/risk_verdicts.json and re-run. "
+                      "('p3b_gate' alone gives the current standing.) ===", flush=True)
+                break
             print(f"=== stage {name} ===", flush=True)
             total += getattr(self, f"stage_{name}")()
         return total

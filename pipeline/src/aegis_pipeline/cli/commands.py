@@ -289,7 +289,9 @@ def main(argv=None) -> int:
                                 "p3a_prin",
                                 "p3a_cards", "p3a_propose", "p3a_round", "p3a_repropose",
                                 "p3a_org_cluster", "p3a_org", "p3a_weave",
-                                "p3a_gate", "p3a_all", "p4p5", "p4tp5", "all", "agentic"])
+                                "p3a_gate", "p3a_all", "p3b_model", "p3b_threats", "p3b_trees",
+                                "p3b_risk_round", "p3b_gate", "p3b_all",
+                                "p4p5", "p4tp5", "all", "agentic"])
     p_run.add_argument("--repo", type=Path, default=REPO_DEFAULT)
     p_run.add_argument("--run-dir", type=Path, required=True)
     p_run.add_argument("--model", default=None)

@@ -39,6 +39,12 @@ FICHA_FILES = {
     "p3a_prin": "PROM-P3A-07_PRINCIPLE_CONSTRAINTS.md",
     "p3a_repropose": "PROM-P3A-08_ROUND_REFINEMENT.md",
     "p3a_org_cluster": "PROM-P3A-05A_DUTY_CLUSTER.md",
+    "p3b_model": "PROM-P3B-01_SYSTEM_DECOMPOSITION.md",
+    "p3b_stride": "PROM-P3B-02_STRIDE.md",
+    "p3b_linddun": "PROM-P3B-03_LINDDUN.md",
+    "p3b_tree": "PROM-P3B-04_ATTACK_DEFENSE_TREES.md",
+    "p3b_k3": "PROM-P3B-05_MITRE_K3.md",
+    "p3b_gate": "PROM-P3B-06_RISK_GOVERNANCE_SUMMARY.md",
 }
 
 # Sub-domain id like D-01.1
@@ -1116,6 +1122,158 @@ def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
             "sheet. Duties cut across sub-domains — one duty may carry objectives "
             "from several; propose ONE duty per coherent team obligation, never one "
             "per objective.\n"))
+    elif step == "p3b_model":
+        # Etapa 2.1 — the attack target: the approved V2 package, the accepted
+        # constraints, the org cards, and the company's own architecture facts.
+        import phase3 as _p3
+
+        v2_dir = run_dir / "outputs" / "phase3" / "part1_security_privacy" / "v2_security_privacy_synthesis"
+        for name in ("Doc01_Requirements_Specification.md", "Doc02_System_Use_Cases.md",
+                     "Doc03_Organizational_Requirements.md"):
+            p = v2_dir / name
+            if not p.is_file():
+                p = run_dir / "outputs" / "phase3" / "part1_security_privacy" / name
+            files.append((f"pack-p3b_model/{name}", p.read_text(encoding="utf-8") if p.is_file() else "(missing)"))
+        from aegis_pipeline.phases.phase3.proposals import latest_round as _lr
+        state_path = run_dir / "steps" / "phase3" / f"round{_lr(run_dir)}_state.json"
+        accepted = []
+        if state_path.is_file():
+            state = json.loads(state_path.read_text(encoding="utf-8"))
+            accepted = [{"control": p.get("principle") or p["objective"],
+                         "constraint": p["constraint"], "carrier": p.get("carrier", "new")}
+                        for p in state.get("accepted", [])]
+        files.append((
+            "pack-p3b_model/ACCEPTED_CONSTRAINTS.json",
+            json.dumps(accepted, indent=1, ensure_ascii=False)))
+        fact_sheet = run_dir / "steps" / "fact_sheet.yaml"
+        files.append((
+            "pack-p3b_model/FACT_SHEET.yaml",
+            fact_sheet.read_text(encoding="utf-8") if fact_sheet.is_file() else "(missing)"))
+        files.insert(0, (
+            "pack-p3b_model/BUILD_MANIFEST.md",
+            "Context pack build (deterministic): the Part 1 package (Doc01–Doc03), "
+            "the accepted constraints, and the fact sheet. Decompose what THESE "
+            "describe — no component the documents do not name (R6).\n"))
+    elif step.startswith("p3b_stride:"):
+        # One STRIDE call per data flow: the flow, its assets and boundary, and
+        # the accepted requirements allocated to anything it touches.
+        import phase3 as _p3
+
+        df_id = step.split(":", 1)[1]
+        model = json.loads((run_dir / "steps" / "phase3b" / "system_model.json").read_text(encoding="utf-8"))["model"]
+        flow = next(f for f in model["flows"] if f["id"] == df_id)
+        from aegis_pipeline.phases.phase3b.schemas import STRIDE as _STRIDE
+        lines = [f"# Data flow under analysis: `{df_id}`", "",
+                 f"- **Source:** {flow['source']}",
+                 f"- **Destination:** {flow['destination']}",
+                 f"- **Assets carried:** {', '.join(flow['assets_carried'])}",
+                 f"- **Crosses trust boundary:** `{flow['trust_boundary']}`", ""]
+        alloc = model.get("allocation", {})
+        touched = {c: t for c, t in alloc.items()
+                   if df_id in t or any(a in flow["assets_carried"] for a in t)}
+        lines += ["## Requirements allocated to this flow or its assets", ""]
+        for control, targets in sorted(touched.items()):
+            lines.append(f"- `{control}` protects {', '.join(f'`{x}`' for x in targets)}")
+        if not touched:
+            lines.append("- (none — an unprotected flow is itself a finding)")
+        lines += ["", "## STRIDE categories (the closed vocabulary)", ""]
+        lines += [f"- {c}" for c in _STRIDE]
+        files.append((f"pack-p3b_stride/{df_id}/FLOW.md", "\n".join(lines)))
+        model_doc = run_dir / "outputs" / "phase3b" / "01_SYSTEM_MODEL_AND_FOUNDATIONS.md"
+        files.append((
+            f"pack-p3b_stride/{df_id}/SYSTEM_MODEL.md",
+            model_doc.read_text(encoding="utf-8") if model_doc.is_file() else "(missing)"))
+        files.insert(0, (
+            f"pack-p3b_stride/{df_id}/BUILD_MANIFEST.md",
+            f"Context pack build (deterministic): flow {df_id} with its assets, "
+            "boundary and allocated requirements; the whole model for context. "
+            "Threats live where data crosses a boundary.\n"))
+    elif step == "p3b_linddun":
+        # One LINDDUN call over the whole model: privacy threats against the
+        # personal-data assets and the flows that carry them.
+        import phase3 as _p3
+
+        model = json.loads((run_dir / "steps" / "phase3b" / "system_model.json").read_text(encoding="utf-8"))["model"]
+        from aegis_pipeline.phases.phase3b.schemas import LINDDUN as _LINDDUN
+        lines = ["# Assets and flows to analyse for privacy threats", ""]
+        for a in model["assets"]:
+            lines.append(f"- `{a['id']}` **{a['name']}** ({a['kind']}; sensitivity: {a['sensitivity']})")
+        lines.append("")
+        for f in model["flows"]:
+            lines.append(f"- `{f['id']}` {f['source']} → {f['destination']} "
+                         f"carries {', '.join(f['assets_carried'])} across `{f['trust_boundary']}`")
+        lines += ["", "## LINDDUN categories (the closed vocabulary)", ""]
+        lines += [f"- {c}" for c in _LINDDUN]
+        files.append(("pack-p3b_linddun/MODEL.md", "\n".join(lines)))
+        fact_sheet = run_dir / "steps" / "fact_sheet.yaml"
+        files.append(("pack-p3b_linddun/FACT_SHEET.yaml",
+                      fact_sheet.read_text(encoding="utf-8") if fact_sheet.is_file() else "(missing)"))
+        files.insert(0, (
+            "pack-p3b_linddun/BUILD_MANIFEST.md",
+            "Context pack build (deterministic): the assets and flows, the LINDDUN "
+            "vocabulary, and the fact sheet's data categories. Threats against the "
+            "PERSON, not the system.\n"))
+    elif step == "p3b_k3":
+        # The MITRE knowledge mapping: the threats so far + the catalog ids and
+        # names. The catalog is the whole universe — a cited id outside it is
+        # a fabrication the gate rejects (T8).
+        from aegis_pipeline.phases.phase3b.schemas import threat_index as _ti
+
+        threats = []
+        for path in sorted((run_dir / "steps" / "phase3b").glob("stride_*.json")) + \
+                sorted((run_dir / "steps" / "phase3b").glob("linddun.json")):
+            threats.extend(json.loads(path.read_text(encoding="utf-8"))["threats"])
+        index = _ti(run_dir, repo)
+        lines = ["# Threats to map into the MITRE knowledge bases", ""]
+        for t in threats:
+            lines.append(f"## `{t['id']}`")
+            lines.append(f"- **Threat:** {t['threat']}")
+            lines.append(f"- **Defense/gap:** {t['defense']}")
+            lines.append("")
+        lines += ["# Catalog (id — name). Cite ONLY ids from this list.", ""]
+        for tid, entry in sorted(index.get("entries", {}).items()):
+            lines.append(f"- `{tid}` {entry.get('name', '')[:110]}")
+        files.append(("pack-p3b_k3/MAPPING_PACK.md", "\n".join(lines)))
+        files.insert(0, (
+            "pack-p3b_k3/BUILD_MANIFEST.md",
+            f"Context pack build (deterministic): {len(threats)} threat(s) and the "
+            f"{len(index.get('entries', {}))}-id threat catalog (CWE+CAPEC core; "
+            "ATT&CK/D3FEND/ATLAS/EMB3D consultive). T8: a cited id outside the "
+            "catalog fails the gate.\n"))
+    elif step.startswith("p3b_tree:"):
+        # One attack-defense tree per Critical/High threat: the threat, its
+        # mitigators' constraint texts, and the defense the register claims.
+        tid = step.split(":", 1)[1]
+        threats = []
+        for path in sorted((run_dir / "steps" / "phase3b").glob("stride_*.json")) + \
+                sorted((run_dir / "steps" / "phase3b").glob("linddun.json")):
+            threats.extend(json.loads(path.read_text(encoding="utf-8"))["threats"])
+        threat = next(t for t in threats if t["id"] == tid)
+        from aegis_pipeline.phases.phase3.proposals import latest_round as _lr2
+        state_path = run_dir / "steps" / "phase3" / f"round{_lr2(run_dir)}_state.json"
+        accepted = []
+        if state_path.is_file():
+            state = json.loads(state_path.read_text(encoding="utf-8"))
+            accepted = {p.get("principle") or p["objective"]: p for p in state.get("accepted", [])}
+        lines = [f"# Threat to decompose: `{tid}`", "",
+                 f"- **Threat:** {threat['threat']}",
+                 f"- **Category:** {threat['category']} ({threat['method'].upper()})",
+                 f"- **Target:** `{threat['target']}`",
+                 f"- **Claimed mitigation:** {threat['mitigation_assessment']}",
+                 f"- **Defense mechanism or gap:** {threat['defense']}", "",
+                 "## The Part 1 requirements the register cites as mitigators", ""]
+        for rid in threat["mitigating_requirements"]:
+            p = accepted.get(rid, {})
+            lines.append(f"- `{rid}` — {p.get('constraint', '(org card — see Doc03)')[:200]}")
+        lines += ["", "Mark every node a named requirement actually cuts with "
+                  "`[DEF: <requirement-id>]`. A node no requirement cuts stays "
+                  "unmarked — the code computes the open path from your marks, "
+                  "not from your prose.", ""]
+        files.append((f"pack-p3b_tree/{tid}/THREAT.md", "\n".join(lines)))
+        files.insert(0, (
+            f"pack-p3b_tree/{tid}/BUILD_MANIFEST.md",
+            f"Context pack build (deterministic): threat {tid} with the constraint "
+            "texts it claims as mitigators. The tree is the PROOF; the code judges it.\n"))
     elif step.startswith("p3a_"):
         # The p3a steps are neither extraction nor Phase 1 goal-writing, and
         # `p3a_map` starts with "p3", so it used to inherit the p4 generative

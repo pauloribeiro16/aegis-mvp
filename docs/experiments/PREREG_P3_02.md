@@ -1,6 +1,6 @@
 # PREREG_P3_02 — Onda C: calibração multi-modelo das fichas da Fase 3 Parte 1
 
-Version: 1.0.0
+Version: 1.1.0
 Status: FROZEN 2026-10-27, before the first `p3a_all` job of the calibration matrix is submitted.
 Frozen by: aegis-mvp executor, after the Onda A/B/C code landed (`f34b2bf`, `693779a`, `5b7dade`) and all 16 local test suites were green, and before any GPU time.
 Upstream: [phase3_improvement_and_calibration_plan.md](../../../.gemini/antigravity/brain/be621b89-afc5-4c19-82cc-8acf552a9ede/phase3_improvement_and_calibration_plan.md) §Onda C (plano diretor; cópia das intenções em `docs/pipeline/03_PROMPT_CATALOG.md`) · [PREREG_P3_01.md](PREREG_P3_01.md) (a construção que esta calibração mede) · [METRICS.md](METRICS.md) M-26 (o limiar de colapso, incident-calibrated).
@@ -99,8 +99,21 @@ abaixo medem até ao estado proposto + a gate.
 
 ## 5. Deviations
 
-Nenhum à data do congelamento. Desvios registam-se AQUI por adenda versionada
-(nunca em silêncio), e o doc de resultados cita a versão que vigia.
+**Adenda 1.1.0 (2026-10-27, antes da 1.ª submissão) — fixação do upstream.**
+`p3a_all` num run novo exigiria p1→fase2 primeiro, e cada modelo geraria o SEU
+fact sheet e as SUAS entregas da fase 2 — a comparação ficaria confundida pelo
+upstream. Todos os braços partilham assim o MESMO upstream qwen3.8:27b seed 42
+por caso, copiado do run base enriquecido da P2-02 para o fork do braço
+(`run_p302_<modelo>_<caso>`): `steps/{fact_sheet.yaml, selection.*, verdicts.*,
+goals/, phase2/}` + `outputs/phase2/`. A V0 é a do caso (`--v0-source frozen`).
+O que varia entre braços é SÓ o modelo das chamadas p3a — a mesma partição de
+objectivos, as mesmas âncoras publicadas, a mesma baseline funcional.
+Bases: Case 01 → `run_p2enr_c1` (270 RULE-*), Case 02 → `run_p2c2` (340),
+Case 03 → `run_p2c3` (422), todas seed 42 / temp 0.2 / qwen3.8:27b.
+
+Nenhum outro desvio à data do congelamento. Desvios registam-se AQUI por
+adenda versionada (nunca em silêncio), e o doc de resultados cita a versão
+que vigia quando cada job correu.
 
 ## 6. What this does NOT claim
 

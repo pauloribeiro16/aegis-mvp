@@ -6,6 +6,8 @@ created: 2026-10-05
 status: COMPLETE — with an instrument-regression finding
 sources: 'docs/research/sources.yaml'
 upstream: '[PREREG_01.md](PREREG_01.md) · [PLANO_FECHO.md](PLANO_FECHO.md)'
+prereg: none
+prereg_note: 'predates the results-doc prereg contract; the experiment ran under PREREG_01 as its umbrella prereg (see upstream), recorded here as the contract''s exemption, not silence'
 ---
 
 # EXP-04 — prompt ablation: decision rule vs menu

@@ -37,6 +37,8 @@ FICHA_FILES = {
     "p3a_org": "PROM-P3A-05_ORG.md",
     "p3a_weave": "PROM-P3A-06_WEAVE.md",
     "p3a_prin": "PROM-P3A-07_PRINCIPLE_CONSTRAINTS.md",
+    "p3a_repropose": "PROM-P3A-08_ROUND_REFINEMENT.md",
+    "p3a_org_cluster": "PROM-P3A-05A_DUTY_CLUSTER.md",
 }
 
 # Sub-domain id like D-01.1
@@ -976,13 +978,15 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
         # name it (or are unassigned) — the preconditions/extensions answer them.
         card_id = step.split(":", 1)[1]
         card_path = run_dir / "steps" / "phase3" / "cards" / f"{card_id.replace('.', '_')}.json"
-        # The APPLIED round state, not the verdict file: `round1_state.json` is
-        # what the stage itself updates, and its carriers are rewritten to the
-        # allocated R<n.m> before this pack is built. Reading the verdict file
-        # here was a second source disagreeing with the first — the stage routed
-        # 12 proposals to 12 cards while this pack handed the model zero of
-        # them, and the model correctly answered "nothing routed".
-        round_path = run_dir / "steps" / "phase3" / "round1_state.json"
+        # The APPLIED round state, not the verdict file: the latest
+        # `round{N}_state.json` is what the stage itself updates, and its
+        # carriers are rewritten to the allocated R<n.m> before this pack is
+        # built. Reading the verdict file here was a second source disagreeing
+        # with the first — the stage routed 12 proposals to 12 cards while this
+        # pack handed the model zero of them, and the model correctly answered
+        # "nothing routed".
+        from aegis_pipeline.phases.phase3.proposals import latest_round as _lr
+        round_path = run_dir / "steps" / "phase3" / f"round{_lr(run_dir)}_state.json"
         card = card_path.read_text(encoding="utf-8") if card_path.is_file() else "(card missing)"
         accepted = []
         if round_path.is_file():
@@ -1030,6 +1034,88 @@ def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
             "- Every rule statement MUST be imperative (contain SHALL or MUST).\n"
             "- Technology neutrality (R5): never cite proprietary cloud vendors (AWS, Azure, GCP, etc.).\n"
             "- Never invent facts about the company beyond fact_sheet.yaml (R6).\n")
+    elif step.startswith("p3a_repropose:"):
+        # Etapa 1.6.b — the refinement pack: the proposal the human marked
+        # Adjust, the note that says why, and the material the rewrite must
+        # stay inside (published anchors, Phase 2 rules, the carrier card).
+        import phase3 as _p3
+
+        _, round_no, key = step.split(":", 2)
+        item = json.loads((run_dir / "steps" / "phase3" / "repropose"
+                           / f"r{round_no}" / f"{key}.json").read_text(encoding="utf-8"))
+        oid = item["objective"]
+        phase2_doc = run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md"
+        objectives = {o["id"]: o for o in _p3.load_objectives(phase2_doc)}
+        objective = objectives.get(oid, {})
+        rules = _p3.load_rule_catalogue(run_dir).get(oid, [])
+        card_id = (item.get("carrier") or "").strip("`")
+        card_path = run_dir / "steps" / "phase3" / "cards" / f"{card_id.replace('.', '_')}.json"
+        card = card_path.read_text(encoding="utf-8") if card_path.is_file() else "(no carrier card — a D4 evolution may propose carrier `new`)"
+        files.append((
+            f"pack-p3a_repropose/r{round_no}/{key}/ITEM.json",
+            json.dumps(item, indent=1, ensure_ascii=False),
+        ))
+        files.append((
+            f"pack-p3a_repropose/r{round_no}/{key}/OBJECTIVE.md",
+            f"- **Objective:** `{oid}` — {objective.get('summary', '(not found)')}\n"
+            f"- **Published control anchors:** "
+            + (", ".join(f"`{a}`" for a in objective.get("anchors", [])) or "_none_"),
+        ))
+        files.append((
+            f"pack-p3a_repropose/r{round_no}/{key}/CARRIER_CARD.json",
+            card,
+        ))
+        if rules:
+            files.append((
+                f"pack-p3a_repropose/r{round_no}/{key}/RULES.json",
+                json.dumps(rules, indent=1, ensure_ascii=False),
+            ))
+        files.insert(0, (
+            f"pack-p3a_repropose/r{round_no}/{key}/BUILD_MANIFEST.md",
+            f"Context pack build (deterministic): round-{round_no} refinement of `{key}`; "
+            "the adjusted proposal with the human's note, the objective with its "
+            "published anchors, the carrier card, and the Phase 2 rules the rewrite "
+            "must still discharge. Rewrite ONLY what the note asks for.\n"))
+    elif step == "p3a_org_cluster":
+        # Etapa 1.5 — the organizational rows with their published anchors and
+        # the company's own scale facts; the model groups them into duties and
+        # proposes ORG | SCALE | CARRIED per duty.
+        import phase3 as _p3
+
+        phase2_doc = run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md"
+        objectives = _p3.load_objectives(phase2_doc)
+        rows = _p3.build(objectives)
+        from aegis_pipeline.phases.phase3.schemas import ORGANIZATIONAL as _ORG
+        org_rows = [r for r in rows if r.get("verdict") == _ORG]
+        if not org_rows:
+            raise ValueError("p3a_org_cluster: no organizational rows — run p3a_map first")
+        fact_sheet = run_dir / "steps" / "fact_sheet.yaml"
+        lines = ["# Organizational objectives to cluster into duties", ""]
+        for r in org_rows:
+            lines += [
+                f"## `{r['id']}`",
+                f"- **Regulation:** {r['regulation']}",
+                f"- **Objective:** {r['summary']}",
+                f"- **Obligation named:** {r['discharge']}",
+                f"- **Published control anchors:** "
+                + (", ".join(f"`{a}`" for a in r["anchors"]) or "_none_"),
+                "",
+            ]
+        files.append((
+            "pack-p3a_org_cluster/ORG_ROWS.md",
+            "\n".join(lines),
+        ))
+        files.append((
+            "pack-p3a_org_cluster/FACT_SHEET.yaml",
+            fact_sheet.read_text(encoding="utf-8") if fact_sheet.is_file() else "(missing)",
+        ))
+        files.insert(0, (
+            "pack-p3a_org_cluster/BUILD_MANIFEST.md",
+            f"Context pack build (deterministic): {len(org_rows)} organizational "
+            "objective(s) with their published anchors, plus the company's own fact "
+            "sheet. Duties cut across sub-domains — one duty may carry objectives "
+            "from several; propose ONE duty per coherent team obligation, never one "
+            "per objective.\n"))
     elif step.startswith("p3a_"):
         # The p3a steps are neither extraction nor Phase 1 goal-writing, and
         # `p3a_map` starts with "p3", so it used to inherit the p4 generative

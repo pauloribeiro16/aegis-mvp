@@ -18,7 +18,6 @@ from aegis_pipeline.guards.quality_gates import check_no_technology
 
 RE_OBJECTIVE = re.compile(r"^(?:PO|SO)-D-\d{2}\.\d-\d{3}$")
 RE_ANCHOR = re.compile(r"[A-Z]{2}\.[A-Z0-9-]+(?:-\d+)?")
-PROPOSAL_ACTIONS = ("propose", "round 2")
 
 
 def load_rule_catalogue(run_dir: Path) -> dict[str, list[dict]]:
@@ -47,19 +46,28 @@ def load_rule_catalogue(run_dir: Path) -> dict[str, list[dict]]:
 
 
 def select_proposal_targets(rows: list[dict]) -> list[dict]:
-    """Rows the model itself flagged for a proposal.
+    """Rows the verdict stage routed to the product lane.
 
-    The selector reads the matrix's own `Action / Round` column (`Propose for
-    Round 2: …`), written by the verdict stage — no second judgement here. A
-    row that names no action and no pending-proposal discharge is not a target;
-    the round can still add one by hand.
+    The selector reads the matrix's own Action column, a pure enum since
+    Onda B (schemas.ACTIONS) — `PROPOSE_PRODUCT` is the whole contract. The
+    old free-text column ("Propose for Round 2: …") is what this selector had
+    to substring-mine, and the measured run routed 52 of 65 objectives
+    around it. A row that names no enum action is not a target; the round
+    can still add one by hand.
     """
+    from aegis_pipeline.phases.phase3.schemas import ACTIONS
+
     targets = []
     for row in rows:
-        action = (row.get("action") or "").lower()
-        discharge = (row.get("discharge") or "").lower()
-        if any(marker in action for marker in PROPOSAL_ACTIONS) or "pending proposal" in discharge:
+        action = (row.get("action") or "").replace("`", "").replace("*", "").strip().upper()
+        if action == "PROPOSE_PRODUCT":
             targets.append(row)
+        elif action and action not in ACTIONS:
+            # A legacy run's stored free text is visible, never silently mined:
+            # it does not select a target, and it says why.
+            print(f"[p3a_propose] {row['id']}: action {row.get('action')!r} is not "
+                  f"the enum — not a proposal target (re-run p3a_map for the enum column)",
+                  flush=True)
     return targets
 
 
@@ -191,13 +199,87 @@ def round_key(proposal: dict) -> str:
     return proposal.get("principle") or proposal["objective"]
 
 
+#: The verdicts a human may enter, and the functional-evolution operations the
+#: verdicts file may register (R13 §3.4 taxonomy — Onda B).
+ROUND_VERDICTS = ("Accept", "Reject", "Adjust")
+FUNCTIONAL_CHANGES = ("D1", "D2", "D3", "D4")
+
+
+# ---------------------------------------------------------------------------
+# Round bookkeeping — the multi-round engine (Etapa 1.6 / 1.6.b, Onda B).
+# ---------------------------------------------------------------------------
+
+def _round_glob(run_dir: Path, kind: str) -> list[Path]:
+    return sorted((run_dir / "steps" / "phase3").glob(f"round*_{kind}.json"))
+
+
+def latest_round(run_dir: Path) -> int:
+    """The highest round that has verdicts or state on disk; round 1 otherwise."""
+    rounds = [int(p.stem.split("_")[0][len("round"):])
+              for p in _round_glob(run_dir, "verdicts") + _round_glob(run_dir, "state")]
+    return max(rounds) if rounds else 1
+
+
+def round_verdicts_path(run_dir: Path, n: int) -> Path:
+    return run_dir / "steps" / "phase3" / f"round{n}_verdicts.json"
+
+
+def round_state_path(run_dir: Path, n: int) -> Path:
+    return run_dir / "steps" / "phase3" / f"round{n}_state.json"
+
+
+def round_proposals_path(run_dir: Path, n: int) -> Path:
+    return run_dir / "steps" / "phase3" / f"round{n}_proposals.json"
+
+
+def scaffold_verdicts_file(n: int) -> dict:
+    """The empty verdicts file: what the human fills, and in what vocabulary."""
+    return {
+        "verdicts": {},
+        "notes": {},
+        "instructions": (
+            "enter Accept|Reject|Adjust per verdict key — the objective id for an "
+            "objective-driven proposal, the principle id (PRIN-ENG-nn) for a "
+            "constraint derived from a principle; one objective can carry two "
+            "constraints, so the two keys are distinct verdicts. An Adjust verdict "
+            "MUST carry its instruction under \"notes\" (the next round's repropose "
+            "obeys it). Optional: \"functional_changes\" "
+            "({\"item\", \"kind\": \"D1|D2|D3|D4\", \"target\", \"note\"}) and per-duty "
+            "disposition overrides under \"duties\"."),
+    }
+
+
 def apply_round_verdicts(
     proposals: list[dict],
     verdicts: dict[str, str],
+    notes: dict[str, str] | None = None,
+    functional_changes: list[dict] | None = None,
 ) -> dict:
-    """Split proposals by the human round verdict. Reject = explicit, recorded."""
-    allowed = {"Accept", "Reject", "Adjust"}
-    accepted, rejected, adjusted, open_items = [], [], [], []
+    """Split proposals by the human round verdict. Reject = explicit, recorded.
+
+    Onda B: an `Adjust` verdict is NOT a quiet acceptance. The item enters
+    `pending_adjustment[]` carrying the human's note, and the round does not
+    converge while that list is non-empty — `p3a_repropose` rewrites exactly
+    those items for the next round. The measured defect this closes: an
+    all-Adjust round counted as converged and the weave absorbed proposals no
+    human ever approved.
+
+    `functional_changes` (D1 split / D2 merge / D3 retire / D4 new card) is
+    validated against the round's items and recorded in the state; a D3 on an
+    item retires it — the item moves to `retired[]` and gets no repropose.
+    """
+    allowed = set(ROUND_VERDICTS)
+    notes = notes or {}
+    changes = list(functional_changes or [])
+    retired_keys = {c.get("item") for c in changes if c.get("kind") == "D3"}
+    for c in changes:
+        if c.get("kind") not in FUNCTIONAL_CHANGES:
+            raise ValueError(
+                f"round: functional change kind {c.get('kind')!r} outside {FUNCTIONAL_CHANGES}")
+        if c.get("item") not in {round_key(p) for p in proposals}:
+            raise ValueError(
+                f"round: functional change on {c.get('item')!r}, which is not an item of this round")
+    accepted, rejected, adjusted, pending, open_items, retired = [], [], [], [], [], []
     for proposal in proposals:
         key = round_key(proposal)
         verdict = verdicts.get(key)
@@ -205,20 +287,25 @@ def apply_round_verdicts(
             open_items.append(key)
         elif verdict not in allowed:
             raise ValueError(
-                f"round: verdict {verdict!r} for {key} not in {sorted(allowed)}"
-            )
+                f"round: verdict {verdict!r} for {key} not in {sorted(allowed)}")
+        elif key in retired_keys:
+            retired.append({**proposal, "retire_note": notes.get(key, "")})
         elif verdict == "Accept":
             accepted.append(proposal)
         elif verdict == "Reject":
-            rejected.append(proposal)
+            rejected.append({**proposal, "reject_note": notes.get(key, "")})
         else:
             adjusted.append(proposal)
+            pending.append({**proposal, "adjust_note": notes.get(key, "")})
     return {
         "accepted": accepted,
         "rejected": rejected,
         "adjusted": adjusted,
+        "pending_adjustment": pending,
+        "retired": retired,
         "open": open_items,
-        "converged": not open_items,
+        "functional_changes": changes,
+        "converged": not open_items and not pending,
     }
 
 
@@ -247,37 +334,76 @@ def render_round_register(
     proposals: list[dict],
     verdict_map: dict[str, str],
     converged: bool,
+    round_no: int = 1,
+    notes: dict[str, str] | None = None,
+    functional_changes: list[dict] | None = None,
+    duty_proposals: list[dict] | None = None,
+    carried: dict[str, list[dict]] | None = None,
 ) -> str:
     """The ROUND<n>_REGISTER scaffold/final: §1 verdict ledger over the proposals."""
+    notes = notes or {}
     lines = [
         "---",
-        "title: 'ROUND1_REGISTER — acceptance round (generated scaffold; verdicts are human)'",
-        "generated_by: 'p3a_propose (wave 4) + p3a_round (wave 4)'",
+        f"title: 'ROUND{round_no}_REGISTER — acceptance round (generated scaffold; verdicts are human)'",
+        "generated_by: 'p3a_propose (wave 4) + p3a_round + p3a_repropose (onda B)'",
         "---",
         "",
         "## §1 Verdict ledger",
         "",
-        "| Item | Verdict key | Discharges | Proposed constraint | Verdict |",
-        "|---|---|---|---|---|",
+        "| Item | Verdict key | Discharges | Proposed constraint | Verdict | Note |",
+        "|---|---|---|---|---|---|",
     ]
     for index, proposal in enumerate(proposals, start=1):
         key = round_key(proposal)
         verdict = verdict_map.get(key, "**pending**")
+        note = notes.get(key, "—")
         lines.append(
             f"| P-{index:02d} | `{key}` | `{proposal['objective']}` | "
-            f"{proposal['constraint'][:140]} | {verdict} |"
+            f"{proposal['constraint'][:140]} | {verdict} | {note} |"
         )
+    if carried:
+        for kind in ("accepted", "rejected"):
+            for proposal in carried.get(kind, []):
+                lines.append(
+                    f"| — | `{round_key(proposal)}` | `{proposal['objective']}` | "
+                    f"{proposal['constraint'][:140]} | {kind.capitalize()} (carried) | — |"
+                )
+    if functional_changes:
+        lines += ["", "## §2 Functional change register (D1–D4)", "",
+                  "| Item | Kind | Target | Note |", "|---|---|---|---|"]
+        for change in functional_changes:
+            lines.append(
+                f"| `{change.get('item', '—')}` | {change.get('kind', '—')} "
+                f"| {change.get('target', '—')} | {change.get('note', '—')} |"
+            )
+    if duty_proposals:
+        lines += ["", "## §3 Duty dispositions (p3a_org_cluster — human may override in "
+                  "the verdicts file under `\"duties\"`)", "",
+                  "| Duty | Objectives | Disposition | Scale fact |", "|---|---|---|---|"]
+        for d in duty_proposals:
+            lines.append(
+                f"| {d['duty']} | {', '.join(f'`{o}`' for o in d['objectives'])} "
+                f"| {d['disposition']} | {d.get('scale_fact', '—')} |"
+            )
+    section = "§3" if not duty_proposals else "§4"
     lines += [
         "",
-        "## §2 How to close this round",
+        f"## {section} How to close this round",
         "",
         "1. Enter one verdict per item — `Accept`, `Reject` (= explicit risk acceptance,",
-        "   recorded, never silent) or `Adjust` — in `steps/phase3/round1_verdicts.json`",
+        "   recorded, never silent) or `Adjust` — in `steps/phase3/round"
+        f"{round_no}_verdicts.json`",
         "   under `\"verdicts\": {\"<verdict-key>\": \"Accept|Reject|Adjust\"}`. The key is the",
         "   objective id, or the principle id for a constraint derived from a principle —",
         "   a principle id is separate because one objective can carry two constraints.",
-        "2. Create `steps/gates/G-P3-A.approved` with the review note (≥200 chars).",
-        "3. Re-run `--stage p3a_round`: the gate evaluates only on the CONCLUDED state.",
+        "   An `Adjust` verdict MUST carry a note under `\"notes\"` — it is the instruction",
+        "   the next round's repropose obeys.",
+        "2. Optional: register functional evolution under `\"functional_changes\"` —",
+        "   `{\"item\": \"<key>\", \"kind\": \"D1|D2|D3|D4\", \"target\": \"R<n>.<m>\", \"note\": \"…\"}`",
+        "   (D1 split, D2 merge, D3 retire, D4 new card). A D3 retires the item.",
+        "3. Create `steps/gates/G-P3-A.approved` with the review note (≥200 chars).",
+        "4. Re-run `--stage p3a_round`; with `Adjust` items, then run `--stage p3a_repropose`",
+        "   for the next round.",
         "",
         f"Round state: **{'CONVERGED' if converged else 'OPEN'}**.",
         "",

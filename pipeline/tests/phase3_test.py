@@ -266,9 +266,10 @@ def _answer(rows: list[dict], **over) -> str:
             "carrier": "—", "skill": "—",
             "verdict": S.ORGANIZATIONAL,
             "discharge": "recorded decision on the ticket; the founders own it",
+            "action": "ROUTE_ORG",
         })
         out.append(f"| `{r['id']}` | {r['summary'][:40]} | {v['carrier']} | {v['skill']} "
-                   f"| **{v['verdict']}** | {v['discharge']} | — |")
+                   f"| **{v['verdict']}** | {v['discharge']} | {v.get('action', 'ROUTE_ORG')} |")
     return "\n".join(out)
 
 
@@ -293,7 +294,7 @@ def test_a_dropped_row_is_a_gate_finding() -> None:
 def test_a_repeated_row_is_a_parse_error() -> None:
     """Two rows for one objective is a contract breach, not a judgement."""
     rows, objs, pool = _subdomain_rows("Case_01_TinyTask_SaaS", "D-03.2")
-    answer = _answer(rows) + "\n| `" + rows[0]["id"] + "` | dup | — | — | **" + S.ORGANIZATIONAL + "** | dup | — |"
+    answer = _answer(rows) + "\n| `" + rows[0]["id"] + "` | dup | — | — | **" + S.ORGANIZATIONAL + "** | dup | ROUTE_ORG |"
     try:
         phase3.parse_verdicts(answer)
     except ValueError as e:
@@ -650,14 +651,19 @@ def test_card_parse_rejects_nominalization_and_technology() -> None:
 
 
 def test_proposal_targets_come_from_the_actions_not_a_new_judgement() -> None:
+    """Onda B contract: the Action column is a pure enum, and PROPOSE_PRODUCT
+    is the whole selection contract. The old free-text column ("Propose for
+    Round 2: …") is what the selector had to substring-mine — visible legacy
+    rows are reported, never mined, and a discharge that says "pending
+    proposal" without the enum selects nothing."""
     _, _, proposals, _ = _wave_modules()
     rows = [
-        {"id": "SO-D-01.1-001", "subdomain": "D-01.1", "action": "Propose for Round 2: assign to security", "discharge": "x"},
-        {"id": "PO-D-01.2-001", "subdomain": "D-01.2", "action": "—", "discharge": "pending proposal: encryption leg"},
-        {"id": "SO-D-01.3-001", "subdomain": "D-01.3", "action": "—", "discharge": "fully routed to the organizational lane"},
+        {"id": "SO-D-01.1-001", "subdomain": "D-01.1", "action": "PROPOSE_PRODUCT", "discharge": "x"},
+        {"id": "PO-D-01.2-001", "subdomain": "D-01.2", "action": "ROUTE_ORG", "discharge": "pending proposal: encryption leg"},
+        {"id": "SO-D-01.3-001", "subdomain": "D-01.3", "action": "CARRIED", "discharge": "fully routed to the organizational lane"},
     ]
     targets = proposals.select_proposal_targets(rows)
-    assert [t["id"] for t in targets] == ["SO-D-01.1-001", "PO-D-01.2-001"]
+    assert [t["id"] for t in targets] == ["SO-D-01.1-001"]
 
 
 def test_proposal_parse_and_published_anchor_gate() -> None:

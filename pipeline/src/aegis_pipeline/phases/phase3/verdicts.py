@@ -8,6 +8,7 @@ from __future__ import annotations
 import re
 
 from aegis_pipeline.phases.phase3.schemas import (
+    ACTIONS,
     MATRIX_COLUMNS,
     ORGANIZATIONAL,
     UNSET,
@@ -49,6 +50,12 @@ def parse_verdicts(answer: str) -> list[dict]:
         if verdict not in VERDICTS:
             raise ValueError(f"{oid}: verdict {verdict!r} is outside the ADR-007 D4 vocabulary")
         discharge = cells[5]
+        # The Action column is a pure enum (R10b inv. 2): the routing decision
+        # is a category, the justification lives in the discharge. Free text
+        # here is what the proposal selector had to substring-mine.
+        action = cells[6].replace("**", "").replace("`", "").strip()
+        if action not in ACTIONS:
+            raise ValueError(f"{oid}: action {action!r} is outside the routing enum {ACTIONS}")
         # S5/S6: what the model actually cited, in the summary AND the
         # discharge. Scanning only the discharge let a chain that names its
         # anchor in the summary pass T3 with an invented one, and the old
@@ -63,7 +70,7 @@ def parse_verdicts(answer: str) -> list[dict]:
             "skill": cells[3],
             "verdict": verdict,
             "discharge": discharge,
-            "action": cells[6],
+            "action": action,
             "carriers_cited": sorted(set(re.findall(r"R\d+\.\d+", cells[2]))),
             "anchors_cited": anchors_cited,
         }
@@ -174,10 +181,13 @@ def build_verdict_pack(rows: list[dict], cards: list[dict],
         out.append(f"- `{c['id']}` **{c['name']}** — {c['description']}")
 
     out += ["", "---", "", "# Verdicts", "",
-            "One per objective, exactly one of:"]
+            "One verdict per objective, exactly one of:"]
     out += [f"- `{v}`" for v in VERDICTS]
     out += ["",
+            "The Action column is a pure enum, exactly one of:"]
+    out += [f"- `{a}`" for a in ACTIONS]
+    out += ["",
             "Emit a markdown table with exactly these columns:",
-            "`Objective | Summary | Functional carrier | Skill | State | VC discharge | Action / Round`",
+            "`Objective | Summary | Functional carrier | Skill | State | VC discharge | Action`",
             ""]
     return "\n".join(out)

@@ -40,7 +40,7 @@ mkdir -p runs
 # Validate before queueing: an unknown stage would otherwise start a GPU job
 # (and an Ollama server) only for run_pipeline.py's argparse to reject it.
 case "$STAGE" in
-  p1|p2|p3|p3f|p4|p4t|p5|phase2|p3a_map|p3a_prin|p3a_cards|p3a_propose|p3a_round|p3a_org|p3a_weave|p3a_gate|p3a_all|p4p5|all|agentic) ;;
+  p1|p2|p3|p3f|p4|p4t|p5|phase2|p3a_map|p3a_prin|p3a_cards|p3a_propose|p3a_round|p3a_repropose|p3a_org_cluster|p3a_org|p3a_weave|p3a_gate|p3a_all|p4p5|all|agentic) ;;
   *) echo "FATAL: unknown stage '$STAGE'" >&2
      exit 2 ;;
 esac
@@ -84,6 +84,8 @@ case "$STAGE" in
   # sub-domínio; round/org/gate são maioritariamente determinísticos
   p3a_cards|p3a_propose) TIME=02:00:00 ;;
   p3a_round|p3a_org|p3a_weave|p3a_gate) TIME=01:00:00 ;;
+  p3a_repropose) TIME=01:00:00 ;;  # one call per Adjust item, sequential, resumable
+  p3a_org_cluster) TIME=01:00:00 ;;  # one call over all organizational rows
   all)     TIME=04:00:00 ;;  # partition MaxTime; actual ~40 min (p4 dominates)
   agentic) TIME=04:00:00 ;;  # one long tool-calling conversation; resumable via checkpoint
 esac

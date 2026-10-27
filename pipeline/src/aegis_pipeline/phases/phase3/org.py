@@ -88,6 +88,144 @@ def parse_duty_audit(path: Path) -> dict[str, dict]:
     return out
 
 
+# ---------------------------------------------------------------------------
+# Onda B — Etapa 1.5: the model clusters the ROUTE_ORG rows into duties and
+# proposes each duty's disposition; the audit file becomes the fallback.
+# ---------------------------------------------------------------------------
+
+RE_DUTY_PROPOSAL_ROW = re.compile(
+    r"^\|\s*(?P<duty>[^|]+?)\s*\|\s*(?P<objectives>[^|]+)\|"
+    r"\s*(?P<disposition>ORG|SCALE|CARRIED)\s*\|\s*(?P<scale_fact>[^|]*)\|"
+    r"\s*(?P<warrant>[^|]*)\|"
+)
+
+
+def parse_duty_proposals(answer: str, org_ids: set[str]) -> list[dict]:
+    """L0 for the duty-clustering call: one table row per proposed duty.
+
+    The contract is a partition: every organizational objective appears in
+    exactly one duty, and no invented id passes. A `SCALE` disposition MUST
+    cite the company fact it leans on (`scale_fact`) — a carve-out without a
+    fact is a preference, and proportionality is measured against the intake.
+    """
+    from aegis_pipeline.phases.phase1.common import extract_fenced
+
+    block = extract_fenced(answer, "markdown")
+    proposals: list[dict] = []
+    seen: set[str] = set()
+    for line in block.splitlines():
+        line = line.strip()
+        if not line.startswith("|") or set(line) <= {"|", "-", " ", ":"}:
+            continue
+        m = RE_DUTY_PROPOSAL_ROW.match(line)
+        if not m:
+            continue
+        duty = m["duty"].strip().strip("`*")
+        if not duty:
+            raise ValueError("duty proposals: a row carries an empty duty name")
+        objectives = [
+            oid.strip().strip("`*") for oid in m["objectives"].split(",") if oid.strip().strip("`*")
+        ]
+        bad = [o for o in objectives if o not in org_ids]
+        if bad:
+            raise ValueError(f"duty proposals: objectives not routed organizational: {bad[:6]}")
+        dupes = sorted({o for o in objectives if o in seen})
+        if dupes:
+            raise ValueError(f"duty proposals: objectives assigned to more than one duty: {dupes[:6]}")
+        seen.update(objectives)
+        disposition = m["disposition"]
+        scale_fact = m["scale_fact"].strip()
+        if disposition == "SCALE" and len(scale_fact) < 15:
+            raise ValueError(
+                f"duty proposals [{duty}]: SCALE without a company scale fact "
+                "(the carve-out must cite the intake)")
+        proposals.append({
+            "duty": duty,
+            "objectives": objectives,
+            "disposition": disposition,
+            "scale_fact": scale_fact,
+            "warrant": m["warrant"].strip(),
+        })
+    if not proposals:
+        raise ValueError("duty proposals: no rows parsed")
+    missing = sorted(org_ids - seen)
+    if missing:
+        raise ValueError(
+            f"duty proposals: {len(missing)} organizational objective(s) not clustered: {missing[:8]}")
+    return proposals
+
+
+def apply_duty_overrides(proposals: list[dict], overrides: dict[str, str]) -> list[dict]:
+    """The human's per-duty disposition from the round verdicts (`\"duties\"`).
+
+    The model proposes; the human disposes. An override keyed by duty name
+    replaces that duty's disposition — the model's proposal stays in the file
+    as the record of what was proposed.
+    """
+    if not overrides:
+        return proposals
+    by_name = {p["duty"]: p for p in proposals}
+    unknown = sorted(set(overrides) - set(by_name))
+    if unknown:
+        raise ValueError(f"duty overrides: no proposed duty named {unknown[:6]}")
+    out = []
+    for p in proposals:
+        p = dict(p)
+        if p["duty"] in overrides:
+            override = overrides[p["duty"]]
+            if override not in DISPOSITIONS:
+                raise ValueError(
+                    f"duty overrides: {p['duty']} -> {override!r} outside {DISPOSITIONS}")
+            p["disposition"] = override
+            p["overridden_by_human"] = True
+        out.append(p)
+    return out
+
+
+def duty_proposal_map(proposals: list[dict]) -> dict[str, dict]:
+    """The shape `group_duties` consumes, from the cluster stage's proposals."""
+    duty_map: dict[str, dict] = {}
+    for p in proposals:
+        for oid in p["objectives"]:
+            duty_map[oid] = {
+                "duty": p["duty"],
+                "disposition": p["disposition"],
+                "warrant": p.get("warrant") or p.get("scale_fact", ""),
+            }
+    return duty_map
+
+
+def render_duty_clustering(proposals: list[dict], org_rows: list[dict]) -> str:
+    """The DUTY_CLUSTERING deliverable: proposals side by side with the rows."""
+    summary = {r["id"]: (r.get("summary") or "—") for r in org_rows}
+    lines = [
+        "---",
+        "title: 'DUTY_CLUSTERING — organizational duties proposed (Etapa 1.5)'",
+        "generated_by: 'p3a_org_cluster (onda B)'",
+        "status: PROPOSED — the human round may override dispositions",
+        "---",
+        "",
+        "## §1 Duty proposals",
+        "",
+        "| Duty | Objectives | Disposition | Scale fact | Warrant |",
+        "|---|---|---|---|---|",
+    ]
+    for p in proposals:
+        lines.append(
+            f"| {p['duty']} | {', '.join(f'`{o}`' for o in p['objectives'])} "
+            f"| {p['disposition']} | {p.get('scale_fact') or '—'} "
+            f"| {p.get('warrant') or '—'} |"
+        )
+    lines += ["", "## §2 The rows each duty carries", ""]
+    for p in proposals:
+        lines.append(f"### {p['duty']}")
+        lines.append("")
+        for oid in p["objectives"]:
+            lines.append(f"- `{oid}` — {summary.get(oid, '—')}")
+        lines.append("")
+    return "\n".join(lines) + "\n"
+
+
 def group_duties(rows: list[dict], duty_map: dict[str, dict]) -> list[dict]:
     """Collapse organizational verdict rows into duties.
 

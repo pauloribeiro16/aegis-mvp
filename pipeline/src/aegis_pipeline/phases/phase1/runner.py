@@ -88,6 +88,8 @@ NUM_CTX = {
     "p3a_propose": 32768,
     "p3a_org": 32768,
     "p3a_weave": 32768,
+    "p3a_repropose": 32768,
+    "p3a_org_cluster": 32768,
 }
 
 NUM_PREDICT = {
@@ -106,6 +108,8 @@ NUM_PREDICT = {
     "p3a_propose": 8192,
     "p3a_org": 8192,
     "p3a_weave": 8192,
+    "p3a_repropose": 8192,
+    "p3a_org_cluster": 8192,
 }
 
 EXTRA_INSTRUCTION = {
@@ -143,6 +147,18 @@ EXTRA_INSTRUCTION = {
         "and containing the bold fields **Preconditions**, **Extensions**, **Constraints absorbed** "
         "(the security preconditions and exception extensions the accepted constraints impose on "
         "this card's use case). Nothing else."
+    ),
+    "p3a_repropose": (
+        "Wrap your answer: return ONLY one ```markdown fenced block containing one `### <objective-id>` "
+        "section with exactly these bold fields: **Constraint (EARS)**, **Fit criterion**, "
+        "**Risk addressed**, **Chain anchors**, **Proposed carrier**. Rewrite ONLY what the "
+        "human's note asks for; everything else stays as proposed. Nothing else."
+    ),
+    "p3a_org_cluster": (
+        "Wrap your answer: return ONLY one ```markdown fenced block containing one table "
+        "`| Duty | Objectives | Disposition | Scale fact | Warrant |` (header row included), "
+        "one row per duty. Every organizational objective in the pack appears in exactly one "
+        "duty row. Nothing else."
     ),
     "p1": "Wrap your answer: return ONLY one ```yaml fenced block with the fact sheet.",
     "p2": "Wrap your answer: return ONLY one ```markdown fenced block containing the 5-row §2 verdict table (header + 5 rows, nothing else).",
@@ -320,6 +336,21 @@ def store_parsed(run_dir: Path, step: str, subdomain: str | None, parsed: dict) 
         card_id = (subdomain or step.split(":", 1)[1]).replace(".", "_")
         (d / f"{card_id}.json").write_text(
             json.dumps(parsed, indent=1, ensure_ascii=False), encoding="utf-8"
+        )
+    elif step.startswith("p3a_repropose:"):
+        # `p3a_repropose:<round>:<key>` — one revised proposal per Adjust item.
+        _, round_no, key = step.split(":", 2)
+        d = steps_dir / "phase3" / "repropose" / f"r{round_no}"
+        d.mkdir(parents=True, exist_ok=True)
+        (d / f"{key}.json").write_text(
+            json.dumps(parsed["proposals"][0], indent=1, ensure_ascii=False), encoding="utf-8"
+        )
+    elif step == "p3a_org_cluster":
+        d = steps_dir / "phase3"
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "duty_proposals.json").write_text(
+            json.dumps({"status": "PROPOSED", "proposals": parsed["proposals"]},
+                       indent=1, ensure_ascii=False), encoding="utf-8"
         )
     elif subdomain is not None:
         goals_dir = steps_dir / "goals"
@@ -660,6 +691,24 @@ class StepRunner:
                     "only discharge objectives the matrix routed organizational")
             return {"proposals": _p3pc.parse_principle_proposals(
                 answer, step.split(":", 1)[1], routed)}
+        if step.startswith("p3a_repropose:"):
+            from aegis_pipeline.phases.phase3 import proposals as _p3p
+            item = getattr(self, "_p3a_repropose_target", None)
+            if item is None:
+                raise ValueError(
+                    "p3a_repropose: no target — the stage must set _p3a_repropose_target "
+                    "before calling; a refinement may only rewrite the item the human "
+                    "marked Adjust")
+            return _p3p.parse_proposals(answer, [item],
+                                        _p3p.load_rule_catalogue(self.run_dir))
+        if step == "p3a_org_cluster":
+            from aegis_pipeline.phases.phase3 import org as _p3o
+            from aegis_pipeline.phases.phase3.schemas import ORGANIZATIONAL as _ORG
+            rows, _ = self._p3_merged_rows()
+            org_ids = {r["id"] for r in rows if r.get("verdict") == _ORG}
+            if not org_ids:
+                raise ValueError("p3a_org_cluster: no organizational rows routed by p3a_map")
+            return {"proposals": _p3o.parse_duty_proposals(answer, org_ids)}
         if subdomain is not None:
             parsed = parse_p4(answer, subdomain)
             return self._check_p4_quality(parsed, subdomain)
@@ -1318,37 +1367,46 @@ class StepRunner:
     def stage_p3a_round(self) -> int:
         from aegis_pipeline.phases.phase3 import proposals as p3p
 
-        all_proposals: list[dict] = []
-        for path in sorted((self.run_dir / "steps" / "phase3").glob("proposals_*.json")):
-            all_proposals.extend(json.loads(path.read_text(encoding="utf-8"))["proposals"])
-        if not all_proposals:
-            raise ValueError("no proposals stored — run --stage p3a_propose first")
-
-        verdicts_path = self.run_dir / "steps" / "phase3" / "round1_verdicts.json"
+        n = p3p.latest_round(self.run_dir)
+        verdicts_path = p3p.round_verdicts_path(self.run_dir, n)
         marker = self.run_dir / "steps" / "gates" / "G-P3-A.approved"
         out_dir = self.run_dir / "outputs" / "phase3" / "synthesis_rounds"
         out_dir.mkdir(parents=True, exist_ok=True)
 
+        carried: dict[str, list[dict]] | None = None
+        duty_proposals: list[dict] | None = None
+        duty_path = self.run_dir / "steps" / "phase3" / "duty_proposals.json"
+        if duty_path.is_file():
+            duty_proposals = json.loads(duty_path.read_text(encoding="utf-8"))["proposals"]
+        if n == 1:
+            all_proposals = []
+            for path in sorted((self.run_dir / "steps" / "phase3").glob("proposals_*.json")):
+                all_proposals.extend(json.loads(path.read_text(encoding="utf-8"))["proposals"])
+            if not all_proposals:
+                raise ValueError("no proposals stored — run --stage p3a_propose first")
+        else:
+            prev_path = p3p.round_proposals_path(self.run_dir, n)
+            if not prev_path.is_file():
+                raise ValueError(
+                    f"round {n} has no proposal file ({prev_path.name}) — run "
+                    "--stage p3a_repropose first")
+            blob = json.loads(prev_path.read_text(encoding="utf-8"))
+            all_proposals = blob["proposals"]
+            carried = blob.get("carried")
+
         if not marker.exists() or not verdicts_path.is_file():
             # Sem marcador OU marcador pré-aprovado sem veredictos: o estado é
-            # PROPOSTED — nunca CONCLUDED (doc 08, two states; o fecho por
+            # PROPOSED — nunca CONCLUDED (doc 08, two states; o fecho por
             # construção é o modo de falha que a ronda existe para evitar).
             if not verdicts_path.is_file():
                 verdicts_path.write_text(
-                    json.dumps(
-                        {"verdicts": {},
-                         "instructions": (
-                             "enter Accept|Reject|Adjust per verdict key — the objective "
-                             "id for an objective-driven proposal, the principle id "
-                             "(PRIN-ENG-nn) for a constraint derived from a principle; "
-                             "one objective can carry two constraints, so the two keys "
-                             "are distinct verdicts")},
-                        indent=1, ensure_ascii=False,
-                    ),
+                    json.dumps(p3p.scaffold_verdicts_file(n), indent=1, ensure_ascii=False),
                     encoding="utf-8",
                 )
-            (out_dir / "ROUND1_REGISTER.md").write_text(
-                p3p.render_round_register(all_proposals, {}, converged=False),
+            (out_dir / f"ROUND{n}_REGISTER.md").write_text(
+                p3p.render_round_register(all_proposals, {}, converged=False,
+                                          round_no=n, duty_proposals=duty_proposals,
+                                          carried=carried),
                 encoding="utf-8",
             )
             self._write_stage_result("p3a_round", {
@@ -1357,42 +1415,210 @@ class StepRunner:
                 "selected": len(all_proposals),
                 "failed": 0,
                 "summary": (
-                    f"{len(all_proposals)} proposal(s) recorded — PROPOSED, not concluded: "
-                    "enter verdicts in steps/phase3/round1_verdicts.json and create the "
-                    "G-P3-A marker, then re-run this stage"
+                    f"round {n}: {len(all_proposals)} proposal(s) recorded — PROPOSED, "
+                    f"not concluded: enter verdicts in steps/phase3/round{n}_verdicts.json "
+                    "and create the G-P3-A marker, then re-run this stage"
                 ),
             })
             return 0
 
-        verdict_map = json.loads(verdicts_path.read_text(encoding="utf-8")).get("verdicts", {})
-        state = p3p.apply_round_verdicts(all_proposals, verdict_map)
-        (self.run_dir / "steps" / "phase3" / "round1_state.json").write_text(
+        blob = json.loads(verdicts_path.read_text(encoding="utf-8"))
+        verdict_map = blob.get("verdicts", {})
+        notes = blob.get("notes", {})
+        changes = blob.get("functional_changes", [])
+        state = p3p.apply_round_verdicts(all_proposals, verdict_map, notes, changes)
+        # A ronda N>1 acumula as decisões já tomadas (o registo é o conjunto
+        # inteiro; os veredictos desta ronda só governam os itens revistos).
+        if carried:
+            state["accepted"] = carried.get("accepted", []) + state["accepted"]
+            state["rejected"] = carried.get("rejected", []) + state["rejected"]
+            state["retired"] = carried.get("retired", []) + state.get("retired", [])
+        state["round"] = n
+        state["duty_overrides"] = blob.get("duties", {})
+        p3p.round_state_path(self.run_dir, n).write_text(
             json.dumps(state, indent=1, ensure_ascii=False), encoding="utf-8"
         )
-        (out_dir / "ROUND1_REGISTER.md").write_text(
-            p3p.render_round_register(all_proposals, verdict_map, converged=state["converged"]),
+        (out_dir / f"ROUND{n}_REGISTER.md").write_text(
+            p3p.render_round_register(all_proposals, verdict_map,
+                                      converged=state["converged"], round_no=n,
+                                      notes=notes, functional_changes=changes,
+                                      duty_proposals=duty_proposals, carried=carried),
             encoding="utf-8",
         )
         self._write_stage_result("p3a_round", {
             "status": "ok" if state["converged"] else "partial",
             "carried": len(state["accepted"]),
-            "selected": len(all_proposals),
+            "selected": len(all_proposals) + sum(len(v) for v in (carried or {}).values()),
             "failed": 0,
             "summary": (
-                f"{len(state['accepted'])} accepted / {len(state['rejected'])} rejected "
+                f"round {n}: {len(state['accepted'])} accepted / {len(state['rejected'])} rejected "
                 f"(explicit risk acceptance) / {len(state['adjusted'])} adjusted / "
                 f"{len(state['open'])} open"
+                + (f" / {len(state['pending_adjustment'])} pending adjustment"
+                   if state.get("pending_adjustment") else "")
             ),
             "open": state["open"],
         })
         return 0
 
+    def stage_p3a_repropose(self) -> int:
+        """Etapa 1.6.b — rewrite exactly the items the human marked Adjust.
+
+        One call per pending item: the previous proposal, the human's note and
+        the material the rewrite must stay inside. The output is the next
+        round's proposal file plus its empty verdicts scaffold — the round
+        itself only closes when the human answers the revisions (two states).
+        """
+        from aegis_pipeline.phases.phase3 import proposals as p3p
+
+        n = p3p.latest_round(self.run_dir)
+        state_path = p3p.round_state_path(self.run_dir, n)
+        if not state_path.is_file():
+            raise ValueError(
+                f"round {n} has no applied state — record the verdicts and re-run "
+                "--stage p3a_round first (a repropose rewrites APPLIED Adjust items)")
+        state = json.loads(state_path.read_text(encoding="utf-8"))
+        pending = state.get("pending_adjustment") or []
+        if not pending:
+            raise ValueError(
+                f"round {n} has no pending adjustment — nothing to repropose"
+                + (" (the round converged)" if state.get("converged") else ""))
+
+        next_n = n + 1
+        repropose_dir = self.run_dir / "steps" / "phase3" / "repropose" / f"r{next_n}"
+        repropose_dir.mkdir(parents=True, exist_ok=True)
+        calls = 0
+        failures: list[str] = []
+        revised: list[dict] = []
+        for item in pending:
+            key = p3p.round_key(item)
+            out_path = repropose_dir / f"{key}.json"
+            if out_path.is_file():
+                revised.append(json.loads(out_path.read_text(encoding="utf-8")))
+                continue
+            try:
+                self._p3a_repropose_target = item
+                self._call(f"p3a_repropose:{next_n}:{key}", None)
+                if not self.dry_run:
+                    calls += 1
+                if not out_path.is_file():
+                    if self.dry_run:
+                        continue
+                    raise FileNotFoundError(f"{out_path} was not written by _call")
+                revised.append(json.loads(out_path.read_text(encoding="utf-8")))
+            except (LLMError, ValueError, KeyError, OSError) as e:
+                failures.append(f"{key}: {type(e).__name__}: {str(e)[:160]}")
+                print(f"[p3a_repropose] {key} FAILED — continuing: {str(e)[:160]}",
+                      flush=True)
+
+        blob = {
+            "from_round": n,
+            "round": next_n,
+            "proposals": revised,
+            "carried": {
+                "accepted": state.get("accepted", []),
+                "rejected": state.get("rejected", []),
+                "retired": state.get("retired", []),
+            },
+            "functional_changes": state.get("functional_changes", []),
+        }
+        p3p.round_proposals_path(self.run_dir, next_n).write_text(
+            json.dumps(blob, indent=1, ensure_ascii=False), encoding="utf-8")
+        verdicts_path = p3p.round_verdicts_path(self.run_dir, next_n)
+        if not verdicts_path.is_file():
+            verdicts_path.write_text(
+                json.dumps(p3p.scaffold_verdicts_file(next_n), indent=1, ensure_ascii=False),
+                encoding="utf-8")
+        out_dir = self.run_dir / "outputs" / "phase3" / "synthesis_rounds"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        (out_dir / f"ROUND{next_n}_REGISTER.md").write_text(
+            p3p.render_round_register(revised, {}, converged=False, round_no=next_n,
+                                      functional_changes=blob["functional_changes"],
+                                      carried=blob["carried"]),
+            encoding="utf-8",
+        )
+        self._write_stage_result("p3a_repropose", {
+            "status": "ok" if not failures else "partial",
+            "carried": len(revised),
+            "selected": len(pending),
+            "failed": len(failures),
+            "summary": (
+                f"round {next_n}: {len(revised)}/{len(pending)} adjusted item(s) rewritten "
+                "obeying the human notes; record the verdicts and re-run p3a_round"),
+            "failures": failures,
+        })
+        return calls
+
+    def stage_p3a_org_cluster(self) -> int:
+        """Etapa 1.5 — the organizational rows clustered into duties, dispositions
+        proposed (ORG | SCALE | CARRIED), each SCALE citing a company fact.
+
+        One call over all organizational rows: duties cut across sub-domains
+        (the measured Case 01 grouping routes objectives from D-02 and D-10 to
+        one duty), so a per-domain split would fragment exactly the duties the
+        lane exists to form. The output joins `p3a_org` and enters the human
+        round as §3 of the register.
+        """
+        from aegis_pipeline.phases.phase3 import org as p3o
+
+        rows, _ = self._p3_merged_rows()
+        org_rows = [r for r in rows if r.get("verdict") == p3o.ORG_VERDICT]
+        if not org_rows:
+            self._write_stage_result("p3a_org_cluster", {
+                "status": "ok", "carried": 0, "selected": 0, "failed": 0,
+                "summary": "no organizational rows — nothing to cluster",
+            })
+            return 0
+
+        out_path = self.run_dir / "steps" / "phase3" / "duty_proposals.json"
+        calls = 0
+        if not out_path.is_file():
+            self._call("p3a_org_cluster", None)
+            if not self.dry_run:
+                calls += 1
+            if not out_path.is_file():
+                if self.dry_run:
+                    self._write_stage_result("p3a_org_cluster", {
+                        "status": "dry-run", "carried": 0, "selected": len(org_rows),
+                        "failed": 0,
+                        "summary": "dry-run: pack written, no duty proposals stored",
+                    })
+                    return calls
+                raise FileNotFoundError(f"{out_path} was not written by _call")
+
+        proposals = json.loads(out_path.read_text(encoding="utf-8"))["proposals"]
+        # L1 — the partition holds on the rows as they are NOW, not as they
+        # were when the call ran: a resumed run whose map moved rows must not
+        # pass on a stale partition.
+        org_ids = {r["id"] for r in org_rows}
+        covered = [o for p in proposals for o in p["objectives"]]
+        if len(covered) != len(set(covered)) or set(covered) != org_ids:
+            raise ValueError(
+                "duty proposals are not a partition of the organizational rows — "
+                "re-run --stage p3a_org_cluster")
+
+        out_dir = self.run_dir / "outputs" / "phase3" / "analysis_v0_to_v1"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        (out_dir / "DUTY_CLUSTERING.md").write_text(
+            p3o.render_duty_clustering(proposals, org_rows), encoding="utf-8")
+        self._write_stage_result("p3a_org_cluster", {
+            "status": "ok", "carried": len(proposals), "selected": len(org_rows),
+            "failed": 0,
+            "summary": (
+                f"{len(proposals)} duty proposal(s) from {len(org_rows)} organizational "
+                "rows — dispositions PROPOSED, the human round may override under "
+                '`"duties"` in the verdicts file'),
+        })
+        return calls
+
     def stage_p3a_org(self) -> int:
         from aegis_pipeline.phases.phase3 import doc00 as p3d
         from aegis_pipeline.phases.phase3 import org as p3o
+        from aegis_pipeline.phases.phase3 import proposals as p3p
 
         self._require(("steps/fact_sheet.yaml",), "G-P1-A")
-        state_path = self.run_dir / "steps" / "phase3" / "round1_state.json"
+        n = p3p.latest_round(self.run_dir)
+        state_path = p3p.round_state_path(self.run_dir, n)
         if not state_path.is_file() or not json.loads(state_path.read_text(encoding="utf-8")).get("converged"):
             raise ValueError(
                 "the acceptance round is not converged — the two-states rule blocks routing "
@@ -1400,21 +1626,34 @@ class StepRunner:
             )
         rows, _ = self._p3_merged_rows()
 
-        audit_local = self.run_dir / "steps" / "phase3" / "duty_audit.md"
-        audit_case = (
-            self.repo / "cases" / self.case["case_id"] / "03_PHASE3_SPEC"
-            / "part1_security_privacy" / "analysis_v0_to_v1"
-            / "PROPORTIONALITY_AUDIT_ORGANIZATIONAL_LANE.md"
-        )
-        audit_path = audit_local if audit_local.is_file() else audit_case
-        if not audit_path.is_file():
-            raise ValueError(
-                "no proportionality audit found — the duty grouping is human input "
-                "(the 1:1 routing rule is the recorded failure); provide "
-                "steps/phase3/duty_audit.md in the Case 01 audit's §3 table format"
+        # Etapa 1.5 first: the cluster stage's duty proposals ARE the grouping
+        # when they exist (with the human's `"duties"` overrides from the round
+        # applied). The hand-written audit file is the legacy fallback — a run
+        # started before Onda B resumes on it, a new run never needs it.
+        proposals_path = self.run_dir / "steps" / "phase3" / "duty_proposals.json"
+        overrides: dict[str, str] = {}
+        if state_path.is_file():
+            overrides = json.loads(state_path.read_text(encoding="utf-8")).get("duty_overrides") or {}
+        if proposals_path.is_file():
+            proposals = json.loads(proposals_path.read_text(encoding="utf-8"))["proposals"]
+            proposals = p3o.apply_duty_overrides(proposals, overrides)
+            duty_map = p3o.duty_proposal_map(proposals)
+            duties = p3o.group_duties(rows, duty_map)
+        else:
+            audit_local = self.run_dir / "steps" / "phase3" / "duty_audit.md"
+            audit_case = (
+                self.repo / "cases" / self.case["case_id"] / "03_PHASE3_SPEC"
+                / "part1_security_privacy" / "analysis_v0_to_v1"
+                / "PROPORTIONALITY_AUDIT_ORGANIZATIONAL_LANE.md"
             )
-        duty_map = p3o.parse_duty_audit(audit_path)
-        duties = p3o.group_duties(rows, duty_map)
+            audit_path = audit_local if audit_local.is_file() else audit_case
+            if not audit_path.is_file():
+                raise ValueError(
+                    "no duty grouping input — run --stage p3a_org_cluster (the automated "
+                    "Etapa 1.5), or provide steps/phase3/duty_audit.md in the Case 01 "
+                    "audit's §3 table format (legacy input)")
+            duty_map = p3o.parse_duty_audit(audit_path)
+            duties = p3o.group_duties(rows, duty_map)
         dispositions = p3o.count_dispositions(duties)
         for index, duty in enumerate(duties, start=1):
             duty["slug"] = f"duty_{index:02d}"
@@ -1510,8 +1749,10 @@ class StepRunner:
 
     def stage_p3a_weave(self) -> int:
         from aegis_pipeline.phases.phase3 import weave as p3w
+        from aegis_pipeline.phases.phase3 import proposals as p3p
 
-        state_path = self.run_dir / "steps" / "phase3" / "round1_state.json"
+        n = p3p.latest_round(self.run_dir)
+        state_path = p3p.round_state_path(self.run_dir, n)
         if not state_path.is_file() or not json.loads(state_path.read_text(encoding="utf-8")).get("converged"):
             raise ValueError("the acceptance round is not converged — run --stage p3a_round first")
         state = json.loads(state_path.read_text(encoding="utf-8"))
@@ -1550,11 +1791,11 @@ class StepRunner:
         for proposal in accepted:
             if (proposal.get("carrier") or "").strip("`") == "new":
                 proposal["carrier"] = f"`{card_by_objective[proposal['objective']]}`"
-        # Persist the rewrite: the weave pack is built inside `_call` from
-        # round1_state.json, and an in-memory-only rewrite meant the stage
+        # Persist the rewrite: the weave pack is built inside `_call` from the
+        # latest round state, and an in-memory-only rewrite meant the stage
         # routed 12 proposals while the pack handed the model zero of them.
-        (self.run_dir / "steps" / "phase3" / "round1_state.json").write_text(
-            json.dumps(state, indent=1, ensure_ascii=False), encoding="utf-8")
+        state_path.write_text(json.dumps(state, indent=1, ensure_ascii=False),
+                              encoding="utf-8")
 
         card_ids = {p.stem: p.stem.replace("_", ".") for p in card_files}
 
@@ -1718,38 +1959,55 @@ class StepRunner:
     # The Phase 3 chain, in dependency order. The gate is last by construction:
     # a verdict computed before a later stage mutates its inputs is exactly the
     # defect run_p2enr_c1 shipped (gate CONCLUDED at 16:36, seven verdicts opened
-    # at 21:00, nothing said so).
+    # at 21:00, nothing said so). `p3a_org_cluster` needs the map's org rows;
+    # `p3a_repropose` needs an APPLIED round carrying pending adjustments.
     P3A_ORDER = (
-        "p3a_cards", "p3a_map", "p3a_propose", "p3a_prin",
-        "p3a_round", "p3a_org", "p3a_weave", "p3a_gate",
+        "p3a_cards", "p3a_map", "p3a_org_cluster", "p3a_propose", "p3a_prin",
+        "p3a_round", "p3a_repropose", "p3a_org", "p3a_weave", "p3a_gate",
     )
 
-    def _round_converged(self) -> bool:
-        state = self.run_dir / "steps" / "phase3" / "round1_state.json"
-        if not state.is_file():
-            return False
+    def _latest_round_state(self) -> dict:
+        from aegis_pipeline.phases.phase3 import proposals as p3p
+
+        path = p3p.round_state_path(self.run_dir, p3p.latest_round(self.run_dir))
+        if not path.is_file():
+            return {}
         try:
-            return bool(json.loads(state.read_text(encoding="utf-8")).get("converged"))
+            return json.loads(path.read_text(encoding="utf-8"))
         except (json.JSONDecodeError, OSError):
-            return False
+            return {}
+
+    def _round_converged(self) -> bool:
+        return bool(self._latest_round_state().get("converged"))
+
+    def _has_pending_adjustment(self) -> bool:
+        return bool(self._latest_round_state().get("pending_adjustment"))
 
     def stage_p3a_all(self) -> int:
         """Run the Phase 3 chain end to end, stopping at the human round.
 
         Everything downstream of `p3a_round` requires a converged round, so when
         the verdicts are not recorded the chain stops and says so rather than
-        aborting inside `p3a_org` with a precondition error.
+        aborting inside `p3a_org` with a precondition error. A round with
+        pending adjustments is the opposite case: `p3a_repropose` is exactly
+        what runs next, while everything downstream of it stays blocked.
         """
         total = 0
         for name in self.P3A_ORDER:
             if name in ("p3a_org", "p3a_weave", "p3a_gate") and not self._round_converged():
                 print(
                     f"=== p3a_all: stopping before {name} — the human round has not "
-                    f"converged. Record the verdicts in round1_verdicts.json, then "
-                    f"re-run p3a_all. ('p3a_gate' alone gives the current standing.) ===",
+                    f"converged. Record the verdicts (and, for Adjust items, run "
+                    f"p3a_repropose), then re-run p3a_all. ('p3a_gate' alone gives "
+                    f"the current standing.) ===",
                     flush=True,
                 )
                 break
+            if name == "p3a_repropose" and not self._has_pending_adjustment():
+                # Nothing to rewrite: either the round converged or the verdicts
+                # are still unapplied. Skipping silently is correct — a repropose
+                # with no pending item is a precondition error, not a no-op.
+                continue
             print(f"=== stage {name} ===", flush=True)
             total += getattr(self, f"stage_{name}")()
         return total

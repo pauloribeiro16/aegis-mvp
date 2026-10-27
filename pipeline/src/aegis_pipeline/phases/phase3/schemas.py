@@ -39,7 +39,20 @@ MATRIX_COLUMNS = (
     "Skill",
     "State",
     "VC discharge",
-    "Action / Round",
+    "Action",
+)
+
+#: The routing action, a pure enum (R10b invariant 2 — the categorical column
+#: never carries prose). `PROPOSE_PRODUCT` names the rows the proposal stage
+#: must answer; the old free-text column ("Propose for Round 2: …") is what
+#: `select_proposal_targets` had to substring-mine, and the measured run
+#: pushed 52 of 65 objectives past it.
+ACTIONS = (
+    "CARRIED",
+    "PROPOSE_PRODUCT",
+    "ROUTE_ORG",
+    "DESIGN_GUIDANCE",
+    "NA",
 )
 
 #: The seven analysis lenses in `baseline/skills/`. The codes are the ones the

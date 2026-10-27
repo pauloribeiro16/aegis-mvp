@@ -16,6 +16,7 @@ import re
 from pathlib import Path
 
 from aegis_pipeline.guards.quality_gates import check_no_technology
+from aegis_pipeline.phases.phase3.proposals import latest_round
 
 RE_CARD_ID = re.compile(r"^R\d+\.\d+$")
 RE_SUFFICIENCY_ROW = re.compile(
@@ -152,11 +153,14 @@ def gate_input_paths(run_dir: Path) -> list[Path]:
     paths = [
         run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md",
         run_dir / "steps" / "gates" / "G-P3-A.approved",
-        run_dir / "steps" / "phase3" / "round1_state.json",
-        run_dir / "steps" / "phase3" / "round1_verdicts.json",
+        run_dir / "steps" / "phase3" / "duty_proposals.json",
         run_dir / "steps" / "phase3" / "duties.json",
         run_dir / "steps" / "phase3" / "duty_audit.md",
     ]
+    # every round the run actually has — the digest must move when a later
+    # round's state lands, and a round file the run does not have is no input
+    for pattern in ("round*_state.json", "round*_verdicts.json", "round*_proposals.json"):
+        paths += sorted((run_dir / "steps" / "phase3").glob(pattern))
     # every deliverable the gate lints or judges
     paths += sorted((run_dir / "outputs" / "phase3").rglob("*.md"))
     # every state file the verdict is derived from
@@ -313,20 +317,28 @@ def run_gate(run_dir: Path, repo: Path) -> dict:
     else:
         findings.append("T-G1: coverage matrix or Phase 2 deliverable missing — run the earlier stages")
 
-    # G2 / two-state rule
-    register = run_dir / "outputs" / "phase3" / "synthesis_rounds" / "ROUND1_REGISTER.md"
-    state_path = run_dir / "steps" / "phase3" / "round1_state.json"
+    # G2 / two-state rule — over the LATEST round (onda B): a round-2 ledger
+    # open means the run is PROPOSED even if round 1 converged long ago.
+    n_round = latest_round(run_dir)
+    register = run_dir / "outputs" / "phase3" / "synthesis_rounds" / f"ROUND{n_round}_REGISTER.md"
+    state_path = run_dir / "steps" / "phase3" / f"round{n_round}_state.json"
     marker = run_dir / "steps" / "gates" / "G-P3-A.approved"
     round_state: dict = {"converged": False, "open": ["(no round artifacts)"]}
     if state_path.is_file():
         round_state = json.loads(state_path.read_text(encoding="utf-8"))
     n_proposals = len(round_state.get("accepted", [])) + len(round_state.get("rejected", [])) + len(round_state.get("adjusted", [])) + len(round_state.get("open", []))
+    n_pending = len(round_state.get("pending_adjustment", []))
     if not register.is_file():
         gates["G2"] = "OPEN — no round register (stage p3a_propose not run)"
     elif not marker.is_file():
         gates["G2"] = "OPEN — proposals recorded but no human marker (G-P3-A)"
     elif not round_state.get("converged"):
-        gates["G2"] = f"OPEN — proposed, not concluded: {len(round_state.get('open', []))} verdict(s) missing"
+        if n_pending:
+            gates["G2"] = (f"OPEN — round {n_round}: {n_pending} adjusted item(s) awaiting "
+                           f"the round-{n_round + 1} repropose")
+        else:
+            gates["G2"] = (f"OPEN — round {n_round} proposed, not concluded: "
+                           f"{len(round_state.get('open', []))} verdict(s) missing")
     elif n_proposals == 0:
         gates["G2"] = "OPEN — a converged register with zero items closes nothing (§two states)"
     else:

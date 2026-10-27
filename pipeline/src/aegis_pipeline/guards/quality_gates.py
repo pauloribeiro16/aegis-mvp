@@ -147,6 +147,64 @@ def check_no_technology(*texts: str) -> list[str]:
     return hits
 
 
+#: Onda C — the generic mechanism nouns L4_TERMS deliberately does not carry
+#: (vendors and protocols are L4; "encryption", "MFA", "firewall" are L3
+#: mechanism categories, and the fit criterion must stay black-box L2).
+MECHANISM_TERMS = re.compile(
+    r"\b(mfa|2fa|multi-?factor|two-?factor|single sign-?on|sso|"
+    r"encryption|encrypted|encrypts|firewall|waf|vpn|"
+    r"static analysis|sast|dast|penetration[- ]test|"
+    r"aes|rsa|bcrypt|argon2?|pbkdf2?|hmac|rate[- ]limit)\b",
+    re.I,
+)
+
+
+def check_fit_criterion_observable(*criteria: str) -> list[str]:
+    """Onda C L0 — a fit criterion is a black-box test, not a mechanism.
+
+    Rejected here: mechanism nouns the model pre-bakes into the acceptance bar
+    ("uses MFA", "the payload is encrypted") — the measured run_p2enr_c1
+    failure. What the tester must be able to do is judge stimulus → observable
+    response WITHOUT reading code; naming how the system achieves the response
+    makes the criterion untestable by construction. The black-box *format*
+    (a judgeable stimulus/response shape) is Dimension 2 of the L2 rubric;
+    this gate enforces the mechanically decidable half — length and the
+    mechanism ban — because a verb whitelist would reject well-formed criteria
+    it does not anticipate.
+    """
+    findings = []
+    for c in criteria:
+        c = (c or "").strip()
+        if len(c) < 20:
+            findings.append(
+                f"fit criterion too short to be black-box observable ({len(c)} chars): {c!r}")
+            continue
+        m = MECHANISM_TERMS.search(c)
+        if m:
+            findings.append(
+                f"fit criterion pre-bakes a mechanism ({m.group(0)!r}) — state the "
+                "observable stimulus and response, never the implementation")
+    return findings
+
+
+RE_SNAKE_ID = re.compile(r"`([a-z][a-z0-9]*(?:_[a-z0-9]+)+)`")
+
+
+def check_no_invented_identifiers(answer: str, vocabulary: str) -> list[str]:
+    """Onda C L0 — a backticked snake_case token must come from the pack.
+
+    The measured failure: the principle call invented permission names
+    (`key_management`, `operational_execution`) that exist in no corpus, no
+    fact sheet and no card — features named into being by the model. Every
+    such token in the answer must appear somewhere in the pack text it was
+    written against; anything else is an invention, not a term of art.
+    """
+    known = set(re.findall(r"[a-z][a-z0-9]*(?:_[a-z0-9]+)+", (vocabulary or "").lower()))
+    invented = sorted({m for m in RE_SNAKE_ID.findall(answer or "")
+                       if m.lower() not in known})
+    return [f"invented identifier `{m}` is not in the pack vocabulary" for m in invented]
+
+
 def check_adjustment_vocab(adjustment: str) -> list[str]:
     a = norm(adjustment)
     if not a:

@@ -112,6 +112,18 @@ def check_verdicts(rows: list[dict], objectives: list[dict], pool: list[str]) ->
         if v not in VERDICTS and v != UNSET:
             findings.append(f"{oid}: verdict {v!r} is outside the vocabulary")
     findings.extend(anchor_findings(rows, pub))
+    # Onda C L1 — the mode-collapse alert. The measured run pushed 52 of 65
+    # objectives into the organizational lane; a batch where the technical
+    # domains D-02..D-07 route >65% organizational is that failure recurring,
+    # and it says so instead of passing silently.
+    tech = [r for r in rows if str(r.get("subdomain", ""))[:4] in {f"D-0{n}" for n in range(2, 8)}]
+    if len(tech) >= 5:
+        org_share = sum(1 for r in tech if r["verdict"] == ORGANIZATIONAL) / len(tech)
+        if org_share > 0.65:
+            findings.append(
+                f"mode collapse: {org_share:.0%} of the {len(tech)} technical-domain "
+                f"objectives (D-02..D-07) route organizational — above the 65% alert; "
+                "a software product carries most of these, re-read the carriers")
     return findings
 
 

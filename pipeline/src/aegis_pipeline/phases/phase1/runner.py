@@ -448,6 +448,9 @@ class StepRunner:
         call = compose_call(
             self.repo, self.case, self.run_dir, step, subdomain, extra_instruction=extra
         )
+        # The pack as sent: the vocabulary the invented-identifier guard judges
+        # against (Onda C). The model may only reuse what this text contains.
+        self._current_pack_text = call["user"]
         num_ctx = NUM_CTX[step_kind]
         num_predict = NUM_PREDICT[step_kind]
         est_tokens = (len(call["system"]) + len(call["user"])) // 4
@@ -689,8 +692,18 @@ class StepRunner:
                     "p3a_prin: no routed objectives — the stage must set "
                     "_p3a_prin_routed before calling; a principle constraint may "
                     "only discharge objectives the matrix routed organizational")
-            return {"proposals": _p3pc.parse_principle_proposals(
+            parsed = {"proposals": _p3pc.parse_principle_proposals(
                 answer, step.split(":", 1)[1], routed)}
+            # Onda C L0: every backticked snake_case token must come from the
+            # pack as sent (`key_management` was invented into being once).
+            from aegis_pipeline.guards.quality_gates import check_no_invented_identifiers
+            invented = check_no_invented_identifiers(
+                answer, getattr(self, "_current_pack_text", ""))
+            if invented:
+                raise ValueError(
+                    f"p3a_prin [{step.split(':', 1)[1]}]: {invented[0]}"
+                    + (f" (+{len(invented) - 1} more)" if len(invented) > 1 else ""))
+            return parsed
         if step.startswith("p3a_repropose:"):
             from aegis_pipeline.phases.phase3 import proposals as _p3p
             item = getattr(self, "_p3a_repropose_target", None)

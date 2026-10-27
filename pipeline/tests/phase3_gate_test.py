@@ -46,13 +46,24 @@ def _build_run(tmp: Path, *, open_items: list[str], converged: bool) -> Path:
     (run_dir / "manifest.json").write_text(json.dumps({"case_id": CASE}), encoding="utf-8")
 
     objs = phase3.load_objectives(run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md")
+    anchored = {o["id"] for o in objs if o.get("anchors")}
     by_sd: dict[str, list[str]] = {}
     for obj in objs:
         by_sd.setdefault(obj["subdomain"].replace(".", "_"), []).append(obj["id"])
     for sd, ids in by_sd.items():
+        # Technical domains D-02..D-07 route partially covered — an all-org
+        # matrix there IS the mode-collapse state the Onda C guard blocks, and
+        # this fixture is the CONTROL the other tests isolate against. Only
+        # ANCHORED objectives may route partial: a process obligation with no
+        # published anchor claiming a carrier is a T6 finding of its own.
+        partial = sd[:4] in {f"D-0{n}" for n in range(2, 8)}
         (run_dir / "steps" / "phase3" / f"verdicts_{sd}.json").write_text(json.dumps([
-            {"id": i, "verdict": S.ORGANIZATIONAL, "carrier": "`—`", "skill": "`—`",
-             "discharge": "the named organizational obligation", "action": "Propose for Round 2"}
+            {"id": i,
+             "verdict": ("Partially covered (functional leg + explicit carve-out)"
+                         if partial and i in anchored else S.ORGANIZATIONAL),
+             "carrier": "`—`", "skill": "`—`",
+             "discharge": "the named obligation; the carve-out is recorded",
+             "action": "ROUTE_ORG"}
             for i in ids
         ]), encoding="utf-8")
 

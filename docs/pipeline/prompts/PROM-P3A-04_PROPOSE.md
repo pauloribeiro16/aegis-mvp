@@ -3,7 +3,7 @@ ficha_id: PROM-P3A-04
 title: 'Propose the security constraint an objective awaits'
 phase_step: 'Phase 3 Part 1 · Proposal (wave 4)'
 pattern: 'one structured call per active sub-domain'
-version: 1.0.1
+version: 1.1.0
 created: 2026-10-10
 status: ACTIVE
 normative_source:
@@ -86,8 +86,13 @@ Exactly one section per target objective, in the order given.
   not exist. An objective with no Phase 2 rule has no such line.
 - **EARS with a system (or organizational) subject and `shall`.** One behaviour
   per constraint.
-- **The fit criterion is binary.** A reviewer can judge it true or false from
-  evidence; no vague adjectives without a verifiable reading.
+- **The fit criterion is binary and black-box.** A tester judges it true or
+  false from OUTSIDE the system: a stimulus, then an observable response
+  ("an expired session fails"; "a stored dump is unreadable without the key").
+  It never names HOW the system achieves the response — "uses MFA",
+  "encrypted", "static analysis", "firewall", "rate limit" are mechanisms, and
+  the gate rejects the criterion that carries one (Onda C). Name the
+  observable outcome; the mechanism is Phase 4's decision.
 - **Propose for the legs the verdict carved out** — not a rewrite of the whole
   objective.
 
@@ -116,6 +121,11 @@ Doc 08 wave 4 · ADR-005 · ADR-007 D2/D4 · the measured first `p3a_map` run
 gap this stage fills).
 
 ## Changelog
+
+- 1.1.0 (2026-10-27) — Onda C: the fit criterion is black-box — stimulus then
+  observable response, never a mechanism name ("MFA", "encryption", "static
+  analysis"); the L0 guard `check_fit_criterion_observable` enforces it and
+  the rubric's Dimension 2 judges the shape.
 
 - 1.0.1 — added the R5 neutrality block with the ADR-009 D5 prohibited→mandatory mapping. EARS constraints were specifying the mechanism rather than the property
 

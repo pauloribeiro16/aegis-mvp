@@ -86,6 +86,12 @@ def parse_principle_proposals(answer: str, principle: str,
             raise ValueError(f"principles [{principle}] {oid}: missing field(s) {missing}")
         if not re.search(r"\bshall\b", fields["Constraint (EARS)"], re.IGNORECASE):
             raise ValueError(f"principles [{principle}] {oid}: constraint has no SHALL")
+        # Onda C L0, same contract as the objective-driven proposals: the fit
+        # criterion is black-box, and the vocabulary comes from the pack.
+        from aegis_pipeline.guards.quality_gates import check_fit_criterion_observable
+        obs = check_fit_criterion_observable(fields["Fit criterion"])
+        if obs:
+            raise ValueError(f"principles [{principle}] {oid}: {obs[0]}")
         carrier = fields["Proposed carrier"].strip().strip("`")
         if carrier != "new":
             raise ValueError(

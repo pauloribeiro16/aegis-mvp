@@ -3,7 +3,7 @@ ficha_id: PROM-P3A-07
 title: 'Derive security constraints from one engineering principle'
 phase_step: 'Phase 3 Part 1 · Principle-seeded synthesis'
 pattern: 'one structured call per engineering principle'
-version: 1.0.0
+version: 1.1.0
 created: 2026-10-12
 status: ACTIVE
 normative_source:
@@ -73,6 +73,28 @@ empty fenced block.
 
 ## Rules the output must obey
 
+- **Meta-methodological principles are SILENCE, not features.** A principle
+  that rules the SPECIFICATION WRITING itself — `PRIN-ENG-05` (technology
+  neutrality) is the measured case — produces NO product constraint: it is
+  obeyed by how every other requirement is written, and inventing a feature
+  to "implement" it fabricates scope. For such a principle return the empty
+  fenced block; silence is the correct answer and the round never sees it.
+- **Surface legs before cards (multi-leg principles).** A transversal
+  principle (`PRIN-ENG-01` authenticity + confidentiality per channel) covers
+  EVERY leg it names. Before the blocks, decide the surface: for each channel
+  or leg the principle governs, which constraint closes it — and if a leg has
+  no constraint, say which objective carries the gap instead of letting it
+  pass silently. One constraint per leg, each keyed to its objective; the
+  `Also carries` field records the legs one constraint closes together.
+- **The vocabulary is the pack's.** Every identifier you write — permission
+  names, roles, scopes — must appear somewhere in the pack (objectives,
+  anchors, cards, fact sheet). `key_management` and `operational_execution`
+  were invented into being once and the gate now rejects any backticked
+  snake_case token the pack does not contain (Onda C). If the product has no
+  such role or permission, the constraint states the OUTCOME ("an operator
+  outside the on-call rota cannot read customer records"), not a named
+  permission that does not exist.
+
 - **The block id is a routed objective.** A principle constraint discharges
   obligations the matrix said had no carrier — it may not invent new scope.
 - **Anchors come only from the published sets in the pack.** A control outside
@@ -114,6 +136,12 @@ RN24 (transport protection) is a PRIN-ENG-01 binding and RN18/RN26 are
 PRIN-ENG-07 — the shape this ficha restores.
 
 ## Changelog
+
+- 1.1.0 (2026-10-27) — Onda C: SILENCE is the required answer for
+  meta-methodological principles (PRIN-ENG-05 — the measured run fabricated a
+  feature for it); multi-leg principles declare their surface legs before the
+  cards; every identifier must come from the pack vocabulary
+  (`check_no_invented_identifiers` rejects `key_management`-class inventions).
 
 - 1.0.0 — first issue. The pipeline's PRINCIPLE_MAPPING stayed a skeleton
   because no pass derived constraints from principles; every objective a

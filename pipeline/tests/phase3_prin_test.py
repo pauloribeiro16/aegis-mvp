@@ -33,8 +33,9 @@ ANSWER_TEMPLATE = """```markdown
 **Constraint (EARS):** Where the system carries personal data across an untrusted
 boundary, the system SHALL establish an authenticated and encrypted end-to-end
 communication channel.
-**Fit criterion:** A connection reaching the backend without an authenticated,
-encrypted channel is rejected.
+**Fit criterion:** A connection that cannot present valid credentials is
+rejected before any payload is processed, and a tester outside the boundary
+reads nothing but the rejection.
 **Risk addressed:** Eavesdropping of customer data in transit.
 **Chain anchors:** `PR.DS-02`, `PR.IR-01`
 **Proposed carrier:** `NEW`

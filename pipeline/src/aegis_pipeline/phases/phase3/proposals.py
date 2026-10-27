@@ -109,6 +109,12 @@ def parse_proposals(answer: str, targets: list[dict],
             raise ValueError(f"proposals [{oid}]: constraint is not EARS — no 'shall'")
         if not fields["Fit criterion"]:
             raise ValueError(f"proposals [{oid}]: empty fit criterion")
+        # Onda C L0: the acceptance bar is a black-box test — a mechanism name
+        # in it pre-bakes the implementation the fit criterion exists to abstract.
+        from aegis_pipeline.guards.quality_gates import check_fit_criterion_observable
+        obs = check_fit_criterion_observable(fields["Fit criterion"])
+        if obs:
+            raise ValueError(f"proposals [{oid}]: {obs[0]}")
         if not fields["Risk addressed"]:
             raise ValueError(f"proposals [{oid}]: empty risk")
         anchors = [a.strip().strip("`") for a in fields["Chain anchors"].split(",") if a.strip()]

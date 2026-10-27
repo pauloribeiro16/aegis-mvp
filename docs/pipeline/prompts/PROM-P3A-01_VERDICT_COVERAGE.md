@@ -3,7 +3,7 @@ ficha_id: PROM-P3A-01
 title: 'Verdict the coverage matrix for one sub-domain'
 phase_step: 'Phase 3 Part 1 · Coverage mapping'
 pattern: 'one structured call per active sub-domain'
-version: 1.1.1
+version: 1.2.0
 created: 2026-10-10
 status: ACTIVE
 normative_source:
@@ -60,13 +60,34 @@ criterion cannot be written against it. Name the property, not the product.
 ## Output schema
 
 ```markdown
-| Objective | Summary | Functional carrier | Skill | State | VC discharge | Action / Round |
+| Objective | Summary | Functional carrier | Skill | State | VC discharge | Action |
 |---|---|---|---|---|---|---|
-| `PO-D-XX.Y-NNN` | one line, the objective in plain words | `R1.1`, `R2.2` — from the candidate pool, or `—` | `TB`/`AS`/`LP`/`DM`/`FS`/`LE`/`V`, or `—` | **one of the five verdicts, verbatim** | which legs are carried, which are carved out and where — or `—` only for a row that genuinely has nothing to say, which the gates reject | free text |
+| `PO-D-XX.Y-NNN` | one line, the objective in plain words | `R1.1`, `R2.2` — from the candidate pool, or `—` | `TB`/`AS`/`LP`/`DM`/`FS`/`LE`/`V`, or `—` | **one of the five verdicts, verbatim** | which legs are carried, which are carved out and where — or `—` only for a row that genuinely has nothing to say, which the gates reject | **one of the five action codes, verbatim** |
 ```
 
 Exactly seven columns, one row per objective, in the order the objectives were
 given. The `Objective` cell repeats the id and nothing else.
+
+## The Action column is a code, not a sentence
+
+The column carries exactly one of these codes, verbatim, and nothing else —
+no prose, no round numbers (the enum is a categorical field; the justification
+lives in `VC discharge`):
+
+| Code | When |
+|---|---|
+| `CARRIED` | the verdict is `Fully covered (anchored)` — a card in the pool carries it whole |
+| `PROPOSE_PRODUCT` | the objective constrains the behaviour of an existing or derivable product capability — data, session, access, logging, isolation, export, error handling |
+| `ROUTE_ORG` | the verdict is `No functional carrier (organizational)` — a team/process duty, and the obligation names it |
+| `DESIGN_GUIDANCE` | the verdict is `Design guidance` — architecture advice for later phases |
+| `NA` | the verdict is `N/A` |
+
+**Coupling rule:** if the objective restricts the data, sessions, access
+rights, logging, isolation or error behaviour of anything the product does,
+`Action` MUST be `PROPOSE_PRODUCT` — the next stage writes the constraint the
+objective awaits, and a `ROUTE_ORG` here would hand a product obligation to
+the team lane. The measured failure this rule closes: 52 of 65 objectives
+routed organizational in one run.
 
 ## What is not an organizational obligation
 
@@ -155,6 +176,12 @@ which is the only one of the three cases carrying a discharge column.
 
 ## Changelog
 
+- 1.2.0 (2026-10-27) — Onda C: the Action column is a pure enum
+  (`CARRIED | PROPOSE_PRODUCT | ROUTE_ORG | DESIGN_GUIDANCE | NA`) instead of
+  free text, with the coupling rule that a product-behaviour restriction MUST
+  be `PROPOSE_PRODUCT`. The measured 52/65 organizational dump rode the free
+  text; the parser now rejects anything outside the enum.
+
 - 1.1.1 — added the R5 neutrality block with the ADR-009 D5 prohibited→mandatory mapping. the discharge column is where technology vocabulary leaks (TLS, AES-256)
 
 - 1.1.0 (2026-10-10) — added `RN (a derivar)` as a carrier value. The first cluster run routed 52 of 65 objectives to `organizational` and named none fully covered, because a transversal concern has no carrier until the constraint stage derives one, and the vocabulary had no value for "not derived yet". The enum is unchanged; only the carrier cell gained a value.
@@ -166,7 +193,10 @@ which is the only one of the three cases carrying a discharge column.
 > exactly one of the five verdicts, name the carrying card or cards from the
 > candidate pool, and write the discharge paragraph that says which legs are
 > carried and which are carved out to where. Use only the control anchors the
-> objective itself publishes. Emit one markdown table row per objective, in the
+> objective itself publishes. The Action column carries exactly one of
+> `CARRIED | PROPOSE_PRODUCT | ROUTE_ORG | DESIGN_GUIDANCE | NA` — a verdict
+> that restricts product data, session, access, logging or error behaviour is
+> `PROPOSE_PRODUCT`. Emit one markdown table row per objective, in the
 > order given, with exactly these columns:
 >
-> `Objective | Summary | Functional carrier | Skill | State | VC discharge | Action / Round`
+> `Objective | Summary | Functional carrier | Skill | State | VC discharge | Action`

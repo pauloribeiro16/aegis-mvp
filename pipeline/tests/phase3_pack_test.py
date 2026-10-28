@@ -223,11 +223,35 @@ def test_the_phase1_and_phase2_prompts_are_untouched() -> None:
         assert ficha["prompt_body"] == ficha["prompt_body"].strip(), path.name
 
 
+def test_the_phase3_shim_carries_every_name_the_pipeline_uses() -> None:
+    """The cluster imports the SHIM (`pipeline/src/phase3.py`), not the package.
+
+    The shim re-exports names explicitly; a new `phase3.<name>` call in the
+    runner or compose that is not added to the shim is an AttributeError one
+    minute into a 4-hour GPU job — jobs 2160351-2160356 died exactly there.
+    """
+    import phase3  # the shim, resolved through pipeline/src on sys.path
+
+    names = [
+        # runner.py (stage_p3a_map, _p3_merged_rows, _validate, org_cluster)
+        "load_objectives", "build", "check", "check_verdicts", "verdict_defects",
+        "apply_verdicts", "render_matrix", "render_principles", "domain_names_from",
+        "ensure_v0_pool", "v0_source", "VERDICTS", "ORGANIZATIONAL",
+        # compose.py (the pack builders)
+        "build_verdict_pack", "load_rule_catalogue",
+    ]
+    missing = [n for n in names if not hasattr(phase3, n)]
+    assert not missing, (
+        f"the phase3 shim is missing {missing} — add them to pipeline/src/phase3.py "
+        "or the cluster dies on `import phase3` AttributeError")
+
+
 def main() -> int:
     tests = [
         test_every_phase3_step_builds_a_pack_the_model_reads,
         test_no_phase3_ficha_sends_an_empty_instruction,
         test_the_phase1_and_phase2_prompts_are_untouched,
+        test_the_phase3_shim_carries_every_name_the_pipeline_uses,
     ]
     failures = 0
     for test in tests:

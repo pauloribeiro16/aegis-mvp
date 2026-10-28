@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """watch_p302.py — follow the Onda C calibration arms and extract the metrics.
 
-Reads each arm's run directory on the cluster (via ssh) and reports, per arm:
-the L0 first-attempt pass rate, the routing balance (ROUTE_ORG vs
-PROPOSE_PRODUCT) and the round's standing. The numbers the PREREG_P3_02
-falsifiers judge.
+TOKEN DISCIPLINE (the operator's constraint): everything is aggregated
+SERVER-SIDE and the only thing that crosses ssh is one JSON dict per arm —
+the counts the prereg judges (H1 L0 first-attempt rate, H2 the 25-60%
+routing band, M-26 the 65% collapse alert, the round's standing). No pack,
+verdict row or document is ever fetched whole: the artifacts stay on the
+cluster, the numbers come here.
 
 Usage: python3 scripts/watch_p302.py [--once]
 """
@@ -29,7 +31,7 @@ ARMS = [
 def ssh(cmd: str) -> str:
     proc = subprocess.run(
         ["ssh", "-o", "LogLevel=ERROR", "-o", "ConnectTimeout=20", HOST, cmd],
-        capture_output=True, text=True, timeout=90,
+        capture_output=True, text=True, timeout=120,
     )
     return proc.stdout or ""
 
@@ -37,22 +39,45 @@ def ssh(cmd: str) -> str:
 def arm_metrics(run_id: str) -> dict:
     """The metrics the prereg judges, read from the run's own store."""
     script = f"""
-import json, glob, os
+import json, glob, os, re
 from collections import Counter
 run = "{RUNS}/{run_id}"
 out = {{"run": "{run_id}", "exists": os.path.isdir(run)}}
-# 1. routing balance from the verdict store
+rows = []
 acts = Counter(); verdicts = Counter()
 for f in glob.glob(run + "/steps/phase3/verdicts_*.json"):
     try:
-        for row in json.load(open(f)):
+        rs = json.load(open(f)); rows.extend(rs)
+        for row in rs:
             acts[str(row.get("action", "")).strip()[:40]] += 1
             verdicts[str(row.get("verdict", "")).strip()[:50]] += 1
     except Exception as e:
         out["err"] = str(e)
-out["actions"] = acts.most_common(8)
-out["verdicts"] = verdicts.most_common(6)
-# 2. L0 first-attempt: the stores vs the failures recorded in the log
+out["n_rows"] = len(rows)
+out["actions"] = acts.most_common(6)
+out["verdicts"] = verdicts.most_common(5)
+total = sum(acts.values()) or 1
+out["global_org_share"] = round(acts.get("ROUTE_ORG", 0) / total, 3)
+m26 = [r for r in rows if re.match(r"^(?:PO|SO)-(?:D-0[2-7])\\.", r.get("id", ""))]
+m26_share = round(sum(1 for r in m26 if r.get("action") == "ROUTE_ORG") / len(m26), 3) \\
+    if len(m26) >= 5 else None
+out["m26"] = {{"n": len(m26), "org_share": m26_share}}
+ok = retried = 0
+trace = run + "/trace.jsonl"
+CUTOFF = "2026-10-28T20:05"  # the 1st submission aborted; only count records after the clean
+if os.path.isfile(trace):
+    for line in open(trace, encoding="utf-8"):
+        try:
+            rec = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if str(rec.get("ts_start", "")) < CUTOFF:
+            continue
+        if str(rec.get("step", "")).startswith("p3a") and rec.get("status") == "ok":
+            ok += 1
+            retried += bool(rec.get("l0_retried"))
+l0_first = round((ok - retried) / ok, 3) if ok else None
+out["l0"] = {{"ok_calls": ok, "retried": retried, "first_attempt": l0_first}}
 proposals = []
 for f in glob.glob(run + "/steps/phase3/proposals_*.json"):
     try:
@@ -62,26 +87,25 @@ for f in glob.glob(run + "/steps/phase3/proposals_*.json"):
 out["n_proposals"] = len(proposals)
 out["n_prin_proposals"] = sum(len(json.load(open(f)).get("proposals", []))
     for f in glob.glob(run + "/steps/phase3/proposals_prin_*.json"))
-# 3. the round's standing
 for n in (1, 2):
-    p = run + f"/steps/phase3/round{{n}}_state.json"
+    p = run + "/steps/phase3/round" + str(n) + "_state.json"
     if os.path.isfile(p):
         try:
             s = json.load(open(p))
-            out[f"round{{n}}"] = {{k: (len(v) if isinstance(v, list) else v)
+            out["round" + str(n)] = {{k: (len(v) if isinstance(v, list) else v)
                               for k, v in s.items() if k in
                               ("accepted", "rejected", "adjusted", "pending_adjustment",
                                "open", "converged")}}
         except Exception as e:
-            out[f"round{{n}}_err"] = str(e)
-# 4. stage results (status + summary) — the first-attempt signal lives here
+            out["round" + str(n) + "_err"] = str(e)
 stages = []
-for f in sorted(glob.glob(run + "/steps/stage_result*.json")) + sorted(glob.glob(run + "/steps/*/stage_result*.json")):
+for f in sorted(glob.glob(run + "/steps/stage_result*.json")) + \\
+        sorted(glob.glob(run + "/steps/*/stage_result*.json")):
     try:
         d = json.load(open(f))
         stages.append({{"stage": d.get("stage"), "status": d.get("status"),
                        "carried": d.get("carried"), "selected": d.get("selected"),
-                       "failed": d.get("failed"), "summary": str(d.get("summary"))[:120]}})
+                       "failed": d.get("failed"), "summary": str(d.get("summary"))[:110]}})
     except Exception:
         pass
 out["stages"] = stages
@@ -102,26 +126,38 @@ def main() -> int:
     once = "--once" in sys.argv
     queue = ssh("squeue -u $USER -h -o '%i %T %M %j' 2>/dev/null")
     print(f"=== queue ===\n{queue or '(empty)'}")
+    verdict = []
     for run_id, model, case in ARMS:
         m = arm_metrics(run_id)
         if not m.get("exists"):
             print(f"\n--- {run_id} ({model}, {case}): NO RUN DIR")
             continue
         acts = dict(m.get("actions", []))
-        total = sum(acts.values()) or 1
-        org = acts.get("ROUTE_ORG", 0)
-        prod = acts.get("PROPOSE_PRODUCT", 0)
-        print(f"\n--- {run_id} ({model}, {case})")
-        print(f"    routing: ROUTE_ORG {org}/{total} ({org/total:.0%}) · "
-              f"PROPOSE_PRODUCT {prod}/{total} ({prod/total:.0%})")
-        print(f"    verdicts: {m.get('verdicts')}")
+        total = m.get("n_rows") or sum(acts.values()) or 1
+        g = m.get("global_org_share")
+        m26 = m.get("m26") or {}
+        l0 = m.get("l0") or {}
+        print(f"\n--- {run_id} ({model}, {case})  rows={m.get('n_rows')}")
+        if g is not None:
+            print(f"    H2 global ROUTE_ORG: {g:.0%} (band 25-60%)")
+        if m26.get("org_share") is not None:
+            print(f"    M-26 D-02..D-07: {m26['org_share']:.0%} "
+                  f"(n={m26.get('n')}, alert >65%)")
+        else:
+            print(f"    M-26 D-02..D-07: n/a (n={m26.get('n')})")
+        if l0.get("first_attempt") is not None:
+            print(f"    H1 L0 first-attempt: {l0['first_attempt']:.0%} "
+                  f"({l0['ok_calls'] - l0['retried']}/{l0['ok_calls']} calls)")
         print(f"    proposals: {m.get('n_proposals')} (+{m.get('n_prin_proposals')} principle)")
         for key in ("round1", "round2"):
             if key in m:
                 print(f"    {key}: {m[key]}")
         for s in m.get("stages", []):
-            print(f"      {s['stage']}: {s['status']} carried={s['carried']} "
-                  f"selected={s['selected']} failed={s['failed']} — {s['summary'][:90]}")
+            print(f"      {s['stage']}: {s['status']} carried={s['carried']}/{s['selected']} "
+                  f"failed={s['failed']} — {(s.get('summary') or '')[:80]}")
+        verdict.append((run_id, g, m26.get("org_share"), l0.get("first_attempt")))
+    if once:
+        return 0
     return 0
 
 

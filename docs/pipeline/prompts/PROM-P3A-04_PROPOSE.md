@@ -3,9 +3,10 @@ ficha_id: PROM-P3A-04
 title: 'Propose the security constraint an objective awaits'
 phase_step: 'Phase 3 Part 1 · Proposal (wave 4)'
 pattern: 'one structured call per active sub-domain'
-version: 1.1.0
+version: 1.2.0
 created: 2026-10-10
 status: ACTIVE
+body_is_instruction: true
 normative_source:
   - 'docs/pipeline/08_PHASE3_PART1_CONSTRUCTION.md wave 4'
   - 'ADR-005 (iterative risk-acceptance rounds: propose → Accept/Reject/Adjust per item)'
@@ -122,6 +123,7 @@ gap this stage fills).
 
 ## Changelog
 
+- 1.2.0 (2026-10-28) — the ficha's body sections now reach the model (`body_is_instruction: true`): the parser was sending the prompt body alone, which dropped the five verdicts, the Action coupling rule, the R5 mapping table and the `RN (a derivar)` vocabulary from every Phase 3 call.
 - 1.1.0 (2026-10-27) — Onda C: the fit criterion is black-box — stimulus then
   observable response, never a mechanism name ("MFA", "encryption", "static
   analysis"); the L0 guard `check_fit_criterion_observable` enforces it and

@@ -3,9 +3,10 @@ ficha_id: PROM-P3A-08
 title: 'Rewrite the proposal the human marked Adjust, obeying the note'
 phase_step: 'Phase 3 Part 1 · Round refinement (Etapa 1.6.b, onda B)'
 pattern: 'one structured call per Adjust item'
-version: 1.0.0
+version: 1.1.0
 created: 2026-10-27
 status: ACTIVE
+body_is_instruction: true
 normative_source:
   - 'ADR-005 (iterative risk-acceptance rounds; the round does not converge while Adjust items pend)'
   - 'templates/phase3_functional_spec_guidelines.md §3.4 (functional evolution D1–D4, change register)'
@@ -116,6 +117,7 @@ acceptance. The pipeline never converges the round on its own.
 
 ## Changelog
 
+- 1.1.0 (2026-10-28) — the ficha's body sections now reach the model (`body_is_instruction: true`): the parser was sending the prompt body alone, which dropped the five verdicts, the Action coupling rule, the R5 mapping table and the `RN (a derivar)` vocabulary from every Phase 3 call.
 - 1.0.0 (2026-10-27): created for Onda B (multi-round engine, Etapa 1.6.b).
 
 ## Prompt body

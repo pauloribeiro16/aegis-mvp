@@ -11,6 +11,7 @@ Adjusts, item by item (ADR-005).
 
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
 
@@ -203,6 +204,59 @@ def round_key(proposal: dict) -> str:
     are not distinguished in the round") and the run falsified it.
     """
     return proposal.get("principle") or proposal["objective"]
+
+
+def with_part2_trigger(path: Path, item: dict) -> dict:
+    """A rewritten proposal keeps the Part 2 rejection that opened it.
+
+    The parser rebuilds the proposal from the model's answer, so the trigger
+    does not survive on its own — and the trigger is what the exit gate reads
+    to know that a rejection was absorbed.
+    """
+    stored = json.loads(path.read_text(encoding="utf-8"))
+    trig = item.get("part2_trigger")
+    if trig and not stored.get("part2_trigger"):
+        stored["part2_trigger"] = trig
+        path.write_text(json.dumps(stored, indent=1, ensure_ascii=False), encoding="utf-8")
+    return stored
+
+
+def part2_trigger_items(run_dir: Path, state: dict, round_no: int) -> list[dict]:
+    """The rework items a Part 2 rejection opens (ADR-005 reverse loop).
+
+    `p3b_risk_round` wrote `round<N>_triggers_from_part2.json` and NOTHING
+    read it: the loop was open in name only, and the exit gate closed on a
+    file the pipeline had written itself. Each rejection names the Part 1
+    requirements the register cited as its mitigators — those are what Part 1
+    has to rework, and the item carries the person's instruction so the
+    rewrite knows which risk it is answering.
+    """
+    path = run_dir / "steps" / "phase3" / f"round{round_no}_triggers_from_part2.json"
+    if not path.is_file():
+        return []
+    blob = json.loads(path.read_text(encoding="utf-8"))
+    accepted = {round_key(p): p for p in (state.get("accepted") or [])}
+    items: list[dict] = []
+    for trig in blob.get("triggers", []):
+        ids = {m.strip().strip("`")
+               for m in (trig.get("suggested_carrier_context") or "").split(",")
+               if m.strip().strip("`")}
+        for key in sorted(ids):
+            proposal = accepted.get(key)
+            if proposal is None:
+                # The mitigator is not an accepted proposal (an org card, or a
+                # requirement that was never accepted): there is nothing here
+                # to rework, and the rejection stays open.
+                continue
+            items.append({
+                **proposal,
+                "round_key": key,
+                "part2_trigger": {
+                    "threat": trig.get("threat"),
+                    "instruction": trig.get("instruction", ""),
+                },
+            })
+    return items
 
 
 #: The verdicts a human may enter, and the functional-evolution operations the

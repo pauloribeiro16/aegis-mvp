@@ -80,16 +80,16 @@ def run_gate(run_dir: Path, repo: Path) -> dict:
     ]
     gates["G9"] = "CLOSED" if not illegal else f"OPEN — statutory acceptance: {illegal[:5]}"
 
-    # G10 — the reverse loop is closed
+    # G10 — the reverse loop is closed. A rejection is closed only when Part 1
+    # ABSORBED it: the trigger file was written AND a human-signed round state
+    # carries the rework for that threat. The trigger file alone is not
+    # absorption — writing it was the pipeline's own job, so the old check
+    # closed the loop on a file the pipeline had just written itself.
     rejects = [r["id"] for r in rows if verdicts.get(r["id"], {}).get("decision") == "Reject_Risk_Require_Mitigation"]
-    triggers = run_dir / "steps" / "phase3" / f"round{len(rejects) and '' or ''}_triggers_from_part2.json"
-    triggers_exist = list((run_dir / "steps" / "phase3").glob("round*_triggers_from_part2.json"))
-    # A rejection is CLOSED only when Part 1 absorbed it — the trigger file
-    # exists AND the threat's row was re-decided afterwards. Until then G10 stays open.
-    unresolved = [rid for rid in rejects
-                  if not any(rid in p.read_text(encoding="utf-8") for p in triggers_exist)]
+    unresolved = [rid for rid in rejects if not absorbed_by_part1(run_dir, rid)]
     gates["G10"] = "CLOSED" if not rejects else (
-        "CLOSED" if not unresolved else f"OPEN — rejection(s) without a Part-1 trigger: {unresolved[:5]}")
+        "CLOSED" if not unresolved else
+        f"OPEN — rejection(s) not absorbed by a signed Part 1 round: {unresolved[:5]}")
 
     # G11 — T7 reconciliation: STRIDE ∪ LINDDUN == register; mitigators real
     stride = _cited(run_dir, "02_STRIDE_THREAT_ANALYSIS.md")
@@ -125,6 +125,43 @@ def _cited(run_dir: Path, name: str) -> set[str]:
     if not path.is_file():
         return set()
     return set(re.findall(r"`(T-(?:STR|LIN)-\d+)`", path.read_text(encoding="utf-8")))
+
+
+def absorbed_by_part1(run_dir: Path, threat_id: str) -> bool:
+    """True when a Part 1 round DECIDED the rework this rejection opened.
+
+    Two pieces of evidence, and the second is the one that counts: the
+    trigger file names the threat, and a round STATE — which only exists
+    after a person signed the round — carries an item whose
+    `part2_trigger` is this threat. The trigger file alone proves nothing:
+    writing it was the pipeline's own job. The state must also be from the
+    round the trigger opened, or later: an earlier round cannot have
+    absorbed a later rejection.
+    """
+    phase3 = run_dir / "steps" / "phase3"
+    trigger_rounds = [_round_no(p.name) for p in phase3.glob("round*_triggers_from_part2.json")
+                      if threat_id in p.read_text(encoding="utf-8")]
+    if not trigger_rounds:
+        return False
+    for state_path in phase3.glob("round*_state.json"):
+        if _round_no(state_path.name) < min(trigger_rounds):
+            continue
+        try:
+            state = json.loads(state_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            continue
+        decided = ((state.get("accepted") or []) + (state.get("rejected") or [])
+                   + (state.get("adjusted") or []))
+        for item in decided:
+            if (item.get("part2_trigger") or {}).get("threat") == threat_id:
+                return True
+    return False
+
+
+def _round_no(filename: str) -> int:
+    """The round number in `round<N>_state.json` / `round<N>_triggers...`."""
+    m = re.match(r"^round(\d+)_", filename)
+    return int(m.group(1)) if m else 0
 
 
 def render_gate_report(report: dict) -> str:

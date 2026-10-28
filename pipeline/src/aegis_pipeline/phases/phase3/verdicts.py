@@ -79,8 +79,15 @@ def parse_verdicts(answer: str) -> list[dict]:
     return list(rows.values())
 
 
-def check_verdicts(rows: list[dict], objectives: list[dict], pool: list[str]) -> list[str]:
-    """Post-verdict gates. Empty list = pass."""
+def verdict_defects(rows: list[dict], objectives: list[dict], pool: list[str]) -> list[str]:
+    """The per-call defects an L0 repair round may fix.
+
+    These are the checks that used to run only AFTER the call returned, so a
+    row that named no anchor cost the whole sub-domain: the stage caught the
+    finding, dropped the sub-domain, and 11 objectives went to the matrix with
+    no verdict at all. A defect the model can repair belongs in `_validate`,
+    where the repair round lives.
+    """
     findings = []
     pub = {o["id"]: set(o["anchors"]) for o in objectives}
     known = set(pool)
@@ -112,10 +119,24 @@ def check_verdicts(rows: list[dict], objectives: list[dict], pool: list[str]) ->
         if v not in VERDICTS and v != UNSET:
             findings.append(f"{oid}: verdict {v!r} is outside the vocabulary")
     findings.extend(anchor_findings(rows, pub))
-    # Onda C L1 — the mode-collapse alert. The measured run pushed 52 of 65
-    # objectives into the organizational lane; a batch where the technical
-    # domains D-02..D-07 route >65% organizational is that failure recurring,
-    # and it says so instead of passing silently.
+    return findings
+
+
+def check_verdicts(rows: list[dict], objectives: list[dict], pool: list[str]) -> list[str]:
+    """The batch gate: the repairable defects plus the mode-collapse alert."""
+    findings = verdict_defects(rows, objectives, pool)
+    # Onda C L1 — the mode-collapse alert (M-26, registered in METRICS.md).
+    # The measured run pushed 52 of 65 objectives into the organizational
+    # lane; a batch where the technical domains D-02..D-07 route >65%
+    # organizational is that failure recurring, and it says so instead of
+    # passing silently.
+    #
+    # The scope D-02..D-07 was checked against the data before it was trusted:
+    # the collapsed arms of the calibration measure 68–78% in this scope (the
+    # alert fires) and the healthy arms 12–21% (it stays quiet). A narrower
+    # "product domains" scope (D-01, D-03, D-05, D-07) was measured too and
+    # measured WORSE — 50–59% on the collapsed arms, because D-03 held at
+    # 25%/0% while D-01 collapsed to 62–75% — so it was not adopted.
     tech = [r for r in rows if str(r.get("subdomain", ""))[:4] in {f"D-0{n}" for n in range(2, 8)}]
     if len(tech) >= 5:
         org_share = sum(1 for r in tech if r["verdict"] == ORGANIZATIONAL) / len(tech)

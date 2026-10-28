@@ -3,9 +3,10 @@ ficha_id: PROM-P3B-05
 title: 'Map each threat into the MITRE knowledge bases — catalog ids only'
 phase_step: 'Phase 3 Part 2 · Etapa 2.2 — K3 mapping (onda D)'
 pattern: 'one structured call over all threats'
-version: 1.0.0
+version: 1.1.0
 created: 2026-10-27
 status: ACTIVE
+body_is_instruction: true
 normative_source:
   - 'ADR-012 D1/D4/D5 (CWE+CAPEC core; only-cite-what-resolves; the mapping pass)'
 ---
@@ -67,6 +68,7 @@ Name the property and the component's ROLE, never the product or protocol.
 
 ## Changelog
 
+- 1.1.0 (2026-10-28) — the ficha's body sections now reach the model (`body_is_instruction: true`): the parser was sending the prompt body alone, which dropped the five verdicts, the Action coupling rule, the R5 mapping table and the `RN (a derivar)` vocabulary from every Phase 3 call.
 - 1.0.0 (2026-10-27): created for Onda D (Part 2 construction, ADR-012 + the
   2026-10-27 catalog ratification: CWE+CAPEC core; ATT&CK/D3FEND/ATLAS/EMB3D
   consultive; 3315 ids ingested from the local KG catalogs).

@@ -3,9 +3,10 @@ ficha_id: PROM-P3A-01
 title: 'Verdict the coverage matrix for one sub-domain'
 phase_step: 'Phase 3 Part 1 · Coverage mapping'
 pattern: 'one structured call per active sub-domain'
-version: 1.2.0
+version: 1.3.0
 created: 2026-10-10
 status: ACTIVE
+body_is_instruction: true
 normative_source:
   - 'ADR-007 D2/D4 (fulfillment semantics and the five-verdict vocabulary)'
   - 'ADR-008 D4 (routing by realization class)'
@@ -176,6 +177,7 @@ which is the only one of the three cases carrying a discharge column.
 
 ## Changelog
 
+- 1.3.0 (2026-10-28) — the ficha's body sections now reach the model (`body_is_instruction: true`): the parser was sending the prompt body alone, which dropped the five verdicts, the Action coupling rule, the R5 mapping table and the `RN (a derivar)` vocabulary from every Phase 3 call.
 - 1.2.0 (2026-10-27) — Onda C: the Action column is a pure enum
   (`CARRIED | PROPOSE_PRODUCT | ROUTE_ORG | DESIGN_GUIDANCE | NA`) instead of
   free text, with the coupling rule that a product-behaviour restriction MUST

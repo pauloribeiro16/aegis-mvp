@@ -3,9 +3,10 @@ ficha_id: PROM-P3A-05A
 title: 'Cluster the organizational objectives into duties and propose each disposition'
 phase_step: 'Phase 3 Part 1 · Duty clustering (Etapa 1.5, onda B)'
 pattern: 'one structured call over all organizational rows'
-version: 1.0.0
+version: 1.1.0
 created: 2026-10-27
 status: ACTIVE
+body_is_instruction: true
 normative_source:
   - 'ADR-008 (the organizational lane: duties, not verdict rows; IDs allocated per duty)'
   - 'docs/experiments/EXP_P3_01_results.md F1 (the manual duty audit blocked automation)'
@@ -116,6 +117,7 @@ file. `p3a_org` writes an organizational card per `ORG` duty.
 
 ## Changelog
 
+- 1.1.0 (2026-10-28) — the ficha's body sections now reach the model (`body_is_instruction: true`): the parser was sending the prompt body alone, which dropped the five verdicts, the Action coupling rule, the R5 mapping table and the `RN (a derivar)` vocabulary from every Phase 3 call.
 - 1.0.0 (2026-10-27): created for Onda B (automated Etapa 1.5; replaces the
   manual `duty_audit.md` for new runs).
 

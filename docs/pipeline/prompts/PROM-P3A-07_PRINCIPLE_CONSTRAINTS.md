@@ -3,9 +3,10 @@ ficha_id: PROM-P3A-07
 title: 'Derive security constraints from one engineering principle'
 phase_step: 'Phase 3 Part 1 · Principle-seeded synthesis'
 pattern: 'one structured call per engineering principle'
-version: 1.1.0
+version: 1.2.0
 created: 2026-10-12
 status: ACTIVE
+body_is_instruction: true
 normative_source:
   - 'ADR-007 D2/D4 (discharge semantics; the five-verdict vocabulary)'
   - 'ADR-001 (admitted good practice layer — principles are the entry)'
@@ -137,6 +138,7 @@ PRIN-ENG-07 — the shape this ficha restores.
 
 ## Changelog
 
+- 1.2.0 (2026-10-28) — the ficha's body sections now reach the model (`body_is_instruction: true`): the parser was sending the prompt body alone, which dropped the five verdicts, the Action coupling rule, the R5 mapping table and the `RN (a derivar)` vocabulary from every Phase 3 call.
 - 1.1.0 (2026-10-27) — Onda C: SILENCE is the required answer for
   meta-methodological principles (PRIN-ENG-05 — the measured run fabricated a
   feature for it); multi-leg principles declare their surface legs before the

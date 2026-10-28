@@ -307,6 +307,14 @@ def test_a_rejection_writes_the_part1_trigger() -> None:
 
 
 def test_g10_stays_open_until_part1_absorbs_the_rejection() -> None:
+    """The reverse loop closes on ABSORPTION, not on the trigger file.
+
+    Writing `round<N>_triggers_from_part2.json` was the pipeline's own job.
+    The old check closed the gate on that file — the loop was open in name
+    only, and a rejection nobody had reworked counted as closed. The evidence
+    of absorption is a SIGNED Part 1 round carrying the rework for that
+    threat.
+    """
     with tempfile.TemporaryDirectory() as tmp:
         run = Path(tmp)
         store = run / "steps" / "phase3b"
@@ -321,10 +329,50 @@ def test_g10_stays_open_until_part1_absorbs_the_rejection() -> None:
                            "T-STR-002": _signature("Reject_Risk_Require_Mitigation")}}), encoding="utf-8")
         report = p3tg.run_gate(run, REPO)
         assert not report["gates"]["G10"].startswith("CLOSED")
-        # Part 1 absorbs it: the trigger file names the threat
+        # the trigger file alone is NOT absorption — the pipeline wrote it
         p3rg.write_round_trigger(run, p3rg.rejection_triggers(reg))
         report = p3tg.run_gate(run, REPO)
-        assert report["gates"]["G10"].startswith("CLOSED")
+        assert not report["gates"]["G10"].startswith("CLOSED"), (
+            "G10 closed on the trigger file: that file is the pipeline's own "
+            "writing, not evidence that Part 1 absorbed the rejection")
+        # a signed Part 1 round carrying the rework IS absorption
+        (run / "steps" / "phase3" / "round2_state.json").write_text(json.dumps({
+            "accepted": [{"objective": "SO-D-01.1-001",
+                          "part2_trigger": {"threat": "T-STR-002",
+                                            "instruction": "mitigate the rejected risk"}}],
+            "rejected": [], "adjusted": [], "open": [], "converged": True,
+        }), encoding="utf-8")
+        report = p3tg.run_gate(run, REPO)
+        assert report["gates"]["G10"].startswith("CLOSED"), report["gates"]["G10"]
+
+
+def test_the_register_carries_the_statutory_flag_the_gate_reads() -> None:
+    """G9 reads the ROW, and the row is built by `compose_risk_register`.
+
+    The flag was dropped there, so `row.get("statutory_obligation")` was
+    always None and neither G9 check could ever fire. A test that sets the
+    field by hand on a hand-made register cannot catch that — it tests the
+    dictionary, not the code that builds it.
+    """
+    rows = _renumbered_rows()
+    # the shape G9 exists for: a statutory threat with no mitigation
+    gap = next(r for r in rows if r["mitigation_assessment"] == "UNMITIGATED_GAP")
+    gap["statutory_obligation"] = True
+    register = p3rg.compose_risk_register(rows, [])
+    carried = {r["id"]: r.get("statutory_obligation") for r in register["threats"]}
+    for row in rows:
+        assert carried[row["id"]] == row["statutory_obligation"], (
+            f"{row['id']}: compose_risk_register dropped the statutory flag")
+    assert carried[gap["id"]] is True
+    try:
+        p3rg.apply_risk_verdicts(register, {
+            r["id"]: _signature("Accept_Residual_Risk" if r["id"] == gap["id"]
+                                else "Accept_Mitigated")
+            for r in register["threats"]})
+    except ValueError as e:
+        assert "G9" in str(e)
+    else:
+        raise AssertionError("a non-mitigated statutory threat must not be acceptable")
 
 
 def test_t7_reconciles_the_register_with_the_analyses() -> None:

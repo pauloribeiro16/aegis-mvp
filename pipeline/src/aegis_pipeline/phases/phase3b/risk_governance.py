@@ -31,6 +31,11 @@ def compose_risk_register(threats: list[dict], trees: list[dict]) -> dict:
             "mitigating_requirements": t["mitigating_requirements"],
             "mitigation_assessment": t["mitigation_assessment"],
             "defense": t["defense"],
+            # The statutory flag travels with the row. It used to be dropped
+            # here, and both G9 checks read the ROW: `row.get("statutory_
+            # obligation")` was always None, so a non-mitigated statutory
+            # threat could be accepted or transferred with nothing firing.
+            "statutory_obligation": bool(t.get("statutory_obligation")),
             "residual": f"{t['l_res']}x{t['i_res']}={t['residual_score']} ({t['residual_level']})",
             "residual_level": t["residual_level"],
             "unbroken_attack_path": t["id"] in unbroken,

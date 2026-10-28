@@ -50,6 +50,17 @@ FICHA_FILES = {
 # Sub-domain id like D-01.1
 SD_RE = re.compile(r"^D-\d{2}\.\d$")
 
+#: Ficha sections that are provenance or operator-facing — never part of the
+#: instruction contract the model must read.
+_PROVENANCE_SECTIONS = {"metadata", "changelog", "normative source"}
+
+#: Sections `compose_call` already sends on its own. Sending them twice pads
+#: the prompt with the same words.
+_ALREADY_SENT_SECTIONS = {
+    "output schema", "output schema (strict json)", "self-checks (l2)",
+    "human gate", "prompt body",
+}
+
 
 # --------------------------------------------------------------------------
 # minimal parsers (stdlib-only; formats are fixed by this repo)
@@ -172,6 +183,36 @@ def parse_ficha(path: Path) -> dict[str, Any]:
             break
     prompt_body = "\n".join(prompt_body_lines).strip()
 
+    def section(name: str) -> str:
+        """The section whose heading matches `name`, case-insensitively.
+
+        The heading case drifted across the ficha set — `Prompt body` in the
+        older fichas, `Prompt Body` in PROM-P2-01 — and a lookup by exact
+        name silently returns "" for the fiche that spells it differently.
+        """
+        for key, val in sections.items():
+            if key.strip().lower() == name.strip().lower():
+                return val
+        return ""
+
+    # The instruction block, read the way the author wrote it. The older
+    # fichas quote it (`> `); the Phase 3 ones write it as plain prose. A
+    # parser that demands the `>` marker returns an EMPTY body for six of the
+    # fifteen Phase 3 fichas — the model then receives an output schema and
+    # no instruction at all, which is what the 77%-organizational run was.
+    instruction_parts: list[str] = []
+    pb = section("Prompt body")
+    if pb:
+        instruction_parts.append(
+            "\n".join(re.sub(r"^>\s?", "", ln) for ln in pb.splitlines()).strip())
+    for key, val in sections.items():
+        low = key.strip().lower()
+        if (low in _PROVENANCE_SECTIONS or low in _ALREADY_SENT_SECTIONS
+                or low.startswith("context pack")):
+            continue
+        instruction_parts.append(f"## {key}\n\n{val}".strip())
+    instruction_text = "\n\n".join(p for p in instruction_parts if p).strip()
+
     # Output schema section verbatim (fenced yaml for P1, markdown tables/lists
     # for P2/P4/P5 — both are part of the contract shown to the model)
     schema = sections.get("Output schema", "").strip()
@@ -195,6 +236,12 @@ def parse_ficha(path: Path) -> dict[str, Any]:
                        or table_field("Metadata", "Human gate")),
         "self_checks": sections.get("Self-checks (L2)", "").strip(),
         "prompt_body": prompt_body,
+        # The whole contract, for the fichas that declare it model-facing.
+        # `body_is_instruction: true` in the frontmatter is the opt-in: the
+        # ficha's body sections ARE the instruction the model must read.
+        "instruction_text": instruction_text,
+        "body_is_instruction": meta.get("body_is_instruction", "").strip().lower()
+        in ("true", "yes", "1"),
         "output_schema": schema,
         "pack_declared": pack_files,
         "source_path": str(path),
@@ -1012,34 +1059,6 @@ def build_pack(step: str, repo: Path, case: dict[str, Any], run_dir: Path) -> tu
             f"Context pack build (deterministic): card {card_id}; the round-accepted "
             "constraints routed to it; write security preconditions and exception "
             "extensions for its use case.\n"))
-    else:
-        raise ValueError(f"unknown step: {step}")
-
-    pack_text = "".join(wrap_file(p, c) for p, c in files)
-    return files, pack_text
-
-
-def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
-                 subdomain: str | None = None, extra_instruction: str = "") -> dict[str, Any]:
-    """Assemble the full system+user messages for one LLM call."""
-    # the step TAG selects the pack ("p4:D-01.1", "p4t:D-04.3"); the ficha is
-    # the step FAMILY. Splitting on the first colon covers both, and a
-    # `startswith("p4:")` test does not — "p4t:D-04.3" is not a p4 ficha.
-    ficha_step = "p4" if step.startswith("p4:") else step.split(":", 1)[0]
-    ficha = parse_ficha(repo / "docs" / "pipeline" / "prompts" / FICHA_FILES[ficha_step])
-    pack_step = step if not step.startswith("p4:") else f"p4:{subdomain}"
-    files, pack_text = build_pack(pack_step, repo, case, run_dir)
-
-    title = f"{ficha['id']} — {subdomain}" if subdomain else ficha["id"]
-    extraction = not step.startswith(("p3", "p3f", "p4", "p4t", "p2o", "p2d"))
-    if step.startswith("p2o"):
-        discipline = (
-            "- Operationalize the sub-domain for this company: write the operational translation paragraph "
-            "and assign empirical verification attributes (method, criteria, owner) and operational rules (RULE-*).\n"
-            "- Method must be strictly one of TEST, INSPECT, DEMONSTRATE, or ANALYZE.\n"
-            "- Every rule statement MUST be imperative (contain SHALL or MUST).\n"
-            "- Technology neutrality (R5): never cite proprietary cloud vendors (AWS, Azure, GCP, etc.).\n"
-            "- Never invent facts about the company beyond fact_sheet.yaml (R6).\n")
     elif step.startswith("p3a_repropose:"):
         # Etapa 1.6.b — the refinement pack: the proposal the human marked
         # Adjust, the note that says why, and the material the rewrite must
@@ -1047,8 +1066,26 @@ def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
         import phase3 as _p3
 
         _, round_no, key = step.split(":", 2)
-        item = json.loads((run_dir / "steps" / "phase3" / "repropose"
-                           / f"r{round_no}" / f"{key}.json").read_text(encoding="utf-8"))
+        # The item to rewrite comes from the ROUND STATE. The pack used to
+        # read this step's own OUTPUT file, which does not exist yet on a
+        # fresh run — every call raised FileNotFoundError before it could
+        # reach the model.
+        item = None
+        state_path = run_dir / "steps" / "phase3" / f"round{int(round_no) - 1}_state.json"
+        if state_path.is_file():
+            state = json.loads(state_path.read_text(encoding="utf-8"))
+            for candidate in (state.get("pending_adjustment") or []):
+                if (candidate.get("principle") or candidate.get("objective")) == key:
+                    item = candidate
+                    break
+        if item is None:
+            out_path = (run_dir / "steps" / "phase3" / "repropose"
+                        / f"r{round_no}" / f"{key}.json")
+            if not out_path.is_file():
+                raise ValueError(
+                    f"p3a_repropose: no item to rewrite for {key!r} — round "
+                    f"{int(round_no) - 1} has no pending adjustment under that key")
+            item = json.loads(out_path.read_text(encoding="utf-8"))
         oid = item["objective"]
         phase2_doc = run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md"
         objectives = {o["id"]: o for o in _p3.load_objectives(phase2_doc)}
@@ -1076,6 +1113,17 @@ def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
                 f"pack-p3a_repropose/r{round_no}/{key}/RULES.json",
                 json.dumps(rules, indent=1, ensure_ascii=False),
             ))
+        trig = item.get("part2_trigger")
+        if trig:
+            files.append((
+                f"pack-p3a_repropose/r{round_no}/{key}/PART2_REJECTION.md",
+                f"# The Part 2 rejection this rewrite answers\n\n"
+                f"- **Threat:** `{trig.get('threat')}`\n"
+                f"- **The person's instruction:** {trig.get('instruction')}\n\n"
+                "The person rejected this risk in the Part 2 round. The rewrite "
+                "must discharge what this instruction asks for; the risk register "
+                "is re-evaluated after this round.\n",
+            ))
         files.insert(0, (
             f"pack-p3a_repropose/r{round_no}/{key}/BUILD_MANIFEST.md",
             f"Context pack build (deterministic): round-{round_no} refinement of `{key}`; "
@@ -1087,12 +1135,27 @@ def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
         # the company's own scale facts; the model groups them into duties and
         # proposes ORG | SCALE | CARRIED per duty.
         import phase3 as _p3
+        from aegis_pipeline.phases.phase3.schemas import ORGANIZATIONAL as _ORG
 
         phase2_doc = run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md"
         objectives = _p3.load_objectives(phase2_doc)
         rows = _p3.build(objectives)
-        from aegis_pipeline.phases.phase3.schemas import ORGANIZATIONAL as _ORG
-        org_rows = [r for r in rows if r.get("verdict") == _ORG]
+        # The skeleton carries no verdict: it is built from the Phase 2
+        # deliverable alone. Without merging `verdicts_*.json` the filter
+        # finds zero organizational rows and the stage dies with "run p3a_map
+        # first" — the rows are there, their verdict is not.
+        verdicts: list[dict] = []
+        for vf in sorted((run_dir / "steps" / "phase3").glob("verdicts_*.json")):
+            verdicts.extend(json.loads(vf.read_text(encoding="utf-8")))
+        by_id = {v["id"]: v for v in verdicts}
+        # Merge over the baseline row, not instead of it: the verdict record
+        # carries the verdict and the carrier, the baseline row carries the
+        # summary and the published anchors.
+        org_rows = []
+        for r in rows:
+            v = by_id.get(r["id"])
+            if v and v.get("verdict") == _ORG:
+                org_rows.append({**r, **{k: val for k, val in v.items() if val}})
         if not org_rows:
             raise ValueError("p3a_org_cluster: no organizational rows — run p3a_map first")
         fact_sheet = run_dir / "steps" / "fact_sheet.yaml"
@@ -1125,15 +1188,13 @@ def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
     elif step == "p3b_model":
         # Etapa 2.1 — the attack target: the approved V2 package, the accepted
         # constraints, the org cards, and the company's own architecture facts.
-        import phase3 as _p3
-
         v2_dir = run_dir / "outputs" / "phase3" / "part1_security_privacy" / "v2_security_privacy_synthesis"
         for name in ("Doc01_Requirements_Specification.md", "Doc02_System_Use_Cases.md",
                      "Doc03_Organizational_Requirements.md"):
-            p = v2_dir / name
-            if not p.is_file():
-                p = run_dir / "outputs" / "phase3" / "part1_security_privacy" / name
-            files.append((f"pack-p3b_model/{name}", p.read_text(encoding="utf-8") if p.is_file() else "(missing)"))
+            q = v2_dir / name
+            if not q.is_file():
+                q = run_dir / "outputs" / "phase3" / "part1_security_privacy" / name
+            files.append((f"pack-p3b_model/{name}", q.read_text(encoding="utf-8") if q.is_file() else "(missing)"))
         from aegis_pipeline.phases.phase3.proposals import latest_round as _lr
         state_path = run_dir / "steps" / "phase3" / f"round{_lr(run_dir)}_state.json"
         accepted = []
@@ -1157,12 +1218,11 @@ def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
     elif step.startswith("p3b_stride:"):
         # One STRIDE call per data flow: the flow, its assets and boundary, and
         # the accepted requirements allocated to anything it touches.
-        import phase3 as _p3
+        from aegis_pipeline.phases.phase3b.schemas import STRIDE as _STRIDE
 
         df_id = step.split(":", 1)[1]
         model = json.loads((run_dir / "steps" / "phase3b" / "system_model.json").read_text(encoding="utf-8"))["model"]
         flow = next(f for f in model["flows"] if f["id"] == df_id)
-        from aegis_pipeline.phases.phase3b.schemas import STRIDE as _STRIDE
         lines = [f"# Data flow under analysis: `{df_id}`", "",
                  f"- **Source:** {flow['source']}",
                  f"- **Destination:** {flow['destination']}",
@@ -1191,10 +1251,9 @@ def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
     elif step == "p3b_linddun":
         # One LINDDUN call over the whole model: privacy threats against the
         # personal-data assets and the flows that carry them.
-        import phase3 as _p3
+        from aegis_pipeline.phases.phase3b.schemas import LINDDUN as _LINDDUN
 
         model = json.loads((run_dir / "steps" / "phase3b" / "system_model.json").read_text(encoding="utf-8"))["model"]
-        from aegis_pipeline.phases.phase3b.schemas import LINDDUN as _LINDDUN
         lines = ["# Assets and flows to analyse for privacy threats", ""]
         for a in model["assets"]:
             lines.append(f"- `{a['id']}` **{a['name']}** ({a['kind']}; sensitivity: {a['sensitivity']})")
@@ -1216,7 +1275,8 @@ def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
     elif step == "p3b_k3":
         # The MITRE knowledge mapping: the threats so far + the catalog ids and
         # names. The catalog is the whole universe — a cited id outside it is
-        # a fabrication the gate rejects (T8).
+        # a fabrication the gate rejects (T8). PREREG_P3_03 H1 freezes this
+        # shape: the COMPLETE catalog is in the pack.
         from aegis_pipeline.phases.phase3b.schemas import threat_index as _ti
 
         threats = []
@@ -1263,8 +1323,8 @@ def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
                  f"- **Defense mechanism or gap:** {threat['defense']}", "",
                  "## The Part 1 requirements the register cites as mitigators", ""]
         for rid in threat["mitigating_requirements"]:
-            p = accepted.get(rid, {})
-            lines.append(f"- `{rid}` — {p.get('constraint', '(org card — see Doc03)')[:200]}")
+            accepted_item = accepted.get(rid, {})
+            lines.append(f"- `{rid}` — {accepted_item.get('constraint', '(org card — see Doc03)')[:200]}")
         lines += ["", "Mark every node a named requirement actually cuts with "
                   "`[DEF: <requirement-id>]`. A node no requirement cuts stays "
                   "unmarked — the code computes the open path from your marks, "
@@ -1274,6 +1334,103 @@ def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
             f"pack-p3b_tree/{tid}/BUILD_MANIFEST.md",
             f"Context pack build (deterministic): threat {tid} with the constraint "
             "texts it claims as mitigators. The tree is the PROOF; the code judges it.\n"))
+    else:
+        raise ValueError(f"unknown step: {step}")
+
+    pack_text = "".join(wrap_file(p, c) for p, c in files)
+    return files, pack_text
+
+
+def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
+                 subdomain: str | None = None, extra_instruction: str = "") -> dict[str, Any]:
+    """Assemble the full system+user messages for one LLM call."""
+    # the step TAG selects the pack ("p4:D-01.1", "p4t:D-04.3"); the ficha is
+    # the step FAMILY. Splitting on the first colon covers both, and a
+    # `startswith("p4:")` test does not — "p4t:D-04.3" is not a p4 ficha.
+    ficha_step = "p4" if step.startswith("p4:") else step.split(":", 1)[0]
+    ficha = parse_ficha(repo / "docs" / "pipeline" / "prompts" / FICHA_FILES[ficha_step])
+    pack_step = step if not step.startswith("p4:") else f"p4:{subdomain}"
+    files, pack_text = build_pack(pack_step, repo, case, run_dir)
+
+    title = f"{ficha['id']} — {subdomain}" if subdomain else ficha["id"]
+    extraction = not step.startswith(("p3", "p3f", "p4", "p4t", "p2o", "p2d"))
+    if step.startswith("p2o"):
+        discipline = (
+            "- Operationalize the sub-domain for this company: write the operational translation paragraph "
+            "and assign empirical verification attributes (method, criteria, owner) and operational rules (RULE-*).\n"
+            "- Method must be strictly one of TEST, INSPECT, DEMONSTRATE, or ANALYZE.\n"
+            "- Every rule statement MUST be imperative (contain SHALL or MUST).\n"
+            "- Technology neutrality (R5): never cite proprietary cloud vendors (AWS, Azure, GCP, etc.).\n"
+            "- Never invent facts about the company beyond fact_sheet.yaml (R6).\n")
+    elif step.startswith("p3a_repropose:"):
+        # Etapa 1.6.b — rewriting ONE item because a person marked it Adjust.
+        discipline = (
+            "- You are rewriting ONE existing proposal because a person marked it "
+            "`Adjust`. Change only what their note asks for; every other field "
+            "stays exactly as it is.\n"
+            "- Keep the obligation the objective publishes: the anchor set and the "
+            "Phase 2 rules in the pack are the limits of the rewrite (R2).\n"
+            "- Never invent a fact ABOUT THE COMPANY: every company statement "
+            "traces to the fact sheet, or it is a fabrication (R6).\n"
+            "- Technology neutrality (R5): name what must hold, never what "
+            "implements it.\n")
+    elif step == "p3a_org_cluster":
+        # Etapa 1.5 — grouping the organizational objectives into team duties.
+        discipline = (
+            "- You are grouping obligations into DUTIES, not writing one duty per "
+            "objective. Group by owner + cadence + evidence: the same role "
+            "producing the same record at the same cadence answers both.\n"
+            "- A `SCALE` disposition MUST cite a fact from the fact sheet in the "
+            "pack; a carve-out without a company fact is a preference, not a "
+            "proportionality argument.\n"
+            "- Technology neutrality (R5): name the obligation and its evidence, "
+            "never the product the team buys.\n"
+            "- Every objective id in the pack appears in exactly one duty row: "
+            "none invented, none duplicated, none dropped.\n")
+    elif step == "p3b_model":
+        # Etapa 2.1 — the attack target, decomposed from the Part 1 package.
+        discipline = (
+            "- You are decomposing what the Part 1 package ALREADY specifies. "
+            "Name no component, asset or flow the documents do not name (R6).\n"
+            "- Technology neutrality (R5): assets and flows are functional, never "
+            "a product, protocol or vendor.\n"
+            "- Flag what cannot be decided instead of dropping or guessing it.\n")
+    elif step.startswith("p3b_stride:"):
+        # Etapa 2.2 — STRIDE over one data flow.
+        discipline = (
+            "- You are enumerating threats for ONE data flow. Threats live where "
+            "data crosses a trust boundary.\n"
+            "- Every threat names a category from the closed vocabulary in the "
+            "pack, and the Part 1 requirements that mitigate it; a requirement "
+            "id that is not a Part 1 id is a fabrication.\n"
+            "- The inherent scores are yours; the residual is computed by the "
+            "code from your mitigation assessment. Never state a residual.\n")
+    elif step == "p3b_linddun":
+        # Etapa 2.3 — LINDDUN over the personal-data assets.
+        discipline = (
+            "- You are enumerating privacy threats against the PERSON and their "
+            "data, not threats to the system's availability.\n"
+            "- Every threat names a category from the closed vocabulary in the "
+            "pack, and the Part 1 requirements that mitigate it.\n"
+            "- The inherent scores are yours; the residual is computed by the "
+            "code. Never state a residual.\n")
+    elif step == "p3b_k3":
+        # Etapa 2.3 — the MITRE knowledge mapping.
+        discipline = (
+            "- You are mapping each threat onto knowledge-base ids FROM THE "
+            "CATALOG IN THE PACK. An id outside it is a fabrication the gate "
+            "rejects (T8).\n"
+            "- Map each threat on its own; cite an id only where it names the "
+            "weakness or the attack pattern the threat actually describes.\n")
+    elif step.startswith("p3b_tree:"):
+        # Etapa 2.4 — the attack-defense tree: the proof the code judges.
+        discipline = (
+            "- You are proving, node by node, whether the named requirements "
+            "actually cut the attack path. Mark a node `[DEF: <id>]` only where "
+            "a requirement in the pack cuts it.\n"
+            "- A node no requirement cuts stays UNMARKED. An optimistic mark is "
+            "the failure this step exists to prevent — the code computes the "
+            "open path from your marks, not from your prose.\n")
     elif step.startswith("p3a_"):
         # The p3a steps are neither extraction nor Phase 1 goal-writing, and
         # `p3a_map` starts with "p3", so it used to inherit the p4 generative
@@ -1332,9 +1489,17 @@ def compose_call(repo: Path, case: dict[str, Any], run_dir: Path, step: str,
         f"- Produce ONLY the requested output artifact, exactly in the Output schema; no extra commentary.\n"
         f"- Output language: {case['output_language']}.\n"
     )
+    # The instruction the model reads. A ficha that declares
+    # `body_is_instruction: true` carries its whole contract in its body
+    # sections — the five verdicts, the coupling rule, the R5 mapping table —
+    # and its prompt body is only a summary of that. The Phase 1/2 fichas do
+    # not declare it: their prompts are measured and frozen, and their bytes
+    # must not move.
+    body = (ficha["instruction_text"] if ficha.get("body_is_instruction")
+            else ficha["prompt_body"])
     user = (
         f"# Task — {title} (ficha {ficha['id']} v{ficha['version']})\n\n"
-        f"{ficha['prompt_body']}\n\n"
+        f"{body}\n\n"
         f"# Output schema\n\n```\n{ficha['output_schema']}\n```\n"
     )
     # the self-checks and the acceptance bar the reviewer applies are the most

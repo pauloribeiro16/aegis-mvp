@@ -1,7 +1,7 @@
 # PREREG_P3_02 — Onda C: calibração multi-modelo das fichas da Fase 3 Parte 1
 
-Version: 1.1.0
-Status: FROZEN 2026-10-27, before the first `p3a_all` job of the calibration matrix is submitted.
+Version: 1.2.0
+Status: FROZEN 2026-10-27, before the first `p3a_all` job of the calibration matrix is submitted. Adenda 1.2.0 (2026-10-28) after the first submission and before any job completed — see §5.
 Frozen by: aegis-mvp executor, after the Onda A/B/C code landed (`f34b2bf`, `693779a`, `5b7dade`) and all 16 local test suites were green, and before any GPU time.
 Upstream: [phase3_improvement_and_calibration_plan.md](../../../.gemini/antigravity/brain/be621b89-afc5-4c19-82cc-8acf552a9ede/phase3_improvement_and_calibration_plan.md) §Onda C (plano diretor; cópia das intenções em `docs/pipeline/03_PROMPT_CATALOG.md`) · [PREREG_P3_01.md](PREREG_P3_01.md) (a construção que esta calibração mede) · [METRICS.md](METRICS.md) M-26 (o limiar de colapso, incident-calibrated).
 Model availability verified 2026-10-27: `qwen3.8:27b`, `muse-glimmer:30b`, `gemma4:31b` — os três manifestos presentes na cache partilhada do Deucalion (`ollama_data/models/manifests/registry.ollama.ai/library/`).
@@ -114,6 +114,56 @@ Case 03 → `run_p2c3` (422), todas seed 42 / temp 0.2 / qwen3.8:27b.
 Nenhum outro desvio à data do congelamento. Desvios registam-se AQUI por
 adenda versionada (nunca em silêncio), e o doc de resultados cita a versão
 que vigia quando cada job correu.
+
+**Adenda 1.2.0 (2026-10-28, depois da 1.ª submissão, ANTES de qualquer job
+concluir) — a ficha chega inteira ao modelo.** Os seis jobs da 1.ª submissão
+(`2160106`–`2160111`) abortaram todos em `p3a_org_cluster` com
+`ValueError: unknown step` — os construtores de pack das etapas novas
+(Ondas B e D) tinham sido escritos em `compose_call` em vez de `build_pack`,
+e nenhuma chamada chegou ao modelo (0 propostas). A auditoria achou a causa
+raiz e mais duas, ambas measured na mesma sessão:
+
+1. **O contrato da ficha não chegava ao modelo.** `parse_ficha` extraía só o
+   `## Prompt body` (e exigia o marcador `>`), pelo que as secções
+   normativas — os cinco verditos, a regra de acoplamento da coluna
+   `Action`, a tabela de neutralidade R5, o vocabulário `RN (a derivar)` —
+   ficavam na ficha de engenharia e nunca no prompt. Seis das quinze fichas
+   da Fase 3 tinham `prompt_body` vazio: o modelo recebia um esquema de
+   saída e zero instrução. **Medido:** `PROM-P3A-01` enviava 1 916 chars
+   (17% da ficha); envia agora 8 253. **As fichas da Fase 1/2 não mudam
+   (byte-idêntico) — os seus prompts são medidos e congelados**; só as
+   fichas da Fase 3 declaram `body_is_instruction: true` e assim passam a
+   ler o corpo inteiro. As fifteen fichas da Fase 3 subiram de versão
+   (1.x.0 → 1.x+1.0) com linha de changelog, e o digest de prompts que cada
+   corrida grava no `manifest.json` passa a reflectir a nova ficha.
+2. **Os defeitos reparáveis do `p3a_map` eram medidos DEPOIS da chamada.**
+   Uma linha sem âncora citada custava o sub-domínio inteiro (o estágio
+   apanhava o achado e descartava-o). Passaram para dentro de `_validate()`,
+   onde vive a ronda de reparo L0: o modelo é re-preguntado com o defeito
+   nomeado, em vez de o sub-domínio ser descartado.
+
+**Efecto sobre as hipóteses:** H1, H2 e H3 medem o comportamento do modelo
+perante a **ficha** — e a ficha mudou (era o instrumento defeituoso). As
+hipóteses, os limiares e o critério de aprovação (banda `ROUTE_ORG` 25–60%
+global) **não mudam**; o que muda é o instrumento, e é isso que a calibração
+deveria medir. O alerta M-26 fica **como está registado** (D-02..D-07): foi
+medido contra os dados dos seis braços e **discrimina** — 68–78%
+`ROUTE_ORG` nos braços colapsados (dispara) e 12–21% nos saudáveis (silêncio).
+Um âmbito mais estreito (os domínios de produto D-01, D-03, D-05, D-07) foi
+medido também e mediu **pior** (50–59% nos colapsados, porque o D-03 ficou
+em 25%/0% enquanto o D-01 colapsava a 62–75%) — por isso **não foi adoptado**.
+
+**Medição por domínio (a distribuição real do colapso, Caso 01 vs Caso 03):**
+no Caso 01 o modelo despejou para a lane organizacional D-02 (100%), D-04
+(88–100%), D-06 (100%), D-08/D-09 (100%), D-10 (83%), D-07 (80–100%) e **D-01
+(62–75%, contra 0/7 no gabarito manual)**; no Caso 03, o mesmo código com a
+mesma ficha dá D-01 0%, D-05 0%, D-07 0%, D-10 14%. O colapso é do **Caso 01**
+(uma SaaS de 8 pessoas), não do código. Esta distribuição é o que a
+calibração tem de reproduzir — e é o que a ficha reparada deve mudar.
+
+**Nenhum job desta matriz chegou a correr uma chamada**: as seis submissões
+abortaram antes da primeira chamada, pelo que não há resultado a reconciliar.
+Nenhum resultado anterior é invalidado — nenhum existia.
 
 ## 6. What this does NOT claim
 

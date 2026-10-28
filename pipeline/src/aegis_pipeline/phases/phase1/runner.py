@@ -733,7 +733,21 @@ class StepRunner:
             return parse_p2o(answer, subdomain)
         if step.startswith("p3a_map"):
             import phase3 as _p3
-            return {"verdicts": _p3.parse_verdicts(answer)}
+            sd = step.split(":", 1)[1] if ":" in step else (subdomain or "")
+            verdicts = _p3.parse_verdicts(answer)
+            # The repairable defects belong HERE, not after the call returns.
+            # A row that named no anchor used to cost the whole sub-domain:
+            # the stage caught the finding, dropped the sub-domain, and its
+            # objectives reached the matrix with no verdict at all. Inside
+            # `_validate` the L0 repair round re-asks with the defect named.
+            defects = _p3.verdict_defects(
+                verdicts,
+                [o for o in self._p3_objectives() if o["subdomain"] == sd],
+                self._p3_pool(),
+            )
+            if defects:
+                raise ValueError(f"{len(defects)} verdict defect(s): {defects[0]}")
+            return {"verdicts": verdicts}
         if step == "p3a_cards":
             from aegis_pipeline.phases.phase3 import cards as _p3c
             return _p3c.parse_inventory(answer)
@@ -825,7 +839,28 @@ class StepRunner:
                     "p3a_repropose: no target — the stage must set _p3a_repropose_target "
                     "before calling; a refinement may only rewrite the item the human "
                     "marked Adjust")
-            return _p3p.parse_proposals(answer, [item],
+            if item.get("principle"):
+                # A principle-derived constraint is keyed by the OBJECTIVE it
+                # discharges (the principle parser's own shape). The
+                # objective-driven parser would read the principle id as an
+                # objective and fail to derive a subdomain from it.
+                from aegis_pipeline.phases.phase3 import principles_constraints as _p3pc
+                from aegis_pipeline.phases.phase3.schemas import ORGANIZATIONAL as _ORG
+                rows, _ = self._p3_merged_rows()
+                routed = [r for r in rows if r.get("verdict") == _ORG]
+                parsed = _p3pc.parse_principle_proposals(answer, item["principle"], routed)
+                if not any(p["objective"] == item["objective"] for p in parsed):
+                    raise ValueError(
+                        f"p3a_repropose: the rewrite must discharge "
+                        f"{item['objective']}, the item being refined")
+                return {"proposals": parsed}
+            # `parse_proposals` keys its blocks by the target's `id`; a round
+            # item is a proposal (it carries `objective`), so the key the
+            # human's verdict is filed under is handed over explicitly. The
+            # item used to be passed as it was and every call died on
+            # KeyError('id').
+            target = {**item, "id": _p3p.round_key(item)}
+            return _p3p.parse_proposals(answer, [target],
                                         _p3p.load_rule_catalogue(self.run_dir))
         if step == "p3a_org_cluster":
             from aegis_pipeline.phases.phase3 import org as _p3o
@@ -1246,6 +1281,23 @@ class StepRunner:
             raise ValueError("no verdicts stored — run --stage p3a_map first")
         return p3.apply_verdicts(skeleton, verdict_rows), objectives
 
+    def _p3_objectives(self) -> list[dict]:
+        """The Phase 2 objectives of this run — the rows a verdict answers."""
+        import phase3 as p3
+
+        phase2_doc = self.run_dir / "outputs" / "phase2" / "Doc01_Operational_Objectives.md"
+        if not phase2_doc.is_file():
+            raise ValueError(f"no Phase 2 deliverable at {phase2_doc} — run --stage phase2 first")
+        return p3.load_objectives(phase2_doc)
+
+    def _p3_pool(self) -> list[str]:
+        """The candidate card pool — the only carriers a verdict may name."""
+        import phase3 as p3
+
+        cards = p3.ensure_v0_pool(self.run_dir, self.repo, self.case.get("case_id"),
+                                  source=p3.v0_source(self.run_dir))
+        return [c["id"] for c in cards]
+
     def stage_p3a_cards(self) -> int:
         from aegis_pipeline.phases.phase3 import cards as p3c
         from aegis_pipeline.phases.phase3 import v0_cards as p3v
@@ -1604,11 +1656,33 @@ class StepRunner:
                 f"round {n} has no applied state — record the verdicts and re-run "
                 "--stage p3a_round first (a repropose rewrites APPLIED Adjust items)")
         state = json.loads(state_path.read_text(encoding="utf-8"))
-        pending = state.get("pending_adjustment") or []
+        pending = list(state.get("pending_adjustment") or [])
+        # ADR-005 reverse loop: a Part 2 rejection reopens Part 1 with the
+        # person's instruction attached. Nothing read the trigger file before,
+        # so the loop was open in name only — and the exit gate could close on
+        # a file the pipeline had written itself.
+        reopened = p3p.part2_trigger_items(self.run_dir, state, n + 1)
+        by_key = {p3p.round_key(i): i for i in pending}
+        for trig_item in reopened:
+            key = trig_item["round_key"]
+            existing = by_key.get(key)
+            if existing is not None:
+                # The human is already rewriting this item: the Part 2
+                # instruction joins their note instead of opening a second
+                # item under the same verdict key.
+                existing["part2_trigger"] = trig_item["part2_trigger"]
+                existing["adjust_note"] = (
+                    f"{existing.get('adjust_note', '')} | Part 2 rejection "
+                    f"{trig_item['part2_trigger']['threat']}: "
+                    f"{trig_item['part2_trigger']['instruction']}").strip(" |")
+                continue
+            pending.append(trig_item)
         if not pending:
             raise ValueError(
                 f"round {n} has no pending adjustment — nothing to repropose"
-                + (" (the round converged)" if state.get("converged") else ""))
+                + (" (the round converged)" if state.get("converged") else "")
+                + (f"; {len(reopened)} Part 2 rejection(s) reopened it"
+                   if reopened else ""))
 
         next_n = n + 1
         repropose_dir = self.run_dir / "steps" / "phase3" / "repropose" / f"r{next_n}"
@@ -1620,7 +1694,7 @@ class StepRunner:
             key = p3p.round_key(item)
             out_path = repropose_dir / f"{key}.json"
             if out_path.is_file():
-                revised.append(json.loads(out_path.read_text(encoding="utf-8")))
+                revised.append(p3p.with_part2_trigger(out_path, item))
                 continue
             try:
                 self._p3a_repropose_target = item
@@ -1631,7 +1705,7 @@ class StepRunner:
                     if self.dry_run:
                         continue
                     raise FileNotFoundError(f"{out_path} was not written by _call")
-                revised.append(json.loads(out_path.read_text(encoding="utf-8")))
+                revised.append(p3p.with_part2_trigger(out_path, item))
             except (LLMError, ValueError, KeyError, OSError) as e:
                 failures.append(f"{key}: {type(e).__name__}: {str(e)[:160]}")
                 print(f"[p3a_repropose] {key} FAILED — continuing: {str(e)[:160]}",

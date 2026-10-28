@@ -3,9 +3,10 @@ ficha_id: PROM-P3A-06
 title: 'Weave the accepted security constraints into one card use case'
 phase_step: 'Phase 3 Part 1 · Weave (wave 6)'
 pattern: 'one structured call per card carrying accepted constraints'
-version: 1.0.1
+version: 1.1.1
 created: 2026-10-10
 status: ACTIVE
+body_is_instruction: true
 normative_source:
   - 'docs/pipeline/08_PHASE3_PART1_CONSTRUCTION.md wave 6'
   - 'templates/phase3_functional_spec_guidelines.md (Cockburn extensions; precondition discipline)'
@@ -97,6 +98,7 @@ Doc 08 wave 6 · ADR-005 (accepted constraints are binding) · Cockburn.
 
 ## Changelog
 
+- 1.1.1 (2026-10-28) — the ficha's body sections now reach the model (`body_is_instruction: true`): the parser was sending the prompt body alone, which dropped the five verdicts, the Action coupling rule, the R5 mapping table and the `RN (a derivar)` vocabulary from every Phase 3 call.
 - 1.0.1 — added the R5 neutrality block with the ADR-009 D5 prohibited→mandatory mapping. extension text was quoting mechanism from the constraint it absorbs
 
 ## Prompt body

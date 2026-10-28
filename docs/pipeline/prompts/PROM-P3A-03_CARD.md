@@ -3,9 +3,10 @@ ficha_id: PROM-P3A-03
 title: 'Draft one V0 card: 7-row requirement, PUC row, Level-1 use case'
 phase_step: 'Phase 3 Part 1 · V0 baseline (wave 2) — per card'
 pattern: 'one structured call per card'
-version: 1.0.1
+version: 1.1.1
 created: 2026-10-10
 status: ACTIVE
+body_is_instruction: true
 normative_source:
   - 'docs/pipeline/08_PHASE3_PART1_CONSTRUCTION.md wave 2'
   - 'templates/phase3_functional_spec_guidelines.md §3.3 (card anatomy), §Cockburn (use cases)'
@@ -123,6 +124,7 @@ Doc 08 wave 2 · R13 §3.3 · Cockburn *Writing Effective Use Cases* (Level 1).
 
 ## Changelog
 
+- 1.1.1 (2026-10-28) — the ficha's body sections now reach the model (`body_is_instruction: true`): the parser was sending the prompt body alone, which dropped the five verdicts, the Action coupling rule, the R5 mapping table and the `RN (a derivar)` vocabulary from every Phase 3 call.
 - 1.0.1 — added the R5 neutrality block with the ADR-009 D5 prohibited→mandatory mapping. card descriptions were naming storage and transport products
 
 ## Prompt body

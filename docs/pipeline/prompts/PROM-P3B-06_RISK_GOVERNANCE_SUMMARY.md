@@ -3,9 +3,10 @@ ficha_id: PROM-P3B-06
 title: 'The risk governance summary the human reads before signing'
 phase_step: 'Phase 3 Part 2 · Etapa 2.5 — governance summary (onda D)'
 pattern: 'deterministic document (no model call)'
-version: 1.0.0
+version: 1.1.0
 created: 2026-10-27
 status: ACTIVE
+body_is_instruction: true
 normative_source:
   - 'the plan''s Etapa 2.4/2.5 (the golden rule; G7–G12)'
   - 'RAND MR-114 signpost pattern (S-279) — every acceptance carries its review signpost'
@@ -59,6 +60,7 @@ Name the property and the component's ROLE, never the product or protocol.
 
 ## Changelog
 
+- 1.1.0 (2026-10-28) — the ficha's body sections now reach the model (`body_is_instruction: true`): the parser was sending the prompt body alone, which dropped the five verdicts, the Action coupling rule, the R5 mapping table and the `RN (a derivar)` vocabulary from every Phase 3 call.
 - 1.0.0 (2026-10-27): created for Onda D (Part 2 construction, ADR-012 + the
   2026-10-27 catalog ratification: CWE+CAPEC core; ATT&CK/D3FEND/ATLAS/EMB3D
   consultive; 3315 ids ingested from the local KG catalogs).

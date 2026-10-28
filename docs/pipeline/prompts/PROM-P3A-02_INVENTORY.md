@@ -3,9 +3,10 @@ ficha_id: PROM-P3A-02
 title: 'Propose the functional card inventory for the product surface'
 phase_step: 'Phase 3 Part 1 · V0 baseline (wave 2) — inventory'
 pattern: 'one structured call for the whole surface'
-version: 1.0.1
+version: 1.1.1
 created: 2026-10-10
 status: ACTIVE
+body_is_instruction: true
 normative_source:
   - 'docs/pipeline/08_PHASE3_PART1_CONSTRUCTION.md wave 2'
   - 'templates/phase3_functional_spec_guidelines.md §3.3 (card filling rules), §7 (anti-patterns)'
@@ -97,6 +98,7 @@ Doc 08 wave 2 · R13 §3.3/§7 · R6.
 
 ## Changelog
 
+- 1.1.1 (2026-10-28) — the ficha's body sections now reach the model (`body_is_instruction: true`): the parser was sending the prompt body alone, which dropped the five verdicts, the Action coupling rule, the R5 mapping table and the `RN (a derivar)` vocabulary from every Phase 3 call.
 - 1.0.1 — added the R5 neutrality block with the ADR-009 D5 prohibited→mandatory mapping. inventory names were restating the platform's own component list
 
 ## Prompt body

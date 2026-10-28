@@ -3,9 +3,10 @@ ficha_id: PROM-P3A-05
 title: 'Write the organizational requirement for one duty'
 phase_step: 'Phase 3 Part 1 · Organizational lane (wave 5)'
 pattern: 'one structured call per duty'
-version: 1.1.1
+version: 1.2.1
 created: 2026-10-10
 status: ACTIVE
+body_is_instruction: true
 normative_source:
   - 'docs/pipeline/08_PHASE3_PART1_CONSTRUCTION.md wave 5'
   - 'ADR-008 D4 (routing by realization class; duties, not verdict rows)'
@@ -113,6 +114,7 @@ hand-written `Doc03` (the golden).
 
 ## Changelog
 
+- 1.2.1 (2026-10-28) — the ficha's body sections now reach the model (`body_is_instruction: true`): the parser was sending the prompt body alone, which dropped the five verdicts, the Action coupling rule, the R5 mapping table and the `RN (a derivar)` vocabulary from every Phase 3 call.
 - 1.1.1 — added the R5 neutrality block with the ADR-009 D5 prohibited→mandatory mapping. duty_20 failed twice on `TLS 1.3` — the term came from the proportionality warrant, and the prompt offered no replacement
 
 - 1.1.0 — the worked example carried one-digit anchor suffixes (`DE.CM-9`, `GV.RR-2`) and the model copied them; corrected to `DE.CM-09`, `GV.RR-02` and added the rule that anchors come from the duty's `published_anchors` block. The pack now supplies that block — the first run gave the model no valid anchor to copy.

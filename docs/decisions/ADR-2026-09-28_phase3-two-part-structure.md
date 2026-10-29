@@ -29,6 +29,12 @@ The **Part 1 Exit Gate (G1–G6)** — exhaustive mapping 100% verdicted (G1), r
 
 ### D3 — Phase chain amended (ADR-004)
 
+> **Amended 2026-10-18 (researcher decision):** the chain has strictly THREE
+> phases — `F0 → F1 → F2 → F3 [Part 1 + Part 2]`. The `Fase 4 — Verification
+> & Implementation` tail below is retired: verification/implementation
+> happens at implementation time, outside the specification pipeline. The
+> `Fase 4`/`Fase 5` designations are obsolete wherever they remain.
+
 `F0 Baseline → F1 Goals → F2 Objectives → F3 Specification [Part 1 + Part 2] → F4 Verification & Implementation`.
 
 - The ADR-005 "Fase 4 — Threat Analysis" becomes **Phase 3 Part 2** (no separate phase).

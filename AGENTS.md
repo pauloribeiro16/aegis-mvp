@@ -302,7 +302,7 @@ flowchart TD
     9. *The Actor-Dump Interfaces Trap:* Filling the card's `Interfaces:` row with actor names instead of the concrete interaction surfaces (screens, forms, flows, external system interfaces).
     10. *The Copy-Paste Databases Trap:* Pasting the same generic `Information Systems / Databases:` value into every card instead of the functionally specific repository role each requirement touches.
     11. *The Premature Solution Design & Over-Specific Parameter Trap:* Prescribing arbitrary low-level operational numbers ("30-minute idle timeout", "100 req/min rate limit", "128-bit entropy", "salt >= 16 bytes", "export within 24 hours") in non-functional requirements.
-  - **High-Level Control Abstraction Mandate for Non-Functional Requirements:** Security and privacy constraints (`RN`s / `REQ-D-XX.Y-NNN`) must strictly follow the derivation chain `Regulation → Article / Clause → Control Framework (NIST CSF 2.0 / NIST PF 1.1 / ISO) → High-Level Control Objective`. They must define the protective boundary and control objective at a high level without conditioning or pre-determining detailed implementation parameters ("sem conhecimento de causa"). Concrete operational tuning belongs strictly to Phase 4 (Verification & Implementation) or subsequent detailed design passes.
+  - **High-Level Control Abstraction Mandate for Non-Functional Requirements:** Security and privacy constraints (`RN`s / `REQ-D-XX.Y-NNN`) must strictly follow the derivation chain `Regulation → Article / Clause → Control Framework (NIST CSF 2.0 / NIST PF 1.1 / ISO) → High-Level Control Objective`. They must define the protective boundary and control objective at a high level without conditioning or pre-determining detailed implementation parameters ("sem conhecimento de causa"). Concrete operational tuning happens at implementation time, downstream of the specification chain (there is no fourth phase — researcher decision 2026-10-18; the chain ends at Fase 3 Parte 2), or in subsequent detailed design passes.
   - **Card Field-Filling Standard:** Every card field (Description, Origin, Security & Privacy Constraints, Interfaces, Dependencies sub-fields, Priority) has a codified filling rule with a ✅ correct example and a ❌ anti-pattern in [`templates/phase3_functional_spec_guidelines.md`](file:///c:/Users/paulo.ribeiro/OneDrive%20-%20Instituto%20CCG%20ZGDV/Ambiente%20de%20Trabalho/Projetos_PhD/aegis-mvp/templates/phase3_functional_spec_guidelines.md) §3.3. Any correction to a filling style is codified there in the same session.
   - **V1 Functional Evolution (Refinement Pass):** V0 is locked against pre-baked security, not frozen functionally. In the V1 synthesis the functional set may evolve only through the exhaustive taxonomy **D1** derived requirement / **D2** description refinement / **D3** regulatory priority re-evaluation / **D4** card split, with every change (including `evaluated, no change`) recorded in a Functional Change Register carrying its `RN`/`PO-`/`SO-`/article driver, and `v0_functional_baseline/` untouched. Codified in [`templates/phase3_functional_spec_guidelines.md`](file:///c:/Users/paulo.ribeiro/OneDrive%20-%20Instituto%20CCG%20ZGDV/Ambiente%20de%20Trabalho/Projetos_PhD/aegis-mvp/templates/phase3_functional_spec_guidelines.md) §3.4.
   - **Specificity Matching (Altitude Control):** A downstream statement's specificity may not exceed its source's plus documented descents: every level drop on the **L0 property → L1 goal → L2 verifiable constraint → L3 mechanism category → L4 technology** scale requires a cited warrant (**W1** source statement, **W2** regulation verbatim, **W3** anchored Phase 2 objective/corpus module, **W4** admitted good practice per ADR-001, **W5** company statement); no warrant → stay at the source's level. Quantitative fit criteria are orthogonal (never count as a descent); L4 vocabulary is banned in Phases 0–3 (R5/R13 §2.1). Codified in [`templates/phase3_functional_spec_guidelines.md`](file:///c:/Users/paulo.ribeiro/OneDrive%20-%20Instituto%20CCG%20ZGDV/Ambiente%20de%20Trabalho/Projetos_PhD/aegis-mvp/templates/phase3_functional_spec_guidelines.md) §2.5.
@@ -326,7 +326,6 @@ chain as citations, never as work units.
 | **Fase 1 — Contextual Definition** | Baseline Goals + company context | **Adjusted Goals** | `AG-D-XX.Y-NNN` |
 | **Fase 2 — Operationalization** | Adjusted Goals (+ obligations, tensions) | **Security & Privacy Operational Objectives** (tail: testable `RULE-*`) | `PO-/SO-D-XX.Y-NNN` |
 | **Fase 3 — Specification** | Objectives (+ Rules) | **Part 1: Security & Privacy Requirements** (product; risk-accepted via iterative rounds; control-anchored) **+ Organizational Requirements** (`Doc03`, PROCESS lane — ADR-008) **+ Part 2: Threat & Risk Analysis** (gated by the Part 1 Exit Gate — ADR-006) | Part 1: `REQ-D-XX.Y-NNN` (practice: `R<n>`/`RN<n>`) · Org: `ORG-D-XX.Y-NNN` · Part 2: `TM-D-XX.Y-NNN` + case risk register |
-| **Fase 4 — Verification & Implementation** (ADR-006; the former "Fase 5") | Accepted F3 baseline (both parts) | Verification & implementation artifacts | — |
 
 Concept/alias note: the frozen artifacts keep their names and IDs (`objective.md`,
 `SO-D-XX.Y.*`, legacy "HSO"/"Sub-SO" expansions) — conceptually they are
@@ -338,7 +337,9 @@ control selection, then the Part 1 Exit Gate G1–G6) and Part 2 — Threat &
 Risk Analysis (STRIDE/LINDDUN + risk register over the accepted baseline).
 Part 1 additionally derives the organizational lane
 (`Doc03_Organizational_Requirements.md`, `ORG-D-XX.Y-NNN` — ADR-008).
-Verification/implementation is **Fase 4**.
+There is **no Fase 4**: verification/implementation happens at implementation time,
+outside this pipeline (researcher decision 2026-10-18; the chain is strictly
+Fase 0–3).
 
 | Feature | Phase 1 (This MVP) | Phase 2 (Downstream) |
 |---|---|---|
@@ -352,4 +353,5 @@ Designation convention (methodology-wide): **Fase 0 = Baseline Goals**
 **Fase 2 = Objectives** (`PO-/SO-D-XX.Y-NNN`), **Fase 3 = Requirements**
 (`REQ-D-XX.Y-NNN` product; `ORG-D-XX.Y-NNN` organizational — ADR-008) in two
 parts (ADR-006: Part 1 Security & Compliance, Part 2 Threat & Risk,
-`TM-D-XX.Y-NNN`); **Fase 4 = Verification & Implementation**.
+`TM-D-XX.Y-NNN`) — and the designation convention ends there (no Fase 4;
+researcher decision 2026-10-18).

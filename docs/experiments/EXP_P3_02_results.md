@@ -58,14 +58,17 @@ shedded 11 in qwen c2 alone).
   coupling rule) — fell from 62–75% organizational (aborted run) to **0–25%**
   across the three models, against a hand-written gabarito of ~0%. The repair
   did exactly what it was built to do where it was aimed.
-- **Where the residual overshoot lives:** D-06 (supply chain) 100%, D-07
-  (secure development) 80%, D-08 (human factors) 100% on qwen c1, against
-  gabarito shares of ~75/20/67% — the models route process-adjacent domains
-  organizational almost wholesale. The D4 coupling rule names product data,
-  session, access, logging and error behaviour; procurement and dev-process
-  duties apparently still read as "not product" to every model. **This is the
-  next ficha revision's target**, and it is a vocabulary gap (the coupling
-  rule's product list), not a parsing defect.
+- **Where the residual overshoot lives (measured against the hand-written
+  gabarito):** D-05 (data lifecycle) 57% org vs gabarito 14%, D-07 (secure
+  development) 80% vs gabarito 20%, D-08 100% vs gabarito 67%, D-06 (supply
+  chain) 100% vs gabarito 80% — the models route the product's data-lifecycle
+  and development-process obligations organizational almost wholesale. The D4
+  coupling rule names product data, session, access, logging and error
+  behaviour; the data lifecycle (retention, backup, deletion) and the
+  software's own secure-update/dependency/release duties apparently still
+  read as "not product" to every model. **This is the next ficha revision's
+  target** (D-05/D-07 carry the largest gabarito deltas), and it is a
+  vocabulary gap (the coupling rule's product list), not a parsing defect.
 - **The band itself is Case-01-shaped:** Cases 02/03 sit at 3–16% for every
   model — far below 25%. The prediction "qwen in band in all three cases" is
   not sustained as written; the falsifier (only >60%) did not fire there. A

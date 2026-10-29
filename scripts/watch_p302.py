@@ -124,10 +124,15 @@ print(json.dumps(out))
 
 def main() -> int:
     once = "--once" in sys.argv
+    # optional positional run ids: `watch_p302.py --once run_p304_qwen38_c1`
+    # reports ONLY those arms (the Onda C-2 re-calibration reuses the same
+    # aggregation instead of a second watcher script)
+    arms = ARMS if len(sys.argv) <= 1 + once else [
+        (rid, "?", "?") for rid in sys.argv[1 + once:]]
     queue = ssh("squeue -u $USER -h -o '%i %T %M %j' 2>/dev/null")
     print(f"=== queue ===\n{queue or '(empty)'}")
     verdict = []
-    for run_id, model, case in ARMS:
+    for run_id, model, case in arms:
         m = arm_metrics(run_id)
         if not m.get("exists"):
             print(f"\n--- {run_id} ({model}, {case}): NO RUN DIR")

@@ -3,7 +3,7 @@ ficha_id: PROM-P3A-01
 title: 'Verdict the coverage matrix for one sub-domain'
 phase_step: 'Phase 3 Part 1 · Coverage mapping'
 pattern: 'one structured call per active sub-domain'
-version: 1.3.0
+version: 1.4.0
 created: 2026-10-10
 status: ACTIVE
 body_is_instruction: true
@@ -78,17 +78,25 @@ lives in `VC discharge`):
 | Code | When |
 |---|---|
 | `CARRIED` | the verdict is `Fully covered (anchored)` — a card in the pool carries it whole |
-| `PROPOSE_PRODUCT` | the objective constrains the behaviour of an existing or derivable product capability — data, session, access, logging, isolation, export, error handling |
+| `PROPOSE_PRODUCT` | the objective constrains the behaviour of an existing or derivable product capability — data, session, access, logging, isolation, export, error handling — or the product's own lifecycle: the data it holds (retention, backup, deletion, portability) or the software it ships (secure update, dependency and release duties) |
 | `ROUTE_ORG` | the verdict is `No functional carrier (organizational)` — a team/process duty, and the obligation names it |
 | `DESIGN_GUIDANCE` | the verdict is `Design guidance` — architecture advice for later phases |
 | `NA` | the verdict is `N/A` |
 
 **Coupling rule:** if the objective restricts the data, sessions, access
-rights, logging, isolation or error behaviour of anything the product does,
-`Action` MUST be `PROPOSE_PRODUCT` — the next stage writes the constraint the
+rights, logging, isolation or error behaviour of anything the product does —
+or how the product's data is retained, backed up, deleted or carried over —
+`Action` MUST be `PROPOSE_PRODUCT`: the next stage writes the constraint the
 objective awaits, and a `ROUTE_ORG` here would hand a product obligation to
-the team lane. The measured failure this rule closes: 52 of 65 objectives
-routed organizational in one run.
+the team lane. Secure-update, dependency and release obligations for the
+software the company ships are product duties for the same reason (CRA): the
+artifact the obligation binds is the product, not a team's internal process.
+`ROUTE_ORG` stays for duties whose addressee is the team without product
+effect — an internal policy, an internal audit, a report to the authority, a
+contract negotiation. The measured failure this rule closes: 52 of 65
+objectives routed organizational in one run; v1.4.0 closes the measured
+residual where data-lifecycle and development duties routed organizational at
+57%/80% against gabarito shares of 14%/20%.
 
 ## What is not an organizational obligation
 
@@ -177,6 +185,7 @@ which is the only one of the three cases carrying a discharge column.
 
 ## Changelog
 
+- 1.4.0 (2026-10-29) — the coupling rule's product list extends to the product's own lifecycle: data retention/backup/deletion/portability and the shipped software's secure-update/dependency/release duties (CRA) are `PROPOSE_PRODUCT`. Measured target: D-05/D-07 routed organizational at 57%/80% against gabarito shares of 14%/20% (EXP_P3_02, the fired H2 falsifier). `ROUTE_ORG` explicitly keeps internal policies, audits, authority reports and contract negotiations.
 - 1.3.0 (2026-10-28) — the ficha's body sections now reach the model (`body_is_instruction: true`): the parser was sending the prompt body alone, which dropped the five verdicts, the Action coupling rule, the R5 mapping table and the `RN (a derivar)` vocabulary from every Phase 3 call.
 - 1.2.0 (2026-10-27) — Onda C: the Action column is a pure enum
   (`CARRIED | PROPOSE_PRODUCT | ROUTE_ORG | DESIGN_GUIDANCE | NA`) instead of

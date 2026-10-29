@@ -31,11 +31,11 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 EXPERIMENTS = REPO / "docs" / "experiments"
 
-RESULTS_RE = re.compile(r"^EXP\d.*results.*\.md$", re.IGNORECASE)
-PREREG_RE = re.compile(r"^PREREG_\d+\.md$")
+RESULTS_RE = re.compile(r"^EXP.*results.*\.md$", re.IGNORECASE)
+PREREG_RE = re.compile(r"^PREREG_[A-Za-z0-9_]+\.md$")
 FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.DOTALL)
 FIELD_RE = re.compile(r"^(prereg(?:_version|_note)?):\s*'?\"?([^'\"\n]+)", re.MULTILINE)
-VERSION_RE = re.compile(r"version:\s*'?\"?([0-9]+\.[0-9]+\.[0-9]+)")
+VERSION_RE = re.compile(r"version:\s*'?\"?([0-9]+\.[0-9]+\.[0-9]+)", re.IGNORECASE)
 EXP_BLOCK_RE = re.compile(r"^##\s+(EXP-\d+)", re.MULTILINE)
 COMPLETE_RE = re.compile(r"##\s+(EXP-\d+)[^\n]*COMPLETE", re.IGNORECASE)
 

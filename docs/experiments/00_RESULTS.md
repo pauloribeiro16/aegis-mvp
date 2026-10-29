@@ -494,6 +494,31 @@ and a row naming a regulation the module does not carry is still caught by
 `check_subso_coverage` and the L1 phantom-regulation check. Spelling no longer
 costs a whole run; substance still does.
 
+## P3-02 — the Onda C calibration matrix (H1 SUPPORTED · H2 FALSIFIER FIRED — read [EXP_P3_02_results.md](EXP_P3_02_results.md))
+
+*Added 2026-10-29, the analysis session. Prereg v1.2.0 (the Adenda that
+recorded the instrument repair); three submissions, of which the counted one
+is jobs 2160543–2160548.*
+
+- **The falsifier fired, and the failure is specific:** qwen38 Case 01 routes
+  66% of objectives organizational (ceiling 60%). The per-domain measurement
+  shows the ficha repair WORKED where it was aimed — D-01 fell from 62–75% to
+  0–25% across models — and where it did not: D-06/D-07/D-08 route ~80–100%
+  organizational against gabarito shares of 20–75%. The coupling rule's
+  product list (data, session, access, logging, isolation, error) does not
+  reach procurement and dev-process duties. That vocabulary extension is the
+  next revision; the signal reopens the decision, it does not defend it.
+- **The repair's positive measurement stands:** muse — the worst collapse on
+  the broken instrument (82%) — lands at 58%, inside the band, and L0
+  first-attempt is 87–96% everywhere with 326/326 objectives verdict-carrying.
+- **The band 25–60% is Case-01-shaped:** Cases 02/03 measure 3–16% for every
+  model. As a quality floor it is a convention; treating low organizational
+  share as healthy is exactly backwards for a large-company case.
+- **Two infrastructure failures are recorded as such:** 2160106–11 (packs
+  built in the wrong function — 0 model calls) and 2160351–56 (shim missing a
+  re-export — 1-minute aborts). Neither produced data; both produced the
+  guards that make their class die locally (pack integration test, shim test).
+
 ## What lands here next
 
 *Rewritten 2026-10-05. Every item the previous version of this section listed as

@@ -46,8 +46,13 @@ def test_a_collapsed_product_domain_is_challenged() -> None:
     rows = [_row(f"PO-D-05.{i}-001", "D-05.1", V.ORGANIZATIONAL) for i in range(4)]
     rows.append(_row("PO-D-05.2-001", "D-05.2", V.ORGANIZATIONAL))
     rows.append(_row("PO-D-05.2-002", "D-05.2", "Partially covered (functional leg + explicit carve-out)"))
+    # the guard is measured on the DOMAIN: the call sees one sub-domain, the
+    # siblings are passed in (D-05 is 4/5 across D-05.1..D-05.4)
     findings = V.collapse_findings(rows, "D-05")
     assert findings, "a collapsed D-05 must be challenged"
+    # and with the domain's siblings the share is the domain's, not the call's
+    assert not V.collapse_findings(rows[:1], "D-05"), (
+        "one row alone is not a collapse — the guard needs the domain")
     # the finding TEACHES: it asks what to re-read, it does not dictate a verdict
     text = findings[0]
     assert "re-read" in text and "governs" in text, text

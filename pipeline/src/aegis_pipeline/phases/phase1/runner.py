@@ -757,7 +757,7 @@ class StepRunner:
             # ONCE per sub-domain. If the model does not comply, its answer
             # stands and the finding is recorded — the alternative would drop
             # the sub-domain's objectives out of the matrix.
-            collapse = _p3.collapse_findings(verdicts, sd)
+            collapse = _p3.collapse_findings(verdicts, sd, self._p3_domain_siblings(sd))
             if collapse:
                 if sd not in self._p3_collapse_asked:
                     self._p3_collapse_asked.add(sd)
@@ -1305,6 +1305,23 @@ class StepRunner:
         if not phase2_doc.is_file():
             raise ValueError(f"no Phase 2 deliverable at {phase2_doc} — run --stage phase2 first")
         return p3.load_objectives(phase2_doc)
+
+    def _p3_domain_siblings(self, sd: str) -> list[dict]:
+        """The verdicts already recorded for the OTHER sub-domains of this domain.
+
+        The routing decision is made per sub-domain call, but the collapse is
+        a domain-level pattern — D-07 is 4/5 organizational across D-07.1..4,
+        while each call only sees 1-2 rows. Without the siblings the guard
+        never reaches its minimum and cannot fire.
+        """
+        domain = sd[:4]
+        rows: list[dict] = []
+        for path in sorted((self.run_dir / "steps" / "phase3").glob(f"verdicts_{domain}_*.json")):
+            try:
+                rows.extend(json.loads(path.read_text(encoding="utf-8")))
+            except (json.JSONDecodeError, OSError):
+                continue
+        return rows
 
     def _p3_pool(self) -> list[str]:
         """The candidate card pool — the only carriers a verdict may name."""

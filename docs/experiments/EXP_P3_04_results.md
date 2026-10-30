@@ -1,6 +1,6 @@
 ---
 prereg: PREREG_P3_04.md
-prereg_version: 1.1.0
+prereg_version: 1.2.0
 status: H1 FALSIFIER FIRED · H2 FALSIFIER FIRED · H3 SUPPORTED — a revisão estrutural (adenda v1.1.0) é o próximo passo
 ---
 
@@ -60,6 +60,27 @@ vocabulário da regra de acoplamento; a revisão seguinte é estrutural
 lista"*. A revisão estrutural é a Adenda 1.1.0 do PREREG_P3_04 (guarda de
 reparo L0 com âmbito nos domínios onde o gabarito manda produto), congelada
 **antes** da re-submissão.
+
+## A revisão estrutural (job 2166542): medida INERTE, com diagnóstico
+
+A guarda de reparo L0 foi implementada (Adenda 1.1.0) e medida no job
+2166542: routing **bit-idêntico** ao run sem guarda (68%; D-05 4/7; D-07 4/5)
+e **zero re-pedidas L0** na trace — a guarda nunca disparou. Duas causas,
+ambas medidas:
+
+1. **Granularidade.** A chamada de veredicto é por **sub-domínio**
+   (`verdicts_D-07_1.json` tem 2 linhas, `_2` tem 1); o colapso é um padrão
+   de **domínio** (D-07 é 4/5 across D-07.1..4). A guarda via 1–2 linhas e
+   o seu mínimo de 3 nunca era atingido.
+2. **Limiar.** 65% ficava **acima** do D-05 colapsado (57%) — nunca o
+   desafiava.
+
+As duas correcções (a guarda passa a ver o domínio; limiar novo de 40% com
+base medida nos seis braços — ver M-27 e a Adenda 1.2.0 do PREREG_P3_04) vão
+para a terceira e última tentativa sobre este instrumento: se o routing não
+mover, a conclusão é que o encaminhamento é um **juízo prévio estável** do
+modelo e o instrumento tem de mudar o **procedimento de decisão** (exemplar
+no pack, ou routing derivado), não a prosa.
 
 ## H3 — o contrato não regride
 

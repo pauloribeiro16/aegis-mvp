@@ -130,17 +130,21 @@ def verdict_defects(rows: list[dict], objectives: list[dict], pool: list[str]) -
 #: and D-10 are process domains (D-02 and D-09 are 100% organizational there).
 PRODUCT_DOMAINS = ("D-01", "D-03", "D-05", "D-07")
 
-#: The share of `ROUTE_ORG` above which a sub-domain's routing is challenged.
-#: Base: the hand-written Case 01 matrix — in these four domains the
-#: organizational verdict is the exception (0/25/14/20%), so a majority of
-#: `ROUTE_ORG` is a measured mis-routing, not a correct judgement.
-COLLAPSE_GUARD_SHARE = 0.65
+#: The share of `ROUTE_ORG` above which a DOMAIN's routing is challenged.
+#: Base (measured 2026-10-30 across the six calibration arms): the healthy
+#: arms measure at most 28% organizational in these domains (Case 02 D-05
+#: 2/7; Case 03 D-01 1/14, D-03 0/14, D-05 0/7, D-07 1/10), while the
+#: collapsed Case-01 arms measure 57% (D-05 4/7) and 80% (D-07 4/5). 40%
+#: separates them with margin on both sides; the previous 65% sat ABOVE the
+#: collapsed D-05 (57%) and could never challenge it.
+COLLAPSE_GUARD_SHARE = 0.40
 
 #: A sub-domain needs at least this many rows before the share means anything.
 COLLAPSE_GUARD_MIN_ROWS = 3
 
 
-def collapse_findings(rows: list[dict], domain: str | None = None) -> list[str]:
+def collapse_findings(rows: list[dict], domain: str | None = None,
+                       siblings: list[dict] | None = None) -> list[str]:
     """The SOFT guard: sub-domains whose routing contradicts the ground truth.
 
     The ficha's coupling rule did not move the routing (EXP_P3_04: the v1.4.0
@@ -164,7 +168,13 @@ def collapse_findings(rows: list[dict], domain: str | None = None) -> list[str]:
         # never fired (run_p304b: the routing was bit-identical to the run
         # without the guard).
         d = domain[:4]
-        by_domain = {d: list(rows)} if d in PRODUCT_DOMAINS else {}
+        # The call is ONE SUB-DOMAIN (1-8 rows); the collapse is a DOMAIN
+        # pattern spread over its sub-domains (D-07 is 4/5 across D-07.1..4).
+        # The siblings already judged are passed in, or the guard sees 1-2 rows
+        # and never reaches its minimum — it could not fire (measured: the
+        # C-2 run's routing was bit-identical to the run without it).
+        group = list(rows) + list(siblings or [])
+        by_domain = {d: group} if d in PRODUCT_DOMAINS else {}
     else:
         for r in rows:
             d = str(r.get("subdomain", ""))[:4]

@@ -513,6 +513,12 @@ class StepRunner:
             # p3a_org:<duty>, p3a_weave:<card> — each carries its own wrap
             # instruction and pack; they must NOT fall into the p4 catch-all.
             extra = EXTRA_INSTRUCTION[step_kind]
+        elif step_kind.startswith("p3b_"):
+            # wave E stages: p3b_stride:<df>, p3b_tree:<tid> — the subdomain
+            # argument carries the flow/threat id, never a sub-domain id, so
+            # they must NOT fall into the p4 catch-all either (the first
+            # stride call died on domain_dir("DF-01"), job 2168250).
+            extra = EXTRA_INSTRUCTION[step_kind]
         elif subdomain is not None:
             sd_dir = domain_dir(self.repo, subdomain)
             confirmed = confirmed_regulations(self.run_dir) if (

@@ -537,7 +537,17 @@ def check_driver_symmetry(case: Case) -> list[Finding]:
         # as a cross-reference in the matrix, not stamped on every slice card.
         # The matrix is therefore authoritative for such rows and no card
         # citation is required.
-        transversal = "transversal" in cells[2].lower() if len(cells) > 2 else False
+        carrier_cell = cells[2].lower() if len(cells) > 2 else ""
+        # ADR-007 D3: a row realized TRANSVERSALLY is recorded in the matrix,
+        # not stamped on every slice card — the matrix is authoritative for it
+        # and no card citation is required. The check only knew the word
+        # "transversal"; the ficha's own marker for such a row is
+        # `RN (a derivar)` (PROM-P3A-01: a transversal concern has no card
+        # until the constraint is derived), so those rows were asked for a
+        # citation that by design cannot exist — the T5 finding on the first
+        # converged run (run_p302_muse_c1).
+        transversal = ("transversal" in carrier_cell
+                       or "a derivar" in carrier_cell)
         if transversal:
             continue
         if claims_carrier and oid not in delivered:

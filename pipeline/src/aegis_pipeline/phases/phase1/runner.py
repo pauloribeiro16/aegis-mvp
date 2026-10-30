@@ -462,6 +462,11 @@ class StepRunner:
         self.temperature = float(self.config.get("temperature", 0.2))
         self.sampler = runconfig.sampler_options(self.config)
         self.case = load_case(repo, self._case_id())
+        # The export path writes to `output/<company>/phase3/<run_id>/` and only
+        # runs when the exit gate CONCLUDES — the first time it ran, the
+        # runner had no `run_id` at all and the export raised AttributeError
+        # after the gate had already closed (run_p302_muse_c1).
+        self.run_id = self._run_id()
         self._p3a_prin_routed: list[dict] = []
         # The SOFT collapse guard asks each challenged sub-domain once; the
         # answer it gets back is kept even if the challenge did not land (a
@@ -471,6 +476,14 @@ class StepRunner:
         self._p3a_propose_targets: list[dict] = []
         self.trace = Trace(run_dir)
         self._client: OllamaClient | None = None
+
+    def _run_id(self) -> str:
+        """The run's own id — the manifest's, or the run directory's name."""
+        manifest = self.run_dir / "manifest.json"
+        try:
+            return str(json.loads(manifest.read_text(encoding="utf-8"))["run_id"])
+        except (OSError, KeyError, json.JSONDecodeError):
+            return self.run_dir.name
 
     def _case_id(self) -> str:
         manifest_path = self.run_dir / "manifest.json"

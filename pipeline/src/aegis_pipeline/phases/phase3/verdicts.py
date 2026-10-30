@@ -122,9 +122,72 @@ def verdict_defects(rows: list[dict], objectives: list[dict], pool: list[str]) -
     return findings
 
 
+#: The domains whose obligations the PRODUCT discharges — data protection,
+#: access control, data lifecycle, secure development. Basis: the hand-written
+#: Case 01 coverage matrix, where 4 of the 28 rows in these four domains are
+#: organizational (14%). The registered M-26 alert watches D-02..D-07 instead,
+#: where the same matrix is 50% organizational because D-02, D-04, D-06, D-09
+#: and D-10 are process domains (D-02 and D-09 are 100% organizational there).
+PRODUCT_DOMAINS = ("D-01", "D-03", "D-05", "D-07")
+
+#: The share of `ROUTE_ORG` above which a sub-domain's routing is challenged.
+#: Base: the hand-written Case 01 matrix — in these four domains the
+#: organizational verdict is the exception (0/25/14/20%), so a majority of
+#: `ROUTE_ORG` is a measured mis-routing, not a correct judgement.
+COLLAPSE_GUARD_SHARE = 0.65
+
+#: A sub-domain needs at least this many rows before the share means anything.
+COLLAPSE_GUARD_MIN_ROWS = 3
+
+
+def collapse_findings(rows: list[dict], domain: str | None = None) -> list[str]:
+    """The SOFT guard: sub-domains whose routing contradicts the ground truth.
+
+    The ficha's coupling rule did not move the routing (EXP_P3_04: the v1.4.0
+    vocabulary extension left D-05 at 4/7 and D-07 at 4/5, identical to
+    v1.3.0, while the global went from 66% to 68%). The model holds a prior
+    about which obligations are organizational, and prose does not move it —
+    so the challenge has to be mechanical and specific.
+
+    The scope is the four domains where the hand-written Case 01 matrix says
+    the product discharges the obligation. D-02, D-04, D-06, D-08, D-09 and
+    D-10 are excluded ON PURPOSE: there the organizational verdict is the
+    right answer (D-02 and D-09 are 100% organizational in that matrix), and
+    challenging them would be the same error in the opposite direction.
+    """
+    findings: list[str] = []
+    by_domain: dict[str, list[dict]] = {}
+    for r in rows:
+        d = str(r.get("subdomain", ""))[:4]
+        if d in PRODUCT_DOMAINS:
+            by_domain.setdefault(d, []).append(r)
+    if domain is not None:
+        # one verdict call = one sub-domain
+        by_domain = {domain[:4]: by_domain.get(domain[:4], [])} if domain[:4] in PRODUCT_DOMAINS else {}
+    for domain in sorted(by_domain):
+        group = by_domain[domain]
+        if len(group) < COLLAPSE_GUARD_MIN_ROWS:
+            continue
+        org = sum(1 for r in group if r.get("verdict") == ORGANIZATIONAL)
+        share = org / len(group)
+        if share > COLLAPSE_GUARD_SHARE:
+            findings.append(
+                f"{domain}: {org} of {len(group)} objectives route organizational "
+                f"({share:.0%}), but in this case's coverage matrix the product "
+                "discharges these obligations — re-read each of them and ask "
+                "whether it governs the data, the state, the sessions, the "
+                "packages or the release artifacts of the software the intake "
+                "describes; only an obligation that binds no product behavior "
+                "belongs in the organizational lane")
+    return findings
+
+
 def check_verdicts(rows: list[dict], objectives: list[dict], pool: list[str]) -> list[str]:
     """The batch gate: the repairable defects plus the mode-collapse alert."""
     findings = verdict_defects(rows, objectives, pool)
+    # The soft collapse guard is NOT a gate criterion: it is a repair
+    # challenge asked of the model inside `_validate` (the runner). The
+    # gate-level measure of the collapse is the registered M-26 alert below.
     # Onda C L1 — the mode-collapse alert (M-26, registered in METRICS.md).
     # The measured run pushed 52 of 65 objectives into the organizational
     # lane; a batch where the technical domains D-02..D-07 route >65%

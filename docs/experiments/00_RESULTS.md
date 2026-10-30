@@ -519,6 +519,27 @@ is jobs 2160543–2160548.*
   re-export — 1-minute aborts). Neither produced data; both produced the
   guards that make their class die locally (pack integration test, shim test).
 
+## P3-04 — a revisão da ficha NÃO moveu o colapso (RESULTADO NEGATIVO — read [EXP_P3_04_results.md](EXP_P3_04_results.md))
+
+*2026-10-30. Job 2165434, `run_p304_qwen38_c1`, ficha v1.4.0, controlo intra-braço.*
+
+- **H1 e H2 dispararam; H3 passou.** Global 68% (v1.3.0: 66%); D-05 4/7 e
+  D-07 4/5 — **uma linha inalterada** em todos os domínios-alvo, com o
+  global a piorar 2 pontos. L0 1.ª tentativa 95% e 65/65 objectivos com
+  veredicto: o contrato não regride, o **encaminhamento** é que não cede.
+- **A lição, que é o resultado:** estender o vocabulário da regra de
+  acoplamento não move o modelo — ele tem um juízo prévio sobre que
+  obrigações são organizacionais, e uma frase mais longa não o desloca. O
+  pré-registo já previa a contingência ("a revisão seguinte tem de ser
+  estrutural… não mais uma extensão de lista").
+- **A revisão estrutural está em execução:** uma guarda de reparo L0 por
+  sub-domínio (M-27), com âmbito **medido** — só D-01, D-03, D-05, D-07, os
+  quatro domínios onde o gabarito manual diz que a obrigação é do produto
+  (0/25/14/20% organizacional). D-02 (100% organizacional no gabarito) fica
+  de fora de propósito: desafiá-lo seria o mesmo erro pelo lado oposto.
+  A guarda **dispara uma vez** e, se o modelo não ceder, a resposta fica com
+  o achado registado — perder o sub-domínio seria pior.
+
 ## What lands here next
 
 *Rewritten 2026-10-05. Every item the previous version of this section listed as

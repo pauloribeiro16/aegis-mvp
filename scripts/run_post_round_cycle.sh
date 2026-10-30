@@ -41,7 +41,7 @@ run, go = Path(sys.argv[1]), sys.argv[2] == "--go"
 adjust_note, reject_note, accept_note, gate_note = sys.argv[3:7]
 
 props = []
-for pattern in ("proposals_*.json", "proposals_prin_*.json"):
+for pattern in ("proposals_*.json",):  # proposals_prin_* is already matched here
     for p in sorted((run / "steps" / "phase3").glob(pattern)):
         props.extend(json.loads(p.read_text(encoding="utf-8"))["proposals"])
 if not props:
@@ -71,7 +71,7 @@ print(f"proposals: {len(ordered)} ({len(objective_driven)} objective-driven, "
       f"{sum(v=='Accept' for v in verdicts.values())} Accept")
 print("Adjust item:", next(k for k, v in verdicts.items() if v == "Adjust"))
 print("Reject item:", next(k for k, v in verdicts.items() if v == "Reject"))
-if go != "--go":
+if not go:
     print("(dry: nothing written)"); raise SystemExit(0)
 
 vf = run / "steps" / "phase3" / "round1_verdicts.json"

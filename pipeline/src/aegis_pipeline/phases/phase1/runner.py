@@ -463,6 +463,11 @@ class StepRunner:
         self.sampler = runconfig.sampler_options(self.config)
         self.case = load_case(repo, self._case_id())
         self._p3a_prin_routed: list[dict] = []
+        # The SOFT collapse guard asks each challenged sub-domain once; the
+        # answer it gets back is kept even if the challenge did not land (a
+        # visible mis-routing beats a sub-domain with no verdict at all).
+        self._p3_collapse_asked: set[str] = set()
+        self._p3_collapse_warnings: list[str] = []
         self._p3a_propose_targets: list[dict] = []
         self.trace = Trace(run_dir)
         self._client: OllamaClient | None = None
@@ -747,6 +752,17 @@ class StepRunner:
             )
             if defects:
                 raise ValueError(f"{len(defects)} verdict defect(s): {defects[0]}")
+            # The soft collapse guard: the ficha's coupling rule did not move
+            # the routing (EXP_P3_04), so the challenge is mechanical and asks
+            # ONCE per sub-domain. If the model does not comply, its answer
+            # stands and the finding is recorded — the alternative would drop
+            # the sub-domain's objectives out of the matrix.
+            collapse = _p3.collapse_findings(verdicts, sd)
+            if collapse:
+                if sd not in self._p3_collapse_asked:
+                    self._p3_collapse_asked.add(sd)
+                    raise ValueError(f"routing challenged: {collapse[0]}")
+                self._p3_collapse_warnings.append(f"{sd}: {collapse[0]}")
             return {"verdicts": verdicts}
         if step == "p3a_cards":
             from aegis_pipeline.phases.phase3 import cards as _p3c

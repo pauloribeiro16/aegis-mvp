@@ -1,7 +1,8 @@
 # PREREG_P3_04 — Onda C-2: re-calibração do braço qwen38 c1 com a ficha revista (sinal H2)
 
-Version: 1.0.0
+Version: 1.1.0
 Status: FROZEN 2026-10-29, before the re-calibration job is submitted.
+Adenda 1.1.0 (2026-10-30): the H1/H2 falsifiers FIRED on the counted run (job 2165434: global 68%, D-05 4/7, D-07 4/5 — identical to v1.3.0). The falsifier's own contingency (structural revision, not more prose) is the next run, frozen in §5 addendum below BEFORE that run.
 Upstream: [PREREG_P3_02.md](PREREG_P3_02.md) v1.2.0 — cujo falsificador H2 disparou (qwen38 c1, 66% `ROUTE_ORG` global, tecto 60%) e cujo §H2 manda "a revisão é da ficha (o sinal reabre a decisão, não se defende)" · [EXP_P3_02_results.md](EXP_P3_02_results.md) (a medição por domínio que nomeia o alvo).
 
 ---
@@ -59,6 +60,47 @@ GPU num braço sem sinal).
 ## 4. Deviations
 
 Nenhum à data do congelamento.
+
+**Adenda 1.1.0 (2026-10-30) — a revisão estrutural que o falsificador obriga.**
+O job 2165434 mediu o instrumento v1.4.0 e o falsificador disparou outra vez:
+global **68%** (v1.3.0: 66%), D-05 **4/7** e D-07 **4/5** — **uma linha
+inalterada** em todos os domínios-alvo. Conclusão: a prosa da regra de
+acoplamento não é o mecanismo; o modelo tem um juízo prévio sobre que
+obrigações são organizacionais e uma frase mais longa não o move. É
+exactamente a condição escrita no falsificador do §H1 ("a revisão seguinte tem
+de ser estrutural… não mais uma extensão de lista").
+
+**O que muda: uma guarda de reparo L0** (`verdict_defects`, chamada de dentro
+de `_validate`), que devolve um defeito de reparo quando um sub-domínio
+recebe mais de 65% de `ROUTE_ORG` — pedindo ao modelo que reavalie quais
+dessas obrigações regulam dados, estado, sessões, pacotes ou artefactos de
+release do software descrito no V0.
+
+**Âmbito da guarda — medido, não escolhido.** A guarda aplica-se **apenas** a
+D-01, D-03, D-05 e D-07: os quatro domínios onde a matriz manual do Caso 01
+diz que a obrigação é do produto (0%, 25%, 14%, 20% organizacional). **Não**
+se aplica a D-02 (100% organizacional no gabarito), D-04 (75%), D-06 (80%),
+D-08 (67%), D-09 (100%) nem D-10 (83%): lá o veredicto organizacional é a
+resposta certa, e uma guarda que os empurrasse para produto seria o mesmo
+erro pelo lado oposto. (O texto do plano director nomeava "D-02..D-05 ou D-07";
+incluir D-02 seria contrariar o gabarito — é uma correcção deliberada, com a
+base indicada.)
+
+**Caracterização do guard: suave.** A guarda dispara **uma vez**: se a
+re-pedida ao modelo não resolver, a resposta do modelo é aceite e o achado
+fica registado como aviso na corrida. Perder o sub-domínio inteiro (11
+objectivos sem veredicto) seria pior do que um mau encaminhamento visível.
+
+**Previsão e falsificador desta adenda** (re-submissão `run_p304b_qwen38_c1`,
+mesmo upstream, mesma seed):
+- **H4:** a guarda move D-05 e D-07 para ≤ 29% e ≤ 35% e o global para ≤ 60%.
+  - **Falsificador:** D-05 ou D-07 inalterados ⇒ o modelo ignora também a
+    instrução de reavaliação, e a lacuna é de JUÍZO (o modelo tem uma crença
+    estável sobre organização) — a revisão seguinte tem de ser de outra
+    natureza (exemplar no pack, ou a triagem passa a ser derivada do V0 e
+    não de uma leitura do modelo).
+- **H5 (regressão):** L0 1.ª tentativa ≥ 90%, 65/65 objectivos com veredicto,
+  e **zero sub-domínios descartados** (a guarda não pode custar objectivos).
 
 ## 5. What this does NOT claim
 

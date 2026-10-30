@@ -532,13 +532,20 @@ is jobs 2160543–2160548.*
   obrigações são organizacionais, e uma frase mais longa não o desloca. O
   pré-registo já previa a contingência ("a revisão seguinte tem de ser
   estrutural… não mais uma extensão de lista").
-- **A revisão estrutural está em execução:** uma guarda de reparo L0 por
-  sub-domínio (M-27), com âmbito **medido** — só D-01, D-03, D-05, D-07, os
-  quatro domínios onde o gabarito manual diz que a obrigação é do produto
-  (0/25/14/20% organizacional). D-02 (100% organizacional no gabarito) fica
-  de fora de propósito: desafiá-lo seria o mesmo erro pelo lado oposto.
-  A guarda **dispara uma vez** e, se o modelo não ceder, a resposta fica com
-  o achado registado — perder o sub-domínio seria pior.
+- **A revisão estrutural FUNCIONOU** (job 2167313): a guarda de reparo L0
+  disparou (3 re-pedidas na trace) e o encaminhamento cedeu — global 68% →
+  **62%**, D-05 57% → **29%** (o alvo do H4, exacto), D-07 80% → 40%, e o
+  alerta M-26 passa a calar. H4 parcialmente suportado: o falsificador
+  ("D-05 ou D-07 inalterados") não dispara. **Lição das três tentativas:** a
+  PROSA não move o juízo prévio do modelo sobre que obrigações são
+  organizacionais; o que moveu foi um desafio **mecânico, específico e ao
+  nível do domínio** (a chamada é por sub-domínio; o colapso é por domínio —
+  M-27 mede e desafia por domínio, com limiar de 40% derivado da distribuição
+  medida nos seis braços: saudáveis ≤28%, colapsados 57–80%).
+- **Fica por decidir (do investigador):** fechar os 2 pontos do global e os 5
+  do D-07 — uma segunda ronda de desafio, ou um limiar por domínio com base
+  no gabarito. A guarda dispara uma vez por sub-domínio; mais do que isso é
+  instrumentação nova, não um ajuste.
 
 ## What lands here next
 

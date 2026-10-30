@@ -1829,10 +1829,39 @@ class StepRunner:
         # pass on a stale partition.
         org_ids = {r["id"] for r in org_rows}
         covered = [o for p in proposals for o in p["objectives"]]
-        if len(covered) != len(set(covered)) or set(covered) != org_ids:
-            raise ValueError(
-                "duty proposals are not a partition of the organizational rows — "
-                "re-run --stage p3a_org_cluster")
+
+        def _partition_ok(props: list[dict]) -> bool:
+            cov = [o for pr in props for o in pr["objectives"]]
+            return len(cov) == len(set(cov)) and set(cov) == org_ids
+
+        if not _partition_ok(proposals):
+            # The stored clustering was made from a DIFFERENT set of
+            # organizational rows: after the round, the weave re-routes some
+            # objectives away from the organizational lane (by design) and
+            # writes that back into the verdict store. The clustering is a
+            # function of those rows, so it is stale — the old behaviour
+            # raised "re-run --stage p3a_org_cluster", which is what the
+            # stage was already doing, and the run was a dead end
+            # (job 2167326). Invalidate it and cluster again.
+            print("[p3a_org_cluster] the stored clustering is stale (the "
+                  "organizational rows moved) — clustering again", flush=True)
+            out_path.unlink()
+            self._call("p3a_org_cluster", None)
+            if not out_path.is_file():
+                if self.dry_run:
+                    self._write_stage_result("p3a_org_cluster", {
+                        "status": "dry-run", "carried": 0, "selected": len(org_rows),
+                        "failed": 0,
+                        "summary": "dry-run: the stored clustering was stale and was "
+                                   "invalidated; no duty proposals stored",
+                    })
+                    return calls
+                raise FileNotFoundError(f"{out_path} was not written by _call")
+            proposals = json.loads(out_path.read_text(encoding="utf-8"))["proposals"]
+            if not _partition_ok(proposals):
+                raise ValueError(
+                    "duty proposals are not a partition of the organizational rows — "
+                    "the fresh clustering does not cover them either")
 
         out_dir = self.run_dir / "outputs" / "phase3" / "analysis_v0_to_v1"
         out_dir.mkdir(parents=True, exist_ok=True)

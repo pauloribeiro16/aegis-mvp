@@ -157,13 +157,19 @@ def collapse_findings(rows: list[dict], domain: str | None = None) -> list[str]:
     """
     findings: list[str] = []
     by_domain: dict[str, list[dict]] = {}
-    for r in rows:
-        d = str(r.get("subdomain", ""))[:4]
-        if d in PRODUCT_DOMAINS:
-            by_domain.setdefault(d, []).append(r)
     if domain is not None:
-        # one verdict call = one sub-domain
-        by_domain = {domain[:4]: by_domain.get(domain[:4], [])} if domain[:4] in PRODUCT_DOMAINS else {}
+        # One verdict call = one sub-domain, and the rows of that call are the
+        # PARSED verdicts — they carry no "subdomain" key (only the merged
+        # rows do). Grouping them by that key found zero rows and the guard
+        # never fired (run_p304b: the routing was bit-identical to the run
+        # without the guard).
+        d = domain[:4]
+        by_domain = {d: list(rows)} if d in PRODUCT_DOMAINS else {}
+    else:
+        for r in rows:
+            d = str(r.get("subdomain", ""))[:4]
+            if d in PRODUCT_DOMAINS:
+                by_domain.setdefault(d, []).append(r)
     for domain in sorted(by_domain):
         group = by_domain[domain]
         if len(group) < COLLAPSE_GUARD_MIN_ROWS:

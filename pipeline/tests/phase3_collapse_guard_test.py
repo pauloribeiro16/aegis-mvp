@@ -30,7 +30,15 @@ from aegis_pipeline.phases.phase3 import verdicts as V  # noqa: E402
 
 
 def _row(oid: str, subdomain: str, verdict: str) -> dict:
-    return {"id": oid, "verdict": verdict, "action": "ROUTE_ORG", "subdomain": subdomain}
+    """A PARSED verdict row — the shape `parse_verdicts` produces.
+
+    It carries NO "subdomain" key (only the merged rows do). The first
+    version of this test added the key, and the guard then passed its rows by
+    a key the production path never sets: the guard found zero rows and never
+    fired (run_p304b measured the routing bit-identical to the run without
+    it). The `subdomain` argument is only used to name the call.
+    """
+    return {"id": oid, "verdict": verdict, "action": "ROUTE_ORG"}
 
 
 def test_a_collapsed_product_domain_is_challenged() -> None:

@@ -56,6 +56,23 @@ def accepted_constraint_ids(round_state: dict) -> set[str]:
     return {p["objective"] for p in round_state.get("accepted", [])}
 
 
+def uc_of_carrier(cards: list[dict], carrier: str) -> str:
+    """The use case that carries this constraint, or "—" when there is none.
+
+    A card allocated from an accepted `new` proposal has NO use case: it is a
+    requirement card, not a V0 use case. The lookup used to hard-access
+    `c["usecase"]["uc_id"]` and the whole weave stage died with
+    `KeyError: 'usecase'` (job 2166550) on the first post-round run that
+    reached it.
+    """
+    for card in cards:
+        if card.get("id") != carrier:
+            continue
+        uc = card.get("usecase") or {}
+        return uc.get("uc_id", "—")
+    return "—"
+
+
 def render_step4(accepted: list[dict], cards: list[dict]) -> str:
     """STEP4 — absorption weaving: which accepted constraint lands on which card."""
     card_ids = {c["id"] for c in cards}

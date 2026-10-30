@@ -1969,6 +1969,7 @@ class StepRunner:
 
     def stage_p3a_weave(self) -> int:
         from aegis_pipeline.phases.phase3 import weave as p3w
+        from aegis_pipeline.phases.phase3.weave import uc_of_carrier
         from aegis_pipeline.phases.phase3 import proposals as p3p
 
         n = p3p.latest_round(self.run_dir)
@@ -2052,7 +2053,7 @@ class StepRunner:
         uc_lines = ["---", "title: 'UC_OBJECTIVE_CORRESPONDENCE'", "generated_by: 'p3a_weave (wave 6)'", "---", "", "| Objective | Carrier | Use case |", "|---|---|---|"]
         for row in rows:
             carrier = (row.get("carrier") or "—").strip("`")
-            uc = next((c["usecase"]["uc_id"] for c in cards if c["id"] == carrier), "—")
+            uc = uc_of_carrier(cards, carrier)
             uc_lines.append(f"| `{row['id']}` | {carrier} | {uc} |")
         uc_lines.append("")
         (out_dir / "UC_OBJECTIVE_CORRESPONDENCE.md").write_text("\n".join(uc_lines), encoding="utf-8")

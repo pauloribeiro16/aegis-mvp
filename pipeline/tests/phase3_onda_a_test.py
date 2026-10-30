@@ -362,6 +362,25 @@ def test_export_flattens_the_notebooks_and_the_gate_verdict() -> None:
             assert (out / name).is_file(), name
 
 
+def test_a_card_without_a_use_case_does_not_kill_the_weave() -> None:
+    """A card allocated from an accepted `new` proposal has NO use case.
+
+    The weave looked up `c["usecase"]["uc_id"]` and the whole stage died with
+    `KeyError: 'usecase'` (job 2166550) — the first post-round run that ever
+    reached the weave. The lookup must answer "no use case carries this"
+    instead of raising.
+    """
+    from aegis_pipeline.phases.phase3.weave import uc_of_carrier
+
+    cards = [
+        {"id": "R1.1", "name": "Manage User Accounts", "usecase": {"uc_id": "UC-001"}},
+        {"id": "R9.1", "name": "Apply the D-01.1 security constraint"},  # no use case
+    ]
+    assert uc_of_carrier(cards, "R1.1") == "UC-001"
+    assert uc_of_carrier(cards, "R9.1") == "—"
+    assert uc_of_carrier(cards, "R99.9") == "—"
+
+
 if __name__ == "__main__":
     failures = 0
     for name, fn in sorted(globals().items()):

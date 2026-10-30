@@ -2491,6 +2491,14 @@ class StepRunner:
         for flow in model["flows"]:
             out_path = store / f"stride_{flow['id'].replace('-', '_')}.json"
             if out_path.is_file():
+                # A store written before the renumber step ran (job 2168823
+                # died mid-renumber on the adtrees list) carries local `T-n`
+                # ids the register and the gate cannot reconcile (G11) —
+                # finish the renumber in place.
+                ids = [t.get("id", "") for t in json.loads(
+                    out_path.read_text(encoding="utf-8")).get("threats", [])]
+                if ids and any(not i.startswith("T-STR-") for i in ids):
+                    self._p3b_renumber(out_path, "T-STR")
                 continue
             self._p3b_stride_target = flow
             try:
@@ -2507,6 +2515,11 @@ class StepRunner:
                 print(f"[p3b_threats] stride {flow['id']} FAILED — continuing: {str(e)[:160]}", flush=True)
 
         linddun_path = store / "linddun.json"
+        if linddun_path.is_file():
+            ids = [t.get("id", "") for t in json.loads(
+                linddun_path.read_text(encoding="utf-8")).get("threats", [])]
+            if ids and any(not i.startswith("T-LIN-") for i in ids):
+                self._p3b_renumber(linddun_path, "T-LIN")
         if not linddun_path.is_file():
             self._p3b_linddun_model = model
             try:

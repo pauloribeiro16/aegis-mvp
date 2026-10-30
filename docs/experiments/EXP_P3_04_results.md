@@ -82,6 +82,37 @@ mover, a conclusão é que o encaminhamento é um **juízo prévio estável** do
 modelo e o instrumento tem de mudar o **procedimento de decisão** (exemplar
 no pack, ou routing derivado), não a prosa.
 
+## A terceira tentativa (job 2167313, `run_p304d_qwen38_c1`): A GUARDA MOVE
+
+Com a granularidade por domínio e o limiar de 40% (Adenda 1.2.0), a guarda
+**disparou** — a trace regista **3 re-pedidas L0** (D-05.2, D-07.2, D-07.3) —
+e o modelo cedeu parcialmente:
+
+| | global `ROUTE_ORG` | D-05 | D-07 | M-26 (D-02..D-07) |
+|---|---|---|---|---|
+| v1.4.0 (sem guarda) | 68% | 4/7 (57%) | 4/5 (80%) | 68% — **alerta dispara** |
+| **C-3 (guarda)** | **62%** | **2/7 (29%)** | **2/5 (40%)** | **58% — alerta cala** |
+
+**H4 (parcialmente suportado).** A predição era "D-05 ≤ 29%, D-07 ≤ 35% e
+global ≤ 60%": o **D-05 cumpre o alvo exactamente** (2/7 = 29%), o D-07
+melhora de 80% para 40% mas fica acima dos 35%, e o global desce 6 pontos
+(68% → 62%) mas mantém-se acima do tecto de 60%. O falsificador do §H4
+("D-05 ou D-07 inalterados ⇒ o modelo ignora a instrução") **não dispara**:
+ambos mudaram, e mudaram para metade.
+
+**Consequências honestas:**
+- A guarda **funciona**: é a primeira intervenção em três tentativas que move
+  o encaminhamento. A lição das tentativas anteriores — a prosa não move um
+  juízo prévio — fica confirmada: o que moveu foi um desafio **mecânico e
+  específico**, ao nível onde a decisão é tomada (o domínio).
+- O mecanismo é visível na trace: a guarda disparou nos sub-domínios onde o
+  domínio colapsava, e o modelo re-evaluou.
+- O M-26 (o alerta registado) **passa a calar** neste braço.
+- O que fica: 2 pontos no global e 5 pontos no D-07. A guarda dispara **uma
+  vez por sub-domínio** e o modelo cede onde cede; fechar o resto exige
+  uma segunda ronda de desafio (ou um limiar por domínio, com base no
+  gabarito) — é a decisão seguinte, e é do investigador.
+
 ## H3 — o contrato não regride
 
 L0 à 1.ª tentativa 95% (53/56) e 65/65 objectivos com veredicto: a ficha maior

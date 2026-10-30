@@ -118,7 +118,12 @@ while true; do
   sleep 60
 done
 
-# 4. sign round 2: Accept the revised item (round-2 proposals blob has it)
+# 4. pull the repropose result BEFORE signing round 2 — the round-2 proposals
+#    blob is written by the CLUSTER stage, so the local copy needs a sync_down
+say "sync_down (the repropose wrote the round-2 proposals blob)"
+bash "$REPO_ROOT/pipeline/deucalion/sync_down.sh" "$RUN_ID"
+
+# 5. sign round 2: Accept the revised item (round-2 proposals blob has it)
 python3 - "$RUN" <<'PYEOF'
 import json, sys
 from pathlib import Path

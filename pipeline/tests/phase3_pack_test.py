@@ -228,22 +228,32 @@ def test_the_phase3_shim_carries_every_name_the_pipeline_uses() -> None:
 
     The shim re-exports names explicitly; a new `phase3.<name>` call in the
     runner or compose that is not added to the shim is an AttributeError one
-    minute into a 4-hour GPU job — jobs 2160351-2160356 died exactly there.
+    minute into a 4-hour GPU job — jobs 2160351-2160356 died exactly there,
+    and job 2166344 (the collapse guard) the same way.
+
+    The check is EXHAUSTIVE, not a hand-written list: the list was itself the
+    defect (it did not name `collapse_findings`, so it stayed green while the
+    job died). The shim must export everything the package exports.
     """
     import phase3  # the shim, resolved through pipeline/src on sys.path
+    import aegis_pipeline.phases.phase3 as pkg
 
-    names = [
-        # runner.py (stage_p3a_map, _p3_merged_rows, _validate, org_cluster)
-        "load_objectives", "build", "check", "check_verdicts", "verdict_defects",
-        "apply_verdicts", "render_matrix", "render_principles", "domain_names_from",
-        "ensure_v0_pool", "v0_source", "VERDICTS", "ORGANIZATIONAL",
-        # compose.py (the pack builders)
-        "build_verdict_pack", "load_rule_catalogue",
-    ]
-    missing = [n for n in names if not hasattr(phase3, n)]
+    missing = [name for name in pkg.__all__ if not hasattr(phase3, name)]
     assert not missing, (
-        f"the phase3 shim is missing {missing} — add them to pipeline/src/phase3.py "
-        "or the cluster dies on `import phase3` AttributeError")
+        f"the phase3 shim does not export {missing} — add them to "
+        "pipeline/src/phase3.py or the cluster dies on `import phase3` "
+        "AttributeError one minute into the job")
+
+    # and the names the runner/compose actually call, spelled out so the
+    # intent survives a refactor of the package's export list
+    names = [
+        "load_objectives", "build", "check", "check_verdicts", "verdict_defects",
+        "collapse_findings", "apply_verdicts", "render_matrix", "render_principles",
+        "domain_names_from", "ensure_v0_pool", "v0_source", "VERDICTS",
+        "ORGANIZATIONAL", "build_verdict_pack", "load_rule_catalogue",
+    ]
+    absent = [n for n in names if not hasattr(phase3, n)]
+    assert not absent, f"the phase3 shim is missing {absent}"
 
 
 def main() -> int:

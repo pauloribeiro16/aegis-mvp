@@ -52,6 +52,7 @@ from aegis_pipeline.phases.phase3.verdicts import (
     apply_verdicts,
     build_verdict_pack,
     check_verdicts,
+    collapse_findings,
     parse_verdicts,
     verdict_defects,
 )
@@ -93,6 +94,7 @@ __all__ = [
     "RE_TABLE_ROW",
     "parse_verdicts",
     "check_verdicts",
+    "collapse_findings",
     "verdict_defects",
     "anchor_findings",
     "apply_verdicts",

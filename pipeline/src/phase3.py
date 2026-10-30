@@ -44,6 +44,7 @@ from aegis_pipeline.phases.phase3 import (
     check,
     check_anchors,
     check_verdicts,
+    collapse_findings,
     verdict_defects,
     domain_names_from,
     domain_of,

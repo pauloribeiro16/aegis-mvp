@@ -547,6 +547,45 @@ is jobs 2160543–2160548.*
   no gabarito. A guarda dispara uma vez por sub-domínio; mais do que isso é
   instrumentação nova, não um ajuste.
 
+## P3-02/P3-04 — a Parte 2 e o fecho do qwen3.8: cinco defeitos, cada um morto no job que o revelou (2026-10-30)
+
+*Onda E em execução. Cada falha abaixo é um job real; o fix tem commit e teste.*
+
+- **2167960 (cancelado) / A2 do validador independente:** o `p3b_model`
+  carregava uma alocação gravada contra o Doc03 espelhado velho (30 ids ORG
+  vs 23 re-aglomerados — 51 ids divergentes). Fix: o estágio refresca o
+  espelho à entrada e só carrega alocação cujas chaves sejam EXACTAMENTE o
+  conjunto aceite actual (`b2210f3`; provado em dry-run contra o estado
+  real antes de ressuscitar).
+- **2168250:** primeiro STRIDE real da pipeline — crash em
+  `domain_dir("DF-01")` (o despacho genérico do `_call` exige id de
+  sub-domínio) e LINDDUN sem esquema próprio ("same fields as PROM-P3B-02"
+  é um ponteiro que o modelo não abre). Fixes: ramo `p3b_*` no despacho;
+  esquema inline na ficha v1.2.0 (`811b664`).
+- **2168367:** os três STRIDE morreram no primeiro id citado — o catálogo
+  T8 nunca foi sincronizado (`baseline/THREATS` fora do payload do
+  `sync_up.sh`; o fallback é um índice VAZIO que recusa tudo, real
+  inclusive). Mesma classe do incidente 1964272 (CONTROLS). Fix: catálogo
+  no payload (`ee67af2`), CWE-288 confirmado no cluster.
+- **2168120/2168821 (qwen3.8):** o gate falhou com integridade real — T2
+  ×3 (leis citadas sem driver da própria regulação; a regra em prosa da
+  ficha v1.3.0 NÃO moveu o modelo — a mesma lição de M-27) e T5 (a
+  proposta REJEITADA na ronda continuava "coberta" na matriz; e o map
+  tinha citado cartões que não carregam os objectivos). Fixes: a regra T2
+  virou recusa L0 com reparo (o modelo cumpriu à 2.ª), descarga de
+  rejeição e despromoção por integridade de citação na matriz
+  (`dd0e4a3`).
+- **2168823:** os STRIDE correram limpos com o catálogo e o estágio morreu
+  no renumerador — o contador faz `.get()` em todos os JSON de
+  `steps/phase3b/` e o `adtrees.json` é uma lista no topo. Fix: o scan só
+  lê blobs dict; o k3 transportado re-valida contra o conjunto ACTUAL de
+  ameaças (`dd0e4a3`).
+
+**Lição transversal (terceira ocorrência do mesmo padrão):** cada etapa que
+corre PELA PRIMEIRA vez revela um contrato que nenhum teste apanhou porque
+os testes dão ao parser o que ele quer, não o que o modelo escreve — e o
+ambiente do cluster tem de ter, no payload, tudo o que o código lê.
+
 ## What lands here next
 
 *Rewritten 2026-10-05. Every item the previous version of this section listed as

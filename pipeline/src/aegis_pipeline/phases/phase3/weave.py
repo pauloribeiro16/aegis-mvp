@@ -48,7 +48,44 @@ def parse_weave(answer: str) -> dict:
     tech = check_no_technology(fields["Preconditions"], fields["Extensions"])
     if tech:
         raise ValueError(f"weave [{card_id}]: technology vocabulary (R5): {tech}")
+    slot = leftover_slot(fields)
+    if slot:
+        raise ValueError(
+            f"weave [{card_id}]: unfilled template slot {slot!r} — name the "
+            "constraint or the behaviour instead of leaving a placeholder "
+            "(the exit gate's doc_lint refuses it: R12)")
     return {"card_id": card_id, **fields}
+
+
+#: An unfilled template slot in a woven use case. The rule is the doc_lint's
+#: own (R12), so L0 and the gate agree on what a leftover is: multi-token
+#: lowercase ("accepted constraint") or SHOUTY ("YYYY-MM-DD"). Single short
+#: tokens (<REG>, <id>) are path/field notation, and slots inside code spans
+#: are notation too.
+RE_TEMPLATE_SLOT = re.compile(r"<([A-Za-z][A-Za-z0-9 _.\-]{0,30})>")
+
+
+def _is_leftover_slot(inner: str) -> bool:
+    if re.fullmatch(r"[a-z]+(?:[ _\-][a-z0-9]+)+", inner):
+        return True
+    return bool(re.fullmatch(r"[A-Z]{4,}[A-Z0-9\-]*", inner))
+
+
+def leftover_slot(fields: dict[str, str]) -> str | None:
+    """The first unfilled template slot in the woven fields, if any.
+
+    The model emitted one in run_p302_muse_c1 ("... an observable record
+    generation capability is available per <accepted constraint>"), and the
+    exit gate's doc_lint refused the deliverable (G4 OPEN). The defect has to
+    be caught at L0, where the repair round can ask the model to name the
+    constraint, instead of failing the gate on the disk.
+    """
+    for value in fields.values():
+        prose = re.sub(r"`[^`]*`", "", value or "")
+        for match in RE_TEMPLATE_SLOT.finditer(prose):
+            if _is_leftover_slot(match.group(1)):
+                return match.group(0)
+    return None
 
 
 def accepted_constraint_ids(round_state: dict) -> set[str]:

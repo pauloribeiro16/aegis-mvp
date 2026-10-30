@@ -381,6 +381,37 @@ def test_a_card_without_a_use_case_does_not_kill_the_weave() -> None:
     assert uc_of_carrier(cards, "R99.9") == "—"
 
 
+def test_a_woven_use_case_with_a_template_slot_is_refused_at_l0() -> None:
+    """The model left `<accepted constraint>` in a precondition (run_p302_muse_c1).
+
+    The exit gate's doc_lint refused the deliverable (G4 OPEN). The defect
+    belongs at L0, where the repair round can ask the model to name the
+    constraint — the rule is the doc_lint's own, so both agree on what a
+    leftover slot is.
+    """
+    from aegis_pipeline.phases.phase3.weave import parse_weave
+
+    answer = """```markdown
+#### Card R24.2
+
+**Preconditions:** The system is capable of detecting unauthorised access attempts; an observable record generation capability is available per <accepted constraint>
+
+**Extensions:** When the detection fails, the attempt is recorded.
+
+**Constraints absorbed:** RN-42
+```"""
+    try:
+        parse_weave(answer)
+    except ValueError as e:
+        assert "template slot" in str(e), str(e)
+    else:
+        raise AssertionError("a woven use case with an unfilled slot must fail L0")
+
+    # a named constraint passes
+    ok = answer.replace("per <accepted constraint>", "per RN-42")
+    assert parse_weave(ok)["card_id"] == "R24.2"
+
+
 if __name__ == "__main__":
     failures = 0
     for name, fn in sorted(globals().items()):

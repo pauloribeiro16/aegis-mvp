@@ -412,6 +412,33 @@ def test_a_woven_use_case_with_a_template_slot_is_refused_at_l0() -> None:
     assert parse_weave(ok)["card_id"] == "R24.2"
 
 
+
+def test_a_covered_row_citing_a_card_that_does_not_carry_it_is_demoted() -> None:
+    """Citation integrity (T5, job 2168821): the map cited R22.1 for an
+    objective the allocated card does not carry — the row is demoted, the
+    card-honest rows stand."""
+    import json as _json
+    from aegis_pipeline.phases.phase3.weave import demote_uncarried_rows
+    import tempfile
+    with tempfile.TemporaryDirectory() as td:
+        cards = Path(td)
+        (cards / "R22_1.json").write_text(_json.dumps(
+            {"card": {"id": "R22.1", "objectives": ["PO-D-04.2-001"]}}), encoding="utf-8")
+        (cards / "R5_1.json").write_text(_json.dumps({"card": {"id": "R5.1"}}), encoding="utf-8")
+        rows = [
+            {"id": "PO-D-04.1-001", "verdict": "Fully covered (anchored)", "carrier": "`R22.1`", "discharge": "x"},
+            {"id": "PO-D-04.2-001", "verdict": "Fully covered (anchored)", "carrier": "`R22.1`", "discharge": "y"},
+            {"id": "PO-D-09.1-001", "verdict": "Fully covered (anchored)", "carrier": "`R5.1`", "discharge": "z"},
+            {"id": "SO-D-01.1-002", "verdict": "Partially covered (functional leg + explicit carve-out)", "carrier": "`RN (a derivar)`", "discharge": "w"},
+        ]
+        out, warnings = demote_uncarried_rows(rows, cards)
+        assert out[0]["carrier"] == "`RN (a derivar)`" and "R22.1" in out[0]["discharge"], out[0]
+        assert len(warnings) == 1 and "PO-D-04.1-001" in warnings[0], warnings
+        assert out[1]["carrier"] == "`R22.1`" and out[1]["discharge"] == "y", out[1]
+        assert out[2]["carrier"] == "`R5.1`", out[2]
+        assert out[3]["carrier"] == "`RN (a derivar)`" and out[3]["discharge"] == "w", out[3]
+
+
 if __name__ == "__main__":
     failures = 0
     for name, fn in sorted(globals().items()):

@@ -142,6 +142,45 @@ def uc_of_carrier(cards: list[dict], carrier: str) -> str:
     return "—"
 
 
+def demote_uncarried_rows(rows: list[dict], cards_dir: Path) -> tuple[list[dict], list[str]]:
+    """A covered row whose cited card does not carry the objective is demoted.
+
+    Citation integrity for the discharge graph: the map's model can cite a
+    card id that does not name the driver (the qwen3.8 arm's rows for
+    PO-D-04.1-001 and SO-D-04.2-002 claimed R22.1/R25.1 — allocated cards
+    whose `objectives` list carries OTHER objectives; T5 refused the rows,
+    job 2168821). The demotion is conservative: only rows citing a card
+    whose stored `objectives` list EXISTS and excludes the objective are
+    demoted — cards without a verifiable objectives list stand. The
+    demoted row carries the transversal marker (the obligation awaits a
+    derived constraint) and the finding is returned for the stage log.
+    """
+    warnings: list[str] = []
+    for r in rows:
+        verdict = str(r.get("verdict") or "")
+        if "covered" not in verdict.lower():
+            continue
+        m = re.match(r"^`?(R\d+\.\d+)`?$", (r.get("carrier") or "").strip())
+        if not m:
+            continue
+        card_path = cards_dir / f"{m.group(1).replace('.', '_')}.json"
+        if not card_path.is_file():
+            continue
+        blob = json.loads(card_path.read_text(encoding="utf-8"))
+        card = blob.get("card", blob)
+        objectives = card.get("objectives")
+        if not isinstance(objectives, list) or r["id"] in objectives:
+            continue
+        r["carrier"] = "`RN (a derivar)`"
+        r["discharge"] = (
+            f"Citation integrity: the previously cited card {m.group(1)} does not "
+            f"carry this objective (it carries {', '.join(map(str, objectives))}); "
+            "the obligation awaits a derived and accepted constraint."
+        )
+        warnings.append(f"{r['id']}: cited card {m.group(1)} carries {objectives} — demoted")
+    return rows, warnings
+
+
 def render_step4(accepted: list[dict], cards: list[dict]) -> str:
     """STEP4 — absorption weaving: which accepted constraint lands on which card."""
     card_ids = {c["id"] for c in cards}

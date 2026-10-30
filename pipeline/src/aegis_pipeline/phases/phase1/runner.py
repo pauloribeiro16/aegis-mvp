@@ -2164,6 +2164,10 @@ class StepRunner:
                     v_file.write_text(json.dumps(sd_rows, indent=2), encoding="utf-8")
 
         grouped = {d: [r for r in rows if r["subdomain"].startswith(d)] for d in sorted({r["subdomain"][:4] for r in rows})}
+        rows, citation_warnings = p3w.demote_uncarried_rows(
+            rows, self.run_dir / "steps" / "phase3" / "cards")
+        for w in citation_warnings:
+            print(f"[p3a_weave] citation integrity: {w}", flush=True)
         rows = p3w.apply_reject_discharge(rows, state)
         from aegis_pipeline.phases.phase3 import skeleton as _p3sk
         (out_dir / "OBJECTIVE_MAPPING.md").write_text(
@@ -2369,7 +2373,11 @@ class StepRunner:
         if not hasattr(self, "_p3b_seq"):
             n = 0
             for p_ in sorted((self.run_dir / "steps" / "phase3b").glob("*.json")):
-                for row in json.loads(p_.read_text(encoding="utf-8")).get("threats", []):
+                blob = json.loads(p_.read_text(encoding="utf-8"))
+                # adtrees.json is a top-level LIST (the trees aggregate) — the
+                # scan only reads threat stores, and only dicts have .get
+                # (job 2168823 died here on the first stride renumber).
+                for row in (blob.get("threats", []) if isinstance(blob, dict) else []):
                     m = re.match(rf"^{prefix}-(\d+)$", row.get("id", ""))
                     if m:
                         n = max(n, int(m.group(1)))
@@ -2529,6 +2537,16 @@ class StepRunner:
             p3t.render_threats(linddun, "linddun", company), encoding="utf-8")
 
         k3_path = store / "k3_mapping.json"
+        if k3_path.is_file():
+            # A carried mapping is valid only over the CURRENT threat set: the
+            # stride threats that arrived after the mapping was written would
+            # be unmapped in the register and the gate's reconciliation.
+            covered = set(json.loads(k3_path.read_text(encoding="utf-8")).get("mapping", {}))
+            missing = [t["id"] for t in threats if t["id"] not in covered]
+            if missing:
+                k3_path.unlink()
+                print(f"[p3b_threats] k3 mapping misses {len(missing)} current "
+                      f"threat(s) ({', '.join(missing[:4])}...) — re-mapping", flush=True)
         if not k3_path.is_file():
             self._p3b_k3_threats = threats
             try:

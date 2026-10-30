@@ -48,8 +48,11 @@ echo "=== AEGIS-MVP Phase 1 pipeline | stage=${STAGE} model=${MODEL} job=${SLURM
 set +u
 source /etc/profile 2>/dev/null || true
 module purge 2>/dev/null || true
+# The interpreter is part of the reproducibility contract: difflib, re and
+# json.dumps differ across versions and the run's byte-level artefacts depend
+# on them. A failed module load must abort, not fall back to the system python3.
 module load Python/3.11.3-GCCcore-12.3.0 2>/dev/null \
-  || echo "WARN: python module load failed; falling back to system python3"
+  || { echo "FATAL: python module load failed — refusing to run on an unpinned interpreter" >&2; exit 1; }
 set -u
 
 # 0.32.13 binary — the only one that serves qwen3.8 (0.31.1: unknown architecture)

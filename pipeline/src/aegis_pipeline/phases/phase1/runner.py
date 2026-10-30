@@ -2186,14 +2186,22 @@ class StepRunner:
             (target_dir / "Doc01_Requirements_Specification.md").write_text(full_doc01, encoding="utf-8")
             (target_dir / "Doc02_System_Use_Cases.md").write_text(full_doc02, encoding="utf-8")
 
-        # Mirror Doc03 and Doc00 into v2_dir if present
+        # Mirror Doc03 and Doc00 into v2_dir. The copy is REFRESHED, not
+        # written once: the guard "if not exists" left the mirror at the
+        # content of the first weave run while the source moved on (the
+        # re-clustering after the round changed the duty set — 30 cards at
+        # 10:47, 23 at 11:45). The Part 2 pack then showed the stale copy
+        # while its own check compared against the fresh one, and the first
+        # Part 2 run died on 14 ids the model "had not allocated"
+        # (job 2167770).
         for doc_name in ("Doc00_Process_and_Operational_Workflows.md", "Doc03_Organizational_Requirements.md",
                          "Doc03_Organizational_and_Operational_Requirements.md"):
             for src_cand in (self.run_dir / "outputs" / "phase3" / "part1_security_privacy" / doc_name,
                              self.run_dir / "outputs" / "phase3" / "v2_security_privacy_synthesis" / doc_name):
-                if src_cand.is_file() and not (v2_dir / doc_name).is_file():
+                if src_cand.is_file():
                     import shutil
                     shutil.copy2(src_cand, v2_dir / doc_name)
+                    break
 
         summary = {
             "status": "ok" if not failures else "partial",
@@ -2311,10 +2319,17 @@ class StepRunner:
         return state.get("accepted", [])
 
     def _p3_org_ids(self) -> list[str]:
-        """The ORG ids Part 1 rendered, parsed from Doc03."""
+        """The ORG ids Part 1 rendered, parsed from Doc03.
+
+        The FIRST candidate is the file the Part 2 PACK shows the model
+        (the mirrored copy in the v2 synthesis folder), so the check and the
+        model judge the same document. The order is not cosmetic: when the
+        two copies diverged, the check demanded ids the model had never been
+        shown (job 2167770).
+        """
         for candidate in (
-            self.run_dir / "outputs" / "phase3" / "part1_security_privacy" / "Doc03_Organizational_Requirements.md",
             self.run_dir / "outputs" / "phase3" / "part1_security_privacy" / "v2_security_privacy_synthesis" / "Doc03_Organizational_Requirements.md",
+            self.run_dir / "outputs" / "phase3" / "part1_security_privacy" / "Doc03_Organizational_Requirements.md",
         ):
             if candidate.is_file():
                 return sorted(set(re.findall(r"^### (ORG-D-\d{2}\.\d-\d{3})", candidate.read_text(encoding="utf-8"), re.M)))

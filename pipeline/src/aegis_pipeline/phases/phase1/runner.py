@@ -2600,8 +2600,16 @@ class StepRunner:
         for t in targets:
             out_path = store / f"tree_{t['id'].replace('-', '_')}.json"
             if out_path.is_file():
-                trees.append(json.loads(out_path.read_text(encoding="utf-8")))
-                continue
+                blob = json.loads(out_path.read_text(encoding="utf-8"))
+                if blob.get("threat") == t["id"]:
+                    trees.append(blob)
+                    continue
+                # A tree keyed on a pre-renumber threat id (built before the
+                # renumber-on-carry fix) cannot answer the register's floor or
+                # the reconciliation — re-derive under the current id.
+                out_path.unlink()
+                print(f"[p3b_trees] {out_path.name} keyed on a stale threat id — "
+                      f"re-deriving for {t['id']}", flush=True)
             self._p3b_tree_target = t
             try:
                 self._call(f"p3b_tree:{t['id']}", t["id"])

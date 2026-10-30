@@ -280,6 +280,20 @@ def latest_round(run_dir: Path) -> int:
     return max(rounds) if rounds else 1
 
 
+def latest_applied_round(run_dir: Path) -> int:
+    """The highest round that has an APPLIED state (`round<N>_state.json`).
+
+    `latest_round` counts every round file — including the verdicts SCAFFOLD
+    that `p3a_repropose` itself writes for the human to fill. So a resumed
+    repropose resolved to the NEXT round and died with "round N+1 has no
+    applied state" (job 2166543). The stage needs the round whose items were
+    applied, not the round whose paperwork exists.
+    """
+    rounds = [int(p.stem.split("_")[0][len("round"):])
+              for p in _round_glob(run_dir, "state")]
+    return max(rounds) if rounds else 1
+
+
 def round_verdicts_path(run_dir: Path, n: int) -> Path:
     return run_dir / "steps" / "phase3" / f"round{n}_verdicts.json"
 

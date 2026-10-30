@@ -1665,7 +1665,11 @@ class StepRunner:
         """
         from aegis_pipeline.phases.phase3 import proposals as p3p
 
-        n = p3p.latest_round(self.run_dir)
+        # The round whose items were APPLIED — not the highest round with any
+        # file: the repropose itself writes the next round's verdicts scaffold
+        # for the human, and counting that made every resumed repropose die
+        # on "round N+1 has no applied state" (job 2166543).
+        n = p3p.latest_applied_round(self.run_dir)
         state_path = p3p.round_state_path(self.run_dir, n)
         if not state_path.is_file():
             raise ValueError(

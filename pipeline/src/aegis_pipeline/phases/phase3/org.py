@@ -310,6 +310,31 @@ def parse_org_card(answer: str, duty: str) -> dict:
     return {"duty": duty, **fields, "_anchor_list": anchors}
 
 
+def check_org_chain_laws(parsed: dict, regs: set[str]) -> None:
+    """Every law the chain names has a driver of its own regulation (T2).
+
+    The chain format is `<law> Art. n -> <objective> -> <anchors>`; the law on
+    the left must belong to a regulation that at least one of the duty's merged
+    objectives carries. The model proved it will not obey this as prose
+    (ficha v1.3.0; job 2168120 re-derived and cited CRA with GDPR-only drivers
+    again) — as an L0 refusal it enters the repair cycle with a message that
+    teaches the rule. `regs` empty (no context set) checks nothing: the guard
+    refuses only when it can name the duty's own regulations.
+    """
+    if not regs:
+        return
+    chain = parsed.get("Chain", "")
+    laws = set(re.findall(r"\b(GDPR|CRA|NIS2|DORA|AI[\s_-]?Act|AI_Act)\b", chain))
+    cited = {"AI_Act" if "Act" in law else law for law in laws}
+    stray = sorted(cited - regs)
+    if stray:
+        raise ValueError(
+            f"chain-law rule: {stray} cited but the duty's objectives carry only "
+            f"{sorted(regs)} — every law on the left of a chain arrow needs a "
+            "driver of its own regulation among the merged objectives; drop the "
+            "stray law or the duty needs an objective of that regulation")
+
+
 def resolve_anchor(controls_root: Path, anchor: str) -> str | None:
     """Resolve one anchor id to a file under `baseline/CONTROLS`, tolerantly.
 

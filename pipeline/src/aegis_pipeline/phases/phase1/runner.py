@@ -797,7 +797,13 @@ class StepRunner:
                                          _p3p.load_rule_catalogue(self.run_dir))
         if step.startswith("p3a_org:"):
             from aegis_pipeline.phases.phase3 import org as _p3o
-            return _p3o.parse_org_card(answer, duty=str(subdomain or step.split(":", 1)[1]))
+            parsed = _p3o.parse_org_card(answer, duty=str(subdomain or step.split(":", 1)[1]))
+            # T2 as an L0 refusal: the duty's regulations ride the stage
+            # attribute, so the repair cycle re-calls with a message that
+            # teaches the rule (the prose rule in the ficha alone did not
+            # move the model — job 2168120).
+            _p3o.check_org_chain_laws(parsed, getattr(self, "_p3a_org_regs", None) or set())
+            return parsed
         if step.startswith("p3a_weave:"):
             from aegis_pipeline.phases.phase3 import weave as _p3w
             return _p3w.parse_weave(answer)
@@ -1974,12 +1980,24 @@ class StepRunner:
                 f"record the carve-out. First: {tainted[0]}"
             )
 
+        reg_of = {r["id"]: str(r.get("regulation") or "").strip("*_ ") for r in rows}
         cards: list[dict] = []
         for duty in org_duties:
             out_path = org_dir / f"{duty['slug']}.json"
+            self._p3a_org_regs = {reg_of[o] for o in duty.get("objectives", []) if reg_of.get(o)}
             if out_path.is_file():
-                cards.append(json.loads(out_path.read_text(encoding="utf-8")))
-                continue
+                card = json.loads(out_path.read_text(encoding="utf-8"))
+                try:
+                    p3o.check_org_chain_laws(card, self._p3a_org_regs)
+                except ValueError as e:
+                    # A card carried from an older ficha version fails the
+                    # CURRENT chain-law rule: invalidate and re-derive below.
+                    out_path.unlink()
+                    print(f"[p3a_org] {duty['slug']} carried card violates the "
+                          f"chain-law rule — re-deriving: {e}", flush=True)
+                else:
+                    cards.append(card)
+                    continue
             try:
                 self._call(f"p3a_org:{duty['slug']}", duty["slug"])
                 if not self.dry_run:

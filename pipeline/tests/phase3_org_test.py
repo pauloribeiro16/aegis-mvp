@@ -27,7 +27,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "pipeline" / "src"))
 
-from aegis_pipeline.phases.phase3.org import resolve_anchor  # noqa: E402
+from aegis_pipeline.phases.phase3.org import check_org_chain_laws, resolve_anchor  # noqa: E402
 
 CONTROLS = REPO / "baseline" / "CONTROLS"
 
@@ -231,6 +231,33 @@ def test_doc00_declares_the_as_is_model_absent_rather_than_filling_it() -> None:
     scope = text.split("## Part I")[0]
     assert "As-Is operational model" in scope
     assert "absent rather than estimated" in scope
+
+
+
+def test_the_chain_law_guard_refuses_a_law_without_a_driver() -> None:
+    """T2 as L0: the qwen3.8 arm cited CRA with GDPR-only drivers twice — the
+    prose rule in the ficha did not move the model, the refusal does."""
+    parsed = {"Chain": "GDPR Art. 32 → `PO-D-08.1-001` → `PR.DS-01`; CRA Art. 13(6) → `PO-D-08.1-001` → `GV.PO-01`"}
+    try:
+        check_org_chain_laws(parsed, {"GDPR"})
+        raise AssertionError("CRA with GDPR-only drivers passed")
+    except ValueError as e:
+        assert "chain-law rule" in str(e) and "driver" in str(e), e
+
+
+def test_the_chain_law_guard_passes_set_based_citations() -> None:
+    check_org_chain_laws(
+        {"Chain": "GDPR Art. 32 → `PO-D-08.1-001` → `PR.DS-01`; CRA Art. 13(6) → `SO-D-09.3-001` → `GV.PO-01`"},
+        {"GDPR", "CRA"})
+
+
+def test_the_chain_law_guard_normalises_ai_act() -> None:
+    check_org_chain_laws(
+        {"Chain": "AI Act Art. 15 → `PO-D-05.1-001` → `GV.AI-01`"}, {"AI_Act"})
+
+
+def test_the_chain_law_guard_skips_without_context() -> None:
+    check_org_chain_laws({"Chain": "CRA Art. 13(6) → `PO-D-08.1-001`"}, set())
 
 
 if __name__ == "__main__":

@@ -11,6 +11,10 @@
 # "control PR.DS-01 not found under CONTROLS/NIST_CSF_2.0/ (R2b)" — which is
 # what job 1964272 did, because the anchor derivation is code-side and the
 # referential was never part of this payload.
+# baseline/THREATS is REQUIRED by the same argument: threat_index() (T8) falls
+# back to an EMPTY index when the file is absent, and an empty index refuses
+# every id — real or invented — so every Part 2 threat call died on its first
+# citation (job 2168367, all three STRIDE flows).
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
@@ -28,7 +32,7 @@ TAR="$(mktemp /tmp/aegis_mvp_sync_XXXX.tgz)"
 tar --exclude='__pycache__' --exclude='*.pyc' --exclude='pipeline/runs' \
     -czf "$TAR" \
     pipeline docs/pipeline baseline/domains baseline/MAPPINGS baseline/CONTROLS \
-    baseline/CONTROLS_ARCHIVE baseline/skills \
+    baseline/CONTROLS_ARCHIVE baseline/skills baseline/THREATS \
     scripts \
     templates example SPEC.md config.yaml .cluster_sync_rev cases
 echo "payload: $(du -h "$TAR" | cut -f1) (rev $REV)"

@@ -586,6 +586,26 @@ corre PELA PRIMEIRA vez revela um contrato que nenhum teste apanhou porque
 os testes dão ao parser o que ele quer, não o que o modelo escreve — e o
 ambiente do cluster tem de ter, no payload, tudo o que o código lê.
 
+## P3-03 — a Parte 2 corre nas duas armas; o registo não fecha sem pessoas (H1·H2·H5 SUPPORTED, H3 FALSIFICADOR — read [EXP_P3_03_results.md](EXP_P3_03_results.md))
+
+*2026-10-31. Jobs 2169496/2169497/2169518, `run_p302_muse_c1` + `run_p302_qwen38_c1`, sobre pacotes Parte 1 CONCLUDED.*
+
+- **H2 SUPPORTED com força:** 13 `UNMITIGATED_GAP` nas duas armas, **zero**
+  com residual abaixo do inerente — o registo não reduz risco que nada mitiga.
+- **H1 SUPPORTED com a base honesta:** 100% à primeira tentativa e zero
+  rejeições T8 com o catálogo presente; todas as falhas run-level da cascata
+  eram de ambiente/contrato, fixadas em código (ver §P3-02/P3-04 acima).
+- **H3 FALSIFICADOR DISPARADO:** zero veredictos elevados pelo chão da árvore
+  nas duas armas — com zero residuais "Baixo" em todo o lado, o chão
+  manteve-se vago; a discriminação fina é decisão de método (do investigador).
+- **O LINDDUN do qwen3.8 falhou por CONTEÚDO** (mitigador inventado fora do
+  conjunto aceite) — a via de privacidade falta nesse braço: diferença real
+  de qualidade entre modelos, registada.
+- **Estado final:** Parte 1 CONCLUDED nas duas armas (gate 0 achados;
+  qwen3.8 exportado com 49 ficheiros, doc_lint 0); Parte 2 com registo
+  PROPOSED — **G8–G12 CLOSED, só G7 OPEN** nas duas: 21 + 31 assinaturas
+  humanas de risco são o único passo que falta, e é do investigador.
+
 ## What lands here next
 
 *Rewritten 2026-10-05. Every item the previous version of this section listed as

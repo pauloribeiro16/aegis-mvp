@@ -16,7 +16,7 @@ HOST="${MVP_HOST:-paulinho@login.deucalion.macc.fccn.pt}"
 PROJ="${MVP_PROJ:-/projects/F202512235CPCAA1/mvp-pipeline}"
 LOCAL_RUNS="${AEGIS_RUNS_DIR:-$HOME/Work/aegis-runs}"
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-MODEL="${MVP_MODEL:-qwen3.8:27b}"
+MODEL="${MVP_MODEL:-}"   # overridden by the run config below (the run knows its model)
 CASE="${MVP_CASE:-Case_01_TinyTask_SaaS}"
 
 ADJUST_NOTE="Tighten the fit criterion so the refusal response and audit record fields are observable at the workspace API boundary without referencing internal implementation."
@@ -31,6 +31,12 @@ die() { echo "[cycle] FATAL: $*" >&2; exit 1; }
 say "sync_down $RUN_ID"
 bash "$REPO_ROOT/pipeline/deucalion/sync_down.sh" "$RUN_ID"
 RUN="$LOCAL_RUNS/$RUN_ID"
+
+# 0b. the run's own config is the authority on which model and case this is
+MODEL=$(python3 -c "import json,sys; print(json.load(open(sys.argv[1])).get('model') or '')" "$RUN/config.json" 2>/dev/null || true)
+CASE=$(python3 -c "import json,sys; print(json.load(open(sys.argv[1])).get('case_id') or 'Case_01_TinyTask_SaaS')" "$RUN/manifest.json" 2>/dev/null || echo "$CASE")
+[ -n "$MODEL" ] || die "the run config has no model — refusing to guess"
+say "run model=$MODEL case=$CASE"
 
 # 1. build round1 verdicts in the REAL schema (proposals.py: apply_round_verdicts)
 python3 - "$RUN" "$GO" "$ADJUST_NOTE" "$REJECT_NOTE" "$ACCEPT_NOTE" "$GATE_NOTE" <<'PYEOF'
@@ -99,12 +105,15 @@ scp -q "$RUN/steps/phase3/round1_verdicts.json" "$RUN/steps/phase3/round1_state.
 scp -q "$RUN/steps/gates/G-P3-A.approved" "$HOST:$PROJ/aegis-runs/$RUN_ID/steps/gates/"
 
 say "submit p3a_repropose"
-JOB=$(env MVP_RUN_ID="$RUN_ID" MVP_RUN_TAG="${RUN_ID#run_}_repropose" MVP_MODEL="$MODEL" MVP_CASE="$CASE" \
-  bash "$REPO_ROOT/pipeline/deucalion/submit.sh" p3a_repropose 2>&1 | grep -oE '[0-9]{7}' | head -1)
-[ -n "$JOB" ] || die "could not read the repropose job id"
+SUBMIT_OUT=$(ssh -o LogLevel=ERROR "$HOST" "cd '$PROJ/aegis-mvp' && env MVP_RUN_ID='$RUN_ID' \
+  MVP_RUN_TAG='${RUN_ID#run_}_repropose' MVP_MODEL='$MODEL' MVP_CASE='$CASE' \
+  bash pipeline/deucalion/submit.sh p3a_repropose" 2>&1) || true
+echo "$SUBMIT_OUT" | sed 's/^/[cycle]   /'
+JOB=$(echo "$SUBMIT_OUT" | grep -oE 'Submitted batch job [0-9]+' | grep -oE '[0-9]+' | head -1 || true)
+[ -n "$JOB" ] || die "could not read the repropose job id (submit output above)"
 say "repropose job $JOB — waiting"
 while true; do
-  ST=$(ssh -o LogLevel=ERROR "$HOST" "sacct -n -X -j $JOB -o State" | head -1 | xargs)
+  ST=$(ssh -o LogLevel=ERROR "$HOST" "sacct -n -X -j $JOB -o State" 2>/dev/null | head -1 | xargs || true)
   case "$ST" in COMPLETED) break;; FAILED|CANCELLED|TIMEOUT) die "repropose job $JOB: $ST";; esac
   sleep 60
 done
@@ -134,12 +143,15 @@ conv=$(python3 -c "import json,sys; print(json.load(open(sys.argv[1])).get('conv
 say "scp round2 state -> cluster; submit p3a_all (resumes at org)"
 scp -q "$RUN/steps/phase3/round2_verdicts.json" "$RUN/steps/phase3/round2_state.json" \
   "$HOST:$PROJ/aegis-runs/$RUN_ID/steps/phase3/"
-JOB=$(env MVP_RUN_ID="$RUN_ID" MVP_RUN_TAG="${RUN_ID#run_}_finish" MVP_MODEL="$MODEL" MVP_CASE="$CASE" \
-  bash "$REPO_ROOT/pipeline/deucalion/submit.sh" p3a_all 2>&1 | grep -oE '[0-9]{7}' | head -1)
-[ -n "$JOB" ] || die "could not read the p3a_all job id"
+SUBMIT_OUT=$(ssh -o LogLevel=ERROR "$HOST" "cd '$PROJ/aegis-mvp' && env MVP_RUN_ID='$RUN_ID' \
+  MVP_RUN_TAG='${RUN_ID#run_}_finish' MVP_MODEL='$MODEL' MVP_CASE='$CASE' \
+  bash pipeline/deucalion/submit.sh p3a_all" 2>&1) || true
+echo "$SUBMIT_OUT" | sed 's/^/[cycle]   /'
+JOB=$(echo "$SUBMIT_OUT" | grep -oE 'Submitted batch job [0-9]+' | grep -oE '[0-9]+' | head -1 || true)
+[ -n "$JOB" ] || die "could not read the p3a_all job id (submit output above)"
 say "p3a_all job $JOB — waiting (org/weave are model calls)"
 while true; do
-  ST=$(ssh -o LogLevel=ERROR "$HOST" "sacct -n -X -j $JOB -o State" | head -1 | xargs)
+  ST=$(ssh -o LogLevel=ERROR "$HOST" "sacct -n -X -j $JOB -o State" 2>/dev/null | head -1 | xargs || true)
   case "$ST" in COMPLETED) break;; FAILED|CANCELLED|TIMEOUT) die "p3a_all job $JOB: $ST";; esac
   sleep 300
 done

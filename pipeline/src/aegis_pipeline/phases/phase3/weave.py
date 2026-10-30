@@ -93,6 +93,38 @@ def accepted_constraint_ids(round_state: dict) -> set[str]:
     return {p["objective"] for p in round_state.get("accepted", [])}
 
 
+def apply_reject_discharge(rows: list[dict], state: dict) -> list[dict]:
+    """The round's explicit risk acceptances land in the coverage matrix.
+
+    A REJECTED proposal means the constraint that would have carried the
+    objective will never be woven: the row loses its carrier claim and the
+    discharge records the human decision. The carrier cell carries the
+    ficha's transversal marker (`RN (a derivar)` — nothing carries it until a
+    new constraint is derived and accepted), which the referential checker's
+    transversal exemption already understands. Without this the matrix kept
+    claiming coverage for an objective whose only candidate carrier the
+    human had rejected, and T5 refused the row (run_p302_qwen38_c1,
+    job 2168120). The verdict cell stays within the ADR-007 vocabulary; the
+    residuals section of SUFFICIENCY_ASSESSMENT remains the explicit record.
+    """
+    rejected = {p["objective"]: p for p in state.get("rejected", [])}
+    if not rejected:
+        return rows
+    n = state.get("round")
+    for r in rows:
+        p = rejected.get(r.get("id"))
+        if not p:
+            continue
+        r["carrier"] = "`RN (a derivar)`"
+        risk = (p.get("risk") or "").strip()
+        r["discharge"] = (
+            f"Explicit risk acceptance: the round-{n} proposal was REJECTED"
+            + (f" — {risk}" if risk else "")
+            + "; the obligation stays transversal (a derivar) until a new constraint is accepted."
+        )
+    return rows
+
+
 def uc_of_carrier(cards: list[dict], carrier: str) -> str:
     """The use case that carries this constraint, or "—" when there is none.
 

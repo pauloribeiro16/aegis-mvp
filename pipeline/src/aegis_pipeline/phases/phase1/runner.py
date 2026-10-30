@@ -2140,6 +2140,7 @@ class StepRunner:
                     v_file.write_text(json.dumps(sd_rows, indent=2), encoding="utf-8")
 
         grouped = {d: [r for r in rows if r["subdomain"].startswith(d)] for d in sorted({r["subdomain"][:4] for r in rows})}
+        rows = p3w.apply_reject_discharge(rows, state)
         from aegis_pipeline.phases.phase3 import skeleton as _p3sk
         (out_dir / "OBJECTIVE_MAPPING.md").write_text(
             _p3sk.render_matrix(rows, grouped, _p3sk.domain_names_from(self.repo / "baseline/domains/index.md")),
@@ -2367,12 +2368,49 @@ class StepRunner:
 
         self._require(("steps/fact_sheet.yaml",), "G-P1-A")
         accepted = self._p3_accepted()
+
+        # The pack and _p3_org_ids read the Doc03 copy in the v2 synthesis
+        # folder. Refresh it HERE, at Part 2 entry, so a Part 1 re-render can
+        # never leak a stale mirror into the model's pack: the re-clustering
+        # after the round changed the duty set (30 -> 23 cards) while the
+        # mirror kept the old one. Same source of truth the weave mirrors.
+        part1_dir = self.run_dir / "outputs" / "phase3" / "part1_security_privacy"
+        v2_dir = part1_dir / "v2_security_privacy_synthesis"
+        for doc_name in ("Doc01_Requirements_Specification.md", "Doc02_System_Use_Cases.md",
+                         "Doc03_Organizational_Requirements.md"):
+            if not (v2_dir / doc_name).is_file() and not (part1_dir / doc_name).is_file():
+                raise ValueError(f"{doc_name} missing from both the v2 synthesis folder and "
+                                 "part1 — the pack would hand the model '(missing)' stubs; "
+                                 "re-run the Part 1 render (p3a_all) first")
+        src_doc03 = part1_dir / "Doc03_Organizational_Requirements.md"
+        if src_doc03.is_file():
+            mirror = v2_dir / "Doc03_Organizational_Requirements.md"
+            if not mirror.is_file() or \
+                    mirror.read_text(encoding="utf-8") != src_doc03.read_text(encoding="utf-8"):
+                v2_dir.mkdir(parents=True, exist_ok=True)
+                import shutil
+                shutil.copy2(src_doc03, mirror)
+
         accepted_ids = [f"{p.get('principle') or p['objective']}" for p in accepted] + self._p3_org_ids()
         if not accepted_ids:
             raise ValueError("no accepted Part 1 requirements — nothing to allocate")
+        accepted_set = set(accepted_ids)
 
         out_path = self.run_dir / "steps" / "phase3b" / "system_model.json"
         calls = 0
+        # A stored system model is carried only when its allocation keys match
+        # the CURRENT accepted set exactly. Job 2167960 recorded `ok` against
+        # the 30-id mirror while the source had re-clustered to 23: the file
+        # exists, the stage below would skip it, and Part 2 would run on a
+        # duty set Part 1 had retired.
+        if out_path.is_file():
+            stored_alloc = (json.loads(out_path.read_text(encoding="utf-8"))
+                            .get("model", {}) or {}).get("allocation") or {}
+            stale = sorted(set(stored_alloc) - accepted_set) + sorted(accepted_set - set(stored_alloc))
+            if stale:
+                print(f"[p3b_model] stored allocation diverges from the accepted set by "
+                      f"{len(stale)} id(s) ({', '.join(stale[:4])}...) — re-allocating", flush=True)
+                out_path.unlink()
         if not out_path.is_file():
             self._call("p3b_model", None)
             if not self.dry_run:

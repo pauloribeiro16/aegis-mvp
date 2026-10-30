@@ -164,7 +164,7 @@ done
 # 6. pull the conclusion and verify
 say "sync_down final + gate verification"
 bash "$REPO_ROOT/pipeline/deucalion/sync_down.sh" "$RUN_ID"
-grep -E "^state:" "$RUN/steps/gates/gate_report.md" || die "no gate report state line"
-grep -cE "\| G[1-6] \| CLOSED" "$RUN/steps/gates/gate_report.md" | xargs -I{} test "{}" -eq 6 \
+grep -E "^state:" "$RUN/steps/phase3/gate_report.md" || die "no gate report state line"
+grep -cE "\| G[1-6] \| CLOSED" "$RUN/steps/phase3/gate_report.md" | xargs -I{} test "{}" -eq 6 \
   || die "not all six Part-1 gates CLOSED — read the report"
 say "DONE: $RUN_ID Parte 1 CONCLUDED (G1..G6 CLOSED)"

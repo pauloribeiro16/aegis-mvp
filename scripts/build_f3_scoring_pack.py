@@ -19,6 +19,14 @@ What it emits:
 
 Blinding is mechanical: the sheet carries no run id, no model, no document
 name; the keys are opaque and the presentation order is a seeded shuffle.
+The key derivation is salted per build (secrets.token_hex); the salt lives
+ONLY in _key.json, so the keys are not re-derivable from the pack's own
+contents. _reference.md merges the runs' material by content (the pack is
+for arms of the SAME case: same company facts, same objectives) and names
+no run. Residual, stated honestly: the unit ids are the artefact's own
+ids, so a reader with repository access could set-diff a sheet against a
+candidate run — the blind holds for an honest scorer, not against an
+adversary with repo access.
 
 Sampling (L2_RUBRIC_F3 §1): 8 units per document, stratified so every
 package R<n> (cards) and every domain D-XX (verdict rows) appears at least
@@ -40,6 +48,7 @@ import json
 import os
 import random
 import re
+import secrets
 import sys
 from pathlib import Path
 
@@ -140,6 +149,9 @@ def build(run_ids: list[str]) -> int:
                            "The rubric asks questions that need the baseline behind the "
                            "artefact: the objective's duty, the anchors the objective "
                            "publishes, and the company's own facts.", ""]
+    fact_variants: list[str] = []
+    run_facts_variant: dict[str, int] = {}
+    merged_objs: dict[str, dict[str, str]] = {}
     for run_id in run_ids:
         run = RUNS / run_id
         phase2 = run / "outputs" / "phase2" / "Doc01_Operational_Objectives.md"
@@ -154,10 +166,16 @@ def build(run_ids: list[str]) -> int:
 
         objs = _objective_reference(phase2.read_text(encoding="utf-8"))
         fact_text = facts.read_text(encoding="utf-8")
-        reference += [f"## Company facts — {run_id}", "", "```yaml", fact_text.rstrip(), "```", ""]
-        reference += ["## Objectives and their published anchors", ""]
-        for oid, ref in sorted(objs.items()):
-            reference += [f"- `{oid}` — {ref['statement']}", f"  - published anchors: {ref['anchors'] or '—'}"]
+        if fact_text not in fact_variants:
+            fact_variants.append(fact_text)
+        run_facts_variant[run_id] = fact_variants.index(fact_text)
+        for oid, ref in objs.items():
+            prev = merged_objs.get(oid)
+            if prev and prev != ref:
+                raise SystemExit(
+                    f"objective {oid} differs between runs — this pack scores arms of "
+                    "ONE case; mixed cases would attribute a document by its reference")
+            merged_objs[oid] = ref
 
         cards = _blocks(doc01.read_text(encoding="utf-8"), RE_CARD)
         orgs = _blocks(doc03.read_text(encoding="utf-8"), RE_ORG)
@@ -196,10 +214,21 @@ def build(run_ids: list[str]) -> int:
         print("no documents — nothing to score", file=sys.stderr)
         return 2
 
+    # The reference merges the runs' material by CONTENT and names no run:
+    # the same-case arms share the company facts and the objective set.
+    reference += ["## Company facts", ""]
+    for i, fact_text in enumerate(fact_variants):
+        label = "" if len(fact_variants) == 1 else f" (variant {chr(65 + i)})"
+        reference += [f"### The company{label}", "", "```yaml", fact_text.rstrip(), "```", ""]
+    reference += ["## Objectives and their published anchors", ""]
+    for oid, ref in sorted(merged_objs.items()):
+        reference += [f"- `{oid}` — {ref['statement']}", f"  - published anchors: {ref['anchors'] or '—'}"]
+
     # anonymised keys + a seeded presentation order
     rng = random.Random(SEED_ORDER)
     order = list(range(len(documents)))
     rng.shuffle(order)
+    salt = secrets.token_hex(16)
     key_map: dict[str, dict] = {}
     manifest: list[dict] = []
     scores = []
@@ -207,8 +236,10 @@ def build(run_ids: list[str]) -> int:
     for slot, doc_index in enumerate(order, start=1):
         doc = documents[doc_index]
         key = "doc-" + hashlib.sha256(
-            f"{doc['run_id']}:{doc['kind']}:{slot}".encode()).hexdigest()[:10]
+            f"{salt}:{doc['kind']}:{slot}".encode()).hexdigest()[:10]
         key_map[key] = {"run_id": doc["run_id"], "kind": doc["kind"], "slot": slot}
+        if len(fact_variants) > 1:
+            key_map[key]["facts_variant"] = chr(65 + run_facts_variant[doc["run_id"]])
         units = doc["units"]
         sheet = [f"# Scoring sheet {key}", "",
                  f"This sheet shows {len(doc['picks'])} artefact rows from one document. "
@@ -232,7 +263,7 @@ def build(run_ids: list[str]) -> int:
             if doc["kind"] == "verdicts":
                 sheet += ["D6 verdict honesty (0-2): ______", ""]
             sheet += ["Notes:", "", "---", ""]
-            scores.append({"doc_key": key, "unit": uid})
+            scores.append({"doc_key": key, "unit": uid, "kind": doc["kind"]})
         (pack_dir / f"{key}.md").write_text("\n".join(sheet) + "\n", encoding="utf-8")
         manifest.append({
             "doc_key": key, "kind": doc["kind"],
@@ -246,9 +277,9 @@ def build(run_ids: list[str]) -> int:
         writer = csv.writer(fh)
         writer.writerow(CSV_COLUMNS)
         for row in scores:
-            for dim in DIMENSIONS + (["D6 verdict honesty"] if row["doc_key"] else []):
+            for dim in DIMENSIONS + (["D6 verdict honesty"] if row["kind"] == "verdicts" else []):
                 writer.writerow([row["doc_key"], row["unit"], dim, "", ""])
-    (OUT / "_key.json").write_text(json.dumps(key_map, indent=1, ensure_ascii=False), encoding="utf-8")
+    (OUT / "_key.json").write_text(json.dumps({"salt": salt, "documents": key_map}, indent=1, ensure_ascii=False), encoding="utf-8")
     print(f"pack: {len(documents)} document(s), {len(scores)} unit(s) -> {OUT}")
     print("the key file names the runs — do not open it before scoring")
     return 0

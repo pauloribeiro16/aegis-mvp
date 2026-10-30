@@ -3,7 +3,7 @@ ficha_id: PROM-P3A-05
 title: 'Write the organizational requirement for one duty'
 phase_step: 'Phase 3 Part 1 · Organizational lane (wave 5)'
 pattern: 'one structured call per duty'
-version: 1.2.1
+version: 1.3.0
 created: 2026-10-10
 status: ACTIVE
 body_is_instruction: true
@@ -88,6 +88,14 @@ criterion cannot be written against it. Name the property, not the product.
   the system.
 - **Anchors are NIST CSF (GOVERN function where applicable)** and must be real
   CSF ids — the pipeline verifies each resolves under `baseline/CONTROLS/`.
+- **Every law in the chain has a driver of its own regulation among the
+  duty's objectives.** The chain names the law that demands the duty
+  (`GDPR Art. 33(1)`), then the objectives it serves, then the anchors. A
+  law cited on the left of the arrow must be a law of a regulation that at
+  least one of the merged objectives belongs to; a duty merging objectives
+  of several regulations may cite each regulation's law, but each cited law
+  rides objectives of its own regulation. A law cited with no driver of its
+  regulation is an invented chain leg — the referential gate refuses it.
 - **No id.** The pipeline allocates `ORG-D-XX.Y-NNN` per duty.
 
 ## Self-checks (L2)
@@ -114,6 +122,11 @@ hand-written `Doc03` (the golden).
 
 ## Changelog
 
+- 1.3.0 (2026-10-30) — added the law-driver rule to the chain: a law cited on
+  the left of a chain arrow must have a driver of its own regulation among the
+  duty's merged objectives. The measured failure this closes: the qwen3.8 arm
+  of Case 01 (job 2168120) produced org cards citing CRA with GDPR-only
+  drivers and GDPR with CRA-only drivers (3 unique T2 findings, gate FAILED).
 - 1.2.1 (2026-10-28) — the ficha's body sections now reach the model (`body_is_instruction: true`): the parser was sending the prompt body alone, which dropped the five verdicts, the Action coupling rule, the R5 mapping table and the `RN (a derivar)` vocabulary from every Phase 3 call.
 - 1.1.1 — added the R5 neutrality block with the ADR-009 D5 prohibited→mandatory mapping. duty_20 failed twice on `TLS 1.3` — the term came from the proportionality warrant, and the prompt offered no replacement
 

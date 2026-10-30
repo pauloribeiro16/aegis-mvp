@@ -249,6 +249,29 @@ def test_the_register_renders_round_notes_and_changes() -> None:
     assert "round2_verdicts.json" in text
 
 
+def test_a_rejected_objective_discharges_in_the_matrix() -> None:
+    """Onda E fix: a Reject verdict lands in the coverage matrix (T5, 2168120)."""
+    from aegis_pipeline.phases.phase3 import weave as p3w
+    rows = [
+        {"id": "SO-D-01.1-002", "carrier": "`—`", "discharge": "old text", "verdict": "x"},
+        {"id": "SO-D-01.1-001", "carrier": "`R1.1`", "discharge": "kept", "verdict": "y"},
+    ]
+    state = {"round": 1, "rejected": [{"objective": "SO-D-01.1-002",
+                                       "risk": "encryption at rest deferred"}]}
+    out = p3w.apply_reject_discharge(rows, state)
+    assert out[0]["carrier"] == "`RN (a derivar)`", out[0]
+    assert "REJECTED" in out[0]["discharge"] and "round-1" in out[0]["discharge"], out[0]
+    assert "encryption at rest" in out[0]["discharge"], out[0]
+    assert out[1]["carrier"] == "`R1.1`" and out[1]["discharge"] == "kept", out[1]
+
+
+def test_no_rejections_leaves_the_rows_untouched() -> None:
+    from aegis_pipeline.phases.phase3 import weave as p3w
+    rows = [{"id": "SO-D-01.1-001", "carrier": "`R1.1`", "discharge": "kept", "verdict": "y"}]
+    out = p3w.apply_reject_discharge(rows, {"rejected": []})
+    assert out[0]["carrier"] == "`R1.1`" and out[0]["discharge"] == "kept", out[0]
+
+
 if __name__ == "__main__":
     failures = 0
     for name, fn in sorted(globals().items()):

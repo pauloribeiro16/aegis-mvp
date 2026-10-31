@@ -257,6 +257,19 @@ def _register():
     return p3rg.compose_risk_register(rows, [])
 
 
+def test_the_register_row_carries_the_floor_flag() -> None:
+    """The floor flag lives on the store rows; compose_risk_register is where
+    it used to be dropped — the register read zero floors with two in the
+    stores, and H3 was called a falsifier on that hole."""
+    rows = _renumbered_rows()
+    rows[0].update({"l_res": 1, "i_res": 5, "residual_score": 5,
+                    "residual_level": "Medium", "residual_floored_by_tree": True})
+    tree = p3a_.parse_adtree(TREE_OPEN, rows[0]["id"], ACCEPTED)
+    reg = p3rg.compose_risk_register(rows, [tree])
+    assert reg["threats"][0]["residual_floored_by_tree"] is True
+    assert reg["threats"][1]["residual_floored_by_tree"] is False
+
+
 def _signature(decision: str) -> dict:
     return {"decision": decision, "accepted_by_person": "P. Ribeiro",
             "person_role": "Founder", "justification": "measured and acceptable",

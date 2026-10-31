@@ -38,6 +38,9 @@ def compose_risk_register(threats: list[dict], trees: list[dict]) -> dict:
             "statutory_obligation": bool(t.get("statutory_obligation")),
             "residual": f"{t['l_res']}x{t['i_res']}={t['residual_score']} ({t['residual_level']})",
             "residual_level": t["residual_level"],
+            # The floor's provenance rides the row: the human risk round and
+            # the H3 measurement read the REGISTER, not the stride stores.
+            "residual_floored_by_tree": bool(t.get("residual_floored_by_tree")),
             "unbroken_attack_path": t["id"] in unbroken,
             "state": "PROPOSED",
         })

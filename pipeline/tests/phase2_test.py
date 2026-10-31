@@ -518,6 +518,29 @@ def test_p2o_parser_and_enrichment() -> None:
     except ValueError as e:
         check("technology leakage is rejected", "technology leakage" in str(e))
 
+    # The fresh-chain failure mode (run_seqall 2026-10-31, 0/37 p2o): the model
+    # answered with a top-level 'methods' list and no 'objectives'. The repair
+    # round can only recover if the error teaches the ENTRY SHAPE.
+    methods_shaped = valid_json.replace('"objectives": [', '"methods": [')
+    try:
+        phase2.parse_p2o(methods_shaped, "D-01.1")
+        check("methods-shaped answer teaches the shape", False)
+    except ValueError as e:
+        check("methods-shaped answer teaches the shape",
+              "objectives" in str(e) and "objective_id" in str(e)
+              and "methods" in str(e))
+
+    # A RULE-* id in an objective slot: the error must say RULE-* lives INSIDE
+    # an objective and show the SO- example for this sub-domain.
+    rule_id_entry = valid_json.replace('"objective_id": "PO-D-01.1-001"',
+                                       '"objective_id": "RULE-D-01.1-001"')
+    try:
+        phase2.parse_p2o(rule_id_entry, "D-01.1")
+        check("RULE-* objective id teaches the structure", False)
+    except ValueError as e:
+        check("RULE-* objective id teaches the structure",
+              "INSIDE an objective" in str(e) and "SO-D-01.1-001" in str(e))
+
     # Test rendering with operationalization data
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)

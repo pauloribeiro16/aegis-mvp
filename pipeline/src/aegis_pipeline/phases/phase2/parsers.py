@@ -106,7 +106,17 @@ def parse_p2o(answer: str, subdomain: str | None = None) -> dict:
         raise ValueError("p2o: operational_translation cannot be empty")
     objs = data.get("objectives", [])
     if not isinstance(objs, list) or len(objs) == 0:
-        raise ValueError("p2o: expected non-empty list under 'objectives'")
+        # The repair round can only recover if the error teaches the CONTRACT
+        # (the entry shape), not the symptom — run_seqall 2026-10-31 lost all
+        # 37 p2o calls because the model answered with a top-level 'methods'
+        # list and the error never said what an objectives entry looks like.
+        keys = sorted(str(k) for k in data) if isinstance(data, dict) else []
+        raise ValueError(
+            "p2o: expected a non-empty 'objectives' list — each entry: "
+            '{"objective_id": "SO-D-XX.Y-NNN", "method": <INSPECT|TEST|'
+            'ANALYZE|DEMONSTRATE>, "criteria": "...", "owner": "...", '
+            f'"rules": [RULE-*]}}; the answer only carried {keys}'
+        )
 
     normalized_objs = []
     seen_criteria: dict[str, str] = {}
@@ -119,7 +129,12 @@ def parse_p2o(answer: str, subdomain: str | None = None) -> dict:
             oid = "SO-" + oid[4:]
         m_oid = re.match(r"^(?:PO|SO)-(D-\d{2}\.\d)-\d{3}$", oid)
         if not m_oid:
-            raise ValueError(f"p2o: objective {idx} id {oid!r} is not a PO-/SO-D-XX.Y-NNN id")
+            example = f"SO-{subdomain}-001" if subdomain else "SO-D-01.1-001"
+            raise ValueError(
+                f"p2o: objective {idx} id {oid!r} is not a PO-/SO-D-XX.Y-NNN id — "
+                "a RULE-* id names a rule INSIDE an objective (under 'rules'); "
+                f"the objective itself carries a {example}-shaped id"
+            )
         if subdomain and m_oid.group(1) != subdomain:
             raise ValueError(f"p2o: {oid} belongs to {m_oid.group(1)}, not to this sub-domain ({subdomain})")
         meth = str(o.get("method", "")).strip().upper()

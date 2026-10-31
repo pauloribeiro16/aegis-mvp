@@ -27,6 +27,20 @@ FIELDS = ("Threat", "Category", "Inherent likelihood", "Inherent impact",
 RE_SCORE = re.compile(r"^[1-5]$")
 
 
+def near_miss_ids(bad: str, accepted: set[str]) -> str:
+    """The accepted Part 1 ids in the same D-XX.Y domain as a stray citation.
+    The repair round learns the CONTRACT (which ids are legal) — which
+    requirement actually mitigates the threat stays the model's call."""
+    m = re.search(r"D-\d+\.\d+", bad)
+    if not m:
+        return ""
+    same = sorted(x for x in accepted if m.group(0) in x)
+    if not same:
+        return ""
+    return (f"; accepted Part 1 ids in {m.group(0)}: {', '.join(same[:5])}"
+            + ("…" if len(same) > 5 else ""))
+
+
 def _parse_blocks(answer: str) -> list[tuple[str, str]]:
     from aegis_pipeline.phases.phase1.common import extract_fenced
 
@@ -87,7 +101,9 @@ def parse_threats(answer: str, kind: str, accepted_ids: set[str],
         mitigators = [x.strip().strip("`") for x in f["Mitigating requirements"].split(",") if x.strip()]
         stray = [x for x in mitigators if x not in accepted_ids]
         if stray:
-            raise ValueError(f"threats [{tid}]: mitigating requirement(s) {stray[:4]} are not Part 1 ids")
+            hint = "".join(near_miss_ids(x, accepted_ids) for x in stray[:4])
+            raise ValueError(f"threats [{tid}]: mitigating requirement(s) {stray[:4]} "
+                             f"are not Part 1 ids{hint}")
         assessment = f["Mitigation assessment"]
         if assessment not in MITIGATION:
             raise ValueError(f"threats [{tid}]: assessment {assessment!r} outside {MITIGATION}")

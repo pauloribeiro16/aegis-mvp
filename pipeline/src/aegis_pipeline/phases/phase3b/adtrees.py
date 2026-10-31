@@ -10,6 +10,8 @@ from __future__ import annotations
 
 import re
 
+from aegis_pipeline.phases.phase3b.threats import near_miss_ids
+
 RE_DEF = re.compile(r"\[DEF:\s*`?([A-Za-z0-9._-]+)`?\s*\]")
 
 
@@ -47,7 +49,9 @@ def parse_adtree(answer: str, threat_id: str, accepted_ids: set[str]) -> dict:
         raise ValueError(f"adtrees [{threat_id}]: no tree parsed")
     stray = [d for d in _all_defenses(root) if d not in accepted_ids]
     if stray:
-        raise ValueError(f"adtrees [{threat_id}]: defense(s) {stray[:4]} are not Part 1 ids")
+        hint = "".join(near_miss_ids(d, accepted_ids) for d in stray[:4])
+        raise ValueError(f"adtrees [{threat_id}]: defense(s) {stray[:4]} "
+                         f"are not Part 1 ids{hint}")
     unbroken = _open_paths(root)
     return {"threat": threat_id, "root": root, "unbroken_attack_path": bool(unbroken),
             "open_paths": unbroken}

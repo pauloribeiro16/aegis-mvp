@@ -19,7 +19,9 @@ two-states):
   G8–G12 CLOSED, G7 OPEN (as 21 assinaturas humanas). **7/21 ameaças ficaram
   com mapeamento K3 vazio** (as 5 LINDDUN + `T-STR-008`/`T-STR-013`; o qwen3.8
   preencheu 31/31) — diferença real de qualidade entre armas, registada para
-  a pontuação L2.
+  a pontuação L2. NOTA: mapeamento vazio é **contrato** da ficha (PROM-P3B-05
+  §4, "Empty is honest": secção vazia é resultado, não falha) — não é violação
+  L0, e um guarda que o recusasse empurraria o modelo para inventar ids.
 - **`run_p302_qwen38_c1`** (qwen3.8:27b, Case 01): 31 ameaças (só STRIDE), 17
   árvores, registo PROPOSED. Gate G8–G12 CLOSED, G7 OPEN (31 assinaturas).
   **O LINDDUN deste braço falhou por CONTEÚDO** (L0 recusou duas vezes: o

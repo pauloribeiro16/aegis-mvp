@@ -161,6 +161,14 @@ def test_an_unknown_mitigator_or_category_fails() -> None:
         assert "not Part 1 ids" in str(e)
     else:
         raise AssertionError("a mitigator outside Part 1 must fail")
+    bad_near = STRIDE_ANSWER.replace("`SO-D-01.1-001`", "`PO-D-01.1-001`")
+    try:
+        p3t.parse_threats(bad_near, "stride", ACCEPTED, INDEX)
+    except ValueError as e:
+        assert "not Part 1 ids" in str(e) and "SO-D-01.1-001" in str(e), \
+            "the near-miss hint names the accepted id in the same domain"
+    else:
+        raise AssertionError("a stray mitigator in a known domain must fail with the hint")
     bad2 = STRIDE_ANSWER.replace("**Category:** Spoofing", "**Category:** Confidentiality")
     try:
         p3t.parse_threats(bad2, "stride", ACCEPTED, INDEX)

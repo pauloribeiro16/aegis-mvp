@@ -613,6 +613,36 @@ ambiente do cluster tem de ter, no payload, tudo o que o código lê.
   PROPOSED — **G8–G12 CLOSED, só G7 OPEN** nas duas: 21 + 31 assinaturas
   humanas de risco são o único passo que falta, e é do investigador.
 
+## P2-03 — a 1.ª cadeia fresca ponta-a-ponta expôs a Fase 2 degradada: 0/37 p2o, Doc01 sem o catálogo RULE-* (corrigido `5b8beac`)
+
+*2026-10-31. Job 2173047 (`run_seqall_1793479203_2173045`), a 1.ª execução
+limpa da cadeia `p1 → all → phase2 → p3a_all` desde a P2-02 (outubro);
+corrida de medição de tempos com `preapprove_gates: true` (benchmark, não
+produção — entregas não candidatas a export).*
+
+- **0/37 chamadas `p2o` passaram L0** (histórico: 37–38/38 em outubro): o
+  qwen3.8 respondeu com uma lista `methods` + `principles` de topo (ids
+  RULE-) em vez da lista `objectives` (ids PO-/SO- que carregam as suas
+  regras). O reparo L0 falhou 2× em todas — a mensagem nomeava o sintoma
+  (vocabulário do id), nunca a FORMA da entrada, e o modelo não conseguia
+  recuperar: o mesmo padrão da perda do LINDDUN na Parte 2 (ver P3-03).
+- **Degradação silenciosa:** o stage terminou `status: ok` pelo caminho
+  determinístico — o Doc01 aterrou com 65 objetivos mas **0 RULE-*** (o
+  histórico da P2-02 tinha 177 neste caso); a Parte 1 consumiu o Doc01 sem o
+  catálogo de regras testáveis e a cadeia continuou sem nada crashar.
+- **Corrigido (`5b8beac`):** o reparo `p2o` ensina agora o contrato — a forma
+  exata da entrada `objectives` (com as chaves que a resposta trouxe) e, no
+  id errado, que RULE-* vive DENTRO de um objetivo (sob `rules`) com o
+  exemplo `SO-<sub-domínio>-001`. Com teste. A causa-raiz da deriva de forma
+  da 1.ª tentativa (mesma ficha v1.0.0, mesmo modelo, mesma seed) fica em
+  aberto — com o reparo a ensinar a forma, o sistema recupera
+  independentemente dela.
+- **Tempos medidos da cadeia fresca (qwen3.8:27b, A100-80):** p1 38 s · Fase 1
+  (`all`) 22m46s (p4 domina: 74 chamadas, 21 min) · Fase 2 15m47s (degradada —
+  ~14 min em chamadas falhadas) · Parte 1 até à ronda 10m45s (61 chamadas).
+  Total de máquina ≈ 50 min; Parte 2 (histórico) 9m50s ⇒ ponta-a-ponta
+  ≈ 1 h sem as gates humanas.
+
 ## What lands here next
 
 *Rewritten 2026-10-05. Every item the previous version of this section listed as

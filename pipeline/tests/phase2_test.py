@@ -700,6 +700,20 @@ def test_p2o_enrichment_hardening() -> None:
           not phase2.method_diversity_findings({"TEST": 3}))
 
 
+def test_p2o_wrap_instruction_matches_parser() -> None:
+    print("p2o wrap instruction shows the shape the parser demands")
+    # P2-03 root cause (00_RESULTS.md): the modularization refactor (aa77efe)
+    # rewrote EXTRA_INSTRUCTION["p2o"] to a top-level methods+principles shape
+    # while parse_p2o demands `objectives` — the model follows the instruction's
+    # exemplar, so 37/37 calls failed form L0 in every fresh chain. The
+    # instruction is an exemplar; it must show the shape the parser enforces.
+    from aegis_pipeline.phases.phase1.runner import EXTRA_INSTRUCTION
+    wrap = EXTRA_INSTRUCTION["p2o"]
+    check("p2o wrap names the objectives list", '"objectives"' in wrap)
+    check("p2o wrap shows no top-level methods shape",
+          '"methods": [{' not in wrap)
+
+
 def main() -> int:
     print("phase2_test — derivations anchored to Phase 1 and the corpus")
     for fn in (test_id_derivation, test_slot_inherited, test_anchors_resolve,
@@ -710,7 +724,8 @@ def main() -> int:
                test_no_exemplar_is_near_verbatim_to_a_baseline,
                test_eu_legal_citations_are_not_fabrications,
                test_p2o_parser_and_enrichment, test_real_runs,
-               test_p2o_enrichment_hardening):
+               test_p2o_enrichment_hardening,
+               test_p2o_wrap_instruction_matches_parser):
         fn()
     print()
     if FAILURES:

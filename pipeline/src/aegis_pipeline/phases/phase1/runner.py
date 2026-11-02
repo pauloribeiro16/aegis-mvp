@@ -204,7 +204,7 @@ EXTRA_INSTRUCTION = {
     ),
     "p1": "Wrap your answer: return ONLY one ```yaml fenced block with the fact sheet.",
     "p2": "Wrap your answer: return ONLY one ```markdown fenced block containing the 5-row §2 verdict table (header + 5 rows, nothing else).",
-    "p2o": 'Wrap your answer: return ONLY one ```json fenced block shaped {"subdomain": "...", "operational_translation": "...", "methods": [{"id": "RULE-...", "method": "TEST|INSPECT|DEMONSTRATE|ANALYZE", "criteria": "...", "owner": "..."}], "principles": [{"id": "P-...", "rationale": "..."}]}.',
+    "p2o": 'Wrap your answer: return ONLY one ```json fenced block shaped {"subdomain": "...", "operational_translation": "...", "objectives": [ ... ]}. No text before or after the block.',
     "p2d": "Wrap your answer: return ONLY one ```json fenced block containing the 7 architectural principles.",
     "p3": (
         "Wrap your answer: return ONLY one ```markdown fenced block containing (a) a markdown "

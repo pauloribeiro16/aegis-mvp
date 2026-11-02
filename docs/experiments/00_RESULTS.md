@@ -643,6 +643,34 @@ produção — entregas não candidatas a export).*
   Total de máquina ≈ 50 min; Parte 2 (histórico) 9m50s ⇒ ponta-a-ponta
   ≈ 1 h sem as gates humanas.
 
+## P2-03 (adição, 2026-11-02) — causa-raiz fechada: a instrução de envelope é que estava errada desde `aa77efe`; o reparo `5b8beac` era necessário mas insuficiente
+
+*Cadeia de re-validação `run_p2o3fix_1793635598_2178119` (jobs
+2178119→24, rev `d2977a9`): **0/37 p2o de novo** — resultado negativo que
+fechou a causa "em aberto" do registo original.*
+
+- **O reparo novo funciona na 1.ª camada:** o `l0_first_error` das falhas é a
+  mensagem nova (`5b8beac`) e o `l0_final_error` mostra que a resposta
+  reparada JÁ vinha na forma `objectives` — morreu na verificação seguinte
+  (SHALL/MUST ausente), que o loop de reparo (1 ronda) já não apanha. Sem o
+  reparo, a forma nem sequer chegava lá.
+- **Causa-raiz (verificada por diff físico dos inputs):** o refactor de
+  modularização `aa77efe` reescreveu `EXTRA_INSTRUCTION["p2o"]` para uma forma
+  `methods`+`principles` de topo, enquanto `parse_p2o` exige `objectives` —
+  desde então que a instrução e o parser discordam, e o modelo segue o
+  exemplar da instrução (o mesmo padrão do colapso de badge: o modelo copia o
+  exemplar, não a instrução). O diff do prompt p2o entre `run_p2enr_c1`
+  (outubro, saudável) e a cadeia fresca mostra a instrução trocada; as restantes
+  diferenças são evolução do corpus, irrelevante para a forma.
+- **Corrigido (`ad7e680`):** instrução restaurada ao texto de outubro (prova:
+  37/38 à 1.ª tentativa na P2-02) + teste novo de alinhamento
+  instrução-vs-parser (`test_p2o_wrap_instruction_matches_parser`) — nenhum
+  teste fixava este texto, e foi assim que o refactor partiu em silêncio.
+- **2.ª re-validação submetida:** `run_p2o3fix2_1793654319_2179232`
+  (jobs 2179232→35). Critério: p2o ≥37/37 ok à 1.ª tentativa e Doc01 com
+  RULE-* ~177; se o SHALL/MUST voltar a morrer no reparo, a ronda única de
+  reparo é o próximo alvo (não se toca antes do dado).
+
 ## What lands here next
 
 *Rewritten 2026-10-05. Every item the previous version of this section listed as

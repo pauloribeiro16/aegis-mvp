@@ -90,6 +90,14 @@ experimentos. R5 mantém-se.
 
 ## 0. Onde vive o quê e Diretrizes Hierárquicas
 
+### Primeira leitura: como se avalia um resultado
+Antes de declarar que uma corrida, etapa ou documento "está bom", ler
+[`docs/GUIA_DE_AVALIACAO.md`](docs/GUIA_DE_AVALIACAO.md): mapa da pipeline,
+as quatro perguntas de avaliação (forma, integridade, aprovação humana,
+substância), o que é um bom resultado em cada etapa, e o dicionário de todos os
+códigos (`G-P1-A`, `G1`–`G12`, `T1`–`T8`, `M-nn`, `D1`–`D7`…). Uma etapa com
+estado `ok` não é, por si, um bom resultado.
+
 ### Sub-diretrizes Hierárquicas (AGENTS.md)
 Este repositório adota uma estrutura hierárquica de contratos operacionais para agentes:
 - **Raiz ([`AGENTS.md`](file:///home/paulinho/Work/aegis-mvp/AGENTS.md)):** Regras globais, defaults de amostragem (§-1), conduta científica (§-2) e invariantes metodológicos (R1–R12).

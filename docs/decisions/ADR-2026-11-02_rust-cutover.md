@@ -1,6 +1,7 @@
 # ADR-2026-11-02 — Cutover Python→Rust em duas ondas, com gates de paridade byte-exacto
 
-**Data:** 2026-11-02 · **Estado:** PROPOSED (aguarda aprovação do investigador)
+**Data:** 2026-11-02 · **Estado:** ACCEPTED (aprovado pelo investigador na mesma
+data — "podes efetuar a transição para o rust"; a execução segue o plano T0–T7)
 **Âmbito:** substituição integral do runtime Python da pipeline pelo port Rust
 (`~/Work/aegis-rust`, milestones M0–M2 fechados com paridade provada).
 

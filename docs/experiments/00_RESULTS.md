@@ -670,6 +670,13 @@ fechou a causa "em aberto" do registo original.*
   (jobs 2179232→35). Critério: p2o ≥37/37 ok à 1.ª tentativa e Doc01 com
   RULE-* ~177; se o SHALL/MUST voltar a morrer no reparo, a ronda única de
   reparo é o próximo alvo (não se toca antes do dado).
+- **VEREDICTO da 2.ª re-validação (mesma sessão): SUCESSO.** **37/37 p2o
+  ok** (36 à 1.ª tentativa, 1 recuperado pelo reparo `5b8beac` — o loop de
+  uma ronda bastou) e Doc01 com **237 linhas RULE-*** (0 nas duas cadeias
+  degradadas; histórico da P2-02: 177). A Parte 1 da cadeia correu sobre o
+  corpus saudável (stage history: phase2 ok, p3a_all ok, parou na ronda
+  humana G-P3-A como desenho). A causa-raiz era a instrução, não o modelo:
+  restaurado o exemplar certo, o comportamento de outubro volta inteiro.
 
 ## What lands here next
 

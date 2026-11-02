@@ -63,6 +63,37 @@ Faltam M3–M11 (≈ 29k LOC Python: `pipeline/src` 15,2k + `scripts/` 12,6k +
   cobriu (ex. ferramenta externa chamada por `scripts/`) ⇒ o âmbito revê-se
   caso a caso no plano, nunca por exclusão silenciosa.
 
+## Emenda 1 (2026-11-02, mesma data — decisão do investigador)
+
+*"então passa tudo as 29 mil linhas para rust no ~/Work/aegis-rust, não
+coloques aqui então para já, mas passa mesmo tudo, isto não precisa de ser
+byte by byte tem é de ter exatamente o mesmo comportamento."*
+
+1. **Âmbito total confirmado:** os milestones M3–M11 correm todos
+   (`pipeline/src`, `scripts/`, `scoring/`, `audit_runner.py`, lógica
+   deucalion) — ~29k LOC.
+2. **A barra baixa de paridade byte-exacto para comportamento idêntico.**
+   Contrato de comportamento (o que "igual" significa):
+   - **Prompts byte-idênticos** para os mesmos inputs de run — mantém-se
+     porque é causal: modelo + seed + prompt igual ⇒ resposta igual. O M2
+     (compose) já provado sob a barra antiga continua válido.
+   - **Decisões iguais:** parsers/guards/gates aceitam e recusam as mesmas
+     respostas; os stores gravam estruturas semanticamente iguais.
+   - **Deliverables iguais:** Doc01/Doc02/Doc03 e exports com o mesmo
+     conteúdo.
+   - **Bookkeeping (trace/manifest/config):** mesma informação; diferenças
+     de bytes toleradas (pyjson já existe e usa-se onde for grátis, mas não
+     bloqueia nada).
+   - **Erros:** as mesmas falhas abortam nos mesmos sítios; as mensagens não
+     precisam de ser idênticas.
+   Consequência: vectores byte-exacto por função deixam de ser obrigatórios;
+   a prova passa a testes de comportamento (mesmo input ⇒ mesma decisão/
+   estrutura/saída) + replay dos runs gravados. M0–M2 não se re-trabalham.
+3. **O cutover para este repo fica suspenso:** todo o código vive e cresce
+   no `~/Work/aegis-rust`; nada entra no `aegis-mvp` (nem `pipeline/rust/`)
+   até decisão nova do investigador. A "Onda 1/Onda 2" deste ADR passam a
+   desenhos à espera de reativação.
+
 ## Ligação ao plano operacional
 
 As etapas T0–T7, oráculos por milestone, gates G-R1..G-R5 e riscos estão em

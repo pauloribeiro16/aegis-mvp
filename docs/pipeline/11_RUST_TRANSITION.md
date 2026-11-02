@@ -1,10 +1,14 @@
 # 11 — Plano de Transição Python→Rust
 
-> **Estado:** PROPOSED (decisão em
-> [`ADR-2026-11-02`](../decisions/ADR-2026-11-02_rust-cutover.md), aguarda
-> aprovação). **Ramo de cutover:** `feat/rust-port-cutover`.
-> **Repo do port:** `~/Work/aegis-rust` (git próprio; o repo-mãe é read-only
-> durante o port — Regra 0 do AGENTS.md dele).
+> **Estado:** ACCEPTED com Emenda 1 (2026-11-02) — ver
+> [`ADR-2026-11-02`](../decisions/ADR-2026-11-02_rust-cutover.md). **Mudanças
+> da emenda:** (1) a barra é **comportamento idêntico**, não byte-exacto —
+> prompts continuam byte-idênticos (causal), o resto prova-se por decisões/
+> estruturas/conteúdo iguais; (2) âmbito total M3–M11 confirmado
+> (~29k LOC); (3) **nada entra no `aegis-mvp` para já** — o código vive no
+> `~/Work/aegis-rust` e as Ondas 1/2 do cutover ficam suspensas.
+> **Ramo de cutover (docs):** `feat/rust-port-cutover`.
+> **Repo do port:** `~/Work/aegis-rust` (git próprio).
 
 ## 1. Onde estamos
 
